@@ -1,25 +1,26 @@
 <template>
   <label>
     <span class="text-base font-bold block mb-1">{{ props.label }}</span>
-    <select
-      v-model="value"
-      class="w-full text-base border border-gray-400 dark:border-white dark:text-white py-2 pl-1 pr-6 scheme-light dark:scheme-dark"
-    >
-      <option
-        v-for="([itemValue, itemLabel], itemIndex) in props.options"
-        :key="itemIndex"
-        :value="itemValue"
-      >
-        {{ itemLabel }}
-      </option>
-    </select>
+    <ais-menu-select
+      :attribute="props.attribute"
+      :limit="100"
+      :class-names="{
+        'ais-MenuSelect': 'w-full text-base border border-gray-400 dark:border-white dark:text-white px-1 scheme-light dark:scheme-dark',
+        'ais-MenuSelect-select': 'w-full px-1 py-2'
+      }">
+      <template #defaultOption>
+        All
+      </template>
+    </ais-menu-select>
   </label>
 </template>
 
 <script setup lang="ts">
+import { AisMenuSelect } from 'vue-instantsearch/vue3/es'
 import type { VueStyleClass } from '~/utilities/vue'
 
 type Props = {
+  attribute: string
   label: string
   /**
    * An array of <option>'s of [value, label]. Eg.
@@ -31,11 +32,8 @@ type Props = {
    * ]
    * ```
    */
-  options: [string, string][]
   class?: VueStyleClass
 }
 
 const props = defineProps<Props>()
-
-const value = defineModel<string>()
 </script>

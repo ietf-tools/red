@@ -21,40 +21,42 @@
     />
 
     <SearchFilterSelect
-      v-model="searchStore.stream"
       label="Stream"
-      :options="Object.entries(Streams)"
+      attribute="stream"
     />
 
     <SearchFilterSelect
-      v-model="searchStore.area"
       label="Area"
-      :options="Object.entries(Areas)"
+      attribute="area"
     />
 
     <SearchFilterSelect
-      v-model="searchStore.workingGroup"
       label="Working group"
-      :options="Object.entries(WorkingGroups)"
+      attribute="group"
+      searchable
     />
 
-    <div class="hidden lg:block">
-      <button
-        type="button"
-        class="underline text-blue-700 dark:text-blue-100 px-3 py-2 -ml-3"
-        @click="searchStore.clearFilters()"
-      >
-        Clear all
-      </button>
-    </div>
+    <ais-clear-refinements :excluded-attributes="['type']" class="hidden lg:block">
+      <template #default="{ canRefine, refine }">
+        <button
+          type="button"
+          class="underline text-blue-700 dark:text-blue-100 px-3 py-2 -ml-3 cursor-pointer"
+          :disabled="!canRefine"
+          @click.prevent="refine"
+        >
+          Clear all
+        </button>
+      </template>
+    </ais-clear-refinements>
   </form>
 </template>
 
 <script setup lang="ts">
+import { AisClearRefinements } from 'vue-instantsearch/vue3/es'
 // This template and any descendant components within it might be rendered multiple times
 // simultaneously in the DOM so please ensure unique DOM ids, or avoid them entirely (eg
 // <label> wrapping)
-import { useSearchStore, Streams, Areas, WorkingGroups } from '~/stores/search'
+import { useSearchStore } from '~/stores/search'
 
 const searchStore = useSearchStore()
 
