@@ -1,48 +1,33 @@
 <template>
-  <component
-    :is="props.listTypeElement"
-    :class="[
-      props.depth === 0 && props.listClass,
-      props.depth >= 1 && props.nestedListClass
-    ]"
-  >
+  <component :is="props.listTypeElement" :class="[
+    props.depth === 0 && props.listClass,
+    props.depth >= 1 && props.nestedListClass
+  ]">
     <li v-for="(section, index) in props.sections" :key="index">
-      <NuxtLink
-        v-for="(link, linkIndex) in section.links"
-        :id="makeTocId(link.id)"
-        :key="linkIndex"
-        :to="`#${link.id}`"
-        :aria-current="link.id === props.activeId"
-        :class="[
-          props.listItemClass,
-          activeId === link.id && props.listItemActiveClass,
-          'flex flex-row justify-between'
-        ]"
-        @click="handleClick(link.id)"
-      >
-        <span>
-          {{ link.title }}
-        </span>
-      </NuxtLink>
+      <div :class="{
+        'flex flex-row gap-2': true,
+        [props.listItemActiveClass ?? '']: section.links.some(link => activeId === link.id),
+      }">
+        <a v-for="(link, linkIndex) in section.links" :id="makeTocId(link.id)" :key="linkIndex" :href="`#${link.id}`"
+          :aria-current="link.id === props.activeId" :class="[
+            props.listItemClass,
+            activeId === link.id && props.listItemActiveClass,
+            'flex flex-row justify-between'
+          ]" @click="handleClick(link.id)">
+          <span>
+            {{ link.title }}
+          </span>
+        </a>
+        <GraphicsChevron class="-rotate-90 w-1.5 h-1.5 text-blue-100 group-hover:text-white ml-1 " />
+      </div>
 
-      <GraphicsChevron
-        class="shrink-0 grow-0 basis-5 w-1.5 h-1.5 text-blue-100 group-hover:text-white ml-1 translate-y-1.5 -rotate-90"
-      />
 
-      <TableOfContentsHighlightSection
-        v-if="section.sections"
-        :sections="section.sections"
-        :list-type-element="listTypeElement"
-        :depth="props.depth + 1"
-        :active-id="props.activeId"
-        :handle-click="props.handleClick"
-        :make-toc-id="props.makeTocId"
-        :is-ssr="props.isSsr"
-        :list-class="props.listClass"
-        :nested-list-class="props.nestedListClass"
-        :list-item-class="props.listItemClass"
-        :list-item-active-class="props.listItemActiveClass"
-      />
+
+      <TableOfContentsHighlightSection v-if="section.sections" :sections="section.sections"
+        :list-type-element="listTypeElement" :depth="props.depth + 1" :active-id="props.activeId"
+        :handle-click="props.handleClick" :make-toc-id="props.makeTocId" :is-ssr="props.isSsr"
+        :list-class="props.listClass" :nested-list-class="props.nestedListClass" :list-item-class="props.listItemClass"
+        :list-item-active-class="props.listItemActiveClass" />
     </li>
   </component>
 </template>

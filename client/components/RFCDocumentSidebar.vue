@@ -23,14 +23,18 @@
         </DialogContent>
       </DialogPortal>
     </DialogRoot>
-    <TableOfContentsHighlight :toc="props.rfcBucketHtmlDoc.tableOfContents!" list-type="ordered"
-      wrapper-class="h-[calc(100vh-24px)] pb-2" list-class="mr-1" nested-list-class="pl-1"
-      :list-item-class="`block text-sm py-2 border-t-1 border-t-gray-300 dark:border-t-gray-500 no-underline hover:underline ${ANCHOR_TAILWIND_STYLE}`"
-      list-item-active-class="text-shadow-bold">
-      <Heading level="2" style-level="5" class="mb-1 text-gray-800 dark:text-gray-300">
-        In this section
-      </Heading>
-    </TableOfContentsHighlight>
+
+    <div class="sticky top-0 h-screen flex flex-col border-2 justify-between border-green-300">
+      <div class="">top thing <br /> more thing <br /> more thing </div>
+      <TableOfContentsHighlight :toc="props.rfcBucketHtmlDoc.tableOfContents!" list-type="ordered"
+        wrapper-class="flex-1 pb-2" list-class="mr-1" nested-list-class="pl-5"
+        :list-item-class="`block text-sm py-2 border-t-1 border-t-gray-300 dark:border-t-gray-500 no-underline hover:underline ${ANCHOR_TAILWIND_STYLE}`"
+        list-item-active-class="text-shadow-bold">
+        <Heading level="2" style-level="5" class="mb-1 text-gray-800 dark:text-gray-300">
+          In this section
+        </Heading>
+      </TableOfContentsHighlight>
+    </div>
 
     <!-- <div class="sticky top-0 h-[100vh] overflow-y-scroll">
       <RFCTabs

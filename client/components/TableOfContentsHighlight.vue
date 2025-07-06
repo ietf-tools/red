@@ -1,20 +1,10 @@
 <template>
-  <div ref="wrapperRef" :class="['overflow-y-auto', props.wrapperClass]">
+  <div ref="wrapperRef" :class="['overflow-y-auto border-2 border-red-500', props.wrapperClass]">
     <slot />
-    <TableOfContentsHighlightSection
-      v-if="props.toc.sections"
-      :sections="props.toc.sections"
-      :depth="0"
-      :list-type-element="listTypeElement"
-      :active-id="activeId"
-      :handle-click="handleClick"
-      :make-toc-id="makeTocId"
-      :is-ssr="isSSR"
-      :list-class="props.listClass"
-      :nested-list-class="props.nestedListClass"
-      :list-item-class="props.listItemClass"
-      :list-item-active-class="props.listItemActiveClass"
-    />
+    <TableOfContentsHighlightSection v-if="props.toc.sections" :sections="props.toc.sections" :depth="0"
+      :list-type-element="listTypeElement" :active-id="activeId" :handle-click="handleClick" :make-toc-id="makeTocId"
+      :is-ssr="isSSR" :list-class="props.listClass" :nested-list-class="props.nestedListClass"
+      :list-item-class="props.listItemClass" :list-item-active-class="props.listItemActiveClass" />
   </div>
 </template>
 
@@ -100,5 +90,7 @@ useScrollTocContainer({
 })
 
 const isSSR = ref(true)
-onMounted(() => (isSSR.value = false))
+onMounted(() => {
+  isSSR.value = false
+})
 </script>
