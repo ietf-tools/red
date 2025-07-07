@@ -20,6 +20,7 @@
       :links-active-class="props.linksActiveClass"
       :link-class="props.linkClass"
       :last-link-class="props.lastLinkClass"
+      :show-last-link-icon="props.showLastLinkIcon"
     />
   </VerticalScrollable>
 </template>
@@ -47,6 +48,7 @@ type Props = {
   linksActiveClass?: string
   linkClass?: string
   lastLinkClass?: string
+  showLastLinkIcon?: boolean
 }
 
 const props = defineProps<Props>()

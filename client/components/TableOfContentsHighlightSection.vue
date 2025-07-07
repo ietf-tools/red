@@ -28,7 +28,12 @@
           @click="handleClick(link.id)"
         >
           {{ link.title }}
+          <GraphicsChevron
+            v-if="linkIndex === section.links.length - 1 && props.showLastLinkIcon"
+            class="shrink-0 grow-0 basis-5 w-1.5 h-1.5 text-blue-100 group-hover:text-white ml-1 translate-y-1.5 -rotate-90"
+          />
         </a>
+
       </div>
 
       <TableOfContentsHighlightSection
@@ -46,6 +51,7 @@
         :links-active-class="props.linksActiveClass"
         :link-class="props.linkClass"
         :last-link-class="props.lastLinkClass"
+        :show-last-link-icon="props.showLastLinkIcon"
       />
     </li>
   </component>
@@ -74,6 +80,7 @@ type Props = {
   linksActiveClass?: string
   linkClass?: string
   lastLinkClass?: string
+  showLastLinkIcon?: boolean
 }
 
 const props = defineProps<Props>()

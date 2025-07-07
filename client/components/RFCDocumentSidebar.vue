@@ -38,7 +38,7 @@
       </DialogPortal>
     </DialogRoot>
 
-    <div class="sticky top-0 h-[calc(100vh-0px)] flex flex-col">
+    <div class="sticky top-0 h-[calc(100vh)] flex flex-col">
       <RFCTabs
         ref="desktopRFCTabs"
         v-model:selected-tab="selectedTab"
@@ -47,7 +47,8 @@
       >
         <template #slot0>
           <TableOfContentsHighlight
-            :toc="props.rfcBucketHtmlDoc.tableOfContents!"
+            v-if="props.rfcBucketHtmlDoc.tableOfContents"
+            :toc="props.rfcBucketHtmlDoc.tableOfContents"
             list-type="ordered"
             wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
             list-class="mr-1"

@@ -1,0 +1,3 @@
+<template>
+  <MarkdownPage />
+</template>
