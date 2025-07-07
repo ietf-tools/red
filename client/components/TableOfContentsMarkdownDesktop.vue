@@ -6,10 +6,10 @@
       wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
       list-class="mr-1"
       nested-list-class="pl-2"
-      :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
+      :links-class="`block text-sm py-2 border-t-1 border-t-gray-300 dark:border-t-gray-500 no-underline hover:underline ${ANCHOR_TAILWIND_STYLE}`"
       links-active-class="text-shadow-bold"
       link-class="block no-underline hover:underline"
-      last-link-class="flex-1 flex"
+      last-link-class="flex-1 flex justify-between"
       :show-last-link-icon="true"
     >
       <Heading
