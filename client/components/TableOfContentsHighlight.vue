@@ -1,6 +1,6 @@
 <template>
   <VerticalScrollable
-    ref="wrapperRef"
+    ref="vertical-scrollable"
     :class="['overflow-y-auto min-h-0 flex flex-col', props.wrapperClass]"
   >
     <slot />
@@ -54,7 +54,9 @@ const listTypeElement = computed(() =>
   props.listType === 'numbered' ? 'ol' : 'ul'
 )
 
-const wrapperRef = ref<HTMLElement>()
+const verticalScrollableRef = useTemplateRef('vertical-scrollable')
+
+const wrapperRef = computed(() => verticalScrollableRef.value?.scrollContainer)
 
 const flattenSections = (section: Section): string[] =>
   [...section.links.map((link) => link.id)].concat(
@@ -97,6 +99,7 @@ const handleClick = (id: string): void => {
 }
 
 useValidateIds(ids)
+
 
 const makeTocId = (id: string) => `toc-${id}`
 

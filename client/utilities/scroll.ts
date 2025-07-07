@@ -1,4 +1,4 @@
-import { watch } from 'vue'
+import { watch, isProxy, toRaw } from 'vue'
 import { throttle, clamp } from 'lodash-es'
 import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
@@ -216,7 +216,7 @@ const SCROLL_DIRECTIONAL_BIAS_VH_RATIO = 0.2
 const SCROLL_BUFFER_PX = 100
 type UseScrollTocContainerProps = {
   toActiveIdRef: Ref<string>
-  wrapperRef: Ref<HTMLElement | undefined>
+  wrapperRef: Ref<HTMLElement | null | undefined>
   makeTocId: (id: string) => string
 }
 export const useScrollTocContainer = ({
@@ -227,12 +227,13 @@ export const useScrollTocContainer = ({
   let previousActiveId = toActiveIdRef.value
 
   watchDebounced(
-    toActiveIdRef,
+    [toActiveIdRef, wrapperRef],
     () => {
       /**
        * Scrolls the TOC in an attempt to make the active item always visible to the user
        */
       const { value: wrapper } = wrapperRef
+
       const previousTocLink = document.getElementById(
         makeTocId(previousActiveId)
       )
@@ -253,6 +254,7 @@ export const useScrollTocContainer = ({
       }
 
       const tocLinkRect = tocLink.getBoundingClientRect()
+
       const wrapperRect = wrapper.getBoundingClientRect()
 
       const isMoreThanTop =

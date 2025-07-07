@@ -4,14 +4,18 @@
 type Headers = Record<string, string>
 export type ApigenHeaders =
   | Headers
-  | ((method: string, path: string) => Headers | Promise<Headers>)
+  | ((
+      method: string,
+      path: string
+    ) => Headers | Promise<Headers>)
 
 export interface ApigenConfig {
   baseUrl: string
   headers: ApigenHeaders
 }
 
-export interface ApigenRequest extends Omit<RequestInit, 'body'> {
+export interface ApigenRequest
+  extends Omit<RequestInit, 'body'> {
   search?: Record<string, unknown>
   body?: unknown
 }
@@ -21,17 +25,38 @@ export class ApiClient {
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d*)?(?:[-+]\d{2}:?\d{2}|Z)?$/
   Config: ApigenConfig
 
-  constructor(config?: Partial<ApigenConfig>) {
-    this.Config = { baseUrl: '/', headers: {}, ...config }
+  constructor(
+    config?: Partial<ApigenConfig>
+  ) {
+    this.Config = {
+      baseUrl: '/',
+      headers: {},
+      ...config
+    }
   }
 
   PopulateDates<T>(d: T): T {
-    if (d === null || d === undefined || typeof d !== 'object') return d
+    if (
+      d === null ||
+      d === undefined ||
+      typeof d !== 'object'
+    )
+      return d
 
-    const t = d as unknown as Record<string, unknown>
-    for (const [k, v] of Object.entries(t)) {
-      if (typeof v === 'string' && this.ISO_FORMAT.test(v)) t[k] = new Date(v)
-      else if (typeof v === 'object') this.PopulateDates(v)
+    const t = d as unknown as Record<
+      string,
+      unknown
+    >
+    for (const [k, v] of Object.entries(
+      t
+    )) {
+      if (
+        typeof v === 'string' &&
+        this.ISO_FORMAT.test(v)
+      )
+        t[k] = new Date(v)
+      else if (typeof v === 'object')
+        this.PopulateDates(v)
     }
 
     return d
@@ -47,10 +72,15 @@ export class ApiClient {
 
   PrepareFetchUrl(path: string): URL {
     let base = this.Config.baseUrl
-    if ('location' in globalThis && (base === '' || base.startsWith('/'))) {
-      const { location } = globalThis as unknown as {
-        location: { origin: string }
-      }
+    if (
+      'location' in globalThis &&
+      (base === '' ||
+        base.startsWith('/'))
+    ) {
+      const { location } =
+        globalThis as unknown as {
+          location: { origin: string }
+        }
       base = `${location.origin}${base.endsWith('/') ? base : `/${base}`}`
     }
 
@@ -62,54 +92,99 @@ export class ApiClient {
     path: string,
     opts: ApigenRequest = {}
   ): Promise<T> {
-    const url = this.PrepareFetchUrl(path)
+    const url =
+      this.PrepareFetchUrl(path)
 
-    for (const [k, v] of Object.entries(opts?.search ?? {})) {
-      url.searchParams.append(k, Array.isArray(v) ? v.join(',') : (v as string))
+    for (const [k, v] of Object.entries(
+      opts?.search ?? {}
+    )) {
+      url.searchParams.append(
+        k,
+        Array.isArray(v) ?
+          v.join(',')
+        : (v as string)
+      )
     }
 
     const configHeaders =
-      typeof this.Config.headers === 'function' ?
-        await this.Config.headers(method, path)
+      (
+        typeof this.Config.headers ===
+        'function'
+      ) ?
+        await this.Config.headers(
+          method,
+          path
+        )
       : this.Config.headers
 
-    const headers = new Headers({ ...configHeaders, ...opts.headers })
-    const ct = headers.get('content-type') ?? 'application/json'
+    const headers = new Headers({
+      ...configHeaders,
+      ...opts.headers
+    })
+    const ct =
+      headers.get('content-type') ??
+      'application/json'
 
-    let body: FormData | URLSearchParams | string | undefined = undefined
+    let body:
+      | FormData
+      | URLSearchParams
+      | string
+      | undefined = undefined
 
     if (
       ct === 'multipart/form-data' ||
-      ct === 'application/x-www-form-urlencoded'
+      ct ===
+        'application/x-www-form-urlencoded'
     ) {
       headers.delete('content-type')
       body =
-        ct === 'multipart/form-data' ? new FormData() : new URLSearchParams()
-      for (const [k, v] of Object.entries(
-        opts.body as Record<string, string>
+        ct === 'multipart/form-data' ?
+          new FormData()
+        : new URLSearchParams()
+      for (const [
+        k,
+        v
+      ] of Object.entries(
+        opts.body as Record<
+          string,
+          string
+        >
       )) {
         body.append(k, v)
       }
     }
 
-    if (ct === 'application/json' && typeof opts.body !== 'string') {
-      headers.set('content-type', 'application/json')
+    if (
+      ct === 'application/json' &&
+      typeof opts.body !== 'string'
+    ) {
+      headers.set(
+        'content-type',
+        'application/json'
+      )
       body = JSON.stringify(opts.body)
     }
 
-    const credentials = opts.credentials ?? 'include'
-    const rep = await fetch(url.toString(), {
-      method,
-      ...opts,
-      headers,
-      body,
-      credentials
-    })
-    if (!rep.ok) throw await this.ParseError(rep)
+    const credentials =
+      opts.credentials ?? 'include'
+    const rep = await fetch(
+      url.toString(),
+      {
+        method,
+        ...opts,
+        headers,
+        body,
+        credentials
+      }
+    )
+    if (!rep.ok)
+      throw await this.ParseError(rep)
 
     const rs = await rep.text()
     try {
-      return this.PopulateDates(JSON.parse(rs) as T)
+      return this.PopulateDates(
+        JSON.parse(rs) as T
+      )
     } catch (e) {
       return rs as unknown as T
     }
@@ -124,7 +199,12 @@ export class ApiClient {
       published_after?: string
       published_before?: string
       search?: string
-      sort?: ('-number' | '-published' | 'number' | 'published')[]
+      sort?: (
+        | '-number'
+        | '-published'
+        | 'number'
+        | 'published'
+      )[]
       status?: (
         | 'bcp'
         | 'experimental'
@@ -136,13 +216,21 @@ export class ApiClient {
       )[]
       stream?: string[]
     }) => {
-      return this.Fetch<PaginatedRfcMetadataList>('get', '/api/red/doc/', {
-        search
-      })
+      return this.Fetch<PaginatedRfcMetadataList>(
+        'get',
+        '/api/red/doc/',
+        { search }
+      )
     },
 
-    docRetrieve: (rfc_number: number) => {
-      return this.Fetch<Rfc>('get', `/api/red/doc/${rfc_number}/`, {})
+    docRetrieve: (
+      rfc_number: number
+    ) => {
+      return this.Fetch<Rfc>(
+        'get',
+        `/api/red/doc/${rfc_number}/`,
+        {}
+      )
     }
   }
 
@@ -161,22 +249,29 @@ export class ApiClient {
   }
 
   schema = {
-    retrieve: (search: { format?: 'json' | 'yaml' }) => {
-      return this.Fetch<Record<string, unknown>>('get', '/api/schema/', {
+    retrieve: (search: {
+      format?: 'json' | 'yaml'
+    }) => {
+      return this.Fetch<
+        Record<string, unknown>
+      >('get', '/api/schema/', {
         search
       })
     }
   }
 }
 
-export type ClientErrorEnum = 'client_error'
+export type ClientErrorEnum =
+  'client_error'
 
 export type DocIdentifier = {
   type: DocIdentifierTypeEnum
   value: string
 }
 
-export type DocIdentifierTypeEnum = 'doi' | 'issn'
+export type DocIdentifierTypeEnum =
+  | 'doi'
+  | 'issn'
 
 export type Error404 = {
   code: ErrorCode404Enum
@@ -184,14 +279,21 @@ export type Error404 = {
   attr: string | null
 }
 
-export type ErrorCode404Enum = 'not_found'
+export type ErrorCode404Enum =
+  'not_found'
 
 export type ErrorResponse404 = {
   type: ClientErrorEnum
   errors: Error404[]
 }
 
-export type FormatsEnum = 'xml' | 'txt' | 'html' | 'htmlized' | 'pdf' | 'ps'
+export type FormatsEnum =
+  | 'xml'
+  | 'txt'
+  | 'html'
+  | 'htmlized'
+  | 'pdf'
+  | 'ps'
 
 export type Group = {
   acronym: string
@@ -218,7 +320,8 @@ export type ParseError = {
   attr: string | null
 }
 
-export type ParseErrorCodeEnum = 'parse_error'
+export type ParseErrorCodeEnum =
+  'parse_error'
 
 export type ParseErrorResponse = {
   type: ClientErrorEnum
@@ -231,11 +334,15 @@ export type Person = {
   picture?: string
 }
 
-export type RedDocListAreaErrorComponent = {
-  attr: 'area'
-  code: 'invalid_choice' | 'invalid_list' | 'invalid_pk_value'
-  detail: string
-}
+export type RedDocListAreaErrorComponent =
+  {
+    attr: 'area'
+    code:
+      | 'invalid_choice'
+      | 'invalid_list'
+      | 'invalid_pk_value'
+    detail: string
+  }
 
 export type RedDocListError =
   | RedDocListPublishedErrorComponent
@@ -246,45 +353,61 @@ export type RedDocListError =
   | RedDocListSortErrorComponent
 
 export type RedDocListErrorResponse400 =
-  | RedDocListValidationError
-  | ParseErrorResponse
 
-export type RedDocListGroupErrorComponent = {
-  attr: 'group'
-  code: 'invalid_choice' | 'invalid_list' | 'invalid_pk_value'
-  detail: string
-}
+    | RedDocListValidationError
+    | ParseErrorResponse
 
-export type RedDocListPublishedErrorComponent = {
-  attr: 'published'
-  code: 'invalid'
-  detail: string
-}
+export type RedDocListGroupErrorComponent =
+  {
+    attr: 'group'
+    code:
+      | 'invalid_choice'
+      | 'invalid_list'
+      | 'invalid_pk_value'
+    detail: string
+  }
 
-export type RedDocListSortErrorComponent = {
-  attr: 'sort'
-  code: 'invalid_choice'
-  detail: string
-}
+export type RedDocListPublishedErrorComponent =
+  {
+    attr: 'published'
+    code: 'invalid'
+    detail: string
+  }
 
-export type RedDocListStatusErrorComponent = {
-  attr: 'status'
-  code: 'invalid_choice' | 'invalid_list'
-  detail: string
-}
+export type RedDocListSortErrorComponent =
+  {
+    attr: 'sort'
+    code: 'invalid_choice'
+    detail: string
+  }
 
-export type RedDocListStreamErrorComponent = {
-  attr: 'stream'
-  code: 'invalid_choice' | 'invalid_list' | 'invalid_pk_value'
-  detail: string
-}
+export type RedDocListStatusErrorComponent =
+  {
+    attr: 'status'
+    code:
+      | 'invalid_choice'
+      | 'invalid_list'
+    detail: string
+  }
 
-export type RedDocListValidationError = {
-  type: ValidationErrorEnum
-  errors: RedDocListError[]
-}
+export type RedDocListStreamErrorComponent =
+  {
+    attr: 'stream'
+    code:
+      | 'invalid_choice'
+      | 'invalid_list'
+      | 'invalid_pk_value'
+    detail: string
+  }
 
-export type RedDocRetrieveErrorResponse400 = ParseErrorResponse
+export type RedDocListValidationError =
+  {
+    type: ValidationErrorEnum
+    errors: RedDocListError[]
+  }
+
+export type RedDocRetrieveErrorResponse400 =
+  ParseErrorResponse
 
 export type RelatedDraft = {
   id?: number
@@ -366,9 +489,11 @@ export type RfcStatus = {
   name: string
 }
 
-export type SchemaRetrieveErrorResponse400 = ParseErrorResponse
+export type SchemaRetrieveErrorResponse400 =
+  ParseErrorResponse
 
-export type SearchPersonErrorResponse400 = ParseErrorResponse
+export type SearchPersonErrorResponse400 =
+  ParseErrorResponse
 
 export type SlugEnum =
   | 'bcp'
@@ -385,4 +510,5 @@ export type StreamName = {
   desc?: string
 }
 
-export type ValidationErrorEnum = 'validation_error'
+export type ValidationErrorEnum =
+  'validation_error'

@@ -4,8 +4,8 @@
     class="min-h-0 flex flex-col"
     @change="changeTab"
   >
-    <TabsList class="flex flex-row gap-7 border-b mr-6">
-      <TabsIndicator />
+    <TabsList class="flex flex-row gap-5 border-b-2 border-gray-400">
+      <TabsIndicator class="absolute" />
       <TabsTrigger
         :class="[
           DEFAULT_CLASS,
@@ -80,8 +80,8 @@ function changeTab(index: number) {
 }
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-0'
-const DEFAULT_CLASS = 'py-4 whitespace-nowrap'
+const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2'
 const SELECTED_CLASS =
-  'border-b-2 border-b-blue-900 dark:border-b-white font-medium'
-const UNSELECTED_CLASS = 'text-gray-800 dark:text-gray-300'
+  'text-shadow-bold border-b-blue-900 dark:border-b-white font-medium'
+const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'
 </script>

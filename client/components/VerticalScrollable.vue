@@ -54,4 +54,8 @@ onUnmounted(() => {
     clearTimeout(timer)
   }
 })
+
+defineExpose({
+  scrollContainer,
+});
 </script>

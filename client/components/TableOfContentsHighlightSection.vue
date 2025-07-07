@@ -10,8 +10,7 @@
       v-for="(section, index) in props.sections"
       :key="index"
     >
-      <div
-:class="[
+      <div :class="[
         'flex flex-row gap-2',
         props.linksClass,
         section.links.some(link => activeId === link.id) && props.linksActiveClass,
@@ -30,7 +29,6 @@
         >
           {{ link.title }}
         </a>
-        <GraphicsChevron class="shrink-0 grow-0 w-3 h-3 -rotate-90 text-blue-100 group-hover:text-white" />
       </div>
 
       <TableOfContentsHighlightSection

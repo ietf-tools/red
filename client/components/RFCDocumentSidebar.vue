@@ -1,33 +1,36 @@
 <template>
   <div class="h-full print:block">
     <DialogRoot
-v-model:open="isModalOpen"
-                @close="isModalOpen = false">
+      v-model:open="isModalOpen"
+      @close="isModalOpen = false"
+    >
       <DialogTrigger />
       <DialogPortal>
         <DialogOverlay />
-        <DialogContent
-:class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
+        <DialogContent :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
           'absolute inset-0 z-50 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'">
           <DialogTitle />
           <DialogDescription>
             <RFCMobileBanner
-:rfc="props.rfc"
-                             :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
-                             :is-fixed="false">
+              :rfc="props.rfc"
+              :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+              :is-fixed="false"
+            >
               <button
-class="bg-white rounded-l text-black p-2 flex items-center"
-                      aria-label="Close"
-                      @click="isModalOpen = false">
+                class="bg-white rounded-l text-black p-2 flex items-center"
+                aria-label="Close"
+                @click="isModalOpen = false"
+              >
                 <GraphicsExpandSidebar class="inline-block mr-1 rotate-180" />
               </button>
             </RFCMobileBanner>
             <div class="px-2">
               <RFCTabs
-ref="mobileRFCTabs"
-                       v-model:selected-tab="selectedTab"
-                       :rfc="props.rfc"
-                       :rfc-bucket-html-doc="props.rfcBucketHtmlDoc" />
+                ref="mobileRFCTabs"
+                v-model:selected-tab="selectedTab"
+                :rfc="props.rfc"
+                :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+              />
             </div>
           </DialogDescription>
           <DialogClose />
@@ -35,38 +38,42 @@ ref="mobileRFCTabs"
       </DialogPortal>
     </DialogRoot>
 
-    <div class="sticky top-0 h-screen flex flex-col">
+    <div class="sticky top-0 h-[calc(100vh-0px)] flex flex-col">
       <RFCTabs
-ref="desktopRFCTabs"
-               v-model:selected-tab="selectedTab"
-               :rfc="props.rfc"
-               :rfc-bucket-html-doc="props.rfcBucketHtmlDoc">
+        ref="desktopRFCTabs"
+        v-model:selected-tab="selectedTab"
+        :rfc="props.rfc"
+        :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+      >
         <template #slot0>
           <TableOfContentsHighlight
-:toc="props.rfcBucketHtmlDoc.tableOfContents!"
-                                    list-type="ordered"
-                                    wrapper-class="flex flex-col min-h-0 pb-2 px-4"
-                                    list-class="mr-1"
-                                    nested-list-class="pl-2"
-                                    :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
-                                    links-active-class="text-shadow-bold"
-                                    link-class="block no-underline hover:underline"
-                                    last-link-class="flex-1">
+            :toc="props.rfcBucketHtmlDoc.tableOfContents!"
+            list-type="ordered"
+            wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
+            list-class="mr-1"
+            nested-list-class="pl-2"
+            :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
+            links-active-class="text-shadow-bold"
+            link-class="block no-underline hover:underline"
+            last-link-class="flex-1"
+          >
             <Heading
-level="2"
-                     style-level="5"
-                     class="mb-1 text-gray-800 dark:text-gray-300">
+              level="2"
+              style-level="5"
+              class="mt-4 mb-1 sr-only"
+            >
               In this section
             </Heading>
           </TableOfContentsHighlight>
         </template>
         <template #slot1>
           <Heading
-level="3"
-                   style-level="4"
-                   class="mt-4">
-Details
-</Heading>
+            level="3"
+            style-level="4"
+            class="mt-4"
+          >
+            Details
+          </Heading>
           <dl class="text-sm">
             <dt class="font-bold mt-2">Updates</dt>
             <dd>...</dd>
@@ -78,13 +85,15 @@ Details
             <dd>
               <ul class="-mt-1">
                 <li
-v-for="(author, authorIndex) in props.rfc.authors"
-                    :key="authorIndex"
-                    class="inline">
+                  v-for="(author, authorIndex) in props.rfc.authors"
+                  :key="authorIndex"
+                  class="inline"
+                >
                   <A
-v-if="author.email"
-                     :href="mailToBuilder(author.email)"
-                     class="whitespace-nowrap underline inline-block py-0.5 pr-1 mb-0.5">
+                    v-if="author.email"
+                    :href="mailToBuilder(author.email)"
+                    class="whitespace-nowrap underline inline-block py-0.5 pr-1 mb-0.5"
+                  >
                     {{ author.name }}
                   </A>
                   <span v-else>
@@ -120,8 +129,9 @@ v-if="author.email"
 
             <template v-if="props.rfc.identifiers">
               <template
-v-for="(identifier, identifierIndex) in props.rfc.identifiers"
-                        :key="identifierIndex">
+                v-for="(identifier, identifierIndex) in props.rfc.identifiers"
+                :key="identifierIndex"
+              >
                 <dt class="font-bold mt-2">
                   <template v-if="identifier.type === 'doi'">
                     <abbr title="Digital object identifier">DOI</abbr>
@@ -152,27 +162,31 @@ v-for="(identifier, identifierIndex) in props.rfc.identifiers"
           </ul> -->
 
           <Heading
-level="3"
-                   class="mt-5 mb-2">
-Formats
-</Heading>
+            level="3"
+            class="mt-5 mb-2"
+          >
+            Formats
+          </Heading>
           <ul class="text-sm flex flex-col gap-2">
             <li
-v-for="(format, formatIndex) in props.rfc.formats"
-                :key="formatIndex">
+              v-for="(format, formatIndex) in props.rfc.formats"
+              :key="formatIndex"
+            >
               <A
-:href="format"
-                 class="underline block px-2 -ml-2">
+                :href="format"
+                class="underline block px-2 -ml-2"
+              >
                 {{ format }}
               </A>
             </li>
           </ul>
-</template>
+        </template>
         <template #slot3>
           <ul class="text-sm">
             <li
-v-for="(errataItem, errataIndex) in props.rfc.obsoleted_by"
-                :key="errataIndex">
+              v-for="(errataItem, errataIndex) in props.rfc.obsoleted_by"
+              :key="errataIndex"
+            >
               {{ errataItem }}
             </li>
           </ul>
