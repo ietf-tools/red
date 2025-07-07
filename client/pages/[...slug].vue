@@ -1,25 +1,19 @@
 <template>
-  <div
-    :class="{
-      'min-h-[100vh]': true
-    }"
-  >
-    <BodyLayoutDocument
-      :class="{
-        'lg:pr-[300px]': !showToc
-      }"
-    >
+  <div :class="{
+    'min-h-[100vh]': true
+  }">
+    <BodyLayoutDocument :class="{
+      'lg:pr-[300px]': !showToc
+    }">
       <template #sidebar>
         <TableOfContentsMarkdownDesktop v-if="showToc && toc" :toc="toc" />
       </template>
       <div class="wrap-anywhere">
         <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
         <ContentRenderer v-if="page" :value="page" />
+
       </div>
-      <ContentDocModifiedDateTime
-        v-if="modifiedDateTime"
-        :modified-date-time="modifiedDateTime"
-      />
+      <ContentDocModifiedDateTime v-if="modifiedDateTime" :modified-date-time="modifiedDateTime" />
     </BodyLayoutDocument>
   </div>
 </template>

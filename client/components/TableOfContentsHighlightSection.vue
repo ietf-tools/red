@@ -4,15 +4,15 @@
     props.depth >= 1 && props.nestedListClass
   ]">
     <li v-for="(section, index) in props.sections" :key="index">
-      <div :class="{
-        'flex flex-row gap-2': true,
-        [props.listItemActiveClass ?? '']: section.links.some(link => activeId === link.id),
-      }">
+      <div :class="[
+        'flex flex-row gap-2',
+        props.linksClass,
+        section.links.some(link => activeId === link.id) && props.linksActiveClass,
+      ]">
         <a v-for="(link, linkIndex) in section.links" :id="makeTocId(link.id)" :key="linkIndex" :href="`#${link.id}`"
           :aria-current="link.id === props.activeId" :class="[
-            props.listItemClass,
-            activeId === link.id && props.listItemActiveClass,
-            'flex flex-row justify-between'
+            props.listLinkClass,
+
           ]" @click="handleClick(link.id)">
           <span>
             {{ link.title }}
@@ -21,13 +21,11 @@
         <GraphicsChevron class="-rotate-90 w-1.5 h-1.5 text-blue-100 group-hover:text-white ml-1 " />
       </div>
 
-
-
       <TableOfContentsHighlightSection v-if="section.sections" :sections="section.sections"
         :list-type-element="listTypeElement" :depth="props.depth + 1" :active-id="props.activeId"
         :handle-click="props.handleClick" :make-toc-id="props.makeTocId" :is-ssr="props.isSsr"
-        :list-class="props.listClass" :nested-list-class="props.nestedListClass" :list-item-class="props.listItemClass"
-        :list-item-active-class="props.listItemActiveClass" />
+        :list-class="props.listClass" :nested-list-class="props.nestedListClass" :links-class="props.linksClass"
+        :links-active-class="props.linksActiveClass" :list-link-class="props.listLinkClass" />
     </li>
   </component>
 </template>
@@ -51,8 +49,9 @@ type Props = {
   isSsr: boolean
   listClass?: string
   nestedListClass?: string
-  listItemClass?: string
-  listItemActiveClass?: string
+  linksClass?: string
+  linksActiveClass?: string
+  listLinkClass?: string
 }
 
 const props = defineProps<Props>()
