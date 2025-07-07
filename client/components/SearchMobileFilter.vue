@@ -17,15 +17,16 @@
       <DialogContent
         class="absolute inset-0 z-50 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col"
       >
-        <DialogTitle
-          class="flex justify-between text-xl pl-3 font-bold border-b-1 border-b-gray-400"
-        >
+        <DialogTitle class="flex justify-between text-xl pl-3 font-bold border-b-1 border-b-gray-400">
           <span class="block px-2 py-4"> Filter RFCs </span>
           <DialogClose class="px-3 py-2">
             <GraphicsClose class="text-white" />
           </DialogClose>
         </DialogTitle>
-        <VerticalScrollable v-if="isOpen" class="flex-1">
+        <VerticalScrollable
+          v-if="isOpen"
+          class="flex-1"
+        >
           <div class="flex flex-col mb-6 pt-4">
             <fieldset class="ml-5 mr-5">
               <legend class="font-bold">Card Density</legend>

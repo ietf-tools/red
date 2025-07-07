@@ -1,7 +1,8 @@
 <template>
   <VerticalScrollable
+    v-if="props"
     ref="vertical-scrollable"
-    :class="['overflow-y-auto min-h-0 flex flex-col', props.wrapperClass]"
+    :class="`overflow-y-auto min-h-0 flex flex-col ${props.wrapperClass}`"
   >
     <slot />
     <TableOfContentsHighlightSection
@@ -61,7 +62,7 @@ const wrapperRef = computed(() => {
   if (value && typeof value === 'object' && "scrollContainer" in value && value.scrollContainer instanceof HTMLElement) {
     return value.scrollContainer
   }
-  throw Error('unable to extract scrollContainer')
+  return null
 })
 
 const flattenSections = (section: Section): string[] =>
