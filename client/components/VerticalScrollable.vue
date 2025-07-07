@@ -57,5 +57,5 @@ onUnmounted(() => {
 
 defineExpose({
   scrollContainer,
-});
+})
 </script>

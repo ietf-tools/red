@@ -56,7 +56,13 @@ const listTypeElement = computed(() =>
 
 const verticalScrollableRef = useTemplateRef('vertical-scrollable')
 
-const wrapperRef = computed(() => verticalScrollableRef.value?.scrollContainer)
+const wrapperRef = computed(() => {
+  const { value } = verticalScrollableRef
+  if (value && typeof value === 'object' && "scrollContainer" in value && value.scrollContainer instanceof HTMLElement) {
+    return value.scrollContainer
+  }
+  throw Error('unable to extract scrollContainer')
+})
 
 const flattenSections = (section: Section): string[] =>
   [...section.links.map((link) => link.id)].concat(
@@ -99,7 +105,6 @@ const handleClick = (id: string): void => {
 }
 
 useValidateIds(ids)
-
 
 const makeTocId = (id: string) => `toc-${id}`
 

@@ -1,4 +1,4 @@
-import { watch, isProxy, toRaw } from 'vue'
+import { watch } from 'vue'
 import { throttle, clamp } from 'lodash-es'
 import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
