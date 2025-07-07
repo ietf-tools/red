@@ -10,6 +10,7 @@ export default withNuxt([
       'vue/html-indent': 'off',
       'vue/html-self-closing': 'off',
       'vue/max-attributes-per-line': 'off',
+      'vue/first-attribute-linebreak': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/operator-linebreak': 'off',
       'vue/singleline-html-element-content-newline': 'off',

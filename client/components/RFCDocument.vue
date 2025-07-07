@@ -1,11 +1,23 @@
 <template>
   <BodyLayoutDocument>
     <template #sidebar>
-      <RFCDocumentSidebar v-model:selected-tab="selectedTab" v-model:is-modal-open="isModalOpen" :rfc="props.rfc"
-        :rfc-bucket-html-doc="props.rfcBucketHtmlDoc" :goto-errata="gotoErrata" :change-tab="changeTab" />
+      <RFCDocumentSidebar
+        v-model:selected-tab="selectedTab"
+        v-model:is-modal-open="isModalOpen"
+        :rfc="props.rfc"
+        :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+        :goto-errata="gotoErrata"
+        :change-tab="changeTab"
+      />
     </template>
-    <RFCDocumentBody v-model:is-modal-open="isModalOpen" :rfc="props.rfc" :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
-      :breadcrumb-items="breadcrumbItems" :goto-errata="gotoErrata" :change-tab="changeTab" />
+    <RFCDocumentBody
+      v-model:is-modal-open="isModalOpen"
+      :rfc="props.rfc"
+      :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+      :breadcrumb-items="breadcrumbItems"
+      :goto-errata="gotoErrata"
+      :change-tab="changeTab"
+    />
   </BodyLayoutDocument>
 </template>
 

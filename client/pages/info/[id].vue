@@ -3,20 +3,25 @@
     <NuxtLayout name="white">
       <template v-if="rfcDocRetrieveError || rfcHtmlError">
         <div class="container mx-auto">
-          <Alert level="1" variant="warning" heading="Error">
+          <Alert
+            level="1"
+            variant="warning"
+            heading="Error"
+          >
             {{ rfcDocRetrieveError }} {{ rfcHtmlError }}
           </Alert>
         </div>
       </template>
-      <template
-        v-else-if="
-          rfc &&
-          rfcDocRetrieveStatus === 'success' &&
-          rfcBucketHtmlDocument &&
-          rfcHtmlStatus === 'success'
-        "
-      >
-        <RFCDocument :rfc="rfc" :rfc-bucket-html-doc="rfcBucketHtmlDocument" />
+      <template v-else-if="
+        rfc &&
+        rfcDocRetrieveStatus === 'success' &&
+        rfcBucketHtmlDocument &&
+        rfcHtmlStatus === 'success'
+      ">
+        <RFCDocument
+          :rfc="rfc"
+          :rfc-bucket-html-doc="rfcBucketHtmlDocument"
+        />
       </template>
     </NuxtLayout>
   </div>
@@ -80,7 +85,7 @@ useRfcEditorHead({
   modifiedDateTime:
     rfcDocRetrieve.value?.published ?
       DateTime.fromISO(rfcDocRetrieve.value.published)
-    : undefined,
+      : undefined,
   contentType: 'article'
 })
 

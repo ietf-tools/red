@@ -1,12 +1,26 @@
 <template>
-  <div ref="wrapperRef" :class="['overflow-y-auto min-h-0 flex flex-col border-2 border-red-500', props.wrapperClass]">
+  <VerticalScrollable
+    ref="wrapperRef"
+    :class="['overflow-y-auto min-h-0 flex flex-col', props.wrapperClass]"
+  >
     <slot />
-    <TableOfContentsHighlightSection v-if="props.toc.sections" :sections="props.toc.sections" :depth="0"
-      :list-type-element="listTypeElement" :active-id="activeId" :handle-click="handleClick" :make-toc-id="makeTocId"
-      :is-ssr="isSSR" :list-class="props.listClass" :nested-list-class="props.nestedListClass"
-      :links-class="props.linksClass" :links-active-class="props.linksActiveClass"
-      :list-link-class="props.listLinkClass" />
-  </div>
+    <TableOfContentsHighlightSection
+      v-if="props.toc.sections"
+      :sections="props.toc.sections"
+      :depth="0"
+      :list-type-element="listTypeElement"
+      :active-id="activeId"
+      :handle-click="handleClick"
+      :make-toc-id="makeTocId"
+      :is-ssr="isSSR"
+      :list-class="props.listClass"
+      :nested-list-class="props.nestedListClass"
+      :links-class="props.linksClass"
+      :links-active-class="props.linksActiveClass"
+      :link-class="props.linkClass"
+      :last-link-class="props.lastLinkClass"
+    />
+  </VerticalScrollable>
 </template>
 
 <script setup lang="ts">
@@ -30,7 +44,8 @@ type Props = {
   nestedListClass?: string
   linksClass?: string
   linksActiveClass?: string
-  listLinkClass?: string
+  linkClass?: string
+  lastLinkClass?: string
 }
 
 const props = defineProps<Props>()
