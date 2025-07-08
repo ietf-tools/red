@@ -1,11 +1,10 @@
 import { DateTime } from 'luxon'
 import { blankRfcCommon, parseRFCId } from './rfc'
-import type { RfcCommon, RfcBucketHtmlDocument, RFCJSON } from './rfc'
+import type { RfcCommon, RFCJSON } from './rfc'
 import {
   formatAuthor,
   formatDatePublished,
   formatFormat,
-  isTocSection,
   parseRfcFormat,
   parseRfcJsonPubDateToISO,
   parseRfcStatusSlug,
@@ -13,8 +12,6 @@ import {
 } from './rfc-converters-utils'
 import { TypeSenseSearchItemSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
-import type { RfcEditorToc } from './tableOfContents'
-import { getDOMParser, isHtmlElement, isTextNode } from './dom'
 import type { Rfc, RfcMetadata } from '~/generated/red-client'
 
 /**

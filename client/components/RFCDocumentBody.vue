@@ -107,7 +107,9 @@
     </div>
   </Alert>
 
-  <div :class="`${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 text-[9px] sm:text-base lg:text-base`">
+  <div
+    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 text-[9px] sm:text-base lg:text-base`"
+  >
     <div
       v-if="!enrichedDocument"
       ref="rfc-html-container"
@@ -222,33 +224,24 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
   const children = await Promise.all(nodes.map(enrichNode))
   return h('div', {}, children)
 }
-
-const RFC_CONTENT_CONTAINER_STYLE_CLASS = 'rfc-content' // must be same as CSS selector below
 </script>
 
 <style lang="postcss">
-.xml2rfc {
+.rfc-content {
 
-  /* revert some tailwind reset styles,
-     because the imported CSS expects different defaults */
   ol,
   ul {
+    /* revert some tailwind reset styles because the imported CSS expect different defaults */
     all: revert;
   }
+}
 
+.rfc-content-type-xml2rfc {
   /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/upstream-xml2rfc.css"
 }
 
-.plaintext {
-
-  /* revert some tailwind reset styles,
-     because the imported CSS expects different defaults */
-  ol,
-  ul {
-    all: revert;
-  }
-
+.rfc-content-type-plaintext {
   /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/rfc-plaintext.css"
 }

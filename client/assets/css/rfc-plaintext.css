@@ -1,13 +1,10 @@
 /**
 
-This is derived from 
+Derived from 
 
-    https://github.com/ietf-tools/datatracker/blob/2bf633bf70c40b9cb6baf428901615a0403e1ea5/ietf/static/css/document_html.scss#L175
+https://github.com/ietf-tools/datatracker/blob/2bf633bf70c40b9cb6baf428901615a0403e1ea5/ietf/static/css/document_html.scss#L175
 
 */
-/* A lot of plaintext documents seem to have line lengths >72ch.
-// To handle that, we calculate with 80ch here and adjust some of the
-// font sizes down accordingly. */
 pre {
     width: 80ch;
     white-space: pre-wrap;
@@ -23,6 +20,12 @@ h6 {
     display: inline;
 }
 
+@media only screen {
+    .newpage {    
+        margin-top: -1.25em;
+    }
+}
+
 .newpage {
-    margin-top: -1.25em;
+    page-break-before: always;
 }
