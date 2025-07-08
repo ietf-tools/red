@@ -85,6 +85,13 @@ export default defineNuxtConfig({
       datatrackerBase: 'http://localhost:8000/' // NUXT_PUBLIC_DATATRACKER_BASE env var
     }
   },
+  postcss: {
+    plugins: {
+      'postcss-nested': {},
+      'postcss-custom-media': {},
+      'postcss-nested-import': {}
+    }
+  },
   $production: {
     /**
      * Only apply route rules in production builds, because prerendering takes a while

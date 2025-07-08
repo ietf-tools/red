@@ -2,3 +2,4 @@ generated/report-of-all-markdown-hrefs.ts
 generated/report-of-all-redirects.ts
 generated/content-metadata.json
 types/*.d.ts
+assets/css/*.css

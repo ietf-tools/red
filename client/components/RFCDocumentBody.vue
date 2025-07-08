@@ -16,11 +16,17 @@
     Info
   </button>
 
-  <Heading level="1" class="mb-2 px-1 xs:px-0 print:px-0">
+  <Heading
+    level="1"
+    class="mb-2 px-1 xs:px-0 print:px-0"
+  >
     <component :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)" />
   </Heading>
 
-  <RFCMobileBanner :rfc="rfc" :is-fixed="true" />
+  <RFCMobileBanner
+    :rfc="rfc"
+    :is-fixed="true"
+  />
 
   <p
     v-if="props.rfc.abstract"
@@ -32,16 +38,17 @@
   <div class="flex flex-row justify-between items-center flex-wrap">
     <div class="align-middle">
       <Tag
-        :text="
-          rfcId.type === RFC_TYPE_RFC ?
-            ['Internet Standard', `${props.rfc.number}`]
+        :text="rfcId.type === RFC_TYPE_RFC ?
+          ['Internet Standard', `${props.rfc.number}`]
           : [rfcId.type, rfcId.number]
-        "
+          "
         size="normal"
       />
 
       <PopoverRoot>
-        <PopoverTrigger> <GraphicsQuestionMarkCircle /></PopoverTrigger>
+        <PopoverTrigger>
+          <GraphicsQuestionMarkCircle />
+        </PopoverTrigger>
         <PopoverAnchor />
         <PopoverPortal>
           <PopoverContent>
@@ -56,8 +63,8 @@
             <p class="leading-6">
               For the definition of <b>Stream</b>, see
               <A :href="infoRfcPathBuilder('rfc8729')">
-                <component :is="formatTitleAsVNode('rfc8729')" /> </A
-              >.
+                <component :is="formatTitleAsVNode('rfc8729')" />
+              </A>.
             </p>
           </PopoverContent>
         </PopoverPortal>
@@ -73,9 +80,9 @@
         {{ props.rfc.errata }}
 
         <template v-if="props.errata.length === 1">erratum</template>
-        <template v-else>errata</template>
-      </button>
-    </div> -->
+<template v-else>errata</template>
+</button>
+</div> -->
   </div>
 
   <Alert
@@ -100,13 +107,16 @@
     </div>
   </Alert>
 
-  <div class="mt-10 text-[9px] sm:text-base lg:text-base">
+  <div :class="`${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 text-[9px] sm:text-base lg:text-base`">
     <div
       v-if="!enrichedDocument"
       ref="rfc-html-container"
       v-html="props.rfcBucketHtmlDoc.documentHtml"
     />
-    <Renderable v-else :val="enrichedDocument" />
+    <Renderable
+      v-else
+      :val="enrichedDocument"
+    />
   </div>
 </template>
 
@@ -212,4 +222,34 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
   const children = await Promise.all(nodes.map(enrichNode))
   return h('div', {}, children)
 }
+
+const RFC_CONTENT_CONTAINER_STYLE_CLASS = 'rfc-content' // must be same as CSS selector below
 </script>
+
+<style lang="postcss">
+.xml2rfc {
+
+  /* revert some tailwind reset styles,
+     because the imported CSS expects different defaults */
+  ol,
+  ul {
+    all: revert;
+  }
+
+  /* Using postcss-nested-import scope these imported styles */
+  @nested-import "../assets/css/upstream-xml2rfc.css"
+}
+
+.plaintext {
+
+  /* revert some tailwind reset styles,
+     because the imported CSS expects different defaults */
+  ol,
+  ul {
+    all: revert;
+  }
+
+  /* Using postcss-nested-import scope these imported styles */
+  @nested-import "../assets/css/rfc-plaintext.css"
+}
+</style>

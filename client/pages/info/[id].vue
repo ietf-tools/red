@@ -31,11 +31,13 @@
 import { DateTime } from 'luxon'
 import type { Rfc } from '~/generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
+import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor'
 import { parseRFCId } from '~/utilities/rfc'
 import {
-  rfcBucketHtmlToRfcDocument,
+
   rfcToRfcCommon
 } from '~/utilities/rfc-converters'
+
 import {
   apiRfcDocRetrievePathBuilder,
   apiRfcBucketHtmlURLBuilder,
