@@ -154,8 +154,6 @@ const parsePlaintextToc = (
   let currentLevel = 0
   let n = 0
 
-  console.log('headings', headings.length)
-
   headings.forEach((heading) => {
     const level = get_level(heading) - min_level
     const title = getInnerText(heading)
@@ -220,6 +218,4 @@ const parsePlaintextToc = (
       last.sections.push(newSection)
     }
   })
-
-  console.log(JSON.stringify(rfcAndToc.tableOfContents, null, 2))
 }
