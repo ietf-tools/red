@@ -29,3 +29,7 @@ h6 {
 .newpage {
     page-break-before: always;
 }
+
+a {
+    color: var(--color-blue-700, #058)
+}

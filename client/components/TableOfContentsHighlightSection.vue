@@ -10,11 +10,14 @@
       v-for="(section, index) in props.sections"
       :key="index"
     >
-      <div :class="[
-        'flex flex-row gap-2',
-        props.linksClass,
-        section.links.some(link => activeId === link.id) && props.linksActiveClass,
-      ]">
+      <div
+        v-if="section.links"
+        :class="[
+          'flex flex-row gap-2',
+          props.linksClass,
+          section.links.some(link => activeId === link.id) && props.linksActiveClass,
+        ]"
+      >
         <a
           v-for="(link, linkIndex) in section.links"
           :id="makeTocId(link.id)"

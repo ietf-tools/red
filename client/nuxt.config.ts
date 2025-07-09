@@ -87,9 +87,12 @@ export default defineNuxtConfig({
   },
   postcss: {
     plugins: {
-      'postcss-nested': {},
-      'postcss-custom-media': {},
-      'postcss-nested-import': {}
+      // 'postcss-nested': {},
+      // 'postcss-custom-media': {},
+      'postcss-nested-import': {
+        // used to scope RFC generator HTML styles
+        // see @nested-import
+      }
     }
   },
   $production: {

@@ -1,17 +1,19 @@
 import type { Toc as NuxtContentToc } from '@nuxt/content'
 import type { InjectionKey } from 'vue'
 
-type Section = {
-  links: {
-    id: string
-    title: string
-  }[]
-  sections?: Section[]
+type TocLink = {
+  id: string
+  title: string
+}
+
+type TocSection = {
+  links?: TocLink[]
+  sections?: TocSection[]
 }
 
 export type RfcEditorToc = {
   title: string
-  sections: Section[]
+  sections: TocSection[]
 }
 
 export const nuxtContentTocToRfcEditorToc = (

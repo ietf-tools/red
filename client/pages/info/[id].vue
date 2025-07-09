@@ -1,14 +1,16 @@
 <template>
   <div class="min-h-[100vh]">
     <NuxtLayout name="white">
-      <template v-if="rfcDocRetrieveError || rfcHtmlError">
+      <template v-if="rfcDocRetrieveError || rfcHtmlError || rfcBucketHtmlDocumentError">
         <div class="container mx-auto">
           <Alert
             level="1"
             variant="warning"
             heading="Error"
           >
-            {{ rfcDocRetrieveError }} {{ rfcHtmlError }}
+            {{ rfcDocRetrieveError }}
+            {{ rfcHtmlError }}
+            {{ rfcBucketHtmlDocumentError }}
           </Alert>
         </div>
       </template>
@@ -33,10 +35,7 @@ import type { Rfc } from '~/generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
 import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor'
 import { parseRFCId } from '~/utilities/rfc'
-import {
-
-  rfcToRfcCommon
-} from '~/utilities/rfc-converters'
+import { rfcToRfcCommon } from '~/utilities/rfc-converters'
 
 import {
   apiRfcDocRetrievePathBuilder,
@@ -70,13 +69,17 @@ const {
   $fetch(apiRfcBucketHtmlURLBuilder(rfcNumber))
 )
 
-const { data: rfcBucketHtmlDocument } = await useAsyncData(
-  `info-dochtml-${route.params.id}`,
+const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
+  `info-dochtml-${route.params.id}-rfc-document`,
   async () => {
     if (!rfcHtml.value) return undefined
-    return await rfcBucketHtmlToRfcDocument(rfcHtml.value)
+    return rfcBucketHtmlToRfcDocument(rfcHtml.value)
   }
 )
+
+if (rfcBucketHtmlDocumentError.value) {
+  console.log(rfcBucketHtmlDocumentError.value.stack)
+}
 
 const canonicalUrl = infoRfcPathBuilder(`rfc${rfcNumber}`)
 

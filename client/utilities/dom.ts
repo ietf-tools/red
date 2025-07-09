@@ -65,3 +65,16 @@ export const elementAttributesToObject = (
     },
     {} as Record<string, string>
   )
+
+export const getInnerText = (element: HTMLElement): string => {
+  return Array.from(element.childNodes)
+    .map((node) => {
+      if (isHtmlElement(node)) {
+        return getInnerText(node)
+      } else if (isTextNode(node)) {
+        return node.textContent
+      }
+      return ''
+    })
+    .join('')
+}

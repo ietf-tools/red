@@ -67,12 +67,12 @@ const wrapperRef = computed(() => {
   return null
 })
 
-const flattenSections = (section: Section): string[] =>
-  [...section.links.map((link) => link.id)].concat(
-    section.sections ? section.sections.flatMap(flattenSections) : []
+const flattenSectionLinkIds = (section: Section): string[] =>
+  [...(section.links ?? []).map((link) => link.id)].concat(
+    section.sections ? section.sections.flatMap(flattenSectionLinkIds) : []
   )
 
-const ids = computed(() => props.toc.sections.flatMap(flattenSections))
+const ids = computed(() => props.toc.sections.flatMap(flattenSectionLinkIds))
 
 if (
   // safety check in case there's a coding error

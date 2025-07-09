@@ -25,25 +25,32 @@
           </div>
           <RFCRouterLinkPreview :rfc-json="rfcJSON" />
         </div>
-        <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
+        <RFCRouterLinkLoadingStatus
+          v-else
+          :loading-status="loadingStatus"
+        />
         <HoverCardArrow class="fill-gray-200 stroke-gray-500 -mt-[1px]" />
       </HoverCardContent>
     </HoverCardPortal>
   </HoverCardRoot>
 
-  <div v-if="hasTouchStore.hasTouch === true" class="inline">
+  <div
+    v-if="hasTouchStore.hasTouch === true"
+    class="inline"
+  >
     <DialogRoot v-model:open="isDialogOpen">
       <DialogTrigger
         class="ml-1 px-1 align-baseline"
         @focus="loadRfc"
         @mouseover="loadRfc"
       >
-        <Icon name="fluent:preview-link-16-regular" aria-label="Link Preview" />
+        <Icon
+          name="fluent:preview-link-16-regular"
+          aria-label="Link Preview"
+        />
       </DialogTrigger>
       <DialogPortal>
-        <DialogOverlay
-          class="bg-black/10 data-[state=open]:animate-overlayShow fixed inset-0 z-30"
-        />
+        <DialogOverlay class="bg-black/10 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
         <DialogContent
           class="data-[state=open]:animate-enterFromBottom rounded-t-xl data-[state=closed]:animate-exitToBottom fixed w-full max-w-md m-x-auto h-[50vh] bottom-0 right-0 shadow-[0_-5px_25px_rgba(0,0,0,0.25)] dark:shadow-[-5px_-5px_25px_rgba(11,140,197,0.25)] text-black bg-white dark:bg-black dark:text-white border-t-1 border-gray-400 dark:border-gray-600 overflow-y-scroll z-100"
         >
@@ -59,7 +66,10 @@
             </span>
           </DialogTitle>
           <DialogDescription class="mx-auto px-4">
-            <RFCRouterLinkPreview v-if="rfcJSON" :rfc-json="rfcJSON" />
+            <RFCRouterLinkPreview
+              v-if="rfcJSON"
+              :rfc-json="rfcJSON"
+            />
             <RFCRouterLinkLoadingStatus
               v-else
               :loading-status="loadingStatus"
@@ -97,7 +107,7 @@ const isHoverCardOpen = (() => {
       track()
       // we never want to open the hovercard while the dialog is open, or if there was an error loading the data
       return isDialogOpen.value || loadingStatus.value.type !== 'success' ?
-          false
+        false
         : value
     },
     set(newValue) {

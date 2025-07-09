@@ -115,6 +115,108 @@ export class ApiClient {
     }
   }
 
+  purple = {
+    createDemoDraft: (body: DemoDraftCreateRequest) => {
+      return this.Fetch<DemoDraft>(
+        'post',
+        '/api/purple/demo/create_demo_draft/',
+        { body }
+      )
+    },
+
+    createDemoPerson: (body: DemoPersonCreateRequest) => {
+      return this.Fetch<DemoPerson>(
+        'post',
+        '/api/purple/demo/create_demo_person/',
+        { body }
+      )
+    },
+
+    getDraftsByNames: (body: string[]) => {
+      return this.Fetch<Draft[]>('post', '/api/purple/doc/drafts_by_names/', {
+        body
+      })
+    },
+
+    getDraftById: (doc_id: number) => {
+      return this.Fetch<FullDraft>('get', `/api/purple/draft/${doc_id}/`, {})
+    },
+
+    getDraftReferences: (doc_id: number) => {
+      return this.Fetch<Reference[]>(
+        'get',
+        `/api/purple/draft/${doc_id}/references/`,
+        {}
+      )
+    },
+
+    getDraftAuthors: (body: string[]) => {
+      return this.Fetch<DraftWithAuthors[]>(
+        'post',
+        '/api/purple/draft/authors/',
+        { body }
+      )
+    },
+
+    submittedToRpc: () => {
+      return this.Fetch<SubmittedToQueue[]>(
+        'get',
+        '/api/purple/draft/submitted_to_rpc/',
+        {}
+      )
+    },
+
+    getPersonById: (person_id: number) => {
+      return this.Fetch<Person>('get', `/api/purple/person/${person_id}/`, {})
+    },
+
+    getPersons: (body: number[]) => {
+      return this.Fetch<Person[]>('post', '/api/purple/person/batch/', { body })
+    },
+
+    personsByEmail: (body: string[]) => {
+      return this.Fetch<EmailPerson[]>(
+        'post',
+        '/api/purple/person/batch_by_email/',
+        { body }
+      )
+    },
+
+    searchPerson: (search: {
+      limit?: number
+      offset?: number
+      search?: string
+    }) => {
+      return this.Fetch<PaginatedPersonList>(
+        'get',
+        '/api/purple/persons/search/',
+        { search }
+      )
+    },
+
+    getRfcAuthors: (body: number[]) => {
+      return this.Fetch<RfcWithAuthors[]>('post', '/api/purple/rfc/authors/', {
+        body
+      })
+    },
+
+    getRfcOriginalStreams: () => {
+      return this.Fetch<OriginalStream[]>(
+        'get',
+        '/api/purple/rfc/rfc_original_stream/',
+        {}
+      )
+    },
+
+    getSubjectPersonById: (subject_id: string) => {
+      return this.Fetch<Person>(
+        'get',
+        `/api/purple/subject/${subject_id}/person/`,
+        {}
+      )
+    }
+  }
+
   red = {
     docList: (search: {
       area?: string[]
@@ -146,20 +248,6 @@ export class ApiClient {
     }
   }
 
-  rpc = {
-    searchPerson: (search: {
-      limit?: number
-      offset?: number
-      search?: string
-    }) => {
-      return this.Fetch<PaginatedPersonList>(
-        'get',
-        '/api/rpc/persons/search/',
-        { search }
-      )
-    }
-  }
-
   schema = {
     retrieve: (search: { format?: 'json' | 'yaml' }) => {
       return this.Fetch<Record<string, unknown>>('get', '/api/schema/', {
@@ -169,7 +257,144 @@ export class ApiClient {
   }
 }
 
+export type AuthorPerson = {
+  person_pk?: number
+  name: string
+  last_name: string
+  initials: string
+  email_addresses: string[]
+}
+
 export type ClientErrorEnum = 'client_error'
+
+export type CreateDemoDraftError =
+  | CreateDemoDraftNonFieldErrorsErrorComponent
+  | CreateDemoDraftNameErrorComponent
+  | CreateDemoDraftStreamIdErrorComponent
+  | CreateDemoDraftRevErrorComponent
+  | CreateDemoDraftStatesErrorComponent
+  | CreateDemoDraftStatesKEYErrorComponent
+
+export type CreateDemoDraftErrorResponse400 =
+  | CreateDemoDraftValidationError
+  | ParseErrorResponse
+
+export type CreateDemoDraftNameErrorComponent = {
+  attr: 'name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type CreateDemoDraftNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type CreateDemoDraftRevErrorComponent = {
+  attr: 'rev'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type CreateDemoDraftStatesErrorComponent = {
+  attr: 'states'
+  code: 'not_a_dict' | 'null'
+  detail: string
+}
+
+export type CreateDemoDraftStatesKEYErrorComponent = {
+  attr: 'states.KEY'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type CreateDemoDraftStreamIdErrorComponent = {
+  attr: 'stream_id'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type CreateDemoDraftValidationError = {
+  type: ValidationErrorEnum
+  errors: CreateDemoDraftError[]
+}
+
+export type CreateDemoPersonError =
+  | CreateDemoPersonNonFieldErrorsErrorComponent
+  | CreateDemoPersonNameErrorComponent
+
+export type CreateDemoPersonErrorResponse400 =
+  | CreateDemoPersonValidationError
+  | ParseErrorResponse
+
+export type CreateDemoPersonNameErrorComponent = {
+  attr: 'name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type CreateDemoPersonNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type CreateDemoPersonValidationError = {
+  type: ValidationErrorEnum
+  errors: CreateDemoPersonError[]
+}
+
+export type DemoDraft = {
+  doc_id: number
+  name: string
+}
+
+export type DemoDraftCreateRequest = {
+  name: string
+  stream_id?: string
+  rev?: string
+  states?: Record<string, string>
+}
+
+export type DemoPerson = {
+  user_id?: number | null
+  person_pk: number
+}
+
+export type DemoPersonCreateRequest = {
+  name: string
+}
 
 export type DocIdentifier = {
   type: DocIdentifierTypeEnum
@@ -177,6 +402,35 @@ export type DocIdentifier = {
 }
 
 export type DocIdentifierTypeEnum = 'doi' | 'issn'
+
+export type DocumentAuthor = {
+  person: number
+  plain_name?: string
+}
+
+export type Draft = {
+  id?: number
+  name: string
+  rev?: string
+  stream?: string | null
+  title: string
+  pages?: number | null
+  source_format?: SourceFormatEnum
+  authors: DocumentAuthor[]
+}
+
+export type DraftWithAuthors = {
+  draft_name: string
+  authors: AuthorPerson[]
+}
+
+export type EmailPerson = {
+  email: string
+  person_pk: number
+  name: string
+  last_name: string
+  initials: string
+}
 
 export type Error404 = {
   code: ErrorCode404Enum
@@ -193,9 +447,45 @@ export type ErrorResponse404 = {
 
 export type FormatsEnum = 'xml' | 'txt' | 'html' | 'htmlized' | 'pdf' | 'ps'
 
+export type FullDraft = {
+  id?: number
+  name: string
+  rev?: string
+  stream?: string | null
+  title: string
+  pages?: number | null
+  source_format?: SourceFormatEnum
+  authors: DocumentAuthor[]
+  shepherd?: string
+  intended_std_level?: string | null
+}
+
+export type GetDraftAuthorsErrorResponse400 = ParseErrorResponse
+
+export type GetDraftByIdErrorResponse400 = ParseErrorResponse
+
+export type GetDraftReferencesErrorResponse400 = ParseErrorResponse
+
+export type GetDraftsByNamesErrorResponse400 = ParseErrorResponse
+
+export type GetPersonByIdErrorResponse400 = ParseErrorResponse
+
+export type GetPersonsErrorResponse400 = ParseErrorResponse
+
+export type GetRfcAuthorsErrorResponse400 = ParseErrorResponse
+
+export type GetRfcOriginalStreamsErrorResponse400 = ParseErrorResponse
+
+export type GetSubjectPersonByIdErrorResponse400 = ParseErrorResponse
+
 export type Group = {
   acronym: string
   name: string
+}
+
+export type OriginalStream = {
+  rfc_number?: number | null
+  stream?: string
 }
 
 export type PaginatedPersonList = {
@@ -230,6 +520,8 @@ export type Person = {
   plain_name?: string
   picture?: string
 }
+
+export type PersonsByEmailErrorResponse400 = ParseErrorResponse
 
 export type RedDocListAreaErrorComponent = {
   attr: 'area'
@@ -285,6 +577,11 @@ export type RedDocListValidationError = {
 }
 
 export type RedDocRetrieveErrorResponse400 = ParseErrorResponse
+
+export type Reference = {
+  id?: number
+  name?: string
+}
 
 export type RelatedDraft = {
   id?: number
@@ -366,6 +663,11 @@ export type RfcStatus = {
   name: string
 }
 
+export type RfcWithAuthors = {
+  rfc_number?: number | null
+  authors: AuthorPerson[]
+}
+
 export type SchemaRetrieveErrorResponse400 = ParseErrorResponse
 
 export type SearchPersonErrorResponse400 = ParseErrorResponse
@@ -379,10 +681,21 @@ export type SlugEnum =
   | 'standard'
   | 'unknown'
 
+export type SourceFormatEnum = 'unknown' | 'xml-v2' | 'xml-v3' | 'txt'
+
 export type StreamName = {
   slug: string
   name: string
   desc?: string
 }
+
+export type SubmittedToQueue = {
+  id?: number
+  name: string
+  stream?: string | null
+  submitted?: Date | null
+}
+
+export type SubmittedToRpcErrorResponse400 = ParseErrorResponse
 
 export type ValidationErrorEnum = 'validation_error'

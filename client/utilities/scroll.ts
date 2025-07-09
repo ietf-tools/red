@@ -30,11 +30,21 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   }
 
   const setActiveIdByIndex = (index: number) => {
+    if (index === 0 && ids.value.length === 0) {
+      // there's no TOC. ignore
+      console.info(
+        'Empty TOC length=0. ignoring request to set activeId',
+        index
+      )
+      return
+    }
+
     if (index < 0 || index >= ids.value.length) {
       throw Error(
         `setActiveIdByIndex(${index}) was out of bounds. ids.length = ${ids.value.length})`
       )
     }
+
     activeIdIndex = index
     activeIdRef.value = ids.value[index]
   }
@@ -44,7 +54,9 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     // so we have to uniquely select elements and map them back onto the elements.
     const uniqueIds = Array.from(new Set([...ids.value]))
     const selector = uniqueIds.map((id) => `#${CSS.escape(id)}`).join(',')
-    elements = Array.from(document.querySelectorAll(selector))
+    console.log({ selector, 'selector.length ': selector.length }, ids.value)
+    elements =
+      selector.length > 0 ? Array.from(document.querySelectorAll(selector)) : []
 
     if (elements.length !== uniqueIds.length) {
       throw Error(
@@ -234,6 +246,11 @@ export const useScrollTocContainer = ({
        */
       const { value: wrapper } = wrapperRef
 
+      if (!toActiveIdRef.value) {
+        console.info('No activeIdRef', toActiveIdRef.value)
+        return
+      }
+
       const previousTocLink = document.getElementById(
         makeTocId(previousActiveId)
       )
@@ -247,7 +264,7 @@ export const useScrollTocContainer = ({
         })
         if (import.meta.dev) {
           throw Error(
-            `Scroll TOC required element(s) not found tocLink=${tocLink}, wrapper=${wrapper}, previousTocLink=${previousTocLink}`
+            `Scroll TOC required element(s) not found toActiveIdRef=${toActiveIdRef.value} tocLink=${tocLink}, wrapper=${wrapper}, previousTocLink=${previousTocLink}`
           )
         }
         return
@@ -375,11 +392,11 @@ export const useValidateIds = (ids: Ref<string[]>) => {
      */
 
     const problemIds = ids.value.filter((id) => {
-      // returns problematic ids
+      // returns problematic ids, ie those that appear more than once
 
       // DON'T REFACTOR THIS TO getElementById() because we're using querySelectorAll()
-      // intentionally to query multiple identical ids, whereas getElementById would only
-      // return 1 max.
+      // intentionally to query multiple identical ids (ie coding mistakes), whereas
+      // getElementById would only return 1 max.
       const targets = document.querySelectorAll(`#${id}`)
 
       if (targets.length === 0) {
