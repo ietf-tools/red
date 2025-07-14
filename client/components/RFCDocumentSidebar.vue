@@ -236,5 +236,4 @@ const formattedPublished = computed(() => {
   const dt = DateTime.fromISO(props.rfc.published)
   return formatDatePublished(dt, true)
 })
-
 </script>
