@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-[100vh]">
     <NuxtLayout name="white">
-      <template v-if="rfcDocRetrieveError || rfcHtmlError || rfcBucketHtmlDocumentError">
+      <template v-if="rfcDocRetrieveError || rfcBucketHtmlDocumentError">
         <div class="container mx-auto">
           <Alert
             level="1"
@@ -9,7 +9,6 @@
             heading="Error"
           >
             {{ rfcDocRetrieveError }}
-            {{ rfcHtmlError }}
             {{ rfcBucketHtmlDocumentError }}
           </Alert>
         </div>
@@ -17,8 +16,7 @@
       <template v-else-if="
         rfc &&
         rfcDocRetrieveStatus === 'success' &&
-        rfcBucketHtmlDocument &&
-        rfcHtmlStatus === 'success'
+        rfcBucketHtmlDocument
       ">
         <RFCDocument
           :rfc="rfc"
@@ -33,14 +31,15 @@
 import { DateTime } from 'luxon'
 import type { Rfc } from '~/generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
-import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor-shared'
-import { parseRFCId } from '~/utilities/rfc'
+// import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor-shared'
+import { parseRFCId, type RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { rfcToRfcCommon } from '~/utilities/rfc-converters'
 
 import {
   apiRfcDocRetrievePathBuilder,
-  apiRfcBucketHtmlURLBuilder,
-  infoRfcPathBuilder
+  // apiRfcBucketHtmlURLBuilder,
+  infoRfcPathBuilder,
+  apiRfcBucketHtmlDocumentURLBuilder
 } from '~/utilities/url'
 
 const route = useRoute()
@@ -61,23 +60,22 @@ const rfc = computed(() => {
   return rfcToRfcCommon(rfcDocRetrieve.value)
 })
 
-const {
-  data: rfcHtml,
-  status: rfcHtmlStatus,
-  error: rfcHtmlError
-} = await useAsyncData<string>(`info-dochtml-${route.params.id}`, async () =>
-  $fetch(apiRfcBucketHtmlURLBuilder(rfcNumber))
-)
+// const {
+//   data: rfcHtml,
+//   status: rfcHtmlStatus,
+//   error: rfcHtmlError
+// } = await useAsyncData<string>(`info-dochtml-${route.params.id}`, async () =>
+//   $fetch(apiRfcBucketHtmlURLBuilder(rfcNumber))
+// )
 
-const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
+const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData<RfcBucketHtmlDocument>(
   `info-dochtml-${route.params.id}-rfc-document`,
   async () => {
-    if (!rfcHtml.value) return undefined
-    return rfcBucketHtmlToRfcDocument(rfcHtml.value)
+    return $fetch(apiRfcBucketHtmlDocumentURLBuilder(rfcNumber))
   }
 )
 
-if (rfcHtmlError.value || rfcBucketHtmlDocumentError.value) {
+if (rfcBucketHtmlDocumentError.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Not Found',
