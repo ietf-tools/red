@@ -59,7 +59,7 @@ export const rfcBucketHtmlToRfcDocument = async (
     case 'plaintext':
       parsePlaintextHead(dom.head, rfcAndToc)
       parsePlaintextBody(dom.body, rfcAndToc)
-      getPlaintextRfcDocument(dom)
+      rfcDocument = getPlaintextRfcDocument(dom)
       break
     case 'xml2rfc':
       parseXml2RfcHead(dom.head, rfcAndToc)

@@ -166,12 +166,12 @@ const rfcId = computed(() => parseRFCId(`rfc${props.rfc.number}`))
 
 const rfcHtmlContainer = useTemplateRef('rfc-html-container')
 
-const enrichedDocument = ref<VNode>()
+const enrichedDocument = ref<VNode | undefined>()
 
 onMounted(async () => {
   if (
     // if we've already computed it,
-    // TODO: check whhether enrichedDocument would reset when navigating to another info RFC page via SPA nav
+    // TODO: check whether enrichedDocument would reset when navigating to another info RFC page via SPA nav
     enrichedDocument.value
   ) {
     return
