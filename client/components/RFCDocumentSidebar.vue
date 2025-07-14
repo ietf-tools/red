@@ -27,9 +27,10 @@
             <div class="px-2">
               <RFCTabs
                 ref="mobileRFCTabs"
-                v-model:selected-tab="selectedTab"
+                v-model="selectedTab"
                 :rfc="props.rfc"
                 :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+                :has-table-of-contents="props.hasTableOfContents"
               />
             </div>
           </DialogDescription>
@@ -41,9 +42,10 @@
     <div class="sticky top-0 h-[calc(100vh)] flex flex-col">
       <RFCTabs
         ref="desktopRFCTabs"
-        v-model:selected-tab="selectedTab"
+        v-model="selectedTab"
         :rfc="props.rfc"
         :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+        :has-table-of-contents="props.hasTableOfContents"
       >
         <template #slot0>
           <TableOfContentsHighlight
@@ -221,6 +223,7 @@ type Props = {
   rfc: RfcCommon
   rfcBucketHtmlDoc: RfcBucketHtmlDocument
   gotoErrata: () => void
+  hasTableOfContents: boolean
 }
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
@@ -233,4 +236,5 @@ const formattedPublished = computed(() => {
   const dt = DateTime.fromISO(props.rfc.published)
   return formatDatePublished(dt, true)
 })
+
 </script>

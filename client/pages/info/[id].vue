@@ -33,7 +33,7 @@
 import { DateTime } from 'luxon'
 import type { Rfc } from '~/generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
-import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor'
+import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor-shared'
 import { parseRFCId } from '~/utilities/rfc'
 import { rfcToRfcCommon } from '~/utilities/rfc-converters'
 
@@ -77,8 +77,12 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
   }
 )
 
-if (rfcBucketHtmlDocumentError.value) {
-  console.log(rfcBucketHtmlDocumentError.value.stack)
+if (rfcHtmlError.value || rfcBucketHtmlDocumentError.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Not Found',
+    fatal: true
+  })
 }
 
 const canonicalUrl = infoRfcPathBuilder(`rfc${rfcNumber}`)

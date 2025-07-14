@@ -9,16 +9,28 @@ import { blankRfcCommon } from '../rfc'
 import type { RfcCommon, RfcBucketHtmlDocument } from '../rfc'
 import type { RfcEditorToc } from '../tableOfContents'
 import { assertNever } from '../typescript'
-import { PUBLIC_SITE } from '../url'
-import { parsePlaintextBody, parsePlaintextHead } from './plaintext'
-import { parseXml2RfcBody, parseXml2RfcHead } from './xml2rfc'
+import {
+  getPlaintextRfcDocument,
+  parsePlaintextBody,
+  parsePlaintextHead
+} from './plaintext'
+import {
+  getXml2RfcRfcDocument,
+  parseXml2RfcBody,
+  parseXml2RfcHead
+} from './xml2rfc'
 
-export const apiRfcBucketHtmlURLBuilder = (rfcNumber: number) => {
-  // Intentionally not a relative url, the PUBLIC_SITE prefix is because this URL is served
-  // from a bucket on prod; it's not something that a localhost Nuxt can serve.
-  // The CORS headers of the prod URL should allow access from localhost:3000 as well as staging,
-  // etc. sites.
-  return `${PUBLIC_SITE}/rfc-neue/rfc${rfcNumber}.html` as const
+export const fetchSourceRfcHtml = async (
+  rfcNumber: number
+): Promise<string> => {
+  const url = `https://www.rfc-editor.org/rfc-neue/rfc${rfcNumber}.html`
+  const response = await fetch(url)
+  if (!response.ok) {
+    throw Error(
+      `Unable to fetch ${url}: ${response.status} ${response.statusText}`
+    )
+  }
+  return response.text()
 }
 
 export type RfcAndToc = {
@@ -47,39 +59,12 @@ export const rfcBucketHtmlToRfcDocument = async (
     case 'plaintext':
       parsePlaintextHead(dom.head, rfcAndToc)
       parsePlaintextBody(dom.body, rfcAndToc)
-
-      rfcDocument = Array.from(dom.body.childNodes).filter((node) => {
-        if (isHtmlElement(node)) {
-          switch (node.nodeName.toLowerCase()) {
-            case 'script':
-              return false
-          }
-        }
-        return true
-      })
+      getPlaintextRfcDocument(dom)
       break
     case 'xml2rfc':
       parseXml2RfcHead(dom.head, rfcAndToc)
       parseXml2RfcBody(dom.body, rfcAndToc)
-
-      rfcDocument = Array.from(dom.body.childNodes).filter((node) => {
-        if (isHtmlElement(node)) {
-          switch (node.nodeName.toLowerCase()) {
-            case 'script':
-              return false
-            case 'table':
-              if (node.classList.contains('ears')) {
-                return false
-              }
-              break
-          }
-          const idsToRemove = ['toc', 'external-metadata', 'internal-metadata']
-          if (idsToRemove.includes(node.id)) {
-            return false
-          }
-        }
-        return true
-      })
+      rfcDocument = getXml2RfcRfcDocument(dom)
       break
     default:
       assertNever(documentHtmlType)
@@ -112,7 +97,7 @@ export const rfcBucketHtmlFilenameBuilder = (rfcNumber: number) =>
 const sniffRfcBucketHtmlType = (
   dom: Document
 ): RfcBucketHtmlDocument['documentHtmlType'] => {
-  const isPlaintext = dom.querySelector('pre.newpage')
+  const isPlaintext = dom.querySelector('body > pre')
   const generator = dom.querySelector('meta[name=generator]')
 
   if (generator) {

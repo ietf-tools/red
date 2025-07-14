@@ -518,7 +518,9 @@ export type ParseErrorResponse = {
 export type Person = {
   id?: number
   plain_name?: string
+  email?: string
   picture?: string
+  url?: string
 }
 
 export type PersonsByEmailErrorResponse400 = ParseErrorResponse

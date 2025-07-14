@@ -7,6 +7,7 @@
     <TabsList class="flex flex-row gap-5 border-b-2 border-gray-400">
       <TabsIndicator class="absolute" />
       <TabsTrigger
+        v-if="props.hasTableOfContents"
         :class="[
           DEFAULT_CLASS,
           {
@@ -44,6 +45,7 @@
       </TabsTrigger>
     </TabsList>
     <TabsContent
+      v-if="props.hasTableOfContents"
       :value="0"
       :class="TAB_CONTENT_CLASS"
     >
@@ -72,8 +74,17 @@ import {
   TabsRoot,
   TabsTrigger
 } from 'reka-ui'
+import type { RfcBucketHtmlDocument, RfcCommon } from '~/utilities/rfc'
 
-const selectedTab = defineModel<number>({ default: 0 })
+type Props = {
+  rfc: RfcCommon
+  rfcBucketHtmlDoc: RfcBucketHtmlDocument
+  hasTableOfContents: boolean
+}
+
+const props = defineProps<Props>()
+
+const selectedTab = defineModel<number>()
 
 function changeTab(index: number) {
   selectedTab.value = index

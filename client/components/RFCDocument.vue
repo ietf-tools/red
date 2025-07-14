@@ -6,6 +6,7 @@
         v-model:is-modal-open="isModalOpen"
         :rfc="props.rfc"
         :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+        :has-table-of-contents="hasToc"
         :goto-errata="gotoErrata"
         :change-tab="changeTab"
       />
@@ -32,7 +33,14 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const selectedTab = ref(0)
+const hasToc = computed(() => Boolean(
+  props.rfcBucketHtmlDoc.tableOfContents?.sections &&
+  props.rfcBucketHtmlDoc.tableOfContents?.sections.length > 0
+))
+
+const selectedTab = ref(
+  hasToc.value ? 0 : 1
+)
 
 function changeTab(index: number) {
   selectedTab.value = index
