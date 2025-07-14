@@ -33,9 +33,11 @@ This code repository is under the broader guidance from [IETF CONTRIBUTING.md](h
 
 See `/client/`
 
-_TODO_
+#### RFC HTML preprocessing
 
-#### Documentation (markdown)
+To display RFCs we preprocesses their HTML into JSON with certain features extracted (eg Table Of Contents). This is done in [`red-rfc-html-extractor`](https://github.com/ietf-tools/red-rfc-html-extractor).
+
+#### Page content documentation (markdown)
 
 Markdown files are in `client/content`. Markdown Frontmatter (metadata) fields supported are listed in [content.config.js](https://github.com/ietf-tools/red/blob/main/client/content.config.ts#L8).
 
