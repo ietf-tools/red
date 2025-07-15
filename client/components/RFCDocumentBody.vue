@@ -23,20 +23,20 @@
     <component :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)" />
   </Heading>
 
+  <Heading
+    level="2"
+    class="mb-2 px-1 xs:px-0 print:px-0"
+  >
+    {{ rfc.title }}
+  </Heading>
+
   <RFCMobileBanner
     :rfc="rfc"
     :is-fixed="true"
   />
 
-  <p
-    v-if="props.rfc.abstract"
-    class="px-1 xs:px-0 mb-2 text-base lg:text-xl print:px-0 text-pretty"
-  >
-    {{ props.rfc.abstract }}
-  </p>
-
   <div class="flex flex-row justify-between items-center flex-wrap">
-    <div class="align-middle">
+    <div class="flex align-middle">
       <Tag
         :text="rfcId.type === RFC_TYPE_RFC ?
           ['Internet Standard', `${props.rfc.number}`]
@@ -46,7 +46,7 @@
       />
 
       <PopoverRoot>
-        <PopoverTrigger>
+        <PopoverTrigger class="p-2">
           <GraphicsQuestionMarkCircle />
         </PopoverTrigger>
         <PopoverAnchor />
@@ -98,14 +98,21 @@
             .obsoleted_by"
           :key="obsoletedByItemIndex"
         >
-          <A :href="infoRfcPathBuilder(`RFC${obsoletedByItem.id}`)">
-            <component :is="formatTitleAsVNode(`RFC${obsoletedByItem.id}`)" />
+          <A :href="infoRfcPathBuilder(`RFC${obsoletedByItem}`)">
+            <component :is="formatTitleAsVNode(`RFC${obsoletedByItem.number}`)" />
             {{ obsoletedByItem.title }}
           </A>
         </li>
       </ul>
     </div>
   </Alert>
+
+  <p
+    v-if="props.rfc.abstract"
+    class="px-1 xs:px-0 mb-2 text-base lg:text-xl print:px-0 text-pretty"
+  >
+    {{ props.rfc.abstract }}
+  </p>
 
   <div
     :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 text-[9px] sm:text-base lg:text-base`"
