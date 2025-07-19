@@ -27,7 +27,6 @@ export const useHasTouchStore = defineStore('hasTouch', () => {
     if (newTouchMode !== hasTouch.value) {
       hasTouch.value = newTouchMode
     }
-    console.log('new mode', hasTouch.value)
   }
 
   if (typeof window !== 'undefined') {
