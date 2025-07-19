@@ -8,25 +8,32 @@
  * side detection of capabilities
  */
 
-export type HasTouchValue = undefined | boolean
-
-export const isTouchDevice = (): boolean => {
-  if (typeof window === 'undefined') {
-    throw Error(
-      `isTouchDevice() should not be used serverside. We want cachable server responses that don't vary by device.`
-    )
-  }
-
-  // https://stackoverflow.com/questions/63076960/detecting-touch-devices-and-detecting-can-hover-with-javascript-in-2020
-  return !!window.matchMedia('(pointer: coarse)').matches
-}
+export type HasTouchValue = null | boolean
 
 export const useHasTouchStore = defineStore('hasTouch', () => {
-  const hasTouch = ref<HasTouchValue>(undefined)
+  const hasTouch = ref<HasTouchValue>(null)
 
-  onMounted(() => {
-    hasTouch.value = isTouchDevice()
-  })
+  const getMatchMedia = () => window.matchMedia('(pointer: coarse)')
+
+  const updateTouchMode = () => {
+    const getTouchMode = (): HasTouchValue => {
+      if (typeof window === 'undefined') {
+        return null
+      }
+      const hasTouchMatchMedia = getMatchMedia()
+      return Boolean(hasTouchMatchMedia.matches)
+    }
+    const newTouchMode = getTouchMode()
+    if (newTouchMode !== hasTouch.value) {
+      hasTouch.value = newTouchMode
+    }
+    console.log('new mode', hasTouch.value)
+  }
+
+  if (typeof window !== 'undefined') {
+    updateTouchMode()
+    getMatchMedia().addEventListener('change', updateTouchMode)
+  }
 
   return { hasTouch }
 })
