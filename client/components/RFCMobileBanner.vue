@@ -22,8 +22,8 @@
               .obsoleted_by"
             :key="obsoletedByItemIndex"
           >
-            <A :href="infoRfcPathBuilder(`RFC${obsoletedByItem.id}`)">
-              <component :is="formatTitleAsVNode(`RFC${obsoletedByItem.id}`)" />
+            <A :href="infoRfcPathBuilder(`RFC${obsoletedByItem.number}`)">
+              <component :is="formatTitleAsVNode(`RFC${obsoletedByItem.number}`)" />
               {{ obsoletedByItem.title }}
             </A>
           </li>
