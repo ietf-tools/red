@@ -18,14 +18,14 @@
 
   <Heading
     level="1"
-    class="mb-2 px-1 xs:px-0 print:px-0"
+    class="mb-2 pl-2 xs:px-0 print:px-0"
   >
     <component :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)" />
   </Heading>
 
   <Heading
     level="2"
-    class="mb-2 px-1 xs:px-0 print:px-0"
+    class="mb-2 pl-2 xs:px-0 print:px-0"
   >
     {{ rfc.title }}
   </Heading>
@@ -35,7 +35,7 @@
     :is-fixed="true"
   />
 
-  <div class="flex flex-row justify-between items-center flex-wrap">
+  <div class="flex ml-2 flex-row justify-between items-center flex-wrap">
     <div class="flex align-middle">
       <Tag
         :text="rfcId.type === RFC_TYPE_RFC ?
@@ -70,19 +70,6 @@
         </PopoverPortal>
       </PopoverRoot>
     </div>
-
-    <!-- <div v-if="props.rfc">
-      <button
-        type="button"
-        class="text-base underline text-blue-300 dark:text-blue-100 p-2"
-        @click="gotoErrata"
-      >
-        {{ props.rfc.errata }}
-
-        <template v-if="props.errata.length === 1">erratum</template>
-<template v-else>errata</template>
-</button>
-</div> -->
   </div>
 
   <Alert
@@ -107,15 +94,8 @@
     </div>
   </Alert>
 
-  <p
-    v-if="props.rfc.abstract"
-    class="px-1 xs:px-0 mb-2 text-base lg:text-xl print:px-0 text-pretty"
-  >
-    {{ props.rfc.abstract }}
-  </p>
-
   <div
-    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 text-[9px] sm:text-base lg:text-base`"
+    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 pl-2 text-[9px] sm:text-base lg:text-base`"
   >
     <div
       v-if="!enrichedDocument"

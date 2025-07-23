@@ -6,8 +6,92 @@ https://github.com/ietf-tools/datatracker/blob/2bf633bf70c40b9cb6baf428901615a04
 
 */
 pre {
-    width: 80ch;
     white-space: pre-wrap;
+    font-size: 0.40rem;
+}
+
+@media only screen and (min-width: 300px) {
+    pre {
+        font-size: 0.42rem;
+    }
+}
+
+@media only screen and (min-width: 350px) {
+    pre {
+        font-size: 0.47rem;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    pre {
+        font-size: 0.53rem;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    pre {
+        font-size: 0.57rem;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    pre {
+        font-size: 0.7rem;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    pre {
+        font-size: 0.83rem;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    pre {
+        font-size: 0.9rem;
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    pre {
+        font-size: 1.05rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    pre {
+        font-size: 1.08rem;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    pre {
+        font-size: 0.99rem;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    pre {
+        font-size: 0.98rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    pre {
+        font-size: 0.98rem;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    pre {
+        font-size: 1.33rem;
+    }
+}
+
+@media only screen and (min-width: 1538px) {
+    pre {
+        font-size: 1.65rem;
+    }
 }
 
 h1,

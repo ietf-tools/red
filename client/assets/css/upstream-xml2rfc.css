@@ -21,13 +21,13 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 */
 
 /* fonts */
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans'); /* Sans-serif */
-@import url('https://fonts.googleapis.com/css?family=Noto+Serif'); /* Serif (print) */
+/* @import url('https://fonts.googleapis.com/css?family=Noto+Sans'); Sans-serif */
+/* @import url('https://fonts.googleapis.com/css?family=Noto+Serif');  Serif (print) */
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono'); /* Monospace */
 
 :root {
-  --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
-  --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+  /* --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif; */
   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
 }
 
@@ -39,19 +39,6 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   zoom: 1.0;
 }
 /* general and mobile first */
-html {
-}
-body {
-  max-width: 90%;
-  margin: 1.5em auto;
-  color: #222;
-  background-color: #fff;
-  font-size: 14px;
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  scroll-behavior: smooth;
-  overflow-wrap: break-word;
-}
 .ears {
   display: none;
 }
