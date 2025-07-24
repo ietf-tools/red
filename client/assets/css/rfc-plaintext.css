@@ -134,15 +134,17 @@ pre {
 
     So the optimal font-size formula is something like:
 
-      (MAGIC_NUMBER ÷ var(--preformatted-max-line-length)) × 1cqi)
+      (MAGIC_SCALING_NUMBER ÷ var(--preformatted-max-line-length)) × 1cqi)
 
-    where MAGIC_NUMBER = 165 the results are:
+    where MAGIC_SCALING_NUMBER = 165 the results are:
   
-    RFC  | Max line length | Formula                                 | Actual font-size
-    -----------------------------------------------------------------------------------
-    2124 | 132             | (MAGIC_NUMBER ÷ 132) × 1cqi = 14.72px   | 14.73px
-    2440 | 73              | (MAGIC_NUMBER ÷ 73)  × 1cqi = 26.62px   | 26.65px
-    2119 | 72              | (MAGIC_NUMBER ÷ 72)  × 1cqi = 26.99px   | 27.02px
+    RFC  | Max line length | Formula                             | Resulting font-size
+    -------------------------------------------------------------------------------
+    2124 | 132             | (MAGIC_SCALING_NUMBER ÷ 132) × 1cqi | 14.73px
+    2440 | 73              | (MAGIC_SCALING_NUMBER ÷ 73)  × 1cqi | 26.65px
+    2119 | 72              | (MAGIC_SCALING_NUMBER ÷ 72)  × 1cqi | 27.02px
+    
+    Pretty close!
     
     With information about each RFC's max line length AND `cqi` container width we can
     scale font-size smoothly from mobile to desktop, always looking right (arguably),
@@ -172,9 +174,10 @@ pre {
     
     The 'Optimal font-size' in the first table is a bit of a misnomer because it's not
     exactly pushed hard up against the container's width. A bit of space was left
-    intentionally left empty so that different font rendering or browser substitute
-    fonts don't break the design. The exact amount of offset will likely be revealed
-    during testing / bug reports.
+    intentionally empty so that different font rendering (and to a lesser extent browser
+    substitute fonts) don't break the design. The exact amount of offset will likely be
+    revealed during testing / bug reports. If we get bug reports we should decrease the
+    font-size slightly by increasing the MAGIC_SCALING_NUMBER
 
     */
 
