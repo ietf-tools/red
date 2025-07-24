@@ -145,7 +145,7 @@ pre {
     2119 | 72              | (MAGIC_SCALING_NUMBER ÷ 72)  × 1cqi | 27.02px
     
     Pretty close!
-    
+
     With information about each RFC's max line length AND `cqi` container width we can
     scale font-size smoothly from mobile to desktop, always looking right (arguably),
     always fitting unusual mobile phone widths, never leaving too much whitespace on
@@ -166,7 +166,7 @@ pre {
     that would leave a lot of whitespace to the right. We could reduce the entire
     container width per-RFC but that would be an unusual website design choice.
 
-    The MAGIC_NUMBER could have a few more decimal places.
+    The MAGIC_SCALING_NUMBER could have a few more decimal places.
 
     The first table's 'Optimal font-size' was done manually in the browser dev tools
     by changing the font-size until it was (1) subjectively visually pleasing, and
