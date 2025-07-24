@@ -155,10 +155,6 @@ const rfcHtmlContainer = useTemplateRef('rfc-html-container')
 
 const enrichedDocument = ref<VNode | undefined>()
 
-const maxPreformattedLineLength = ref<number>(props.rfcBucketHtmlDoc.maxPreformattedLineLength ?? 80)
-
-
-
 onMounted(async () => {
   if (
     // if we've already computed it,
