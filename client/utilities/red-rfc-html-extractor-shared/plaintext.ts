@@ -224,12 +224,6 @@ const parsePlaintextToc = (
 }
 
 export const getPlaintextRfcDocument = (dom: Document): Node[] => {
-  const tocSelector = 'h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6'
-
-  const headings = Array.from(
-    dom.body.querySelectorAll<HTMLElement>(tocSelector)
-  )
-
   return Array.from(dom.body.childNodes).filter((node) => {
     if (isHtmlElement(node)) {
       switch (node.nodeName.toLowerCase()) {
