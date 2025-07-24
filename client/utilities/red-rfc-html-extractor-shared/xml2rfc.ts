@@ -256,12 +256,14 @@ export const getXml2RfcMaxLineLength = (dom: Document): number => {
   const DEFAULT_MAX_LINE_LENGTH = 40
 
   const pres = Array.from(dom.body.querySelectorAll<HTMLElement>('pre'))
-  return pres.reduce((maxLineLength, pre) => {
-    return Math.max(
-      maxLineLength,
-      ...getInnerText(pre)
-        .split('\n')
-        .map((line) => line.length)
-    )
-  }, DEFAULT_MAX_LINE_LENGTH)
+  return pres.reduce(
+    (prevMaxLineLength, pre) =>
+      Math.max(
+        prevMaxLineLength,
+        ...getInnerText(pre)
+          .split('\n')
+          .map((line) => line.length)
+      ),
+    DEFAULT_MAX_LINE_LENGTH
+  )
 }
