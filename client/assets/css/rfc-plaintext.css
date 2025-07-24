@@ -32,11 +32,90 @@ pre {
     to the right of the content, jumps too.
 
     Another complexity is that some RFCs are wider than 80 chars:
-    https://notes.ietf.org/VE2EoxbfRCm6X7W6NvghAA?view
+        (note that the given command may have false positives, so verify for yourself)
+
+        $ find . -name "rfc[0-9]*.txt" -print0 | xargs -0 awk 'length > 80 {print FILENAME ": Line " NR ": " $0}'
+
+        ./rfc9676.txt: Line 42183:    ISO plus Hebrew format as: 1999-09-02|כ״א-בֶּאֱלוּל-תשנ״ט which is to
+        ./rfc9110.txt: Line 57476:    Дилян Палаузов (Dilyan Palauzov), Eric Anderson, Eric Rescorla, Éric
+        ./rfc2124.txt: Line 475794:    |                                                               |                                                               |
+        ./rfc2124.txt: Line 475796:    |                                                               |                                                               |
+        ./rfc589.txt: Line 2742031: A.  INITIAL CONNECTION, SIGNON, AND SIGNOFF
+        ./rfc589.txt: Line 2742087: B.  REMOTE SITE OR NETWORK FAILURES
+        ./rfc1856.txt: Line 3497396:     >SELECT OARnet rtr1 eth0 InBytes 15min 1993-02-01 00:00:00 1993-03-01 23:59:59
+        ./rfc1060.txt: Line 4259652:    09-00-2B-01-00-01       8038    DEC LanBridge Hello packets (All local bridges)
+        ./rfc1060.txt: Line 4259702:    CF-00-00-00-00-00       9000    Ethernet Configuration Test protocol (Loopback)
+        ./rfc1277.txt: Line 4782185: |Value__|T|elex_|007_28722__|__02___|___2_____|_2_|____049050_000005111600____|__
+        ./rfc9438.txt: Line 5638664:                                 ┌────────────────┐
+        ./rfc9438.txt: Line 5638667:                          K =  ╲ │────────────────
+        ./rfc9438.txt: Line 5638727:                                       ┌───────────────┐
+        ./rfc9438.txt: Line 5638729:                    AVG_AIMD(α, β) = ╲ │───────────────
+        ./rfc9438.txt: Line 5638775:                    W    = W    + α      * ──────────────
+        ./rfc9438.txt: Line 5638920:        ⎪cwnd * ────────── if  cwnd < W     and fast convergence enabled,
+        ./rfc9438.txt: Line 5639071:                                ┌────────────────┐   4 ┌────┐
+        ./rfc9438.txt: Line 5639074:                AVG_W      = ╲  │────────────────  * ────────
+        ./rfc9438.txt: Line 5639086:                     AVG_W      = ╲ │───────  * ────────
+        ./rfc9438.txt: Line 5639620:                               ┌────────────────────┐
+        ./rfc9438.txt: Line 5639623:                        K =  ╲ │────────────────────
+        ./rfc9438.txt: Line 5639673:                              ┌──────────────────────┐
+        ./rfc9438.txt: Line 5639676:                       K = ╲  │──────────────── * ───
+        ./rfc9438.txt: Line 5639685:                             1       ┌───────────────────────┐
+        ./rfc9438.txt: Line 5639688:               AVG_W      = ─── = ╲  │──────────────── * ────
+        ./rfc9389.txt: Line 5666803:               ⎛  L   ⎞    ╲    ⎢⎛B⎞     ╲     ⎛⎛B⎞ ⎛      B      ⎞⎞⎥
+        ./rfc9389.txt: Line 5666804:        C(N) = ⎜      ⎟    ╱    ⎢⎜ ⎟     ╱     ⎜⎜ ⎟ ⎜             ⎟⎟⎥
+        ./rfc9389.txt: Line 5666805:               ⎝10 - N⎠    ——   ⎢⎝i⎠     ——    ⎝⎝j⎠ ⎝min(2, N-i-j)⎠⎠⎥
+        ./rfc663.txt: Line 5998469: control message called _ost_Message_from_Receiver (LMR) which  is
+        ./rfc663.txt: Line 5998498: Lost_Message_from_Sender  (LMS)  control  message  to  R  on  the
+        ./rfc663.txt: Line 5998524: to continue by transmitting  a  _oss_of_Message_Acceptable  (LMA)
+        ./rfc663.txt: Line 5998622: of these, called _equest _tatus from _ender (RSS), can be used by
+        ./rfc663.txt: Line 5998625: number  and  MSN for a transmission path by sending a _tatus from
+        ./rfc663.txt: Line 5998626: _eceiver (SFR) control message over the control channel.  An  SFR
+        ./rfc662.txt: Line 6404769: significantly larger messages<s1>s This will result in fewer RFNMs and delays and
+        ./rfc684.txt: Line 6713017: Limitations of Procedure Calling Across Machines___________ __ _________ _______ ______ ________
+        ./rfc731.txt: Line 981845:      _he__etwork__irtual__ata__ntry__erminal(NVDET)
+        ./rfc731.txt: Line 981908:      _acility__unctions  (for detailed semantics see Section 5.)
+        ./rfc731.txt: Line 982258:      _ransmit__unctions  (For detailed semantics see Section 5.)
+        ./rfc731.txt: Line 982822:      _hen__ent_  A Server Telnet  implementation  using  the  DET
+        ./rfc731.txt: Line 982844:      _ction__hen__ecieved_  There are two possible  actions  that
+        ./rfc9385.txt: Line 1137988:             :         'Удостоверяющий центр "КриптоПро УЦ"'
+        ./rfc9385.txt: Line 1137990:             :         'Сертификат соответствия № СФ/000-0000 от 00.00.'
+        ./rfc9385.txt: Line 1137993:             :         'Сертификат соответствия № СФ/000-0000 от 00.00.'
+        ./rfc1246.txt: Line 1289165: __________________________________________________________________________________
+        ./rfc708.txt: Line 1802046: This new procedure effectively adds to the Model the notion of "creation," and enables the environment to offer the following primitives
+        ./rfc708.txt: Line 1802310: Although a single procedure can be considered a resource, it is more practical and convenient to conceive of larger, composite resources
+        ./rfc1045.txt: Line 1944887:                 NotifyRemoteVmtpClient(client,ctrl,recSeq,transact,delivery,code->()
+        ./rfc643.txt: Line 2748525: Op-Code 4 - DEPOSIT (Process, Address, Count, Byte String)_______ _ _ _______ _________ ________ ______ ____ _______
+        ./rfc643.txt: Line 2748558: Op-Code 6 - EXAMINE (Process, Address, Count)_______ _ _ _______ _________ ________ ______
+        ./rfc643.txt: Line 2748572: Op-Code 7 - DEPOSIT STATE VECTOR (Process, Index, Byte Count,_______ _ _ _______ _____ ______ _________ ______ ____ ______
+        ./rfc643.txt: Line 2748587: Op-Code 10 - BREAK (Process, Address, Proceed Count)_______ __ _ _____ _________ ________ _______ ______
+        ./rfc643.txt: Line 2748697:                  Asynchronous Stop Replies                 ____________ ____ _______
+        ./rfc643.txt: Line 2748712: Op-Code 100 - TRAP (Process, Reason, 0, STATE VECTOR)_______ ___ _ ____ _________ _______ __ _____ _______
+        ./rfc643.txt: Line 2748718: Op-Code 101 - HALT (Process, 0,0, STATE VECTOR)_______ ___ _ ____ _________ ____ _____ _______
+        ./rfc643.txt: Line 2748723: Op-Code 102 - BPT (Process, 0, 0, STATE VECTOR)_______ ___ _ ___ _________ __ __ _____ _______
+        ./rfc643.txt: Line 2748728: Op-Code 103 - TTRAP (Process, 0, 0, STATE VECTOR)_______ ___ _ _____ _________ __ __ _____ _______
+        ./rfc1142.txt: Line 4150959: that is the size of the option header. Where possible the PDU should be padded to
+        ./rfc1142.txt: Line 4157134: a)Only the first three items are required for all implementations; others may be
+        ./rfc2885.txt: Line 4253482:                     Table                        Identifier Transport)                              4 OCTETS
+        ./rfc1341.txt: Line 4299196:                   F.3  Registration of New Access-type Values for Message/external-body69
+        ./rfc752.txt: Line 4427152: HOST SRI-C3PO,          3/51,USER,ELF,PDP11,[PKT40,C3PO] ; What about Darth Vader?
+        ./rfc752.txt: Line 4427154: HOST SRI-KL,            1/2,SERVER,TOPS-20,PDP10,[SRI,NIC,KL,AIC,SRI-AI,SRI-TWENEX]
+        ./rfc752.txt: Line 4427160: HOST SU-AI,             [0/11,DIAL 4154941659],SERVER,WAITS,PDP10,[SAIL,SU-WAITS]
+        ./rfc1147.txt: Line 4963730:                     to achieve low response time," IFIP WG6.1/6.4:
+        ./rfc1147.txt: Line 4963731:                     Protocols for High-Speed Networks, May 1989,
+        ./rfc1147.txt: Line 4963761:                     of 13:th Conf. on Local Computer Networks, Min-
+        ./rfc1147.txt: Line 4966178:           networking With TCP/IP, by Douglas Comer, is an informative
+        ./rfc1147.txt: Line 4966180:           architecture.  The UNIX System Administration Handbook, by
+        ./rfc1379.txt: Line 5103360:         ___TCP_A_____                                ___TCP_B_____
+        ./rfc1344.txt: Line 5164548:                  XW5YKxqPyKRygxv2dr4czwlMCZrQLFTYHBJ2hlyQYFiaz+i0WWBou7fOq1x8vXWfU
+        ./rfc1344.txt: Line 5164549:                  qU1fJ2qEhYaHGjhZQmJ2QT1xBW1ak1xUdV0/VjtsbpUEDaEJCQOIpqeoNV+LXo5W
+        ./rfc1344.txt: Line 5164589:                  XW5YKxqPyKRygxv2dr4czwlMCZrQLFTYHBJ2hlyQYFiaz+i0WWBou7fOq1x8vXWfU
+        ./rfc1344.txt: Line 5164590:                  qU1fJ2qEhYaHGjhZQmJ2QT1xBW1ak1xUdV0/VjtsbpUEDaEJCQOIpqeoNV+LXo5W
+        ./rfc9446.txt: Line 5364225:    In the 9th century, Abū Yūsuf Yaʻqūb ibn ʼIsḥāq aṣ-Ṣabbāḥ al-Kindī
+        ./rfc635.txt: Line 5707218: ^^^This interval is a function of line speed and load and may be as low as 128 ms.
 
     In summary:
     * The widest plaintext RFC has a line length of 137 chars.
-    * Most RFcs are between 70-80 chars, usually 72-73.
+    * Most RFCs are between 70-80 chars, usually 72-73.
 
     The optimal font-size for these would be approximately:
 
