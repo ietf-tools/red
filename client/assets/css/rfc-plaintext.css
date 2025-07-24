@@ -7,106 +7,114 @@ https://github.com/ietf-tools/datatracker/blob/2bf633bf70c40b9cb6baf428901615a04
 */
 pre {
     white-space: pre-wrap;
-    font-size: 0.40rem;
-}
 
-@media only screen and (min-width: 300px) {
-    pre {
-        font-size: 0.42rem;
-    }
-}
+    /**
+    Changing font size for plaintext RFCs? Here are some notes from a previous dev. Please feel free
+    to update.
 
-@media only screen and (min-width: 350px) {
-    pre {
-        font-size: 0.47rem;
-    }
-}
+    THE PROBLEM
+    Plaintext RFCs have an optimal font-size (based on the max line length) to fit
+    their container's width, and the container width changes responsively from
+    mobile to desktop etc.
 
-@media only screen and (min-width: 375px) {
-    pre {
-        font-size: 0.53rem;
-    }
-}
+    The container width doesn't scale linearly with browser width (`vw`). Eg, when changing
+    from mobile to desktop the layout adds a sidebar which reduces the container width;
+    there's a maximum container width of 1186px for very wide browsers; the padding
+    varies at different resolutions, etc. Because of this we can't simply use `vw` units,
+    or a CSS `clamp()` with `vw` units etc.
 
-@media only screen and (min-width: 400px) {
-    pre {
-        font-size: 0.57rem;
-    }
-}
+    We could have conventional responsive CSS @media{} queries specifying a lot of
+    screen resolutions and appropriate font-sizes to optimise font-size, but even a
+    basic implementation (see:
+    https://github.com/ietf-tools/red/pull/111/commits/1883affc3247b1641e63c3d5d2e761631c10bbfa#diff-eb730e8ef057ed3d5d223fdc888551e6d7c7c2152158ec98bdc222578f52b383R10
+    ) has 13 @media + font-size declarations, and it really works poorly. There are
+    sudden 'jumps' in font-size at responsive breakpoints and the adjacent whitespace,
+    to the right of the content, jumps too.
 
-@media only screen and (min-width: 500px) {
-    pre {
-        font-size: 0.7rem;
-    }
-}
+    Another complexity is that some RFCs are wider than 80 chars:
+    https://notes.ietf.org/VE2EoxbfRCm6X7W6NvghAA?view
 
-@media only screen and (min-width: 600px) {
-    pre {
-        font-size: 0.83rem;
-    }
-}
+    In summary:
+    * The widest plaintext RFC has a line length of 137 chars.
+    * Most RFcs are between 70-80 chars, usually 72-73.
 
-@media only screen and (min-width: 700px) {
-    pre {
-        font-size: 0.9rem;
-    }
-}
+    The optimal font-size for these would be approximately:
 
-@media only screen and (min-width: 770px) {
-    pre {
-        font-size: 1.05rem;
-    }
-}
+    RFC  | Max line length | Container width | Optimal font-size
+    -----------------------------------------------------------
+    2124 | 132             | 1178px          | 14.7px
+    2440 | 73              | 1178px          | 26.9px
+    2119 | 72              | 1178px          | 27px
 
-@media only screen and (min-width: 800px) {
-    pre {
-        font-size: 1.08rem;
-    }
-}
+    Using CSS container length units like `cqi` we can set font-size relative to the
+    container size. The `cqi` unit is 1% of the container which in this case would
+    be 11.78px
 
-@media only screen and (min-width: 1000px) {
-    pre {
-        font-size: 0.99rem;
-    }
-}
+    We precalculate each RFCs max line width chars and make it available in CSS as
+    var(--preformatted-max-line-length).
 
-@media only screen and (min-width: 1100px) {
-    pre {
-        font-size: 0.98rem;
-    }
-}
+    So the optimal font-size formula is something like:
 
-@media only screen and (min-width: 1200px) {
-    pre {
-        font-size: 0.98rem;
-    }
-}
+      (MAGIC_NUMBER ÷ var(--preformatted-max-line-length)) × 1cqi)
 
-@media only screen and (min-width: 1280px) {
-    pre {
-        font-size: 1.33rem;
-    }
-}
+    where MAGIC_NUMBER = 165 the results are:
+  
+    RFC  | Max line length | Formula                                 | Actual font-size
+    -----------------------------------------------------------------------------------
+    2124 | 132             | (MAGIC_NUMBER ÷ 132) × 1cqi = 14.72px   | 14.73px
+    2440 | 73              | (MAGIC_NUMBER ÷ 73)  × 1cqi = 26.62px   | 26.65px
+    2119 | 72              | (MAGIC_NUMBER ÷ 72)  × 1cqi = 26.99px   | 27.02px
+    
+    With information about each RFC's max line length AND `cqi` container width we can
+    scale font-size smoothly from mobile to desktop, always looking right (arguably),
+    always fitting unusual mobile phone widths, never leaving too much whitespace on
+    the right, etc. Nice.
 
-@media only screen and (min-width: 1538px) {
-    pre {
-        font-size: 1.65rem;
-    }
-}
+    Further considerations:
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    white-space: pre;
-    display: inline;
+    Mobile:
+    Arguably the font-size is too small on mobile.
+    The font-size is small on mobile and this is intentional.
+    Currently mobile users are expected to 'pinch zoom' to read the text (or increase
+    page zoom using accessibility tools).
+    We could increase the font-size but then a line of text would still be offscreen.
+    We could increase the font-size and also force wrap the text but that would break
+    ASCII art and other things that need to align across lines.
+
+    Arguably the font-size is too large on desktop. Perhaps it could be clamped but
+    that would leave a lot of whitespace to the right. We could reduce the entire
+    container width per-RFC but that would be an unusual website design choice.
+
+    The MAGIC_NUMBER could have a few more decimal places.
+
+    The first table's 'Optimal font-size' was done manually in the browser dev tools
+    by changing the font-size until it was (1) subjectively visually pleasing, and
+    (2) before line wrapping occured.
+    
+    The 'Optimal font-size' in the first table is a bit of a misnomer because it's not
+    exactly pushed hard up against the container's width. A bit of space was left
+    intentionally left empty so that different font rendering or browser substitute
+    fonts don't break the design. The exact amount of offset will likely be revealed
+    during testing / bug reports.
+
+    */
+
+    /* Default font size for browsers that don't support cqi container units */
+    font-size: 16px;
+    --magic-scaling-number: 165;
+    font-size: calc((var(--magic-scaling-number) / var(--preformatted-max-line-length)) * 1cqi);
 }
 
 @media only screen {
     .newpage {    
-        margin-top: -1.25em;
+        /** upstream CSS was:
+
+              margin-top: -1.25em; 
+
+            which causes pages to overlap which doesn't matter in most cases because
+            most RFCs have trailing/leading whitespace between pages, but RFC708 (and
+            perhaps others?) don't, so we'll disable it for now.
+        **/
     }
 }
 

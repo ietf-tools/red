@@ -155,6 +155,10 @@ const rfcHtmlContainer = useTemplateRef('rfc-html-container')
 
 const enrichedDocument = ref<VNode | undefined>()
 
+const maxPreformattedLineLength = ref<number>(props.rfcBucketHtmlDoc.maxPreformattedLineLength ?? 80)
+
+
+
 onMounted(async () => {
   if (
     // if we've already computed it,
@@ -229,6 +233,12 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
 }
 
 .rfc-content-type-plaintext {
+  /** container used to scale `font-size` with units like `cqi`
+      https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries
+  */
+  container-type: inline-size;
+  --preformatted-max-line-length: v-bind(props.rfcBucketHtmlDoc.maxPreformattedLineLength);
+
   /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/rfc-plaintext.css"
 }

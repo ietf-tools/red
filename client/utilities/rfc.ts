@@ -213,4 +213,5 @@ export type RfcBucketHtmlDocument = {
   tableOfContents?: RfcEditorToc
   documentHtml: string
   documentHtmlType: 'plaintext' | 'xml2rfc'
+  maxPreformattedLineLength: number
 }

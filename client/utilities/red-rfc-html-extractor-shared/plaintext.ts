@@ -245,3 +245,27 @@ export const getPlaintextRfcDocument = (dom: Document): Node[] => {
     return true
   })
 }
+
+export const getPlaintextMaxLineLength = (dom: Document): number => {
+  const DEFAULT_MAX_LINE_LENGTH = 50
+
+  const pres = Array.from(dom.body.querySelectorAll<HTMLElement>('pre'))
+  return pres.reduce((prevMaxLineLength, pre) => {
+    const maxLineLengthContenders = getInnerText(pre)
+      .split('\n')
+      .map((text) => ({
+        text,
+        length: text.length
+      }))
+    const biggerLines = maxLineLengthContenders.filter(
+      (line) => line.length > prevMaxLineLength
+    )
+    if (biggerLines.length) {
+      console.log('bigger', biggerLines)
+    }
+    return Math.max(
+      prevMaxLineLength,
+      ...maxLineLengthContenders.map((line) => line.length)
+    )
+  }, DEFAULT_MAX_LINE_LENGTH)
+}

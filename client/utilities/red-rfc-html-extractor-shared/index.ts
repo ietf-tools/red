@@ -12,12 +12,14 @@ import { assertNever } from '../typescript'
 import {
   getPlaintextRfcDocument,
   parsePlaintextBody,
-  parsePlaintextHead
+  parsePlaintextHead,
+  getPlaintextMaxLineLength
 } from './plaintext'
 import {
   getXml2RfcRfcDocument,
   parseXml2RfcBody,
-  parseXml2RfcHead
+  parseXml2RfcHead,
+  getXml2RfcMaxLineLength
 } from './xml2rfc'
 
 export const fetchSourceRfcHtml = async (
@@ -53,6 +55,8 @@ export const rfcBucketHtmlToRfcDocument = async (
 
   const documentHtmlType = sniffRfcBucketHtmlType(dom)
 
+  let maxPreformattedLineLength = 80
+
   let rfcDocument: Node[] = []
 
   switch (documentHtmlType) {
@@ -60,11 +64,13 @@ export const rfcBucketHtmlToRfcDocument = async (
       parsePlaintextHead(dom.head, rfcAndToc)
       parsePlaintextBody(dom.body, rfcAndToc)
       rfcDocument = getPlaintextRfcDocument(dom)
+      maxPreformattedLineLength = getPlaintextMaxLineLength(dom)
       break
     case 'xml2rfc':
       parseXml2RfcHead(dom.head, rfcAndToc)
       parseXml2RfcBody(dom.body, rfcAndToc)
       rfcDocument = getXml2RfcRfcDocument(dom)
+      maxPreformattedLineLength = getXml2RfcMaxLineLength(dom)
       break
     default:
       assertNever(documentHtmlType)
@@ -87,7 +93,8 @@ export const rfcBucketHtmlToRfcDocument = async (
     rfc: rfcAndToc.rfc,
     tableOfContents: rfcAndToc.tableOfContents,
     documentHtmlType,
-    documentHtml
+    documentHtml,
+    maxPreformattedLineLength
   }
 }
 

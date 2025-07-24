@@ -240,3 +240,28 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
     return true
   })
 }
+
+/**
+ * Unlike plaintext RFCs these HTML RFCs aren't entirely <pre>formatted text
+ * but they can include preformatted sections (eg ASCII art) that should be
+ * sized, so we still calculate the max line length of <pre>s within.
+ */
+export const getXml2RfcMaxLineLength = (dom: Document): number => {
+  /**
+   * Unlike plaintext RFCs we can't assume <pre> sections within
+   * HTML are 80 chars by default. These <pre> sections might be just
+   * ASCII art without any particular width conventions, so we'll
+   * start off with a smaller number than 80.
+   */
+  const DEFAULT_MAX_LINE_LENGTH = 40
+
+  const pres = Array.from(dom.body.querySelectorAll<HTMLElement>('pre'))
+  return pres.reduce((maxLineLength, pre) => {
+    return Math.max(
+      maxLineLength,
+      ...getInnerText(pre)
+        .split('\n')
+        .map((line) => line.length)
+    )
+  }, DEFAULT_MAX_LINE_LENGTH)
+}
