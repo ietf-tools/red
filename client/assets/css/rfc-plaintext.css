@@ -13,9 +13,9 @@ pre {
     to update.
 
     THE PROBLEM
-    Plaintext RFCs have an optimal font-size (based on the max line length) to fit
-    their container's width, and the container width changes responsively from
-    mobile to desktop etc.
+    Plaintext RFCs are fixed-width, which means they have an optimal font-size (based on their
+    max line length) to fit their container's width, and the container width changes responsively
+    from mobile to desktop etc.
 
     The container width doesn't scale linearly with browser width (`vw`). Eg, when changing
     from mobile to desktop the layout adds a sidebar which reduces the container width;
