@@ -137,4 +137,8 @@ test('parseMaybeRfcLink', () => {
     type: 'RFC',
     number: '10101'
   })
+
+  expect(parseMaybeRfcLink('/')).toEqual(undefined)
+  expect(parseMaybeRfcLink('#section-2.1')).toEqual(undefined)
+  expect(parseMaybeRfcLink('https://example.com/')).toEqual(undefined)
 })

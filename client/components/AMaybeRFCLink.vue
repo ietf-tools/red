@@ -1,8 +1,14 @@
 <template>
-  <RFCRouterLink v-if="isInternal && isRfcLink" v-bind="props">
+  <RFCRouterLink
+    v-if="isRfcEditor && isRfcLink"
+    v-bind="props"
+  >
     <slot />
   </RFCRouterLink>
-  <Anchor v-else v-bind="props">
+  <Anchor
+    v-else
+    v-bind="props"
+  >
     <slot />
   </Anchor>
 </template>
@@ -15,9 +21,9 @@
  */
 import RFCRouterLink from './RFCRouterLink.vue'
 import Anchor from './A.vue'
-import { isInternalLink, parseMaybeRfcLink } from '~/utilities/url'
+import { isRfcEditorSite, parseMaybeRfcLink } from '~/utilities/url'
 
 const props = defineProps<{ href?: string; id?: string }>()
-const isInternal = isInternalLink(props.href)
+const isRfcEditor = isRfcEditorSite(props.href)
 const isRfcLink = !!parseMaybeRfcLink(props.href)
 </script>

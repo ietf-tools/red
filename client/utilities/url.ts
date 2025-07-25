@@ -133,6 +133,8 @@ type SearchPathBuilderProps = {
   status: Status[]
 }
 
+export const publicSiteUrl = new URL(PUBLIC_SITE)
+
 /**
  * Optionally specify a different URL param name to the searchPathBuilder key
  */
@@ -303,6 +305,21 @@ export const textToAnchorId = (text: string): string | undefined => {
   return kebabCase(normalized)
 }
 
+/**
+ * Try parsing a relative url `href` string into a URL.
+ * Because it's a `href` it will be resolved relative to `window.location`
+ */
+const tryParseHref = (href: string): URL | undefined => {
+  try {
+    return new URL(href, location.toString())
+  } catch (e: unknown) {
+    console.info(
+      `Failed to extract path from url ${JSON.stringify(href)}. Error:`,
+      e
+    )
+  }
+}
+
 export const linkPreviewImageUrlBuilder = (
   widthPx: (typeof imagePreviewDimensions)[number][0],
   heightPx: (typeof imagePreviewDimensions)[number][1]
@@ -316,13 +333,52 @@ export const linkPreviewImageUrlBuilder = (
 export const isProdApi = (apiBaseUrl: string): boolean =>
   !apiBaseUrl.includes('localhost')
 
+export const isRfcEditorSite = (href?: string): boolean => {
+  if (href === undefined) {
+    return false
+  }
+  const hrefUrl = tryParseHref(href)
+  if (!hrefUrl) {
+    return false
+  }
+  return (
+    hrefUrl.host === location.host || // if it's the `location` then it's probably prod, staging, or a dev server so we'll attempt to parse RFC numbers from the href
+    hrefUrl.host === publicSiteUrl.host // if it's a hardcoded link to prod then we'll also attempt it
+  )
+}
+
 export const parseMaybeRfcLink = (
   href?: string
 ): undefined | ReturnType<typeof parseRFCId> => {
-  if (!href) return undefined
-  const rfcMatch = href.match(/(rfc[0-9]+)/i)
-  if (!rfcMatch) return undefined
-  return parseRFCId(rfcMatch[0])
+  if (!href) {
+    return undefined
+  }
+  const hrefUrl = tryParseHref(href)
+  if (!hrefUrl) {
+    return undefined
+  }
+  if (
+    href.startsWith('#')
+    /**
+     * A href of an internal hash link should never be considered an RFC link.
+     *
+     * Hrefs are relative links and we resolve them to URL objects before comparing,
+     * which means that if eg. '/info/rfc9000/' had a `href` to '#section2.1' it
+     * would --subsequently in this function-- be resolved in a URL() to
+     * '/info/rfc9000/#section2.1' and the `pathname` comparison would
+     * match the '/info/rfc9000/' bit rather than anything provided in the `href`
+     * variable.
+     **/
+  ) {
+    return undefined
+  }
+
+  if (isRfcEditorSite(href)) {
+    const rfcMatch = hrefUrl.pathname.match(/(rfc[0-9]+)/i)
+    if (!rfcMatch) return undefined
+    return parseRFCId(rfcMatch[0])
+  }
+  return undefined
 }
 
 /**
