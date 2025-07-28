@@ -8,6 +8,7 @@
     :list-class="props.listClass"
     :nested-list-class="props.nestedListClass"
     :list-item-class="props.listItemClass"
+    :show-last-link-icon="props.showLastLinkIcon"
   />
 </template>
 
@@ -25,6 +26,7 @@ type Props = {
   listClass?: string
   nestedListClass?: string
   listItemClass?: string
+  showLastLinkIcon?: boolean
 }
 
 const props = defineProps<Props>()

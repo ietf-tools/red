@@ -91,8 +91,8 @@ function changeTab(index: number) {
 }
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-0'
-const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2'
+const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 text-sm md:text-md'
 const SELECTED_CLASS =
-  'text-shadow-bold border-b-blue-900 dark:border-b-white font-medium'
+  'text-shadow-bold text-gray-900 border-b-blue-900 dark:border-b-white font-medium'
 const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'
 </script>

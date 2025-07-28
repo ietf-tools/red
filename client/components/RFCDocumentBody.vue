@@ -4,17 +4,21 @@
     :opacity="0.02"
   />
 
-  <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
-
-  <button
-    type="button"
-    class="fixed right-0 rounded-l bg-white dark:bg-black border border-gray-200 align-middle flex items-center p-1 pr-2 lg:hidden print:hidden"
-    aria-label="Open details modal"
-    @click="isModalOpen = true"
-  >
-    <GraphicsExpandSidebar class="inline-block mr-1" />
-    Info
-  </button>
+  <div class="flex flex-col">
+    <Breadcrumbs
+      :breadcrumb-items="breadcrumbItems"
+      class="flex-1"
+    />
+    <button
+      type="button"
+      class="fixed right-0 mt-3 font-bold rounded-l z-10 bg-white dark:bg-black border border-r-0 border-gray-200 align-middle flex items-center px-3 py-2 text-sm lg:hidden print:hidden shadow-lg shadow-gray-300 dark:shadow-blue-900"
+      aria-label="Open details modal"
+      @click="isModalOpen = true"
+    >
+      <GraphicsExpandSidebar class="inline-block mr-1" />
+      Info
+    </button>
+  </div>
 
   <Heading
     level="1"
@@ -30,47 +34,7 @@
     {{ rfc.title }}
   </Heading>
 
-  <RFCMobileBanner
-    :rfc="rfc"
-    :is-fixed="true"
-  />
-
-  <div class="flex ml-2 flex-row justify-between items-center flex-wrap">
-    <div class="flex align-middle">
-      <Tag
-        :text="rfcId.type === RFC_TYPE_RFC ?
-          ['Internet Standard', `${props.rfc.number}`]
-          : [rfcId.type, rfcId.number]
-          "
-        size="normal"
-      />
-
-      <PopoverRoot>
-        <PopoverTrigger class="p-2">
-          <GraphicsQuestionMarkCircle />
-        </PopoverTrigger>
-        <PopoverAnchor />
-        <PopoverPortal>
-          <PopoverContent>
-            <PopoverClose />
-            <PopoverArrow />
-            <p class="leading-6">
-              For the definition of <b>Status</b>, see
-              <A :href="infoRfcPathBuilder('rfc2026')">
-                <component :is="formatTitleAsVNode('rfc2026')" />
-              </A>
-            </p>
-            <p class="leading-6">
-              For the definition of <b>Stream</b>, see
-              <A :href="infoRfcPathBuilder('rfc8729')">
-                <component :is="formatTitleAsVNode('rfc8729')" />
-              </A>.
-            </p>
-          </PopoverContent>
-        </PopoverPortal>
-      </PopoverRoot>
-    </div>
-  </div>
+  <RFCDocumentBodyPill :rfc="props.rfc" />
 
   <Alert
     v-if="props.rfc.obsoleted_by?.length"
@@ -95,7 +59,7 @@
   </Alert>
 
   <div
-    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 pl-2 text-[9px] sm:text-base lg:text-base`"
+    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 pl-2 text-[9px] sm:text-base lg:text-base wrap-anywhere`"
   >
     <div
       v-if="!enrichedDocument"
@@ -107,24 +71,19 @@
       :val="enrichedDocument"
     />
   </div>
+
+  <RFCMobileBanner
+    :rfc="rfc"
+    :is-fixed="true"
+  />
 </template>
 
 <script setup lang="ts">
 import { createTextVNode } from 'vue'
-import {
-  PopoverAnchor,
-  PopoverArrow,
-  PopoverClose,
-  PopoverContent,
-  PopoverPortal,
-  PopoverRoot,
-  PopoverTrigger
-} from 'reka-ui'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import {
   formatTitleAsVNode,
   parseRFCId,
-  RFC_TYPE_RFC,
   type RfcBucketHtmlDocument,
   type RfcCommon
 } from '~/utilities/rfc'
@@ -224,8 +183,15 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
 }
 
 .rfc-content-type-xml2rfc {
-  /* Using postcss-nested-import scope these imported styles */
+  /* Using postcss-nested-import to scope these imported styles,
+     so that we can sandbox them and use them safely without major changes,
+     to reduce maintenance burden.
+  */
   @nested-import "../assets/css/upstream-xml2rfc.css"
+}
+
+html.dark .rfc-content-type-xml2rfc {
+  @nested-import "../assets/css/xml2rfc-darkmode-patches.css"
 }
 
 .rfc-content-type-plaintext {
@@ -236,6 +202,6 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
   --preformatted-max-line-length: v-bind(props.rfcBucketHtmlDoc.maxPreformattedLineLength);
 
   /* Using postcss-nested-import scope these imported styles */
-  @nested-import "../assets/css/rfc-plaintext.css"
+  @nested-import "../assets/css/rfc-plaintext.css";
 }
 </style>

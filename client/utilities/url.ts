@@ -305,16 +305,23 @@ export const textToAnchorId = (text: string): string | undefined => {
   return kebabCase(normalized)
 }
 
+const RFC_6761_EXAMPLECOM_URL = 'https://example.com/'
+
 /**
  * Try parsing a relative url `href` string into a URL.
  * Because it's a `href` it will be resolved relative to `window.location`
  */
 const tryParseHref = (href: string): URL | undefined => {
   try {
-    return new URL(href, location.toString())
+    return new URL(
+      href,
+      typeof window !== 'undefined' ?
+        window.location.toString()
+      : RFC_6761_EXAMPLECOM_URL
+    )
   } catch (e: unknown) {
     console.info(
-      `Failed to extract path from url ${JSON.stringify(href)}. Error:`,
+      `Failed to parse href ${JSON.stringify(href)} into URL. Error:`,
       e
     )
   }
@@ -342,10 +349,14 @@ export const isRfcEditorSite = (href?: string): boolean => {
     return false
   }
   return (
-    hrefUrl.host === location.host || // if it's the `location` then it's probably prod, staging, or a dev server so we'll attempt to parse RFC numbers from the href
+    (typeof window !== 'undefined' &&
+      !!window.location &&
+      hrefUrl.host === window.location.host) || // if it's same `location` then it's either prod, staging, or a dev server so we'll attempt to parse RFC numbers from the href
     hrefUrl.host === publicSiteUrl.host // if it's a hardcoded link to prod then we'll also attempt it
   )
 }
+
+const RFC_REGEX = /(rfc[0-9]+)/i
 
 export const parseMaybeRfcLink = (
   href?: string
@@ -353,28 +364,34 @@ export const parseMaybeRfcLink = (
   if (!href) {
     return undefined
   }
+  if (
+    href.startsWith('#')
+    /**
+     * Hrefs of internal links need to handled specially.
+     *
+     * If an internal link is "#rfc1234" then we'll parse that as an RFC Link.
+     * E.g. the link to https://www.rfc-editor.org/rfc/rfc9794.html#RFC9370 is
+     * linking to a reference to an RFC, not the RFC directly. Regardless we'll
+     * treat it as a RFC Link.
+     *
+     * However hrefs are relative links and so we resolve them relative to the
+     * current location, which means that if eg. the page '/info/rfc9000/' had
+     * a `href` to '#section2.1' we don't want to parse that as an RFC Link
+     * because the RFC part wasn't in the `href`.
+     *
+     **/
+  ) {
+    const rfcMatch = href.match(RFC_REGEX)
+    if (!rfcMatch) return undefined
+    return parseRFCId(rfcMatch[0])
+  }
   const hrefUrl = tryParseHref(href)
   if (!hrefUrl) {
     return undefined
   }
-  if (
-    href.startsWith('#')
-    /**
-     * A href of an internal hash link should never be considered an RFC link.
-     *
-     * Hrefs are relative links and we resolve them to URL objects before comparing,
-     * which means that if eg. '/info/rfc9000/' had a `href` to '#section2.1' it
-     * would --subsequently in this function-- be resolved in a URL() to
-     * '/info/rfc9000/#section2.1' and the `pathname` comparison would
-     * match the '/info/rfc9000/' bit rather than anything provided in the `href`
-     * variable.
-     **/
-  ) {
-    return undefined
-  }
-
-  if (isRfcEditorSite(href)) {
-    const rfcMatch = hrefUrl.pathname.match(/(rfc[0-9]+)/i)
+  const isRfcEditor = isRfcEditorSite(href)
+  if (isRfcEditor) {
+    const rfcMatch = hrefUrl.pathname.match(RFC_REGEX)
     if (!rfcMatch) return undefined
     return parseRFCId(rfcMatch[0])
   }

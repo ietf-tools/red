@@ -1,5 +1,5 @@
 <template>
-  <ul class="block mt-1 mb-1 px-1 xs:px-0">
+  <ul :class="['block mt-1 mb-1 px-1 xs:px-0', props.class]">
     <li
       v-for="(path, index) in props.breadcrumbItems"
       :key="index"
@@ -12,7 +12,10 @@
       >
         {{ path.label }}
       </A>
-      <b v-else class="inline-block px-2 py-2 text-gray-700 dark:text-gray-300">
+      <b
+        v-else
+        class="inline-block px-2 py-2 text-gray-700 dark:text-gray-300"
+      >
         {{ path.label }}
       </b>
       <template v-if="index >= 0 && index < props.breadcrumbItems.length - 1">
@@ -27,10 +30,12 @@
 </template>
 
 <script setup lang="ts">
+import type { VueStyleClass } from '~/utilities/vue';
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
 
 type Props = {
   breadcrumbItems: BreadcrumbItem[]
+  class?: VueStyleClass
 }
 
 const props = defineProps<Props>()

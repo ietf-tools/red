@@ -13,7 +13,11 @@
       v-if="list1"
       class="hidden lg:block print:block text-base text-blue-900 dark:text-white"
     >
-      <li v-for="(part, index) in list1" :key="index" class="inline">
+      <li
+        v-for="(part, index) in list1"
+        :key="index"
+        class="inline"
+      >
         <GraphicsDiamond v-if="index > 0" />{{ part }}
       </li>
     </ul>
@@ -21,15 +25,25 @@
       v-if="list2"
       class="hidden lg:block print:block text-base text-gray-800 mt-1 dark:text-white"
     >
-      <li v-if="isAprilFool" class="inline pr-2">
+      <li
+        v-if="isAprilFool"
+        class="inline pr-2"
+      >
         <Icon
           name="fa6-solid:masks-theater"
           size="1em"
           class="text-violet-500 -mb-0.5"
         />
       </li>
-      <li v-for="(part, index) in list2" :key="index" class="inline">
-        <GraphicsDiamond v-if="index > 0" class="align-middle" />{{ part }}
+      <li
+        v-for="(part, index) in list2"
+        :key="index"
+        class="inline"
+      >
+        <GraphicsDiamond
+          v-if="index > 0"
+          class="align-middle"
+        />{{ part }}
       </li>
     </ul>
     <template v-if="props.showAbstract && props.rfc.abstract">
@@ -83,7 +97,7 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
 import { infoRfcPathBuilder } from '../utilities/url'
-import type { RfcCommon } from '~/utilities/rfc'
+import { getRfcPillText, type RfcCommon } from '~/utilities/rfc'
 import { formatTitlePlaintext } from '~/utilities/rfc-converters-utils'
 
 type Props = {
@@ -170,18 +184,7 @@ const list2 = computed(
     ].filter(Boolean) as string[]
 )
 
-const tagText = computed(() => {
-  const tagText = []
-  if (props.rfc.status) {
-    tagText.push(props.rfc.status)
-  }
-  const datetime = DateTime.fromISO(props.rfc.published)
-  const relativeCalendar = datetime.toRelativeCalendar()
-  if (props.showTagDate && relativeCalendar) {
-    tagText.push(relativeCalendar)
-  }
-  return tagText
-})
+const tagText = computed(() => getRfcPillText(props.rfc))
 
 const isAprilFool = computed(() => {
   const datetime = DateTime.fromISO(props.rfc.published)

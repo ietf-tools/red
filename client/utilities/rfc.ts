@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 import { NONBREAKING_SPACE } from './strings'
 import type { RfcEditorToc } from './tableOfContents'
 
@@ -170,6 +171,22 @@ export const parseRFCId = (title: string): RFCId => {
     type: 'unknown',
     number: title
   }
+}
+
+export const getRfcPillText = (
+  rfc: RfcCommon,
+  showTagDate: boolean = true
+): string[] => {
+  const tagText = []
+  if (rfc.status) {
+    tagText.push(rfc.status)
+  }
+  const datetime = DateTime.fromISO(rfc.published)
+  const relativeCalendar = datetime.toRelativeCalendar()
+  if (showTagDate && relativeCalendar) {
+    tagText.push(relativeCalendar)
+  }
+  return tagText
 }
 
 /**

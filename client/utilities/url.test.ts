@@ -143,7 +143,24 @@ test('parseMaybeRfcLink', () => {
     number: '10101'
   })
 
+  expect(
+    parseMaybeRfcLink('https://www.rfc-editor.org/rfc/rfc10101#section-2.1')
+  ).toEqual({
+    type: 'RFC',
+    number: '10101'
+  })
+
+  expect(parseMaybeRfcLink('#rfc10101')).toEqual({
+    type: 'RFC',
+    number: '10101'
+  })
+
   expect(parseMaybeRfcLink('/')).toEqual(undefined)
   expect(parseMaybeRfcLink('#section-2.1')).toEqual(undefined)
   expect(parseMaybeRfcLink('https://example.com/')).toEqual(undefined)
+  expect(
+    // not a known domain, so don't make a preview link of content we
+    // might be wrong about, even though it's got RFC stuff in the `href`
+    parseMaybeRfcLink('https://example.com/rfc/rfc10101#section-2.1')
+  ).toEqual(undefined)
 })

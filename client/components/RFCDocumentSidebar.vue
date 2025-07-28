@@ -8,32 +8,54 @@
       <DialogPortal>
         <DialogOverlay />
         <DialogContent :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
-          'absolute inset-0 z-50 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'">
+          'fixed inset-0 z-50 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'">
           <DialogTitle />
-          <DialogDescription>
-            <RFCMobileBanner
+
+          <RFCMobileBanner
+            :rfc="props.rfc"
+            :is-fixed="false"
+          >
+            <button
+              class="bg-white rounded-l text-black p-2 flex items-center"
+              aria-label="Close"
+              @click="isModalOpen = false"
+            >
+              <GraphicsExpandSidebar class="inline-block mr-1 rotate-180" />
+            </button>
+          </RFCMobileBanner>
+          <div class="pl-4 pr-2 bg-white dark:bg-blue-900">
+            <RFCTabs
+              ref="mobileRFCTabs"
+              v-model="selectedTab"
               :rfc="props.rfc"
               :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
-              :is-fixed="false"
+              :has-table-of-contents="props.hasTableOfContents"
             >
-              <button
-                class="bg-white rounded-l text-black p-2 flex items-center"
-                aria-label="Close"
-                @click="isModalOpen = false"
-              >
-                <GraphicsExpandSidebar class="inline-block mr-1 rotate-180" />
-              </button>
-            </RFCMobileBanner>
-            <div class="px-2">
-              <RFCTabs
-                ref="mobileRFCTabs"
-                v-model="selectedTab"
-                :rfc="props.rfc"
-                :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
-                :has-table-of-contents="props.hasTableOfContents"
-              />
-            </div>
-          </DialogDescription>
+              <template #slot0>
+                <TableOfContents
+                  v-if="props.rfcBucketHtmlDoc.tableOfContents"
+                  :toc="props.rfcBucketHtmlDoc.tableOfContents"
+                  list-type="ordered"
+                  wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
+                  list-class="mt-2 mr-1 pl-0 -ml-1"
+                  nested-list-class="pl-2"
+                  :list-item-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
+                  links-active-class="text-shadow-bold"
+                  link-class="block no-underline hover:underline"
+                  last-link-class="flex-1"
+                >
+                  <Heading
+                    level="2"
+                    style-level="5"
+                    class="mt-4 mb-1 sr-only"
+                  >
+                    In this section
+                  </Heading>
+                </TableOfContents>
+              </template>
+            </RFCTabs>
+          </div>
+
           <DialogClose />
         </DialogContent>
       </DialogPortal>
@@ -218,6 +240,7 @@ import {
   mailToBuilder,
 } from '~/utilities/url'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
+import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
 type Props = {
   rfc: RfcCommon
@@ -236,4 +259,15 @@ const formattedPublished = computed(() => {
   const dt = DateTime.fromISO(props.rfc.published)
   return formatDatePublished(dt, true)
 })
+
+const handleCloseAndNavigate = (id: string) => {
+  isModalOpen.value = false
+  nextTick(() => {
+    // nextTick() because we need to wait for the modal to render closed, and then attempt to scroll
+    window.location.hash = id
+  })
+}
+
+
+provide(closeModalAndScrollToId, handleCloseAndNavigate)
 </script>

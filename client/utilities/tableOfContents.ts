@@ -44,3 +44,7 @@ export const tocKey = Symbol() as InjectionKey<{
   showToc?: boolean
   toc?: RfcEditorToc
 }>
+
+export const closeModalAndScrollToId = Symbol() as InjectionKey<
+  (id: string) => void
+>

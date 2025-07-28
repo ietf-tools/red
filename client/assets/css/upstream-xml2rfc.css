@@ -6,6 +6,8 @@ This is a local copy of
 
 https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 
+with minor changes at the top to remove Google fonts in favour of self-hosting
+
 */
 /*
 
@@ -23,11 +25,11 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 /* fonts */
 /* @import url('https://fonts.googleapis.com/css?family=Noto+Sans'); Sans-serif */
 /* @import url('https://fonts.googleapis.com/css?family=Noto+Serif');  Serif (print) */
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono'); /* Monospace */
+
 
 :root {
-  /* --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
-  --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif; */
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: 'Times', 'Times New Roman', serif;
   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
 }
 
