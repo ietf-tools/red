@@ -284,9 +284,12 @@ const fixNodeForMobile = (node: Node): Node => {
  */
 export const getXml2RfcMaxLineLength = (dom: Document): number => {
   /**
-   * Unlike plaintext RFCs we can't assume <pre> sections within
-   * HTML are 80 chars by default. These <pre> sections might be just
-   * ASCII art without any particular width conventions, so we'll
+   * The DEFAULT_MAX_LINE_LENGTH is less than the plaintext equivalent.
+   *
+   * This is because HTML RFC <pre> sections might be just ASCII art, and as such there's
+   * without any
+   * particular width conventions. Unlike plaintext RFCs we can't assume <pre> sections within
+   * HTML are 80 chars by default. , so we'll
    * start off with a smaller number than 80.
    */
   const DEFAULT_MAX_LINE_LENGTH = 40

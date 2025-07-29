@@ -1,6 +1,6 @@
 <template>
   <div :class="[
-    'flex flex-row w-full justify-between items-center py-1 bg-blue-900 text-white dark:bg-black dark:border-t dark:border-gray-400 shadow-[-5px_-5px_15px_rgba(0,0,0,0.1)] dark:shadow-[-5px_-5px_15px_rgba(0,0,0,0.25)] dark:shadow-blue-900',
+    'flex flex-row w-full justify-between items-center py-1 bg-blue-900 text-white dark:bg-black dark:border-t dark:border-gray-400 shadow-[-5px_-5px_15px_rgba(0,0,0,0.2)] dark:shadow-[-5px_-5px_15px_rgba(0,0,0,0.25)] dark:shadow-blue-900',
     props.isFixed && 'fixed bottom-0 left-0 right-0 lg:hidden print:hidden'
   ]">
     <div :class="[

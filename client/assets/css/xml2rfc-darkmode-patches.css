@@ -18,7 +18,3 @@ a[href]:hover  {
     background-color: transparent;
     text-decoration: underline;
 }
-
-pre {
-    background: #333;
-}
