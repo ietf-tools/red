@@ -211,7 +211,7 @@ const parseXml2RfcToc = (toc: HTMLElement): RfcEditorToc => {
 }
 
 export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
-  return Array.from(dom.body.childNodes).filter((node) => {
+  const nodes = Array.from(dom.body.childNodes).filter((node) => {
     if (isHtmlElement(node)) {
       switch (node.nodeName.toLowerCase()) {
         case 'script':
@@ -239,6 +239,42 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
     }
     return true
   })
+
+  return nodes.map(fixNodeForMobile)
+}
+
+/**
+ * The HTML needs minor changes to ensure mobile rendering on Red.
+ *
+ * Tailwind's grepper won't be able to see these CSS classes so we rely on
+ * the same classes already existing in the generated CSS bundle (because they
+ * were already used elsewhere, in Red).
+ *
+ * If using unpopular classes this would need a different approach.
+ */
+const fixNodeForMobile = (node: Node): Node => {
+  if (isHtmlElement(node)) {
+    const tagName = node.tagName.toLowerCase()
+    switch (tagName) {
+      case 'pre':
+      case 'table':
+        // <pre>s can be too wide, so we wrap them to make a scrollable area
+        const wrapper = node.ownerDocument.createElement('div')
+        wrapper.classList.add(
+          // see above docstring about Tailwind classes
+          'w-full',
+          'max-w-screen',
+          'overflow-x-auto'
+        )
+        wrapper.setAttribute('data-component', 'HorizontalScrollable')
+        wrapper.appendChild(node)
+        return wrapper
+    }
+    const newChildren = Array.from(node.childNodes).map(fixNodeForMobile)
+    node.replaceChildren(...newChildren)
+    return node
+  }
+  return node
 }
 
 /**

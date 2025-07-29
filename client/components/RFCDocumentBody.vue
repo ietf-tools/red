@@ -59,7 +59,7 @@
   </Alert>
 
   <div
-    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} mt-10 pl-2 text-[9px] sm:text-base lg:text-base wrap-anywhere`"
+    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDoc.documentHtmlType} wrap-anywhere mt-10 sm:text-base lg:text-base`"
   >
     <div
       v-if="!enrichedDocument"
@@ -91,10 +91,11 @@ import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import {
   elementAttributesToObject,
-  isAnchorElement,
+  getTagName,
   isHtmlElement,
   isTextNode
 } from '~/utilities/dom'
+import HorizontalScrollable from './HorizontalScrollable.vue'
 
 type Props = {
   rfc: RfcCommon
@@ -133,10 +134,20 @@ onMounted(async () => {
     return
   }
 
-  enrichedDocument.value = await enrichRfcDocument([...htmlElement.childNodes])
+  enrichedDocument.value = await enrichRfcDocumentClientside(Array.from(htmlElement.childNodes))
 })
 
-const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
+/**
+ * Walks the DOM within the RFC and replaces some elements with Vue components.
+ * 
+ * Be careful to avoid any Layout Shift https://web.dev/articles/cls when replacing
+ * elements (ie, page elements should not move around).
+ * 
+ * Consider whether you should instead modify the HTML string provided by
+ * https://github.com/ietf-tools/red-rfc-html-extractor see 
+ * `getXml2RfcRfcDocument` and `getPlaintextRfcDocument` etc
+ */
+const enrichRfcDocumentClientside = async (nodes: Node[]): Promise<VNode> => {
   const unwrapChildrenForVue = (vnodes: VNode[]) => {
     switch (vnodes.length) {
       case 0:
@@ -148,17 +159,23 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
     }
   }
 
-  const enrichNode = async (node: Node): Promise<VNode> => {
+  const enrichNodeClientside = async (node: Node): Promise<VNode> => {
     if (isHtmlElement(node)) {
       const attributes = elementAttributesToObject(node.attributes)
       const children = await Promise.all(
-        Array.from(node.childNodes).map(enrichNode)
+        Array.from(node.childNodes).map(enrichNodeClientside)
       )
       const childrenForVue = unwrapChildrenForVue(children)
-      if (isAnchorElement(node)) {
-        // fix Vue "Non-function value encountered for default slot." performance warning
-        // by wrapping children in a function so the Vue can defer rendering
-        return h(AMaybeRFCLink, attributes, () => childrenForVue)
+      const tagName = getTagName(node)
+      switch (tagName) {
+        case 'a':
+          // fix Vue "Non-function value encountered for default slot." performance warning
+          // by wrapping children in a function so the Vue can defer rendering
+          return h(AMaybeRFCLink, attributes, () => childrenForVue)
+        case 'div':
+          if (attributes['data-component'] === 'HorizontalScrollable') {
+            return h(HorizontalScrollable, () => childrenForVue)
+          }
       }
       return h(node.nodeName, attributes, childrenForVue)
     } else if (isTextNode(node)) {
@@ -167,7 +184,7 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
     throw Error(`Unhandled node type ${node.nodeType} ${node}`)
   }
 
-  const children = await Promise.all(nodes.map(enrichNode))
+  const children = await Promise.all(nodes.map(enrichNodeClientside))
   return h('div', {}, children)
 }
 </script>
@@ -183,6 +200,9 @@ const enrichRfcDocument = async (nodes: Node[]): Promise<VNode> => {
 }
 
 .rfc-content-type-xml2rfc {
+  --layout-bleed-left: 10px;
+  --layout-bleed-right: 10px;
+
   /* Using postcss-nested-import to scope these imported styles,
      so that we can sandbox them and use them safely without major changes,
      to reduce maintenance burden.

@@ -1,12 +1,8 @@
 /**
 
-DO NOT EDIT
-
-This is a local copy of
+This is a forked from
 
 https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
-
-with minor changes at the top to remove Google fonts in favour of self-hosting
 
 */
 /*
@@ -50,6 +46,7 @@ with minor changes at the top to remove Google fonts in favour of self-hosting
   margin: 1em 0 0.5em;
   font-weight: bold;
   line-height: 1.3;
+  padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
 }
 #title {
   clear: both;
@@ -89,7 +86,7 @@ h5, h6 {
 }
 /* general structure */
 p {
-  padding: 0;
+  padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
   margin: 0 0 1em 0;
   text-align: left;
 }
@@ -194,7 +191,9 @@ dl {
 }
 dl > dt {
   float: left;
-  margin-right: 1em;
+  padding-left: var(--layout-bleed-left);
+  padding-right: var(--layout-bleed-right);
+  line-height: 2;
 }
 /* 
 dl.nohang > dt {
@@ -204,6 +203,9 @@ dl.nohang > dt {
 dl > dd {
   margin-bottom: .8em;
   min-height: 1.3em;
+}
+dd > p:first-child {
+  padding: 0;
 }
 dl.compact > dd, .dlCompact > dd {
   margin-bottom: 0em;
@@ -234,12 +236,11 @@ a.selfRef:hover {
 } */
 
 /* Figures */
-tt, code, pre {
+tt, code {
   background-color: #f9f9f9;
   font-family: var(--font-mono);
 }
 pre {
-  border: 1px solid #eee;
   margin: 0;
   padding: 1em;
 }
@@ -255,13 +256,8 @@ figure blockquote {
 figcaption {
   font-style: italic;
   margin: 0 0 1em 0;
-}
-@media screen {
-  pre {
-    overflow-x: auto;
-    max-width: 100%;
-    max-width: calc(100% - 22px);
-  }
+  padding-left: var(--layout-bleed-left);
+  padding-right: var(--layout-bleed-right);
 }
 
 /* aside, blockquote */
@@ -302,7 +298,7 @@ th, td {
 }
 th {
   text-align: left;
-  background-color: #e9e9e9;
+  background-color: rgba(0,0,0,0.1);
 }
 tr:nth-child(2n+1) > td {
   background-color: #f5f5f5;
@@ -310,7 +306,8 @@ tr:nth-child(2n+1) > td {
 table caption {
   font-style: italic;
   margin: 0;
-  padding: 0;
+  padding-left: var(--layout-bleed-left);
+  padding-right: var(--layout-bleed-right);
   text-align: left;
 }
 table p {
@@ -639,25 +636,11 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
-    page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
-  }
-  .breakable pre {
-    break-inside: auto;
-  }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
   h2+*, h3+*, h4+*, h5+*, h6+* {
     page-break-before: avoid;
-  }
-  pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    font-size: 10pt;
   }
   table {
     border: 1px solid #ddd;
@@ -814,17 +797,11 @@ section {
   padding-right: 0.5em;
 }
 
-/* prevent monospace from becoming overly large */
-tt, code, pre {
-  font-size: 95%;
-}
-
 /* Fix the height/width aspect for ascii art*/
 .sourcecode pre,
 .art-text pre {
   line-height: 1.12;
 }
-
 
 /* Add styling for a link in the ToC that points to the top of the document */
 a.toplink {
@@ -1064,7 +1041,7 @@ tr {
   break-inside: avoid;
 }
 tr:nth-child(2n+1) > td {
-  background-color: #f8f8f8;
+  background-color: rgba(0,0,0,0.1);
 }
 /* Use style rules to govern display of the TOC. */
 @media screen and (max-width: 1023px) {

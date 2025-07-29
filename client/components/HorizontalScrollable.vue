@@ -1,5 +1,6 @@
 <template>
-  <div
+  <component
+    :is="props.as"
     ref="scroll-container"
     :class="{
       'overflow-x-auto w-full max-w-[100vw] transition-shadow duration-800': true,
@@ -13,10 +14,18 @@
     @scroll="updateScrollHint"
   >
     <slot />
-  </div>
+  </component>
 </template>
 
 <script setup lang="ts">
+
+type Props = {
+  /** Optional element nodeName (default 'div') */
+  as?: string
+}
+
+const props = withDefaults(defineProps<Props>(), { 'as': 'div' })
+
 const scrollContainer = useTemplateRef('scroll-container')
 const canScrollLeft = ref(false)
 const canScrollRight = ref(false)

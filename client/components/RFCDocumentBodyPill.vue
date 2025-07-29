@@ -7,14 +7,13 @@
                 :text="tagText"
                 class="print:m-0 my-2"
             />
-            <PopoverRoot position-strategy="absolute">
+            <PopoverRoot>
                 <PopoverTrigger class="p-2 cursor-help">
                     <GraphicsQuestionMarkCircle />
                 </PopoverTrigger>
 
                 <PopoverPortal to="body">
                     <PopoverContent
-                        :side-offset="5"
                         class="shadow-lg border-1 bg-white dark:bg-black dark:shadow-blue-900 border-gray-400 flex flex-col px-3 py-1 rounded"
                     >
                         <PopoverArrow

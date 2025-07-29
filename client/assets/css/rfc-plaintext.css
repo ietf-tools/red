@@ -28,10 +28,12 @@ pre {
     basic implementation (see:
     https://github.com/ietf-tools/red/pull/111/commits/1883affc3247b1641e63c3d5d2e761631c10bbfa#diff-eb730e8ef057ed3d5d223fdc888551e6d7c7c2152158ec98bdc222578f52b383R10
     ) has 13 @media + font-size declarations, and it really works poorly. There are
-    sudden 'jumps' in font-size at responsive breakpoints and the adjacent whitespace,
-    to the right of the content, jumps too.
+    sudden 'jumps' in font-size at responsive breakpoints along with the amount of
+    whitespace jumping too. Most importantly, this approach would create a dependency
+    between font-size and the current design, so when the design changes the
+    font-sizes would need to be updated too. This would be brittle, and a maintenance burden.
 
-    Another complexity is that some RFCs are wider than 80 chars:
+    Some RFCs are wider than 80 chars:
         (note that the given command may have false positives, so verify for yourself)
 
         $ find . -name "rfc[0-9]*.txt" -print0 | xargs -0 awk 'length > 80 {print FILENAME ": Line " NR ": " $0}'

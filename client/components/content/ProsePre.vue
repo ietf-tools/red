@@ -1,5 +1,5 @@
 <template>
-  <pre class="w-full overflow-x-auto">
+  <pre class="w-full max-w-screen overflow-x-auto">
     <slot />
   </pre>
 </template>

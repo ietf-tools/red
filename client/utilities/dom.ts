@@ -24,6 +24,9 @@ export const isAnchorElement = (
 ): maybeSelectElement is HTMLAnchorElement =>
   isHtmlElement(maybeSelectElement) && maybeSelectElement.tagName === 'A'
 
+export const getTagName = (maybeElement: unknown): undefined | string =>
+  isHtmlElement(maybeElement) ? maybeElement.tagName.toLowerCase() : undefined
+
 const getNodeType = (maybeNode: unknown): number | undefined => {
   // because this function runs in Node and accepts JSDOM HTMLElement,
   // as well as running in the browser with a W3C DOM HTMLElement,
