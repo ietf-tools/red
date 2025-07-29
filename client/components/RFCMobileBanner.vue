@@ -13,7 +13,10 @@
         v-if="pillText.length > 0"
         class="text-gray-400"
       >
-        <span v-for="pillTextItem in pillText">
+        <span
+          v-for="(pillTextItem, pillTextItemIndex) in pillText"
+          :key="pillTextItemIndex"
+        >
           {{ pillTextItem }}
         </span>
       </div>

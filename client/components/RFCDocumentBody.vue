@@ -81,6 +81,7 @@
 <script setup lang="ts">
 import { createTextVNode } from 'vue'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
+import HorizontalScrollable from './HorizontalScrollable.vue'
 import {
   formatTitleAsVNode,
   parseRFCId,
@@ -95,7 +96,6 @@ import {
   isHtmlElement,
   isTextNode
 } from '~/utilities/dom'
-import HorizontalScrollable from './HorizontalScrollable.vue'
 
 type Props = {
   rfc: RfcCommon
@@ -139,12 +139,12 @@ onMounted(async () => {
 
 /**
  * Walks the DOM within the RFC and replaces some elements with Vue components.
- * 
+ *
  * Be careful to avoid any Layout Shift https://web.dev/articles/cls when replacing
  * elements (ie, page elements should not move around).
- * 
+ *
  * Consider whether you should instead modify the HTML string provided by
- * https://github.com/ietf-tools/red-rfc-html-extractor see 
+ * https://github.com/ietf-tools/red-rfc-html-extractor see
  * `getXml2RfcRfcDocument` and `getPlaintextRfcDocument` etc
  */
 const enrichRfcDocumentClientside = async (nodes: Node[]): Promise<VNode> => {

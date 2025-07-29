@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-
 type Props = {
   /** Optional element nodeName (default 'div') */
   as?: string
@@ -51,7 +50,6 @@ const updateScrollHint = () => {
 
 onMounted(() => {
   window.addEventListener('resize', updateScrollHint)
-
   timer = setTimeout(updateScrollHint, 50)
 })
 

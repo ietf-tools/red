@@ -30,8 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import type { VueStyleClass } from '~/utilities/vue';
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
+import type { VueStyleClass } from '~/utilities/vue'
 
 type Props = {
   breadcrumbItems: BreadcrumbItem[]

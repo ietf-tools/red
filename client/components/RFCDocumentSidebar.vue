@@ -225,7 +225,6 @@
 import {
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogOverlay,
   DialogPortal,
   DialogRoot,
@@ -267,7 +266,6 @@ const handleCloseAndNavigate = (id: string) => {
     window.location.hash = id
   })
 }
-
 
 provide(closeModalAndScrollToId, handleCloseAndNavigate)
 </script>

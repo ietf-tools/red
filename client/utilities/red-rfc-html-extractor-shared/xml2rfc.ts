@@ -255,11 +255,11 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
 const fixNodeForMobile = (node: Node): Node => {
   if (isHtmlElement(node)) {
     const tagName = node.tagName.toLowerCase()
+    const wrapper = node.ownerDocument.createElement('div')
     switch (tagName) {
       case 'pre':
       case 'table':
         // <pre>s can be too wide, so we wrap them to make a scrollable area
-        const wrapper = node.ownerDocument.createElement('div')
         wrapper.classList.add(
           // see above docstring about Tailwind classes
           'w-full',

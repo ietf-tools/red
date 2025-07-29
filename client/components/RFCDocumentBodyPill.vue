@@ -55,7 +55,6 @@ import {
 import {
     formatTitleAsVNode,
     getRfcPillText,
-    parseRFCId,
     type RfcCommon
 } from '~/utilities/rfc'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
@@ -66,8 +65,6 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-
-const rfcId = computed(() => parseRFCId(`rfc${props.rfc.number}`))
 
 const tagText = computed(() => getRfcPillText(props.rfc))
 </script>
