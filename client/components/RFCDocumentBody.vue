@@ -130,10 +130,12 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
       const childrenForVue = unwrapChildrenForVue(children)
       switch (node.nodeName) {
         case 'a':
-          // fix Vue "Non-function value encountered for default slot." performance warning
-          // by wrapping children in a function so the Vue can defer rendering
+          // Note that children is a function, as required by Vue for non-HTML components,
+          // so that it can defer rendering children
           return h(AMaybeRFCLink, node.attributes, () => childrenForVue)
         case 'HorizontalScrollable':
+          // Note that children is a function, as required by Vue for non-HTML components,
+          // so that it can defer rendering children
           return h(HorizontalScrollable, node.attributes, () => childrenForVue)
       }
       return h(node.nodeName, node.attributes, childrenForVue)

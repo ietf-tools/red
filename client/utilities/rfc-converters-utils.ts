@@ -275,7 +275,7 @@ export const parseTypeSenseSubseries = (
   return undefined
 }
 
-type TocSection = NonNullable<RfcEditorToc['sections']>[number]
+type TocSection = RfcEditorToc['sections'][number]
 export const isTocSection = (
   maybeTocSection?: unknown
 ): maybeTocSection is TocSection => {

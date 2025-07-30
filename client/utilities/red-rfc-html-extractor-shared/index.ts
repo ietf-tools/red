@@ -132,7 +132,10 @@ const rfcDocumentToPojo = (rfcDocument: Node[]): DocumentPojo => {
     if (isHtmlElement(node)) {
       return {
         type: 'Element',
-        nodeName: node.dataset.component ?? node.nodeName,
+        // the nodeName name is either:
+        // 1) the data-component attribute (eg, 'HorizontalScrollable')
+        // 2) the html element nodeName
+        nodeName: node.dataset.component ?? node.nodeName.toLowerCase(),
         attributes: elementAttributesToObject(node.attributes),
         children: Array.from(node.childNodes).map(walk)
       }
@@ -142,10 +145,9 @@ const rfcDocumentToPojo = (rfcDocument: Node[]): DocumentPojo => {
         textContent: node.textContent ?? ''
       }
     }
-    console.log(node)
-    throw Error(
-      `rfcDocumentToPojo: Unsupported nodeType ${node.nodeType}. See console.`
-    )
+    const errorTitle = `rfcDocumentToPojo: Unsupported nodeType ${node.nodeType}`
+    console.error(errorTitle, node)
+    throw Error(`${errorTitle}. See console for details.`)
   }
 
   return rfcDocument.map(walk)

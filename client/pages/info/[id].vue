@@ -78,10 +78,6 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
   }
 )
 
-console.log({
-  rfcBucketHtmlDocumentError: rfcBucketHtmlDocumentError.value
-})
-
 if (rfcHtmlError.value || rfcBucketHtmlDocumentError.value) {
   throw createError({
     statusCode: 404,
