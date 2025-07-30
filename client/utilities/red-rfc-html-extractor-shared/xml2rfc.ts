@@ -96,11 +96,10 @@ export const parseXml2RfcBody = (
           10
         )
       } else if (node.id === 'title') {
-        rfcAndToc.rfc.title = node.innerText
+        rfcAndToc.rfc.title = getInnerText(node)
       } else if (node.id === 'toc') {
         rfcAndToc.tableOfContents = parseXml2RfcToc(node)
       }
-
       const idsToRemove = ['toc', 'external-metadata', 'internal-metadata']
       if (idsToRemove.includes(node.id)) {
         return false

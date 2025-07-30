@@ -1,20 +1,9 @@
+import type { z } from 'zod'
 import type { Toc as NuxtContentToc } from '@nuxt/content'
 import type { InjectionKey } from 'vue'
+import type { TableOfContentsSchema } from './rfc-validators'
 
-type TocLink = {
-  id: string
-  title: string
-}
-
-type TocSection = {
-  links?: TocLink[]
-  sections?: TocSection[]
-}
-
-export type RfcEditorToc = {
-  title: string
-  sections: TocSection[]
-}
+export type RfcEditorToc = z.infer<typeof TableOfContentsSchema>
 
 export const nuxtContentTocToRfcEditorToc = (
   nuxtContentToc: NuxtContentToc

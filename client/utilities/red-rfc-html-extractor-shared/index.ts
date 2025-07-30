@@ -4,11 +4,22 @@
  * Only the imports have changed.
  */
 
-import { getDOMParser, isHtmlElement, isTextNode } from '../dom'
+import {
+  elementAttributesToObject,
+  getDOMParser,
+  isHtmlElement,
+  isTextNode
+} from '../dom'
 import { blankRfcCommon } from '../rfc'
-import type { RfcCommon, RfcBucketHtmlDocument } from '../rfc'
 import type { RfcEditorToc } from '../tableOfContents'
 import { assertNever } from '../typescript'
+import { RfcBucketHtmlDocumentSchema } from '../rfc-validators'
+import type {
+  RfcCommon,
+  RfcBucketHtmlDocument,
+  DocumentPojo,
+  NodePojo
+} from '../rfc-validators'
 import {
   getPlaintextRfcDocument,
   parsePlaintextBody,
@@ -41,15 +52,14 @@ export type RfcAndToc = {
 }
 
 export const rfcBucketHtmlToRfcDocument = async (
-  rfcBucketHtml: string
+  rfcBucketHtml: string,
+  rfcId: string
 ): Promise<RfcBucketHtmlDocument> => {
   const parser = await getDOMParser()
   const dom = parser.parseFromString(rfcBucketHtml, 'text/html')
 
   const rfcAndToc: RfcAndToc = {
-    rfc: {
-      ...blankRfcCommon
-    },
+    rfc: structuredClone(blankRfcCommon),
     tableOfContents: undefined
   }
 
@@ -77,25 +87,23 @@ export const rfcBucketHtmlToRfcDocument = async (
       break
   }
 
-  const documentHtml = rfcDocument
-    .map((node): string => {
-      if (isHtmlElement(node)) {
-        return node.outerHTML
-      } else if (isTextNode(node)) {
-        return node.textContent ?? ''
-      }
-      return ''
-    })
-    .join('')
-    .trim()
-
-  return {
+  const response: RfcBucketHtmlDocument = {
     rfc: rfcAndToc.rfc,
     tableOfContents: rfcAndToc.tableOfContents,
     documentHtmlType,
-    documentHtml,
+    documentHtmlObj: rfcDocumentToPojo(rfcDocument),
     maxPreformattedLineLength
   }
+
+  const validationResult = RfcBucketHtmlDocumentSchema.safeParse(response)
+
+  if (validationResult.error) {
+    const errorTitle = `Failed to convert ${rfcId} due to validation error:`
+    console.log(errorTitle, validationResult.error)
+    throw Error(`${errorTitle}. See console for details.`)
+  }
+
+  return validationResult.data
 }
 
 export const rfcBucketHtmlFilenameBuilder = (rfcNumber: number) =>
@@ -117,4 +125,28 @@ const sniffRfcBucketHtmlType = (
   }
 
   throw Error('Unable to sniff RFC HTML type. Please report this error.')
+}
+
+const rfcDocumentToPojo = (rfcDocument: Node[]): DocumentPojo => {
+  const walk = (node: Node): NodePojo => {
+    if (isHtmlElement(node)) {
+      return {
+        type: 'Element',
+        nodeName: node.dataset.component ?? node.nodeName,
+        attributes: elementAttributesToObject(node.attributes),
+        children: Array.from(node.childNodes).map(walk)
+      }
+    } else if (isTextNode(node)) {
+      return {
+        type: 'Text',
+        textContent: node.textContent ?? ''
+      }
+    }
+    console.log(node)
+    throw Error(
+      `rfcDocumentToPojo: Unsupported nodeType ${node.nodeType}. See console.`
+    )
+  }
+
+  return rfcDocument.map(walk)
 }

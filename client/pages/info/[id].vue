@@ -22,7 +22,7 @@
       ">
         <RFCDocument
           :rfc="rfc"
-          :rfc-bucket-html-doc="rfcBucketHtmlDocument"
+          :rfc-bucket-html-document="rfcBucketHtmlDocument"
         />
       </template>
     </NuxtLayout>
@@ -47,12 +47,13 @@ const route = useRoute()
 
 const id = parseRFCId(route.params.id.toString())
 const rfcNumber = parseInt(id.number, 10)
+const sanitisedId = `${id.type}${rfcNumber}`
 
 const {
   data: rfcDocRetrieve,
   status: rfcDocRetrieveStatus,
   error: rfcDocRetrieveError
-} = await useAsyncData<Rfc>(`info-docretrieve-${route.params.id}`, async () =>
+} = await useAsyncData<Rfc>(`info-docretrieve-${sanitisedId}`, async () =>
   $fetch(apiRfcDocRetrievePathBuilder(rfcNumber))
 )
 
@@ -65,17 +66,21 @@ const {
   data: rfcHtml,
   status: rfcHtmlStatus,
   error: rfcHtmlError
-} = await useAsyncData<string>(`info-dochtml-${route.params.id}`, async () =>
+} = await useAsyncData<string>(`info-dochtml-${sanitisedId}`, async () =>
   $fetch(apiRfcBucketHtmlURLBuilder(rfcNumber))
 )
 
 const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
-  `info-dochtml-${route.params.id}-rfc-document`,
+  `info-dochtml-${sanitisedId}-rfc-document`,
   async () => {
     if (!rfcHtml.value) return undefined
-    return rfcBucketHtmlToRfcDocument(rfcHtml.value)
+    return rfcBucketHtmlToRfcDocument(rfcHtml.value, sanitisedId)
   }
 )
+
+console.log({
+  rfcBucketHtmlDocumentError: rfcBucketHtmlDocumentError.value
+})
 
 if (rfcHtmlError.value || rfcBucketHtmlDocumentError.value) {
   throw createError({

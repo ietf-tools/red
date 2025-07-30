@@ -28,13 +28,13 @@
               ref="mobileRFCTabs"
               v-model="selectedTab"
               :rfc="props.rfc"
-              :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+              :rfc-bucket-html-doc="props.rfcBucketHtmlDocument"
               :has-table-of-contents="props.hasTableOfContents"
             >
               <template #slot0>
                 <TableOfContents
-                  v-if="props.rfcBucketHtmlDoc.tableOfContents"
-                  :toc="props.rfcBucketHtmlDoc.tableOfContents"
+                  v-if="props.rfcBucketHtmlDocument.tableOfContents"
+                  :toc="props.rfcBucketHtmlDocument.tableOfContents"
                   list-type="ordered"
                   wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
                   list-class="mt-2 mr-1 pl-0 -ml-1"
@@ -66,13 +66,13 @@
         ref="desktopRFCTabs"
         v-model="selectedTab"
         :rfc="props.rfc"
-        :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+        :rfc-bucket-html-doc="props.rfcBucketHtmlDocument"
         :has-table-of-contents="props.hasTableOfContents"
       >
         <template #slot0>
           <TableOfContentsHighlight
-            v-if="props.rfcBucketHtmlDoc.tableOfContents"
-            :toc="props.rfcBucketHtmlDoc.tableOfContents"
+            v-if="props.rfcBucketHtmlDocument.tableOfContents"
+            :toc="props.rfcBucketHtmlDocument.tableOfContents"
             list-type="ordered"
             wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
             list-class="mr-1"
@@ -243,7 +243,7 @@ import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
 type Props = {
   rfc: RfcCommon
-  rfcBucketHtmlDoc: RfcBucketHtmlDocument
+  rfcBucketHtmlDocument: RfcBucketHtmlDocument
   gotoErrata: () => void
   hasTableOfContents: boolean
 }

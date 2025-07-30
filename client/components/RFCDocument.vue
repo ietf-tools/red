@@ -5,7 +5,7 @@
         v-model:selected-tab="selectedTab"
         v-model:is-modal-open="isModalOpen"
         :rfc="props.rfc"
-        :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+        :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
         :has-table-of-contents="hasToc"
         :goto-errata="gotoErrata"
         :change-tab="changeTab"
@@ -14,7 +14,7 @@
     <RFCDocumentBody
       v-model:is-modal-open="isModalOpen"
       :rfc="props.rfc"
-      :rfc-bucket-html-doc="props.rfcBucketHtmlDoc"
+      :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
       :breadcrumb-items="breadcrumbItems"
       :goto-errata="gotoErrata"
       :change-tab="changeTab"
@@ -28,14 +28,14 @@ import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 
 type Props = {
   rfc: RfcCommon
-  rfcBucketHtmlDoc: RfcBucketHtmlDocument
+  rfcBucketHtmlDocument: RfcBucketHtmlDocument
 }
 
 const props = defineProps<Props>()
 
 const hasToc = computed(() => Boolean(
-  props.rfcBucketHtmlDoc.tableOfContents?.sections &&
-  props.rfcBucketHtmlDoc.tableOfContents?.sections.length > 0
+  props.rfcBucketHtmlDocument.tableOfContents?.sections &&
+  props.rfcBucketHtmlDocument.tableOfContents?.sections.length > 0
 ))
 
 const selectedTab = ref(

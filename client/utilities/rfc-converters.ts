@@ -190,7 +190,7 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
     see_also: rfcJson.see_also,
     draft: {
       id: 0,
-      name: rfcJson.draft,
+      number: parseFloat(rfcJson.draft),
       title: rfcJson.draft
     },
     abstract: rfcJson.abstract,
