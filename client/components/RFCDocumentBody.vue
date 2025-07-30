@@ -74,6 +74,7 @@
 import { createTextVNode } from 'vue'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import HorizontalScrollable from './HorizontalScrollable.vue'
+import Fragment from './Fragment.vue'
 import {
   formatTitleAsVNode,
   parseRFCId,
@@ -83,7 +84,6 @@ import {
 import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, NodePojo } from '~/utilities/rfc-validators'
-import Fragment from './Fragment.vue'
 
 type Props = {
   rfc: RfcCommon
