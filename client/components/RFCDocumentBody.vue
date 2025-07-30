@@ -83,6 +83,7 @@ import {
 import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, NodePojo } from '~/utilities/rfc-validators'
+import Fragment from './Fragment.vue'
 
 type Props = {
   rfc: RfcCommon
@@ -146,11 +147,13 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
   }
 
   const children = nodes.map(renderNodePojo)
-  return h('div', {}, children)
+  return h(Fragment, () => children)
 }
 </script>
 
 <style lang="postcss">
+/** Note that this is postcss so we can use @nested-import */
+
 .rfc-content {
 
   ol,
