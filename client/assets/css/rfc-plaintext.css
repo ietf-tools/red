@@ -164,10 +164,6 @@ pre {
     We could increase the font-size and also force wrap the text but that would break
     ASCII art and other things that need to align across lines.
 
-    Arguably the font-size is too large on desktop. Perhaps it could be clamped but
-    that would leave a lot of whitespace to the right. We could reduce the entire
-    container width per-RFC but that would be an unusual website design choice.
-
     The MAGIC_SCALING_NUMBER could have a few more decimal places.
 
     The first table's 'Optimal font-size' was done manually in the browser dev tools
@@ -186,7 +182,31 @@ pre {
     /* Default font size for browsers that don't support cqi container units */
     font-size: 16px;
     --magic-scaling-number: 165;
-    font-size: calc((var(--magic-scaling-number) / var(--preformatted-max-line-length)) * 1cqi);
+
+    /* the basic responsive font-size
+    calc() supported in chrome 26/firefox 16, and CSS variables in chrome 49/firefox 31,
+    so this is 2014 era CSS
+     */
+    --responsive-font-size: calc((var(--magic-scaling-number) / var(--preformatted-max-line-length)) * 1cqi);
+
+    /*
+    set the font-size in several ways for different browser support
+    ===============================================================
+    */
+    /*
+    var() supported in chrome 49/firefox 31,
+    so this is 2014 era CSS
+    */
+    font-size: var(--responsive-font-size);
+    /*
+    min() supported in Chrome 96/Firefox 75
+    so this is 2020 era CSS that supporting browsers will use instead of the previous one
+    */
+    font-size: min(
+        var(--responsive-font-size),
+        /* max font-size on desktop */
+        1.2rem
+    );
 }
 
 @media only screen {

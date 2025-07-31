@@ -32,10 +32,10 @@ import { DateTime } from 'luxon'
 import type { Rfc } from '~/generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
 import { safeJsonParse } from '~/utilities/json'
+import { fetchRetry } from '~/utilities/network'
 import { parseRFCId } from '~/utilities/rfc'
 import { rfcToRfcCommon } from '~/utilities/rfc-converters'
 import { RfcBucketHtmlDocumentSchema } from '~/utilities/rfc-validators'
-
 import {
   apiRfcDocRetrievePathBuilder,
   apiRfcBucketDocumentURLBuilder,
@@ -65,7 +65,7 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
   `info-buckethtmldocument-${sanitisedId}`,
   async () => {
     const url = apiRfcBucketDocumentURLBuilder(rfcNumber)
-    const response = await fetch(url)
+    const response = await fetchRetry(url)
     if (!response.ok) {
       throw Error(`${response.status}: ${response.statusText} ${url}`)
     }
@@ -76,7 +76,6 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
       console.log(errorTitle, maybeRfcBucketDocument)
       throw Error(`${errorTitle}. See console for more.`)
     }
-    console.log(url, "[DIS[", Object.keys(!maybeRfcBucketDocument), JSON.stringify(maybeRfcBucketDocument, null, 2), "]")
     const { data, error } = RfcBucketHtmlDocumentSchema.safeParse(maybeRfcBucketDocument)
     if (error) {
       console.log('Failed to validate', JSON.stringify(maybeRfcBucketDocument, null, 2), error)
@@ -85,7 +84,7 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
     return data
   })
 
-if (rfcDocRetrieveError.value || rfcBucketHtmlDocumentError.value) {
+if (rfcDocRetrieveError.value) {
   console.error(rfcDocRetrieveError.value, rfcBucketHtmlDocumentError.value)
   throw createError({
     statusCode: 404,
@@ -94,7 +93,17 @@ if (rfcDocRetrieveError.value || rfcBucketHtmlDocumentError.value) {
   })
 }
 
-const canonicalUrl = infoRfcPathBuilder(`rfc${rfcNumber}`)
+if (rfcBucketHtmlDocumentError.value) {
+  console.error(rfcBucketHtmlDocumentError.value)
+  throw createError({
+    statusCode: 500,
+    statusMessage: `Unable to load RFC content JSON from ${apiRfcBucketDocumentURLBuilder(rfcNumber)
+      } ${rfcBucketHtmlDocumentError.value}`,
+    fatal: true
+  })
+}
+
+const canonicalUrl = infoRfcPathBuilder(sanitisedId)
 
 useRfcEditorHead({
   title: rfcDocRetrieve.value?.title ?? '',

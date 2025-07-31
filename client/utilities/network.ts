@@ -5,6 +5,9 @@ type FetchOptions = NonNullable<Parameters<typeof fetch>[1]>
 const MAX_RETRIES_DEFAULT = 2
 const DELAY_BETWEEN_RETRIES_MS_DEFAULT = 200
 
+/** a `fetch()` wrapper that retries if there's a failure,
+   working around transient network errors (ie WiFi connectivity)
+*/
 export const fetchRetry = (
   url: string,
   fetchOptions?: FetchOptions,

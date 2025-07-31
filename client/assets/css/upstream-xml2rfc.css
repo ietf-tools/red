@@ -1040,7 +1040,7 @@ td {
 tr {
   break-inside: avoid;
 }
-tr:nth-child(2n+1) > td {
+tr:nth-child(even) > td {
   background-color: rgba(0,0,0,0.1);
 }
 /* Use style rules to govern display of the TOC. */

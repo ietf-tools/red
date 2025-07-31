@@ -149,12 +149,22 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
   const children = nodes.map(renderNodePojo)
   return h(Fragment, () => children)
 }
+
+const hasTouchStore = useHasTouchStore()
+
+const maxPreformattedLineLength = computed(() =>
+  hasTouchStore.hasTouch ?
+    props.rfcBucketHtmlDocument.maxPreformattedLineLength.maxWithAnchorSuffix :
+    props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
+)
 </script>
 
 <style lang="postcss">
 /** Note that this is postcss so we can use @nested-import */
 
 .rfc-content {
+  --layout-bleed-left: 10px;
+  --layout-bleed-right: 10px;
 
   ol,
   ul {
@@ -164,9 +174,6 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
 }
 
 .rfc-content-type-xml2rfc {
-  --layout-bleed-left: 10px;
-  --layout-bleed-right: 10px;
-
   /* Using postcss-nested-import to scope these imported styles,
      so that we can sandbox them and use them safely without major changes,
      to reduce maintenance burden.
@@ -182,8 +189,10 @@ html.dark .rfc-content-type-xml2rfc {
   /** container used to scale `font-size` with units like `cqi`
       https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries
   */
+  padding-left: var(--layout-bleed-left);
+  padding-right: var(--layout-bleed-right);
   container-type: inline-size;
-  --preformatted-max-line-length: v-bind(props.rfcBucketHtmlDocument.maxPreformattedLineLength);
+  --preformatted-max-line-length: v-bind(maxPreformattedLineLength);
 
   /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/rfc-plaintext.css";
