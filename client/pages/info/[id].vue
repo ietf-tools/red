@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-[100vh]">
     <NuxtLayout name="white">
-      <template v-if="rfcDocRetrieveError || rfcHtmlError || rfcBucketHtmlDocumentError">
+      <template v-if="rfcDocRetrieveError || rfcBucketHtmlDocumentError">
         <div class="container mx-auto">
           <Alert
             level="1"
@@ -9,7 +9,6 @@
             heading="Error"
           >
             {{ rfcDocRetrieveError }}
-            {{ rfcHtmlError }}
             {{ rfcBucketHtmlDocumentError }}
           </Alert>
         </div>
@@ -17,8 +16,7 @@
       <template v-else-if="
         rfc &&
         rfcDocRetrieveStatus === 'success' &&
-        rfcBucketHtmlDocument &&
-        rfcHtmlStatus === 'success'
+        rfcBucketHtmlDocument
       ">
         <RFCDocument
           :rfc="rfc"
@@ -33,13 +31,14 @@
 import { DateTime } from 'luxon'
 import type { Rfc } from '~/generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
-import { rfcBucketHtmlToRfcDocument } from '~/utilities/red-rfc-html-extractor-shared'
+import { safeJsonParse } from '~/utilities/json'
 import { parseRFCId } from '~/utilities/rfc'
 import { rfcToRfcCommon } from '~/utilities/rfc-converters'
+import { RfcBucketHtmlDocumentSchema } from '~/utilities/rfc-validators'
 
 import {
   apiRfcDocRetrievePathBuilder,
-  apiRfcBucketHtmlURLBuilder,
+  apiRfcBucketDocumentURLBuilder,
   infoRfcPathBuilder
 } from '~/utilities/url'
 
@@ -62,23 +61,32 @@ const rfc = computed(() => {
   return rfcToRfcCommon(rfcDocRetrieve.value)
 })
 
-const {
-  data: rfcHtml,
-  status: rfcHtmlStatus,
-  error: rfcHtmlError
-} = await useAsyncData<string>(`info-dochtml-${sanitisedId}`, async () =>
-  $fetch(apiRfcBucketHtmlURLBuilder(rfcNumber))
-)
-
 const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
-  `info-dochtml-${sanitisedId}-rfc-document`,
+  `info-buckethtmldocument-${sanitisedId}`,
   async () => {
-    if (!rfcHtml.value) return undefined
-    return rfcBucketHtmlToRfcDocument(rfcHtml.value, sanitisedId)
-  }
-)
+    const url = apiRfcBucketDocumentURLBuilder(rfcNumber)
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw Error(`${response.status}: ${response.statusText} ${url}`)
+    }
+    const text = await response.text()
+    const maybeRfcBucketDocument = safeJsonParse(text)
+    if (typeof maybeRfcBucketDocument !== 'object') {
+      const errorTitle = `Expected JSON object from ${url} but received ${typeof maybeRfcBucketDocument}`
+      console.log(errorTitle, maybeRfcBucketDocument)
+      throw Error(`${errorTitle}. See console for more.`)
+    }
+    console.log(url, "[DIS[", Object.keys(!maybeRfcBucketDocument), JSON.stringify(maybeRfcBucketDocument, null, 2), "]")
+    const { data, error } = RfcBucketHtmlDocumentSchema.safeParse(maybeRfcBucketDocument)
+    if (error) {
+      console.log('Failed to validate', JSON.stringify(maybeRfcBucketDocument, null, 2), error)
+      throw error
+    }
+    return data
+  })
 
-if (rfcHtmlError.value || rfcBucketHtmlDocumentError.value) {
+if (rfcDocRetrieveError.value || rfcBucketHtmlDocumentError.value) {
+  console.error(rfcDocRetrieveError.value, rfcBucketHtmlDocumentError.value)
   throw createError({
     statusCode: 404,
     statusMessage: 'Not Found',

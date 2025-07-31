@@ -1,17 +1,12 @@
 /**
  * W3C DOMParser factory that works on server and browser
  */
-export const getDOMParser = async (): Promise<DOMParser> => {
+export const getDOMParser = (): DOMParser => {
   // browser environment
   if (typeof window !== 'undefined') {
     return new DOMParser()
   }
-
-  // Node environment... hopefully Nuxt can treeshake JSDOM from clientside
-  const jsdomModule = await import('jsdom')
-  const { JSDOM } = jsdomModule
-  const jsdom = new JSDOM()
-  return new jsdom.window.DOMParser()
+  throw Error(`Unable to get DOMParser`)
 }
 
 export const isSelectElement = (
@@ -45,6 +40,7 @@ const getNodeType = (maybeNode: unknown): number | undefined => {
 
 const W3CDOM_NODETYPE_ELEMENT = 1
 const W3CDOM_NODETYPE_TEXT = 3
+const W3CDOM_NODETYPE_COMMENT = 8
 
 /**
  * Technically just checks whether it's an Element not an HTMLElement
@@ -57,6 +53,9 @@ export const isHtmlElement = (
 
 export const isTextNode = (maybeText: unknown): maybeText is Text =>
   getNodeType(maybeText) === W3CDOM_NODETYPE_TEXT
+
+export const isCommentNode = (maybeComment: unknown): maybeComment is Comment =>
+  getNodeType(maybeComment) === W3CDOM_NODETYPE_COMMENT
 
 export const elementAttributesToObject = (
   attributes: NamedNodeMap

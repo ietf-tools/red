@@ -40,7 +40,7 @@ export type ValidHrefs =
   | ReturnType<typeof wikiDokuPathBuilder>
   | ReturnType<typeof materialsPathBuilder>
   | ReturnType<typeof dashboardPathBuilder>
-  | ReturnType<typeof apiRfcBucketHtmlURLBuilder>
+  | ReturnType<typeof apiRfcBucketDocumentURLBuilder>
   | ReturnType<typeof apiRfcDocRetrievePathBuilder>
 
 export const HOME_PATH = '/'
@@ -251,12 +251,12 @@ export const mailToBuilder = (email: string) => {
   return `mailto:${email}` as const
 }
 
-export const apiRfcBucketHtmlURLBuilder = (rfcNumber: number) => {
+export const apiRfcBucketDocumentURLBuilder = (rfcNumber: number) => {
   // Intentionally not a relative url, the PUBLIC_SITE prefix is because this URL is served
   // from a bucket on prod; it's not something that a localhost Nuxt can serve.
   // The CORS headers of the prod URL should allow access from localhost:3000 as well as staging,
   // etc. sites.
-  return `${PUBLIC_SITE}/rfc-neue/rfc${rfcNumber}.html` as const
+  return `${PUBLIC_SITE}/api/v1/rfc-html/${rfcNumber}.json` as const
 }
 
 export const apiRfcDocRetrievePathBuilder = (rfcNumber: number) => {

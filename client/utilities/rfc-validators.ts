@@ -1,3 +1,11 @@
+/**
+ * This file should be copied between these two repos
+ * https://github.com/ietf-tools/red/blob/main/client/utilities/rfc-validators.ts
+ * https://github.com/ietf-tools/red-rfc-html-extractor/blob/main/src/rfc-validators.ts
+ * to ensure there's a shared schema definition between repos for some JSON files.
+ *
+ * FIXME: make this code a shared dependency (ie, NPM package)
+ */
 import { z } from 'zod'
 
 const DocumentHtmlTypeSchema = z.union([
@@ -184,7 +192,7 @@ const NodeSchema = z.union([ElementSchema, TextSchema])
 // pojo = plain old javascript object, rather than an instanceof Node class
 export type NodePojo = z.infer<typeof NodeSchema>
 
-// pojo = plain old javascript object, rather than an instanceof Node class
+// pojo = plain old javascript object, rather than an instanceof Document class
 export type DocumentPojo = NodePojo[]
 
 /**
@@ -199,3 +207,13 @@ export const RfcBucketHtmlDocumentSchema = z.object({
 })
 
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
+
+export const isNodePojo = (maybeNode: unknown): maybeNode is NodePojo => {
+  return (
+    !!maybeNode &&
+    typeof maybeNode === 'object' &&
+    'type' in maybeNode &&
+    typeof maybeNode.type === 'string' &&
+    ['Element', 'Text'].includes(maybeNode.type)
+  )
+}
