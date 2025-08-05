@@ -20,13 +20,9 @@
     "test:types": "nuxt prepare && vue-tsc --noEmit",
     "test:unittests": "vitest run",
     "test:unittests:watch": "vitest",
-    "test:story": "npm run story:build && LOST_PIXEL_DISABLE_TELEMETRY=1 npx --no lost-pixel docker",
-    "test:story:view": "npx --no -c 'vite dev ./visual-regression-viewer'",
-    "test:story:approve": "npm run story:build && LOST_PIXEL_DISABLE_TELEMETRY=1 npx --no lost-pixel docker update",
     "generate": "npm run generate:api-red",
     "generate:api-red": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/red-client.ts"
   },
-  "//": "If updating lost-pixel sync the version to the visual-regression-test.yml and post-create.sh or rendering / filenames generated etc may be different",
   "dependencies": {
     "@internationalized/date": "3.8.1",
     "@nuxt/content": "3.6.3",
