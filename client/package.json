@@ -66,7 +66,6 @@
     "@vue/test-utils": "2.4.6",
     "fast-xml-parser": "4.5.1",
     "happy-dom": "15.11.7",
-    "lost-pixel": "3.22.0",
     "playwright": "1.49.1",
     "playwright-core": "1.49.1",
     "vitest": "2.1.8",
