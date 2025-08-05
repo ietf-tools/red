@@ -340,20 +340,26 @@ export const linkPreviewImageUrlBuilder = (
 export const isProdApi = (apiBaseUrl: string): boolean =>
   !apiBaseUrl.includes('localhost')
 
+/**
+ * Whether href is
+ * 1) a relative link to the current site; or
+ * 2) an absolute link the prod site.
+ **/
 export const isRfcEditorSite = (href?: string): boolean => {
   if (href === undefined) {
     return false
   }
-  const hrefUrl = tryParseHref(href)
-  if (!hrefUrl) {
+  if (href.startsWith(PUBLIC_SITE)) {
+    return true
+  }
+  if (
+    href.startsWith('//') ||
+    href.startsWith('http://') ||
+    href.startsWith('https://')
+  ) {
     return false
   }
-  return (
-    (typeof window !== 'undefined' &&
-      !!window.location &&
-      hrefUrl.host === window.location.host) || // if it's same `location` then it's either prod, staging, or a dev server so we'll attempt to parse RFC numbers from the href
-    hrefUrl.host === publicSiteUrl.host // if it's a hardcoded link to prod then we'll also attempt it
-  )
+  return true
 }
 
 const RFC_REGEX = /(rfc[0-9]+)/i

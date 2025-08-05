@@ -1,10 +1,7 @@
 <template>
   <component
     :is="`h${props.level}`"
-    :id="
-      // we always make an id. hasInternalLink only affects whether to show a '#' link
-      props.id ?? getAnchorId($slots.default)
-      "
+    :id="props.id"
     :class="[
       headingStyles[`h${styleLevel || level}`],
       props.class,
@@ -20,14 +17,11 @@
     />
     <slot />
     <a
-      v-if="hasInternalLink"
-      :href="hasInternalLink ?
-        `#${props.id ?? getAnchorId($slots.default)}`
-        : undefined
-        "
+      v-if="props.id && hasInternalLink"
+      :href="hasInternalLink ? `#${props.id}` : undefined"
       class="ml-1 opacity-0 transition-opacity no-underline group-hover:opacity-100 font-normal"
       title="Link to this heading"
-      @click="hashClickHandler(`#${getAnchorId($slots.default)}`)"
+      @click="hashClickHandler(`#${props.id}`)"
     >
       &para;
     </a>
@@ -35,10 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Slot } from 'vue'
 import type { VueStyleClass } from '~/utilities/vue'
-import { getVNodeText } from '~/utilities/vue'
-import { textToAnchorId } from '~/utilities/url'
 import { copyToClipboard } from '~/utilities/clipboard'
 import type { HeadingLevel } from '~/utilities/html'
 
@@ -103,31 +94,6 @@ const headingStyles: Record<`h${Props['level']}`, string> = {
 }
 
 const props = defineProps<Props>()
-
-type VueDefaultSlotType =
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Slot<any> | undefined // this type is from Vue itself ie $slots.default in the template, it's not an intentional use of `any`.
-
-/**
- * Derives an DOM Id from the text of the default <slot />.
- * A DOM Id is a string with no whitespace and adhering to other DOM Id rules.
- *
- * This calculation is done in the render rather than as a Vue `setup`-phase computed() property because accessing
- * the content of the slot outside the render would trigger this Vue warning:
- *
- *   "Slot invoked outside of the render function
- *    this will not track dependencies used in the slot.
- *    Invoke the slot function inside the render function instead."
- *
- * An article on the general problem: https://zelig880.com/how-to-fix-slot-invoked-outside-of-the-render-function-in-vue-3
- *
- */
-const getAnchorId = (defaultSlot: VueDefaultSlotType): string | undefined => {
-  const defaultSlotValue = defaultSlot ? defaultSlot() : []
-  const slotText = getVNodeText(defaultSlotValue)
-  const anchorId = textToAnchorId(slotText)
-  return anchorId
-}
 
 const hashClickHandler = async (hash: string) => {
   const target = new URL(hash, location.toString())

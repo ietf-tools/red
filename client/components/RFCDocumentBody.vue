@@ -74,7 +74,6 @@
 import { createTextVNode } from 'vue'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import HorizontalScrollable from './HorizontalScrollable.vue'
-import Fragment from './Fragment.vue'
 import {
   formatTitleAsVNode,
   parseRFCId,
@@ -137,7 +136,8 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
         case 'HorizontalScrollable':
           // Note that children is a function, as required by Vue for non-HTML components,
           // so that it can defer rendering children
-          return h(HorizontalScrollable, node.attributes, () => childrenForVue)
+          // return h(HorizontalScrollable, node.attributes, () => childrenForVue)
+          return h('div', node.attributes, childrenForVue)
       }
       return h(node.nodeName, node.attributes, childrenForVue)
     } else if (node.type === 'Text') {
@@ -147,7 +147,8 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
   }
 
   const children = nodes.map(renderNodePojo)
-  return h(Fragment, () => children)
+  const childrenForVue = unwrapChildrenForVue(children)
+  return h('div', childrenForVue)
 }
 
 const hasTouchStore = useHasTouchStore()
