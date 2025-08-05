@@ -1,4 +1,3 @@
-/// <reference types="histoire" />
 import tailwindcss from '@tailwindcss/vite'
 import redirects from './redirects.json'
 import { isMiddlewareRedirect } from './utilities/redirects'
@@ -123,7 +122,7 @@ export default defineNuxtConfig({
         prerender: false // there are too many RFCs to prerender them, but we can at least cache rendering via `swr`
       },
       ...redirects.redirects
-        .filter((redirect) => !isMiddlewareRedirect(redirect[0]))
+        .filter((redirect) => redirect[0] && !isMiddlewareRedirect(redirect[0]))
         .reduce((acc, redirect) => {
           const [fromPath, toPathOrUrl] = redirect
           if (typeof fromPath !== 'string' || typeof toPathOrUrl !== 'string') {

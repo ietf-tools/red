@@ -1,27 +1,31 @@
 <template>
   <fieldset class="w-full">
     <legend class="text-base font-bold text-blue-900 dark:text-slate-300 mb-1">{{ props.label }}</legend>
-    <div
-      class="w-full text-base"
-    >
+    <div class="w-full text-base">
       <ais-range-input
         ref="rangeInput"
         attribute="publicationDate"
       >
         <template #default="{ currentRefinement, range, refine }">
           <div class="flex items-center">
-            <div class="flex items-center bg-white dark:bg-black border rounded-xs border-gray-400 hover:border-black dark:border-white dark:hover:border-gray-300 dark:text-white px-2 py-1.5 shadow-sm scheme-light dark:scheme-dark">
+            <div
+              class="flex items-center bg-white dark:bg-black border rounded-xs border-gray-400 hover:border-black dark:border-white dark:hover:border-gray-300 dark:text-white px-2 py-1.5 shadow-sm scheme-light dark:scheme-dark"
+            >
               <!-- START YEAR -->
               <select-root
                 :model-value="getYear(currentRefinement.min, range.min)"
                 @update:model-value="val => refine(adaptUpdate(currentRefinement, range, 'minYear', val))"
-                >
+              >
                 <select-trigger
                   class="flex items-center"
                   :aria-label="props.label + ' start year'"
                 >
                   <select-value placeholder="YYYY" />
-                  <icon name="ph:caret-down-bold" size=".8em" class="ml-1" />
+                  <icon
+                    name="ph:caret-down-bold"
+                    size=".8em"
+                    class="ml-1"
+                  />
                 </select-trigger>
                 <select-portal>
                   <select-content
@@ -34,9 +38,12 @@
                         :key="year"
                         :value="year"
                         class="flex items-center pl-[20px] cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700"
-                        >
+                      >
                         <SelectItemIndicator class="absolute left-0 w-[25px] inline-flex items-center justify-center">
-                          <icon name="fa-solid:check" size=".8em" />
+                          <icon
+                            name="fa-solid:check"
+                            size=".8em"
+                          />
                         </SelectItemIndicator>
                         <select-item-text>{{ year }}</select-item-text>
                       </select-item>
@@ -48,13 +55,17 @@
               <select-root
                 :model-value="getMonth(currentRefinement.min, range.min)"
                 @update:model-value="val => refine(adaptUpdate(currentRefinement, range, 'minMonth', val))"
-                >
+              >
                 <select-trigger
                   class="flex items-center ml-2"
                   :aria-label="props.label + ' start month'"
                 >
                   <select-value placeholder="MMM" />
-                  <icon name="ph:caret-down-bold" size=".8em" class="ml-1" />
+                  <icon
+                    name="ph:caret-down-bold"
+                    size=".8em"
+                    class="ml-1"
+                  />
                 </select-trigger>
                 <select-portal>
                   <select-content
@@ -67,9 +78,12 @@
                         :key="month.num"
                         :value="month.num"
                         class="flex items-center pl-[20px] cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700"
-                        >
+                      >
                         <SelectItemIndicator class="absolute left-0 w-[25px] inline-flex items-center justify-center">
-                          <icon name="fa-solid:check" size=".8em" />
+                          <icon
+                            name="fa-solid:check"
+                            size=".8em"
+                          />
                         </SelectItemIndicator>
                         <select-item-text>{{ month.name }}</select-item-text>
                       </select-item>
@@ -79,18 +93,24 @@
               </select-root>
             </div>
             <span class="px-2">to</span>
-            <div class="flex items-center bg-white dark:bg-black border rounded-xs border-gray-400 hover:border-black dark:border-white dark:hover:border-gray-300 dark:text-white px-2 py-1.5 shadow-sm scheme-light dark:scheme-dark">
+            <div
+              class="flex items-center bg-white dark:bg-black border rounded-xs border-gray-400 hover:border-black dark:border-white dark:hover:border-gray-300 dark:text-white px-2 py-1.5 shadow-sm scheme-light dark:scheme-dark"
+            >
               <!-- END YEAR -->
               <select-root
                 :model-value="getYear(currentRefinement.max, range.max)"
                 @update:model-value="val => refine(adaptUpdate(currentRefinement, range, 'maxYear', val))"
-                >
+              >
                 <select-trigger
                   class="flex items-center"
                   :aria-label="props.label + ' end year'"
                 >
                   <select-value placeholder="YYYY" />
-                  <icon name="ph:caret-down-bold" size=".8em" class="ml-1" />
+                  <icon
+                    name="ph:caret-down-bold"
+                    size=".8em"
+                    class="ml-1"
+                  />
                 </select-trigger>
                 <select-portal>
                   <select-content
@@ -103,9 +123,12 @@
                         :key="year"
                         :value="year"
                         class="flex items-center pl-[20px] cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700"
-                        >
+                      >
                         <SelectItemIndicator class="absolute left-0 w-[25px] inline-flex items-center justify-center">
-                          <icon name="fa-solid:check" size=".8em" />
+                          <icon
+                            name="fa-solid:check"
+                            size=".8em"
+                          />
                         </SelectItemIndicator>
                         <select-item-text>{{ year }}</select-item-text>
                       </select-item>
@@ -117,13 +140,17 @@
               <select-root
                 :model-value="getMonth(currentRefinement.max, range.max)"
                 @update:model-value="val => refine(adaptUpdate(currentRefinement, range, 'maxMonth', val))"
-                >
+              >
                 <select-trigger
                   class="flex items-center ml-2"
                   :aria-label="props.label + ' start year'"
                 >
                   <select-value placeholder="MMM" />
-                  <icon name="ph:caret-down-bold" size=".8em" class="ml-1" />
+                  <icon
+                    name="ph:caret-down-bold"
+                    size=".8em"
+                    class="ml-1"
+                  />
                 </select-trigger>
                 <select-portal>
                   <select-content
@@ -136,9 +163,12 @@
                         :key="month.num"
                         :value="month.num"
                         class="flex items-center pl-[20px] cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700"
-                        >
+                      >
                         <SelectItemIndicator class="absolute left-0 w-[25px] inline-flex items-center justify-center">
-                          <icon name="fa-solid:check" size=".8em" />
+                          <icon
+                            name="fa-solid:check"
+                            size=".8em"
+                          />
                         </SelectItemIndicator>
                         <select-item-text>{{ month.name }}</select-item-text>
                       </select-item>
@@ -203,18 +233,18 @@ function getMonth(ts: number, fallback: number): number | undefined {
 }
 
 function adaptUpdate(currentRange: UnixRange, rangeBounds: UnixRange, mode: UpdateMode, newValue: AcceptableValue): UnixRange {
-  if (typeof newValue === 'string') {
-    newValue = parseInt(newValue)
-  } else if (typeof newValue === 'object') {
+  if (typeof newValue === 'object') {
     return currentRange
   }
+
+  const newValueNumber = (typeof newValue === 'string') ? parseFloat(newValue) : Number(newValue)
 
   if (mode.startsWith('min')) {
     let startDate = DateTime.fromSeconds(currentRange.min ?? rangeBounds.min, { zone: 'utc' })
     if (mode.endsWith('Year')) {
-      startDate = startDate.set({ year: newValue })
+      startDate = startDate.set({ year: newValueNumber })
     } else {
-      startDate = startDate.set({ month: newValue })
+      startDate = startDate.set({ month: newValueNumber })
     }
     const startDateUnix = startDate.startOf('month').toUnixInteger()
     return {
@@ -224,9 +254,9 @@ function adaptUpdate(currentRange: UnixRange, rangeBounds: UnixRange, mode: Upda
   } else {
     let endDate = DateTime.fromSeconds(currentRange.max ?? rangeBounds.max, { zone: 'utc' })
     if (mode.endsWith('Year')) {
-      endDate = endDate.set({ year: newValue })
+      endDate = endDate.set({ year: newValueNumber })
     } else {
-      endDate = endDate.set({ month: newValue })
+      endDate = endDate.set({ month: newValueNumber })
     }
     const endDateUnix = endDate.endOf('month').toUnixInteger()
     return {
