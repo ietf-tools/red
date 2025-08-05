@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { DateTime } from 'luxon'
-import type { SearchParamsSchema } from '../server/api/search'
-import { monthNames } from '../utilities/strings'
+import type { SearchParamsSchema } from '../../server/api/search'
+import { monthNames } from './strings'
 
 const LegacySearchParamsSchema = z.object({
   rfc: z.string().optional(),

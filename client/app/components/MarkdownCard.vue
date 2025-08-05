@@ -1,7 +1,14 @@
 <template>
-  <Card :href="props.id" heading-level="3" has-cover-link>
+  <Card
+    :href="props.id"
+    heading-level="3"
+    has-cover-link
+  >
     <template #headingTitle>{{ page?.title }} {{ error }}</template>
-    <p v-if="description" class="text-base mt-2 text-blue-900 dark:text-white">
+    <p
+      v-if="description"
+      class="text-base mt-2 text-blue-900 dark:text-white"
+    >
       {{ description }}
     </p>
   </Card>
@@ -17,9 +24,7 @@ type Props = {
 }
 const props = defineProps<Props>()
 
-const { error, data: page } = await useAsyncData(props.id, () =>
-  queryCollection('content').path(props.id).first()
-)
+const { error, data: page } = await useAsyncData(props.id, () => queryCollection('content').path(props.id).first())
 
 const description = computed(() => page.value?.description)
 </script>

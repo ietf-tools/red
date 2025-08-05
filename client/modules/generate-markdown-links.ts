@@ -12,7 +12,7 @@ import {
   generateHeadingId,
   parseHtml,
   walkNodes
-} from '~/utilities/test-utils/html-test-utils'
+} from '../app/utilities/test-utils/html-test-utils'
 
 const __dirname = import.meta.dirname
 const clientPath = path.resolve(__dirname, '..')
@@ -130,7 +130,7 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
 
   const markdownsValidHrefs: MarkdownsValidHrefs = await Promise.all(
     docs.map(async (doc, index) => {
-      const validHrefs = []
+      const validHrefs: string[] = []
       const markdownPath = markdownPaths[index]
       const publicPath = markdownPathToPublicPath(markdownPath)
       const anchorIds: string[] = []

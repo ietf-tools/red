@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import redirects from './redirects.json'
-import { isMiddlewareRedirect } from './utilities/redirects'
-import { API_ROUTES_TO_PRERENDER } from './utilities/url'
+import { isMiddlewareRedirect } from './app/utilities/redirects'
+import { API_ROUTES_TO_PRERENDER } from './app/utilities/url'
 
 type RouteRules = NonNullable<
   Parameters<typeof defineNuxtConfig>[0]['routeRules']
@@ -12,11 +12,12 @@ const oneDayInSeconds = 24 * oneHourInSeconds
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  compatibilityDate: '2025-08-05',
+  devtools: { enabled: false },
   typescript: { strict: true },
   modules: [
-    '@nuxt/content', // Note: don't use 'Nuxt Device' see note in responsiveMode.ts
+    // Note: don't use 'Nuxt Device' see note in responsiveMode.ts
+    '@nuxt/content',
     'reka-ui/nuxt',
     '@nuxt/test-utils/module',
     '@nuxt/eslint',

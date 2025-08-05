@@ -1,7 +1,7 @@
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { setTimeoutPromise } from './promises'
 import { isProdApi } from './url'
-import { ApiClient } from '~/generated/red-client'
+import { ApiClient } from '../../generated/red-client'
 
 export const getRedClient = () => {
   const isServer = import.meta.server
@@ -80,7 +80,11 @@ export const getRFCs = async ({
     docListArg.sort = ['-number'] // sort by oldest RFC to find the end
     docListArg.limit = 1 // we only need one result
     const response = await apiClient.red.docList(docListArg)
-    const largestRfcNumber = response.results[0].number
+    const firstResult = response.results[0]
+    if (!firstResult) {
+      throw Error('Internal error. Unable to retrieve largest RFC number.')
+    }
+    const largestRfcNumber = firstResult.number
     return largestRfcNumber
   }
 

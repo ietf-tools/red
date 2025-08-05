@@ -13,7 +13,7 @@ import {
 } from '~/utilities/test-utils/html-test-utils'
 
 const __dirname = import.meta.dirname
-const clientPath = path.resolve(__dirname, '..')
+const clientPath = path.resolve(__dirname, '..', '..')
 const contentPath = path.resolve(clientPath, 'content')
 const publicPath = path.resolve(clientPath, 'public')
 
@@ -69,12 +69,19 @@ test('Markdown links validation', async () => {
   }
 
   markdownFilesData.forEach((markdownData, index) => {
-    validateMarkdown(markdownData, markdownPaths[index])
+    const markdownPath = markdownPaths[index]
+    if (!markdownPath) {
+      throw Error(`markdownPath should not be falsy`)
+    }
+    validateMarkdown(markdownData, markdownPath)
   })
 
   await Promise.all(
     docs.map(async (doc, index) => {
       const markdownPath = markdownPaths[index]
+      if (!markdownPath) {
+        throw Error(`markdownPath should not be falsy`)
+      }
       await walkNodes(doc, (node) => validateImage(node, markdownPath))
     })
   )

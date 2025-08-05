@@ -1,4 +1,4 @@
-import type { Rfc, RfcMetadata } from '../generated/red-client'
+import type { Rfc, RfcMetadata } from '../../generated/red-client'
 
 export const exampleRfc: Rfc = {
   number: 9703,

@@ -9,12 +9,14 @@ import { defineNuxtModule, useLogger } from 'nuxt/kit'
 import {
   imagePreviewDimensions,
   type ImagePreviewFilename
-} from '~/utilities/head'
+} from '../app/utilities/head'
+import { assertIsNumber } from '../app/utilities/typescript'
 
 const __dirname = import.meta.dirname
 const clientPath = path.resolve(__dirname, '..')
 const linkPreviewImageDefault = path.resolve(
   clientPath,
+  'app',
   'assets',
   'link-preview-image-default.svg'
 )
@@ -26,6 +28,8 @@ type Logger = ReturnType<typeof useLogger>
 const regenerateLinkPreviewImages = async (logger?: Logger) => {
   await Promise.all(
     imagePreviewDimensions.map(([width, height]) => {
+      assertIsNumber(width)
+      assertIsNumber(height)
       const readableStream = fs.createReadStream(linkPreviewImageDefault, {
         encoding: 'utf8'
       })

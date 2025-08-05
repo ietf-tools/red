@@ -1,5 +1,5 @@
 import { kebabCase } from 'lodash-es'
-import { parseRFCId } from '../utilities/rfc'
+import { parseRFCId } from './rfc'
 import type { imagePreviewDimensions } from './head'
 
 /**

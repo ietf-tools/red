@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@config '../../tailwind.config.js';
+@config '../../../tailwind.config.js';
 
 @theme {
   --animate-wiggle: wiggle 1s ease-in-out infinite;

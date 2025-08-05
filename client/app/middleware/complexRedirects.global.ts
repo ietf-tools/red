@@ -1,5 +1,5 @@
 import { escapeRegExp } from 'lodash-es'
-import redirects from '../redirects.json'
+import redirects from '../../redirects.json'
 import { isMiddlewareRedirect } from '~/utilities/redirects'
 
 const middlewareRedirects = redirects.redirects
