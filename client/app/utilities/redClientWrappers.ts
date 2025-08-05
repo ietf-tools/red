@@ -1,7 +1,7 @@
+import { ApiClient } from '../../generated/red-client'
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { setTimeoutPromise } from './promises'
 import { isProdApi } from './url'
-import { ApiClient } from '../../generated/red-client'
 
 export const getRedClient = () => {
   const isServer = import.meta.server

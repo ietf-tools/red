@@ -17,7 +17,7 @@
     "test": "TZ=UTC npm run test:unittests && npm run test:types && npm run test:lint",
     "test:lint": "eslint .",
     "test:lint:fix": "eslint . --fix",
-    "test:types": "nuxt prepare && vue-tsc -b --noEmit",
+    "test:types": "nuxt prepare && vue-tsc --noEmit",
     "test:unittests": "vitest run",
     "test:unittests:watch": "vitest",
     "test:story": "npm run story:build && LOST_PIXEL_DISABLE_TELEMETRY=1 npx --no lost-pixel docker",
@@ -45,7 +45,7 @@
     "luxon": "3.5.0",
     "nitropack": "2.10.4",
     "nuxt": "4.0.2",
-    "pinia-plugin-persistedstate": "4.3.0",
+    "pinia-plugin-persistedstate": "4.4.1",
     "postcss-nested-import": "1.3.0",
     "reka-ui": "2.4.1",
     "remark-heading-id": "1.0.1",
@@ -70,7 +70,7 @@
     "playwright": "1.49.1",
     "playwright-core": "1.49.1",
     "vitest": "2.1.8",
-    "vue-tsc": "2.0.29"
+    "vue-tsc": "3.0.5"
   },
   "peerDependencies": {
     "typescript": "5.5.4"
