@@ -5,6 +5,5 @@
     { "path": "./.nuxt/tsconfig.server.json" },
     { "path": "./.nuxt/tsconfig.shared.json" },
     { "path": "./.nuxt/tsconfig.node.json" }
-  ],
-  "includes": ["types/*.d.ts"]
+  ]
 }

@@ -189,7 +189,7 @@ export const rfcJSONPathBuilder = (rfcId: string) => {
 
 /**
  * This is only used for TS to check valid markdown paths.
- * It's just an identity function.
+ * It's just an 'identity function'.
  */
 export const markdownPathBuilder = (markdownPath: MarkdownValidHrefs) =>
   markdownPath

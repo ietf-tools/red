@@ -20,7 +20,7 @@ const contentPath = path.resolve(clientPath, 'content')
 
 const generatedMarkdownValidHrefs = path.resolve(
   clientPath,
-  'types',
+  'shared',
   'markdown-valid-hrefs.d.ts'
 )
 const generatedMarkdownAllHrefs = path.resolve(
@@ -132,6 +132,11 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
     docs.map(async (doc, index) => {
       const validHrefs: string[] = []
       const markdownPath = markdownPaths[index]
+      if (typeof markdownPath !== 'string') {
+        throw Error(
+          `Expected string but markdownPath was ${typeof markdownPath}`
+        )
+      }
       const publicPath = markdownPathToPublicPath(markdownPath)
       const anchorIds: string[] = []
       await walkNodes(doc, async (node) => {
@@ -222,10 +227,14 @@ const regenerateReportForAllMarkdownLinks = async (logger?: Logger) => {
     `${generatedFileWarningHeader}// Compares markdown hrefs against type ValidHrefs\nimport type { ValidHrefs } from '../utilities/url'\n\n${markdownsAllHrefs
       .map((markdownHrefs) =>
         markdownHrefs.hrefs
-          .map(
-            (href, index) =>
-              `const _${camelCase(markdownHrefs.markdownPath)}${index + 1}: ValidHrefs | ${markdownFileInternalLinksTypeBuilder(markdownHrefs.markdownPath)} = ${JSON.stringify(href)} // if there is a TS error fix the Markdown link in ${markdownHrefs.markdownPath}`
-          )
+          .map((href, index) => {
+            if (typeof markdownHrefs.markdownPath !== 'string') {
+              throw Error(
+                `Expected string but markdownHrefs.markdownPath was ${typeof markdownHrefs.markdownPath}`
+              )
+            }
+            return `const _${camelCase(markdownHrefs.markdownPath)}${index + 1}: ValidHrefs | ${markdownFileInternalLinksTypeBuilder(markdownHrefs.markdownPath)} = ${JSON.stringify(href)} // if there is a TS error fix the Markdown link in ${markdownHrefs.markdownPath}`
+          })
           .join('\n')
       )
       .join('\n\n')}`
@@ -246,7 +255,7 @@ export default defineNuxtModule({
         // then we don't want to do anything
         // otherwise we could be stuck in a loop
         watcherPath.includes('generated/') ||
-        watcherPath.includes('types/')
+        watcherPath.includes('shared/')
       ) {
         return
       }

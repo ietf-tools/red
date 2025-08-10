@@ -88,7 +88,7 @@ export default defineNuxtModule({
         // then we don't want to do anything
         // otherwise we could be stuck in a loop
         watcherPath.includes('generated/') ||
-        watcherPath.includes('types/')
+        watcherPath.includes('shared/')
       ) {
         return
       }

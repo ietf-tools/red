@@ -85,6 +85,9 @@ export const parseRFCId = (title: string): RFCId => {
     .match(/\d+|\D+/g)
 
   if (parts?.length === 2) {
+    if (typeof parts[1] !== 'string') {
+      throw Error(`Failed to parse RFC. Was ${typeof parts[1]}`)
+    }
     return {
       type: parts[0].toUpperCase(),
       number: parseInt(parts[1], 10).toString()
@@ -92,6 +95,9 @@ export const parseRFCId = (title: string): RFCId => {
   }
 
   if (parts?.length === 3) {
+    if (typeof parts[1] !== 'string') {
+      throw Error(`Failed to parse RFC. Was ${typeof parts[1]}`)
+    }
     return {
       type: parts[0].toUpperCase(),
       number: parseInt(parts[1], 10).toString(),
