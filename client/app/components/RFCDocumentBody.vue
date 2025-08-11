@@ -1,5 +1,4 @@
 <template>
-
   <div class="flex flex-col">
     <Breadcrumbs
       :breadcrumb-items="breadcrumbItems"
