@@ -1,28 +1,11 @@
 /**
 
-This is a forked from
-
+This was forked from
 https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
-
-*/
-/*
-
-  NOTE: Changes at the bottom of this file overrides some earlier settings.
-
-  Once the style has stabilized and has been adopted as an official RFC style,
-  this can be consolidated so that style settings occur only in one place, but
-  for now the contents of this file consists first of the initial CSS work as
-  provided to the RFC Formatter (xml2rfc) work, followed by itemized and
-  commented changes found necessary during the development of the v3
-  formatters.
 
 */
 
 /* fonts */
-/* @import url('https://fonts.googleapis.com/css?family=Noto+Sans'); Sans-serif */
-/* @import url('https://fonts.googleapis.com/css?family=Noto+Serif');  Serif (print) */
-
-
 :root {
   --font-sans: Arial, Helvetica, sans-serif;
   --font-serif: 'Times', 'Times New Roman', serif;
@@ -30,11 +13,11 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 }
 
 @viewport {
-  zoom: 1.0;
+  zoom: 1;
 }
 @-ms-viewport {
   width: extend-to-zoom;
-  zoom: 1.0;
+  zoom: 1;
 }
 /* general and mobile first */
 .ears {
@@ -42,12 +25,29 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 }
 
 /* headings */
-#title, h1, h2, h3, h4, h5, h6 {
+#title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 1em 0 0.5em;
   font-weight: bold;
-  line-height: 1.3;
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
 }
+#title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+address {
+  line-height: 1.5;
+}
+
 #title {
   clear: both;
   border-bottom: 1px solid #ddd;
@@ -63,20 +63,21 @@ h1 {
 }
 h2 {
   font-size: 22px;
-  margin-top: -20px;  /* provide offset for in-page anchors */
+  margin-top: -20px; /* provide offset for in-page anchors */
   padding-top: 33px;
 }
 h3 {
   font-size: 18px;
-  margin-top: -36px;  /* provide offset for in-page anchors */
+  margin-top: -36px; /* provide offset for in-page anchors */
   padding-top: 42px;
 }
 h4 {
   font-size: 16px;
-  margin-top: -36px;  /* provide offset for in-page anchors */
+  margin-top: -36px; /* provide offset for in-page anchors */
   padding-top: 42px;
 }
-h5, h6 {
+h5,
+h6 {
   font-size: 14px;
 }
 #n-copyright-notice {
@@ -90,7 +91,8 @@ p {
   margin: 0 0 1em 0;
   text-align: left;
 }
-div, span {
+div,
+span {
   position: relative;
 }
 div {
@@ -129,13 +131,16 @@ svg {
     max-width: 660px;
   }
 }
-svg[font-family~="serif" i], svg [font-family~="serif" i] {
+svg[font-family~='serif' i],
+svg [font-family~='serif' i] {
   font-family: var(--font-serif);
 }
-svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+svg[font-family~='sans-serif' i],
+svg [font-family~='sans-serif' i] {
   font-family: var(--font-sans);
 }
-svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+svg[font-family~='monospace' i],
+svg [font-family~='monospace' i] {
   font-family: var(--font-mono);
 }
 .alignCenter.art-text {
@@ -158,11 +163,15 @@ svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
 }
 
 /* lists */
-ol, ul {
+ol,
+ul {
   padding: 0;
   margin: 0 0 1em 2em;
 }
-ol ol, ul ul, ol ul, ul ol {
+ol ol,
+ul ul,
+ol ul,
+ul ol {
   margin-left: 1em;
 }
 li {
@@ -171,17 +180,22 @@ li {
 .ulCompact li {
   margin: 0;
 }
-ul.empty, .ulEmpty {
+ul.empty,
+.ulEmpty {
   list-style-type: none;
 }
-ul.empty li, .ulEmpty li {
+ul.empty li,
+.ulEmpty li {
   margin-top: 0.5em;
 }
-ul.ulBare, li.ulBare {
+ul.ulBare,
+li.ulBare {
   margin-left: 0em !important;
 }
-ul.compact, .ulCompact,
-ol.compact, .olCompact {
+ul.compact,
+.ulCompact,
+ol.compact,
+.olCompact {
   line-height: 100%;
   margin: 0 0 0 2em;
 }
@@ -201,13 +215,14 @@ dl.nohang > dt {
 }
 */
 dl > dd {
-  margin-bottom: .8em;
+  margin-bottom: 0.8em;
   min-height: 1.3em;
 }
 dd > p:first-child {
   padding: 0;
 }
-dl.compact > dd, .dlCompact > dd {
+dl.compact > dd,
+.dlCompact > dd {
   margin-bottom: 0em;
 }
 dl > dd > dl {
@@ -236,7 +251,8 @@ a.selfRef:hover {
 } */
 
 /* Figures */
-tt, code {
+tt,
+code {
   background-color: #f9f9f9;
   font-family: var(--font-mono);
 }
@@ -261,7 +277,8 @@ figcaption {
 }
 
 /* aside, blockquote */
-aside, blockquote {
+aside,
+blockquote {
   margin-left: 0;
   padding: 1.2em 2em;
 }
@@ -291,16 +308,17 @@ table {
   border-collapse: collapse;
   border: 1px solid #eee;
 }
-th, td {
+th,
+td {
   text-align: left;
   vertical-align: top;
   padding: 0.5em 0.75em;
 }
 th {
   text-align: left;
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
-tr:nth-child(2n+1) > td {
+tr:nth-child(2n + 1) > td {
   background-color: #f5f5f5;
 }
 table caption {
@@ -323,7 +341,7 @@ a.pilcrow {
   visibility: hidden;
   user-select: none;
   -ms-user-select: none;
-  -o-user-select:none;
+  -o-user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -398,7 +416,7 @@ hr {
 }
 
 /* table of contents */
-#toc  {
+#toc {
   padding: 0.75em 0 2em 0;
   margin-bottom: 1em;
 }
@@ -473,6 +491,7 @@ nav.toc li {
 address.vcard {
   font-style: normal;
   margin: 1em 0;
+  padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
 }
 
 address.vcard .nameRole {
@@ -502,7 +521,7 @@ hr.addr {
   top: 0.2em;
   right: 0.2em;
   padding: 0.2em;
-  content: "The RFC Editor will remove this note";
+  content: 'The RFC Editor will remove this note';
   color: #9e2a00; /* Arlen: WCAG 2019 */
   background-color: #ffd; /* Arlen: WCAG 2019 */
 }
@@ -532,7 +551,7 @@ hr.addr {
   }
   h2 {
     font-size: 20px;
-    margin-top: -18px;  /* provide offset for in-page anchors */
+    margin-top: -18px; /* provide offset for in-page anchors */
     padding-top: 38px;
   }
   #identifiers dd {
@@ -559,7 +578,8 @@ hr.addr {
     color: white;
     cursor: pointer;
   }
-  #toc h2::before { /* css hamburger */
+  #toc h2::before {
+    /* css hamburger */
     float: right;
     position: relative;
     width: 1em;
@@ -567,8 +587,10 @@ hr.addr {
     left: -164px;
     margin: 6px 0 0 0;
     background: white none repeat scroll 0 0;
-    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-    content: "";
+    box-shadow:
+      0 4px 0 0 white,
+      0 8px 0 0 white;
+    content: '';
   }
   #toc nav {
     display: none;
@@ -611,7 +633,8 @@ hr.addr {
     padding: 0.5em 0 0;
     overflow: auto;
   }
-  img { /* future proofing */
+  img {
+    /* future proofing */
     max-width: 100%;
     height: auto;
   }
@@ -629,17 +652,27 @@ hr.addr {
   #n-copyright-notice {
     border-bottom: none;
   }
-  #toc, #n-introduction {
+  #toc,
+  #n-introduction {
     page-break-before: always;
   }
   #toc {
     border-top: none;
     padding-top: 0;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  h2 + *,
+  h3 + *,
+  h4 + *,
+  h5 + *,
+  h6 + * {
     page-break-before: avoid;
   }
   table {
@@ -737,7 +770,6 @@ hr.addr {
       border-top: solid 1px #ccc;
   }
   */
-
 }
 
 /* Changes introduced to fix issues found during implementation */
@@ -749,7 +781,6 @@ a {
 section {
   clear: both;
 }
-
 
 /* Top align author divs, to avoid names without organization dropping level with org names */
 .author {
@@ -878,16 +909,16 @@ address div.right {
 /* Provide table alignment support.  We can't use the alignX classes above
    since they do unwanted things with caption and other styling. */
 table.right {
-	margin-left: auto;
-	margin-right: 0;
+  margin-left: auto;
+  margin-right: 0;
 }
 table.center {
-	margin-left: auto;
-	margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 table.left {
-	margin-left: 0;
-	margin-right: auto;
+  margin-left: 0;
+  margin-right: auto;
 }
 
 /* Give the table caption label the same styling as the figcaption */
@@ -909,7 +940,6 @@ caption a[href] {
   .vcard {
     page-break-inside: avoid;
   }
-
 }
 /* Tweak the bcp14 keyword presentation */
 .bcp14 {
@@ -918,18 +948,18 @@ caption a[href] {
   font-size: 0.9em;
 }
 /* Tweak the invisible space above H* in order not to overlay links in text above */
- h2 {
-  margin-top: -18px;  /* provide offset for in-page anchors */
+h2 {
+  margin-top: -18px; /* provide offset for in-page anchors */
   padding-top: 31px;
- }
- h3 {
-  margin-top: -18px;  /* provide offset for in-page anchors */
+}
+h3 {
+  margin-top: -18px; /* provide offset for in-page anchors */
   padding-top: 24px;
- }
- h4 {
-  margin-top: -18px;  /* provide offset for in-page anchors */
+}
+h4 {
+  margin-top: -18px; /* provide offset for in-page anchors */
   padding-top: 24px;
- }
+}
 /* Float artwork pilcrow to the right */
 @media screen {
   .artwork a.pilcrow {
@@ -949,7 +979,7 @@ caption a[href] {
 .alignLeft.art-text,
 .alignCenter.art-text,
 .alignRight.art-text {
-   margin-bottom: 0;
+  margin-bottom: 0;
 }
 .alignLeft,
 .alignCenter,
@@ -971,7 +1001,7 @@ div#external-metadata {
   display: none;
 }
 div#internal-metadata {
-  padding: 0.5em;                       /* to match the external-metadata padding */
+  padding: 0.5em; /* to match the external-metadata padding */
 }
 /* Styling for title RFC Number */
 h1#rfcnum {
@@ -999,18 +1029,40 @@ aside > p {
 }
 /* Additional page break settings */
 @media print {
-  figcaption, table caption {
+  figcaption,
+  table caption {
     page-break-before: avoid;
   }
 }
 /* Font size adjustments for print */
 @media print {
-  body  { font-size: 10pt;      line-height: normal; max-width: 96%; }
-  h1    { font-size: 1.72em;    padding-top: 1.5em; } /* 1*1.2*1.2*1.2 */
-  h2    { font-size: 1.44em;    padding-top: 1.5em; } /* 1*1.2*1.2 */
-  h3    { font-size: 1.2em;     padding-top: 1.5em; } /* 1*1.2 */
-  h4    { font-size: 1em;       padding-top: 1.5em; }
-  h5, h6 { font-size: 1em;      margin: initial; padding: 0.5em 0 0.3em; }
+  body {
+    font-size: 10pt;
+    line-height: normal;
+    max-width: 96%;
+  }
+  h1 {
+    font-size: 1.72em;
+    padding-top: 1.5em;
+  } /* 1*1.2*1.2*1.2 */
+  h2 {
+    font-size: 1.44em;
+    padding-top: 1.5em;
+  } /* 1*1.2*1.2 */
+  h3 {
+    font-size: 1.2em;
+    padding-top: 1.5em;
+  } /* 1*1.2 */
+  h4 {
+    font-size: 1em;
+    padding-top: 1.5em;
+  }
+  h5,
+  h6 {
+    font-size: 1em;
+    margin: initial;
+    padding: 0.5em 0 0.3em;
+  }
 }
 /* Sourcecode margin in print, when there's no pilcrow */
 @media print {
@@ -1025,10 +1077,18 @@ table {
   min-width: 20em;
 }
 /* ol type a */
-ol.type-a { list-style-type: lower-alpha; }
-ol.type-A { list-style-type: upper-alpha; }
-ol.type-i { list-style-type: lower-roman; }
-ol.type-I { list-style-type: upper-roman; }
+ol.type-a {
+  list-style-type: lower-alpha;
+}
+ol.type-A {
+  list-style-type: upper-alpha;
+}
+ol.type-i {
+  list-style-type: lower-roman;
+}
+ol.type-I {
+  list-style-type: upper-roman;
+}
 /* Apply the print table and row borders in general, on request from the RPC,
 and increase the contrast between border and odd row background slightly */
 table {
@@ -1041,12 +1101,16 @@ tr {
   break-inside: avoid;
 }
 tr:nth-child(even) > td {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 /* Use style rules to govern display of the TOC. */
 @media screen and (max-width: 1023px) {
-  #toc nav { display: none; }
-  #toc.active nav { display: block; }
+  #toc nav {
+    display: none;
+  }
+  #toc.active nav {
+    display: block;
+  }
 }
 /* Add support for keepWithNext */
 .keepWithNext {
@@ -1058,7 +1122,11 @@ tr:nth-child(even) > td {
   break-before: avoid-page;
 }
 /* Change the approach to avoiding breaks inside artwork etc. */
-figure, pre, table, .artwork, .sourcecode  {
+figure,
+pre,
+table,
+.artwork,
+.sourcecode {
   break-before: auto;
   break-after: auto;
 }
@@ -1075,9 +1143,10 @@ dd {
   break-before: avoid-page;
   break-after: auto;
   orphans: 3;
-  widows: 3
+  widows: 3;
 }
-span.break, dd.break {
+span.break,
+dd.break {
   margin-bottom: 0;
   min-height: 0;
   break-before: auto;
@@ -1092,38 +1161,53 @@ span.break, dd.break {
 }
 /* Text in compact lists should not get extra bottom margin space,
    since that would makes the list not compact */
-ul.compact p, .ulCompact p,
-ol.compact p, .olCompact p {
- margin: 0;
+ul.compact p,
+.ulCompact p,
+ol.compact p,
+.olCompact p {
+  margin: 0;
 }
 /* But the list as a whole needs the extra space at the end */
 section ul.compact,
 section .ulCompact,
 section ol.compact,
 section .olCompact {
-  margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+  margin-bottom: 1em; /* same as p not within ul.compact etc. */
 }
 /* The tt and code background above interferes with for instance table cell
    backgrounds.  Changed to something a bit more selective. */
-tt, code {
+tt,
+code {
   background-color: transparent;
 }
-p tt, p code, li tt, li code, dt tt, dt code {
+p tt,
+p code,
+li tt,
+li code,
+dt tt,
+dt code {
   background-color: #f8f8f8;
 }
 /* Tweak the pre margin -- 0px doesn't come out well */
 pre {
-   margin-top: 0.5px;
+  margin-top: 0.5px;
 }
 /* Tweak the compact list text */
-ul.compact, .ulCompact,
-ol.compact, .olCompact,
-dl.compact, .dlCompact {
+ul.compact,
+.ulCompact,
+ol.compact,
+.olCompact,
+dl.compact,
+.dlCompact {
   line-height: normal;
 }
 /* Don't add top margin for nested lists */
-li > ul, li > ol, li > dl,
-dd > ul, dd > ol, dd > dl,
+li > ul,
+li > ol,
+li > dl,
+dd > ul,
+dd > ol,
+dd > dl,
 dl > dd > dl {
   margin-top: initial;
 }
@@ -1140,12 +1224,12 @@ dd > ul:first-child {
   clear: left;
 }
 /* fix for weird browser behaviour when <dd/> is empty */
-dt+dd:empty::before{
-  content: "\00a0";
+dt + dd:empty::before {
+  content: '\00a0';
 }
 /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
 li > p {
-  margin-bottom: 0.5em
+  margin-bottom: 0.5em;
 }
 /* Don't let p margin spill out from inside list items */
 li > p:last-of-type:only-child {

@@ -1,9 +1,18 @@
 <template>
   <HoverCardRoot v-model:open="isHoverCardOpen">
     <HoverCardTrigger as-child>
+      <a
+        v-if="props.href?.startsWith('#')"
+        v-bind="props"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
+        @blur="isHoverCardOpen = false"
+      >
+        <slot />
+      </a>
       <NuxtLink
+        v-else
         v-bind="propsWithHrefAsTo"
-        :class="props.class"
         @focus="loadRfc"
         @mouseover="loadRfc"
         @blur="isHoverCardOpen = false"

@@ -7,19 +7,39 @@
     {{ props.rfcJson.title }}
   </p>
   <div class="pt-1">
-    <Tag size="small" :text="tagText" />
+    <Tag
+      size="small"
+      :text="tagText"
+    />
   </div>
   <p class="leading-5 pt-2 text-xs text-pretty">
     {{ props.rfcJson.abstract }}
   </p>
-  <ul v-if="list1" class="text-base text-blue-900 dark:text-white">
-    <li v-for="(part, index) in list1" :key="index" class="inline">
+  <ul
+    v-if="list1"
+    class="text-base text-blue-900 dark:text-white"
+  >
+    <li
+      v-for="(part, index) in list1"
+      :key="index"
+      class="inline"
+    >
       <GraphicsDiamond v-if="index > 0" />{{ part }}
     </li>
   </ul>
-  <ul v-if="list2" class="text-base text-gray-800 mt-1 dark:text-white">
-    <li v-for="(part, index) in list2" :key="index" class="inline">
-      <GraphicsDiamond v-if="index > 0" class="align-middle" />{{ part }}
+  <ul
+    v-if="list2"
+    class="text-base text-gray-800 mt-1 dark:text-white"
+  >
+    <li
+      v-for="(part, index) in list2"
+      :key="index"
+      class="inline"
+    >
+      <GraphicsDiamond
+        v-if="index > 0"
+        class="align-middle"
+      />{{ part }}
     </li>
   </ul>
   <p
@@ -32,12 +52,11 @@
     <Renderable :val="obsoletedBy" />
   </p>
 
-  <div
-    class="inline-block border-black dark:border-gray-700 border-t-1 w-1/2 min-w-3xs mt-3 mb-3"
-  ></div>
+  <div class="inline-block border-black dark:border-gray-700 border-t-1 w-1/2 min-w-3xs mt-3 mb-3"></div>
 
   <p class="text-xs mt-2 text-black dark:text-gray-300">
-    That was a preview of <component :is="formattedTitle" />. To read the
+    That was a preview of
+    <component :is="formattedTitle" />. To read the
     complete document click the following link:
   </p>
 
@@ -94,10 +113,12 @@ function formatDate(isoDate: string): string {
 
 function formatObsoletedBy(
   obsoletedBy: RFCJSON['obsoleted_by']
-): VNode | undefined {
-  if (!obsoletedBy || obsoletedBy.length === 0) return undefined
+): (() => VNode) | undefined {
+  if (!obsoletedBy || obsoletedBy.length === 0) {
+    return undefined
+  }
 
-  return h(
+  return () => h(
     'span',
     obsoletedBy.reduce(
       (acc, obsoletedByItem, index) => {
@@ -109,7 +130,7 @@ function formatObsoletedBy(
             Anchor,
             {
               href: infoRfcPathBuilder(obsoletedByItem),
-              title: `${formatTitlePlaintext(obsoletedByItem)}: ${obsoletedByItem}`,
+              title: `${formatTitlePlaintext(obsoletedByItem)}`,
               class: 'relative underline p-1 -m-1 hover:bg-gray-100'
             },
             [h('b', obsoletedByItem)]
@@ -125,9 +146,9 @@ function formatObsoletedBy(
 
 const formattedTitle = computed(() => formatTitleAsVNode(props.rfcJson.doc_id))
 
-const obsoletedBy = computed(() => {
-  return formatObsoletedBy(props.rfcJson.obsoleted_by)
-})
+const obsoletedBy = computed(() =>
+  formatObsoletedBy(props.rfcJson.obsoleted_by)
+)
 
 const list1 = computed(() => [
   formatAuthors(props.rfcJson.authors),

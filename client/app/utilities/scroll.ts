@@ -16,8 +16,8 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   let targetIdIndex = -1
 
   let velocity = 0
-  let elements: HTMLElement[]
-  let elementTops: number[]
+  let elements: HTMLElement[] = []
+  let elementTops: number[] = []
   let animationCallbackHandle: ReturnType<typeof setTimeout>
 
   const setActive = (id: string) => {
@@ -88,13 +88,13 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
 
     elementTops = ids.value.reduce((acc, id) => {
       const elementById = id ? elementsById[id] : undefined
-      const previousItem = acc[acc.length - 1]
+      const previousElementTop = acc && acc.length > 0 ? acc[acc.length - 1] : 0
       if (elementById) {
         acc.push(elementById.getBoundingClientRect().top + window.scrollY)
-      } else if (previousItem) {
+      } else if (previousElementTop) {
         // if they can't find the id then use the previous item's position instead
         // assuming that the ids are sequentially found in the page
-        acc.push(previousItem)
+        acc.push(previousElementTop)
       } else {
         acc.push(0)
       }
@@ -117,6 +117,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     // console.log(scrollY, ' < ', document.body.scrollHeight - ENDS_THRESHOLD_PX)
     let closestIndex = 0
     // console.log('elementTops.length', elementTops.length)
+    elementTops
     for (let i = 0; i < elementTops.length; i++) {
       const elementTop = elementTops[i]
       const closestTop = elementTops[closestIndex]
