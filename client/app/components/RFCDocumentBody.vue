@@ -59,7 +59,7 @@
   <div
     :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} wrap-anywhere mt-10 sm:text-base lg:text-base`"
   >
-    <Renderable :val="enrichedDocument" />
+    <component :is="enrichedDocument" />
   </div>
 
   <RFCMobileBanner
