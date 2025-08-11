@@ -117,7 +117,6 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     // console.log(scrollY, ' < ', document.body.scrollHeight - ENDS_THRESHOLD_PX)
     let closestIndex = 0
     // console.log('elementTops.length', elementTops.length)
-    elementTops
     for (let i = 0; i < elementTops.length; i++) {
       const elementTop = elementTops[i]
       const closestTop = elementTops[closestIndex]
