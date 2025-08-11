@@ -128,7 +128,7 @@ test('isHashLink', () => {
 })
 
 test('parseMaybeRfcLink', () => {
-  expect(parseMaybeRfcLink('something/rfc1/something-else')).toEqual({
+  expect(parseMaybeRfcLink('/something/rfc1/something-else')).toEqual({
     type: 'RFC',
     number: '1'
   })

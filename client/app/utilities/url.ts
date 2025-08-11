@@ -349,7 +349,9 @@ export const isRfcEditorSite = (href?: string): boolean => {
   if (href === undefined) {
     return false
   }
-  return href.startsWith('/') || href.startsWith('#')
+  return (
+    href.startsWith(PUBLIC_SITE) || href.startsWith('/') || href.startsWith('#')
+  )
 }
 
 const RFC_REGEX = /(rfc[0-9]+)/i
