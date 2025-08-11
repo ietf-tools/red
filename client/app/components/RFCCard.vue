@@ -3,21 +3,19 @@
     :href="infoRfcPathBuilder(`RFC${props.rfc.number}`)"
     :heading-level="props.headingLevel"
     has-cover-link
-    :chevron-position="
-      props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
-        'center'
+    :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
+      'center'
       : 'end'
-    "
+      "
     :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''"
-    :aside-slot-class="
-      props.showAbstract && props.rfc.abstract ?
-        'flex-1 lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
+    :aside-slot-class="props.showAbstract && props.rfc.abstract ?
+      'flex-1 lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
       : undefined
-    "
+      "
   >
     <template #headingTitle>
-      <component :is="formatTitleAsVNode(`rfc${props.rfc.number}`)" />
+      <component :is="formattedTitle" />
     </template>
     <template #afterHeadingTitle>
       <span v-if="props.rfc.subseries">
@@ -27,13 +25,7 @@
           class="relative z-50 no-underline hover:underline focus:underline px-2 py-3 rounded text-gray-700"
           :title="`part of ${props.rfc.subseries.type.toUpperCase()}${props.rfc.subseries.number}`"
         >
-          <component
-            :is="
-              formatTitleAsVNode(
-                `${props.rfc.subseries.type}${props.rfc.subseries.number}`
-              )
-            "
-          />
+          <component :is="formattedSubseriesTitle" />
         </NuxtLink>
       </span>
     </template>
@@ -55,9 +47,7 @@
         >
           Abstract
         </Heading>
-        <p
-          class="leading-snug text-gray-800 dark:text-gray-300 pb-2 text-pretty"
-        >
+        <p class="leading-snug text-gray-800 dark:text-gray-300 pb-2 text-pretty">
           {{ props.rfc.abstract }}
         </p>
       </div>
@@ -84,6 +74,12 @@ const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 const abstractHeadingLevel = computed(() =>
   parseHeadingLevel((parseFloat(props.headingLevel) + 1).toString())
 )
+
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`))
+
+const formattedSubseriesTitle = computed(() => props.rfc.subseries ? formatTitleAsVNode(
+  `${props.rfc.subseries.type}${props.rfc.subseries.number}`
+) : undefined)
 
 const responsiveModeStore = useResponsiveModeStore()
 </script>

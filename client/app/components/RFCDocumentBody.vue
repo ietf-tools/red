@@ -24,7 +24,7 @@
     level="1"
     class="mb-2 pl-2 xs:px-0 print:px-0"
   >
-    <component :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)" />
+    <component :is="formattedTitle" />
   </Heading>
 
   <Heading
@@ -45,13 +45,11 @@
       For more information, please refer to
       <ul>
         <li
-          v-for="(obsoletedByItem, obsoletedByItemIndex) in props.rfc
-            .obsoleted_by"
+          v-for="(obsoletedByItem, obsoletedByItemIndex) in obsoletedBy"
           :key="obsoletedByItemIndex"
         >
-          <A :href="infoRfcPathBuilder(`RFC${obsoletedByItem.number}`)">
-            <component :is="formatTitleAsVNode(`RFC${obsoletedByItem.number}`)" />
-            {{ obsoletedByItem.title }}
+          <A :href="obsoletedByItem.href">
+            <component :is="obsoletedByItem.formattedTitle" />
           </A>
         </li>
       </ul>
@@ -98,6 +96,17 @@ const props = defineProps<Props>()
 const isModalOpen = defineModel<boolean>('isModalOpen')
 
 const rfcId = computed(() => parseRFCId(`rfc${props.rfc.number}`))
+
+const formattedTitle = computed(() => formatTitleAsVNode(`${rfcId.value.type}${rfcId.value.number}`))
+
+const obsoletedBy = computed(() => props.rfc.obsoleted_by?.map(obsoletedByItem => ({
+  href: infoRfcPathBuilder(`RFC${obsoletedByItem.number}`),
+  formattedTitle: h('span', [
+    formatTitleAsVNode(`RFC${obsoletedByItem.number}`),
+    ' ',
+    obsoletedByItem.title
+  ])
+})))
 
 const enrichedDocument = computed<VNode>(() =>
   renderDocumentPojo(props.rfcBucketHtmlDocument.documentHtmlObj)
