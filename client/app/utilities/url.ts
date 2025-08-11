@@ -335,10 +335,15 @@ export const linkPreviewImageUrlBuilder = (
 }
 
 /**
+ * Based on the URL of the API base
+ */
+export const needsCloudflareHeaderForApi = (apiBaseUrl: string): boolean =>
+  !apiBaseUrl.includes('localhost')
+
+/**
  * Based on the URL of the API detect whether it's prod
  */
-export const isProdApi = (apiBaseUrl: string): boolean =>
-  !apiBaseUrl.includes('localhost')
+export const isProd = (url: string): boolean => !url.includes(PUBLIC_SITE)
 
 export const isRfcEditorSite = (href?: string): boolean => {
   if (href === undefined) {

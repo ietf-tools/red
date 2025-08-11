@@ -2,6 +2,7 @@ import { watch } from 'vue'
 import { throttle, clamp } from 'lodash-es'
 import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
+import { isProd } from './url'
 
 const SCROLL_FPS = 60
 const ANIMATE_INDEX_FPS = 30 // because we want transitions between ids
@@ -50,7 +51,10 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   }
 
   const updateElements = () => {
-    // Note that ids might not be unique (ie, multiple TOC links to the same thing)
+    // to speed up DOM access we'll build a comma-separated DOM selector for querySelectorAll()
+    // rather than lots of getElementById() requests.
+
+    // ids might not be unique. ie, multiple TOC links to the same thing.
     // so we have to uniquely select elements, and map them back onto the array of
     // elements with duplicates so that array indexes line up between `ids` and
     // `elementTops`
@@ -60,23 +64,43 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
       selector.length > 0 ? Array.from(document.querySelectorAll(selector)) : []
 
     if (elements.length !== uniqueIds.length) {
-      throw Error(
-        `Some ids weren't found (${elements.length} !== ${uniqueIds.length}) by selector ${selector}: ${JSON.stringify(uniqueIds.filter((id) => elements.some((element) => element.id === id)))}`
+      const idsNotFound = uniqueIds.filter((id) =>
+        elements.some((element) => element.id === id)
       )
+      const errorText = `Some ids weren't found (${elements.length} !== ${uniqueIds.length}) missing ones: `
+      if (!isProd(location.toString())) {
+        throw Error(`${errorText} ${JSON.stringify(idsNotFound)}`)
+      } else {
+        console.error(errorText, idsNotFound)
+      }
     }
 
     const elementsById = elements.reduce(
       (acc, element, index) => {
         const id = uniqueIds[index]
-        acc[id] = element
+        if (id !== undefined) {
+          acc[id] = element
+        }
         return acc
       },
       {} as Record<string, HTMLElement>
     )
 
-    elementTops = ids.value.map(
-      (id) => elementsById[id].getBoundingClientRect().top + window.scrollY
-    )
+    elementTops = ids.value.reduce((acc, id) => {
+      const elementById = id ? elementsById[id] : undefined
+      const previousItem = acc[acc.length - 1]
+      if (elementById) {
+        acc.push(elementById.getBoundingClientRect().top + window.scrollY)
+      } else if (previousItem) {
+        // if they can't find the id then use the previous item's position instead
+        // assuming that the ids are sequentially found in the page
+        acc.push(previousItem)
+      } else {
+        acc.push(0)
+      }
+
+      return acc
+    }, [] as number[])
   }
 
   const getIdsIndexOfClosestTop = (scrollY: number): number => {
@@ -95,10 +119,13 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     // console.log('elementTops.length', elementTops.length)
     for (let i = 0; i < elementTops.length; i++) {
       const elementTop = elementTops[i]
-      if (
-        Math.abs(scrollY - elementTop) <
-        Math.abs(scrollY - elementTops[closestIndex])
-      ) {
+      const closestTop = elementTops[closestIndex]
+      if (typeof elementTop !== 'number' || typeof closestTop !== 'number') {
+        throw Error(
+          `Unexpected type typeof elementTop=${typeof elementTop}, typeof closestTop=${typeof closestTop}`
+        )
+      }
+      if (Math.abs(scrollY - elementTop) < Math.abs(scrollY - closestTop)) {
         closestIndex = i
       }
     }
@@ -106,7 +133,8 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     return closestIndex
   }
 
-  watch(ids, updateElements)
+  const throttledUpdateElements = throttle(updateElements, 100)
+  watch(ids, throttledUpdateElements)
 
   const animateActiveIndex = () => {
     const direction = targetIdIndex > activeIdIndex ? 1 : -1
@@ -191,7 +219,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   )
 
   onMounted(() => {
-    updateElements()
+    nextTick(updateElements)
     document.addEventListener('scroll', throttledHandleScroll, {
       passive: true
     })

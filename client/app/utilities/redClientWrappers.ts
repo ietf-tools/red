@@ -1,7 +1,7 @@
 import { ApiClient } from '../../generated/red-client'
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { setTimeoutPromise } from './promises'
-import { isProdApi } from './url'
+import { needsCloudflareHeaderForApi } from './url'
 
 export const getRedClient = () => {
   const isServer = import.meta.server
@@ -28,7 +28,7 @@ export const getRedClient = () => {
   }
 
   if (
-    isProdApi(datatrackerBase) &&
+    needsCloudflareHeaderForApi(datatrackerBase) &&
     (!cfServiceTokenId ||
       typeof cfServiceTokenId !== 'string' ||
       !cfServiceTokenSecret ||

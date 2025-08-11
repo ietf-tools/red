@@ -1,8 +1,4 @@
 <template>
-  <GraphicsIETFMotif
-    class="absolute mt-8 -mb-[600px] left-0 w-[80vw] h-[80vh] max-h-[600px] print:hidden"
-    :opacity="0.02"
-  />
 
   <div class="flex flex-col">
     <Breadcrumbs
