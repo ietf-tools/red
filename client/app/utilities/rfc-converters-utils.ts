@@ -8,7 +8,7 @@ import { assertIsString, assertNever } from './typescript'
 import type { HintedString } from './typescript'
 import type { TypeSenseSearchItemSchema } from './typesense'
 import type { RfcEditorToc } from './tableOfContents'
-import type { Rfc, RfcMetadata } from '~/generated/red-client'
+import type { Rfc, RfcMetadata } from '../../generated/red-client'
 
 type RfcMetadataAuthor = RfcMetadata['authors'][number]
 
@@ -112,11 +112,18 @@ export const parseRfcJsonPubDateToISO = (
 
   if (parts.length === 3) {
     // April first
+    assertIsString(parts[0])
+    assertIsString(parts[1])
+    assertIsString(parts[2])
+
     day = parseInt(parts[0], 10)
     month = parseMonthName(parts[1])
     year = parseInt(parts[2], 10)
     dateISO = DateTime.fromObject({ day, year, month }).toISO()
   } else if (parts.length === 2) {
+    assertIsString(parts[0])
+    assertIsString(parts[1])
+
     month = parseMonthName(parts[0])
     year = parseInt(parts[1], 10)
     dateISO = DateTime.fromObject({ year, month }).toISO()
@@ -140,6 +147,7 @@ const parseMonthName = (monthName: string) => {
   )
   for (let i = 0; i < monthsNames.length; i++) {
     const monthsNameItem = monthsNames[i]
+    assertIsString(monthsNameItem)
     if (
       monthName.substring(0, monthsNameItem.length).toLowerCase() ===
       monthsNameItem.toLowerCase()

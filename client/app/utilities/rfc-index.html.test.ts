@@ -20,7 +20,8 @@ import {
 import type {
   ApiClient,
   PaginatedRfcMetadataList
-} from '~/generated/red-client'
+} from '../../generated/red-client'
+import { assertIsDefined } from './typescript'
 
 test('rfcCommaList', () => {
   const result = rfcCommaList([{ number: 1 }, { number: 2 }])
@@ -64,7 +65,9 @@ describe('rfcToRfcIndexRow for /rfc-index/', () => {
     )
 
     rfcSummaries.forEach((rfcSummary, index) => {
-      const originalRfcSummary = originalRfcSummaries[index][1]
+      const originalRfcSummaryItem = originalRfcSummaries[index]
+      assertIsDefined(originalRfcSummaryItem)
+      const originalRfcSummary = originalRfcSummaryItem[1]
       expect(rfcSummary).toBe(originalRfcSummary)
     })
   })

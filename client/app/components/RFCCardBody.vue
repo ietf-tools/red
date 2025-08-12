@@ -116,8 +116,14 @@ function formatAuthors(authors: RfcCommon['authors']): string {
   if (authors.length === 0) {
     return ''
   } else if (authors.length === 1) {
+    if (authors[0] === undefined) {
+      throw Error(`Expected non-undefined authors[0]`)
+    }
     return `${authors[0].name}`
   } else if (authors.length === 2) {
+    if (authors[0] === undefined || authors[1] === undefined) {
+      throw Error(`Expected non-undefined authors[0]`)
+    }
     return `${authors[0].name} and ${authors[1].name}`
   } else {
     return (

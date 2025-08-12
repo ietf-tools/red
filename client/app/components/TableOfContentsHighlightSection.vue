@@ -72,7 +72,7 @@ type Props = {
   sections: Sections
   listTypeElement: 'ol' | 'ul'
   depth: number
-  activeId: string
+  activeId?: string
   handleClick: (id: string) => void
   makeTocId: (id: string) => string
   isSsr: boolean

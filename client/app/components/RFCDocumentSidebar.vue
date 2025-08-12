@@ -100,8 +100,20 @@
             Details
           </Heading>
           <dl class="text-sm">
-            <dt class="font-bold mt-2">Updates</dt>
-            <dd>...</dd>
+            <template v-if="rfc.updates && rfc.updates.length > 0">
+              <dt class="font-bold mt-2">Updates ({{ rfc.updates.length }})</dt>
+              <dd>
+                <span
+                  v-for="(update, updateIndex) in props.rfc.updates"
+                  :key="updateIndex"
+                >
+                  <RFCRouterLink :href="infoRfcPathBuilder(`rfc${update.number}`)">
+                    <component :is="formatTitleAsVNode(`rfc${update.number}`)" />:
+                    {{ update.title }}
+                  </RFCRouterLink>
+                </span>
+              </dd>
+            </template>
 
             <dt class="font-bold mt-2">Date published</dt>
             <dd>{{ formattedPublished }}</dd>
@@ -159,7 +171,20 @@
               >
                 <dt class="font-bold mt-2">
                   <template v-if="identifier.type === 'doi'">
-                    <abbr title="Digital object identifier">DOI</abbr>
+                    <abbr
+                      title="Digital object identifier"
+                      class="no-underline"
+                    >
+                      DOI
+                    </abbr>
+                  </template>
+                  <template v-else-if="identifier.type === 'issn'">
+                    <abbr
+                      title="International Standard Serial Number"
+                      class="no-underline"
+                    >
+                      ISSN
+                    </abbr>
                   </template>
                   <template v-else>
                     {{ identifier.type }}
@@ -170,11 +195,6 @@
                 </dd>
               </template>
             </template>
-
-            <dt class="font-bold mt-2">
-              <abbr title="International Standard Serial Number">ISSN</abbr>
-            </dt>
-            <dd>ISSN number where?</dd>
           </dl>
 
           <!-- <Heading level="3" class="mt-5 mb-2">Cite this RFC</Heading>
@@ -232,10 +252,11 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import { DateTime } from 'luxon'
-import type { RfcBucketHtmlDocument, RfcCommon } from '~/utilities/rfc'
+import { formatTitleAsVNode, type RfcBucketHtmlDocument, type RfcCommon } from '~/utilities/rfc'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { COMMA, SPACE } from '~/utilities/strings'
 import {
+  infoRfcPathBuilder,
   mailToBuilder,
 } from '~/utilities/url'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'

@@ -1,6 +1,6 @@
 import { padStart } from 'lodash-es'
 import type { TestHelperResponses } from './CurrQstats.txt.test'
-import type { ApiClient } from '~/generated/red-client'
+import type { ApiClient } from '../../generated/red-client'
 
 type Props = {
   redApi: ApiClient
@@ -118,6 +118,9 @@ export const renderCurrQstatsDotTxt = async (
 
   for (let i = 0; i < queueSummaryResponse.results.length; i++) {
     const result = queueSummaryResponse.results[i]
+    if (result === undefined) {
+      throw Error(`Unable to get index ${i}`)
+    }
     txt += `${TABLE_OFFSET}${result.state.padEnd(15, ' ')}${result.totalDocs.toFixed(0).padStart(10, ' ')}${result.totalPages.toFixed(0).padStart(15, ' ')}${result.medianWeeksInState.toFixed(1).padStart(15, ' ')}${result.averageWeeksInState.toFixed(1).padStart(15, ' ')}\n`
   }
 

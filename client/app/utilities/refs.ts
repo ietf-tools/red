@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import { formatAuthor, formatIdentifiers } from './rfc-converters-utils'
 import { FIXME_getRFCWithMissingData } from './rfc.mocks'
 import { infoRfcPathBuilder, PUBLIC_SITE } from './url'
-import type { Rfc } from '~/generated/red-client'
+import type { Rfc } from '../../generated/red-client'
 
 /**
  * Renders RFC summary txt. Eg.

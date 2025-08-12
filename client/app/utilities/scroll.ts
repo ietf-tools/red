@@ -256,7 +256,7 @@ const SCROLL_DIRECTIONAL_BIAS_VH_RATIO = 0.2
 
 const SCROLL_BUFFER_PX = 100
 type UseScrollTocContainerProps = {
-  toActiveIdRef: Ref<string>
+  toActiveIdRef: Ref<string | undefined>
   wrapperRef: Ref<HTMLElement | null | undefined>
   makeTocId: (id: string) => string
 }
@@ -280,6 +280,10 @@ export const useScrollTocContainer = ({
         return
       }
 
+      if (!previousActiveId) {
+        console.info('No previousActiveId', previousActiveId)
+        return
+      }
       const previousTocLink = document.getElementById(
         makeTocId(previousActiveId)
       )

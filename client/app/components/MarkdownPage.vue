@@ -25,8 +25,8 @@
 <script setup lang="ts">
 import { provide } from 'vue'
 import { DateTime } from 'luxon'
-import _contentMetadata from '../generated/content-metadata.json'
-import type { ContentMetadata } from '~/modules/generate-content-metadata'
+import _contentMetadata from '../../generated/content-metadata.json'
+import type { ContentMetadata } from '../../modules/generate-content-metadata'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import {
     nuxtContentTocToRfcEditorToc,
@@ -92,9 +92,9 @@ if (thisRouteContentMetadata) {
 }
 
 useRfcEditorHead({
-    title: page.value.title,
+    title: page.value?.title ?? '',
     canonicalUrl,
-    description: page.value.description,
+    description: page.value?.description ?? '',
     modifiedDateTime,
     contentType: 'article'
 })

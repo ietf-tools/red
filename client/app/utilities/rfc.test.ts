@@ -13,7 +13,8 @@ import {
   parseRfcJsonPubDateToISO
 } from './rfc-converters-utils'
 import { refsRefRfcIdTxt } from './refs'
-import type { ApiClient, Rfc, RfcMetadata } from '~/generated/red-client'
+import type { ApiClient, Rfc, RfcMetadata } from '../../generated/red-client'
+import { assertIsDefined, assertIsString } from './typescript'
 
 test('parseRFCId', () => {
   expect(parseRFCId('rfc1234')).toEqual({
@@ -52,15 +53,17 @@ export const getTestApiResponses = (
       .sort((a, b) => a.number - b.number)
   }
 
+  const lastResult =
+    truncatedDocListResponse.results[
+      truncatedDocListResponse.results.length - 1 // last result
+    ]
+  assertIsDefined(lastResult)
+
   const oldestRfcResponse: DocListResponse = {
     count: truncatedDocListResponse.results.length,
     next: null,
     previous: null,
-    results: [
-      truncatedDocListResponse.results[
-        truncatedDocListResponse.results.length - 1 // last result
-      ]
-    ]
+    results: [lastResult]
   }
 
   const PAGING_SIZE = 20
@@ -106,13 +109,16 @@ test('refsRefRfcIdTxt', () => {
   rfcRefs.snapshots
     .filter((snapshot) => {
       const filename = snapshot[0]
+      assertIsString(filename)
       const rfcId = parseRFCId(filename)
       // FIXME: enable greater range of RFC comparison tests
       return parseFloat(rfcId.number) < 14
     })
     .forEach((snapshot) => {
       const filename = snapshot[0]
+      assertIsString(filename)
       const originalResult = snapshot[1]
+      assertIsString(originalResult)
       const expectedResult = originalResult.replace(/>\.\n$/, '/>.\n') // expectedResult is same as originalResult except the url has a trailing slash
 
       const filenameMatches = filename.match(/^ref([0-9]+)\.txt$/)
@@ -122,6 +128,7 @@ test('refsRefRfcIdTxt', () => {
       }
 
       const rfcNumberString = filenameMatches[1]
+      assertIsString(rfcNumberString)
       const rfcNumber = parseInt(rfcNumberString, 10)
 
       const rfcMetadata = testRFCDocListResponse.results.find(
@@ -145,13 +152,17 @@ test('rfcToRfcJSON', () => {
 
   rfcJsons.snapshots
     .filter((snapshot) => {
-      const filename = snapshot[0].toString()
+      const firstSnapshot = snapshot[0]
+      assertIsDefined(firstSnapshot)
+      const filename = firstSnapshot.toString()
       const rfcId = parseRFCId(filename)
       // FIXME: enable greater range of RFC comparison tests
       return parseFloat(rfcId.number) < 14
     })
     .forEach((snapshot) => {
-      const filename = snapshot[0].toString()
+      const firstSnapshot = snapshot[0]
+      assertIsDefined(firstSnapshot)
+      const filename = firstSnapshot.toString()
       const expectedResult = snapshot[1]
       if (
         // used to narrow TS type in following code
@@ -167,6 +178,7 @@ test('rfcToRfcJSON', () => {
       }
 
       const rfcNumberString = filenameMatches[1]
+      assertIsString(rfcNumberString)
       const rfcNumber = parseInt(rfcNumberString, 10)
 
       const removeLeadingZeros = (rfcId: string): string =>
@@ -177,6 +189,8 @@ test('rfcToRfcJSON', () => {
         const withoutLeadingZeros = url.replace(/rfc[0]+/g, 'rfc')
         return `${withoutLeadingZeros}/`
       }
+
+      assertIsDefined(expectedResult)
 
       /**
        * These JSONs have some things we'd like to change...

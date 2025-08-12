@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon'
-import type { Rfc } from '~/generated/red-client'
+import type { Rfc } from '../../../generated/red-client'
 import { useRfcEditorHead } from '~/utilities/head'
 import { safeJsonParse } from '~/utilities/json'
 import { fetchRetry } from '~/utilities/network'
@@ -43,8 +43,17 @@ import {
 } from '~/utilities/url'
 
 const route = useRoute()
+const paramsId = route.params.id
 
-const id = parseRFCId(route.params.id.toString())
+if (paramsId === undefined) {
+  throw createError({
+    statusCode: 500,
+    statusMessage: 'Not a valid route param "id"',
+    fatal: true
+  })
+}
+
+const id = parseRFCId(paramsId.toString())
 const rfcNumber = parseInt(id.number, 10)
 const sanitisedId = `${id.type}${rfcNumber}`
 

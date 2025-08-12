@@ -2,7 +2,7 @@ import { Feed } from 'feed'
 import type { FeedOptions } from 'feed'
 import { PUBLIC_SITE, infoRfcPathBuilder } from './url'
 import { getRedClient } from './redClientWrappers'
-import type { ApiClient } from '~/generated/red-client'
+import type { ApiClient } from '../../generated/red-client'
 
 type DocListArg = Parameters<ApiClient['red']['docList']>[0]
 
@@ -29,7 +29,7 @@ export const getFeedForLatestRFCs = async (
     copyright: '',
     ...(feedOptions ?? {}),
     updated:
-      response.results.length > 0 ?
+      response.results.length > 0 && response.results[0] ?
         parseDateString(response.results[0].published)
       : new Date()
   })

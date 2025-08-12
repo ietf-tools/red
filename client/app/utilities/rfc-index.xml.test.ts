@@ -11,7 +11,8 @@ import { getRedClient } from './redClientWrappers'
 import type {
   ApiClient,
   PaginatedRfcMetadataList
-} from '~/generated/red-client'
+} from '../../generated/red-client'
+import { assertIsDefined } from './typescript'
 
 const originalXMLString = fs
   .readFileSync(path.join(import.meta.dirname, 'rfc-index.xml'), 'utf-8')
@@ -116,7 +117,11 @@ const getRFCItemByName = (rfcEntry: RFCEntry, key: string) => {
 
 const getRFCNumber = (rfcEntry: RFCEntry): string => {
   const docIdItem = getRFCItemByName(rfcEntry, 'doc-id')
-  const rfcNumber = docIdItem['doc-id'][0]['#text']
+  const docId = docIdItem['doc-id']
+  assertIsDefined(docId)
+  const docIdFirstItem = docId[0]
+  assertIsDefined(docIdFirstItem)
+  const rfcNumber = docIdFirstItem['#text']
   const typeofRFCNumber = typeof rfcNumber !== 'string'
   if (typeofRFCNumber) {
     throw Error(`Expected RFCNumber to be a string but was ${typeofRFCNumber}`)
@@ -181,6 +186,7 @@ describe('renderRfcIndexDotXml', () => {
     // one fails whereas this will fail fast
     resultRFCs.forEach((resultRFC, i) => {
       const originalRFC = originalRFCs[i]
+      assertIsDefined(originalRFC)
       const originalRFCNumber = getRFCNumber(originalRFC)
       const resultRFCNumber = getRFCNumber(resultRFC)
 

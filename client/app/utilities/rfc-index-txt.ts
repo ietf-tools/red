@@ -4,7 +4,8 @@ import { SPACE } from './strings'
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { setTimeoutPromise } from './promises'
 import { formatAuthor, formatIdentifiers } from './rfc-converters-utils'
-import type { ApiClient, RfcMetadata } from '~/generated/red-client'
+import type { ApiClient, RfcMetadata } from '../../generated/red-client'
+import { assertIsDefined } from './typescript'
 
 // Note: this file is intentionally named rfc-index-txt.ts not rfc-index.txt.ts
 // because vitest can't import that later filename
@@ -49,7 +50,9 @@ export async function renderRfcIndexDotTxt({
   if (response.results.length !== 1) {
     throw Error('Unable to retrieve single response of largest RFC number')
   }
-  const largestRfcNumber = response.results[0].number
+  const firstResponse = response.results[0]
+  assertIsDefined(firstResponse)
+  const largestRfcNumber = firstResponse.number
 
   const longestRfcNumberStringLength = Math.max(
     DEFAULT_MINIMUM_LENGTH,

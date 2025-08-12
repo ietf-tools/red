@@ -248,7 +248,7 @@ export const dashboardPathBuilder = (dashboardPath: string) => {
 }
 
 export const mailToBuilder = (email: string) => {
-  return `mailto:${email}` as const
+  return `mailto:${encodeURI(email.trim())}` as const
 }
 
 export const apiRfcBucketDocumentURLBuilder = (rfcNumber: number) => {

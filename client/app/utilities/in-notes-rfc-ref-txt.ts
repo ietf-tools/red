@@ -5,7 +5,7 @@ import { parseRFCId } from './rfc'
 import { setTimeoutPromise } from './promises'
 import { PUBLIC_SITE, infoRfcPathBuilder } from './url'
 import { formatAuthor, formatIdentifiers } from './rfc-converters-utils'
-import type { ApiClient, RfcMetadata } from '~/generated/red-client'
+import type { ApiClient, RfcMetadata } from '../../generated/red-client'
 
 type DocListArg = Parameters<ApiClient['red']['docList']>[0]
 
@@ -41,9 +41,12 @@ export async function renderInNotesRfcRefDotTxt({
 
   const response = await redApi.red.docList(docListArg)
 
-  if (response.results.length !== 1) {
-    throw Error('Unable to retrieve single response of largest RFC number')
+  if (response.results.length !== 1 || !response.results[0]) {
+    throw Error(
+      `Unable to retrieve single response of largest RFC number. Was ${JSON.stringify(response?.results ?? '')}`
+    )
   }
+
   const largestRfcNumber = response.results[0].number
 
   const longestRfcNumberStringLength = Math.max(

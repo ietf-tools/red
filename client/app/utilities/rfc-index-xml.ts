@@ -3,7 +3,8 @@ import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { formatAuthor, formatFormat } from './rfc-converters-utils'
 import { getXMLBuilder } from './test-utils/html-test-utils'
 import { setTimeoutPromise } from './promises'
-import type { ApiClient } from '~/generated/red-client'
+import type { ApiClient } from '../../generated/red-client'
+import { assertIsDefined } from './typescript'
 
 type DocListArg = Parameters<ApiClient['red']['docList']>[0]
 
@@ -50,7 +51,9 @@ const renderRFCs = async ({
   docListArg.sort = ['-number'] // sort by oldest RFC to find the end
   docListArg.limit = 1 // we only need one result
   const response = await redApi.red.docList(docListArg)
-  const largestRfcNumber = response.results[0].number
+  const firstResponse = response.results[0]
+  assertIsDefined(firstResponse)
+  const largestRfcNumber = firstResponse.number
 
   const builder = getXMLBuilder({
     ignoreAttributes: true, // FIXME: don't ignore attributes, and fix the tests that depend on this

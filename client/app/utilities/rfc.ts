@@ -119,11 +119,11 @@ export const getRfcPillText = (
   if (rfc.status) {
     tagText.push(rfc.status)
   }
-  const datetime = DateTime.fromISO(rfc.published)
-  const relativeCalendar = datetime.toRelativeCalendar()
-  if (showTagDate && relativeCalendar) {
-    tagText.push(relativeCalendar)
-  }
+  // const datetime = DateTime.fromISO(rfc.published)
+  // const relativeCalendar = datetime.toRelativeCalendar()
+  // if (showTagDate && relativeCalendar) {
+  //   tagText.push(relativeCalendar)
+  // }
   return tagText
 }
 

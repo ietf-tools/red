@@ -8,7 +8,7 @@ import { getRedClient } from './redClientWrappers'
 import type {
   ApiClient,
   PaginatedRfcMetadataList
-} from '~/generated/red-client'
+} from '../../generated/red-client'
 
 const paragraph =
   'Obsoletes xxxx refers to other RFCs that this one replaces; Obsoleted by xxxx refers to RFCs that have replaced this one. Updates xxxx refers to other RFCs that this one merely updates (but does not replace);'

@@ -60,7 +60,9 @@ const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter') => {
     twitter: TWITTER_DIMENSIONS
   }
   const widthHeight = dimensions[mode]
-
+  if (!widthHeight || !widthHeight[0] || !widthHeight[1]) {
+    throw Error(`Cannot find dimensions from mode ${mode}, ${widthHeight}`)
+  }
   const url = linkPreviewImageUrlBuilder(widthHeight[0], widthHeight[1])
 
   return {
@@ -107,11 +109,11 @@ const buildOpenGraph = (props: UseRfcEditorProps) => {
     },
     {
       property: 'og:image:width',
-      content: linkPreviewImage.widthHeight[0].toString()
+      content: linkPreviewImage.widthHeight[0]?.toString() ?? '1024'
     },
     {
       property: 'og:image:height',
-      content: linkPreviewImage.widthHeight[1].toString()
+      content: linkPreviewImage.widthHeight[1]?.toString() ?? '1024'
     }
   ]
 
@@ -179,11 +181,11 @@ const buildTwitter = (props: UseRfcEditorProps) => {
     },
     {
       property: 'twitter:image:width',
-      content: linkPreviewImage.widthHeight[0].toString()
+      content: linkPreviewImage.widthHeight[0]?.toString() ?? '1024'
     },
     {
       property: 'twitter:image:height',
-      content: linkPreviewImage.widthHeight[1].toString()
+      content: linkPreviewImage.widthHeight[1]?.toString() ?? '1024'
     }
   ]
 

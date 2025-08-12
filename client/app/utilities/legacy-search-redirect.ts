@@ -23,8 +23,12 @@ export const translateParamsString = (url: string): string => {
 
   for (const [key, value] of legacyURLParams.entries()) {
     if (Object.prototype.hasOwnProperty.call(legacyObj, key)) {
+      const legacyObjValue = legacyObj[key]
+      if (typeof legacyObjValue === 'string') {
+        legacyObj[key] = [legacyObjValue]
+      }
       if (!Array.isArray(legacyObj[key])) {
-        legacyObj[key] = [legacyObj[key]]
+        throw Error(`Expected array but was ${typeof legacyObj[key]}`)
       }
       legacyObj[key].push(value)
     } else {

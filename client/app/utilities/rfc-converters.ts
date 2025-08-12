@@ -12,7 +12,8 @@ import {
 } from './rfc-converters-utils'
 import { TypeSenseSearchItemSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
-import type { Rfc, RfcMetadata } from '~/generated/red-client'
+import type { Rfc, RfcMetadata } from '../../generated/red-client'
+import { assertIsDefined } from './typescript'
 
 /**
  * Caches response to avoid computation but mostly to make === comparisons of RFCs easier
@@ -27,7 +28,9 @@ const cacheResponse = <T extends Rfc | RfcMetadata>(
     if (!(cacheKey in cache)) {
       cache[cacheKey] = fn(rfcData)
     }
-    return cache[cacheKey]
+    const value = cache[cacheKey]
+    assertIsDefined(value)
+    return value
   }
 }
 
