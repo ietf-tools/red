@@ -21,6 +21,7 @@ const contentPath = path.resolve(clientPath, 'content')
 const generatedMarkdownValidHrefs = path.resolve(
   clientPath,
   'shared',
+  'types',
   'markdown-valid-hrefs.d.ts'
 )
 const generatedMarkdownAllHrefs = path.resolve(
