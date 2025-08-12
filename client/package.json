@@ -17,7 +17,7 @@
     "test": "TZ=UTC npm run test:unittests && npm run test:types && npm run test:lint",
     "test:lint": "eslint .",
     "test:lint:fix": "eslint . --fix",
-    "test:types": "nuxt prepare && vue-tsc --noEmit",
+    "test:types": "nuxt prepare && vue-tsc -b --noEmit",
     "test:unittests": "vitest run",
     "test:unittests:watch": "vitest",
     "generate": "npm run generate:api-red",
@@ -40,7 +40,7 @@
     "lodash-es": "4.17.21",
     "luxon": "3.5.0",
     "nitropack": "2.10.4",
-    "nuxt": "4.0.2",
+    "nuxt": "4.0.3",
     "pinia-plugin-persistedstate": "4.4.1",
     "postcss-nested-import": "1.3.0",
     "reka-ui": "2.4.1",
@@ -68,6 +68,6 @@
     "vue-tsc": "3.0.5"
   },
   "peerDependencies": {
-    "typescript": "5.5.4"
+    "typescript": "5.9.2"
   }
 }
