@@ -8,7 +8,7 @@ import { getTestApiResponses, type DocListResponse } from './rfc.test'
 import type {
   ApiClient,
   PaginatedRfcMetadataList
-} from '~/generated/red-client'
+} from '../../generated/red-client'
 
 const inNotesRfcRefs4Digit = fs
   .readFileSync(

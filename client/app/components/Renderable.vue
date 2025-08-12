@@ -12,7 +12,7 @@ import { isVNode } from 'vue'
 import type { VNode } from 'vue'
 
 type Props = {
-  val: string | VNode
+  val: VNode | unknown
 }
 
 const props = defineProps<Props>()
