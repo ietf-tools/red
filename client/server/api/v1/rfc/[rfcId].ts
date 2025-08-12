@@ -11,6 +11,9 @@ export default defineEventHandler(async (event) => {
     throw Error('Expected params')
   }
   const { rfcId } = params
+  if (!rfcId) {
+    throw Error('Expected rfcId param')
+  }
   const rfcPatterns = rfcId.match(rfcRegex)
   if (!rfcPatterns) {
     throw Error(
