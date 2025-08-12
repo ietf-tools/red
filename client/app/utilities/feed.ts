@@ -1,8 +1,8 @@
 import { Feed } from 'feed'
 import type { FeedOptions } from 'feed'
+import type { ApiClient } from '../../generated/red-client'
 import { PUBLIC_SITE, infoRfcPathBuilder } from './url'
 import { getRedClient } from './redClientWrappers'
-import type { ApiClient } from '../../generated/red-client'
 
 type DocListArg = Parameters<ApiClient['red']['docList']>[0]
 

@@ -1,9 +1,9 @@
 import { DateTime } from 'luxon'
+import type { ApiClient } from '../../generated/red-client'
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { formatAuthor, formatFormat } from './rfc-converters-utils'
 import { getXMLBuilder } from './test-utils/html-test-utils'
 import { setTimeoutPromise } from './promises'
-import type { ApiClient } from '../../generated/red-client'
 import { assertIsDefined } from './typescript'
 
 type DocListArg = Parameters<ApiClient['red']['docList']>[0]

@@ -1,5 +1,5 @@
-import { getRedClient } from './redClientWrappers'
 import type { ApiClient } from '../../generated/red-client'
+import { getRedClient } from './redClientWrappers'
 
 type StreamingHandler = (handlerParams: {
   push: (data: string) => void

@@ -1,10 +1,10 @@
 import { DateTime } from 'luxon'
 import { padStart } from 'lodash-es'
+import type { ApiClient, RfcMetadata } from '../../generated/red-client'
 import { SPACE } from './strings'
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { setTimeoutPromise } from './promises'
 import { formatAuthor, formatIdentifiers } from './rfc-converters-utils'
-import type { ApiClient, RfcMetadata } from '../../generated/red-client'
 import { assertIsDefined } from './typescript'
 
 // Note: this file is intentionally named rfc-index-txt.ts not rfc-index.txt.ts

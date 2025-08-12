@@ -62,5 +62,5 @@ const props = defineProps<Props>()
 
 const rfcId = computed(() => parseRFCId(`RFC${props.rfc.number}`))
 
-const pillText = computed(() => getRfcPillText(props.rfc, false))
+const pillText = computed(() => getRfcPillText(props.rfc))
 </script>

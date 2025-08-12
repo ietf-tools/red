@@ -3,15 +3,15 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { z } from 'zod'
 import { vi, describe, beforeEach, afterEach, test, expect } from 'vitest'
+import type {
+  ApiClient,
+  PaginatedRfcMetadataList
+} from '../../generated/red-client'
 import { getXMLParser } from './test-utils/html-test-utils'
 import { renderRfcIndexDotXml } from './rfc-index-xml'
 import { parseRFCId } from './rfc'
 import { blankRfcResponse, getTestApiResponses } from './rfc.test'
 import { getRedClient } from './redClientWrappers'
-import type {
-  ApiClient,
-  PaginatedRfcMetadataList
-} from '../../generated/red-client'
 import { assertIsDefined } from './typescript'
 
 const originalXMLString = fs

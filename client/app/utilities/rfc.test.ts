@@ -1,6 +1,7 @@
 // @vitest-environment nuxt
 import { vi, test, expect, describe, beforeEach, afterEach } from 'vitest'
 import { DateTime } from 'luxon'
+import type { ApiClient, Rfc, RfcMetadata } from '../../generated/red-client'
 import { parseRFCId } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import rfcRefs from './rfc-refs.json'
@@ -13,7 +14,6 @@ import {
   parseRfcJsonPubDateToISO
 } from './rfc-converters-utils'
 import { refsRefRfcIdTxt } from './refs'
-import type { ApiClient, Rfc, RfcMetadata } from '../../generated/red-client'
 import { assertIsDefined, assertIsString } from './typescript'
 
 test('parseRFCId', () => {

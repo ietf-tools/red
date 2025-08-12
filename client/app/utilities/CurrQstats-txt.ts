@@ -1,6 +1,6 @@
 import { padStart } from 'lodash-es'
-import type { TestHelperResponses } from './CurrQstats.txt.test'
 import type { ApiClient } from '../../generated/red-client'
+import type { TestHelperResponses } from './CurrQstats.txt.test'
 
 type Props = {
   redApi: ApiClient

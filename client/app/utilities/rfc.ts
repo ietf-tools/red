@@ -1,5 +1,4 @@
 import type { z } from 'zod'
-import { DateTime } from 'luxon'
 import { NONBREAKING_SPACE } from './strings'
 import type {
   RfcBucketHtmlDocumentSchema,
@@ -111,19 +110,11 @@ export const parseRFCId = (title: string): RFCId => {
   }
 }
 
-export const getRfcPillText = (
-  rfc: RfcCommon,
-  showTagDate: boolean = true
-): string[] => {
+export const getRfcPillText = (rfc: RfcCommon): string[] => {
   const tagText = []
   if (rfc.status) {
     tagText.push(rfc.status)
   }
-  // const datetime = DateTime.fromISO(rfc.published)
-  // const relativeCalendar = datetime.toRelativeCalendar()
-  // if (showTagDate && relativeCalendar) {
-  //   tagText.push(relativeCalendar)
-  // }
   return tagText
 }
 

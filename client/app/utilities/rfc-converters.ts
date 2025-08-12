@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon'
+import type { Rfc, RfcMetadata } from '../../generated/red-client'
 import { blankRfcCommon, parseRFCId } from './rfc'
 import type { RfcCommon, RFCJSON } from './rfc'
 import {
@@ -12,7 +13,6 @@ import {
 } from './rfc-converters-utils'
 import { TypeSenseSearchItemSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
-import type { Rfc, RfcMetadata } from '../../generated/red-client'
 import { assertIsDefined } from './typescript'
 
 /**
