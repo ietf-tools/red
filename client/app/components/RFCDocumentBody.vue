@@ -173,12 +173,10 @@ const maxPreformattedLineLength = computed(() =>
   }
 
   pre .hide-in-preformatted-text {
-    /* 
-      The touch-based UX for RFCRouterLink inserts buttons after RFC links which
-      breaks <pre> layout so we hide the buttons in <pre> sections.
-
-      The pointer-based UX still works, as does the touch-based UX in non-<pre>
-      sections.      
+    /* The touch-based UX for RFCRouterLink inserts buttons after RFC links which
+       breaks <pre> layout so we hide the buttons in <pre> sections.
+       The pointer-based UX still works, as does the touch-based UX in non-<pre>
+       sections.
     */
     display: none;
   }
