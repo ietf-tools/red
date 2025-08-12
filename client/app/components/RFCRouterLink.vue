@@ -43,13 +43,13 @@
     </HoverCardPortal>
   </HoverCardRoot>
 
-  <div
+  <span
     v-if="hasTouchStore.hasTouch === true"
     class="inline"
   >
     <DialogRoot v-model:open="isDialogOpen">
       <DialogTrigger
-        class="ml-1 px-1 align-baseline"
+        class="ml-1 px-1 align-baseline hide-in-preformatted-text"
         @focus="loadRfc"
         @mouseover="loadRfc"
       >
@@ -87,7 +87,7 @@
         </DialogContent>
       </DialogPortal>
     </DialogRoot>
-  </div>
+  </span>
 </template>
 
 <script setup lang="ts">

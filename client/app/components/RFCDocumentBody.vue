@@ -154,12 +154,8 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
   return h(Fragment, () => children)
 }
 
-const hasTouchStore = useHasTouchStore()
-
 const maxPreformattedLineLength = computed(() =>
-  hasTouchStore.hasTouch ?
-    props.rfcBucketHtmlDocument.maxPreformattedLineLength.maxWithAnchorSuffix :
-    props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
+  props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
 )
 </script>
 
@@ -174,6 +170,17 @@ const maxPreformattedLineLength = computed(() =>
   ul {
     /* revert some tailwind reset styles because the imported CSS expect different defaults */
     all: revert;
+  }
+
+  pre .hide-in-preformatted-text {
+    /* 
+      The touch-based UX for RFCRouterLink inserts buttons after RFC links which
+      breaks <pre> layout so we hide the buttons in <pre> sections.
+
+      The pointer-based UX still works, as does the touch-based UX in non-<pre>
+      sections.      
+    */
+    display: none;
   }
 }
 
