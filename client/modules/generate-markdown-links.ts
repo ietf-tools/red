@@ -5,14 +5,10 @@ import fsPromises from 'node:fs/promises'
 import path from 'node:path'
 import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 import { globby } from 'globby'
-import { camelCase } from 'lodash-es'
+import { camelCase, kebabCase } from 'lodash-es'
+import { XMLParser } from 'fast-xml-parser'
+import type { X2jOptions } from 'fast-xml-parser'
 import { defineNuxtModule, useLogger } from 'nuxt/kit'
-import {
-  attemptToGetAttribute,
-  generateHeadingId,
-  parseHtml,
-  walkNodes
-} from '../app/utilities/test-utils/html-test-utils'
 
 const __dirname = import.meta.dirname
 const clientPath = path.resolve(__dirname, '..')
@@ -21,14 +17,177 @@ const contentPath = path.resolve(clientPath, 'content')
 const generatedMarkdownValidHrefs = path.resolve(
   clientPath,
   'shared',
-  'types',
-  'markdown-valid-hrefs.d.ts'
+  'utils',
+  'markdown-valid-hrefs.ts'
 )
 const generatedMarkdownAllHrefs = path.resolve(
   clientPath,
   'generated',
   'report-of-all-markdown-hrefs.ts'
 )
+
+/**
+ * For a node in a document returned by `parseHtml()`
+ *
+ * expects a data structure that looks a bit like
+ * ```json
+ * {
+ *   "A": { "#text": "zombo" },
+ *   ":@href": "http://zombo.com/"
+ * }
+ * ```
+ */
+const attemptToGetAttribute = (
+  node: unknown,
+  elementName: string | undefined,
+  attributeName: string
+): string | undefined => {
+  const NODE_ATTRIBUTES_KEY = ':@'
+  if (
+    !node ||
+    typeof node !== 'object' ||
+    (elementName && !(elementName in node)) ||
+    !(NODE_ATTRIBUTES_KEY in node)
+  ) {
+    return
+  }
+
+  const attributes = node[NODE_ATTRIBUTES_KEY]
+
+  if (!attributes || typeof attributes !== 'object') {
+    return
+  }
+
+  const nodeKey = `@_${attributeName}`
+  const attribute = (attributes as Record<string, unknown>)[nodeKey]
+
+  if (typeof attribute === 'string') {
+    return attribute
+  }
+}
+
+/**
+ * Generate a heading anchor id by normalising the innerText
+ */
+const generateHeadingId = async (
+  headingNode: unknown
+): Promise<string | undefined> => {
+  if (
+    !headingNode ||
+    typeof headingNode !== 'object' ||
+    !(
+      'h1' in headingNode ||
+      'h2' in headingNode ||
+      'h3' in headingNode ||
+      'h4' in headingNode ||
+      'h5' in headingNode ||
+      'h6' in headingNode
+    )
+  ) {
+    console.error(JSON.stringify(headingNode, null, 2))
+    throw Error('Argument is not a heading node (h1, h2, h3, h4, h5, h6)')
+  }
+  const computedAnchorId = textToAnchorId(await getInnerText([headingNode]))
+
+  return computedAnchorId
+}
+
+/**
+ * This should only be used in tests.
+ * It's useful because it returns a JSON serializable data structure (rather than objects)
+ * so vitest can test/diff data structures easily.
+ *
+ * If you need an HTML parser but not for tests (eg in Vue/Nuxt) then try
+ * The Platform[tm] https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
+ */
+const parseHtml = (html: string) => {
+  const parser = getXMLParser({
+    // HTML parse mode config
+    unpairedTags: ['hr', 'br', 'link', 'meta'],
+    stopNodes: ['*.pre', '*.script'],
+    htmlEntities: true
+  })
+  return parser.parse(html)
+}
+
+type NodeHandler = (node: unknown) => Promise<void>
+
+const walkNodes = async (nodeList: unknown[], nodeHandler: NodeHandler) => {
+  // using a for-loop rather than await Promise.all(nodeList.map(...)) because we want
+  // to run async code sequentially rather than concurrently
+  // ie each nodeHandler(node) should complete before the next one is called.
+  // to avoid race conditions in async nodeHandler code
+  for (const node of nodeList) {
+    await nodeHandler(node)
+
+    if (node && typeof node === 'object') {
+      const keys = Object.keys(node)
+      for (const key of keys) {
+        const item = (node as Record<string, unknown>)[key]
+        if (Array.isArray(item)) {
+          // recursion
+          await walkNodes(item, nodeHandler)
+        }
+      }
+    } else {
+      console.log(node)
+      throw Error('Unexpected state')
+    }
+  }
+}
+
+/**
+ * XML Parser has some defaults (eg discarding whitespace) that don't suit our needs
+ * so here's our default config
+ */
+const parserDefaultConfig: X2jOptions = {
+  preserveOrder: true,
+  ignoreAttributes: false,
+  trimValues: false, // preserve whitespace
+  processEntities: false
+}
+
+const getXMLParser = (additionalConfig?: X2jOptions) =>
+  new XMLParser({
+    ...parserDefaultConfig,
+    ...additionalConfig
+  })
+
+const getInnerText = async (nodeList: unknown[]): Promise<string> => {
+  const innerText: string[] = []
+
+  await walkNodes(nodeList, async (node) => {
+    if (!node || typeof node !== 'object' || !('#text' in node)) return
+
+    const textNodeValue = node['#text']
+    if (typeof textNodeValue !== 'string') throw Error('unable to extract text')
+    innerText.push(textNodeValue)
+  })
+
+  return innerText.join('')
+}
+
+/**
+ * Converts arbitrary text into a custom id that is DOMId compliant (ie no whitespace)
+ *
+ * WARNING: this does not ensure unique DOM ids. It's not a uuid/useId hook. It just derives
+ * an id from the input string.
+ */
+const textToAnchorId = (text: string): string | undefined => {
+  const normalized = text
+    .trim()
+    .toLowerCase() // lowercase before kebabCase() because otherwise kebabCase() will split 'RFCs' into 'rf-cs'
+    .replace(/\./g, '-') // replace periods because otherwise "section 2.2" becomes "section22" rather than "section2-2" which is more readable in the url
+    .replace(/[^0-9\-a-zA-Z\s]/g, '') // removes non-alphanumeric eg question marks
+  if (
+    // if it's an empty string then getVNodeText() probably returned an empty string, so just return `undefined`
+    !normalized
+  ) {
+    return
+  }
+
+  return kebabCase(normalized)
+}
 
 type MdcParserResult = Awaited<ReturnType<typeof parseMarkdown>>
 type MdcRoot = MdcParserResult['body']
@@ -183,7 +342,7 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
   // Generates type MarkdownValidHrefs
   await fsPromises.writeFile(
     generatedMarkdownValidHrefs,
-    `${generatedFileWarningHeader}declare type MarkdownValidHrefs =\n  | ${markdownsValidHrefs
+    `${generatedFileWarningHeader}export type MarkdownValidHrefs =\n  | ${markdownsValidHrefs
       .flatMap((markdownValidHrefs) => {
         return markdownValidHrefs.validHrefs.map((validHref) =>
           // ensures TS-compatible string escaping when necessary
@@ -193,7 +352,7 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
       })
       .join('\n  | ')}\n\n${markdownsValidHrefs
       .map((markdownValidHrefs) => {
-        return `declare type ${markdownFileInternalLinksTypeBuilder(markdownValidHrefs.markdownPath)} =\n  | ${markdownValidHrefs.validInternalLinks
+        return `export type ${markdownFileInternalLinksTypeBuilder(markdownValidHrefs.markdownPath)} =\n  | ${markdownValidHrefs.validInternalLinks
           .map((validInternalLink) => JSON.stringify(validInternalLink))
           .join('\n  | ')}`
       })

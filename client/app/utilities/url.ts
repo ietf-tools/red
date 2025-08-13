@@ -1,7 +1,7 @@
 import { kebabCase } from 'lodash-es'
 import { parseRFCId } from './rfc'
-import type { imagePreviewDimensions } from './head'
-
+import type { imagePreviewDimensions } from '#shared'
+import type { MarkdownValidHrefs } from '#shared'
 /**
  * Represents all known href string patterns
  */
@@ -305,20 +305,12 @@ export const textToAnchorId = (text: string): string | undefined => {
   return kebabCase(normalized)
 }
 
-const RFC_6761_EXAMPLECOM_URL = 'https://example.com/'
-
 /**
- * Try parsing a relative url `href` string into a URL.
- * Because it's a `href` it will be resolved relative to `window.location`
+ * Try parsing a relative url `href` string into a URL, relative to prod
  */
 const tryParseHref = (href: string): URL | undefined => {
   try {
-    return new URL(
-      href,
-      typeof window !== 'undefined' ?
-        window.location.toString()
-      : RFC_6761_EXAMPLECOM_URL
-    )
+    return new URL(href, PUBLIC_SITE)
   } catch (e: unknown) {
     console.info(
       `Failed to parse href ${JSON.stringify(href)} into URL. Error:`,

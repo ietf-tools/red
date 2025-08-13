@@ -2,11 +2,6 @@ import { XMLParser, XMLBuilder } from 'fast-xml-parser'
 import type { X2jOptions, XmlBuilderOptions } from 'fast-xml-parser'
 import { textToAnchorId } from '../url'
 
-/**
- *
- * This file is test utilities
- */
-
 export type XMLParserConfig = X2jOptions
 
 /**
