@@ -2,13 +2,13 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { vi, describe, beforeEach, afterEach, test, expect } from 'vitest'
-import { renderInNotesRfcRefDotTxt } from './in-notes-rfc-ref-txt'
-import { getRedClient } from './redClientWrappers'
-import { getTestApiResponses, type DocListResponse } from './rfc.test'
 import type {
   ApiClient,
   PaginatedRfcMetadataList
 } from '../../generated/red-client'
+import { renderInNotesRfcRefDotTxt } from './in-notes-rfc-ref-txt'
+import { getRedClient } from './redClientWrappers'
+import { getTestApiResponses, type DocListResponse } from './rfc.test'
 
 const inNotesRfcRefs4Digit = fs
   .readFileSync(

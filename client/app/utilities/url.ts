@@ -1,7 +1,10 @@
 import { kebabCase } from 'lodash-es'
+import type {
+  ImagePreviewHorizontalDimensions,
+  ImagePreviewVerticalDimensions
+} from '../../shared/utils/meta-preview-images'
+import type { MarkdownValidHrefs } from '../../shared/utils/markdown-valid-hrefs'
 import { parseRFCId } from './rfc'
-import type { imagePreviewDimensions } from '#shared'
-import type { MarkdownValidHrefs } from '#shared'
 /**
  * Represents all known href string patterns
  */
@@ -320,8 +323,8 @@ const tryParseHref = (href: string): URL | undefined => {
 }
 
 export const linkPreviewImageUrlBuilder = (
-  widthPx: (typeof imagePreviewDimensions)[number][0],
-  heightPx: (typeof imagePreviewDimensions)[number][1]
+  widthPx: ImagePreviewHorizontalDimensions,
+  heightPx: ImagePreviewVerticalDimensions
 ) => {
   return `${PUBLIC_SITE}/link-preview-image-${widthPx}x${heightPx}.png` as const
 }

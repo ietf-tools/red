@@ -18,7 +18,6 @@
     "test:lint": "eslint .",
     "test:lint:fix": "eslint . --fix",
     "test:types": "nuxt prepare && vue-tsc -b --noEmit",
-    "vue-tsc": "vue-tsc",
     "test:unittests": "vitest run",
     "test:unittests:watch": "vitest",
     "generate": "npm run generate:api-red",

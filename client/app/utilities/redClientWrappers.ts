@@ -1,3 +1,4 @@
+import { get } from 'lodash-es'
 import { ApiClient } from '../../generated/red-client'
 import { FIXME_getRFCMetadataWithMissingData } from './rfc.mocks'
 import { setTimeoutPromise } from './promises'
@@ -5,7 +6,31 @@ import { needsCloudflareHeaderForApi } from './url'
 
 export const getRedClient = () => {
   const isServer = import.meta.server
-  const isTest = import.meta.env.VITEST
+  /**
+   * FIXME: check to see if this bug is still present and remove the get() if no
+   * longer necessary
+   *
+   * ----
+   *
+   * Seems like a Nuxt 4.0.3 bug but `vue-tsc` reports a TS error that TS langserver
+   * doesn't. The error looks like,
+   *
+   *   app/utilities/redClientWrappers.ts:8:30 - error TS2339: Property 'env' does not exist
+   *                                                           on type 'ImportMeta'.
+   *   const isTest = import.meta.env.VITEST
+   *                              ~~~
+   * We can't use @ts-ignore or @ts-expect-error because whether it's an error depends on
+   * whether you're using `vue-tsc` or an IDE. This means @ts-ignore is used on a line
+   * without an error which is an error itself, or @ts-expect-error is used on a line
+   * without an error which is also an error.
+   *
+   * So we've obscured the property usage in a lodash get() to work around TS bug.
+   *
+   * This is horrible.
+   *
+   * Please delete this asap.
+   */
+  const isTest = Boolean(get(import.meta, 'env.VITEST'))
 
   const config = useRuntimeConfig()
   const headers: ApiClient['Config']['headers'] = {}
