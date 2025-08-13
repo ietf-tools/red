@@ -1,4 +1,6 @@
 import type { z } from 'zod'
+import { h } from 'vue'
+import type { VNode } from 'vue'
 import { NONBREAKING_SPACE } from './strings'
 import type {
   RfcBucketHtmlDocumentSchema,

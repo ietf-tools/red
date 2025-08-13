@@ -18,6 +18,9 @@ export default defineEventHandler(async (event) => {
     throw Error(`Expected param to match ${rfcId}`)
   }
   const rfcNumberMatch = rfcPatterns[1] // eg '0001'
+  if (!rfcNumberMatch) {
+    throw Error(`Expected ${JSON.stringify(rfcId)} to match pattern.`)
+  }
   const rfcNumber = parseInt(rfcNumberMatch, 10)
   const withoutLeadingZeroes = rfcNumber.toString()
   // if the rfcNumber has leading zeroes this will fail
