@@ -129,7 +129,7 @@
                   <A
                     v-if="author.email"
                     :href="mailToBuilder(author.email)"
-                    class="whitespace-nowrap underline inline-block py-0.5 pr-1 mb-0.5"
+                    class="whitespace-nowrap underline inline-block py-0.5 pr-0.5 mb-0.5"
                   >
                     {{ author.name }}
                   </A>
@@ -138,7 +138,7 @@
                   </span>
                   <template v-if="authorIndex < props.rfc.authors.length - 1">
                     {{ COMMA }}
-                    {{ SPACE }}
+                    {{ NONBREAKING_SPACE }}
                   </template>
                   <template v-else>.</template>
                 </li>
@@ -206,30 +206,32 @@
             </li>
           </ul> -->
 
-          <Heading
-            level="3"
-            class="mt-5 mb-2"
-          >
-            Formats
-          </Heading>
-          <ul class="text-sm flex flex-col gap-2">
-            <li
-              v-for="(format, formatIndex) in props.rfc.formats"
-              :key="formatIndex"
+          <temmplate v-if="props.rfc.formats?.length > 0">
+            <Heading
+              level="3"
+              class="mt-5 mb-2"
             >
-              <A
-                :href="format"
-                class="underline block px-2 -ml-2"
+              Formats
+            </Heading>
+            <ul class="text-sm flex flex-col gap-2">
+              <li
+                v-for="(format, formatIndex) in props.rfc.formats"
+                :key="formatIndex"
               >
-                {{ format }}
-              </A>
-            </li>
-          </ul>
+                <A
+                  :href="format"
+                  class="underline block px-2 -ml-2"
+                >
+                  {{ format }}
+                </A>
+              </li>
+            </ul>
+          </temmplate>
         </template>
         <template #slot3>
           <ul class="text-sm">
             <li
-              v-for="(errataItem, errataIndex) in props.rfc.obsoleted_by"
+              v-for="(errataItem, errataIndex) in props.rfc.errata"
               :key="errataIndex"
             >
               {{ errataItem }}
@@ -254,7 +256,7 @@ import {
 import { DateTime } from 'luxon'
 import { formatTitleAsVNode, type RfcBucketHtmlDocument, type RfcCommon } from '~/utilities/rfc'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { COMMA, SPACE } from '~/utilities/strings'
+import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import {
   infoRfcPathBuilder,
   mailToBuilder,
