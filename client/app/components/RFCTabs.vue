@@ -254,7 +254,9 @@
       <p
         v-else
         class="text-sm mt-5 lg:mt-5"
-      >No erratum currently.</p>
+      >
+        No erratum currently.
+      </p>
     </TabsContent>
   </TabsRoot>
 </template>
@@ -290,7 +292,6 @@ function changeTab(index: number) {
 }
 
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`))
-
 
 const formattedPublished = computed(() => {
   const dt = DateTime.fromISO(props.rfc.published)

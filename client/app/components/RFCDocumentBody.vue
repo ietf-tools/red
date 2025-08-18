@@ -34,7 +34,8 @@
       v-for="(author, authorIndex) in props.rfc.authors"
       :key="authorIndex"
       class="inline-block"
-    > <span>
+    >
+      <span>
         {{ author.name }}
       </span>
       <template v-if="authorIndex < props.rfc.authors.length - 1">
@@ -90,10 +91,10 @@ import {
   type RfcBucketHtmlDocument,
   type RfcCommon
 } from '~/utilities/rfc'
-import { infoRfcPathBuilder, mailToBuilder } from '~/utilities/url'
+import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, NodePojo } from '~/utilities/rfc-validators'
-import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
+import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 
 type Props = {
   rfc: RfcCommon

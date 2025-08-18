@@ -1,5 +1,20 @@
 // Generated file by generate-markdown-links.ts DO NOT EDIT
 export type MarkdownValidHrefs =
+  | "/about/contact/"
+  | "/about/contact/#contact"
+  | "/about/contact/#report-a-copyright-infringement"
+  | "/about/rfc-editor/"
+  | "/about/rfc-editor/#about-the-rfc-editor"
+  | "/about/rfc-editor/#rswg"
+  | "/about/rfc-editor/#rsab"
+  | "/about/rfc-editor/#rsce"
+  | "/about/rfc-editor/#rpc"
+  | "/about/rfc-editor/#governing-rfcs"
+  | "/about/rpc-reports/"
+  | "/about/rpc-reports/#reports"
+  | "/about/rpc-reports/#service-level-agreement"
+  | "/about/rpc-reports/#notes"
+  | "/about/rpc-reports/#other-reports"
   | "/series/rfc-download/"
   | "/series/rfc-download/#download-rfcs"
   | "/series/rfc-download/#feed-of-recently-published-rfcs"
@@ -111,21 +126,6 @@ export type MarkdownValidHrefs =
   | "/authors/rfc-style-guide/#_21-first-paragraph"
   | "/authors/rfc-style-guide/#_22-second-paragraph"
   | "/authors/rfc-style-guide/#_23-third-paragraph"
-  | "/about/contact/"
-  | "/about/contact/#contact"
-  | "/about/contact/#report-a-copyright-infringement"
-  | "/about/rfc-editor/"
-  | "/about/rfc-editor/#about-the-rfc-editor"
-  | "/about/rfc-editor/#rswg"
-  | "/about/rfc-editor/#rsab"
-  | "/about/rfc-editor/#rsce"
-  | "/about/rfc-editor/#rpc"
-  | "/about/rfc-editor/#governing-rfcs"
-  | "/about/rpc-reports/"
-  | "/about/rpc-reports/#reports"
-  | "/about/rpc-reports/#service-level-agreement"
-  | "/about/rpc-reports/#notes"
-  | "/about/rpc-reports/#other-reports"
   | "/authors/rfc-edit/auth48/"
   | "/authors/rfc-edit/auth48/#authors-final-review-auth48"
   | "/authors/rfc-edit/auth48/#template-of-instructions-for-completing-auth48"
@@ -144,6 +144,24 @@ export type MarkdownValidHrefs =
   | "/authors/rfc-edit/pub-queue/#definitions-of-flags"
   | "/authors/rfc-edit/pub-queue/#definitions-of-missref-generation-numbers"
   | "/authors/rfc-edit/pub-queue/#publication-flow-chart"
+
+export type MarkdownFileValidInternalLinks_aboutContactMd =
+  | "#contact"
+  | "#report-a-copyright-infringement"
+
+export type MarkdownFileValidInternalLinks_aboutRfcEditorMd =
+  | "#about-the-rfc-editor"
+  | "#rswg"
+  | "#rsab"
+  | "#rsce"
+  | "#rpc"
+  | "#governing-rfcs"
+
+export type MarkdownFileValidInternalLinks_aboutRpcReportsMd =
+  | "#reports"
+  | "#service-level-agreement"
+  | "#notes"
+  | "#other-reports"
 
 export type MarkdownFileValidInternalLinks_seriesRfcDownloadMd =
   | "#download-rfcs"
@@ -265,24 +283,6 @@ export type MarkdownFileValidInternalLinks_authorsRfcStyleGuideMd =
   | "#_21-first-paragraph"
   | "#_22-second-paragraph"
   | "#_23-third-paragraph"
-
-export type MarkdownFileValidInternalLinks_aboutContactMd =
-  | "#contact"
-  | "#report-a-copyright-infringement"
-
-export type MarkdownFileValidInternalLinks_aboutRfcEditorMd =
-  | "#about-the-rfc-editor"
-  | "#rswg"
-  | "#rsab"
-  | "#rsce"
-  | "#rpc"
-  | "#governing-rfcs"
-
-export type MarkdownFileValidInternalLinks_aboutRpcReportsMd =
-  | "#reports"
-  | "#service-level-agreement"
-  | "#notes"
-  | "#other-reports"
 
 export type MarkdownFileValidInternalLinks_authorsRfcEditAuth48Md =
   | "#authors-final-review-auth48"
