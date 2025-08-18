@@ -155,7 +155,7 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
         case 'a':
           // Note that children is a function, as required by Vue for non-HTML components,
           // so that it can defer rendering children
-          return h(AMaybeRFCLink, node.attributes, () => childrenForVue)
+          return h(AMaybeRFCLink, { 'href': '', ...node.attributes }, () => childrenForVue)
         case 'HorizontalScrollable':
           // Note that children is a function, as required by Vue for non-HTML components,
           // so that it can defer rendering children

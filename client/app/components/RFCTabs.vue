@@ -43,17 +43,20 @@
           :value="2"
         >
           Erratum
+          <DiamondText :text="`${props.rfc.errata ? props.rfc.errata.length : 0}`" />
         </TabsTrigger>
       </HorizontalScrollable>
     </TabsList>
 
     <TabsContent
-      v-if="props.hasTableOfContents"
+      v-if="props.hasTableOfContents && props.rfcBucketHtmlDocument.tableOfContents"
       :value="0"
-      :class="TAB_CONTENT_CLASS"
+      :class="[TAB_CONTENT_CLASS, {
+        'px-4': props.isMobile,
+      }]"
     >
       <TableOfContentsHighlight
-        v-if="props.isMobile === false && props.rfcBucketHtmlDocument.tableOfContents"
+        v-if="props.isMobile === false"
         :toc="props.rfcBucketHtmlDocument.tableOfContents"
         list-type="ordered"
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
@@ -73,7 +76,7 @@
         </Heading>
       </TableOfContentsHighlight>
       <TableOfContents
-        v-else-if="props.isMobile === true && props.rfcBucketHtmlDocument.tableOfContents"
+        v-else-if="props.isMobile === true"
         :toc="props.rfcBucketHtmlDocument.tableOfContents"
         list-type="ordered"
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
@@ -240,6 +243,14 @@
       :value="2"
       :class="TAB_CONTENT_CLASS"
     >
+      <p class="border-b-1 border-gray-200 py-6">
+        <AValidHref
+          href="https://errata.rfc-editor.org/"
+          class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold"
+        >
+          Report a new erratum
+        </AValidHref>
+      </p>
       <ul
         v-if="props.rfc.errata && props.rfc.errata.length > 0"
         class="list-disc text-sm"
@@ -298,8 +309,8 @@ const formattedPublished = computed(() => {
   return formatDatePublished(dt, true)
 })
 
-const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen px-4'
-const DEFAULT_CLASS = 'py-4 px-2 whitespace-nowrap border-b-2 text-sm md:text-md'
+const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen'
+const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 text-sm md:text-md'
 const SELECTED_CLASS =
   'text-shadow-bold text-gray-900 dark:text-gray-100 border-b-blue-900 dark:border-b-white font-medium'
 const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'

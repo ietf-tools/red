@@ -102,7 +102,7 @@ import type { LoadingStatus } from '~/utilities/loading-status'
 import type { VueStyleClass } from '~/utilities/vue'
 
 const props = defineProps<{
-  href?: string
+  href: string
   id?: string
   class?: VueStyleClass
 }>()

@@ -5,7 +5,10 @@
   >
     <slot />
   </NuxtLink>
-  <a v-else v-bind="sanitisedAnchorProps">
+  <a
+    v-else
+    v-bind="sanitisedAnchorProps"
+  >
     <slot />
   </a>
 </template>

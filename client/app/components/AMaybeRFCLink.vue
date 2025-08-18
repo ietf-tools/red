@@ -23,7 +23,7 @@ import RFCRouterLink from './RFCRouterLink.vue'
 import Anchor from './A.vue'
 import { isRfcEditorSite, parseMaybeRfcLink } from '~/utilities/url'
 
-const props = defineProps<{ href?: string; id?: string }>()
+const props = defineProps<{ href: string; id?: string }>()
 const isRfcEditor = computed(() => isRfcEditorSite(props.href))
 const isRfcLink = computed(() => !!parseMaybeRfcLink(props.href))
 </script>

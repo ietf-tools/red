@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { ValidHrefs } from '~/utilities/url'
 
-type AnchorPropsWithValidHref = { href?: ValidHrefs; id?: string }
+type AnchorPropsWithValidHref = { href: ValidHrefs; id?: string }
 
 /**
  * TypeScript wrapper for links that attempts to detect invalid/valid hrefs as TypeScript failures

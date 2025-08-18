@@ -25,7 +25,6 @@
           </RFCMobileBanner>
           <div class="bg-white dark:bg-blue-900">
             <RFCTabs
-              ref="mobileRFCTabs"
               v-model="selectedTab"
               :rfc="props.rfc"
               :is-mobile="true"
@@ -40,10 +39,9 @@
 
     <div class="sticky top-0 h-[calc(100vh)] flex flex-col">
       <RFCTabs
-        ref="desktopRFCTabs"
         v-model="selectedTab"
         :rfc="props.rfc"
-        :is-mobile="true"
+        :is-mobile="false"
         :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
         :has-table-of-contents="props.hasTableOfContents"
       />

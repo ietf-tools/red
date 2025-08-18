@@ -17,7 +17,7 @@
         <a
           v-for="(link, linkIndex) in section.links"
           :key="linkIndex"
-          :to="`#${link.id}`"
+          :href="`#${link.id}`"
           :class="[props.listItemClass, 'flex flex-row']"
           @click="handleCloseModalAndScrollToId ? handleCloseModalAndScrollToId(link.id) : undefined"
         >

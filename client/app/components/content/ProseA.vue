@@ -2,7 +2,7 @@
   <RFCRouterLink
     v-if="isInternal && isRfcLink"
     :id="props.id"
-    :href="props.href"
+    :href="props.href!"
     :class="ANCHOR_TAILWIND_STYLE"
   >
     <slot />
