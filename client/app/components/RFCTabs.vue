@@ -251,6 +251,7 @@
           Report a new erratum
         </AValidHref>
       </p>
+
       <ul
         v-if="props.rfc.errata && props.rfc.errata.length > 0"
         class="list-disc text-sm"
@@ -311,6 +312,9 @@ const formattedPublished = computed(() => {
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen'
 const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 text-sm md:text-md'
+
+const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen px-4'
+const DEFAULT_CLASS = 'py-4 px-2 whitespace-nowrap border-b-2 text-sm md:text-md'
 const SELECTED_CLASS =
   'text-shadow-bold text-gray-900 dark:text-gray-100 border-b-blue-900 dark:border-b-white font-medium'
 const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'
