@@ -21,7 +21,7 @@
       <span v-if="props.rfc.subseries">
         <span>: </span>
         <NuxtLink
-          to="/"
+          :to="infoRfcPathBuilder(`${props.rfc.subseries.type.toLowerCase()}${props.rfc.subseries.number}`)"
           class="relative z-50 no-underline hover:underline focus:underline px-2 py-3 rounded text-gray-700"
           :title="`part of ${props.rfc.subseries.type.toUpperCase()}${props.rfc.subseries.number}`"
         >
