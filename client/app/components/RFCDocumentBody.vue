@@ -69,7 +69,7 @@
   </Alert>
 
   <div
-    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} wrap-anywhere mt-5 sm:text-base lg:text-base`"
+    :class="`relative rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} wrap-anywhere mt-5 sm:text-base lg:text-base`"
   >
     <component :is="enrichedDocument" />
   </div>
@@ -84,6 +84,7 @@
 import { createTextVNode } from 'vue'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import HorizontalScrollable from './HorizontalScrollable.vue'
+import AbsoluteHorizontalScrollable from './AbsoluteHorizontalScrollable.vue'
 import Fragment from './Fragment.vue'
 import {
   formatTitleAsVNode,
@@ -151,15 +152,46 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
     if (node.type === 'Element') {
       const children = node.children.map(renderNodePojo)
       const childrenForVue = unwrapChildrenForVue(children)
-      switch (node.nodeName) {
-        case 'a':
-          // Note that children is a function, as required by Vue for non-HTML components,
-          // so that it can defer rendering children
-          return h(AMaybeRFCLink, { 'href': '', ...node.attributes }, () => childrenForVue)
-        case 'HorizontalScrollable':
-          // Note that children is a function, as required by Vue for non-HTML components,
-          // so that it can defer rendering children
-          return h(HorizontalScrollable, node.attributes, () => childrenForVue)
+      if (node.nodeName === 'a') {
+        // Note that children is a function, as required by Vue for non-HTML components,
+        // so that it can defer children
+        return h(AMaybeRFCLink, { 'href': '', ...node.attributes }, () => childrenForVue)
+      } else if (node.nodeName === 'HorizontalScrollable') {
+        const ATTR_ABSOLUTE = 'data-component-absolute'
+        if (ATTR_ABSOLUTE in node.attributes) {
+          const isAbsolute = node.attributes[ATTR_ABSOLUTE] === true.toString()
+          if (isAbsolute) {
+            const ATTR_ABSOLUTE_CHILDWIDTH = 'data-component-childwidth'
+            const childWidthAttr = node.attributes[ATTR_ABSOLUTE_CHILDWIDTH]
+            const childWidthPx = parseFloat(childWidthAttr ?? '')
+            const ATTR_ABSOLUTE_CHILDHEIGHT = 'data-component-childheight'
+            const childHeightAttr = node.attributes[ATTR_ABSOLUTE_CHILDHEIGHT]
+            const childHeightPx = parseFloat(childHeightAttr ?? '')
+            if (!Number.isNaN(childWidthPx) && !Number.isNaN(childHeightPx)) {
+              return h(
+                AbsoluteHorizontalScrollable,
+                { ...node.attributes, childWidthPx, childHeightPx },
+                () => childrenForVue
+              )
+            } else {
+              console.warn(`Unable to render AbsoluteHorizontalScrollable ${ATTR_ABSOLUTE} because attributes ${ATTR_ABSOLUTE_CHILDWIDTH}=${JSON.stringify(childWidthAttr)} ${ATTR_ABSOLUTE_CHILDHEIGHT}${JSON.stringify(childHeightAttr)}`)
+            }
+          }
+        }
+        // Note that children is a function, as required by Vue for non-HTML components,
+        // so that it can defer rendering children
+        return h(
+          HorizontalScrollable,
+          node.attributes,
+          () => childrenForVue
+        )
+      } else if (node.nodeName === 'Placeholder') {
+        // FIXME: delete this case once the component is removed from the bucket
+        return h(
+          'div',
+          node.attributes,
+          childrenForVue
+        )
       }
       return h(node.nodeName, node.attributes, childrenForVue)
     } else if (node.type === 'Text') {

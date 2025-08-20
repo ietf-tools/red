@@ -91,10 +91,6 @@ p {
   margin: 0 0 1em 0;
   text-align: left;
 }
-div,
-span {
-  position: relative;
-}
 div {
   margin: 0;
 }
