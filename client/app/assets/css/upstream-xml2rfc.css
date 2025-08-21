@@ -94,16 +94,6 @@ p {
 div {
   margin: 0;
 }
-.alignRight.art-text {
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 3px;
-  padding: 1em 1em 0;
-  margin-bottom: 1.5em;
-}
-.alignRight.art-text pre {
-  padding: 0;
-}
 .alignRight {
   margin: 1em 0;
 }
@@ -143,17 +133,7 @@ svg [font-family~='monospace' i] {
   background-color: #f9f9f9;
   border: 1px solid #eee;
   border-radius: 3px;
-  padding: 1em 1em 0;
   margin-bottom: 1.5em;
-}
-.alignCenter.art-text pre {
-  padding: 0;
-}
-.alignCenter {
-  margin: 0 auto;
-}
-.alignCenter > *:first-child {
-  margin: 0 auto;
 }
 
 /* lists */
