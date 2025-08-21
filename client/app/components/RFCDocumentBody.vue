@@ -172,7 +172,7 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
                 pickBy(attributes, (_value, key) => !key.startsWith('data-'))
               return h(
                 AbsoluteHorizontalScrollable,
-                { ...deleteDataAttributes(node.attributes), childWidthAttr, childHeightAttr, class: className },
+                { ...deleteDataAttributes(node.attributes), childWidthAttr, childHeightAttr, class: `${className ? className : ''} rfc-content-padding-left rfc-content-padding-right` },
                 () => childrenForVue
               )
             } else {
@@ -257,5 +257,13 @@ html.dark .rfc-content-type-xml2rfc {
 
   /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/rfc-plaintext.css";
+}
+
+.rfc-content-padding-left {
+  padding-left: var(--layout-bleed-left, 10px);
+}
+
+.rfc-content-padding-right {
+  padding-right: var(--layout-bleed-right, 10px);
 }
 </style>
