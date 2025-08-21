@@ -4,7 +4,7 @@
  * https://github.com/ietf-tools/red-rfc-html-extractor/blob/main/src/rfc-validators.ts
  * to ensure there's a shared schema definition between repos for some JSON files.
  *
- * FIXME: make this code a shared dependency (ie, NPM package)
+ * FIXME: make this code a shared dependency (ie, NPM package, monorepo)
  */
 import { z } from 'zod'
 
@@ -166,7 +166,7 @@ export type RfcCommon = z.infer<typeof RfcCommonSchema>
 /**
  * Document HTML Schema (html/vue as pojo)
  */
-const TextSchema = z.object({
+const TextPojoSchema = z.object({
   type: z.literal('Text'),
   textContent: z.string()
 })
@@ -177,20 +177,20 @@ const _baseNodeElementSchema = z.object({
   nodeName: z.string(),
   attributes: z.record(z.string(), z.string())
 })
-type ElementType = z.infer<typeof _baseNodeElementSchema> & {
-  children: (ElementType | z.infer<typeof TextSchema>)[]
+export type ElementPojo = z.infer<typeof _baseNodeElementSchema> & {
+  children: (ElementPojo | z.infer<typeof TextPojoSchema>)[]
 }
-const ElementSchema: z.ZodType<ElementType> = z.object({
+const ElementPojoSchema: z.ZodType<ElementPojo> = z.object({
   type: z.literal('Element'),
   nodeName: z.string(),
   attributes: z.record(z.string(), z.string()),
-  children: z.lazy(() => z.array(NodeSchema))
+  children: z.lazy(() => z.array(NodePojoSchema))
 })
 
-const NodeSchema = z.union([ElementSchema, TextSchema])
+const NodePojoSchema = z.union([ElementPojoSchema, TextPojoSchema])
 
 // pojo = plain old javascript object, rather than an instanceof Node class
-export type NodePojo = z.infer<typeof NodeSchema>
+export type NodePojo = z.infer<typeof NodePojoSchema>
 
 // pojo = plain old javascript object, rather than an instanceof Document class
 export type DocumentPojo = NodePojo[]
@@ -207,7 +207,7 @@ export const RfcBucketHtmlDocumentSchema = z.object({
   rfc: RfcCommonSchema,
   tableOfContents: TableOfContentsSchema.optional(),
   documentHtmlType: DocumentHtmlTypeSchema,
-  documentHtmlObj: z.array(NodeSchema),
+  documentHtmlObj: z.array(NodePojoSchema),
   maxPreformattedLineLength: MaxPreformattedLineLengthSchema
 })
 

@@ -150,7 +150,7 @@ svg [font-family~='monospace' i] {
   padding: 0;
 }
 .alignCenter {
-  margin: 1em 0;
+  margin: 0 auto;
 }
 .alignCenter > *:first-child {
   margin: 0 auto;
@@ -975,10 +975,14 @@ h4 {
 .alignRight.art-text {
   margin-bottom: 0;
 }
-.alignLeft,
-.alignCenter,
-.alignRight {
-  margin: 1em 0 0 0;
+.alignLeft *:first-child {
+  margin: 0 auto 0 0;
+}
+.alignCenter *:first-child {
+  margin: 0 auto 0 auto;
+}
+.alignRight *:first-child {
+  margin: 0 0 0 auto;
 }
 /* In print, the pilcrow won't show on hover, so prevent it from taking up space,
    possibly even requiring a new line */

@@ -2,15 +2,17 @@
   <component
     :is="props.as"
     ref="scroll-container"
-    :class="{
-      'w-full max-w-[100vw] overflow-x-auto transition-shadow duration-800': true,
-      'shadow-[inset_70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_36px_0px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_36px_0px_20px_-36px_rgba(140,_201,_222,_0.5)]':
-        canScrollLeft && !canScrollRight,
-      'shadow-[inset_-70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_-36px_0px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_-70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_-36px_0px_20px_-36px_rgba(140,_201,_222,_0.5)]':
-        !canScrollLeft && canScrollRight,
-      'shadow-[inset_70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_-70px_0px_90px_-70px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_-70px_0px_90px_-70px_rgba(140,_201,_222,_0.5)]':
-        canScrollLeft && canScrollRight
-    }"
+    :class="[
+      'w-full max-w-[100vw] overflow-x-auto transition-shadow duration-800',
+      props.class,
+      {
+        'shadow-[inset_70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_36px_0px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_36px_0px_20px_-36px_rgba(140,_201,_222,_0.5)]':
+          canScrollLeft && !canScrollRight,
+        'shadow-[inset_-70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_-36px_0px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_-70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_-36px_0px_20px_-36px_rgba(140,_201,_222,_0.5)]':
+          !canScrollLeft && canScrollRight,
+        'shadow-[inset_70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_-70px_0px_90px_-70px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_-70px_0px_90px_-70px_rgba(140,_201,_222,_0.5)]':
+          canScrollLeft && canScrollRight
+      }]"
     @scroll="updateScrollHint"
   >
     <slot />
@@ -18,9 +20,12 @@
 </template>
 
 <script setup lang="ts">
+import type { VueStyleClass } from '~/utilities/vue';
+
 type Props = {
   /** Optional element nodeName (default 'div') */
-  as?: string
+  as?: string,
+  class?: VueStyleClass
 }
 
 const props = withDefaults(defineProps<Props>(), { 'as': 'div' })

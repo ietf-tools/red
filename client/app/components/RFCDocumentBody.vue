@@ -94,8 +94,9 @@ import {
 } from '~/utilities/rfc'
 import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
-import type { DocumentPojo, NodePojo } from '~/utilities/rfc-validators'
+import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
+import { pickBy } from 'lodash-es'
 
 type Props = {
   rfc: RfcCommon
@@ -165,10 +166,13 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
             const childWidthAttr = node.attributes[ATTR_ABSOLUTE_CHILDWIDTH]
             const ATTR_ABSOLUTE_CHILDHEIGHT = 'data-component-childheight'
             const childHeightAttr = node.attributes[ATTR_ABSOLUTE_CHILDHEIGHT]
+            const className = node.attributes.class
             if (childWidthAttr && childHeightAttr) {
+              const deleteDataAttributes = (attributes: ElementPojo["attributes"]): ElementPojo["attributes"] =>
+                pickBy(attributes, (_value, key) => !key.startsWith('data-'))
               return h(
                 AbsoluteHorizontalScrollable,
-                { ...node.attributes, childWidthAttr, childHeightAttr },
+                { ...deleteDataAttributes(node.attributes), childWidthAttr, childHeightAttr, class: className },
                 () => childrenForVue
               )
             } else {
