@@ -153,8 +153,6 @@ svg [font-family~='monospace' i] {
   margin: 1em 0;
 }
 .alignCenter > *:first-child {
-  display: table;
-  border: none;
   margin: 0 auto;
 }
 

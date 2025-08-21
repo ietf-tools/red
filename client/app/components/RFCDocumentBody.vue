@@ -163,14 +163,12 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
           if (isAbsolute) {
             const ATTR_ABSOLUTE_CHILDWIDTH = 'data-component-childwidth'
             const childWidthAttr = node.attributes[ATTR_ABSOLUTE_CHILDWIDTH]
-            const childWidthPx = parseFloat(childWidthAttr ?? '')
             const ATTR_ABSOLUTE_CHILDHEIGHT = 'data-component-childheight'
             const childHeightAttr = node.attributes[ATTR_ABSOLUTE_CHILDHEIGHT]
-            const childHeightPx = parseFloat(childHeightAttr ?? '')
-            if (!Number.isNaN(childWidthPx) && !Number.isNaN(childHeightPx)) {
+            if (childWidthAttr && childHeightAttr) {
               return h(
                 AbsoluteHorizontalScrollable,
-                { ...node.attributes, childWidthPx, childHeightPx },
+                { ...node.attributes, childWidthAttr, childHeightAttr },
                 () => childrenForVue
               )
             } else {
