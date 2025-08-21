@@ -20,11 +20,11 @@
 </template>
 
 <script setup lang="ts">
-import type { VueStyleClass } from '~/utilities/vue';
+import type { VueStyleClass } from '~/utilities/vue'
 
 type Props = {
   /** Optional element nodeName (default 'div') */
-  as?: string,
+  as?: string
   class?: VueStyleClass
 }
 
