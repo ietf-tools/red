@@ -1,5 +1,5 @@
 <template>
-  <ul :class="['block mt-1 mb-1 px-1 xs:px-0', props.class]">
+  <ul :class="['block mt-1 mb-1 px-1 xs:px-0 print:hidden', props.class]">
     <li
       v-for="(path, index) in props.breadcrumbItems"
       :key="index"

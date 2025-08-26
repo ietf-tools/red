@@ -17,19 +17,26 @@
 
   <Heading
     level="1"
-    class="mb-2 pl-2 xs:px-0 print:px-0"
+    class="mb-2 pl-2 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
   >
     <component :is="formattedTitle" />
   </Heading>
 
   <Heading
     level="2"
-    class="mb-2 pl-2 xs:px-0 print:px-0"
+    class="mb-2 pl-2 xs:px-0 print:text-center"
   >
     {{ rfc.title }}
+
+    <span
+      v-if="isAprilFool"
+      class="inline pr-2"
+    >
+      <AprilFools />
+    </span>
   </Heading>
 
-  <ul class="block ml-2">
+  <ul class="block ml-2 print:text-center">
     <li
       v-for="(author, authorIndex) in props.rfc.authors"
       :key="authorIndex"
@@ -68,9 +75,13 @@
     </div>
   </Alert>
 
-  <div
-    :class="`relative rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} wrap-anywhere mt-5 sm:text-base lg:text-base`"
-  >
+  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative ${
+    //
+    ' leading-[1.75] ' // WCAG requires 1.5 minimum
+    } ${
+    //
+    ' wrap-normal ' // there are URLs as text in RFCs that need wrapping or they'll break the layout see rfc8889
+    } mt-5 sm:text-base lg:text-base`">
     <component :is="enrichedDocument" />
   </div>
 
@@ -97,6 +108,7 @@ import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
+import { DateTime } from 'luxon'
 
 type Props = {
   rfc: RfcCommon
@@ -210,6 +222,11 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
 const maxPreformattedLineLength = computed(() =>
   props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
 )
+
+const isAprilFool = computed(() => {
+  const datetime = DateTime.fromISO(props.rfc.published)
+  return datetime.month === 4 && datetime.day === 1
+})
 </script>
 
 <style lang="postcss">

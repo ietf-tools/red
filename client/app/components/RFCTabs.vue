@@ -311,7 +311,7 @@ const formattedPublished = computed(() => {
 })
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen'
-const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 text-sm md:text-md'
+const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 hover:bg-gray-100 text-sm md:text-md cursor-pointer'
 const SELECTED_CLASS = 'text-shadow-bold text-gray-900 dark:text-gray-100 border-b-blue-900 dark:border-b-white font-medium'
 const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'
 </script>

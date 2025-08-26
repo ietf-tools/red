@@ -1,23 +1,21 @@
 <template>
-  <div
-    :class="[
-      'inline-flex rounded-lg overflow-hidden print:text-sm',
-      props.class,
-      {
-        'text-sm font-semibold': props.size === 'normal',
-        'text-xs font-semibold': props.size === 'small'
-      }
-    ]"
-  >
+  <div :class="[
+    'inline-flex rounded-lg overflow-hidden print:text-sm print:leading-[2]',
+    props.class,
+    {
+      'text-sm font-semibold': props.size === 'normal',
+      'text-xs font-semibold': props.size === 'small'
+    }
+  ]">
     <div
       v-for="(textItem, index) in props.text"
       :key="index"
       :class="{
-        'py-1 uppercase': true,
+        'py-1 uppercase print:text-black print:bg-transparent print:border-1 print:border-black': true,
         'px-2': props.size === 'small',
         'px-3': props.size === 'normal',
         'bg-blue-400 dark:bg-blue-800 text-white print:bg-white': index === 0,
-        'bg-yellow-200 dark:bg-yellow-700 dark:text-white text-black print:text-black print:bg-white':
+        'bg-yellow-200 dark:bg-yellow-700 dark:text-white text-black':
           index === 1,
         'bg-blue-300 dark:bg-blue-700': index >= 1
       }"

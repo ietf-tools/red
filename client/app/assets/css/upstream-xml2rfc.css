@@ -170,7 +170,7 @@ ul.compact,
 .ulCompact,
 ol.compact,
 .olCompact {
-  line-height: 100%;
+  line-height: 1.5;
   margin: 0 0 0 2em;
 }
 
@@ -178,10 +178,11 @@ ol.compact,
 dl {
 }
 dl > dt {
+  clear: both;
   float: left;
   padding-left: var(--layout-bleed-left);
   padding-right: var(--layout-bleed-right);
-  line-height: 2;
+  line-height: 1.5;
 }
 /* 
 dl.nohang > dt {
@@ -389,22 +390,6 @@ hr {
   float: right;
 }
 
-/* table of contents */
-#toc {
-  padding: 0.75em 0 2em 0;
-  margin-bottom: 1em;
-}
-nav.toc ul {
-  margin: 0 0.5em 0 0;
-  padding: 0;
-  list-style: none;
-}
-nav.toc li {
-  line-height: 1.3em;
-  margin: 0.75em 0;
-  padding-left: 1.2em;
-  text-indent: -1.2em;
-}
 /* references */
 .references dt {
   text-align: right;
@@ -805,7 +790,7 @@ section {
 /* Fix the height/width aspect for ascii art*/
 .sourcecode pre,
 .art-text pre {
-  line-height: 1.12;
+  line-height: 1.5;
 }
 
 /* Add styling for a link in the ToC that points to the top of the document */
@@ -935,13 +920,6 @@ h4 {
   padding-top: 24px;
 }
 /* Float artwork pilcrow to the right */
-@media screen {
-  .artwork a.pilcrow {
-    display: block;
-    line-height: 0.7;
-    margin-top: 0.15em;
-  }
-}
 /* Make pilcrows on dd visible */
 @media screen {
   dd:hover > a.pilcrow {

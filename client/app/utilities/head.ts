@@ -1,8 +1,7 @@
 import type { DateTime } from 'luxon'
 import { useHead } from 'nuxt/app'
 import { linkPreviewImageUrlBuilder } from './url'
-import type {
-  imagePreviewDimensions } from '#shared/utils/meta-preview-images'
+import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import {
   OPENGRAPH_DIMENSIONS,
   TWITTER_DIMENSIONS

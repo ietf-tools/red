@@ -10,6 +10,8 @@ type RouteRules = NonNullable<
 const oneHourInSeconds = 60 * 60
 const oneDayInSeconds = 24 * oneHourInSeconds
 
+const scrollbarWidthInlineJS = `function _updateScrollbarWidth(){document.documentElement.style.setProperty('--scrollbar-width',(window.innerWidth-document.documentElement.clientWidth)+'px')}window.addEventListener('resize', _updateScrollbarWidth, false);document.addEventListener('DOMContentLoaded', _updateScrollbarWidth, false);window.addEventListener('load', _updateScrollbarWidth);`
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-05',
@@ -93,6 +95,15 @@ export default defineNuxtConfig({
         // used to scope RFC generator HTML styles
         // see @nested-import
       }
+    }
+  },
+  app: {
+    head: {
+      script: [
+        {
+          innerHTML: scrollbarWidthInlineJS
+        }
+      ]
     }
   },
   $production: {

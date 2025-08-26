@@ -4,10 +4,11 @@
     class="relative w-full z-90 justify-end content-end hidden lg:block"
     disable-hover-trigger
   >
-    <NavigationMenuList
-      class="m-0 flex gap-2 w-full justify-end list-none rounded-md"
-    >
-      <NavigationMenuItem v-for="(menuItem, index) in menuData" :key="index">
+    <NavigationMenuList class="m-0 flex gap-2 w-full justify-end list-none rounded-md">
+      <NavigationMenuItem
+        v-for="(menuItem, index) in menuData"
+        :key="index"
+      >
         <NavigationMenuLink
           v-if="menuItem.href && !menuItem.children"
           :href="menuItem.href"
@@ -15,7 +16,10 @@
           class="hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
           @click="menuItem.click"
         >
-          <Icon v-if="menuItem.icon" :name="menuItem.icon" />
+          <Icon
+            v-if="menuItem.icon"
+            :name="menuItem.icon"
+          />
         </NavigationMenuLink>
 
         <NavigationMenuTrigger
@@ -23,7 +27,10 @@
           class="hover:bg-blue-400 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
           :aria-label="menuItem.label"
         >
-          <Icon v-if="menuItem.icon" :name="menuItem.icon" />
+          <Icon
+            v-if="menuItem.icon"
+            :name="menuItem.icon"
+          />
           <span v-if="!menuItem.hideLabelDesktop">
             {{ menuItem.label }}
           </span>
@@ -54,7 +61,10 @@
                   >
                     <NavigationMenuTrigger :class="MENU_ITEM_CLASS">
                       <span>
-                        <Icon v-if="level0.icon" :name="level0.icon" />
+                        <Icon
+                          v-if="level0.icon"
+                          :name="level0.icon"
+                        />
                         {{ level0.label }}
                       </span>
                       <GraphicsChevron
@@ -76,7 +86,10 @@
                             :class="[MENU_ITEM_CLASS, 'pl-5']"
                             @click="level1.click"
                           >
-                            <Icon v-if="level1.icon" :name="level1.icon" />
+                            <Icon
+                              v-if="level1.icon"
+                              :name="level1.icon"
+                            />
                             {{ level1.label }}
                           </NavigationMenuLink>
                         </li>
@@ -85,7 +98,10 @@
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenuSub>
-              <NavigationMenuLink v-else as-child>
+              <NavigationMenuLink
+                v-else
+                as-child
+              >
                 <A
                   v-if="level0.href"
                   :href="level0.href"
@@ -93,7 +109,10 @@
                   @click="level0.click"
                 >
                   <span>
-                    <Icon v-if="level0.icon" :name="level0.icon" />
+                    <Icon
+                      v-if="level0.icon"
+                      :name="level0.icon"
+                    />
                     {{ level0.label }}
                     <Icon
                       v-if="!isInternalLink(level0.href)"
@@ -110,15 +129,18 @@
                   @click="level0.click"
                 >
                   <span class="flex items-center">
-                    <Icon v-if="level0.icon" :name="level0.icon" />
                     <Icon
-                      v-if="level0.isActiveFn?.()"
+                      v-if="level0.icon"
+                      :name="level0.icon"
+                    />
+                    <Icon
+                      v-if="Boolean(level0.isActiveFn?.())"
                       name="fluent:checkmark-12-filled"
                       class="inline-block w-[14px] h-[14px] mr-2"
                     />
                     <span
                       v-if="
-                        level0.isActiveFn && !level0.isActiveFn() // render blank space
+                        Boolean(level0.isActiveFn && !level0.isActiveFn())
                       "
                       class="inline-block w-[14px] h-[14px] mr-2"
                     />

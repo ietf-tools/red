@@ -29,11 +29,7 @@
         v-if="isAprilFool"
         class="inline pr-2"
       >
-        <Icon
-          name="fa6-solid:masks-theater"
-          size="1em"
-          class="text-violet-500 -mb-0.5"
-        />
+        <AprilFools />
       </li>
       <li
         v-for="(part, index) in list2"

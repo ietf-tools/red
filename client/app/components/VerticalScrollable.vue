@@ -8,13 +8,14 @@
       canScrollUp && canScrollDown && 'shadow-[inset_0px_70px_90px_-70px_rgba(0,_45,_60,_0.5),inset_0px_-70px_90px_-70px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_70px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
       props.class
     ]"
-    @scroll="updateScrollHint"
+    @scroll="debouncedUpdateScrollHint"
   >
     <slot />
   </div>
 </template>
 
 <script setup lang="ts">
+import { useDebounceFn } from '@vueuse/core'
 const scrollContainer = useTemplateRef('scroll-container')
 const canScrollUp = ref(false)
 const canScrollDown = ref(false)
@@ -42,18 +43,20 @@ const updateScrollHint = () => {
     scrollContainerElement.scrollHeight - BUFFER_PX
 }
 
+const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
+
 let timer: ReturnType<typeof setTimeout>
 
 onMounted(() => {
-  window.addEventListener('resize', updateScrollHint)
+  window.addEventListener('resize', debouncedUpdateScrollHint)
 
-  updateScrollHint()
+  debouncedUpdateScrollHint()
 
   timer = setTimeout(updateScrollHint, 50)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateScrollHint)
+  window.removeEventListener('resize', debouncedUpdateScrollHint)
   if (timer) {
     clearTimeout(timer)
   }

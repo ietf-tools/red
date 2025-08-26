@@ -63,7 +63,7 @@
   <p class="clear-both text-right mt-6 mb-10">
     <A
       :href="rfcPathBuilder(props.rfcJson.doc_id)"
-      class="flex-inline rounded no-underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6"
+      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6"
     >
       <component :is="formattedTitle" />
       <GraphicsChevron class="ml-2 inline -rotate-90" />
@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Track preview analytics
+// TODO: Track preview analytics as it might siphon off visitors to RFCs
 import { DateTime } from 'luxon'
 import { infoRfcPathBuilder, rfcPathBuilder } from '../utilities/url'
 import Anchor from './A.vue'

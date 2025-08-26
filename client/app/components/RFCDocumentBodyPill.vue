@@ -1,14 +1,14 @@
 <template>
-    <div class="flex ml-2 flex-row justify-between items-center flex-wrap">
-        <div class="flex align-middle">
+    <div class="flex ml-2 flex-row justify-between items-center flex-wrap print:justify-center">
+        <div class="flex align-middle print:text-center">
             <Pill
                 v-if="tagText.length > 0"
                 size="normal"
                 :text="tagText"
-                class="print:m-0 my-2"
+                class="print:mt-3 my-2"
             />
             <PopoverRoot>
-                <PopoverTrigger class="p-2 cursor-help">
+                <PopoverTrigger class="p-2 cursor-help print:hidden">
                     <GraphicsQuestionMarkCircle />
                 </PopoverTrigger>
 
@@ -19,7 +19,7 @@
                         <PopoverArrow
                             class="fill-white stroke-gray-400 dark:fill-black dark:stroke-gray-300 relative -top-[1px]"
                         />
-                        <p>
+                        <p class="text-balance">
                             For the definition of <b>Status</b>, see
                             <A
                                 :href="infoRfcPathBuilder('rfc2026')"
@@ -28,7 +28,7 @@
                                 <component :is="formatTitleAsVNode('rfc2026')" />
                             </A>.
                         </p>
-                        <p>
+                        <p class="text-balance">
                             For the definition of <b>Stream</b>, see
                             <A
                                 :href="infoRfcPathBuilder('rfc8729')"
