@@ -10,6 +10,7 @@ type RouteRules = NonNullable<
 const oneHourInSeconds = 60 * 60
 const oneDayInSeconds = 24 * oneHourInSeconds
 
+// inserted in the <head> some inline JS to determine scrollbar width so that CSS can use it in calc()
 const scrollbarWidthInlineJS = `function _updateScrollbarWidth(){document.documentElement.style.setProperty('--scrollbar-width',(window.innerWidth-document.documentElement.clientWidth)+'px')}window.addEventListener('resize', _updateScrollbarWidth, false);document.addEventListener('DOMContentLoaded', _updateScrollbarWidth, false);window.addEventListener('load', _updateScrollbarWidth);`
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
