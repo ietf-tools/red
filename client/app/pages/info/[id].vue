@@ -39,7 +39,9 @@ import { RfcBucketHtmlDocumentSchema } from '~/utilities/rfc-validators'
 import {
   apiRfcDocRetrievePathBuilder,
   apiRfcBucketDocumentURLBuilder,
-  infoRfcPathBuilder
+  infoRfcPathBuilder,
+  rfcFormatPathBuilder,
+  PUBLIC_SITE
 } from '~/utilities/url'
 
 const route = useRoute()
@@ -105,9 +107,8 @@ if (rfcDocRetrieveError.value) {
 if (rfcBucketHtmlDocumentError.value) {
   console.error(rfcBucketHtmlDocumentError.value)
   throw createError({
-    statusCode: 500,
-    statusMessage: `Unable to load RFC content JSON from ${apiRfcBucketDocumentURLBuilder(rfcNumber)
-      } ${rfcBucketHtmlDocumentError.value}`,
+    statusCode: 404,
+    statusMessage: `No ${sanitisedId} content found. If this is a new RFC please try again later. Try also ${PUBLIC_SITE}${rfcFormatPathBuilder(sanitisedId, 'html')}`,
     fatal: true
   })
 }
