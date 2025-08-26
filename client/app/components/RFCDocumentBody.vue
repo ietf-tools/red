@@ -4,15 +4,7 @@
       :breadcrumb-items="breadcrumbItems"
       class="flex-1"
     />
-    <button
-      type="button"
-      class="fixed right-0 mt-3 font-bold rounded-l z-10 bg-white dark:bg-black border border-r-0 border-gray-200 align-middle flex items-center px-3 py-2 text-sm lg:hidden print:hidden shadow-lg shadow-gray-300 dark:shadow-blue-900"
-      aria-label="Open details modal"
-      @click="isModalOpen = true"
-    >
-      <GraphicsExpandSidebar class="inline-block mr-1" />
-      Info
-    </button>
+    <RFCDocumentMobileInfoButton @click="isModalOpen = true">Info</RFCDocumentMobileInfoButton>
   </div>
 
   <Heading
@@ -75,13 +67,10 @@
     </div>
   </Alert>
 
-  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative ${
+  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
     //
     ' leading-[1.75] ' // WCAG requires 1.5 minimum
-    } ${
-    //
-    ' wrap-normal ' // there are URLs as text in RFCs that need wrapping or they'll break the layout see rfc8889
-    } mt-5 sm:text-base lg:text-base`">
+    }`">
     <component :is="enrichedDocument" />
   </div>
 

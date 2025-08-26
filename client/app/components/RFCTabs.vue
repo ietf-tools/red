@@ -5,7 +5,7 @@
     @change="changeTab"
   >
     <TabsList class="border-b-2 border-gray-400">
-      <HorizontalScrollable class="flex flex-row gap-5">
+      <HorizontalScrollable :class="`flex flex-row gap-5 ${props.isMobile ? 'px-2' : ''}`">
         <TabsIndicator class="absolute" />
         <TabsTrigger
           v-if="props.hasTableOfContents"
@@ -98,7 +98,9 @@
     </TabsContent>
     <TabsContent
       :value="1"
-      :class="TAB_CONTENT_CLASS"
+      :class="[TAB_CONTENT_CLASS, {
+        'px-4': props.isMobile,
+      }]"
     >
       <Heading
         level="3"
@@ -241,7 +243,9 @@
     </TabsContent>
     <TabsContent
       :value="2"
-      :class="TAB_CONTENT_CLASS"
+      :class="[TAB_CONTENT_CLASS, {
+        'px-4': props.isMobile,
+      }]"
     >
       <p class="border-b-1 border-gray-200 py-6">
         <AValidHref

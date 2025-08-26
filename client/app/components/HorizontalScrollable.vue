@@ -3,7 +3,7 @@
     :is="props.as"
     ref="scroll-container"
     :class="[
-      'w-full max-w-[calc(100vw_-_var(--scrollbar-width))] overflow-x-auto transition-shadow duration-800',
+      'w-full max-w-[calc(100vw_-_var(--rfc-editor-org-scrollbar-width,16px))] overflow-x-auto transition-shadow duration-800',
       props.class,
       {
         'shadow-[inset_70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_36px_0px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_36px_0px_20px_-36px_rgba(140,_201,_222,_0.5)]':
