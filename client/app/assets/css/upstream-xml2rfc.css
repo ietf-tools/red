@@ -36,17 +36,6 @@ h6 {
   font-weight: bold;
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
 }
-#title,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-address {
-  line-height: 1.5;
-}
 
 #title {
   clear: both;
@@ -170,19 +159,15 @@ ul.compact,
 .ulCompact,
 ol.compact,
 .olCompact {
-  line-height: 1.5;
   margin: 0 0 0 2em;
 }
 
 /* definition lists */
-dl {
-}
 dl > dt {
   clear: both;
   float: left;
   padding-left: var(--layout-bleed-left);
   padding-right: var(--layout-bleed-right);
-  line-height: 1.5;
 }
 /* 
 dl.nohang > dt {
@@ -788,7 +773,6 @@ section {
 }
 
 /* Fix the height/width aspect for ascii art*/
-.sourcecode pre,
 .art-text pre {
   line-height: 1.5;
 }
@@ -1147,15 +1131,6 @@ dt code {
 /* Tweak the pre margin -- 0px doesn't come out well */
 pre {
   margin-top: 0.5px;
-}
-/* Tweak the compact list text */
-ul.compact,
-.ulCompact,
-ol.compact,
-.olCompact,
-dl.compact,
-.dlCompact {
-  line-height: normal;
 }
 /* Don't add top margin for nested lists */
 li > ul,
