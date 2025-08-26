@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
+
 const scrollContainer = useTemplateRef('scroll-container')
 const canScrollUp = ref(false)
 const canScrollDown = ref(false)

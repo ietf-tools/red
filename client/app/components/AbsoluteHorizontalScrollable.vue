@@ -1,5 +1,4 @@
 <template>
-  <br /><!--linebreak to ensure eg list item • is visible -->
   <HorizontalScrollable :class="`absolute left-0 ${props.class ? props.class : ''}`">
     <slot />
   </HorizontalScrollable>

@@ -94,6 +94,7 @@
 <script setup lang="ts">
 import { createTextVNode } from 'vue'
 import { pickBy } from 'lodash-es'
+import { DateTime } from 'luxon'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import HorizontalScrollable from './HorizontalScrollable.vue'
 import AbsoluteHorizontalScrollable from './AbsoluteHorizontalScrollable.vue'
@@ -108,7 +109,6 @@ import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
-import { DateTime } from 'luxon'
 
 type Props = {
   rfc: RfcCommon
