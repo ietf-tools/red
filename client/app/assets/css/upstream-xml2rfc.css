@@ -1072,6 +1072,8 @@ table,
 }
 /* Avoid breaks between <dt> and <dd> */
 dl {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
   break-before: auto;
   break-inside: auto;
 }
@@ -1080,6 +1082,7 @@ dt {
   break-after: avoid-page;
 }
 dd {
+  margin-inline-start: 60px;
   break-before: avoid-page;
   break-after: auto;
   orphans: 3;
