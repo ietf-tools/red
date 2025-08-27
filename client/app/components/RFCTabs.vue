@@ -43,7 +43,10 @@
           :value="2"
         >
           Erratum
-          <DiamondText :text="`${props.rfc.errata ? props.rfc.errata.length : 0}`" />
+          <DiamondText
+            v-if="props.rfc.errata && props.rfc.errata.length > 0"
+            :text="`${props.rfc.errata ? props.rfc.errata.length : 0}`"
+          />
         </TabsTrigger>
       </HorizontalScrollable>
     </TabsList>

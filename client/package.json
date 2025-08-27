@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@babel/runtime": "7.27.1",
+    "@iconify-json/fluent": "1.2.29",
     "@nuxt/test-utils": "3.19.1",
     "@playwright/test": "1.49.1",
     "@types/lodash-es": "4.17.12",
