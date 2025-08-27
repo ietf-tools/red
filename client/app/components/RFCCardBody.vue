@@ -93,7 +93,7 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
 import { infoRfcPathBuilder } from '../utilities/url'
-import { getRfcPillText, type RfcCommon } from '~/utilities/rfc'
+import { getRfcPillText, isAprilFoolsRfc, type RfcCommon } from '~/utilities/rfc'
 import { formatTitlePlaintext } from '~/utilities/rfc-converters-utils'
 
 type Props = {
@@ -188,8 +188,5 @@ const list2 = computed(
 
 const tagText = computed(() => getRfcPillText(props.rfc))
 
-const isAprilFool = computed(() => {
-  const datetime = DateTime.fromISO(props.rfc.published)
-  return datetime.month === 4 && datetime.day === 1
-})
+const isAprilFool = computed(() => isAprilFoolsRfc(props.rfc))
 </script>

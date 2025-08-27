@@ -1,6 +1,7 @@
 import type { z } from 'zod'
 import { h } from 'vue'
 import type { VNode } from 'vue'
+import { DateTime } from 'luxon'
 import { NONBREAKING_SPACE } from './strings'
 import type {
   RfcBucketHtmlDocumentSchema,
@@ -157,3 +158,10 @@ export type RFCJSON = {
 }
 
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
+
+export const isAprilFoolsRfc = (rfc: RfcCommon): boolean => {
+  const datetime = DateTime.fromISO(rfc.published)
+  return (
+    datetime.month === 4 && datetime.day === 1 && rfc.group.acronym === 'none'
+  )
+}

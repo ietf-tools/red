@@ -2,7 +2,7 @@
 import { vi, test, expect, describe, beforeEach, afterEach } from 'vitest'
 import { DateTime } from 'luxon'
 import type { ApiClient, Rfc, RfcMetadata } from '../../generated/red-client'
-import { parseRFCId } from './rfc'
+import { blankRfcCommon, isAprilFoolsRfc, parseRFCId } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import rfcRefs from './rfc-refs.json'
 import rfcJsons from './rfc-jsons.json'
@@ -243,6 +243,21 @@ test('formatDatePublished', () => {
 
   expect(formatDatePublished(april1, false)).toBe('April 2025')
   expect(formatDatePublished(april1, true)).toBe('1 April 2025')
+})
+
+test('isAprilFoolsRfc', () => {
+  const aprilFoolsRfc = structuredClone(blankRfcCommon)
+  aprilFoolsRfc.published = '1979-04-01'
+  aprilFoolsRfc.group.acronym = 'none'
+  expect(isAprilFoolsRfc(aprilFoolsRfc)).toBeTruthy()
+
+  const notAprilFoolsRfc1 = structuredClone(aprilFoolsRfc)
+  notAprilFoolsRfc1.published = '1979-04-07'
+  expect(isAprilFoolsRfc(notAprilFoolsRfc1)).toBeFalsy()
+
+  const notAprilFoolsRfc2 = structuredClone(aprilFoolsRfc)
+  notAprilFoolsRfc2.group.acronym = 'ietf'
+  expect(isAprilFoolsRfc(notAprilFoolsRfc2)).toBeFalsy()
 })
 
 describe('parseRfcJsonPubDateToISO', () => {

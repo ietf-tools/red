@@ -83,13 +83,13 @@
 <script setup lang="ts">
 import { createTextVNode } from 'vue'
 import { pickBy } from 'lodash-es'
-import { DateTime } from 'luxon'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import HorizontalScrollable from './HorizontalScrollable.vue'
 import AbsoluteHorizontalScrollable from './AbsoluteHorizontalScrollable.vue'
 import Fragment from './Fragment.vue'
 import {
   formatTitleAsVNode,
+  isAprilFoolsRfc,
   parseRFCId,
   type RfcBucketHtmlDocument,
   type RfcCommon
@@ -212,10 +212,7 @@ const maxPreformattedLineLength = computed(() =>
   props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
 )
 
-const isAprilFool = computed(() => {
-  const datetime = DateTime.fromISO(props.rfc.published)
-  return datetime.month === 4 && datetime.day === 1 && props.rfc.group.acronym === 'none'
-})
+const isAprilFool = computed(() => isAprilFoolsRfc(props.rfc))
 </script>
 
 <style lang="postcss">
