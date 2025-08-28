@@ -46,7 +46,11 @@ const formatTitle = (title?: string) => {
   if (!title) {
     return SITE_NAME
   }
-  return `${title} | ${SITE_NAME}`
+  return `${title} | ${SITE_NAME}`.replace(
+    // remove linebreaks
+    /\s/g,
+    ' '
+  )
 }
 
 const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter') => {

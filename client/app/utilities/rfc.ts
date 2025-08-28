@@ -66,7 +66,7 @@ export const blankRfcCommon: RfcCommon = {
   text: ''
 }
 
-type RFCId = {
+export type RFCId = {
   type: string | typeof RFC_TYPE_RFC
   number: string
   title?: string
