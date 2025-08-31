@@ -10,7 +10,8 @@ import { z } from 'zod'
 
 const DocumentHtmlTypeSchema = z.union([
   z.literal('xml2rfc'),
-  z.literal('plaintext')
+  z.literal('plaintext'),
+  z.literal('pdf-or-ps')
 ])
 
 export type DocumentHtmlType = z.infer<typeof DocumentHtmlTypeSchema>

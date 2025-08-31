@@ -53,7 +53,6 @@ import {
 import { useRfcEditorHead } from '~/utilities/head'
 import type { RFCId } from '~/utilities/rfc'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
-
 import type { Rfc } from '~~/generated/red-client'
 
 type Props = {
