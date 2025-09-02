@@ -85,6 +85,7 @@ import { createTextVNode } from 'vue'
 import { pickBy } from 'lodash-es'
 import AMaybeRFCLink from './AMaybeRFCLink.vue'
 import HorizontalScrollable from './HorizontalScrollable.vue'
+import PdfPages from './PdfPages.vue'
 import AbsoluteHorizontalScrollable from './AbsoluteHorizontalScrollable.vue'
 import Fragment from './Fragment.vue'
 import {
@@ -200,20 +201,17 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
           childrenForVue
         )
       } else if (componentAttr === 'PdfPages') {
-        console.log("Found pdf pages")
+        const pdfPagesChildrenForVue = nodePojoWalker(node.children, (node) => {
+          if (node.type === 'Element' && node.nodeName.toLowerCase() === 'img') {
+            node.attributes['class'] = 'w-full min-w-[425px] max-w-[1000px] '
+          }
+          return node
+        }).map(renderNodePojo)
+
         return h(
-          HorizontalScrollable,
-          {
-            ...node.attributes,
-            class: 'py-6',
-            children: nodePojoWalker(node.children, (node) => {
-              if (node.type === 'Element') {
-                node.attributes['class'] = 'w-[425px] lg:w-auto'
-              }
-              return node
-            })
-          },
-          () => childrenForVue
+          PdfPages,
+          node.attributes,
+          () => pdfPagesChildrenForVue
         )
       }
       return h(node.nodeName, node.attributes, childrenForVue)

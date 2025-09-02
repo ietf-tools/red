@@ -20,10 +20,10 @@ import { debouncedRef } from '@vueuse/core'
 
 const isVisible = ref(false)
 const debouncedIsVisible = debouncedRef(isVisible, 200)
+const BEYOND_HEADER_PX = 250
 
 const handleScroll = () => {
-    const scrollYThresholdPx = window.innerHeight
-    isVisible.value = Boolean(window.scrollY > scrollYThresholdPx)
+    isVisible.value = Boolean(window.scrollY > BEYOND_HEADER_PX)
 }
 
 const throttledHandleScroll = throttle(handleScroll, 100)

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="after:content-['_'] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:pointer-events-none after:transition-shadow after:duration-800 "
+    class="after:content-['_'] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:pointer-events-none after:transition-shadow after:duration-800"
     :class="{
       'after:shadow-[inset_70px_0px_90px_-70px_rgba(0,_45,_60,_0.5),inset_36px_0px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_70px_0px_90px_-70px_rgba(140,_201,_222,_0.5),inset_36px_0px_20px_-36px_rgba(140,_201,_222,_0.5)]':
         canScrollLeft && !canScrollRight,
@@ -13,7 +13,7 @@
     <component
       :is="props.as"
       ref="scroll-container"
-      :class="`relative w-full max-w-[calc(100vw_-_var(--rfc-editor-org-scrollbar-width,16px))] overflow-x-auto  ${props.class}`"
+      :class="['relative w-full max-w-[calc(100vw_-_var(--rfc-editor-org-scrollbar-width,16px))] overflow-x-auto', props.class]"
       @scroll="debouncedUpdateScrollHint"
     >
       <slot />
