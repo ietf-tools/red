@@ -37,8 +37,6 @@ const scrollContainer = useTemplateRef('scroll-container')
 const canScrollLeft = ref(false)
 const canScrollRight = ref(false)
 
-const afterContentClass = " after:content-[_] "
-
 const BUFFER_PX = 8
 
 let timer: ReturnType<typeof setTimeout>
