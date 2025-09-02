@@ -5,7 +5,10 @@
     @change="changeTab"
   >
     <TabsList class="border-b-2 border-gray-400">
-      <HorizontalScrollable :class="`flex flex-row gap-5 ${props.isMobile ? 'px-2' : ''}`">
+      <HorizontalScrollable
+        :class="{ 'px-2': props.isMobile }"
+        inner-class="flex flex-row gap-5 "
+      >
         <TabsIndicator class="absolute" />
         <TabsTrigger
           v-if="props.hasTableOfContents"
@@ -318,7 +321,7 @@ const formattedPublished = computed(() => {
 })
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen'
-const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 hover:bg-gray-100 text-sm md:text-md cursor-pointer'
+const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 hover:bg-gray-100 dark:hover:bg-gray-900 text-sm md:text-md cursor-pointer'
 const SELECTED_CLASS = 'text-shadow-bold text-gray-900 dark:text-gray-100 border-b-blue-900 dark:border-b-white font-medium'
 const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'
 </script>

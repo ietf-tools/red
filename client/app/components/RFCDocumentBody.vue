@@ -162,6 +162,15 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
         // Note that children is a function, as required by Vue for non-HTML components,
         // so that it can defer children
         return h(AMaybeRFCLink, { 'href': '', ...node.attributes }, () => childrenForVue)
+      } else if (node.nodeName === 'svg') {
+        return h(
+          node.nodeName,
+          {
+            ...node.attributes,
+            class: `dark:contrast-125 dark:brightness-85 dark:invert ${node.attributes.class ?? ''}`
+          },
+          childrenForVue
+        )
       } else if (componentAttr === 'HorizontalScrollable') {
         const ATTR_ABSOLUTE = 'data-component-absolute'
         if (ATTR_ABSOLUTE in node.attributes) {
@@ -203,7 +212,7 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
       } else if (componentAttr === 'PdfPages') {
         const pdfPagesChildrenForVue = nodePojoWalker(node.children, (node) => {
           if (node.type === 'Element' && node.nodeName.toLowerCase() === 'img') {
-            node.attributes['class'] = 'w-full min-w-[425px] max-w-[1000px] '
+            node.attributes['class'] = 'w-full min-w-[425px] max-w-[1000px] dark:contrast-125 dark:brightness-85 dark:invert'
           }
           return node
         }).map(renderNodePojo)
