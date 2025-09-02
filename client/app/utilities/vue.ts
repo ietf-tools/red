@@ -37,7 +37,7 @@ export const getVNodeText = (
  **/
 export type VueStyleClass =
   | string
-  | (string | boolean)[]
+  | (string | Record<string, boolean | undefined>)[]
   | Record<string, boolean | undefined>
 
 /**

@@ -5,10 +5,10 @@
     @change="changeTab"
   >
     <TabsList class="border-b-2 border-gray-400">
-      <HorizontalScrollable
-        :class="{ 'px-2': props.isMobile }"
-        inner-class="flex flex-row gap-5 "
-      >
+      <HorizontalScrollable :inner-class="[
+        'flex flex-row gap-5',
+        { 'px-2': props.isMobile }
+      ]">
         <TabsIndicator class="absolute" />
         <TabsTrigger
           v-if="props.hasTableOfContents"

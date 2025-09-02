@@ -184,10 +184,15 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
             if (childWidthAttr && childHeightAttr) {
               const deleteDataAttributes = (attributes: ElementPojo["attributes"]): ElementPojo["attributes"] =>
                 pickBy(attributes, (_value, key) => !key.startsWith('data-'))
-              className = `${className} py-3 rfc-content-padding-left rfc-content-padding-right`
               return h(
                 AbsoluteHorizontalScrollable,
-                { ...deleteDataAttributes(node.attributes), childWidthAttr, childHeightAttr, class: className },
+                {
+                  ...deleteDataAttributes(node.attributes),
+                  childWidthAttr,
+                  childHeightAttr,
+                  class: className,
+                  innerClass: 'py-3 rfc-content-padding-left rfc-content-padding-right'
+                },
                 () => childrenForVue
               )
             } else {
