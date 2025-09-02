@@ -154,11 +154,13 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
     if (node.type === 'Element') {
       const children = node.children.map(renderNodePojo)
       const childrenForVue = unwrapChildrenForVue(children)
+      const ATTR_COMPONENT = 'data-component'
+      const componentAttr = node.attributes[ATTR_COMPONENT]
       if (node.nodeName === 'a') {
         // Note that children is a function, as required by Vue for non-HTML components,
         // so that it can defer children
         return h(AMaybeRFCLink, { 'href': '', ...node.attributes }, () => childrenForVue)
-      } else if (node.nodeName === 'HorizontalScrollable') {
+      } else if (componentAttr === 'HorizontalScrollable') {
         const ATTR_ABSOLUTE = 'data-component-absolute'
         if (ATTR_ABSOLUTE in node.attributes) {
           const isAbsolute = node.attributes[ATTR_ABSOLUTE] === true.toString()
@@ -189,12 +191,19 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
           node.attributes,
           () => childrenForVue
         )
-      } else if (node.nodeName === 'Placeholder') {
+      } else if (componentAttr === 'Placeholder') {
         // FIXME: delete this case once the component is removed from the bucket
         return h(
           'div',
           node.attributes,
           childrenForVue
+        )
+      } else if (componentAttr === 'PdfPages') {
+        console.log("Found pdf pages")
+        return h(
+          HorizontalScrollable,
+          node.attributes,
+          () => childrenForVue
         )
       }
       return h(node.nodeName, node.attributes, childrenForVue)
