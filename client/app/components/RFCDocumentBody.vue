@@ -98,6 +98,7 @@ import { infoRfcPathBuilder } from '~/utilities/url'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
+import { nodePojoWalker } from '~/utilities/dom'
 
 type Props = {
   rfc: RfcCommon
@@ -202,7 +203,16 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
         console.log("Found pdf pages")
         return h(
           HorizontalScrollable,
-          node.attributes,
+          {
+            ...node.attributes,
+            class: 'py-6',
+            children: nodePojoWalker(node.children, (node) => {
+              if (node.type === 'Element') {
+                node.attributes['class'] = 'w-[425px] lg:w-auto'
+              }
+              return node
+            })
+          },
           () => childrenForVue
         )
       }

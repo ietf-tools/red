@@ -1,3 +1,5 @@
+import type { NodePojo } from './rfc-validators'
+
 /**
  * W3C DOMParser factory that works on server and browser
  */
@@ -79,4 +81,24 @@ export const getInnerText = (element: HTMLElement): string => {
       return ''
     })
     .join('')
+}
+
+type NodeReplacementFn = (node: NodePojo) => NodePojo
+
+/**
+ * Walks a NodePojo and Provides a callback for
+ */
+export const nodePojoWalker = (
+  nodes: NodePojo[],
+  reviver: NodeReplacementFn
+): NodePojo[] => {
+  return nodes.map((node) => {
+    const newNode = reviver(node)
+
+    if (newNode.type === 'Element') {
+      newNode.children = nodePojoWalker(newNode.children, reviver)
+    }
+
+    return newNode
+  })
 }
