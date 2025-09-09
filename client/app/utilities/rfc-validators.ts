@@ -13,7 +13,6 @@ const DocumentHtmlTypeSchema = z.union([
   z.literal('plaintext'),
   z.literal('pdf-or-ps')
 ])
-
 export type DocumentHtmlType = z.infer<typeof DocumentHtmlTypeSchema>
 
 /**
@@ -200,6 +199,9 @@ const MaxPreformattedLineLengthSchema = z.object({
   max: z.number(),
   maxWithAnchorSuffix: z.number()
 })
+export type MaxPreformattedLineLengthSchemaType = z.infer<
+  typeof MaxPreformattedLineLengthSchema
+>
 
 /**
  * Bucket JSON schema

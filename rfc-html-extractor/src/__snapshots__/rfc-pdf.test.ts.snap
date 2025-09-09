@@ -592,6 +592,76 @@ Some s mall i t ems missing fr om t he p r o t o c o l a r e 11m·1 me n t i one
           "nodeName": "div",
           "type": "Element",
         },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 10: RF C 41 8 Pa ge 10
+DEFAULT PA RANETER VALUES
+I t sh ou l d be more emp ha t i c ally s t a t ed t h at se rv e r s mus t a ss ume de f a ult
+v alue f o r a ll unspe c i fi e d par ' e t er s (Ha DE, TYPE, e t c.). Hi th o u t th i s,
+a ll us e r pr oc e s s e s mu st a l wa y s se nd 11 c mp l.e t e se t o f pa r ame ter spe c i
+f i c a ti on c omm a nd s, s i nc e sone s e rver s omeHhe r e ma y no t ma ke t he cor r ect
+d ef a ul t a s sump t i ons . Th is is obv i ou sly unde s i r a b l e .
+SY CH ON THE TElN ET CO NNECTI ON
+The pr o t oc ol s t tes t ha t t he AB O. c o m:n a n d s houl d be pr e ce de d by t he
+Te ln e t SYNCII co nd i t i on , for reas ons o f e ff i c i e nc y ( so t ha t s e rv e r s do
+no t need t o be con tin ua lly che ck i ng t he Tel ne t co nn ect i on d urin g a t r a n s
+f e r) . Thi s sh ould be ex t e n ded t o o t he r c onmands wh i ch may be u s e d dur
+i ng a t r ns f er ( BYE , USER, STA T, e t c . ) .
+BREAK a THE '.i.'El NET C Ol~ r E C T ON1
+The qu es t io n o f vha t a BREfX c ha r a ct e r m e a ~ s ov er th e Te l ne t co n n ect ion
+is no t to u ch ed . Eve n i f t he BRE AK i s t o h2ve no fu nc t i on th i s sh ou l d
+be s pe c i fi e d . I n the TSS i plemen t a t i on , t he onl y t i me a BRE AK is re
+c o gn i ze d i s dur i ng a HAI L c ommand ; the BREA K will a bor t t he c omm a nd and
+c a nce 1 t he ma i l ,
+CATCH- ALL REP LY CODES
+It i s fe l t t ha t on e re p ly c ode of e a ch t ype should be a s s i gne d t he me a n
+i n g of "ot r." r " s o th a t s y s t em- de p en d e n t c" en t s co ul d be pro pe r l y id e n
+ti fi e d. For ex amp l e , if a n i.nd e x ed f i l e i s b ein g s e n t to TSS a nd r e co r d u
+a r e re cei ve d lIt o f or der , t he rep l y cod e c u r r en t ly use d i s 453 , al t hou gh
+t h i s i.s s u ppos e d to mean " i n s uf f i ci e n t s p ac e . II If a c atch- a l l c o de we r c
+de f i ned , t he me ss age t ex t coul d be us e d t o f u r t he r s e c i fy th e ex a c t
+me an i ng .
+PARAMETER VAL LDATI ON
+Cer t - i n s e r ve r pr oc e s se s ( no t a b l y TENEX ) ha ve a p pa r en t l y d ivi d ed t he fi l e
+t r a ns f e r c o mm a nd s i nt o t HO lo gica l gr o ups : pa r ame t e r s e tti ng c omma nds
+an d fi le man i l' ulation c o mm a nd s . The pa r amete r se tt i ng c omm a nd s ar e TYPE,
+}10 DE, STRU, a nd BYTE . The parame e r va l ue s sp e c if i e d on these c o mm a nds \\
+a r e no t va l id a t ed Hhen re ce iv e d ; th e y are s i mpl y st or e d an d a r ep ly c ode
+200 i r e t u r ne d . The pa raI:leters are va li da t e d on t he ne x t f i l e ma n ip u \\
+l a ti on c omman d , hOHever , with e rr or s r e s u l ti ng in c a nc e l la t i on o f th e
+f i l.e man ip u l a t ion c omman d i t s e If , .;r i t h r e p l y c ode 50 3 .
+I am awar e o f th e pr ob l ems wi .t h va l i da t in g pa r am t.e r s whe n r e c eiv e d ( L e . ,
+o f t empor a r i l y pr oduc i ng i nva li d c omb i n at i on s whe n ch a ng i ng f r om one val i d
+s et to an ot he r ) but i t i s felt th a t some s t a nda r d c ou l d be se t up t o a ll oH
+t hi s . As an a hs o l u t e mi n imum, t o t a l l y i nv al i d or un supp or t e d param e t e r
+va l ue s s hou ld be d iagnose d Lntm cd i.a t e l y ( e . g . , Ha DE 13 if BLOCK mod e i s no t
+i mp l eme nt e d) .
+Th is prob le m i s a nu i s anc e w itl: a h um an us e r , b ut it be c om e s q uit e s e r ious
+wi t h a u s e r a u t oma t o n: t he amoun t of wo rk ne c e ss a ry f or an a ut omat on t o
+emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l e r ab le .",
+                "height": "1292",
+                "id": "page10",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-10.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
       ],
       "nodeName": "div",
       "type": "Element",
@@ -700,6 +770,14 @@ Some s mall i t ems missing fr om t he p r o t o c o l a r e 11m·1 me n t i one
           {
             "id": "page9",
             "title": "Page 9",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page10",
+            "title": "Page 10",
           },
         ],
       },

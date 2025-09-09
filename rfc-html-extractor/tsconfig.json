@@ -10,7 +10,6 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "outDir": "./dist",
-    "rootDir": "./src",
     "lib": [
       "ES2019",
       "DOM",

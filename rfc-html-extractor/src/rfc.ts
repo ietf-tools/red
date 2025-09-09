@@ -1,11 +1,4 @@
-import { z } from 'zod'
-import {
-  RfcBucketHtmlDocumentSchema,
-  RfcCommonSchema,
-  TableOfContentsSchema
-} from './utilities/rfc-validators.ts'
-
-export type RfcCommon = z.infer<typeof RfcCommonSchema>
+import type { RfcCommon } from '../../client/app/utilities/rfc-validators.ts'
 
 export const blankRfcCommon: RfcCommon = {
   number: 0,
@@ -34,10 +27,6 @@ export const blankRfcCommon: RfcCommon = {
   abstract: '',
   text: ''
 }
-
-export type RfcEditorToc = z.infer<typeof TableOfContentsSchema>
-
-export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
 
 const RFC_REGEX = /(rfc[0-9]+)/i
 

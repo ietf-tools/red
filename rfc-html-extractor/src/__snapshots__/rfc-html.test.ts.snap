@@ -157354,55 +157354,19 @@ document:",
     "maxWithAnchorSuffix": 62,
   },
   "rfc": {
-    "abstract": "
-       This document defines the core of the QUIC transport protocol.  QUIC provides
-applications with flow-controlled streams for structured communication,
-low-latency connection establishment, and network path migration. QUIC includes
-security measures that ensure confidentiality, integrity, and availability in a
-range of deployment circumstances.  Accompanying documents describe the
-integration of TLS for key negotiation, loss detection, and an exemplary
-congestion control algorithm. 
-    ",
+    "abstract": "",
     "area": {
       "acronym": "",
       "name": "",
     },
-    "authors": [
-      {
-        "name": "Jana Iyengar",
-      },
-      {
-        "name": "Martin Thomson",
-      },
-    ],
+    "authors": [],
     "formats": [],
     "group": {
       "acronym": "",
       "name": "",
     },
-    "identifiers": [
-      {
-        "type": "doi",
-        "value": "https://dx.doi.org/10.17487/rfc9000",
-      },
-      {
-        "type": "issn",
-        "value": "urn:issn:2070-1721",
-      },
-    ],
-    "keywords": [
-      "multipath",
-      "next generations",
-      "protocol",
-      "sctp++",
-      "secure",
-      "smart",
-      "tcp/2",
-      "tcpng",
-      "transport",
-      "transport-ng",
-    ],
-    "number": 9000,
+    "identifiers": [],
+    "number": 0,
     "obsoleted_by": [],
     "pages": 0,
     "published": "1950-1-1",
@@ -157413,7 +157377,7 @@ congestion control algorithm.
       "slug": "",
     },
     "text": "",
-    "title": "QUIC: A UDP-Based Multiplexed and Secure Transport",
+    "title": "",
     "updated_by": [],
   },
   "tableOfContents": {

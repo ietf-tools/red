@@ -1,113 +1,16 @@
-import { getInnerText, isHtmlElement, getDOMParser } from './utilities/dom.ts'
-import type { MaxPreformattedLineLengthSchemaType } from './utilities/rfc-validators.ts'
-import { blankRfcCommon } from './rfc.ts'
-import type { RfcEditorToc } from './rfc.ts'
+import { getInnerText, getDOMParser } from './utilities/dom.ts'
 import type { RfcAndToc } from './rfc-html.ts'
+import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../client/app/utilities/rfc-validators.ts'
 
-type TocSections = RfcEditorToc['sections']
+type TocSections = TableOfContents['sections']
 type TocSection = TocSections[number]
 type TocLink = NonNullable<TocSection['links']>[number]
-
-export const parsePlaintextHead = (
-  head: Document['head'],
-  rfcAndToc: RfcAndToc
-): void => {
-  head.childNodes.forEach((node) => {
-    if (isHtmlElement(node)) {
-      let name: string | null,
-        content: string | null,
-        rel: string | null,
-        href: string | null
-
-      switch (node.nodeName.toLowerCase()) {
-        case 'meta':
-          name = node.getAttribute('name')
-          content = node.getAttribute('content')
-          if (content) {
-            switch (name) {
-              case 'author':
-                if (!rfcAndToc.rfc.authors) {
-                  rfcAndToc.rfc.authors = []
-                }
-                rfcAndToc.rfc.authors.push({
-                  name: content
-                })
-                break
-              case 'description':
-                rfcAndToc.rfc.abstract = content
-                break
-              case 'rfc.number':
-                if (rfcAndToc.rfc.number === blankRfcCommon.number) {
-                  rfcAndToc.rfc.number = parseInt(content, 10)
-                }
-                break
-              case 'keyword':
-                if (rfcAndToc.rfc.keywords === undefined) {
-                  rfcAndToc.rfc.keywords = []
-                }
-                rfcAndToc.rfc.keywords.push(content)
-                break
-            }
-          }
-          break
-        case 'title':
-          // don't try to parse the <title> because it has both the RFC title and RFC number in it,
-          // so we'll use other parts of the HTML (the title in the <body>) which are easier to use
-          break
-        case 'link':
-          rel = node.getAttribute('rel')
-          href = node.getAttribute('href')
-          if (href && rel) {
-            if (rel === 'alternate') {
-              if (rfcAndToc.rfc.identifiers === undefined) {
-                rfcAndToc.rfc.identifiers = []
-              }
-
-              if (href.includes('doi.org')) {
-                rfcAndToc.rfc.identifiers.push({
-                  type: 'doi',
-                  value: href
-                })
-              } else if (href.includes('urn:issn:')) {
-                rfcAndToc.rfc.identifiers.push({
-                  type: 'issn',
-                  value: href
-                })
-              }
-            }
-          }
-          break
-      }
-    }
-  })
-}
 
 export const parsePlaintextBody = (
   body: Document['body'],
   rfcAndToc: RfcAndToc
 ): void => {
   parsePlaintextToc(body, rfcAndToc)
-  body.childNodes.forEach((node) => {
-    if (isHtmlElement(node)) {
-      if (
-        node.id === 'rfcnum' &&
-        rfcAndToc.rfc.number === blankRfcCommon.number
-      ) {
-        rfcAndToc.rfc.number = parseInt(
-          node.innerText.replace(/[^0-9]/gi, ''),
-          10
-        )
-      } else if (node.id === 'title') {
-        rfcAndToc.rfc.title = node.innerText
-      }
-
-      const idsToRemove = ['toc', 'external-metadata', 'internal-metadata']
-      if (idsToRemove.includes(node.id)) {
-        return false
-      }
-    }
-    return true
-  })
 }
 
 const parsePlaintextToc = (
@@ -145,14 +48,14 @@ const parsePlaintextToc = (
     ...Array.from(headings).map((heading) => get_level(heading))
   )
 
-  const tableOfContents: RfcEditorToc = {
+  const tableOfContents: TableOfContents = {
     title: 'Table of contents',
     sections: []
   }
 
   rfcAndToc.tableOfContents = tableOfContents
 
-  const tocSectionsStack: (TocSection | RfcEditorToc | undefined)[] = [
+  const tocSectionsStack: (TocSection | TableOfContents | undefined)[] = [
     tableOfContents
   ]
   let currentLevel = 0

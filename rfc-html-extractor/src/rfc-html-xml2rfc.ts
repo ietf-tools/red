@@ -1,87 +1,11 @@
 import { convertCSSUnit, parseCSSLength } from './css-unit-converter/index.ts'
 import { getDOMParser, getInnerText, isHtmlElement } from './utilities/dom.ts'
-import type { MaxPreformattedLineLengthSchemaType } from './utilities/rfc-validators.ts'
-import { blankRfcCommon } from './rfc.ts'
-import type { RfcEditorToc } from './rfc.ts'
+import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../client/app/utilities/rfc-validators.ts'
 import type { RfcAndToc } from './rfc-html.ts'
 
-type TocSections = RfcEditorToc['sections']
+type TocSections = TableOfContents['sections']
 type TocSection = TocSections[number]
 type TocLink = NonNullable<TocSection['links']>[number]
-
-export const parseXml2RfcHead = (
-  head: Document['head'],
-  rfcAndToc: RfcAndToc
-): void => {
-  head.childNodes.forEach((node) => {
-    if (isHtmlElement(node)) {
-      let name: string | null
-      let content: string | null
-      let rel: string | null
-      let href: string | null
-
-      switch (node.nodeName.toLowerCase()) {
-        case 'meta':
-          name = node.getAttribute('name')
-          content = node.getAttribute('content')
-          if (content) {
-            switch (name) {
-              case 'author':
-                if (!rfcAndToc.rfc.authors) {
-                  rfcAndToc.rfc.authors = []
-                }
-                rfcAndToc.rfc.authors.push({
-                  name: content
-                })
-                break
-              case 'description':
-                rfcAndToc.rfc.abstract = content
-                break
-              case 'rfc.number':
-                if (rfcAndToc.rfc.number === blankRfcCommon.number) {
-                  rfcAndToc.rfc.number = parseInt(content, 10)
-                }
-                break
-              case 'keyword':
-                if (rfcAndToc.rfc.keywords === undefined) {
-                  rfcAndToc.rfc.keywords = []
-                }
-                rfcAndToc.rfc.keywords.push(content)
-                break
-            }
-          }
-          break
-        case 'title':
-          // don't try to parse the <title> because it has both the RFC title and RFC number in it,
-          // so we'll use other parts of the HTML (the RFC title within the <body>) which are easier to use
-          break
-        case 'link':
-          rel = node.getAttribute('rel')
-          href = node.getAttribute('href')
-          if (href && rel) {
-            if (rel === 'alternate') {
-              if (rfcAndToc.rfc.identifiers === undefined) {
-                rfcAndToc.rfc.identifiers = []
-              }
-
-              if (href.includes('doi.org')) {
-                rfcAndToc.rfc.identifiers.push({
-                  type: 'doi',
-                  value: href
-                })
-              } else if (href.includes('urn:issn:')) {
-                rfcAndToc.rfc.identifiers.push({
-                  type: 'issn',
-                  value: href
-                })
-              }
-            }
-          }
-          break
-      }
-    }
-  })
-}
 
 export const parseXml2RfcBody = (
   body: Document['body'],
@@ -89,17 +13,7 @@ export const parseXml2RfcBody = (
 ): void => {
   body.childNodes.forEach((node) => {
     if (isHtmlElement(node)) {
-      if (
-        node.id === 'rfcnum' &&
-        rfcAndToc.rfc.number === blankRfcCommon.number
-      ) {
-        rfcAndToc.rfc.number = parseInt(
-          getInnerText(node).replace(/[^0-9]/gi, ''),
-          10
-        )
-      } else if (node.id === 'title') {
-        rfcAndToc.rfc.title = getInnerText(node)
-      } else if (node.id === 'toc') {
+      if (node.id === 'toc') {
         rfcAndToc.tableOfContents = parseXml2RfcToc(node)
       }
       const idsToRemove = ['toc', 'external-metadata', 'internal-metadata']
@@ -111,7 +25,7 @@ export const parseXml2RfcBody = (
   })
 }
 
-const parseXml2RfcToc = (toc: HTMLElement): RfcEditorToc => {
+const parseXml2RfcToc = (toc: HTMLElement): TableOfContents => {
   const isTocSection = (
     maybeTocSection?: TocSection
   ): maybeTocSection is TocSection => {

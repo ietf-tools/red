@@ -6,23 +6,19 @@ import {
   isTextNode,
   rfcDocumentToPojo
 } from './utilities/dom.ts'
-import type { MaxPreformattedLineLengthSchemaType } from './utilities/rfc-validators.ts'
-import { RfcBucketHtmlDocumentSchema } from './utilities/rfc-validators.ts'
+import type { RfcCommon, RfcBucketHtmlDocument, MaxPreformattedLineLengthSchemaType, DocumentHtmlType, TableOfContents } from '../../client/app/utilities/rfc-validators.ts'
 import { blankRfcCommon, extractHrefRfcPart } from './rfc.ts'
-import type { RfcCommon, RfcBucketHtmlDocument, RfcEditorToc } from './rfc.ts'
 import { assertNever } from './utilities/typescript.ts'
 import { PUBLIC_SITE } from './utilities/url.ts'
 import {
   getPlaintextMaxLineLength,
   getPlaintextRfcDocument,
-  parsePlaintextBody,
-  parsePlaintextHead
+  parsePlaintextBody
 } from './rfc-html-plaintext.ts'
 import {
   getXml2RfcMaxLineLength,
   getXml2RfcRfcDocument,
-  parseXml2RfcBody,
-  parseXml2RfcHead
+  parseXml2RfcBody
 } from './rfc-html-xml2rfc.ts'
 import { chunkString, getAllIndexes } from './utilities/string.ts'
 
@@ -178,7 +174,7 @@ export const fetchSourceRfcHtml = async (
 
 export type RfcAndToc = {
   rfc: RfcCommon
-  tableOfContents?: RfcEditorToc
+  tableOfContents?: TableOfContents
 }
 
 export const rfcBucketHtmlToRfcDocument = async (
@@ -204,13 +200,11 @@ export const rfcBucketHtmlToRfcDocument = async (
 
   switch (documentHtmlType) {
     case 'plaintext':
-      parsePlaintextHead(dom.head, rfcAndToc)
       parsePlaintextBody(dom.body, rfcAndToc)
       rfcDocument = getPlaintextRfcDocument(dom)
       maxPreformattedLineLength = await getPlaintextMaxLineLength(dom)
       break
     case 'xml2rfc':
-      parseXml2RfcHead(dom.head, rfcAndToc)
       parseXml2RfcBody(dom.body, rfcAndToc)
       rfcDocument = getXml2RfcRfcDocument(dom)
       maxPreformattedLineLength = await getXml2RfcMaxLineLength(dom)
@@ -243,7 +237,7 @@ export const rfcBucketHtmlFilenameBuilder = (rfcNumber: number) =>
 
 const sniffRfcBucketHtmlType = (
   dom: Document
-): RfcBucketHtmlDocument['documentHtmlType'] => {
+): DocumentHtmlType => {
   const isPlaintext = dom.querySelector('body > pre')
   const generator = dom.querySelector('meta[name=generator]')
 

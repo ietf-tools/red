@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { test, expect, vi } from 'vitest'
+import { test, expect } from 'vitest'
 import { rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
 
 const RFC_PDF_EXAMPLE = 418

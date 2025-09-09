@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom'
-import { isNodePojo } from './rfc-validators.ts'
-import type { DocumentPojo, NodePojo } from './rfc-validators.ts'
+import { isNodePojo } from '../../../client/app/utilities/rfc-validators.ts'
+import type { DocumentPojo, NodePojo } from '../../../client/app/utilities/rfc-validators.ts'
 
 export const getDOMParser = async (): Promise<DOMParser> => {
   const jsdom = new JSDOM()

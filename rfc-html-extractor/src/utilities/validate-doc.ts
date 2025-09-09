@@ -1,5 +1,5 @@
-import { RfcBucketHtmlDocumentSchema } from './rfc-validators.ts'
-import type { RfcBucketHtmlDocument } from './rfc-validators.ts'
+import { RfcBucketHtmlDocumentSchema } from '../../../client/app/utilities/rfc-validators.ts'
+import type { RfcBucketHtmlDocument } from '../../../client/app/utilities/rfc-validators.ts'
 
 /**
  * Serializing to JSON and parsing again ('roundTripped') can result in a different object structure

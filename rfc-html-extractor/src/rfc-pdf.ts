@@ -3,8 +3,7 @@ import { apiRfcBucketDocumentURLBuilder, PUBLIC_SITE } from './utilities/url.ts'
 import { gc } from './utilities/gc.ts'
 import { BLANK_HTML, getDOMParser, rfcDocumentToPojo } from './utilities/dom.ts'
 import { rfcImageFileNameBuilder } from './utilities/s3.ts'
-import type { TableOfContents } from './utilities/rfc-validators.ts'
-import type { RfcBucketHtmlDocument } from './rfc.ts'
+import type { TableOfContents, RfcBucketHtmlDocument } from '../../client/app/utilities/rfc-validators.ts'
 import {
   getTextDetails,
   takeScreenshotOfPage
