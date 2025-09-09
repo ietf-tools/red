@@ -2,33 +2,30 @@
   <BodyLayoutDocument>
     <template #sidebar>
       <RFCDocumentSidebar
-        v-if="rfc && rfcBucketHtmlDocument"
+        v-if="rfcBucketHtmlDocument"
         v-model:selected-tab="selectedTab"
         v-model:is-modal-open="isModalOpen"
-        :rfc="rfc"
         :rfc-bucket-html-document="rfcBucketHtmlDocument"
         :has-table-of-contents="hasToc"
         :goto-errata="gotoErrata"
         :change-tab="changeTab"
       />
     </template>
-    <template v-if="rfcDocRetrieveError || rfcBucketHtmlDocumentError">
+    <template v-if="rfcBucketHtmlDocumentError">
       <div class="container mx-auto">
         <Alert
           level="1"
           variant="warning"
           heading="Error"
         >
-          {{ rfcDocRetrieveError }}
           {{ rfcBucketHtmlDocumentError }}
         </Alert>
       </div>
     </template>
 
     <RFCDocumentBody
-      v-if="rfc && rfcBucketHtmlDocument"
+      v-if="rfcBucketHtmlDocument"
       v-model:is-modal-open="isModalOpen"
-      :rfc="rfc"
       :rfc-bucket-html-document="rfcBucketHtmlDocument"
       :breadcrumb-items="breadcrumbItems"
       :goto-errata="gotoErrata"
@@ -41,10 +38,8 @@
 import { DateTime } from 'luxon'
 import { safeJsonParse } from '~/utilities/json'
 import { fetchRetry } from '~/utilities/network'
-import { rfcToRfcCommon } from '~/utilities/rfc-converters'
 import { RfcBucketHtmlDocumentSchema } from '~/utilities/rfc-validators'
 import {
-  apiRfcDocRetrievePathBuilder,
   apiRfcBucketDocumentURLBuilder,
   infoRfcPathBuilder,
   rfcFormatPathBuilder,
@@ -53,7 +48,6 @@ import {
 import { useRfcEditorHead } from '~/utilities/head'
 import type { RFCId } from '~/utilities/rfc'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
-import type { Rfc } from '~~/generated/red-client'
 
 type Props = {
   rfcId: RFCId
@@ -62,19 +56,6 @@ type Props = {
 const props = defineProps<Props>()
 
 const sanitisedId = computed(() => `${props.rfcId.type}${props.rfcId.number}`)
-
-const asyncRfcDocRetrieveKey = computed(() => `info-docretrieve-${sanitisedId.value}`)
-const {
-  data: rfcDocRetrieve,
-  error: rfcDocRetrieveError
-} = await useAsyncData<Rfc>(asyncRfcDocRetrieveKey, async () =>
-  $fetch(apiRfcDocRetrievePathBuilder(parseInt(props.rfcId.number, 10)))
-)
-
-const rfc = computed(() => {
-  if (!rfcDocRetrieve.value) return
-  return rfcToRfcCommon(rfcDocRetrieve.value)
-})
 
 const asyncRfcBucketHtmlDocumentKey = computed(() => `info-buckethtmldocument-${sanitisedId.value}`)
 const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
@@ -94,20 +75,11 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
     }
     const { data, error } = RfcBucketHtmlDocumentSchema.safeParse(maybeRfcBucketDocument)
     if (error) {
-      console.log('Failed to validate', JSON.stringify(maybeRfcBucketDocument, null, 2), error)
-      throw error
+      console.log('Failed to validate RFC HTML JSON', error, JSON.stringify(maybeRfcBucketDocument, null, 2))
+      throw Error(`Unable to load RFC. See console for more.`)
     }
     return data
   })
-
-if (rfcDocRetrieveError.value) {
-  console.error(rfcDocRetrieveError.value, rfcBucketHtmlDocumentError.value)
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Not Found',
-    fatal: true
-  })
-}
 
 if (rfcBucketHtmlDocumentError.value) {
   console.error(rfcBucketHtmlDocumentError.value)
@@ -167,12 +139,12 @@ const isModalOpen = ref(false)
 const canonicalUrl = infoRfcPathBuilder(sanitisedId.value)
 
 useRfcEditorHead({
-  title: rfcDocRetrieve.value?.title ?? '',
+  title: rfcBucketHtmlDocument.value?.rfc.title ?? '',
   canonicalUrl,
-  description: rfcDocRetrieve.value?.abstract ?? '',
+  description: rfcBucketHtmlDocument.value?.rfc.abstract ?? '',
   modifiedDateTime:
-    rfcDocRetrieve.value?.published ?
-      DateTime.fromISO(rfcDocRetrieve.value.published)
+    rfcBucketHtmlDocument.value?.rfc.published ?
+      DateTime.fromISO(rfcBucketHtmlDocument.value?.rfc.published)
       : undefined,
   contentType: 'article'
 })

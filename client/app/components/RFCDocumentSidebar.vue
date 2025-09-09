@@ -12,7 +12,7 @@
           <DialogTitle />
 
           <RFCMobileBanner
-            :rfc="props.rfc"
+            :rfc="props.rfcBucketHtmlDocument.rfc"
             :is-fixed="false"
           >
             <button
@@ -26,7 +26,6 @@
           <div class="bg-white dark:bg-blue-900">
             <RFCTabs
               v-model="selectedTab"
-              :rfc="props.rfc"
               :is-mobile="true"
               :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
               :has-table-of-contents="props.hasTableOfContents"
@@ -40,7 +39,6 @@
     <div class="sticky top-0 h-[calc(100vh)] flex flex-col">
       <RFCTabs
         v-model="selectedTab"
-        :rfc="props.rfc"
         :is-mobile="false"
         :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
         :has-table-of-contents="props.hasTableOfContents"
@@ -59,11 +57,10 @@ import {
   DialogTitle,
   DialogTrigger
 } from 'reka-ui'
-import type { RfcBucketHtmlDocument, RfcCommon } from '~/utilities/rfc'
+import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
 type Props = {
-  rfc: RfcCommon
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
   gotoErrata: () => void
   hasTableOfContents: boolean

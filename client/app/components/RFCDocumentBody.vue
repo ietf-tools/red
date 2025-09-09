@@ -18,7 +18,7 @@
     level="2"
     class="mb-2 pl-2 xs:px-0 print:text-center"
   >
-    {{ rfc.title }}
+    {{ props.rfcBucketHtmlDocument.rfc.title }}
 
     <span
       v-if="isAprilFool"
@@ -30,14 +30,14 @@
 
   <ul class="block ml-2 print:text-center">
     <li
-      v-for="(author, authorIndex) in props.rfc.authors"
+      v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
       :key="authorIndex"
       class="inline-block"
     >
       <span>
         {{ author.name }}
       </span>
-      <template v-if="authorIndex < props.rfc.authors.length - 1">
+      <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
         {{ COMMA }}
         {{ NONBREAKING_SPACE }}
       </template>
@@ -45,10 +45,10 @@
     </li>
   </ul>
 
-  <RFCDocumentBodyPill :rfc="props.rfc" />
+  <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
   <Alert
-    v-if="props.rfc.obsoleted_by?.length"
+    v-if="props.rfcBucketHtmlDocument.rfc.obsoleted_by?.length"
     variant="warning"
     heading="This RFC is now obsolete"
   >
@@ -75,7 +75,7 @@
   </div>
 
   <RFCMobileBanner
-    :rfc="rfc"
+    :rfc="rfcBucketHtmlDocument.rfc"
     :is-fixed="true"
   />
 </template>
@@ -102,7 +102,6 @@ import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { nodePojoWalker } from '~/utilities/dom'
 
 type Props = {
-  rfc: RfcCommon
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
   gotoErrata: () => void
   breadcrumbItems: BreadcrumbItem[]
@@ -113,11 +112,11 @@ const props = defineProps<Props>()
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
 
-const rfcId = computed(() => parseRFCId(`rfc${props.rfc.number}`))
+const rfcId = computed(() => parseRFCId(`rfc${props.rfcBucketHtmlDocument.rfc.number}`))
 
 const formattedTitle = computed(() => formatTitleAsVNode(`${rfcId.value.type}${rfcId.value.number}`))
 
-const obsoletedBy = computed(() => props.rfc.obsoleted_by?.map(obsoletedByItem => ({
+const obsoletedBy = computed(() => props.rfcBucketHtmlDocument.rfc.obsoleted_by?.map(obsoletedByItem => ({
   href: infoRfcPathBuilder(`RFC${obsoletedByItem.number}`),
   formattedTitle: h('span', [
     formatTitleAsVNode(`RFC${obsoletedByItem.number}`),
@@ -241,7 +240,7 @@ const maxPreformattedLineLength = computed(() =>
   props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
 )
 
-const isAprilFool = computed(() => isAprilFoolsRfc(props.rfc))
+const isAprilFool = computed(() => isAprilFoolsRfc(props.rfcBucketHtmlDocument.rfc))
 </script>
 
 <style lang="postcss">

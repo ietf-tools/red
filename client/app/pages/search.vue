@@ -10,22 +10,22 @@
     >
       <NuxtLayout name="default">
         <template #subheader>
-          <div class="container mx-auto px-2">
+          <div class="container mx-auto">
             <Heading
               level="1"
-              class="w-full mt-0 mb-3 pl-5 md:p-0 text-balance"
+              class="mt-1 mb-1 md:mb-2 ml-2 md:pl-5 md:p-0 text-balance"
             >
               Search RFCs
             </Heading>
             <div class="flex flex-row items-center pt-4 pb-6">
-              <div class="w-full md:w-2/3 h-12">
+              <div class="w-full md:w-2/3">
                 <ais-search-box
                   autofocus
                   placeholder="Find an RFC (number, subseries, title, author, etc.)"
                   :class-names="{
                     'ais-SearchBox-form': 'w-full flex',
                     'ais-SearchBox-input':
-                      'flex-1 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs',
+                      'flex-1 min-w-0 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs',
                     'ais-SearchBox-submit':
                       'bg-blue-200 px-2 flex items-center rounded-r-xs',
                     'ais-SearchBox-reset': 'hidden',
@@ -35,10 +35,16 @@
                   show-loading-indicator
                 >
                   <template #submit-icon>
-                    <Icon name="fluent:search-12-filled" size="2em" />
+                    <Icon
+                      name="fluent:search-12-filled"
+                      size="2em"
+                    />
                   </template>
                   <template #loading-indicator>
-                    <Icon name="eos-icons:loading" size="2em" />
+                    <Icon
+                      name="eos-icons:loading"
+                      size="2em"
+                    />
                     <div class="bg-red-500 w-5 h-5"></div>
                   </template>
                 </ais-search-box>
@@ -50,9 +56,7 @@
           </div>
         </template>
 
-        <div
-          class="container mx-auto flex flex-row items-start py-5 lg:min-h-screen px-2"
-        >
+        <div class="container mx-auto flex flex-row items-start py-5 lg:min-h-screen md:px-2">
           <div class="hidden lg:w-1/3 lg:block">
             <SearchFilter />
           </div>
@@ -101,7 +105,6 @@
                 </ul>
               </template>
             </ais-hits>
-
             <SearchPagination />
           </div>
         </div>

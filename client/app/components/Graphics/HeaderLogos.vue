@@ -1,5 +1,8 @@
 <template>
-  <A href="/" :class="[props.class, 'pl-5 md:pl-0']">
+  <A
+    href="/"
+    :class="[props.class, 'pl-0']"
+  >
     <img
       :src="LogoMobile"
       class="lg:hidden"

@@ -1,7 +1,7 @@
 <template>
   <TabsRoot
     v-model="selectedTab"
-    class="min-h-0 flex flex-col text-black"
+    class="min-h-0 flex flex-col"
     @change="changeTab"
   >
     <TabsList class="border-b-2 border-gray-400">
@@ -47,8 +47,8 @@
         >
           Erratum
           <DiamondText
-            v-if="props.rfc.errata && props.rfc.errata.length > 0"
-            :text="`${props.rfc.errata ? props.rfc.errata.length : 0}`"
+            v-if="props.rfcBucketHtmlDocument.rfc.errata && props.rfcBucketHtmlDocument.rfc.errata.length > 0"
+            :text="`${props.rfcBucketHtmlDocument.rfc.errata ? props.rfcBucketHtmlDocument.rfc.errata.length : 0}`"
           />
         </TabsTrigger>
       </HorizontalScrollable>
@@ -65,7 +65,7 @@
         v-if="props.isMobile === false"
         :toc="props.rfcBucketHtmlDocument.tableOfContents"
         list-type="ordered"
-        wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
+        wrapper-class="min-h-0 pt-4 pb-2 px-4"
         list-class="mr-1"
         nested-list-class="pl-2"
         :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
@@ -116,11 +116,11 @@
         Details
       </Heading>
       <dl class="text-sm">
-        <template v-if="rfc.updates && rfc.updates.length > 0">
-          <dt class="font-bold mt-2">Updates ({{ rfc.updates.length }})</dt>
+        <template v-if="props.rfcBucketHtmlDocument.rfc.updates && props.rfcBucketHtmlDocument.rfc.updates.length > 0">
+          <dt class="font-bold mt-2">Updates ({{ props.rfcBucketHtmlDocument.rfc.updates.length }})</dt>
           <dd>
             <span
-              v-for="(update, updateIndex) in props.rfc.updates"
+              v-for="(update, updateIndex) in props.rfcBucketHtmlDocument.rfc.updates"
               :key="updateIndex"
             >
               <RFCRouterLink :href="infoRfcPathBuilder(`rfc${update.number}`)">
@@ -138,7 +138,7 @@
         <dd>
           <ul class="-mt-1">
             <li
-              v-for="(author, authorIndex) in props.rfc.authors"
+              v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
               :key="authorIndex"
               class="inline"
             >
@@ -156,7 +156,7 @@
               <span v-else>
                 {{ author.name }}
               </span>
-              <template v-if="authorIndex < props.rfc.authors.length - 1">
+              <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
                 {{ COMMA }}
                 {{ NONBREAKING_SPACE }}
               </template>
@@ -166,26 +166,26 @@
 
         <dt class="font-bold mt-2">Working group</dt>
         <dd>
-          <template v-if="props.rfc.group.acronym">
-            {{ props.rfc.group.acronym.toUpperCase() }}
+          <template v-if="props.rfcBucketHtmlDocument.rfc.group.acronym">
+            {{ props.rfcBucketHtmlDocument.rfc.group.acronym.toUpperCase() }}
           </template>
-          {{ props.rfc.group.name }}
+          {{ props.rfcBucketHtmlDocument.rfc.group.name }}
         </dd>
 
         <dt class="font-bold mt-2">Area</dt>
         <dd>
-          <template v-if="props.rfc.area?.acronym">
-            {{ props.rfc.area.acronym.toUpperCase() }}
+          <template v-if="props.rfcBucketHtmlDocument.rfc.area?.acronym">
+            {{ props.rfcBucketHtmlDocument.rfc.area.acronym.toUpperCase() }}
           </template>
-          {{ props.rfc.area?.name }}
+          {{ props.rfcBucketHtmlDocument.rfc.area?.name }}
         </dd>
 
         <dt class="font-bold mt-2">Stream</dt>
-        <dd>{{ props.rfc.stream.name }}</dd>
+        <dd>{{ props.rfcBucketHtmlDocument.rfc.stream.name }}</dd>
 
-        <template v-if="props.rfc.identifiers">
+        <template v-if="props.rfcBucketHtmlDocument.rfc.identifiers">
           <template
-            v-for="(identifier, identifierIndex) in props.rfc.identifiers"
+            v-for="(identifier, identifierIndex) in props.rfcBucketHtmlDocument.rfc.identifiers"
             :key="identifierIndex"
           >
             <dt class="font-bold mt-2">
@@ -225,7 +225,7 @@
             </li>
           </ul> -->
 
-      <template v-if="props.rfc.formats?.length > 0">
+      <template v-if="props.rfcBucketHtmlDocument.rfc.formats?.length > 0">
         <Heading
           level="3"
           class="mt-5 mb-2"
@@ -234,7 +234,7 @@
         </Heading>
         <ul class="text-sm flex flex-col gap-2">
           <li
-            v-for="(format, formatIndex) in props.rfc.formats"
+            v-for="(format, formatIndex) in props.rfcBucketHtmlDocument.rfc.formats"
             :key="formatIndex"
           >
             <A
@@ -263,11 +263,11 @@
       </p>
 
       <ul
-        v-if="props.rfc.errata && props.rfc.errata.length > 0"
+        v-if="props.rfcBucketHtmlDocument.rfc.errata && props.rfcBucketHtmlDocument.rfc.errata.length > 0"
         class="list-disc text-sm"
       >
         <li
-          v-for="(errataItem, errataIndex) in props.rfc.errata"
+          v-for="(errataItem, errataIndex) in props.rfcBucketHtmlDocument.rfc.errata"
           :key="errataIndex"
         >
           {{ errataItem }}
@@ -292,14 +292,14 @@ import {
   TabsRoot,
   TabsTrigger
 } from 'reka-ui'
-import { formatTitleAsVNode, type RfcBucketHtmlDocument, type RfcCommon } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { infoRfcPathBuilder, mailToBuilder } from '~/utilities/url'
+import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 
 type Props = {
-  rfc: RfcCommon
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
   hasTableOfContents: boolean
   isMobile: boolean
@@ -313,14 +313,14 @@ function changeTab(index: number) {
   selectedTab.value = index
 }
 
-const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`))
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfcBucketHtmlDocument.rfc.number}`))
 
 const formattedPublished = computed(() => {
-  const dt = DateTime.fromISO(props.rfc.published)
+  const dt = DateTime.fromISO(props.rfcBucketHtmlDocument.rfc.published)
   return formatDatePublished(dt, true)
 })
 
-const TAB_CONTENT_CLASS = 'flex flex-col min-h-screen'
+const TAB_CONTENT_CLASS = 'flex flex-col min-h-0'
 const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 hover:bg-gray-100 dark:hover:bg-gray-900 text-sm md:text-md cursor-pointer'
 const SELECTED_CLASS = 'text-shadow-bold text-gray-900 dark:text-gray-100 border-b-blue-900 dark:border-b-white font-medium'
 const UNSELECTED_CLASS = 'border-b-transparent text-gray-800 dark:text-gray-300'

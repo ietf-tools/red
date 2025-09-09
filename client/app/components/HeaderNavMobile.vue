@@ -1,17 +1,21 @@
 <template>
+  <A
+    :href="SEARCH_PATH"
+    class="absolute top-0 right-10 no-underline block px-2 pt-4.25 pb-2 block lg:hidden"
+  >
+    <Icon name="fluent:search-12-filled"></Icon>
+  </A>
   <DialogRoot v-model:open="isOpen">
     <DialogTrigger
       aria-label="Menu"
-      class="absolute top-0 right-0 block p-4 block lg:hidden"
+      class="absolute top-0 right-0 block px-3 py-4.5 block lg:hidden"
     >
       <GraphicsHamburgerMenu />
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay />
-      <DialogContent
-        :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
-        'absolute inset-0 z-50 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'"
-      >
+      <DialogContent :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
+        'absolute inset-0 z-50 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'">
         <DialogTitle>
           <button
             type="button"
@@ -25,8 +29,16 @@
         </DialogTitle>
         <div class="flex flex-col">
           <Accordion>
-            <template v-for="(item, index) in menuData" :key="index.toString()">
-              <A v-if="item.href" :href="item.href" :class="MENU_ITEM_CLASS">
+            <template
+              v-for="(item, index) in menuData"
+              :key="index.toString()"
+            >
+              <A
+                v-if="item.href"
+                :href="item.href"
+                :class="MENU_ITEM_CLASS"
+                @click="isOpen = false"
+              >
                 <GraphicsChevron
                   v-if="item.hideDropdownIconDesktop"
                   class="absolute right-0 mt-1 mr-4 size-4 -rotate-90 text-blue-100"
@@ -47,6 +59,7 @@
                       v-if="level0.href"
                       :href="level0.href"
                       :class="MENU_ITEM_CLASS"
+                      @click="isOpen = false"
                     >
                       {{ level0.label }}
                     </A>
@@ -62,7 +75,10 @@
                         }
                       "
                     >
-                      <Icon v-if="level0.icon" :name="level0.icon" />
+                      <Icon
+                        v-if="level0.icon"
+                        :name="level0.icon"
+                      />
                       <Icon
                         v-if="level0.isActiveFn?.()"
                         name="fluent:checkmark-12-filled"
@@ -92,6 +108,7 @@
                               v-if="level1.href"
                               :href="level1.href"
                               :class="MENU_ITEM_CLASS"
+                              @click="isOpen = false"
                             >
                               {{ level1.label }}
                             </A>
@@ -108,6 +125,7 @@
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
+
 </template>
 
 <script setup lang="ts">
@@ -121,8 +139,9 @@ import {
   DialogClose
 } from 'reka-ui'
 import { useMenuData } from './HeaderNavData'
+import { SEARCH_PATH } from '~/utilities/url'
 
-const menuData = useMenuData()
+const menuData = useMenuData("mobile")
 
 const MENU_ITEM_CLASS =
   'flex w-full text-left border no-underline border-gray-500 px-4 py-3 hover:bg-blue-400 focus:bg-blue-400'

@@ -1,18 +1,16 @@
 <template>
   <div class="flex flex-row justify-between items-center mt-4">
-    <ais-pagination
-      :class-names="{
-        'ais-Pagination': 'w-full ',
-        'ais-Pagination-list': 'flex flex-row justify-center',
-        'ais-Pagination-item': 'mr-1 bg-gray-200 dark:bg-gray-900 rounded-xs',
-        'ais-Pagination-item--selected':
-          'bg-gray-700 dark:bg-blue-200! text-white',
-        'ais-Pagination-item--disabled':
-          'bg-transparent dark:bg-transparent text-gray-400 dark:text-gray-400',
-        'ais-Pagination-link':
-          'cursor-pointer py-2 px-3 block no-underline hover:underline focus:underline'
-      }"
-    />
+    <ais-pagination :class-names="{
+      'ais-Pagination': 'w-full overflow-scroll ',
+      'ais-Pagination-list': 'flex flex-row',
+      'ais-Pagination-item': 'mr-1 bg-gray-200 dark:bg-gray-900 rounded-xs',
+      'ais-Pagination-item--selected':
+        'bg-gray-700 dark:bg-blue-200! text-white',
+      'ais-Pagination-item--disabled':
+        'bg-transparent dark:bg-transparent text-gray-400 dark:text-gray-400',
+      'ais-Pagination-link':
+        'cursor-pointer py-2 px-3 block no-underline hover:underline focus:underline'
+    }" />
     <ais-hits-per-page
       :items="[
         { label: '10 per page', value: 10, default: true },

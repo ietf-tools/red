@@ -243,8 +243,6 @@ blockquote {
   padding: 1.2em 2em;
 }
 blockquote {
-  background-color: #f9f9f9;
-  color: #111; /* Arlen: WCAG 2019 */
   border: 1px solid #ddd;
   border-radius: 3px;
   margin: 1em 0;

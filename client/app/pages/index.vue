@@ -5,11 +5,11 @@
         <IndexSubheader />
       </template>
       <div class="container mx-auto">
-        <div class="flex flex-col-reverse lg:flex-row lg:items-center justify-between">
+        <div class="md:mx-2 flex flex-col-reverse lg:flex-row lg:items-center justify-between">
           <Heading
             level="2"
             has-icon
-            class="text-left mt-10 pl-5 md:pl-0"
+            class="text-left mt-10 mb-4 pl-5 md:pl-0"
           >
             Latest RFCs
           </Heading>
@@ -44,7 +44,7 @@
 
         <div
           v-if="searchStatus === 'success'"
-          class="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           <RFCCard
             v-for="searchResult in topSearchResults"
@@ -59,11 +59,11 @@
         <Heading
           level="2"
           has-icon
-          class="pl-5 mt-10 mb-5 md:p-0"
+          class="md:mx-2 mt-10 mb-5 pl-5 md:p-0"
         >
           Learn about RFCs
         </Heading>
-        <div class="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <MarkdownCard id="/series/rfc/" />
           <MarkdownCard id="/series/rfc-tips/" />
           <MarkdownCard id="/series/rfc-errata/" />
@@ -73,11 +73,11 @@
         <Heading
           level="2"
           has-icon
-          class="pl-5 mt-10 mb-5 md:p-0"
+          class="md:mx-2 mt-10 mb-5 pl-5 md:p-0"
         >
           Browse RFCs
         </Heading>
-        <div class="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <Card
             :href="searchPathBuilder({ status: ['Internet Standard'] })"
             heading-level="3"
@@ -106,11 +106,11 @@
         <Heading
           level="2"
           has-icon
-          class="pl-5 mt-10 mb-5 md:p-0"
+          class="md:mx-2 pl-5 mt-10 mb-5 md:p-0"
         >
           Start Participating
         </Heading>
-        <div class="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <Card
             :href="IETF_URL"
             heading-level="3"

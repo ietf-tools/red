@@ -172,31 +172,13 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport
 } from 'reka-ui'
-import { onMounted } from 'vue'
 import { useMenuData } from './HeaderNavData'
-import { isInternalLink, SEARCH_PATH } from '~/utilities/url'
+import { isInternalLink } from '~/utilities/url'
 
 const MENU_ITEM_CLASS =
   'group select-none flex justify-between rounded-md data-[state=open]:rounded-b-none mx-1 px-3 py-2 text-sm font-medium leading-none no-underline outline-none text-black dark:text-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'
 
 const menuData = useMenuData()
-
-const searchHref = ref<string>(SEARCH_PATH)
-
-const route = useRoute()
-
-function updateSearchLink() {
-  // If there's a search box on the page just use it rather than linking to another page
-  const searchElement = document.getElementById('search')
-
-  const newSearchHref = searchElement ? '#search' : SEARCH_PATH
-  if (newSearchHref !== searchHref.value) {
-    searchHref.value = newSearchHref
-  }
-}
-
-onMounted(updateSearchLink)
-watch(() => route.path, updateSearchLink)
 
 const currentNav = ref('')
 </script>

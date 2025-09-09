@@ -1,7 +1,7 @@
 <template>
   <DialogRoot v-model:open="isOpen">
     <DialogTrigger>
-      <span class="block mr-4">
+      <span class="block">
         <button
           type="button"
           class="flex justify-between w-full py-2 px-3 items-center border-1 border-gray-400 font-bold bg-white text-black dark:bg-black dark:text-white"
@@ -18,9 +18,12 @@
         class="absolute inset-0 z-50 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col"
       >
         <DialogTitle class="flex justify-between text-xl pl-3 font-bold border-b-1 border-b-gray-400">
-          <span class="block px-2 py-4"> Filter RFCs </span>
-          <DialogClose class="px-3 py-2">
-            <GraphicsClose class="text-white" />
+          <div class="block px-2 py-4">Filter RFCs </div>
+          <DialogClose
+            aria-label="Close modal"
+            class="px-4 py-2"
+          >
+            <GraphicsClose class="text-black dark:text-white" />
           </DialogClose>
         </DialogTitle>
         <VerticalScrollable
@@ -42,17 +45,16 @@
             </div>
           </div>
         </VerticalScrollable>
-        <button
-          type="button"
-          class="flex-none w-full font-bold bg-black text-white px-2 py-2"
-          @click="isOpen = false"
-        >
-          Ok
-        </button>
-
-        <DialogClose class="fixed top-4 right-5">
-          <GraphicsClose class="text-black" />
-        </DialogClose>
+        <div class="flex items-center justify-between gap-2 py-2 px-5 border-t-1 border-b-gray-400">
+          <SearchClearRefinements :after-click-fn="closeModal" />
+          <button
+            type="button"
+            class="flex-none font-bold bg-blue-600 text-white px-4 py-2"
+            @click="isOpen = false"
+          >
+            Show matching RFCs
+          </button>
+        </div>
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
@@ -70,6 +72,8 @@ import {
 } from 'reka-ui'
 
 const isOpen = ref(false)
+
+const closeModal = () => isOpen.value = false
 
 const searchStore = useSearchStore()
 </script>
