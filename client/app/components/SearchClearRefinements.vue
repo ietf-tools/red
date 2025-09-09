@@ -17,13 +17,15 @@
 import { AisClearRefinements } from 'vue-instantsearch/vue3/es'
 
 type Props = {
-  afterClickFn?: Function
+  afterClickFn?: () => void
 }
 
 const props = defineProps<Props>()
 
-const handleClick = (refine: Function) => {
+const handleClick = (refine: () => void) => {
   refine()
-  props.afterClickFn && props.afterClickFn()
+  if (props.afterClickFn) {
+    props.afterClickFn()
+  }
 }
 </script>

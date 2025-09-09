@@ -2,8 +2,9 @@
   <A
     :href="SEARCH_PATH"
     class="absolute top-0 right-10 no-underline block px-2 pt-4.25 pb-2 block lg:hidden"
+    aria-label="Search"
   >
-    <Icon name="fluent:search-12-filled"></Icon>
+    <Icon name="fluent:search-12-filled" />
   </A>
   <DialogRoot v-model:open="isOpen">
     <DialogTrigger
@@ -125,7 +126,6 @@
       </DialogContent>
     </DialogPortal>
   </DialogRoot>
-
 </template>
 
 <script setup lang="ts">

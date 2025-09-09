@@ -178,7 +178,7 @@ import { isInternalLink } from '~/utilities/url'
 const MENU_ITEM_CLASS =
   'group select-none flex justify-between rounded-md data-[state=open]:rounded-b-none mx-1 px-3 py-2 text-sm font-medium leading-none no-underline outline-none text-black dark:text-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'
 
-const menuData = useMenuData()
+const menuData = useMenuData('desktop')
 
 const currentNav = ref('')
 </script>

@@ -92,14 +92,13 @@ import {
   formatTitleAsVNode,
   isAprilFoolsRfc,
   parseRFCId,
-  type RfcBucketHtmlDocument,
-  type RfcCommon
 } from '~/utilities/rfc'
 import { infoRfcPathBuilder } from '~/utilities/url'
-import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
-import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { nodePojoWalker } from '~/utilities/dom'
+import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
+import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
+import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
