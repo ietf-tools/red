@@ -32,5 +32,4 @@
 
 <script setup lang="ts">
 import { AisHitsPerPage, AisPagination } from 'vue-instantsearch/vue3/es'
-import HorizontalScrollable from './HorizontalScrollable.vue';
 </script>
