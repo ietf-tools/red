@@ -44,7 +44,6 @@ export type ValidHrefs =
   | ReturnType<typeof materialsPathBuilder>
   | ReturnType<typeof dashboardPathBuilder>
   | ReturnType<typeof apiRfcBucketDocumentURLBuilder>
-  | ReturnType<typeof apiRfcDocRetrievePathBuilder>
 
 export const HOME_PATH = '/'
 
