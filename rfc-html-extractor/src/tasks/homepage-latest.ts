@@ -3,7 +3,7 @@ import { HomepageLatestSchema } from '../../../client/app/utilities/rfc-validato
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-doc.ts'
 
-export const generateHomepageLatest = async (
+export const uploadHomepageLatest = async (
   allRfcs: RfcCommon[]
 ): Promise<boolean> => {
   const response = { homepageLatest: allRfcs.slice(-3) }

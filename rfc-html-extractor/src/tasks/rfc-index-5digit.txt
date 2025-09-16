@@ -1,0 +1,128 @@
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                             RFC INDEX
+                           -------------
+
+(CREATED ON: 01/14/2025.)
+
+This file contains citations for all RFCs in numeric order.
+
+RFC citations appear in this format:
+
+  ##### Title of RFC.  Author 1, Author 2, Author 3.  Issue date.
+        (Format: ASCII) (Obsoletes xxx) (Obsoleted by xxx) (Updates xxx)
+        (Updated by xxx) (Also FYI #####) (Status: ssssss) (DOI: ddd)
+
+or
+
+  ##### Not Issued.
+
+For example:
+
+   1129 Internet Time Synchronization: The Network Time Protocol. D.L.
+        Mills. October 1989. (Format: TXT, PS, PDF, HTML) (Also RFC1119) 
+        (Status: INFORMATIONAL) (DOI: 10.17487/RFC1129) 
+
+Key to citations:
+
+##### is the RFC number.
+
+Following the RFC number are the title, the author(s), and the
+publication date of the RFC.  Each of these is terminated by a period.
+
+Following the number are the title (terminated with a period), the
+author, or list of authors (terminated with a period), and the date
+(terminated with a period).
+
+The format follows in parentheses. One or more of the following formats 
+are listed:  text (TXT), PostScript (PS), Portable Document Format 
+(PDF), HTML, XML.
+
+Obsoletes xxxxx refers to other RFCs that this one replaces;
+Obsoleted by xxxxx refers to RFCs that have replaced this one.
+Updates xxxxx refers to other RFCs that this one merely updates (but
+does not replace); Updated by xxxxx refers to RFCs that have updated
+(but not replaced) this one.  Generally, only immediately succeeding
+and/or preceding RFCs are indicated, not the entire history of each
+related earlier or later RFC in a related series.
+
+The (Also FYI ##) or (Also STD ##) or (Also BCP ##) phrase gives the
+equivalent FYI, STD, or BCP number if the RFC is also in those
+document sub-series.  The Status field gives the document's
+current status (see RFC 2026).  The (DOI ddd) field gives the
+Digital Object Identifier.
+
+RFCs may be obtained in a number of ways, using HTTP, FTP, or email.
+See the RFC Editor Web page http://www.rfc-editor.org
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                                RFC INDEX
+                                ---------
+
+
+
+    1 Host Software. S. Crocker. April 1969. (Format: TXT, HTML) (Status:
+      UNKNOWN) (DOI: 10.17487/RFC0001) 
+
+    2 Host software. B. Duvall. April 1969. (Format: TXT, PDF, HTML)
+      (Status: UNKNOWN) (DOI: 10.17487/RFC0002) 
+
+    3 Documentation conventions. S.D. Crocker. April 1969. (Format: TXT,
+      HTML) (Obsoleted by RFC10) (Status: UNKNOWN) (DOI:
+      10.17487/RFC0003) 
+
+    4 Network timetable. E.B. Shapiro. March 1969. (Format: TXT, HTML)
+      (Status: UNKNOWN) (DOI: 10.17487/RFC0004) 
+
+    5 Decode Encode Language (DEL). J. Rulifson. June 1969. (Format: TXT,
+      HTML) (Status: UNKNOWN) (DOI: 10.17487/RFC0005) 
+
+    6 Conversation with Bob Kahn. S.D. Crocker. April 1969. (Format: TXT,
+      HTML) (Status: UNKNOWN) (DOI: 10.17487/RFC0006) 
+
+    7 Host-IMP interface. G. Deloche. May 1969. (Format: TXT, HTML)
+      (Status: UNKNOWN) (DOI: 10.17487/RFC0007) 
+
+    8 ARPA Network Functional Specifications. G. Deloche. May 1969.
+      (Format: PDF) (Status: UNKNOWN) (DOI: 10.17487/RFC0008) 
+
+    9 Host Software. G. Deloche. May 1969. (Format: PDF) (Status:
+      UNKNOWN) (DOI: 10.17487/RFC0009) 
+
+   10 Documentation conventions. S.D. Crocker. July 1969. (Format: TXT,
+      HTML) (Obsoletes RFC3) (Obsoleted by RFC16) (Updated by RFC24,
+      RFC27, RFC30) (Status: UNKNOWN) (DOI: 10.17487/RFC0010) 
+
+   11 Implementation of the Host - Host Software Procedures in GORDO. G.
+      Deloche. August 1969. (Format: TXT, PDF, HTML) (Obsoleted by RFC33)
+      (Status: UNKNOWN) (DOI: 10.17487/RFC0011) 
+
+   12 IMP-Host interface flow diagrams. M. Wingfield. August 1969.
+      (Format: TXT, PS, PDF, HTML) (Status: UNKNOWN) (DOI:
+      10.17487/RFC0012) 
+
+   13 Zero Text Length EOF Message. V. Cerf. August 1969. (Format: TXT,
+      HTML) (Status: UNKNOWN) (DOI: 10.17487/RFC0013) 
+
+   14 Not Issued. 
+
+   15 Network subsystem for time sharing hosts. C.S. Carr. September 1969.
+      (Format: TXT, HTML) (Status: UNKNOWN) (DOI: 10.17487/RFC0015) 
+
+   16 M.I.T. S. Crocker. August 1969. (Format: TXT, HTML) (Obsoletes
+      RFC10) (Obsoleted by RFC24) (Updated by RFC24, RFC27, RFC30)
+      (Status: UNKNOWN) (DOI: 10.17487/RFC0016) 
+
+   17 Some questions re: Host-IMP Protocol. J.E. Kreznar. August 1969.
+      (Format: TXT, HTML) (Status: UNKNOWN) (DOI: 10.17487/RFC0017) 
+
+   18 IMP-IMP and HOST-HOST Control Links. V. Cerf. September 1969.
+      (Format: TXT, HTML) (Status: UNKNOWN) (DOI: 10.17487/RFC0018) 
+
+   19 Two protocol suggestions to reduce congestion at swap bound nodes.
+      J.E. Kreznar. October 1969. (Format: TXT, HTML) (Status: UNKNOWN)
+      (DOI: 10.17487/RFC0019) 
+

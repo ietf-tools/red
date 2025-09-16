@@ -1,5 +1,5 @@
-import { generateHomepageLatest } from './tasks/homepage-latest.ts'
-import { generateRfcIndex } from './tasks/rfc-index-txt.ts'
+import { uploadHomepageLatest } from './tasks/homepage-latest.ts'
+import { uploadRfcIndexTxt } from './tasks/rfc-index-txt.ts'
 import { getAllRFCs, getRedClient } from './utilities/redClientGet.ts'
 
 export const processCron = async (): Promise<void> => {
@@ -8,7 +8,7 @@ export const processCron = async (): Promise<void> => {
   const allRfcs = await getAllRFCs({ api })
 
   await Promise.all([
-     generateHomepageLatest(allRfcs),
-     generateRfcIndex(allRfcs)
+     uploadHomepageLatest(allRfcs),
+     uploadRfcIndexTxt(allRfcs)
   ])
 }
