@@ -29,6 +29,7 @@ export const renderRfcIndexTxt = async (
   )
   const column1Width = longestRfcNumberStringLength + COLUMN_PADDING
   const column2width = 72 - longestRfcNumberStringLength // yes this will cause reflow once RFC 10k, 100k, etc. occur
+  
   // array of whitespace chars where the index = number of spaces
   const whitespace = new Array(column1Width + 1)
     .fill('')
@@ -42,22 +43,25 @@ export const renderRfcIndexTxt = async (
   txtParts.push(getHeader())
   txtParts.push(getIntro(layout))
   txtParts.push('\n\n')
-  txtParts.push(
-    ...allRfcs
-      .map((rfc) => {
-        const rfcText = stringifyRFC(rfc)
-        const rfcLines = splitLinesAt(rfcText, column2width)
+  // This was a .map() callback but that got a 'RangeError: Maximum call stack size exceeded'
+  // so it's a simple forloop to avoid callback functions on the stack.
+  for (let i = 0; i < allRfcs.length; i++) {
+    const rfc = allRfcs[i]
+    const rfcText = stringifyRFC(rfc)
+    const rfcLines = splitLinesAt(rfcText, column2width)
 
-        return [
-          // No RFC prefix on these results
-          padStart(rfc.number.toString(), longestRfcNumberStringLength, ' '),
-          whitespace[column1Width - longestRfcNumberStringLength],
-          rfcLines.join(`\n${whitespace[column1Width]}`)
-        ].join('')
-      })
-      .join(' \n\n')
-  )
-  return txtParts.join("")
+    const rfcEntry = `${
+      // No RFC prefix on these results
+      padStart(rfc.number.toString(), longestRfcNumberStringLength, ' ')
+    }${whitespace[column1Width - longestRfcNumberStringLength]}${rfcLines.join(
+      `\n${whitespace[column1Width]}`
+    )}`
+
+    txtParts.push(rfcEntry)
+    txtParts.push(' \n\n')
+  }
+
+  return txtParts.join('')
 }
 
 export const getHeader = (): string => {
