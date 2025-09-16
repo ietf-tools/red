@@ -1,7 +1,7 @@
-import { HOMEPAGE_LATEST_PATH, saveToS3 } from './utilities/s3.ts'
-import { HomepageLatestSchema } from '../../client/app/utilities/rfc-validators.ts'
-import type { RfcCommon } from '../../client/app/utilities/rfc-validators.ts'
-import { validateDocument } from './utilities/validate-doc.ts'
+import { HOMEPAGE_LATEST_PATH, saveToS3 } from '../utilities/s3.ts'
+import { HomepageLatestSchema } from '../../../client/app/utilities/rfc-validators.ts'
+import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
+import { validateDocument } from '../utilities/validate-doc.ts'
 
 export const generateHomepageLatest = async (
   allRfcs: RfcCommon[]

@@ -1,6 +1,6 @@
-import { getInnerText, getDOMParser } from './utilities/dom.ts'
+import { getInnerText, getDOMParser } from '../utilities/dom.ts'
 import type { RfcAndToc } from './rfc-html.ts'
-import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../client/app/utilities/rfc-validators.ts'
+import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../../client/app/utilities/rfc-validators.ts'
 
 type TocSections = TableOfContents['sections']
 type TocSection = TocSections[number]

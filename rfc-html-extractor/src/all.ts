@@ -1,4 +1,4 @@
-import { processRfc } from './index.ts'
+import { processRfc } from './tasks/rfc.ts'
 import { setTimeout } from 'node:timers/promises'
 
 const main = async (

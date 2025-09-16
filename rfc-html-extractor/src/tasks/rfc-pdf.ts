@@ -1,18 +1,18 @@
-import { apiRfcBucketDocumentURLBuilder, PUBLIC_SITE } from './utilities/url.ts'
-import { gc } from './utilities/gc.ts'
-import { BLANK_HTML, getDOMParser, rfcDocumentToPojo } from './utilities/dom.ts'
-import { rfcImageFileNameBuilder } from './utilities/s3.ts'
+import { apiRfcBucketDocumentURLBuilder, PUBLIC_SITE } from '../utilities/url.ts'
+import { gc } from '../utilities/gc.ts'
+import { BLANK_HTML, getDOMParser, rfcDocumentToPojo } from '../utilities/dom.ts'
+import { rfcImageFileNameBuilder } from '../utilities/s3.ts'
 import {
   type TableOfContents,
   type RfcBucketHtmlDocument,
   RfcBucketHtmlDocumentSchema
-} from '../../client/app/utilities/rfc-validators.ts'
+} from '../../../client/app/utilities/rfc-validators.ts'
 import {
   getTextDetails,
   takeScreenshotOfPage
-} from './utilities/unpdf-parent.ts'
-import { getRfcCommon } from './redClientGet.ts'
-import { validateDocument } from './utilities/validate-doc.ts'
+} from '../utilities/unpdf-parent.ts'
+import { getRfcCommon } from '../utilities/redClientGet.ts'
+import { validateDocument } from '../utilities/validate-doc.ts'
 
 export const fetchRfcPDF = async (rfcNumber: number) => {
   const url = `${PUBLIC_SITE}/rfc/rfc${rfcNumber}.pdf`

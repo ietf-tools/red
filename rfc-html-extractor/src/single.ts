@@ -1,5 +1,5 @@
 import { processCron } from './cron.ts'
-import { processRfc } from './index.ts'
+import { processRfc } from './tasks/rfc.ts'
 
 const main = async (rfcNumber: number): Promise<void> => {
   if(rfcNumber === 0) {

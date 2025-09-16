@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { test, expect } from 'vitest'
 import { chunkString } from './string'
-import { ensureWordBreaks } from '../rfc-html'
+import { ensureWordBreaks } from '../tasks/rfc-html'
 import { getDOMParser, rfcDocumentToPojo } from './dom'
 
 test(`chunkString`, () => {

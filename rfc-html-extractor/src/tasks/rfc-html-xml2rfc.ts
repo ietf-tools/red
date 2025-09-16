@@ -1,6 +1,6 @@
-import { convertCSSUnit, parseCSSLength } from './css-unit-converter/index.ts'
-import { getDOMParser, getInnerText, isHtmlElement } from './utilities/dom.ts'
-import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../client/app/utilities/rfc-validators.ts'
+import { convertCSSUnit, parseCSSLength } from '../css-unit-converter/index.ts'
+import { getDOMParser, getInnerText, isHtmlElement } from '../utilities/dom.ts'
+import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../../client/app/utilities/rfc-validators.ts'
 import type { RfcAndToc } from './rfc-html.ts'
 
 type TocSections = TableOfContents['sections']

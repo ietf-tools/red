@@ -1,9 +1,9 @@
-import { ApiClient } from '../../client/generated/red-client.ts'
-import { parseRfcStatusSlug } from '../../client/app/utilities/rfc-converter-status.ts'
+import { ApiClient } from '../../../client/generated/red-client.ts'
+import { parseRfcStatusSlug } from '../../../client/app/utilities/rfc-converter-status.ts'
 import { blankRfcCommon } from './rfc.ts'
-import type { Rfc, RfcMetadata } from '../../client/generated/red-client.ts'
-import type { RfcCommon } from '../../client/app/utilities/rfc-validators.ts'
-import { assertIsString } from './utilities/typescript.ts'
+import type { Rfc, RfcMetadata } from '../../../client/generated/red-client.ts'
+import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
+import { assertIsString } from './typescript.ts'
 
 export const getRedClient = () => {
   const NUXT_PUBLIC_DATATRACKER_BASE = process.env.NUXT_PUBLIC_DATATRACKER_BASE
@@ -104,7 +104,7 @@ export const getAllRFCs = async ({ api }: Props) => {
     docListArg.offset = offset
     docListArg.limit = MAX_LIMIT_PER_REQUEST
     const response = await api.red.docList(docListArg)
-    const rfcCommons = response.results.map(rfcMetadataToRfcCommon).sort((a, b) => a.number - b.number)
+    const rfcCommons = response.results.map(rfcMetadataToRfcCommon)
     rfcs.unshift(...rfcCommons)
 
     if (rfcCommons.length > 0) {
@@ -132,7 +132,7 @@ export const getAllRFCs = async ({ api }: Props) => {
     await setTimeoutPromise(DELAY_BETWEEN_REQUESTS_MS)
   }
 
-  return rfcs
+  return rfcs.sort((a, b) => a.number - b.number)
 }
 
 /** Safety wrapper around docRetrieve access to catch errors  */

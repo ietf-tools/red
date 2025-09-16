@@ -5,7 +5,7 @@ import {
   isHtmlElement,
   isTextNode,
   rfcDocumentToPojo
-} from './utilities/dom.ts'
+} from '../utilities/dom.ts'
 import {
   type RfcCommon,
   type RfcBucketHtmlDocument,
@@ -13,10 +13,10 @@ import {
   type DocumentHtmlType,
   type TableOfContents,
   RfcBucketHtmlDocumentSchema
-} from '../../client/app/utilities/rfc-validators.ts'
-import { extractHrefRfcPart } from './rfc.ts'
-import { assertNever } from './utilities/typescript.ts'
-import { PUBLIC_SITE } from './utilities/url.ts'
+} from '../../../client/app/utilities/rfc-validators.ts'
+import { extractHrefRfcPart } from '../utilities/rfc.ts'
+import { assertNever } from '../utilities/typescript.ts'
+import { PUBLIC_SITE } from '../utilities/url.ts'
 import {
   getPlaintextMaxLineLength,
   getPlaintextRfcDocument,
@@ -27,9 +27,9 @@ import {
   getXml2RfcRfcDocument,
   parseXml2RfcBody
 } from './rfc-html-xml2rfc.ts'
-import { chunkString, getAllIndexes } from './utilities/string.ts'
-import { getRfcCommon } from './redClientGet.ts'
-import { validateDocument } from './utilities/validate-doc.ts'
+import { chunkString, getAllIndexes } from '../utilities/string.ts'
+import { getRfcCommon } from '../utilities/redClientGet.ts'
+import { validateDocument } from '../utilities/validate-doc.ts'
 
 export const fetchSourceRfcHtml = async (
   rfcNumber: number

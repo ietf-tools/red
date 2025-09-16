@@ -1,6 +1,6 @@
 import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument } from './rfc-html.ts'
 import { rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
-import { rfcJSONPathBuilder, saveToS3 } from './utilities/s3.ts'
+import { rfcJSONPathBuilder, saveToS3 } from '../utilities/s3.ts'
 
 export const processRfc = async (rfcNumber: number): Promise<boolean> => {
   const html = await fetchSourceRfcHtml(rfcNumber)

@@ -1,4 +1,4 @@
-import type { RfcCommon } from '../../client/app/utilities/rfc-validators.ts'
+import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
 
 export const blankRfcCommon: RfcCommon = {
   number: 0,
