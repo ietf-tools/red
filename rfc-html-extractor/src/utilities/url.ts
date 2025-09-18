@@ -1,3 +1,5 @@
+import { RfcCommon } from "../../../client/app/utilities/rfc-validators.ts"
+
 export const PUBLIC_SITE = 'https://www.rfc-editor.org'
 
 export const apiRfcBucketDocumentURLBuilder = (fileName: string) => {
@@ -6,4 +8,8 @@ export const apiRfcBucketDocumentURLBuilder = (fileName: string) => {
   // The CORS headers of the prod URL should allow access from localhost:3000 as well as staging,
   // etc. sites.
   return `${PUBLIC_SITE}/api/v1/rfc-html/${fileName}` as const
+}
+
+export const infoRfcPathBuilder = (rfc: RfcCommon) => {
+  return `/info/rfc${rfc.number}/` as const
 }

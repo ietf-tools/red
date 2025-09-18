@@ -17,6 +17,7 @@
     "@aws-sdk/client-s3": "3.842.0",
     "@napi-rs/canvas": "0.1.77",
     "@types/luxon": "3.4.2",
+    "feed": "5.1.0",
     "jsdom": "26.1.0",
     "lodash-es": "4.17.21",
     "luxon": "3.5.0",

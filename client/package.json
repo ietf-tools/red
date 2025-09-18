@@ -36,7 +36,6 @@
     "apigen-ts": "1.2.1",
     "better-sqlite3": "12.2.0",
     "core-js": "3.40.0",
-    "feed": "4.2.2",
     "lodash-es": "4.17.21",
     "luxon": "3.5.0",
     "nitropack": "2.10.4",

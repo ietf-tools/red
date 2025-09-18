@@ -35,3 +35,7 @@ export const rfcImagePathBuilder = (fileName: string) => `rfc/${fileName}` as co
 export const HOMEPAGE_LATEST_PATH = `other/homepage-latest.json` as const
 
 export const RFC_INDEX_TXT_PATH = 'other/rfc-index.txt' as const
+
+export const RFC_FEED_RSS_PATH = 'other/rfcrss.xml' as const
+
+export const RFC_FEED_ATOM_PATH = 'other/rfcatom.xml' as const
