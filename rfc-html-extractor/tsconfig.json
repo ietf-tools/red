@@ -4,22 +4,15 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "sourceMap": true,
+    "skipLibCheck": true,
     "strict": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "outDir": "./dist",
-    "lib": [
-      "ES2019",
-      "DOM",
-    ]
+    "lib": ["ES2019", "DOM"]
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/*.test.ts"
-  ]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.test.ts"]
 }

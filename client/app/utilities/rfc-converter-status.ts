@@ -1,4 +1,4 @@
-import type { RfcCommon } from './rfc-validators'
+import type { RfcCommon } from './rfc-validators.ts'
 
 export const parseRfcStatusSlug = (
   rfcStatusSlug?: string
