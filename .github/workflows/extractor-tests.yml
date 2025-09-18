@@ -1,4 +1,4 @@
-name: Vitest, TypeScript check, ESLint
+name: Extractor Vitest, TypeScript check, ESLint
 
 on:
   push:
@@ -26,10 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./rfc-html-extractor
-
-      - name: Build Nuxt (dev mode, no prerender)
-        run: npm run build:dev
         working-directory: ./rfc-html-extractor
 
       - name: Run all other tests

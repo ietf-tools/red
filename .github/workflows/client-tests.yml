@@ -1,4 +1,4 @@
-name: Nuxt: Vitest, TypeScript check, ESLint
+name: Nuxt Vitest, TypeScript check, ESLint
 
 on:
   push:
