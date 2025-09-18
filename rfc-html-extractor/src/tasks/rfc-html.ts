@@ -28,7 +28,6 @@ import {
   parseXml2RfcBody
 } from './rfc-html-xml2rfc.ts'
 import { chunkString, getAllIndexes } from '../utilities/string.ts'
-import { getRfcCommon } from '../utilities/redClientGet.ts'
 import { validateDocument } from '../utilities/validate-doc.ts'
 
 export const fetchSourceRfcHtml = async (
@@ -188,7 +187,8 @@ export type RfcAndToc = {
 
 export const rfcBucketHtmlToRfcDocument = async (
   rfcBucketHtml: string,
-  rfcNumber: number
+  rfcNumber: number,
+  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon>
 ): Promise<RfcBucketHtmlDocument> => {
   const parser = await getDOMParser()
   const dom = parser.parseFromString(rfcBucketHtml, 'text/html')

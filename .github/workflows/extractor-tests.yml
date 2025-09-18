@@ -3,7 +3,7 @@ name: Vitest, TypeScript check, ESLint
 on:
   push:
     paths:
-      - 'client/**'
+      - 'rfc-html-extractor/**'
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: "./client"
+        working-directory: "./rfc-html-extractor"
 
     steps:
       - name: Checkout
@@ -20,18 +20,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 22.x
+          node-version: 24.x
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./client
+        working-directory: ./rfc-html-extractor
 
       - name: Build Nuxt (dev mode, no prerender)
         run: npm run build:dev
-        working-directory: ./client
+        working-directory: ./rfc-html-extractor
 
       - name: Run all other tests
         run: npm run test
-        working-directory: ./client
+        working-directory: ./rfc-html-extractor

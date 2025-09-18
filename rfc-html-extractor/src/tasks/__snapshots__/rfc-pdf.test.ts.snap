@@ -1,0 +1,811 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`rfcBucketPdfToRfcDocument(418, false) 1`] = `
+{
+  "documentHtmlObj": [
+    {
+      "attributes": {
+        "data-component": "PdfPages",
+      },
+      "children": [
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {
+                "alt": "Page 1: '
+1 2.762
+NETI-l OHK WORK I JG GROU ? Hayne Hathawa y ( flJ.1E S- 6 7)
+Requ est for Comm en t s ~418 Novembe r 27 , 197 2
+Nr c if1 276 2
+Ca t e gor i e s D. 7 , G. 3
+Se r ve r Fi le Tr ansfer Und er TSS /3 60
+At NASA-Am e s r esea r c h Cen t e r
+r ni s RFC i s a des cr iption o f the i ni t i a l ~mp l e m e n t a t i 0 n o f Se r v e r Fi le
+Tr a n sf e r. at N,\\ S -I. -Ames r e s e ar ch Ce nt r , I t a l s o c o n t a in s s ome c c mm e n t s
+on t he c u r r e n ~ Fil e Tran s f e r Pro t oco l ( RFC' s 354 -od 3 85) and so me
+s ugge s ti on s f or fut ur.e ex ens i on s . Comme n t s or que s ti on s s ho u ld be
+di r ect e d t o :
+' .J ay ne Ila r haway
+Na il St op 233 -9
+i TA SA- ne s Rese a r ch Cent e r
+Ho f f e tt Fie l d , C l~ 9l~ 0 3 5
+(415 ) 965 - 6033 or
+(408 ) 736- 7439",
+                "height": "1292",
+                "id": "page1",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-1.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 2: RFC 418 Pa ge 2
+TI1e k1PA Net wor k =ilc t ransf er f acilities p r o v i d e d a t Ames i n t e r f a c e
+v e r y cl o s e ly with the st an d a rd TSS fi l e man a g ement f a cility; n etwor k
+u s e r s s h o u l d b e f arai I iar wit h TSS in g e n e r a l a nd its f i Le handling
+c a p a b i l i t i e s i n part ic u la r . A few o f the ba si c con c epts are me n tione d
+h e r e. Ea ch per so n a llowe d t o use TSS i s as si g n ed a use r id en t if icat i o n
+( USERI D) , wh i c h i s pa dded to eight cha r a c te rs ui th a ste r i s k s by the
+s y s t eru, At Am e s , t h e u s e r i d is norm ally f o rme d from a three l.e t t er
+o r g a n i z a t i o n co d e a nd the us e r I s Ln i t i a l s , Ea c h us e r i d has its own
+catalog ( d i r e ctor y ) , wh i c h co n t s ins poi n te r s to a ll da t a s e t s (files)
+wh i c h may be acc e s s e d by t he u s e r . TSS da ta set n am es a re ma de up of
+one or more cu al i f ic a t ion l e v el s, up to e igh t ch ar a ct er.s each, sep ar ated
+by pe r io d s . 1 h c highes t qu a l i f ic a t io n l c ve~ is in fac t the u s er i d , but
+t his i s no t En tered whe n s p ec i f y i n g da t as e '; n ame s ; t h e c ur r e n t l y a c t i v e
+uBerid i s a pp e nded by t h e s ystem to al l n m: es entered hy the user .
+The Leve ln o f. q ua l ifi cat i on form a t r e e s t r u c t u r e wh ich may be us ed t o
+i d e n t i f y lo g ical gr o u ps of da t a s ets . Only ends o f br -nch es a ctually
+n am d a t asc t s ; suc h n aine s are t e rrne d " f u l l y qualified " n am es . Pa r ti al
+ly qu a li f i e d narne s a re u s e d i n man y TSS d a ca s e t man age ment c omma n d s
+but a r e no t u s e d in AI{ PA Ne tw o r k Fi l e Tr an sf er . Host d atase t s u n d e r
+TSS are co n t a L ne d o n a po ol of un ivers a ll y a va ilable disks tenne d
+" p ub l i c s to r,g e . " Da t s e t s o n p u blic s to rdg c ar e au t omatica lly c a t a
+l o g e d at c r e ...,t i o n . Da t a s e t s may al so e x is t on pr iva t e d e vi ce s , eit her
+d i s k s o r t a p es . Pri v a t dat as et s may be c 3t a lo g e d or n o t , a s the u ser
+d e s Lr-e s , On I y disk datas e t s i n the " v i rt u a l a c c e s s me t h od " ( VAH) are
+s up po r t e d by TSS Ser v er F il e Tr a n sfer , but private ViI:'1 datas ets may be
+use d .: f c a t a l o g e d . Ampl e TSS co mmands exi s t for tr a n s ferri n g VJJ:1 d a t a
+s et s t o t a pe , c a r d s, pri nter , etc .
+The TS S c a t a l o g struc ture a lso a Ll ows ex t e n s i v e sh ar in g of d a t a s e c s
+amon g u s ers. Th i.s 'har in g n:ay he don e a t ny q:.la li fic a tion le ve l nd
+wL th rea d -onl y , r e ad-wr i t e , o r u al i mi ted ac c e s s ( o n l y unl imited sh aring
+a ll ows e r as I ng ) , To shar e a TSS da .a s e t , r.he owne r must firs t " pe rm i t "
+it t o on e or mor e u s e r s , Each u s er must the n e x pl i c i t l y " s h a r e " i t,
+wh i ch c a u s e s a n e n t r y for t h e d atase t t o be mad e i n hi s c at a l o g . T his
+e n try , which ma y he u nd er a dif f erent n ame t h an the o ri gin al, do e s
+n o t poi n t t o the d a t a s et it s e l f , b u t rathe . ~ p o i n t s to t h e appropr i ate
+e ntry i n th e own e r IS c a t a l o g , T i s a l l ows t ' e own e r t o c h a n g e o r re
+mo ve s h a r i n g acc ess a t any im e .
+TS S FI LE ST RGCTU RE
+1\\ b r i e f discus s ion is al s o i n r d e r ab o u t the d iffere nc e be twe c n un
+st r u c t u r e d f iles a nd re c o r d - s truc t u re d f il e s . All f i l e s on TSS are
+st o r e d 'Io1 i t h so me f o rm o f re cord s ru e t ure , a I tho u gh eac h r ecord may be
+u p t o on e mi l lion byt es i n l e n g t h; the i mpo r t a n t thing i s the mean i ng
+a t tribut ed to a record .
+F or har a c t e r o rie nt ed d a t a s e t s (e. g . , s ou rc e pro gr ams , l i s ti n gs, pr ogr am
+d o cum en t a t i on ) a r ec o r d c orr e s p o nd s to a 1 i n c ; t h e r c ar e no end -of
+r ec o r d mark e rs in the da t a it s el f (C R-L?, NL, r:OL) . Th e TSS e d i t o r s
+require t his , t h e t r r.ns l a t o r s re q uir e thi s and so for t h. Thi s do es not
+p r e c l ud e h av i .n g a n EBCDIC "n ew- Li n c " cl a ra c te r ( NL) in h e c a t a , how",
+                "height": "1292",
+                "id": "page2",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-2.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 3: RFC 4 18 Pa ge 3
+ever ; it is ju st trea t e d as par t o f th e l i n e of d at a . . hus ch a r ac t e r
+o riented fi les must be sen t to and sto r ed on TSS , .... it h r e co rd s t r uc
+turing t o c us e f u l :
+The u s e o f uns t r uc t ur ed f i l e s on TSS i s us ually rest r i cted t o b in a r y
+d ata and ob j e c t pro gr ams . Fr om t he net ' .... o rk t h e onl y u s e fo r s u ch f i l e s
+wou ld be d at a whi c h i s in fa ct a t o t a l ly uns tr u ctur e d s t r i n g o f b i t s
+(us i ng INAGE type). An examp le mi gh t be a n ob j e c t pr ogr am for an IHLAC.
+Be cau se o f th e abo ve , ou r s erv e r h as imp le ment ed t he fol lo wi ng c on
+ve ntions .
+Sendin ~ str uctured dat a ( RETR, STRU R) :
+An end-o f -r ecord eq ue n ce wi l l b' add e d to e a c h r e c or d rea d fr om
+t he TSS da t a s t (e i t he r " s t r e am" mode CI - LF o r " t ex t " mode Ea R) .
+Sen di ng un st r uc t ur ed d at a (RETR, STRU F):
+The da t a ~ i l l be sent wi t h no en d- of - re c or d se qu e nc e a dde d .
+Re c ei vi ng s tr uc tu r e d d t a ( STa R or PPE, STRU R) :
+An e d- o f-r e c or d s equ n ce i s r e qu i r ed t o def i ne e ac h TSS re c or d
+(wi t h a me xim um r ec or d len g t h o f 101 2 by t e s ).
+Rec e i v i ng un s t r u ct ur ed data ( STOR or APP E, STRU F) :
+Ever y c har a c te r r eceiv ed i s wr i tt en i.n t o a rb i tr ary s i z e d r e c or d s
+( ex ce p t fer " text" mode EO F ch a r ac t e r ) .
+The abo ve Ln p l e.. e n t a t i on does sa ti s fy one c r i t e r i on ( a s state d in t he
+t h i r d sentenc e of I I I . C i RFC 35 4) : an y f i l e sent t o TS S may be r e
+tri sv e d ex a ctly a s sen t . F r ex amp le , t hi s me ans t h at i f a c hara c te r
+f ile i s s ent in uns truc t ur ed form , the CR- LF s e quenc e s wi l l be s t or e d
+as p&rt of t he d ata. \\ ~ l en this dat a s e t i s r c t r i ev ed (a l s o in un st r uc
+t ur ed fo rm) no new e nd - of - re c or d i nd i c a t or s vri .Ll, be adde d, s o t he re
+t r i eve d fi le wil l have onl y the or ig in a l CR- LF rec or d i n fo rma t i on .
+If th e file wer e re t r i e ved in reco r d-struc tu r c:.d form , howev e r , th i s
+woul d of co ur s e no t be t he c a s e ; i t i s impo rt an t th at any unstr uc t ure d
+f ile be r e t ri eve d i n ex actly t he s ame manne r t ha t i t was s en t .
+This c r i t e r i on o f retr iev abili ty is no t t he ma i n one o f conc er n t o
+TSS us e r B, ho\\ ev er ; a a re i mpor ta n t c ri t eri on is t ha t f i l e s sen t t o
+TSS may be of us e on th at s yste m ( L e . , may be e di t ed, may be pr in ted ,
+e tc . ) . To a cco mp lish 'h i s i t i s imperat iv e th a t cha r a c t e r data be
+sen t wi t h record st ructu r e .
+As ca n be se en f r om th e a bove d i scus s ion , th i s should n ot b . a pr ob l em
+\\.;i th rn o s t ha s t s , as in d f a ul t t r , ns f e r s (MODE S, TYPE A) t h ey are a l
+ready i n lu d i n g e n d-o f- r e c ord info rma i on a t t he e nd o f e a ch ph ysi c a l
+1 i.n e ( CR- LF) . Thu s th e on l y r e qu i r mont wou l d be t o no t r e j e c t t he
+STRU R c omm a nd ( a t le a s t in NODE S, TYP E A t r an s f e r s) . Thi s may c a us e",
+                "height": "1292",
+                "id": "page3",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-3.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 4: RFC 4 18 Pa ge 4
+s ome min or pr ob l ems ( s uch · s CR- L -L F- LF- LF f or ve r t i ca l s pa ci n g) bu t
+it i s str ong ly re uested that host s whi c h do not us ua ll y st ore f il e s
+in re c or d - st ructure form at l e as t i mpl eme nt ST RU R i n th i s s imp le
+c on t ex t.
+TSS SERVER FILE TRA..~SF E !( nlPLENENTATIOj:~
+The TSS i mpl emen t a ti on of ea ch o f t he fi l e t r a ns f e r c omm a nd s is de s
+c r i be d be l ow. The maximum length for a c omman d and its paramete r s i s
+256 ch a r a c t e r s (no t including t he CR- LF a t t he end ) . All blank s a r e
+r emove d from t he parame er st r ing , aId s o b l an "s ar e ne ver si gni f i ca nt
+e xc e p t t o sep~rate a co m~and f rom its pa r ~~ e ters.
+Onl y he c omm ands HAIL and MLFL may be u s ed when the re i s no ac ti ve
+u s e r l ogged 0 1. ; al l o t he r co .mna nds r e q ui r e n p ri or USER comm and .
+The USER c omm and de f i ne s t he TSS lls e r i d t o be emp lo ye d f or c a t a l og a c
+c e s s . Thi s must be a va l i d TSS use r id , but it mus t a l s o h av e be e n
+s pe c i f i ed as h a vi ng a c cess t o ne t wor k fi l e t ransfe r . Th i s is do ne by
+i ns t a ll a t i on manageme nt in a anne r s i mi l ar t o e stabli sh ing a v a l i d
+TSS us e r i d ; con t a c t Wa yne Hat ha way t o h av e exi s t ing TSS user ids jo i ne d
+t o ARPA Ne t wor k Fi le Transfe r. The demon st r at i on u serids ARPA, AR PA1 ,
+a nd ARPA2 do h.::? ve a c c e s s t o f i l e t r a n s f e r .
+The USER c Olmn a nd also r e s e t s a l l f i l e tra n sf e r paramete r s t o t he i r
+de f a u l t va lues , i nc l u di ng HOST a nd SO CK. It is f e l t t h i s s h ou l d have
+b e e n spe cif ied in t he pr o to co l .
+I f a USE R co . and is e nt e r e d dur i ng a f i le l: r a n s f e r op e r a ti on i t wi l l
+be hc: l d u nt i 1 the t r a n s f e r i s c om p le e ; he new us e r i d \\"i 11 he n be
+p roc e s s e d , a p a s swo r d may be requested , et c .
+P SS
+TSS fi le t r an s r e r pas sw or ds are o p t i on al a nd a r e e s t ab li s he d when use r i ds
+ar e gran ed f i:e t r an s f e r acces s . This pa s s ~ ord i s n ot ne cessa r ily th e
+s ame as t he nOl1nal TSS passvord . The demons t r a t i on use r ids ARP A, ARPAl ,
+a nd ARPA 2 ha ve no pa ssw o r ds .
+AC CT
+The ACCT c o mm ~~ d i s no t s uppor t e d .
+The pro to c ol see ms somewh t defic ie nt i n th e def init io n of t he ACC T
+comm an d , pa rti c u l a r l y i the assign i ng of r e p l y codes . I wou l d l ike
+t o pr opos e tha t code 33 1 be ass igned t o " -::: N TI~ R ACeT " when t he ACCT
+c omma nd i s requ i r ed for "lo g-on" and c ode 1~ 3 3 be a s s i gne .d t o " ENTER
+ACCT " when the .ecl' c ommand is requ i ted on ly for a part i c ular t r a ns f e r
+op e r a t ion . It is fel t that this wou ld a i d us er automata i n s a t i s f y i ng
+p ar t i c u l a r s e r ve r r e qui r emen t s .",
+                "height": "1292",
+                "id": "page4",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-4.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 5: RFC 4 1 8 Pa g e 5
+BYTE
+Th e o n ly BYTE size s ~pp o r te d is ei ght .
+SOCK
+The SOCK c o n:m a n d is supp orted i n ac c or d a nc e ' vi t h th e p r o t oc o l . The re
+i s o n l y one HOST pa rame te r , how e ve r , wh i c h app l i es t o bo t h s e n d a n d
+r e c e i v e s o c k ets.
+TYPE
+Ty p _ cu rren t ly supp o rted are . SC ll an d ll'lAGE. Th e EBC DI C typ e "7i 11
+be a d d e d l at e r . The two " p r i n t f il e " t y pe s a r e n o t y e t su p po r t e d , du e
+p a r tl y t o la ck of t ime and part ly t o a seen ing fa u l t i n t he pr ot o c o l
+i t appears t l .e only t r a n sf e r mo d e wh i ch a ll ows a " p r i n t fi l e " i s BLOC K.
+Th is i s baser. on the d e s c r i p t i on s o f t r a ns :Ee r mod es on pa ge 12 o f RF C
+3 51~ : TEXT mod a Ll ows on ly ASCII t yp e, a n d ST RE AH mou e a l Lows r e c o r d
+st r u c t u r e s (s u r e l y n ec e ss a r y i n p r in t f i les ) o nly in ASCI I ty pe . I
+a s sum e t h i s j.s an ov er si gh t ; a nd '17(: i n f a c c i n t e n d t o s u pp o r t EBCDI C
+typ e i n S TRELM mode Hi th r eco rd st r u c t ure s (si n c e EBCDI C c on t a i n s b o th
+C , and LF ) . I f n o t , th e i mp l eme n t ati o n o f " p ri n t f il e " t yp e s .wi ll be
+d e l a y e d s u b s ta n t ia l l y .
+STRU
+Bot h f i l e a nd rec o r d s tr uc t u r es a r e s u p po r t e d , i n a c co rda nc e Hi th the
+p r o t o c o l . Th e EBC DI C ty p e ""i ll be s u p po r te d w it h re c o r d st r u c tu r e ,
+h owe v e r , a s i n di c a t ed un d er the TYPE c omman d .
+r-10D E
+The STREi\\H a nd TEXT modes are c ur r e nt ly s up po r t e d for t he i ndic at e d t y pe s
+( STREAH is r e q u ired fo r HIAGE t yp e ) . I n S ':":' REAJ.'1 mod e "7ith reco r d s tr u
+t u r e s , th e CE- LF s eq u e n c e (wi t h o p t i o n al Te l ne t; NOP ' s ) i s r e quir ed a s
+EOR. In TEX1 mode Hi t h no re c o r d s t r u ctu r e an y EOR c h ar ac t er s e n c o u n
+t e re d are dis c ar d e d . I n TEXT mode wi th r ecor d s t r uc t u re a messag e c o n
+t ai n i n g o nl y a n EOF c h a r ac t e r is as s umed t o be a n e nd- o f - f i l e o nl y , n o t
+a nu l l r e c o r d ' l7 i th a n a mi t t e d EOR ( a l t ho u g h we wo u Ld l ik e to c on t i.n ue /'
+o u r l o bb yi ng aga ins t " i mp li e d EOR" c o n c e p t s ! ) .
+RETR
+The RETR c omm a n d i s s u p po r t e d i n a c c o r dan c e wi t h th e pr o t o c ol ; . the p a r a
+me t e r mus t be a fu lly q u a li f i e d n ame o f an e xi s t i n g da ta s e t o n d i re c t
+a c c e ss st o ra g e (pub l i c o r pri va t e ) . Fo r s t r u c t u r e d fil es i n ASCI I t y pe
+a " CR·· LF" s eq ue nce i s in se r t e d a t th e e n d o f e ach re c o rd . No EOR ch a r
+a c t er s a re i n s e r t e d f o r u n s t r u c t u r e d f il e s in TEXT mode .
+S Ta R
+T he STOR c onau a n d is S lip o r t e d in a c c o r dan c e wi t h th e p r o t o c o l ; t he pa ra
+mo t c r mus r be a va lid f u l ly qual if ied d atase t n amc , H it h u n l i mi t e d o r
+r <' nd - wr i t . a c c e s s requ i r ed f o r e x i s t ing sh a re d d a t a s e t s . The c h a r a c
+t e r i s l ic s o f t he TSS da ta set be ing sto r ed a r e de t er~ mi ne d a s f ol l ows .",
+                "height": "1292",
+                "id": "page5",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-5.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 6: RFC 418 Pa ge 6
+For new da t a s e t s , th e defau lt ha r a c t e r i s t i c s ar e VS or gani z a tio n wi t h
+a m axi ml~ r e co r d s i z e o f 1012 byte s . Thi s nay be ove rri d e n by s pe c i
+f y i ng an ALLO ( TS " DDEF " ) c omm an d ~ ., i th d i f f e r e n t c ha r a c t e r i s t i cs . A
+'ISS " l i ne data s e t" may t h us be c r e a t e d by f i r s t e n t e r i ng an ALLO c om
+mand s pecif ying VI orga ni z a t i on ( li ne n umbe r wi Ll be i n s e rt e d by t he
+s y s t em). Fo r oth er types of 11 da t a s e t s , ho we ve r , t he us e r must e ns ur e
+tha t t h e r e c ord s c on t a i n keys in t he sp ec i f ie d pos i t i on s a nd t ha t th ey
+ar e sent i n or de r by key ; i t i s a n t i ci pa ted t h at t his f ac i l i ty wi l l
+be r a r e l y u se d .
+For e x is t i ng da t a s e t s , t he new v e r si on wi l l be c r e a t e d wi t h th e s ame
+cha r a c t e r i s t i c s a s the or i g i na l ( an d on t he s ame pr i v a te vo l urae) .
+APPE
+The APPE command i s suppor t ed i n a c c or dance wi t h t he pr o t oc o l ; t he
+p ar am e t e r mu st be a va l i d f u ll y qu ali f ie d « a t as e t name, wi th un li mi t e d
+or r e ad -wr L t e a c c e ss req u ir e d f or ex i s t i ng s ha r e d d at a s ets. The c ha r
+a ct e r i s tic s o f c r e a t e d da t as e t s a r e d et e r mi.ne d a s fo r th e STaR c omm a n d.
+RNFR
+The RN FR co mmand i s su ppor t e d in a c c or'danc e wi t h t h e p roto c o l ; t he pa r a
+mete r mus t s pe c i fy t he full y qua lif i ed name of a n e x i s t i ng da t a s e t .
+RNTO
+The RN TO c o mm a nd i s sup po r te d i n ac c o rd a. i c e wi.t h t he pr ot oc ol ; th e p a r a
+me t e r must s pe c i f y t he f u l l y qu alif i ed name of a none x i s t en t da t a s e t.
+DELE
+Due t o t he 'ISS fi l e s ha r in g and pr i va t e de v i c e fa c il i ti e s, th e si n g l e
+DELE comm and i s no t re al l y ade qu at e . I n 'ISS th e r e a re t wo s p arat e
+comm ands f or t h i s fu nctio n , ERASE and DELE TE. The ERA SE c omm a nd i s
+used t o ac t ua l ly pu r ge a datas et and f r e e it s s pac e ; i t 1 ay be us e d
+on l y on dire c t a c cess d ata s e ts ( pu bl i c or pr i va te ) wi t h un li mi t ed ac c e s s .
+The DELETE co mm and s i mpl y r emov s a c a t a l c g en t r y a nd d oe s n ot t ouch
+t he da t a s et i t s e l f ; i t may be us e d on s ha r e d d a t ~s e t s of any type ( t o
+e f f e c t i v e l y "un s ha r e " ) o r on da t a se ts on pr i v a te de v ices . To a t t empt
+to provide bo t h of t h e s e f un c t i o ns , th e DELE c omm an d ha s be e n i mp l e
+me n ted a s fo llo ws .
+Fo r non share d a tas ct s :
+Pub l i c o r pr i v at e d ir e ct- ac c ess :
+e ra s e ( f r e e t he spa ce ) an d de l et e t he c at al og en t r y
+Pr iv a t e nond i r e c t- a c c e s s:
+de l et th e c a t a l o g e ntr y only
+For s hared da t a s e t s :
+~Ib li c or p riv a t e d i r e c t - ~ c c es s , un l i mit e d s ha r i ng :
+e ras e ( f r e e the spac e ) a nd de le te the c a t a l og e n t r y .",
+                "height": "1292",
+                "id": "page6",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-6.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 7: RFC 418 Pa ge 7
+.1 1 oth ers :
+d elete t he sharer 's c a t al o g en try on l y
+ALLO
+The AL LO c orrman d is se d t o enter a TSS " DDEF11 c o rrm a n d . Thi s may be
+used to sp ci f y non st a n dard d at aset a ttr ibute s , p ri vat e de i c es, or
+o t he r i t ems . The par ame ter is a omp let TSS " DDEF" c o rrun and mi nus t he
+wo r d "DDEF" itse lf, wi t h t he mi no r re str ict ion t ha t t he f irs t t hr e e
+pa r ame t e r s (DD.TANE, DSOR G, and DSNANE ) mus t be pr e se n t and mus t no t
+be s pecifi ed i n ke )~ord fo rmat .
+REST
+The REST . co mm a nd i s not s upported. It Hill be add e d when BLOC ' mode
+i s i mp l eme n t e d .
+STAT
+There ar e th ree u s e s o f th e STAT c o mm a nd . If u se d b et we e n f i l e t r a ns f er s
+wi t h no prrrame re r , i t pill pr i nt t he c ur r e nt val ue s f o r a l l f i l e t r an s
+f e r pa r ame t e r s ( u s e r , by te s i ze , h o s t, r e ce i ve data s o c k e t , s e nd d a t a
+socke t, tran sfer type, fi le s r uc t ure , a nd t r a n s f e r mode ) . If us e d du r
+in g a fi l e t ra n sf e r op e ra t i on ( wi t h or wi t hou t a pa r ame t e r ) i t wi l I i nd i
+c a t e wha t ty pe o f ope r a t i on i s ac tiv e .
+The t h i r d US2 o f STAT is t o ret r i .v s ta t us i. nf on na t i on abou t a f i le or
+gr oup o f fil e s (i . e ., any qu ali f ic a t i on Lev e L } , The r e a re t wo fo rms f or
+this f nf o rma t Lon , t e rm ed shor t nd l ong . Th e short f orm w i Ll, in d ic a t e
+wh t dat as e ts e" i s t wi h the qualificat io n l e v e l s pe c ifi e d , Hit h i n f or
+lna t i on abo ut s 1 a r ing an d p ri v at e devi ces . I f the p a r ~n e t e r spe c if ierl
+is a f u l l y q ual i f i.e d n ame , the e tire da ta se t name i s pr inte d . If i t
+i s p a r t i a l Ly q ua Lt f i e d , t he names o f al l d a t as e t s in t ha t gr oup ar e
+print ed (Hi t h o n l y t l e m i q ue por t i on o f the names a ct ua l l y ap pea ri ng ) .
+Th is . hart f orn i s exactly eq ui valent t o the TSS "PC ?" c omm a nd and i s
+t he deraul. fOlm fo r STAT.
+The pa r ame t e r f or t h e:: l ong form ' s t he s ame as f or t he sh or t fo rm , bu t
+all av ail ~ ble i n f orma t i on is pr inted f o r e a c h data se t (a t lea s t f i ve
+l ines p e r data set). '1'0 get the lo n g form , t he cha ra c ter s " , LONG" mus t
+be app e ld ed to t he pa r a~eter . The lo n g fo rm i s e xa c t l y eqUivalen t t o
+t he TSS " DSS?" c omm a nd .
+Tt,e TAT c o mm and d oes not c ur rentl send a rep l y co de 200 at al l . I t
+is elt t his sholld be a dde d to the pr ot oc ol t o be t ter d efine the e n d
+o f STAT inf o rma t ion ; the r e pl y code 200 wil l be a dd e d at t h a t t ime .
+LIST
+The LIST c o mm a nd pr oduc e s ou tpu t i de nt ic a l to the s ho r t and long fo rm
+ST,\\T c omm and ( pa r ame t c r e qu ired ) e xc e p t t h a t th e lo ng form is t he de
+fault ; to ge t t he short f orm , the chnr a c t er s " , HORT " must be a ppe nded
+to th e p~r am ete r .",
+                "height": "1292",
+                "id": "page7",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-7.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 8: RFC 418 Page 8
+ABOR
+Th e ABOR c o mm an d may be en te red a t any ti me dur ing a f i. Le tr ansfer o pe r
+ation . I t vri Ll c au s e an i mm e di at e t c rmi na t i on o r the t r a n s f r and c l o s
+in g of th e d~ ta c o n n e c t i o n. Fo r RETR o p er at io n s , the TSS d~ t as e t will
+b e un aff ect e d. Fo r STOR or APPE 0 a new da t a s e t , ther e will b e no th ing
+c re a t ed ( e xc e p t poss ib ly n Ln t c rme d i. t e f ile whi ch should be i g no r e d ) .
+For STOR of 81 exist ing d ataset , th e d atase t wi l l be u n c h a n ge d. F or
+APPE t o an ex i s t Lu g d a t a s c t , a l l tr a n sf erred i n f o rm a t io n vi. Ll ha ve been
+wr i . t e n in t o the d a ta s e t.
+BY E
+Th e BYE c o mm ar d i s su p po r cd in ac co r d ance ~ 'li h th e pr o t o c o l. I f a ·BYE
+c o mm a n d is entered du r i n g a t ra n sf e r op erat i on · t he nex t co mm a n d en te rcd
+(wh i c h mu s t b e a USER co rnm an d ) wi Ll n ot b e p r oc e s s cd a t all u n il t h e
+t ran sf er is c( .mplet e . Not e t h e t th is p r ec l udes a bo r t i n g the t r a n s f er
+after a BYE c o ~mand i s e n t er ed (wh i ch s e ems t o f i t the s p iri t of BYE ) .
+HAIL
+The l lAI L c onm a n d , .,ill acc e pt a TSS us e r Ld , a kn own NI C i d e n t (L e . , o n e
+f o r \\..hi ch a m. rpp i n g 0 TSS u ser i d exists ) , o r ~ nu ll p ar -ame rc r ( i n
+wh i.c h c ase t h c ma i l will be sen t to t h e TSS s y s tems pxo gr amm i.n g gr ou p ) .
+Unl nO\\·;'11 ide n t s \\.,i 11 c a u s e the NAI L co rrnn n d t o b i gn or e d .
+The 101 TL c omm. nd may be ente r e d pri o . to t h e f ir t USER c o mm a n d , to i n
+c r as e th e i.c LLi, t y o f th e ne two r k mai 1 syo em. Th is i s no t c u rr e n t l y
+mentio ned in t he protocol; it i s f elt tha t t hi s imp lementation s h o ul d
+be r ee omrnendc I .
+HLFL
+The p a r amet er L s t he same as for t he HAI L c omm a n d ,
+The NLFL c o rnm s.n d may als o be enter d pr io r t o a US ER command , f o r t he
+s ame re aso ns i n d ic at e d und er ~L~IL.
+c m r-1EN'IS ON 'IE ..:. PRO TO COL
+Some po s sib le a dd i t ion s t o th e Fi l e Tr a n s f er Comma n d S et re as f o l l ows ,
+NOP
+I t s e e ms str a n ge t o f in d any pr ot oco l ' '''i th o u t a no - op e rat i on c omm an d ,
+a n d th e re ar e severa l p ossibl e us e s for s uc h a command . As s tnnin g
+t h e r e is a s p e c i a l reply c od e as s i gn e d to " NOP C O ~ 'l l ' W; ACC EPTED, "
+t h e n NOP could se r ve .he s ~n e fun ct io n as th e l e vel 2 EC O (fo r user
+v e r i f i c a t i o n of s er ve r e x is te n ce , fo r e xam p l e ) . Anothe r ex amp le co u ld
+b e in a ll owing he us e r t o d iscar d term i n a l o u t p u t , as f r om a to o
+l e n gh t y STAT c ornman d , Th e problem "' ith j us t disc ardin g ever ythin g is
+th a t th e lIs e r process do e s n ot k n m'" ""he n a l l o u :pu t has be en r eceive d .
+If a NOP co mma 1u we re c1 -f i ne d , t h e tls er pro c ess c o u ld s e nd a NOP upo n
+r ec ei pt of t h e dis ca r d r e qu e~t , and t h en di s ca rd un t il t he unique NO P
+esp o n s e i s rec e i v ed .",
+                "height": "1292",
+                "id": "page8",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-8.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 9: RFC 418 Pa ge 9
+SRVR r
+The S VR CO l. , a nd wou Ld be used t o pa s s a par ame t e r whi ch ha s ' s i gn i f i
+c a nc e only t o the p art i cular s er ve r s y s t em. Th i s p ar ame t e r mi gh t
+s pe cify p rintin g a newl y c r e a t e d fi le , .ov i ng a fi Le , or an y n umbe r of
+s er v er - de f i ned functions . One o ssi bl e i mp le men t a t io n wou l d be f o r t he
+pa r ame t e r to be a v a li d s e r v er s yst em c omm a nd , whi c h w u l d t h en be
+It ob ey ed " by th e s er v er .
+To s implify i mpl emen t ation o f bo t h SRVR a nd STAT c omm an ds , th e f o L l ow
+i n g ch a nge t o th e pr oto c o l is req ue s t e d . Be t we en t he re ce i pt o f a
+STAT or SRVR r.mrnn a nd a nd t he s en d ing o f a rn c ogn iza bl e r e ply co de (i. e.,
+an y mess a ge H.Lt h n umbe r s i.n t he fi rs t t h r e e po si t i ons ) , a s er ve r i s
+a l l owed to send mess a g es wh i c h do no t h ave va l i d r e p ly c ode s . Thus t he
+se r ve r 8Y t e rn r e s pon s e mes s age s cou l d be se n t with no mod i f i c a t i on ( e x
+ce p t to Ln s ur e t h a t the f i rst tree pos i t i o s ar e no t nume r i c ) . The se
+me s s age s wou l d be assume d t o h a ve co de 000 a nd s hou l d be pr i n te d by
+a ny us e r pr oce s s e s . Thi s t.e c hn i qu e c ou l d po s s i b l y be ex t e nd e d t o o t he r
+cOlum ands wi t h goo d r e s u l t s .
+CLSE
+Dur i ng i mp emcn t a t i on o f t he Fi l e Tr a n s fer J er v e r th e f ol lo wi ng ope r a t
+i ng mode was c ons i d e r e d , t ha t of t he s o - ca l l ed It ho t c a r d r e a de r . 1t I n
+t h i s mode a c onne c t i on wou l d be es t a bl i s hed b et wee n t H O s y s te ms onc e
+t o be l e f t ~ ~e n for an ex te nde d pe r i od . I nd i v i d ua l us e s wou l d en te r
+USER c omm a nds , t rans fer fi l es , an d th en en te r BYE c omm a nd s t o s a f e
+gu ard their f i Le.s , For t h is mode t he BY E c o mm an d sh o ul d no t c l os e t he
+TEL NET c o n n ec ~ i o n . In fa c t , this i s he de f in i t i on of t he BYE co m
+man d i f ente r 2d dur i ng a tr ans f er an d i f a ne w USER c o mm a nd c om e s be
+f or e t he r an .s fe r is iom p l e t e .
+To e H rn f. n at e : he t i mi ng un c e rt a i n t i t i e s of t he BYE co mm a nd , an d a l so
+to a I Low th e "ho t c ar d rea de r " mode , it is re commen ded tha t t he BYE
+c o mm a nd be r e de fin e d to mean " t e rmi na t e t he c ur r e n tl y a c t i ve us e r an d
+req u ir e a ne w USE R c o mm a nd be fo r e ad di t i on a l. t r a n s fe rs . " The TELNET
+c onne c t i on s c )u l d f cou r s e be c l os e d by t h ~ t s e r" pr o ce s s a s s oon a s
+t he BYE co mma nd i s ackn ow l.e dg ed . For sc r p ro c e s s e s t ha t c a nno t or
+do no t choo s e to do this, a new comm a nd CLSE sh ou l d be a dde d , t o ha ve
+t he me a ni ng o f "c l o s e the TEUiliT c onne c t io n when pos s i b le ( Le. , aft er
+a ny acti ve t r a ns f e r i s comp le t e ). "
+Thus BYE wou l d h ave on l y th e mean i ng i t c ur r e n t l y do es if e n t e r ed d ur ing
+? n a c t iv e t r an s f er , an d CLSE wou ld ha ve th e cu r r e n t me ani ng of BYE i n
+o t he r c i r c um s t a n ce s . Fu rth er sugge s t i o .s wou Ld be t ha t CLSE i mp l i e s a
+BYE an d t ha - a e LSE d ur in g a n aC l.ive t r a ns f e r " l og i c a ll y " clo s e s th e
+conne c t i on i mm ed i a t e l y (L e. , r:. o co mm a nd s may be c t e r e d whi l e wa i t i n g
+fo r th e tra n sf e t o c omple te ) .
+Some s mall i t ems missing fr om t he p r o t o c o l a r e 11m·1 me n t i one d .
+\\
+\\",
+                "height": "1292",
+                "id": "page9",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-9.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [],
+              "nodeName": "hr",
+              "type": "Element",
+            },
+            {
+              "attributes": {
+                "alt": "Page 10: RF C 41 8 Pa ge 10
+DEFAULT PA RANETER VALUES
+I t sh ou l d be more emp ha t i c ally s t a t ed t h at se rv e r s mus t a ss ume de f a ult
+v alue f o r a ll unspe c i fi e d par ' e t er s (Ha DE, TYPE, e t c.). Hi th o u t th i s,
+a ll us e r pr oc e s s e s mu st a l wa y s se nd 11 c mp l.e t e se t o f pa r ame ter spe c i
+f i c a ti on c omm a nd s, s i nc e sone s e rver s omeHhe r e ma y no t ma ke t he cor r ect
+d ef a ul t a s sump t i ons . Th is is obv i ou sly unde s i r a b l e .
+SY CH ON THE TElN ET CO NNECTI ON
+The pr o t oc ol s t tes t ha t t he AB O. c o m:n a n d s houl d be pr e ce de d by t he
+Te ln e t SYNCII co nd i t i on , for reas ons o f e ff i c i e nc y ( so t ha t s e rv e r s do
+no t need t o be con tin ua lly che ck i ng t he Tel ne t co nn ect i on d urin g a t r a n s
+f e r) . Thi s sh ould be ex t e n ded t o o t he r c onmands wh i ch may be u s e d dur
+i ng a t r ns f er ( BYE , USER, STA T, e t c . ) .
+BREAK a THE '.i.'El NET C Ol~ r E C T ON1
+The qu es t io n o f vha t a BREfX c ha r a ct e r m e a ~ s ov er th e Te l ne t co n n ect ion
+is no t to u ch ed . Eve n i f t he BRE AK i s t o h2ve no fu nc t i on th i s sh ou l d
+be s pe c i fi e d . I n the TSS i plemen t a t i on , t he onl y t i me a BRE AK is re
+c o gn i ze d i s dur i ng a HAI L c ommand ; the BREA K will a bor t t he c omm a nd and
+c a nce 1 t he ma i l ,
+CATCH- ALL REP LY CODES
+It i s fe l t t ha t on e re p ly c ode of e a ch t ype should be a s s i gne d t he me a n
+i n g of "ot r." r " s o th a t s y s t em- de p en d e n t c" en t s co ul d be pro pe r l y id e n
+ti fi e d. For ex amp l e , if a n i.nd e x ed f i l e i s b ein g s e n t to TSS a nd r e co r d u
+a r e re cei ve d lIt o f or der , t he rep l y cod e c u r r en t ly use d i s 453 , al t hou gh
+t h i s i.s s u ppos e d to mean " i n s uf f i ci e n t s p ac e . II If a c atch- a l l c o de we r c
+de f i ned , t he me ss age t ex t coul d be us e d t o f u r t he r s e c i fy th e ex a c t
+me an i ng .
+PARAMETER VAL LDATI ON
+Cer t - i n s e r ve r pr oc e s se s ( no t a b l y TENEX ) ha ve a p pa r en t l y d ivi d ed t he fi l e
+t r a ns f e r c o mm a nd s i nt o t HO lo gica l gr o ups : pa r ame t e r s e tti ng c omma nds
+an d fi le man i l' ulation c o mm a nd s . The pa r amete r se tt i ng c omm a nd s ar e TYPE,
+}10 DE, STRU, a nd BYTE . The parame e r va l ue s sp e c if i e d on these c o mm a nds \\
+a r e no t va l id a t ed Hhen re ce iv e d ; th e y are s i mpl y st or e d an d a r ep ly c ode
+200 i r e t u r ne d . The pa raI:leters are va li da t e d on t he ne x t f i l e ma n ip u \\
+l a ti on c omman d , hOHever , with e rr or s r e s u l ti ng in c a nc e l la t i on o f th e
+f i l.e man ip u l a t ion c omman d i t s e If , .;r i t h r e p l y c ode 50 3 .
+I am awar e o f th e pr ob l ems wi .t h va l i da t in g pa r am t.e r s whe n r e c eiv e d ( L e . ,
+o f t empor a r i l y pr oduc i ng i nva li d c omb i n at i on s whe n ch a ng i ng f r om one val i d
+s et to an ot he r ) but i t i s felt th a t some s t a nda r d c ou l d be se t up t o a ll oH
+t hi s . As an a hs o l u t e mi n imum, t o t a l l y i nv al i d or un supp or t e d param e t e r
+va l ue s s hou ld be d iagnose d Lntm cd i.a t e l y ( e . g . , Ha DE 13 if BLOCK mod e i s no t
+i mp l eme nt e d) .
+Th is prob le m i s a nu i s anc e w itl: a h um an us e r , b ut it be c om e s q uit e s e r ious
+wi t h a u s e r a u t oma t o n: t he amoun t of wo rk ne c e ss a ry f or an a ut omat on t o
+emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l e r ab le .",
+                "height": "1292",
+                "id": "page10",
+                "loading": "lazy",
+                "src": "https://www.rfc-editor.org/api/v1/rfc-html/418-page-10.png",
+                "width": "1000",
+              },
+              "children": [],
+              "nodeName": "img",
+              "type": "Element",
+            },
+          ],
+          "nodeName": "div",
+          "type": "Element",
+        },
+      ],
+      "nodeName": "div",
+      "type": "Element",
+    },
+  ],
+  "documentHtmlType": "pdf-or-ps",
+  "maxPreformattedLineLength": {
+    "max": 80,
+    "maxWithAnchorSuffix": 80,
+  },
+  "rfc": {
+    "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
+    "area": {
+      "acronym": "art",
+      "name": "Applications and Real-Time Area",
+    },
+    "authors": [
+      {
+        "affiliation": "MIT CSAIL",
+        "country": "USA",
+        "email": "rivest@mit.edu",
+        "name": "Ronald Rivest",
+        "person": 19822,
+      },
+      {
+        "affiliation": "Independent",
+        "country": "US",
+        "email": "d3e3e3@gmail.com",
+        "name": "Donald Eastlake",
+        "person": 102391,
+      },
+    ],
+    "formats": [
+      "txt",
+      "xml",
+    ],
+    "group": {
+      "acronym": "art",
+      "name": "Applications and Real-Time Area",
+    },
+    "identifiers": [
+      {
+        "type": "doi",
+        "value": "10.17487/RFC9804",
+      },
+    ],
+    "number": 9804,
+    "obsoleted_by": [],
+    "pages": 22,
+    "published": "2025-06-17",
+    "status": "Informational",
+    "stream": {
+      "desc": "Internet Engineering Task Force (IETF)",
+      "name": "IETF",
+      "slug": "ietf",
+    },
+    "text": "",
+    "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",
+    "updated_by": [],
+  },
+  "tableOfContents": {
+    "sections": [
+      {
+        "links": [
+          {
+            "id": "page1",
+            "title": "Page 1",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page2",
+            "title": "Page 2",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page3",
+            "title": "Page 3",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page4",
+            "title": "Page 4",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page5",
+            "title": "Page 5",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page6",
+            "title": "Page 6",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page7",
+            "title": "Page 7",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page8",
+            "title": "Page 8",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page9",
+            "title": "Page 9",
+          },
+        ],
+      },
+      {
+        "links": [
+          {
+            "id": "page10",
+            "title": "Page 10",
+          },
+        ],
+      },
+    ],
+    "title": "In this PDF",
+  },
+}
+`;

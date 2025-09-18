@@ -5,13 +5,13 @@ import { rfcImageFileNameBuilder } from '../utilities/s3.ts'
 import {
   type TableOfContents,
   type RfcBucketHtmlDocument,
-  RfcBucketHtmlDocumentSchema
+  RfcBucketHtmlDocumentSchema,
+  RfcCommon
 } from '../../../client/app/utilities/rfc-validators.ts'
 import {
   getTextDetails,
   takeScreenshotOfPage
 } from '../utilities/unpdf-parent.ts'
-import { getRfcCommon } from '../utilities/redClientGet.ts'
 import { validateDocument } from '../utilities/validate-doc.ts'
 
 export const fetchRfcPDF = async (rfcNumber: number) => {
@@ -33,7 +33,8 @@ export const fetchRfcPDF = async (rfcNumber: number) => {
  */
 export const rfcBucketPdfToRfcDocument = async (
   rfcNumber: number,
-  shouldUploadPageImagesToS3: boolean
+  shouldUploadPageImagesToS3: boolean,
+  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon>
 ): Promise<RfcBucketHtmlDocument | null> => {
   const base64 = await fetchRfcPDF(rfcNumber)
 

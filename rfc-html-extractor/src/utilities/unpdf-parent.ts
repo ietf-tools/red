@@ -13,6 +13,9 @@ import type { ChildProcess } from 'node:child_process'
 
 const forkPath = join(import.meta.dirname, 'unpdf-child.ts')
 
+type ForkOptions = NonNullable<Parameters<typeof fork>[2]>
+const forkArgs: ForkOptions = { silent: true }
+
 export const takeScreenshotOfPage = async (
   base64: string,
   pageNumber: number,
@@ -20,7 +23,7 @@ export const takeScreenshotOfPage = async (
   shouldUploadToS3: boolean
 ): Promise<ImageDimensions> => {
   return new Promise((resolve) => {
-    const child = fork(forkPath)
+    const child = fork(forkPath, forkArgs)
     child.on('message', async (_message) => {
       const message = parseMessageFromChild(_message)
       if (!message) {
@@ -44,6 +47,7 @@ export const takeScreenshotOfPage = async (
           throw Error('Unexpected message while taking screenshot')
       }
     })
+    handlePipes(child)
   })
 }
 
@@ -51,7 +55,7 @@ export const getTextDetails = async (
   base64: string
 ): Promise<z.infer<typeof GetTextSchema>> => {
   return new Promise((resolve) => {
-    const child = fork(forkPath)
+    const child = fork(forkPath, forkArgs)
     child.on('message', async (_message) => {
       const message = parseMessageFromChild(_message)
       if (!message) {
@@ -72,6 +76,7 @@ export const getTextDetails = async (
           throw Error('Unexpected message while getting text')
       }
     })
+    handlePipes(child)
   })
 }
 
@@ -134,4 +139,27 @@ const cleanupChild = async (child: ChildProcess) => {
   // })
 
   await gc()
+}
+
+const handlePipes = (child: ChildProcess) => {
+  child.stdout?.on('data', (data) => {
+    const txt = data.toString()
+    const messagesToSupress = [
+      // This message from unpdf/pdfjs is noted but we wish to suppress it to make logs easier to read
+      // all other messages will be printed in logs
+      'Warning: Please use the `legacy` build in Node.js environments.'
+    ]
+    if (
+      messagesToSupress.some((messageToSupress) =>
+        txt.includes(messageToSupress)
+      )
+    ) {
+      return
+    }
+    console.log('STDOUT: unpdf child', txt)
+  })
+  child.stderr?.on('data', (data) => {
+    const txt = data.toString()
+    console.log('STDERR: unpdf child', txt)
+  })
 }

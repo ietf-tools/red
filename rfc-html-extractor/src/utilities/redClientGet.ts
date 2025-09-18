@@ -92,7 +92,9 @@ const FIRST_RFC_NUMBER = 1
 const DELAY_BETWEEN_REQUESTS_MS = 50
 const MAX_LIMIT_PER_REQUEST = 1000
 
-export const getAllRFCs = async ({ api }: Props) => {
+export const getAllRFCs = async ({
+  api
+}: Props): Promise<Readonly<RfcCommon[]>> => {
   console.log('Downloading metadata for ALL rfcs:')
   const rfcs: RfcCommon[] = []
 
@@ -122,7 +124,9 @@ export const getAllRFCs = async ({ api }: Props) => {
       rfcCommons.some((rfc) => rfc.number === FIRST_RFC_NUMBER)
     ) {
       console.log(
-        `Finished downloading metadata for ALL rfcs (${rfcs[0].number}-${rfcs[rfcs.length - 1].number})`
+        `Finished downloading metadata for ALL rfcs (${rfcs[0].number}-${
+          rfcs[rfcs.length - 1].number
+        })`
       )
       break
     }
@@ -132,7 +136,11 @@ export const getAllRFCs = async ({ api }: Props) => {
     await setTimeoutPromise(DELAY_BETWEEN_REQUESTS_MS)
   }
 
-  return rfcs.sort((a, b) => a.number - b.number)
+  rfcs.sort((a, b) => a.number - b.number)
+
+  const frozenRfcs = Object.freeze(rfcs)
+
+  return frozenRfcs
 }
 
 /** Safety wrapper around docRetrieve access to catch errors  */

@@ -1,16 +1,19 @@
 // @vitest-environment node
 import { test, expect } from 'vitest'
 import { rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
+import { testMockAllRfcs } from '../utilities/rfcs-test-data.ts'
 
-const RFC_PDF_EXAMPLE = 418
+const RFC_NUMBER_WITH_PDF = 418
 
 test(
-  `rfcBucketPdfToRfcDocument(${RFC_PDF_EXAMPLE}, false)`,
+  `rfcBucketPdfToRfcDocument(${RFC_NUMBER_WITH_PDF}, false)`,
   { timeout: 20_000 },
   async () => {
+    const getRfcCommon = async (_rfcNumber: number) => testMockAllRfcs[testMockAllRfcs.length - 1]
     const rfcBucketPdfDocument = await rfcBucketPdfToRfcDocument(
-      RFC_PDF_EXAMPLE,
-      false
+      RFC_NUMBER_WITH_PDF,
+      false,
+      getRfcCommon
     )
     expect(rfcBucketPdfDocument).toMatchSnapshot()
   }

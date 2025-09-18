@@ -7,36 +7,34 @@ import {
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
 import { RFC_INDEX_TXT_PATH, saveToS3 } from '../utilities/s3.ts'
 
-const DEFAULT_MINIMUM_LENGTH = 4
+const DEFAULT_RFC_NUMBER_COLUMN_CHAR_WIDTH = 5
 const COLUMN_PADDING = 1
 const SPACE = ' '
 
 export const uploadRfcIndexTxt = async (
-  allRfcs: RfcCommon[]
+  allRfcs: Readonly<RfcCommon[]>,
+  rfcNumberColumnCharWidth: number
 ): Promise<boolean> => {
-  const txt = await renderRfcIndexTxt(allRfcs)
+  const txt = await renderRfcIndexTxt(allRfcs, rfcNumberColumnCharWidth)
   await saveToS3(RFC_INDEX_TXT_PATH, txt)
   console.log('Generated rfc-index.txt')
   return true
 }
 
 export const renderRfcIndexTxt = async (
-  allRfcs: RfcCommon[]
+  allRfcs: Readonly<RfcCommon[]>,
+  rfcNumberColumnCharWidth: number
 ): Promise<string> => {
-  const longestRfcNumberStringLength = Math.max(
-    DEFAULT_MINIMUM_LENGTH,
-    allRfcs[allRfcs.length - 1].number.toString().length
-  )
-  const column1Width = longestRfcNumberStringLength + COLUMN_PADDING
-  const column2width = 72 - longestRfcNumberStringLength // yes this will cause reflow once RFC 10k, 100k, etc. occur
-  
+  const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
+  const column2width = 72 - rfcNumberColumnCharWidth // yes this will cause reflow once RFC 10k, 100k, etc. occur
+
   // array of whitespace chars where the index = number of spaces
   const whitespace = new Array(column1Width + 1)
     .fill('')
     .map((_, index) => ' '.repeat(index))
 
   const layout: Layout = {
-    longestRfcNumberLength: longestRfcNumberStringLength
+    longestRfcNumberLength: rfcNumberColumnCharWidth
   }
 
   const txtParts: string[] = []
@@ -52,8 +50,8 @@ export const renderRfcIndexTxt = async (
 
     const rfcEntry = `${
       // No RFC prefix on these results
-      padStart(rfc.number.toString(), longestRfcNumberStringLength, ' ')
-    }${whitespace[column1Width - longestRfcNumberStringLength]}${rfcLines.join(
+      padStart(rfc.number.toString(), rfcNumberColumnCharWidth, ' ')
+    }${whitespace[column1Width - rfcNumberColumnCharWidth]}${rfcLines.join(
       `\n${whitespace[column1Width]}`
     )}`
 

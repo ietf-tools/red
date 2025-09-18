@@ -11,7 +11,9 @@ import {
 
 const NUMBER_OF_RFCS_IN_FEED = 15
 
-export const uploadFeeds = async (allRfcs: RfcCommon[]): Promise<boolean> => {
+export const uploadFeeds = async (
+  allRfcs: Readonly<RfcCommon[]>
+): Promise<boolean> => {
   const { rss2, atom1 } = await renderFeeds(allRfcs)
 
   await Promise.all([
@@ -19,13 +21,15 @@ export const uploadFeeds = async (allRfcs: RfcCommon[]): Promise<boolean> => {
     saveToS3(RFC_FEED_ATOM_PATH, atom1)
   ])
 
+  console.log('Uploaded RSS/Atom feeds')
+
   return true
 }
 
 export const renderFeeds = async (
-  allRfcs: RfcCommon[]
+  allRfcs: Readonly<RfcCommon[]>
 ): Promise<{ rss2: string; atom1: string }> => {
-  if (allRfcs.length <= NUMBER_OF_RFCS_IN_FEED) {
+  if (allRfcs.length < NUMBER_OF_RFCS_IN_FEED) {
     throw Error(
       `Too few RFCs to render into feed. This should not happen. Expected at least ${NUMBER_OF_RFCS_IN_FEED} RFCs`
     )

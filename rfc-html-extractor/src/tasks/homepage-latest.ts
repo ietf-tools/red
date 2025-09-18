@@ -5,18 +5,18 @@ import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-doc.ts'
 
 export const uploadHomepageLatest = async (
-  allRfcs: RfcCommon[]
+  allRfcs: Readonly<RfcCommon[]>
 ): Promise<boolean> => {
   const homepageLatest = await renderHomepageLatest(allRfcs)
   await saveToS3(HOMEPAGE_LATEST_PATH, JSON.stringify(homepageLatest))
-  console.log('Generated homepage latest RFCs')
+  console.log('Uploaded homepage latest RFCs')
   return true
 }
 
 type HomepageLatest = z.infer<typeof HomepageLatestSchema>
 
 export const renderHomepageLatest = async (
-  allRfcs: RfcCommon[]
+  allRfcs: Readonly<RfcCommon[]>
 ): Promise<HomepageLatest> => {
   const response = { homepageLatest: allRfcs.slice(-3) }
   validateDocument(response, HomepageLatestSchema)
