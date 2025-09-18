@@ -133,20 +133,16 @@ type Status =
   | 'Unknown'
 
 type SearchPathBuilderProps = {
+  q: string
+  area: string
+  stream: string
+  statuses: string[]
   status: Status[]
+  from: string
+  to: string
 }
 
 export const publicSiteUrl = new URL(PUBLIC_SITE)
-
-/**
- * Optionally specify a different URL param name to the searchPathBuilder key
- */
-const searchKeyOverride: Record<
-  keyof SearchPathBuilderProps,
-  string | undefined
-> = {
-  status: 'status'
-}
 
 export const searchPathBuilder = (
   searchParams: Partial<SearchPathBuilderProps>
@@ -157,9 +153,7 @@ export const searchPathBuilder = (
       Object.keys(searchParams)
         .sort() // normalize order
         .map((searchKey) => {
-          const typesenseSearchKey =
-            searchKeyOverride[searchKey as keyof SearchPathBuilderProps] ??
-            searchKey
+          const typesenseSearchKey = searchKey
           const searchValue =
             searchParams[searchKey as keyof SearchPathBuilderProps]
 

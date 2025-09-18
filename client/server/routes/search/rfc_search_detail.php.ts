@@ -1,4 +1,4 @@
-import { translateParamsString } from '~/utilities/legacy-search-redirect'
+import { legacySearchRedirectPathBuilder } from '~/utilities/legacy-search-redirect'
 import { SEARCH_PATH } from '~/utilities/url'
 
 const HTTP_301_PERMANENT_REDIRECT = 301
@@ -10,7 +10,7 @@ const HTTP_301_PERMANENT_REDIRECT = 301
  */
 export default defineEventHandler(async (event) => {
   const url = getRequestURL(event)
-  const params = translateParamsString(url.search)
+  const params = legacySearchRedirectPathBuilder(url.search)
 
   sendRedirect(
     event,

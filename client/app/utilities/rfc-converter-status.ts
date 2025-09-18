@@ -1,4 +1,4 @@
-import type { RfcCommon } from "./rfc-validators"
+import type { RfcCommon } from './rfc-validators'
 
 export const parseRfcStatusSlug = (
   rfcStatusSlug?: string
@@ -26,6 +26,7 @@ export const parseRfcStatusSlug = (
 
     case 'internetstandard':
     case 'standard':
+    case 'standardstrack':
     case 'std':
       return 'Internet Standard'
 

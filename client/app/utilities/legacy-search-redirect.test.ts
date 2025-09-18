@@ -1,34 +1,34 @@
 // @vitest-environment nuxt
 import { test, expect, describe, beforeEach, afterEach, vi } from 'vitest'
-import { translateParamsString } from './legacy-search-redirect'
+import { legacySearchRedirectPathBuilder } from './legacy-search-redirect'
 
 test('translateParamsString: just a redirect', () => {
-  expect(translateParamsString('?')).toEqual('')
-  expect(translateParamsString('/search/rfc_search.php?')).toEqual('')
-  expect(translateParamsString('/search/rfc_search.php')).toEqual('')
+  expect(legacySearchRedirectPathBuilder('?')).toEqual('/search/')
+  expect(legacySearchRedirectPathBuilder('/search/rfc_search.php?')).toEqual('/search/')
+  expect(legacySearchRedirectPathBuilder('/search/rfc_search.php')).toEqual('/search/')
 })
 
 test('translateParamsString: text search', () => {
-  expect(translateParamsString('?title=cats')).toEqual('q=cats')
-  expect(translateParamsString('?rfc=cats')).toEqual('q=cats')
-  expect(translateParamsString('?rfc=dogs&title=cats')).toEqual('q=dogs+cats')
-  expect(translateParamsString('?title=cats&rfc=dogs')).toEqual('q=dogs+cats')
+  expect(legacySearchRedirectPathBuilder('?title=cats')).toEqual('/search/?q=cats')
+  expect(legacySearchRedirectPathBuilder('?rfc=cats')).toEqual('/search/?q=cats')
+  expect(legacySearchRedirectPathBuilder('?rfc=dogs&title=cats')).toEqual('/search/?q=dogs+cats')
+  expect(legacySearchRedirectPathBuilder('?title=cats&rfc=dogs')).toEqual('/search/?q=dogs+cats')
 })
 
 test('translateParamsString: area', () => {
-  expect(translateParamsString('?area_acronym=art')).toEqual('area=art')
+  expect(legacySearchRedirectPathBuilder('?area_acronym=art')).toEqual('/search/?area=art')
 })
 
 test('translateParamsString: stream', () => {
-  expect(translateParamsString('?stream_name=IETF')).toEqual('stream=ietf')
+  expect(legacySearchRedirectPathBuilder('?stream_name=IETF')).toEqual('/search/?stream=ietf')
 })
 
 test('translateParamsString: pubstatus', () => {
   expect(
-    translateParamsString(
+    legacySearchRedirectPathBuilder(
       '?pubstatus[]=Standards Track&pubstatus[]=Best Current Practice'
     )
-  ).toEqual('statuses=bcp%2Cstandard')
+  ).toEqual('/search/?statuses=bcp%2Cstandard')
 })
 
 describe('translateParamsString: dates', () => {
@@ -42,30 +42,30 @@ describe('translateParamsString: dates', () => {
 
   test('this_month', () => {
     vi.setSystemTime(new Date(2020, 11, 1))
-    expect(translateParamsString('?pub_date_type=this_month')).toEqual(
-      'from=2020-11&to=2020-12'
+    expect(legacySearchRedirectPathBuilder('?pub_date_type=this_month')).toEqual(
+      '/search/?from=2020-11&to=2020-12'
     )
 
     vi.setSystemTime(new Date(2021, 1, 1))
-    expect(translateParamsString('?pub_date_type=this_month')).toEqual(
-      'from=2021-1&to=2021-2'
+    expect(legacySearchRedirectPathBuilder('?pub_date_type=this_month')).toEqual(
+      '/search/?from=2021-1&to=2021-2'
     )
   })
 
   test('this_year', () => {
     vi.setSystemTime(new Date(2020, 11, 1))
-    expect(translateParamsString('?pub_date_type=this_year')).toEqual(
-      'from=2020-1&to=2020-12'
+    expect(legacySearchRedirectPathBuilder('?pub_date_type=this_year')).toEqual(
+      '/search/?from=2020-1&to=2020-12'
     )
   })
 
   test('range', () => {
     vi.setSystemTime(new Date(2020, 11, 1))
     expect(
-      translateParamsString(
+      legacySearchRedirectPathBuilder(
         '?pub_date_type=range&from_month=January&from_year=1970&to_month=May&to_year=1971'
       )
-    ).toEqual('from=1970-1&to=1971-5')
+    ).toEqual('/search/?from=1970-1&to=1971-5')
   })
 })
 
@@ -73,7 +73,7 @@ test('translateParamsString: complex example', () => {
   const path =
     '/search/rfc_search_detail.php?rfc=900&title=q&pubstatus%5B%5D=Standards+Track&std_trk=Proposed+Standard&pubstatus%5B%5D=Best+Current+Practice&pubstatus%5B%5D=Experimental&pub_date_type=range&from_month=January&from_year=1970&to_month=May&to_year=1971&stream_name=IETF&area_acronym=art'
 
-  expect(translateParamsString(path)).toEqual(
-    'area=art&from=1970-1&q=900+q&statuses=bcp%2Cexperimental%2Cstandard&stream=ietf&to=1971-5'
+  expect(legacySearchRedirectPathBuilder(path)).toEqual(
+    '/search/?area=art&from=1970-1&q=900+q&statuses=bcp%2Cexperimental%2Cstandard&stream=ietf&to=1971-5'
   )
 })

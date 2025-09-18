@@ -1,0 +1,160 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`homepage 3 items 1`] = `
+{
+  "homepageLatest": [
+    {
+      "abstract": "One aspect of the transition to post-quantum algorithms in cryptographic protocols is the development of hybrid schemes that incorporate both post-quantum and traditional asymmetric algorithms.  This document defines terminology for such schemes.  It is intended to be used as a reference and, hopefully, to ensure consistency and clarity across different protocols, standards, and organisations.",
+      "area": {
+        "acronym": "sec",
+        "name": "Security Area",
+      },
+      "authors": [
+        {
+          "affiliation": "UK National Cyber Security Centre",
+          "country": "",
+          "email": "florence.d@ncsc.gov.uk",
+          "name": "Flo D",
+          "person": 128468,
+        },
+        {
+          "affiliation": "UK National Cyber Security Centre",
+          "country": "",
+          "email": "michael.p1@ncsc.gov.uk",
+          "name": "Michael P",
+          "person": 139514,
+        },
+        {
+          "affiliation": "Naval Postgraduate School",
+          "country": "",
+          "email": "britta.hale@nps.edu",
+          "name": "Britta Hale",
+          "person": 125725,
+        },
+      ],
+      "formats": [
+        "txt",
+        "xml",
+      ],
+      "group": {
+        "acronym": "pquip",
+        "name": "Post-Quantum Use In Protocols",
+      },
+      "identifiers": [
+        {
+          "type": "doi",
+          "value": "10.17487/RFC9794",
+        },
+      ],
+      "number": 9794,
+      "obsoleted_by": [],
+      "pages": 15,
+      "published": "2025-06-13",
+      "status": "Informational",
+      "stream": {
+        "desc": "Internet Engineering Task Force (IETF)",
+        "name": "IETF",
+        "slug": "ietf",
+      },
+      "text": "",
+      "title": "Terminology for Post-Quantum Traditional Hybrid Schemes",
+      "updated_by": [],
+    },
+    {
+      "abstract": "This document describes an extension to the Extensible Provisioning
+Protocol (EPP) that allows EPP clients to manage the Time-to-Live
+(TTL) value for domain name delegation records.",
+      "area": {
+        "acronym": "art",
+        "name": "Applications and Real-Time Area",
+      },
+      "authors": [
+        {
+          "affiliation": "ICANN",
+          "country": "US",
+          "email": "gavin.brown@icann.org",
+          "name": "Gavin Brown",
+          "person": 139474,
+        },
+      ],
+      "formats": [
+        "txt",
+        "xml",
+      ],
+      "group": {
+        "acronym": "regext",
+        "name": "Registration Protocols Extensions",
+      },
+      "identifiers": [
+        {
+          "type": "doi",
+          "value": "10.17487/RFC9803",
+        },
+      ],
+      "number": 9803,
+      "obsoleted_by": [],
+      "pages": 24,
+      "published": "2025-06-13",
+      "status": "Internet Standard",
+      "stream": {
+        "desc": "Internet Engineering Task Force (IETF)",
+        "name": "IETF",
+        "slug": "ietf",
+      },
+      "text": "",
+      "title": "Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values",
+      "updated_by": [],
+    },
+    {
+      "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
+      "area": {
+        "acronym": "art",
+        "name": "Applications and Real-Time Area",
+      },
+      "authors": [
+        {
+          "affiliation": "MIT CSAIL",
+          "country": "USA",
+          "email": "rivest@mit.edu",
+          "name": "Ronald Rivest",
+          "person": 19822,
+        },
+        {
+          "affiliation": "Independent",
+          "country": "US",
+          "email": "d3e3e3@gmail.com",
+          "name": "Donald Eastlake",
+          "person": 102391,
+        },
+      ],
+      "formats": [
+        "txt",
+        "xml",
+      ],
+      "group": {
+        "acronym": "art",
+        "name": "Applications and Real-Time Area",
+      },
+      "identifiers": [
+        {
+          "type": "doi",
+          "value": "10.17487/RFC9804",
+        },
+      ],
+      "number": 9804,
+      "obsoleted_by": [],
+      "pages": 22,
+      "published": "2025-06-17",
+      "status": "Informational",
+      "stream": {
+        "desc": "Internet Engineering Task Force (IETF)",
+        "name": "IETF",
+        "slug": "ietf",
+      },
+      "text": "",
+      "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",
+      "updated_by": [],
+    },
+  ],
+}
+`;

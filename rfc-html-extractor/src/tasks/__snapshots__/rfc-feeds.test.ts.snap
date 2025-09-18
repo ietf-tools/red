@@ -1,0 +1,304 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`feeds (rss, atom) 1`] = `
+"<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.rfc-editor.org</id>
+    <title>Recent RFCs</title>
+    <updated>2025-06-16T12:00:00.000Z</updated>
+    <generator>https://www.npmjs.com/package/feed</generator>
+    <link rel="alternate" href="https://www.rfc-editor.org"/>
+    <subtitle>Recently published RFCs</subtitle>
+    <entry>
+        <title type="html"><![CDATA[RFC 9774: Deprecation of AS_SET and AS_CONFED_SET in BGP]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9774/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9774/"/>
+        <updated>2025-05-20T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[BCP 172 (i.e., RFC 6472) recommends not using AS_SET and AS_CONFED_SET AS_PATH segment types in the Border Gateway Protocol (BGP).  This document advances that recommendation to a standards requirement in BGP; it prohibits the use of the AS_SET and AS_CONFED_SET path segment types in the AS_PATH.  This is done to simplify the design and implementation of BGP and to make the semantics of the originator of a BGP route clearer.  This will also simplify the design, implementation, and deployment of various BGP security mechanisms.  This document updates RFC 4271 by deprecating the origination of BGP routes with AS_SET (Type 1 AS_PATH segment) and updates RFC 5065 by deprecating the origination of BGP routes with AS_CONFED_SET (Type 4 AS_PATH segment).  Finally, it obsoletes RFC 6472.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9775: IRTF Code of Conduct]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9775/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9775/"/>
+        <updated>2025-03-17T11:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document describes the code of conduct for participants in the
+Internet Research Task Force (IRTF).
+
+ The IRTF believes that research is most effective when done in an
+open and inclusive forum that encourages diversity of ideas and
+participation. Through this code of conduct, the IRTF continues to
+strive to create and maintain an environment that encourages broad
+participation, and one in which people are treated with dignity,
+decency, and respect.
+
+ This document is a product of the Internet Research Steering Group
+(IRSG).]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9776: Internet Group Management Protocol, Version 3]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9776/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9776/"/>
+        <updated>2025-03-27T11:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The Internet Group Management Protocol (IGMP) is the protocol used by IPv4 systems to report their IP multicast group memberships to neighboring multicast routers. Version 3 of IGMP (IGMPv3) adds support for source filtering, that is, the ability for a system to report interest in receiving packets only from specific source addresses, or from all but specific source addresses, sent to a particular multicast address. That information may be used by multicast routing protocols to avoid delivering multicast packets from specific sources to networks where there are no interested receivers.
+
+ This document specifies IGMPv3. It is a revised version of RFC 3376 that includes clarifications and fixes for errata, and it is backward compatible with RFC 3376.
+
+ This document updates RFC 2236 and obsoletes RFC 3376.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9777: Multicast Listener Discovery Version 2 (MLDv2) for IPv6]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9777/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9777/"/>
+        <updated>2025-03-27T11:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document specifies the Multicast Listener Discovery version 2 (MLDv2) protocol. MLD is used by an IPv6 router to discover the presence of multicast listeners on directly attached links and to discover which multicast addresses are of interest to those neighboring nodes. MLDv2 is designed to be interoperable with MLDv1. MLDv2 adds the ability for a node to report interest in listening to packets with a particular multicast address only from specific source addresses or from all sources except for specific source addresses.
+
+ This document updates RFC 2710 and obsoletes RFC 3810.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9778: IANA Considerations for Internet Group Management Protocols]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9778/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9778/"/>
+        <updated>2025-03-27T11:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document specifies revised IANA considerations for the Internet Group Management Protocol (IGMP) and the Multicast Listener Discovery (MLD) protocol. This document specifies the guidance provided to IANA to manage values associated with various fields within the protocol headers of the group management protocols.
+
+ This document obsoletes RFC 3228 and unifies guidelines for IPv4 and IPv6 group management protocols.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9779: Performance Measurement for Segment Routing Networks with the MPLS Data Plane]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9779/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9779/"/>
+        <updated>2025-05-07T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document specifies the application of the MPLS loss and delay measurement techniques (originally defined in RFCs 6374, 7876, and 9341) within Segment Routing (SR) networks that utilize the MPLS data plane, also referred to as Segment Routing over MPLS (SR-MPLS).  SR enables the forwarding of packets through an ordered list of instructions, known as segments, which are imposed at the ingress node.  This document defines the procedures and extensions necessary to perform accurate measurement of packet loss and delay in SR-MPLS environments, ensuring that network operators can effectively measure and maintain the quality of service across their SR-based MPLS networks.  This includes coverage of links and end-to-end SR-MPLS paths, as well as SR Policies.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9780: Bidirectional Forwarding Detection (BFD) for Multipoint Networks over Point-to-Multipoint MPLS Label Switched Paths (LSPs)]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9780/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9780/"/>
+        <updated>2025-05-30T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document describes procedures for using Bidirectional Forwarding Detection (BFD) for multipoint networks to detect data plane failures in point-to-multipoint MPLS Label Switched Paths (LSPs) and Segment Routing (SR) point-to-multipoint policies with an SR over MPLS (SR-MPLS) data plane.
+
+ Furthermore, this document updates RFC 8562 by recommending the use of an IPv6 address from the Dummy IPv6 Prefix address block 100:0:0:1::/64 and discouraging the use of an IPv4 loopback address mapped to IPv6.
+
+ In addition, this document describes the applicability of LSP Ping (as an in-band solution) and the control plane (as an out-of-band solution) to bootstrap a BFD session. The document also describes the behavior of the active tail for head notification.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9781: A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9781/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9781/"/>
+        <updated>2025-05-26T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document defines the Unprotected CWT Claims Set (UCCS), a data format for representing a CBOR Web Token (CWT) Claims Set without protecting it by a signature, Message Authentication Code (MAC), or encryption.  UCCS enables the use of CWT claims in environments where protection is provided by other means, such as secure communication channels or trusted execution environments.  This specification defines a CBOR tag for UCCS and describes the UCCS format, its encoding, and its processing considerations.  It also discusses security implications of using unprotected claims sets.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9782: Entity Attestation Token (EAT) Media Types]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9782/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9782/"/>
+        <updated>2025-05-26T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The payloads used in Remote ATtestation procedureS (RATS) may require an associated media type for their conveyance, for example, when the payloads are used in RESTful APIs.
+
+ This memo defines media types to be used for Entity Attestation Tokens (EATs).]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9783: Arm's Platform Security Architecture (PSA) Attestation Token]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9783/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9783/"/>
+        <updated>2025-06-12T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Arm's Platform Security Architecture (PSA) is a family of hardware and firmware security specifications, along with open-source reference implementations, aimed at helping device makers and chip manufacturers integrate best-practice security into their products. Devices that comply with PSA can generate attestation tokens as described in this document, which serve as the foundation for various protocols, including secure provisioning and network access control. This document specifies the structure and semantics of the PSA attestation token.
+
+ The PSA attestation token is a profile of the Entity Attestation Token (EAT). This specification describes the claims used in an attestation token generated by PSA-compliant systems, how these claims are serialized for transmission, and how they are cryptographically protected.
+
+ This Informational document is published as an Independent Submission to improve interoperability with Arm's architecture. It is not a standard nor a product of the IETF.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9792: Prefix Flag Extension for OSPFv2 and OSPFv3]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9792/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9792/"/>
+        <updated>2025-06-11T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Each OSPF prefix can be advertised with an 8-bit field to indicate specific properties of that prefix. However, all the OSPFv3 Prefix Options bits have already been assigned, and only a few bits remain unassigned in the Flags field of the OSPFv2 Extended Prefix TLV.
+
+ This document solves this problem by defining a variable-length Prefix Extended Flags sub-TLV for OSPF. This sub-TLV is applicable to OSPFv2 and OSPFv3.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9793: BGP Extensions for Bit Index Explicit Replication (BIER)]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9793/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9793/"/>
+        <updated>2025-06-12T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Bit Index Explicit Replication (BIER) is a multicast forwarding architecture that doesn't require an explicit tree-building protocol and doesn't require intermediate routers to maintain per-tree multicast states.  Some BIER-specific information and states, which are only in proportion to the number of BIER routers but not per-tree, do need to be advertised, calculated, and maintained.  This document describes BGP extensions for advertising the BIER information and methods for calculating BIER states based on the advertisements.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9794: Terminology for Post-Quantum Traditional Hybrid Schemes]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9794/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9794/"/>
+        <updated>2025-06-12T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[One aspect of the transition to post-quantum algorithms in cryptographic protocols is the development of hybrid schemes that incorporate both post-quantum and traditional asymmetric algorithms.  This document defines terminology for such schemes.  It is intended to be used as a reference and, hopefully, to ensure consistency and clarity across different protocols, standards, and organisations.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9803: Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9803/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9803/"/>
+        <updated>2025-06-12T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This document describes an extension to the Extensible Provisioning
+Protocol (EPP) that allows EPP clients to manage the Time-to-Live
+(TTL) value for domain name delegation records.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RFC 9804: Simple Public Key Infrastructure (SPKI) S-Expressions]]></title>
+        <id>https://www.rfc-editor.org/info/rfc9804/</id>
+        <link href="https://www.rfc-editor.org/info/rfc9804/"/>
+        <updated>2025-06-16T12:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.]]></summary>
+    </entry>
+</feed>"
+`;
+
+exports[`feeds (rss, atom) 2`] = `
+"<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Recent RFCs</title>
+        <link>https://www.rfc-editor.org</link>
+        <description>Recently published RFCs</description>
+        <lastBuildDate>Mon, 16 Jun 2025 12:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://www.npmjs.com/package/feed</generator>
+        <language>en-us</language>
+        <item>
+            <title><![CDATA[RFC 9774: Deprecation of AS_SET and AS_CONFED_SET in BGP]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9774/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9774/</guid>
+            <pubDate>Tue, 20 May 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[BCP 172 (i.e., RFC 6472) recommends not using AS_SET and AS_CONFED_SET AS_PATH segment types in the Border Gateway Protocol (BGP).  This document advances that recommendation to a standards requirement in BGP; it prohibits the use of the AS_SET and AS_CONFED_SET path segment types in the AS_PATH.  This is done to simplify the design and implementation of BGP and to make the semantics of the originator of a BGP route clearer.  This will also simplify the design, implementation, and deployment of various BGP security mechanisms.  This document updates RFC 4271 by deprecating the origination of BGP routes with AS_SET (Type 1 AS_PATH segment) and updates RFC 5065 by deprecating the origination of BGP routes with AS_CONFED_SET (Type 4 AS_PATH segment).  Finally, it obsoletes RFC 6472.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9775: IRTF Code of Conduct]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9775/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9775/</guid>
+            <pubDate>Mon, 17 Mar 2025 11:00:00 GMT</pubDate>
+            <description><![CDATA[This document describes the code of conduct for participants in the
+Internet Research Task Force (IRTF).
+
+ The IRTF believes that research is most effective when done in an
+open and inclusive forum that encourages diversity of ideas and
+participation. Through this code of conduct, the IRTF continues to
+strive to create and maintain an environment that encourages broad
+participation, and one in which people are treated with dignity,
+decency, and respect.
+
+ This document is a product of the Internet Research Steering Group
+(IRSG).]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9776: Internet Group Management Protocol, Version 3]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9776/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9776/</guid>
+            <pubDate>Thu, 27 Mar 2025 11:00:00 GMT</pubDate>
+            <description><![CDATA[The Internet Group Management Protocol (IGMP) is the protocol used by IPv4 systems to report their IP multicast group memberships to neighboring multicast routers. Version 3 of IGMP (IGMPv3) adds support for source filtering, that is, the ability for a system to report interest in receiving packets only from specific source addresses, or from all but specific source addresses, sent to a particular multicast address. That information may be used by multicast routing protocols to avoid delivering multicast packets from specific sources to networks where there are no interested receivers.
+
+ This document specifies IGMPv3. It is a revised version of RFC 3376 that includes clarifications and fixes for errata, and it is backward compatible with RFC 3376.
+
+ This document updates RFC 2236 and obsoletes RFC 3376.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9777: Multicast Listener Discovery Version 2 (MLDv2) for IPv6]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9777/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9777/</guid>
+            <pubDate>Thu, 27 Mar 2025 11:00:00 GMT</pubDate>
+            <description><![CDATA[This document specifies the Multicast Listener Discovery version 2 (MLDv2) protocol. MLD is used by an IPv6 router to discover the presence of multicast listeners on directly attached links and to discover which multicast addresses are of interest to those neighboring nodes. MLDv2 is designed to be interoperable with MLDv1. MLDv2 adds the ability for a node to report interest in listening to packets with a particular multicast address only from specific source addresses or from all sources except for specific source addresses.
+
+ This document updates RFC 2710 and obsoletes RFC 3810.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9778: IANA Considerations for Internet Group Management Protocols]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9778/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9778/</guid>
+            <pubDate>Thu, 27 Mar 2025 11:00:00 GMT</pubDate>
+            <description><![CDATA[This document specifies revised IANA considerations for the Internet Group Management Protocol (IGMP) and the Multicast Listener Discovery (MLD) protocol. This document specifies the guidance provided to IANA to manage values associated with various fields within the protocol headers of the group management protocols.
+
+ This document obsoletes RFC 3228 and unifies guidelines for IPv4 and IPv6 group management protocols.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9779: Performance Measurement for Segment Routing Networks with the MPLS Data Plane]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9779/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9779/</guid>
+            <pubDate>Wed, 07 May 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[This document specifies the application of the MPLS loss and delay measurement techniques (originally defined in RFCs 6374, 7876, and 9341) within Segment Routing (SR) networks that utilize the MPLS data plane, also referred to as Segment Routing over MPLS (SR-MPLS).  SR enables the forwarding of packets through an ordered list of instructions, known as segments, which are imposed at the ingress node.  This document defines the procedures and extensions necessary to perform accurate measurement of packet loss and delay in SR-MPLS environments, ensuring that network operators can effectively measure and maintain the quality of service across their SR-based MPLS networks.  This includes coverage of links and end-to-end SR-MPLS paths, as well as SR Policies.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9780: Bidirectional Forwarding Detection (BFD) for Multipoint Networks over Point-to-Multipoint MPLS Label Switched Paths (LSPs)]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9780/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9780/</guid>
+            <pubDate>Fri, 30 May 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[This document describes procedures for using Bidirectional Forwarding Detection (BFD) for multipoint networks to detect data plane failures in point-to-multipoint MPLS Label Switched Paths (LSPs) and Segment Routing (SR) point-to-multipoint policies with an SR over MPLS (SR-MPLS) data plane.
+
+ Furthermore, this document updates RFC 8562 by recommending the use of an IPv6 address from the Dummy IPv6 Prefix address block 100:0:0:1::/64 and discouraging the use of an IPv4 loopback address mapped to IPv6.
+
+ In addition, this document describes the applicability of LSP Ping (as an in-band solution) and the control plane (as an out-of-band solution) to bootstrap a BFD session. The document also describes the behavior of the active tail for head notification.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9781: A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9781/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9781/</guid>
+            <pubDate>Mon, 26 May 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[This document defines the Unprotected CWT Claims Set (UCCS), a data format for representing a CBOR Web Token (CWT) Claims Set without protecting it by a signature, Message Authentication Code (MAC), or encryption.  UCCS enables the use of CWT claims in environments where protection is provided by other means, such as secure communication channels or trusted execution environments.  This specification defines a CBOR tag for UCCS and describes the UCCS format, its encoding, and its processing considerations.  It also discusses security implications of using unprotected claims sets.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9782: Entity Attestation Token (EAT) Media Types]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9782/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9782/</guid>
+            <pubDate>Mon, 26 May 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[The payloads used in Remote ATtestation procedureS (RATS) may require an associated media type for their conveyance, for example, when the payloads are used in RESTful APIs.
+
+ This memo defines media types to be used for Entity Attestation Tokens (EATs).]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9783: Arm's Platform Security Architecture (PSA) Attestation Token]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9783/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9783/</guid>
+            <pubDate>Thu, 12 Jun 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[Arm's Platform Security Architecture (PSA) is a family of hardware and firmware security specifications, along with open-source reference implementations, aimed at helping device makers and chip manufacturers integrate best-practice security into their products. Devices that comply with PSA can generate attestation tokens as described in this document, which serve as the foundation for various protocols, including secure provisioning and network access control. This document specifies the structure and semantics of the PSA attestation token.
+
+ The PSA attestation token is a profile of the Entity Attestation Token (EAT). This specification describes the claims used in an attestation token generated by PSA-compliant systems, how these claims are serialized for transmission, and how they are cryptographically protected.
+
+ This Informational document is published as an Independent Submission to improve interoperability with Arm's architecture. It is not a standard nor a product of the IETF.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9792: Prefix Flag Extension for OSPFv2 and OSPFv3]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9792/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9792/</guid>
+            <pubDate>Wed, 11 Jun 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[Each OSPF prefix can be advertised with an 8-bit field to indicate specific properties of that prefix. However, all the OSPFv3 Prefix Options bits have already been assigned, and only a few bits remain unassigned in the Flags field of the OSPFv2 Extended Prefix TLV.
+
+ This document solves this problem by defining a variable-length Prefix Extended Flags sub-TLV for OSPF. This sub-TLV is applicable to OSPFv2 and OSPFv3.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9793: BGP Extensions for Bit Index Explicit Replication (BIER)]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9793/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9793/</guid>
+            <pubDate>Thu, 12 Jun 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[Bit Index Explicit Replication (BIER) is a multicast forwarding architecture that doesn't require an explicit tree-building protocol and doesn't require intermediate routers to maintain per-tree multicast states.  Some BIER-specific information and states, which are only in proportion to the number of BIER routers but not per-tree, do need to be advertised, calculated, and maintained.  This document describes BGP extensions for advertising the BIER information and methods for calculating BIER states based on the advertisements.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9794: Terminology for Post-Quantum Traditional Hybrid Schemes]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9794/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9794/</guid>
+            <pubDate>Thu, 12 Jun 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[One aspect of the transition to post-quantum algorithms in cryptographic protocols is the development of hybrid schemes that incorporate both post-quantum and traditional asymmetric algorithms.  This document defines terminology for such schemes.  It is intended to be used as a reference and, hopefully, to ensure consistency and clarity across different protocols, standards, and organisations.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9803: Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9803/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9803/</guid>
+            <pubDate>Thu, 12 Jun 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[This document describes an extension to the Extensible Provisioning
+Protocol (EPP) that allows EPP clients to manage the Time-to-Live
+(TTL) value for domain name delegation records.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[RFC 9804: Simple Public Key Infrastructure (SPKI) S-Expressions]]></title>
+            <link>https://www.rfc-editor.org/info/rfc9804/</link>
+            <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9804/</guid>
+            <pubDate>Mon, 16 Jun 2025 12:00:00 GMT</pubDate>
+            <description><![CDATA[This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.]]></description>
+        </item>
+    </channel>
+</rss>"
+`;

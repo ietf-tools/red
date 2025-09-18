@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { DateTime } from 'luxon'
-import type { SearchParamsSchema } from '../../server/api/search'
 import { monthNames } from './strings'
+import { searchPathBuilder } from './url'
 
 const LegacySearchParamsSchema = z.object({
   rfc: z.string().optional(),
@@ -17,7 +17,7 @@ const LegacySearchParamsSchema = z.object({
   area_acronym: z.string().optional()
 })
 
-export const translateParamsString = (url: string): string => {
+export const legacySearchRedirectPathBuilder = (url: string): string => {
   const legacyURLParams = new URL(url, 'https://localhost/').searchParams
   const legacyObj: Record<string, string | string[]> = {}
 
@@ -39,47 +39,40 @@ export const translateParamsString = (url: string): string => {
   const legacySearchParams = LegacySearchParamsSchema.safeParse(legacyObj)
 
   if (legacySearchParams.data) {
-    const newURLParams = new URLSearchParams()
-    const searchParams = translateParamsObject(legacySearchParams.data)
-    // sort entries by key to result in deterministic urls
-    const sortedEntries = Object.entries(searchParams).sort((a, b) =>
-      a[0].localeCompare(b[0])
-    )
-    for (const [key, value] of sortedEntries) {
-      newURLParams.append(key, value)
-    }
-    return newURLParams.toString()
+    return buildSearchRedirect(legacySearchParams.data)
   }
 
   return ''
 }
 
-export const translateParamsObject = (
+type SearchPathBuilderParams = Parameters<typeof searchPathBuilder>[0]
+
+export const buildSearchRedirect = (
   legacySearchObj: z.infer<typeof LegacySearchParamsSchema>
-): z.infer<typeof SearchParamsSchema> => {
-  const searchParamsObj: z.infer<typeof SearchParamsSchema> = {}
+): string => {
+  const searchParam: SearchPathBuilderParams = {}
 
   if (legacySearchObj.rfc || legacySearchObj.title) {
-    searchParamsObj.q = [legacySearchObj.rfc, legacySearchObj.title]
+    searchParam.q = [legacySearchObj.rfc, legacySearchObj.title]
       .filter(Boolean)
       .join(' ')
   }
 
   if (legacySearchObj.pub_date_type === 'range') {
     if (legacySearchObj.from_year && legacySearchObj.from_month) {
-      searchParamsObj.from = `${legacySearchObj.from_year}-${monthNameToNumber(legacySearchObj.from_month, 1)}`
+      searchParam.from = `${legacySearchObj.from_year}-${monthNameToNumber(legacySearchObj.from_month, 1)}`
     }
     if (legacySearchObj.to_year && legacySearchObj.to_month) {
-      searchParamsObj.to = `${legacySearchObj.to_year}-${monthNameToNumber(legacySearchObj.to_month, 1)}`
+      searchParam.to = `${legacySearchObj.to_year}-${monthNameToNumber(legacySearchObj.to_month, 1)}`
     }
   } else if (legacySearchObj.pub_date_type === 'this_month') {
     const now = DateTime.now()
-    searchParamsObj.from = now.minus({ month: 1 }).toFormat('yyyy-M')
-    searchParamsObj.to = now.toFormat('yyyy-M')
+    searchParam.from = now.minus({ month: 1 }).toFormat('yyyy-M')
+    searchParam.to = now.toFormat('yyyy-M')
   } else if (legacySearchObj.pub_date_type === 'this_year') {
     const now = DateTime.now()
-    searchParamsObj.from = `${now.year}-1`
-    searchParamsObj.to = now.toFormat('yyyy-M')
+    searchParam.from = `${now.year}-1`
+    searchParam.to = now.toFormat('yyyy-M')
   }
 
   if (legacySearchObj['pubstatus[]']) {
@@ -87,7 +80,7 @@ export const translateParamsObject = (
       Array.isArray(legacySearchObj['pubstatus[]']) ?
         legacySearchObj['pubstatus[]']
       : [legacySearchObj['pubstatus[]']]
-    searchParamsObj.statuses = pubstatus
+    searchParam.statuses = pubstatus
       .map((pubstatus) => {
         for (const [key, value] of sortedStatusMappingFromLegacyToNew) {
           if (typeof value === 'string' && pubstatus === value) {
@@ -98,15 +91,14 @@ export const translateParamsObject = (
         }
         return undefined
       })
-      .filter(Boolean)
+      .filter(status => typeof status === 'string')
       .sort()
-      .join(',')
   }
 
   if (legacySearchObj.area_acronym) {
     for (const [key, value] of Object.entries(areasMappingFromLegacyToNew)) {
       if (legacySearchObj.area_acronym === value) {
-        searchParamsObj.area = key
+        searchParam.area = key
       }
     }
   }
@@ -114,12 +106,12 @@ export const translateParamsObject = (
   if (legacySearchObj.stream_name) {
     for (const [key, value] of Object.entries(streamMappingFromLegacyToNew)) {
       if (legacySearchObj.stream_name === value) {
-        searchParamsObj.stream = key
+        searchParam.stream = key
       }
     }
   }
 
-  return searchParamsObj
+  return searchPathBuilder(searchParam)
 }
 
 const lowercaseMonthNames = monthNames.map((monthName) =>
