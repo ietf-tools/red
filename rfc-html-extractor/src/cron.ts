@@ -3,7 +3,7 @@ import { uploadFeeds } from './tasks/rfc-feeds.ts'
 import { uploadRfcIndexTxt } from './tasks/rfc-index-txt.ts'
 import { getAllRFCs, getRedClient } from './utilities/redClientGet.ts'
 
-const RFC_NUMBER_WIDTH = 5 // for Red the default width is 5 chars to handle eg RFC10000 (aka the RFC10k problem)
+const RFC_NUMBER_WIDTH = 5 // for Red the default width is 5 chars to handle eg RFC10000 (aka the RFC10k problem).
 
 export const processCron = async (): Promise<void> => {
   console.log('Triggered by a cron job')

@@ -1,9 +1,11 @@
-name: Extractor Vitest, TypeScript check, ESLint
+name: Extractor Vitest, TypeScript check
 
 on:
   push:
     paths:
       - 'rfc-html-extractor/**'
+      - 'client/app/utilities/rfc-validators.ts'
+      - 'client/app/utilities/rfc-converter-status.ts'
   workflow_dispatch:
 
 jobs:
@@ -24,7 +26,11 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
 
-      - name: Install dependencies
+      - name: Install dependencies (client)
+        run: npm ci
+        working-directory: ./client
+
+      - name: Install dependencies (extractor)
         run: npm ci
         working-directory: ./rfc-html-extractor
 
