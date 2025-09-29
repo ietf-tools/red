@@ -189,7 +189,7 @@ export const typeSenseSearchItemToRFCCommon = (
     status: parseRfcStatusSlug(item.status?.name),
     stream: {
       slug: parseRfcStreamSlug(item.stream?.slug),
-      name: item.stream?.name || 'unknown',      
+      name: item.stream?.name || 'unknown'
     },
     text: '',
     title: item.title

@@ -166,7 +166,7 @@ export const RfcCommonSchema = z.object({
   stream: z.object({
     slug: RfcCommonStreamSlugSchema,
     name: z.string(),
-    desc: z.string().optional()
+    description: z.string().optional()
   }),
   identifiers: z.array(RfcCommonIdentifierSchema).optional(),
   obsoletes: z.array(RfcCommonObsoleteSchema).optional(),

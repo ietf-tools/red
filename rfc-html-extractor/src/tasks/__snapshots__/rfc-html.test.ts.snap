@@ -12312,7 +12312,7 @@ Internet Architecture Board Standards Track                    [Page 56]
       "slug": "fyi",
     },
     "stream": {
-      "desc": "Internet Engineering Task Force (IETF)",
+      "description": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
       "slug": "IETF",
     },
@@ -157640,7 +157640,7 @@ document:",
       "slug": "fyi",
     },
     "stream": {
-      "desc": "Internet Engineering Task Force (IETF)",
+      "description": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
       "slug": "IETF",
     },

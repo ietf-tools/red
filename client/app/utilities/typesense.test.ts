@@ -288,8 +288,8 @@ test('typeSenseSearchItemToRFC', () => {
     },
     subseries: undefined,
     stream: {
-      name: 'IETF',
-      slug: 'ietf'
+      slug: 'IETF',
+      name: 'IETF'
     },
     text: '',
     title: "The 'leaptofrogans' URI Scheme"

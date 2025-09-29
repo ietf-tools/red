@@ -38,7 +38,6 @@ export const renderFeeds = async (
   const latestRfc = allRfcs[allRfcs.length - 1]
   const feedRfcs = allRfcs.slice(-NUMBER_OF_RFCS_IN_FEED)
 
-  const updated = DateTime.fromISO(latestRfc.published)
   const feedOptions: FeedOptions = {
     title: 'Recent RFCs',
     description: 'Recently published RFCs',
@@ -47,7 +46,7 @@ export const renderFeeds = async (
     generator: 'https://www.npmjs.com/package/feed',
     language: 'en-us', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
     copyright: '',
-    updated: updated.toJSDate()
+    updated: makeJsDateFromPubished(latestRfc.published)
   }
 
   const feed = new Feed(feedOptions)
@@ -58,7 +57,7 @@ export const renderFeeds = async (
       title: `RFC ${feedRfc.number}: ${feedRfc.title}`,
       link: url,
       description: feedRfc.abstract,
-      date: DateTime.fromISO(feedRfc.published).toJSDate()
+      date: makeJsDateFromPubished(feedRfc.published)
     })
   })
 
@@ -66,4 +65,8 @@ export const renderFeeds = async (
     rss2: feed.rss2(),
     atom1: feed.atom1()
   }
+}
+
+const makeJsDateFromPubished = (published: string): Date => {
+  return DateTime.fromISO(published, { locale: 'utc', zone: 'utc' }).toJSDate()
 }

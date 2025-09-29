@@ -59,7 +59,7 @@ export const blankRfcCommon: RfcCommon = {
   stream: {
     slug: 'Legacy',
     name: '',
-    desc: ''
+    description: ''
   },
   identifiers: [],
   obsoleted_by: [],
