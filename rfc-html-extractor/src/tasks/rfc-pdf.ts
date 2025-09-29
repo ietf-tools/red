@@ -12,7 +12,7 @@ import {
   getTextDetails,
   takeScreenshotOfPage
 } from '../utilities/unpdf-parent.ts'
-import { validateDocument } from '../utilities/validate-doc.ts'
+import { validateDocument } from '../utilities/validate-zod.ts'
 
 export const fetchRfcPDF = async (rfcNumber: number) => {
   const url = `${PUBLIC_SITE}/rfc/rfc${rfcNumber}.pdf`

@@ -141,11 +141,13 @@ export const RfcCommonSchema = z.object({
   pages: z.number().nullable().optional(),
   status: RfcCommonStatusSchema,
   subseries: z
-    .object({
-      type: RfcCommonSubseriesTypeSchema,
-      number: z.number().optional(),
-      subseriesLength: z.number().optional()
-    })
+    .array(
+      z.object({
+        type: RfcCommonSubseriesTypeSchema,
+        number: z.number().optional(),
+        subseriesLength: z.number().optional()
+      })
+    )
     .optional(),
   authors: z.array(RfcCommonAuthorSchema),
   group: z.object({

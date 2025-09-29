@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { HOMEPAGE_LATEST_PATH, saveToS3 } from '../utilities/s3.ts'
 import { HomepageLatestSchema } from '../../../client/app/utilities/rfc-validators.ts'
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
-import { validateDocument } from '../utilities/validate-doc.ts'
+import { validateDocument } from '../utilities/validate-zod.ts'
 
 export const uploadHomepageLatest = async (
   allRfcs: Readonly<RfcCommon[]>

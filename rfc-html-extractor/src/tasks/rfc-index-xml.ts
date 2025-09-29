@@ -1,48 +1,57 @@
+import { readFile } from 'node:fs/promises'
+import { XmlDocument, XsdValidator } from 'libxml2-wasm'
 import { DateTime } from 'luxon'
 import {
   formatAuthor,
   formatFormat
 } from '../utilities/rfc-converters-utils.ts'
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
-import { RFC_INDEX_TXT_PATH, saveToS3 } from '../utilities/s3.ts'
+import {
+  RFC_INDEX_XML_PATH,
+  RFC_INDEX_XSD_PATH,
+  saveToS3
+} from '../utilities/s3.ts'
 import { getDOMParser } from '../utilities/dom.ts'
 
 export const uploadRfcIndexXml = async (
-  allRfcs: Readonly<RfcCommon[]>,
-  rfcNumberColumnMinimumCharWidth: number
+  allRfcs: Readonly<RfcCommon[]>
 ): Promise<boolean> => {
-  const txt = await renderRfcIndexXml(allRfcs)
-  await saveToS3(RFC_INDEX_TXT_PATH, txt)
-  console.log('Generated rfc-index.txt')
+  const { xml, xsd } = await renderRfcIndexXml(allRfcs)
+  await saveToS3(RFC_INDEX_XML_PATH, xml)
+  console.log('Generated rfc-index.xml')
+  await saveToS3(RFC_INDEX_XSD_PATH, xsd)
+  console.log('Uploaded rfc-index.xsd')
   return true
 }
 
+const SCHEMA_URL = 'https://www.rfc-editor.org/rfc-index.xsd'
+const NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
+
 export const renderRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>
-): Promise<string> => {
-  let responseXml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-  responseXml +=
-    '<rfc-index xmlns="https://www.rfc-editor.org/rfc-index" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.rfc-editor.org/rfc-index https://www.rfc-editor.org/rfc-index.xsd">\n'
-  // await renderBCPs(props)
-  // await renderFYIs(props)
-  responseXml += await renderRFCs(allRfcs)
-  // await renderSTDs(props)
+): Promise<{ xml: string; xsd: string }> => {
+  const xsd = await readFile('../assets/rfc-index.xsd', 'utf-8')
 
-  responseXml += '</rfc-index>'
-  return responseXml
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+  xml += `<rfc-index xmlns="${NAMESPACE}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="${NAMESPACE} ${SCHEMA_URL}">`
+  xml += await renderBCPs(allRfcs)
+  xml += await renderFYIs(allRfcs)
+  xml += await renderRFCs(allRfcs)
+  xml += await renderSTDs(allRfcs)
+  xml += '</rfc-index>'
+
+  // Validate XML with XSD
+  const xsdDocument = XsdValidator.fromDoc(XmlDocument.fromString(xsd))
+  const xmlDocument = XmlDocument.fromString(xml)
+  try {
+    xsdDocument.validate(xmlDocument)
+  } catch (e) {
+    console.error('rfc-index.xml validiation failure during regeneration', e)
+    throw e
+  }
+
+  return { xml, xsd }
 }
-
-// const renderBCPs = async (props: Props): Promise<void> => {
-//   console.log(props.delayBetweenRequestsMs) // FIXME: remove this
-//   // FIXME: render BCPs
-// }
-
-// const renderFYIs = async (props: Props): Promise<void> => {
-//   console.log(props.delayBetweenRequestsMs) // FIXME: remove this
-//   // FIXME: render FYIs
-// }
-
-const NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 
 const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   const parser = await getDOMParser()
@@ -58,7 +67,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
     return element
   }
 
-  const responseXml: string[] =  []
+  const responseXml: string[] = []
 
   const createElementListNS = (
     listNodeName: string,
@@ -76,11 +85,11 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   }
 
   allRfcs.forEach((rfc) => {
+    // Based on https://github.com/rfc-editor/rpcwebsite/blob/edf4896c1d97fdd79a78ee6145e3a0c5ffb11fb9/rfc-ed/bin/xmlIndex.pl
+
     const [month, year] = DateTime.fromISO(rfc.published)
       .toFormat('LLLL yyyy')
       .split(' ')
-
-    // Based on https://github.com/rfc-editor/rpcwebsite/blob/edf4896c1d97fdd79a78ee6145e3a0c5ffb11fb9/rfc-ed/bin/xmlIndex.pl
 
     const rfcEntry = createElementNS('rfc-entry')
 
@@ -162,39 +171,71 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       rfcEntry.appendChild(createElementNS('draft', rfc.draft.slug))
     }
 
-    
-    rfcEntry.appendChild(createElementNS('current-status', rfc.status.slug.toUpperCase()))
+    rfcEntry.appendChild(
+      createElementNS('current-status', rfc.status.slug.toUpperCase())
+    )
 
     // FIXME: is this the correct RFC Commmon property to use?
-    rfcEntry.appendChild(createElementNS('publication-status', rfc.status.slug.toUpperCase()))
-    
-    
-    //       ...(rfc.stream.slug === 'LEGACY' ?
-    //         { stream: 'Legacy' }
-    //       : {
-    //           stream: rfc.stream.name,
-    //           ...(rfc.area?.acronym ? { area: rfc.area?.acronym } : {}),
-    //           ...(rfc.group.acronym ?
-    //             // wg_acronym:
-    //             //   rfc.group.acronym === 'IETF-NWG' ?
-    //             //     'NON WORKING GROUP'
-    //             //   : rfc.group.acronym
-    //             {}
-    //           : {})
-    //         }),
-    //       ...(rfc.errata && rfc.errata.length > 0 ?
-    //         {
-    //           'errata-url': rfc.errata
-    //         }
-    //       : {}),
-    //       doi:
-    //         rfc.identifiers?.find((identifier) => identifier.type === 'doi')
-    //           ?.value ?? undefined
-    //     }
-    //   }
+    rfcEntry.appendChild(
+      createElementNS('publication-status', rfc.status.slug.toUpperCase())
+    )
+
+    if (rfc.stream.slug === 'LEGACY') {
+      rfcEntry.appendChild(createElementNS('stream', 'Legacy'))
+    } else {
+      rfcEntry.appendChild(createElementNS('stream', rfc.stream.name))
+      if (rfc.area?.acronym) {
+        rfcEntry.appendChild(createElementNS('area', rfc.area.acronym))
+        rfcEntry.appendChild(
+          createElementNS(
+            'wg_acronyn',
+            rfc.group.acronym === 'IETF-NWG'
+              ? 'NON WORKING GROUP'
+              : rfc.group.acronym
+          )
+        )
+      }
+    }
+
+    if (rfc.errata && rfc.errata.length > 0) {
+      rfc.errata.forEach((errataItem) => {
+        rfcEntry.appendChild(createElementNS('errata-url', errataItem))
+      })
+    }
+
+    if (rfc.identifiers && rfc.identifiers.length > 0) {
+      rfc.identifiers.forEach((identifier) => {
+        if (identifier.type === 'doi') {
+          rfcEntry.appendChild(createElementNS('doi', identifier.value))
+        } else if (identifier.type === 'issn') {
+          rfcEntry.appendChild(createElementNS('issn', identifier.value))
+        } else {
+          throw Error(
+            `Unhandled identifier ${identifier.type} ${JSON.stringify(
+              identifier
+            )}`
+          )
+        }
+      })
+    }
 
     responseXml.push(rfcEntry.outerHTML)
   })
-  
-  return responseXml.join("")
+
+  return responseXml.join('')
+}
+
+const renderBCPs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
+  // FIXME
+  return ''
+}
+
+const renderFYIs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
+  // FIXME
+  return ''
+}
+
+const renderSTDs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
+  // FIXME
+  return ''
 }

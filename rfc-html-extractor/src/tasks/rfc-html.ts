@@ -28,7 +28,7 @@ import {
   parseXml2RfcBody
 } from './rfc-html-xml2rfc.ts'
 import { chunkString, getAllIndexes } from '../utilities/string.ts'
-import { validateDocument } from '../utilities/validate-doc.ts'
+import { validateDocument } from '../utilities/validate-zod.ts'
 
 export const fetchSourceRfcHtml = async (
   rfcNumber: number
