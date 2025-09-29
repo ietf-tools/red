@@ -57,7 +57,7 @@ exports[`homepage 3 items 1`] = `
       "stream": {
         "desc": "Internet Engineering Task Force (IETF)",
         "name": "IETF",
-        "slug": "ietf",
+        "slug": "IETF",
       },
       "text": "",
       "title": "Terminology for Post-Quantum Traditional Hybrid Schemes",
@@ -105,7 +105,7 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
       "stream": {
         "desc": "Internet Engineering Task Force (IETF)",
         "name": "IETF",
-        "slug": "ietf",
+        "slug": "IETF",
       },
       "text": "",
       "title": "Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values",
@@ -158,7 +158,7 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
       "stream": {
         "desc": "Internet Engineering Task Force (IETF)",
         "name": "IETF",
-        "slug": "ietf",
+        "slug": "IETF",
       },
       "text": "",
       "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",

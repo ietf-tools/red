@@ -14,7 +14,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -43,7 +43,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -72,7 +72,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -107,7 +107,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -136,7 +136,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -165,7 +165,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -194,7 +194,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -223,7 +223,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -252,7 +252,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -281,7 +281,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -332,7 +332,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -367,7 +367,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -396,7 +396,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -425,7 +425,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -454,7 +454,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -505,7 +505,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -534,7 +534,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -563,7 +563,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -592,7 +592,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -621,7 +621,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -650,7 +650,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -679,7 +679,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -708,7 +708,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -748,7 +748,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -777,7 +777,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -812,7 +812,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -841,7 +841,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -870,7 +870,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -899,7 +899,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -928,7 +928,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -957,7 +957,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -998,7 +998,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1027,7 +1027,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1056,7 +1056,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1096,7 +1096,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1125,7 +1125,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1154,7 +1154,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1183,7 +1183,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1212,7 +1212,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1241,7 +1241,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1270,7 +1270,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1299,7 +1299,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1328,7 +1328,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1357,7 +1357,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1386,7 +1386,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1415,7 +1415,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1444,7 +1444,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1473,7 +1473,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1502,7 +1502,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1531,7 +1531,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1566,7 +1566,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1595,7 +1595,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1630,7 +1630,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1659,7 +1659,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1688,7 +1688,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1717,7 +1717,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1746,7 +1746,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1775,7 +1775,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1805,7 +1805,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1842,7 +1842,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1871,7 +1871,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1900,7 +1900,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1929,7 +1929,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -1958,7 +1958,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2004,7 +2004,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2034,7 +2034,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2063,7 +2063,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2092,7 +2092,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2127,7 +2127,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2156,7 +2156,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2185,7 +2185,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2214,7 +2214,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2254,7 +2254,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2283,7 +2283,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2312,7 +2312,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2341,7 +2341,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2370,7 +2370,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2399,7 +2399,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2440,7 +2440,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2469,7 +2469,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2498,7 +2498,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2527,7 +2527,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2556,7 +2556,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2586,7 +2586,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2622,7 +2622,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2651,7 +2651,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2686,7 +2686,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2715,7 +2715,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2744,7 +2744,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2773,7 +2773,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2802,7 +2802,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2831,7 +2831,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2867,7 +2867,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2896,7 +2896,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2925,7 +2925,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2960,7 +2960,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -2995,7 +2995,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3025,7 +3025,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3065,7 +3065,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3100,7 +3100,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3129,7 +3129,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3159,7 +3159,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3194,7 +3194,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3223,7 +3223,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3278,7 +3278,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3307,7 +3307,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3337,7 +3337,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3372,7 +3372,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3407,7 +3407,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3436,7 +3436,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3471,7 +3471,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3521,7 +3521,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3550,7 +3550,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3590,7 +3590,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3619,7 +3619,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3648,7 +3648,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3677,7 +3677,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3706,7 +3706,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3735,7 +3735,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3785,7 +3785,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3836,7 +3836,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3866,7 +3866,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3901,7 +3901,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3930,7 +3930,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -3971,7 +3971,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4000,7 +4000,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4035,7 +4035,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4064,7 +4064,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4093,7 +4093,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4128,7 +4128,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4157,7 +4157,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4186,7 +4186,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4215,7 +4215,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4244,7 +4244,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4279,7 +4279,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4308,7 +4308,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4343,7 +4343,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4378,7 +4378,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4407,7 +4407,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4436,7 +4436,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4471,7 +4471,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4500,7 +4500,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4541,7 +4541,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4570,7 +4570,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4599,7 +4599,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4628,7 +4628,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4657,7 +4657,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4686,7 +4686,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4715,7 +4715,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4744,7 +4744,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4773,7 +4773,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4802,7 +4802,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4837,7 +4837,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4867,7 +4867,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4896,7 +4896,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4937,7 +4937,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -4977,7 +4977,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5006,7 +5006,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5035,7 +5035,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5064,7 +5064,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5093,7 +5093,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5122,7 +5122,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5151,7 +5151,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5180,7 +5180,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5215,7 +5215,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5244,7 +5244,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5279,7 +5279,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5320,7 +5320,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5361,7 +5361,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5390,7 +5390,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5419,7 +5419,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5448,7 +5448,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5477,7 +5477,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5512,7 +5512,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5541,7 +5541,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5570,7 +5570,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5599,7 +5599,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5628,7 +5628,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5657,7 +5657,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5686,7 +5686,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5715,7 +5715,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5744,7 +5744,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5773,7 +5773,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5802,7 +5802,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5831,7 +5831,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5872,7 +5872,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5902,7 +5902,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5931,7 +5931,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -5960,7 +5960,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6002,7 +6002,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6031,7 +6031,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6060,7 +6060,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6095,7 +6095,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6124,7 +6124,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6159,7 +6159,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6188,7 +6188,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6217,7 +6217,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6246,7 +6246,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6275,7 +6275,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6310,7 +6310,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6339,7 +6339,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6368,7 +6368,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6403,7 +6403,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6432,7 +6432,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6461,7 +6461,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6490,7 +6490,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6525,7 +6525,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6560,7 +6560,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6589,7 +6589,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6618,7 +6618,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6647,7 +6647,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6676,7 +6676,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6705,7 +6705,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6734,7 +6734,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6763,7 +6763,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6798,7 +6798,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6833,7 +6833,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6862,7 +6862,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6891,7 +6891,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6920,7 +6920,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6955,7 +6955,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -6984,7 +6984,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7013,7 +7013,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7048,7 +7048,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7077,7 +7077,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7106,7 +7106,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7135,7 +7135,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7164,7 +7164,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7193,7 +7193,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7228,7 +7228,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7257,7 +7257,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7292,7 +7292,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7321,7 +7321,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7350,7 +7350,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7385,7 +7385,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7414,7 +7414,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7443,7 +7443,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7478,7 +7478,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7507,7 +7507,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7536,7 +7536,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7565,7 +7565,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7594,7 +7594,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7623,7 +7623,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7652,7 +7652,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7687,7 +7687,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7716,7 +7716,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7745,7 +7745,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7780,7 +7780,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7809,7 +7809,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7838,7 +7838,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7879,7 +7879,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7931,7 +7931,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -7966,7 +7966,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8001,7 +8001,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8030,7 +8030,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8059,7 +8059,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8088,7 +8088,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8117,7 +8117,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8146,7 +8146,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8175,7 +8175,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8204,7 +8204,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8233,7 +8233,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8262,7 +8262,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8291,7 +8291,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8320,7 +8320,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8349,7 +8349,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8378,7 +8378,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8407,7 +8407,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8442,7 +8442,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8483,7 +8483,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8518,7 +8518,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8547,7 +8547,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8576,7 +8576,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8611,7 +8611,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8646,7 +8646,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8675,7 +8675,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8704,7 +8704,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8733,7 +8733,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8762,7 +8762,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8797,7 +8797,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8826,7 +8826,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8861,7 +8861,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8890,7 +8890,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8919,7 +8919,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8954,7 +8954,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -8983,7 +8983,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9012,7 +9012,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9047,7 +9047,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9076,7 +9076,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9111,7 +9111,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9140,7 +9140,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9169,7 +9169,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9198,7 +9198,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9227,7 +9227,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9256,7 +9256,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9285,7 +9285,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9320,7 +9320,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9349,7 +9349,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9384,7 +9384,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9419,7 +9419,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9454,7 +9454,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9483,7 +9483,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9512,7 +9512,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9541,7 +9541,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9576,7 +9576,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9605,7 +9605,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9634,7 +9634,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9669,7 +9669,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9698,7 +9698,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9727,7 +9727,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9762,7 +9762,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9797,7 +9797,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9832,7 +9832,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9867,7 +9867,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9896,7 +9896,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9925,7 +9925,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9954,7 +9954,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -9983,7 +9983,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10012,7 +10012,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10041,7 +10041,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10070,7 +10070,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10105,7 +10105,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10140,7 +10140,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10175,7 +10175,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10204,7 +10204,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10233,7 +10233,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10262,7 +10262,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10291,7 +10291,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10326,7 +10326,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10356,7 +10356,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10385,7 +10385,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10414,7 +10414,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10449,7 +10449,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10501,7 +10501,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10530,7 +10530,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10559,7 +10559,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10588,7 +10588,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10617,7 +10617,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10652,7 +10652,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10681,7 +10681,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10716,7 +10716,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10751,7 +10751,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10780,7 +10780,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10809,7 +10809,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10844,7 +10844,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10879,7 +10879,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10908,7 +10908,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10937,7 +10937,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -10972,7 +10972,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11001,7 +11001,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11030,7 +11030,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11059,7 +11059,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11088,7 +11088,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11117,7 +11117,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11146,7 +11146,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11181,7 +11181,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11210,7 +11210,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11245,7 +11245,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11274,7 +11274,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11303,7 +11303,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11338,7 +11338,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11367,7 +11367,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11402,7 +11402,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11431,7 +11431,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11466,7 +11466,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11495,7 +11495,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11524,7 +11524,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11553,7 +11553,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11582,7 +11582,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11611,7 +11611,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11640,7 +11640,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11675,7 +11675,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11704,7 +11704,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11739,7 +11739,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11768,7 +11768,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11797,7 +11797,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11826,7 +11826,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11855,7 +11855,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11890,7 +11890,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11919,7 +11919,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11948,7 +11948,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -11977,7 +11977,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12006,7 +12006,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12035,7 +12035,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12064,7 +12064,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12093,7 +12093,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12122,7 +12122,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12151,7 +12151,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12180,7 +12180,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12209,7 +12209,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12238,7 +12238,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12267,7 +12267,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12296,7 +12296,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12325,7 +12325,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12354,7 +12354,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12383,7 +12383,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12412,7 +12412,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12441,7 +12441,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12470,7 +12470,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12499,7 +12499,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12528,7 +12528,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12557,7 +12557,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12586,7 +12586,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12615,7 +12615,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12650,7 +12650,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12685,7 +12685,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12714,7 +12714,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12743,7 +12743,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12772,7 +12772,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12801,7 +12801,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12830,7 +12830,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12859,7 +12859,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12888,7 +12888,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12923,7 +12923,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12952,7 +12952,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -12981,7 +12981,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13010,7 +13010,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13045,7 +13045,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13074,7 +13074,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13103,7 +13103,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13132,7 +13132,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13161,7 +13161,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13190,7 +13190,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13220,7 +13220,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13249,7 +13249,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13278,7 +13278,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13307,7 +13307,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13336,7 +13336,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13365,7 +13365,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13394,7 +13394,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13423,7 +13423,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13452,7 +13452,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13481,7 +13481,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13510,7 +13510,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13539,7 +13539,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13569,7 +13569,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13604,7 +13604,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13633,7 +13633,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13662,7 +13662,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13691,7 +13691,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13721,7 +13721,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13750,7 +13750,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13779,7 +13779,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13808,7 +13808,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13837,7 +13837,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13866,7 +13866,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13895,7 +13895,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13924,7 +13924,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13953,7 +13953,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -13982,7 +13982,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14017,7 +14017,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14046,7 +14046,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14075,7 +14075,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14104,7 +14104,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14133,7 +14133,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14162,7 +14162,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14191,7 +14191,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14220,7 +14220,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14249,7 +14249,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14278,7 +14278,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14307,7 +14307,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14336,7 +14336,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14371,7 +14371,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14400,7 +14400,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14435,7 +14435,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14464,7 +14464,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14493,7 +14493,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14522,7 +14522,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14551,7 +14551,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14586,7 +14586,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14615,7 +14615,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14644,7 +14644,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14673,7 +14673,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14702,7 +14702,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14737,7 +14737,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14766,7 +14766,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14795,7 +14795,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14824,7 +14824,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14853,7 +14853,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14882,7 +14882,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14911,7 +14911,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14940,7 +14940,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14969,7 +14969,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -14998,7 +14998,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15027,7 +15027,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15056,7 +15056,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15085,7 +15085,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15120,7 +15120,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15149,7 +15149,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15178,7 +15178,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15207,7 +15207,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15236,7 +15236,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15265,7 +15265,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15294,7 +15294,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15324,7 +15324,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15353,7 +15353,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15382,7 +15382,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15411,7 +15411,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15440,7 +15440,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15469,7 +15469,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'legacy',
+      slug: 'Legacy',
       name: 'Legacy',
       desc: 'Legacy'
     },
@@ -15513,7 +15513,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15562,7 +15562,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15610,7 +15610,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15659,7 +15659,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15721,7 +15721,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15769,7 +15769,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15810,7 +15810,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15866,7 +15866,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15929,7 +15929,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -15982,7 +15982,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -16030,7 +16030,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16071,7 +16071,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16126,7 +16126,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16195,7 +16195,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16257,7 +16257,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16312,7 +16312,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16374,7 +16374,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16423,7 +16423,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16492,7 +16492,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16561,7 +16561,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16623,7 +16623,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -16671,7 +16671,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16733,7 +16733,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16795,7 +16795,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16836,7 +16836,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'General Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16884,7 +16884,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -16954,7 +16954,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17023,7 +17023,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17085,7 +17085,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -17161,7 +17161,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -17216,7 +17216,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17264,7 +17264,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -17334,7 +17334,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17403,7 +17403,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17448,7 +17448,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -17518,7 +17518,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17573,7 +17573,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17636,7 +17636,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17692,7 +17692,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17762,7 +17762,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17804,7 +17804,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17873,7 +17873,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17922,7 +17922,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -17985,7 +17985,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18034,7 +18034,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18090,7 +18090,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18138,7 +18138,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18207,7 +18207,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18263,7 +18263,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18319,7 +18319,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18357,7 +18357,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -18398,7 +18398,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18453,7 +18453,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18536,7 +18536,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -18605,7 +18605,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18674,7 +18674,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18743,7 +18743,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18801,7 +18801,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -18863,7 +18863,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18926,7 +18926,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -18968,7 +18968,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19016,7 +19016,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19064,7 +19064,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19133,7 +19133,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19196,7 +19196,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19266,7 +19266,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19336,7 +19336,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19406,7 +19406,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19468,7 +19468,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19516,7 +19516,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19557,7 +19557,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19620,7 +19620,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19675,7 +19675,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19717,7 +19717,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19755,7 +19755,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -19804,7 +19804,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19852,7 +19852,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19900,7 +19900,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19942,7 +19942,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -19983,7 +19983,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20050,7 +20050,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -20098,7 +20098,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20139,7 +20139,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20223,7 +20223,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20268,7 +20268,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20323,7 +20323,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20378,7 +20378,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20441,7 +20441,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20511,7 +20511,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20581,7 +20581,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20650,7 +20650,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20713,7 +20713,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -20782,7 +20782,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -20844,7 +20844,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -20885,7 +20885,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -20931,7 +20931,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -20973,7 +20973,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21012,7 +21012,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -21081,7 +21081,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21136,7 +21136,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21185,7 +21185,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21226,7 +21226,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'General Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21281,7 +21281,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21330,7 +21330,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21372,7 +21372,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Transport Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21434,7 +21434,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21496,7 +21496,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21538,7 +21538,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21593,7 +21593,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21655,7 +21655,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21725,7 +21725,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21788,7 +21788,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21836,7 +21836,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'General Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21866,7 +21866,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -21896,7 +21896,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -21944,7 +21944,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -21985,7 +21985,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22015,7 +22015,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -22070,7 +22070,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22132,7 +22132,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -22201,7 +22201,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22263,7 +22263,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22305,7 +22305,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22360,7 +22360,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22401,7 +22401,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22449,7 +22449,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -22497,7 +22497,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -22545,7 +22545,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -22594,7 +22594,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22663,7 +22663,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22732,7 +22732,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22795,7 +22795,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -22871,7 +22871,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22926,7 +22926,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -22974,7 +22974,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23015,7 +23015,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23077,7 +23077,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23118,7 +23118,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23180,7 +23180,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -23222,7 +23222,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23277,7 +23277,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23332,7 +23332,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23388,7 +23388,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23437,7 +23437,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23520,7 +23520,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23589,7 +23589,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23658,7 +23658,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23714,7 +23714,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23762,7 +23762,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23832,7 +23832,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23901,7 +23901,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -23978,7 +23978,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24026,7 +24026,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24103,7 +24103,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24187,7 +24187,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24242,7 +24242,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24304,7 +24304,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24359,7 +24359,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24418,7 +24418,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -24481,7 +24481,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24544,7 +24544,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24620,7 +24620,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24682,7 +24682,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24724,7 +24724,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24773,7 +24773,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24843,7 +24843,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24898,7 +24898,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -24968,7 +24968,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25009,7 +25009,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25064,7 +25064,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25112,7 +25112,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25160,7 +25160,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25216,7 +25216,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25257,7 +25257,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25326,7 +25326,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25396,7 +25396,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25459,7 +25459,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25521,7 +25521,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25583,7 +25583,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25631,7 +25631,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25694,7 +25694,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25757,7 +25757,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25805,7 +25805,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25867,7 +25867,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25916,7 +25916,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -25964,7 +25964,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -26019,7 +26019,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -26068,7 +26068,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26116,7 +26116,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26154,7 +26154,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -26203,7 +26203,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26272,7 +26272,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26327,7 +26327,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26389,7 +26389,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26438,7 +26438,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26493,7 +26493,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26562,7 +26562,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26610,7 +26610,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26659,7 +26659,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26715,7 +26715,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26778,7 +26778,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26848,7 +26848,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -26904,7 +26904,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -26953,7 +26953,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27022,7 +27022,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27077,7 +27077,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27139,7 +27139,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27181,7 +27181,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27257,7 +27257,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -27319,7 +27319,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -27371,7 +27371,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -27419,7 +27419,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27467,7 +27467,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27522,7 +27522,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'General Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27598,7 +27598,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27668,7 +27668,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27738,7 +27738,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27821,7 +27821,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -27911,7 +27911,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -27981,7 +27981,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -28050,7 +28050,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -28106,7 +28106,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28169,7 +28169,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -28224,7 +28224,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28279,7 +28279,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28341,7 +28341,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28418,7 +28418,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28459,7 +28459,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28536,7 +28536,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28574,7 +28574,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -28612,7 +28612,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -28653,7 +28653,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28708,7 +28708,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28778,7 +28778,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28819,7 +28819,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28882,7 +28882,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28951,7 +28951,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -28999,7 +28999,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29061,7 +29061,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29116,7 +29116,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29171,7 +29171,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29240,7 +29240,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29288,7 +29288,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29337,7 +29337,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -29378,7 +29378,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29448,7 +29448,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29518,7 +29518,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29573,7 +29573,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29621,7 +29621,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29684,7 +29684,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29740,7 +29740,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29796,7 +29796,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29844,7 +29844,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29914,7 +29914,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -29970,7 +29970,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30054,7 +30054,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30131,7 +30131,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30200,7 +30200,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30256,7 +30256,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30312,7 +30312,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -30351,7 +30351,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -30392,7 +30392,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30454,7 +30454,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30531,7 +30531,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30573,7 +30573,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30621,7 +30621,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30669,7 +30669,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30717,7 +30717,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30794,7 +30794,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -30843,7 +30843,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30889,7 +30889,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -30944,7 +30944,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -30986,7 +30986,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31049,7 +31049,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31104,7 +31104,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31170,7 +31170,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -31200,7 +31200,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -31242,7 +31242,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31298,7 +31298,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31346,7 +31346,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31395,7 +31395,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31465,7 +31465,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31520,7 +31520,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31590,7 +31590,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31660,7 +31660,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31729,7 +31729,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31798,7 +31798,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31854,7 +31854,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31909,7 +31909,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -31964,7 +31964,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32026,7 +32026,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32068,7 +32068,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32130,7 +32130,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32186,7 +32186,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32255,7 +32255,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32324,7 +32324,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -32379,7 +32379,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32420,7 +32420,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32490,7 +32490,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32546,7 +32546,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32609,7 +32609,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32658,7 +32658,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32706,7 +32706,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32769,7 +32769,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -32814,7 +32814,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32856,7 +32856,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32905,7 +32905,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -32974,7 +32974,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33023,7 +33023,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33071,7 +33071,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33126,7 +33126,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33175,7 +33175,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33224,7 +33224,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33266,7 +33266,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33308,7 +33308,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33378,7 +33378,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33454,7 +33454,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33531,7 +33531,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33579,7 +33579,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33635,7 +33635,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33690,7 +33690,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33745,7 +33745,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33786,7 +33786,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33849,7 +33849,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33912,7 +33912,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -33968,7 +33968,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34023,7 +34023,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -34072,7 +34072,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34120,7 +34120,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34183,7 +34183,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34224,7 +34224,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34272,7 +34272,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34321,7 +34321,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -34390,7 +34390,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34481,7 +34481,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34550,7 +34550,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34613,7 +34613,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34689,7 +34689,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34744,7 +34744,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34813,7 +34813,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34882,7 +34882,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -34938,7 +34938,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35016,7 +35016,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35085,7 +35085,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35147,7 +35147,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35216,7 +35216,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35272,7 +35272,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35320,7 +35320,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35372,7 +35372,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35420,7 +35420,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35469,7 +35469,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35517,7 +35517,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35558,7 +35558,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35599,7 +35599,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35640,7 +35640,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35688,7 +35688,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35729,7 +35729,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35770,7 +35770,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35826,7 +35826,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35874,7 +35874,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35930,7 +35930,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -35985,7 +35985,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36027,7 +36027,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36075,7 +36075,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36116,7 +36116,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36178,7 +36178,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36219,7 +36219,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36289,7 +36289,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36358,7 +36358,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36427,7 +36427,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36496,7 +36496,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36544,7 +36544,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36599,7 +36599,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36640,7 +36640,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36695,7 +36695,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36751,7 +36751,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36799,7 +36799,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36847,7 +36847,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36909,7 +36909,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -36978,7 +36978,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37048,7 +37048,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37089,7 +37089,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37130,7 +37130,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37186,7 +37186,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37232,7 +37232,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37280,7 +37280,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37321,7 +37321,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37376,7 +37376,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37428,7 +37428,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -37491,7 +37491,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37547,7 +37547,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37602,7 +37602,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37647,7 +37647,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37730,7 +37730,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37771,7 +37771,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37827,7 +37827,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37918,7 +37918,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -37960,7 +37960,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38036,7 +38036,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38091,7 +38091,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38133,7 +38133,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38202,7 +38202,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38251,7 +38251,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38321,7 +38321,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38397,7 +38397,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38445,7 +38445,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38486,7 +38486,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38534,7 +38534,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38604,7 +38604,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38653,7 +38653,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38701,7 +38701,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38750,7 +38750,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38812,7 +38812,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38860,7 +38860,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38923,7 +38923,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -38993,7 +38993,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39056,7 +39056,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39111,7 +39111,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39167,7 +39167,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39223,7 +39223,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IETF'
     },
     stream: {
-      slug: 'iab',
+      slug: 'IAB',
       name: 'IAB',
       desc: 'Internet Architecture Board (IAB)'
     },
@@ -39265,7 +39265,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39307,7 +39307,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39356,7 +39356,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39418,7 +39418,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39463,7 +39463,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39504,7 +39504,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39574,7 +39574,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39622,7 +39622,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39692,7 +39692,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39730,7 +39730,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -39792,7 +39792,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39861,7 +39861,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -39909,7 +39909,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'RFC Editor'
     },
     stream: {
-      slug: 'editorial',
+      slug: 'Editorial',
       name: 'Editorial',
       desc: 'Editorial'
     },
@@ -39986,7 +39986,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40055,7 +40055,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40125,7 +40125,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40181,7 +40181,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40229,7 +40229,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40278,7 +40278,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40320,7 +40320,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40375,7 +40375,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40430,7 +40430,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40499,7 +40499,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40568,7 +40568,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40637,7 +40637,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40692,7 +40692,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40734,7 +40734,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40782,7 +40782,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40830,7 +40830,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40878,7 +40878,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -40940,7 +40940,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41009,7 +41009,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41058,7 +41058,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41100,7 +41100,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41162,7 +41162,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41210,7 +41210,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41287,7 +41287,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41335,7 +41335,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41397,7 +41397,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41466,7 +41466,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41507,7 +41507,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41549,7 +41549,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41618,7 +41618,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41659,7 +41659,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41729,7 +41729,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41785,7 +41785,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41833,7 +41833,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41888,7 +41888,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -41937,7 +41937,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42000,7 +42000,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42048,7 +42048,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42078,7 +42078,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -42127,7 +42127,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42183,7 +42183,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Operations and Management Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42246,7 +42246,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42302,7 +42302,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42351,7 +42351,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42393,7 +42393,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42442,7 +42442,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Web and Internet Transport'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42491,7 +42491,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42539,7 +42539,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Internet Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42602,7 +42602,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42644,7 +42644,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -42707,7 +42707,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42748,7 +42748,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42810,7 +42810,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42851,7 +42851,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'IRTF'
     },
     stream: {
-      slug: 'irtf',
+      slug: 'IRTF',
       name: 'IRTF',
       desc: 'Internet Research Task Force (IRTF)'
     },
@@ -42892,7 +42892,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42933,7 +42933,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -42974,7 +42974,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43044,7 +43044,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43100,7 +43100,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43163,7 +43163,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43218,7 +43218,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43284,7 +43284,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     },
     area: null,
     stream: {
-      slug: 'ise',
+      slug: 'INDEPENDENT',
       name: 'ISE',
       desc: 'Independent Submission'
     },
@@ -43353,7 +43353,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43429,7 +43429,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Routing Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43484,7 +43484,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Security Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43526,7 +43526,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },
@@ -43574,7 +43574,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       name: 'Applications and Real-Time Area'
     },
     stream: {
-      slug: 'ietf',
+      slug: 'IETF',
       name: 'IETF',
       desc: 'Internet Engineering Task Force (IETF)'
     },

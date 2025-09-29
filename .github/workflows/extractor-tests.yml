@@ -5,7 +5,7 @@ on:
     paths:
       - 'rfc-html-extractor/**'
       - 'client/app/utilities/rfc-validators.ts'
-      - 'client/app/utilities/rfc-converter-status.ts'
+      - 'client/app/utilities/rfc-converter-parse.ts'
   workflow_dispatch:
 
 jobs:

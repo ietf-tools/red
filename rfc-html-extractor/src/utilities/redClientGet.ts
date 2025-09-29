@@ -1,5 +1,5 @@
 import { ApiClient } from '../../../client/generated/red-client.ts'
-import { parseRfcStatusSlug } from '../../../client/app/utilities/rfc-converter-status.ts'
+import { parseRfcStatusSlug } from '../../../client/app/utilities/rfc-converter-parse.ts'
 import { blankRfcCommon } from './rfc.ts'
 import type { Rfc, RfcMetadata } from '../../../client/generated/red-client.ts'
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
@@ -83,7 +83,7 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     authors: rfcMetadata.authors,
     group: rfcMetadata.group,
     area: rfcMetadata.area,
-    stream: rfcMetadata.stream,
+    stream:  rfcMetadata.stream,
     identifiers: rfcMetadata.identifiers,
     obsoleted_by: rfcMetadata.obsoleted_by,
     updated_by: rfcMetadata.updated_by,

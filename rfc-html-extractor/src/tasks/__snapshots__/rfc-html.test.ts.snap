@@ -12314,7 +12314,7 @@ Internet Architecture Board Standards Track                    [Page 56]
     "stream": {
       "desc": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
-      "slug": "ietf",
+      "slug": "IETF",
     },
     "text": "",
     "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",
@@ -157642,7 +157642,7 @@ document:",
     "stream": {
       "desc": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
-      "slug": "ietf",
+      "slug": "IETF",
     },
     "text": "",
     "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",

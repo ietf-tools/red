@@ -51,6 +51,15 @@ export const RfcCommonStatusSlugSchema = z.union([
   z.literal('draft')
 ])
 
+export const RfcCommonStreamSlugSchema = z.union([
+  z.literal('IETF'),
+  z.literal('IAB'),
+  z.literal('IRTF'),
+  z.literal('INDEPENDENT'),
+  z.literal('Editorial'),
+  z.literal('Legacy')
+])
+
 export const RfcCommonStatusNameSchema = z.union([
   z.literal('Best Current Practice'),
   z.literal('Experimental'),
@@ -155,7 +164,7 @@ export const RfcCommonSchema = z.object({
     name: z.string()
   }),
   stream: z.object({
-    slug: z.string(),
+    slug: RfcCommonStreamSlugSchema,
     name: z.string(),
     desc: z.string().optional()
   }),

@@ -10,7 +10,7 @@ import {
   parseRfcJsonPubDateToISO,
   parseTypeSenseSubseries
 } from './rfc-converters-utils'
-import { parseRfcStatusSlug } from './rfc-converter-status'
+import { parseRfcStatusSlug, parseRfcStreamSlug } from './rfc-converter-parse'
 import { TypeSenseSearchItemSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
 
@@ -77,10 +77,10 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
     },
     area: {
       name: rfcJson.source,
-      acronym: rfcJson.source,
+      acronym: rfcJson.source
     },
     stream: {
-      slug: rfcJson.source,
+      slug: parseRfcStreamSlug(rfcJson.source),
       name: rfcJson.source
     },
     identifiers:
@@ -188,8 +188,8 @@ export const typeSenseSearchItemToRFCCommon = (
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,
     status: parseRfcStatusSlug(item.status?.name),
     stream: {
-      name: item.stream?.name || 'unknown',
-      slug: item.stream?.slug || 'Unknown'
+      slug: parseRfcStreamSlug(item.stream?.slug),
+      name: item.stream?.name || 'unknown',      
     },
     text: '',
     title: item.title

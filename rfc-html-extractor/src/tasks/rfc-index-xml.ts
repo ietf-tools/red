@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { readFile } from 'node:fs/promises'
 import { XmlDocument, XsdValidator } from 'libxml2-wasm'
 import { DateTime } from 'luxon'
@@ -24,16 +25,18 @@ export const uploadRfcIndexXml = async (
   return true
 }
 
+const W3C_SCHEMA_URL = 'http://www.w3.org/2001/XMLSchema-instance'
 const SCHEMA_URL = 'https://www.rfc-editor.org/rfc-index.xsd'
 const NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 
 export const renderRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>
 ): Promise<{ xml: string; xsd: string }> => {
-  const xsd = await readFile('../assets/rfc-index.xsd', 'utf-8')
+  const xsdPath = resolve(__dirname, '../assets/rfc-index.xsd')
+  const xsd = await readFile(xsdPath, 'utf-8')
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-  xml += `<rfc-index xmlns="${NAMESPACE}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="${NAMESPACE} ${SCHEMA_URL}">`
+  xml += `<rfc-index xmlns="${NAMESPACE}" xmlns:xsi="${W3C_SCHEMA_URL}" xsi:schemaLocation="${NAMESPACE} ${SCHEMA_URL}">\n`
   xml += await renderBCPs(allRfcs)
   xml += await renderFYIs(allRfcs)
   xml += await renderRFCs(allRfcs)
@@ -96,13 +99,18 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
     rfcEntry.appendChild(createElementNS('doc-id', `RFC${rfc.number}`))
     rfcEntry.appendChild(createElementNS('title', rfc.title))
 
-    rfc.authors.forEach((author) => {
-      const authorElement = createElementNS('author')
-      authorElement.appendChild(
-        createElementNS('name', formatAuthor(author, 'regular'))
-      )
-      rfcEntry.appendChild(authorElement)
-    })
+    if (rfc.authors.length > 0) {
+      rfc.authors.forEach((author) => {
+        const authorElement = createElementNS('author')
+        authorElement.appendChild(
+          createElementNS('name', formatAuthor(author, 'regular'))
+        )
+        rfcEntry.appendChild(authorElement)
+      })
+    } else {
+      // FIXME: every RFC should have authors. We should throw if attempting to generate with an empty author
+      rfcEntry.appendChild(createElementListNS('author', 'name', ['']))
+    }
 
     const dateElement = createElementNS('date')
     dateElement.appendChild(createElementNS('month', month))
@@ -127,11 +135,17 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       rfcEntry.appendChild(createElementNS('page-count', rfc.pages.toString()))
     }
 
-    if (rfc.keywords) {
+    if (rfc.keywords && rfc.keywords.length > 0) {
       rfcEntry.appendChild(createElementListNS('keywords', 'kw', rfc.keywords))
     }
 
-    if (rfc.obsoletes) {
+    if (rfc.abstract && rfc.abstract.length > 0) {
+      rfcEntry.appendChild(
+        createElementListNS('abstract', 'p', rfc.abstract.split('\n'))
+      )
+    }
+
+    if (rfc.obsoletes && rfc.obsoletes.length > 0) {
       rfcEntry.appendChild(
         createElementListNS(
           'obsoletes',
@@ -141,7 +155,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       )
     }
 
-    if (rfc.obsoleted_by) {
+    if (rfc.obsoleted_by && rfc.obsoleted_by.length > 0) {
       rfcEntry.appendChild(
         createElementListNS(
           'obsoleted-by',
@@ -151,19 +165,13 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       )
     }
 
-    if (rfc.updated_by) {
+    if (rfc.updated_by && rfc.updated_by.length > 0) {
       rfcEntry.appendChild(
         createElementListNS(
-          'updated_by',
+          'updated-by',
           'doc-id',
           rfc.updated_by.map((item) => `RFC${item.number}`)
         )
-      )
-    }
-
-    if (rfc.abstract) {
-      rfcEntry.appendChild(
-        createElementListNS('abstract', 'p', rfc.abstract.split('\n'))
       )
     }
 
@@ -172,29 +180,26 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
     }
 
     rfcEntry.appendChild(
-      createElementNS('current-status', rfc.status.slug.toUpperCase())
+      createElementNS('current-status', rfc.status.name.toUpperCase())
     )
 
     // FIXME: is this the correct RFC Commmon property to use?
     rfcEntry.appendChild(
-      createElementNS('publication-status', rfc.status.slug.toUpperCase())
+      createElementNS('publication-status', rfc.status.name.toUpperCase())
     )
 
-    if (rfc.stream.slug === 'LEGACY') {
-      rfcEntry.appendChild(createElementNS('stream', 'Legacy'))
-    } else {
-      rfcEntry.appendChild(createElementNS('stream', rfc.stream.name))
-      if (rfc.area?.acronym) {
-        rfcEntry.appendChild(createElementNS('area', rfc.area.acronym))
-        rfcEntry.appendChild(
-          createElementNS(
-            'wg_acronyn',
-            rfc.group.acronym === 'IETF-NWG'
-              ? 'NON WORKING GROUP'
-              : rfc.group.acronym
-          )
+    rfcEntry.appendChild(createElementNS('stream', rfc.stream.slug))
+
+    if (rfc.area?.acronym) {
+      rfcEntry.appendChild(createElementNS('area', rfc.area.acronym))
+      rfcEntry.appendChild(
+        createElementNS(
+          'wg_acronym',
+          rfc.group.acronym === 'IETF-NWG'
+            ? 'NON WORKING GROUP'
+            : rfc.group.acronym
         )
-      }
+      )
     }
 
     if (rfc.errata && rfc.errata.length > 0) {
@@ -205,21 +210,11 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
 
     if (rfc.identifiers && rfc.identifiers.length > 0) {
       rfc.identifiers.forEach((identifier) => {
-        if (identifier.type === 'doi') {
-          rfcEntry.appendChild(createElementNS('doi', identifier.value))
-        } else if (identifier.type === 'issn') {
-          rfcEntry.appendChild(createElementNS('issn', identifier.value))
-        } else {
-          throw Error(
-            `Unhandled identifier ${identifier.type} ${JSON.stringify(
-              identifier
-            )}`
-          )
-        }
+        rfcEntry.appendChild(createElementNS(identifier.type, identifier.value))
       })
     }
 
-    responseXml.push(rfcEntry.outerHTML)
+    responseXml.push(`${rfcEntry.outerHTML}\n`)
   })
 
   return responseXml.join('')
@@ -227,15 +222,15 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
 
 const renderBCPs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   // FIXME
-  return ''
+  return '\n'
 }
 
 const renderFYIs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   // FIXME
-  return ''
+  return '\n'
 }
 
 const renderSTDs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   // FIXME
-  return ''
+  return '\n'
 }

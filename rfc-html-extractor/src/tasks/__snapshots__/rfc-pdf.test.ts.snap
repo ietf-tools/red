@@ -719,7 +719,7 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
     "stream": {
       "desc": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
-      "slug": "ietf",
+      "slug": "IETF",
     },
     "text": "",
     "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",

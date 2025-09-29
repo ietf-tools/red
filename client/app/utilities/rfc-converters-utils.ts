@@ -179,6 +179,7 @@ export const parseRfcFormat = (
   throw Error(`Unable to parse RFC format "${format}"`)
 }
 
+
 /**
  * Formats a string of 'RFCnumber' as plain text with an NBSP between
  */
@@ -203,11 +204,11 @@ export const parseTypeSenseSubseries = (
   item: z.infer<typeof TypeSenseSearchItemSchema>
 ): RfcCommon['subseries'] => {
   if (item.subseries?.acronym) {
-    return {
+    return [{
       type: item.subseries?.acronym,
       number: item.subseries?.number,
       subseriesLength: item.subseries?.total
-    }
+    }]
   }
   return undefined
 }

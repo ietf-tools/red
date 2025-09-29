@@ -74,3 +74,26 @@ export const parseRfcStatusSlug = (
     name
   }
 }
+
+export const parseRfcStreamSlug = (
+  streamSlug?: string
+): RfcCommon['stream']['slug'] => {
+  if (!streamSlug) {
+    return 'Legacy'
+  }
+  switch (streamSlug.toLowerCase()) {
+    case 'ietf':
+      return 'IETF'
+    case 'iab':
+      return 'IAB'
+    case 'irtf':
+      return 'IRTF'
+    case 'independent':
+      return 'INDEPENDENT'
+    case 'editorial':
+      return 'Editorial'
+    case 'legacy':
+      return 'Legacy'
+  }
+  throw Error(`Unable to parse stream slug "${streamSlug}"`)
+}

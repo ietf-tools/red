@@ -75,10 +75,10 @@
     <!-- Definition of a document ID; example: RFC0015 -->
     <xsd:simpleType name="documentId">
 	<xsd:restriction base="xsd:string">
-	    <xsd:pattern value="RFC\d{4}"/>
-	    <xsd:pattern value="STD\d{4}"/>
-	    <xsd:pattern value="BCP\d{4}"/>
-	    <xsd:pattern value="FYI\d{4}"/>
+	    <xsd:pattern value="RFC\d{1,5}"/>
+	    <xsd:pattern value="STD\d{1,5}"/>
+	    <xsd:pattern value="BCP\d{1,5}"/>
+	    <xsd:pattern value="FYI\d{1,5}"/>
 	    <xsd:pattern value="NIC\d{4,5}"/>
 	    <xsd:pattern value="IEN\d{2,3}"/>
 	    <xsd:pattern value="RTR\d{3,4}"/>
