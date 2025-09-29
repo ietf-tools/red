@@ -26,7 +26,7 @@ export const rfcToRfcIndexRow = (rfc: RfcCommon) => {
     ...(rfc.updated_by && rfc.updated_by.length > 0 ?
       [' (Updated-By ', ...rfcCommaList(rfc.updated_by), ' )']
     : []),
-    ` (Status: ${rfc.status.toUpperCase()})`,
+    ` (Status: ${rfc.status.slug.toUpperCase()})`,
     ` (Stream: ${rfc.stream.name})`,
     ' ',
     rfc.identifiers ?

@@ -39,7 +39,19 @@ export type TableOfContents = z.infer<typeof TableOfContentsSchema>
 /**
  * RFC Common
  */
-export const RfcCommonStatusSchema = z.union([
+export const RfcCommonStatusSlugSchema = z.union([
+  z.literal('bcp'),
+  z.literal('experimental'),
+  z.literal('his'),
+  z.literal('fyi'),
+  z.literal('not-issued'),
+  z.literal('standard'),
+  z.literal('unknown'),
+  z.literal('proposed'),
+  z.literal('draft')
+])
+
+export const RfcCommonStatusNameSchema = z.union([
   z.literal('Best Current Practice'),
   z.literal('Experimental'),
   z.literal('Historic'),
@@ -50,6 +62,11 @@ export const RfcCommonStatusSchema = z.union([
   z.literal('Proposed Standard'),
   z.literal('Draft Standard')
 ])
+
+export const RfcCommonStatusSchema = z.object({
+  slug: RfcCommonStatusSlugSchema,
+  name: RfcCommonStatusNameSchema
+})
 
 export const RfcCommonSubseriesTypeSchema = z.union([
   z.literal('bcp'),
@@ -106,7 +123,8 @@ const RfcCommonAuthorSchema = z.object({
 const RfcCommonDraftSchema = z.object({
   id: z.number(),
   number: z.number(),
-  title: z.string()
+  title: z.string(),
+  slug: z.string()
 })
 
 export const RfcCommonSchema = z.object({

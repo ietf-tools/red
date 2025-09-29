@@ -43,7 +43,10 @@ export const blankRfcCommon: RfcCommon = {
   title: '',
   published: '1950-1-1',
   pages: 0,
-  status: 'Unknown',
+  status: {
+    slug: 'unknown',
+    name: 'Unknown'
+  },
   authors: [],
   group: {
     acronym: '',
@@ -114,9 +117,9 @@ export const parseRFCId = (title: string): RFCId => {
 }
 
 export const getRfcPillText = (rfc: RfcCommon): string[] => {
-  const tagText = []
+  const tagText: string[] = []
   if (rfc.status) {
-    tagText.push(rfc.status)
+    tagText.push(rfc.status.slug)
   }
   return tagText
 }

@@ -9,7 +9,8 @@
     "format": "npx prettier --config ./prettier.config.cjs src --write",
     "test": "TZ=UTC npm run test:unittests && npm run test:types",
     "test:types": "vue-tsc -b --noEmit",
-    "test:unittests": "vitest run"
+    "test:unittests": "vitest run",
+    "test:unittests:watch": "vitest run --watch"
   },
   "repository": {
     "type": "git",

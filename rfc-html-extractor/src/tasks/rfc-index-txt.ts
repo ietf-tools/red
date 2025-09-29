@@ -7,15 +7,14 @@ import {
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
 import { RFC_INDEX_TXT_PATH, saveToS3 } from '../utilities/s3.ts'
 
-const DEFAULT_RFC_NUMBER_COLUMN_CHAR_WIDTH = 5
 const COLUMN_PADDING = 1
 const SPACE = ' '
 
 export const uploadRfcIndexTxt = async (
   allRfcs: Readonly<RfcCommon[]>,
-  rfcNumberColumnCharWidth: number
+  rfcNumberColumnMinimumCharWidth: number
 ): Promise<boolean> => {
-  const txt = await renderRfcIndexTxt(allRfcs, rfcNumberColumnCharWidth)
+  const txt = await renderRfcIndexTxt(allRfcs, rfcNumberColumnMinimumCharWidth)
   await saveToS3(RFC_INDEX_TXT_PATH, txt)
   console.log('Generated rfc-index.txt')
   return true
@@ -23,8 +22,16 @@ export const uploadRfcIndexTxt = async (
 
 export const renderRfcIndexTxt = async (
   allRfcs: Readonly<RfcCommon[]>,
-  rfcNumberColumnCharWidth: number
+  rfcNumberColumnMinimumCharWidth: number
 ): Promise<string> => {
+  const rfcNumberColumnCalculatedCharWidth = allRfcs.reduce(
+    (acc, rfc): number => Math.max(acc, rfc.number.toString().length),
+    0
+  )
+  const rfcNumberColumnCharWidth = Math.max(
+    rfcNumberColumnMinimumCharWidth,
+    rfcNumberColumnCalculatedCharWidth
+  )
   const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
   const column2width = 72 - rfcNumberColumnCharWidth // yes this will cause reflow once RFC 10k, 100k, etc. occur
 
@@ -236,7 +243,7 @@ const stringifyRFC = (rfc: RfcCommon): string => {
       .map((author) => formatAuthor(author, 'regular'))
       .join(
         ', '
-      )}. ${rfcdate}. (${rfcformat})${obsups}${also} (Status: ${rfc.status.toUpperCase()})${doi}`
+      )}. ${rfcdate}. (${rfcformat})${obsups}${also} (Status: ${rfc.status.name.toUpperCase()})${doi}`
   }
 }
 

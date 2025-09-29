@@ -67,3 +67,26 @@ export const formatIdentifiers = (
       `${identifier.type.toUpperCase()}${separator}${identifier.value}`
   )
 }
+
+type UppercaseFormats = Uppercase<RfcCommon['formats'][number]> | 'ASCII'
+
+export const formatFormat = (
+  format: string,
+  isPreV3: boolean // we need to know whether it's pre-V3 https://www.rfc-editor.org/rpc/wiki/doku.php?id=rfc_metadata_in_the_v3_era
+): UppercaseFormats => {
+  switch (format) {
+    case 'txt':
+      return isPreV3 ? 'ASCII' : 'TXT'
+    case 'xml':
+      return 'XML'
+    case 'html':
+      return 'HTML'
+    case 'htmlized':
+      return 'HTMLIZED'
+    case 'pdf':
+      return 'PDF'
+    case 'ps':
+      return 'PS'
+  }
+  throw Error(`Unexpected format "${format}"`)
+}

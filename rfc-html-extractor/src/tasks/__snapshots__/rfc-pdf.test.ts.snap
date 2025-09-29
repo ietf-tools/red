@@ -712,7 +712,10 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
     "obsoleted_by": [],
     "pages": 22,
     "published": "2025-06-17",
-    "status": "Informational",
+    "status": {
+      "name": "Informational",
+      "slug": "fyi",
+    },
     "stream": {
       "desc": "Internet Engineering Task Force (IETF)",
       "name": "IETF",

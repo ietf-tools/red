@@ -9,45 +9,127 @@ test('parseRfcStatusSlug: bad inputs', () => {
 })
 
 test('parseRfcStatusSlug: good inputs', () => {
-  expect(parseRfcStatusSlug('Best Current Practice')).toBe(
-    'Best Current Practice'
-  )
-  expect(parseRfcStatusSlug('best-current-practice')).toBe(
-    'Best Current Practice'
-  )
-  expect(parseRfcStatusSlug('bcp')).toBe('Best Current Practice')
-  expect(parseRfcStatusSlug('BCP')).toBe('Best Current Practice')
+  expect(parseRfcStatusSlug('Best Current Practice')).toStrictEqual({
+    slug: 'bcp',
+    name: 'Best Current Practice'
+  })
+  expect(parseRfcStatusSlug('best-current-practice')).toStrictEqual({
+    slug: 'bcp',
+    name: 'Best Current Practice'
+  })
+  expect(parseRfcStatusSlug('bcp')).toStrictEqual({
+    slug: 'bcp',
+    name: 'Best Current Practice'
+  })
+  expect(parseRfcStatusSlug('BCP')).toStrictEqual({
+    slug: 'bcp',
+    name: 'Best Current Practice'
+  })
 
-  expect(parseRfcStatusSlug('experimental')).toBe('Experimental')
-  expect(parseRfcStatusSlug('Experimental')).toBe('Experimental')
+  expect(parseRfcStatusSlug('experimental')).toStrictEqual({
+    slug: 'experimental',
+    name: 'Experimental'
+  })
+  expect(parseRfcStatusSlug('Experimental')).toStrictEqual({
+    slug: 'experimental',
+    name: 'Experimental'
+  })
 
-  expect(parseRfcStatusSlug('historic')).toBe('Historic')
-  expect(parseRfcStatusSlug('his')).toBe('Historic')
-  expect(parseRfcStatusSlug('Historic')).toBe('Historic')
+  expect(parseRfcStatusSlug('historic')).toStrictEqual({
+    slug: 'his',
+    name: 'Historic'
+  })
+  expect(parseRfcStatusSlug('his')).toStrictEqual({
+    slug: 'his',
+    name: 'Historic'
+  })
+  expect(parseRfcStatusSlug('Historic')).toStrictEqual({
+    slug: 'his',
+    name: 'Historic'
+  })
+  expect(parseRfcStatusSlug('informational')).toStrictEqual({
+    slug: 'fyi',
+    name: 'Informational'
+  })
+  expect(parseRfcStatusSlug('Informational')).toStrictEqual({
+    slug: 'fyi',
+    name: 'Informational'
+  })
+  expect(parseRfcStatusSlug('FYI')).toStrictEqual({
+    slug: 'fyi',
+    name: 'Informational'
+  })
 
-  expect(parseRfcStatusSlug('informational')).toBe('Informational')
-  expect(parseRfcStatusSlug('Informational')).toBe('Informational')
-  expect(parseRfcStatusSlug('FYI')).toBe('Informational')
+  expect(parseRfcStatusSlug('Not Issued')).toStrictEqual({
+    slug: 'not-issued',
+    name: 'Not Issued'
+  })
+  expect(parseRfcStatusSlug('Not-Issued')).toStrictEqual({
+    slug: 'not-issued',
+    name: 'Not Issued'
+  })
+  expect(parseRfcStatusSlug('not issued')).toStrictEqual({
+    slug: 'not-issued',
+    name: 'Not Issued'
+  })
+  expect(parseRfcStatusSlug('notissued')).toStrictEqual({
+    slug: 'not-issued',
+    name: 'Not Issued'
+  })
 
-  expect(parseRfcStatusSlug('Not Issued')).toBe('Not Issued')
-  expect(parseRfcStatusSlug('Not-Issued')).toBe('Not Issued')
-  expect(parseRfcStatusSlug('not issued')).toBe('Not Issued')
-  expect(parseRfcStatusSlug('notissued')).toBe('Not Issued')
+  expect(parseRfcStatusSlug('Internet Standard')).toStrictEqual({
+    slug: 'standard',
+    name: 'Internet Standard'
+  })
+  expect(parseRfcStatusSlug('Internet-Standard')).toStrictEqual({
+    slug: 'standard',
+    name: 'Internet Standard'
+  })
+  expect(parseRfcStatusSlug('internetstandard')).toStrictEqual({
+    slug: 'standard',
+    name: 'Internet Standard'
+  })
+  expect(parseRfcStatusSlug('Standard')).toStrictEqual({
+    slug: 'standard',
+    name: 'Internet Standard'
+  })
+  expect(parseRfcStatusSlug('std')).toStrictEqual({
+    slug: 'standard',
+    name: 'Internet Standard'
+  })
 
-  expect(parseRfcStatusSlug('Internet Standard')).toBe('Internet Standard')
-  expect(parseRfcStatusSlug('Internet-Standard')).toBe('Internet Standard')
-  expect(parseRfcStatusSlug('internetstandard')).toBe('Internet Standard')
-  expect(parseRfcStatusSlug('Standard')).toBe('Internet Standard')
-  expect(parseRfcStatusSlug('std')).toBe('Internet Standard')
+  expect(parseRfcStatusSlug('Unknown')).toStrictEqual({
+    slug: 'unknown',
+    name: 'Unknown'
+  })
+  expect(parseRfcStatusSlug('unknown')).toStrictEqual({
+    slug: 'unknown',
+    name: 'Unknown'
+  })
 
-  expect(parseRfcStatusSlug('Unknown')).toBe('Unknown')
-  expect(parseRfcStatusSlug('unknown')).toBe('Unknown')
+  expect(parseRfcStatusSlug('proposed')).toStrictEqual({
+    slug: 'proposed',
+    name: 'Proposed Standard'
+  })
+  expect(parseRfcStatusSlug('proposedstandard')).toStrictEqual({
+    slug: 'proposed',
+    name: 'Proposed Standard'
+  })
+  expect(parseRfcStatusSlug('proposed-standard')).toStrictEqual({
+    slug: 'proposed',
+    name: 'Proposed Standard'
+  })
+  expect(parseRfcStatusSlug('Proposed Standard')).toStrictEqual({
+    slug: 'proposed',
+    name: 'Proposed Standard'
+  })
 
-  expect(parseRfcStatusSlug('proposed')).toBe('Proposed Standard')
-  expect(parseRfcStatusSlug('proposedstandard')).toBe('Proposed Standard')
-  expect(parseRfcStatusSlug('proposed-standard')).toBe('Proposed Standard')
-  expect(parseRfcStatusSlug('Proposed Standard')).toBe('Proposed Standard')
-
-  expect(parseRfcStatusSlug('draft')).toBe('Draft Standard')
-  expect(parseRfcStatusSlug('draftstandard')).toBe('Draft Standard')
+  expect(parseRfcStatusSlug('draft')).toStrictEqual({
+    slug: 'draft',
+    name: 'Draft Standard'
+  })
+  expect(parseRfcStatusSlug('draftstandard')).toStrictEqual({
+    slug: 'draft',
+    name: 'Draft Standard'
+  })
 })

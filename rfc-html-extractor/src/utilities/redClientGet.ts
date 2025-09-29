@@ -55,7 +55,7 @@ export const getRfcCommon = async (rfcNumber: number): Promise<RfcCommon> => {
 
 export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
   return {
-    ...blankRfcCommon,
+    ...structuredClone(blankRfcCommon),
     number: rfc.number,
     abstract: rfc.abstract,
     published: rfc.published,
@@ -148,6 +148,7 @@ export const getAllRFCs = async ({
 
   rfcs.sort((a, b) => a.number - b.number)
 
+  // Attempt to prevent mutation of object (shallow -- not a deep freeze).
   const frozenRfcs = Object.freeze(rfcs)
 
   return frozenRfcs

@@ -50,7 +50,10 @@ exports[`homepage 3 items 1`] = `
       "obsoleted_by": [],
       "pages": 15,
       "published": "2025-06-13",
-      "status": "Informational",
+      "status": {
+        "name": "Informational",
+        "slug": "fyi",
+      },
       "stream": {
         "desc": "Internet Engineering Task Force (IETF)",
         "name": "IETF",
@@ -95,7 +98,10 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
       "obsoleted_by": [],
       "pages": 24,
       "published": "2025-06-13",
-      "status": "Internet Standard",
+      "status": {
+        "name": "Internet Standard",
+        "slug": "standard",
+      },
       "stream": {
         "desc": "Internet Engineering Task Force (IETF)",
         "name": "IETF",
@@ -145,7 +151,10 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
       "obsoleted_by": [],
       "pages": 22,
       "published": "2025-06-17",
-      "status": "Informational",
+      "status": {
+        "name": "Informational",
+        "slug": "fyi",
+      },
       "stream": {
         "desc": "Internet Engineering Task Force (IETF)",
         "name": "IETF",

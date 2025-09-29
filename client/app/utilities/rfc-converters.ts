@@ -75,7 +75,10 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
       acronym: rfcJson.source,
       name: rfcJson.source
     },
-    area: undefined,
+    area: {
+      name: rfcJson.source,
+      acronym: rfcJson.source,
+    },
     stream: {
       slug: rfcJson.source,
       name: rfcJson.source
@@ -134,7 +137,8 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
     draft: {
       id: 0,
       number: parseFloat(rfcJson.draft),
-      title: rfcJson.draft
+      title: rfcJson.draft,
+      slug: rfcJson.draft
     },
     abstract: rfcJson.abstract,
     formats: rfcJson.format.map(parseRfcFormat),

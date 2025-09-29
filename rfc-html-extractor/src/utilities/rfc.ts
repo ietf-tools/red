@@ -5,7 +5,10 @@ export const blankRfcCommon: RfcCommon = {
   title: '',
   published: '1950-1-1',
   pages: 0,
-  status: 'Unknown',
+  status: {
+    slug: 'unknown',
+    name: 'Unknown'
+  },
   authors: [],
   group: {
     acronym: '',

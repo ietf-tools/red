@@ -12307,7 +12307,10 @@ Internet Architecture Board Standards Track                    [Page 56]
     "obsoleted_by": [],
     "pages": 22,
     "published": "2025-06-17",
-    "status": "Informational",
+    "status": {
+      "name": "Informational",
+      "slug": "fyi",
+    },
     "stream": {
       "desc": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
@@ -157632,7 +157635,10 @@ document:",
     "obsoleted_by": [],
     "pages": 22,
     "published": "2025-06-17",
-    "status": "Informational",
+    "status": {
+      "name": "Informational",
+      "slug": "fyi",
+    },
     "stream": {
       "desc": "Internet Engineering Task Force (IETF)",
       "name": "IETF",
