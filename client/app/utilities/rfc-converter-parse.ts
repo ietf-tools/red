@@ -5,74 +5,73 @@ export const parseRfcStatusSlug = (
 ): RfcCommon['status'] => {
   const normalisedSlug = rfcStatusSlug?.toLowerCase().replace(/[^a-z]/g, '')
 
-  let slug: RfcCommon['status']['slug'] | undefined
-  let name: RfcCommon['status']['name'] | undefined
-
   switch (normalisedSlug) {
     case 'bestcurrentpractice':
     case 'bcp':
-      slug = 'bcp'
-      name = 'Best Current Practice'
-      break
+      return {
+        slug: 'bcp',
+        name: 'Best Current Practice'
+      }
 
     case 'experimental':
-      slug = 'experimental'
-      name = 'Experimental'
-      break
+      return {
+        slug: 'experimental',
+        name: 'Experimental'
+      }
 
     case 'his':
     case 'historic':
-      slug = 'his'
-      name = 'Historic'
-      break
+      return {
+        slug: 'his',
+        name: 'Historic'
+      }
 
     case 'fyi':
     case 'informational':
-      slug = 'fyi'
-      name = 'Informational'
-      break
+      return {
+        slug: 'fyi',
+        name: 'Informational'
+      }
 
     case 'notissued':
-      slug = 'not-issued'
-      name = 'Not Issued'
-      break
+      return {
+        slug: 'not-issued',
+        name: 'Not Issued'
+      }
 
     case 'internetstandard':
     case 'standard':
     case 'standardstrack':
     case 'std':
-      slug = 'standard'
-      name = 'Internet Standard'
-      break
+      return {
+        slug: 'standard',
+        name: 'Internet Standard'
+      }
 
     case 'unknown':
-      slug = 'unknown'
-      name = 'Unknown'
-      break
+      return {
+        slug: 'unknown',
+        name: 'Unknown'
+      }
 
     case 'proposedstandard':
     case 'proposed':
-      slug = 'proposed'
-      name = 'Proposed Standard'
-      break
+      return {
+        slug: 'proposed',
+        name: 'Proposed Standard'
+      }
 
     case 'draftstandard':
     case 'draft':
-      slug = 'draft'
-      name = 'Draft Standard'
-      break
+      return {
+        slug: 'draft',
+        name: 'Draft Standard'
+      }
   }
 
-  if (!slug || !name) {
-    throw Error(
-      `Unable to parse status slug "${rfcStatusSlug}" (normalized as "${normalisedSlug}"). ${JSON.stringify({ name, typeofName: typeof name, slug, typeofSlug: typeof slug })}`
-    )
-  }
-
-  return {
-    slug,
-    name
-  }
+  throw Error(
+    `Unable to parse status slug "${rfcStatusSlug}" (normalized as "${normalisedSlug}").`
+  )
 }
 
 export const parseRfcStreamSlug = (

@@ -39,18 +39,6 @@ export type TableOfContents = z.infer<typeof TableOfContentsSchema>
 /**
  * RFC Common
  */
-export const RfcCommonStatusSlugSchema = z.union([
-  z.literal('bcp'),
-  z.literal('experimental'),
-  z.literal('his'),
-  z.literal('fyi'),
-  z.literal('not-issued'),
-  z.literal('standard'),
-  z.literal('unknown'),
-  z.literal('proposed'),
-  z.literal('draft')
-])
-
 export const RfcCommonStreamSlugSchema = z.union([
   z.literal('IETF'),
   z.literal('IAB'),
@@ -60,22 +48,44 @@ export const RfcCommonStreamSlugSchema = z.union([
   z.literal('Legacy')
 ])
 
-export const RfcCommonStatusNameSchema = z.union([
-  z.literal('Best Current Practice'),
-  z.literal('Experimental'),
-  z.literal('Historic'),
-  z.literal('Informational'),
-  z.literal('Not Issued'),
-  z.literal('Internet Standard'),
-  z.literal('Unknown'),
-  z.literal('Proposed Standard'),
-  z.literal('Draft Standard')
+export const RfcCommonStatusSchema = z.union([
+  z.object({
+    slug: z.literal('bcp'),
+    name: z.literal('Best Current Practice')
+  }),
+  z.object({
+    slug: z.literal('experimental'),
+    name: z.literal('Experimental')
+  }),
+  z.object({
+    slug: z.literal('his'),
+    name: z.literal('Historic')
+  }),
+  z.object({
+    slug: z.literal('fyi'),
+    name: z.literal('Informational')
+  }),
+  z.object({
+    slug: z.literal('not-issued'),
+    name: z.literal('Not Issued')
+  }),
+  z.object({
+    slug: z.literal('standard'),
+    name: z.literal('Internet Standard')
+  }),
+  z.object({
+    slug: z.literal('unknown'),
+    name: z.literal('Unknown')
+  }),
+  z.object({
+    slug: z.literal('proposed'),
+    name: z.literal('Proposed Standard')
+  }),
+  z.object({
+    slug: z.literal('draft'),
+    name: z.literal('Draft Standard')
+  })
 ])
-
-export const RfcCommonStatusSchema = z.object({
-  slug: RfcCommonStatusSlugSchema,
-  name: RfcCommonStatusNameSchema
-})
 
 export const RfcCommonSubseriesTypeSchema = z.union([
   z.literal('bcp'),

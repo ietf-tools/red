@@ -27,7 +27,7 @@ export const uploadRfcIndexXml = async (
 
 const W3C_SCHEMA_URL = 'http://www.w3.org/2001/XMLSchema-instance'
 const SCHEMA_URL = 'https://www.rfc-editor.org/rfc-index.xsd'
-const NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
+const RPC_NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 
 export const renderRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>
@@ -36,7 +36,7 @@ export const renderRfcIndexXml = async (
   const xsd = await readFile(xsdPath, 'utf-8')
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
-  xml += `<rfc-index xmlns="${NAMESPACE}" xmlns:xsi="${W3C_SCHEMA_URL}" xsi:schemaLocation="${NAMESPACE} ${SCHEMA_URL}">\n`
+  xml += `<rfc-index xmlns="${RPC_NAMESPACE}" xmlns:xsi="${W3C_SCHEMA_URL}" xsi:schemaLocation="${RPC_NAMESPACE} ${SCHEMA_URL}">\n`
   xml += await renderBCPs(allRfcs)
   xml += await renderFYIs(allRfcs)
   xml += await renderRFCs(allRfcs)
@@ -62,7 +62,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   const result = parser.parseFromString('<div></div>', 'application/xml')
 
   const createElementNS = (nodeName: string, text?: string): Element => {
-    const element = result.createElementNS(NAMESPACE, nodeName)
+    const element = result.createElementNS(RPC_NAMESPACE, nodeName)
     if (text) {
       const textNode = result.createTextNode(text)
       element.append(textNode)
@@ -77,7 +77,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
     listItemNodeName: string,
     texts: string[]
   ): Element => {
-    const element = result.createElementNS(NAMESPACE, listNodeName)
+    const element = result.createElementNS(RPC_NAMESPACE, listNodeName)
     texts.forEach((text) => {
       const childElement = createElementNS(listItemNodeName)
       const textNode = result.createTextNode(text)
@@ -108,7 +108,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
         rfcEntry.appendChild(authorElement)
       })
     } else {
-      // FIXME: every RFC should have authors. We should throw if attempting to generate with an empty author
+      // FIXME: every RFC should have authors. We should throw if attempting to generate an RFC with an empty author
       rfcEntry.appendChild(createElementListNS('author', 'name', ['']))
     }
 
