@@ -96,6 +96,6 @@ export const parseRfcStreamSlug = (
     case 'legacy':
       return 'Legacy'
   }
-  
+
   throw Error(`Unable to parse stream slug "${streamSlug}"`)
 }
