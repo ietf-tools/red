@@ -16,7 +16,7 @@ export const uploadRfcIndexTxt = async (
 ): Promise<boolean> => {
   const txt = await renderRfcIndexTxt(allRfcs, rfcNumberColumnMinimumCharWidth)
   await saveToS3(RFC_INDEX_TXT_PATH, txt)
-  console.log('Generated rfc-index.txt')
+  console.log('Uploaded rfc-index.txt')
   return true
 }
 
