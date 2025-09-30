@@ -32,7 +32,7 @@ const NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 export const renderRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>
 ): Promise<{ xml: string; xsd: string }> => {
-  const xsdPath = resolve(__dirname, '../assets/rfc-index.xsd')
+  const xsdPath = resolve(import.meta.dirname, '../assets/rfc-index.xsd')
   const xsd = await readFile(xsdPath, 'utf-8')
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
