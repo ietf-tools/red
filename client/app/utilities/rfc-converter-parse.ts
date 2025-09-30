@@ -88,6 +88,7 @@ export const parseRfcStreamSlug = (
       return 'IAB'
     case 'irtf':
       return 'IRTF'
+    case 'ise':
     case 'independent':
       return 'INDEPENDENT'
     case 'editorial':
@@ -95,5 +96,6 @@ export const parseRfcStreamSlug = (
     case 'legacy':
       return 'Legacy'
   }
+  
   throw Error(`Unable to parse stream slug "${streamSlug}"`)
 }
