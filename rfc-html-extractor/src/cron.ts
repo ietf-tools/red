@@ -7,8 +7,8 @@ import { getAllRFCs, getRedClient } from './utilities/redClientGet.ts'
 
 const RFC_NUMBER_MINIMUM_CHAR_WIDTH = 5 // for Red the default width is 5 chars to handle eg RFC10000 (aka the RFC10k problem).
 
-export const processCron = async (): Promise<void> => {
-  console.log('Triggered by a cron job')
+export const main = async (): Promise<void> => {
+  console.log('Processing cron jobs')
   const api = getRedClient()
   const allRfcs = await getAllRFCs({ api }).catch((e) => {
     console.error("getAllRFCs error", e)
@@ -23,3 +23,5 @@ export const processCron = async (): Promise<void> => {
     uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH)
   ])
 }
+
+main()
