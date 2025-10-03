@@ -245,6 +245,16 @@ export class ApiClient {
 
     docRetrieve: (rfc_number: number) => {
       return this.Fetch<Rfc>('get', `/api/red/doc/${rfc_number}/`, {})
+    },
+
+    subseriesList: (search: { type?: string[] }) => {
+      return this.Fetch<SubseriesDoc[]>('get', '/api/red/subseries/', {
+        search
+      })
+    },
+
+    subseriesRetrieve: (name: string) => {
+      return this.Fetch<SubseriesDoc>('get', `/api/red/subseries/${name}/`, {})
     }
   }
 
@@ -266,6 +276,11 @@ export type AuthorPerson = {
 }
 
 export type ClientErrorEnum = 'client_error'
+
+export type ContainingSubseries = {
+  name: string
+  type: string
+}
 
 export type CreateDemoDraftError =
   | CreateDemoDraftNonFieldErrorsErrorComponent
@@ -458,6 +473,7 @@ export type FullDraft = {
   authors: DocumentAuthor[]
   shepherd?: string
   intended_std_level?: string | null
+  consensus?: boolean | null
 }
 
 export type GetDraftAuthorsErrorResponse400 = ParseErrorResponse
@@ -580,13 +596,32 @@ export type RedDocListValidationError = {
 
 export type RedDocRetrieveErrorResponse400 = ParseErrorResponse
 
+export type RedSubseriesListError = RedSubseriesListTypeErrorComponent
+
+export type RedSubseriesListErrorResponse400 =
+  | RedSubseriesListValidationError
+  | ParseErrorResponse
+
+export type RedSubseriesListTypeErrorComponent = {
+  attr: 'type'
+  code: 'invalid_choice' | 'invalid_list' | 'invalid_pk_value'
+  detail: string
+}
+
+export type RedSubseriesListValidationError = {
+  type: ValidationErrorEnum
+  errors: RedSubseriesListError[]
+}
+
+export type RedSubseriesRetrieveErrorResponse400 = ParseErrorResponse
+
 export type Reference = {
   id?: number
   name?: string
 }
 
 export type RelatedDraft = {
-  id?: number
+  id: number
   name: string
   title: string
 }
@@ -618,7 +653,7 @@ export type Rfc = {
   obsoleted_by?: ReverseRelatedRfc[]
   updates?: RelatedRfc[]
   updated_by?: ReverseRelatedRfc[]
-  is_also?: string[]
+  subseries?: ContainingSubseries[]
   see_also?: string[]
   draft?: RelatedDraft
   abstract?: string
@@ -631,6 +666,7 @@ export type Rfc = {
 export type RfcAuthor = {
   person: number
   name: string
+  titlepage_name?: string
   email?: string
   affiliation?: string
   country?: string
@@ -651,7 +687,7 @@ export type RfcMetadata = {
   obsoleted_by?: ReverseRelatedRfc[]
   updates?: RelatedRfc[]
   updated_by?: ReverseRelatedRfc[]
-  is_also?: string[]
+  subseries?: ContainingSubseries[]
   see_also?: string[]
   draft?: RelatedDraft
   abstract?: string
@@ -696,8 +732,39 @@ export type SubmittedToQueue = {
   name: string
   stream?: string | null
   submitted?: Date | null
+  consensus?: boolean | null
 }
 
 export type SubmittedToRpcErrorResponse400 = ParseErrorResponse
+
+export type SubseriesContent = {
+  number: number
+  title: string
+  published: string
+  status: RfcStatus
+  pages?: number | null
+  authors: RfcAuthor[]
+  group: Group
+  area?: Group
+  stream: StreamName
+  identifiers?: DocIdentifier[]
+  obsoletes?: RelatedRfc[]
+  obsoleted_by?: ReverseRelatedRfc[]
+  updates?: RelatedRfc[]
+  updated_by?: ReverseRelatedRfc[]
+  subseries?: ContainingSubseries[]
+  see_also?: string[]
+  draft?: RelatedDraft
+  abstract?: string
+  formats: FormatsEnum[]
+  keywords?: string[]
+  errata?: string[]
+}
+
+export type SubseriesDoc = {
+  name: string
+  type?: string | null
+  contents: SubseriesContent[]
+}
 
 export type ValidationErrorEnum = 'validation_error'
