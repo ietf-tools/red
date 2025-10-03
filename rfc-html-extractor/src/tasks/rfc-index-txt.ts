@@ -16,7 +16,7 @@ export const uploadRfcIndexTxt = async (
 ): Promise<boolean> => {
   const txt = await renderRfcIndexTxt(allRfcs, rfcNumberColumnMinimumCharWidth)
   await saveToS3(RFC_INDEX_TXT_PATH, txt)
-  console.log('Uploaded rfc-index.txt')
+  console.log('Uploaded', RFC_INDEX_TXT_PATH)
   return true
 }
 
@@ -33,7 +33,7 @@ export const renderRfcIndexTxt = async (
     rfcNumberColumnCalculatedCharWidth
   )
   const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
-  const column2width = 72 - rfcNumberColumnCharWidth // yes this will cause reflow once RFC 10k, 100k, etc. occur
+  const column2width = 72 - rfcNumberColumnCharWidth
 
   // array of whitespace chars where the index = number of spaces
   const whitespace = new Array(column1Width + 1)

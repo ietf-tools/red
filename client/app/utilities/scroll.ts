@@ -68,7 +68,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
         elements.some((element) => element.id === id)
       )
       const errorText = `Some ids weren't found (${elements.length} !== ${uniqueIds.length}) missing ones: `
-      if (!isProd(location.toString())) {
+      if (!isProd()) {
         throw Error(`${errorText} ${JSON.stringify(idsNotFound)}`)
       } else {
         console.error(errorText, idsNotFound)

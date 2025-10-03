@@ -326,7 +326,7 @@ export const needsCloudflareHeaderForApi = (apiBaseUrl: string): boolean =>
 /**
  * Based on the URL of the API detect whether it's prod
  */
-export const isProd = (url: string): boolean => !import.meta.dev
+export const isProd = (): boolean => !import.meta.dev
 
 export const isRfcEditorSite = (href?: string): boolean => {
   if (href === undefined) {

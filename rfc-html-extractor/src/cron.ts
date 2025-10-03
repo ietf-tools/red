@@ -1,4 +1,5 @@
 import { uploadHomepageLatest } from './tasks/homepage-latest.ts'
+import { uploadInNotesRfcRefDotTxt } from './tasks/in-notes-rfc-ref-txt.ts'
 import { uploadFeeds } from './tasks/rfc-feeds.ts'
 import { uploadRfcIndexTxt } from './tasks/rfc-index-txt.ts'
 import { uploadRfcIndexXml } from './tasks/rfc-index-xml.ts'
@@ -18,6 +19,7 @@ export const processCron = async (): Promise<void> => {
     uploadHomepageLatest(allRfcs),
     uploadRfcIndexTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
     uploadFeeds(allRfcs),
-    uploadRfcIndexXml(allRfcs)
+    uploadRfcIndexXml(allRfcs),
+    uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH)
   ])
 }

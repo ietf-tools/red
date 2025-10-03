@@ -21,7 +21,7 @@ export const uploadFeeds = async (
     saveToS3(RFC_FEED_ATOM_PATH, atom1)
   ])
 
-  console.log('Uploaded RSS/Atom feeds')
+  console.log('Uploaded', RFC_FEED_RSS_PATH, RFC_FEED_ATOM_PATH)
 
   return true
 }

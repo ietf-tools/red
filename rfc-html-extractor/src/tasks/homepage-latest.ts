@@ -9,7 +9,7 @@ export const uploadHomepageLatest = async (
 ): Promise<boolean> => {
   const homepageLatest = await renderHomepageLatest(allRfcs)
   await saveToS3(HOMEPAGE_LATEST_PATH, JSON.stringify(homepageLatest))
-  console.log('Uploaded homepage latest RFCs')
+  console.log('Uploaded', HOMEPAGE_LATEST_PATH)
   return true
 }
 

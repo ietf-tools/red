@@ -20,8 +20,9 @@ export const processRfc = async (rfcNumber: number): Promise<boolean> => {
   const rfcDocFromPdf = await rfcBucketPdfToRfcDocument(rfcNumber, true, getRfcCommon)
   console.log(' - received doc', rfcDocFromPdf?.documentHtmlType)
   if (rfcDocFromPdf) {
-    await saveToS3(rfcJSONPathBuilder(rfcNumber), JSON.stringify(rfcDocFromPdf))
-    console.log(` - uploaded rfcDoc for ${rfcNumber}`)
+    const rfcDocS3Path = rfcJSONPathBuilder(rfcNumber)
+    await saveToS3(rfcDocS3Path, JSON.stringify(rfcDocFromPdf))
+    console.log(` - uploaded rfcDoc for ${rfcDocS3Path}`)
     return true
   }
   console.error(` - nothing else to try after PDF for RFC ${rfcNumber}`)

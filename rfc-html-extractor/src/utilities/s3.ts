@@ -43,3 +43,5 @@ export const RFC_INDEX_XSD_PATH = 'other/rfc-index.xsd' as const
 export const RFC_FEED_RSS_PATH = 'other/rfcrss.xml' as const
 
 export const RFC_FEED_ATOM_PATH = 'other/rfcatom.xml' as const
+
+export const IN_NOTES_RFC_REF_DOT_TXT_PATH = 'other/in-notes/rfc-ref.txt'

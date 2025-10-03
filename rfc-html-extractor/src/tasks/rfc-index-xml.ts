@@ -19,9 +19,9 @@ export const uploadRfcIndexXml = async (
 ): Promise<boolean> => {
   const { xml, xsd } = await renderRfcIndexXml(allRfcs)
   await saveToS3(RFC_INDEX_XML_PATH, xml)
-  console.log('Uploaded rfc-index.xml')
+  console.log('Uploaded', RFC_INDEX_XML_PATH)
   await saveToS3(RFC_INDEX_XSD_PATH, xsd)
-  console.log('Uploaded rfc-index.xsd')
+  console.log('Uploaded', RFC_INDEX_XSD_PATH)
   return true
 }
 
