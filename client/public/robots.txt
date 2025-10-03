@@ -1,9 +1,0 @@
-User-agent: *
-Disallow: /authors/
-Disallow: /in-notes/authors/
-Disallow: /in-notes/rerendered/
-Disallow: /rfc/authors/
-Disallow: /rfc/rerendered/
-Disallow: /rfc/v3test/
-# FIXME: generate this file
-Sitemap: https://www.rfc-editor.org/siteindex.xml
