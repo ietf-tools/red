@@ -299,9 +299,9 @@ export const textToAnchorId = (text: string): string | undefined => {
 /**
  * Try parsing a relative url `href` string into a URL, relative to prod
  */
-const tryParseHref = (href: string): URL | undefined => {
+const tryParseHrefRelativeToProd = (href: string): URL | undefined => {
   try {
-    return new URL(href)
+    return new URL(href, PUBLIC_SITE)
   } catch (e: unknown) {
     console.info(
       `Failed to parse href ${JSON.stringify(href)} into URL. Error:`,
@@ -366,7 +366,7 @@ export const parseMaybeRfcLink = (
     if (!rfcMatch) return undefined
     return parseRFCId(rfcMatch[0])
   }
-  const hrefUrl = tryParseHref(href)
+  const hrefUrl = tryParseHrefRelativeToProd(href)
   if (!hrefUrl) {
     return undefined
   }
