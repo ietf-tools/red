@@ -20,7 +20,7 @@ export default defineNuxtPlugin({
       route,
       (value) => {
         try {
-          let newUrl = new URL(value.fullPath, location.toString()).toString()
+          const newUrl = new URL(value.fullPath, location.toString()).toString()
           const matomoEventQueue = window._paq
           if (Array.isArray(matomoEventQueue)) {
             matomoEventQueue.push(['setCustomUrl', newUrl])

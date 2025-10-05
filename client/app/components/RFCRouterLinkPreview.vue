@@ -1,54 +1,28 @@
 <template>
-  <GraphicsIETFMotif
-    class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden"
-    :opacity="0.04"
-  />
+  <GraphicsIETFMotif class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden" :opacity="0.04" />
   <p class="text-base text-blue-900 dark:text-white font-bold leading-5">
     {{ props.rfcJson.title }}
   </p>
   <div class="pt-1">
-    <Tag
-      size="small"
-      :text="tagText"
-    />
+    <Tag size="small" :text="tagText" />
   </div>
   <p class="leading-5 pt-2 text-xs text-pretty">
     {{ props.rfcJson.abstract }}
   </p>
-  <ul
-    v-if="list1"
-    class="text-base text-blue-900 dark:text-white"
-  >
-    <li
-      v-for="(part, index) in list1"
-      :key="index"
-      class="inline"
-    >
+  <ul v-if="list1" class="text-base text-blue-900 dark:text-white">
+    <li v-for="(part, index) in list1" :key="index" class="inline">
       <GraphicsDiamond v-if="index > 0" />{{ part }}
     </li>
   </ul>
-  <ul
-    v-if="list2"
-    class="text-base text-gray-800 mt-1 dark:text-white"
-  >
-    <li
-      v-for="(part, index) in list2"
-      :key="index"
-      class="inline"
-    >
-      <GraphicsDiamond
-        v-if="index > 0"
-        class="align-middle"
-      />{{ part }}
+  <ul v-if="list2" class="text-base text-gray-800 mt-1 dark:text-white">
+    <li v-for="(part, index) in list2" :key="index" class="inline">
+      <GraphicsDiamond v-if="index > 0" class="align-middle" />{{ part }}
     </li>
   </ul>
-  <p
-    v-if="obsoletedBy"
-    :class="[
-      'text-red-700 dark:text-red-300 text-base print:text-black',
-      { 'mt-2': isMobileAbstractOpen }
-    ]"
-  >
+  <p v-if="obsoletedBy" :class="[
+    'text-red-700 dark:text-red-300 text-base print:text-black',
+    { 'mt-2': isMobileAbstractOpen }
+  ]">
     <Renderable :val="obsoletedBy" />
   </p>
 
@@ -61,10 +35,8 @@
   </p>
 
   <p class="clear-both text-right mt-6 mb-10">
-    <A
-      :href="rfcPathBuilder(props.rfcJson.doc_id)"
-      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6"
-    >
+    <A :href="rfcPathBuilder(props.rfcJson.doc_id)"
+      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6">
       <component :is="formattedTitle" />
       <GraphicsChevron class="ml-2 inline -rotate-90" />
     </A>
@@ -90,7 +62,7 @@ type Props = {
 
 const props = defineProps<Props>()
 
-onMounted(()=> {
+onMounted(() => {
   analyticsMatomoTrackLinkPreview(props.rfcJson.doc_id)
 })
 
