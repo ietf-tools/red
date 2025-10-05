@@ -5,13 +5,29 @@ declare global {
 }
 
 export const analyticsMatomoTrackLinkPreview = (id: string): void => {
+  eventuallyDispatchEvent(['trackEvent', 'LinkPreview', id])
+}
+
+const eventuallyDispatchEvent = (
+  events: Window['_paq'],
+  attemptsRemaining = 5
+) => {
   const matomoEventQueue = window._paq
-  if (Array.isArray(matomoEventQueue)) {
-    matomoEventQueue.push(['trackEvent', 'LinkPreview', id])
-    console.info('Analytics:', 'trackEvent', 'LinkPreview', id)
+  if (matomoEventQueue !== undefined) {
+    events?.forEach((event) => {
+      matomoEventQueue.push(event)
+    })
+    console.info('Analytic (Matomo) queued:', events)
+  } else if (attemptsRemaining > 0) {
+    setTimeout(() => {
+      eventuallyDispatchEvent(events, attemptsRemaining - 1)
+    }, 500)
   } else {
     console.error(
-      'Unable to track page view due to lack of `window._paq` variable'
+      'Unable to dispatch analytics events',
+      events,
+      '. `window._paq` was ',
+      window._paq
     )
   }
 }

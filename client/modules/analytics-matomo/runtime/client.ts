@@ -5,6 +5,30 @@ declare global {
   }
 }
 
+const eventuallyDispatchEvent = (
+  events: Window['_paq'],
+  attemptsRemaining = 5
+) => {
+  const matomoEventQueue = window._paq
+  if (matomoEventQueue !== undefined) {
+    events?.forEach((event) => {
+      matomoEventQueue.push(event)
+    })
+    console.info('Analytic (Matomo) queued:', events)
+  } else if (attemptsRemaining > 0) {
+    setTimeout(() => {
+      eventuallyDispatchEvent(events, attemptsRemaining - 1)
+    }, 500)
+  } else {
+    console.error(
+      'Unable to dispatch analytics events',
+      events,
+      '. `window._paq` was ',
+      window._paq
+    )
+  }
+}
+
 export default defineNuxtPlugin({
   setup(_nuxtApp) {
     useHead({
@@ -21,14 +45,7 @@ export default defineNuxtPlugin({
       (value) => {
         try {
           const newUrl = new URL(value.fullPath, location.toString()).toString()
-          const matomoEventQueue = window._paq
-          if (matomoEventQueue !== undefined) {
-            matomoEventQueue.push(['setCustomUrl', newUrl])
-            matomoEventQueue.push('trackPageView')
-            console.info('Analytics:', 'trackPageView', newUrl)
-          } else {
-            console.error('Unable to track page view due to lack of `window._paq` variable. Was: ', window._paq)
-          }
+          eventuallyDispatchEvent([['setCustomUrl', newUrl], 'trackPageView'])
         } catch (e) {
           console.error('Analytics matomo error: ', e)
         }
