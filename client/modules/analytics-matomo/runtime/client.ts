@@ -5,6 +5,10 @@ declare global {
   }
 }
 
+type ImportMetaTest = {
+  VITEST: 'true'
+}
+
 const eventuallyDispatchEvent = (
   events: Window['_paq'],
   attemptsRemaining = 5
@@ -31,8 +35,7 @@ const eventuallyDispatchEvent = (
 
 export default defineNuxtPlugin({
   setup(_nuxtApp) {
-    console.log(import.meta)
-    if (import.meta.vitest) {
+    if ((import.meta as unknown as ImportMetaTest).VITEST) {
       console.log('Not running Analytics during test')
       return
     }
