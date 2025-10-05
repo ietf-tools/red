@@ -22,12 +22,12 @@ export default defineNuxtPlugin({
         try {
           const newUrl = new URL(value.fullPath, location.toString()).toString()
           const matomoEventQueue = window._paq
-          if (Array.isArray(matomoEventQueue)) {
+          if (matomoEventQueue !== undefined) {
             matomoEventQueue.push(['setCustomUrl', newUrl])
             matomoEventQueue.push('trackPageView')
-            console.info('[PageView]', newUrl)
+            console.info('Analytics:', 'trackPageView', newUrl)
           } else {
-            console.error('Unable to track page view due to lack of `window._paq` variable')
+            console.error('Unable to track page view due to lack of `window._paq` variable. Was: ', window._paq)
           }
         } catch (e) {
           console.error('Analytics matomo error: ', e)
