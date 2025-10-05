@@ -31,6 +31,11 @@ const eventuallyDispatchEvent = (
 
 export default defineNuxtPlugin({
   setup(_nuxtApp) {
+if(import.meta.vitest) {
+  console.log("Not running Analytics during test")
+  return
+}
+
     useHead({
       script: [
         {
