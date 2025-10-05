@@ -1,4 +1,4 @@
-// intentionally not from a utility function
+// This Nuxt module is supposed to be standalone so it intentionally doesn't import shared code from the rest of the project
 declare global {
   interface Window {
     _paq?: (string | string[])[]

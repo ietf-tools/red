@@ -82,12 +82,17 @@ import {
   formatTitlePlaintext,
   parseRfcJsonPubDateToISO
 } from '~/utilities/rfc-converters-utils'
+import { analyticsMatomoTrackLinkPreview } from '~/utilities/analytics-matomo'
 
 type Props = {
   rfcJson: RFCJSON
 }
 
 const props = defineProps<Props>()
+
+onMounted(()=> {
+  analyticsMatomoTrackLinkPreview(props.rfcJson.doc_id)
+})
 
 const isMobileAbstractOpen = ref<boolean>(false)
 
