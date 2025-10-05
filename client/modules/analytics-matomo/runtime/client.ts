@@ -31,10 +31,11 @@ const eventuallyDispatchEvent = (
 
 export default defineNuxtPlugin({
   setup(_nuxtApp) {
-if(import.meta.vitest) {
-  console.log("Not running Analytics during test")
-  return
-}
+    console.log(import.meta)
+    if (import.meta.vitest) {
+      console.log('Not running Analytics during test')
+      return
+    }
 
     useHead({
       script: [
@@ -50,10 +51,7 @@ if(import.meta.vitest) {
       (value) => {
         try {
           const newUrl = new URL(value.fullPath, location.toString()).toString()
-          eventuallyDispatchEvent([
-            ['setCustomUrl', newUrl],
-            'trackPageView'
-          ])
+          eventuallyDispatchEvent([['setCustomUrl', newUrl], 'trackPageView'])
         } catch (e) {
           console.error('Analytics matomo error: ', e)
         }
