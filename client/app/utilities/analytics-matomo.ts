@@ -9,7 +9,12 @@ export const analyticsMatomoTrackLinkPreview = (id: string): void => {
     console.log('Not running Analytics during test')
     return
   } else {
-    console.log('Not in test environment')
+    console.log(
+      'Not in test environment',
+      Object.keys(import.meta).filter((key) =>
+        key.toLowerCase().includes('test')
+      )
+    )
   }
   eventuallyDispatchEvent([['trackEvent', 'LinkPreview', id]])
 }
