@@ -41,7 +41,6 @@ export default defineNuxtPlugin({
       import.meta.env.test ||
       import.meta.env.vitest
     ) {
-      console.log('Not running Analytics during test')
       return
     }
 
