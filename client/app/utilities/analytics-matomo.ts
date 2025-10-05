@@ -5,6 +5,12 @@ declare global {
 }
 
 export const analyticsMatomoTrackLinkPreview = (id: string): void => {
+  if ('VITEST' in import.meta) {
+    console.log('Not running Analytics during test')
+    return
+  } else {
+    console.log('Not in test environment')
+  }
   eventuallyDispatchEvent([['trackEvent', 'LinkPreview', id]])
 }
 
