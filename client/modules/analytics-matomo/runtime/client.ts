@@ -5,10 +5,6 @@ declare global {
   }
 }
 
-type ImportMetaTest = {
-  VITEST: 'true'
-}
-
 const eventuallyDispatchEvent = (
   events: Window['_paq'],
   attemptsRemaining = 5
