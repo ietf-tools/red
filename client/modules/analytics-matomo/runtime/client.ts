@@ -13,8 +13,8 @@ const eventuallyDispatchEvent = (
   if (matomoEventQueue !== undefined) {
     events?.forEach((event) => {
       matomoEventQueue.push(event)
+      console.info('Analytics (Matomo) queued:', event)
     })
-    console.info('Analytic (Matomo) queued:', events)
   } else if (attemptsRemaining > 0) {
     setTimeout(() => {
       eventuallyDispatchEvent(events, attemptsRemaining - 1)
@@ -45,7 +45,10 @@ export default defineNuxtPlugin({
       (value) => {
         try {
           const newUrl = new URL(value.fullPath, location.toString()).toString()
-          eventuallyDispatchEvent([['setCustomUrl', newUrl], 'trackPageView'])
+          eventuallyDispatchEvent([
+            ['setCustomUrl', newUrl],
+            'trackPageView'
+          ])
         } catch (e) {
           console.error('Analytics matomo error: ', e)
         }
