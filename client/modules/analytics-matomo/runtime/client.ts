@@ -35,16 +35,14 @@ const eventuallyDispatchEvent = (
 
 export default defineNuxtPlugin({
   setup(_nuxtApp) {
-    if ('VITEST' in import.meta) {
+    if (
+      import.meta.env.TEST ||
+      import.meta.env.VITEST ||
+      import.meta.env.test ||
+      import.meta.env.vitest
+    ) {
       console.log('Not running Analytics during test')
       return
-    } else {
-      console.log(
-        'Not in test environment',
-        Object.keys(import.meta).filter((key) =>
-          key.toLowerCase().includes('test')
-        )
-      )
     }
 
     useHead({
