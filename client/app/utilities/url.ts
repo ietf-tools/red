@@ -58,7 +58,9 @@ export const INTERNET_SOCIETY_URL = 'https://www.internetsociety.org'
 export const MATERIALS_URL = 'https://materials.rfc-editor.org'
 export const IAD_URL = 'https://iad.rfc-editor.org'
 export const DASHBOARD_URL = 'https://dashboard.rfc-editor.org'
+export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL = 'https://authors.ietf.org/'
 
+export const CONTACT_PATH = '/about/contact/'
 export const SEARCH_PATH = '/search/'
 
 export const API_HOMEPAGE_LATEST_PATH = `/api/v1/homepage-latest.json`
@@ -87,7 +89,6 @@ export const ALL_CLUSTERS_PATH = '/all_clusters/'
 export const STATUS_CHANGES_PATH = '/status-changes/'
 
 export const FIXME_IEN_INDEX_PATH = '/ien/ien-index/'
-export const FIXME_CONTACT_AT_IETF_PATH = '/contact/at-ietf/'
 export const FIXME_REPORTS_SUBPUB_STATS_PATH = '/reports/subpub_stats/'
 export const FIXME_RFCS_PER_YEAR_PATH = '/rfcs-per-year/'
 export const FIXME_ERRATA_DEFINITIONS_PATH = '/errata-definitions/'
@@ -115,7 +116,6 @@ export const API_ROUTES_TO_PRERENDER = [
  */
 const _FIXME_URLS = [
   FIXME_IEN_INDEX_PATH,
-  FIXME_CONTACT_AT_IETF_PATH,
   FIXME_REPORTS_SUBPUB_STATS_PATH,
   FIXME_RFCS_PER_YEAR_PATH,
   FIXME_ERRATA_DEFINITIONS_PATH,
