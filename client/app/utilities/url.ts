@@ -58,7 +58,7 @@ export const INTERNET_SOCIETY_URL = 'https://www.internetsociety.org'
 export const MATERIALS_URL = 'https://materials.rfc-editor.org'
 export const IAD_URL = 'https://iad.rfc-editor.org'
 export const DASHBOARD_URL = 'https://dashboard.rfc-editor.org'
-
+export const RFC_EDITOR_ERRATA_SEARCH_URL = 'https://errata.rfc-editor.org/search/'
 export const SEARCH_PATH = '/search/'
 
 export const API_HOMEPAGE_LATEST_PATH = `/api/v1/homepage-latest.json`
@@ -386,5 +386,5 @@ export const parseMaybeRfcLink = (
  *  * RFC 1866
  *  * https://stackoverflow.com/a/29948396
  */
-const typeSenseEncodeUriComponent = (uriComponent: string) =>
+export const typeSenseEncodeUriComponent = (uriComponent: string) =>
   encodeURIComponent(uriComponent).replace(/%20/g, '+')

@@ -21,6 +21,7 @@ export const legacySearchRedirectPathBuilder = (url: string): string => {
   const legacyURLParams = new URL(url, 'https://localhost/').searchParams
   const legacyObj: Record<string, string | string[]> = {}
 
+  // convert URL into object so we can validate it
   for (const [key, value] of legacyURLParams.entries()) {
     if (Object.prototype.hasOwnProperty.call(legacyObj, key)) {
       const legacyObjValue = legacyObj[key]
