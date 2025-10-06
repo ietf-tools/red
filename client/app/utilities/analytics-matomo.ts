@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    _paq?: (string | string[])[]
+    _paq?: string[][]
   }
 }
 

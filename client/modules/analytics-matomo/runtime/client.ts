@@ -1,31 +1,7 @@
 // This Nuxt module is supposed to be standalone so it intentionally doesn't import shared code from the rest of the project
 declare global {
   interface Window {
-    _paq?: (string | string[])[]
-  }
-}
-
-const eventuallyDispatchEvent = (
-  events: Window['_paq'],
-  attemptsRemaining = 5
-) => {
-  const matomoEventQueue = window._paq
-  if (matomoEventQueue !== undefined) {
-    events?.forEach((event) => {
-      matomoEventQueue.push(event)
-      console.info('Analytics (Matomo) queued:', event)
-    })
-  } else if (attemptsRemaining > 0) {
-    setTimeout(() => {
-      eventuallyDispatchEvent(events, attemptsRemaining - 1)
-    }, 500)
-  } else {
-    console.error(
-      'Unable to dispatch analytics events',
-      events,
-      '. `window._paq` was ',
-      window._paq
-    )
+    _paq?: string[][]
   }
 }
 
@@ -54,7 +30,7 @@ export default defineNuxtPlugin({
       (value) => {
         try {
           const newUrl = new URL(value.fullPath, location.toString()).toString()
-          eventuallyDispatchEvent([['setCustomUrl', newUrl], 'trackPageView'])
+          eventuallyDispatchEvent([['setCustomUrl', newUrl], ['trackPageView']])
         } catch (e) {
           console.error('Analytics matomo error: ', e)
         }
@@ -81,3 +57,27 @@ const getMatomoScript = (
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();`
+
+const eventuallyDispatchEvent = (
+  events: Window['_paq'],
+  attemptsRemaining = 5
+) => {
+  const matomoEventQueue = window._paq
+  if (matomoEventQueue !== undefined) {
+    events?.forEach((event) => {
+      matomoEventQueue.push(event)
+      console.info('Analytics (Matomo) queued:', event)
+    })
+  } else if (attemptsRemaining > 0) {
+    setTimeout(() => {
+      eventuallyDispatchEvent(events, attemptsRemaining - 1)
+    }, 500)
+  } else {
+    console.error(
+      'Unable to dispatch analytics events',
+      events,
+      '. `window._paq` was ',
+      window._paq
+    )
+  }
+}
