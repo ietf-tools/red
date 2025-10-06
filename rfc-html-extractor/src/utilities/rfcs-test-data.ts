@@ -1,4 +1,5 @@
 import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
+import type { SubseriesDoc } from '../../../client/generated/red-client.ts'
 
 export const testMockAllRfcs: RfcCommon[] = [
   {
@@ -6,13 +7,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host Software',
     published: '1969-04-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -35,13 +36,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host software',
     published: '1969-04-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -64,13 +65,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Documentation conventions',
     published: '1969-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -99,13 +100,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network timetable',
     published: '1969-03-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -128,13 +129,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Decode Encode Language (DEL)',
     published: '1969-06-01',
     pages: 17,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -157,13 +158,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Conversation with Bob Kahn',
     published: '1969-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -186,13 +187,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host-IMP interface',
     published: '1969-05-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -215,13 +216,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network Functional Specifications',
     published: '1969-05-01',
     pages: 0,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -244,13 +245,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host Software',
     published: '1969-05-01',
     pages: 15,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -273,13 +274,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Documentation conventions',
     published: '1969-07-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -324,13 +325,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Implementation of the Host - Host Software Procedures in GORDO',
     published: '1969-08-01',
     pages: 23,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -359,13 +360,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP-Host interface flow diagrams',
     published: '1969-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -388,13 +389,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Zero Text Length EOF Message',
     published: '1969-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -417,13 +418,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network subsystem for time sharing hosts',
     published: '1969-09-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -446,13 +447,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'M.I.T',
     published: '1969-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -497,13 +498,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some questions re: Host-IMP Protocol',
     published: '1969-08-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -526,13 +527,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP-IMP and HOST-HOST Control Links',
     published: '1969-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -555,13 +556,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Two protocol suggestions to reduce congestion at swap bound nodes',
     published: '1969-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -584,13 +585,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ASCII format for network interchange',
     published: '1969-10-01',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -613,13 +614,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network meeting',
     published: '1969-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -642,13 +643,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host-host control message formats',
     published: '1969-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -671,13 +672,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Transmission of Multiple Control Messages',
     published: '1969-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -700,13 +701,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Documentation Conventions',
     published: '1969-11-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -740,13 +741,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'No High Link Numbers',
     published: '1969-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -769,13 +770,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Documentation Conventions',
     published: '1969-12-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -804,13 +805,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Time Standards',
     published: '1970-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -833,13 +834,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to RFC 28',
     published: '1970-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -862,13 +863,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Documentation Conventions',
     published: '1970-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -891,13 +892,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Binary Message Forms in Computer',
     published: '1968-02-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -920,13 +921,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Some Thoughts on SRI's Proposed Real Time Clock",
     published: '1970-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -949,13 +950,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'New Host-Host Protocol',
     published: '1970-02-01',
     pages: 19,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -990,13 +991,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Some Brief Preliminary Notes on the Augmentation Research Center Clock',
     published: '1970-02-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1019,13 +1020,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Meeting',
     published: '1970-03-01',
     pages: 1,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1048,13 +1049,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Protocol Notes',
     published: '1970-03-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1088,13 +1089,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Meeting Epilogue, etc',
     published: '1970-03-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1117,13 +1118,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on Network Protocol from NWG/RFC #36',
     published: '1970-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1146,13 +1147,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on Protocol Re: NWG/RFC #36',
     published: '1970-03-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1175,13 +1176,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'More Comments on the Forthcoming Protocol',
     published: '1970-03-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1204,13 +1205,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP-IMP Teletype Communication',
     published: '1970-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1233,13 +1234,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Message Data Types',
     published: '1970-03-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1262,13 +1263,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Meeting',
     published: '1970-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1291,13 +1292,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on NWG/RFC 33 and 36',
     published: '1970-04-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1320,13 +1321,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'New Protocol is Coming',
     published: '1970-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1349,13 +1350,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network protocol notes',
     published: '1970-04-01',
     pages: 17,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1378,13 +1379,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "BBN's Comments on NWG/RFC #33",
     published: '1970-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1407,13 +1408,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Possible protocol plateau',
     published: '1970-04-01',
     pages: 18,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1436,13 +1437,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Conversations with S. Crocker (UCLA)',
     published: '1970-04-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1465,13 +1466,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on the Meyer Proposal',
     published: '1970-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1494,13 +1495,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposal for a Network Interchange Language',
     published: '1970-05-01',
     pages: 0,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1523,13 +1524,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Updated distribution list',
     published: '1970-07-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1558,13 +1559,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Official protocol mechanism',
     published: '1970-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1587,13 +1588,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Official Protocol Proffering',
     published: '1970-06-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1622,13 +1623,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Prototypical implementation of the NCP',
     published: '1970-06-01',
     pages: 23,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1651,13 +1652,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Third Level Protocol: Logger Protocol',
     published: '1970-06-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1680,13 +1681,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Thoughts and Reflections on NWG/RFC 54',
     published: '1970-06-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1709,13 +1710,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Logical Message Synchronization',
     published: '1970-06-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1738,13 +1739,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Flow Control - Fixed Versus Demand Allocation',
     published: '1970-06-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1767,13 +1768,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Simplified NCP Protocol',
     published: '1970-07-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1797,13 +1798,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Note on Interprocess Communication in a Resource Sharing Computer Network',
     published: '1970-07-01',
     pages: 18,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1834,13 +1835,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Systems for Interprocess Communication in a Resource Sharing Computer Network',
     published: '1970-08-01',
     pages: 20,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1863,13 +1864,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Belated Network Meeting Report',
     published: '1970-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1892,13 +1893,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Getting rid of marking',
     published: '1970-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1921,13 +1922,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on Host/Host Protocol document #1',
     published: '1970-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1950,13 +1951,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NIC - third level ideas and other noise',
     published: '1970-08-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -1996,13 +1997,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Change to Host/IMP Spec to Eliminate Marking',
     published: '1970-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2026,13 +2027,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Comments on Memory Allocation Control Commands: CEASE, ALL, GVB, RET, and RFNM',
     published: '1970-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2055,13 +2056,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Distribution List Change for MIT',
     published: '1970-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2084,13 +2085,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Note on Padding',
     published: '1970-10-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2119,13 +2120,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Reallocation in Case of Input Error',
     published: '1970-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2148,13 +2149,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Moratorium on Changes to Network Protocol',
     published: '1970-09-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2177,13 +2178,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to NWG/RFC 67',
     published: '1970-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2206,13 +2207,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Specifications for Network Use of the UCSB On-Line System',
     published: '1970-10-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2246,13 +2247,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Meeting',
     published: '1970-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2275,13 +2276,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Connection by name: User oriented protocol',
     published: '1970-10-01',
     pages: 15,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2304,13 +2305,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network meeting report',
     published: '1970-11-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2333,13 +2334,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NCP Status Report: UCSB/Rand',
     published: '1970-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2362,13 +2363,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Logger Protocol error',
     published: '1970-11-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2391,13 +2392,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Protocols and Data Formats',
     published: '1970-12-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2432,13 +2433,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Request for Reference Information',
     published: '1970-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2461,13 +2462,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Meeting Notes',
     published: '1970-12-01',
     pages: 18,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2490,13 +2491,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Language-machine for data reconfiguration',
     published: '1970-12-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2519,13 +2520,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "List of NWG/RFC's 1-80",
     published: '1970-12-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2548,13 +2549,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Working Group meeting',
     published: '1970-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2578,13 +2579,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Proposal for a Network Standard Format for a Data Stream to Control Graphics Display',
     published: '1971-01-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2614,13 +2615,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Topic for Discussion at the Next Network Working Group Meeting',
     published: '1971-01-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2643,13 +2644,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NETRJS: A third level protocol for Remote Job Entry',
     published: '1971-01-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2678,13 +2679,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some historic moments in networking',
     published: '1971-01-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2707,13 +2708,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CCN as a Network Service Center',
     published: '1971-01-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2736,13 +2737,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed User-User Protocol',
     published: '1970-12-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2765,13 +2766,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Initial Connection Protocol',
     published: '1971-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2794,13 +2795,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some thoughts on Network Graphics',
     published: '1971-02-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2823,13 +2824,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Distribution of NWG/RFC's through the NIC",
     published: '1971-02-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2859,13 +2860,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'An Interactive Network Experiment to Study Modes of Access the Network Information Center',
     published: '1971-02-01',
     pages: 5,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2888,13 +2889,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'First Cut at a Proposed Telnet Protocol',
     published: '1971-02-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2917,13 +2918,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Logger Protocol Proposal',
     published: '1971-02-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2952,13 +2953,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Meeting',
     published: '1971-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -2987,13 +2988,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Categorization and guide to NWG/RFCs',
     published: '1971-02-01',
     pages: 37,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3017,13 +3018,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Notes on the Network Working Group meeting, Urbana, Illinois, February 17, 1971',
     published: '1971-02-01',
     pages: 14,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3057,13 +3058,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Output of the Host-Host Protocol glitch cleaning committee',
     published: '1971-02-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3092,13 +3093,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Implementation of Interrupt Keys',
     published: '1971-02-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3121,13 +3122,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Link 191',
     published: '1971-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3151,13 +3152,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Network Specifications for Remote Job Entry and Remote Job Output Retrieval at UCSB',
     published: '1971-03-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3186,13 +3187,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'User/Server Site Protocol Network Host Questionnaire',
     published: '1971-03-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3215,13 +3216,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Output of the Host-Host Protocol Glitch Cleaning Committee',
     published: '1971-03-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3270,13 +3271,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Attendance list at the Urbana NWG meeting, February 17-19, 1971',
     published: '1971-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3299,13 +3300,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Level III Server Protocol for the Lincoln Laboratory 360/67 Host',
     published: '1971-03-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3329,13 +3330,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Conventions for Using an IBM 2741 Terminal as a User Console for Access to Network Server Hosts',
     published: '1971-03-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3364,13 +3365,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Pressure from the Chairman',
     published: '1971-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3399,13 +3400,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'User/Server Site Protocol: Network Host Questionnaire',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3428,13 +3429,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network activity report: UCSB Rand',
     published: '1971-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3463,13 +3464,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'File Transfer Protocol',
     published: '1971-04-01',
     pages: 17,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3513,13 +3514,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some Network Information Center policies on handling documents',
     published: '1971-04-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3542,13 +3543,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Structure of the May NWG Meeting',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3582,13 +3583,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some comments on the official protocol',
     published: '1971-04-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3611,13 +3612,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Recommendations for facility documentation',
     published: '1971-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3640,13 +3641,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Fortran Subprograms',
     published: '1971-04-01',
     pages: 19,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3669,13 +3670,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network PL1 subprograms',
     published: '1971-04-01',
     pages: 16,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3698,13 +3699,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network on-line operators',
     published: '1971-04-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3727,13 +3728,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Network specifications for UCSB's Simple-Minded File System",
     published: '1971-04-01',
     pages: 21,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3777,13 +3778,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proffered Official ICP',
     published: '1971-04-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3828,13 +3829,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Typographical error in RFC 107',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3858,13 +3859,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Response to RFC 86: Proposal for Network Standard Format for a Graphics Data Stream',
     published: '1971-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3893,13 +3894,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Graphics Facilities at Ames Research Center',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3922,13 +3923,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on RFC 123',
     published: '1971-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3963,13 +3964,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Bytes',
     published: '1971-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -3992,13 +3993,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Request for comments on socket name structure',
     published: '1971-04-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4027,13 +4028,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to RFC 111: Pressure from the chairman',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4056,13 +4057,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to RFC 116: May NWG meeting',
     published: '1971-04-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4085,13 +4086,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Typographical Error in RFC 107',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4120,13 +4121,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'File Transfer and Error Recovery',
     published: '1971-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4149,13 +4150,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Graphics meeting',
     published: '1971-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4178,13 +4179,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to NWG/RFC 110',
     published: '1971-04-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4207,13 +4208,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host accounting and administrative procedures',
     published: '1971-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4236,13 +4237,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet Protocol - a proposed document',
     published: '1971-04-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4271,13 +4272,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Status report on proposed Data Reconfiguration Service',
     published: '1971-04-01',
     pages: 23,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4300,13 +4301,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Discussion of Telnet Protocol',
     published: '1971-05-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4335,13 +4336,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Agenda for the May NWG meeting',
     published: '1971-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4370,13 +4371,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on RFC 114: A File Transfer Protocol',
     published: '1971-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4399,13 +4400,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Time-Out Mechanism in the Host-Host Protocol',
     published: '1971-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4428,13 +4429,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Regarding proffered official ICP',
     published: '1971-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4463,13 +4464,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data sharing on computer networks',
     published: '1971-04-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4492,13 +4493,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Initial Connection Protocol Control Commands',
     published: '1971-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4533,13 +4534,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Views on issues relevant to data sharing on computer networks',
     published: '1971-05-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4562,13 +4563,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Definition of a socket',
     published: '1971-05-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4591,13 +4592,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on RFC 123',
     published: '1971-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4620,13 +4621,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Best Laid Plans',
     published: '1971-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4649,13 +4650,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Use of IPC Facilities: A Working Paper',
     published: '1971-05-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4678,13 +4679,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on a proffered official ICP: RFCs 123, 127',
     published: '1971-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4707,13 +4708,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'SRI Artificial Intelligence status report',
     published: '1971-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4736,13 +4737,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'SRI ARC-NIC status',
     published: '1971-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4765,13 +4766,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Exposition Style',
     published: '1971-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4794,13 +4795,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network mailing lists',
     published: '1971-05-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4829,13 +4830,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Status of the Illinois site: Response to RFC 116',
     published: '1971-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4859,13 +4860,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Invitation to the Second Symposium on Problems in the Optimization of Data Communications Systems',
     published: '1971-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4888,13 +4889,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet Protocol: A Proposed Document',
     published: '1971-05-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4929,13 +4930,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RFC brief list',
     published: '1971-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4969,13 +4970,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Solution to the race condition in the ICP',
     published: '1971-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -4998,13 +4999,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NETBUGGER3',
     published: '1971-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5027,13 +5028,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data transfer protocols',
     published: '1971-05-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5056,13 +5057,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Minutes of Network Working Group meeting, 5/16 through 5/19/71',
     published: '1971-05-01',
     pages: 32,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5085,13 +5086,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proffered Official Initial Connection Protocol',
     published: '1971-05-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5114,13 +5115,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data Reconfiguration Service: An implementation specification',
     published: '1971-05-01',
     pages: 20,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5143,13 +5144,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Socket conventions reconsidered',
     published: '1971-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5172,13 +5173,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network mailing lists',
     published: '1971-05-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5207,13 +5208,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'COMPUTER NETWORKS',
     published: '1971-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5236,13 +5237,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RFC List by Number',
     published: '1971-06-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5271,13 +5272,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Data Transfer Protocol',
     published: '1971-06-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5312,13 +5313,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The File Transfer Protocol',
     published: '1971-06-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5353,13 +5354,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Data Management Committee Meeting Announcement',
     published: '1971-06-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5382,13 +5383,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'UCLA - Computer Science Graphics Overview',
     published: '1971-06-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5411,13 +5412,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on "Socket Conventions Reconsidered"',
     published: '1971-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5440,13 +5441,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on "Byte size for connections"',
     published: '1971-06-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5469,13 +5470,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Device independent graphical display description',
     published: '1971-06-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5504,13 +5505,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network graphic attention handling',
     published: '1971-06-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5533,13 +5534,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Link Number Assignments',
     published: '1971-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5562,13 +5563,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'File system questionnaire',
     published: '1971-06-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5591,13 +5592,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Modifications to RFC 177',
     published: '1971-07-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5620,13 +5621,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Compilation of list of relevant site reports',
     published: '1971-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5649,13 +5650,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'EBCDIC Codes and Their Mapping to ASCII',
     published: '1971-07-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5678,13 +5679,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed graphic display modes',
     published: '1971-07-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5707,13 +5708,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NIC distribution of manuals and handbooks',
     published: '1971-07-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5736,13 +5737,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network graphics loader',
     published: '1971-07-01',
     pages: 17,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5765,13 +5766,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network/440 Protocol Concept',
     published: '1971-07-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5794,13 +5795,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data management meeting announcement',
     published: '1971-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5823,13 +5824,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Interim NETRJS specifications',
     published: '1971-07-01',
     pages: 19,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5864,13 +5865,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DEC PDP-10-IMLAC communications system',
     published: '1971-07-01',
     pages: 16,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5894,13 +5895,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Graphics implementation and conceptualization at Augmentation Research Center',
     published: '1971-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5923,13 +5924,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some factors which a Network Graphics Protocol must consider',
     published: '1971-07-01',
     pages: 19,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5952,13 +5953,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NETWORK CHECKOUT',
     published: '1971-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -5994,13 +5995,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'The Data Reconfiguration Service -- Compiler/Interpreter Implementation Notes',
     published: '1971-07-01',
     pages: 18,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6023,13 +6024,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data computers-data descriptions and access language',
     published: '1971-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6052,13 +6053,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Mail Box Protocol',
     published: '1971-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6087,13 +6088,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Initial Connection Protocol - Reviewed',
     published: '1971-07-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6116,13 +6117,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Site Certification - Lincoln Labs 360/67',
     published: '1971-07-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6151,13 +6152,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Suggestions for a Network Data-Tablet Graphics Protocol',
     published: '1971-07-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6180,13 +6181,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RFC list by number',
     published: '1971-08-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6209,13 +6210,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Possible Deadlock in ICP',
     published: '1971-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6238,13 +6239,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Achieving reliable communication',
     published: '1971-08-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6267,13 +6268,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Sockets in use',
     published: '1971-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6302,13 +6303,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NETCRT - a character display protocol',
     published: '1971-08-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6331,13 +6332,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A User TELNET Description of an Initial Implementation',
     published: '1971-08-01',
     pages: 14,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6360,13 +6361,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'September Network Working Group meeting',
     published: '1971-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6395,13 +6396,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Address tables',
     published: '1971-08-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6424,13 +6425,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host/IMP interface documentation',
     published: '1971-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6453,13 +6454,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Improvement of Flow Control',
     published: '1971-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6482,13 +6483,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network Mailing Lists',
     published: '1971-08-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6517,13 +6518,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NWG meeting on network usage',
     published: '1971-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6552,13 +6553,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP System change notification',
     published: '1971-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6581,13 +6582,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network checkpoint',
     published: '1971-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6610,13 +6611,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NCP, ICP, and Telnet: The Terminal IMP implementation',
     published: '1971-08-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6639,13 +6640,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Telnet Access to UCSB's On-Line System",
     published: '1971-09-01',
     pages: 16,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6668,13 +6669,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Specifications changes for OLS, RJE/RJOR, and SMFS',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6697,13 +6698,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Changing the IMP status reporting facility',
     published: '1971-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6726,13 +6727,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "User's View of the Datacomputer",
     published: '1971-09-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6755,13 +6756,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Mail Box Protocol: Version 2',
     published: '1971-08-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6790,13 +6791,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Subject: System programmer's workshop",
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6825,13 +6826,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Information Center schedule for network users',
     published: '1971-09-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6854,13 +6855,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on Mailbox Protocol',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6883,13 +6884,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Rand/UCSB network graphics experiment',
     published: '1971-09-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6912,13 +6913,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Standardization of host mnemonics',
     published: '1971-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6947,13 +6948,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data transfer rates (Rand/UCLA)',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -6976,13 +6977,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Clarification',
     published: '1971-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7005,13 +7006,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Standard host names',
     published: '1971-09-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7040,13 +7041,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Toward reliable operation of minicomputer-based terminals on a TIP',
     published: '1971-09-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7069,13 +7070,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Service center standards for remote usage: A user's view",
     published: '1971-09-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7098,13 +7099,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Postponement of network graphics meeting',
     published: '1971-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7127,13 +7128,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Standardization of host call letters',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7156,13 +7157,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Working Group meeting schedule',
     published: '1971-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7185,13 +7186,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Site status',
     published: '1971-09-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7220,13 +7221,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Standard host names',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7249,13 +7250,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NIC view of standard host names',
     published: '1971-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7284,13 +7285,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on DTP and FTP proposals',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7313,13 +7314,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host mnemonics proposed in RFC 226 (NIC 7625)',
     published: '1971-09-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7342,13 +7343,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Site Status',
     published: '1971-09-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7377,13 +7378,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Connecting computers to MLC ports',
     published: '1971-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7406,13 +7407,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data Descriptive Language for Shared Data',
     published: '1971-07-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7435,13 +7436,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network and data sharing bibliography',
     published: '1971-10-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7470,13 +7471,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Reservations for Network Group meeting',
     published: '1971-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7499,13 +7500,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Graphics meeting',
     published: '1971-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7528,13 +7529,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proffered set of standard host names',
     published: '1971-10-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7557,13 +7558,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Coordination of equipment and supplies purchase',
     published: '1971-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7586,13 +7587,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some thoughts on file transfer',
     published: '1971-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7615,13 +7616,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Weather data',
     published: '1971-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7644,13 +7645,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1971-10-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7679,13 +7680,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Second Network Graphics meeting details',
     published: '1971-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7708,13 +7709,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Scenarios for using ARPANET computers',
     published: '1971-10-01',
     pages: 0,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7737,13 +7738,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Status of network hosts',
     published: '1971-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7772,13 +7773,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMPSYS change notification',
     published: '1971-11-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7801,13 +7802,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: '"Very Distant" Host interface',
     published: '1971-12-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7830,13 +7831,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Data Transfer Protocol',
     published: '1972-01-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7871,13 +7872,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The File Transfer Protocol',
     published: '1971-11-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7923,13 +7924,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1971-11-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7958,13 +7959,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1971-11-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -7993,13 +7994,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Graphics facilities information',
     published: '1971-11-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8022,13 +8023,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some Experience with File Transfer',
     published: '1971-12-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8051,13 +8052,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Correction to BBN Report No. 1822 (NIC NO 7958)',
     published: '1972-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8080,13 +8081,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP System change notifications',
     published: '1972-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8109,13 +8110,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'More on standard host names',
     published: '1971-10-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8138,13 +8139,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Establishing a local guide for network usage',
     published: '1971-11-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8167,13 +8168,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NIC course',
     published: '1971-11-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8196,13 +8197,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Revision of the Mail Box Protocol',
     published: '1971-11-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8225,13 +8226,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Draft of Host Names',
     published: '1971-11-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8254,13 +8255,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Suggested addition to File Transfer Protocol',
     published: '1971-12-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8283,13 +8284,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Graphics meeting report',
     published: '1971-12-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8312,13 +8313,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NETRJT: Remote Job Service Protocol for TIPS',
     published: '1971-12-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8341,13 +8342,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network graphics',
     published: '1971-12-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8370,13 +8371,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Library Information System',
     published: '1971-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8399,13 +8400,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Status of Network Hosts',
     published: '1971-12-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8434,13 +8435,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1972-01-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8475,13 +8476,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'What we hope is an official list of host names',
     published: '1971-12-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8510,13 +8511,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Computer networks and data sharing: A bibliography',
     published: '1972-01-01',
     pages: 15,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8539,13 +8540,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data Management Meeting Announcement',
     published: '1972-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8568,13 +8569,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Graphics Protocol: Level 0 only',
     published: '1972-01-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8603,13 +8604,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-01-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8638,13 +8639,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Use of "Set Data Type" Transaction in File Transfer Protocol',
     published: '1972-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8667,13 +8668,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Report of the Protocol Workshop, 12 October 1971',
     published: '1972-01-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8696,13 +8697,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DS-1 Display System',
     published: '1972-01-01',
     pages: 17,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8725,13 +8726,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'TIP Message Buffers',
     published: '1972-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8754,13 +8755,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1972-02-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8789,13 +8790,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Information Management System',
     published: '1972-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8818,13 +8819,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network mailing lists',
     published: '1972-01-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8853,13 +8854,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'BBN IMP (#5) and NCC Schedule March 4, 1971',
     published: '1972-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8882,13 +8883,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Exercising The ARPANET',
     published: '1972-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8911,13 +8912,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network mailing lists',
     published: '1972-03-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8946,13 +8947,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data Management System Proposal for the ARPA Network',
     published: '1972-02-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -8975,13 +8976,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Unknown Host Numbers',
     published: '1972-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9004,13 +9005,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1972-02-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9039,13 +9040,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Using network Remote Job Entry',
     published: '1972-02-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9068,13 +9069,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPANET host availability data',
     published: '1972-03-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9103,13 +9104,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data and File Transfer Workshop Announcement',
     published: '1972-03-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9132,13 +9133,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Another Look at Data and File Transfer Protocols',
     published: '1972-04-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9161,13 +9162,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'New Console Attachments to the USCB Host',
     published: '1972-02-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9190,13 +9191,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Change in IMP-to-Host Protocol',
     published: '1972-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9219,13 +9220,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Computer based instruction',
     published: '1972-03-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9248,13 +9249,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Graphics Working Group Meeting',
     published: '1972-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9277,13 +9278,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-03-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9312,13 +9313,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network Data Management Working Group',
     published: '1972-02-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9341,13 +9342,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Official Host-Host Protocol Modification: Assigned Link Numbers',
     published: '1972-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9376,13 +9377,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet Protocols',
     published: '1972-04-01',
     pages: 16,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9411,13 +9412,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-03-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9446,13 +9447,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Workshop on Hard Copy Line Graphics',
     published: '1972-03-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9475,13 +9476,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CBI Networking Activity at MITRE',
     published: '1972-03-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9504,13 +9505,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Well known socket numbers',
     published: '1972-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9533,13 +9534,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Formation of Network Measurement Group (NMG)',
     published: '1972-03-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9568,13 +9569,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RJE Protocol meeting',
     published: '1972-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9597,13 +9598,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Remote Job Entry program - NETRJS',
     published: '1972-04-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9626,13 +9627,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9661,13 +9662,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data and File Transfer workshop notes',
     published: '1972-04-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9690,13 +9691,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Suggested Telnet Protocol Changes',
     published: '1972-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9719,13 +9720,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network Mailing Lists',
     published: '1972-05-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9754,13 +9755,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-04-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9789,13 +9790,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP System Change Notification',
     published: '1972-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9824,13 +9825,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9859,13 +9860,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed experiment with a Message Switching Protocol',
     published: '1972-05-01',
     pages: 26,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9888,13 +9889,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Use on May 8',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9917,13 +9918,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'New Interface - IMP/360',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9946,13 +9947,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Level 0 Graphic Input Protocol',
     published: '1972-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -9975,13 +9976,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'EBCDIC/ASCII Mapping for Network RJE',
     published: '1972-05-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10004,13 +10005,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'MLTNET: A "Multi Telnet" Subsystem for Tenex',
     published: '1972-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10033,13 +10034,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Telnet Changes',
     published: '1972-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10062,13 +10063,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10097,13 +10098,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP System change notification',
     published: '1972-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10132,13 +10133,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10167,13 +10168,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Interest in Mixed Integer Programming (MPSX on NIC 360/91 at CCN)',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10196,13 +10197,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Satellite Considerations',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10225,13 +10226,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Echo process',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10254,13 +10255,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Discard Process',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10283,13 +10284,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Standard Socket Numbers',
     published: '1972-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10318,13 +10319,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'User Accounts for UCSB On-Line System',
     published: '1972-05-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10348,13 +10349,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Graphics information form for the ARPANET graphics resources notebook',
     published: '1972-06-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10377,13 +10378,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'TIP Site Information Form',
     published: '1972-06-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10406,13 +10407,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1972-06-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10441,13 +10442,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'File Transfer Protocol',
     published: '1972-07-01',
     pages: 25,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10493,13 +10494,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to NWG/RFC 346',
     published: '1972-06-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10522,13 +10523,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network Control Center',
     published: '1972-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10551,13 +10552,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Echoing strategy for satellite links',
     published: '1972-06-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10580,13 +10581,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Status of the Release of the New IMP System (2600)',
     published: '1972-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10609,13 +10610,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Remote Job Entry Protocol',
     published: '1972-06-01',
     pages: 18,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10644,13 +10645,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Deamon Processes on Host 106',
     published: '1972-07-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10673,13 +10674,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-06-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10708,13 +10709,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network mailing lists',
     published: '1972-08-01',
     pages: 13,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10743,13 +10744,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Serving remote users on the ARPANET',
     published: '1972-07-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10772,13 +10773,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Letter to All TIP Users',
     published: '1972-07-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10801,13 +10802,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10836,13 +10837,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network host status',
     published: '1972-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10871,13 +10872,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on "Proposed Remote Job Entry Protocol"',
     published: '1972-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10900,13 +10901,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Evaluation of ARPANET services January-March, 1972',
     published: '1972-07-01',
     pages: 11,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10929,13 +10930,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-07-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10964,13 +10965,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Demonstration at International Computer Communications Conference',
     published: '1972-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -10993,13 +10994,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Notes on a Conversation with Bob Kahn on the ICCC',
     published: '1972-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11022,13 +11023,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Arbitrary Character Sets',
     published: '1972-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11051,13 +11052,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP System Announcement',
     published: '1972-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11080,13 +11081,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Host Status',
     published: '1972-08-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11109,13 +11110,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Using TSO via ARPA Network Virtual Terminal',
     published: '1972-08-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11138,13 +11139,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (July 1972)',
     published: '1972-08-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11173,13 +11174,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Using TSO at CCN',
     published: '1972-08-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11202,13 +11203,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Three aids to improved network operation',
     published: '1972-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11237,13 +11238,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Mathematical Software on the ARPA Network',
     published: '1972-08-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11266,13 +11267,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Official site idents for organizations in the ARPA Network',
     published: '1972-08-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11295,13 +11296,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on the File Transfer Protocol',
     published: '1972-08-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11330,13 +11331,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Letter to TIP users-2',
     published: '1972-08-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11359,13 +11360,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Some experiences in implementing Network Graphics Protocol Level 0',
     published: '1972-08-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11394,13 +11395,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NCP statistics',
     published: '1972-08-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11423,13 +11424,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'UCLA Campus Computing Network Liaison Staff for ARPA Network',
     published: '1972-08-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11458,13 +11459,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'TSO Scenario',
     published: '1972-09-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11487,13 +11488,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (August 1972)',
     published: '1972-09-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11516,13 +11517,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Measurement of host costs for transmitting network data',
     published: '1972-09-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11545,13 +11546,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on Telnet Protocol Changes',
     published: '1972-10-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11574,13 +11575,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Two Proposed Changes to the IMP-Host Protocol',
     published: '1972-09-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11603,13 +11604,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Switch Settings on IMPs and TIPs',
     published: '1972-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11632,13 +11633,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network Graphics Working Group Meeting - Second Iteration',
     published: '1972-11-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11667,13 +11668,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'UCSB Online Graphics',
     published: '1972-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11696,13 +11697,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'SMFS Login and Logout',
     published: '1972-09-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11731,13 +11732,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic Statistics (September 1972)',
     published: '1972-10-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11760,13 +11761,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Conversion of NGP-0 Coordinates to Device Specific Coordinates',
     published: '1972-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11789,13 +11790,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPA Network Mailing Lists',
     published: '1972-10-01',
     pages: 16,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11818,13 +11819,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Desirability of a Network 1108 Service',
     published: '1973-01-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11847,13 +11848,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host Address Changes Involving Rand and ISI',
     published: '1972-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11882,13 +11883,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Correction to RFC 404',
     published: '1972-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11911,13 +11912,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Scheduled IMP Software Releases',
     published: '1972-10-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11940,13 +11941,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Remote Job Entry Protocol',
     published: '1972-10-01',
     pages: 21,
-    status: {slug: 'his', name: 'Historic'},
+    status: { slug: 'his', name: 'Historic' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11969,13 +11970,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NETBANK',
     published: '1972-10-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -11998,13 +11999,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Tenex interface to UCSB's Simple-Minded File System",
     published: '1972-12-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12027,13 +12028,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Removal of the 30-Second Delay When Hosts Come Up',
     published: '1972-11-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12056,13 +12057,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'New MULTICS Network Software Features',
     published: '1972-11-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12085,13 +12086,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'User FTP Documentation',
     published: '1972-11-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12114,13 +12115,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (October 1972)',
     published: '1972-11-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12143,13 +12144,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'File Transfer Protocol (FTP) status and further comments',
     published: '1972-12-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12172,13 +12173,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Tenex bandwidth',
     published: '1972-11-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12201,13 +12202,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARC System Will Be Unavailable for Use During Thanksgiving Week',
     published: '1972-11-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12230,13 +12231,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Link usage violation',
     published: '1972-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12259,13 +12260,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Server File Transfer Under TSS/360 At NASA-Ames Research Center',
     published: '1972-11-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12288,13 +12289,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'To: Network liaisons and station agents',
     published: '1972-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12317,13 +12318,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CCA ICCC weather demo',
     published: '1973-01-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12346,13 +12347,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Software Consulting Service for Network Users',
     published: '1972-11-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12375,13 +12376,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (November 1972)',
     published: '1972-12-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12404,13 +12405,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'UCLA Campus Computing Network Liaison Staff for ARPANET',
     published: '1972-12-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12433,13 +12434,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: '"But my NCP costs $500 a day"',
     published: '1972-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12462,13 +12463,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Reconnection Protocol',
     published: '1973-01-01',
     pages: 12,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12491,13 +12492,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Character Generator Process',
     published: '1972-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12520,13 +12521,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on File Transfer Protocol',
     published: '1973-02-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12549,13 +12550,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Update on SMFS Login and Logout',
     published: '1972-12-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12578,13 +12579,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network logical map',
     published: '1972-12-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12607,13 +12608,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Socket number list',
     published: '1972-12-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12642,13 +12643,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP/TIP memory retrofit schedule',
     published: '1973-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12677,13 +12678,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet issues',
     published: '1973-01-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12706,13 +12707,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Announcement of RJS at UCSB',
     published: '1973-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12735,13 +12736,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data Reconfiguration Service at UCSB',
     published: '1973-06-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12764,13 +12765,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'FTP server-server interaction',
     published: '1973-01-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12793,13 +12794,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'PARRY encounters the DOCTOR',
     published: '1973-01-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12822,13 +12823,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Scheduled network software maintenance',
     published: '1973-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12851,13 +12852,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Inter-Entity Communication - an experiment',
     published: '1973-01-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12880,13 +12881,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Current flow-control scheme for IMPSYS',
     published: '1973-01-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12915,13 +12916,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (December 1972)',
     published: '1973-01-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12944,13 +12945,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP/TIP preventive maintenance schedule',
     published: '1973-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -12973,13 +12974,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposal to consider a network program resource notebook',
     published: '1973-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13002,13 +13003,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP/TIP memory retrofit schedule',
     published: '1973-01-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13037,13 +13038,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Print files in FTP',
     published: '1973-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13066,13 +13067,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Current flow-control scheme for IMPSYS',
     published: '1973-01-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13095,13 +13096,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'MULTICS sampling timeout change',
     published: '1973-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13124,13 +13125,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Tentative proposal for a Unified User Level Protocol',
     published: '1973-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13153,13 +13154,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'TELNET Command at Host LL',
     published: '1973-02-01',
     pages: 14,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13182,13 +13183,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Meeting announcement to discuss a network mail system',
     published: '1973-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13212,13 +13213,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'File Transfer Protocol - meeting announcement and a new proposed document',
     published: '1973-02-01',
     pages: 35,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13241,13 +13242,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (January 1973)',
     published: '1973-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13270,13 +13271,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Memorandum: Date change of mail meeting',
     published: '1973-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13299,13 +13300,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'TIPUG',
     published: '1973-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13328,13 +13329,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Mail retrieval via FTP',
     published: '1973-02-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13357,13 +13358,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network questionnaires',
     published: '1973-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13386,13 +13387,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NCP survey',
     published: '1973-02-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13415,13 +13416,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet Protocol meeting announcement',
     published: '1973-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13444,13 +13445,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Responding to user needs',
     published: '1973-02-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13473,13 +13474,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'FTP comments and response to RFC 430',
     published: '1973-02-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13502,13 +13503,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Resource notebook framework',
     published: '1973-02-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13531,13 +13532,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet logger/server for host LL-67',
     published: '1973-02-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13561,13 +13562,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Proposed change to Host-Host Protocol: Resynchronization of connection status',
     published: '1973-02-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13596,13 +13597,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'FTP data compression',
     published: '1973-03-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13625,13 +13626,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network mail meeting summary',
     published: '1973-03-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13654,13 +13655,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Change in socket for TIP news facility',
     published: '1973-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13683,13 +13684,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Workshop on multi-site executive programs',
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13713,13 +13714,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       "Illinois' reply to Maxwell's request for graphics information (NIC 14925)",
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13742,13 +13743,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'MIX and MIXAL?',
     published: '1973-02-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13771,13 +13772,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Announcement of NGWG meeting: Call for papers',
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13800,13 +13801,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'FTP and Network Mail System',
     published: '1973-03-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13829,13 +13830,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMP/TIP memory retrofit schedule (rev 2)',
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13858,13 +13859,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Remote Job Service at UCSB',
     published: '1973-05-01',
     pages: 19,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13887,13 +13888,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'FTP server-server interaction - II',
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13916,13 +13917,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Use of FTP by the NIC Journal',
     published: '1973-03-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13945,13 +13946,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Host-dependent FTP parameters',
     published: '1973-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -13974,13 +13975,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (February 1973)',
     published: '1973-03-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14009,13 +14010,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Cancellation of the resource notebook framework meeting',
     published: '1973-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14038,13 +14039,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'MIX and MIXAL at UCSB',
     published: '1973-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14067,13 +14068,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Data transfer revisited',
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14096,13 +14097,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Free file transfer',
     published: '1973-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14125,13 +14126,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NLS classes at network sites',
     published: '1973-03-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14154,13 +14155,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comment on resynchronization of connection status proposal',
     published: '1973-03-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14183,13 +14184,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Surrogate RJS for UCLA-CCN',
     published: '1973-03-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14212,13 +14213,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'What is "Free"?',
     published: '1973-04-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14241,13 +14242,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Response to RFC 467',
     published: '1973-04-01',
     pages: 7,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14270,13 +14271,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'GRAPHICS PROTOCOL',
     published: '1973-04-01',
     pages: 28,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14299,13 +14300,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Availability of MIX and MIXAL in the Network',
     published: '1973-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14328,13 +14329,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Telnet Protocol specifications',
     published: '1973-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14363,13 +14364,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'TNLS quick reference card is available',
     published: '1973-04-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14392,13 +14393,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic Statistics (March 1973)',
     published: '1973-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14427,13 +14428,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'On mail service to CCN',
     published: '1973-04-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14456,13 +14457,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Harvard's network RJE",
     published: '1973-04-01',
     pages: 6,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14485,13 +14486,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Integration of data management systems on a computer network',
     published: '1973-04-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14514,13 +14515,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Un-muddling "free file transfer"',
     published: '1973-05-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14543,13 +14544,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Socket number list',
     published: '1973-04-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14578,13 +14579,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Distributed resources workshop announcement',
     published: '1973-04-01',
     pages: 5,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14607,13 +14608,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Two solutions to a file transfer access problem',
     published: '1973-06-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14636,13 +14637,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'FTP command naming problem',
     published: '1973-06-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14665,13 +14666,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Real-time data transmission on the ARPANET',
     published: '1973-05-01',
     pages: 10,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14694,13 +14695,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic statistics (April 1973)',
     published: '1973-04-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14729,13 +14730,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Request for network mailbox addresses',
     published: '1973-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14758,13 +14759,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Enterprise phone service to NIC from ARPANET sites',
     published: '1973-05-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14787,13 +14788,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'More on lost message detection',
     published: '1973-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14816,13 +14817,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on the new Telnet specifications',
     published: '1973-05-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14845,13 +14846,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Network make-work',
     published: '1973-06-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14874,13 +14875,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Specifications for Datalanguage, Version 0/9',
     published: '1973-06-01',
     pages: 31,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14903,13 +14904,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Lost message detection',
     published: '1973-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14932,13 +14933,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPANET accounts',
     published: '1973-06-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14961,13 +14962,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Resource Evaluation',
     published: '1973-06-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -14990,13 +14991,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Memo to FTP group: Proposal for File Access Protocol',
     published: '1973-06-01',
     pages: 8,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15019,13 +15020,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Restricted use of IMP DDT',
     published: '1973-05-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15048,13 +15049,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traffic Statistics (May 1973)',
     published: '1973-06-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15077,13 +15078,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'SURVEY is in operation again',
     published: '1973-06-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15112,13 +15113,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proposed Mail Protocol',
     published: '1973-06-01',
     pages: 40,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15141,13 +15142,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'MIT-MATHLAB meets UCSB-OLS -an example of resource sharing',
     published: '1973-06-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15170,13 +15171,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Technical meeting: Digital image processing software systems',
     published: '1973-06-01',
     pages: 3,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15199,13 +15200,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ARPAWOCKY',
     published: '1973-05-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15228,13 +15229,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Software checksumming in the IMP and network reliability',
     published: '1973-06-01',
     pages: 9,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15257,13 +15258,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Note on protocol synch sequences',
     published: '1973-06-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15286,13 +15287,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Report on the Survey Project',
     published: '1973-06-01',
     pages: 0,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15316,13 +15317,13 @@ export const testMockAllRfcs: RfcCommon[] = [
       "Feast or famine? A response to two recent RFC's about network information",
     published: '1973-06-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15345,13 +15346,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'UCSD-CC Server-FTP facility',
     published: '1973-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15374,13 +15375,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Message-ID numbers',
     published: '1973-07-01',
     pages: 1,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15403,13 +15404,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Lost message detection',
     published: '1973-07-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15432,13 +15433,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Comments on File Access Protocol',
     published: '1973-07-01',
     pages: 4,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15461,13 +15462,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Announcement of NGG meeting July 16-17',
     published: '1973-06-01',
     pages: 2,
-    status:{ slug:'unknown', name: 'Unknown' },
+    status: { slug: 'unknown', name: 'Unknown' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'Legacy',
       name: 'Legacy',
@@ -15494,7 +15495,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Greasing the QUIC Bit',
     published: '2022-08-23',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107131,
@@ -15536,7 +15537,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Recommendations on the Filtering of IPv6 Packets Containing IPv6 Extension Headers at Transit Routers',
     published: '2022-08-18',
     pages: 33,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 147130,
@@ -15584,7 +15585,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Towards Remote Procedure Call Encryption by Default',
     published: '2022-09-13',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118272,
@@ -15633,7 +15634,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Concise Problem Details for Constrained Application Protocol (CoAP) APIs',
     published: '2022-10-19',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112245,
@@ -15681,7 +15682,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Network Data Model for Layer 2 VPNs',
     published: '2022-09-22',
     pages: 139,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -15743,7 +15744,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Binary Representation of HTTP Messages',
     published: '2022-08-30',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107131,
@@ -15791,7 +15792,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Transmission Control Protocol (TCP)',
     published: '2022-08-18',
     pages: 98,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110856,
@@ -15833,7 +15834,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Application-Specific Link Attributes Advertisement Using the Border Gateway Protocol - Link State (BGP-LS)',
     published: '2022-08-19',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122823,
@@ -15889,7 +15890,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Clarifications for Ed25519, Ed448, X25519, and X448 Algorithm Identifiers',
     published: '2022-09-13',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 19483,
@@ -15952,7 +15953,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'ifStackTable for the Point-to-Point (P2P) Interface over a LAN Type: Definition and Examples',
     published: '2022-08-23',
     pages: 9,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128418,
@@ -15980,7 +15981,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -16004,7 +16005,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'HTTP Datagrams and the Capsule Protocol',
     published: '2022-08-24',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119562,
@@ -16052,7 +16053,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proxying UDP in HTTP',
     published: '2022-08-24',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119562,
@@ -16100,7 +16101,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'An Architectural Introduction to the Locator/ID Separation Protocol (LISP)',
     published: '2022-10-20',
     pages: 24,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111762,
@@ -16148,7 +16149,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Locator/ID Separation Protocol (LISP)',
     published: '2022-10-20',
     pages: 33,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 2764,
@@ -16217,7 +16218,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Locator/ID Separation Protocol (LISP) Control Plane',
     published: '2022-10-20',
     pages: 42,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 2764,
@@ -16279,7 +16280,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Locator/ID Separation Protocol (LISP) Map-Versioning',
     published: '2022-10-20',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108833,
@@ -16334,7 +16335,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Locator/ID Separation Protocol Security (LISP-SEC)',
     published: '2022-10-20',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108983,
@@ -16397,7 +16398,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Locator/ID Separation Protocol (LISP): Shared Extension Message and IANA Registry for Packet Type Allocations',
     published: '2022-10-20',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -16445,7 +16446,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Locator/ID Separation Protocol (LISP) Generic Protocol Extension',
     published: '2022-10-20',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108983,
@@ -16514,7 +16515,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Vendor-Specific LISP Canonical Address Format (LCAF)',
     published: '2022-10-20',
     pages: 5,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 124361,
@@ -16583,7 +16584,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Report from the IAB Workshop on Analyzing IETF Data (AID) 2021',
     published: '2022-09-26',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 116736,
@@ -16645,7 +16646,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Applicability of the QUIC Transport Protocol',
     published: '2022-09-27',
     pages: 22,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112330,
@@ -16693,7 +16694,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Robots Exclusion Protocol',
     published: '2022-09-09',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 17382,
@@ -16755,7 +16756,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'X.509 Certificate Extension for 5G Network Function Types',
     published: '2023-01-12',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -16817,7 +16818,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Running an IETF Hackathon',
     published: '2022-09-13',
     pages: 23,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112611,
@@ -16858,7 +16859,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Manageability of the QUIC Transport Protocol',
     published: '2022-09-27',
     pages: 29,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112330,
@@ -16907,7 +16908,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Pros and Cons of IPv6 Transition Technologies for IPv4-as-a-Service (IPv4aaS)',
     published: '2022-10-14',
     pages: 27,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 120637,
@@ -16976,7 +16977,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Data Model for Bidirectional Forwarding Detection (BFD)',
     published: '2022-09-23',
     pages: 58,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107859,
@@ -17045,7 +17046,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Intent-Based Networking - Concepts and Definitions',
     published: '2022-10-11',
     pages: 23,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 122457,
@@ -17107,7 +17108,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Intent Classification',
     published: '2022-10-21',
     pages: 35,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111884,
@@ -17183,7 +17184,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Operational Considerations for Streaming Media',
     published: '2022-10-28',
     pages: 37,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 122540,
@@ -17238,7 +17239,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IAB Workshop Report: Measuring Network Quality for End-Users',
     published: '2022-10-05',
     pages: 31,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 117099,
@@ -17287,7 +17288,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'The Use of maxLength in the Resource Public Key Infrastructure (RPKI)',
     published: '2022-10-21',
     pages: 13,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 122916,
@@ -17356,7 +17357,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Deterministic Networking (DetNet) Bounded Latency',
     published: '2022-11-30',
     pages: 26,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105922,
@@ -17425,7 +17426,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Signature Validation Token',
     published: '2022-10-15',
     pages: 34,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 106863,
@@ -17446,7 +17447,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -17471,7 +17472,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'In Situ Operations, Administration, and Maintenance (IOAM) Loopback and Active Flags',
     published: '2022-11-15',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110614,
@@ -17540,7 +17541,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Profile for RPKI Signed Checklists (RSCs)',
     published: '2022-11-18',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111303,
@@ -17596,7 +17597,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Policy Based on the Resource Public Key Infrastructure (RPKI) without Route Refresh',
     published: '2022-12-20',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5234,
@@ -17659,7 +17660,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)',
     published: '2022-11-30',
     pages: 34,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 104278,
@@ -17715,7 +17716,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'In Situ Operations, Administration, and Maintenance (IOAM) Direct Exporting',
     published: '2022-11-15',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123270,
@@ -17785,7 +17786,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Control Messages Protocol for Use with Network Time Protocol Version 4',
     published: '2022-11-01',
     pages: 21,
-    status: {slug: 'his', name: 'Historic'},
+    status: { slug: 'his', name: 'Historic' },
     authors: [
       {
         person: 100664,
@@ -17826,7 +17827,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RTP Payload Format for Versatile Video Coding (VVC)',
     published: '2022-12-20',
     pages: 54,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125509,
@@ -17896,7 +17897,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'TCP Encapsulation of Internet Key Exchange Protocol (IKE) and IPsec Packets',
     published: '2022-11-30',
     pages: 30,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -17945,7 +17946,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Low Latency, Low Loss, and Scalable Throughput (L4S) Internet Service: Architecture',
     published: '2023-01-19',
     pages: 36,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 23177,
@@ -18008,7 +18009,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'The Explicit Congestion Notification (ECN) Protocol for Low Latency, Low Loss, and Scalable Throughput (L4S)',
     published: '2023-01-19',
     pages: 52,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 120161,
@@ -18057,7 +18058,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Dual-Queue Coupled Active Queue Management (AQM) for Low Latency, Low Loss, and Scalable Throughput (L4S)',
     published: '2023-01-19',
     pages: 52,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 120161,
@@ -18112,7 +18113,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Minimal IP Encapsulating Security Payload (ESP)',
     published: '2023-01-13',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 109969,
@@ -18160,7 +18161,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Remote ATtestation procedureS (RATS) Architecture',
     published: '2023-01-13',
     pages: 46,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 117723,
@@ -18230,7 +18231,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Completely Encrypting RTP Header Extensions and Contributing Sources',
     published: '2023-01-25',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112760,
@@ -18286,7 +18287,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'X.509 Certificate General-Purpose Extended Key Usage (EKU) for Document Signing',
     published: '2022-12-20',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124005,
@@ -18341,7 +18342,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Generating Password-Based Keys Using the GOST Algorithms',
     published: '2022-12-09',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128255,
@@ -18355,7 +18356,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -18379,7 +18380,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CBOR Object Signing and Encryption (COSE): Countersignatures',
     published: '2022-12-14',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110910,
@@ -18420,7 +18421,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OSPF Reverse Metric',
     published: '2022-12-20',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122823,
@@ -18475,7 +18476,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Architectural Principles for a Quantum Internet',
     published: '2023-03-15',
     pages: 37,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125485,
@@ -18558,7 +18559,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Alternate-Marking Method',
     published: '2022-12-14',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118908,
@@ -18627,7 +18628,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Clustered Alternate-Marking Method',
     published: '2022-12-14',
     pages: 24,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118908,
@@ -18696,7 +18697,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IPv6 Application of the Alternate-Marking Method',
     published: '2022-12-20',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118908,
@@ -18766,7 +18767,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'CCNinfo: Discovering Content and Network Information in Content-Centric Networks',
     published: '2023-02-16',
     pages: 36,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 122939,
@@ -18823,7 +18824,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Delegated Credentials for TLS and DTLS',
     published: '2023-07-13',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108049,
@@ -18886,7 +18887,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IS-IS Extensions in Support of Inter-Autonomous System (AS) MPLS and GMPLS Traffic Engineering',
     published: '2023-02-01',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107762,
@@ -18949,7 +18950,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Aggregation and Fragmentation Mode for Encapsulating Security Payload (ESP) and Its Use for IP Traffic Flow Security (IP-TFS)',
     published: '2023-01-31',
     pages: 31,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 22933,
@@ -18990,7 +18991,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for IP Traffic Flow Security',
     published: '2023-01-31',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 120813,
@@ -19038,7 +19039,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Definitions of Managed Objects for IP Traffic Flow Security',
     published: '2023-01-31',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 120813,
@@ -19086,7 +19087,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IGP Flexible Algorithm',
     published: '2023-02-22',
     pages: 42,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105091,
@@ -19156,7 +19157,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Border Gateway Protocol - Link State (BGP-LS) Extensions for Flexible Algorithm Advertisement',
     published: '2023-02-22',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122823,
@@ -19219,7 +19220,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IS-IS Extensions to Support Segment Routing over the IPv6 Data Plane',
     published: '2023-02-22',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105091,
@@ -19289,7 +19290,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IGP Extension for Path Computation Element Communication Protocol (PCEP) Security Capability Support in PCE Discovery (PCED)',
     published: '2023-01-13',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117844,
@@ -19359,7 +19360,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Transmission of IPv6 Packets over Power Line Communication (PLC) Networks',
     published: '2023-01-13',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122852,
@@ -19428,7 +19429,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OSPF Bidirectional Forwarding Detection (BFD) Strict-Mode',
     published: '2023-02-22',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122823,
@@ -19490,7 +19491,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Advertising Layer 2 Bundle Member Link Attributes in OSPF',
     published: '2023-01-25',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122823,
@@ -19538,7 +19539,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Label Switched Path (LSP) Object Flag Extension for Stateful PCE',
     published: '2023-02-01',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122651,
@@ -19587,7 +19588,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Path Computation Element Communication Protocol (PCEP) Extensions for Establishing Relationships between Sets of Label Switched Paths and Virtual Networks',
     published: '2023-02-14',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118347,
@@ -19642,7 +19643,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Echo Request/Reply for Enabled In Situ OAM (IOAM) Capabilities',
     published: '2023-04-07',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111299,
@@ -19698,7 +19699,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates',
     published: '2023-02-16',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110910,
@@ -19739,7 +19740,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ICANN Trademark Clearinghouse (TMCH) Functional Specifications',
     published: '2023-03-09',
     pages: 50,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 106940,
@@ -19753,7 +19754,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -19778,7 +19779,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Configuration Attributes for Robust Block Transmission',
     published: '2023-02-28',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -19826,7 +19827,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for Static Context Header Compression (SCHC)',
     published: '2023-03-01',
     pages: 47,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127870,
@@ -19881,7 +19882,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNS Security Extensions (DNSSEC)',
     published: '2023-02-14',
     pages: 10,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 10083,
@@ -19923,7 +19924,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IPv6 Wireless Access in Vehicular Environments (IPWAVE): Problem Statement and Use Cases',
     published: '2023-03-15',
     pages: 47,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111292,
@@ -19964,7 +19965,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Multiple SIP Reason Header Field Values',
     published: '2023-03-07',
     pages: 4,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 103961,
@@ -20006,7 +20007,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'GOST Cipher Suites for Transport Layer Security (TLS) Protocol Version 1.3',
     published: '2023-02-17',
     pages: 71,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 118763,
@@ -20048,7 +20049,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -20072,7 +20073,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Compatible Version Negotiation for QUIC',
     published: '2023-05-31',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119562,
@@ -20120,7 +20121,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'QUIC Version 2',
     published: '2023-05-31',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106541,
@@ -20162,7 +20163,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Multiple Key Exchanges in the Internet Key Exchange Protocol Version 2 (IKEv2)',
     published: '2023-05-22',
     pages: 29,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123488,
@@ -20245,7 +20246,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Registration Procedures for Private Enterprise Numbers (PENs)',
     published: '2023-03-01',
     pages: 6,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 108103,
@@ -20266,7 +20267,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'IETF',
       name: 'IETF',
@@ -20290,7 +20291,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'L-Band Digital Aeronautical Communications System (LDACS)',
     published: '2023-03-24',
     pages: 35,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 126285,
@@ -20345,7 +20346,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'EdDSA Value for IPSECKEY',
     published: '2023-03-15',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108162,
@@ -20401,7 +20402,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'DRIP Entity Tag (DET) for Unmanned Aircraft System Remote ID (UAS RID)',
     published: '2023-03-15',
     pages: 34,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108162,
@@ -20464,7 +20465,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A YANG Data Model for Network and VPN Service Performance Monitoring',
     published: '2023-04-26',
     pages: 39,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109983,
@@ -20534,7 +20535,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Applicability of GMPLS for beyond 100 Gbit/s Optical Transport Network',
     published: '2023-03-31',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111881,
@@ -20603,7 +20604,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IS-IS Flood Reflection',
     published: '2023-04-04',
     pages: 19,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 104151,
@@ -20673,7 +20674,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'In Situ Operations, Administration, and Maintenance (IOAM) Deployment',
     published: '2023-04-26',
     pages: 20,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 106879,
@@ -20735,7 +20736,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Hashing to Elliptic Curves',
     published: '2023-08-11',
     pages: 145,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125984,
@@ -20804,7 +20805,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Verifiable Random Functions (VRFs)',
     published: '2023-08-23',
     pages: 47,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 109222,
@@ -20866,7 +20867,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'SPAKE2, a Password-Authenticated Key Exchange',
     published: '2023-09-30',
     pages: 17,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 116683,
@@ -20908,7 +20909,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'SPAKE2+, an Augmented Password-Authenticated Key Exchange (PAKE) Protocol',
     published: '2023-09-30',
     pages: 25,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 126569,
@@ -20929,7 +20930,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -20954,7 +20955,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A BGP Cease NOTIFICATION Subcode for Bidirectional Forwarding Detection (BFD)',
     published: '2023-03-24',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105046,
@@ -20996,7 +20997,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Using GOST Cryptographic Algorithms in the Internet Key Exchange Protocol Version 2 (IKEv2)',
     published: '2023-05-22',
     pages: 148,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 103686,
@@ -21010,7 +21011,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -21034,7 +21035,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IPv6 Deployment Status',
     published: '2023-04-19',
     pages: 37,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 118908,
@@ -21103,7 +21104,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry',
     published: '2023-04-20',
     pages: 26,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124115,
@@ -21159,7 +21160,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Content Delivery Network Interconnection (CDNI) Footprint Types: Country Subdivision Code and Footprint Union',
     published: '2023-07-20',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127423,
@@ -21207,7 +21208,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Nominating Committee Eligibility',
     published: '2023-04-28',
     pages: 9,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 106541,
@@ -21248,7 +21249,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Diameter Group Signaling',
     published: '2023-04-25',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108142,
@@ -21304,7 +21305,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Static Context Header Compression over Narrowband Internet of Things',
     published: '2023-04-19',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123620,
@@ -21353,7 +21354,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Sending RTP Control Protocol (RTCP) Feedback for Congestion Control in Interactive Multimedia Conferences',
     published: '2023-04-26',
     pages: 17,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 20209,
@@ -21394,7 +21395,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Concise Software Identification Tags',
     published: '2023-06-28',
     pages: 61,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117723,
@@ -21456,7 +21457,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMAP PARTIAL Extension for Paged SEARCH and FETCH',
     published: '2023-06-12',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 102154,
@@ -21519,7 +21520,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Deprecation of the Internet Key Exchange Version 1 (IKEv1) Protocol and Obsoleted Algorithms',
     published: '2023-04-24',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112723,
@@ -21560,7 +21561,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OAuth 2.0 Rich Authorization Requests',
     published: '2023-05-30',
     pages: 38,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111698,
@@ -21615,7 +21616,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Trusted Execution Environment Provisioning (TEEP) Architecture',
     published: '2023-07-21',
     pages: 31,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 107773,
@@ -21678,7 +21679,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A YANG Data Model for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxy Devices',
     published: '2023-05-30',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122717,
@@ -21748,7 +21749,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Internet X.509 Public Key Infrastructure: Logotypes in X.509 Certificates',
     published: '2023-05-05',
     pages: 39,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106863,
@@ -21810,7 +21811,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Guidelines for the Organization of Fully Online Meetings',
     published: '2023-06-12',
     pages: 10,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112330,
@@ -21858,13 +21859,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Addition of the Death (DTH) Flag to TCP',
     published: '2023-04-01',
     pages: 6,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -21888,13 +21889,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Concat Notation',
     published: '2023-04-01',
     pages: 8,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -21918,7 +21919,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for RIB Extensions',
     published: '2023-11-20',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 10784,
@@ -21966,7 +21967,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSON Meta Application Protocol (JMAP) Blob Management Extension',
     published: '2023-08-16',
     pages: 24,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122671,
@@ -22007,13 +22008,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'AI Sarcasm Detection: Insult Your AI without Offending It',
     published: '2023-04-01',
     pages: 5,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -22037,7 +22038,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'HyStart++: Modified Slow Start for TCP',
     published: '2023-05-15',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115571,
@@ -22092,7 +22093,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Tetrys: An On-the-Fly Network Coding Protocol',
     published: '2023-06-12',
     pages: 23,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 123981,
@@ -22154,7 +22155,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Network Data Model for Service Attachment Points (SAPs)',
     published: '2023-06-20',
     pages: 37,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -22223,7 +22224,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "The 'sip-trunking-capability' Link Relation Type",
     published: '2023-07-14',
     pages: 5,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 120483,
@@ -22286,7 +22287,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Handling of Identity Header Errors for Secure Telephone Identity Revisited (STIR)',
     published: '2023-07-31',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 120587,
@@ -22327,7 +22328,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Benchmarking Methodology for Network Security Device Performance',
     published: '2023-03-09',
     pages: 51,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124260,
@@ -22382,7 +22383,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The ORIGIN Extension in HTTP/3',
     published: '2023-06-12',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116439,
@@ -22423,7 +22424,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Maintaining Robust Protocols',
     published: '2023-06-27',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 107131,
@@ -22471,7 +22472,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Unfortunate History of Transient Numeric Identifiers',
     published: '2023-07-21',
     pages: 27,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 147130,
@@ -22519,7 +22520,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'On the Generation of Transient Numeric Identifiers',
     published: '2023-07-21',
     pages: 37,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 147130,
@@ -22568,7 +22569,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Security Considerations for Transient Numeric Identifiers Employed in Network Protocols',
     published: '2023-07-21',
     pages: 10,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 147130,
@@ -22616,7 +22617,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Service Assurance for Intent-Based Networking Architecture',
     published: '2023-07-11',
     pages: 23,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105682,
@@ -22685,7 +22686,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for Service Assurance',
     published: '2023-07-11',
     pages: 38,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105682,
@@ -22755,7 +22756,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Considerations on Application - Network Collaboration Using Path Signals',
     published: '2023-07-06',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 21072,
@@ -22817,7 +22818,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Messaging Layer Security (MLS) Protocol',
     published: '2023-07-18',
     pages: 132,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108049,
@@ -22893,7 +22894,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'HTTP Message Signatures',
     published: '2024-02-14',
     pages: 95,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123390,
@@ -22948,7 +22949,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The LIMITS SMTP Service Extension',
     published: '2024-02-07',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 4397,
@@ -22996,7 +22997,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Constrained RESTful Environments (CoRE) Target Attributes Registry',
     published: '2024-04-11',
     pages: 8,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 11843,
@@ -23037,7 +23038,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Indicators of Compromise (IoCs) and Their Role in Attack Defence',
     published: '2023-08-11',
     pages: 24,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124655,
@@ -23099,7 +23100,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSON Meta Application Protocol (JMAP) for Quotas',
     published: '2023-06-20',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 126196,
@@ -23140,7 +23141,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'BATched Sparse (BATS) Coding Scheme for Multi-hop Data Transport',
     published: '2023-07-21',
     pages: 22,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125193,
@@ -23203,7 +23204,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'TLS-Based Extensible Authentication Protocol (EAP) Types for Use with TLS 1.3',
     published: '2023-06-27',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108624,
@@ -23244,7 +23245,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Transmission of IPv6 Packets over Near Field Communication',
     published: '2023-07-20',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116871,
@@ -23299,7 +23300,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JavaScript Session Establishment Protocol (JSEP)',
     published: '2024-04-11',
     pages: 86,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112760,
@@ -23355,7 +23356,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Extension of the Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE) to Transport Layer Security (TLS)',
     published: '2023-07-11',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113501,
@@ -23411,7 +23412,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Message Queuing Telemetry Transport (MQTT) and Transport Layer Security (TLS) Profile of Authentication and Authorization for Constrained Environments (ACE) Framework',
     published: '2023-07-11',
     pages: 33,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123923,
@@ -23459,7 +23460,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNS Catalog Zones',
     published: '2023-07-06',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122981,
@@ -23542,7 +23543,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Segment Routing over IPv6 for the Mobile User Plane',
     published: '2023-07-21',
     pages: 29,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 114978,
@@ -23611,7 +23612,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Drone Remote Identification Protocol (DRIP) Architecture',
     published: '2023-07-17',
     pages: 28,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125018,
@@ -23681,7 +23682,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Considerations for Assigning a New Recommended Differentiated Services Code Point (DSCP)',
     published: '2023-07-20',
     pages: 23,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 126517,
@@ -23736,7 +23737,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'PIM Message Type Space Extension and Reserved Bits',
     published: '2023-08-31',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106173,
@@ -23785,7 +23786,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Publish/Subscribe Functionality for the Locator/ID Separation Protocol (LISP)',
     published: '2023-08-04',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124361,
@@ -23854,7 +23855,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CUBIC for Fast and Long-Distance Networks',
     published: '2023-08-11',
     pages: 28,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109464,
@@ -23924,7 +23925,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Application-Layer Traffic Optimization (ALTO) Performance Cost Metrics',
     published: '2023-08-11',
     pages: 35,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112751,
@@ -24000,7 +24001,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Client-Cert HTTP Header Field',
     published: '2023-07-22',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111622,
@@ -24049,7 +24050,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Static Context Header Compression (SCHC) Compound Acknowledgement (ACK)',
     published: '2023-07-26',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108573,
@@ -24126,7 +24127,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Static Context Header Compression (SCHC) over Sigfox Low-Power Wide Area Network (LPWAN)',
     published: '2023-07-26',
     pages: 34,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 108573,
@@ -24209,7 +24210,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Multiplexing Scheme Updates for QUIC',
     published: '2023-07-12',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 12620,
@@ -24264,7 +24265,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Automated Certificate Management Environment (ACME) for Subdomains',
     published: '2023-08-23',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124011,
@@ -24326,7 +24327,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RADIUS Extensions for DHCP-Configured Services',
     published: '2023-08-16',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -24381,7 +24382,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Reflections on Ten Years Past the Snowden Revelations',
     published: '2023-07-20',
     pages: 29,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 19177,
@@ -24416,7 +24417,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -24441,7 +24442,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Automated Certificate Management Environment (ACME) Challenges Using an Authority Token',
     published: '2023-09-12',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104557,
@@ -24504,7 +24505,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'TNAuthList Profile of Automated Certificate Management Environment (ACME) Authority Token',
     published: '2023-09-12',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 120587,
@@ -24566,7 +24567,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OAuth 2.0 Demonstrating Proof of Possession (DPoP)',
     published: '2023-09-07',
     pages: 39,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124718,
@@ -24642,7 +24643,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Reliable and Available Wireless (RAW) Use Cases',
     published: '2023-08-23',
     pages: 24,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 106740,
@@ -24705,7 +24706,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Operations, Administration, and Maintenance (OAM) Packet and Behavior in the Network Service Header (NSH)',
     published: '2023-08-11',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -24747,7 +24748,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Network Service Header (NSH) Encapsulation for In Situ OAM (IOAM) Data',
     published: '2023-08-23',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106879,
@@ -24796,7 +24797,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Applicability and Use Cases for IPv6 over Networks of Resource-constrained Nodes (6lo)',
     published: '2023-09-21',
     pages: 24,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105312,
@@ -24865,7 +24866,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Update to OSPF Terminology',
     published: '2023-08-16',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113783,
@@ -24921,7 +24922,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Avoiding Route Origin Authorizations (ROAs) Containing Multiple IP Prefixes',
     published: '2023-08-23',
     pages: 6,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 112945,
@@ -24990,7 +24991,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Updates to the TLS Transport Model for SNMP',
     published: '2023-11-08',
     pages: 30,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116503,
@@ -25031,7 +25032,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Problem Details for HTTP APIs',
     published: '2023-07-31',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 103881,
@@ -25086,7 +25087,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Oblivious HTTP',
     published: '2024-01-12',
     pages: 40,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107131,
@@ -25134,7 +25135,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CBOR Object Signing and Encryption (COSE): AES-CTR and AES-CBC',
     published: '2023-09-14',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -25183,7 +25184,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Service Binding and Parameter Specification via the DNS (SVCB and HTTPS Resource Records)',
     published: '2023-11-06',
     pages: 47,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117988,
@@ -25238,7 +25239,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Service Binding Mapping for DNS Servers',
     published: '2023-11-06',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117988,
@@ -25279,7 +25280,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Discovery of Designated Resolvers',
     published: '2023-11-06',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -25349,7 +25350,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'DHCP and Router Advertisement Options for the Discovery of Network-designated Resolvers (DNR)',
     published: '2023-11-06',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -25419,7 +25420,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Internet Key Exchange Protocol Version 2 (IKEv2) Configuration for Encrypted DNS',
     published: '2023-11-06',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -25481,7 +25482,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'PIM Null-Register Packing',
     published: '2023-09-29',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124400,
@@ -25543,7 +25544,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'PIM Assert Message Packing',
     published: '2023-10-13',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118323,
@@ -25605,7 +25606,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Relaxed Packet Counter Verification for Babel MAC Authentication',
     published: '2024-01-16',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110106,
@@ -25654,7 +25655,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Unsolicited Bidirectional Forwarding Detection (BFD) for Sessionless Applications',
     published: '2023-08-31',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 8348,
@@ -25717,7 +25718,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Applicability of Ethernet Virtual Private Network (EVPN) to Network Virtualization over Layer 3 (NVO3) Networks',
     published: '2023-09-20',
     pages: 23,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 115629,
@@ -25779,7 +25780,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OAuth 2.0 Step Up Authentication Challenge Protocol',
     published: '2023-09-08',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125613,
@@ -25827,7 +25828,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNS Glue Requirements in Referral Responses',
     published: '2023-09-30',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 18149,
@@ -25890,7 +25891,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A YANG Data Model for Reporting Software Bills of Materials (SBOMs) and Vulnerability Information',
     published: '2023-10-10',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 2097,
@@ -25938,7 +25939,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Vocabulary of Path Properties',
     published: '2023-09-13',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 123344,
@@ -25986,7 +25987,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RSA Blind Signatures',
     published: '2023-10-10',
     pages: 27,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128138,
@@ -26042,7 +26043,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Messaging Use Cases and Extensions for Secure Telephone Identity Revisited (STIR)',
     published: '2023-12-19',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104557,
@@ -26090,7 +26091,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The .alt Special-Use Top-Level Domain',
     published: '2023-09-14',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111656,
@@ -26138,7 +26139,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Complaint Feedback Loop Address Header',
     published: '2023-09-27',
     pages: 16,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 128458,
@@ -26152,7 +26153,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -26177,7 +26178,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Labeled IPsec Traffic Selector Support for the Internet Key Exchange Protocol Version 2 (IKEv2)',
     published: '2023-10-10',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112723,
@@ -26225,7 +26226,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IS-IS Application-Specific Link Attributes',
     published: '2023-10-10',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107552,
@@ -26294,7 +26295,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Certificate Management Protocol (CMP) Updates',
     published: '2023-11-05',
     pages: 55,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125563,
@@ -26349,7 +26350,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Certificate Management Protocol (CMP) Algorithms',
     published: '2023-11-05',
     pages: 28,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125563,
@@ -26412,7 +26413,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Constrained Application Protocol (CoAP) Transfer for the Certificate Management Protocol',
     published: '2023-11-05',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125529,
@@ -26460,7 +26461,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Lightweight Certificate Management Protocol (CMP) Profile',
     published: '2023-11-05',
     pages: 83,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125563,
@@ -26515,7 +26516,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Proxying IP in HTTP',
     published: '2023-10-19',
     pages: 37,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -26584,7 +26585,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'I-Regexp: An Interoperable Regular Expression Format',
     published: '2023-10-13',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 11843,
@@ -26633,7 +26634,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IPv6 Options for In Situ Operations, Administration, and Maintenance (IOAM)',
     published: '2023-09-29',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116512,
@@ -26682,7 +26683,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Export of Segment Routing over IPv6 Information in IP Flow Information Export (IPFIX)',
     published: '2023-11-08',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125623,
@@ -26738,7 +26739,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Local Protection Enforcement in the Path Computation Element Communication Protocol (PCEP)',
     published: '2023-10-18',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125031,
@@ -26801,7 +26802,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Label Switched Path (LSP) Ping Mechanisms for EVPN and Provider Backbone Bridging EVPN (PBB-EVPN)',
     published: '2023-11-09',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112664,
@@ -26871,7 +26872,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Report from the IAB Workshop on Management Techniques in Encrypted Networks (M-TEN)',
     published: '2024-01-16',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124328,
@@ -26927,7 +26928,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Integration of the Network Service Header (NSH) and Segment Routing for Service Function Chaining (SFC)',
     published: '2023-11-07',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105906,
@@ -26975,7 +26976,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OSPF Application-Specific Link Attributes',
     published: '2023-10-10',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105091,
@@ -27044,7 +27045,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Subject Identifiers for Security Event Tokens',
     published: '2023-12-06',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123390,
@@ -27099,7 +27100,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Long-Lived Graceful Restart for BGP',
     published: '2023-11-29',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106003,
@@ -27162,7 +27163,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Certification Authority Authorization (CAA) Processing for Email Addresses',
     published: '2023-10-13',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127690,
@@ -27203,7 +27204,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The ristretto255 and decaf448 Groups',
     published: '2023-12-22',
     pages: 27,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125451,
@@ -27279,7 +27280,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Oblivious Pseudorandom Functions (OPRFs) Using Prime-Order Groups',
     published: '2023-12-22',
     pages: 61,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124899,
@@ -27341,7 +27342,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The GNU Name System',
     published: '2023-11-20',
     pages: 74,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125902,
@@ -27369,7 +27370,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -27393,7 +27394,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNS Terminology',
     published: '2024-03-21',
     pages: 45,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 10083,
@@ -27441,7 +27442,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Standard Public Key Cryptography (PKC) Test Keys',
     published: '2023-12-08',
     pages: 28,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 23200,
@@ -27489,7 +27490,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Open Participation Principle regarding Remote Registration Fee',
     published: '2023-12-15',
     pages: 6,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 112330,
@@ -27544,7 +27545,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IGP Flexible Algorithm in IP Networks',
     published: '2023-11-22',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127430,
@@ -27621,7 +27622,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Simple Two-Way Active Measurement Protocol (STAMP) Extensions for Segment Routing Networks',
     published: '2023-10-31',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 121347,
@@ -27691,7 +27692,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE Usage in GMPLS-Controlled Networks',
     published: '2023-12-06',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118347,
@@ -27767,7 +27768,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Survey of Worldwide Censorship Techniques',
     published: '2023-11-20',
     pages: 34,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 118393,
@@ -27843,7 +27844,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Explicit Host-to-Network Flow Measurements Techniques',
     published: '2023-10-31',
     pages: 37,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111092,
@@ -27934,7 +27935,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Information-Centric Networking (ICN) Traceroute Protocol Specification',
     published: '2024-03-11',
     pages: 17,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 122435,
@@ -28003,7 +28004,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Information-Centric Networking (ICN) Ping Protocol Specification',
     published: '2024-03-11',
     pages: 18,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 122435,
@@ -28073,7 +28074,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'X.509 Certificate Extended Key Usage (EKU) for 5G Network Functions',
     published: '2024-03-20',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112901,
@@ -28129,7 +28130,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Alternative Delta Time Encoding for Content-Centric Networking (CCNx) Using Compact Floating-Point Arithmetic',
     published: '2024-02-22',
     pages: 11,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 122327,
@@ -28191,7 +28192,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Attribution of Internet Probes',
     published: '2023-11-28',
     pages: 10,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105099,
@@ -28246,7 +28247,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YAML Media Type',
     published: '2024-02-14',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125125,
@@ -28301,7 +28302,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OSPFv3 Extensions for Segment Routing over IPv6 (SRv6)',
     published: '2023-12-05',
     pages: 26,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113589,
@@ -28364,7 +28365,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Border Gateway Protocol - Link State (BGP-LS) Extensions for Segment Routing over IPv6 (SRv6)',
     published: '2023-12-05',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122892,
@@ -28440,7 +28441,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Revision to Registration Procedures for Multiple BMP Registries',
     published: '2023-12-08',
     pages: 3,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 4836,
@@ -28482,7 +28483,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Active Operations, Administration, and Maintenance (OAM) for Service Function Chaining (SFC)',
     published: '2023-11-20',
     pages: 30,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113047,
@@ -28558,7 +28559,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A URN Namespace for the Data Documentation Initiative (DDI)',
     published: '2024-01-16',
     pages: 18,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128014,
@@ -28572,7 +28573,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -28596,7 +28597,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Centralization, Decentralization, and Internet Standards',
     published: '2023-12-18',
     pages: 22,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 103881,
@@ -28610,7 +28611,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -28634,7 +28635,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Update to the IANA SSH Protocol Parameters Registry Requirements',
     published: '2024-01-24',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 4061,
@@ -28675,7 +28676,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Negative Caching of DNS Resolution Failures',
     published: '2023-12-22',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 20778,
@@ -28731,7 +28732,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Bidirectional Forwarding Detection (BFD) for  Generic Network Virtualization Encapsulation (Geneve)',
     published: '2024-01-16',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111299,
@@ -28800,7 +28801,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Overview and Principles of Internet Traffic Engineering',
     published: '2024-01-28',
     pages: 73,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 104198,
@@ -28842,7 +28843,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A Secure Selection and Filtering Mechanism for the Network Time Protocol with Khronos',
     published: '2024-02-21',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124816,
@@ -28904,7 +28905,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Segment Routing Replication for Multipoint Service Delivery',
     published: '2024-02-22',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117846,
@@ -28973,7 +28974,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Service Identity in TLS',
     published: '2023-11-08',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105907,
@@ -29021,7 +29022,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Simple Provisioning of Public Names for Residential Networks',
     published: '2024-01-28',
     pages: 35,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 109969,
@@ -29083,7 +29084,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DHCPv6 Options for the Homenet Naming Authority',
     published: '2024-01-28',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109969,
@@ -29138,7 +29139,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Ephemeral Diffie-Hellman Over COSE (EDHOC)',
     published: '2024-03-20',
     pages: 82,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115503,
@@ -29193,7 +29194,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Traces of Ephemeral Diffie-Hellman Over COSE (EDHOC)',
     published: '2024-03-20',
     pages: 62,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 115503,
@@ -29262,7 +29263,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Digest Fields',
     published: '2024-02-14',
     pages: 32,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125125,
@@ -29311,7 +29312,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Path Steering in Content-Centric Networking (CCNx) and Named Data Networking (NDN)',
     published: '2024-03-11',
     pages: 19,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 122398,
@@ -29359,7 +29360,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'HTTP Proxy-Status Parameter for Next-Hop Aliases',
     published: '2024-01-31',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -29401,7 +29402,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'One-Way and Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group',
     published: '2024-01-31',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109341,
@@ -29471,7 +29472,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Simple Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group',
     published: '2024-01-31',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109341,
@@ -29540,7 +29541,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSONPath: Query Expressions for JSON',
     published: '2024-02-21',
     pages: 62,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 126834,
@@ -29595,7 +29596,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Registration Data Access Protocol (RDAP) Reverse Search',
     published: '2024-04-11',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123276,
@@ -29644,7 +29645,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Redacted Fields in the Registration Data Access Protocol (RDAP) Response',
     published: '2024-03-29',
     pages: 31,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110892,
@@ -29707,7 +29708,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Content Delivery Network Interconnection (CDNI) Delegation Using the Automated Certificate Management Environment',
     published: '2024-02-22',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119959,
@@ -29763,7 +29764,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Unilateral Opportunistic Deployment of Encrypted Recursive-to-Authoritative DNS',
     published: '2024-02-28',
     pages: 24,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 111614,
@@ -29818,7 +29819,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Discovery of Oblivious Services via Service Binding Records',
     published: '2024-02-21',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -29867,7 +29868,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Flush Mechanism for Customer MAC Addresses Based on Service Instance Identifier (I-SID) in Provider Backbone Bridging EVPN (PBB-EVPN)',
     published: '2024-03-20',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115629,
@@ -29937,7 +29938,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters',
     published: '2024-04-11',
     pages: 32,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 102391,
@@ -29993,7 +29994,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A Framework for Network Slices in Networks Built from IETF Technologies',
     published: '2024-03-11',
     pages: 44,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 104198,
@@ -30077,7 +30078,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Precision Availability Metrics (PAMs) for Services Governed by Service Level Objectives (SLOs)',
     published: '2024-03-20',
     pages: 12,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 113047,
@@ -30153,7 +30154,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Path Segment Identifier in MPLS-Based Segment Routing Networks',
     published: '2024-02-22',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113580,
@@ -30223,7 +30224,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet) with the MPLS Data Plane',
     published: '2024-02-28',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113047,
@@ -30279,7 +30280,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Report from the IAB Workshop on Environmental Impact of Internet Applications and Systems, 2022',
     published: '2024-02-14',
     pages: 21,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 21072,
@@ -30335,7 +30336,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Generating Transport Key Containers (PFX) Using the GOST Algorithms',
     published: '2024-05-29',
     pages: 24,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128255,
@@ -30349,7 +30350,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -30373,7 +30374,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Internationalization Updates to RFC 5280',
     published: '2024-03-11',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -30414,7 +30415,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Deterministic Networking (DetNet): Packet Ordering Function',
     published: '2024-03-20',
     pages: 11,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 110053,
@@ -30477,7 +30478,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Framework of Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet)',
     published: '2024-03-11',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 113047,
@@ -30554,7 +30555,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Distribution of Link-State and Traffic Engineering Information Using BGP',
     published: '2023-12-22',
     pages: 60,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122823,
@@ -30595,7 +30596,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSContact: A JSON Representation of Contact Data',
     published: '2024-05-07',
     pages: 73,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123526,
@@ -30643,7 +30644,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'vCard Format Extensions for JSContact',
     published: '2024-05-07',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123526,
@@ -30691,7 +30692,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSContact: Converting from and to vCard',
     published: '2024-05-07',
     pages: 60,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123276,
@@ -30739,7 +30740,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Internet of Things (IoT) Edge Challenges and Functions',
     published: '2024-04-11',
     pages: 31,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 117756,
@@ -30817,7 +30818,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Date and Time on the Internet: Timestamps with Additional Information',
     published: '2024-04-26',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127529,
@@ -30866,7 +30867,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use of GOST 2012 Signature Algorithms in DNSKEY and RRSIG Resource Records for DNSSEC',
     published: '2024-04-11',
     pages: 9,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 132371,
@@ -30887,7 +30888,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -30911,7 +30912,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Matroska Media Container Format Specification',
     published: '2024-10-14',
     pages: 157,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122287,
@@ -30967,7 +30968,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Federated Authentication for the Registration Data Access Protocol (RDAP) Using OpenID Connect',
     published: '2024-04-26',
     pages: 40,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110104,
@@ -31009,7 +31010,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Using the Parallel NFS (pNFS) SCSI Layout to Access Non-Volatile Memory Express (NVMe) Storage Devices',
     published: '2024-04-03',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117972,
@@ -31071,7 +31072,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Universally Unique IDentifiers (UUIDs)',
     published: '2024-05-07',
     pages: 46,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 128249,
@@ -31126,7 +31127,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'SM2 Digital Signature Algorithm for DNSSEC',
     published: '2024-12-04',
     pages: 9,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 130515,
@@ -31168,7 +31169,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -31192,13 +31193,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Faster Than Light Speed Protocol (FLIP)',
     published: '2024-04-01',
     pages: 6,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -31223,7 +31224,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element',
     published: '2024-03-11',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -31265,7 +31266,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Deterministic Networking (DetNet) Packet Replication, Elimination, and Ordering Functions (PREOF) via MPLS over UDP/IP',
     published: '2024-04-26',
     pages: 10,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 110053,
@@ -31320,7 +31321,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNS Error Reporting',
     published: '2024-04-26',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105278,
@@ -31369,7 +31370,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Virtual Router Redundancy Protocol (VRRP) Version 3 for IPv4 and IPv6',
     published: '2024-04-30',
     pages: 35,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 10784,
@@ -31418,7 +31419,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'The Application-Layer Traffic Optimization (ALTO) Transport Information Publication Service (TIPS)',
     published: '2024-09-10',
     pages: 40,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115371,
@@ -31487,7 +31488,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Deprecating the Use of Router Alert in LSP Ping',
     published: '2024-05-22',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 102960,
@@ -31543,7 +31544,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Extension of RFC 6374-Based Performance Measurement Using Synonymous Flow Labels',
     published: '2024-05-29',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 2329,
@@ -31613,7 +31614,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Updates to EVPN Broadcast, Unknown Unicast, or Multicast (BUM) Procedures',
     published: '2024-05-24',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110966,
@@ -31682,7 +31683,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'MVPN/EVPN Tunnel Aggregation with Common Labels',
     published: '2024-05-24',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110966,
@@ -31751,7 +31752,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Optimized Ingress Replication Solution for Ethernet VPNs (EVPNs)',
     published: '2024-05-24',
     pages: 28,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115629,
@@ -31821,7 +31822,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'DRIP Entity Tag (DET) Authentication Formats and Protocols for Broadcast Remote Identification (RID)',
     published: '2024-06-26',
     pages: 43,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 126051,
@@ -31876,7 +31877,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Privacy Pass Architecture',
     published: '2024-06-13',
     pages: 25,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124899,
@@ -31931,7 +31932,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Privacy Pass HTTP Authentication Scheme',
     published: '2024-06-13',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -31986,7 +31987,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Privacy Pass Issuance Protocols',
     published: '2024-06-13',
     pages: 36,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 126300,
@@ -32049,7 +32050,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use of Password-Based Message Authentication Code 1 (PBMAC1) in PKCS #12 Syntax',
     published: '2024-05-31',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 122718,
@@ -32090,7 +32091,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OpenPGP',
     published: '2024-07-31',
     pages: 166,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112723,
@@ -32153,7 +32154,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Concise Binary Object Representation (CBOR) Tags for Time, Duration, and Period',
     published: '2024-08-16',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 11843,
@@ -32208,7 +32209,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Profile for Route Origin Authorizations (ROAs)',
     published: '2024-05-23',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111303,
@@ -32277,7 +32278,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Application Scenarios for the Quantum Internet',
     published: '2024-06-21',
     pages: 26,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 119019,
@@ -32346,7 +32347,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RTP Payload Format for Essential Video Coding (EVC)',
     published: '2024-06-11',
     pages: 42,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125509,
@@ -32401,7 +32402,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMAP Response Code for Command Progress Notifications',
     published: '2024-05-31',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 136250,
@@ -32443,7 +32444,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'IMAP Extension for Using and Returning Unique Identifiers (UIDs) Only',
     published: '2024-05-30',
     pages: 9,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 102154,
@@ -32513,7 +32514,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'YANG Data Model for OSPFv3 Extended Link State Advertisements (LSAs)',
     published: '2024-06-07',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 10784,
@@ -32569,7 +32570,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Kerberos Simple Password-Authenticated Key Exchange (SPAKE) Pre-authentication',
     published: '2024-08-27',
     pages: 33,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116300,
@@ -32632,7 +32633,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'On the Use of the Cryptographic Message Syntax (CMS) Signing-Time Attribute in Resource Public Key Infrastructure (RPKI) Signed Objects',
     published: '2024-05-23',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111303,
@@ -32680,7 +32681,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMAP Extension for Returning Mailbox METADATA in Extended LIS',
     published: '2024-05-31',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104343,
@@ -32729,7 +32730,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'The Flexible Round-Optimized Schnorr Threshold (FROST) Protocol for Two-Round Schnorr Signatures',
     published: '2024-06-28',
     pages: 47,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 129653,
@@ -32791,7 +32792,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Retiring the Tao of the IETF',
     published: '2024-06-21',
     pages: 36,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 116736,
@@ -32812,7 +32813,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'IETF',
       name: 'IETF',
@@ -32837,7 +32838,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Announcing Supported Authentication Methods in the Internet Key Exchange Protocol Version 2 (IKEv2)',
     published: '2024-07-23',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 103686,
@@ -32879,7 +32880,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Key Provisioning for Group Communication Using Authentication and Authorization for Constrained Environments (ACE)',
     published: '2024-09-13',
     pages: 97,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119822,
@@ -32927,7 +32928,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Schema Item iDentifier (YANG SID)',
     published: '2024-07-31',
     pages: 44,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 120811,
@@ -32997,7 +32998,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'CBOR Object Signing and Encryption (COSE) "typ" (type) Header Parameter',
     published: '2024-06-11',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 136779,
@@ -33045,7 +33046,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CBOR Web Token (CWT) Claims in COSE Headers',
     published: '2024-06-24',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 126481,
@@ -33093,7 +33094,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Internationalized Email Addresses in X.509 Certificates',
     published: '2024-05-23',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 102154,
@@ -33149,7 +33150,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Guidelines for Adding Congestion Notification to Protocols that Encapsulate IP',
     published: '2024-08-30',
     pages: 28,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 23177,
@@ -33198,7 +33199,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'TRansparent Interconnection of Lots of Links (TRILL): Explicit Congestion Notification (ECN) Support',
     published: '2024-08-30',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 102391,
@@ -33247,7 +33248,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Propagating Explicit Congestion Notification across IP Tunnel Headers Separated by a Shim',
     published: '2024-08-30',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 23177,
@@ -33289,7 +33290,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Segment Routing over IPv6 (SRv6) Segment Identifiers in the IPv6 Addressing Architecture',
     published: '2024-10-21',
     pages: 7,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 106412,
@@ -33331,7 +33332,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Path Computation Element Communication Protocol (PCEP) Extensions for IPv6 Segment Routing',
     published: '2024-07-29',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124329,
@@ -33407,7 +33408,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Carrying Binding Label/SID in PCE-Based Networks',
     published: '2024-08-16',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106042,
@@ -33484,7 +33485,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Secure Frame (SFrame): Lightweight Authenticated Encryption for Real-Time Media',
     published: '2024-08-27',
     pages: 68,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124346,
@@ -33553,7 +33554,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNS Resolver Information',
     published: '2024-06-28',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112901,
@@ -33602,7 +33603,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'RTP Payload Format for the Secure Communication Interoperability Protocol (SCIP) Codec',
     published: '2024-07-24',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 128234,
@@ -33657,7 +33658,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'No Revocation Available for X.509 Public Key Certificates',
     published: '2024-06-28',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -33712,7 +33713,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Initializing a DNS Resolver with Priming Queries',
     published: '2025-02-11',
     pages: 10,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 107363,
@@ -33767,7 +33768,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSON Meta Application Protocol (JMAP) for Contacts',
     published: '2024-12-18',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122525,
@@ -33809,7 +33810,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Internet Key Exchange Protocol Version 2 (IKEv2) Support for Per-Resource Child Security Associations (SAs)',
     published: '2024-07-19',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119087,
@@ -33872,7 +33873,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Bidirectional Forwarding Detection (BFD) Reverse Path for MPLS Label Switched Paths (LSPs)',
     published: '2024-07-23',
     pages: 9,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 113047,
@@ -33935,7 +33936,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Requirements for Solutions that Support MPLS Network Actions (MNAs)',
     published: '2024-08-26',
     pages: 10,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105786,
@@ -33990,7 +33991,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Partitioning as an Architecture for Privacy',
     published: '2024-07-31',
     pages: 23,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112330,
@@ -34046,7 +34047,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       "Automatic DNSSEC Bootstrapping Using Authenticated Signals from the Zone's Operator",
     published: '2024-07-16',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127983,
@@ -34094,7 +34095,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Delay-Based Metric Extension for the Babel Routing Protocol',
     published: '2024-09-13',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117688,
@@ -34143,7 +34144,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A YANG Data Model for In Situ Operations, Administration, and Maintenance (IOAM)',
     published: '2024-08-27',
     pages: 28,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117721,
@@ -34205,7 +34206,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Updates to X.509 Policy Validation',
     published: '2024-08-30',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122403,
@@ -34246,7 +34247,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'In the DNS, QDCOUNT Is (Usually) One',
     published: '2024-07-24',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109059,
@@ -34295,7 +34296,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Guidelines for Human Rights Protocol and Architecture Considerations',
     published: '2024-09-12',
     pages: 29,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 125317,
@@ -34343,7 +34344,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Architecture and Requirements for Transport Services',
     published: '2025-01-22',
     pages: 29,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119325,
@@ -34413,7 +34414,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'An Abstract Application Programming Interface (API) for Transport Services',
     published: '2025-01-22',
     pages: 84,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109354,
@@ -34503,7 +34504,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Implementing Interfaces to Transport Services',
     published: '2025-01-22',
     pages: 46,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 114993,
@@ -34573,7 +34574,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'EVPN Broadcast, Unknown Unicast, or Multicast (BUM) Using Bit Index Explicit Replication (BIER)',
     published: '2024-08-31',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110966,
@@ -34635,7 +34636,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'EVPN Optimized Inter-Subnet Multicast (OISM) Forwarding',
     published: '2024-08-31',
     pages: 63,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 114416,
@@ -34711,7 +34712,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Video Frame Marking RTP Header Extension',
     published: '2025-03-27',
     pages: 15,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 116331,
@@ -34766,7 +34767,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Layer Refresh Request (LRR) RTCP Feedback Message',
     published: '2025-03-27',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 101923,
@@ -34835,7 +34836,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RTP Payload Format for VP9 Video',
     published: '2025-03-27',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112760,
@@ -34905,7 +34906,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Using Key Encapsulation Mechanism (KEM) Algorithms in the Cryptographic Message Syntax (CMS)',
     published: '2024-08-07',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -34961,7 +34962,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Multicast On-Path Telemetry Using In Situ Operations, Administration, and Maintenance (IOAM)',
     published: '2024-08-27',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123270,
@@ -35038,7 +35039,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The IPv6 Compact Routing Header (CRH)',
     published: '2024-08-26',
     pages: 14,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 101568,
@@ -35107,7 +35108,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Finding and Using Geofeed Data',
     published: '2024-08-07',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5234,
@@ -35169,7 +35170,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Deterministic Networking (DetNet) YANG Data Model',
     published: '2024-10-28',
     pages: 126,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122640,
@@ -35239,7 +35240,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet) with the IP Data Plane',
     published: '2024-10-28',
     pages: 8,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 113047,
@@ -35294,7 +35295,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Grant Negotiation and Authorization Protocol (GNAP)',
     published: '2024-10-08',
     pages: 187,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112051,
@@ -35342,7 +35343,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Time Zone Information Format (TZif)',
     published: '2024-10-31',
     pages: 45,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124238,
@@ -35370,7 +35371,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'IETF',
       name: 'IETF',
@@ -35394,7 +35395,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Expanding the IPv6 Documentation Space',
     published: '2024-08-27',
     pages: 5,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 106925,
@@ -35443,7 +35444,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Network Virtualization over Layer 3 (NVO3) Encapsulation Considerations',
     published: '2024-09-25',
     pages: 22,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 108236,
@@ -35491,7 +35492,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Free Lossless Audio Codec (FLAC)',
     published: '2024-12-18',
     pages: 75,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 128988,
@@ -35539,7 +35540,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Data Types and Groupings for Cryptography',
     published: '2024-10-10',
     pages: 47,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35580,7 +35581,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for a Truststore',
     published: '2024-10-10',
     pages: 30,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35621,7 +35622,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for a Keystore',
     published: '2024-10-10',
     pages: 39,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35662,7 +35663,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Groupings for TCP Clients and TCP Servers',
     published: '2024-10-10',
     pages: 29,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35710,7 +35711,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Groupings for SSH Clients and SSH Servers',
     published: '2024-10-10',
     pages: 64,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35751,7 +35752,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Groupings for TLS Clients and TLS Servers',
     published: '2024-10-10',
     pages: 59,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35793,7 +35794,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Conveying a Certificate Signing Request (CSR) in a Secure Zero-Touch Provisioning (SZTP) Bootstrapping Request',
     published: '2024-10-10',
     pages: 32,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112548,
@@ -35848,7 +35849,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for Babel',
     published: '2024-10-10',
     pages: 39,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 107859,
@@ -35896,7 +35897,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Data Model for TCP',
     published: '2024-10-10',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110636,
@@ -35952,7 +35953,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'WebP Image Format',
     published: '2024-11-18',
     pages: 46,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128253,
@@ -36008,7 +36009,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Revision to Registration Procedures for IS-IS Neighbor Link-Attribute Bit Values',
     published: '2024-08-26',
     pages: 3,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 4475,
@@ -36049,7 +36050,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Structured Field Values for HTTP',
     published: '2024-09-30',
     pages: 35,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 103881,
@@ -36097,7 +36098,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Link-Template HTTP Header Field',
     published: '2024-09-30',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 103881,
@@ -36138,7 +36139,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Zero Checksum for the Stream Control Transmission Protocol',
     published: '2024-09-27',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104695,
@@ -36200,7 +36201,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Online Certificate Status Protocol (OCSP) Nonce Extension',
     published: '2024-08-26',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 135182,
@@ -36242,7 +36243,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Egress Validation in Label Switched Path Ping and Traceroute Mechanisms',
     published: '2024-11-19',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 127435,
@@ -36311,7 +36312,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for Microwave Topology',
     published: '2024-09-30',
     pages: 39,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109264,
@@ -36380,7 +36381,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Time-Variant Routing (TVR) Use Cases',
     published: '2024-10-08',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 115774,
@@ -36449,7 +36450,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Multipoint LDP Extensions for Multi-Topology Routing',
     published: '2024-10-28',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 106696,
@@ -36518,7 +36519,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Window Sizing for Zstandard Content Encoding',
     published: '2024-09-27',
     pages: 4,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 133599,
@@ -36566,7 +36567,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The DNS Zone Version (ZONEVERSION) Option',
     published: '2024-10-11',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113690,
@@ -36621,7 +36622,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The JSON Meta Application Protocol (JMAP) for Sieve Scripts',
     published: '2024-09-27',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104343,
@@ -36662,7 +36663,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Updates to the Cipher Suites in Secure Syslog',
     published: '2024-10-07',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104235,
@@ -36718,7 +36719,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Using DHCPv6 Prefix Delegation (DHCPv6-PD) to Allocate Unique IPv6 Prefixes per Client in Large Broadcast Networks',
     published: '2024-10-07',
     pages: 19,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111204,
@@ -36773,7 +36774,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'An EDNS(0) Option to Negotiate Leases on DNS Updates',
     published: '2025-06-11',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 109533,
@@ -36821,7 +36822,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Service Registration Protocol for DNS-Based Service Discovery',
     published: '2025-06-11',
     pages: 36,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 20356,
@@ -36869,7 +36870,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Area Proxy for IS-IS',
     published: '2024-10-31',
     pages: 17,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 4475,
@@ -36931,7 +36932,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Dynamic Flooding on Dense Graphs',
     published: '2024-10-31',
     pages: 41,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 4475,
@@ -37001,7 +37002,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Using Ephemeral Diffie-Hellman Over COSE (EDHOC) with the Constrained Application Protocol (CoAP) and Object Security for Constrained RESTful Environments (OSCORE)',
     published: '2024-11-18',
     pages: 23,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119822,
@@ -37070,7 +37071,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'BPF Instruction Set Architecture (ISA)',
     published: '2024-10-31',
     pages: 37,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 15927,
@@ -37111,7 +37112,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSON Meta Application Protocol (JMAP) Sharing',
     published: '2024-11-19',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 122525,
@@ -37153,7 +37154,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Sieve Email Filtering: Extension for Processing Calendar Attachments',
     published: '2024-10-11',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104343,
@@ -37209,7 +37210,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Transferring Opportunistic Wireless Encryption to the IEEE 802.11 Working Group',
     published: '2024-12-28',
     pages: 4,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 111656,
@@ -37230,7 +37231,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'IETF',
       name: 'IETF',
@@ -37254,7 +37255,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IPv6 Hop-by-Hop Options Processing Procedures',
     published: '2024-10-31',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 2793,
@@ -37302,7 +37303,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Same-Origin Policy for the RPKI Repository Delta Protocol (RRDP)',
     published: '2024-12-04',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111303,
@@ -37343,7 +37344,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Delay-Tolerant Networking Management Architecture (DTNMA)',
     published: '2024-11-07',
     pages: 49,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 115774,
@@ -37398,7 +37399,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'LEX: A Uniform Resource Name (URN) Namespace for Sources of Law',
     published: '2025-05-20',
     pages: 42,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 110807,
@@ -37426,7 +37427,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -37451,7 +37452,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Content Delivery Network Interconnection (CDNI) Metadata for Delegated Credentials',
     published: '2024-10-31',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119959,
@@ -37514,7 +37515,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       "Forward Secrecy Extension to the Improved Extensible Authentication Protocol Method for Authentication and Key Agreement (EAP-AKA' FS)",
     published: '2025-03-04',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 21072,
@@ -37569,7 +37570,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'CBOR Object Signing and Encryption (COSE) Key Thumbprint',
     published: '2024-12-20',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 126028,
@@ -37624,7 +37625,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Antitrust Guidelines for IETF Participants',
     published: '2024-10-30',
     pages: 7,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 3862,
@@ -37645,7 +37646,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'IETF',
       name: 'IETF',
@@ -37669,7 +37670,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IS-IS Fast Flooding',
     published: '2024-11-25',
     pages: 22,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 107172,
@@ -37752,7 +37753,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Updates to the Concise Data Definition Language (CDDL) Grammar',
     published: '2024-11-18',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 11843,
@@ -37794,7 +37795,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Remote Integrity Verification of Network Devices Containing Trusted Platform Modules',
     published: '2024-12-06',
     pages: 36,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 21019,
@@ -37850,7 +37851,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A YANG Data Model for Challenge-Response-Based Remote Attestation (CHARRA) Procedures Using Trusted Platform Modules (TPMs)',
     published: '2024-12-06',
     pages: 53,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117723,
@@ -37941,7 +37942,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Listener Subscription for IPv6 Neighbor Discovery Multicast and Anycast Addresses',
     published: '2024-11-20',
     pages: 35,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115824,
@@ -37982,7 +37983,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Registering Self-Generated IPv6 Addresses Using DHCPv6',
     published: '2024-12-05',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111656,
@@ -38058,7 +38059,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Border Gateway Protocol 4 (BGP-4) Send Hold Timer',
     published: '2024-11-06',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111303,
@@ -38114,7 +38115,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use of the SHA3 One-Way Hash Functions in the Cryptographic Message Syntax (CMS)',
     published: '2024-11-18',
     pages: 18,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -38155,7 +38156,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Use Cases for a PCE as a Central Controller (PCECC)',
     published: '2024-12-04',
     pages: 37,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 113589,
@@ -38225,7 +38226,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use of the RSA-KEM Algorithm in the Cryptographic Message Syntax (CMS)',
     published: '2025-02-10',
     pages: 30,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -38274,7 +38275,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A Profile for Resource Public Key Infrastructure (RPKI) Trust Anchor Keys (TAKs)',
     published: '2024-12-18',
     pages: 19,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113581,
@@ -38343,7 +38344,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RIFT: Routing in Fat Trees',
     published: '2025-04-03',
     pages: 150,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104151,
@@ -38419,7 +38420,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Benchmarking Methodology for Stateful NATxy Gateways',
     published: '2025-01-10',
     pages: 24,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 120637,
@@ -38467,7 +38468,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Guidelines for the Definition of New Top-Level Media Types',
     published: '2025-03-17',
     pages: 10,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 18880,
@@ -38508,7 +38509,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "The 'haptics' Top-Level Media Type",
     published: '2025-03-17',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 135689,
@@ -38557,7 +38558,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Routing in Fat Trees (RIFT) Applicability and Operational Considerations',
     published: '2025-04-03',
     pages: 33,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124432,
@@ -38627,7 +38628,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Detecting RPKI Repository Delta Protocol (RRDP) Session Desynchronization',
     published: '2024-12-13',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111303,
@@ -38675,7 +38676,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The JMAPACCESS Extension for IMAP',
     published: '2025-01-22',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 133904,
@@ -38724,7 +38725,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use Case for an Extended Reality Application on Edge Computing Infrastructure',
     published: '2024-12-28',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 124675,
@@ -38772,7 +38773,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Best Current Practice for OAuth 2.0 Security',
     published: '2025-01-30',
     pages: 46,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 111698,
@@ -38834,7 +38835,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'JSON Web Token (JWT) Response for OAuth Token Introspection',
     published: '2025-01-30',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111698,
@@ -38883,7 +38884,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'YANG Data Model for Maximum Segment Identifier (SID) Depth (MSD) Types and MPLS MSD',
     published: '2025-01-10',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116337,
@@ -38946,7 +38947,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) Egress Peer Engineering (EPE) Segment Identifiers (SIDs) with MPLS Data Plane',
     published: '2024-12-28',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115724,
@@ -39016,7 +39017,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Establishing Local DNS Authority in Validated Split-Horizon Environments',
     published: '2025-01-28',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112901,
@@ -39078,7 +39079,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Refresh-Interval Independent RSVP Fast Reroute Facility Protection',
     published: '2025-03-26',
     pages: 24,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113470,
@@ -39134,7 +39135,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'TreeDN: Tree-Based Content Delivery Network (CDN) for Live Streaming to Mass Audiences',
     published: '2025-01-17',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 104329,
@@ -39190,7 +39191,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Report from the IAB Workshop on Barriers to Internet Access of Services (BIAS)',
     published: '2025-02-26',
     pages: 14,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112330,
@@ -39246,7 +39247,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use of the HSS/LMS Hash-Based Signature Algorithm in the Cryptographic Message Syntax (CMS)',
     published: '2025-01-10',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -39288,7 +39289,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Encryption Key Derivation in the Cryptographic Message Syntax (CMS) Using HKDF with SHA-256',
     published: '2025-01-10',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 5376,
@@ -39330,7 +39331,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Simple Fixes to the IP Flow Information Export (IPFIX) Entities IANA Registry',
     published: '2025-02-25',
     pages: 31,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -39378,7 +39379,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Entity Attestation Token (EAT)',
     published: '2025-04-30',
     pages: 85,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 6769,
@@ -39440,7 +39441,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IETF Meeting Venue Requirements Review',
     published: '2025-01-27',
     pages: 10,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 126183,
@@ -39461,7 +39462,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'IETF',
       name: 'IETF',
@@ -39485,7 +39486,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Bundle Protocol Version 7 Administrative Record Types Registry',
     published: '2025-01-17',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118589,
@@ -39527,7 +39528,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Encapsulation for MPLS Performance Measurement with the Alternate-Marking Method',
     published: '2025-02-14',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113580,
@@ -39596,7 +39597,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IP Fragmentation Avoidance in DNS over UDP',
     published: '2025-01-27',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 9036,
@@ -39645,7 +39646,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Mechanisms for MPLS Ping and Traceroute Procedures in Inter-Domain Segment Routing Networks',
     published: '2025-02-07',
     pages: 22,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115724,
@@ -39714,7 +39715,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Routing Architecture for Satellite Networks',
     published: '2025-01-27',
     pages: 17,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 4475,
@@ -39728,7 +39729,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -39752,7 +39753,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'DNSSEC Trust Anchor Publication for the Root Zone',
     published: '2025-01-24',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105113,
@@ -39814,7 +39815,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'YANG Data Model for Routing in Fat Trees (RIFT)',
     published: '2025-04-04',
     pages: 49,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123974,
@@ -39883,7 +39884,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'RFC Formats and Versions',
     published: '2025-01-17',
     pages: 8,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 10083,
@@ -39932,7 +39933,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Extended Mobility Procedures for Ethernet VPN Integrated Routing and Bridging (EVPN-IRB)',
     published: '2025-04-30',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123370,
@@ -40008,7 +40009,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Fast Recovery for EVPN Designated Forwarder Election',
     published: '2025-05-31',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118335,
@@ -40078,7 +40079,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'BGP Colored Prefix Routing (CPR) for Services Based on Segment Routing over IPv6 (SRv6)',
     published: '2025-05-29',
     pages: 13,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 112952,
@@ -40148,7 +40149,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'State of Affairs for Randomized and Changing Media Access Control (MAC) Addresses',
     published: '2025-03-17',
     pages: 17,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 108573,
@@ -40203,7 +40204,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'WebRTC-HTTP Ingestion Protocol (WHIP)',
     published: '2025-03-26',
     pages: 28,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 116085,
@@ -40252,7 +40253,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Operational Considerations for Use of DNS in Internet of Things (IoT) Devices',
     published: '2025-03-31',
     pages: 17,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 102254,
@@ -40301,7 +40302,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'api-catalog: A Well-Known URI and Link Relation to Help Discovery of APIs',
     published: '2025-06-13',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 19416,
@@ -40342,7 +40343,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'OAuth 2.0 Protected Resource Metadata',
     published: '2025-04-23',
     pages: 25,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 136779,
@@ -40397,7 +40398,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Concealed HTTP Authentication Scheme',
     published: '2025-02-14',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 119562,
@@ -40452,7 +40453,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Interworking of GMPLS Control and Centralized Controller Systems',
     published: '2025-03-04',
     pages: 32,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 115934,
@@ -40521,7 +40522,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for Virtual Network (VN) Operations',
     published: '2025-03-27',
     pages: 47,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 118347,
@@ -40590,7 +40591,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A Framework for NRP-Based Enhanced Virtual Private Networks',
     published: '2025-03-27',
     pages: 36,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 110737,
@@ -40659,7 +40660,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'BRSKI with Alternative Enrollment (BRSKI-AE)',
     published: '2025-03-03',
     pages: 27,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125564,
@@ -40715,7 +40716,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'X.509 Certificate Extended Key Usage (EKU) for Instant Messaging URIs',
     published: '2025-02-11',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 129485,
@@ -40756,7 +40757,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Locator/ID Separation Protocol (LISP) Distinguished Name Encoding',
     published: '2025-02-05',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 2764,
@@ -40804,7 +40805,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The BGP Monitoring Protocol (BMP) Peer Up Message Namespace',
     published: '2025-03-13',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 4836,
@@ -40852,7 +40853,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Reporting Errors in NFSv4.2 via LAYOUTRETURN',
     published: '2025-02-26',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111994,
@@ -40900,7 +40901,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMAP MESSAGELIMIT Extension',
     published: '2025-03-03',
     pages: 11,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 102154,
@@ -40962,7 +40963,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Protocol Independent Multicast Light (PIM Light)',
     published: '2025-03-04',
     pages: 9,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123357,
@@ -41032,7 +41033,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'New IPFIX Information Elements for TCP Options and IPv6 Extension Headers',
     published: '2025-03-04',
     pages: 21,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112869,
@@ -41081,7 +41082,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Concise Data Definition Language (CDDL): Additional Control Operators for the Conversion and Processing of Text',
     published: '2025-03-04',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 11843,
@@ -41122,7 +41123,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'A YANG Data Model for Syslog Management',
     published: '2025-04-30',
     pages: 41,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113086,
@@ -41184,7 +41185,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Specifying New Congestion Control Algorithms',
     published: '2025-03-12',
     pages: 23,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 106541,
@@ -41233,7 +41234,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'EVPN Virtual Private Wire Service (VPWS) Flexible Cross-Connect (FXC) Service',
     published: '2025-03-15',
     pages: 15,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105741,
@@ -41309,7 +41310,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Deprecation HTTP Response Header Field',
     published: '2025-03-17',
     pages: 8,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 125521,
@@ -41357,7 +41358,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'BGP EVPN Multihoming Extensions for Split-Horizon Filtering',
     published: '2025-03-06',
     pages: 17,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115629,
@@ -41419,7 +41420,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Unaffiliated Bidirectional Forwarding Detection (BFD) Echo',
     published: '2025-03-26',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113580,
@@ -41488,7 +41489,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Updating the NTP Registries',
     published: '2025-02-28',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 18427,
@@ -41530,7 +41531,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Use of Voluntary Application Server Identification (VAPID) in JSON Meta Application Protocol (JMAP) Web Push',
     published: '2025-03-16',
     pages: 5,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 138688,
@@ -41571,7 +41572,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'The Messaging Layer Security (MLS) Architecture',
     published: '2025-04-22',
     pages: 41,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 118067,
@@ -41640,7 +41641,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Closing the RTP Payload Format Media Types Registry',
     published: '2025-03-18',
     pages: 6,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 104294,
@@ -41682,7 +41683,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Conveying Vendor-Specific Information in the Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE',
     published: '2025-04-07',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124329,
@@ -41752,7 +41753,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Extension for Stateful PCE to Allow Optional Processing of Path Computation Element Communication Protocol (PCEP) Objects',
     published: '2025-04-21',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 124329,
@@ -41807,7 +41808,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Extensions for Opening and Delegating Files in NFSv4.2',
     published: '2025-03-26',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111994,
@@ -41855,7 +41856,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IMAP Support for UTF-8',
     published: '2025-03-17',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 18321,
@@ -41911,7 +41912,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Update to the IANA Path Communication Element Protocol (PCEP) Numbers Registration Procedures and the Allowance of Experimental Error Codes',
     published: '2025-03-12',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111477,
@@ -41960,7 +41961,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Path Computation Element Communication Protocol (PCEP) Extensions for Native IP Networks',
     published: '2025-03-14',
     pages: 33,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 111366,
@@ -42022,7 +42023,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Updates to the 'ipn' URI Scheme",
     published: '2025-05-23',
     pages: 26,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117656,
@@ -42070,13 +42071,13 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Unified Time Scaling for Temporal Coordination Frameworks',
     published: '2025-04-01',
     pages: 5,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [],
     group: {
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -42101,7 +42102,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Enterprise Profile for the Precision Time Protocol with Mixed Multicast and Unicast Messages',
     published: '2025-05-23',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 115705,
@@ -42150,7 +42151,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Manufacturer Usage Description (MUD) for TLS and DTLS Profiles for Internet of Things (IoT) Devices',
     published: '2025-04-18',
     pages: 33,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112901,
@@ -42206,7 +42207,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Using Router Advertisements to Signal the Availability of DHCPv6 Prefix Delegation to Clients',
     published: '2025-06-16',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111204,
@@ -42269,7 +42270,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Related Certificates for Use in Multiple Authentications within a Protocol',
     published: '2025-06-13',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 128558,
@@ -42325,7 +42326,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Bidirectional Forwarding Detection (BFD) Encapsulated in Large Packets',
     published: '2025-04-04',
     pages: 14,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 105046,
@@ -42374,7 +42375,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'RADIUS/1.1: Leveraging Application-Layer Protocol Negotiation (ALPN) to Remove MD5',
     published: '2025-04-22',
     pages: 31,
-    status: {slug: 'experimental', name: 'Experimental'},
+    status: { slug: 'experimental', name: 'Experimental' },
     authors: [
       {
         person: 108624,
@@ -42416,7 +42417,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       "Extensions for Weak Cache Consistency in NFSv4.2's Flexible File Layout",
     published: '2025-04-23',
     pages: 11,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111994,
@@ -42465,7 +42466,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Grant Negotiation and Authorization Protocol Resource Server Connections',
     published: '2025-04-22',
     pages: 35,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 112051,
@@ -42513,7 +42514,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'NTP Interleaved Modes',
     published: '2025-05-23',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 123847,
@@ -42562,7 +42563,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Notification of Revoked Access Tokens in the Authentication and Authorization for Constrained Environments (ACE) Framework',
     published: '2025-06-13',
     pages: 64,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 120631,
@@ -42625,7 +42626,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Properties of Authenticated Encryption with Associated Data (AEAD) Algorithms',
     published: '2025-05-07',
     pages: 25,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 133576,
@@ -42667,7 +42668,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Active Operations, Administration, and Maintenance (OAM) for Use in Generic Network Virtualization Encapsulation (Geneve)',
     published: '2025-05-31',
     pages: 10,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113047,
@@ -42729,7 +42730,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'ACME Renewal Information (ARI) Extension',
     published: '2025-06-17',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 128492,
@@ -42770,7 +42771,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Deprecation of AS_SET and AS_CONFED_SET in BGP',
     published: '2025-05-21',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111656,
@@ -42832,7 +42833,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IRTF Code of Conduct',
     published: '2025-03-18',
     pages: 8,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 20209,
@@ -42873,7 +42874,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Internet Group Management Protocol, Version 3',
     published: '2025-03-28',
     pages: 48,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 100664,
@@ -42914,7 +42915,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Multicast Listener Discovery Version 2 (MLDv2) for IPv6',
     published: '2025-03-28',
     pages: 56,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 100664,
@@ -42955,7 +42956,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'IANA Considerations for Internet Group Management Protocols',
     published: '2025-03-28',
     pages: 6,
-    status: { slug: 'bcp', name: 'Best Current Practice'},
+    status: { slug: 'bcp', name: 'Best Current Practice' },
     authors: [
       {
         person: 100664,
@@ -42997,7 +42998,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Performance Measurement for Segment Routing Networks with the MPLS Data Plane',
     published: '2025-05-08',
     pages: 20,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 121347,
@@ -43067,7 +43068,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Bidirectional Forwarding Detection (BFD) for Multipoint Networks over Point-to-Multipoint MPLS Label Switched Paths (LSPs)',
     published: '2025-05-31',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 113047,
@@ -43123,7 +43124,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)',
     published: '2025-05-27',
     pages: 16,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 117723,
@@ -43185,7 +43186,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Entity Attestation Token (EAT) Media Types',
     published: '2025-05-27',
     pages: 13,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 6769,
@@ -43240,7 +43241,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: "Arm's Platform Security Architecture (PSA) Attestation Token",
     published: '2025-06-13',
     pages: 36,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 105857,
@@ -43282,7 +43283,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       acronym: 'none',
       name: 'Individual Submissions'
     },
-    area: null,
+    area: undefined,
     stream: {
       slug: 'INDEPENDENT',
       name: 'ISE',
@@ -43306,7 +43307,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Prefix Flag Extension for OSPFv2 and OSPFv3',
     published: '2025-06-12',
     pages: 7,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 110678,
@@ -43375,7 +43376,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'BGP Extensions for Bit Index Explicit Replication (BIER)',
     published: '2025-06-13',
     pages: 12,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 111348,
@@ -43451,7 +43452,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Terminology for Post-Quantum Traditional Hybrid Schemes',
     published: '2025-06-13',
     pages: 15,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 128468,
@@ -43507,7 +43508,7 @@ export const testMockAllRfcs: RfcCommon[] = [
       'Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values',
     published: '2025-06-13',
     pages: 24,
-    status: { slug: 'standard', name: 'Internet Standard'},
+    status: { slug: 'standard', name: 'Internet Standard' },
     authors: [
       {
         person: 139474,
@@ -43548,7 +43549,7 @@ export const testMockAllRfcs: RfcCommon[] = [
     title: 'Simple Public Key Infrastructure (SPKI) S-Expressions',
     published: '2025-06-17',
     pages: 22,
-    status: { slug: 'fyi', name: 'Informational'},
+    status: { slug: 'fyi', name: 'Informational' },
     authors: [
       {
         person: 19822,
@@ -43591,4 +43592,2299 @@ export const testMockAllRfcs: RfcCommon[] = [
       'This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.',
     text: ''
   }
+]
+
+export const testMockSubseries: SubseriesDoc[] = [
+  {
+    name: 'bcp22',
+    type: 'bcp',
+    contents: [
+      {
+        number: 2360,
+        title: 'Guide for Internet Standards Writers',
+        published: '1998-06-01',
+        status: { slug: 'bcp', name: 'best current practice' },
+        pages: 20,
+        authors: [
+          {
+            person: 18327,
+            name: 'Gregor Scott',
+            titlepage_name: '',
+            email: 'scottg@ftm.disa.mil',
+            affiliation: 'Defense Information Systems Agency',
+            country: 'USA'
+          }
+        ],
+        group: {
+          acronym: 'stdguide',
+          name: 'Guide for Internet Standards Writers'
+        },
+        area: { acronym: 'usv', name: 'User Services Area' },
+        stream: {
+          slug: 'ietf',
+          name: 'IETF',
+          desc: 'Internet Engineering Task Force (IETF)'
+        },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC2360' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'bcp22', type: 'bcp' }],
+        see_also: [],
+        draft: {
+          id: 18593,
+          name: 'draft-ietf-stdguide-ops',
+          title: 'Guide for Internet Standards Writers'
+        },
+        abstract:
+          'This document is a guide for Internet standard writers.  It defines those characteristics that make standards coherent, unambiguous, and easy to interpret.  This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std80',
+    type: 'std',
+    contents: [
+      {
+        number: 20,
+        title: 'ASCII format for network interchange',
+        published: '1969-10-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 9,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0020' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std80', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract: '',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std6',
+    type: 'std',
+    contents: [
+      {
+        number: 768,
+        title: 'User Datagram Protocol',
+        published: '1980-08-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0768' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std6', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract: '',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std5',
+    type: 'std',
+    contents: [
+      {
+        number: 791,
+        title: 'Internet Protocol',
+        published: '1981-09-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 51,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0791' }],
+        obsoletes: [
+          { id: 42673, number: 760, title: 'DoD standard Internet Protocol' }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 128703,
+            number: 6864,
+            title: 'Updated Specification of the IPv4 ID Field'
+          },
+          {
+            id: 123547,
+            number: 1349,
+            title: 'Type of Service in the Internet Protocol Suite'
+          },
+          {
+            id: 124464,
+            number: 2474,
+            title:
+              'Definition of the Differentiated Services Field (DS Field) in the IPv4 and IPv6 Headers'
+          }
+        ],
+        subseries: [{ name: 'std5', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract: '',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 792,
+        title: 'Internet Control Message Protocol',
+        published: '1981-09-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 21,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0792' }],
+        obsoletes: [
+          { id: 42675, number: 777, title: 'Internet Control Message Protocol' }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 42710,
+            number: 950,
+            title: 'Internet Standard Subnetting Procedure'
+          },
+          {
+            id: 126796,
+            number: 4884,
+            title: 'Extended ICMP to Support Multi-Part Messages'
+          },
+          {
+            id: 128477,
+            number: 6633,
+            title: 'Deprecation of ICMP Source Quench Messages'
+          },
+          {
+            id: 128755,
+            number: 6918,
+            title: 'Formally Deprecating Some ICMPv4 Message Types'
+          }
+        ],
+        subseries: [{ name: 'std5', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract: '',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 919,
+        title: 'Broadcasting Internet Datagrams',
+        published: '1984-10-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 8,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0919' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std5', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC proposes simple rules for broadcasting Internet datagrams on local networks that support broadcast, for addressing broadcasts, and for how gateways should handle them.  This RFC suggests a proposed protocol for the ARPA-Internet community, and requests discussion and suggestions for improvements.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 922,
+        title: 'Broadcasting Internet datagrams in the presence of subnets',
+        published: '1984-10-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 12,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0922' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std5', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'We propose simple rules for broadcasting Internet datagrams on local networks that support broadcast, for addressing broadcasts, and for how gateways should handle them.  This RFC suggests a proposed protocol for the ARPA-Internet community, and requests discussion and suggestions for improvements.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 950,
+        title: 'Internet Standard Subnetting Procedure',
+        published: '1985-08-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 18,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0950' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [
+          { id: 42697, number: 792, title: 'Internet Control Message Protocol' }
+        ],
+        updated_by: [
+          {
+            id: 128755,
+            number: 6918,
+            title: 'Formally Deprecating Some ICMPv4 Message Types'
+          }
+        ],
+        subseries: [{ name: 'std5', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This memo discusses the utility of "subnets" of Internet networks, which are logically visible sub-sections of a single Internet network.  For administrative or technical reasons, many organizations have chosen to divide one Internet network into several subnets, instead of acquiring a set of Internet network numbers.  This memo specifies procedures for the use of subnets.  These procedures are for hosts (e.g., workstations).  The procedures used in and between subnet gateways are not fully described.  Important motivation and background information for a subnetting standard is provided in RFC-940.  This RFC specifies a protocol for the ARPA-Internet community.  If subnetting is implemented it is strongly recommended that these procedures be followed.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1112,
+        title: 'Host extensions for IP multicasting',
+        published: '1989-08-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 17,
+        authors: [
+          {
+            person: 9009,
+            name: 'Steve Deering',
+            titlepage_name: '',
+            email: 'deering@pescadero.stanford.edu',
+            affiliation: 'Stanford University',
+            country: 'Stanford, CA 94305-2140'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1112' }],
+        obsoletes: [
+          {
+            id: 42899,
+            number: 988,
+            title: 'Host extensions for IP multicasting'
+          },
+          {
+            id: 42926,
+            number: 1054,
+            title: 'Host extensions for IP multicasting'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 124245,
+            number: 2236,
+            title: 'Internet Group Management Protocol, Version 2'
+          }
+        ],
+        subseries: [{ name: 'std5', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This memo specifies the extensions required of a host implementation of the Internet Protocol (IP) to support multicasting.  Recommended procedure for IP multicasting in the Internet.  This RFC obsoletes RFCs 998 and 1054. [STANDARDS-TRACK]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std10',
+    type: 'std',
+    contents: [
+      {
+        number: 821,
+        title: 'Simple Mail Transfer Protocol',
+        published: '1982-08-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 72,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0821' }],
+        obsoletes: [
+          { id: 42690, number: 772, title: 'Mail Transfer Protocol' },
+          { id: 42691, number: 780, title: 'Mail Transfer Protocol' },
+          { id: 42700, number: 788, title: 'Simple Mail Transfer Protocol' }
+        ],
+        obsoleted_by: [
+          { id: 124796, number: 2821, title: 'Simple Mail Transfer Protocol' }
+        ],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std10', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'The objective of Simple Mail Transfer Protocol (SMTP) is to transfer mail reliably and efficiently.  SMTP is independent of the particular transmission subsystem and requires only a reliable ordered data stream channel.  Obsoletes RFC 788, 780, and 772.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 974,
+        title: 'Mail routing and the domain system',
+        published: '1986-01-01',
+        status: { slug: 'historic', name: 'historic' },
+        pages: 7,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0974' }],
+        obsoletes: [
+          { id: 42690, number: 772, title: 'Mail Transfer Protocol' },
+          { id: 42691, number: 780, title: 'Mail Transfer Protocol' },
+          { id: 42700, number: 788, title: 'Simple Mail Transfer Protocol' }
+        ],
+        obsoleted_by: [
+          { id: 124796, number: 2821, title: 'Simple Mail Transfer Protocol' }
+        ],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std10', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC presents a description of how mail systems on the Internet are expected to route messages based on information from the domain system.  This involves a discussion of how mailers interpret MX RRs, which are used for message routing.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1869,
+        title: 'SMTP Service Extensions',
+        published: '1995-11-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 11,
+        authors: [
+          {
+            person: 100927,
+            name: 'Dave Crocker',
+            titlepage_name: '',
+            email: 'dcrocker@mordor.stanford.edu',
+            affiliation: 'Brandenburg Consulting',
+            country: 'USA'
+          },
+          {
+            person: 106911,
+            name: 'John Klensin',
+            titlepage_name: '',
+            email: 'klensin@mci.net',
+            affiliation: 'WG Chair',
+            country: 'Reston, VA 22091'
+          },
+          {
+            person: 490,
+            name: 'Einar Stefferud',
+            titlepage_name: '',
+            email: 'stef@nma.com',
+            affiliation: 'Network Management Associates',
+            country: 'USA'
+          },
+          {
+            person: 2455,
+            name: 'Marshall Rose',
+            titlepage_name: '',
+            email: 'mrose@dbc.mtview.ca.us',
+            affiliation: 'Dover Beach Consulting',
+            country: 'USA'
+          },
+          {
+            person: 4397,
+            name: 'Ned Freed',
+            titlepage_name: '',
+            email: 'ned@innosoft.com',
+            affiliation: 'Innosoft International',
+            country: 'USA'
+          }
+        ],
+        group: { acronym: 'smtpext', name: 'Internet Mail Extensions' },
+        area: { acronym: 'app', name: 'Applications Area' },
+        stream: {
+          slug: 'ietf',
+          name: 'IETF',
+          desc: 'Internet Engineering Task Force (IETF)'
+        },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1869' }],
+        obsoletes: [
+          { id: 42691, number: 780, title: 'Mail Transfer Protocol' },
+          { id: 42700, number: 788, title: 'Simple Mail Transfer Protocol' },
+          { id: 43199, number: 1651, title: 'SMTP Service Extensions' },
+          { id: 42690, number: 772, title: 'Mail Transfer Protocol' }
+        ],
+        obsoleted_by: [
+          { id: 124796, number: 2821, title: 'Simple Mail Transfer Protocol' }
+        ],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std10', type: 'std' }],
+        see_also: [],
+        draft: {
+          id: 17454,
+          name: 'draft-ietf-smtpext-extensions',
+          title: 'SMTP Service Extensions'
+        },
+        abstract:
+          'This memo defines a framework for extending the SMTP service by defining a means whereby a server SMTP can inform a client SMTP as to the service extensions it supports. [STANDARDS-TRACK]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1870,
+        title: 'SMTP Service Extension for Message Size Declaration',
+        published: '1995-11-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 9,
+        authors: [
+          {
+            person: 106911,
+            name: 'John Klensin',
+            titlepage_name: '',
+            email: 'klensin@mci.net',
+            affiliation: 'WG Chair',
+            country: 'Reston, VA 22091'
+          },
+          {
+            person: 4397,
+            name: 'Ned Freed',
+            titlepage_name: '',
+            email: 'ned@innosoft.com',
+            affiliation: 'Innosoft International',
+            country: 'USA'
+          },
+          {
+            person: 4592,
+            name: 'Keith Moore',
+            titlepage_name: '',
+            email: 'moore@cs.utk.edu',
+            affiliation: 'University of Tennessee',
+            country: 'USA'
+          }
+        ],
+        group: { acronym: 'smtpext', name: 'Internet Mail Extensions' },
+        area: { acronym: 'app', name: 'Applications Area' },
+        stream: {
+          slug: 'ietf',
+          name: 'IETF',
+          desc: 'Internet Engineering Task Force (IETF)'
+        },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1870' }],
+        obsoletes: [
+          { id: 42700, number: 788, title: 'Simple Mail Transfer Protocol' },
+          {
+            id: 123747,
+            number: 1653,
+            title: 'SMTP Service Extension for Message Size Declaration'
+          },
+          { id: 42691, number: 780, title: 'Mail Transfer Protocol' },
+          { id: 42690, number: 772, title: 'Mail Transfer Protocol' }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std10', type: 'std' }],
+        see_also: [],
+        draft: {
+          id: 17817,
+          name: 'draft-ietf-smtpext-size',
+          title: 'SMTP Service Extension for Message Size Declaration'
+        },
+        abstract:
+          "This memo defines an extension to the SMTP service whereby an SMTP client and server may interact to give the server an opportunity to decline to accept a message (perhaps temporarily) based on the client's estimate of the message size. [STANDARDS-TRACK]",
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std11',
+    type: 'std',
+    contents: [
+      {
+        number: 822,
+        title: 'STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES',
+        published: '1982-08-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 49,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0822' }],
+        obsoletes: [
+          {
+            id: 42635,
+            number: 733,
+            title: 'Standard for the format of ARPA network text messages'
+          }
+        ],
+        obsoleted_by: [
+          { id: 124797, number: 2822, title: 'Internet Message Format' }
+        ],
+        updates: [],
+        updated_by: [
+          {
+            id: 42743,
+            number: 1123,
+            title: 'Requirements for Internet Hosts - Application and Support'
+          },
+          {
+            id: 42744,
+            number: 1138,
+            title: 'Mapping between X.400(1988) / ISO 10021 and RFC 822'
+          },
+          {
+            id: 42745,
+            number: 1148,
+            title: 'Mapping between X.400(1988) / ISO 10021 and RFC 822'
+          },
+          {
+            id: 124169,
+            number: 2156,
+            title:
+              'MIXER (Mime Internet X.400 Enhanced Relay): Mapping between X.400 and RFC 822/MIME'
+          },
+          {
+            id: 123536,
+            number: 1327,
+            title: 'Mapping between X.400(1988) / ISO 10021 and RFC 822'
+          }
+        ],
+        subseries: [{ name: 'std11', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          "This document revises the specifications in RFC 733, in order to serve the needs of the larger and more complex ARPA Internet.  Some of RFC 733's features failed to gain adequate acceptance.  In order to simplify the standard and the software that follows it, these features have been removed.  A different addressing scheme is used, to handle the case of internetwork mail; and the concept of re-transmission has been introduced.  Obsoletes RFC 733, NIC 41952.",
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std37',
+    type: 'std',
+    contents: [
+      {
+        number: 826,
+        title:
+          'An Ethernet Address Resolution Protocol: Or Converting Network Protocol Addresses to 48.bit Ethernet Address for Transmission on Ethernet Hardware',
+        published: '1982-11-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 10,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0826' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 127125,
+            number: 5227,
+            title: 'IPv4 Address Conflict Detection'
+          },
+          {
+            id: 127381,
+            number: 5494,
+            title:
+              'IANA Allocation Guidelines for the Address Resolution Protocol (ARP)'
+          }
+        ],
+        subseries: [{ name: 'std37', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'The purpose of this RFC is to present a method of Converting Protocol Addresses (e.g., IP addresses) to Local Network Addresses (e.g., Ethernet addresses).  This is an issue of general concern in the ARPA Internet Community at this time.  The method proposed here is presented for your consideration and comment.  This is not the specification of an Internet Standard.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std8',
+    type: 'std',
+    contents: [
+      {
+        number: 854,
+        title: 'Telnet Protocol Specification',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 15,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0854' }],
+        obsoletes: [
+          { id: 42680, number: 764, title: 'Telnet Protocol specification' }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 127098,
+            number: 5198,
+            title: 'Unicode Format for Network Interchange'
+          }
+        ],
+        subseries: [{ name: 'std8', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This is the specification of the Telnet protocol used for remote terminal access in the ARPA Internet.  The purpose of the TELNET Protocol is to provide a fairly general, bi-directional, eight-bit byte oriented communications facility.  Its primary goal is to allow a standard method of interfacing terminal devices and terminal-oriented processes to each other.  It is envisioned that the protocol may also be used for terminal-terminal communication ("linking") and process-process communication (distributed computation).  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes NIC 18639.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 855,
+        title: 'Telnet Option Specifications',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0855' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std8', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This memo specifies the general form for Telnet options and the directions for their specification.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes RFC 651, NIC 18640.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std27',
+    type: 'std',
+    contents: [
+      {
+        number: 856,
+        title: 'Telnet Binary Transmission',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 4,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0856' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std27', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This Telnet Option enables a binary data mode between the Telnet modules.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes NIC 15389.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std28',
+    type: 'std',
+    contents: [
+      {
+        number: 857,
+        title: 'Telnet Echo Option',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 5,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0857' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std28', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This Telnet Option enables remote echoing by the other Telnet module.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes NIC 15390.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std29',
+    type: 'std',
+    contents: [
+      {
+        number: 858,
+        title: 'Telnet Suppress Go Ahead Option',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 2,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0858' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std29', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This Telnet Option disables the exchange of go-ahead signals between the Telnet modules.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes NIC 15392.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std30',
+    type: 'std',
+    contents: [
+      {
+        number: 859,
+        title: 'Telnet Status Option',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0859' }],
+        obsoletes: [
+          { id: 42575, number: 651, title: 'Revised Telnet status option' }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std30', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          "This Telnet Option provides a way to determine the other Telnet module's view of the status of options.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes RFC 651 (NIC 31154).",
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std31',
+    type: 'std',
+    contents: [
+      {
+        number: 860,
+        title: 'Telnet Timing Mark Option',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 4,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0860' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std31', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This Telnet Option provides a way to check the roundtrip path between two Telnet modules.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes NIC 16238.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std32',
+    type: 'std',
+    contents: [
+      {
+        number: 861,
+        title: 'Telnet Extended Options: List Option',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 2,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0861' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std32', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This Telnet Option provides a mechanism for extending the set of possible options.  This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet are expected to adopt and implement this standard.  Obsoletes NIC 16239.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std20',
+    type: 'std',
+    contents: [
+      {
+        number: 862,
+        title: 'Echo Protocol',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 1,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0862' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std20', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement a Echo Protocol are expected to adopt and implement this standard.  The Echo service simply sends back to the originating source any data it receives.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std21',
+    type: 'std',
+    contents: [
+      {
+        number: 863,
+        title: 'Discard Protocol',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 1,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0863' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std21', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement a Discard Protocol are expected to adopt and implement this standard.  The Discard service simply throws away any data it receives.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std22',
+    type: 'std',
+    contents: [
+      {
+        number: 864,
+        title: 'Character Generator Protocol',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0864' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std22', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement a Character Generator Protocol are expected to adopt and implement this standard.  The Character Generator service simply sends data without regard to the input.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std23',
+    type: 'std',
+    contents: [
+      {
+        number: 865,
+        title: 'Quote of the Day Protocol',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 1,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0865' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std23', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement a Quote of the Day Protocol are expected to adopt and implement this standard.  The Quote of the Day service simply sends a short message without regard to the input.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std24',
+    type: 'std',
+    contents: [
+      {
+        number: 866,
+        title: 'Active users',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 1,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0866' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std24', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement an Active Users Protocol are expected to adopt and implement this standard.  The Active Users service simply sends a list of the currently active users on the host without regard to the input.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std25',
+    type: 'std',
+    contents: [
+      {
+        number: 867,
+        title: 'Daytime Protocol',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 2,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0867' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std25', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement a Daytime Protocol are expected to adopt and implement this standard.  The Daytime service simply sends the current date and time as a character string without regard to the input.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std26',
+    type: 'std',
+    contents: [
+      {
+        number: 868,
+        title: 'Time Protocol',
+        published: '1983-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 2,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0868' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std26', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard for the ARPA Internet community.  Hosts on the ARPA Internet that choose to implement a Time Protocol are expected to adopt and implement this standard.  This protocol provides a site-independent, machine readable date and time.  The Time service sends back to the originating source the time in seconds since midnight on January first 1900.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std44',
+    type: 'std',
+    contents: [
+      {
+        number: 891,
+        title: 'DCN Local-Network Protocols',
+        published: '1983-12-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 26,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0891' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std44', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC provides a description of the DCN protocols for maintaining connectivity, routing, and clock information in a local network.  These procedures may be of interest to the designers and implementers of other local networks.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std41',
+    type: 'std',
+    contents: [
+      {
+        number: 894,
+        title:
+          'A Standard for the Transmission of IP Datagrams over Ethernet Networks',
+        published: '1984-04-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0894' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std41', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard method of encapsulating Internet Protocol (IP) datagrams on an Ethernet.  This RFC specifies a standard protocol for the ARPA-Internet community.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std42',
+    type: 'std',
+    contents: [
+      {
+        number: 895,
+        title:
+          'Standard for the transmission of IP datagrams over experimental Ethernet networks',
+        published: '1984-04-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0895' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std42', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard method of encapsulating Internet Protocol (IP) datagrams on an Experimental Ethernet.  This RFC specifies a standard protocol for the ARPA Internet community.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std38',
+    type: 'std',
+    contents: [
+      {
+        number: 903,
+        title: 'A Reverse Address Resolution Protocol',
+        published: '1984-06-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 4,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0903' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std38', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC suggests a method for workstations to dynamically find their protocol address (e.g., their Internet Address), when they know only their hardware address (e.g., their attached physical network address).  This RFC specifies a proposed protocol for the ARPA Internet community, and requests discussion and suggestions for improvements.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std40',
+    type: 'std',
+    contents: [
+      {
+        number: 907,
+        title: 'Host Access Protocol specification',
+        published: '1984-07-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 75,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0907' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 42836,
+            number: 1221,
+            title: 'Host Access Protocol (HAP) specification: Version 2'
+          }
+        ],
+        subseries: [{ name: 'std40', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This document specifies the Host Access Protocol (HAP).  Although HAP was originally designed as the network-access level protocol for the DARPA/DCA sponsored Wideband Packet Satellite Network, it is intended that it evolve into a standard interface SATNET and TACNET (aka MATNET) as well as the Wideband Network.  HAP is an experimental protocol, and will undergo further revision as new capabilities are added and/or different satellite networks are suported.  Implementations of HAP should be performed in coordination with satellite network development and operations personnel.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std9',
+    type: 'std',
+    contents: [
+      {
+        number: 959,
+        title: 'File Transfer Protocol',
+        published: '1985-10-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 69,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC0959' }],
+        obsoletes: [
+          {
+            id: 42480,
+            number: 765,
+            title: 'File Transfer Protocol specification'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 124620,
+            number: 2640,
+            title: 'Internationalization of the File Transfer Protocol'
+          },
+          { id: 125607, number: 3659, title: 'Extensions to FTP' },
+          { id: 124237, number: 2228, title: 'FTP Security Extensions' },
+          {
+            id: 127675,
+            number: 5797,
+            title: 'FTP Command and Extension Registry'
+          },
+          {
+            id: 124750,
+            number: 2773,
+            title: 'Encryption using KEA and SKIPJACK'
+          },
+          {
+            id: 128981,
+            number: 7151,
+            title: 'File Transfer Protocol HOST Command for Virtual Hosts'
+          }
+        ],
+        subseries: [{ name: 'std9', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This memo is the official specification of the File Transfer Protocol (FTP) for the DARPA Internet community.  The primary intent is to clarify and correct the documentation of the FTP specification, not to change the protocol.  The following new optional commands are included in this edition of the specification: Change to Parent Directory (CDUP), Structure Mount (SMNT), Store Unique (STOU), Remove Directory (RMD), Make Directory (MKD), Print Directory (PWD), and System (SYST).  Note that this specification is compatible with the previous edition.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std19',
+    type: 'std',
+    contents: [
+      {
+        number: 1001,
+        title:
+          'Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods',
+        published: '1987-03-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 68,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1001' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std19', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC defines a proposed standard protocol to support NetBIOS services in a TCP/IP environment.  Both local network and internet operation are supported.  Various node types are defined to accommodate local and internet topologies and to allow operation with or without the use of IP broadcast.  This RFC describes the NetBIOS-over-TCP protocols in a general manner, emphasizing the underlying ideas and techniques.  Detailed specifications are found in a companion RFC, "Protocol Standard For a NetBIOS Service on a TCP/UDP Transport: Detailed Specifications".',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1002,
+        title:
+          'Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications',
+        published: '1987-03-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 84,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1002' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std19', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC defines a proposed standard protocol to support NetBIOS services in a TCP/IP environment.  Both local network and internet operation are supported.  Various node types are defined to accommodate local and internet topologies and to allow operation with or without the use of IP broadcast.  This RFC gives the detailed specifications of the netBIOS-over-TCP packets, protocols, and defined constants and variables.  A more general overview is found in a companion RFC, "Protocol Standard For NetBIOS Service on TCP/UDP Transport: Concepts and Methods".',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std35',
+    type: 'std',
+    contents: [
+      {
+        number: 1006,
+        title: 'ISO Transport Service on top of the TCP Version: 3',
+        published: '1987-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 19,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1006' }],
+        obsoletes: [
+          {
+            id: 42916,
+            number: 983,
+            title: 'ISO transport arrives on top of the TCP'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 124141,
+            number: 2126,
+            title: 'ISO Transport Service on top of TCP (ITOT)'
+          }
+        ],
+        subseries: [{ name: 'std35', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This memo specifies a standard for the Internet community.  Hosts on the Internet that choose to implement ISO transport services on top of the TCP are expected to adopt and implement this standard.  TCP port 102 is reserved for hosts which implement this standard.  This memo specifies version 3 of the protocol and supersedes RFC-983.  Changes between the protocol is described in RFC-983 and this memo are minor, but unfortunately incompatible.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std13',
+    type: 'std',
+    contents: [
+      {
+        number: 1034,
+        title: 'Domain names - concepts and facilities',
+        published: '1987-11-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 55,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1034' }],
+        obsoletes: [
+          {
+            id: 42807,
+            number: 882,
+            title: 'Domain names: Concepts and facilities'
+          },
+          {
+            id: 42811,
+            number: 883,
+            title: 'Domain names: Implementation specification'
+          },
+          {
+            id: 42810,
+            number: 973,
+            title: 'Domain system changes and observations'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 42972,
+            number: 1101,
+            title: 'DNS encoding of network names and other types'
+          },
+          { id: 42973, number: 1183, title: 'New DNS RR Definitions' },
+          { id: 42974, number: 1348, title: 'DNS NSAP RRs' },
+          {
+            id: 129842,
+            number: 8020,
+            title: 'NXDOMAIN: There Really Is Nothing Underneath'
+          },
+          {
+            id: 130299,
+            number: 8482,
+            title:
+              'Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY'
+          },
+          {
+            id: 130573,
+            number: 8767,
+            title: 'Serving Stale Data to Improve DNS Resiliency'
+          },
+          {
+            id: 131260,
+            number: 9471,
+            title: 'DNS Glue Requirements in Referral Responses'
+          },
+          {
+            id: 124309,
+            number: 2308,
+            title: 'Negative Caching of DNS Queries (DNS NCACHE)'
+          },
+          {
+            id: 124194,
+            number: 2181,
+            title: 'Clarifications to the DNS Specification'
+          },
+          { id: 124003, number: 1982, title: 'Serial Number Arithmetic' },
+          {
+            id: 123909,
+            number: 1876,
+            title:
+              'A Means for Expressing Location Information in the Domain Name System'
+          },
+          {
+            id: 124083,
+            number: 2065,
+            title: 'Domain Name System Security Extensions'
+          },
+          {
+            id: 125969,
+            number: 4034,
+            title: 'Resource Records for the DNS Security Extensions'
+          },
+          {
+            id: 125970,
+            number: 4035,
+            title: 'Protocol Modifications for the DNS Security Extensions'
+          },
+          {
+            id: 126270,
+            number: 4343,
+            title: 'Domain Name System (DNS) Case Insensitivity Clarification'
+          },
+          {
+            id: 126515,
+            number: 4592,
+            title: 'The Role of Wildcards in the Domain Name System'
+          },
+          {
+            id: 124523,
+            number: 2535,
+            title: 'Domain Name System Security Extensions'
+          },
+          {
+            id: 127805,
+            number: 5936,
+            title: 'DNS Zone Transfer Protocol (AXFR)'
+          },
+          {
+            id: 125968,
+            number: 4033,
+            title: 'DNS Security Introduction and Requirements'
+          }
+        ],
+        subseries: [{ name: 'std13', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC is the revised basic definition of The Domain Name System.  It obsoletes RFC-882.  This memo describes the domain style names and their used for host address look up and electronic mail forwarding.  It discusses the clients and servers in the domain name system and the protocol used between them.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1035,
+        title: 'Domain names - implementation and specification',
+        published: '1987-11-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 55,
+        authors: [],
+        group: { acronym: 'vgmib', name: '100VG-AnyLAN MIB' },
+        area: { acronym: 'int', name: 'Internet Area' },
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1035' }],
+        obsoletes: [
+          {
+            id: 42807,
+            number: 882,
+            title: 'Domain names: Concepts and facilities'
+          },
+          {
+            id: 42811,
+            number: 883,
+            title: 'Domain names: Implementation specification'
+          },
+          {
+            id: 42810,
+            number: 973,
+            title: 'Domain system changes and observations'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 42972,
+            number: 1101,
+            title: 'DNS encoding of network names and other types'
+          },
+          { id: 42973, number: 1183, title: 'New DNS RR Definitions' },
+          { id: 42974, number: 1348, title: 'DNS NSAP RRs' },
+          { id: 130307, number: 8490, title: 'DNS Stateful Operations' },
+          {
+            id: 130299,
+            number: 8482,
+            title:
+              'Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY'
+          },
+          {
+            id: 130573,
+            number: 8767,
+            title: 'Serving Stale Data to Improve DNS Resiliency'
+          },
+          {
+            id: 124309,
+            number: 2308,
+            title: 'Negative Caching of DNS Queries (DNS NCACHE)'
+          },
+          {
+            id: 124152,
+            number: 2137,
+            title: 'Secure Domain Name System Dynamic Update'
+          },
+          {
+            id: 124194,
+            number: 2181,
+            title: 'Clarifications to the DNS Specification'
+          },
+          { id: 124003, number: 1982, title: 'Serial Number Arithmetic' },
+          {
+            id: 124151,
+            number: 2136,
+            title: 'Dynamic Updates in the Domain Name System (DNS UPDATE)'
+          },
+          {
+            id: 124016,
+            number: 1996,
+            title:
+              'A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)'
+          },
+          {
+            id: 124015,
+            number: 1995,
+            title: 'Incremental Zone Transfer in DNS'
+          },
+          {
+            id: 123909,
+            number: 1876,
+            title:
+              'A Means for Expressing Location Information in the Domain Name System'
+          },
+          {
+            id: 124083,
+            number: 2065,
+            title: 'Domain Name System Security Extensions'
+          },
+          {
+            id: 125969,
+            number: 4034,
+            title: 'Resource Records for the DNS Security Extensions'
+          },
+          {
+            id: 125970,
+            number: 4035,
+            title: 'Protocol Modifications for the DNS Security Extensions'
+          },
+          {
+            id: 126270,
+            number: 4343,
+            title: 'Domain Name System (DNS) Case Insensitivity Clarification'
+          },
+          {
+            id: 127835,
+            number: 5966,
+            title: 'DNS Transport over TCP - Implementation Requirements'
+          },
+          {
+            id: 128448,
+            number: 6604,
+            title: 'xNAME RCODE and Status Bits Clarification'
+          },
+          {
+            id: 124523,
+            number: 2535,
+            title: 'Domain Name System Security Extensions'
+          },
+          {
+            id: 124653,
+            number: 2673,
+            title: 'Binary Labels in the Domain Name System'
+          },
+          {
+            id: 124820,
+            number: 2845,
+            title: 'Secret Key Transaction Authentication for DNS (TSIG)'
+          },
+          {
+            id: 127805,
+            number: 5936,
+            title: 'DNS Zone Transfer Protocol (AXFR)'
+          },
+          { id: 125378, number: 3425, title: 'Obsoleting IQUERY' },
+          {
+            id: 125606,
+            number: 3658,
+            title: 'Delegation Signer (DS) Resource Record (RR)'
+          },
+          {
+            id: 125968,
+            number: 4033,
+            title: 'DNS Security Introduction and Requirements'
+          },
+          {
+            id: 129589,
+            number: 7766,
+            title: 'DNS Transport over TCP - Implementation Requirements'
+          },
+          {
+            id: 138061,
+            number: 9619,
+            title: 'In the DNS, QDCOUNT Is (Usually) One'
+          }
+        ],
+        subseries: [{ name: 'std13', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC is the revised specification of the protocol and format used in the implementation of the Domain Name System.  It obsoletes RFC-883.  This memo documents the details of the domain name client - server communication.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std43',
+    type: 'std',
+    contents: [
+      {
+        number: 1042,
+        title:
+          'Standard for the transmission of IP datagrams over IEEE 802 networks',
+        published: '1988-02-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 15,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1042' }],
+        obsoletes: [
+          {
+            id: 42879,
+            number: 948,
+            title:
+              'Two methods for the transmission of IP datagrams over IEEE 802.3 networks'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std43', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC specifies a standard method of encapsulating the Internet Protocol (IP) datagrams and Address Resolution Protocol (ARP) requests and replies on IEEE 802 Networks to allow compatible and interoperable implementations.  This RFC specifies a protocol standard for the Internet community.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std45',
+    type: 'std',
+    contents: [
+      {
+        number: 1044,
+        title:
+          "Internet Protocol on Network System's HYPERchannel: Protocol Specification",
+        published: '1988-02-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 43,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1044' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [
+          {
+            id: 127381,
+            number: 5494,
+            title:
+              'IANA Allocation Guidelines for the Address Resolution Protocol (ARP)'
+          }
+        ],
+        subseries: [{ name: 'std45', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          "This memo intends to provide a complete discussion of the protocols and techniques used to embed DoD standard Internet Protocol datagrams (and its associated higher level protocols) on Network Systems Corporation's HYPERchannel equipment.  This document is directed toward network planners and implementors who are already familiar with the TCP/IP protocol suite and the techniques used to carry TCP/IP traffic on common networks such as the DDN or the Ethernet.  No great familiarity with NSC products is assumed; an appendix is devoted to a review of NSC technologies and protocols.",
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std47',
+    type: 'std',
+    contents: [
+      {
+        number: 1055,
+        title:
+          'Nonstandard for transmission of IP datagrams over serial lines: SLIP',
+        published: '1988-06-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 6,
+        authors: [],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1055' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std47', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          "The TCP/IP protocol family runs over a variety of network media: IEEE 802.3 (ethernet) and 802.5 (token ring) LAN's, X.25 lines, satellite links, and serial lines.  There are standard encapsulations for IP packets defined for many of these networks, but there is no standard for serial lines.  SLIP, Serial Line IP, is a currently a de facto standard, commonly used for point-to-point serial connections running TCP/IP.  It is not an Internet standard.",
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std48',
+    type: 'std',
+    contents: [
+      {
+        number: 1088,
+        title:
+          'Standard for the transmission of IP datagrams over NetBIOS networks',
+        published: '1989-02-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 3,
+        authors: [
+          {
+            person: 123047,
+            name: 'Leo McLaughlin',
+            titlepage_name: '',
+            email: 'ljm@twg.com',
+            affiliation: 'TWG',
+            country: 'Palo Alto, CA 94303'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1088' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std48', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This document specifies a standard method of encapsulating the Internet Protocol (IP) datagrams on NetBIOS networks.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std3',
+    type: 'std',
+    contents: [
+      {
+        number: 1122,
+        title: 'Requirements for Internet Hosts - Communication Layers',
+        published: '1989-10-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 116,
+        authors: [
+          {
+            person: 5436,
+            name: 'Robert Braden',
+            titlepage_name: '',
+            email: 'braden@isi.edu',
+            affiliation: '',
+            country: 'Marina del Rey, CA 90292-6695'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1122' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [
+          { id: 42677, number: 793, title: 'Transmission Control Protocol' }
+        ],
+        updated_by: [
+          {
+            id: 129851,
+            number: 8029,
+            title:
+              'Detecting Multiprotocol Label Switched (MPLS) Data-Plane Failures'
+          },
+          {
+            id: 131092,
+            number: 9293,
+            title: 'Transmission Control Protocol (TCP)'
+          },
+          {
+            id: 123547,
+            number: 1349,
+            title: 'Type of Service in the Internet Protocol Suite'
+          },
+          {
+            id: 126306,
+            number: 4379,
+            title:
+              'Detecting Multi-Protocol Label Switched (MPLS) Data Plane Failures'
+          },
+          {
+            id: 127755,
+            number: 5884,
+            title:
+              'Bidirectional Forwarding Detection (BFD) for MPLS Label Switched Paths (LSPs)'
+          },
+          {
+            id: 127958,
+            number: 6093,
+            title: 'On the Implementation of the TCP Urgent Mechanism'
+          },
+          {
+            id: 128155,
+            number: 6298,
+            title: "Computing TCP's Retransmission Timer"
+          },
+          {
+            id: 128477,
+            number: 6633,
+            title: 'Deprecation of ICMP Source Quench Messages'
+          },
+          {
+            id: 128703,
+            number: 6864,
+            title: 'Updated Specification of the IPv4 ID Field'
+          }
+        ],
+        subseries: [{ name: 'std3', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC is an official specification for the Internet community.  It incorporates by reference, amends, corrects, and supplements the primary protocol standards documents relating to hosts. [STANDARDS-TRACK]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1123,
+        title: 'Requirements for Internet Hosts - Application and Support',
+        published: '1989-10-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 98,
+        authors: [
+          {
+            person: 5436,
+            name: 'Robert Braden',
+            titlepage_name: '',
+            email: 'braden@isi.edu',
+            affiliation: '',
+            country: 'Marina del Rey, CA 90292-6695'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1123' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [
+          {
+            id: 42646,
+            number: 822,
+            title: 'STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES'
+          },
+          {
+            id: 42730,
+            number: 952,
+            title: 'DoD Internet host table specification'
+          }
+        ],
+        updated_by: [
+          {
+            id: 131011,
+            number: 9210,
+            title: 'DNS Transport over TCP - Operational Requirements'
+          },
+          {
+            id: 124194,
+            number: 2181,
+            title: 'Clarifications to the DNS Specification'
+          },
+          {
+            id: 123547,
+            number: 1349,
+            title: 'Type of Service in the Internet Protocol Suite'
+          },
+          { id: 127210, number: 5321, title: 'Simple Mail Transfer Protocol' },
+          {
+            id: 127835,
+            number: 5966,
+            title: 'DNS Transport over TCP - Implementation Requirements'
+          },
+          {
+            id: 129589,
+            number: 7766,
+            title: 'DNS Transport over TCP - Implementation Requirements'
+          }
+        ],
+        subseries: [{ name: 'std3', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC is an official specification for the Internet community.  It incorporates by reference, amends, corrects, and supplements the primary protocol standards documents relating to hosts. [STANDARDS-TRACK]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std49',
+    type: 'std',
+    contents: [
+      {
+        number: 1132,
+        title:
+          'Standard for the transmission of 802.2 packets over IPX networks',
+        published: '1989-11-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 4,
+        authors: [
+          {
+            person: 123047,
+            name: 'Leo McLaughlin',
+            titlepage_name: '',
+            email: 'ljm@twg.com',
+            affiliation: 'The Wollongong Group',
+            country: 'Palo Alto, CA 94303'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1132' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std49', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          "This document specifies a standard method of encapsulating 802.2 packets on networks supporting Novell's Internet Packet Exchange Protocol (IPX).  It obsoletes earlier documents detailing the transmission of Internet packets over IPX networks.  It differs from these earlier documents in that it allows for the transmission of multiple network protocols over IPX and for the transmission of packets through IPX bridges.",
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'std16',
+    type: 'std',
+    contents: [
+      {
+        number: 1155,
+        title:
+          'Structure and identification of management information for TCP/IP-based internets',
+        published: '1990-05-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 22,
+        authors: [
+          {
+            person: 2455,
+            name: 'Marshall Rose',
+            titlepage_name: '',
+            email: 'mrose@psi.com',
+            affiliation: 'Performance Systems International',
+            country: 'Mountain View, CA 94039'
+          },
+          {
+            person: 2731,
+            name: 'Keith McCloghrie',
+            titlepage_name: '',
+            email: 'kzm@hplabs.hp.com',
+            affiliation: 'Hughes LAN Systems',
+            country: 'Palo Alto, CA 04303'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1155' }],
+        obsoletes: [
+          {
+            id: 42998,
+            number: 1065,
+            title:
+              'Structure and identification of management information for TCP/IP-based internets'
+          }
+        ],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std16', type: 'std' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This RFC is a re-release of RFC 1065, with a changed "Status of this Memo", plus a few minor typographical corrections.  The technical content of the document is unchanged from RFC 1065. [STANDARDS-TRACK]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      },
+      {
+        number: 1212,
+        title: 'Concise MIB definitions',
+        published: '1991-03-01',
+        status: { slug: 'standard', name: 'standards track' },
+        pages: 19,
+        authors: [
+          {
+            person: 2455,
+            name: 'Marshall Rose',
+            titlepage_name: '',
+            email: 'mrose@psi.com',
+            affiliation: 'Performance Systems International',
+            country: 'Santa Clara, CA  95054'
+          },
+          {
+            person: 2731,
+            name: 'Keith McCloghrie',
+            titlepage_name: '',
+            email: 'kzm@hls.com',
+            affiliation: 'Hughes LAN Systems',
+            country: 'Mountain View, CA 94043'
+          }
+        ],
+        group: { acronym: 'snmp', name: 'Simple Network Management Protocol' },
+        area: { acronym: 'mgt', name: 'Network Management Area' },
+        stream: {
+          slug: 'ietf',
+          name: 'IETF',
+          desc: 'Internet Engineering Task Force (IETF)'
+        },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1212' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'std16', type: 'std' }],
+        see_also: [],
+        draft: {
+          id: 16766,
+          name: 'draft-ietf-snmp-mibdefinitions',
+          title: 'Concise MIB definitions'
+        },
+        abstract:
+          'This memo describes a straight-forward approach toward producing concise, yet descriptive, MIB modules.  This memo defines a format for producing MIB modules. [STANDARDS-TRACK]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'fyi3',
+    type: 'fyi',
+    contents: [
+      {
+        number: 1175,
+        title:
+          'FYI on where to start: A bibliography of internetworking information',
+        published: '1990-08-01',
+        status: { slug: 'informational', name: 'informational' },
+        pages: 43,
+        authors: [],
+        group: { acronym: 'userdoc', name: 'User Documents' },
+        area: { acronym: 'usv', name: 'User Services Area' },
+        stream: {
+          slug: 'ietf',
+          name: 'IETF',
+          desc: 'Internet Engineering Task Force (IETF)'
+        },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1175' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'fyi3', type: 'fyi' }],
+        see_also: [],
+        draft: {
+          id: 16722,
+          name: 'draft-ietf-userdoc-bibliography',
+          title:
+            'FYI on where to start: A bibliography of internetworking information'
+        },
+        abstract:
+          'This FYI RFC is a bibliography of information about TCP/IP internetworking, prepared by the User Services Working Group (USWG) of the Internet Engineering Task Force (IETF).  This memo provides information for the Internet community.  It does not specify any standard. [Also FYI 3.]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'fyi5',
+    type: 'fyi',
+    contents: [
+      {
+        number: 1178,
+        title: 'Choosing a name for your computer',
+        published: '1990-08-01',
+        status: { slug: 'informational', name: 'informational' },
+        pages: 8,
+        authors: [
+          {
+            person: 123062,
+            name: 'Don Libes',
+            titlepage_name: '',
+            email: 'libes@cme.nist.gov',
+            affiliation: 'Integrated Systems Group/NIST',
+            country: 'Gaithersburg, MD 20899'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1178' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'fyi5', type: 'fyi' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This FYI RFC is a republication of a Communications of the ACM article on guidelines on what to do and what not to do when naming your computer.  This memo provides information for the Internet community.  It does not specify any standard. [Also FYI 5.]',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    },
+  {
+    name: 'fyi6',
+    type: 'fyi',
+    contents: [
+      {
+        number: 1198,
+        title: 'FYI on the X window system',
+        published: '1991-01-01',
+        status: { slug: 'informational', name: 'informational' },
+        pages: 3,
+        authors: [
+          {
+            person: 123067,
+            name: 'Bob Scheifler',
+            titlepage_name: '',
+            email: 'rws@expo.lcs.mit.edu',
+            affiliation: 'MIT Laboratory for Computer Science',
+            country: 'Cambridge, MA 02139'
+          }
+        ],
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        area: undefined,
+        stream: { slug: 'legacy', name: 'Legacy', desc: 'Legacy' },
+        identifiers: [{ type: 'doi', value: '10.17487/RFC1198' }],
+        obsoletes: [],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        subseries: [{ name: 'fyi6', type: 'fyi' }],
+        see_also: [],
+        draft: undefined,
+        abstract:
+          'This FYI RFC provides pointers to the published standards of the MIT X Consortium.  This memo provides information for the Internet community.  It does not specify any Internet standard.',
+        formats: ['txt', 'xml'],
+        keywords: ['keyword'],
+        errata: []
+      }
+    ],
+    }
 ]

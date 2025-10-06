@@ -90,7 +90,7 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     authors: rfcMetadata.authors,
     group: rfcMetadata.group,
     area: rfcMetadata.area,
-   stream: {
+    stream: {
       slug: parseRfcStreamSlug(rfcMetadata.stream.slug),
       name: rfcMetadata.stream.name,
       description: rfcMetadata.stream.desc
@@ -194,3 +194,5 @@ export const docRetrieve = async (redApi: ApiClient, rfcNumber: number) => {
 
 export const setTimeoutPromise = (timerMs: number) =>
   new Promise((resolve) => setTimeout(resolve, timerMs))
+
+export const getAllSubseries = ({ api }: Props) => api.red.subseriesList({})

@@ -13,11 +13,13 @@ import {
   saveToS3
 } from '../utilities/s3.ts'
 import { getDOMParser } from '../utilities/dom.ts'
+import type { SubseriesDoc } from '../../../client/generated/red-client.ts'
 
 export const uploadRfcIndexXml = async (
-  allRfcs: Readonly<RfcCommon[]>
+  allRfcs: Readonly<RfcCommon[]>,
+  allSubseries: SubseriesDoc[]
 ): Promise<boolean> => {
-  const { xml, xsd } = await renderRfcIndexXml(allRfcs)
+  const { xml, xsd } = await renderRfcIndexXml(allRfcs, allSubseries)
   await saveToS3(RFC_INDEX_XML_PATH, xml)
   console.log('Uploaded', RFC_INDEX_XML_PATH)
   await saveToS3(RFC_INDEX_XSD_PATH, xsd)
@@ -30,17 +32,18 @@ const SCHEMA_URL = 'https://www.rfc-editor.org/rfc-index.xsd'
 const RPC_NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 
 export const renderRfcIndexXml = async (
-  allRfcs: Readonly<RfcCommon[]>
+  allRfcs: Readonly<RfcCommon[]>,
+  allSubseries: Readonly<SubseriesDoc[]>
 ): Promise<{ xml: string; xsd: string }> => {
   const xsdPath = resolve(import.meta.dirname, '../assets/rfc-index.xsd')
   const xsd = await readFile(xsdPath, 'utf-8')
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
   xml += `<rfc-index xmlns="${RPC_NAMESPACE}" xmlns:xsi="${W3C_SCHEMA_URL}" xsi:schemaLocation="${RPC_NAMESPACE} ${SCHEMA_URL}">\n`
-  xml += await renderBCPs(allRfcs)
-  xml += await renderFYIs(allRfcs)
+  xml += await renderSubseries(allRfcs, allSubseries, 'bcp', false)
+  xml += await renderSubseries(allRfcs, allSubseries, 'fyi', false)
   xml += await renderRFCs(allRfcs)
-  xml += await renderSTDs(allRfcs)
+  xml += await renderSubseries(allRfcs, allSubseries, 'std', true)
   xml += '</rfc-index>'
 
   // Validate XML with XSD
@@ -56,36 +59,42 @@ export const renderRfcIndexXml = async (
   return { xml, xsd }
 }
 
-const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
-  const parser = await getDOMParser()
-
-  const result = parser.parseFromString('<div></div>', 'application/xml')
-
-  const createElementNS = (nodeName: string, text?: string): Element => {
-    const element = result.createElementNS(RPC_NAMESPACE, nodeName)
+const createElementNSFactory =
+  (doc: Document) =>
+  (nodeName: string, text?: string): Element => {
+    const element = doc.createElementNS(RPC_NAMESPACE, nodeName)
     if (text) {
-      const textNode = result.createTextNode(text)
+      const textNode = doc.createTextNode(text)
       element.append(textNode)
     }
     return element
   }
 
-  const responseXml: string[] = []
-
-  const createElementListNS = (
+const createElementListNSFactory = (doc: Document) => {
+  const createElementNS = createElementNSFactory(doc)
+  return (
     listNodeName: string,
     listItemNodeName: string,
     texts: string[]
   ): Element => {
-    const element = result.createElementNS(RPC_NAMESPACE, listNodeName)
+    const element = doc.createElementNS(RPC_NAMESPACE, listNodeName)
     texts.forEach((text) => {
       const childElement = createElementNS(listItemNodeName)
-      const textNode = result.createTextNode(text)
+      const textNode = doc.createTextNode(text)
       childElement.appendChild(textNode)
       element.appendChild(childElement)
     })
     return element
   }
+}
+
+const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
+  const parser = await getDOMParser()
+
+  const doc = parser.parseFromString('<div></div>', 'application/xml')
+  const createElementNS = createElementNSFactory(doc)
+  const createElementListNS = createElementListNSFactory(doc)
+  const responseXml: string[] = []
 
   allRfcs.forEach((rfc) => {
     // Based on https://github.com/rfc-editor/rpcwebsite/blob/edf4896c1d97fdd79a78ee6145e3a0c5ffb11fb9/rfc-ed/bin/xmlIndex.pl
@@ -220,17 +229,47 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   return responseXml.join('')
 }
 
-const renderBCPs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
-  // FIXME
-  return '\n'
-}
+const renderSubseries = async (
+  allRfcs: Readonly<RfcCommon[]>,
+  allSubseries: Readonly<SubseriesDoc[]>,
+  subseriesType: string,
+  shouldRenderFirstContentsAsTitle: boolean
+): Promise<string> => {
+  const parser = await getDOMParser()
+  const doc = parser.parseFromString('<div></div>', 'application/xml')
+  const createElementNS = createElementNSFactory(doc)
+  const createElementListNS = createElementListNSFactory(doc)
 
-const renderFYIs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
-  // FIXME
-  return '\n'
-}
+  const responseXml: string[] = []
+  const subseries = allSubseries.filter(
+    (subseriesDoc) => subseriesDoc.type === subseriesType
+  )
 
-const renderSTDs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
-  // FIXME
-  return '\n'
+  subseries.forEach((subseriesDoc) => {
+    const entry = createElementNS(`${subseriesDoc.type}-entry`)
+    entry.appendChild(
+      createElementNS('doc-id', subseriesDoc.name.toUpperCase())
+    )
+    if (shouldRenderFirstContentsAsTitle) {
+      let title = ''
+      if(subseriesDoc.contents.length > 0) {
+        const firstSubseriesDoc = subseriesDoc.contents[0]
+        const referencedRfc = allRfcs.find(rfc => rfc.number === firstSubseriesDoc.number)
+        if(referencedRfc) {
+          title = referencedRfc.title
+        }
+      }
+      entry.appendChild(createElementNS('title', title))
+    }
+    entry.appendChild(
+      createElementListNS(
+        'is-also',
+        'doc-id',
+        subseriesDoc.contents.map((content) => `RFC${content.number}`)
+      )
+    )
+    responseXml.push(`${entry.outerHTML}\n`)
+  })
+
+  return responseXml.join('')
 }
