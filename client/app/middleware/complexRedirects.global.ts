@@ -30,7 +30,6 @@ export default defineNuxtRouteMiddleware((to, _from) => {
     const middlewareRedirect = middlewareRedirects[i]
     assertIsDefined(middlewareRedirect)
     const isMatch = middlewareRedirect[0].test(to.fullPath)
-    console.log("middlware", isMatch, middlewareRedirect)
     if (isMatch) {
       const newPath = to.fullPath.replace(
         middlewareRedirect[0],
