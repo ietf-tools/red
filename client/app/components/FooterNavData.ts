@@ -40,12 +40,13 @@ export const menuData: MenuItem[] = [
       }
     ]
   },
-  {
-    label: 'Translations',
-    children: [
-      { label: 'Spanish', href: 'https://www.rfc-es.org/' },
-      { label: 'French', href: 'http://abcdrfc.free.fr/' },
-      { label: 'Japanese', href: 'http://rfc-jp.nic.ad.jp/' }
-    ]
-  }
+  // FIXME: these should go on a markdown page
+  // {
+  //   label: 'Translations',
+  //   children: [
+  //     { label: 'Spanish', href: 'https://www.rfc-es.org/' },
+  //     { label: 'French', href: 'http://abcdrfc.free.fr/' },
+  //     { label: 'Japanese', href: 'http://rfc-jp.nic.ad.jp/' }
+  //   ]
+  // }
 ]
