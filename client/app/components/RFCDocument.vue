@@ -1,36 +1,21 @@
 <template>
   <BodyLayoutDocument>
     <template #sidebar>
-      <RFCDocumentSidebar
-        v-if="rfcBucketHtmlDocument"
-        v-model:selected-tab="selectedTab"
-        v-model:is-modal-open="isModalOpen"
-        :rfc-bucket-html-document="rfcBucketHtmlDocument"
-        :has-table-of-contents="hasToc"
-        :goto-errata="gotoErrata"
-        :change-tab="changeTab"
-      />
+      <RFCDocumentSidebar v-if="rfcBucketHtmlDocument" v-model:selected-tab="selectedTab"
+        v-model:is-modal-open="isModalOpen" :rfc-bucket-html-document="rfcBucketHtmlDocument"
+        :has-table-of-contents="hasToc" :goto-errata="gotoErrata" :change-tab="changeTab" />
     </template>
     <template v-if="rfcBucketHtmlDocumentError">
       <div class="container mx-auto">
-        <Alert
-          level="1"
-          variant="warning"
-          heading="Error"
-        >
+        <Alert level="1" variant="warning" heading="Error">
           {{ rfcBucketHtmlDocumentError }}
         </Alert>
       </div>
     </template>
 
-    <RFCDocumentBody
-      v-if="rfcBucketHtmlDocument"
-      v-model:is-modal-open="isModalOpen"
-      :rfc-bucket-html-document="rfcBucketHtmlDocument"
-      :breadcrumb-items="breadcrumbItems"
-      :goto-errata="gotoErrata"
-      :change-tab="changeTab"
-    />
+    <RFCDocumentBody v-if="rfcBucketHtmlDocument" v-model:is-modal-open="isModalOpen"
+      :rfc-bucket-html-document="rfcBucketHtmlDocument" :breadcrumb-items="breadcrumbItems" :goto-errata="gotoErrata"
+      :change-tab="changeTab" />
   </BodyLayoutDocument>
 </template>
 
@@ -40,7 +25,7 @@ import { safeJsonParse } from '~/utilities/json'
 import { fetchRetry } from '~/utilities/network'
 import { RfcBucketHtmlDocumentSchema } from '~/utilities/rfc-validators'
 import {
-  apiRfcBucketDocumentURLBuilder,
+  apiRfcBucketDocumentPathBuilder,
   infoRfcPathBuilder,
   rfcFormatPathBuilder,
   PUBLIC_SITE
@@ -61,17 +46,13 @@ const asyncRfcBucketHtmlDocumentKey = computed(() => `info-buckethtmldocument-${
 const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
   asyncRfcBucketHtmlDocumentKey,
   async () => {
-    const url = apiRfcBucketDocumentURLBuilder(parseInt(props.rfcId.number, 10))
-    const response = await fetchRetry(url)
-    if (!response.ok) {
-      throw Error(`${response.status}: ${response.statusText} ${url}`)
-    }
-    const text = await response.text()
-    const maybeRfcBucketDocument = safeJsonParse(text)
+    const url = apiRfcBucketDocumentPathBuilder(parseInt(props.rfcId.number, 10))
+    const maybeRfcBucketDocument = await $fetch(url, {
+      method: 'GET',
+    })
     if (typeof maybeRfcBucketDocument !== 'object') {
-      const errorTitle = `Expected JSON object from ${url} but received ${typeof maybeRfcBucketDocument}`
-      console.log(errorTitle, maybeRfcBucketDocument)
-      throw Error(`${errorTitle}. See console for more.`)
+      console.log("Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON", typeof maybeRfcBucketDocument, maybeRfcBucketDocument)
+      throw Error(`Unable to load RFC. See console for more.`)
     }
     const { data, error } = RfcBucketHtmlDocumentSchema.safeParse(maybeRfcBucketDocument)
     if (error) {

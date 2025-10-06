@@ -43,7 +43,7 @@ export type ValidHrefs =
   | ReturnType<typeof wikiDokuPathBuilder>
   | ReturnType<typeof materialsPathBuilder>
   | ReturnType<typeof dashboardPathBuilder>
-  | ReturnType<typeof apiRfcBucketDocumentURLBuilder>
+  | ReturnType<typeof apiRfcBucketDocumentPathBuilder>
 
 export const HOME_PATH = '/'
 
@@ -246,7 +246,7 @@ export const mailToBuilder = (email: string) => {
   return `mailto:${encodeURI(email.trim())}` as const
 }
 
-export const apiRfcBucketDocumentURLBuilder = (rfcNumber: number) => {
+export const apiRfcBucketDocumentPathBuilder = (rfcNumber: number) => {
   return `/api/v1/rfc-html/${rfcNumber}.json` as const
 }
 
