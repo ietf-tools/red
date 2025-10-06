@@ -35,7 +35,7 @@ See `/client/`
 
 #### RFC HTML preprocessing
 
-To display RFCs we preprocesses their HTML into JSON with certain features extracted (eg Table Of Contents). This is done in [`rfc-html-extractor`](rfc-html-extractor).
+To display RFCs we preprocesses their HTML into JSON with certain features extracted (eg Table Of Contents). See `/rfc-html-extractor/`.
 
 #### Page content documentation (markdown)
 
@@ -43,7 +43,8 @@ Markdown files are in `client/content`. Markdown Frontmatter (metadata) fields s
 
 ## Testing
 
-In `client` run `npm run test`
+* In `client` run `npm run test`
+* In `rfc-html-extractor` run `npm run test`
 
 ## Troubleshooting
 

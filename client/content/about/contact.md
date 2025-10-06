@@ -11,7 +11,6 @@
 - To report a vulnerability in our infrastructure or services: [Vulnerability Disclosure Statement](https://www.ietf.org/about/administration/policies-procedures/vulnerability-disclosure/)
 - To report a copyright infringement: [Copyright Infringement](#report-a-copyright-infringement)
 - To make a legal request: [Legal request procedures](https://www.ietf.org/administration/legal-request-procedures/)
-- To find us at an IETF meeting, see [RFC Editor at IETF](/contact/at-ietf/).
 
 ## Report a Copyright Infringement
 
