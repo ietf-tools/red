@@ -54,7 +54,7 @@ const LegacyErrataSearchParamsSchema = z.object({
     .optional()
 })
 
-export const legacyErrataSearchRedirectPathBuilder = (url: string): string => {
+export const legacyErrataSearchRedirectUrlBuilder = (url: string): string => {
   // FIXME: ensure the redirect works correctly (the target doesn't exist yet)
 
   const legacyURLParams = new URL(url, 'https://localhost/').searchParams
