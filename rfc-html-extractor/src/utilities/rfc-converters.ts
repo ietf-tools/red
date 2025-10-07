@@ -6,7 +6,7 @@ import {
 import {
   formatAuthor,
   formatDatePublished,
-  formatFormat,
+  formatRfcFormatAsRfcJsonFormat,
   formatRfcStatusAsRfcJsonStatus
 } from './rfc-converters-utils.ts'
 
@@ -14,7 +14,7 @@ import {
  * Converts between types of RFC data
  */
 export const rfcToRfcJson = (rfc: RfcCommon): RFCJSON => {
-  const date = DateTime.fromISO(rfc.published)
+  const date = rfc.published ? DateTime.fromISO(rfc.published) : undefined
 
   const status = formatRfcStatusAsRfcJsonStatus(rfc.status)
 
@@ -23,27 +23,13 @@ export const rfcToRfcJson = (rfc: RfcCommon): RFCJSON => {
     doc_id: `RFC${rfc.number}`,
     title: rfc.title,
     authors: rfc.authors.map((author) => formatAuthor(author, 'regular')) ?? [],
-    format: rfc.formats.map((format) => {
-      const result = formatFormat(
-        format,
-        // FIXME: get info on whether it's a pre-V3 rfc.... or ensure API will return ASCII
-        true
-      )
-      switch (result) {
-        case 'TXT':
-          return 'TEXT'
-        case 'HTMLIZED':
-          return 'HTML'
-      }
-
-      return result
-    }),
+    format: rfc.formats.map(formatRfcFormatAsRfcJsonFormat),
     page_count: rfc.pages?.toString() ?? '0',
     pub_status: status,
     status: status,
     source: rfc.stream.name,
-    abstract: rfc.abstract ?? null,
-    pub_date: formatDatePublished(date, false),
+    abstract: rfc.abstract ?? '',
+    pub_date: date ? formatDatePublished(date, false) : null,
     keywords: rfc.keywords ?? [],
     obsoletes: rfc.obsoletes?.map((obsolete) => `RFC${obsolete.number}`) ?? [],
     obsoleted_by:

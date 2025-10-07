@@ -83,7 +83,8 @@ function formatStreamAndArea(rfc: RFCJSON): string[] {
   return [rfc.source].filter(Boolean) as string[]
 }
 
-function formatDate(isoDate: string): string {
+function formatDate(isoDate: string | undefined): string | undefined {
+  if (isoDate === undefined) return undefined
   const datetime = DateTime.fromISO(isoDate)
   return datetime.toLocaleString({ month: 'long', year: 'numeric' })
 }
@@ -135,8 +136,10 @@ const list1 = computed(() => [
 const list2 = computed(() => formatStreamAndArea(props.rfcJson))
 
 const tagText = computed(() => {
-  const tagText: (string | VNode)[] = [props.rfcJson.status]
   const pubDateIso = parseRfcJsonPubDateToISO(props.rfcJson.pub_date)
+  if (!pubDateIso) return []
+
+  const tagText: (string | VNode)[] = [props.rfcJson.status]
   const datetime = DateTime.fromISO(pubDateIso)
   const relativeCalendar = datetime.toRelativeCalendar()
   const tooltip = `${props.rfcJson.pub_date} (${relativeCalendar})`

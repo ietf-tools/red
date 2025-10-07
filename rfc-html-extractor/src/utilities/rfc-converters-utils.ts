@@ -131,3 +131,23 @@ export const formatRfcStatusAsRfcJsonStatus = (
   }
   assertNever(status)
 }
+
+export const formatRfcFormatAsRfcJsonFormat = (
+  format: RfcCommon['formats'][number]
+): RFCJSON['format'][number] => {
+  switch (format) {
+    case 'txt':
+      return 'TEXT'
+    case 'xml':
+      return 'XML'
+    case 'html':
+      return 'HTML'
+    case 'htmlized':
+      return 'HTML'
+    case 'pdf':
+      return 'PDF'
+    case 'ps':
+      return 'PS'
+  }
+  assertNever(format)
+}

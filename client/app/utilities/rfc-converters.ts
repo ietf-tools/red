@@ -19,9 +19,9 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
   return {
     number: parseInt(parseRFCId(rfcJson.doc_id).number, 10),
     title: rfcJson.title,
-    published: parseRfcJsonPubDateToISO(rfcJson.pub_date),
+    published: rfcJson.pub_date ? parseRfcJsonPubDateToISO(rfcJson.pub_date) : undefined,
     status: parseRfcStatusSlug(rfcJson.status),
-    pages: parseInt(rfcJson.page_count, 10),
+    pages: rfcJson.page_count ? parseInt(rfcJson.page_count, 10) : undefined,
     authors: rfcJson.authors.map((authorName) => ({
       person: 0,
       name: authorName
@@ -89,13 +89,13 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
     ),
     is_also: undefined,
     see_also: rfcJson.see_also,
-    draft: {
+    draft: rfcJson.draft ? {
       id: 0,
       number: parseFloat(rfcJson.draft),
       title: rfcJson.draft,
       slug: rfcJson.draft
-    },
-    abstract: rfcJson.abstract,
+    } : undefined,
+    abstract: rfcJson.abstract ?? undefined,
     formats: rfcJson.format.map(parseRfcFormat),
     keywords: rfcJson.keywords,
     errata: [],

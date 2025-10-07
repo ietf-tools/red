@@ -190,7 +190,7 @@ export const splitLinesAt = (str: string, lineLength: number): string[] => {
 const stringifyRFC = (rfc: RfcCommon): string => {
   // Based on https://github.com/rfc-editor/rpcwebsite/blob/edf4896c1d97fdd79a78ee6145e3a0c5ffb11fb9/rfc-ed/bin/rfc2txt.py#L97
   let obsups = ''
-  let rfcdate = ''
+  let rfcdate: string = ''
   let rfcformat = ''
   let also = ''
   let doi = ''
@@ -198,7 +198,9 @@ const stringifyRFC = (rfc: RfcCommon): string => {
   if (rfc.title === 'Not Issued') {
     return 'Not Issued.'
   } else {
-    rfcdate = DateTime.fromISO(rfc.published).toFormat('LLLL yyyy')
+    rfcdate = rfc.published
+      ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy')
+      : ''
     rfcformat =
       rfc.formats && rfc.formats.length > 0
         ? `Format: ${rfc.formats
@@ -243,7 +245,7 @@ const stringifyRFC = (rfc: RfcCommon): string => {
       .map((author) => formatAuthor(author, 'regular'))
       .join(
         ', '
-      )}. ${rfcdate}. (${rfcformat})${obsups}${also} (Status: ${rfc.status.name.toUpperCase()})${doi}`
+      )}. ${rfcdate ? `${rfcdate}.` : ''} (${rfcformat})${obsups}${also} (Status: ${rfc.status.name.toUpperCase()})${doi}`
   }
 }
 

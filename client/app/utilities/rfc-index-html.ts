@@ -5,15 +5,18 @@ import { formatAuthor } from './rfc-converters-utils'
 import type { RfcCommon } from './rfc-validators'
 
 export const rfcToRfcIndexRow = (rfc: RfcCommon) => {
-  const [month, year] = DateTime.fromISO(rfc.published)
-    .toFormat('LLLL yyyy')
-    .split(' ')
+  const maybeDateParts =
+    rfc.published ?
+      DateTime.fromISO(rfc.published).toFormat('LLLL yyyy').split(' ')
+    : undefined
+  const formattedDate =
+    maybeDateParts ? ` [ ${maybeDateParts[0]} ${maybeDateParts[1]} ] ` : ''
 
   const information = h('span', [
     h('b', rfc.title),
     ' ',
     ...rfc.authors.map((author) => formatAuthor(author, 'regular')),
-    ` [ ${month} ${year} ] `,
+    formattedDate,
     rfc.formats ?
       `(${rfc.formats.map((format) => format.toUpperCase()).join(', ')})`
     : '',

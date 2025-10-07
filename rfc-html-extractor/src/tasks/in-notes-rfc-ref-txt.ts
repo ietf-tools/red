@@ -35,8 +35,8 @@ export const renderInNotesRfcRefDotTxt = async (
     rfcNumberColumnMinimumCharWidth,
     rfcNumberColumnCalculatedCharWidth
   )
-  const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
-  const column2width = 72 - rfcNumberColumnCharWidth
+  // const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
+  // const column2width = 72 - rfcNumberColumnCharWidth
 
   const layout: Layout = {
     longestRfcNumberLength: rfcNumberColumnCharWidth
@@ -88,7 +88,9 @@ const stringifyRFC = (rfc: RfcCommon): string => {
   if (rfc.title === 'Not Issued') {
     return 'Not Issued.'
   } else {
-    rfcdate = DateTime.fromISO(rfc.published).toFormat('LLLL yyyy')
+    rfcdate = rfc.published
+      ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy')
+      : ''
 
     const alsolist = [
       ...(rfc.is_also && rfc.is_also.length > 0 ? rfc.is_also : []),
@@ -102,9 +104,9 @@ const stringifyRFC = (rfc: RfcCommon): string => {
 
     return `${rfc.authors
       .map((author) => formatAuthor(author, 'reverse'))
-      .join(', ')}, "${rfc.title}", ${also}RFC ${
-      rfc.number
-    }, ${doi}, ${rfcdate}, <${PUBLIC_SITE}/info/rfc${rfc.number}/>.`
+      .join(', ')}, "${rfc.title}", ${also}RFC ${rfc.number}, ${doi},${
+      rfcdate ? ` ${rfcdate},` : ''
+    } <${PUBLIC_SITE}/info/rfc${rfc.number}/>.`
   }
 }
 

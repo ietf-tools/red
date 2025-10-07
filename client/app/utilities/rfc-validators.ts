@@ -149,15 +149,14 @@ const RfcCommonDraftSchema = z.object({
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
-  published: z.string(),
+  published: z.string().optional(),
   area: z
     .object({
       acronym: z.string(),
       name: z.string()
     })
-    .optional()
-    .nullable(),
-  pages: z.number().nullable().optional(),
+    .optional(),
+  pages: z.number().optional(),
   status: RfcCommonStatusSchema,
   subseries: z
     .array(
@@ -190,7 +189,7 @@ export const RfcCommonSchema = z.object({
   errata: z.array(z.string()).optional(),
   formats: z.array(RfcCommonFormatSchema),
   abstract: z.string().optional(),
-  text: z.string().nullable()
+  text: z.string().optional()
 })
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>

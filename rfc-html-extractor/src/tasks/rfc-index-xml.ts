@@ -99,9 +99,9 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   allRfcs.forEach((rfc) => {
     // Based on https://github.com/rfc-editor/rpcwebsite/blob/edf4896c1d97fdd79a78ee6145e3a0c5ffb11fb9/rfc-ed/bin/xmlIndex.pl
 
-    const [month, year] = DateTime.fromISO(rfc.published)
-      .toFormat('LLLL yyyy')
-      .split(' ')
+    const maybeDateParts = rfc.published
+      ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy').split(' ')
+      : undefined
 
     const rfcEntry = createElementNS('rfc-entry')
 
@@ -121,10 +121,13 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       rfcEntry.appendChild(createElementListNS('author', 'name', ['']))
     }
 
-    const dateElement = createElementNS('date')
-    dateElement.appendChild(createElementNS('month', month))
-    dateElement.appendChild(createElementNS('year', year))
-    rfcEntry.appendChild(dateElement)
+    if (maybeDateParts) {
+      const [month, year] = maybeDateParts
+      const dateElement = createElementNS('date')
+      dateElement.appendChild(createElementNS('month', month))
+      dateElement.appendChild(createElementNS('year', year))
+      rfcEntry.appendChild(dateElement)
+    }
 
     rfcEntry.appendChild(
       createElementListNS(
@@ -252,10 +255,12 @@ const renderSubseries = async (
     )
     if (shouldRenderFirstContentsAsTitle) {
       let title = ''
-      if(subseriesDoc.contents.length > 0) {
+      if (subseriesDoc.contents.length > 0) {
         const firstSubseriesDoc = subseriesDoc.contents[0]
-        const referencedRfc = allRfcs.find(rfc => rfc.number === firstSubseriesDoc.number)
-        if(referencedRfc) {
+        const referencedRfc = allRfcs.find(
+          (rfc) => rfc.number === firstSubseriesDoc.number
+        )
+        if (referencedRfc) {
           title = referencedRfc.title
         }
       }

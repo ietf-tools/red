@@ -41,7 +41,6 @@ export type RfcCommonStatus = z.infer<typeof RfcCommonStatusSchema>
 export const blankRfcCommon: RfcCommon = {
   number: 0,
   title: '',
-  published: '1950-1-1',
   pages: 0,
   status: {
     slug: 'unknown',
@@ -141,6 +140,7 @@ export const formatTitleAsVNode = (rfcId: string): VNode => {
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
 
 export const isAprilFoolsRfc = (rfc: RfcCommon): boolean => {
+  if (rfc.published === undefined) return false
   // FIXME: this should use different logic, checking for date and 'Independent Submission'
   const datetime = DateTime.fromISO(rfc.published)
   return (
