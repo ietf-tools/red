@@ -262,18 +262,39 @@ export const isNodePojo = (maybeNode: unknown): maybeNode is NodePojo => {
   )
 }
 
+const RfcJsonStatusSchema = z.union([
+  z.literal('UNKNOWN'),
+  z.literal('INTERNET STANDARD'),
+  z.literal('EXPERIMENTAL'),
+  z.literal('HISTORIC'),
+  z.literal('INFORMATIONAL'),
+  z.literal('NOT ISSUED'),
+  z.literal('PROPOSED STANDARD'),
+  z.literal('BEST CURRENT PRACTICE')
+])
+
+const RfcJsonFormatSchema = z.union([
+  z.literal('ASCII'),
+  z.literal('TEXT'),
+  z.literal('HTML'),
+  z.literal('PDF'),
+  z.literal('PS'),
+  z.literal('XML'),
+  z.literal('')
+])
+
 export const RfcJsonSchema = z.object({
-  draft: z.string(),
+  draft: z.string().nullable(),
   doc_id: z.string(),
   title: z.string(),
   authors: z.array(z.string()),
-  format: z.array(z.string()),
-  page_count: z.string(),
-  pub_status: z.string(),
-  status: z.string(),
+  format: RfcJsonFormatSchema.array(),
+  page_count: z.string().nullable(),
+  pub_status: RfcJsonStatusSchema,
+  status: RfcJsonStatusSchema,
   source: z.string(),
-  abstract: z.string().optional(),
-  pub_date: z.string(),
+  abstract: z.string().nullable(),
+  pub_date: z.string().nullable(),
   keywords: z.array(z.string()),
   obsoletes: z.array(z.string()),
   obsoleted_by: z.array(z.string()),
