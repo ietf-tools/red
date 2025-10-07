@@ -1,5 +1,8 @@
 import { assertNever } from './typescript.ts'
-import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
+import type {
+  RfcCommon,
+  RFCJSON
+} from '../../../client/app/utilities/rfc-validators.ts'
 import { DateTime } from 'luxon'
 
 type RfcAuthor = RfcCommon['authors'][number]
@@ -101,4 +104,30 @@ export const formatDatePublished = (
     return dt.toFormat('d LLLL yyyy')
   }
   return dt.toFormat('LLLL yyyy')
+}
+
+export const formatRfcStatusAsRfcJsonStatus = (
+  status: RfcCommon['status']
+): RFCJSON['status'] => {
+  switch (status.name) {
+    case 'Best Current Practice':
+      return 'BEST CURRENT PRACTICE'
+    case 'Draft Standard':
+      return 'PROPOSED STANDARD'
+    case 'Experimental':
+      return 'EXPERIMENTAL'
+    case 'Historic':
+      return 'HISTORIC'
+    case 'Informational':
+      return 'INFORMATIONAL'
+    case 'Internet Standard':
+      return 'INTERNET STANDARD'
+    case 'Not Issued':
+      return 'NOT ISSUED'
+    case 'Proposed Standard':
+      return 'PROPOSED STANDARD'
+    case 'Unknown':
+      return 'UNKNOWN'
+  }
+  assertNever(status)
 }

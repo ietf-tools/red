@@ -1,6 +1,14 @@
-import { DateTime } from "luxon"
-import { RfcCommon, RFCJSON } from "../../../client/app/utilities/rfc-validators.ts"
-import { formatAuthor, formatDatePublished, formatFormat } from "./rfc-converters-utils.ts"
+import { DateTime } from 'luxon'
+import {
+  RfcCommon,
+  RFCJSON
+} from '../../../client/app/utilities/rfc-validators.ts'
+import {
+  formatAuthor,
+  formatDatePublished,
+  formatFormat,
+  formatRfcStatusAsRfcJsonStatus
+} from './rfc-converters-utils.ts'
 
 /**
  * Converts between types of RFC data
@@ -8,23 +16,33 @@ import { formatAuthor, formatDatePublished, formatFormat } from "./rfc-converter
 export const rfcToRfcJson = (rfc: RfcCommon): RFCJSON => {
   const date = DateTime.fromISO(rfc.published)
 
+  const status = formatRfcStatusAsRfcJsonStatus(rfc.status)
+
   return {
     draft: rfc.draft?.slug ?? '',
     doc_id: `RFC${rfc.number}`,
     title: rfc.title,
     authors: rfc.authors.map((author) => formatAuthor(author, 'regular')) ?? [],
-    format: rfc.formats.map((format) =>
-      formatFormat(
+    format: rfc.formats.map((format) => {
+      const result = formatFormat(
         format,
         // FIXME: get info on whether it's a pre-V3 rfc.... or ensure API will return ASCII
         true
       )
-    ),
+      switch (result) {
+        case 'TXT':
+          return 'TEXT'
+        case 'HTMLIZED':
+          return 'HTML'
+      }
+
+      return result
+    }),
     page_count: rfc.pages?.toString() ?? '0',
-    pub_status: rfc.status.name.toUpperCase(),
-    status: rfc.status.name.toUpperCase(),
+    pub_status: status,
+    status: status,
     source: rfc.stream.name,
-    abstract: rfc.abstract,
+    abstract: rfc.abstract ?? null,
     pub_date: formatDatePublished(date, false),
     keywords: rfc.keywords ?? [],
     obsoletes: rfc.obsoletes?.map((obsolete) => `RFC${obsolete.number}`) ?? [],
