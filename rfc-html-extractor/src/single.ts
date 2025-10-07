@@ -1,9 +1,9 @@
-import { processRfc } from './tasks/rfc.ts'
+import { uploadRfcData } from './tasks/rfc.ts'
 
 const main = async (rfcNumber: number): Promise<void> => {
   console.log(`Processing RFC ${rfcNumber}...`)
   try {
-    const isDone = await processRfc(rfcNumber)
+    const isDone = await uploadRfcData(rfcNumber)
     if (isDone) {
       console.log(`Pushed RFC ${rfcNumber} to bucket successfully.`)
     } else {

@@ -17,10 +17,7 @@ export const main = async (): Promise<void> => {
   const [allRfcs, allSubseries] = await Promise.all([
     getAllRFCs({ api }),
     getAllSubseries({ api })
-  ]).catch((e) => {
-    console.error('getAllRFCs error', e)
-    throw Error(e)
-  })
+  ])
 
   await Promise.all([
     uploadHomepageLatest(allRfcs),

@@ -51,9 +51,20 @@ export const getRfcCommon = async (rfcNumber: number): Promise<RfcCommon> => {
     const rfcCommon = rfcToRfcCommon(rfc)
     return rfcCommon
   } catch (e) {
-    console.error('docRetrive catch()', e)
+    console.error('docRetrieve catch()', e)
     throw e
   }
+}
+
+const _getRfcCommonCache: Record<number, undefined | Promise<RfcCommon>> = {}
+
+export const getRfcCommonCached = async (
+  rfcNumber: number
+): Promise<RfcCommon> => {
+  if (!_getRfcCommonCache[rfcNumber]) {
+    _getRfcCommonCache[rfcNumber] = getRfcCommon(rfcNumber)
+  }
+  return _getRfcCommonCache[rfcNumber]
 }
 
 export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {

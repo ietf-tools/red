@@ -26,7 +26,9 @@ export async function saveToS3(
   )
 }
 
-export const rfcJSONPathBuilder = (rfcNumber: number) => `rfc/${rfcNumber}.json` as const
+export const rfcJsonPathBuilder = (rfcNumber: number) => `rfc-json/${rfcNumber}.json` as const
+
+export const rfcHtmlJsonPathBuilder = (rfcNumber: number) => `rfc/${rfcNumber}.json` as const
 
 export const rfcImageFileNameBuilder = (rfcNumber: number, pageNumber: number) => `${rfcNumber}-page-${pageNumber}.png` as const
 

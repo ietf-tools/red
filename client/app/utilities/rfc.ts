@@ -138,28 +138,6 @@ export const formatTitleAsVNode = (rfcId: string): VNode => {
   ])
 }
 
-export type RFCJSON = {
-  draft: string
-  doc_id: string
-  title: string
-  authors: string[]
-  format: string[]
-  page_count: string
-  pub_status: string
-  status: string
-  source: string
-  abstract?: string
-  pub_date: string
-  keywords: string[]
-  obsoletes: string[]
-  obsoleted_by: string[]
-  updates: string[]
-  updated_by: string[]
-  see_also: string[]
-  doi: string | null
-  errata_url: string | null
-}
-
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
 
 export const isAprilFoolsRfc = (rfc: RfcCommon): boolean => {

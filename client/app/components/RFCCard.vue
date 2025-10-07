@@ -1,9 +1,7 @@
 <template>
   <Card :href="infoRfcPathBuilder(`RFC${props.rfc.number}`)" :heading-level="props.headingLevel" has-cover-link
-    :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
-      'center'
-      : 'end'
-      " :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
+    :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ? 'center' : 'end'"
+    :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''" :aside-slot-class="props.showAbstract && props.rfc.abstract ?
       'flex-1 lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
       : undefined
@@ -16,7 +14,7 @@
         <span>: </span>
         <NuxtLink v-for="(subseries, subseriesIndex) in props.rfc.subseries" :key="subseriesIndex"
           :to="infoRfcPathBuilder(`${subseries.type.toLowerCase()}${subseries.number}`)"
-          class="relative z-50 no-underline hover:underline focus:underline px-2 py-3 rounded text-gray-700"
+          class="relative z-50 no-underline hover:underline focus:underline px-2 py-3 rounded text-gray-700 dark:text-gray-300"
           :title="`part of ${subseries.type.toUpperCase()}${subseries.number}`">
           <component :is="formattedSubseriesTitles[subseriesIndex]" />
         </NuxtLink>

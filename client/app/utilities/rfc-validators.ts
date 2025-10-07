@@ -261,3 +261,27 @@ export const isNodePojo = (maybeNode: unknown): maybeNode is NodePojo => {
     ['Element', 'Text'].includes(maybeNode.type)
   )
 }
+
+export const RfcJsonSchema = z.object({
+  draft: z.string(),
+  doc_id: z.string(),
+  title: z.string(),
+  authors: z.array(z.string()),
+  format: z.array(z.string()),
+  page_count: z.string(),
+  pub_status: z.string(),
+  status: z.string(),
+  source: z.string(),
+  abstract: z.string().optional(),
+  pub_date: z.string(),
+  keywords: z.array(z.string()),
+  obsoletes: z.array(z.string()),
+  obsoleted_by: z.array(z.string()),
+  updates: z.array(z.string()),
+  updated_by: z.array(z.string()),
+  see_also: z.array(z.string()),
+  doi: z.string().nullable(),
+  errata_url: z.string().nullable()
+})
+
+export type RFCJSON = z.infer<typeof RfcJsonSchema>

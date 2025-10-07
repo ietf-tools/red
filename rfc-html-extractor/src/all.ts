@@ -1,4 +1,4 @@
-import { processRfc } from './tasks/rfc.ts'
+import { uploadRfcData } from './tasks/rfc.ts'
 import { setTimeout } from 'node:timers/promises'
 
 const main = async (
@@ -8,7 +8,7 @@ const main = async (
   for (let rfcNumber = minRfcNumber; rfcNumber <= maxRfcNumber; rfcNumber++) {
     console.log(`Processing RFC ${rfcNumber}...`)
     try {
-      const isDone = await processRfc(rfcNumber)
+      const isDone = await uploadRfcData(rfcNumber)
       if(isDone) {
         console.log(`Pushed RFC ${rfcNumber} to bucket successfully.`)
       } else {
