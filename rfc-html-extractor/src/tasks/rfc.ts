@@ -7,6 +7,8 @@ import {
 } from '../utilities/s3.ts'
 import { getRfcCommonCached } from '../utilities/redClientGet.ts'
 import { rfcToRfcJson } from '../utilities/rfc-converters.ts'
+import { RfcJsonSchema } from '../../../client/app/utilities/rfc-validators.ts'
+import { validateDocument } from '../utilities/validate-zod.ts'
 
 export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
   const result = await Promise.all([
@@ -53,6 +55,7 @@ export const uploadRfcHtml = async (rfcNumber: number): Promise<boolean> => {
 export const uploadRfcJson = async (rfcNumber: number): Promise<boolean> => {
   const rfc = await getRfcCommonCached(rfcNumber)
   const rfcJSON = rfcToRfcJson(rfc)
+  validateDocument(rfcJSON, RfcJsonSchema)
   const rfcJsonS3Path = rfcJsonPathBuilder(rfcNumber)
   await saveToS3(rfcJsonS3Path, JSON.stringify(rfcJSON))
   return true

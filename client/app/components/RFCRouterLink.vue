@@ -61,7 +61,7 @@ import RFCRouterLinkPreview from './RFCRouterLinkPreview.vue'
 import { NuxtLink } from '#components'
 import { formatTitleAsVNode, RFC_TYPE_RFC } from '~/utilities/rfc'
 import { fetchRetry } from '~/utilities/network'
-import type { RFCJSON } from '~/utilities/rfc-validators'
+import { RfcJsonSchema, type RFCJSON } from '~/utilities/rfc-validators'
 import { parseMaybeRfcLink, rfcJSONPathBuilder } from '~/utilities/url'
 import type { LoadingStatus } from '~/utilities/loading-status'
 import type { VueStyleClass } from '~/utilities/vue'
@@ -141,7 +141,7 @@ const loadRfc = async (): Promise<void> => {
     type: 'loading'
   }
   console.log(`Loading ${rfcJSONPath}`)
-  let data: RFCJSON | undefined = undefined
+
   try {
     const response = await fetchRetry(
       rfcJSONPath,
@@ -156,7 +156,13 @@ const loadRfc = async (): Promise<void> => {
         delayBetweenRetriesMs: 50
       }
     )
-    data = await response.json()
+    const rfcJsonUnverified = await response.json()
+    const rfcJson = RfcJsonSchema.parse(rfcJsonUnverified)
+    loadingStatus.value = {
+      type: 'success'
+    }
+    rfcJSON.value = rfcJson
+    console.log(`Loaded ${rfcJSONPath}`)
   } catch (e) {
     console.error(e)
     // hide the hover card if we can't load any content
@@ -166,11 +172,5 @@ const loadRfc = async (): Promise<void> => {
     }
     return
   }
-  console.log(`Loaded ${rfcJSONPath}`)
-
-  loadingStatus.value = {
-    type: 'success'
-  }
-  rfcJSON.value = data
 }
 </script>
