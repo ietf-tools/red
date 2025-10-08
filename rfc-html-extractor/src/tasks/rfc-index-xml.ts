@@ -226,14 +226,16 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
 
     if (rfc.area?.acronym) {
       rfcEntry.appendChild(createElementNS('area', rfc.area.acronym))
-      rfcEntry.appendChild(
-        createElementNS(
-          'wg_acronym',
-          rfc.group.acronym === 'IETF-NWG'
-            ? 'NON WORKING GROUP'
-            : rfc.group.acronym
+      if (rfc.group) {
+        rfcEntry.appendChild(
+          createElementNS(
+            'wg_acronym',
+            rfc.group.acronym === 'IETF-NWG'
+              ? 'NON WORKING GROUP'
+              : rfc.group.acronym
+          )
         )
-      )
+      }
     }
 
     if (rfc.errata && rfc.errata.length > 0) {

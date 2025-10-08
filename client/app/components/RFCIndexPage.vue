@@ -82,18 +82,13 @@
         See the <A :href="PUBLIC_SITE">RFC Editor Web page</A> for more
         information.
       </p>
-      <Alert
-        v-if="error"
-        variant="warning"
-        level="1"
-        heading="Error loading RFCs"
-      >
-        {{ error }}
+      <Alert v-if="rfcMiniIndexError" variant="warning" level="1" heading="Error loading RFCs">
+        {{ rfcMiniIndexError }}
       </Alert>
-      <Heading v-if="rfcs" level="2" style-level="1" class="mt-6 mb-3">
+      <Heading v-if="rfcRows.length > 0" level="2" style-level="1" class="mt-6 mb-3">
         RFC Index
       </Heading>
-      <RFCIndexTable v-if="rfcs" :rfc-rows="rfcRows" />
+      <RFCIndexTable v-if="rfcRows" :rfc-rows="rfcRows" />
 
       <template v-if="props.rfcNumberLimit !== undefined">
         <p class="pt-4">
@@ -112,7 +107,9 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
 import { rfcToRfcIndexRow } from '~/utilities/rfc-index-html'
+import { RfcMiniIndexSchema } from '~/utilities/rfc-validators'
 import {
+  API_RFC_MINI_INDEX_PATH,
   PUBLIC_SITE,
   RFC_INDEX_ALL_ASCENDING_PATH,
   RFC_INDEX_ALL_DESCENDING_PATH,
@@ -131,23 +128,34 @@ useSeoMeta({
     props.rfcNumberLimit === undefined ?
       props.sort === 'ascending' ?
         'RFC Index'
-      : 'RFC Index (descending)'
-    : props.sort === 'ascending' ? `RFC Index first ${props.rfcNumberLimit}`
-    : `RFC Index last ${props.rfcNumberLimit}`
+        : 'RFC Index (descending)'
+      : props.sort === 'ascending' ? `RFC Index first ${props.rfcNumberLimit}`
+        : `RFC Index last ${props.rfcNumberLimit}`
 })
 
-const createdOn = DateTime.now().toFormat('d LLLL yyyy')
+const {
+  data: rfcMiniIndexData,
+  error: rfcMiniIndexError
+} = await useAsyncData(() => $fetch(API_RFC_MINI_INDEX_PATH))
 
-const { data: rfcs, error } = await useAsyncData(
-  props.cacheKey,
-  async () => {
-    // FIXME: fetch all RFCs
-   return []
-  }
-)
+const rfcMiniIndex = computed(
+  () => {
+    const { data, error } = RfcMiniIndexSchema.safeParse(rfcMiniIndexData.value)
+    if (error) {
+      console.error(error)
+      return null
+    }
+    return data
+  })
+
+const createdOn = computed(() => {
+  if (!rfcMiniIndex.value) return ''
+  return DateTime.fromISO(rfcMiniIndex.value?.createdOn).toFormat('d LLLL yyyy')
+})
+
 const rfcRows = computed(() => {
-  if (!rfcs.value) return []
-  return rfcs.value.map(rfcToRfcIndexRow)
+  if (!rfcMiniIndex.value) return []
+  return rfcMiniIndex.value.miniIndex.map(rfcToRfcIndexRow)
 })
 const rfcInformation5234 = rfcRows.value?.find((rfc) => rfc.number === 5234)
 const exampleRfcInformations = rfcInformation5234 ? [rfcInformation5234] : []

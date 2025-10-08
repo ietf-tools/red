@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
 import {
   RfcCommon,
-  RFCJSON
+  RFCJSON,
+  RfcMini
 } from '../../../client/app/utilities/rfc-validators.ts'
 import {
   formatAuthor,
@@ -46,4 +47,44 @@ export const rfcToRfcJson = (rfc: RfcCommon): RFCJSON => {
       null,
     errata_url: rfc.errata?.[0] ?? null
   }
+}
+
+/**
+ * RfcMini is a valid subset of RfcCommon.
+ * RfcMini is used on RFC index webpages rendered by Nuxt.
+ * It's a minimal subset without extraneous data to optimise download time.
+ */
+export const rfcToRfcMini = (rfc: RfcCommon): RfcMini => {
+  const {
+    number,
+    title,
+    published,
+    authors,
+    formats,
+    obsoletes,
+    obsoleted_by,
+    updates,
+    updated_by,
+    status,
+    stream,
+    identifiers
+  } = rfc
+
+  // Ensuring that it's a valid subset of RfcCommon, even though we return it as an RfcMini
+  const response: RfcCommon = {
+    number,
+    title,
+    published,
+    authors,
+    formats,
+    obsoletes,
+    obsoleted_by,
+    updates,
+    updated_by,
+    status,
+    stream,
+    identifiers
+  }
+
+  return response
 }

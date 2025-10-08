@@ -1,6 +1,8 @@
 import { uploadHomepageLatest } from './tasks/homepage-latest.ts'
 import { uploadInNotesRfcRefDotTxt } from './tasks/in-notes-rfc-ref-txt.ts'
+import { FIXME_uploadReportsCurrentQStatsTxt } from './tasks/reports-current-queue-stats-txt.ts'
 import { uploadFeeds } from './tasks/rfc-feeds.ts'
+import { uploadRfcMiniIndexJson } from './tasks/rfc-mini-index-json.ts'
 import { uploadRfcIndexTxt } from './tasks/rfc-index-txt.ts'
 import { uploadRfcIndexXml } from './tasks/rfc-index-xml.ts'
 import {
@@ -21,10 +23,12 @@ export const main = async (): Promise<void> => {
 
   await Promise.all([
     uploadHomepageLatest(allRfcs),
+    uploadRfcMiniIndexJson(allRfcs),
     uploadRfcIndexTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
     uploadFeeds(allRfcs),
     uploadRfcIndexXml(allRfcs, allSubseries),
-    uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH)
+    uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
+    FIXME_uploadReportsCurrentQStatsTxt()
   ])
 }
 

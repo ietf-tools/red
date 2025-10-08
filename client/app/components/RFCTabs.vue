@@ -104,10 +104,10 @@
 
         <dt class="font-bold mt-2">Working group</dt>
         <dd>
-          <template v-if="props.rfcBucketHtmlDocument.rfc.group.acronym">
+          <template v-if="props.rfcBucketHtmlDocument.rfc.group?.acronym">
             {{ props.rfcBucketHtmlDocument.rfc.group.acronym.toUpperCase() }}
           </template>
-          {{ props.rfcBucketHtmlDocument.rfc.group.name }}
+          {{ props.rfcBucketHtmlDocument.rfc.group?.name }}
         </dd>
 
         <dt class="font-bold mt-2">Area</dt>

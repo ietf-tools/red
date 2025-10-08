@@ -149,6 +149,7 @@ const RfcCommonDraftSchema = z.object({
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
+  draft: RfcCommonDraftSchema.optional(),
   published: z.string().optional(),
   area: z
     .object({
@@ -168,10 +169,12 @@ export const RfcCommonSchema = z.object({
     )
     .optional(),
   authors: z.array(RfcCommonAuthorSchema),
-  group: z.object({
-    acronym: z.string(),
-    name: z.string()
-  }),
+  group: z
+    .object({
+      acronym: z.string(),
+      name: z.string()
+    })
+    .optional(),
   stream: z.object({
     slug: RfcCommonStreamSlugSchema,
     name: z.string(),
@@ -181,7 +184,6 @@ export const RfcCommonSchema = z.object({
   obsoletes: z.array(RfcCommonObsoleteSchema).optional(),
   obsoleted_by: z.array(RfcCommonObsoletedBySchema).optional(),
   updates: z.array(RfcCommonUpdatesSchema).optional(),
-  draft: RfcCommonDraftSchema.optional(),
   updated_by: z.array(RfcCommonUpdatedBySchema).optional(),
   is_also: z.array(z.string()).optional(),
   see_also: z.array(z.string()).optional(),
@@ -196,6 +198,30 @@ export type RfcCommon = z.infer<typeof RfcCommonSchema>
 
 export const HomepageLatestSchema = z.object({
   homepageLatest: z.array(RfcCommonSchema)
+})
+
+/**
+ * Used on the Rfc Index nuxt route
+ */
+export type RfcMini = Pick<
+  RfcCommon,
+  | 'number'
+  | 'title'
+  | 'published'
+  | 'authors'
+  | 'formats'
+  | 'obsoletes'
+  | 'obsoleted_by'
+  | 'updates'
+  | 'updated_by'
+  | 'status'
+  | 'stream'
+  | 'identifiers'
+>
+
+export const RfcMiniIndexSchema = z.object({
+  createdOn: z.string(),
+  miniIndex: z.array(RfcCommonSchema)
 })
 
 /**

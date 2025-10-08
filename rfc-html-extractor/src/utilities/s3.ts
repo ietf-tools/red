@@ -40,6 +40,8 @@ export const RFC_INDEX_TXT_PATH = 'other/rfc-index.txt' as const
 
 export const RFC_INDEX_XML_PATH = 'other/rfc-index.xml' as const
 
+export const RFC_MINI_INDEX_JSON_PATH = 'other/rfc-mini-index.json' as const
+
 export const RFC_INDEX_XSD_PATH = 'other/rfc-index.xsd' as const
 
 export const RFC_FEED_RSS_PATH = 'other/rfcrss.xml' as const

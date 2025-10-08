@@ -48,7 +48,10 @@ test('formatDatePublished', () => {
 test('isAprilFoolsRfc', () => {
   const aprilFoolsRfc = structuredClone(blankRfcCommon)
   aprilFoolsRfc.published = '1979-04-01'
-  aprilFoolsRfc.group.acronym = 'none'
+  aprilFoolsRfc.group = {
+    name: 'none',
+    acronym: 'none'
+  }
   expect(isAprilFoolsRfc(aprilFoolsRfc)).toBeTruthy()
 
   const notAprilFoolsRfc1 = structuredClone(aprilFoolsRfc)
@@ -56,7 +59,10 @@ test('isAprilFoolsRfc', () => {
   expect(isAprilFoolsRfc(notAprilFoolsRfc1)).toBeFalsy()
 
   const notAprilFoolsRfc2 = structuredClone(aprilFoolsRfc)
-  notAprilFoolsRfc2.group.acronym = 'ietf'
+  notAprilFoolsRfc2.group = {
+    name: 'ietf',
+    acronym: 'ietf'
+  }
   expect(isAprilFoolsRfc(notAprilFoolsRfc2)).toBeFalsy()
 })
 

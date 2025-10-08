@@ -114,7 +114,10 @@ const mockedQueueSummary: CurrentQueueStats = {
   }
 }
 
-export const uploadReportsCurrentQStatsTxt = async (): Promise<boolean> => {
+/**
+ * Currently uses mock data. Instead use an API
+ */
+export const FIXME_uploadReportsCurrentQStatsTxt = async (): Promise<boolean> => {
   const txt = await renderReportsCurrentQStatsTxt()
   await saveToS3(REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH, txt)
   console.log('Uploaded', REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH, 'FIXME with mock data')
