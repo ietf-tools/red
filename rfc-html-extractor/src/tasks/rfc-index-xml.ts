@@ -17,7 +17,7 @@ import {
   RFC_INDEX_XSD_PATH,
   saveToS3
 } from '../utilities/s3.ts'
-import { getDOMParser } from '../utilities/dom.ts'
+import { getDOMParser, deleteDefaultNamespaces } from '../utilities/dom.ts'
 import type { SubseriesDoc } from '../../../client/generated/red-client.ts'
 
 export const uploadRfcIndexXml = async (
@@ -69,7 +69,7 @@ export const renderRfcIndexXml = async (
               )
               .join('')
             return `${detail.message}\n${nearby}`
-    })
+          })
           .join('\n')
       )
     } else {
@@ -248,7 +248,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       })
     }
 
-    responseXml.push(`${rfcEntry.outerHTML}\n`)
+    responseXml.push(`${deleteDefaultNamespaces(rfcEntry.outerHTML)}\n`)
   })
 
   return responseXml.join('')
@@ -294,7 +294,7 @@ const renderSubseries = async (
     if (docIds.length > 0) {
       entry.appendChild(createElementListNS('is-also', 'doc-id', docIds))
     }
-    responseXml.push(`${entry.outerHTML}\n`)
+    responseXml.push(`${deleteDefaultNamespaces(entry.outerHTML)}\n`)
   })
 
   return responseXml.join('')

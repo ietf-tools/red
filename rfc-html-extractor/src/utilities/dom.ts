@@ -101,3 +101,7 @@ export const rfcDocumentToPojo = (rfcDocument: Node[]): DocumentPojo => {
 }
 
 export const BLANK_HTML = '<!DOCTYPE html><html><body></body></html>'
+
+export const deleteDefaultNamespaces = (xml: string): string => {
+  return xml.replace(/\s?xmlns="[^"]+"/gi, '')
+}
