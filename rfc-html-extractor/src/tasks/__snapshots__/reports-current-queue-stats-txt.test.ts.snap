@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderReportsCurrentQStatsTxt 1`] = `
+"#### RFC Editor Queue Summary:  2025-01-14 ####
+
+    State             total #       total #      Median Wks    Average Wks
+                      docs          pages        in state      in state
+    EDIT                   68          2550             5.6            7.6
+    RFC-EDITOR              5           161             0.9            1.2
+    AUTH48                 29          1004             3.7            7.4
+    AUTH48-DONE             3            35             0.7            0.7
+    AUTH                    0             0             0.0            0.0
+    IANA                    0             0             0.0            0.0
+    IESG                    0             0             0.0            0.0
+    REF                     1            57             0.0            1.0
+    MISSREF(1G)            18           600            51.5           57.2
+    MISSREF(2G)             6           401            87.8           85.3
+    MISSREF(3G)             1            29             0.0           85.7
+    TI                      0             0             0.0            0.0
+
+
+Totals:    131 docs    4837 pages
+"
+`;
