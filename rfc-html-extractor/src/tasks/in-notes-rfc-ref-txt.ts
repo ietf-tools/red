@@ -110,10 +110,6 @@ const stringifyRFC = (rfc: RfcCommon): string => {
   }
 }
 
-/**
- * Although this looks superficially like a table, the individual rows can be wider
- * than the column. So it's not really a table and we can't use conventional ASCII table formatters.
- */
 const getHeader = (layout: Layout): string => {
   const whitespaceForColumnWidth = ' '.repeat(layout.longestRfcNumberLength - 3)
   const hyphenForColumnWidth = '-'.repeat(layout.longestRfcNumberLength - 3)

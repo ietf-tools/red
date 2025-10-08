@@ -1,7 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
 import redirects from './redirects.json'
 import { isMiddlewareRedirect } from './app/utilities/redirects'
-import { API_ROUTES_TO_PRERENDER } from './app/utilities/url'
 
 type RouteRules = NonNullable<
   Parameters<typeof defineNuxtConfig>[0]['routeRules']
@@ -125,31 +124,12 @@ export default defineNuxtConfig({
     }
   },
   $production: {
-    /**
-     * Only apply route rules in production builds, because prerendering takes a while
-     */
     routeRules: {
       // https://nitro.build/config#routerules
       // https://nuxt.com/docs/guide/concepts/rendering#hybrid-rendering
       '/': {
         swr: oneDayInSeconds,
         prerender: true
-      },
-      ...Object.assign(
-        // merge the array of route config into a single object so we can spread it into routeRules
-        {},
-        ...API_ROUTES_TO_PRERENDER.map((routePath) => ({
-          [routePath]: {
-            swr: oneDayInSeconds,
-            // The prerenders for API routes can increase build time by 10 minutes but it's
-            // better than users waiting for responses.
-            prerender: true
-          }
-        }))
-      ),
-      '/rfc/rfc**.json': {
-        swr: oneDayInSeconds,
-        prerender: false // there are too many RFCs to prerender them, but we can at least cache rendering via `swr`
       },
       ...redirects.redirects
         .filter((redirect) => redirect[0] && !isMiddlewareRedirect(redirect[0]))

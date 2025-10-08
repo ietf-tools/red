@@ -10,28 +10,8 @@
     </SectionHeader>
     <div class="container mx-auto mt-10">
       <p class="leading-6 mb-2 pl-5 md:p-0 md:w-1/2">
-        <template v-if="props.rfcNumberLimit !== undefined">
-          <template v-if="props.sort === 'ascending'">
-            This page shows the first {{ props.rfcNumberLimit }} RFCs published.
-            Click <A :href="RFC_INDEX_ALL_ASCENDING_PATH">Show All</A> to get
-            the full list (ascending). RFCs are listed in this format:
-          </template>
-          <template v-else-if="props.sort === 'descending'">
-            This page shows the last {{ props.rfcNumberLimit }} RFCs published.
-            Click <A :href="RFC_INDEX_ALL_DESCENDING_PATH">Show All</A> to get
-            the full list (descending). RFCs are listed in this format:
-          </template>
-        </template>
-        <template v-else>
-          <template v-if="props.sort === 'ascending'">
-            This file contains entries for all RFCs in numeric order. RFC
-            entries appear in this format:
-          </template>
-          <template v-else-if="props.sort === 'descending'">
-            This file contains entries for all RFCs in reverse numeric order.
-            RFC entries appear in this format:
-          </template>
-        </template>
+        This file contains entries for all RFCs in numeric order.
+        RFC entries appear in this format:
       </p>
       <RFCIndexTable :rfc-rows="exampleRfcInformations" is-example />
 
@@ -89,17 +69,6 @@
         RFC Index
       </Heading>
       <RFCIndexTable v-if="rfcRows" :rfc-rows="rfcRows" />
-
-      <template v-if="props.rfcNumberLimit !== undefined">
-        <p class="pt-4">
-          <template v-if="props.sort === 'ascending'">
-            <A :href="RFC_INDEX_ALL_ASCENDING_PATH">Show All</A>
-          </template>
-          <template v-else-if="props.sort === 'descending'">
-            <A :href="RFC_INDEX_ALL_DESCENDING_PATH">Show All</A>
-          </template>
-        </p>
-      </template>
     </div>
   </div>
 </template>
@@ -108,29 +77,10 @@
 import { DateTime } from 'luxon'
 import { rfcToRfcIndexRow } from '~/utilities/rfc-index-html'
 import { RfcMiniIndexSchema } from '~/utilities/rfc-validators'
-import {
-  API_RFC_MINI_INDEX_PATH,
-  PUBLIC_SITE,
-  RFC_INDEX_ALL_ASCENDING_PATH,
-  RFC_INDEX_ALL_DESCENDING_PATH,
-  infoRfcPathBuilder
-} from '~/utilities/url'
-
-type Props = {
-  cacheKey: string
-  sort: 'ascending' | 'descending'
-  rfcNumberLimit?: number
-}
-const props = defineProps<Props>()
+import { API_RFC_MINI_INDEX_PATH, PUBLIC_SITE, infoRfcPathBuilder } from '~/utilities/url'
 
 useSeoMeta({
-  title:
-    props.rfcNumberLimit === undefined ?
-      props.sort === 'ascending' ?
-        'RFC Index'
-        : 'RFC Index (descending)'
-      : props.sort === 'ascending' ? `RFC Index first ${props.rfcNumberLimit}`
-        : `RFC Index last ${props.rfcNumberLimit}`
+  title: 'RFC Index'
 })
 
 const {

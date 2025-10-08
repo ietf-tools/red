@@ -14,17 +14,12 @@ export type ValidHrefs =
   | typeof HOME_PATH
   | typeof RFC_INDEX_XML_PATH
   | typeof RFC_INDEX_ALL_ASCENDING_PATH
-  | typeof RFC_INDEX_100_ASCENDING_PATH
-  | typeof RFC_INDEX_ALL_DESCENDING_PATH
-  | typeof RFC_INDEX_100_DESCENDING_PATH
   | typeof RSS_PATH
   | typeof ATOM_PATH
   | typeof STANDARDS_PATH
   | typeof IN_NOTES_BCP_REF_TXT
   | typeof IN_NOTES_RFC_REF_TXT
   | typeof IN_NOTES_STD_REF_TXT
-  | typeof QUEUE_XML_PATH
-  | typeof QUEUE_2_XML_PATH
   | typeof REPORTS_CURRENT_QUEUE_STATS_TXT_PATH
   | typeof NEVER_ISSUED_PATH
   | typeof ALL_CLUSTERS_PATH
@@ -69,9 +64,6 @@ export const API_RFC_MINI_INDEX_PATH = `/api/v1/rfc-mini-index.json`
 
 export const RFC_INDEX_XML_PATH = '/rfc-index.xml'
 export const RFC_INDEX_ALL_ASCENDING_PATH = '/rfc-index/'
-export const RFC_INDEX_100_ASCENDING_PATH = '/rfc-index-100a/'
-export const RFC_INDEX_ALL_DESCENDING_PATH = '/rfc-index2/'
-export const RFC_INDEX_100_DESCENDING_PATH = '/rfc-index-100d/'
 export const REPORTS_CURRENT_QUEUE_STATS_TXT_PATH = '/reports/CurrQstats.txt'
 
 export const STANDARDS_PATH = '/standards/'
@@ -83,9 +75,6 @@ export const IN_NOTES_BCP_REF_TXT = '/in-notes/bcp-ref.txt'
 export const IN_NOTES_RFC_REF_TXT = '/in-notes/rfc-ref.txt'
 export const IN_NOTES_STD_REF_TXT = '/in-notes/std-ref.txt'
 
-export const QUEUE_XML_PATH = '/queue.xml'
-export const QUEUE_2_XML_PATH = '/queue2.xml'
-
 export const NEVER_ISSUED_PATH = '/never-issued/'
 export const ALL_CLUSTERS_PATH = '/all_clusters/'
 export const STATUS_CHANGES_PATH = '/status-changes/'
@@ -95,22 +84,6 @@ export const FIXME_REPORTS_SUBPUB_STATS_PATH = '/reports/subpub_stats/'
 export const FIXME_RFCS_PER_YEAR_PATH = '/rfcs-per-year/'
 export const FIXME_ERRATA_DEFINITIONS_PATH = '/errata-definitions/'
 export const FIXME_INNOTES_PRERELEASE_PATH = '/in-notes/prerelease/'
-
-export const API_ROUTES_TO_PRERENDER = [
-  REPORTS_CURRENT_QUEUE_STATS_TXT_PATH,
-  RFC_INDEX_ALL_ASCENDING_PATH,
-  RFC_INDEX_100_ASCENDING_PATH,
-  RFC_INDEX_ALL_DESCENDING_PATH,
-  RFC_INDEX_100_DESCENDING_PATH,
-  QUEUE_XML_PATH,
-  QUEUE_2_XML_PATH,
-  // IN_NOTES_BCP_REF_TXT, // FIXME reenable when supported
-  // IN_NOTES_STD_REF_TXT, // FIXME reenable when supported
-  IN_NOTES_RFC_REF_TXT,
-  RSS_PATH,
-  ATOM_PATH,
-  NEVER_ISSUED_PATH // not an API route but has rarely changing API-driven content
-] as const
 
 /**
  * URLs to decide upon.
