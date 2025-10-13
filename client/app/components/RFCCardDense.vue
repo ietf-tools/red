@@ -23,6 +23,9 @@
     <template #headingTitle>
       <component :is="formatTitleAsVNode(`rfc${props.rfc.number}`)" />
     </template>
+    <template #afterHeadingTitle>
+      <RFCCardSubseries :rfc="props.rfc" />
+    </template>
     <template #default>
       <RFCCardBody
         :rfc="props.rfc"

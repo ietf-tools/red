@@ -10,15 +10,7 @@
       <component :is="formattedTitle" />
     </template>
     <template #afterHeadingTitle>
-      <span v-if="props.rfc.subseries && props.rfc.subseries.length > 0">
-        <span>: </span>
-        <NuxtLink v-for="(subseries, subseriesIndex) in props.rfc.subseries" :key="subseriesIndex"
-          :to="infoRfcPathBuilder(`${subseries.type.toLowerCase()}${subseries.number}`)"
-          class="relative z-50 no-underline hover:underline focus:underline px-2 py-3 rounded text-gray-700 dark:text-gray-300"
-          :title="`part of ${subseries.type.toUpperCase()}${subseries.number}`">
-          <component :is="formattedSubseriesTitles[subseriesIndex]" />
-        </NuxtLink>
-      </span>
+      <RFCCardSubseries :rfc="props.rfc" />
     </template>
     <template #default>
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />
@@ -57,13 +49,6 @@ const abstractHeadingLevel = computed(() =>
 )
 
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`))
-
-const formattedSubseriesTitles = computed(() => {
-  if (!props.rfc.subseries) return []
-  return props.rfc.subseries.map(subseries => formatTitleAsVNode(
-    `${subseries.type}${subseries.number}`
-  ))
-})
 
 const responsiveModeStore = useResponsiveModeStore()
 </script>
