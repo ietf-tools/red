@@ -37,9 +37,8 @@
                   <template #fallback>
                     <div :class="[
                       aisSearchboxInputClass,
-                      'invisible' // ie vibility:hidden so that it still takes up layout space 
+                      'invisible' // ie visibility:hidden so that it still takes up layout space
                     ]">
-                      <!-- placeholder while loading-->
                       &nbsp;
                     </div>
                   </template>
