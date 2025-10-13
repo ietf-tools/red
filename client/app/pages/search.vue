@@ -54,7 +54,7 @@
               <p class="w-full text-center">
                 Loading search...
                 <noscript>Please enable JavaScript.</noscript>
-              </p>              
+              </p>
             </template>
             <div class="hidden lg:w-1/3 lg:block">
               <SearchFilter />
