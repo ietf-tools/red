@@ -3,8 +3,10 @@
     method="get"
     :action="SEARCH_PATH"
     class="flex flex-row pt-4 pb-4 md:pb-8"
+    @submit.stop.prevent="handleSearch"
   >
     <input
+      v-model="searchQuery"
       id="search"
       type="search"
       name="q"
@@ -29,7 +31,17 @@
 </template>
 
 <script setup lang="ts">
-import { SEARCH_PATH } from '~/utilities/url'
+import { SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
 
 const responsiveModeStore = useResponsiveModeStore()
+
+const searchQuery = ref('')
+
+const handleSearch = () => {
+  const searchPath = searchPathBuilder({
+    q: searchQuery.value
+  })
+  console.log(searchPath)
+  navigateTo(searchPath)
+}
 </script>
