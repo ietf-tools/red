@@ -41,7 +41,6 @@ const handleSearch = () => {
   const searchPath = searchPathBuilder({
     q: searchQuery.value
   })
-  console.log(searchPath)
   navigateTo(searchPath)
 }
 </script>
