@@ -1,4 +1,4 @@
-import type { Rfc } from '~~/generated/red-client.js'
+import type { Rfc } from '../../generated/red-client.js'
 import type { RfcCommon } from './rfc-validators.ts'
 
 export const parseRfcStatusSlug = (
@@ -136,11 +136,14 @@ export const parseSubseriesItemType = (
   throw Error(`Unable to parse API rfc subseries type ${JSON.stringify(type)}`)
 }
 
-export const parseSubseriesItemName = ( name: RfcSubseriesItem['name']
+export const parseSubseriesItemName = (
+  name: RfcSubseriesItem['name']
 ): RfcCommonSubseriesItem['number'] => {
   const num = parseFloat(name)
-  if(Number.isNaN(num)) {
-    throw Error(`Unable to parse API rfc subseries type ${JSON.stringify(name)} into number`)
+  if (Number.isNaN(num)) {
+    throw Error(
+      `Unable to parse API rfc subseries type ${JSON.stringify(name)} into number`
+    )
   }
   return num
 }

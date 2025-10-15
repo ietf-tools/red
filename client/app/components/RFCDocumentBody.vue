@@ -13,8 +13,6 @@
   >
     <component :is="formattedTitle" />
     <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" />
-
-    [ {{ JSON.stringify(props.rfcBucketHtmlDocument.rfc.subseries) }} ]
   </Heading>
 
   <Heading
@@ -91,6 +89,7 @@ import HorizontalScrollable from './HorizontalScrollable.vue'
 import PdfPages from './PdfPages.vue'
 import AbsoluteHorizontalScrollable from './AbsoluteHorizontalScrollable.vue'
 import Fragment from './Fragment.vue'
+import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import {
   formatTitleAsVNode,
   isAprilFoolsRfc,
@@ -102,7 +101,6 @@ import { nodePojoWalker } from '~/utilities/dom'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import RFCTitleSubseries from './RFCTitleSubseries.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
