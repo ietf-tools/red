@@ -2,7 +2,7 @@ import { ApiClient } from '../../../client/generated/red-client.ts'
 import {
   parseRfcStatusSlug,
   parseRfcStreamSlug,
-  parseSubseries,
+  parseSubseries
 } from '../../../client/app/utilities/rfc-converter-parse.ts'
 import { blankRfcCommon } from './rfc.ts'
 import type { Rfc, RfcMetadata } from '../../../client/generated/red-client.ts'
@@ -208,4 +208,40 @@ export const docRetrieve = async (redApi: ApiClient, rfcNumber: number) => {
 export const setTimeoutPromise = (timerMs: number) =>
   new Promise((resolve) => setTimeout(resolve, timerMs))
 
-export const getAllSubseries = ({ api }: Props) => api.red.subseriesList({})
+export const getAllSubseries = async ({ api }: Props) => {
+  const parseSubseriesName = (
+    name: string
+  ): { type: string; number: number } => {
+    const nameParts = name.match(
+      // contiguous blocks of either letters or numbers
+      /\d+|\D+/g
+    )
+    if (!nameParts) {
+      throw Error(
+        `Unable to parse subseries name ${JSON.stringify(name)} into parts.`
+      )
+    }
+    const number = parseFloat(nameParts[1])
+    if (Number.isNaN(number)) {
+      throw Error(
+        `Unable to parse subseries name ${JSON.stringify(name)} number.`
+      )
+    }
+    return {
+      type: nameParts[0],
+      number
+    }
+  }
+
+  const subseries = await api.red.subseriesList({})
+  
+  return subseries.sort((a, b) => {
+    const aParts = parseSubseriesName(a.name)
+    const bParts = parseSubseriesName(b.name)
+    const typeOrder = aParts.type.localeCompare(bParts.type)
+    if (typeOrder !== 0) {
+      return typeOrder
+    }
+    return aParts.number - bParts.number
+  })
+}
