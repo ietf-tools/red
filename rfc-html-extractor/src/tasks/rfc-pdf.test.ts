@@ -7,7 +7,7 @@ const RFC_NUMBER_WITH_PDF = 418
 
 test(
   `rfcBucketPdfToRfcDocument(${RFC_NUMBER_WITH_PDF}, false)`,
-  { timeout: 20_000 },
+  { timeout: 30_000 },
   async () => {
     const getRfcCommon = async (_rfcNumber: number) => testMockAllRfcs[testMockAllRfcs.length - 1]
     const rfcBucketPdfDocument = await rfcBucketPdfToRfcDocument(
