@@ -1,3 +1,4 @@
+import type { Rfc } from '~~/generated/red-client.js'
 import type { RfcCommon } from './rfc-validators.ts'
 
 export const parseRfcStatusSlug = (
@@ -102,4 +103,44 @@ export const parseRfcStreamSlug = (
   }
 
   throw Error(`Unable to parse stream slug "${streamSlug}"`)
+}
+
+type RfcCommonSubseriesItem = NonNullable<RfcCommon['subseries']>[number]
+
+type RfcSubseriesItem = NonNullable<Rfc['subseries']>[number]
+
+export const parseSubseries = (
+  subseries: Rfc['subseries']
+): RfcCommon['subseries'] => {
+  if (!subseries) return undefined
+
+  return subseries.map(
+    (subseriesItem): RfcCommonSubseriesItem => ({
+      type: parseSubseriesItemType(subseriesItem.type),
+      number: parseSubseriesItemName(subseriesItem.name)
+    })
+  )
+}
+
+export const parseSubseriesItemType = (
+  type: RfcSubseriesItem['type']
+): RfcCommonSubseriesItem['type'] => {
+  switch (type) {
+    case 'bcp':
+      return 'bcp'
+    case 'fyi':
+      return 'fyi'
+    case 'std':
+      return 'std'
+  }
+  throw Error(`Unable to parse API rfc subseries type ${JSON.stringify(type)}`)
+}
+
+export const parseSubseriesItemName = ( name: RfcSubseriesItem['name']
+): RfcCommonSubseriesItem['number'] => {
+  const num = parseFloat(name)
+  if(Number.isNaN(num)) {
+    throw Error(`Unable to parse API rfc subseries type ${JSON.stringify(name)} into number`)
+  }
+  return num
 }

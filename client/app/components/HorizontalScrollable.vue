@@ -41,7 +41,7 @@ const canScrollRight = ref(false)
 
 const BUFFER_PX = 8
 
-let timer: ReturnType<typeof setTimeout>
+const setTimeoutTimers: ReturnType<typeof setTimeout>[] = []
 
 const updateScrollHint = () => {
   const { value: scrollContainerElement } = scrollContainer
@@ -62,13 +62,27 @@ const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
 
 onMounted(() => {
   window.addEventListener('resize', debouncedUpdateScrollHint)
-  timer = setTimeout(updateScrollHint, 50)
+  // On the search page the layout takes a long time to settle, so we need to recalculate
+  // scroll hints frequently during the initial page load which could take 10s of seconds.
+
+  // The goal is to recalculate occasionally for the first ~20 seconds.
+
+  // While a setInterval might be fewer lines of code it wouldn't be as simple and as easy
+  // to debug imo
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 50))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 500))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 2000))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 4000))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 6000))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 10000))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 15000))
+  setTimeoutTimers.push(setTimeout(debouncedUpdateScrollHint, 20000))
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', debouncedUpdateScrollHint)
-  if (timer) {
-    clearTimeout(timer)
+  while (setTimeoutTimers.length > 0) {
+    clearTimeout(setTimeoutTimers.pop())
   }
 })
 </script>

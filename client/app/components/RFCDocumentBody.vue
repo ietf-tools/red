@@ -12,6 +12,9 @@
     class="mb-2 pl-2 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
   >
     <component :is="formattedTitle" />
+    <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" />
+
+    [ {{ JSON.stringify(props.rfcBucketHtmlDocument.rfc.subseries) }} ]
   </Heading>
 
   <Heading
@@ -99,6 +102,7 @@ import { nodePojoWalker } from '~/utilities/dom'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
+import RFCTitleSubseries from './RFCTitleSubseries.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument

@@ -1,17 +1,27 @@
 <template>
   <div class="min-h-[100vh]">
     <noscript> This search requires JavaScript. </noscript>
-    <ais-instant-search ref="aisInstantSearchRef" :index-name="INDEX_NAME" :search-client="searchClient"
-      :future="{ preserveSharedStateOnUnmount: true }" :routing="routing">
+    <ais-instant-search
+      ref="aisInstantSearchRef"
+      :index-name="INDEX_NAME"
+      :search-client="searchClient"
+      :future="{ preserveSharedStateOnUnmount: true }"
+      :routing="routing"
+    >
       <NuxtLayout name="default">
         <template #subheader>
           <div class="container mx-auto">
-            <Heading level="1" class="mt-1 mb-1 md:mb-2 ml-2 md:pl-5 md:p-0 text-balance">
+            <Heading
+              level="1"
+              class="mt-1 mb-1 md:mb-2 ml-2 text-balance"
+            >
               Search RFCs
             </Heading>
             <div class="flex flex-row items-center pt-4 pb-6">
               <div class="w-full md:w-2/3">
-                <ais-search-box autofocus placeholder="Find an RFC (number, subseries, title, author, etc.)"
+                <ais-search-box
+                  autofocus
+                  placeholder="Find an RFC (number, subseries, title, author, etc.)"
                   :class-names="{
                     'ais-SearchBox-form': 'w-full flex',
                     'ais-SearchBox-input':
@@ -21,12 +31,20 @@
                     'ais-SearchBox-reset': 'hidden',
                     'ais-SearchBox-loadingIndicator':
                       'bg-yellow-400 px-2 flex items-center text-white'
-                  }" show-loading-indicator>
+                  }"
+                  show-loading-indicator
+                >
                   <template #submit-icon>
-                    <Icon name="fluent:search-12-filled" size="2em" />
+                    <Icon
+                      name="fluent:search-12-filled"
+                      size="2em"
+                    />
                   </template>
                   <template #loading-indicator>
-                    <Icon name="eos-icons:loading" size="2em" />
+                    <Icon
+                      name="eos-icons:loading"
+                      size="2em"
+                    />
                     <div class="bg-red-500 w-5 h-5"></div>
                   </template>
                 </ais-search-box>
@@ -64,8 +82,11 @@
                 <SearchStats />
                 <div class="hidden lg:flex lg:items-center lg:h-10">
                   <SearchSortBy />
-                  <Separator orientation="vertical" decorative
-                    class="bg-gray-400 data-[orientation=vertical]:h-7 data-[orientation=vertical]:w-px mx-3" />
+                  <Separator
+                    orientation="vertical"
+                    decorative
+                    class="bg-gray-400 data-[orientation=vertical]:h-7 data-[orientation=vertical]:w-px mx-3"
+                  />
                   <SearchDensity v-model="searchStore.density" />
                 </div>
                 <div class="lg:hidden print:hidden">
@@ -73,8 +94,11 @@
                 </div>
               </div>
 
-              <SearchSubseriesBar v-if="searchStore.isSubseries" :label="searchStore.subseriesLabel"
-                :href="searchStore.subseriesHref" />
+              <SearchSubseriesBar
+                v-if="searchStore.isSubseries"
+                :label="searchStore.subseriesLabel"
+                :href="searchStore.subseriesHref"
+              />
 
               <ais-hits class="mt-4">
                 <template #default="{ items }">
@@ -82,9 +106,18 @@
                   <SearchNoResults v-if="!items.length" />
                   <!-- RESULTS -->
                   <ul class="flex flex-col gap-4">
-                    <li v-for="item in items as TypeSenseSearchItem[]" :key="item.id" class="flex flex-col">
-                      <RFCCardTypeSenseItem heading-level="3" :type-sense-search-item="item" :show-abstract="true"
-                        :show-tag-date="true" :density="searchStore.density" />
+                    <li
+                      v-for="item in items as TypeSenseSearchItem[]"
+                      :key="item.id"
+                      class="flex flex-col"
+                    >
+                      <RFCCardTypeSenseItem
+                        heading-level="3"
+                        :type-sense-search-item="item"
+                        :show-abstract="true"
+                        :show-tag-date="true"
+                        :density="searchStore.density"
+                      />
                     </li>
                   </ul>
                 </template>

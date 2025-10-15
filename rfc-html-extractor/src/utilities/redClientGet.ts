@@ -1,7 +1,8 @@
 import { ApiClient } from '../../../client/generated/red-client.ts'
 import {
   parseRfcStatusSlug,
-  parseRfcStreamSlug
+  parseRfcStreamSlug,
+  parseSubseries,
 } from '../../../client/app/utilities/rfc-converter-parse.ts'
 import { blankRfcCommon } from './rfc.ts'
 import type { Rfc, RfcMetadata } from '../../../client/generated/red-client.ts'
@@ -70,6 +71,7 @@ export const getRfcCommonCached = async (
 export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
   return {
     ...structuredClone(blankRfcCommon),
+    subseries: parseSubseries(rfc.subseries),
     number: rfc.number,
     abstract: rfc.abstract,
     published: rfc.published,
