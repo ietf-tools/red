@@ -5,7 +5,7 @@ import type { InfoSubseriesItem } from '../../../client/app/utilities/rfc-valida
 import { validateDocument } from '../utilities/validate-zod.ts'
 
 const CONSOLE_PURGE_LENGTH = 10
-const NUMBER_OF_SIMULTANEOUS_S3_UPLOADS = 4
+const NUMBER_OF_CONCURRENT_SUBSERIES_S3_UPLOADS = 4
 
 export const uploadAllSubseries = async (
   allSubseries: Readonly<InfoSubseriesItem[]>
@@ -14,9 +14,12 @@ export const uploadAllSubseries = async (
   const logItems: string[] = []
 
   const { results, errors } = await PromisePool.for(allSubseriesValidated)
-    .withConcurrency(NUMBER_OF_SIMULTANEOUS_S3_UPLOADS)
+    .withConcurrency(NUMBER_OF_CONCURRENT_SUBSERIES_S3_UPLOADS)
     .onTaskFinished((_item, pool) => {
-      if (logItems.length > CONSOLE_PURGE_LENGTH) {
+      if (
+        // to avoid spamming the console with updates we'll accumulate logItems until a threshold and then print them
+        logItems.length > CONSOLE_PURGE_LENGTH
+      ) {
         const logText: string[] = []
         while (logItems.length > 0) {
           const logItem = logItems.pop()
@@ -40,6 +43,15 @@ export const uploadAllSubseries = async (
       return true
     })
 
+  console.log(
+    ` - subseries 100% ${
+      logItems.length > 0
+        ? // print any remaining log items
+          `${logItems.join(', ')}.`
+        : ''
+    }`
+  )
+
   if (results.some((result) => result !== true) || errors.length > 0) {
     console.error(` - subseries error ${errors}`)
   } else {
@@ -53,6 +65,7 @@ export const renderAllSubseries = async (
   allSubseries: Readonly<InfoSubseriesItem[]>
 ): Promise<InfoSubseriesItem[]> => {
   return allSubseries.map((subseriesItem) => {
+    // subseries are already in a data format we can use, so just validate it
     validateDocument(subseriesItem, InfoSubseriesItemSchema)
     return subseriesItem
   })
