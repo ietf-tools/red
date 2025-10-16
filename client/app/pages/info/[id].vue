@@ -4,7 +4,9 @@
       <template #subheader>
         <template v-if="isSubseries">
           <SectionHeader>
-            <Heading level="1" class="ml-6 pb-6">{{ seriesId.type.toUpperCase() }}{{ seriesId.number }}</Heading>
+            <Heading level="1" class="ml-6 pb-6">
+              <component :is="formattedTitle" />
+            </Heading>
           </SectionHeader>
         </template>
       </template>
@@ -26,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { parseSeriesId, type SeriesId } from '~/utilities/rfc'
+import { formatTitleAsVNode, parseSeriesId, type SeriesId } from '~/utilities/rfc'
 
 const route = useRoute()
 const paramsId = route.params.id
@@ -42,6 +44,8 @@ if (paramsId === undefined) {
 const seriesId = parseSeriesId(paramsId.toString())
 
 const isSubseries = computed(() => seriesId && (seriesId.type === 'bcp' || seriesId.type === 'fyi' || seriesId.type === 'std'))
+
+const formattedTitle = computed(() => seriesId ? formatTitleAsVNode(`${seriesId.type}${seriesId.number}`) : '')
 
 const supportedTypes: SeriesId["type"][] = ['rfc', 'bcp', 'fyi', 'std']
 
