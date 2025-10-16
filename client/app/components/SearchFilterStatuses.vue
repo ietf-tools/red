@@ -27,8 +27,11 @@
 
 <script setup lang="ts">
 import { AisRefinementList } from 'vue-instantsearch/vue3/es'
+import type { RfcCommon } from '~/utilities/rfc-validators';
 
-const predefinedOrder = [
+type StatusName = RfcCommon["status"]["name"]
+
+const predefinedOrder: StatusName[] = [
   'Internet Standard',
   'Proposed Standard',
   'Draft Standard',
@@ -39,7 +42,7 @@ const predefinedOrder = [
   'Unknown'
 ]
 
-function reorderItems(a: { name: string }, b: { name: string }) {
+function reorderItems(a: { name: StatusName }, b: { name: StatusName }) {
   return predefinedOrder.indexOf(a.name) - predefinedOrder.indexOf(b.name)
 }
 </script>
