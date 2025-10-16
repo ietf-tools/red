@@ -138,6 +138,7 @@ const RfcCommonUpdatedBySchema = z.object({
 const RfcCommonAuthorSchema = z.object({
   person: z.number().optional(),
   name: z.string(),
+  titlepage_name: z.string().optional(),
   email: z.string().optional(),
   affiliation: z.string().optional(),
   country: z.string().optional()
@@ -227,6 +228,15 @@ export const RfcMiniIndexSchema = z.object({
   createdOn: z.string(),
   miniIndex: z.array(RfcCommonSchema)
 })
+
+/** Subseries info page schema */
+export const InfoSubseriesItemSchema = z.object({
+  type: RfcCommonSubseriesTypeSchema,
+  number: z.number(),
+  contents: RfcCommonSchema.array()
+})
+
+export type InfoSubseriesItem = z.infer<typeof InfoSubseriesItemSchema>
 
 /**
  * Document HTML Schema (html/vue as pojo)

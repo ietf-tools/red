@@ -2,7 +2,8 @@ import { ApiClient } from '../../../client/generated/red-client.ts'
 import {
   parseRfcStatusSlug,
   parseRfcStreamSlug,
-  parseSubseries
+  parseSubseries,
+  parseSubseriesItemType
 } from '../../../client/app/utilities/rfc-converter-parse.ts'
 import { blankRfcCommon } from './rfc.ts'
 import type {
@@ -10,7 +11,10 @@ import type {
   RfcMetadata,
   SubseriesDoc
 } from '../../../client/generated/red-client.ts'
-import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
+import type {
+  InfoSubseriesItem,
+  RfcCommon
+} from '../../../client/app/utilities/rfc-validators.ts'
 import { assertIsString } from './typescript.ts'
 
 export const getRedClient = (): ApiClient => {
@@ -211,12 +215,9 @@ export const docRetrieve = async (redApi: ApiClient, rfcNumber: number) => {
 export const setTimeoutPromise = (timerMs: number) =>
   new Promise((resolve) => setTimeout(resolve, timerMs))
 
-export const getAllSubseries = async ({ api }: Props) => {
-  const subseries = await api.red.subseriesList({})
-  return subseries.sort(sortSubseriesDoc)
-}
-
-export const sortSubseriesDoc = (a: SubseriesDoc, b: SubseriesDoc): number => {
+export const getAllSubseries = async ({
+  api
+}: Props): Promise<Readonly<InfoSubseriesItem[]>> => {
   const parseSubseriesName = (
     name: string
   ): { type: string; number: number } => {
@@ -241,11 +242,34 @@ export const sortSubseriesDoc = (a: SubseriesDoc, b: SubseriesDoc): number => {
     }
   }
 
-  const aParts = parseSubseriesName(a.name)
-  const bParts = parseSubseriesName(b.name)
-  const typeOrder = aParts.type.localeCompare(bParts.type)
+  const subseries = await api.red.subseriesList({})
+  const sortedSubseries = subseries
+    .map((subseriesDoc): InfoSubseriesItem => {
+      const parts = parseSubseriesName(subseriesDoc.name)
+      return {
+        type: parseSubseriesItemType(parts.type),
+        number: parts.number,
+        contents: subseriesDoc.contents.map((rfc) =>
+          rfcToRfcCommon({
+            ...rfc,
+            text: ''
+          })
+        )
+      }
+    })
+    .sort(sortInfoSubseriesItem)
+
+  // Attempt to prevent mutation of object (shallow -- not a deep freeze).
+  return Object.freeze(sortedSubseries)
+}
+
+export const sortInfoSubseriesItem = (
+  a: InfoSubseriesItem,
+  b: InfoSubseriesItem
+): number => {
+  const typeOrder = a.type.localeCompare(b.type)
   if (typeOrder !== 0) {
     return typeOrder
   }
-  return aParts.number - bParts.number
+  return a.number - b.number
 }

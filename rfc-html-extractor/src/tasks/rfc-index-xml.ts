@@ -3,7 +3,6 @@ import { readFile } from 'node:fs/promises'
 import {
   XmlDocument,
   XsdValidator,
-  XmlLibError,
   XmlValidateError
 } from 'libxml2-wasm'
 import { DateTime } from 'luxon'
@@ -11,18 +10,17 @@ import {
   formatAuthor,
   formatFormat
 } from '../utilities/rfc-converters-utils.ts'
-import type { RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
+import type { InfoSubseriesItem, RfcCommon } from '../../../client/app/utilities/rfc-validators.ts'
 import {
   RFC_INDEX_XML_PATH,
   RFC_INDEX_XSD_PATH,
   saveToS3
 } from '../utilities/s3.ts'
 import { getDOMParser, deleteDefaultNamespaces } from '../utilities/dom.ts'
-import type { SubseriesDoc } from '../../../client/generated/red-client.ts'
 
 export const uploadRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>,
-  allSubseries: SubseriesDoc[]
+  allSubseries: Readonly<InfoSubseriesItem[]>
 ): Promise<boolean> => {
   const { xml, xsd } = await renderRfcIndexXml(allRfcs, allSubseries)
   await saveToS3(RFC_INDEX_XML_PATH, xml)
@@ -38,7 +36,7 @@ const RPC_NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 
 export const renderRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>,
-  allSubseries: Readonly<SubseriesDoc[]>
+  allSubseries: Readonly<InfoSubseriesItem[]>
 ): Promise<{ xml: string; xsd: string }> => {
   const xsdPath = resolve(import.meta.dirname, '../assets/rfc-index.xsd')
   const xsd = await readFile(xsdPath, 'utf-8')
@@ -258,7 +256,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
 
 const renderSubseries = async (
   allRfcs: Readonly<RfcCommon[]>,
-  allSubseries: Readonly<SubseriesDoc[]>,
+  allSubseries: Readonly<InfoSubseriesItem[]>,
   subseriesType: string,
   shouldRenderFirstContentsAsTitle: boolean
 ): Promise<string> => {
@@ -272,15 +270,15 @@ const renderSubseries = async (
     (subseriesDoc) => subseriesDoc.type === subseriesType
   )
 
-  subseries.forEach((subseriesDoc) => {
-    const entry = createElementNS(`${subseriesDoc.type}-entry`)
+  subseries.forEach((subseriesItem) => {
+    const entry = createElementNS(`${subseriesItem.type}-entry`)
     entry.appendChild(
-      createElementNS('doc-id', subseriesDoc.name.toUpperCase())
+      createElementNS('doc-id', `${subseriesItem.type.toUpperCase()}${subseriesItem.number}`)
     )
     if (shouldRenderFirstContentsAsTitle) {
       let title = ''
-      if (subseriesDoc.contents.length > 0) {
-        const firstSubseriesDoc = subseriesDoc.contents[0]
+      if (subseriesItem.contents.length > 0) {
+        const firstSubseriesDoc = subseriesItem.contents[0]
         const referencedRfc = allRfcs.find(
           (rfc) => rfc.number === firstSubseriesDoc.number
         )
@@ -290,7 +288,7 @@ const renderSubseries = async (
       }
       entry.appendChild(createElementNS('title', title))
     }
-    const docIds = subseriesDoc.contents.map(
+    const docIds = subseriesItem.contents.map(
       (content) => `RFC${content.number}`
     )
     if (docIds.length > 0) {

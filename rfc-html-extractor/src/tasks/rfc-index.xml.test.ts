@@ -1,6 +1,6 @@
 import { vi, test, expect } from 'vitest'
 import { renderRfcIndexXml } from './rfc-index-xml'
-import { testMockAllRfcs, testMockSubseries } from '../utilities/rfcs-test-data.ts'
+import { testMockAllRfcs, testMockAllSubseries } from '../utilities/rfcs-test-data.ts'
 
 test('render rfc-index.xml', async () => {
   const date = new Date(2025, 0, 14)
@@ -8,7 +8,7 @@ test('render rfc-index.xml', async () => {
 
   // the renderRfcIndexXml function will validate the XML
   // against the XSD before returning it
-  const { xml, xsd } = await renderRfcIndexXml(testMockAllRfcs, testMockSubseries)
+  const { xml, xsd } = await renderRfcIndexXml(testMockAllRfcs, testMockAllSubseries)
 
   // validation has already occured so this is just
   // a basic sanity check on the responses.

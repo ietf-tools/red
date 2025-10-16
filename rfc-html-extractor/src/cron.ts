@@ -5,6 +5,7 @@ import { uploadFeeds } from './tasks/rfc-feeds.ts'
 import { uploadRfcMiniIndexJson } from './tasks/rfc-mini-index-json.ts'
 import { uploadRfcIndexTxt } from './tasks/rfc-index-txt.ts'
 import { uploadRfcIndexXml } from './tasks/rfc-index-xml.ts'
+import { uploadAllSubseries } from './tasks/info-subseries.ts'
 import {
   getAllRFCs,
   getAllSubseries,
@@ -28,6 +29,7 @@ export const main = async (): Promise<void> => {
     uploadFeeds(allRfcs),
     uploadRfcIndexXml(allRfcs, allSubseries),
     uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
+    uploadAllSubseries(allSubseries),
     FIXME_uploadReportsCurrentQStatsTxt()
   ])
 }
