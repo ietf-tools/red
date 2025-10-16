@@ -10,7 +10,7 @@
 
     <div class="min-h-screen ">
       <div v-if="subseriesDocument" class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <RFCCard v-for="rfc in subseriesDocument.contents" :key="rfc.number" :rfc="rfc" heading-level="3" />
+        <RFCCard v-for="rfc in subseriesDocument.contents" :key="rfc.number" :rfc="rfc" heading-level="3" :show-abstract="true" />
       </div>
     </div>
   </BodyLayoutDocument>
