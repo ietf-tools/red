@@ -71,7 +71,7 @@
             <template #fallback>
               <p class="w-full text-center">
                 Loading search...
-                <noscript>Please enable JavaScript.</noscript>
+                <noscript>Please enable JavaScript to use search.</noscript>
               </p>
             </template>
             <div class="hidden lg:w-1/3 lg:block">
