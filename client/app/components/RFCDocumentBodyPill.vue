@@ -22,7 +22,7 @@
                         <p class="text-balance">
                             For the definition of <b>Status</b>, see
                             <A
-                                :href="infoRfcPathBuilder('rfc2026')"
+                                :href="infoSeriesPathBuilder('rfc2026')"
                                 :class="ANCHOR_TAILWIND_STYLE"
                             >
                                 <component :is="formatTitleAsVNode('rfc2026')" />
@@ -31,7 +31,7 @@
                         <p class="text-balance">
                             For the definition of <b>Stream</b>, see
                             <A
-                                :href="infoRfcPathBuilder('rfc8729')"
+                                :href="infoSeriesPathBuilder('rfc8729')"
                                 :class="ANCHOR_TAILWIND_STYLE"
                             >
                                 <component :is="formatTitleAsVNode('rfc8729')" />
@@ -58,7 +58,7 @@ import {
     type RfcCommon
 } from '~/utilities/rfc'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { infoRfcPathBuilder } from '~/utilities/url'
+import { infoSeriesPathBuilder } from '~/utilities/url'
 
 type Props = {
     rfc: RfcCommon

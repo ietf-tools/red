@@ -10,13 +10,13 @@
     <HoverCardPortal>
       <HoverCardContent
         class="border shadow-2xl overflow-x-hidden rounded-md bg-white dark:bg-black border-gray-400 dark:border-white px-3 py-2 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all">
-        <p class="italic font-bold">Last updated <span class="font-mono">{{ fullDate }}</span></p>
+        <p class="italic font-bold">Last updated {{ fullDate }}</p>
         <HoverCardArrow class="fill-gray-200 stroke-gray-500 -mt-[1px]" />
       </HoverCardContent>
     </HoverCardPortal>
   </HoverCardRoot>
-  <p class="hidden print:block italic font-bold">
-    Last updated {{ relativeDate }}, <span class="font-mono">{{ fullDate }}</span>
+  <p class="hidden print:block italic font-semibold">
+    Last updated {{ relativeDate }}, {{ fullDate }}
   </p>
 </template>
 

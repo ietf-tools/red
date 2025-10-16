@@ -129,29 +129,29 @@ test('isHashLink', () => {
 
 test('parseMaybeRfcLink', () => {
   expect(parseMaybeRfcLink('/something/rfc1/something-else')).toEqual({
-    type: 'RFC',
+    type: 'rfc',
     number: '1'
   })
 
   expect(parseMaybeRfcLink('/rfc/rfc10101')).toEqual({
-    type: 'RFC',
+    type: 'rfc',
     number: '10101'
   })
 
   expect(parseMaybeRfcLink('https://www.rfc-editor.org/rfc/rfc10101')).toEqual({
-    type: 'RFC',
+    type: 'rfc',
     number: '10101'
   })
 
   expect(
     parseMaybeRfcLink('https://www.rfc-editor.org/rfc/rfc10101#section-2.1')
   ).toEqual({
-    type: 'RFC',
+    type: 'rfc',
     number: '10101'
   })
 
   expect(parseMaybeRfcLink('#rfc10101')).toEqual({
-    type: 'RFC',
+    type: 'rfc',
     number: '10101'
   })
 

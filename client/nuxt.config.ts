@@ -120,6 +120,9 @@ export default defineNuxtConfig({
       },
       '/api/v1/rfc/**': {
         proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc/**'
+      },
+      '/api/v1/info-subseries/**': {
+        proxy: 'https://red.staging.rfc-editor.org/api/v1/info-subseries/**'
       }
     }
   },

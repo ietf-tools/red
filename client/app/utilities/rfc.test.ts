@@ -2,7 +2,7 @@
 import { vi, test, expect, describe, beforeEach, afterEach } from 'vitest'
 import { DateTime } from 'luxon'
 import type { ApiClient } from '../../generated/red-client'
-import { blankRfcCommon, isAprilFoolsRfc, parseRFCId } from './rfc'
+import { blankRfcCommon, isAprilFoolsRfc, parseSeriesId } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import {
   formatDatePublished,
@@ -10,19 +10,18 @@ import {
 } from './rfc-converters-utils'
 
 test('parseRFCId', () => {
-  expect(parseRFCId('rfc1234')).toEqual({
-    type: 'RFC',
+  expect(parseSeriesId('rfc1234')).toEqual({
+    type: 'rfc',
     number: '1234'
   })
 
-  expect(parseRFCId('rfc1234bub')).toEqual({
-    type: 'RFC',
+  expect(parseSeriesId('rfc1234bub')).toEqual({
+    type: 'rfc',
     number: '1234',
-    title: 'bub'
   })
 
-  expect(parseRFCId(`rfc${NONBREAKING_SPACE}1234`)).toEqual({
-    type: 'RFC',
+  expect(parseSeriesId(`rfc${NONBREAKING_SPACE}1234`)).toEqual({
+    type: 'rfc',
     number: '1234'
   })
 })

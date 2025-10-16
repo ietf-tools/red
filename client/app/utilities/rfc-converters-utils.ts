@@ -2,7 +2,7 @@ import { range } from 'lodash-es'
 import { DateTime } from 'luxon'
 import type { z } from 'zod'
 import type { Rfc, RfcMetadata } from '../../generated/red-client'
-import { parseRFCId } from './rfc'
+import { parseSeriesId } from './rfc'
 import type { RfcCommon } from './rfc'
 import type { RFCJSON } from './rfc-validators'
 import { NONBREAKING_SPACE } from './strings'
@@ -186,9 +186,9 @@ export const parseRfcFormat = (
 /**
  * Formats a string of 'RFCnumber' as plain text with an NBSP between
  */
-export const formatTitlePlaintext = (title: string) => {
-  const parts = parseRFCId(title)
-
+export const formatTitlePlaintext = (title: string): string => {
+  const parts = parseSeriesId(title)
+  if (!parts) return ''
   return `${parts.type}${NONBREAKING_SPACE}${parts.number}`
 }
 

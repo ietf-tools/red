@@ -28,6 +28,8 @@ export const subseriesCommonType: Record<
   }
 }
 
+export const RFC_TYPE_RFC = 'rfc' as const
+
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
 
 type RfcCommonSubserie = { name: string; acronym: RfcCommonSubseriesType }
@@ -35,6 +37,8 @@ type RfcCommonSubserie = { name: string; acronym: RfcCommonSubseriesType }
 export type RfcCommonSubseriesType = z.infer<
   typeof RfcCommonSubseriesTypeSchema
 >
+
+export type SeriesType = 'rfc' | RfcCommonSubseriesType
 
 export type RfcCommonStatus = z.infer<typeof RfcCommonStatusSchema>
 
@@ -68,19 +72,19 @@ export const blankRfcCommon: RfcCommon = {
   text: ''
 }
 
-export type RFCId = {
-  type: string | typeof RFC_TYPE_RFC
+export type SeriesId = {
+  type: SeriesType
   number: string
-  title?: string
 }
 
-export const RFC_TYPE_RFC = 'RFC'
-
-export const parseRFCId = (title: string): RFCId => {
+/**
+ * Parses a string like 'RFC100' or 'bcp4' into its constituent parts
+ */
+export const parseSeriesId = (maybeSeriesId: string): SeriesId | undefined => {
   // split by groups of letters or numbers
   // ie "RFC0000" becomes ["RFC", "0000"]
   // or "RFC0000BUB" becomes ["RFC", "0000", "BUB"]
-  const parts = title
+  const parts = maybeSeriesId
     .replace(
       // remove whitespace including non-breaking-space
       /\s/g,
@@ -88,31 +92,28 @@ export const parseRFCId = (title: string): RFCId => {
     )
     .match(/\d+|\D+/g)
 
-  if (parts?.length === 2) {
-    if (typeof parts[1] !== 'string') {
-      throw Error(`Failed to parse RFC. Was ${typeof parts[1]}`)
+  if (parts && parts.length >= 2) {
+    const [partType, partNumber] = parts
+    if (partNumber === undefined) {
+      return undefined
     }
-    return {
-      type: parts[0].toUpperCase(),
-      number: parseInt(parts[1], 10).toString()
+
+    const number = parseInt(partNumber, 10).toString()
+    const partTypeLowerCase = partType.toLowerCase()
+
+    switch (partTypeLowerCase) {
+      case 'rfc':
+      case 'bcp':
+      case 'fyi':
+      case 'std':
+        return {
+          type: partTypeLowerCase,
+          number
+        }
     }
   }
 
-  if (parts?.length === 3) {
-    if (typeof parts[1] !== 'string') {
-      throw Error(`Failed to parse RFC. Was ${typeof parts[1]}`)
-    }
-    return {
-      type: parts[0].toUpperCase(),
-      number: parseInt(parts[1], 10).toString(),
-      title: parts[2]
-    }
-  }
-
-  return {
-    type: 'unknown',
-    number: title
-  }
+  return undefined
 }
 
 export const getRfcPillText = (rfc: RfcCommon): string[] => {
@@ -128,10 +129,14 @@ export const getRfcPillText = (rfc: RfcCommon): string[] => {
  * Returns h() Component for rendering
  */
 export const formatTitleAsVNode = (rfcId: string): VNode => {
-  const parts = parseRFCId(rfcId)
+  const parts = parseSeriesId(rfcId)
+
+  if (parts === undefined) {
+    return h('span')
+  }
 
   return h('span', [
-    h('span', { class: 'font-normal' }, parts.type),
+    h('span', { class: 'font-normal' }, parts.type.toUpperCase()),
     NONBREAKING_SPACE,
     h('span', { class: 'font-bold' }, parts.number)
   ])

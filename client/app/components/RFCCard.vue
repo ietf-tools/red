@@ -1,5 +1,5 @@
 <template>
-  <Card :href="infoRfcPathBuilder(`RFC${props.rfc.number}`)" :heading-level="props.headingLevel" has-cover-link
+  <Card :href="infoSeriesPathBuilder(`RFC${props.rfc.number}`)" :heading-level="props.headingLevel" has-cover-link
     :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ? 'center' : 'end'"
     :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''" :aside-slot-class="props.showAbstract && props.rfc.abstract ?
@@ -10,7 +10,7 @@
       <component :is="formattedTitle" />
     </template>
     <template #afterHeadingTitle>
-      <RFCCardSubseries :rfc="props.rfc" />
+      <RFCTitleSubseries :rfc="props.rfc" />
     </template>
     <template #default>
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { infoRfcPathBuilder } from '../utilities/url'
+import { infoSeriesPathBuilder } from '../utilities/url'
 import { formatTitleAsVNode } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc'
 import { useResponsiveModeStore } from '~/stores/responsiveMode'

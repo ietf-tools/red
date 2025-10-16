@@ -1,40 +1,26 @@
 <template>
   <div class="flex flex-col">
-    <Breadcrumbs
-      :breadcrumb-items="breadcrumbItems"
-      class="flex-1"
-    />
+    <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
     <RFCDocumentMobileInfoButton @click="isModalOpen = true">Info</RFCDocumentMobileInfoButton>
   </div>
 
-  <Heading
-    level="1"
-    class="mb-2 pl-2 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
-  >
+  <Heading level="1"
+    class="mb-2 pl-2 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center">
     <component :is="formattedTitle" />
     <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" />
   </Heading>
 
-  <Heading
-    level="2"
-    class="mb-2 pl-2 xs:px-0 print:text-center"
-  >
+  <Heading level="2" class="mb-2 pl-2 xs:px-0 print:text-center">
     {{ props.rfcBucketHtmlDocument.rfc.title }}
 
-    <span
-      v-if="isAprilFool"
-      class="inline pr-2"
-    >
+    <span v-if="isAprilFool" class="inline pr-2">
       <AprilFools />
     </span>
   </Heading>
 
   <ul class="block ml-2 print:text-center">
-    <li
-      v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
-      :key="authorIndex"
-      class="inline-block"
-    >
+    <li v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors" :key="authorIndex"
+      class="inline-block">
       <span>
         {{ author.name }}
       </span>
@@ -48,18 +34,12 @@
 
   <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
-  <Alert
-    v-if="props.rfcBucketHtmlDocument.rfc.obsoleted_by?.length"
-    variant="warning"
-    heading="This RFC is now obsolete"
-  >
+  <Alert v-if="props.rfcBucketHtmlDocument.rfc.obsoleted_by?.length" variant="warning"
+    heading="This RFC is now obsolete">
     <div class="text-base">
       For more information, please refer to
       <ul>
-        <li
-          v-for="(obsoletedByItem, obsoletedByItemIndex) in obsoletedBy"
-          :key="obsoletedByItemIndex"
-        >
+        <li v-for="(obsoletedByItem, obsoletedByItemIndex) in obsoletedBy" :key="obsoletedByItemIndex">
           <A :href="obsoletedByItem.href">
             <component :is="obsoletedByItem.formattedTitle" />
           </A>
@@ -75,10 +55,7 @@
     <component :is="enrichedDocument" />
   </div>
 
-  <RFCMobileBanner
-    :rfc="rfcBucketHtmlDocument.rfc"
-    :is-fixed="true"
-  />
+  <RFCMobileBanner :rfc="rfcBucketHtmlDocument.rfc" :is-fixed="true" />
 </template>
 
 <script setup lang="ts">
@@ -93,9 +70,9 @@ import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import {
   formatTitleAsVNode,
   isAprilFoolsRfc,
-  parseRFCId,
+  parseSeriesId,
 } from '~/utilities/rfc'
-import { infoRfcPathBuilder } from '~/utilities/url'
+import { infoSeriesPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { nodePojoWalker } from '~/utilities/dom'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
@@ -113,12 +90,12 @@ const props = defineProps<Props>()
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
 
-const rfcId = computed(() => parseRFCId(`rfc${props.rfcBucketHtmlDocument.rfc.number}`))
+const rfcId = computed(() => parseSeriesId(`rfc${props.rfcBucketHtmlDocument.rfc.number}`))
 
-const formattedTitle = computed(() => formatTitleAsVNode(`${rfcId.value.type}${rfcId.value.number}`))
+const formattedTitle = computed(() => rfcId.value ? formatTitleAsVNode(`${rfcId.value.type}${rfcId.value.number}`) : h('span'))
 
 const obsoletedBy = computed(() => props.rfcBucketHtmlDocument.rfc.obsoleted_by?.map(obsoletedByItem => ({
-  href: infoRfcPathBuilder(`RFC${obsoletedByItem.number}`),
+  href: infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`),
   formattedTitle: h('span', [
     formatTitleAsVNode(`RFC${obsoletedByItem.number}`),
     ' ',

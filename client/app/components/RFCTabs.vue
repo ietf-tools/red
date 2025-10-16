@@ -70,7 +70,7 @@
           <dt class="font-bold mt-2">Updates ({{ props.rfcBucketHtmlDocument.rfc.updates.length }})</dt>
           <dd>
             <span v-for="(update, updateIndex) in props.rfcBucketHtmlDocument.rfc.updates" :key="updateIndex">
-              <RFCRouterLink :href="infoRfcPathBuilder(`rfc${update.number}`)">
+              <RFCRouterLink :href="infoSeriesPathBuilder(`rfc${update.number}`)">
                 <component :is="formattedTitle" />:
                 {{ update.title }}
               </RFCRouterLink>
@@ -218,7 +218,7 @@ import { formatTitleAsVNode } from '~/utilities/rfc'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { areaGroupUrlBuilder, infoRfcPathBuilder, mailToBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
+import { areaGroupUrlBuilder, infoSeriesPathBuilder, mailToBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 
 type Props = {

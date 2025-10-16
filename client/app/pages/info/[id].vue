@@ -1,16 +1,22 @@
 <template>
   <div class="min-h-[100vh]">
     <NuxtLayout name="white">
-      <template v-if="rfcId.type === 'RFC'">
-        <RFCDocument :rfc-id="rfcId" />
+      <template #subheader>
+        <template v-if="seriesId.type === 'bcp' || seriesId.type === 'fyi' || seriesId.type === 'std'">
+          <SectionHeader>
+            <Heading level="1" class="ml-6 pb-6">{{ seriesId.type.toUpperCase() }}{{ seriesId.number }}</Heading>
+          </SectionHeader>
+        </template>
+      </template>
+      <template v-if="seriesId.type === 'rfc'">
+        <RFCDocument :rfc-id="seriesId" />
+      </template>
+      <template v-if="seriesId.type === 'bcp' || seriesId.type === 'fyi' || seriesId.type === 'std'">
+        <SubseriesDocument :subseries-id="seriesId" />
       </template>
       <template v-else>
         <div class="container mx-auto">
-          <Alert
-            level="1"
-            variant="warning"
-            heading="Error"
-          >
+          <Alert level="1" variant="warning" heading="Error">
             Unsupported {{ paramsId }}
           </Alert>
         </div>
@@ -20,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { parseRFCId } from '~/utilities/rfc'
+import { parseSeriesId, type SeriesId } from '~/utilities/rfc'
 
 const route = useRoute()
 const paramsId = route.params.id
@@ -33,10 +39,12 @@ if (paramsId === undefined) {
   })
 }
 
-const rfcId = parseRFCId(paramsId.toString())
+const seriesId = parseSeriesId(paramsId.toString())
 
-if (rfcId.type !== 'RFC') {
-  console.error(`Unsupported info param of ${paramsId}`)
+const supportedTypes: SeriesId["type"][] = ['rfc', 'bcp', 'fyi', 'std']
+
+if (!seriesId || !supportedTypes.includes(seriesId.type)) {
+  console.error(`Unsupported route param of ${paramsId}`)
   throw createError({
     statusCode: 404,
     statusMessage: `No ${paramsId} content found.`,

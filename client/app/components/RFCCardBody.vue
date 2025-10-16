@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon'
-import { infoRfcPathBuilder } from '../utilities/url'
+import { infoSeriesPathBuilder } from '../utilities/url'
 import { getRfcPillText, isAprilFoolsRfc, type RfcCommon } from '~/utilities/rfc'
 import { formatTitlePlaintext } from '~/utilities/rfc-converters-utils'
 
@@ -117,7 +117,7 @@ function formatObsoletedBy(
           h(
             'a',
             {
-              href: infoRfcPathBuilder(`rfc${obsoletedByItem.number}`),
+              href: infoSeriesPathBuilder(`rfc${obsoletedByItem.number}`),
               title: `${formatTitlePlaintext(`RFC${obsoletedByItem.number}`)}: ${obsoletedByItem.title}`,
               class: 'relative z-50 underline p-1 -m-1 hover:bg-gray-100'
             },

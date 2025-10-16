@@ -4,7 +4,7 @@ import type {
   ImagePreviewVerticalDimensions
 } from '../../shared/utils/meta-preview-images'
 import type { MarkdownValidHrefs } from '../../shared/utils/markdown-valid-hrefs'
-import { parseRFCId } from './rfc'
+import { parseSeriesId, type SeriesId } from './rfc'
 import type { RfcCommon } from './rfc-validators'
 import { assertNever } from './typescript'
 /**
@@ -31,7 +31,7 @@ export type ValidHrefs =
   | ReturnType<typeof searchPathBuilder>
   | ReturnType<typeof mailToBuilder>
   | ReturnType<typeof refsRefTxtPathBuilder>
-  | ReturnType<typeof infoRfcPathBuilder>
+  | ReturnType<typeof infoSeriesPathBuilder>
   | ReturnType<typeof rfcJSONPathBuilder>
   | ReturnType<typeof rfcPathBuilder>
   | ReturnType<typeof materialsTxtBuilder>
@@ -54,7 +54,8 @@ export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
 export const MATERIALS_URL_ORIGIN = 'https://materials.rfc-editor.org'
 export const IAD_URL_ORIGIN = 'https://iad.rfc-editor.org'
 export const DASHBOARD_URL_ORIGIN = 'https://dashboard.rfc-editor.org'
-export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN = 'https://authors.ietf.org'
+export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN =
+  'https://authors.ietf.org'
 
 export const RFC_EDITOR_ERRATA_SEARCH_URL =
   'https://errata.rfc-editor.org/search/'
@@ -149,18 +150,27 @@ export const searchPathBuilder = (
 }
 
 export const refsRefTxtPathBuilder = (rfcId: string) => {
-  const rfcParts = parseRFCId(rfcId)
-  return `/refs/ref${rfcParts.number}.txt` as const
+  const seriesId = parseSeriesId(rfcId)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
+  }
+  return `/refs/ref${seriesId.number}.txt` as const
 }
 
-export const infoRfcPathBuilder = (rfcId: string) => {
-  const rfcParts = parseRFCId(rfcId)
-  return `/info/${rfcParts.type.toLowerCase()}${rfcParts.number}/` as const
+export const infoSeriesPathBuilder = (rfcId: string) => {
+  const seriesId = parseSeriesId(rfcId)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
+  }
+  return `/info/${seriesId.type.toLowerCase()}${seriesId.number}/` as const
 }
 
 export const rfcJSONPathBuilder = (rfcId: string) => {
-  const rfcParts = parseRFCId(rfcId)
-  return `/api/v1/rfc/rfc${rfcParts.number}.json` as const
+  const seriesId = parseSeriesId(rfcId)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
+  }
+  return `/api/v1/rfc/rfc${seriesId.number}.json` as const
 }
 
 /**
@@ -174,8 +184,11 @@ export const rfcPathBuilder = (
   rfcId: string,
   sectionHash?: `section-${string}`
 ) => {
-  const rfcParts = parseRFCId(rfcId)
-  return `/rfc/${rfcParts.type.toLowerCase()}${rfcParts.number}/${sectionHash ? (`#${sectionHash}` as const) : ''}` as const
+  const seriesId = parseSeriesId(rfcId)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
+  }
+  return `/rfc/${seriesId.type.toLowerCase()}${seriesId.number}/${sectionHash ? (`#${sectionHash}` as const) : ''}` as const
 }
 
 export const materialsTxtBuilder = (txtFile: `${string}.txt`) => {
@@ -186,24 +199,30 @@ export const rfcCitePathBuilder = (
   rfcId: string,
   format: 'txt' | 'bibTeX' | 'xml'
 ) => {
-  const parsedRfcId = parseRFCId(rfcId)
-
+  const seriesId = parseSeriesId(rfcId)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
+  }
   switch (format) {
     case 'txt':
-      return `/refs/${parsedRfcId.type.toLowerCase()}${parsedRfcId.number}.txt` as const
+      return `/refs/${seriesId.type.toLowerCase()}${seriesId.number}.txt` as const
     case 'xml':
-      return `https://bib.ietf.org/public/rfc/bibxml/reference.${parsedRfcId.type.toUpperCase()}.${parsedRfcId.number}.xml` as const
+      return `https://bib.ietf.org/public/rfc/bibxml/reference.${seriesId.type.toUpperCase()}.${seriesId.number}.xml` as const
     case 'bibTeX':
-      return `https://datatracker.ietf.org/doc/${parsedRfcId.type.toLowerCase()}${parsedRfcId.number}/bibtex/` as const
+      return `https://datatracker.ietf.org/doc/${seriesId.type.toLowerCase()}${seriesId.number}/bibtex/` as const
   }
 }
 
 export const rfcFormatPathBuilder = (rfcId: string, format: 'html') => {
-  const parsedRfcId = parseRFCId(rfcId)
+  const seriesId = parseSeriesId(rfcId)
+
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}.`)
+  }
 
   switch (format) {
     case 'html':
-      return `/rfc/${parsedRfcId.type.toLowerCase()}${parsedRfcId.number}.html` as const
+      return `/rfc/${seriesId.type}${seriesId.number}.html` as const
   }
 }
 
@@ -229,6 +248,13 @@ export const mailToBuilder = (email: string) => {
 
 export const apiRfcBucketDocumentPathBuilder = (rfcNumber: number) => {
   return `/api/v1/rfc-html/${rfcNumber}.json` as const
+}
+
+export const apiSubseriesPathBuilder = (
+  seriesType: SeriesId['type'],
+  seriesNumber: SeriesId['number']
+) => {
+  return `/api/v1/info-subseries/${seriesType}${seriesNumber}.json` as const
 }
 
 const mailtoRegex = /^mailto:/
@@ -310,7 +336,9 @@ export const isRfcEditorSite = (href?: string): boolean => {
     return false
   }
   return (
-    href.startsWith(PUBLIC_SITE_URL_ORIGIN) || href.startsWith('/') || href.startsWith('#')
+    href.startsWith(PUBLIC_SITE_URL_ORIGIN) ||
+    href.startsWith('/') ||
+    href.startsWith('#')
   )
 }
 
@@ -318,7 +346,7 @@ const RFC_REGEX = /(rfc[0-9]+)/i
 
 export const parseMaybeRfcLink = (
   href?: string
-): undefined | ReturnType<typeof parseRFCId> => {
+): undefined | ReturnType<typeof parseSeriesId> => {
   if (!href) {
     return undefined
   }
@@ -341,7 +369,7 @@ export const parseMaybeRfcLink = (
   ) {
     const rfcMatch = href.match(RFC_REGEX)
     if (!rfcMatch) return undefined
-    return parseRFCId(rfcMatch[0])
+    return parseSeriesId(rfcMatch[0])
   }
   const hrefUrl = tryParseHrefRelativeToProd(href)
   if (!hrefUrl) {
@@ -351,7 +379,7 @@ export const parseMaybeRfcLink = (
   if (isRfcEditor) {
     const rfcMatch = hrefUrl.pathname.match(RFC_REGEX)
     if (!rfcMatch) return undefined
-    return parseRFCId(rfcMatch[0])
+    return parseSeriesId(rfcMatch[0])
   }
   return undefined
 }

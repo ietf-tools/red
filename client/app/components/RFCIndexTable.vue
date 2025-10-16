@@ -28,7 +28,7 @@
       >
         <td class="text-right align-top p-1">
           <A
-            :href="infoRfcPathBuilder(`rfc${rfcRow.number}`)"
+            :href="infoSeriesPathBuilder(`rfc${rfcRow.number}`)"
             class="font-mono"
           >
             {{ rfcRow.number }}
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { infoRfcPathBuilder } from '~/utilities/url'
+import { infoSeriesPathBuilder } from '~/utilities/url'
 
 type RfcRow = { number: number; information: VNode }
 

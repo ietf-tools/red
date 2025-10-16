@@ -10,6 +10,7 @@ export const uploadAllSubseries = async (
 ): Promise<boolean> => {
   const allSubseriesValidated = await renderAllSubseries(allSubseries)
   const logItems: string[] = []
+  console.log(` - subseries 0% (${allSubseriesValidated.length} files)`)
   for (let i = 0; i < allSubseriesValidated.length; i++) {
     const subseriesItem = allSubseriesValidated[i]
     const s3Path = subseriesInfoPathBuilder(subseriesItem.type, subseriesItem.number)
@@ -26,9 +27,10 @@ export const uploadAllSubseries = async (
           logText.push(logItem)
         }
       }
-      console.log(` - subseries ${logText.join(', ')}.`)
+      console.log(` - subseries ${Math.round( (i / allSubseriesValidated.length) * 100)}% ${logText.join(', ')}.`)
     }
   }
+
   console.log(` - subseries done (${allSubseriesValidated.length} files)`)
   return true
 }

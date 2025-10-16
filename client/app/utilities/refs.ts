@@ -2,7 +2,7 @@ import { DateTime } from 'luxon'
 import type { Rfc } from '../../generated/red-client'
 import { formatAuthor, formatIdentifiers } from './rfc-converters-utils'
 import { FIXME_getRFCWithMissingData } from './rfc.mocks'
-import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from './url'
+import { infoSeriesPathBuilder, PUBLIC_SITE_URL_ORIGIN } from './url'
 
 /**
  * Renders RFC summary txt. Eg.
@@ -13,5 +13,5 @@ import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from './url'
  */
 export const refsRefRfcIdTxt = (rfc: Rfc): string => {
   const rfcWithMissingData = FIXME_getRFCWithMissingData(rfc)
-  return `${rfcWithMissingData.authors.map((author) => formatAuthor(author, 'brief'))}, "${rfcWithMissingData.title}", RFC ${rfcWithMissingData.number}, ${formatIdentifiers(rfcWithMissingData.identifiers, ' ').join('')}, ${DateTime.fromISO(rfcWithMissingData.published).toFormat('LLLL yyyy')}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(`rfc${rfcWithMissingData.number}`)}>.\n`
+  return `${rfcWithMissingData.authors.map((author) => formatAuthor(author, 'brief'))}, "${rfcWithMissingData.title}", RFC ${rfcWithMissingData.number}, ${formatIdentifiers(rfcWithMissingData.identifiers, ' ').join('')}, ${DateTime.fromISO(rfcWithMissingData.published).toFormat('LLLL yyyy')}, <${PUBLIC_SITE_URL_ORIGIN}${infoSeriesPathBuilder(`rfc${rfcWithMissingData.number}`)}>.\n`
 }

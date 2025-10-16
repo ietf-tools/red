@@ -1,6 +1,6 @@
 <template>
   <Card
-    :href="infoRfcPathBuilder(`RFC${props.rfc.number}`)"
+    :href="infoSeriesPathBuilder(`RFC${props.rfc.number}`)"
     :heading-level="props.headingLevel"
     has-cover-link
     :chevron-position="
@@ -24,7 +24,7 @@
       <component :is="formatTitleAsVNode(`rfc${props.rfc.number}`)" />
     </template>
     <template #afterHeadingTitle>
-      <RFCCardSubseries :rfc="props.rfc" />
+      <RFCTitleSubseries :rfc="props.rfc" />
     </template>
     <template #default>
       <RFCCardBody
@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { infoRfcPathBuilder } from '../utilities/url'
+import { infoSeriesPathBuilder } from '../utilities/url'
 import { formatTitleAsVNode } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc'
 import { useResponsiveModeStore } from '~/stores/responsiveMode'

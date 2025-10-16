@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { infoRfcPathBuilder } from './url'
+import { infoSeriesPathBuilder } from './url'
 import { COMMA } from './strings'
 import { formatAuthor } from './rfc-converters-utils'
 import type { RfcCommon } from './rfc-validators'
@@ -49,7 +49,7 @@ export const rfcCommaList = (rfcs?: { number: number }[]) =>
       .map((rfc): VNode | string =>
         h(
           'a',
-          { href: infoRfcPathBuilder(`rfc${rfc.number}`) },
+          { href: infoSeriesPathBuilder(`rfc${rfc.number}`) },
           `RFC${rfc.number}`
         )
       )

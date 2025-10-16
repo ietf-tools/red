@@ -24,16 +24,16 @@ import { DateTime } from 'luxon'
 import { RfcBucketHtmlDocumentSchema } from '~/utilities/rfc-validators'
 import {
   apiRfcBucketDocumentPathBuilder,
-  infoRfcPathBuilder,
+  infoSeriesPathBuilder,
   rfcFormatPathBuilder,
   PUBLIC_SITE_URL_ORIGIN
 } from '~/utilities/url'
 import { useRfcEditorHead } from '~/utilities/head'
-import type { RFCId } from '~/utilities/rfc'
+import type { SeriesId } from '~/utilities/rfc'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 
 type Props = {
-  rfcId: RFCId
+  rfcId: SeriesId
 }
 
 const props = defineProps<Props>()
@@ -115,7 +115,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
 const isModalOpen = ref(false)
 
-const canonicalUrl = infoRfcPathBuilder(sanitisedId.value)
+const canonicalUrl = infoSeriesPathBuilder(sanitisedId.value)
 
 useRfcEditorHead({
   title: rfcBucketHtmlDocument.value?.rfc.title ?? '',

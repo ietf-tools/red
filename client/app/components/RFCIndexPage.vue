@@ -48,12 +48,12 @@
         </li>
         <li>
           The Status field gives the document's current status (see
-          <A :href="infoRfcPathBuilder('RFC2026')">RFC 2026</A> and
-          <A :href="infoRfcPathBuilder('RFC6410')">RFC 6410</A>).
+          <A :href="infoSeriesPathBuilder('RFC2026')">RFC 2026</A> and
+          <A :href="infoSeriesPathBuilder('RFC6410')">RFC 6410</A>).
         </li>
         <li>
           The Stream field gives the document's stream (see
-          <A :href="infoRfcPathBuilder('RFC4844')">RFC 4844</A>), followed by
+          <A :href="infoSeriesPathBuilder('RFC4844')">RFC 4844</A>), followed by
           Area and WG when relevant.
         </li>
         <li>The DOI field gives the Digital Object Identifier.</li>
@@ -77,7 +77,7 @@
 import { DateTime } from 'luxon'
 import { rfcToRfcIndexRow } from '~/utilities/rfc-index-html'
 import { RfcMiniIndexSchema } from '~/utilities/rfc-validators'
-import { API_RFC_MINI_INDEX_PATH, PUBLIC_SITE_URL_ORIGIN, infoRfcPathBuilder } from '~/utilities/url'
+import { API_RFC_MINI_INDEX_PATH, PUBLIC_SITE_URL_ORIGIN, infoSeriesPathBuilder } from '~/utilities/url'
 
 useSeoMeta({
   title: 'RFC Index'

@@ -9,7 +9,7 @@
 import { NuxtLink } from '#components'
 import { formatTitleAsVNode } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc-validators'
-import { infoRfcPathBuilder } from '~/utilities/url'
+import { infoSeriesPathBuilder } from '~/utilities/url'
 
 type Props = {
   rfc: RfcCommon
@@ -32,7 +32,7 @@ const formatSubseriesAsVNode = (
         h(
           NuxtLink,
           {
-            to: infoRfcPathBuilder(
+            to: infoSeriesPathBuilder(
               `${subseries.type.toLowerCase()}${subseries.number}`
             ),
             class:

@@ -1,5 +1,5 @@
 import type { Rfc } from '../../generated/red-client'
-import { parseRFCId } from './rfc'
+import { parseSeriesId } from './rfc'
 import type { RfcCommon } from './rfc'
 import type { RFCJSON } from './rfc-validators'
 import {
@@ -16,10 +16,15 @@ import type { TypeSenseSearchItem } from './typesense'
  * FIXME: this is losing details
  */
 export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
+  const seriesId = parseSeriesId(rfcJson.doc_id)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcJson.doc_id)}`)
+  }
   return {
-    number: parseInt(parseRFCId(rfcJson.doc_id).number, 10),
+    number: parseInt(seriesId.number, 10),
     title: rfcJson.title,
-    published: rfcJson.pub_date ? parseRfcJsonPubDateToISO(rfcJson.pub_date) : undefined,
+    published:
+      rfcJson.pub_date ? parseRfcJsonPubDateToISO(rfcJson.pub_date) : undefined,
     status: parseRfcStatusSlug(rfcJson.status),
     pages: rfcJson.page_count ? parseInt(rfcJson.page_count, 10) : undefined,
     authors: rfcJson.authors.map((authorName) => ({
@@ -49,52 +54,67 @@ export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
       : [],
     obsoletes: rfcJson.obsoletes.map(
       (obsolete): NonNullable<Rfc['obsoletes']>[number] => {
-        const rfcId = parseRFCId(obsolete)
+        const obsoleteSeriesId = parseSeriesId(obsolete)
+        if (!obsoleteSeriesId) {
+          throw Error(`Unable to parse ${JSON.stringify(obsolete)}`)
+        }
         return {
           id: 0,
-          number: parseInt(rfcId.number, 10),
+          number: parseInt(obsoleteSeriesId.number, 10),
           title: obsolete
         }
       }
     ),
     obsoleted_by: rfcJson.obsoleted_by.map(
       (obsoleted_by_item): NonNullable<Rfc['obsoleted_by']>[number] => {
-        const rfcId = parseRFCId(obsoleted_by_item)
+        const obsoletedBySeriesId = parseSeriesId(obsoleted_by_item)
+        if (!obsoletedBySeriesId) {
+          throw Error(`Unable to parse ${JSON.stringify(obsoleted_by_item)}`)
+        }
         return {
           id: 0,
-          number: parseInt(rfcId.number, 10),
+          number: parseInt(obsoletedBySeriesId.number, 10),
           title: obsoleted_by_item
         }
       }
     ),
     updates: rfcJson.updates.map(
       (update): NonNullable<Rfc['updates']>[number] => {
-        const rfcId = parseRFCId(update)
+        const updateSeriesId = parseSeriesId(update)
+        if (!updateSeriesId) {
+          throw Error(`Unable to parse ${JSON.stringify(update)}`)
+        }
         return {
           id: 0,
-          number: parseInt(rfcId.number, 10),
+          number: parseInt(updateSeriesId.number, 10),
           title: update
         }
       }
     ),
     updated_by: rfcJson.updated_by.map(
       (updated_by_item): NonNullable<Rfc['updated_by']>[number] => {
-        const rfcId = parseRFCId(updated_by_item)
+        const updatedBySeriesId = parseSeriesId(updated_by_item)
+        if (!updatedBySeriesId) {
+          throw Error(`Unable to parse ${JSON.stringify(updated_by_item)}`)
+        }
         return {
           id: 0,
-          number: parseInt(rfcId.number, 10),
+          number: parseInt(updatedBySeriesId.number, 10),
           title: updated_by_item
         }
       }
     ),
     is_also: undefined,
     see_also: rfcJson.see_also,
-    draft: rfcJson.draft ? {
-      id: 0,
-      number: parseFloat(rfcJson.draft),
-      title: rfcJson.draft,
-      slug: rfcJson.draft
-    } : undefined,
+    draft:
+      rfcJson.draft ?
+        {
+          id: 0,
+          number: parseFloat(rfcJson.draft),
+          title: rfcJson.draft,
+          slug: rfcJson.draft
+        }
+      : undefined,
     abstract: rfcJson.abstract ?? undefined,
     formats: rfcJson.format.map(parseRfcFormat),
     keywords: rfcJson.keywords,
