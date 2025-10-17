@@ -5,10 +5,12 @@
     <span class="mt-3">No RFCs match your search query and active filters.</span>
     <ais-refinement-list attribute="flags.obsoleted">
       <template #default="{ items, refine }">
-        <div v-for="item in items" class="mt-3 text-center leading-7">
+        <div v-for="(item, index) in items" :key="index" class="mt-3 text-center leading-7">
           Didn't find what you were looking for?<br />
           The <b>hide obsoleted</b> filter is active which may hide results.<br />
-          <button type="button" @click="refine(item.value)" class="mt-1 border-1 px-2 py-1 border-black dark:border-white cursor-pointer hover:bg-gray-300 focus:bg-gray-300 dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+          <button type="button"
+            class="mt-1 border-1 px-2 py-1 border-black dark:border-white cursor-pointer hover:bg-gray-300 focus:bg-gray-300 dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+            @click="refine(item.value)">
             Show obsoleted
           </button>
         </div>
