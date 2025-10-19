@@ -1,127 +1,7 @@
-import type { Rfc } from '../../generated/red-client'
-import { parseSeriesId } from './rfc'
+import type { z } from 'zod'
 import type { RfcCommon } from './rfc'
-import type { RFCJSON } from './rfc-validators'
-import {
-  parseRfcFormat,
-  parseRfcJsonPubDateToISO,
-  parseTypeSenseSubseries
-} from './rfc-converters-utils'
-import { parseRfcStatusSlug, parseRfcStreamSlug } from './rfc-converter-parse'
 import { TypeSenseSearchItemSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
-
-/**
- * Converts between types of RFC data
- * FIXME: this is losing details
- */
-export const rfcJSONToRfcCommon = (rfcJson: RFCJSON): RfcCommon => {
-  const seriesId = parseSeriesId(rfcJson.doc_id)
-  if (!seriesId) {
-    throw Error(`Unable to parse ${JSON.stringify(rfcJson.doc_id)}`)
-  }
-  return {
-    number: parseInt(seriesId.number, 10),
-    title: rfcJson.title,
-    published:
-      rfcJson.pub_date ? parseRfcJsonPubDateToISO(rfcJson.pub_date) : undefined,
-    status: parseRfcStatusSlug(rfcJson.status),
-    pages: rfcJson.page_count ? parseInt(rfcJson.page_count, 10) : undefined,
-    authors: rfcJson.authors.map((authorName) => ({
-      person: 0,
-      name: authorName
-    })),
-    group: {
-      acronym: rfcJson.source,
-      name: rfcJson.source
-    },
-    area: {
-      name: rfcJson.source,
-      acronym: rfcJson.source
-    },
-    stream: {
-      slug: parseRfcStreamSlug(rfcJson.source),
-      name: rfcJson.source
-    },
-    identifiers:
-      rfcJson.doi ?
-        [
-          {
-            type: 'doi',
-            value: rfcJson.doi
-          }
-        ]
-      : [],
-    obsoletes: rfcJson.obsoletes.map(
-      (obsolete): NonNullable<Rfc['obsoletes']>[number] => {
-        const obsoleteSeriesId = parseSeriesId(obsolete)
-        if (!obsoleteSeriesId) {
-          throw Error(`Unable to parse ${JSON.stringify(obsolete)}`)
-        }
-        return {
-          id: 0,
-          number: parseInt(obsoleteSeriesId.number, 10),
-          title: obsolete
-        }
-      }
-    ),
-    obsoleted_by: rfcJson.obsoleted_by.map(
-      (obsoleted_by_item): NonNullable<Rfc['obsoleted_by']>[number] => {
-        const obsoletedBySeriesId = parseSeriesId(obsoleted_by_item)
-        if (!obsoletedBySeriesId) {
-          throw Error(`Unable to parse ${JSON.stringify(obsoleted_by_item)}`)
-        }
-        return {
-          id: 0,
-          number: parseInt(obsoletedBySeriesId.number, 10),
-          title: obsoleted_by_item
-        }
-      }
-    ),
-    updates: rfcJson.updates.map(
-      (update): NonNullable<Rfc['updates']>[number] => {
-        const updateSeriesId = parseSeriesId(update)
-        if (!updateSeriesId) {
-          throw Error(`Unable to parse ${JSON.stringify(update)}`)
-        }
-        return {
-          id: 0,
-          number: parseInt(updateSeriesId.number, 10),
-          title: update
-        }
-      }
-    ),
-    updated_by: rfcJson.updated_by.map(
-      (updated_by_item): NonNullable<Rfc['updated_by']>[number] => {
-        const updatedBySeriesId = parseSeriesId(updated_by_item)
-        if (!updatedBySeriesId) {
-          throw Error(`Unable to parse ${JSON.stringify(updated_by_item)}`)
-        }
-        return {
-          id: 0,
-          number: parseInt(updatedBySeriesId.number, 10),
-          title: updated_by_item
-        }
-      }
-    ),
-    is_also: undefined,
-    see_also: rfcJson.see_also,
-    draft:
-      rfcJson.draft ?
-        {
-          id: 0,
-          number: parseFloat(rfcJson.draft),
-          title: rfcJson.draft,
-          slug: rfcJson.draft
-        }
-      : undefined,
-    abstract: rfcJson.abstract ?? undefined,
-    formats: rfcJson.format.map(parseRfcFormat),
-    keywords: rfcJson.keywords,
-    errata: [],
-    text: ''
-  }
-}
 
 export const typeSenseSearchItemToRFCCommon = (
   unverifiedTypeSenseSearchItem: TypeSenseSearchItem
@@ -132,6 +12,126 @@ export const typeSenseSearchItemToRFCCommon = (
   if (result.error) {
     console.error(result.error.toString())
     throw Error(result.error.toString())
+  }
+
+  const parseTypeSenseSubseries = (
+    item: z.infer<typeof TypeSenseSearchItemSchema>
+  ): RfcCommon['subseries'] => {
+    if (item.subseries?.acronym) {
+      return [
+        {
+          type: item.subseries?.acronym,
+          number: item.subseries?.number,
+          subseriesLength: item.subseries?.total
+        }
+      ]
+    }
+    return undefined
+  }
+
+  const parseTypesenseStatusSlug = (
+    rfcStatusSlug?: string
+  ): RfcCommon['status'] => {
+    const normalisedSlug = rfcStatusSlug?.toLowerCase().replace(/[^a-z]/g, '')
+
+    switch (normalisedSlug) {
+      case 'bestcurrentpractice':
+      case 'bcp':
+        return {
+          slug: 'bcp',
+          name: 'Best Current Practice'
+        }
+
+      case 'fyi':
+        return {
+          slug: 'fyi',
+          name: 'FYI'
+        }
+
+      case 'experimental':
+        return {
+          slug: 'experimental',
+          name: 'Experimental'
+        }
+
+      case 'his':
+      case 'historic':
+        return {
+          slug: 'his',
+          name: 'Historic'
+        }
+
+      case 'informational':
+        return {
+          slug: 'informational',
+          name: 'Informational'
+        }
+
+      case 'notissued':
+        return {
+          slug: 'not-issued',
+          name: 'Not Issued'
+        }
+
+      case 'internetstandard':
+      case 'standard':
+      case 'standardstrack':
+      case 'std':
+        return {
+          slug: 'standard',
+          name: 'Internet Standard'
+        }
+
+      case 'unknown':
+        return {
+          slug: 'unknown',
+          name: 'Unknown'
+        }
+
+      case 'ps':
+      case 'proposedstandard':
+      case 'proposed':
+        return {
+          slug: 'ps',
+          name: 'Proposed Standard'
+        }
+
+      case 'draftstandard':
+      case 'draft':
+        return {
+          slug: 'draft',
+          name: 'Draft Standard'
+        }
+    }
+
+    throw Error(
+      `Unable to parse status slug "${rfcStatusSlug}" (normalized as "${normalisedSlug}").`
+    )
+  }
+
+  const parseTypesenseStreamSlug = (
+    streamSlug?: string
+  ): RfcCommon['stream']['slug'] => {
+    if (!streamSlug) {
+      return 'Legacy'
+    }
+    switch (streamSlug.toLowerCase()) {
+      case 'ietf':
+        return 'IETF'
+      case 'iab':
+        return 'IAB'
+      case 'irtf':
+        return 'IRTF'
+      case 'ise':
+      case 'independent':
+        return 'INDEPENDENT'
+      case 'editorial':
+        return 'Editorial'
+      case 'legacy':
+        return 'Legacy'
+    }
+
+    throw Error(`Unable to parse stream slug "${streamSlug}"`)
   }
 
   const item = result.data
@@ -161,9 +161,9 @@ export const typeSenseSearchItemToRFCCommon = (
     number: item.rfcNumber,
     published,
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,
-    status: parseRfcStatusSlug(item.status?.name),
+    status: parseTypesenseStatusSlug(item.status?.name),
     stream: {
-      slug: parseRfcStreamSlug(item.stream?.slug),
+      slug: parseTypesenseStreamSlug(item.stream?.slug),
       name: item.stream?.name || 'unknown'
     },
     text: '',

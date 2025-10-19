@@ -32,7 +32,7 @@ export type ValidHrefs =
   | ReturnType<typeof mailToBuilder>
   | ReturnType<typeof refsRefTxtPathBuilder>
   | ReturnType<typeof infoSeriesPathBuilder>
-  | ReturnType<typeof rfcJSONPathBuilder>
+  | ReturnType<typeof rfcCommonPathBuilder>
   | ReturnType<typeof rfcPathBuilder>
   | ReturnType<typeof materialsTxtBuilder>
   | ReturnType<typeof rfcFormatPathBuilder>
@@ -165,12 +165,12 @@ export const infoSeriesPathBuilder = (rfcId: string) => {
   return `/info/${seriesId.type.toLowerCase()}${seriesId.number}/` as const
 }
 
-export const rfcJSONPathBuilder = (rfcId: string) => {
+export const rfcCommonPathBuilder = (rfcId: string) => {
   const seriesId = parseSeriesId(rfcId)
   if (!seriesId) {
     throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
   }
-  return `/api/v1/rfc/rfc${seriesId.number}.json` as const
+  return `/api/v1/rfc-common/${seriesId.number}.json` as const
 }
 
 /**

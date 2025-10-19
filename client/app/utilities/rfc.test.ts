@@ -1,13 +1,10 @@
 // @vitest-environment nuxt
-import { vi, test, expect, describe, beforeEach, afterEach } from 'vitest'
+import { test, expect } from 'vitest'
 import { DateTime } from 'luxon'
 import type { ApiClient } from '../../generated/red-client'
 import { blankRfcCommon, isAprilFoolsRfc, parseSeriesId } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
-import {
-  formatDatePublished,
-  parseRfcJsonPubDateToISO
-} from './rfc-converters-utils'
+import { formatDatePublished } from './rfc-converters-utils'
 
 test('parseRFCId', () => {
   expect(parseSeriesId('rfc1234')).toEqual({
@@ -17,7 +14,7 @@ test('parseRFCId', () => {
 
   expect(parseSeriesId('rfc1234bub')).toEqual({
     type: 'rfc',
-    number: '1234',
+    number: '1234'
   })
 
   expect(parseSeriesId(`rfc${NONBREAKING_SPACE}1234`)).toEqual({
@@ -63,35 +60,4 @@ test('isAprilFoolsRfc', () => {
     acronym: 'ietf'
   }
   expect(isAprilFoolsRfc(notAprilFoolsRfc2)).toBeFalsy()
-})
-
-describe('parseRfcJsonPubDateToISO', () => {
-  beforeEach(() => {
-    // tell vitest we use mocked time
-    vi.useFakeTimers({ shouldAdvanceTime: true })
-  })
-
-  afterEach(() => {
-    // restoring date after each test run
-    vi.useRealTimers()
-  })
-
-  test('parseRfcJsonPubDateToISO', () => {
-    const date = new Date(2025, 0, 14)
-    vi.setSystemTime(date)
-
-    expect(parseRfcJsonPubDateToISO('January 2025')).toBe(
-      '2025-01-01T00:00:00.000+00:00'
-    )
-    expect(parseRfcJsonPubDateToISO('1 January 2025')).toBe(
-      '2025-01-01T00:00:00.000+00:00'
-    )
-
-    expect(parseRfcJsonPubDateToISO('1 April 2025')).toBe(
-      '2025-04-01T00:00:00.000+00:00'
-    )
-    expect(parseRfcJsonPubDateToISO('April 2025')).toBe(
-      '2025-04-01T00:00:00.000+00:00'
-    )
-  })
 })

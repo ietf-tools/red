@@ -7,9 +7,10 @@ import {
   saveToS3
 } from '../utilities/s3.ts'
 import { getRfcCommonCached } from '../utilities/redClientGet.ts'
-import { rfcToRfcJson } from '../utilities/rfc-converters.ts'
-import { RfcCommonSchema, RfcJsonSchema } from '../../../client/app/utilities/rfc-validators.ts'
+import { rfcToRfcJson } from '../utilities/rfc-json.ts'
+import { RfcCommonSchema } from '../../../client/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
+import { RfcJsonSchema } from '../utilities/rfc-json.ts'
 
 export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
   const result = await Promise.all([

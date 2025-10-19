@@ -7,7 +7,6 @@ on:
       - rfc-html-extractor/package.json
       - rfc-html-extractor/Dockerfile
       - client/app/utilities/rfc-validators.ts
-      - client/app/utilities/rfc-converter-parse.ts
   workflow_dispatch:
 
 jobs:

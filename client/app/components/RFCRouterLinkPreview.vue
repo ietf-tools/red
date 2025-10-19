@@ -1,54 +1,28 @@
 <template>
-  <GraphicsIETFMotif
-    class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden"
-    :opacity="0.04"
-  />
+  <GraphicsIETFMotif class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden" :opacity="0.04" />
   <p class="text-base text-blue-900 dark:text-white font-bold leading-5">
-    {{ props.rfcJson.title }}
+    {{ props.rfc.title }}
   </p>
   <div class="pt-1">
-    <Tag
-      size="small"
-      :text="tagText"
-    />
+    <Tag size="small" :text="tagText" />
   </div>
   <p class="leading-5 pt-2 text-xs text-pretty">
-    {{ props.rfcJson.abstract }}
+    {{ props.rfc.abstract }}
   </p>
-  <ul
-    v-if="list1"
-    class="text-base text-blue-900 dark:text-white"
-  >
-    <li
-      v-for="(part, index) in list1"
-      :key="index"
-      class="inline"
-    >
+  <ul v-if="list1" class="text-base text-blue-900 dark:text-white">
+    <li v-for="(part, index) in list1" :key="index" class="inline">
       <GraphicsDiamond v-if="index > 0" />{{ part }}
     </li>
   </ul>
-  <ul
-    v-if="list2"
-    class="text-base text-gray-800 mt-1 dark:text-white"
-  >
-    <li
-      v-for="(part, index) in list2"
-      :key="index"
-      class="inline"
-    >
-      <GraphicsDiamond
-        v-if="index > 0"
-        class="align-middle"
-      />{{ part }}
+  <ul v-if="list2" class="text-base text-gray-800 mt-1 dark:text-white">
+    <li v-for="(part, index) in list2" :key="index" class="inline">
+      <GraphicsDiamond v-if="index > 0" class="align-middle" />{{ part }}
     </li>
   </ul>
-  <p
-    v-if="obsoletedBy"
-    :class="[
-      'text-red-700 dark:text-red-300 text-base print:text-black',
-      { 'mt-2': isMobileAbstractOpen }
-    ]"
-  >
+  <p v-if="obsoletedBy" :class="[
+    'text-red-700 dark:text-red-300 text-base print:text-black',
+    { 'mt-2': isMobileAbstractOpen }
+  ]">
     <component :is="obsoletedBy" />
   </p>
 
@@ -61,10 +35,8 @@
   </p>
 
   <p class="clear-both text-right mt-6 mb-10">
-    <A
-      :href="rfcPathBuilder(props.rfcJson.doc_id)"
-      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6"
-    >
+    <A :href="rfcPathBuilder(`RFC${props.rfc.number}`)"
+      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6">
       <component :is="formattedTitle" />
       <GraphicsChevron class="ml-2 inline -rotate-90" />
     </A>
@@ -72,31 +44,29 @@
 </template>
 
 <script setup lang="ts">
-// TODO: Track preview analytics as it might siphon off visitors to RFCs
 import { DateTime } from 'luxon'
 import { infoSeriesPathBuilder, rfcPathBuilder } from '../utilities/url'
 import Anchor from './A.vue'
 import { formatTitleAsVNode } from '~/utilities/rfc'
-import type { RFCJSON } from '~/utilities/rfc-validators'
+import type { RfcCommon } from '~/utilities/rfc-validators'
 import {
   formatTitlePlaintext,
-  parseRfcJsonPubDateToISO
 } from '~/utilities/rfc-converters-utils'
 import { analyticsMatomoTrackLinkPreview } from '~/utilities/analytics-matomo'
 
 type Props = {
-  rfcJson: RFCJSON
+  rfc: RfcCommon
 }
 
 const props = defineProps<Props>()
 
 onMounted(() => {
-  analyticsMatomoTrackLinkPreview(props.rfcJson.doc_id)
+  analyticsMatomoTrackLinkPreview(`rfc${props.rfc.number}`)
 })
 
 const isMobileAbstractOpen = ref<boolean>(false)
 
-function formatAuthors(authors: RFCJSON['authors']): string {
+function formatAuthors(authors: RfcCommon['authors']): string {
   if (authors.length === 0) {
     return ''
   }
@@ -107,8 +77,8 @@ function formatAuthors(authors: RFCJSON['authors']): string {
   return authors.join(', ')
 }
 
-function formatStreamAndArea(rfc: RFCJSON): string[] {
-  return [rfc.source].filter(Boolean) as string[]
+function formatStreamAndArea(rfc: RfcCommon): string[] {
+  return [rfc.stream.name, rfc.area?.name].filter(Boolean) as string[]
 }
 
 function formatDate(isoDate: string | undefined): string | undefined {
@@ -118,9 +88,9 @@ function formatDate(isoDate: string | undefined): string | undefined {
 }
 
 function formatObsoletedBy(
-  rfcJson: RFCJSON
+  rfc: RfcCommon
 ): (() => VNode) | undefined {
-  const { obsoleted_by: obsoletedBy } = rfcJson
+  const { obsoleted_by: obsoletedBy } = rfc
 
   if (!obsoletedBy || obsoletedBy.length === 0) {
     return undefined
@@ -137,8 +107,8 @@ function formatObsoletedBy(
           h(
             Anchor,
             {
-              href: infoSeriesPathBuilder(obsoletedByItem),
-              title: `${formatTitlePlaintext(obsoletedByItem)}`,
+              href: infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`),
+              title: `${formatTitlePlaintext(obsoletedByItem.title)}`,
               class: 'relative underline p-1 -m-1 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-red-200'
             },
             [h('b', obsoletedByItem)]
@@ -147,32 +117,32 @@ function formatObsoletedBy(
 
         return acc
       },
-      [`${rfcJson.doc_id} obsoleted by `] as (string | VNode)[]
+      [`RFC ${rfc.number} obsoleted by `] as (string | VNode)[]
     )
   )
 }
 
-const formattedTitle = computed(() => formatTitleAsVNode(props.rfcJson.doc_id))
+const formattedTitle = computed(() => formatTitleAsVNode(`RFC${props.rfc.number}`))
 
 const obsoletedBy = computed(() =>
-  formatObsoletedBy(props.rfcJson)
+  formatObsoletedBy(props.rfc)
 )
 
 const list1 = computed(() => [
-  formatAuthors(props.rfcJson.authors),
-  formatDate(parseRfcJsonPubDateToISO(props.rfcJson.pub_date))
+  formatAuthors(props.rfc.authors),
+  formatDate(props.rfc.published)
 ])
 
-const list2 = computed(() => formatStreamAndArea(props.rfcJson))
+const list2 = computed(() => formatStreamAndArea(props.rfc))
 
 const tagText = computed(() => {
-  const pubDateIso = parseRfcJsonPubDateToISO(props.rfcJson.pub_date)
+  const pubDateIso = props.rfc.published
   if (!pubDateIso) return []
 
-  const tagText: (string | VNode)[] = [props.rfcJson.status]
+  const tagText: (string | VNode)[] = [props.rfc.status.name]
   const datetime = DateTime.fromISO(pubDateIso)
   const relativeCalendar = datetime.toRelativeCalendar()
-  const tooltip = `${props.rfcJson.pub_date} (${relativeCalendar})`
+  const tooltip = `${pubDateIso} (${relativeCalendar})`
   if (relativeCalendar) {
     tagText.push(
       h(

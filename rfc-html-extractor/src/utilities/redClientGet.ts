@@ -1,14 +1,5 @@
 import { ApiClient } from '../../../client/generated/red-client.ts'
-import {
-  parseRfcStatusSlug,
-  parseRfcStreamSlug,
-  parseSubseries,
-  parseSubseriesItemType
-} from '../../../client/app/utilities/rfc-converter-parse.ts'
-import type {
-  Rfc,
-  RfcMetadata,
-} from '../../../client/generated/red-client.ts'
+import type { Rfc, RfcMetadata } from '../../../client/generated/red-client.ts'
 import type {
   InfoSubseriesItem,
   RfcCommon
@@ -81,13 +72,13 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
     number: rfc.number,
     abstract: rfc.abstract,
     published: rfc.published,
-    status: parseRfcStatusSlug(rfc.status.slug),
+    status: parseStatusSlug(rfc.status.slug),
     pages: rfc.pages ?? undefined,
     authors: rfc.authors,
     group: rfc.group,
     area: rfc.area ?? undefined,
     stream: {
-      slug: parseRfcStreamSlug(rfc.stream.slug),
+      slug: parseStreamSlug(rfc.stream.slug),
       name: rfc.stream.name,
       description: rfc.stream.desc
     },
@@ -104,13 +95,13 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     number: rfcMetadata.number,
     abstract: rfcMetadata.abstract,
     published: rfcMetadata.published,
-    status: parseRfcStatusSlug(rfcMetadata.status.slug),
+    status: parseStatusSlug(rfcMetadata.status.slug),
     pages: rfcMetadata.pages ?? undefined,
     authors: rfcMetadata.authors,
     group: rfcMetadata.group,
     area: rfcMetadata.area,
     stream: {
-      slug: parseRfcStreamSlug(rfcMetadata.stream.slug),
+      slug: parseStreamSlug(rfcMetadata.stream.slug),
       name: rfcMetadata.stream.name,
       description: rfcMetadata.stream.desc
     },
@@ -270,4 +261,172 @@ export const sortInfoSubseriesItem = (
     return typeOrder
   }
   return a.number - b.number
+}
+
+export const parseStatusSlug = (rfcStatusSlug?: string): RfcCommon['status'] => {
+  const normalisedSlug = rfcStatusSlug?.toLowerCase().replace(/[^a-z]/g, '')
+
+  switch (normalisedSlug) {
+    case 'bestcurrentpractice':
+    case 'bcp':
+      return {
+        slug: 'bcp',
+        name: 'Best Current Practice'
+      }
+
+    case 'fyi':
+      return {
+        slug: 'fyi',
+        name: 'FYI'
+      }
+
+    case 'experimental':
+      return {
+        slug: 'experimental',
+        name: 'Experimental'
+      }
+
+    case 'his':
+    case 'historic':
+      return {
+        slug: 'his',
+        name: 'Historic'
+      }
+
+    case 'informational':
+      return {
+        slug: 'informational',
+        name: 'Informational'
+      }
+
+    case 'notissued':
+      return {
+        slug: 'not-issued',
+        name: 'Not Issued'
+      }
+
+    case 'internetstandard':
+    case 'standard':
+    case 'standardstrack':
+    case 'std':
+      return {
+        slug: 'standard',
+        name: 'Internet Standard'
+      }
+
+    case 'unknown':
+      return {
+        slug: 'unknown',
+        name: 'Unknown'
+      }
+
+    case 'ps':
+    case 'proposedstandard':
+    case 'proposed':
+      return {
+        slug: 'ps',
+        name: 'Proposed Standard'
+      }
+
+    case 'draftstandard':
+    case 'draft':
+      return {
+        slug: 'draft',
+        name: 'Draft Standard'
+      }
+  }
+
+  throw Error(
+    `Unable to parse status slug "${rfcStatusSlug}" (normalized as "${normalisedSlug}").`
+  )
+}
+
+const parseStreamSlug = (streamSlug?: string): RfcCommon['stream']['slug'] => {
+  if (!streamSlug) {
+    return 'Legacy'
+  }
+  switch (streamSlug.toLowerCase()) {
+    case 'ietf':
+      return 'IETF'
+    case 'iab':
+      return 'IAB'
+    case 'irtf':
+      return 'IRTF'
+    case 'ise':
+    case 'independent':
+      return 'INDEPENDENT'
+    case 'editorial':
+      return 'Editorial'
+    case 'legacy':
+      return 'Legacy'
+  }
+
+  throw Error(`Unable to parse stream slug "${streamSlug}"`)
+}
+
+type RfcCommonSubseriesItem = NonNullable<RfcCommon['subseries']>[number]
+
+const parseSubseries = (
+  subseries: Rfc['subseries']
+): RfcCommon['subseries'] => {
+  if (!subseries) return undefined
+
+  return subseries.map(
+    (subseriesItem): RfcCommonSubseriesItem => ({
+      type: parseSubseriesItemType(subseriesItem.type),
+      number: parseSubseriesItemName(subseriesItem.name)
+    })
+  )
+}
+
+export const parseSubseriesItemName = (
+  name: RfcSubseriesItem['name']
+): RfcCommonSubseriesItem['number'] => {
+  // name should look like "bcp123"
+  const nameParts = name
+    .replace(
+      // remove whitespace including non-breaking-space
+      /\s/g,
+      ''
+    )
+    .match(
+      // contiguous blocks of either letters or numbers
+      /\d+|\D+/g
+    )
+  if (nameParts === null) {
+    throw Error(`Unable to parse name ${JSON.stringify(name)} into parts`)
+  }
+  const potentialNumber = nameParts[1] // index 1 should be the number part
+  if (potentialNumber === undefined) {
+    throw Error(
+      `Unable to parse name ${JSON.stringify(
+        name
+      )} into part with number. Was: ${JSON.stringify(nameParts)}`
+    )
+  }
+  const num = parseFloat(potentialNumber)
+  if (Number.isNaN(num)) {
+    throw Error(
+      `Unable to parse API rfc subseries name ${JSON.stringify(
+        name
+      )} to extract a number`
+    )
+  }
+  return num
+}
+
+type RfcSubseriesItem = NonNullable<Rfc['subseries']>[number]
+
+const parseSubseriesItemType = (
+  type: RfcSubseriesItem['type']
+): RfcCommonSubseriesItem['type'] => {
+  switch (type) {
+    case 'bcp':
+      return 'bcp'
+    case 'fyi':
+      return 'fyi'
+    case 'std':
+      return 'std'
+  }
+  throw Error(`Unable to parse API rfc subseries type ${JSON.stringify(type)}`)
 }

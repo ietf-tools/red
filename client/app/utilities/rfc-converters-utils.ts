@@ -1,16 +1,11 @@
-import { range } from 'lodash-es'
-import { DateTime } from 'luxon'
-import type { z } from 'zod'
-import type { Rfc, RfcMetadata } from '../../generated/red-client'
+import type { DateTime } from 'luxon'
 import { parseSeriesId } from './rfc'
 import type { RfcCommon } from './rfc'
-import type { RFCJSON } from './rfc-validators'
 import { NONBREAKING_SPACE } from './strings'
-import { assertIsString, assertNever } from './typescript'
-import type { TypeSenseSearchItemSchema } from './typesense'
+import { assertNever } from './typescript'
 import type { RfcEditorToc } from './tableOfContents'
 
-type RfcMetadataAuthor = RfcCommon['authors'][number]
+type RfcAuthor = RfcCommon['authors'][number]
 
 /**
  * Formats author names into an initialised format.
@@ -23,7 +18,7 @@ type RfcMetadataAuthor = RfcCommon['authors'][number]
  *
  */
 export const formatAuthor = (
-  author: RfcMetadataAuthor,
+  author: RfcAuthor,
   style: 'regular' | 'brief' | 'reverse'
 ): string => {
   const name = author.name
@@ -66,7 +61,7 @@ export const formatAuthor = (
   return author.affiliation === 'Editor' ? `${name}, Ed.` : name
 }
 
-type UppercaseFormats = Uppercase<Rfc['formats'][number]> | 'ASCII'
+type UppercaseFormats = Uppercase<RfcCommon['formats'][number]> | 'ASCII'
 
 export const formatFormat = (
   format: string,
@@ -98,67 +93,6 @@ export const formatDatePublished = (
     return dt.toFormat('d LLLL yyyy')
   }
   return dt.toFormat('LLLL yyyy')
-}
-
-export const parseRfcJsonPubDateToISO = (
-  pub_date: RFCJSON['pub_date']
-): string | undefined => {
-  if (pub_date === null) {
-    return undefined
-  }
-  const parts = pub_date.split(/\s/g)
-  let day: number = 0
-  let month: number = 0
-  let year: number = 0
-  let dateISO: ReturnType<ReturnType<typeof DateTime.fromObject>['toISO']> =
-    null
-
-  if (parts.length === 3) {
-    // April first
-    assertIsString(parts[0])
-    assertIsString(parts[1])
-    assertIsString(parts[2])
-
-    day = parseInt(parts[0], 10)
-    month = parseMonthName(parts[1])
-    year = parseInt(parts[2], 10)
-    dateISO = DateTime.fromObject({ day, year, month }).toISO()
-  } else if (parts.length === 2) {
-    assertIsString(parts[0])
-    assertIsString(parts[1])
-
-    month = parseMonthName(parts[0])
-    year = parseInt(parts[1], 10)
-    dateISO = DateTime.fromObject({ year, month }).toISO()
-  }
-
-  if (!dateISO) {
-    throw Error(`Unable to parse date "${pub_date}"`)
-  }
-  return dateISO
-}
-
-/**
- * Returns 1-based index from month name
- */
-const parseMonthName = (monthName: string) => {
-  const monthsNames = range(1, 13).map((monthNumber) =>
-    DateTime.fromObject({
-      year: 2025,
-      month: monthNumber
-    }).toFormat('LLL')
-  )
-  for (let i = 0; i < monthsNames.length; i++) {
-    const monthsNameItem = monthsNames[i]
-    assertIsString(monthsNameItem)
-    if (
-      monthName.substring(0, monthsNameItem.length).toLowerCase() ===
-      monthsNameItem.toLowerCase()
-    ) {
-      return i + 1 // 1-based index
-    }
-  }
-  throw Error(`Unexpected monthName "${monthName}"`)
 }
 
 export const parseRfcFormat = (
@@ -193,7 +127,7 @@ export const formatTitlePlaintext = (title: string): string => {
 }
 
 export const formatIdentifiers = (
-  identifiers: RfcMetadata['identifiers'],
+  identifiers: RfcCommon['identifiers'],
   separator: string = ': '
 ): string[] => {
   if (!identifiers || identifiers.length === 0) return []
@@ -201,21 +135,6 @@ export const formatIdentifiers = (
     (identifier) =>
       `${identifier.type.toUpperCase()}${separator}${identifier.value}`
   )
-}
-
-export const parseTypeSenseSubseries = (
-  item: z.infer<typeof TypeSenseSearchItemSchema>
-): RfcCommon['subseries'] => {
-  if (item.subseries?.acronym) {
-    return [
-      {
-        type: item.subseries?.acronym,
-        number: item.subseries?.number,
-        subseriesLength: item.subseries?.total
-      }
-    ]
-  }
-  return undefined
 }
 
 type TocSection = RfcEditorToc['sections'][number]

@@ -2,7 +2,7 @@
 import { test, expect } from 'vitest'
 import { join, resolve } from 'node:path'
 import { readFile, readdir } from 'node:fs/promises'
-import { RfcJsonSchema } from '../../../client/app/utilities/rfc-validators.ts'
+import { RfcJsonSchema } from './rfc-json'
 
 test(`Compare schema against files`, async () => {
   const baseDir = resolve(

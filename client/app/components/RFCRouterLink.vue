@@ -12,13 +12,13 @@
     <HoverCardPortal>
       <HoverCardContent
         class="w-[300px] h-[225px] border shadow-2xl overflow-x-hidden rounded-md max-w-xs bg-white dark:bg-black border-gray-400 dark:border-white px-2 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all">
-        <div v-if="rfcJSON">
+        <div v-if="rfc">
           <div v-if="rfcId"
             class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-4 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl">
             <component :is="formatTitleAsVNode(`rfc${rfcId.number}`)" />
             Preview
           </div>
-          <RFCRouterLinkPreview :rfc-json="rfcJSON" />
+          <RFCRouterLinkPreview :rfc="rfc" />
         </div>
         <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
         <HoverCardArrow class="fill-gray-200 stroke-gray-500 -mt-[1px]" />
@@ -46,7 +46,7 @@
             </span>
           </DialogTitle>
           <DialogDescription class="mx-auto px-4">
-            <RFCRouterLinkPreview v-if="rfcJSON" :rfc-json="rfcJSON" />
+            <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
             <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
           </DialogDescription>
         </DialogContent>
@@ -61,10 +61,10 @@ import RFCRouterLinkPreview from './RFCRouterLinkPreview.vue'
 import { NuxtLink } from '#components'
 import { formatTitleAsVNode, RFC_TYPE_RFC } from '~/utilities/rfc'
 import { fetchRetry } from '~/utilities/network'
-import { RfcJsonSchema, type RFCJSON } from '~/utilities/rfc-validators'
-import { parseMaybeRfcLink, rfcJSONPathBuilder } from '~/utilities/url'
+import { parseMaybeRfcLink, rfcCommonPathBuilder } from '~/utilities/url'
 import type { LoadingStatus } from '~/utilities/loading-status'
 import type { VueStyleClass } from '~/utilities/vue'
+import { RfcCommonSchema, type RfcCommon } from '~/utilities/rfc-validators'
 
 const props = defineProps<{
   href: string
@@ -72,7 +72,7 @@ const props = defineProps<{
   class?: VueStyleClass
 }>()
 const hasTouchStore = useHasTouchStore()
-const rfcJSON = ref<RFCJSON | undefined>()
+const rfc = ref<RfcCommon | undefined>()
 const isDialogOpen = ref<boolean>(false)
 const isHoverCardOpen = (() => {
   let value: boolean = false
@@ -108,7 +108,7 @@ const propsWithHrefAsTo = computed(() => ({
 }))
 
 /**
- * Loads RFC JSON for the link preview
+ * Loads RFC Common for the link preview
  */
 const loadRfc = async (): Promise<void> => {
   // This is intentionally client-side only. There should be no SSR calling this function.
@@ -118,7 +118,7 @@ const loadRfc = async (): Promise<void> => {
     // The component has already unmounted so we can ignore requests to load this RFC
     return
   }
-  if (rfcJSON.value) {
+  if (rfc.value) {
     // Data already loaded so we can ignore requests to load it again
     return
   }
@@ -135,16 +135,16 @@ const loadRfc = async (): Promise<void> => {
     return
   }
 
-  const rfcJSONPath = rfcJSONPathBuilder(`rfc${rfcId.number}`)
+  const rfcPath = rfcCommonPathBuilder(`rfc${rfcId.number}`)
 
   loadingStatus.value = {
     type: 'loading'
   }
-  console.log(`Loading ${rfcJSONPath}`)
+  console.log(`Loading ${rfcPath}`)
 
   try {
     const response = await fetchRetry(
-      rfcJSONPath,
+      rfcPath,
       {
         method: 'GET',
         headers: {
@@ -156,13 +156,13 @@ const loadRfc = async (): Promise<void> => {
         delayBetweenRetriesMs: 50
       }
     )
-    const rfcJsonUnverified = await response.json()
-    const rfcJson = RfcJsonSchema.parse(rfcJsonUnverified)
+    const rfcUnverified = await response.json()
+    const rfcValidated = RfcCommonSchema.parse(rfcUnverified)
     loadingStatus.value = {
       type: 'success'
     }
-    rfcJSON.value = rfcJson
-    console.log(`Loaded ${rfcJSONPath}`)
+    rfc.value = rfcValidated
+    console.log(`Loaded ${rfcPath}`)
   } catch (e) {
     console.error(e)
     // hide the hover card if we can't load any content
