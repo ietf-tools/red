@@ -9,17 +9,17 @@ import { formatDatePublished } from './rfc-converters-utils'
 test('parseRFCId', () => {
   expect(parseSeriesId('rfc1234')).toEqual({
     type: 'rfc',
-    number: '1234'
+    number: 1234
   })
 
   expect(parseSeriesId('rfc1234bub')).toEqual({
     type: 'rfc',
-    number: '1234'
+    number: 1234
   })
 
   expect(parseSeriesId(`rfc${NONBREAKING_SPACE}1234`)).toEqual({
     type: 'rfc',
-    number: '1234'
+    number: 1234
   })
 })
 

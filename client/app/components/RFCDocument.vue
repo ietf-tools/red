@@ -44,7 +44,7 @@ const asyncRfcBucketHtmlDocumentKey = computed(() => `info-buckethtmldocument-${
 const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
   asyncRfcBucketHtmlDocumentKey,
   async () => {
-    const url = apiRfcBucketDocumentPathBuilder(parseInt(props.rfcId.number, 10))
+    const url = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
     const maybeRfcBucketDocument = await $fetch(url, {
       method: 'GET',
     })

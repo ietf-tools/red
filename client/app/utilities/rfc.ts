@@ -54,7 +54,7 @@ export const blankRfcCommon: RfcCommon = {
 
 export type SeriesId = {
   type: SeriesType
-  number: string
+  number: number
 }
 
 /**
@@ -63,7 +63,6 @@ export type SeriesId = {
 export const parseSeriesId = (maybeSeriesId: string): SeriesId | undefined => {
   // split by groups of letters or numbers
   // ie "RFC0000" becomes ["RFC", "0000"]
-  // or "RFC0000BUB" becomes ["RFC", "0000", "BUB"]
   const parts = maybeSeriesId
     .replace(
       // remove whitespace including non-breaking-space
@@ -78,7 +77,17 @@ export const parseSeriesId = (maybeSeriesId: string): SeriesId | undefined => {
       return undefined
     }
 
-    const number = parseInt(partNumber, 10).toString()
+    const number = parseInt(partNumber, 10)
+
+    if (Number.isNaN(number)) {
+      // unable to parse number
+      console.warn('Unable to parse number in seriesId', {
+        maybeSeriesId,
+        partNumber
+      })
+      return undefined
+    }
+
     const partTypeLowerCase = partType.toLowerCase()
 
     switch (partTypeLowerCase) {
