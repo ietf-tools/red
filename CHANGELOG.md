@@ -14,7 +14,7 @@ These changes apply to **all** APIs (_global API changes_):
 
 #### `/rfc-index.txt`
 
-The global changes, and the table layout of this file must change to make space for 5 digit RFCs. Here's [a sample file of the new `rfc-index.txt` (truncated to RFC19)](https://github.com/ietf-tools/rfced-www/blob/main/client/utilities/rfc-5digit-index.txt) (compare against [the 4 digit](https://github.com/ietf-tools/rfced-www/blob/main/client/utilities/rfc-4digit-index.txt) which has a narrower column). No redirect is expected.
+The global changes, and the table layout of this file must change to make space for 5 digit RFCs. Here's [a sample file of the new `rfc-index.txt` (truncated to RFC19)](https://github.com/ietf-tools/rfced-www/blob/main/website/utilities/rfc-5digit-index.txt) (compare against [the 4 digit](https://github.com/ietf-tools/rfced-www/blob/main/website/utilities/rfc-4digit-index.txt) which has a narrower column). No redirect is expected.
 
 #### `/rfc-index.xml`
 

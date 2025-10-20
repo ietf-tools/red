@@ -29,22 +29,22 @@ This code repository is under the broader guidance from [IETF CONTRIBUTING.md](h
 
 ## Getting Started
 
-### Client
+### Website
 
-See `/client/`
+See `/website/`
 
-#### RFC HTML preprocessing
+#### API
 
-To display RFCs we preprocesses their HTML into JSON with certain features extracted (eg Table Of Contents). See `/rfc-html-extractor/`.
+We precompute the result of many APIs because some calculations can take minutes. This also helps with resilience. See `/precomputer/`.
 
 #### Page content documentation (markdown)
 
-Markdown files are in `client/content`. Markdown Frontmatter (metadata) fields supported are listed in [content.config.js](https://github.com/ietf-tools/red/blob/main/client/content.config.ts#L8).
+Markdown files are in `website/content`. Markdown Frontmatter (metadata) fields supported are listed in [content.config.js](https://github.com/ietf-tools/red/blob/main/website/content.config.ts#L8).
 
 ## Testing
 
-* In `client` run `npm run test`
-* In `rfc-html-extractor` run `npm run test`
+* In `website` run `npm run test`
+* In `precomputer` run `npm run test`
 
 ## Troubleshooting
 

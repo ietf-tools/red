@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: red-rfc-html-extractor-cron
+  name: red-precomputer-cron
 spec:
   concurrencyPolicy: Forbid
   schedule: "30 11,23 * * *"
@@ -18,8 +18,8 @@ spec:
           securityContext:
             runAsNonRoot: true
           containers:
-            - name: red-rfc-html-extractor
-              image: "ghcr.io/ietf-tools/red-rfc-html-extractor:latest"
+            - name: red-precomputer
+              image: "ghcr.io/ietf-tools/red-precomputer:latest"
               imagePullPolicy: Always
               command: ['sh', '-c', 'node ./src/cron.ts']
               envFrom:

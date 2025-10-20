@@ -1,0 +1,40 @@
+import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+
+export const blankRfcCommon: RfcCommon = {
+  number: 0,
+  title: '',
+  published: '1950-1-1',
+  pages: 0,
+  status: {
+    slug: 'unknown',
+    name: 'Unknown'
+  },
+  authors: [],
+  group: {
+    acronym: '',
+    name: ''
+  },
+  area: {
+    acronym: '',
+    name: ''
+  },
+  stream: {
+    slug: 'Legacy',
+    name: '',
+    description: ''
+  },
+  identifiers: [],
+  obsoleted_by: [],
+  updated_by: [],
+  formats: [],
+  abstract: '',
+  text: ''
+}
+
+const RFC_REGEX = /(rfc[0-9]+)/i
+
+export const extractHrefRfcPart = (href: string): undefined | string => {
+  const rfcMatch = href.match(RFC_REGEX)
+  if (!rfcMatch) return undefined
+  return rfcMatch[1]
+}

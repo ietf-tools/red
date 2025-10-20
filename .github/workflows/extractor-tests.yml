@@ -3,8 +3,8 @@ name: Extractor Vitest, TypeScript check
 on:
   push:
     paths:
-      - 'rfc-html-extractor/**'
-      - 'client/app/utilities/rfc-validators.ts'
+      - 'precomputer/**'
+      - 'website/app/utilities/rfc-validators.ts'
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: "./rfc-html-extractor"
+        working-directory: "./precomputer"
 
     steps:
       - name: Checkout
@@ -25,14 +25,14 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
 
-      - name: Install dependencies (client)
+      - name: Install dependencies (website)
         run: npm ci
-        working-directory: ./client
+        working-directory: ./website
 
       - name: Install dependencies (extractor)
         run: npm ci
-        working-directory: ./rfc-html-extractor
+        working-directory: ./precomputer
 
       - name: Run all other tests
         run: npm run test
-        working-directory: ./rfc-html-extractor
+        working-directory: ./precomputer

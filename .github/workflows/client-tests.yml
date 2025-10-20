@@ -3,7 +3,7 @@ name: Nuxt Vitest, TypeScript check, ESLint
 on:
   push:
     paths:
-      - 'client/**'
+      - 'website/**'
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: "./client"
+        working-directory: "./website"
 
     steps:
       - name: Checkout
@@ -26,12 +26,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./client
+        working-directory: ./website
 
       - name: Build Nuxt (dev mode, no prerender)
         run: npm run build:dev
-        working-directory: ./client
+        working-directory: ./website
 
       - name: Run all other tests
         run: npm run test
-        working-directory: ./client
+        working-directory: ./website
