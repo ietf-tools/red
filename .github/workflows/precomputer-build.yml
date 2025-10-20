@@ -1,4 +1,4 @@
-name: Build RFC HTML Extractor Docker Image
+name: Build Precomputer Docker Image
 
 on:
   push:
