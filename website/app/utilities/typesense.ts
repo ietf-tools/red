@@ -29,7 +29,7 @@ export const TypesenseSearchItemStatusSchema = z.union([
   z.object({
     slug: z.literal('ps'),
     name: z.literal('Proposed Standard')
-  }),  
+  })
 ])
 
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
@@ -57,11 +57,7 @@ export const TypeSenseSearchItemSchema = z.object({
 
   subseries: z
     .object({
-      acronym: z.enum([
-        'std',
-        'fyi',
-        'bcp'
-      ]).optional(),
+      acronym: z.enum(['std', 'fyi', 'bcp']).optional(),
       number: z.number().optional(),
       total: z.number().optional(),
       bcp: z.string().optional()
