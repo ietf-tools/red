@@ -1,17 +1,17 @@
 import type { z } from 'zod'
 import type { RfcCommon } from './rfc'
-import { TypeSenseSearchItemSchema } from './typesense'
+import { TypeSenseSearchItemSchema, TypesenseSearchItemStatusSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
 
 export const typeSenseSearchItemToRFCCommon = (
   unverifiedTypeSenseSearchItem: TypeSenseSearchItem
 ): RfcCommon => {
-  const result = TypeSenseSearchItemSchema.safeParse(
+  const { data: item, error } = TypeSenseSearchItemSchema.safeParse(
     unverifiedTypeSenseSearchItem
   )
-  if (result.error) {
-    console.error(result.error.toString())
-    throw Error(result.error.toString())
+  if (error) {
+    console.error(error.toString())
+    throw Error(error.toString())
   }
 
   const parseTypeSenseSubseries = (
@@ -29,85 +29,15 @@ export const typeSenseSearchItemToRFCCommon = (
     return undefined
   }
 
-  const parseTypesenseStatusSlug = (
-    rfcStatusSlug?: string
-  ): RfcCommon['status'] => {
-    const normalisedSlug = rfcStatusSlug?.toLowerCase().replace(/[^a-z]/g, '')
-
-    switch (normalisedSlug) {
-      case 'bestcurrentpractice':
-      case 'bcp':
-        return {
-          slug: 'bcp',
-          name: 'Best Current Practice'
-        }
-
-      case 'fyi':
-        return {
-          slug: 'fyi',
-          name: 'FYI'
-        }
-
-      case 'experimental':
-        return {
-          slug: 'experimental',
-          name: 'Experimental'
-        }
-
-      case 'his':
-      case 'historic':
-        return {
-          slug: 'his',
-          name: 'Historic'
-        }
-
-      case 'informational':
-        return {
-          slug: 'informational',
-          name: 'Informational'
-        }
-
-      case 'notissued':
-        return {
-          slug: 'not-issued',
-          name: 'Not Issued'
-        }
-
-      case 'internetstandard':
-      case 'standard':
-      case 'standardstrack':
-      case 'std':
-        return {
-          slug: 'standard',
-          name: 'Internet Standard'
-        }
-
-      case 'unknown':
-        return {
-          slug: 'unknown',
-          name: 'Unknown'
-        }
-
-      case 'ps':
-      case 'proposedstandard':
-      case 'proposed':
-        return {
-          slug: 'ps',
-          name: 'Proposed Standard'
-        }
-
-      case 'draftstandard':
-      case 'draft':
-        return {
-          slug: 'draft',
-          name: 'Draft Standard'
-        }
-    }
-
-    throw Error(
-      `Unable to parse status slug "${rfcStatusSlug}" (normalized as "${normalisedSlug}").`
-    )
+  const parseTypesenseStatus = (
+  status: TypeSenseSearchItem["status"]
+): RfcCommon['status'] => {
+  const { data, error } = TypesenseSearchItemStatusSchema.safeParse(status)
+  if (error) {
+    throw Error(`Unable to parse RFC status ${JSON.stringify(status)}").`)
   }
+  return data
+}
 
   const parseTypesenseStreamSlug = (
     streamSlug?: string
@@ -134,8 +64,6 @@ export const typeSenseSearchItemToRFCCommon = (
     throw Error(`Unable to parse stream slug "${streamSlug}"`)
   }
 
-  const item = result.data
-
   const published = new Date(item.publicationDate * 1000).toISOString()
   const authors =
     item.authors?.map((author, index) => ({
@@ -161,7 +89,7 @@ export const typeSenseSearchItemToRFCCommon = (
     number: item.rfcNumber,
     published,
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,
-    status: parseTypesenseStatusSlug(item.status?.name),
+    status: parseTypesenseStatus(item.status),
     stream: {
       slug: parseTypesenseStreamSlug(item.stream?.slug),
       name: item.stream?.name || 'unknown'

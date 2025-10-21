@@ -28,7 +28,7 @@ export const blankRfcCommon: RfcCommon = {
   pages: 0,
   status: {
     slug: 'unknown',
-    name: 'Unknown'
+    name: 'unknown'
   },
   authors: [],
   group: {

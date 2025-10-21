@@ -685,6 +685,7 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
         "email": "rivest@mit.edu",
         "name": "Ronald Rivest",
         "person": 19822,
+        "titlepage_name": "",
       },
       {
         "affiliation": "Independent",
@@ -692,8 +693,10 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
         "email": "d3e3e3@gmail.com",
         "name": "Donald Eastlake",
         "person": 102391,
+        "titlepage_name": "",
       },
     ],
+    "errata": [],
     "formats": [
       "txt",
       "xml",
@@ -708,12 +711,17 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
         "value": "10.17487/RFC9804",
       },
     ],
+    "keywords": [
+      "keyword",
+    ],
     "number": 9804,
     "obsoleted_by": [],
+    "obsoletes": [],
     "pages": 22,
     "published": "2025-06-17",
+    "see_also": [],
     "status": {
-      "name": "Informational",
+      "name": "informational",
       "slug": "informational",
     },
     "stream": {
@@ -721,9 +729,10 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
       "name": "IETF",
       "slug": "IETF",
     },
-    "text": "",
+    "subseries": [],
     "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",
     "updated_by": [],
+    "updates": [],
   },
   "tableOfContents": {
     "sections": [

@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+const Schema = z.literal('')
+
 /**
  * Serializing to JSON and parsing again ('roundTripped') can result in a different object structure
  * with missing keys, see
@@ -10,13 +12,13 @@ import { z } from 'zod'
  */
 export const validateDocument = (
   doc: unknown,
-  schema: z.Schema
+  schema: z.ZodObject<any>
 ): void => {
   const responseRoundTrippedThroughJSON = JSON.parse(JSON.stringify(doc))
 
-  const validationResult = schema.safeParse(
-    responseRoundTrippedThroughJSON
-  )
+  const validationResult = schema
+    .strict() // use strict mode.. disallow additional keys
+    .safeParse(responseRoundTrippedThroughJSON)
 
   if (validationResult.error) {
     const errorTitle = `Failed to generate valid document due to validation error:`

@@ -92,26 +92,20 @@ const formatRfcStatusAsRfcJsonStatus = (
   status: RfcCommon['status']
 ): RFCJSON['status'] => {
   switch (status.name) {
-    case 'Best Current Practice':
+    case 'best current practice':
       return 'BEST CURRENT PRACTICE'
-    case 'Draft Standard':
-      return 'PROPOSED STANDARD'
-    case 'Experimental':
+    case 'experimental':
       return 'EXPERIMENTAL'
-    case 'Historic':
+    case 'historic':
       return 'HISTORIC'
-    case 'Informational':
+    case 'informational':
       return 'INFORMATIONAL'
-    case 'Internet Standard':
-      return 'INTERNET STANDARD'
-    case 'Not Issued':
+    case 'not issued':
       return 'NOT ISSUED'
-    case 'Proposed Standard':
+    case 'standards track':
       return 'PROPOSED STANDARD'
-    case 'Unknown':
+    case 'unknown':
       return 'UNKNOWN'
-    case 'FYI':
-      return 'FOR YOUR INFORMATION'
   }
   assertNever(status)
 }

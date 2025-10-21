@@ -15,7 +15,7 @@ test('renderRfcRef 298', async () => {
 test('renderRfcRef 9804', async () => {
   const rfc9804 = testMockAllRfcs.find((rfc) => rfc.number === 9804)
   if(rfc9804 === undefined) {
-    throw Error(`Couldn't find RFC 9000 in mock data`)
+    throw Error(`Couldn't find RFC 9804 in mock data`)
   }
   const rfc9804Ref = renderRefsRef(rfc9804)
   expect(rfc9804Ref).toMatchSnapshot()

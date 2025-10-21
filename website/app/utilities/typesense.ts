@@ -1,4 +1,7 @@
 import { z } from 'zod'
+import { RfcCommonStatusSchema } from '../utilities/rfc-validators'
+
+export const TypesenseSearchItemStatusSchema = RfcCommonStatusSchema
 
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
 export const TypeSenseSearchItemSchema = z.object({
@@ -10,23 +13,7 @@ export const TypeSenseSearchItemSchema = z.object({
 
   title: z.string(),
 
-  status: z
-    .object({
-      name: z
-        .enum([
-          'Internet Standard',
-          'Proposed Standard',
-          'Draft Standard',
-          'Best Current Practice',
-          'Informational',
-          'Experimental',
-          'Historic',
-          'Unknown'
-        ])
-        .optional(),
-      slug: z.string().optional()
-    })
-    .optional(),
+  status: TypesenseSearchItemStatusSchema,
   abstract: z.string(),
 
   adName: z.string().optional(),

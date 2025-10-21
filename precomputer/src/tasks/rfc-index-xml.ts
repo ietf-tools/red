@@ -55,8 +55,8 @@ export const renderRfcIndexXml = async (
   try {
     xsdDocument.validate(xmlDocument)
   } catch (e) {
-    const lines = xml.split('\n')
     if (e instanceof XmlValidateError) {
+      const lines = xml.split('\n')
       console.error(
         e.details
           .map((detail) => {
@@ -71,7 +71,7 @@ export const renderRfcIndexXml = async (
           .join('\n')
       )
     } else {
-      console.error('rfc-index.xml validiation failure during regeneration', e)
+      console.error('rfc-index.xml validiation failure during rendering', e)
     }
     throw e
   }
@@ -211,13 +211,17 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       rfcEntry.appendChild(createElementNS('draft', rfc.draft.slug))
     }
 
+    type UppercaseStatusName = Uppercase<RfcCommon["status"]["name"]>
+
+    const statusNameUppercase = rfc.status.name.toUpperCase() as UppercaseStatusName
+
+    const xmlStatusName = statusNameUppercase === 'STANDARDS TRACK' ? 'PROPOSED STANDARD' as const : statusNameUppercase
     rfcEntry.appendChild(
-      createElementNS('current-status', rfc.status.name.toUpperCase())
+      createElementNS('current-status', xmlStatusName)
     )
 
-    // FIXME: is this the correct RFC Commmon property to use?
     rfcEntry.appendChild(
-      createElementNS('publication-status', rfc.status.name.toUpperCase())
+      createElementNS('publication-status', xmlStatusName)
     )
 
     rfcEntry.appendChild(createElementNS('stream', rfc.stream.slug))

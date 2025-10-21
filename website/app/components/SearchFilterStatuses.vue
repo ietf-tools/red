@@ -19,22 +19,21 @@
 
 <script setup lang="ts">
 import { AisRefinementList } from 'vue-instantsearch/vue3/es'
-import type { RfcCommon } from '~/utilities/rfc-validators'
+import type { TypeSenseSearchItem } from '~/utilities/typesense'
 
-type StatusName = RfcCommon["status"]["name"]
+type StatusName = TypeSenseSearchItem["status"]["name"]
 
 const predefinedOrder: StatusName[] = [
-  'Internet Standard',
-  'Proposed Standard',
-  'Draft Standard',
-  'Best Current Practice',
-  'Informational',
-  'Experimental',
-  'Historic',
-  'Unknown'
+  'unknown',
+  'best current practice',
+  'experimental',
+  'historic',
+  'informational',
+  'not issued',
+  'standards track',
 ]
 
-function reorderItems(a: { name: StatusName }, b: { name: StatusName }) {
+function reorderItems(a: TypeSenseSearchItem['status'], b: TypeSenseSearchItem['status']) {
   return predefinedOrder.indexOf(a.name) - predefinedOrder.indexOf(b.name)
 }
 </script>

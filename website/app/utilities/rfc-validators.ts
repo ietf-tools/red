@@ -1,5 +1,9 @@
 import { z } from 'zod'
 
+/**
+ * Rule: Never make Zod schemas strict() if they run in the website (nuxt / client side) as this would prevent additional keys which should be harmless.
+ */
+
 const DocumentHtmlTypeSchema = z.union([
   z.literal('xml2rfc'),
   z.literal('plaintext'),
@@ -10,7 +14,6 @@ export type DocumentHtmlType = z.infer<typeof DocumentHtmlTypeSchema>
 /**
  * Table Of Contents
  */
-
 export const TocLinkSchema = z.object({
   id: z.string(),
   title: z.string()
@@ -50,44 +53,32 @@ export const RfcCommonStreamSlugSchema = z.union([
 
 export const RfcCommonStatusSchema = z.union([
   z.object({
-    slug: z.literal('bcp'),
-    name: z.literal('Best Current Practice')
+    slug: z.literal('unknown'),
+    name: z.literal('unknown')
   }),
   z.object({
-    slug: z.literal('fyi'),
-    name: z.literal('FYI')
+    slug: z.literal('bcp'),
+    name: z.literal('best current practice')
   }),
   z.object({
     slug: z.literal('experimental'),
-    name: z.literal('Experimental')
+    name: z.literal('experimental')
   }),
   z.object({
-    slug: z.literal('his'),
-    name: z.literal('Historic')
+    slug: z.literal('historic'),
+    name: z.literal('historic')
   }),
   z.object({
     slug: z.literal('informational'),
-    name: z.literal('Informational')
+    name: z.literal('informational')
   }),
   z.object({
     slug: z.literal('not-issued'),
-    name: z.literal('Not Issued')
+    name: z.literal('not issued')
   }),
   z.object({
     slug: z.literal('standard'),
-    name: z.literal('Internet Standard')
-  }),
-  z.object({
-    slug: z.literal('unknown'),
-    name: z.literal('Unknown')
-  }),
-  z.object({
-    slug: z.literal('ps'),
-    name: z.literal('Proposed Standard')
-  }),
-  z.object({
-    slug: z.literal('draft'),
-    name: z.literal('Draft Standard')
+    name: z.literal('standards track')
   })
 ])
 

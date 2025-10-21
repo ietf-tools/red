@@ -167,8 +167,8 @@ const exampleTypesenseResult = {
             rfcNumber: 8589,
             state: ['Published'],
             status: {
-              name: 'Informational',
-              slug: 'inf'
+              name: 'informational',
+              slug: 'informational'
             },
             stream: {
               name: 'IETF',
@@ -284,7 +284,7 @@ test('typeSenseSearchItemToRFC', () => {
     published: '2019-05-21T18:05:35.000Z',
     status: {
       slug: 'informational',
-      name: 'Informational'
+      name: 'informational'
     },
     subseries: undefined,
     stream: {

@@ -1,8 +1,9 @@
 import { ApiClient } from '../../../website/generated/red-client.ts'
 import type { Rfc, RfcMetadata } from '../../../website/generated/red-client.ts'
-import type {
-  InfoSubseriesItem,
-  RfcCommon
+import {
+  RfcCommonStatusSchema,
+  type InfoSubseriesItem,
+  type RfcCommon
 } from '../../../website/app/utilities/rfc-validators.ts'
 import { assertIsString } from './typescript.ts'
 
@@ -72,7 +73,7 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
     number: rfc.number,
     abstract: rfc.abstract,
     published: rfc.published,
-    status: parseStatusSlug(rfc.status.slug),
+    status: parseStatus(rfc.status),
     pages: rfc.pages ?? undefined,
     authors: rfc.authors,
     group: rfc.group,
@@ -83,8 +84,14 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
       description: rfc.stream.desc
     },
     identifiers: rfc.identifiers,
+    obsoletes: rfc.obsoletes,
     obsoleted_by: rfc.obsoleted_by,
+    updates: rfc.updates,
     updated_by: rfc.updated_by,
+    see_also: rfc.see_also,
+    draft: parseDraft(rfc.draft),
+    keywords: rfc.keywords,
+    errata: rfc.errata,
     title: rfc.title
   }
 }
@@ -95,7 +102,7 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     number: rfcMetadata.number,
     abstract: rfcMetadata.abstract,
     published: rfcMetadata.published,
-    status: parseStatusSlug(rfcMetadata.status.slug),
+    status: parseStatus(rfcMetadata.status),
     pages: rfcMetadata.pages ?? undefined,
     authors: rfcMetadata.authors,
     group: rfcMetadata.group,
@@ -106,13 +113,20 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
       description: rfcMetadata.stream.desc
     },
     identifiers: rfcMetadata.identifiers,
+    obsoletes: rfcMetadata.obsoletes,
     obsoleted_by: rfcMetadata.obsoleted_by,
     updated_by: rfcMetadata.updated_by,
+    subseries: parseSubseries(rfcMetadata.subseries),
+    draft: parseDraft(rfcMetadata.draft),
+    see_also: rfcMetadata.see_also,
+    updates: rfcMetadata.updates,
+    keywords: rfcMetadata.keywords,
+    errata: rfcMetadata.errata,
     title: rfcMetadata.title
   }
 }
 
-type DocListArg = Parameters<ApiClient['red']['docList']>[0]
+export type DocListArg = Parameters<ApiClient['red']['docList']>[0]
 
 type Props = {
   api: ApiClient
@@ -130,7 +144,7 @@ export const getAllRFCs = async ({
   const rfcs: RfcCommon[] = []
 
   const docListArg: DocListArg = {}
-  docListArg.sort = ['-number'] // we start at the end and walk back to RFC 1
+  docListArg.sort = ['-number'] // we start at the most recent RFC and walk back to RFC 1
   let offset = 0 // offset is API database row offset, not an RFC number offset
 
   while (true) {
@@ -263,82 +277,20 @@ export const sortInfoSubseriesItem = (
   return a.number - b.number
 }
 
-export const parseStatusSlug = (rfcStatusSlug?: string): RfcCommon['status'] => {
-  const normalisedSlug = rfcStatusSlug?.toLowerCase().replace(/[^a-z]/g, '')
-
-  switch (normalisedSlug) {
-    case 'bestcurrentpractice':
-    case 'bcp':
-      return {
-        slug: 'bcp',
-        name: 'Best Current Practice'
-      }
-
-    case 'fyi':
-      return {
-        slug: 'fyi',
-        name: 'FYI'
-      }
-
-    case 'experimental':
-      return {
-        slug: 'experimental',
-        name: 'Experimental'
-      }
-
-    case 'his':
-    case 'historic':
-      return {
-        slug: 'his',
-        name: 'Historic'
-      }
-
-    case 'informational':
-      return {
-        slug: 'informational',
-        name: 'Informational'
-      }
-
-    case 'notissued':
-      return {
-        slug: 'not-issued',
-        name: 'Not Issued'
-      }
-
-    case 'internetstandard':
-    case 'standard':
-    case 'standardstrack':
-    case 'std':
-      return {
-        slug: 'standard',
-        name: 'Internet Standard'
-      }
-
-    case 'unknown':
-      return {
-        slug: 'unknown',
-        name: 'Unknown'
-      }
-
-    case 'ps':
-    case 'proposedstandard':
-    case 'proposed':
-      return {
-        slug: 'ps',
-        name: 'Proposed Standard'
-      }
-
-    case 'draftstandard':
-    case 'draft':
-      return {
-        slug: 'draft',
-        name: 'Draft Standard'
-      }
+export const parseStatus = (
+  status: Rfc['status'] | RfcMetadata['status']
+): RfcCommon['status'] => {
+  const { data, error } = RfcCommonStatusSchema.safeParse(status)
+  if (error) {
+    throw Error(`Unable to parse RFC status ${JSON.stringify(status)}").`)
   }
+  return data
+}
 
-  throw Error(
-    `Unable to parse status slug "${rfcStatusSlug}" (normalized as "${normalisedSlug}").`
-  )
+const parseDraft = (
+  draft: Rfc['draft'] | RfcMetadata['draft']
+): RfcCommon['draft'] => {
+  if (draft === undefined) return undefined
 }
 
 const parseStreamSlug = (streamSlug?: string): RfcCommon['stream']['slug'] => {
@@ -367,7 +319,7 @@ const parseStreamSlug = (streamSlug?: string): RfcCommon['stream']['slug'] => {
 type RfcCommonSubseriesItem = NonNullable<RfcCommon['subseries']>[number]
 
 const parseSubseries = (
-  subseries: Rfc['subseries']
+  subseries: Rfc['subseries'] | RfcMetadata['subseries']
 ): RfcCommon['subseries'] => {
   if (!subseries) return undefined
 

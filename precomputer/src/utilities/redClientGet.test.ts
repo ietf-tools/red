@@ -1,8 +1,11 @@
 // @vitest-environment node
+import fsPromises from 'node:fs/promises'
 import { test, expect } from 'vitest'
-import { sortInfoSubseriesItem } from './redClientGet'
+import { getRedClient, sortInfoSubseriesItem } from './redClientGet'
 import { testMockAllSubseries } from './rfcs-test-data'
-import { parseStatusSlug } from './redClientGet'
+import { parseStatus, getAllRFCs, getAllSubseries } from './redClientGet'
+import type { DocListArg } from './redClientGet'
+import { RfcCommonStatusSchema } from '../../../website/app/utilities/rfc-validators'
 
 test('sortInfoSubseriesItem', () => {
   expect(
@@ -13,139 +16,107 @@ test('sortInfoSubseriesItem', () => {
 })
 
 test('parseStatusSlug: bad inputs', () => {
-  expect(() => parseStatusSlug('unknown status slug')).toThrow()
-  expect(() => parseStatusSlug('')).toThrow()
+  expect(() =>
+    parseStatus(
+      // invalid mismatch of slug and name
+      { slug: 'experimental', name: 'best current practice' }
+    )
+  ).toThrow()
+
+  expect(() =>
+    parseStatus({
+      // unexpected name casing
+      slug: 'experimental',
+      name: 'Experimental'
+    })
+  ).toThrow()
 })
 
 test('parseStatusSlug: good inputs', () => {
-  expect(parseStatusSlug('Best Current Practice')).toStrictEqual({
+  expect(
+    parseStatus({ slug: 'bcp', name: 'best current practice' })
+  ).toStrictEqual({
     slug: 'bcp',
-    name: 'Best Current Practice'
-  })
-  expect(parseStatusSlug('best-current-practice')).toStrictEqual({
-    slug: 'bcp',
-    name: 'Best Current Practice'
-  })
-  expect(parseStatusSlug('bcp')).toStrictEqual({
-    slug: 'bcp',
-    name: 'Best Current Practice'
-  })
-  expect(parseStatusSlug('BCP')).toStrictEqual({
-    slug: 'bcp',
-    name: 'Best Current Practice'
+    name: 'best current practice'
   })
 
-  expect(parseStatusSlug('experimental')).toStrictEqual({
+  expect(
+    parseStatus({ slug: 'experimental', name: 'experimental' })
+  ).toStrictEqual({
     slug: 'experimental',
-    name: 'Experimental'
-  })
-  expect(parseStatusSlug('Experimental')).toStrictEqual({
-    slug: 'experimental',
-    name: 'Experimental'
+    name: 'experimental'
   })
 
-  expect(parseStatusSlug('historic')).toStrictEqual({
-    slug: 'his',
-    name: 'Historic'
-  })
-  expect(parseStatusSlug('his')).toStrictEqual({
-    slug: 'his',
-    name: 'Historic'
-  })
-  expect(parseStatusSlug('Historic')).toStrictEqual({
-    slug: 'his',
-    name: 'Historic'
-  })
-  expect(parseStatusSlug('informational')).toStrictEqual({
-    slug: 'informational',
-    name: 'Informational'
-  })
-  expect(parseStatusSlug('Informational')).toStrictEqual({
-    slug: 'informational',
-    name: 'Informational'
-  })
-  expect(parseStatusSlug('FYI')).toStrictEqual({
-    slug: 'fyi',
-    name: 'FYI'
-  })
-  expect(parseStatusSlug('informational')).toStrictEqual({
-    slug: 'informational',
-    name: 'Informational'
-  })
-  expect(parseStatusSlug('Not Issued')).toStrictEqual({
-    slug: 'not-issued',
-    name: 'Not Issued'
-  })
-  expect(parseStatusSlug('Not-Issued')).toStrictEqual({
-    slug: 'not-issued',
-    name: 'Not Issued'
-  })
-  expect(parseStatusSlug('not issued')).toStrictEqual({
-    slug: 'not-issued',
-    name: 'Not Issued'
-  })
-  expect(parseStatusSlug('notissued')).toStrictEqual({
-    slug: 'not-issued',
-    name: 'Not Issued'
+  expect(parseStatus({ slug: 'historic', name: 'historic' })).toStrictEqual({
+    slug: 'historic',
+    name: 'historic'
   })
 
-  expect(parseStatusSlug('Internet Standard')).toStrictEqual({
-    slug: 'standard',
-    name: 'Internet Standard'
-  })
-  expect(parseStatusSlug('Internet-Standard')).toStrictEqual({
-    slug: 'standard',
-    name: 'Internet Standard'
-  })
-  expect(parseStatusSlug('internetstandard')).toStrictEqual({
-    slug: 'standard',
-    name: 'Internet Standard'
-  })
-  expect(parseStatusSlug('Standard')).toStrictEqual({
-    slug: 'standard',
-    name: 'Internet Standard'
-  })
-  expect(parseStatusSlug('std')).toStrictEqual({
-    slug: 'standard',
-    name: 'Internet Standard'
+  expect(
+    parseStatus({ slug: 'informational', name: 'informational' })
+  ).toStrictEqual({
+    slug: 'informational',
+    name: 'informational'
   })
 
-  expect(parseStatusSlug('Unknown')).toStrictEqual({
+  expect(parseStatus({ slug: 'not-issued', name: 'not issued' })).toStrictEqual(
+    {
+      slug: 'not-issued',
+      name: 'not issued'
+    }
+  )
+
+  expect(parseStatus({ slug: 'unknown', name: 'unknown' })).toStrictEqual({
     slug: 'unknown',
-    name: 'Unknown'
-  })
-  expect(parseStatusSlug('unknown')).toStrictEqual({
-    slug: 'unknown',
-    name: 'Unknown'
-  })
-
-  expect(parseStatusSlug('ps')).toStrictEqual({
-    slug: 'ps',
-    name: 'Proposed Standard'
-  })
-  expect(parseStatusSlug('proposed')).toStrictEqual({
-    slug: 'ps',
-    name: 'Proposed Standard'
-  })
-  expect(parseStatusSlug('proposedstandard')).toStrictEqual({
-    slug: 'ps',
-    name: 'Proposed Standard'
-  })
-  expect(parseStatusSlug('proposed-standard')).toStrictEqual({
-    slug: 'ps',
-    name: 'Proposed Standard'
-  })
-  expect(parseStatusSlug('Proposed Standard')).toStrictEqual({
-    slug: 'ps',
-    name: 'Proposed Standard'
-  })
-
-  expect(parseStatusSlug('draft')).toStrictEqual({
-    slug: 'draft',
-    name: 'Draft Standard'
-  })
-  expect(parseStatusSlug('draftstandard')).toStrictEqual({
-    slug: 'draft',
-    name: 'Draft Standard'
+    name: 'unknown'
   })
 })
+
+test.skip(
+  'test status parsing against all RFCs',
+  { timeout: 300_000 },
+  async () => {
+    const api = getRedClient()
+
+    const docListArg: DocListArg = {}
+    docListArg.sort = ['-number'] // we start at the most recent RFC and walk back to RFC 1
+    let offset = 0 // offset is API database row offset, not an RFC number offset
+    const MAX_LIMIT_PER_REQUEST = 100
+    let hasFoundRfc1 = false
+    while (!hasFoundRfc1) {
+      docListArg.offset = offset
+      docListArg.limit = MAX_LIMIT_PER_REQUEST
+      const response = await api.red.docList(docListArg)
+      response.results.forEach((rfcMetadata) => {
+        const { data, error } = RfcCommonStatusSchema.safeParse(
+          rfcMetadata.status
+        )
+        expect(
+          error,
+          `Invalid status ${JSON.stringify(rfcMetadata.status)}`
+        ).toBeUndefined()
+        expect(
+          data,
+          `Invalid status ${JSON.stringify(rfcMetadata.status)}`
+        ).toBeTruthy()
+        if (hasFoundRfc1 === false && rfcMetadata.number === 1) {
+          hasFoundRfc1 = true
+        }
+      })
+      offset += response.results.length
+    }
+  }
+)
+
+// test('Regenerate test data', { timeout: 300_000 }, async () => {
+//   const api = getRedClient()
+//   const [ allRfcs, allSubseries ] = await Promise.all([
+//     getAllRFCs({ api }),
+//     getAllSubseries({ api })
+//   ])
+//   const rfcsToRender: number[] = [298, 9804, 9049]
+//   const someRfcs = allRfcs.filter(rfc => rfcsToRender.includes(rfc.number) || rfc.number % 1000 < 50)
+//   const someSubseries = allSubseries.filter(subseries => subseries.number % 10 < 5)
+//   await fsPromises.writeFile('/tmp/test-data-rfcs.json', `[\n  ${someRfcs.map(rfc => JSON.stringify(rfc)).join(',\n  ')}\n]`)
+//   await fsPromises.writeFile('/tmp/test-data-subseries.json', `[\n  ${someSubseries.map(rfc => JSON.stringify(rfc)).join(',\n  ')}\n]`)
+// })

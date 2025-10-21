@@ -4,102 +4,77 @@ exports[`homepage 3 items 1`] = `
 {
   "homepageLatest": [
     {
-      "abstract": "One aspect of the transition to post-quantum algorithms in cryptographic protocols is the development of hybrid schemes that incorporate both post-quantum and traditional asymmetric algorithms.  This document defines terminology for such schemes.  It is intended to be used as a reference and, hopefully, to ensure consistency and clarity across different protocols, standards, and organisations.",
+      "abstract": "The 3GPP mobile network Authentication and Key Agreement (AKA) is an authentication mechanism for devices wishing to access mobile networks. RFC 4187 (EAP-AKA) made the use of this mechanism possible within the Extensible Authentication Protocol (EAP) framework. RFC 5448 (EAP-AKA') was an improved version of EAP-AKA.
+
+ This document is the most recent specification of EAP-AKA', including, for instance, details about and references related to operating EAP-AKA' in 5G networks.
+
+ EAP-AKA' differs from EAP-AKA by providing a key derivation function that binds the keys derived within the method to the name of the access network. The key derivation function has been defined in the 3rd Generation Partnership Project (3GPP). EAP-AKA' allows its use in EAP in an interoperable manner. EAP-AKA' also updates the algorithm used in hash functions, as it employs SHA-256 / HMAC-SHA-256 instead of SHA-1 / HMAC-SHA-1, which is used in EAP-AKA.
+
+ This version of the EAP-AKA' specification defines the protocol behavior for both 4G and 5G deployments, whereas the previous version defined protocol behavior for 4G deployments only. While EAP-AKA' as defined in RFC 5448 is not obsolete, this document defines the most recent and fully backwards-compatible specification of EAP-AKA'. This document updates both RFCs 4187 and 5448.",
       "area": {
         "acronym": "sec",
         "name": "Security Area",
       },
       "authors": [
         {
-          "affiliation": "UK National Cyber Security Centre",
-          "country": "",
-          "email": "florence.d@ncsc.gov.uk",
-          "name": "Flo D",
-          "person": 128468,
+          "affiliation": "Ericsson",
+          "country": "Finland",
+          "email": "jari.arkko@piuha.net",
+          "name": "Jari Arkko",
+          "person": 21072,
+          "titlepage_name": "",
         },
         {
-          "affiliation": "UK National Cyber Security Centre",
-          "country": "",
-          "email": "michael.p1@ncsc.gov.uk",
-          "name": "Michael P",
-          "person": 139514,
+          "affiliation": "Ericsson",
+          "country": "Finland",
+          "email": "vesa.lehtovirta@ericsson.com",
+          "name": "Vesa Lehtovirta",
+          "person": 107410,
+          "titlepage_name": "",
         },
         {
-          "affiliation": "Naval Postgraduate School",
-          "country": "",
-          "email": "britta.hale@nps.edu",
-          "name": "Britta Hale",
-          "person": 125725,
+          "affiliation": "Ericsson",
+          "country": "Finland",
+          "email": "vesa.torvinen@ericsson.com",
+          "name": "Vesa Torvinen",
+          "person": 105361,
+          "titlepage_name": "",
+        },
+        {
+          "affiliation": "Independent",
+          "country": "Finland",
+          "email": "pe@iki.fi",
+          "name": "Pasi Eronen",
+          "person": 106164,
+          "titlepage_name": "",
         },
       ],
+      "errata": [],
       "formats": [
         "txt",
         "xml",
       ],
       "group": {
-        "acronym": "pquip",
-        "name": "Post-Quantum Use In Protocols",
+        "acronym": "emu",
+        "name": "EAP Method Update",
       },
       "identifiers": [
         {
           "type": "doi",
-          "value": "10.17487/RFC9794",
+          "value": "10.17487/RFC9048",
         },
       ],
-      "number": 9794,
+      "keywords": [
+        "keyword",
+      ],
+      "number": 9048,
       "obsoleted_by": [],
-      "pages": 15,
-      "published": "2025-06-13",
+      "obsoletes": [],
+      "pages": 40,
+      "published": "2021-10-29",
+      "see_also": [],
       "status": {
-        "name": "Informational",
-        "slug": "informational",
-      },
-      "stream": {
-        "description": "Internet Engineering Task Force (IETF)",
-        "name": "IETF",
-        "slug": "IETF",
-      },
-      "text": "",
-      "title": "Terminology for Post-Quantum Traditional Hybrid Schemes",
-      "updated_by": [],
-    },
-    {
-      "abstract": "This document describes an extension to the Extensible Provisioning
-Protocol (EPP) that allows EPP clients to manage the Time-to-Live
-(TTL) value for domain name delegation records.",
-      "area": {
-        "acronym": "art",
-        "name": "Applications and Real-Time Area",
-      },
-      "authors": [
-        {
-          "affiliation": "ICANN",
-          "country": "US",
-          "email": "gavin.brown@icann.org",
-          "name": "Gavin Brown",
-          "person": 139474,
-        },
-      ],
-      "formats": [
-        "txt",
-        "xml",
-      ],
-      "group": {
-        "acronym": "regext",
-        "name": "Registration Protocols Extensions",
-      },
-      "identifiers": [
-        {
-          "type": "doi",
-          "value": "10.17487/RFC9803",
-        },
-      ],
-      "number": 9803,
-      "obsoleted_by": [],
-      "pages": 24,
-      "published": "2025-06-13",
-      "status": {
-        "name": "Internet Standard",
+        "name": "standards track",
         "slug": "standard",
       },
       "stream": {
@@ -107,9 +82,83 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
         "name": "IETF",
         "slug": "IETF",
       },
-      "text": "",
-      "title": "Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values",
+      "subseries": [],
+      "title": "Improved Extensible Authentication Protocol Method for 3GPP Mobile Network Authentication and Key Agreement (EAP-AKA')",
+      "updated_by": [
+        {
+          "id": 143548,
+          "number": 9678,
+          "title": "Forward Secrecy Extension to the Improved Extensible Authentication Protocol Method for Authentication and Key Agreement (EAP-AKA' FS)",
+        },
+      ],
+      "updates": [
+        {
+          "id": 126119,
+          "number": 4187,
+          "title": "Extensible Authentication Protocol Method for 3rd Generation Authentication and Key Agreement (EAP-AKA)",
+        },
+        {
+          "id": 127335,
+          "number": 5448,
+          "title": "Improved Extensible Authentication Protocol Method for 3rd Generation Authentication and Key Agreement (EAP-AKA')",
+        },
+      ],
+    },
+    {
+      "abstract": "This document is a product of the Path Aware Networking Research Group (PANRG). At the first meeting of the PANRG, the Research Group agreed to catalog and analyze past efforts to develop and deploy Path Aware techniques, most of which were unsuccessful or at most partially successful, in order to extract insights and lessons for Path Aware networking researchers.
+
+ This document contains that catalog and analysis.",
+      "area": {
+        "acronym": "irtf",
+        "name": "IRTF",
+      },
+      "authors": [
+        {
+          "affiliation": "Tencent America",
+          "country": "United States of America",
+          "email": "spencerdawkins.ietf@gmail.com",
+          "name": "Spencer Dawkins",
+          "person": 107190,
+          "titlepage_name": "",
+        },
+      ],
+      "errata": [],
+      "formats": [
+        "txt",
+        "xml",
+      ],
+      "group": {
+        "acronym": "panrg",
+        "name": "Path Aware Networking RG",
+      },
+      "identifiers": [
+        {
+          "type": "doi",
+          "value": "10.17487/RFC9049",
+        },
+      ],
+      "keywords": [
+        "keyword",
+      ],
+      "number": 9049,
+      "obsoleted_by": [],
+      "obsoletes": [],
+      "pages": 36,
+      "published": "2021-06-25",
+      "see_also": [],
+      "status": {
+        "name": "informational",
+        "slug": "informational",
+      },
+      "stream": {
+        "description": "Internet Research Task Force (IRTF)",
+        "name": "IRTF",
+        "slug": "IRTF",
+      },
+      "subseries": [],
+      "title": "Path Aware Networking: Obstacles to Deployment (A Bestiary of Roads Not Taken)",
       "updated_by": [],
+      "updates": [],
     },
     {
       "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
@@ -124,6 +173,7 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
           "email": "rivest@mit.edu",
           "name": "Ronald Rivest",
           "person": 19822,
+          "titlepage_name": "",
         },
         {
           "affiliation": "Independent",
@@ -131,8 +181,10 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
           "email": "d3e3e3@gmail.com",
           "name": "Donald Eastlake",
           "person": 102391,
+          "titlepage_name": "",
         },
       ],
+      "errata": [],
       "formats": [
         "txt",
         "xml",
@@ -147,12 +199,17 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
           "value": "10.17487/RFC9804",
         },
       ],
+      "keywords": [
+        "keyword",
+      ],
       "number": 9804,
       "obsoleted_by": [],
+      "obsoletes": [],
       "pages": 22,
       "published": "2025-06-17",
+      "see_also": [],
       "status": {
-        "name": "Informational",
+        "name": "informational",
         "slug": "informational",
       },
       "stream": {
@@ -160,9 +217,10 @@ Protocol (EPP) that allows EPP clients to manage the Time-to-Live
         "name": "IETF",
         "slug": "IETF",
       },
-      "text": "",
+      "subseries": [],
       "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",
       "updated_by": [],
+      "updates": [],
     },
   ],
 }

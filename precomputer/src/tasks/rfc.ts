@@ -83,7 +83,6 @@ export const uploadRfcCommonJson = async (
   return true
 }
 
-
 export const uploadRefsRef = async (rfcNumber: number): Promise<boolean> => {
   const rfc = await getRfcCommonCached(rfcNumber)
   const rfcRef = renderRefsRef(rfc)
