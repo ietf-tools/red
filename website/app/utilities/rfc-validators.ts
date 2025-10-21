@@ -156,6 +156,7 @@ export const RfcCommonSchema = z.object({
     .optional(),
   pages: z.number().optional(),
   status: RfcCommonStatusSchema,
+  publicationStatus: RfcCommonStatusSchema.optional(),
   subseries: z
     .array(
       z.object({

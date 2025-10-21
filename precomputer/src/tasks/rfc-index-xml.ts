@@ -1,16 +1,15 @@
 import { resolve } from 'node:path'
 import { readFile } from 'node:fs/promises'
-import {
-  XmlDocument,
-  XsdValidator,
-  XmlValidateError
-} from 'libxml2-wasm'
+import { XmlDocument, XsdValidator, XmlValidateError } from 'libxml2-wasm'
 import { DateTime } from 'luxon'
 import {
   formatAuthor,
   formatFormat
 } from '../utilities/rfc-converters-utils.ts'
-import type { InfoSubseriesItem, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import type {
+  InfoSubseriesItem,
+  RfcCommon
+} from '../../../website/app/utilities/rfc-validators.ts'
 import {
   RFC_INDEX_XML_PATH,
   RFC_INDEX_XSD_PATH,
@@ -211,18 +210,27 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
       rfcEntry.appendChild(createElementNS('draft', rfc.draft.slug))
     }
 
-    type UppercaseStatusName = Uppercase<RfcCommon["status"]["name"]>
+    type UppercaseStatusName = Uppercase<RfcCommon['status']['name']>
 
-    const statusNameUppercase = rfc.status.name.toUpperCase() as UppercaseStatusName
+    const currentStatusNameUppercase =
+      rfc.status.name.toUpperCase() as UppercaseStatusName
+    const currentStatusForXml =
+      currentStatusNameUppercase === 'STANDARDS TRACK'
+        ? ('PROPOSED STANDARD' as const)
+        : currentStatusNameUppercase
+    rfcEntry.appendChild(createElementNS('current-status', currentStatusForXml))
 
-    const xmlStatusName = statusNameUppercase === 'STANDARDS TRACK' ? 'PROPOSED STANDARD' as const : statusNameUppercase
-    rfcEntry.appendChild(
-      createElementNS('current-status', xmlStatusName)
-    )
-
-    rfcEntry.appendChild(
-      createElementNS('publication-status', xmlStatusName)
-    )
+    if (rfc.publicationStatus) {
+      const publicationStatusNameUppercase =
+        rfc.publicationStatus.name.toUpperCase() as UppercaseStatusName
+      const publicationStatusForXml =
+        publicationStatusNameUppercase === 'STANDARDS TRACK'
+          ? ('PROPOSED STANDARD' as const)
+          : currentStatusNameUppercase
+      rfcEntry.appendChild(
+        createElementNS('publication-status', publicationStatusForXml)
+      )
+    }
 
     rfcEntry.appendChild(createElementNS('stream', rfc.stream.slug))
 
@@ -277,7 +285,10 @@ const renderSubseries = async (
   subseries.forEach((subseriesItem) => {
     const entry = createElementNS(`${subseriesItem.type}-entry`)
     entry.appendChild(
-      createElementNS('doc-id', `${subseriesItem.type.toUpperCase()}${subseriesItem.number}`)
+      createElementNS(
+        'doc-id',
+        `${subseriesItem.type.toUpperCase()}${subseriesItem.number}`
+      )
     )
     if (shouldRenderFirstContentsAsTitle) {
       let title = ''
