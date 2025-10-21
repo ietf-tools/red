@@ -51,6 +51,7 @@ export const RfcCommonStreamSlugSchema = z.union([
   z.literal('Legacy')
 ])
 
+// If changing this also consider changing the Typesense status parsing code
 export const RfcCommonStatusSchema = z.union([
   z.object({
     slug: z.literal('unknown'),

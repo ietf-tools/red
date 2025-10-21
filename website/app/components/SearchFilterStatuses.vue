@@ -24,13 +24,13 @@ import type { TypeSenseSearchItem } from '~/utilities/typesense'
 type StatusName = TypeSenseSearchItem["status"]["name"]
 
 const predefinedOrder: StatusName[] = [
-  'unknown',
-  'best current practice',
-  'experimental',
-  'historic',
-  'informational',
-  'not issued',
-  'standards track',
+  'Unknown',
+  'Best Current Practice',
+  'Experimental',
+  'Historic',
+  'Informational',
+  'Not Issued',
+  'Proposed Standard',
 ]
 
 function reorderItems(a: TypeSenseSearchItem['status'], b: TypeSenseSearchItem['status']) {

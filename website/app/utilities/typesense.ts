@@ -1,7 +1,36 @@
 import { z } from 'zod'
-import { RfcCommonStatusSchema } from '../utilities/rfc-validators'
 
-export const TypesenseSearchItemStatusSchema = RfcCommonStatusSchema
+// If changing this also consider changing the RfcCommon status parsing code
+export const TypesenseSearchItemStatusSchema = z.union([
+  z.object({
+    slug: z.literal('unknown'),
+    name: z.literal('Unknown')
+  }),
+  z.object({
+    slug: z.literal('bcp'),
+    name: z.literal('Best Current Practice')
+  }),
+  z.object({
+    slug: z.literal('experimental'),
+    name: z.literal('Experimental')
+  }),
+  z.object({
+    slug: z.literal('historic'),
+    name: z.literal('Historic')
+  }),
+  z.object({
+    slug: z.literal('inf'),
+    name: z.literal('Informational')
+  }),
+  z.object({
+    slug: z.literal('not-issued'),
+    name: z.literal('Not Issued')
+  }),
+  z.object({
+    slug: z.literal('ps'),
+    name: z.literal('Proposed Standard')
+  }),  
+])
 
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
 export const TypeSenseSearchItemSchema = z.object({
