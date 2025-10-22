@@ -425,3 +425,5 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
  */
 export const typeSenseEncodeUriComponent = (uriComponent: string) =>
   encodeURIComponent(uriComponent).replace(/%20/g, '+')
+
+export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/favicon-${widthPx}x${heightPx}.png`

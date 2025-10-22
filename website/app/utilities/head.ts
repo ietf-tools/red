@@ -1,6 +1,6 @@
 import type { DateTime } from 'luxon'
 import { useHead } from 'nuxt/app'
-import { linkPreviewImageUrlBuilder } from './url'
+import { linkPreviewImageUrlBuilder, faviconPathBuilder } from './url'
 import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import {
   OPENGRAPH_DIMENSIONS,
@@ -10,6 +10,9 @@ import {
 const IMAGE_PREVIEW_ALT_TEXT = 'RFC-Editor: Official home of RFCs'
 
 type WidthHeight = (typeof imagePreviewDimensions)[number]
+
+type UseHeadParameters = Parameters<typeof useHead>
+type UseHeadInput = UseHeadParameters[0]
 
 const SITE_NAME = 'RFC Editor'
 
@@ -34,11 +37,14 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
   useHead({
     title: formattedTitle,
     meta: [
-      ...buildGeneric(newProps),
-      ...buildOpenGraph(newProps),
-      ...buildTwitter(newProps)
+      ...buildGenericMetaTags(newProps),
+      ...buildOpenGraphMetaTags(newProps),
+      ...buildTwitterMetaTags(newProps)
     ],
-    link: [{ rel: 'canonical', href: props.canonicalUrl }]
+    link: [
+      { rel: 'canonical', href: props.canonicalUrl },
+      ...buildFaviconLinks()
+    ]
   })
 }
 
@@ -83,7 +89,7 @@ type MetaTag = {
   content: string
 }
 
-const buildOpenGraph = (props: UseRfcEditorProps) => {
+const buildOpenGraphMetaTags = (props: UseRfcEditorProps) => {
   const linkPreviewImage = linkPreviewImageBuilder('opengraph')
   const metaTags: MetaTag[] = [
     {
@@ -163,7 +169,7 @@ const buildOpenGraph = (props: UseRfcEditorProps) => {
   return metaTags
 }
 
-const buildTwitter = (props: UseRfcEditorProps) => {
+const buildTwitterMetaTags = (props: UseRfcEditorProps) => {
   const linkPreviewImage = linkPreviewImageBuilder('twitter')
   const metaTags: MetaTag[] = [
     {
@@ -198,7 +204,7 @@ const buildTwitter = (props: UseRfcEditorProps) => {
   return metaTags
 }
 
-const buildGeneric = (props: UseRfcEditorProps) => {
+const buildGenericMetaTags = (props: UseRfcEditorProps) => {
   const metaTags: MetaTag[] = [
     {
       property: 'generator',
@@ -220,7 +226,7 @@ const buildGeneric = (props: UseRfcEditorProps) => {
     })
   }
 
-  // RFCs can have keywords. It's unclear who the consumers of this meta tag would be as this meta tag is mostly ignored these days
+  // RFCs can have keywords. It's unclear who the consumers of this meta tag would be as keywords is mostly ignored these days, but the previous site had it so we will too
   if (props.keywords) {
     metaTags.push({
       property: 'keywords',
@@ -229,4 +235,31 @@ const buildGeneric = (props: UseRfcEditorProps) => {
   }
 
   return metaTags
+}
+
+const FAVICON_DIMENSIONS: [number, number][] = [
+  [16, 16],
+  [32, 32],
+  [48, 48],
+  [180, 180],
+  [192, 192],
+  [512, 512]
+]
+
+type LinkTag = {
+  // extracting types from unhead is hard so we'll just make some similar types here
+  // this typing isn't exhaustive -- change it as needed
+  rel: 'icon'
+  type: 'image/png'
+  sizes: `${number}x${number}`,
+  href: string
+}
+
+const buildFaviconLinks = (): LinkTag[] => {
+  return FAVICON_DIMENSIONS.map(([widthPx, heightPx]): LinkTag => ({
+    rel: 'icon',
+    type: 'image/png',
+    sizes: `${widthPx}x${heightPx}`,
+    href: faviconPathBuilder(widthPx, heightPx)
+  }))
 }
