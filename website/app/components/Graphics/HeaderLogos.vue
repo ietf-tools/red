@@ -18,6 +18,7 @@
       height="37"
     />
   </A>
+  <EnvironmentSpecificMessage />
 </template>
 
 <script setup lang="ts">
