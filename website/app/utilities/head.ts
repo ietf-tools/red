@@ -11,9 +11,6 @@ const IMAGE_PREVIEW_ALT_TEXT = 'RFC-Editor: Official home of RFCs'
 
 type WidthHeight = (typeof imagePreviewDimensions)[number]
 
-type UseHeadParameters = Parameters<typeof useHead>
-type UseHeadInput = UseHeadParameters[0]
-
 const SITE_NAME = 'RFC Editor'
 
 type UseRfcEditorProps = {
@@ -251,7 +248,7 @@ type LinkTag = {
   // this typing isn't exhaustive -- change it as needed
   rel: 'icon'
   type: 'image/png'
-  sizes: `${number}x${number}`,
+  sizes: `${number}x${number}`
   href: string
 }
 
