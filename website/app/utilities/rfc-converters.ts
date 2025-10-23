@@ -77,7 +77,7 @@ export const typeSenseSearchItemToRFCCommon = (
     ) {
       maybeRfcCommonStatus = {
         slug: 'standard',
-        name: 'standards track'
+        name: 'internet standard'
       } satisfies RfcCommon['status']
     }
 
