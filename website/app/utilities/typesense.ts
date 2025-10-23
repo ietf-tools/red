@@ -29,6 +29,10 @@ export const TypesenseSearchItemStatusSchema = z.union([
   z.object({
     slug: z.literal('ps'),
     name: z.literal('Proposed Standard')
+  }),
+  z.object({
+    slug: z.literal('std'),
+    name: z.literal('Internet Standard')
   })
 ])
 

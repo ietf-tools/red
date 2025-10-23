@@ -71,6 +71,14 @@ export const typeSenseSearchItemToRFCCommon = (
         slug: 'informational',
         name: 'informational'
       } satisfies RfcCommon['status']
+    } else if (
+      typesenseStatusData.slug === 'std' &&
+      typesenseStatusData.name === 'Internet Standard'
+    ) {
+      maybeRfcCommonStatus = {
+        slug: 'standard',
+        name: 'standards track'
+      } satisfies RfcCommon['status']
     }
 
     const { data: rfcCommonStatusData, error: rfcCommonStatusError } =
