@@ -2,9 +2,10 @@
 import { test, expect } from 'vitest'
 import { DateTime } from 'luxon'
 import type { ApiClient } from '../../generated/red-client'
-import { blankRfcCommon, isAprilFoolsRfc, parseSeriesId } from './rfc'
+import { isAprilFoolsRfc, parseSeriesId } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import { formatDatePublished } from './rfc-converters-utils'
+import type { RfcCommon } from './rfc-validators'
 
 test('parseRFCId', () => {
   expect(parseSeriesId('rfc1234')).toEqual({
@@ -40,6 +41,37 @@ test('formatDatePublished', () => {
   expect(formatDatePublished(april1, false)).toBe('April 2025')
   expect(formatDatePublished(april1, true)).toBe('1 April 2025')
 })
+
+export const blankRfcCommon: RfcCommon = {
+  number: 0,
+  title: '',
+  published: '1950-1-1',
+  pages: 0,
+  status: {
+    slug: 'unknown',
+    name: 'unknown'
+  },
+  authors: [],
+  group: {
+    acronym: '',
+    name: ''
+  },
+  area: {
+    acronym: '',
+    name: ''
+  },
+  stream: {
+    slug: 'Legacy',
+    name: '',
+    description: ''
+  },
+  identifiers: [],
+  obsoleted_by: [],
+  updated_by: [],
+  formats: [],
+  abstract: '',
+  text: ''
+}
 
 test('isAprilFoolsRfc', () => {
   const aprilFoolsRfc = structuredClone(blankRfcCommon)

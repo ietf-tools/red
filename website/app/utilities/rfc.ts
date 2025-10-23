@@ -22,36 +22,6 @@ export type SeriesType = 'rfc' | RfcCommonSubseriesType
 
 export type RfcCommonStatus = z.infer<typeof RfcCommonStatusSchema>
 
-export const blankRfcCommon: RfcCommon = {
-  number: 0,
-  title: '',
-  pages: 0,
-  status: {
-    slug: 'unknown',
-    name: 'unknown'
-  },
-  authors: [],
-  group: {
-    acronym: '',
-    name: ''
-  },
-  area: {
-    acronym: '',
-    name: ''
-  },
-  stream: {
-    slug: 'Legacy',
-    name: '',
-    description: ''
-  },
-  identifiers: [],
-  obsoleted_by: [],
-  updated_by: [],
-  formats: [],
-  abstract: '',
-  text: ''
-}
-
 export type SeriesId = {
   type: SeriesType
   number: number
