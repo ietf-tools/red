@@ -1,6 +1,7 @@
 import {
   CONTACT_PATH,
   DATATRACKER_URL_ORIGIN,
+  IAB_URL_ORIGIN,
   IETF_URL_ORIGIN,
   INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN,
   INTERNET_SOCIETY_URL_ORIGIN,
@@ -18,12 +19,12 @@ export const menuData: MenuItem[] = [
     children: [
       { label: 'IETF.org', href: IETF_URL_ORIGIN },
       { label: 'IRTF.org', href: IRTF_URL_ORIGIN },
+      { label: 'IAB.org', href: IAB_URL_ORIGIN },
       { label: 'Datatracker', href: DATATRACKER_URL_ORIGIN },
       {
-        label: 'Internet-Draft Author Resources',
+        label: 'Author Resources',
         href: INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN
-      },
-      { label: 'Internet Society', href: INTERNET_SOCIETY_URL_ORIGIN }
+      }
     ]
   },
   {
@@ -39,7 +40,7 @@ export const menuData: MenuItem[] = [
         href: 'http://mailman.rfc-editor.org/mailman/listinfo/rfc-interest'
       }
     ]
-  },
+  }
   // FIXME: these should go on a markdown page
   // {
   //   label: 'Translations',
