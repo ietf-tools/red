@@ -3,7 +3,7 @@ import { z } from 'zod'
 // If changing this also consider changing the RfcCommon status parsing code
 export const TypesenseSearchItemStatusSchema = z.union([
   z.object({
-    slug: z.literal('unknown'),
+    slug: z.literal('unkn'),
     name: z.literal('Unknown')
   }),
   z.object({
@@ -11,11 +11,11 @@ export const TypesenseSearchItemStatusSchema = z.union([
     name: z.literal('Best Current Practice')
   }),
   z.object({
-    slug: z.literal('experimental'),
+    slug: z.literal('exp'),
     name: z.literal('Experimental')
   }),
   z.object({
-    slug: z.literal('historic'),
+    slug: z.literal('hist'),
     name: z.literal('Historic')
   }),
   z.object({
@@ -29,6 +29,10 @@ export const TypesenseSearchItemStatusSchema = z.union([
   z.object({
     slug: z.literal('ps'),
     name: z.literal('Proposed Standard')
+  }),
+  z.object({
+    slug: z.literal('ds'),
+    name: z.literal('Draft Standard')
   }),
   z.object({
     slug: z.literal('std'),

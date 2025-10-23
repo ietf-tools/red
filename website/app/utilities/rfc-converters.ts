@@ -79,6 +79,38 @@ export const typeSenseSearchItemToRFCCommon = (
         slug: 'standard',
         name: 'internet standard'
       } satisfies RfcCommon['status']
+    } else if (
+      typesenseStatusData.slug === 'hist' &&
+      typesenseStatusData.name === 'Historic'
+    ) {
+      maybeRfcCommonStatus = {
+        slug: 'historic',
+        name: 'historic'
+      } satisfies RfcCommon['status']
+    } else if (
+      typesenseStatusData.slug === 'exp' &&
+      typesenseStatusData.name === 'Experimental'
+    ) {
+      maybeRfcCommonStatus = {
+        slug: 'experimental',
+        name: 'experimental'
+      } satisfies RfcCommon['status']
+    } else if (
+      typesenseStatusData.slug === 'unkn' &&
+      typesenseStatusData.name === 'Unknown'
+    ) {
+      maybeRfcCommonStatus = {
+        slug: 'unknown',
+        name: 'unknown'
+      } satisfies RfcCommon['status']
+    } else if (
+      typesenseStatusData.slug === 'ds' &&
+      typesenseStatusData.name === 'Draft Standard'
+    ) {
+      maybeRfcCommonStatus = {
+        slug: 'ds',
+        name: 'draft standard'
+      } satisfies RfcCommon['status']
     }
 
     const { data: rfcCommonStatusData, error: rfcCommonStatusError } =

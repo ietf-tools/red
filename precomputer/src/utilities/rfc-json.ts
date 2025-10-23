@@ -108,6 +108,9 @@ const formatRfcStatusAsRfcJsonStatus = (
       return 'UNKNOWN'
     case 'internet standard':
       return 'INTERNET STANDARD'
+    case 'draft standard':
+      // FIXME: is this an accurate conversion?
+      return 'PROPOSED STANDARD'
   }
   assertNever(status)
 }
