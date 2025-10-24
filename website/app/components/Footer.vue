@@ -7,7 +7,9 @@
           <Anchor
             :href="IETF_URL_ORIGIN"
             class="underline text-blue-100 font-semibold md:text-nowrap"
-          >Internet Engineering Task Force</Anchor>
+          >
+            Internet Engineering Task Force
+          </Anchor>
         </p>
         <div class="flex gap-7 items-center mt-2 pl-3 lg:mt-5">
           <Anchor :href="IETF_URL_ORIGIN">
@@ -51,6 +53,6 @@
 </template>
 
 <script setup lang="ts">
-import { IETF_URL_ORIGIN, INTERNET_SOCIETY_URL_ORIGIN } from '../utilities/url'
+import { IETF_URL_ORIGIN } from '../utilities/url'
 import { menuData } from './FooterNavData'
 </script>
