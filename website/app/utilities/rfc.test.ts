@@ -48,15 +48,17 @@ export const blankRfcCommon: RfcCommon = {
   published: '1950-1-1',
   pages: 0,
   status: {
-    slug: 'unknown',
+    slug: 'unkn',
     name: 'unknown'
   },
   authors: [],
   group: {
     acronym: '',
-    name: ''
+    name: '',
+    type: 'area'
   },
   area: {
+    type: 'area',
     acronym: '',
     name: ''
   },
@@ -77,6 +79,7 @@ test('isAprilFoolsRfc', () => {
   const aprilFoolsRfc = structuredClone(blankRfcCommon)
   aprilFoolsRfc.published = '1979-04-01'
   aprilFoolsRfc.group = {
+    type: 'area',
     name: 'none',
     acronym: 'none'
   }
@@ -88,6 +91,7 @@ test('isAprilFoolsRfc', () => {
 
   const notAprilFoolsRfc2 = structuredClone(aprilFoolsRfc)
   notAprilFoolsRfc2.group = {
+    type: 'ietf',
     name: 'ietf',
     acronym: 'ietf'
   }

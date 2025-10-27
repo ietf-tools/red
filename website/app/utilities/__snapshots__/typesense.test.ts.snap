@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`typeSenseSearchItemToRFC 1`] = `
+{
+  "abstract": "This document provides a set of standard Public Key Cryptography (PKC) test keys that may be used wherever pre-generated keys and associated operations like digital signatures are required. Like the European Institute for Computer Antivirus Research (EICAR) virus test and the Generic Test for Unsolicited Bulk Email (GTUBE) spam test files, these publicly known test keys can be detected and recognised by applications consuming them as being purely for testing purposes without assigning any security properties to them.",
+  "area": {
+    "acronym": "iesg",
+    "name": "Internet Engineering Steering Group",
+    "type": "area",
+  },
+  "authors": [
+    {
+      "name": "Peter Gutmann",
+      "person": 0,
+    },
+    {
+      "name": "Corey Bonnell",
+      "person": 1,
+    },
+  ],
+  "formats": [],
+  "group": {
+    "acronym": "sec",
+    "name": "Security Area",
+    "type": "area",
+  },
+  "number": 9500,
+  "published": "2023-12-08T20:50:44.000Z",
+  "status": {
+    "name": "informational",
+    "slug": "inf",
+  },
+  "stream": {
+    "name": "IETF",
+    "slug": "IETF",
+  },
+  "subseries": undefined,
+  "text": "",
+  "title": "Standard Public Key Cryptography (PKC) Test Keys",
+}
+`;

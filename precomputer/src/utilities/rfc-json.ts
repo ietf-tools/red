@@ -102,7 +102,7 @@ const formatRfcStatusAsRfcJsonStatus = (
       return 'INFORMATIONAL'
     case 'not issued':
       return 'NOT ISSUED'
-    case 'standards track':
+    case 'proposed standard':
       return 'PROPOSED STANDARD'
     case 'unknown':
       return 'UNKNOWN'

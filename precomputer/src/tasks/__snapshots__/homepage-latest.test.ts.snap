@@ -14,6 +14,7 @@ exports[`homepage 3 items 1`] = `
       "area": {
         "acronym": "sec",
         "name": "Security Area",
+        "type": "area",
       },
       "authors": [
         {
@@ -51,12 +52,13 @@ exports[`homepage 3 items 1`] = `
       ],
       "errata": [],
       "formats": [
-        "txt",
         "xml",
+        "txt",
       ],
       "group": {
         "acronym": "emu",
         "name": "EAP Method Update",
+        "type": "wg",
       },
       "identifiers": [
         {
@@ -74,8 +76,8 @@ exports[`homepage 3 items 1`] = `
       "published": "2021-10-29",
       "see_also": [],
       "status": {
-        "name": "standards track",
-        "slug": "standard",
+        "name": "proposed standard",
+        "slug": "ps",
       },
       "stream": {
         "description": "Internet Engineering Task Force (IETF)",
@@ -111,6 +113,7 @@ exports[`homepage 3 items 1`] = `
       "area": {
         "acronym": "irtf",
         "name": "IRTF",
+        "type": "irtf",
       },
       "authors": [
         {
@@ -124,12 +127,13 @@ exports[`homepage 3 items 1`] = `
       ],
       "errata": [],
       "formats": [
-        "txt",
         "xml",
+        "txt",
       ],
       "group": {
         "acronym": "panrg",
         "name": "Path Aware Networking RG",
+        "type": "rg",
       },
       "identifiers": [
         {
@@ -148,7 +152,7 @@ exports[`homepage 3 items 1`] = `
       "see_also": [],
       "status": {
         "name": "informational",
-        "slug": "informational",
+        "slug": "inf",
       },
       "stream": {
         "description": "Internet Research Task Force (IRTF)",
@@ -165,6 +169,7 @@ exports[`homepage 3 items 1`] = `
       "area": {
         "acronym": "art",
         "name": "Applications and Real-Time Area",
+        "type": "area",
       },
       "authors": [
         {
@@ -186,12 +191,13 @@ exports[`homepage 3 items 1`] = `
       ],
       "errata": [],
       "formats": [
-        "txt",
         "xml",
+        "txt",
       ],
       "group": {
         "acronym": "art",
         "name": "Applications and Real-Time Area",
+        "type": "area",
       },
       "identifiers": [
         {
@@ -210,7 +216,7 @@ exports[`homepage 3 items 1`] = `
       "see_also": [],
       "status": {
         "name": "informational",
-        "slug": "informational",
+        "slug": "inf",
       },
       "stream": {
         "description": "Internet Engineering Task Force (IETF)",

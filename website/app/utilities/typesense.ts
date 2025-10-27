@@ -40,6 +40,18 @@ export const TypesenseSearchItemStatusSchema = z.union([
   })
 ])
 
+export const TypesenseSearchItemAreaSchema = z.object({
+  acronym: z.string(),
+  name: z.string(),
+  full: z.string()
+})
+
+export const TypesenseSearchItemGroupSchema = z.object({
+  acronym: z.string(),
+  name: z.string(),
+  full: z.string()
+})
+
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
 export const TypeSenseSearchItemSchema = z.object({
   id: z.string(),
@@ -73,18 +85,8 @@ export const TypeSenseSearchItemSchema = z.object({
     .optional(),
   rfc: z.string(),
 
-  area: z
-    .object({
-      acronym: z.string(),
-      name: z.string(),
-      full: z.string()
-    })
-    .optional(),
-  group: z.object({
-    acronym: z.string(),
-    name: z.string(),
-    full: z.string()
-  }),
+  area: TypesenseSearchItemAreaSchema.optional(),
+  group: TypesenseSearchItemGroupSchema,
 
   stream: z
     .object({

@@ -54,7 +54,7 @@ export const RfcCommonStreamSlugSchema = z.union([
 // If changing this also consider changing the Typesense status parsing code
 export const RfcCommonStatusSchema = z.union([
   z.object({
-    slug: z.literal('unknown'),
+    slug: z.literal('unkn'),
     name: z.literal('unknown')
   }),
   z.object({
@@ -62,15 +62,15 @@ export const RfcCommonStatusSchema = z.union([
     name: z.literal('best current practice')
   }),
   z.object({
-    slug: z.literal('experimental'),
+    slug: z.literal('exp'),
     name: z.literal('experimental')
   }),
   z.object({
-    slug: z.literal('historic'),
+    slug: z.literal('hist'),
     name: z.literal('historic')
   }),
   z.object({
-    slug: z.literal('informational'),
+    slug: z.literal('inf'),
     name: z.literal('informational')
   }),
   z.object({
@@ -78,16 +78,14 @@ export const RfcCommonStatusSchema = z.union([
     name: z.literal('not issued')
   }),
   z.object({
-    slug: z.literal('standard'),
-    name: z.literal('standards track')
-  }),
-  z.object({
-    // FIXME: this status isn't available from the current Red API but Typesense returns it
-    slug: z.literal('standard'),
+    slug: z.literal('std'),
     name: z.literal('internet standard')
   }),
   z.object({
-    // FIXME: this status isn't available from the current Red API but Typesense returns it
+    slug: z.literal('ps'),
+    name: z.literal('proposed standard')
+  }),
+  z.object({
     slug: z.literal('ds'),
     name: z.literal('draft standard')
   })
@@ -153,17 +151,43 @@ const RfcCommonDraftSchema = z.object({
   slug: z.string()
 })
 
+export const RfcCommonAreaTypeSchema = z.union([
+  z.literal('area'),
+  z.literal('irtf'),
+  z.literal('ietf'),
+  z.literal('rfcedtyp')
+])
+
+export const RfcCommonAreaSchema = z.object({
+  acronym: z.string(),
+  name: z.string(),
+  type: RfcCommonAreaTypeSchema
+})
+
+export const RfcCommonGroupTypeSchema = z.union([
+  z.literal('individ'),
+  z.literal('wg'),
+  z.literal('area'),
+  z.literal('rag'),
+  z.literal('ietf'),
+  z.literal('ag'),
+  z.literal('rg'),
+  z.literal('edwg'),
+  z.literal('rfcedtyp')
+])
+
+export const RfcCommonGroupSchema = z.object({
+  acronym: z.string(),
+  name: z.string(),
+  type: RfcCommonGroupTypeSchema
+})
+
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
   draft: RfcCommonDraftSchema.optional(),
   published: z.string().optional(),
-  area: z
-    .object({
-      acronym: z.string(),
-      name: z.string()
-    })
-    .optional(),
+  area: RfcCommonAreaSchema.optional(),
   pages: z.number().optional(),
   status: RfcCommonStatusSchema,
   subseries: z
@@ -176,12 +200,7 @@ export const RfcCommonSchema = z.object({
     )
     .optional(),
   authors: z.array(RfcCommonAuthorSchema),
-  group: z
-    .object({
-      acronym: z.string(),
-      name: z.string()
-    })
-    .optional(),
+  group: RfcCommonGroupSchema.optional(),
   stream: z.object({
     slug: RfcCommonStreamSlugSchema,
     name: z.string(),

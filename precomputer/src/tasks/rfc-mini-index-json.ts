@@ -28,14 +28,12 @@ export const renderRfcMiniIndexJson = async (
     const rfcMini = rfcToRfcMini(rfc)
     jsonParts.push(JSON.stringify(rfcMini))
   }
-
   const createdOn = DateTime.now()
-  const json = `{"miniIndex":[\n${jsonParts.join(
-    ',\n'
-  )}\n], "createdOn": "${createdOn.toISODate()}" }`
-
-  const data = JSON.parse(json)
+  const data = {
+    miniIndex: JSON.parse(`[${jsonParts.join(',\n')}]`),
+    createdOn: createdOn.toISODate()
+  }
+  const json = JSON.stringify(data)
   validateDocument(data, RfcMiniIndexSchema)
-
   return json
 }

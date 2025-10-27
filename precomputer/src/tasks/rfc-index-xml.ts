@@ -214,14 +214,13 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
     type UppercaseStatusName = Uppercase<RfcCommon["status"]["name"]>
 
     const statusNameUppercase = rfc.status.name.toUpperCase() as UppercaseStatusName
-
-    const xmlStatusName = statusNameUppercase === 'STANDARDS TRACK' ? 'PROPOSED STANDARD' as const : statusNameUppercase
     rfcEntry.appendChild(
-      createElementNS('current-status', xmlStatusName)
+      createElementNS('current-status', statusNameUppercase)
     )
 
+    // FIXME: use publication status when available
     rfcEntry.appendChild(
-      createElementNS('publication-status', xmlStatusName)
+      createElementNS('publication-status', statusNameUppercase)
     )
 
     rfcEntry.appendChild(createElementNS('stream', rfc.stream.slug))

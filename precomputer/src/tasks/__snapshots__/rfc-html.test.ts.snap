@@ -12066,6 +12066,7 @@ Internet Architecture Board Standards Track                    [Page 56]
     "area": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
+      "type": "area",
     },
     "authors": [
       {
@@ -12087,12 +12088,13 @@ Internet Architecture Board Standards Track                    [Page 56]
     ],
     "errata": [],
     "formats": [
-      "txt",
       "xml",
+      "txt",
     ],
     "group": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
+      "type": "area",
     },
     "identifiers": [
       {
@@ -12111,7 +12113,7 @@ Internet Architecture Board Standards Track                    [Page 56]
     "see_also": [],
     "status": {
       "name": "informational",
-      "slug": "informational",
+      "slug": "inf",
     },
     "stream": {
       "description": "Internet Engineering Task Force (IETF)",
@@ -157403,6 +157405,7 @@ document:",
     "area": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
+      "type": "area",
     },
     "authors": [
       {
@@ -157424,12 +157427,13 @@ document:",
     ],
     "errata": [],
     "formats": [
-      "txt",
       "xml",
+      "txt",
     ],
     "group": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
+      "type": "area",
     },
     "identifiers": [
       {
@@ -157448,7 +157452,7 @@ document:",
     "see_also": [],
     "status": {
       "name": "informational",
-      "slug": "informational",
+      "slug": "inf",
     },
     "stream": {
       "description": "Internet Engineering Task Force (IETF)",

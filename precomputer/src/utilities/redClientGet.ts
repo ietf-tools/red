@@ -1,6 +1,8 @@
 import { ApiClient } from '../../../website/generated/red-client.ts'
 import type { Rfc, RfcMetadata } from '../../../website/generated/red-client.ts'
 import {
+  RfcCommonAreaTypeSchema,
+  RfcCommonGroupTypeSchema,
   RfcCommonStatusSchema,
   RfcCommonSubseriesTypeSchema,
   type InfoSubseriesItem,
@@ -77,8 +79,8 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
     status: parseStatus(rfc.status, rfc.number),
     pages: rfc.pages ?? undefined,
     authors: rfc.authors,
-    group: rfc.group,
-    area: rfc.area ?? undefined,
+    group: parseGroup(rfc.group),
+    area: parseArea(rfc.area),
     stream: {
       slug: parseStreamSlug(rfc.stream.slug),
       name: rfc.stream.name,
@@ -106,8 +108,8 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     status: parseStatus(rfcMetadata.status, rfcMetadata.number),
     pages: rfcMetadata.pages ?? undefined,
     authors: rfcMetadata.authors,
-    group: rfcMetadata.group,
-    area: rfcMetadata.area,
+    group: parseGroup(rfcMetadata.group),
+    area: parseArea(rfcMetadata.area),
     stream: {
       slug: parseStreamSlug(rfcMetadata.stream.slug),
       name: rfcMetadata.stream.name,
@@ -280,21 +282,23 @@ export const sortInfoSubseriesItem = (
 
 export const parseStatus = (
   status: Rfc['status'] | RfcMetadata['status'] | undefined,
-  rfcNumber: number
+  rfcNumberForDebug?: number
 ): RfcCommon['status'] => {
   if (
     // FIXME: when all RFCs have a status remove this
     status === undefined
   ) {
     return {
-      slug: 'unknown',
+      slug: 'unkn',
       name: 'unknown'
     }
   }
   const { data, error } = RfcCommonStatusSchema.safeParse(status)
   if (error) {
     throw Error(
-      `Unable to parse RFC ${rfcNumber} status ${JSON.stringify(status)}").`
+      `Unable to parse${
+        rfcNumberForDebug !== undefined ? ` RFC ${rfcNumberForDebug}` : ''
+      } status ${JSON.stringify(status)}").`
     )
   }
   return data
@@ -327,6 +331,49 @@ const parseStreamSlug = (streamSlug?: string): RfcCommon['stream']['slug'] => {
   }
 
   throw Error(`Unable to parse stream slug "${streamSlug}"`)
+}
+
+const parseArea = (
+  area: Rfc['area'] | RfcMetadata['area'],
+  rfcNumberForDebug?: number
+): RfcCommon['area'] => {
+  if (!area) return undefined
+  const fromRfcErrorSuffix =
+    rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
+  const { acronym, name, type } = area
+  const { data: parsedType, error } = RfcCommonAreaTypeSchema.safeParse(type)
+  if (error) {
+    console.error(error)
+    throw Error(
+      `Problem parsing area type ${JSON.stringify(area)}${fromRfcErrorSuffix}`
+    )
+  }
+  return {
+    acronym,
+    name,
+    type: parsedType
+  }
+}
+
+const parseGroup = (
+  group: Rfc['group'] | RfcMetadata['group'],
+  rfcNumberForDebug?: number
+): RfcCommon['group'] => {
+  const { acronym, name, type } = group
+  const { data: parsedType, error } = RfcCommonGroupTypeSchema.safeParse(type)
+  if (error) {
+    console.error(error)
+    throw Error(
+      `Problem parsing group type ${JSON.stringify(group)} ${
+        rfcNumberForDebug !== undefined ? `from RFC ${rfcNumberForDebug}` : ''
+      }`
+    )
+  }
+  return {
+    acronym,
+    name,
+    type: parsedType
+  }
 }
 
 type RfcCommonSubseriesItem = NonNullable<RfcCommon['subseries']>[number]

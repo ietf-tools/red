@@ -229,12 +229,14 @@ export class ApiClient {
       sort?: ('-number' | '-published' | 'number' | 'published')[]
       status?: (
         | 'bcp'
-        | 'experimental'
-        | 'historic'
-        | 'informational'
+        | 'ds'
+        | 'exp'
+        | 'hist'
+        | 'inf'
         | 'not-issued'
-        | 'standard'
-        | 'unknown'
+        | 'ps'
+        | 'std'
+        | 'unkn'
       )[]
       stream?: string[]
     }) => {
@@ -497,6 +499,7 @@ export type GetSubjectPersonByIdErrorResponse400 = ParseErrorResponse
 export type Group = {
   acronym: string
   name: string
+  type?: string | null
 }
 
 export type OriginalStream = {
@@ -712,12 +715,14 @@ export type SearchPersonErrorResponse400 = ParseErrorResponse
 
 export type SlugEnum =
   | 'bcp'
-  | 'experimental'
-  | 'historic'
-  | 'informational'
+  | 'ds'
+  | 'exp'
+  | 'hist'
+  | 'inf'
   | 'not-issued'
-  | 'standard'
-  | 'unknown'
+  | 'ps'
+  | 'std'
+  | 'unkn'
 
 export type SourceFormatEnum = 'unknown' | 'xml-v2' | 'xml-v3' | 'txt'
 

@@ -1,6 +1,10 @@
 import type { z } from 'zod'
 import type { RfcCommon } from './rfc'
-import { RfcCommonStatusSchema } from './rfc-validators'
+import {
+  RfcCommonStatusSchema,
+  RfcCommonAreaSchema,
+  RfcCommonGroupSchema
+} from './rfc-validators'
 import {
   TypeSenseSearchItemSchema,
   TypesenseSearchItemStatusSchema
@@ -60,15 +64,15 @@ export const typeSenseSearchItemToRFCCommon = (
       typesenseStatusData.name === 'Proposed Standard'
     ) {
       maybeRfcCommonStatus = {
-        slug: 'standard',
-        name: 'standards track'
+        slug: 'ps',
+        name: 'proposed standard'
       } satisfies RfcCommon['status']
     } else if (
       typesenseStatusData.slug === 'inf' &&
       typesenseStatusData.name === 'Informational'
     ) {
       maybeRfcCommonStatus = {
-        slug: 'informational',
+        slug: 'inf',
         name: 'informational'
       } satisfies RfcCommon['status']
     } else if (
@@ -76,7 +80,7 @@ export const typeSenseSearchItemToRFCCommon = (
       typesenseStatusData.name === 'Internet Standard'
     ) {
       maybeRfcCommonStatus = {
-        slug: 'standard',
+        slug: 'std',
         name: 'internet standard'
       } satisfies RfcCommon['status']
     } else if (
@@ -84,7 +88,7 @@ export const typeSenseSearchItemToRFCCommon = (
       typesenseStatusData.name === 'Historic'
     ) {
       maybeRfcCommonStatus = {
-        slug: 'historic',
+        slug: 'hist',
         name: 'historic'
       } satisfies RfcCommon['status']
     } else if (
@@ -92,7 +96,7 @@ export const typeSenseSearchItemToRFCCommon = (
       typesenseStatusData.name === 'Experimental'
     ) {
       maybeRfcCommonStatus = {
-        slug: 'experimental',
+        slug: 'exp',
         name: 'experimental'
       } satisfies RfcCommon['status']
     } else if (
@@ -100,7 +104,7 @@ export const typeSenseSearchItemToRFCCommon = (
       typesenseStatusData.name === 'Unknown'
     ) {
       maybeRfcCommonStatus = {
-        slug: 'unknown',
+        slug: 'unkn',
         name: 'unknown'
       } satisfies RfcCommon['status']
     } else if (
@@ -124,7 +128,7 @@ export const typeSenseSearchItemToRFCCommon = (
   }
 
   const parseTypesenseStreamSlug = (
-    streamSlug?: string
+    streamSlug?: NonNullable<TypeSenseSearchItem['stream']>['slug']
   ): RfcCommon['stream']['slug'] => {
     if (!streamSlug) {
       return 'Legacy'
@@ -147,6 +151,46 @@ export const typeSenseSearchItemToRFCCommon = (
 
     throw Error(`Unable to parse stream slug "${streamSlug}"`)
   }
+  const parseTypesenseArea = (
+    area: TypeSenseSearchItem['area'],
+    rfcNumberForDebug?: number
+  ): RfcCommon['area'] => {
+    if (!area) return undefined
+
+    const { data: parsedArea, error } = RfcCommonAreaSchema.safeParse({
+      ...area,
+      // FIXME: update search to include this property
+      type: 'area'
+    })
+    if (error) {
+      const fromRfcErrorSuffix =
+        rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
+      console.error(error)
+      throw Error(
+        `Problem parsing area type ${JSON.stringify(area)}${fromRfcErrorSuffix}`
+      )
+    }
+    return parsedArea
+  }
+
+  const parseTypesenseGroup = (
+    group: TypeSenseSearchItem['group'],
+    rfcNumberForDebug?: number
+  ): RfcCommon['group'] => {
+    const { data: parsedGroup, error } = RfcCommonGroupSchema.safeParse({
+      ...group,
+      type: 'area'
+    })
+    if (error) {
+      const fromRfcErrorSuffix =
+        rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
+      console.error(error)
+      throw Error(
+        `Problem parsing group type ${JSON.stringify(group)} ${fromRfcErrorSuffix}`
+      )
+    }
+    return parsedGroup
+  }
 
   const published = new Date(item.publicationDate * 1000).toISOString()
   const authors =
@@ -157,19 +201,10 @@ export const typeSenseSearchItemToRFCCommon = (
 
   return {
     abstract: item.abstract,
-    area:
-      item.area ?
-        {
-          name: item.area.name,
-          acronym: item.area.acronym
-        }
-      : undefined,
+    area: parseTypesenseArea(item.area),
     authors,
     formats: [],
-    group: {
-      acronym: item.group.acronym,
-      name: item.group.name
-    },
+    group: parseTypesenseGroup(item.group),
     number: item.rfcNumber,
     published,
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,

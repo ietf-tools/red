@@ -677,6 +677,7 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
     "area": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
+      "type": "area",
     },
     "authors": [
       {
@@ -698,12 +699,13 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
     ],
     "errata": [],
     "formats": [
-      "txt",
       "xml",
+      "txt",
     ],
     "group": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
+      "type": "area",
     },
     "identifiers": [
       {
@@ -722,7 +724,7 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
     "see_also": [],
     "status": {
       "name": "informational",
-      "slug": "informational",
+      "slug": "inf",
     },
     "stream": {
       "description": "Internet Engineering Task Force (IETF)",

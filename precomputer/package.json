@@ -6,6 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "generate": "node --experimental-strip-types ./src/index.ts 1137",
+    "regenerate-test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
     "format": "npx prettier --config ./prettier.config.cjs src --write",
     "test": "TZ=UTC npm run test:unittests && npm run test:types",
     "test:types": "vue-tsc -b --noEmit",
