@@ -120,8 +120,8 @@ jobs:
     - name: Generate API client
       working-directory: ./
       run: |
-        npx apigen-ts ./red-api.yml --inline-enums --parse-dates ./red-client.ts
-        cp red-client.ts ./red/website/generated/
+        npx apigen-ts ./red-api.yml --inline-enums --parse-dates ./api-client.ts
+        cp api-client.ts ./red/precomputed/generated/
 
     - name: Archive red-api client
       uses: actions/upload-artifact@v4
@@ -129,7 +129,7 @@ jobs:
         name: red-api
         path: |
           red-api.yml
-          red-client.ts
+          api-client.ts
 
     # Build dev instead of production until we sort out how to do prerendering, which needs a live datatracker
     - name: NPM Install + Build Site

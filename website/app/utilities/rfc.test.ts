@@ -1,7 +1,7 @@
 // @vitest-environment nuxt
 import { test, expect } from 'vitest'
 import { DateTime } from 'luxon'
-import type { ApiClient } from '../../generated/red-client'
+import type { ApiClient } from '../../../precomputer/generated/api-client'
 import { isAprilFoolsRfc, parseSeriesId } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import { formatDatePublished } from './rfc-converters-utils'

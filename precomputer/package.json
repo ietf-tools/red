@@ -5,13 +5,13 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "generate": "node --experimental-strip-types ./src/index.ts 1137",
-    "regenerate-test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
     "format": "npx prettier --config ./prettier.config.cjs src --write",
     "test": "TZ=UTC npm run test:unittests && npm run test:types",
     "test:types": "vue-tsc -b --noEmit",
     "test:unittests": "vitest run",
-    "test:unittests:watch": "vitest run --watch"
+    "test:unittests:watch": "vitest run --watch",
+    "generate:test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
+    "generate:api": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/api-client.ts"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "@napi-rs/canvas": "0.1.77",
     "@supercharge/promise-pool": "3.2.0",
     "@types/luxon": "3.4.2",
+    "apigen-ts": "1.2.1",
     "feed": "5.1.0",
     "jsdom": "26.1.0",
     "libxml2-wasm": "0.6.0",

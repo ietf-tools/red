@@ -1,5 +1,5 @@
-import { ApiClient } from '../../../website/generated/red-client.ts'
-import type { Rfc, RfcMetadata } from '../../../website/generated/red-client.ts'
+import { ApiClient } from '../../generated/api-client.ts'
+import type { Rfc, RfcMetadata } from '../../generated/api-client.ts'
 import {
   RfcCommonAreaTypeSchema,
   RfcCommonGroupTypeSchema,

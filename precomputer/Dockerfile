@@ -8,7 +8,7 @@ RUN mkdir -p /app/website/generated
 WORKDIR /app
 
 COPY website/app/utilities/rfc-validators.ts ./website/app/utilities/rfc-validators.ts
-COPY website/generated/red-client.ts ./website/generated/red-client.ts
+COPY precomputer/generated/api-client.ts ./precomputer/generated/api-client.ts
 COPY website/package.json ./website/package.json
 COPY website/package-lock.json ./website/package-lock.json
 COPY precomputer/ ./precomputer

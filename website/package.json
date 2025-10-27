@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "build": "npm run generate && npm run build:nuxt",
+    "build": "npm run build:nuxt",
     "build:nuxt": "npx --no nuxt build",
     "build:dev": "npm run build:nuxt:dev",
     "build:nuxt:dev": "npx --no nuxt prepare && npx --no nuxt build --envName development",
@@ -19,9 +19,7 @@
     "test:lint:fix": "eslint . --fix",
     "test:types": "nuxt prepare && vue-tsc -b --noEmit",
     "test:unittests": "vitest run",
-    "test:unittests:watch": "vitest",
-    "generate": "npm run generate:api-red",
-    "generate:api-red": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/red-client.ts"
+    "test:unittests:watch": "vitest"
   },
   "dependencies": {
     "@internationalized/date": "3.8.1",
@@ -39,7 +37,6 @@
     "@pinia/nuxt": "0.11.2",
     "@tailwindcss/vite": "4.1.11",
     "@vueuse/core": "13.1.0",
-    "apigen-ts": "1.2.1",
     "better-sqlite3": "12.2.0",
     "core-js": "3.40.0",
     "lodash-es": "4.17.21",
