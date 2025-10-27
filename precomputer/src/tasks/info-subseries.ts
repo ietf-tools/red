@@ -1,14 +1,14 @@
 import { PromisePool } from '@supercharge/promise-pool'
 import { saveToS3, subseriesInfoPathBuilder } from '../utilities/s3.ts'
-import { InfoSubseriesItemSchema } from '../../../website/app/utilities/rfc-validators.ts'
-import type { InfoSubseriesItem } from '../../../website/app/utilities/rfc-validators.ts'
+import { SubseriesCommonSchema } from '../../../website/app/utilities/rfc-validators.ts'
+import type { SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 
 const CONSOLE_PURGE_LENGTH = 10
 const NUMBER_OF_CONCURRENT_SUBSERIES_S3_UPLOADS = 4
 
 export const uploadAllSubseries = async (
-  allSubseries: Readonly<InfoSubseriesItem[]>
+  allSubseries: Readonly<SubseriesCommon[]>
 ): Promise<boolean> => {
   const allSubseriesValidated = await renderAllSubseries(allSubseries)
   const logItems: string[] = []
@@ -62,11 +62,11 @@ export const uploadAllSubseries = async (
 }
 
 export const renderAllSubseries = async (
-  allSubseries: Readonly<InfoSubseriesItem[]>
-): Promise<InfoSubseriesItem[]> => {
+  allSubseries: Readonly<SubseriesCommon[]>
+): Promise<SubseriesCommon[]> => {
   return allSubseries.map((subseriesItem) => {
     // subseries are already in a data format we can use, so just validate it
-    validateDocument(subseriesItem, InfoSubseriesItemSchema)
+    validateDocument(subseriesItem, SubseriesCommonSchema)
     return subseriesItem
   })
 }

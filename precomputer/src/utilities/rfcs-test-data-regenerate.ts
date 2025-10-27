@@ -29,9 +29,9 @@ const regenerateTestData = async () => {
   )
 
   const warning = `// THIS FILE IS AUTO GENERATED. DO NOT EDIT.\n// Use \`npm run regenerate-test-data\` to update.\n`
-  const fileHeader = `${warning}\nimport type { RfcCommon, InfoSubseriesItem } from '../../../website/app/utilities/rfc-validators.ts'\n`
+  const fileHeader = `${warning}\nimport type { RfcCommon, SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'\n`
   const rfcsTypeScriptString = `export const testMockAllRfcs: RfcCommon[] = [\n  ${someRfcs.map((rfc) => JSON.stringify(rfc)).join(',\n  ')}\n]`
-  const subseriesTypeScriptString = `export const testMockAllSubseries: InfoSubseriesItem[] = [\n  ${someSubseries.map((rfc) => JSON.stringify(rfc)).join(',\n  ')}\n]`
+  const subseriesTypeScriptString = `export const testMockAllSubseries: SubseriesCommon[] = [\n  ${someSubseries.map((rfc) => JSON.stringify(rfc)).join(',\n  ')}\n]`
   const footer = `${warning}`
   const data = `${fileHeader}\n${rfcsTypeScriptString}\n\n${subseriesTypeScriptString}\n${footer}`
 

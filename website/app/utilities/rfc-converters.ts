@@ -54,67 +54,14 @@ export const typeSenseSearchItemToRFCCommon = (
         TypeSenseSearchItem['status']['name']
       >
 
-    type MaybeRfcCommonStatus = { name: string; slug: string }
-    let maybeRfcCommonStatus: MaybeRfcCommonStatus = {
+    const maybeRfcCommonStatusSlug =
+      typesenseStatusData.slug.toLowerCase() as Lowercase<
+        TypeSenseSearchItem['status']['slug']
+      >
+
+    const maybeRfcCommonStatus = {
+      slug: maybeRfcCommonStatusSlug,
       name: maybeRfcCommonStatusName,
-      slug: typesenseStatusData.slug
-    }
-    if (
-      typesenseStatusData.slug === 'ps' &&
-      typesenseStatusData.name === 'Proposed Standard'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'ps',
-        name: 'proposed standard'
-      } satisfies RfcCommon['status']
-    } else if (
-      typesenseStatusData.slug === 'inf' &&
-      typesenseStatusData.name === 'Informational'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'inf',
-        name: 'informational'
-      } satisfies RfcCommon['status']
-    } else if (
-      typesenseStatusData.slug === 'std' &&
-      typesenseStatusData.name === 'Internet Standard'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'std',
-        name: 'internet standard'
-      } satisfies RfcCommon['status']
-    } else if (
-      typesenseStatusData.slug === 'hist' &&
-      typesenseStatusData.name === 'Historic'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'hist',
-        name: 'historic'
-      } satisfies RfcCommon['status']
-    } else if (
-      typesenseStatusData.slug === 'exp' &&
-      typesenseStatusData.name === 'Experimental'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'exp',
-        name: 'experimental'
-      } satisfies RfcCommon['status']
-    } else if (
-      typesenseStatusData.slug === 'unkn' &&
-      typesenseStatusData.name === 'Unknown'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'unkn',
-        name: 'unknown'
-      } satisfies RfcCommon['status']
-    } else if (
-      typesenseStatusData.slug === 'ds' &&
-      typesenseStatusData.name === 'Draft Standard'
-    ) {
-      maybeRfcCommonStatus = {
-        slug: 'ds',
-        name: 'draft standard'
-      } satisfies RfcCommon['status']
     }
 
     const { data: rfcCommonStatusData, error: rfcCommonStatusError } =

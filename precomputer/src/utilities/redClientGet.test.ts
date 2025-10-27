@@ -1,16 +1,13 @@
 // @vitest-environment node
-import fsPromises from 'node:fs/promises'
 import { test, expect } from 'vitest'
-import { getRedClient, sortInfoSubseriesItem } from './redClientGet'
+import { sortSubseriesCommon } from './redClientGet'
 import { testMockAllSubseries } from './rfcs-test-data'
-import { parseStatus, getAllRFCs, getAllSubseries } from './redClientGet'
-import type { DocListArg } from './redClientGet'
-import { RfcCommonStatusSchema } from '../../../website/app/utilities/rfc-validators'
+import { parseStatus } from './redClientGet'
 
-test('sortInfoSubseriesItem', () => {
+test('sortSubseriesCommon', () => {
   expect(
     structuredClone(testMockAllSubseries)
-      .sort(sortInfoSubseriesItem)
+      .sort(sortSubseriesCommon)
       .map((item) => `${item.type}${item.number}`)
   ).toMatchSnapshot()
 })

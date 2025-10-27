@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon'
-import { InfoSubseriesItemSchema } from '~/utilities/rfc-validators'
+import { SubseriesCommonSchema } from '~/utilities/rfc-validators'
 import {
   infoSeriesPathBuilder,
   apiSubseriesPathBuilder
@@ -61,7 +61,7 @@ const { data: subseriesDocument, error: subseriesDocumentError } = await useAsyn
       console.log("Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON", typeof maybeRfcBucketDocument, maybeRfcBucketDocument)
       throw Error(`Unable to load RFC. See console for more.`)
     }
-    const { data, error } = InfoSubseriesItemSchema.safeParse(maybeRfcBucketDocument)
+    const { data, error } = SubseriesCommonSchema.safeParse(maybeRfcBucketDocument)
     if (error) {
       console.log('Failed to validate RFC HTML JSON', error, JSON.stringify(maybeRfcBucketDocument, null, 2))
       throw Error(`Unable to load RFC. See console for more.`)

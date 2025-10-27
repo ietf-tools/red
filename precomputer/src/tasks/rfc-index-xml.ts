@@ -10,7 +10,7 @@ import {
   formatAuthor,
   formatFormat
 } from '../utilities/rfc-converters-utils.ts'
-import type { InfoSubseriesItem, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import type { SubseriesCommon, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import {
   RFC_INDEX_XML_PATH,
   RFC_INDEX_XSD_PATH,
@@ -20,7 +20,7 @@ import { getDOMParser, deleteDefaultNamespaces } from '../utilities/dom.ts'
 
 export const uploadRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>,
-  allSubseries: Readonly<InfoSubseriesItem[]>
+  allSubseries: Readonly<SubseriesCommon[]>
 ): Promise<boolean> => {
   const { xml, xsd } = await renderRfcIndexXml(allRfcs, allSubseries)
   await saveToS3(RFC_INDEX_XML_PATH, xml)
@@ -36,7 +36,7 @@ const RPC_NAMESPACE = 'https://www.rfc-editor.org/rfc-index'
 
 export const renderRfcIndexXml = async (
   allRfcs: Readonly<RfcCommon[]>,
-  allSubseries: Readonly<InfoSubseriesItem[]>
+  allSubseries: Readonly<SubseriesCommon[]>
 ): Promise<{ xml: string; xsd: string }> => {
   const xsdPath = resolve(import.meta.dirname, '../assets/rfc-index.xsd')
   const xsd = await readFile(xsdPath, 'utf-8')
@@ -259,7 +259,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
 
 const renderSubseries = async (
   allRfcs: Readonly<RfcCommon[]>,
-  allSubseries: Readonly<InfoSubseriesItem[]>,
+  allSubseries: Readonly<SubseriesCommon[]>,
   subseriesType: string,
   shouldRenderFirstContentsAsTitle: boolean
 ): Promise<string> => {

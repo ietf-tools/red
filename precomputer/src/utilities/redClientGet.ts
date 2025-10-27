@@ -5,8 +5,10 @@ import {
   RfcCommonGroupTypeSchema,
   RfcCommonStatusSchema,
   RfcCommonSubseriesTypeSchema,
-  type InfoSubseriesItem,
-  type RfcCommon
+} from '../../../website/app/utilities/rfc-validators.ts'
+import type {
+  SubseriesCommon,
+  RfcCommon
 } from '../../../website/app/utilities/rfc-validators.ts'
 import { assertIsString } from './typescript.ts'
 
@@ -223,7 +225,7 @@ export const setTimeoutPromise = (timerMs: number) =>
 
 export const getAllSubseries = async ({
   api
-}: Props): Promise<Readonly<InfoSubseriesItem[]>> => {
+}: Props): Promise<Readonly<SubseriesCommon[]>> => {
   const parseSubseriesName = (
     name: string
   ): { type: string; number: number } => {
@@ -250,7 +252,7 @@ export const getAllSubseries = async ({
 
   const subseries = await api.red.subseriesList({})
   const sortedSubseries = subseries
-    .map((subseriesDoc): InfoSubseriesItem => {
+    .map((subseriesDoc): SubseriesCommon => {
       const parts = parseSubseriesName(subseriesDoc.name)
       return {
         type: parseSubseriesItemType(parts.type),
@@ -263,15 +265,15 @@ export const getAllSubseries = async ({
         )
       }
     })
-    .sort(sortInfoSubseriesItem)
+    .sort(sortSubseriesCommon)
 
   // Attempt to prevent mutation of object (shallow -- not a deep freeze).
   return Object.freeze(sortedSubseries)
 }
 
-export const sortInfoSubseriesItem = (
-  a: InfoSubseriesItem,
-  b: InfoSubseriesItem
+export const sortSubseriesCommon = (
+  a: SubseriesCommon,
+  b: SubseriesCommon
 ): number => {
   const typeOrder = a.type.localeCompare(b.type)
   if (typeOrder !== 0) {

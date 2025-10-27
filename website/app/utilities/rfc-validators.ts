@@ -251,13 +251,13 @@ export const RfcMiniIndexSchema = z.object({
 })
 
 /** Subseries info page schema */
-export const InfoSubseriesItemSchema = z.object({
+export const SubseriesCommonSchema = z.object({
   type: RfcCommonSubseriesTypeSchema,
   number: z.number(),
   contents: RfcCommonSchema.array()
 })
 
-export type InfoSubseriesItem = z.infer<typeof InfoSubseriesItemSchema>
+export type SubseriesCommon = z.infer<typeof SubseriesCommonSchema>
 
 /**
  * Document HTML Schema (html/vue as pojo)
