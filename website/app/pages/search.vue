@@ -140,11 +140,8 @@ import {
 import { Separator } from 'reka-ui'
 // Packaging of default export of 'typesense-instantsearch-adapter' seems to confuse Nuxt so we'll import this directly
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
-import {
-  INSTANTSEARCH_HITS_CONTAINER_DOM_ID,
-  type TypeSenseClient,
-  type TypeSenseSearchItem
-} from '../utilities/typesense'
+import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID } from '../utilities/typesense'
+import type { TypeSenseClient, TypeSenseSearchItem } from '../utilities/typesense'
 import RFCCardTypeSenseItem from '~/components/RFCCardTypeSenseItem.vue'
 import { adaptSearchClient } from '~/utilities/search-client-middleware'
 import { useRfcEditorHead } from '~/utilities/head'

@@ -29,7 +29,6 @@
         'ais-HitsPerPage-select':
           'py-2 text-base dark:bg-black dark:text-white scheme-light dark:scheme-dark'
       }"
-
     />
   </div>
 </template>
