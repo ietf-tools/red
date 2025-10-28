@@ -105,9 +105,11 @@
 
         <template v-if="shouldShowGroup(props.rfcBucketHtmlDocument.rfc)">
           <dt class="font-bold mt-2">
-            <template v-if="
-              // https://github.com/ietf-tools/red/issues/147#issuecomment-3417450159
-              props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'">Research group</template>
+            <template v-if="// https://github.com/ietf-tools/red/issues/147#issuecomment-3417450159
+              props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'"
+            >
+              Research group
+            </template>
             <template v-else>Working group</template>
           </dt>
           <dd>
@@ -141,7 +143,7 @@
               {{ props.rfcBucketHtmlDocument.rfc.stream.name }}
             </Anchor>
           </template>
-          <template v-else> 
+          <template v-else>
             {{ props.rfcBucketHtmlDocument.rfc.stream.name }}
           </template>
         </dd>
@@ -235,7 +237,7 @@ import { formatTitleAsVNode } from '~/utilities/rfc'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { areaGroupUrlBuilder, infoSeriesPathBuilder, mailToBuilder, rfcAuthorUrlBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
+import { areaGroupUrlBuilder, infoSeriesPathBuilder, rfcAuthorUrlBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc-validators'
 
