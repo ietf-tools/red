@@ -87,11 +87,10 @@
             <ul class="-mt-1">
               <li v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors" :key="authorIndex"
                 class="inline">
-                <Anchor v-if="author.email" :href="mailToBuilder(author.email)"
+                <a v-if="author.email" :href="rfcAuthorUrlBuilder(author.email)"
                   class="whitespace-nowrap underline inline-block py-0.5 pr-0.5 mb-0.5">
                   {{ author.name }}
-                  <Icon name="fluent:mail-32-regular" class="inline-block h-5 w-2" />
-                </Anchor>
+                </a>
                 <span v-else>
                   {{ author.name }}
                 </span>
@@ -236,7 +235,7 @@ import { formatTitleAsVNode } from '~/utilities/rfc'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
 import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { areaGroupUrlBuilder, infoSeriesPathBuilder, mailToBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
+import { areaGroupUrlBuilder, infoSeriesPathBuilder, mailToBuilder, rfcAuthorUrlBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc-validators'
 

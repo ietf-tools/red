@@ -416,6 +416,10 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
   assertNever(stream.slug)
 }
 
+export const rfcAuthorUrlBuilder = (email: string) => {
+  return `${DATATRACKER_URL_ORIGIN}/person/${encodeURI(email)}` as const
+}
+
 /**
  * TypeSense wants spaces encoded as '+' char not '%20'.
  * This is questionable but necessary for integation with our search engine.
