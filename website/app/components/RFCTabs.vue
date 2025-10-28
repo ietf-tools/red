@@ -136,7 +136,7 @@
           </dd>
         </template>
 
-        <dt class="font-bold mt-2">Stream</dt>
+        <dt class="font-bold mt-2">Publication Stream</dt>
         <dd>
           <template v-if="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
             <Anchor :href="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
