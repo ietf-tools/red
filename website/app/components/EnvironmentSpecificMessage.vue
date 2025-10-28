@@ -35,8 +35,8 @@
                     <h2 class="text-lg font-bold">Known issues</h2>
                     <ul class="list-disc ml-5 text-sm">
                         <li>
-                            Data is pulled from <a :href="DATATRACKER_URL_ORIGIN" class="underline">Datatracker</a> so
-                            some details may be stale. This will be fixed before launch, but not during the beta.
+                            Data is pulled from <a :href="DATATRACKER_URL_ORIGIN" class="underline">Datatracker</a> and
+                            during IETF 124 this will be static and stale. This known issue will be fixed before a production release.
                         </li>
                         <li>Please feel free to ask if it's a known issue at the RFC Editor desk.</li>
                     </ul>
