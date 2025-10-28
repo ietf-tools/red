@@ -139,3 +139,5 @@ export type TypeSenseSearchResponse = {
 export type TypeSenseSearchItem = z.infer<typeof TypeSenseSearchItemSchema>
 
 export type Density = 'full' | 'dense' | 'compact'
+
+export const INSTANTSEARCH_HITS_CONTAINER_DOM_ID = 'ais-hits-container'
