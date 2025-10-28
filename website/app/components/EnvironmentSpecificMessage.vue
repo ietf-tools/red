@@ -34,8 +34,10 @@
                     </p>
                     <h2 class="text-lg font-bold">Known issues</h2>
                     <ul class="list-disc ml-5 text-sm">
-                        <li>Data is pulled from <a :href="DATATRACKER_URL_ORIGIN" class="underline">Datatracker</a> so
-                            some details may be stale. This will be fixed before launch.</li>
+                        <li>
+                            Data is pulled from <a :href="DATATRACKER_URL_ORIGIN" class="underline">Datatracker</a> so
+                            some details may be stale. This will be fixed before launch.
+                        </li>
                         <li>Please feel free to ask if it's a known issue at the RPC desk.</li>
                     </ul>
                     <div class="text-sm">
