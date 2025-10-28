@@ -308,7 +308,7 @@ const routing = {
         { replace: true }
       )
     },
-    routeToState(routeState: unknown): UIState {
+    routeToState(_routeState: unknown): UIState {
       const query = route.query.q?.toString() ?? ''
       const status = route.query.status?.toString().split(',')
       const stream = route.query.stream?.toString() ?? ''
