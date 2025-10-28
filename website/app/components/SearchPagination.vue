@@ -45,7 +45,7 @@ const scrollUpToNewSearchResults = () => {
   console.info("Scroll up page to new search results")
   const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
   if (target) {
-    const scrollBehavior: ScrollBehavior = prefersReducedMotion() ? 'smooth' : 'instant'
+    const scrollBehavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
     target.focus() // for keyboard users
     target.scrollIntoView({ behavior: scrollBehavior })
   } else {
