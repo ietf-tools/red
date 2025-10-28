@@ -115,7 +115,7 @@
           </dd>
         </template>
 
-        <template v-if="props.rfcBucketHtmlDocument.rfc.area">
+        <template v-if="shouldShowArea(props.rfcBucketHtmlDocument.rfc)">
           <dt class="font-bold mt-2">Area</dt>
           <dd>
             <Anchor :href="areaGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.area)">
@@ -225,6 +225,7 @@ import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { areaGroupUrlBuilder, infoSeriesPathBuilder, mailToBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
+import type { RfcCommon } from '~/utilities/rfc-validators'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -247,6 +248,19 @@ const formattedPublished = computed(() => {
   const dt = DateTime.fromISO(props.rfcBucketHtmlDocument.rfc.published)
   return formatDatePublished(dt, true)
 })
+
+const shouldShowArea = (rfc: RfcCommon): boolean => {
+  if(!rfc.area) {
+    return false
+  }
+  if (!rfc.group) {
+    return false
+  }  
+  if (rfc.group.type === 'wg' || rfc.group.type === 'ag') {
+    return true
+  }
+  return false
+}
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-0'
 const DEFAULT_CLASS = 'py-4 whitespace-nowrap border-b-2 hover:bg-gray-100 dark:hover:bg-gray-900 text-sm md:text-md cursor-pointer'
