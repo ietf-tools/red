@@ -40,6 +40,7 @@ export default defineNuxtPlugin({
   }
 })
 
+// FIXME: get from env var
 const MATOMO_STAGING_SITE_ID = 12
 
 const getMatomoScript = (
