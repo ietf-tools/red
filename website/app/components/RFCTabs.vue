@@ -81,29 +81,36 @@
         <dt class="font-bold mt-2">Date published</dt>
         <dd>{{ formattedPublished }}</dd>
 
-        <dt class="font-bold mt-2">Authors</dt>
-        <dd>
-          <ul class="-mt-1">
-            <li v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors" :key="authorIndex"
-              class="inline">
-              <Anchor v-if="author.email" :href="mailToBuilder(author.email)"
-                class="whitespace-nowrap underline inline-block py-0.5 pr-0.5 mb-0.5">
-                {{ author.name }}
-                <Icon name="fluent:mail-32-regular" class="inline-block h-5 w-2" />
-              </Anchor>
-              <span v-else>
-                {{ author.name }}
-              </span>
-              <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
-                {{ COMMA }}
-                {{ NONBREAKING_SPACE }}
-              </template>
-            </li>
-          </ul>
-        </dd>
+        <template v-if="props.rfcBucketHtmlDocument.rfc.authors.length > 0">
+          <dt class="font-bold mt-2">Authors</dt>
+          <dd>
+            <ul class="-mt-1">
+              <li v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors" :key="authorIndex"
+                class="inline">
+                <Anchor v-if="author.email" :href="mailToBuilder(author.email)"
+                  class="whitespace-nowrap underline inline-block py-0.5 pr-0.5 mb-0.5">
+                  {{ author.name }}
+                  <Icon name="fluent:mail-32-regular" class="inline-block h-5 w-2" />
+                </Anchor>
+                <span v-else>
+                  {{ author.name }}
+                </span>
+                <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
+                  {{ COMMA }}
+                  {{ NONBREAKING_SPACE }}
+                </template>
+              </li>
+            </ul>
+          </dd>
+        </template>
 
-        <template v-if="props.rfcBucketHtmlDocument.rfc.group">
-          <dt class="font-bold mt-2">Working group</dt>
+        <template v-if="shouldShowGroup(props.rfcBucketHtmlDocument.rfc)">
+          <dt class="font-bold mt-2">
+            <template v-if="
+              // https://github.com/ietf-tools/red/issues/147#issuecomment-3417450159
+              props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'">Research group</template>
+            <template v-else>Working group</template>
+          </dt>
           <dd>
             <Anchor :href="workingGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.group)">
               {{ props.rfcBucketHtmlDocument.rfc.group?.name }}
@@ -130,9 +137,14 @@
 
         <dt class="font-bold mt-2">Stream</dt>
         <dd>
-          <Anchor :href="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
+          <template v-if="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
+            <Anchor :href="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
+              {{ props.rfcBucketHtmlDocument.rfc.stream.name }}
+            </Anchor>
+          </template>
+          <template v-else> 
             {{ props.rfcBucketHtmlDocument.rfc.stream.name }}
-          </Anchor>
+          </template>
         </dd>
 
         <template v-if="props.rfcBucketHtmlDocument.rfc.identifiers">
@@ -179,11 +191,12 @@
           Formats
         </Heading>
         <ul class="text-sm flex flex-col gap-2">
-          <li v-for="(format, formatIndex) in props.rfcBucketHtmlDocument.rfc.formats" :key="formatIndex">
-            <Anchor :href="format" class="underline block px-2 -ml-2">
+          <li class="italic">TODO</li>
+          <!-- <li v-for="(format, formatIndex) in props.rfcBucketHtmlDocument.rfc.formats" :key="formatIndex">
+            <Anchor :href="" class="underline block px-2 -ml-2">
               {{ format }}
             </Anchor>
-          </li>
+          </li> -->
         </ul>
       </template>
     </TabsContent>
@@ -250,16 +263,26 @@ const formattedPublished = computed(() => {
 })
 
 const shouldShowArea = (rfc: RfcCommon): boolean => {
-  if(!rfc.area) {
+  // https://github.com/ietf-tools/red/issues/201
+  // https://github.com/ietf-tools/red/issues/147#issuecomment-3300346145
+  if (!rfc.area) {
     return false
   }
-  if (!rfc.group) {
-    return false
-  }  
-  if (rfc.group.type === 'wg' || rfc.group.type === 'ag') {
+  if (rfc.stream.slug === 'IETF' && (rfc.group?.type === 'wg' || rfc.group?.type === 'ag')) {
     return true
   }
   return false
+}
+
+const shouldShowGroup = (rfc: RfcCommon): boolean => {
+  switch (rfc.stream.slug) {
+    case 'IAB':
+    case 'INDEPENDENT':
+    case 'Editorial':
+    case 'Legacy':
+      return false
+  }
+  return true
 }
 
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-0'
