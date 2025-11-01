@@ -8,8 +8,8 @@
     "format": "npx prettier --config ./prettier.config.cjs src --write",
     "test": "TZ=UTC npm run test:unittests && npm run test:types",
     "test:types": "vue-tsc -b --noEmit",
-    "test:unittests": "vitest run",
-    "test:unittests:watch": "vitest run --watch",
+    "test:unittests": "TZ=UTC vitest run",
+    "test:unittests:watch": "TZ=UTC vitest run --watch",
     "generate:test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
     "generate:api": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/api-client.ts"
   },

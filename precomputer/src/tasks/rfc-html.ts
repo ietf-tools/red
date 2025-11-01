@@ -1,4 +1,5 @@
 import sanitizeHtml from 'sanitize-html'
+import { DateTime } from 'luxon'
 import {
   getDOMParser,
   getParentElementNodeNames,
@@ -80,7 +81,8 @@ export const rfcBucketHtmlToRfcDocument = async (
     tableOfContents: rfcAndToc.tableOfContents,
     documentHtmlType,
     documentHtmlObj: rfcDocumentToPojo(rfcDocument),
-    maxPreformattedLineLength
+    maxPreformattedLineLength,
+    timestampIso: DateTime.now().toUTC().toISO()
   }
 
   validateDocument(response, RfcBucketHtmlDocumentSchema)

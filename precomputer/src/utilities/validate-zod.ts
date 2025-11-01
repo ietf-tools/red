@@ -22,7 +22,7 @@ export const validateDocument = (
 
   if (validationResult.error) {
     const errorTitle = `Failed to generate valid document due to validation error:`
-    // console.log(errorTitle, validationResult.error)
+    console.log(errorTitle, validationResult.error)
     throw Error(`${errorTitle}. See console for details.`)
   }
 }

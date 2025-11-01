@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { DateTime } from 'luxon'
 import { HOMEPAGE_LATEST_PATH, saveToS3 } from '../utilities/s3.ts'
 import { HomepageLatestSchema } from '../../../website/app/utilities/rfc-validators.ts'
 import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
@@ -25,10 +26,11 @@ type HomepageLatest = z.infer<typeof HomepageLatestSchema>
 export const renderHomepageLatest = async (
   allRfcs: Readonly<RfcCommon[]>
 ): Promise<HomepageLatest> => {
-  const response = {
+  const response: HomepageLatest = {
     homepageLatest: allRfcs
       .slice(-NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE)
-      .sort((a, b) => b.number - a.number)
+      .sort((a, b) => b.number - a.number),
+        timestampIso: DateTime.now().toUTC().toISO()
   }
   validateDocument(response, HomepageLatestSchema)
   return response

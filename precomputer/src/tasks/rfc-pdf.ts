@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 import { apiRfcBucketDocumentURLBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
 import { gc } from '../utilities/gc.ts'
 import { BLANK_HTML, getDOMParser, rfcDocumentToPojo } from '../utilities/dom.ts'
@@ -124,7 +125,8 @@ export const rfcBucketPdfToRfcDocument = async (
       // won't be used for a PDF document
       max: 80,
       maxWithAnchorSuffix: 80
-    }
+    },
+    timestampIso: DateTime.now().toUTC().toISO()
   }
 
   validateDocument(response, RfcBucketHtmlDocumentSchema)

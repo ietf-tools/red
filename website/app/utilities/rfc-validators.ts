@@ -223,11 +223,12 @@ export const RfcCommonSchema = z.object({
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
 
 export const HomepageLatestSchema = z.object({
-  homepageLatest: z.array(RfcCommonSchema)
+  homepageLatest: z.array(RfcCommonSchema),
+  timestampIso: z.string() // not using `z.coerce.date()` because we'll manually parse into a Luxon DateTime rather than a standard JS Date
 })
 
 /**
- * Used on the Rfc Index nuxt route
+ * Was used on the Rfc Index nuxt route
  */
 export type RfcMini = Pick<
   RfcCommon,
@@ -307,7 +308,8 @@ export const RfcBucketHtmlDocumentSchema = z.object({
   tableOfContents: TableOfContentsSchema.optional(),
   documentHtmlType: DocumentHtmlTypeSchema,
   documentHtmlObj: z.array(NodePojoSchema),
-  maxPreformattedLineLength: MaxPreformattedLineLengthSchema
+  maxPreformattedLineLength: MaxPreformattedLineLengthSchema,
+  timestampIso: z.string() // not using `z.coerce.date()` because we'll manually parse into a Luxon DateTime rather than a standard JS Date
 })
 
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`homepage 3 items 1`] = `
+exports[`homepage latest RFCs 1`] = `
 {
   "homepageLatest": [
     {
@@ -229,5 +229,6 @@ exports[`homepage 3 items 1`] = `
       ],
     },
   ],
+  "timestampIso": "2025-01-14T00:00:00.000Z",
 }
 `;

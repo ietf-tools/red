@@ -18,8 +18,8 @@
     "test:lint": "eslint .",
     "test:lint:fix": "eslint . --fix",
     "test:types": "nuxt prepare && vue-tsc -b --noEmit",
-    "test:unittests": "vitest run",
-    "test:unittests:watch": "vitest"
+    "test:unittests": "TZ=UTC vitest run",
+    "test:unittests:watch": "TZ=UTC vitest"
   },
   "dependencies": {
     "@internationalized/date": "3.8.1",
