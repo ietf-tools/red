@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto pl-5 pr-3">
     <div class="absolute pointer-events-none inset-0 overflow-hidden">
       <GraphicsIETFMotif
         class="absolute w-[90vw] h-[90vh] -left-[10vw] -top-[20vh] print:hidden"

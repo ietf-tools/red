@@ -4,7 +4,7 @@
       <template #subheader>
         <IndexSubheader />
       </template>
-      <div class="container mx-auto">
+      <div class="container mx-auto pl-5">
         <div class="md:mx-2 flex flex-col-reverse lg:flex-row lg:items-center justify-between">
           <Heading level="2" has-icon class="text-left mt-10 mb-4 pl-5 md:pl-0">
             Latest RFCs

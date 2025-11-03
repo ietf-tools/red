@@ -1,16 +1,16 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col px-3">
     <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
     <RFCDocumentMobileInfoButton @click="isModalOpen = true">Info</RFCDocumentMobileInfoButton>
   </div>
 
   <Heading level="1"
-    class="mb-2 pl-2 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center">
+    class="mb-2 ml-2 px-3 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center">
     <component :is="formattedTitle" />
     <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" />
   </Heading>
 
-  <Heading level="2" class="mb-2 pl-2 xs:px-0 print:text-center">
+  <Heading level="2" class="mb-2 ml-2 px-3 xs:px-0 print:text-center">
     {{ props.rfcBucketHtmlDocument.rfc.title }}
 
     <span v-if="isAprilFool" class="inline pr-2">
@@ -18,7 +18,7 @@
     </span>
   </Heading>
 
-  <ul class="block ml-2 print:text-center">
+  <ul class="block px-3 ml-2 print:text-center">
     <li v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors" :key="authorIndex"
       class="inline-block">
       <span>
@@ -47,7 +47,7 @@
     </div>
   </Alert>
 
-  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
+  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 ml-2 sm:text-base lg:text-base px-3 ${
     //
     ' leading-[1.75] ' // WCAG requires 1.5 minimum
     }`">
