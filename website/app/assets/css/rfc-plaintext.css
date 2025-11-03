@@ -181,7 +181,7 @@ pre {
 
     /* Default font size for browsers that don't support cqi container units */
     font-size: 16px;
-    --magic-scaling-number: 165;
+    --magic-scaling-number: 163;
 
     /* the basic responsive font-size
     calc() supported in chrome 26/firefox 16, and CSS variables in chrome 49/firefox 31,
@@ -205,7 +205,7 @@ pre {
     font-size: min(
         var(--responsive-font-size),
         /* max font-size on desktop */
-        1.2rem
+        1rem
     );
 }
 
@@ -227,5 +227,9 @@ pre {
 }
 
 a {
-    color: var(--color-blue-700, #058)
+    color: var(--color-blue-700, #050)
+}
+
+html.dark a {
+    color: var(--color-blue-300, #050)
 }

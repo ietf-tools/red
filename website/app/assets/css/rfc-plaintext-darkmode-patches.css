@@ -1,0 +1,8 @@
+/**
+
+These style selectors will be scoped by @nested-import to apply only to dark mode
+*/
+
+a {
+    color: var(--color-blue-100, #50B2DF)
+}
