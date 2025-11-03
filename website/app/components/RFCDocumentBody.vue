@@ -54,7 +54,9 @@
     <component :is="enrichedDocument" />
   </div>
 
-  <div class="text-blue-300 dark:text-blue-100" />
+  <div class="text-blue-300 dark:text-blue-100">
+    <!-- FIXME: this is to ensure tailwind includes these colors so we can use css color vars, but there must be a better way of doing this -->
+  </div>
 
   <RFCMobileBanner :rfc="rfcBucketHtmlDocument.rfc" :is-fixed="true" />
 </template>
