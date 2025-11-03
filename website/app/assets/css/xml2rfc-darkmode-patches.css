@@ -6,7 +6,7 @@
 
 figcaption a[href],
 a[href] {
-    color: #50B2DF;
+    color: var(--color-blue-100, #50B2DF)
 }
 
 a[href].selfRef,

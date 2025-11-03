@@ -3,6 +3,6 @@
 These style selectors will be scoped by @nested-import to apply only to dark mode
 */
 
-a {
+a[href] {
     color: var(--color-blue-100, #50B2DF)
 }
