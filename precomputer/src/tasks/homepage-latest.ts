@@ -6,7 +6,7 @@ import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { uploadRfcData } from './rfc.ts'
 
-const NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE = 3
+export const NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE = 3
 
 export const uploadHomepageLatest = async (
   allRfcs: Readonly<RfcCommon[]>
