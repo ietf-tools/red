@@ -1,8 +1,5 @@
 <template>
   <div class="md:pr-5 flex-1">
-    <p class="text-base text-blue-900 dark:text-white mt-2">
-      {{ props.rfc.title }}
-    </p>
     <Pill v-if="tagText.length > 0" size="small" :text="tagText" class="print:m-0 my-2" />
     <ul v-if="list1" class="hidden lg:block print:block text-base text-gray-800 dark:text-white">
       <li v-for="(part, index) in list1" :key="index" class="inline">

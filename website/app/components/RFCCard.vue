@@ -16,6 +16,7 @@
     </template>
     <template #afterHeadingTitle>
       <RFCTitleSubseries :rfc="props.rfc" />
+      <span class="font-normal">: {{ props.rfc.title }}</span>
     </template>
     <template #default>
       <RFCCardBody

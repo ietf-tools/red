@@ -16,13 +16,14 @@
       hide-title
     />
     <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" />
+    <span class="font-normal">: {{ props.rfcBucketHtmlDocument.rfc.title }}</span>
   </Heading>
 
   <Heading
     level="2"
     class="mb-2 ml-2 px-3 xs:px-0 print:text-center"
   >
-    {{ props.rfcBucketHtmlDocument.rfc.title }}
+    
 
     <span
       v-if="isAprilFool"
