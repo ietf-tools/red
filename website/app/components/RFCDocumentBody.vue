@@ -23,8 +23,6 @@
     level="2"
     class="mb-2 ml-2 px-3 xs:px-0 print:text-center"
   >
-    
-
     <span
       v-if="isAprilFool"
       class="inline pr-2"
