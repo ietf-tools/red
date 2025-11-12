@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { formatTitleAsVNode } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 
 type Props = {
     rfc: {
@@ -15,5 +15,5 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`))
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
 </script>

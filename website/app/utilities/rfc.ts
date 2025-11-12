@@ -1,8 +1,5 @@
 import type { z } from 'zod'
-import { h } from 'vue'
-import type { VNode } from 'vue'
 import { DateTime } from 'luxon'
-import { NONBREAKING_SPACE } from './strings'
 import type {
   RfcBucketHtmlDocumentSchema,
   RfcCommonSchema,
@@ -83,24 +80,6 @@ export const getRfcPillText = (rfc: RfcCommon): string[] => {
   return tagText
 }
 
-/**
- * Formats a string of 'RFCnumber' with non-bold/bold text with an NBSP between
- * Returns h() Component for rendering
- */
-export const formatTitleAsVNode = (rfcId: string): VNode => {
-  const parts = parseSeriesId(rfcId)
-
-  if (parts === undefined) {
-    return h('span')
-  }
-
-  return h('span', [
-    h('span', { class: 'font-normal' }, parts.type.toUpperCase()),
-    NONBREAKING_SPACE,
-    h('span', { class: 'font-semibold' }, parts.number)
-  ])
-}
-
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
 
 export const isAprilFoolsRfc = (rfc: RfcCommon): boolean => {
@@ -108,6 +87,8 @@ export const isAprilFoolsRfc = (rfc: RfcCommon): boolean => {
   const datetime = DateTime.fromISO(rfc.published)
   return (
     rfc.stream.slug === 'INDEPENDENT' &&
-    datetime.month === 4 && datetime.day === 1 && rfc.group?.acronym === 'none'
+    datetime.month === 4 &&
+    datetime.day === 1 &&
+    rfc.group?.acronym === 'none'
   )
 }

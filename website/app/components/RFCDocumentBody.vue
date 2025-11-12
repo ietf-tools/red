@@ -15,8 +15,10 @@
       :rfc="props.rfcBucketHtmlDocument.rfc"
       hide-title
     />
-    <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" />
-    <span class="font-normal">: {{ props.rfcBucketHtmlDocument.rfc.title }}</span>
+    {{ SPACE }}
+    <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon />
+    {{ SPACE }}
+    <span class="font-normal">{{ props.rfcBucketHtmlDocument.rfc.title }}</span>
   </Heading>
 
   <Heading
@@ -99,7 +101,7 @@ import Fragment from './Fragment.vue'
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
 import { infoSeriesPathBuilder } from '~/utilities/url'
-import { COMMA, NONBREAKING_SPACE } from '~/utilities/strings'
+import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import { nodePojoWalker } from '~/utilities/dom'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'

@@ -1,55 +1,16 @@
 <template>
- <span v-if="props.rfc.subseries && props.rfc.subseries.length > 0">
-    <span>: </span>
-    <component :is="subseriesVNode" />
-  </span>
+  <component :is="subseriesVNode" />
 </template>
 
 <script setup lang="ts">
-import { NuxtLink } from '#components'
-import { formatTitleAsVNode } from '~/utilities/rfc'
+import { formatSubseriesAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc-validators'
-import { infoSeriesPathBuilder } from '~/utilities/url'
 
 type Props = {
   rfc: RfcCommon
+  hasTrailingColon: boolean
 }
 
 const props = defineProps<Props>()
-const subseriesVNode = computed(() => formatSubseriesAsVNode(props.rfc.subseries))
-
-const formatSubseriesAsVNode = (
-  subseries: RfcCommon['subseries'] | undefined
-): VNode => {
-  if (!subseries || subseries.length === 0) {
-    return h('span')
-  }
-
-  return h(
-    'span',
-    subseries
-      .map((subseries) =>
-        h(
-          NuxtLink,
-          {
-            to: infoSeriesPathBuilder(
-              `${subseries.type.toLowerCase()}${subseries.number}`
-            ),
-            class:
-              'relative z-50 no-underline hover:underline focus:underline px-2 py-3 rounded text-gray-800 dark:text-gray-300',
-            title:
-              `${subseries.type.toUpperCase()} ${subseries.number} contains RFC ${props.rfc.number}`
-          },
-          () => formatTitleAsVNode(`${subseries.type}${subseries.number}`)
-        )
-      )
-      .reduce((acc, item, index, arr) => {
-        acc.push(item)
-        if (index < arr.length - 1) {
-          acc.push(h('span', ', '))
-        }
-        return acc
-      }, [] as VNode[])
-  )
-}
+const subseriesVNode = computed(() => formatSubseriesAsVNode(props.rfc, props.hasTrailingColon))
 </script>

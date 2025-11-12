@@ -15,8 +15,9 @@
       <component :is="formattedTitle" />
     </template>
     <template #afterHeadingTitle>
-      <RFCTitleSubseries :rfc="props.rfc" />
-      <span class="font-normal">: {{ props.rfc.title }}</span>
+      {{ SPACE }}
+      <RFCTitleSubseries :rfc="props.rfc" has-trailing-colon />
+      <span class="font-normal">{{ SPACE }}{{ props.rfc.title }}</span>
     </template>
     <template #default>
       <RFCCardBody
@@ -46,10 +47,11 @@
 
 <script setup lang="ts">
 import { infoSeriesPathBuilder } from '../utilities/url'
-import { formatTitleAsVNode } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc'
 import { useResponsiveModeStore } from '~/stores/responsiveMode'
 import { parseHeadingLevel, type HeadingLevel } from '~/utilities/html'
+import { SPACE } from '~/utilities/strings'
 
 type Props = {
   rfc: RfcCommon
@@ -64,7 +66,7 @@ const abstractHeadingLevel = computed(() =>
   parseHeadingLevel((parseFloat(props.headingLevel) + 1).toString())
 )
 
-const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`))
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
 
 const responsiveModeStore = useResponsiveModeStore()
 </script>

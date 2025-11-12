@@ -28,7 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { formatTitleAsVNode, parseSeriesId, type SeriesId } from '~/utilities/rfc'
+import { parseSeriesId } from '~/utilities/rfc'
+import type { SeriesId } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 
 const route = useRoute()
 const paramsId = route.params.id

@@ -47,7 +47,7 @@
 import { DateTime } from 'luxon'
 import { infoSeriesPathBuilder, rfcPathBuilder } from '../utilities/url'
 import Anchor from './Anchor.vue'
-import { formatTitleAsVNode } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc-validators'
 import {
   formatTitlePlaintext,

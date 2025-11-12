@@ -47,7 +47,8 @@
 </template>
 
 <script setup lang="ts">
-import { formatTitleAsVNode, parseSeriesId, getRfcPillText } from '~/utilities/rfc'
+import { parseSeriesId, getRfcPillText } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon, } from '~/utilities/rfc'
 import { infoSeriesPathBuilder } from '~/utilities/url'
 

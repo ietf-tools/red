@@ -1,24 +1,29 @@
-import type { Slot } from 'vue'
-
-export const getVNodeText = (
-  obj: VNode | VNode[] | Slot | string | undefined | null
-): string => {
-  if (!obj) {
+export const getVNodeText = (vnode: unknown): string => {
+  if (!vnode) {
     return ''
   }
 
-  if (typeof obj === 'string') {
-    return obj
+  if (typeof vnode === 'string') {
+    return vnode
   }
 
-  if (Array.isArray(obj)) {
-    return obj.map(getVNodeText).join('')
+  if (Array.isArray(vnode)) {
+    return vnode.map(getVNodeText).join('')
   }
 
-  if ('children' in obj) {
-    const { children } = obj
+  if (vnode && typeof vnode === 'object' && 'children' in vnode) {
+    const { children } = vnode
     if (typeof children === 'string') {
       return children
+    } else if (typeof children === 'function') {
+      return getVNodeText(children())
+    } else if (
+      children &&
+      typeof children === 'object' &&
+      'default' in children &&
+      typeof children.default === 'function'
+    ) {
+      return getVNodeText(children.default())
     } else if (Array.isArray(children)) {
       return children
         .map((item) => getVNodeText(item as ReturnType<typeof h>))
