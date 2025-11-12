@@ -52,6 +52,18 @@ export const TypesenseSearchItemGroupSchema = z.object({
   full: z.string()
 })
 
+const TypesenseSubseriesSchema = z.object({
+  acronym: z.enum(['std', 'fyi', 'bcp']).optional(),
+  number: z.number().optional(),
+  total: z.number().optional()
+})
+
+export type TypesenseSubseries = z.infer<typeof TypesenseSubseriesSchema>
+
+const TypesenseSubseriesSchemaWithValues = TypesenseSubseriesSchema.required()
+
+export type TypesenseSubseriesWithValues = z.infer<typeof TypesenseSubseriesSchemaWithValues>
+
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
 export const TypeSenseSearchItemSchema = z.object({
   id: z.string(),
@@ -75,14 +87,7 @@ export const TypeSenseSearchItemSchema = z.object({
     )
     .optional(),
 
-  subseries: z
-    .object({
-      acronym: z.enum(['std', 'fyi', 'bcp']).optional(),
-      number: z.number().optional(),
-      total: z.number().optional(),
-      bcp: z.string().optional()
-    })
-    .optional(),
+  subseries: TypesenseSubseriesSchema.optional(),
   rfc: z.string(),
 
   area: TypesenseSearchItemAreaSchema.optional(),
@@ -110,6 +115,16 @@ export const TypeSenseSearchItemSchema = z.object({
     })
     .optional()
 })
+
+export const isTypesenseSubseriesWithValues = (
+  maybeSubseries: TypeSenseSearchItem['subseries']
+): maybeSubseries is TypesenseSubseriesWithValues => {
+  const { error } = TypesenseSubseriesSchemaWithValues.safeParse(maybeSubseries)
+  if (error) {
+    return false
+  }
+  return true
+}
 
 export type TypeSenseClient = {
   clearCache: () => void

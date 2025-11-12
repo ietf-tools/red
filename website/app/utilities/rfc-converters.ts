@@ -6,6 +6,7 @@ import {
   RfcCommonGroupSchema
 } from './rfc-validators'
 import {
+  isTypesenseSubseriesWithValues,
   TypeSenseSearchItemSchema,
   TypesenseSearchItemStatusSchema
 } from './typesense'
@@ -18,19 +19,20 @@ export const typeSenseSearchItemToRFCCommon = (
     unverifiedTypeSenseSearchItem
   )
   if (error) {
-    console.error(error.toString())
+    console.error("Typesense parsing error", error.toString())
     throw Error(error.toString())
   }
 
   const parseTypeSenseSubseries = (
     item: z.infer<typeof TypeSenseSearchItemSchema>
   ): RfcCommon['subseries'] => {
-    if (item.subseries?.acronym) {
+    if (isTypesenseSubseriesWithValues(item.subseries)) {
+      const { subseries } = item
       return [
         {
-          type: item.subseries?.acronym,
-          number: item.subseries?.number,
-          subseriesLength: item.subseries?.total
+          type: subseries.acronym,
+          number: subseries.number,
+          subseriesLength: subseries.total
         }
       ]
     }

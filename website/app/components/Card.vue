@@ -6,7 +6,7 @@
     ]"
   >
     <div :class="props.containerClass">
-      <Heading :level="props.headingLevel" class="text-[22px]">
+      <Heading :level="props.headingLevel" :class="`text-[22px] ${props.headingClass ? props.headingClass : ''}`">
         <NuxtLink
           :to="props.href"
           :class="[
@@ -53,6 +53,7 @@ type Props = {
   defaultSlotClass?: VueStyleClass
   asideSlotClass?: VueStyleClass
   containerClass?: VueStyleClass
+  headingClass?: string
   headingLevel: HeadingLevel
   hasCoverLink?: boolean
   href: string

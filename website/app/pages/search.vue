@@ -108,21 +108,7 @@
                   <!-- NO RESULTS -->
                   <SearchNoResults v-if="!items.length" />
                   <!-- RESULTS -->
-                  <ul class="flex flex-col gap-4">
-                    <li
-                      v-for="item in items as TypeSenseSearchItem[]"
-                      :key="item.id"
-                      class="flex flex-col"
-                    >
-                      <RFCCardTypeSenseItem
-                        heading-level="3"
-                        :type-sense-search-item="item"
-                        :show-abstract="true"
-                        :show-tag-date="true"
-                        :density="searchStore.density"
-                      />
-                    </li>
-                  </ul>
+                  <SearchResultList :items="items" />
                 </template>
               </ais-hits>
               <SearchPagination />
@@ -145,7 +131,6 @@ import { Separator } from 'reka-ui'
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
 import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID } from '../utilities/typesense'
 import type { TypeSenseClient, TypeSenseSearchItem } from '../utilities/typesense'
-import RFCCardTypeSenseItem from '~/components/RFCCardTypeSenseItem.vue'
 import { adaptSearchClient } from '~/utilities/search-client-middleware'
 import { useRfcEditorHead } from '~/utilities/head'
 import { SEARCH_PATH, searchPathBuilder } from '~/utilities/url'

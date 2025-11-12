@@ -1,5 +1,5 @@
 <template>
-  <span v-if="props.rfc.subseries && props.rfc.subseries.length > 0">
+ <span v-if="props.rfc.subseries && props.rfc.subseries.length > 0">
     <span>: </span>
     <component :is="subseriesVNode" />
   </span>
@@ -21,7 +21,7 @@ const subseriesVNode = computed(() => formatSubseriesAsVNode(props.rfc.subseries
 const formatSubseriesAsVNode = (
   subseries: RfcCommon['subseries'] | undefined
 ): VNode => {
-  if (!subseries) {
+  if (!subseries || subseries.length === 0) {
     return h('span')
   }
 
