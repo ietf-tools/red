@@ -54,13 +54,10 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup lang="ts">
-import {
-    AisSearchBox,
-} from 'vue-instantsearch/vue3/es'
+import { AisSearchBox } from 'vue-instantsearch/vue3/es'
 
 const aisSearchboxInputClass = 'flex-1 min-w-0 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs'
 </script>

@@ -67,7 +67,6 @@
 <script setup lang="ts">
 import {
   AisInstantSearch,
-  AisSearchBox,
   AisHits
 } from 'vue-instantsearch/vue3/es'
 import { Separator } from 'reka-ui'
