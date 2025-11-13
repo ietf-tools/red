@@ -8,7 +8,10 @@
             Search RFCs
         </Heading>
     </div>
-    <div class="lg:sticky lg:top-0 lg:z-50 bg-blue-900 dark:bg-blue-950 text-white mt-0">
+    <div
+        class="lg:sticky lg:top-0 lg:z-50 bg-blue-900 dark:bg-blue-950 text-white mt-0"
+        :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
+    >
         <div class="flex flex-row items-center pt-4 pb-4 container mx-auto">
             <div class="w-full md:w-2/3">
                 <ais-search-box
@@ -59,6 +62,7 @@
 
 <script setup lang="ts">
 import { AisSearchBox } from 'vue-instantsearch/vue3/es'
+import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID } from '../utilities/typesense'
 
 const aisSearchboxInputClass = 'flex-1 min-w-0 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs'
 </script>

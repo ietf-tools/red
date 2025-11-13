@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col items-center md:justify-center md:flex-row mt-8">
-    <HorizontalScrollable class="md:w-full" inner-class="py-1">
+    <HorizontalScrollable
+      class="md:w-full"
+      inner-class="py-1"
+    >
       <ais-pagination
         :class-names="{
           'ais-Pagination': 'w-full md:w-auto',
@@ -36,7 +39,10 @@
 <script setup lang="ts">
 import { AisHitsPerPage, AisPagination } from 'vue-instantsearch/vue3/es'
 import { prefersReducedMotion } from '~/utilities/accessibility'
-import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID } from '~/utilities/typesense'
+import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID, INSTANTSEARCH_STICKY_CONTAINER_DOM_ID } from '../utilities/typesense'
+
+const CSS_POSITION_STICKY = /sticky/i
+const SCROLL_BUFFER_PX = 16 // just a bit further than the container
 
 /**
  * When clicking pagination we should scroll the user back to the top of the results
@@ -44,11 +50,35 @@ import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID } from '~/utilities/typesense'
 const scrollUpToNewSearchResults = () => {
   console.info("Scroll up page to new search results")
   const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
-  if (target) {
-    const scrollBehavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
+  const sticky = document.getElementById(INSTANTSEARCH_STICKY_CONTAINER_DOM_ID)
+  if (target && sticky) {
+    const targetBoundingClientRect = target.getBoundingClientRect()
+    const stickyBoundingClientRect = sticky.getBoundingClientRect()
+    let topPx = window.scrollY + targetBoundingClientRect.top
+    const currentStickyStyles = window.getComputedStyle(sticky)
+    if (
+      // the sticky element is only sticky in certain responsive modes
+      // so we detect whether it's currently `position:sticky`
+      // and the reason we need that is because a sticky element will
+      // obscure the scroll target, meaning we need to scroll further
+      // to reveal the scroll target
+      currentStickyStyles.position.toString().match(CSS_POSITION_STICKY)
+    ) {
+      topPx -= stickyBoundingClientRect.height
+    }
+
+    topPx -= SCROLL_BUFFER_PX
+
+    const behavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
     target.focus() // for keyboard users
-    target.scrollIntoView({ behavior: scrollBehavior })
+    window.scrollTo({
+      left: 0,
+      top: topPx,
+      behavior
+    })
   } else {
+    console.warn("scrollUpToNewSearchResults: Can't find ", { INSTANTSEARCH_HITS_CONTAINER_DOM_ID, target, INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, sticky })
+    // if we can't find the search container just scroll to top of page
     document.body.focus() // for keyboard users
     window.scrollTo(0, 0)
   }

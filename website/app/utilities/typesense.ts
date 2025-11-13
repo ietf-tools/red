@@ -62,7 +62,9 @@ export type TypesenseSubseries = z.infer<typeof TypesenseSubseriesSchema>
 
 const TypesenseSubseriesSchemaWithValues = TypesenseSubseriesSchema.required()
 
-export type TypesenseSubseriesWithValues = z.infer<typeof TypesenseSubseriesSchemaWithValues>
+export type TypesenseSubseriesWithValues = z.infer<
+  typeof TypesenseSubseriesSchemaWithValues
+>
 
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
 export const TypeSenseSearchItemSchema = z.object({
@@ -156,3 +158,6 @@ export type TypeSenseSearchItem = z.infer<typeof TypeSenseSearchItemSchema>
 export type Density = 'full' | 'dense' | 'compact'
 
 export const INSTANTSEARCH_HITS_CONTAINER_DOM_ID = 'ais-hits-container'
+
+// DOM ID of the position:sticky container
+export const INSTANTSEARCH_STICKY_CONTAINER_DOM_ID = 'ais-sticky-container'
