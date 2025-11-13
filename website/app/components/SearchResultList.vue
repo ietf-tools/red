@@ -1,12 +1,23 @@
 <template>
   <ul class="flex flex-col gap-4 computedHeadingWidth">
-    <li v-for="rfc in rfcs" :key="rfc.number" class="flex flex-col">
-      <RFCCardSearchItem heading-level="3" :rfc="rfc" :density="searchStore.density" show-abstract show-tag-date />
+    <li
+      v-for="rfc in rfcs"
+      :key="rfc.number"
+      class="flex flex-col"
+    >
+      <RFCCardSearchItem
+        heading-level="3"
+        :rfc="rfc"
+        :density="searchStore.density"
+        show-abstract
+        show-tag-date
+      />
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
+import { watchDebounced } from '@vueuse/core'
 import { formatTitleAsVNode, formatSubseriesAsVNode, hasSubseries } from '~/utilities/rfc-title'
 import type { TypeSenseSearchItem } from '../utilities/typesense'
 import { getVNodeText } from '~/utilities/vue'
@@ -37,10 +48,13 @@ const calculateMaxHeadingWidth = (rfcs: RfcCommon[]): number =>
 
 const maxHeadingWidth = ref(calculateMaxHeadingWidth(rfcs.value))
 
-watch(() => rfcs, () => {
+
+watchDebounced(() => rfcs, () => {
   maxHeadingWidth.value = calculateMaxHeadingWidth(rfcs.value)
   console.log("recomputing max width", maxHeadingWidth.value)
 }, {
+  debounce: 200,
+  maxWait: 400,
   immediate: true,
   deep: true
 })

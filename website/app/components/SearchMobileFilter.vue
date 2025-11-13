@@ -15,7 +15,7 @@
       <DialogOverlay />
 
       <DialogContent
-        class="absolute inset-0 z-50 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col"
+        class="fixed inset-0 z-50 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col"
       >
         <DialogTitle class="flex justify-between text-xl pl-3 font-bold border-b-1 border-b-gray-400">
           <div class="block px-2 py-4">Filter RFCs </div>

@@ -50,7 +50,7 @@ export const formatSubseriesAsVNode = (
             ),
             class:
               'relative z-50 no-underline hover:underline focus:underline py-3 rounded text-gray-800 dark:text-gray-300',
-            title: `f${subseries.type.toUpperCase()} ${subseries.number} contains RFC ${rfc.number}`
+            title: `${subseries.type.toUpperCase()} ${subseries.number} contains RFC ${rfc.number}`
           },
           () => {
             const title = formatTitleAsVNode(
