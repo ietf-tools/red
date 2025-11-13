@@ -1,21 +1,22 @@
 <template>
-  <div
-    :class="[
-      'bg-white dark:bg-blue-950 relative dark:border-1 dark:border-white/20 pl-5 pr-7 py-4 rounded shadow-xs print:border-2 print:border-black',
-      props.class
-    ]"
-  >
+  <div :class="[
+    'bg-white dark:bg-black relative dark:border-1 dark:border-gray-500 pl-5 pr-7 py-4 rounded shadow-xs print:border-2 print:border-black',
+    props.class
+  ]">
     <div :class="props.containerClass">
-      <Heading :level="props.headingLevel" :class="`text-[22px] ${props.headingClass ? props.headingClass : ''}`">
+      <Heading
+        :level="props.headingLevel"
+        :class="`text-[22px] ${props.headingClass ? props.headingClass : ''}`"
+      >
         <NuxtLink
           :to="props.href"
           :class="[
             'font-semibold text-blue-300 dark:text-blue-100 print:text-black no-underline focus:underline hover:underline group',
             props.hasCoverLink &&
-              `before:absolute before:content-[\'\'] before:inset-0 before:transition-all dark:before:shadow-slate-700 hover:before:shadow-xl focus:before:shadow-xl dark:hover:before:shadow-[0_0px_40px_20px_#00101c] ${
+            `before:absolute before:content-[\'\'] before:inset-0 before:transition-all dark:before:shadow-slate-700 hover:before:shadow-md focus:before:shadow-xs dark:hover:before:shadow-[0_0_10px_5px_#00101c] ${
                 /* this is only a template string so I can write an inline comment:
                   must be able to have <slot /> content above the coverLink, so coverlink is z-40 and slot content (eg buttons) could be z-50 */ 'before:z-40'
-              }`
+            }`
           ]"
         >
           <slot name="headingTitle">slot #headingTitle</slot>
@@ -38,7 +39,10 @@
       </Heading>
       <slot />
     </div>
-    <aside v-if="hasAsideSlot" :class="props.asideSlotClass">
+    <aside
+      v-if="hasAsideSlot"
+      :class="props.asideSlotClass"
+    >
       <slot name="aside"></slot>
     </aside>
   </div>
