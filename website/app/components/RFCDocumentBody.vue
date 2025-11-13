@@ -16,7 +16,10 @@
       hide-title
     />
     {{ SPACE }}
-    <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon />
+    <RFCTitleSubseries
+      :rfc="props.rfcBucketHtmlDocument.rfc"
+      has-trailing-colon
+    />
     {{ SPACE }}
     <span class="font-normal">{{ props.rfcBucketHtmlDocument.rfc.title }}</span>
   </Heading>
@@ -57,17 +60,18 @@
     v-if="props.rfcBucketHtmlDocument.rfc.obsoleted_by?.length"
     variant="warning"
     heading="This RFC is now obsolete"
+    class="ml-1"
   >
     <div class="text-base">
       For more information, please refer to
-      <ul>
+      <ul class="mt-1 flex flex-col gap-2">
         <li
           v-for="(obsoletedByItem, obsoletedByItemIndex) in props.rfcBucketHtmlDocument.rfc.obsoleted_by"
           :key="obsoletedByItemIndex"
         >
-          <Anchor :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)">
+          <AMaybeRFCLink :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)">
             <RFCTitle :rfc="obsoletedByItem" />
-          </Anchor>
+          </AMaybeRFCLink>
         </li>
       </ul>
     </div>

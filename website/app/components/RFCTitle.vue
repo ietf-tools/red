@@ -1,9 +1,10 @@
 <template>
-    <component :is="formattedTitle" /><template v-if="!props.hideTitle">: {{ props.rfc.title }}</template>
+    <component :is="formattedTitle" /><template v-if="!props.hideTitle">{{ SPACE }}{{ props.rfc.title }}</template>
 </template>
 
 <script setup lang="ts">
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
+import { SPACE } from '~/utilities/strings'
 
 type Props = {
     rfc: {
