@@ -48,7 +48,6 @@ const calculateMaxHeadingWidth = (rfcs: RfcCommon[]): number =>
 
 const maxHeadingWidth = ref(calculateMaxHeadingWidth(rfcs.value))
 
-
 watchDebounced(() => rfcs, () => {
   maxHeadingWidth.value = calculateMaxHeadingWidth(rfcs.value)
   console.log("recomputing max width", maxHeadingWidth.value)
