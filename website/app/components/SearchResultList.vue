@@ -37,14 +37,17 @@ const rfcs = computed(() =>
 )
 
 const calculateHeadingCharWidth = (rfc: RfcCommon): number => {
-  const rfcTitle = getVNodeText(formatTitleAsVNode(`rfc${rfc.number}`, hasSubseries(rfc)))
+  const rfcHasSubseries = hasSubseries(rfc)
+  const rfcTitle = getVNodeText(formatTitleAsVNode(`rfc${rfc.number}`, rfcHasSubseries))
   const rfcSubseries = getVNodeText(formatSubseriesAsVNode(rfc, false))
-  const headingText = `${rfcTitle} ${rfcSubseries}`
+  const headingText = `${rfcTitle}${rfcHasSubseries ? ' ' : ''}${rfcSubseries}`
   return headingText.length
 }
 
+const MINIMUM_HEADING_CHAR_WIDTH = 7
+
 const calculateMaxHeadingWidth = (rfcs: RfcCommon[]): number =>
-  Math.max(...rfcs.map(rfc => calculateHeadingCharWidth(rfc)))
+  Math.max(...rfcs.map(rfc => calculateHeadingCharWidth(rfc)), MINIMUM_HEADING_CHAR_WIDTH)
 
 const maxHeadingWidth = ref(calculateMaxHeadingWidth(rfcs.value))
 

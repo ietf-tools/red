@@ -27,6 +27,7 @@
                             'bg-yellow-400 px-2 flex items-center text-white'
                     }"
                     show-loading-indicator
+                    @input="scrollUpToNewSearchResults"
                 >
                     <template #submit-icon>
                         <Icon
@@ -62,7 +63,7 @@
 
 <script setup lang="ts">
 import { AisSearchBox } from 'vue-instantsearch/vue3/es'
-import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID } from '../utilities/typesense'
+import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '../utilities/typesense'
 
 const aisSearchboxInputClass = 'flex-1 min-w-0 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs'
 </script>
