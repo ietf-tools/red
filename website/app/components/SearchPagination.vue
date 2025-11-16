@@ -38,5 +38,5 @@
 
 <script setup lang="ts">
 import { AisHitsPerPage, AisPagination } from 'vue-instantsearch/vue3/es'
-import { scrollUpToNewSearchResults } from '../utilities/typesense';
+import { scrollUpToNewSearchResults } from '../utilities/typesense'
 </script>
