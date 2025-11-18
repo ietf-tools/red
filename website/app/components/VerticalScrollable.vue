@@ -2,10 +2,10 @@
   <div
     ref="scroll-container"
     :class="[
-      'overflow-y-auto transition-shadow duration-800',
-      canScrollUp && !canScrollDown && 'shadow-[inset_0px_70px_90px_-70px_rgba(0,_45,_60,_0.5),inset_0px_36px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_70px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_36px_20px_-36px_rgba(140,_201,_222,_0.5)]',
-      !canScrollUp && canScrollDown && 'shadow-[inset_0px_-70px_90px_-70px_rgba(0,_45,_60,_0.5),inset_0px_-36px_20px_-36px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-36px_20px_-36px_rgba(140,_201,_222,_0.5)]',
-      canScrollUp && canScrollDown && 'shadow-[inset_0px_70px_90px_-70px_rgba(0,_45,_60,_0.5),inset_0px_-70px_90px_-70px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_70px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
+      'overflow-y-auto transition-shadow duration-400',
+      canScrollUp && !canScrollDown && 'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
+      !canScrollUp && canScrollDown && 'shadow-[inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
+      canScrollUp && canScrollDown && 'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
       props.class
     ]"
     @scroll="debouncedUpdateScrollHint"
