@@ -89,7 +89,7 @@ if (
   }
 }
 
-const { setActive: _setActive, activeId } = useTocActiveId(ids)
+const { setActive: _setActive, activeId, targetId } = useTocActiveId(ids)
 
 const handleClick = (id: string): void => {
   /**
@@ -111,7 +111,7 @@ useValidateIds(ids)
 const makeTocId = (id: string) => `toc-${id}`
 
 useScrollTocContainer({
-  toActiveIdRef: activeId,
+  toTargetIdRef: targetId,
   wrapperRef,
   makeTocId
 })

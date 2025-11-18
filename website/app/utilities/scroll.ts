@@ -4,14 +4,22 @@ import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
 import { isProd } from './url'
 
+/**
+ * RFCs for testing
+ * 
+ * * RFC8881 -- a very long RFC
+ * 
+ */
+
 const SCROLL_FPS = 60
-const ANIMATE_INDEX_FPS = 30 // because we want transitions between ids
-const MINIMUM_VELOCITY = 1
+const ANIMATE_INDEX_FPS = 60 // because we want transitions between ids
+const MINIMUM_VELOCITY = 2.6 // magic number derived from scrolling up and down in RFC8881
 const FRICTION = 0.5
 const ENDS_THRESHOLD_PX = 10
 
 export const useTocActiveId = (ids: Ref<string[]>) => {
   const activeIdRef = ref(ids.value[0])
+  const targetIdRef = ref(ids.value[0])
   let activeIdIndex = -1 // should be kept in sync with activeIdRef.value's index within ids.value
   let targetIdIndex = -1
 
@@ -184,6 +192,10 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   const handleScroll = () => {
     const { scrollY } = window
     targetIdIndex = getIdsIndexOfClosestTop(scrollY)
+    const targetElement = elements[targetIdIndex]
+    if(targetElement) {
+      targetIdRef.value = targetElement.id
+    }    
 
     if (targetIdIndex === activeIdIndex) {
       // nothing to do, exit early
@@ -248,7 +260,8 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
 
   return {
     activeId: activeIdRef,
-    setActive
+    setActive,
+    targetId: targetIdRef,
   }
 }
 
@@ -256,38 +269,38 @@ const SCROLL_DIRECTIONAL_BIAS_VH_RATIO = 0.2
 
 const SCROLL_BUFFER_PX = 100
 type UseScrollTocContainerProps = {
-  toActiveIdRef: Ref<string | undefined>
+  toTargetIdRef: Ref<string | undefined>
   wrapperRef: Ref<HTMLElement | null | undefined>
   makeTocId: (id: string) => string
 }
 export const useScrollTocContainer = ({
-  toActiveIdRef,
+  toTargetIdRef,
   wrapperRef,
   makeTocId
 }: UseScrollTocContainerProps) => {
-  let previousActiveId = toActiveIdRef.value
+  let previousTargetId = toTargetIdRef.value
 
   watchDebounced(
-    [toActiveIdRef, wrapperRef],
+    [toTargetIdRef, wrapperRef],
     () => {
       /**
        * Scrolls the TOC in an attempt to make the active item always visible to the user
        */
       const { value: wrapper } = wrapperRef
 
-      if (!toActiveIdRef.value) {
-        console.info('No activeIdRef', toActiveIdRef.value)
+      if (!toTargetIdRef.value) {
+        console.info('No activeIdRef', toTargetIdRef.value)
         return
       }
 
-      if (!previousActiveId) {
-        console.info('No previousActiveId', previousActiveId)
+      if (!previousTargetId) {
+        console.info('No previousActiveId', previousTargetId)
         return
       }
       const previousTocLink = document.getElementById(
-        makeTocId(previousActiveId)
+        makeTocId(previousTargetId)
       )
-      const tocLink = document.getElementById(makeTocId(toActiveIdRef.value))
+      const tocLink = document.getElementById(makeTocId(toTargetIdRef.value))
 
       if (!tocLink || !wrapper || !previousTocLink) {
         console.error('Required element(s) not found', {
@@ -297,7 +310,7 @@ export const useScrollTocContainer = ({
         })
         if (import.meta.dev) {
           throw Error(
-            `Scroll TOC required element(s) not found toActiveIdRef=${toActiveIdRef.value} tocLink=${tocLink}, wrapper=${wrapper}, previousTocLink=${previousTocLink}`
+            `Scroll TOC required element(s) not found toActiveIdRef=${toTargetIdRef.value} tocLink=${tocLink}, wrapper=${wrapper}, previousTocLink=${previousTocLink}`
           )
         }
         return
@@ -315,6 +328,7 @@ export const useScrollTocContainer = ({
 
       if (isVisible) {
         // no scrolling is required. There's nothing to do in this loop
+        //
         // console.log(
         //   "Checked whether TOC needed scrolling but it didn't (active option was already visible)",
         //   {
@@ -357,7 +371,7 @@ export const useScrollTocContainer = ({
         })
       }
 
-      previousActiveId = toActiveIdRef.value
+      previousTargetId = toTargetIdRef.value
     },
     { debounce: 200, maxWait: 400 }
   )
