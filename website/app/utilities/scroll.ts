@@ -5,10 +5,8 @@ import { prefersReducedMotion } from './accessibility'
 import { isProd } from './url'
 
 /**
- * RFCs for testing
- * 
- * * RFC8881 -- a very long RFC
- * 
+ * RFCs for testing:
+ *  - RFC8881: a very long RFC
  */
 
 const SCROLL_FPS = 60
@@ -193,10 +191,9 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     const { scrollY } = window
     targetIdIndex = getIdsIndexOfClosestTop(scrollY)
     const targetElement = elements[targetIdIndex]
-    if(targetElement) {
+    if (targetElement) {
       targetIdRef.value = targetElement.id
-    }    
-
+    }
     if (targetIdIndex === activeIdIndex) {
       // nothing to do, exit early
       // console.log('No activeId change needed')
