@@ -161,20 +161,20 @@
               >
                 <span class="whitespace-nowrap">
                   <a
-                    v-if="author.email"
-                    :href="rfcAuthorUrlBuilder(author.email)"
+                    v-if="author.datatracker_person_path"
+                    :href="datatrackerAuthorUrlBuilder(author.datatracker_person_path)"
                     :class="[ANCHOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']"
                   >
                     {{
-                      // author.titlepage_name might be an empty string, so don't use ?? as fallback, use ||
-                      author.titlepage_name || author.name }}
+                      // author.titlepage_name might be an empty string, so don't use `??` as fallback, use `||`
+                      author.titlepage_name || '(unnamed)' }}
                     <Icon
                       name="fluent:window-new-20-regular"
                       class="text-lg align-middle ml-1"
                     />
                   </a>
                   <span v-else>
-                    {{ author.name }}
+                    {{ author.titlepage_name || '(unnamed)' }}
                   </span>
                   <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
                     {{ COMMA }} {{ NONBREAKING_SPACE }}
@@ -355,7 +355,7 @@ import {
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
 import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { areaGroupUrlBuilder, rfcAuthorUrlBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
+import { areaGroupUrlBuilder, datatrackerAuthorUrlBuilder, streamUrlBuilder, workingGroupUrlBuilder } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc-validators'
 

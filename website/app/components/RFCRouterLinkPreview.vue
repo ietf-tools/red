@@ -71,8 +71,8 @@ function formatAuthors(authors: RfcCommon['authors']): string {
     return ''
   }
   return authors.map(author =>
-    // titlepage_author might be an empty string, so don't use ?? to fallback, instead use ||
-    author.titlepage_name || author.name).join(', ')
+    // titlepage_author might be an empty string, so don't use `??` to fallback, instead use `||`
+    author.titlepage_name || '(unnamed)').join(', ')
 }
 
 function formatStreamAndArea(rfc: RfcCommon): string[] {

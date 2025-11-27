@@ -136,7 +136,9 @@ const formatRfcFormatAsRfcJsonFormat = (
 }
 
 export const formatAuthor = (author: RfcCommon['authors'][number]): string => {
-  const name = author.name
+  const { titlepage_name } = author
+  if (!titlepage_name) return ''
+  const name = titlepage_name
     .split(/[\s.]/g)
     .filter(Boolean)
     .reduce((acc, item, index, arr) => {

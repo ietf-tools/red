@@ -223,7 +223,7 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
     published: rfc.published,
     status: parseStatus(rfc.status, rfc.number),
     pages: rfc.pages ?? undefined,
-    authors: rfc.authors,
+    authors: parseAuthors(rfc.authors),
     group: parseGroup(rfc.group),
     area: parseArea(rfc.area),
     stream: {
@@ -253,7 +253,7 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     published: rfcMetadata.published,
     status: parseStatus(rfcMetadata.status, rfcMetadata.number),
     pages: rfcMetadata.pages ?? undefined,
-    authors: rfcMetadata.authors,
+    authors: parseAuthors(rfcMetadata.authors),
     group: parseGroup(rfcMetadata.group),
     area: parseArea(rfcMetadata.area),
     stream: {
@@ -302,8 +302,7 @@ export const getAllRFCs = async ({
 
     if (rfcCommons.length > 0) {
       console.log(
-        ` - rfc ${rfcCommons[rfcCommons.length - 1].number}-${
-          rfcCommons[0].number
+        ` - rfc ${rfcCommons[rfcCommons.length - 1].number}-${rfcCommons[0].number
         }`
       )
     }
@@ -315,8 +314,7 @@ export const getAllRFCs = async ({
       rfcCommons.some((rfc) => rfc.number === FIRST_RFC_NUMBER)
     ) {
       console.log(
-        `Finished downloading metadata for ALL rfcs (${rfcs[0].number}-${
-          rfcs[rfcs.length - 1].number
+        `Finished downloading metadata for ALL rfcs (${rfcs[0].number}-${rfcs[rfcs.length - 1].number
         })`
       )
       break
@@ -412,8 +410,7 @@ export const parseStatus = (
   const { data, error } = RfcCommonStatusSchema.safeParse(status)
   if (error) {
     throw Error(
-      `Unable to parse${
-        rfcNumberForDebug !== undefined ? ` RFC ${rfcNumberForDebug}` : ''
+      `Unable to parse${rfcNumberForDebug !== undefined ? ` RFC ${rfcNumberForDebug}` : ''
       } status ${JSON.stringify(status)}").`
     )
   }
@@ -480,8 +477,7 @@ const parseGroup = (
   if (error) {
     console.error(error)
     throw Error(
-      `Problem parsing group type ${JSON.stringify(group)} ${
-        rfcNumberForDebug !== undefined ? `from RFC ${rfcNumberForDebug}` : ''
+      `Problem parsing group type ${JSON.stringify(group)} ${rfcNumberForDebug !== undefined ? `from RFC ${rfcNumberForDebug}` : ''
       }`
     )
   }
@@ -548,3 +544,13 @@ type RfcSubseriesItem = NonNullable<Rfc['subseries']>[number]
 const parseSubseriesItemType = (
   type: RfcSubseriesItem['type']
 ): RfcCommonSubseriesItem['type'] => RfcCommonSubseriesTypeSchema.parse(type)
+
+
+const parseAuthors = (authors: Rfc["authors"] | RfcMetadata["authors"]): RfcCommon["authors"] => {
+  return authors ? authors.map((author): RfcCommon["authors"][number] => {
+    return {
+      ...author,
+      person: author.person ?? undefined
+    }
+  }) : []
+} 

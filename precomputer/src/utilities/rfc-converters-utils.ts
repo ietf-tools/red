@@ -1,5 +1,5 @@
 import { assertNever } from './typescript.ts'
-import type {  RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { DateTime } from 'luxon'
 
 type RfcAuthor = RfcCommon['authors'][number]
@@ -18,7 +18,9 @@ export const formatAuthor = (
   author: RfcAuthor,
   style: 'regular' | 'brief' | 'reverse'
 ): string => {
-  const name = author.name
+  const { titlepage_name } = author
+  if (!titlepage_name) return ''
+  const name = titlepage_name
     .split(/[\s.]/g)
     .filter(Boolean)
     .filter((_part, index, arr) => {

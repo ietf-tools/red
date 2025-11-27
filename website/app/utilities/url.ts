@@ -421,8 +421,8 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
   assertNever(stream.slug)
 }
 
-export const rfcAuthorUrlBuilder = (email: string) => {
-  return `${DATATRACKER_URL_ORIGIN}/person/${encodeURI(email)}` as const
+export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => {
+  return new URL(datatracker_person_path, DATATRACKER_URL_ORIGIN).toString()
 }
 
 /**

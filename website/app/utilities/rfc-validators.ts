@@ -136,12 +136,13 @@ const RfcCommonUpdatedBySchema = z.object({
 })
 
 const RfcCommonAuthorSchema = z.object({
-  person: z.number().optional(),
-  name: z.string(),
   titlepage_name: z.string().optional(),
+  is_editor: z.boolean().optional(),
+  person: z.number().optional(),
   email: z.string().optional(),
   affiliation: z.string().optional(),
-  country: z.string().optional()
+  country: z.string().optional(),
+  datatracker_person_path: z.string().optional()
 })
 
 const RfcCommonDraftSchema = z.object({

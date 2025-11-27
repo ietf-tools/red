@@ -866,7 +866,7 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
  4007 IPv6 Scoped Address Architecture. B. Haberman, B. Zill, E.
       Nordmark, T. Jinmei, S. Deering. March 2005. (Format: XML, TXT)
-      (Updated by RFC7346) (Status: PROPOSED STANDARD) (DOI:
+      (Updated by RFC7346, RFC9844) (Status: PROPOSED STANDARD) (DOI:
       10.17487/RFC4007) 
 
  4008 Definitions of Managed Objects for Network Address Translators
@@ -994,16 +994,16 @@ See the RFC Editor Web page http://www.rfc-editor.org
       TXT) (Obsoletes RFC3090, RFC3008, RFC3445, RFC2535, RFC3655,
       RFC3658, RFC3755, RFC3845, RFC3757) (Updates RFC3226, RFC3225,
       RFC2136, RFC1035, RFC3597, RFC2308, RFC1034, RFC2181, RFC3007)
-      (Updated by RFC9077, RFC4470, RFC6014, RFC6840, RFC6944) (Status:
-      PROPOSED STANDARD) (DOI: 10.17487/RFC4034) 
+      (Updated by RFC9077, RFC4470, RFC6014, RFC6840, RFC6944, RFC9824)
+      (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4034) 
 
  4035 Protocol Modifications for the DNS Security Extensions. S. Rose, M.
       Larson, D. Massey, R. Austein, R. Arends. March 2005. (Format: XML,
       TXT) (Obsoletes RFC3755, RFC3845, RFC2535, RFC3008, RFC3655,
       RFC3090, RFC3445, RFC3658, RFC3757) (Updates RFC3007, RFC2136,
       RFC3226, RFC2181, RFC3225, RFC1034, RFC3597, RFC2308, RFC1035)
-      (Updated by RFC9520, RFC8198, RFC9077, RFC4470, RFC6014, RFC6840)
-      (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4035) 
+      (Updated by RFC9520, RFC8198, RFC9077, RFC4470, RFC6014, RFC6840,
+      RFC9824) (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4035) 
 
  4036 Management Information Base for Data Over Cable Service Interface
       Specification (DOCSIS) Cable Modem Termination Systems for
@@ -1369,7 +1369,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
  6020 YANG - A Data Modeling Language for the Network Configuration
       Protocol (NETCONF). M. Björklund. October 2010. (Format: XML, TXT)
-      (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC6020) 
+      (Updated by RFC9890) (Status: PROPOSED STANDARD) (DOI:
+      10.17487/RFC6020) 
 
  6021 Common YANG Data Types. J. Schönwälder. October 2010. (Format: XML,
       TXT) (Obsoleted by RFC6991) (Status: PROPOSED STANDARD) (DOI:
@@ -1796,8 +1797,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
  8018 PKCS #5: Password-Based Cryptography Specification Version 2.1. K.
       Moriarty, B. Kaliski, A. Rusch. January 2017. (Format: XML, TXT)
-      (Obsoletes RFC2898) (Updated by RFC9579) (Status: INFORMATIONAL)
-      (DOI: 10.17487/RFC8018) 
+      (Obsoletes RFC2898) (Updated by RFC9579, RFC9879) (Status:
+      INFORMATIONAL) (DOI: 10.17487/RFC8018) 
 
  8019 Protecting Internet Key Exchange Protocol Version 2 (IKEv2)
       Implementations from Distributed Denial-of-Service Attacks. Y. Nir,
@@ -1885,8 +1886,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
  8037 CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures in JSON
       Object Signing and Encryption (JOSE). I. Liusvaara. January 2017.
-      (Format: XML, TXT) (Status: PROPOSED STANDARD) (DOI:
-      10.17487/RFC8037) 
+      (Format: XML, TXT) (Updated by RFC9864) (Status: PROPOSED STANDARD)
+      (DOI: 10.17487/RFC8037) 
 
  8038 Exporting MIB Variables Using the IP Flow Information Export
       (IPFIX) Protocol. P. Aitken, B. Claise, S. S, C. McDowall, J.
@@ -1995,11 +1996,11 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
  9012 The BGP Tunnel Encapsulation Attribute. K. Patel, G.V.D. Velde, S.
       Sangli, J. Scudder. April 2021. (Format: XML, TXT) (Obsoletes
-      RFC5566, RFC5512) (Updates RFC5640) (Status: PROPOSED STANDARD)
-      (DOI: 10.17487/RFC9012) 
+      RFC5566, RFC5512) (Updates RFC5640) (Updated by RFC9830) (Status:
+      PROPOSED STANDARD) (DOI: 10.17487/RFC9012) 
 
  9013 OSPF Advertisement of Tunnel Encapsulations. X. Xu, B. Decraene, R.
-      Raszuk, L. Contreras, L. Jalil. April 2021. (Format: XML, TXT)
+      RASZUK, L. Contreras, L. Jalil. April 2021. (Format: XML, TXT)
       (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC9013) 
 
  9014 Interconnect Solution for Ethernet VPN (EVPN) Overlay Networks. J.
@@ -3034,7 +3035,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
 4007 IPv6 Scoped Address Architecture. B. Haberman, B. Zill, E. Nordmark,
      T. Jinmei, S. Deering. March 2005. (Format: XML, TXT) (Updated by
-     RFC7346) (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4007) 
+     RFC7346, RFC9844) (Status: PROPOSED STANDARD) (DOI:
+     10.17487/RFC4007) 
 
 4008 Definitions of Managed Objects for Network Address Translators
      (NAT). P. Srisuresh, R. Rohit, R. Raghunarayan, N. Pai, C. Wang.
@@ -3160,16 +3162,16 @@ See the RFC Editor Web page http://www.rfc-editor.org
      TXT) (Obsoletes RFC3090, RFC3008, RFC3445, RFC2535, RFC3655,
      RFC3658, RFC3755, RFC3845, RFC3757) (Updates RFC3226, RFC3225,
      RFC2136, RFC1035, RFC3597, RFC2308, RFC1034, RFC2181, RFC3007)
-     (Updated by RFC9077, RFC4470, RFC6014, RFC6840, RFC6944) (Status:
-     PROPOSED STANDARD) (DOI: 10.17487/RFC4034) 
+     (Updated by RFC9077, RFC4470, RFC6014, RFC6840, RFC6944, RFC9824)
+     (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4034) 
 
 4035 Protocol Modifications for the DNS Security Extensions. S. Rose, M.
      Larson, D. Massey, R. Austein, R. Arends. March 2005. (Format: XML,
      TXT) (Obsoletes RFC3755, RFC3845, RFC2535, RFC3008, RFC3655,
      RFC3090, RFC3445, RFC3658, RFC3757) (Updates RFC3007, RFC2136,
      RFC3226, RFC2181, RFC3225, RFC1034, RFC3597, RFC2308, RFC1035)
-     (Updated by RFC9520, RFC8198, RFC9077, RFC4470, RFC6014, RFC6840)
-     (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4035) 
+     (Updated by RFC9520, RFC8198, RFC9077, RFC4470, RFC6014, RFC6840,
+     RFC9824) (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC4035) 
 
 4036 Management Information Base for Data Over Cable Service Interface
      Specification (DOCSIS) Cable Modem Termination Systems for
@@ -3533,7 +3535,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
 6020 YANG - A Data Modeling Language for the Network Configuration
      Protocol (NETCONF). M. Björklund. October 2010. (Format: XML, TXT)
-     (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC6020) 
+     (Updated by RFC9890) (Status: PROPOSED STANDARD) (DOI:
+     10.17487/RFC6020) 
 
 6021 Common YANG Data Types. J. Schönwälder. October 2010. (Format: XML,
      TXT) (Obsoleted by RFC6991) (Status: PROPOSED STANDARD) (DOI:
@@ -3958,8 +3961,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
 8018 PKCS #5: Password-Based Cryptography Specification Version 2.1. K.
      Moriarty, B. Kaliski, A. Rusch. January 2017. (Format: XML, TXT)
-     (Obsoletes RFC2898) (Updated by RFC9579) (Status: INFORMATIONAL)
-     (DOI: 10.17487/RFC8018) 
+     (Obsoletes RFC2898) (Updated by RFC9579, RFC9879) (Status:
+     INFORMATIONAL) (DOI: 10.17487/RFC8018) 
 
 8019 Protecting Internet Key Exchange Protocol Version 2 (IKEv2)
      Implementations from Distributed Denial-of-Service Attacks. Y. Nir,
@@ -4047,8 +4050,8 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
 8037 CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures in JSON
      Object Signing and Encryption (JOSE). I. Liusvaara. January 2017.
-     (Format: XML, TXT) (Status: PROPOSED STANDARD) (DOI:
-     10.17487/RFC8037) 
+     (Format: XML, TXT) (Updated by RFC9864) (Status: PROPOSED STANDARD)
+     (DOI: 10.17487/RFC8037) 
 
 8038 Exporting MIB Variables Using the IP Flow Information Export (IPFIX)
      Protocol. P. Aitken, B. Claise, S. S, C. McDowall, J. Schönwälder.
@@ -4155,11 +4158,11 @@ See the RFC Editor Web page http://www.rfc-editor.org
 
 9012 The BGP Tunnel Encapsulation Attribute. K. Patel, G.V.D. Velde, S.
      Sangli, J. Scudder. April 2021. (Format: XML, TXT) (Obsoletes
-     RFC5566, RFC5512) (Updates RFC5640) (Status: PROPOSED STANDARD)
-     (DOI: 10.17487/RFC9012) 
+     RFC5566, RFC5512) (Updates RFC5640) (Updated by RFC9830) (Status:
+     PROPOSED STANDARD) (DOI: 10.17487/RFC9012) 
 
 9013 OSPF Advertisement of Tunnel Encapsulations. X. Xu, B. Decraene, R.
-     Raszuk, L. Contreras, L. Jalil. April 2021. (Format: XML, TXT)
+     RASZUK, L. Contreras, L. Jalil. April 2021. (Format: XML, TXT)
      (Status: PROPOSED STANDARD) (DOI: 10.17487/RFC9013) 
 
 9014 Interconnect Solution for Ethernet VPN (EVPN) Overlay Networks. J.

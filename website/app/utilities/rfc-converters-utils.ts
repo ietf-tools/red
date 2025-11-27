@@ -21,7 +21,9 @@ export const formatAuthor = (
   author: RfcAuthor,
   style: 'regular' | 'brief' | 'reverse'
 ): string => {
-  const name = author.name
+  const { titlepage_name } = author
+  if (!titlepage_name) return ''
+  const name = titlepage_name
     .split(/[\s.]/g)
     .filter(Boolean)
     .filter((_part, index, arr) => {

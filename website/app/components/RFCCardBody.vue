@@ -73,18 +73,20 @@ function formatAuthors(authors: RfcCommon['authors']): string {
     if (authors[0] === undefined) {
       throw Error(`Expected non-undefined authors[0]`)
     }
-    return `${authors[0].name}`
+    return `${
+    // titlepage_name might be an empty string, so use `||` not `??`
+    authors[0].titlepage_name || '(unnamed)'}`
   } else if (authors.length === 2) {
     if (authors[0] === undefined || authors[1] === undefined) {
       throw Error(`Expected non-undefined authors[0]`)
     }
-    return `${authors[0].name} and ${authors[1].name}`
+    return `${authors[0].titlepage_name || '(unnamed)'} and ${authors[1].titlepage_name || '(unnamed)'}`
   } else {
     return (
       authors
         .slice(0, authors.length - 1)
-        .map((author) => author.name)
-        .join(', ') + `, and ${authors.at(-1)?.name}`
+        .map((author) => author.titlepage_name)
+        .join(', ') + `, and ${authors.at(-1)?.titlepage_name}`
     )
   }
 }

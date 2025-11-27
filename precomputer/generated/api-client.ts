@@ -153,7 +153,7 @@ export class ApiClient {
     getDraftAuthors: (body: string[]) => {
       return this.Fetch<DraftWithAuthors[]>(
         'post',
-        '/api/purple/draft/authors/',
+        '/api/purple/draft/bulk_authors/',
         { body }
       )
     },
@@ -194,10 +194,82 @@ export class ApiClient {
       )
     },
 
+    rfcAuthorsList: (rfc_number: number) => {
+      return this.Fetch<Author[]>(
+        'get',
+        `/api/purple/rfc/${rfc_number}/authors/`,
+        {}
+      )
+    },
+
+    rfcAuthorsCreate: (rfc_number: number, body: AuthorRequest) => {
+      return this.Fetch<Author>(
+        'post',
+        `/api/purple/rfc/${rfc_number}/authors/`,
+        { body }
+      )
+    },
+
+    rfcAuthorsRetrieve: (author_id: string, rfc_number: number) => {
+      return this.Fetch<Author>(
+        'get',
+        `/api/purple/rfc/${rfc_number}/authors/${author_id}/`,
+        {}
+      )
+    },
+
+    rfcAuthorsUpdate: (
+      author_id: string,
+      rfc_number: number,
+      body: AuthorRequest
+    ) => {
+      return this.Fetch<Author>(
+        'put',
+        `/api/purple/rfc/${rfc_number}/authors/${author_id}/`,
+        { body }
+      )
+    },
+
+    rfcAuthorsPartialUpdate: (
+      author_id: string,
+      rfc_number: number,
+      body: PatchedAuthorRequest
+    ) => {
+      return this.Fetch<Author>(
+        'patch',
+        `/api/purple/rfc/${rfc_number}/authors/${author_id}/`,
+        { body }
+      )
+    },
+
+    rfcAuthorsDestroy: (author_id: string, rfc_number: number) => {
+      return this.Fetch<void>(
+        'delete',
+        `/api/purple/rfc/${rfc_number}/authors/${author_id}/`,
+        {}
+      )
+    },
+
     getRfcAuthors: (body: number[]) => {
-      return this.Fetch<RfcWithAuthors[]>('post', '/api/purple/rfc/authors/', {
+      return this.Fetch<RfcWithAuthors[]>(
+        'post',
+        '/api/purple/rfc/bulk_authors/',
+        { body }
+      )
+    },
+
+    notifyRfcPublished: (body: RfcPubRequest) => {
+      return this.Fetch<NotificationAck>('post', '/api/purple/rfc/publish/', {
         body
       })
+    },
+
+    uploadRfcFiles: (body: RfcFileRequest) => {
+      return this.Fetch<NotificationAck>(
+        'post',
+        '/api/purple/rfc/publish/files/',
+        { body, headers: { 'content-type': 'multipart/form-data' } }
+      )
     },
 
     getRfcOriginalStreams: () => {
@@ -269,12 +341,31 @@ export class ApiClient {
   }
 }
 
+export type Author = {
+  id?: number
+  titlepage_name: string
+  is_editor?: boolean
+  person?: number | null
+  email?: string | null
+  affiliation?: string
+  country?: string
+}
+
 export type AuthorPerson = {
   person_pk?: number
   name: string
   last_name: string
   initials: string
   email_addresses: string[]
+}
+
+export type AuthorRequest = {
+  titlepage_name: string
+  is_editor?: boolean
+  person?: number | null
+  email?: string | null
+  affiliation?: string
+  country?: string
 }
 
 export type ClientErrorEnum = 'client_error'
@@ -502,6 +593,257 @@ export type Group = {
   type?: string | null
 }
 
+export type NotificationAck = {
+  message?: string
+}
+
+export type NotifyRfcPublishedAbstractErrorComponent = {
+  attr: 'abstract'
+  code:
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedAdErrorComponent = {
+  attr: 'ad'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXAffiliationErrorComponent = {
+  attr: 'authors.INDEX.affiliation'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXCountryErrorComponent = {
+  attr: 'authors.INDEX.country'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXEmailErrorComponent = {
+  attr: 'authors.INDEX.email'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXIsEditorErrorComponent = {
+  attr: 'authors.INDEX.is_editor'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXNonFieldErrorsErrorComponent = {
+  attr: 'authors.INDEX.non_field_errors'
+  code: 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXPersonErrorComponent = {
+  attr: 'authors.INDEX.person'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsINDEXTitlepageNameErrorComponent = {
+  attr: 'authors.INDEX.titlepage_name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedAuthorsNonFieldErrorsErrorComponent = {
+  attr: 'authors.non_field_errors'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedDraftNameErrorComponent = {
+  attr: 'draft_name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedDraftRevErrorComponent = {
+  attr: 'draft_rev'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedError =
+  | NotifyRfcPublishedNonFieldErrorsErrorComponent
+  | NotifyRfcPublishedPublishedErrorComponent
+  | NotifyRfcPublishedDraftNameErrorComponent
+  | NotifyRfcPublishedDraftRevErrorComponent
+  | NotifyRfcPublishedRfcNumberErrorComponent
+  | NotifyRfcPublishedTitleErrorComponent
+  | NotifyRfcPublishedAuthorsNonFieldErrorsErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXNonFieldErrorsErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXTitlepageNameErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXIsEditorErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXPersonErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXEmailErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXAffiliationErrorComponent
+  | NotifyRfcPublishedAuthorsINDEXCountryErrorComponent
+  | NotifyRfcPublishedGroupErrorComponent
+  | NotifyRfcPublishedStreamErrorComponent
+  | NotifyRfcPublishedAbstractErrorComponent
+  | NotifyRfcPublishedPagesErrorComponent
+  | NotifyRfcPublishedWordsErrorComponent
+  | NotifyRfcPublishedFormalLanguagesErrorComponent
+  | NotifyRfcPublishedStdLevelErrorComponent
+  | NotifyRfcPublishedAdErrorComponent
+  | NotifyRfcPublishedNoteErrorComponent
+  | NotifyRfcPublishedObsoletesErrorComponent
+  | NotifyRfcPublishedUpdatesErrorComponent
+  | NotifyRfcPublishedSubseriesErrorComponent
+  | NotifyRfcPublishedSubseriesINDEXErrorComponent
+
+export type NotifyRfcPublishedErrorResponse400 =
+  | NotifyRfcPublishedValidationError
+  | ParseErrorResponse
+
+export type NotifyRfcPublishedFormalLanguagesErrorComponent = {
+  attr: 'formal_languages'
+  code: 'does_not_exist' | 'incorrect_type' | 'not_a_list' | 'null'
+  detail: string
+}
+
+export type NotifyRfcPublishedGroupErrorComponent = {
+  attr: 'group'
+  code: 'does_not_exist' | 'invalid' | 'null'
+  detail: string
+}
+
+export type NotifyRfcPublishedNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type NotifyRfcPublishedNoteErrorComponent = {
+  attr: 'note'
+  code:
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedObsoletesErrorComponent = {
+  attr: 'obsoletes'
+  code: 'does_not_exist' | 'invalid' | 'not_a_list' | 'null'
+  detail: string
+}
+
+export type NotifyRfcPublishedPagesErrorComponent = {
+  attr: 'pages'
+  code: 'invalid' | 'max_string_length' | 'max_value' | 'min_value'
+  detail: string
+}
+
+export type NotifyRfcPublishedPublishedErrorComponent = {
+  attr: 'published'
+  code: 'date' | 'invalid' | 'make_aware' | 'null' | 'overflow' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedRfcNumberErrorComponent = {
+  attr: 'rfc_number'
+  code: 'invalid' | 'max_string_length' | 'min_value' | 'null' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedStdLevelErrorComponent = {
+  attr: 'std_level'
+  code: 'does_not_exist' | 'incorrect_type' | 'null' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedStreamErrorComponent = {
+  attr: 'stream'
+  code: 'does_not_exist' | 'incorrect_type' | 'null' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedSubseriesErrorComponent = {
+  attr: 'subseries'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type NotifyRfcPublishedSubseriesINDEXErrorComponent = {
+  attr: 'subseries.INDEX'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedTitleErrorComponent = {
+  attr: 'title'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type NotifyRfcPublishedUpdatesErrorComponent = {
+  attr: 'updates'
+  code: 'does_not_exist' | 'invalid' | 'not_a_list' | 'null'
+  detail: string
+}
+
+export type NotifyRfcPublishedValidationError = {
+  type: ValidationErrorEnum
+  errors: NotifyRfcPublishedError[]
+}
+
+export type NotifyRfcPublishedWordsErrorComponent = {
+  attr: 'words'
+  code: 'invalid' | 'max_string_length' | 'max_value' | 'min_value'
+  detail: string
+}
+
 export type OriginalStream = {
   rfc_number?: number | null
   stream?: string
@@ -534,6 +876,15 @@ export type ParseErrorResponse = {
   errors: ParseError[]
 }
 
+export type PatchedAuthorRequest = {
+  titlepage_name?: string
+  is_editor?: boolean
+  person?: number | null
+  email?: string | null
+  affiliation?: string
+  country?: string
+}
+
 export type Person = {
   id?: number
   plain_name?: string
@@ -543,6 +894,243 @@ export type Person = {
 }
 
 export type PersonsByEmailErrorResponse400 = ParseErrorResponse
+
+export type PurpleRfcAuthorsCreateAffiliationErrorComponent = {
+  attr: 'affiliation'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreateCountryErrorComponent = {
+  attr: 'country'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreateEmailErrorComponent = {
+  attr: 'email'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreateError =
+  | PurpleRfcAuthorsCreateNonFieldErrorsErrorComponent
+  | PurpleRfcAuthorsCreateTitlepageNameErrorComponent
+  | PurpleRfcAuthorsCreateIsEditorErrorComponent
+  | PurpleRfcAuthorsCreatePersonErrorComponent
+  | PurpleRfcAuthorsCreateEmailErrorComponent
+  | PurpleRfcAuthorsCreateAffiliationErrorComponent
+  | PurpleRfcAuthorsCreateCountryErrorComponent
+
+export type PurpleRfcAuthorsCreateErrorResponse400 =
+  | PurpleRfcAuthorsCreateValidationError
+  | ParseErrorResponse
+
+export type PurpleRfcAuthorsCreateIsEditorErrorComponent = {
+  attr: 'is_editor'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreateNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreatePersonErrorComponent = {
+  attr: 'person'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreateTitlepageNameErrorComponent = {
+  attr: 'titlepage_name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsCreateValidationError = {
+  type: ValidationErrorEnum
+  errors: PurpleRfcAuthorsCreateError[]
+}
+
+export type PurpleRfcAuthorsDestroyErrorResponse400 = ParseErrorResponse
+
+export type PurpleRfcAuthorsListErrorResponse400 = ParseErrorResponse
+
+export type PurpleRfcAuthorsPartialUpdateAffiliationErrorComponent = {
+  attr: 'affiliation'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdateCountryErrorComponent = {
+  attr: 'country'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdateEmailErrorComponent = {
+  attr: 'email'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdateError =
+  | PurpleRfcAuthorsPartialUpdateNonFieldErrorsErrorComponent
+  | PurpleRfcAuthorsPartialUpdateTitlepageNameErrorComponent
+  | PurpleRfcAuthorsPartialUpdateIsEditorErrorComponent
+  | PurpleRfcAuthorsPartialUpdatePersonErrorComponent
+  | PurpleRfcAuthorsPartialUpdateEmailErrorComponent
+  | PurpleRfcAuthorsPartialUpdateAffiliationErrorComponent
+  | PurpleRfcAuthorsPartialUpdateCountryErrorComponent
+
+export type PurpleRfcAuthorsPartialUpdateErrorResponse400 =
+  | PurpleRfcAuthorsPartialUpdateValidationError
+  | ParseErrorResponse
+
+export type PurpleRfcAuthorsPartialUpdateIsEditorErrorComponent = {
+  attr: 'is_editor'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdateNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdatePersonErrorComponent = {
+  attr: 'person'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdateTitlepageNameErrorComponent = {
+  attr: 'titlepage_name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsPartialUpdateValidationError = {
+  type: ValidationErrorEnum
+  errors: PurpleRfcAuthorsPartialUpdateError[]
+}
+
+export type PurpleRfcAuthorsRetrieveErrorResponse400 = ParseErrorResponse
+
+export type PurpleRfcAuthorsUpdateAffiliationErrorComponent = {
+  attr: 'affiliation'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdateCountryErrorComponent = {
+  attr: 'country'
+  code:
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdateEmailErrorComponent = {
+  attr: 'email'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdateError =
+  | PurpleRfcAuthorsUpdateNonFieldErrorsErrorComponent
+  | PurpleRfcAuthorsUpdateTitlepageNameErrorComponent
+  | PurpleRfcAuthorsUpdateIsEditorErrorComponent
+  | PurpleRfcAuthorsUpdatePersonErrorComponent
+  | PurpleRfcAuthorsUpdateEmailErrorComponent
+  | PurpleRfcAuthorsUpdateAffiliationErrorComponent
+  | PurpleRfcAuthorsUpdateCountryErrorComponent
+
+export type PurpleRfcAuthorsUpdateErrorResponse400 =
+  | PurpleRfcAuthorsUpdateValidationError
+  | ParseErrorResponse
+
+export type PurpleRfcAuthorsUpdateIsEditorErrorComponent = {
+  attr: 'is_editor'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdateNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdatePersonErrorComponent = {
+  attr: 'person'
+  code: 'does_not_exist' | 'incorrect_type'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdateTitlepageNameErrorComponent = {
+  attr: 'titlepage_name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcAuthorsUpdateValidationError = {
+  type: ValidationErrorEnum
+  errors: PurpleRfcAuthorsUpdateError[]
+}
 
 export type RedDocListAreaErrorComponent = {
   attr: 'area'
@@ -647,7 +1235,7 @@ export type Rfc = {
   published: string
   status: RfcStatus
   pages?: number | null
-  authors: RfcAuthor[]
+  authors?: RfcAuthor[]
   group: Group
   area?: Group
   stream: StreamName
@@ -667,12 +1255,19 @@ export type Rfc = {
 }
 
 export type RfcAuthor = {
-  person: number
-  name: string
-  titlepage_name?: string
+  titlepage_name: string
+  is_editor?: boolean
+  person?: number | null
   email?: string
   affiliation?: string
   country?: string
+  datatracker_person_path?: string
+}
+
+export type RfcFileRequest = {
+  rfc: number | null
+  contents: File[]
+  replace?: boolean
 }
 
 export type RfcMetadata = {
@@ -681,7 +1276,7 @@ export type RfcMetadata = {
   published: string
   status: RfcStatus
   pages?: number | null
-  authors: RfcAuthor[]
+  authors?: RfcAuthor[]
   group: Group
   area?: Group
   stream: StreamName
@@ -697,6 +1292,27 @@ export type RfcMetadata = {
   formats: FormatsEnum[]
   keywords?: string[]
   errata?: string[]
+}
+
+export type RfcPubRequest = {
+  published: Date
+  draft_name?: string
+  draft_rev?: string
+  rfc_number: number
+  title: string
+  authors: AuthorRequest[]
+  group?: string
+  stream: string
+  abstract?: string
+  pages?: number | null
+  words?: number | null
+  formal_languages?: string[]
+  std_level: string
+  ad?: number | null
+  note?: string
+  obsoletes?: (number | null)[]
+  updates?: (number | null)[]
+  subseries: string[]
 }
 
 export type RfcStatus = {
@@ -748,7 +1364,7 @@ export type SubseriesContent = {
   published: string
   status: RfcStatus
   pages?: number | null
-  authors: RfcAuthor[]
+  authors?: RfcAuthor[]
   group: Group
   area?: Group
   stream: StreamName
@@ -770,6 +1386,52 @@ export type SubseriesDoc = {
   name: string
   type?: string | null
   contents: SubseriesContent[]
+}
+
+export type UploadRfcFilesContentsErrorComponent = {
+  attr: 'contents'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type UploadRfcFilesContentsINDEXErrorComponent = {
+  attr: 'contents.INDEX'
+  code: 'empty' | 'invalid' | 'no_name' | 'null' | 'required'
+  detail: string
+}
+
+export type UploadRfcFilesError =
+  | UploadRfcFilesNonFieldErrorsErrorComponent
+  | UploadRfcFilesRfcErrorComponent
+  | UploadRfcFilesContentsErrorComponent
+  | UploadRfcFilesContentsINDEXErrorComponent
+  | UploadRfcFilesReplaceErrorComponent
+
+export type UploadRfcFilesErrorResponse400 =
+  | UploadRfcFilesValidationError
+  | ParseErrorResponse
+
+export type UploadRfcFilesNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type UploadRfcFilesReplaceErrorComponent = {
+  attr: 'replace'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type UploadRfcFilesRfcErrorComponent = {
+  attr: 'rfc'
+  code: 'does_not_exist' | 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type UploadRfcFilesValidationError = {
+  type: ValidationErrorEnum
+  errors: UploadRfcFilesError[]
 }
 
 export type ValidationErrorEnum = 'validation_error'

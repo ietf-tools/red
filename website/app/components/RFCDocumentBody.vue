@@ -45,7 +45,7 @@
       <span>
         {{
           // titlepage_name might be an empty string, so don't use `??` as fallback, use `||`
-          author.titlepage_name || author.name }}
+          author.titlepage_name || '(unnamed)' }}
       </span>
       <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
         {{ COMMA }}
