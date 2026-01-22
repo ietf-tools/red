@@ -65,6 +65,7 @@ export const formatIdentifiers = (
   separator: string = ': '
 ): string[] => {
   if (!identifiers || identifiers.length === 0) return []
+  console.log({ source: 'formatIdentifiers', identifiers })
   return identifiers.map(
     (identifier) =>
       `${identifier.type.toUpperCase()}${separator}${identifier.value}`

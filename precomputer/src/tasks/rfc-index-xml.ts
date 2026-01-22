@@ -246,6 +246,7 @@ const renderRFCs = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
     }
 
     if (rfc.identifiers && rfc.identifiers.length > 0) {
+      console.log({ source: 'rfc-index-xml.ts', rfc_identifiers: rfc.identifiers })
       rfc.identifiers.forEach((identifier) => {
         rfcEntry.appendChild(createElementNS(identifier.type, identifier.value))
       })

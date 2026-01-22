@@ -8,9 +8,11 @@ export const getDOMParser = async (): Promise<DOMParser> => {
 }
 
 export const getNodeType = (maybeNode: unknown): number | undefined => {
-  // this comparison must avoid using conventional `val instanceof HTMLElement`
-  // approaches because HTMLElement doesn't exist in Node (it exists only as a TS
-  // type in Node, not as a runtime `instanceof` check of a class).
+  // this comparison avoids `val instanceof HTMLElement` approaches because
+  // it's used in Node, and DOM/HTMLElement don't exist natively in Node and
+  // each Node DOM library would have its own HTMLElement implementation to
+  // instanceof compare against. TS can have DOM types available but that
+  // doesn't mean there's a Node HTMLElement available at runtime.
   if (
     maybeNode &&
     typeof maybeNode === 'object' &&
@@ -44,6 +46,7 @@ export const elementAttributesToObject = (
   attributes: NamedNodeMap
 ): Record<string, string> =>
   Array.from(attributes).reduce((acc, attribute) => {
+    console.log({ source: 'elementAttributesToObject', nameKey: 'name' in attribute, valueKey: 'value' in attribute, attribute })
     acc[attribute.name] = attribute.value
     return acc
   }, {} as Record<string, string>)

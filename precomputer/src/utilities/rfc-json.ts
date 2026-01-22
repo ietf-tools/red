@@ -12,6 +12,10 @@ export const rfcToRfcJson = (rfc: RfcCommon): RFCJSON => {
 
   const status = formatRfcStatusAsRfcJsonStatus(rfc.status)
 
+  const doi = rfc.identifiers?.find((identifier) => identifier.type === 'doi')
+
+  console.log({ source: 'rfcToRfcJson', doi, rfc_identifiers: rfc.identifiers })
+
   return {
     draft: rfc.draft?.slug ?? '',
     doc_id: `RFC${rfc.number}`,
@@ -35,9 +39,7 @@ export const rfcToRfcJson = (rfc: RfcCommon): RFCJSON => {
         (updated_by_item) => `RFC${updated_by_item.number}`
       ) ?? [],
     see_also: rfc.see_also ?? [],
-    doi:
-      rfc.identifiers?.find((identifier) => identifier.type === 'doi')?.value ??
-      null,
+    doi: doi ? doi?.value : null,
     errata_url: rfc.errata?.[0] ?? null
   }
 }
