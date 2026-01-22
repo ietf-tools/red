@@ -555,8 +555,13 @@ const parseSubseriesItemType = (
 const parseAuthors = (authors: Rfc["authors"] | RfcMetadata["authors"]): RfcCommon["authors"] => {
   return authors ? authors.map((author): RfcCommon["authors"][number] => {
     return {
-      ...author,
-      person: author.person ?? undefined
+      titlepage_name: author.titlepage_name,
+      is_editor: author.is_editor,
+      person: author.person ?? undefined,
+      email: author.email ?? undefined,
+      affiliation: author.affiliation,
+      country: author.country,
+      datatracker_person_path: author.datatracker_person_path,
     }
   }) : []
 } 
