@@ -9,10 +9,17 @@ const main = async (rfcNumber: number): Promise<void> => {
     } else {
       console.error(`Unable to process RFC ${rfcNumber}`)
     }
-  } catch (err) {
-    console.warn(
-      `Failed to process RFC ${rfcNumber}: ${(err as Error).message}`
-    )
+  } catch (err: unknown) {
+    if(err instanceof Error) {
+      console.error(
+        `Failed to process RFC ${rfcNumber}: `,
+        err.message,
+        err.stack
+      )
+    } else {
+      console.error(`Failed to process RFC ${rfcNumber}:`, err)
+    }
+    throw err
   }
 }
 
