@@ -25,6 +25,7 @@ export const getApiClient = (): ApiClient => {
   const NUXT_PUBLIC_DATATRACKER_BASE = process.env.NUXT_PUBLIC_DATATRACKER_BASE
   const NUXT_CF_SERVICE_TOKEN_ID = process.env.NUXT_CF_SERVICE_TOKEN_ID
   const NUXT_CF_SERVICE_TOKEN_SECRET = process.env.NUXT_CF_SERVICE_TOKEN_SECRET
+  const NUXT_DATATRACKER_API_KEY = process.env.NUXT_DATATRACKER_API_KEY
 
   if (NUXT_PUBLIC_DATATRACKER_BASE) {
     // console.log('Using API', NUXT_PUBLIC_DATATRACKER_BASE)
@@ -37,10 +38,15 @@ export const getApiClient = (): ApiClient => {
       NUXT_CF_SERVICE_TOKEN_SECRET,
       "cloudflare secret wasn't a string"
     )
+    assertIsString(
+      NUXT_DATATRACKER_API_KEY,
+      "nuxt datatracker api key wasn't a string"
+    )
 
     const headers: ApiClient['Config']['headers'] = {
       'CF-Access-Client-Id': NUXT_CF_SERVICE_TOKEN_ID,
-      'CF-Access-Client-Secret': NUXT_CF_SERVICE_TOKEN_SECRET
+      'CF-Access-Client-Secret': NUXT_CF_SERVICE_TOKEN_SECRET,
+      'X-Api-Key': NUXT_DATATRACKER_API_KEY
     }
 
     return new ApiClient({
