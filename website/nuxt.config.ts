@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   typescript: { strict: true },
   modules: [// Note: don't use 'Nuxt Device' see note in responsiveMode.ts
-  '@nuxt/content', 'reka-ui/nuxt', '@nuxt/test-utils/module', '@nuxt/eslint', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', '@nuxtjs/color-mode', '@nuxt/icon', 'nuxt-vitalizer'],
+    '@nuxt/content', 'reka-ui/nuxt', '@nuxt/test-utils/module', '@nuxt/eslint', '@pinia/nuxt', 'pinia-plugin-persistedstate/nuxt', '@nuxtjs/color-mode', '@nuxt/icon', 'nuxt-vitalizer'],
   content: {
     build: {
       markdown: {
@@ -111,23 +111,28 @@ export default defineNuxtConfig({
   $development: {
     routeRules: {
       '/api/v1/homepage-latest.json': {
-        proxy: 'https://red.staging.rfc-editor.org/api/v1/homepage-latest.json'
+        proxy: 'http://localhost:3001/api/v1/homepage-latest.json'
       },
-      '/api/v1/rfc-mini-index.json': {
-        proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc-mini-index.json'
-      },
-      '/api/v1/rfc-html/**': {
-        proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc-html/**'
-      },
-      '/api/v1/rfc/**': {
-        proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc/**'
-      },
-      '/api/v1/info-subseries/**': {
-        proxy: 'https://red.staging.rfc-editor.org/api/v1/info-subseries/**'
-      },
-      '/api/v1/rfc-common/**': {
-        proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc-common/**'
-      }
+
+
+      // '/api/v1/homepage-latest.json': {
+      //   proxy: 'https://red.staging.rfc-editor.org/api/v1/homepage-latest.json'
+      // },
+      // '/api/v1/rfc-mini-index.json': {
+      //   proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc-mini-index.json'
+      // },
+      // '/api/v1/rfc-html/**': {
+      //   proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc-html/**'
+      // },
+      // '/api/v1/rfc/**': {
+      //   proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc/**'
+      // },
+      // '/api/v1/info-subseries/**': {
+      //   proxy: 'https://red.staging.rfc-editor.org/api/v1/info-subseries/**'
+      // },
+      // '/api/v1/rfc-common/**': {
+      //   proxy: 'https://red.staging.rfc-editor.org/api/v1/rfc-common/**'
+      // }
     }
   },
   $production: {

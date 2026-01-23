@@ -11,7 +11,8 @@
     "test:unittests": "TZ=UTC vitest run",
     "test:unittests:watch": "TZ=UTC vitest run --watch",
     "generate:test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
-    "generate:api": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/api-client.ts"
+    "generate:api": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/api-client.ts",
+    "dev-api-server": "node ./src/utilities/dev-api-server.ts"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@types/lodash-es": "4.17.12",
     "@types/node": "24.0.10",
     "@types/sanitize-html": "2.16.0",
+    "fastify": "5.7.1",
     "typescript": "5.8.3",
     "vitest": "3.2.4"
   }

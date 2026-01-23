@@ -61,7 +61,7 @@ const RfcJsonFormatSchema = z.union([
   z.literal('PDF'),
   z.literal('PS'),
   z.literal('XML'),
-  z.literal('')
+  z.literal('') // FIXME: should this exist?
 ])
 
 export const RfcJsonSchema = z.object({

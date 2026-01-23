@@ -11,7 +11,7 @@ import {
 import { getRfcCommonCached } from '../utilities/api.ts'
 import { rfcToRfcJson } from '../utilities/rfc-json.ts'
 import { RfcCommonSchema } from '../../../website/app/utilities/rfc-validators.ts'
-import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import type { RfcBucketHtmlDocument, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { RfcJsonSchema } from '../utilities/rfc-json.ts'
 import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
@@ -31,6 +31,16 @@ export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
 }
 
 export const uploadRfcHtml = async (rfcNumber: number): Promise<boolean> => {
+  const rfcDoc = await getRfcBucketHtmlDocument(rfcNumber)
+  if (!rfcDoc) {
+    return false
+  }
+  const rfcDocS3Path = rfcHtmlJsonPathBuilder(rfcNumber)
+  await saveToS3(rfcDocS3Path, JSON.stringify(rfcDoc))
+  return true
+}
+
+export const getRfcBucketHtmlDocument = async (rfcNumber: number): Promise<RfcBucketHtmlDocument | undefined> => {
   const html = await fetchSourceRfcHtml(rfcNumber)
   if (html !== null) {
     const rfcDocFromHtml = await rfcBucketHtmlToRfcDocument(
@@ -39,13 +49,9 @@ export const uploadRfcHtml = async (rfcNumber: number): Promise<boolean> => {
       getRfcCommonCached
     )
     if (rfcDocFromHtml === null) {
-      return false
+      return undefined
     }
-    await saveToS3(
-      rfcHtmlJsonPathBuilder(rfcNumber),
-      JSON.stringify(rfcDocFromHtml)
-    )
-    return true
+    return rfcDocFromHtml
   }
 
   // Some RFCs don't have HTML eg RFC418, so try PDF
@@ -56,11 +62,9 @@ export const uploadRfcHtml = async (rfcNumber: number): Promise<boolean> => {
     getRfcCommonCached
   )
   if (rfcDocFromPdf === null) {
-    return false
+    return undefined
   }
-  const rfcDocS3Path = rfcHtmlJsonPathBuilder(rfcNumber)
-  await saveToS3(rfcDocS3Path, JSON.stringify(rfcDocFromPdf))
-  return true
+  return rfcDocFromPdf
 }
 
 export const uploadRfcJson = async (rfcNumber: number): Promise<boolean> => {
@@ -113,11 +117,10 @@ export const renderRefsRef = (rfc: RfcCommon): string => {
     throw Error(`Unexpected lack of 'published' date`)
   }
 
-  return `${rfc.authors.map((author) => formatAuthor(author, 'brief'))}, "${
-    rfc.title
-  }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
-    ''
-  )}, ${DateTime.fromISO(published).toFormat(
-    'LLLL yyyy'
-  )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
+  return `${rfc.authors.map((author) => formatAuthor(author, 'brief'))}, "${rfc.title
+    }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
+      ''
+    )}, ${DateTime.fromISO(published).toFormat(
+      'LLLL yyyy'
+    )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
 }
