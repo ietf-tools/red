@@ -110,6 +110,11 @@ export default defineNuxtConfig({
   },
   $development: {
     routeRules: {
+      /**
+       * API data comes from either a local dev api or some
+       * staging / prod environment.
+       * Uncomment/comment out the lines to adjust the config.
+       */
       '/api/v1/homepage-latest.json': {
         // proxy: 'https://red.staging.rfc-editor.org/api/v1/homepage-latest.json'
         proxy: 'http://localhost:3001/api/v1/homepage-latest.json'
