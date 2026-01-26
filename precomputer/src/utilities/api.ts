@@ -131,15 +131,17 @@ export const safeDocRetrieve = async (
 
 /**
  * Safety wrapper around subseriesList access to retry on timeouts
- * Currently the API fails about 1/2000 uses
+ * Currently the API fails about 1/2000 uses on Tekton
  */
-export const safeSubseriesList = async (api: ApiClient) => {
+export const safeSubseriesList = async (api: ApiClient, subseriesType?: SubseriesCommon["type"]) => {
   let attemptsRemaining = NUMBER_OF_API_RETRIES
 
   const errors: unknown[] = []
   while (attemptsRemaining > 0) {
     try {
-      return await api.red.subseriesList({})
+      return await api.red.subseriesList(
+        subseriesType ? { type: [subseriesType] } : {}
+      )
     } catch (e: unknown) {
       errors.push(e)
       if (await isRecovereableFetchError(e)) {
@@ -288,7 +290,7 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
   }
 }
 
-type Props = {
+type GetAllRFCsProps = {
   api: ApiClient
   limit?: number
 }
@@ -296,7 +298,7 @@ type Props = {
 export const getAllRFCs = async ({
   api,
   limit
-}: Props): Promise<Readonly<RfcCommon[]>> => {
+}: GetAllRFCsProps): Promise<Readonly<RfcCommon[]>> => {
   console.log(`Downloading metadata for ${limit === undefined ? 'ALL' : limit} rfcs:`)
   const FIRST_RFC_NUMBER = 1
   const MAX_LIMIT_PER_REQUEST = 1000
@@ -347,34 +349,36 @@ export const getAllRFCs = async ({
   return frozenRfcs
 }
 
-export const getAllSubseries = async ({
-  api
-}: Props): Promise<Readonly<SubseriesCommon[]>> => {
-  const parseSubseriesName = (
-    name: string
-  ): { type: string; number: number } => {
-    const nameParts = name.match(
-      // contiguous blocks of either letters or numbers
-      /\d+|\D+/g
-    )
-    if (!nameParts) {
-      throw Error(
-        `Unable to parse subseries name ${JSON.stringify(name)} into parts.`
-      )
-    }
-    const number = parseFloat(nameParts[1])
-    if (Number.isNaN(number)) {
-      throw Error(
-        `Unable to parse subseries name ${JSON.stringify(name)} number.`
-      )
-    }
-    return {
-      type: nameParts[0],
-      number
-    }
-  }
 
-  const subseries = await safeSubseriesList(api)
+export const parseSubseriesName = (name: string) => {
+  const nameParts = name.match(
+    // contiguous blocks of either letters or numbers
+    /\d+|\D+/g
+  )
+  if (!nameParts) {
+    throw Error(
+      `Unable to parse subseries name ${JSON.stringify(name)} into parts.`
+    )
+  }
+  const number = parseFloat(nameParts[1])
+  if (Number.isNaN(number)) {
+    throw Error(
+      `Unable to parse subseries name ${JSON.stringify(name)} number.`
+    )
+  }
+  return {
+    type: RfcCommonSubseriesTypeSchema.parse(nameParts[0]),
+    number
+  }
+}
+
+type GetAllSubseriesProps = {
+  api: ApiClient
+  type?: SubseriesCommon['type']
+}
+
+export const getAllSubseries = async ({ api, type }: GetAllSubseriesProps): Promise<Readonly<SubseriesCommon[]>> => {
+  const subseries = await safeSubseriesList(api, type)
   const sortedSubseries = subseries
     .map((subseriesDoc): SubseriesCommon => {
       const parts = parseSubseriesName(subseriesDoc.name)
