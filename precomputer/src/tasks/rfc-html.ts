@@ -413,8 +413,8 @@ const convertHrefs = (
  * caused 'orphan' chars eg in table headings it'll linewrap just the 'n' in 'description'.
  *
  * This function has a new approach where it inserts <wbr> elements. These <wbr> elements seem to
- * work better than unicode approaches (zero-width spaces etc) because they aren't copied to the
- * clipboard.
+ * work better than unicode approaches (zero-width spaces etc) because being non-characters they
+ * aren't copied to the clipboard.
  **/
 export const ensureWordBreaks = (rfcDocument: Node[]): void => {
   const walk = (node: Node): void => {

@@ -5,7 +5,6 @@
   >
     <slot />
   </HorizontalScrollable>
-  <div :style="`width: 1px; height: calc(${props.childHeightAttr} + ${BUFFER_HEIGHT_PX}px)`"></div>
 </template>
 
 <script setup lang="ts">

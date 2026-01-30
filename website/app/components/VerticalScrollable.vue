@@ -46,22 +46,36 @@ const updateScrollHint = () => {
 
 const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
 
+const observerRef = ref<ResizeObserver | null>(null)
+
 let timer: ReturnType<typeof setTimeout>
 
 onMounted(() => {
   window.addEventListener('resize', debouncedUpdateScrollHint)
-
   debouncedUpdateScrollHint()
+  if (!('ResizeObserver' in window)) {
+    return;
+  }
+  observerRef.value = new ResizeObserver(debouncedUpdateScrollHint);
+  const { value: scrollContainerElement } = scrollContainer
+  if (!scrollContainerElement) {
+    console.error('Unable to find scroll container. This is a bug')
+    return
+  }
+  observerRef.value?.observe(scrollContainerElement)
 
   timer = setTimeout(updateScrollHint, 50)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', debouncedUpdateScrollHint)
+  observerRef.value?.disconnect()
   if (timer) {
     clearTimeout(timer)
   }
 })
+
+
 
 defineExpose({
   scrollContainer,

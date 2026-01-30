@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col px-3">
+  <div class="flex flex-col">
     <Breadcrumbs
       :breadcrumb-items="breadcrumbItems"
       class="flex-1"
@@ -77,7 +77,7 @@
     </div>
   </Alert>
 
-  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base px-3 ${
+  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
     //
     ' leading-[1.75] ' // WCAG requires 1.5 minimum
     }`">

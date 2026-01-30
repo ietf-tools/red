@@ -111,7 +111,7 @@ export default defineNuxtConfig({
   $development: {
     routeRules: {
       /**
-       * API data comes from either a local dev api or some
+       * In development mode (`npm run dev`) the website fetches API data from either a local dev api or some
        * staging / prod environment.
        * Uncomment/comment out the lines to adjust the config.
        */

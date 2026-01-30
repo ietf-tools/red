@@ -80,7 +80,7 @@ if (rfcBucketHtmlDocumentError.value) {
   console.error(rfcBucketHtmlDocumentError.value)
   throw createError({
     statusCode: 404,
-    statusMessage: `No ${sanitisedId.value} content found. If this is a new RFC please try again later. Try also ${PUBLIC_SITE_URL_ORIGIN}${rfcFormatPathBuilder(sanitisedId.value, 'html')}`,
+    statusMessage: `No ${sanitisedId.value} content found. If this is a recently published RFC please try again later. Try also ${PUBLIC_SITE_URL_ORIGIN}${rfcFormatPathBuilder(sanitisedId.value, 'html')}`,
     fatal: true
   })
 }
