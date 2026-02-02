@@ -59,9 +59,9 @@ const observerRef = ref<ResizeObserver | null>(null)
 onMounted(() => {
   window.addEventListener('resize', debouncedUpdateScrollHint)
   if (!('ResizeObserver' in window)) {
-    return;
+    return
   }
-  observerRef.value = new ResizeObserver(debouncedUpdateScrollHint);
+  observerRef.value = new ResizeObserver(debouncedUpdateScrollHint)
   const { value: scrollContainerElement } = scrollContainer
   if (!scrollContainerElement) {
     console.error('Unable to find scroll container. This is a bug')
