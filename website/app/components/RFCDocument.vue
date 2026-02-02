@@ -18,7 +18,7 @@
           variant="warning"
           heading="Error"
         >
-          {{ rfcBucketHtmlDocumentError }} []
+          {{ rfcBucketHtmlDocumentError }}
         </Alert>
       </div>
     </template>

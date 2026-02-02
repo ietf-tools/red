@@ -6,6 +6,7 @@ import type {
   RfcCommonStatusSchema,
   RfcCommonSubseriesTypeSchema
 } from './rfc-validators'
+import { startCase } from 'lodash-es'
 
 export const RFC_TYPE_RFC = 'rfc' as const
 
@@ -75,7 +76,7 @@ export const parseSeriesId = (maybeSeriesId: string): SeriesId | undefined => {
 export const getRfcPillText = (rfc: RfcCommon): string[] => {
   const tagText: string[] = []
   if (rfc.status) {
-    tagText.push(rfc.status.name)
+    tagText.push(startCase(rfc.status.name))
   }
   return tagText
 }

@@ -1,6 +1,6 @@
 <template>
   <div :class="[
-    'relative after:content-[\'_\'] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:pointer-events-none after:transition-shadow after:duration-800',
+    'horizontal-scrollable-container relative after:content-[\'_\'] after:absolute after:left-0 after:top-0 after:w-full after:h-full after:pointer-events-none after:transition-shadow after:duration-800',
     canScrollLeft && !canScrollRight && 'after:shadow-[inset_20px_0px_20px_-20px_rgba(0,_45,_60,_0.5),inset_20px_0px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_20px_0px_20px_-20px_rgba(140,_201,_222,_0.5),inset_20px_0px_20px_-20px_rgba(140,_201,_222,_0.5)]',
     !canScrollLeft && canScrollRight && 'after:w-[100px] after:shadow-[inset_-20px_0px_20px_-20px_rgba(0,_45,_60,_0.5),inset_-20px_0px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_-20px_0px_20px_-20px_rgba(140,_201,_222,_0.5),inset_-20px_0px_20px_-20px_rgba(140,_201,_222,_0.5)]',
     canScrollLeft && canScrollRight && 'after:shadow-[inset_20px_0px_20px_-20px_rgba(0,_45,_60,_0.5),inset_-20px_0px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_20px_0px_20px_-20px_rgba(140,_201,_222,_0.5),inset_-20px_0px_20px_-20px_rgba(140,_201,_222,_0.5)]',
@@ -9,7 +9,7 @@
     <component
       :is="props.as"
       ref="scroll-container"
-      :class="['relative w-full max-w-[calc(100vw_-_var(--rfc-editor-org-scrollbar-width))] overflow-x-auto', props.innerClass]"
+      :class="['w-[100cqi] max-w-[calc(100vw_-_var(--rfc-editor-org-scrollbar-width))] overflow-x-auto', props.innerClass]"
       @scroll="debouncedUpdateScrollHint"
     >
       <slot />
@@ -78,3 +78,9 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<style>
+.horizontal-scrollable-container {
+  container-type: inline-size;
+}
+</style>

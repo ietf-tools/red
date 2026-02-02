@@ -1,8 +1,5 @@
 <template>
-  <HorizontalScrollable
-    :class="`absolute left-0 ${props.class ? props.class : ''}`"
-    :inner-class="props.innerClass"
-  >
+  <HorizontalScrollable :inner-class="props.innerClass">
     <slot />
   </HorizontalScrollable>
 </template>
@@ -17,6 +14,5 @@ type Props = {
   innerClass?: VueStyleClass
 }
 
-const BUFFER_HEIGHT_PX = 16
 const props = defineProps<Props>()
 </script>

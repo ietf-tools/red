@@ -9,7 +9,7 @@
 
   <Heading
     level="1"
-    class="mb-2 ml-2 px-3 xs:px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
+    class="mb-2 ml-2 px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
   >
     <RFCTitle
       :rfc="props.rfcBucketHtmlDocument.rfc"
@@ -25,18 +25,16 @@
   </Heading>
 
   <Heading
+    v-if="isAprilFool"
     level="2"
     class="mb-2 ml-2 px-3 xs:px-0 print:text-center"
   >
-    <span
-      v-if="isAprilFool"
-      class="inline pr-2"
-    >
+    <span class="inline pr-2">
       <AprilFools />
     </span>
   </Heading>
 
-  <ul class="block px-3 ml-2 print:text-center">
+  <ul class="block ml-2 print:text-center">
     <li
       v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
       :key="authorIndex"
@@ -244,8 +242,8 @@ const isAprilFool = computed(() => isAprilFoolsRfc(props.rfcBucketHtmlDocument.r
 /** Note that this is postcss so we can use @nested-import */
 
 .rfc-content {
-  --layout-bleed-left: 10px;
-  --layout-bleed-right: 10px;
+  --layout-bleed-left: 0px;
+  --layout-bleed-right: 0px;
 
   ol,
   ul {
@@ -264,6 +262,7 @@ const isAprilFool = computed(() => isAprilFoolsRfc(props.rfcBucketHtmlDocument.r
 }
 
 .rfc-content-type-xml2rfc {
+  margin-left: calc(var(--spacing) * 2);
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
      to reduce maintenance burden.

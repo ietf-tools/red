@@ -4,14 +4,17 @@
     props.isFixed && 'fixed bottom-0 left-0 right-0 lg:hidden print:hidden'
   ]">
     <div :class="[
-      'xs:leading-5 sm:leading-6',
-      props.isFixed && 'container mx-auto px-5',
+      'leading-5 sm:leading-6',
+      props.isFixed && 'container mx-auto px-2 md:px-2',
       !props.isFixed && 'p-2'
     ]">
       <component
         :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)"
         v-if="rfcId"
-      />
+      />{{ COLON }}
+
+      {{ rfc.title }}
+
       <div
         v-if="pillText.length > 0"
         class="text-gray-400"
@@ -51,6 +54,7 @@ import { parseSeriesId, getRfcPillText } from '~/utilities/rfc'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon, } from '~/utilities/rfc'
 import { infoSeriesPathBuilder } from '~/utilities/url'
+import { COLON } from '~/utilities/strings'
 
 type Props = {
   rfc: RfcCommon
