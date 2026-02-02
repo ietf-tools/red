@@ -80,7 +80,9 @@ fastify.get('/api/v1/rfc-common/:rfcNumber.json', async (request, reply) => {
   return renderHomepageLatest([])
 })
 
-fastify.listen({ port: 3001 }, function (err, address) {
+fastify.listen({
+  port: 3001, host: '0.0.0.0' // 0.0.0.0 needed to work in Docker 
+}, function (err, address) {
   if (err) {
     fastify.log.error(err)
     process.exit(1)
