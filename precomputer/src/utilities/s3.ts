@@ -1,7 +1,18 @@
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3'
 import type { SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'
 
-const s3Cli = new S3Client({
+const s3InCli = new S3Client({
+  endpoint: process.env.S3_IN_ENDPOINT ?? '',
+  region: 'auto',
+  credentials: {
+    accessKeyId: process.env.S3_IN_ACCESS_ID ?? '',
+    secretAccessKey: process.env.S3_IN_ACCESS_KEY ?? ''
+  },
+  requestChecksumCalculation: 'WHEN_REQUIRED',
+  responseChecksumValidation: 'WHEN_REQUIRED'
+})
+
+const s3OutCli = new S3Client({
   endpoint: process.env.S3_OUT_ENDPOINT ?? '',
   region: 'auto',
   credentials: {
@@ -12,6 +23,32 @@ const s3Cli = new S3Client({
   responseChecksumValidation: 'WHEN_REQUIRED'
 })
 
+type S3OutputType = 'default' | 'base64'
+
+export async function getFromS3(
+  key: string,
+  outputType?: S3OutputType
+): Promise<string|Uint8Array|null> {
+  try {
+    const resp = await s3InCli.send(
+      new GetObjectCommand({
+        Bucket: process.env.S3_IN_BUCKET,
+        Key: key
+      })
+    )
+    switch (outputType) {
+      case 'base64': {
+        return await resp.Body?.transformToString('base64') ?? null  
+      }
+      default: {
+        return await resp.Body?.transformToString() ?? null
+      }
+    }
+  } catch (err) {
+    throw new Error(`Failed to fetch ${key} from ${process.env.S3_IN_BUCKET} bucket.`)
+  }
+}
+
 type StreamingBlobPayloadInputTypes = ConstructorParameters<
   typeof PutObjectCommand
 >[0]['Body']
@@ -20,7 +57,7 @@ export async function saveToS3(
   key: string,
   contents: StreamingBlobPayloadInputTypes
 ): Promise<void> {
-  await s3Cli.send(
+  await s3OutCli.send(
     new PutObjectCommand({
       Bucket: process.env.S3_OUT_BUCKET,
       Key: key,

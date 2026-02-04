@@ -30,7 +30,7 @@ import {
 } from './rfc-html-xml2rfc.ts'
 import { chunkString, getAllIndexes } from '../utilities/string.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
-import { fetchRfcRetry } from '../utilities/fetch.ts'
+import { getFromS3 } from '../utilities/s3.ts'
 
 export const rfcBucketHtmlToRfcDocument = async (
   rfcBucketHtml: string,
@@ -99,11 +99,10 @@ export const rfcBucketHtmlToRfcDocument = async (
 export const fetchSourceRfcHtml = async (
   rfcNumber: number
 ): Promise<string | null> => {
-  const url = `${PUBLIC_SITE_URL_ORIGIN}/rfc/rfc${rfcNumber}.html`
-  const response = await fetchRfcRetry(url, rfcNumber)
-  if (!response.ok) {
+  const dirtyHtml = await getFromS3(`rfc${rfcNumber}.html`)
+  if (!dirtyHtml) {
     console.warn(
-      `[RFC ${rfcNumber}] HTML not available ${response.status} ${response.statusText} at ${url}`
+      `[RFC ${rfcNumber}] HTML from rfc${rfcNumber}.html not available`
     )
     return null
   }
@@ -136,7 +135,6 @@ export const fetchSourceRfcHtml = async (
     'text-anchor'
   ]
 
-  const dirtyHtml = await response.text()
   const sanitisedHtml = sanitizeHtml(dirtyHtml, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat([
       'html',

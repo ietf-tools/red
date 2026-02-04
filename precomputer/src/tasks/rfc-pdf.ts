@@ -14,20 +14,18 @@ import {
   takeScreenshotOfPage
 } from '../utilities/unpdf-parent.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
-import { fetchRfcRetry } from '../utilities/fetch.ts'
+import { getFromS3 } from '../utilities/s3.ts'
 
 export const fetchRfcPDF = async (rfcNumber: number) => {
-  const url = `${PUBLIC_SITE_URL_ORIGIN}/rfc/rfc${rfcNumber}.pdf`
-  const response = await fetchRfcRetry(url, rfcNumber)
-  if (!response.ok) {
+  const blob = await getFromS3(`rfc${rfcNumber}.pdf`, 'base64')
+  if (!blob) {
     console.warn(
-      `[RFC ${rfcNumber}] PDF not available ${response.status} ${response.statusText} at ${url}`
+      `[RFC ${rfcNumber}] PDF from rfc${rfcNumber}.pdf not available`
     )
     return null
   }
-  const blob = await response.arrayBuffer()
 
-  return Buffer.from(blob).toString('base64')
+  return blob
 }
 
 /**
