@@ -1,9 +1,21 @@
 // @vitest-environment node
+import path from 'path'
+import fsPromises from 'fs/promises'
 import { test, expect, vi } from 'vitest'
-import { rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
+import { type fetchRfcPDF, rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
 import { testMockAllRfcs } from '../utilities/rfcs-test-data.ts'
 
 const RFC_NUMBER_WITH_PDF = 418
+
+const getRfcPDFFromTest: typeof fetchRfcPDF = async (rfcNumber: number) => {
+  const pdfPath = path.resolve(
+    import.meta.dirname,
+    '..',
+    'old-rfc-editor.org',
+    `rfc${rfcNumber}.pdf`
+  )
+  return fsPromises.readFile(pdfPath, 'base64')
+}
 
 test(
   `rfcBucketPdfToRfcDocument(${RFC_NUMBER_WITH_PDF}, false)`,
@@ -14,11 +26,14 @@ test(
 
     const getRfcCommon = async (_rfcNumber: number) =>
       testMockAllRfcs[testMockAllRfcs.length - 1]
+
     const rfcBucketPdfDocument = await rfcBucketPdfToRfcDocument(
       RFC_NUMBER_WITH_PDF,
       false,
-      getRfcCommon
+      getRfcCommon,
+      getRfcPDFFromTest
     )
+
     expect(rfcBucketPdfDocument).toMatchSnapshot()
   }
 )

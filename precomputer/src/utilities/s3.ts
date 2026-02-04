@@ -28,7 +28,7 @@ type S3OutputType = 'default' | 'base64'
 export async function getFromS3(
   key: string,
   outputType?: S3OutputType
-): Promise<string|Uint8Array|null> {
+): Promise<string | Uint8Array | null> {
   try {
     const resp = await s3InCli.send(
       new GetObjectCommand({
@@ -38,7 +38,7 @@ export async function getFromS3(
     )
     switch (outputType) {
       case 'base64': {
-        return await resp.Body?.transformToString('base64') ?? null  
+        return await resp.Body?.transformToString('base64') ?? null
       }
       default: {
         return await resp.Body?.transformToString() ?? null

@@ -97,9 +97,10 @@ export const rfcBucketHtmlToRfcDocument = async (
 }
 
 export const fetchSourceRfcHtml = async (
-  rfcNumber: number
+  rfcNumber: number,
+  getRfcHtml: typeof getFromS3
 ): Promise<string | null> => {
-  const dirtyHtml = await getFromS3(`rfc${rfcNumber}.html`)
+  const dirtyHtml = await getRfcHtml(`rfc${rfcNumber}.html`)
   if (!dirtyHtml) {
     console.warn(
       `[RFC ${rfcNumber}] HTML from rfc${rfcNumber}.html not available`
@@ -107,6 +108,8 @@ export const fetchSourceRfcHtml = async (
     return null
   }
 
+  const dirtyHtmlString = (dirtyHtml instanceof Uint8Array) ? new TextDecoder().decode(dirtyHtml) : dirtyHtml
+  
   // Sanitise HTML before returning it
 
   const SVG_STYLE_ATTRIBUTES = [
@@ -135,7 +138,7 @@ export const fetchSourceRfcHtml = async (
     'text-anchor'
   ]
 
-  const sanitisedHtml = sanitizeHtml(dirtyHtml, {
+  const sanitisedHtml = sanitizeHtml(dirtyHtmlString, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat([
       'html',
       'head',

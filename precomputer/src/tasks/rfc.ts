@@ -1,12 +1,13 @@
 import { DateTime } from 'luxon'
 import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument } from './rfc-html.ts'
-import { rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
+import { fetchRfcPDF, rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
 import {
   rfcHtmlJsonPathBuilder,
   rfcJsonPathBuilder,
   rfcCommonPathBuilder,
   rfcRefPathBuilder,
-  saveToS3
+  saveToS3,
+  getFromS3
 } from '../utilities/s3.ts'
 import { getRfcCommonCached } from '../utilities/api.ts'
 import { rfcToRfcJson } from '../utilities/rfc-json.ts'
@@ -41,7 +42,7 @@ export const uploadRfcHtml = async (rfcNumber: number): Promise<boolean> => {
 }
 
 export const getRfcBucketHtmlDocument = async (rfcNumber: number): Promise<RfcBucketHtmlDocument | undefined> => {
-  const html = await fetchSourceRfcHtml(rfcNumber)
+  const html = await fetchSourceRfcHtml(rfcNumber, getFromS3)
   if (html !== null) {
     const rfcDocFromHtml = await rfcBucketHtmlToRfcDocument(
       html,
@@ -59,7 +60,8 @@ export const getRfcBucketHtmlDocument = async (rfcNumber: number): Promise<RfcBu
   const rfcDocFromPdf = await rfcBucketPdfToRfcDocument(
     rfcNumber,
     true,
-    getRfcCommonCached
+    getRfcCommonCached,
+    fetchRfcPDF
   )
   if (rfcDocFromPdf === null) {
     return undefined

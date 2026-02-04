@@ -7,7 +7,7 @@ import {
   type TableOfContents,
   type RfcBucketHtmlDocument,
   type RfcCommon,
-  RfcBucketHtmlDocumentSchema,  
+  RfcBucketHtmlDocumentSchema,
 } from '../../../website/app/utilities/rfc-validators.ts'
 import {
   getTextDetails,
@@ -16,7 +16,7 @@ import {
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 
-export const fetchRfcPDF = async (rfcNumber: number) => {
+export const fetchRfcPDF = async (rfcNumber: number): Promise<string | null> => {
   const blob = await getFromS3(`rfc${rfcNumber}.pdf`, 'base64')
   if (!blob) {
     console.warn(
@@ -24,7 +24,9 @@ export const fetchRfcPDF = async (rfcNumber: number) => {
     )
     return null
   }
-
+  if (blob instanceof Uint8Array) {
+    return new TextDecoder().decode(blob);
+  }
   return blob
 }
 
@@ -34,9 +36,10 @@ export const fetchRfcPDF = async (rfcNumber: number) => {
 export const rfcBucketPdfToRfcDocument = async (
   rfcNumber: number,
   shouldUploadPageImagesToS3: boolean,
-  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>
+  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>,
+  getRfcPDF: typeof fetchRfcPDF
 ): Promise<RfcBucketHtmlDocument | null> => {
-  const base64 = await fetchRfcPDF(rfcNumber)
+  const base64 = await getRfcPDF(rfcNumber)
 
   if (base64 === null) {
     return null
@@ -117,7 +120,7 @@ export const rfcBucketPdfToRfcDocument = async (
 
   const rfc = await getRfcCommon(rfcNumber)
 
-  if(rfc === null) {
+  if (rfc === null) {
     return null
   }
 
