@@ -184,6 +184,10 @@ dl.compact > dd,
 .dlCompact > dd {
   margin-bottom: 0em;
 }
+dl.dlCompact {
+  line-height: 1.25;
+}
+
 dl > dd > dl {
   margin-top: 0.5em;
   margin-bottom: 0em;
