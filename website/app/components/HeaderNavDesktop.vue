@@ -13,7 +13,7 @@
           v-if="menuItem.href && !menuItem.children"
           :href="menuItem.href"
           :aria-label="menuItem.label"
-          class="hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
+          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
           as-child
           @click="menuItem.click"
         >
@@ -27,7 +27,7 @@
 
         <NavigationMenuTrigger
           v-if="!menuItem.href && menuItem.children"
-          class="hover:bg-blue-400 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
+          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
           :aria-label="menuItem.label"
         >
           <Icon

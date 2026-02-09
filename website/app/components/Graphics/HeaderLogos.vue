@@ -18,7 +18,6 @@
       height="37"
     />
   </Anchor>
-  <EnvironmentSpecificMessage />
 </template>
 
 <script setup lang="ts">

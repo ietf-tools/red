@@ -1009,6 +1009,7 @@ aside > p {
   background-color: #eee;
 }
 
+.artwork .pilcrow,
 .sourcecode .pilcrow {
   float: right;
   margin-right: 1rem;
