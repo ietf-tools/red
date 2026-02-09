@@ -230,6 +230,11 @@ html.dark {
   color: var(--color-white);
 }
 
+html.dark::selection {
+  color: white;
+  background: var(--color-blue-600);
+}
+
 .print-with-background {
   /*
   To be used sparingly.
@@ -243,7 +248,7 @@ html.dark {
     AKA fake bold.
 
     This is an alternative to real bold that doesn't cause reflow,
-    so that elements can be toggled bold without distracting reflow.
+    so that elements can be toggled bold without causing a distracting reflow.
 
     Arguably this causes poor text rendering, but is considered less
     worse than the alternatives, which are:
@@ -262,6 +267,18 @@ html.dark {
     So this is the least worst approach until a better one comes along.
    */
   text-shadow: -0.5px 0px 0.5px currentColor;
+}
+
+.toc-highlight {
+  text-shadow:
+    -0.5px 0px 0.5px currentColor,
+    -0.5px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .toc-highlight {
+  text-shadow:
+    -0.5px 0px 0.5px currentColor,
+    -0.5px 1px 5px rgba(255, 255, 255, 0.7);
 }
 
 .text-fake-bold {

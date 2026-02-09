@@ -184,8 +184,9 @@ dl.compact > dd,
 .dlCompact > dd {
   margin-bottom: 0em;
 }
-dl.dlCompact {
-  line-height: 1.25;
+dl.dlCompact p {
+  line-height: var(--tw-leading, var(--text-base--line-height));
+  margin-bottom: 0;
 }
 
 dl > dd > dl {
@@ -301,6 +302,12 @@ a.pilcrow {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+
+a.pilcrow:focus,
+a.pilcrow:hover {
+  color: #444;
+}
+
 @media screen {
   aside:hover > a.pilcrow,
   p:hover > a.pilcrow,
@@ -779,6 +786,9 @@ dl.dlParallel > dt {
   float: left;
   margin-right: 1em;
 }
+dl.dlParallel dd {
+  padding-top: 0.15em;
+}
 dl.dlNewline > dt {
   float: none;
 }
@@ -994,6 +1004,19 @@ aside > p {
     padding: 0.5em 0 0.3em;
   }
 }
+
+.sourcecode pre {
+  background-color: #eee;
+}
+
+.sourcecode .pilcrow {
+  float: right;
+  margin-right: 1rem;
+  margin-top: -2rem;
+  z-index: 1000;
+  position: relative;
+}
+
 /* Sourcecode margin in print, when there's no pilcrow */
 @media print {
   .artwork,

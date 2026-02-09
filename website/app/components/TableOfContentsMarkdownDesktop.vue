@@ -7,7 +7,7 @@
       list-class="mr-1"
       nested-list-class="pl-2"
       :links-class="`block text-sm py-2 border-t-1 border-t-gray-300 dark:border-t-gray-500 no-underline hover:underline ${ANCHOR_TAILWIND_STYLE}`"
-      links-active-class="text-shadow-bold"
+      links-active-class="toc-highlight"
       link-class="block no-underline hover:underline"
       last-link-class="flex-1 flex justify-between"
       :show-last-link-icon="true"

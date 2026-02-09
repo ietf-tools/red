@@ -1,4 +1,3 @@
-
 /**
   This file's styles are imported by @nested-import
   so selectors will be prefixed with dark mode selectors
@@ -6,15 +5,19 @@
 
 figcaption a[href],
 a[href] {
-    color: var(--color-blue-100, #50B2DF)
+  color: var(--color-blue-100, #50b2df);
 }
 
 a[href].selfRef,
 a[href].pilcrow {
-    color: #fff;
+  color: #fff;
 }
 
-a[href]:hover  {
-    background-color: transparent;
-    text-decoration: underline;
+a[href]:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.sourcecode pre {
+  background-color: #222;
 }
