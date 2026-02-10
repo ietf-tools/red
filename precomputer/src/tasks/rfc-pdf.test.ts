@@ -12,6 +12,7 @@ const getRfcPDFFromTest: typeof fetchRfcPDF = async (rfcNumber: number) => {
     import.meta.dirname,
     '..',
     'old-rfc-editor.org',
+    'pdf',
     `rfc${rfcNumber}.pdf`
   )
   return fsPromises.readFile(pdfPath, 'base64')

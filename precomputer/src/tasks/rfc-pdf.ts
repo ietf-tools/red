@@ -17,7 +17,7 @@ import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 
 export const fetchRfcPDF = async (rfcNumber: number): Promise<string | null> => {
-  const blob = await getFromS3(`rfc${rfcNumber}.pdf`, 'base64')
+  const blob = await getFromS3(`pdf/rfc${rfcNumber}.pdf`, 'base64')
   if (!blob) {
     console.warn(
       `[RFC ${rfcNumber}] PDF from rfc${rfcNumber}.pdf not available`

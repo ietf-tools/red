@@ -100,10 +100,11 @@ export const fetchSourceRfcHtml = async (
   rfcNumber: number,
   getRfcHtml: typeof getFromS3
 ): Promise<string | null> => {
-  const dirtyHtml = await getRfcHtml(`rfc${rfcNumber}.html`)
+  const key =`html/rfc${rfcNumber}.html`
+  const dirtyHtml = await getRfcHtml(key)
   if (!dirtyHtml) {
     console.warn(
-      `[RFC ${rfcNumber}] HTML from rfc${rfcNumber}.html not available`
+      `[RFC ${rfcNumber}] HTML from '${key}' not available`
     )
     return null
   }
