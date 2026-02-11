@@ -165,16 +165,14 @@
                     :href="datatrackerAuthorUrlBuilder(author.datatracker_person_path)"
                     :class="[ANCHOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']"
                   >
-                    {{
-                      // author.titlepage_name might be an empty string, so don't use `??` as fallback, use `||`
-                      author.titlepage_name || '(unnamed)' }}
+                    <RFCDocumentAuthor :author="author" />
                     <Icon
                       name="fluent:window-new-20-regular"
                       class="text-lg align-middle ml-1"
                     />
                   </a>
                   <span v-else>
-                    {{ author.titlepage_name || '(unnamed)' }}
+                    <RFCDocumentAuthor :author="author" />
                   </span>
                   <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
                     {{ COMMA }} {{ NONBREAKING_SPACE }}

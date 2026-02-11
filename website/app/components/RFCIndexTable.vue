@@ -3,13 +3,19 @@
     <thead>
       <tr>
         <th class="text-left p-1">
-          <abbr title="Number" class="underline-none">Num</abbr>
+          <abbr
+            title="Number"
+            class="no-underline"
+          >Num</abbr>
         </th>
         <th class="text-left p-1">Information</th>
       </tr>
     </thead>
     <tbody>
-      <TableRow v-if="props.isExample" key="example">
+      <TableRow
+        v-if="props.isExample"
+        key="example"
+      >
         <td>#####</td>
         <td>
           <p>

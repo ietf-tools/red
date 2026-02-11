@@ -40,14 +40,9 @@
       :key="authorIndex"
       class="inline-block"
     >
-      <span>
-        {{
-          // titlepage_name might be an empty string, so don't use `??` as fallback, use `||`
-          author.titlepage_name || '(unnamed)' }}
-      </span>
+      <RFCDocumentAuthor :author="author" />
       <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
-        {{ COMMA }}
-        {{ NONBREAKING_SPACE }}
+        {{ COMMA }} {{ NONBREAKING_SPACE }}
       </template>
     </li>
   </ul>

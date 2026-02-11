@@ -145,6 +145,8 @@ const RfcCommonAuthorSchema = z.object({
   datatracker_person_path: z.string().optional()
 })
 
+export type RfcCommonAuthor = z.infer<typeof RfcCommonAuthorSchema>
+
 const RfcCommonDraftSchema = z.object({
   id: z.number(),
   number: z.number(),
@@ -229,7 +231,9 @@ export const HomepageLatestSchema = z.object({
 })
 
 /**
+ * TODO:
  * Was used on the Rfc Index nuxt route
+ * but afaik isn't used any more and should be deleted
  */
 export type RfcMini = Pick<
   RfcCommon,
