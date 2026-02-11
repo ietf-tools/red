@@ -19,11 +19,12 @@
     "url": "git+https://github.com/ietf-tools/red.git"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.842.0",
+    "@aws-sdk/client-s3": "3.987.0",
+    "@aws-sdk/core": "3.973.7",
     "@napi-rs/canvas": "0.1.77",
     "@supercharge/promise-pool": "3.2.0",
     "@types/luxon": "3.4.2",
-    "apigen-ts": "1.2.1",
+    "apigen-ts": "0.2.0",
     "feed": "5.1.0",
     "jsdom": "26.1.0",
     "libxml2-wasm": "0.6.0",
@@ -40,7 +41,7 @@
     "@types/lodash-es": "4.17.12",
     "@types/node": "24.0.10",
     "@types/sanitize-html": "2.16.0",
-    "fastify": "5.7.1",
+    "fastify": "5.7.4",
     "typescript": "5.8.3",
     "vitest": "3.2.4"
   }
