@@ -1,5 +1,4 @@
 import { PromisePool } from '@supercharge/promise-pool'
-import { range } from 'lodash-es'
 import { uploadRfcData } from './tasks/rfc.ts'
 import { indices } from './tasks/indices.ts'
 import { getApiClient } from './utilities/api.ts'
