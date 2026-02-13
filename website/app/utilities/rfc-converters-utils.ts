@@ -42,19 +42,19 @@ export const formatAuthor = (
           newBit =
             index === arr.length - 1 ?
               ` ${item}`
-            : `${item.substring(0, 1).toUpperCase()}.`
+              : `${item.substring(0, 1).toUpperCase()}.`
           return `${acc}${newBit}`
         case 'brief':
           newBit =
             index === arr.length - 1 ?
               `${item}, `
-            : `${item.substring(0, 1).toUpperCase()}.`
+              : `${item.substring(0, 1).toUpperCase()}.`
           return `${newBit}${acc}`
         case 'reverse':
           newBit =
             index === arr.length - 1 ?
               `${item}, `
-            : `${item.substring(0, 1).toUpperCase()}.`
+              : `${item.substring(0, 1).toUpperCase()}.`
           return `${newBit}${acc}`
       }
       assertNever(style)
@@ -76,12 +76,14 @@ export const formatFormat = (
       return 'XML'
     case 'html':
       return 'HTML'
-    case 'htmlized':
-      return 'HTMLIZED'
     case 'pdf':
       return 'PDF'
     case 'ps':
       return 'PS'
+    case 'json':
+      return 'JSON'
+    case 'notprepped':
+      return 'NOTPREPPED'
   }
   throw Error(`Unexpected format "${format}"`)
 }
@@ -109,12 +111,14 @@ export const parseRfcFormat = (
       return 'txt'
     case 'html':
       return 'html'
-    case 'htmlized':
-      return 'htmlized'
     case 'pdf':
       return 'pdf'
     case 'ps':
       return 'ps'
+    case 'json':
+      return 'json'
+    case 'notprepped':
+      return 'notprepped'
   }
   throw Error(`Unable to parse RFC format "${format}"`)
 }
@@ -145,7 +149,7 @@ export const isTocSection = (
 ): maybeTocSection is TocSection => {
   return Boolean(
     maybeTocSection &&
-      typeof maybeTocSection === 'object' &&
-      'links' in maybeTocSection
+    typeof maybeTocSection === 'object' &&
+    'links' in maybeTocSection
   )
 }
