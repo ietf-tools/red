@@ -7,7 +7,7 @@ const NUMBER_OF_CONCURRENT_RFC_PROCESSORS = 8
 
 const main = async (rfcNumbers: number[]): Promise<void> => {
   console.log(
-    `Processing RFCs ${rfcNumbers.join(', ')}. Using ${NUMBER_OF_CONCURRENT_RFC_PROCESSORS} concurrent promises (results will appear out of order)`
+    `Processing RFCs ${rfcNumbers.join(', ')}. Using ${NUMBER_OF_CONCURRENT_RFC_PROCESSORS} concurrent promises (results will appear out of order).`
   )
   const { errors } = await PromisePool.for(rfcNumbers)
     .withConcurrency(NUMBER_OF_CONCURRENT_RFC_PROCESSORS)
