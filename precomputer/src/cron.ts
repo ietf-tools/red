@@ -1,37 +1,19 @@
-import { uploadHomepageLatest } from './tasks/homepage-latest.ts'
-import { uploadInNotesRfcRefDotTxt } from './tasks/in-notes-rfc-ref-txt.ts'
-import { FIXME_uploadReportsCurrentQStatsTxt } from './tasks/reports-current-queue-stats-txt.ts'
-import { uploadFeeds } from './tasks/rfc-feeds.ts'
-import { uploadRfcMiniIndexJson } from './tasks/rfc-mini-index-json.ts'
-import { uploadRfcIndexTxt } from './tasks/rfc-index-txt.ts'
-import { uploadRfcIndexXml } from './tasks/rfc-index-xml.ts'
-import { uploadAllSubseries } from './tasks/info-subseries.ts'
-import {
-  getAllRFCs,
-  getAllSubseries,
-  getApiClient
-} from './utilities/api.ts'
-
-const RFC_NUMBER_MINIMUM_CHAR_WIDTH = 5 // for Red the default width is 5 chars to handle eg RFC10000 (aka the RFC10k problem).
+import { indices } from './tasks/indices.ts'
+import { getApiClient } from './utilities/api.ts'
 
 export const main = async (): Promise<void> => {
-  console.log('Processing cron jobs')
+  console.log('Running cron job')
   const api = getApiClient()
-  const [allRfcs, allSubseries] = await Promise.all([
-    getAllRFCs({ api }),
-    getAllSubseries({ api })
-  ])
+  const isSuccessful = await indices({ api })
+  if (!isSuccessful) {
+    console.error(
+      'cron.ts finished with error(s)' // these errors should be already printed to console
+    )
+    process.exit(1)
+  }
 
-  await Promise.all([
-    uploadHomepageLatest(allRfcs),
-    uploadRfcMiniIndexJson(allRfcs),
-    uploadRfcIndexTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
-    uploadFeeds(allRfcs),
-    uploadRfcIndexXml(allRfcs, allSubseries),
-    uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
-    uploadAllSubseries(allSubseries),
-    FIXME_uploadReportsCurrentQStatsTxt()
-  ])
+  console.log('cron.ts finished successfully')
+  process.exit(0)
 }
 
 main()

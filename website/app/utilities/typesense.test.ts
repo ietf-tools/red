@@ -3079,7 +3079,7 @@ test('typeSenseSearchItemToRFC', () => {
   }
   const firstHit = firstResult.hits[0]
   if (firstHit === undefined) {
-    throw Error(`Expected firstResult to be present`)
+    throw Error(`Expected firstHit to be present`)
   }
 
   expect(typeSenseSearchItemToRFCCommon(firstHit.document)).matchSnapshot()
