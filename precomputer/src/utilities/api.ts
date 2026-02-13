@@ -231,7 +231,7 @@ export const getRfcCommonCached = async (
 /** Convert `Rfc` to `RfcCommon` */
 export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
   return {
-    formats: rfc.formats,
+    formats: rfc.formats?.map((format): RfcCommon["formats"][number] => format.fmt) ?? [],
     subseries: parseSubseries(rfc.subseries),
     number: rfc.number,
     abstract: rfc.abstract,
@@ -251,10 +251,10 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
     obsoleted_by: rfc.obsoleted_by,
     updates: rfc.updates,
     updated_by: rfc.updated_by,
-    see_also: rfc.see_also,
+    see_also: undefined,
     draft: parseDraft(rfc.draft),
     keywords: rfc.keywords,
-    errata: rfc.errata,
+    errata: undefined,
     title: rfc.title
   }
 }
@@ -262,7 +262,7 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
 /** Convert `RfcMetadata` to `RfcCommon` */
 export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
   return {
-    formats: rfcMetadata.formats,
+    formats: rfcMetadata.formats?.map((format): RfcCommon["formats"][number] => format.fmt) ?? [],
     number: rfcMetadata.number,
     abstract: rfcMetadata.abstract,
     published: rfcMetadata.published,
@@ -282,10 +282,10 @@ export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
     updated_by: rfcMetadata.updated_by,
     subseries: parseSubseries(rfcMetadata.subseries),
     draft: parseDraft(rfcMetadata.draft),
-    see_also: rfcMetadata.see_also,
+    see_also: undefined,
     updates: rfcMetadata.updates,
     keywords: rfcMetadata.keywords,
-    errata: rfcMetadata.errata,
+    errata: undefined,
     title: rfcMetadata.title
   }
 }

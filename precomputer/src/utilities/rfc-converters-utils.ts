@@ -83,13 +83,17 @@ export const formatFormat = (
     case 'xml':
       return 'XML'
     case 'html':
-      return 'HTML'
     case 'htmlized':
-      return 'HTMLIZED'
+      return 'HTML'
     case 'pdf':
       return 'PDF'
     case 'ps':
       return 'PS'
+    case 'json':
+      return 'JSON'
+    case 'notprepped':
+      return 'NOTPREPPED'
+
   }
   throw Error(`Unexpected format "${format}"`)
 }

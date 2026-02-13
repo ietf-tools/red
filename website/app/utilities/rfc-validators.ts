@@ -101,9 +101,10 @@ export const RfcCommonFormatSchema = z.union([
   z.literal('xml'),
   z.literal('txt'),
   z.literal('html'),
-  z.literal('htmlized'),
   z.literal('pdf'),
-  z.literal('ps')
+  z.literal('ps'),
+  z.literal('json'),
+  z.literal('notprepped')
 ])
 
 const RfcCommonIdentifierSchema = z.object({
@@ -215,9 +216,9 @@ export const RfcCommonSchema = z.object({
   updates: z.array(RfcCommonUpdatesSchema).optional(),
   updated_by: z.array(RfcCommonUpdatedBySchema).optional(),
   is_also: z.array(z.string()).optional(),
-  see_also: z.array(z.string()).optional(),
+  see_also: z.array(z.string()).optional(), // TODO: remove this. it's no longer available from the Precomputer Datatracker API
   keywords: z.array(z.string()).optional(),
-  errata: z.array(z.string()).optional(),
+  errata: z.array(z.string()).optional(), // TODO: remove this. it's no longer available from the Precomputer Datatracker API
   formats: z.array(RfcCommonFormatSchema),
   abstract: z.string().optional(),
   text: z.string().optional()

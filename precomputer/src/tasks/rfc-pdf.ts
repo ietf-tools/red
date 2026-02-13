@@ -130,7 +130,7 @@ export const rfcBucketPdfToRfcDocument = async (
   }
 
   console.log(
-    `[RFC ${rfcNumber}] uploaded ${textDetails.text.totalPages} pages of a PDF`
+    `[RFC ${rfcNumber}] screenshotted ${textDetails.text.totalPages} pages of a PDF`
   )
 
   const response: RfcBucketHtmlDocument = {

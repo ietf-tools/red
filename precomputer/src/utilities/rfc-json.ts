@@ -61,6 +61,8 @@ const RfcJsonFormatSchema = z.union([
   z.literal('PDF'),
   z.literal('PS'),
   z.literal('XML'),
+  z.literal('JSON'),
+  z.literal('NOTPREPPED'),
   z.literal('') // FIXME: should this exist?
 ])
 
@@ -125,12 +127,14 @@ const formatRfcFormatAsRfcJsonFormat = (
       return 'XML'
     case 'html':
       return 'HTML'
-    case 'htmlized':
-      return 'HTML'
     case 'pdf':
       return 'PDF'
     case 'ps':
       return 'PS'
+    case 'json':
+      return 'JSON'
+    case 'notprepped':
+      return 'NOTPREPPED'
   }
   assertNever(format)
 }
