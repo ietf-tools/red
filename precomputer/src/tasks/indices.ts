@@ -3,8 +3,6 @@ import { uploadInNotesRfcRefDotTxt } from './in-notes-rfc-ref-txt.ts'
 import { FIXME_uploadReportsCurrentQStatsTxt } from './reports-current-queue-stats-txt.ts'
 import { uploadFeeds } from './rfc-feeds.ts'
 import { uploadRfcMiniIndexJson } from './rfc-mini-index-json.ts'
-import { uploadRfcIndexTxt } from './rfc-index-txt.ts'
-import { uploadRfcIndexXml } from './rfc-index-xml.ts'
 import { uploadAllSubseries } from './info-subseries.ts'
 import {
     getAllRFCs,
@@ -28,9 +26,7 @@ export const indices = async ({ api, }: Props): Promise<boolean> => {
     const results = await Promise.all([
         uploadHomepageLatest(allRfcs),
         uploadRfcMiniIndexJson(allRfcs),
-        uploadRfcIndexTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
         uploadFeeds(allRfcs),
-        uploadRfcIndexXml(allRfcs, allSubseries),
         uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
         uploadAllSubseries(allSubseries),
         FIXME_uploadReportsCurrentQStatsTxt()
