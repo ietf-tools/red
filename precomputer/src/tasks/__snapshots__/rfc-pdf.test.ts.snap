@@ -674,17 +674,12 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
   },
   "rfc": {
     "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
-    "area": {
-      "acronym": "art",
-      "name": "Applications and Real-Time Area",
-      "type": "area",
-    },
     "authors": [
       {
         "affiliation": "MIT CSAIL",
         "country": "USA",
         "datatracker_person_path": "/person/Ronald%20L.%20Rivest",
-        "email": "rivest@mit.edu",
+        "email": "rivest@theory.lcs.mit.edu",
         "is_editor": false,
         "person": 19822,
         "titlepage_name": "Ronald Rivest",
@@ -699,7 +694,23 @@ emp ir i ca ll y de t e rm in e a v ali d se t o f par ame t e r s i s in t o l 
         "titlepage_name": "Donald Eastlake",
       },
     ],
-    "formats": [],
+    "formats": [
+      {
+        "format": "txt",
+      },
+      {
+        "format": "html",
+      },
+      {
+        "format": "xml",
+      },
+      {
+        "format": "pdf",
+      },
+      {
+        "format": "json",
+      },
+    ],
     "group": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",

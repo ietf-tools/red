@@ -1,13 +1,20 @@
 import { DateTime } from 'luxon'
-import { apiRfcBucketDocumentURLBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
+import {
+  apiRfcBucketDocumentURLBuilder,
+  PUBLIC_SITE_URL_ORIGIN
+} from '../utilities/url.ts'
 import { gc } from '../utilities/gc.ts'
-import { BLANK_HTML, getDOMParser, rfcDocumentToPojo } from '../utilities/dom.ts'
+import {
+  BLANK_HTML,
+  getDOMParser,
+  rfcDocumentToPojo
+} from '../utilities/dom.ts'
 import { rfcImageFileNameBuilder } from '../utilities/s3.ts'
 import {
   type TableOfContents,
   type RfcBucketHtmlDocument,
   type RfcCommon,
-  RfcBucketHtmlDocumentSchema,
+  RfcBucketHtmlDocumentSchema
 } from '../../../website/app/utilities/rfc-validators.ts'
 import {
   getTextDetails,
@@ -15,8 +22,11 @@ import {
 } from '../utilities/unpdf-parent.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
+import { redactRfc } from './rfc.ts'
 
-export const fetchRfcPDF = async (rfcNumber: number): Promise<string | null> => {
+export const fetchRfcPDF = async (
+  rfcNumber: number
+): Promise<string | null> => {
   const key = `pdf/rfc${rfcNumber}.pdf`
   const blob = await getFromS3(key, 'base64')
   if (!blob) {
@@ -26,7 +36,7 @@ export const fetchRfcPDF = async (rfcNumber: number): Promise<string | null> => 
     return null
   }
   if (blob instanceof Uint8Array) {
-    return new TextDecoder().decode(blob);
+    return new TextDecoder().decode(blob)
   }
   return blob
 }
@@ -46,9 +56,7 @@ export const rfcBucketPdfToRfcDocument = async (
     return null
   }
 
-  console.log(
-    `[RFC ${rfcNumber}] Found rfc${rfcNumber}.pdf`
-  )
+  console.log(`[RFC ${rfcNumber}] Found rfc${rfcNumber}.pdf`)
 
   await gc() // attempt to free memory after fetch()
 
@@ -123,11 +131,13 @@ export const rfcBucketPdfToRfcDocument = async (
     pdfPages.append(pageNode)
   }
 
-  const rfc = await getRfcCommon(rfcNumber)
+  let rfc = await getRfcCommon(rfcNumber)
 
   if (rfc === null) {
     return null
   }
+
+  rfc = redactRfc(rfc)
 
   console.log(
     `[RFC ${rfcNumber}] screenshotted ${textDetails.text.totalPages} pages of a PDF`

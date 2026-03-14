@@ -12057,23 +12057,19 @@ Internet Architecture Board Standards Track                    [Page 56]
     },
   ],
   "documentHtmlType": "plaintext",
+  "errataList": undefined,
   "maxPreformattedLineLength": {
     "max": 72,
     "maxWithAnchorSuffix": 87,
   },
   "rfc": {
     "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
-    "area": {
-      "acronym": "art",
-      "name": "Applications and Real-Time Area",
-      "type": "area",
-    },
     "authors": [
       {
         "affiliation": "MIT CSAIL",
         "country": "USA",
         "datatracker_person_path": "/person/Ronald%20L.%20Rivest",
-        "email": "rivest@mit.edu",
+        "email": "rivest@theory.lcs.mit.edu",
         "is_editor": false,
         "person": 19822,
         "titlepage_name": "Ronald Rivest",
@@ -12088,7 +12084,23 @@ Internet Architecture Board Standards Track                    [Page 56]
         "titlepage_name": "Donald Eastlake",
       },
     ],
-    "formats": [],
+    "formats": [
+      {
+        "format": "txt",
+      },
+      {
+        "format": "html",
+      },
+      {
+        "format": "xml",
+      },
+      {
+        "format": "pdf",
+      },
+      {
+        "format": "json",
+      },
+    ],
     "group": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",
@@ -157394,23 +157406,220 @@ document:",
     },
   ],
   "documentHtmlType": "xml2rfc",
+  "errataList": [
+    {
+      "correct_text": "| 0x19       | RETIRE_CONNECTION_ID | Section 19.16 | ___1 |      |",
+      "doc-id": "RFC9000",
+      "errata_id": "7365",
+      "errata_status_code": "Verified",
+      "errata_type_code": "Editorial",
+      "notes": "Based on the context and section 12.5 ending says:
+
+Note that it is not possible to send the following frames in 0-RTT
+   packets for various reasons: ACK, CRYPTO, HANDSHAKE_DONE, NEW_TOKEN,
+   PATH_RESPONSE, and RETIRE_CONNECTION_ID.  A server MAY treat receipt
+   of these frames in 0-RTT packets as a connection error of type
+   PROTOCOL_VIOLATION.
+
+So, I think the RETIRE_CONNECTION_ID frame should not appear in the 0-RTT packet, only contained in the 1-RTT package.",
+      "orig_text": "| 0x19       | RETIRE_CONNECTION_ID | Section 19.16 | __01 |      |",
+      "section": "12.4.",
+      "submit_date": "2023-02-23",
+      "submitter_name": "yongboy",
+      "update_date": "2024-10-30 01:45:57",
+      "verifier_id": "170",
+      "verifier_name": "Francesca Palombini",
+    },
+    {
+      "correct_text": "                                                               If an
+   endpoint does not have access to
+   received ECN fields, it does not report ECN counts for packets it
+   receives.
+
+   Even if an endpoint does not set an ECT field in packets it sends,
+   the endpoint MUST provide feedback about ECN markings it receives, if
+   these are accessible.  ",
+      "doc-id": "RFC9000",
+      "errata_id": "7374",
+      "errata_status_code": "Held for Document Update",
+      "errata_type_code": "Editorial",
+      "notes": "In the second sentence, the only allowed exception to "MUST provide feedback about received ECN markings" is inaccessibility. The first sentence contradicts this by allowing two exceptions: inaccessibility and just "not implementing ECN support". 
+
+If "not implementing ECN support" was really intended to be an allowed exception, the capitalized "MUST" would have been pointless.
+
+Therefore it is proposed that the words "does not implement ECN support or " are deleted from the first paragraph.
+
+NOTE : Based on discussion in https://mailarchive.ietf.org/arch/msg/quic/lsz4X-cZql71Ba56uQhNQz4NzGc/ , the error type is changed from technical to editorial.",
+      "orig_text": "                                                               If an
+   endpoint does not implement ECN support or does not have access to
+   received ECN fields, it does not report ECN counts for packets it
+   receives.
+
+   Even if an endpoint does not set an ECT field in packets it sends,
+   the endpoint MUST provide feedback about ECN markings it receives, if
+   these are accessible.  ",
+      "section": "13.4.1",
+      "submit_date": "2023-02-27",
+      "submitter_name": "Bob Briscoe",
+      "update_date": "2023-05-29 06:52:02",
+      "verifier_id": "172",
+      "verifier_name": "Zaheduzzaman Sarker",
+    },
+    {
+      "correct_text": "                                         The sequence number of the
+   initial connection ID is 0.  If the preferred_address transport
+   parameter is sent, the sequence number of the supplied connection ID
+   is 1.  The sequence number for NEW_CONNECTION_ID frames starts at 2
+   when the preferred_address transport parameter is sent and 1
+   otherwise.
+
+   Additional connection IDs are communicated to the peer using
+   NEW_CONNECTION_ID frames (Section 19.15).  The sequence number on
+   each newly issued connection ID MUST increase by 1.",
+      "doc-id": "RFC9000",
+      "errata_id": "6811",
+      "errata_status_code": "Verified",
+      "errata_type_code": "Technical",
+      "notes": "It is not sufficiently clear that the (implied) sequence number for the preferred_address transport parameter is taken from the sequence only when the transport parameter is present.
+
+The original text might be read to imply that the first NEW_CONNECTION_ID frame always starts with 2, though maybe only at a server.  The proposed addition is much more explicit.",
+      "orig_text": "                                         The sequence number of the
+   initial connection ID is 0.  If the preferred_address transport
+   parameter is sent, the sequence number of the supplied connection ID
+   is 1.
+
+   Additional connection IDs are communicated to the peer using
+   NEW_CONNECTION_ID frames (Section 19.15).  The sequence number on
+   each newly issued connection ID MUST increase by 1.  ",
+      "section": "5.1.1",
+      "submit_date": "2022-01-06",
+      "submitter_name": "Martin Thomson",
+      "update_date": "2022-02-18 02:18:41",
+      "verifier_id": "172",
+      "verifier_name": "Zaheduzzaman Sarker",
+    },
+    {
+      "correct_text": "                                                       Unless the
+   server has out-of-band knowledge that clients are not
+   demultiplexing QUIC with other protocols (see [RFC7983]), it
+   SHOULD set the most significant bit of this field (0x40) to 1 so that
+   Version Negotiation packets appear to have the Fixed Bit field.",
+      "doc-id": "RFC9000",
+      "errata_id": "7578",
+      "errata_status_code": "Held for Document Update",
+      "errata_type_code": "Technical",
+      "notes": "Unless operating in a tightly controlled environment, the server has no way of knowing what other protocols the client might be demultiplexing on the same UDP socket. According to the demultiplexing logic defined in RFC 9443, Version Negotiation packets with 0x40 set to 0 would be misclassified as RTP/RTCP.
+
+Looking at the discussion in https://mailarchive.ietf.org/arch/msg/quic/oR4kxGKY6mjtPC1CZegY1ED4beg/ and IETF118  QUIC working group meeting minutes. This needs more discussion to reach a conclusion on the potential solution.",
+      "orig_text": "                                                       Where QUIC
+   might be multiplexed with other protocols (see [RFC7983]), servers
+   SHOULD set the most significant bit of this field (0x40) to 1 so that
+   Version Negotiation packets appear to have the Fixed Bit field.",
+      "section": "17.2.1",
+      "submit_date": "2023-07-30",
+      "submitter_name": "Marten Seemann",
+      "update_date": "2024-01-29 11:56:10",
+      "verifier_id": "172",
+      "verifier_name": "Zaheduzzaman Sarker",
+    },
+    {
+      "correct_text": "If a server receives a client Initial that contains a token that is
+   identifiable as a Retry token, but the token is invalid or does
+   not otherwise validate the client's address,
+",
+      "doc-id": "RFC9000",
+      "errata_id": "7861",
+      "errata_status_code": "Verified",
+      "errata_type_code": "Technical",
+      "notes": "Valid tokens MUST be a) integrity-protected (Section 8.1.4) and distinguishable as to purpose (Section 8.1.1), i.e. tokens from a Retry packet vs. tokens from NEW_TOKEN frames. To satisfy address validation, they should enable the server to verify the client's transport address. This text does not specify which form of invalidity is being discussed -- failure of integrity protection or a mismatch between the contents of the token and the client's address.
+
+Applying this text to all "invalid" tokens which appear to be Retry tokens does not allow for the scenario where the token was generated by another server / another QUIC implementation and is in fact unreadable. Such tokens, even if they appear to be Retry tokens, are supposed to be handled by the requirements in 8.1.3, i.e. ignore the token and handle the packet as if no token were present.
+
+This section should be scoped only to tokens which are correctly formatted and readable by the server, but whose contents are not sufficient to prove the client's transport address is valid. Otherwise, the determination that the token is a Retry token cannot be trusted.
+
+(This discrepancy appears in a multi-CDN context, where tokens generated by one CDN will sometimes be received by a different CDN; if these tokens appear to be "invalid Retry tokens", the connection is closed when the token should simply be ignored.)
+
+Also see the discusion here (https://mailarchive.ietf.org/arch/msg/quic/-NcqDysNsU7mSXhKdCdM63MLYOc/)",
+      "orig_text": "If a server receives a client Initial that contains an invalid Retry
+   token but is otherwise valid,
+",
+      "section": "8.1.2",
+      "submit_date": "2024-03-20",
+      "submitter_name": "Mike Bishop",
+      "update_date": "2025-03-18 03:53:26",
+      "verifier_id": "172",
+      "verifier_name": "Zaheduzzaman Sarker",
+    },
+    {
+      "correct_text": "   Every packet SHOULD be acknowledged at least once, and ack-eliciting
+   packets MUST be acknowledged at least once. All acknowledgments MUST
+   occur within the maximum delay an endpoint communicated using the
+   max_ack_delay transport parameter;
+",
+      "doc-id": "RFC9000",
+      "errata_id": "8106",
+      "errata_status_code": "Rejected",
+      "errata_type_code": "Technical",
+      "notes": "The original text can be read as if it were OK to only ACK once within the max_ack_delay, and not always.
+ --VERIFIER NOTES-- 
+ Based on the discussion here (https://mailarchive.ietf.org/arch/msg/quic/14r68SfepLclHMnur6Ur9-F2rnY/) the errata is rejected.",
+      "orig_text": "   Every packet SHOULD be acknowledged at least once, and ack-eliciting
+   packets MUST be acknowledged at least once within the maximum delay
+   an endpoint communicated using the max_ack_delay transport parameter;
+",
+      "section": "13.2.1",
+      "submit_date": "2024-09-17",
+      "submitter_name": "Lars Eggert",
+      "update_date": "2024-10-14 09:19:18",
+      "verifier_id": "172",
+      "verifier_name": "Zaheduzzaman Sarker",
+    },
+    {
+      "correct_text": "0x1c-0x1d   CONNECTION_CLOSE  Section 19.19  ih01  NC",
+      "doc-id": "RFC9000",
+      "errata_id": "8240",
+      "errata_status_code": "Verified",
+      "errata_type_code": "Technical",
+      "notes": "QUIC congestion control RFC 9002 (https://www.rfc-editor.org/rfc/rfc9002) section 3 states:
+
+"The types of frames contained in a packet affect recovery and congestion control logic:
+...
+Packets containing frames besides ACK or CONNECTION_CLOSE frames count toward congestion control limits and are considered to be in flight."
+
+So as per RFC-9002, it means that ACK and CONNECTION_CLOSE frames do not contribute to congestion control limits.
+
+On the other hand, RFC-9000, section 12.4 has a Table 3 (https://www.rfc-editor.org/rfc/rfc9000#frame-types) which states:
+
+"The "Spec" column in Table 3 summarizes any special rules governing the processing or generation of the frame type, as indicated by the following characters:
+...
+C: Packets containing only frames with this marking do not count toward bytes in flight for congestion control purposes; see [QUIC-RECOVERY]."
+
+However, in that table, the CONNECTION_CLOSE frame isn't marked with the "C" character and only the ACK frame is. This appears to be an oversight in that table in RFC-9000.
+
+
+See related discussions here ( https://mailarchive.ietf.org/arch/msg/quic/M3j4UsFxXPS6A8EX1d2zW_ZQrMQ/ )
+",
+      "orig_text": "0x1c-0x1d   CONNECTION_CLOSE  Section 19.19  ih01  N",
+      "section": "12.4",
+      "submit_date": "2025-01-06",
+      "submitter_name": "Jaikiran Pai",
+      "update_date": "2025-03-18 03:39:39",
+      "verifier_id": "172",
+      "verifier_name": "Zaheduzzaman Sarker",
+    },
+  ],
   "maxPreformattedLineLength": {
     "max": 62,
     "maxWithAnchorSuffix": 62,
   },
   "rfc": {
     "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
-    "area": {
-      "acronym": "art",
-      "name": "Applications and Real-Time Area",
-      "type": "area",
-    },
     "authors": [
       {
         "affiliation": "MIT CSAIL",
         "country": "USA",
         "datatracker_person_path": "/person/Ronald%20L.%20Rivest",
-        "email": "rivest@mit.edu",
+        "email": "rivest@theory.lcs.mit.edu",
         "is_editor": false,
         "person": 19822,
         "titlepage_name": "Ronald Rivest",
@@ -157425,7 +157634,23 @@ document:",
         "titlepage_name": "Donald Eastlake",
       },
     ],
-    "formats": [],
+    "formats": [
+      {
+        "format": "txt",
+      },
+      {
+        "format": "html",
+      },
+      {
+        "format": "xml",
+      },
+      {
+        "format": "pdf",
+      },
+      {
+        "format": "json",
+      },
+    ],
     "group": {
       "acronym": "art",
       "name": "Applications and Real-Time Area",

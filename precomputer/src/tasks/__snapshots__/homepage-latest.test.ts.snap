@@ -5,17 +5,12 @@ exports[`homepage latest RFCs 1`] = `
   "homepageLatest": [
     {
       "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
-      "area": {
-        "acronym": "art",
-        "name": "Applications and Real-Time Area",
-        "type": "area",
-      },
       "authors": [
         {
           "affiliation": "MIT CSAIL",
           "country": "USA",
           "datatracker_person_path": "/person/Ronald%20L.%20Rivest",
-          "email": "rivest@mit.edu",
+          "email": "rivest@theory.lcs.mit.edu",
           "is_editor": false,
           "person": 19822,
           "titlepage_name": "Ronald Rivest",
@@ -30,7 +25,23 @@ exports[`homepage latest RFCs 1`] = `
           "titlepage_name": "Donald Eastlake",
         },
       ],
-      "formats": [],
+      "formats": [
+        {
+          "format": "txt",
+        },
+        {
+          "format": "html",
+        },
+        {
+          "format": "xml",
+        },
+        {
+          "format": "pdf",
+        },
+        {
+          "format": "json",
+        },
+      ],
       "group": {
         "acronym": "art",
         "name": "Applications and Real-Time Area",
@@ -68,11 +79,6 @@ exports[`homepage latest RFCs 1`] = `
       "abstract": "This document is a product of the Path Aware Networking Research Group (PANRG). At the first meeting of the PANRG, the Research Group agreed to catalog and analyze past efforts to develop and deploy Path Aware techniques, most of which were unsuccessful or at most partially successful, in order to extract insights and lessons for Path Aware networking researchers.
 
  This document contains that catalog and analysis.",
-      "area": {
-        "acronym": "irtf",
-        "name": "IRTF",
-        "type": "irtf",
-      },
       "authors": [
         {
           "affiliation": "Tencent America",
@@ -84,7 +90,23 @@ exports[`homepage latest RFCs 1`] = `
           "titlepage_name": "Spencer Dawkins",
         },
       ],
-      "formats": [],
+      "formats": [
+        {
+          "format": "txt",
+        },
+        {
+          "format": "html",
+        },
+        {
+          "format": "xml",
+        },
+        {
+          "format": "pdf",
+        },
+        {
+          "format": "json",
+        },
+      ],
       "group": {
         "acronym": "panrg",
         "name": "Path Aware Networking RG",
@@ -129,14 +151,13 @@ exports[`homepage latest RFCs 1`] = `
       "area": {
         "acronym": "sec",
         "name": "Security Area",
-        "type": "area",
       },
       "authors": [
         {
           "affiliation": "Ericsson",
           "country": "Finland",
           "datatracker_person_path": "/person/Jari%20Arkko",
-          "email": "jari.arkko@piuha.net",
+          "email": "jari.arkko@ericsson.com",
           "is_editor": false,
           "person": 21072,
           "titlepage_name": "Jari Arkko",
@@ -169,7 +190,23 @@ exports[`homepage latest RFCs 1`] = `
           "titlepage_name": "Pasi Eronen",
         },
       ],
-      "formats": [],
+      "formats": [
+        {
+          "format": "txt",
+        },
+        {
+          "format": "html",
+        },
+        {
+          "format": "xml",
+        },
+        {
+          "format": "pdf",
+        },
+        {
+          "format": "json",
+        },
+      ],
       "group": {
         "acronym": "emu",
         "name": "EAP Method Update",

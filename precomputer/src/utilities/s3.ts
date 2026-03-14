@@ -146,7 +146,10 @@ export const RFC_FEED_RSS_PATH = 'other/rfcrss.xml' as const
 
 export const RFC_FEED_ATOM_PATH = 'other/rfcatom.xml' as const
 
-export const IN_NOTES_RFC_REF_DOT_TXT_PATH = 'other/in-notes/rfc-ref.txt'
+export const IN_NOTES_RFC_REF_DOT_TXT_PATH = 'other/in-notes/rfc-ref.txt' as const
+
+export const ERRATA_JSON_PATH = 'other/errata.json' as const
 
 export const REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH =
   'other/reports/CurrQstats.txt'
+

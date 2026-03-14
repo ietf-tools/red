@@ -3,7 +3,10 @@ import path from 'path'
 import fsPromises from 'fs/promises'
 import { test, expect, vi } from 'vitest'
 import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument } from './rfc-html.ts'
-import { testMockAllRfcs } from '../utilities/rfcs-test-data.ts'
+import {
+  testMockAllRfcs,
+  testMockErrataList
+} from '../utilities/rfcs-test-data.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 
 const getRfcHtml: typeof getFromS3 = (key, outputType) => {
@@ -13,7 +16,10 @@ const getRfcHtml: typeof getFromS3 = (key, outputType) => {
     'old-rfc-editor.org',
     key
   )
-  return fsPromises.readFile(htmlPath, outputType === 'base64' ? 'base64' : 'utf-8')
+  return fsPromises.readFile(
+    htmlPath,
+    outputType === 'base64' ? 'base64' : 'utf-8'
+  )
 }
 
 const processRfcBucketHtml = async (rfcNumber: number) => {
@@ -25,8 +31,18 @@ const processRfcBucketHtml = async (rfcNumber: number) => {
   const getRfcCommon = async (_rfcNumber: number) =>
     testMockAllRfcs[testMockAllRfcs.length - 1]
 
+  const getErrataByRfcNumber = async (rfcNumber: number) =>
+    testMockErrataList.filter(
+      (errataItem) => errataItem['doc-id'] === `RFC${rfcNumber}`
+    )
+
   if (html) {
-    return rfcBucketHtmlToRfcDocument(html, rfcNumber, getRfcCommon)
+    return rfcBucketHtmlToRfcDocument(
+      html,
+      rfcNumber,
+      getRfcCommon,
+      getErrataByRfcNumber
+    )
   }
 }
 

@@ -12,7 +12,10 @@ import {
 import { getRfcCommonCached } from '../utilities/api.ts'
 import { rfcToRfcJson } from '../utilities/rfc-json.ts'
 import { RfcCommonSchema } from '../../../website/app/utilities/rfc-validators.ts'
-import type { RfcBucketHtmlDocument, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import type {
+  RfcBucketHtmlDocument,
+  RfcCommon
+} from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { RfcJsonSchema } from '../utilities/rfc-json.ts'
 import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
@@ -20,6 +23,7 @@ import {
   formatAuthor,
   formatIdentifiers
 } from '../utilities/rfc-converters-utils.ts'
+import { getErrataForRfc } from '../utilities/errata.ts'
 
 export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
   const result = await Promise.all([
@@ -41,13 +45,16 @@ export const uploadRfcHtml = async (rfcNumber: number): Promise<boolean> => {
   return true
 }
 
-export const getRfcBucketHtmlDocument = async (rfcNumber: number): Promise<RfcBucketHtmlDocument | undefined> => {
+export const getRfcBucketHtmlDocument = async (
+  rfcNumber: number
+): Promise<RfcBucketHtmlDocument | undefined> => {
   const html = await fetchSourceRfcHtml(rfcNumber, getFromS3)
   if (html !== null) {
     const rfcDocFromHtml = await rfcBucketHtmlToRfcDocument(
       html,
       rfcNumber,
-      getRfcCommonCached
+      getRfcCommonCached,
+      getErrataForRfc
     )
     if (rfcDocFromHtml === null) {
       return undefined
@@ -83,15 +90,17 @@ export const uploadRfcJson = async (rfcNumber: number): Promise<boolean> => {
   return true
 }
 
-const redactRfc = (rfc: RfcCommon): RfcCommon => {
+export const redactRfc = (rfc: RfcCommon): RfcCommon => {
   return {
     ...rfc,
-    formats: rfc.formats.map(format => {
-      return {
-        format: format.format
-        // omit `format.path`, that's an internal implementation detail that doesn't need to be public and isn't required by the schema
-      }
-    })
+    formats: rfc.formats
+      .filter((format) => format.format !== 'notprepped')
+      .map((format) => {
+        return {
+          format: format.format
+          // omit `format.path`, that's an internal implementation detail that doesn't need to be public and isn't required by the schema
+        }
+      })
   }
 }
 
@@ -134,10 +143,11 @@ export const renderRefsRef = (rfc: RfcCommon): string => {
     throw Error(`Unexpected lack of 'published' date`)
   }
 
-  return `${rfc.authors.map((author) => formatAuthor(author, 'brief'))}, "${rfc.title
-    }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
-      ''
-    )}, ${DateTime.fromISO(published).toFormat(
-      'LLLL yyyy'
-    )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
+  return `${rfc.authors.map((author) => formatAuthor(author, 'brief'))}, "${
+    rfc.title
+  }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
+    ''
+  )}, ${DateTime.fromISO(published).toFormat(
+    'LLLL yyyy'
+  )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
 }

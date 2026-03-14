@@ -13,7 +13,8 @@ import {
   type MaxPreformattedLineLengthSchemaType,
   type DocumentHtmlType,
   type TableOfContents,
-  RfcBucketHtmlDocumentSchema
+  RfcBucketHtmlDocumentSchema,
+  ErrataList
 } from '../../../website/app/utilities/rfc-validators.ts'
 import { extractHrefRfcPart } from '../utilities/rfc.ts'
 import { assertNever } from '../utilities/typescript.ts'
@@ -31,19 +32,23 @@ import {
 import { chunkString, getAllIndexes } from '../utilities/string.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
+import { redactRfc } from './rfc.ts'
 
 export const rfcBucketHtmlToRfcDocument = async (
   rfcBucketHtml: string,
   rfcNumber: number,
-  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>
+  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>,
+  getErrataList: (rfcNumber: number) => Promise<ErrataList>
 ): Promise<RfcBucketHtmlDocument | null> => {
   const parser = await getDOMParser()
   const dom = parser.parseFromString(rfcBucketHtml, 'text/html')
 
-  const rfc = await getRfcCommon(rfcNumber)
+  let rfc = await getRfcCommon(rfcNumber)
   if (rfc === null) {
     return null
   }
+
+  rfc = redactRfc(rfc)
 
   const rfcAndToc: RfcAndToc = {
     rfc,
@@ -82,12 +87,15 @@ export const rfcBucketHtmlToRfcDocument = async (
   convertHrefs(rfcDocument, baseUrl, rfcNumber)
   ensureWordBreaks(rfcDocument)
 
+  const errataList = await getErrataList(rfcNumber)
+
   const response: RfcBucketHtmlDocument = {
     rfc: rfcAndToc.rfc,
     tableOfContents: rfcAndToc.tableOfContents,
     documentHtmlType,
     documentHtmlObj: rfcDocumentToPojo(rfcDocument),
     maxPreformattedLineLength,
+    errataList: errataList.length > 0 ? errataList : undefined,
     timestampIso: DateTime.now().toUTC().toISO()
   }
 
@@ -109,7 +117,10 @@ export const fetchSourceRfcHtml = async (
     return null
   }
 
-  const dirtyHtmlString = (dirtyHtml instanceof Uint8Array) ? new TextDecoder().decode(dirtyHtml) : dirtyHtml
+  const dirtyHtmlString =
+    dirtyHtml instanceof Uint8Array ?
+      new TextDecoder().decode(dirtyHtml)
+    : dirtyHtml
 
   // Sanitise HTML before returning it
 
@@ -325,9 +336,9 @@ const convertHrefs = (
     const isInvalidUrl = (error: unknown): boolean => {
       return Boolean(
         error &&
-        typeof error === 'object' &&
-        'code' in error &&
-        error.code === 'ERR_INVALID_URL'
+          typeof error === 'object' &&
+          'code' in error &&
+          error.code === 'ERR_INVALID_URL'
       )
     }
 
@@ -489,8 +500,9 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
                 // because after splitting on words
                 // there will be a lot of contiguous
                 // text nodes
-                lastNode.textContent = `${lastNode.textContent ?? ''
-                  }${textContent}`
+                lastNode.textContent = `${
+                  lastNode.textContent ?? ''
+                }${textContent}`
               } else {
                 acc.push(node)
               }

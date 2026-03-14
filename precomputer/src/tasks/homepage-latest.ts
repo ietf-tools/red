@@ -4,7 +4,7 @@ import { HOMEPAGE_LATEST_PATH, saveToS3 } from '../utilities/s3.ts'
 import { HomepageLatestSchema } from '../../../website/app/utilities/rfc-validators.ts'
 import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
-import { uploadRfcData } from './rfc.ts'
+import { redactRfc, uploadRfcData } from './rfc.ts'
 
 export const NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE = 3
 
@@ -29,8 +29,9 @@ export const renderHomepageLatest = async (
   const response: HomepageLatest = {
     homepageLatest: allRfcs
       .slice(-NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE)
-      .sort((a, b) => b.number - a.number),
-        timestampIso: DateTime.now().toUTC().toISO()
+      .sort((a, b) => b.number - a.number)
+      .map(redactRfc),
+    timestampIso: DateTime.now().toUTC().toISO()
   }
   validateDocument(response, HomepageLatestSchema)
   return response

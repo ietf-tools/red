@@ -305,6 +305,47 @@ export type MaxPreformattedLineLengthSchemaType = z.infer<
 >
 
 /**
+ * Errata
+ */
+export const ErrataStatusSchema = z.union([
+  z.literal('Verified'),
+  z.literal('Reported'),
+  z.literal('Held for Document Update'),
+  z.literal('Rejected')
+])
+
+export type ErrataStatus = z.infer<typeof ErrataStatusSchema>
+
+export const ErrataTypeSchema = z.union([
+  z.literal('Editorial'),
+  z.literal('Technical')
+])
+
+export type ErrataType = z.infer<typeof ErrataTypeSchema>
+
+export const ErrataItemSchema = z.object({
+  errata_id: z.string(), // eg "1",
+  'doc-id': z.string(), // eg "RFC4954",
+  errata_status_code: ErrataStatusSchema,
+  errata_type_code: ErrataTypeSchema,
+  section: z.string().nullable(), // eg "4.1",
+  orig_text: z.string().nullable(), // eg "   S: 220-smtp.example.com ESMTP Server",
+  correct_text: z.string().nullable(), // eg "   S: 220 smtp.example.com ESMTP Server",
+  notes: z.string().nullable(), // "There are 3 instances of this (one on p. 7 and two on p. 8). \n",
+  submit_date: z.string(), // eg "2007-07-19",
+  submitter_name: z.string().nullable(), // eg "Rob Siemborski",
+  verifier_id: z.string(), // eg "99",
+  verifier_name: z.string().nullable(),
+  update_date: z.string().nullable() // eg "2019-09-10 09:09:03"
+})
+
+export type ErrataItem = z.infer<typeof ErrataItemSchema>
+
+export const ErrataListSchema = ErrataItemSchema.array()
+
+export type ErrataList = z.infer<typeof ErrataListSchema>
+
+/**
  * Bucket JSON schema
  */
 export const RfcBucketHtmlDocumentSchema = z.object({
@@ -313,6 +354,7 @@ export const RfcBucketHtmlDocumentSchema = z.object({
   documentHtmlType: DocumentHtmlTypeSchema,
   documentHtmlObj: z.array(NodePojoSchema),
   maxPreformattedLineLength: MaxPreformattedLineLengthSchema,
+  errataList: ErrataListSchema.optional(),
   timestampIso: z.string() // ISO 8601 date. Note that the schema isn't using `z.coerce.date()` because we'll manually parse into a Luxon DateTime rather than a standard JS Date
 })
 
