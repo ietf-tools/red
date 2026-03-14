@@ -9,7 +9,7 @@ import {
 } from '../utilities/rfcs-test-data.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 
-const getRfcHtml: typeof getFromS3 = (key, outputType) => {
+const getRfcHtml: typeof getFromS3 = (_bucket, key, outputType) => {
   const htmlPath = path.resolve(
     import.meta.dirname,
     '..',

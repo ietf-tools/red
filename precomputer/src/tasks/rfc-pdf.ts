@@ -28,7 +28,7 @@ export const fetchRfcPDF = async (
   rfcNumber: number
 ): Promise<string | null> => {
   const key = `pdf/rfc${rfcNumber}.pdf`
-  const blob = await getFromS3(key, 'base64')
+  const blob = await getFromS3('S3_RFC_BUCKET', key, 'base64')
   if (!blob) {
     console.warn(
       `[RFC ${rfcNumber}] PDF from ${JSON.stringify(key)} not available`

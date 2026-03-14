@@ -8,7 +8,7 @@ let _errataListCache: ErrataList | undefined = undefined
 
 export const getAllErrataCached = async () => {
   if (!_errataListCache) {
-    const data = await getFromS3(ERRATA_JSON_PATH)
+    const data = await getFromS3('S3_RED_BUCKET', ERRATA_JSON_PATH)
     if (typeof data !== 'string') {
       throw Error(
         `Unable to get ${JSON.stringify(ERRATA_JSON_PATH)}. Response was ${typeof data}`
