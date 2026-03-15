@@ -56,7 +56,7 @@ export const IAD_URL_ORIGIN = 'https://iad.rfc-editor.org'
 export const DASHBOARD_URL_ORIGIN = 'https://dashboard.rfc-editor.org'
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN =
   'https://authors.ietf.org'
-
+export const RFC_EDITOR_ERRATA_SUBSITE_URL = 'https://errata.rfc-editor.org/'
 export const RFC_EDITOR_ERRATA_SEARCH_URL =
   'https://errata.rfc-editor.org/search/'
 export const IETF_PRIVACY_STATEMENT_URL =
@@ -129,7 +129,8 @@ export const searchPathBuilder = (
   searchParams: Partial<SearchPathBuilderProps>
 ): `${typeof SEARCH_PATH}${string}` => {
   const hasParams = Object.values(searchParams).join('').trim().length > 0
-  return `${SEARCH_PATH}${hasParams ? '?' : ''}${hasParams ?
+  return `${SEARCH_PATH}${hasParams ? '?' : ''}${
+    hasParams ?
       Object.keys(searchParams)
         .sort() // normalize order
         .map((searchKey) => {
@@ -138,15 +139,15 @@ export const searchPathBuilder = (
             searchParams[searchKey as keyof SearchPathBuilderProps]
 
           return searchValue ?
-            `${encodeURIComponent(typesenseSearchKey)}=${typeSenseEncodeUriComponent(
-              Array.isArray(searchValue) ? searchValue.join(',') : searchValue
-            )}`
+              `${encodeURIComponent(typesenseSearchKey)}=${typeSenseEncodeUriComponent(
+                Array.isArray(searchValue) ? searchValue.join(',') : searchValue
+              )}`
             : ''
         })
         .filter(Boolean)
         .join('&')
-      : ''
-    }`
+    : ''
+  }`
 }
 
 export const refsRefTxtPathBuilder = (rfcId: string) => {
@@ -279,7 +280,8 @@ export const isHashLink = (href?: string): boolean => !!href?.startsWith('#')
 
 export const isRSSLink = (href?: string): boolean => !!href?.endsWith(RSS_PATH)
 
-export const isAtomLink = (href?: string): boolean => !!href?.endsWith(ATOM_PATH)
+export const isAtomLink = (href?: string): boolean =>
+  !!href?.endsWith(ATOM_PATH)
 
 /**
  * Converts arbitrary text into a custom id that is DOMId compliant (ie no whitespace)
@@ -420,7 +422,9 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
   assertNever(stream.slug)
 }
 
-export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => {
+export const datatrackerAuthorUrlBuilder = (
+  datatracker_person_path: string
+) => {
   return new URL(datatracker_person_path, DATATRACKER_URL_ORIGIN).toString()
 }
 
@@ -434,4 +438,5 @@ export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => 
 export const typeSenseEncodeUriComponent = (uriComponent: string) =>
   encodeURIComponent(uriComponent).replace(/%20/g, '+')
 
-export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/favicon-${widthPx}-${heightPx}.png`
+export const faviconPathBuilder = (widthPx: number, heightPx: number) =>
+  `/favicon-${widthPx}-${heightPx}.png`

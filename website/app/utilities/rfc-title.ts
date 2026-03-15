@@ -31,7 +31,8 @@ export const hasSubseries = (rfc: RfcCommon) =>
 
 export const formatSubseriesAsVNode = (
   rfc: RfcCommon,
-  hasTrailingColon: boolean
+  hasTrailingColon: boolean,
+  hasUnderline: boolean
 ): VNode => {
   const { subseries } = rfc
   if (!subseries || subseries.length === 0) {
@@ -48,8 +49,12 @@ export const formatSubseriesAsVNode = (
             to: infoSeriesPathBuilder(
               `${subseries.type.toLowerCase()}${subseries.number}`
             ),
-            class:
-              'relative z-50 no-underline hover:underline focus:underline py-3 rounded text-gray-800 dark:text-gray-300',
+            class: [
+              !hasUnderline ? 'no-underline' : (
+                'underline decoration-gray-500 hover:decoration-black focus:decoration:black dark:decoration-gray-400 dark:hover:decoration-white'
+              ),
+              'leading-[1.5] relative z-50 hover:underline focus:underline py-3 rounded text-gray-800 dark:text-gray-300'
+            ],
             title: `${subseries.type.toUpperCase()} ${subseries.number} contains RFC ${rfc.number}`
           },
           () => {

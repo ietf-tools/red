@@ -1,24 +1,21 @@
 <template>
   <div class="flex flex-col">
-    <Breadcrumbs
-      :breadcrumb-items="breadcrumbItems"
-      class="flex-1"
-    />
-    <RFCDocumentMobileInfoButton @click="isModalOpen = true">Info</RFCDocumentMobileInfoButton>
+    <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
+    <RFCDocumentMobileInfoButton @click="isModalOpen = true"
+      >Info</RFCDocumentMobileInfoButton
+    >
   </div>
 
   <Heading
     level="1"
     class="mb-2 ml-2 px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
   >
-    <RFCTitle
-      :rfc="props.rfcBucketHtmlDocument.rfc"
-      hide-title
-    />
+    <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title />
     {{ SPACE }}
     <RFCTitleSubseries
       :rfc="props.rfcBucketHtmlDocument.rfc"
       has-trailing-colon
+      has-underline
     />
     {{ SPACE }}
     <span class="font-normal">{{ props.rfcBucketHtmlDocument.rfc.title }}</span>
@@ -41,7 +38,9 @@
       class="inline-block"
     >
       <RFCDocumentAuthor :author="author" />
-      <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
+      <template
+        v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1"
+      >
         {{ COMMA }} {{ NONBREAKING_SPACE }}
       </template>
     </li>
@@ -59,10 +58,13 @@
       For more information, please refer to
       <ul class="mt-1 flex flex-col gap-2">
         <li
-          v-for="(obsoletedByItem, obsoletedByItemIndex) in props.rfcBucketHtmlDocument.rfc.obsoleted_by"
+          v-for="(obsoletedByItem, obsoletedByItemIndex) in props
+            .rfcBucketHtmlDocument.rfc.obsoleted_by"
           :key="obsoletedByItemIndex"
         >
-          <AMaybeRFCLink :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)">
+          <AMaybeRFCLink
+            :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)"
+          >
             <RFCTitle :rfc="obsoletedByItem" />
           </AMaybeRFCLink>
         </li>
@@ -70,10 +72,12 @@
     </div>
   </Alert>
 
-  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
-    //
-    ' leading-[1.75] ' // WCAG requires 1.5 minimum
-    }`">
+  <div
+    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
+      //
+      ' leading-[1.75] ' // WCAG requires 1.5 minimum
+    }`"
+  >
     <component :is="enrichedDocument" />
   </div>
 
@@ -81,10 +85,7 @@
     <!-- FIXME: this is to ensure tailwind includes these CSS classes and their CSS --variables for color which we'll use in `rfc-plaintext.css`, but there must be a better way of doing this -->
   </div>
 
-  <RFCMobileBanner
-    :rfc="rfcBucketHtmlDocument.rfc"
-    :is-fixed="true"
-  />
+  <RFCMobileBanner :rfc="rfcBucketHtmlDocument.rfc" :is-fixed="true" />
 </template>
 
 <script setup lang="ts">
@@ -100,7 +101,11 @@ import { infoSeriesPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import { nodePojoWalker } from '~/utilities/dom'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
-import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
+import type {
+  DocumentPojo,
+  ElementPojo,
+  NodePojo
+} from '~/utilities/rfc-validators'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 
 type Props = {
@@ -149,7 +154,11 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
       if (node.nodeName === 'a') {
         // Note that children is a function, as required by Vue for non-HTML components,
         // so that it can defer children
-        return h(AMaybeRFCLink, { 'href': '', ...node.attributes }, () => childrenForVue)
+        return h(
+          AMaybeRFCLink,
+          { href: '', ...node.attributes },
+          () => childrenForVue
+        )
       } else if (node.nodeName === 'svg') {
         return h(
           node.nodeName,
@@ -169,9 +178,13 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
             const ATTR_ABSOLUTE_CHILDHEIGHT = 'data-component-childheight'
             const childHeightAttr = node.attributes[ATTR_ABSOLUTE_CHILDHEIGHT]
             if (childWidthAttr && childHeightAttr) {
-              const deleteDataAttributes = (attributes: ElementPojo["attributes"]): ElementPojo["attributes"] => {
+              const deleteDataAttributes = (
+                attributes: ElementPojo['attributes']
+              ): ElementPojo['attributes'] => {
                 const entries = Object.entries(attributes)
-                const filteredEntries = entries.filter(([key]) => !key.startsWith('data-'))
+                const filteredEntries = entries.filter(
+                  ([key]) => !key.startsWith('data-')
+                )
                 const filteredAttributes = Object.fromEntries(filteredEntries)
                 return filteredAttributes
               }
@@ -181,42 +194,37 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
                   ...deleteDataAttributes(node.attributes),
                   childWidthAttr,
                   childHeightAttr,
-                  innerClass: 'py-3 rfc-content-padding-left rfc-content-padding-right'
+                  innerClass:
+                    'py-3 rfc-content-padding-left rfc-content-padding-right'
                 },
                 () => childrenForVue
               )
             } else {
-              console.warn(`Unable to render AbsoluteHorizontalScrollable ${ATTR_ABSOLUTE} because attributes ${ATTR_ABSOLUTE_CHILDWIDTH}=${JSON.stringify(childWidthAttr)} ${ATTR_ABSOLUTE_CHILDHEIGHT}${JSON.stringify(childHeightAttr)}`)
+              console.warn(
+                `Unable to render AbsoluteHorizontalScrollable ${ATTR_ABSOLUTE} because attributes ${ATTR_ABSOLUTE_CHILDWIDTH}=${JSON.stringify(childWidthAttr)} ${ATTR_ABSOLUTE_CHILDHEIGHT}${JSON.stringify(childHeightAttr)}`
+              )
             }
           }
         }
         // Note that children is a function, as required by Vue for non-HTML components,
         // so that it can defer rendering children
-        return h(
-          HorizontalScrollable,
-          node.attributes,
-          () => childrenForVue
-        )
+        return h(HorizontalScrollable, node.attributes, () => childrenForVue)
       } else if (componentAttr === 'Placeholder') {
         // FIXME: delete this case once the component is removed from the bucket
-        return h(
-          'div',
-          node.attributes,
-          childrenForVue
-        )
+        return h('div', node.attributes, childrenForVue)
       } else if (componentAttr === 'PdfPages') {
         const pdfPagesChildrenForVue = nodePojoWalker(node.children, (node) => {
-          if (node.type === 'Element' && node.nodeName.toLowerCase() === 'img') {
-            node.attributes['class'] = 'w-full min-w-[425px] max-w-[1000px] dark:contrast-125 dark:brightness-85 dark:invert'
+          if (
+            node.type === 'Element' &&
+            node.nodeName.toLowerCase() === 'img'
+          ) {
+            node.attributes['class'] =
+              'w-full min-w-[425px] max-w-[1000px] dark:contrast-125 dark:brightness-85 dark:invert'
           }
           return node
         }).map(renderNodePojo)
 
-        return h(
-          PdfPages,
-          node.attributes,
-          () => pdfPagesChildrenForVue
-        )
+        return h(PdfPages, node.attributes, () => pdfPagesChildrenForVue)
       }
       return h(node.nodeName, node.attributes, childrenForVue)
     } else if (node.type === 'Text') {
@@ -229,11 +237,13 @@ const renderDocumentPojo = (nodes: DocumentPojo): VNode => {
   return h(Fragment, () => children)
 }
 
-const maxPreformattedLineLength = computed(() =>
-  props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
+const maxPreformattedLineLength = computed(
+  () => props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
 )
 
-const isAprilFool = computed(() => isAprilFoolsRfc(props.rfcBucketHtmlDocument.rfc))
+const isAprilFool = computed(() =>
+  isAprilFoolsRfc(props.rfcBucketHtmlDocument.rfc)
+)
 </script>
 
 <style lang="postcss">
@@ -265,12 +275,12 @@ const isAprilFool = computed(() => isAprilFoolsRfc(props.rfcBucketHtmlDocument.r
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
      to reduce maintenance burden.
   */
-  @nested-import "../assets/css/upstream-xml2rfc.css"
+  @nested-import "../assets/css/upstream-xml2rfc.css";
 }
 
 html.dark .rfc-content-type-xml2rfc {
   /* Using postcss-nested-import scope these imported styles */
-  @nested-import "../assets/css/xml2rfc-darkmode-patches.css"
+  @nested-import "../assets/css/xml2rfc-darkmode-patches.css";
 }
 
 .rfc-content-type-plaintext {
@@ -289,7 +299,7 @@ html.dark .rfc-content-type-xml2rfc {
 
 html.dark .rfc-content-type-plaintext {
   /* Using postcss-nested-import to scope/sandbox these imported styles so style rules don't leak out to the rest of the page */
-  @nested-import "../assets/css/rfc-plaintext-darkmode-patches.css"
+  @nested-import "../assets/css/rfc-plaintext-darkmode-patches.css";
 }
 
 .rfc-content-padding-left {

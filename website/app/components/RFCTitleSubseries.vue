@@ -9,8 +9,11 @@ import type { RfcCommon } from '~/utilities/rfc-validators'
 type Props = {
   rfc: RfcCommon
   hasTrailingColon: boolean
+  hasUnderline: boolean
 }
 
 const props = defineProps<Props>()
-const subseriesVNode = computed(() => formatSubseriesAsVNode(props.rfc, props.hasTrailingColon))
+const subseriesVNode = computed(() =>
+  formatSubseriesAsVNode(props.rfc, props.hasTrailingColon, props.hasUnderline)
+)
 </script>

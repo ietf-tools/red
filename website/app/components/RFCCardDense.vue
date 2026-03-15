@@ -3,19 +3,22 @@
     :href="infoSeriesPathBuilder(`RFC${props.rfc.number}`)"
     :heading-level="props.headingLevel"
     has-cover-link
-    :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
-      'center'
+    :chevron-position="
+      props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
+        'center'
       : 'end'
-      "
+    "
     :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
-    :default-slot-class="props.showAbstract && props.rfc.abstract ?
-      'lg:w-1/2 xl:w-2/5 pr-4'
+    :default-slot-class="
+      props.showAbstract && props.rfc.abstract ?
+        'lg:w-1/2 xl:w-2/5 pr-4'
       : undefined
-      "
-    :aside-slot-class="props.showAbstract && props.rfc.abstract ?
-      'lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
+    "
+    :aside-slot-class="
+      props.showAbstract && props.rfc.abstract ?
+        'lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
       : undefined
-      "
+    "
     heading-class="text-gray-800 dark:text-gray-200"
   >
     <template #headingTitle>
@@ -26,6 +29,7 @@
       <RFCTitleSubseries
         :rfc="props.rfc"
         has-trailing-colon
+        :has-underline="false"
       />
       <span class="font-normal">{{ SPACE }}{{ props.rfc.title }}</span>
     </template>
@@ -58,5 +62,7 @@ const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 
 const responsiveModeStore = useResponsiveModeStore()
 
-const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
+const formattedTitle = computed(() =>
+  formatTitleAsVNode(`rfc${props.rfc.number}`, true)
+)
 </script>
