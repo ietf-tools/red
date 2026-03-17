@@ -62,8 +62,7 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } =
       const maybeRfcBucketDocument = await $fetch(
         `https://red.staging.rfc-editor.org${path}`,
         {
-          method: 'GET',
-          credentials: 'same-origin'
+          method: 'GET'
         }
       )
       if (typeof maybeRfcBucketDocument !== 'object') {

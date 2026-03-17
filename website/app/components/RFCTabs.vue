@@ -248,6 +248,10 @@
                 <template v-if="props.rfcBucketHtmlDocument.rfc.group?.acronym">
                   ({{ props.rfcBucketHtmlDocument.rfc.group.acronym }})
                 </template>
+                <Icon
+                  name="fluent:window-new-20-regular"
+                  class="text-lg align-middle ml-1"
+                />
               </Anchor>
             </dd>
           </template>
@@ -266,6 +270,11 @@
                 <template v-if="props.rfcBucketHtmlDocument.rfc.area?.acronym">
                   ({{ props.rfcBucketHtmlDocument.rfc.area.acronym }})
                 </template>
+
+                <Icon
+                  name="fluent:window-new-20-regular"
+                  class="text-lg align-middle ml-1"
+                />
               </Anchor>
             </dd>
           </template>
@@ -280,6 +289,10 @@
                 :class="ANCHOR_TAILWIND_STYLE"
               >
                 {{ props.rfcBucketHtmlDocument.rfc.stream.name }}
+                <Icon
+                  name="fluent:window-new-20-regular"
+                  class="text-lg align-middle ml-1"
+                />
               </Anchor>
             </template>
             <template v-else>
@@ -312,43 +325,63 @@
                 </template>
               </dt>
               <dd>
-                <a
+                <Anchor
                   v-if="identifier.type === 'doi'"
                   :href="`https://doi.org/${encodeURI(identifier.value)}`"
                   :class="ANCHOR_TAILWIND_STYLE"
                 >
                   {{ `https://doi.org/${identifier.value}` }}
-                </a>
+                  <Icon
+                    name="fluent:window-new-20-regular"
+                    class="text-lg align-middle ml-1"
+                  />
+                </Anchor>
                 <template v-else>
                   {{ identifier.value }}
                 </template>
               </dd>
             </template>
           </template>
-        </dl>
 
-        <template v-if="props.rfcBucketHtmlDocument.rfc.formats?.length > 0">
-          <Heading level="3" class="mt-5 mb-2"> Formats </Heading>
-          <ul class="text-sm flex flex-col gap-2">
-            <li
-              v-for="(formatItem, formatIndex) in props.rfcBucketHtmlDocument
-                .rfc.formats"
-              :key="formatIndex"
-            >
-              <a
-                :href="
-                  rfcFormatPathBuilder(
-                    `rfc${props.rfcBucketHtmlDocument.rfc.number}`,
-                    formatItem.format
-                  )
-                "
-                class="underline block px-2 -ml-2"
-              >
-                {{ formatItem.format }}
-              </a>
-            </li>
-          </ul>
-        </template>
+          <template v-if="props.rfcBucketHtmlDocument.rfc.formats?.length > 0">
+            <dt class="font-bold mt-2">Area</dt>
+            <dd>
+              <ul class="text-sm">
+                <li
+                  v-for="(formatItem, formatIndex) in props
+                    .rfcBucketHtmlDocument.rfc.formats"
+                  :key="formatIndex"
+                  class="inline"
+                >
+                  <a
+                    :href="
+                      // This needs to be <a> not <Anchor> because it's outside the Nuxt app but is on the same domain
+                      rfcFormatPathBuilder(
+                        `rfc${props.rfcBucketHtmlDocument.rfc.number}`,
+                        formatItem.format
+                      )
+                    "
+                    :class="ANCHOR_TAILWIND_STYLE"
+                  >
+                    {{ formatItem.format }}
+                  </a>
+                  <template
+                    v-if="
+                      formatIndex <
+                      props.rfcBucketHtmlDocument.rfc.formats.length - 1
+                    "
+                  >
+                    {{ COMMA }}
+                    {{ SPACE }}
+                  </template>
+                  <template v-else>
+                    {{ FULLSTOP }}
+                  </template>
+                </li>
+              </ul>
+            </dd>
+          </template>
+        </dl>
       </VerticalScrollable>
     </TabsContent>
     <TabsContent
@@ -400,7 +433,7 @@ import {
   TabsTrigger
 } from 'reka-ui'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
-import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
+import { COMMA, FULLSTOP, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   areaGroupUrlBuilder,
