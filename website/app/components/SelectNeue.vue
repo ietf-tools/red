@@ -38,5 +38,5 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const model = defineModel()
+const model = defineModel<string>()
 </script>
