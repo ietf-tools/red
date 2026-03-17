@@ -1,10 +1,17 @@
 <template>
   <span
-    :class="['inline-block bg-white dark:bg-black shadow-sm outline-1 rounded-xs outline-gray-400 hover:outline-black dark:hover:outline-gray-300 focus-within:ring-black focus-within:ring-offset-3 focus-within:ring-1', props.class]"
+    :class="[
+      'inline-block bg-white dark:bg-black shadow-sm outline-1 rounded-xs outline-gray-400 hover:outline-black dark:hover:outline-gray-300 focus-within:ring-black focus-within:ring-offset-3 focus-within:ring-1',
+      props.class
+    ]"
   >
     <select
       v-bind="$attrs"
-      :class="['focus:ring-none focus:outline-none py-2 mx-2', props.selectClass]"
+      v-model="model"
+      :class="[
+        'focus:ring-none focus:outline-none py-2 mx-2',
+        props.selectClass
+      ]"
     >
       <slot />
     </select>
@@ -30,4 +37,6 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+
+const model = defineModel()
 </script>

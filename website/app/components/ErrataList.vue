@@ -4,7 +4,7 @@
       <label class="text-sm">
         <span class="inline-block font-bold mb-2">Show only</span><br />
         <SelectNeue
-          :model-value="selectedStatusType"
+          v-model="selectedStatusType"
           @change="
             (event: Event) => {
               const select = event.target
@@ -30,7 +30,7 @@
         </SelectNeue>
       </label>
       <ul
-        v-if="filteredErrataList && filteredErrataList.length > 0"
+        v-if="filteredErrataList.length > 0"
         class="mt-3 mr-2 flex flex-col gap-2"
       >
         <li
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { uniqBy, countBy } from 'es-toolkit'
+import { countBy } from 'es-toolkit'
 import { isSelectElement } from '~/utilities/dom'
 import {
   ErrataStatusSchema,
@@ -63,17 +63,19 @@ type Props = {
 }
 const props = defineProps<Props>()
 
-const allStatusTypes = computed(() =>
-  ErrataStatusSchema._def.options.map((val) => val.value)
-)
+const allStatusTypes = computed(() => {
+  const statusTypes = ErrataStatusSchema._def.options.map((val) => val.value)
 
-const statusTypes = computed(() =>
-  props.errataList ?
-    uniqBy(props.errataList, (errataItem) => errataItem.errata_status_code).map(
-      (errataItem) => errataItem.errata_status_code
+  // because we're accessing Zod apis that could change we'll add some safety checks to the value
+  if (!Array.isArray(statusTypes) || statusTypes.length < 3) {
+    console.warn(
+      `Unable to extract all errata status types from Zod schema. Was: `,
+      statusTypes,
+      ErrataStatusSchema
     )
-  : []
-)
+  }
+  return statusTypes
+})
 
 const statusCounts = computed<Record<ErrataStatus, number>>(() => {
   return countBy(
@@ -82,12 +84,17 @@ const statusCounts = computed<Record<ErrataStatus, number>>(() => {
   )
 })
 
-const selectedStatusType = ref<ErrataStatus | undefined>(
-  statusTypes.value?.length > 0 ? statusTypes.value[0] : undefined
+const firstStatusWithACount = Object.entries(statusCounts.value).find(
+  ([_key, count]) => count > 0
+)
+
+const selectedStatusType = ref(
+  firstStatusWithACount ?
+    (firstStatusWithACount[0] as ErrataStatus)
+  : (allStatusTypes.value[0] as ErrataStatus)
 )
 
 const filteredErrataList = computed<ErrataItem[]>(() => {
-  console.log('recoputed', selectedStatusType.value)
   return (
     props.errataList?.filter(
       (errataItem) => errataItem.errata_status_code === selectedStatusType.value
