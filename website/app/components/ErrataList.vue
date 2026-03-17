@@ -2,7 +2,7 @@
   <div v-if="props.errataList && props.errataList.length > 0">
     <form class="pl-1">
       <label class="text-sm">
-        <span class="font-bold">Show only</span><br />
+        <span class="inline-block font-bold mb-2">Show only</span><br />
         <SelectNeue
           :model-value="selectedStatusType"
           @change="
@@ -31,9 +31,12 @@
       </label>
       <ul
         v-if="filteredErrataList && filteredErrataList.length > 0"
-        class="mt-3 mr-2"
+        class="mt-3 mr-2 flex flex-col gap-2"
       >
-        <li v-for="errataItem in filteredErrataList">
+        <li
+          v-for="errataItem in filteredErrataList"
+          :key="errataItem.errata_id"
+        >
           <ErrataListItem :errata-item="errataItem" />
         </li>
       </ul>

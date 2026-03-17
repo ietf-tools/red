@@ -13,11 +13,7 @@
     </template>
     <template v-if="rfcBucketHtmlDocumentError">
       <div class="container mx-auto">
-        <Alert
-          level="1"
-          variant="warning"
-          heading="Error"
-        >
+        <Alert level="1" variant="warning" heading="Error">
           {{ rfcBucketHtmlDocumentError }}
         </Alert>
       </div>
@@ -55,26 +51,48 @@ const props = defineProps<Props>()
 
 const sanitisedId = computed(() => `${props.rfcId.type}${props.rfcId.number}`)
 
-const asyncRfcBucketHtmlDocumentKey = computed(() => `info-buckethtmldocument-${sanitisedId.value}`)
-const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
-  asyncRfcBucketHtmlDocumentKey,
-  async () => {
-    const url = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
-    const maybeRfcBucketDocument = await $fetch(url, {
-      method: 'GET',
-      credentials: 'same-origin'
-    })
-    if (typeof maybeRfcBucketDocument !== 'object') {
-      console.log("Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON", typeof maybeRfcBucketDocument, maybeRfcBucketDocument)
-      throw Error(`Unable to load RFC. See console for more.`)
+const asyncRfcBucketHtmlDocumentKey = computed(
+  () => `info-buckethtmldocument-${sanitisedId.value}`
+)
+const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } =
+  await useAsyncData(
+    asyncRfcBucketHtmlDocumentKey,
+    async () => {
+      const path = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
+      const maybeRfcBucketDocument = await $fetch(
+        `https://red.staging.rfc-editor.org${path}`,
+        {
+          method: 'GET',
+          credentials: 'same-origin'
+        }
+      )
+      if (typeof maybeRfcBucketDocument !== 'object') {
+        console.log(
+          "Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON",
+          typeof maybeRfcBucketDocument,
+          maybeRfcBucketDocument
+        )
+        throw Error(`Unable to load RFC. See console for more.`)
+      }
+      const { data, error } = RfcBucketHtmlDocumentSchema.safeParse(
+        maybeRfcBucketDocument
+      )
+      if (error) {
+        console.log(
+          'Failed to validate RFC HTML JSON',
+          error,
+          JSON.stringify(maybeRfcBucketDocument, null, 2)
+        )
+        throw Error(
+          `Unable to load RFC (RFC data failed validation). See console for more.`
+        )
+      }
+      return data
+    },
+    {
+      server: true // we want server fetching so that we can generate server HTTP 404s if necessary
     }
-    const { data, error } = RfcBucketHtmlDocumentSchema.safeParse(maybeRfcBucketDocument)
-    if (error) {
-      console.log('Failed to validate RFC HTML JSON', error, JSON.stringify(maybeRfcBucketDocument, null, 2))
-      throw Error(`Unable to load RFC (RFC data failed validation). See console for more.`)
-    }
-    return data
-  })
+  )
 
 if (rfcBucketHtmlDocumentError.value) {
   console.error(rfcBucketHtmlDocumentError.value)
@@ -85,14 +103,14 @@ if (rfcBucketHtmlDocumentError.value) {
   })
 }
 
-const hasToc = computed(() => Boolean(
-  rfcBucketHtmlDocument.value?.tableOfContents?.sections &&
-  rfcBucketHtmlDocument.value?.tableOfContents?.sections.length > 0
-))
-
-const selectedTab = ref(
-  hasToc.value ? 0 : 1
+const hasToc = computed(() =>
+  Boolean(
+    rfcBucketHtmlDocument.value?.tableOfContents?.sections &&
+    rfcBucketHtmlDocument.value?.tableOfContents?.sections.length > 0
+  )
 )
+
+const selectedTab = ref(hasToc.value ? 0 : 1)
 
 function changeTab(index: number) {
   selectedTab.value = index
@@ -124,18 +142,22 @@ function gotoErrata() {
   })
 }
 
-const breadcrumbItems: BreadcrumbItem[] = [
-  { url: '/', label: 'Home' },
-]
+const breadcrumbItems: BreadcrumbItem[] = [{ url: '/', label: 'Home' }]
 
 const isModalOpen = ref(false)
 
 const canonicalUrl = infoSeriesPathBuilder(sanitisedId.value)
 
 // see https://github.com/ietf-tools/red/issues/196
-const pageTitle = rfcBucketHtmlDocument.value ? `RFC ${rfcBucketHtmlDocument.value.rfc.number}: ${rfcBucketHtmlDocument.value.rfc.title}` : ''
+const pageTitle =
+  rfcBucketHtmlDocument.value ?
+    `RFC ${rfcBucketHtmlDocument.value.rfc.number}: ${rfcBucketHtmlDocument.value.rfc.title}`
+  : ''
 
-const resourceTimestampDatetime = rfcBucketHtmlDocument.value ? DateTime.fromISO(rfcBucketHtmlDocument.value.timestampIso) : undefined
+const resourceTimestampDatetime =
+  rfcBucketHtmlDocument.value ?
+    DateTime.fromISO(rfcBucketHtmlDocument.value.timestampIso)
+  : undefined
 
 useRfcEditorHead({
   title: pageTitle,
@@ -144,8 +166,16 @@ useRfcEditorHead({
   modifiedDateTime:
     rfcBucketHtmlDocument.value?.rfc.published ?
       DateTime.fromISO(rfcBucketHtmlDocument.value?.rfc.published)
-      : undefined,
+    : undefined,
   contentType: 'article',
-  resourceTimestamps: resourceTimestampDatetime ? [{ name: `info-${sanitisedId.value}`, timestamp: resourceTimestampDatetime }] : undefined
+  resourceTimestamps:
+    resourceTimestampDatetime ?
+      [
+        {
+          name: `info-${sanitisedId.value}`,
+          timestamp: resourceTimestampDatetime
+        }
+      ]
+    : undefined
 })
 </script>

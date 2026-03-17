@@ -31,3 +31,15 @@ export const parseHeadingLevel = (headingLevel: string): HeadingLevel => {
   }
   throw Error(`Unable to parse heading level "${headingLevel}"`)
 }
+
+export const preformattedTextToHtml = (
+  preText: string
+): ReturnType<typeof h> => {
+  return h(
+    'span',
+    { class: 'font-mono' },
+    preText.split('\n').flatMap((line) => {
+      return [line, h('br')]
+    })
+  )
+}

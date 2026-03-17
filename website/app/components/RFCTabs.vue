@@ -384,7 +384,7 @@
       ]"
     >
       <VerticalScrollable class="pl-1">
-        <Heading level="3" style-level="4" class="mt-2 mb-1">
+        <Heading level="3" style-level="4" class="mt-3 mb-1">
           About Errata
         </Heading>
         <p class="text-sm leading-[1.5]">
@@ -494,11 +494,6 @@ type Props = {
 const props = defineProps<Props>()
 
 const selectedTab = defineModel<number>()
-
-function changeTab(index: number) {
-  console.log('Change tab to ', index)
-  selectedTab.value = index
-}
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return

@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col">
     <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
-    <RFCDocumentMobileInfoButton @click="isModalOpen = true"
-      >Info</RFCDocumentMobileInfoButton
-    >
+    <RFCDocumentMobileInfoButton @click="isModalOpen = true">
+      Info
+    </RFCDocumentMobileInfoButton>
   </div>
 
   <Heading
