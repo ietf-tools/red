@@ -214,17 +214,16 @@ export const rfcCitePathBuilder = (
   }
 }
 
-export const rfcFormatPathBuilder = (rfcId: string, format: 'html') => {
+type FormatCommon = RfcCommon['formats'][number]['format']
+
+export const rfcFormatPathBuilder = (rfcId: string, format: FormatCommon) => {
   const seriesId = parseSeriesId(rfcId)
 
   if (!seriesId) {
     throw Error(`Unable to parse ${JSON.stringify(rfcId)}.`)
   }
 
-  switch (format) {
-    case 'html':
-      return `/rfc/${seriesId.type}${seriesId.number}.html` as const
-  }
+  return `/rfc/${seriesId.type}${seriesId.number}.${format}` as const
 }
 
 export const wikiDokuPathBuilder = (wikiPath: string) => {

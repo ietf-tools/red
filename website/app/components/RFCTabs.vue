@@ -327,51 +327,28 @@
           </template>
         </dl>
 
-        <!-- <Heading level="3" class="mt-5 mb-2">Cite this RFC</Heading>
-          <ul class="text-sm flex flex-col gap-2">
-            <li v-for="(citation, citationIndex) in props.rfc.citations" :key="citationIndex">
-              <Anchor :href="citation.url" class="underline block px-2 -ml-2">
-                {{ citation.title }}
-              </Anchor>
-            </li>
-          </ul> -->
-
         <template v-if="props.rfcBucketHtmlDocument.rfc.formats?.length > 0">
           <Heading level="3" class="mt-5 mb-2"> Formats </Heading>
           <ul class="text-sm flex flex-col gap-2">
-            <li class="italic">TODO</li>
-            <!-- <li v-for="(format, formatIndex) in props.rfcBucketHtmlDocument.rfc.formats" :key="formatIndex">
-            <Anchor :href="" class="underline block px-2 -ml-2">
-              {{ format }}
-            </Anchor>
-          </li> -->
+            <li
+              v-for="(formatItem, formatIndex) in props.rfcBucketHtmlDocument
+                .rfc.formats"
+              :key="formatIndex"
+            >
+              <a
+                :href="
+                  rfcFormatPathBuilder(
+                    `rfc${props.rfcBucketHtmlDocument.rfc.number}`,
+                    formatItem.format
+                  )
+                "
+                class="underline block px-2 -ml-2"
+              >
+                {{ formatItem.format }}
+              </a>
+            </li>
           </ul>
         </template>
-
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
       </VerticalScrollable>
     </TabsContent>
     <TabsContent
@@ -408,56 +385,6 @@
         </p>
 
         <ErrataList :errata-list="props.rfcBucketHtmlDocument.errataList" />
-
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
       </VerticalScrollable>
     </TabsContent>
   </TabsRoot>
@@ -479,6 +406,7 @@ import {
   areaGroupUrlBuilder,
   datatrackerAuthorUrlBuilder,
   RFC_EDITOR_ERRATA_SUBSITE_URL,
+  rfcFormatPathBuilder,
   streamUrlBuilder,
   workingGroupUrlBuilder
 } from '~/utilities/url'
