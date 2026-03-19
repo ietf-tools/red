@@ -7,27 +7,30 @@
     >
       <span class="font-bold">
         <GraphicsDiamond class="align-middle" color="yellow" size="10px" />
-        {{ label }}
+        {{ props.errataItemForTab.label }}
       </span>
     </summary>
 
     <div class="flex flex-col gap-2 px-2 pt-2 pb-4 mb-4 text-sm">
-      <p v-if="hashLink">
-        <a :href="hashLink" :class="ANCHOR_TAILWIND_STYLE">
-          Scroll to {{ label }}
+      <p v-if="props.errataItemForTab.domId">
+        <a
+          :href="`#${props.errataItemForTab.domId}`"
+          :class="ANCHOR_TAILWIND_STYLE"
+        >
+          Scroll to {{ props.errataItemForTab.label }}
         </a>
       </p>
       <p>
         <span class="font-bold">Status:</span>
-        {{ props.errataItem.errata_status_code }}
+        {{ props.errataItemForTab.errata_status_code }}
       </p>
       <p>
         <span class="font-bold">Date Reported:</span>
-        {{ props.errataItem.submit_date }}
+        {{ props.errataItemForTab.submit_date }}
       </p>
-      <p v-if="props.errataItem.submitter_name">
+      <p v-if="props.errataItemForTab.submitter_name">
         <span class="font-bold">Reported By:</span>
-        {{ props.errataItem.submitter_name }}
+        {{ props.errataItemForTab.submitter_name }}
       </p>
       <div v-if="orig_text_nodes">
         <Heading level="4" style-level="6">Original text:</Heading>
@@ -48,82 +51,31 @@
 <script setup lang="ts">
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { preformattedTextToHtml } from '~/utilities/html'
-import type { ErrataItem } from '~/utilities/rfc-validators'
+import type { ErrataItemForTab } from '~/utilities/errata'
 
 type Props = {
-  errataItem: ErrataItem
-  errataIndex: number
+  errataItemForTab: ErrataItemForTab
 }
 
 const props = defineProps<Props>()
 
 const orig_text_nodes = computed(() =>
-  props.errataItem.orig_text ?
-    preformattedTextToHtml(props.errataItem.orig_text, true)
+  props.errataItemForTab.orig_text ?
+    preformattedTextToHtml(props.errataItemForTab.orig_text, true)
   : undefined
 )
 
 const correct_text_nodes = computed(() =>
-  props.errataItem.correct_text ?
-    preformattedTextToHtml(props.errataItem.correct_text, true)
+  props.errataItemForTab.correct_text ?
+    preformattedTextToHtml(props.errataItemForTab.correct_text, true)
   : undefined
 )
 
 const notes_nodes = computed(() =>
-  props.errataItem.notes ?
-    preformattedTextToHtml(props.errataItem.notes, true)
+  props.errataItemForTab.notes ?
+    preformattedTextToHtml(props.errataItemForTab.notes, true)
   : undefined
 )
-
-const normalizedSection = computed(() => {
-  const { section } = props.errataItem
-  if (!section) {
-    return null
-  }
-  // rfc3261 has errataItem.section value of 'In Section 25.1: '
-  return section
-    .trim()
-    .replace(/^in section/i, '')
-    .replace(/^section/i, '')
-    .replace(/:$/, '')
-    .trim()
-})
-
-const label = computed(() => {
-  const { section } = props.errataItem
-  if (!section || normalizedSection.value === null) {
-    return `Errata ${props.errataIndex + 1}`
-  }
-  // although the normalized section removed any unnecessary 'section'-like prefix
-  // there can be values like 'Table 2' (see rfc3261) that we should use as-is.
-  // We'll sniff these by looking for alphabet chars that remain in the string.
-  // The section links won't have these as the string will look like "2" or "3.2.1"
-  // and not have alphabet chars.
-  if (normalizedSection.value.match(/[a-z]/i)) {
-    return section
-  }
-  return `Section ${normalizedSection.value}`
-})
-
-const hashLink = ref<string | undefined>()
-
-onMounted(() => {
-  if (!normalizedSection.value) {
-    return
-  }
-  const maybeDomId = `section-${normalizedSection.value.replace(/\s/g, '')}`
-  try {
-    // it's possible that maybeDomId is an invalid DOM id so this might throw
-    const target = document.getElementById(maybeDomId)
-    if (!target) {
-      console.warn("Couldn't find errata section link of ", maybeDomId)
-      return
-    }
-    hashLink.value = `#${maybeDomId}`
-  } catch (e) {
-    console.warn('Unable to getElementById', maybeDomId, e)
-  }
-})
 </script>
 
 <style>

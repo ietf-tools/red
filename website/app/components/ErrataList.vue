@@ -30,17 +30,14 @@
         </SelectNeue>
       </label>
       <ul
-        v-if="filteredErrataList.length > 0"
+        v-if="filteredErrataList && filteredErrataList.length > 0"
         class="mt-3 mr-2 flex flex-col gap-2"
       >
         <li
-          v-for="(errataItem, errataIndex) in filteredErrataList"
-          :key="errataItem.errata_id"
+          v-for="errataItemForTab in filteredErrataList"
+          :key="errataItemForTab.errata_id"
         >
-          <ErrataListItem
-            :errata-item="errataItem"
-            :errata-index="errataIndex"
-          />
+          <ErrataListItem :errata-item-for-tab="errataItemForTab" />
         </li>
       </ul>
       <p v-else class="text-sm italic mt-3">
@@ -55,10 +52,14 @@
 import { countBy } from 'es-toolkit'
 import { isSelectElement } from '~/utilities/dom'
 import {
+  errataItemToErrataItemForTab,
+  sortSectionIds,
+  type ErrataItemForTab
+} from '~/utilities/errata'
+import {
   ErrataStatusSchema,
   type ErrataStatus,
-  type ErrataList,
-  type ErrataItem
+  type ErrataList
 } from '~/utilities/rfc-validators'
 
 type Props = {
@@ -97,11 +98,125 @@ const selectedStatusType = ref(
   : (allStatusTypes.value[0] as ErrataStatus)
 )
 
-const filteredErrataList = computed<ErrataItem[]>(() => {
-  return (
-    props.errataList?.filter(
-      (errataItem) => errataItem.errata_status_code === selectedStatusType.value
-    ) ?? []
+const errataItemsForTab = ref<ErrataItemForTab[] | undefined>(
+  props.errataList?.map(errataItemToErrataItemForTab)
+)
+
+const orderedErrataItemsForTab = ref(errataItemsForTab.value)
+
+const filteredErrataList = computed(() => {
+  return orderedErrataItemsForTab.value?.filter(
+    (errataItem) => errataItem.errata_status_code === selectedStatusType.value
   )
+})
+
+onMounted(() => {
+  if (!errataItemsForTab.value) {
+    return
+  }
+
+  // mutate errataItemForTab by removing domIds that have no target in the DOM
+  orderedErrataItemsForTab.value = errataItemsForTab.value
+    .map((errataItemForTab) => {
+      if (!errataItemForTab.domId) {
+        return errataItemForTab
+      }
+
+      try {
+        // because we derive domId from `section` it's quite possible that domId
+        // has invalid syntax for a DOM id (eg it might have whitespace), and
+        // getElementById() might throw
+        const target = document.getElementById(errataItemForTab.domId)
+        if (target) {
+          // then it's a valid domId with a target so keep the domId
+          // and add the target
+          return {
+            ...errataItemForTab,
+            domTarget: target
+          }
+        } else {
+          console.warn(
+            "Couldn't find errata domId of ",
+            errataItemForTab.domId,
+            '. This is expected for some `section` values and this error can be ignored. Original `section` was ',
+            errataItemForTab.section
+          )
+        }
+      } catch (e) {
+        console.warn(
+          `Unable to getElementById(${errataItemForTab.domId}). This is probably an invalid DOM id.`,
+          'This is expected for some `section` values and can be ignored. Original `section` was ',
+          errataItemForTab.section,
+          e
+        )
+      }
+
+      // then it's not valid DOM Id syntax or the target wasn't found,
+      // so remove the domId
+      return {
+        ...errataItemForTab,
+        domId: undefined
+      }
+    })
+    .sort((a, b) => {
+      if (a.domId && b.domId) {
+        console.log('NEW Sorting', a.domId, b.domId)
+        if (!a.domTarget || !b.domTarget) {
+          console.error(
+            'Internal error - any domId should have an associated domTarget by now'
+          )
+        } else {
+          console.log('Sorting by DOM')
+          // Because this JS runs in the browser we have visibility of the RFC in the DOM
+          // so attempt to order by the DOM order so that (eg) Section 1 can be followed
+          // by Table 1 and then Section 2
+          if (
+            // Although TS insists that compareDocumentPosition always exists
+            // older browsers won't support it so we'll check first
+            // maybe this can be removed in the future but it seems harmless
+            a.domTarget.compareDocumentPosition
+          ) {
+            const order = a.domTarget.compareDocumentPosition(b.domTarget)
+            console.log(' - Sorting by DOM returned ', order)
+            if (
+              order === Node.DOCUMENT_POSITION_PRECEDING ||
+              order === Node.DOCUMENT_POSITION_CONTAINS
+            ) {
+              return 1
+            } else if (
+              order === Node.DOCUMENT_POSITION_FOLLOWING ||
+              order === Node.DOCUMENT_POSITION_CONTAINED_BY
+            ) {
+              return -1
+            } else if (order === 0) {
+              return 0
+            }
+          }
+        }
+
+        if (a.domId.startsWith('section') && b.domId.startsWith('section')) {
+          const domIdSort = sortSectionIds(a.domId, b.domId)
+          console.log('Sorting by domId', domIdSort)
+        }
+
+        if (a.domId.startsWith('section')) {
+          return -1
+        }
+
+        if (b.domId.startsWith('section')) {
+          return 1
+        }
+      }
+
+      if (a.domId && !b.domId) {
+        return -1
+      }
+
+      if (!a.domId && b.domId) {
+        return 1
+      }
+
+      return 0
+    })
 })
 </script>
