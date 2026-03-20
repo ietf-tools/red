@@ -44,6 +44,19 @@
         <Heading level="4" style-level="6">Notes:</Heading>
         <component :is="notes_nodes" />
       </div>
+      <p>
+        <Anchor
+          :href="errataUrlBuilder(props.errataItemForTab.errata_id)"
+          :class="ANCHOR_TAILWIND_STYLE"
+          :aria-label="`View errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`"
+        >
+          View this report
+          <Icon
+            name="fluent:window-new-20-regular"
+            class="text-lg align-middle ml-1"
+          />
+        </Anchor>
+      </p>
     </div>
   </details>
 </template>
@@ -52,6 +65,7 @@
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { preformattedTextToHtml } from '~/utilities/html'
 import type { ErrataItemForTab } from '~/utilities/errata'
+import { errataUrlBuilder } from '~/utilities/url'
 
 type Props = {
   errataItemForTab: ErrataItemForTab

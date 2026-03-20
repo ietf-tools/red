@@ -53,7 +53,7 @@ import { countBy } from 'es-toolkit'
 import { isSelectElement } from '~/utilities/dom'
 import {
   errataItemToErrataItemForTab,
-  sortSectionIds,
+  sortErrataItemForTab,
   type ErrataItemForTab
 } from '~/utilities/errata'
 import {
@@ -115,7 +115,6 @@ onMounted(() => {
     return
   }
 
-  // mutate errataItemForTab by removing domIds that have no target in the DOM
   orderedErrataItemsForTab.value = errataItemsForTab.value
     .map((errataItemForTab) => {
       if (!errataItemForTab.domId) {
@@ -124,12 +123,12 @@ onMounted(() => {
 
       try {
         // because we derive domId from `section` it's quite possible that domId
-        // has invalid syntax for a DOM id (eg it might have whitespace), and
+        // has invalid syntax for a DOM id (it might have whitespace), and
         // getElementById() might throw
         const target = document.getElementById(errataItemForTab.domId)
         if (target) {
           // then it's a valid domId with a target so keep the domId
-          // and add the target
+          // and add the element
           return {
             ...errataItemForTab,
             domTarget: target
@@ -158,65 +157,6 @@ onMounted(() => {
         domId: undefined
       }
     })
-    .sort((a, b) => {
-      if (a.domId && b.domId) {
-        console.log('NEW Sorting', a.domId, b.domId)
-        if (!a.domTarget || !b.domTarget) {
-          console.error(
-            'Internal error - any domId should have an associated domTarget by now'
-          )
-        } else {
-          console.log('Sorting by DOM')
-          // Because this JS runs in the browser we have visibility of the RFC in the DOM
-          // so attempt to order by the DOM order so that (eg) Section 1 can be followed
-          // by Table 1 and then Section 2
-          if (
-            // Although TS insists that compareDocumentPosition always exists
-            // older browsers won't support it so we'll check first
-            // maybe this can be removed in the future but it seems harmless
-            a.domTarget.compareDocumentPosition
-          ) {
-            const order = a.domTarget.compareDocumentPosition(b.domTarget)
-            console.log(' - Sorting by DOM returned ', order)
-            if (
-              order === Node.DOCUMENT_POSITION_PRECEDING ||
-              order === Node.DOCUMENT_POSITION_CONTAINS
-            ) {
-              return 1
-            } else if (
-              order === Node.DOCUMENT_POSITION_FOLLOWING ||
-              order === Node.DOCUMENT_POSITION_CONTAINED_BY
-            ) {
-              return -1
-            } else if (order === 0) {
-              return 0
-            }
-          }
-        }
-
-        if (a.domId.startsWith('section') && b.domId.startsWith('section')) {
-          const domIdSort = sortSectionIds(a.domId, b.domId)
-          console.log('Sorting by domId', domIdSort)
-        }
-
-        if (a.domId.startsWith('section')) {
-          return -1
-        }
-
-        if (b.domId.startsWith('section')) {
-          return 1
-        }
-      }
-
-      if (a.domId && !b.domId) {
-        return -1
-      }
-
-      if (!a.domId && b.domId) {
-        return 1
-      }
-
-      return 0
-    })
+    .sort(sortErrataItemForTab)
 })
 </script>

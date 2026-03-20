@@ -433,7 +433,7 @@
         </p>
         <p class="border-b-1 border-gray-200 py-6 mb-4">
           <Anchor
-            :href="RFC_EDITOR_ERRATA_SUBSITE_URL"
+            :href="ERRATA_URL_ORIGIN"
             class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold"
           >
             Report a new erratum
@@ -465,7 +465,7 @@ import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   areaGroupUrlBuilder,
   datatrackerAuthorUrlBuilder,
-  RFC_EDITOR_ERRATA_SUBSITE_URL,
+  ERRATA_URL_ORIGIN,
   rfcFormatPathBuilder,
   streamUrlBuilder,
   workingGroupUrlBuilder

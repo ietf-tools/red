@@ -50,13 +50,14 @@ export const DATATRACKER_URL_ORIGIN = 'https://datatracker.ietf.org'
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'
 export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'
+export const ERRATA_URL_ORIGIN = 'https://errata.rfc-editor.org'
 export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
 export const MATERIALS_URL_ORIGIN = 'https://materials.rfc-editor.org'
 export const IAD_URL_ORIGIN = 'https://iad.rfc-editor.org'
 export const DASHBOARD_URL_ORIGIN = 'https://dashboard.rfc-editor.org'
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN =
   'https://authors.ietf.org'
-export const RFC_EDITOR_ERRATA_SUBSITE_URL = 'https://errata.rfc-editor.org/'
+
 export const RFC_EDITOR_ERRATA_SEARCH_URL =
   'https://errata.rfc-editor.org/search/'
 export const IETF_PRIVACY_STATEMENT_URL =
@@ -393,6 +394,10 @@ export const workingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
   if (!workingGroup) return undefined
   // See https://github.com/ietf-tools/red/issues/179
   return `${DATATRACKER_URL_ORIGIN}/wg/${workingGroup.acronym}/about/` as const
+}
+
+export const errataUrlBuilder = (errataId: string) => {
+  return `${ERRATA_URL_ORIGIN}/${errataId}/` as const
 }
 
 export const areaGroupUrlBuilder = (area: RfcCommon['area']) => {
