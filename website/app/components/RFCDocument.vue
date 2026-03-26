@@ -43,7 +43,7 @@ import {
   rfcFormatPathBuilder,
   usePublicSiteUrlOrigin
 } from '~/utilities/url'
-import { useRfcEditorHead } from '~/utilities/head'
+import { rfcCommonToGoogleScholar, useRfcEditorHead } from '~/utilities/head'
 import type { SeriesId } from '~/utilities/rfc'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 
@@ -178,6 +178,7 @@ useRfcEditorHead({
           timestamp: resourceTimestampDatetime
         }
       ]
-      : undefined
+      : undefined,
+  googleScholarMetadata: rfcBucketHtmlDocument.value ? rfcCommonToGoogleScholar(rfcBucketHtmlDocument.value.rfc) : undefined
 })
 </script>

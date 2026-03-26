@@ -54,15 +54,15 @@ export const assertUrlOrigin = <FallbackConst extends string>(runtimeConfig: unk
 // so don't have a trailing slash there's no path
 export const usePublicSiteUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
-  return assertUrlOrigin(runtimeConfig.public.siteBase, 'siteBase', 'https://datatracker.ietf.org')
+  return assertUrlOrigin(runtimeConfig.public.siteBase, 'siteBase', 'https://www.rfc-editor.org')
 }
 export const useErrataUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
-  return assertUrlOrigin(runtimeConfig.public.errataBase, 'errataBase', 'https://www.rfc-editor.org')
+  return assertUrlOrigin(runtimeConfig.public.errataBase, 'errataBase', 'https://errata.rfc-editor.org')
 }
 export const useQueueUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
-  return assertUrlOrigin(runtimeConfig.public.queueBase, 'queueBase', 'https://errata.rfc-editor.org')
+  return assertUrlOrigin(runtimeConfig.public.queueBase, 'queueBase', 'https://queue.rfc-editor.org')
 }
 export const useDatatrackerUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
@@ -88,6 +88,12 @@ export const useMaterialsPathBuilder = (materialsPath: string) => {
 }
 export const useIadReportsPathBuilder = (IADPath: string) => {
   return `${useIadUrlOrigin()}${IADPath}` as const
+}
+/**
+ * this assumes that a PDF exists. It doesn't check in advance.
+ */
+export const useRfcPdfPathBuilder = (rfcNumber: number) => {
+  return `${usePublicSiteUrlOrigin()}/rfc/rfc${rfcNumber}.pdf` as const
 }
 
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'

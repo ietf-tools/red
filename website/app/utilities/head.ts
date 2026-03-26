@@ -1,11 +1,12 @@
-import type { DateTime } from 'luxon'
+import { DateTime } from 'luxon'
 import { useHead } from 'nuxt/app'
-import { linkPreviewImageUrlBuilder, faviconPathBuilder } from './url'
+import { linkPreviewImageUrlBuilder, faviconPathBuilder, useRfcPdfPathBuilder } from './url'
 import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import {
   OPENGRAPH_DIMENSIONS,
   TWITTER_DIMENSIONS
 } from '#shared/utils/meta-preview-images'
+import type { RfcCommon } from './rfc-validators'
 
 const IMAGE_PREVIEW_ALT_TEXT = 'RFC-Editor: Official home of RFCs'
 
@@ -31,6 +32,7 @@ type UseRfcEditorProps = {
   publishedDateTime?: DateTime
   keywords?: string[]
   resourceTimestamps?: ResourceTimestamp[]
+  googleScholarMetadata?: GoogleScholarMetadata
 }
 
 export const useRfcEditorHead = (props: UseRfcEditorProps) => {
@@ -43,7 +45,8 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
       ...buildGenericMetaTags(newProps),
       ...buildOpenGraphMetaTags(newProps),
       ...buildTwitterMetaTags(newProps),
-      ...buildResourceTimestamps(newProps)
+      ...buildResourceTimestamps(newProps),
+      ...buildGoogleScholarMetaTags(newProps)
     ],
     link: [
       { rel: 'canonical', href: props.canonicalUrl },
@@ -217,9 +220,11 @@ const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
   ]
 
   if (props.authors) {
-    metaTags.push({
-      property: 'author',
-      content: props.authors.join(', ')
+    props.authors.forEach(author => {
+      metaTags.push({
+        property: 'author',
+        content: author
+      })
     })
   }
 
@@ -232,9 +237,11 @@ const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
 
   // RFCs can have keywords. It's unclear who the consumers of this meta tag would be as keywords is mostly ignored these days, but the previous site had it so we will too
   if (props.keywords) {
-    metaTags.push({
-      property: 'keywords',
-      content: props.keywords.join(', ')
+    props.keywords.forEach(keyword => {
+      metaTags.push({
+        property: 'keyword',
+        content: keyword
+      })
     })
   }
 
@@ -279,4 +286,106 @@ const buildFaviconLinks = (): LinkTag[] => {
       href: faviconPathBuilder(widthPx, heightPx)
     })
   )
+}
+
+const buildGoogleScholarMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
+  const { googleScholarMetadata } = props
+
+  if (!googleScholarMetadata) {
+    return []
+  }
+
+  const metaTags: MetaTag[] = []
+
+  googleScholarMetadata.citation_author.forEach(author => {
+    metaTags.push({
+      property: 'citation_author',
+      content: author
+    })
+  })
+
+  if (googleScholarMetadata.citation_doi) {
+    metaTags.push({
+      property: 'citation_doi',
+      content: googleScholarMetadata.citation_doi
+    })
+  }
+
+  if (googleScholarMetadata.citation_issn) {
+    metaTags.push({
+      property: 'citation_issn',
+      content: googleScholarMetadata.citation_issn
+    })
+  }
+
+  if (googleScholarMetadata.citation_pdf_url) {
+    metaTags.push({
+      property: 'citation_pdf_url',
+      content: googleScholarMetadata.citation_pdf_url
+    })
+  }
+
+  if (googleScholarMetadata.citation_publication_date) {
+    metaTags.push({
+      property: 'citation_publication_date',
+      content: googleScholarMetadata.citation_publication_date
+    })
+  }
+
+  metaTags.push({
+    property: 'citation_technical_report_number',
+    content: googleScholarMetadata.citation_technical_report_number
+  })
+
+  metaTags.push({
+    property: 'citation_title',
+    content: googleScholarMetadata.citation_title
+  })
+
+  return metaTags
+}
+
+/**
+ * Google Scholar metadata
+ *
+ * https://scholar.google.com/intl/en-us/scholar/inclusion.html#indexing
+ *
+ */
+type GoogleScholarMetadata = {
+  // See also https://github.com/ietf-tools/xml2rfc/issues/757
+  citation_author: string[] // eg M. Kucherawy
+  citation_publication_date?: string // eg "September, 2011"
+  citation_title: string // eg "DomainKeys Identified Mail (DKIM) Signatures"
+  citation_doi?: string // eg "10.17487/RFC6376"
+  citation_issn?: string // eg "2070-1721"
+  citation_technical_report_number: `rfc${number}` // eg "rfc6376"
+  citation_pdf_url?: string // eg "https://www.rfc-editor.org/rfc/pdfrfc/rfc6376.txt.pdf"
+}
+
+export const rfcCommonToGoogleScholar = (rfc: RfcCommon): GoogleScholarMetadata => {
+  const citation_author = rfc.authors.map(author => author.titlepage_name).filter((name) => {
+    return typeof name === 'string'
+  })
+
+  const citation_publication_date = rfc.published ? DateTime.fromISO(rfc.published).toFormat('yyyy/MM/dd') : undefined
+
+  const citation_title = rfc.title
+
+  const identifierDoi = rfc.identifiers?.find(identifier => identifier.type === 'doi')
+
+  const identifierIssn = rfc.identifiers?.find(identifier => identifier.type === 'issn')
+
+  const pdfFormat = rfc.formats.find(format => format.format === 'pdf')
+
+  const citation_pdf_url = pdfFormat ? useRfcPdfPathBuilder(rfc.number) : undefined
+
+  return {
+    citation_author,
+    citation_publication_date,
+    citation_title,
+    citation_doi: identifierDoi?.value,
+    citation_issn: identifierIssn?.value,
+    citation_technical_report_number: `rfc${rfc.number}`,
+    citation_pdf_url,
+  }
 }
