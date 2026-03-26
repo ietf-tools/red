@@ -15,7 +15,7 @@ import type { ValidHrefs } from './url'
 
 /**
  * Should error if ValidHrefs type becomes overly broad (ie `string` or
- * `any`) so it matches a non-existent href, hence the variable name.
+ * `any`) so it matches a non-existant href, hence the variable name.
  * To fix this bug look at ValidHrefs itself, find the new type that is
  * overly broad and fix it. If you made a pathBuilder function ensure
  * the return value(s) have `as const` like the other path builder functions.

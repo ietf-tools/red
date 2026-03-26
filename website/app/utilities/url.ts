@@ -43,7 +43,7 @@ export type ValidHrefs =
   | ReturnType<typeof dashboardPathBuilder>
   | ReturnType<typeof apiRfcBucketDocumentPathBuilder>
 
-const isDevEnvironment = !Boolean(process.env.NUXT_PUBLIC_SITE_BASE)
+const isDevEnvironment = Boolean(!process.env.NUXT_PUBLIC_SITE_BASE)
 
 const getEnvOrFallback = <FallbackConst extends string>(env: string | undefined, fallback: FallbackConst): FallbackConst => {
   if (!isDevEnvironment) {
