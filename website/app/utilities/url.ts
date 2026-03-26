@@ -6,7 +6,8 @@ import type {
 import type { MarkdownValidHrefs } from '../../shared/utils/markdown-valid-hrefs'
 import { parseSeriesId, type SeriesId } from './rfc'
 import type { RfcCommon } from './rfc-validators'
-import { assertNever } from './typescript'
+import { assertIsString, assertNever } from './typescript'
+
 /**
  * Represents all known href string patterns
  */
@@ -42,24 +43,38 @@ export type ValidHrefs =
   | ReturnType<typeof dashboardPathBuilder>
   | ReturnType<typeof apiRfcBucketDocumentPathBuilder>
 
+const isDevEnvironment = !Boolean(process.env.NUXT_PUBLIC_SITE_BASE)
+
+const getEnvOrFallback = (env: string | undefined, fallback: string): string => {
+  if (!isDevEnvironment) {
+    // Require env vars on any deployed environment, just not for local dev
+    assertIsString(env)
+  }
+  return env ?? fallback
+}
+
 // url origin ie the part of a URL containing the protocol and hostname (but not the path, search, or hash)
 // per https://developer.mozilla.org/en-US/docs/Web/API/URL/origin
 // so don't have a trailing slash there's no path
-export const PUBLIC_SITE_URL_ORIGIN = 'https://www.rfc-editor.org'
-export const DATATRACKER_URL_ORIGIN = 'https://datatracker.ietf.org'
+export const THIS_SITE_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_SITE_BASE, 'http://localhost:3000')
+export const PUBLIC_SITE_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_SITE_BASE, 'https://www.rfc-editor.org')
+export const ERRATA_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_ERRATA_BASE, 'https://errata.rfc-editor.org')
+export const QUEUE_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_QUEUE_BASE, 'https://queue.rfc-editor.org')
+
+export const DATATRACKER_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_DATATRACKER_BASE, 'https://datatracker.ietf.org')
+export const MATERIALS_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_MATERIALS_BASE, 'https://materials.rfc-editor.org')
+export const IAD_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_IAD_BASE, 'https://iad.rfc-editor.org')
+export const DASHBOARD_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_DASHBOARD_BASE, 'https://dashboard.rfc-editor.org')
+
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'
 export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'
-export const ERRATA_URL_ORIGIN = 'https://errata.rfc-editor.org'
 export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
-export const MATERIALS_URL_ORIGIN = 'https://materials.rfc-editor.org'
-export const IAD_URL_ORIGIN = 'https://iad.rfc-editor.org'
-export const DASHBOARD_URL_ORIGIN = 'https://dashboard.rfc-editor.org'
+
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN =
   'https://authors.ietf.org'
 
-export const RFC_EDITOR_ERRATA_SEARCH_URL =
-  'https://errata.rfc-editor.org/search/'
+export const RFC_EDITOR_ERRATA_SEARCH_URL = `${ERRATA_URL_ORIGIN}/search/`
 export const IETF_PRIVACY_STATEMENT_URL =
   'https://www.ietf.org/privacy-statement/'
 
