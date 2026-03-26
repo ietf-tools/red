@@ -45,12 +45,12 @@ export type ValidHrefs =
 
 const isDevEnvironment = !Boolean(process.env.NUXT_PUBLIC_SITE_BASE)
 
-const getEnvOrFallback = (env: string | undefined, fallback: string): string => {
+const getEnvOrFallback = <FallbackConst extends string>(env: string | undefined, fallback: FallbackConst): FallbackConst => {
   if (!isDevEnvironment) {
     // Require env vars on any deployed environment, just not for local dev
     assertIsString(env)
   }
-  return env ?? fallback
+  return (env ?? fallback) as FallbackConst // for TS purposes we'll type the response as the fallback
 }
 
 // url origin ie the part of a URL containing the protocol and hostname (but not the path, search, or hash)
