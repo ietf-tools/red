@@ -59,7 +59,7 @@
       </div>
       <p>
         <Anchor
-          :href="errataUrlBuilder(props.errataItemForTab.errata_id)"
+          :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)"
           :class="ANCHOR_TAILWIND_STYLE"
           :aria-label="`View errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`"
         >
@@ -78,7 +78,7 @@
 import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { preformattedTextToHtml } from '~/utilities/html'
 import type { ErrataItemForTab } from '~/utilities/errata'
-import { errataUrlBuilder } from '~/utilities/url'
+import { useErrataUrlBuilder } from '~/utilities/url'
 
 type Props = {
   errataItemForTab: ErrataItemForTab

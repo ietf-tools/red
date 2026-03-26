@@ -13,7 +13,11 @@
     </template>
     <template v-if="rfcBucketHtmlDocumentError">
       <div class="container mx-auto">
-        <Alert level="1" variant="warning" heading="Error">
+        <Alert
+          level="1"
+          variant="warning"
+          heading="Error"
+        >
           {{ rfcBucketHtmlDocumentError }}
         </Alert>
       </div>
@@ -37,7 +41,7 @@ import {
   apiRfcBucketDocumentPathBuilder,
   infoSeriesPathBuilder,
   rfcFormatPathBuilder,
-  PUBLIC_SITE_URL_ORIGIN
+  usePublicSiteUrlOrigin
 } from '~/utilities/url'
 import { useRfcEditorHead } from '~/utilities/head'
 import type { SeriesId } from '~/utilities/rfc'
@@ -90,11 +94,13 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } =
     }
   )
 
+const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
+
 if (rfcBucketHtmlDocumentError.value) {
   console.error(rfcBucketHtmlDocumentError.value)
   throw createError({
     statusCode: 404,
-    statusMessage: `No ${sanitisedId.value} content found. If this is a recently published RFC please try again later. Try also ${PUBLIC_SITE_URL_ORIGIN}${rfcFormatPathBuilder(sanitisedId.value, 'html')}`,
+    statusMessage: `No ${sanitisedId.value} content found. If this is a recently published RFC please try again later. Try also ${publicSiteUrlOrigin}${rfcFormatPathBuilder(sanitisedId.value, 'html')}`,
     fatal: true
   })
 }
@@ -148,12 +154,12 @@ const canonicalUrl = infoSeriesPathBuilder(sanitisedId.value)
 const pageTitle =
   rfcBucketHtmlDocument.value ?
     `RFC ${rfcBucketHtmlDocument.value.rfc.number}: ${rfcBucketHtmlDocument.value.rfc.title}`
-  : ''
+    : ''
 
 const resourceTimestampDatetime =
   rfcBucketHtmlDocument.value ?
     DateTime.fromISO(rfcBucketHtmlDocument.value.timestampIso)
-  : undefined
+    : undefined
 
 useRfcEditorHead({
   title: pageTitle,
@@ -162,7 +168,7 @@ useRfcEditorHead({
   modifiedDateTime:
     rfcBucketHtmlDocument.value?.rfc.published ?
       DateTime.fromISO(rfcBucketHtmlDocument.value?.rfc.published)
-    : undefined,
+      : undefined,
   contentType: 'article',
   resourceTimestamps:
     resourceTimestampDatetime ?
@@ -172,6 +178,6 @@ useRfcEditorHead({
           timestamp: resourceTimestampDatetime
         }
       ]
-    : undefined
+      : undefined
 })
 </script>

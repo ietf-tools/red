@@ -2,13 +2,22 @@
     <div class="min-h-[100vh]">
         <BodyLayoutDocument :class="{ 'lg:pr-[300px]': !showToc }">
             <template #sidebar>
-                <TableOfContentsMarkdownDesktop v-if="showToc && toc" :toc="toc" />
+                <TableOfContentsMarkdownDesktop
+                    v-if="showToc && toc"
+                    :toc="toc"
+                />
             </template>
             <div class="wrap-anywhere leading-[1.75]">
                 <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
-                <ContentRenderer v-if="page" :value="page" />
+                <ContentRenderer
+                    v-if="page"
+                    :value="page"
+                />
             </div>
-            <ContentDocModifiedDateTime v-if="modifiedDateTime" :modified-date-time="modifiedDateTime" />
+            <ContentDocModifiedDateTime
+                v-if="modifiedDateTime"
+                :modified-date-time="modifiedDateTime"
+            />
         </BodyLayoutDocument>
     </div>
 </template>
@@ -23,7 +32,7 @@ import {
     nuxtContentTocToRfcEditorToc,
     tocKey
 } from '~/utilities/tableOfContents'
-import { PUBLIC_SITE_URL_ORIGIN } from '~/utilities/url'
+import { usePublicSiteUrlOrigin } from '~/utilities/url'
 import { useRfcEditorHead } from '~/utilities/head'
 
 const route = useRoute()
@@ -63,7 +72,7 @@ if (error.value || page.value === null) {
 }
 
 const canonicalPath = `/${normalizedSlug}/`
-const canonicalUrl = `${PUBLIC_SITE_URL_ORIGIN}${canonicalPath}`
+const canonicalUrl = `${usePublicSiteUrlOrigin()}${canonicalPath}`
 
 if (route.fullPath !== canonicalPath) {
     await navigateTo({

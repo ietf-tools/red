@@ -1,12 +1,13 @@
 <template>
-  <TabsRoot v-model="selectedTab" class="min-h-0 flex flex-col">
+  <TabsRoot
+    v-model="selectedTab"
+    class="min-h-0 flex flex-col"
+  >
     <TabsList class="border-b-2 border-gray-400">
-      <HorizontalScrollable
-        :inner-class="[
-          'flex flex-row gap-5',
-          { 'px-2': props.mode === 'mobile' }
-        ]"
-      >
+      <HorizontalScrollable :inner-class="[
+        'flex flex-row gap-5',
+        { 'px-2': props.mode === 'mobile' }
+      ]">
         <TabsIndicator class="absolute" />
         <TabsTrigger
           v-if="props.hasTableOfContents"
@@ -79,7 +80,11 @@
         link-class="block no-underline hover:underline"
         last-link-class="flex-1"
       >
-        <Heading level="2" style-level="5" class="mt-4 mb-1 sr-only">
+        <Heading
+          level="2"
+          style-level="5"
+          class="mt-4 mb-1 sr-only"
+        >
           In this section
         </Heading>
       </TableOfContentsHighlight>
@@ -95,7 +100,11 @@
         link-class="block no-underline hover:underline"
         last-link-class="flex-1"
       >
-        <Heading level="2" style-level="5" class="mt-4 mb-1 sr-only">
+        <Heading
+          level="2"
+          style-level="5"
+          class="mt-4 mb-1 sr-only"
+        >
           In this section
         </Heading>
       </TableOfContents>
@@ -110,70 +119,60 @@
       ]"
     >
       <VerticalScrollable>
-        <Heading level="3" style-level="4" class="mt-4"> Details </Heading>
+        <Heading
+          level="3"
+          style-level="4"
+          class="mt-4"
+        >
+          Details
+        </Heading>
         <dl class="text-sm pb-6">
-          <template
-            v-if="
-              props.rfcBucketHtmlDocument.rfc.updates &&
-              props.rfcBucketHtmlDocument.rfc.updates.length > 0
-            "
-          >
+          <template v-if="
+            props.rfcBucketHtmlDocument.rfc.updates &&
+            props.rfcBucketHtmlDocument.rfc.updates.length > 0
+          ">
             <dt class="font-bold mt-2">
               Updates ({{ props.rfcBucketHtmlDocument.rfc.updates.length }})
             </dt>
             <dd>
-              <RFCTabsReferences
-                :rfcs="props.rfcBucketHtmlDocument.rfc.updates"
-              />
+              <RFCTabsReferences :rfcs="props.rfcBucketHtmlDocument.rfc.updates" />
             </dd>
           </template>
-          <template
-            v-if="
-              props.rfcBucketHtmlDocument.rfc.updated_by &&
-              props.rfcBucketHtmlDocument.rfc.updated_by.length > 0
-            "
-          >
+          <template v-if="
+            props.rfcBucketHtmlDocument.rfc.updated_by &&
+            props.rfcBucketHtmlDocument.rfc.updated_by.length > 0
+          ">
             <dt class="font-bold mt-2">
               Updated by ({{
                 props.rfcBucketHtmlDocument.rfc.updated_by.length
               }})
             </dt>
             <dd>
-              <RFCTabsReferences
-                :rfcs="props.rfcBucketHtmlDocument.rfc.updated_by"
-              />
+              <RFCTabsReferences :rfcs="props.rfcBucketHtmlDocument.rfc.updated_by" />
             </dd>
           </template>
-          <template
-            v-if="
-              props.rfcBucketHtmlDocument.rfc.obsoletes &&
-              props.rfcBucketHtmlDocument.rfc.obsoletes.length > 0
-            "
-          >
+          <template v-if="
+            props.rfcBucketHtmlDocument.rfc.obsoletes &&
+            props.rfcBucketHtmlDocument.rfc.obsoletes.length > 0
+          ">
             <dt class="font-bold mt-2">
               Obsoletes ({{ props.rfcBucketHtmlDocument.rfc.obsoletes.length }})
             </dt>
             <dd>
-              <RFCTabsReferences
-                :rfcs="props.rfcBucketHtmlDocument.rfc.obsoletes"
-              />
+              <RFCTabsReferences :rfcs="props.rfcBucketHtmlDocument.rfc.obsoletes" />
             </dd>
           </template>
-          <template
-            v-if="
-              props.rfcBucketHtmlDocument.rfc.obsoleted_by &&
-              props.rfcBucketHtmlDocument.rfc.obsoleted_by.length > 0
-            "
-          >
+          <template v-if="
+            props.rfcBucketHtmlDocument.rfc.obsoleted_by &&
+            props.rfcBucketHtmlDocument.rfc.obsoleted_by.length > 0
+          ">
             <dt class="font-bold mt-2">
               Obsoleted by ({{
                 props.rfcBucketHtmlDocument.rfc.obsoleted_by.length
               }})
             </dt>
             <dd>
-              <RFCTabsReferences
-                :rfcs="props.rfcBucketHtmlDocument.rfc.obsoleted_by"
-              />
+              <RFCTabsReferences :rfcs="props.rfcBucketHtmlDocument.rfc.obsoleted_by" />
             </dd>
           </template>
 
@@ -193,11 +192,10 @@
                   <span class="whitespace-nowrap">
                     <a
                       v-if="author.datatracker_person_path"
-                      :href="
-                        datatrackerAuthorUrlBuilder(
-                          author.datatracker_person_path
-                        )
-                      "
+                      :href="datatrackerAuthorUrlBuilder(
+                        author.datatracker_person_path
+                      )
+                        "
                       :class="[ANCHOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']"
                     >
                       <RFCDocumentAuthor :author="author" />
@@ -209,12 +207,10 @@
                     <span v-else>
                       <RFCDocumentAuthor :author="author" />
                     </span>
-                    <template
-                      v-if="
-                        authorIndex <
-                        props.rfcBucketHtmlDocument.rfc.authors.length - 1
-                      "
-                    >
+                    <template v-if="
+                      authorIndex <
+                      props.rfcBucketHtmlDocument.rfc.authors.length - 1
+                    ">
                       {{ COMMA }} {{ NONBREAKING_SPACE }}
                     </template>
                   </span>
@@ -226,39 +222,32 @@
 
           <template v-if="shouldShowGroup(props.rfcBucketHtmlDocument.rfc)">
             <dt class="font-bold mt-2">
-              <template
-                v-if="
-                  // https://github.com/ietf-tools/red/issues/147#issuecomment-3417450159
-                  props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'
-                "
-              >
+              <template v-if="
+                // https://github.com/ietf-tools/red/issues/147#issuecomment-3417450159
+                props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'
+              ">
                 Research group
               </template>
-              <template
-                v-else-if="
-                  props.rfcBucketHtmlDocument.rfc.group?.type === 'individ'
-                "
-              >
+              <template v-else-if="
+                props.rfcBucketHtmlDocument.rfc.group?.type === 'individ'
+              ">
                 Source
               </template>
               <template v-else>Working group</template>
             </dt>
             <dd>
-              <template
-                v-if="
-                  props.rfcBucketHtmlDocument.rfc.group?.type === 'individ'
-                  // Note that `rfcBucketHtmlDocument.rfc.group.name` is plural, which is unwanted,
-                  // so that's why it's written as singular below
-                  // also we don't want it linked, unlike other groups
-                "
-              >
+              <template v-if="
+                props.rfcBucketHtmlDocument.rfc.group?.type === 'individ'
+                // Note that `rfcBucketHtmlDocument.rfc.group.name` is plural, which is unwanted,
+                // so that's why it's written as singular below
+                // also we don't want it linked, unlike other groups
+              ">
                 Individual Submission
               </template>
               <Anchor
                 v-else
-                :href="
-                  workingGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.group)
-                "
+                :href="useWorkingGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.group)
+                  "
                 :class="ANCHOR_TAILWIND_STYLE"
               >
                 {{ props.rfcBucketHtmlDocument.rfc.group?.name }}
@@ -278,9 +267,8 @@
             <dt class="font-bold mt-2">Area</dt>
             <dd>
               <Anchor
-                :href="
-                  areaGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.area)
-                "
+                :href="areaGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.area)
+                  "
                 :class="ANCHOR_TAILWIND_STYLE"
               >
                 {{ props.rfcBucketHtmlDocument.rfc.area?.name }}
@@ -299,9 +287,7 @@
 
           <dt class="font-bold mt-2">Publication Stream</dt>
           <dd>
-            <template
-              v-if="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)"
-            >
+            <template v-if="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
               <Anchor
                 :href="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)"
                 :class="ANCHOR_TAILWIND_STYLE"
@@ -326,7 +312,10 @@
             >
               <dt class="font-bold mt-2">
                 <template v-if="identifier.type === 'doi'">
-                  <abbr title="Digital object identifier" class="no-underline">
+                  <abbr
+                    title="Digital object identifier"
+                    class="no-underline"
+                  >
                     DOI
                   </abbr>
                 </template>
@@ -363,9 +352,7 @@
 
           <template v-if="props.rfcBucketHtmlDocument.rfc.formats?.length > 0">
             <dt class="font-bold mt-2">
-              <template
-                v-if="props.rfcBucketHtmlDocument.rfc.formats.length === 1"
-              >
+              <template v-if="props.rfcBucketHtmlDocument.rfc.formats.length === 1">
                 Format
               </template>
               <template v-else> Formats </template>
@@ -387,17 +374,15 @@
                         `rfc${props.rfcBucketHtmlDocument.rfc.number}`,
                         formatItem.format
                       )
-                    "
+                      "
                     :class="ANCHOR_TAILWIND_STYLE"
                   >
                     {{ formatItem.format.toUpperCase() }}
                   </a>
-                  <template
-                    v-if="
-                      formatIndex <
-                      props.rfcBucketHtmlDocument.rfc.formats.length - 1
-                    "
-                  >
+                  <template v-if="
+                    formatIndex <
+                    props.rfcBucketHtmlDocument.rfc.formats.length - 1
+                  ">
                     {{ COMMA }}
                     {{ SPACE }}
                   </template>
@@ -421,7 +406,11 @@
       ]"
     >
       <VerticalScrollable class="pl-1">
-        <Heading level="3" style-level="4" class="mt-3 mb-1">
+        <Heading
+          level="3"
+          style-level="4"
+          class="mt-3 mb-1"
+        >
           About Errata
         </Heading>
         <p class="text-sm leading-[1.5]">
@@ -433,7 +422,7 @@
         </p>
         <p class="border-b-1 border-gray-200 py-6 mb-4">
           <Anchor
-            :href="ERRATA_URL_ORIGIN"
+            :href="errataUrlOrigin"
             class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold"
           >
             Report a new erratum
@@ -465,10 +454,10 @@ import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   areaGroupUrlBuilder,
   datatrackerAuthorUrlBuilder,
-  ERRATA_URL_ORIGIN,
+  useErrataUrlOrigin,
   rfcFormatPathBuilder,
   streamUrlBuilder,
-  workingGroupUrlBuilder
+  useWorkingGroupUrlBuilder
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc-validators'
@@ -482,6 +471,8 @@ type Props = {
 const props = defineProps<Props>()
 
 const selectedTab = defineModel<number>()
+
+const errataUrlOrigin = useErrataUrlOrigin()
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return

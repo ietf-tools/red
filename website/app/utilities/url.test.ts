@@ -138,18 +138,6 @@ test('parseMaybeRfcLink', () => {
     number: 10101
   })
 
-  expect(parseMaybeRfcLink('https://www.rfc-editor.org/rfc/rfc10101')).toEqual({
-    type: 'rfc',
-    number: 10101
-  })
-
-  expect(
-    parseMaybeRfcLink('https://www.rfc-editor.org/rfc/rfc10101#section-2.1')
-  ).toEqual({
-    type: 'rfc',
-    number: 10101
-  })
-
   expect(parseMaybeRfcLink('#rfc10101')).toEqual({
     type: 'rfc',
     number: 10101

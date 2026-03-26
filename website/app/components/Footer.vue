@@ -22,7 +22,7 @@
       </div>
       <div class="flex-1 flex flex-col lg:flex-row gap-10 p-3 lg:p-0">
         <div
-          v-for="(menuItem, index) in menuData"
+          v-for="(menuItem, index) in useFooterMenuData()"
           :key="index"
         >
           <Heading
@@ -54,5 +54,5 @@
 
 <script setup lang="ts">
 import { IETF_URL_ORIGIN } from '../utilities/url'
-import { menuData } from './FooterNavData'
+import { useFooterMenuData } from './FooterNavData'
 </script>

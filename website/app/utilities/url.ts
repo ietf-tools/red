@@ -37,42 +37,65 @@ export type ValidHrefs =
   | ReturnType<typeof rfcPathBuilder>
   | ReturnType<typeof materialsTxtBuilder>
   | ReturnType<typeof rfcFormatPathBuilder>
-  | ReturnType<typeof rfcCitePathBuilder>
   | ReturnType<typeof wikiDokuPathBuilder>
-  | ReturnType<typeof materialsPathBuilder>
-  | ReturnType<typeof dashboardPathBuilder>
   | ReturnType<typeof apiRfcBucketDocumentPathBuilder>
 
-const isDevEnvironment = process.env.NUXT_PUBLIC_SITE_BASE === undefined
-
-const getEnvOrFallback = <FallbackConst extends string>(env: string | undefined, fallback: FallbackConst): FallbackConst => {
-  if (!isDevEnvironment) {
-    // Require env vars on any non-dev environment
-    assertIsString(env)
+export const assertUrlOrigin = <FallbackConst extends string>(runtimeConfig: unknown, errorKey: string, fallback: FallbackConst): FallbackConst => {
+  assertIsString(runtimeConfig)
+  const expectedOrigin = new URL(runtimeConfig).origin
+  if (expectedOrigin !== runtimeConfig) {
+    throw Error(`Nuxt runtime config ${JSON.stringify(errorKey)} isn't a URL origin pattern as expected. Was: ${JSON.stringify(runtimeConfig)} but expected ${JSON.stringify(expectedOrigin)}`)
   }
-  return (env ?? fallback) as FallbackConst // for TS purposes we'll type the response as the fallback
+  return (runtimeConfig ?? fallback) as FallbackConst // for TS purposes we'll type the response as the fallback
 }
 
 // url origin ie the part of a URL containing the protocol and hostname (but not the path, search, or hash)
 // per https://developer.mozilla.org/en-US/docs/Web/API/URL/origin
 // so don't have a trailing slash there's no path
-export const PUBLIC_SITE_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_SITE_BASE, 'https://www.rfc-editor.org')
-export const ERRATA_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_ERRATA_BASE, 'https://errata.rfc-editor.org')
-export const QUEUE_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_QUEUE_BASE, 'https://queue.rfc-editor.org')
-export const DATATRACKER_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_DATATRACKER_BASE, 'https://datatracker.ietf.org')
-export const MATERIALS_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_MATERIALS_BASE, 'https://materials.rfc-editor.org')
-export const IAD_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_IAD_BASE, 'https://iad.rfc-editor.org')
-export const DASHBOARD_URL_ORIGIN = getEnvOrFallback(process.env.NUXT_PUBLIC_DASHBOARD_BASE, 'https://dashboard.rfc-editor.org')
+export const usePublicSiteUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.siteBase, 'siteBase', 'https://datatracker.ietf.org')
+}
+export const useErrataUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.errataBase, 'errataBase', 'https://www.rfc-editor.org')
+}
+export const useQueueUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.queueBase, 'queueBase', 'https://errata.rfc-editor.org')
+}
+export const useDatatrackerUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.datatrackerBase, 'datatrackerBase', 'https://datatracker.ietf.org')
+}
+export const useMaterialsUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.materialsBase, 'materialsBase', 'https://materials.rfc-editor.org')
+}
+export const useIadUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.iadBase, 'iadBase', 'https://iad.rfc-editor.org')
+}
+export const useDashboardUrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.dashboardBase, 'dashboardBase', 'https://dashboard.rfc-editor.org')
+}
+export const useRfcEditorErrataSearchUrl = () => {
+  return `${useErrataUrlOrigin()}/search/`
+}
+export const useMaterialsPathBuilder = (materialsPath: string) => {
+  return `${useMaterialsUrlOrigin()}${materialsPath}` as const
+}
+export const useIadReportsPathBuilder = (IADPath: string) => {
+  return `${useIadUrlOrigin()}${IADPath}` as const
+}
 
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'
 export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'
 export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
-
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN =
   'https://authors.ietf.org'
-
-export const RFC_EDITOR_ERRATA_SEARCH_URL = `${ERRATA_URL_ORIGIN}/search/`
 export const IETF_PRIVACY_STATEMENT_URL =
   'https://www.ietf.org/privacy-statement/'
 
@@ -243,16 +266,8 @@ export const wikiDokuPathBuilder = (wikiPath: string) => {
   return `/rpc/wiki/doku.php?id=${wikiPath}` as const
 }
 
-export const materialsPathBuilder = (materialsPath: string) => {
-  return `${MATERIALS_URL_ORIGIN}${materialsPath}` as const
-}
-
-export const iadReportsPathBuilder = (IADPath: string) => {
-  return `${IAD_URL_ORIGIN}${IADPath}` as const
-}
-
-export const dashboardPathBuilder = (dashboardPath: string) => {
-  return `${DASHBOARD_URL_ORIGIN}${dashboardPath}` as const
+export const useDashboardPathBuilder = (dashboardPath: string) => {
+  return `${useDashboardUrlOrigin()}${dashboardPath}` as const
 }
 
 export const mailToBuilder = (email: string) => {
@@ -317,20 +332,6 @@ export const textToAnchorId = (text: string): string | undefined => {
   return kebabCase(normalized)
 }
 
-/**
- * Try parsing a relative url `href` string into a URL, relative to prod
- */
-const tryParseHrefRelativeToProd = (href: string): URL | undefined => {
-  try {
-    return new URL(href, PUBLIC_SITE_URL_ORIGIN)
-  } catch (e: unknown) {
-    console.info(
-      `Failed to parse href ${JSON.stringify(href)} into URL. Error:`,
-      e
-    )
-  }
-}
-
 export const linkPreviewImageUrlBuilder = (
   widthPx: ImagePreviewHorizontalDimensions,
   heightPx: ImagePreviewVerticalDimensions
@@ -354,7 +355,6 @@ export const isRfcEditorSite = (href?: string): boolean => {
     return false
   }
   return (
-    href.startsWith(PUBLIC_SITE_URL_ORIGIN) ||
     href.startsWith('/') ||
     href.startsWith('#')
   )
@@ -376,7 +376,7 @@ export const parseMaybeRfcLink = (
      * If an internal link is "#rfc1234" then we'll parse that as an RFC Link.
      * E.g. the link to https://www.rfc-editor.org/rfc/rfc9794.html#RFC9370 is
      * linking to a reference to an RFC, not the RFC directly. Regardless we'll
-     * treat it as a RFC Link.
+     * treat it as a RFC Link Preview.
      *
      * However hrefs are relative links and so we resolve them relative to the
      * current location, which means that if eg. the page '/info/rfc9000/' had
@@ -389,35 +389,31 @@ export const parseMaybeRfcLink = (
     if (!rfcMatch) return undefined
     return parseSeriesId(rfcMatch[0])
   }
-  const hrefUrl = tryParseHrefRelativeToProd(href)
-  if (!hrefUrl) {
-    return undefined
-  }
   const isRfcEditor = isRfcEditorSite(href)
   if (isRfcEditor) {
-    const rfcMatch = hrefUrl.pathname.match(RFC_REGEX)
+    const rfcMatch = href.match(RFC_REGEX)
     if (!rfcMatch) return undefined
     return parseSeriesId(rfcMatch[0])
   }
   return undefined
 }
 
-export const workingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
+export const useWorkingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
   if (!workingGroup) return undefined
   // See https://github.com/ietf-tools/red/issues/179
-  return `${DATATRACKER_URL_ORIGIN}/wg/${workingGroup.acronym}/about/` as const
+  return `${useDatatrackerUrlOrigin()}/wg/${workingGroup.acronym}/about/` as const
 }
 
-export const errataUrlBuilder = (errataId: string
+export const useErrataUrlBuilder = (errataId: string
   // errataId looks like '1234' (not 'eid1234') so we'll need to add the 'eid' prefix
 ) => {
-  return `${ERRATA_URL_ORIGIN}/eid${errataId}/` as const
+  return `${useErrataUrlOrigin()}/eid${errataId}/` as const
 }
 
 export const areaGroupUrlBuilder = (area: RfcCommon['area']) => {
   if (!area) return undefined
   // See https://github.com/ietf-tools/red/issues/179
-  return `${DATATRACKER_URL_ORIGIN}/wg/#${area.acronym.toUpperCase()}` as const
+  return `${useDatatrackerUrlOrigin()}/wg/#${area.acronym.toUpperCase()}` as const
 }
 
 export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
@@ -433,7 +429,7 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
     case 'INDEPENDENT':
       return '/authors/rfc-independent-submissions/' satisfies ValidHrefs
     case 'Editorial':
-      return `${DATATRACKER_URL_ORIGIN}/group/rswg/about/` as const
+      return `${useDatatrackerUrlOrigin()}/group/rswg/about/` as const
     case 'Legacy':
       return undefined
   }
@@ -443,7 +439,7 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
 export const datatrackerAuthorUrlBuilder = (
   datatracker_person_path: string
 ) => {
-  return new URL(datatracker_person_path, DATATRACKER_URL_ORIGIN).toString()
+  return `${useDatatrackerUrlOrigin()}${datatracker_person_path}`
 }
 
 /**

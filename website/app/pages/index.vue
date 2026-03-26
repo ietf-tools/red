@@ -16,7 +16,7 @@
           <p class="hidden mt-8 lg:block text-base text-grey-800 pl-5">
             Looking for works in progress? Go to
             <Anchor
-              :href="DATATRACKER_URL_ORIGIN"
+              :href="datatrackerUrlOrigin"
               class="text-blue-300 dark:text-blue-100"
             >
               datatracker.ietf.org
@@ -155,19 +155,22 @@
 import { useRfcEditorHead } from '~/utilities/head'
 import { HomepageLatestSchema } from '~/utilities/rfc-validators'
 import {
-  DATATRACKER_URL_ORIGIN,
   IAB_URL_ORIGIN,
   IETF_URL_ORIGIN,
   IRTF_URL_ORIGIN,
-  PUBLIC_SITE_URL_ORIGIN,
   API_HOMEPAGE_LATEST_PATH,
-  searchPathBuilder
+  searchPathBuilder,
+  useDatatrackerUrlOrigin,
+  usePublicSiteUrlOrigin
 } from '~/utilities/url'
 import type { RfcCommon } from '~/utilities/rfc-validators'
 
 definePageMeta({
   layout: false
 })
+
+const datatrackerUrlOrigin = useDatatrackerUrlOrigin()
+const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
 
 const {
   data: homepageLatestData,
@@ -190,7 +193,7 @@ const homepageLatest = computed((): RfcCommon[] => {
 
 useRfcEditorHead({
   title: '',
-  canonicalUrl: PUBLIC_SITE_URL_ORIGIN,
+  canonicalUrl: publicSiteUrlOrigin,
   description:
     'The official home of RFCs. RFCs outline computer networking and Internet foundations, including Internet Standards and historical or informative content.',
   contentType: 'website'

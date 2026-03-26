@@ -1,14 +1,16 @@
 // @vitest-environment nuxt
 import { test, expect } from 'vitest'
 import { legacyErrataSearchRedirectUrlBuilder } from './legacy-errata-search-redirect'
-import { RFC_EDITOR_ERRATA_SEARCH_URL } from './url'
+import { useRfcEditorErrataSearchUrl } from './url'
 
 test('translateParamsString: just a redirect', () => {
-  expect(legacyErrataSearchRedirectUrlBuilder('?')).toEqual(RFC_EDITOR_ERRATA_SEARCH_URL)
-  expect(legacyErrataSearchRedirectUrlBuilder('/errata_search.php?')).toEqual(RFC_EDITOR_ERRATA_SEARCH_URL)
-  expect(legacyErrataSearchRedirectUrlBuilder('/errata_search.php')).toEqual(RFC_EDITOR_ERRATA_SEARCH_URL)
+  const errataSearchUrl = useRfcEditorErrataSearchUrl()
+  expect(legacyErrataSearchRedirectUrlBuilder('?')).toEqual(errataSearchUrl)
+  expect(legacyErrataSearchRedirectUrlBuilder('/errata_search.php?')).toEqual(errataSearchUrl)
+  expect(legacyErrataSearchRedirectUrlBuilder('/errata_search.php')).toEqual(errataSearchUrl)
 })
 
 test('translateParamsString: rfc number', () => {
-  expect(legacyErrataSearchRedirectUrlBuilder('?rfc=9000')).toEqual(`${RFC_EDITOR_ERRATA_SEARCH_URL}?rfc=9000`)
+  const errataSearchUrl = useRfcEditorErrataSearchUrl()
+  expect(legacyErrataSearchRedirectUrlBuilder('?rfc=9000')).toEqual(`${errataSearchUrl}?rfc=9000`)
 })

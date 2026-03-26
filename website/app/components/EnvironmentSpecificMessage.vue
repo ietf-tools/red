@@ -57,9 +57,11 @@
                         <li>
                             Data is pulled from a snapshot of the
                             <a
-                                :href="DATATRACKER_URL_ORIGIN"
+                                :href="useDatatrackerUrlOrigin()"
                                 class="underline"
-                            >Datatracker</a>
+                            >
+                                Datatracker
+                            </a>
                             and during IETF 124 this will be static and stale. Some information,
                             particularly around author names and affiliations, will change to more closely match the
                             current RFC Editor database before this is released into production.
@@ -107,7 +109,7 @@ import {
     DialogTrigger
 } from 'reka-ui'
 import { copyToClipboard } from '~/utilities/clipboard'
-import { DATATRACKER_URL_ORIGIN } from '~/utilities/url'
+import { useDatatrackerUrlOrigin } from '~/utilities/url'
 
 const EMAIL = 'tools-discuss@ietf.org'
 const RED_BETA_GITHUB_ISSUES_URL = 'https://github.com/ietf-tools/red-beta/issues'

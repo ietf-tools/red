@@ -1,8 +1,5 @@
 import { z } from 'zod'
-import {
-  RFC_EDITOR_ERRATA_SEARCH_URL,
-  typeSenseEncodeUriComponent
-} from './url'
+import { typeSenseEncodeUriComponent, useRfcEditorErrataSearchUrl } from './url'
 
 const LegacyErrataSearchParamsSchema = z.object({
   rfc: z.string().optional(), // RFC number
@@ -82,7 +79,7 @@ export const legacyErrataSearchRedirectUrlBuilder = (url: string): string => {
     return buildSearchRedirect(legacySearchParams.data)
   }
 
-  return RFC_EDITOR_ERRATA_SEARCH_URL
+  return useRfcEditorErrataSearchUrl()
 }
 
 type LegacyErrataSearchParams = z.infer<typeof LegacyErrataSearchParamsSchema>
@@ -103,14 +100,14 @@ export const buildSearchRedirect = (
             legacyErrataSearchObj[searchKey as keyof LegacyErrataSearchParams]
 
           return searchValue ?
-              `${encodeURIComponent(typesenseSearchKey)}=${typeSenseEncodeUriComponent(
-                Array.isArray(searchValue) ? searchValue.join(',') : searchValue
-              )}`
+            `${encodeURIComponent(typesenseSearchKey)}=${typeSenseEncodeUriComponent(
+              Array.isArray(searchValue) ? searchValue.join(',') : searchValue
+            )}`
             : ''
         })
         .filter(Boolean)
         .join('&')
-    : ''
+      : ''
 
-  return `${RFC_EDITOR_ERRATA_SEARCH_URL}${params ? '?' : ''}${params}`
+  return `${useRfcEditorErrataSearchUrl()}${params ? '?' : ''}${params}`
 }

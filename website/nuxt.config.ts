@@ -89,7 +89,13 @@ export default defineNuxtConfig({
     cfServiceTokenSecret: '', // NUXT_CF_SERVICE_TOKEN_SECRET env var
     public: {
       // These settings are available client-side (others are server-side only)
-      datatrackerBase: 'http://localhost:8000/' // NUXT_PUBLIC_DATATRACKER_BASE env var
+      datatrackerBase: 'http://localhost:8000/', // NUXT_PUBLIC_DATATRACKER_BASE env var
+      siteBase: 'https://www.rfc-editor.org', // NUXT_PUBLIC_SITE_BASE env var
+      errataBase: 'https://errata.rfc-editor.org', // NUXT_PUBLIC_ERRATA_BASE env var
+      queueBase: 'https://queue.rfc-editor.org', // NUXT_PUBLIC_QUEUE_BASE env var
+      materialsBase: 'https://materials.rfc-editor.org', // NUXT_PUBLIC_MATERIALS_BASE env var
+      iadBase: 'https://iad.rfc-editor.org', // NUXT_PUBLIC_IAD_BASE env var
+      dashboardBase: 'https://dashboard.rfc-editor.org' // NUXT_PUBLIC_DASHBOARD_BASE env var
     }
   },
   postcss: {
