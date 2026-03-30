@@ -4,8 +4,9 @@ import { join } from 'node:path'
 import { gc } from './gc.ts'
 import { sleep } from './sleep.ts'
 import type { ChildProcess } from 'node:child_process'
-import type { ReceiveMessage } from './unpdf-child.ts'
-import { OPENGRAPH_IMAGE_DIMENSIONS } from './html.ts'
+import type { ReceiveMessage, ScreenshotPageDone } from './unpdf-child.ts'
+import type { ImageDimensions } from './html.ts'
+import { ImageDimensionsSchema } from './html.ts'
 
 /**
  * Something in unpdf seems to leak memory, so taking eg 10 screenshots
@@ -19,15 +20,15 @@ const forkPath = join(import.meta.dirname, 'unpdf-child.ts')
 type ForkOptions = NonNullable<Parameters<typeof fork>[2]>
 const forkArgs: ForkOptions = { silent: true }
 
-type Props = {
-  base64: string,
+type ScreenshotProps = {
+  base64Pdf: string,
   pageNumber: number,
   fileName: string,
   shouldUploadToS3: boolean
-  dimensions: typeof OPENGRAPH_IMAGE_DIMENSIONS
+  widthPx: number
 }
 
-export const takeScreenshotOfPage = async ({ base64, pageNumber, fileName, shouldUploadToS3, dimensions }: Props): Promise<ImageDimensions> => {
+export const takeScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName, shouldUploadToS3, widthPx }: ScreenshotProps): Promise<ScreenshotPageDone> => {
   return new Promise((resolve) => {
     const child = fork(forkPath, forkArgs)
     child.on('message', async (_message) => {
@@ -39,16 +40,16 @@ export const takeScreenshotOfPage = async ({ base64, pageNumber, fileName, shoul
         case 'READY':
           child.send({
             type: 'SCREENSHOT_PAGE',
-            base64Data: base64,
+            base64Pdf,
             pageNumber,
             fileName,
             shouldUploadToS3: shouldUploadToS3.toString(),
-            dimensions,
+            dimensions: { widthPx },
           } satisfies ReceiveMessage)
           break
         case 'SCREENSHOT_PAGE_DONE':
           await cleanupChild(child)
-          resolve(message.screenshotDimensions)
+          resolve(message)
           break
         case 'GET_TEXT_DONE':
           throw Error('Unexpected message while taking screenshot')
@@ -58,7 +59,15 @@ export const takeScreenshotOfPage = async ({ base64, pageNumber, fileName, shoul
   })
 }
 
-export const getScreenshotOfPage = async ({ base64, pageNumber, fileName, shouldUploadToS3, dimensions }: Props): Promise<ImageDimensions> => {
+type MetaScreenshotProps = {
+  base64Pdf: string,
+  pageNumber: number,
+  fileName: string,
+  shouldUploadToS3: boolean
+  dimensions: ImageDimensions
+}
+
+export const getMetaScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName, shouldUploadToS3, dimensions }: MetaScreenshotProps): Promise<ScreenshotPageDone> => {
   return new Promise((resolve) => {
     const child = fork(forkPath, forkArgs)
     child.on('message', async (_message) => {
@@ -70,7 +79,7 @@ export const getScreenshotOfPage = async ({ base64, pageNumber, fileName, should
         case 'READY':
           child.send({
             type: 'SCREENSHOT_PAGE',
-            base64Data: base64,
+            base64Pdf,
             pageNumber,
             fileName,
             shouldUploadToS3: shouldUploadToS3.toString(),
@@ -90,7 +99,7 @@ export const getScreenshotOfPage = async ({ base64, pageNumber, fileName, should
 }
 
 export const getTextDetails = async (
-  base64: string
+  base64Pdf: string
 ): Promise<z.infer<typeof GetTextSchema>> => {
   return new Promise((resolve) => {
     const child = fork(forkPath, forkArgs)
@@ -103,7 +112,7 @@ export const getTextDetails = async (
         case 'READY':
           child.send({
             type: 'GET_TEXT',
-            base64Data: base64
+            base64Pdf
           } satisfies ReceiveMessage)
           break
         case 'GET_TEXT_DONE':
@@ -118,29 +127,27 @@ export const getTextDetails = async (
   })
 }
 
+const ReadySchema = z.object({
+  type: z.literal('READY')
+})
+
 const GetTextSchema = z.object({
   type: z.literal('GET_TEXT_DONE'),
   text: z.object({
     totalPages: z.number(),
     text: z.string().array()
-  })
+  }),
 })
 
-const ImageDimensionsSchema = z.object({
-  widthPx: z.number(),
-  heightPx: z.number()
+const ScreenshotDoneSchema = z.object({
+  type: z.literal('SCREENSHOT_PAGE_DONE'),
+  screenshotDimensions: ImageDimensionsSchema,
+  base64Png: z.string()
 })
-
-type ImageDimensions = z.infer<typeof ImageDimensionsSchema>
 
 const ReceiveMessagesSchema = z.union([
-  z.object({
-    type: z.literal('READY')
-  }),
-  z.object({
-    type: z.literal('SCREENSHOT_PAGE_DONE'),
-    screenshotDimensions: ImageDimensionsSchema
-  }),
+  ReadySchema,
+  ScreenshotDoneSchema,
   GetTextSchema
 ])
 
@@ -148,7 +155,7 @@ const parseMessageFromChild = (message: unknown) => {
   const { data: parsedMessage, error } =
     ReceiveMessagesSchema.safeParse(message)
   if (error) {
-    console.error('PARENT expected valid message.', error)
+    console.error('PARENT expected valid message.', error, ". Received", message)
     return null
   }
   return parsedMessage

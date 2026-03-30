@@ -3,7 +3,7 @@ import sharp from 'sharp'
 import { renderPageAsImage, extractText } from 'unpdf'
 import { rfcImagePathBuilder, saveToS3 } from './s3.ts'
 import { compressImageToPng, isSharpImageGreyscale } from './image.ts'
-import { ImageDimensions, OPENGRAPH_IMAGE_DIMENSIONS } from './html.ts'
+import type { ImageDimensions, ImageDimensionsOptionalHeight } from './html.ts'
 
 process.on('message', async (messageFromParent: unknown) => {
   const message = parseMessageFromParent(messageFromParent)
@@ -11,29 +11,29 @@ process.on('message', async (messageFromParent: unknown) => {
   // console.log(' - PDF was', message.base64Data.length)
   switch (message.type) {
     case 'SCREENSHOT_PAGE':
-      const { screenshotDimensions, base64 } = await screenshotAndUpload(
-        message.base64Data,
+      const { screenshotDimensions, base64Png } = await screenshotPdfPage(
+        message.base64Pdf,
         message.pageNumber,
         message.fileName,
         message.shouldUploadToS3 === true.toString(),
         message.dimensions,
       )
-      send({ type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions, base64 })
+      send({ type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions, base64Png } satisfies ScreenshotPageDone)
       break
     case 'GET_TEXT':
-      const text = await getText(message.base64Data)
+      const text = await getText(message.base64Pdf)
       send({ type: 'GET_TEXT_DONE', text })
       break
   }
 })
 
-const screenshotAndUpload = async (
+const screenshotPdfPage = async (
   base64Data: string,
   pageNumber: number,
   fileName: string,
   shouldUploadToS3: boolean,
-  dimensions: ImageDimensions
-): Promise<Pick<ScreenshotPageDone, 'screenshotDimensions' | 'base64'>> => {
+  dimensions: ImageDimensionsOptionalHeight
+): Promise<Pick<ScreenshotPageDone, 'screenshotDimensions' | 'base64Png'>> => {
   const blob = parseBase64Data(base64Data)
   // console.log('- CHILD before', blob.byteLength)
   const screenshot = await renderPageAsImage(blob, pageNumber, {
@@ -41,7 +41,7 @@ const screenshotAndUpload = async (
     scale: 1,
     width: dimensions.widthPx,
     height: dimensions.heightPx
-  })
+  })  
   const sharpImage = sharp(screenshot)
   const metadata = await sharpImage.metadata()
   const isGreyscale = await isSharpImageGreyscale(sharpImage)
@@ -51,16 +51,15 @@ const screenshotAndUpload = async (
     await saveToS3(bucketPath, png)
     // console.log(` - uploaded screenshot of page ${pageNumber} to ${bucketPath}`)
   }
-  const base64 = png.toString('base64');
+  const base64Png = png.toString('base64');
   return {
     screenshotDimensions: { widthPx: metadata.width, heightPx: metadata.height },
-    base64
+    base64Png
   }
 }
 
-const getText = async (base64Data: string) => {
-  const blob = parseBase64Data(base64Data)
-  // console.log('- CHILD before', blob.byteLength)
+const getText = async (base64Pdf: string) => {
+  const blob = parseBase64Data(base64Pdf)
   return extractText(blob, { mergePages: false })
 }
 
@@ -68,7 +67,7 @@ const ScreenshotPageSchema = z.object({
   type: z.literal('SCREENSHOT_PAGE'),
   fileName: z.string(),
   pageNumber: z.number(),
-  base64Data: z.string(),
+  base64Pdf: z.string(),
   shouldUploadToS3: z.string(),
   dimensions: z.object({
     widthPx: z.number(),
@@ -78,7 +77,7 @@ const ScreenshotPageSchema = z.object({
 
 const TextSchema = z.object({
   type: z.literal('GET_TEXT'),
-  base64Data: z.string()
+  base64Pdf: z.string()
 })
 
 const ReceiveMessageSchema = z.union([ScreenshotPageSchema, TextSchema])
@@ -91,10 +90,6 @@ const parseMessageFromParent = (message: unknown) => {
     console.error('CHILD expected valid message.', error)
     return null
   }
-  if (parsedMessage.base64Data.length === 0) {
-    console.error('CHILD expected PDF length but was 0')
-    return null
-  }
   return parsedMessage
 }
 
@@ -105,7 +100,7 @@ type Text = {
   text: string[]
 }
 
-type ScreenshotPageDone = { type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions: ImageDimensions, base64?: string }
+export type ScreenshotPageDone = { type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions: ImageDimensions, base64Png: string }
 
 type SendMessages =
   | { type: 'READY' }

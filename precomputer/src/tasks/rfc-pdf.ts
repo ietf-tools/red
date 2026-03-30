@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import {
   apiRfcBucketDocumentURLBuilder,
-  } from '../utilities/url.ts'
+} from '../utilities/url.ts'
 import { gc } from '../utilities/gc.ts'
 import {
   BLANK_HTML,
@@ -16,9 +16,9 @@ import {
   RfcBucketHtmlDocumentSchema
 } from '../../../website/app/utilities/rfc-validators.ts'
 import {
+  getMetaScreenshotOfPage,
   getTextDetails,
   takeScreenshotOfPage,
-  getScreenshotOfPage
 } from '../utilities/unpdf-parent.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
@@ -51,9 +51,9 @@ export const rfcBucketPdfToRfcDocument = async (
   getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>,
   getRfcPDF: typeof fetchRfcPDF
 ): Promise<RfcBucketHtmlDocument | null> => {
-  const base64 = await getRfcPDF(rfcNumber)
+  const base64Pdf = await getRfcPDF(rfcNumber)
 
-  if (base64 === null) {
+  if (base64Pdf === null) {
     return null
   }
 
@@ -73,7 +73,7 @@ export const rfcBucketPdfToRfcDocument = async (
   // perhaps consider instead of alt text just rendering transparent text in the page like PDF.js does. We could
   // extract the coordinaate of text and overlay it. I have no reason to think this would be better for screen readers
   // but it might allow copy pasting of text (albeit with unnecessary spaces)
-  const textDetails = await getTextDetails(base64)
+  const textDetails = await getTextDetails(base64Pdf)
 
   const pdfPages = dom.createElement('div')
   pdfPages.setAttribute('data-component', 'PdfPages')
@@ -87,17 +87,13 @@ export const rfcBucketPdfToRfcDocument = async (
     const fileName = rfcImageFileNameBuilder(rfcNumber, pageNumber)
 
     await gc() // attempt to free bytes from fork
-    const screenshotDimensions = await takeScreenshotOfPage({
-      base64,
+    const screenshot = await takeScreenshotOfPage({
+      base64Pdf,
       pageNumber,
       fileName,
       shouldUploadToS3: shouldUploadPageImagesToS3,
-      dimensions: {
-        widthPx: 1000,
-        heightPx: 2000
-      }
-    }
-    )
+      widthPx: 1000,
+    })
 
     const pageTitle = `Page ${pageNumber}`
     const domId = `page${pageNumber}`
@@ -125,8 +121,8 @@ export const rfcBucketPdfToRfcDocument = async (
     const pageImg = dom.createElement('img')
     pageImg.setAttribute('src', apiRfcBucketDocumentURLBuilder(fileName))
     pageImg.setAttribute('id', domId)
-    pageImg.setAttribute('width', screenshotDimensions.widthPx.toString())
-    pageImg.setAttribute('height', screenshotDimensions.heightPx.toString())
+    pageImg.setAttribute('width', screenshot.screenshotDimensions.widthPx.toString())
+    pageImg.setAttribute('height', screenshot.screenshotDimensions.heightPx.toString())
     pageImg.setAttribute('alt', `Page ${pageNumber}: ${pageText}`)
     if (pageNumber >= 2) {
       // for pages 2+ we'll lazy load images
@@ -168,19 +164,21 @@ export const rfcBucketPdfToRfcDocument = async (
 }
 
 export const getRfcPdfMetaScreenshot = async (rfcNumber: number, getRfcPDF: typeof fetchRfcPDF): Promise<Buffer | undefined> => {
-  const base64 = await getRfcPDF(rfcNumber)
+  const base64Pdf = await getRfcPDF(rfcNumber)
 
-  if (base64 === null) {
+  if (base64Pdf === null) {
     return undefined
   }
 
   await gc() // attempt to free memory after fetch()
 
-  return getScreenshotOfPage({
-    base64,
+  const result = await getMetaScreenshotOfPage({
+    base64Pdf,
     pageNumber: 1,
     fileName: rfcMetaScreenshotPathBuilder(rfcNumber),
     shouldUploadToS3: false,
     dimensions: OPENGRAPH_IMAGE_DIMENSIONS
   })
+
+  return Buffer.from(result.base64Png, 'base64');
 }
