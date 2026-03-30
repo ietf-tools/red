@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import sharp from 'sharp'
 import { renderPageAsImage, extractText } from 'unpdf'
-import { PDF_WIDTH_PX } from './layout.ts'
 import { rfcImagePathBuilder, saveToS3 } from './s3.ts'
 import { compressImageToPng, isSharpImageGreyscale } from './image.ts'
+import { ImageDimensions, OPENGRAPH_IMAGE_DIMENSIONS } from './html.ts'
 
 process.on('message', async (messageFromParent: unknown) => {
   const message = parseMessageFromParent(messageFromParent)
@@ -11,13 +11,14 @@ process.on('message', async (messageFromParent: unknown) => {
   // console.log(' - PDF was', message.base64Data.length)
   switch (message.type) {
     case 'SCREENSHOT_PAGE':
-      const screenshotDimensions = await screenshotAndUpload(
+      const { screenshotDimensions, base64 } = await screenshotAndUpload(
         message.base64Data,
         message.pageNumber,
         message.fileName,
-        message.shouldUploadToS3 === true.toString()
+        message.shouldUploadToS3 === true.toString(),
+        message.dimensions,
       )
-      send({ type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions })
+      send({ type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions, base64 })
       break
     case 'GET_TEXT':
       const text = await getText(message.base64Data)
@@ -26,20 +27,20 @@ process.on('message', async (messageFromParent: unknown) => {
   }
 })
 
-type ImageDimensions = { widthPx: number, heightPx: number }
-
 const screenshotAndUpload = async (
   base64Data: string,
   pageNumber: number,
   fileName: string,
-  shouldUploadToS3: boolean
-): Promise<ImageDimensions> => {
+  shouldUploadToS3: boolean,
+  dimensions: ImageDimensions
+): Promise<Pick<ScreenshotPageDone, 'screenshotDimensions' | 'base64'>> => {
   const blob = parseBase64Data(base64Data)
   // console.log('- CHILD before', blob.byteLength)
   const screenshot = await renderPageAsImage(blob, pageNumber, {
     canvasImport: () => import('@napi-rs/canvas'),
     scale: 1,
-    width: PDF_WIDTH_PX
+    width: dimensions.widthPx,
+    height: dimensions.heightPx
   })
   const sharpImage = sharp(screenshot)
   const metadata = await sharpImage.metadata()
@@ -50,8 +51,11 @@ const screenshotAndUpload = async (
     await saveToS3(bucketPath, png)
     // console.log(` - uploaded screenshot of page ${pageNumber} to ${bucketPath}`)
   }
-  // TODO: send back dimensions of image to parent
-  return { widthPx: metadata.width, heightPx: metadata.height }
+  const base64 = png.toString('base64');
+  return {
+    screenshotDimensions: { widthPx: metadata.width, heightPx: metadata.height },
+    base64
+  }
 }
 
 const getText = async (base64Data: string) => {
@@ -65,7 +69,11 @@ const ScreenshotPageSchema = z.object({
   fileName: z.string(),
   pageNumber: z.number(),
   base64Data: z.string(),
-  shouldUploadToS3: z.string()
+  shouldUploadToS3: z.string(),
+  dimensions: z.object({
+    widthPx: z.number(),
+    heightPx: z.number().optional()
+  })
 })
 
 const TextSchema = z.object({
@@ -74,6 +82,8 @@ const TextSchema = z.object({
 })
 
 const ReceiveMessageSchema = z.union([ScreenshotPageSchema, TextSchema])
+
+export type ReceiveMessage = z.infer<typeof ReceiveMessageSchema>
 
 const parseMessageFromParent = (message: unknown) => {
   const { data: parsedMessage, error } = ReceiveMessageSchema.safeParse(message)
@@ -95,9 +105,11 @@ type Text = {
   text: string[]
 }
 
+type ScreenshotPageDone = { type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions: ImageDimensions, base64?: string }
+
 type SendMessages =
   | { type: 'READY' }
-  | { type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions: ImageDimensions }
+  | ScreenshotPageDone
   | { type: 'GET_TEXT_DONE'; text: Text }
 
 const send = (msg: SendMessages) => {

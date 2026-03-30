@@ -1,8 +1,8 @@
 import Fastify from 'fastify'
 import { NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE, renderHomepageLatest } from '../tasks/homepage-latest.ts'
 import { renderRfcMiniIndexJson } from '../tasks/rfc-mini-index-json.ts'
-import { getRfcBucketHtmlDocument } from '../tasks/rfc.ts'
-import { getAllRFCs, getAllSubseries, getApiClient, getRfcCommonCached, parseSubseriesItemName, parseSubseriesName, safeSubseriesList } from './api.ts'
+import { getRfcBucketHtmlDocument, getRfcMetaScreenshot } from '../tasks/rfc.ts'
+import { getAllRFCs, getAllSubseries, getApiClient, getRfcCommonCached, parseSubseriesName } from './api.ts'
 import { renderAllSubseries } from '../tasks/info-subseries.ts'
 
 const fastify = Fastify({
@@ -25,11 +25,22 @@ fastify.get('/api/v1/rfc-html/:rfcNumber.json', async (request, reply) => {
   if (request.params && typeof request.params === 'object' && 'rfcNumber' in request.params) {
     const { rfcNumber } = request.params
     const rfcFloaty = parseFloat(String(rfcNumber))
-    return getRfcBucketHtmlDocument(rfcFloaty)
+    return getRfcMetaScreenshot(rfcFloaty)
   }
   console.log('bad params?', request.params)
   throw Error(`bad param? ${JSON.stringify(request.params)}`)
 })
+
+fastify.get('/api/v1/rfc-html/:rfcNumber.png', async (request, reply) => {
+  if (request.params && typeof request.params === 'object' && 'rfcNumber' in request.params) {
+    const { rfcNumber } = request.params
+    const rfcFloaty = parseFloat(String(rfcNumber))
+    return getRfcMetaScreenshot(rfcFloaty)
+  }
+  console.log('bad params?', request.params)
+  throw Error(`bad param? ${JSON.stringify(request.params)}`)
+})
+
 
 fastify.get('/api/v1/info-subseries/:subseriesName.json', async (request, reply) => {
   if (request.params && typeof request.params === 'object' && 'subseriesName' in request.params && typeof request.params.subseriesName === 'string') {

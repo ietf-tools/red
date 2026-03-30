@@ -4,11 +4,14 @@ import { join } from 'node:path'
 import { gc } from './gc.ts'
 import { sleep } from './sleep.ts'
 import type { ChildProcess } from 'node:child_process'
+import type { ReceiveMessage } from './unpdf-child.ts'
+import { OPENGRAPH_IMAGE_DIMENSIONS } from './html.ts'
 
 /**
  * Something in unpdf seems to leak memory, so taking eg 10 screenshots
  * of pages will cause heap overflow.
- * This wrapper uses a fork to isolate unpdf and then kill the process.
+ * This wrapper uses a process fork, and runs unpdf in there, and then
+ * kill the process to free up memory.
  */
 
 const forkPath = join(import.meta.dirname, 'unpdf-child.ts')
@@ -16,12 +19,15 @@ const forkPath = join(import.meta.dirname, 'unpdf-child.ts')
 type ForkOptions = NonNullable<Parameters<typeof fork>[2]>
 const forkArgs: ForkOptions = { silent: true }
 
-export const takeScreenshotOfPage = async (
+type Props = {
   base64: string,
   pageNumber: number,
   fileName: string,
   shouldUploadToS3: boolean
-): Promise<ImageDimensions> => {
+  dimensions: typeof OPENGRAPH_IMAGE_DIMENSIONS
+}
+
+export const takeScreenshotOfPage = async ({ base64, pageNumber, fileName, shouldUploadToS3, dimensions }: Props): Promise<ImageDimensions> => {
   return new Promise((resolve) => {
     const child = fork(forkPath, forkArgs)
     child.on('message', async (_message) => {
@@ -36,12 +42,44 @@ export const takeScreenshotOfPage = async (
             base64Data: base64,
             pageNumber,
             fileName,
-            shouldUploadToS3: shouldUploadToS3.toString()
-          })
+            shouldUploadToS3: shouldUploadToS3.toString(),
+            dimensions,
+          } satisfies ReceiveMessage)
           break
         case 'SCREENSHOT_PAGE_DONE':
           await cleanupChild(child)
           resolve(message.screenshotDimensions)
+          break
+        case 'GET_TEXT_DONE':
+          throw Error('Unexpected message while taking screenshot')
+      }
+    })
+    handlePipes(child)
+  })
+}
+
+export const getScreenshotOfPage = async ({ base64, pageNumber, fileName, shouldUploadToS3, dimensions }: Props): Promise<ImageDimensions> => {
+  return new Promise((resolve) => {
+    const child = fork(forkPath, forkArgs)
+    child.on('message', async (_message) => {
+      const message = parseMessageFromChild(_message)
+      if (!message) {
+        return
+      }
+      switch (message.type) {
+        case 'READY':
+          child.send({
+            type: 'SCREENSHOT_PAGE',
+            base64Data: base64,
+            pageNumber,
+            fileName,
+            shouldUploadToS3: shouldUploadToS3.toString(),
+            dimensions,
+          } satisfies ReceiveMessage)
+          break
+        case 'SCREENSHOT_PAGE_DONE':
+          await cleanupChild(child)
+          resolve(message)
           break
         case 'GET_TEXT_DONE':
           throw Error('Unexpected message while taking screenshot')
@@ -66,7 +104,7 @@ export const getTextDetails = async (
           child.send({
             type: 'GET_TEXT',
             base64Data: base64
-          })
+          } satisfies ReceiveMessage)
           break
         case 'GET_TEXT_DONE':
           await cleanupChild(child)

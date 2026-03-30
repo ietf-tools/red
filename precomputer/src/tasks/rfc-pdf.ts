@@ -1,15 +1,14 @@
 import { DateTime } from 'luxon'
 import {
   apiRfcBucketDocumentURLBuilder,
-  PUBLIC_SITE_URL_ORIGIN
-} from '../utilities/url.ts'
+  } from '../utilities/url.ts'
 import { gc } from '../utilities/gc.ts'
 import {
   BLANK_HTML,
   getDOMParser,
   rfcDocumentToPojo
 } from '../utilities/dom.ts'
-import { rfcImageFileNameBuilder } from '../utilities/s3.ts'
+import { rfcImageFileNameBuilder, rfcMetaScreenshotPathBuilder } from '../utilities/s3.ts'
 import {
   type TableOfContents,
   type RfcBucketHtmlDocument,
@@ -18,11 +17,13 @@ import {
 } from '../../../website/app/utilities/rfc-validators.ts'
 import {
   getTextDetails,
-  takeScreenshotOfPage
+  takeScreenshotOfPage,
+  getScreenshotOfPage
 } from '../utilities/unpdf-parent.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 import { redactRfc } from './rfc.ts'
+import { OPENGRAPH_IMAGE_DIMENSIONS } from '../utilities/html.ts'
 
 export const fetchRfcPDF = async (
   rfcNumber: number
@@ -86,11 +87,16 @@ export const rfcBucketPdfToRfcDocument = async (
     const fileName = rfcImageFileNameBuilder(rfcNumber, pageNumber)
 
     await gc() // attempt to free bytes from fork
-    const screenshotDimensions = await takeScreenshotOfPage(
+    const screenshotDimensions = await takeScreenshotOfPage({
       base64,
       pageNumber,
       fileName,
-      shouldUploadPageImagesToS3
+      shouldUploadToS3: shouldUploadPageImagesToS3,
+      dimensions: {
+        widthPx: 1000,
+        heightPx: 2000
+      }
+    }
     )
 
     const pageTitle = `Page ${pageNumber}`
@@ -159,4 +165,22 @@ export const rfcBucketPdfToRfcDocument = async (
   validateDocument(response, RfcBucketHtmlDocumentSchema)
 
   return response
+}
+
+export const getRfcPdfMetaScreenshot = async (rfcNumber: number, getRfcPDF: typeof fetchRfcPDF): Promise<Buffer | undefined> => {
+  const base64 = await getRfcPDF(rfcNumber)
+
+  if (base64 === null) {
+    return undefined
+  }
+
+  await gc() // attempt to free memory after fetch()
+
+  return getScreenshotOfPage({
+    base64,
+    pageNumber: 1,
+    fileName: rfcMetaScreenshotPathBuilder(rfcNumber),
+    shouldUploadToS3: false,
+    dimensions: OPENGRAPH_IMAGE_DIMENSIONS
+  })
 }

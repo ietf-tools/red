@@ -1,11 +1,12 @@
 import { DateTime } from 'luxon'
-import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument } from './rfc-html.ts'
-import { fetchRfcPDF, rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
+import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument, getRfcHtmlMetaScreenshot } from './rfc-html.ts'
+import { fetchRfcPDF, rfcBucketPdfToRfcDocument, getRfcPdfMetaScreenshot } from './rfc-pdf.ts'
 import {
   rfcHtmlJsonPathBuilder,
   rfcJsonPathBuilder,
   rfcCommonPathBuilder,
   rfcRefPathBuilder,
+  rfcMetaScreenshotPathBuilder,
   saveToS3,
   getFromS3
 } from '../utilities/s3.ts'
@@ -30,7 +31,8 @@ export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
     uploadRfcHtml(rfcNumber),
     uploadRfcJson(rfcNumber),
     uploadRfcCommonJson(rfcNumber),
-    uploadRefsRef(rfcNumber)
+    uploadRefsRef(rfcNumber),
+    uploadRfcMetaScreenshot(rfcNumber)
   ])
   return result.every((didSucceed) => didSucceed)
 }
@@ -76,6 +78,30 @@ export const getRfcBucketHtmlDocument = async (
     return undefined
   }
   return rfcDocFromPdf
+}
+
+export const uploadRfcMetaScreenshot = async (rfcNumber: number): Promise<boolean> => {
+  const rfcScreenshot = await getRfcMetaScreenshot(rfcNumber)
+  if (!rfcScreenshot) {
+    return false
+  }
+  const rfcMetaPath = rfcMetaScreenshotPathBuilder(rfcNumber)
+  await saveToS3(rfcMetaPath, rfcScreenshot)
+  return true
+}
+
+export const getRfcMetaScreenshot = async (rfcNumber: number): Promise<Buffer | undefined> => {
+  console.log("Trying HTML")
+  const htmlScreenshot = await getRfcHtmlMetaScreenshot(rfcNumber, getFromS3)
+  if (htmlScreenshot) {
+    return htmlScreenshot
+  }
+  console.log("Trying PDF")
+  const pdfScreenshot = await getRfcPdfMetaScreenshot(rfcNumber, fetchRfcPDF)
+  if (pdfScreenshot) {
+    return pdfScreenshot
+  }
+  return undefined
 }
 
 export const uploadRfcJson = async (rfcNumber: number): Promise<boolean> => {
@@ -143,11 +169,10 @@ export const renderRefsRef = (rfc: RfcCommon): string => {
     throw Error(`Unexpected lack of 'published' date`)
   }
 
-  return `${rfc.authors.map((author) => formatAuthor(author, 'brief'))}, "${
-    rfc.title
-  }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
-    ''
-  )}, ${DateTime.fromISO(published).toFormat(
-    'LLLL yyyy'
-  )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
+  return `${rfc.authors.map((author) => formatAuthor(author, 'brief'))}, "${rfc.title
+    }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
+      ''
+    )}, ${DateTime.fromISO(published).toFormat(
+      'LLLL yyyy'
+    )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
 }
