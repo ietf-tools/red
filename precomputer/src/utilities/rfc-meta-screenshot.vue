@@ -1,4 +1,10 @@
 <template>
+  <!--
+   template needs to adhere to Satori CSS support
+   https://www.npmjs.com/package/satori
+
+   Use dev server to prototype changes
+   -->
   <div style="display:flex;flex-direction:column;padding:30px">
     <h1 style="font-size:50px;padding:0;margin:0;line-height:1.3;">
       <span style="font-weight:normal;padding: 0 16px 0 0">RFC</span>
