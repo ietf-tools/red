@@ -1,9 +1,13 @@
 import Fastify from 'fastify'
+import path from 'path'
+import fsPromises from 'fs/promises'
 import { NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE, renderHomepageLatest } from '../tasks/homepage-latest.ts'
 import { renderRfcMiniIndexJson } from '../tasks/rfc-mini-index-json.ts'
-import { getRfcBucketHtmlDocument, getRfcMetaScreenshot } from '../tasks/rfc.ts'
+import { getRfcBucketHtmlDocument, getRfcMetaThumbnail } from '../tasks/rfc.ts'
 import { getAllRFCs, getAllSubseries, getApiClient, getRfcCommonCached, parseSubseriesName } from './api.ts'
 import { renderAllSubseries } from '../tasks/info-subseries.ts'
+import { getFromS3 } from './s3.ts'
+import { fetchRfcPDF } from '../tasks/rfc-pdf.ts'
 
 const fastify = Fastify({
   logger: true
@@ -25,7 +29,7 @@ fastify.get('/api/v1/rfc-html/:rfcNumber.json', async (request, reply) => {
   if (request.params && typeof request.params === 'object' && 'rfcNumber' in request.params) {
     const { rfcNumber } = request.params
     const rfcFloaty = parseFloat(String(rfcNumber))
-    return getRfcMetaScreenshot(rfcFloaty)
+    return getRfcBucketHtmlDocument(rfcFloaty)
   }
   console.log('bad params?', request.params)
   throw Error(`bad param? ${JSON.stringify(request.params)}`)
@@ -35,10 +39,26 @@ fastify.get('/api/v1/rfc-html/:rfcNumber.png', async (request, reply) => {
   if (request.params && typeof request.params === 'object' && 'rfcNumber' in request.params) {
     const { rfcNumber } = request.params
     const rfcFloaty = parseFloat(String(rfcNumber))
-    return getRfcMetaScreenshot(rfcFloaty)
+
+    const maybePngBuffer = await getRfcMetaThumbnail({
+      rfcNumber: rfcFloaty,
+      getRfcCommon: getRfcCommonCached,
+      getRfcHtml: mockLocalGetRfcHtml,
+      fetchRfcPDF: mockLocalFetchPDF,
+    })
+    if (maybePngBuffer) {
+      reply.code(200).headers({ 'content-type': 'image/png' }).send(maybePngBuffer)
+    } else {
+      console.log("[404]", rfcFloaty)
+      reply
+        .code(404)
+        .type('text/plain')
+        .send(`404: RFC ${rfcFloaty} png`)
+    }
+  } else {
+    console.log('bad params?', request.params)
+    throw Error(`bad param? ${JSON.stringify(request.params)}`)
   }
-  console.log('bad params?', request.params)
-  throw Error(`bad param? ${JSON.stringify(request.params)}`)
 })
 
 
@@ -91,8 +111,29 @@ fastify.get('/api/v1/rfc-common/:rfcNumber.json', async (request, reply) => {
   return renderHomepageLatest([])
 })
 
+const mockLocalBucket: typeof getFromS3 = async (bucket, key, outputType) => {
+  const mockLocalBucketDirName = 'mockLocalBucket'
+  const localPath = path.join(import.meta.dirname, mockLocalBucketDirName, bucket, key)
+  try {
+    console.log("Reading mock bucket", bucket, key, outputType)
+    const data = fsPromises.readFile(localPath, outputType === 'base64' ? 'base64' : 'utf-8')
+    return data
+  } catch (e: unknown) {
+    // Probably just a missing file, so suppress the error
+    console.error('Problem reading ', localPath, e)
+  }
+  return null
+}
+
+const mockLocalGetRfcHtml: typeof getFromS3 = async (bucket, key, outputType) => mockLocalBucket(bucket, key, outputType)
+
+const mockLocalFetchPDF: typeof fetchRfcPDF = async (rfcNumber: number) => {
+  const result = await mockLocalBucket('S3_RFC_BUCKET', `pdf/${rfcNumber}.pdf`, 'base64')
+  return result === null ? null : result.toString()
+}
+
 fastify.listen({
-  port: 3001, host: '0.0.0.0' // 0.0.0.0 needed to work in Docker 
+  port: 3010, host: '0.0.0.0' // 0.0.0.0 needed to work in Docker 
 }, function (err, address) {
   if (err) {
     fastify.log.error(err)

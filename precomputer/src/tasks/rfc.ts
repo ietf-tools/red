@@ -1,12 +1,12 @@
 import { DateTime } from 'luxon'
-import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument, getRfcHtmlMetaScreenshot } from './rfc-html.ts'
-import { fetchRfcPDF, rfcBucketPdfToRfcDocument, getRfcPdfMetaScreenshot } from './rfc-pdf.ts'
+import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument, getRfcHtmlMetaScreenshot as getRfcHtmlMetaThumbnail } from './rfc-html.ts'
+import { fetchRfcPDF, rfcBucketPdfToRfcDocument, getRfcPdfMetaScreenshot as getRfcPdfMetaThumbnail } from './rfc-pdf.ts'
 import {
   rfcHtmlJsonPathBuilder,
   rfcJsonPathBuilder,
   rfcCommonPathBuilder,
   rfcRefPathBuilder,
-  rfcMetaScreenshotPathBuilder,
+  rfcMetaThumbnailPathBuilder,
   saveToS3,
   getFromS3
 } from '../utilities/s3.ts'
@@ -32,7 +32,7 @@ export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
     uploadRfcJson(rfcNumber),
     uploadRfcCommonJson(rfcNumber),
     uploadRefsRef(rfcNumber),
-    uploadRfcMetaScreenshot(rfcNumber)
+    uploadRfcMetaThumbnail(rfcNumber)
   ])
   return result.every((didSucceed) => didSucceed)
 }
@@ -80,27 +80,37 @@ export const getRfcBucketHtmlDocument = async (
   return rfcDocFromPdf
 }
 
-export const uploadRfcMetaScreenshot = async (rfcNumber: number): Promise<boolean> => {
-  const rfcScreenshot = await getRfcMetaScreenshot(rfcNumber)
+export const uploadRfcMetaThumbnail = async (rfcNumber: number): Promise<boolean> => {
+  const rfcScreenshot = await getRfcMetaThumbnail({
+    rfcNumber,
+    getRfcCommon: getRfcCommonCached,
+    getRfcHtml: getFromS3,
+    fetchRfcPDF,
+  })
   if (!rfcScreenshot) {
     return false
   }
-  const rfcMetaPath = rfcMetaScreenshotPathBuilder(rfcNumber)
-  await saveToS3(rfcMetaPath, rfcScreenshot)
+  const rfcThumbnailPath = rfcMetaThumbnailPathBuilder(rfcNumber)
+  await saveToS3(rfcThumbnailPath, rfcScreenshot)
   return true
 }
 
-export const getRfcMetaScreenshot = async (rfcNumber: number): Promise<Buffer | undefined> => {
-  console.log("Trying HTML")
-  const htmlScreenshot = await getRfcHtmlMetaScreenshot(rfcNumber, getFromS3)
-  if (htmlScreenshot) {
-    return htmlScreenshot
-  }
-  console.log("Trying PDF")
-  const pdfScreenshot = await getRfcPdfMetaScreenshot(rfcNumber, fetchRfcPDF)
+type RfcMetaScreenshotProps = {
+  rfcNumber: number
+  getRfcCommon: typeof getRfcCommonCached
+  getRfcHtml: typeof getFromS3
+  fetchRfcPDF: typeof fetchRfcPDF
+}
+
+export const getRfcMetaThumbnail = async ({ rfcNumber, getRfcCommon, fetchRfcPDF }: RfcMetaScreenshotProps): Promise<Buffer | undefined> => {
+  const pdfScreenshot = await getRfcPdfMetaThumbnail(rfcNumber, fetchRfcPDF)
   if (pdfScreenshot) {
     return pdfScreenshot
   }
+  const htmlScreenshot = await getRfcHtmlMetaThumbnail(rfcNumber, getRfcCommon)
+  if (htmlScreenshot) {
+    return htmlScreenshot
+  }  
   return undefined
 }
 

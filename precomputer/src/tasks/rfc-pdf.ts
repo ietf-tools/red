@@ -8,7 +8,7 @@ import {
   getDOMParser,
   rfcDocumentToPojo
 } from '../utilities/dom.ts'
-import { rfcImageFileNameBuilder, rfcMetaScreenshotPathBuilder } from '../utilities/s3.ts'
+import { rfcImageFileNameBuilder, rfcMetaThumbnailPathBuilder } from '../utilities/s3.ts'
 import {
   type TableOfContents,
   type RfcBucketHtmlDocument,
@@ -175,7 +175,7 @@ export const getRfcPdfMetaScreenshot = async (rfcNumber: number, getRfcPDF: type
   const result = await getMetaScreenshotOfPage({
     base64Pdf,
     pageNumber: 1,
-    fileName: rfcMetaScreenshotPathBuilder(rfcNumber),
+    fileName: rfcMetaThumbnailPathBuilder(rfcNumber),
     shouldUploadToS3: false,
     dimensions: OPENGRAPH_IMAGE_DIMENSIONS
   })
