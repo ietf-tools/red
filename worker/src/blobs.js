@@ -229,6 +229,10 @@ export async function blobs(request, env) {
       to: 'other/rfc-mini-index.json'
     },
     {
+      from: '/api/v1/errata.json',
+      to: 'other/errata.json'
+    },
+    {
       from: '/rfc-index.txt',
       to: 'other/rfc-index.txt'
     },
