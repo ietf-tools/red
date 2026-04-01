@@ -35,8 +35,17 @@ export const renderFeeds = async (
     )
   }
 
-  const latestRfc = allRfcs[allRfcs.length - 1]
-  const feedRfcs = allRfcs.slice(-NUMBER_OF_RFCS_IN_FEED)
+  const feedRfcs = Array.from(allRfcs)
+    .filter(rfc => rfc.published)
+    .sort(sortByPublished)
+    .slice(0, NUMBER_OF_RFCS_IN_FEED)
+
+  const latestRfc = feedRfcs[0]
+  const { published: latestRfcPublished } = latestRfc
+  if (latestRfcPublished === undefined) {
+    console.error('latestRfc.published error', JSON.stringify(latestRfc))
+    throw Error('expected published to be available')
+  }
 
   const feedOptions: FeedOptions = {
     title: 'Recent RFCs',
@@ -46,20 +55,22 @@ export const renderFeeds = async (
     generator: 'https://www.npmjs.com/package/feed',
     language: 'en-us', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
     copyright: '',
-    updated: latestRfc.published
-      ? makeJsDateFromPubished(latestRfc.published)
-      : new Date()
+    updated: makeJsDateFromPubished(latestRfcPublished)
   }
 
   const feed = new Feed(feedOptions)
 
   feedRfcs.forEach((feedRfc) => {
+    const { published } = feedRfc
+    if (published === undefined) {
+      throw Error('Cannot add unpublished RFCs to feed. These should have been removed earlier.')
+    }
     const url = `${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(feedRfc)}`
     feed.addItem({
       title: `RFC ${feedRfc.number}: ${feedRfc.title}`,
       link: url,
       description: feedRfc.abstract,
-      date: feedRfc.published ? makeJsDateFromPubished(feedRfc.published) : new Date()
+      date: makeJsDateFromPubished(published)
     })
   })
 
@@ -69,6 +80,22 @@ export const renderFeeds = async (
   }
 }
 
+const makeLuxonDateFromPubished = (published: string): DateTime => {
+  return DateTime.fromISO(published)
+}
+
 const makeJsDateFromPubished = (published: string): Date => {
-  return DateTime.fromISO(published, { locale: 'utc', zone: 'utc' }).toJSDate()
+  return makeLuxonDateFromPubished(published).toJSDate()
+}
+
+const sortByPublished = (a: RfcCommon, b: RfcCommon): number => {
+  const { published: aPublished } = a
+  const { published: bPublished } = b
+  if (aPublished === undefined || bPublished === undefined) {
+    console.error("Can't sort", JSON.stringify(a), JSON.stringify(b))
+    throw Error("Can't sort rfcs without 'published'. They should have been filtered earlier. See console for more")
+  }
+  const aPublishedDate = makeLuxonDateFromPubished(aPublished)
+  const bPublishedDate = makeLuxonDateFromPubished(bPublished)
+  return bPublishedDate.toMillis() - aPublishedDate.toMillis()
 }
