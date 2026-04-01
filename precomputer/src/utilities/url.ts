@@ -18,6 +18,9 @@ export const infoRfcPathBuilder = (rfc: RfcCommon) => {
 type RfcCommonFormat = RfcCommon["formats"][number]["format"]
 
 export const rfcFormatPathBuilder = (rfc: RfcCommon, format: RfcCommonFormat) => {
+  if (format === 'notprepped') {
+    throw Error(`Cannot make URL for format ${JSON.stringify(format)}`)
+  }
   return `/rfc/rfc${rfc.number}.${format}` as const
 }
 
@@ -28,4 +31,11 @@ export const safeURLParse = (url: string): URL | null => {
     console.error("Can't parse URL", e)
     return null
   }
+}
+
+export const siteMapXmlPathBuilder = (index: number) => {
+  if (index === 0) {
+    return `/sitemap.xml` as const
+  }
+  return `/sitemap-${index}.xml` as const
 }

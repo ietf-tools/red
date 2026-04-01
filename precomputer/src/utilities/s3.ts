@@ -193,9 +193,7 @@ export const ERRATA_JSON_PATH = 'other/errata.json' as const
 export const REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH =
   'other/reports/CurrQstats.txt'
 
-export const siteMapXmlPathBuilder = (index: number) => {
-  if (index === 0) {
-    return `other/sitemap-index.xml` as const
-  }
-  return `other/sitemap-${index}.xml` as const
+export const siteMapXmlPathPrefixBuilder = (sitemapFilename: string) => {
+  return `other/${sitemapFilename}` as const
+
 }

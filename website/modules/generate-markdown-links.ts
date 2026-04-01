@@ -11,17 +11,20 @@ import type { X2jOptions } from 'fast-xml-parser'
 import { defineNuxtModule, useLogger } from 'nuxt/kit'
 
 const __dirname = import.meta.dirname
-const clientPath = path.resolve(__dirname, '..')
-const contentPath = path.resolve(clientPath, 'content')
+const websitePath = path.resolve(__dirname, '..')
+const contentPath = path.resolve(websitePath, 'content')
+
+const precomputerPath = path.resolve(websitePath, '..', 'precomputer')
+const publicPathsForPrecomputer = path.join(precomputerPath, 'src', 'assets', 'markdown-paths.json')
 
 const generatedMarkdownValidHrefs = path.resolve(
-  clientPath,
+  websitePath,
   'shared',
   'utils',
   'markdown-valid-hrefs.ts'
 )
 const generatedMarkdownAllHrefs = path.resolve(
-  clientPath,
+  websitePath,
   'generated',
   'report-of-all-markdown-hrefs.ts'
 )
@@ -287,6 +290,8 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
   const markdownPathToPublicPath = (markdownPath: string) =>
     `/${markdownPath.replace(/\.md$/, '/')}`
 
+  const markdownPublicPaths: string[] = []
+
   const markdownsValidHrefs: MarkdownsValidHrefs = await Promise.all(
     docs.map(async (doc, index) => {
       const validHrefs: string[] = []
@@ -297,6 +302,7 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
         )
       }
       const publicPath = markdownPathToPublicPath(markdownPath)
+      markdownPublicPaths.push(publicPath)
       const anchorIds: string[] = []
       await walkNodes(doc, async (node) => {
         if (
@@ -336,6 +342,11 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
 
       return { markdownPath, validHrefs, validInternalLinks }
     })
+  )
+
+  await fsPromises.writeFile(
+    publicPathsForPrecomputer,
+    JSON.stringify(markdownPublicPaths, null, 2)
   )
 
   // Generates type MarkdownValidHrefs

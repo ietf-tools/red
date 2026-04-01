@@ -36,7 +36,7 @@ export const indices = async ({ api, }: Props): Promise<boolean> => {
     uploadFeeds(allRfcs),
     uploadInNotesRfcRefDotTxt(allRfcs, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
     uploadAllSubseries(allSubseries),
-    uploadRobotsTxtEtc(websiteOrigin, allRfcs),
+    uploadRobotsTxtEtc(websiteOrigin, allRfcs, allSubseries),
     uploadMetaThumbnails(),
     uploadFavicons(),
   ])

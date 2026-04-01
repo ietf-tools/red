@@ -215,6 +215,33 @@ export async function blobs(request, env) {
     }
   }
 
+  const SITEMAP_NUMBER_PREFIX = '/sitemap-'
+  if (normalizedPath.startsWith(SITEMAP_NUMBER_PREFIX)) {
+    console.log("accessing", SITEMAP_NUMBER_PREFIX)
+    const objectPath = normalizedPath.substring(SITEMAP_NUMBER_PREFIX.length)
+    console.log({ objectPath })
+
+    // -> Fetch R2 object
+    if (objectPath.endsWith('.xml')) {
+      const object = await env.RED_BUCKET.get(`other/sitemap-${objectPath}`)
+      if (object) {
+        const headers = new Headers()
+        object.writeHttpMetadata(headers)
+        headers.set('etag', object.httpEtag)
+        headers.set('Cf-R2-Served', '1')
+        headers.set('Access-Control-Allow-Origin', '*')
+        headers.set('Content-Encoding', 'gzip')
+        headers.set('Content-Type', 'application/xml;charset=utf-8')
+
+        return new Response(object.body, {
+          headers
+        })
+      } else {
+        console.log("Object not found")
+      }
+    }
+  }
+
   const mappings = [
     {
       from: '/favicon.ico',
@@ -249,6 +276,14 @@ export async function blobs(request, env) {
       to: 'other/in-notes/rfc-ref.txt'
     },
     {
+      from: '/robots.txt',
+      to: 'other/robots.txt'
+    },
+    {
+      from: '/sitemap.xml',
+      to: 'other/sitemap.xml'
+    },
+    {
       from: '/reports/CurrQstats.txt',
       to: 'other/reports/CurrQstats.txt'
     }
@@ -280,10 +315,10 @@ export async function blobs(request, env) {
               // Atom has a specific mime type
               headers.set('Content-Type', 'application/atom+xml;charset=utf-8')
             } else {
-              // per RFC 7303 don't use `text/xml` and instead use `application/xml`.
-              //
               // Note that RSS doesn't have a mime type from IANA (but Atom does!)
               // see https://www.iana.org/assignments/media-types/media-types.xhtml
+              //
+              // per RFC 7303 don't use `text/xml` and instead use `application/xml`.
               headers.set('Content-Type', 'application/xml;charset=utf-8')
             }
             break;
