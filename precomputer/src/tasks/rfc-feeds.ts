@@ -70,7 +70,7 @@ export const renderFeeds = async (
       title: `RFC ${feedRfc.number}: ${feedRfc.title}`,
       link: url,
       description: feedRfc.abstract,
-      date: makeJsDateFromPubished(published)
+      date: makeJsDateFromPublished(published)
     })
   })
 
@@ -80,12 +80,12 @@ export const renderFeeds = async (
   }
 }
 
-const makeLuxonDateFromPubished = (published: string): DateTime => {
+const makeLuxonDateFromPublished = (published: string): DateTime => {
   return DateTime.fromISO(published)
 }
 
-const makeJsDateFromPubished = (published: string): Date => {
-  return makeLuxonDateFromPubished(published).toJSDate()
+const makeJsDateFromPublished = (published: string): Date => {
+  return makeLuxonDateFromPublished(published).toJSDate()
 }
 
 const sortByPublished = (a: RfcCommon, b: RfcCommon): number => {
@@ -95,7 +95,7 @@ const sortByPublished = (a: RfcCommon, b: RfcCommon): number => {
     console.error("Can't sort", JSON.stringify(a), JSON.stringify(b))
     throw Error("Can't sort rfcs without 'published'. They should have been filtered earlier. See console for more")
   }
-  const aPublishedDate = makeLuxonDateFromPubished(aPublished)
-  const bPublishedDate = makeLuxonDateFromPubished(bPublished)
+  const aPublishedDate = makeLuxonDateFromPublished(aPublished)
+  const bPublishedDate = makeLuxonDateFromPublished(bPublished)
   return bPublishedDate.toMillis() - aPublishedDate.toMillis()
 }
