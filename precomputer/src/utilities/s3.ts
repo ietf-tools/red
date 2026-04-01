@@ -80,7 +80,7 @@ export async function getFromS3(
   const S3_BUCKET =
     bucket === 'S3_RFC_BUCKET' ?
       process.env.S3_RFC_BUCKET
-    : process.env.S3_RED_BUCKET
+      : process.env.S3_RED_BUCKET
   assertIsString(
     S3_BUCKET,
     `process.env.${bucket} wasn't a string. Was ${typeof S3_BUCKET}`
@@ -169,6 +169,8 @@ export const subseriesInfoPathBuilder = (
   subseriesNumber: SubseriesCommon['number']
 ) => `subseries/${subseriesType}${subseriesNumber}.json` as const
 
+export const ROBOTS_TXT_PATH = 'other/robots.txt' as const
+
 export const HOMEPAGE_LATEST_PATH = `other/homepage-latest.json` as const
 
 export const RFC_INDEX_TXT_PATH = 'other/rfc-index.txt' as const
@@ -190,3 +192,10 @@ export const ERRATA_JSON_PATH = 'other/errata.json' as const
 
 export const REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH =
   'other/reports/CurrQstats.txt'
+
+export const siteMapXmlPathBuilder = (index: number) => {
+  if (index === 0) {
+    return `other/sitemap-index.xml` as const
+  }
+  return `other/sitemap-${index}.xml` as const
+}
