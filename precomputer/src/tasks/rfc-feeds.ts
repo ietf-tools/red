@@ -55,7 +55,7 @@ export const renderFeeds = async (
     generator: 'https://www.npmjs.com/package/feed',
     language: 'en-us', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
     copyright: '',
-    updated: makeJsDateFromPubished(latestRfcPublished)
+    updated: new Date()
   }
 
   const feed = new Feed(feedOptions)
