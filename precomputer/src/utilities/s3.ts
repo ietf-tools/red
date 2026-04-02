@@ -77,9 +77,6 @@ export async function getFromS3(
   key: string,
   outputType?: S3OutputType
 ): Promise<string | Uint8Array | null> {
-  console.log(bucket, key, outputType)
-  console.trace()
-  
   const S3_BUCKET =
     bucket === 'S3_RFC_BUCKET' ?
       process.env.S3_RFC_BUCKET
