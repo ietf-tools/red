@@ -32,7 +32,6 @@ import {
     nuxtContentTocToRfcEditorToc,
     tocKey
 } from '~/utilities/tableOfContents'
-import { usePublicSiteUrlOrigin } from '~/utilities/url'
 import { useRfcEditorHead } from '~/utilities/head'
 
 const route = useRoute()
