@@ -1,4 +1,4 @@
-import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import type { RfcCommon, SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'
 
 // Origin per https://developer.mozilla.org/en-US/docs/Glossary/Origin
 export const PUBLIC_SITE_URL_ORIGIN = 'https://www.rfc-editor.org'
@@ -19,9 +19,13 @@ type RfcCommonFormat = RfcCommon["formats"][number]["format"]
 
 export const rfcFormatPathBuilder = (rfc: RfcCommon, format: RfcCommonFormat) => {
   if (format === 'notprepped') {
-    throw Error(`Cannot make URL for format ${JSON.stringify(format)}`)
+    return `/rfc/rfc${rfc.number}.${format}.xml` as const
   }
   return `/rfc/rfc${rfc.number}.${format}` as const
+}
+
+export const subseriesPathBuilder = (subseries: SubseriesCommon) => {
+  return `/info/${subseries.type}${subseries.number}/` as const
 }
 
 export const safeURLParse = (url: string): URL | null => {

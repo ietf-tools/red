@@ -11,12 +11,12 @@ import {
 } from 'sitemap'
 import { type RfcCommon, type SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { ROBOTS_TXT_PATH, saveToS3, siteMapXmlPathPrefixBuilder } from './s3.ts'
-import { infoRfcPathBuilder, rfcFormatPathBuilder, siteMapXmlPathBuilder } from './url.ts'
+import { infoRfcPathBuilder, rfcFormatPathBuilder, siteMapXmlPathBuilder, subseriesPathBuilder } from './url.ts'
 
 export const uploadRobotsTxtEtc = async (websiteOrigin: string, allRfcs: Readonly<RfcCommon[]>, allSubseries: Readonly<SubseriesCommon[]>): Promise<boolean> => {
   const robotsTxt = await getRobotsTxt(websiteOrigin)
   await saveToS3(ROBOTS_TXT_PATH, robotsTxt)
-  const siteMapXmls = await getSiteMapXmls(websiteOrigin, allRfcs)
+  const siteMapXmls = await getSiteMapXmls(websiteOrigin, allRfcs, allSubseries)
   await Promise.all(siteMapXmls.map(([filename, xmlString]) => {
     const s3Key = siteMapXmlPathPrefixBuilder(filename)
     console.log('Uploading ', s3Key)
@@ -45,7 +45,7 @@ const precomputerRoot = path.resolve(import.meta.dirname, '..', '..')
 const markdownPathsJsonPath = path.join(precomputerRoot, 'src', 'assets', 'markdown-paths.json')
 const markdownPathsJsonPromise = fsPromises.readFile(markdownPathsJsonPath, 'utf-8')
 
-export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<RfcCommon[]>) => {
+export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<RfcCommon[]>, allSubseries: Readonly<SubseriesCommon[]>) => {
   const markdownPathsJson = await markdownPathsJsonPromise
   const markdownPaths = JSON.parse(markdownPathsJson)
   if (!Array.isArray(markdownPaths) || !markdownPaths.every(markdownPath => typeof markdownPath === 'string')) {
@@ -83,10 +83,21 @@ export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<Rf
             return {
               url: rfcFormatPathBuilder(rfc, format.format),
               changefreq: EnumChangefreq.MONTHLY, // assume that these change less frequently
-              priority: 0.2 // note lower priority than info route RFCs
+              priority: 0.2 // note lower priority than /info/ route RFCs
             }
           })
       ]
+    }),
+    ...allSubseries.flatMap((subseries): SitemapItemLoose[] => {
+      return [
+        {
+          url: `${websiteOrigin}${subseriesPathBuilder(subseries)}`,
+          changefreq: EnumChangefreq.MONTHLY,
+          
+          priority: 0.3
+        },
+      ]
+
     })]
 
   const sitemapFiles: [string, string][] = []
