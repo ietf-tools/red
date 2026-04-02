@@ -1,53 +1,89 @@
 <template>
   <HoverCardRoot v-model:open="isHoverCardOpen">
     <HoverCardTrigger as-child>
-      <a v-if="props.href?.startsWith('#')" v-bind="props" @focus="loadRfc" @mouseover="loadRfc"
-        @blur="isHoverCardOpen = false">
+      <a
+        v-if="props.href?.startsWith('#')"
+        v-bind="props"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
+        @blur="isHoverCardOpen = false"
+      >
         <slot />
       </a>
-      <NuxtLink v-else v-bind="propsWithHrefAsTo" @focus="loadRfc" @mouseover="loadRfc" @blur="isHoverCardOpen = false">
+      <NuxtLink
+        v-else
+        v-bind="propsWithHrefAsTo"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
+        @blur="isHoverCardOpen = false"
+      >
         <slot />
       </NuxtLink>
     </HoverCardTrigger>
     <HoverCardPortal>
       <HoverCardContent
-        class="w-[300px] h-[225px] border shadow-2xl overflow-x-hidden rounded-md max-w-xs bg-white dark:bg-black border-gray-400 dark:border-white px-2 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all">
+        :side="props.side"
+        class="w-[300px] h-[225px] border shadow-2xl overflow-x-hidden rounded-md max-w-xs bg-white dark:bg-black border-gray-400 dark:border-white px-2 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
+      >
         <div v-if="rfc">
-          <div v-if="rfcId"
-            class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-4 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl">
+          <div
+            v-if="rfcId"
+            class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-4 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl"
+          >
             <component :is="formatTitleAsVNode(`rfc${rfcId.number}`)" />
             Preview
           </div>
           <RFCRouterLinkPreview :rfc="rfc" />
         </div>
-        <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
+        <RFCRouterLinkLoadingStatus
+          v-else
+          :loading-status="loadingStatus"
+        />
         <HoverCardArrow class="fill-gray-200 stroke-gray-500 -mt-[1px]" />
       </HoverCardContent>
     </HoverCardPortal>
   </HoverCardRoot>
 
-  <span v-if="hasTouchStore.hasTouch === true" class="inline">
+  <span
+    v-if="hasTouchStore.hasTouch === true"
+    class="inline"
+  >
     <DialogRoot v-model:open="isDialogOpen">
-      <DialogTrigger class="ml-1 px-1 align-baseline hide-in-preformatted-text" @focus="loadRfc" @mouseover="loadRfc">
-        <Icon name="fluent:preview-link-16-regular" aria-label="Link Preview" />
+      <DialogTrigger
+        class="ml-1 px-1 align-baseline hide-in-preformatted-text"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
+      >
+        <Icon
+          name="fluent:preview-link-16-regular"
+          aria-label="Link Preview"
+        />
       </DialogTrigger>
       <DialogPortal>
         <DialogOverlay class="bg-black/10 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
         <DialogContent
-          class="data-[state=open]:animate-enterFromBottom rounded-t-xl data-[state=closed]:animate-exitToBottom fixed w-full max-w-md m-x-auto h-[50vh] bottom-0 right-0 shadow-[0_-5px_25px_rgba(0,0,0,0.25)] dark:shadow-[-5px_-5px_25px_rgba(11,140,197,0.25)] text-black bg-white dark:bg-black dark:text-white border-t-1 border-gray-400 dark:border-gray-600 overflow-y-scroll z-100">
+          class="data-[state=open]:animate-enterFromBottom rounded-t-xl data-[state=closed]:animate-exitToBottom fixed w-full max-w-md m-x-auto h-[50vh] bottom-0 right-0 shadow-[0_-5px_25px_rgba(0,0,0,0.25)] dark:shadow-[-5px_-5px_25px_rgba(11,140,197,0.25)] text-black bg-white dark:bg-black dark:text-white border-t-1 border-gray-400 dark:border-gray-600 overflow-y-scroll z-100"
+        >
           <DialogClose class="fixed right-0 py-[10px] px-3 pb-3">
             <GraphicsClose />
           </DialogClose>
           <DialogTitle
-            class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-6 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl">
+            class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-6 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl"
+          >
             <span v-if="rfcId">
               <component :is="formatTitleAsVNode(`rfc${rfcId.number}`)" />
               Preview
             </span>
           </DialogTitle>
           <DialogDescription class="mx-auto px-4">
-            <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
-            <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
+            <RFCRouterLinkPreview
+              v-if="rfc"
+              :rfc="rfc"
+            />
+            <RFCRouterLinkLoadingStatus
+              v-else
+              :loading-status="loadingStatus"
+            />
           </DialogDescription>
         </DialogContent>
       </DialogPortal>
@@ -66,11 +102,13 @@ import type { LoadingStatus } from '~/utilities/loading-status'
 import type { VueStyleClass } from '~/utilities/vue'
 import { RfcCommonSchema, type RfcCommon } from '~/utilities/rfc-validators'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   href: string
   id?: string
   class?: VueStyleClass
-}>()
+  side?: 'left' | 'bottom'
+}>(), { side: 'bottom' })
+
 const hasTouchStore = useHasTouchStore()
 const rfc = ref<RfcCommon | undefined>()
 const isDialogOpen = ref<boolean>(false)
