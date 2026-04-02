@@ -148,7 +148,7 @@ const breadcrumbItems: BreadcrumbItem[] = [{ url: '/', label: 'Home' }]
 
 const isModalOpen = ref(false)
 
-const canonicalUrl = infoSeriesPathBuilder(sanitisedId.value)
+const canonicalPath = infoSeriesPathBuilder(sanitisedId.value)
 
 // see https://github.com/ietf-tools/red/issues/196
 const pageTitle =
@@ -161,9 +161,11 @@ const resourceTimestampDatetime =
     DateTime.fromISO(rfcBucketHtmlDocument.value.timestampIso)
     : undefined
 
+const publicSiteOrigin = usePublicSiteUrlOrigin()
+
 useRfcEditorHead({
   title: pageTitle,
-  canonicalUrl,
+  canonicalPath,
   description: rfcBucketHtmlDocument.value?.rfc.abstract ?? '',
   modifiedDateTime:
     rfcBucketHtmlDocument.value?.rfc.published ?
@@ -181,6 +183,6 @@ useRfcEditorHead({
         }
       ]
       : undefined,
-  googleScholarMetadata: rfcBucketHtmlDocument.value ? rfcCommonToGoogleScholar(rfcBucketHtmlDocument.value.rfc) : undefined
+  googleScholarMetadata: rfcBucketHtmlDocument.value ? rfcCommonToGoogleScholar(rfcBucketHtmlDocument.value.rfc, publicSiteOrigin) : undefined
 })
 </script>

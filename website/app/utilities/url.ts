@@ -93,7 +93,7 @@ export const useIadReportsPathBuilder = (IADPath: string) => {
  * this assumes that a PDF exists. It doesn't check in advance.
  */
 export const useRfcPdfPathBuilder = (rfcNumber: number) => {
-  return `${usePublicSiteUrlOrigin()}/rfc/rfc${rfcNumber}.pdf` as const
+  return `/rfc/rfc${rfcNumber}.pdf` as const
 }
 
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'

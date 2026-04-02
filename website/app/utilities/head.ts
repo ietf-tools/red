@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { useHead } from 'nuxt/app'
-import { linkPreviewImageUrlBuilder, faviconPathBuilder, useRfcPdfPathBuilder, metaThumbnailPathBuilder } from './url'
+import { linkPreviewImageUrlBuilder, faviconPathBuilder, useRfcPdfPathBuilder, metaThumbnailPathBuilder, RSS_PATH, ATOM_PATH, usePublicSiteUrlOrigin } from './url'
 import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import {
   OPENGRAPH_DIMENSIONS,
@@ -22,7 +22,7 @@ const SITE_NAME = 'RFC Editor'
 type UseRfcEditorProps = {
   title: string
   description?: string
-  canonicalUrl: string
+  canonicalPath: string
   /**
    * Markdown pages and RFCs are considered 'articles'
    */
@@ -41,25 +41,27 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
   const formattedTitle = formatTitle(props.title)
   const newProps: UseRfcEditorProps = { ...props, title: formattedTitle }
 
+  const publicSiteOrigin = usePublicSiteUrlOrigin()
+
   useHead({
     title: formattedTitle,
     meta: [
       ...buildGenericMetaTags(newProps),
-      ...buildOpenGraphMetaTags(newProps),
-      // ...buildTwitterMetaTags(newProps),
+      ...buildOpenGraphMetaTags(newProps, publicSiteOrigin),
       ...buildResourceTimestamps(newProps),
-      ...buildGoogleScholarMetaTags(newProps)
+      ...buildGoogleScholarMetaTags(newProps),
     ].map(allowDuplicateNames),
     link: [
-      { rel: 'canonical', href: props.canonicalUrl },
-      ...buildFaviconLinks()
+      buildCanonical(newProps, publicSiteOrigin),
+      ...buildFaviconLinks(),
+      ...buildFeedAutodiscovery(publicSiteOrigin)
     ],
     noscript: [
       {
         /**
          * We never want <noscript> content to appear in search results, so we'll use the
          * `data-nosnippet` as a hint to Googlebot etc to exclude it from search results
-         * See this related DataTracker issue https://github.com/ietf-tools/datatracker/issues/9667
+         * See related DataTracker issue https://github.com/ietf-tools/datatracker/issues/9667
          **/
         'data-nosnippet': "true",
         innerHTML: 'Your browser JavaScript is disabled. Most of this site works without it, but some features —like search— require it. Please enable JavaScript and reload the page.',
@@ -79,7 +81,7 @@ const formatTitle = (title?: string) => {
   )
 }
 
-const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter', customThumbnail?: string) => {
+const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter', publicSiteOrigin: string, customThumbnail?: string) => {
   const dimensions: Record<typeof mode, WidthHeight> = {
     opengraph: OPENGRAPH_DIMENSIONS,
     twitter: TWITTER_DIMENSIONS
@@ -88,7 +90,9 @@ const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter', customThumbnail?
   if (!widthHeight || !widthHeight[0] || !widthHeight[1]) {
     throw Error(`Cannot find dimensions from mode ${mode}, ${widthHeight}`)
   }
-  const url = customThumbnail ? metaThumbnailPathBuilder(customThumbnail) : linkPreviewImageUrlBuilder(widthHeight[0], widthHeight[1])
+  const path = customThumbnail ? metaThumbnailPathBuilder(customThumbnail) : linkPreviewImageUrlBuilder(widthHeight[0], widthHeight[1])
+
+  const url = new URL(path, publicSiteOrigin).toString()
 
   return {
     url,
@@ -111,9 +115,10 @@ type MetaTag = {
   key?: string
 }
 
-const buildOpenGraphMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
-  const { authors, publishedDateTime, customThumbnail, modifiedDateTime, customThumbnailAltText, description, contentType } = props
-  const linkPreviewImage = linkPreviewImageBuilder('opengraph', customThumbnail)
+const buildOpenGraphMetaTags = (props: UseRfcEditorProps, publicSiteOrigin: string): MetaTag[] => {
+  const { authors, publishedDateTime, customThumbnail, modifiedDateTime, customThumbnailAltText, description, contentType, canonicalPath } = props
+  const linkPreviewImage = linkPreviewImageBuilder('opengraph', publicSiteOrigin, customThumbnail)
+  const canonicalUrl = new URL(canonicalPath, publicSiteOrigin).toString()
 
   const metaTags: MetaTag[] = [
     {
@@ -122,7 +127,7 @@ const buildOpenGraphMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
     },
     {
       property: 'og:url',
-      content: props.canonicalUrl
+      content: canonicalUrl
     },
     {
       property: 'og:image',
@@ -193,41 +198,6 @@ const buildOpenGraphMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
   return metaTags
 }
 
-// const buildTwitterMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
-//   const linkPreviewImage = linkPreviewImageBuilder('twitter')
-//   const metaTags: MetaTag[] = [
-//     {
-//       name: 'twitter:title',
-//       content: props.title
-//     },
-//     {
-//       name: 'twitter:image',
-//       content: linkPreviewImage.url
-//     },
-//     {
-//       name: 'twitter:image:alt',
-//       content: IMAGE_PREVIEW_ALT_TEXT
-//     },
-//     {
-//       name: 'twitter:image:width',
-//       content: linkPreviewImage.widthHeight[0]?.toString() ?? '1024'
-//     },
-//     {
-//       name: 'twitter:image:height',
-//       content: linkPreviewImage.widthHeight[1]?.toString() ?? '1024'
-//     }
-//   ]
-
-//   if (props.description) {
-//     metaTags.push({
-//       name: 'twitter:description',
-//       content: props.description
-//     })
-//   }
-
-//   return metaTags
-// }
-
 const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
   const metaTags: MetaTag[] = [
     {
@@ -288,9 +258,14 @@ const FAVICON_DIMENSIONS: [number, number][] = [
 type LinkTag = {
   // extracting types from unhead is hard so we'll just make some similar types here
   // this typing isn't exhaustive -- change it as needed
-  rel: 'icon'
-  type: 'image/png'
-  sizes: `${number}x${number}`
+  rel: 'canonical' | 'icon' | 'alternate'
+  type?: 'image/png'
+  | 'text/xml'
+  | 'application/xml'
+  | 'application/rss+xml' // not IANA registered but W3C recommended https://validator.w3.org/feed/docs/warning/UnexpectedContentType.html
+  | 'application/atom+xml' // IANA registered
+  sizes?: `${number}x${number}`
+  title?: string
   href: string
 }
 
@@ -379,7 +354,7 @@ type GoogleScholarMetadata = {
   citation_pdf_url?: string // eg "https://www.rfc-editor.org/rfc/pdfrfc/rfc6376.txt.pdf"
 }
 
-export const rfcCommonToGoogleScholar = (rfc: RfcCommon): GoogleScholarMetadata => {
+export const rfcCommonToGoogleScholar = (rfc: RfcCommon, publicSiteOrigin: string): GoogleScholarMetadata => {
   const citation_author = rfc.authors.map(author => author.titlepage_name).filter((name) => {
     return typeof name === 'string'
   })
@@ -393,8 +368,8 @@ export const rfcCommonToGoogleScholar = (rfc: RfcCommon): GoogleScholarMetadata 
   const identifierIssn = rfc.identifiers?.find(identifier => identifier.type === 'issn')
 
   const pdfFormat = rfc.formats.find(format => format.format === 'pdf')
-
-  const citation_pdf_url = pdfFormat ? useRfcPdfPathBuilder(rfc.number) : undefined
+  const citation_pdf_path = pdfFormat ? useRfcPdfPathBuilder(rfc.number) : undefined
+  const citation_pdf_url = citation_pdf_path ? new URL(citation_pdf_path, publicSiteOrigin).toString() : undefined
 
   return {
     citation_author,
@@ -405,6 +380,28 @@ export const rfcCommonToGoogleScholar = (rfc: RfcCommon): GoogleScholarMetadata 
     citation_technical_report_number: `rfc${rfc.number}`,
     citation_pdf_url,
   }
+}
+
+const buildCanonical = ({ canonicalPath }: UseRfcEditorProps, publicSiteOrigin: string): LinkTag => {
+  const canonicalUrl = new URL(canonicalPath, publicSiteOrigin).toString()
+  return { rel: 'canonical', href: canonicalUrl }
+}
+
+const buildFeedAutodiscovery = (publicSiteOrigin: string): LinkTag[] => {
+  return [
+    {
+      rel: 'alternate',
+      type: 'application/rss+xml', // not IANA registered but W3C recommended https://validator.w3.org/feed/docs/warning/UnexpectedContentType.html
+      title: 'RFC RSS Feed',
+      href: new URL(RSS_PATH, publicSiteOrigin).toString()
+    },
+    {
+      rel: 'alternate',
+      type: 'application/atom+xml',
+      title: 'RFC ATOM Feed',
+      href: new URL(ATOM_PATH, publicSiteOrigin).toString()
+    }
+  ]
 }
 
 /**

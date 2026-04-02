@@ -193,7 +193,7 @@ const homepageLatest = computed((): RfcCommon[] => {
 
 useRfcEditorHead({
   title: '',
-  canonicalUrl: publicSiteUrlOrigin,
+  canonicalPath: publicSiteUrlOrigin,
   description:
     'The official home of RFCs. RFCs outline computer networking and Internet foundations, including Internet Standards and historical or informative content.',
   contentType: 'website'

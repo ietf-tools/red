@@ -1,30 +1,48 @@
 <template>
   <BodyLayoutDocument>
     <template #sidebar>
-      <div v-if="subseriesDocument" class="lg:min-w-[300px]">
+      <div
+        v-if="subseriesDocument"
+        class="lg:min-w-[300px]"
+      >
         <p v-if="subseriesDocument.type === 'bcp'">
-          BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs related to a specific IETF process or recommended guidelines.
+          BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs
+          related to a specific IETF process or recommended guidelines.
         </p>
         <p v-else-if="subseriesDocument.type === 'std'">
-          STDs are stable identifiers for "Internet Standards." An STD may consist of a single RFC or a group of RFCs related to a specific protocol.
+          STDs are stable identifiers for "Internet Standards." An STD may consist of a single RFC or a group of RFCs
+          related to a specific protocol.
         </p>
         <p v-else-if="subseriesDocument.type === 'fyi'">
-          FYIs are stable identifiers for a series of "For Your Information" documents. An FYI consists of a single RFC on general interest topics relating to the Internet. The FYI subseries was retired in 2011.
+          FYIs are stable identifiers for a series of "For Your Information" documents. An FYI consists of a single RFC
+          on general interest topics relating to the Internet. The FYI subseries was retired in 2011.
         </p>
       </div>
     </template>
     <template v-if="subseriesDocumentError">
       <div class="container mx-auto">
-        <Alert level="1" variant="warning" heading="Error">
+        <Alert
+          level="1"
+          variant="warning"
+          heading="Error"
+        >
           {{ subseriesDocumentError }}
         </Alert>
       </div>
     </template>
 
     <div class="min-h-screen">
-      <div v-if="subseriesDocument" class="mt-3 flex flex-col gap-4">
-        <RFCCard v-for="rfc in subseriesDocument.contents" :key="rfc.number" :rfc="rfc" heading-level="3"
-          :show-abstract="true" />
+      <div
+        v-if="subseriesDocument"
+        class="mt-3 flex flex-col gap-4"
+      >
+        <RFCCard
+          v-for="rfc in subseriesDocument.contents"
+          :key="rfc.number"
+          :rfc="rfc"
+          heading-level="3"
+          :show-abstract="true"
+        />
       </div>
     </div>
   </BodyLayoutDocument>
@@ -78,7 +96,7 @@ if (subseriesDocumentError.value) {
   })
 }
 
-const canonicalUrl = infoSeriesPathBuilder(sanitisedId.value)
+const canonicalPath = infoSeriesPathBuilder(sanitisedId.value)
 
 const lastRfcPublished = computed(() => {
   if (!subseriesDocument.value) return ''
@@ -94,7 +112,7 @@ const pageDescription = subseriesDocument.value ? `${subseriesDocument.value.typ
 
 useRfcEditorHead({
   title: pageTitle,
-  canonicalUrl,
+  canonicalPath,
   description: pageDescription,
   modifiedDateTime: lastRfcPublished.value !== '' ? lastRfcPublished.value : undefined,
   contentType: 'article'

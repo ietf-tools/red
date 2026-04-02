@@ -296,7 +296,7 @@ definePageMeta({
 
 useRfcEditorHead({
   title: 'Search',
-  canonicalUrl: searchPathBuilder({}),
+  canonicalPath: searchPathBuilder({}),
   description: 'Search RFCs by number, title, subseries, author, etc.',
   contentType: 'website'
 })

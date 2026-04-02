@@ -346,7 +346,7 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
 
   await fsPromises.writeFile(
     publicPathsForPrecomputer,
-    JSON.stringify(markdownPublicPaths, null, 2)
+    JSON.stringify(markdownPublicPaths.sort(), null, 2)
   )
 
   // Generates type MarkdownValidHrefs

@@ -72,7 +72,6 @@ if (error.value || page.value === null) {
 }
 
 const canonicalPath = `/${normalizedSlug}/`
-const canonicalUrl = `${usePublicSiteUrlOrigin()}${canonicalPath}`
 
 if (route.fullPath !== canonicalPath) {
     await navigateTo({
@@ -113,7 +112,7 @@ if (thisRouteContentMetadata) {
 
 useRfcEditorHead({
     title: page.value?.title ?? '',
-    canonicalUrl,
+    canonicalPath,
     description: page.value?.description ?? '',
     modifiedDateTime,
     contentType: 'article'
