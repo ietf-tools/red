@@ -102,13 +102,10 @@ fastify.get('/api/v1/favicon/:slug.png', async (request, reply) => {
   }
 })
 
-
-
 fastify.get('/api/v1/info-subseries/:subseriesName.json', async (request, reply) => {
   if (request.params && typeof request.params === 'object' && 'subseriesName' in request.params && typeof request.params.subseriesName === 'string') {
     const subseriesQueryName = parseSubseriesName(request.params.subseriesName)
     const api = getApiClient()
-    // FIXME: this is inefficient, but we can't query by specific subseries just the 'type'
     const frozenAllSubseries = await getAllSubseries({ api, type: subseriesQueryName.type })
     const subseriesCommonList = await renderAllSubseries(frozenAllSubseries)
     const queriedSubseries = subseriesCommonList.find(subseries => subseries.type === subseriesQueryName.type && subseries.number === subseriesQueryName.number)

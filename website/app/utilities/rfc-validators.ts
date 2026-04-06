@@ -296,7 +296,6 @@ export type DocumentPojo = NodePojo[]
 
 const MaxPreformattedLineLengthSchema = z.object({
   max: z.number(),
-  maxWithAnchorSuffix: z.number()
 })
 export type MaxPreformattedLineLengthSchemaType = z.infer<
   typeof MaxPreformattedLineLengthSchema

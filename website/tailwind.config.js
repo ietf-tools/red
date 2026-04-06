@@ -3,6 +3,7 @@ const plugin = require('tailwindcss/plugin')
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: 'class',
+  safeLisft: ['text-blue-300', 'dark:text-blue-100']
   theme: {
     extend: {
       screens: {

@@ -7,7 +7,7 @@
     ["/rfc-index-100d.html", "/rfc-index-100d/"],
     ["/status_changes.php", "/status-changes/"],
     ["/all_clusters.php", "/all_clusters/"],
-    ["/standards", "/standards/"],
+    ["/standards", "/search/?status=Internet+Standard"],
     ["/errata.php", "https://errata.rfc-editor.org"],
     ["/source-definitions", "/series/rfc-tips/"],
     ["/how-to-verify", "/series/rfc-errata/"],

@@ -414,38 +414,7 @@ export const getXml2RfcMaxLineLength = async (
     DEFAULT_MAX_LINE_LENGTH
   )
 
-  /**
-   * Counts max line length, but also counts the number of <a> links
-   * in the line so that we can account for Red's use of buttons following
-   * links when in responsive/touch mode. We allocate ANCHOR_SUFFIX_CHAR_WIDTH
-   * chars per link in a line.
-   *
-   * This means that the max line length can vary between touch and touchless
-   * interfaces.
-   *
-   * FIXME: this feature isn't used anymore. delete it.
-   */
-  const ANCHOR_SUFFIX_CHAR_WIDTH = 3
-  const domParser = await getDOMParser()
-  const maxWithAnchorSuffix = pres.reduce(
-    (prevMaxLineLength, pre) =>
-      Math.max(
-        prevMaxLineLength,
-        ...pre.innerHTML.split('\n').map((lineHTML) => {
-          const lineDom = domParser.parseFromString(
-            `<div>${lineHTML}</div>`,
-            'text/html'
-          )
-          const innerText = getInnerText(lineDom.documentElement)
-          const anchors = lineDom.querySelectorAll('a')
-          return innerText.length + anchors.length * ANCHOR_SUFFIX_CHAR_WIDTH
-        })
-      ),
-    DEFAULT_MAX_LINE_LENGTH
-  )
-
   return {
-    max,
-    maxWithAnchorSuffix
+    max
   }
 }

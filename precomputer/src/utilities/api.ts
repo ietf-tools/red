@@ -59,7 +59,7 @@ export const getApiClient = (): ApiClient => {
   console.log('Using local API', localServer)
 
   const headers: ApiClient['Config']['headers'] = {
-    'X-Api-Key': 'redtoken' // FIXME: hardcoded extremely secure token
+    'X-Api-Key': 'redtoken'
   }
 
   return new ApiClient({

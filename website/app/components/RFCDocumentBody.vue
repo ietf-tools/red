@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col">
-    <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
+    <Breadcrumbs
+      :breadcrumb-items="breadcrumbItems"
+      class="flex-1"
+    />
     <RFCDocumentMobileInfoButton @click="isModalOpen = true">
       Info
     </RFCDocumentMobileInfoButton>
@@ -10,7 +13,10 @@
     level="1"
     class="mb-2 ml-2 px-0 print:mt-5 print:text-lg print:border-b-2 print:border-black print:text-center"
   >
-    <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title />
+    <RFCTitle
+      :rfc="props.rfcBucketHtmlDocument.rfc"
+      hide-title
+    />
     {{ SPACE }}
     <RFCTitleSubseries
       :rfc="props.rfcBucketHtmlDocument.rfc"
@@ -38,9 +44,7 @@
       class="inline-block"
     >
       <RFCDocumentAuthor :author="author" />
-      <template
-        v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1"
-      >
+      <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
         {{ COMMA }} {{ NONBREAKING_SPACE }}
       </template>
     </li>
@@ -62,9 +66,7 @@
             .rfcBucketHtmlDocument.rfc.obsoleted_by"
           :key="obsoletedByItemIndex"
         >
-          <AMaybeRFCLink
-            :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)"
-          >
+          <AMaybeRFCLink :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)">
             <RFCTitle :rfc="obsoletedByItem" />
           </AMaybeRFCLink>
         </li>
@@ -72,20 +74,17 @@
     </div>
   </Alert>
 
-  <div
-    :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
-      //
-      ' leading-[1.75] ' // WCAG requires 1.5 minimum
-    }`"
-  >
+  <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base ${
+    //
+    ' leading-[1.75] ' // WCAG requires 1.5 minimum
+    }`">
     <component :is="enrichedDocument" />
   </div>
 
-  <div class="text-blue-300 dark:text-blue-100">
-    <!-- FIXME: this is to ensure tailwind includes these CSS classes and their CSS --variables for color which we'll use in `rfc-plaintext.css`, but there must be a better way of doing this -->
-  </div>
-
-  <RFCMobileBanner :rfc="rfcBucketHtmlDocument.rfc" :is-fixed="true" />
+  <RFCMobileBanner
+    :rfc="rfcBucketHtmlDocument.rfc"
+    :is-fixed="true"
+  />
 </template>
 
 <script setup lang="ts">
