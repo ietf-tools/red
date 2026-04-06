@@ -13,6 +13,7 @@ import { uploadFavicons } from '../utilities/favicons.ts'
 import { uploadRobotsTxt } from '../utilities/robots-txt-etc.ts'
 import { assertIsString } from '../utilities/typescript.ts'
 import { uploadSitemapXmls } from '../utilities/sitemap.ts'
+import { uploadRfcIndexXsd } from './rfc-index-xsd.ts'
 
 const RFC_NUMBER_MINIMUM_CHAR_WIDTH = 5 // for Red the default width is 5 chars to handle eg RFC10000 (aka the RFC10k problem).
 
@@ -39,6 +40,7 @@ export const indices = async ({ api, }: Props): Promise<boolean> => {
     uploadRobotsTxt(websiteOrigin),
     uploadSitemapXmls(websiteOrigin, allRfcs, allSubseries),
     uploadMetaThumbnails(),
+    uploadRfcIndexXsd(),
     uploadFavicons(),
   ])
 
