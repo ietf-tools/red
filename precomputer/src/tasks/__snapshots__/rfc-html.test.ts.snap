@@ -157571,7 +157571,6 @@ See related discussions here ( https://mailarchive.ietf.org/arch/msg/quic/M3j4Us
   ],
   "maxPreformattedLineLength": {
     "max": 62,
-    "maxWithAnchorSuffix": 62,
   },
   "rfc": {
     "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
