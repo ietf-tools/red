@@ -35,4 +35,5 @@ Further information on how errata reports are handled exists in:
 
 ### Search for Errata
 
-FIXME: search form for errata
+::ErrataSiteSearchLink
+::

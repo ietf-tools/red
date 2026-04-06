@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-[100vh]">
+    <div class="min-h-[100vh] mb-16">
         <BodyLayoutDocument :class="{ 'lg:pr-[300px]': !showToc }">
             <template #sidebar>
                 <TableOfContentsMarkdownDesktop
@@ -29,6 +29,7 @@ import { DateTime } from 'luxon'
 import _contentMetadata from '../../generated/content-metadata.json'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import {
+    closeModalAndScrollToId,
     nuxtContentTocToRfcEditorToc,
     tocKey
 } from '~/utilities/tableOfContents'
@@ -108,6 +109,10 @@ let modifiedDateTime: DateTime | undefined = undefined
 if (thisRouteContentMetadata) {
     modifiedDateTime = DateTime.fromISO(thisRouteContentMetadata.mtime)
 }
+
+const handleCloseAndNavigate = (id: string) => { }
+
+provide(closeModalAndScrollToId, handleCloseAndNavigate)
 
 useRfcEditorHead({
     title: page.value?.title ?? '',
