@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme';
-import { useRfcEditorErrataSearchUrl } from '~/utilities/url';
+import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { useRfcEditorErrataSearchUrl } from '~/utilities/url'
 
 const errataSiteSearchUrl = useRfcEditorErrataSearchUrl()
 </script>

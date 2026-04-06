@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme';
-import { useQueueUrlOrigin } from '~/utilities/url';
+import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { useQueueUrlOrigin } from '~/utilities/url'
 
 const queueUrl = useQueueUrlOrigin()
 </script>
