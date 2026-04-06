@@ -152,8 +152,7 @@ export const rfcBucketPdfToRfcDocument = async (
     documentHtmlObj: rfcDocumentToPojo(Array.from(dom.body.childNodes)),
     maxPreformattedLineLength: {
       // won't be used for a PDF document
-      max: 80,
-      maxWithAnchorSuffix: 80
+      max: 80
     },
     timestampIso: DateTime.now().toUTC().toISO()
   }

@@ -67,7 +67,6 @@ export const rfcBucketHtmlToRfcDocument = async (
 
   let maxPreformattedLineLength: MaxPreformattedLineLengthSchemaType = {
     max: 80,
-    maxWithAnchorSuffix: 80
   }
 
   let rfcDocument: Node[] = []
