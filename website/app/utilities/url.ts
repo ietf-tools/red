@@ -83,6 +83,9 @@ export const useDashboardUrlOrigin = () => {
 export const useRfcEditorErrataSearchUrl = () => {
   return `${useErrataUrlOrigin()}/search/`
 }
+export const useRfcEditorQueueClustersUrl = () => {
+  return `${useQueueUrlOrigin()}/clusters/`
+}
 export const useMaterialsPathBuilder = (materialsPath: string) => {
   return `${useMaterialsUrlOrigin()}${materialsPath}` as const
 }

@@ -12,7 +12,8 @@ See:
 
 ## Publication Queue
 
-FIXME: embed https://www.rfc-editor.org/current_queue.php
+::QueueSiteLink
+::
 
 ## Definitions of Queue States
 
