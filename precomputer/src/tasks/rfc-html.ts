@@ -437,8 +437,9 @@ const convertHrefs = (
  * work better than unicode approaches (zero-width spaces etc) because being non-characters they
  * aren't copied to the clipboard.
  * 
- * This also means we can control breaks so if the text looks like a URL we can insert <wbr> at
- * appropriate points
+ * This also means we can control potential line breaks so if the text looks like a URL we can
+ * insert <wbr> at appropriate points, eg https://<wbr>domain/<wbr>path1/<wbr>path2?<wbr>query1=1
+ * etc which is more readable than artitrary line break points.
  **/
 export const ensureWordBreaks = (rfcDocument: Node[]): void => {
   const walk = (node: Node): void => {

@@ -3,7 +3,6 @@ import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument, getRfcHtmlMetaScreensho
 import { fetchRfcPDF, rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
 import {
   rfcHtmlJsonPathBuilder,
-  rfcJsonPathBuilder,
   rfcCommonPathBuilder,
   rfcRefPathBuilder,
   rfcMetaThumbnailPathBuilder,
@@ -11,14 +10,12 @@ import {
   getFromS3
 } from '../utilities/s3.ts'
 import { getRfcCommonCached } from '../utilities/api.ts'
-import { rfcToRfcJson } from '../utilities/rfc-json.ts'
 import { RfcCommonSchema } from '../../../website/app/utilities/rfc-validators.ts'
 import type {
   RfcBucketHtmlDocument,
   RfcCommon
 } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
-import { RfcJsonSchema } from '../utilities/rfc-json.ts'
 import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
 import {
   formatAuthor,
@@ -29,7 +26,6 @@ import { getErrataForRfc } from '../utilities/errata.ts'
 export const uploadRfcData = async (rfcNumber: number): Promise<boolean> => {
   const result = await Promise.all([
     uploadRfcHtml(rfcNumber),
-    uploadRfcJson(rfcNumber),
     uploadRfcCommonJson(rfcNumber),
     uploadRefsRef(rfcNumber),
     uploadRfcMetaThumbnail(rfcNumber)
@@ -119,18 +115,6 @@ export const getRfcMetaThumbnail = async ({ rfcNumber, getRfcCommon }: RfcMetaSc
     return htmlScreenshot
   }  
   return undefined
-}
-
-export const uploadRfcJson = async (rfcNumber: number): Promise<boolean> => {
-  const rfc = await getRfcCommonCached(rfcNumber)
-  if (rfc === null) {
-    return false
-  }
-  const rfcJSON = rfcToRfcJson(rfc)
-  validateDocument(rfcJSON, RfcJsonSchema)
-  const rfcJsonS3Path = rfcJsonPathBuilder(rfcNumber)
-  await saveToS3(rfcJsonS3Path, JSON.stringify(rfcJSON))
-  return true
 }
 
 /**
