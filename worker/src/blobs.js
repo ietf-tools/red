@@ -266,33 +266,6 @@ export async function blobsStatics(req, env) {
     // -> Fetch R2 object
     const object = await env.RED_BUCKET.get(objectPath)
     if (object) {
-      let contentType = null
-      if (mapping.to.includes('.')) {
-        const extension = mapping.to.substring(mapping.to.lastIndexOf('.'))
-        switch (extension) {
-          case '.json':
-            contentType = 'application/json;charset=utf-8'
-            break
-          case '.ico':
-            contentType = 'image/png'
-            break
-          case '.txt':
-            contentType = 'text/plain;charset=utf-8'
-            break
-          case '.xml':
-            if (mapping.from.endsWith('rfcatom.xml')) {
-              // Atom has a specific mime type
-              contentType = 'application/atom+xml;charset=utf-8'
-            } else {
-              // Note that RSS doesn't have a mime type from IANA (but Atom does!)
-              // see https://www.iana.org/assignments/media-types/media-types.xhtml
-              //
-              // per RFC 7303 don't use `text/xml` and instead use `application/xml`.
-              contentType = 'application/xml;charset=utf-8'
-            }
-            break
-        }
-      }
       return createBlobResponse(object, detectContentType(mapping.to))
     }
 
