@@ -1,4 +1,4 @@
-import { createBlobResponse, createBlobNotFoundResponse } from './helpers'
+import { createBlobResponse, createBlobNotFoundResponse, detectContentType } from './helpers'
 
 /**
  * RFC blobs
@@ -14,7 +14,7 @@ export async function blobsRfc(req, env) {
     const fileType = objectPath.split('.').at(-1)
     const object = await env.RFC_BUCKET.get(`${fileType}/${objectPath}`)
     if (object) {
-      return createBlobResponse(object)
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -36,7 +36,7 @@ export async function blobsRefs(req, env) {
       const bucketPath = `rfc-ref/${objectPath}`
       const object = await env.RED_BUCKET.get(bucketPath)
       if (object) {
-        return createBlobResponse(object, 'text/plain;charset=utf-8')
+        return createBlobResponse(object, detectContentType(objectPath))
       }
     }
 
@@ -57,7 +57,7 @@ export async function blobsApiRfcHtml(req, env) {
   if (objectPath.endsWith('.json') || objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`rfc/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'application/json;charset=utf-8')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -77,7 +77,7 @@ export async function blobsApiRfcCommon(req, env) {
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`rfc-common/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'application/json;charset=utf-8')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -97,7 +97,7 @@ export async function blobsApiInfoSubseries(req, env) {
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`rfc-common/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'application/json;charset=utf-8')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -117,7 +117,7 @@ export async function blobsApiMetaThumbnail(req, env) {
   if (objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`thumbnail/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'image/png')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -137,34 +137,11 @@ export async function blobsApiFavicon(req, env) {
   if (objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`other/favicon-${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'image/png')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
   return createBlobNotFoundResponse()
-}
-
-/**
- * API RFC JSON blobs
- */
-export async function blobsApiRfcJson(req, env) {
-  const RFC_JSON_PREFIX = '/api/v1/rfc/rfc'
-
-  if (req.normalizedPath.startsWith(RFC_JSON_PREFIX)) {
-    // -> Strip /refs/ref from path
-    const objectPath = req.normalizedPath.substring(RFC_JSON_PREFIX.length)
-
-    // -> Fetch R2 object from RED bucket
-    if (objectPath.endsWith('.json')) {
-      const bucketPath = `rfc-json/${objectPath}`
-      const object = await env.RED_BUCKET.get(bucketPath)
-      if (object) {
-        return createBlobResponse(object, 'application/json;charset=utf-8')
-      }
-    }
-
-    return createBlobNotFoundResponse()
-  }
 }
 
 /**
@@ -182,7 +159,7 @@ export async function blobsSitemap(req, env) {
       const bucketPath = `other/sitemap-${objectPath}`
       const object = await env.RED_BUCKET.get(bucketPath)
       if (object) {
-        return createBlobResponse(object, 'application/xml;charset=utf-8')
+        return createBlobResponse(object, detectContentType(objectPath))
       }
     }
 
@@ -268,34 +245,7 @@ export async function blobsStatics(req, env) {
     // -> Fetch R2 object
     const object = await env.RED_BUCKET.get(objectPath)
     if (object) {
-      let contentType = null
-      if (mapping.to.includes('.')) {
-        const extension = mapping.to.substring(mapping.to.lastIndexOf('.'))
-        switch (extension) {
-          case '.json':
-            contentType = 'application/json;charset=utf-8'
-            break
-          case '.ico':
-            contentType = 'image/png'
-            break
-          case '.txt':
-            contentType = 'text/plain;charset=utf-8'
-            break
-          case '.xml':
-            if (mapping.from.endsWith('rfcatom.xml')) {
-              // Atom has a specific mime type
-              contentType = 'application/atom+xml;charset=utf-8'
-            } else {
-              // Note that RSS doesn't have a mime type from IANA (but Atom does!)
-              // see https://www.iana.org/assignments/media-types/media-types.xhtml
-              //
-              // per RFC 7303 don't use `text/xml` and instead use `application/xml`.
-              contentType = 'application/xml;charset=utf-8'
-            }
-            break
-        }
-      }
-      return createBlobResponse(object, contentType)
+      return createBlobResponse(object, detectContentType(mapping.to))
     }
 
     return createBlobNotFoundResponse()
