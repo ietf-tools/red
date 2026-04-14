@@ -1,4 +1,4 @@
-import { createBlobResponse, createBlobNotFoundResponse } from './helpers'
+import { createBlobResponse, createBlobNotFoundResponse, detectContentType } from './helpers'
 
 /**
  * RFC blobs
@@ -14,7 +14,7 @@ export async function blobsRfc(req, env) {
     const fileType = objectPath.split('.').at(-1)
     const object = await env.RFC_BUCKET.get(`${fileType}/${objectPath}`)
     if (object) {
-      return createBlobResponse(object)
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -35,7 +35,7 @@ export async function blobsRefs(req, env) {
     if (objectPath.endsWith('.txt')) {
       const object = await env.RED_BUCKET.get(`rfc-ref/${objectPath}`)
       if (object) {
-        return createBlobResponse(object, 'text/plain;charset=utf-8')
+        return createBlobResponse(object, detectContentType(objectPath))
       }
     }
 
@@ -56,7 +56,7 @@ export async function blobsApiRfcHtml(req, env) {
   if (objectPath.endsWith('.json') || objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`rfc/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'application/json;charset=utf-8')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -76,7 +76,7 @@ export async function blobsApiRfcCommon(req, env) {
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`rfc-common/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'application/json;charset=utf-8')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -96,7 +96,7 @@ export async function blobsApiInfoSubseries(req, env) {
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`rfc-common/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'application/json;charset=utf-8')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -116,7 +116,7 @@ export async function blobsApiMetaThumbnail(req, env) {
   if (objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`thumbnail/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'image/png')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -136,7 +136,7 @@ export async function blobsApiFavicon(req, env) {
   if (objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`other/favicon-${objectPath}`)
     if (object) {
-      return createBlobResponse(object, 'image/png')
+      return createBlobResponse(object, detectContentType(objectPath))
     }
   }
 
@@ -157,7 +157,7 @@ export async function blobsApiRfcJson(req, env) {
     if (rfcNumber) {
       const object = await env.RFC_BUCKET.get(`json/rfc${rfcNumber}.json`)
       if (object) {
-        return createBlobResponse(object, 'application/json;charset=utf-8')
+        return createBlobResponse(object, detectContentType(objectPath))
       }
     }
 
@@ -180,7 +180,7 @@ export async function blobsSitemap(req, env) {
       const bucketPath = `other/sitemap-${objectPath}`
       const object = await env.RED_BUCKET.get(bucketPath)
       if (object) {
-        return createBlobResponse(object, 'application/xml;charset=utf-8')
+        return createBlobResponse(object, detectContentType(objectPath))
       }
     }
 
@@ -293,7 +293,7 @@ export async function blobsStatics(req, env) {
             break
         }
       }
-      return createBlobResponse(object, contentType)
+      return createBlobResponse(object, detectContentType(mapping.to))
     }
 
     return createBlobNotFoundResponse()

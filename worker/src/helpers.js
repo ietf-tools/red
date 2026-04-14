@@ -60,3 +60,32 @@ export function createBlobNotFoundResponse() {
     headers: { 'Content-Type': 'text/plain;charset=utf-8' }
   })
 }
+
+export function detectContentType(path) {
+  if (!path.includes('.')) {
+    return
+  }
+
+  const extension = path.substring(path.lastIndexOf('.'))
+  switch (extension) {
+    case '.json':
+      return 'application/json;charset=utf-8'
+    case '.ico':
+      return 'image/png'
+    case '.txt':
+      return 'text/plain;charset=utf-8'
+    case '.png':
+      return 'image/png'
+    case '.xml':
+      if (path.endsWith('rfcatom.xml')) {
+        // Atom has a specific mime type
+        return 'application/atom+xml;charset=utf-8'
+      } else {
+        // Note that RSS doesn't have a mime type from IANA (but Atom does!)
+        // see https://www.iana.org/assignments/media-types/media-types.xhtml
+        //
+        // per RFC 7303 don't use `text/xml` and instead use `application/xml`.
+        return 'application/xml;charset=utf-8'
+      }
+  }
+}
