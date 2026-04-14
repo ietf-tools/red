@@ -224,6 +224,18 @@ export async function blobsStatics(req, env) {
       to: 'other/rfc-index.xsd'
     },
     {
+      from: '/std/std-index.txt',
+      to: 'other/std-index.txt'
+    },
+    {
+      from: '/bcp/bcp-index.txt',
+      to: 'other/bcp-index.txt'
+    },
+    {
+      from: '/fyi/fyi-index.txt',
+      to: 'other/fyi-index.txt'
+    },
+    {
       from: '/rfcrss.xml',
       to: 'other/rfcrss.xml'
     },
