@@ -73,7 +73,7 @@ router
   .get('/auth48/*', addNormalizedPath, (req) => {
     let match = req.normalizedPath.match(/^\/auth48\/c(?<num>\d+)$/i)
     if (match?.groups?.num) {
-      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/${match.groups.num}`, 302)
+      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/C${match.groups.num}`, 302)
     }
 
     match = req.normalizedPath.match(/^\/auth48\/rfc(?<num>\d+)$/i)
