@@ -1,23 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
-import redirectsJson from './redirects.json'
-import { isMiddlewareRedirect } from './app/utilities/redirects'
-
-type RouteRules = NonNullable<
-  Parameters<typeof defineNuxtConfig>[0]['routeRules']
->
 
 const oneHourInSeconds = 60 * 60
-
-const redirects = redirectsJson.redirects
-  .filter((redirect) => redirect[0] && !isMiddlewareRedirect(redirect[0]))
-  .reduce((acc, redirect) => {
-    const [fromPath, toPathOrUrl] = redirect
-    if (typeof fromPath !== 'string' || typeof toPathOrUrl !== 'string') {
-      throw Error('Bad redirects.json file. Should only contain strings')
-    }
-    acc[fromPath] = { redirect: toPathOrUrl }
-    return acc
-  }, {} as RouteRules)
 
 // inserted in the <head> some inline JS to determine scrollbar width so that CSS can use it in calc()
 // this is intentionally inserted in the <head> so that it runs immediately in the browser
@@ -164,7 +147,6 @@ export default defineNuxtConfig({
         proxy: 'https://www.staging.rfc-editor.org/api/v1/rfc-common/**'
         // proxy: 'http://localhost:3001/api/v1/rfc-common/**'
       },
-      ...redirects,
     },
   },
   $production: {
@@ -175,7 +157,6 @@ export default defineNuxtConfig({
         swr: oneHourInSeconds,
         prerender: true
       },
-      ...redirects
     }
   }
 })
