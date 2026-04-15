@@ -50,7 +50,7 @@ router
   .get('/source-definitions', redirectTo('/series/rfc-tips/', 302))
   .get('/how-to-verify', redirectTo('/series/rfc-errata/', 302))
   .get('/ien/ien-index.html', redirectTo('/ien/ien-index/', 302))
-  .get('/current_queue.php', redirectTo('https://queue${env.ENV_DOMAIN}.rfc-editor.org', 302))
+  .get('/current_queue.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org`, 302))
 
   // Dynamic Redirects
   .get('/authors/:extra+', (req) =>
