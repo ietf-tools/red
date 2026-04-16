@@ -70,9 +70,11 @@
           >
             Abstract
           </Heading>
-          <p class="leading-snug text-gray-800 dark:text-gray-300 text-pretty">
-            {{ props.rfc.abstract }}
-          </p>
+          <div
+            class="leading-snug text-gray-800 dark:text-gray-300 text-pretty"
+            v-html="props.rfc.abstract"
+          >
+          </div>
         </div>
       </div>
     </template>

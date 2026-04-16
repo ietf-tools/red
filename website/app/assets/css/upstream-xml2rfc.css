@@ -15,10 +15,12 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 @viewport {
   zoom: 1;
 }
+
 @-ms-viewport {
   width: extend-to-zoom;
   zoom: 1;
 }
+
 /* general and mobile first */
 .ears {
   display: none;
@@ -43,81 +45,102 @@ h6 {
   margin: 0 0 0.5em 0;
   padding: 1em 0 0.5em;
 }
+
 .author {
   padding-bottom: 4px;
 }
+
 h1 {
   font-size: 26px;
   margin: 1em 0;
 }
+
 h2 {
   font-size: 22px;
-  margin-top: -20px; /* provide offset for in-page anchors */
+  margin-top: -20px;
+  /* provide offset for in-page anchors */
   padding-top: 33px;
 }
+
 h3 {
   font-size: 18px;
-  margin-top: -36px; /* provide offset for in-page anchors */
+  margin-top: -36px;
+  /* provide offset for in-page anchors */
   padding-top: 42px;
 }
+
 h4 {
   font-size: 16px;
-  margin-top: -36px; /* provide offset for in-page anchors */
+  margin-top: -36px;
+  /* provide offset for in-page anchors */
   padding-top: 42px;
 }
+
 h5,
 h6 {
   font-size: 14px;
 }
+
 #n-copyright-notice {
   border-bottom: 1px solid #ddd;
   padding-bottom: 1em;
   margin-bottom: 1em;
 }
+
 /* general structure */
 p {
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
   margin: 0 0 1em 0;
   text-align: left;
 }
+
 div {
   margin: 0;
 }
+
 .alignRight {
   margin: 1em 0;
 }
-.alignRight > *:first-child {
+
+.alignRight>*:first-child {
   border: none;
   margin: 0;
   float: right;
   clear: both;
 }
-.alignRight > *:nth-child(2) {
+
+.alignRight>*:nth-child(2) {
   clear: both;
   display: block;
   border: none;
 }
+
 svg {
   display: block;
 }
+
 @media print {
   svg {
     max-height: 850px;
     max-width: 660px;
   }
 }
+
 svg[font-family~='serif' i],
 svg [font-family~='serif' i] {
   font-family: var(--font-serif);
 }
+
 svg[font-family~='sans-serif' i],
 svg [font-family~='sans-serif' i] {
   font-family: var(--font-sans);
 }
+
 svg[font-family~='monospace' i],
 svg [font-family~='monospace' i] {
   font-family: var(--font-mono);
 }
+
 .alignCenter.art-text {
   border: 1px solid #eee;
   border-radius: 3px;
@@ -130,30 +153,37 @@ ul {
   padding: 0;
   margin: 0 0 1em 2em;
 }
+
 ol ol,
 ul ul,
 ol ul,
 ul ol {
   margin-left: 1em;
 }
+
 li {
   margin: 0 0 0.25em 0;
 }
+
 .ulCompact li {
   margin: 0;
 }
+
 ul.empty,
 .ulEmpty {
   list-style-type: none;
 }
+
 ul.empty li,
 .ulEmpty li {
   margin-top: 0.5em;
 }
+
 ul.ulBare,
 li.ulBare {
   margin-left: 0em !important;
 }
+
 ul.compact,
 .ulCompact,
 ol.compact,
@@ -162,34 +192,38 @@ ol.compact,
 }
 
 /* definition lists */
-dl > dt {
+dl>dt {
   clear: both;
   float: left;
   padding-left: var(--layout-bleed-left);
   padding-right: var(--layout-bleed-right);
 }
+
 /* 
 dl.nohang > dt {
   float: none;
 }
 */
-dl > dd {
+dl>dd {
   margin-bottom: 0.8em;
   min-height: 1.3em;
 }
-dd > p:first-child {
+
+dd>p:first-child {
   padding: 0;
 }
-dl.compact > dd,
-.dlCompact > dd {
+
+dl.compact>dd,
+.dlCompact>dd {
   margin-bottom: 0em;
 }
+
 dl.dlCompact p {
   line-height: var(--tw-leading, var(--text-base--line-height));
   margin-bottom: 0;
 }
 
-dl > dd > dl {
+dl>dd>dl {
   margin-top: 0.5em;
   margin-bottom: 0em;
 }
@@ -198,13 +232,27 @@ dl > dd > dl {
 a {
   text-decoration: none;
 }
+
 a[href] {
-  color: #22e; /* Arlen: WCAG 2019 */
+  color: var(--color-blue-150, #22e);
+  text-decoration: underline;
+  /* Arlen: WCAG 2019 */
 }
+
+h1 a[href],
+h2 a[href],
+h3 a[href],
+h4 a[href],
+h5 a[href],
+h6 a[href] {
+  text-decoration: none;
+}
+
 figcaption a[href],
 a[href].selfRef {
   color: #222;
 }
+
 /* XXX probably not this:
 a.selfRef:hover {
   background-color: transparent;
@@ -216,19 +264,24 @@ tt,
 code {
   font-family: var(--font-mono);
 }
+
 pre {
   margin: 0;
   padding: 1em;
 }
+
 img {
   max-width: 100%;
 }
+
 figure {
   margin: 0;
 }
+
 figure blockquote {
   margin: 0.8em 0.4em 0.4em;
 }
+
 figcaption {
   font-style: italic;
   margin: 0 0 1em 0;
@@ -242,19 +295,23 @@ blockquote {
   margin-left: 0;
   padding: 1.2em 2em;
 }
+
 blockquote {
   border: 1px solid #ddd;
   border-radius: 3px;
   margin: 1em 0;
 }
-blockquote > *:last-child {
+
+blockquote>*:last-child {
   margin-bottom: 0;
 }
+
 cite {
   display: block;
   text-align: right;
   font-style: italic;
 }
+
 .xref {
   overflow-wrap: normal;
 }
@@ -266,16 +323,19 @@ table {
   border-collapse: collapse;
   border: 1px solid #eee;
 }
+
 th,
 td {
   text-align: left;
   vertical-align: top;
   padding: 0.5em 0.75em;
 }
+
 th {
   text-align: left;
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 table caption {
   font-style: italic;
   margin: 0;
@@ -283,6 +343,7 @@ table caption {
   padding-right: var(--layout-bleed-right);
   text-align: left;
 }
+
 table p {
   /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
      be allowed within tables more generally, it would be far better to select on a class. */
@@ -291,7 +352,8 @@ table p {
 
 /* pilcrow */
 a.pilcrow {
-  color: #666; /* Arlen: AHDJ 2019 */
+  color: #666;
+  /* Arlen: AHDJ 2019 */
   text-decoration: none;
   visibility: hidden;
   user-select: none;
@@ -309,14 +371,16 @@ a.pilcrow:hover {
 }
 
 @media screen {
-  aside:hover > a.pilcrow,
-  p:hover > a.pilcrow,
-  blockquote:hover > a.pilcrow,
-  div:hover > a.pilcrow,
-  li:hover > a.pilcrow,
-  pre:hover > a.pilcrow {
+
+  aside:hover>a.pilcrow,
+  p:hover>a.pilcrow,
+  blockquote:hover>a.pilcrow,
+  div:hover>a.pilcrow,
+  li:hover>a.pilcrow,
+  pre:hover>a.pilcrow {
     visibility: visible;
   }
+
   a.pilcrow:hover {
     background-color: transparent;
   }
@@ -327,6 +391,7 @@ hr {
   border: 0;
   border-top: 1px solid #eee;
 }
+
 .bcp14 {
   font-variant: small-caps;
 }
@@ -340,38 +405,46 @@ hr {
   margin: 0;
   font-size: 0.9em;
 }
+
 #identifiers dt {
   width: 3em;
   clear: left;
 }
+
 #identifiers dd {
   float: left;
   margin-bottom: 0;
 }
+
 /* Fix PDF info block run off issue */
 @media print {
   #identifiers dd {
     max-width: 100%;
   }
 }
+
 #identifiers .authors .author {
   display: inline-block;
   margin-right: 1.5em;
 }
+
 #identifiers .authors .org {
   font-style: italic;
 }
 
 /* The prepared/rendered info at the very bottom of the page */
 .docInfo {
-  color: #666; /* Arlen: WCAG 2019 */
+  color: #666;
+  /* Arlen: WCAG 2019 */
   font-size: 0.9em;
   font-style: italic;
   margin-top: 2em;
 }
+
 .docInfo .prepared {
   float: left;
 }
+
 .docInfo .prepared {
   float: right;
 }
@@ -382,6 +455,7 @@ hr {
   font-weight: bold;
   min-width: 7em;
 }
+
 .references dd {
   margin-left: 8em;
   overflow: auto;
@@ -405,27 +479,33 @@ hr {
   padding: 0;
   list-style: none;
 }
+
 .index ul ul {
   margin: 0;
 }
+
 .index li {
   margin: 0;
   text-indent: -2em;
   padding-left: 2em;
   padding-bottom: 5px;
 }
+
 .indexIndex {
   margin: 0.5em 0 1em;
 }
+
 .index a {
   font-weight: 700;
 }
+
 /* make the index two-column on all but the smallest screens */
 @media (min-width: 600px) {
   .index ul {
     -moz-column-count: 2;
     -moz-column-gap: 20px;
   }
+
   .index ul ul {
     -moz-column-count: 1;
     -moz-column-gap: 0;
@@ -443,16 +523,20 @@ address.vcard .nameRole {
   font-weight: 700;
   margin-left: 0;
 }
+
 address.vcard .label {
   font-family: var(--font-sans);
   margin: 0.5em 0;
 }
+
 address.vcard .type {
   display: none;
 }
+
 .alternative-contact {
   margin: 1.5em 0 1em;
 }
+
 hr.addr {
   border-top: 1px dashed;
   margin: 0;
@@ -467,39 +551,51 @@ hr.addr {
   right: 0.2em;
   padding: 0.2em;
   content: 'The RFC Editor will remove this note';
-  color: #9e2a00; /* Arlen: WCAG 2019 */
-  background-color: #ffd; /* Arlen: WCAG 2019 */
+  color: #9e2a00;
+  /* Arlen: WCAG 2019 */
+  background-color: #ffd;
+  /* Arlen: WCAG 2019 */
 }
+
 .rfcEditorRemove {
   position: relative;
   padding-top: 1.8em;
   border-radius: 3px;
 }
+
 .cref {
   padding: 2px 4px;
 }
+
 .crefSource {
   font-style: italic;
 }
+
 /* alternative layout for smaller screens */
 @media screen and (max-width: 1023px) {
   body {
     padding-top: 2em;
   }
+
   #title {
     padding: 1em 0;
   }
+
   h1 {
     font-size: 24px;
   }
+
   h2 {
     font-size: 20px;
-    margin-top: -18px; /* provide offset for in-page anchors */
+    margin-top: -18px;
+    /* provide offset for in-page anchors */
     padding-top: 38px;
   }
+
   #identifiers dd {
     max-width: 60%;
   }
+
   #toc {
     position: fixed;
     z-index: 2;
@@ -510,6 +606,7 @@ hr.addr {
     background-color: inherit;
     border-bottom: 1px solid #ccc;
   }
+
   #toc h2 {
     margin: -1px 0 0 0;
     padding: 4px 0 4px 6px;
@@ -520,6 +617,7 @@ hr.addr {
     color: white;
     cursor: pointer;
   }
+
   #toc h2::before {
     /* css hamburger */
     float: right;
@@ -534,6 +632,7 @@ hr.addr {
       0 8px 0 0 white;
     content: '';
   }
+
   #toc nav {
     display: none;
     padding: 0.5em 1em 1em;
@@ -551,6 +650,7 @@ hr.addr {
     padding-left: 1.5em;
     padding-right: 29em;
   }
+
   #toc {
     position: fixed;
     top: 42px;
@@ -560,6 +660,7 @@ hr.addr {
     padding: 0 1em;
     z-index: 1;
   }
+
   #toc h2 {
     border-top: none;
     border-bottom: 1px solid #ddd;
@@ -568,6 +669,7 @@ hr.addr {
     margin: 0;
     padding: 0.25em 1em 1em 0;
   }
+
   #toc nav {
     display: block;
     height: calc(90vh - 84px);
@@ -575,6 +677,7 @@ hr.addr {
     padding: 0.5em 0 0;
     overflow: auto;
   }
+
   img {
     /* future proofing */
     max-width: 100%;
@@ -587,21 +690,26 @@ hr.addr {
   body {
     width: 100%;
   }
+
   p {
     orphans: 3;
     widows: 3;
   }
+
   #n-copyright-notice {
     border-bottom: none;
   }
+
   #toc,
   #n-introduction {
     page-break-before: always;
   }
+
   #toc {
     border-top: none;
     padding-top: 0;
   }
+
   h1,
   h2,
   h3,
@@ -610,16 +718,19 @@ hr.addr {
   h6 {
     page-break-after: avoid;
   }
-  h2 + *,
-  h3 + *,
-  h4 + *,
-  h5 + *,
-  h6 + * {
+
+  h2+*,
+  h3+*,
+  h4+*,
+  h5+*,
+  h6+* {
     page-break-before: avoid;
   }
+
   table {
     border: 1px solid #ddd;
   }
+
   td {
     border-top: 1px solid #ddd;
   }
@@ -655,14 +766,17 @@ hr.addr {
 
 @page :first {
   padding-top: 0;
+
   @top-left {
     content: normal;
     border: none;
   }
+
   @top-center {
     content: normal;
     border: none;
   }
+
   @top-right {
     content: normal;
     border: none;
@@ -719,6 +833,7 @@ hr.addr {
 a {
   z-index: 2;
 }
+
 /* Separate body from document info even without intervening H1 */
 section {
   clear: both;
@@ -746,6 +861,7 @@ section {
 
 /* Make the collapsed ToC header render white on gray also when it's a link */
 @media screen and (max-width: 1023px) {
+
   #toc h2 a,
   #toc h2 a:link,
   #toc h2 a:focus,
@@ -781,15 +897,17 @@ a.toplink {
 }
 
 /* Fix the dl styling to match the RFC 7992 attributes */
-dl > dt,
-dl.dlParallel > dt {
+dl>dt,
+dl.dlParallel>dt {
   float: left;
   margin-right: 1em;
 }
+
 dl.dlParallel dd {
   padding-top: 0.15em;
 }
-dl.dlNewline > dt {
+
+dl.dlNewline>dt {
   float: none;
 }
 
@@ -798,10 +916,12 @@ table td.text-left,
 table th.text-left {
   text-align: left;
 }
+
 table td.text-center,
 table th.text-center {
   text-align: center;
 }
+
 table td.text-right,
 table th.text-right {
   text-align: right;
@@ -812,6 +932,7 @@ table th.text-right {
 .alternative-contact {
   margin: 0.5em 0 0.25em 0;
 }
+
 address .non-ascii {
   margin: 0 0 0 2em;
 }
@@ -845,6 +966,7 @@ address.vcard {
 address div.left {
   text-align: left;
 }
+
 address div.right {
   text-align: right;
 }
@@ -855,10 +977,12 @@ table.right {
   margin-left: auto;
   margin-right: 0;
 }
+
 table.center {
   margin-left: auto;
   margin-right: auto;
 }
+
 table.left {
   margin-left: 0;
   margin-right: auto;
@@ -884,32 +1008,41 @@ caption a[href] {
     page-break-inside: avoid;
   }
 }
+
 /* Tweak the bcp14 keyword presentation */
 .bcp14 {
   font-variant: small-caps;
   font-weight: bold;
   font-size: 0.9em;
 }
+
 /* Tweak the invisible space above H* in order not to overlay links in text above */
 h2 {
-  margin-top: -18px; /* provide offset for in-page anchors */
+  margin-top: -18px;
+  /* provide offset for in-page anchors */
   padding-top: 31px;
 }
+
 h3 {
-  margin-top: -18px; /* provide offset for in-page anchors */
+  margin-top: -18px;
+  /* provide offset for in-page anchors */
   padding-top: 24px;
 }
+
 h4 {
-  margin-top: -18px; /* provide offset for in-page anchors */
+  margin-top: -18px;
+  /* provide offset for in-page anchors */
   padding-top: 24px;
 }
+
 /* Float artwork pilcrow to the right */
 /* Make pilcrows on dd visible */
 @media screen {
-  dd:hover > a.pilcrow {
+  dd:hover>a.pilcrow {
     visibility: visible;
   }
 }
+
 /* Make the placement of figcaption match that of a table's caption
    by removing the figure's added bottom margin */
 .alignLeft.art-text,
@@ -917,15 +1050,19 @@ h4 {
 .alignRight.art-text {
   margin-bottom: 0;
 }
+
 .alignLeft *:first-child {
   margin: 0 auto 0 0;
 }
+
 .alignCenter *:first-child {
   margin: 0 auto 0 auto;
 }
+
 .alignRight *:first-child {
   margin: 0 0 0 auto;
 }
+
 /* In print, the pilcrow won't show on hover, so prevent it from taking up space,
    possibly even requiring a new line */
 @media print {
@@ -933,6 +1070,7 @@ h4 {
     display: none;
   }
 }
+
 /* Styling for the external metadata */
 div#external-metadata {
   background-color: #eee;
@@ -940,40 +1078,49 @@ div#external-metadata {
   margin-bottom: 0.5em;
   display: none;
 }
+
 div#internal-metadata {
-  padding: 0.5em; /* to match the external-metadata padding */
+  padding: 0.5em;
+  /* to match the external-metadata padding */
 }
+
 /* Styling for title RFC Number */
 h1#rfcnum {
   clear: both;
   margin: 0 0 -1em;
   padding: 1em 0 0 0;
 }
+
 /* Make .olPercent look the same as <ol><li> */
-dl.olPercent > dd {
+dl.olPercent>dd {
   margin-bottom: 0.25em;
   min-height: initial;
 }
+
 /* Give aside some styling to set it apart */
 aside {
   border-left: 1px solid #ddd;
   margin: 1em 0 1em 2em;
   padding: 0.2em 2em;
 }
-aside > dl,
-aside > ol,
-aside > ul,
-aside > table,
-aside > p {
+
+aside>dl,
+aside>ol,
+aside>ul,
+aside>table,
+aside>p {
   margin-bottom: 0.5em;
 }
+
 /* Additional page break settings */
 @media print {
+
   figcaption,
   table caption {
     page-break-before: avoid;
   }
 }
+
 /* Font size adjustments for print */
 @media print {
   body {
@@ -981,22 +1128,30 @@ aside > p {
     line-height: normal;
     max-width: 96%;
   }
+
   h1 {
     font-size: 1.72em;
     padding-top: 1.5em;
-  } /* 1*1.2*1.2*1.2 */
+  }
+
+  /* 1*1.2*1.2*1.2 */
   h2 {
     font-size: 1.44em;
     padding-top: 1.5em;
-  } /* 1*1.2*1.2 */
+  }
+
+  /* 1*1.2*1.2 */
   h3 {
     font-size: 1.2em;
     padding-top: 1.5em;
-  } /* 1*1.2 */
+  }
+
+  /* 1*1.2 */
   h4 {
     font-size: 1em;
     padding-top: 1.5em;
   }
+
   h5,
   h6 {
     font-size: 1em;
@@ -1020,61 +1175,76 @@ aside > p {
 
 /* Sourcecode margin in print, when there's no pilcrow */
 @media print {
+
   .artwork,
-  .artwork > pre,
+  .artwork>pre,
   .sourcecode {
     margin-bottom: 1em;
   }
 }
+
 /* Avoid narrow tables forcing too narrow table captions, which may render badly */
 table {
   min-width: 20em;
 }
+
 /* ol type a */
 ol.type-a {
   list-style-type: lower-alpha;
 }
+
 ol.type-A {
   list-style-type: upper-alpha;
 }
+
 ol.type-i {
   list-style-type: lower-roman;
 }
+
 ol.type-I {
   list-style-type: upper-roman;
 }
+
 /* Apply the print table and row borders in general, on request from the RPC,
 and increase the contrast between border and odd row background slightly */
 table {
   border: 1px solid #ddd;
 }
+
 td {
   border-top: 1px solid #ddd;
 }
+
 tr {
   break-inside: avoid;
 }
-tr:nth-child(even) > td {
+
+tr:nth-child(even)>td {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* Use style rules to govern display of the TOC. */
 @media screen and (max-width: 1023px) {
   #toc nav {
     display: none;
   }
+
   #toc.active nav {
     display: block;
   }
 }
+
 /* Add support for keepWithNext */
 .keepWithNext {
   break-after: avoid-page;
   break-after: avoid-page;
 }
+
 /* Add support for keepWithPrevious */
 .keepWithPrevious {
   break-before: avoid-page;
 }
+
 /* Change the approach to avoiding breaks inside artwork etc. */
 figure,
 pre,
@@ -1084,6 +1254,7 @@ table,
   break-before: auto;
   break-after: auto;
 }
+
 /* Avoid breaks between <dt> and <dd> */
 dl {
   margin-block-start: 1em;
@@ -1091,10 +1262,12 @@ dl {
   break-before: auto;
   break-inside: auto;
 }
+
 dt {
   break-before: auto;
   break-after: avoid-page;
 }
+
 dd {
   margin-inline-start: 60px;
   break-before: avoid-page;
@@ -1102,6 +1275,7 @@ dd {
   orphans: 3;
   widows: 3;
 }
+
 span.break,
 dd.break {
   margin-bottom: 0;
@@ -1110,12 +1284,14 @@ dd.break {
   break-inside: auto;
   break-after: auto;
 }
+
 /* Undo break-before ToC */
 @media print {
   #toc {
     break-before: auto;
   }
 }
+
 /* Text in compact lists should not get extra bottom margin space,
    since that would makes the list not compact */
 ul.compact p,
@@ -1124,54 +1300,63 @@ ol.compact p,
 .olCompact p {
   margin: 0;
 }
+
 /* But the list as a whole needs the extra space at the end */
 section ul.compact,
 section .ulCompact,
 section ol.compact,
 section .olCompact {
-  margin-bottom: 1em; /* same as p not within ul.compact etc. */
+  margin-bottom: 1em;
+  /* same as p not within ul.compact etc. */
 }
+
 /* The tt and code background above interferes with for instance table cell
    backgrounds.  Changed to something a bit more selective. */
 tt,
 code {
   background-color: transparent;
 }
+
 /* Tweak the pre margin -- 0px doesn't come out well */
 pre {
   margin-top: 0.5px;
 }
+
 /* Don't add top margin for nested lists */
-li > ul,
-li > ol,
-li > dl,
-dd > ul,
-dd > ol,
-dd > dl,
-dl > dd > dl {
+li>ul,
+li>ol,
+li>dl,
+dd>ul,
+dd>ol,
+dd>dl,
+dl>dd>dl {
   margin-top: initial;
 }
+
 /* Elements that should not be rendered on the same line as a <dt> */
 /* This should match the element list in writer.text.TextWriter.render_dl() */
-dd > div.artwork:first-child,
-dd > aside:first-child,
-dd > blockquote:first-child,
-dd > figure:first-child,
-dd > ol:first-child,
-dd > div.sourcecode:first-child,
-dd > table:first-child,
-dd > ul:first-child {
+dd>div.artwork:first-child,
+dd>aside:first-child,
+dd>blockquote:first-child,
+dd>figure:first-child,
+dd>ol:first-child,
+dd>div.sourcecode:first-child,
+dd>table:first-child,
+dd>ul:first-child {
   clear: left;
 }
+
 /* fix for weird browser behaviour when <dd/> is empty */
-dt + dd:empty::before {
+dt+dd:empty::before {
   content: '\00a0';
 }
+
 /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
-li > p {
+li>p {
   margin-bottom: 0.5em;
 }
+
 /* Don't let p margin spill out from inside list items */
-li > p:last-of-type:only-child {
+li>p:last-of-type:only-child {
   margin-bottom: 0;
 }

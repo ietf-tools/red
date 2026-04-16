@@ -2,7 +2,7 @@
   <AMaybeRFCLink
     :id="props.id"
     :href="props.href!"
-    :class="ANCHOR_TAILWIND_STYLE"
+    :class="ANCHOR_COLOR_TAILWIND_STYLE"
   >
     <slot />
     <Icon
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { isHashLink, isInternalLink, isMailToLink, isRSSLink, isAtomLink } from '~/utilities/url'
 
 const props = defineProps<{ href?: string; id?: string }>()

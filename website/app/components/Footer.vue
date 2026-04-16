@@ -26,7 +26,8 @@
           :key="index"
         >
           <Heading
-            level="4"
+            level="2"
+            style-level="4"
             class="text-base text-white"
           >
             {{ menuItem.label }}

@@ -18,7 +18,7 @@
           v-for="(link, linkIndex) in section.links"
           :key="linkIndex"
           :href="`#${link.id}`"
-          :class="[props.listItemClass, 'flex flex-row']"
+          :class="[props.listItemClass, ANCHOR_COLOR_TAILWIND_STYLE, 'flex flex-row']"
           @click="handleCloseModalAndScrollToId ? handleCloseModalAndScrollToId(link.id) : undefined"
         >
           <span class="grow-1">{{ link.title }}</span>
@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { closeModalAndScrollToId, type RfcEditorToc } from '../utilities/tableOfContents'
 
 type Sections = RfcEditorToc['sections']

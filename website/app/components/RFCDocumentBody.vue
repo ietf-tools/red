@@ -67,7 +67,7 @@
         >
           <AMaybeRFCLink
             :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)"
-            :class="ANCHOR_TAILWIND_STYLE"
+            :class="ANCHOR_COLOR_TAILWIND_STYLE"
           >
             <RFCTitle :rfc="obsoletedByItem" />
           </AMaybeRFCLink>
@@ -91,7 +91,7 @@
         >
           <AMaybeRFCLink
             :href="infoSeriesPathBuilder(`RFC${updatedByItem.number}`)"
-            :class="ANCHOR_TAILWIND_STYLE"
+            :class="ANCHOR_COLOR_TAILWIND_STYLE"
           >
             <RFCTitle :rfc="updatedByItem" />
           </AMaybeRFCLink>
@@ -132,7 +132,7 @@ import type {
   NodePojo
 } from '~/utilities/rfc-validators'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument

@@ -75,7 +75,7 @@
         wrapper-class="min-h-0 pt-4 pb-2 px-4"
         list-class="mr-1"
         nested-list-class="pl-2"
-        :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
+        :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="toc-highlight"
         link-class="block no-underline hover:underline"
         last-link-class="flex-1"
@@ -95,7 +95,7 @@
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
         list-class="mt-2 mr-1 pl-0 -ml-1"
         nested-list-class="pl-2"
-        :list-item-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_TAILWIND_STYLE}`"
+        :list-item-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="text-shadow-bold"
         link-class="block no-underline hover:underline"
         last-link-class="flex-1"
@@ -202,7 +202,7 @@
                         author.datatracker_person_path
                       )
                         "
-                      :class="[ANCHOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']"
+                      :class="[ANCHOR_COLOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']"
                     >
                       <RFCDocumentAuthor :author="author" />
                       <Icon
@@ -254,7 +254,7 @@
                 v-else
                 :href="useWorkingGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.group)
                   "
-                :class="ANCHOR_TAILWIND_STYLE"
+                :class="ANCHOR_COLOR_TAILWIND_STYLE"
               >
                 {{ props.rfcBucketHtmlDocument.rfc.group?.name }}
 
@@ -275,7 +275,7 @@
               <Anchor
                 :href="areaGroupUrlBuilder(props.rfcBucketHtmlDocument.rfc.area)
                   "
-                :class="ANCHOR_TAILWIND_STYLE"
+                :class="ANCHOR_COLOR_TAILWIND_STYLE"
               >
                 {{ props.rfcBucketHtmlDocument.rfc.area?.name }}
 
@@ -296,7 +296,7 @@
             <template v-if="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)">
               <Anchor
                 :href="streamUrlBuilder(props.rfcBucketHtmlDocument.rfc.stream)"
-                :class="ANCHOR_TAILWIND_STYLE"
+                :class="ANCHOR_COLOR_TAILWIND_STYLE"
               >
                 {{ props.rfcBucketHtmlDocument.rfc.stream.name }}
                 <Icon
@@ -341,7 +341,7 @@
                 <Anchor
                   v-if="identifier.type === 'doi'"
                   :href="`https://doi.org/${encodeURI(identifier.value)}`"
-                  :class="ANCHOR_TAILWIND_STYLE"
+                  :class="ANCHOR_COLOR_TAILWIND_STYLE"
                 >
                   {{ `https://doi.org/${identifier.value}` }}
                   <Icon
@@ -381,7 +381,7 @@
                         formatItem.format
                       )
                       "
-                    :class="ANCHOR_TAILWIND_STYLE"
+                    :class="ANCHOR_COLOR_TAILWIND_STYLE"
                   >
                     {{ formatItem.format.toUpperCase() }}
                   </a>
@@ -456,7 +456,7 @@ import {
 } from 'reka-ui'
 import { formatDatePublished } from '~/utilities/rfc-converters-utils'
 import { COMMA, FULLSTOP, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   areaGroupUrlBuilder,
   datatrackerAuthorUrlBuilder,

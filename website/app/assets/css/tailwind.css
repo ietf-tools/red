@@ -1,9 +1,30 @@
 @import 'tailwindcss';
-@source inline('text-blue-100 dark:text-blue-100 text-blue-300 dark:text-blue-300');
+@source inline('text-blue-100  dark:text-blue-50 dark:text-blue-100 text-blue-300 dark:text-blue-300 color-blue-50 color-blue-100 color-blue-300');
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --font-sans: "Inter", sans-serif;
+
   --text-5xl: 2.75rem;
   --text-2xl: 1.375rem;
+
+  --color-blue-50: #B3B3FF
+    /** dark mode accessible link color. don't change without using WCAG color contrast checks. We're using WCAG 3 draft APCA color contrast checker https://www.color-contrast.dev/?txtColor=B8B8FF&bgColor=000000  */
+  ;
+  --color-blue-100: #3cc0fd;
+  --color-blue-150: #2222ee;
+  --color-blue-200: #0B8CC5;
+  --color-blue-300: #1C62B6;
+  --color-blue-400: #18539B;
+  --color-blue-900: #002D3C;
+  --color-blue-950: #00101C;
+  --color-yellow-100: #FFEE66;
+  --color-yellow-200: #FFE459;
+  --color-yellow-400: #FFD13E;
+  --color-yellow-500: #E2B72A;
+  --color-yellow-600: #C49C15;
+  --color-yellow-750: #A78201;
 
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   --animate-scaleIn: scaleIn 200ms ease;

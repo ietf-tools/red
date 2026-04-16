@@ -4,7 +4,6 @@
       v-model:open="isModalOpen"
       @close="isModalOpen = false"
     >
-      <DialogTrigger />
       <DialogPortal>
         <DialogOverlay />
         <DialogContent :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
@@ -55,7 +54,6 @@ import {
   DialogPortal,
   DialogRoot,
   DialogTitle,
-  DialogTrigger
 } from 'reka-ui'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'

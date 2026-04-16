@@ -3,18 +3,16 @@
     :href="infoSeriesPathBuilder(`RFC${props.rfc.number}`)"
     :heading-level="props.headingLevel"
     has-cover-link
-    :chevron-position="
-      props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
-        'center'
+    :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ?
+      'center'
       : 'end'
-    "
+      "
     :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''"
-    :aside-slot-class="
-      props.showAbstract && props.rfc.abstract ?
-        'flex-1 lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
+    :aside-slot-class="props.showAbstract && props.rfc.abstract ?
+      'flex-1 lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4'
       : undefined
-    "
+      "
     heading-class="text-gray-800 dark:text-gray-200"
   >
     <template #headingTitle>
@@ -47,11 +45,11 @@
         >
           Abstract
         </Heading>
-        <p
+        <div
           class="leading-snug text-gray-800 dark:text-gray-300 pb-2 text-pretty"
+          v-html="props.rfc.abstract"
         >
-          {{ props.rfc.abstract }}
-        </p>
+        </div>
       </div>
     </template>
   </Card>

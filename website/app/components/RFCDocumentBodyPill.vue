@@ -9,7 +9,7 @@
             />
             <AValidHref
                 href="/series/rfc-tips/"
-                :class="ANCHOR_TAILWIND_STYLE"
+                :class="ANCHOR_COLOR_TAILWIND_STYLE"
             >
                 RFC Tips
             </AValidHref>
@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { getRfcPillText } from '~/utilities/rfc'
 import type { RfcCommon } from '~/utilities/rfc'
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 
 type Props = {
     rfc: RfcCommon

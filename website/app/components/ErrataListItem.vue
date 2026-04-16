@@ -17,7 +17,7 @@
       <p v-if="props.errataItemForTab.domId">
         <a
           :href="`#${props.errataItemForTab.domId}`"
-          :class="ANCHOR_TAILWIND_STYLE"
+          :class="ANCHOR_COLOR_TAILWIND_STYLE"
         >
           Scroll to {{ props.errataItemForTab.label }}
         </a>
@@ -60,7 +60,7 @@
       <p>
         <Anchor
           :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)"
-          :class="ANCHOR_TAILWIND_STYLE"
+          :class="ANCHOR_COLOR_TAILWIND_STYLE"
           :aria-label="`View errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`"
         >
           View this report
@@ -75,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { preformattedTextToHtml } from '~/utilities/html'
 import type { ErrataItemForTab } from '~/utilities/errata'
 import { useErrataUrlBuilder } from '~/utilities/url'

@@ -6,7 +6,7 @@
       wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
       list-class="mr-1"
       nested-list-class="pl-2"
-      :links-class="`block text-sm py-2 border-t-1 border-t-gray-300 dark:border-t-gray-500 no-underline hover:underline ${ANCHOR_TAILWIND_STYLE}`"
+      :links-class="`block text-sm py-2 border-t-1 border-t-gray-300 dark:border-t-gray-500 no-underline hover:underline ${ANCHOR_COLOR_TAILWIND_STYLE}`"
       links-active-class="toc-highlight"
       link-class="block no-underline hover:underline"
       last-link-class="flex-1 flex justify-between"
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import type { RfcEditorToc } from '~/utilities/tableOfContents'
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 
 type Props = {
   toc: RfcEditorToc

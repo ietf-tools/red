@@ -6,6 +6,7 @@ export default withNuxt([
   {
     rules: {
       'vue/comma-dangle': 'off',
+      'vue/no-v-html': 'off',
       'vue/html-closing-bracket-newline': 'off',
       'vue/html-indent': 'off',
       'vue/html-self-closing': 'off',

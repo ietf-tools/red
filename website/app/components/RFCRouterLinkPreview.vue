@@ -1,30 +1,43 @@
 <template>
-  <GraphicsIETFMotif class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden" :opacity="0.04" />
+  <GraphicsIETFMotif
+    class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden"
+    :opacity="0.04"
+  />
   <p class="text-base text-blue-900 dark:text-white font-bold leading-5">
     {{ props.rfc.title }}
   </p>
-  <div class="pt-1">
-    <Tag size="small" :text="tagText" />
-  </div>
-  <p class="leading-5 pt-2 text-xs text-pretty">
-    {{ props.rfc.abstract }}
-  </p>
-  <ul v-if="list1" class="text-base text-blue-900 dark:text-white">
-    <li v-for="(part, index) in list1" :key="index" class="inline">
+  <ul
+    v-if="list1"
+    class="text-base text-blue-900 dark:text-white"
+  >
+    <li
+      v-for="(part, index) in list1"
+      :key="index"
+      class="inline"
+    >
       <GraphicsDiamond v-if="index > 0" />{{ part }}
     </li>
   </ul>
-  <ul v-if="list2" class="text-base text-gray-800 mt-1 dark:text-white">
-    <li v-for="(part, index) in list2" :key="index" class="inline">
-      <GraphicsDiamond v-if="index > 0" class="align-middle" />{{ part }}
+  <p
+    class="leading-5 pt-2 text-xs text-pretty"
+    v-html="props.rfc.abstract"
+  ></p>
+
+  <ul
+    v-if="list2"
+    class="text-base text-gray-800 mt-1 dark:text-white"
+  >
+    <li
+      v-for="(part, index) in list2"
+      :key="index"
+      class="inline"
+    >
+      <GraphicsDiamond
+        v-if="index > 0"
+        class="align-middle"
+      />{{ part }}
     </li>
   </ul>
-  <p v-if="obsoletedBy" :class="[
-    'text-red-700 dark:text-red-300 text-base print:text-black',
-    { 'mt-2': isMobileAbstractOpen }
-  ]">
-    <component :is="obsoletedBy" />
-  </p>
 
   <div class="inline-block border-black dark:border-gray-700 border-t-1 w-1/2 min-w-3xs mt-3 mb-3"></div>
 
@@ -35,8 +48,10 @@
   </p>
 
   <p class="clear-both text-right mt-6 mb-10">
-    <Anchor :href="rfcPathBuilder(`RFC${props.rfc.number}`)"
-      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6">
+    <Anchor
+      :href="rfcPathBuilder(`RFC${props.rfc.number}`)"
+      class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6"
+    >
       <component :is="formattedTitle" />
       <GraphicsChevron class="ml-2 inline -rotate-90" />
     </Anchor>
@@ -45,13 +60,10 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon'
-import { infoSeriesPathBuilder, rfcPathBuilder } from '../utilities/url'
+import { rfcPathBuilder } from '../utilities/url'
 import Anchor from './Anchor.vue'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc-validators'
-import {
-  formatTitlePlaintext,
-} from '~/utilities/rfc-converters-utils'
 import { analyticsMatomoTrackLinkPreview } from '~/utilities/analytics-matomo'
 
 type Props = {
@@ -63,8 +75,6 @@ const props = defineProps<Props>()
 onMounted(() => {
   analyticsMatomoTrackLinkPreview(`rfc${props.rfc.number}`)
 })
-
-const isMobileAbstractOpen = ref<boolean>(false)
 
 function formatAuthors(authors: RfcCommon['authors']): string {
   if (authors.length === 0) {
@@ -85,46 +95,7 @@ function formatDate(isoDate: string | undefined): string | undefined {
   return datetime.toLocaleString({ month: 'long', year: 'numeric' })
 }
 
-function formatObsoletedBy(
-  rfc: RfcCommon
-): (() => VNode) | undefined {
-  const { obsoleted_by: obsoletedBy } = rfc
-
-  if (!obsoletedBy || obsoletedBy.length === 0) {
-    return undefined
-  }
-
-  return () => h(
-    'span',
-    obsoletedBy.reduce(
-      (acc, obsoletedByItem, index) => {
-        if (index > 0) {
-          acc.push(', ')
-        }
-        acc.push(
-          h(
-            Anchor,
-            {
-              href: infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`),
-              title: `RFC ${obsoletedByItem.number}: ${formatTitlePlaintext(obsoletedByItem.title)}`,
-              class: 'relative underline p-1 -m-1 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-red-200'
-            },
-            [h('span', 'RFC '), h('b', obsoletedByItem.number)]
-          )
-        )
-
-        return acc
-      },
-      [`RFC ${rfc.number} obsoleted by `] as (string | VNode)[]
-    )
-  )
-}
-
 const formattedTitle = computed(() => formatTitleAsVNode(`RFC${props.rfc.number}`))
-
-const obsoletedBy = computed(() =>
-  formatObsoletedBy(props.rfc)
-)
 
 const list1 = computed(() => [
   formatAuthors(props.rfc.authors),
@@ -132,28 +103,4 @@ const list1 = computed(() => [
 ])
 
 const list2 = computed(() => formatStreamAndArea(props.rfc))
-
-const tagText = computed(() => {
-  const pubDateIso = props.rfc.published
-  if (!pubDateIso) return []
-
-  const tagText: (string | VNode)[] = [props.rfc.status.name]
-  const datetime = DateTime.fromISO(pubDateIso)
-  const relativeCalendar = datetime.toRelativeCalendar()
-  const tooltip = `${pubDateIso} (${relativeCalendar})`
-  if (relativeCalendar) {
-    tagText.push(
-      h(
-        'span',
-        {
-          class: 'w-full h-full',
-          'aria-label': tooltip,
-          title: tooltip
-        },
-        [relativeCalendar]
-      )
-    )
-  }
-  return tagText
-})
 </script>

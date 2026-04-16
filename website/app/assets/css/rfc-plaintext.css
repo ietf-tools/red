@@ -9,8 +9,9 @@ pre {
   white-space: pre-wrap;
 
   /**
-    Changing font size for plaintext RFCs? Here are some notes from a previous dev. Please feel free
-    to update.
+    Considering changing font size for plaintext RFCs?
+    
+    Here are some notes from a previous dev. Please feel free to update to keep relevant.
 
     THE PROBLEM
     Plaintext RFCs are fixed-width, which means they have an optimal font-size (based on their
@@ -155,28 +156,35 @@ pre {
 
     Further considerations:
 
-    Mobile:
-    Arguably the font-size is too small on mobile.
-    The font-size is small on mobile and this is intentional.
-    Currently mobile users are expected to 'pinch zoom' to read the text (or increase
-    page zoom using accessibility tools).
-    We could increase the font-size but then a line of text would still be offscreen.
-    We could increase the font-size and also force wrap the text but that would break
-    ASCII art and other things that need to align across lines.
+    Responsive/Mobile:
+    * Arguably the font-size is too small on mobile because 80 char lines are too small
+      on mobile, but currently this is intentional. Mobile users are expected to
+      'pinch zoom' in to a line of text and then horizontally scroll to read the line.
+
+      We could increase the font-size but that's no different to a default zoom level,
+      and a line of text would still be offscreen like it was before.
+
+      We could force linebreaks but that would break ASCII art and tables etc
+      that need to align horizontally.
+
+      80 char lines on mobile, without wrapping, at a sufficient font size to be readable,
+      is just not going to work on most mobiles.
+      
+      Instead it's probably better to migrate plaintext to something more structured like
+      HTML so we can make a  conventional responsive design work, if working on mobile
+      is deemed necessary.
 
     The MAGIC_SCALING_NUMBER could have a few more decimal places.
 
     The first table's 'Optimal font-size' was done manually in the browser dev tools
     by changing the font-size until it was (1) subjectively visually pleasing, and
-    (2) before line wrapping occured.
-    
+    (2) before line wrapping occured.    
     The 'Optimal font-size' in the first table is a bit of a misnomer because it's not
     exactly pushed hard up against the container's width. A bit of space was left
     intentionally empty so that different font rendering (and to a lesser extent browser
     substitute fonts) don't break the design. The exact amount of offset will likely be
     revealed during testing / bug reports. If we get bug reports we should decrease the
     font-size slightly by increasing the MAGIC_SCALING_NUMBER
-
     */
 
   /* Default font size for browsers that don't support cqi container units */
@@ -187,9 +195,7 @@ pre {
     calc() supported in chrome 26/firefox 16, and CSS variables in chrome 49/firefox 31,
     so this is 2014 era CSS
      */
-  --responsive-font-size: calc(
-    (var(--magic-scaling-number) / var(--preformatted-max-line-length)) * 1cqi
-  );
+  --responsive-font-size: calc((var(--magic-scaling-number) / var(--preformatted-max-line-length)) * 1cqi);
 
   /*
     set the font-size in several ways for different browser support
@@ -204,10 +210,9 @@ pre {
     min() supported in Chrome 96/Firefox 75
     so this is 2020 era CSS that supporting browsers will use instead of the previous one
     */
-  font-size: min(
-    var(--responsive-font-size),
-    /* max font-size on desktop */ 1rem
-  );
+  font-size: min(var(--responsive-font-size),
+      /* max font-size on desktop */
+      1rem);
 }
 
 @media only screen {

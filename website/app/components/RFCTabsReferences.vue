@@ -6,7 +6,7 @@
     >
       <RFCRouterLink
         :href="infoSeriesPathBuilder(`rfc${rfc.number}`)"
-        :class="ANCHOR_TAILWIND_STYLE"
+        :class="ANCHOR_COLOR_TAILWIND_STYLE"
         side="left"
       >
         <RFCTitle :rfc="rfc" />
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ANCHOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { infoSeriesPathBuilder } from '~/utilities/url'
 
 type Props = {
