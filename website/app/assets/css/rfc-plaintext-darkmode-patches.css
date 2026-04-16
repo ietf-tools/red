@@ -4,5 +4,5 @@ These style selectors will be scoped by @nested-import to apply only to dark mod
 */
 
 a[href] {
-    color: var(--color-blue-100, #50B2DF)
+    color: var(--color-blue-100, #26baff)
 }
