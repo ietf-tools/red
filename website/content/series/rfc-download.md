@@ -26,18 +26,18 @@ To download RFCs and keep them up to date locally, use [rsync](https://rsync.sam
 
 ### To create a mirror using a module
 
-Type `rsync \-avz \--delete rsync.rfc-editor.org::Module-Name Target-Directory`
+Type `rsync -avz --delete rsync.rfc-editor.org::Module-Name Target-Directory`
 
 For example: To create a mirror of the text versions of all the RFCs, i.e.,
 
 ```
-in-notes/\*.txt
-in-notes/bcp/\*.txt
-in-notes/fyi/\*.txt
-in-notes/ien/\*.txt
-in-notes/std/\*.txt
+in-notes/*.txt
+in-notes/bcp/*.txt
+in-notes/fyi/*.txt
+in-notes/ien/*.txt
+in-notes/std/*.txt
 ```
 
-type `rsync \-avz \--delete rsync.rfc-editor.org::rfcs-text-only my-rfc-mirror`
+type `rsync -avz --delete rsync.rfc-editor.org::rfcs-text-only my-rfc-mirror`
 
-(The `\--delete` option is useful for removing local copies of files that have been deleted from the repository as well as expired Internet-Drafts.)
+(The `--delete` option is useful for removing local copies of files that have been deleted from the repository as well as expired Internet-Drafts.)
