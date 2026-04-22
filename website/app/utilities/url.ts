@@ -55,6 +55,10 @@ export const usePublicSiteUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
   return assertUrlOrigin(runtimeConfig.public.siteBase, 'siteBase', 'https://www.rfc-editor.org')
 }
+export const useApiV1UrlOrigin = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return assertUrlOrigin(runtimeConfig.public.apiV1Base, 'apiV1Base', '')
+}
 export const useErrataUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
   return assertUrlOrigin(runtimeConfig.public.errataBase, 'errataBase', 'https://errata.rfc-editor.org')

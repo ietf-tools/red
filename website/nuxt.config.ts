@@ -82,6 +82,7 @@ export default defineNuxtConfig({
       // These settings are available client-side (others are server-side only). The following are default values overriden by env varss
       datatrackerBase: 'http://localhost:8000', // NUXT_PUBLIC_DATATRACKER_BASE env var
       siteBase: 'https://www.rfc-editor.org', // NUXT_PUBLIC_SITE_BASE env var
+      apiV1Base: '', // NUXT_PUBLIC_API_V1_BASE env var
       errataBase: 'https://errata.rfc-editor.org', // NUXT_PUBLIC_ERRATA_BASE env var
       queueBase: 'https://queue.rfc-editor.org', // NUXT_PUBLIC_QUEUE_BASE env var
       materialsBase: 'https://materials.rfc-editor.org', // NUXT_PUBLIC_MATERIALS_BASE env var
@@ -124,29 +125,29 @@ export default defineNuxtConfig({
       ]
     }
   },
-  $development: {
-    routeRules: {
-      /**
-       * In development mode (`npm run dev`) the website fetches API data from either a local dev api or some
-       * staging / prod environment.
-       * Uncomment/comment out the lines to adjust the config.
-       */
-      '/api/v1/homepage-latest.json': {
-        proxy: 'https://www.staging.rfc-editor.org/api/v1/homepage-latest.json'
-        // proxy: 'http://localhost:3001/api/v1/homepage-latest.json'
-      },
-      '/api/v1/rfc-html/**': {
-        proxy: 'https://www.staging.rfc-editor.org/api/v1/rfc-html/**'
-        // proxy: 'http://localhost:3001/api/v1/rfc-html/**'
-      },
-      '/api/v1/info-subseries/**': {
-        proxy: 'https://www.staging.rfc-editor.org/api/v1/info-subseries/**'
-        // proxy: 'http://localhost:3001/api/v1/info-subseries/**'
-      },
-      '/api/v1/rfc-common/**': {
-        proxy: 'https://www.staging.rfc-editor.org/api/v1/rfc-common/**'
-        // proxy: 'http://localhost:3001/api/v1/rfc-common/**'
-      },
-    },
-  }
+  // $development: {
+  //   routeRules: {
+  //     /**
+  //      * In development mode (`npm run dev`) the website fetches API data from either a local dev api or some
+  //      * staging / prod environment.
+  //      * Uncomment/comment out the lines to adjust the config.
+  //      */
+  //     '/api/v1/homepage-latest.json': {
+  //       proxy: 'https://www.staging.rfc-editor.org/api/v1/homepage-latest.json'
+  //       // proxy: 'http://localhost:3001/api/v1/homepage-latest.json'
+  //     },
+  //     '/api/v1/rfc-html/**': {
+  //       proxy: 'https://www.staging.rfc-editor.org/api/v1/rfc-html/**'
+  //       // proxy: 'http://localhost:3001/api/v1/rfc-html/**'
+  //     },
+  //     '/api/v1/info-subseries/**': {
+  //       proxy: 'https://www.staging.rfc-editor.org/api/v1/info-subseries/**'
+  //       // proxy: 'http://localhost:3001/api/v1/info-subseries/**'
+  //     },
+  //     '/api/v1/rfc-common/**': {
+  //       proxy: 'https://www.staging.rfc-editor.org/api/v1/rfc-common/**'
+  //       // proxy: 'http://localhost:3001/api/v1/rfc-common/**'
+  //     },
+  //   },
+  // }
 })
