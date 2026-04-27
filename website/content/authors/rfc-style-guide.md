@@ -34,136 +34,50 @@ The following style issues have been raised with the RFC Production Center since
 
 Note that the RFC Production Center follows these guidelines but will edit and ask questions as needed.
 
-## MUSTs
+### MUSTs
 
 The following conventions are required in RFCs. Updates will be made to text to follow these guidelines during the editing process. We appreciate compliance in submitted drafts.
 
-Topic
+#### References
 
-Requirement
+Please refer to [Reference Style Guidance](https://authors.ietf.org/en/reference-style-guidance) for information on constructing references to the following:
 
-Referencing RFCs
+ - RFCs
+ - STDs and BCPs
+ - Errata reports
+ - IANA registries
+ - Internet-Drafts
+ - Web-Based Public Code Repositories (e.g., GitHub)
+ - Email or mailing lists
 
-The Digital Object Identifier (DOI) is now listed in each reference to an RFC. The first example in [Section 4.8.6.2 of RFC 7322](/rfc/rfc7322/#section-4.8.6.2) is updated as follows.  
-For one author or editor: 
-
-`[RFCXXXX] Last name, First initial., Ed. (if applicable), "RFC Title", Sub-series number (if applicable), RFC number, DOI, Date of publication, <https://www.rfc-editor.org/info/rfc#/>.`
-
-**Example:**  
-`[RFC3080] Rose, M., "The Blocks Extensible Exchange Protocol Core", RFC 3080, DOI 10.17487/RFC3080, March 2001, <https://www.rfc-editor.org/info/rfc3080/>.`
-
-Referencing STDs and BCPs
-
-This guidance overrides [Section 4.8.6.3 of RFC 7322](/rfc/rfc7322/#section-4.8.6.3).
-
-Internet Standards (STDs) and Best Current Practices (BCPs) may consist of a single RFC or multiple RFCs. When an STD or BCP is referenced, the reference entry should include ALL of the RFCs comprising that sub-series. The authors should refer to specific RFC numbers as part of the text (not as citations) and cite the sub-series number. The URI to the STD or BCP info page is to be included. The text should appear as follows:
-
-See RFC 3552 [BCP72].
-
-**An STD reference should be formatted as follows:**  
-`[STDXXX] Internet Standard XXX, <https://www.rfc-editor.org/info/std#>.` At the time of writing, this STD comprises the following:
-
-`Last name, First initial., Ed. (if applicable), "RFC Title", STD XXX, RFC number, DOI number, Date of publication, <https://www.rfc-editor.org/info/rfc#>.`
-
-**Example:**  
-`[STD80] Internet Standard 80, <https://www.rfc-editor.org/info/std80>.` At the time of writing, this STD comprises the following:
-
-`Cerf, V., "ASCII format for network interchange", STD 80, RFC 20, DOI 10.17487/RFC0020, October 1969, <https://www.rfc-editor.org/info/rfc20>:`
-
-**A BCP reference should be formatted as follows:**  
-[BCPXXX] Best Current Practice XXX, <https://www.rfc-editor.org/info/bcp#>. At the time of writing, this BCP comprises the following:
-
-`Last name, First initial., Ed. (if applicable) and First initial. Last name, Ed. (if applicable), "RFC Title", BCP XXX, RFC number, DOI number, Date of publication, <https://www.rfc-editor.org/info/rfc#>.`
-
-Referencing Errata
-
-The format for errata references described in [Section 4.8.6.5 of RFC 7322](/rfc/rfc7322/#section-4.8.6.5) is updated as follows:  
-`[ErrNumber] RFC Errata, Erratum ID number, RFC number, <URI>`.
-
-**Example:**  
-`[Err3607] RFC Errata, Erratum ID 3607, RFC 4627, [https://www.rfc-editor.org/errata/eid3607](/errata/eid3607/).`
-
-For more details, see the [announcement on the RFC interest list](https://mailarchive.ietf.org/arch/msg/rfc-interest/F4LLPSsmKKTr3McvyGCQEPiZFhE/).
-
-Errata in the [Reported state](/errata-definitions/) should not be referenced; they are not considered stable.
-
-Referencing IANA Registries
-
-Use the following form to reference IANA registries. Note that the top-level URL is used when referring to a group of registries and/or specific registries within the group. 
-
-[NAME] IANA, "Registry Group or Registry Name", `<URL>`.
-
-**Example for a registry group:**  
-[IANA-ANCP] IANA, "Access Node Control Protocol (ANCP)", <[https://www.iana.org/assignments/ancp](https://www.iana.org/assignments/ancp)\>.
-
-**Example for a specific registry within the group:**  
-[IANA] IANA, "ANCP Message Types", <[https://www.iana.org/assignments/ancp](https://www.iana.org/assignments/ancp)\>.
-
-Note: This guidance was developed in coordination with IANA.
-
-Referencing Internet-Drafts
-
-The format for references to Internet-Drafts described in [Section 4.8.6.4 of RFC 7322](/rfc/rfc7322/#section-4.8.6.4) is updated to include the day of posting (in addition to the month and year), the word "Internet-Draft", and the URL of the HTML file. 
-
-**Example:**  
-[RFC7322bis] Levine, J., Ed., and S. Ginoza, "RFC Style Guide", Work in Progress, Internet-Draft, draft-flanagan-7322bis-07, 7 April 2021, <[https://datatracker.ietf.org/doc/html/draft-flanagan-7322bis-07](https://datatracker.ietf.org/doc/html/draft-flanagan-7322bis-07)\>.
-
-Referencing Web-Based Public Code Repositories (e.g., GitHub)
-
-Used for Informative References only.
-
-Format of reference entries:
-
-- authors — omit them
-- title — include if available (some judgement may be required on the part of the editors and authors to have a sensible title)
-- commit hash — include if exists, short form preferred if available
-- date — use date of last commit at time doc is edited
-- URL — include URL to main page of repository
-
-**Examples:**  
-[pysaml2] "Python implementation of SAML2", commit 7135d53, March 2018, <[https://github.com/IdentityPython/pysaml2](https://github.com/IdentityPython/pysaml2)\>.
-
-[linuxlite] "Linux Lite", March 2018, <[https://sourceforge.net/projects/linuxlite/](https://sourceforge.net/projects/linuxlite/)\>.
-
-Referencing Email on Mailing Lists
-
-When referencing emails to mailing lists, use the following template:
-
-`[reftag]` Sender, A., "Subject: Subject line", message to the  
-listname mailing list, DD Month YYYY, .
-
-Index Placement
+#### Index Placement
 
 If included, an index appears directly before the Authors' Addresses Section.
 
-## RECOMMENDED
+### RECOMMENDED
 
 The following practices are recommended. Updates may be made to text to follow these guidelines during the editing process.
 
-Topic
-
-Recommendation
-
-Inclusive Language
+#### Inclusive Language
 
 Because each stream has chosen to follow the [IESG statement on Inclusive Language](https://www.ietf.org/about/groups/iesg/statements/on-inclusive-language/), the RFC Editor encourages authors to apply the guidance described in ["Guidance for NIST Staff on Using Inclusive Language in Documentary Standards"](https://web.archive.org/web/20250203031433/https://nvlpubs.nist.gov/nistpubs/ir/2021/NIST.IR.8366.pdf). See [Table 1 on the NIST website](https://web.archive.org/web/20250214092458/https://www.nist.gov/nist-research-library/nist-technical-series-publications-author-instructions#table1) for an expanded list of potentially biased language along with possible substitutions.
 
-Double Negatives
+#### Double Negatives
 
 Double negatives are discouraged.
 
-RFCs Citations as Compounds
+#### RFCs Citations as Compounds
 
 Avoid forming compounds by hyphenating RFC numbers; this can be accomplished by 
 
 - rewording the sentence (e.g., "`[RFC5011]-style rollover`" &rarr; "`rollover as described in RFC 5011 [RFC5011]`").
 - adding a note in either the Terminology or Conventions section mentioning the RFC so that other occurrences throughout the text will be understood by the reader to be in the style of said RFC (e.g., "This document uses the term "rollover" as defined in RFC 5011").
 
-Abbreviations as Verbs
+#### Abbreviations as Verbs
 
 Avoid using abbreviations as verbs when possible. If unavoidable, suffixes should be affixed without punctuation, for example, "XORed" (not XOR'ed) and "NATed" (not NAT-ed).
 
-Expanding Abbreviations upon First Use
+#### Expanding Abbreviations upon First Use
 
 Once an abbreviation has been introduced, the abbreviated form should be used thereafter.
 
@@ -181,50 +95,42 @@ b) Note that SAVI raises a number of important privacy considerations that are d
 
 We recommend using a) and strongly recommend consistent use of one style throughout.
 
-URIs
+#### URIs
 
 HTTPS URIs should be used when possible.
 
-## Author Choice
+### Author Choice
 
 The following items are left to the authors’ discretion.
 
-Topic
-
-Description
-
-RFC 2119 Keywords in Quoted Text
+#### RFC 2119 Keywords in Quoted Text
 
 A reference is not required if the keywords are only used in quoted text.
 
-Terms
+#### Terms
 
 You may format terms as you see fit by using capitalization, quotation marks, emphasis, etc. However, consistency within the document and within the Series is strongly recommended.  
 Please provide any style guidance to the RFC Production Center when your document enters the queue.
 
-Terminology Sections
+#### Terminology Sections
 
 Terminology sections are recommended for docs that are terminology/abbreviation heavy, but documents should point to existing definitions when possible.
 
-Didactic Capitalization
+#### Didactic Capitalization
 
 Use of didactic capitalization is not needed.  
 **Example:** Extensible Markup Language (XML)  
 (not EXtensible Markup Language (XML) or eXtensible Markup Language (XML))
 
-Length of Sections
+#### Length of Sections
 
 We suggest that the length of a section or subsection be limited to allow for easily referenced objects.
 
-## XML Formatting
+### XML Formatting
 
 The following formatting conventions are to be followed in RFCs.
 
-Topic
-
-Guidance
-
-Use of non-ASCII characters
+#### Use of non-ASCII characters
 
 Per RFC 7997, non-ASCII characters may appear within the body of the document. The `<u>` element is required for cases where the non-ASCII characters are needed for correct protocol operation. 
 
@@ -236,7 +142,7 @@ the non-ASCII character is not required."
 
 Note that ASCII equivalents are to be used for punctuation (e.g., smart quotes and em dashes).
 
-Document links
+#### Document links
 
 There is no hard limit on the number and frequency of links in documents. However, links introduce noise for people who use screen readers, and this reduces accessibility.
 
