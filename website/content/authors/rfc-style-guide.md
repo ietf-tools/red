@@ -10,7 +10,7 @@ Please see the following for information on RFC style:
 - [Status of This Memo Boilerplate](#rfc-headers-and-boilerplate) – "Status of This Memo" text as defined by [RFC 7841](/info/rfc7841/) and [RFC 9280](/info/rfc9280/) (all permutations of the text are listed [here](/materials/status-memos.txt))
 - [Abbreviations List](/rpc/wiki/doku.php?id=abbrev_list) – A non-exhaustive list of expansions of abbreviations (and acronyms) in RFCs
 - [Terms List](https://materials.rfc-editor.org/terms-online.txt) – A non-exhaustive list of decisions on consistent usage of terms in RFCs
-- [IAB Format](https://materials.rfc-editor.org/iab-format.txt) – IAB-specific formatting information for RFCs from the IAB Stream
+- [IAB Format](https://wiki.ietf.org/en/group/iab/iab-stream-rfc-format) – IAB-specific formatting information for RFCs from the IAB Stream
 - Reference Entries for RFCs – Available in XML (via [BibXML Service](https://bib.ietf.org/)) and [TXT](/in-notes/rfc-ref.txt)
 - Reference Entries for STDs and BCPs – Available in [XML](https://bib.ietf.org/indexed-sources/relaton-data-rfcsubseries/) and TXT (for the [STD subseries](/in-notes/std-ref.txt) and the [BCP subseries](/in-notes/bcp-ref.txt) )
 - [Guidelines for Writing an IANA Considerations Section in RFCs](/info/rfc8126/)
