@@ -6,7 +6,7 @@ description: RFC Editor publishes and archives official RFCs
 
 The RFC Editor is made up of several different groups who work together to edit, publish, and archive [RFCs](/series/rfc/).
 
-The current RFC Editor operating structure is defined in [RFC 9280](/info/rfc9280/) and comprises the following groups.
+The current RFC Editor operating structure is defined in [RFC 9920](/info/rfc9920/) and comprises the following groups.
 
 ## RSWG
 
@@ -39,10 +39,10 @@ The RFC Editor function is currently defined and governed by the following RFCs:
 - [RFC 8711:](/info/rfc8711/) Haberman, B., Hall, J., and J. Livingood, "Structure of the IETF Administrative Support Activity, Version 2.0", BCP 101, RFC 8711, February 2020.
 - [RFC 8729:](/info/rfc8729/) Housley, R., Ed., and L. Daigle, Ed., "The RFC Series and RFC Editor", RFC 8729, February 2020.
 - [RFC 8730:](/info/rfc8730/) Brownlee, N., Ed., and B. Hinden, Ed., "Independent Submission Editor Model", RFC 8730, February 2020.
-- [RFC 9280:](/info/rfc9280/) Saint-Andre, P., Ed., "RFC Editor Model (Version 3)" RFC 9280, June 2022.
 - [RFC 9281:](/info/rfc9281/) Salz, R., "Entities Involved in the IETF Standards Process", BCP 11, RFC 9281, June 2022.
 - [RFC 9282:](/info/rfc9282/) Rosen, B., "Responsibility Change for the RFC Series", RFC 9282, June 2022.
 - [RFC 9283:](/info/rfc9283/) Carpenter, B., Ed., "IAB Charter Update for RFC Editor Model", BCP 39, RFC 9283, June 2022.
+- [RFC 9920:](/info/rfc9920/) Hoffman, P. and A. Rossi, "RFC Editor Model (Version 3)", RFC 9920, February 2026.
 
 The following RFCs define particular RFC contents:
 
@@ -52,7 +52,7 @@ The following RFCs define particular RFC contents:
 - [RFC 7841 (Headers and Boilerplate):](/info/rfc7841/) Halpern, J., Ed., Daigle, L., Ed., and O. Kolkman, Ed., "RFC Streams, Headers, and Boilerplates", RFC 7841, May 2016\.
 - [RFC 8126 (IANA Considerations):](/info/rfc8126/) Cotton, M., Leiba, B., and T. Narten, "Guidelines for Writing an IANA Considerations Section in RFCs", BCP 26, RFC 8126, June 2017\.
 - [RFC 8996](/info/rfc8996/) (Updates [RFC 3552](/info/rfc3552/)): Moriarty, K. and S. Farrell, "Deprecating TLS 1.0 and TLS 1.1", BCP 195, RFC 8996, March 2021\.
-- [RFC 9280 (Headers and Boilerplate for Editorial Stream):](/info/rfc9280/) Saint-Andre, P., Ed., "RFC Editor Model (Version 3)", RFC 9280, June 2022\.
+- [RFC 9920 (Headers and Boilerplate for Editorial Stream):](/info/rfc9920/) Hoffman, P. and A. Rossi, "RFC Editor Model (Version 3)", RFC 9920, February 2026.
 
 The following RFCs govern intellectual property issues related to RFCs:
 
@@ -61,7 +61,7 @@ The following RFCs govern intellectual property issues related to RFCs:
 - [RFC 5744:](/info/rfc5744/) Braden, R. and J. Halpern, "Procedures for Rights Handling in the RFC Independent Submission Stream", RFC 5744, December 2009\.
 - [RFC 5745:](/info/rfc5745/) Malis, A., Ed., and IAB, "Procedures for Rights Handling in the RFC IAB Stream", RFC 5745, December 2009\.
 - [RFC 8179:](/info/rfc8179/) Bradner, S. and J. Contreras, "Intellectual Property Rights in IETF Technology", BCP 79, RFC 8179, May 2017\.
-- [RFC 9280 (Editorial Stream):](/info/rfc9280/) Saint-Andre, P., Ed., "RFC Editor Model (Version 3)", RFC 9280, June 2022\.
+- [RFC 9920 (Editorial Stream):](/info/rfc9920/) Hoffman, P. and A. Rossi, "RFC Editor Model (Version 3)", RFC 9920, February 2026.
 
 In addition to [RFC 8126](/info/rfc8126/), the following RFCs govern RFC Editor actions with respect to particular IANA registrations:
 
