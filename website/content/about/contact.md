@@ -6,7 +6,7 @@
 - RFC Series Working Group ([RSWG](https://datatracker.ietf.org/group/rswg/about/)): [rswg@rfc-editor.org](mailto:rswg@rfc-editor.org) (this is a [public mailing list](https://mailman.rfc-editor.org/mailman/listinfo/rswg))
 - RFC Series Approval Board ([RSAB](https://datatracker.ietf.org/group/rsab/about/)): [rsab@rfc-editor.org](mailto:rsab@rfc-editor.org) (this is a [public archive](https://mailman.rfc-editor.org/mailman/listinfo/rsab))
 - RFC Interest: General community discussion about the RFC Series and RFC Editor functions: [rfc-interest@rfc-editor.org](mailto:rfc-interest@rfc-editor.org) (this is a [public mailing list](https://mailman.rfc-editor.org/mailman/listinfo/rfc-interest))
-- To report a technical problem with this site: [webmaster@rfc-editor.org](mailto:webmaster@rfc-editor.org)
+- To report a technical problem with this site: [support@ietf.org](mailto:support@ietf.org)
 - To report a vulnerability with a protocol specified in an RFC: [Guidance on Reporting Protocol Vulnerabilities to the IETF](https://www.ietf.org/standards/rfcs/vulnerabilities/)
 - To report a vulnerability in our infrastructure or services: [Vulnerability Disclosure Statement](https://www.ietf.org/about/administration/policies-procedures/vulnerability-disclosure/)
 - To report a copyright infringement: [Copyright Infringement](#report-a-copyright-infringement)
