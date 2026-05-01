@@ -23,6 +23,7 @@ To download RFCs and keep them up to date locally, use [rsync](https://rsync.sam
 | rfcs-pdf-only     | PDF versions of ASCII RFCs to ensure correct page breaks, etc.              |
 | rfcs-exclude-json | Contents of `[rfcs]` excluding JSON files                                   |
 | rfcs-json-only    | Only the JSON files from the directories in `[rfcs]`                        |
+| rfcs-pdf-all      | All PDFs                                                                    |
 
 ### To create a mirror using a module
 
