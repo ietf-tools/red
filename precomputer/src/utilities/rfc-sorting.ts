@@ -56,5 +56,5 @@ export const sortByRfcPublish = (a: RfcCommon, b: RfcCommon): number => {
   // Current solution: We know that RFC numbers are stable and they
   // don't overlap, making them perfect for sorting as a fallback.
   // Using this for sorting makes this sort function deterministic.
-  return a.number - b.number
+  return b.number - a.number
 }
