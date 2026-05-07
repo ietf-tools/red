@@ -1,24 +1,23 @@
-# How to Report RFC Errata
+# How to Verify RFC Errata
 
-1. Prior to submitting a report for the [RFC Errata site](https://errata.rfc-editor.org), note that:
-   * Errata reports should only be for issues that would have been considered errors at the time the RFC was published.  Alternate approaches to the topic, URLs that have changed over time, and new personal contact information are examples of issues that errata reports should not be used to address.
-   * To report an error in an existing erratum, please [contact the RFC Editor](mailto:rfc-editor@rfc-editor.org).
-2. Go to [Report New Erratum](https://errata.rfc-editor.org/new/entry-instructions/).
-3. Enter the RFC number for which you want to submit a report.
-4. Click **Review Existing Errata**.
-5. Read the errata that have already been reported for that RFC (if any) to make sure that the error has not already been reported.
-6. If you have uncovered a new erratum, check the box at the end of the page and click **Enter new Erratum**.
-7. Complete the form as follows:
-   - **Name:** your name
-   - **Email:** your email address (This will be used to send you emails about this report.)
-   - **Section:** the section where the error appears. Tip: If the error appears throughout the document, enter "GLOBAL".
-   - **Publication Formats:** the affected format(s) if the RFC was published in multiple formats (TEXT, PDF, and HTML). This is present only for RFC 8650 and beyond.
-   - **Original Text:** the text exactly as it appears in the RFC as available from rfc-editor.org: we recommend copy & paste.
-   - **Corrected Text:** the text as you think it should appear
-   - **Notes:** any notes or rationale that are relevant to this report. Tip: it is helpful to point out what the update is if it is easy to miss on first read.
+These instructions are for verifiers to log in and verify, reject, hold, or edit errata that have been reported. The verifying party is determined by the stream that produced the RFC: IETF, IAB, IRTF, Independent Submission, or Editorial.
 
-8. Click **Preview Erratum**.
-9. If the preview looks correct, click **Submit for Screening**. If not, click **Return to Edit**.
-10. Upon submission, this errata report go to spam screening. After that is complete, it will appear in the errata search results and the verification process will begin. Email will be sent to the submitter, the authors of the RFC, and the verifying party. The verifying party is determined by the stream that produced the RFC (i.e., IETF, IAB, IRTF, Independent Submissions, and Editorial). If the RFC was the product of a working group, the email will be sent to the relevant Area Directors, WG chairs, and WG mailing list.
-11. Participate in discussion of the errata over email (if any). If you find an error in your report, please [contact the RFC Editor](mailto:rfc-editor@rfc-editor.org).
-12. You will receive an email notification when the [status](/errata/errata-definitions) of your report is changed by the verifying party (to Verified, Rejected, or Held for Document Update).
+1. On the [RFC Errata site](https://errata.rfc-editor.org), click **Login** at top right and use your [Datatracker](https://datatracker.ietf.org) credentials.
+2. Under Available Tasks, click **Verify Reported Errata**.
+3. For a given report, click **Classify**.
+4. Edit the fields as needed, where
+   * **Section:** the number of the section where the error appears or “GLOBAL” if the error appears throughout the RFC.
+   * **Publication formats:** the affected format(s) if the RFC was published in multiple formats (TEXT, PDF, and HTML). This is present only for RFC 8650 and beyond.
+   * **Original Text:** the text as it appears in the RFC
+   * **Corrected Text:** the text as it should appear
+   * **Notes:** any notes or rationale that are relevant to this report
+5. Evaluate the accuracy and choose one option for the report (please see the full [status definitions](/errata/errata-definitions)):
+   * **Save and Continue Editing** to edit the content without changing the status.
+   * **Save and Mark Verified** if the report is necessary and valid.
+   * **Save and Mark Rejected** if the report is invalid.
+   * **Save and Mark Hold for Document Update** if the report is not a necessary update.
+   * **Cancel** to not make any changes.
+   * Note: If this report requires special handling (e.g., it should be removed, it affects existing errata), please send mail to the [RFC Editor](mailto:rfc-editor@rfc-editor.org), rather than proceeding.
+6. Upon changing the status of a report (i.e., clicking **Save and Mark Verified** or **Rejected** or **Hold for Document Update**), an email will be sent to the relevant parties. Also, you will no longer have access to the report once its status has been changed. If you want to access errata that are no longer marked Reported, please contact the [RFC Editor](mailto:rfc-editor@rfc-editor.org).
+7. View more reports that are available for you to classify.
+8. Click **Logout** when you are finished classifying errata reports.
