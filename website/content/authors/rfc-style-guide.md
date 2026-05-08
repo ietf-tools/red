@@ -30,9 +30,9 @@ Additional writing resources that may be helpful to authors:
 
 The following style issues have been raised with the RFC Production Center since [RFC 7322, "RFC Style Guide"](/info/rfc7322/) was published. This page reflects current usage. These will be considered for inclusion in a future RFC (current revision draft in [GitHub](https://github.com/rfc-editor/draft-rfc-editor-7322bis)).
 
-The following style issues have been raised with the RFC Production Center since [RFC 7322, "RFC Style Guide"](/info/rfc7322/), has been published. These will be considered for the greater Style Guide when it is revised. Note that a revision draft is in [GitHub](https://github.com/rfc-editor/draft-rfc-editor-7322bis). This page will be updated to reflect current usage.
+Note that a revision draft is in [GitHub](https://github.com/rfc-editor/draft-rfc-editor-7322bis). This page will be updated to reflect current usage.
 
-Note that the RFC Production Center follows these guidelines but will edit and ask questions as needed.
+The RFC Production Center follows these guidelines and will edit and ask questions as needed.
 
 ### MUSTs
 
@@ -66,7 +66,7 @@ Because each stream has chosen to follow the [IESG statement on Inclusive Langua
 
 Double negatives are discouraged.
 
-#### RFCs Citations as Compounds
+#### RFC Citations as Compounds
 
 Avoid forming compounds by hyphenating RFC numbers; this can be accomplished by 
 
@@ -81,7 +81,7 @@ Avoid using abbreviations as verbs when possible. If unavoidable, suffixes shoul
 
 Once an abbreviation has been introduced, the abbreviated form should be used thereafter.
 
-In-text Citations (bracketed citation)
+#### In-text Citations (bracketed citation)
 
 An in-text citation may a) follow the subject for which it is being cited as a silent pointer to the referenced document or b) be read as part of the text.
 
@@ -134,7 +134,7 @@ The following formatting conventions are to be followed in RFCs.
 
 Per RFC 7997, non-ASCII characters may appear within the body of the document. The `<u>` element is required for cases where the non-ASCII characters are needed for correct protocol operation. 
 
-This is in keeping with the following statement (where "escaping" refers to using U+ notation or otherwise defining each character) in [Section 3.1 of RFC 7997](/rfc/rfc7997/#section-3.1):
+This is in keeping with the following statement (where "escaping" refers to using U+ notation or otherwise defining each character) in [Section 3.1 of RFC 7997](/info/rfc7997/#section-3.1):
 
 "Where the use of non-ASCII characters is purely part of an example  
 and not otherwise required for correct protocol operation, escaping  
@@ -148,7 +148,7 @@ There is no hard limit on the number and frequency of links in documents. Howeve
 
 How frequently terms should be linked is circumstantial depending on context and (often) the length of a section and the document. We consider the following when thinking about links:
 
-- The information at other end of link should be useful to the reader.
+- The information at other end of a link should be useful to the reader.
 - Links should not be self-referential (i.e., links should not link back to its own section/definition)
 - Links should not be distracting. At most, link every few paragraphs; perhaps once per section depending the length of the section. Links to the same term should not appear more than once per sentence, bullet, or paragraph. Linking to the same term repetitively frustrates the reader.
 - It should be clear to the reader where the link goes (i.e., the link text should be descriptive).
@@ -181,7 +181,7 @@ The following sections describe mandated text for use in specific parts of the S
 
 ### 2.1. First Paragraph
 
-The following is the approved text for use in the first paragraph of the Status of this Memo portion of an RFC (see [Section 3.3 of RFC 7841](/rfc/rfc7841/#section-3.3)):
+The following is the approved text for use in the first paragraph of the Status of this Memo portion of an RFC (see [Section 3.3 of RFC 7841](/info/rfc7841/#section-3.3)):
 
 **For _Standards Track_ documents:** This is an Internet Standards Track document.
 
@@ -199,7 +199,7 @@ For Informational, Experimental, Historic and future categories of RFCs, the RFC
 
 ### 2.2. Second Paragraph
 
-The second paragraph may include some text that is specific to the initial document category (see [Section 3.4 of RFC 7841](/rfc/rfc7841/#section-3.4)).
+The second paragraph may include some text that is specific to the initial document category (see [Section 3.4 of RFC 7841](/info/rfc7841/#section-3.4)).
 
 When a document is Experimental or Historic, the second paragraph opens with:
 
@@ -237,9 +237,9 @@ This RFC represents the individual opinion(s) of one or more members of the `<in
 
 **Independent Submission Stream:** This is a contribution to the RFC Series, independently of any other RFC stream. The RFC Editor has chosen to publish this document at its discretion and makes no statement about its value for implementation or deployment.
 
-**Editorial Stream** (as defined by [Section 6.3 of RFC 9920](/rfc/rfc9920/#section-6.3)): This document is a product of the RFC Series Policy Definition Process. It represents the consensus of the RFC Series Working Group approved by the RFC Series Approval Board. Such documents are not candidates for any level of Internet Standard; see Section 2 of RFC 7841.
+**Editorial Stream** (as defined by [Section 6.3 of RFC 9920](/info/rfc9920/#section-6.3)): This document is a product of the RFC Series Policy Definition Process. It represents the consensus of the RFC Series Working Group approved by the RFC Series Approval Board. Such documents are not candidates for any level of Internet Standard; see Section 2 of RFC 7841.
 
-For non-IETF stream documents a reference to [Section 2 of RFC 7841](/rfc/rfc7841/#section-2) is added with the following sentence:
+For non-IETF stream documents a reference to [Section 2 of RFC 7841](/info/rfc7841/#section-2) is added with the following sentence:
 
 Documents approved for publication by the stream approver currently, one of: IAB, IRSG, or RFC Editor are not candidates for any level of Internet Standard; see Section 2 of RFC 7841.
 
@@ -249,6 +249,6 @@ Further information on [BCPs or Internet Standards] is available in Section 2 of
 
 ### 2.3. Third Paragraph
 
-As defined in [Section 3.5 of RFC 7841](/rfc/rfc7841/#section-3.5), the third paragraph includes a reference to where further relevant information can be found. The current text is as follows:
+As defined in [Section 3.5 of RFC 7841](/info/rfc7841/#section-3.5), the third paragraph includes a reference to where further relevant information can be found. The current text is as follows:
 
 Information about the current status of this document, any errata, and how to provide feedback on it may be obtained at `https://www.rfc-editor.org/info/rfcXXXX`.
