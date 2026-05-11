@@ -8,7 +8,7 @@ Each publication stream has its own processes for authoring and approving I-Ds. 
 
 Internet-Draft authors can find current authoring guidelines on the [Internet-Draft Author Resources](https://authors.ietf.org/) page.
 
-When an I-D is approved for publication, it is sent to the RFC Production Center (RPC) for professional editing. The [editorial process](/authors/rfc-edit/) includes accuracy checks and editing for grammar, consistency, and continuity. All changes are approved by the authors before the editorial process concludes.
+When an I-D is approved for publication, it is sent to the RFC Production Center (RPC) for professional editing. The [editorial process](https://authors.ietf.org/en/rfc-publication-process) includes accuracy checks and editing for grammar, consistency, and continuity. All changes are approved by the authors before the editorial process concludes.
 
 The official RFC is then published on rfc-editor.org. Once published, the content of an RFC does not change. However, an RFC may be obsoleted or updated (check the metadata), and [errata](/series/rfc-errata/) may be filed against them.
 
