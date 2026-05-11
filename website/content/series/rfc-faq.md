@@ -28,4 +28,4 @@ The RFC Editor is no longer a single person; the editing and publication functio
 
 ## Why is there sometimes a gap between RFC numbers? {#not-issued}
 
-Occasionally, an RFC number is issued prior to publication to a document that does not get published as an RFC. (See this [list of never-issued RFC numbers](/series/rfc-never-issued/). This explains the occasional gap between numbers. Current procedures attempt to avoid this situation. 
+Occasionally, an RFC number is issued prior to publication to a document that does not get published as an RFC. This explains the occasional gap between numbers. Current procedures attempt to avoid this situation. 
