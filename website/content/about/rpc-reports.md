@@ -36,7 +36,7 @@ Report
 
 Description
 
-[Current Queue (sortable)](/authors/rfc-edit/pub-queue/)
+[RFC Editor Queue (sortable)](https://queue.rfc-editor.org)
 
 A list of all of the documents in the RFC Editor queue, ordered by state. (Updated dynamically)
 
