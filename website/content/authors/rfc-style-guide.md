@@ -7,12 +7,12 @@ Please see the following for information on RFC style:
 - [RFC 7322: "RFC Style Guide"](/info/rfc7322/)
   - [Updates to RFC Style Guide](#updates-to-the-rfc-style-guide)
 - [RFC Series Editor statement on authorship](https://mailarchive.ietf.org/arch/msg/rfc-interest/SHM7dHZd_S1a-CkW2JCBvxdKmcs/) (May 2015)
-- [Status of This Memo Boilerplate](#rfc-headers-and-boilerplate) – "Status of This Memo" text as defined by [RFC 7841](/info/rfc7841/) and [RFC 9920](/info/rfc9920/) (all permutations of the text are listed [here](/materials/status-memos.txt))
-- [Abbreviations List](/rpc/wiki/doku.php?id=abbrev_list) – A non-exhaustive list of expansions of abbreviations (and acronyms) in RFCs
-- [Terms List](https://materials.rfc-editor.org/terms-online.txt) – A non-exhaustive list of decisions on consistent usage of terms in RFCs
+- [Status of This Memo Boilerplate](#rfc-headers-and-boilerplate) – "Status of This Memo" text as defined by [RFC 7841](/info/rfc7841/) and [RFC 9920](/info/rfc9920/) (all permutations of the text are listed [here](https://rpc-wiki.rfc-editor.org/doku.php?id=status-memos))
+- [Abbreviations List](https://rpc-wiki.rfc-editor.org/doku.php?id=abbrev_list) – A non-exhaustive list of expansions of abbreviations (and acronyms) in RFCs
+- [Terms List](https://rpc-wiki.rfc-editor.org/doku.php?id=terms) – A non-exhaustive list of decisions on consistent usage of terms in RFCs
 - [IAB Format](https://wiki.ietf.org/en/group/iab/iab-stream-rfc-format) – IAB-specific formatting information for RFCs from the IAB Stream
 - Reference Entries for RFCs – Available in XML (via [BibXML Service](https://bib.ietf.org/)) and [TXT](/in-notes/rfc-ref.txt)
-- Reference Entries for STDs and BCPs – Available in [XML](https://bib.ietf.org/indexed-sources/relaton-data-rfcsubseries/) and TXT (for the [STD subseries](/in-notes/std-ref.txt) and the [BCP subseries](/in-notes/bcp-ref.txt) )
+- Reference Entries for STDs and BCPs – Available in [XML](https://bib.ietf.org/indexed-sources/relaton-data-rfcsubseries/) and TXT (for the [STD subseries](/std/std-ref.txt) and the [BCP subseries](/bcp/bcp-ref.txt) )
 - [Guidelines for Writing an IANA Considerations Section in RFCs](/info/rfc8126/)
 
 In general, authors should focus on using clear, concise language in their documents. Read the document aloud, show it to others for input, and revise it as many times as needed to make sure future readers will understand the content.
@@ -29,8 +29,6 @@ Additional writing resources that may be helpful to authors:
 ## Updates to the RFC Style Guide
 
 The following style issues have been raised with the RFC Production Center since [RFC 7322, "RFC Style Guide"](/info/rfc7322/) was published. This page reflects current usage. These will be considered for inclusion in a future RFC (current revision draft in [GitHub](https://github.com/rfc-editor/draft-rfc-editor-7322bis)).
-
-Note that a revision draft is in [GitHub](https://github.com/rfc-editor/draft-rfc-editor-7322bis). This page will be updated to reflect current usage.
 
 The RFC Production Center follows these guidelines and will edit and ask questions as needed.
 
@@ -68,7 +66,7 @@ Double negatives are discouraged.
 
 #### RFC Citations as Compounds
 
-Avoid forming compounds by hyphenating RFC numbers; this can be accomplished by 
+Avoid forming compounds by hyphenating RFC numbers; this can be accomplished by
 
 - rewording the sentence (e.g., "`[RFC5011]-style rollover`" &rarr; "`rollover as described in RFC 5011 [RFC5011]`").
 - adding a note in either the Terminology or Conventions section mentioning the RFC so that other occurrences throughout the text will be understood by the reader to be in the style of said RFC (e.g., "This document uses the term "rollover" as defined in RFC 5011").
@@ -118,8 +116,8 @@ Terminology sections are recommended for docs that are terminology/abbreviation 
 
 #### Didactic Capitalization
 
-Use of didactic capitalization is not needed.  
-**Example:** Extensible Markup Language (XML)  
+Use of didactic capitalization is not needed.
+**Example:** Extensible Markup Language (XML)
 (not EXtensible Markup Language (XML) or eXtensible Markup Language (XML))
 
 #### Length of Sections
@@ -161,23 +159,27 @@ Per [RFC 9920](/info/rfc9920/), the RFC Production Center (RPC) is now maintaini
 
 An RFC title page header can be described as follows:
 
+```
     <document source>                                          <author name>
     Request for Comments: <RFC number>                [<author affiliation>]
     [<subseries ID> <subseries number>]    [more author info as appropriate]
     [<RFC relation>:<RFC number[s]>]                            <month year>
     Category: <category>
+```
 
 For example, a sample earlier RFC header is as follows:
 
+```
     Network Working Group                                          T. Dierks
     Request for Comments: 4346                                   Independent
     Obsoletes: 2246                                              E. Rescorla
     Category: Standards Track                                     RTFM, Inc.
                                                                   April 2006
+```
 
 ### 2\. Constructing a Status of this Memo Section
 
-The following sections describe mandated text for use in specific parts of the Status of this Memo portion of an RFC. For convenience, expansions of all permutations of the paragraphs described in this document and [RFC 9920](/info/rfc9920/) are available; see [status memos](/materials/status-memos.txt). When in conflict, these following sections are authoritative.
+The following sections describe mandated text for use in specific parts of the Status of this Memo portion of an RFC. For convenience, expansions of all permutations of the paragraphs described below and in [RFC 9920](/info/rfc9920/) are available; see [status memos](https://rpc-wiki.rfc-editor.org/doku.php?id=status-memos). When in conflict, the following sections are authoritative.
 
 ### 2.1. First Paragraph
 
