@@ -1,13 +1,8 @@
 import type { IRequest } from 'itty-router'
 
 export function redirectTo(targetUrl: string, status = 302): (req: IRequest) => Response {
-  return (req: IRequest) => {
-    if (targetUrl.startsWith('/')) {
-      const newUrl = new URL(targetUrl, req.url)
-      return Response.redirect(newUrl.href, status)
-    } else {
-      return Response.redirect(targetUrl, status)
-    }
+  return (_req: IRequest) => {
+    return Response.redirect(targetUrl, status)
   }
 }
 
