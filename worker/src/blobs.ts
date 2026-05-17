@@ -1,5 +1,5 @@
 import type { IRequest } from 'itty-router'
-import { createBlobResponse, createBlobNotFoundResponse, detectContentType } from './helpers'
+import { createBlobResponse, createBlobNotFoundResponse, detectContentType, safeParseURL } from './helpers'
 
 export async function blobsRfc(req: IRequest, env: Env): Promise<Response | undefined> {
   const RFC_PREFIX = '/rfc/'
@@ -10,7 +10,11 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
 
   const objectPath = req.normalizedPath.substring(RFC_PREFIX.length)
 
-  const { origin } = new URL(req.url)
+  const validatedUrl = safeParseURL(req.url)
+  if (!validatedUrl) {
+    return undefined
+  }
+  const { origin } = validatedUrl
   let canonicalUrl = ''
   const rfcParts = objectPath.match(/(rfc(\d+))/i)
   if (rfcParts && rfcParts[2]) {

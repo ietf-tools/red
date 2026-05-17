@@ -69,17 +69,16 @@ export function detectContentType(path: string): string | undefined {
 }
 
 function formatCanonicalHeader(url: string): string | undefined {
-  try {
-    const validatedUrl = new URL(url).toString()
-    const encodedUrl = encodeURI(validatedUrl)
-      .replace(/</g, '%3C')
-      .replace(/>/g, '%3E')
-
-    return `<${encodedUrl}>; rel="canonical"`
-  } catch (e: unknown) {
-    console.error('Invalid canonical url', url, e)
+  const validatedUrl = safeParseURL(url)
+  if (!validatedUrl) {
     return undefined
   }
+  const validatedUrlString = validatedUrl.toString()
+  const encodedUrl = encodeURI(validatedUrlString)
+    .replace(/</g, '%3C')
+    .replace(/>/g, '%3E')
+
+  return `<${encodedUrl}>; rel="canonical"`
 }
 
 export const monthNames = [
