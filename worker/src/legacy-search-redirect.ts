@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { DateTime } from 'luxon'
-import { monthNames, searchPathBuilder } from './helpers'
+import { monthNames, safeParseURL, searchPathBuilder } from './helpers'
 
 const LegacySearchParamsSchema = z.object({
   rfc: z.string().optional(),
@@ -17,7 +17,12 @@ const LegacySearchParamsSchema = z.object({
 })
 
 export const legacySearchRedirectPathBuilder = (url: string): string => {
-  const legacyURLParams = new URL(url, 'https://localhost/').searchParams
+  const parsedUrl = safeParseURL(url)
+  if (!parsedUrl) {
+    return searchPathBuilder({})
+  }
+
+  const legacyURLParams = parsedUrl.searchParams
   const legacyObj: Record<string, string | string[]> = {}
 
   // convert URL into object so we can validate it

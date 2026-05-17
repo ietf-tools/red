@@ -156,3 +156,12 @@ export const searchPathBuilder = (
 }
 
 export const rfcEditorErrataSearchUrl = (envDomain: string = '') => `https://errata${envDomain}.rfc-editor.org`
+
+export const safeParseURL = (url: string): URL | undefined => {
+  try {
+    return new URL(url, 'https://localhost/')
+  } catch (e: unknown) {
+    console.error(`[safeParseURL] Unable to parse URL ${JSON.stringify(url)}`, e)
+    return undefined
+  }
+}

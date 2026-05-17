@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { rfcEditorErrataSearchUrl, typeSenseEncodeUriComponent } from './helpers'
+import { rfcEditorErrataSearchUrl, safeParseURL, typeSenseEncodeUriComponent } from './helpers'
 
 const LegacyErrataSearchParamsSchema = z.object({
   rfc: z.string().optional(), // RFC number
@@ -52,7 +52,12 @@ const LegacyErrataSearchParamsSchema = z.object({
 })
 
 export const legacyErrataSearchRedirectUrlBuilder = (url: string, envDomain = ''): string => {
-  const legacyURLParams = new URL(url, 'https://localhost/').searchParams
+  const parsedUrl = safeParseURL(url)
+  if (!parsedUrl) {
+    return rfcEditorErrataSearchUrl(envDomain)
+  }
+
+  const legacyURLParams = parsedUrl.searchParams
   const legacyObj: Record<string, string | string[]> = {}
 
   // convert URL into object so we can validate it
