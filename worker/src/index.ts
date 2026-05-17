@@ -118,13 +118,13 @@ router
     Response.redirect(`https://errata${env.ENV_DOMAIN}.rfc-editor.org/${req.params.extra}`, 302)
   )
   .get('/search/rfc_search_detail.php', (req: IRequest) =>
-    Response.redirect(legacySearchRedirectPathBuilder(new URL(req.url).search), 302)
+    Response.redirect(legacySearchRedirectPathBuilder(req.url), 302)
   )
   .get('/search/rfc_search.php', (req: IRequest) =>
-    Response.redirect(legacySearchRedirectPathBuilder(new URL(req.url).search), 302)
+    Response.redirect(legacySearchRedirectPathBuilder(req.url), 302)
   )
   .get('/search/errata_search.php', (req: IRequest) =>
-    Response.redirect(legacyErrataSearchRedirectUrlBuilder(new URL(req.url).search, env.ENV_DOMAIN), 302)
+    Response.redirect(legacyErrataSearchRedirectUrlBuilder(req.url), 302)
   )
 
   // Auth

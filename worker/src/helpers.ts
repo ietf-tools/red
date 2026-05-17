@@ -109,6 +109,7 @@ export const typeSenseEncodeUriComponent = (uriComponent: string) =>
   encodeURIComponent(uriComponent).replace(/%20/g, '+')
 
 const SEARCH_PATH = '/search/'
+
 type Status =
   | 'Internet Standard'
   | 'Proposed Standard'
@@ -118,6 +119,7 @@ type Status =
   | 'Experimental'
   | 'Historic'
   | 'Unknown'
+
 type SearchPathBuilderProps = {
   q: string
   area: string
