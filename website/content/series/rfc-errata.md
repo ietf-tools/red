@@ -28,10 +28,7 @@ If you find an error, you can report an erratum for the RFC.
 2. Search by RFC number to check if an erratum for the topic already exists. Remember to check rejected errata and errata that have been held for document updates, not just the verified errata. Click "Report New Erratum".
 3. Fill out the form provided with the appropriate information. After spam screening, you will receive email notifications about your errata as it is processed, including any discussion that may arise.
 
-Further information on how errata reports are handled exists in:
-
-- [Current Process for Handling RFC Errata Reports](https://datatracker.ietf.org/doc/draft-rpc-errata-process/)
-- [IESG Processing of RFC Errata for the IETF Stream](https://datatracker.ietf.org/doc/statement-iesg-iesg-processing-of-rfc-errata-for-the-ietf-stream-20210507/).
+For more information, see [IESG Processing of RFC Errata for the IETF Stream](https://datatracker.ietf.org/doc/statement-iesg-iesg-processing-of-rfc-errata-for-the-ietf-stream-20210507/).
 
 ### Search for Errata
 
