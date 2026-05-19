@@ -8,7 +8,7 @@ The RFC Series uses certain conventions that may not be familiar to all readers.
 
 ## Status
 
-Not all RFCs are standards, so Status is used to indicate the type of RFC. [Statuses may change over time](https://datatracker.ietf.org/doc/statement-iesg-iesg-statement-on-designating-rfcs-as-historic-20140720/).
+Not all RFCs are standards, so Status is used to indicate the type of RFC. [Statuses may change over time](/status-changes/).
 
 Standards Track RFCs use the following Statuses:
 
