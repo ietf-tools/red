@@ -4,4 +4,4 @@ RFCs are freely available to download, copy, publish, display, and distribute, i
 
 RFCs are not guaranteed to be patent-free and anyone interested in the Intellectual Property Rights (IPR) constraints on a specific document should consult the IETF's [IPR disclosure database](https://datatracker.ietf.org/ipr/), though this is not guaranteed to be a complete record of applicable patents.
 
-You may [download RFCs in bulk](/series/rfc-download/).
+You may [download RFCs](/series/rfc-download/) via rsync.
