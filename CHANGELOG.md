@@ -57,23 +57,23 @@ Notable changes:
 - Leading zeros in RFC ids will be removed.
 - `<section>` element `xml:id` attribute renamed `id`.
 
-### `/in-notes/tar/*.tar.gz` and `/in-notes/tar/*.zip`
+#### `/in-notes/tar/*.tar.gz` and `/in-notes/tar/*.zip`
 
 These files will no longer be served. Instead, use rsync.
 
-### `/ref/*`
+#### `/ref/*`
 
 These txt files were previously 4 digits (with leading zeros as padding), but are now 1-5+ digits without leading zeroes. The existing path will be retained. No redirect is expected.
 
 Any URL references in the txt file may have trailing slashes `/` added.
 
-### `/rfc/*`
+#### `/rfc/*`
 
 The HTML in these routes should not change as a result of the new site.
 
 Please open an Issue if you find a difference.
 
-#### Other HTML pages (homepage, docs pages, `/info/*` routes)
+#### HTML pages (homepage, docs pages, `/info/*` routes)
 
 Developers who scrape rfc-editor.org HTML pages should expect a different HTML structure when the new site is released. This is necessary for many reasons. No guarantees about maintaining HTML structure can be made and further changes may occur after the release of the site. We recommend that software migrate to JSON or XML APIs instead of scraping HTML as this will be more resilient against these design changes.
 
@@ -81,13 +81,13 @@ Bookmarked links to pages no longer found should redirect to the new URL. File a
 
 ##### HTML search pages like `/search/rfc_search_detail.php`, `/search/errata_search.php`, `/search/rfc_search.php`
 
-These routes were HTML and aren't considered to be APIs. Any software scraping from these routes will have to update to the new search page which uses JavaScript and API JSON results (ie, the search results aren't even in the HTML response, it's a JavaScript app).
+These routes were HTML and aren't considered to be APIs (in the sense that there's no effort to maintain HTML structure). Any software scraping from these routes will have to update to the new search page which uses JavaScript and API JSON results (ie, the search results aren't even in the HTML response, it's a JavaScript app).
 
 For bookmarked links to the previous search there are redirects. Best attempts have been made to preserve the search query's meaning and redirect to the new search engine with those query parameters converted into what the new search page expects. Sometimes no conversion is available, due to a mismatch of features between the previous search engine and the new. No guarantees are made about a perfect conversion, but if you there is a better conversion please report an issue.
 
 This is a new search engine and it could have different search results, compared to the previous one.
 
-##### Pages that will be removed
+#### Pages/routes that will be removed
 
 - `/rfc-index.html` (RFC index in ascending order). Instead use the search.
 - `/rfc-index2.html` (RFC index in descending order). Instead use the search.
