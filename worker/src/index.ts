@@ -1,5 +1,5 @@
 import { env } from 'cloudflare:workers'
-import { IttyRouter, StatusError, error } from 'itty-router'
+import { IttyRouter, error } from 'itty-router'
 import type { IRequest } from 'itty-router'
 // import * as oidc from './oidc'
 import {
@@ -14,7 +14,7 @@ import {
   blobsSitemap,
   blobsStatics
 } from './blobs'
-import { addNormalizedPath, redirectTo } from './helpers'
+import { addNormalizedPath, emptyFileResponse, redirectTo } from './helpers'
 import { legacySearchRedirectPathBuilder } from './legacy-search-redirect'
 
 import { legacyErrataSearchRedirectUrlBuilder } from './legacy-errata-search-redirect'
@@ -146,6 +146,8 @@ router
 
   .get('/rfc/rfc-index.txt', redirectTo('/rfc-index.txt', 302))
   .get('/rfc/rfc-index.xml', redirectTo('/rfc-index.xml', 302))
+
+  .get('/rfc/rfc-local.css', addNormalizedPath, emptyFileResponse)
 
   // Blobs
   .get('/rfc/*', addNormalizedPath, blobsRfc)

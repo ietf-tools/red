@@ -157,3 +157,13 @@ export const searchPathBuilder = (
 }
 
 export const rfcEditorErrataSearchUrl = (envDomain: string = '') => `https://errata${envDomain}.rfc-editor.org/search/`
+
+export async function emptyFileResponse(req: IRequest): Promise<Response | undefined> {
+  const headers = new Headers()
+  headers.set('Access-Control-Allow-Origin', '*')
+  const contentType = detectContentType(req.normalizedPath)
+  if (contentType) {
+    headers.set('Content-Type', contentType)
+  }
+  return new Response('', { headers })
+}
