@@ -184,8 +184,6 @@ export const uploadRefsRef = async (rfcNumber: number): AsyncTaskItem => {
       1602,
       2223,
       2850,
-
-
     ].includes(rfc.number)
   ) {
     console.log(`[RFC ${rfc.number}] debug ${rfcRefS3Path} ${JSON.stringify(rfc)}`)
