@@ -252,7 +252,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC4047 |            | Wells, D. and S. Allen, "MIME Sub-type Registrations for Flexible Image Transport System (FITS)", RFC 4047, DOI 10.17487/RFC4047, April 2005, <https://www.rfc-editor.org/info/rfc4047/>.
  RFC4048 |            | Carpenter, B., "RFC 1888 Is Obsolete", RFC 4048, DOI 10.17487/RFC4048, April 2005, <https://www.rfc-editor.org/info/rfc4048/>.
  RFC4049 |    RFC6019 | Housley, R., "BinaryTime: An Alternate Format for Representing Date and Time in ASN.1", RFC 4049, DOI 10.17487/RFC4049, April 2005, <https://www.rfc-editor.org/info/rfc4049/>.
- RFC5000 |    RFC7100 | Editor, R., "Internet Official Protocol Standards", RFC 5000, DOI 10.17487/RFC5000, May 2008, <https://www.rfc-editor.org/info/rfc5000/>.
+ RFC5000 |    RFC7100 | RFC Editor, "Internet Official Protocol Standards", RFC 5000, DOI 10.17487/RFC5000, May 2008, <https://www.rfc-editor.org/info/rfc5000/>.
  RFC5001 |            | Austein, R., "DNS Name Server Identifier (NSID) Option", RFC 5001, DOI 10.17487/RFC5001, August 2007, <https://www.rfc-editor.org/info/rfc5001/>.
  RFC5002 |            | Camarillo, G. and G. Blanco, "The Session Initiation Protocol (SIP) P-Profile-Key Private Header (P-Header)", RFC 5002, DOI 10.17487/RFC5002, August 2007, <https://www.rfc-editor.org/info/rfc5002/>.
  RFC5003 |            | Balus, F., Martini, L., Metz, C., and J. Sugimoto, "Attachment Individual Identifier (AII) Types for Aggregation", RFC 5003, DOI 10.17487/RFC5003, September 2007, <https://www.rfc-editor.org/info/rfc5003/>.
@@ -757,7 +757,7 @@ RFC4046 |           | Canetti, R., Dondeti, L., Lindholm, F., and M. Baugher, "M
 RFC4047 |           | Wells, D. and S. Allen, "MIME Sub-type Registrations for Flexible Image Transport System (FITS)", RFC 4047, DOI 10.17487/RFC4047, April 2005, <https://www.rfc-editor.org/info/rfc4047/>.
 RFC4048 |           | Carpenter, B., "RFC 1888 Is Obsolete", RFC 4048, DOI 10.17487/RFC4048, April 2005, <https://www.rfc-editor.org/info/rfc4048/>.
 RFC4049 |   RFC6019 | Housley, R., "BinaryTime: An Alternate Format for Representing Date and Time in ASN.1", RFC 4049, DOI 10.17487/RFC4049, April 2005, <https://www.rfc-editor.org/info/rfc4049/>.
-RFC5000 |   RFC7100 | Editor, R., "Internet Official Protocol Standards", RFC 5000, DOI 10.17487/RFC5000, May 2008, <https://www.rfc-editor.org/info/rfc5000/>.
+RFC5000 |   RFC7100 | RFC Editor, "Internet Official Protocol Standards", RFC 5000, DOI 10.17487/RFC5000, May 2008, <https://www.rfc-editor.org/info/rfc5000/>.
 RFC5001 |           | Austein, R., "DNS Name Server Identifier (NSID) Option", RFC 5001, DOI 10.17487/RFC5001, August 2007, <https://www.rfc-editor.org/info/rfc5001/>.
 RFC5002 |           | Camarillo, G. and G. Blanco, "The Session Initiation Protocol (SIP) P-Profile-Key Private Header (P-Header)", RFC 5002, DOI 10.17487/RFC5002, August 2007, <https://www.rfc-editor.org/info/rfc5002/>.
 RFC5003 |           | Balus, F., Martini, L., Metz, C., and J. Sugimoto, "Attachment Individual Identifier (AII) Types for Aggregation", RFC 5003, DOI 10.17487/RFC5003, September 2007, <https://www.rfc-editor.org/info/rfc5003/>.

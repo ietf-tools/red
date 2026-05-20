@@ -100,7 +100,7 @@ const stringifyRFC = (rfc: RfcCommon): string => {
 
     doi = formatIdentifiers(rfc.identifiers, ' ').join(' ')
 
-    return `${formatAuthorsPerStyleGuide(rfc.authors)}, "${rfc.title}", ${also}RFC ${rfc.number}, ${doi},${rfcdate ? ` ${rfcdate},` : ''
+    return `${formatAuthorsPerStyleGuide(rfc.authors, 'brief')}, "${rfc.title}", ${also}RFC ${rfc.number}, ${doi},${rfcdate ? ` ${rfcdate},` : ''
       } <${PUBLIC_SITE_URL_ORIGIN}/info/rfc${rfc.number}/>.`
   }
 }

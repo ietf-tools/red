@@ -1,5 +1,5 @@
 import { type RfcCommon } from "../../../website/app/utilities/rfc-validators.ts";
-import { EDITOR_SUFFIX, formatAuthor } from "./rfc-converters-utils.ts";
+import { EDITOR_SUFFIX, formatAuthor, type FormatAuthorStyle } from "./rfc-converters-utils.ts";
 
 if (
   // @ts-ignore TS thinks .escape doesn't exist but it should
@@ -18,9 +18,9 @@ const editorSuffixRegex = new RegExp(`${
  * https://www.rfc-editor.org/styleguide/part2/#ref_rfcs
  * https://www.rfc-editor.org/authors/rfc-style-guide/
  */
-export const formatAuthorsPerStyleGuide = (authors: RfcCommon["authors"]): string => {
+export const formatAuthorsPerStyleGuide = (authors: RfcCommon["authors"], formatAuthorStyle: FormatAuthorStyle = 'brief'): string => {
   return authors.map((author, index, arr) => {
-    const formattedName = formatAuthor(author, 'brief')
+    const formattedName = formatAuthor(author, formatAuthorStyle)
     const hasTwoAuthors = arr.length === 2
     const hasMultipleAuthors = arr.length > 1
 

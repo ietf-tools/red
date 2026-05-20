@@ -177,7 +177,16 @@ export const uploadRefsRef = async (rfcNumber: number): AsyncTaskItem => {
   const rfcRefS3Path = rfcRefPathBuilder(rfcNumber)
   if (
     // https://github.com/ietf-tools/red/issues/354
-    [212, 1370, 1602].includes(rfc.number)
+    [
+      212,
+      1359,
+      1370,
+      1602,
+      2223,
+      2850,
+
+
+    ].includes(rfc.number)
   ) {
     console.log(`[RFC ${rfc.number}] debug ${rfcRefS3Path} ${JSON.stringify(rfc)}`)
   }
