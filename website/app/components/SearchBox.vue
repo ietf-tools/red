@@ -10,12 +10,29 @@
 </template>
 
 <script setup lang="ts">
+import { parseSeriesId } from '~/utilities/rfc'
 import { SEARCH_PLACEHOLDER } from '~/utilities/search'
-import { SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
+import { infoSeriesPathBuilder, SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
 
 const searchQuery = ref('')
 
 const handleSearch = () => {
+  const { value } = searchQuery
+  const normalizedValue = value.trim()
+  if (normalizedValue.match(/^[0-9]+$/)) {
+    // if it's just a number assume they want to go to an RFC
+    const rfcNumber = parseInt(normalizedValue, 10)
+    if (rfcNumber > 0) {
+      navigateTo(infoSeriesPathBuilder(`rfc${rfcNumber}`))
+      return
+    }
+  }
+  const seriesId = parseSeriesId(normalizedValue)
+  if (seriesId) {
+    navigateTo(infoSeriesPathBuilder(`${seriesId.type}${seriesId.number}`))
+    return
+  }
+
   const searchPath = searchPathBuilder({
     q: searchQuery.value
   })
