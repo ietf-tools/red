@@ -1,10 +1,7 @@
 <template>
   <BodyLayoutDocument>
     <template #sidebar>
-      <div
-        v-if="subseriesDocument"
-        class="lg:min-w-[300px]"
-      >
+      <div v-if="subseriesDocument" class="lg:min-w-[300px]">
         <p v-if="subseriesDocument.type === 'bcp'">
           BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs
           related to a specific IETF process or recommended guidelines.
@@ -21,28 +18,16 @@
     </template>
     <template v-if="subseriesDocumentError">
       <div class="container mx-auto">
-        <Alert
-          level="1"
-          variant="warning"
-          heading="Error"
-        >
+        <Alert level="1" variant="warning" heading="Error">
           {{ subseriesDocumentError }}
         </Alert>
       </div>
     </template>
 
     <div class="min-h-screen">
-      <div
-        v-if="subseriesDocument"
-        class="mt-3 flex flex-col gap-4"
-      >
-        <RFCCard
-          v-for="rfc in subseriesDocument.contents"
-          :key="rfc.number"
-          :rfc="rfc"
-          heading-level="3"
-          :show-abstract="true"
-        />
+      <div v-if="subseriesDocument" class="mt-3 flex flex-col gap-4">
+        <RFCCard v-for="rfc in subseriesDocument.contents" :key="rfc.number" :rfc="rfc" heading-level="3"
+          :show-abstract="true" />
       </div>
     </div>
   </BodyLayoutDocument>
@@ -76,17 +61,17 @@ const { data: subseriesDocument, error: subseriesDocumentError } = await useAsyn
   subseriesDocumentKey,
   async () => {
     const subseriesPath = apiSubseriesPathBuilder(props.subseriesId.type, props.subseriesId.number)
-    const maybeRfcBucketDocument = await $fetch(subseriesPath, {
+    const maybeSubseriesDocument = await $fetch(subseriesPath, {
       method: 'GET',
       baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
     })
-    if (typeof maybeRfcBucketDocument !== 'object') {
-      console.log("Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON", typeof maybeRfcBucketDocument, maybeRfcBucketDocument)
+    if (typeof maybeSubseriesDocument !== 'object') {
+      console.log("Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON", typeof maybeSubseriesDocument, maybeSubseriesDocument)
       throw Error(`Unable to load RFC. See console for more.`)
     }
-    const { data, error } = SubseriesCommonSchema.safeParse(maybeRfcBucketDocument)
+    const { data, error } = SubseriesCommonSchema.safeParse(maybeSubseriesDocument)
     if (error) {
-      console.log('Failed to validate RFC HTML JSON', error, JSON.stringify(maybeRfcBucketDocument, null, 2))
+      console.log('Failed to validate RFC HTML JSON', error, JSON.stringify(maybeSubseriesDocument, null, 2))
       throw Error(`Unable to load RFC. See console for more.`)
     }
     return data

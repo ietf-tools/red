@@ -12,25 +12,49 @@
 <script setup lang="ts">
 import { parseSeriesId } from '~/utilities/rfc'
 import { SEARCH_PLACEHOLDER } from '~/utilities/search'
-import { infoSeriesPathBuilder, SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
+import { apiRfcBucketDocumentPathBuilder, apiSubseriesPathBuilder, infoSeriesPathBuilder, SEARCH_PATH, searchPathBuilder, useApiV1UrlOrigin } from '~/utilities/url'
+
+const apiV1UrlOrigin = useApiV1UrlOrigin()
 
 const searchQuery = ref('')
 
-const handleSearch = () => {
+const handleSearch = async () => {
   const { value } = searchQuery
-  const normalizedValue = value.trim()
+  const normalizedValue = value.trim().replace(/\s/g, '')
   if (normalizedValue.match(/^[0-9]+$/)) {
     // if it's just a number assume they want to go to an RFC
     const rfcNumber = parseInt(normalizedValue, 10)
     if (rfcNumber > 0) {
-      navigateTo(infoSeriesPathBuilder(`rfc${rfcNumber}`))
-      return
+      const rfcDataPath = apiRfcBucketDocumentPathBuilder(rfcNumber)
+      try {
+        const maybeRfcBucketDocument = await $fetch(rfcDataPath, {
+          method: 'GET',
+          baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
+        })
+        if (maybeRfcBucketDocument) {
+          await navigateTo(infoSeriesPathBuilder(`rfc${rfcNumber}`))
+          return
+        }
+      } catch (e: unknown) {
+        console.info(`[Homepage search] RFC ${rfcNumber} doesn't exist so using search`, rfcDataPath, normalizedValue, value, e)
+      }
     }
   }
   const seriesId = parseSeriesId(normalizedValue)
   if (seriesId) {
-    navigateTo(infoSeriesPathBuilder(`${seriesId.type}${seriesId.number}`))
-    return
+    const subseriesPath = apiSubseriesPathBuilder(seriesId.type, seriesId.number)
+    try {
+      const maybeSubseriesDocument = await $fetch(subseriesPath, {
+        method: 'GET',
+        baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
+      })
+      if (maybeSubseriesDocument) {
+        await navigateTo(infoSeriesPathBuilder(`${seriesId.type}${seriesId.number}`))
+        return
+      }
+    } catch (e: unknown) {
+      console.info(`[Homepage search] ${seriesId.type} ${seriesId.number} doesn't exist so using search`, subseriesPath, normalizedValue, value, e)
+    }
   }
 
   const searchPath = searchPathBuilder({
