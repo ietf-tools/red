@@ -171,7 +171,20 @@ export async function emptyFileResponse(req: IRequest): Promise<Response | undef
   return new Response('', { headers })
 }
 
-export const redTypesenseSearchRequestBuilder = (typesenseApiKey: string, searchTerm: string, typesenseHost: string) => {
+type RedTypesenseSearchRequestBuilderProps = {
+  typesenseApiKey: string
+  searchQuery: string
+  typesenseHost: string
+  paginationOffset: number
+  resultPerPage: number
+}
+export const redTypesenseSearchRequestBuilder = ({
+  typesenseApiKey,
+  searchQuery,
+  typesenseHost,
+  paginationOffset,
+  resultPerPage
+}: RedTypesenseSearchRequestBuilderProps) => {
   return {
     url: `${typesenseHost}/multi_search?x-typesense-api-key=${typesenseApiKey}`,
     body: JSON.stringify({
@@ -179,19 +192,20 @@ export const redTypesenseSearchRequestBuilder = (typesenseApiKey: string, search
         {
           preset: 'red',
           collection: 'docs',
-          q: searchTerm,
+          q: searchQuery,
           facet_by: 'area.full,authors.name,flags.hiddenDefault,group.full,publicationDate,status.name,stream.name',
           filter_by: 'flags.hiddenDefault:=[false]',
           max_facet_values: 200,
-          page: 1,
-          per_page: 10
+          page: paginationOffset,
+          per_page: resultPerPage
         }
       ]
     })
   }
 }
 
-export const escapeHTML = (str: string) => String(str)
+export const escapeHTML = (str: string) =>
+  String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -200,7 +214,9 @@ export const escapeHTML = (str: string) => String(str)
 
 export class SafeHTML {
   constructor(readonly value: string) {}
-  toString() { return this.value }
+  toString() {
+    return this.value
+  }
 }
 
 export const safe = (html: string) => new SafeHTML(html)
