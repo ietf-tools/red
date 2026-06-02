@@ -127,6 +127,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     }
 
     const totalResults = data.results.reduce((sum, { found }) => sum + found, 0)
+    const totalPagesOfResults = Math.ceil(totalResults / RESULTS_PER_PAGE)
 
     const previousUrl = new URL(currentUrl)
     previousUrl.searchParams.set(SEARCH_PAGINATION_PARAM, String(Math.max(FIRST_PAGE_OF_RESULTS, paginationOffset - 1)))
@@ -141,7 +142,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       (hit) =>
         htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
     )
-    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results for ${JSON.stringify(searchQuery)}</h1><p>${String(totalResults)} results. Page ${String(paginationOffset)}</p><ul>${safe(items.join(''))}</ul>${previous}${next}</html>`
+    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results for ${JSON.stringify(searchQuery)}</h1><p>${String(totalResults)} results.</p><ul>${safe(items.join(''))}</ul><p>Page ${String(paginationOffset)} of ${String(totalPagesOfResults)} results</p>${previous}${next}</html>`
 
     return new Response(html.toString(), {
       status: 200,
