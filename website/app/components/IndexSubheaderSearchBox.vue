@@ -1,5 +1,6 @@
 <template>
   <form method="get" :action="SEARCH_PATH" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
+    <div v-html="noScriptHtml"></div>
     <input id="search" ref="search-input" :disabled="!isMounted" v-model="searchQuery" type="search" name="q"
       class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
       :placeholder="SEARCH_PLACEHOLDER" aria-label="Find an RFC (number, subseries, title, author, etc.)" />
@@ -117,6 +118,10 @@ const checkSearchForSeriesId = async () => {
 
   didYouMean.value = undefined
 }
+
+const noScriptHtml = computed(() => {
+  return `<noscript data-nosnippet><div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;"><b>Your browser has JavaScript disabled.</b> The following search won't work. Use <a href="${SEARCH_PATH}">this search instead</a>, but please enable JavaScript for many more search features.</div></noscript>`
+})
 
 /**
  * If a user types something that looks like an RFC number or seriesId then offer a link to go directly to an RFC
