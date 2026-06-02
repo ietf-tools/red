@@ -91,6 +91,7 @@ router
   .get('/source-definitions', redirectTo('/series/rfc-tips/', 302))
   .get('/how-to-verify', redirectTo('/series/rfc-errata/', 302))
   .get('/ien/', redirectTo('https://history.rfc-editor.org/ien/', 302))
+  .get('/ien/:extra+', (req: IRequest) => Response.redirect(`https://history.rfc-editor.org/ien/${req.params.extra}`, 302))
   .get('/ien/ien-index.html', redirectTo('https://history.rfc-editor.org/ien/', 302))
   .get('/current_queue.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org`, 302))
   .get('/queue2.xml', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/api/v1/queue.xml`, 302))
