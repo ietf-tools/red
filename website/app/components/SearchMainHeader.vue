@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { AisSearchBox } from 'vue-instantsearch/vue3/es'
 import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '../utilities/typesense'
-import { SEARCH_PLACEHOLDER } from '~/utilities/search';
+import { NOSCRIPT_IFRAME_DOM_ID, SEARCH_PLACEHOLDER } from '~/utilities/search';
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url';
 
 const aisSearchboxInputClass = 'flex-1 min-w-0 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs'
@@ -56,7 +56,7 @@ const apiKey = useTypesenseApiKey()
 
 const noScriptHtml = computed(() => {
     return `<noscript data-nosnippet>
-        <form method="get" action="${API_NO_JS_SERVER_SEARCH_PATH}" target="search-terms" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
+        <form method="get" action="${API_NO_JS_SERVER_SEARCH_PATH}" target="${NOSCRIPT_IFRAME_DOM_ID}" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
             <input id="search" ref="search-input" v-model="searchQuery" type="search" name="q"
             class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
             :placeholder="SEARCH_PLACEHOLDER" aria-label="Find an RFC (number, subseries, title, author, etc.)" />

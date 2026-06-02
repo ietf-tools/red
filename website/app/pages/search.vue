@@ -57,6 +57,7 @@ import type { TypeSenseClient } from '../utilities/typesense'
 import { adaptSearchClient } from '~/utilities/search-client-middleware'
 import { useRfcEditorHead } from '~/utilities/head'
 import { API_NO_JS_SERVER_SEARCH_PATH, SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
+import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 
 const route = useRoute()
 const searchStore = useSearchStore()
@@ -276,7 +277,7 @@ const routing = {
 }
 
 const noScriptHtml = computed(() => {
-  return `<noscript data-nosnippet><iframe name="search-terms" title="Search results..." src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:70vh"></iframe></noscript>`
+  return `<noscript data-nosnippet><iframe name="${NOSCRIPT_IFRAME_DOM_ID}" title="Search results..." src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:70vh"></iframe></noscript>`
 })
 
 definePageMeta({
