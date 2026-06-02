@@ -191,7 +191,6 @@ export const redTypesenseSearchRequestBuilder = (typesenseApiKey: string, search
   }
 }
 
-
 export const escapeHTML = (str: string) => String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
