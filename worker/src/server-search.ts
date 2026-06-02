@@ -46,20 +46,27 @@ const TYPESENSE_API_KEY_PARAM = 'x-typesense-api-key'
 const SEARCH_QUERY_PARAM = 'q'
 
 export async function serverSearch(req: IRequest, env: Env): Promise<Response | undefined> {
+  const typesenseHost = env.NUXT_PUBLIC_TYPESENSE_HOST
+  if(!typesenseHost) {
+    return new Response(`<!DOCTYPE html><h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1>`, {
+      status: 500,
+      headers: { 'Content-Type': 'text/html;charset=utf-8' }
+    })
+  }
   const { searchParams } = new URL(req.url, 'https://localhost/')
   const typesenseApiKey = searchParams.get(TYPESENSE_API_KEY_PARAM)
-  const searchQuery = searchParams.get(SEARCH_QUERY_PARAM)
   if (!typesenseApiKey) {
     return new Response(`<!DOCTYPE html><h1>Search needs valid API key</h1>`, {
       status: 500,
       headers: { 'Content-Type': 'text/html;charset=utf-8' }
     })
   }
+  const searchQuery = searchParams.get(SEARCH_QUERY_PARAM)
 
   const requestPojo = redTypesenseSearchRequestBuilder(
     typesenseApiKey,
     searchQuery ?? '*',
-    'https://typesense.staging.ietf.org' // env.NUXT_PUBLIC_TYPESENSE_HOST
+    `https://${typesenseHost}` 
   )
 
   try {
