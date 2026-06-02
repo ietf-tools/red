@@ -4,6 +4,7 @@
             class="container mx-auto pl-5 pr-3 py-1 text-white text-balance">
             Search RFCs
         </Heading>
+        <div class="px-6 container mx-auto" v-html="noScriptHtml" />
     </div>
     <div :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
         class="lg:sticky lg:top-0 lg:z-60 bg-blue-900 dark:bg-blue-950 text-white mt-0">
@@ -47,6 +48,24 @@
 import { AisSearchBox } from 'vue-instantsearch/vue3/es'
 import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '../utilities/typesense'
 import { SEARCH_PLACEHOLDER } from '~/utilities/search';
+import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url';
 
 const aisSearchboxInputClass = 'flex-1 min-w-0 bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 py-3 pr-2 h-12 rounded-l-xs'
+
+const apiKey = useTypesenseApiKey()
+
+const noScriptHtml = computed(() => {
+    return `<noscript data-nosnippet>
+        <form method="get" action="${API_NO_JS_SERVER_SEARCH_PATH}" target="search-terms" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
+            <input id="search" ref="search-input" v-model="searchQuery" type="search" name="q"
+            class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
+            :placeholder="SEARCH_PLACEHOLDER" aria-label="Find an RFC (number, subseries, title, author, etc.)" />
+            <input type="hidden" name="x-typesense-api-key" value="${apiKey}" />
+            <button type="submit" id="search" class="bg-blue-200 px-2 flex items-center text-white" aria-label="Submit search">
+                Search
+            </button>
+        </form>
+        <iframe name="search-terms" src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:70vh"></iframe>
+    </noscript>`
+})
 </script>

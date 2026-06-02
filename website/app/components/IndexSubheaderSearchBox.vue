@@ -1,5 +1,8 @@
 <template>
-  <form method="get" :action="SEARCH_PATH" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
+  <form method="get" :action="SEARCH_PATH" :class="['flex flex-row pt-6 pb-2 md:pb-3', {
+    'visible': isMounted,
+    'invisible': !isMounted
+  }]" @submit.stop.prevent="handleSearch">
     <input id="search" ref="search-input" v-model="searchQuery" type="search" name="q"
       class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
       :placeholder="SEARCH_PLACEHOLDER" aria-label="Find an RFC (number, subseries, title, author, etc.)" />
@@ -38,6 +41,12 @@ const searchInputRef = useTemplateRef('search-input')
 const searchQuery = ref(searchInputRef.value?.value ?? '')
 
 const didYouMean = ref<SeriesId | undefined>()
+
+const isMounted = ref(false)
+
+onMounted(() => {
+  isMounted.value = true
+})
 
 let abortController: AbortController | undefined = undefined
 

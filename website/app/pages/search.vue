@@ -6,11 +6,6 @@
         <SearchMainHeader />
         <div class="container mx-auto flex flex-row items-start py-5 lg:min-h-screen pl-5 pr-3">
           <ClientOnly>
-            <template #fallback>
-              <p class="w-full text-center">
-                Loading search...
-              </p>
-            </template>
             <div class="hidden lg:w-1/3 lg:block">
               <SearchFilter />
             </div>
