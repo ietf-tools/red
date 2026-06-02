@@ -43,6 +43,15 @@ export const TypesenseResponseSchema = z.object({
 
 export type TypesenseResponse = z.infer<typeof TypesenseResponseSchema>
 
+
+// This route is only iframed by non-JS browsers so we can disable scripts etc to improve security
+const SECURITY_HEADERS = {
+  'Content-Security-Policy':
+    "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'",
+  'X-Frame-Options': 'SAMEORIGIN',
+  'X-Content-Type-Options': 'nosniff',
+}
+
 const TYPESENSE_API_KEY_PARAM = 'x-typesense-api-key'
 const SEARCH_QUERY_PARAM = 'q'
 const SEARCH_PAGINATION_PARAM = 'page'
@@ -67,7 +76,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       `<!DOCTYPE html><html>${head}<body><h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1></body></html>`,
       {
         status: 500,
-        headers: { 'Content-Type': 'text/html;charset=utf-8' }
+        headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
       }
     )
   }
@@ -76,7 +85,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
   if (!typesenseApiKey) {
     return new Response(`<!DOCTYPE html><html>${head}<body><h1>Search needs typesense API key</h1></body></html>`, {
       status: 500,
-      headers: { 'Content-Type': 'text/html;charset=utf-8' }
+      headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
     })
   }
 
@@ -109,7 +118,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
         String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${requestPojo.url}</p><p>${String(typesenseResponse.status)}: ${responseText}</p></body></html>`),
         {
           status: typesenseResponse.status,
-          headers: { 'Content-Type': 'text/html;charset=utf-8' }
+          headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
         }
       )
     }
@@ -121,7 +130,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
         `<!DOCTYPE html><html>${head}<body><h1>Internal error parsing search response. Please report this bug.</h1></body></html>`,
         {
           status: 500,
-          headers: { 'Content-Type': 'text/html;charset=utf-8' }
+          headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
         }
       )
     }
@@ -152,12 +161,12 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
 
     return new Response(html.toString(), {
       status: 200,
-      headers: { 'Content-Type': 'text/html;charset=utf-8' }
+      headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
     })
   } catch (e: unknown) {
     return new Response(String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${String(e)}</p></body></html>`), {
       status: 500,
-      headers: { 'Content-Type': 'text/html;charset=utf-8' }
+      headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
     })
   }
 }
