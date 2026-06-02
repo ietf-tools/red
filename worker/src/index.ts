@@ -68,6 +68,10 @@ router
   .get('/history/', redirectTo('https://history.rfc-editor.org', 302))
   .get('/about/clusters/', redirectTo('https://authors.ietf.org/rfc-publication-process#clusters', 302))
   .get('/about/pubprocess/', redirectTo('https://authors.ietf.org/rfc-publication-process', 302))
+  .get('/pubprocess/', redirectTo('https://authors.ietf.org/rfc-publication-process', 302))
+  .get('/rfc-online-2000.html', redirectTo('https://history.rfc-editor.org/', 302))
+  .get('/about/rsag/', redirectTo('/about/', 302))
+  .get('/rfcs-per-year/', redirectTo('/about/rpc-reports/', 302))
   .get('/about/queue/', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/about/`, 302))
   .get('/about/queue/flowchart/', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/about/`, 302))
   .get('/styleguide.html', redirectTo('/authors/rfc-style-guide/', 302))
@@ -141,7 +145,7 @@ router
       return error(404)
     }
   })
-  .get('/materials/:extra+', (req: IRequest) => Response.redirect(`https://materials.rfc-editor.org/${req.params.extra}`, 302))
+  .get('/materials/format/SVG-1.2-RFC.rnc', redirectTo('https://raw.githubusercontent.com/ietf-tools/RFCXML/main/SVG-1.2-RFC.rnc'))
   .get('/errata/:extra+', (req: IRequest) =>
     Response.redirect(`https://errata${env.ENV_DOMAIN}.rfc-editor.org/${req.params.extra}`, 302)
   )
