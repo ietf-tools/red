@@ -1,5 +1,6 @@
 <template>
   <TabsRoot v-model="selectedTab" class="min-h-0 flex flex-col">
+    <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
       <HorizontalScrollable :inner-class="['flex flex-row gap-5', { 'px-2': props.mode === 'mobile' }]">
         <TabsIndicator class="absolute" />
@@ -413,7 +414,7 @@ const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
         class: LINK_CLASS
       },
       children: [
-        ...children, 
+        ...children,
         {
           type: 'Element',
           nodeName: 'Icon',
@@ -603,8 +604,8 @@ const noScriptHtml = computed(() => {
       })
       .join('')
   return `<noscript data-nosnippet><div class="pb-4">
-    <h2 class="text-lg font-bold">About this RFC</h2>
-    <h3 class="text-sm font-bold">Details</h3>
+    <h2 class="text-lg font-bold mt-4">About this RFC</h2>
+    <h3 class="text-sm font-bold mt-2">Details</h3>
     <dl>
       ${rfc.updates?.length ? `<dt class="font-bold mt-2">Updates (${rfc.updates.length})</dt><dd>${renderRfcList(rfc.updates)}</dd>` : ''}
       ${rfc.updated_by?.length ? `<dt class="font-bold mt-2">Updated by (${rfc.updated_by.length})</dt><dd>${renderRfcList(rfc.updated_by)}</dd>` : ''}
@@ -635,6 +636,10 @@ const noScriptHtml = computed(() => {
     <p><a href="${htmlEscapeToText(errataSearchForThisRfc)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
     </div>
   </noscript>`
+})
+
+const noScriptTabsHtml = computed(() => {
+  return `<div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;">Your browser has JavaScript disabled so the following tabs will not work. The 'About this RFC' and 'Errata' tabs are displayed after the table of contents.</div>`
 })
 
 const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline`

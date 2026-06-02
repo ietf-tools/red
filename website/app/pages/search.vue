@@ -1,11 +1,15 @@
 <template>
   <div class="min-h-[100vh]">
-    <ais-instant-search ref="aisInstantSearchRef" :index-name="INDEX_NAME" :search-client="searchClient"
-      :future="{ preserveSharedStateOnUnmount: true }" :routing="routing">
+    <ais-instant-search
+      ref="aisInstantSearchRef"
+      :index-name="INDEX_NAME"
+      :search-client="searchClient"
+      :future="{ preserveSharedStateOnUnmount: true }"
+      :routing="routing">
       <NuxtLayout name="default">
         <SearchMainHeader />
+        <div class="container mx-auto w-full" v-html="noScriptHtml"></div>
         <div class="container mx-auto flex flex-row items-start py-5 lg:min-h-screen pl-5 pr-3">
-          <div class="w-full" v-html="noScriptHtml"></div>
           <ClientOnly>
             <div class="hidden lg:w-1/3 lg:block">
               <SearchFilter />
@@ -15,7 +19,9 @@
                 <SearchStats />
                 <div class="hidden lg:flex lg:items-center lg:h-10">
                   <SearchSortBy />
-                  <Separator orientation="vertical" decorative
+                  <Separator
+                    orientation="vertical"
+                    decorative
                     class="bg-gray-400 data-[orientation=vertical]:h-7 data-[orientation=vertical]:w-px mx-3" />
                   <SearchDensity v-model="searchStore.density" />
                 </div>
@@ -24,7 +30,9 @@
                 </div>
               </div>
 
-              <SearchSubseriesBar v-if="searchStore.isSubseries" :label="searchStore.subseriesLabel"
+              <SearchSubseriesBar
+                v-if="searchStore.isSubseries"
+                :label="searchStore.subseriesLabel"
                 :href="searchStore.subseriesHref" />
 
               <ais-hits :id="INSTANTSEARCH_HITS_CONTAINER_DOM_ID" class="mt-4">
@@ -45,10 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  AisInstantSearch,
-  AisHits
-} from 'vue-instantsearch/vue3/es'
+import { AisInstantSearch, AisHits } from 'vue-instantsearch/vue3/es'
 import { Separator } from 'reka-ui'
 // Packaging of default export of 'typesense-instantsearch-adapter' seems to confuse Nuxt so we'll import this directly
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
@@ -89,12 +94,10 @@ const typesenseAdapter = new TypesenseInstantSearchAdapter({
   //  query_by is required.
   additionalSearchParameters: {
     preset: searchStore.searchContents ? 'red-content' : 'red'
-  },
+  }
 })
 const INDEX_NAME = 'docs'
-const searchClient = adaptSearchClient(
-  typesenseAdapter.searchClient as TypeSenseClient
-)
+const searchClient = adaptSearchClient(typesenseAdapter.searchClient as TypeSenseClient)
 
 const aisInstantSearchRef = useTemplateRef('aisInstantSearchRef')
 
@@ -104,8 +107,7 @@ const aisInstantSearchRef = useTemplateRef('aisInstantSearchRef')
 watch(
   () => searchStore.searchContents,
   (newValue) => {
-    typesenseAdapter.configuration.additionalSearchParameters.preset =
-      newValue ? 'red-content' : 'red'
+    typesenseAdapter.configuration.additionalSearchParameters.preset = newValue ? 'red-content' : 'red'
 
     const value = aisInstantSearchRef.value
     if (isAisInstanceSearchValue(value)) {
@@ -114,16 +116,13 @@ watch(
       console.error(`Unable to search, debug:`, {
         value: value,
         '!!value': !!value,
-        keyInValue:
-          value && typeof value === 'object' && 'instantSearchInstance' in value
+        keyInValue: value && typeof value === 'object' && 'instantSearchInstance' in value
       })
     }
   }
 )
 
-const isAisInstanceSearchValue = (
-  value: unknown
-): value is AisInstantSearch => {
+const isAisInstanceSearchValue = (value: unknown): value is AisInstantSearch => {
   return !!(
     value &&
     typeof value === 'object' &&
@@ -194,7 +193,8 @@ const routing = {
       if (
         // stateToRoute will be called even when leaving search to go to another route eg `/info/*`
         // so we shouldn't update the route if they're no longer on the search page
-        !router.currentRoute.value.fullPath.startsWith(searchWithoutTrailingSlash)) {
+        !router.currentRoute.value.fullPath.startsWith(searchWithoutTrailingSlash)
+      ) {
         // console.info('leaving search page', router.currentRoute.value.fullPath, SEARCH_PATH)
         return
       }
@@ -222,15 +222,15 @@ const routing = {
       await navigateTo(
         {
           query: {
-            ...q && { q },
-            ...status && { status },
-            ...stream && { stream },
-            ...area && { area },
-            ...group && { group },
-            ...authors && { authors },
-            ...pubDate && { pubDate },
-            ...showObsoleted && { showObsoleted: 1 },
-            ...sort && { sort }
+            ...(q && { q }),
+            ...(status && { status }),
+            ...(stream && { stream }),
+            ...(area && { area }),
+            ...(group && { group }),
+            ...(authors && { authors }),
+            ...(pubDate && { pubDate }),
+            ...(showObsoleted && { showObsoleted: 1 }),
+            ...(sort && { sort })
           }
         },
         { replace: true }
@@ -252,21 +252,21 @@ const routing = {
         [INDEX_NAME]: {
           query,
           range: {
-            ...pubDate && { publicationDate: pubDate }
+            ...(pubDate && { publicationDate: pubDate })
           },
           refinementList: {
             type: ['rfc'],
-            ...status && { 'status.name': status as StatusName[] },
-            ...group && { 'group.full': group },
-            ...authors && { 'authors.name': authors }
+            ...(status && { 'status.name': status as StatusName[] }),
+            ...(group && { 'group.full': group }),
+            ...(authors && { 'authors.name': authors })
           },
           menu: {
-            ...stream && { 'stream.name': stream },
-            ...area && { 'area.full': area }
+            ...(stream && { 'stream.name': stream }),
+            ...(area && { 'area.full': area })
           },
-          ...sortBy && {
+          ...(sortBy && {
             sortBy: `docs/sort/${sortBy}`
-          },
+          }),
           toggle: {
             'flags.hiddenDefault': !showObsoleted
           }

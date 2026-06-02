@@ -65,7 +65,7 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
          **/
         'data-nosnippet': "true",
         tagPosition: 'bodyOpen',
-        innerHTML: `<div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-align:center; text-size: .9rem;"><span style="font-weight: 600;">Your browser has JavaScript disabled. Most of this site works without JS, but some features, like search, require it. If something seems broken please try enabling JavaScript and reloading the page.</span><br><span style="font-size: .8rem;">The JavaScript used by this site is served directly from IETF infrastructure and does not include any code that links to a third party service.</span><br><span style="font-size: .8rem;">For a list of all RFCs browse the <a href="${RFC_INDEX_PATH}">RFC Index</a>.</span></div>`,
+        innerHTML: `<div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-align:center; text-size: .9rem;"><span style="font-weight: 600;">Your browser has JavaScript disabled. Most of this site works without JS, but some features require it. If something seems broken please try enabling JavaScript and reloading the page.</span><br><span style="font-size: .8rem;">The JavaScript used by this site is served directly from IETF infrastructure and does not include any code that links to a third party service.</span><br><span style="font-size: .8rem;">For a list of all RFCs browse the <a href="${RFC_INDEX_PATH}">RFC Index</a>.</span></div>`,
       }
     ]
   })

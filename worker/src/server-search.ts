@@ -74,7 +74,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
 
   const typesenseApiKey = searchParams.get(TYPESENSE_API_KEY_PARAM)
   if (!typesenseApiKey) {
-    return new Response(`<!DOCTYPE html><html>${head}<body><h1>Search needs valid API key</h1></body></html>`, {
+    return new Response(`<!DOCTYPE html><html>${head}<body><h1>Search needs typesense API key</h1></body></html>`, {
       status: 500,
       headers: { 'Content-Type': 'text/html;charset=utf-8' }
     })
@@ -106,7 +106,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     if (!typesenseResponse.ok) {
       console.error(`[typesense proxy search HTTP ${typesenseResponse.status}] ${responseText}`)
       return new Response(
-        `<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${requestPojo.url}</p><p>${typesenseResponse.status}: ${responseText}</p></body></html>`,
+        String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${requestPojo.url}</p><p>${String(typesenseResponse.status)}: ${responseText}</p></body></html>`),
         {
           status: typesenseResponse.status,
           headers: { 'Content-Type': 'text/html;charset=utf-8' }
@@ -155,7 +155,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       headers: { 'Content-Type': 'text/html;charset=utf-8' }
     })
   } catch (e: unknown) {
-    return new Response(`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${e}</p></body></html>`, {
+    return new Response(String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${String(e)}</p></body></html>`), {
       status: 500,
       headers: { 'Content-Type': 'text/html;charset=utf-8' }
     })
