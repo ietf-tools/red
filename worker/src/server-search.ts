@@ -53,7 +53,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
   const userSearch = searchParams.get(SEARCH_QUERY_PARAM)
   const searchQuery = userSearch ?? '*'
 
-  const head = `<head><title>Search results "${escapeHTML(searchQuery)}"</title><style>body{color:black;background:white;font-family:sans-serif}</style></head>`
+  const head = `<head><title>Search results "${escapeHTML(searchQuery)}"</title><style>body{color:black;background:white;font-family:sans-serif}.link{display:block;padding:0.5rem;} .link:hover,.link:focus{background-color:#eee}</style></head>`
 
   if(!typesenseHost) {
     return new Response(`<!DOCTYPE html><html>${head}<body><h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1></body></html>`, {
@@ -112,9 +112,9 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     const hits = data.results.flatMap((result) => result.hits)
     const items = hits.map(
       (hit) =>
-        htmlTemplate`<li><a href="/info/${hit.document.rfc}/" target="_top" style="display:block;padding:0.5rem">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
+        htmlTemplate`<li><a href="/info/${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
     )
-    const html = htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search results</h1><ul>${safe(items.join(''))}</ul></html>`
+    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results</h1><ul>${safe(items.join(''))}</ul></html>`
 
     return new Response(html.toString(), {
       status: 200,
