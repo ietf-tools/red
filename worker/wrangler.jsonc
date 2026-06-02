@@ -48,7 +48,7 @@
       ],
       "vars": {
         "ENV_DOMAIN": ".staging",
-        "NUXT_PUBLIC_TYPESENSE_HOST": "https://typesense.ietf.org",
+        "NUXT_PUBLIC_TYPESENSE_HOST": "typesense.staging.ietf.org",
         "OIDC_ISSUER": "https://auth.ietf.org/api/openid",
         "OIDC_CLIENT_AUTHORIZATION_ENDPOINT": "https://auth.ietf.org/api/openid/authorize",
         "OIDC_CLIENT_TOKEN_ENDPOINT": "https://auth.ietf.org/api/openid/token",

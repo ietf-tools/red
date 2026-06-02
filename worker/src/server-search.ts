@@ -1,3 +1,4 @@
+import { env } from 'cloudflare:workers'
 import { IRequest } from 'itty-router'
 import { z } from 'zod'
 import { htmlTemplate, redTypesenseSearchRequestBuilder, safe } from './helpers'
@@ -45,7 +46,7 @@ export type TypesenseResponse = z.infer<typeof TypesenseResponseSchema>
 const TYPESENSE_API_KEY_PARAM = 'x-typesense-api-key'
 const SEARCH_QUERY_PARAM = 'q'
 
-export async function serverSearch(req: IRequest, env: Env): Promise<Response | undefined> {
+export async function serverSearch(req: IRequest, _env: Env): Promise<Response | undefined> {
   const typesenseHost = env.NUXT_PUBLIC_TYPESENSE_HOST
   if(!typesenseHost) {
     return new Response(`<!DOCTYPE html><h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1>`, {
@@ -66,7 +67,7 @@ export async function serverSearch(req: IRequest, env: Env): Promise<Response | 
   const requestPojo = redTypesenseSearchRequestBuilder(
     typesenseApiKey,
     searchQuery ?? '*',
-    `https://${typesenseHost}` 
+    `https://${typesenseHost.replace(/^https:\/\//, '')}` 
   )
 
   try {
