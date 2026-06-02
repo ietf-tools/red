@@ -142,7 +142,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       (hit) =>
         htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
     )
-    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results for ${JSON.stringify(searchQuery)}</h1><p>${String(totalResults)} results.</p><ul>${safe(items.join(''))}</ul><p>Page ${String(paginationOffset)} of ${String(totalPagesOfResults)} results</p>${previous}${next}</html>`
+    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results for ${JSON.stringify(searchQuery)}</h1><p>${String(totalResults)} results (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(items.join(''))}</ul><p>${previous}${ previous || next ? ' | ' : ''}${next}</p></html>`
 
     return new Response(html.toString(), {
       status: 200,
