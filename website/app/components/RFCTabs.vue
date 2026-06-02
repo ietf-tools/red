@@ -639,7 +639,7 @@ const noScriptHtml = computed(() => {
 })
 
 const noScriptTabsHtml = computed(() => {
-  return `<noscript data-nosnippet style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;">Your browser has JavaScript disabled so the following tabs will not work. The 'About this RFC' and 'Errata' tabs are displayed after the table of contents.</noscript>`
+  return `<noscript data-nosnippet><div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;">Your browser has JavaScript disabled so the following tabs will not work. The 'About this RFC' and 'Errata' tabs are displayed after the table of contents.</div></noscript>`
 })
 
 const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline`
