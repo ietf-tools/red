@@ -53,7 +53,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
   const userSearch = searchParams.get(SEARCH_QUERY_PARAM)
   const searchQuery = userSearch ?? '*'
 
-  const head = `<head><title>Search results "${escapeHTML(searchQuery)}"</title><style>body{color:black;background:white;font-family:sans-serif}.link{display:block;padding:0.5rem;} .link:hover,.link:focus{background-color:#eee}</style></head>`
+  const head = `<head><title>Search results "${escapeHTML(searchQuery)}"</title><style>body{color:black;background:white;font-family:sans-serif}.link{display:inline-block;padding:0.5rem;} .link:hover,.link:focus{background-color:#eee}</style></head>`
 
   if(!typesenseHost) {
     return new Response(`<!DOCTYPE html><html>${head}<body><h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1></body></html>`, {
