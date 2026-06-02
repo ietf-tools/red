@@ -132,17 +132,23 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     const previousUrl = new URL(currentUrl)
     previousUrl.searchParams.set(SEARCH_PAGINATION_PARAM, String(Math.max(FIRST_PAGE_OF_RESULTS, paginationOffset - 1)))
     previousUrl.searchParams.set(TYPESENSE_API_KEY_PARAM, typesenseApiKey)
-    const previous = paginationOffset > FIRST_PAGE_OF_RESULTS ? htmlTemplate`<p><a href="${safe(previousUrl.toString())}">Previous page</a></p>` : ''
+    const previous =
+      paginationOffset > FIRST_PAGE_OF_RESULTS
+        ? htmlTemplate`<a href="${safe(previousUrl.toString())}">Previous page</a>`
+        : ''
     const nextUrl = new URL(currentUrl)
     nextUrl.searchParams.set(SEARCH_PAGINATION_PARAM, String(paginationOffset + 1))
     nextUrl.searchParams.set(TYPESENSE_API_KEY_PARAM, typesenseApiKey)
-    const next = paginationOffset * RESULTS_PER_PAGE < totalResults ? htmlTemplate`<p><a href="${safe(nextUrl.toString())}">Next page</a></p>` : ''    
+    const next =
+      paginationOffset * RESULTS_PER_PAGE < totalResults
+        ? htmlTemplate`<a href="${safe(nextUrl.toString())}">Next page</a>`
+        : ''
     const hits = data.results.flatMap((result) => result.hits)
     const items = hits.map(
       (hit) =>
         htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
     )
-    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results for ${JSON.stringify(searchQuery)}</h1><p>${String(totalResults)} results (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(items.join(''))}</ul><p>${previous}${ previous && next ? ' | ' : ''}${next}</p></html>`
+    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results for ${JSON.stringify(searchQuery)}</h1><p>${String(totalResults)} results (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(items.join(''))}</ul><p>${previous}${previous && next ? ' | ' : ''}${next}</p></html>`
 
     return new Response(html.toString(), {
       status: 200,
