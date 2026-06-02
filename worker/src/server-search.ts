@@ -112,7 +112,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     const hits = data.results.flatMap((result) => result.hits)
     const items = hits.map(
       (hit) =>
-        htmlTemplate`<li><a href="/info/${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
+        htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
     )
     const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body><h1>Search results</h1><ul>${safe(items.join(''))}</ul></html>`
 
