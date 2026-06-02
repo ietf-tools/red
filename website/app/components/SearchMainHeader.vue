@@ -65,7 +65,6 @@ const noScriptHtml = computed(() => {
                 Search
             </button>
         </form>
-        <iframe name="search-terms" src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:70vh"></iframe>
-    </noscript>`
+     </noscript>`
 })
 </script>

@@ -98,7 +98,6 @@ const checkSearchForSeriesId = async () => {
       } catch (e: unknown) {
         console.info(`[Homepage search] RFC ${seriesId.number} doesn't exist so using search`, rfcDataPath, normalizedValue, value, e)
       }
-
     } else {
       const subseriesPath = apiSubseriesPathBuilder(seriesId.type, seriesId.number)
       try {

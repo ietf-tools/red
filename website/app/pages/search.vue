@@ -5,6 +5,7 @@
       <NuxtLayout name="default">
         <SearchMainHeader />
         <div class="container mx-auto flex flex-row items-start py-5 lg:min-h-screen pl-5 pr-3">
+          <div v-html="noScriptHtml"></div>
           <ClientOnly>
             <div class="hidden lg:w-1/3 lg:block">
               <SearchFilter />
@@ -55,7 +56,7 @@ import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID } from '../utilities/typesense'
 import type { TypeSenseClient } from '../utilities/typesense'
 import { adaptSearchClient } from '~/utilities/search-client-middleware'
 import { useRfcEditorHead } from '~/utilities/head'
-import { SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
+import { API_NO_JS_SERVER_SEARCH_PATH, SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
 
 const route = useRoute()
 const searchStore = useSearchStore()
@@ -273,6 +274,10 @@ const routing = {
     }
   }
 }
+
+const noScriptHtml = computed(() => {
+  return `<noscript data-nosnippet><iframe name="search-terms" src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:70vh"></iframe></noscript>`
+})
 
 definePageMeta({
   layout: false
