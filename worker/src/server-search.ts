@@ -45,11 +45,12 @@ export type TypesenseResponse = z.infer<typeof TypesenseResponseSchema>
 
 const TYPESENSE_API_KEY_PARAM = 'x-typesense-api-key'
 const SEARCH_QUERY_PARAM = 'q'
+const CSS = '<style>body{color:black;background:white;font-family:sans-serif}</style>'
 
 export async function serverSearch(req: IRequest, _env: Env): Promise<Response | undefined> {
   const typesenseHost = env.NUXT_PUBLIC_TYPESENSE_HOST
   if(!typesenseHost) {
-    return new Response(`<!DOCTYPE html><style>body{color:black;background:white}</style><h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1>`, {
+    return new Response(`<!DOCTYPE html>${CSS}<h1>Search needs NUXT_PUBLIC_TYPESENSE_HOST</h1>`, {
       status: 500,
       headers: { 'Content-Type': 'text/html;charset=utf-8' }
     })
@@ -57,7 +58,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
   const { searchParams } = new URL(req.url, 'https://localhost/')
   const typesenseApiKey = searchParams.get(TYPESENSE_API_KEY_PARAM)
   if (!typesenseApiKey) {
-    return new Response(`<!DOCTYPE html><style>body{color:black;background:white}</style><h1>Search needs valid API key</h1>`, {
+    return new Response(`<!DOCTYPE html>${CSS}<h1>Search needs valid API key</h1>`, {
       status: 500,
       headers: { 'Content-Type': 'text/html;charset=utf-8' }
     })
@@ -85,7 +86,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     if (!typesenseResponse.ok) {
       console.error(`[typesense proxy search HTTP ${typesenseResponse.status}] ${responseText}`)
       return new Response(
-        `<!DOCTYPE html><style>body{color:black;background:white}</style><h1>Search is down</h1><p>${requestPojo.url}</p><p>${typesenseResponse.status}: ${responseText}</p>`,
+        `<!DOCTYPE html>${CSS}<h1>Search is down</h1><p>${requestPojo.url}</p><p>${typesenseResponse.status}: ${responseText}</p>`,
         {
           status: typesenseResponse.status,
           headers: { 'Content-Type': 'text/html;charset=utf-8' }
@@ -96,7 +97,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     const { data, error } = TypesenseResponseSchema.safeParse(JSON.parse(responseText))
     if (error || !data) {
       console.error(`[typesense proxy parse error]`, error, data)
-      return new Response(`<!DOCTYPE html><style>body{color:black;background:white}</style><h1>Internal error parsing search response. Please report this bug.</h1>`, {
+      return new Response(`<!DOCTYPE html>${CSS}<h1>Internal error parsing search response. Please report this bug.</h1>`, {
         status: 500,
         headers: { 'Content-Type': 'text/html;charset=utf-8' }
       })
@@ -107,7 +108,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       (hit) =>
         htmlTemplate`<li><a href="/info/${hit.document.rfc}/" target="_top">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
     )
-    const html = htmlTemplate`<!DOCTYPE html><style>body{color:black;background:white}</style><h1>Search results</h1><ul>${safe(items.join(''))}</ul>`
+    const html = htmlTemplate`<!DOCTYPE html>${CSS}<h1>Search results</h1><ul>${safe(items.join(''))}</ul>`
 
     return new Response(html.toString(), {
       status: 200,
@@ -115,7 +116,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     })
   } catch (e: unknown) {
     return new Response(
-      `<!DOCTYPE html><style>body{color:black;background:white}</style><h1>Search is down</h1><p>${e}</p>`,
+      `<!DOCTYPE html>${CSS}<h1>Search is down</h1><p>${e}</p>`,
       {
         status: 500,
         headers: { 'Content-Type': 'text/html;charset=utf-8' }

@@ -5,7 +5,7 @@
       <NuxtLayout name="default">
         <SearchMainHeader />
         <div class="container mx-auto flex flex-row items-start py-5 lg:min-h-screen pl-5 pr-3">
-          <div v-html="noScriptHtml"></div>
+          <div class="w-full" v-html="noScriptHtml"></div>
           <ClientOnly>
             <div class="hidden lg:w-1/3 lg:block">
               <SearchFilter />
