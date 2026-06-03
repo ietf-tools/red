@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 import { useHead } from 'nuxt/app'
-import { linkPreviewImageUrlBuilder, faviconPathBuilder, useRfcPdfPathBuilder, metaThumbnailPathBuilder, RSS_PATH, ATOM_PATH, usePublicSiteUrlOrigin, RFC_INDEX_PATH } from './url'
+import { linkPreviewImageUrlBuilder, faviconPathBuilder, useRfcPdfPathBuilder, metaThumbnailPathBuilder, RSS_PATH, ATOM_PATH, usePublicSiteUrlOrigin } from './url'
 import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import {
   OPENGRAPH_DIMENSIONS,

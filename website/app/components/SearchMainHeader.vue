@@ -56,7 +56,7 @@ const apiKey = useTypesenseApiKey()
 
 const noScriptHtml = computed(() => {
     return `<noscript data-nosnippet>
-        <div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;"><b>Your browser has JavaScript disabled.</b> The following basic search is available, but please enable JavaScript for more search features.</div>
+        <div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;"><b>Your browser has JavaScript disabled.</b> The following free text search is available, but please enable JavaScript for more search features.</div>
         <form method="get" action="${API_NO_JS_SERVER_SEARCH_PATH}" target="${NOSCRIPT_IFRAME_DOM_ID}" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
             <input id="search" ref="search-input" placeholder="Find an RFC (number, subseries, title, author, etc.)" v-model="searchQuery" type="search" name="q"
             class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
