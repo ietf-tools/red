@@ -6,7 +6,7 @@
 import { renderDocumentPojo, defaultRenderer } from '~/utilities/renderDocumentPojo'
 import type { ElementRenderers } from '~/utilities/renderDocumentPojo'
 import type { DocumentPojo } from '~/utilities/rfc-validators'
-import { Anchor, Icon } from '#components'
+import { AMaybeRFCLink, Icon } from '#components'
 
 type Props = {
   value: DocumentPojo
@@ -15,13 +15,19 @@ type Props = {
 const props = defineProps<Props>()
 
 const renderer: ElementRenderers = {
-  Anchor: (node, childrenForVue) => h(Anchor, node.attributes, childrenForVue),
+  Anchor: (node, childrenForVue) =>
+    h(
+      AMaybeRFCLink,
+      // @ts-ignore
+      node.attributes,
+      () => childrenForVue
+    ),
   Icon: (node, childrenForVue) =>
     h(
       Icon,
       // @ts-ignore
       node.attributes,
-      childrenForVue
+      () => childrenForVue
     ),
   ...defaultRenderer
 }

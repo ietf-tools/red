@@ -18,11 +18,21 @@ const unwrapChildrenForVue = (vnodes: VNode[]) => {
 }
 
 export const defaultRenderer: ElementRenderers = {
-  __default: (node, childrenForVue) => h(node.nodeName, node.attributes, childrenForVue)
+  __default: (node, childrenForVue) => {
+    if (node.nodeName.match(/[A-Z]/)) {
+      console.warn(
+        `[DocumentPojo] [default renderer] rendering non-HTML element as HTMLElement? ${JSON.stringify(node.nodeName)}. Should that nodeName be added to your 'ElementRenderers'?`
+      )
+    }
+    return h(node.nodeName, node.attributes, childrenForVue)
+  }
 }
 
 type ChildrenForVue = VNode | VNode[] | undefined
 type ElementRenderer = (node: ElementPojo, childrenForVue: ChildrenForVue) => VNode
+/**
+ * Defines a mapping between nodeNames of a DocumentPojo and a renderer. There's also a `__default`
+ */
 export type ElementRenderers = Record<string, ElementRenderer> & { __default: ElementRenderer }
 
 export const renderNodePojo = (node: NodePojo, elementRenderers: ElementRenderers): VNode => {
@@ -74,10 +84,7 @@ export const renderNodePojoToHtmlString = (node: NodePojo): string => {
  * This does not sanitise its output so if you tell it to render onclick
  * or href="javascript:" then it will.
  */
-export const renderDocumentPojo = (
-  nodes: DocumentPojo,
-  elementRenderers: ElementRenderers = defaultRenderer
-): VNode => {
+export const renderDocumentPojo = (nodes: DocumentPojo, elementRenderers: ElementRenderers): VNode => {
   const children = nodes.map((node) => renderNodePojo(node, elementRenderers))
   return h(Fragment, () => children)
 }

@@ -1,7 +1,7 @@
 <template>
   <HoverCardRoot v-model:open="isHoverCardOpen">
     <HoverCardTrigger as-child>
-      <a v-if="props.href?.startsWith('#')" :id="props.id" data-is-hash-link :class="props.class" @focus="loadRfc" @mouseover="loadRfc"
+      <a v-if="props.href?.startsWith('#')" :href="props.href" :id="props.id" data-is-hash-link :class="props.class" @focus="loadRfc" @mouseover="loadRfc"
         @blur="isHoverCardOpen = false">
         <slot />
       </a>

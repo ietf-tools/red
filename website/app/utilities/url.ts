@@ -39,11 +39,17 @@ export type ValidHrefs =
   | ReturnType<typeof wikiDokuPathBuilder>
   | ReturnType<typeof apiRfcBucketDocumentPathBuilder>
 
-export const assertUrlOrigin = <FallbackConst extends string>(runtimeConfig: unknown, errorKey: string, fallback: FallbackConst): FallbackConst => {
+export const assertUrlOrigin = <FallbackConst extends string>(
+  runtimeConfig: unknown,
+  errorKey: string,
+  fallback: FallbackConst
+): FallbackConst => {
   assertIsString(runtimeConfig)
   const expectedOrigin = new URL(runtimeConfig).origin
   if (expectedOrigin !== runtimeConfig) {
-    throw Error(`Nuxt runtime config ${JSON.stringify(errorKey)} isn't a URL origin pattern as expected. Was: ${JSON.stringify(runtimeConfig)} but expected ${JSON.stringify(expectedOrigin)}`)
+    throw Error(
+      `Nuxt runtime config ${JSON.stringify(errorKey)} isn't a URL origin pattern as expected. Was: ${JSON.stringify(runtimeConfig)} but expected ${JSON.stringify(expectedOrigin)}`
+    )
   }
   return (runtimeConfig ?? fallback) as FallbackConst // for TS purposes we'll type the response as the fallback
 }
@@ -113,10 +119,8 @@ export const IETF_URL_ORIGIN = 'https://www.ietf.org'
 export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'
 export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
-export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN =
-  'https://authors.ietf.org'
-export const IETF_PRIVACY_STATEMENT_URL =
-  'https://www.ietf.org/privacy-statement/'
+export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN = 'https://authors.ietf.org'
+export const IETF_PRIVACY_STATEMENT_URL = 'https://www.ietf.org/privacy-statement/'
 
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL = `${INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN}/rfc-publication-process`
 
@@ -130,8 +134,7 @@ export const API_RFC_MINI_INDEX_PATH = `/api/v1/rfc-mini-index.json`
 
 export const API_NO_JS_SERVER_SEARCH_PATH = `/api/v1/search/`
 
-export const apiMarkdownPagePathBuilder = (slug: string) =>
-  `/api/v1/content/${slug}.json` as const
+export const apiMarkdownPagePathBuilder = (slug: string) => `/api/v1/content/${slug}.json` as const
 
 export const RFC_INDEX_XML_PATH = '/rfc-index.xml'
 export const REPORTS_CURRENT_QUEUE_STATS_TXT_PATH = '/reports/CurrQstats.txt'
@@ -186,28 +189,26 @@ type SearchPathBuilderProps = {
   showObsoleted?: '1'
 }
 
-export const searchPathBuilder = (
-  searchParams: Partial<SearchPathBuilderProps>
-): `${typeof SEARCH_PATH}${string}` => {
+export const searchPathBuilder = (searchParams: Partial<SearchPathBuilderProps>): `${typeof SEARCH_PATH}${string}` => {
   const hasParams = Object.values(searchParams).join('').trim().length > 0
-  return `${SEARCH_PATH}${hasParams ? '?' : ''}${hasParams ?
-    Object.keys(searchParams)
-      .sort() // normalize order
-      .map((searchKey) => {
-        const typesenseSearchKey = searchKey
-        const searchValue =
-          searchParams[searchKey as keyof SearchPathBuilderProps]
+  return `${SEARCH_PATH}${hasParams ? '?' : ''}${
+    hasParams
+      ? Object.keys(searchParams)
+          .sort() // normalize order
+          .map((searchKey) => {
+            const typesenseSearchKey = searchKey
+            const searchValue = searchParams[searchKey as keyof SearchPathBuilderProps]
 
-        return searchValue ?
-          `${encodeURIComponent(typesenseSearchKey)}=${typeSenseEncodeUriComponent(
-            Array.isArray(searchValue) ? searchValue.join(',') : searchValue
-          )}`
-          : ''
-      })
-      .filter(Boolean)
-      .join('&')
-    : ''
-    }`
+            return searchValue
+              ? `${encodeURIComponent(typesenseSearchKey)}=${typeSenseEncodeUriComponent(
+                  Array.isArray(searchValue) ? searchValue.join(',') : searchValue
+                )}`
+              : ''
+          })
+          .filter(Boolean)
+          .join('&')
+      : ''
+  }`
 }
 
 export const refsRefTxtPathBuilder = (rfcId: string) => {
@@ -238,13 +239,9 @@ export const rfcCommonPathBuilder = (rfcId: string) => {
  * This is only used for TS to check valid markdown paths.
  * It's just an 'identity function'.
  */
-export const markdownPathBuilder = (markdownPath: MarkdownValidHrefs) =>
-  markdownPath
+export const markdownPathBuilder = (markdownPath: MarkdownValidHrefs) => markdownPath
 
-export const rfcPathBuilder = (
-  rfcId: string,
-  sectionHash?: `section-${string}`
-) => {
+export const rfcPathBuilder = (rfcId: string, sectionHash?: `section-${string}`) => {
   const seriesId = parseSeriesId(rfcId)
   if (!seriesId) {
     throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
@@ -256,10 +253,7 @@ export const materialsTxtBuilder = (txtFile: `${string}.txt`) => {
   return `/materials/${txtFile}` as const
 }
 
-export const rfcCitePathBuilder = (
-  rfcId: string,
-  format: 'txt' | 'bibTeX' | 'xml'
-) => {
+export const rfcCitePathBuilder = (rfcId: string, format: 'txt' | 'bibTeX' | 'xml') => {
   const seriesId = parseSeriesId(rfcId)
   if (!seriesId) {
     throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
@@ -279,7 +273,8 @@ export const rfcCitePathBuilder = (
   }
 }
 
-export const doiUrlBuilder = (identifierValue: string, encodeIdentifier: boolean) => `https://doi.org/${encodeIdentifier ? encodeURI(identifierValue) : identifierValue}` as const
+export const doiUrlBuilder = (identifierValue: string, encodeIdentifier: boolean) =>
+  `https://doi.org/${encodeIdentifier ? encodeURI(identifierValue) : identifierValue}` as const
 
 type FormatCommon = RfcCommon['formats'][number]['format']
 
@@ -309,10 +304,7 @@ export const apiRfcBucketDocumentPathBuilder = (rfcNumber: number) => {
   return `/api/v1/rfc-html/${rfcNumber}.json` as const
 }
 
-export const apiSubseriesPathBuilder = (
-  seriesType: SeriesId['type'],
-  seriesNumber: SeriesId['number']
-) => {
+export const apiSubseriesPathBuilder = (seriesType: SeriesId['type'], seriesNumber: SeriesId['number']) => {
   return `/api/v1/info-subseries/${seriesType}${seriesNumber}.json` as const
 }
 
@@ -338,8 +330,7 @@ export const isHashLink = (href?: string): boolean => !!href?.startsWith('#')
 
 export const isRSSLink = (href?: string): boolean => !!href?.endsWith(RSS_PATH)
 
-export const isAtomLink = (href?: string): boolean =>
-  !!href?.endsWith(ATOM_PATH)
+export const isAtomLink = (href?: string): boolean => !!href?.endsWith(ATOM_PATH)
 
 /**
  * Links outside Nuxt (eg blobstore or links to paths that HTTP redirect)
@@ -359,8 +350,17 @@ export const isOutsideNuxtLink = (href?: string): boolean => {
      *  * https://www.rfc-editor.org/fyi/fyi2
      *  * https://www.rfc-editor.org/std/std3
      */
-    // 
-    href.startsWith('/bcp/') || href.startsWith('/fyi/') || href.startsWith('/std/')) {
+    //
+    href.startsWith('/bcp/') ||
+    href.startsWith('/fyi/') ||
+    href.startsWith('/std/')
+  ) {
+    return true
+  }
+  if (
+    // eg /refs/ref9000.txt
+    href.startsWith('/ref/')
+  ) {
     return true
   }
   if (isExternalLink(href)) {
@@ -422,8 +422,7 @@ export const metaThumbnailPathBuilder = (rfcId: string) => `/api/v1/meta-thumbna
 /**
  * Based on the URL of the API base
  */
-export const needsCloudflareHeaderForApi = (apiBaseUrl: string): boolean =>
-  !apiBaseUrl.includes('localhost')
+export const needsCloudflareHeaderForApi = (apiBaseUrl: string): boolean => !apiBaseUrl.includes('localhost')
 
 /**
  * Based on the URL of the API detect whether it's prod
@@ -432,12 +431,11 @@ export const isProd = (): boolean => !import.meta.dev
 
 const RFC_REGEX = /(rfc[0-9]+)/i
 
-export const parseMaybeRfcLink = (
-  href?: string
-): undefined | ReturnType<typeof parseSeriesId> => {
+export const parseMaybeRfcLink = (href?: string): undefined | ReturnType<typeof parseSeriesId> => {
   if (!href) {
     return undefined
   }
+
   if (
     href.startsWith('#')
     /**
@@ -473,7 +471,8 @@ export const useWorkingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
   return `${useDatatrackerUrlOrigin()}/wg/${workingGroup.acronym}/about/` as const
 }
 
-export const useErrataUrlBuilder = (errataId: string
+export const useErrataUrlBuilder = (
+  errataId: string
   // errataId looks like '1234' (not 'eid1234') so we'll need to add the 'eid' prefix
 ) => {
   return `${useErrataUrlOrigin()}/eid${errataId}/` as const
@@ -505,9 +504,7 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
   assertNever(stream.slug)
 }
 
-export const datatrackerAuthorUrlBuilder = (
-  datatracker_person_path: string
-) => {
+export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => {
   return `${useDatatrackerUrlOrigin()}${datatracker_person_path}`
 }
 
@@ -517,5 +514,4 @@ export const datatrackerAuthorUrlBuilder = (
 export const typeSenseEncodeUriComponent = (uriComponent: string) =>
   encodeURIComponent(uriComponent).replace(/%20/g, '+')
 
-export const faviconPathBuilder = (widthPx: number, heightPx: number) =>
-  `/api/v1/favicon/${widthPx}x${heightPx}.png`
+export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/api/v1/favicon/${widthPx}x${heightPx}.png`

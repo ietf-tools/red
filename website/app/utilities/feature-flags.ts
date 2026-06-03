@@ -139,13 +139,14 @@ export const useAreFeatureFlagsEnabled = () => {
   })
 
   if (!featureFlagsRef) {
-    throw Error('Expected provide(featureFlagsKey) above in component tree.')
+    console.warn('Expected provide(featureFlagsKey) above in component tree.')
   }
 
   const areFeatureFlagsEnabled = computed(() => {
-    const { value: featureFlags } = featureFlagsRef
+    const featureFlags = featureFlagsRef?.value
     if (!featureFlags) {
-      throw Error('Expected provide(featureFlagsKey) above in component tree.')
+      console.warn('Expected provide(featureFlagsKey) above in component tree.')
+      return false
     }
     // Do nothing in server renders
     if (isMounted.value === false) {

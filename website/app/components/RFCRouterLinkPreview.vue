@@ -26,7 +26,7 @@
   </p>
 
   <p class="clear-both text-right mt-6 mb-10">
-    <Anchor :href="rfcPathBuilder(`RFC${props.rfc.number}`)"
+    <Anchor :href="infoSeriesPathBuilder(`rfc${props.rfc.number}`)"
       class="flex-inline rounded no-underline hover:underline focus:underline justify-center items-center bg-gray-100 dark:bg-gray-700 text-blue-400 dark:text-white px-4 pt-3 pb-4 mr-6">
       <component :is="formattedTitle" />
       <GraphicsChevron class="ml-2 inline -rotate-90" />
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { DateTime } from 'luxon'
-import { rfcPathBuilder } from '../utilities/url'
+import { infoSeriesPathBuilder } from '../utilities/url'
 import Anchor from './Anchor.vue'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc-validators'

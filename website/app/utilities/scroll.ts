@@ -74,17 +74,16 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     const uniqueIds = Array.from(new Set(ids.value))
     const selector = uniqueIds.map((id) => `#${CSS.escape(id)}`).join(',')
     elements =
-      selector.length > 0 ? Array.from(document.querySelectorAll(selector)) : []
+      selector.length > 0 ? Array.from(document.querySelectorAll<HTMLElement>(selector)) : []
 
     if (elements.length !== uniqueIds.length) {
       const idsNotFound = uniqueIds.filter((id) =>
-        elements.some((element) => element.id === id)
+        elements.some((htmlElement) => htmlElement.id === id)
       )
       const errorText = `Some ids weren't found (${elements.length} !== ${uniqueIds.length}) missing ones: `
+      console.error(errorText, elements, uniqueIds, idsNotFound)
       if (!isProd()) {
         throw Error(`${errorText} ${JSON.stringify(idsNotFound)}`)
-      } else {
-        console.error(errorText, idsNotFound)
       }
     }
 

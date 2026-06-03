@@ -1,29 +1,23 @@
 <template>
-  <RFCRouterLink
-    v-if="!isOutsideNuxt && isRfcLink"
-    v-bind="props"
-  >
+  <RFCRouterLink v-if="isRfcLink" v-bind="props" data-rfc-router-link>
     <slot />
   </RFCRouterLink>
-  <Anchor
-    v-else
-    v-bind="props"
-  >
+  <Anchor v-else v-bind="props" data-non-rfc-anchor-link>
     <slot />
   </Anchor>
 </template>
 
 <script setup lang="ts">
 /**
- * Detects links to RFCs (eg `/rfc/rfc9001.pdf`) and uses RFCRouterLink instead
+ * Detects links to RFCs (eg `/rfc/rfc9001.pdf` or `#RFC9001` ) and uses RFCRouterLink instead
  *
  * with a fallback to Anchor
  */
 import RFCRouterLink from './RFCRouterLink.vue'
 import Anchor from './Anchor.vue'
-import { isOutsideNuxtLink, parseMaybeRfcLink } from '~/utilities/url'
+import { parseMaybeRfcLink } from '~/utilities/url'
 
 const props = defineProps<{ href: string; id?: string }>()
-const isOutsideNuxt = computed(() => isOutsideNuxtLink(props.href))
-const isRfcLink = computed(() => !!parseMaybeRfcLink(props.href))
+
+const isRfcLink = computed(() => Boolean(parseMaybeRfcLink(props.href)))
 </script>

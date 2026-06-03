@@ -123,7 +123,7 @@ import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { renderDocumentPojo, renderNodePojo, type ElementRenderers } from '~/utilities/renderDocumentPojo'
+import { renderDocumentPojo, renderNodePojo, defaultRenderer, type ElementRenderers } from '~/utilities/renderDocumentPojo'
 import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 
@@ -139,6 +139,7 @@ const props = defineProps<Props>()
 const isModalOpen = defineModel<boolean>('isModalOpen')
 
 const rfcHtmlPojoRenderers: ElementRenderers = {
+  ...defaultRenderer,
   a: (node, childrenForVue) => h(AMaybeRFCLink, { href: '', ...node.attributes }, () => childrenForVue),
   svg: (node, childrenForVue) => h(
     node.nodeName,
@@ -181,7 +182,7 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     return h(HorizontalScrollable, node.attributes, () => childrenForVue)
   },
   // FIXME: delete this case once the component is removed from the bucket
-  Placeholder: (node, childrenForVue) => h('div', node.attributes, childrenForVue),
+  Placeholder: (node, childrenForVue) => h('div', node.attributes, () => childrenForVue),
   PdfPages: (node) => {
     const children = nodePojoWalker(node.children, (n) => {
       if (n.type === 'Element' && n.nodeName.toLowerCase() === 'img') {
@@ -192,7 +193,6 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     }).map((node) => renderNodePojo(node, rfcHtmlPojoRenderers))
     return h(PdfPages, node.attributes, () => children)
   },
-  __default: (node, childrenForVue) => h(node.nodeName, node.attributes, childrenForVue),
 }
 
 const enrichedDocument = computed<VNode>(() =>
