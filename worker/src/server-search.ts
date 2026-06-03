@@ -161,10 +161,8 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       return htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b>: ${hit.document.title}</a></li>`
     })
     const html = htmlTemplate`<!DOCTYPE html><html>${head}<body>${
-      userSearch
-        ? htmlTemplate`<h1>Search results "${userSearch}"</h1>`
-        : htmlTemplate`<h1>Recent RFCs</h1>`
-    }<p>${String(totalResults)} result(s) (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(
+      userSearch ? htmlTemplate`<h1>Search results "${userSearch}"</h1>` : htmlTemplate`<h1>Recent RFCs</h1>`
+    }<p>${String(totalResults)} result(s) ${totalPagesOfResults > 0 ? htmlTemplate`(page ${String(paginationOffset)} of ${String(totalPagesOfResults)})` : ''}</p><ul>${safe(
       items.join('')
     )}</ul><p>${previous}${previous && next ? ' | ' : ''}${next}</p></html>`
 
