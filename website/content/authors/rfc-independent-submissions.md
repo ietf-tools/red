@@ -103,7 +103,7 @@ The Independent Submissions Editor is ably assisted by the [Independent Submissi
 
 #### Who reviews submissions?
 
-The Independent Submissions Editor seeks review of the work through individuals who are knowledgeable about the topic discussed in the draft. Authors are encouraged to submit suggestions, but some reviews will be conducted outside of that list. The ISE often relies on the [Independent Submissions Editorial Board](/authors/ise/iseb) to provide reviews. In addition, the ISE welcomes comments from **anyone** on a draft that is being considered by the ISE.
+The Independent Submissions Editor seeks review of the work through individuals who are knowledgeable about the topic discussed in the draft. Authors are encouraged to submit suggestions, but some reviews will be conducted outside of that list. The ISE often relies on the [Independent Submissions Editorial Board](/authors/ise/iseb) to provide reviews. In addition, the ISE welcomes comments from **anyone** on a draft that is being considered by the ISE.  Information for reviewers can be found [here](/authors/ise/ise-reviewer-guidelines).
 
 #### Where can reviews be found?
 
