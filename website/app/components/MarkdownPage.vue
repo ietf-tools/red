@@ -5,7 +5,7 @@
         <TableOfContentsMarkdownDesktop v-if="showToc && toc" :toc="toc" />
       </template>
       <div class="wrap-anywhere leading-[1.75]">
-        <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
+        <Breadcrumbs v-if="breadcrumbItems && Array.isArray(breadcrumbItems)" :breadcrumb-items="breadcrumbItems" />
         <component :is="renderedContent" />
       </div>
       <ContentDocModifiedDateTime v-if="modifiedDateTime" :modified-date-time="modifiedDateTime" />
