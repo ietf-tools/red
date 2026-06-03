@@ -43,13 +43,12 @@ export const TypesenseResponseSchema = z.object({
 
 export type TypesenseResponse = z.infer<typeof TypesenseResponseSchema>
 
-
 // This route is only iframed by non-JS browsers so we can disable scripts etc to improve security
 const SECURITY_HEADERS = {
   'Content-Security-Policy':
     "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'",
   'X-Frame-Options': 'SAMEORIGIN',
-  'X-Content-Type-Options': 'nosniff',
+  'X-Content-Type-Options': 'nosniff'
 }
 
 const TYPESENSE_API_KEY_PARAM = 'x-typesense-api-key'
@@ -98,7 +97,9 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
   })
 
   const currentUrl = new URL('/api/v1/search/', req.url)
-  currentUrl.searchParams.set(SEARCH_QUERY_PARAM, searchQuery)
+  if (userSearch) {
+    currentUrl.searchParams.set(SEARCH_QUERY_PARAM, searchQuery)
+  }
 
   try {
     const typesenseResponse = await fetch(requestPojo.url, {
@@ -115,7 +116,9 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
     if (!typesenseResponse.ok) {
       console.error(`[typesense proxy search HTTP ${typesenseResponse.status}] ${responseText}`)
       return new Response(
-        String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${requestPojo.url}</p><p>${String(typesenseResponse.status)}: ${responseText}</p></body></html>`),
+        String(
+          htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${requestPojo.url}</p><p>${String(typesenseResponse.status)}: ${responseText}</p></body></html>`
+        ),
         {
           status: typesenseResponse.status,
           headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
@@ -153,20 +156,29 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
         ? htmlTemplate`<a href="${safe(nextUrl.toString())}">Next page</a>`
         : ''
     const hits = data.results.flatMap((result) => result.hits)
-    const items = hits.map(
-      (hit) =>
-        htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b> ${hit.document.title}</a></li>`
-    )
-    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body>${userSearch ? htmlTemplate`<h1>Search results ${JSON.stringify(searchQuery)}</h1>` : htmlTemplate`<h1>Recent RFCs</h1>`}<p>${String(totalResults)} result(s) (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(items.join(''))}</ul><p>${previous}${previous && next ? ' | ' : ''}${next}</p></html>`
+    const items = hits.map((hit) => {
+      // must be target="_top" to escape the iframe
+      return htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b>: ${hit.document.title}</a></li>`
+    })
+    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body>${
+      userSearch
+        ? htmlTemplate`<h1>Search results ${JSON.stringify(searchQuery)}</h1>`
+        : htmlTemplate`<h1>Recent RFCs</h1>`
+    }<p>${String(totalResults)} result(s) (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(
+      items.join('')
+    )}</ul><p>${previous}${previous && next ? ' | ' : ''}${next}</p></html>`
 
     return new Response(html.toString(), {
       status: 200,
       headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
     })
   } catch (e: unknown) {
-    return new Response(String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${String(e)}</p></body></html>`), {
-      status: 500,
-      headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
-    })
+    return new Response(
+      String(htmlTemplate`<!DOCTYPE html><html>${head}<body><h1>Search is down</h1><p>${String(e)}</p></body></html>`),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'text/html;charset=utf-8', ...SECURITY_HEADERS }
+      }
+    )
   }
 }
