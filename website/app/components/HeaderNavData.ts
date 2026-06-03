@@ -4,8 +4,8 @@ import {
   INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL,
   markdownPathBuilder,
   SEARCH_PATH,
-  searchPathBuilder,
-  useQueueUrlOrigin
+  useQueueUrlOrigin,
+  type ValidHrefs
 } from '~/utilities/url'
 import type { VueClick } from '~/utilities/vue'
 
@@ -62,47 +62,8 @@ export const useMenuData = (mode: Mode) => {
           },
           {
             label: 'Browse all RFCs',
-            href: searchPathBuilder({}),
+            href: '/rfc-index/' satisfies ValidHrefs,
           },
-          //
-          // Submenu commented out
-          // See https://github.com/ietf-tools/red-beta/issues/38
-          //
-          // {
-          //   label: 'Browse RFCs by Status:',
-          //   children: [
-          //     {
-          //       label: 'Standards',
-          //       href: searchPathBuilder({ status: ['Internet Standard'] }),
-          //       noSpaLink: true, // workaround for search page bug where clicking on these links from the search page doesn't reset UIState correctly
-          //     },
-          //     {
-          //       label: 'Best Current Practices (BCP)',
-          //       href: searchPathBuilder({ status: ['Best Current Practice'] }),
-          //       noSpaLink: true, // workaround for search page bug where clicking on these links from the search page doesn't reset UIState correctly
-          //     },
-          //     {
-          //       label: 'Informational',
-          //       href: searchPathBuilder({ status: ['Informational'] }),
-          //       noSpaLink: true, // workaround for search page bug where clicking on these links from the search page doesn't reset UIState correctly
-          //     },
-          //     {
-          //       label: 'Experimental',
-          //       href: searchPathBuilder({ status: ['Experimental'] }),
-          //       noSpaLink: true, // workaround for search page bug where clicking on these links from the search page doesn't reset UIState correctly
-          //     },
-          //     {
-          //       label: 'Historic',
-          //       href: searchPathBuilder({ status: ['Historic'] }),
-          //       noSpaLink: true, // workaround for search page bug where clicking on these links from the search page doesn't reset UIState correctly
-          //     },
-          //     {
-          //       label: 'Unknown',
-          //       href: searchPathBuilder({ status: ['Unknown'] }),
-          //       noSpaLink: true, // workaround for search page bug where clicking on these links from the search page doesn't reset UIState correctly
-          //     }
-          //   ]
-          // },
           {
             label: 'Download RFCs',
             href: markdownPathBuilder('/series/rfc-download/')
@@ -134,11 +95,11 @@ export const useMenuData = (mode: Mode) => {
           },
           {
             label: 'RFC Publication Process',
-            href: INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL
+            href: INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL satisfies ValidHrefs,
           },
           {
             label: 'Document Queue',
-            href: queueUrlOrigin
+            href: queueUrlOrigin satisfies ValidHrefs
           }
         ]
       },
@@ -155,7 +116,7 @@ export const useMenuData = (mode: Mode) => {
           },
           {
             label: 'Privacy Statement',
-            href: IETF_PRIVACY_STATEMENT_URL
+            href: IETF_PRIVACY_STATEMENT_URL satisfies ValidHrefs
           },
           {
             label: 'Contact',
@@ -166,7 +127,7 @@ export const useMenuData = (mode: Mode) => {
       {
         icon: 'fluent:search-12-filled',
         label: 'Search',
-        href: SEARCH_PATH,
+        href: SEARCH_PATH satisfies ValidHrefs,
         hideMobile: true
       },
       {
