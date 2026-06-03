@@ -71,7 +71,7 @@ router
   .get('/errata.php', redirectTo(`https://errata${env.ENV_DOMAIN}.rfc-editor.org`, 302))
   .get('/history/', redirectTo('https://history.rfc-editor.org', 302))
   .get('/how-to-report/', redirectTo('/series/rfc-errata/', 302))
-  .get('/how-to-verify', redirectTo('/series/rfc-errata/', 302))
+  .get('/how-to-verify', redirectTo('/series/errata/how-to-verify/', 302))
   .get('/ien/', redirectTo('https://history.rfc-editor.org/ien/', 302))
   .get('/ien/ien-index.html', redirectTo('https://history.rfc-editor.org/ien/', 302))
   .get('/other/', redirectTo('https://authors.ietf.org', 302))
