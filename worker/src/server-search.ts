@@ -1,7 +1,7 @@
 import { env } from 'cloudflare:workers'
 import { IRequest } from 'itty-router'
 import { z } from 'zod'
-import { escapeHTML, htmlTemplate, redTypesenseSearchRequestBuilder, safe } from './helpers'
+import { htmlTemplate, redTypesenseSearchRequestBuilder, safe } from './helpers'
 
 const TypesenseFacetCountSchema = z.object({
   counts: z.array(z.unknown()),
@@ -68,7 +68,7 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
   const paginationOffset = paginationOffsetString ? parseInt(paginationOffsetString) : 1
   const searchQuery = userSearch ?? '*'
 
-  const head = `<head><title>Search results "${escapeHTML(searchQuery)}"</title><style>body{color:black;background:white;font-family:sans-serif}.link{display:inline-block;padding:0.5rem;} .link:hover,.link:focus{background-color:#eee}</style></head>`
+  const head = htmlTemplate`<head><title>${userSearch ? `Search results "${searchQuery}"` : 'Recent RFCs'}</title><style>body{color:black;background:white;font-family:sans-serif}.link{display:inline-block;padding:0.5rem;} .link:hover,.link:focus{background-color:#eee}</style></head>`
 
   if (!typesenseHost) {
     return new Response(
@@ -160,9 +160,9 @@ export async function serverSearch(req: IRequest, _env: Env): Promise<Response |
       // must be target="_top" to escape the iframe
       return htmlTemplate`<li><a href="/info/rfc${hit.document.rfc}/" target="_top" class="link">RFC <b>${hit.document.rfc}</b>: ${hit.document.title}</a></li>`
     })
-    const html = htmlTemplate`<!DOCTYPE html><html>${safe(head)}<body>${
+    const html = htmlTemplate`<!DOCTYPE html><html>${head}<body>${
       userSearch
-        ? htmlTemplate`<h1>Search results ${JSON.stringify(searchQuery)}</h1>`
+        ? htmlTemplate`<h1>Search results "${userSearch}"</h1>`
         : htmlTemplate`<h1>Recent RFCs</h1>`
     }<p>${String(totalResults)} result(s) (page ${String(paginationOffset)} of ${String(totalPagesOfResults)})</p><ul>${safe(
       items.join('')

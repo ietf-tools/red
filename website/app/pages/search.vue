@@ -277,7 +277,7 @@ const routing = {
 }
 
 const noScriptHtml = computed(() => {
-  return `<noscript data-nosnippet><iframe name="${NOSCRIPT_IFRAME_DOM_ID}" title="Search results..." src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:90vh;overflow-y:scroll"></iframe></noscript>`
+  return `<noscript data-nosnippet><iframe name="${NOSCRIPT_IFRAME_DOM_ID}" sandbox="allow-top-navigation-by-user-activation" title="Search results..." src="${API_NO_JS_SERVER_SEARCH_PATH}?x-typesense-api-key=${apiKey}" style="width:100%;height:90vh;overflow-y:scroll"></iframe></noscript>`
 })
 
 definePageMeta({

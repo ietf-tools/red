@@ -69,6 +69,7 @@ router
   .get('/current_queue.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org`, 302))
   .get('/errata.json', redirectTo('/api/v1/errata.json', 302))
   .get('/errata.php', redirectTo(`https://errata${env.ENV_DOMAIN}.rfc-editor.org`, 302))
+  .get('/errata-definitions', redirectTo('/series/rfc-errata/'))
   .get('/history/', redirectTo('https://history.rfc-editor.org', 302))
   .get('/how-to-report/', redirectTo('/series/rfc-errata/', 302))
   .get('/how-to-verify', redirectTo('/series/errata/how-to-verify/', 302))
