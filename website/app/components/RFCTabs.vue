@@ -216,7 +216,7 @@
         </p>
         <p class="border-b-1 border-gray-200 py-6 mb-4">
           <Anchor
-            :href="errataUrlOrigin"
+            :href="errataSearchForThisRfc"
             class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
             Report a new erratum
             <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" />
@@ -239,7 +239,6 @@ import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   areaGroupUrlBuilder,
   datatrackerAuthorUrlBuilder,
-  useErrataUrlOrigin,
   rfcFormatPathBuilder,
   streamUrlBuilder,
   useWorkingGroupUrlBuilder,
@@ -262,8 +261,6 @@ type Props = {
 const props = defineProps<Props>()
 
 const selectedTab = defineModel<number>()
-
-const errataUrlOrigin = useErrataUrlOrigin()
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return
