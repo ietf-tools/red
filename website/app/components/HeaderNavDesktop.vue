@@ -23,7 +23,9 @@
           type="button"
           :disabled="!hasMounted"
           :class="[
-            'group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none outline-none '
+            'group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none outline-none',
+            // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
+            hasMounted && 'cursor-pointer'
           ]"
           :aria-label="menuItem.label">
           <Icon v-if="menuItem.icon" :name="menuItem.icon" />
