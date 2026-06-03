@@ -359,7 +359,7 @@ export const isOutsideNuxtLink = (href?: string): boolean => {
   }
   if (
     // eg /refs/ref9000.txt
-    href.startsWith('/ref/')
+    href.startsWith('/refs/')
   ) {
     return true
   }
