@@ -31,7 +31,8 @@ const excludeAuthorRedirects = [
   '/authors/rfc-edit/doc-clusters',
   '/authors/rfc-edit/pub-queue',
   '/authors/ise/ise-checklist',
-  '/authors/ise/iseb'
+  '/authors/ise/iseb',
+  '/authors/ise/ise-reviewer-guidelines'
 ]
 
 const subseriesRedirect = (req: IRequest) => {
