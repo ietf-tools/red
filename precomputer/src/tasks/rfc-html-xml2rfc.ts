@@ -2,6 +2,13 @@ import { convertCSSUnit, parseCSSLength } from '../css-unit-converter/index.ts'
 import { getDOMParser, getInnerText, isHtmlElement } from '../utilities/dom.ts'
 import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../../website/app/utilities/rfc-validators.ts'
 import type { RfcAndToc } from './rfc-html.ts'
+import {
+  getRfc8792CopyText,
+  hasXml2RfcSourcecodeMarkers,
+  RFC8792_COPY_CLASS,
+  RFC8792_COPY_UNFOLDED_ATTR,
+  RFC8792_SOURCECODE_MARKERS_ATTR
+} from '../../../website/shared/utils/rfc8792.ts'
 
 type TocSections = TableOfContents['sections']
 type TocSection = TocSections[number]
@@ -161,7 +168,56 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
     return true
   })
 
+  nodes.forEach(markRfc8792CopyableBlocks)
+
   return nodes.flatMap((node) => fixNodeForMobile(node))
+}
+
+const markRfc8792CopyableBlocks = (node: Node): void => {
+  if (!isHtmlElement(node)) {
+    return
+  }
+
+  const candidates: HTMLElement[] = []
+  if (node.matches('div.sourcecode, div.artwork')) {
+    candidates.push(node)
+  }
+  candidates.push(
+    ...Array.from(
+      node.querySelectorAll<HTMLElement>('div.sourcecode, div.artwork')
+    )
+  )
+
+  for (const candidate of candidates) {
+    candidate.querySelectorAll('button.copy-unfolded').forEach((button) => {
+      button.remove()
+    })
+    candidate.classList.remove(RFC8792_COPY_CLASS)
+    candidate.removeAttribute(RFC8792_COPY_UNFOLDED_ATTR)
+    candidate.removeAttribute(RFC8792_SOURCECODE_MARKERS_ATTR)
+
+    const pre = candidate.querySelector<HTMLElement>('pre')
+    if (!pre) {
+      continue
+    }
+
+    const text = getInnerText(pre)
+    const hasSourcecodeMarkers = hasXml2RfcSourcecodeMarkers(text)
+    const copyText = getRfc8792CopyText(text, {
+      stripSourcecodeMarkers: hasSourcecodeMarkers
+    })
+
+    if (!copyText) {
+      continue
+    }
+
+    candidate.classList.add(RFC8792_COPY_CLASS)
+    candidate.setAttribute(RFC8792_COPY_UNFOLDED_ATTR, 'true')
+
+    if (hasSourcecodeMarkers) {
+      candidate.setAttribute(RFC8792_SOURCECODE_MARKERS_ATTR, 'true')
+    }
+  }
 }
 
 const getHorizontalScrollable = (

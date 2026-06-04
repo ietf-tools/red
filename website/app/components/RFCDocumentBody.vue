@@ -117,15 +117,22 @@
 
 <script setup lang="ts">
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
+import RFC8792CopyUnfoldedButton from './RFC8792CopyUnfoldedButton.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
 import { infoSeriesPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
+import type { ElementPojo, NodePojo } from '~/utilities/rfc-validators'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { renderDocumentPojo, renderNodePojo, defaultRenderer, type ElementRenderers } from '~/utilities/renderDocumentPojo'
 import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
+import {
+  getRfc8792CopyText,
+  RFC8792_COPY_UNFOLDED_ATTR,
+  RFC8792_SOURCECODE_MARKERS_ATTR
+} from '../../shared/utils/rfc8792'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -138,9 +145,64 @@ const props = defineProps<Props>()
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
 
+const childrenForVueToArray = (childrenForVue: VNode | VNode[] | undefined): VNode[] => {
+  if (!childrenForVue) {
+    return []
+  }
+
+  return Array.isArray(childrenForVue) ? childrenForVue : [childrenForVue]
+}
+
+const getNodePojoInnerText = (node: NodePojo): string => {
+  if (node.type === 'Text') {
+    return node.textContent
+  }
+
+  return node.children.map(getNodePojoInnerText).join('')
+}
+
+const getFirstPreText = (node: ElementPojo): string | undefined => {
+  if (node.nodeName.toLowerCase() === 'pre') {
+    return node.children.map(getNodePojoInnerText).join('')
+  }
+
+  for (const child of node.children) {
+    if (child.type === 'Element') {
+      const preText = getFirstPreText(child)
+
+      if (preText !== undefined) {
+        return preText
+      }
+    }
+  }
+}
+
 const rfcHtmlPojoRenderers: ElementRenderers = {
   ...defaultRenderer,
   a: (node, childrenForVue) => h(AMaybeRFCLink, { href: '', ...node.attributes }, () => childrenForVue),
+  div: (node, childrenForVue) => {
+    if (node.attributes[RFC8792_COPY_UNFOLDED_ATTR] !== 'true') {
+      return defaultRenderer.__default(node, childrenForVue)
+    }
+
+    const preText = getFirstPreText(node)
+    const copyText =
+      preText ?
+        getRfc8792CopyText(preText, {
+          stripSourcecodeMarkers:
+            node.attributes[RFC8792_SOURCECODE_MARKERS_ATTR] === 'true'
+        })
+      : null
+
+    if (!copyText) {
+      return defaultRenderer.__default(node, childrenForVue)
+    }
+
+    return h(node.nodeName, node.attributes, [
+      ...childrenForVueToArray(childrenForVue),
+      h(RFC8792CopyUnfoldedButton, { text: copyText })
+    ])
+  },
   svg: (node, childrenForVue) => h(
     node.nodeName,
     {
@@ -236,6 +298,46 @@ const updated_by = computed(() => {
        sections.
     */
     display: none;
+  }
+
+  .has-copy-unfolded {
+    position: relative;
+  }
+
+  .copy-unfolded {
+    position: absolute;
+    top: 0.35em;
+    right: 0.35em;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0.25em 0.5em;
+    border: 1px solid #777;
+    border-radius: 3px;
+    color: #fff;
+    background: #444;
+    font-family: var(--font-sans);
+    font-size: 0.85em;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+
+  .copy-unfolded:hover,
+  .copy-unfolded:focus {
+    background: #222;
+  }
+
+  .has-copy-unfolded:hover > .copy-unfolded,
+  .has-copy-unfolded:focus-within > .copy-unfolded,
+  .copy-unfolded:focus {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media print {
+    .copy-unfolded {
+      display: none;
+    }
   }
 }
 
