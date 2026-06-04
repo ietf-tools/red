@@ -1,10 +1,10 @@
 <template>
   <div class="overflow-x-hidden overflow-y-scroll px-4 pt-3 pb-5">
     <GraphicsIETFMotif class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden" :opacity="0.04" />
-    <Heading level="3" class="text-blue-900 dark:text-white leading-8 font-feature-settings-calt-off">
+    <Heading level="3" class="text-blue-900 dark:text-white leading-8 font-feature-settings-calt-off mb-2">
       <Anchor
         :href="infoSeriesPathBuilder(`rfc${props.rfc.number}`)"
-        class="flex items-center no-underline hover:underline border-1 border-gray-800 dark:border-gray-700 py-1 px-4 -mx-4 rounded focus:underline">
+        class="flex items-center no-underline hover:underline border-1 border-gray-500 dark:border-gray-700 py-1 px-4 -mx-4 rounded focus:underline">
         <span>
           <component :is="formattedTitle" />:
           <span class="font-normal">
@@ -14,7 +14,7 @@
         <GraphicsChevron
           width="28"
           height="42"
-          class="text-gray-200 group-hover:text-blue-400 group-focus:text-blue-400 dark:group-hover:text-blue-100 dark:group-focus:text-blue-100 transition-all group-hover:right-3 group-focus:right-3 -rotate-90 print:hidden" />
+          class="w-12 h-12 text-gray-800 dark:text-gray-300 group-hover:text-blue-400 group-focus:text-blue-400 dark:group-hover:text-blue-100 dark:group-focus:text-blue-100 transition-all group-hover:right-3 group-focus:right-3 -rotate-90 print:hidden" />
       </Anchor>
     </Heading>
 
