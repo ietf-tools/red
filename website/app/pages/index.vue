@@ -95,7 +95,7 @@
           <MarkdownCard id="/series/rfc-download/" />
 
           <Card
-            :href="searchPathBuilder({ showObsoleted: '1' })"
+            :href="RFC_INDEX_PATH"
             heading-level="3"
             has-cover-link
           >
@@ -163,7 +163,8 @@ import {
   searchPathBuilder,
   useDatatrackerUrlOrigin,
   usePublicSiteUrlOrigin,
-  useApiV1UrlOrigin
+  useApiV1UrlOrigin,
+  RFC_INDEX_PATH
 } from '~/utilities/url'
 import type { HomepageLatest } from '~/utilities/rfc-validators'
 
