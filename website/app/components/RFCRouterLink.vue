@@ -15,17 +15,10 @@
     </HoverCardTrigger>
     <HoverCardPortal>
       <HoverCardContent :side="props.side"
-        class="w-[300px] h-[225px] border shadow-2xl dark:shadow dark:ring-8 dark:ring-black/65 dark:shadow-indigo-500/50 overflow-x-hidden rounded-md max-w-xs bg-white dark:bg-black border-gray-400 px-2 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all">
-        <div v-if="rfc">
-          <div v-if="rfcId"
-            class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-4 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl">
-            <component :is="formatTitleAsVNode(`rfc${rfcId.number}`)" />
-            Preview
-          </div>
-          <RFCRouterLinkPreview :rfc="rfc" />
-        </div>
+        class="w-full h-full max-w-xs lg:max-w-120 max-h-64 lg:max-h-80 rounded-md overflow-hidden flex border-[1px] shadow-3xl shadow-blue-950/15 dark:after:shadow-blue-100/20 dark:ring-8 dark:ring-black/65 bg-white dark:bg-black border-gray-400 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all">
+        <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
         <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
-        <HoverCardArrow class="fill-gray-200 stroke-gray-500 -mt-[1px]" />
+        <HoverCardArrow class="fill-white dark:fill-black stroke-gray-500 dark:stroke-gray-300 -mt-[1px]" />
       </HoverCardContent>
     </HoverCardPortal>
   </HoverCardRoot>

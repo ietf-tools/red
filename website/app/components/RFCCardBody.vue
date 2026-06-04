@@ -67,7 +67,6 @@ import { DateTime } from 'luxon'
 import { infoSeriesPathBuilder } from '../utilities/url'
 import { getRfcPillText, isAprilFoolsRfc, type RfcCommon } from '~/utilities/rfc'
 import { formatTitlePlaintext } from '~/utilities/rfc-converters-utils'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 
 type Props = {
   rfc: RfcCommon
