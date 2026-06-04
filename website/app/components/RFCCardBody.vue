@@ -1,9 +1,9 @@
 <template>
   <div class="md:pr-5 flex-1">
-    <Pill v-if="tagText.length > 0" size="small" :text="tagText" class="print:m-0 my-2" />
+    <Pill v-if="tagText.length > 0" size="small" :text="tagText" class="relative z-1 print:m-0 my-2" />
     <ul
       v-if="props.rfc.authors"
-      class="hidden lg:block print:block text-base text-gray-800 dark:text-white">
+      class="relative z-1 hidden lg:block print:block text-base text-gray-800 dark:text-white">
       <li v-for="(author, index) in props.rfc.authors" :key="index" class="inline">
         <GraphicsDiamond v-if="index > 0" />
         <RFCDocumentAuthor :author="author" />
@@ -11,7 +11,7 @@
     </ul>
     <ul
       v-if="list2"
-      class="hidden lg:block print:block text-base text-gray-800 mt-1 dark:text-white">
+      class="relative z-1 hidden lg:block print:block text-base text-gray-800 mt-1 dark:text-white">
       <li v-if="isAprilFool" class="inline pr-2">
         <AprilFools />
       </li>
@@ -29,7 +29,7 @@
           type="button"
           :aria-expanded="isMobileAbstractOpen"
           :aria-controls="abstractDomId"
-          class="relative z-50 text-blue-800 cursor-pointer dark:text-blue-100 underline text-base p-3 -left-3 -top-3 -mb-3 print:hidden"
+          class="relative z-50 text-blue-800 cursor-pointer dark:text-blue-100 underline text-base p-3 -ml-3 -mt-2 -mb-3 print:hidden"
           @click="isMobileAbstractOpen = !isMobileAbstractOpen">
           <template v-if="isMobileAbstractOpen">Hide abstract</template>
           <template v-else>Show abstract</template>
@@ -37,7 +37,7 @@
         <div
           :id="abstractDomId"
           :class="[
-            'mt-3',
+            'relative z-50 mt-3',
             {
               'block ': isMobileAbstractOpen,
               'hidden print:block': !isMobileAbstractOpen
@@ -56,7 +56,7 @@
     </template>
     <p
       v-if="obsoletedBy"
-      :class="['text-red-700 dark:text-red-300 text-base print:text-black', { 'mt-2': isMobileAbstractOpen }]">
+      :class="['relative z-1 text-red-700 dark:text-red-300 text-base print:text-black', { 'mt-2': isMobileAbstractOpen }]">
       <Renderable :val="obsoletedBy" />
     </p>
   </div>

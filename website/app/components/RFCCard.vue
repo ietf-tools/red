@@ -16,13 +16,13 @@
     <template #afterHeadingTitle>
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfc" has-trailing-colon :has-underline="false" />
-      <span class="font-normal">
+      <span class="relative z-3 font-normal">
         {{ SPACE }}{{ props.rfc.title }}
       </span>
     </template>
     <template #default>
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />
-      <div v-if="props.showAbstract && !!props.rfc.abstract" class="hidden lg:block">
+      <div v-if="props.showAbstract && !!props.rfc.abstract" class="relative z-1 hidden lg:block">
         <!-- desktop abstract -->
         <Heading
           :level="abstractHeadingLevel"

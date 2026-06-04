@@ -31,7 +31,7 @@
         has-trailing-colon
         :has-underline="false"
       />
-      <span class="font-normal">{{ SPACE }}{{ props.rfc.title }}</span>
+      <span class="relative z-3 font-normal">{{ SPACE }}{{ props.rfc.title }}</span>
     </template>
     <template #default>
       <RFCCardBody

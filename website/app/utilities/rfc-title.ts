@@ -53,7 +53,7 @@ export const formatSubseriesAsVNode = (
               !hasUnderline ? 'no-underline' : (
                 'underline decoration-gray-500 hover:decoration-black focus:decoration:black dark:decoration-gray-400 dark:hover:decoration-white'
               ),
-              'relative z-50 hover:underline focus:underline py-3 rounded text-gray-800 dark:text-gray-300'
+              'relative z-100 hover:underline focus:underline py-3 rounded text-gray-800 dark:text-gray-300'
             ],
             title: `${subseries.type.toUpperCase()} ${subseries.number} contains RFC ${rfc.number}`
           },
@@ -67,7 +67,7 @@ export const formatSubseriesAsVNode = (
         )
       )
       .reduce(
-        // when there are multiple subseries add commas betweens
+        // when there are multiple subseries add commas
         (acc, item, index, arr) => {
           acc.push(item)
           if (index < arr.length - 1) {

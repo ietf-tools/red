@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'bg-white dark:bg-blue-950 relative dark:border dark:border-gray-500 pl-5 pr-7 py-4 rounded shadow-xs print:border-2 print:border-black',
+      'bg-white dark:bg-blue-950 relative border-1 border-gray-100 dark:border-1 dark:border-gray-500 pl-5 pr-7 py-4 rounded shadow-xs print:border-2 print:border-black',
       props.class
     ]">
     <div :class="props.containerClass">
@@ -10,7 +10,6 @@
           :to="props.href"
           :class="[
             'font-semibold text-blue-300 dark:text-blue-100 print:text-black no-underline group',
-
             props.hasCoverLink &&
               `before:absolute before:content-[\'\'] before:inset-0 before:rounded ${
                 // below the content
@@ -25,7 +24,7 @@
                 // Card shadow
                 `after:shadow-blue-950/10 dark:after:shadow-blue-100/10 hover:after:shadow-3xl focus:after:shadow-3xl dark:hover:after:shadow-3xl dark:hover:after:shadow-3xl`
               } ${
-                /* must be able to have <slot /> content above the coverLink, so coverlink is z-40 and slot content (eg buttons) could be z-50 to rise above it */
+                /* must be able to have <slot /> content above the coverLink, so coverlink is z-40 and slot content (eg subseries links like 'BCP 3' after the RFC link) could be z-50 to rise above it */
                 ''
               }`
           ]">
@@ -43,11 +42,18 @@
               props.chevronPosition === 'center' ? 'bottom-[50%]' : 'bottom-4'
             ]" />
         </NuxtLink>
-        <span class="relative z-1">
+        <span
+          :class="`${
+            // don't set `relative` or z-index on this as it will affect z-index layering of afterHeadingTitle subseries links from RFC card eg RFC 2119 'BCP' link
+            ''
+          }`">
           <slot name="afterHeadingTitle"></slot>
         </span>
       </Heading>
-      <div class="relative z-1">
+      <div :class="`${
+            // don't set `relative` or z-index on this as it will affect z-index layering of RFC Card 'Show abstract' buttons
+            ''
+          }`">
         <slot />
       </div>
     </div>
