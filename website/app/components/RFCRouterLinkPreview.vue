@@ -4,11 +4,17 @@
     <Heading level="3" class="text-blue-900 dark:text-white leading-8 font-feature-settings-calt-off">
       <Anchor
         :href="infoSeriesPathBuilder(`rfc${props.rfc.number}`)"
-        class="no-underline hover:underline focus:underline">
-        <component :is="formattedTitle" />:
-        <span class="font-normal">
-          {{ props.rfc.title }}
+        class="flex items-center no-underline hover:underline border-1 border-gray-800 dark:border-gray-700 py-1 px-4 -mx-4 rounded focus:underline">
+        <span>
+          <component :is="formattedTitle" />:
+          <span class="font-normal">
+            {{ props.rfc.title }}
+          </span>
         </span>
+        <GraphicsChevron
+          width="28"
+          height="42"
+          class="text-gray-200 group-hover:text-blue-400 group-focus:text-blue-400 dark:group-hover:text-blue-100 dark:group-focus:text-blue-100 transition-all group-hover:right-3 group-focus:right-3 -rotate-90 print:hidden" />
       </Anchor>
     </Heading>
 

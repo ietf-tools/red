@@ -5,7 +5,7 @@
  *
  * Therefore for our use-case we don't really want a library like @nuxt/device
  * that uses HTTP user-agents to infer device capabilities, we just want client
- * side detection of capabilities
+ * side detection of capabilities.z
  */
 
 export type HasTouchValue = null | boolean
@@ -29,10 +29,10 @@ export const useHasTouchStore = defineStore('hasTouch', () => {
     }
   }
 
-  if (typeof window !== 'undefined') {
+  onMounted(() => {
     updateTouchMode()
     getMatchMedia().addEventListener('change', updateTouchMode)
-  }
+  })
 
   return { hasTouch }
 })

@@ -68,7 +68,7 @@
           >
             <AMaybeRFCLink
               :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)"
-              :class="ANCHOR_COLOR_TAILWIND_STYLE"
+              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE"
             >
               <RFCTitle :rfc="obsoletedByItem" />
             </AMaybeRFCLink>
@@ -92,7 +92,7 @@
           >
             <AMaybeRFCLink
               :href="infoSeriesPathBuilder(`RFC${updatedByItem.number}`)"
-              :class="ANCHOR_COLOR_TAILWIND_STYLE"
+              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE"
             >
               <RFCTitle :rfc="updatedByItem" />
             </AMaybeRFCLink>
@@ -122,7 +122,7 @@ import { infoSeriesPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE, ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { renderDocumentPojo, renderNodePojo, defaultRenderer, type ElementRenderers } from '~/utilities/renderDocumentPojo'
 import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'

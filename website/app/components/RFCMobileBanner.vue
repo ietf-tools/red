@@ -17,7 +17,7 @@
 
       <div
         v-if="pillText.length > 0"
-        class="text-gray-400"
+        class="text-gray-200 dark:text-gray-100"
       >
         <span
           v-for="(pillTextItem, pillTextItemIndex) in pillText"

@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   typescript: { strict: true },
   modules: [
-    // Note: don't use 'Nuxt Device' see note in responsiveMode.ts
+    // Note: don't use 'Nuxt Device' see note in hasTouch.ts
     'reka-ui/nuxt',
     '@nuxt/test-utils/module',
     '@pinia/nuxt',

@@ -5,10 +5,7 @@ export type ResponsiveMode = null | 'Desktop' | 'Mobile'
  * never server render responsive variations (ie server rendering desktop html,
  * or server rendering mobile html).
  *
- * Popular module 'Nuxt Device' seems to allow this because it uses HTTP User Agents
- * to detect mobile/desktop which is a feature we don't want.
- *
- * So this store is only clientside.
+ * So the `null` value means server side,
  */
 export const useResponsiveModeStore = defineStore('responsiveMode', () => {
   const responsiveMode = ref<ResponsiveMode>(null)
@@ -30,10 +27,10 @@ export const useResponsiveModeStore = defineStore('responsiveMode', () => {
     }
   }
 
-  if (typeof window !== 'undefined') {
+  onMounted(() => {
     updateResponsiveMode()
     getMatchMedia().addEventListener('change', updateResponsiveMode)
-  }
+  })
 
   return { responsiveMode }
 })
