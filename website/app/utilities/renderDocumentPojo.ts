@@ -35,6 +35,10 @@ type ElementRenderer = (node: ElementPojo, childrenForVue: ChildrenForVue) => VN
  */
 export type ElementRenderers = Record<string, ElementRenderer> & { __default: ElementRenderer }
 
+/**
+ * This does not sanitise its output so if you tell it to render onclick
+ * or href="javascript:" then it will.
+ */
 export const renderNodePojo = (node: NodePojo, elementRenderers: ElementRenderers): VNode => {
   if (node.type === 'Element') {
     const children = node.children.map((node) => renderNodePojo(node, elementRenderers))
@@ -48,6 +52,10 @@ export const renderNodePojo = (node: NodePojo, elementRenderers: ElementRenderer
   throw Error(`Unhandled NodePojo ${JSON.stringify(node)}`)
 }
 
+/**
+ * This does not sanitise its output so if you tell it to render onclick
+ * or href="javascript:" then it will.
+ */
 export const renderNodePojoToHtmlString = (node: NodePojo): string => {
   if (node.type === 'Element') {
     const { nodeName } = node
@@ -89,6 +97,10 @@ export const renderDocumentPojo = (nodes: DocumentPojo, elementRenderers: Elemen
   return h(Fragment, () => children)
 }
 
+/**
+ * This does not sanitise its output so if you tell it to render onclick
+ * or href="javascript:" then it will.
+ */
 export const renderDocumentPojoToHtmlString = (nodes: DocumentPojo): string => {
   return nodes.map((node) => renderNodePojoToHtmlString(node)).join('')
 }
