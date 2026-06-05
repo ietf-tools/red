@@ -124,10 +124,10 @@ export const typeSenseSearchItemToRFCCommon = (
     group: TypeSenseSearchItem['group'],
     rfcNumberForDebug?: number
   ): RfcCommon['group'] => {
-    logOnce(`[Typesense] API data currently doesn't have Group 'type' so search results will use default Group type of 'wg' in search results.`)
+    logOnce(`[Typesense] API data currently doesn't have Group 'type' so search results will use default Group type of 'area' in search results.`)
     const { data: parsedGroup, error } = RfcCommonGroupSchema.safeParse({
       ...group,
-      type: 'wg'
+      type: 'area'
     } satisfies RfcCommon['group'])
     if (error) {
       const fromRfcErrorSuffix =
