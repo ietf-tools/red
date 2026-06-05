@@ -30,8 +30,10 @@ export const useHasTouchStore = defineStore('hasTouch', () => {
   }
 
   onMounted(() => {
+    const mql = getMatchMedia()
     updateTouchMode()
-    getMatchMedia().addEventListener('change', updateTouchMode)
+    mql.addEventListener('change', updateTouchMode)
+    onUnmounted(() => mql.removeEventListener('change', updateTouchMode))
   })
 
   return { hasTouch }

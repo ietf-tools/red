@@ -1,16 +1,11 @@
 <template>
-  <Card
-    :href="props.id"
-    heading-level="3"
-    has-cover-link
-  >
+  <Card :href="props.id" heading-level="3" has-cover-link>
     <template #headingTitle>{{ page?.title }} {{ error }}</template>
-    <p
-      v-if="description"
-      class="text-base mt-2 text-blue-900 dark:text-white"
-    >
-      {{ description }}
-    </p>
+    <CardContent>
+      <p v-if="description" class="text-base mt-2 text-blue-900 dark:text-white">
+        {{ description }}
+      </p>
+    </CardContent>
   </Card>
 </template>
 
@@ -36,13 +31,13 @@ const { error, data: page } = await useAsyncData(
     const apiPath = apiMarkdownPagePathBuilder(normalizedSlug)
     const json = await $fetch(apiPath, {
       method: 'GET',
-      baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
+      baseURL: import.meta.server ? apiV1UrlOrigin : undefined
     })
     const { data } = MarkdownPageSchema.safeParse(json)
     return data ?? null
   },
   {
-    server: true,
+    server: true
   }
 )
 

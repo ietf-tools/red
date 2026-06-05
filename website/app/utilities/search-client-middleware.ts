@@ -49,8 +49,6 @@ export function adaptSearchClient(
             isSubseries = true
             searchStore.subseriesLabel = `${subseries.toUpperCase()} ${subseriesMatch.groups.num}`
             searchStore.subseriesHref = `/info/${subseries.toLowerCase()}${subseriesMatch.groups.num}`
-          } else {
-            isSubseries = false
           }
 
           return r

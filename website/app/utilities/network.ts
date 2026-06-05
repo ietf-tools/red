@@ -2,7 +2,7 @@ import { setTimeoutPromise } from './promises'
 
 type FetchOptions = NonNullable<Parameters<typeof fetch>[1]>
 
-const MAX_RETRIES_DEFAULT = 2
+const MAX_ATTEMPTS_DEFAULT = 3
 const DELAY_BETWEEN_RETRIES_MS_DEFAULT = 200
 
 /** a `fetch()` wrapper that retries if there's a failure,
@@ -13,13 +13,13 @@ export const fetchRetry = (
   fetchOptions?: FetchOptions,
   retryOptions?: {
     delayBetweenRetriesMs: number
-    maxRetries: number
+    maxAttempts: number
   }
 ) =>
   new Promise<Response>((resolve, reject) => {
     ;(async () => {
       const errors: string[] = []
-      let remainingAttempts = retryOptions?.maxRetries ?? MAX_RETRIES_DEFAULT
+      let remainingAttempts = retryOptions?.maxAttempts ?? MAX_ATTEMPTS_DEFAULT
       while (remainingAttempts > 0) {
         remainingAttempts--
         try {

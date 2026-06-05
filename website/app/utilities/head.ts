@@ -227,7 +227,7 @@ const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
   if (props.keywords) {
     props.keywords.forEach(keyword => {
       metaTags.push({
-        name: 'keyword',
+        name: 'keywords',
         content: keyword
       })
     })

@@ -18,9 +18,32 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   if (storage === 'cookie') {
     const { cookie } = useRequestHeaders(['cookie'])
-    const [, value] = cookie?.split('; ').map(s => s.split('=')).find(([k]) => k === storageKey) ?? []
-    if (value) {
-      colorMode.preference = value
+
+    // Cookie header format: "name1=value1; name2=value2; ..."
+    //
+    // Naive parsing with s.split('=') breaks when a cookie value contains '=' characters,
+    // which is common for base64-encoded values (e.g. "abc==" becomes ["abc", "", ""])
+    // and the destructure [, value] captures only the segment between the first and
+    // second '=', silently truncating the rest.
+    //
+    // The correct approach is to split only on the FIRST '=' using indexOf, so that
+    // everything after the first '=' is treated as the value verbatim, regardless of
+    // how many '=' characters it contains.
+    //
+    // Example:
+    //   "nuxt-color-mode=dark"      → key="nuxt-color-mode", value="dark"      ✓
+    //   "nuxt-color-mode=abc==def"  → key="nuxt-color-mode", value="abc==def"  ✓ (was "abc" before fix)
+    const cookieValue = cookie
+      ?.split('; ')
+      .map((s) => {
+        const eqIndex = s.indexOf('=')
+        return eqIndex === -1 ? [s, ''] : [s.slice(0, eqIndex), s.slice(eqIndex + 1)]
+      })
+      .find(([k]) => k === storageKey)
+      ?.[1]
+
+    if (cookieValue) {
+      colorMode.preference = cookieValue
     }
   }
   useHead({ htmlAttrs })

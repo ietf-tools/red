@@ -66,8 +66,8 @@ export const renderNodePojoToHtmlString = (node: NodePojo): string => {
     }
 
     const attributesEntries = Object.entries({
+      ...node.attributes,
       ...(node.attributes.href && isExternalLink(node.attributes.href) ? { rel: EXTERNAL_LINK_REL } : {}),
-      ...node.attributes
     })
     return `<${htmlEscapeToText(nodeNameToUse)} ${attributesEntries
       .map(([attributeName, attributeValue]) => {

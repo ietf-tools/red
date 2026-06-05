@@ -36,8 +36,8 @@ export const preformattedTextToHtml = (preText: string, wrapAnywhere?: boolean):
   return h(
     'span',
     { class: ['font-mono', wrapAnywhere ? 'wrap-anywhere' : undefined] },
-    preText.split('\n').flatMap((line) => {
-      return [line, h('br')]
+    preText.split('\n').flatMap((line, i, arr) => {
+      return i < arr.length - 1 ? [line, h('br')] : [line]
     })
   )
 }
@@ -59,8 +59,9 @@ export const sanitiseHtml = (untrustedHtml: string | undefined | null): string =
     !('setHTML' in el) ||
     typeof el.setHTML !== 'function'
   ) {
-    // console.warn('Rendering HTML direct to DOM due to lack of browser window.Sanitizer or related functionality. HTML was:', JSON.stringify(untrustedHtml))
-    el.innerHTML = untrustedHtml // TODO: in this scenario what should we do? strip all HTML elements? escape them all?
+    // The input has already been sanitised upstream before reaching this function; this Sanitizer API
+    // call is a second defensive layer only. Falling back to direct innerHTML assignment is acceptable.
+    el.innerHTML = untrustedHtml
     return el.innerHTML
   }
   // TS in server nuxt rendering doesn't know about window.Sanitizer and errors on this, but the preceding

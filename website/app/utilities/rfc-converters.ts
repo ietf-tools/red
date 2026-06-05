@@ -13,6 +13,7 @@ import {
 } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
 import { sanitiseHtml } from './html'
+import { logOnce } from './log'
 
 export const typeSenseSearchItemToRFCCommon = (
   unverifiedTypeSenseSearchItem: TypeSenseSearchItem
@@ -107,12 +108,7 @@ export const typeSenseSearchItemToRFCCommon = (
     rfcNumberForDebug?: number
   ): RfcCommon['area'] => {
     if (!area) return undefined
-
-    const { data: parsedArea, error } = RfcCommonAreaSchema.safeParse({
-      ...area,
-      // FIXME: update search to include this property
-      type: 'area'
-    })
+    const { data: parsedArea, error } = RfcCommonAreaSchema.safeParse(area satisfies RfcCommon['area'])
     if (error) {
       const fromRfcErrorSuffix =
         rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
@@ -128,10 +124,11 @@ export const typeSenseSearchItemToRFCCommon = (
     group: TypeSenseSearchItem['group'],
     rfcNumberForDebug?: number
   ): RfcCommon['group'] => {
+    logOnce(`[Typesense] API data currently doesn't have Group 'type' so search results will use default Group type of 'wg' in search results.`)
     const { data: parsedGroup, error } = RfcCommonGroupSchema.safeParse({
       ...group,
-      type: 'area'
-    })
+      type: 'wg'
+    } satisfies RfcCommon['group'])
     if (error) {
       const fromRfcErrorSuffix =
         rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
