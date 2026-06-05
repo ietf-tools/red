@@ -11,21 +11,32 @@
           :class="[
             'font-semibold text-blue-300 dark:text-blue-100 print:text-black no-underline group',
             props.hasCoverLink &&
-              `before:absolute before:content-[\'\'] before:inset-0 before:rounded ${
-                // below the content
+              `${
+                // the card background colour layer
+                'before:absolute before:content-[\'\'] before:inset-0 before:rounded'
+              } ${
+                // card background layer should be below the slots z-index
                 'before:z-0'
-              } after:absolute after:content-[\'\'] after:inset-0 ${
-                // above the content
+              } ${
+                // the card cover link itself (increases clickable area of the link)
+                'after:absolute after:content-[\'\'] after:inset-0'
+              } ${
+                // card cover link should be above the card background colour layer, so 40 is
+                // an arbitrary choice.
+                //
+                // Generally slots content should be between these layers, so that means
+                // z-index 1-39.
+                //
+                // however sometimes slot content intentionally rises above (eg RFCCard usage
+                // of Card has Subseries links see RFC2119) and 'Show Abstract' buttons which
+                // should be stacked above 40.
                 'after:z-40'
               } after:transition-all ${
-                // card tint
+                // card tint when focus/hover
                 `hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-100 dark:focus:text-blue-100 hover:before:bg-blue-25 focus:before:bg-blue-25 dark:hover:before:bg-blue-900 dark:focus:before:bg-blue-900`
               } ${
                 // Card shadow
                 `after:shadow-blue-950/10 dark:after:shadow-blue-100/10 hover:after:shadow-3xl focus:after:shadow-3xl dark:hover:after:shadow-3xl dark:hover:after:shadow-3xl`
-              } ${
-                /* must be able to have <slot /> content above the coverLink, so coverlink is z-40 and slot content (eg subseries links like 'BCP 3' after the RFC link) could be z-50 to rise above it */
-                ''
               }`
           ]">
           <span class="relative z-1">
@@ -44,16 +55,23 @@
         </NuxtLink>
         <span
           :class="`${
-            // don't set `relative` or z-index on this as it will affect z-index layering of afterHeadingTitle subseries links from RFC card eg RFC 2119 'BCP' link
+            // The lack of a `relative` or `z-index` here is a feature not a bug.
+            // Don't set `relative` or z-index on this as it will affect z-index layering of afterHeadingTitle *subseries* links.
+            // Instead wrap parts of your usage of Card's afterHeadingTitle slot in a z-index:
+            //    eg `template #afterHeadingTitle div relative z-100 div template`
             ''
           }`">
           <slot name="afterHeadingTitle"></slot>
         </span>
       </Heading>
-      <div :class="`${
-            // don't set `relative` or z-index on this as it will affect z-index layering of RFC Card 'Show abstract' buttons
-            ''
-          }`">
+      <div
+        :class="`${
+          // The lack of a `relative` or `z-index` here is a feature not a bug.
+          // Changing `relative` or z-index on this could affect z-index layering of RFCCard 'Show abstract' buttons.
+          // Instead wrap parts of your usage of Card's slot in a z-index.
+          // See also comment above.
+          ''
+        }`">
         <slot />
       </div>
     </div>
@@ -64,7 +82,6 @@
 </template>
 
 <script setup lang="ts">
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import type { VueStyleClass } from '../utilities/vue'
 import type { HeadingLevel } from '~/utilities/html'
 

@@ -14,11 +14,22 @@
       <component :is="formattedTitle" />
     </template>
     <template #afterHeadingTitle>
+      {{
+        ''
+        /** 
+         * Considering changing CSS `relative` or `z-index` here?
+         * The subseries link should appear "above" (in the `z-index` sense) the `Card`'s cover link.
+         * Eg "BCP 14" on the card for RFC2119 should appear above the card.
+         * A good RFC to test changes on is RFC 9966 which has a link to RFC 2119, so the `RFCLinkPreview`
+         * `HoverCard` has a complex stacking order:
+         *   Reka UI HoverCard, then Card, card background tint, card cover link, and subseries link "BCP 14".
+         * Be sure to test search results (eg RFC 2119) too, because they raise a 'Show Abstract' button
+         * (mobile only) above the `Card`'s cover link, so it's the same issue.
+         */
+      }}
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfc" has-trailing-colon :has-underline="false" />
-      <span class="relative z-3 font-normal">
-        {{ SPACE }}{{ props.rfc.title }}
-      </span>
+      <span class="relative z-3 font-normal"> {{ SPACE }}{{ props.rfc.title }} </span>
     </template>
     <template #default>
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />

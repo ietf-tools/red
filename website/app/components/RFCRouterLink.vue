@@ -1,20 +1,42 @@
 <template>
   <HoverCardRoot v-model:open="isHoverCardOpen">
     <HoverCardTrigger as-child>
-      <a v-if="props.href?.startsWith('#')" :href="props.href" :id="props.id" data-is-hash-link :class="props.class" @focus="loadRfc" @mouseover="loadRfc"
+      <a
+        v-if="props.href?.startsWith('#')"
+        :href="props.href"
+        :id="props.id"
+        data-is-hash-link
+        :class="props.class"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
         @blur="isHoverCardOpen = false">
         <slot />
       </a>
-      <a v-else-if="isOutsideNuxtLink(props.href)" :href="props.href" data-is-outside-nuxt :class="props.class" @focus="loadRfc" @mouseover="loadRfc" @blur="isHoverCardOpen = false">
+      <a
+        v-else-if="isOutsideNuxtLink(props.href)"
+        :href="props.href"
+        data-is-outside-nuxt
+        :class="props.class"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
+        @blur="isHoverCardOpen = false">
         <slot />
       </a>
-      <NuxtLink v-else :id="props.id" :to="props.href" data-is-nuxt-link :class="props.class" @focus="loadRfc" @mouseover="loadRfc"
+      <NuxtLink
+        v-else
+        :id="props.id"
+        :to="props.href"
+        data-is-nuxt-link
+        :class="props.class"
+        @focus="loadRfc"
+        @mouseover="loadRfc"
         @blur="isHoverCardOpen = false">
         <slot />
       </NuxtLink>
     </HoverCardTrigger>
     <HoverCardPortal>
-      <HoverCardContent :side="props.side"
+      <HoverCardContent
+        :side="props.side"
         class="w-full h-full max-w-xs lg:max-w-120 max-h-64 lg:max-h-80 rounded-md overflow-hidden flex border-[1px] shadow-3xl shadow-blue-950/15 dark:after:shadow-blue-100/20 dark:ring-8 dark:ring-black/65 bg-white dark:bg-black border-gray-400 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all">
         <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
         <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
@@ -31,18 +53,12 @@
       <DialogPortal>
         <DialogOverlay class="bg-black/10 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
         <DialogContent
-          class="data-[state=open]:animate-enterFromBottom rounded-t-xl data-[state=closed]:animate-exitToBottom fixed w-full max-w-md m-x-auto h-[50vh] bottom-0 right-0 shadow-[0_-5px_25px_rgba(0,0,0,0.25)] dark:shadow-[-5px_-5px_25px_rgba(11,140,197,0.25)] text-black bg-white dark:bg-black dark:text-white border-t-1 border-gray-400 dark:border-gray-400 overflow-y-scroll z-100">
-          <DialogClose class="fixed right-0 py-[10px] px-3 pb-3">
+          class="data-[state=open]:animate-enterFromBottom rounded-t-xl data-[state=closed]:animate-exitToBottom fixed w-full max-w-lg m-x-auto h-[50vh] bottom-0 right-0 shadow-[0_-5px_25px_rgba(0,0,0,0.25)] dark:shadow-[-5px_-5px_25px_rgba(11,140,197,0.25)] text-black bg-white dark:bg-black dark:text-white border-t-1 border-gray-400 dark:border-gray-400 overflow-y-scroll z-100">
+          <DialogTitle class="sr-only" v-if="rfc"> RFC {{ rfc.number }} Preview</DialogTitle>
+          <DialogClose class="fixed z-3 right-0 py-3 px-4 pb-3">
             <GraphicsClose />
           </DialogClose>
-          <DialogTitle
-            class="mx-auto sticky top-0 z-2 block w-50 px-4 pt-1 pb-2 mb-6 text-center bg-gray-200 dark:bg-gray-700 rounded-b-xl">
-            <span v-if="rfcId">
-              <component :is="formatTitleAsVNode(`rfc${rfcId.number}`)" />
-              Preview
-            </span>
-          </DialogTitle>
-          <DialogDescription class="mx-auto px-4">
+          <DialogDescription class="mx-auto pt-6 px-0">
             <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
             <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
           </DialogDescription>
@@ -57,18 +73,19 @@ import { onUnmounted, customRef } from 'vue'
 import RFCRouterLinkPreview from './RFCRouterLinkPreview.vue'
 import { NuxtLink } from '#components'
 import { RFC_TYPE_RFC } from '~/utilities/rfc'
-import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { parseMaybeRfcLink, rfcCommonPathBuilder, isOutsideNuxtLink } from '~/utilities/url'
 import type { LoadingStatus } from '~/utilities/loading-status'
 import type { VueStyleClass } from '~/utilities/vue'
 import { RfcCommonSchema, type RfcCommon } from '~/utilities/rfc-validators'
 
-const props = withDefaults(defineProps<{
+type Props = {
   href: string
   id?: string
   class?: VueStyleClass
   side?: 'left' | 'bottom'
-}>(), { side: 'bottom' })
+}
+
+const props = withDefaults(defineProps<Props>(), { side: 'bottom' })
 
 const hasTouchStore = useHasTouchStore()
 const rfc = ref<RfcCommon | undefined>()
@@ -79,9 +96,7 @@ const isHoverCardOpen = (() => {
     get() {
       track()
       // we never want to open the hovercard while the dialog is open, or if there was an error loading the data
-      return isDialogOpen.value || loadingStatus.value.type !== 'success' ?
-        false
-        : value
+      return isDialogOpen.value || loadingStatus.value.type !== 'success' ? false : value
     },
     set(newValue) {
       value = Boolean(newValue)
@@ -136,16 +151,13 @@ const loadRfc = async (): Promise<void> => {
   console.log(`Loading ${rfcPath}`)
 
   try {
-    const response = await fetch(
-      rfcPath,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'same-origin'
+    const response = await fetch(rfcPath, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
       },
-    )
+      credentials: 'same-origin'
+    })
     const rfcUnverified = await response.json()
     const rfcValidated = RfcCommonSchema.parse(rfcUnverified)
     loadingStatus.value = {
