@@ -13,7 +13,7 @@
       </span>
       <GraphicsChevron
         :class="{
-          'mr-4 size-4 text-blue-100': true,
+          'mr-4 size-4 text-white': true,
           'rotate-180': open
         }"
       />
