@@ -25,7 +25,7 @@
             <template v-for="(item, index) in menuData" :key="index.toString()">
               <Anchor v-if="item.href" :href="item.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
                 <GraphicsChevron v-if="item.hideDropdownIconDesktop"
-                  class="absolute right-0 mt-1 mr-4 size-4 -rotate-90 text-blue-100" />d
+                  class="absolute right-0 mt-1 mr-4 size-4 -rotate-90 text-blue-100" />
                 {{ item.label }}
               </Anchor>
               <AccordionItem v-else :id="index.toString()" :trigger-text="item.label">
@@ -35,6 +35,7 @@
                       {{ level0.label }}
                     </Anchor>
                     <button v-else-if="level0.click" type="button" :aria-label="level0.activeLabelFn?.()"
+                      :aria-pressed="level0.isActiveFn ? Boolean(level0.isActiveFn()) : undefined"
                       :class="[MENU_ITEM_CLASS, 'flex items-center']" @click="
                         (e: MouseEvent) => {
                           level0.click?.(e)
