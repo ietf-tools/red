@@ -94,7 +94,7 @@ import { SEARCH_PATH } from '~/utilities/url'
 const menuData = useMenuData("mobile")
 
 const MENU_ITEM_CLASS =
-  'flex w-full text-left border no-underline border-gray-500 px-4 py-3 hover:bg-blue-400 focus:bg-blue-400'
+  'flex w-full text-left border no-underline border-gray-500 px-4 py-3.5 hover:bg-blue-400 focus:bg-blue-400'
 
 const isOpen = ref(false)
 </script>
