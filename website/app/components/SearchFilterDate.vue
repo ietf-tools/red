@@ -143,7 +143,7 @@
               >
                 <select-trigger
                   class="flex items-center ml-2"
-                  :aria-label="props.label + ' start year'"
+                  :aria-label="props.label + ' end month'"
                 >
                   <select-value placeholder="MMM" />
                   <icon
