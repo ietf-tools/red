@@ -10,7 +10,7 @@
           :id="`menu-link-${index}`"
           :href="menuItem.href"
           :aria-label="menuItem.label"
-          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px]"
+          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px_white]"
           as-child
           @click="menuItem.click">
           <Anchor>
@@ -35,7 +35,7 @@
           <GraphicsChevron
             v-if="!menuItem.hideDropdownIconDesktop"
             :class="[
-              'ml-1 top-[1px] text-blue-100 group-hover:text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
+              'ml-1 top-[1px] text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
               hasMounted ? 'visible' : 'invisible'
             ]" />
         </NavigationMenuTrigger>
@@ -64,7 +64,7 @@
                         {{ level0.label }}
                       </span>
                       <GraphicsChevron
-                        class="transition-transform text-blue-100 group-hover:text-white translate-y-[0.2em] duration-[150ms] ease-in group-data-[state=open]:-rotate-180" />
+                        class="transition-transform text-white translate-y-[0.2em] duration-[150ms] ease-in group-data-[state=open]:-rotate-180" />
                     </NavigationMenuTrigger>
                     <NavigationMenuContent
                       class="bg-gray-200 rounded-b-md mx-1 pb-1 inset-shadow-sm inset-shadow-gray-400 dark:bg-gray-700 dark:inset-shadow-gray-900">
