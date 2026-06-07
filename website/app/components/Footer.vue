@@ -21,11 +21,11 @@
         </div>
         <div class="flex gap-2 items-center mt-2 pl-3 lg:mt-5 text-sm">
           <a href="https://status.ietf.org" target="_blank">System Status</a>
-          <span class="text-gray-300">&middot;</span>
+          <span class="text-white">&middot;</span>
           <a href="https://github.com/ietf-tools/red/issues" target="_blank">Report a Bug</a>
           <template v-if="websiteVersion">
-            <span class="text-gray-300">&middot;</span>
-            <span class="text-gray-300">Version {{ websiteVersion }}</span>
+            <span class="text-white">&middot;</span>
+            <span class="text-gray-100">Version {{ websiteVersion }}</span>
           </template>
         </div>
       </div>
