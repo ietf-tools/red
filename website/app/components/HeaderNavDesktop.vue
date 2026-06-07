@@ -112,6 +112,7 @@
                   type="button"
                   :class="[MENU_ITEM_CLASS, 'cursor-pointer']"
                   :aria-label="level0.activeLabelFn?.()"
+                  :aria-pressed="level0.isActiveFn ? Boolean(level0.isActiveFn()) : undefined"
                   @click="level0.click">
                   <span class="flex items-center">
                     <Icon v-if="level0.icon" :name="level0.icon" />
