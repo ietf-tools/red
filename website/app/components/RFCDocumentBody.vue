@@ -242,19 +242,14 @@ const updated_by = computed(() => {
 }
 
 .rfc-content-type-xml2rfc {
-  h1, h2, h3, h4, h5, h6, p {
-    max-width: 42rem;
-  }
-
+  /**
+   * WCAG requires max-width of 80 chars
+   */
+  h1, h2, h3, h4, h5, h6, p { max-width: 42rem; }
   /** these blocks already have left spacing so their max-width should be reduced */
-  li, dt {
-    max-width: 40rem;
-  }
-
+  li, dt { max-width: 40rem; }
   /** these blocks already have MORE left spacing so their max-width should be reduced */
-  dd {
-    max-width: 33rem;
-  }
+  dd, th, td { max-width: 33rem; }
 
   margin-left: calc(var(--spacing) * 2);
   /* Using postcss-nested-import to scope these imported styles,
