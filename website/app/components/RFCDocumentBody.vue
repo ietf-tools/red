@@ -253,7 +253,7 @@ const updated_by = computed(() => {
 
   /** these blocks already have MORE left spacing so their max-width should be reduced */
   dd {
-    max-width: 38rem;
+    max-width: 33rem;
   }
 
   margin-left: calc(var(--spacing) * 2);
