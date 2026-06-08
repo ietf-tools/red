@@ -101,6 +101,8 @@
       </div>
     </Alert>
 
+    <div class="bg-green-200 px-2 py-3 mt-5 inline-block">abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij </div>
+
     <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
       //
       ' leading-[1.75] ' // WCAG requires 1.5 minimum
@@ -240,6 +242,20 @@ const updated_by = computed(() => {
 }
 
 .rfc-content-type-xml2rfc {
+  h1, h2, h3, h4, h5, h6, p {
+    max-width: 42rem;
+  }
+
+  /** these blocks already have left spacing so their max-width should be reduced */
+  li, dt {
+    max-width: 40rem;
+  }
+
+  /** these blocks already have MORE left spacing so their max-width should be reduced */
+  dd {
+    max-width: 38rem;
+  }
+
   margin-left: calc(var(--spacing) * 2);
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,

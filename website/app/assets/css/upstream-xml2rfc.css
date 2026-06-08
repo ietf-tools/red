@@ -979,8 +979,7 @@ table.right {
 }
 
 table.center {
-  margin-left: auto;
-  margin-right: auto;
+  /** we don't apply table.center on /info/rfcN/ route */
 }
 
 table.left {
