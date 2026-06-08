@@ -101,7 +101,7 @@
       </div>
     </Alert>
 
-    <div class="bg-green-200 px-2 py-3 mt-5 inline-block">abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij </div>
+    <!-- <div class="bg-green-200 px-2 py-3 mt-5 inline-block">abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij </div> -->
 
     <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
       //
