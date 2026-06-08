@@ -225,7 +225,10 @@ function getYearsRange(range: UnixRange) {
 }
 
 function getYear(ts: number, fallback: number): number | undefined {
-  return DateTime.fromSeconds(ts ?? fallback, { zone: 'utc' }).year
+  const dateTime = DateTime.fromSeconds(ts ?? fallback, { zone: 'utc' })
+  const { year } = dateTime
+  console.log("[search] getYear", { ts, fallback, dateTime, year })
+  return year
 }
 
 function getMonth(ts: number, fallback: number): number | undefined {
