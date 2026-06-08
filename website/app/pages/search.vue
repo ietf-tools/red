@@ -9,10 +9,10 @@
       <NuxtLayout name="default">
         <SearchMainHeader ref="searchMainHeader" />
         <div class="container mx-auto w-full" v-html="noScriptHtml"></div>
-        <Breadcrumbs
-          class="container mx-auto pl-5 pr-3"
+        <!-- <Breadcrumbs
+          class="container mx-auto pl-4 pr-3"
           :breadcrumb-items="[{ url: '/', label: 'Home' }, { label: 'Search RFCs' }]"
-        />
+        /> -->
         <div class="container mx-auto flex flex-row items-start py-5 pl-5 pr-3">
           <ClientOnly>
             <div class="hidden lg:w-1/3 lg:block">
