@@ -242,15 +242,6 @@ const updated_by = computed(() => {
 }
 
 .rfc-content-type-xml2rfc {
-  /**
-   * WCAG requires max-width of 80 chars
-   */
-  h1, h2, h3, h4, h5, h6, p { max-width: 42rem; }
-  /** these blocks already have left spacing so their max-width should be reduced */
-  li, dt { max-width: 40rem; }
-  /** these blocks already have MORE left spacing so their max-width should be reduced */
-  dd, th, td { max-width: 33rem; }
-
   margin-left: calc(var(--spacing) * 2);
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,

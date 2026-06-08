@@ -21,6 +21,40 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   zoom: 1;
 }
 
+/**
+ * WCAG requires max-width of 80 chars
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  max-width: 42rem;
+}
+/** these blocks already have left spacing so their max-width should be reduced */
+li,
+dt {
+  max-width: 40rem;
+}
+/** these blocks already have MORE left spacing so their max-width should be reduced */
+dd {
+  max-width: 33rem;
+}
+/** every table cell is deemed to be it's own ~80 char limit. This means the whole table might appear wider but that's intentional */
+th,
+td {
+  max-width: 33rem;
+}
+pre {
+  display: inline-block;
+  min-width: 38rem;
+}
+/**
+ * END OF 80 char max width fixes
+ **/
+
 /* general and mobile first */
 .ears {
   display: none;
@@ -102,14 +136,14 @@ div {
   margin: 1em 0;
 }
 
-.alignRight>*:first-child {
+.alignRight > *:first-child {
   border: none;
   margin: 0;
   float: right;
   clear: both;
 }
 
-.alignRight>*:nth-child(2) {
+.alignRight > *:nth-child(2) {
   clear: both;
   display: block;
   border: none;
@@ -192,7 +226,7 @@ ol.compact,
 }
 
 /* definition lists */
-dl>dt {
+dl > dt {
   clear: both;
   float: left;
   padding-left: var(--layout-bleed-left);
@@ -204,17 +238,17 @@ dl.nohang > dt {
   float: none;
 }
 */
-dl>dd {
+dl > dd {
   margin-bottom: 0.8em;
   min-height: 1.3em;
 }
 
-dd>p:first-child {
+dd > p:first-child {
   padding: 0;
 }
 
-dl.compact>dd,
-.dlCompact>dd {
+dl.compact > dd,
+.dlCompact > dd {
   margin-bottom: 0em;
 }
 
@@ -223,7 +257,7 @@ dl.dlCompact p {
   margin-bottom: 0;
 }
 
-dl>dd>dl {
+dl > dd > dl {
   margin-top: 0.5em;
   margin-bottom: 0em;
 }
@@ -302,7 +336,7 @@ blockquote {
   margin: 1em 0;
 }
 
-blockquote>*:last-child {
+blockquote > *:last-child {
   margin-bottom: 0;
 }
 
@@ -355,7 +389,7 @@ a.pilcrow {
   color: #666;
   /* Arlen: AHDJ 2019 */
   text-decoration: none;
-  visibility: hidden;
+  opacity: 0;
   user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
@@ -367,17 +401,17 @@ a.pilcrow {
 
 a.pilcrow:focus,
 a.pilcrow:hover {
+  opacity: 1;
   color: #444;
 }
 
 @media screen {
-
-  aside:hover>a.pilcrow,
-  p:hover>a.pilcrow,
-  blockquote:hover>a.pilcrow,
-  div:hover>a.pilcrow,
-  li:hover>a.pilcrow,
-  pre:hover>a.pilcrow {
+  aside:hover > a.pilcrow,
+  p:hover > a.pilcrow,
+  blockquote:hover > a.pilcrow,
+  div:hover > a.pilcrow,
+  li:hover > a.pilcrow,
+  pre:hover > a.pilcrow {
     visibility: visible;
   }
 
@@ -719,11 +753,11 @@ hr.addr {
     page-break-after: avoid;
   }
 
-  h2+*,
-  h3+*,
-  h4+*,
-  h5+*,
-  h6+* {
+  h2 + *,
+  h3 + *,
+  h4 + *,
+  h5 + *,
+  h6 + * {
     page-break-before: avoid;
   }
 
@@ -861,7 +895,6 @@ section {
 
 /* Make the collapsed ToC header render white on gray also when it's a link */
 @media screen and (max-width: 1023px) {
-
   #toc h2 a,
   #toc h2 a:link,
   #toc h2 a:focus,
@@ -897,8 +930,8 @@ a.toplink {
 }
 
 /* Fix the dl styling to match the RFC 7992 attributes */
-dl>dt,
-dl.dlParallel>dt {
+dl > dt,
+dl.dlParallel > dt {
   float: left;
   margin-right: 1em;
 }
@@ -907,7 +940,7 @@ dl.dlParallel dd {
   padding-top: 0.15em;
 }
 
-dl.dlNewline>dt {
+dl.dlNewline > dt {
   float: none;
 }
 
@@ -1037,7 +1070,7 @@ h4 {
 /* Float artwork pilcrow to the right */
 /* Make pilcrows on dd visible */
 @media screen {
-  dd:hover>a.pilcrow {
+  dd:hover > a.pilcrow {
     visibility: visible;
   }
 }
@@ -1091,7 +1124,7 @@ h1#rfcnum {
 }
 
 /* Make .olPercent look the same as <ol><li> */
-dl.olPercent>dd {
+dl.olPercent > dd {
   margin-bottom: 0.25em;
   min-height: initial;
 }
@@ -1103,17 +1136,16 @@ aside {
   padding: 0.2em 2em;
 }
 
-aside>dl,
-aside>ol,
-aside>ul,
-aside>table,
-aside>p {
+aside > dl,
+aside > ol,
+aside > ul,
+aside > table,
+aside > p {
   margin-bottom: 0.5em;
 }
 
 /* Additional page break settings */
 @media print {
-
   figcaption,
   table caption {
     page-break-before: avoid;
@@ -1174,9 +1206,8 @@ aside>p {
 
 /* Sourcecode margin in print, when there's no pilcrow */
 @media print {
-
   .artwork,
-  .artwork>pre,
+  .artwork > pre,
   .sourcecode {
     margin-bottom: 1em;
   }
@@ -1218,7 +1249,7 @@ tr {
   break-inside: avoid;
 }
 
-tr:nth-child(even)>td {
+tr:nth-child(even) > td {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -1322,40 +1353,40 @@ pre {
 }
 
 /* Don't add top margin for nested lists */
-li>ul,
-li>ol,
-li>dl,
-dd>ul,
-dd>ol,
-dd>dl,
-dl>dd>dl {
+li > ul,
+li > ol,
+li > dl,
+dd > ul,
+dd > ol,
+dd > dl,
+dl > dd > dl {
   margin-top: initial;
 }
 
 /* Elements that should not be rendered on the same line as a <dt> */
 /* This should match the element list in writer.text.TextWriter.render_dl() */
-dd>div.artwork:first-child,
-dd>aside:first-child,
-dd>blockquote:first-child,
-dd>figure:first-child,
-dd>ol:first-child,
-dd>div.sourcecode:first-child,
-dd>table:first-child,
-dd>ul:first-child {
+dd > div.artwork:first-child,
+dd > aside:first-child,
+dd > blockquote:first-child,
+dd > figure:first-child,
+dd > ol:first-child,
+dd > div.sourcecode:first-child,
+dd > table:first-child,
+dd > ul:first-child {
   clear: left;
 }
 
 /* fix for weird browser behaviour when <dd/> is empty */
-dt+dd:empty::before {
+dt + dd:empty::before {
   content: '\00a0';
 }
 
 /* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
-li>p {
+li > p {
   margin-bottom: 0.5em;
 }
 
 /* Don't let p margin spill out from inside list items */
-li>p:last-of-type:only-child {
+li > p:last-of-type:only-child {
   margin-bottom: 0;
 }
