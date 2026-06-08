@@ -7,7 +7,7 @@
       :future="{ preserveSharedStateOnUnmount: true }"
       :routing="routing">
       <NuxtLayout name="default">
-        <SearchMainHeader />
+        <SearchMainHeader ref="searchMainHeader" />
         <div class="container mx-auto w-full" v-html="noScriptHtml"></div>
         <Breadcrumbs
           class="container mx-auto pl-5 pr-3"
@@ -66,7 +66,7 @@ import type { TypeSenseClient } from '../utilities/typesense'
 import { adaptSearchClient } from '~/utilities/search-client-middleware'
 import { useRfcEditorHead } from '~/utilities/head'
 import { API_NO_JS_SERVER_SEARCH_PATH, SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
-import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
+import { NOSCRIPT_IFRAME_DOM_ID, clearSearchQueryKey } from '~/utilities/search'
 
 const route = useRoute()
 const searchStore = useSearchStore()
@@ -104,6 +104,21 @@ const INDEX_NAME = 'docs'
 const searchClient = adaptSearchClient(typesenseAdapter.searchClient as TypeSenseClient)
 
 const aisInstantSearchRef = useTemplateRef('aisInstantSearchRef')
+const searchMainHeaderRef = useTemplateRef('searchMainHeader')
+
+const isSearchMainHeaderWithClearQuery = (value: unknown): value is { clearQuery: () => void } =>
+  !!value &&
+  typeof value === 'object' &&
+  'clearQuery' in value &&
+  typeof value.clearQuery === 'function'
+
+provide(clearSearchQueryKey, () => {
+  if (isSearchMainHeaderWithClearQuery(searchMainHeaderRef.value)) {
+    searchMainHeaderRef.value.clearQuery()
+  } else {
+    console.warn('clearSearchQueryKey: SearchMainHeader clearQuery not available', searchMainHeaderRef.value)
+  }
+})
 
 /**
  * Switch search preset if toggling search in RFC contents option

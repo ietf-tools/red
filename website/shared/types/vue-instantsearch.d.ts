@@ -1,12 +1,18 @@
 declare module 'vue-instantsearch/vue3/es' {
-  declare class AisInstantSearch extends Vue {
-    instantSearchInstance: {
-      helper: {
-        search: function
-      }
-    }
+  interface InstantSearchHelper {
+    search(): void
   }
-  declare class AisSearchBox extends Vue {}
+
+  interface InstantSearchInstance {
+    helper: InstantSearchHelper
+  }
+
+  declare class AisInstantSearch extends Vue {
+    instantSearchInstance: InstantSearchInstance
+  }
+  declare class AisSearchBox extends Vue {
+    currentRefinement: string
+  }
   declare class AisStats extends Vue {}
   declare class AisHits extends Vue {}
   declare class AisHitsPerPage extends Vue {}
