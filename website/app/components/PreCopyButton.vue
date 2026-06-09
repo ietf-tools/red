@@ -1,18 +1,11 @@
 <template>
   <div :style="{ 'max-width': `${preWidthPx}px` }" class="relative text-right">
     <ButtonSuccessFailure
-      v-if="Boolean(featureFlags.showPreCopyButton)"
       :click-handler="handleCopy"
       button-class="mb-2"
       bubble-container-class=""
       bubble-class="mx-auto">
-      {{
-        featureFlags.showPreCopyButton === 'copy'
-          ? 'Copy'
-          : featureFlags.showPreCopyButton === 'unfolded-copy'
-            ? 'Copy unfolded'
-            : 'Copy unmodified source'
-      }}
+      Copy
     </ButtonSuccessFailure>
   </div>
   <pre ref="preElement" v-bind="$attrs">
@@ -24,7 +17,6 @@
 import { BUBBLE_DURATION_MS } from '~/utilities/buttonSuccessFailure'
 import type { ButtonResult, Message } from '~/utilities/buttonSuccessFailure'
 import { copyToClipboard } from '~/utilities/clipboard'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { getRfc8792CopyText } from '~/utilities/rfc8792'
 
 defineOptions({ inheritAttrs: false })
@@ -34,8 +26,6 @@ const isMounted = ref(false)
 const preWidthPx = ref(
   320 // a default width that won't stretch layouts on mobile or wider. We can't use 0 as that would squash the button.
 )
-
-const featureFlags = useFeatureFlags()
 
 const pre = useTemplateRef('preElement')
 

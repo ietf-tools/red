@@ -17,7 +17,7 @@
     aria-live="polite"
     aria-atomic="true"
     :class="[
-      'absolute top-10 transition-opacity shadow-3xl pb-1',
+      'absolute top-10 z-100 transition-opacity shadow-3xl pb-1',
       visible ? 'opacity-100' : 'opacity-0',
       result ? 'relative rounded px-2 pt-1 text-xl pointer-none select-none' : '',
       result ? props.bubbleClass : '',

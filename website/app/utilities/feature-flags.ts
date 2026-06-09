@@ -3,7 +3,7 @@ import { type Ref } from 'vue'
 import { SEARCH_PATH } from './url'
 
 // string union feature flag values being optional is difficult to model in TS so we'll use a JS falsey value so that Boolean() can evaluate as false
-const ENUM_STRING_UNDEFINED = z.literal('')
+// const ENUM_STRING_UNDEFINED = z.literal('')
 
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
@@ -11,7 +11,7 @@ export const FeatureFlagsSchema = z.object({
   isDidYouMeanActive: z.boolean().optional(),
   // isCardHoverFocusTint: z.boolean().optional()
   // hasFontWeight_WCAG3_APCA: z.boolean().optional(),
-  showPreCopyButton: z.union([ENUM_STRING_UNDEFINED, z.literal('copy'), z.literal('unfolded-copy'), z.literal('copy-unmodified')]).optional()
+  // showPreCopyButton: z.union([ENUM_STRING_UNDEFINED, z.literal('copy'), z.literal('unfolded-copy'), z.literal('copy-unmodified')]).optional()
 })
 
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
@@ -45,11 +45,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   //   description: `WCAG3 (beta) has APCA boldness fixes`,
   //   storageType: 'boolean'
   // }
-  showPreCopyButton: {
-    title: '<pre> block copy button',
-    description: 'Choose a style of <pre> copy button',
-    storageType: ['', 'copy', 'unfolded-copy', 'copy-unmodified'] satisfies FeatureFlags['showPreCopyButton'][]
-  }
+  // showPreCopyButton: {
+  //   title: '<pre> block copy button',
+  //   description: 'Choose a style of <pre> copy button',
+  //   storageType: ['', 'copy', 'unfolded-copy', 'copy-unmodified'] satisfies FeatureFlags['showPreCopyButton'][]
+  // }
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
@@ -57,7 +57,7 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   // isCardHoverFocusTint: false,
   // isMockNonJSMenu: false,
   // hasFontWeight_WCAG3_APCA: false,
-  showPreCopyButton: '',
+  // showPreCopyButton: '',
 }
 
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)
