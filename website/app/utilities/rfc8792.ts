@@ -15,13 +15,29 @@ const headers: { strategy: FoldingStrategy; text: string }[] = [
   { strategy: 'single', text: "NOTE: '\\' line wrapping per RFC 8792" },
 ]
 
+const CODE_BEGINS = '<CODE BEGINS>'
+const CODE_ENDS = '<CODE ENDS>'
+const FOLD_MARKER = '\\'
+const FILE_ATTR_PREFIX = ' file "'
+
 /** Normalises CRLF and bare CR to LF so all line-splitting operates on `\n`. */
 const normaliseLineEndings = (text: string): string =>
   text.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
 
-const codeBeginsPattern = /^<CODE BEGINS>(?: file "[^"]*")?$/
-const codeFileLinePattern = /^ file "[^"]*"$/
+const codeBeginsPattern = new RegExp(
+  `^${RegExp.escape(CODE_BEGINS)}(?:${RegExp.escape(FILE_ATTR_PREFIX)}[^"]*")?$`
+)
+const codeFileLinePattern = new RegExp(
+  `^${RegExp.escape(FILE_ATTR_PREFIX)}[^"]*"$`
+)
 const blankLinePattern = /^[ ]*$/
+const foldedContinuationPattern = new RegExp(`^[ ]*${RegExp.escape(FOLD_MARKER)}`)
+const doubleUnfoldPattern = new RegExp(
+  `${RegExp.escape(FOLD_MARKER)}\n[ ]*${RegExp.escape(FOLD_MARKER)}`, 'g'
+)
+const singleUnfoldPattern = new RegExp(
+  `${RegExp.escape(FOLD_MARKER)}\n[ ]*`, 'g'
+)
 
 /**
  * Locates the RFC 8792 folding-strategy header comment within the first three lines.
@@ -69,7 +85,7 @@ const getBodyLines = (lines: string[], header: HeaderMatch): string[] => {
   const body = lines.slice(header.index + 1)
   const firstBodyLine = body[0]
 
-  if (firstBodyLine !== undefined && /^[ ]*$/.test(firstBodyLine)) {
+  if (firstBodyLine !== undefined && blankLinePattern.test(firstBodyLine)) {
     body.shift()
   }
 
@@ -90,7 +106,7 @@ const hasFoldedLines = (
     const line = lines[i]
     const nextLine = lines[i + 1]
 
-    if (!line?.endsWith('\\')) {
+    if (!line?.endsWith(FOLD_MARKER)) {
       continue
     }
 
@@ -98,7 +114,7 @@ const hasFoldedLines = (
       return true
     }
 
-    if (nextLine !== undefined && /^[ ]*\\/.test(nextLine)) {
+    if (nextLine !== undefined && foldedContinuationPattern.test(nextLine)) {
       return true
     }
   }
@@ -120,7 +136,7 @@ export const hasXml2RfcSourcecodeMarkers = (text: string): boolean => {
     lines.length >= 2 &&
     firstLine !== undefined &&
     codeBeginsPattern.test(firstLine) &&
-    lastContentLine === '<CODE ENDS>'
+    lastContentLine === CODE_ENDS
   )
 }
 
@@ -146,7 +162,7 @@ export const stripXml2RfcSourcecodeMarkers = (text: string): string => {
 
   const codeEndsIndex = lines.findLastIndex((line) => !blankLinePattern.test(line))
 
-  if (lines[codeEndsIndex] === '<CODE ENDS>') {
+  if (lines[codeEndsIndex] === CODE_ENDS) {
     lines.splice(codeEndsIndex, 1)
   }
 
@@ -192,8 +208,8 @@ export const getRfc8792CopyText = (
   const folded = body.join('\n')
   const unwrapped =
     header.strategy === 'double' ?
-      folded.replace(/\\\n[ ]*\\/g, '')
-      : folded.replace(/\\\n[ ]*/g, '')
+      folded.replace(doubleUnfoldPattern, '')
+      : folded.replace(singleUnfoldPattern, '')
 
   const copyText =
     before.length > 0 ? `${before.join('\n')}\n${unwrapped}` : unwrapped
