@@ -136,6 +136,11 @@ div {
   margin: 1em 0;
 }
 
+sub,
+sup {
+  white-space: nowrap;
+}
+
 .alignRight > *:first-child {
   border: none;
   margin: 0;
