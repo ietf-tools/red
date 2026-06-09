@@ -4,7 +4,7 @@
       <span class="block">
         <button
           type="button"
-          class="flex justify-between w-full py-2 px-3 items-center border-1 border-gray-400 font-bold bg-white text-black dark:bg-black dark:text-white"
+          class="cursor-pointer flex justify-between w-full py-2 px-3 items-center border-1 border-gray-400 font-bold bg-white text-black dark:bg-black dark:text-white"
           @click="isOpen = false"
         >
           Filter RFCs
@@ -49,7 +49,7 @@
           <SearchClearRefinements :after-click-fn="closeModal" />
           <button
             type="button"
-            class="flex-none font-bold bg-blue-600 text-white px-4 py-2"
+            class="cursor-pointer flex-none font-bold bg-blue-600 text-white px-4 py-2"
             @click="isOpen = false"
           >
             Show matching RFCs
