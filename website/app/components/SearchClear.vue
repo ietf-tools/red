@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { AisClearRefinements } from 'vue-instantsearch/vue3/es'
-import { clearSearchQueryKey } from '~/utilities/search'
+import { clearSearchQueryKey, resetHiddenDefaultKey } from '~/utilities/search'
 
 type Props = {
   afterClickFn?: () => void
@@ -23,14 +23,23 @@ type Props = {
 const props = defineProps<Props>()
 
 const clearSearchQuery = inject(clearSearchQueryKey)
+const resetHiddenDefault = inject(resetHiddenDefaultKey)
 
 const handleClick = (refine: () => void) => {
-  refine()
+  refine() // clear refinements
+
   if (clearSearchQuery) {
-    clearSearchQuery()
+    clearSearchQuery() // clear search query
   } else {
     console.warn('Expected provider of clearSearchQueryKey')
   }
+
+  if (resetHiddenDefault) {
+    resetHiddenDefault() // reset hiddenDefault
+  } else {
+    console.warn('Expected provider of resetHiddenDefaultKey')
+  }
+
   if (props.afterClickFn) {
     props.afterClickFn()
   }

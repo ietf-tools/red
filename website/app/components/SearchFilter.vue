@@ -6,7 +6,7 @@
       <Heading level="2" style-level="3">
         Filter
       </Heading>
-      <SearchClearRefinements class="ml-4" />
+      <SearchClear class="ml-4" />
     </div>
 
     <SearchFilterStatuses />

@@ -1,38 +1,21 @@
 <template>
   <div class="px-2">
     <div class="flex flex-col">
-      <Breadcrumbs
-        :breadcrumb-items="breadcrumbItems"
-        class="flex-1"
-      />
-      <RFCDocumentMobileInfoButton @click="isModalOpen = true">
-        Info
-      </RFCDocumentMobileInfoButton>
+      <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
+      <RFCDocumentMobileInfoButton @click="isModalOpen = true"> Info </RFCDocumentMobileInfoButton>
     </div>
 
     <Heading
       level="1"
-      class="mb-2 px-0 mt-5 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off"
-    >
-      <RFCTitle
-        :rfc="props.rfcBucketHtmlDocument.rfc"
-        hide-title
-      />
+      class="mb-2 px-0 mt-5 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
+      <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title />
       {{ SPACE }}
-      <RFCTitleSubseries
-        :rfc="props.rfcBucketHtmlDocument.rfc"
-        has-trailing-colon
-        has-underline
-      />
+      <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />
       {{ SPACE }}
       <span class="font-normal">{{ props.rfcBucketHtmlDocument.rfc.title }}</span>
     </Heading>
 
-    <Heading
-      v-if="isAprilFool"
-      level="2"
-      class="mb-2 px-3 xs:px-0 print:text-center"
-    >
+    <Heading v-if="isAprilFool" level="2" class="mb-2 px-3 xs:px-0 print:text-center">
       <span class="inline pr-2">
         <AprilFools />
       </span>
@@ -42,8 +25,7 @@
       <li
         v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
         :key="authorIndex"
-        class="inline-block"
-      >
+        class="inline-block">
         <RFCDocumentAuthor :author="author" />
         <template v-if="authorIndex < props.rfcBucketHtmlDocument.rfc.authors.length - 1">
           {{ COMMA }} {{ NONBREAKING_SPACE }}
@@ -57,19 +39,14 @@
       v-if="obsoleted_by && obsoleted_by.length > 0"
       variant="warning"
       heading="This RFC is now obsolete"
-      class="ml-1"
-    >
+      class="ml-1">
       <div class="text-base">
         For more information, please refer to
         <ul class="mt-1 flex flex-col gap-2">
-          <li
-            v-for="(obsoletedByItem, obsoletedByItemIndex) in obsoleted_by"
-            :key="obsoletedByItemIndex"
-          >
+          <li v-for="(obsoletedByItem, obsoletedByItemIndex) in obsoleted_by" :key="obsoletedByItemIndex">
             <AMaybeRFCLink
               :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)"
-              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE"
-            >
+              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE">
               <RFCTitle :rfc="obsoletedByItem" />
             </AMaybeRFCLink>
           </li>
@@ -77,23 +54,14 @@
       </div>
     </Alert>
 
-    <Alert
-      v-if="updated_by && updated_by.length > 0"
-      variant="info"
-      heading="This RFC was updated"
-      class="ml-1"
-    >
+    <Alert v-if="updated_by && updated_by.length > 0" variant="info" heading="This RFC was updated" class="ml-1">
       <div class="text-base mt-1">
         See also
         <ul class="flex flex-col gap-2">
-          <li
-            v-for="(updatedByItem, updatedByItemIndex) in updated_by"
-            :key="updatedByItemIndex"
-          >
+          <li v-for="(updatedByItem, updatedByItemIndex) in updated_by" :key="updatedByItemIndex">
             <AMaybeRFCLink
               :href="infoSeriesPathBuilder(`RFC${updatedByItem.number}`)"
-              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE"
-            >
+              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE">
               <RFCTitle :rfc="updatedByItem" />
             </AMaybeRFCLink>
           </li>
@@ -103,18 +71,16 @@
 
     <!-- <div class="bg-green-200 px-2 py-3 mt-5 inline-block">abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij abcdefghij </div> -->
 
-    <div :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
-      //
-      ' leading-[1.75] ' // WCAG requires 1.5 minimum
+    <div
+      :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
+        //
+        ' leading-[1.75] ' // WCAG requires 1.5 minimum
       }`">
       <component :is="enrichedDocument" />
     </div>
   </div>
 
-  <RFCMobileBanner
-    :rfc="rfcBucketHtmlDocument.rfc"
-    :is-fixed="true"
-  />
+  <RFCMobileBanner :rfc="rfcBucketHtmlDocument.rfc" :is-fixed="true" />
 </template>
 
 <script setup lang="ts">
@@ -125,7 +91,12 @@ import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE } from '~/utilities/theme'
-import { renderDocumentPojo, renderNodePojo, defaultRenderer, type ElementRenderers } from '~/utilities/renderDocumentPojo'
+import {
+  renderDocumentPojo,
+  renderNodePojo,
+  defaultRenderer,
+  type ElementRenderers
+} from '~/utilities/renderDocumentPojo'
 import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import PreCopyButton from './PreCopyButton.vue'
@@ -144,15 +115,21 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 const rfcHtmlPojoRenderers: ElementRenderers = {
   ...defaultRenderer,
   a: (node, childrenForVue) => h(AMaybeRFCLink, { href: '', ...node.attributes }, () => childrenForVue),
-  svg: (node, childrenForVue) => h(
-    node.nodeName,
-    {
-      ...node.attributes,
-      class: `dark:contrast-125 dark:brightness-85 dark:invert ${node.attributes.class ?? ''}`
-    },
-    childrenForVue
-  ),
-  pre: (node, childrenForVue) => h(PreCopyButton, node.attributes, () => childrenForVue),
+  svg: (node, childrenForVue) =>
+    h(
+      node.nodeName,
+      {
+        ...node.attributes,
+        class: `dark:contrast-125 dark:brightness-85 dark:invert ${node.attributes.class ?? ''}`
+      },
+      childrenForVue
+    ),
+  pre: (node, childrenForVue) => {
+    if (props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc') {
+      return h(PreCopyButton, node.attributes, () => childrenForVue)
+    }
+    return h(node.nodeName, node.attributes, childrenForVue)
+  },
   HorizontalScrollable: (node, childrenForVue) => {
     const ATTR_ABSOLUTE = 'data-component-absolute'
     if (ATTR_ABSOLUTE in node.attributes) {
@@ -190,26 +167,21 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
   PdfPages: (node) => {
     const children = nodePojoWalker(node.children, (n) => {
       if (n.type === 'Element' && n.nodeName.toLowerCase() === 'img') {
-        n.attributes['class'] =
-          'w-full min-w-[425px] max-w-[1000px] dark:contrast-125 dark:brightness-85 dark:invert'
+        n.attributes['class'] = 'w-full min-w-[425px] max-w-[1000px] dark:contrast-125 dark:brightness-85 dark:invert'
       }
       return n
     }).map((node) => renderNodePojo(node, rfcHtmlPojoRenderers))
     return h(PdfPages, node.attributes, () => children)
-  },
+  }
 }
 
 const enrichedDocument = computed<VNode>(() =>
   renderDocumentPojo(props.rfcBucketHtmlDocument.documentHtmlObj, rfcHtmlPojoRenderers)
 )
 
-const maxPreformattedLineLength = computed(
-  () => props.rfcBucketHtmlDocument.maxPreformattedLineLength.max
-)
+const maxPreformattedLineLength = computed(() => props.rfcBucketHtmlDocument.maxPreformattedLineLength.max)
 
-const isAprilFool = computed(() =>
-  isAprilFoolsRfc(props.rfcBucketHtmlDocument.rfc)
-)
+const isAprilFool = computed(() => isAprilFoolsRfc(props.rfcBucketHtmlDocument.rfc))
 
 const obsoleted_by = computed(() => {
   return props.rfcBucketHtmlDocument.rfc.obsoleted_by?.toSorted((a, b) => a.number - b.number)

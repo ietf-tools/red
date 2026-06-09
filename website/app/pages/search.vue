@@ -58,6 +58,7 @@
 
 <script setup lang="ts">
 import { AisInstantSearch, AisHits } from 'vue-instantsearch/vue3/es'
+import type InstantSearch from 'instantsearch.js/es/lib/InstantSearch.js'
 import { Separator } from 'reka-ui'
 // Packaging of default export of 'typesense-instantsearch-adapter' seems to confuse Nuxt so we'll import this directly
 import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
@@ -66,7 +67,12 @@ import type { TypeSenseClient } from '../utilities/typesense'
 import { adaptSearchClient } from '~/utilities/search-client-middleware'
 import { useRfcEditorHead } from '~/utilities/head'
 import { API_NO_JS_SERVER_SEARCH_PATH, SEARCH_PATH, searchPathBuilder } from '~/utilities/url'
-import { NOSCRIPT_IFRAME_DOM_ID, clearSearchQueryKey } from '~/utilities/search'
+import {
+  FLAGS_HIDDEN_DEFAULT_KEY,
+  NOSCRIPT_IFRAME_DOM_ID,
+  clearSearchQueryKey,
+  resetHiddenDefaultKey
+} from '~/utilities/search'
 
 const route = useRoute()
 const searchStore = useSearchStore()
@@ -107,10 +113,7 @@ const aisInstantSearchRef = useTemplateRef('aisInstantSearchRef')
 const searchMainHeaderRef = useTemplateRef('searchMainHeader')
 
 const isSearchMainHeaderWithClearQuery = (value: unknown): value is { clearQuery: () => void } =>
-  !!value &&
-  typeof value === 'object' &&
-  'clearQuery' in value &&
-  typeof value.clearQuery === 'function'
+  !!value && typeof value === 'object' && 'clearQuery' in value && typeof value.clearQuery === 'function'
 
 provide(clearSearchQueryKey, () => {
   if (isSearchMainHeaderWithClearQuery(searchMainHeaderRef.value)) {
@@ -118,6 +121,40 @@ provide(clearSearchQueryKey, () => {
   } else {
     console.warn('clearSearchQueryKey: SearchMainHeader clearQuery not available', searchMainHeaderRef.value)
   }
+})
+
+const resetHiddenDefault = () => {
+  console.log('RESeT HIDDEN DEFAULT KEY')
+  const value = aisInstantSearchRef.value
+  if (isAisInstanceSearchValue(value)) {
+    console.log('resetting ', FLAGS_HIDDEN_DEFAULT_KEY)
+    value.instantSearchInstance.setUiState((state) => {
+      if (state[INDEX_NAME]?.toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] === true) {
+        return state
+      }
+      return {
+        ...state,
+        [INDEX_NAME]: {
+          ...state[INDEX_NAME],
+          toggle: {
+            ...state[INDEX_NAME]?.toggle,
+            [FLAGS_HIDDEN_DEFAULT_KEY]: true
+          }
+        }
+      }
+    })
+
+    const { showObsoleted: _showObsoleted, ...restQuery } = route.query
+    router.replace({ query: restQuery })
+  } else {
+    console.warn('resetHiddenDefaultKey: AisInstantSearch instance not available', value)
+  }
+}
+
+provide(resetHiddenDefaultKey, async () => {
+  resetHiddenDefault()
+  await nextTick()
+  resetHiddenDefault()
 })
 
 /**
@@ -141,7 +178,9 @@ watch(
   }
 )
 
-const isAisInstanceSearchValue = (value: unknown): value is AisInstantSearch => {
+const isAisInstanceSearchValue = (
+  value: unknown
+): value is { instantSearchInstance: InstanceType<typeof InstantSearch> } => {
   return !!(
     value &&
     typeof value === 'object' &&
@@ -176,7 +215,7 @@ type UIState = {
     }
     sortBy?: string
     toggle?: {
-      'flags.hiddenDefault': boolean
+      [FLAGS_HIDDEN_DEFAULT_KEY]: boolean
     }
   }
 }
@@ -224,7 +263,7 @@ const routing = {
       const group = uiState[INDEX_NAME].refinementList?.['group.full']?.join(',') ?? null
       const authors = uiState[INDEX_NAME].refinementList?.['authors.name']?.join(',') ?? null
       const pubDate = uiState[INDEX_NAME].range?.['publicationDate'] ?? null
-      const showObsoleted = !(uiState[INDEX_NAME].toggle?.['flags.hiddenDefault'] || false)
+      const showObsoleted = !(uiState[INDEX_NAME].toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] || false)
       const sort = uiState[INDEX_NAME].sortBy?.substring(10) ?? null
 
       // FIXME
@@ -287,7 +326,7 @@ const routing = {
             sortBy: `docs/sort/${sortBy}`
           }),
           toggle: {
-            'flags.hiddenDefault': !showObsoleted
+            [FLAGS_HIDDEN_DEFAULT_KEY]: !showObsoleted
           }
         }
       }

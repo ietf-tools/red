@@ -14,7 +14,7 @@
                     'ais-SearchBox-form': 'w-full flex ml-1',
                     'ais-SearchBox-input': aisSearchboxInputClass,
                     'ais-SearchBox-submit':
-                        'bg-blue-200 px-2 flex items-center rounded-r-xs',
+                        'bg-blue-200 px-2 flex items-center rounded-r-xs cursor-pointer',
                     'ais-SearchBox-reset': 'hidden',
                     'ais-SearchBox-loadingIndicator':
                         'bg-yellow-400 px-2 flex items-center text-white'

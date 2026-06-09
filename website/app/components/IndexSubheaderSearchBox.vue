@@ -4,7 +4,7 @@
     <input id="search" ref="search-input" :disabled="!isMounted" v-model="searchQuery" type="search" name="q"
       class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
       :placeholder="SEARCH_PLACEHOLDER" aria-label="Find an RFC (number, subseries, title, author, etc.)" />
-    <button type="submit" name="search" :disabled="!isMounted" class="bg-blue-200 px-2 flex items-center" aria-label="Submit search">
+    <button type="submit" name="search" :disabled="!isMounted" class="cursor-pointer bg-blue-200 px-2 flex items-center" aria-label="Submit search">
       <Icon name="fluent:search-12-filled" size="2em" />
     </button>
   </form>
