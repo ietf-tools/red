@@ -2,12 +2,16 @@ import { z } from 'zod'
 import { type Ref } from 'vue'
 import { SEARCH_PATH } from './url'
 
+// string union feature flag values being optional is difficult to model in TS so we'll use a JS falsey value so that Boolean() can evaluate as false
+const ENUM_STRING_UNDEFINED = z.literal('')
+
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
   // with old versions saved in localStorage values can still validate
   isDidYouMeanActive: z.boolean().optional(),
   // isCardHoverFocusTint: z.boolean().optional()
   // hasFontWeight_WCAG3_APCA: z.boolean().optional(),
+  showPreCopyButton: z.union([ENUM_STRING_UNDEFINED, z.literal('copy'), z.literal('unfolded-copy'), z.literal('copy-unmodified')]).optional()
 })
 
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
@@ -17,7 +21,7 @@ export const featureFlagsKey = Symbol() as InjectionKey<Ref<FeatureFlags>>
 export type FeatureFlagUIRow = {
   title: string
   description?: string
-  storageType: 'boolean'
+  storageType: 'boolean' | string[]
 }
 
 const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
@@ -41,6 +45,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   //   description: `WCAG3 (beta) has APCA boldness fixes`,
   //   storageType: 'boolean'
   // }
+  showPreCopyButton: {
+    title: '<pre> block copy button',
+    description: 'Choose a style of <pre> copy button',
+    storageType: ['', 'copy', 'unfolded-copy', 'copy-unmodified'] satisfies FeatureFlags['showPreCopyButton'][]
+  }
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
@@ -48,6 +57,7 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   // isCardHoverFocusTint: false,
   // isMockNonJSMenu: false,
   // hasFontWeight_WCAG3_APCA: false,
+  showPreCopyButton: '',
 }
 
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)
@@ -153,7 +163,7 @@ export const useAreFeatureFlagsEnabled = () => {
       return false
     }
     const entries = Object.entries(featureFlags)
-    const isEnabled = entries.reduce((acc, [_key, value]) => acc ? acc : value, false)
+    const isEnabled = entries.reduce((acc, [_key, value]) => acc ? acc : Boolean(value), false)
     return isEnabled
   })
 

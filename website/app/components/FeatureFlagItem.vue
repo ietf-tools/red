@@ -1,8 +1,20 @@
 <template>
   <div class="bg-gray-200 dark:bg-gray-700 px-4 py-3 rounded-md">
     <label class="text-md mt-4 mb-0 pb-0 font-bold cursor-pointer">
-      <input type="checkbox" v-model="featureFlagRef"
-        class="mr-1 size-6 align-middle accent-blue-500 dark:accent-black p-2" :aria-describedby="descriptionDomId">
+      <select
+        v-if="Array.isArray(props.featureFlagUiRow.storageType)"
+        v-model="featureFlagRef"
+        class="border-1 border-gray-500 mr-1 align-middle accent-blue-500 dark:accent-black p-2"
+        :aria-describedby="descriptionDomId">
+        <option v-for="option in props.featureFlagUiRow.storageType" :key="option" :value="option">{{ option || '(none)' }}</option>
+      </select>
+
+      <input
+        v-if="props.featureFlagUiRow.storageType === 'boolean'"
+        type="checkbox"
+        v-model="featureFlagRef"
+        class="mr-1 size-6 align-middle accent-blue-500 dark:accent-black p-2"
+        :aria-describedby="descriptionDomId" />
       "{{ props.featureFlagUiRow.title }}" enabled?
     </label>
     <p v-if="descriptionDomId" class="mt-2 pt-0 text-sm">
@@ -37,5 +49,4 @@ const featureFlagRef = computed({
     }
   }
 })
-
 </script>

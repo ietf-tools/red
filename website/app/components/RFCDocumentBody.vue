@@ -124,10 +124,11 @@ import { infoSeriesPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE, ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE } from '~/utilities/theme'
 import { renderDocumentPojo, renderNodePojo, defaultRenderer, type ElementRenderers } from '~/utilities/renderDocumentPojo'
 import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
+import PreCopyButton from './PreCopyButton.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -151,6 +152,7 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     },
     childrenForVue
   ),
+  pre: (node, childrenForVue) => h(PreCopyButton, node.attributes, () => childrenForVue),
   HorizontalScrollable: (node, childrenForVue) => {
     const ATTR_ABSOLUTE = 'data-component-absolute'
     if (ATTR_ABSOLUTE in node.attributes) {
