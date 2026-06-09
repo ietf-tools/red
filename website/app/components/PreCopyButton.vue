@@ -1,10 +1,11 @@
 <template>
-  <div :style="{ 'max-width': `${preWidthPx}px` }" class="relative text-right">
+  <div :style="{ 'max-width': `${preWidthPx}px` }" class="relative text-right min-h-[1.5em]">
     <ButtonSuccessFailure
       :click-handler="handleCopy"
       button-class="mb-2"
       bubble-container-class=""
       bubble-class="mx-auto">
+      <Icon name="fluent:clipboard-12-regular" size="1em" alt="" class="text-black dark:text-white" />
       Copy
     </ButtonSuccessFailure>
   </div>
