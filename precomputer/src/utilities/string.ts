@@ -66,6 +66,8 @@ export const chunkStringAtLengths = (str: string, size: number): string[] => {
   return chunks
 }
 
+export const escapeRegExp = (s: string): string => 'escape' in RegExp && typeof RegExp.escape === 'function' ? RegExp.escape(s) : s.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+
 export const getAllIndexes = (str: string, pattern: RegExp): number[] => {
   const matches = Array.from(str.matchAll(pattern))
   return matches.map((match) => match.index)

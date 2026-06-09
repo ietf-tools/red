@@ -1,10 +1,8 @@
 import { type RfcCommon } from "../../../website/app/utilities/rfc-validators.ts";
 import { EDITOR_SUFFIX, formatAuthor, type FormatAuthorStyle } from "./rfc-converters-utils.ts";
+import { escapeRegExp } from "./string.ts";
 
-const editorSuffixRegex = new RegExp(`${
-  // @ts-ignore TS thinks .escape doesn't exist but it does
-  RegExp.escape(EDITOR_SUFFIX)}$`
-)
+const editorSuffixRegex = new RegExp(`${escapeRegExp(EDITOR_SUFFIX)}$`)
 
 /**
  * Formats authors per Chicago style guide and

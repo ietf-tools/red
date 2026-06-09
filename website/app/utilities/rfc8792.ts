@@ -3,6 +3,8 @@
  * https://github.com/ietf-tools/red/pull/404
  */
 
+import { escapeRegExp } from '~/utilities/strings'
+
 type FoldingStrategy = 'single' | 'double'
 
 type HeaderMatch = {
@@ -25,18 +27,18 @@ const normaliseLineEndings = (text: string): string =>
   text.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
 
 const codeBeginsPattern = new RegExp(
-  `^${RegExp.escape(CODE_BEGINS)}(?:${RegExp.escape(FILE_ATTR_PREFIX)}[^"]*")?$`
+  `^${escapeRegExp(CODE_BEGINS)}(?:${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*")?$`
 )
 const codeFileLinePattern = new RegExp(
-  `^${RegExp.escape(FILE_ATTR_PREFIX)}[^"]*"$`
+  `^${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*"$`
 )
 const blankLinePattern = /^[ ]*$/
-const foldedContinuationPattern = new RegExp(`^[ ]*${RegExp.escape(FOLD_MARKER)}`)
+const foldedContinuationPattern = new RegExp(`^[ ]*${escapeRegExp(FOLD_MARKER)}`)
 const doubleUnfoldPattern = new RegExp(
-  `${RegExp.escape(FOLD_MARKER)}\n[ ]*${RegExp.escape(FOLD_MARKER)}`, 'g'
+  `${escapeRegExp(FOLD_MARKER)}\n[ ]*${escapeRegExp(FOLD_MARKER)}`, 'g'
 )
 const singleUnfoldPattern = new RegExp(
-  `${RegExp.escape(FOLD_MARKER)}\n[ ]*`, 'g'
+  `${escapeRegExp(FOLD_MARKER)}\n[ ]*`, 'g'
 )
 
 /**
