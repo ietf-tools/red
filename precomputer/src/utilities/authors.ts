@@ -1,13 +1,6 @@
 import { type RfcCommon } from "../../../website/app/utilities/rfc-validators.ts";
 import { EDITOR_SUFFIX, formatAuthor, type FormatAuthorStyle } from "./rfc-converters-utils.ts";
 
-if (
-  // @ts-ignore TS thinks .escape doesn't exist but it should
-  !RegExp.escape
-) {
-  throw Error('Expected RegExp.escape() to exist')
-}
-
 const editorSuffixRegex = new RegExp(`${
   // @ts-ignore TS thinks .escape doesn't exist but it does
   RegExp.escape(EDITOR_SUFFIX)}$`

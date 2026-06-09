@@ -2,11 +2,10 @@
   <div :style="{ 'max-width': `${preWidthPx}px` }" class="relative text-right">
     <ButtonSuccessFailure
       v-if="Boolean(featureFlags.showPreCopyButton)"
-      button-label="Copy"
       :click-handler="handleCopy"
       button-class="mb-2"
-      bubble-container-class="absolute -right-10 top-0 pt-10"
-      bubble-class="mx-auto shadow-3xl">
+      bubble-container-class=""
+      bubble-class="mx-auto">
       {{
         featureFlags.showPreCopyButton === 'copy'
           ? 'Copy'
