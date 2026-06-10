@@ -9,22 +9,21 @@
       Copy
     </ButtonSuccessFailure>
   </div>
-  <pre ref="preElement" v-bind="$attrs">
-    <slot />
-  </pre>
+  <pre ref="preElement" v-bind="$attrs // in PRE make sure no whitespace before <slot />
+  "><slot /></pre>
 </template>
 
 <script setup lang="ts">
 /**
  * Feature primarily developed by [Filip Skokan (Panva)](https://github.com/panva) see [PR](https://github.com/ietf-tools/red/pull/404).
- * 
+ *
  * When the `<pre>` text is unfolded the success message says that text was modified from the raw `<pre>` innerText.
  *
  * It is intentional not to have multiple buttons to copy different variations of text.
  * Instead, users wanting the wrapped text must select the `<pre>` text like any other webpage text.
- * 
+ *
  * See discussion on https://github.com/ietf-tools/red/pull/404
-  */
+ */
 import { BUBBLE_DURATION_MS } from '~/utilities/buttonSuccessFailure'
 import type { ButtonResult, Message } from '~/utilities/buttonSuccessFailure'
 import { copyToClipboard } from '~/utilities/clipboard'

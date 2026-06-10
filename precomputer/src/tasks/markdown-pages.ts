@@ -129,9 +129,6 @@ export const renderMarkdownPage = async (filePath: string, contentMetadata: Cont
   return page
 }
 
-
-
-
 /**
  * Replaces Nuxt Content MDC block-component syntax that micromark leaves as literal
  * text with real HTML elements, so downstream renderers can treat them as components.
