@@ -101,8 +101,6 @@ export const rfcBucketPdfToRfcDocument = async (
     // Extract alt text
     const pageText = textDetails.text.text[pageNumber - 1]
 
-    console.log(`[RFC ${rfcNumber}] [Page ${pageNumber} ALT text]`, JSON.stringify(pageText))
-
     tableOfContents.sections.push({
       links: [
         {
