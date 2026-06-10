@@ -1,16 +1,24 @@
 <template>
-  <div :style="{ 'max-width': `${preWidthPx}px` }" class="relative text-right min-h-[1.5em]">
+  <div
+    :style="{ 'max-width': `${preWidthPx}px` }"
+    :class="`relative text-right ${
+      // minimum height allocates space until button is revealed after component mounts (requires JS, shouldn't be in the server render)
+      // value should be same/slightly-taller than button height to avoid layout shift
+      'min-h-[2.5em]'
+    }`">
     <ButtonSuccessFailure
+      v-if="isMounted"
       :click-handler="handleCopy"
-      button-class="mb-2"
-      bubble-container-class=""
-      bubble-class="mx-auto">
+      button-class="mb-1">
       <Icon name="fluent:clipboard-12-regular" size="1em" alt="" class="text-black dark:text-white" />
       Copy
     </ButtonSuccessFailure>
   </div>
-  <pre ref="preElement" v-bind="$attrs // in PRE make sure no whitespace before <slot />
-  "><slot /></pre>
+  <pre
+    ref="preElement"
+    v-bind="
+      $attrs // in PRE make sure no whitespace before <slot />
+    "><slot /></pre>
 </template>
 
 <script setup lang="ts">
