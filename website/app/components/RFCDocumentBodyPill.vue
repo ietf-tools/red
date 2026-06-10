@@ -7,12 +7,6 @@
                 :text="tagText"
                 class="print:mt-3 my-2"
             />
-            <AValidHref
-                href="/series/rfc-tips/"
-                :class="ANCHOR_COLOR_TAILWIND_STYLE"
-            >
-                RFC Tips
-            </AValidHref>
         </div>
     </div>
 </template>
