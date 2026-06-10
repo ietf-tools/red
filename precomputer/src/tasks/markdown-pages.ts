@@ -129,6 +129,9 @@ export const renderMarkdownPage = async (filePath: string, contentMetadata: Cont
   return page
 }
 
+
+
+
 /**
  * Replaces Nuxt Content MDC block-component syntax that micromark leaves as literal
  * text with real HTML elements, so downstream renderers can treat them as components.
@@ -152,7 +155,7 @@ export const renderMarkdownPage = async (filePath: string, contentMetadata: Cont
  */
 export const replaceComponentReferences = (html: string): string => {
   return html.replace(
-    /::([A-Za-z][A-Za-z0-9-]*)(?:\{([^}]*)\})?[ \n]?([\s\S]*?)[ \n]?::/g,
+    componentReferencesRegex,
     (_match, componentName: string, propsStr: string | undefined, content: string) => {
       const decodedProps = propsStr?.replace(/&quot;/g, '"').replace(/&amp;/g, '&')
       const attrs = decodedProps ? ` ${decodedProps}` : ''
@@ -161,3 +164,5 @@ export const replaceComponentReferences = (html: string): string => {
     }
   )
 }
+
+const componentReferencesRegex = /[\s>]::([A-Za-z][A-Za-z0-9-]*)(?:\{([^}]*)\})?[ \n]?([\s\S]*?)[ \n]?::/g

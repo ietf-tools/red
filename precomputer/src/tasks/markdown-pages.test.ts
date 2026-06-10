@@ -30,6 +30,13 @@ test('replaceComponentReferences: component with content preserves inner HTML', 
   expect(result).not.toMatch(/::Alert/)
 })
 
+test('replaceComponentReferences: "::" as text is left unchanged', () => {
+  // This example comes from RFC download page, showing rsync syntax which uses '::' in examples. It is not a component reference.
+  const html = markdownToHtml(`Type \`rsync -avz --delete rsync.rfc-editor.org::Module-Name Target-Directory\``)
+  const result = replaceComponentReferences(html)
+  expect(result).toContain('rsync -avz --delete rsync.rfc-editor.org::Module-Name Target-Directory')
+})
+
 test('replaceComponentReferences: non-component paragraphs are unchanged', () => {
   const html = markdownToHtml('Hello world\n\nAnother paragraph.')
   const result = replaceComponentReferences(html)
@@ -61,9 +68,11 @@ test('replaceComponentReferences: all content markdown files have no unconverted
     const fileContent = await fsPromises.readFile(path.join(CONTENT_DIR, relativePath), 'utf-8')
     const html = markdownToHtml(fileContent)
     const result = replaceComponentReferences(html)
+    // Intentionally not as complex because it doesn't need to parse into matches, just check if one was missed.
+    const simpleComponentReferenceRegex = /[>\s]::([A-Z][A-Za-z0-9-]*)/
     expect(
       result,
       `${relativePath} still contains unconverted :: component syntax after replaceComponentReferences`
-    ).not.toMatch(/::([A-Z][A-Za-z0-9-]*)/)
+    ).not.toMatch(simpleComponentReferenceRegex)
   }
 })
