@@ -30,6 +30,18 @@ test('replaceComponentReferences: component with content preserves inner HTML', 
   expect(result).not.toMatch(/::Alert/)
 })
 
+test('replaceComponentReferences: component with content preserves inner HTML', () => {
+  const html = markdownToHtml(`## Search for Errata
+
+::ErrataSiteSearchLink
+::`)
+  const result = replaceComponentReferences(html)
+  console.log({result, html })
+  expect(result).toContain('<h2>Search for Errata</h2>')
+  expect(result).toContain('<p><ErrataSiteSearchLink></ErrataSiteSearchLink></p>')
+  expect(result).not.toMatch(/::ErrataSiteSearchLink/)
+})
+
 test('replaceComponentReferences: "::" as text is left unchanged', () => {
   // This example comes from RFC download page, showing rsync syntax which uses '::' in examples. It is not a component reference.
   const html = markdownToHtml(`Type \`rsync -avz --delete rsync.rfc-editor.org::Module-Name Target-Directory\``)

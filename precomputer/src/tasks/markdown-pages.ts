@@ -156,13 +156,13 @@ export const renderMarkdownPage = async (filePath: string, contentMetadata: Cont
 export const replaceComponentReferences = (html: string): string => {
   return html.replace(
     componentReferencesRegex,
-    (_match, componentName: string, propsStr: string | undefined, content: string) => {
+    (_match, leading: string, componentName: string, propsStr: string | undefined, content: string) => {
       const decodedProps = propsStr?.replace(/&quot;/g, '"').replace(/&amp;/g, '&')
       const attrs = decodedProps ? ` ${decodedProps}` : ''
       const inner = content.trim()
-      return `<${componentName}${attrs}>${inner}</${componentName}>`
+      return `${leading}<${componentName}${attrs}>${inner}</${componentName}>`
     }
   )
 }
 
-const componentReferencesRegex = /[\s>]::([A-Za-z][A-Za-z0-9-]*)(?:\{([^}]*)\})?[ \n]?([\s\S]*?)[ \n]?::/g
+const componentReferencesRegex = /([\s>])::([A-Za-z][A-Za-z0-9-]*)(?:\{([^}]*)\})?[ \n]?([\s\S]*?)[ \n]?::/g
