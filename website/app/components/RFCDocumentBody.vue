@@ -74,7 +74,7 @@
     <div
       :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
         //
-        ' leading-[1.75] ' // WCAG requires 1.5 minimum
+        ' leading-[1.5] ' // WCAG requires 1.5 minimum
       }`">
       <component :is="enrichedDocument" />
     </div>
