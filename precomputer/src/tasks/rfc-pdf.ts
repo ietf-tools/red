@@ -43,7 +43,7 @@ export const fetchRfcPDF = async (
 }
 
 /**
- * Note that this also uploads page screenshots
+ * Note that this also uploads page screenshots with ALT text
  */
 export const rfcBucketPdfToRfcDocument = async (
   rfcNumber: number,
@@ -100,6 +100,8 @@ export const rfcBucketPdfToRfcDocument = async (
 
     // Extract alt text
     const pageText = textDetails.text.text[pageNumber - 1]
+
+    console.log(`[RFC ${rfcNumber}] [Page ${pageNumber} ALT text]`, JSON.stringify(pageText))
 
     tableOfContents.sections.push({
       links: [
