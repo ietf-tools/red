@@ -91,12 +91,12 @@ const headingStyles: Record<`h${Props['level']}`, string> = {
    * Instead pass in the `class` prop for margins/padding, or make a wrapper component that passes
    * in the `class`
    */
-  h1: 'text-3xl lg:text-5xl font-semibold',
-  h2: 'text-2xl font-semibold',
-  h3: 'text-xl font-semibold',
-  h4: 'text-lg font-semibold',
-  h5: 'text-base font-semibold',
-  h6: 'text-sm font-semibold'
+  h1: 'text-3xl lg:text-5xl font-semibold leading-[1.2]',
+  h2: 'text-2xl font-semibold leading-[1.2]',
+  h3: 'text-xl font-semibold leading-[1.2]',
+  h4: 'text-lg font-semibold leading-[1.2]',
+  h5: 'text-base font-semibold leading-[1.2]',
+  h6: 'text-sm font-semibold leading-[1.2]'
 }
 
 const props = defineProps<Props>()

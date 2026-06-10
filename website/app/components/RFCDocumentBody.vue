@@ -7,7 +7,7 @@
 
     <Heading
       level="1"
-      class="mb-2 px-0 mt-5 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
+      class="mb-2 px-0 mt-2 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
       <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title />
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />
