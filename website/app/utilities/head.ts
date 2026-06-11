@@ -1,11 +1,16 @@
 import { DateTime } from 'luxon'
 import { useHead } from 'nuxt/app'
-import { linkPreviewImageUrlBuilder, faviconPathBuilder, useRfcPdfPathBuilder, metaThumbnailPathBuilder, RSS_PATH, ATOM_PATH, usePublicSiteUrlOrigin } from './url'
-import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import {
-  OPENGRAPH_DIMENSIONS,
-  TWITTER_DIMENSIONS
-} from '#shared/utils/meta-preview-images'
+  linkPreviewImageUrlBuilder,
+  faviconPathBuilder,
+  useRfcPdfPathBuilder,
+  metaThumbnailPathBuilder,
+  RSS_PATH,
+  ATOM_PATH,
+  usePublicSiteUrlOrigin
+} from './url'
+import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
+import { OPENGRAPH_DIMENSIONS, TWITTER_DIMENSIONS } from '#shared/utils/meta-preview-images'
 import type { RfcCommon } from './rfc-validators'
 
 const IMAGE_PREVIEW_ALT_TEXT = 'RFC-Editor: Official home of RFCs'
@@ -49,7 +54,7 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
       ...buildGenericMetaTags(newProps),
       ...buildOpenGraphMetaTags(newProps, publicSiteOrigin),
       ...buildResourceTimestamps(newProps),
-      ...buildGoogleScholarMetaTags(newProps),
+      ...buildGoogleScholarMetaTags(newProps)
     ].map(allowDuplicateNames),
     link: [
       buildCanonical(newProps, publicSiteOrigin),
@@ -63,9 +68,9 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
          * `data-nosnippet` as a hint to Googlebot etc to exclude it from search results
          * See related DataTracker issue https://github.com/ietf-tools/datatracker/issues/9667
          **/
-        'data-nosnippet': "true",
+        'data-nosnippet': 'true',
         tagPosition: 'bodyOpen',
-        innerHTML: `<div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-align:center; text-size: .9rem;"><span style="font-weight: 600;">Your browser has JavaScript disabled. Most of this site works without JS, but some features require it. If something seems broken please try enabling JavaScript and reloading the page.</span><br><span style="font-size: .8rem;">The JavaScript used by this site is served directly from IETF infrastructure and does not include any code that links to a third party service.</span></div>`,
+        innerHTML: `<div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-align:center; text-size: .9rem;"><span style="font-weight: 600;">Your browser has JavaScript disabled. Most of this site works without JS, but some features require it. If something seems broken please try enabling JavaScript and reloading the page.</span><br><span style="font-size: .8rem;">The JavaScript used by this site is served directly from IETF infrastructure and does not include any code that links to a third party service.</span></div>`
       }
     ]
   })
@@ -91,7 +96,9 @@ const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter', publicSiteOrigin
   if (!widthHeight || !widthHeight[0] || !widthHeight[1]) {
     throw Error(`Cannot find dimensions from mode ${mode}, ${widthHeight}`)
   }
-  const path = customThumbnail ? metaThumbnailPathBuilder(customThumbnail) : linkPreviewImageUrlBuilder(widthHeight[0], widthHeight[1])
+  const path = customThumbnail
+    ? metaThumbnailPathBuilder(customThumbnail)
+    : linkPreviewImageUrlBuilder(widthHeight[0], widthHeight[1])
 
   const url = new URL(path, publicSiteOrigin).toString()
 
@@ -117,7 +124,16 @@ type MetaTag = {
 }
 
 const buildOpenGraphMetaTags = (props: UseRfcEditorProps, publicSiteOrigin: string): MetaTag[] => {
-  const { authors, publishedDateTime, customThumbnail, modifiedDateTime, customThumbnailAltText, description, contentType, canonicalPath } = props
+  const {
+    authors,
+    publishedDateTime,
+    customThumbnail,
+    modifiedDateTime,
+    customThumbnailAltText,
+    description,
+    contentType,
+    canonicalPath
+  } = props
   const linkPreviewImage = linkPreviewImageBuilder('opengraph', publicSiteOrigin, customThumbnail)
   const canonicalUrl = new URL(canonicalPath, publicSiteOrigin).toString()
 
@@ -208,7 +224,7 @@ const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
   ]
 
   if (props.authors) {
-    props.authors.forEach(author => {
+    props.authors.forEach((author) => {
       metaTags.push({
         name: 'author',
         content: author
@@ -225,7 +241,7 @@ const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
 
   // RFCs can have keywords. It's unclear who the consumers of this meta tag would be as keywords is mostly ignored these days, but the previous site had it so we will too
   if (props.keywords) {
-    props.keywords.forEach(keyword => {
+    props.keywords.forEach((keyword) => {
       metaTags.push({
         name: 'keywords',
         content: keyword
@@ -260,11 +276,12 @@ type LinkTag = {
   // extracting types from unhead is hard so we'll just make some similar types here
   // this typing isn't exhaustive -- change it as needed
   rel: 'canonical' | 'icon' | 'alternate'
-  type?: 'image/png'
-  | 'text/xml'
-  | 'application/xml'
-  | 'application/rss+xml' // not IANA registered but W3C recommended https://validator.w3.org/feed/docs/warning/UnexpectedContentType.html
-  | 'application/atom+xml' // IANA registered
+  type?:
+    | 'image/png'
+    | 'text/xml'
+    | 'application/xml'
+    | 'application/rss+xml' // not IANA registered but W3C recommended https://validator.w3.org/feed/docs/warning/UnexpectedContentType.html
+    | 'application/atom+xml' // IANA registered
   sizes?: `${number}x${number}`
   title?: string
   href: string
@@ -290,7 +307,7 @@ const buildGoogleScholarMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
 
   const metaTags: MetaTag[] = []
 
-  googleScholarMetadata.citation_author.forEach(author => {
+  googleScholarMetadata.citation_author.forEach((author) => {
     metaTags.push({
       name: 'citation_author',
       content: author
@@ -356,19 +373,21 @@ type GoogleScholarMetadata = {
 }
 
 export const rfcCommonToGoogleScholar = (rfc: RfcCommon, publicSiteOrigin: string): GoogleScholarMetadata => {
-  const citation_author = rfc.authors.map(author => author.titlepage_name).filter((name) => {
-    return typeof name === 'string'
-  })
+  const citation_author = rfc.authors
+    .map((author) => author.titlepage_name)
+    .filter((name) => {
+      return typeof name === 'string'
+    })
 
   const citation_publication_date = rfc.published ? DateTime.fromISO(rfc.published).toFormat('yyyy/MM/dd') : undefined
 
   const citation_title = rfc.title
 
-  const identifierDoi = rfc.identifiers?.find(identifier => identifier.type === 'doi')
+  const identifierDoi = rfc.identifiers?.find((identifier) => identifier.type === 'doi')
 
-  const identifierIssn = rfc.identifiers?.find(identifier => identifier.type === 'issn')
+  const identifierIssn = rfc.identifiers?.find((identifier) => identifier.type === 'issn')
 
-  const pdfFormat = rfc.formats.find(format => format.format === 'pdf')
+  const pdfFormat = rfc.formats.find((format) => format.format === 'pdf')
   const citation_pdf_path = pdfFormat ? useRfcPdfPathBuilder(rfc.number) : undefined
   const citation_pdf_url = citation_pdf_path ? new URL(citation_pdf_path, publicSiteOrigin).toString() : undefined
 
@@ -379,7 +398,7 @@ export const rfcCommonToGoogleScholar = (rfc: RfcCommon, publicSiteOrigin: strin
     citation_doi: identifierDoi?.value,
     citation_issn: identifierIssn?.value,
     citation_technical_report_number: `rfc${rfc.number}`,
-    citation_pdf_url,
+    citation_pdf_url
   }
 }
 

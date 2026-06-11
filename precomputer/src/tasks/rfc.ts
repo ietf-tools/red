@@ -1,5 +1,9 @@
 import { DateTime } from 'luxon'
-import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument, getRfcHtmlMetaScreenshot as getRfcHtmlMetaThumbnail } from './rfc-html.ts'
+import {
+  fetchSourceRfcHtml,
+  rfcBucketHtmlToRfcDocument,
+  getRfcHtmlMetaScreenshot as getRfcHtmlMetaThumbnail
+} from './rfc-html.ts'
 import { fetchRfcPDF, rfcBucketPdfToRfcDocument } from './rfc-pdf.ts'
 import {
   rfcHtmlJsonPathBuilder,
@@ -13,22 +17,17 @@ import {
 } from '../utilities/s3.ts'
 import { getRfcCommonCached } from '../utilities/api.ts'
 import { RfcCommonSchema } from '../../../website/app/utilities/rfc-validators.ts'
-import type {
-  RfcBucketHtmlDocument,
-  RfcCommon
-} from '../../../website/app/utilities/rfc-validators.ts'
+import type { RfcBucketHtmlDocument, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
-import {
-  formatIdentifiers
-} from '../utilities/rfc-converters-utils.ts'
+import { formatIdentifiers } from '../utilities/rfc-converters-utils.ts'
 import { getErrataForRfc } from '../utilities/errata.ts'
 import { type AsyncTaskItem } from '../utilities/task.ts'
 import { formatAuthorsPerStyleGuide } from '../utilities/authors.ts'
 
 export const uploadRfcData = async (rfcNumber: number): AsyncTaskItem => {
   const unusableRfcNumbers = await getUnusableRfcNumbersCached()
-  if (unusableRfcNumbers.some(unusableRfcNumber => unusableRfcNumber.number === rfcNumber)) {
+  if (unusableRfcNumbers.some((unusableRfcNumber) => unusableRfcNumber.number === rfcNumber)) {
     console.info(`[RFC ${rfcNumber}] Skipping this RFC as it's in ${UNUSABLE_RFC_NUMBERS_PATH}`)
     return []
   }
@@ -82,12 +81,12 @@ export const getRfcBucketHtmlDocument = async (
 
   // Some RFCs don't have HTML eg RFC418, so try PDF
   // Note that this will upload page images
-  const rfcDocFromPdf = await rfcBucketPdfToRfcDocument(
+  const rfcDocFromPdf = await rfcBucketPdfToRfcDocument({
     rfcNumber,
-    true,
-    getRfcCommonCached,
-    fetchRfcPDF
-  )
+    shouldUploadPageImagesToS3: true,
+    getRfcCommon: getRfcCommonCached,
+    getRfcPDF: fetchRfcPDF
+  })
   if (rfcDocFromPdf === null) {
     return false
   }
@@ -100,7 +99,7 @@ export const uploadRfcMetaThumbnail = async (rfcNumber: number): AsyncTaskItem =
     rfcNumber,
     getRfcCommon: getRfcCommonCached,
     getRfcHtml: getFromS3,
-    fetchRfcPDF,
+    fetchRfcPDF
   })
   if (!rfcScreenshot) {
     return [false]
@@ -118,7 +117,10 @@ type RfcMetaScreenshotProps = {
   fetchRfcPDF: typeof fetchRfcPDF
 }
 
-export const getRfcMetaThumbnail = async ({ rfcNumber, getRfcCommon }: RfcMetaScreenshotProps): Promise<Buffer | undefined> => {
+export const getRfcMetaThumbnail = async ({
+  rfcNumber,
+  getRfcCommon
+}: RfcMetaScreenshotProps): Promise<Buffer | undefined> => {
   // Don't use PDF for thumbnails. It's too inconsistant and
   // is usually illegible when thumbnail is shrunk to fit a
   // social media card. Instead use HTML version which has
@@ -155,9 +157,7 @@ export const redactRfc = (rfc: RfcCommon): RfcCommon => {
   }
 }
 
-export const uploadRfcCommonJson = async (
-  rfcNumber: number
-): AsyncTaskItem => {
+export const uploadRfcCommonJson = async (rfcNumber: number): AsyncTaskItem => {
   const rfc = await getRfcCommonCached(rfcNumber)
   if (rfc === null) {
     return [false]
@@ -207,10 +207,10 @@ export const renderRefsRef = (rfc: RfcCommon): string => {
     throw Error(`Unexpected lack of 'published' date`)
   }
 
-  return `${formatAuthorsPerStyleGuide(rfc.authors)}, "${rfc.title
-    }", RFC ${rfc.number}, ${formatIdentifiers(rfc.identifiers, ' ').join(
-      ''
-    )}, ${DateTime.fromISO(published).toFormat(
-      'LLLL yyyy'
-    )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
+  return `${formatAuthorsPerStyleGuide(rfc.authors)}, "${rfc.title}", RFC ${rfc.number}, ${formatIdentifiers(
+    rfc.identifiers,
+    ' '
+  ).join('')}, ${DateTime.fromISO(published).toFormat(
+    'LLLL yyyy'
+  )}, <${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(rfc)}>.\n`
 }

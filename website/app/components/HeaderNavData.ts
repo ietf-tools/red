@@ -62,7 +62,7 @@ export const useMenuData = (mode: Mode) => {
           },
           {
             label: 'Browse all RFCs',
-            href: '/rfc-index/' satisfies ValidHrefs,
+            href: '/rfc-index/' satisfies ValidHrefs
           },
           {
             label: 'Download RFCs',
@@ -95,7 +95,7 @@ export const useMenuData = (mode: Mode) => {
           },
           {
             label: 'RFC Publication Process',
-            href: INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL satisfies ValidHrefs,
+            href: INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL satisfies ValidHrefs
           },
           {
             label: 'Document Queue',
@@ -138,8 +138,8 @@ export const useMenuData = (mode: Mode) => {
         children: colorPreferences.map((colorPreference) => ({
           label: `${colorPreference.label}`,
           activeLabelFn: () =>
-            colorMode.preference === colorPreference.value ?
-              `Selected ${colorPreference.label}`
+            colorMode.preference === colorPreference.value
+              ? `Selected ${colorPreference.label}`
               : `Not selected ${colorPreference.label}`,
           isActiveFn: () => colorMode.preference === colorPreference.value,
           click: () => {
@@ -173,9 +173,11 @@ type RenderNoScriptMenuItemOptions = {
  */
 export const renderNoScriptMenuItem = (menuItem: MenuItem, options?: RenderNoScriptMenuItemOptions): string => {
   if (menuItem.href) {
-    return `<li class="${options?.renderListDisc ? 'list-disc ml-5' : ''}"><a href="${htmlEscapeToText(menuItem.href)}">${htmlEscapeToText(menuItem.label)}</a>${menuItem.children
-      ? `<ul>${menuItem.children.map(menuItem => renderNoScriptMenuItem(menuItem, options)).join('')}</ul>`
-      : ''}</li>`
+    return `<li class="${options?.renderListDisc ? 'list-disc ml-5' : ''}"><a href="${htmlEscapeToText(menuItem.href)}">${htmlEscapeToText(menuItem.label)}</a>${
+      menuItem.children
+        ? `<ul>${menuItem.children.map((menuItem) => renderNoScriptMenuItem(menuItem, options)).join('')}</ul>`
+        : ''
+    }</li>`
   }
 
   if (
@@ -185,10 +187,12 @@ export const renderNoScriptMenuItem = (menuItem: MenuItem, options?: RenderNoScr
     return ''
   }
 
-  if (menuItem.label && menuItem.children && menuItem.children.filter(menuItem => !menuItem.click).length > 0) {
-    return `<li>${menuItem.label ? `<b class="${options?.menuHeaderTopSpacing ? 'inline-block mt-1' :''}">${htmlEscapeToText(menuItem.label)}</b>`
-      : ''}${`<ul>${menuItem.children ? menuItem.children.map(menuItem => renderNoScriptMenuItem(menuItem, options)).join('') : ''}</ul>`
-      }</li>`
+  if (menuItem.label && menuItem.children && menuItem.children.filter((menuItem) => !menuItem.click).length > 0) {
+    return `<li>${
+      menuItem.label
+        ? `<b class="${options?.menuHeaderTopSpacing ? 'inline-block mt-1' : ''}">${htmlEscapeToText(menuItem.label)}</b>`
+        : ''
+    }${`<ul>${menuItem.children ? menuItem.children.map((menuItem) => renderNoScriptMenuItem(menuItem, options)).join('') : ''}</ul>`}</li>`
   }
 
   return ''

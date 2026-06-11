@@ -4,10 +4,7 @@
       <template #subheader>
         <template v-if="isSubseries">
           <SectionHeader>
-            <Heading
-              level="1"
-              class="ml-6 pb-6"
-            >
+            <Heading level="1" class="ml-6 pb-6">
               <component :is="formattedTitle" />
             </Heading>
           </SectionHeader>
@@ -21,13 +18,7 @@
       </template>
       <template v-else>
         <div class="container mx-auto">
-          <Alert
-            level="1"
-            variant="warning"
-            heading="Error"
-          >
-            No page found (404)
-          </Alert>
+          <Alert level="1" variant="warning" heading="Error"> No page found (404) </Alert>
         </div>
       </template>
     </NuxtLayout>
@@ -52,11 +43,13 @@ if (paramsId === undefined) {
 
 const seriesId = parseSeriesId(paramsId.toString())
 
-const isSubseries = computed(() => Boolean(seriesId && (seriesId.type === 'bcp' || seriesId.type === 'fyi' || seriesId.type === 'std')))
+const isSubseries = computed(() =>
+  Boolean(seriesId && (seriesId.type === 'bcp' || seriesId.type === 'fyi' || seriesId.type === 'std'))
+)
 
-const formattedTitle = computed(() => seriesId ? formatTitleAsVNode(`${seriesId.type}${seriesId.number}`) : '')
+const formattedTitle = computed(() => (seriesId ? formatTitleAsVNode(`${seriesId.type}${seriesId.number}`) : ''))
 
-const supportedTypes: SeriesId["type"][] = ['rfc', 'bcp', 'fyi', 'std']
+const supportedTypes: SeriesId['type'][] = ['rfc', 'bcp', 'fyi', 'std']
 
 if (!seriesId || !supportedTypes.includes(seriesId.type)) {
   console.error(`Unsupported route param of ${paramsId}`)

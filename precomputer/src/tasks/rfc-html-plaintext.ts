@@ -9,17 +9,11 @@ type TocSections = TableOfContents['sections']
 type TocSection = TocSections[number]
 type TocLink = NonNullable<TocSection['links']>[number]
 
-export const parsePlaintextBody = (
-  body: Document['body'],
-  rfcAndToc: RfcAndToc
-): void => {
+export const parsePlaintextBody = (body: Document['body'], rfcAndToc: RfcAndToc): void => {
   parsePlaintextToc(body, rfcAndToc)
 }
 
-const parsePlaintextToc = (
-  body: Document['body'],
-  rfcAndToc: RfcAndToc
-): void => {
+const parsePlaintextToc = (body: Document['body'], rfcAndToc: RfcAndToc): void => {
   //
   // Derived from
   // https://datatracker.ietf.org/doc/html/rfc2000
@@ -51,9 +45,7 @@ const parsePlaintextToc = (
 
   const headings = body.querySelectorAll<HTMLElement>(tocSelector)
 
-  const min_level = Math.min(
-    ...Array.from(headings).map((heading) => get_level(heading))
-  )
+  const min_level = Math.min(...Array.from(headings).map((heading) => get_level(heading)))
 
   const tableOfContents: TableOfContents = {
     title: 'Table of contents',
@@ -62,9 +54,7 @@ const parsePlaintextToc = (
 
   rfcAndToc.tableOfContents = tableOfContents
 
-  const tocSectionsStack: (TocSection | TableOfContents | undefined)[] = [
-    tableOfContents
-  ]
+  const tocSectionsStack: (TocSection | TableOfContents | undefined)[] = [tableOfContents]
   let currentLevel = 0
   let n = 0
 
@@ -95,9 +85,7 @@ const parsePlaintextToc = (
           links: []
         }
         if (!last) {
-          throw Error(
-            'There should always be at least 1 item in tocsSectionsStack'
-          )
+          throw Error('There should always be at least 1 item in tocsSectionsStack')
         }
         if (!last.sections) {
           last.sections = []
@@ -166,9 +154,7 @@ export const getPlaintextRfcDocument = (dom: Document): Node[] => {
   })
 }
 
-export const getPlaintextMaxLineLength = async (
-  dom: Document
-): Promise<MaxPreformattedLineLengthSchemaType> => {
+export const getPlaintextMaxLineLength = async (dom: Document): Promise<MaxPreformattedLineLengthSchemaType> => {
   const DEFAULT_MAX_LINE_LENGTH = 50
 
   const pres = Array.from(dom.body.querySelectorAll<HTMLElement>('pre'))

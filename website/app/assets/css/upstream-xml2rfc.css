@@ -22,8 +22,9 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 }
 
 /**
- * WCAG requires max-width of 80 chars
- */
+ * WCAG requires max-width of 80 chars.
+ * With a variable-width font of course this is approximate.
+ **/
 h1,
 h2,
 h3,
@@ -31,25 +32,25 @@ h4,
 h5,
 h6,
 p {
-  max-width: 42rem;
+  max-width: var(--max-text-block-width, 42rem);
 }
 /** these blocks already have left spacing so their max-width should be reduced */
 li,
 dt {
-  max-width: 40rem;
+  max-width: calc(var(--max-text-block-width, 42rem) - 2rem);
 }
 /** these blocks already have MORE left spacing so their max-width should be reduced */
 dd {
-  max-width: 33rem;
+  max-width: calc(var(--max-text-block-width, 42rem) - 9rem);
 }
 /** every table cell is deemed to be it's own ~80 char limit. This means the whole table might appear wider but that's intentional */
 th,
 td {
-  max-width: 33rem;
+  max-width: calc(var(--max-text-block-width, 42rem) - 9rem);
 }
 pre {
   display: inline-block;
-  min-width: 38rem;
+  min-width: calc(var(--max-text-block-width, 42rem) - 4rem);
 }
 /**
  * END OF 80 char max width fixes

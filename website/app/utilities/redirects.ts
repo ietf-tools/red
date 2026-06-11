@@ -6,5 +6,4 @@
   where the * is a wildcard whose value gets included in the redirect. The nuxt.config.ts redirect wouldn't
   support wildcards when they're non-trailing, ie before the '.json' suffix.
   */
-export const isMiddlewareRedirect = (redirectPattern: string): boolean =>
-  redirectPattern.includes('*')
+export const isMiddlewareRedirect = (redirectPattern: string): boolean => redirectPattern.includes('*')

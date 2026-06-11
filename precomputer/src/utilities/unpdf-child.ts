@@ -16,7 +16,7 @@ process.on('message', async (messageFromParent: unknown) => {
         message.pageNumber,
         message.fileName,
         message.shouldUploadToS3 === true.toString(),
-        message.dimensions,
+        message.dimensions
       )
       send({ type: 'SCREENSHOT_PAGE_DONE', screenshotDimensions, base64Png } satisfies ScreenshotPageDone)
       break
@@ -51,7 +51,7 @@ const screenshotPdfPage = async (
     mode: isGreyscale ? 'compress-greyscale' : 'compress',
     widthPx: dimensions.widthPx,
     heightPx: dimensions.heightPx,
-    debugPrefix: `${fileName}:${pageNumber}`,
+    debugPrefix: `${fileName}:${pageNumber}`
   })
 
   if (png) {
@@ -60,7 +60,7 @@ const screenshotPdfPage = async (
       await saveToS3(bucketPath, png)
       // console.log(` - uploaded screenshot of page ${pageNumber} to ${bucketPath}`)
     }
-    const base64Png = png.toString('base64');
+    const base64Png = png.toString('base64')
     return {
       screenshotDimensions: { widthPx, heightPx },
       base64Png
@@ -69,7 +69,7 @@ const screenshotPdfPage = async (
   return {
     screenshotDimensions: {
       widthPx,
-      heightPx,
+      heightPx
     },
     base64Png: ''
   }
@@ -118,15 +118,12 @@ type Text = {
 }
 
 export type ScreenshotPageDone = {
-  type: 'SCREENSHOT_PAGE_DONE',
-  screenshotDimensions: ImageDimensions,
+  type: 'SCREENSHOT_PAGE_DONE'
+  screenshotDimensions: ImageDimensions
   base64Png: string
 }
 
-type SendMessages =
-  | { type: 'READY' }
-  | ScreenshotPageDone
-  | { type: 'GET_TEXT_DONE'; text: Text }
+type SendMessages = { type: 'READY' } | ScreenshotPageDone | { type: 'GET_TEXT_DONE'; text: Text }
 
 const send = (msg: SendMessages) => {
   if (process.send) {

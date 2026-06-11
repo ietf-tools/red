@@ -2,9 +2,7 @@
 // Source: http://localhost:8000/api/schema/
 
 type Headers = Record<string, string>
-export type ApigenHeaders =
-  | Headers
-  | ((method: string, path: string) => Headers | Promise<Headers>)
+export type ApigenHeaders = Headers | ((method: string, path: string) => Headers | Promise<Headers>)
 
 export interface ApigenConfig {
   baseUrl: string
@@ -17,8 +15,7 @@ export interface ApigenRequest extends Omit<RequestInit, 'body'> {
 }
 
 export class ApiClient {
-  ISO_FORMAT =
-    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d*)?(?:[-+]\d{2}:?\d{2}|Z)?$/
+  ISO_FORMAT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d*)?(?:[-+]\d{2}:?\d{2}|Z)?$/
   Config: ApigenConfig
 
   constructor(config?: Partial<ApigenConfig>) {
@@ -57,11 +54,7 @@ export class ApiClient {
     return new URL(path, base)
   }
 
-  async Fetch<T>(
-    method: string,
-    path: string,
-    opts: ApigenRequest = {}
-  ): Promise<T> {
+  async Fetch<T>(method: string, path: string, opts: ApigenRequest = {}): Promise<T> {
     const url = this.PrepareFetchUrl(path)
 
     for (const [k, v] of Object.entries(opts?.search ?? {})) {
@@ -69,25 +62,17 @@ export class ApiClient {
     }
 
     const configHeaders =
-      typeof this.Config.headers === 'function' ?
-        await this.Config.headers(method, path)
-      : this.Config.headers
+      typeof this.Config.headers === 'function' ? await this.Config.headers(method, path) : this.Config.headers
 
     const headers = new Headers({ ...configHeaders, ...opts.headers })
     const ct = headers.get('content-type') ?? 'application/json'
 
     let body: FormData | URLSearchParams | string | null = null
 
-    if (
-      ct === 'multipart/form-data' ||
-      ct === 'application/x-www-form-urlencoded'
-    ) {
+    if (ct === 'multipart/form-data' || ct === 'application/x-www-form-urlencoded') {
       headers.delete('content-type')
-      body =
-        ct === 'multipart/form-data' ? new FormData() : new URLSearchParams()
-      for (const [k, v] of Object.entries(
-        opts.body as Record<string, string>
-      )) {
+      body = ct === 'multipart/form-data' ? new FormData() : new URLSearchParams()
+      for (const [k, v] of Object.entries(opts.body as Record<string, string>)) {
         body.append(k, v)
       }
     }
@@ -127,27 +112,15 @@ export class ApiClient {
     },
 
     getDraftReferences: (doc_id: number) => {
-      return this.Fetch<Reference[]>(
-        'get',
-        `/api/purple/draft/${doc_id}/references/`,
-        {}
-      )
+      return this.Fetch<Reference[]>('get', `/api/purple/draft/${doc_id}/references/`, {})
     },
 
     getDraftAuthors: (body: string[]) => {
-      return this.Fetch<DraftWithAuthors[]>(
-        'post',
-        '/api/purple/draft/bulk_authors/',
-        { body }
-      )
+      return this.Fetch<DraftWithAuthors[]>('post', '/api/purple/draft/bulk_authors/', { body })
     },
 
     submittedToRpc: () => {
-      return this.Fetch<SubmittedToQueue[]>(
-        'get',
-        '/api/purple/draft/submitted_to_rpc/',
-        {}
-      )
+      return this.Fetch<SubmittedToQueue[]>('get', '/api/purple/draft/submitted_to_rpc/', {})
     },
 
     getPersonById: (person_id: number) => {
@@ -159,23 +132,11 @@ export class ApiClient {
     },
 
     personsByEmail: (body: string[]) => {
-      return this.Fetch<EmailPerson[]>(
-        'post',
-        '/api/purple/person/batch_by_email/',
-        { body }
-      )
+      return this.Fetch<EmailPerson[]>('post', '/api/purple/person/batch_by_email/', { body })
     },
 
-    searchPerson: (search: {
-      limit?: number
-      offset?: number
-      search?: string
-    }) => {
-      return this.Fetch<PaginatedPersonList>(
-        'get',
-        '/api/purple/persons/search/',
-        { search }
-      )
+    searchPerson: (search: { limit?: number; offset?: number; search?: string }) => {
+      return this.Fetch<PaginatedPersonList>('get', '/api/purple/persons/search/', { search })
     },
 
     rfcUpdate: (rfc_number: string, body: EditableRfcRequest) => {
@@ -185,35 +146,19 @@ export class ApiClient {
     },
 
     rfcPartialUpdate: (rfc_number: string, body: PatchedEditableRfcRequest) => {
-      return this.Fetch<EditableRfc>(
-        'patch',
-        `/api/purple/rfc/${rfc_number}/`,
-        { body }
-      )
+      return this.Fetch<EditableRfc>('patch', `/api/purple/rfc/${rfc_number}/`, { body })
     },
 
     rfcAuthorsList: (rfc_number: number) => {
-      return this.Fetch<RfcAuthor[]>(
-        'get',
-        `/api/purple/rfc/${rfc_number}/authors/`,
-        {}
-      )
+      return this.Fetch<RfcAuthor[]>('get', `/api/purple/rfc/${rfc_number}/authors/`, {})
     },
 
     rfcAuthorsRetrieve: (author_id: string, rfc_number: number) => {
-      return this.Fetch<RfcAuthor>(
-        'get',
-        `/api/purple/rfc/${rfc_number}/authors/${author_id}/`,
-        {}
-      )
+      return this.Fetch<RfcAuthor>('get', `/api/purple/rfc/${rfc_number}/authors/${author_id}/`, {})
     },
 
     getRfcAuthors: (body: number[]) => {
-      return this.Fetch<RfcWithAuthors[]>(
-        'post',
-        '/api/purple/rfc/bulk_authors/',
-        { body }
-      )
+      return this.Fetch<RfcWithAuthors[]>('post', '/api/purple/rfc/bulk_authors/', { body })
     },
 
     notifyRfcPublished: (body: RfcPubRequest) => {
@@ -223,19 +168,14 @@ export class ApiClient {
     },
 
     uploadRfcFiles: (body: RfcFileRequest) => {
-      return this.Fetch<NotificationAck>(
-        'post',
-        '/api/purple/rfc/publish/files/',
-        { body, headers: { 'content-type': 'multipart/form-data' } }
-      )
+      return this.Fetch<NotificationAck>('post', '/api/purple/rfc/publish/files/', {
+        body,
+        headers: { 'content-type': 'multipart/form-data' }
+      })
     },
 
     getRfcOriginalStreams: () => {
-      return this.Fetch<OriginalStream[]>(
-        'get',
-        '/api/purple/rfc/rfc_original_stream/',
-        {}
-      )
+      return this.Fetch<OriginalStream[]>('get', '/api/purple/rfc/rfc_original_stream/', {})
     },
 
     refreshRfcIndex: () => {
@@ -243,11 +183,7 @@ export class ApiClient {
     },
 
     getSubjectPersonById: (subject_id: string) => {
-      return this.Fetch<Person>(
-        'get',
-        `/api/purple/subject/${subject_id}/person/`,
-        {}
-      )
+      return this.Fetch<Person>('get', `/api/purple/subject/${subject_id}/person/`, {})
     }
   }
 
@@ -262,17 +198,7 @@ export class ApiClient {
       published_before?: string
       search?: string
       sort?: ('-number' | '-published' | 'number' | 'published')[]
-      status?: (
-        | 'bcp'
-        | 'ds'
-        | 'exp'
-        | 'hist'
-        | 'inf'
-        | 'not-issued'
-        | 'ps'
-        | 'std'
-        | 'unkn'
-      )[]
+      status?: ('bcp' | 'ds' | 'exp' | 'hist' | 'inf' | 'not-issued' | 'ps' | 'std' | 'unkn')[]
       stream?: string[]
     }) => {
       return this.Fetch<PaginatedRfcMetadataList>('get', '/api/red/doc/', {
@@ -404,14 +330,7 @@ export type ErrorResponse404 = {
   errors: Error404[]
 }
 
-export type FmtEnum =
-  | 'xml'
-  | 'txt'
-  | 'html'
-  | 'pdf'
-  | 'ps'
-  | 'json'
-  | 'notprepped'
+export type FmtEnum = 'xml' | 'txt' | 'html' | 'pdf' | 'ps' | 'json' | 'notprepped'
 
 export type FullDraft = {
   id?: number
@@ -463,11 +382,7 @@ export type NotificationAck = {
 
 export type NotifyRfcPublishedAbstractErrorComponent = {
   attr: 'abstract'
-  code:
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -479,23 +394,13 @@ export type NotifyRfcPublishedAdErrorComponent = {
 
 export type NotifyRfcPublishedAuthorsINDEXAffiliationErrorComponent = {
   attr: 'authors.INDEX.affiliation'
-  code:
-    | 'invalid'
-    | 'max_length'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'max_length' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
 export type NotifyRfcPublishedAuthorsINDEXCountryErrorComponent = {
   attr: 'authors.INDEX.country'
-  code:
-    | 'invalid'
-    | 'max_length'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'max_length' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -538,23 +443,13 @@ export type NotifyRfcPublishedAuthorsNonFieldErrorsErrorComponent = {
 
 export type NotifyRfcPublishedDraftNameErrorComponent = {
   attr: 'draft_name'
-  code:
-    | 'blank'
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
 export type NotifyRfcPublishedDraftRevErrorComponent = {
   attr: 'draft_rev'
-  code:
-    | 'blank'
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -584,9 +479,7 @@ export type NotifyRfcPublishedError =
   | NotifyRfcPublishedSubseriesINDEXErrorComponent
   | NotifyRfcPublishedKeywordsErrorComponent
 
-export type NotifyRfcPublishedErrorResponse400 =
-  | NotifyRfcPublishedValidationError
-  | ParseErrorResponse
+export type NotifyRfcPublishedErrorResponse400 = NotifyRfcPublishedValidationError | ParseErrorResponse
 
 export type NotifyRfcPublishedGroupErrorComponent = {
   attr: 'group'
@@ -650,12 +543,7 @@ export type NotifyRfcPublishedSubseriesErrorComponent = {
 
 export type NotifyRfcPublishedSubseriesINDEXErrorComponent = {
   attr: 'subseries.INDEX'
-  code:
-    | 'blank'
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -743,33 +631,19 @@ export type PurpleRfcAuthorsRetrieveErrorResponse400 = ParseErrorResponse
 
 export type PurpleRfcPartialUpdateAbstractErrorComponent = {
   attr: 'abstract'
-  code:
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
 export type PurpleRfcPartialUpdateAuthorsINDEXAffiliationErrorComponent = {
   attr: 'authors.INDEX.affiliation'
-  code:
-    | 'invalid'
-    | 'max_length'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'max_length' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
 export type PurpleRfcPartialUpdateAuthorsINDEXCountryErrorComponent = {
   attr: 'authors.INDEX.country'
-  code:
-    | 'invalid'
-    | 'max_length'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'max_length' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -829,9 +703,7 @@ export type PurpleRfcPartialUpdateError =
   | PurpleRfcPartialUpdateSubseriesINDEXErrorComponent
   | PurpleRfcPartialUpdateKeywordsErrorComponent
 
-export type PurpleRfcPartialUpdateErrorResponse400 =
-  | PurpleRfcPartialUpdateValidationError
-  | ParseErrorResponse
+export type PurpleRfcPartialUpdateErrorResponse400 = PurpleRfcPartialUpdateValidationError | ParseErrorResponse
 
 export type PurpleRfcPartialUpdateKeywordsErrorComponent = {
   attr: 'keywords'
@@ -877,12 +749,7 @@ export type PurpleRfcPartialUpdateSubseriesErrorComponent = {
 
 export type PurpleRfcPartialUpdateSubseriesINDEXErrorComponent = {
   attr: 'subseries.INDEX'
-  code:
-    | 'blank'
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -906,33 +773,19 @@ export type PurpleRfcPartialUpdateValidationError = {
 
 export type PurpleRfcUpdateAbstractErrorComponent = {
   attr: 'abstract'
-  code:
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
 export type PurpleRfcUpdateAuthorsINDEXAffiliationErrorComponent = {
   attr: 'authors.INDEX.affiliation'
-  code:
-    | 'invalid'
-    | 'max_length'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'max_length' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
 export type PurpleRfcUpdateAuthorsINDEXCountryErrorComponent = {
   attr: 'authors.INDEX.country'
-  code:
-    | 'invalid'
-    | 'max_length'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'invalid' | 'max_length' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -992,9 +845,7 @@ export type PurpleRfcUpdateError =
   | PurpleRfcUpdateSubseriesINDEXErrorComponent
   | PurpleRfcUpdateKeywordsErrorComponent
 
-export type PurpleRfcUpdateErrorResponse400 =
-  | PurpleRfcUpdateValidationError
-  | ParseErrorResponse
+export type PurpleRfcUpdateErrorResponse400 = PurpleRfcUpdateValidationError | ParseErrorResponse
 
 export type PurpleRfcUpdateKeywordsErrorComponent = {
   attr: 'keywords'
@@ -1040,12 +891,7 @@ export type PurpleRfcUpdateSubseriesErrorComponent = {
 
 export type PurpleRfcUpdateSubseriesINDEXErrorComponent = {
   attr: 'subseries.INDEX'
-  code:
-    | 'blank'
-    | 'invalid'
-    | 'null'
-    | 'null_characters_not_allowed'
-    | 'surrogate_characters_not_allowed'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
   detail: string
 }
 
@@ -1082,9 +928,7 @@ export type RedDocListError =
   | RedDocListStatusErrorComponent
   | RedDocListSortErrorComponent
 
-export type RedDocListErrorResponse400 =
-  | RedDocListValidationError
-  | ParseErrorResponse
+export type RedDocListErrorResponse400 = RedDocListValidationError | ParseErrorResponse
 
 export type RedDocListGroupErrorComponent = {
   attr: 'group'
@@ -1131,9 +975,7 @@ export type RedDocRetrieveErrorResponse400 = ParseErrorResponse
 
 export type RedSubseriesListError = RedSubseriesListTypeErrorComponent
 
-export type RedSubseriesListErrorResponse400 =
-  | RedSubseriesListValidationError
-  | ParseErrorResponse
+export type RedSubseriesListErrorResponse400 = RedSubseriesListValidationError | ParseErrorResponse
 
 export type RedSubseriesListTypeErrorComponent = {
   attr: 'type'
@@ -1293,16 +1135,7 @@ export type Shepherd = {
   email: string
 }
 
-export type SlugEnum =
-  | 'bcp'
-  | 'ds'
-  | 'exp'
-  | 'hist'
-  | 'inf'
-  | 'not-issued'
-  | 'ps'
-  | 'std'
-  | 'unkn'
+export type SlugEnum = 'bcp' | 'ds' | 'exp' | 'hist' | 'inf' | 'not-issued' | 'ps' | 'std' | 'unkn'
 
 export type SourceFormatEnum = 'unknown' | 'xml-v2' | 'xml-v3' | 'txt'
 
@@ -1373,9 +1206,7 @@ export type UploadRfcFilesError =
   | UploadRfcFilesMtimeErrorComponent
   | UploadRfcFilesReplaceErrorComponent
 
-export type UploadRfcFilesErrorResponse400 =
-  | UploadRfcFilesValidationError
-  | ParseErrorResponse
+export type UploadRfcFilesErrorResponse400 = UploadRfcFilesValidationError | ParseErrorResponse
 
 export type UploadRfcFilesMtimeErrorComponent = {
   attr: 'mtime'

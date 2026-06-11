@@ -62,11 +62,14 @@ export const chunkStringAtLengths = (str: string, size: number): string[] => {
   for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
     chunks[i] = str.substring(o, o + size)
   }
-  chunks.forEach(chunk => assertIsString(chunk))
+  chunks.forEach((chunk) => assertIsString(chunk))
   return chunks
 }
 
-export const escapeRegExp = (s: string): string => 'escape' in RegExp && typeof RegExp.escape === 'function' ? RegExp.escape(s) : s.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+export const escapeRegExp = (s: string): string =>
+  'escape' in RegExp && typeof RegExp.escape === 'function'
+    ? RegExp.escape(s)
+    : s.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
 
 export const getAllIndexes = (str: string, pattern: RegExp): number[] => {
   const matches = Array.from(str.matchAll(pattern))

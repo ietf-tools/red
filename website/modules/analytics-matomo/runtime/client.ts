@@ -10,12 +10,7 @@ const DEFAULT_MATOMO_SITE_URL = 'https://analytics.ietf.org/'
 
 export default defineNuxtPlugin({
   setup(_nuxtApp) {
-    if (
-      import.meta.env.TEST ||
-      import.meta.env.VITEST ||
-      import.meta.env.test ||
-      import.meta.env.vitest
-    ) {
+    if (import.meta.env.TEST || import.meta.env.VITEST || import.meta.env.test || import.meta.env.vitest) {
       return
     }
 
@@ -54,10 +49,7 @@ export default defineNuxtPlugin({
   }
 })
 
-const getMatomoScript = (
-  siteId: number = DEFAULT_MATOMO_STAGING_SITE_ID,
-
-) => `
+const getMatomoScript = (siteId: number = DEFAULT_MATOMO_STAGING_SITE_ID) => `
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(['trackPageView']);
@@ -70,10 +62,7 @@ const getMatomoScript = (
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();`
 
-const eventuallyDispatchEvent = (
-  events: Window['_paq'],
-  attemptsRemaining = 5
-) => {
+const eventuallyDispatchEvent = (events: Window['_paq'], attemptsRemaining = 5) => {
   const matomoEventQueue = window._paq
   if (matomoEventQueue !== undefined) {
     events?.forEach((event) => {
@@ -85,11 +74,6 @@ const eventuallyDispatchEvent = (
       eventuallyDispatchEvent(events, attemptsRemaining - 1)
     }, 500)
   } else {
-    console.error(
-      'Unable to dispatch analytics events',
-      events,
-      '. `window._paq` was ',
-      window._paq
-    )
+    console.error('Unable to dispatch analytics events', events, '. `window._paq` was ', window._paq)
   }
 }

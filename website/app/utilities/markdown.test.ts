@@ -6,11 +6,7 @@ import { escapeRegExp } from 'es-toolkit'
 import { micromark } from 'micromark'
 import { globby } from 'globby'
 import { fileExists } from './test-utils/fs-test-util'
-import {
-  attemptToGetAttribute,
-  parseHtml,
-  walkNodes
-} from '~/utilities/test-utils/html-test-utils'
+import { attemptToGetAttribute, parseHtml, walkNodes } from '~/utilities/test-utils/html-test-utils'
 
 const __dirname = import.meta.dirname
 const clientPath = path.resolve(__dirname, '..', '..')
@@ -27,25 +23,17 @@ test('Markdown links validation', async () => {
   expect(markdownPaths.length).toBeGreaterThan(0)
 
   const markdownFilesData = await Promise.all(
-    markdownPaths.map((markdownPath) =>
-      fsPromises.readFile(path.join(contentPath, markdownPath), 'utf-8')
-    )
+    markdownPaths.map((markdownPath) => fsPromises.readFile(path.join(contentPath, markdownPath), 'utf-8'))
   )
 
-  const htmls = markdownFilesData.map((markdownFileData) =>
-    micromark(markdownFileData)
-  )
+  const htmls = markdownFilesData.map((markdownFileData) => micromark(markdownFileData))
   const docs = htmls.map((html) => parseHtml(html))
 
-  const validateMarkdown = (
-    markdownData: string,
-    markdownPath: string
-  ): void => {
+  const validateMarkdown = (markdownData: string, markdownPath: string): void => {
     const badInternalLink = '](<#' // when converting from Google Doc it often makes broken links with this signature
-    expect(
-      markdownData,
-      `Markdown file ${markdownPath} included bad data ${badInternalLink}`
-    ).not.toMatch(badInternalLink)
+    expect(markdownData, `Markdown file ${markdownPath} included bad data ${badInternalLink}`).not.toMatch(
+      badInternalLink
+    )
   }
 
   const validateImage = async (node: unknown, markdownPath: string) => {
@@ -61,10 +49,7 @@ test('Markdown links validation', async () => {
 
     const assetFilePath = path.join(publicPath, src)
     const hasImageFile = await fileExists(assetFilePath)
-    expect(
-      hasImageFile,
-      `Markdown file ${markdownPath} references image ${src} that doesn't exist`
-    ).toBe(true)
+    expect(hasImageFile, `Markdown file ${markdownPath} references image ${src} that doesn't exist`).toBe(true)
   }
 
   markdownFilesData.forEach((markdownData, index) => {

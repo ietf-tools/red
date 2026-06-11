@@ -8,7 +8,8 @@
         <div v-for="(item, index) in items" :key="index" class="mt-3 text-center leading-7">
           Didn't find what you were looking for?<br />
           The <b>hide obsoleted</b> filter is active which may hide results.<br />
-          <button type="button"
+          <button
+            type="button"
             class="mt-1 border-1 px-2 py-1 border-black dark:border-white cursor-pointer hover:bg-gray-300 focus:bg-gray-300 dark:hover:bg-gray-700 dark:focus:bg-gray-700"
             @click="refine(item.value)">
             Show obsoleted / historic

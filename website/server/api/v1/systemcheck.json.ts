@@ -21,18 +21,21 @@ export default defineEventHandler(async (event) => {
     '/about/rfc-editor/' // randomly chosen markdown page
   ]
 
-  const checks = await Promise.all(pathsToCheck.map(pathToCheck => httpCheck(
-    new URL(pathToCheck, publicSiteUrlOrigin).toString()
-  )))
+  const checks = await Promise.all(
+    pathsToCheck.map((pathToCheck) => httpCheck(new URL(pathToCheck, publicSiteUrlOrigin).toString()))
+  )
 
-  const isOk = checks.every(check => check.ok)
+  const isOk = checks.every((check) => check.ok)
 
-  const failedPathsMessage = checks.map((check) => {
-    if (!check.ok) {
-      return `${check.url} (HTTP ${check.statusCode})`
-    }
-    return undefined
-  }).filter(Boolean).join(', ')
+  const failedPathsMessage = checks
+    .map((check) => {
+      if (!check.ok) {
+        return `${check.url} (HTTP ${check.statusCode})`
+      }
+      return undefined
+    })
+    .filter(Boolean)
+    .join(', ')
 
   const timestampIso = DateTime.now().toISO()
 
@@ -45,7 +48,7 @@ export default defineEventHandler(async (event) => {
   return {
     ok: isOk,
     timestampIso,
-    message: isOk ? undefined : `Health check failed on ${publicSiteUrlOrigin}: ${failedPathsMessage}`,
+    message: isOk ? undefined : `Health check failed on ${publicSiteUrlOrigin}: ${failedPathsMessage}`
   }
 })
 
@@ -71,7 +74,8 @@ const httpCheck = (url: string) => {
           url,
           statusCode
         })
-      }).on('error', (_err) => reject())
+      })
+      .on('error', (_err) => reject())
       .end()
   })
 }

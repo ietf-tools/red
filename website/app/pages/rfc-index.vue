@@ -2,9 +2,7 @@
   <div class="min-h-screen">
     <NuxtLayout name="default">
       <div class="container mx-auto">
-        <Heading level="1" style-level="2" class="text-left mt-10 mb-4 pl-5">
-          RFC Index
-        </Heading>
+        <Heading level="1" style-level="2" class="text-left mt-10 mb-4 pl-5"> RFC Index </Heading>
         <div @click="handleAnchorClick">
           <RFCIndexTable :canonicalPath="canonicalPath" />
         </div>
@@ -39,12 +37,12 @@ const router = useRouter()
 const handleAnchorClick = (e: Event) => {
   const { target } = e
   if (!(target instanceof HTMLElement)) {
-    console.log("Click from non-HTMLElement, ignoring")
+    console.log('Click from non-HTMLElement, ignoring')
     return
   }
   const anchor = target.closest('a')
   if (!(anchor instanceof HTMLAnchorElement)) {
-    console.log("Click from non-<a>, ignoring")
+    console.log('Click from non-<a>, ignoring')
     return
   }
   const href = anchor.getAttribute('href')

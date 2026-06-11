@@ -31,7 +31,9 @@ export const uploadAllMarkdownPages = async (): AsyncTaskItem => {
     relativePaths.push(file)
   }
   if (relativePaths.length === 0) {
-    throw Error(`[markdown-pages] Expected at least one markdown page but in ${JSON.stringify(CONTENT_DIR)} with ${JSON.stringify(mdPattern)} got zero.`)
+    throw Error(
+      `[markdown-pages] Expected at least one markdown page but in ${JSON.stringify(CONTENT_DIR)} with ${JSON.stringify(mdPattern)} got zero.`
+    )
   }
 
   const contentMetadataRaw = await fsPromises.readFile(CONTENT_METADATA_PATH, 'utf-8')
@@ -64,8 +66,7 @@ const extractFrontmatterYaml = (fileContent: string): Record<string, unknown> =>
   return parseYaml(frontmatterYamlString) ?? {}
 }
 
-const extractMarkdownTitle = (html: string): string | undefined =>
-  html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1]?.trim()
+const extractMarkdownTitle = (html: string): string | undefined => html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1]?.trim()
 
 export const markdownToHtml = (markdown: string): string =>
   micromark(markdown, {
@@ -80,9 +81,7 @@ export const renderMarkdownPage = async (filePath: string, contentMetadata: Cont
 
   const frontmatterRaw = extractFrontmatterYaml(fileContent)
 
-  const { description, showToc } = MarkdownPageSchema
-    .pick({ description: true, showToc: true })
-    .parse(frontmatterRaw)
+  const { description, showToc } = MarkdownPageSchema.pick({ description: true, showToc: true }).parse(frontmatterRaw)
 
   let html = markdownToHtml(fileContent)
   html = replaceComponentReferences(html)
@@ -132,22 +131,22 @@ export const renderMarkdownPage = async (filePath: string, contentMetadata: Cont
 /**
  * Replaces Nuxt Content MDC block-component syntax that micromark leaves as literal
  * text with real HTML elements, so downstream renderers can treat them as components.
- * 
+ *
  * Syntax that looks like
- * 
+ *
  * ```
  * <p>::ComponentName{prop="value"}
  * child
  * ::
  * </p>
  * ```
- * 
+ *
  * replaced with
- * 
+ *
  * ```
  * <p><ComponentName prop="value">child</ComponentName></p>
  * ```
- * 
+ *
  * So that subsequent HTML -> HtmlPojo will have an easier format to use.
  */
 export const replaceComponentReferences = (html: string): string => {

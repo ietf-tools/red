@@ -5,27 +5,20 @@
       // we always make an id. hasInternalLink only affects whether to show a '#' link
       props.id ?? getAnchorId($slots.default)
     "
-    :class="[headingStyles[`h${styleLevel || level}`], props.class, 'group']"
-  >
+    :class="[headingStyles[`h${styleLevel || level}`], props.class, 'group']">
     <GraphicsIETFMotif
       v-if="hasIcon"
       class="absolute ml-[-1.3em] -mt-4 print:hidden"
       width="75"
       height="55"
-      :opacity="0.05"
-    />
+      :opacity="0.05" />
     <slot />
     <a
       v-if="hasInternalLink"
-      :href="
-        hasInternalLink ?
-          `#${props.id ?? getAnchorId($slots.default)}`
-        : undefined
-      "
+      :href="hasInternalLink ? `#${props.id ?? getAnchorId($slots.default)}` : undefined"
       class="ml-1 opacity-0 transition-opacity no-underline group-hover:opacity-100 font-normal"
       title="Link to this heading"
-      @click="hashClickHandler(`#${getAnchorId($slots.default)}`)"
-    >
+      @click="hashClickHandler(`#${getAnchorId($slots.default)}`)">
       &para;
     </a>
   </component>

@@ -6,7 +6,7 @@ description: Understand errors and corrections in RFCs
 
 Authors and editors of RFCs carefully proofread every document prior to publication, but sometimes errors happen. Because RFCs do not change after publication, there is an errata system to note these errors.
 
-When they exist, errata are listed in the Errata section of the sidebar for each RFC. Errata with a Verified status have been reviewed and are considered accurate. Errata are not incorporated into the TXT, PDF, or XML formats of RFCs. 
+When they exist, errata are listed in the Errata section of the sidebar for each RFC. Errata with a Verified status have been reviewed and are considered accurate. Errata are not incorporated into the TXT, PDF, or XML formats of RFCs.
 
 ## Types of Errata
 

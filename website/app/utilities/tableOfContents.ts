@@ -9,6 +9,4 @@ export const tocKey = Symbol() as InjectionKey<{
   toc?: RfcEditorToc
 }>
 
-export const closeModalAndScrollToId = Symbol() as InjectionKey<
-  (id: string) => void
->
+export const closeModalAndScrollToId = Symbol() as InjectionKey<(id: string) => void>

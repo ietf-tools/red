@@ -16,19 +16,16 @@
           {{
             Math.max(
               /**
-              * Ensure we don't say it took '0ms'
-              * because that sounds instantaneous
-              * and instead ensure it says it took
-              * at least some time
-              **/
+               * Ensure we don't say it took '0ms'
+               * because that sounds instantaneous
+               * and instead ensure it says it took
+               * at least some time
+               **/
               1,
               processingTimeMS
             )
           }}
-          <abbr
-            title="milliseconds"
-            class="no-underline"
-          >ms</abbr>
+          <abbr title="milliseconds" class="no-underline">ms</abbr>
         </span>
       </div>
     </template>

@@ -22,14 +22,20 @@ type ForkOptions = NonNullable<Parameters<typeof fork>[2]>
 const forkArgs: ForkOptions = { silent: true }
 
 type ScreenshotProps = {
-  base64Pdf: string,
-  pageNumber: number,
-  fileName: string,
+  base64Pdf: string
+  pageNumber: number
+  fileName: string
   shouldUploadToS3: boolean
   widthPx: number
 }
 
-export const takeScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName, shouldUploadToS3, widthPx }: ScreenshotProps): Promise<ScreenshotPageDone> => {
+export const takeScreenshotOfPage = async ({
+  base64Pdf,
+  pageNumber,
+  fileName,
+  shouldUploadToS3,
+  widthPx
+}: ScreenshotProps): Promise<ScreenshotPageDone> => {
   return new Promise((resolve) => {
     updateStats({ type: 'FORK', source: 'unpdf' })
     const child = fork(forkPath, forkArgs)
@@ -46,7 +52,7 @@ export const takeScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName, sh
             pageNumber,
             fileName,
             shouldUploadToS3: shouldUploadToS3.toString(),
-            dimensions: { widthPx },
+            dimensions: { widthPx }
           } satisfies ReceiveMessage)
           break
         case 'SCREENSHOT_PAGE_DONE':
@@ -62,14 +68,20 @@ export const takeScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName, sh
 }
 
 type MetaScreenshotProps = {
-  base64Pdf: string,
-  pageNumber: number,
-  fileName: string,
+  base64Pdf: string
+  pageNumber: number
+  fileName: string
   shouldUploadToS3: boolean
   dimensions: ImageDimensions
 }
 
-export const getMetaScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName, shouldUploadToS3, dimensions }: MetaScreenshotProps): Promise<ScreenshotPageDone> => {
+export const getMetaScreenshotOfPage = async ({
+  base64Pdf,
+  pageNumber,
+  fileName,
+  shouldUploadToS3,
+  dimensions
+}: MetaScreenshotProps): Promise<ScreenshotPageDone> => {
   return new Promise((resolve) => {
     updateStats({ type: 'FORK', source: 'unpdf' })
     const child = fork(forkPath, forkArgs)
@@ -86,7 +98,7 @@ export const getMetaScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName,
             pageNumber,
             fileName,
             shouldUploadToS3: shouldUploadToS3.toString(),
-            dimensions,
+            dimensions
           } satisfies ReceiveMessage)
           break
         case 'SCREENSHOT_PAGE_DONE':
@@ -101,9 +113,7 @@ export const getMetaScreenshotOfPage = async ({ base64Pdf, pageNumber, fileName,
   })
 }
 
-export const getTextDetails = async (
-  base64Pdf: string
-): Promise<z.infer<typeof GetTextSchema>> => {
+export const getTextDetails = async (base64Pdf: string): Promise<z.infer<typeof GetTextSchema>> => {
   return new Promise((resolve) => {
     updateStats({ type: 'FORK', source: 'unpdf' })
     const child = fork(forkPath, forkArgs)
@@ -140,7 +150,7 @@ const GetTextSchema = z.object({
   text: z.object({
     totalPages: z.number(),
     text: z.string().array()
-  }),
+  })
 })
 
 const ScreenshotDoneSchema = z.object({
@@ -149,17 +159,12 @@ const ScreenshotDoneSchema = z.object({
   base64Png: z.string()
 })
 
-const ReceiveMessagesSchema = z.union([
-  ReadySchema,
-  ScreenshotDoneSchema,
-  GetTextSchema
-])
+const ReceiveMessagesSchema = z.union([ReadySchema, ScreenshotDoneSchema, GetTextSchema])
 
 const parseMessageFromChild = (message: unknown) => {
-  const { data: parsedMessage, error } =
-    ReceiveMessagesSchema.safeParse(message)
+  const { data: parsedMessage, error } = ReceiveMessagesSchema.safeParse(message)
   if (error) {
-    console.error('PARENT expected valid message.', error, ". Received", message)
+    console.error('PARENT expected valid message.', error, '. Received', message)
     return null
   }
   return parsedMessage
@@ -200,11 +205,7 @@ const handlePipes = (child: ChildProcess) => {
       // all other messages will be printed in logs
       'Warning: Please use the `legacy` build in Node.js environments.'
     ]
-    if (
-      messagesToSupress.some((messageToSupress) =>
-        txt.includes(messageToSupress)
-      )
-    ) {
+    if (messagesToSupress.some((messageToSupress) => txt.includes(messageToSupress))) {
       return
     }
     console.log('STDOUT: unpdf child', txt)
@@ -221,7 +222,7 @@ export const unPdfStats = {
   maxConcurrentChildProcessCount: 0
 }
 
-type StatsEntry = { type: 'FORK', source: 'unpdf' } | { type: 'CLEANUP', source: 'unpdf' }
+type StatsEntry = { type: 'FORK'; source: 'unpdf' } | { type: 'CLEANUP'; source: 'unpdf' }
 
 const updateStats = (entry: StatsEntry): void => {
   switch (entry.type) {

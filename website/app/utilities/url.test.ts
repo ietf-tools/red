@@ -38,21 +38,13 @@ test('rfcCitePathBuilder: txt', () => {
 })
 
 test('rfcCitePathBuilder: xml', () => {
-  expect(rfcCitePathBuilder('rfc9000', 'xml')).toEqual(
-    'https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9000.xml'
-  )
-  expect(rfcCitePathBuilder('RFC9000', 'xml')).toEqual(
-    'https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9000.xml'
-  )
+  expect(rfcCitePathBuilder('rfc9000', 'xml')).toEqual('https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9000.xml')
+  expect(rfcCitePathBuilder('RFC9000', 'xml')).toEqual('https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9000.xml')
 })
 
 test('rfcCitePathBuilder: bibTeX', () => {
-  expect(rfcCitePathBuilder('rfc9000', 'bibTeX')).toEqual(
-    'https://datatracker.ietf.org/doc/rfc9000/bibtex/'
-  )
-  expect(rfcCitePathBuilder('RFC9000', 'bibTeX')).toEqual(
-    'https://datatracker.ietf.org/doc/rfc9000/bibtex/'
-  )
+  expect(rfcCitePathBuilder('rfc9000', 'bibTeX')).toEqual('https://datatracker.ietf.org/doc/rfc9000/bibtex/')
+  expect(rfcCitePathBuilder('RFC9000', 'bibTeX')).toEqual('https://datatracker.ietf.org/doc/rfc9000/bibtex/')
 })
 
 test('rfcFormatPathBuilder: html', () => {
@@ -61,9 +53,9 @@ test('rfcFormatPathBuilder: html', () => {
 })
 
 test('textToAnchorId', () => {
-  expect(
-    textToAnchorId('What Sort Of Documents Are Independent Submissions?')
-  ).toEqual('what-sort-of-documents-are-independent-submissions')
+  expect(textToAnchorId('What Sort Of Documents Are Independent Submissions?')).toEqual(
+    'what-sort-of-documents-are-independent-submissions'
+  )
 
   expect(
     textToAnchorId('Some RFCs') // testing to ensure it doesn't turn 'RFCs' into 'rf-cs' which can happen with incorrect usage of kebabCase

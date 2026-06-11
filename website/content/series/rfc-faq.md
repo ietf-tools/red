@@ -10,7 +10,7 @@ Yes. An announcement of each new RFC is sent to all members of the rfc-dist mail
 
 ## How can one determine where in the Standards Track an RFC is? {#stdtrack}
 
-If the RFC is a Standards Track document, its info page will list its status (Internet Standard, Draft Standard, or Proposed Standard). See the [full list of Internet Standards](/search/?status=Internet+Standard). 
+If the RFC is a Standards Track document, its info page will list its status (Internet Standard, Draft Standard, or Proposed Standard). See the [full list of Internet Standards](/search/?status=Internet+Standard).
 
 Note that there are also non-Standards Track statuses for RFCs: Experimental, Informational, Historic, and Best Current Practice (see [RFC 2026](/info/rfc2026/)).
 
@@ -24,8 +24,8 @@ All RFCs may be freely reproduced and translated (unmodified). See the [IETF Tru
 
 ## Who is the RFC Editor? {#who}
 
-The RFC Editor is no longer a single person; the editing and publication functions are performed by the RFC Production Center, which is a small group of professional editors. 
+The RFC Editor is no longer a single person; the editing and publication functions are performed by the RFC Production Center, which is a small group of professional editors.
 
 ## Why is there sometimes a gap between RFC numbers? {#not-issued}
 
-Occasionally, an RFC number is issued prior to publication to a document that does not get published as an RFC. This explains the occasional gap between numbers. Current procedures attempt to avoid this situation. 
+Occasionally, an RFC number is issued prior to publication to a document that does not get published as an RFC. This explains the occasional gap between numbers. Current procedures attempt to avoid this situation.

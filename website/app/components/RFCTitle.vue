@@ -1,5 +1,5 @@
 <template>
-    <component :is="formattedTitle" /><template v-if="!props.hideTitle">{{ SPACE }}{{ props.rfc.title }}</template>
+  <component :is="formattedTitle" /><template v-if="!props.hideTitle">{{ SPACE }}{{ props.rfc.title }}</template>
 </template>
 
 <script setup lang="ts">
@@ -7,11 +7,11 @@ import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { SPACE } from '~/utilities/strings'
 
 type Props = {
-    rfc: {
-        number: number
-        title: string
-    }
-    hideTitle?: boolean
+  rfc: {
+    number: number
+    title: string
+  }
+  hideTitle?: boolean
 }
 
 const props = defineProps<Props>()

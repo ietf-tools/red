@@ -11,7 +11,7 @@ export const infoRfcPathBuilder = (rfc: RfcCommon) => {
   return `/info/rfc${rfc.number}/` as const
 }
 
-type RfcCommonFormat = RfcCommon["formats"][number]["format"]
+type RfcCommonFormat = RfcCommon['formats'][number]['format']
 
 export const rfcFormatPathBuilder = (rfc: RfcCommon, format: RfcCommonFormat) => {
   if (format === 'notprepped') {

@@ -13,9 +13,7 @@ const main = async (rfcNumbers: number[]): Promise<void> => {
   const api = getApiClient()
 
   const [rfcUploadTasks, indicesUploadTasks] = await Promise.all([
-    PromisePool.for(rfcNumbers)
-      .withConcurrency(NUMBER_OF_CONCURRENT_RFC_PROCESSORS)
-      .process(processRfcUploadTask),
+    PromisePool.for(rfcNumbers).withConcurrency(NUMBER_OF_CONCURRENT_RFC_PROCESSORS).process(processRfcUploadTask),
     indices({ api })
   ])
 
@@ -37,15 +35,11 @@ const main = async (rfcNumbers: number[]): Promise<void> => {
 }
 
 if (!process.argv[2]) {
-  throw Error(
-    `Script requires RFC Numbers arg but argv was ${JSON.stringify(
-      process.argv
-    )}`
-  )
+  throw Error(`Script requires RFC Numbers arg but argv was ${JSON.stringify(process.argv)}`)
 }
 
-const rfcNumbers = process.argv[2].split(',').map(rfc => parseInt(rfc.trim(), 10))
-if (rfcNumbers.some(rfcNumber => Number.isNaN(rfcNumber))) {
+const rfcNumbers = process.argv[2].split(',').map((rfc) => parseInt(rfc.trim(), 10))
+if (rfcNumbers.some((rfcNumber) => Number.isNaN(rfcNumber))) {
   throw Error(`RFC number list ${JSON.stringify(process.argv[2])} included a NaN`)
 }
 main(rfcNumbers)

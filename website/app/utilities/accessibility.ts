@@ -1,2 +1,1 @@
-export const prefersReducedMotion = () =>
-  window.matchMedia('(prefers-reduced-motion)').matches
+export const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion)').matches

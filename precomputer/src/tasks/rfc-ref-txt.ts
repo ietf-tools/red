@@ -1,9 +1,6 @@
 import { DateTime } from 'luxon'
 import { padStart } from 'es-toolkit/compat'
-import {
-  formatAuthor,
-  formatIdentifiers
-} from '../utilities/rfc-converters-utils.ts'
+import { formatAuthor, formatIdentifiers } from '../utilities/rfc-converters-utils.ts'
 import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { IN_NOTES_RFC_REF_DOT_TXT_PATH, saveToS3 } from '../utilities/s3.ts'
 import { PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
@@ -14,10 +11,7 @@ export const uploadRfcRefDotTxt = async (
   allRfcs: Readonly<RfcCommon[]>,
   rfcNumberColumnMinimumCharWidth: number
 ): AsyncTaskItem => {
-  const txt = await renderInNotesRfcRefDotTxt(
-    allRfcs,
-    rfcNumberColumnMinimumCharWidth
-  )
+  const txt = await renderInNotesRfcRefDotTxt(allRfcs, rfcNumberColumnMinimumCharWidth)
   await saveToS3(IN_NOTES_RFC_REF_DOT_TXT_PATH, txt)
   console.log(`[${IN_NOTES_RFC_REF_DOT_TXT_PATH}]`, 'Uploaded', IN_NOTES_RFC_REF_DOT_TXT_PATH)
   return [IN_NOTES_RFC_REF_DOT_TXT_PATH]
@@ -31,10 +25,7 @@ export const renderInNotesRfcRefDotTxt = async (
     (acc, rfc): number => Math.max(acc, rfc.number.toString().length),
     0
   )
-  const rfcNumberColumnCharWidth = Math.max(
-    rfcNumberColumnMinimumCharWidth,
-    rfcNumberColumnCalculatedCharWidth
-  )
+  const rfcNumberColumnCharWidth = Math.max(rfcNumberColumnMinimumCharWidth, rfcNumberColumnCalculatedCharWidth)
   // const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
   // const column2width = 72 - rfcNumberColumnCharWidth
 
@@ -53,16 +44,10 @@ export const renderInNotesRfcRefDotTxt = async (
     txts.push(
       [
         // No RFC prefix on these results
-        padStart(
-          `RFC${rfc.number.toString()}`,
-          rfcNumberColumnCharWidth + 3,
-          ' '
-        ),
+        padStart(`RFC${rfc.number.toString()}`, rfcNumberColumnCharWidth + 3, ' '),
         ' | ',
         padStart(
-          rfc.obsoleted_by
-            ?.map((obsoleted_by_item) => `RFC${obsoleted_by_item.number}`)
-            .join(', ') ?? '',
+          rfc.obsoleted_by?.map((obsoleted_by_item) => `RFC${obsoleted_by_item.number}`).join(', ') ?? '',
           rfcNumberColumnCharWidth + 5,
           ' '
         ),
@@ -88,20 +73,18 @@ const stringifyRFC = (rfc: RfcCommon): string => {
   if (rfc.title === 'Not Issued') {
     return 'Not Issued.'
   } else {
-    rfcdate =
-      rfc.published ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy') : ''
+    rfcdate = rfc.published ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy') : ''
 
-    const alsolist = [
-      ...(rfc.is_also && rfc.is_also.length > 0 ? rfc.is_also : [])
-    ]
+    const alsolist = [...(rfc.is_also && rfc.is_also.length > 0 ? rfc.is_also : [])]
     if (alsolist.length > 0) {
       also = `${alsolist.map((rfcId) => `RFC ${rfc.number}`).join(', ')}, `
     }
 
     doi = formatIdentifiers(rfc.identifiers, ' ').join(' ')
 
-    return `${formatAuthorsPerStyleGuide(rfc.authors, 'brief')}, "${rfc.title}", ${also}RFC ${rfc.number}, ${doi},${rfcdate ? ` ${rfcdate},` : ''
-      } <${PUBLIC_SITE_URL_ORIGIN}/info/rfc${rfc.number}/>.`
+    return `${formatAuthorsPerStyleGuide(rfc.authors, 'brief')}, "${rfc.title}", ${also}RFC ${rfc.number}, ${doi},${
+      rfcdate ? ` ${rfcdate},` : ''
+    } <${PUBLIC_SITE_URL_ORIGIN}/info/rfc${rfc.number}/>.`
   }
 }
 

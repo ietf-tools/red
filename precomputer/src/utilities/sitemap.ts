@@ -1,32 +1,42 @@
 import path from 'node:path'
 import fsPromises from 'node:fs/promises'
-import { WriteStream } from 'node:fs';
-import { type SitemapItemLoose, EnumChangefreq, SitemapAndIndexStream, SitemapStream, streamToPromise } from 'sitemap';
-import { PassThrough, Readable } from 'stream';
-import type { RfcCommon, SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts';
-import { infoRfcPathBuilder, rfcFormatPathBuilder, subseriesPathBuilder, siteMapXmlPathBuilder } from './url.ts';
-import { saveToS3, siteMapXmlPathPrefixBuilder } from './s3.ts';
-import { type AsyncTaskItem } from './task.ts';
+import { WriteStream } from 'node:fs'
+import { type SitemapItemLoose, EnumChangefreq, SitemapAndIndexStream, SitemapStream, streamToPromise } from 'sitemap'
+import { PassThrough, Readable } from 'stream'
+import type { RfcCommon, SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import { infoRfcPathBuilder, rfcFormatPathBuilder, subseriesPathBuilder, siteMapXmlPathBuilder } from './url.ts'
+import { saveToS3, siteMapXmlPathPrefixBuilder } from './s3.ts'
+import { type AsyncTaskItem } from './task.ts'
 
 const precomputerRoot = path.resolve(import.meta.dirname, '..', '..')
 export const markdownPathsJsonPath = path.join(precomputerRoot, 'src', 'assets', 'markdown-paths.json')
 export const markdownPathsJsonPromise = fsPromises.readFile(markdownPathsJsonPath, 'utf-8')
 
-export const uploadSitemapXmls = async (websiteOrigin: string, allRfcs: Readonly<RfcCommon[]>, allSubseries: Readonly<SubseriesCommon[]>): AsyncTaskItem => {
+export const uploadSitemapXmls = async (
+  websiteOrigin: string,
+  allRfcs: Readonly<RfcCommon[]>,
+  allSubseries: Readonly<SubseriesCommon[]>
+): AsyncTaskItem => {
   const siteMapXmls = await getSiteMapXmls(websiteOrigin, allRfcs, allSubseries)
-  return await Promise.all(siteMapXmls.map(([filename, xmlString]) => {
-    const s3Key = siteMapXmlPathPrefixBuilder(filename)
-    saveToS3(s3Key, xmlString)
-    console.log('[sitemap*.xml]', 'Uploaded ', s3Key)
-    return s3Key
-  }))
+  return await Promise.all(
+    siteMapXmls.map(([filename, xmlString]) => {
+      const s3Key = siteMapXmlPathPrefixBuilder(filename)
+      saveToS3(s3Key, xmlString)
+      console.log('[sitemap*.xml]', 'Uploaded ', s3Key)
+      return s3Key
+    })
+  )
 }
 
-export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<RfcCommon[]>, allSubseries: Readonly<SubseriesCommon[]>) => {
-  const markdownPathsJson = await markdownPathsJsonPromise;
-  const markdownPaths = JSON.parse(markdownPathsJson);
-  if (!Array.isArray(markdownPaths) || !markdownPaths.every(markdownPath => typeof markdownPath === 'string')) {
-    throw Error(`Expected ${markdownPathsJsonPath} to be array of strings`);
+export const getSiteMapXmls = async (
+  websiteOrigin: string,
+  allRfcs: Readonly<RfcCommon[]>,
+  allSubseries: Readonly<SubseriesCommon[]>
+) => {
+  const markdownPathsJson = await markdownPathsJsonPromise
+  const markdownPaths = JSON.parse(markdownPathsJson)
+  if (!Array.isArray(markdownPaths) || !markdownPaths.every((markdownPath) => typeof markdownPath === 'string')) {
+    throw Error(`Expected ${markdownPathsJsonPath} to be array of strings`)
   }
 
   const rfcSitemapItems: SitemapItemLoose[] = [
@@ -45,7 +55,7 @@ export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<Rf
         url: `${websiteOrigin}${markdownPath}`,
         changefreq: EnumChangefreq.WEEKLY,
         priority: 0.4
-      };
+      }
     }),
     ...allRfcs.flatMap((rfc): SitemapItemLoose[] => {
       return [
@@ -55,15 +65,15 @@ export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<Rf
           priority: 0.3 // note higher priority than /rfc/* route
         },
         ...rfc.formats
-          .filter(format => format.format === 'html' || format.format === 'pdf')
+          .filter((format) => format.format === 'html' || format.format === 'pdf')
           .map((format): SitemapItemLoose => {
             return {
               url: rfcFormatPathBuilder(rfc, format.format),
               changefreq: EnumChangefreq.MONTHLY, // assume that these change less frequently
               priority: 0.2 // note lower priority than /info/ route RFCs
-            };
+            }
           })
-      ];
+      ]
     }),
     ...allSubseries.flatMap((subseries): SitemapItemLoose[] => {
       return [
@@ -72,48 +82,47 @@ export const getSiteMapXmls = async (websiteOrigin: string, allRfcs: Readonly<Rf
           changefreq: EnumChangefreq.MONTHLY,
 
           priority: 0.3
-        },
-      ];
-
+        }
+      ]
     })
-  ];
+  ]
 
-  const sitemapFiles: [string, string][] = [];
-  const pendingPromises: Promise<void>[] = [];
+  const sitemapFiles: [string, string][] = []
+  const pendingPromises: Promise<void>[] = []
 
   const siteMapStream = new SitemapAndIndexStream({
     /**
      * Googlebot imposes a limit:
-     * 
+     *
      * "Any Sitemap file is limited to 50MB (uncompressed) with a maximum of 50,000 URLs."
-     * 
+     *
      * so we'll just split our index over several files.
-     * 
+     *
      * This also helps test sitemap-*.xml worker routes which otherwise might break and not
      * be used
      *  */
     limit: 6000,
     getSitemapStream: (i) => {
-      const sitemapStream = new SitemapStream({ hostname: websiteOrigin });
-      const destination = new PassThrough();
-      const filename = siteMapXmlPathBuilder(i + 1);
-      sitemapStream.pipe(destination);
-      const capturePromise = streamToPromise(destination).then(data => {
-        sitemapFiles.push([filename, data.toString()]);
-      });
-      pendingPromises.push(capturePromise);
+      const sitemapStream = new SitemapStream({ hostname: websiteOrigin })
+      const destination = new PassThrough()
+      const filename = siteMapXmlPathBuilder(i + 1)
+      sitemapStream.pipe(destination)
+      const capturePromise = streamToPromise(destination).then((data) => {
+        sitemapFiles.push([filename, data.toString()])
+      })
+      pendingPromises.push(capturePromise)
 
-      return [`${websiteOrigin}${filename}`, sitemapStream, destination as unknown as WriteStream];
+      return [`${websiteOrigin}${filename}`, sitemapStream, destination as unknown as WriteStream]
     }
-  });
+  })
 
-  const indexPromise = streamToPromise(siteMapStream).then(data => {
-    sitemapFiles.push([siteMapXmlPathBuilder(0), data.toString()]);
-  });
+  const indexPromise = streamToPromise(siteMapStream).then((data) => {
+    sitemapFiles.push([siteMapXmlPathBuilder(0), data.toString()])
+  })
 
-  Readable.from(rfcSitemapItems).pipe(siteMapStream);
+  Readable.from(rfcSitemapItems).pipe(siteMapStream)
 
-  await Promise.all([indexPromise, ...pendingPromises]);
+  await Promise.all([indexPromise, ...pendingPromises])
 
-  return sitemapFiles;
-};
+  return sitemapFiles
+}

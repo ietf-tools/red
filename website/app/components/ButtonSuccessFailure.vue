@@ -29,10 +29,12 @@
       }
     ]">
     <template v-if="result">
-      <div class="absolute -top-[9px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[9px] border-r-[9px] border-b-[9px] border-l-transparent border-r-transparent" :class="{
-         'border-b-green-200 dark:border-b-green-700': result?.type === 'success',
-         'border-b-red-200 dark:border-b-red-700': result?.type === 'error'
-         }" />
+      <div
+        class="absolute -top-[9px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[9px] border-r-[9px] border-b-[9px] border-l-transparent border-r-transparent"
+        :class="{
+          'border-b-green-200 dark:border-b-green-700': result?.type === 'success',
+          'border-b-red-200 dark:border-b-red-700': result?.type === 'error'
+        }" />
       <div v-for="line in result.message">
         <div v-if="line.type === 'big'" class="text-lg font-bold text-center">{{ line.innerText }}</div>
         <div v-else-if="line.type === 'medium'" class="font-bold text-base text-center">{{ line.innerText }}</div>
@@ -74,7 +76,7 @@ const updateStatusStyle = () => {
   const buttonElement = button.value
   const statusElement = status.value
   console.log('width is', statusElement.offsetWidth)
-  statusStyle.value = `position: absolute; right: -${(statusElement.offsetWidth / 2) - (buttonElement.offsetWidth / 2)}px; transition-duration: ${ANIMATION_DURATION_MS}ms`
+  statusStyle.value = `position: absolute; right: -${statusElement.offsetWidth / 2 - buttonElement.offsetWidth / 2}px; transition-duration: ${ANIMATION_DURATION_MS}ms`
 }
 
 onMounted(updateStatusStyle)

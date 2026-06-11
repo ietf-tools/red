@@ -1,7 +1,4 @@
-import type {
-  RfcCommon,
-  RfcMini,
-} from '../../../website/app/utilities/rfc-validators.ts'
+import type { RfcCommon, RfcMini } from '../../../website/app/utilities/rfc-validators.ts'
 
 /**
  * RfcMini is a valid subset of RfcCommon.

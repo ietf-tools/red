@@ -89,13 +89,9 @@ export async function verify(env: OidcEnv, token: string): Promise<VerifyResult>
     return { isValid: false }
   }
 
-  const key = await crypto.subtle.importKey(
-    'jwk',
-    keyData,
-    { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' },
-    false,
-    ['verify']
-  )
+  const key = await crypto.subtle.importKey('jwk', keyData, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, [
+    'verify'
+  ])
 
   const jwsSigningInput = token.split('.').slice(0, 2).join('.')
   const isValid = await crypto.subtle.verify(

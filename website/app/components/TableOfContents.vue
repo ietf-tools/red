@@ -8,8 +8,7 @@
     :list-class="props.listClass"
     :nested-list-class="props.nestedListClass"
     :list-item-class="props.listItemClass"
-    :show-last-link-icon="props.showLastLinkIcon"
-  />
+    :show-last-link-icon="props.showLastLinkIcon" />
 </template>
 
 <script setup lang="ts">
@@ -31,7 +30,5 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const listTypeElement = computed(() =>
-  props.listType === 'numbered' ? 'ol' : 'ul'
-)
+const listTypeElement = computed(() => (props.listType === 'numbered' ? 'ol' : 'ul'))
 </script>

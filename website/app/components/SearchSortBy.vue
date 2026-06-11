@@ -31,8 +31,7 @@
           value: 'docs/sort/subseries.number:desc',
           label: 'Subseries no. (Highest first)'
         }
-      ]"
-    >
+      ]">
       <template #default="{ items, currentRefinement, refine }">
         <SelectNeue
           :model-value="currentRefinement"
@@ -43,14 +42,8 @@
                 refine(select.value)
               }
             }
-          "
-        >
-          <option
-            v-for="item of items"
-            :key="item.value"
-            :value="item.value"
-            class="bg-white dark:bg-black"
-          >
+          ">
+          <option v-for="item of items" :key="item.value" :value="item.value" class="bg-white dark:bg-black">
             {{ item.label }}
           </option>
         </SelectNeue>

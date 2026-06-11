@@ -5,8 +5,7 @@
         <button
           type="button"
           class="cursor-pointer flex justify-between w-full py-2 px-3 items-center border-1 border-gray-400 font-bold bg-white text-black dark:bg-black dark:text-white"
-          @click="isOpen = false"
-        >
+          @click="isOpen = false">
           Filter RFCs
         </button>
       </span>
@@ -15,21 +14,14 @@
       <DialogOverlay />
 
       <DialogContent
-        class="fixed inset-0 z-60 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col"
-      >
+        class="fixed inset-0 z-60 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col">
         <DialogTitle class="flex justify-between text-xl pl-3 font-bold border-b-1 border-b-gray-400">
-          <div class="block px-2 py-4">Filter RFCs </div>
-          <DialogClose
-            aria-label="Close modal"
-            class="px-4 py-2"
-          >
+          <div class="block px-2 py-4">Filter RFCs</div>
+          <DialogClose aria-label="Close modal" class="px-4 py-2">
             <GraphicsClose class="text-black dark:text-white" />
           </DialogClose>
         </DialogTitle>
-        <VerticalScrollable
-          v-if="isOpen"
-          class="flex-1"
-        >
+        <VerticalScrollable v-if="isOpen" class="flex-1">
           <div class="flex flex-col mb-6 pt-4">
             <fieldset class="ml-5 mr-5">
               <legend class="font-bold">Card Density</legend>
@@ -50,8 +42,7 @@
           <button
             type="button"
             class="cursor-pointer flex-none font-bold bg-blue-600 text-white px-4 py-2"
-            @click="isOpen = false"
-          >
+            @click="isOpen = false">
             Show matching RFCs
           </button>
         </div>
@@ -73,7 +64,7 @@ import {
 
 const isOpen = ref(false)
 
-const closeModal = () => isOpen.value = false
+const closeModal = () => (isOpen.value = false)
 
 const searchStore = useSearchStore()
 </script>

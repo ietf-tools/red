@@ -8,9 +8,7 @@ import { type AsyncTaskItem } from '../utilities/task.ts'
 const CONSOLE_PURGE_LENGTH = 10
 const NUMBER_OF_CONCURRENT_SUBSERIES_S3_UPLOADS = 4
 
-export const uploadAllSubseries = async (
-  allSubseries: Readonly<SubseriesCommon[]>
-): AsyncTaskItem => {
+export const uploadAllSubseries = async (allSubseries: Readonly<SubseriesCommon[]>): AsyncTaskItem => {
   const allSubseriesValidated = await renderAllSubseries(allSubseries)
   const logItems: string[] = []
 
@@ -28,27 +26,23 @@ export const uploadAllSubseries = async (
             logText.push(logItem)
           }
         }
-        const percent = Math.round(
-          (pool.processedCount() / allSubseriesValidated.length) * 100
-        )
+        const percent = Math.round((pool.processedCount() / allSubseriesValidated.length) * 100)
         console.log(`[subseries] ${percent}% ${logText.join(', ')}.`)
       }
     })
     .process(async (subseriesItem, i): AsyncTaskItem => {
-      const s3Path = subseriesInfoPathBuilder(
-        subseriesItem.type,
-        subseriesItem.number
-      )
+      const s3Path = subseriesInfoPathBuilder(subseriesItem.type, subseriesItem.number)
       await saveToS3(s3Path, JSON.stringify(subseriesItem))
       logItems.push(s3Path)
       return [s3Path]
     })
 
   console.log(
-    ` - subseries 100% ${logItems.length > 0
-      ? // print any remaining log items
-      `${logItems.join(', ')}.`
-      : ''
+    ` - subseries 100% ${
+      logItems.length > 0
+        ? // print any remaining log items
+          `${logItems.join(', ')}.`
+        : ''
     }`
   )
 
@@ -61,9 +55,7 @@ export const uploadAllSubseries = async (
   return resultsArray.flat()
 }
 
-export const renderAllSubseries = async (
-  allSubseries: Readonly<SubseriesCommon[]>
-): Promise<SubseriesCommon[]> => {
+export const renderAllSubseries = async (allSubseries: Readonly<SubseriesCommon[]>): Promise<SubseriesCommon[]> => {
   return allSubseries.map((subseriesItem) => {
     // subseries are already in a data format we can use, so just validate it
     validateDocument(subseriesItem, SubseriesCommonSchema)

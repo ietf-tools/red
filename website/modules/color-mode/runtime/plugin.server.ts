@@ -7,12 +7,14 @@ import { preference, dataValue, storage, storageKey } from '#build/color-mode-op
 export default defineNuxtPlugin((nuxtApp) => {
   const colorMode = nuxtApp.ssrContext?.islandContext
     ? ref<Partial<ColorModeInstance>>({}).value
-    : useState<ColorModeInstance>('color-mode', () => reactive({
-      preference,
-      value: preference,
-      unknown: true,
-      forced: false,
-    })).value
+    : useState<ColorModeInstance>('color-mode', () =>
+        reactive({
+          preference,
+          value: preference,
+          unknown: true,
+          forced: false
+        })
+      ).value
 
   const htmlAttrs: Record<string, string> = {}
 
@@ -39,8 +41,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         const eqIndex = s.indexOf('=')
         return eqIndex === -1 ? [s, ''] : [s.slice(0, eqIndex), s.slice(eqIndex + 1)]
       })
-      .find(([k]) => k === storageKey)
-      ?.[1]
+      .find(([k]) => k === storageKey)?.[1]
 
     if (cookieValue) {
       colorMode.preference = cookieValue
@@ -59,8 +60,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         htmlAttrs[`data-${dataValue}`] = colorMode.value
       }
       colorMode.forced = true
-    }
-    else if (forcedColorMode === 'system') {
+    } else if (forcedColorMode === 'system') {
       console.warn('You cannot force the colorMode to system at the page level.')
     }
   })

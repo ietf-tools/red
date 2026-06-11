@@ -24,18 +24,9 @@ const getS3Singleton = () => {
     const S3_RFC_ENDPOINT = process.env.S3_RFC_ENDPOINT
     const S3_RFC_ACCESS_ID = process.env.S3_RFC_ACCESS_ID
     const S3_RFC_ACCESS_KEY = process.env.S3_RFC_ACCESS_KEY
-    assertIsString(
-      S3_RFC_ENDPOINT,
-      `process.env.S3_RFC_ENDPOINT wasn't a string. Was ${typeof S3_RFC_ENDPOINT}`
-    )
-    assertIsString(
-      S3_RFC_ACCESS_ID,
-      `process.env.S3_RFC_ACCESS_ID wasn't a string. Was ${typeof S3_RFC_ACCESS_ID}`
-    )
-    assertIsString(
-      S3_RFC_ACCESS_KEY,
-      `process.env.S3_RFC_ACCESS_KEY wasn't a string. Was ${typeof S3_RFC_ACCESS_KEY}`
-    )
+    assertIsString(S3_RFC_ENDPOINT, `process.env.S3_RFC_ENDPOINT wasn't a string. Was ${typeof S3_RFC_ENDPOINT}`)
+    assertIsString(S3_RFC_ACCESS_ID, `process.env.S3_RFC_ACCESS_ID wasn't a string. Was ${typeof S3_RFC_ACCESS_ID}`)
+    assertIsString(S3_RFC_ACCESS_KEY, `process.env.S3_RFC_ACCESS_KEY wasn't a string. Was ${typeof S3_RFC_ACCESS_KEY}`)
 
     const s3RfcCli = new S3Client({
       endpoint: S3_RFC_ENDPOINT,
@@ -51,18 +42,9 @@ const getS3Singleton = () => {
     const S3_RED_ENDPOINT = process.env.S3_RED_ENDPOINT
     const S3_RED_ACCESS_ID = process.env.S3_RED_ACCESS_ID
     const S3_RED_ACCESS_KEY = process.env.S3_RED_ACCESS_KEY
-    assertIsString(
-      S3_RED_ENDPOINT,
-      `process.env.S3_RED_ENDPOINT wasn't a string. Was ${typeof S3_RED_ENDPOINT}`
-    )
-    assertIsString(
-      S3_RED_ACCESS_ID,
-      `process.env.S3_RED_ACCESS_ID wasn't a string. Was ${typeof S3_RED_ACCESS_ID}`
-    )
-    assertIsString(
-      S3_RED_ACCESS_KEY,
-      `process.env.S3_RED_ACCESS_KEY wasn't a string. Was ${typeof S3_RED_ACCESS_KEY}`
-    )
+    assertIsString(S3_RED_ENDPOINT, `process.env.S3_RED_ENDPOINT wasn't a string. Was ${typeof S3_RED_ENDPOINT}`)
+    assertIsString(S3_RED_ACCESS_ID, `process.env.S3_RED_ACCESS_ID wasn't a string. Was ${typeof S3_RED_ACCESS_ID}`)
+    assertIsString(S3_RED_ACCESS_KEY, `process.env.S3_RED_ACCESS_KEY wasn't a string. Was ${typeof S3_RED_ACCESS_KEY}`)
 
     const s3RedCli = new S3Client({
       endpoint: S3_RED_ENDPOINT,
@@ -87,16 +69,10 @@ export async function getFromS3(
   bucket: 'S3_RFC_BUCKET' | 'S3_RED_BUCKET',
   key: string,
   outputType: S3OutputType,
-  prefixForDebug: string,
+  prefixForDebug: string
 ): Promise<string | Uint8Array | null> {
-  const S3_BUCKET =
-    bucket === 'S3_RFC_BUCKET' ?
-      process.env.S3_RFC_BUCKET
-      : process.env.S3_RED_BUCKET
-  assertIsString(
-    S3_BUCKET,
-    `process.env.${bucket} wasn't a string. Was ${typeof S3_BUCKET}`
-  )
+  const S3_BUCKET = bucket === 'S3_RFC_BUCKET' ? process.env.S3_RFC_BUCKET : process.env.S3_RED_BUCKET
+  assertIsString(S3_BUCKET, `process.env.${bucket} wasn't a string. Was ${typeof S3_BUCKET}`)
 
   const { s3RedCli, s3RfcCli } = getS3Singleton()
 
@@ -144,20 +120,12 @@ export async function getFromS3(
   return null
 }
 
-type StreamingBlobPayloadInputTypes = ConstructorParameters<
-  typeof PutObjectCommand
->[0]['Body']
+type StreamingBlobPayloadInputTypes = ConstructorParameters<typeof PutObjectCommand>[0]['Body']
 
-export async function saveToS3(
-  key: string,
-  contents: StreamingBlobPayloadInputTypes
-): Promise<void> {
+export async function saveToS3(key: string, contents: StreamingBlobPayloadInputTypes): Promise<void> {
   const prefixForDebug = `[S3 Upload ${key}]`
   const S3_RED_BUCKET = process.env.S3_RED_BUCKET
-  assertIsString(
-    S3_RED_BUCKET,
-    `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`
-  )
+  assertIsString(S3_RED_BUCKET, `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`)
   // console.log(`[${S3_RED_BUCKET}] saving ${key}`, ' with contents ', contents)
   const { s3RedCli } = getS3Singleton()
   let attemptsRemaining = NUMBER_OF_S3_RETRIES
@@ -191,16 +159,12 @@ export async function saveToS3(
   const errorHeader = `[${prefixForDebug}] All attempts to upload ${JSON.stringify(key)} to ${JSON.stringify(S3_RED_BUCKET)} bucket failed.`
   console.error(errorHeader, ...errors)
   return
-
 }
 
 export const listS3Files = async () => {
   const { s3RedCli } = getS3Singleton()
   const S3_RED_BUCKET = process.env.S3_RED_BUCKET
-  assertIsString(
-    S3_RED_BUCKET,
-    `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`
-  )
+  assertIsString(S3_RED_BUCKET, `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`)
   const keys = []
   for await (const data of paginateListObjectsV2({ client: s3RedCli }, { Bucket: S3_RED_BUCKET })) {
     keys.push(...(data.Contents ?? []))
@@ -209,15 +173,10 @@ export const listS3Files = async () => {
   return keys
 }
 
-export const deleteFromS3 = async (
-  key: string,
-): Promise<void> => {
+export const deleteFromS3 = async (key: string): Promise<void> => {
   const { s3RedCli } = getS3Singleton()
   const S3_RED_BUCKET = process.env.S3_RED_BUCKET
-  assertIsString(
-    S3_RED_BUCKET,
-    `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`
-  )
+  assertIsString(S3_RED_BUCKET, `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`)
   await s3RedCli.send(
     new DeleteObjectCommand({
       Bucket: S3_RED_BUCKET,
@@ -239,10 +198,12 @@ type CheckRfcContentsExistProps = {
 /**
  * RFCs come from the Datatracker API but recent RFCs might not have their bucket files,
  * such as html or pdf etc., yet.
- * 
+ *
  * On staging the bucket might be very out of sync.
  */
-export const filterRFCsByBucketContentExisting = async ({ rfcs }: CheckRfcContentsExistProps): Promise<Readonly<RfcCommon[]>> => {
+export const filterRFCsByBucketContentExisting = async ({
+  rfcs
+}: CheckRfcContentsExistProps): Promise<Readonly<RfcCommon[]>> => {
   const rfcNumbersToCheck = rfcs
     .toSorted(
       // The best indicator of RFCs that need content checking is the `published` date,
@@ -250,7 +211,7 @@ export const filterRFCsByBucketContentExisting = async ({ rfcs }: CheckRfcConten
       sortByRfcPublish
     )
     .slice(0, CHECK_RFC_NUMBER_LARGEST_MINUS_N)
-    .map(rfc => rfc.number)
+    .map((rfc) => rfc.number)
     .sort((a, b) => b - a)
 
   console.log('[RFC contents] Checking RFC contents for RFCs: ', rfcNumbersToCheck.join(', '))
@@ -274,9 +235,7 @@ export const filterRFCsByBucketContentExisting = async ({ rfcs }: CheckRfcConten
         }
         return true
       } catch (err) {
-        console.error(
-          `[RFC ${rfcNumber}] threw exception: ${String(err)}`
-        )
+        console.error(`[RFC ${rfcNumber}] threw exception: ${String(err)}`)
         throw err
       }
     })
@@ -285,33 +244,30 @@ export const filterRFCsByBucketContentExisting = async ({ rfcs }: CheckRfcConten
     console.error(`[${ERROR_CODE_RFC_BUCKET_ERROR}] there were errors getting RFC contents from the bucket`)
   }
 
-  const rfcsContentsDoNotExist = results.filter(result => result !== true)
+  const rfcsContentsDoNotExist = results.filter((result) => result !== true)
 
   if (rfcsContentsDoNotExist.length > 0) {
-    console.warn(`[${ERROR_CODE_RFC_MISSING_CONTENT}]`, `RFC content (html/pdf) doesn't exist for these recent RFCs: ${rfcsContentsDoNotExist.join(', ')}`)
+    console.warn(
+      `[${ERROR_CODE_RFC_MISSING_CONTENT}]`,
+      `RFC content (html/pdf) doesn't exist for these recent RFCs: ${rfcsContentsDoNotExist.join(', ')}`
+    )
   } else {
     console.log('[RFC contents check] Success, all recent RFCs have content')
   }
 
-  return rfcs.filter(rfc => !rfcsContentsDoNotExist.includes(rfc.number))
+  return rfcs.filter((rfc) => !rfcsContentsDoNotExist.includes(rfc.number))
 }
 
-export const rfcCommonPathBuilder = (rfcNumber: number) =>
-  `rfc-common/${rfcNumber}.json` as const
+export const rfcCommonPathBuilder = (rfcNumber: number) => `rfc-common/${rfcNumber}.json` as const
 
-export const rfcHtmlJsonPathBuilder = (rfcNumber: number) =>
-  `rfc/${rfcNumber}.json` as const
+export const rfcHtmlJsonPathBuilder = (rfcNumber: number) => `rfc/${rfcNumber}.json` as const
 
-export const rfcRefPathBuilder = (rfcNumber: number) =>
-  `rfc-ref/${rfcNumber}.txt` as const
+export const rfcRefPathBuilder = (rfcNumber: number) => `rfc-ref/${rfcNumber}.txt` as const
 
-export const rfcImageFileNameBuilder = (
-  rfcNumber: number,
-  pageNumber: number
-) => `${rfcNumber}-page-${pageNumber}.png` as const
+export const rfcImageFileNameBuilder = (rfcNumber: number, pageNumber: number) =>
+  `${rfcNumber}-page-${pageNumber}.png` as const
 
-export const rfcImagePathBuilder = (fileName: string) =>
-  `rfc/${fileName}` as const
+export const rfcImagePathBuilder = (fileName: string) => `rfc/${fileName}` as const
 
 export const rfcBucketHtmlPathBuilder = (rfcNumber: number) => `html/rfc${rfcNumber}.html`
 
@@ -319,7 +275,8 @@ export const rfcMetaThumbnailPathBuilder = (rfcNumber: number) => `thumbnail/rfc
 
 export const metaThumbnailPathBuilder = (fileName: string) => `thumbnail/${fileName}` as const
 
-export const faviconPathBuilder = (widthPx: number, heightPx: number) => `other/favicon-${widthPx}x${heightPx}.png` as const
+export const faviconPathBuilder = (widthPx: number, heightPx: number) =>
+  `other/favicon-${widthPx}x${heightPx}.png` as const
 
 export const subseriesInfoPathBuilder = (
   subseriesType: SubseriesCommon['type'],
@@ -343,26 +300,25 @@ export const RFC_FEED_RSS_PATH = 'other/rfcrss.xml' as const
 
 export const RFC_FEED_ATOM_PATH = 'other/rfcatom.xml' as const
 
-export const IN_NOTES_RFC_REF_DOT_TXT_PATH =
-  'other/in-notes/rfc-ref.txt' as const
+export const IN_NOTES_RFC_REF_DOT_TXT_PATH = 'other/in-notes/rfc-ref.txt' as const
 
 export const ERRATA_JSON_PATH = 'other/errata.json' as const
 
-export const REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH =
-  'other/reports/CurrQstats.txt'
+export const REPORTS_CURRENT_QUEUE_STATS_DOT_TXT_PATH = 'other/reports/CurrQstats.txt'
 
 export const siteMapXmlPathPrefixBuilder = (sitemapFilename: string) => {
   return `other${sitemapFilename}` as const
 }
-export const markdownPagePathBuilder = (slug: string) =>
-  `content/${slug}.json` as const
+export const markdownPagePathBuilder = (slug: string) => `content/${slug}.json` as const
 
 export const UNUSABLE_RFC_NUMBERS_PATH = 'other/unusable-rfc-numbers.json'
 
-const UnusableRfcNumbersSchema = z.object({
-  number: z.number(),
-  comment: z.string()
-}).array()
+const UnusableRfcNumbersSchema = z
+  .object({
+    number: z.number(),
+    comment: z.string()
+  })
+  .array()
 
 export type UnusableRfcNumbers = z.infer<typeof UnusableRfcNumbersSchema>
 

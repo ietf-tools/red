@@ -4,7 +4,8 @@
       <div v-if="subseriesDocument" class="lg:min-w-[300px]">
         <p v-if="subseriesDocument.type === 'bcp'">
           BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs
-          related to a specific IETF process or recommended guidelines. The collection may become empty as the BCP evolves.
+          related to a specific IETF process or recommended guidelines. The collection may become empty as the BCP
+          evolves.
         </p>
         <p v-else-if="subseriesDocument.type === 'std'">
           STDs are stable identifiers for "Internet Standards." An STD may consist of a single RFC or a group of RFCs
@@ -12,7 +13,8 @@
         </p>
         <p v-else-if="subseriesDocument.type === 'fyi'">
           FYIs are stable identifiers for a series of "For Your Information" documents. An FYI consists of a single RFC
-          on general interest topics relating to the Internet. The collection may also be empty. The FYI subseries was retired in 2011.
+          on general interest topics relating to the Internet. The collection may also be empty. The FYI subseries was
+          retired in 2011.
         </p>
       </div>
     </template>
@@ -26,15 +28,20 @@
 
     <div class="min-h-screen">
       <div v-if="subseriesDocument" class="mt-3 flex flex-col gap-4">
-        <RFCCard v-if="subseriesDocument.contents.length > 0" v-for="rfc in subseriesDocument.contents" :key="rfc.number" :rfc="rfc" heading-level="3"
+        <RFCCard
+          v-if="subseriesDocument.contents.length > 0"
+          v-for="rfc in subseriesDocument.contents"
+          :key="rfc.number"
+          :rfc="rfc"
+          heading-level="3"
           :show-abstract="true" />
         <div v-else class="pl-6 pt-6">
-            <i>
-              <Component :is="formattedTitle" />
-              currently contains no RFCs.
-            </i>
+          <i>
+            <Component :is="formattedTitle" />
+            currently contains no RFCs.
+          </i>
         </div>
-      </div>      
+      </div>
     </div>
   </BodyLayoutDocument>
 </template>
@@ -42,11 +49,7 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
 import { SubseriesCommonSchema } from '~/utilities/rfc-validators'
-import {
-  infoSeriesPathBuilder,
-  apiSubseriesPathBuilder,
-  useApiV1UrlOrigin
-} from '~/utilities/url'
+import { infoSeriesPathBuilder, apiSubseriesPathBuilder, useApiV1UrlOrigin } from '~/utilities/url'
 import { useRfcEditorHead } from '~/utilities/head'
 import type { SeriesId } from '~/utilities/rfc'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
@@ -70,10 +73,14 @@ const { data: subseriesDocument, error: subseriesDocumentError } = await useAsyn
     const subseriesPath = apiSubseriesPathBuilder(props.subseriesId.type, props.subseriesId.number)
     const maybeSubseriesDocument = await $fetch(subseriesPath, {
       method: 'GET',
-      baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
+      baseURL: import.meta.server ? apiV1UrlOrigin : undefined
     })
     if (typeof maybeSubseriesDocument !== 'object') {
-      console.log("Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON", typeof maybeSubseriesDocument, maybeSubseriesDocument)
+      console.log(
+        "Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON",
+        typeof maybeSubseriesDocument,
+        maybeSubseriesDocument
+      )
       throw Error(`Unable to load RFC. See console for more.`)
     }
     const { data, error } = SubseriesCommonSchema.safeParse(maybeSubseriesDocument)
@@ -82,7 +89,8 @@ const { data: subseriesDocument, error: subseriesDocumentError } = await useAsyn
       throw Error(`Unable to load RFC. See console for more.`)
     }
     return data
-  })
+  }
+)
 
 if (subseriesDocumentError.value) {
   console.error(subseriesDocumentError.value)
@@ -114,9 +122,13 @@ const lastRfcPublished = computed(() => {
 })
 
 // see https://github.com/ietf-tools/red/issues/196
-const pageTitle = subseriesDocument.value ? `${subseriesDocument.value.type.toUpperCase()} ${subseriesDocument.value.number} subseries contains ${subseriesDocument.value.contents.length} RFC${subseriesDocument.value.contents.length === 1 ? '' : 's'}` : ''
+const pageTitle = subseriesDocument.value
+  ? `${subseriesDocument.value.type.toUpperCase()} ${subseriesDocument.value.number} subseries contains ${subseriesDocument.value.contents.length} RFC${subseriesDocument.value.contents.length === 1 ? '' : 's'}`
+  : ''
 
-const pageDescription = subseriesDocument.value ? `${subseriesDocument.value.type.toUpperCase()}${subseriesDocument.value.number} contains ${subseriesDocument.value.contents.length === 0 ? '0 RFCs' : subseriesDocument.value.contents.map(item => `RFC ${item.number}`).join(', ')}.` : ''
+const pageDescription = subseriesDocument.value
+  ? `${subseriesDocument.value.type.toUpperCase()}${subseriesDocument.value.number} contains ${subseriesDocument.value.contents.length === 0 ? '0 RFCs' : subseriesDocument.value.contents.map((item) => `RFC ${item.number}`).join(', ')}.`
+  : ''
 
 useRfcEditorHead({
   title: pageTitle,

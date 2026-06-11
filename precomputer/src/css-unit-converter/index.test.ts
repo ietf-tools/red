@@ -81,13 +81,7 @@ test('valid conversions', () => {
       unit = e[1],
       expected = e[2],
       targetUnit = e[3]
-    expect(
-      convertCSSUnit(
-        value as number,
-        unit as CSSLengthUnit,
-        targetUnit as CSSLengthUnit
-      )
-    ).toBeCloseTo(expected)
+    expect(convertCSSUnit(value as number, unit as CSSLengthUnit, targetUnit as CSSLengthUnit)).toBeCloseTo(expected)
   })
 })
 
@@ -102,281 +96,30 @@ type InvalidUnits = Record<CSSLengthUnit, CSSLengthUnit[]>
 
 test('invalid conversions', () => {
   const invalidUnits: InvalidUnits = {
-    px: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    cm: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    mm: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    in: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    ex: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    pt: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    pc: [
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    deg: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    grad: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    rad: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    turn: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      's',
-      'ms',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    s: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    ms: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      'Hz',
-      'kHz',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    Hz: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    kHz: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'dpi',
-      'dpcm',
-      'dppx'
-    ],
-    dpi: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz'
-    ],
-    dpcm: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz'
-    ],
-    dppx: [
-      'px',
-      'cm',
-      'mm',
-      'in',
-      'pt',
-      'pc',
-      'deg',
-      'grad',
-      'rad',
-      'turn',
-      's',
-      'ms',
-      'Hz',
-      'kHz'
-    ]
+    px: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    cm: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    mm: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    in: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    ex: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    pt: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    pc: ['deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    deg: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    grad: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    rad: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    turn: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 's', 'ms', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    s: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    ms: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 'Hz', 'kHz', 'dpi', 'dpcm', 'dppx'],
+    Hz: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 's', 'ms', 'dpi', 'dpcm', 'dppx'],
+    kHz: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 's', 'ms', 'dpi', 'dpcm', 'dppx'],
+    dpi: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz'],
+    dpcm: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz'],
+    dppx: ['px', 'cm', 'mm', 'in', 'pt', 'pc', 'deg', 'grad', 'rad', 'turn', 's', 'ms', 'Hz', 'kHz']
   } as const
 
   for (const unit in invalidUnits) {
     const unitKey = unit as CSSLengthUnit
     invalidUnits[unitKey].forEach((targetUnit) => {
-      expect(() =>
-        convertCSSUnit(10, unit as CSSLengthUnit, targetUnit)
-      ).toThrow()
+      expect(() => convertCSSUnit(10, unit as CSSLengthUnit, targetUnit)).toThrow()
     })
   }
 })

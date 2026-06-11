@@ -2,6 +2,10 @@
   "name": "precomputer",
   "version": "1.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ietf-tools/red.git"
+  },
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
@@ -11,11 +15,8 @@
     "test:unittests:watch": "TZ=UTC vitest run --watch",
     "generate:test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
     "generate:api": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/api-client.ts",
-    "dev-api-server": "node ./src/utilities/dev-api-server.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ietf-tools/red.git"
+    "dev-api-server": "node ./src/utilities/dev-api-server.ts",
+    "format": "oxfmt --ignore-path=.oxfmtignore ."
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.987.0",
@@ -27,12 +28,11 @@
     "es-toolkit": "1.44.0",
     "feed": "5.1.0",
     "jsdom": "26.1.0",
+    "libxml2-wasm": "0.6.0",
+    "luxon": "3.5.0",
     "micromark": "4.0.2",
     "micromark-extension-frontmatter": "2.0.0",
     "micromark-extension-gfm": "3.0.0",
-    "yaml": "2.9.0",
-    "libxml2-wasm": "0.6.0",
-    "luxon": "3.5.0",
     "sanitize-html": "2.17.0",
     "satori": "0.26.0",
     "satori-html": "0.3.2",
@@ -41,6 +41,7 @@
     "unpdf": "1.4.0",
     "vue": "3.5.31",
     "vue-tsc": "3.0.5",
+    "yaml": "2.9.0",
     "zod": "4.4.3"
   },
   "devDependencies": {
@@ -48,6 +49,7 @@
     "@types/node": "24.0.10",
     "@types/sanitize-html": "2.16.0",
     "fastify": "5.7.4",
+    "oxfmt": "0.53.0",
     "typescript": "5.8.3",
     "vitest": "3.2.4"
   }

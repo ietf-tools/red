@@ -26,9 +26,7 @@ export const getVNodeText = (vnode: unknown): string => {
       ) {
         return getVNodeText(children.default())
       } else if (Array.isArray(children)) {
-        return children
-          .map((item) => getVNodeText(item as ReturnType<typeof h>))
-          .join('')
+        return children.map((item) => getVNodeText(item as ReturnType<typeof h>)).join('')
       }
     } else {
       console.warn("Found object but don't know how to extract text from ", vnode)

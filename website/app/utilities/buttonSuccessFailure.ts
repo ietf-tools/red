@@ -1,7 +1,7 @@
-export type Message = { type: 'big', innerText: string } | { type: 'medium', innerText: string }
+export type Message = { type: 'big'; innerText: string } | { type: 'medium'; innerText: string }
 
-type Success = { type: 'success', message: Message[], timeoutMs: number }
-type Error = { type: 'error', message: Message[], timeoutMs: number }
+type Success = { type: 'success'; message: Message[]; timeoutMs: number }
+type Error = { type: 'error'; message: Message[]; timeoutMs: number }
 export type ButtonResult = Success | Error
 
 export type ButtonResulClickHandler = () => Promise<ButtonResult>

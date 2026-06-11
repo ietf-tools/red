@@ -1,24 +1,18 @@
 <template>
   <div class="h-full flex-1 print:block">
-    <DialogRoot
-      v-model:open="isModalOpen"
-      @close="isModalOpen = false"
-    >
+    <DialogRoot v-model:open="isModalOpen" @close="isModalOpen = false">
       <DialogPortal>
         <DialogOverlay />
-        <DialogContent :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
+        <DialogContent
+          :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
           'fixed inset-0 z-50 bg-blue-900 dark:bg-blue-950 overflow-y-scroll h-full'">
           <DialogTitle />
 
-          <RFCMobileBanner
-            :rfc="props.rfcBucketHtmlDocument.rfc"
-            :is-fixed="false"
-          >
+          <RFCMobileBanner :rfc="props.rfcBucketHtmlDocument.rfc" :is-fixed="false">
             <button
               class="bg-white rounded-l text-black p-2 flex items-center"
               aria-label="Close"
-              @click="isModalOpen = false"
-            >
+              @click="isModalOpen = false">
               <GraphicsExpandSidebar class="inline-block mr-1 rotate-180" />
             </button>
           </RFCMobileBanner>
@@ -27,8 +21,7 @@
               v-model="selectedTab"
               mode="mobile"
               :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
-              :has-table-of-contents="props.hasTableOfContents"
-            />
+              :has-table-of-contents="props.hasTableOfContents" />
           </div>
           <DialogClose />
         </DialogContent>
@@ -40,21 +33,13 @@
         v-model="selectedTab"
         mode="desktop"
         :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
-        :has-table-of-contents="props.hasTableOfContents"
-      />
+        :has-table-of-contents="props.hasTableOfContents" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  DialogClose,
-  DialogContent,
-  DialogOverlay,
-  DialogPortal,
-  DialogRoot,
-  DialogTitle,
-} from 'reka-ui'
+import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
@@ -80,7 +65,7 @@ const handleCloseAndNavigate = (id: string) => {
 
 const isMounted = ref(false)
 
-onMounted(() => isMounted.value = true)
+onMounted(() => (isMounted.value = true))
 
 provide(closeModalAndScrollToId, handleCloseAndNavigate)
 </script>

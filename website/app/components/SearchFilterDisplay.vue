@@ -6,8 +6,7 @@
       :key="attr.attribute"
       :attribute="attr.attribute"
       :label="attr.label"
-      :on="false"
-      >
+      :on="false">
       <template #default="{ value, refine }">
         <label class="text-base cursor-pointer flex items-center">
           <input
@@ -15,9 +14,10 @@
             type="checkbox"
             :value="value.name"
             :checked="value.isRefined"
-            @click="refine(value)"
-          />
-          <span class="ml-1">Hide <span class="text-red-800 dark:text-red-400">{{ attr.label }}</span></span>
+            @click="refine(value)" />
+          <span class="ml-1"
+            >Hide <span class="text-red-800 dark:text-red-400">{{ attr.label }}</span></span
+          >
           <Icon v-if="value.isRefined" name="mdi:hide" class="text-gray-400 ml-2" size="1.2em" />
         </label>
       </template>

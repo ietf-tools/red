@@ -9,16 +9,11 @@
         <RFCDocumentAuthor :author="author" />
       </li>
     </ul>
-    <ul
-      v-if="list2"
-      class="relative z-1 hidden lg:block print:block text-base text-gray-800 mt-1 dark:text-white">
+    <ul v-if="list2" class="relative z-1 hidden lg:block print:block text-base text-gray-800 mt-1 dark:text-white">
       <li v-if="isAprilFool" class="inline pr-2">
         <AprilFools />
       </li>
-      <li
-        v-for="(part, index) in list2"
-        :key="index"
-        class="inline text-[0.9rem] text-slate-600 dark:text-slate-200">
+      <li v-for="(part, index) in list2" :key="index" class="inline text-[0.9rem] text-slate-600 dark:text-slate-200">
         <GraphicsDiamond v-if="index > 0" class="align-middle" />{{ part }}
       </li>
     </ul>
@@ -56,7 +51,10 @@
     </template>
     <p
       v-if="obsoletedBy"
-      :class="['relative z-1 text-red-700 dark:text-red-300 text-base print:text-black', { 'mt-2': isMobileAbstractOpen }]">
+      :class="[
+        'relative z-1 text-red-700 dark:text-red-300 text-base print:text-black',
+        { 'mt-2': isMobileAbstractOpen }
+      ]">
       <Renderable :val="obsoletedBy" />
     </p>
   </div>

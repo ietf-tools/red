@@ -1,7 +1,8 @@
 <template>
   <label class="w-full">
     <span class="sr-only">{{ props.label }}</span>
-    <select v-model="value"
+    <select
+      v-model="value"
       class="w-full text-base border border-gray-400 dark:border-white dark:text-white py-2 pl-1 pr-6 scheme-light dark:scheme-dark"
       :title="props.label">
       <option value="" :disabled="isDisabled" class="text-gray-700">
@@ -9,7 +10,9 @@
       </option>
       <option value="">Any</option>
       <optgroup v-for="(yearMonthsArr, index) in yearMonthsByYear" :key="index" :label="yearMonthsArr[0]">
-        <option v-for="[yearMonthValue, yearMonthLabel] in yearMonthsArr[1]" :key="yearMonthValue"
+        <option
+          v-for="[yearMonthValue, yearMonthLabel] in yearMonthsArr[1]"
+          :key="yearMonthValue"
           :value="yearMonthValue">
           {{ yearMonthLabel }}
         </option>
@@ -49,9 +52,7 @@ const monthNames = [
 
 const startYear = props.startDate.getFullYear()
 
-const numberOfOptions =
-  (props.endDate.getFullYear() - startYear) * 12 +
-  (props.endDate.getMonth() + 1)
+const numberOfOptions = (props.endDate.getFullYear() - startYear) * 12 + (props.endDate.getMonth() + 1)
 
 /**
  * ie,
@@ -78,10 +79,7 @@ const yearMonthsByYear = Array.from({ length: numberOfOptions })
   .map((_, i): [string, string] => {
     const year = startYear + Math.floor(i / 12)
     const zeroBasedMonth = i % 12
-    return [
-      formatDateString(year, zeroBasedMonth + 1),
-      `${year} ${monthNames[zeroBasedMonth]}`
-    ]
+    return [formatDateString(year, zeroBasedMonth + 1), `${year} ${monthNames[zeroBasedMonth]}`]
   })
   .reverse()
   .reduce((acc, valueLabelArr) => {

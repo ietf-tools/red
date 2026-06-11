@@ -2,15 +2,11 @@
   <p
     class="p-3 w-full text-center"
     :aria-live="props.loadingStatus.type === 'error' ? 'assertive' : 'polite'"
-    aria-atomic="true"
-  >
+    aria-atomic="true">
     <template v-if="props.loadingStatus.type === 'idle'"></template>
-    <template v-if="props.loadingStatus.type === 'loading'">
-      Loading...
-    </template>
+    <template v-if="props.loadingStatus.type === 'loading'"> Loading... </template>
     <template v-if="props.loadingStatus.type === 'error'">
-      RFC Link Preview loading error. Please try again later. See web console
-      for error details.
+      RFC Link Preview loading error. Please try again later. See web console for error details.
     </template>
   </p>
 </template>

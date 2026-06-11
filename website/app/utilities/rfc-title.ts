@@ -8,10 +8,7 @@ import { infoSeriesPathBuilder } from './url'
  * Formats a string of 'RFCnumber' with non-bold/bold text with an NBSP between
  * Returns h() Component for rendering
  */
-export const formatTitleAsVNode = (
-  rfcId: string,
-  hasTrailingColon?: boolean
-): VNode => {
+export const formatTitleAsVNode = (rfcId: string, hasTrailingColon?: boolean): VNode => {
   const parts = parseSeriesId(rfcId)
 
   if (parts === undefined) {
@@ -26,14 +23,9 @@ export const formatTitleAsVNode = (
   ])
 }
 
-export const hasSubseries = (rfc: RfcCommon) =>
-  Boolean(rfc.subseries && rfc.subseries.length > 0)
+export const hasSubseries = (rfc: RfcCommon) => Boolean(rfc.subseries && rfc.subseries.length > 0)
 
-export const formatSubseriesAsVNode = (
-  rfc: RfcCommon,
-  hasTrailingColon: boolean,
-  hasUnderline: boolean
-): VNode => {
+export const formatSubseriesAsVNode = (rfc: RfcCommon, hasTrailingColon: boolean, hasUnderline: boolean): VNode => {
   const { subseries } = rfc
   if (!subseries || subseries.length === 0) {
     return h('span')
@@ -46,22 +38,17 @@ export const formatSubseriesAsVNode = (
         h(
           NuxtLink,
           {
-            to: infoSeriesPathBuilder(
-              `${subseries.type.toLowerCase()}${subseries.number}`
-            ),
+            to: infoSeriesPathBuilder(`${subseries.type.toLowerCase()}${subseries.number}`),
             class: [
-              !hasUnderline ? 'no-underline' : (
-                'underline decoration-gray-500 hover:decoration-black focus:decoration:black dark:decoration-gray-400 dark:hover:decoration-white'
-              ),
+              !hasUnderline
+                ? 'no-underline'
+                : 'underline decoration-gray-500 hover:decoration-black focus:decoration:black dark:decoration-gray-400 dark:hover:decoration-white',
               'relative z-100 hover:underline focus:underline py-3 rounded text-gray-800 dark:text-gray-300'
             ],
             title: `${subseries.type.toUpperCase()} ${subseries.number} contains RFC ${rfc.number}`
           },
           () => {
-            const title = formatTitleAsVNode(
-              `${subseries.type}${subseries.number}`,
-              hasTrailingColon
-            )
+            const title = formatTitleAsVNode(`${subseries.type}${subseries.number}`, hasTrailingColon)
             return title
           }
         )

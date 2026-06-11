@@ -40,13 +40,13 @@ The following conventions are required in RFCs. Updates will be made to text to 
 
 Please refer to [Reference Style Guidance](https://authors.ietf.org/en/reference-style-guidance) for information on constructing references to the following:
 
- - RFCs
- - STDs and BCPs
- - Errata reports
- - IANA registries
- - Internet-Drafts
- - Web-Based Public Code Repositories (e.g., GitHub)
- - Email or mailing lists
+- RFCs
+- STDs and BCPs
+- Errata reports
+- IANA registries
+- Internet-Drafts
+- Web-Based Public Code Repositories (e.g., GitHub)
+- Email or mailing lists
 
 #### Index Placement
 

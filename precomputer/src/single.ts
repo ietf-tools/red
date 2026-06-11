@@ -19,17 +19,14 @@ const main = async (rfcNumber: number): Promise<void> => {
       console.log(`Pushed RFC ${rfcNumber} to bucket successfully.`)
       process.exit(0)
     } else {
-      console.error(`Unable to process RFC ${rfcNumber}. If the RFC was NOT_ISSUED this isn't an error. Results: `,
+      console.error(
+        `Unable to process RFC ${rfcNumber}. If the RFC was NOT_ISSUED this isn't an error. Results: `,
         uploadResults
       )
     }
   } catch (err: unknown) {
     if (err instanceof Error) {
-      console.error(
-        `Failed to process RFC ${rfcNumber}: `,
-        err.message,
-        err.stack
-      )
+      console.error(`Failed to process RFC ${rfcNumber}: `, err.message, err.stack)
     } else {
       console.error(`Failed to process RFC ${rfcNumber}:`, err)
     }
@@ -38,11 +35,7 @@ const main = async (rfcNumber: number): Promise<void> => {
 }
 
 if (!process.argv[2]) {
-  throw Error(
-    `Script requires RFC Number arg but argv was ${JSON.stringify(
-      process.argv
-    )}`
-  )
+  throw Error(`Script requires RFC Number arg but argv was ${JSON.stringify(process.argv)}`)
 }
 
 main(parseInt(process.argv[2], 10))

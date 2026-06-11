@@ -8,7 +8,7 @@ import { SEARCH_PATH } from './url'
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
   // with old versions saved in localStorage values can still validate
-  isDidYouMeanActive: z.boolean().optional(),
+  isDidYouMeanActive: z.boolean().optional()
   // isCardHoverFocusTint: z.boolean().optional()
   // hasFontWeight_WCAG3_APCA: z.boolean().optional(),
   // showPreCopyButton: z.union([ENUM_STRING_UNDEFINED, z.literal('copy'), z.literal('unfolded-copy'), z.literal('copy-unmodified')]).optional()
@@ -29,7 +29,7 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'Homepage direct RFC/subseries links',
     description: `Homepage search box feature suggesting direct links to RFCs/BCPs/etc when typing "RFCn" or "BCP n" etc into the homepage search box. This only occurs on the homepage, not on the ${SEARCH_PATH} route.`,
     storageType: 'boolean'
-  },
+  }
   // isCardHoverFocusTint: {
   //   title: 'Website cards hover/focus tint',
   //   description: `Site-wide 'Card' feature that further indicates clickable area by tinting the card on hover/focus. RFC Cards heading won't toggle underline. Colours haven't been tested for APCA compliance. Tint is achieved by a semitransparent block covering the Card, so APCA testing has to be done on screenshots that compose the layers.`,
@@ -53,7 +53,7 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
-  isDidYouMeanActive: false,
+  isDidYouMeanActive: false
   // isCardHoverFocusTint: false,
   // isMockNonJSMenu: false,
   // hasFontWeight_WCAG3_APCA: false,
@@ -63,8 +63,8 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)
 
 export type WatchInputForFeatureFlagExperimentsProps = {
-  inputValueRef: Ref<string>,
-  isFeatureFlagsModalVisibleRef: Ref<boolean>,
+  inputValueRef: Ref<string>
+  isFeatureFlagsModalVisibleRef: Ref<boolean>
 }
 
 const LOCALSTORAGE_KEY = 'feature-flag-experiments'
@@ -87,7 +87,7 @@ export const loadFeatureFlagsFromLocalStorage = (featureFlagsRef: Ref<FeatureFla
     featureFlagsRef.value = {
       // merge current value as default data so that all keys will be present
       ...featureFlagsRef.value,
-      ...data,
+      ...data
     }
   } catch (e: unknown) {
     const _errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
@@ -99,14 +99,12 @@ const ENABLE_FEATURE_FLAGS_INPUT_VALUE = '//feature-flag-experiments'
 
 export const watchInputForFeatureFlagExperiments = ({
   inputValueRef,
-  isFeatureFlagsModalVisibleRef,
+  isFeatureFlagsModalVisibleRef
 }: WatchInputForFeatureFlagExperimentsProps): void => {
   watch(inputValueRef, () => {
     const { value } = inputValueRef
-    if (
-      value.trim() === ENABLE_FEATURE_FLAGS_INPUT_VALUE
-    ) {
-      console.log("Opening feature flag experiments modal")
+    if (value.trim() === ENABLE_FEATURE_FLAGS_INPUT_VALUE) {
+      console.log('Opening feature flag experiments modal')
       isFeatureFlagsModalVisibleRef.value = true
     }
   })
@@ -131,9 +129,13 @@ export const useFeatureFlags = () => {
         // localStorage APIs can throw Errors if browser storage is disabled or storage is full etc
         window.localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(featureFlagsRef.value))
       } catch (e: unknown) {
-        console.log(`[feature-flag-experiments]  Error saving config to localStorage (this is expected behaviour if browser localStorage is disabled or full)`, e)
+        console.log(
+          `[feature-flag-experiments]  Error saving config to localStorage (this is expected behaviour if browser localStorage is disabled or full)`,
+          e
+        )
       }
-    })
+    }
+  )
 
   return featureFlagsRef
 }
@@ -163,7 +165,7 @@ export const useAreFeatureFlagsEnabled = () => {
       return false
     }
     const entries = Object.entries(featureFlags)
-    const isEnabled = entries.reduce((acc, [_key, value]) => acc ? acc : Boolean(value), false)
+    const isEnabled = entries.reduce((acc, [_key, value]) => (acc ? acc : Boolean(value)), false)
     return isEnabled
   })
 

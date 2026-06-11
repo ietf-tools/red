@@ -10,12 +10,7 @@ import { type AsyncTaskItem } from './task.ts'
 
 const __dirname = import.meta.dirname
 const clientPath = path.resolve(__dirname, '..', '..')
-const faviconSvgSourcePath = path.resolve(
-  clientPath,
-  'src',
-  'assets',
-  'favicon.svg'
-)
+const faviconSvgSourcePath = path.resolve(clientPath, 'src', 'assets', 'favicon.svg')
 
 const transparent: ResizeOptions['background'] = { r: 0, g: 0, b: 0, alpha: 0 }
 
@@ -36,17 +31,19 @@ const FAVICON_DIMENSIONS: [number, number][] = [
   [48, 48],
   [180, 180],
   [192, 192],
-  [512, 512],
+  [512, 512]
 ]
 
 export const uploadFavicons = async (): AsyncTaskItem => {
-  return await Promise.all(FAVICON_DIMENSIONS.map(async dimension => {
-    const pngBuffer = await getFavIconImage(dimension[0], dimension[1])
-    const s3Key = faviconPathBuilder(dimension[0], dimension[1])
-    saveToS3(s3Key, pngBuffer)
-    console.log('[favicon]', 'Uploaded', s3Key)
-    return s3Key
-  }))
+  return await Promise.all(
+    FAVICON_DIMENSIONS.map(async (dimension) => {
+      const pngBuffer = await getFavIconImage(dimension[0], dimension[1])
+      const s3Key = faviconPathBuilder(dimension[0], dimension[1])
+      saveToS3(s3Key, pngBuffer)
+      console.log('[favicon]', 'Uploaded', s3Key)
+      return s3Key
+    })
+  )
 }
 
 const svgPromise = fsPromises.readFile(faviconSvgSourcePath, 'utf-8')

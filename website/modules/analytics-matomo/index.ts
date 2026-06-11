@@ -9,7 +9,7 @@ export default defineNuxtModule({
 
     addPlugin({
       src: resolve('runtime/client'),
-      mode: 'client',
+      mode: 'client'
     })
-  },
+  }
 })

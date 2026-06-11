@@ -5,10 +5,7 @@ import {
   RfcCommonStatusSchema,
   RfcCommonSubseriesTypeSchema
 } from '../../../website/app/utilities/rfc-validators.ts'
-import type {
-  SubseriesCommon,
-  RfcCommon
-} from '../../../website/app/utilities/rfc-validators.ts'
+import type { SubseriesCommon, RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { assertIsString } from './typescript.ts'
 import { sleep } from './sleep.ts'
 import { isRecovereableFetchError } from './fetch.ts'
@@ -30,14 +27,8 @@ export const getApiClient = (): ApiClient => {
   if (DATATRACKER_API_BASE) {
     // Production environment (prod/staging/etc)
 
-    assertIsString(
-      DATATRACKER_API_BASE,
-      "datatracker base wasn't a string"
-    )
-    assertIsString(
-      NUXT_DATATRACKER_API_KEY,
-      "nuxt datatracker api key wasn't a string"
-    )
+    assertIsString(DATATRACKER_API_BASE, "datatracker base wasn't a string")
+    assertIsString(NUXT_DATATRACKER_API_KEY, "nuxt datatracker api key wasn't a string")
 
     const headers: ApiClient['Config']['headers'] = {
       'X-Api-Key': NUXT_DATATRACKER_API_KEY
@@ -46,7 +37,7 @@ export const getApiClient = (): ApiClient => {
     const baseUrl = DATATRACKER_API_BASE
 
     if (hasPrintedAPIUrl === false) {
-      console.log("Using API ", baseUrl)
+      console.log('Using API ', baseUrl)
       hasPrintedAPIUrl = true
     }
 
@@ -72,15 +63,12 @@ export const getApiClient = (): ApiClient => {
 /**
  * Safety wrapper around docRetrieve access to catch 404 errors,
  * retry if timeouts etc.
- * 
+ *
  * Currently the API fails about 1/2000 uses when under heavy
  * load from 8 simultaneous Node processes, so this helps recover
  * and try again.
  */
-export const safeDocRetrieve = async (
-  api: ApiClient,
-  rfcNumber: number
-): Promise<Rfc | null> => {
+export const safeDocRetrieve = async (api: ApiClient, rfcNumber: number): Promise<Rfc | null> => {
   const isDocRetrieveNotFoundError = (e: unknown) => {
     return (
       e &&
@@ -121,9 +109,7 @@ export const safeDocRetrieve = async (
       } else if (await isRecovereableFetchError(e)) {
         errors.push(e)
         attemptsRemaining--
-        const stepOffMs =
-          (-attemptsRemaining + NUMBER_OF_API_RETRIES + 1) *
-          MINIMUM_DELAY_BETWEEN_REQUESTS_MS
+        const stepOffMs = (-attemptsRemaining + NUMBER_OF_API_RETRIES + 1) * MINIMUM_DELAY_BETWEEN_REQUESTS_MS
         console.warn(
           `[RFC ${rfcNumber}] API connection problem. ${attemptsRemaining} attempts remaining. Retrying in ${stepOffMs}ms`
         )
@@ -137,30 +123,23 @@ export const safeDocRetrieve = async (
   }
 
   console.log('[DocRetrieve] No attempts remaining. Errors were', ...errors)
-  throw Error(
-    `[RFC ${rfcNumber}] Red API docRetrive failure after ${NUMBER_OF_API_RETRIES} retries.`
-  )
+  throw Error(`[RFC ${rfcNumber}] Red API docRetrive failure after ${NUMBER_OF_API_RETRIES} retries.`)
 }
 
 /**
  * Safety wrapper around subseriesList access to retry on timeouts
- * 
+ *
  * Currently the API fails about 1/2000 uses when under heavy
  * load from 8 simultaneous Node processes, so this helps recover
  * and try again.
  */
-export const safeSubseriesList = async (
-  api: ApiClient,
-  subseriesType?: SubseriesCommon['type']
-) => {
+export const safeSubseriesList = async (api: ApiClient, subseriesType?: SubseriesCommon['type']) => {
   let attemptsRemaining = NUMBER_OF_API_RETRIES
 
   const errors: unknown[] = []
   while (attemptsRemaining > 0) {
     try {
-      const data = await api.red.subseriesList(
-        subseriesType ? { type: [subseriesType] } : {}
-      )
+      const data = await api.red.subseriesList(subseriesType ? { type: [subseriesType] } : {})
       // Although TS says it's an `SubseriesDoc[]` it's possible for network
       // intermediaries to mess with responses and return something else,
       // like login pages (eg Cloudflare Access) that respond with
@@ -180,9 +159,7 @@ export const safeSubseriesList = async (
       errors.push(e)
       if (await isRecovereableFetchError(e)) {
         attemptsRemaining--
-        const stepOffMs =
-          (-attemptsRemaining + NUMBER_OF_API_RETRIES + 1) *
-          MINIMUM_DELAY_BETWEEN_REQUESTS_MS
+        const stepOffMs = (-attemptsRemaining + NUMBER_OF_API_RETRIES + 1) * MINIMUM_DELAY_BETWEEN_REQUESTS_MS
         console.warn(
           `[SubseriesList] API connection problem. ${attemptsRemaining} attempts remaining. Retrying in ${stepOffMs}ms`
         )
@@ -201,7 +178,7 @@ export const safeSubseriesList = async (
 
 /**
  * Safety wrapper around docList access to retry on timeouts.
- * 
+ *
  * Currently the API fails about 1/2000 uses when under heavy
  * load from 8 simultaneous Node processes, so this helps recover
  * and try again.
@@ -227,9 +204,7 @@ export const safeDocList = async (api: ApiClient, options: DocListOptions) => {
       errors.push(e)
       if (await isRecovereableFetchError(e)) {
         attemptsRemaining--
-        const stepOffMs =
-          (-attemptsRemaining + NUMBER_OF_API_RETRIES + 1) *
-          MINIMUM_DELAY_BETWEEN_REQUESTS_MS
+        const stepOffMs = (-attemptsRemaining + NUMBER_OF_API_RETRIES + 1) * MINIMUM_DELAY_BETWEEN_REQUESTS_MS
         console.warn(
           `[DocList] API connection problem. ${attemptsRemaining} attempts remaining. Retrying in ${stepOffMs}ms`
         )
@@ -261,14 +236,9 @@ const getRfcCommon = async (rfcNumber: number): Promise<RfcCommon | null> => {
   }
 }
 
-const _getRfcCommonCache: Record<
-  number,
-  undefined | Promise<RfcCommon | null>
-> = {}
+const _getRfcCommonCache: Record<number, undefined | Promise<RfcCommon | null>> = {}
 
-export const getRfcCommonCached = async (
-  rfcNumber: number
-): Promise<RfcCommon | null> => {
+export const getRfcCommonCached = async (rfcNumber: number): Promise<RfcCommon | null> => {
   if (!_getRfcCommonCache[rfcNumber]) {
     _getRfcCommonCache[rfcNumber] = getRfcCommon(rfcNumber)
   }
@@ -346,13 +316,8 @@ type GetAllRFCsProps = {
   limit?: number
 }
 
-export const getAllRFCs = async ({
-  api,
-  limit
-}: GetAllRFCsProps): Promise<Readonly<RfcCommon[]>> => {
-  console.log(
-    `Downloading metadata for ${limit === undefined ? 'ALL' : limit} rfcs:`
-  )
+export const getAllRFCs = async ({ api, limit }: GetAllRFCsProps): Promise<Readonly<RfcCommon[]>> => {
+  console.log(`Downloading metadata for ${limit === undefined ? 'ALL' : limit} rfcs:`)
   const FIRST_RFC_NUMBER = 1
   const MAX_LIMIT_PER_REQUEST = 1000
   const rfcs: RfcCommon[] = []
@@ -377,10 +342,7 @@ export const getAllRFCs = async ({
     rfcs.sort((a, b) => a.number - b.number)
 
     if (rfcCommons.length > 0) {
-      console.log(
-        ` - rfc ${rfcCommons[rfcCommons.length - 1].number}-${rfcCommons[0].number
-        }`
-      )
+      console.log(` - rfc ${rfcCommons[rfcCommons.length - 1].number}-${rfcCommons[0].number}`)
     }
 
     if (
@@ -392,7 +354,8 @@ export const getAllRFCs = async ({
       (limit !== undefined && rfcs.length >= limit)
     ) {
       console.log(
-        `Finished downloading metadata for ${limit === undefined ? 'ALL' : limit} rfcs (${rfcs[0].number}-${rfcs[rfcs.length - 1].number
+        `Finished downloading metadata for ${limit === undefined ? 'ALL' : limit} rfcs (${rfcs[0].number}-${
+          rfcs[rfcs.length - 1].number
         })`
       )
       break
@@ -415,15 +378,11 @@ export const parseSubseriesName = (name: string) => {
     /\d+|\D+/g
   )
   if (!nameParts) {
-    throw Error(
-      `Unable to parse subseries name ${JSON.stringify(name)} into parts.`
-    )
+    throw Error(`Unable to parse subseries name ${JSON.stringify(name)} into parts.`)
   }
   const number = parseFloat(nameParts[1])
   if (Number.isNaN(number)) {
-    throw Error(
-      `Unable to parse subseries name ${JSON.stringify(name)} number.`
-    )
+    throw Error(`Unable to parse subseries name ${JSON.stringify(name)} number.`)
   }
   return {
     type: RfcCommonSubseriesTypeSchema.parse(nameParts[0]),
@@ -436,10 +395,7 @@ type GetAllSubseriesProps = {
   type?: SubseriesCommon['type']
 }
 
-export const getAllSubseries = async ({
-  api,
-  type
-}: GetAllSubseriesProps): Promise<Readonly<SubseriesCommon[]>> => {
+export const getAllSubseries = async ({ api, type }: GetAllSubseriesProps): Promise<Readonly<SubseriesCommon[]>> => {
   const subseries = await safeSubseriesList(api, type)
   const sortedSubseries = subseries
     .map((subseriesDoc): SubseriesCommon => {
@@ -461,10 +417,7 @@ export const getAllSubseries = async ({
   return Object.freeze(sortedSubseries)
 }
 
-export const sortSubseriesCommon = (
-  a: SubseriesCommon,
-  b: SubseriesCommon
-): number => {
+export const sortSubseriesCommon = (a: SubseriesCommon, b: SubseriesCommon): number => {
   const typeOrder = a.type.localeCompare(b.type)
   if (typeOrder !== 0) {
     return typeOrder
@@ -492,16 +445,15 @@ export const parseStatus = (
   const { data, error } = RfcCommonStatusSchema.safeParse(status)
   if (error) {
     throw Error(
-      `Unable to parse${rfcNumberForDebug !== undefined ? ` RFC ${rfcNumberForDebug}` : ''
+      `Unable to parse${
+        rfcNumberForDebug !== undefined ? ` RFC ${rfcNumberForDebug}` : ''
       } status ${JSON.stringify(status)}").`
     )
   }
   return data
 }
 
-const parseDraft = (
-  draft: Rfc['draft'] | RfcMetadata['draft']
-): RfcCommon['draft'] => {
+const parseDraft = (draft: Rfc['draft'] | RfcMetadata['draft']): RfcCommon['draft'] => {
   if (draft === undefined) return undefined
 }
 
@@ -552,9 +504,7 @@ const parseStreamName = (streamName?: string): RfcCommon['stream']['name'] => {
   throw Error(`Unable to parse stream name "${streamName}"`)
 }
 
-const parseArea = (
-  area: Rfc['area'] | RfcMetadata['area']
-): RfcCommon['area'] => {
+const parseArea = (area: Rfc['area'] | RfcMetadata['area']): RfcCommon['area'] => {
   if (!area) return undefined
   const { acronym, name } = area
 
@@ -564,10 +514,7 @@ const parseArea = (
   }
 }
 
-const parseGroup = (
-  group: Rfc['group'] | RfcMetadata['group'],
-  rfcNumberForDebug?: number
-): RfcCommon['group'] => {
+const parseGroup = (group: Rfc['group'] | RfcMetadata['group'], rfcNumberForDebug?: number): RfcCommon['group'] => {
   if (
     // https://github.com/ietf-tools/red/issues/337
     !group
@@ -578,9 +525,10 @@ const parseGroup = (
   const { acronym, name, type } = group
   const { data: parsedType, error } = RfcCommonGroupTypeSchema.safeParse(type)
   if (error) {
-    console.error("Zod error for input type: ", JSON.stringify(type), error)
+    console.error('Zod error for input type: ', JSON.stringify(type), error)
     throw Error(
-      `Problem parsing group type ${JSON.stringify(group)} ${rfcNumberForDebug !== undefined ? `from RFC ${rfcNumberForDebug}` : ''
+      `Problem parsing group type ${JSON.stringify(group)} ${
+        rfcNumberForDebug !== undefined ? `from RFC ${rfcNumberForDebug}` : ''
       }`
     )
   }
@@ -593,9 +541,7 @@ const parseGroup = (
 
 type RfcCommonSubseriesItem = NonNullable<RfcCommon['subseries']>[number]
 
-const parseSubseries = (
-  subseries: Rfc['subseries'] | RfcMetadata['subseries']
-): RfcCommon['subseries'] => {
+const parseSubseries = (subseries: Rfc['subseries'] | RfcMetadata['subseries']): RfcCommon['subseries'] => {
   if (!subseries) return undefined
 
   return subseries.map(
@@ -606,9 +552,7 @@ const parseSubseries = (
   )
 }
 
-export const parseSubseriesItemName = (
-  name: RfcSubseriesItem['name']
-): RfcCommonSubseriesItem['number'] => {
+export const parseSubseriesItemName = (name: RfcSubseriesItem['name']): RfcCommonSubseriesItem['number'] => {
   // name should look like "bcp123"
   const nameParts = name
     .replace(
@@ -625,52 +569,34 @@ export const parseSubseriesItemName = (
   }
   const potentialNumber = nameParts[1] // index 1 should be the number part
   if (potentialNumber === undefined) {
-    throw Error(
-      `Unable to parse name ${JSON.stringify(
-        name
-      )} into part with number. Was: ${JSON.stringify(nameParts)}`
-    )
+    throw Error(`Unable to parse name ${JSON.stringify(name)} into part with number. Was: ${JSON.stringify(nameParts)}`)
   }
   const num = parseFloat(potentialNumber)
   if (Number.isNaN(num)) {
-    throw Error(
-      `Unable to parse API rfc subseries name ${JSON.stringify(
-        name
-      )} to extract a number`
-    )
+    throw Error(`Unable to parse API rfc subseries name ${JSON.stringify(name)} to extract a number`)
   }
   return num
 }
 
 type RfcSubseriesItem = NonNullable<Rfc['subseries']>[number]
 
-const parseSubseriesItemType = (
-  type: RfcSubseriesItem['type']
-): RfcCommonSubseriesItem['type'] => RfcCommonSubseriesTypeSchema.parse(type)
+const parseSubseriesItemType = (type: RfcSubseriesItem['type']): RfcCommonSubseriesItem['type'] =>
+  RfcCommonSubseriesTypeSchema.parse(type)
 
-const parseAuthors = (
-  authors: Rfc['authors'] | RfcMetadata['authors']
-): RfcCommon['authors'] => {
-  return authors ?
-    authors.map((author): RfcCommon['authors'][number] => {
-      const { titlepage_name,
-        is_editor,
-        person,
-        email,
-        affiliation,
-        country,
-        datatracker_person_path
-      } = author
+const parseAuthors = (authors: Rfc['authors'] | RfcMetadata['authors']): RfcCommon['authors'] => {
+  return authors
+    ? authors.map((author): RfcCommon['authors'][number] => {
+        const { titlepage_name, is_editor, person, email, affiliation, country, datatracker_person_path } = author
 
-      return {
-        titlepage_name,
-        is_editor,
-        person: person ?? undefined,
-        email,
-        affiliation,
-        country,
-        datatracker_person_path
-      }
-    })
+        return {
+          titlepage_name,
+          is_editor,
+          person: person ?? undefined,
+          email,
+          affiliation,
+          country,
+          datatracker_person_path
+        }
+      })
     : []
 }

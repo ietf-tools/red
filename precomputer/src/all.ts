@@ -4,10 +4,7 @@ import { processExitFromUploadResults, processRfcUploadTask } from './utilities/
 
 const NUMBER_OF_CONCURRENT_RFC_PROCESSORS = 8
 
-const main = async (
-  minRfcNumber: number,
-  maxRfcNumber: number
-): Promise<void> => {
+const main = async (minRfcNumber: number, maxRfcNumber: number): Promise<void> => {
   if (Number.isNaN(minRfcNumber)) {
     throw Error(`Min RFC number (${minRfcNumber}) must be a number but was NaN`)
   }
@@ -16,9 +13,7 @@ const main = async (
   }
 
   if (minRfcNumber >= maxRfcNumber) {
-    throw Error(
-      `Min RFC number (${minRfcNumber}) must be smaller than max RFC number (${maxRfcNumber})`
-    )
+    throw Error(`Min RFC number (${minRfcNumber}) must be smaller than max RFC number (${maxRfcNumber})`)
   }
 
   const rfcRange = range(
@@ -42,11 +37,7 @@ const main = async (
 }
 
 if (!process.argv[2] || !process.argv[3]) {
-  throw Error(
-    `Script requires min and max RFC Number args but argv was ${JSON.stringify(
-      process.argv
-    )}`
-  )
+  throw Error(`Script requires min and max RFC Number args but argv was ${JSON.stringify(process.argv)}`)
 }
 
 const argv2 = process.argv[2]

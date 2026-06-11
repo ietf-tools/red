@@ -32,7 +32,7 @@ test('buildMarkdownToc: h3s nest under their preceding h2', () => {
     h(3, 'Background'),
     h(3, 'Motivation'),
     h(2, 'Methods'),
-    h(3, 'Approach'),
+    h(3, 'Approach')
   ])
   expect(result.sections).toHaveLength(2)
   expect(result.sections[0]?.links?.[0]?.title).toBe('Intro')
@@ -45,12 +45,7 @@ test('buildMarkdownToc: h3s nest under their preceding h2', () => {
 })
 
 test('buildMarkdownToc: h1 and h4+ are ignored', () => {
-  const result = buildMarkdownToc([
-    h(1, 'Title'),
-    h(2, 'Section'),
-    h(4, 'Deep'),
-    h(5, 'Deeper'),
-  ])
+  const result = buildMarkdownToc([h(1, 'Title'), h(2, 'Section'), h(4, 'Deep'), h(5, 'Deeper')])
   expect(result.sections).toHaveLength(1)
   expect(result.sections[0]?.links?.[0]?.title).toBe('Section')
 })

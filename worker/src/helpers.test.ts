@@ -27,8 +27,8 @@ test('htmlTemplate: escapes " in interpolated values', () => {
   expect(htmlTemplate`${'say "hi"'}`.toString()).toBe('say &quot;hi&quot;')
 })
 
-test('htmlTemplate: escapes \' in interpolated values', () => {
-  expect(htmlTemplate`${"it's"}`.toString()).toBe("it&#39;s")
+test("htmlTemplate: escapes ' in interpolated values", () => {
+  expect(htmlTemplate`${"it's"}`.toString()).toBe('it&#39;s')
 })
 
 test('htmlTemplate: does not escape static template strings', () => {
@@ -52,21 +52,21 @@ test('htmlTemplate: nested htmlTemplate is not escaped', () => {
 
 test('htmlTemplate: array of htmlTemplate results joined via safe()', () => {
   const items = ['cats', 'dogs']
-  const inner = items.map(item => htmlTemplate`<li>${item}</li>`)
+  const inner = items.map((item) => htmlTemplate`<li>${item}</li>`)
   const html = htmlTemplate`<ul>${safe(inner.join(''))}</ul>`
   expect(html.toString()).toBe('<ul><li>cats</li><li>dogs</li></ul>')
 })
 
 test('htmlTemplate: array map with safe() still escapes inner user data', () => {
   const items = ['<script>alert(1)</script>']
-  const inner = items.map(item => htmlTemplate`<li>${item}</li>`)
+  const inner = items.map((item) => htmlTemplate`<li>${item}</li>`)
   const html = htmlTemplate`<ul>${safe(inner.join(''))}</ul>`
   expect(html.toString()).toBe('<ul><li>&lt;script&gt;alert(1)&lt;/script&gt;</li></ul>')
 })
 
 test('htmlTemplate: joining without safe() escapes the html tags', () => {
   const items = ['cats']
-  const inner = items.map(item => htmlTemplate`<li>${item}</li>`)
+  const inner = items.map((item) => htmlTemplate`<li>${item}</li>`)
   const html = htmlTemplate`<ul>${inner.join('')}</ul>`
   expect(html.toString()).toBe('<ul>&lt;li&gt;cats&lt;/li&gt;</ul>')
 })

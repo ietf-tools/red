@@ -7,11 +7,7 @@ import { globby } from 'globby'
 const __dirname = import.meta.dirname
 const clientPath = path.resolve(__dirname, '..')
 const contentPath = path.resolve(clientPath, 'content')
-const contentMetadataPath = path.join(
-  clientPath,
-  'generated',
-  'content-metadata.json'
-)
+const contentMetadataPath = path.join(clientPath, 'generated', 'content-metadata.json')
 
 // Changing this schema? Be sure to copy changes to MarkdownPage.vue
 const ContentMetadataSchema = z.record(
@@ -39,10 +35,8 @@ const regenerateContentMetadata = async () => {
     contentMarkdownPaths.map(
       (contentMarkdownPath) =>
         new Promise<ContentMetadata>((resolve) => {
-          ; (async () => {
-            const relativePath = contentMarkdownPath
-              .substring(contentPath.length)
-              .replace(/\.md$/, '/')
+          ;(async () => {
+            const relativePath = contentMarkdownPath.substring(contentPath.length).replace(/\.md$/, '/')
 
             try {
               const gitLog = await git.log({
@@ -78,10 +72,7 @@ const regenerateContentMetadata = async () => {
 
   console.log(JSON.stringify(contentMetadata, null, 2))
 
-  fs.writeFileSync(
-    contentMetadataPath,
-    JSON.stringify(contentMetadata, null, 2)
-  )
+  fs.writeFileSync(contentMetadataPath, JSON.stringify(contentMetadata, null, 2))
 }
 
 // Create the file initially on Nuxt load so there aren't import errors on CI

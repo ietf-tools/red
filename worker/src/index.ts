@@ -42,7 +42,11 @@ const subseriesRedirect = (req: IRequest) => {
   //  * `/fyi/fyi3`
   //  * `/std/std3`
   // by redirecting to /info/bcp78/ etc
-  if(url.pathname.match(/^\/bcp\/bcp[0-9]+$/) || url.pathname.match(/^\/std\/std[0-9]+$/) || url.pathname.match(/^\/fyi\/fyi[0-9]+$/)) {
+  if (
+    url.pathname.match(/^\/bcp\/bcp[0-9]+$/) ||
+    url.pathname.match(/^\/std\/std[0-9]+$/) ||
+    url.pathname.match(/^\/fyi\/fyi[0-9]+$/)
+  ) {
     url.pathname = url.pathname.replace(/^\/(bcp|std|fyi)\//, '/info/')
     url.pathname += '/' // add the trailing space expected on the new site
     return redirectTo(url.toString(), 302)(req)
@@ -135,7 +139,9 @@ router
   .get('/errata_search.php', (req: IRequest) =>
     Response.redirect(legacyErrataSearchRedirectUrlBuilder(req.url, env.ENV_DOMAIN), 302)
   )
-  .get('/ien/:extra+', (req: IRequest) => Response.redirect(`https://history.rfc-editor.org/ien/${req.params.extra}`, 302))
+  .get('/ien/:extra+', (req: IRequest) =>
+    Response.redirect(`https://history.rfc-editor.org/ien/${req.params.extra}`, 302)
+  )
   .get('/in-notes/museum/:extra+', addNormalizedPath, (req: IRequest) => {
     return Response.redirect(`https://history.rfc-editor.org/${req.params.extra}`, 302)
   })
@@ -154,7 +160,10 @@ router
     }
   })
   .get('/materials/format/svg/', redirectTo('https://github.com/rfc-editor/svg-examples'))
-  .get('/materials/format/SVG-1.2-RFC.rnc', redirectTo('https://raw.githubusercontent.com/ietf-tools/RFCXML/main/SVG-1.2-RFC.rnc'))
+  .get(
+    '/materials/format/SVG-1.2-RFC.rnc',
+    redirectTo('https://raw.githubusercontent.com/ietf-tools/RFCXML/main/SVG-1.2-RFC.rnc')
+  )
   .get('/search/rfc_search.php', (req: IRequest) =>
     Response.redirect(legacySearchRedirectPathBuilder(req.url, env.ENV_DOMAIN), 302)
   )
@@ -181,7 +190,9 @@ router
   .get('/fyi/*', addNormalizedPath, subseriesRedirect)
   .get('/std/*', addNormalizedPath, subseriesRedirect)
 
-  .get('/refs/bibxml/:extra+', (req: IRequest) => Response.redirect(`https://bib.ietf.org/public/rfc/bibxml/${req.params.extra}`, 302))
+  .get('/refs/bibxml/:extra+', (req: IRequest) =>
+    Response.redirect(`https://bib.ietf.org/public/rfc/bibxml/${req.params.extra}`, 302)
+  )
 
   // Blobs
   .get('/api/v1/content/*', addNormalizedPath, blobsApiContentJson)

@@ -10,6 +10,6 @@ After posting the document as an Internet-Draft, the author should send an email
 - An assertion that no IANA allocation in the document requires IETF Review or Standards Action. See [RFC 8126](/info/rfc8126/) for a definition of these terms and [RFC 8726](/info/rfc8726/) for more information about how IANA requests are handled for Independent Submission Stream documents.
 - A statement describing the purpose, intended audience, merits, and significance of the document.
 - An acknowledgment that the IPR rules of RFCs [4846](/info/rfc4846/) and [5744](/info/rfc5744/) apply, and that unless the authors state otherwise, permission is granted to produce derivative works, in whole or in part, as stated in those RFCs.
-Suggestions for one or more competent and independent potential reviewers for the document, including contact information. This can speed the review and approval process.
+  Suggestions for one or more competent and independent potential reviewers for the document, including contact information. This can speed the review and approval process.
 
 The ISE uses the [IETF Datatracker](https://datatracker.ietf.org) through all stages of Independent Submission Stream document handling. The Datatracker page for a given draft shows its ISE state. [RFC 6322](/info/rfc6322/) provides descriptions of these states. In addition, a complete list showing the ISE state for all documents in the Independent Submission Stream is available in the [Datatracker](https://datatracker.ietf.org/stream/ise/).

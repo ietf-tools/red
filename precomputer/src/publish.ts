@@ -36,25 +36,18 @@ const createSuccessBody = (message: string): CallbackBody => {
   }
 }
 
-const main = async (
-  urlCallbackString: string,
-  rfcNumbers: number[]
-): Promise<void> => {
-  console.log("[publish.ts] Starting job...")
+const main = async (urlCallbackString: string, rfcNumbers: number[]): Promise<void> => {
+  console.log('[publish.ts] Starting job...')
   const urlCallback = safeURLParse(urlCallbackString)
 
   if (urlCallback === null) {
-    console.error(
-      'Failed to parse callback URL. Attempting to post error and then exiting...'
-    )
+    console.error('Failed to parse callback URL. Attempting to post error and then exiting...')
     try {
       // Although the URL parsing failed we'll attempt to post an error to it
       await fetch(urlCallbackString, {
         method: 'POST',
         headers,
-        body: JSON.stringify(
-          createErrorBody(`Failed to parse callback URL: ${urlCallbackString}`)
-        )
+        body: JSON.stringify(createErrorBody(`Failed to parse callback URL: ${urlCallbackString}`))
       })
     } catch (e) {
       console.error('Failed to post error to callback URL', e)
@@ -84,19 +77,12 @@ const main = async (
 
   if (rfcNumbers.some((rfcNumber) => Number.isNaN(rfcNumber))) {
     await sendErrorAndExit(
-      `Some RFC numbers were parsed as NaN (${rfcNumbers.join(', ')}). ${JSON.stringify(
-        process.argv
-      )}`
+      `Some RFC numbers were parsed as NaN (${rfcNumbers.join(', ')}). ${JSON.stringify(process.argv)}`
     )
   }
 
-
   if (rfcNumbers.some((rfcNumber) => rfcNumber < 1)) {
-    await sendErrorAndExit(
-      `Some RFC numbers were negative. ${JSON.stringify(
-        process.argv
-      )}`
-    )
+    await sendErrorAndExit(`Some RFC numbers were negative. ${JSON.stringify(process.argv)}`)
   }
 
   console.log(
@@ -109,9 +95,7 @@ const main = async (
 
   if (errors.length > 0) {
     console.error(errors)
-    await sendErrorAndExit(
-      'RFC processing had error(s). Not updating homepage.'
-    )
+    await sendErrorAndExit('RFC processing had error(s). Not updating homepage.')
   }
 
   try {
@@ -120,42 +104,26 @@ const main = async (
     const result = await indices({ api })
 
     if (taskItemWasSuccessful(result)) {
-      await sendSuccessAndExit(
-        'publishing completed successfully: RFCs updated and homepage updated.'
-      )
+      await sendSuccessAndExit('publishing completed successfully: RFCs updated and homepage updated.')
     } else {
-      await sendErrorAndExit(
-        'Updating RFCs succeeded but updating homepage did not.'
-      )
+      await sendErrorAndExit('Updating RFCs succeeded but updating homepage did not.')
     }
   } catch (e) {
     console.error(e)
-    await sendErrorAndExit(
-      'Updating RFCs succeeded but updating homepage did not.'
-    )
+    await sendErrorAndExit('Updating RFCs succeeded but updating homepage did not.')
   }
 }
 
 if (!process.argv[2]) {
-  throw Error(
-    `Script requires a URL callback but argv was ${JSON.stringify(
-      process.argv
-    )}`
-  )
+  throw Error(`Script requires a URL callback but argv was ${JSON.stringify(process.argv)}`)
 }
 
 if (!process.argv[3]) {
-  throw Error(
-    `Script requires comma separated list of RFC numbers but argv was ${JSON.stringify(
-      process.argv
-    )}`
-  )
+  throw Error(`Script requires comma separated list of RFC numbers but argv was ${JSON.stringify(process.argv)}`)
 }
 
 const callbackUrlString = process.argv[2]
 
-const commaSeparatedRfcNumbers = process.argv[3]
-  .split(',')
-  .map((numString) => parseInt(numString, 10))
+const commaSeparatedRfcNumbers = process.argv[3].split(',').map((numString) => parseInt(numString, 10))
 
 main(callbackUrlString, commaSeparatedRfcNumbers)

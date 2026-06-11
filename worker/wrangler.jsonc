@@ -90,9 +90,7 @@
       }
     },
     "production": {
-      "routes": [
-        { "pattern": "www.rfc-editor.org/*", "zone_name": "rfc-editor.org" }
-      ],
+      "routes": [{ "pattern": "www.rfc-editor.org/*", "zone_name": "rfc-editor.org" }],
       "kv_namespaces": [
         {
           "binding": "KV_STATE",

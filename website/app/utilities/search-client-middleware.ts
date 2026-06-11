@@ -1,9 +1,7 @@
 import { assertIsDefined } from './typescript'
 import type { TypeSenseClient } from './typesense'
 
-export function adaptSearchClient(
-  searchClient: TypeSenseClient
-): TypeSenseClient {
+export function adaptSearchClient(searchClient: TypeSenseClient): TypeSenseClient {
   const searchStore = useSearchStore()
 
   return {
@@ -17,9 +15,7 @@ export function adaptSearchClient(
           // OVERRIDES
           // ------------------------------------------
           // RFC Number query
-          const rfcMatch = r.params?.query.match(
-            /^rfc[ :=]{0,3}(?<num>[0-9]+)\s?$/i
-          )
+          const rfcMatch = r.params?.query.match(/^rfc[ :=]{0,3}(?<num>[0-9]+)\s?$/i)
           if (rfcMatch?.groups?.num) {
             if (!r.params.facetFilters) {
               r.params.facetFilters = []
@@ -31,9 +27,7 @@ export function adaptSearchClient(
           }
 
           // Subseries query (BCP, STD, FYI)
-          const subseriesMatch = r.params?.query.match(
-            /^(?<subseries>bcp|std|fyi)[ :=]{0,3}(?<num>[0-9]+)\s?$/i
-          )
+          const subseriesMatch = r.params?.query.match(/^(?<subseries>bcp|std|fyi)[ :=]{0,3}(?<num>[0-9]+)\s?$/i)
           if (subseriesMatch?.groups?.num) {
             if (!r.params.facetFilters) {
               r.params.facetFilters = []

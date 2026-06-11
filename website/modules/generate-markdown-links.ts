@@ -20,17 +20,8 @@ const contentPath = path.resolve(websitePath, 'content')
 const precomputerPath = path.resolve(websitePath, '..', 'precomputer')
 const publicPathsForPrecomputer = path.join(precomputerPath, 'src', 'assets', 'markdown-paths.json')
 
-const generatedMarkdownValidHrefs = path.resolve(
-  websitePath,
-  'shared',
-  'utils',
-  'markdown-valid-hrefs.ts'
-)
-const generatedMarkdownAllHrefs = path.resolve(
-  websitePath,
-  'generated',
-  'report-of-all-markdown-hrefs.ts'
-)
+const generatedMarkdownValidHrefs = path.resolve(websitePath, 'shared', 'utils', 'markdown-valid-hrefs.ts')
+const generatedMarkdownAllHrefs = path.resolve(websitePath, 'generated', 'report-of-all-markdown-hrefs.ts')
 
 /**
  * For a node in a document returned by `parseHtml()`
@@ -49,12 +40,7 @@ const attemptToGetAttribute = (
   attributeName: string
 ): string | undefined => {
   const NODE_ATTRIBUTES_KEY = ':@'
-  if (
-    !node ||
-    typeof node !== 'object' ||
-    (elementName && !(elementName in node)) ||
-    !(NODE_ATTRIBUTES_KEY in node)
-  ) {
+  if (!node || typeof node !== 'object' || (elementName && !(elementName in node)) || !(NODE_ATTRIBUTES_KEY in node)) {
     return
   }
 
@@ -75,9 +61,7 @@ const attemptToGetAttribute = (
 /**
  * Generate a heading anchor id by normalising the innerText
  */
-const generateHeadingId = async (
-  headingNode: unknown
-): Promise<string | undefined> => {
+const generateHeadingId = async (headingNode: unknown): Promise<string | undefined> => {
   if (
     !headingNode ||
     typeof headingNode !== 'object' ||
@@ -212,9 +196,7 @@ const getMarkdownInit = async () => {
   })
 
   const markdownFilesData = await Promise.all(
-    markdownPaths.map((markdownPath) =>
-      fsPromises.readFile(path.join(contentPath, markdownPath), 'utf-8')
-    )
+    markdownPaths.map((markdownPath) => fsPromises.readFile(path.join(contentPath, markdownPath), 'utf-8'))
   )
 
   const htmls = markdownFilesData.map(processMarkdown)
@@ -248,9 +230,7 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
       const validHrefs: string[] = []
       const markdownPath = markdownPaths[index]
       if (typeof markdownPath !== 'string') {
-        throw Error(
-          `Expected string but markdownPath was ${typeof markdownPath}`
-        )
+        throw Error(`Expected string but markdownPath was ${typeof markdownPath}`)
       }
       const publicPath = markdownPathToPublicPath(markdownPath)
       markdownPublicPaths.push(publicPath)
@@ -259,18 +239,9 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
         if (
           node &&
           typeof node === 'object' &&
-          ('h1' in node ||
-            'h2' in node ||
-            'h3' in node ||
-            'h4' in node ||
-            'h5' in node ||
-            'h6' in node)
+          ('h1' in node || 'h2' in node || 'h3' in node || 'h4' in node || 'h5' in node || 'h6' in node)
         ) {
-          const customAnchorId = await attemptToGetAttribute(
-            node,
-            undefined,
-            'id'
-          )
+          const customAnchorId = await attemptToGetAttribute(node, undefined, 'id')
           if (customAnchorId) {
             anchorIds.push(customAnchorId)
           } else {
@@ -282,23 +253,15 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
         }
       })
 
-      validHrefs.push(
-        publicPath,
-        ...anchorIds.map((anchorId) => `${publicPath}#${anchorId}`)
-      )
+      validHrefs.push(publicPath, ...anchorIds.map((anchorId) => `${publicPath}#${anchorId}`))
 
-      const validInternalLinks = anchorIds.map(
-        (headingText) => `#${headingText}`
-      )
+      const validInternalLinks = anchorIds.map((headingText) => `#${headingText}`)
 
       return { markdownPath, validHrefs, validInternalLinks }
     })
   )
 
-  await fsPromises.writeFile(
-    publicPathsForPrecomputer,
-    JSON.stringify(markdownPublicPaths.sort(), null, 2)
-  )
+  await fsPromises.writeFile(publicPathsForPrecomputer, JSON.stringify(markdownPublicPaths.sort(), null, 2))
 
   // Generates type MarkdownValidHrefs
   await fsPromises.writeFile(
@@ -312,12 +275,12 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
         )
       })
       .join('\n  | ')}\n\n${markdownsValidHrefs
-        .map((markdownValidHrefs) => {
-          return `export type ${markdownFileInternalLinksTypeBuilder(markdownValidHrefs.markdownPath)} =\n  | ${markdownValidHrefs.validInternalLinks
-            .map((validInternalLink) => JSON.stringify(validInternalLink))
-            .join('\n  | ')}`
-        })
-        .join('\n\n')}\n`
+      .map((markdownValidHrefs) => {
+        return `export type ${markdownFileInternalLinksTypeBuilder(markdownValidHrefs.markdownPath)} =\n  | ${markdownValidHrefs.validInternalLinks
+          .map((validInternalLink) => JSON.stringify(validInternalLink))
+          .join('\n  | ')}`
+      })
+      .join('\n\n')}\n`
   )
 
   logger?.info(` - regenerated ${path.basename(generatedMarkdownValidHrefs)}`)
@@ -350,9 +313,7 @@ const regenerateReportForAllMarkdownLinks = async (logger?: Logger) => {
         markdownHrefs.hrefs
           .map((href, index) => {
             if (typeof markdownHrefs.markdownPath !== 'string') {
-              throw Error(
-                `Expected string but markdownHrefs.markdownPath was ${typeof markdownHrefs.markdownPath}`
-              )
+              throw Error(`Expected string but markdownHrefs.markdownPath was ${typeof markdownHrefs.markdownPath}`)
             }
             return `const _${camelCase(markdownHrefs.markdownPath)}${index + 1}: ValidHrefs | ${markdownFileInternalLinksTypeBuilder(markdownHrefs.markdownPath)} = ${JSON.stringify(href)} // if there is a TS error fix the Markdown link in ${markdownHrefs.markdownPath}`
           })
@@ -381,9 +342,7 @@ export default defineNuxtModule({
         return
       }
 
-      logger.info(
-        `Regenerating markdown links because "${watcherPath}" changed`
-      )
+      logger.info(`Regenerating markdown links because "${watcherPath}" changed`)
       await regenerateValidMarkdownLinks(logger)
       await regenerateReportForAllMarkdownLinks(logger)
     })

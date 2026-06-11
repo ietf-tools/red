@@ -6,9 +6,7 @@ export type ErrataItemForTab = ErrataItem & {
   domTarget?: HTMLElement
 }
 
-export const errataItemToErrataItemForTab = (
-  errataItem: ErrataItem
-): ErrataItemForTab => {
+export const errataItemToErrataItemForTab = (errataItem: ErrataItem): ErrataItemForTab => {
   let domId: ErrataItemForTab['domId'] = undefined
   const { section } = errataItem
   if (section) {
@@ -50,10 +48,7 @@ export const errataItemToErrataItemForTab = (
 /**
  * Sorts errataItemForTab using DOM apis (this shouldn't run on the server)
  */
-export const sortErrataItemForTab = (
-  a: ErrataItemForTab,
-  b: ErrataItemForTab
-): number => {
+export const sortErrataItemForTab = (a: ErrataItemForTab, b: ErrataItemForTab): number => {
   // Errata items refer to RFC content so the list should be sorted to match
   // the order of the RFC itself where possible.
   //
@@ -78,15 +73,11 @@ export const sortErrataItemForTab = (
   //
   // If the domId is undefined then it's sorted to the end.
 
-  const errataIdSort =
-    parseFloat(a.errata_id.replace(/[^0-9]/g, '')) -
-    parseFloat(b.errata_id.replace(/[^0-9]/g, ''))
+  const errataIdSort = parseFloat(a.errata_id.replace(/[^0-9]/g, '')) - parseFloat(b.errata_id.replace(/[^0-9]/g, ''))
 
   if (a.domId && b.domId) {
     if (!a.domTarget || !b.domTarget) {
-      throw Error(
-        '[sortErrataItemForTab] internal error, any domId should have an associated domTarget by now'
-      )
+      throw Error('[sortErrataItemForTab] internal error, any domId should have an associated domTarget by now')
     }
     // Because this JS runs in the browser we have visibility of the RFC in the DOM
     // so attempt to order by the DOM order so that (eg) Section 1 can be followed
@@ -99,15 +90,9 @@ export const sortErrataItemForTab = (
     ) {
       const order = a.domTarget.compareDocumentPosition(b.domTarget)
       console.log(' - Sorting by DOM returned ', order)
-      if (
-        order === Node.DOCUMENT_POSITION_PRECEDING ||
-        order === Node.DOCUMENT_POSITION_CONTAINS
-      ) {
+      if (order === Node.DOCUMENT_POSITION_PRECEDING || order === Node.DOCUMENT_POSITION_CONTAINS) {
         return 1
-      } else if (
-        order === Node.DOCUMENT_POSITION_FOLLOWING ||
-        order === Node.DOCUMENT_POSITION_CONTAINED_BY
-      ) {
+      } else if (order === Node.DOCUMENT_POSITION_FOLLOWING || order === Node.DOCUMENT_POSITION_CONTAINED_BY) {
         return -1
       } else if (order === 0) {
         return errataIdSort

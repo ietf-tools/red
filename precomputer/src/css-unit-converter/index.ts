@@ -142,24 +142,15 @@ export const parseCSSLength = (
   return [length, unit]
 }
 
-export const convertCSSUnit = (
-  value: number,
-  sourceUnit: CSSLengthUnit,
-  targetUnit: CSSLengthUnit
-) => {
-  if (!conversions.hasOwnProperty(targetUnit))
-    throw new Error('Cannot convert to ' + targetUnit)
+export const convertCSSUnit = (value: number, sourceUnit: CSSLengthUnit, targetUnit: CSSLengthUnit) => {
+  if (!conversions.hasOwnProperty(targetUnit)) throw new Error('Cannot convert to ' + targetUnit)
 
   if (!conversions[targetUnit].hasOwnProperty(sourceUnit))
     throw new Error('Cannot convert from ' + sourceUnit + ' to ' + targetUnit)
 
   const target = conversions[targetUnit]
   if (!(sourceUnit in target)) {
-    throw Error(
-      `Unrecognised target ${JSON.stringify(
-        targetUnit
-      )} sourceUnit ${JSON.stringify(sourceUnit)} `
-    )
+    throw Error(`Unrecognised target ${JSON.stringify(targetUnit)} sourceUnit ${JSON.stringify(sourceUnit)} `)
   }
   // preceding code attempts to make the following `as number` assignment safe/correct
   // @ts-ignore

@@ -1,4 +1,3 @@
-
 import path from 'node:path'
 import fsPromises from 'node:fs/promises'
 import { RFC_INDEX_XSD_PATH, saveToS3 } from '../utilities/s3.ts'

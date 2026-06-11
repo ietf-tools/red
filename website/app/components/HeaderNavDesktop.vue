@@ -163,7 +163,7 @@ const menuData = useMenuData('desktop')
 // a menu in basic menu in HTML on the server
 const menuDataWithNoScripts = computed(() => {
   return menuData.value.map((menuItem) => {
-    const linkChildren = menuItem.children?.filter(child => child.href && !child.click)
+    const linkChildren = menuItem.children?.filter((child) => child.href && !child.click)
     const noScriptHtml = `<noscript data-nosnippet>${
       linkChildren && linkChildren.length > 0
         ? `<ul class="flex flex-col gap-1 list-none bg-white text-black px-3 py-2 gap-2 border-1 border-black rounded">${linkChildren

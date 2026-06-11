@@ -54,10 +54,7 @@ export const parseHtml = (html: string) => {
 
 type NodeHandler = (node: unknown) => Promise<void>
 
-export const walkNodes = async (
-  nodeList: unknown[],
-  nodeHandler: NodeHandler
-) => {
+export const walkNodes = async (nodeList: unknown[], nodeHandler: NodeHandler) => {
   // using a for-loop rather than await Promise.all(nodeList.map(...)) because we want
   // to run async code sequentially rather than concurrently
   // ie each nodeHandler(node) should complete before the next one is called.
@@ -95,10 +92,7 @@ export const getInnerText = async (nodeList: unknown[]): Promise<string> => {
   return innerText.join('')
 }
 
-export const filterByElementName = (
-  nodeList: unknown[],
-  elementName: string
-): unknown[] => {
+export const filterByElementName = (nodeList: unknown[], elementName: string): unknown[] => {
   return nodeList.filter((node) => {
     return node && typeof node === 'object' && elementName in node
   })
@@ -121,12 +115,7 @@ export const attemptToGetAttribute = (
   attributeName: string
 ): string | undefined => {
   const NODE_ATTRIBUTES_KEY = ':@'
-  if (
-    !node ||
-    typeof node !== 'object' ||
-    (elementName && !(elementName in node)) ||
-    !(NODE_ATTRIBUTES_KEY in node)
-  ) {
+  if (!node || typeof node !== 'object' || (elementName && !(elementName in node)) || !(NODE_ATTRIBUTES_KEY in node)) {
     return
   }
 
@@ -147,9 +136,7 @@ export const attemptToGetAttribute = (
 /**
  * Generate a heading anchor id by normalising the innerText
  */
-export const generateHeadingId = async (
-  headingNode: unknown
-): Promise<string | undefined> => {
+export const generateHeadingId = async (headingNode: unknown): Promise<string | undefined> => {
   if (
     !headingNode ||
     typeof headingNode !== 'object' ||

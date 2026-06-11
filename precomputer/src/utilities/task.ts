@@ -1,6 +1,6 @@
-import { PromisePoolError } from "@supercharge/promise-pool"
-import { uploadRfcData } from "../tasks/rfc.ts"
-import { logUnpdfStats } from "./unpdf-parent.ts"
+import { PromisePoolError } from '@supercharge/promise-pool'
+import { uploadRfcData } from '../tasks/rfc.ts'
+import { logUnpdfStats } from './unpdf-parent.ts'
 
 /**
  * Use taskItemWasSuccessful() and taskItemWasSkipped() to analyse results
@@ -13,10 +13,9 @@ export type TaskItem = (string | false)[]
 export type AsyncTaskItem = Promise<TaskItem>
 
 export const taskItemWasSuccessful = (taskItem: TaskItem): boolean =>
-  taskItem.length > 0 && taskItem.every(result => result !== false)
+  taskItem.length > 0 && taskItem.every((result) => result !== false)
 
-export const taskItemWasSkipped = (taskItem: TaskItem): boolean =>
-  taskItem.length === 0
+export const taskItemWasSkipped = (taskItem: TaskItem): boolean => taskItem.length === 0
 
 export const taskItemHadErrors = (taskItem: TaskItem): boolean => !taskItemWasSuccessful(taskItem)
 
@@ -64,16 +63,18 @@ export const processRfcUploadTask = async (rfcNumber: number): Promise<UploadRes
   throw Error('')
 }
 
-export const processExitFromUploadResults = ({ filename, uploadResults, exceptions }: ProcessExitFromUploadResultsProps): void => {
+export const processExitFromUploadResults = ({
+  filename,
+  uploadResults,
+  exceptions
+}: ProcessExitFromUploadResultsProps): void => {
   const uploadResultsWithErrors = uploadResults
-    .filter(
-      ([_rfcNumber, taskItem]) => {
-        if (taskItemWasSkipped(taskItem)) {
-          return false
-        }
-        return !taskItemWasSuccessful(taskItem)
+    .filter(([_rfcNumber, taskItem]) => {
+      if (taskItemWasSkipped(taskItem)) {
+        return false
       }
-    )
+      return !taskItemWasSuccessful(taskItem)
+    })
     .sort((a, b) => a[0] - b[0])
 
   const hasExceptions = exceptions.length > 0
@@ -85,10 +86,11 @@ export const processExitFromUploadResults = ({ filename, uploadResults, exceptio
     process.exit(0)
   }
 
-  console.error(`[${filename}] finished with ${[
-    hasExceptions ? 'exceptions thrown' : undefined,
-    hasErrors ? 'errors' : undefined,
-  ].filter(Boolean).join(', ')}.`)
+  console.error(
+    `[${filename}] finished with ${[hasExceptions ? 'exceptions thrown' : undefined, hasErrors ? 'errors' : undefined]
+      .filter(Boolean)
+      .join(', ')}.`
+  )
   logUnpdfStats()
 
   if (hasExceptions) {
@@ -98,11 +100,11 @@ export const processExitFromUploadResults = ({ filename, uploadResults, exceptio
   if (hasErrors) {
     console.error(
       uploadResultsWithErrors
-        .map(
-          ([rfcNumber, taskItem]) => {
-            return `RFC ${rfcNumber}: ${stringifyTaskItemErrors(taskItem)}`
-          })
-        .join('. '))
+        .map(([rfcNumber, taskItem]) => {
+          return `RFC ${rfcNumber}: ${stringifyTaskItemErrors(taskItem)}`
+        })
+        .join('. ')
+    )
   }
 
   process.exit(1)
@@ -114,17 +116,9 @@ const stringifyExceptions = (exceptions: ProcessExitFromUploadResultsProps['exce
       const { item: rfcNumber, name, raw } = exception
       const errorTitle = `RFC ${rfcNumber} exception:`
       if (raw instanceof AggregateError) {
-        return [
-          errorTitle,
-          name,
-          ...raw.errors.map((error) => String(error))
-        ]
+        return [errorTitle, name, ...raw.errors.map((error) => String(error))]
       }
-      return [
-        errorTitle,
-        name,
-        String(raw)
-      ]
+      return [errorTitle, name, String(raw)]
     }
     return [String(exception)]
   })
@@ -141,7 +135,7 @@ const stringifyTaskItemErrors = (taskItem: TaskItem): string => {
   }
 
   return taskItem
-    .map((job, index) => job === false ? index : undefined)
+    .map((job, index) => (job === false ? index : undefined))
     .filter((index) => index !== undefined)
     .join(', ')
 }

@@ -9,12 +9,7 @@ import { ErrataListSchema } from '../../../website/app/utilities/rfc-validators.
  * I thought it better to colocate the file with the data it generates rather than put it in a `scripts` directory.
  */
 
-const errataJsonPath = path.resolve(
-  import.meta.dirname,
-  '..',
-  'old-rfc-editor.org',
-  'errata.json'
-)
+const errataJsonPath = path.resolve(import.meta.dirname, '..', 'old-rfc-editor.org', 'errata.json')
 
 const regenerateTestData = async () => {
   const api = getApiClient()
@@ -39,9 +34,7 @@ const regenerateTestData = async () => {
       rfc.number === 9084
   )
 
-  const someSubseries = allSubseries.filter(
-    (subseries) => subseries.number % 10 < 5
-  )
+  const someSubseries = allSubseries.filter((subseries) => subseries.number % 10 < 5)
 
   const someErrataList = errataList.filter((errataItem) => {
     const rfcNumber = parseInt(errataItem['doc-id'].replace(/[A-Z]/g, ''), 10)

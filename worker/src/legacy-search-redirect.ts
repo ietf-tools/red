@@ -57,9 +57,7 @@ export const buildSearchRedirect = (
   const searchParam: SearchPathBuilderParams = {}
 
   if (legacySearchObj.rfc || legacySearchObj.title) {
-    searchParam.q = [legacySearchObj.rfc, legacySearchObj.title]
-      .filter(Boolean)
-      .join(' ')
+    searchParam.q = [legacySearchObj.rfc, legacySearchObj.title].filter(Boolean).join(' ')
   }
 
   if (legacySearchObj.pub_date_type === 'range') {
@@ -93,15 +91,16 @@ export const buildSearchRedirect = (
         }
         return undefined
       })
-      .filter(status => typeof status === 'string')
+      .filter((status) => typeof status === 'string')
       .sort()
-      .map(maybeStatus => statusSchema.parse(maybeStatus))
+      .map((maybeStatus) => statusSchema.parse(maybeStatus))
   }
 
   if (legacySearchObj.std_trk) {
     if (
       // this param is a subcategory of `pubstatus[] === 'Standards Track'` so it only applies if that was checked
-      pubstatusArray && pubstatusArray.includes('Standards Track')
+      pubstatusArray &&
+      pubstatusArray.includes('Standards Track')
     ) {
       searchParam.status = searchParam.status ?? []
 
@@ -148,14 +147,9 @@ export const buildSearchRedirect = (
   return searchPathBuilder(searchParam, envDomain)
 }
 
-const lowercaseMonthNames = monthNames.map((monthName) =>
-  monthName.toLowerCase()
-)
+const lowercaseMonthNames = monthNames.map((monthName) => monthName.toLowerCase())
 
-const monthNameToNumber = (
-  monthName: string,
-  defaultMonthNumber: number
-): number => {
+const monthNameToNumber = (monthName: string, defaultMonthNumber: number): number => {
   const index = lowercaseMonthNames.indexOf(monthName.toLowerCase())
 
   if (index === -1) {
@@ -170,16 +164,16 @@ const statusMappingFromLegacyToNew: Record<string, string[]> = {
   'Draft Standard': ['Draft Standard'],
   'Internet Standard': ['Internet Standard', 'standard'],
   'Best Current Practice': ['Best Current Practice', 'bcp'],
-  'Informational': ['Informational', 'fyi'],
-  'Experimental': ['Experimental', 'exp'],
-  'Historic': ['Historic', 'his'],
-  'Unknown': ['Unknown', 'unk'],
+  Informational: ['Informational', 'fyi'],
+  Experimental: ['Experimental', 'exp'],
+  Historic: ['Historic', 'his'],
+  Unknown: ['Unknown', 'unk'],
   'Not Issued': ['Not Issued']
 }
 
-const sortedStatusMappingFromLegacyToNew = Object.entries(
-  statusMappingFromLegacyToNew
-).sort((a, b) => a[0].localeCompare(b[0]))
+const sortedStatusMappingFromLegacyToNew = Object.entries(statusMappingFromLegacyToNew).sort((a, b) =>
+  a[0].localeCompare(b[0])
+)
 
 const streamMappingFromLegacyToNew: Record<string, string> = {
   '': 'Any',

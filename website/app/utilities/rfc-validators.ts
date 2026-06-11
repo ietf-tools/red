@@ -5,11 +5,7 @@ import { kebabCase } from 'es-toolkit'
  * Rule: Never make Zod schemas strict() if they run in the website (nuxt / client side) as this would prevent additional keys which should be harmless.
  */
 
-const DocumentHtmlTypeSchema = z.union([
-  z.literal('xml2rfc'),
-  z.literal('plaintext'),
-  z.literal('pdf-or-ps')
-])
+const DocumentHtmlTypeSchema = z.union([z.literal('xml2rfc'), z.literal('plaintext'), z.literal('pdf-or-ps')])
 export type DocumentHtmlType = z.infer<typeof DocumentHtmlTypeSchema>
 
 /**
@@ -27,11 +23,9 @@ const baseTocSectionSchema = z.object({
 type TocSectionType = z.infer<typeof baseTocSectionSchema> & {
   sections?: TocSectionType[]
 }
-const TocSectionSchema: z.ZodType<TocSectionType> = baseTocSectionSchema.extend(
-  {
-    sections: z.lazy(() => TocSectionSchema.array().optional())
-  }
-)
+const TocSectionSchema: z.ZodType<TocSectionType> = baseTocSectionSchema.extend({
+  sections: z.lazy(() => TocSectionSchema.array().optional())
+})
 
 export const TableOfContentsSchema = z.object({
   title: z.string(),
@@ -92,11 +86,7 @@ export const RfcCommonStatusSchema = z.union([
   })
 ])
 
-export const RfcCommonSubseriesTypeSchema = z.union([
-  z.literal('bcp'),
-  z.literal('fyi'),
-  z.literal('std')
-])
+export const RfcCommonSubseriesTypeSchema = z.union([z.literal('bcp'), z.literal('fyi'), z.literal('std')])
 
 export const RfcCommonFormatNameSchema = z.union([
   z.literal('xml'),
@@ -293,11 +283,9 @@ export type NodePojo = z.infer<typeof NodePojoSchema>
 export type DocumentPojo = NodePojo[]
 
 const MaxPreformattedLineLengthSchema = z.object({
-  max: z.number(),
+  max: z.number()
 })
-export type MaxPreformattedLineLengthSchemaType = z.infer<
-  typeof MaxPreformattedLineLengthSchema
->
+export type MaxPreformattedLineLengthSchemaType = z.infer<typeof MaxPreformattedLineLengthSchema>
 
 /**
  * Errata
@@ -311,10 +299,7 @@ export const ErrataStatusSchema = z.union([
 
 export type ErrataStatus = z.infer<typeof ErrataStatusSchema>
 
-export const ErrataTypeSchema = z.union([
-  z.literal('Editorial'),
-  z.literal('Technical')
-])
+export const ErrataTypeSchema = z.union([z.literal('Editorial'), z.literal('Technical')])
 
 export type ErrataType = z.infer<typeof ErrataTypeSchema>
 

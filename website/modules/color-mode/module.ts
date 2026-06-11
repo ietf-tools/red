@@ -5,7 +5,6 @@ import type { ColorModeStorage } from './runtime/types'
 const name = 'ietf-tools-color-mode'
 const version = '3.5.3-ietffork'
 
-
 const DEFAULTS: ModuleOptions = {
   preference: 'system',
   fallback: 'light',
@@ -17,14 +16,14 @@ const DEFAULTS: ModuleOptions = {
   storageKey: 'nuxt-color-mode',
   storage: 'localStorage',
   cookieAttrs: undefined,
-  disableTransition: false,
+  disableTransition: false
 }
 
 export default defineNuxtModule({
   meta: {
     name,
     version,
-    configKey: 'colorMode',
+    configKey: 'colorMode'
   },
   defaults: DEFAULTS,
   async setup(options, nuxt) {
@@ -33,26 +32,38 @@ export default defineNuxtModule({
     // Read script from disk and add to options
     const scriptPath = resolver.resolve('./script.min.js')
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
-    type ScriptOption = 'storageKey' | 'preference' | 'globalName' | 'classPrefix' | 'classSuffix' | 'dataValue' | 'fallback'
+    type ScriptOption =
+      | 'storageKey'
+      | 'preference'
+      | 'globalName'
+      | 'classPrefix'
+      | 'classSuffix'
+      | 'dataValue'
+      | 'fallback'
     options.script = scriptT.replace(/<%= options\.([^ ]+) %>/g, (_, option: ScriptOption) => options[option]).trim()
 
     if (options.storage === 'cookie') {
-      options.cookieAttrs ??= { 'max-age': '31536000', 'path': '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
+      options.cookieAttrs ??= { 'max-age': '31536000', path: '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
     }
 
     // Inject options via virtual template
     const storageTypes: Record<ColorModeStorage, `"${ColorModeStorage}"`> = {
       cookie: '"cookie"',
       localStorage: '"localStorage"',
-      sessionStorage: '"sessionStorage"',
+      sessionStorage: '"sessionStorage"'
     }
     addTemplate({
       filename: 'color-mode-options.mjs',
-      getContents: () => Object.entries(options).map(([key, value]) =>
-        (key === 'storage' ? `/** @type {${Object.values(storageTypes).join(' | ')}} */\n` : '')
-        + (key === 'cookieAttrs' ? `/** @type {Record<string, unknown> | undefined} */\n` : '')
-        + `export const ${key} = ${JSON.stringify(value, null, 2)}
-      `).join('\n'),
+      getContents: () =>
+        Object.entries(options)
+          .map(
+            ([key, value]) =>
+              (key === 'storage' ? `/** @type {${Object.values(storageTypes).join(' | ')}} */\n` : '') +
+              (key === 'cookieAttrs' ? `/** @type {Record<string, unknown> | undefined} */\n` : '') +
+              `export const ${key} = ${JSON.stringify(value, null, 2)}
+      `
+          )
+          .join('\n')
     })
 
     const runtimeDir = resolver.resolve('./runtime')
@@ -80,9 +91,12 @@ export default defineNuxtModule({
     // @ts-expect-error module may not be installed
     nuxt.hook('tailwindcss:config', async (tailwindConfig) => {
       const isAfter341 = true
-      tailwindConfig.darkMode = tailwindConfig.darkMode ?? [isAfter341 ? 'selector' : 'class', `[class~="${options.classPrefix}dark${options.classSuffix}"]`]
+      tailwindConfig.darkMode = tailwindConfig.darkMode ?? [
+        isAfter341 ? 'selector' : 'class',
+        `[class~="${options.classPrefix}dark${options.classSuffix}"]`
+      ]
     })
-  },
+  }
 })
 
 export interface ModuleOptions {

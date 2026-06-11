@@ -51,9 +51,7 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
     if (object) {
       return createBlobResponse(object, detectContentType(objectPath), canonicalUrl)
     }
-  } else if (
-    ['.html', '.json', '.pdf', '.txt', '.xml'].some((ft) => objectPath.endsWith(ft))
-  ) {
+  } else if (['.html', '.json', '.pdf', '.txt', '.xml'].some((ft) => objectPath.endsWith(ft))) {
     const fileType = objectPath.split('.').at(-1)
     const object = await env.RFC_BUCKET.get(`${fileType}/${objectPath}`)
     if (object) {
@@ -253,7 +251,7 @@ export async function blobsStatics(req: IRequest, env: Env): Promise<Response | 
     { from: '/sitemap.xml', to: 'other/sitemap.xml' },
     { from: '/reports/CurrQstats.txt', to: 'other/reports/CurrQstats.txt' },
     { from: '/api/v1/unusable-rfc-numbers.json', to: 'other/unusable-rfc-numbers.json' },
-    { from: '/js/metadata.min.js', to: 'other/legacy/metadata.min.js' },
+    { from: '/js/metadata.min.js', to: 'other/legacy/metadata.min.js' }
   ]
 
   const mapping = mappings.find((mapping) => mapping.from === req.normalizedPath)

@@ -1,11 +1,23 @@
 <template>
-  <VerticalScrollable v-if="props" ref="vertical-scrollable"
+  <VerticalScrollable
+    v-if="props"
+    ref="vertical-scrollable"
     :class="`overflow-y-auto min-h-0 flex flex-col ${props.wrapperClass}`">
     <slot />
-    <TableOfContentsHighlightSection :sections="props.toc.sections" :depth="0" :list-type-element="listTypeElement"
-      :active-id="activeId" :handle-click="handleClick" :make-toc-id="makeTocId" :is-ssr="isSSR"
-      :list-class="props.listClass" :nested-list-class="props.nestedListClass" :links-class="props.linksClass"
-      :links-active-class="props.linksActiveClass" :link-class="props.linkClass" :last-link-class="props.lastLinkClass"
+    <TableOfContentsHighlightSection
+      :sections="props.toc.sections"
+      :depth="0"
+      :list-type-element="listTypeElement"
+      :active-id="activeId"
+      :handle-click="handleClick"
+      :make-toc-id="makeTocId"
+      :is-ssr="isSSR"
+      :list-class="props.listClass"
+      :nested-list-class="props.nestedListClass"
+      :links-class="props.linksClass"
+      :links-active-class="props.linksActiveClass"
+      :link-class="props.linkClass"
+      :last-link-class="props.lastLinkClass"
       :show-last-link-icon="props.showLastLinkIcon" />
   </VerticalScrollable>
 </template>
@@ -14,11 +26,7 @@
 /**
  * Table of Contents that highlights titles that are in the browser viewport
  */
-import {
-  useTocActiveId,
-  useScrollTocContainer,
-  useValidateIds
-} from '../utilities/scroll'
+import { useTocActiveId, useScrollTocContainer, useValidateIds } from '../utilities/scroll'
 import type { RfcEditorToc } from '../utilities/tableOfContents'
 
 type Section = RfcEditorToc['sections'][number]
@@ -38,24 +46,27 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const listTypeElement = computed(() =>
-  props.listType === 'numbered' ? 'ol' : 'ul'
-)
+const listTypeElement = computed(() => (props.listType === 'numbered' ? 'ol' : 'ul'))
 
 const verticalScrollableRef = useTemplateRef('vertical-scrollable')
 
 const wrapperRef = computed(() => {
   const { value } = verticalScrollableRef
-  if (value && typeof value === 'object' && "scrollContainer" in value && value.scrollContainer instanceof HTMLElement) {
+  if (
+    value &&
+    typeof value === 'object' &&
+    'scrollContainer' in value &&
+    value.scrollContainer instanceof HTMLElement
+  ) {
     return value.scrollContainer
   }
   return null
 })
 
 const flattenSectionLinkIds = (section: Section): string[] =>
-  (section.links ?? []).map((link) => link.id).concat(
-    section.sections ? section.sections.flatMap(flattenSectionLinkIds) : []
-  )
+  (section.links ?? [])
+    .map((link) => link.id)
+    .concat(section.sections ? section.sections.flatMap(flattenSectionLinkIds) : [])
 
 const ids = computed(() => props.toc.sections.flatMap(flattenSectionLinkIds))
 
@@ -116,6 +127,6 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  timers.forEach(timer => clearTimeout(timer))
+  timers.forEach((timer) => clearTimeout(timer))
 })
 </script>

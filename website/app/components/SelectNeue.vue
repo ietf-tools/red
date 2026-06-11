@@ -1,16 +1,16 @@
 <template>
-  <span :class="[
-    'inline-block bg-white dark:bg-black shadow-sm outline-1 rounded-xs outline-gray-400 hover:outline-black dark:hover:outline-gray-300 focus-within:ring-black focus-within:ring-offset-3 focus-within:ring-1',
-    props.class
-  ]">
+  <span
+    :class="[
+      'inline-block bg-white dark:bg-black shadow-sm outline-1 rounded-xs outline-gray-400 hover:outline-black dark:hover:outline-gray-300 focus-within:ring-black focus-within:ring-offset-3 focus-within:ring-1',
+      props.class
+    ]">
     <select
       v-bind="$attrs"
       v-model="model"
       :class="[
         'focus:ring-none focus:outline-none py-2 mx-2 bg-white text-black dark:bg-black dark:text-white',
         props.selectClass
-      ]"
-    >
+      ]">
       <slot />
     </select>
   </span>

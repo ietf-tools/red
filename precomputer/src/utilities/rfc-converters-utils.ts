@@ -49,7 +49,7 @@ const organisationsAsUsers = [
   'IANA', // RFC 3330
   'IAB Advisory Committee', // RFC 3716
   'IAB and IESG', // RFC 4089
-  'RFC Editor', // RFC 5000, RFC 5540
+  'RFC Editor' // RFC 5000, RFC 5540
 ]
 
 export type FormatAuthorStyle = 'regular' | 'brief' | 'reverse'
@@ -64,10 +64,7 @@ export type FormatAuthorStyle = 'regular' | 'brief' | 'reverse'
  * ...and if they're an editor they get an "Ed." suffix
  *
  */
-export const formatAuthor = (
-  author: RfcAuthor,
-  style: FormatAuthorStyle
-): string => {
+export const formatAuthor = (author: RfcAuthor, style: FormatAuthorStyle): string => {
   const { titlepage_name } = author
   if (!titlepage_name) return ''
 
@@ -91,22 +88,13 @@ export const formatAuthor = (
       let newBit = ''
       switch (style) {
         case 'regular':
-          newBit =
-            index === arr.length - 1
-              ? ` ${item}`
-              : `${item.substring(0, 1).toUpperCase()}.`
+          newBit = index === arr.length - 1 ? ` ${item}` : `${item.substring(0, 1).toUpperCase()}.`
           return `${acc}${newBit}`
         case 'brief':
-          newBit =
-            index === arr.length - 1
-              ? `${item}, `
-              : `${item.substring(0, 1).toUpperCase()}.`
+          newBit = index === arr.length - 1 ? `${item}, ` : `${item.substring(0, 1).toUpperCase()}.`
           return `${newBit}${acc}`
         case 'reverse':
-          newBit =
-            index === arr.length - 1
-              ? `${item}, `
-              : `${item.substring(0, 1).toUpperCase()}.`
+          newBit = index === arr.length - 1 ? `${item}, ` : `${item.substring(0, 1).toUpperCase()}.`
           return `${newBit}${acc}`
       }
       assertNever(style)
@@ -115,18 +103,12 @@ export const formatAuthor = (
   return author.is_editor ? `${name}${EDITOR_SUFFIX}` : name
 }
 
-export const formatIdentifiers = (
-  identifiers: RfcCommon['identifiers'],
-  separator: string = ': '
-): string[] => {
+export const formatIdentifiers = (identifiers: RfcCommon['identifiers'], separator: string = ': '): string[] => {
   if (!identifiers || identifiers.length === 0) return []
-  return identifiers.map(
-    (identifier) =>
-      `${identifier.type.toUpperCase()}${separator}${identifier.value}`
-  )
+  return identifiers.map((identifier) => `${identifier.type.toUpperCase()}${separator}${identifier.value}`)
 }
 
-type FormatNames = RfcCommon['formats'][number]["format"]
+type FormatNames = RfcCommon['formats'][number]['format']
 type UppercaseFormats = Uppercase<FormatNames> | 'ASCII'
 
 export const formatFormat = (
@@ -149,15 +131,11 @@ export const formatFormat = (
       return 'JSON'
     case 'notprepped':
       return 'NOTPREPPED'
-
   }
   throw Error(`Unexpected format "${format}"`)
 }
 
-export const formatDatePublished = (
-  dt: DateTime,
-  isAprilFirstMode: boolean
-): string => {
+export const formatDatePublished = (dt: DateTime, isAprilFirstMode: boolean): string => {
   if (isAprilFirstMode && dt.month === 4 && dt.day === 1) {
     // handle April 1st
     return dt.toFormat('d LLLL yyyy')

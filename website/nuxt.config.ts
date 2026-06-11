@@ -84,7 +84,7 @@ export default defineNuxtConfig({
         '@vueuse/core',
         'core-js/actual/array/to-sorted',
         'vue-instantsearch/vue3/es',
-        'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js',
+        'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
       ]
     }
   },
@@ -171,6 +171,6 @@ export default defineNuxtConfig({
     }
   },
   devServer: {
-    host: '0.0.0.0',
+    host: '0.0.0.0'
   }
 })

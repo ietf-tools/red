@@ -29,9 +29,7 @@ test('parseStatusSlug: bad inputs', () => {
 })
 
 test('parseStatusSlug: good inputs', () => {
-  expect(
-    parseStatus({ slug: 'bcp', name: 'best current practice' })
-  ).toStrictEqual({
+  expect(parseStatus({ slug: 'bcp', name: 'best current practice' })).toStrictEqual({
     slug: 'bcp',
     name: 'best current practice'
   })
@@ -51,12 +49,10 @@ test('parseStatusSlug: good inputs', () => {
     name: 'informational'
   })
 
-  expect(parseStatus({ slug: 'not-issued', name: 'not issued' })).toStrictEqual(
-    {
-      slug: 'not-issued',
-      name: 'not issued'
-    }
-  )
+  expect(parseStatus({ slug: 'not-issued', name: 'not issued' })).toStrictEqual({
+    slug: 'not-issued',
+    name: 'not issued'
+  })
 
   expect(parseStatus({ slug: 'unkn', name: 'unknown' })).toStrictEqual({
     slug: 'unkn',

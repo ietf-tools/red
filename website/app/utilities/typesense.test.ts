@@ -59,8 +59,7 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
             },
             {
               count: 3,
-              highlighted:
-                'rai - Real-time Applications and Infrastructure Area',
+              highlighted: 'rai - Real-time Applications and Infrastructure Area',
               value: 'rai - Real-time Applications and Infrastructure Area'
             },
             {
@@ -1147,8 +1146,7 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
             },
             {
               count: 3,
-              highlighted:
-                'aqm - Active Queue Management and Packet Scheduling',
+              highlighted: 'aqm - Active Queue Management and Packet Scheduling',
               value: 'aqm - Active Queue Management and Packet Scheduling'
             },
             {
@@ -1198,20 +1196,17 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
             },
             {
               count: 2,
-              highlighted:
-                'sipping - Session Initiation Proposal Investigation',
+              highlighted: 'sipping - Session Initiation Proposal Investigation',
               value: 'sipping - Session Initiation Proposal Investigation'
             },
             {
               count: 2,
-              highlighted:
-                'trill - Transparent Interconnection of Lots of Links',
+              highlighted: 'trill - Transparent Interconnection of Lots of Links',
               value: 'trill - Transparent Interconnection of Lots of Links'
             },
             {
               count: 2,
-              highlighted:
-                'extra - Email mailstore and eXtensions To Revise or Amend',
+              highlighted: 'extra - Email mailstore and eXtensions To Revise or Amend',
               value: 'extra - Email mailstore and eXtensions To Revise or Amend'
             },
             {
@@ -1331,34 +1326,28 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
             },
             {
               count: 1,
-              highlighted:
-                'dnsind - DNS IXFR, Notification, and Dynamic Update',
+              highlighted: 'dnsind - DNS IXFR, Notification, and Dynamic Update',
               value: 'dnsind - DNS IXFR, Notification, and Dynamic Update'
             },
             {
               count: 1,
-              highlighted:
-                'behave - Behavior Engineering for Hindrance Avoidance',
+              highlighted: 'behave - Behavior Engineering for Hindrance Avoidance',
               value: 'behave - Behavior Engineering for Hindrance Avoidance'
             },
             {
               count: 1,
-              highlighted:
-                'appsawg - ART Area General Applications Working Group',
+              highlighted: 'appsawg - ART Area General Applications Working Group',
               value: 'appsawg - ART Area General Applications Working Group'
             },
             {
               count: 1,
-              highlighted:
-                'straw - Sip Traversal Required for Applications to Work',
+              highlighted: 'straw - Sip Traversal Required for Applications to Work',
               value: 'straw - Sip Traversal Required for Applications to Work'
             },
             {
               count: 1,
-              highlighted:
-                'nwcrg - Coding for efficient NetWork Communications Research Group',
-              value:
-                'nwcrg - Coding for efficient NetWork Communications Research Group'
+              highlighted: 'nwcrg - Coding for efficient NetWork Communications Research Group',
+              value: 'nwcrg - Coding for efficient NetWork Communications Research Group'
             }
           ],
           field_name: 'group.full',
@@ -2175,27 +2164,23 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'Public Key Cryptography (PKC) <mark>test</mark> keys that may be'
+              snippet: 'Public Key Cryptography (PKC) <mark>test</mark> keys that may be'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                'Standard Public Key Cryptography (PKC) <mark>Test</mark> Keys'
+              snippet: 'Standard Public Key Cryptography (PKC) <mark>Test</mark> Keys'
             }
           },
           highlights: [
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'Public Key Cryptography (PKC) <mark>test</mark> keys that may be'
+              snippet: 'Public Key Cryptography (PKC) <mark>test</mark> keys that may be'
             },
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                'Standard Public Key Cryptography (PKC) <mark>Test</mark> Keys'
+              snippet: 'Standard Public Key Cryptography (PKC) <mark>Test</mark> Keys'
             }
           ],
           text_match: 578730123365187698,
@@ -2263,27 +2248,23 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'This document provides <mark>test</mark> vectors to validate implementations'
+              snippet: 'This document provides <mark>test</mark> vectors to validate implementations'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                'TCP Authentication Option (TCP-AO) <mark>Test</mark> Vectors'
+              snippet: 'TCP Authentication Option (TCP-AO) <mark>Test</mark> Vectors'
             }
           },
           highlights: [
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                'TCP Authentication Option (TCP-AO) <mark>Test</mark> Vectors'
+              snippet: 'TCP Authentication Option (TCP-AO) <mark>Test</mark> Vectors'
             },
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'This document provides <mark>test</mark> vectors to validate implementations'
+              snippet: 'This document provides <mark>test</mark> vectors to validate implementations'
             }
           ],
           text_match: 578730123365187698,
@@ -2349,34 +2330,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'Evaluation Test Cases for Interactive Real-Time Media over Wireless Networks',
+            title: 'Evaluation Test Cases for Interactive Real-Time Media over Wireless Networks',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'types. This document describes <mark>test</mark> cases for evaluating performances'
+              snippet: 'types. This document describes <mark>test</mark> cases for evaluating performances'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                'Evaluation <mark>Test</mark> Cases for Interactive Real-Time Media over Wireless Networks'
+              snippet: 'Evaluation <mark>Test</mark> Cases for Interactive Real-Time Media over Wireless Networks'
             }
           },
           highlights: [
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                'Evaluation <mark>Test</mark> Cases for Interactive Real-Time Media over Wireless Networks'
+              snippet: 'Evaluation <mark>Test</mark> Cases for Interactive Real-Time Media over Wireless Networks'
             },
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'types. This document describes <mark>test</mark> cases for evaluating performances'
+              snippet: 'types. This document describes <mark>test</mark> cases for evaluating performances'
             }
           ],
           text_match: 578730123365187698,
@@ -2446,34 +2422,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'Test Cases for Evaluating Congestion Control for Interactive Real-Time Media',
+            title: 'Test Cases for Evaluating Congestion Control for Interactive Real-Time Media',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'This document describes the <mark>test</mark> cases to be used'
+              snippet: 'This document describes the <mark>test</mark> cases to be used'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Cases for Evaluating Congestion Control for Interactive Real-Time Media'
+              snippet: '<mark>Test</mark> Cases for Evaluating Congestion Control for Interactive Real-Time Media'
             }
           },
           highlights: [
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Cases for Evaluating Congestion Control for Interactive Real-Time Media'
+              snippet: '<mark>Test</mark> Cases for Evaluating Congestion Control for Interactive Real-Time Media'
             },
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'This document describes the <mark>test</mark> cases to be used'
+              snippet: 'This document describes the <mark>test</mark> cases to be used'
             }
           ],
           text_match: 578730123365187698,
@@ -2531,34 +2502,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'Rate Measurement Test Protocol Problem Statement and Requirements',
+            title: 'Rate Measurement Test Protocol Problem Statement and Requirements',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'access rate measurement for <mark>test</mark> protocols to measure IP'
+              snippet: 'access rate measurement for <mark>test</mark> protocols to measure IP'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                'Rate Measurement <mark>Test</mark> Protocol Problem Statement and Requirements'
+              snippet: 'Rate Measurement <mark>Test</mark> Protocol Problem Statement and Requirements'
             }
           },
           highlights: [
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'access rate measurement for <mark>test</mark> protocols to measure IP'
+              snippet: 'access rate measurement for <mark>test</mark> protocols to measure IP'
             },
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                'Rate Measurement <mark>Test</mark> Protocol Problem Statement and Requirements'
+              snippet: 'Rate Measurement <mark>Test</mark> Protocol Problem Statement and Requirements'
             }
           ],
           text_match: 578730123365187698,
@@ -2628,34 +2594,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'Test Plan and Results for Advancing RFC 2680 on the Standards Track',
+            title: 'Test Plan and Results for Advancing RFC 2680 on the Standards Track',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'memo provides the supporting <mark>test</mark> plan and results to'
+              snippet: 'memo provides the supporting <mark>test</mark> plan and results to'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Plan and Results for Advancing RFC 2680 on the Standards Track'
+              snippet: '<mark>Test</mark> Plan and Results for Advancing RFC 2680 on the Standards Track'
             }
           },
           highlights: [
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'memo provides the supporting <mark>test</mark> plan and results to'
+              snippet: 'memo provides the supporting <mark>test</mark> plan and results to'
             },
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Plan and Results for Advancing RFC 2680 on the Standards Track'
+              snippet: '<mark>Test</mark> Plan and Results for Advancing RFC 2680 on the Standards Track'
             }
           ],
           text_match: 578730123365187698,
@@ -2725,34 +2686,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'Test Plan and Results Supporting Advancement of RFC 2679 on the Standards Track',
+            title: 'Test Plan and Results Supporting Advancement of RFC 2679 on the Standards Track',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'memo provides the supporting <mark>test</mark> plan and results to'
+              snippet: 'memo provides the supporting <mark>test</mark> plan and results to'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Plan and Results Supporting Advancement of RFC 2679 on the Standards Track'
+              snippet: '<mark>Test</mark> Plan and Results Supporting Advancement of RFC 2679 on the Standards Track'
             }
           },
           highlights: [
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'memo provides the supporting <mark>test</mark> plan and results to'
+              snippet: 'memo provides the supporting <mark>test</mark> plan and results to'
             },
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Plan and Results Supporting Advancement of RFC 2679 on the Standards Track'
+              snippet: '<mark>Test</mark> Plan and Results Supporting Advancement of RFC 2679 on the Standards Track'
             }
           ],
           text_match: 578730123365187698,
@@ -2896,34 +2852,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'PKCS #5: Password-Based Key Derivation Function 2 (PBKDF2) Test Vectors',
+            title: 'PKCS #5: Password-Based Key Derivation Function 2 (PBKDF2) Test Vectors',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'This document contains <mark>test</mark> vectors for the Public-Key'
+              snippet: 'This document contains <mark>test</mark> vectors for the Public-Key'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                'PKCS #5: Password-Based Key Derivation Function 2 (PBKDF2) <mark>Test</mark> Vectors'
+              snippet: 'PKCS #5: Password-Based Key Derivation Function 2 (PBKDF2) <mark>Test</mark> Vectors'
             }
           },
           highlights: [
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                'PKCS #5: Password-Based Key Derivation Function 2 (PBKDF2) <mark>Test</mark> Vectors'
+              snippet: 'PKCS #5: Password-Based Key Derivation Function 2 (PBKDF2) <mark>Test</mark> Vectors'
             },
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'This document contains <mark>test</mark> vectors for the Public-Key'
+              snippet: 'This document contains <mark>test</mark> vectors for the Public-Key'
             }
           ],
           text_match: 578730123365187698,
@@ -2981,34 +2932,29 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               slug: 'ietf'
             },
             subseries: {},
-            title:
-              'Test Vectors for Session Traversal Utilities for NAT (STUN)',
+            title: 'Test Vectors for Session Traversal Utilities for NAT (STUN)',
             type: 'rfc'
           },
           highlight: {
             abstract: {
               matched_tokens: ['test'],
-              snippet:
-                'xor). This document provides <mark>test</mark> vectors for those attributes.'
+              snippet: 'xor). This document provides <mark>test</mark> vectors for those attributes.'
             },
             title: {
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Vectors for Session Traversal Utilities for NAT (STUN)'
+              snippet: '<mark>Test</mark> Vectors for Session Traversal Utilities for NAT (STUN)'
             }
           },
           highlights: [
             {
               field: 'title',
               matched_tokens: ['Test'],
-              snippet:
-                '<mark>Test</mark> Vectors for Session Traversal Utilities for NAT (STUN)'
+              snippet: '<mark>Test</mark> Vectors for Session Traversal Utilities for NAT (STUN)'
             },
             {
               field: 'abstract',
               matched_tokens: ['test'],
-              snippet:
-                'xor). This document provides <mark>test</mark> vectors for those attributes.'
+              snippet: 'xor). This document provides <mark>test</mark> vectors for those attributes.'
             }
           ],
           text_match: 578730123365187698,

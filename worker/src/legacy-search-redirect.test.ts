@@ -26,11 +26,9 @@ test('translateParamsString: stream', () => {
 })
 
 test('translateParamsString: pubstatus', () => {
-  expect(
-    legacySearchRedirectPathBuilder(
-      '?pubstatus[]=Standards Track&pubstatus[]=Best Current Practice'
-    )
-  ).toEqual(`${origin}/search/?status=Best+Current+Practice`)
+  expect(legacySearchRedirectPathBuilder('?pubstatus[]=Standards Track&pubstatus[]=Best Current Practice')).toEqual(
+    `${origin}/search/?status=Best+Current+Practice`
+  )
 })
 
 describe('translateParamsString: dates', () => {
@@ -81,7 +79,8 @@ test('translateParamsString: complex example', () => {
 })
 
 test('translateParamsString: complex example (2)', () => {
-  const url = '/search/rfc_search_detail.php?title=mail&pubstatus[]=Standards+Track&std_trk=Internet+Standard&pub_date_type=any'
+  const url =
+    '/search/rfc_search_detail.php?title=mail&pubstatus[]=Standards+Track&std_trk=Internet+Standard&pub_date_type=any'
 
   expect(legacySearchRedirectPathBuilder(url)).toEqual(`${origin}/search/?q=mail&status=Internet+Standard`)
 })

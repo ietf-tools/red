@@ -1,16 +1,8 @@
 <template>
-  <NuxtLink
-    v-if="!isOutsideNuxt"
-    v-bind="sanitisedAnchorProps"
-    data-is-nuxt-link
-  >
+  <NuxtLink v-if="!isOutsideNuxt" v-bind="sanitisedAnchorProps" data-is-nuxt-link>
     <slot />
   </NuxtLink>
-  <a
-    v-else
-    v-bind="sanitisedAnchorProps"
-    data-is-hyperlink
-  >
+  <a v-else v-bind="sanitisedAnchorProps" data-is-hyperlink>
     <slot />
   </a>
 </template>

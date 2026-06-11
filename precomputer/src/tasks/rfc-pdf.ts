@@ -1,13 +1,7 @@
 import { DateTime } from 'luxon'
-import {
-  apiRfcBucketDocumentURLBuilder,
-} from '../utilities/url.ts'
+import { apiRfcBucketDocumentURLBuilder } from '../utilities/url.ts'
 import { gc } from '../utilities/gc.ts'
-import {
-  BLANK_HTML,
-  getDOMParser,
-  rfcDocumentToPojo
-} from '../utilities/dom.ts'
+import { BLANK_HTML, getDOMParser, rfcDocumentToPojo } from '../utilities/dom.ts'
 import { rfcImageFileNameBuilder, rfcMetaThumbnailPathBuilder } from '../utilities/s3.ts'
 import {
   type TableOfContents,
@@ -15,25 +9,17 @@ import {
   type RfcCommon,
   RfcBucketHtmlDocumentSchema
 } from '../../../website/app/utilities/rfc-validators.ts'
-import {
-  getMetaScreenshotOfPage,
-  getTextDetails,
-  takeScreenshotOfPage,
-} from '../utilities/unpdf-parent.ts'
+import { getMetaScreenshotOfPage, getTextDetails, takeScreenshotOfPage } from '../utilities/unpdf-parent.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 import { redactRfc } from './rfc.ts'
 import { OPENGRAPH_IMAGE_DIMENSIONS } from '../utilities/html.ts'
 
-export const fetchRfcPDF = async (
-  rfcNumber: number
-): Promise<string | null> => {
+export const fetchRfcPDF = async (rfcNumber: number): Promise<string | null> => {
   const key = `pdf/rfc${rfcNumber}.pdf`
   const blob = await getFromS3('S3_RFC_BUCKET', key, 'base64', `RFC ${rfcNumber}`)
   if (!blob) {
-    console.warn(
-      `[RFC ${rfcNumber}] PDF from ${JSON.stringify(key)} not available`
-    )
+    console.warn(`[RFC ${rfcNumber}] PDF from ${JSON.stringify(key)} not available`)
     return null
   }
   if (blob instanceof Uint8Array) {
@@ -42,15 +28,22 @@ export const fetchRfcPDF = async (
   return blob
 }
 
+type RfcBucketPdfToRfcDocumentProps = {
+  rfcNumber: number
+  shouldUploadPageImagesToS3: boolean
+  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>
+  getRfcPDF: typeof fetchRfcPDF
+}
+
 /**
  * Note that this also uploads page screenshots with ALT text
  */
-export const rfcBucketPdfToRfcDocument = async (
-  rfcNumber: number,
-  shouldUploadPageImagesToS3: boolean,
-  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>,
-  getRfcPDF: typeof fetchRfcPDF
-): Promise<RfcBucketHtmlDocument | null> => {
+export const rfcBucketPdfToRfcDocument = async ({
+  rfcNumber,
+  shouldUploadPageImagesToS3,
+  getRfcCommon,
+  getRfcPDF
+}: RfcBucketPdfToRfcDocumentProps): Promise<RfcBucketHtmlDocument | null> => {
   const base64Pdf = await getRfcPDF(rfcNumber)
 
   if (base64Pdf === null) {
@@ -79,11 +72,7 @@ export const rfcBucketPdfToRfcDocument = async (
   pdfPages.setAttribute('data-component', 'PdfPages')
   dom.body.appendChild(pdfPages)
 
-  for (
-    let pageNumber = 1;
-    pageNumber <= textDetails.text.totalPages;
-    pageNumber++
-  ) {
+  for (let pageNumber = 1; pageNumber <= textDetails.text.totalPages; pageNumber++) {
     const fileName = rfcImageFileNameBuilder(rfcNumber, pageNumber)
 
     await gc() // attempt to free memory from fork in unpdf-parent/child
@@ -92,7 +81,7 @@ export const rfcBucketPdfToRfcDocument = async (
       pageNumber,
       fileName,
       shouldUploadToS3: shouldUploadPageImagesToS3,
-      widthPx: 1000,
+      widthPx: 1000
     })
 
     const pageTitle = `Page ${pageNumber}`
@@ -141,9 +130,7 @@ export const rfcBucketPdfToRfcDocument = async (
 
   rfc = redactRfc(rfc)
 
-  console.log(
-    `[RFC ${rfcNumber}] screenshotted ${textDetails.text.totalPages} pages of a PDF`
-  )
+  console.log(`[RFC ${rfcNumber}] screenshotted ${textDetails.text.totalPages} pages of a PDF`)
 
   const response: RfcBucketHtmlDocument = {
     rfc,
@@ -162,7 +149,10 @@ export const rfcBucketPdfToRfcDocument = async (
   return response
 }
 
-export const getRfcPdfMetaScreenshot = async (rfcNumber: number, getRfcPDF: typeof fetchRfcPDF): Promise<Buffer | undefined> => {
+export const getRfcPdfMetaScreenshot = async (
+  rfcNumber: number,
+  getRfcPDF: typeof fetchRfcPDF
+): Promise<Buffer | undefined> => {
   // Don't use PDF for thumbnails. It's too inconsistant and
   // is usually illegible when thumbnail is shrunk to fit a
   // social media card. Instead use HTML version which has
@@ -192,5 +182,5 @@ export const getRfcPdfMetaScreenshot = async (rfcNumber: number, getRfcPDF: type
     return undefined
   }
 
-  return Buffer.from(result.base64Png, 'base64');
+  return Buffer.from(result.base64Png, 'base64')
 }

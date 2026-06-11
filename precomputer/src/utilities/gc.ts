@@ -1,4 +1,4 @@
-import { sleep } from "./sleep.ts"
+import { sleep } from './sleep.ts'
 
 export const gc = async () => {
   if (!global.gc) return
@@ -7,4 +7,3 @@ export const gc = async () => {
   await global.gc({ execution: 'async' })
   return
 }
-

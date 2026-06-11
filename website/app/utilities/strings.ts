@@ -1,4 +1,7 @@
-export const escapeRegExp = (s: string): string => 'escape' in RegExp && typeof RegExp.escape === 'function' ? RegExp.escape(s) : s.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+export const escapeRegExp = (s: string): string =>
+  'escape' in RegExp && typeof RegExp.escape === 'function'
+    ? RegExp.escape(s)
+    : s.replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
 
 export const NONBREAKING_SPACE = '\xa0'
 export const SPACE = ' '

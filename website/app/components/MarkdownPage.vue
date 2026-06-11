@@ -4,7 +4,7 @@
       <template #sidebar>
         <TableOfContentsMarkdownDesktop v-if="showToc && toc" :toc="toc" />
       </template>
-      <div class="wrap-anywhere leading-[1.75]">
+      <div class="wrap-anywhere leading-[1.5]">
         <Breadcrumbs v-if="breadcrumbItems && Array.isArray(breadcrumbItems)" :breadcrumb-items="breadcrumbItems" />
         <component :is="renderedContent" />
       </div>
@@ -58,7 +58,7 @@ const { data: markdownPage, error } = await useAsyncData(
     const apiPath = apiMarkdownPagePathBuilder(normalizedSlug)
     const json = await $fetch(apiPath, {
       method: 'GET',
-      baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
+      baseURL: import.meta.server ? apiV1UrlOrigin : undefined
     })
     const { data, error: validationError } = MarkdownPageSchema.safeParse(json)
     if (validationError) {
@@ -73,7 +73,7 @@ const { data: markdownPage, error } = await useAsyncData(
 )
 
 if (error.value || !markdownPage.value) {
-  console.error("[markdown-page] Error", error.value, markdownPage.value)
+  console.error('[markdown-page] Error', error.value, markdownPage.value)
   throw createError({ statusCode: 404, statusMessage: 'Not Found', fatal: true })
 }
 
@@ -96,7 +96,7 @@ const markdownHtmlPojoRenderers: ElementRenderers = {
   tr: (node, childrenForVue) => h(ProseTr, node.attributes, () => childrenForVue),
   ul: (node, childrenForVue) => h(ProseUl, node.attributes, () => childrenForVue),
   erratasitesearchlink: (node, childrenForVue) => h(ErrataSiteSearchLink, node.attributes, () => childrenForVue),
-  __default: (node, childrenForVue) => h(node.nodeName, node.attributes, childrenForVue),
+  __default: (node, childrenForVue) => h(node.nodeName, node.attributes, childrenForVue)
 }
 
 const renderedContent = computed(() => {
@@ -109,8 +109,10 @@ const renderedContent = computed(() => {
 
 const toc = markdownPage.value.toc
 
-const showToc = markdownPage.value.showToc ?? // auto mode, try to detect if it has enough headings to be worth it
-    ((toc && toc.sections.length > 1 ) ?? false)
+const showToc =
+  markdownPage.value.showToc ?? // auto mode, try to detect if it has enough headings to be worth it
+  (toc && toc.sections.length > 1) ??
+  false
 
 provide(tocKey, { showToc, toc })
 
@@ -124,7 +126,7 @@ const breadcrumbItems = computed((): BreadcrumbItem[] => [
   { url: undefined, label: markdownPage.value?.title ?? '' }
 ])
 
-const handleCloseAndNavigate = (_id: string) => { }
+const handleCloseAndNavigate = (_id: string) => {}
 provide(closeModalAndScrollToId, handleCloseAndNavigate)
 
 useRfcEditorHead({

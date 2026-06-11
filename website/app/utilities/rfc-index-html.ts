@@ -5,35 +5,25 @@ import { formatAuthor } from './rfc-converters-utils'
 import type { RfcCommon } from './rfc-validators'
 
 export const rfcToRfcIndexRow = (rfc: RfcCommon) => {
-  const maybeDateParts =
-    rfc.published ?
-      DateTime.fromISO(rfc.published).toFormat('LLLL yyyy').split(' ')
-      : undefined
-  const formattedDate =
-    maybeDateParts ? ` [ ${maybeDateParts[0]} ${maybeDateParts[1]} ] ` : ''
+  const maybeDateParts = rfc.published ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy').split(' ') : undefined
+  const formattedDate = maybeDateParts ? ` [ ${maybeDateParts[0]} ${maybeDateParts[1]} ] ` : ''
 
   const information = h('span', [
     h('b', rfc.title),
     ' ',
     ...rfc.authors.map((author) => formatAuthor(author, 'regular')),
     formattedDate,
-    rfc.formats ?
-      `(${rfc.formats.map((format) => format.format.toUpperCase()).join(', ')})`
-      : '',
-    ...(rfc.obsoletes && rfc.obsoletes.length > 0 ?
-      [' (Obsoletes ', ...rfcCommaList(rfc.obsoletes), ' )']
+    rfc.formats ? `(${rfc.formats.map((format) => format.format.toUpperCase()).join(', ')})` : '',
+    ...(rfc.obsoletes && rfc.obsoletes.length > 0 ? [' (Obsoletes ', ...rfcCommaList(rfc.obsoletes), ' )'] : []),
+    ...(rfc.obsoleted_by && rfc.obsoleted_by.length > 0
+      ? [' (Obsoleted-By ', ...rfcCommaList(rfc.obsoleted_by), ' )']
       : []),
-    ...(rfc.obsoleted_by && rfc.obsoleted_by.length > 0 ?
-      [' (Obsoleted-By ', ...rfcCommaList(rfc.obsoleted_by), ' )']
-      : []),
-    ...(rfc.updated_by && rfc.updated_by.length > 0 ?
-      [' (Updated-By ', ...rfcCommaList(rfc.updated_by), ' )']
-      : []),
+    ...(rfc.updated_by && rfc.updated_by.length > 0 ? [' (Updated-By ', ...rfcCommaList(rfc.updated_by), ' )'] : []),
     ` (Status: ${rfc.status.slug.toUpperCase()})`,
     ` (Stream: ${rfc.stream.name})`,
     ' ',
-    rfc.identifiers ?
-      `(${rfc.identifiers.map((identifier) => `${identifier.type.toUpperCase()}: ${identifier.value}`)})`
+    rfc.identifiers
+      ? `(${rfc.identifiers.map((identifier) => `${identifier.type.toUpperCase()}: ${identifier.value}`)})`
       : ''
   ])
 
@@ -44,23 +34,17 @@ export const rfcToRfcIndexRow = (rfc: RfcCommon) => {
 }
 
 export const rfcCommaList = (rfcs?: { number: number }[]) =>
-  rfcs ?
-    rfcs
-      .map((rfc): VNode | string =>
-        h(
-          'a',
-          { href: infoSeriesPathBuilder(`rfc${rfc.number}`) },
-          `RFC${rfc.number}`
+  rfcs
+    ? rfcs
+        .map((rfc): VNode | string => h('a', { href: infoSeriesPathBuilder(`rfc${rfc.number}`) }, `RFC${rfc.number}`))
+        .reduce(
+          (acc, item, index, arr) => {
+            acc.push(item)
+            if (index < arr.length - 1) {
+              acc.push(` ${COMMA} `)
+            }
+            return acc
+          },
+          [] as (VNode | string)[]
         )
-      )
-      .reduce(
-        (acc, item, index, arr) => {
-          acc.push(item)
-          if (index < arr.length - 1) {
-            acc.push(` ${COMMA} `)
-          }
-          return acc
-        },
-        [] as (VNode | string)[]
-      )
     : []

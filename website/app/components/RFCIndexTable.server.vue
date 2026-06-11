@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="mt-4 mb-8 pt-2 pb-3 px-4 sm:rounded-lg bg-gray-200 dark:bg-gray-800 text-sm max-w-md">
-      <Heading level="2" style-level="5" class="text-left mt-1 pl-1">
-        Table of contents
-      </Heading>
+      <Heading level="2" style-level="5" class="text-left mt-1 pl-1"> Table of contents </Heading>
       <div class="text-balance">
         <ul v-if="tableOfContents" class="inline leading-6 mt-1 list-disc text-black dark:text-white">
           <li v-for="(item, index) in tableOfContents" class="inline">
@@ -28,22 +26,18 @@
       class="table-fixed w-full divide-y divide-gray-700 dark:divide-neutral-600 shadow border-1 border-separate border-gray-400 dark:border-gray-500 ml-2 mr-2">
       <thead>
         <tr>
-          <TableCellHeader background="solid" class="w-[8em] text-nowrap">
-            RFC Number
-          </TableCellHeader>
-          <TableCellHeader background="solid">
-            Title
-          </TableCellHeader>
-          <TableCellHeader background="solid" class="w-[10em] text-nowrap">
-            Publish date
-          </TableCellHeader>
+          <TableCellHeader background="solid" class="w-[8em] text-nowrap"> RFC Number </TableCellHeader>
+          <TableCellHeader background="solid"> Title </TableCellHeader>
+          <TableCellHeader background="solid" class="w-[10em] text-nowrap"> Publish date </TableCellHeader>
         </tr>
       </thead>
       <tbody>
         <tr v-for="rfc in data?.miniIndex" :key="rfc.number">
           <TableCell class="border-b border-gray-300 dark:border-neutral-600 text-nowrap">
-            <Anchor :href="infoSeriesPathBuilder(`rfc${rfc.number}`)"
-              :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'scroll-m-16']" :id="`rfc${rfc.number}`">
+            <Anchor
+              :href="infoSeriesPathBuilder(`rfc${rfc.number}`)"
+              :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'scroll-m-16']"
+              :id="`rfc${rfc.number}`">
               <SubseriesTitle :series="parseSeriesId(`rfc${rfc.number}`)" />
             </Anchor>
           </TableCell>
@@ -82,29 +76,33 @@ const TABLE_OF_CONTENTS_CHUNK_SIZE = 1000
 
 const apiV1UrlOrigin = useApiV1UrlOrigin()
 
-const { data, error } = useAsyncData('rfc-index-html', async () => {
-  const json = await $fetch(API_RFC_MINI_INDEX_PATH, {
-    method: 'GET',
-    baseURL: import.meta.server ? apiV1UrlOrigin : undefined,
-  })
-  const { data: validatedRfcMiniIndex, error: validationError } = RfcMiniIndexSchema.safeParse(json)
-  if (validationError) {
-    const errorTitle = 'Unable to parse rfc-mini-index'
-    console.error(errorTitle, API_RFC_MINI_INDEX_PATH, { json, validationError })
-    throw Error(`${errorTitle}. See console for more. ${JSON.stringify(validationError)} `)
+const { data, error } = useAsyncData(
+  'rfc-index-html',
+  async () => {
+    const json = await $fetch(API_RFC_MINI_INDEX_PATH, {
+      method: 'GET',
+      baseURL: import.meta.server ? apiV1UrlOrigin : undefined
+    })
+    const { data: validatedRfcMiniIndex, error: validationError } = RfcMiniIndexSchema.safeParse(json)
+    if (validationError) {
+      const errorTitle = 'Unable to parse rfc-mini-index'
+      console.error(errorTitle, API_RFC_MINI_INDEX_PATH, { json, validationError })
+      throw Error(`${errorTitle}. See console for more. ${JSON.stringify(validationError)} `)
+    }
+    return validatedRfcMiniIndex
+  },
+  {
+    server: true, // this must be rendered on the server -- it's used by non-JavaScript enabled browsers
+    lazy: false
   }
-  return validatedRfcMiniIndex
-}, {
-  server: true, // this must be rendered on the server -- it's used by non-JavaScript enabled browsers
-  lazy: false,
-})
+)
 
 if (error.value) {
   console.error(error.value)
   throw createError({
     status: 500,
     statusText: `The RFC index is temporarily unavailable. Please try again later. ${error.value}`,
-    fatal: true,
+    fatal: true
   })
 }
 
@@ -115,7 +113,7 @@ const tableOfContents = computed(() => {
     return undefined
   }
   const { value: mini } = data
-  const allRfcNumbers = mini.miniIndex.map(rfc => rfc.number)
+  const allRfcNumbers = mini.miniIndex.map((rfc) => rfc.number)
   const largestRfcNumber = Math.max(...allRfcNumbers)
   const groups = groupBy(mini.miniIndex, (item) => Math.floor(item.number / TABLE_OF_CONTENTS_CHUNK_SIZE))
   const groupsEntries = Object.entries(groups)
@@ -131,10 +129,7 @@ const tableOfContents = computed(() => {
         return undefined
       }
       const firstChunkRfc = chunkRfcs[0]
-      const lowestChunkRfcsNumber = chunkRfcs.reduce(
-        (acc, item) => Math.min(acc, item.number),
-        firstChunkRfc.number
-      )
+      const lowestChunkRfcsNumber = chunkRfcs.reduce((acc, item) => Math.min(acc, item.number), firstChunkRfc.number)
       return {
         href: `#rfc${lowestChunkRfcsNumber}`,
         labelComponent: formatTitleAsVNode(`rfc${lowestChunkRfcsNumber}`)
@@ -144,26 +139,23 @@ const tableOfContents = computed(() => {
       href: `#rfc${largestRfcNumber}`,
       labelComponent: formatTitleAsVNode(`rfc${largestRfcNumber}`)
     }
-  ].filter(item => typeof item !== 'undefined')
+  ].filter((item) => typeof item !== 'undefined')
 
   return uniqBy(
     // make sure we don't link to the same thing twice
     // ie when lowestChunkRfcsNumber and largestRfcNumber are the same or something like that
     menuItems,
-    item => item.href
+    (item) => item.href
   )
 })
 
-const modifiedDateTime =
-  data.value ?
-    DateTime.fromISO(data.value.createdOn)
-    : undefined
+const modifiedDateTime = data.value ? DateTime.fromISO(data.value.createdOn) : undefined
 
 useRfcEditorHead({
   title: 'RFC Index',
   canonicalPath: props.canonicalPath,
   description: 'Every RFC listed on a single page.',
   modifiedDateTime,
-  contentType: 'article',
+  contentType: 'article'
 })
 </script>

@@ -3,23 +3,12 @@ import path from 'path'
 import fsPromises from 'fs/promises'
 import { test, expect, vi } from 'vitest'
 import { fetchSourceRfcHtml, rfcBucketHtmlToRfcDocument } from './rfc-html.ts'
-import {
-  testMockAllRfcs,
-  testMockErrataList
-} from '../utilities/rfcs-test-data.ts'
+import { testMockAllRfcs, testMockErrataList } from '../utilities/rfcs-test-data.ts'
 import { getFromS3 } from '../utilities/s3.ts'
 
 const getRfcHtml: typeof getFromS3 = (_bucket, key, outputType, _prefixForDebug) => {
-  const htmlPath = path.resolve(
-    import.meta.dirname,
-    '..',
-    'old-rfc-editor.org',
-    key
-  )
-  return fsPromises.readFile(
-    htmlPath,
-    outputType === 'base64' ? 'base64' : 'utf-8'
-  )
+  const htmlPath = path.resolve(import.meta.dirname, '..', 'old-rfc-editor.org', key)
+  return fsPromises.readFile(htmlPath, outputType === 'base64' ? 'base64' : 'utf-8')
 }
 
 const processRfcBucketHtml = async (rfcNumber: number) => {
@@ -28,13 +17,10 @@ const processRfcBucketHtml = async (rfcNumber: number) => {
 
   const html = await fetchSourceRfcHtml(rfcNumber, getRfcHtml)
 
-  const getRfcCommon = async (_rfcNumber: number) =>
-    testMockAllRfcs[testMockAllRfcs.length - 1]
+  const getRfcCommon = async (_rfcNumber: number) => testMockAllRfcs[testMockAllRfcs.length - 1]
 
   const getErrataByRfcNumber = async (rfcNumber: number) =>
-    testMockErrataList.filter(
-      (errataItem) => errataItem['doc-id'] === `RFC${rfcNumber}`
-    )
+    testMockErrataList.filter((errataItem) => errataItem['doc-id'] === `RFC${rfcNumber}`)
 
   if (html) {
     return rfcBucketHtmlToRfcDocument({
@@ -50,9 +36,7 @@ const RFC_NUMBER_WITH_PLAINTEXT = 2000
 const RFC_NUMBER_WITH_XML2RFC_HTML = 9000
 
 test(`processRfcBucketHtml(${RFC_NUMBER_WITH_PLAINTEXT}) RFC without TOC`, async () => {
-  const rfcBucketHtmlDocument = await processRfcBucketHtml(
-    RFC_NUMBER_WITH_PLAINTEXT
-  )
+  const rfcBucketHtmlDocument = await processRfcBucketHtml(RFC_NUMBER_WITH_PLAINTEXT)
 
   expect(rfcBucketHtmlDocument).toMatchSnapshot()
 
@@ -60,9 +44,7 @@ test(`processRfcBucketHtml(${RFC_NUMBER_WITH_PLAINTEXT}) RFC without TOC`, async
 })
 
 test(`processRfcBucketHtml(${RFC_NUMBER_WITH_XML2RFC_HTML}) RFC with TOC`, async () => {
-  const rfcBucketHtmlDocument = await processRfcBucketHtml(
-    RFC_NUMBER_WITH_XML2RFC_HTML
-  )
+  const rfcBucketHtmlDocument = await processRfcBucketHtml(RFC_NUMBER_WITH_XML2RFC_HTML)
   expect(rfcBucketHtmlDocument).toMatchSnapshot()
   expect(rfcBucketHtmlDocument?.tableOfContents).toBeTruthy()
 })

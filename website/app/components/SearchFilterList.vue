@@ -6,26 +6,14 @@
       :limit="props.doubleCols ? 10 : 5"
       :show-more-limit="maxItems"
       :searchable="props.searchable"
-      :show-more="props.showMore"
-    >
+      :show-more="props.showMore">
       <template
-        #default="
-          {
-            items,
-            isFromSearch,
-            refine,
-            searchForItems,
-            toggleShowMore,
-            canToggleShowMore,
-            isShowingMore
-          }"
-      >
+        #default="{ items, isFromSearch, refine, searchForItems, toggleShowMore, canToggleShowMore, isShowingMore }">
         <input
           v-if="props.searchable"
           class="w-full px-3 py-1.5 mb-3 text-base border border-gray-400 hover:border-black dark:border-white dark:hover:border-gray-300 dark:text-white bg-white dark:bg-black rounded-xs shadow-sm scheme-light dark:scheme-dark"
           :placeholder="props.searchPlaceholder"
-          @input="searchForItems(($event.target as HTMLInputElement)?.value ?? '')"
-          >
+          @input="searchForItems(($event.target as HTMLInputElement)?.value ?? '')" />
         <ul :class="['grid-cols-1 grid gap-1', props.doubleCols && '2xl:grid-cols-2']">
           <li v-if="isFromSearch && !items.length">No results.</li>
           <li v-for="item in items" :key="item.value" class="overflow-hidden whitespace-nowrap text-clip">
@@ -35,18 +23,18 @@
                 type="checkbox"
                 :value="item.value"
                 :checked="item.isRefined"
-                @click="refine(item.value)"
-              />
+                @click="refine(item.value)" />
               <ais-highlight attribute="item" :hit="item" />
-              <span class="bg-gray-400 dark:bg-gray-700 rounded-sm text-xs px-1 py-0.25 ml-2 text-white text-clip">{{ item.count.toLocaleString() }}</span>
+              <span class="bg-gray-400 dark:bg-gray-700 rounded-sm text-xs px-1 py-0.25 ml-2 text-white text-clip">{{
+                item.count.toLocaleString()
+              }}</span>
             </label>
           </li>
         </ul>
         <div v-if="canToggleShowMore" class="mt-2">
           <div
             v-if="items.length >= maxItems && isShowingMore"
-            class="text-gray-500 text-sm bg-gray-50 dark:text-gray-300 dark:bg-blue-950 rounded p-2 italic flex items-center shadow mb-2"
-            >
+            class="text-gray-500 text-sm bg-gray-50 dark:text-gray-300 dark:bg-blue-950 rounded p-2 italic flex items-center shadow mb-2">
             <Icon name="fluent:warning-24-filled" size="2em" class="mr-2" />
             There may be more choices available. Use the search above to refine this list.
           </div>
@@ -54,8 +42,7 @@
             type="button"
             class="underline text-sky-700 dark:text-blue-100 px-3 py-2 -ml-3 cursor-pointer text-nowrap"
             :disabled="!canToggleShowMore"
-            @click.prevent="toggleShowMore"
-          >
+            @click.prevent="toggleShowMore">
             {{ !isShowingMore ? 'Show more' : 'Show less' }}
           </button>
         </div>
@@ -80,5 +67,5 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const maxItems = computed(() => props.doubleCols ? 100 : 50)
+const maxItems = computed(() => (props.doubleCols ? 100 : 50))
 </script>

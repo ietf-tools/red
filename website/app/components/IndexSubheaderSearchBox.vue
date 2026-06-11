@@ -1,15 +1,29 @@
 <template>
   <div v-html="noScriptHtml"></div>
   <form method="get" :action="SEARCH_PATH" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
-    <input id="search" ref="search-input" :disabled="!isMounted" v-model="searchQuery" type="search" name="q"
+    <input
+      id="search"
+      ref="search-input"
+      :disabled="!isMounted"
+      v-model="searchQuery"
+      type="search"
+      name="q"
       class="min-w-[0px] w-full bg-white text-black dark:bg-black dark:text-white dark:border-white dark:border pl-4 md:pl-6 py-3"
-      :placeholder="SEARCH_PLACEHOLDER" aria-label="Find an RFC (number, subseries, title, author, etc.)" />
-    <button type="submit" name="search" :disabled="!isMounted" class="cursor-pointer bg-blue-200 px-2 flex items-center" aria-label="Submit search">
+      :placeholder="SEARCH_PLACEHOLDER"
+      aria-label="Find an RFC (number, subseries, title, author, etc.)" />
+    <button
+      type="submit"
+      name="search"
+      :disabled="!isMounted"
+      class="cursor-pointer bg-blue-200 px-2 flex items-center"
+      aria-label="Submit search">
       <Icon name="fluent:search-12-filled" size="2em" />
     </button>
   </form>
   <div class="text-sm italic">
-    <Anchor v-if="didYouMean" :href="infoSeriesPathBuilder(`${didYouMean.type}${didYouMean.number}`)"
+    <Anchor
+      v-if="didYouMean"
+      :href="infoSeriesPathBuilder(`${didYouMean.type}${didYouMean.number}`)"
       class="underline hover:text-blue-100 dark:text-blue-100">
       go directly to
       <SubseriesTitle :series="didYouMean" />
@@ -24,9 +38,20 @@ import { watchDebounced } from '@vueuse/core'
 import { parseSeriesId, type SeriesId } from '~/utilities/rfc'
 import { SEARCH_PLACEHOLDER } from '~/utilities/search'
 import { NONBREAKING_SPACE } from '~/utilities/strings'
-import { apiRfcBucketDocumentPathBuilder, apiSubseriesPathBuilder, infoSeriesPathBuilder, SEARCH_PATH, searchPathBuilder, useApiV1UrlOrigin } from '~/utilities/url'
+import {
+  apiRfcBucketDocumentPathBuilder,
+  apiSubseriesPathBuilder,
+  infoSeriesPathBuilder,
+  SEARCH_PATH,
+  searchPathBuilder,
+  useApiV1UrlOrigin
+} from '~/utilities/url'
 import SubseriesTitle from './SubseriesTitle.vue'
-import { useFeatureFlags, watchInputForFeatureFlagExperiments, isFeatureFlagsModalVisibleKey } from '~/utilities/feature-flags.js'
+import {
+  useFeatureFlags,
+  watchInputForFeatureFlagExperiments,
+  isFeatureFlagsModalVisibleKey
+} from '~/utilities/feature-flags.js'
 
 const isFeatureFlagsModalVisible = inject(isFeatureFlagsModalVisibleKey)
 
@@ -48,7 +73,7 @@ onMounted(() => {
 
 let abortController: AbortController | undefined = undefined
 
-const featureFlags  = useFeatureFlags()
+const featureFlags = useFeatureFlags()
 
 watchInputForFeatureFlagExperiments({
   inputValueRef: searchQuery,
@@ -68,7 +93,7 @@ const checkSearchForSeriesId = async () => {
 
   didYouMean.value = undefined
   abortController = new AbortController()
-  const signal = abortController.signal;
+  const signal = abortController.signal
 
   const normalizedValue = value.trim().replace(/\s/g, '')
   let seriesId = parseSeriesId(normalizedValue)
@@ -97,7 +122,13 @@ const checkSearchForSeriesId = async () => {
           return
         }
       } catch (e: unknown) {
-        console.info(`[Homepage search] RFC ${seriesId.number} doesn't exist so using search`, rfcDataPath, normalizedValue, value, e)
+        console.info(
+          `[Homepage search] RFC ${seriesId.number} doesn't exist so using search`,
+          rfcDataPath,
+          normalizedValue,
+          value,
+          e
+        )
       }
     } else {
       const subseriesPath = apiSubseriesPathBuilder(seriesId.type, seriesId.number)
@@ -111,7 +142,13 @@ const checkSearchForSeriesId = async () => {
           return
         }
       } catch (e: unknown) {
-        console.info(`[Homepage search] ${seriesId.type} ${seriesId.number} doesn't exist so using search`, subseriesPath, normalizedValue, value, e)
+        console.info(
+          `[Homepage search] ${seriesId.type} ${seriesId.number} doesn't exist so using search`,
+          subseriesPath,
+          normalizedValue,
+          value,
+          e
+        )
       }
     }
   }
@@ -125,18 +162,14 @@ const noScriptHtml = computed(() => {
 
 /**
  * If a user types something that looks like an RFC number or seriesId then offer a link to go directly to an RFC
- * 
+ *
  */
-watchDebounced(
-  () => searchQuery.value,
-  checkSearchForSeriesId,
-  {
-    debounce: 200,
-    maxWait: 400,
-    immediate: false,
-    deep: true,
-  }
-)
+watchDebounced(() => searchQuery.value, checkSearchForSeriesId, {
+  debounce: 200,
+  maxWait: 400,
+  immediate: false,
+  deep: true
+})
 
 const handleSearch = async () => {
   const { value } = searchQuery

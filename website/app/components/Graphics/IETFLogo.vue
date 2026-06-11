@@ -4,8 +4,7 @@
     :width="props.width"
     :height="props.height"
     :class="props.class"
-    alt="Internet Engineering Task Force"
-  />
+    alt="Internet Engineering Task Force" />
 </template>
 
 <script setup lang="ts">

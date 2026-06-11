@@ -15,7 +15,7 @@ export const main = async (): Promise<void> => {
     )
   }
 
-  const didClean = await cleanupRedBucket(uploadTasks.filter(key => key !== false))
+  const didClean = await cleanupRedBucket(uploadTasks.filter((key) => key !== false))
 
   if (didClean) {
     console.log('[cron.ts] finished successfully')

@@ -1,8 +1,8 @@
 import { PromisePool } from '@supercharge/promise-pool'
 import { difference } from 'es-toolkit'
 
-import { deleteFromS3, listS3Files, UNUSABLE_RFC_NUMBERS_PATH } from "./s3.ts"
-import { assertIsString } from "./typescript.ts"
+import { deleteFromS3, listS3Files, UNUSABLE_RFC_NUMBERS_PATH } from './s3.ts'
+import { assertIsString } from './typescript.ts'
 
 const GOOD_KEYS = [
   'other/bcp-index.txt',
@@ -19,7 +19,7 @@ const GOOD_KEYS = [
   'other/publication-std-levels.json',
   'other/reports/CurrQstats.txt',
 
-  UNUSABLE_RFC_NUMBERS_PATH,
+  UNUSABLE_RFC_NUMBERS_PATH
 ]
 
 // This is just a hint number, not a hard limit at all
@@ -32,12 +32,12 @@ export const cleanupRedBucket = async (uploadedKeys: string[]): Promise<boolean>
   console.log('[Cleanup] Now cleaning up Red bucket...')
 
   const existingBucketObjects = await listS3Files()
-  const existingBucketKeys = existingBucketObjects.map(obj => {
+  const existingBucketKeys = existingBucketObjects.map((obj) => {
     assertIsString(obj.Key, `Bucket object ${JSON.stringify(obj)} has no key.`)
     return obj.Key
   })
 
-  const existingBucketKeysToDelete = existingBucketKeys.filter(key => {
+  const existingBucketKeysToDelete = existingBucketKeys.filter((key) => {
     if (
       key.match(/^rfc-common\/\d+\.json$/) ||
       key.match(/^rfc-html\/meta-thumbnail-\d+\.png$/) ||
@@ -69,23 +69,21 @@ export const cleanupRedBucket = async (uploadedKeys: string[]): Promise<boolean>
           console.log(`[Cleanup ${keyToPurge}] deleted sucessfully`)
           return true
         } catch (err) {
-          console.error(
-            `[Cleanup ${keyToPurge}] threw exception: ${String(err)}`
-          )
+          console.error(`[Cleanup ${keyToPurge}] threw exception: ${String(err)}`)
           throw err
         }
         return false
       })
 
     if (purgeErrors.length > 0) {
-      console.error("[Cleanup] There were errors purging files.", purgeErrors)
-      console.error('[Cleanup] Bucket retains files that it shouldn\'t. This is bad. Cannot continue.')
+      console.error('[Cleanup] There were errors purging files.', purgeErrors)
+      console.error("[Cleanup] Bucket retains files that it shouldn't. This is bad. Cannot continue.")
       return false
     }
 
-    return purgeResults.every(result => result)
+    return purgeResults.every((result) => result)
   } else {
-    console.log("[Cleanup] No need to purge any files from S3.")
+    console.log('[Cleanup] No need to purge any files from S3.')
     return true
   }
-} 
+}

@@ -46,9 +46,7 @@ describe('htmlEscapeToText: basic character escaping', () => {
 
 describe('htmlEscapeToText: XSS script injection', () => {
   test('escapes basic script tag', () => {
-    expect(htmlEscapeToText('<script>alert(1)</script>')).toBe(
-      '&lt;script&gt;alert(1)&lt;/script&gt;'
-    )
+    expect(htmlEscapeToText('<script>alert(1)</script>')).toBe('&lt;script&gt;alert(1)&lt;/script&gt;')
   })
 
   test('escapes script tag with src', () => {
@@ -64,15 +62,11 @@ describe('htmlEscapeToText: XSS script injection', () => {
   })
 
   test('escapes uppercase SCRIPT tag', () => {
-    expect(htmlEscapeToText('<SCRIPT>alert(1)</SCRIPT>')).toBe(
-      '&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;'
-    )
+    expect(htmlEscapeToText('<SCRIPT>alert(1)</SCRIPT>')).toBe('&lt;SCRIPT&gt;alert(1)&lt;/SCRIPT&gt;')
   })
 
   test('escapes mixed-case Script tag', () => {
-    expect(htmlEscapeToText('<Script>alert(1)</Script>')).toBe(
-      '&lt;Script&gt;alert(1)&lt;/Script&gt;'
-    )
+    expect(htmlEscapeToText('<Script>alert(1)</Script>')).toBe('&lt;Script&gt;alert(1)&lt;/Script&gt;')
   })
 })
 

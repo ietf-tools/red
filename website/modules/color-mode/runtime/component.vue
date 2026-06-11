@@ -7,22 +7,16 @@ export default {
     placeholder: String,
     tag: {
       type: String,
-      default: 'span',
-    },
-  },
+      default: 'span'
+    }
+  }
 }
 </script>
 
 <template>
-  <ClientOnly
-    :placeholder="placeholder"
-    :placeholder-tag="tag"
-  >
+  <ClientOnly :placeholder="placeholder" :placeholder-tag="tag">
     <slot />
-    <template
-      v-if="!placeholder"
-      #fallback
-    >
+    <template v-if="!placeholder" #fallback>
       <slot name="placeholder" />
     </template>
   </ClientOnly>

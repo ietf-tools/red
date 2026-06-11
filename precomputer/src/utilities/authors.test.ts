@@ -49,16 +49,11 @@ describe('formatAuthorsPerStyleGuide', () => {
     }
     const authorsToTest = forceEditor
       ? input.authors.map((author) => ({
-        ...author,
-        is_editor: true,
-      }))
+          ...author,
+          is_editor: true
+        }))
       : input.authors
 
-    expect(
-      formatAuthorsPerStyleGuide(authorsToTest)
-    ).toMatch(
-      expected
-    )
+    expect(formatAuthorsPerStyleGuide(authorsToTest)).toMatch(expected)
   })
 })
-

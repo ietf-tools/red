@@ -16,8 +16,8 @@ const ROBOTS_TXT_TEMPLATE = [
   'Disallow: /rfc/authors/',
   'Disallow: /rfc/rerendered/',
   'Disallow: /rfc/v3test/',
-  `Sitemap: ${ORIGIN_PLACEHOLDER}${siteMapXmlPathBuilder(0)}`]
-  .join('\n')
+  `Sitemap: ${ORIGIN_PLACEHOLDER}${siteMapXmlPathBuilder(0)}`
+].join('\n')
 
 const originPlaceholderRegex = new RegExp(ORIGIN_PLACEHOLDER, 'g')
 

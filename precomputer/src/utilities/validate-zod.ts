@@ -2,10 +2,7 @@ import { z } from 'zod'
 
 const Schema = z.literal('')
 
-export const validateDocument = (
-  doc: unknown,
-  schema: z.ZodObject<any>
-): void => {
+export const validateDocument = (doc: unknown, schema: z.ZodObject<any>): void => {
   /**
    * Serializing to JSON and parsing again ("roundTripped") can result in a different object structure
    * with missing keys, see

@@ -38,8 +38,13 @@ fastify.get('/api/v1/rfc-html/:rfcNumber.json', async (request, reply) => {
 })
 
 fastify.get('/api/v1/meta-thumbnail/:slug.png', async (request, reply) => {
-  console.log("meta thubm request")
-  if (request.params && typeof request.params === 'object' && 'slug' in request.params && typeof request.params.slug === 'string') {
+  console.log('meta thubm request')
+  if (
+    request.params &&
+    typeof request.params === 'object' &&
+    'slug' in request.params &&
+    typeof request.params.slug === 'string'
+  ) {
     const { slug } = request.params
     console.log('get slug', slug)
 
@@ -50,28 +55,25 @@ fastify.get('/api/v1/meta-thumbnail/:slug.png', async (request, reply) => {
         rfcNumber: rfcFloaty,
         getRfcCommon: getRfcCommonCached,
         getRfcHtml: mockLocalGetRfcHtml,
-        fetchRfcPDF: mockLocalFetchPDF,
+        fetchRfcPDF: mockLocalFetchPDF
       })
       if (maybePngBuffer) {
         reply.code(200).headers({ 'content-type': 'image/png' }).send(maybePngBuffer)
       }
     } else {
-      console.log("found slug")
+      console.log('found slug')
       const verifiedDimensions = metaThumbnailSlugToDimensions(`${slug}.png`)
       if (verifiedDimensions) {
         console.log('verifiedDimensions', verifiedDimensions)
         const maybePng = await getMetaThumbnail(verifiedDimensions[0], verifiedDimensions[1])
-        console.log("maybpng", maybePng)
+        console.log('maybpng', maybePng)
         if (maybePng) {
           reply.code(200).headers({ 'content-type': 'image/png' }).send(maybePng.pngBuffer)
         }
       }
     }
 
-    reply
-      .code(404)
-      .type('text/plain')
-      .send(`404: ${slug}.png`)
+    reply.code(404).type('text/plain').send(`404: ${slug}.png`)
   } else {
     console.log('bad params?', request.params)
     throw Error(`bad param? ${JSON.stringify(request.params)}`)
@@ -79,7 +81,12 @@ fastify.get('/api/v1/meta-thumbnail/:slug.png', async (request, reply) => {
 })
 
 fastify.get('/api/v1/favicon/:slug.png', async (request, reply) => {
-  if (request.params && typeof request.params === 'object' && 'slug' in request.params && typeof request.params.slug === 'string') {
+  if (
+    request.params &&
+    typeof request.params === 'object' &&
+    'slug' in request.params &&
+    typeof request.params.slug === 'string'
+  ) {
     const { slug } = request.params
 
     const parts = slug.match(/(\d+)x(\d+)/)
@@ -92,10 +99,7 @@ fastify.get('/api/v1/favicon/:slug.png', async (request, reply) => {
       }
     }
 
-    reply
-      .code(404)
-      .type('text/plain')
-      .send(`404: ${slug}.png`)
+    reply.code(404).type('text/plain').send(`404: ${slug}.png`)
   } else {
     console.log('bad params?', request.params)
     throw Error(`bad param? ${JSON.stringify(request.params)}`)
@@ -103,28 +107,39 @@ fastify.get('/api/v1/favicon/:slug.png', async (request, reply) => {
 })
 
 fastify.get('/api/v1/info-subseries/:subseriesName.json', async (request, reply) => {
-  if (request.params && typeof request.params === 'object' && 'subseriesName' in request.params && typeof request.params.subseriesName === 'string') {
+  if (
+    request.params &&
+    typeof request.params === 'object' &&
+    'subseriesName' in request.params &&
+    typeof request.params.subseriesName === 'string'
+  ) {
     const subseriesQueryName = parseSubseriesName(request.params.subseriesName)
     const api = getApiClient()
     const frozenAllSubseries = await getAllSubseries({ api, type: subseriesQueryName.type })
     const subseriesCommonList = await renderAllSubseries(frozenAllSubseries)
-    const queriedSubseries = subseriesCommonList.find(subseries => subseries.type === subseriesQueryName.type && subseries.number === subseriesQueryName.number)
+    const queriedSubseries = subseriesCommonList.find(
+      (subseries) => subseries.type === subseriesQueryName.type && subseries.number === subseriesQueryName.number
+    )
 
     if (!queriedSubseries) {
       // frozen subseries can't be sorted, so we need to spread again
       const allSubseries = [...frozenAllSubseries]
 
-      const allSubseriesNames = allSubseries.sort(
-        (subseriesA, subseriesB) => {
+      const allSubseriesNames = allSubseries
+        .sort((subseriesA, subseriesB) => {
           const sortType = subseriesA.type.localeCompare(subseriesB.type)
           if (sortType !== 0) {
             return sortType
           }
           return subseriesA.number - subseriesB.number
         })
-        .map(subseries => `${subseries.type}${subseries.number}`)
+        .map((subseries) => `${subseries.type}${subseries.number}`)
 
-      reply.code(404).send(`Couldn't find subseries: ${subseriesQueryName.type} ${subseriesQueryName.number} from search ${allSubseriesNames.join(',')}`)
+      reply
+        .code(404)
+        .send(
+          `Couldn't find subseries: ${subseriesQueryName.type} ${subseriesQueryName.number} from search ${allSubseriesNames.join(',')}`
+        )
       return
     }
     return queriedSubseries
@@ -134,7 +149,12 @@ fastify.get('/api/v1/info-subseries/:subseriesName.json', async (request, reply)
 })
 
 fastify.get('/api/v1/rfc-common/:rfcNumber.json', async (request, reply) => {
-  if (request.params && typeof request.params === 'object' && 'rfcNumber' in request.params && typeof request.params.rfcNumber === 'string') {
+  if (
+    request.params &&
+    typeof request.params === 'object' &&
+    'rfcNumber' in request.params &&
+    typeof request.params.rfcNumber === 'string'
+  ) {
     const rfcNumber = parseFloat(request.params.rfcNumber)
     if (Number.isNaN(rfcNumber)) {
       reply.code(500).send(`Couldn't parse param rfc number ${JSON.stringify(request.params.rfcNumber)}`)
@@ -154,7 +174,7 @@ const mockLocalBucket: typeof getFromS3 = async (bucket, key, outputType, prefix
   const mockLocalBucketDirName = 'mockLocalBucket'
   const localPath = path.join(import.meta.dirname, mockLocalBucketDirName, bucket, key)
   try {
-    console.log("Reading mock bucket", bucket, key, outputType)
+    console.log('Reading mock bucket', bucket, key, outputType)
     const data = fsPromises.readFile(localPath, outputType === 'base64' ? 'base64' : 'utf-8')
     return data
   } catch (e: unknown) {
@@ -164,19 +184,24 @@ const mockLocalBucket: typeof getFromS3 = async (bucket, key, outputType, prefix
   return null
 }
 
-const mockLocalGetRfcHtml: typeof getFromS3 = async (bucket, key, outputType, prefixForDebug) => mockLocalBucket(bucket, key, outputType, prefixForDebug)
+const mockLocalGetRfcHtml: typeof getFromS3 = async (bucket, key, outputType, prefixForDebug) =>
+  mockLocalBucket(bucket, key, outputType, prefixForDebug)
 
 const mockLocalFetchPDF: typeof fetchRfcPDF = async (rfcNumber: number) => {
   const result = await mockLocalBucket('S3_RFC_BUCKET', `pdf/${rfcNumber}.pdf`, 'base64', `RFC ${rfcNumber}`)
   return result === null ? null : result.toString()
 }
 
-fastify.listen({
-  port: 3010, host: '0.0.0.0' // 0.0.0.0 needed to work in Docker 
-}, function (err, address) {
-  if (err) {
-    fastify.log.error(err)
-    process.exit(1)
+fastify.listen(
+  {
+    port: 3010,
+    host: '0.0.0.0' // 0.0.0.0 needed to work in Docker
+  },
+  function (err, address) {
+    if (err) {
+      fastify.log.error(err)
+      process.exit(1)
+    }
+    console.log(`Server is now listening on ${address}`)
   }
-  console.log(`Server is now listening on ${address}`)
-})
+)

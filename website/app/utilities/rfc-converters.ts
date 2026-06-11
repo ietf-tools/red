@@ -6,29 +6,19 @@ import {
   RfcCommonGroupSchema,
   type RfcCommonAuthor
 } from './rfc-validators'
-import {
-  isTypesenseSubseriesWithValues,
-  TypeSenseSearchItemSchema,
-  TypesenseSearchItemStatusSchema
-} from './typesense'
+import { isTypesenseSubseriesWithValues, TypeSenseSearchItemSchema, TypesenseSearchItemStatusSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
 import { sanitiseHtml } from './html'
 import { logOnce } from './log'
 
-export const typeSenseSearchItemToRFCCommon = (
-  unverifiedTypeSenseSearchItem: TypeSenseSearchItem
-): RfcCommon => {
-  const { data: item, error } = TypeSenseSearchItemSchema.safeParse(
-    unverifiedTypeSenseSearchItem
-  )
+export const typeSenseSearchItemToRFCCommon = (unverifiedTypeSenseSearchItem: TypeSenseSearchItem): RfcCommon => {
+  const { data: item, error } = TypeSenseSearchItemSchema.safeParse(unverifiedTypeSenseSearchItem)
   if (error) {
-    console.error("Typesense parsing error", error.toString())
+    console.error('Typesense parsing error', error.toString())
     throw Error(error.toString())
   }
 
-  const parseTypeSenseSubseries = (
-    item: z.infer<typeof TypeSenseSearchItemSchema>
-  ): RfcCommon['subseries'] => {
+  const parseTypeSenseSubseries = (item: z.infer<typeof TypeSenseSearchItemSchema>): RfcCommon['subseries'] => {
     if (isTypesenseSubseriesWithValues(item.subseries)) {
       const { subseries } = item
       return [
@@ -42,31 +32,27 @@ export const typeSenseSearchItemToRFCCommon = (
     return undefined
   }
 
-  const parseTypesenseStatus = (
-    status: TypeSenseSearchItem['status']
-  ): RfcCommon['status'] => {
+  const parseTypesenseStatus = (status: TypeSenseSearchItem['status']): RfcCommon['status'] => {
     const { slug, name } = status
-    const { data: typesenseStatusData, error: typesenseStatusError } =
-      TypesenseSearchItemStatusSchema.safeParse({ slug, name })
+    const { data: typesenseStatusData, error: typesenseStatusError } = TypesenseSearchItemStatusSchema.safeParse({
+      slug,
+      name
+    })
     if (typesenseStatusError) {
-      throw Error(
-        `Unable to parse typesense rfc status ${JSON.stringify(status)}").`
-      )
+      throw Error(`Unable to parse typesense rfc status ${JSON.stringify(status)}").`)
     }
 
-    const maybeRfcCommonStatusName =
-      typesenseStatusData.name.toLowerCase() as Lowercase<
-        TypeSenseSearchItem['status']['name']
-      >
+    const maybeRfcCommonStatusName = typesenseStatusData.name.toLowerCase() as Lowercase<
+      TypeSenseSearchItem['status']['name']
+    >
 
-    const maybeRfcCommonStatusSlug =
-      typesenseStatusData.slug.toLowerCase() as Lowercase<
-        TypeSenseSearchItem['status']['slug']
-      >
+    const maybeRfcCommonStatusSlug = typesenseStatusData.slug.toLowerCase() as Lowercase<
+      TypeSenseSearchItem['status']['slug']
+    >
 
     const maybeRfcCommonStatus = {
       slug: maybeRfcCommonStatusSlug,
-      name: maybeRfcCommonStatusName,
+      name: maybeRfcCommonStatusName
     }
 
     const { data: rfcCommonStatusData, error: rfcCommonStatusError } =
@@ -103,48 +89,38 @@ export const typeSenseSearchItemToRFCCommon = (
 
     throw Error(`Unable to parse stream slug "${streamSlug}"`)
   }
-  const parseTypesenseArea = (
-    area: TypeSenseSearchItem['area'],
-    rfcNumberForDebug?: number
-  ): RfcCommon['area'] => {
+  const parseTypesenseArea = (area: TypeSenseSearchItem['area'], rfcNumberForDebug?: number): RfcCommon['area'] => {
     if (!area) return undefined
     const { data: parsedArea, error } = RfcCommonAreaSchema.safeParse(area satisfies RfcCommon['area'])
     if (error) {
-      const fromRfcErrorSuffix =
-        rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
+      const fromRfcErrorSuffix = rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
       console.error(error)
-      throw Error(
-        `Problem parsing area type ${JSON.stringify(area)}${fromRfcErrorSuffix}`
-      )
+      throw Error(`Problem parsing area type ${JSON.stringify(area)}${fromRfcErrorSuffix}`)
     }
     return parsedArea
   }
 
-  const parseTypesenseGroup = (
-    group: TypeSenseSearchItem['group'],
-    rfcNumberForDebug?: number
-  ): RfcCommon['group'] => {
-    logOnce(`[Typesense] API data currently doesn't have Group 'type' so search results will use default Group type of 'area' in search results.`)
+  const parseTypesenseGroup = (group: TypeSenseSearchItem['group'], rfcNumberForDebug?: number): RfcCommon['group'] => {
+    logOnce(
+      `[Typesense] API data currently doesn't have Group 'type' so search results will use default Group type of 'area' in search results.`
+    )
     const { data: parsedGroup, error } = RfcCommonGroupSchema.safeParse({
       ...group,
       type: 'area'
     } satisfies RfcCommon['group'])
     if (error) {
-      const fromRfcErrorSuffix =
-        rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
+      const fromRfcErrorSuffix = rfcNumberForDebug !== undefined ? ` from RFC ${rfcNumberForDebug}` : ''
       console.error(error)
-      throw Error(
-        `Problem parsing group type ${JSON.stringify(group)} ${fromRfcErrorSuffix}`
-      )
+      throw Error(`Problem parsing group type ${JSON.stringify(group)} ${fromRfcErrorSuffix}`)
     }
     return parsedGroup
   }
 
-  const published: RfcCommon["published"] = new Date(item.publicationDate * 1000).toISOString()
+  const published: RfcCommon['published'] = new Date(item.publicationDate * 1000).toISOString()
   const authors: RfcCommonAuthor[] =
     item.authors?.map((author, index) => ({
       person: index,
-      titlepage_name: author.name,
+      titlepage_name: author.name
     })) ?? []
 
   return {

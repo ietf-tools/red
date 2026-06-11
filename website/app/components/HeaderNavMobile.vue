@@ -1,5 +1,7 @@
 <template>
-  <Anchor :href="SEARCH_PATH" class="absolute top-0 right-10 no-underline block px-2 pt-4.25 pb-2 block lg:hidden"
+  <Anchor
+    :href="SEARCH_PATH"
+    class="absolute top-0 right-10 no-underline block px-2 pt-4.25 pb-2 block lg:hidden"
     aria-label="Search">
     <Icon name="fluent:search-12-filled" />
   </Anchor>
@@ -10,7 +12,8 @@
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay />
-      <DialogContent :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
+      <DialogContent
+        :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
         'absolute inset-0 z-60 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'">
         <DialogTitle>
           <div class="flex justify-between w-full py-5 px-4 items-center">
@@ -24,7 +27,8 @@
           <Accordion>
             <template v-for="(item, index) in menuData" :key="index.toString()">
               <Anchor v-if="item.href" :href="item.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
-                <GraphicsChevron v-if="item.hideDropdownIconDesktop"
+                <GraphicsChevron
+                  v-if="item.hideDropdownIconDesktop"
                   class="absolute right-0 mt-1 mr-4 size-4 -rotate-90 text-blue-100" />
                 {{ item.label }}
               </Anchor>
@@ -34,20 +38,28 @@
                     <Anchor v-if="level0.href" :href="level0.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
                       {{ level0.label }}
                     </Anchor>
-                    <button v-else-if="level0.click" type="button" :aria-label="level0.activeLabelFn?.()"
+                    <button
+                      v-else-if="level0.click"
+                      type="button"
+                      :aria-label="level0.activeLabelFn?.()"
                       :aria-pressed="level0.isActiveFn ? Boolean(level0.isActiveFn()) : undefined"
-                      :class="[MENU_ITEM_CLASS, 'flex items-center']" @click="
+                      :class="[MENU_ITEM_CLASS, 'flex items-center']"
+                      @click="
                         (e: MouseEvent) => {
                           level0.click?.(e)
                           isOpen = false
                         }
                       ">
                       <Icon v-if="level0.icon" :name="level0.icon" />
-                      <Icon v-if="level0.isActiveFn?.()" name="fluent:checkmark-12-filled"
+                      <Icon
+                        v-if="level0.isActiveFn?.()"
+                        name="fluent:checkmark-12-filled"
                         class="inline-block w-[14px] h-[14px] mr-1" />
-                      <span v-if="
-                        level0.isActiveFn && !level0.isActiveFn() // render blank space if isActiveFn()===false
-                      " class="inline-block w-[14px] h-[14px] mr-1" />
+                      <span
+                        v-if="
+                          level0.isActiveFn && !level0.isActiveFn() // render blank space if isActiveFn()===false
+                        "
+                        class="inline-block w-[14px] h-[14px] mr-1" />
                       {{ level0.label }}
                     </button>
                     <Accordion v-else>
@@ -55,11 +67,17 @@
                         <ul class="ml-4">
                           <li v-for="(level1, level1Index) in level0.children" :key="level1Index">
                             <template v-if="level1.href">
-                              <Anchor v-if="!level1.noSpaLink" :href="level1.href" :class="MENU_ITEM_CLASS"
+                              <Anchor
+                                v-if="!level1.noSpaLink"
+                                :href="level1.href"
+                                :class="MENU_ITEM_CLASS"
                                 @click="isOpen = false">
                                 {{ level1.label }}
                               </Anchor>
-                              <a v-else-if="level1.noSpaLink" :href="level1.href" :class="MENU_ITEM_CLASS"
+                              <a
+                                v-else-if="level1.noSpaLink"
+                                :href="level1.href"
+                                :class="MENU_ITEM_CLASS"
                                 @click="isOpen = false">
                                 {{ level1.label }}
                               </a>
@@ -92,7 +110,7 @@ import {
 import { useMenuData } from './HeaderNavData'
 import { SEARCH_PATH } from '~/utilities/url'
 
-const menuData = useMenuData("mobile")
+const menuData = useMenuData('mobile')
 
 const MENU_ITEM_CLASS =
   'flex w-full text-left border no-underline border-gray-500 px-4 py-3.5 hover:bg-blue-400 focus:bg-blue-400'

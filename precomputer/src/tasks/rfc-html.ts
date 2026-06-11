@@ -23,16 +23,8 @@ import {
 import { extractHrefRfcPart } from '../utilities/rfc.ts'
 import { assertNever } from '../utilities/typescript.ts'
 import { PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
-import {
-  getPlaintextMaxLineLength,
-  getPlaintextRfcDocument,
-  parsePlaintextBody
-} from './rfc-html-plaintext.ts'
-import {
-  getXml2RfcMaxLineLength,
-  getXml2RfcRfcDocument,
-  parseXml2RfcBody
-} from './rfc-html-xml2rfc.ts'
+import { getPlaintextMaxLineLength, getPlaintextRfcDocument, parsePlaintextBody } from './rfc-html-plaintext.ts'
+import { getXml2RfcMaxLineLength, getXml2RfcRfcDocument, parseXml2RfcBody } from './rfc-html-xml2rfc.ts'
 import { chunkString, getAllIndexes } from '../utilities/string.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3, rfcBucketHtmlPathBuilder } from '../utilities/s3.ts'
@@ -43,9 +35,9 @@ import { getRfcCommonCached } from '../utilities/api.ts'
 import sharp from 'sharp'
 
 type Props = {
-  rfcBucketHtml: string,
-  rfcNumber: number,
-  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>,
+  rfcBucketHtml: string
+  rfcNumber: number
+  getRfcCommon: (rfcNumber: number) => Promise<RfcCommon | null>
   getErrataList: (rfcNumber: number) => Promise<ErrataList>
 }
 
@@ -53,7 +45,7 @@ export const rfcBucketHtmlToRfcDocument = async ({
   rfcBucketHtml,
   rfcNumber,
   getRfcCommon,
-  getErrataList,
+  getErrataList
 }: Props): Promise<RfcBucketHtmlDocument | null> => {
   const parser = await getDOMParser()
   const dom = parser.parseFromString(rfcBucketHtml, 'text/html')
@@ -73,7 +65,7 @@ export const rfcBucketHtmlToRfcDocument = async ({
   const documentHtmlType = sniffRfcBucketHtmlType(dom)
 
   let maxPreformattedLineLength: MaxPreformattedLineLengthSchemaType = {
-    max: 80,
+    max: 80
   }
 
   let rfcDocument: Node[] = []
@@ -124,21 +116,15 @@ export const rfcBucketHtmlToRfcDocument = async ({
   return response
 }
 
-export const fetchSourceRfcHtml = async (
-  rfcNumber: number,
-  getRfcHtml: typeof getFromS3
-): Promise<string | null> => {
+export const fetchSourceRfcHtml = async (rfcNumber: number, getRfcHtml: typeof getFromS3): Promise<string | null> => {
   const key = rfcBucketHtmlPathBuilder(rfcNumber)
   const dirtyHtml = await getRfcHtml('S3_RFC_BUCKET', key, 'default', `RFC ${rfcNumber}`)
   if (!dirtyHtml) {
-    console.warn(
-      `[RFC ${rfcNumber}] HTML from ${JSON.stringify(key)} not available`
-    )
+    console.warn(`[RFC ${rfcNumber}] HTML from ${JSON.stringify(key)} not available`)
     return null
   }
-  const decoder = new TextDecoder();
-  const dirtyHtmlString: string = dirtyHtml instanceof Uint8Array ?
-    decoder.decode(dirtyHtml) : dirtyHtml
+  const decoder = new TextDecoder()
+  const dirtyHtmlString: string = dirtyHtml instanceof Uint8Array ? decoder.decode(dirtyHtml) : dirtyHtml
 
   // Sanitise HTML before returning it
   return sanitiseHtml(dirtyHtmlString, 'rfc-html')
@@ -149,8 +135,7 @@ export type RfcAndToc = {
   tableOfContents?: TableOfContents
 }
 
-export const rfcBucketHtmlFilenameBuilder = (rfcNumber: number) =>
-  `rfc${rfcNumber}-html.json`
+export const rfcBucketHtmlFilenameBuilder = (rfcNumber: number) => `rfc${rfcNumber}-html.json`
 
 const sniffRfcBucketHtmlType = (dom: Document): DocumentHtmlType => {
   const isPlaintext = dom.querySelector('body > pre')
@@ -203,28 +188,15 @@ const sniffRfcBucketHtmlType = (dom: Document): DocumentHtmlType => {
  *    always browse the original HTML if they wish.
  *
  **/
-const convertHrefs = (
-  rfcDocument: Node[],
-  baseUrl: URL,
-  rfcNumberForDebug: number
-): void => {
+const convertHrefs = (rfcDocument: Node[], baseUrl: URL, rfcNumberForDebug: number): void => {
   const publicSiteUrl = new URL(PUBLIC_SITE_URL_ORIGIN)
 
   const httpUrl = new URL('http://example.com/')
   const httpsUrl = new URL('https://example.com/')
 
-  const safeParseUrl = (
-    href: string,
-    baseUrl: URL | string,
-    rfcNumberForDebug: number
-  ): URL | null => {
+  const safeParseUrl = (href: string, baseUrl: URL | string, rfcNumberForDebug: number): URL | null => {
     const isInvalidUrl = (error: unknown): boolean => {
-      return Boolean(
-        error &&
-        typeof error === 'object' &&
-        'code' in error &&
-        error.code === 'ERR_INVALID_URL'
-      )
+      return Boolean(error && typeof error === 'object' && 'code' in error && error.code === 'ERR_INVALID_URL')
     }
 
     try {
@@ -259,10 +231,7 @@ const convertHrefs = (
           const url = safeParseUrl(href, baseUrl, rfcNumberForDebug)
 
           if (url) {
-            if (
-              [httpUrl.protocol, httpsUrl.protocol].includes(url.protocol) &&
-              url.host === publicSiteUrl.host
-            ) {
+            if ([httpUrl.protocol, httpsUrl.protocol].includes(url.protocol) && url.host === publicSiteUrl.host) {
               // see (1) and (2) above
               href = `${url.pathname}${url.search}${url.hash}`
             }
@@ -313,7 +282,7 @@ const convertHrefs = (
  * This function has a new approach where it inserts <wbr> elements. These <wbr> elements seem to
  * work better than unicode approaches (zero-width spaces etc) because being non-characters they
  * aren't copied to the clipboard.
- * 
+ *
  * This also means we can control potential line breaks so if the 'word' looks like a URL we can
  * insert <wbr> at appropriate points, eg https://<wbr>domain/<wbr>path1/<wbr>path2?<wbr>query1=1
  * etc which is more readable than artitrary line break points.
@@ -358,10 +327,7 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
       const textAndWordbreaks = words
         .flatMap((word): Node | Node[] => {
           if (word.length > REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH) {
-            const wordParts = chunkString(
-              word,
-              REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH
-            )
+            const wordParts = chunkString(word, REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH)
             return wordParts.flatMap((wordPart, i, arr) => {
               if (wordPart.length === 0) {
                 return []
@@ -393,8 +359,7 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
                 // because after splitting on words
                 // there will be a lot of contiguous
                 // text nodes
-                lastNode.textContent = `${lastNode.textContent ?? ''
-                  }${textContent}`
+                lastNode.textContent = `${lastNode.textContent ?? ''}${textContent}`
               } else {
                 acc.push(node)
               }
@@ -430,31 +395,33 @@ const logoBase64UriPromise = new Promise<string>((resolve, reject) => {
   const paddingPx = 50
   const logoWidthPx = 600
   const canvasWidthPx = 2000
-  fsPromises.readFile(metaThumbnailRfcNLogoPath, 'utf-8')
-    .then(svgString =>
-      sharp(Buffer.from(svgString))
-        // render logo at logo size
-        .resize(logoWidthPx)
-        // extend canvas so that logo takes less than half the width of the graphic
-        .extend({
-          top: paddingPx,
-          right: (canvasWidthPx - logoWidthPx) + paddingPx,
-          bottom: paddingPx,
-          left: paddingPx,
-          background: bgBlue
-        })
-        .flatten({
-          background: bgBlue
-        })
-        .withMetadata({ density: 300 })
-        .toBuffer()
-        .then(buffer => {
-          resolve(`data:image/png;base64,${buffer.toString('base64')}`)
-        })
-    )
+  fsPromises.readFile(metaThumbnailRfcNLogoPath, 'utf-8').then((svgString) =>
+    sharp(Buffer.from(svgString))
+      // render logo at logo size
+      .resize(logoWidthPx)
+      // extend canvas so that logo takes less than half the width of the graphic
+      .extend({
+        top: paddingPx,
+        right: canvasWidthPx - logoWidthPx + paddingPx,
+        bottom: paddingPx,
+        left: paddingPx,
+        background: bgBlue
+      })
+      .flatten({
+        background: bgBlue
+      })
+      .withMetadata({ density: 300 })
+      .toBuffer()
+      .then((buffer) => {
+        resolve(`data:image/png;base64,${buffer.toString('base64')}`)
+      })
+  )
 })
 
-export const getRfcHtmlMetaScreenshot = async (rfcNumber: number, getRfcCommon: typeof getRfcCommonCached): Promise<Buffer | undefined> => {
+export const getRfcHtmlMetaScreenshot = async (
+  rfcNumber: number,
+  getRfcCommon: typeof getRfcCommonCached
+): Promise<Buffer | undefined> => {
   const rfc = await getRfcCommon(rfcNumber)
   if (!rfc) {
     return undefined

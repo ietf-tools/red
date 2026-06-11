@@ -17,10 +17,7 @@ type RfcAuthor = RfcCommon['authors'][number]
  * ...and if they're an editor they get an "Ed." suffix
  *
  */
-export const formatAuthor = (
-  author: RfcAuthor,
-  style: 'regular' | 'brief' | 'reverse'
-): string => {
+export const formatAuthor = (author: RfcAuthor, style: 'regular' | 'brief' | 'reverse'): string => {
   const { titlepage_name } = author
   if (!titlepage_name) return ''
   const name = titlepage_name
@@ -39,22 +36,13 @@ export const formatAuthor = (
       let newBit = ''
       switch (style) {
         case 'regular':
-          newBit =
-            index === arr.length - 1 ?
-              ` ${item}`
-              : `${item.substring(0, 1).toUpperCase()}.`
+          newBit = index === arr.length - 1 ? ` ${item}` : `${item.substring(0, 1).toUpperCase()}.`
           return `${acc}${newBit}`
         case 'brief':
-          newBit =
-            index === arr.length - 1 ?
-              `${item}, `
-              : `${item.substring(0, 1).toUpperCase()}.`
+          newBit = index === arr.length - 1 ? `${item}, ` : `${item.substring(0, 1).toUpperCase()}.`
           return `${newBit}${acc}`
         case 'reverse':
-          newBit =
-            index === arr.length - 1 ?
-              `${item}, `
-              : `${item.substring(0, 1).toUpperCase()}.`
+          newBit = index === arr.length - 1 ? `${item}, ` : `${item.substring(0, 1).toUpperCase()}.`
           return `${newBit}${acc}`
       }
       assertNever(style)
@@ -63,7 +51,7 @@ export const formatAuthor = (
   return author.affiliation === 'Editor' ? `${name}, Ed.` : name
 }
 
-type FormatName = RfcCommon['formats'][number]["format"]
+type FormatName = RfcCommon['formats'][number]['format']
 type UppercaseFormats = Uppercase<FormatName> | 'ASCII'
 
 export const formatFormat = (
@@ -89,10 +77,7 @@ export const formatFormat = (
   throw Error(`Unexpected format "${format}"`)
 }
 
-export const formatDatePublished = (
-  dt: DateTime,
-  isAprilFirstMode: boolean
-): string => {
+export const formatDatePublished = (dt: DateTime, isAprilFirstMode: boolean): string => {
   if (isAprilFirstMode && dt.month === 4 && dt.day === 1) {
     // handle April 1st
     return dt.toFormat('d LLLL yyyy')
@@ -100,9 +85,7 @@ export const formatDatePublished = (
   return dt.toFormat('LLLL yyyy')
 }
 
-export const parseRfcFormat = (
-  format: string
-): RfcCommon['formats'][number] => {
+export const parseRfcFormat = (format: string): RfcCommon['formats'][number] => {
   switch (format.toLowerCase()) {
     case 'xml':
       return { format: 'xml' }
@@ -133,24 +116,12 @@ export const formatTitlePlaintext = (title: string): string => {
   return `${parts.type}${NONBREAKING_SPACE}${parts.number}`
 }
 
-export const formatIdentifiers = (
-  identifiers: RfcCommon['identifiers'],
-  separator: string = ': '
-): string[] => {
+export const formatIdentifiers = (identifiers: RfcCommon['identifiers'], separator: string = ': '): string[] => {
   if (!identifiers || identifiers.length === 0) return []
-  return identifiers.map(
-    (identifier) =>
-      `${identifier.type.toUpperCase()}${separator}${identifier.value}`
-  )
+  return identifiers.map((identifier) => `${identifier.type.toUpperCase()}${separator}${identifier.value}`)
 }
 
 type TocSection = RfcEditorToc['sections'][number]
-export const isTocSection = (
-  maybeTocSection?: unknown
-): maybeTocSection is TocSection => {
-  return Boolean(
-    maybeTocSection &&
-    typeof maybeTocSection === 'object' &&
-    'links' in maybeTocSection
-  )
+export const isTocSection = (maybeTocSection?: unknown): maybeTocSection is TocSection => {
+  return Boolean(maybeTocSection && typeof maybeTocSection === 'object' && 'links' in maybeTocSection)
 }

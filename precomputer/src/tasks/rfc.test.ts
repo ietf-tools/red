@@ -11,5 +11,7 @@ test('renderRfcRef 1048', async () => {
     throw Error(`Couldn't find RFC 1048 in mock data`)
   }
   const rfc1048Ref = renderRefsRef(rfc1048)
-  expect(rfc1048Ref).toMatch('Prindeville, P., "BOOTP vendor information extensions", RFC 1048, DOI 10.17487/RFC1048, February 1988, <https://www.rfc-editor.org/info/rfc1048/>.')
+  expect(rfc1048Ref).toMatch(
+    'Prindeville, P., "BOOTP vendor information extensions", RFC 1048, DOI 10.17487/RFC1048, February 1988, <https://www.rfc-editor.org/info/rfc1048/>.'
+  )
 })

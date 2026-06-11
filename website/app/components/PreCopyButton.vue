@@ -2,14 +2,16 @@
   <div
     :style="{ 'max-width': `${preWidthPx}px` }"
     :class="`relative text-right ${
-      // minimum height allocates space until button is revealed after component mounts (requires JS, shouldn't be in the server render)
-      // value should be same/slightly-taller than button height to avoid layout shift
+      // Copy to clipboard requires JS, so button shouldn't be in the server render, and
+      // button should be revealed after mount.
+      //
+      // So we need a minimum height to allocate browser layout space until button is revealed.
+      //
+      // Minimum height value should be same height or slightly-taller than button height
+      // to avoid layout shift
       'min-h-[2.5em]'
     }`">
-    <ButtonSuccessFailure
-      v-if="isMounted"
-      :click-handler="handleCopy"
-      button-class="mb-1">
+    <ButtonSuccessFailure v-if="isMounted" :click-handler="handleCopy" button-class="mb-1">
       <Icon name="fluent:clipboard-12-regular" size="1em" alt="" class="text-black dark:text-white" />
       Copy
     </ButtonSuccessFailure>
@@ -17,7 +19,7 @@
   <pre
     ref="preElement"
     v-bind="
-      $attrs // in PRE make sure no whitespace before <slot />
+      $attrs // in <pre> make sure no whitespace before/after <slot />
     "><slot /></pre>
 </template>
 

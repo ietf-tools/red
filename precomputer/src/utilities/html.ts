@@ -9,7 +9,7 @@ export const ImageDimensionsSchema = z.object({
 export type ImageDimensions = z.infer<typeof ImageDimensionsSchema>
 
 export type ImageDimensionsOptionalHeight = {
-  widthPx: number,
+  widthPx: number
   heightPx?: number
 }
 
@@ -51,7 +51,7 @@ type ModeKeys = 'rfc-html' | 'abstract'
 
 const modeOptions: Record<ModeKeys, SanitizeHtmlOptions> = {
   // RFC metadata 'abstract' is pseudo HTML with <p> tags only
-  'abstract': {
+  abstract: {
     allowedTags: ['p']
   },
   'rfc-html': {
@@ -85,7 +85,7 @@ const modeOptions: Record<ModeKeys, SanitizeHtmlOptions> = {
       'pattern',
       'solidColor',
       'linearGradient',
-      'radialGradient',
+      'radialGradient'
     ]),
     allowedAttributes: {
       '*': ['id', 'class', 'style', 'dir'],
@@ -96,25 +96,9 @@ const modeOptions: Record<ModeKeys, SanitizeHtmlOptions> = {
       th: ['colspan', 'rowspan'],
       ol: ['start', 'type', 'reversed'],
       link: ['rel', 'href'],
-      svg: [
-        'xmlns',
-        'version',
-        'width',
-        'height',
-        'viewBox',
-        'preserveAspectRatio',
-        ...SVG_STYLE_ATTRIBUTES
-      ],
+      svg: ['xmlns', 'version', 'width', 'height', 'viewBox', 'preserveAspectRatio', ...SVG_STYLE_ATTRIBUTES],
       desc: [...SVG_STYLE_ATTRIBUTES],
-      use: [
-        'x',
-        'y',
-        'width',
-        'height',
-        'href',
-        'xlink:href',
-        ...SVG_STYLE_ATTRIBUTES
-      ],
+      use: ['x', 'y', 'width', 'height', 'href', 'xlink:href', ...SVG_STYLE_ATTRIBUTES],
       g: ['label', ...SVG_STYLE_ATTRIBUTES],
       path: ['d', 'pathLength', ...SVG_STYLE_ATTRIBUTES],
       text: ['x', 'y', ...SVG_STYLE_ATTRIBUTES],
@@ -124,27 +108,9 @@ const modeOptions: Record<ModeKeys, SanitizeHtmlOptions> = {
       tspan: ['x', 'y', 'startOffset', ...SVG_STYLE_ATTRIBUTES],
       polygon: ['points', ...SVG_STYLE_ATTRIBUTES],
       polyline: ['points', ...SVG_STYLE_ATTRIBUTES],
-      linearGradient: [
-        'x1',
-        'x2',
-        'y1',
-        'y2',
-        'gradientUnits',
-        'spreadMethod',
-        ...SVG_STYLE_ATTRIBUTES
-      ],
+      linearGradient: ['x1', 'x2', 'y1', 'y2', 'gradientUnits', 'spreadMethod', ...SVG_STYLE_ATTRIBUTES],
       rect: ['x', 'y', 'width', 'height', 'rx', 'ry', ...SVG_STYLE_ATTRIBUTES],
-      radialGradient: [
-        'cx',
-        'cy',
-        'r',
-        'fx',
-        'fy',
-        'fr',
-        'gradientUnits',
-        'spreadMethod',
-        ...SVG_STYLE_ATTRIBUTES
-      ]
+      radialGradient: ['cx', 'cy', 'r', 'fx', 'fy', 'fr', 'gradientUnits', 'spreadMethod', ...SVG_STYLE_ATTRIBUTES]
     },
     allowedSchemes: [
       'data',

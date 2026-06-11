@@ -10,7 +10,7 @@ export type ColorModeStorage = 'localStorage' | 'sessionStorage' | 'cookie'
 // @ts-ignore
 declare module '#app' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface NuxtApp extends PluginInjection { }
+  interface NuxtApp extends PluginInjection {}
 }
 
 declare module 'vue-router' {
@@ -25,5 +25,5 @@ interface PluginInjection {
 
 declare module 'vue' {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface ComponentCustomProperties extends PluginInjection { }
+  interface ComponentCustomProperties extends PluginInjection {}
 }

@@ -30,15 +30,13 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   const timers: Timer[] = []
 
   const clearTimeouts = () => {
-    timers.forEach(timer => clearTimeout(timer))
+    timers.forEach((timer) => clearTimeout(timer))
   }
 
   const setActive = (id: string) => {
     activeIdIndex = ids.value.indexOf(id)
     if (activeIdIndex === -1) {
-      throw Error(
-        `setActiveId(${JSON.stringify(id)}) wasn't found in ids (${JSON.stringify(ids.value)})`
-      )
+      throw Error(`setActiveId(${JSON.stringify(id)}) wasn't found in ids (${JSON.stringify(ids.value)})`)
     }
     activeIdRef.value = id
   }
@@ -46,17 +44,12 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   const setActiveIdByIndex = (index: number) => {
     if (index === 0 && ids.value.length === 0) {
       // there's no TOC. ignore
-      console.info(
-        'Empty TOC length=0. ignoring request to set activeId',
-        index
-      )
+      console.info('Empty TOC length=0. ignoring request to set activeId', index)
       return
     }
 
     if (index < 0 || index >= ids.value.length) {
-      throw Error(
-        `setActiveIdByIndex(${index}) was out of bounds. ids.length = ${ids.value.length})`
-      )
+      throw Error(`setActiveIdByIndex(${index}) was out of bounds. ids.length = ${ids.value.length})`)
     }
 
     activeIdIndex = index
@@ -73,13 +66,10 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     // `elementTops`
     const uniqueIds = Array.from(new Set(ids.value))
     const selector = uniqueIds.map((id) => `#${CSS.escape(id)}`).join(',')
-    elements =
-      selector.length > 0 ? Array.from(document.querySelectorAll<HTMLElement>(selector)) : []
+    elements = selector.length > 0 ? Array.from(document.querySelectorAll<HTMLElement>(selector)) : []
 
     if (elements.length !== uniqueIds.length) {
-      const idsNotFound = uniqueIds.filter((id) =>
-        elements.some((htmlElement) => htmlElement.id === id)
-      )
+      const idsNotFound = uniqueIds.filter((id) => elements.some((htmlElement) => htmlElement.id === id))
       const errorText = `Some ids weren't found (${elements.length} !== ${uniqueIds.length}) missing ones: `
       console.error(errorText, elements, uniqueIds, idsNotFound)
       if (!isProd()) {
@@ -119,10 +109,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     if (scrollY < ENDS_THRESHOLD_PX) {
       // console.log('at top so use index 0')
       return 0
-    } else if (
-      scrollY >
-      document.body.scrollHeight - window.innerHeight - ENDS_THRESHOLD_PX
-    ) {
+    } else if (scrollY > document.body.scrollHeight - window.innerHeight - ENDS_THRESHOLD_PX) {
       // console.log('at bottom so use index ', elementTops.length - 1)
       return elementTops.length - 1
     }
@@ -133,9 +120,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
       const elementTop = elementTops[i]
       const closestTop = elementTops[closestIndex]
       if (typeof elementTop !== 'number' || typeof closestTop !== 'number') {
-        throw Error(
-          `Unexpected type typeof elementTop=${typeof elementTop}, typeof closestTop=${typeof closestTop}`
-        )
+        throw Error(`Unexpected type typeof elementTop=${typeof elementTop}, typeof closestTop=${typeof closestTop}`)
       }
       if (Math.abs(scrollY - elementTop) < Math.abs(scrollY - closestTop)) {
         closestIndex = i
@@ -165,17 +150,11 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
       // if undershooting
       direction === -1 && newActiveIdIndex < targetIdIndex ? targetIdIndex : 0,
       // if overshooting
-      direction === 1 && newActiveIdIndex > targetIdIndex ?
-        targetIdIndex
-        : ids.value.length
+      direction === 1 && newActiveIdIndex > targetIdIndex ? targetIdIndex : ids.value.length
     )
 
     // slow it down
-    velocity =
-      Math.max(
-        velocity + (direction === 1 ? -FRICTION : FRICTION),
-        MINIMUM_VELOCITY
-      ) * direction
+    velocity = Math.max(velocity + (direction === 1 ? -FRICTION : FRICTION), MINIMUM_VELOCITY) * direction
 
     setActiveIdByIndex(newActiveIdIndex)
 
@@ -189,10 +168,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
 
   const animateSoon = () => {
     clearTimeouts()
-    timers.push(setTimeout(
-      () => animateActiveIndex(false),
-      1000 / ANIMATE_INDEX_FPS
-    ))
+    timers.push(setTimeout(() => animateActiveIndex(false), 1000 / ANIMATE_INDEX_FPS))
   }
 
   const handleScroll = (shouldScrollImmediately: boolean) => {
@@ -227,7 +203,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
 
   const throttledHandleScroll = throttle(() => handleScroll(false), 1000 / SCROLL_FPS, {
     // leading because we want this to fire as early as possible but not again for FPS
-    edges: ["leading"]
+    edges: ['leading']
   })
 
   const throttledHandleResize = throttle(
@@ -270,7 +246,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
   return {
     activeId: activeIdRef,
     setActive,
-    targetId: targetIdRef,
+    targetId: targetIdRef
   }
 }
 
@@ -282,11 +258,7 @@ type UseScrollTocContainerProps = {
   wrapperRef: Ref<HTMLElement | null | undefined>
   makeTocId: (id: string) => string
 }
-export const useScrollTocContainer = ({
-  toTargetIdRef,
-  wrapperRef,
-  makeTocId
-}: UseScrollTocContainerProps) => {
+export const useScrollTocContainer = ({ toTargetIdRef, wrapperRef, makeTocId }: UseScrollTocContainerProps) => {
   let previousTargetId = toTargetIdRef.value
 
   const scrollToTargetId = (shouldScrollImmediately: boolean) => {
@@ -304,9 +276,7 @@ export const useScrollTocContainer = ({
       console.info('No previousActiveId', previousTargetId)
       return
     }
-    const previousTocLink = document.getElementById(
-      makeTocId(previousTargetId)
-    )
+    const previousTocLink = document.getElementById(makeTocId(previousTargetId))
     const tocLink = document.getElementById(makeTocId(toTargetIdRef.value))
 
     if (!tocLink || !wrapper || !previousTocLink) {
@@ -326,10 +296,8 @@ export const useScrollTocContainer = ({
 
     const wrapperRect = wrapper.getBoundingClientRect()
 
-    const isMoreThanTop =
-      tocLinkRect.top >= wrapperRect.top + SCROLL_BUFFER_PX
-    const isLessThanBottom =
-      tocLinkRect.bottom <= wrapperRect.bottom - SCROLL_BUFFER_PX
+    const isMoreThanTop = tocLinkRect.top >= wrapperRect.top + SCROLL_BUFFER_PX
+    const isLessThanBottom = tocLinkRect.bottom <= wrapperRect.bottom - SCROLL_BUFFER_PX
     const isVisible = isMoreThanTop && isLessThanBottom // is visible within viewport
 
     if (!shouldScrollImmediately && isVisible) {
@@ -351,9 +319,7 @@ export const useScrollTocContainer = ({
 
       const previousTocLinkRect = previousTocLink.getBoundingClientRect()
       const direction =
-        previousTocLinkRect.top === tocLinkRect.top ? 0
-          : previousTocLinkRect.top > tocLinkRect.top ? 1
-            : -1
+        previousTocLinkRect.top === tocLinkRect.top ? 0 : previousTocLinkRect.top > tocLinkRect.top ? 1 : -1
       /**
        * The simplest way to bring a TOC item into view is to scroll it into the middle.
        *
@@ -361,15 +327,10 @@ export const useScrollTocContainer = ({
        * scroll direction (based on previous activeId scroll) to offset the middle by %, either
        * above or below the middle depending on the direction.
        */
-      const scrollDirectionalBiasPx =
-        wrapperRect.height * SCROLL_DIRECTIONAL_BIAS_VH_RATIO
+      const scrollDirectionalBiasPx = wrapperRect.height * SCROLL_DIRECTIONAL_BIAS_VH_RATIO
       const directionalBiasPx = scrollDirectionalBiasPx * -direction
 
-      const targetTopPx =
-        wrapper.scrollTop +
-        tocLinkRect.top -
-        middleOfScrollableAreaPx +
-        directionalBiasPx
+      const targetTopPx = wrapper.scrollTop + tocLinkRect.top - middleOfScrollableAreaPx + directionalBiasPx
 
       wrapper.scrollTo({
         top: targetTopPx,
@@ -380,11 +341,7 @@ export const useScrollTocContainer = ({
     previousTargetId = toTargetIdRef.value
   }
 
-  watchDebounced(
-    [toTargetIdRef, wrapperRef],
-    () => scrollToTargetId(false),
-    { debounce: 200, maxWait: 400 }
-  )
+  watchDebounced([toTargetIdRef, wrapperRef], () => scrollToTargetId(false), { debounce: 200, maxWait: 400 })
 
   onMounted(() => {
     console.log('scroll.ts:useScrollTocContainer() on mounted')

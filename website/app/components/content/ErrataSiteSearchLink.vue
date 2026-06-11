@@ -1,11 +1,6 @@
 <template>
   <p class="px-2">
-    <Anchor
-      :href="errataSiteSearchUrl"
-      :class="ANCHOR_COLOR_TAILWIND_STYLE"
-    >
-      Errata Search
-    </Anchor>
+    <Anchor :href="errataSiteSearchUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE"> Errata Search </Anchor>
   </p>
 </template>
 

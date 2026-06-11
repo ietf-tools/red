@@ -1,11 +1,5 @@
 <template>
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="currentColor"
-    aria-hidden="true"
-  >
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
     <rect y="0.75" width="16" height="2" />
     <rect y="7.25" width="16" height="2" />
     <rect y="13.75" width="16" height="2" />

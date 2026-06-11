@@ -16,7 +16,7 @@
     <template #afterHeadingTitle>
       {{
         ''
-        /** 
+        /**
          * Considering changing CSS `relative` or `z-index` here?
          * The subseries link should appear "above" (in the `z-index` sense) the `Card`'s cover link.
          * Eg "BCP 14" on the card for RFC2119 should appear above the card.

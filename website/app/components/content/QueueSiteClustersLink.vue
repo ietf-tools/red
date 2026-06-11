@@ -1,11 +1,6 @@
 <template>
   <p class="px-2">
-    <Anchor
-      :href="queueClustersUrl"
-      :class="ANCHOR_COLOR_TAILWIND_STYLE"
-    >
-      Clusters
-    </Anchor>
+    <Anchor :href="queueClustersUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE"> Clusters </Anchor>
   </p>
 </template>
 

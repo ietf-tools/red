@@ -22,11 +22,8 @@ type Props = {
 }
 
 export const indices = async ({ api }: Props): AsyncTaskItem => {
-  console.log("Generating indices for ", process.env.NUXT_PUBLIC_SITE_BASE)
-  const [allRfcs, allSubseries] = await Promise.all([
-    getAllRFCs({ api }),
-    getAllSubseries({ api }),
-  ])
+  console.log('Generating indices for ', process.env.NUXT_PUBLIC_SITE_BASE)
+  const [allRfcs, allSubseries] = await Promise.all([getAllRFCs({ api }), getAllSubseries({ api })])
 
   // we only want to use rfcs with content available in the bucket
   const allRfcsWithContent = await filterRFCsByBucketContentExisting({ rfcs: allRfcs })
@@ -46,7 +43,7 @@ export const indices = async ({ api }: Props): AsyncTaskItem => {
     uploadMetaThumbnails(),
     uploadRfcIndexXsd(),
     uploadFavicons(),
-    uploadAllMarkdownPages(),
+    uploadAllMarkdownPages()
   ] satisfies AsyncTaskItem[])
 
   resultsArray.forEach((result, i) => {

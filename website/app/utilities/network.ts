@@ -30,14 +30,9 @@ export const fetchRetry = (
           resolve(response)
           return
         } catch (e: unknown) {
-          errors.push(
-            typeof e === 'object' && e !== null ? e.toString() : `${e}`
-          )
+          errors.push(typeof e === 'object' && e !== null ? e.toString() : `${e}`)
           console.log('error', remainingAttempts, e)
-          await setTimeoutPromise(
-            retryOptions?.delayBetweenRetriesMs ??
-              DELAY_BETWEEN_RETRIES_MS_DEFAULT
-          )
+          await setTimeoutPromise(retryOptions?.delayBetweenRetriesMs ?? DELAY_BETWEEN_RETRIES_MS_DEFAULT)
         }
       }
       reject(errors.join(','))

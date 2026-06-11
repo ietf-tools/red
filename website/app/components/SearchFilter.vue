@@ -1,46 +1,36 @@
 <template>
-  <form
-    class="flex flex-col gap-5 text-base text-grey-800 pt-3 lg:pt-0 pl-5 lg:pl-0 lg:pr-10"
-  >
+  <form class="flex flex-col gap-5 text-base text-grey-800 pt-3 lg:pt-0 pl-5 lg:pl-0 lg:pr-10">
     <div class="hidden text-blue-900 dark:text-slate-300 lg:flex items-center">
-      <Heading level="2" style-level="3">
-        Filter
-      </Heading>
+      <Heading level="2" style-level="3"> Filter </Heading>
       <SearchClear class="ml-4" />
     </div>
 
     <SearchFilterStatuses />
 
-    <Separator orientation="horizontal" decorative class="bg-gray-300 dark:bg-gray-700 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full" />
+    <Separator
+      orientation="horizontal"
+      decorative
+      class="bg-gray-300 dark:bg-gray-700 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full" />
 
-    <SearchFilterDisplay
-      :attributes="[{ attribute: 'flags.hiddenDefault', label: 'obsoleted / historic' }]"
-    />
+    <SearchFilterDisplay :attributes="[{ attribute: 'flags.hiddenDefault', label: 'obsoleted / historic' }]" />
 
-    <Separator orientation="horizontal" decorative class="bg-gray-300 dark:bg-gray-700 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full" />
+    <Separator
+      orientation="horizontal"
+      decorative
+      class="bg-gray-300 dark:bg-gray-700 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full" />
 
-    <SearchFilterDate
-      label="Publication date"
-      attribute="publicationDate"
-    />
+    <SearchFilterDate label="Publication date" attribute="publicationDate" />
 
-    <SearchFilterSelect
-      label="Publication Stream"
-      attribute="stream.name"
-    />
+    <SearchFilterSelect label="Publication Stream" attribute="stream.name" />
 
-    <SearchFilterSelect
-      label="Area"
-      attribute="area.full"
-    />
+    <SearchFilterSelect label="Area" attribute="area.full" />
 
     <SearchFilterList
       label="Working group"
       attribute="group.full"
       searchable
       search-placeholder="Search for group..."
-      show-more
-    />
+      show-more />
 
     <SearchFilterList
       label="Author"
@@ -48,8 +38,7 @@
       searchable
       search-placeholder="Search for author..."
       show-more
-      double-cols
-    />
+      double-cols />
   </form>
 </template>
 

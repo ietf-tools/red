@@ -4,18 +4,17 @@
     :class="[
       'scrollbar-gutter-stable overflow-y-auto transition-shadow duration-400',
       canScrollUp &&
-      !canScrollDown &&
-      'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
+        !canScrollDown &&
+        'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
       !canScrollUp &&
-      canScrollDown &&
-      'shadow-[inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
+        canScrollDown &&
+        'shadow-[inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
       canScrollUp &&
-      canScrollDown &&
-      'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
+        canScrollDown &&
+        'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
       props.class
     ]"
-    @scroll="debouncedUpdateScrollHint"
-  >
+    @scroll="debouncedUpdateScrollHint">
     <slot />
   </div>
 </template>
@@ -59,7 +58,7 @@ type Timer = ReturnType<typeof setTimeout>
 const timers: Timer[] = []
 
 const clearTimeouts = () => {
-  timers.forEach(timer => clearTimeout(timer))
+  timers.forEach((timer) => clearTimeout(timer))
 }
 
 onMounted(() => {

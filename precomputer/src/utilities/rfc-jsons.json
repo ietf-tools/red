@@ -7,26 +7,16 @@
         "draft": "",
         "doc_id": "RFC1000",
         "title": " Request For Comments reference guide ",
-        "authors": [
-          "J.K. Reynolds",
-          "J. Postel"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J.K. Reynolds", "J. Postel"],
+        "format": ["ASCII", "HTML"],
         "page_count": "149",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": " This RFC Reference Guide is intended to provide a historical account by categorizing and summarizing of the Request for Comments numbers 1 through 999 issued between the years 1969-1987.  These documents have been crossed referenced to indicate which RFCs are current, obsolete, or revised.  ",
         "pub_date": "August 1987",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0999"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0999"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
@@ -46,26 +36,19 @@
           "Internet Activities Board",
           "End-to-End Services Task Force"
         ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "format": ["ASCII", "HTML"],
         "page_count": "68",
         "pub_status": "INTERNET STANDARD",
         "status": "INTERNET STANDARD",
         "source": "Legacy",
         "abstract": " This RFC defines a proposed standard protocol to support NetBIOS services in a TCP/IP environment.  Both local network and internet operation are supported.  Various node types are defined to accommodate local and internet topologies and to allow operation with or without the use of IP broadcast.  This RFC describes the NetBIOS-over-TCP protocols in a general manner, emphasizing the underlying ideas and techniques. Detailed specifications are found in a companion RFC, \"Protocol Standard For a NetBIOS Service on a TCP/UDP Transport: Detailed Specifications\".  ",
         "pub_date": "March 1987",
-        "keywords": [
-          "NETBIOS"
-        ],
+        "keywords": ["NETBIOS"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "STD0019"
-        ],
+        "see_also": ["STD0019"],
         "doi": "10.17487/RFC1001",
         "errata_url": "https://www.rfc-editor.org/errata/rfc1001"
       }
@@ -81,26 +64,19 @@
           "Internet Activities Board",
           "End-to-End Services Task Force"
         ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "format": ["ASCII", "HTML"],
         "page_count": "84",
         "pub_status": "INTERNET STANDARD",
         "status": "INTERNET STANDARD",
         "source": "Legacy",
         "abstract": " This RFC defines a proposed standard protocol to support NetBIOS services in a TCP/IP environment.  Both local network and internet operation are supported.  Various node types are defined to accommodate local and internet topologies and to allow operation with or without the use of IP broadcast.  This RFC gives the detailed specifications of the netBIOS-over-TCP packets, protocols, and defined constants and variables.  A more general overview is found in a companion RFC, \"Protocol Standard For NetBIOS Service on TCP/UDP Transport: Concepts and Methods\".  ",
         "pub_date": "March 1987",
-        "keywords": [
-          "NETBIOS"
-        ],
+        "keywords": ["NETBIOS"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "STD0019"
-        ],
+        "see_also": ["STD0019"],
         "doi": "10.17487/RFC1002",
         "errata_url": "https://www.rfc-editor.org/errata/rfc1002"
       }
@@ -111,22 +87,15 @@
         "draft": "",
         "doc_id": "RFC1003",
         "title": " Issues in defining an equations representation standard ",
-        "authors": [
-          "A.R. Katz"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A.R. Katz"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": " This memo is intended to identify and explore issues in defining a standard for the exchange of mathematical equations.  No attempt is made at a complete definition and more questions are asked than are answered. Questions about the user interface are only addressed to the extent that they affect interchange issues.  ",
         "pub_date": "March 1987",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -142,22 +111,15 @@
         "draft": "",
         "doc_id": "RFC1004",
         "title": " Distributed-protocol authentication scheme ",
-        "authors": [
-          "D.L. Mills"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D.L. Mills"],
+        "format": ["ASCII", "HTML"],
         "page_count": "8",
         "pub_status": "EXPERIMENTAL",
         "status": "EXPERIMENTAL",
         "source": "Legacy",
         "abstract": " The purpose of this RFC is to focus discussion on authentication problems in the Internet and possible methods of solution.  The proposed solutions this document are not intended as standards for the Internet at this time.  Rather, it is hoped that a general consensus will emerge as to the appropriate solution to authentication problems, leading eventually to the adoption of standards.  This document suggests mediated access-control and authentication procedures suitable for those cases when an association is to be set up between users belonging to different trust environments.  ",
         "pub_date": "March 1987",
-        "keywords": [
-          "COOKIE-JAR"
-        ],
+        "keywords": ["COOKIE-JAR"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -173,23 +135,15 @@
         "draft": "",
         "doc_id": "RFC1005",
         "title": " ARPANET AHIP-E Host Access Protocol (enhanced AHIP) ",
-        "authors": [
-          "A. Khanna",
-          "A.G. Malis"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Khanna", "A.G. Malis"],
+        "format": ["ASCII", "HTML"],
         "page_count": "34",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": " This RFC is a proposed specification for the encoding of Class A IP addresses for use on ARPANET-style networks such as the Milnet and Arpanet, and for enhancements to the ARPANET AHIP Host Access Protocol (AHIP; formerly known as 1822).  These enhancements increase the size of the PSN field, allow ARPANET hosts to use logical names to address each other, allow for the communication of type-of-service information from the host to the PSN and enable the PSN to provide congestion feedback to the host on a connection basis.  ",
         "pub_date": "May 1987",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -205,34 +159,20 @@
         "draft": "",
         "doc_id": "RFC1006",
         "title": "ISO Transport Service on top of the TCP Version: 3",
-        "authors": [
-          "M.T. Rose",
-          "D.E. Cass"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M.T. Rose", "D.E. Cass"],
+        "format": ["ASCII", "HTML"],
         "page_count": "19",
         "pub_status": "INTERNET STANDARD",
         "status": "INTERNET STANDARD",
         "source": "Legacy",
         "abstract": " This memo specifies a standard for the Internet community.  Hosts on the Internet that choose to implement ISO transport services on top of the TCP are expected to adopt and implement this standard.  TCP port 102 is reserved for hosts which implement this standard.  This memo specifies version 3 of the protocol and supersedes RFC-983.  Changes between the protocol is described in RFC-983 and this memo are minor, but unfortunately incompatible.  ",
         "pub_date": "May 1987",
-        "keywords": [
-          "TP-TCP"
-        ],
-        "obsoletes": [
-          "RFC0983"
-        ],
+        "keywords": ["TP-TCP"],
+        "obsoletes": ["RFC0983"],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC2126"
-        ],
-        "see_also": [
-          "STD0035"
-        ],
+        "updated_by": ["RFC2126"],
+        "see_also": ["STD0035"],
         "doi": "10.17487/RFC1006",
         "errata_url": "https://www.rfc-editor.org/errata/rfc1006"
       }
@@ -243,22 +183,15 @@
         "draft": "",
         "doc_id": "RFC1007",
         "title": " Military supplement to the ISO Transport Protocol ",
-        "authors": [
-          "W. McCoy"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["W. McCoy"],
+        "format": ["ASCII", "HTML"],
         "page_count": "23",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": " This document supplements the Transport Service and Protocol of the International Standards Organization (ISO), IS 8072 and IS 8073, respectively, and their formal descriptions by providing conventions, option selections and parameter values.  This RFC is being distributed to members of the Internet community in order to solicit comments on the Draft Military Supplement.  While this document may not be directly relevant to the research problems of the Internet, it may be of some interest to a number of researchers and implementors.  ",
         "pub_date": "June 1987",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -274,22 +207,15 @@
         "draft": "",
         "doc_id": "RFC1008",
         "title": " Implementation guide for the ISO Transport Protocol ",
-        "authors": [
-          "W. McCoy"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["W. McCoy"],
+        "format": ["ASCII", "HTML"],
         "page_count": "73",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": " This RFC is being distributed to members of the Internet community in order to solicit comments on the Implementors Guide.  While this document may not be directly relevant to the research problems of the Internet, it may be of some interest to a number of researchers and implementors.  ",
         "pub_date": "June 1987",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -305,14 +231,8 @@
         "draft": "",
         "doc_id": "RFC1009",
         "title": " Requirements for Internet gateways ",
-        "authors": [
-          "R.T. Braden",
-          "J. Postel"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.T. Braden", "J. Postel"],
+        "format": ["ASCII", "HTML"],
         "page_count": "54",
         "pub_status": "HISTORIC",
         "status": "HISTORIC",
@@ -320,12 +240,8 @@
         "abstract": " This RFC summarizes the requirements for gateways to be used between networks supporting the Internet protocols.  This document is a formal statement of the requirements to be met by gateways used in the Internet system.  As such, it is an official specification for the Internet community.  ",
         "pub_date": "June 1987",
         "keywords": [],
-        "obsoletes": [
-          "RFC0985"
-        ],
-        "obsoleted_by": [
-          "RFC1812"
-        ],
+        "obsoletes": ["RFC0985"],
+        "obsoleted_by": ["RFC1812"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -339,22 +255,15 @@
         "draft": "",
         "doc_id": "RFC0100",
         "title": " Categorization and guide to NWG/RFCs ",
-        "authors": [
-          "P.M. Karp"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["P.M. Karp"],
+        "format": ["ASCII", "HTML"],
         "page_count": "37",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -370,29 +279,17 @@
         "draft": "",
         "doc_id": "RFC1010",
         "title": " Assigned numbers ",
-        "authors": [
-          "J.K. Reynolds",
-          "J. Postel"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J.K. Reynolds", "J. Postel"],
+        "format": ["ASCII", "HTML"],
         "page_count": "44",
         "pub_status": "UNKNOWN",
         "status": "HISTORIC",
         "source": "Legacy",
         "abstract": " This memo is an official status report on the numbers used in protocols in the Internet community.  It documents the currently assigned values from several series of numbers including link, socket, port, and protocol, used in network protocol implementations.  ",
         "pub_date": "May 1987",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0990"
-        ],
-        "obsoleted_by": [
-          " RFC1060"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0990"],
+        "obsoleted_by": [" RFC1060"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -406,34 +303,19 @@
         "draft": "",
         "doc_id": "RFC0010",
         "title": " Documentation conventions ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "July 1969",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0003"
-        ],
-        "obsoleted_by": [
-          " RFC0016"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0003"],
+        "obsoleted_by": [" RFC0016"],
         "updates": [],
-        "updated_by": [
-          "RFC0024",
-          "RFC0027",
-          "RFC0030"
-        ],
+        "updated_by": ["RFC0024", "RFC0027", "RFC0030"],
         "see_also": [],
         "doi": "10.17487/RFC0010",
         "errata_url": null
@@ -445,27 +327,17 @@
         "draft": "",
         "doc_id": "RFC0011",
         "title": "Implementation of the Host - Host Software Procedures in GORDO",
-        "authors": [
-          "G. Deloche"
-        ],
-        "format": [
-          "ASCII",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["G. Deloche"],
+        "format": ["ASCII", "PDF", "HTML"],
         "page_count": "23",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC0033"
-        ],
+        "obsoleted_by": ["RFC0033"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -479,24 +351,15 @@
         "draft": "",
         "doc_id": "RFC0012",
         "title": " IMP-Host interface flow diagrams ",
-        "authors": [
-          "M. Wingfield"
-        ],
-        "format": [
-          "ASCII",
-          "PS",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["M. Wingfield"],
+        "format": ["ASCII", "PS", "PDF", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -512,22 +375,15 @@
         "draft": "",
         "doc_id": "RFC0013",
         "title": " Zero Text Length EOF Message ",
-        "authors": [
-          "V. Cerf"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["V. Cerf"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -543,12 +399,8 @@
         "draft": null,
         "doc_id": "RFC0014",
         "title": "Not Issued ",
-        "authors": [
-          ""
-        ],
-        "format": [
-          ""
-        ],
+        "authors": [""],
+        "format": [""],
         "page_count": null,
         "pub_status": "NOT ISSUED",
         "status": "NOT ISSUED",
@@ -571,22 +423,15 @@
         "draft": "",
         "doc_id": "RFC0015",
         "title": " Network subsystem for time sharing hosts ",
-        "authors": [
-          "C.S. Carr"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["C.S. Carr"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "September 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -602,34 +447,19 @@
         "draft": "",
         "doc_id": "RFC0016",
         "title": " M.I.T ",
-        "authors": [
-          "S. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1969",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0010"
-        ],
-        "obsoleted_by": [
-          " RFC0024"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0010"],
+        "obsoleted_by": [" RFC0024"],
         "updates": [],
-        "updated_by": [
-          "RFC0024",
-          "RFC0027",
-          "RFC0030"
-        ],
+        "updated_by": ["RFC0024", "RFC0027", "RFC0030"],
         "see_also": [],
         "doi": "10.17487/RFC0016",
         "errata_url": null
@@ -641,22 +471,15 @@
         "draft": "",
         "doc_id": "RFC0017",
         "title": " Some questions re: Host-IMP Protocol ",
-        "authors": [
-          "J.E. Kreznar"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J.E. Kreznar"],
+        "format": ["ASCII", "HTML"],
         "page_count": "4",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -672,22 +495,15 @@
         "draft": "",
         "doc_id": "RFC0018",
         "title": " IMP-IMP and HOST-HOST Control Links ",
-        "authors": [
-          "V. Cerf"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["V. Cerf"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "September 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -703,22 +519,15 @@
         "draft": "",
         "doc_id": "RFC0019",
         "title": " Two protocol suggestions to reduce congestion at swap bound nodes ",
-        "authors": [
-          "J.E. Kreznar"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J.E. Kreznar"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -734,22 +543,15 @@
         "draft": "",
         "doc_id": "RFC0001",
         "title": "Host Software ",
-        "authors": [
-          "S. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "11",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -765,30 +567,17 @@
         "draft": "",
         "doc_id": "RFC2000",
         "title": " Internet Official Protocol Standards ",
-        "authors": [
-          "J. Postel, Ed."
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Postel, Ed."],
+        "format": ["ASCII", "HTML"],
         "page_count": "56",
         "pub_status": "INTERNET STANDARD",
         "status": "HISTORIC",
         "source": "Legacy",
         "abstract": " This memo describes the state of standardization of protocols used in the Internet as determined by the Internet Architecture Board (IAB). This memo is an Internet Standard.  ",
         "pub_date": "January 1997",
-        "keywords": [
-          "status",
-          "procedure",
-          "index"
-        ],
-        "obsoletes": [
-          "RFC1920"
-        ],
-        "obsoleted_by": [
-          " RFC2200"
-        ],
+        "keywords": ["status", "procedure", "index"],
+        "obsoletes": ["RFC1920"],
+        "obsoleted_by": [" RFC2200"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -802,29 +591,17 @@
         "draft": "",
         "doc_id": "RFC2001",
         "title": " TCP Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery Algorithms ",
-        "authors": [
-          "W. Stevens"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["W. Stevens"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Legacy",
         "abstract": " Modern implementations of TCP contain four intertwined algorithms that have never been fully documented as Internet standards: slow start, congestion avoidance, fast retransmit, and fast recovery.  [STANDARDS-TRACK]",
         "pub_date": "December 1996",
-        "keywords": [
-          "TCPSLOWSRT",
-          "Transmission",
-          "Control",
-          "Protocol"
-        ],
+        "keywords": ["TCPSLOWSRT", "Transmission", "Control", "Protocol"],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC2581"
-        ],
+        "obsoleted_by": [" RFC2581"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -838,32 +615,19 @@
         "draft": "",
         "doc_id": "RFC2002",
         "title": " IP Mobility Support ",
-        "authors": [
-          "C. Perkins, Ed."
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["C. Perkins, Ed."],
+        "format": ["ASCII", "HTML"],
         "page_count": "79",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IP Routing for Wireless/Mobile Hosts",
         "abstract": " This document specifies protocol enhancements that allow transparent routing of IP datagrams to mobile nodes in the Internet.  [STANDARDS-TRACK]",
         "pub_date": "September 1996",
-        "keywords": [
-          "MOBILEIPSUPIP",
-          "Internet",
-          "Protocol"
-        ],
+        "keywords": ["MOBILEIPSUPIP", "Internet", "Protocol"],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC3220"
-        ],
+        "obsoleted_by": [" RFC3220"],
         "updates": [],
-        "updated_by": [
-          " RFC2290"
-        ],
+        "updated_by": [" RFC2290"],
         "see_also": [],
         "doi": "10.17487/RFC2002",
         "errata_url": null
@@ -875,31 +639,19 @@
         "draft": "",
         "doc_id": "RFC2003",
         "title": " IP Encapsulation within IP ",
-        "authors": [
-          "C. Perkins"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["C. Perkins"],
+        "format": ["ASCII", "HTML"],
         "page_count": "14",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IP Routing for Wireless/Mobile Hosts",
         "abstract": " This document specifies a method by which an IP datagram may be encapsulated (carried as payload) within an IP datagram.  [STANDARDS-TRACK]",
         "pub_date": "September 1996",
-        "keywords": [
-          "IPENCAPIP",
-          "Internet",
-          "Protocol"
-        ],
+        "keywords": ["IPENCAPIP", "Internet", "Protocol"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC3168",
-          "RFC6864"
-        ],
+        "updated_by": ["RFC3168", "RFC6864"],
         "see_also": [],
         "doi": "10.17487/RFC2003",
         "errata_url": "https://www.rfc-editor.org/errata/rfc2003"
@@ -911,24 +663,15 @@
         "draft": "",
         "doc_id": "RFC2004",
         "title": " Minimal Encapsulation within IP ",
-        "authors": [
-          "C. Perkins"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["C. Perkins"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IP Routing for Wireless/Mobile Hosts",
         "abstract": " This document specifies a method by which an IP datagram may be encapsulated (carried as payload) within an IP datagram, with less overhead than \"conventional\" IP encapsulation that adds a second IP header to each encapsulated datagram.  [STANDARDS-TRACK]  ",
         "pub_date": "September 1996",
-        "keywords": [
-          "MINI-IP",
-          "Internet",
-          "Protocol"
-        ],
+        "keywords": ["MINI-IP", "Internet", "Protocol"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -944,23 +687,15 @@
         "draft": "",
         "doc_id": "RFC2005",
         "title": " Applicability Statement for IP Mobility Support ",
-        "authors": [
-          "J. Solomon"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Solomon"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IP Routing for Wireless/Mobile Hosts",
         "abstract": " As required by [RFC 1264], this report discusses the applicability of Mobile IP to provide host mobility in the Internet.  In particular, this document describes the key features of Mobile IP and shows how the requirements for advancement to Proposed Standard RFC have been satisfied.  [STANDARDS-TRACK]  ",
         "pub_date": "September 1996",
-        "keywords": [
-          "Internet",
-          "Protocol"
-        ],
+        "keywords": ["Internet", "Protocol"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -976,31 +711,15 @@
         "draft": "",
         "doc_id": "RFC2006",
         "title": " The Definitions of Managed Objects for IP Mobility Support using SMIv2 ",
-        "authors": [
-          "D. Cong",
-          "M. Hamlen",
-          "C. Perkins"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D. Cong", "M. Hamlen", "C. Perkins"],
+        "format": ["ASCII", "HTML"],
         "page_count": "52",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IP Routing for Wireless/Mobile Hosts",
         "abstract": " This memo defines the Management Information Base (MIB) for use with network management protocols in TCP/IP-based internets.  In particular, it describes managed objects used for managing the Mobile Node, Foreign Agent and Home Agent of the Mobile IP Protocol.  [STANDARDS-TRACK]  ",
         "pub_date": "September 1996",
-        "keywords": [
-          "MOBILEIPMIB",
-          "Mobile",
-          "Internet",
-          "Protocol",
-          "MIB",
-          "Managed",
-          "Information",
-          "Base"
-        ],
+        "keywords": ["MOBILEIPMIB", "Mobile", "Internet", "Protocol", "MIB", "Managed", "Information", "Base"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1016,33 +735,20 @@
         "draft": "",
         "doc_id": "RFC2007",
         "title": " Catalogue of Network Training Materials ",
-        "authors": [
-          "J. Foster",
-          "M. Isaacs",
-          "M. Prior"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Foster", "M. Isaacs", "M. Prior"],
+        "format": ["ASCII", "HTML"],
         "page_count": "55",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Network Training Materials",
         "abstract": " The purpose of this document is to provide a catalogue of quality Network Training Materials for use by Internet trainers in training their users.  This memo provides information for the Internet community. This memo does not specify an Internet standard of any kind.  ",
         "pub_date": "September 1996",
-        "keywords": [
-          "TRAINMAT",
-          "IETF",
-          "TERENA"
-        ],
+        "keywords": ["TRAINMAT", "IETF", "TERENA"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "FYI0029"
-        ],
+        "see_also": ["FYI0029"],
         "doi": "10.17487/RFC2007",
         "errata_url": null
       }
@@ -1053,31 +759,20 @@
         "draft": "",
         "doc_id": "RFC2008",
         "title": " Implications of Various Address Allocation Policies for Internet Routing ",
-        "authors": [
-          "Y. Rekhter",
-          "T. Li"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["Y. Rekhter", "T. Li"],
+        "format": ["ASCII", "HTML"],
         "page_count": "13",
         "pub_status": "BEST CURRENT PRACTICE",
         "status": "BEST CURRENT PRACTICE",
         "source": "CIDR Deployment",
         "abstract": " The purpose of this document is to articulate certain relevant fundamental technical issues that must be considered in formulating unicast address allocation and management policies for the Public Internet, and to provide recommendations with respect to these policies. This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.  ",
         "pub_date": "September 1996",
-        "keywords": [
-          "IP",
-          "unicast"
-        ],
+        "keywords": ["IP", "unicast"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "BCP0007"
-        ],
+        "see_also": ["BCP0007"],
         "doi": "10.17487/RFC2008",
         "errata_url": null
       }
@@ -1088,26 +783,15 @@
         "draft": "",
         "doc_id": "RFC2009",
         "title": " GPS-Based Addressing and Routing ",
-        "authors": [
-          "T. Imielinski",
-          "J. Navas"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["T. Imielinski", "J. Navas"],
+        "format": ["ASCII", "HTML"],
         "page_count": "27",
         "pub_status": "EXPERIMENTAL",
         "status": "EXPERIMENTAL",
         "source": "Legacy",
         "abstract": " This document describes a possible experiment with geographic addresses. It uses several specific IP addresses and domain names in the discussion as concrete examples to aid in understanding the concepts.  This memo defines an Experimental Protocol for the Internet community.  ",
         "pub_date": "October 1996",
-        "keywords": [
-          "GPS-AR",
-          "domain",
-          "names",
-          "geographic"
-        ],
+        "keywords": ["GPS-AR", "domain", "names", "geographic"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1123,28 +807,17 @@
         "draft": "",
         "doc_id": "RFC2010",
         "title": " Operational Criteria for Root Name Servers ",
-        "authors": [
-          "B. Manning",
-          "P. Vixie"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["B. Manning", "P. Vixie"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Legacy",
         "abstract": " This document specifies the operational requirements of root name servers, including host hardware capacities, name server software revisions, network connectivity, and physical environment.  This memo provides information for the Internet community.  This memo does not specify an Internet standard of any kind.  ",
         "pub_date": "September 1996",
-        "keywords": [
-          "host",
-          "hardware"
-        ],
+        "keywords": ["host", "hardware"],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC2870"
-        ],
+        "obsoleted_by": [" RFC2870"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -1158,30 +831,20 @@
         "draft": "",
         "doc_id": "RFC0020",
         "title": "ASCII format for network interchange ",
-        "authors": [
-          "V.G. Cerf"
-        ],
-        "format": [
-          "ASCII",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["V.G. Cerf"],
+        "format": ["ASCII", "PDF", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "INTERNET STANDARD",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "STD0080"
-        ],
+        "see_also": ["STD0080"],
         "doi": "10.17487/RFC0020",
         "errata_url": "https://www.rfc-editor.org/errata/rfc0020"
       }
@@ -1192,22 +855,15 @@
         "draft": "",
         "doc_id": "RFC0021",
         "title": " Network meeting ",
-        "authors": [
-          "V.G. Cerf"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["V.G. Cerf"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1223,22 +879,15 @@
         "draft": "",
         "doc_id": "RFC0022",
         "title": " Host-host control message formats ",
-        "authors": [
-          "V.G. Cerf"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["V.G. Cerf"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1254,22 +903,15 @@
         "draft": "",
         "doc_id": "RFC0023",
         "title": " Transmission of Multiple Control Messages ",
-        "authors": [
-          "G. Gregg"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["G. Gregg"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1285,34 +927,19 @@
         "draft": "",
         "doc_id": "RFC0024",
         "title": " Documentation Conventions ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "November 1969",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0016"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0016"],
         "obsoleted_by": [],
-        "updates": [
-          "RFC0010",
-          "RFC0016"
-        ],
-        "updated_by": [
-          "RFC0027",
-          "RFC0030"
-        ],
+        "updates": ["RFC0010", "RFC0016"],
+        "updated_by": ["RFC0027", "RFC0030"],
         "see_also": [],
         "doi": "10.17487/RFC0024",
         "errata_url": null
@@ -1324,22 +951,15 @@
         "draft": "",
         "doc_id": "RFC0025",
         "title": " No High Link Numbers ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1355,12 +975,8 @@
         "draft": null,
         "doc_id": "RFC0026",
         "title": "Not Issued ",
-        "authors": [
-          ""
-        ],
-        "format": [
-          ""
-        ],
+        "authors": [""],
+        "format": [""],
         "page_count": null,
         "pub_status": "NOT ISSUED",
         "status": "NOT ISSUED",
@@ -1383,32 +999,19 @@
         "draft": "",
         "doc_id": "RFC0027",
         "title": " Documentation Conventions ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC0010",
-          "RFC0016",
-          "RFC0024"
-        ],
-        "updated_by": [
-          " RFC0030"
-        ],
+        "updates": ["RFC0010", "RFC0016", "RFC0024"],
+        "updated_by": [" RFC0030"],
         "see_also": [],
         "doi": "10.17487/RFC0027",
         "errata_url": null
@@ -1420,22 +1023,15 @@
         "draft": "",
         "doc_id": "RFC0028",
         "title": " Time Standards ",
-        "authors": [
-          "W.K. English"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["W.K. English"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1451,29 +1047,20 @@
         "draft": "",
         "doc_id": "RFC0029",
         "title": " Response to RFC 28 ",
-        "authors": [
-          "R.E. Kahn"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.E. Kahn"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "RFC0028"
-        ],
+        "see_also": ["RFC0028"],
         "doi": "10.17487/RFC0029",
         "errata_url": null
       }
@@ -1484,23 +1071,15 @@
         "draft": "",
         "doc_id": "RFC0002",
         "title": "Host software ",
-        "authors": [
-          "B. Duvall"
-        ],
-        "format": [
-          "ASCII",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["B. Duvall"],
+        "format": ["ASCII", "PDF", "HTML"],
         "page_count": "10",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1516,31 +1095,17 @@
         "draft": "",
         "doc_id": "RFC3000",
         "title": " Internet Official Protocol Standards ",
-        "authors": [
-          "J. Reynolds",
-          "R. Braden",
-          "S. Ginoza",
-          "L. Shiota"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Reynolds", "R. Braden", "S. Ginoza", "L. Shiota"],
+        "format": ["ASCII", "HTML"],
         "page_count": "43",
         "pub_status": "INTERNET STANDARD",
         "status": "HISTORIC",
         "source": "INDEPENDENT",
         "abstract": " This memo contains a snapshot of the state of standardization of protocols used in the Internet as of October 25, 2001.  It lists official protocol standards and Best Current Practice RFCs; it is not a complete index to the RFC series.  The latest version of this memo is designated STD 1.  [STANDARDS-TRACK]",
         "pub_date": "October 2001",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC2900"
-        ],
-        "obsoleted_by": [
-          "RFC3300"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC2900"],
+        "obsoleted_by": ["RFC3300"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -1554,29 +1119,17 @@
         "draft": "draft-mealling-oid-urn-01",
         "doc_id": "RFC3001",
         "title": " A URN Namespace of Object Identifiers ",
-        "authors": [
-          "M. Mealling"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Mealling"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Legacy",
         "abstract": " This document describes a Uniform Resource Names (URN) namespace that contains Object Identifiers (OIDs).  This memo provides information for the Internet community.  ",
         "pub_date": "October 2000",
-        "keywords": [
-          "uniform",
-          "resource",
-          "names",
-          "OIDs"
-        ],
+        "keywords": ["uniform", "resource", "names", "OIDs"],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC3061"
-        ],
+        "obsoleted_by": [" RFC3061"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -1590,24 +1143,15 @@
         "draft": "draft-iab-wirelessws-01",
         "doc_id": "RFC3002",
         "title": " Overview of 2000 IAB Wireless Internetworking Workshop ",
-        "authors": [
-          "D. Mitzel"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D. Mitzel"],
+        "format": ["ASCII", "HTML"],
         "page_count": "42",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Legacy",
         "abstract": " This document provides an overview of a workshop held by the Internet Architecture Board (IAB) on wireless internetworking.  This memo provides information for the Internet community.  ",
         "pub_date": "November 2000",
-        "keywords": [
-          "internet",
-          "architecture",
-          "board"
-        ],
+        "keywords": ["internet", "architecture", "board"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1623,25 +1167,15 @@
         "draft": "draft-nilsson-audio-mpeg-03",
         "doc_id": "RFC3003",
         "title": " The audio/mpeg Media Type ",
-        "authors": [
-          "M. Nilsson"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Nilsson"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Legacy",
         "abstract": " The audio layers of the MPEG-1 and MPEG-2 standards are in frequent use on the internet, but there is no uniform Multipurpose Internet Mail Extension (MIME) type for these files.  The intention of this document is to define the media type audio/mpeg to refer to this kind of contents.  [STANDARDS-TRACK]",
         "pub_date": "October 2000",
-        "keywords": [
-          "audio/mpeg",
-          "MIME",
-          "multipurpose internet mail extensions",
-          "Media Type"
-        ],
+        "keywords": ["audio/mpeg", "MIME", "multipurpose internet mail extensions", "Media Type"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1657,29 +1191,15 @@
         "draft": "draft-ietf-dhc-userclass-10",
         "doc_id": "RFC3004",
         "title": " The User Class Option for DHCP ",
-        "authors": [
-          "G. Stump",
-          "R. Droms",
-          "Y. Gu",
-          "R. Vyaghrapuri",
-          "A. Demirtjis",
-          "B. Beser",
-          "J. Privat"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["G. Stump", "R. Droms", "Y. Gu", "R. Vyaghrapuri", "A. Demirtjis", "B. Beser", "J. Privat"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Dynamic Host Configuration",
         "abstract": " This option is used by a Dynamic Host Configuration Protocol (DHCP) client to optionally identify the type or category of user or applications it represents.  The information contained in this option is an opaque field that represents the user class of which the client is a member.  Based on this class, a DHCP server selects the appropriate address pool to assign an address to the client and the appropriate configuration parameters.  This option should be configurable by a user. [STANDARDS-TRACK]",
         "pub_date": "October 2000",
-        "keywords": [
-          "DHCP",
-          "dynamic host configuration protocol"
-        ],
+        "keywords": ["DHCP", "dynamic host configuration protocol"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1695,33 +1215,19 @@
         "draft": "draft-ietf-poisson-listaup-02",
         "doc_id": "RFC3005",
         "title": "IETF Discussion List Charter ",
-        "authors": [
-          "S. Harris"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Harris"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "BEST CURRENT PRACTICE",
         "status": "BEST CURRENT PRACTICE",
         "source": "Process for Organization of Internet Standards ONgoing",
         "abstract": " The Internet Engineering Task Force (IETF) discussion mailing list furthers the development and specification of Internet technology through discussion of technical issues, and hosts discussions of IETF direction, policy, meetings, and procedures.  As this is the most general IETF mailing list, considerable latitude is allowed. Advertising, whether to solicit business or promote employment opportunities, falls well outside the range of acceptable topics, as do discussions of a personal nature.  This document specifies an Internet Best Current Practices for the Internet Community, and requests discussion and suggestions for improvements.  ",
         "pub_date": "October 2000",
-        "keywords": [
-          "internet",
-          "engineering",
-          "task",
-          "force"
-        ],
+        "keywords": ["internet", "engineering", "task", "force"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC9245"
-        ],
+        "obsoleted_by": ["RFC9245"],
         "updates": [],
-        "updated_by": [
-          "RFC8717"
-        ],
+        "updated_by": ["RFC8717"],
         "see_also": [],
         "doi": "10.17487/RFC3005",
         "errata_url": null
@@ -1733,29 +1239,15 @@
         "draft": "draft-ietf-intserv-compress-02",
         "doc_id": "RFC3006",
         "title": " Integrated Services in the Presence of Compressible Flows ",
-        "authors": [
-          "B. Davie",
-          "C. Iturralde",
-          "D. Oran",
-          "S. Casner",
-          "J. Wroclawski"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["B. Davie", "C. Iturralde", "D. Oran", "S. Casner", "J. Wroclawski"],
+        "format": ["ASCII", "HTML"],
         "page_count": "13",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Integrated Services",
         "abstract": " This specification describes an extension to the TSpec which enables a sender of potentially compressible data to provide hints to int-serv routers about the compressibility they may obtain.  [STANDARDS-TRACK]",
         "pub_date": "October 2000",
-        "keywords": [
-          "routing",
-          "resource",
-          "allocation",
-          "int-serv"
-        ],
+        "keywords": ["routing", "resource", "allocation", "int-serv"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -1771,34 +1263,18 @@
         "draft": "draft-ietf-dnsext-simple-secure-update-02",
         "doc_id": "RFC3007",
         "title": " Secure Domain Name System (DNS) Dynamic Update ",
-        "authors": [
-          "B. Wellington"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["B. Wellington"],
+        "format": ["ASCII", "HTML"],
         "page_count": "9",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "DNS Extensions",
         "abstract": " This document proposes a method for performing secure Domain Name System (DNS) dynamic updates.  [STANDARDS-TRACK]",
         "pub_date": "October 2000",
-        "keywords": [
-          "security",
-          "authentication",
-          "validation",
-          "DNSSEC",
-          "Domain Name System"
-        ],
-        "obsoletes": [
-          "RFC2137"
-        ],
+        "keywords": ["security", "authentication", "validation", "DNSSEC", "Domain Name System"],
+        "obsoletes": ["RFC2137"],
         "obsoleted_by": [],
-        "updates": [
-          "RFC2535",
-          "RFC2136"
-        ],
+        "updates": ["RFC2535", "RFC2136"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC3007",
@@ -1811,38 +1287,19 @@
         "draft": "draft-ietf-dnsext-signing-auth-02",
         "doc_id": "RFC3008",
         "title": " Domain Name System Security (DNSSEC) Signing Authority ",
-        "authors": [
-          "B. Wellington"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["B. Wellington"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "DNS Extensions",
         "abstract": " This document proposes a revised model of Domain Name System Security (DNSSEC) Signing Authority.  The revised model is designed to clarify earlier documents and add additional restrictions to simplify the secure resolution process.  Specifically, this affects the authorization of keys to sign sets of records.  [STANDARDS-TRACK]",
         "pub_date": "October 2000",
-        "keywords": [
-          "DNSSEC",
-          "authentication",
-          "validation",
-          "SIG",
-          "signature"
-        ],
+        "keywords": ["DNSSEC", "authentication", "validation", "SIG", "signature"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC4035",
-          "RFC4033",
-          "RFC4034"
-        ],
-        "updates": [
-          "RFC2535"
-        ],
-        "updated_by": [
-          " RFC3658"
-        ],
+        "obsoleted_by": ["RFC4035", "RFC4033", "RFC4034"],
+        "updates": ["RFC2535"],
+        "updated_by": [" RFC3658"],
         "see_also": [],
         "doi": "10.17487/RFC3008",
         "errata_url": null
@@ -1854,30 +1311,17 @@
         "draft": "draft-ietf-avt-fecmime-01",
         "doc_id": "RFC3009",
         "title": " Registration of parityfec MIME types ",
-        "authors": [
-          "J. Rosenberg",
-          "H. Schulzrinne"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Rosenberg", "H. Schulzrinne"],
+        "format": ["ASCII", "HTML"],
         "page_count": "10",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Audio/Video Transport",
         "abstract": " The RTP (Real-time Transport Protocol) payload format for generic forward error correction allows RTP participants to improve loss resiliency through the use of traditional parity-based channel codes. This payload format requires four new MIME types, audio/parityfec, video/parityfec, text/parityfec and application/parityfec.  This document serves as the MIME type registration for those formats. [STANDARDS-TRACK]",
         "pub_date": "October 2000",
-        "keywords": [
-          "parityfec",
-          "media type",
-          "MIME",
-          "multimedia internet mail extensions"
-        ],
+        "keywords": ["parityfec", "media type", "MIME", "multimedia internet mail extensions"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC5109"
-        ],
+        "obsoleted_by": ["RFC5109"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -1891,35 +1335,17 @@
         "draft": "draft-ietf-nfsv4-07",
         "doc_id": "RFC3010",
         "title": " NFS version 4 Protocol ",
-        "authors": [
-          "S. Shepler",
-          "B. Callaghan",
-          "D. Robinson",
-          "R. Thurlow",
-          "C. Beame",
-          "M. Eisler",
-          "D. Noveck"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Shepler", "B. Callaghan", "D. Robinson", "R. Thurlow", "C. Beame", "M. Eisler", "D. Noveck"],
+        "format": ["ASCII", "HTML"],
         "page_count": "212",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Network File System Version 4",
         "abstract": " NFS (Network File System) version 4 is a distributed file system protocol which owes heritage to NFS protocol versions 2 [STANDARDS-TRACK]",
         "pub_date": "November 2000",
-        "keywords": [
-          "NFSv4",
-          "network",
-          "file",
-          "system"
-        ],
+        "keywords": ["NFSv4", "network", "file", "system"],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC3530"
-        ],
+        "obsoleted_by": [" RFC3530"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -1933,30 +1359,18 @@
         "draft": "",
         "doc_id": "RFC0030",
         "title": " Documentation Conventions ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC0010",
-          "RFC0016",
-          "RFC0024",
-          "RFC0027"
-        ],
+        "updates": ["RFC0010", "RFC0016", "RFC0024", "RFC0027"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0030",
@@ -1969,23 +1383,15 @@
         "draft": "",
         "doc_id": "RFC0031",
         "title": "Binary Message Forms in Computer ",
-        "authors": [
-          "D. Bobrow",
-          "W.R. Sutherland"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D. Bobrow", "W.R. Sutherland"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1968",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2001,22 +1407,15 @@
         "draft": "",
         "doc_id": "RFC0032",
         "title": " Some Thoughts on SRI's Proposed Real Time Clock ",
-        "authors": [
-          "J. Cole"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Cole"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2032,31 +1431,19 @@
         "draft": "",
         "doc_id": "RFC0033",
         "title": " New Host-Host Protocol ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "19",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1970",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0011"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0011"],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC0036",
-          "RFC0047"
-        ],
+        "updated_by": ["RFC0036", "RFC0047"],
         "see_also": [],
         "doi": "10.17487/RFC0033",
         "errata_url": "https://www.rfc-editor.org/errata/rfc0033"
@@ -2068,22 +1455,15 @@
         "draft": "",
         "doc_id": "RFC0034",
         "title": " Some Brief Preliminary Notes on the Augmentation Research Center Clock ",
-        "authors": [
-          "W.K. English"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["W.K. English"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2099,22 +1479,15 @@
         "draft": "",
         "doc_id": "RFC0035",
         "title": " Network Meeting ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2130,31 +1503,19 @@
         "draft": "",
         "doc_id": "RFC0036",
         "title": " Protocol Notes ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "8",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          " RFC0033"
-        ],
-        "updated_by": [
-          "RFC0039",
-          "RFC0044"
-        ],
+        "updates": [" RFC0033"],
+        "updated_by": ["RFC0039", "RFC0044"],
         "see_also": [],
         "doi": "10.17487/RFC0036",
         "errata_url": null
@@ -2166,22 +1527,15 @@
         "draft": "",
         "doc_id": "RFC0037",
         "title": " Network Meeting Epilogue, etc ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2197,22 +1551,15 @@
         "draft": "",
         "doc_id": "RFC0038",
         "title": " Comments on Network Protocol from NWG/RFC #36 ",
-        "authors": [
-          "S.M. Wolfe"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.M. Wolfe"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2228,28 +1575,18 @@
         "draft": "",
         "doc_id": "RFC0039",
         "title": " Comments on Protocol Re: NWG/RFC #36 ",
-        "authors": [
-          "E. Harslem",
-          "J.F. Heafner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Harslem", "J.F. Heafner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          " RFC0036"
-        ],
+        "updates": [" RFC0036"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0039",
@@ -2262,26 +1599,17 @@
         "draft": "",
         "doc_id": "RFC0003",
         "title": " Documentation conventions ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC0010"
-        ],
+        "obsoleted_by": [" RFC0010"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -2295,12 +1623,8 @@
         "draft": null,
         "doc_id": "RFC4000",
         "title": "Not Issued",
-        "authors": [
-          ""
-        ],
-        "format": [
-          ""
-        ],
+        "authors": [""],
+        "format": [""],
         "page_count": null,
         "pub_status": "NOT ISSUED",
         "status": "NOT ISSUED",
@@ -2323,30 +1647,16 @@
         "draft": "draft-ietf-ops-rfc3291bis-06",
         "doc_id": "RFC4001",
         "title": " Textual Conventions for Internet Network Addresses ",
-        "authors": [
-          "M. Daniele",
-          "B. Haberman",
-          "S. Routhier",
-          "J. Schoenwaelder"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Daniele", "B. Haberman", "S. Routhier", "J. Schoenwaelder"],
+        "format": ["ASCII", "HTML"],
         "page_count": "22",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IETF - NON WORKING GROUP",
         "abstract": " This MIB module defines textual conventions to represent commonly used Internet network layer addressing information.  The intent is that these textual conventions will be imported and used in MIB modules that would otherwise define their own representations.  [STANDARDS-TRACK]",
         "pub_date": "January 2005",
-        "keywords": [
-          "MIB",
-          "management information base",
-          "internet network layer addressing information"
-        ],
-        "obsoletes": [
-          "RFC3291"
-        ],
+        "keywords": ["MIB", "management information base", "internet network layer addressing information"],
+        "obsoletes": ["RFC3291"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
@@ -2361,32 +1671,19 @@
         "draft": "draft-ietf-enum-webft-01",
         "doc_id": "RFC4002",
         "title": " IANA Registration for Enumservice 'web' and 'ft' ",
-        "authors": [
-          "R. Brandner",
-          "L. Conroy",
-          "R. Stastny"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Brandner", "L. Conroy", "R. Stastny"],
+        "format": ["ASCII", "HTML"],
         "page_count": "10",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Telephone Number Mapping",
         "abstract": " This document registers the Enumservices 'web' and 'ft' by using the URI schemes 'http:', 'https:' and 'ftp:' as per the IANA registration process defined in the ENUM specification (RFC 3761).  [STANDARDS-TRACK]",
         "pub_date": "January 2005",
-        "keywords": [
-          "URI schemes",
-          "uniform resource identifier",
-          "enum"
-        ],
+        "keywords": ["URI schemes", "uniform resource identifier", "enum"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC6118"
-        ],
+        "updated_by": ["RFC6118"],
         "see_also": [],
         "doi": "10.17487/RFC4002",
         "errata_url": null
@@ -2398,29 +1695,18 @@
         "draft": "draft-ietf-ccamp-gmpls-egress-control-03",
         "doc_id": "RFC4003",
         "title": "GMPLS Signaling Procedure for Egress Control ",
-        "authors": [
-          "L. Berger"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["L. Berger"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Common Control and Measurement Plane",
         "abstract": " This document clarifies the procedures for the control of the label used on an output/downstream interface of the egress node of a Label Switched Path (LSP).  This control is also known as \"Egress Control\".  Support for Egress Control is implicit in Generalized Multi-Protocol Label Switching (GMPLS) Signaling.  This document clarifies the specification of GMPLS Signaling and does not modify GMPLS signaling mechanisms and procedures.  [STANDARDS-TRACK]",
         "pub_date": "January 2005",
-        "keywords": [
-          "lsp",
-          "label switch path",
-          "gmpls signaling"
-        ],
+        "keywords": ["lsp", "label switch path", "gmpls signaling"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC3473"
-        ],
+        "updates": ["RFC3473"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC4003",
@@ -2433,17 +1719,8 @@
         "draft": "draft-ietf-aaa-diameter-mobileip-20",
         "doc_id": "RFC4004",
         "title": "Diameter Mobile IPv4 Application",
-        "authors": [
-          "P. Calhoun",
-          "T. Johansson",
-          "C. Perkins",
-          "T. Hiller, Ed.",
-          "P. McCann"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["P. Calhoun", "T. Johansson", "C. Perkins", "T. Hiller, Ed.", "P. McCann"],
+        "format": ["ASCII", "HTML"],
         "page_count": "53",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -2472,16 +1749,8 @@
         "draft": "draft-ietf-aaa-diameter-nasreq-17",
         "doc_id": "RFC4005",
         "title": "Diameter Network Access Server Application",
-        "authors": [
-          "P. Calhoun",
-          "G. Zorn",
-          "D. Spence",
-          "D. Mitton"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["P. Calhoun", "G. Zorn", "D. Spence", "D. Mitton"],
+        "format": ["ASCII", "HTML"],
         "page_count": "85",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -2498,9 +1767,7 @@
           "radius"
         ],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC7155"
-        ],
+        "obsoleted_by": ["RFC7155"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -2514,30 +1781,17 @@
         "draft": "draft-ietf-aaa-diameter-cc-06",
         "doc_id": "RFC4006",
         "title": "Diameter Credit-Control Application",
-        "authors": [
-          "H. Hakala",
-          "L. Mattila",
-          "J-P. Koskinen",
-          "M. Stura",
-          "J. Loughney"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["H. Hakala", "L. Mattila", "J-P. Koskinen", "M. Stura", "J. Loughney"],
+        "format": ["ASCII", "HTML"],
         "page_count": "114",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Authentication, Authorization and Accounting",
         "abstract": "This document specifies a Diameter application that can be used to\r\nimplement real-time credit-control for a variety of end user\r\nservices such as network access, Session Initiation Protocol (SIP)\r\nservices, messaging services, and download services.  [STANDARDS-TRACK]",
         "pub_date": "July 2005",
-        "keywords": [
-          "real-time credit-control"
-        ],
+        "keywords": ["real-time credit-control"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC8506"
-        ],
+        "obsoleted_by": ["RFC8506"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -2551,34 +1805,19 @@
         "draft": "draft-ietf-ipv6-scoping-arch-02",
         "doc_id": "RFC4007",
         "title": "IPv6 Scoped Address Architecture ",
-        "authors": [
-          "S. Deering",
-          "B. Haberman",
-          "T. Jinmei",
-          "E. Nordmark",
-          "B. Zill"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Deering", "B. Haberman", "T. Jinmei", "E. Nordmark", "B. Zill"],
+        "format": ["ASCII", "HTML"],
         "page_count": "24",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IP Version 6 Working Group",
         "abstract": "This document specifies the architectural characteristics, expected behavior, textual representation, and usage of IPv6 addresses of different scopes.  According to a decision in the IPv6 working group, this document intentionally avoids the syntax and usage of unicast site-local addresses.  [STANDARDS-TRACK]",
         "pub_date": "February 2005",
-        "keywords": [
-          "architectural characteristics",
-          "expected behavior",
-          "textual representation"
-        ],
+        "keywords": ["architectural characteristics", "expected behavior", "textual representation"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC7346"
-        ],
+        "updated_by": ["RFC7346"],
         "see_also": [],
         "doi": "10.17487/RFC4007",
         "errata_url": null
@@ -2590,31 +1829,17 @@
         "draft": "draft-ietf-nat-natmib-09",
         "doc_id": "RFC4008",
         "title": " Definitions of Managed Objects for Network Address Translators (NAT) ",
-        "authors": [
-          "R. Rohit",
-          "P. Srisuresh",
-          "R. Raghunarayan",
-          "N. Pai",
-          "C. Wang"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Rohit", "P. Srisuresh", "R. Raghunarayan", "N. Pai", "C. Wang"],
+        "format": ["ASCII", "HTML"],
         "page_count": "64",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IETF - NON WORKING GROUP",
         "abstract": " This memo defines a portion of the Management Information Base (MIB) for devices implementing Network Address Translator (NAT) function.  This MIB module may be used for configuration as well as monitoring of a device capable of NAT function.  [STANDARDS-TRACK]",
         "pub_date": "February 2005",
-        "keywords": [
-          "mib",
-          "management information base"
-        ],
+        "keywords": ["mib", "management information base"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC7658"
-        ],
+        "obsoleted_by": ["RFC7658"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -2628,31 +1853,17 @@
         "draft": "draft-park-seed-01",
         "doc_id": "RFC4009",
         "title": " The SEED Encryption Algorithm ",
-        "authors": [
-          "J. Park",
-          "S. Lee",
-          "J. Kim",
-          "J. Lee"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Park", "S. Lee", "J. Kim", "J. Lee"],
+        "format": ["ASCII", "HTML"],
         "page_count": "17",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "IETF - NON WORKING GROUP",
         "abstract": " This document describes the SEED encryption algorithm, which has been adopted by most of the security systems in the Republic of Korea.  Included are a description of the cipher and the key scheduling algorithm (Section 2), the S-boxes (Appendix A), and a set of test vectors (Appendix B).  This memo provides information for the Internet community. ",
         "pub_date": "January 2005",
-        "keywords": [
-          "encryption algorithm",
-          "seed cbc",
-          "seed oid"
-        ],
+        "keywords": ["encryption algorithm", "seed cbc", "seed oid"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC4269"
-        ],
+        "obsoleted_by": ["RFC4269"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -2666,26 +1877,15 @@
         "draft": "draft-ietf-smime-cms-seed-02",
         "doc_id": "RFC4010",
         "title": " Use of the SEED Encryption Algorithm in Cryptographic Message Syntax (CMS) ",
-        "authors": [
-          "J. Park",
-          "S. Lee",
-          "J. Kim",
-          "J. Lee"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Park", "S. Lee", "J. Kim", "J. Lee"],
+        "format": ["ASCII", "HTML"],
         "page_count": "13",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "S/MIME Mail Security",
         "abstract": " This document specifies the conventions for using the SEED encryption algorithm for encryption with the Cryptographic Message Syntax (CMS). \r\n\r\n SEED is added to the set of optional symmetric encryption algorithms in CMS by providing two classes of unique object identifiers (OIDs).  One OID class defines the content encryption algorithms and the other defines the key encryption algorithms.  [STANDARDS-TRACK]",
         "pub_date": "January 2005",
-        "keywords": [
-          "smime",
-          "secure/multipurpose internet mail extensions"
-        ],
+        "keywords": ["smime", "secure/multipurpose internet mail extensions"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2701,23 +1901,15 @@
         "draft": "",
         "doc_id": "RFC0040",
         "title": " More Comments on the Forthcoming Protocol ",
-        "authors": [
-          "E. Harslem",
-          "J.F. Heafner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Harslem", "J.F. Heafner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2733,22 +1925,15 @@
         "draft": "",
         "doc_id": "RFC0041",
         "title": " IMP-IMP Teletype Communication ",
-        "authors": [
-          "J.T. Melvin"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J.T. Melvin"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2764,22 +1949,15 @@
         "draft": "",
         "doc_id": "RFC0042",
         "title": " Message Data Types ",
-        "authors": [
-          "E. Ancona"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Ancona"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2795,22 +1973,15 @@
         "draft": "",
         "doc_id": "RFC0043",
         "title": " Proposed Meeting ",
-        "authors": [
-          "A.G. Nemeth"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A.G. Nemeth"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2826,29 +1997,18 @@
         "draft": "",
         "doc_id": "RFC0044",
         "title": " Comments on NWG/RFC 33 and 36 ",
-        "authors": [
-          "A. Shoshani",
-          "R. Long",
-          "A. Landsberg"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Shoshani", "R. Long", "A. Landsberg"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          " RFC0036"
-        ],
+        "updates": [" RFC0036"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0044",
@@ -2861,23 +2021,15 @@
         "draft": "",
         "doc_id": "RFC0045",
         "title": " New Protocol is Coming ",
-        "authors": [
-          "J. Postel",
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Postel", "S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2893,22 +2045,15 @@
         "draft": "",
         "doc_id": "RFC0046",
         "title": " ARPA Network protocol notes ",
-        "authors": [
-          "E. Meyer"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Meyer"],
+        "format": ["ASCII", "HTML"],
         "page_count": "17",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2924,28 +2069,18 @@
         "draft": "",
         "doc_id": "RFC0047",
         "title": " BBN's Comments on NWG/RFC #33 ",
-        "authors": [
-          "J. Postel",
-          "S. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Postel", "S. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "4",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          " RFC0033"
-        ],
+        "updates": [" RFC0033"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0047",
@@ -2958,23 +2093,15 @@
         "draft": "",
         "doc_id": "RFC0048",
         "title": " Possible protocol plateau ",
-        "authors": [
-          "J. Postel",
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Postel", "S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "18",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -2990,22 +2117,15 @@
         "draft": "",
         "doc_id": "RFC0049",
         "title": " Conversations with S. Crocker (UCLA) ",
-        "authors": [
-          "E. Meyer"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Meyer"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3021,22 +2141,15 @@
         "draft": "",
         "doc_id": "RFC0004",
         "title": " Network timetable ",
-        "authors": [
-          "E.B. Shapiro"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E.B. Shapiro"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "March 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3052,28 +2165,17 @@
         "draft": null,
         "doc_id": "RFC5000",
         "title": "Internet Official Protocol Standards",
-        "authors": [
-          "RFC Editor"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["RFC Editor"],
+        "format": ["ASCII", "HTML"],
         "page_count": "75",
         "pub_status": "INFORMATIONAL",
         "status": "HISTORIC",
         "source": "INDEPENDENT",
         "abstract": "This document is published by the RFC Editor to provide a summary of\r\nthe current standards protocols (as of 18 February 2008).  It lists\r\nthose official protocol standards, Best Current Practice, and Experimental\r\nRFCs that have not been obsoleted; it is not a complete index to the\r\nRFC series.  Newly published RFCs and RFCs whose status has\r\nchanged are starred.\r\n\r\nFor an up-to-date list, see http://www.rfc-editor.org/rfcxx00.html,\r\nwhich is updated daily.  This memo provides information for the Internet \r\ncommunity.",
         "pub_date": "May 2008",
-        "keywords": [
-          "[--------]"
-        ],
-        "obsoletes": [
-          "RFC3700"
-        ],
-        "obsoleted_by": [
-          "RFC7100"
-        ],
+        "keywords": ["[--------]"],
+        "obsoletes": ["RFC3700"],
+        "obsoleted_by": ["RFC7100"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -3087,24 +2189,15 @@
         "draft": "draft-ietf-dnsext-nsid-02",
         "doc_id": "RFC5001",
         "title": "DNS Name Server Identifier (NSID) Option",
-        "authors": [
-          "R. Austein"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Austein"],
+        "format": ["ASCII", "HTML"],
         "page_count": "11",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "DNS Extensions",
         "abstract": "With the increased use of DNS anycast, load balancing, and other\r\nmechanisms allowing more than one DNS name server to share a single\r\nIP address, it is sometimes difficult to tell which of a pool of name\r\nservers has answered a particular query.  While existing ad-hoc\r\nmechanisms allow an operator to send follow-up queries when it is\r\nnecessary to debug such a configuration, the only completely reliable\r\nway to obtain the identity of the name server that responded is to\r\nhave the name server include this information in the response itself.\r\nThis note defines a protocol extension to support this functionality.  [STANDARDS-TRACK]",
         "pub_date": "August 2007",
-        "keywords": [
-          "[--------|p]",
-          "domain name space",
-          "namespace"
-        ],
+        "keywords": ["[--------|p]", "domain name space", "namespace"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3120,31 +2213,19 @@
         "draft": "draft-camarillo-sipping-profile-key-02",
         "doc_id": "RFC5002",
         "title": "The Session Initiation Protocol (SIP) P-Profile-Key Private Header (P-Header)",
-        "authors": [
-          "G. Camarillo",
-          "G. Blanco"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["G. Camarillo", "G. Blanco"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "This document specifies the SIP P-Profile-Key P-header.  This header\r\nfield is used in the 3rd-Generation Partnership Project (3GPP) IMS\r\n(IP Multimedia Subsystem) to provide SIP registrars and SIP proxy\r\nservers with the key of the profile corresponding to the destination\r\nSIP URI of a particular SIP request.  This memo provides information for the Internet community.",
         "pub_date": "August 2007",
-        "keywords": [
-          "3gpp",
-          "ims",
-          "ip multimedia subsystem"
-        ],
+        "keywords": ["3gpp", "ims", "ip multimedia subsystem"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC8217"
-        ],
+        "updated_by": ["RFC8217"],
         "see_also": [],
         "doi": "10.17487/RFC5002",
         "errata_url": "https://www.rfc-editor.org/errata/rfc5002"
@@ -3156,27 +2237,15 @@
         "draft": "draft-ietf-pwe3-aii-aggregate-02",
         "doc_id": "RFC5003",
         "title": "Attachment Individual Identifier (AII) Types for Aggregation",
-        "authors": [
-          "C. Metz",
-          "L. Martini",
-          "F. Balus",
-          "J. Sugimoto"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["C. Metz", "L. Martini", "F. Balus", "J. Sugimoto"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Pseudo Wire Emulation Edge to Edge INT",
         "abstract": "The signaling protocols used to establish point-to-point pseudowires\r\ninclude type-length-value (TLV) fields that identify pseudowire\r\nendpoints called attachment individual identifiers (AIIs).  This\r\ndocument defines AII structures in the form of new AII TLV fields that\r\nsupport AII aggregation for improved scalability and Virtual Private\r\nNetwork (VPN) auto-discovery.  It is envisioned that this would be\r\nuseful in large inter-domain virtual private wire service networks\r\nwhere pseudowires are established between selected local and remote\r\nprovider edge (PE) nodes based on customer need.  [STANDARDS-TRACK]",
         "pub_date": "September 2007",
-        "keywords": [
-          "[--------|p]",
-          "tlv",
-          "pseudowire"
-        ],
+        "keywords": ["[--------|p]", "tlv", "pseudowire"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3192,24 +2261,15 @@
         "draft": "draft-ietf-idr-avoid-transition-05",
         "doc_id": "RFC5004",
         "title": "Avoid BGP Best Path Transitions from One External to Another",
-        "authors": [
-          "E. Chen",
-          "S. Sangli"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Chen", "S. Sangli"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Inter-Domain Routing",
         "abstract": "In this document, we propose an extension to the BGP route selection rules\r\nthat would avoid unnecessary best path transitions\r\nbetween external paths under certain conditions.  The proposed extension\r\nwould help the overall network stability, and more importantly, would\r\neliminate certain BGP route oscillations in which more than one external\r\npath from one BGP speaker contributes to the churn.  [STANDARDS-TRACK]",
         "pub_date": "September 2007",
-        "keywords": [
-          "[--------|p]",
-          "border gateway protocol"
-        ],
+        "keywords": ["[--------|p]", "border gateway protocol"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3225,24 +2285,15 @@
         "draft": "draft-nottingham-atompub-feed-history-11",
         "doc_id": "RFC5005",
         "title": "Feed Paging and Archiving",
-        "authors": [
-          "M. Nottingham"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Nottingham"],
+        "format": ["ASCII", "HTML"],
         "page_count": "15",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "This specification defines three types of syndicated Web feeds that\r\nenable publication of entries across one or more feed documents.\r\nThis includes \"paged\" feeds for piecemeal access, \"archived\" feeds\r\nthat allow reconstruction of the feed's contents, and feeds that are\r\nexplicitly \"complete\".  [STANDARDS-TRACK]",
         "pub_date": "September 2007",
-        "keywords": [
-          "[--------|p]",
-          "atom",
-          "rss"
-        ],
+        "keywords": ["[--------|p]", "atom", "rss"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3258,30 +2309,17 @@
         "draft": "draft-jeong-dnsop-ipv6-dns-discovery-12",
         "doc_id": "RFC5006",
         "title": "IPv6 Router Advertisement Option for DNS Configuration",
-        "authors": [
-          "J. Jeong, Ed.",
-          "S. Park",
-          "L. Beloeil",
-          "S. Madanapalli"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Jeong, Ed.", "S. Park", "L. Beloeil", "S. Madanapalli"],
+        "format": ["ASCII", "HTML"],
         "page_count": "12",
         "pub_status": "EXPERIMENTAL",
         "status": "EXPERIMENTAL",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "This document specifies a new IPv6 Router Advertisement option to\r\nallow IPv6 routers to advertise DNS recursive server addresses to\r\nIPv6 hosts.  This memo defines an Experimental Protocol for the Internet\r\ncommunity.",
         "pub_date": "September 2007",
-        "keywords": [
-          "[--------|e]",
-          "domain namespace"
-        ],
+        "keywords": ["[--------|e]", "domain namespace"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC6106"
-        ],
+        "obsoleted_by": ["RFC6106"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -3295,28 +2333,15 @@
         "draft": "draft-ietf-dhc-dhcpv6-leasequery-01",
         "doc_id": "RFC5007",
         "title": "DHCPv6 Leasequery",
-        "authors": [
-          "J. Brzozowski",
-          "K. Kinnear",
-          "B. Volz",
-          "S. Zeng"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Brzozowski", "K. Kinnear", "B. Volz", "S. Zeng"],
+        "format": ["ASCII", "HTML"],
         "page_count": "23",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Dynamic Host Configuration",
         "abstract": "This document specifies a leasequery exchange for the Dynamic Host\r\nConfiguration Protocol for IPv6 (DHCPv6) that can be used to obtain\r\nlease information about DHCPv6 clients from a DHCPv6 server.  This\r\ndocument specifies the scope of data that can be retrieved as well as\r\nboth DHCPv6 leasequery requestor and server behavior.  This document\r\nextends DHCPv6.  [STANDARDS-TRACK]",
         "pub_date": "September 2007",
-        "keywords": [
-          "[--------|p]",
-          "dhc",
-          "dhcp",
-          "ipv6"
-        ],
+        "keywords": ["[--------|p]", "dhc", "dhcp", "ipv6"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3332,27 +2357,17 @@
         "draft": "draft-housley-smime-suite-b-02",
         "doc_id": "RFC5008",
         "title": "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)",
-        "authors": [
-          "R. Housley",
-          "J. Solinas"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Housley", "J. Solinas"],
+        "format": ["ASCII", "HTML"],
         "page_count": "15",
         "pub_status": "INFORMATIONAL",
         "status": "HISTORIC",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "This document specifies the conventions for using the United States\r\nNational Security Agency's Suite B algorithms in Secure/Multipurpose\r\nInternet Mail Extensions (S/MIME) as specified in RFC 3851.  This memo provides information for the Internet community.",
         "pub_date": "September 2007",
-        "keywords": [
-          "nsa"
-        ],
+        "keywords": ["nsa"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC6318"
-        ],
+        "obsoleted_by": ["RFC6318"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -3366,13 +2381,8 @@
         "draft": "draft-ejzak-sipping-p-em-auth-04",
         "doc_id": "RFC5009",
         "title": "Private Header (P-Header) Extension to the Session Initiation Protocol (SIP) for Authorization of Early Media",
-        "authors": [
-          "R. Ejzak"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Ejzak"],
+        "format": ["ASCII", "HTML"],
         "page_count": "15",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
@@ -3408,26 +2418,15 @@
         "draft": "draft-ietf-dhc-relay-agent-flags-03",
         "doc_id": "RFC5010",
         "title": "The Dynamic Host Configuration Protocol Version 4 (DHCPv4) Relay Agent Flags Suboption",
-        "authors": [
-          "K. Kinnear",
-          "M. Normoyle",
-          "M. Stapp"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["K. Kinnear", "M. Normoyle", "M. Stapp"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Dynamic Host Configuration",
         "abstract": "This memo defines a new suboption of the Dynamic Host Configuration\r\nProtocol (DHCP) relay agent information option that allows the DHCP\r\nrelay to specify flags for the forwarded packet.  One flag is defined\r\nto indicate whether the DHCP relay received the packet via a unicast\r\nor broadcast packet.  This information may be used by the DHCP server\r\nto better serve clients based on whether their request was originally\r\nbroadcast or unicast.  [STANDARDS-TRACK]",
         "pub_date": "September 2007",
-        "keywords": [
-          "[--------|p]",
-          "unicast flag",
-          "broadcast flag"
-        ],
+        "keywords": ["[--------|p]", "unicast flag", "broadcast flag"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3443,23 +2442,15 @@
         "draft": "",
         "doc_id": "RFC0050",
         "title": " Comments on the Meyer Proposal ",
-        "authors": [
-          "E. Harslen",
-          "J. Heafner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Harslen", "J. Heafner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3475,21 +2466,15 @@
         "draft": "",
         "doc_id": "RFC0051",
         "title": "Proposal for a Network Interchange Language ",
-        "authors": [
-          "M. Elie"
-        ],
-        "format": [
-          "PDF"
-        ],
+        "authors": ["M. Elie"],
+        "format": ["PDF"],
         "page_count": "0",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "May 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3505,29 +2490,19 @@
         "draft": "",
         "doc_id": "RFC0052",
         "title": " Updated distribution list ",
-        "authors": [
-          "J. Postel",
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Postel", "S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "July 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          " RFC0069"
-        ],
+        "updated_by": [" RFC0069"],
         "see_also": [],
         "doi": "10.17487/RFC0052",
         "errata_url": null
@@ -3539,22 +2514,15 @@
         "draft": "",
         "doc_id": "RFC0053",
         "title": " Official protocol mechanism ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3570,31 +2538,19 @@
         "draft": "",
         "doc_id": "RFC0054",
         "title": " Official Protocol Proffering ",
-        "authors": [
-          "S.D. Crocker",
-          "J. Postel",
-          "J. Newkirk",
-          "M. Kraley"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker", "J. Postel", "J. Newkirk", "M. Kraley"],
+        "format": ["ASCII", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          " RFC0057"
-        ],
+        "updated_by": [" RFC0057"],
         "see_also": [],
         "doi": "10.17487/RFC0054",
         "errata_url": null
@@ -3606,25 +2562,15 @@
         "draft": "",
         "doc_id": "RFC0055",
         "title": " Prototypical implementation of the NCP ",
-        "authors": [
-          "J. Newkirk",
-          "M. Kraley",
-          "J. Postel",
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Newkirk", "M. Kraley", "J. Postel", "S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "23",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3640,25 +2586,15 @@
         "draft": "",
         "doc_id": "RFC0056",
         "title": " Third Level Protocol: Logger Protocol ",
-        "authors": [
-          "E. Belove",
-          "D. Black",
-          "R. Flegal",
-          "L.G. Farquar"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Belove", "D. Black", "R. Flegal", "L.G. Farquar"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3674,28 +2610,18 @@
         "draft": "",
         "doc_id": "RFC0057",
         "title": " Thoughts and Reflections on NWG/RFC 54 ",
-        "authors": [
-          "M. Kraley",
-          "J. Newkirk"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Kraley", "J. Newkirk"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          " RFC0054"
-        ],
+        "updates": [" RFC0054"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0057",
@@ -3708,22 +2634,15 @@
         "draft": "",
         "doc_id": "RFC0058",
         "title": " Logical Message Synchronization ",
-        "authors": [
-          "T.P. Skinner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["T.P. Skinner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3739,22 +2658,15 @@
         "draft": "",
         "doc_id": "RFC0059",
         "title": " Flow Control - Fixed Versus Demand Allocation ",
-        "authors": [
-          "E. Meyer"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Meyer"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3770,22 +2682,15 @@
         "draft": "",
         "doc_id": "RFC0005",
         "title": " Decode Encode Language (DEL) ",
-        "authors": [
-          "J. Rulifson"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Rulifson"],
+        "format": ["ASCII", "HTML"],
         "page_count": "17",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "June 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3801,12 +2706,8 @@
         "draft": null,
         "doc_id": "RFC6000",
         "title": "Not Issued",
-        "authors": [
-          ""
-        ],
-        "format": [
-          ""
-        ],
+        "authors": [""],
+        "format": [""],
         "page_count": null,
         "pub_status": "NOT ISSUED",
         "status": "NOT ISSUED",
@@ -3829,36 +2730,18 @@
         "draft": "draft-ietf-ccamp-gmpls-mln-extensions-12",
         "doc_id": "RFC6001",
         "title": "Generalized MPLS (GMPLS) Protocol Extensions for Multi-Layer and Multi-Region Networks (MLN/MRN)",
-        "authors": [
-          "D. Papadimitriou",
-          "M. Vigoureux",
-          "K. Shiomoto",
-          "D. Brungard",
-          "JL. Le Roux"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D. Papadimitriou", "M. Vigoureux", "K. Shiomoto", "D. Brungard", "JL. Le Roux"],
+        "format": ["ASCII", "HTML"],
         "page_count": "24",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Common Control and Measurement Plane",
         "abstract": "There are specific requirements for the support of networks\r\ncomprising Label Switching Routers (LSRs) participating in\r\ndifferent data plane switching layers controlled by a single\r\nGeneralized Multi-Protocol Label Switching (GMPLS) control\r\nplane instance, referred to as GMPLS Multi-Layer Networks /\r\nMulti-Region Networks (MLN/MRN).\r\n\r\nThis document defines extensions to GMPLS routing and signaling\r\nprotocols so as to support the operation of GMPLS Multi-Layer /\r\nMulti-Region Networks.  It covers the elements of a single GMPLS\r\ncontrol plane instance controlling multiple Label Switched Path (LSP)\r\nregions or layers within a single Traffic Engineering (TE) domain.\r\n[STANDARDS-TRACK]",
         "pub_date": "October 2010",
-        "keywords": [
-          "[--------]"
-        ],
+        "keywords": ["[--------]"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC4202",
-          "RFC4203",
-          "RFC4206",
-          "RFC4874",
-          "RFC4974",
-          "RFC5307"
-        ],
+        "updates": ["RFC4202", "RFC4203", "RFC4206", "RFC4874", "RFC4974", "RFC5307"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC6001",
@@ -3871,34 +2754,18 @@
         "draft": "draft-ietf-ccamp-gmpls-dcsc-channel-ext-04",
         "doc_id": "RFC6002",
         "title": "Generalized MPLS (GMPLS) Data Channel Switching Capable (DCSC) and Channel Set Label Extensions",
-        "authors": [
-          "L. Berger",
-          "D. Fedyk"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["L. Berger", "D. Fedyk"],
+        "format": ["ASCII", "HTML"],
         "page_count": "10",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Common Control and Measurement Plane",
         "abstract": "This document describes two technology-independent extensions to\r\nGeneralized Multi-Protocol Label Switching (GMPLS).  The first extension\r\ndefines the new switching type Data Channel Switching Capable.\r\nData Channel Switching Capable interfaces are able to support\r\nswitching of the whole digital channel presented on single channel\r\ninterfaces.  The second extension defines a new type of\r\ngeneralized label and updates related objects.  The new label is\r\ncalled the Generalized Channel_Set Label and allows more than one\r\ndata plane label to be controlled as part of a Label Switched Path (LSP).\r\n[STANDARDS-TRACK]",
         "pub_date": "October 2010",
-        "keywords": [
-          "[--------]",
-          "Generalized Multi-Protocol Label Switching"
-        ],
+        "keywords": ["[--------]", "Generalized Multi-Protocol Label Switching"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC3471",
-          "RFC3473",
-          "RFC3945",
-          "RFC4202",
-          "RFC4203",
-          "RFC5307"
-        ],
+        "updates": ["RFC3471", "RFC3473", "RFC3945", "RFC4202", "RFC4203", "RFC5307"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC6002",
@@ -3911,31 +2778,18 @@
         "draft": "draft-ietf-ccamp-ethernet-traffic-parameters-10",
         "doc_id": "RFC6003",
         "title": "Ethernet Traffic Parameters",
-        "authors": [
-          "D. Papadimitriou"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D. Papadimitriou"],
+        "format": ["ASCII", "HTML"],
         "page_count": "14",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Common Control and Measurement Plane",
         "abstract": "This document describes the support of Metro Ethernet Forum (MEF)\r\nEthernet traffic parameters as described in MEF10.1 when using\r\nGeneralized Multi-Protocol Label Switching (GMPLS) Resource\r\nReSerVation Protocol - Traffic Engineering (RSVP-TE) signaling.\r\n[STANDARDS-TRACK]",
         "pub_date": "October 2010",
-        "keywords": [
-          "[--------]",
-          "mef",
-          "Metro Ethernet Forum",
-          "MEF10.1"
-        ],
+        "keywords": ["[--------]", "mef", "Metro Ethernet Forum", "MEF10.1"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC3471",
-          "RFC3473"
-        ],
+        "updates": ["RFC3471", "RFC3473"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC6003",
@@ -3948,25 +2802,15 @@
         "draft": "draft-ietf-ccamp-gmpls-ether-svcs-04",
         "doc_id": "RFC6004",
         "title": "Generalized MPLS (GMPLS) Support for Metro Ethernet Forum and G.8011 Ethernet Service Switching",
-        "authors": [
-          "L. Berger",
-          "D. Fedyk"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["L. Berger", "D. Fedyk"],
+        "format": ["ASCII", "HTML"],
         "page_count": "15",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Common Control and Measurement Plane",
         "abstract": "This document describes a method for controlling two specific types\r\nof Ethernet switching via Generalized Multi-Protocol Label Switching\r\n(GMPLS).  This document supports the types of switching corresponding\r\nto the Ethernet services that have been defined in the context of the\r\nMetro Ethernet Forum (MEF) and International Telecommunication Union\r\n(ITU) G.8011.  Specifically, switching in support of Ethernet private\r\nline and Ethernet virtual private line services are covered.  Support\r\nfor MEF- and ITU-defined parameters is also covered.",
         "pub_date": "October 2010",
-        "keywords": [
-          "Generalized Multi-Protocol Label Switching",
-          "Metro Ethernet Forum",
-          "MEF"
-        ],
+        "keywords": ["Generalized Multi-Protocol Label Switching", "Metro Ethernet Forum", "MEF"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -3982,28 +2826,15 @@
         "draft": "draft-ietf-ccamp-gmpls-mef-uni-03",
         "doc_id": "RFC6005",
         "title": "Generalized MPLS (GMPLS) Support for Metro Ethernet Forum and G.8011 User Network Interface (UNI)",
-        "authors": [
-          "L. Berger",
-          "D. Fedyk"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["L. Berger", "D. Fedyk"],
+        "format": ["ASCII", "HTML"],
         "page_count": "10",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Common Control and Measurement Plane",
         "abstract": "This document describes a method for controlling two specific types\r\nof Ethernet switching via a GMPLS-based User Network Interface (UNI).  This\r\ndocument supports the types of switching required by the Ethernet services\r\nthat have been defined in the context of the Metro Ethernet Forum\r\n(MEF) and International Telecommunication Union (ITU) G.8011.  This\r\ndocument is the UNI companion to \"Generalized MPLS (GMPLS) Support\r\nfor Metro Ethernet Forum and G.8011 Ethernet Service Switching\".\r\nThis document does not define or limit the underlying intra-domain or\r\nInternal NNI (I-NNI) technology used to support the UNI.  [STANDARDS-\r\nTRACK]",
         "pub_date": "October 2010",
-        "keywords": [
-          "[--------]",
-          "mef",
-          "itu",
-          "International Telecommunication Union",
-          "i-nni",
-          "internal nni"
-        ],
+        "keywords": ["[--------]", "mef", "itu", "International Telecommunication Union", "i-nni", "internal nni"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4019,33 +2850,17 @@
         "draft": "draft-ietf-pce-pcep-p2mp-extensions-11",
         "doc_id": "RFC6006",
         "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Point-to-Multipoint Traffic Engineering Label Switched Paths",
-        "authors": [
-          "Q. Zhao, Ed.",
-          "D. King, Ed.",
-          "F. Verhaeghe",
-          "T. Takeda",
-          "Z. Ali",
-          "J. Meuric"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["Q. Zhao, Ed.", "D. King, Ed.", "F. Verhaeghe", "T. Takeda", "Z. Ali", "J. Meuric"],
+        "format": ["ASCII", "HTML"],
         "page_count": "33",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Path Computation Element",
         "abstract": "Point-to-point Multiprotocol Label Switching (MPLS) and Generalized\r\nMPLS (GMPLS) Traffic Engineering Label Switched Paths (TE LSPs) may\r\nbe established using signaling techniques, but their paths may first\r\nneed to be determined.  The Path Computation Element (PCE) has been\r\nidentified as an appropriate technology for the determination of the\r\npaths of point-to-multipoint (P2MP) TE LSPs.\r\n\r\nThis document describes extensions to the PCE communication Protocol\r\n(PCEP) to handle requests and responses for the computation of paths\r\nfor P2MP TE LSPs.  [STANDARDS-TRACK]",
         "pub_date": "September 2010",
-        "keywords": [
-          "[--------]",
-          "END-POINTS",
-          "fragmentation"
-        ],
+        "keywords": ["[--------]", "END-POINTS", "fragmentation"],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC8306"
-        ],
+        "obsoleted_by": ["RFC8306"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -4059,14 +2874,8 @@
         "draft": "draft-ietf-pce-pcep-svec-list-05",
         "doc_id": "RFC6007",
         "title": "Use of the Synchronization VECtor (SVEC) List for Synchronized Dependent Path Computations",
-        "authors": [
-          "I. Nishioka",
-          "D. King"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["I. Nishioka", "D. King"],
+        "format": ["ASCII", "HTML"],
         "page_count": "18",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
@@ -4089,28 +2898,15 @@
         "draft": "draft-kucherawy-authres-header-b-04",
         "doc_id": "RFC6008",
         "title": "Authentication-Results Registration for Differentiating among Cryptographic Results",
-        "authors": [
-          "M. Kucherawy"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Kucherawy"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "This memo updates the registry of properties in Authentication-\r\nResults: message header fields to allow a multiple-result report to\r\ndistinguish among one or more cryptographic signatures on a message,\r\nthus associating specific results with the signatures they represent.\r\n[STANDARDS-TRACK]",
         "pub_date": "September 2010",
-        "keywords": [
-          "[--------]",
-          "DKIM",
-          "DomainKeys",
-          "SenderID",
-          "SPF",
-          "Authentication",
-          "Reputation"
-        ],
+        "keywords": ["[--------]", "DKIM", "DomainKeys", "SenderID", "SPF", "Authentication", "Reputation"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4126,25 +2922,15 @@
         "draft": "draft-freed-sieve-notary-09",
         "doc_id": "RFC6009",
         "title": "Sieve Email Filtering: Delivery Status Notifications and Deliver-By Extensions",
-        "authors": [
-          "N. Freed"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["N. Freed"],
+        "format": ["ASCII", "HTML"],
         "page_count": "15",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Sieve Mail Filtering Language",
         "abstract": "This document describes the \"envelope-dsn\", \"redirect-dsn\",\r\n\"envelope-deliverby\", and \"redirect-deliverby\" extensions to the\r\nSieve email filtering language.  The \"envelope-dsn\" and \"envelope-\r\ndeliverby\" extensions provide access to additional envelope\r\ninformation provided by the delivery status notification (DSN) and\r\nDeliver-By SMTP extensions, respectively.  The \"redirect-dsn\" and\r\n\"redirect-deliverby\" extensions extend Sieve's redirect action to\r\nprovide control over delivery status notification and Deliver-By\r\nparameters, respectively.  [STANDARDS-TRACK]",
         "pub_date": "October 2010",
-        "keywords": [
-          "[--------]",
-          "SMTP",
-          "ESMTP",
-          "Sieve"
-        ],
+        "keywords": ["[--------]", "SMTP", "ESMTP", "Sieve"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4160,30 +2946,15 @@
         "draft": "draft-housley-cms-content-constraints-extn-06",
         "doc_id": "RFC6010",
         "title": "Cryptographic Message Syntax (CMS) Content Constraints Extension",
-        "authors": [
-          "R. Housley",
-          "S. Ashmore",
-          "C. Wallace"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Housley", "S. Ashmore", "C. Wallace"],
+        "format": ["ASCII", "HTML"],
         "page_count": "38",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "This document specifies the syntax and semantics for the\r\nCryptographic Message Syntax (CMS) content constraints extension.\r\nThis extension is used to determine whether a public key is\r\nappropriate to use in the processing of a protected content.  In\r\nparticular, the CMS content constraints extension is one part of the\r\nauthorization decision; it is used when validating a digital\r\nsignature on a CMS SignedData content or validating a message\r\nauthentication code (MAC) on a CMS AuthenticatedData content or CMS\r\nAuthEnvelopedData content.  The signed or authenticated content type\r\nis identified by an ASN.1 object identifier, and this extension\r\nindicates the content types that the public key is authorized to\r\nvalidate.  If the authorization check is successful, the CMS content\r\nconstraints extension also provides default values for absent\r\nattributes.  [STANDARDS-TRACK]",
         "pub_date": "September 2010",
-        "keywords": [
-          "[--------]",
-          "authorization",
-          "PKI",
-          "certificate",
-          "trust anchor",
-          "TAMP",
-          ""
-        ],
+        "keywords": ["[--------]", "authorization", "PKI", "certificate", "trust anchor", "TAMP", ""],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4199,22 +2970,15 @@
         "draft": "",
         "doc_id": "RFC0060",
         "title": "A Simplified NCP Protocol",
-        "authors": [
-          "R. Kalin"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Kalin"],
+        "format": ["ASCII", "HTML"],
         "page_count": "8",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "July 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4230,26 +2994,17 @@
         "draft": "",
         "doc_id": "RFC0061",
         "title": " Note on Interprocess Communication in a Resource Sharing Computer Network ",
-        "authors": [
-          "D.C. Walden"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D.C. Walden"],
+        "format": ["ASCII", "HTML"],
         "page_count": "18",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "July 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC0062"
-        ],
+        "obsoleted_by": [" RFC0062"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -4263,25 +3018,16 @@
         "draft": "",
         "doc_id": "RFC0062",
         "title": " Systems for Interprocess Communication in a Resource Sharing Computer Network ",
-        "authors": [
-          "D.C. Walden"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D.C. Walden"],
+        "format": ["ASCII", "HTML"],
         "page_count": "20",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1970",
-        "keywords": [
-          "  "
-        ],
-        "obsoletes": [
-          "RFC0061"
-        ],
+        "keywords": ["  "],
+        "obsoletes": ["RFC0061"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
@@ -4296,22 +3042,15 @@
         "draft": "",
         "doc_id": "RFC0063",
         "title": " Belated Network Meeting Report ",
-        "authors": [
-          "V.G. Cerf"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["V.G. Cerf"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "July 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4327,22 +3066,15 @@
         "draft": "",
         "doc_id": "RFC0064",
         "title": " Getting rid of marking ",
-        "authors": [
-          "M. Elie"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Elie"],
+        "format": ["ASCII", "HTML"],
         "page_count": "4",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "July 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4358,22 +3090,15 @@
         "draft": "",
         "doc_id": "RFC0065",
         "title": " Comments on Host/Host Protocol document #1 ",
-        "authors": [
-          "D.C. Walden"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["D.C. Walden"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4389,31 +3114,19 @@
         "draft": "",
         "doc_id": "RFC0066",
         "title": " NIC - third level ideas and other noise ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC0123"
-        ],
+        "obsoleted_by": [" RFC0123"],
         "updates": [],
-        "updated_by": [
-          "RFC0080",
-          "RFC0093"
-        ],
+        "updated_by": ["RFC0080", "RFC0093"],
         "see_also": [],
         "doi": "10.17487/RFC0066",
         "errata_url": "https://www.rfc-editor.org/errata/rfc0066"
@@ -4425,22 +3138,15 @@
         "draft": "",
         "doc_id": "RFC0067",
         "title": " Proposed Change to Host/IMP Spec to Eliminate Marking ",
-        "authors": [
-          "W.R. Crowther"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["W.R. Crowther"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4456,22 +3162,15 @@
         "draft": "",
         "doc_id": "RFC0068",
         "title": " Comments on Memory Allocation Control Commands: CEASE, ALL, GVB, RET, and RFNM ",
-        "authors": [
-          "M. Elie"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Elie"],
+        "format": ["ASCII", "HTML"],
         "page_count": "2",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "August 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4487,27 +3186,18 @@
         "draft": "",
         "doc_id": "RFC0069",
         "title": " Distribution List Change for MIT ",
-        "authors": [
-          "A.K. Bhushan"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A.K. Bhushan"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "September 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          " RFC0052"
-        ],
+        "updates": [" RFC0052"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0069",
@@ -4520,22 +3210,15 @@
         "draft": "",
         "doc_id": "RFC0006",
         "title": " Conversation with Bob Kahn ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "April 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4551,12 +3234,8 @@
         "draft": null,
         "doc_id": "RFC7000",
         "title": "Not Issued",
-        "authors": [
-          ""
-        ],
-        "format": [
-          ""
-        ],
+        "authors": [""],
+        "format": [""],
         "page_count": null,
         "pub_status": "NOT ISSUED",
         "status": "NOT ISSUED",
@@ -4579,41 +3258,19 @@
         "draft": "draft-ietf-appsawg-rfc5451bis-10",
         "doc_id": "RFC7001",
         "title": "Message Header Field for Indicating Message Authentication Status",
-        "authors": [
-          "M. Kucherawy"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Kucherawy"],
+        "format": ["ASCII", "HTML"],
         "page_count": "43",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Applications Area Working Group APP",
         "abstract": "This document specifies a message header field called Authentication-\r\nResults for use with electronic mail messages to indicate the results\r\nof message authentication efforts.  Any receiver-side software, such\r\nas mail filters or Mail User Agents (MUAs), can use this header field\r\nto relay that information in a convenient and meaningful way to users\r\nor to make sorting and filtering decisions.",
         "pub_date": "September 2013",
-        "keywords": [
-          "DKIM",
-          "DomainKeys",
-          "SenderID",
-          "SPF",
-          "ADSP",
-          "ATPS",
-          "VBR",
-          "Authentication",
-          "Reputation"
-        ],
-        "obsoletes": [
-          "RFC5451",
-          "RFC6577"
-        ],
-        "obsoleted_by": [
-          "RFC7601"
-        ],
+        "keywords": ["DKIM", "DomainKeys", "SenderID", "SPF", "ADSP", "ATPS", "VBR", "Authentication", "Reputation"],
+        "obsoletes": ["RFC5451", "RFC6577"],
+        "obsoleted_by": ["RFC7601"],
         "updates": [],
-        "updated_by": [
-          "RFC7410"
-        ],
+        "updated_by": ["RFC7410"],
         "see_also": [],
         "doi": "10.17487/RFC7001",
         "errata_url": "https://www.rfc-editor.org/errata/rfc7001"
@@ -4625,15 +3282,8 @@
         "draft": "draft-ietf-xrblock-rtcp-xr-discard-15",
         "doc_id": "RFC7002",
         "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Discard Count Metric Reporting",
-        "authors": [
-          "A. Clark",
-          "G. Zorn",
-          "Q. Wu"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Clark", "G. Zorn", "Q. Wu"],
+        "format": ["ASCII", "HTML"],
         "page_count": "12",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -4656,24 +3306,15 @@
         "draft": "draft-ietf-xrblock-rtcp-xr-burst-gap-discard-14",
         "doc_id": "RFC7003",
         "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Burst/Gap Discard Metric Reporting",
-        "authors": [
-          "A. Clark",
-          "R. Huang",
-          "Q. Wu, Ed."
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Clark", "R. Huang", "Q. Wu, Ed."],
+        "format": ["ASCII", "HTML"],
         "page_count": "14",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Metric Blocks for use with RTCP's Extended Report Framework RAI",
         "abstract": "This document defines an RTP Control Protocol (RTCP) Extended Report\r\n(XR) block that allows the reporting of burst and gap discard metrics\r\nfor use in a range of RTP applications.",
         "pub_date": "September 2013",
-        "keywords": [
-          "Real Time Control Protocol"
-        ],
+        "keywords": ["Real Time Control Protocol"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4689,29 +3330,15 @@
         "draft": "draft-ietf-xrblock-rtcp-xr-summary-stat-11",
         "doc_id": "RFC7004",
         "title": "RTP Control Protocol (RTCP) Extended Report (XR) Blocks for Summary Statistics Metrics Reporting",
-        "authors": [
-          "G. Zorn",
-          "R. Schott",
-          "Q. Wu, Ed.",
-          "R. Huang"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["G. Zorn", "R. Schott", "Q. Wu, Ed.", "R. Huang"],
+        "format": ["ASCII", "HTML"],
         "page_count": "21",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Metric Blocks for use with RTCP's Extended Report Framework RAI",
         "abstract": "This document defines three RTP Control Protocol (RTCP) Extended\r\nReport (XR) blocks that allow the reporting of loss, duplication, and\r\ndiscard summary statistics metrics in a range of RTP applications.",
         "pub_date": "September 2013",
-        "keywords": [
-          "RTCP XR",
-          "Summary Statistics",
-          "Burst/Gap Loss",
-          "Burst/Gap Discard",
-          "Frame Impairment"
-        ],
+        "keywords": ["RTCP XR", "Summary Statistics", "Burst/Gap Loss", "Burst/Gap Discard", "Frame Impairment"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4727,15 +3354,8 @@
         "draft": "draft-ietf-xrblock-rtcp-xr-jb-14",
         "doc_id": "RFC7005",
         "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for De-Jitter Buffer Metric Reporting",
-        "authors": [
-          "A. Clark",
-          "V. Singh",
-          "Q. Wu"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Clark", "V. Singh", "Q. Wu"],
+        "format": ["ASCII", "HTML"],
         "page_count": "14",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -4758,27 +3378,15 @@
         "draft": "draft-ietf-mmusic-sdp-miscellaneous-caps-07",
         "doc_id": "RFC7006",
         "title": "Miscellaneous Capabilities Negotiation in the Session Description Protocol (SDP)",
-        "authors": [
-          "M. Garcia-Martin",
-          "S. Veikkolainen",
-          "R. Gilman"
-        ],
-        "format": [
-          "ASCII",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["M. Garcia-Martin", "S. Veikkolainen", "R. Gilman"],
+        "format": ["ASCII", "PDF", "HTML"],
         "page_count": "22",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Multiparty Multimedia Session Control RAI",
         "abstract": "The Session Description Protocol (SDP) has been extended with a\r\ncapability negotiation mechanism framework that allows the endpoints\r\nto negotiate transport protocols and attributes.  This framework has\r\nbeen extended with a media capabilities negotiation mechanism that\r\nallows endpoints to negotiate additional media-related capabilities.\r\nThis negotiation is embedded into the widely used SDP offer/answer\r\nprocedures.\r\n\r\nThis memo extends the SDP capability negotiation framework to allow\r\nendpoints to negotiate three additional SDP capabilities.  In\r\nparticular, this memo provides a mechanism to negotiate bandwidth\r\n(\"b=\" line), connection data (\"c=\" line), and session or media titles\r\n(\"i=\" line for each session or media).",
         "pub_date": "September 2013",
-        "keywords": [
-          "title capability",
-          "connection data capability",
-          "bandwidth capability"
-        ],
+        "keywords": ["title capability", "connection data capability", "bandwidth capability"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4794,13 +3402,8 @@
         "draft": "draft-ietf-avtcore-avp-codecs-03",
         "doc_id": "RFC7007",
         "title": "Update to Remove DVI4 from the Recommended Codecs for the RTP Profile for Audio and Video Conferences with Minimal Control (RTP/AVP)",
-        "authors": [
-          "T. Terriberry"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["T. Terriberry"],
+        "format": ["ASCII", "HTML"],
         "page_count": "4",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -4810,9 +3413,7 @@
         "keywords": [],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC3551"
-        ],
+        "updates": ["RFC3551"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC7007",
@@ -4825,25 +3426,15 @@
         "draft": "draft-kiyomoto-kcipher2-09",
         "doc_id": "RFC7008",
         "title": "A Description of the KCipher-2 Encryption Algorithm",
-        "authors": [
-          "S. Kiyomoto",
-          "W. Shin"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Kiyomoto", "W. Shin"],
+        "format": ["ASCII", "HTML"],
         "page_count": "37",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "INDEPENDENT",
         "abstract": "This document describes the KCipher-2 encryption algorithm.\r\nKCipher-2 is a stream cipher with a 128-bit key and a 128-bit\r\ninitialization vector.  Since the algorithm for KCipher-2 was\r\npublished in 2007, security and efficiency have been rigorously\r\nevaluated through academic and industrial studies.  As of the\r\npublication of this document, no security vulnerabilities have been\r\nfound.  KCipher-2 offers fast encryption and decryption by means of\r\nsimple operations that enable efficient implementation.  KCipher-2\r\nhas been used for industrial applications, especially for mobile\r\nhealth monitoring and diagnostic services in Japan.",
         "pub_date": "August 2013",
-        "keywords": [
-          "encryption",
-          "stream cipher",
-          "cipher"
-        ],
+        "keywords": ["encryption", "stream cipher", "cipher"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4859,15 +3450,8 @@
         "draft": "draft-ietf-oauth-revocation-11",
         "doc_id": "RFC7009",
         "title": "OAuth 2.0 Token Revocation",
-        "authors": [
-          "T. Lodderstedt, Ed.",
-          "S. Dronia",
-          "M. Scurtescu"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["T. Lodderstedt, Ed.", "S. Dronia", "M. Scurtescu"],
+        "format": ["ASCII", "HTML"],
         "page_count": "11",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -4890,17 +3474,8 @@
         "draft": "draft-ietf-6renum-gap-analysis-08",
         "doc_id": "RFC7010",
         "title": "IPv6 Site Renumbering Gap Analysis",
-        "authors": [
-          "B. Liu",
-          "S. Jiang",
-          "B. Carpenter",
-          "S. Venaas",
-          "W. George"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["B. Liu", "S. Jiang", "B. Carpenter", "S. Venaas", "W. George"],
+        "format": ["ASCII", "HTML"],
         "page_count": "26",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
@@ -4923,28 +3498,19 @@
         "draft": "",
         "doc_id": "RFC0070",
         "title": " Note on Padding ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          " RFC0228"
-        ],
+        "updated_by": [" RFC0228"],
         "see_also": [],
         "doi": "10.17487/RFC0070",
         "errata_url": null
@@ -4956,22 +3522,15 @@
         "draft": "",
         "doc_id": "RFC0071",
         "title": " Reallocation in Case of Input Error ",
-        "authors": [
-          "T. Schipper"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["T. Schipper"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "September 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -4987,22 +3546,15 @@
         "draft": "",
         "doc_id": "RFC0072",
         "title": " Proposed Moratorium on Changes to Network Protocol ",
-        "authors": [
-          "R.D. Bressler"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.D. Bressler"],
+        "format": ["ASCII", "HTML"],
         "page_count": "4",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "September 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5018,22 +3570,15 @@
         "draft": "",
         "doc_id": "RFC0073",
         "title": " Response to NWG/RFC 67 ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "September 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5049,30 +3594,19 @@
         "draft": "",
         "doc_id": "RFC0074",
         "title": "Specifications for Network Use of the UCSB On-Line System ",
-        "authors": [
-          "J.E. White"
-        ],
-        "format": [
-          "ASCII",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["J.E. White"],
+        "format": ["ASCII", "PDF", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC0217",
-          "RFC0225"
-        ],
+        "updated_by": ["RFC0217", "RFC0225"],
         "see_also": [],
         "doi": "10.17487/RFC0074",
         "errata_url": null
@@ -5084,22 +3618,15 @@
         "draft": "",
         "doc_id": "RFC0075",
         "title": " Network Meeting ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5115,24 +3642,15 @@
         "draft": "",
         "doc_id": "RFC0076",
         "title": " Connection by name: User oriented protocol ",
-        "authors": [
-          "J. Bouknight",
-          "J. Madden",
-          "G.R. Grossman"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Bouknight", "J. Madden", "G.R. Grossman"],
+        "format": ["ASCII", "HTML"],
         "page_count": "15",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5148,22 +3666,15 @@
         "draft": "",
         "doc_id": "RFC0077",
         "title": " Network meeting report ",
-        "authors": [
-          "J. Postel"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Postel"],
+        "format": ["ASCII", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "November 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5179,24 +3690,15 @@
         "draft": "",
         "doc_id": "RFC0078",
         "title": " NCP Status Report: UCSB/Rand ",
-        "authors": [
-          "E. Harslem",
-          "J.F. Heafner",
-          "J.E. White"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Harslem", "J.F. Heafner", "J.E. White"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "October 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5212,22 +3714,15 @@
         "draft": "",
         "doc_id": "RFC0079",
         "title": " Logger Protocol error ",
-        "authors": [
-          "E. Meyer"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Meyer"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "November 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5243,22 +3738,15 @@
         "draft": "",
         "doc_id": "RFC0007",
         "title": " Host-IMP interface ",
-        "authors": [
-          "G. Deloche"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["G. Deloche"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "May 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5274,26 +3762,15 @@
         "draft": "draft-ietf-nfsv4-multi-domain-fs-reqs-11",
         "doc_id": "RFC8000",
         "title": "Requirements for NFSv4 Multi-Domain Namespace Deployment",
-        "authors": [
-          "A. Adamson",
-          "N. Williams"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Adamson", "N. Williams"],
+        "format": ["ASCII", "HTML"],
         "page_count": "17",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Network File System Version 4",
         "abstract": "This document presents requirements for the deployment of the NFSv4\r\nprotocols for the construction of an NFSv4 file namespace in\r\nenvironments with multiple NFSv4 Domains.  To participate in an NFSv4\r\nmulti-domain file namespace, the server must offer a multi-domain-capable file\r\nsystem and support RPCSEC_GSS for user authentication.  In most instances, the\r\nserver must also support identity-mapping services.",
         "pub_date": "November 2016",
-        "keywords": [
-          "multi-domain",
-          "multi-domain-capable file system",
-          "Federated File System",
-          "FedFS"
-        ],
+        "keywords": ["multi-domain", "multi-domain-capable file system", "Federated File System", "FedFS"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5309,17 +3786,8 @@
         "draft": "draft-ietf-teas-rsvp-te-srlg-collect-08",
         "doc_id": "RFC8001",
         "title": "RSVP-TE Extensions for Collecting Shared Risk Link Group (SRLG) Information",
-        "authors": [
-          "F. Zhang, Ed.",
-          "O. Gonzalez de Dios, Ed.",
-          "C. Margaria",
-          "M. Hartley",
-          "Z. Ali"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["F. Zhang, Ed.", "O. Gonzalez de Dios, Ed.", "C. Margaria", "M. Hartley", "Z. Ali"],
+        "format": ["ASCII", "HTML"],
         "page_count": "16",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -5342,30 +3810,18 @@
         "draft": "draft-ietf-hip-rfc6253-bis-09",
         "doc_id": "RFC8002",
         "title": "Host Identity Protocol Certificates",
-        "authors": [
-          "T. Heer",
-          "S. Varjonen"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["T. Heer", "S. Varjonen"],
+        "format": ["ASCII", "HTML"],
         "page_count": "13",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Host Identity Protocol",
         "abstract": "The Certificate (CERT) parameter is a container for digital\r\ncertificates.  It is used for carrying these certificates in Host\r\nIdentity Protocol (HIP) control packets.  This document specifies the\r\ncertificate parameter and the error signaling in case of a failed\r\nverification.  Additionally, this document specifies the\r\nrepresentations of Host Identity Tags (HITs) in X.509 version 3 (v3).\r\n\r\nThe concrete use cases of certificates, including how certificates\r\nare obtained and requested and which actions are taken upon\r\nsuccessful or failed verification, are specific to the scenario in\r\nwhich the certificates are used.  Hence, the definition of these\r\nscenario-specific aspects is left to the documents that use the CERT\r\nparameter.\r\n\r\nThis document updates RFC 7401 and obsoletes RFC 6253.",
         "pub_date": "October 2016",
-        "keywords": [
-          "Hip Certificate Extension"
-        ],
-        "obsoletes": [
-          "RFC6253"
-        ],
+        "keywords": ["Hip Certificate Extension"],
+        "obsoletes": ["RFC6253"],
         "obsoleted_by": [],
-        "updates": [
-          "RFC7401"
-        ],
+        "updates": ["RFC7401"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC8002",
@@ -5378,30 +3834,16 @@
         "draft": "draft-ietf-hip-rfc5203-bis-11",
         "doc_id": "RFC8003",
         "title": "Host Identity Protocol (HIP) Registration Extension",
-        "authors": [
-          "J. Laganier",
-          "L. Eggert"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Laganier", "L. Eggert"],
+        "format": ["ASCII", "HTML"],
         "page_count": "16",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Host Identity Protocol",
         "abstract": "This document specifies a registration mechanism for the Host\r\nIdentity Protocol (HIP) that allows hosts to register with services,\r\nsuch as HIP rendezvous servers or middleboxes.  This document\r\nobsoletes RFC 5203.",
         "pub_date": "October 2016",
-        "keywords": [
-          "HIP",
-          "Host Identity Protocol",
-          "Host Identity Payload",
-          "Registration",
-          "register"
-        ],
-        "obsoletes": [
-          "RFC5203"
-        ],
+        "keywords": ["HIP", "Host Identity Protocol", "Host Identity Payload", "Registration", "register"],
+        "obsoletes": ["RFC5203"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
@@ -5416,14 +3858,8 @@
         "draft": "draft-ietf-hip-rfc5204-bis-08",
         "doc_id": "RFC8004",
         "title": "Host Identity Protocol (HIP) Rendezvous Extension",
-        "authors": [
-          "J. Laganier",
-          "L. Eggert"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Laganier", "L. Eggert"],
+        "format": ["ASCII", "HTML"],
         "page_count": "14",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -5438,9 +3874,7 @@
           "HIP nodes",
           "HIP rendezvous server"
         ],
-        "obsoletes": [
-          "RFC5204"
-        ],
+        "obsoletes": ["RFC5204"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
@@ -5455,29 +3889,16 @@
         "draft": "draft-ietf-hip-rfc5205-bis-10",
         "doc_id": "RFC8005",
         "title": "Host Identity Protocol (HIP) Domain Name System (DNS) Extension",
-        "authors": [
-          "J. Laganier"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Laganier"],
+        "format": ["ASCII", "HTML"],
         "page_count": "18",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Host Identity Protocol",
         "abstract": "This document specifies a resource record (RR) for the Domain Name\r\nSystem (DNS) and how to use it with the Host Identity Protocol (HIP).\r\nThis RR allows a HIP node to store in the DNS its Host Identity (HI),\r\nthe public component of the node public-private key pair; its Host\r\nIdentity Tag (HIT), a truncated hash of its public key (PK); and the\r\ndomain names of its rendezvous servers (RVSs).  This document\r\nobsoletes RFC 5205.",
         "pub_date": "October 2016",
-        "keywords": [
-          "HIP",
-          "Host Identity Protocol",
-          "Host Identity Payload",
-          "DNS",
-          "Domain Name System"
-        ],
-        "obsoletes": [
-          "RFC5205"
-        ],
+        "keywords": ["HIP", "Host Identity Protocol", "Host Identity Payload", "DNS", "Domain Name System"],
+        "obsoletes": ["RFC5205"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
@@ -5492,16 +3913,8 @@
         "draft": "draft-ietf-cdni-metadata-21",
         "doc_id": "RFC8006",
         "title": "Content Delivery Network Interconnection (CDNI) Metadata",
-        "authors": [
-          "B. Niven-Jenkins",
-          "R. Murray",
-          "M. Caulfield",
-          "K. Ma"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["B. Niven-Jenkins", "R. Murray", "M. Caulfield", "K. Ma"],
+        "format": ["ASCII", "HTML"],
         "page_count": "66",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -5545,26 +3958,15 @@
         "draft": "draft-ietf-cdni-control-triggers-15",
         "doc_id": "RFC8007",
         "title": "Content Delivery Network Interconnection (CDNI) Control Interface / Triggers",
-        "authors": [
-          "R. Murray",
-          "B. Niven-Jenkins"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R. Murray", "B. Niven-Jenkins"],
+        "format": ["ASCII", "HTML"],
         "page_count": "49",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Content Delivery Networks Interconnection",
         "abstract": "This document describes the part of the Content Delivery Network\r\nInterconnection (CDNI) Control interface that allows a CDN to trigger\r\nactivity in an interconnected CDN that is configured to deliver\r\ncontent on its behalf.  The upstream CDN can use this mechanism to\r\nrequest that the downstream CDN pre-position metadata or content or\r\nto request that it invalidate or purge metadata or content.  The\r\nupstream CDN can monitor the status of activity that it has triggered\r\nin the downstream CDN.",
         "pub_date": "December 2016",
-        "keywords": [
-          "CDN",
-          "pre-position",
-          "invalidate",
-          "purge"
-        ],
+        "keywords": ["CDN", "pre-position", "invalidate", "purge"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5580,34 +3982,19 @@
         "draft": "draft-ietf-cdni-footprint-capabilities-semantics-20",
         "doc_id": "RFC8008",
         "title": "Content Delivery Network Interconnection (CDNI) Request Routing: Footprint and Capabilities Semantics",
-        "authors": [
-          "J. Seedorf",
-          "J. Peterson",
-          "S. Previdi",
-          "R. van Brandenburg",
-          "K. Ma"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Seedorf", "J. Peterson", "S. Previdi", "R. van Brandenburg", "K. Ma"],
+        "format": ["ASCII", "HTML"],
         "page_count": "31",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Content Delivery Networks Interconnection",
         "abstract": "This document captures the semantics of the \"Footprint and                         \r\nCapabilities Advertisement\" part of the Content Delivery Network\r\nInterconnection (CDNI) Request Routing interface, i.e., the desired\r\nmeaning of \"Footprint\" and \"Capabilities\" in the CDNI context and\r\nwhat the \"Footprint & Capabilities Advertisement interface (FCI)\"\r\noffers within CDNI.  The document also provides guidelines for the\r\nCDNI FCI protocol.  It further defines a Base Advertisement Object,\r\nthe necessary registries for capabilities and footprints, and\r\nguidelines on how these registries can be extended in the future.",
         "pub_date": "December 2016",
-        "keywords": [
-          "CDNI",
-          "CDN Interconnect",
-          "Request Routing"
-        ],
+        "keywords": ["CDNI", "CDN Interconnect", "Request Routing"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC9388"
-        ],
+        "updated_by": ["RFC9388"],
         "see_also": [],
         "doi": "10.17487/RFC8008",
         "errata_url": null
@@ -5619,15 +4006,8 @@
         "draft": "draft-ietf-kitten-aes-cts-hmac-sha2-11",
         "doc_id": "RFC8009",
         "title": "AES Encryption with HMAC-SHA2 for Kerberos 5",
-        "authors": [
-          "M. Jenkins",
-          "M. Peck",
-          "K. Burgin"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Jenkins", "M. Peck", "K. Burgin"],
+        "format": ["ASCII", "HTML"],
         "page_count": "19",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
@@ -5650,36 +4030,20 @@
         "draft": "draft-sweet-rfc2910bis-10",
         "doc_id": "RFC8010",
         "title": "Internet Printing Protocol/1.1: Encoding and Transport",
-        "authors": [
-          "M. Sweet",
-          "I. McDonald"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["M. Sweet", "I. McDonald"],
+        "format": ["ASCII", "HTML"],
         "page_count": "51",
         "pub_status": "PROPOSED STANDARD",
         "status": "INTERNET STANDARD",
         "source": "IETF - NON WORKING GROUP",
         "abstract": "The Internet Printing Protocol (IPP) is an application-level protocol\r\nfor distributed printing using Internet tools and technologies.  This\r\ndocument defines the rules for encoding IPP operations, attributes,\r\nand values into the Internet MIME media type called \"application/ipp\".  It\r\nalso defines the rules for transporting a message body\r\nwhose Content-Type is \"application/ipp\" over HTTP and/or HTTPS.  The\r\nIPP data model and operation semantics are described in \"Internet                                     \r\nPrinting Protocol/1.1: Model and Semantics\" (RFC 8011).",
         "pub_date": "January 2017",
-        "keywords": [
-          "IPP",
-          "Printer",
-          "PWG",
-          "Printer Working Group"
-        ],
-        "obsoletes": [
-          "RFC2910",
-          "RFC3382"
-        ],
+        "keywords": ["IPP", "Printer", "PWG", "Printer Working Group"],
+        "obsoletes": ["RFC2910", "RFC3382"],
         "obsoleted_by": [],
         "updates": [],
         "updated_by": [],
-        "see_also": [
-          "STD0092"
-        ],
+        "see_also": ["STD0092"],
         "doi": "10.17487/RFC8010",
         "errata_url": null
       }
@@ -5690,33 +4054,19 @@
         "draft": "",
         "doc_id": "RFC0080",
         "title": " Protocols and Data Formats ",
-        "authors": [
-          "E. Harslem",
-          "J.F. Heafner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Harslem", "J.F. Heafner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC0123"
-        ],
-        "updates": [
-          " RFC0066"
-        ],
-        "updated_by": [
-          " RFC0093"
-        ],
+        "obsoleted_by": [" RFC0123"],
+        "updates": [" RFC0066"],
+        "updated_by": [" RFC0093"],
         "see_also": [],
         "doi": "10.17487/RFC0080",
         "errata_url": null
@@ -5728,22 +4078,15 @@
         "draft": "",
         "doc_id": "RFC0081",
         "title": " Request for Reference Information ",
-        "authors": [
-          "J. Bouknight"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J. Bouknight"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5759,22 +4102,15 @@
         "draft": "",
         "doc_id": "RFC0082",
         "title": " Network Meeting Notes ",
-        "authors": [
-          "E. Meyer"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Meyer"],
+        "format": ["ASCII", "HTML"],
         "page_count": "18",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5790,24 +4126,15 @@
         "draft": "",
         "doc_id": "RFC0083",
         "title": " Language-machine for data reconfiguration ",
-        "authors": [
-          "R.H. Anderson",
-          "E. Harslem",
-          "J.F. Heafner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.H. Anderson", "E. Harslem", "J.F. Heafner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "13",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5823,22 +4150,15 @@
         "draft": "",
         "doc_id": "RFC0084",
         "title": " List of NWG/RFC's 1-80 ",
-        "authors": [
-          "J.B. North"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["J.B. North"],
+        "format": ["ASCII", "HTML"],
         "page_count": "8",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5854,22 +4174,15 @@
         "draft": "",
         "doc_id": "RFC0085",
         "title": " Network Working Group meeting ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5885,28 +4198,19 @@
         "draft": "",
         "doc_id": "RFC0086",
         "title": " Proposal for a Network Standard Format for a Data Stream to Control Graphics Display ",
-        "authors": [
-          "S.D. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S.D. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          "RFC0125"
-        ],
+        "updated_by": ["RFC0125"],
         "see_also": [],
         "doi": "10.17487/RFC0086",
         "errata_url": "https://www.rfc-editor.org/errata/rfc0086"
@@ -5918,22 +4222,15 @@
         "draft": "",
         "doc_id": "RFC0087",
         "title": " Topic for Discussion at the Next Network Working Group Meeting ",
-        "authors": [
-          "A. Vezza"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A. Vezza"],
+        "format": ["ASCII", "HTML"],
         "page_count": "3",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -5949,27 +4246,17 @@
         "draft": "",
         "doc_id": "RFC0088",
         "title": " NETRJS: A third level protocol for Remote Job Entry ",
-        "authors": [
-          "R.T. Braden",
-          "S.M. Wolfe"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.T. Braden", "S.M. Wolfe"],
+        "format": ["ASCII", "HTML"],
         "page_count": "9",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          " RFC0189"
-        ],
+        "obsoleted_by": [" RFC0189"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -5983,22 +4270,15 @@
         "draft": "",
         "doc_id": "RFC0089",
         "title": " Some historic moments in networking ",
-        "authors": [
-          "R.M. Metcalfe"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.M. Metcalfe"],
+        "format": ["ASCII", "HTML"],
         "page_count": "7",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6014,21 +4294,15 @@
         "draft": "",
         "doc_id": "RFC0008",
         "title": "ARPA Network Functional Specifications",
-        "authors": [
-          "G. Deloche"
-        ],
-        "format": [
-          "PDF"
-        ],
+        "authors": ["G. Deloche"],
+        "format": ["PDF"],
         "page_count": "0",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "May 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6044,16 +4318,8 @@
         "draft": "draft-ietf-quic-transport-34",
         "doc_id": "RFC9000",
         "title": "QUIC: A UDP-Based Multiplexed and Secure Transport",
-        "authors": [
-          "J. Iyengar, Ed.",
-          "M. Thomson, Ed."
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["J. Iyengar, Ed.", "M. Thomson, Ed."],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "151",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -6087,27 +4353,15 @@
         "draft": "draft-ietf-quic-tls-34",
         "doc_id": "RFC9001",
         "title": "Using TLS to Secure QUIC",
-        "authors": [
-          "M. Thomson, Ed.",
-          "S. Turner, Ed."
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["M. Thomson, Ed.", "S. Turner, Ed."],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "52",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "QUIC",
         "abstract": "This document describes how Transport Layer Security (TLS) is used to\r\nsecure QUIC.",
         "pub_date": "May 2021",
-        "keywords": [
-          "crypto",
-          "opportunistic encryption",
-          "plaintext quic"
-        ],
+        "keywords": ["crypto", "opportunistic encryption", "plaintext quic"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6123,16 +4377,8 @@
         "draft": "draft-ietf-quic-recovery-34",
         "doc_id": "RFC9002",
         "title": "QUIC Loss Detection and Congestion Control",
-        "authors": [
-          "J. Iyengar, Ed.",
-          "I. Swett, Ed."
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["J. Iyengar, Ed.", "I. Swett, Ed."],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "42",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
@@ -6161,36 +4407,18 @@
         "draft": "draft-ietf-idr-rfc8203bis-08",
         "doc_id": "RFC9003",
         "title": "Extended BGP Administrative Shutdown Communication",
-        "authors": [
-          "J. Snijders",
-          "J. Heitz",
-          "J. Scudder",
-          "A. Azimov"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["J. Snijders", "J. Heitz", "J. Scudder", "A. Azimov"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "7",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Inter-Domain Routing",
         "abstract": "This document enhances the BGP Cease NOTIFICATION message\r\n\"Administrative Shutdown\" and \"Administrative Reset\" subcodes for\r\noperators to transmit a short free-form message to describe why a BGP\r\nsession was shut down or reset. This document updates RFC 4486 and\r\nobsoletes RFC 8203 by defining an Extended BGP Administrative\r\nShutdown Communication of up to 255 octets to improve communication\r\nusing multibyte character sets.",
         "pub_date": "January 2021",
-        "keywords": [
-          "BGP",
-          "cease",
-          "shutdown"
-        ],
-        "obsoletes": [
-          "RFC8203"
-        ],
+        "keywords": ["BGP", "cease", "shutdown"],
+        "obsoletes": ["RFC8203"],
         "obsoleted_by": [],
-        "updates": [
-          "RFC4486"
-        ],
+        "updates": ["RFC4486"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC9003",
@@ -6203,31 +4431,18 @@
         "draft": "draft-ietf-bmwg-b2b-frame-04",
         "doc_id": "RFC9004",
         "title": "Updates for the Back-to-Back Frame Benchmark in RFC 2544",
-        "authors": [
-          "A. Morton"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["A. Morton"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "13",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Benchmarking Methodology",
         "abstract": "Fundamental benchmarking methodologies for network interconnect\r\ndevices of interest to the IETF are defined in RFC 2544. This memo\r\nupdates the procedures of the test to measure the Back-to-Back Frames\r\nbenchmark of RFC 2544, based on further experience.\r\n\r\nThis memo updates Section 26.4 of RFC 2544.",
         "pub_date": "May 2021",
-        "keywords": [
-          "Buffer size",
-          "Buffer delay",
-          "Correction Factor"
-        ],
+        "keywords": ["Buffer size", "Buffer delay", "Correction Factor"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC2544"
-        ],
+        "updates": ["RFC2544"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC9004",
@@ -6240,29 +4455,15 @@
         "draft": "draft-ietf-pce-association-policy-16",
         "doc_id": "RFC9005",
         "title": "Path Computation Element Communication Protocol (PCEP) Extension for Associating Policies and Label Switched Paths (LSPs)",
-        "authors": [
-          "S. Litkowski",
-          "S. Sivabalan",
-          "J. Tantsura",
-          "J. Hardwick",
-          "C. Li"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["S. Litkowski", "S. Sivabalan", "J. Tantsura", "J. Hardwick", "C. Li"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "15",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Path Computation Element",
         "abstract": "This document introduces a simple mechanism to associate policies\r\nwith a group of Label Switched Paths (LSPs) via an extension to the\r\nPath Computation Element Communication Protocol (PCEP). The extension\r\nallows a PCEP speaker to advertise to a PCEP peer that a particular\r\nLSP belongs to a particular Policy Association Group (PAG).",
         "pub_date": "March 2021",
-        "keywords": [
-          "Association",
-          "Policy"
-        ],
+        "keywords": ["Association", "Policy"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6278,17 +4479,8 @@
         "draft": "draft-ietf-lwig-tcp-constrained-node-networks-13",
         "doc_id": "RFC9006",
         "title": "TCP Usage Guidance in the Internet of Things (IoT)",
-        "authors": [
-          "C. Gomez",
-          "J. Crowcroft",
-          "M. Scharf"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["C. Gomez", "J. Crowcroft", "M. Scharf"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "24",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
@@ -6323,27 +4515,15 @@
         "draft": "draft-ietf-jmap-mdn-17",
         "doc_id": "RFC9007",
         "title": "Handling Message Disposition Notification with the JSON Meta Application Protocol (JMAP)",
-        "authors": [
-          "R. Ouazana, Ed."
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["R. Ouazana, Ed."],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "13",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "JSON Mail Access Protocol",
         "abstract": "This document specifies a data model for handling Message Disposition\r\nNotifications (MDNs) (see RFC 8098) in the JSON Meta Application\r\nProtocol (JMAP) (see RFCs 8620 and 8621).",
         "pub_date": "March 2021",
-        "keywords": [
-          "JMAP",
-          "JSON",
-          "email",
-          "MDN"
-        ],
+        "keywords": ["JMAP", "JSON", "email", "MDN"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6359,35 +4539,18 @@
         "draft": "draft-ietf-roll-useofrplinfo-44",
         "doc_id": "RFC9008",
         "title": "Using RPI Option Type, Routing Header for Source Routes, and IPv6-in-IPv6 Encapsulation in the RPL Data Plane",
-        "authors": [
-          "M.I. Robles",
-          "M. Richardson",
-          "P. Thubert"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["M.I. Robles", "M. Richardson", "P. Thubert"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "49",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Routing Over Low power and Lossy networks",
         "abstract": "This document looks at different data flows through Low-Power and\r\nLossy Networks (LLN) where RPL (IPv6 Routing Protocol for Low-Power\r\nand Lossy Networks) is used to establish routing. The document\r\nenumerates the cases where RPL Packet Information (RPI) Option Type\r\n(RFC 6553), RPL Source Route Header (RFC 6554), and IPv6-in-IPv6\r\nencapsulation are required in the data plane. This analysis provides\r\nthe basis upon which to design efficient compression of these\r\nheaders. This document updates RFC 6553 by adding a change to the RPI\r\nOption Type. Additionally, this document updates RFC 6550 by defining\r\na flag in the DODAG Information Object (DIO) Configuration option to\r\nindicate this change and updates RFC 8138 as well to consider the new\r\nOption Type when the RPL Option is decompressed.",
         "pub_date": "April 2021",
-        "keywords": [
-          "RPL Option",
-          "6LoWPAN",
-          "RFC 6553"
-        ],
+        "keywords": ["RPL Option", "6LoWPAN", "RFC 6553"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC6553",
-          "RFC6550",
-          "RFC8138"
-        ],
+        "updates": ["RFC6553", "RFC6550", "RFC8138"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC9008",
@@ -6400,31 +4563,15 @@
         "draft": "draft-ietf-roll-efficient-npdao-18",
         "doc_id": "RFC9009",
         "title": "Efficient Route Invalidation",
-        "authors": [
-          "R.A. Jadhav, Ed.",
-          "P. Thubert",
-          "R.N. Sahoo",
-          "Z. Cao"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["R.A. Jadhav, Ed.", "P. Thubert", "R.N. Sahoo", "Z. Cao"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "21",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Routing Over Low power and Lossy networks",
         "abstract": "This document explains the problems associated with the use of\r\nNo-Path Destination Advertisement Object (NPDAO) messaging in RFC\r\n6550 and also discusses the requirements for an optimized route\r\ninvalidation messaging scheme. Further, this document specifies a new\r\nproactive route invalidation message called the \"Destination Cleanup\r\nObject\" (DCO), which fulfills requirements for optimized route\r\ninvalidation messaging.",
         "pub_date": "April 2021",
-        "keywords": [
-          "NPDAO",
-          "DCO",
-          "no-path",
-          "route",
-          "cleanup"
-        ],
+        "keywords": ["NPDAO", "DCO", "no-path", "route", "cleanup"],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6440,37 +4587,19 @@
         "draft": "draft-ietf-roll-unaware-leaves-30",
         "doc_id": "RFC9010",
         "title": "Routing for RPL (Routing Protocol for Low-Power and Lossy Networks) Leaves",
-        "authors": [
-          "P. Thubert, Ed.",
-          "M. Richardson"
-        ],
-        "format": [
-          "HTML",
-          "TEXT",
-          "PDF",
-          "XML"
-        ],
+        "authors": ["P. Thubert, Ed.", "M. Richardson"],
+        "format": ["HTML", "TEXT", "PDF", "XML"],
         "page_count": "36",
         "pub_status": "PROPOSED STANDARD",
         "status": "PROPOSED STANDARD",
         "source": "Routing Over Low power and Lossy networks",
         "abstract": "This specification provides a mechanism for a host that implements a\r\nrouting-agnostic interface based on IPv6 over Low-Power Wireless\r\nPersonal Area Network (6LoWPAN) Neighbor Discovery to obtain\r\nreachability services across a network that leverages RFC 6550 for\r\nits routing operations. It updates RFCs 6550, 6775, and 8505.",
         "pub_date": "April 2021",
-        "keywords": [
-          "IPv6",
-          "ND",
-          "Redistribution"
-        ],
+        "keywords": ["IPv6", "ND", "Redistribution"],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC6550",
-          "RFC6775",
-          "RFC8505"
-        ],
-        "updated_by": [
-          "RFC9685"
-        ],
+        "updates": ["RFC6550", "RFC6775", "RFC8505"],
+        "updated_by": ["RFC9685"],
         "see_also": [],
         "doi": "10.17487/RFC9010",
         "errata_url": "https://www.rfc-editor.org/errata/rfc9010"
@@ -6482,22 +4611,15 @@
         "draft": "",
         "doc_id": "RFC0090",
         "title": " CCN as a Network Service Center ",
-        "authors": [
-          "R.T. Braden"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.T. Braden"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6513,22 +4635,15 @@
         "draft": "",
         "doc_id": "RFC0091",
         "title": " Proposed User-User Protocol ",
-        "authors": [
-          "G.H. Mealy"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["G.H. Mealy"],
+        "format": ["ASCII", "HTML"],
         "page_count": "12",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "December 1970",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6544,12 +4659,8 @@
         "draft": null,
         "doc_id": "RFC0092",
         "title": "Not Issued ",
-        "authors": [
-          ""
-        ],
-        "format": [
-          ""
-        ],
+        "authors": [""],
+        "format": [""],
         "page_count": null,
         "pub_status": "NOT ISSUED",
         "status": "NOT ISSUED",
@@ -6572,28 +4683,18 @@
         "draft": "",
         "doc_id": "RFC0093",
         "title": " Initial Connection Protocol ",
-        "authors": [
-          "A.M. McKenzie"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["A.M. McKenzie"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "January 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
-        "updates": [
-          "RFC0066",
-          "RFC0080"
-        ],
+        "updates": ["RFC0066", "RFC0080"],
         "updated_by": [],
         "see_also": [],
         "doi": "10.17487/RFC0093",
@@ -6606,23 +4707,15 @@
         "draft": "",
         "doc_id": "RFC0094",
         "title": " Some thoughts on Network Graphics ",
-        "authors": [
-          "E. Harslem",
-          "J.F. Heafner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Harslem", "J.F. Heafner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "6",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6638,26 +4731,17 @@
         "draft": "",
         "doc_id": "RFC0095",
         "title": "Distribution of NWG/RFC's through the NIC ",
-        "authors": [
-          "S. Crocker"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["S. Crocker"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
-        "obsoleted_by": [
-          "RFC0155"
-        ],
+        "obsoleted_by": ["RFC0155"],
         "updates": [],
         "updated_by": [],
         "see_also": [],
@@ -6671,22 +4755,15 @@
         "draft": "",
         "doc_id": "RFC0096",
         "title": " An Interactive Network Experiment to Study Modes of Access the Network Information Center ",
-        "authors": [
-          "R.W. Watson"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["R.W. Watson"],
+        "format": ["ASCII", "HTML"],
         "page_count": "5",
         "pub_status": "INFORMATIONAL",
         "status": "INFORMATIONAL",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6702,24 +4779,15 @@
         "draft": "",
         "doc_id": "RFC0097",
         "title": "First Cut at a Proposed Telnet Protocol ",
-        "authors": [
-          "J.T. Melvin",
-          "R.W. Watson"
-        ],
-        "format": [
-          "ASCII",
-          "PDF",
-          "HTML"
-        ],
+        "authors": ["J.T. Melvin", "R.W. Watson"],
+        "format": ["ASCII", "PDF", "HTML"],
         "page_count": "11",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
@@ -6735,29 +4803,19 @@
         "draft": "",
         "doc_id": "RFC0098",
         "title": " Logger Protocol Proposal ",
-        "authors": [
-          "E. Meyer",
-          "T. Skinner"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["E. Meyer", "T. Skinner"],
+        "format": ["ASCII", "HTML"],
         "page_count": "10",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          " RFC0123"
-        ],
+        "updated_by": [" RFC0123"],
         "see_also": [],
         "doi": "10.17487/RFC0098",
         "errata_url": null
@@ -6769,28 +4827,19 @@
         "draft": "",
         "doc_id": "RFC0099",
         "title": " Network Meeting ",
-        "authors": [
-          "P.M. Karp"
-        ],
-        "format": [
-          "ASCII",
-          "HTML"
-        ],
+        "authors": ["P.M. Karp"],
+        "format": ["ASCII", "HTML"],
         "page_count": "1",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "February 1971",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],
-        "updated_by": [
-          " RFC0116"
-        ],
+        "updated_by": [" RFC0116"],
         "see_also": [],
         "doi": "10.17487/RFC0099",
         "errata_url": null
@@ -6802,21 +4851,15 @@
         "draft": "",
         "doc_id": "RFC0009",
         "title": "Host Software ",
-        "authors": [
-          "G. Deloche"
-        ],
-        "format": [
-          "PDF"
-        ],
+        "authors": ["G. Deloche"],
+        "format": ["PDF"],
         "page_count": "15",
         "pub_status": "UNKNOWN",
         "status": "UNKNOWN",
         "source": "Legacy",
         "abstract": "  ",
         "pub_date": "May 1969",
-        "keywords": [
-          "  "
-        ],
+        "keywords": ["  "],
         "obsoletes": [],
         "obsoleted_by": [],
         "updates": [],

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SeriesId } from '~/utilities/rfc';
+import type { SeriesId } from '~/utilities/rfc'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 
 type Props = {

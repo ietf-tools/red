@@ -14,7 +14,7 @@ type HeaderMatch = {
 
 const headers: { strategy: FoldingStrategy; text: string }[] = [
   { strategy: 'double', text: "NOTE: '\\\\' line wrapping per RFC 8792" },
-  { strategy: 'single', text: "NOTE: '\\' line wrapping per RFC 8792" },
+  { strategy: 'single', text: "NOTE: '\\' line wrapping per RFC 8792" }
 ]
 
 const CODE_BEGINS = '<CODE BEGINS>'
@@ -23,23 +23,14 @@ const FOLD_MARKER = '\\'
 const FILE_ATTR_PREFIX = ' file "'
 
 /** Normalises CRLF and bare CR to LF so all line-splitting operates on `\n`. */
-const normaliseLineEndings = (text: string): string =>
-  text.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+const normaliseLineEndings = (text: string): string => text.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
 
-const codeBeginsPattern = new RegExp(
-  `^${escapeRegExp(CODE_BEGINS)}(?:${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*")?$`
-)
-const codeFileLinePattern = new RegExp(
-  `^${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*"$`
-)
+const codeBeginsPattern = new RegExp(`^${escapeRegExp(CODE_BEGINS)}(?:${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*")?$`)
+const codeFileLinePattern = new RegExp(`^${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*"$`)
 const blankLinePattern = /^[ ]*$/
 const foldedContinuationPattern = new RegExp(`^[ ]*${escapeRegExp(FOLD_MARKER)}`)
-const doubleUnfoldPattern = new RegExp(
-  `${escapeRegExp(FOLD_MARKER)}\n[ ]*${escapeRegExp(FOLD_MARKER)}`, 'g'
-)
-const singleUnfoldPattern = new RegExp(
-  `${escapeRegExp(FOLD_MARKER)}\n[ ]*`, 'g'
-)
+const doubleUnfoldPattern = new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*${escapeRegExp(FOLD_MARKER)}`, 'g')
+const singleUnfoldPattern = new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*`, 'g')
 
 /**
  * Locates the RFC 8792 folding-strategy header comment within the first three lines.
@@ -57,11 +48,7 @@ const findHeader = (lines: string[]): HeaderMatch | null => {
       return { strategy: header.strategy, index: 0 }
     }
 
-    if (
-      firstLine !== undefined &&
-      codeBeginsPattern.test(firstLine) &&
-      secondLine?.includes(header.text)
-    ) {
+    if (firstLine !== undefined && codeBeginsPattern.test(firstLine) && secondLine?.includes(header.text)) {
       return { strategy: header.strategy, index: 1 }
     }
 
@@ -100,10 +87,7 @@ const getBodyLines = (lines: string[], header: HeaderMatch): string[] => {
  * Double strategy: a line ending with `\` is only a fold point when the next line
  * also starts with `\` (after zero or more ASCII space characters — tabs are not leading whitespace per RFC 8792).
  */
-const hasFoldedLines = (
-  lines: string[],
-  strategy: FoldingStrategy
-): boolean => {
+const hasFoldedLines = (lines: string[], strategy: FoldingStrategy): boolean => {
   for (let i = 0; i < lines.length - 1; i += 1) {
     const line = lines[i]
     const nextLine = lines[i + 1]
@@ -135,10 +119,7 @@ export const hasXml2RfcSourcecodeMarkers = (text: string): boolean => {
   const lastContentLine = lines.findLast((line) => !blankLinePattern.test(line))
 
   return Boolean(
-    lines.length >= 2 &&
-    firstLine !== undefined &&
-    codeBeginsPattern.test(firstLine) &&
-    lastContentLine === CODE_ENDS
+    lines.length >= 2 && firstLine !== undefined && codeBeginsPattern.test(firstLine) && lastContentLine === CODE_ENDS
   )
 }
 
@@ -154,10 +135,7 @@ export const stripXml2RfcSourcecodeMarkers = (text: string): string => {
     lines.shift()
     const maybeFileLine = lines[0]
 
-    if (
-      maybeFileLine !== undefined &&
-      codeFileLinePattern.test(maybeFileLine)
-    ) {
+    if (maybeFileLine !== undefined && codeFileLinePattern.test(maybeFileLine)) {
       lines.shift()
     }
   }
@@ -188,10 +166,7 @@ type Rfc8792CopyTextOptions = {
  * If `options.stripSourcecodeMarkers` is true, `<CODE BEGINS>`/`<CODE ENDS>` wrappers
  * are removed from the result before returning.
  */
-export const getRfc8792CopyText = (
-  text: string,
-  options: Rfc8792CopyTextOptions = {}
-): string | null => {
+export const getRfc8792CopyText = (text: string, options: Rfc8792CopyTextOptions = {}): string | null => {
   const lines = normaliseLineEndings(text).split('\n')
   const header = findHeader(lines)
 
@@ -209,14 +184,9 @@ export const getRfc8792CopyText = (
 
   const folded = body.join('\n')
   const unwrapped =
-    header.strategy === 'double' ?
-      folded.replace(doubleUnfoldPattern, '')
-      : folded.replace(singleUnfoldPattern, '')
+    header.strategy === 'double' ? folded.replace(doubleUnfoldPattern, '') : folded.replace(singleUnfoldPattern, '')
 
-  const copyText =
-    before.length > 0 ? `${before.join('\n')}\n${unwrapped}` : unwrapped
+  const copyText = before.length > 0 ? `${before.join('\n')}\n${unwrapped}` : unwrapped
 
-  return options.stripSourcecodeMarkers ?
-    stripXml2RfcSourcecodeMarkers(copyText)
-    : copyText
+  return options.stripSourcecodeMarkers ? stripXml2RfcSourcecodeMarkers(copyText) : copyText
 }

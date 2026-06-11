@@ -12,9 +12,7 @@ export const RFC_TYPE_RFC = 'rfc' as const
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
 
-export type RfcCommonSubseriesType = z.infer<
-  typeof RfcCommonSubseriesTypeSchema
->
+export type RfcCommonSubseriesType = z.infer<typeof RfcCommonSubseriesTypeSchema>
 
 export type SeriesType = 'rfc' | RfcCommonSubseriesType
 
@@ -87,9 +85,6 @@ export const isAprilFoolsRfc = (rfc: Pick<RfcCommon, 'published' | 'stream' | 'g
   if (rfc.published === undefined) return false
   const datetime = DateTime.fromISO(rfc.published)
   return (
-    rfc.stream.slug === 'INDEPENDENT' &&
-    datetime.month === 4 &&
-    datetime.day === 1 &&
-    rfc.group?.acronym === 'none'
+    rfc.stream.slug === 'INDEPENDENT' && datetime.month === 4 && datetime.day === 1 && rfc.group?.acronym === 'none'
   )
 }

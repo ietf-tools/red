@@ -11,14 +11,7 @@ test(`chunkString`, () => {
 
 test(`chunkString with url`, () => {
   const chunks = chunkString('https://www.example.com/path1/path2', 16)
-  expect(chunks).toEqual([
-    'https://',
-    'www',
-    '.example',
-    '.com',
-    '/path1',
-    '/path2'
-  ])
+  expect(chunks).toEqual(['https://', 'www', '.example', '.com', '/path1', '/path2'])
 
   const chunks2 = chunkString(
     'https://www.rfc-editor.org/search/rfc_search_detail.php?title=test&pubstatus%5B%5D=Any&pub_date_type=any',
@@ -50,14 +43,7 @@ test(`chunkString with url`, () => {
 
 test(`chunkString with underscores`, () => {
   const chunks = chunkString('AROUND_THE_WORLD_AROUND_THE_WORLD', 16)
-  expect(chunks).toEqual([
-    'AROUND',
-    '_THE',
-    '_WORLD',
-    '_AROUND',
-    '_THE',
-    '_WORLD'
-  ])
+  expect(chunks).toEqual(['AROUND', '_THE', '_WORLD', '_AROUND', '_THE', '_WORLD'])
 })
 
 test(`chunkString with camelCase`, () => {
@@ -176,7 +162,7 @@ test('can break words', async () => {
         {
           type: 'Text',
           textContent: '/rfc9618'
-        },
+        }
       ]
     }
   ])

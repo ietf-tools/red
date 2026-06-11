@@ -79,8 +79,8 @@ export const legacyErrataSearchRedirectUrlBuilder = (url: string, envDomain = ''
 type LegacyErrataSearchParams = z.infer<typeof LegacyErrataSearchParamsSchema>
 
 type ErrataSearchPathBuilderParams = {
-  rfc_number?: string,
-  errata_id?: string,
+  rfc_number?: string
+  errata_id?: string
   status?: 'any' | 'verified_reported' | 'verified' | 'reported' | 'held' | 'rejected'
   errata_type?: 'any' | 'editorial' | 'technical'
   area?: string
@@ -91,12 +91,8 @@ type ErrataSearchPathBuilderParams = {
   stream?: string
 }
 
-export const buildSearchRedirect = (
-  legacyErrataSearchObj: LegacyErrataSearchParams,
-  envDomain = ''
-): string => {
-  const hasParams =
-    Object.values(legacyErrataSearchObj).join('').trim().length > 0
+export const buildSearchRedirect = (legacyErrataSearchObj: LegacyErrataSearchParams, envDomain = ''): string => {
+  const hasParams = Object.values(legacyErrataSearchObj).join('').trim().length > 0
 
   if (!hasParams) {
     return rfcEditorErrataSearchUrl(envDomain)
@@ -174,10 +170,10 @@ export const buildSearchRedirect = (
       return aKey.localeCompare(bKey)
     })
     .map(([searchKey, searchValue]) => {
-      return searchValue ?
-        `${encodeURIComponent(searchKey)}=${typeSenseEncodeUriComponent(
-          Array.isArray(searchValue) ? searchValue.join(',') : searchValue
-        )}`
+      return searchValue
+        ? `${encodeURIComponent(searchKey)}=${typeSenseEncodeUriComponent(
+            Array.isArray(searchValue) ? searchValue.join(',') : searchValue
+          )}`
         : ''
     })
     .filter(Boolean)

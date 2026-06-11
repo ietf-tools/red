@@ -63,9 +63,7 @@ export type TypesenseSubseries = z.infer<typeof TypesenseSubseriesSchema>
 
 const TypesenseSubseriesSchemaWithValues = TypesenseSubseriesSchema.required()
 
-export type TypesenseSubseriesWithValues = z.infer<
-  typeof TypesenseSubseriesSchemaWithValues
->
+export type TypesenseSubseriesWithValues = z.infer<typeof TypesenseSubseriesSchemaWithValues>
 
 // Schema definition https://github.com/ietf-tools/search/blob/main/schemas/docs.md
 export const TypeSenseSearchItemSchema = z.object({
@@ -132,12 +130,8 @@ export const isTypesenseSubseriesWithValues = (
 
 export type TypeSenseClient = {
   clearCache: () => void
-  search: (
-    searchRequests: Array<TypeSenseSearchRequest>
-  ) => Promise<TypeSenseSearchResponse>
-  searchForFacetValues: (
-    searchRequests: Array<TypeSenseSearchRequest>
-  ) => Promise<TypeSenseSearchResponse>
+  search: (searchRequests: Array<TypeSenseSearchRequest>) => Promise<TypeSenseSearchResponse>
+  searchForFacetValues: (searchRequests: Array<TypeSenseSearchRequest>) => Promise<TypeSenseSearchResponse>
 }
 
 export type TypeSenseSearchRequest = {
@@ -193,18 +187,12 @@ export const scrollUpToNewSearchResults = () => {
     targetTopPx -= SCROLL_BUFFER_PX
 
     if (currentTopPx < targetTopPx) {
-      console.info(
-        'Not scrolling to ',
-        targetTopPx,
-        " because it's not > ",
-        currentTopPx
-      )
+      console.info('Not scrolling to ', targetTopPx, " because it's not > ", currentTopPx)
     } else if (Math.round(currentTopPx) === Math.round(targetTopPx)) {
       // pass
     } else {
       console.log('scroll up', targetTopPx, currentTopPx)
-      const behavior: ScrollBehavior =
-        prefersReducedMotion() ? 'instant' : 'smooth'
+      const behavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
       target.focus() // for keyboard users
       window.scrollTo({
         left: 0,

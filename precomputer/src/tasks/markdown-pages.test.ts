@@ -36,7 +36,7 @@ test('replaceComponentReferences: component with content preserves inner HTML', 
 ::ErrataSiteSearchLink
 ::`)
   const result = replaceComponentReferences(html)
-  console.log({result, html })
+  console.log({ result, html })
   expect(result).toContain('<h2>Search for Errata</h2>')
   expect(result).toContain('<p><ErrataSiteSearchLink></ErrataSiteSearchLink></p>')
   expect(result).not.toMatch(/::ErrataSiteSearchLink/)
@@ -56,10 +56,7 @@ test('replaceComponentReferences: non-component paragraphs are unchanged', () =>
 })
 
 test('replaceComponentReferences: rfc-errata.md ErrataSiteSearchLink is converted', async () => {
-  const markdownText = await fsPromises.readFile(
-    path.join(CONTENT_DIR, 'series/rfc-errata.md'),
-    'utf-8'
-  )
+  const markdownText = await fsPromises.readFile(path.join(CONTENT_DIR, 'series/rfc-errata.md'), 'utf-8')
   const html = markdownToHtml(markdownText)
   expect(html).toContain('::ErrataSiteSearchLink')
 

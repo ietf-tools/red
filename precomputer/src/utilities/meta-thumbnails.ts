@@ -9,12 +9,7 @@ import { type AsyncTaskItem } from './task.ts'
 
 const __dirname = import.meta.dirname
 const precomputerRoot = path.resolve(__dirname, '..', '..')
-const linkPreviewImageDefaultPath = path.resolve(
-  precomputerRoot,
-  'src',
-  'assets',
-  'meta-thumbnail.svg'
-)
+const linkPreviewImageDefaultPath = path.resolve(precomputerRoot, 'src', 'assets', 'meta-thumbnail.svg')
 
 const FILENAME_PREFIX = 'rfc-editor-logo-' as const
 const FILENAME_SUFFIX = '.png' as const
@@ -42,9 +37,10 @@ export const metaThumbnailSlugToDimensions = (slug: string): [number, number] | 
     console.warn('Received slug ', slug, ' but expected', expectedSlug)
     return undefined
   }
-  if (!imagePreviewDimensions.some(
-    imagePreviewDimension => widthPx === imagePreviewDimension[0] &&
-      heightPx === imagePreviewDimension[1])
+  if (
+    !imagePreviewDimensions.some(
+      (imagePreviewDimension) => widthPx === imagePreviewDimension[0] && heightPx === imagePreviewDimension[1]
+    )
   ) {
     return undefined
   }
@@ -54,13 +50,15 @@ export const metaThumbnailSlugToDimensions = (slug: string): [number, number] | 
 const compressionLevel = 9
 
 export const uploadMetaThumbnails = async (): AsyncTaskItem => {
-  return await Promise.all(imagePreviewDimensions.map(async imagePreviewDimension => {
-    const metaThumbnail = await getMetaThumbnail(imagePreviewDimension[0], imagePreviewDimension[1])
-    const s3Key = metaThumbnailPathBuilder(metaThumbnail.filename)
-    saveToS3(s3Key, metaThumbnail.pngBuffer)
-    console.log('[meta-thumbnail]', 'Uploaded', s3Key)
-    return s3Key
-  }))
+  return await Promise.all(
+    imagePreviewDimensions.map(async (imagePreviewDimension) => {
+      const metaThumbnail = await getMetaThumbnail(imagePreviewDimension[0], imagePreviewDimension[1])
+      const s3Key = metaThumbnailPathBuilder(metaThumbnail.filename)
+      saveToS3(s3Key, metaThumbnail.pngBuffer)
+      console.log('[meta-thumbnail]', 'Uploaded', s3Key)
+      return s3Key
+    })
+  )
 }
 
 export const bgBlue = '#002d3c'
@@ -71,13 +69,10 @@ export const getMetaThumbnail = async (widthPx: number, heightPx: number) => {
   const svgString = await svgPromise
   const paddingPx = Math.round(widthPx / 10)
   const pngBuffer = await sharp(Buffer.from(svgString))
-    .resize(
-      widthPx - paddingPx * 2,
-      heightPx - paddingPx * 2,
-      {
-        fit: 'contain',
-        background: bgBlue
-      })
+    .resize(widthPx - paddingPx * 2, heightPx - paddingPx * 2, {
+      fit: 'contain',
+      background: bgBlue
+    })
     .extend({
       top: paddingPx,
       right: paddingPx,

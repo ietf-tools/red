@@ -4,11 +4,7 @@
  */
 
 import { describe, expect, test } from 'vitest'
-import {
-  getRfc8792CopyText,
-  hasXml2RfcSourcecodeMarkers,
-  stripXml2RfcSourcecodeMarkers
-} from './rfc8792'
+import { getRfc8792CopyText, hasXml2RfcSourcecodeMarkers, stripXml2RfcSourcecodeMarkers } from './rfc8792'
 
 describe('getRfc8792CopyText', () => {
   test('unfolds the single backslash strategy', () => {
@@ -54,9 +50,7 @@ describe('getRfc8792CopyText', () => {
       '<CODE ENDS>'
     ].join('\n')
 
-    expect(
-      getRfc8792CopyText(text, { stripSourcecodeMarkers: true })
-    ).toBe('marked folded line continues here\n')
+    expect(getRfc8792CopyText(text, { stripSourcecodeMarkers: true })).toBe('marked folded line continues here\n')
   })
 
   test('returns null when the header is present but the body is not folded', () => {
@@ -77,13 +71,7 @@ describe('getRfc8792CopyText', () => {
 
 describe('xml2rfc sourcecode markers', () => {
   test('detects and strips markers', () => {
-    const text = [
-      '<CODE BEGINS>',
-      ' file "example.txt"',
-      'content',
-      '<CODE ENDS>',
-      ''
-    ].join('\n')
+    const text = ['<CODE BEGINS>', ' file "example.txt"', 'content', '<CODE ENDS>', ''].join('\n')
 
     expect(hasXml2RfcSourcecodeMarkers(text)).toBe(true)
     expect(stripXml2RfcSourcecodeMarkers(text)).toBe('content\n')

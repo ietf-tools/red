@@ -1,5 +1,5 @@
-import { assertIsString } from "~/utilities/typescript"
-import type { Density } from "~/utilities/typesense"
+import { assertIsString } from '~/utilities/typescript'
+import type { Density } from '~/utilities/typesense'
 
 /**
  * Stores UI state that lives outside InstantSearch's own state (query, facets, pagination, etc.).

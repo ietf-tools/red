@@ -6,7 +6,9 @@
         v-model="featureFlagRef"
         class="border-1 border-gray-500 mr-1 align-middle accent-blue-500 dark:accent-black p-2"
         :aria-describedby="descriptionDomId">
-        <option v-for="option in props.featureFlagUiRow.storageType" :key="option" :value="option">{{ option || '(none)' }}</option>
+        <option v-for="option in props.featureFlagUiRow.storageType" :key="option" :value="option">
+          {{ option || '(none)' }}
+        </option>
       </select>
 
       <input

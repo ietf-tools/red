@@ -2,7 +2,14 @@ import { computed, reactive, watch } from 'vue'
 
 import type { ColorModeInstance } from './types'
 import { defineNuxtPlugin, useRouter, useHead, useState } from '#imports'
-import { globalName, storageKey, dataValue, disableTransition, storage, cookieAttrs } from '#build/color-mode-options.mjs'
+import {
+  globalName,
+  storageKey,
+  dataValue,
+  disableTransition,
+  storage,
+  cookieAttrs
+} from '#build/color-mode-options.mjs'
 
 type Helper = {
   preference: string
@@ -21,23 +28,25 @@ if (import.meta.test && !helper) {
     preference: 'light',
     value: 'light',
     getColorScheme: () => 'light',
-    addColorScheme: () => { },
-    removeColorScheme: () => { },
+    addColorScheme: () => {},
+    removeColorScheme: () => {}
   }
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const colorMode = useState<ColorModeInstance>('color-mode', () => reactive({
-    // For SPA mode or fallback
-    preference: helper.preference,
-    value: helper.value,
-    unknown: false,
-    forced: false,
-  })).value
+  const colorMode = useState<ColorModeInstance>('color-mode', () =>
+    reactive({
+      // For SPA mode or fallback
+      preference: helper.preference,
+      value: helper.value,
+      unknown: false,
+      forced: false
+    })
+  ).value
 
   if (dataValue) {
     useHead({
-      htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) },
+      htmlAttrs: { [`data-${dataValue}`]: computed(() => colorMode.value) }
     })
   }
 
@@ -47,15 +56,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (forcedColorMode && forcedColorMode !== 'system') {
       setColorModeValue(colorMode, forcedColorMode)
       colorMode.forced = true
-    }
-    else {
+    } else {
       if (forcedColorMode === 'system') {
         console.warn('You cannot force the colorMode to system at the page level.')
       }
       colorMode.forced = false
-      const newValue = colorMode.preference === 'system'
-        ? helper.getColorScheme()
-        : colorMode.preference
+      const newValue = colorMode.preference === 'system' ? helper.getColorScheme() : colorMode.preference
       setColorModeValue(colorMode, newValue)
     }
   })
@@ -75,40 +81,50 @@ export default defineNuxtPlugin((nuxtApp) => {
     })
   }
 
-  watch(() => colorMode.preference, (preference) => {
-    if (colorMode.forced) {
-      return
-    }
+  watch(
+    () => colorMode.preference,
+    (preference) => {
+      if (colorMode.forced) {
+        return
+      }
 
-    if (preference === 'system') {
-      setColorModeValue(colorMode, helper.getColorScheme())
-      watchMedia()
-    }
-    else {
-      setColorModeValue(colorMode, preference)
-    }
+      if (preference === 'system') {
+        setColorModeValue(colorMode, helper.getColorScheme())
+        watchMedia()
+      } else {
+        setColorModeValue(colorMode, preference)
+      }
 
-    setPreferenceToStorage(preference)
-    // Local storage to sync with other tabs
-    // window.localStorage?.setItem(storageKey, preference)
-  }, { immediate: true })
+      setPreferenceToStorage(preference)
+      // Local storage to sync with other tabs
+      // window.localStorage?.setItem(storageKey, preference)
+    },
+    { immediate: true }
+  )
 
-  watch(() => colorMode.value, (newValue, oldValue) => {
-    let style: HTMLStyleElement | undefined
-    if (disableTransition) {
-      style = window!.document.createElement('style')
-      style.appendChild(document.createTextNode('*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'))
-      window!.document.head.appendChild(style)
-    }
-    helper.removeColorScheme(oldValue)
-    helper.addColorScheme(newValue)
-    if (disableTransition) {
-      // Calling getComputedStyle forces the browser to redraw
+  watch(
+    () => colorMode.value,
+    (newValue, oldValue) => {
+      let style: HTMLStyleElement | undefined
+      if (disableTransition) {
+        style = window!.document.createElement('style')
+        style.appendChild(
+          document.createTextNode(
+            '*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}'
+          )
+        )
+        window!.document.head.appendChild(style)
+      }
+      helper.removeColorScheme(oldValue)
+      helper.addColorScheme(newValue)
+      if (disableTransition) {
+        // Calling getComputedStyle forces the browser to redraw
 
-      const _ = window!.getComputedStyle(style!).opacity
-      document.head.removeChild(style!)
+        const _ = window!.getComputedStyle(style!).opacity
+        document.head.removeChild(style!)
+      }
     }
-  })
+  )
 
   if (colorMode.preference === 'system') {
     watchMedia()
@@ -140,10 +156,12 @@ function setPreferenceToStorage(preference: string) {
       try {
         window.document.cookie = cookieString
       } catch (e: unknown) {
-        console.log(`Problem setting cookie. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`, e)
+        console.log(
+          `Problem setting cookie. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`,
+          e
+        )
       }
-    }
-    else {
+    } else {
       window.document.cookie = storageKey + '=' + preference
     }
     return
@@ -153,7 +171,10 @@ function setPreferenceToStorage(preference: string) {
     try {
       window.sessionStorage?.setItem(storageKey, preference)
     } catch (e: unknown) {
-      console.log(`Problem setting localStorage. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`, e)
+      console.log(
+        `Problem setting localStorage. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`,
+        e
+      )
     }
     return
   }
@@ -161,6 +182,9 @@ function setPreferenceToStorage(preference: string) {
   try {
     window.localStorage?.setItem(storageKey, preference)
   } catch (e: unknown) {
-    console.log(`Problem setting localStorage. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`, e)
+    console.log(
+      `Problem setting localStorage. Browser may have disabled it (which they're allowed to do) but this means settings may not be persisted.`,
+      e
+    )
   }
 }

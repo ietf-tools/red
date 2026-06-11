@@ -1,16 +1,16 @@
 import { convertCSSUnit, parseCSSLength } from '../css-unit-converter/index.ts'
 import { getDOMParser, getInnerText, isHtmlElement } from '../utilities/dom.ts'
-import type { MaxPreformattedLineLengthSchemaType, TableOfContents } from '../../../website/app/utilities/rfc-validators.ts'
+import type {
+  MaxPreformattedLineLengthSchemaType,
+  TableOfContents
+} from '../../../website/app/utilities/rfc-validators.ts'
 import type { RfcAndToc } from './rfc-html.ts'
 
 type TocSections = TableOfContents['sections']
 type TocSection = TocSections[number]
 type TocLink = NonNullable<TocSection['links']>[number]
 
-export const parseXml2RfcBody = (
-  body: Document['body'],
-  rfcAndToc: RfcAndToc
-): void => {
+export const parseXml2RfcBody = (body: Document['body'], rfcAndToc: RfcAndToc): void => {
   body.childNodes.forEach((node) => {
     if (isHtmlElement(node)) {
       if (node.id === 'toc') {
@@ -26,14 +26,8 @@ export const parseXml2RfcBody = (
 }
 
 const parseXml2RfcToc = (toc: HTMLElement): TableOfContents => {
-  const isTocSection = (
-    maybeTocSection?: TocSection
-  ): maybeTocSection is TocSection => {
-    return Boolean(
-      maybeTocSection &&
-        typeof maybeTocSection === 'object' &&
-        'links' in maybeTocSection
-    )
+  const isTocSection = (maybeTocSection?: TocSection): maybeTocSection is TocSection => {
+    return Boolean(maybeTocSection && typeof maybeTocSection === 'object' && 'links' in maybeTocSection)
   }
 
   const walk = (node: Node): TocSection | undefined => {
@@ -41,10 +35,7 @@ const parseXml2RfcToc = (toc: HTMLElement): TableOfContents => {
       if (node.nodeName.toLowerCase() === 'li') {
         const links = Array.from(node.childNodes)
           .flatMap((childNode) => {
-            if (
-              isHtmlElement(childNode) &&
-              childNode.nodeName.toLowerCase() !== 'ul'
-            ) {
+            if (isHtmlElement(childNode) && childNode.nodeName.toLowerCase() !== 'ul') {
               const internalLinks = childNode.querySelectorAll('a')
               return Array.from(internalLinks)
                 .filter((internalLink) => {
@@ -67,16 +58,10 @@ const parseXml2RfcToc = (toc: HTMLElement): TableOfContents => {
                         }
                       }
                     } else {
-                      console.warn(
-                        `Found non TOC link`,
-                        href,
-                        internalLink.outerHTML
-                      )
+                      console.warn(`Found non TOC link`, href, internalLink.outerHTML)
                     }
                   } else {
-                    throw Error(
-                      `Didn't expect non-element. Was ${internalLink}`
-                    )
+                    throw Error(`Didn't expect non-element. Was ${internalLink}`)
                   }
                 })
             }
@@ -87,22 +72,13 @@ const parseXml2RfcToc = (toc: HTMLElement): TableOfContents => {
 
         const subsections = Array.from(node.childNodes)
           .map((childNode) => {
-            if (
-              isHtmlElement(childNode) &&
-              childNode.nodeName.toLowerCase() === 'ul'
-            ) {
-              return Array.from(childNode.childNodes)
-                .map(walk)
-                .filter(isTocSection)
+            if (isHtmlElement(childNode) && childNode.nodeName.toLowerCase() === 'ul') {
+              return Array.from(childNode.childNodes).map(walk).filter(isTocSection)
             }
           })
-          .filter(
-            (
-              subsections
-            ): subsections is NonNullable<TocSection['sections']> => {
-              return !!subsections
-            }
-          )
+          .filter((subsections): subsections is NonNullable<TocSection['sections']> => {
+            return !!subsections
+          })
 
         const newSection: TocSection = {
           links
@@ -123,9 +99,7 @@ const parseXml2RfcToc = (toc: HTMLElement): TableOfContents => {
     throw Error("Couldn't find root node")
   }
 
-  const sections: TocSections = Array.from(root.childNodes)
-    .map(walk)
-    .filter(isTocSection)
+  const sections: TocSections = Array.from(root.childNodes).map(walk).filter(isTocSection)
 
   return {
     title: 'Table of Contents',
@@ -171,18 +145,9 @@ const getHorizontalScrollable = (
   const horizontalScrollable = htmlElement.ownerDocument.createElement('div')
   horizontalScrollable.setAttribute('data-component', 'HorizontalScrollable')
   if (absolute) {
-    horizontalScrollable.setAttribute(
-      'data-component-absolute',
-      true.toString()
-    )
-    horizontalScrollable.setAttribute(
-      'data-component-childwidth',
-      absolute.widthCSSLength.toString()
-    )
-    horizontalScrollable.setAttribute(
-      'data-component-childheight',
-      absolute.heightCSSLength.toString()
-    )
+    horizontalScrollable.setAttribute('data-component-absolute', true.toString())
+    horizontalScrollable.setAttribute('data-component-childwidth', absolute.widthCSSLength.toString())
+    horizontalScrollable.setAttribute('data-component-childheight', absolute.heightCSSLength.toString())
   }
   return horizontalScrollable
 }
@@ -191,10 +156,7 @@ const getHorizontalScrollable = (
  * The HTML needs minor changes to ensure mobile rendering when rendered on
  * the rfc-editor site.
  */
-const fixNodeForMobile = (
-  node: Node,
-  isInsideHorizontalScrollable: boolean = false
-): Node | Node[] => {
+const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = false): Node | Node[] => {
   if (isHtmlElement(node)) {
     const tagName = node.tagName.toLowerCase()
 
@@ -204,9 +166,7 @@ const fixNodeForMobile = (
         case 'ul':
         case 'pre':
         case 'table':
-          const newChildren1 = Array.from(node.childNodes).flatMap((node) =>
-            fixNodeForMobile(node, true)
-          )
+          const newChildren1 = Array.from(node.childNodes).flatMap((node) => fixNodeForMobile(node, true))
           // these can be too wide, so we wrap them in a scrollable area
           node.replaceChildren(...newChildren1)
           const horizontalScrollable1 = getHorizontalScrollable(node)
@@ -296,17 +256,13 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
         const y1 = parseFloat(y1Attr)
         const x2 = parseFloat(x2Attr)
         const y2 = parseFloat(y2Attr)
-        if (
-          Number.isNaN(x1) ||
-          Number.isNaN(y1) ||
-          Number.isNaN(x2) ||
-          Number.isNaN(y2)
-        ) {
+        if (Number.isNaN(x1) || Number.isNaN(y1) || Number.isNaN(x2) || Number.isNaN(y2)) {
           // fallback to default value
-          console.error(
-            'Could not find width/height/viewBox of SVG. This could break mobile layout',
-            { widthAttr, heightAttr, viewBoxAttr }
-          )
+          console.error('Could not find width/height/viewBox of SVG. This could break mobile layout', {
+            widthAttr,
+            heightAttr,
+            viewBoxAttr
+          })
         } else {
           const viewBoxWidth = x2 - x1
           const viewBoxHeight = y2 - y1
@@ -338,16 +294,13 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   // layout.
   const NEEDS_HORIZONTALSCROLLABLE_THRESHOLD_PX = 100
 
-  const { widthCSSLength, widthPx, heightCSSLength, heightPx } =
-    getSvgDimensions(svg)
+  const { widthCSSLength, widthPx, heightCSSLength, heightPx } = getSvgDimensions(svg)
 
   svg.setAttribute('width', widthCSSLength)
   svg.setAttribute('height', heightCSSLength)
 
   if (widthPx > NEEDS_HORIZONTALSCROLLABLE_THRESHOLD_PX) {
-    const newChildren2 = Array.from(svg.childNodes).flatMap((node) =>
-      fixNodeForMobile(node, true)
-    )
+    const newChildren2 = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, true))
     svg.replaceChildren(...newChildren2)
     const hs2 = getHorizontalScrollable(svg, {
       widthCSSLength,
@@ -376,9 +329,7 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   }
 
   // console.log(' - small SVG', widthPx, heightPx)
-  const newChildren3 = Array.from(svg.childNodes).flatMap((node) =>
-    fixNodeForMobile(node, false)
-  )
+  const newChildren3 = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, false))
   svg.replaceChildren(...newChildren3)
   return svg
 }
@@ -388,9 +339,7 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
  * but they can include preformatted sections (eg ASCII art) that should be
  * sized, so we still calculate the max line length of <pre>s within.
  */
-export const getXml2RfcMaxLineLength = async (
-  dom: Document
-): Promise<MaxPreformattedLineLengthSchemaType> => {
+export const getXml2RfcMaxLineLength = async (dom: Document): Promise<MaxPreformattedLineLengthSchemaType> => {
   /**
    * The DEFAULT_MAX_LINE_LENGTH is less than the plaintext equivalent.
    *

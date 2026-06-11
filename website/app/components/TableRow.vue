@@ -5,7 +5,7 @@
 </template>
 
 <script>
-/**
+ /**
  * Be sure to use slightly transparent colours so that <HorizontalScrollable> can
  * add a visible background shadow.
  */

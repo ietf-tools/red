@@ -1,7 +1,5 @@
 // See https://stackoverflow.com/questions/61047551/typescript-union-of-string-and-string-literals
-export type HintedString<KnownValues extends string> =
-  | (string & {})
-  | KnownValues
+export type HintedString<KnownValues extends string> = (string & {}) | KnownValues
 
 export const assertNever = (value: never) => {
   throw new Error('Unexpected value: ' + value)
@@ -30,8 +28,6 @@ export function assertIsNumber(val: unknown): asserts val is number {
 
 export function assertIsDefined<T>(val: T): asserts val is NonNullable<T> {
   if (val === undefined || val === null) {
-    throw new Error(
-      'Expected "val" to be defined, but received undefined or null'
-    )
+    throw new Error('Expected "val" to be defined, but received undefined or null')
   }
 }

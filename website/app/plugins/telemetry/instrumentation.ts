@@ -68,9 +68,7 @@ export default defineNuxtPlugin({
        * 2) When Vitest is detected don't call initializeTelemetry().
        *
        **/
-      console.info(
-        `${JSON.stringify(name)} is inactive during tests. This is intentional.`
-      )
+      console.info(`${JSON.stringify(name)} is inactive during tests. This is intentional.`)
       return
     }
     initializeTelemetry()

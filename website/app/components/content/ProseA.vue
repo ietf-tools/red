@@ -1,30 +1,13 @@
 <template>
-  <AMaybeRFCLink
-    :id="props.id"
-    :href="props.href!"
-    :class="ANCHOR_COLOR_TAILWIND_STYLE"
-  >
+  <AMaybeRFCLink :id="props.id" :href="props.href!" :class="ANCHOR_COLOR_TAILWIND_STYLE">
     <slot />
     <Icon
       v-if="!isInternal && !isMailTo && !isHash"
       name="fluent:window-new-20-regular"
-      class="text-lg align-middle ml-1"
-    />
-    <Icon
-      v-if="isMailTo"
-      name="fluent:mail-all-20-regular"
-      class="text-lg align-middle ml-1"
-    />
-    <Icon
-      v-if="isRSSFeed"
-      name="ic:sharp-rss-feed"
-      class="text-lg align-middle ml-1"
-    />
-    <Icon
-      v-if="isAtomFeed"
-      name="vscode-icons:file-type-atom"
-      class="text-lg align-middle ml-1"
-    />
+      class="text-lg align-middle ml-1" />
+    <Icon v-if="isMailTo" name="fluent:mail-all-20-regular" class="text-lg align-middle ml-1" />
+    <Icon v-if="isRSSFeed" name="ic:sharp-rss-feed" class="text-lg align-middle ml-1" />
+    <Icon v-if="isAtomFeed" name="vscode-icons:file-type-atom" class="text-lg align-middle ml-1" />
   </AMaybeRFCLink>
 </template>
 

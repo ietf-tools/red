@@ -5,8 +5,8 @@ import satori, { type SatoriOptions } from 'satori'
 import { html } from 'satori-html'
 
 type Dimensions = {
-  widthPx: number,
-  heightPx: number,
+  widthPx: number
+  heightPx: number
 }
 
 const fontsPath = path.resolve(import.meta.dirname, '..', 'fonts')
@@ -41,34 +41,31 @@ export const renderHtmlToImage = async (htmlString: string, dimensions: Dimensio
           name: 'sans-serif',
           data: await dejavuSansBinary,
           weight: 400,
-          style: 'normal',
+          style: 'normal'
         },
         {
           name: 'sans-serif',
           data: await dejavuSansBoldBinary,
           weight: 700,
-          style: 'normal',
+          style: 'normal'
         },
         {
           name: 'sans-serif',
           data: await dejavuSansItalicBinary,
           weight: 400,
-          style: 'italic',
+          style: 'italic'
         },
         {
           name: 'monospace',
           data: await dejavuSansMonoBinary,
           weight: 400,
-          style: 'normal',
-        },
-      ],
+          style: 'normal'
+        }
+      ]
     }
   }
 
-  const svgString = await satori(
-    html(htmlString),
-    cacheOfSatoriOptions[cacheKey],
-  )
+  const svgString = await satori(html(htmlString), cacheOfSatoriOptions[cacheKey])
 
   try {
     const result = await sharp(Buffer.from(svgString))
@@ -81,6 +78,6 @@ export const renderHtmlToImage = async (htmlString: string, dimensions: Dimensio
 
     return result
   } catch (error) {
-    console.error('Error converting SVG:', error);
+    console.error('Error converting SVG:', error)
   }
 }

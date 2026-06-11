@@ -13,7 +13,5 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-const subseriesVNode = computed(() =>
-  formatSubseriesAsVNode(props.rfc, props.hasTrailingColon, props.hasUnderline)
-)
+const subseriesVNode = computed(() => formatSubseriesAsVNode(props.rfc, props.hasTrailingColon, props.hasUnderline))
 </script>
