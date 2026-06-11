@@ -5,7 +5,7 @@
     @click="handleClick"
     :aria-label="props.ariaLabel"
     :class="[
-      'inline-flex flex-row items-center gap-1 rounded mt-1 border-1 font-bold border-b-2 border-gray-400 cursor-pointer bg-gray-50 dark:bg-blue-950 px-2 hover:bg-gray-100 dark:hover:bg-gray-900',
+      'inline-flex flex-row items-center gap-1 py-0.5 pl-1 pr-2 rounded mt-1 border-1 font-bold text-sm border-b-2 border-gray-400 cursor-pointer bg-gray-50 dark:bg-blue-950 hover:bg-gray-100 dark:hover:bg-gray-900',
       props.buttonClass
     ]">
     <slot />

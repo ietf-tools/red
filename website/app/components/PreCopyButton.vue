@@ -12,7 +12,7 @@
       'min-h-[2.5em]'
     }`">
     <ButtonSuccessFailure v-if="isMounted" :click-handler="handleCopy" button-class="mb-1">
-      <Icon name="fluent:clipboard-12-regular" size="1em" alt="" class="text-black dark:text-white" />
+      <Icon name="fluent:copy-16-regular" size="1.4em" alt="" class="text-black dark:text-white" />
       Copy
     </ButtonSuccessFailure>
   </div>
