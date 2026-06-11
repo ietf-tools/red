@@ -7,21 +7,21 @@ declare module 'vue-instantsearch/vue3/es' {
     helper: InstantSearchHelper
   }
 
-  declare class AisInstantSearch extends Vue {
+  class AisInstantSearch extends Vue {
     instantSearchInstance: InstantSearchInstance
   }
-  declare class AisSearchBox extends Vue {
+  class AisSearchBox extends Vue {
     currentRefinement: string
   }
-  declare class AisStats extends Vue {}
-  declare class AisHits extends Vue {}
-  declare class AisHitsPerPage extends Vue {}
-  declare class AisPagination extends Vue {}
-  declare class AisSortBy extends Vue {}
-  declare class AisMenuSelect extends Vue {}
-  declare class AisClearRefinements extends Vue {}
-  declare class AisRangeInput extends Vue {}
-  declare class AisRefinementList extends Vue {}
-  declare class AisHighlight extends Vue {}
-  declare class AisToggleRefinement extends Vue {}
+  class AisStats extends Vue {}
+  class AisHits extends Vue {}
+  class AisHitsPerPage extends Vue {}
+  class AisPagination extends Vue {}
+  class AisSortBy extends Vue {}
+  class AisMenuSelect extends Vue {}
+  class AisClearRefinements extends Vue {}
+  class AisRangeInput extends Vue {}
+  class AisRefinementList extends Vue {}
+  class AisHighlight extends Vue {}
+  class AisToggleRefinement extends Vue {}
 }
