@@ -1,5 +1,5 @@
 <template>
-  <p class="pt-2 px-2 text-pretty max-w-[var(--max-text-block-width)]">
+  <p class="pt-2 px-2 text-pretty max-w-[var(--max-text-block-width)] leading-[1.5]">
     <slot />
   </p>
 </template>
