@@ -9,7 +9,7 @@
       //
       // Minimum height value should be same height or slightly-taller than button height
       // to avoid layout shift
-      'min-h-[2.5em]'
+      'min-h-[2.2em]'
     }`">
     <ButtonSuccessFailure v-if="isMounted" :click-handler="handleCopy" button-class="mb-1">
       <Icon name="fluent:copy-16-regular" size="1.4em" alt="" class="text-black dark:text-white" />
