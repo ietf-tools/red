@@ -395,7 +395,7 @@ a.pilcrow {
   color: #666;
   /* Arlen: AHDJ 2019 */
   text-decoration: none;
-  visibility: hidden;
+  opacity: 0;
   user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
@@ -411,13 +411,14 @@ a.pilcrow:hover {
 }
 
 @media screen {
+  a.pilcrow:focus,
   aside:hover > a.pilcrow,
   p:hover > a.pilcrow,
   blockquote:hover > a.pilcrow,
   div:hover > a.pilcrow,
   li:hover > a.pilcrow,
   pre:hover > a.pilcrow {
-    visibility: visible;
+    opacity: 1;
   }
 
   a.pilcrow:hover {
