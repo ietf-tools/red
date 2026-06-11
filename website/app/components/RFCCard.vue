@@ -3,7 +3,7 @@
     :href="infoSeriesPathBuilder(`RFC${props.rfc.number}`)"
     :heading-level="props.headingLevel"
     has-cover-link
-    :chevron-position="props.rfc.abstract && responsiveModeStore.responsiveMode === 'Desktop' ? 'center' : 'end'"
+    chevron-position="center"
     :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''"
     :aside-slot-class="

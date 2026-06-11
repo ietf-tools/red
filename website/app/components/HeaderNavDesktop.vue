@@ -10,7 +10,7 @@
           :id="`menu-link-${index}`"
           :href="menuItem.href"
           :aria-label="menuItem.label"
-          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none outline-none focus:shadow-[0_0_0_2px_white]"
+          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none focus:shadow-[0_0_0_2px_white]"
           as-child
           @click="menuItem.click">
           <Anchor>
@@ -23,7 +23,7 @@
           type="button"
           :disabled="!hasMounted"
           :class="[
-            'group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none outline-none',
+            'group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none',
             // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
             hasMounted && 'cursor-pointer'
           ]"

@@ -50,7 +50,7 @@
             height="21"
             :class="[
               'absolute right-4 text-gray-200 group-hover:text-blue-400 group-focus:text-blue-400 dark:group-hover:text-blue-100 dark:group-focus:text-blue-100 transition-all group-hover:right-3 group-focus:right-3 -rotate-90 print:hidden',
-              props.chevronPosition === 'center' ? 'bottom-[50%]' : 'bottom-4'
+              props.chevronPosition === 'center' ? 'bottom-[45%]' : 'bottom-4'
             ]" />
         </NuxtLink>
         <span
