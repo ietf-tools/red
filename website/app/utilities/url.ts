@@ -363,6 +363,12 @@ export const isOutsideNuxtLink = (href?: string): boolean => {
   ) {
     return true
   }
+  if (
+    // eg /errata/eid1912
+    href.startsWith('/errata/')
+  ) {
+    return true
+  }
   if (isExternalLink(href)) {
     return true
   }
