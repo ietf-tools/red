@@ -104,3 +104,7 @@ export const renderDocumentPojo = (nodes: DocumentPojo, elementRenderers: Elemen
 export const renderDocumentPojoToHtmlString = (nodes: DocumentPojo): string => {
   return nodes.map((node) => renderNodePojoToHtmlString(node)).join('')
 }
+
+export const nodePojoToInnerText = (nodes: NodePojo[]): string => {
+  return nodes.map((n) => (n.type === 'Text' ? n.textContent : nodePojoToInnerText(n.children))).join('')
+}

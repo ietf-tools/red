@@ -93,11 +93,14 @@ import {
   renderDocumentPojo,
   renderNodePojo,
   defaultRenderer,
-  type ElementRenderers
+  type ElementRenderers,
+  nodePojoToInnerText
 } from '~/utilities/renderDocumentPojo'
 import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 import PreCopyButton from './PreCopyButton.vue'
+import RFCDocumentAbnfDiagram from './RFCDocumentAbnfDiagram.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -109,6 +112,8 @@ type Props = {
 const props = defineProps<Props>()
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
+
+const featureFlags = useFeatureFlags()
 
 const rfcHtmlPojoRenderers: ElementRenderers = {
   ...defaultRenderer,
@@ -124,6 +129,13 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     ),
   pre: (node, childrenForVue) => {
     if (props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc') {
+      if (featureFlags.value.isAbnfDiagramsActive && (node.attributes.class ?? '').includes('lang-abnf')) {
+        const abnfText = nodePojoToInnerText(node.children)
+        return h('div', {}, [
+          h(RFCDocumentAbnfDiagram, { abnfText }),
+          h(PreCopyButton, node.attributes, () => childrenForVue)
+        ])
+      }
       return h(PreCopyButton, node.attributes, () => childrenForVue)
     }
     return h(node.nodeName, node.attributes, childrenForVue)

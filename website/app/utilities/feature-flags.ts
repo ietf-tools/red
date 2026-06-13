@@ -8,7 +8,8 @@ import { SEARCH_PATH } from './url'
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
   // with old versions saved in localStorage values can still validate
-  isDidYouMeanActive: z.boolean().optional()
+  isDidYouMeanActive: z.boolean().optional(),
+  isAbnfDiagramsActive: z.boolean().optional()
   // isCardHoverFocusTint: z.boolean().optional()
   // hasFontWeight_WCAG3_APCA: z.boolean().optional(),
   // showPreCopyButton: z.union([ENUM_STRING_UNDEFINED, z.literal('copy'), z.literal('unfolded-copy'), z.literal('copy-unmodified')]).optional()
@@ -28,6 +29,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   isDidYouMeanActive: {
     title: 'Homepage direct RFC/subseries links',
     description: `Homepage search box feature suggesting direct links to RFCs/BCPs/etc when typing "RFCn" or "BCP n" etc into the homepage search box. This only occurs on the homepage, not on the ${SEARCH_PATH} route.`,
+    storageType: 'boolean'
+  },
+  isAbnfDiagramsActive: {
+    title: 'ABNF railroad diagrams',
+    description: `Renders ABNF grammar blocks in RFC documents as interactive railroad diagrams, making protocol grammars easier to read at a glance.`,
     storageType: 'boolean'
   }
   // isCardHoverFocusTint: {
@@ -53,7 +59,8 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
-  isDidYouMeanActive: false
+  isDidYouMeanActive: false,
+  isAbnfDiagramsActive: false
   // isCardHoverFocusTint: false,
   // isMockNonJSMenu: false,
   // hasFontWeight_WCAG3_APCA: false,

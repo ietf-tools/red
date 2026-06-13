@@ -84,7 +84,11 @@ export default defineNuxtConfig({
         '@vueuse/core',
         'core-js/actual/array/to-sorted',
         'vue-instantsearch/vue3/es',
-        'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
+        'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js',
+        // railroad-diagrams is a CJS IIFE loaded only via dynamic import(); pre-bundling
+        // here ensures Vite transforms it at startup rather than on first encounter,
+        // avoiding a 504 stall and ensuring the CJS→ESM default-export interop is applied.
+        'railroad-diagrams'
       ]
     }
   },
