@@ -191,17 +191,13 @@ const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = fa
 /**
  * SVGs can be too wide, so we'll wrap them in a scrollable area.
  *
- * We scroll a fixed-width SVG rather than trying to scale the SVG to
- * fit the viewport, because this can make SVGs illegible.
+ * We scroll a fixed-width SVG rather than trying to responsively size
+ * the SVG to fit the viewport, because scaling SVGs for viewport can
+ * be too small to be legible.
  *
  * <HorizontalScrollable> mostly affects mobile as most SVGs are small
  * enough to be visible on a 1920x1080 display, where that component
  * doesn't render any scroll hint box-shadows.
- *
- * This is so that Red can insert blank space where the SVG was in
- * the layout flow, so that following Nodes don't render underneath
- * the newly `position:absolute` SVG.
- * @returns
  */
 const wrapSvg = (svg: HTMLElement): HTMLElement => {
   const LEFT = 'alignLeft'
