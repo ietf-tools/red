@@ -138,37 +138,39 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
   return nodes.flatMap((node) => fixNodeForMobile(node))
 }
 
-const getHorizontalScrollable = (
-  htmlElement: HTMLElement,
-  absolute?: { widthCSSLength: string; heightCSSLength: string }
-) => {
+const getHorizontalScrollable = (htmlElement: HTMLElement) => {
   const horizontalScrollable = htmlElement.ownerDocument.createElement('div')
   horizontalScrollable.setAttribute('data-component', 'HorizontalScrollable')
-  if (absolute) {
-    horizontalScrollable.setAttribute('data-component-absolute', true.toString())
-    horizontalScrollable.setAttribute('data-component-childwidth', absolute.widthCSSLength.toString())
-    horizontalScrollable.setAttribute('data-component-childheight', absolute.heightCSSLength.toString())
-  }
   return horizontalScrollable
 }
 
 /**
  * The HTML needs minor changes to ensure mobile rendering when rendered on
  * the rfc-editor site.
+ *
+ * Although this function's logic could be done in the website rendering code,
+ * it simplifies the website rendering code to instead do it here.
+ *
+ * If the website took this logic it would have to (eg) wrap `<table>` etc
+ * in horizontal scrollables, but these shouldn't be nested, so it would mean
+ * the website rendering would need to know about descendant nodes, so it's
+ * much easier to do it once here so that the website can have a simple
+ * rendering that makes NodoPojo to a component/element.
  */
 const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = false): Node | Node[] => {
   if (isHtmlElement(node)) {
     const tagName = node.tagName.toLowerCase()
 
-    if (isInsideHorizontalScrollable === false) {
+    if (
+      // we don't want to nest horizontalScrollables
+      isInsideHorizontalScrollable === false
+    ) {
       switch (tagName) {
-        case 'ol':
-        case 'ul':
+        // these can be too wide, so we wrap them in a scrollable area
         case 'pre':
         case 'table':
-          const newChildren1 = Array.from(node.childNodes).flatMap((node) => fixNodeForMobile(node, true))
-          // these can be too wide, so we wrap them in a scrollable area
-          node.replaceChildren(...newChildren1)
+          const wrappedChildren = Array.from(node.childNodes).flatMap((node) => fixNodeForMobile(node, true))
+          node.replaceChildren(...wrappedChildren)
           const horizontalScrollable1 = getHorizontalScrollable(node)
           horizontalScrollable1.appendChild(node)
           return horizontalScrollable1
@@ -186,25 +188,26 @@ const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = fa
   return node
 }
 
+/**
+ * SVGs can be too wide, so we'll wrap them in a scrollable area.
+ *
+ * We scroll a fixed-width SVG rather than trying to scale the SVG to
+ * fit the viewport, because this can make SVGs illegible.
+ *
+ * <HorizontalScrollable> mostly affects mobile as most SVGs are small
+ * enough to be visible on a 1920x1080 display, where that component
+ * doesn't render any scroll hint box-shadows.
+ *
+ * This is so that Red can insert blank space where the SVG was in
+ * the layout flow, so that following Nodes don't render underneath
+ * the newly `position:absolute` SVG.
+ * @returns
+ */
 const wrapSvg = (svg: HTMLElement): HTMLElement => {
-  // these can be too wide, so we'll wrap them in a scrollable area
-  // but because SVGs are often inline deeper in the document (ie not a
-  // direct child of <body>) they come with some indentation to the left,
-  // so we can't use the full viewport width for the SVG. This indentation
-  // makes Red's rendering in a <HorizontalScrollable> indented too.
-  //
-  // <HorizontalScrollable> mostly affects mobile as most SVGs are small
-  // enough to be visible on a 1920x1080 display, where that component
-  // doesn't render any scroll hint box-shadows.
-  //
-  // So we'll assist Red by suggesting a `position:absolute;left:0px`
-  // HorizontalScrollable that is full width. Because this pulls the
-  // SVG out of regular browser layout flow we'll also provide the
-  // dimensions for a placeholder, taken from the SVG's dimensions.
-  //
-  // This is so that Red can insert blank space where the SVG was in
-  // the layout flow, so that following Nodes don't render underneath
-  // the newly `position:absolute` SVG.
+  const LEFT = 'alignLeft'
+  const CENTER = 'alignCenter'
+  const RIGHT = 'alignRight'
+
   if (!svg) {
     console.error({ node: svg })
     throw Error(`Expected SVG but got node (see console) ${svg}`)
@@ -218,7 +221,7 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
     heightCSSLength: string
     heightPx: number
   } => {
-    const DEFAULT_SVG_WIDTH_PX = 724 // taken from width of this SVG at 1920x1080 window size https://www.rfc-editor.org/rfc/rfc9692.html#name-rift-information-distributi
+    const DEFAULT_SVG_WIDTH_PX = 724 // somewhat arbitrary but taken from width of this SVG at 1920x1080 window size https://www.rfc-editor.org/rfc/rfc9692.html#name-rift-information-distributi
 
     const parseLength = (lengthAttr: string | null): number => {
       if (lengthAttr === null) return Number.NaN
@@ -286,7 +289,7 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   // The choice of this number is mostly an arbitrary threshold, but based
   // on these numbers...
   //
-  //  - small mobile viewport is about 250px
+  //  - very small mobile viewport could be about 250px
   //  - indentation from the left due to list items tables etc might be 100px
   //
   // So an SVG would only need to be 150px wide to exceed the viewport width and
@@ -294,43 +297,37 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   // layout.
   const NEEDS_HORIZONTALSCROLLABLE_THRESHOLD_PX = 100
 
-  const { widthCSSLength, widthPx, heightCSSLength, heightPx } = getSvgDimensions(svg)
+  const { widthCSSLength, widthPx, heightCSSLength } = getSvgDimensions(svg)
 
   svg.setAttribute('width', widthCSSLength)
   svg.setAttribute('height', heightCSSLength)
 
   if (widthPx > NEEDS_HORIZONTALSCROLLABLE_THRESHOLD_PX) {
-    const newChildren2 = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, true))
-    svg.replaceChildren(...newChildren2)
-    const hs2 = getHorizontalScrollable(svg, {
-      widthCSSLength,
-      heightCSSLength
-    })
+    const wrappedChildren = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, true))
+    svg.replaceChildren(...wrappedChildren)
+    const horizontalScrollable = getHorizontalScrollable(svg)
 
     if (svg.parentElement) {
-      const LEFT = 'alignLeft'
-      const CENTER = 'alignCenter'
-      const RIGHT = 'alignRight'
       if (svg.parentElement.classList.contains(LEFT)) {
         svg.parentElement.classList.remove(LEFT)
-        hs2.classList.add(LEFT)
+        horizontalScrollable.classList.add(LEFT)
       } else if (svg.parentElement.classList.contains(CENTER)) {
         svg.parentElement.classList.remove(CENTER)
-        hs2.classList.add(CENTER)
+        horizontalScrollable.classList.add(CENTER)
       } else if (svg.parentElement.classList.contains(RIGHT)) {
         svg.parentElement.classList.remove(RIGHT)
-        hs2.classList.add(RIGHT)
+        horizontalScrollable.classList.add(RIGHT)
       }
       // console.log(' - horizontalscrollable ', hs2.className)
     }
-    hs2.appendChild(svg)
+    horizontalScrollable.appendChild(svg)
     // console.log(' - big SVG', widthPx, heightPx)
-    return hs2
+    return horizontalScrollable
   }
 
   // console.log(' - small SVG', widthPx, heightPx)
-  const newChildren3 = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, false))
-  svg.replaceChildren(...newChildren3)
+  const wrappedChildren = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, false))
+  svg.replaceChildren(...wrappedChildren)
   return svg
 }
 
