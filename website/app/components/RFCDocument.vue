@@ -58,10 +58,9 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
   asyncRfcBucketHtmlDocumentKey,
   async () => {
     let maybeRfcBucketDocument: unknown = undefined
-    console.log('sdfsdfsdf@#@#@#')
     if (import.meta.dev && props.rfcId.number === 0) {
+      // This is for internal testing only
       maybeRfcBucketDocument = await import('../utilities/rfc-html-0.json')
-      console.log('sdfsdfsdf', maybeRfcBucketDocument)
     } else {
       const rfcDataPath = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
       maybeRfcBucketDocument = await $fetch(rfcDataPath, {
