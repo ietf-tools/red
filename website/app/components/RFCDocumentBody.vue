@@ -7,7 +7,7 @@
 
     <Heading
       level="1"
-      class="mb-2 px-0 mt-2 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
+      class="mb-2 max-w-[var(--max-text-block-width)] px-0 mt-2 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
       <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title />
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />
@@ -96,11 +96,10 @@ import {
   type ElementRenderers,
   nodePojoToInnerText
 } from '~/utilities/renderDocumentPojo'
-import { AbsoluteHorizontalScrollable, AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
+import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
-import PreCopyButton from './PreCopyButton.vue'
-import RFCDocumentAbnfDiagram from './RFCDocumentAbnfDiagram.vue'
+import { AbnfViewer } from './abnf-viewer'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -129,51 +128,40 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     ),
   pre: (node, childrenForVue) => {
     if (props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc') {
-      if (featureFlags.value.isAbnfDiagramsActive && (node.attributes.class ?? '').includes('lang-abnf')) {
+      if (featureFlags.value.isAbnfDiagramsActive && node.attributes.class?.includes('lang-abnf')) {
         const abnfText = nodePojoToInnerText(node.children)
-        return h('div', {}, [
-          h(RFCDocumentAbnfDiagram, { abnfText }),
-          h(PreCopyButton, node.attributes, () => childrenForVue)
-        ])
+        return h(AbnfViewer, { abnfText })
       }
-      return h(PreCopyButton, node.attributes, () => childrenForVue)
     }
-    return h(node.nodeName, node.attributes, childrenForVue)
+    return h(
+      node.nodeName,
+      {
+        ...node.attributes,
+        class: ` ${node.attributes?.class ?? ''}`
+      },
+      childrenForVue
+    )
   },
   HorizontalScrollable: (node, childrenForVue) => {
-    const ATTR_ABSOLUTE = 'data-component-absolute'
-    if (ATTR_ABSOLUTE in node.attributes) {
-      const isAbsolute = node.attributes[ATTR_ABSOLUTE] === true.toString()
-      if (isAbsolute) {
-        const ATTR_ABSOLUTE_CHILDWIDTH = 'data-component-childwidth'
-        const childWidthAttr = node.attributes[ATTR_ABSOLUTE_CHILDWIDTH]
-        const ATTR_ABSOLUTE_CHILDHEIGHT = 'data-component-childheight'
-        const childHeightAttr = node.attributes[ATTR_ABSOLUTE_CHILDHEIGHT]
-        if (childWidthAttr && childHeightAttr) {
-          const filteredAttributes = Object.fromEntries(
-            Object.entries(node.attributes).filter(([key]) => !key.startsWith('data-'))
-          )
-          return h(
-            AbsoluteHorizontalScrollable,
-            {
-              ...filteredAttributes,
-              childWidthAttr,
-              childHeightAttr,
-              innerClass: 'py-3 rfc-content-padding-left rfc-content-padding-right'
-            },
-            () => childrenForVue
-          )
-        } else {
-          console.warn(
-            `Unable to render AbsoluteHorizontalScrollable ${ATTR_ABSOLUTE} because attributes ${ATTR_ABSOLUTE_CHILDWIDTH}=${JSON.stringify(childWidthAttr)} ${ATTR_ABSOLUTE_CHILDHEIGHT}=${JSON.stringify(childHeightAttr)}`
-          )
-        }
-      }
-    }
-    return h(HorizontalScrollable, node.attributes, () => childrenForVue)
+    const {
+      'data-component': _dataComponent,
+      'data-contains-pre': dataContainsPreBoolString,
+      ...attributes
+    } = node.attributes
+    return h(
+      HorizontalScrollable,
+      {
+        ...attributes,
+        containsPre: dataContainsPreBoolString === true.toString()
+      },
+      () => childrenForVue
+    )
   },
-  // FIXME: delete this case once the component is removed from the bucket
-  Placeholder: (node, childrenForVue) => h('div', node.attributes, () => childrenForVue),
+  Placeholder: (node, childrenForVue) => {
+    // FIXME: delete this case once the component is removed from the bucket
+    console.warn('[rfc-info]', 'Found deprecated `Placeholder` component.')
+    return h('div', node.attributes, () => childrenForVue)
+  },
   PdfPages: (node) => {
     const children = nodePojoWalker(node.children, (n) => {
       if (n.type === 'Element' && n.nodeName.toLowerCase() === 'img') {
@@ -226,7 +214,11 @@ const updated_by = computed(() => {
 }
 
 .rfc-content-type-xml2rfc {
+  max-width: var(--max-text-block-width, 42rem);
+  text-wrap: pretty;
+
   margin-left: calc(var(--spacing) * 2);
+
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
      to reduce maintenance burden.

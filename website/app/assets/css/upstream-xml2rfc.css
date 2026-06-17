@@ -21,37 +21,32 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   zoom: 1;
 }
 
-/**
- * WCAG requires max-width of 80 chars.
- * With a variable-width font of course this is approximate.
- **/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  max-width: var(--max-text-block-width, 42rem);
+.horizontal-scrollable {
+  margin-left: calc(var(--spacing) * 4 * -1);
+  margin-right: calc(var(--spacing) * 2 * -1);
 }
-/** these blocks already have left spacing so their max-width should be reduced */
-li,
-dt {
-  max-width: calc(var(--max-text-block-width, 42rem) - 2rem);
+
+.horizontal-scrollable pre {
+  /* constrain layout width, but allow overflow of <pre> text so that it's still visible.
+     constraining layout width is necessary to prevent <pre> from stretching page width on small screens
+  */
+  max-width: 100px;
 }
-/** these blocks already have MORE left spacing so their max-width should be reduced */
-dd {
-  max-width: calc(var(--max-text-block-width, 42rem) - 9rem);
+
+@media (min-width: 1024px) {
+  .horizontal-scrollable {
+    margin-left: 0;
+    margin-right: min(
+      calc(-1 * (100cqi - var(--sidebar-width) - var(--max-text-block-width) - var(--info-rfc-sidebar-buffer))),
+      0px
+    );
+  }
+
+  .horizontal-scrollable pre {
+    max-width: none; /* constrain layout width, but allow overflow of <pre> text so that it's still visible. constraining layout width is necessary to prevent <pre> from stretching page width on small screens */
+  }
 }
-/** every table cell is deemed to be it's own ~80 char limit. This means the whole table might appear wider but that's intentional */
-th,
-td {
-  max-width: calc(var(--max-text-block-width, 42rem) - 9rem);
-}
-pre {
-  display: inline-block;
-  min-width: calc(var(--max-text-block-width, 42rem) - 4rem);
-}
+
 /**
  * END OF 80 char max width fixes
  **/
@@ -127,10 +122,6 @@ p {
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
   margin: 0 0 1em 0;
   text-align: left;
-}
-
-div {
-  margin: 0;
 }
 
 .alignRight {
@@ -411,7 +402,14 @@ a.pilcrow:hover {
 }
 
 @media screen {
-  a.pilcrow:focus,
+  /** focus for keyboard nav */
+  aside:focus-within > a.pilcrow,
+  p:focus-within > a.pilcrow,
+  blockquote:focus-within > a.pilcrow,
+  div:focus-within > a.pilcrow,
+  li:focus-within > a.pilcrow,
+  pre:focus-within > a.pilcrow,
+  /** hover for mouse */
   aside:hover > a.pilcrow,
   p:hover > a.pilcrow,
   blockquote:hover > a.pilcrow,
@@ -1089,18 +1087,6 @@ h4 {
   margin-bottom: 0;
 }
 
-.alignLeft *:first-child {
-  margin: 0 auto 0 0;
-}
-
-.alignCenter *:first-child {
-  margin: 0 auto 0 auto;
-}
-
-.alignRight *:first-child {
-  margin: 0 0 0 auto;
-}
-
 /* In print, the pilcrow won't show on hover, so prevent it from taking up space,
    possibly even requiring a new line */
 @media print {
@@ -1197,15 +1183,11 @@ aside > p {
   }
 }
 
-.sourcecode pre {
-  background-color: #eee;
-}
-
 .artwork .pilcrow,
 .sourcecode .pilcrow {
   float: right;
   margin-right: 1rem;
-  margin-top: -2rem;
+  margin-top: -1.2rem;
   z-index: 1000;
   position: relative;
 }

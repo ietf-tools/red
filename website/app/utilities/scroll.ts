@@ -2,11 +2,13 @@ import { watch, onUnmounted } from 'vue'
 import { throttle, clamp } from 'es-toolkit'
 import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
-import { isProd } from './url'
 
 /**
  * RFCs for testing:
  *  - RFC8881: a very long RFC
+ *
+ * In dev mode only
+ *  - RFC0: a test RFC
  */
 
 const SCROLL_FPS = 60
@@ -72,9 +74,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
       const idsNotFound = uniqueIds.filter((id) => elements.some((htmlElement) => htmlElement.id === id))
       const errorText = `Some ids weren't found (${elements.length} !== ${uniqueIds.length}) missing ones: `
       console.error(errorText, elements, uniqueIds, idsNotFound)
-      if (!isProd()) {
-        throw Error(`${errorText} ${JSON.stringify(idsNotFound)}`)
-      }
+      return
     }
 
     const elementsById = elements.reduce(

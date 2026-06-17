@@ -10,7 +10,7 @@
     ]">
     <form
       class="w-full max-w-120 mx-auto pl-3 pr-1 py-1 flex flex-row gap-5 text-sm bg-yellow-50 dark:bg-yellow-900 text-yellow-950 dark:text-yellow-100 bg-yellow-50 dark:bg-yellow-900 text-yellow-950 dark:text-yellow-100 rounded-md">
-      <p class="flex-1 flex items-center"><b>Note:</b>{{ NONBREAKING_SPACE }} Feature Flag Experiments are enabled.</p>
+      <p class="flex-1 flex items-center">Feature Flags <span class="hidden md:inline"> Experiments enabled.</span></p>
       <button
         name="feature-flags-config"
         type="button"

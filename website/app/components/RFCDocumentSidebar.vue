@@ -28,7 +28,7 @@
       </DialogPortal>
     </DialogRoot>
 
-    <div :class="['w-[300px] flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']">
+    <div :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']">
       <RFCTabs
         v-model="selectedTab"
         mode="desktop"

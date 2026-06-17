@@ -17,7 +17,3 @@ a[href]:hover {
   background-color: transparent;
   text-decoration: underline;
 }
-
-.sourcecode pre {
-  background-color: #222;
-}

@@ -6,6 +6,16 @@
 @theme {
   --font-sans: 'Inter', sans-serif;
 
+  --sidebar-width: 400px;
+  --info-rfc-sidebar-buffer: 10px;
+
+  /**
+   * WCAG requires max-width of 80 chars.
+   * We attempt to meet this requirement through a container width.
+   * It's always a fuzzy constraint because variable-width fonts,
+   * boldness, etc, will have a different number of characters per
+   * line, so this can only be expected to be an approximate value.
+   **/
   --max-text-block-width: 42rem;
 
   --text-5xl: 2.75rem;

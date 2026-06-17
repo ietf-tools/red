@@ -57,11 +57,19 @@ const asyncRfcBucketHtmlDocumentKey = computed(() => `info-buckethtmldocument-${
 const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await useAsyncData(
   asyncRfcBucketHtmlDocumentKey,
   async () => {
-    const rfcDataPath = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
-    const maybeRfcBucketDocument = await $fetch(rfcDataPath, {
-      method: 'GET',
-      baseURL: import.meta.server ? apiV1UrlOrigin : undefined
-    })
+    let maybeRfcBucketDocument: unknown = undefined
+    console.log('sdfsdfsdf@#@#@#')
+    if (import.meta.dev && props.rfcId.number === 0) {
+      maybeRfcBucketDocument = await import('../utilities/rfc-html-0.json')
+      console.log('sdfsdfsdf', maybeRfcBucketDocument)
+    } else {
+      const rfcDataPath = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
+      maybeRfcBucketDocument = await $fetch(rfcDataPath, {
+        method: 'GET',
+        baseURL: import.meta.server ? apiV1UrlOrigin : undefined
+      })
+    }
+
     if (typeof maybeRfcBucketDocument !== 'object') {
       console.log(
         "Unexpected response type. The server Content-Type may be misconfigured so $fetch() doesn't parse as JSON",
