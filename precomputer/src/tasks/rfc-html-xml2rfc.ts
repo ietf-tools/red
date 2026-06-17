@@ -138,9 +138,12 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
   return nodes.flatMap((node) => fixNodeForMobile(node))
 }
 
-const getHorizontalScrollable = (htmlElement: HTMLElement) => {
+const getHorizontalScrollable = (htmlElement: HTMLElement, containsPre?: boolean) => {
   const horizontalScrollable = htmlElement.ownerDocument.createElement('div')
   horizontalScrollable.setAttribute('data-component', 'HorizontalScrollable')
+  if (containsPre !== undefined) {
+    horizontalScrollable.setAttribute('data-contains-pre', containsPre.toString())
+  }
   return horizontalScrollable
 }
 
@@ -171,7 +174,8 @@ const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = fa
         case 'table':
           const wrappedChildren = Array.from(node.childNodes).flatMap((node) => fixNodeForMobile(node, true))
           node.replaceChildren(...wrappedChildren)
-          const horizontalScrollable1 = getHorizontalScrollable(node)
+          const isPre = tagName === 'pre'
+          const horizontalScrollable1 = getHorizontalScrollable(node, isPre)
           horizontalScrollable1.appendChild(node)
           return horizontalScrollable1
         case 'svg':

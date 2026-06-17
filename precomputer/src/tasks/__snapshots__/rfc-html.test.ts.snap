@@ -17983,6 +17983,7 @@ the complex field.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -18776,6 +18777,7 @@ one of four types, as summarized in ",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "false",
                           },
                           "children": [
                             {
@@ -20917,6 +20919,7 @@ data to a peer.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -21636,6 +21639,7 @@ by the sender.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -22965,6 +22969,7 @@ acknowledged before the transition to a "closed" or "half-closed" state.",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "false",
                           },
                           "children": [
                             {
@@ -34451,6 +34456,7 @@ handshake is complete, endpoints are able to exchange application data freely.",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "true",
                           },
                           "children": [
                             {
@@ -35073,6 +35079,7 @@ packets, Handshake packets, and "0.5-RTT data" in 1-RTT packets.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -35290,6 +35297,7 @@ the client sends 1-RTT packets in the same packet number space.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -36981,6 +36989,7 @@ includes the connection ID established during the handshake.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -37170,6 +37179,7 @@ Initial: DCID=S1, SCID=C1 ->
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -42398,6 +42408,7 @@ closing period.",
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -55679,6 +55690,7 @@ following layout (see ",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -61850,6 +61862,7 @@ Negotiation, Stateless Reset, and Retry packets do not contain frames.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -62129,6 +62142,7 @@ additional type-dependent fields:",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -62296,6 +62310,7 @@ the table.",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "false",
                           },
                           "children": [
                             {
@@ -78781,6 +78796,7 @@ encoding properties.",
                 {
                   "attributes": {
                     "data-component": "HorizontalScrollable",
+                    "data-contains-pre": "false",
                   },
                   "children": [
                     {
@@ -80344,6 +80360,7 @@ an example for packet number decoding can be found in
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -81646,6 +81663,7 @@ defined:",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "false",
                           },
                           "children": [
                             {
@@ -83271,6 +83289,7 @@ version that is not supported by the server.  It is only sent by servers.",
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -84048,6 +84067,7 @@ it carries ACK frames in either direction.",
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -85415,6 +85435,7 @@ limitations.",
                                     {
                                       "attributes": {
                                         "data-component": "HorizontalScrollable",
+                                        "data-contains-pre": "true",
                                       },
                                       "children": [
                                         {
@@ -86079,6 +86100,7 @@ and client.",
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -86662,6 +86684,7 @@ server. It is used by a server that wishes to perform a retry; see
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -88482,6 +88505,7 @@ header.",
                                     {
                                       "attributes": {
                                         "data-component": "HorizontalScrollable",
+                                        "data-contains-pre": "true",
                                       },
                                       "children": [
                                         {
@@ -90761,6 +90785,7 @@ sequence of transport parameters, as shown in ",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "true",
                           },
                           "children": [
                             {
@@ -90951,6 +90976,7 @@ as shown in ",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "true",
                           },
                           "children": [
                             {
@@ -93966,6 +93992,7 @@ connection error of type TRANSPORT",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -95435,6 +95462,7 @@ byte that identifies the frame as a PADDING frame.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -95748,6 +95776,7 @@ frames have no content.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -96322,6 +96351,7 @@ implicitly acknowledged by the next Initial packet sent by the client.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -97288,6 +97318,7 @@ each value is present for each value in the ACK Range Count field.",
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -97702,6 +97733,7 @@ the following formula:",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -97895,6 +97927,7 @@ subsequent ACK Range using the following formula:",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -98238,6 +98271,7 @@ header.  ECN counts are only present when the ACK frame type is 0x03.",
                                         {
                                           "attributes": {
                                             "data-component": "HorizontalScrollable",
+                                            "data-contains-pre": "true",
                                           },
                                           "children": [
                                             {
@@ -99028,6 +99062,7 @@ terminate the connection with error STREAM",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -99842,6 +99877,7 @@ error STREAM",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -100415,6 +100451,7 @@ optional offset, optional length, and the end of the stream.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -101227,6 +101264,7 @@ to send in the header of an Initial packet for a future connection.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -102188,6 +102226,7 @@ created, or for a send-only stream.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -103071,6 +103110,7 @@ maximum amount of data that can be sent on the connection as a whole.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -103786,6 +103826,7 @@ with error STREAM",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -104473,6 +104514,7 @@ with a type of 0x13 applies to unidirectional streams.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -105270,6 +105312,7 @@ control algorithms; see ",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -105934,6 +105977,7 @@ is analogous to DATA_BLOCKED (",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -106587,6 +106631,7 @@ new stream was needed and the stream limit prevented the creation of the stream.
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -107223,6 +107268,7 @@ connections; see ",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -108966,6 +109012,7 @@ that connection ID.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -109772,6 +109819,7 @@ peer and for path validation during connection migration.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -110348,6 +110396,7 @@ of a PATH_RESPONSE frame is identical to that of the PATH_CHALLENGE frame; see
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -110798,6 +110847,7 @@ implicitly closed when the connection is closed.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -111750,6 +111800,7 @@ shows that HANDSHAKE_DONE frames have no content.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -128501,6 +128552,7 @@ registrations in this registry ",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "false",
                           },
                           "children": [
                             {
@@ -132112,6 +132164,7 @@ specification reference is provided.",
                         {
                           "attributes": {
                             "data-component": "HorizontalScrollable",
+                            "data-contains-pre": "false",
                           },
                           "children": [
                             {
@@ -148128,6 +148181,7 @@ sequence of bytes, which can be read in network byte order.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -148622,6 +148676,7 @@ peer in the current packet number space, if any.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
@@ -149171,6 +149226,7 @@ processed in the current packet number space.",
                                 {
                                   "attributes": {
                                     "data-component": "HorizontalScrollable",
+                                    "data-contains-pre": "true",
                                   },
                                   "children": [
                                     {
