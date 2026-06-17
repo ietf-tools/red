@@ -99,7 +99,6 @@ import {
 import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
-import AbnfViewer from './abnf-viewer/AbnfViewer.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -129,8 +128,9 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
   pre: (node, childrenForVue) => {
     if (props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc') {
       if (featureFlags.value.isAbnfDiagramsActive && node.attributes.class?.includes('lang-abnf')) {
-        const abnfText = nodePojoToInnerText(node.children)
-        return h(AbnfViewer, { abnfText })
+        // const  AbnfViewer = await import('./abnf-viewer/AbnfViewer.vue')
+        // const abnfText = nodePojoToInnerText(node.children)
+        // return h(AbnfViewer, { abnfText })
       }
     }
     return h(
