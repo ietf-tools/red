@@ -3,7 +3,7 @@
  * https://github.com/ietf-tools/red/pull/404
  */
 
-import { escapeRegExp } from '~/utilities/strings'
+import { escapeRegExp } from 'es-toolkit'
 
 type FoldingStrategy = 'single' | 'double'
 

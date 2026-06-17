@@ -1,5 +1,5 @@
 import { convertCSSUnit, parseCSSLength } from '../css-unit-converter/index.ts'
-import { getDOMParser, getInnerText, isHtmlElement } from '../utilities/dom.ts'
+import { getInnerText, isHtmlElement } from '../utilities/dom.ts'
 import type {
   MaxPreformattedLineLengthSchemaType,
   TableOfContents
