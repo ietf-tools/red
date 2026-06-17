@@ -27,17 +27,15 @@ export const C = {
 
 // ── public API ──────────────────────────────────────────────────────────────
 
-export function layoutRule(rule: AbnfRule, ruleMap: Map<string, AbnfRule>): LayoutNode {
-  return layout(rule.def, ruleMap, new Set())
+export function layoutRule(rule: AbnfRule, _ruleMap: Map<string, AbnfRule>): LayoutNode {
+  // Refs render as linked nonterminal boxes rather than being inlined, so the
+  // rule map isn't needed for layout. It's kept in the signature for the caller.
+  return layout(rule.def)
 }
 
 // ── internal ─────────────────────────────────────────────────────────────
 
-function layout(
-  node: AbnfNode,
-  ruleMap: Map<string, AbnfRule>,
-  visiting: Set<string> // cycle guard for recursive refs
-): LayoutNode {
+function layout(node: AbnfNode): LayoutNode {
   switch (node.kind) {
     case 'str': {
       const label = node.value ? `"${node.value}"` : '""'
@@ -66,7 +64,6 @@ function layout(
       return prose(node.text)
 
     case 'ref': {
-      const key = node.name.toUpperCase()
       return {
         kind: 'nonterminal',
         box: boxForText(node.name),
@@ -76,24 +73,24 @@ function layout(
     }
 
     case 'seq': {
-      if (node.items.length === 1) return layout(node.items[0]!, ruleMap, visiting)
-      const children = node.items.map((i) => layout(i, ruleMap, visiting))
+      if (node.items.length === 1) return layout(node.items[0]!)
+      const children = node.items.map((i) => layout(i))
       return sequence(children)
     }
 
     case 'alt': {
-      if (node.items.length === 1) return layout(node.items[0]!, ruleMap, visiting)
-      const children = node.items.map((i) => layout(i, ruleMap, visiting))
+      if (node.items.length === 1) return layout(node.items[0]!)
+      const children = node.items.map((i) => layout(i))
       return choice(children)
     }
 
     case 'opt': {
-      const child = layout(node.item, ruleMap, visiting)
+      const child = layout(node.item)
       return optional(child)
     }
 
     case 'rep': {
-      const child = layout(node.item, ruleMap, visiting)
+      const child = layout(node.item)
       const { min, max, isList } = node
 
       // 0*1 = optional (already normalised by parser, but handle here too)

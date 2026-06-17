@@ -73,18 +73,6 @@ const aLD = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 0 ${x - R} ${
 // arcDL: traveling Down, exits going Left. CW. End: (-R, +R).
 const aDL = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 1 ${x - R} ${y + R}`
 
-// arcRU: traveling Right, exits going Up. CCW. End: (+R, -R).
-const aRU = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 0 ${x + R} ${y - R}`
-
-// arcUR: traveling Up, exits going Right. CW. End: (+R, -R).
-const aUR = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 1 ${x + R} ${y - R}`
-
-// arcLU: traveling Left, exits going Up. CW. End: (-R, -R).
-const aLU = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 1 ${x - R} ${y - R}`
-
-// arcUL: traveling Up, exits going Left. CCW. End: (-R, -R).
-const aUL = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 0 ${x - R} ${y - R}`
-
 // ── node renderer ────────────────────────────────────────────────────────
 
 function renderNode(node: LayoutNode, x: number, y: number, out: SvgEl[]): void {

@@ -99,7 +99,7 @@ import {
 import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
-import { AbnfViewer } from './abnf-viewer'
+import AbnfViewer from './abnf-viewer/AbnfViewer.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
