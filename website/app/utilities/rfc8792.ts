@@ -25,12 +25,24 @@ const FILE_ATTR_PREFIX = ' file "'
 /** Normalises CRLF and bare CR to LF so all line-splitting operates on `\n`. */
 const normaliseLineEndings = (text: string): string => text.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
 
-const codeBeginsPattern = new RegExp(`^${escapeRegExp(CODE_BEGINS)}(?:${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*")?$`)
-const codeFileLinePattern = new RegExp(`^${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*"$`)
 const blankLinePattern = /^[ ]*$/
-const foldedContinuationPattern = new RegExp(`^[ ]*${escapeRegExp(FOLD_MARKER)}`)
-const doubleUnfoldPattern = new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*${escapeRegExp(FOLD_MARKER)}`, 'g')
-const singleUnfoldPattern = new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*`, 'g')
+
+/**
+ * Patterns that depend on `escapeRegExp` are built lazily and memoised rather than at
+ * module-evaluation time. Calling the imported `escapeRegExp` during module init makes
+ * the module order-sensitive and can throw `Cannot access 'escapeRegExp' before
+ * initialization` (a TDZ error) when imports are evaluated in a circular order.
+ */
+const buildPatterns = () => ({
+  codeBegins: new RegExp(`^${escapeRegExp(CODE_BEGINS)}(?:${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*")?$`),
+  codeFileLine: new RegExp(`^${escapeRegExp(FILE_ATTR_PREFIX)}[^"]*"$`),
+  foldedContinuation: new RegExp(`^[ ]*${escapeRegExp(FOLD_MARKER)}`),
+  doubleUnfold: new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*${escapeRegExp(FOLD_MARKER)}`, 'g'),
+  singleUnfold: new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*`, 'g')
+})
+
+let cachedPatterns: ReturnType<typeof buildPatterns> | null = null
+const patterns = (): ReturnType<typeof buildPatterns> => (cachedPatterns ??= buildPatterns())
 
 /**
  * Locates the RFC 8792 folding-strategy header comment within the first three lines.
@@ -39,6 +51,8 @@ const singleUnfoldPattern = new RegExp(`${escapeRegExp(FOLD_MARKER)}\n[ ]*`, 'g'
  * Returns the strategy and the zero-based index of the header line, or null if absent.
  */
 const findHeader = (lines: string[]): HeaderMatch | null => {
+  const { codeBegins, codeFileLine } = patterns()
+
   for (const header of headers) {
     const firstLine = lines[0]
     const secondLine = lines[1]
@@ -48,15 +62,15 @@ const findHeader = (lines: string[]): HeaderMatch | null => {
       return { strategy: header.strategy, index: 0 }
     }
 
-    if (firstLine !== undefined && codeBeginsPattern.test(firstLine) && secondLine?.includes(header.text)) {
+    if (firstLine !== undefined && codeBegins.test(firstLine) && secondLine?.includes(header.text)) {
       return { strategy: header.strategy, index: 1 }
     }
 
     if (
       firstLine !== undefined &&
-      codeBeginsPattern.test(firstLine) &&
+      codeBegins.test(firstLine) &&
       secondLine !== undefined &&
-      codeFileLinePattern.test(secondLine) &&
+      codeFileLine.test(secondLine) &&
       thirdLine?.includes(header.text)
     ) {
       return { strategy: header.strategy, index: 2 }
@@ -100,7 +114,7 @@ const hasFoldedLines = (lines: string[], strategy: FoldingStrategy): boolean => 
       return true
     }
 
-    if (nextLine !== undefined && foldedContinuationPattern.test(nextLine)) {
+    if (nextLine !== undefined && patterns().foldedContinuation.test(nextLine)) {
       return true
     }
   }
@@ -119,7 +133,10 @@ export const hasXml2RfcSourcecodeMarkers = (text: string): boolean => {
   const lastContentLine = lines.findLast((line) => !blankLinePattern.test(line))
 
   return Boolean(
-    lines.length >= 2 && firstLine !== undefined && codeBeginsPattern.test(firstLine) && lastContentLine === CODE_ENDS
+    lines.length >= 2 &&
+    firstLine !== undefined &&
+    patterns().codeBegins.test(firstLine) &&
+    lastContentLine === CODE_ENDS
   )
 }
 
@@ -128,14 +145,15 @@ export const hasXml2RfcSourcecodeMarkers = (text: string): boolean => {
  * `<CODE ENDS>` from the bottom of `text`, leaving only the enclosed code.
  */
 export const stripXml2RfcSourcecodeMarkers = (text: string): string => {
+  const { codeBegins, codeFileLine } = patterns()
   const lines = normaliseLineEndings(text).split('\n')
   const firstLine = lines[0]
 
-  if (firstLine !== undefined && codeBeginsPattern.test(firstLine)) {
+  if (firstLine !== undefined && codeBegins.test(firstLine)) {
     lines.shift()
     const maybeFileLine = lines[0]
 
-    if (maybeFileLine !== undefined && codeFileLinePattern.test(maybeFileLine)) {
+    if (maybeFileLine !== undefined && codeFileLine.test(maybeFileLine)) {
       lines.shift()
     }
   }
@@ -182,9 +200,9 @@ export const getRfc8792CopyText = (text: string, options: Rfc8792CopyTextOptions
 
   const before = lines.slice(0, header.index)
 
+  const { doubleUnfold, singleUnfold } = patterns()
   const folded = body.join('\n')
-  const unwrapped =
-    header.strategy === 'double' ? folded.replace(doubleUnfoldPattern, '') : folded.replace(singleUnfoldPattern, '')
+  const unwrapped = header.strategy === 'double' ? folded.replace(doubleUnfold, '') : folded.replace(singleUnfold, '')
 
   const copyText = before.length > 0 ? `${before.join('\n')}\n${unwrapped}` : unwrapped
 
