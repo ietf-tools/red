@@ -5,15 +5,12 @@
  * Keeping it as a plain object (not DOM/VNodes) lets us also serialise the
  * diagram to a standalone SVG string for export without touching the DOM.
  *
- * Arc naming convention (all quarter-circles, radius R = C.ARC_R):
- *   arcRD  — traveling Right, curving Down   (clockwise in SVG coords)
- *   arcDR  — traveling Down,  curving Right  (counter-clockwise)
- *   arcLD  — traveling Left,  curving Down   (counter-clockwise)
- *   arcDL  — traveling Down,  curving Left   (clockwise)
- *   arcRU  — traveling Right, curving Up     (counter-clockwise)
- *   arcUR  — traveling Up,    curving Right  (clockwise)
- *   arcLU  — traveling Left,  curving Up     (clockwise)
- *   arcUL  — traveling Up,    curving Left   (counter-clockwise)
+ * Arc helpers (all quarter-circles, radius R = C.ARC_R). Only the four
+ * downward turns are needed; see the aRD/aDR/aLD/aDL definitions below:
+ *   aRD  — traveling Right, curving Down   (clockwise in SVG coords)
+ *   aDR  — traveling Down,  curving Right  (counter-clockwise)
+ *   aLD  — traveling Left,  curving Down   (counter-clockwise)
+ *   aDL  — traveling Down,  curving Left   (clockwise)
  *
  * "Clockwise in SVG coords" means sweep-flag=1 (y-axis points down).
  */

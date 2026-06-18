@@ -1,4 +1,4 @@
-import type { AbnfNode, AbnfRule } from '../parser/types'
+import { normalizeKey, type AbnfNode, type AbnfRule } from '../parser/types'
 
 // Returns a valid example string, or null if this branch can't terminate
 // (e.g. it only contains recursive references that are already being expanded).
@@ -7,7 +7,7 @@ import type { AbnfNode, AbnfRule } from '../parser/types'
 function gen(node: AbnfNode, ruleMap: Map<string, AbnfRule>, visited: Set<string>): string | null {
   switch (node.kind) {
     case 'ref': {
-      const key = node.name.toLowerCase()
+      const key = normalizeKey(node.name)
       if (visited.has(key)) return null // cycle — this branch can't terminate
       const rule = ruleMap.get(key)
       if (!rule) return node.name // unknown rule, return name as best-effort
@@ -74,10 +74,10 @@ function gen(node: AbnfNode, ruleMap: Map<string, AbnfRule>, visited: Set<string
 }
 
 export function generateExample(ruleName: string, ruleMap: Map<string, AbnfRule>): string {
-  const rule = ruleMap.get(ruleName.toLowerCase())
+  const rule = ruleMap.get(normalizeKey(ruleName))
   if (!rule) return ''
   try {
-    return gen(rule.def, ruleMap, new Set([ruleName.toLowerCase()])) ?? ''
+    return gen(rule.def, ruleMap, new Set([normalizeKey(ruleName)])) ?? ''
   } catch {
     return ''
   }

@@ -29,3 +29,9 @@ export interface ParseResult {
   rules: AbnfRule[]
   errors: ParseError[]
 }
+
+// ABNF rule names are case-insensitive (RFC 5234 §2.1). All rule maps are keyed
+// through this single function so builders and lookups can never drift apart.
+export function normalizeKey(name: string): string {
+  return name.toUpperCase()
+}

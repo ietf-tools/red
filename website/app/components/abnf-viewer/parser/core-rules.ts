@@ -3,7 +3,7 @@
 // DIGIT etc. without redefining them resolve correctly in diagrams and the
 // validator. Rules defined in the parsed ABNF text override these.
 
-import type { AbnfNode, AbnfRule } from './types'
+import { normalizeKey, type AbnfNode, type AbnfRule } from './types'
 
 function range(from: number, to: number): AbnfNode {
   return { kind: 'range', base: 'x', from, to }
@@ -77,5 +77,5 @@ export const CORE_RULES: AbnfRule[] = [
   { name: 'WSP', def: alt(ref('SP'), ref('HTAB')) }
 ]
 
-// Keyed by upper-case name for O(1) lookup.
-export const CORE_RULE_MAP = new Map<string, AbnfRule>(CORE_RULES.map((r) => [r.name.toUpperCase(), r]))
+// Keyed by normalized name for O(1) lookup.
+export const CORE_RULE_MAP = new Map<string, AbnfRule>(CORE_RULES.map((r) => [normalizeKey(r.name), r]))

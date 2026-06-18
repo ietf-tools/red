@@ -11,14 +11,14 @@
  * with buildRuleMap() so they are always present as fallbacks.
  */
 
-import type { AbnfNode, AbnfRule } from '../parser/types'
+import { normalizeKey, type AbnfNode, type AbnfRule } from '../parser/types'
 
 export type MatchOk = { ok: true; end: number }
 export type MatchErr = { ok: false; pos: number; expected: string[] }
 export type MatchResult = MatchOk | MatchErr
 
 export function validate(input: string, ruleName: string, ruleMap: Map<string, AbnfRule>): MatchResult {
-  const rule = ruleMap.get(ruleName.toUpperCase())
+  const rule = ruleMap.get(normalizeKey(ruleName))
   if (!rule) return { ok: false, pos: 0, expected: [`unknown rule: ${ruleName}`] }
   return matchNode(rule.def, input, 0, ruleMap, new Set())
 }
@@ -66,7 +66,7 @@ function matchNode(
       return { ok: true, end: pos }
 
     case 'ref': {
-      const key = node.name.toUpperCase()
+      const key = normalizeKey(node.name)
       if (visited.has(key)) {
         // Recursive reference: stop descent to avoid infinite loop.
         return { ok: true, end: pos }

@@ -4,19 +4,34 @@
  * Produces a ParseResult containing the rule list and any parse errors
  * encountered. Failed rules are skipped rather than aborting the whole parse
  * so that partial ABNF blocks still produce useful diagrams.
+ *
+ * Why a custom parser instead of the npm `abnf` package?
+ * - The `abnf` package is a Node-oriented parser/generator that emits
+ *   executable JS parsers; we only need a lightweight syntax tree to drive
+ *   railroad-diagram layout and rendering in the browser.
+ * - We need parsing to be error-tolerant: invalid rules are recorded and
+ *   skipped so partial ABNF blocks still produce diagrams, rather than
+ *   aborting the whole parse.
+ * - The AST shape here is tailored to the diagram layout/SVG code in the
+ *   sibling layout/ and svg/ directories, so an off-the-shelf AST would need
+ *   an adapter layer anyway.
+ * - We extend plain RFC 5234 with the RFC 7230/9110 `#` list operator (see
+ *   tryRepeat), which HTTP-spec ABNF relies on.
  */
 
-import type { AbnfNode, AbnfRule, ParseError, ParseResult } from './types'
+import { normalizeKey, type AbnfNode, type AbnfRule, type ParseError, type ParseResult } from './types'
 import { CORE_RULE_MAP } from './core-rules'
 
 export function parseAbnf(src: string): ParseResult {
   return new AbnfParser(src).parseAll()
 }
 
-// Build a Map from a ParseResult, merging user rules on top of core rules.
+// Build a Map from parsed rules, keyed by upper-cased rule name, merging user
+// rules on top of core rules. Consumers (validate/generate) must look up with
+// the same upper-casing.
 export function buildRuleMap(rules: AbnfRule[]): Map<string, AbnfRule> {
   const map = new Map<string, AbnfRule>(CORE_RULE_MAP)
-  for (const r of rules) map.set(r.name.toUpperCase(), r)
+  for (const r of rules) map.set(normalizeKey(r.name), r)
   return map
 }
 
@@ -84,7 +99,7 @@ class AbnfParser {
 
         this.skipCwsp()
         const def = this.parseAlternation()
-        const key = name.toUpperCase()
+        const key = normalizeKey(name)
 
         if (incremental && index.has(key)) {
           const existing = index.get(key)!
