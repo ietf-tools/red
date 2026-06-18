@@ -36,7 +36,7 @@
                 `hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-100 dark:focus:text-blue-100 hover:before:bg-blue-25 focus:before:bg-blue-25 dark:hover:before:bg-blue-900 dark:focus:before:bg-blue-900`
               } ${
                 // Card shadow
-                `after:shadow-blue-950/10 dark:after:shadow-blue-100/10 hover:after:shadow-3xl focus:after:shadow-3xl dark:hover:after:shadow-3xl dark:hover:after:shadow-3xl`
+                `after:shadow-blue-950/10 dark:after:shadow-blue-100/10 hover:after:shadow-3xl focus:after:shadow-3xl dark:hover:after:shadow-3xl dark:hover:after:shadow-3xl after:rounded`
               }`
           ]">
           <span class="relative z-1">
