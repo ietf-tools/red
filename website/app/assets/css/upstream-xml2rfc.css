@@ -284,6 +284,15 @@ a[href].selfRef {
   color: #222;
 }
 
+figcaption a[href] {
+  text-decoration: none;
+}
+
+figcaption a[href]:hover,
+figcaption a[href]:focus {
+  text-decoration: underline;
+}
+
 /* XXX probably not this:
 a.selfRef:hover {
   background-color: transparent;
