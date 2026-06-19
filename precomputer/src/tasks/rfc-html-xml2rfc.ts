@@ -138,11 +138,11 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
   return nodes.flatMap((node) => fixNodeForMobile(node))
 }
 
-const getHorizontalScrollable = (htmlElement: HTMLElement, containsPre?: boolean) => {
+const getHorizontalScrollable = (htmlElement: HTMLElement, copyMode?: boolean) => {
   const horizontalScrollable = htmlElement.ownerDocument.createElement('div')
   horizontalScrollable.setAttribute('data-component', 'HorizontalScrollable')
-  if (containsPre !== undefined) {
-    horizontalScrollable.setAttribute('data-contains-pre', containsPre.toString())
+  if (copyMode !== undefined) {
+    horizontalScrollable.setAttribute('data-copy-mode', copyMode.toString())
   }
   return horizontalScrollable
 }
@@ -170,12 +170,14 @@ const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = fa
     ) {
       switch (tagName) {
         // these can be too wide, so we wrap them in a scrollable area
+        // both happen to be copyable to clipboards (pre as string,
+        // table as text/html tabular structure) so we'll set
+        // copyMode of getHorizontalScrollable
         case 'pre':
         case 'table':
           const wrappedChildren = Array.from(node.childNodes).flatMap((node) => fixNodeForMobile(node, true))
           node.replaceChildren(...wrappedChildren)
-          const isPre = tagName === 'pre'
-          const horizontalScrollable1 = getHorizontalScrollable(node, isPre)
+          const horizontalScrollable1 = getHorizontalScrollable(node, true)
           horizontalScrollable1.appendChild(node)
           return horizontalScrollable1
         case 'svg':
@@ -284,7 +286,8 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   }
 
   // Wrap larger SVGs in a HorizontalScrollable so as to not break layout, but leave
-  // smaller SVGs, such as icons, as-is and unwrapped.
+  // smaller SVGs, such as icons, as-is and unwrapped. To make this decision we need
+  // to choose an image size threshold.
   //
   // The choice of this number is mostly an arbitrary threshold, but based
   // on these numbers...
@@ -293,9 +296,8 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   //  - indentation from the left due to list items tables etc might be 100px
   //
   // So an SVG would only need to be 150px wide to exceed the viewport width and
-  // stretch/break layout. 100px is chosen to allow even more buffer from breaking
-  // layout.
-  const NEEDS_HORIZONTALSCROLLABLE_THRESHOLD_PX = 100
+  // stretch/break layout.
+  const NEEDS_HORIZONTALSCROLLABLE_THRESHOLD_PX = 150
 
   const { widthCSSLength, widthPx, heightCSSLength } = getSvgDimensions(svg)
 
@@ -326,7 +328,7 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
   }
 
   // console.log(' - small SVG', widthPx, heightPx)
-  const wrappedChildren = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, false))
+  const wrappedChildren = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, true))
   svg.replaceChildren(...wrappedChildren)
   return svg
 }

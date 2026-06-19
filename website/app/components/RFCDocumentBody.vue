@@ -145,14 +145,14 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
   HorizontalScrollable: (node, childrenForVue) => {
     const {
       'data-component': _dataComponent,
-      'data-contains-pre': dataContainsPreBoolString,
+      'data-copy-mode': dataCopyModeBoolString,
       ...attributes
     } = node.attributes
     return h(
       HorizontalScrollable,
       {
         ...attributes,
-        containsPre: dataContainsPreBoolString === true.toString()
+        copyMode: dataCopyModeBoolString === true.toString()
       },
       () => childrenForVue
     )

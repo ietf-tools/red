@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTrigger } from 'reka-ui'
-import { copyToClipboard } from '~/utilities/clipboard'
+import { copyTextToClipboard } from '~/utilities/clipboard'
 import { useDatatrackerUrlOrigin } from '~/utilities/url'
 
 const EMAIL = 'tools-discuss@ietf.org'
@@ -108,7 +108,7 @@ watch(isOpen, () => {
 })
 
 const handleClipboard = () => {
-  copyToClipboard(browserPlatformDetails.value)
+  copyTextToClipboard(browserPlatformDetails.value)
   isCopied.value = true
 }
 </script>

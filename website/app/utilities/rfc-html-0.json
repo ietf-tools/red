@@ -389,7 +389,7 @@
     {
       "type": "Element",
       "nodeName": "div",
-      "attributes": { "data-component": "HorizontalScrollable", "data-contains-pre": "true" },
+      "attributes": { "data-component": "HorizontalScrollable", "data-copy-mode": "true" },
       "children": [
         {
           "type": "Element",
@@ -406,7 +406,7 @@
     {
       "type": "Element",
       "nodeName": "div",
-      "attributes": { "data-component": "HorizontalScrollable", "data-contains-pre": "true" },
+      "attributes": { "data-component": "HorizontalScrollable", "data-copy-mode": "true" },
       "children": [
         {
           "type": "Element",

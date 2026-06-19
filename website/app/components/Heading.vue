@@ -29,7 +29,7 @@ import type { Slot } from 'vue'
 import type { VueStyleClass } from '~/utilities/vue'
 import { getVNodeText } from '~/utilities/vue'
 import { textToAnchorId } from '~/utilities/url'
-import { copyToClipboard } from '~/utilities/clipboard'
+import { copyTextToClipboard } from '~/utilities/clipboard'
 import type { HeadingLevel } from '~/utilities/html'
 
 type Level = HeadingLevel
@@ -121,6 +121,6 @@ const getAnchorId = (defaultSlot: VueDefaultSlotType): string | undefined => {
 
 const hashClickHandler = async (hash: string) => {
   const target = new URL(hash, location.toString())
-  void (await copyToClipboard(target.toString()))
+  void (await copyTextToClipboard(target.toString()))
 }
 </script>

@@ -1,4 +1,4 @@
-export const copyToClipboard = async (text: string): Promise<boolean> => {
+export const copyTextToClipboard = async (text: string): Promise<boolean> => {
   try {
     if (navigator?.clipboard?.writeText) {
       // Modern API
@@ -35,5 +35,17 @@ export const copyToClipboard = async (text: string): Promise<boolean> => {
   }
 
   console.error(`Failed to copy text on this platform: ${navigator.userAgent}`)
+  return false
+}
+
+export const copyHtmlToClipboard = async (html: string): Promise<boolean> => {
+  const blob = new Blob([html], { type: 'text/html' })
+  const clipboardItem = new window.ClipboardItem({ 'text/html': blob })
+  try {
+    await navigator.clipboard.write([clipboardItem])
+    return true
+  } catch (err) {
+    console.error('Failed to copy HTML: ', err, html)
+  }
   return false
 }
