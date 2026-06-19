@@ -154,19 +154,19 @@ const getHorizontalScrollable = (htmlElement: HTMLElement, copyMode?: boolean) =
  * Although this function's logic could be done in the website rendering code,
  * it simplifies the website rendering code to instead do it here.
  *
- * If the website took this logic it would have to (eg) wrap `<table>` etc
+ * If the website had this logic it would have to (eg) wrap `<table>` etc
  * in horizontal scrollables, but these shouldn't be nested, so it would mean
- * the website rendering would need to know about descendant nodes, so it's
- * much easier to do it once here so that the website can have a simple
- * rendering that makes NodoPojo to a component/element.
+ * the website rendering would need to walk all descendant nodes, so it's
+ * much easier to do it once here so that the website can have simple
+ * top-down rendering.
  */
-const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = false): Node | Node[] => {
+const fixNodeForMobile = (node: Node, preventHorizontalScrollable: boolean = false): Node | Node[] => {
   if (isHtmlElement(node)) {
     const tagName = node.tagName.toLowerCase()
 
     if (
       // we don't want to nest horizontalScrollables
-      isInsideHorizontalScrollable === false
+      preventHorizontalScrollable === false
     ) {
       switch (tagName) {
         // these can be too wide, so we wrap them in a scrollable area
@@ -186,7 +186,7 @@ const fixNodeForMobile = (node: Node, isInsideHorizontalScrollable: boolean = fa
     }
 
     const newChildren = Array.from(node.childNodes).flatMap((node) =>
-      fixNodeForMobile(node, isInsideHorizontalScrollable)
+      fixNodeForMobile(node, preventHorizontalScrollable)
     )
     node.replaceChildren(...newChildren)
     return node
