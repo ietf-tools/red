@@ -155,10 +155,11 @@ const getHorizontalScrollable = (htmlElement: HTMLElement, copyMode?: boolean) =
  * it simplifies the website rendering code to instead do it here.
  *
  * If the website had this logic it would have to (eg) wrap `<table>` etc
- * in horizontal scrollables, but these shouldn't be nested, so it would mean
- * the website rendering would need to walk all descendant nodes, so it's
- * much easier to do it once here so that the website can have simple
- * top-down rendering.
+ * in horizontal scrollables, but horizontal scrollables shouldn't be nested,
+ * so the website rendering would need to walk all descendant nodes, and it's
+ * much easier to do it here in the precomputer so that website can do simple
+ * top-down rendering, and just trust that the horizontal scrollable areas
+ * won't be nested because the precomputer has already done it.
  */
 const fixNodeForMobile = (node: Node, preventHorizontalScrollable: boolean = false): Node | Node[] => {
   if (isHtmlElement(node)) {
