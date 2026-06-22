@@ -21,14 +21,6 @@
     </div>
 
     <div class="lg:w-2/3 xl:w-1/2 mb-2 md:mb-4 md:pt-2 md:pl-2">
-      <p class="mb-4 px-2 md:px-0">
-        Welcome to the new RFC-Editor.org website. Read
-        <Anchor href="https://www.ietf.org/blog/new-tools-coming-for-editing-and-publishing-rfcs/">
-          this recent blog post for more details about the new suite
-          <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" />
-        </Anchor>
-        of modern tools for editing and publishing RFCs.
-      </p>
       <p class="hidden leading-6 lg:block pl-5 md:p-0 text-pretty">
         RFCs outline computer networking and Internet foundations, including
         <AValidHref :href="searchPathBuilder({ status: ['Internet Standard'] })">Internet Standards</AValidHref>
