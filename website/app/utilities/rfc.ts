@@ -33,7 +33,7 @@ export type SeriesId = {
  */
 export const parseSeriesId = (maybeSeriesId: string): SeriesId | undefined => {
   const parts = maybeSeriesId
-    // split by groups of letters or numbers
+    // split by groups of contiguous letters or numbers
     // ie "RFC0000" becomes ["RFC", "0000"]
     .match(/\d+|\D+/g)
 

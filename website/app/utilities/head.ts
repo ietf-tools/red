@@ -40,6 +40,7 @@ type UseRfcEditorProps = {
   keywords?: string[]
   resourceTimestamps?: ResourceTimestamp[]
   googleScholarMetadata?: GoogleScholarMetadata
+  noIndex?: boolean
 }
 
 export const useRfcEditorHead = (props: UseRfcEditorProps) => {
@@ -54,7 +55,8 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
       ...buildGenericMetaTags(newProps),
       ...buildOpenGraphMetaTags(newProps, publicSiteOrigin),
       ...buildResourceTimestamps(newProps),
-      ...buildGoogleScholarMetaTags(newProps)
+      ...buildGoogleScholarMetaTags(newProps),
+      ...buildNoIndex(newProps)
     ].map(allowDuplicateNames),
     link: [
       buildCanonical(newProps, publicSiteOrigin),
@@ -296,6 +298,10 @@ const buildFaviconLinks = (): LinkTag[] => {
       href: faviconPathBuilder(widthPx, heightPx)
     })
   )
+}
+
+const buildNoIndex = ({ noIndex }: UseRfcEditorProps): MetaTag[] => {
+  return noIndex ? [{ name: 'robots', content: 'noindex, nofollow' }] : []
 }
 
 const buildGoogleScholarMetaTags = (props: UseRfcEditorProps): MetaTag[] => {

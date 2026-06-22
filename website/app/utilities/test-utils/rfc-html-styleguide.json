@@ -24,13 +24,13 @@
         "datatracker_person_path": "/person/Alice%20Placeholder"
       },
       {
-        "titlepage_name": "B. Sample",
+        "titlepage_name": "B.T. Sample",
         "is_editor": false,
         "person": 100002,
-        "email": "bob@example.com",
+        "email": "billy.t@example.com",
         "affiliation": "Individual Contributor",
         "country": "",
-        "datatracker_person_path": "/person/Bob%20Sample"
+        "datatracker_person_path": "/person/Billy%20T%20Sample"
       },
       {
         "titlepage_name": "C. Example",

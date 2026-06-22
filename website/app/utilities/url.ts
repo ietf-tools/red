@@ -338,7 +338,7 @@ export const isAtomLink = (href?: string): boolean => !!href?.endsWith(ATOM_PATH
  */
 export const isOutsideNuxtLink = (href?: string): boolean => {
   if (!href) {
-    return false
+    return false // FIXME: review this value, maybe this should be `true`? I can't think of a scenario where no href should be treated as a NuxtLink
   }
   if (href.startsWith(RFC_BLOBSTORE_PREFIX)) {
     return true
@@ -366,6 +366,12 @@ export const isOutsideNuxtLink = (href?: string): boolean => {
   if (
     // eg /errata/eid1912
     href.startsWith('/errata/')
+  ) {
+    return true
+  }
+  if (
+    // eg /ien/ien119.txt
+    href.startsWith('/ien/')
   ) {
     return true
   }

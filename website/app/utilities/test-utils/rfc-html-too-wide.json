@@ -1,0 +1,412 @@
+{
+  "rfc": {
+    "formats": [
+      { "format": "txt" },
+      { "format": "html" },
+      { "format": "xml" },
+      { "format": "pdf" },
+      { "format": "json" }
+    ],
+    "subseries": [],
+    "number": 0,
+    "abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "published": "2020-06-29",
+    "status": { "slug": "inf", "name": "informational" },
+    "pages": 28,
+    "authors": [
+      {
+        "titlepage_name": "A. Placeholder",
+        "is_editor": false,
+        "person": 100001,
+        "email": "alice@example.com",
+        "affiliation": "Example Networks",
+        "country": "",
+        "datatracker_person_path": "/person/Alice%20Placeholder"
+      },
+      {
+        "titlepage_name": "B.T. Sample",
+        "is_editor": false,
+        "person": 100002,
+        "email": "billy.t@example.com",
+        "affiliation": "Individual Contributor",
+        "country": "",
+        "datatracker_person_path": "/person/Billy%20T%20Sample"
+      },
+      {
+        "titlepage_name": "C. Example",
+        "is_editor": false,
+        "person": 100003,
+        "email": "carol@example.org",
+        "affiliation": "Example Consulting",
+        "country": "",
+        "datatracker_person_path": "/person/Carol%20Example"
+      },
+      {
+        "titlepage_name": "D. Tester",
+        "is_editor": false,
+        "person": 100004,
+        "email": "dave@example.net",
+        "affiliation": "Example Technologies",
+        "country": "",
+        "datatracker_person_path": "/person/Dave%20Tester"
+      }
+    ],
+    "group": { "acronym": "netmod", "name": "Network Modeling", "type": "wg" },
+    "area": { "acronym": "ops", "name": "Operations and Management Area" },
+    "stream": { "slug": "IETF", "name": "IETF", "description": "Internet Engineering Task Force (IETF)" },
+    "identifiers": [{ "type": "doi", "value": "10.17487/RFC0000" }],
+    "obsoletes": [],
+    "obsoleted_by": [],
+    "updates": [],
+    "updated_by": [],
+    "keywords": ["lorem", "ipsum"],
+    "title": "Test RFC For Internal Testing Only"
+  },
+  "tableOfContents": {
+    "title": "Table of Contents",
+    "sections": [
+      {
+        "links": [
+          { "id": "section-1", "title": "1" },
+          { "id": "name-introduction", "title": "Lorem Ipsum" }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-2", "title": "2" },
+          { "id": "name-applicability-statement", "title": "Dolor Sit Amet" }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-3", "title": "3" },
+          { "id": "name-requirements-language", "title": "Consectetur Adipiscing" }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-4", "title": "4" },
+          { "id": "name-goals", "title": "Sed Do Eiusmod" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-4.1", "title": "4.1" },
+              { "id": "name-automated-folding-of-long-l", "title": "Tempor Incididunt Ut Labore" }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-4.2", "title": "4.2" },
+              {
+                "id": "name-automated-reconstitution-of",
+                "title": "Et Dolore Magna Aliqua"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-5", "title": "5" },
+          { "id": "name-limitations", "title": "Ut Enim Ad Minim" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-5.1", "title": "5.1" },
+              { "id": "name-not-recommended-for-graphic", "title": "Veniam Quis Nostrud" }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-5.2", "title": "5.2" },
+              { "id": "name-doesnt-work-as-well-as-form", "title": "Exercitation Ullamco Laboris" }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-6", "title": "6" },
+          { "id": "name-two-folding-strategies", "title": "Nisi Ut Aliquip" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-6.1", "title": "6.1" },
+              { "id": "name-comparison", "title": "Ex Ea Commodo" }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-6.2", "title": "6.2" },
+              { "id": "name-recommendation", "title": "Consequat Duis Aute" }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-7", "title": "7" },
+          { "id": "name-the-single-backslash-strate", "title": "Irure Dolor In Reprehenderit" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-7.1", "title": "7.1" },
+              { "id": "name-folded-structure", "title": "Voluptate Velit Esse" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-7.1.1", "title": "7.1.1" },
+                  { "id": "name-header", "title": "Cillum Dolore" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-7.1.2", "title": "7.1.2" },
+                  { "id": "name-body", "title": "Eu Fugiat Nulla" }
+                ]
+              }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-7.2", "title": "7.2" },
+              { "id": "name-algorithm", "title": "Pariatur Excepteur Sint" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-7.2.1", "title": "7.2.1" },
+                  { "id": "name-folding", "title": "Occaecat Cupidatat" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-7.2.2", "title": "7.2.2" },
+                  { "id": "name-unfolding", "title": "Non Proident Sunt" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-8", "title": "8" },
+          { "id": "name-the-double-backslash-strate", "title": "In Culpa Qui Officia" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-8.1", "title": "8.1" },
+              { "id": "name-folded-structure-2", "title": "Deserunt Mollit Anim" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-8.1.1", "title": "8.1.1" },
+                  { "id": "name-header-2", "title": "Id Est Laborum" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-8.1.2", "title": "8.1.2" },
+                  { "id": "name-body-2", "title": "Sed Ut Perspiciatis" }
+                ]
+              }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-8.2", "title": "8.2" },
+              { "id": "name-algorithm-2", "title": "Unde Omnis Iste" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-8.2.1", "title": "8.2.1" },
+                  { "id": "name-folding-2", "title": "Natus Error Sit" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-8.2.2", "title": "8.2.2" },
+                  { "id": "name-unfolding-2", "title": "Voluptatem Accusantium" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-9", "title": "9" },
+          { "id": "name-examples", "title": "Doloremque Laudantium" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-9.1", "title": "9.1" },
+              { "id": "name-example-showing-boundary-co", "title": "Totam Rem Aperiam" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-9.1.1", "title": "9.1.1" },
+                  { "id": "name-using", "title": "Eaque Ipsa" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-9.1.2", "title": "9.1.2" },
+                  { "id": "name-using-2", "title": "Quae Ab Illo" }
+                ]
+              }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-9.2", "title": "9.2" },
+              { "id": "name-example-showing-multiple-wr", "title": "Inventore Veritatis Et Quasi" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-9.2.1", "title": "9.2.1" },
+                  { "id": "name-using-3", "title": "Architecto Beatae" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-9.2.2", "title": "9.2.2" },
+                  { "id": "name-using-4", "title": "Vitae Dicta Sunt" }
+                ]
+              }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-9.3", "title": "9.3" },
+              { "id": "name-example-showing-smart-foldi", "title": "Explicabo Nemo Enim" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-9.3.1", "title": "9.3.1" },
+                  { "id": "name-using-5", "title": "Ipsam Voluptatem" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-9.3.2", "title": "9.3.2" },
+                  { "id": "name-using-6", "title": "Quia Voluptas Sit" }
+                ]
+              }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-9.4", "title": "9.4" },
+              { "id": "name-example-showing-forced-fold", "title": "Aspernatur Aut Odit" }
+            ],
+            "sections": [
+              {
+                "links": [
+                  { "id": "section-9.4.1", "title": "9.4.1" },
+                  { "id": "name-using-7", "title": "Aut Fugit Sed" }
+                ]
+              },
+              {
+                "links": [
+                  { "id": "section-9.4.2", "title": "9.4.2" },
+                  { "id": "name-using-8", "title": "Quia Consequuntur" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-10", "title": "10" },
+          { "id": "name-security-considerations", "title": "Security Considerations" }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-11", "title": "11" },
+          { "id": "name-iana-considerations", "title": "IANA Considerations" }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-12", "title": "12" },
+          { "id": "name-references", "title": "References" }
+        ],
+        "sections": [
+          {
+            "links": [
+              { "id": "section-12.1", "title": "12.1" },
+              { "id": "name-normative-references", "title": "Normative References" }
+            ]
+          },
+          {
+            "links": [
+              { "id": "section-12.2", "title": "12.2" },
+              { "id": "name-informative-references", "title": "Informative References" }
+            ]
+          }
+        ]
+      },
+      {
+        "links": [
+          { "id": "section-appendix.a", "title": "Appendix A" },
+          { "id": "name-bash-shell-script-rfcfold", "title": "Magni Dolores Eos" }
+        ]
+      },
+      { "links": [{ "id": "name-acknowledgements", "title": "Acknowledgements" }] },
+      { "links": [{ "id": "name-authors-addresses", "title": "Authors' Addresses" }] }
+    ]
+  },
+  "documentHtmlType": "xml2rfc",
+  "documentHtmlObj": [
+    {
+      "type": "Element",
+      "nodeName": "div",
+      "attributes": { "style": "width: 200vw" },
+      "children": [
+        {
+          "type": "Element",
+          "nodeName": "p",
+          "attributes": {},
+          "children": [
+            {
+              "type": "Text",
+              "textContent": "Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "maxPreformattedLineLength": { "max": 69 },
+  "errataList": [
+    {
+      "errata_id": "0000",
+      "doc-id": "RFC0000",
+      "errata_status_code": "Verified",
+      "errata_type_code": "Editorial",
+      "section": "7.1.2",
+      "orig_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "correct_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed.",
+      "notes": "Ut enim ad minim veniam quis nostrud exercitation.\r\n\r\n--VERIFIER NOTES--\r\nDuis aute irure dolor in reprehenderit.",
+      "submit_date": "2021-11-18",
+      "update_date": "2021-11-19 02:38:55"
+    }
+  ],
+  "timestampIso": "2026-06-17T00:26:09.533Z"
+}

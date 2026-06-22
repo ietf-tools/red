@@ -58,9 +58,28 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
   asyncRfcBucketHtmlDocumentKey,
   async () => {
     let maybeRfcBucketDocument: unknown = undefined
-    if (import.meta.dev && props.rfcId.number === 0) {
-      // This is for internal testing only
-      maybeRfcBucketDocument = await import('../utilities/rfc-html-0.json')
+    if (
+      // IMPORTANT DEV NOTE
+      // This is for internal dev testing only.
+      // This route should not be rendered on staging or prod.
+      // Access this via route of
+      //  * `/info/rfc0/?styleguide` or
+      //  * `/info/rfc0/?too-wide`
+      // to render test pages
+      import.meta.dev &&
+      props.rfcId.number === 0
+    ) {
+      const mapping = {
+        styleguide: () => import('../utilities/test-utils/rfc-html-styleguide.json'),
+        'too-wide': () => import('../utilities/test-utils/rfc-html-too-wide.json')
+      }
+      const mappingEntries = Object.entries(mapping)
+      for (const mappingEntry of mappingEntries) {
+        const [key, asyncLoader] = mappingEntry
+        if (key in route.query) {
+          maybeRfcBucketDocument = await asyncLoader()
+        }
+      }
     } else {
       const rfcDataPath = apiRfcBucketDocumentPathBuilder(props.rfcId.number)
       maybeRfcBucketDocument = await $fetch(rfcDataPath, {
@@ -165,6 +184,7 @@ const publicSiteOrigin = usePublicSiteUrlOrigin()
 useRfcEditorHead({
   title: pageTitle,
   canonicalPath,
+  noIndex: props.rfcId.number < 1, // RFC number 0 and negative numbers are used internally for test pages, and should not be indexed or even shown on non-dev environments
   description: rfcBucketHtmlDocument.value?.rfc.abstract ?? '',
   keywords: rfcBucketHtmlDocument.value?.rfc.keywords,
   modifiedDateTime: rfcBucketHtmlDocument.value?.rfc.published
