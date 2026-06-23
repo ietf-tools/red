@@ -3,6 +3,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@utility rfc-container {
+  @apply container;
+  @variant lg {
+    max-width: 1024px;
+  }
+  @variant xl {
+    max-width: 1280px;
+  }
+  @variant 2xl {
+    max-width: 1150px;
+  }
+}
+
 @theme {
   --font-sans: 'Inter', sans-serif;
 

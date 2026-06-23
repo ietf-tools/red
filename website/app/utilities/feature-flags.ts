@@ -3,16 +3,14 @@ import { type Ref } from 'vue'
 import { SEARCH_PATH } from './url'
 
 // string union feature flag values being optional is difficult to model in TS so we'll use a JS falsey value so that Boolean() can evaluate as false
-// const ENUM_STRING_UNDEFINED = z.literal('')
+const ENUM_STRING_UNDEFINED = z.literal('')
 
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
   // with old versions saved in localStorage values can still validate
   isDidYouMeanActive: z.boolean().optional(),
-  isAbnfDiagramsActive: z.boolean().optional()
-  // isCardHoverFocusTint: z.boolean().optional()
-  // hasFontWeight_WCAG3_APCA: z.boolean().optional(),
-  // showPreCopyButton: z.union([ENUM_STRING_UNDEFINED, z.literal('copy'), z.literal('unfolded-copy'), z.literal('copy-unmodified')]).optional()
+  isAbnfDiagramsActive: z.boolean().optional(),
+  narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional()
 })
 
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
@@ -35,35 +33,18 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'ABNF railroad diagrams',
     description: `Renders ABNF grammar blocks in RFC documents as interactive railroad diagrams, making protocol grammars easier to read at a glance.`,
     storageType: 'boolean'
+  },
+  narrowerRfcs: {
+    title: 'Narrower /info/ RFCs',
+    description: 'Reduce space between /info/rfcN/ content and the sidebar',
+    storageType: ['', 'narrow-left', 'narrow-center']
   }
-  // isCardHoverFocusTint: {
-  //   title: 'Website cards hover/focus tint',
-  //   description: `Site-wide 'Card' feature that further indicates clickable area by tinting the card on hover/focus. RFC Cards heading won't toggle underline. Colours haven't been tested for APCA compliance. Tint is achieved by a semitransparent block covering the Card, so APCA testing has to be done on screenshots that compose the layers.`,
-  //   storageType: 'boolean'
-  // },
-  // isMockNonJSMenu: {
-  //   title: 'non-JS menu',
-  //   description: `non-JS browsers can't use the dropdowns so show the menu items in the page, like a mega menu / footer sitemap already expanded. Feature flags depend on JS so don't disable JS to see the effect, it's already simulated.`,
-  //   storageType: 'boolean'
-  // },
-  // hasFontWeight_WCAG3_APCA: {
-  //   title: 'Font weight WCAG3 APCA fixes',
-  //   description: `WCAG3 (beta) has APCA boldness fixes`,
-  //   storageType: 'boolean'
-  // }
-  // showPreCopyButton: {
-  //   title: '<pre> block copy button',
-  //   description: 'Choose a style of <pre> copy button',
-  //   storageType: ['', 'copy', 'unfolded-copy', 'copy-unmodified'] satisfies FeatureFlags['showPreCopyButton'][]
-  // }
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   isDidYouMeanActive: false,
-  isAbnfDiagramsActive: false
-  // isCardHoverFocusTint: false,
-  // isMockNonJSMenu: false,
-  // hasFontWeight_WCAG3_APCA: false,
+  isAbnfDiagramsActive: false,
+  narrowerRfcs: ''
   // showPreCopyButton: '',
 }
 
