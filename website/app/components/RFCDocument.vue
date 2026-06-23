@@ -2,7 +2,7 @@
   <div class="container mx-auto pl-2">
     <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
   </div>
-  <BodyLayoutDocument>
+  <BodyLayoutRFCDocument>
     <template #sidebar>
       <RFCDocumentSidebar
         v-if="rfcBucketHtmlDocument"
@@ -28,7 +28,7 @@
       :breadcrumb-items="breadcrumbItems"
       :goto-errata="gotoErrata"
       :change-tab="changeTab" />
-  </BodyLayoutDocument>
+  </BodyLayoutRFCDocument>
 </template>
 
 <script setup lang="ts">

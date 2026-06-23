@@ -1,11 +1,13 @@
 <template>
-  <div class="min-h-[100vh] mb-16">
-    <BodyLayoutDocument :class="{ 'lg:pr-[300px]': !showToc }">
+  <div class="container mx-auto pl-2">
+    <Breadcrumbs v-if="breadcrumbItems && Array.isArray(breadcrumbItems)" :breadcrumb-items="breadcrumbItems" />
+  </div>
+  <div class="mb-16">
+    <BodyLayoutDocument>
       <template #sidebar>
         <TableOfContentsMarkdownDesktop v-if="showToc && toc" :toc="toc" />
       </template>
       <div class="wrap-anywhere leading-[1.5]">
-        <Breadcrumbs v-if="breadcrumbItems && Array.isArray(breadcrumbItems)" :breadcrumb-items="breadcrumbItems" />
         <component :is="renderedContent" />
       </div>
       <ContentDocModifiedDateTime v-if="modifiedDateTime" :modified-date-time="modifiedDateTime" />
