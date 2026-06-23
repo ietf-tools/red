@@ -1,20 +1,17 @@
 <template>
   <div
-    :class="[
-      'body-layout-document w-full justify-between lg:gap-5',
-      {
-        'container mx-auto': !featureFlags.narrowerRfcs || featureFlags.narrowerRfcs === 'narrow-left',
-        'rfc-container mx-auto': featureFlags.narrowerRfcs === 'narrow-center'
-      }
-    ]">
+    :class="{
+      'container mx-auto': !featureFlags.narrowerRfcs || featureFlags.narrowerRfcs === 'narrow-left',
+      'rfc-container mx-auto': featureFlags.narrowerRfcs === 'narrow-center'
+    }">
     <div
       :class="[
-        'flex flex-row-reverse',
+        'flex flex-row-reverse body-layout-document lg:gap-5',
         {
           'rfc-container x-auto': featureFlags.narrowerRfcs === 'narrow-left'
         }
       ]">
-      <div :class="['flex py-3 pl-3 hidden w-[var(--sidebar-width)] lg:block', props.sidebarClass]">
+      <div :class="['flex pl-3 hidden w-[var(--sidebar-width)] lg:block', props.sidebarClass]">
         <slot name="sidebar" />
       </div>
       <div class="flex-auto">
