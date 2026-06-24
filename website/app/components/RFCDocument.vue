@@ -1,7 +1,4 @@
 <template>
-  <div class="container mx-auto pl-2">
-    <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
-  </div>
   <BodyLayoutRFCDocument>
     <template #sidebar>
       <RFCDocumentSidebar

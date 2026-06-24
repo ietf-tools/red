@@ -1,5 +1,5 @@
 <template>
-  <TabsRoot v-model="selectedTab" class="md:-mt-4 min-h-0 flex flex-col">
+  <TabsRoot v-model="selectedTab" class="min-h-0 flex flex-col">
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
       <HorizontalScrollable :inner-class="['flex flex-row gap-5', { 'px-2': props.mode === 'mobile' }]">

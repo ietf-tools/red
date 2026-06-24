@@ -1,8 +1,12 @@
 <template>
-  <div class="px-2">
-    <p v-if="featureFlags.formatsAlsoViewAs" class="pb-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
+  <div class="container flex justify-between items-center mx-auto pl-2">
+    <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
+    <p v-if="featureFlags.formatsAlsoViewAs" class="pt-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
       Also view as: <DocumentPojo :value="formatsPojo" />
     </p>
+  </div>
+
+  <div class="px-2">
     <div class="flex flex-col">
       <RFCDocumentMobileInfoButton @click="isModalOpen = true"> Info </RFCDocumentMobileInfoButton>
     </div>
