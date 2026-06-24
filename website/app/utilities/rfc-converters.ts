@@ -130,6 +130,11 @@ export const typeSenseSearchItemToRFCCommon = (unverifiedTypeSenseSearchItem: Ty
     formats: [],
     group: parseTypesenseGroup(item.group),
     number: item.rfcNumber,
+    obsoleted_by: item.obsoletedBy?.map(obs => ({
+      id: parseInt(obs),
+      number: parseInt(obs),
+      title: obs
+    })) ?? [],
     published,
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,
     status: parseTypesenseStatus(item.status),

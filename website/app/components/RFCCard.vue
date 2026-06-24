@@ -4,7 +4,13 @@
     :heading-level="props.headingLevel"
     has-cover-link
     chevron-position="center"
-    :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
+    :class="{
+      'lg:flex': !!(props.showAbstract && props.rfc.abstract),
+    }"
+    :override-class-defaults="{
+      'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!(props.rfc.obsoleted_by?.length),
+      'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !(props.rfc.obsoleted_by?.length)
+    }"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''"
     :aside-slot-class="
       props.showAbstract && props.rfc.abstract ? 'flex-1 lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4' : undefined

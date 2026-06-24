@@ -263,7 +263,7 @@ const routing = {
       const group = uiState[INDEX_NAME].refinementList?.['group.full']?.join(',') ?? null
       const authors = uiState[INDEX_NAME].refinementList?.['authors.name']?.join(',') ?? null
       const pubDate = uiState[INDEX_NAME].range?.['publicationDate'] ?? null
-      const showObsoleted = !(uiState[INDEX_NAME].toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] || false)
+      const showObsoleted = !(uiState[INDEX_NAME].toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] ?? true)
       const sort = uiState[INDEX_NAME].sortBy?.substring(10) ?? null
 
       // FIXME
@@ -304,7 +304,7 @@ const routing = {
       const group = route.query.group?.toString().split(',')
       const authors = route.query.authors?.toString().split(',')
       const pubDate = route.query.pubDate?.toString() ?? ''
-      const showObsoleted = route.query.showObsoleted === '1'
+      const showObsoleted = !(route.query.showObsoleted === '0')
       const sortBy = route.query.sort?.toString() ?? ''
       return {
         [INDEX_NAME]: {
