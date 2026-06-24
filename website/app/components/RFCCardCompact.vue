@@ -20,7 +20,7 @@
       <RFCTitleSubseries :rfc="props.rfc" :has-trailing-colon="false" :has-underline="false" />
     </template>
     <p
-      class="ml-2 pl-4 border-l-1 border-gray-300 dark:border-gray-600 text-base text-blue-900 dark:text-white flex items-center">
+      class="relative z-1 ml-2 pl-4 border-l-1 border-gray-300 dark:border-gray-600 text-base text-blue-900 dark:text-white flex items-center">
       {{ props.rfc.title }}
     </p>
   </Card>

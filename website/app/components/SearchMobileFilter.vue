@@ -23,6 +23,9 @@
         </DialogTitle>
         <VerticalScrollable v-if="isOpen" class="flex-1">
           <div class="flex flex-col mb-6 pt-4">
+            <div class="pl-5">
+              <SearchSortBy />
+            </div>
             <fieldset class="ml-5 mr-5">
               <legend class="font-bold">Card Density</legend>
               <div class="flex items-center">
