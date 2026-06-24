@@ -209,7 +209,15 @@ const formatsPojo = computed((): DocumentPojo => {
     return format.toUpperCase()
   }
 
-  const preferredFormatsOrder: RfcCommonFormatName[] = ['txt', 'html', 'pdf', 'ps', 'xml', 'json', 'notprepped']
+  const preferredFormatsOrder: RfcCommonFormatName[] = [
+    'txt',
+    'html',
+    'pdf',
+    'ps'
+    // 'xml', // this list is about human readable formats, and we link to XML elsewhere
+    // 'json', // this list is about human readable formats, and we link to JSON elsewhere
+    // 'notprepped' // this list is about human readable formats
+  ]
 
   const sortedFormats: RfcCommon['formats'] = preferredFormatsOrder
     .map((preferredFormat): RfcCommon['formats'][number] | undefined =>
