@@ -98,6 +98,8 @@ export const RfcCommonFormatNameSchema = z.union([
   z.literal('notprepped')
 ])
 
+export type RfcCommonFormatName = z.infer<typeof RfcCommonFormatNameSchema>
+
 export const RfcCommonFormatSchema = z.object({
   format: RfcCommonFormatNameSchema,
   path: z.string().optional()

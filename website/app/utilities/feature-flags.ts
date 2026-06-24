@@ -10,7 +10,8 @@ export const FeatureFlagsSchema = z.object({
   // with old versions saved in localStorage values can still validate
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
-  narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional()
+  narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
+  formatsAlsoViewAs: z.boolean().optional()
 })
 
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
@@ -38,13 +39,19 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'Narrower /info/ RFCs',
     description: 'Reduce space between /info/rfcN/ content and the sidebar',
     storageType: ['', 'narrow-left', 'narrow-center']
+  },
+  formatsAlsoViewAs: {
+    title: 'RFC formats "Also view as" links',
+    description: 'On the info route adds a list of formats to the top-right of the RFC content',
+    storageType: 'boolean'
   }
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
-  narrowerRfcs: ''
+  narrowerRfcs: '',
+  formatsAlsoViewAs: false
   // showPreCopyButton: '',
 }
 

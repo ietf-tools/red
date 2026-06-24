@@ -1,5 +1,8 @@
 <template>
   <div class="px-2">
+    <p v-if="featureFlags.formatsAlsoViewAs" class="pb-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
+      Also view as: <DocumentPojo :value="formatsPojo" />
+    </p>
     <div class="flex flex-col">
       <RFCDocumentMobileInfoButton @click="isModalOpen = true"> Info </RFCDocumentMobileInfoButton>
     </div>
@@ -83,11 +86,11 @@
 <script setup lang="ts">
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
-import { infoSeriesPathBuilder } from '~/utilities/url'
-import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
+import { infoSeriesPathBuilder, rfcFormatPathBuilder } from '~/utilities/url'
+import { COMMA, NONBREAKING_SPACE, FULLSTOP, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE, ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   renderDocumentPojo,
   renderNodePojo,
@@ -99,6 +102,7 @@ import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
+import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -186,6 +190,59 @@ const obsoleted_by = computed(() => {
 
 const updated_by = computed(() => {
   return props.rfcBucketHtmlDocument.rfc.updated_by?.toSorted((a, b) => a.number - b.number)
+})
+
+const formatsPojo = computed((): DocumentPojo => {
+  const rfcNumber = props.rfcBucketHtmlDocument.rfc.number
+  const formats = props.rfcBucketHtmlDocument.rfc.formats
+  if (formats.length === 0) return []
+
+  const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline`
+
+  const friendlyFormatName = (format: RfcCommonFormatName): string => {
+    switch (format) {
+      case 'html':
+        return 'Compact HTML'
+      case 'txt':
+        return 'Plain Text'
+    }
+    return format.toUpperCase()
+  }
+
+  const preferredFormatsOrder: RfcCommonFormatName[] = ['txt', 'html', 'pdf', 'ps', 'xml', 'json', 'notprepped']
+
+  const sortedFormats: RfcCommon['formats'] = preferredFormatsOrder
+    .map((preferredFormat): RfcCommon['formats'][number] | undefined =>
+      formats.find((format) => format.format === preferredFormat)
+    )
+    .filter((val) => !!val)
+
+  return [
+    {
+      type: 'Element',
+      nodeName: 'ul',
+      attributes: { class: 'inline text-sm' },
+      children: sortedFormats.map(({ format }, index) => ({
+        type: 'Element' as const,
+        nodeName: 'li',
+        attributes: { class: 'inline' },
+        children: [
+          {
+            type: 'Element' as const,
+            // This needs to be <a> not <Anchor> because the path is outside the Nuxt app
+            // (served direct from blob storage) but is on the same domain
+            nodeName: 'a',
+            attributes: {
+              href: rfcFormatPathBuilder(`rfc${rfcNumber}`, format),
+              class: LINK_CLASS
+            },
+            children: [{ type: 'Text' as const, textContent: friendlyFormatName(format) }]
+          },
+          { type: 'Text' as const, textContent: index < sortedFormats.length - 1 ? `${COMMA}${SPACE}` : FULLSTOP }
+        ]
+      }))
+    }
+  ]
 })
 </script>
 
