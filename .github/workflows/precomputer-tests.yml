@@ -1,4 +1,4 @@
-name: Extractor Vitest, TypeScript check
+name: Precomputer Vitest, TypeScript check
 
 on:
   push:
