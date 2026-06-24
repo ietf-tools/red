@@ -14,7 +14,7 @@
       <div :class="['flex pl-3 hidden w-[var(--sidebar-width)] lg:block', props.sidebarClass]">
         <slot name="sidebar" />
       </div>
-      <div class="flex-auto">
+      <div class="flex-1">
         <slot />
       </div>
     </div>

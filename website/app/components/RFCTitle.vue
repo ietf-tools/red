@@ -16,5 +16,5 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, !props.hideTitle))
 </script>

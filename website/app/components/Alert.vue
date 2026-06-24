@@ -1,10 +1,6 @@
 <template>
-  <div
-    :class="{
-      'border rounded border-l-4 px-3 py-2 my-5 print:border-black print:bg-white': true,
-      'bg-pink-100 dark:bg-red-950 border-red-600': props.variant === 'warning',
-      'bg-white dark:bg-yellow-950 border-yellow-400': props.variant === 'info'
-    }">
+  <AlertBox :variant="props.variant">
+    <slot name="beforeHeading" />
     <Heading
       :level="props.level"
       style-level="4"
@@ -16,15 +12,16 @@
       {{ props.heading }}
     </Heading>
     <slot />
-  </div>
+  </AlertBox>
 </template>
 
 <script setup lang="ts">
 import type { HeadingLevel } from '~/utilities/html'
+import type { Variant } from '~/utilities/alert'
 
 type Props = {
   level?: HeadingLevel
-  variant: 'warning' | 'info'
+  variant: Variant
   heading: string
 }
 

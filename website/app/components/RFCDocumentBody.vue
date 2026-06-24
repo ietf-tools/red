@@ -41,39 +41,17 @@
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
-    <Alert
-      v-if="obsoleted_by && obsoleted_by.length > 0"
+    <RFCDocumentSuperseded
+      :data="obsoleted_by"
       variant="warning"
-      heading="This RFC is now obsolete"
-      class="ml-1">
-      <div class="text-base">
-        For more information, please refer to
-        <ul class="mt-1 flex flex-col gap-2">
-          <li v-for="(obsoletedByItem, obsoletedByItemIndex) in obsoleted_by" :key="obsoletedByItemIndex">
-            <AMaybeRFCLink
-              :href="infoSeriesPathBuilder(`RFC${obsoletedByItem.number}`)"
-              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE">
-              <RFCTitle :rfc="obsoletedByItem" />
-            </AMaybeRFCLink>
-          </li>
-        </ul>
-      </div>
-    </Alert>
+      heading-text="This RFC is now obsolete"
+      intro-text="For more information, please refer to " />
 
-    <Alert v-if="updated_by && updated_by.length > 0" variant="info" heading="This RFC was updated" class="ml-1">
-      <div class="text-base mt-1">
-        See also
-        <ul class="flex flex-col gap-2">
-          <li v-for="(updatedByItem, updatedByItemIndex) in updated_by" :key="updatedByItemIndex">
-            <AMaybeRFCLink
-              :href="infoSeriesPathBuilder(`RFC${updatedByItem.number}`)"
-              :class="ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE">
-              <RFCTitle :rfc="updatedByItem" />
-            </AMaybeRFCLink>
-          </li>
-        </ul>
-      </div>
-    </Alert>
+    <RFCDocumentSuperseded
+      :data="updated_by"
+      variant="info"
+      heading-text="This RFC was updated"
+      intro-text="See also " />
 
     <div
       :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
