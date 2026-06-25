@@ -9,7 +9,7 @@
       @update:model-value="toggleSupersededMode">
       <GraphicsChevron class="inline-block rotate-0 group-data-[state=on]:-rotate-90" width="14" height="18" />
     </Toggle>
-    <div class="text-base" :id="domId">
+    <div class="block text-base" :id="domId">
       <b
         :class="[
           'inline print:border-black print:text-black',
@@ -24,7 +24,7 @@
       <ul
         :class="[
           {
-            'inline-block': supsersededModeRef === 'full',
+            block: supsersededModeRef === 'full',
             inline: supsersededModeRef === 'compact'
           }
         ]">
