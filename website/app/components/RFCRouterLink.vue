@@ -35,7 +35,8 @@
       -->
       <PopoverContent
         :side="props.side"
-        class="group w-full h-full max-w-xs lg:max-w-120 max-h-64 lg:max-h-80 rounded-md overflow-hidden flex border-[1px] shadow-3xl shadow-blue-950/15 dark:after:shadow-blue-100/20 dark:ring-8 dark:ring-black/65 bg-white dark:bg-black border-gray-400 data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
+        :class="[popoverBaseClass, isTouch ? popoverDockedClass : popoverAnchoredClass]"
+        :data-rfc-preview-docked="isTouch ? '' : undefined"
         @open-auto-focus="preventFocusSteal"
         @close-auto-focus="onCloseAutoFocus"
         @mouseover="stopClosingPopover"
@@ -48,40 +49,43 @@
           title, abstract links) — see onLeadingGuardFocus / onTrailingGuardFocus.
         -->
         <span tabindex="0" data-focus-guard class="sr-only" @focus="onLeadingGuardFocus"></span>
+        <!-- Touch has no Escape/hover-away, so the docked panel gets an explicit close (like the former sheet). -->
+        <PopoverClose v-if="isTouch" aria-label="Close preview" class="absolute top-0 right-0 z-50 py-3 px-4">
+          <GraphicsClose />
+        </PopoverClose>
         <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
         <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
-        <HoverCardArrow
+        <PopoverArrow
+          v-if="!isTouch"
           class="fill-white dark:fill-black stroke-gray-500 dark:stroke-gray-300 group-data-[side=bottom]:-mt-[1px] group-data-[side=top]:-mb-[1px] group-data-[side=left]:-ml-[1px] group-data-[side=right]:-mr-[1px]" />
         <span tabindex="0" data-focus-guard class="sr-only" @focus="onTrailingGuardFocus"></span>
       </PopoverContent>
     </PopoverPortal>
   </PopoverRoot>
 
-  <span v-if="hasTouchStore.hasTouch === true" class="inline">
-    <DialogRoot v-model:open="isDialogOpen">
-      <DialogTrigger class="ml-1 px-1 align-baseline hide-in-preformatted-text" @focus="loadRfc" @mouseover="loadRfc">
-        <Icon name="fluent:preview-link-16-regular" aria-label="Link Preview" />
-      </DialogTrigger>
-      <DialogPortal>
-        <DialogOverlay class="bg-black/10 data-[state=open]:animate-overlayShow fixed inset-0 z-30" />
-        <DialogContent
-          class="data-[state=open]:animate-enterFromBottom rounded-t-xl data-[state=closed]:animate-exitToBottom fixed w-full max-w-lg m-x-auto h-[50vh] bottom-0 right-0 shadow-[0_-5px_25px_rgba(0,0,0,0.25)] dark:shadow-[-5px_-5px_25px_rgba(11,140,197,0.25)] text-black bg-white dark:bg-black dark:text-white border-t-1 border-gray-400 dark:border-gray-400 overflow-y-scroll z-100">
-          <DialogTitle class="sr-only" v-if="rfc"> RFC {{ rfc.number }} Preview</DialogTitle>
-          <DialogClose class="fixed z-3 right-0 py-3 px-4 pb-3">
-            <GraphicsClose />
-          </DialogClose>
-          <DialogDescription class="mx-auto pt-6 px-0">
-            <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />
-            <RFCRouterLinkLoadingStatus v-else :loading-status="loadingStatus" />
-          </DialogDescription>
-        </DialogContent>
-      </DialogPortal>
-    </DialogRoot>
+  <!--
+    Touch has no hover/focus, so the preview can't open the way it does for pointer or
+    keyboard. This button (rendered only for touch) opens the same popover, which docks
+    to the bottom-right of the screen (see the <style> override). @pointerdown.stop keeps
+    the tap from registering as an "outside" interaction on Reka's DismissableLayer, so
+    the button toggles the popover cleanly instead of dismiss-then-reopening it.
+  -->
+  <span v-if="isTouch" class="inline hide-in-preformatted-text">
+    <button
+      type="button"
+      class="ml-1 px-1 align-baseline hide-in-preformatted-text"
+      :aria-label="rfcId ? `${rfcId.type.toUpperCase()} ${rfcId.number} Link Preview` : 'Link Preview'"
+      aria-haspopup="dialog"
+      :aria-expanded="isPopoverOpen"
+      @pointerdown.stop
+      @click="toggleTouchPopover">
+      <Icon name="fluent:preview-link-16-regular" />
+    </button>
   </span>
 </template>
 
 <script setup lang="ts">
-import { PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'reka-ui'
+import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from 'reka-ui'
 import { onUnmounted, customRef } from 'vue'
 import RFCRouterLinkPreview from './RFCRouterLinkPreview.vue'
 import { NuxtLink } from '#components'
@@ -101,15 +105,25 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), { side: 'bottom' })
 
 const hasTouchStore = useHasTouchStore()
+const isTouch = computed(() => hasTouchStore.hasTouch === true)
+
+const popoverBaseClass =
+  'group flex border-[1px] shadow-3xl shadow-blue-950/15 dark:after:shadow-blue-100/20 dark:ring-8 dark:ring-black/65 bg-white dark:bg-black border-gray-400'
+const popoverAnchoredClass =
+  'w-full h-full max-w-xs lg:max-w-120 max-h-64 lg:max-h-80 rounded-md overflow-hidden data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all'
+// Sizing/animation only — the docked position lives in the <style> override below, which
+// targets Reka's floating wrapper (our classes land on the inner content element).
+const popoverDockedClass =
+  'relative z-100 w-full h-full rounded-t-xl overflow-y-scroll data-[state=open]:animate-enterFromBottom data-[state=closed]:animate-exitToBottom'
+
 const rfc = ref<RfcCommon | undefined>()
-const isDialogOpen = ref<boolean>(false)
 const isPopoverOpen = (() => {
   let value: boolean = false
   return customRef<boolean>((track, trigger) => ({
     get() {
       track()
-      // we never want to open the hovercard while the dialog is open, or if there was an error loading the data
-      return isDialogOpen.value || loadingStatus.value.type !== 'success' ? false : value
+      // we never want to open the hovercard until the data has loaded (or if it errored)
+      return loadingStatus.value.type !== 'success' ? false : value
     },
     set(newValue) {
       value = Boolean(newValue)
@@ -161,7 +175,7 @@ const loadRfc = async (): Promise<void> => {
   loadingStatus.value = {
     type: 'loading'
   }
-  console.log(`Loading ${rfcPath}`)
+  // console.log(`Loading ${rfcPath}`)
 
   try {
     const response = await fetch(rfcPath, {
@@ -390,22 +404,74 @@ const onTrailingGuardFocus = (event: FocusEvent) => {
  */
 const popoverAttributes = {
   class: props.class,
-  onMouseover: loadRfc,
-  onBlur: startPopoverClose,
+  onMouseover: () => {
+    loadRfc()
+  },
+  onBlur: () => {
+    if (isTouch.value) {
+      // touch devices should use button not this event, so we can ignore it
+      return
+    }
+    startPopoverClose()
+  },
   onFocus: () => {
     loadRfc()
+    if (isTouch.value) {
+      // touch devices should use button not this event, so we can ignore it
+      return
+    }
     if (isReturningFocusToTrigger) {
       // Focus is bouncing back from the card (exit / dismiss) — don't re-open it.
       return
     }
     startPopoverOpen()
   },
-  onMouseenter: startPopoverOpen,
-  onMouseleave: startPopoverClose,
+  onMouseenter: () => {
+    if (isTouch.value) {
+      // touch devices should use button not this event, so we can ignore it
+      return
+    }
+    startPopoverOpen()
+  },
+  onMouseleave: () => {
+    if (isTouch.value) {
+      // touch devices should use button not this event, so we can ignore it
+      return
+    }
+    startPopoverClose()
+  },
   onKeydown: onTriggerKeydown
+}
+
+/** Touch-only: open/close the (docked) popover from the dedicated preview button. */
+const toggleTouchPopover = () => {
+  loadRfc()
+  if (isPopoverOpen.value === true) {
+    isPopoverOpen.value = false
+    return
+  }
+  isPopoverOpen.value = true
 }
 
 defineOptions({
   inheritAttrs: false
 })
 </script>
+
+<style>
+/*
+ * Touch: dock the preview to the bottom-right of the screen (like the former bottom-sheet)
+ * by overriding the anchored position Reka applies to its floating wrapper. The marker
+ * attribute sits on the inner content element, so we select its wrapper via :has().
+ * Not scoped: the wrapper is portalled to <body>.
+ */
+[data-reka-popper-content-wrapper]:has(> [data-rfc-preview-docked]) {
+  position: fixed !important;
+  inset: auto 0 0 auto !important;
+  transform: none !important;
+  min-width: 0 !important;
+  width: 100%;
+  max-width: 32rem;
+  height: 50vh;
+}
+</style>

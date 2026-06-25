@@ -45,13 +45,13 @@
       :data="obsoleted_by"
       variant="warning"
       heading-text="This RFC is now obsolete"
-      intro-text="For more information, please refer to " />
+      ui-settings-key="obsoletedByMode" />
 
     <RFCDocumentSuperseded
       :data="updated_by"
       variant="info"
       heading-text="This RFC was updated"
-      intro-text="See also " />
+      ui-settings-key="updatedByMode" />
 
     <div
       :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${

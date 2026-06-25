@@ -2,24 +2,40 @@ import { z } from 'zod'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
-const RfcUiSettingsSchema = z.object({ supersededMode: SupersededModeSchema }).optional()
+const RFCUiSettingsSchema = z
+  .object({
+    obsoletedByMode: SupersededModeSchema,
+    updatedByMode: SupersededModeSchema
+  })
+  .optional()
 
-type RfcUiSettings = z.infer<typeof RfcUiSettingsSchema>
+export type RFCUiKey = keyof NonNullable<z.infer<typeof RFCUiSettingsSchema>>
 
-type SupersededMode = NonNullable<RfcUiSettings>['supersededMode']
+type RFCUiSettings = z.infer<typeof RFCUiSettingsSchema>
+
+type SupersededMode = NonNullable<z.infer<typeof SupersededModeSchema>>
 
 const LOCALSTORAGE_KEY = 'rfc-ui'
 
 const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
 
 export const useRfcUiStore = defineStore('rfcUi', () => {
-  const supersededModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
+  const obsoletedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
+  const updatedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
 
-  const setSupersededMode = (mode: SupersededMode) => {
-    supersededModeRef.value = mode
+  const setSupersededMode = (key: RFCUiKey, mode: SupersededMode) => {
+    switch (key) {
+      case 'obsoletedByMode':
+        obsoletedByModeRef.value = mode
+        break
+      case 'updatedByMode':
+        updatedByModeRef.value = mode
+        break
+    }
 
-    const rfcSettings: RfcUiSettings = {
-      supersededMode: supersededModeRef.value
+    const rfcSettings: RFCUiSettings = {
+      obsoletedByMode: obsoletedByModeRef.value,
+      updatedByMode: updatedByModeRef.value
     }
     try {
       const val = JSON.stringify(rfcSettings)
@@ -39,19 +55,20 @@ export const useRfcUiStore = defineStore('rfcUi', () => {
         return
       }
       const val = JSON.parse(valString)
-      const { data, error } = RfcUiSettingsSchema.safeParse(val)
+      const { data, error } = RFCUiSettingsSchema.safeParse(val)
       if (error || !data) {
         const errorTitle = 'Unable to validate RFC UI settings JSON. Resetting localStorage config.'
         console.log(errorTitle, error, valString)
         window.localStorage.removeItem(LOCALSTORAGE_KEY)
         throw Error(errorTitle)
       }
-      supersededModeRef.value = data.supersededMode ?? DEFAULT_SUPERSEDED_MODE
+      obsoletedByModeRef.value = data.obsoletedByMode ?? DEFAULT_SUPERSEDED_MODE
+      updatedByModeRef.value = data.updatedByMode ?? DEFAULT_SUPERSEDED_MODE
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
     }
   })
 
-  return { supersededMode: supersededModeRef, setSupersededMode }
+  return { obsoletedByMode: obsoletedByModeRef, updatedByMode: updatedByModeRef, setSupersededMode }
 })
