@@ -12,7 +12,7 @@
     <div class="text-base" :id="domId">
       <b
         :class="[
-          'inline mr-2 print:border-black print:text-black',
+          'inline print:border-black print:text-black',
           {
             'text-red-800 dark:text-red-200': props.variant === 'warning',
             'text-yellow-800 dark:text-yellow-300': props.variant === 'info'
