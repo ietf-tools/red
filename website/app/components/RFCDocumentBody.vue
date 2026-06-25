@@ -196,9 +196,9 @@ const formatsPojo = computed((): DocumentPojo => {
     'html',
     'pdf',
     'ps'
-    // 'xml', // this list is about human readable formats, and we link to XML elsewhere
-    // 'json', // this list is about human readable formats, and we link to JSON elsewhere
-    // 'notprepped' // this list is about human readable formats
+    // 'xml',
+    // 'json',
+    // 'notprepped'
   ]
 
   const sortedFormats: RfcCommon['formats'] = preferredFormatsOrder
