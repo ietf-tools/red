@@ -49,14 +49,87 @@
           <ul class="list-none">
             <li
               v-if="menuItem.hideLabelDesktop"
-              class="text-gray-600 dark:text-white border-b-1 border-b-gray-300 dark:border-b-gray-600 pt-1 pb-1 pl-4 text-sm font-bold pl-3">
+              class="text-gray-600 dark:text-white pt-1 pb-1 pl-4 text-sm font-bold pl-3">
               {{ menuItem.label }}
             </li>
             <li
               v-for="(level0, level0Index) in menuItem.children"
               :key="`${index}.${level0Index}`"
               class="flex flex-col">
-              <NavigationMenuSub v-if="level0.children" :default-value="level0.label" class="z-100">
+              <RadioGroupRoot
+                v-if="level0.role === 'radiogroup'"
+                :model-value="level0.radioGroupRef?.value"
+                :aria-labelledby="groupLabelDomId('desktop', index, level0Index)"
+                @keydown="(event: KeyboardEvent) => onRadioGroupNav(event, level0.radioGroupRef)"
+                @update:model-value="
+                  (value) => {
+                    if (level0.radioGroupRef) {
+                      level0.radioGroupRef.value = String(value)
+                    }
+                  }
+                ">
+                <span
+                  :id="groupLabelDomId('desktop', index, level0Index)"
+                  class="flex mt-1 pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
+                  <HeaderNavIcon :icon="level0.icon" />
+                  {{ level0.label }}
+                </span>
+
+                <RadioGroupItem
+                  v-for="(level1, level1Index) in level0.children"
+                  :key="level1Index"
+                  :value="level1.fieldValue"
+                  :data-field-value="level1.fieldValue"
+                  :aria-label="level1.activeLabelFn?.()"
+                  :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
+                  <span class="flex items-center">
+                    <span
+                      class="inline-flex items-center pt-[1px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded-full border-current">
+                      <RadioGroupIndicator>
+                        <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
+                      </RadioGroupIndicator>
+                    </span>
+                    {{ level1.label }}
+                  </span>
+                </RadioGroupItem>
+              </RadioGroupRoot>
+              <CheckboxGroupRoot
+                v-else-if="level0.role === 'checkboxgroup'"
+                role="group"
+                :model-value="level0.checkboxGroupRef?.value"
+                :aria-labelledby="groupLabelDomId('desktop', index, level0Index)"
+                @keydown="stopGroupNavKeys"
+                @update:model-value="
+                  (value) => {
+                    if (level0.checkboxGroupRef) {
+                      level0.checkboxGroupRef.value = value.map(String)
+                    }
+                  }
+                ">
+                <span
+                  :id="groupLabelDomId('desktop', index, level0Index)"
+                  class="flex mt-1 pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
+                  <HeaderNavIcon :icon="level0.icon" />
+                  {{ level0.label }}
+                </span>
+
+                <CheckboxRoot
+                  v-for="(level1, level1Index) in level0.children"
+                  :key="level1Index"
+                  :value="level1.fieldValue"
+                  :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
+                  <span class="flex items-center">
+                    <span
+                      class="inline-flex items-center pt-[1px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current">
+                      <CheckboxIndicator>
+                        <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
+                      </CheckboxIndicator>
+                    </span>
+                    {{ level1.label }}
+                  </span>
+                </CheckboxRoot>
+              </CheckboxGroupRoot>
+              <NavigationMenuSub v-else-if="level0.children" :default-value="level0.label" class="z-100">
                 <NavigationMenuList>
                   <NavigationMenuItem :value="`${index}.${level0Index}`" class="flex flex-col">
                     <NavigationMenuTrigger
@@ -110,29 +183,37 @@
                       class="text-lg absolute ml-1 -mt-1" />
                   </span>
                 </Anchor>
+
                 <button
                   v-else-if="level0.click"
                   :id="`menu-link-${index}-${level0Index}`"
                   type="button"
                   :class="[MENU_ITEM_CLASS, 'cursor-pointer']"
                   :aria-label="level0.activeLabelFn?.()"
-                  :aria-pressed="level0.isActiveFn ? Boolean(level0.isActiveFn()) : undefined"
                   @click="level0.click">
                   <span class="flex items-center">
                     <HeaderNavIcon :icon="level0.icon" />
-                    <Icon
-                      v-if="Boolean(level0.isActiveFn?.())"
-                      name="fluent:checkmark-12-filled"
-                      class="inline-block w-[14px] h-[14px] mr-2" />
                     <span
-                      v-if="Boolean(level0.isActiveFn && !level0.isActiveFn())"
-                      class="inline-block w-[14px] h-[14px] mr-2" />
+                      v-if="level0.isActiveFn"
+                      :class="[
+                        'inline-block mr-2',
+                        {
+                          'border-1 border-current': level0.role === 'checkbox',
+                          'border-1 rounded-xl border-current': level0.role === 'radio'
+                        }
+                      ]">
+                      <Icon
+                        v-if="Boolean(level0.isActiveFn?.())"
+                        name="fluent:checkmark-12-filled"
+                        :class="['inline-block w-[14px] h-[14px]']" />
+                      <span v-else class="inline-block w-[14px] h-[14px]" />
+                    </span>
                     {{ level0.label }}
                   </span>
                 </button>
                 <span
                   v-else
-                  class="flex pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
+                  class="flex mt-1 pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
                   <HeaderNavIcon :icon="level0.icon" />
                   {{ level0.label }}
                 </span>
@@ -159,15 +240,54 @@ import {
   NavigationMenuRoot,
   NavigationMenuSub,
   NavigationMenuTrigger,
-  NavigationMenuViewport
+  NavigationMenuViewport,
+  RadioGroupRoot,
+  RadioGroupItem,
+  RadioGroupIndicator,
+  CheckboxGroupRoot,
+  CheckboxIndicator,
+  CheckboxRoot
 } from 'reka-ui'
-import { useMenuData, renderNoScriptMenuItem } from './HeaderNavData'
+import { useMenuData, renderNoScriptMenuItem, groupLabelDomId } from './HeaderNavData'
 import { isInternalLink } from '~/utilities/url'
 
 const MENU_ITEM_CLASS =
   'group select-none flex justify-between rounded-md data-[state=open]:rounded-b-none mx-1 px-3 py-2 text-sm font-medium leading-none no-underline outline-none text-black dark:text-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'
 
 const menuData = useMenuData('desktop')
+
+// The radio/checkbox groups manage their own roving focus on these keys.
+// NavigationMenuContent also runs arrow navigation over every tabbable item in
+// the open panel (bubble-phase keydown), so without this the same press moves
+// focus twice. Stop only the roving-focus keys — Tab/Escape must still reach
+// NavigationMenu so it can move focus out of the panel and dismiss it.
+const ROVING_FOCUS_KEYS = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown']
+
+const stopGroupNavKeys = (event: KeyboardEvent) => {
+  if (ROVING_FOCUS_KEYS.includes(event.key)) {
+    event.stopPropagation()
+  }
+}
+
+// Radio groups additionally need selection to follow arrow focus (APG). Reka
+// drives that from a window-level keydown listener, which the stopPropagation
+// above suppresses, so we re-apply it: after Reka moves roving focus (next
+// tick), sync the group's model to the now-focused radio via its data-value.
+const onRadioGroupNav = (event: KeyboardEvent, radioGroupRef?: Ref<string>) => {
+  if (!ROVING_FOCUS_KEYS.includes(event.key)) {
+    return
+  }
+  event.stopPropagation()
+  if (!radioGroupRef) {
+    return
+  }
+  nextTick(() => {
+    const active = document.activeElement
+    if (active instanceof HTMLElement && active.dataset.fieldValue) {
+      radioGroupRef.value = active.dataset.fieldValue
+    }
+  })
+}
 
 // Vue can't render <noscript> elements except in `v-html`, so we need to generate
 // a menu in basic menu in HTML on the server

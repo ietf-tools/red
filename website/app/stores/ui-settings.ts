@@ -57,8 +57,9 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
         window.localStorage.removeItem(LOCALSTORAGE_KEY)
         throw Error(errorTitle)
       }
-      obsoletedByModeRef.value = data.obsoletedByMode ?? DEFAULT_SUPERSEDED_MODE
-      updatedByModeRef.value = data.updatedByMode ?? DEFAULT_SUPERSEDED_MODE
+      obsoletedByModeRef.value = data.obsoletedByMode ?? obsoletedByModeRef.value
+      updatedByModeRef.value = data.updatedByMode ?? updatedByModeRef.value
+      disableRFCLinkPreviewRef.value = data.disableRFCLinkPreview ?? disableRFCLinkPreviewRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
@@ -77,8 +78,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
-  const toggleRFCLinkPreview = () => {
-    disableRFCLinkPreviewRef.value = !disableRFCLinkPreviewRef.value
+  const setDisabledRFCLinkPreview = (isDisabled: boolean) => {
+    disableRFCLinkPreviewRef.value = isDisabled
     saveSettings()
   }
 
@@ -91,6 +92,6 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     updatedByMode: updatedByModeRef,
     setSupersededMode,
     disableRFCLinkPreview: disableRFCLinkPreviewRef,
-    toggleRFCLinkPreview
+    setDisabledRFCLinkPreview
   }
 })

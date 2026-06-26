@@ -23,7 +23,7 @@
             </DialogClose>
           </div>
         </DialogTitle>
-        <div class="flex flex-col">
+        <div class="flex flex-col" @keydown.capture="handleAccordionArrowNav">
           <Accordion>
             <template v-for="(item, index) in menuData" :key="index.toString()">
               <Anchor v-if="item.href" :href="item.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
@@ -38,6 +38,71 @@
                     <Anchor v-if="level0.href" :href="level0.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
                       {{ level0.label }}
                     </Anchor>
+                    <RadioGroupRoot
+                      v-else-if="level0.role === 'radiogroup'"
+                      :model-value="level0.radioGroupRef?.value"
+                      :aria-labelledby="groupLabelDomId('mobile', index, childIndex)"
+                      @keydown="(event: KeyboardEvent) => onRadioGroupNav(event, level0.radioGroupRef)"
+                      @update:model-value="
+                        (value) => {
+                          if (level0.radioGroupRef) {
+                            level0.radioGroupRef.value = String(value)
+                          }
+                        }
+                      ">
+                      <span
+                        :id="groupLabelDomId('mobile', index, childIndex)"
+                        class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
+                        {{ level0.label }}
+                      </span>
+                      <RadioGroupItem
+                        v-for="(level1, level1Index) in level0.children"
+                        :key="level1Index"
+                        :value="level1.fieldValue"
+                        :data-field-value="level1.fieldValue"
+                        :aria-label="level1.activeLabelFn?.()"
+                        :class="[MENU_ITEM_CLASS, 'items-center']">
+                        <span
+                          class="inline-flex items-center pt-[4px] justify-center w-[24px] h-[24px] mr-2 border-1 rounded-full border-current">
+                          <RadioGroupIndicator>
+                            <Icon name="fluent:checkmark-12-filled" class="block w-[16px] h-[16px]" />
+                          </RadioGroupIndicator>
+                        </span>
+                        {{ level1.label }}
+                      </RadioGroupItem>
+                    </RadioGroupRoot>
+                    <CheckboxGroupRoot
+                      v-else-if="level0.role === 'checkboxgroup'"
+                      role="group"
+                      :model-value="level0.checkboxGroupRef?.value"
+                      :aria-labelledby="groupLabelDomId('mobile', index, childIndex)"
+                      @keydown="stopGroupNavKeys"
+                      @update:model-value="
+                        (value) => {
+                          if (level0.checkboxGroupRef) {
+                            level0.checkboxGroupRef.value = value.map(String)
+                          }
+                        }
+                      ">
+                      <span
+                        :id="groupLabelDomId('mobile', index, childIndex)"
+                        class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
+                        {{ level0.label }}
+                      </span>
+                      <CheckboxRoot
+                        v-for="(level1, level1Index) in level0.children"
+                        :key="level1Index"
+                        :value="level1.fieldValue"
+                        :class="[MENU_ITEM_CLASS, 'items-center']">
+                        <span
+                          class="inline-flex items-center pt-[4px] justify-center w-[24px] h-[24px] mr-2 border-1 rounded border-current">
+                          <CheckboxIndicator>
+                            <Icon name="fluent:checkmark-12-filled" class="block w-[16px] h-[16px]" />
+                          </CheckboxIndicator>
+                        </span>
+                        {{ level1.label }}
+                      </CheckboxRoot>
+                    </CheckboxGroupRoot>
                     <button
                       v-else-if="level0.click"
                       type="button"
@@ -63,7 +128,7 @@
                       {{ level0.label }}
                     </button>
                     <span
-                      v-else-if="!level0.href"
+                      v-else-if="!level0.children"
                       class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
                       {{ level0.label }}
                     </span>
@@ -77,7 +142,7 @@
                                 :href="level1.href"
                                 :class="MENU_ITEM_CLASS"
                                 @click="isOpen = false">
-                                {{ level1.label }}fff
+                                {{ level1.label }}
                               </Anchor>
                               <a
                                 v-else-if="level1.noSpaLink"
@@ -110,15 +175,84 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
-  DialogClose
+  DialogClose,
+  RadioGroupRoot,
+  RadioGroupItem,
+  RadioGroupIndicator,
+  CheckboxGroupRoot,
+  CheckboxRoot,
+  CheckboxIndicator
 } from 'reka-ui'
-import { useMenuData } from './HeaderNavData'
+import { useMenuData, groupLabelDomId } from './HeaderNavData'
 import { SEARCH_PATH } from '~/utilities/url'
 
 const menuData = useMenuData('mobile')
 
 const MENU_ITEM_CLASS =
   'flex w-full text-left border no-underline border-gray-500 px-4 py-3.5 hover:bg-blue-400 focus:bg-blue-400'
+
+// The radio/checkbox groups manage their own roving focus on these keys. The
+// enclosing AccordionItem also listens for arrow keys and navigates across
+// every `[data-reka-collection-item]` it can find — which recursively includes
+// the nested radio/checkbox items — so without this an arrow press escapes the
+// group. Stop only the roving-focus keys; other keys must still reach the
+// Accordion/Dialog.
+const ROVING_FOCUS_KEYS = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown']
+
+const stopGroupNavKeys = (event: KeyboardEvent) => {
+  if (ROVING_FOCUS_KEYS.includes(event.key)) {
+    event.stopPropagation()
+  }
+}
+
+// Radio groups additionally need selection to follow arrow focus (APG). Reka
+// drives that from a window-level keydown listener, which the stopPropagation
+// above suppresses, so we re-apply it: after Reka moves roving focus (next
+// tick), sync the group's model to the now-focused radio via its data-value.
+const onRadioGroupNav = (event: KeyboardEvent, radioGroupRef?: Ref<string>) => {
+  if (!ROVING_FOCUS_KEYS.includes(event.key)) {
+    return
+  }
+  event.stopPropagation()
+  if (!radioGroupRef) {
+    return
+  }
+  nextTick(() => {
+    const active = document.activeElement
+    if (active instanceof HTMLElement && active.dataset.fieldValue) {
+      radioGroupRef.value = active.dataset.fieldValue
+    }
+  })
+}
+
+// Reka's AccordionItem runs arrow navigation over every collection item under
+// the accordion root — which recursively includes the nested radio/checkbox
+// items — so Down from a header would dive into a settings group (and the radio
+// would select on arrow-focus). Intercept Up/Down in the capture phase and do
+// header-only navigation ourselves, but only when a header is focused; when
+// focus is inside a group we let the event through to the group's own handlers.
+const HEADER_SELECTOR = '[data-reka-collection-item][aria-expanded]'
+
+const handleAccordionArrowNav = (event: KeyboardEvent) => {
+  if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') {
+    return
+  }
+  const container = event.currentTarget
+  const active = document.activeElement
+  if (!(container instanceof HTMLElement) || !(active instanceof HTMLElement) || !active.matches(HEADER_SELECTOR)) {
+    return
+  }
+  const headers = Array.from(container.querySelectorAll<HTMLElement>(HEADER_SELECTOR))
+  const currentIndex = headers.indexOf(active)
+  if (currentIndex === -1) {
+    return
+  }
+  event.preventDefault()
+  event.stopPropagation()
+  const direction = event.key === 'ArrowDown' ? 1 : -1
+  const nextHeader = headers[(currentIndex + direction + headers.length) % headers.length]
+  nextHeader?.focus()
+}
 
 const isOpen = ref(false)
 </script>

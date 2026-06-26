@@ -29,6 +29,19 @@ export type MenuItem = {
    * Used for the theme picker
    */
   isActiveFn?: () => boolean
+  role?: 'radiogroup' | 'radio' | 'checkboxgroup' | 'checkbox'
+  /**
+   * The value a `radio`/`checkbox` child contributes to its group's model
+   */
+  fieldValue?: string
+  /**
+   * Writable model for a `radiogroup`: the currently selected `fieldValue`
+   */
+  radioGroupRef?: Ref<string>
+  /**
+   * Writable model for a `checkboxgroup`: the list of checked `fieldValue`s
+   */
+  checkboxGroupRef?: Ref<string[]>
   activeLabelFn?: () => string
   children?: MenuItem[]
 }
@@ -41,12 +54,33 @@ export const colorPreferences = [
 
 type Mode = 'desktop' | 'mobile'
 
+export const groupLabelDomId = (mode: Mode, ...indexes: number[]): string => `${mode}-group-label-${indexes.join('-')}`
+
 export const useMenuData = (mode: Mode) => {
   const colorMode = useColorMode()
   const queueUrlOrigin = useQueueUrlOrigin()
   const uiSettings = useUiSettingsStore()
   const storeRefs = storeToRefs(uiSettings)
-  const { toggleRFCLinkPreview } = uiSettings
+  const { setDisabledRFCLinkPreview } = uiSettings
+
+  // Writable model for the theme radio group. The selected value is the
+  // colour-mode *preference* (e.g. 'system'), not the resolved value.
+  const themeRef = computed<string>({
+    get: () => colorMode.preference,
+    set: (value) => {
+      colorMode.preference = value || 'system'
+    }
+  })
+
+  // Writable model for the UI settings checkbox group, mapping the store's
+  // boolean flags to/from the list of checked field values.
+  const uiSettingsRef = computed<string[]>({
+    get: () => (storeRefs.disableRFCLinkPreview.value ? ['disableRFCLinkPreview'] : []),
+    set: (values) => {
+      const shouldDisable = values.includes('disableRFCLinkPreview')
+      setDisabledRFCLinkPreview(shouldDisable === true)
+    }
+  })
 
   const menuData = computed(() => {
     const data: MenuItem[] = [
@@ -136,27 +170,37 @@ export const useMenuData = (mode: Mode) => {
       },
       {
         icon: () => h(GraphicsUserPreferences),
-        label: 'User preferences',
+        label: 'Your preferences',
         hideLabelDesktop: true,
         hideDropdownIconDesktop: true,
         children: [
-          { label: 'Theme' },
-          ...colorPreferences.map((colorPreference) => ({
-            label: `${colorPreference.label}`,
-            activeLabelFn: () =>
-              colorMode.preference === colorPreference.value
-                ? `Selected ${colorPreference.label}`
-                : `Not selected ${colorPreference.label}`,
-            isActiveFn: () => colorMode.preference === colorPreference.value,
-            click: () => {
-              colorMode.preference = colorPreference.value
-            }
-          })),
-          { label: 'UI settings' },
           {
-            label: 'Disable RFC Link Preview',
-            click: toggleRFCLinkPreview,
-            isActiveFn: () => storeRefs.disableRFCLinkPreview.value
+            label: 'Theme',
+            role: 'radiogroup',
+            radioGroupRef: themeRef,
+            children: colorPreferences.map(
+              (colorPreference): MenuItem => ({
+                label: colorPreference.label,
+                activeLabelFn: () =>
+                  colorMode.preference === colorPreference.value
+                    ? `Selected ${colorPreference.label}`
+                    : `Not selected ${colorPreference.label}`,
+                role: 'radio',
+                fieldValue: colorPreference.value
+              })
+            )
+          },
+          {
+            label: 'UI settings',
+            role: 'checkboxgroup',
+            checkboxGroupRef: uiSettingsRef,
+            children: [
+              {
+                label: 'Disable RFC Link Preview',
+                role: 'checkbox',
+                fieldValue: 'disableRFCLinkPreview'
+              }
+            ]
           }
         ]
       }
