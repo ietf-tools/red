@@ -84,7 +84,7 @@
                   :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
                   <span class="flex items-center">
                     <span
-                      class="inline-flex items-center pt-[1px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded-full border-current">
+                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded-full border-current">
                       <RadioGroupIndicator>
                         <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
                       </RadioGroupIndicator>
@@ -120,7 +120,7 @@
                   :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
                   <span class="flex items-center">
                     <span
-                      class="inline-flex items-center pt-[1px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current">
+                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current">
                       <CheckboxIndicator>
                         <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
                       </CheckboxIndicator>
