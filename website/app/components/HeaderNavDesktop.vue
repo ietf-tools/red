@@ -82,7 +82,7 @@
                   :value="level1.fieldValue"
                   :data-field-value="level1.fieldValue"
                   :aria-label="level1.activeLabelFn?.()"
-                  :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
+                  :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
                   <span class="flex items-center">
                     <span
                       class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
@@ -119,7 +119,7 @@
                   v-for="(level1, level1Index) in level0.children"
                   :key="level1Index"
                   :value="level1.fieldValue"
-                  :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
+                  :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
                   <span class="flex items-center">
                     <span
                       class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
@@ -133,7 +133,7 @@
               </CheckboxGroupRoot>
               <NavigationMenuSub v-else-if="level0.children" :default-value="level0.label" class="z-100">
                 <NavigationMenuList>
-                  <NavigationMenuItem :value="`${index}.${level0Index}`" class="flex flex-col">
+                  <NavigationMenuItem :value="`${index}.${level0Index}`" class="mb-[1px] flex flex-col">
                     <NavigationMenuTrigger
                       type="button"
                       :id="`menu-link-${index}-${level0Index}`"
@@ -175,7 +175,11 @@
                 </NavigationMenuList>
               </NavigationMenuSub>
               <NavigationMenuLink v-else as-child>
-                <Anchor v-if="level0.href" :href="level0.href" :class="MENU_ITEM_CLASS" @click="level0.click">
+                <Anchor
+                  v-if="level0.href"
+                  :href="level0.href"
+                  :class="[MENU_ITEM_CLASS, 'mb-[1px]']"
+                  @click="level0.click">
                   <span>
                     <HeaderNavIcon :icon="level0.icon" />
                     {{ level0.label }}
@@ -228,7 +232,7 @@
     </NavigationMenuList>
     <div class="perspective-[2000px] absolute top-full left-0 flex w-full">
       <NavigationMenuViewport
-        class="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 transition-[width,_height] duration-300 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border shadow-2xl" />
+        class="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 transition-[width,_height] duration-300 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border-1 border-gray-200 dark:border-gray-600 shadow-2xl" />
     </div>
   </NavigationMenuRoot>
 </template>
