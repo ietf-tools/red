@@ -3,14 +3,14 @@ import { type Ref } from 'vue'
 import { SEARCH_PATH } from './url'
 
 // string union feature flag values being optional is difficult to model in TS so we'll use a JS falsey value so that Boolean() can evaluate as false
-const ENUM_STRING_UNDEFINED = z.literal('')
+// const ENUM_STRING_UNDEFINED = z.literal('')
 
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
   // with old versions saved in localStorage values can still validate
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
-  narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
+  // narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
   formatsAlsoViewAs: z.boolean().optional()
 })
 
@@ -35,11 +35,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     description: `Renders ABNF grammar blocks in RFC documents as interactive railroad diagrams, making protocol grammars easier to read at a glance.`,
     storageType: 'boolean'
   },
-  narrowerRfcs: {
-    title: 'Narrower /info/ RFCs',
-    description: 'Reduce space between /info/rfcN/ content and the sidebar',
-    storageType: ['', 'narrow-left', 'narrow-center']
-  },
+  // narrowerRfcs: {
+  //   title: 'Narrower /info/ RFCs',
+  //   description: 'Reduce space between /info/rfcN/ content and the sidebar',
+  //   storageType: ['', 'narrow-left', 'narrow-center']
+  // },
   formatsAlsoViewAs: {
     title: 'RFC formats "Also view as" links',
     description: 'On the info route adds a list of formats to the top-right of the RFC content',
@@ -50,7 +50,7 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
-  narrowerRfcs: '',
+  // narrowerRfcs: '',
   formatsAlsoViewAs: false
   // showPreCopyButton: '',
 }
