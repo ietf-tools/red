@@ -1,5 +1,5 @@
 <template>
-  <RFCRouterLink v-if="isRfcLink" v-bind="props" data-rfc-router-link>
+  <RFCRouterLink v-if="isRfcLink && !disableRFCLinkPreview" v-bind="props" data-rfc-router-link>
     <slot />
   </RFCRouterLink>
   <Anchor v-else v-bind="props" data-non-rfc-anchor-link>
@@ -20,4 +20,7 @@ import { parseMaybeRfcLink } from '~/utilities/url'
 const props = defineProps<{ href: string; id?: string }>()
 
 const isRfcLink = computed(() => Boolean(parseMaybeRfcLink(props.href)))
+
+const uiSettings = useUiSettingsStore()
+const { disableRFCLinkPreview } = storeToRefs(uiSettings)
 </script>

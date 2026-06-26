@@ -2,16 +2,17 @@ import { z } from 'zod'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
-const RFCUiSettingsSchema = z
+const UiSettingsSchema = z
   .object({
     obsoletedByMode: SupersededModeSchema,
-    updatedByMode: SupersededModeSchema
+    updatedByMode: SupersededModeSchema,
+    disableRFCLinkPreview: z.boolean()
   })
   .optional()
 
-export type RFCUiKey = keyof NonNullable<z.infer<typeof RFCUiSettingsSchema>>
+export type UiSettingsKey = keyof NonNullable<z.infer<typeof UiSettingsSchema>>
 
-type RFCUiSettings = z.infer<typeof RFCUiSettingsSchema>
+type UiSettings = z.infer<typeof UiSettingsSchema>
 
 type SupersededMode = NonNullable<z.infer<typeof SupersededModeSchema>>
 
@@ -19,26 +20,20 @@ const LOCALSTORAGE_KEY = 'rfc-ui'
 
 const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
 
-export const useRfcUiStore = defineStore('rfcUi', () => {
+export const useUiSettingsStore = defineStore('uiSettings', () => {
   const obsoletedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
   const updatedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
+  const disableRFCLinkPreviewRef = ref<boolean>(false)
 
-  const setSupersededMode = (key: RFCUiKey, mode: SupersededMode) => {
-    switch (key) {
-      case 'obsoletedByMode':
-        obsoletedByModeRef.value = mode
-        break
-      case 'updatedByMode':
-        updatedByModeRef.value = mode
-        break
-    }
-
-    const rfcSettings: RFCUiSettings = {
+  const saveSettings = () => {
+    const uiSettings: UiSettings = {
       obsoletedByMode: obsoletedByModeRef.value,
-      updatedByMode: updatedByModeRef.value
+      updatedByMode: updatedByModeRef.value,
+      disableRFCLinkPreview: disableRFCLinkPreviewRef.value
     }
+
     try {
-      const val = JSON.stringify(rfcSettings)
+      const val = JSON.stringify(uiSettings)
       window.localStorage.setItem(LOCALSTORAGE_KEY, val)
       console.log('[rfc-ui-settings] saved ui state to localStorage', val)
     } catch (e) {
@@ -47,7 +42,7 @@ export const useRfcUiStore = defineStore('rfcUi', () => {
     }
   }
 
-  onMounted(() => {
+  const loadSettings = () => {
     try {
       const valString = window.localStorage.getItem(LOCALSTORAGE_KEY)
       if (!valString) {
@@ -55,7 +50,7 @@ export const useRfcUiStore = defineStore('rfcUi', () => {
         return
       }
       const val = JSON.parse(valString)
-      const { data, error } = RFCUiSettingsSchema.safeParse(val)
+      const { data, error } = UiSettingsSchema.safeParse(val)
       if (error || !data) {
         const errorTitle = 'Unable to validate RFC UI settings JSON. Resetting localStorage config.'
         console.log(errorTitle, error, valString)
@@ -68,7 +63,34 @@ export const useRfcUiStore = defineStore('rfcUi', () => {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
     }
+  }
+
+  const setSupersededMode = (key: UiSettingsKey, mode: SupersededMode) => {
+    switch (key) {
+      case 'obsoletedByMode':
+        obsoletedByModeRef.value = mode
+        break
+      case 'updatedByMode':
+        updatedByModeRef.value = mode
+        break
+    }
+    saveSettings()
+  }
+
+  const toggleRFCLinkPreview = () => {
+    disableRFCLinkPreviewRef.value = !disableRFCLinkPreviewRef.value
+    saveSettings()
+  }
+
+  onMounted(() => {
+    loadSettings()
   })
 
-  return { obsoletedByMode: obsoletedByModeRef, updatedByMode: updatedByModeRef, setSupersededMode }
+  return {
+    obsoletedByMode: obsoletedByModeRef,
+    updatedByMode: updatedByModeRef,
+    setSupersededMode,
+    disableRFCLinkPreview: disableRFCLinkPreviewRef,
+    toggleRFCLinkPreview
+  }
 })

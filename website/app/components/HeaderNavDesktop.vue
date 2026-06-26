@@ -10,11 +10,15 @@
           :id="`menu-link-${index}`"
           :href="menuItem.href"
           :aria-label="menuItem.label"
-          class="cursor-pointer hover:bg-blue-400 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none focus:shadow-[0_0_0_2px_white]"
+          class="cursor-pointer hover:bg-blue-850 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none focus:shadow-[0_0_0_2px_white]"
           as-child
           @click="menuItem.click">
           <Anchor>
-            <Icon v-if="menuItem.icon" :name="menuItem.icon" />
+            <Icon v-if="menuItem.icon && typeof menuItem.icon === 'string'" :name="menuItem.icon" />
+            <component
+              v-else-if="menuItem.icon && typeof menuItem.icon === 'function'"
+              :is="menuItem.icon()"
+              class="w-[16px] h-[16px]" />
           </Anchor>
         </NavigationMenuLink>
 
@@ -23,12 +27,12 @@
           type="button"
           :disabled="!hasMounted"
           :class="[
-            'group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-[15px] leading-none',
+            'hover:bg-blue-850 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-base leading-none',
             // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
             hasMounted && 'cursor-pointer'
           ]"
           :aria-label="menuItem.label">
-          <Icon v-if="menuItem.icon" :name="menuItem.icon" />
+          <HeaderNavIcon :icon="menuItem.icon" />
           <span v-if="!menuItem.hideLabelDesktop">
             {{ menuItem.label }}
           </span>
@@ -45,7 +49,7 @@
           <ul class="list-none">
             <li
               v-if="menuItem.hideLabelDesktop"
-              class="text-gray-600 dark:text-white border-b-2 border-b-gray-300 dark:border-b-gray-600 mb-1 pt-1 pb-1 pl-4 text-sm font-bold pl-3">
+              class="text-gray-600 dark:text-white border-b-1 border-b-gray-300 dark:border-b-gray-600 pt-1 pb-1 pl-4 text-sm font-bold pl-3">
               {{ menuItem.label }}
             </li>
             <li
@@ -60,7 +64,7 @@
                       :id="`menu-link-${index}-${level0Index}`"
                       :class="MENU_ITEM_CLASS">
                       <span>
-                        <Icon v-if="level0.icon" :name="level0.icon" />
+                        <HeaderNavIcon :icon="level0.icon" />
                         {{ level0.label }}
                       </span>
                       <GraphicsChevron
@@ -81,11 +85,11 @@
                             as-child
                             @click="level1.click">
                             <Anchor v-if="!level1.noSpaLink">
-                              <Icon v-if="level1.icon" :name="level1.icon" />
+                              <HeaderNavIcon :icon="level1.icon" />
                               {{ level1.label }}
                             </Anchor>
                             <a v-else>
-                              <Icon v-if="level1.icon" :name="level1.icon" />
+                              <HeaderNavIcon :icon="level1.icon" />
                               {{ level1.label }}
                             </a>
                           </NavigationMenuLink>
@@ -98,7 +102,7 @@
               <NavigationMenuLink v-else as-child>
                 <Anchor v-if="level0.href" :href="level0.href" :class="MENU_ITEM_CLASS" @click="level0.click">
                   <span>
-                    <Icon v-if="level0.icon" :name="level0.icon" />
+                    <HeaderNavIcon :icon="level0.icon" />
                     {{ level0.label }}
                     <Icon
                       v-if="!isInternalLink(level0.href)"
@@ -107,7 +111,7 @@
                   </span>
                 </Anchor>
                 <button
-                  v-else
+                  v-else-if="level0.click"
                   :id="`menu-link-${index}-${level0Index}`"
                   type="button"
                   :class="[MENU_ITEM_CLASS, 'cursor-pointer']"
@@ -115,7 +119,7 @@
                   :aria-pressed="level0.isActiveFn ? Boolean(level0.isActiveFn()) : undefined"
                   @click="level0.click">
                   <span class="flex items-center">
-                    <Icon v-if="level0.icon" :name="level0.icon" />
+                    <HeaderNavIcon :icon="level0.icon" />
                     <Icon
                       v-if="Boolean(level0.isActiveFn?.())"
                       name="fluent:checkmark-12-filled"
@@ -126,6 +130,12 @@
                     {{ level0.label }}
                   </span>
                 </button>
+                <span
+                  v-else
+                  class="flex pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
+                  <HeaderNavIcon :icon="level0.icon" />
+                  {{ level0.label }}
+                </span>
               </NavigationMenuLink>
             </li>
           </ul>

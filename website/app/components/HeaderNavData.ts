@@ -1,3 +1,5 @@
+import { GraphicsUserPreferences } from '#components'
+import { useUiSettingsStore } from '~/stores/ui-settings'
 import { htmlEscapeToText } from '~/utilities/html'
 import {
   IETF_PRIVACY_STATEMENT_URL,
@@ -13,7 +15,7 @@ import type { VueClick } from '~/utilities/vue'
  * Although this type is recursive the UI only renders about 2 levels deep
  */
 export type MenuItem = {
-  icon?: string
+  icon?: string | (() => VNode)
   label: string
   hideMobile?: boolean
   hideDesktop?: boolean
@@ -42,6 +44,9 @@ type Mode = 'desktop' | 'mobile'
 export const useMenuData = (mode: Mode) => {
   const colorMode = useColorMode()
   const queueUrlOrigin = useQueueUrlOrigin()
+  const uiSettings = useUiSettingsStore()
+  const storeRefs = storeToRefs(uiSettings)
+  const { toggleRFCLinkPreview } = uiSettings
 
   const menuData = computed(() => {
     const data: MenuItem[] = [
@@ -127,25 +132,33 @@ export const useMenuData = (mode: Mode) => {
       {
         icon: 'fluent:search-12-filled',
         label: 'Search',
-        href: SEARCH_PATH satisfies ValidHrefs,
-        hideMobile: true
+        href: SEARCH_PATH satisfies ValidHrefs
       },
       {
-        icon: 'fluent:dark-theme-20-filled',
-        label: 'Theme',
+        icon: () => h(GraphicsUserPreferences),
+        label: 'User preferences',
         hideLabelDesktop: true,
         hideDropdownIconDesktop: true,
-        children: colorPreferences.map((colorPreference) => ({
-          label: `${colorPreference.label}`,
-          activeLabelFn: () =>
-            colorMode.preference === colorPreference.value
-              ? `Selected ${colorPreference.label}`
-              : `Not selected ${colorPreference.label}`,
-          isActiveFn: () => colorMode.preference === colorPreference.value,
-          click: () => {
-            colorMode.preference = colorPreference.value
+        children: [
+          { label: 'Theme' },
+          ...colorPreferences.map((colorPreference) => ({
+            label: `${colorPreference.label}`,
+            activeLabelFn: () =>
+              colorMode.preference === colorPreference.value
+                ? `Selected ${colorPreference.label}`
+                : `Not selected ${colorPreference.label}`,
+            isActiveFn: () => colorMode.preference === colorPreference.value,
+            click: () => {
+              colorMode.preference = colorPreference.value
+            }
+          })),
+          { label: 'UI settings' },
+          {
+            label: 'Disable RFC Link Preview',
+            click: toggleRFCLinkPreview,
+            isActiveFn: () => storeRefs.disableRFCLinkPreview.value
           }
-        }))
+        ]
       }
     ]
 

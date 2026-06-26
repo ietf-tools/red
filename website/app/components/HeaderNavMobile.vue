@@ -50,7 +50,7 @@
                           isOpen = false
                         }
                       ">
-                      <Icon v-if="level0.icon" :name="level0.icon" />
+                      <HeaderNavIcon :icon="level0.icon" />
                       <Icon
                         v-if="level0.isActiveFn?.()"
                         name="fluent:checkmark-12-filled"
@@ -62,6 +62,11 @@
                         class="inline-block w-[14px] h-[14px] mr-1" />
                       {{ level0.label }}
                     </button>
+                    <span
+                      v-else-if="!level0.href"
+                      class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
+                      {{ level0.label }}
+                    </span>
                     <Accordion v-else>
                       <AccordionItem :id="index.toString()" :key="index" :trigger-text="level0.label" :style-depth="2">
                         <ul class="ml-4">
@@ -72,7 +77,7 @@
                                 :href="level1.href"
                                 :class="MENU_ITEM_CLASS"
                                 @click="isOpen = false">
-                                {{ level1.label }}
+                                {{ level1.label }}fff
                               </Anchor>
                               <a
                                 v-else-if="level1.noSpaLink"

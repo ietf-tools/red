@@ -58,22 +58,23 @@ import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE } from '~/utilities/theme'
 import { infoSeriesPathBuilder } from '~/utilities/url'
 import type { Variant } from '~/utilities/alert'
 import { COMMA, FULLSTOP, SPACE } from '~/utilities/strings'
+import type { UiSettingsKey } from '~/stores/ui-settings'
 
 type Props = {
   data: RfcCommon['obsoleted_by'] | RfcCommon['updated_by']
   variant: Variant
   headingText: string
-  uiSettingsKey: RFCUiKey
+  uiSettingsKey: UiSettingsKey
 }
 
 const props = defineProps<Props>()
 
 const domId = useId()
 
-const rfcUiStore = useRfcUiStore()
-const storeRefs = storeToRefs(rfcUiStore)
+const uiSettings = useUiSettingsStore()
+const storeRefs = storeToRefs(uiSettings)
 const supsersededModeRef = storeRefs[props.uiSettingsKey]
-const { setSupersededMode } = rfcUiStore
+const { setSupersededMode } = uiSettings
 
 const toggleSupersededMode = () => {
   setSupersededMode(props.uiSettingsKey, supsersededModeRef.value === 'compact' ? 'full' : 'compact')
