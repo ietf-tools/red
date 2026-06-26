@@ -191,7 +191,7 @@ export const useMenuData = (mode: Mode) => {
             )
           },
           {
-            label: 'UI settings',
+            label: 'RFC Info pages',
             role: 'checkboxgroup',
             checkboxGroupRef: uiSettingsRef,
             children: [
