@@ -49,7 +49,7 @@
           <ul class="list-none">
             <li
               v-if="menuItem.hideLabelDesktop"
-              class="text-gray-600 dark:text-white pt-1 pb-1 pl-4 text-sm font-bold pl-3">
+              class="text-gray-600 dark:text-white pt-1 pb-1 pl-3 text-sm font-bold pl-3">
               {{ menuItem.label }}
             </li>
             <li
@@ -67,7 +67,8 @@
                       level0.radioGroupRef.value = String(value)
                     }
                   }
-                ">
+                "
+                class="mr-2">
                 <span
                   :id="groupLabelDomId('desktop', index, level0Index)"
                   class="flex mt-1 pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
@@ -84,7 +85,7 @@
                   :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
                   <span class="flex items-center">
                     <span
-                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded-full border-current">
+                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
                       <RadioGroupIndicator>
                         <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
                       </RadioGroupIndicator>
@@ -105,7 +106,8 @@
                       level0.checkboxGroupRef.value = value.map(String)
                     }
                   }
-                ">
+                "
+                class="mr-2">
                 <span
                   :id="groupLabelDomId('desktop', index, level0Index)"
                   class="flex mt-1 pl-3 pt-2 pb-1 border-t-1 border-t-gray-300 dark:border-t-gray-200 items-center font-bold text-sm text-gray-700 dark:text-gray-200">
@@ -120,7 +122,7 @@
                   :class="[MENU_ITEM_CLASS, 'w-full cursor-pointer']">
                   <span class="flex items-center">
                     <span
-                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current">
+                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
                       <CheckboxIndicator>
                         <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
                       </CheckboxIndicator>
