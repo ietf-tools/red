@@ -11,7 +11,8 @@ export const FeatureFlagsSchema = z.object({
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
   // narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
-  formatsAlsoViewAs: z.boolean().optional()
+  formatsAlsoViewAs: z.boolean().optional(),
+  searchObsoletedDefaults: z.boolean().optional()
 })
 
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
@@ -44,6 +45,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'RFC formats "Also view as" links',
     description: 'On the info route adds a list of formats to the top-right of the RFC content',
     storageType: 'boolean'
+  },
+  searchObsoletedDefaults: {
+    title: 'Search default filter includes obsoleted',
+    description: 'On the search route include obsoleted results by default',
+    storageType: 'boolean'
   }
 }
 
@@ -51,8 +57,9 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
   // narrowerRfcs: '',
-  formatsAlsoViewAs: false
+  formatsAlsoViewAs: false,
   // showPreCopyButton: '',
+  searchObsoletedDefaults: false
 }
 
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)

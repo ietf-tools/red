@@ -5,11 +5,11 @@
     has-cover-link
     chevron-position="center"
     :class="{
-      'lg:flex': !!(props.showAbstract && props.rfc.abstract),
+      'lg:flex': !!(props.showAbstract && props.rfc.abstract)
     }"
     :override-class-defaults="{
-      'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!(props.rfc.obsoleted_by?.length),
-      'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !(props.rfc.obsoleted_by?.length)
+      'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!props.rfc.obsoleted_by?.length,
+      'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !props.rfc.obsoleted_by?.length
     }"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'pr-4' : ''"
     :aside-slot-class="
@@ -28,9 +28,13 @@
          * Eg "BCP 14" on the card for RFC2119 should appear above the card.
          * A good RFC to test changes on is RFC 9966 which has a link to RFC 2119, so the `RFCLinkPreview`
          * `HoverCard` has a complex stacking order:
-         *   Reka UI HoverCard, then Card, card background tint, card cover link, and subseries link "BCP 14".
+         *   Reka UI HoverCard,
+         *     then Card,
+         *        card background tint,
+         *           card cover link, and
+         *              subseries link "BCP 14".
          * Be sure to test search results (eg RFC 2119) too, because they raise a 'Show Abstract' button
-         * (mobile only) above the `Card`'s cover link, so it's the same issue.
+         * (mobile only) above the `Card`'s cover link, so there are similar z-index stacking concerns.
          */
       }}
       {{ SPACE }}

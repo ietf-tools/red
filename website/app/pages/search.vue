@@ -73,6 +73,7 @@ import {
   clearSearchQueryKey,
   resetHiddenDefaultKey
 } from '~/utilities/search'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 
 const route = useRoute()
 const searchStore = useSearchStore()
@@ -127,7 +128,6 @@ const resetHiddenDefault = () => {
   console.log('RESeT HIDDEN DEFAULT KEY')
   const value = aisInstantSearchRef.value
   if (isAisInstanceSearchValue(value)) {
-    console.log('resetting ', FLAGS_HIDDEN_DEFAULT_KEY)
     value.instantSearchInstance.setUiState((state) => {
       if (state[INDEX_NAME]?.toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] === true) {
         return state
@@ -138,7 +138,7 @@ const resetHiddenDefault = () => {
           ...state[INDEX_NAME],
           toggle: {
             ...state[INDEX_NAME]?.toggle,
-            [FLAGS_HIDDEN_DEFAULT_KEY]: true
+            [FLAGS_HIDDEN_DEFAULT_KEY]: !Boolean(featureFlags.value.searchObsoletedDefaults)
           }
         }
       }
@@ -241,6 +241,42 @@ const noOpRouter = {
   }
 }
 
+const featureFlags = useFeatureFlags()
+
+watch(
+  () => featureFlags.value.searchObsoletedDefaults,
+  () => {
+    const searchObsoletedDefault = Boolean(featureFlags.value.searchObsoletedDefaults)
+    const value = aisInstantSearchRef.value
+    if (!isAisInstanceSearchValue(value)) {
+      console.warn('resetHiddenDefaultKey: AisInstantSearch instance not available', value)
+      return
+    }
+    const setter = () => {
+      if (!value.instantSearchInstance.started) {
+        console.log('try setting default soon')
+        setTimeout(setter, 50)
+        return
+      }
+      console.log('setting default')
+      value.instantSearchInstance.setUiState((state) => {
+        return {
+          ...state,
+          [INDEX_NAME]: {
+            ...state[INDEX_NAME],
+            toggle: {
+              ...state[INDEX_NAME]?.toggle,
+              [FLAGS_HIDDEN_DEFAULT_KEY]: !searchObsoletedDefault
+            }
+          }
+        }
+      })
+    }
+
+    setTimeout(setter, 10)
+  }
+)
+
 // AIS creates routes without a trailing slash
 const searchWithoutTrailingSlash = SEARCH_PATH.replace(/\/$/, '')
 
@@ -263,16 +299,15 @@ const routing = {
       const group = uiState[INDEX_NAME].refinementList?.['group.full']?.join(',') ?? null
       const authors = uiState[INDEX_NAME].refinementList?.['authors.name']?.join(',') ?? null
       const pubDate = uiState[INDEX_NAME].range?.['publicationDate'] ?? null
-      const showObsoleted = !(uiState[INDEX_NAME].toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] ?? true)
+      const showObsoleted = !(
+        uiState[INDEX_NAME].toggle?.[FLAGS_HIDDEN_DEFAULT_KEY] ?? !Boolean(featureFlags.value.searchObsoletedDefaults)
+      )
       const sort = uiState[INDEX_NAME].sortBy?.substring(10) ?? null
 
-      // FIXME
-      // When using the header nav to click on 'The RFC Series / Browse RFCs by Status / any link' the URL should have precedence over uiState
-      // However when changing search filters then uiState should have precedence
-      //
-      // There is no current fix for this, however as a temporary workaround the HeaderNavData.ts has config to prefer conventional <a>
-      // links rather than SPA links so that a full page refresh occurs which does make it behave correctly, albeit with slow full page
-      // reloads. We should address this.
+      // The nav menu had links to searchs with specific filters (ie links to this route with params).
+      // This would often break in Nuxt SPA mode (typesense pushes its internal state to the URL and doesn't seem to adapt
+      // to URL param changes), so to work around this bug the nav links to the search were were non-SPA conventional links.
+      // The state management of how we use typesense and introduce new filters etc probably needs reviewing/refactoring.
 
       const uiStateStatus = uiState[INDEX_NAME].refinementList?.['status.name']?.join(',')
       const status: string | null = uiStateStatus ?? null
@@ -304,7 +339,9 @@ const routing = {
       const group = route.query.group?.toString().split(',')
       const authors = route.query.authors?.toString().split(',')
       const pubDate = route.query.pubDate?.toString() ?? ''
-      const showObsoleted = !(route.query.showObsoleted === '0')
+      const showObsoleted = route.query.showObsoleted
+        ? route.query.showObsoleted === '1'
+        : Boolean(featureFlags.value.searchObsoletedDefaults)
       const sortBy = route.query.sort?.toString() ?? ''
       return {
         [INDEX_NAME]: {
