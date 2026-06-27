@@ -24,6 +24,7 @@ exports[`typeSenseSearchItemToRFC 1`] = `
     "type": "area",
   },
   "number": 9500,
+  "obsoleted_by": [],
   "published": "2023-12-08T20:50:44.000Z",
   "status": {
     "name": "informational",

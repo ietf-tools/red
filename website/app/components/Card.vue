@@ -1,7 +1,8 @@
 <template>
   <div
     :class="[
-      'bg-white dark:bg-blue-950 relative border-1 border-gray-100 dark:border-1 dark:border-gray-500 pl-5 pr-7 py-4 rounded shadow-xs print:border-2 print:border-black',
+      props.overrideClassDefaults,
+      'relative border pl-5 pr-7 py-4 rounded shadow-xs print:border-2 print:border-black',
       props.class
     ]">
     <div :class="props.containerClass">
@@ -95,9 +96,13 @@ type Props = {
   hasCoverLink?: boolean
   href: string
   chevronPosition?: 'center' | 'end'
+  overrideClassDefaults?: VueStyleClass
 }
 
-const props = withDefaults(defineProps<Props>(), { chevronPosition: 'end' })
+const props = withDefaults(defineProps<Props>(), {
+  chevronPosition: 'end',
+  overrideClassDefaults: 'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500'
+})
 
 const slots = useSlots()
 const hasAsideSlot = computed(() => !!slots['aside'])

@@ -110,6 +110,8 @@ export const TypeSenseSearchItemSchema = z.object({
   pages: z.number(),
   keywords: z.array(z.string()),
 
+  obsoletedBy: z.array(z.string()).optional(),
+
   flags: z
     .object({
       obsoleted: z.boolean(),
