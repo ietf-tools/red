@@ -2,7 +2,7 @@
   <div class="container flex justify-between items-center mx-auto pl-2">
     <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
     <p v-if="featureFlags.formatsAlsoViewAs" class="pt-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
-      Also view as: <DocumentPojo :value="formatsPojo" />
+      View as: <DocumentPojo :value="formatsPojo" />
     </p>
   </div>
 
@@ -68,11 +68,11 @@
 <script setup lang="ts">
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
-import { infoSeriesPathBuilder, rfcFormatPathBuilder } from '~/utilities/url'
+import { rfcFormatPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE, FULLSTOP, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { ANCHOR_COLOR_IN_ALERT_INFO_TAILWIND_STYLE, ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import {
   renderDocumentPojo,
   renderNodePojo,

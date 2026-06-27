@@ -1,9 +1,9 @@
 <template>
   <ul class="flex flex-col gap-2 leading-[1.75]">
     <li v-for="(rfc, rfcIndex) in sortedRfcReferences" :key="rfcIndex">
-      <Anchor :href="infoSeriesPathBuilder(`rfc${rfc.number}`)" :class="ANCHOR_COLOR_TAILWIND_STYLE" side="left">
+      <RFCRouterLink :href="infoSeriesPathBuilder(`rfc${rfc.number}`)" :class="ANCHOR_COLOR_TAILWIND_STYLE" side="left">
         <RFCTitle :rfc="rfc" />
-      </Anchor>
+      </RFCRouterLink>
     </li>
   </ul>
 </template>
