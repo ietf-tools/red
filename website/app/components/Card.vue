@@ -99,7 +99,10 @@ type Props = {
   overrideClassDefaults?: VueStyleClass
 }
 
-const props = withDefaults(defineProps<Props>(), { chevronPosition: 'end', overrideClassDefaults: 'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500' })
+const props = withDefaults(defineProps<Props>(), {
+  chevronPosition: 'end',
+  overrideClassDefaults: 'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500'
+})
 
 const slots = useSlots()
 const hasAsideSlot = computed(() => !!slots['aside'])
