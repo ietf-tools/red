@@ -52,7 +52,7 @@
     <p
       v-if="obsoletedBy"
       :class="[
-        'relative z-1 text-red-700 dark:text-red-300 text-base print:text-black',
+        'relative z-1 text-red-800 dark:text-red-300 text-base print:text-black',
         { 'mt-2': isMobileAbstractOpen }
       ]">
       <Renderable :val="obsoletedBy" />

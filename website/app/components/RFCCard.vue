@@ -65,7 +65,6 @@
 import { infoSeriesPathBuilder } from '../utilities/url'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc'
-import { useResponsiveModeStore } from '~/stores/responsiveMode'
 import { parseHeadingLevel, type HeadingLevel } from '~/utilities/html'
 import { SPACE } from '~/utilities/strings'
 
@@ -81,6 +80,4 @@ const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 const abstractHeadingLevel = computed(() => parseHeadingLevel((parseFloat(props.headingLevel) + 1).toString()))
 
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
-
-const responsiveModeStore = useResponsiveModeStore()
 </script>
