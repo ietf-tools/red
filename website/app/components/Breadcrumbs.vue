@@ -1,15 +1,15 @@
 <template>
   <nav aria-label="Breadcrumbs">
-    <ul :class="['block mt-1 mb-1 px-1 xs:px-0 print:hidden', props.class]">
-      <li v-for="(item, index) in items" :key="index" class="inline-block">
+    <ul :class="['block mt-1 mb-2 pl-3 pr-14 leading-[1.5] print:hidden', props.class]">
+      <li v-for="(item, index) in items" :key="index" class="inline">
         <Anchor
           v-if="item.url"
-          class="inline-block px-2 py-2 underline rounded hover:bg-gray-200 hover:text-blue-800"
+          class="inline pl-2 -ml-2 pr-2 py-2 underline rounded hover:bg-gray-200 hover:text-blue-800"
           :href="item.url"
           :aria-current="item.ariaCurrent">
           {{ item.label }}
         </Anchor>
-        <b v-else class="inline-block px-2 py-2 text-gray-700 dark:text-gray-300" :aria-current="item.ariaCurrent">
+        <b v-else class="inline px-2 py-2 text-gray-700 dark:text-gray-300" :aria-current="item.ariaCurrent">
           {{ item.label }}
         </b>
         <template v-if="index < items.length - 1">

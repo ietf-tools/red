@@ -156,7 +156,16 @@ function gotoErrata() {
 }
 
 const breadcrumbItems = computed((): BreadcrumbItem[] => {
-  return [{ url: '/', label: 'Home' }, { label: rfcBucketHtmlDocument.value?.rfc.title ?? '' }]
+  return [
+    { url: '/', label: 'Home' },
+    ...(rfcBucketHtmlDocument.value
+      ? [
+          {
+            label: `RFC ${rfcBucketHtmlDocument.value.rfc.number}: ${rfcBucketHtmlDocument.value?.rfc.title}`
+          }
+        ]
+      : [])
+  ]
 })
 
 const isModalOpen = ref(false)

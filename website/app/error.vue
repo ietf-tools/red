@@ -1,9 +1,9 @@
 <!-- error.vue -->
 <template>
   <div class="flex flex-col min-h-[100vh]">
-    <div>
+    <HeaderWrapper>
       <Header />
-    </div>
+    </HeaderWrapper>
     <main class="flex-1 pt-10 pb-20 text-center max-w-100 mx-auto">
       <h1 class="text-5xl">Error {{ props.error.status ?? props.error.statusCode }}</h1>
       <p class="mt-4">{{ props.error.message ?? props.error.statusMessage }}</p>
