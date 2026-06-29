@@ -5,7 +5,7 @@
         <IndexSubheader />
       </template>
       <div class="container mx-auto pl-5 pr-3">
-        <div class="md:mx-2 flex flex-col-reverse lg:flex-row lg:items-center justify-between">
+        <div class="md:mx-2 flex lg:flex-row lg:items-center justify-between">
           <Heading level="2" :id="LATEST_RFCS_HEADING_DOM_ID" has-icon class="text-left mt-2 mb-4 pl-5 md:pl-0">
             Latest RFCs
           </Heading>

@@ -9,13 +9,16 @@
         :opacity="0.04" />
     </div>
     <div class="lg:flex w-full">
-      <Heading level="1" style-level="1" class="w-full mt-4 md:mt-6 xs:mt-12 md:mb-3 px-2 font-semibold text-balance">
+      <Heading
+        level="1"
+        style-level="1"
+        class="w-full pt-2 md:pt-4 xs:mt-12 md:mb-3 md:px-2 font-semibold text-balance">
         The official home of RFCs
       </Heading>
       <div class="self-end lg:text-right">
         <AValidHref
           href="/series/rfc/"
-          class="rounded text-blue-100 border-1 border-transparent lg:text-white inline-block px-2 md:px-5 py-2 md:py-3 font-semibold whitespace-nowrap hover:bg-black focus:bg-black hover:border-white focus:border-white">
+          class="rounded text-blue-100 border-1 border-transparent lg:text-white inline-block md:px-2 md:px-5 py-2 md:py-3 font-semibold whitespace-nowrap hover:bg-black focus:bg-black hover:border-white focus:border-white">
           What is an RFC?
           <GraphicsChevron class="-rotate-90 w-[16px] inline-block" />
         </AValidHref>

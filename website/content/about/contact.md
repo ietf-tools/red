@@ -23,7 +23,7 @@ Director of Communications and Operations
 IETF Administration LLC  
 1000 N West Street, Suite 1200  
 Wilmington, DE 19801  
-Phone: +1-703-625-3917  
+Phone: [+1-703-625-3917](tel:+17036253917)
 Email: [legal@ietf.org](mailto:legal@ietf.org)
 
 The Digital Millennium Copyright Act requires that all infringement claims must be in writing and must include the following information:
