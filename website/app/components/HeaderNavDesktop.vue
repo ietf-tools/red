@@ -10,15 +10,12 @@
           :id="`menu-link-${index}`"
           :href="menuItem.href"
           :aria-label="menuItem.label"
-          class="cursor-pointer hover:bg-blue-850 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none focus:shadow-[0_0_0_2px_white]"
+          class="cursor-pointer hover:bg-blue-850 hover:outline-1 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none focus:shadow-[0_0_0_2px_white]"
           as-child
           @click="menuItem.click">
           <Anchor>
             <Icon v-if="menuItem.icon && typeof menuItem.icon === 'string'" :name="menuItem.icon" />
-            <component
-              v-else-if="menuItem.icon && typeof menuItem.icon === 'function'"
-              :is="menuItem.icon()"
-              class="w-[16px] h-[16px]" />
+            <component v-else-if="menuItem.icon && typeof menuItem.icon === 'function'" :is="menuItem.icon()" />
           </Anchor>
         </NavigationMenuLink>
 
@@ -27,7 +24,7 @@
           type="button"
           :disabled="!hasMounted"
           :class="[
-            'hover:bg-blue-850 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-base leading-none',
+            'hover:bg-blue-850 hover:outline-1 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-base leading-none',
             {
               'cursor-pointer': hasMounted // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
             }

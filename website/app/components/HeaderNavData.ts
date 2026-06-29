@@ -1,4 +1,4 @@
-import { GraphicsUserPreferences } from '#components'
+import { GraphicsSearch, GraphicsUserPreferences } from '#components'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { htmlEscapeToText } from '~/utilities/html'
 import {
@@ -170,7 +170,7 @@ export const useMenuData = (mode: Mode) => {
         ]
       },
       {
-        icon: 'fluent:search-12-filled',
+        icon: () => h(GraphicsSearch, { class: 'w-[19px] h-[19px]' }),
         label: 'Search',
         href: SEARCH_PATH satisfies ValidHrefs
       },
