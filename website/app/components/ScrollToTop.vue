@@ -5,7 +5,7 @@
         'opacity-0 pointer-events-none': !debouncedIsVisible,
         'opacity-100': debouncedIsVisible
       },
-      'fixed top-1 right-2 lg:right-auto text-black font-bold rounded-b z-10 bg-white hover:text-white focus:text-white hover:bg-blue-300 dark:bg-black dark:hover:bg-blue-500 border border-gray-200 dark:border-gray-600 px-3 py-2 font-lg transition-opacity print:hidden shadow-lg shadow-gray-300 dark:shadow-blue-900 dark:text-white focus:opacity-100 focus:pointer-events-auto'
+      'fixed top-1 right-2 lg:right-auto text-black font-bold rounded-b z-100 bg-white hover:text-white focus:text-white hover:bg-blue-300 dark:bg-black dark:hover:bg-blue-500 border border-gray-200 dark:border-gray-600 px-3 py-2 font-lg transition-opacity print:hidden shadow-lg dark:shadow-blue-900 dark:text-white focus:opacity-100 focus:pointer-events-auto'
     ]"
     href="#top"
     aria-label="Go to top of page">

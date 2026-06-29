@@ -157,16 +157,14 @@ function gotoErrata() {
 }
 
 const breadcrumbItems = computed((): BreadcrumbItem[] => {
-  return [
-    { url: '/', label: 'Home' },
-    ...(rfcBucketHtmlDocument.value
-      ? [
-          {
-            label: `RFC ${rfcBucketHtmlDocument.value.rfc.number}: ${rfcBucketHtmlDocument.value?.rfc.title}`
-          }
-        ]
-      : [])
-  ]
+  const items: BreadcrumbItem[] = [{ url: '/', label: 'Home' }]
+  if (rfcBucketHtmlDocument.value) {
+    const { rfc } = rfcBucketHtmlDocument.value
+    items.push({
+      label: `RFC ${rfc.number}${rfc.subseries?.map((subseries) => `${subseries.type} ${subseries.number}`).join(', ') ?? ''}: ${rfc.title}`
+    })
+  }
+  return items
 })
 
 const isModalOpen = ref(false)

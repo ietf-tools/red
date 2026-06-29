@@ -1,7 +1,7 @@
 <template>
   <BodyLayoutDocument>
     <template #sidebar>
-      <div v-if="subseriesDocument" class="lg:min-w-[300px]">
+      <div v-if="subseriesDocument" class="lg:min-w-[300px] px-5 py-3">
         <p v-if="subseriesDocument.type === 'bcp'">
           BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs
           related to a specific IETF process or recommended guidelines. The collection may become empty as the BCP

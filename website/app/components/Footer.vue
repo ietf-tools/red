@@ -16,21 +16,27 @@
           </Anchor>
         </div>
         <div class="flex gap-2 items-center mt-2 pl-3 lg:mt-5 text-sm">
-          <a href="https://status.ietf.org" target="_blank">System Status</a>
-          <span class="text-white" aria-hidden>&middot;</span>
-          <a href="https://github.com/ietf-tools/red/issues" target="_blank">Report a Bug</a>
-          <template v-if="websiteVersion">
-            <span class="text-white" aria-hidden>&middot;</span>
-            <span class="text-gray-100">Version {{ websiteVersion }}</span>
-          </template>
+          <ul class="inline">
+            <li class="inline">
+              <Anchor href="https://status.ietf.org">System Status</Anchor>
+            </li>
+            <li class="inline">
+              <span class="text-white inline-block px-2" aria-hidden>&middot;</span>
+              <Anchor href="https://github.com/ietf-tools/red/issues">Report a Bug</Anchor>
+            </li>
+            <li v-if="websiteVersion" class="inline">
+              <span class="text-white inline-block px-2" aria-hidden>&middot;</span>
+              <span class="text-gray-100">Version {{ websiteVersion }}</span>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="flex-1 flex flex-col lg:flex-row gap-10 p-3 lg:p-0">
         <div v-for="(menuItem, index) in useFooterMenuData()" :key="index">
-          <Heading level="3" style-level="4" class="text-base text-white">
+          <Heading level="3" style-level="4" class="text-base text-white" :id="makeDomId(index)">
             {{ menuItem.label }}
           </Heading>
-          <ul class="mt-3 flex flex-col gap-2">
+          <ul class="mt-3 flex flex-col gap-2" :aria-describedby="makeDomId(index)">
             <li v-for="(child, childIndex) in menuItem.children" :key="childIndex" class="text-base">
               <Anchor :href="child.href" class="underline text-white md:text-nowrap">
                 {{ child.label }}
@@ -47,6 +53,8 @@
 <script setup lang="ts">
 import { IETF_URL_ORIGIN } from '../utilities/url'
 import { useFooterMenuData } from './FooterNavData'
+
+const makeDomId = (index: number) => `footer-${index}`
 
 const websiteVersion = computed(() => {
   const runtimeConfig = useRuntimeConfig()

@@ -103,7 +103,7 @@ function formatObsoletedBy(obsoletedBy: RfcCommon['obsoleted_by']): VNode | unde
             {
               href: infoSeriesPathBuilder(`rfc${obsoletedByItem.number}`),
               title: `${formatTitlePlaintext(`RFC${obsoletedByItem.number}`)}: ${obsoletedByItem.title}`,
-              class: 'relative z-50 underline p-1 -m-1 hover:bg-gray-100'
+              class: 'relative z-50 underline z-2 p-1 -m-1 hover:bg-gray-100'
             },
             ['RFC ', h('b', obsoletedByItem.number)]
           )
