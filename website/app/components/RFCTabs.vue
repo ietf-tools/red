@@ -52,6 +52,7 @@
           "
           :value="2">
           Errata
+          {{ NONBREAKING_SPACE }}
           <DiamondText
             v-if="props.rfcBucketHtmlDocument.errataList && props.rfcBucketHtmlDocument.errataList.length > 0"
             :text="props.rfcBucketHtmlDocument.errataList.length.toString()" />
@@ -226,10 +227,9 @@
             :href="errataSearchForThisRfc"
             class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
             Report a new erratum
-            <c class="text-lg align-middle ml-1" />
+            <GraphicsNewWindowIcon />
           </Anchor>
         </p>
-
         <ErrataList :errata-list="props.rfcBucketHtmlDocument.errataList" />
       </VerticalScrollable>
     </TabsContent>

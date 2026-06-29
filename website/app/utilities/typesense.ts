@@ -1,5 +1,6 @@
 import { prefersReducedMotion } from '~/utilities/accessibility'
 import { z } from 'zod'
+import { FOCUSABLE_QUERY_SELECTOR } from './html'
 
 // If changing this also consider changing the RfcCommon status parsing code
 export const TypesenseSearchItemStatusSchema = z.union([
@@ -169,48 +170,58 @@ const SCROLL_BUFFER_PX = 16 // just a bit further than the container
 export const scrollUpToNewSearchResults = () => {
   const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
   const sticky = document.getElementById(INSTANTSEARCH_STICKY_CONTAINER_DOM_ID)
-  if (target && sticky) {
-    const currentTopPx = window.scrollY
-    const targetBoundingClientRect = target.getBoundingClientRect()
-    const stickyBoundingClientRect = sticky.getBoundingClientRect()
-    let targetTopPx = window.scrollY + targetBoundingClientRect.top
-    const currentStickyStyles = window.getComputedStyle(sticky)
-    if (
-      // the sticky element is only sticky in certain responsive modes
-      // so we detect whether it's currently `position:sticky`
-      // and the reason we need that is because a sticky element will
-      // obscure the scroll target, meaning we need to scroll further
-      // to reveal the scroll target
-      currentStickyStyles.position.toString().match(CSS_POSITION_STICKY)
-    ) {
-      targetTopPx -= stickyBoundingClientRect.height
-    }
-
-    targetTopPx -= SCROLL_BUFFER_PX
-
-    if (currentTopPx < targetTopPx) {
-      console.info('Not scrolling to ', targetTopPx, " because it's not > ", currentTopPx)
-    } else if (Math.round(currentTopPx) === Math.round(targetTopPx)) {
-      // pass
-    } else {
-      console.log('scroll up', targetTopPx, currentTopPx)
-      const behavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
-      target.focus() // for keyboard users
-      window.scrollTo({
-        left: 0,
-        top: targetTopPx,
-        behavior
-      })
-    }
-  } else {
+  if (!target || !sticky) {
     console.warn("scrollUpToNewSearchResults: Can't find ", {
       INSTANTSEARCH_HITS_CONTAINER_DOM_ID,
       target,
       INSTANTSEARCH_STICKY_CONTAINER_DOM_ID,
       sticky
     })
-    // if we can't find the search container just scroll to top of page
-    document.body.focus() // for keyboard users
+    // if we can't find anything focusable just go to main
+    document.querySelector<HTMLElement>('#main')?.focus() // for keyboard users
     window.scrollTo(0, 0)
+    return
   }
+
+  const currentTopPx = window.scrollY
+  const targetBoundingClientRect = target.getBoundingClientRect()
+  const stickyBoundingClientRect = sticky.getBoundingClientRect()
+  let targetTopPx = window.scrollY + targetBoundingClientRect.top
+  const currentStickyStyles = window.getComputedStyle(sticky)
+  if (
+    // the sticky element is only sticky in certain responsive modes
+    // so we detect whether it's currently `position:sticky`
+    // and the reason we need that is because a sticky element will
+    // obscure the scroll target, meaning we need to scroll further
+    // to reveal the scroll target
+    currentStickyStyles.position.toString().match(CSS_POSITION_STICKY)
+  ) {
+    targetTopPx -= stickyBoundingClientRect.height
+  }
+
+  targetTopPx -= SCROLL_BUFFER_PX
+
+  if (currentTopPx < targetTopPx) {
+    console.info('Not scrolling to ', targetTopPx, " because it's not > ", currentTopPx)
+  } else if (Math.round(currentTopPx) === Math.round(targetTopPx)) {
+    // pass
+  } else {
+    console.log('scroll up', targetTopPx, currentTopPx)
+    const behavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
+
+    window.scrollTo({
+      left: 0,
+      top: targetTopPx,
+      behavior
+    })
+  }
+
+  const targetFocusable = target.querySelector<HTMLElement>(FOCUSABLE_QUERY_SELECTOR)
+  if (!targetFocusable) {
+    // if we can't find anything focusable just go to main
+    document.querySelector<HTMLElement>('#main')?.focus() // for keyboard users
+    return
+  }
+  targetFocusable.focus() // for keyboard users
+  console.log('moved focus to', targetFocusable)
 }

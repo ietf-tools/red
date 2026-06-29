@@ -49,7 +49,9 @@
                     'bg-gray-700 dark:bg-blue-200! text-white': page === currentRefinement,
                     'mr-1 bg-gray-200 dark:bg-gray-900 rounded-xs': page !== currentRefinement
                   }"
-                  @click.prevent="refine(page)">
+                  @click.prevent="refine(page)"
+                  :aria-label="`Page ${page + 1}`"
+                  :aria-current="page === currentRefinement ? 'page' : undefined">
                   {{ page + 1 }}
                 </button>
               </li>

@@ -14,7 +14,9 @@
         in
         <span class="font-semibold text-blue-900 dark:text-sky-100 whitespace-nowrap">
           {{ Math.max(MINIMUM_POSSIBLE_PLAUSIBLE_TIME_MS, processingTimeMS) }}
-          <abbr title="milliseconds" class="no-underline">ms</abbr>
+          <!-- suggested pattern by accessibility consultant -->
+          <span aria-hidden>ms</span>
+          <span class="sr-only">milliseconds</span>
         </span>
       </div>
     </template>

@@ -91,3 +91,13 @@ export const htmlEscapeToText = (html: string): string =>
     }
     return match
   })
+
+export const FOCUSABLE_QUERY_SELECTOR = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled]):not([type="hidden"])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  'iframe',
+  '[tabindex]:not([tabindex="-1"])'
+].join(', ')

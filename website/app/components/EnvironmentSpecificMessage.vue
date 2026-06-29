@@ -18,7 +18,9 @@
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-30" />
-      <DialogContent class="fixed top-0 left-[50%] -ml-[10em] z-100 overflow-y-auto max-h-screen">
+      <DialogContent
+        class="fixed top-0 left-[50%] -ml-[10em] z-100 overflow-y-auto max-h-screen"
+        :aria-describedby="undefined">
         <div
           class="relative bg-white dark:bg-black text-black dark:text-white max-w-[20em] mx-auto flex flex-col gap-3 pt-2 pb-3 px-4 rounded-xs shadow-2xl">
           <DialogClose class="absolute right-3 top-3 cursor-pointer">

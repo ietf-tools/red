@@ -17,7 +17,8 @@
           'overflow-y-scroll', // needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
           'absolute inset-0 z-60 bg-blue-900 text-white dark:bg-blue-950 dark:text-white  h-full'
         ]"
-        :aria-labelledby="headingId">
+        :aria-labelledby="headingId"
+        :aria-describedby="undefined">
         <DialogClose aria-label="Close menu" class="absolute right-0 top-0 px-5 py-5">
           <GraphicsClose class="text-white" />
         </DialogClose>

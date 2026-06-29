@@ -14,31 +14,29 @@
           Scroll to {{ props.errataItemForTab.label }}
         </a>
       </p>
-      <p>
-        <span class="font-bold">Status:</span>
-        {{ props.errataItemForTab.errata_status_code }}
-      </p>
-      <p>
-        <span class="font-bold">Date Reported:</span>
-        {{ props.errataItemForTab.submit_date }}
-      </p>
-      <div v-if="orig_text_nodes">
-        <Heading level="4" style-level="6"> Original text: </Heading>
-        <component :is="orig_text_nodes" />
-      </div>
-      <div v-if="correct_text_nodes">
-        <Heading level="4" style-level="6"> Correct text: </Heading>
-        <component :is="correct_text_nodes" />
-      </div>
-      <div v-if="notes_nodes">
-        <Heading level="4" style-level="6"> Notes: </Heading>
-        <component :is="notes_nodes" />
-      </div>
+      <dl>
+        <dt class="font-bold">Status:</dt>
+        <dd>{{ props.errataItemForTab.errata_status_code }}</dd>
+        <dt class="font-bold">Date Reported:</dt>
+        <dd>{{ props.errataItemForTab.submit_date }}</dd>
+        <template v-if="orig_text_nodes">
+          <dt class="font-bold">Original text:</dt>
+          <dd><component :is="orig_text_nodes" /></dd>
+        </template>
+        <template v-if="correct_text_nodes">
+          <dt class="font-bold">Correct text:</dt>
+          <dd><component :is="correct_text_nodes" /></dd>
+        </template>
+        <template v-if="notes_nodes">
+          <dt class="font-bold">Notes:</dt>
+          <dd><component :is="notes_nodes" /></dd>
+        </template>
+      </dl>
       <p>
         <Anchor
           :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)"
           :class="ANCHOR_COLOR_TAILWIND_STYLE"
-          :aria-label="`View errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`">
+          :aria-label="`View this report: errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`">
           View this report
           <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
         </Anchor>

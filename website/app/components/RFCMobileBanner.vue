@@ -10,9 +10,10 @@
         props.isFixed && 'container mx-auto px-2 md:px-2',
         !props.isFixed && 'p-2'
       ]">
-      <component :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)" v-if="rfcId" />{{ COLON }}
-
-      {{ rfc.title }}
+      <h1>
+        <component :is="formatTitleAsVNode(`${rfcId.type}${rfcId.number}`)" v-if="rfcId" />{{ COLON }}
+        {{ rfc.title }}
+      </h1>
 
       <div v-if="pillText.length > 0" class="text-gray-200 dark:text-gray-100">
         <span v-for="(pillTextItem, pillTextItemIndex) in pillText" :key="pillTextItemIndex">

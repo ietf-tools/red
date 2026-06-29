@@ -5,7 +5,9 @@
         class="bg-blue-900/50 data-[state=open]:animate-overlayShow fixed inset-0 z-100 overflow-y-scroll py-16">
         <DialogContent
           class="data-[state=open]:animate-contentShow mx-auto w-[90vw] max-w-[800px] relative rounded-md bg-white dark:bg-blue-900 px-5 pt-3 pb-5 z-[100]">
-          <DialogTitle class="text-xl font-bold py-2 pr-16"> RFC-Editor.org Feature Flag Experiments </DialogTitle>
+          <DialogTitle as="h1" class="text-xl font-bold py-2 pr-16">
+            RFC-Editor.org Feature Flag Experiments
+          </DialogTitle>
           <DialogDescription
             as="div"
             class="w-full leading-6 pb-3 flex flex-row border-b-1 border-b-gray-300 dark:border-b-gray-600">

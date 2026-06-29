@@ -11,11 +11,12 @@
       <DialogOverlay />
 
       <DialogContent
-        class="fixed inset-0 z-60 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col">
+        class="fixed inset-0 z-60 bg-white text-black dark:bg-blue-950 dark:text-white h-full flex flex-col"
+        :aria-describedby="undefined">
         <DialogClose aria-label="Close modal" class="absolute right-0 top-0 px-4 py-4">
           <GraphicsClose class="text-black dark:text-white" />
         </DialogClose>
-        <DialogTitle class="flex justify-between text-xl pl-3 px-3 py-3 font-bold border-b-1 border-b-gray-400">
+        <DialogTitle as="h1" class="flex justify-between text-xl pl-5 pr-3 py-3 font-bold border-b-1 border-b-gray-400">
           Filter RFCs
         </DialogTitle>
 
@@ -64,6 +65,8 @@ import {
 } from 'reka-ui'
 
 const isOpen = ref(false)
+
+const domId = useId()
 
 const closeModal = () => (isOpen.value = false)
 

@@ -164,7 +164,7 @@ watch(
   () => searchStore.searchContents,
   (newValue) => {
     typesenseAdapter.configuration.additionalSearchParameters.preset = newValue ? 'red-content' : 'red'
-
+    console.log('sdfsdf')
     const value = aisInstantSearchRef.value
     if (isAisInstanceSearchValue(value)) {
       value.instantSearchInstance.helper.search()

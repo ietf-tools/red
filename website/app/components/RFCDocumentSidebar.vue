@@ -7,17 +7,14 @@
           :class="[
             'overflow-y-scroll', // needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
             'fixed inset-0 z-50 bg-blue-900 dark:bg-blue-950 h-full'
-          ]">
-          <DialogTitle />
-
-          <RFCMobileBanner :rfc="props.rfcBucketHtmlDocument.rfc" :is-fixed="false">
-            <button
-              class="bg-white rounded-l text-black p-2 flex items-center"
-              aria-label="Close"
-              @click="isModalOpen = false">
-              <GraphicsExpandSidebar class="inline-block mr-1 rotate-180" />
-            </button>
-          </RFCMobileBanner>
+          ]"
+          :aria-describedby="undefined">
+          <DialogClose aria-label="Close menu" class="absolute right-0 top-0 px-5 py-5">
+            <GraphicsClose class="text-white" />
+          </DialogClose>
+          <DialogTitle as="h1" class="px-2 py-4 text-white dark:text-white">
+            <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" />
+          </DialogTitle>
           <nav aria-label="In this RFC (mobile menu)" class="bg-white dark:bg-blue-900">
             <RFCTabs
               v-model="selectedTab"
@@ -25,7 +22,6 @@
               :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
               :has-table-of-contents="props.hasTableOfContents" />
           </nav>
-          <DialogClose />
         </DialogContent>
       </DialogPortal>
     </DialogRoot>
@@ -45,6 +41,7 @@
 <script setup lang="ts">
 import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
 type Props = {
