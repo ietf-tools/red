@@ -11,7 +11,6 @@ import { camelCase, kebabCase } from 'es-toolkit'
 import { XMLParser } from 'fast-xml-parser'
 import type { X2jOptions } from 'fast-xml-parser'
 import { defineNuxtModule, useLogger } from 'nuxt/kit'
-import { injectMarkdownHeadingIds } from '../app/utilities/rfc-validators'
 
 const __dirname = import.meta.dirname
 const websitePath = path.resolve(__dirname, '..')
@@ -56,30 +55,6 @@ const attemptToGetAttribute = (
   if (typeof attribute === 'string') {
     return attribute
   }
-}
-
-/**
- * Generate a heading anchor id by normalising the innerText
- */
-const generateHeadingId = async (headingNode: unknown): Promise<string | undefined> => {
-  if (
-    !headingNode ||
-    typeof headingNode !== 'object' ||
-    !(
-      'h1' in headingNode ||
-      'h2' in headingNode ||
-      'h3' in headingNode ||
-      'h4' in headingNode ||
-      'h5' in headingNode ||
-      'h6' in headingNode
-    )
-  ) {
-    console.error(JSON.stringify(headingNode, null, 2))
-    throw Error('Argument is not a heading node (h1, h2, h3, h4, h5, h6)')
-  }
-  const computedAnchorId = textToAnchorId(await getInnerText([headingNode]))
-
-  return computedAnchorId
 }
 
 /**
@@ -179,13 +154,14 @@ const textToAnchorId = (text: string): string | undefined => {
   return kebabCase(normalized)
 }
 
-const processMarkdown = (markdown: string): string => {
-  const htmlRaw = micromark(markdown, {
+const processMarkdown = (markdown: string): string =>
+  micromark(markdown, {
     extensions: [frontmatter(), gfm()],
     htmlExtensions: [frontmatterHtml(), gfmHtml()]
   })
-  return injectMarkdownHeadingIds(htmlRaw)
-}
+
+/** Matches the trailing `{#custom-id}` of the `## Heading {#custom-id}` syntax. */
+const HEADING_CUSTOM_ID_SYNTAX = /\s*\{#([a-zA-Z0-9_-]+)\}\s*$/
 
 const generatedFileWarningHeader = `// Generated file by ${path.basename(import.meta.filename)} DO NOT EDIT\n`
 
@@ -241,14 +217,12 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
           typeof node === 'object' &&
           ('h1' in node || 'h2' in node || 'h3' in node || 'h4' in node || 'h5' in node || 'h6' in node)
         ) {
-          const customAnchorId = await attemptToGetAttribute(node, undefined, 'id')
-          if (customAnchorId) {
-            anchorIds.push(customAnchorId)
-          } else {
-            const computedHeadingId = await generateHeadingId(node)
-            if (computedHeadingId) {
-              anchorIds.push(computedHeadingId)
-            }
+          const innerText = await getInnerText([node])
+          // Support the `## Heading {#custom-id}` syntax, falling back to an id derived from the text.
+          const explicitId = innerText.match(HEADING_CUSTOM_ID_SYNTAX)?.[1]
+          const anchorId = explicitId ?? textToAnchorId(innerText)
+          if (anchorId) {
+            anchorIds.push(anchorId)
           }
         }
       })

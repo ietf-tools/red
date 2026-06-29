@@ -2,7 +2,8 @@
 import path from 'path'
 import fsPromises from 'fs/promises'
 import { test, expect } from 'vitest'
-import { replaceComponentReferences, markdownToHtml } from './markdown-pages.ts'
+import { replaceComponentReferences, markdownToHtml, renderMarkdownPageData } from './markdown-pages.ts'
+import type { NodePojo } from '../../../website/app/utilities/rfc-validators.ts'
 
 const CONTENT_DIR = path.resolve(import.meta.dirname, '../../../website/content')
 
@@ -84,4 +85,90 @@ test('replaceComponentReferences: all content markdown files have no unconverted
       `${relativePath} still contains unconverted :: component syntax after replaceComponentReferences`
     ).not.toMatch(simpleComponentReferenceRegex)
   }
+})
+
+const FAQ_MARKDOWN = `---
+showToc: true
+---
+
+# Frequently Asked Questions
+
+## Can I be notified when a new RFC is published? {#notified}
+
+Yes.
+
+## May I reproduce or translate an RFC? {#copyright}
+
+All RFCs may be freely reproduced and translated (unmodified).
+`
+
+const pojoText = (node: NodePojo): string =>
+  node.type === 'Text' ? node.textContent : node.children.map(pojoText).join('')
+
+// Collects every heading element (h1–h6) from a rendered page's htmlObj as { tag, id, title }.
+const headingsOf = (page: Awaited<ReturnType<typeof renderMarkdownPageData>>) =>
+  page.htmlObj
+    .filter((node): node is Extract<NodePojo, { type: 'Element' }> => node.type === 'Element')
+    .filter((node) => /^h[1-6]$/.test(node.nodeName))
+    .map((node) => ({
+      tag: node.nodeName,
+      id: node.attributes.id,
+      title: pojoText(node).trim()
+    }))
+
+test('renderMarkdownPageData: extracts the H1 as the page title', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: FAQ_MARKDOWN,
+    contentMetadata: {},
+    filePath: 'series/rfc-faq.md',
+    slug: 'series/rfc-faq'
+  })
+
+  expect(page.title).toBe('Frequently Asked Questions')
+})
+
+test('renderMarkdownPageData: applies explicit {#id} anchors to the right heading', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: FAQ_MARKDOWN,
+    contentMetadata: {},
+    filePath: 'series/rfc-faq.md',
+    slug: 'series/rfc-faq'
+  })
+
+  // Regression: the idless H1 must NOT absorb the following heading's {#notified} id, and the
+  // {#id} markers must be stripped from the rendered heading text.
+  expect(headingsOf(page)).toEqual([
+    { tag: 'h1', id: undefined, title: 'Frequently Asked Questions' },
+    { tag: 'h2', id: 'notified', title: 'Can I be notified when a new RFC is published?' },
+    { tag: 'h2', id: 'copyright', title: 'May I reproduce or translate an RFC?' }
+  ])
+})
+
+test('renderMarkdownPageData: auto-generates ids for headings without an explicit anchor', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: '# Title\n\n## A plain heading?\n\nBody.\n',
+    contentMetadata: {},
+    filePath: 'series/example.md',
+    slug: 'series/example'
+  })
+
+  expect(headingsOf(page)).toEqual([
+    { tag: 'h1', id: undefined, title: 'Title' },
+    { tag: 'h2', id: 'a-plain-heading', title: 'A plain heading?' }
+  ])
+})
+
+test('renderMarkdownPageData: builds a table of contents from the H2 heading ids', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: FAQ_MARKDOWN,
+    contentMetadata: {},
+    filePath: 'series/rfc-faq.md',
+    slug: 'series/rfc-faq'
+  })
+
+  const links = (page.toc?.sections ?? []).flatMap((section) => section.links)
+  expect(links).toEqual([
+    { id: 'notified', title: 'Can I be notified when a new RFC is published?' },
+    { id: 'copyright', title: 'May I reproduce or translate an RFC?' }
+  ])
 })

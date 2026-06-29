@@ -42,7 +42,7 @@ describe('header preferences keyboard nav', async () => {
 
       // The groups expose their heading as an accessible name.
       expect(await page.getByRole('radiogroup', { name: 'Theme' }).count()).toBe(1)
-      expect(await page.getByRole('group', { name: 'UI settings' }).count()).toBe(1)
+      expect(await page.getByRole('group', { name: 'RFC Info pages' }).count()).toBe(1)
 
       // Focus the currently-selected radio.
       const initial = await checkedStates(page)
@@ -105,6 +105,77 @@ describe('header preferences keyboard nav', async () => {
       const active = await activeInfo(page)
       expect(active.role).not.toBe('radio')
       expect(active.isAccordionHeader).toBe(true)
+
+      await page.close()
+    },
+    TEST_TIMEOUT_MS
+  )
+
+  test(
+    'mobile: arrows move between top-level items including the Search link',
+    async () => {
+      const page = await createPage('/')
+      await page.setViewportSize({ width: 390, height: 844 })
+      await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
+
+      await page.getByRole('button', { name: 'Menu' }).click()
+
+      // "About Us" is the top-level accordion header immediately before the
+      // standalone "Search" link in the menu.
+      const aboutHeader = page.getByRole('button', { name: 'About Us' })
+      await aboutHeader.waitFor({ state: 'visible' })
+      await aboutHeader.focus()
+
+      const activeName = () => page.evaluate(() => (document.activeElement?.textContent ?? '').trim())
+
+      // ArrowDown from the last accordion-less section must land on the Search
+      // link rather than skipping straight past it.
+      await page.keyboard.press('ArrowDown')
+      await page.waitForTimeout(50)
+      expect(await activeName()).toBe('Search')
+
+      // ArrowUp returns to the preceding header.
+      await page.keyboard.press('ArrowUp')
+      await page.waitForTimeout(50)
+      expect(await activeName()).toBe('About Us')
+
+      await page.close()
+    },
+    TEST_TIMEOUT_MS
+  )
+
+  test(
+    'mobile: arrows move between sibling links inside an expanded submenu',
+    async () => {
+      const page = await createPage('/')
+      await page.setViewportSize({ width: 390, height: 844 })
+      await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
+
+      await page.getByRole('button', { name: 'Menu' }).click()
+
+      // Expand "The RFC Series", then tab into its first submenu link.
+      const seriesHeader = page.getByRole('button', { name: 'The RFC Series' })
+      await seriesHeader.waitFor({ state: 'visible' })
+      await seriesHeader.click()
+      const firstLink = page.getByRole('link', { name: 'What is an RFC?' })
+      await firstLink.waitFor({ state: 'visible' })
+      await firstLink.focus()
+
+      const activeName = () => page.evaluate(() => (document.activeElement?.textContent ?? '').trim())
+
+      // ArrowDown walks to the next sibling link within the submenu.
+      await page.keyboard.press('ArrowDown')
+      await page.waitForTimeout(50)
+      expect(await activeName()).toBe('How can I use RFCs?')
+
+      // ArrowUp goes back, and wrapping past the top stays inside the submenu
+      // (it must not escape up to the "The RFC Series" header).
+      await page.keyboard.press('ArrowUp')
+      await page.keyboard.press('ArrowUp')
+      await page.waitForTimeout(50)
+      expect(await activeName()).toBe('FAQ') // last child, wrapped from the first
+      const escapedToHeader = await page.evaluate(() => document.activeElement?.getAttribute('aria-expanded') !== null)
+      expect(escapedToHeader).toBe(false)
 
       await page.close()
     },

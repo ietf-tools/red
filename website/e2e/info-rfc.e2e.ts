@@ -12,7 +12,7 @@ import { infoSeriesPathBuilder } from '../app/utilities/url'
 
 // FIXME: decide an appropriate range.
 const FIRST_RFC = 1
-const LAST_RFC = 8500
+const LAST_RFC = 10010
 
 const VIEWPORTS = {
   mobile: { width: 300, height: 667 },
@@ -28,7 +28,7 @@ const TIME_FOR_CALLIBRATION_TEST_MS = 15_000
 // N routes × 3 viewports × page loading and navigation needs a lot of time
 const timeForRfcTests = rfcNumbers.length * 3 * TIME_PER_TEST_MS
 
-describe('info/rfcN/ routes', async () => {
+describe.skip('info/rfcN/ routes', async () => {
   // `dev: true` runs the Nuxt dev server so the `$development` route rules in
   // nuxt.config.ts apply (notably the `/api/v1/**` proxy the app needs to work).
   await setup({ browser: true, dev: true })

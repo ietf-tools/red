@@ -2,7 +2,7 @@
   <footer
     class="bg-blue-900 text-white dark:bg-blue-950 border-t border-t-white dark:border-t-blue-900 relative print:hidden">
     <h2 class="sr-only">Footer</h2>
-    <div class="container mx-auto flex flex-col md:flex-row py-4 lg:py-8 gap-4">
+    <nav aria-label="Footer" class="container mx-auto flex flex-col md:flex-row py-4 lg:py-8 gap-4">
       <div class="flex-1 flex flex-col gap-5 pr-4">
         <p class="text-base pl-3">
           rfc-editor.org is maintained by the
@@ -25,7 +25,7 @@
           </template>
         </div>
       </div>
-      <nav aria-label="Footer" class="flex-1 flex flex-col lg:flex-row gap-10 p-3 lg:p-0">
+      <div class="flex-1 flex flex-col lg:flex-row gap-10 p-3 lg:p-0">
         <div v-for="(menuItem, index) in useFooterMenuData()" :key="index">
           <Heading level="3" style-level="4" class="text-base text-white">
             {{ menuItem.label }}
@@ -38,8 +38,8 @@
             </li>
           </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
     <ScrollToTop />
   </footer>
 </template>

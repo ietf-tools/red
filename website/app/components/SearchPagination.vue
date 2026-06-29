@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center md:justify-center md:flex-row mt-8">
+  <nav aria-label="Pagination" class="flex flex-col items-center md:justify-center md:flex-row mt-8">
     <HorizontalScrollable class="w-full" inner-class="py-1">
       <ais-pagination @click="scrollUpToNewSearchResults">
         <template
@@ -14,7 +14,6 @@
             classNames
           }">
           <div class="w-full md:w-auto">
-            {{ classNames }}
             <ul class="w-auto ml-auto mr-auto flex flex-row justify-center md:justify-left">
               <li v-if="!isFirstPage" class="mr-1 bg-gray-200 dark:bg-gray-900 rounded-xs">
                 <button
@@ -102,7 +101,7 @@
           'ais-HitsPerPage-select': 'py-2 text-base dark:bg-black dark:text-white scheme-light dark:scheme-dark'
         }" />
     </label>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">

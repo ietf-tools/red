@@ -28,8 +28,9 @@
           :disabled="!hasMounted"
           :class="[
             'hover:bg-blue-850 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-base leading-none',
-            // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
-            hasMounted && 'cursor-pointer'
+            {
+              'cursor-pointer': hasMounted // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
+            }
           ]"
           :aria-label="menuItem.label">
           <HeaderNavIcon :icon="menuItem.icon" />
@@ -37,7 +38,6 @@
             {{ menuItem.label }}
           </span>
           <GraphicsChevron
-            v-if="!menuItem.hideDropdownIconDesktop"
             :class="[
               'ml-1 top-[1px] text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
               hasMounted ? 'visible' : 'invisible'
@@ -46,12 +46,12 @@
         <NavigationMenuContent
           v-if="menuItem.children"
           class="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full min-w-3xs sm:w-auto py-1">
+          <h2
+            v-if="menuItem.hideLabelDesktop"
+            class="text-gray-600 dark:text-white pt-1 pb-1 pl-3 text-sm font-bold pl-3">
+            {{ menuItem.label }}
+          </h2>
           <ul class="list-none">
-            <li
-              v-if="menuItem.hideLabelDesktop"
-              class="text-gray-600 dark:text-white pt-1 pb-1 pl-3 text-sm font-bold pl-3">
-              {{ menuItem.label }}
-            </li>
             <li
               v-for="(level0, level0Index) in menuItem.children"
               :key="`${index}.${level0Index}`"
@@ -76,23 +76,32 @@
                   {{ level0.label }}
                 </span>
 
-                <RadioGroupItem
-                  v-for="(level1, level1Index) in level0.children"
-                  :key="level1Index"
-                  :value="level1.fieldValue"
-                  :data-field-value="level1.fieldValue"
-                  :aria-label="level1.activeLabelFn?.()"
-                  :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
-                  <span class="flex items-center">
-                    <span
-                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
-                      <RadioGroupIndicator>
-                        <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
-                      </RadioGroupIndicator>
+                <template v-for="(level1, level1Index) in level0.children" :key="level1Index">
+                  <RadioGroupItem
+                    :value="level1.fieldValue"
+                    :data-field-value="level1.fieldValue"
+                    :aria-label="level1.activeLabelFn?.()"
+                    :aria-describedby="
+                      level1.description ? descriptionDomId('desktop', index, level0Index, level1Index) : undefined
+                    "
+                    :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
+                    <span class="flex items-center">
+                      <span
+                        class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
+                        <RadioGroupIndicator>
+                          <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
+                        </RadioGroupIndicator>
+                      </span>
+                      {{ level1.label }}
                     </span>
-                    {{ level1.label }}
-                  </span>
-                </RadioGroupItem>
+                  </RadioGroupItem>
+                  <p
+                    v-if="level1.description"
+                    :id="descriptionDomId('desktop', index, level0Index, level1Index)"
+                    class="pl-10 pr-2 pb-2 text-sm text-gray-800 dark:text-gray-200">
+                    {{ level1.description }}
+                  </p>
+                </template>
               </RadioGroupRoot>
               <CheckboxGroupRoot
                 v-else-if="level0.role === 'checkboxgroup'"
@@ -115,21 +124,30 @@
                   {{ level0.label }}
                 </span>
 
-                <CheckboxRoot
-                  v-for="(level1, level1Index) in level0.children"
-                  :key="level1Index"
-                  :value="level1.fieldValue"
-                  :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
-                  <span class="flex items-center">
-                    <span
-                      class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
-                      <CheckboxIndicator>
-                        <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
-                      </CheckboxIndicator>
+                <template v-for="(level1, level1Index) in level0.children" :key="level1Index">
+                  <CheckboxRoot
+                    :value="level1.fieldValue"
+                    :aria-describedby="
+                      level1.description ? descriptionDomId('desktop', index, level0Index, level1Index) : undefined
+                    "
+                    :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
+                    <span class="flex items-center">
+                      <span
+                        class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
+                        <CheckboxIndicator>
+                          <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
+                        </CheckboxIndicator>
+                      </span>
+                      {{ level1.label }}
                     </span>
-                    {{ level1.label }}
-                  </span>
-                </CheckboxRoot>
+                  </CheckboxRoot>
+                  <p
+                    v-if="level1.description"
+                    :id="descriptionDomId('desktop', index, level0Index, level1Index)"
+                    class="pl-11 pr-2 pb-2 text-sm text-gray-800 dark:text-gray-200">
+                    {{ level1.description }}
+                  </p>
+                </template>
               </CheckboxGroupRoot>
               <NavigationMenuSub v-else-if="level0.children" :default-value="level0.label" class="z-100">
                 <NavigationMenuList>
@@ -254,7 +272,7 @@ import {
   CheckboxIndicator,
   CheckboxRoot
 } from 'reka-ui'
-import { useMenuData, renderNoScriptMenuItem, groupLabelDomId } from './HeaderNavData'
+import { useMenuData, renderNoScriptMenuItem, groupLabelDomId, descriptionDomId } from './HeaderNavData'
 import { isInternalLink } from '~/utilities/url'
 
 const MENU_ITEM_CLASS =

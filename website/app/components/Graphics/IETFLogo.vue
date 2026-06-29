@@ -1,10 +1,5 @@
 <template>
-  <img
-    :src="ietfLogo"
-    :width="props.width"
-    :height="props.height"
-    :class="props.class"
-    alt="Internet Engineering Task Force" />
+  <img :src="ietfLogo" :width="props.width" :height="props.height" :class="props.class" alt="IETF" />
 </template>
 
 <script setup lang="ts">

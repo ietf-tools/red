@@ -365,17 +365,6 @@ export const MarkdownPageSchema = z.object({
 export type MarkdownPage = z.infer<typeof MarkdownPageSchema>
 
 /**
- * Post-processes HTML from micromark to support the {#custom-id} heading syntax.
- * Strips " {#id}" from heading text and injects it as the element's id attribute.
- * Equivalent to what remark-heading-id did in the previous `@nuxt/content` pipeline.
- */
-export const injectMarkdownHeadingIds = (html: string): string =>
-  html.replace(
-    /<(h[1-6])([^>]*)>([\s\S]*?)\s*\{#([a-zA-Z0-9_-]+)\}\s*<\/(h[1-6])>/g,
-    (_, tag, attrs, content, id) => `<${tag} id="${id}"${attrs}>${content}</${tag}>`
-  )
-
-/**
  * Converts heading text to a URL-safe anchor id.
  * Shared between precomputer and website to ensure consistent heading ids.
  */

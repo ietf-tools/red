@@ -15,7 +15,9 @@
               [UNSELECTED_CLASS]: selectedTab !== 0
             }
           ]"
-          :disabled="!isMounted"
+          :disabled="
+            !isMounted // ensure they're not clickable buttons in non-JS
+          "
           :value="0">
           Contents
         </TabsTrigger>
@@ -29,7 +31,9 @@
               [UNSELECTED_CLASS]: selectedTab !== 1
             }
           ]"
-          :disabled="!isMounted"
+          :disabled="
+            !isMounted // ensure they're not clickable buttons in non-JS
+          "
           :value="1">
           About this RFC
         </TabsTrigger>
@@ -43,7 +47,9 @@
               [UNSELECTED_CLASS]: selectedTab !== 2
             }
           ]"
-          :disabled="!isMounted"
+          :disabled="
+            !isMounted // ensure they're not clickable buttons in non-JS
+          "
           :value="2">
           Errata
           <DiamondText

@@ -5,11 +5,10 @@ import { parse as parseYaml } from 'yaml'
 import { micromark } from 'micromark'
 import { frontmatter, frontmatterHtml } from 'micromark-extension-frontmatter'
 import { gfm, gfmHtml } from 'micromark-extension-gfm'
-import { getDOMParser, rfcDocumentToPojo } from '../utilities/dom.ts'
+import { getDOMParser, isTextNode, rfcDocumentToPojo } from '../utilities/dom.ts'
 import {
   MarkdownPageSchema,
   type MarkdownPage,
-  injectMarkdownHeadingIds,
   textToAnchorId,
   buildMarkdownToc,
   type HeadingInfo
@@ -66,7 +65,33 @@ const extractFrontmatterYaml = (fileContent: string): Record<string, unknown> =>
   return parseYaml(frontmatterYamlString) ?? {}
 }
 
-const extractMarkdownTitle = (html: string): string | undefined => html.match(/<h1>([\s\S]*?)<\/h1>/)?.[1]?.trim()
+const HEADING_CUSTOM_ID_SYNTAX = /\s*\{#([a-zA-Z0-9_-]+)\}\s*$/
+
+/**
+ * Supports the `## Heading {#custom-id}` syntax and auto-generates ids for the headings that feed
+ * the table of contents. Operating on the parsed DOM (rather than a regex over the HTML string)
+ * keeps each heading's id scoped to its own element, so one heading's `{#id}` marker can never leak
+ * onto an adjacent heading.
+ */
+const applyMarkdownHeadingIds = (root: HTMLElement): void => {
+  for (const heading of Array.from(root.querySelectorAll('h1, h2, h3, h4, h5, h6'))) {
+    const explicitId = heading.textContent?.match(HEADING_CUSTOM_ID_SYNTAX)?.[1]
+    if (explicitId) {
+      heading.setAttribute('id', explicitId)
+      // Strip the `{#id}` marker, which micromark leaves as the heading's trailing text node.
+      const { lastChild } = heading
+      if (isTextNode(lastChild)) {
+        lastChild.textContent = lastChild.textContent?.replace(HEADING_CUSTOM_ID_SYNTAX, '') ?? null
+      }
+      continue
+    }
+    // Only h2/h3 need generated ids — they're what buildMarkdownToc links to.
+    if (!heading.getAttribute('id') && (heading.tagName === 'H2' || heading.tagName === 'H3')) {
+      const generatedId = textToAnchorId(heading.textContent ?? '')
+      if (generatedId) heading.setAttribute('id', generatedId)
+    }
+  }
+}
 
 export const markdownToHtml = (markdown: string): string =>
   micromark(markdown, {
@@ -76,32 +101,48 @@ export const markdownToHtml = (markdown: string): string =>
 
 export const renderMarkdownPage = async (filePath: string, contentMetadata: ContentMetadata): Promise<MarkdownPage> => {
   const slug = path.relative(CONTENT_DIR, filePath).replace(/\.md$/, '')
-
   const fileContent = await fsPromises.readFile(filePath, 'utf-8')
+  return renderMarkdownPageData({
+    fileContent,
+    contentMetadata,
+    filePath,
+    slug
+  })
+}
 
+type RenderMarkdownPageDataProps = {
+  fileContent: string
+  contentMetadata: ContentMetadata
+  filePath: string
+  slug: string
+}
+
+export const renderMarkdownPageData = async ({
+  fileContent,
+  contentMetadata,
+  filePath,
+  slug
+}: RenderMarkdownPageDataProps): Promise<MarkdownPage> => {
   const frontmatterRaw = extractFrontmatterYaml(fileContent)
 
   const { description, showToc } = MarkdownPageSchema.pick({ description: true, showToc: true }).parse(frontmatterRaw)
 
   let html = markdownToHtml(fileContent)
   html = replaceComponentReferences(html)
-  html = injectMarkdownHeadingIds(html)
-
-  const title = extractMarkdownTitle(html)
 
   const parser = await getDOMParser()
   const dom = parser.parseFromString(html, 'text/html')
 
+  applyMarkdownHeadingIds(dom.body)
+
+  const title = dom.body.querySelector('h1')?.textContent?.trim()
+  if (title === undefined) {
+    console.warn(`[markdown ${filePath}]`, 'Unable to extract title')
+  }
+
   const headingInfos: HeadingInfo[] = []
   for (const el of Array.from(dom.body.querySelectorAll('h2, h3'))) {
-    let id = el.getAttribute('id') ?? ''
-    if (!id) {
-      const generated = textToAnchorId(el.textContent ?? '')
-      if (generated) {
-        id = generated
-        el.setAttribute('id', id)
-      }
-    }
+    const id = el.getAttribute('id')
     if (id) {
       headingInfos.push({ id, title: el.textContent?.trim() ?? '', level: parseInt(el.tagName[1], 10) })
     }

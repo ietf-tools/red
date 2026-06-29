@@ -16,25 +16,27 @@
               <GraphicsExpandSidebar class="inline-block mr-1 rotate-180" />
             </button>
           </RFCMobileBanner>
-          <div class="bg-white dark:bg-blue-900">
+          <nav aria-label="In this RFC (mobile menu)" class="bg-white dark:bg-blue-900">
             <RFCTabs
               v-model="selectedTab"
               mode="mobile"
               :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
               :has-table-of-contents="props.hasTableOfContents" />
-          </div>
+          </nav>
           <DialogClose />
         </DialogContent>
       </DialogPortal>
     </DialogRoot>
 
-    <div :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']">
+    <nav
+      aria-label="In this RFC (desktop menu)"
+      :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']">
       <RFCTabs
         v-model="selectedTab"
         mode="desktop"
         :rfc-bucket-html-document="props.rfcBucketHtmlDocument"
         :has-table-of-contents="props.hasTableOfContents" />
-    </div>
+    </nav>
   </div>
 </template>
 

@@ -17,6 +17,7 @@ import type { VueClick } from '~/utilities/vue'
 export type MenuItem = {
   icon?: string | (() => VNode)
   label: string
+  description?: string
   hideMobile?: boolean
   hideDesktop?: boolean
   hideLabelDesktop?: boolean
@@ -55,6 +56,8 @@ export const colorPreferences = [
 type Mode = 'desktop' | 'mobile'
 
 export const groupLabelDomId = (mode: Mode, ...indexes: number[]): string => `${mode}-group-label-${indexes.join('-')}`
+
+export const descriptionDomId = (mode: Mode, ...indexes: number[]): string => `${mode}-description-${indexes.join('-')}`
 
 export const useMenuData = (mode: Mode) => {
   const colorMode = useColorMode()
@@ -172,7 +175,6 @@ export const useMenuData = (mode: Mode) => {
         icon: () => h(GraphicsUserPreferences),
         label: 'Your preferences',
         hideLabelDesktop: true,
-        hideDropdownIconDesktop: true,
         children: [
           {
             label: 'Theme',
@@ -198,7 +200,8 @@ export const useMenuData = (mode: Mode) => {
               {
                 label: 'Disable RFC Link Preview',
                 role: 'checkbox',
-                fieldValue: 'disableRFCLinkPreview'
+                fieldValue: 'disableRFCLinkPreview',
+                description: 'Disable the RFC tooltip that activates on some RFC links (typically within RFCs).'
               }
             ]
           }
