@@ -1,11 +1,7 @@
 <template>
-  <div class="container flex justify-between items-center mx-auto pl-2">
-    <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1" />
-    <p v-if="featureFlags.formatsAlsoViewAs" class="pt-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
-      View as: <DocumentPojo :value="formatsPojo" />
-    </p>
-  </div>
-
+  <p v-if="featureFlags.formatsAlsoViewAs" class="pt-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
+    View as: <DocumentPojo :value="formatsPojo" />
+  </p>
   <div class="px-2">
     <div class="flex flex-col">
       <RFCDocumentMobileInfoButton @click="isModalOpen = true"> Info </RFCDocumentMobileInfoButton>
@@ -13,7 +9,7 @@
 
     <Heading
       level="1"
-      class="mb-2 max-w-[var(--max-text-block-width)] px-0 ml-2 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
+      class="mt-4 mb-2 ml-2 max-w-[var(--max-text-block-width)] px-0 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
       <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title />
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />

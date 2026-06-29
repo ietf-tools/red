@@ -1,4 +1,5 @@
 <template>
+  <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1 container mx-auto pl-5" />
   <BodyLayoutRFCDocument>
     <template #sidebar>
       <RFCDocumentSidebar

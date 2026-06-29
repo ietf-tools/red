@@ -6,7 +6,7 @@
       </template>
       <div class="container mx-auto pl-5 pr-3">
         <div class="md:mx-2 flex flex-col-reverse lg:flex-row lg:items-center justify-between">
-          <Heading level="2" has-icon class="text-left mt-10 mb-4 pl-5 md:pl-0"> Latest RFCs </Heading>
+          <Heading level="2" has-icon class="text-left mt-2 mb-4 pl-5 md:pl-0"> Latest RFCs </Heading>
           <p class="hidden mt-8 lg:block text-base text-grey-800 pl-5">
             Looking for works in progress? Go to
             <Anchor :href="datatrackerUrlOrigin" class="text-blue-300 dark:text-blue-100">
