@@ -78,7 +78,8 @@
         :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="text-bold-without-layout-shift"
         link-class="block no-underline hover:underline no-underline hover:underline focus:underline"
-        last-link-class="flex-1">
+        last-link-class="flex-1"
+        navAriaLabel="In this section">
         <Heading level="2" style-level="5" class="mt-4 mb-1 sr-only"> In this section </Heading>
       </TableOfContentsHighlight>
       <TableOfContents
@@ -160,7 +161,7 @@
                       :href="datatrackerAuthorUrlBuilder(author.datatracker_person_path)"
                       :class="[ANCHOR_COLOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']">
                       <RFCDocumentAuthor :author="author" />
-                      <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" />
+                      <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
                     </a>
                     <span v-else>
                       <RFCDocumentAuthor :author="author" />
@@ -225,7 +226,7 @@
             :href="errataSearchForThisRfc"
             class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
             Report a new erratum
-            <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" />
+            <c class="text-lg align-middle ml-1" />
           </Anchor>
         </p>
 
@@ -392,8 +393,8 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
         ...children,
         {
           type: 'Element',
-          nodeName: 'Icon',
-          attributes: { name: 'fluent:window-new-20-regular', class: 'text-lg align-middle ml-1' },
+          nodeName: 'GraphicsNewWindowIcon',
+          attributes: { class: 'text-lg align-middle ml-1' },
           children: []
         }
       ]
@@ -420,8 +421,8 @@ const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
         ...children,
         {
           type: 'Element',
-          nodeName: 'Icon',
-          attributes: { name: 'fluent:window-new-20-regular', class: 'text-lg align-middle ml-1' },
+          nodeName: 'GraphicsNewWindowIcon',
+          attributes: { class: 'text-lg align-middle ml-1' },
           children: []
         }
       ]
@@ -459,8 +460,8 @@ const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPoj
                 { type: 'Text', textContent: doiUrlBuilder(value, false) },
                 {
                   type: 'Element',
-                  nodeName: 'Icon',
-                  attributes: { name: 'fluent:window-new-20-regular', class: 'text-lg align-middle ml-1' },
+                  nodeName: 'GraphicsNewWindowIcon',
+                  attributes: { class: 'text-lg align-middle ml-1' },
                   children: []
                 }
               ]
@@ -582,8 +583,8 @@ const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
           { type: 'Text', textContent: stream.name },
           {
             type: 'Element',
-            nodeName: 'Icon',
-            attributes: { name: 'fluent:window-new-20-regular', class: 'text-lg align-middle ml-1' },
+            nodeName: 'GraphicsNewWindowIcon',
+            attributes: { class: 'text-lg align-middle ml-1' },
             children: []
           }
         ]

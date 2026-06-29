@@ -135,7 +135,7 @@ test('renderMarkdownPageData: applies explicit {#id} anchors to the right headin
     slug: 'series/rfc-faq'
   })
 
-  // Regression: the idless H1 must NOT absorb the following heading's {#notified} id, and the
+  // Regression: the id-less H1 must NOT absorb the following heading's {#notified} id, and the
   // {#id} markers must be stripped from the rendered heading text.
   expect(headingsOf(page)).toEqual([
     { tag: 'h1', id: undefined, title: 'Frequently Asked Questions' },

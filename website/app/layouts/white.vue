@@ -1,9 +1,12 @@
 <template>
   <div class="flex flex-col min-h-[100vh]">
-    <Header>
-      <slot name="subheader"></slot>
-    </Header>
+    <HeaderWrapper>
+      <Header />
+    </HeaderWrapper>
     <div class="bg-white dark:bg-blue-975 flex-1">
+      <HeaderWrapper>
+        <slot name="subheader" />
+      </HeaderWrapper>
       <Main>
         <slot />
       </Main>

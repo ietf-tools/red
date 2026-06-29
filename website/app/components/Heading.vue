@@ -12,14 +12,15 @@
       width="75"
       height="55"
       :opacity="0.05" />
-    <slot />
+    <template v-if="!hasInternalLink">
+      <slot />
+    </template>
     <a
-      v-if="hasInternalLink"
+      v-else
       :href="hasInternalLink ? `#${props.id ?? getAnchorId($slots.default)}` : undefined"
-      class="ml-1 opacity-0 transition-opacity no-underline group-hover:opacity-100 font-normal"
-      title="Link to this heading"
+      class="no-underline hover:underline focus:underline"
       @click="hashClickHandler(`#${getAnchorId($slots.default)}`)">
-      &para;
+      <slot />
     </a>
   </component>
 </template>

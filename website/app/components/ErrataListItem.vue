@@ -40,7 +40,7 @@
           :class="ANCHOR_COLOR_TAILWIND_STYLE"
           :aria-label="`View errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`">
           View this report
-          <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" />
+          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
         </Anchor>
       </p>
     </div>

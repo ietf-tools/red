@@ -1,24 +1,23 @@
 <template>
-  <VerticalScrollable
-    v-if="props"
-    ref="vertical-scrollable"
-    :class="`overflow-y-auto min-h-0 flex flex-col ${props.wrapperClass}`">
-    <slot />
-    <TableOfContentsHighlightSection
-      :sections="props.toc.sections"
-      :depth="0"
-      :list-type-element="listTypeElement"
-      :active-id="activeId"
-      :handle-click="handleClick"
-      :make-toc-id="makeTocId"
-      :is-ssr="isSSR"
-      :list-class="props.listClass"
-      :nested-list-class="props.nestedListClass"
-      :links-class="props.linksClass"
-      :links-active-class="props.linksActiveClass"
-      :link-class="props.linkClass"
-      :last-link-class="props.lastLinkClass"
-      :show-last-link-icon="props.showLastLinkIcon" />
+  <VerticalScrollable ref="vertical-scrollable" :class="`overflow-y-auto min-h-0 flex flex-col ${props.wrapperClass}`">
+    <nav :aria-label="props.navAriaLabel">
+      <slot />
+      <TableOfContentsHighlightSection
+        :sections="props.toc.sections"
+        :depth="0"
+        :list-type-element="listTypeElement"
+        :active-id="activeId"
+        :handle-click="handleClick"
+        :make-toc-id="makeTocId"
+        :is-ssr="isSSR"
+        :list-class="props.listClass"
+        :nested-list-class="props.nestedListClass"
+        :links-class="props.linksClass"
+        :links-active-class="props.linksActiveClass"
+        :link-class="props.linkClass"
+        :last-link-class="props.lastLinkClass"
+        :show-last-link-icon="props.showLastLinkIcon" />
+    </nav>
   </VerticalScrollable>
 </template>
 
@@ -33,6 +32,7 @@ type Section = RfcEditorToc['sections'][number]
 
 type Props = {
   toc: RfcEditorToc
+  navAriaLabel: string
   listType: 'numbered' | 'ordered'
   wrapperClass?: string
   listClass?: string

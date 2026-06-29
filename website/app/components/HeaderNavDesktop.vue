@@ -45,9 +45,11 @@
         </NavigationMenuTrigger>
         <NavigationMenuContent
           v-if="menuItem.children"
-          class="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full min-w-3xs sm:w-auto py-1">
+          class="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full min-w-3xs sm:w-auto py-1"
+          :aria-labelledby="menuItem.hideLabelDesktop ? dropdownHeadingDomId('desktop', index) : undefined">
           <h2
             v-if="menuItem.hideLabelDesktop"
+            :id="dropdownHeadingDomId('desktop', index)"
             class="text-gray-600 dark:text-white pt-1 pb-1 pl-3 text-sm font-bold pl-3">
             {{ menuItem.label }}
           </h2>
@@ -201,13 +203,9 @@
                   <span>
                     <HeaderNavIcon :icon="level0.icon" />
                     {{ level0.label }}
-                    <Icon
-                      v-if="!isInternalLink(level0.href)"
-                      name="fluent:window-new-20-regular"
-                      class="text-lg absolute ml-1 -mt-1" />
+                    <GraphicsNewWindowIcon v-if="!isInternalLink(level0.href)" class="text-lg absolute ml-1 -mt-1" />
                   </span>
                 </Anchor>
-
                 <button
                   v-else-if="level0.click"
                   :id="`menu-link-${index}-${level0Index}`"
@@ -272,7 +270,13 @@ import {
   CheckboxIndicator,
   CheckboxRoot
 } from 'reka-ui'
-import { useMenuData, renderNoScriptMenuItem, groupLabelDomId, descriptionDomId } from './HeaderNavData'
+import {
+  useMenuData,
+  renderNoScriptMenuItem,
+  groupLabelDomId,
+  descriptionDomId,
+  dropdownHeadingDomId
+} from './HeaderNavData'
 import { isInternalLink } from '~/utilities/url'
 
 const MENU_ITEM_CLASS =

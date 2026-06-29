@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-[100vh]">
-    <NuxtLayout name="default" main-class="border-t border-t-white dark:border-t-blue-900">
+    <NuxtLayout name="default">
       <template #subheader>
         <IndexSubheader />
       </template>

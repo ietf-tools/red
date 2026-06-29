@@ -10,7 +10,8 @@
       links-active-class="text-bold-without-layout-shift"
       link-class="block no-underline hover:underline no-underline hover:underline focus:underline"
       last-link-class="flex-1 flex justify-between"
-      :show-last-link-icon="true">
+      :show-last-link-icon="true"
+      nav-aria-label="In this section">
       <Heading level="2" style-level="5" class="mb-1 text-gray-800 dark:text-gray-300"> In this section </Heading>
     </TableOfContentsHighlight>
   </div>

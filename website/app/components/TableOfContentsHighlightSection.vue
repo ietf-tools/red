@@ -15,7 +15,6 @@
           :id="makeTocId(link.id)"
           :key="linkIndex"
           :href="`#${link.id}`"
-          :aria-current="link.id === props.activeId"
           :class="[props.linkClass, linkIndex === section.links.length - 1 ? props.lastLinkClass : undefined]"
           @click="handleClick(link.id)">
           {{ link.title }}

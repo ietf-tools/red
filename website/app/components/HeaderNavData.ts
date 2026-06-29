@@ -57,6 +57,9 @@ type Mode = 'desktop' | 'mobile'
 
 export const groupLabelDomId = (mode: Mode, ...indexes: number[]): string => `${mode}-group-label-${indexes.join('-')}`
 
+export const dropdownHeadingDomId = (mode: Mode, ...indexes: number[]): string =>
+  `${mode}-dropdown-heading-label-${indexes.join('-')}`
+
 export const descriptionDomId = (mode: Mode, ...indexes: number[]): string => `${mode}-description-${indexes.join('-')}`
 
 export const useMenuData = (mode: Mode) => {

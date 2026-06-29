@@ -1,9 +1,11 @@
 <template>
   <div class="container mx-auto pl-5 pr-3">
-    <div class="absolute pointer-events-none inset-0 overflow-hidden">
-      <GraphicsIETFMotif class="absolute w-[90vw] h-[90vh] -left-[10vw] -top-[20vh] print:hidden" :opacity="0.04" />
+    <div class="absolute pointer-events-none inset-0">
       <GraphicsIETFMotif
-        class="absolute w-[40vw] h-[40vh] left-[57vw] md:left-[47vw] xl:left-[37vw] top-[17vh] print:hidden"
+        class="absolute z-100 w-[90vw] h-[90vh] -left-[10vw] -top-[20vh] print:hidden"
+        :opacity="0.04" />
+      <GraphicsIETFMotif
+        class="absolute z-100 w-[40vw] h-[40vh] left-[57vw] md:left-[47vw] xl:left-[37vw] top-[17vh] print:hidden"
         :opacity="0.04" />
     </div>
     <div class="lg:flex w-full">
@@ -27,19 +29,19 @@
         and historical or informative content. They are published by the RFC Editor for the
         <AValidHref :href="IETF_URL_ORIGIN">
           <abbr title="Internet Engineering Task Force">IETF</abbr>
-          <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" /> </AValidHref
+          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
         >,
         <AValidHref :href="IRTF_URL_ORIGIN">
           <abbr title="Internet Research Task Force">IRTF</abbr>
-          <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" /> </AValidHref
+          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
         >,
         <AValidHref :href="IAB_URL_ORIGIN">
           <abbr title="Internet Architecture Board">IAB</abbr>
-          <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" /> </AValidHref
+          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
         >, and
         <AValidHref href="/authors/rfc-independent-submissions/">
           <abbr title="Independent Submission Editor">ISE</abbr>
-          <Icon name="fluent:window-new-20-regular" class="text-lg align-middle ml-1" /> </AValidHref
+          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
         >, which collectively form the authoritative source for RFCs.
       </p>
       <IndexSubheaderSearchBox />

@@ -1,26 +1,24 @@
 <template>
   <DialogRoot v-model:open="isOpen">
-    <DialogTrigger>
-      <span class="block">
-        <button
-          type="button"
-          class="cursor-pointer flex justify-between w-full py-2 px-3 items-center border-1 border-gray-400 font-bold bg-white text-black dark:bg-black dark:text-white"
-          @click="isOpen = false">
-          Filter RFCs
-        </button>
-      </span>
+    <DialogTrigger as-child>
+      <button
+        type="button"
+        class="cursor-pointer flex justify-between w-full py-2 px-3 items-center border-1 border-gray-400 font-bold bg-white text-black dark:bg-black dark:text-white">
+        Filter RFCs
+      </button>
     </DialogTrigger>
     <DialogPortal>
       <DialogOverlay />
 
       <DialogContent
         class="fixed inset-0 z-60 bg-white text-black dark:bg-blue-950 dark:text-white h-full h-[100vh] flex flex-col">
-        <DialogTitle class="flex justify-between text-xl pl-3 font-bold border-b-1 border-b-gray-400">
-          <div class="block px-2 py-4">Filter RFCs</div>
-          <DialogClose aria-label="Close modal" class="px-4 py-2">
-            <GraphicsClose class="text-black dark:text-white" />
-          </DialogClose>
+        <DialogClose aria-label="Close modal" class="absolute right-0 top-0 px-4 py-4">
+          <GraphicsClose class="text-black dark:text-white" />
+        </DialogClose>
+        <DialogTitle class="flex justify-between text-xl pl-3 px-3 py-3 font-bold border-b-1 border-b-gray-400">
+          Filter RFCs
         </DialogTitle>
+
         <VerticalScrollable v-if="isOpen" class="flex-1">
           <div class="flex flex-col mb-6 pt-4">
             <div class="pl-5">
@@ -41,7 +39,7 @@
           </div>
         </VerticalScrollable>
         <div class="flex items-center justify-between gap-2 py-2 px-5 border-t-1 border-b-gray-400">
-          <SearchClearRefinements :after-click-fn="closeModal" />
+          <SearchClear :after-click-fn="closeModal" />
           <button
             type="button"
             class="cursor-pointer flex-none font-bold bg-blue-600 text-white px-4 py-2"

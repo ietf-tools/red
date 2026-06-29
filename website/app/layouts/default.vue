@@ -1,9 +1,12 @@
 <template>
   <div class="flex flex-col min-h-[100vh]">
-    <Header>
-      <slot name="subheader" />
-    </Header>
+    <HeaderWrapper>
+      <Header />
+    </HeaderWrapper>
     <Main :class="props.mainClass">
+      <HeaderWrapper>
+        <slot name="subheader" />
+      </HeaderWrapper>
       <slot />
     </Main>
     <Footer />

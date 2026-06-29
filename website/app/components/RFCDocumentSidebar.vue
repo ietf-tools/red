@@ -4,8 +4,10 @@
       <DialogPortal>
         <DialogOverlay />
         <DialogContent
-          :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
-          'fixed inset-0 z-50 bg-blue-900 dark:bg-blue-950 overflow-y-scroll h-full'">
+          :class="[
+            'overflow-y-scroll', // needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
+            'fixed inset-0 z-50 bg-blue-900 dark:bg-blue-950 h-full'
+          ]">
           <DialogTitle />
 
           <RFCMobileBanner :rfc="props.rfcBucketHtmlDocument.rfc" :is-fixed="false">

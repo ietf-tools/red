@@ -2,29 +2,18 @@
   <ais-stats>
     <template #default="{ nbHits, processingTimeMS }">
       <div class="text-base text-slate-500 dark:text-slate-400 font-normal ml-2">
-        <span class="font-semibold text-blue-900 dark:text-sky-100">
-          {{ nbHits.toLocaleString('en', { useGrouping: true }) }}
+        <span aria-live="polite" aria-atomic="true">
+          <span class="font-semibold text-blue-900 dark:text-sky-100">
+            {{ nbHits.toLocaleString('en', { useGrouping: true }) }}
+          </span>
+          {{ SPACE }}
+          <template v-if="nbHits === 1">result</template>
+          <template v-else>results</template>
         </span>
-
-        {{ SPACE }}
-
-        <span v-if="nbHits === 1">result</span>
-        <span v-else>results</span>
 
         in
         <span class="font-semibold text-blue-900 dark:text-sky-100 whitespace-nowrap">
-          {{
-            Math.max(
-              /**
-               * Ensure we don't say it took '0ms'
-               * because that sounds instantaneous
-               * and instead ensure it says it took
-               * at least some time
-               **/
-              1,
-              processingTimeMS
-            )
-          }}
+          {{ Math.max(MINIMUM_POSSIBLE_PLAUSIBLE_TIME_MS, processingTimeMS) }}
           <abbr title="milliseconds" class="no-underline">ms</abbr>
         </span>
       </div>
@@ -35,4 +24,11 @@
 <script setup lang="ts">
 import { AisStats } from 'vue-instantsearch/vue3/es'
 import { SPACE } from '~/utilities/strings'
+
+/**
+ * Ensure we don't say it took '0ms' (rounded) if it took '0.4ms'
+ * 0ms sounds instantaneous and instead ensure it says it took
+ * at least some time.
+ **/
+const MINIMUM_POSSIBLE_PLAUSIBLE_TIME_MS = 1
 </script>
