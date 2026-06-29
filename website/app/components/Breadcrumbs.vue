@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Breadcrumb">
+  <nav aria-label="Breadcrumbs">
     <ul :class="['block mt-1 mb-1 px-1 xs:px-0 print:hidden', props.class]">
       <li v-for="(item, index) in items" :key="index" class="inline-block">
         <Anchor

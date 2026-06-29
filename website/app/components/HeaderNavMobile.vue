@@ -16,14 +16,14 @@
         :class="// needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
         'absolute inset-0 z-60 bg-blue-900 text-white dark:bg-blue-950 dark:text-white overflow-y-scroll h-full'">
         <DialogTitle>
-          <div class="flex justify-between w-full py-5 px-4 items-center">
+          <div class="container mx-auto flex justify-between w-full pl-5 pr-3 py-4 items-center">
             <GraphicsHeaderLogoMobileMenu />
             <DialogClose>
               <GraphicsClose class="text-white" />
             </DialogClose>
           </div>
         </DialogTitle>
-        <div class="flex flex-col" @keydown.capture="handleAccordionArrowNav">
+        <div class="container mx-auto flex flex-col pb-16" @keydown.capture="handleAccordionArrowNav">
           <Accordion>
             <template v-for="(item, index) in menuData" :key="index.toString()">
               <Anchor v-if="item.href" :href="item.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
@@ -49,7 +49,8 @@
                             level0.radioGroupRef.value = String(value)
                           }
                         }
-                      ">
+                      "
+                      class="pr-2">
                       <span
                         :id="groupLabelDomId('mobile', index, childIndex)"
                         class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
@@ -83,7 +84,8 @@
                             level0.checkboxGroupRef.value = value.map(String)
                           }
                         }
-                      ">
+                      "
+                      class="pr-2">
                       <span
                         :id="groupLabelDomId('mobile', index, childIndex)"
                         class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">

@@ -1,6 +1,7 @@
 <template>
   <footer
     class="bg-blue-900 text-white dark:bg-blue-950 border-t border-t-white dark:border-t-blue-900 relative print:hidden">
+    <h2 class="sr-only">Footer</h2>
     <div class="container mx-auto flex flex-col md:flex-row py-4 lg:py-8 gap-4">
       <div class="flex-1 flex flex-col gap-5 pr-4">
         <p class="text-base pl-3">
@@ -16,17 +17,17 @@
         </div>
         <div class="flex gap-2 items-center mt-2 pl-3 lg:mt-5 text-sm">
           <a href="https://status.ietf.org" target="_blank">System Status</a>
-          <span class="text-white">&middot;</span>
+          <span class="text-white" aria-hidden>&middot;</span>
           <a href="https://github.com/ietf-tools/red/issues" target="_blank">Report a Bug</a>
           <template v-if="websiteVersion">
-            <span class="text-white">&middot;</span>
+            <span class="text-white" aria-hidden>&middot;</span>
             <span class="text-gray-100">Version {{ websiteVersion }}</span>
           </template>
         </div>
       </div>
-      <div class="flex-1 flex flex-col lg:flex-row gap-10 p-3 lg:p-0">
+      <nav aria-label="Footer" class="flex-1 flex flex-col lg:flex-row gap-10 p-3 lg:p-0">
         <div v-for="(menuItem, index) in useFooterMenuData()" :key="index">
-          <Heading level="2" style-level="4" class="text-base text-white">
+          <Heading level="3" style-level="4" class="text-base text-white">
             {{ menuItem.label }}
           </Heading>
           <ul class="mt-3 flex flex-col gap-2">
@@ -37,7 +38,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </nav>
     </div>
     <ScrollToTop />
   </footer>
