@@ -1,9 +1,7 @@
 <template>
   <div class="container mx-auto pl-5 pr-3">
     <div class="absolute pointer-events-none inset-0 overflow-hidden">
-      <GraphicsIETFMotif
-        class="absolute z-100 w-[90vw] h-[90vh] -left-[10vw] -top-[20vh] print:hidden"
-        :opacity="0.04" />
+      <GraphicsIETFMotif class="absolute z-100 w-[90vw] h-[90vh] -left-[10vw] top-[0vh] print:hidden" :opacity="0.04" />
       <GraphicsIETFMotif
         class="absolute z-100 w-[40vw] h-[40vh] left-[57vw] md:left-[47vw] xl:left-[37vw] top-[17vh] print:hidden"
         :opacity="0.04" />
