@@ -1,7 +1,7 @@
 <template>
   <nav aria-label="Pagination" class="flex flex-col items-center md:justify-center md:flex-row mt-8">
     <HorizontalScrollable class="w-full" inner-class="py-1">
-      <ais-pagination @click="scrollUpToNewSearchResults">
+      <ais-pagination @click="handlePagination">
         <template
           #default="{
             currentRefinement,
@@ -108,5 +108,10 @@
 
 <script setup lang="ts">
 import { AisHitsPerPage, AisPagination } from 'vue-instantsearch/vue3/es'
-import { scrollUpToNewSearchResults } from '../utilities/typesense'
+import { moveFocusToFirstResult, scrollUpToNewSearchResults } from '../utilities/typesense'
+
+const handlePagination = () => {
+  scrollUpToNewSearchResults()
+  moveFocusToFirstResult()
+}
 </script>

@@ -165,7 +165,33 @@ const CSS_POSITION_STICKY = /sticky/i
 const SCROLL_BUFFER_PX = 16 // just a bit further than the container
 
 /**
+ * Moves focus to first search result.
+ *
+ * This has a bug currently that new results often appear after focus is moved, so we need
+ * to sync this.
+ */
+export const moveFocusToFirstResult = () => {
+  const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
+  if (!target) {
+    console.warn("moveFocusToFirstResult: Can't find ", {
+      INSTANTSEARCH_HITS_CONTAINER_DOM_ID,
+      target
+    })
+    return
+  }
+  const targetFocusable = target.querySelector<HTMLElement>(FOCUSABLE_QUERY_SELECTOR)
+  if (!targetFocusable) {
+    // if we can't find anything focusable just go to main
+    document.querySelector<HTMLElement>('#main')?.focus() // for keyboard users
+    return
+  }
+  targetFocusable.focus() // for keyboard users
+  console.log('moved focus to', targetFocusable)
+}
+
+/**
  * When clicking pagination, or typing into the search box, we should scroll to the top of the new results
+ * this should not move focus
  */
 export const scrollUpToNewSearchResults = () => {
   const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
@@ -177,8 +203,6 @@ export const scrollUpToNewSearchResults = () => {
       INSTANTSEARCH_STICKY_CONTAINER_DOM_ID,
       sticky
     })
-    // if we can't find anything focusable just go to main
-    document.querySelector<HTMLElement>('#main')?.focus() // for keyboard users
     window.scrollTo(0, 0)
     return
   }
@@ -215,13 +239,4 @@ export const scrollUpToNewSearchResults = () => {
       behavior
     })
   }
-
-  const targetFocusable = target.querySelector<HTMLElement>(FOCUSABLE_QUERY_SELECTOR)
-  if (!targetFocusable) {
-    // if we can't find anything focusable just go to main
-    document.querySelector<HTMLElement>('#main')?.focus() // for keyboard users
-    return
-  }
-  targetFocusable.focus() // for keyboard users
-  console.log('moved focus to', targetFocusable)
 }
