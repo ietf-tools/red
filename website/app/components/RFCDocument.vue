@@ -161,7 +161,8 @@ const breadcrumbItems = computed((): BreadcrumbItem[] => {
   if (rfcBucketHtmlDocument.value) {
     const { rfc } = rfcBucketHtmlDocument.value
     items.push({
-      label: `RFC ${rfc.number}${rfc.subseries?.map((subseries) => ` ${subseries.type.toUpperCase()} ${subseries.number}`).join(', ') ?? ''}: ${rfc.title}`
+      label: `RFC ${rfc.number}`,
+      ariaLabel: `RFC ${rfc.number}${rfc.subseries?.map((subseries) => ` ${subseries.type.toUpperCase()} ${subseries.number}`).join(', ') ?? ''}: ${rfc.title}`
     })
   }
   return items

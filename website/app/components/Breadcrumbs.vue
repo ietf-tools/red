@@ -6,10 +6,15 @@
           v-if="item.url"
           class="inline pl-2 -ml-2 pr-2 py-2 underline rounded hover:bg-gray-200 hover:text-blue-800"
           :href="item.url"
-          :aria-current="item.ariaCurrent">
+          :aria-current="item.ariaCurrent"
+          :aria-label="item.ariaLabel">
           {{ item.label }}
         </Anchor>
-        <b v-else class="inline px-2 py-2 text-gray-700 dark:text-gray-300" :aria-current="item.ariaCurrent">
+        <b
+          v-else
+          class="inline px-2 py-2 text-gray-700 dark:text-gray-300"
+          :aria-current="item.ariaCurrent"
+          :aria-label="item.ariaLabel">
           {{ item.label }}
         </b>
         <template v-if="index < items.length - 1">
