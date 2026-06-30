@@ -45,8 +45,12 @@ export const preformattedTextToHtml = (preText: string, wrapAnywhere?: boolean):
 /**
  * It is expected that this only runs clientside with full DOM Sanitizer support,
  * typically on Typesense HTML strings.
+ * The only HTML we allow is `<p>`.
  */
 export const sanitiseHtml = (untrustedHtml: string | undefined | null): string => {
+  // Calling the variable `untrustedHtml` for dev clarity that it's come from
+  // outside the app, even though we probably produced the HTML itself.
+
   if (!untrustedHtml) {
     return ''
   }
@@ -59,8 +63,8 @@ export const sanitiseHtml = (untrustedHtml: string | undefined | null): string =
     !('setHTML' in el) ||
     typeof el.setHTML !== 'function'
   ) {
-    // The input has already been sanitised upstream before reaching this function; this Sanitizer API
-    // call is a second defensive layer only. Falling back to direct innerHTML assignment is acceptable.
+    // The input has already been sanitised upstream before reaching this function; the Sanitizer API
+    // usage is a second defensive layer only. Falling back to direct innerHTML assignment is acceptable.
     el.innerHTML = untrustedHtml
     return el.innerHTML
   }

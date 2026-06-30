@@ -8,11 +8,8 @@
         class="absolute z-100 w-[40vw] h-[40vh] left-[57vw] md:left-[47vw] xl:left-[37vw] top-[17vh] print:hidden"
         :opacity="0.04" />
     </div>
-    <div class="lg:flex w-full">
-      <Heading
-        level="1"
-        style-level="1"
-        class="w-full pt-2 md:pt-4 xs:mt-12 md:mb-3 md:px-2 font-semibold text-balance">
+    <div class="sm:flex w-full">
+      <Heading level="1" style-level="1" class="w-full md:pt-1 md:pl-2 xs:mt-5 md:mb-3 font-semibold text-balance">
         The official home of RFCs
       </Heading>
       <div class="self-end lg:text-right">
@@ -25,7 +22,7 @@
       </div>
     </div>
 
-    <div class="lg:w-2/3 xl:w-1/2 mb-2 md:mb-4 md:pt-2 md:pl-2">
+    <div class="lg:w-2/3 xl:w-1/2 mb-1 md:mb-2 md:pt-2 md:pl-2">
       <p class="hidden leading-6 lg:block pl-5 md:p-0 text-pretty">
         RFCs outline computer networking and Internet foundations, including
         <AValidHref :href="searchPathBuilder({ status: ['Internet Standard'] })">Internet Standards</AValidHref>

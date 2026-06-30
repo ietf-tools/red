@@ -1,6 +1,6 @@
 <template>
   <div v-html="noScriptHtml"></div>
-  <form method="get" :action="SEARCH_PATH" class="flex flex-row pt-6 pb-2 md:pb-3" @submit.stop.prevent="handleSearch">
+  <form method="get" :action="SEARCH_PATH" class="flex flex-row pt-3 md:pb-3" @submit.stop.prevent="handleSearch">
     <input
       id="search"
       ref="search-input"
