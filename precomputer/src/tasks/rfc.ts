@@ -105,7 +105,7 @@ export const uploadRfcMetaThumbnail = async (rfcNumber: number): AsyncTaskItem =
     return [false]
   }
   const rfcThumbnailPath = rfcMetaThumbnailPathBuilder(rfcNumber)
-  // console.log(`[RFC${rfcNumber}] uploaded thumbnail ${rfcThumbnailPath}`)
+  console.log(`[RFC${rfcNumber}] uploaded thumbnail ${rfcThumbnailPath}`)
   await saveToS3(rfcThumbnailPath, rfcScreenshot)
   return [rfcThumbnailPath]
 }
