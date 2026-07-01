@@ -1,7 +1,7 @@
 <template>
   <NavigationMenuRoot
     v-model="currentNav"
-    class="relative w-full z-70 justify-end content-end hidden lg:block"
+    class="relative w-full justify-end content-end hidden lg:block"
     disable-hover-trigger>
     <NavigationMenuList class="m-0 flex gap-2 w-full justify-end list-none rounded-md">
       <NavigationMenuItem v-for="(menuItem, index) in menuDataWithNoScripts" :key="index">
@@ -148,7 +148,7 @@
                   </p>
                 </template>
               </CheckboxGroupRoot>
-              <NavigationMenuSub v-else-if="level0.children" :default-value="level0.label" class="z-100">
+              <NavigationMenuSub v-else-if="level0.children" :default-value="level0.label">
                 <NavigationMenuList>
                   <NavigationMenuItem :value="`${index}.${level0Index}`" class="mb-[1px] flex flex-col">
                     <NavigationMenuTrigger
@@ -163,7 +163,7 @@
                         class="transition-transform text-white translate-y-[0.2em] duration-[150ms] ease-in group-data-[state=open]:-rotate-180" />
                     </NavigationMenuTrigger>
                     <NavigationMenuContent
-                      class="bg-gray-200 rounded-b-md mx-1 pb-1 inset-shadow-sm inset-shadow-gray-400 dark:bg-gray-700 dark:inset-shadow-gray-900">
+                      class="mx-1 pb-1 rounded-b-md bg-gray-200 dark:bg-gray-700 inset-shadow-sm inset-shadow-gray-400 dark:inset-shadow-gray-900 z-101">
                       <ul class="list-none">
                         <li
                           v-for="(level1, level1Index) in level0.children"
@@ -243,9 +243,9 @@
         <div class="hidden lg:block text-sm" v-html="menuItem.noScriptHtml"></div>
       </NavigationMenuItem>
     </NavigationMenuList>
-    <div class="perspective-[2000px] absolute top-full left-0 flex w-full">
+    <div class="perspective-[2000px] absolute top-full left-0 flex w-full z-110">
       <NavigationMenuViewport
-        class="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 transition-[width,_height] duration-300 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border-1 border-gray-200 dark:border-gray-600 shadow-2xl" />
+        class="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 transition-[width,_height] duration-300 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border-1 border-gray-200 dark:border-gray-600 shadow-3xl dark:shadow-blue-950" />
     </div>
   </NavigationMenuRoot>
 </template>
