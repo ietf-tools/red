@@ -68,7 +68,7 @@ export const resolveEntitiesToText = async (textWithEntities: string): Promise<s
     throw Error('Internal error. Unable to find div element.')
   }
   div.innerHTML = textWithEntities
-  return div.textContent // resolves entities (eg &quot; becomes ")
+  return String(div.textContent) // resolves entities (eg &quot; becomes ")
 }
 
 export const getParentElementNodeNames = (node: Node): string[] => {
