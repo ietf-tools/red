@@ -9,6 +9,7 @@ import {
   getParentElementNodeNames,
   isHtmlElement,
   isTextNode,
+  resolveEntitiesToText,
   rfcDocumentToPojo
 } from '../utilities/dom.ts'
 import {
@@ -436,6 +437,8 @@ export const getRfcHtmlMetaScreenshot = async (
   }
   const vueTemplate = sfcDescriptorCache.template.content
   const logoBase64Uri = await logoBase64UriPromise
+  // RFC 7505 has &quot; in titles so we need to resolve entities first
+  rfc.title = await resolveEntitiesToText(rfc.title)
   const app = createSSRApp({
     data: () => ({ rfc, logoBase64Uri }),
     template: vueTemplate

@@ -56,6 +56,21 @@ export const getInnerText = (element: HTMLElement): string => {
     .join('')
 }
 
+/**
+ * Converts a string of text with HTML entities.
+ * 'Hello &quot;World&quot;' -> 'Hello "World"'
+ */
+export const resolveEntitiesToText = async (textWithEntities: string): Promise<string> => {
+  const domParser = await getDOMParser()
+  const dom = domParser.parseFromString('<div></div>', 'text/html')
+  const div = dom.body.querySelector('div')
+  if (!div) {
+    throw Error('Internal error. Unable to find div element.')
+  }
+  div.innerHTML = textWithEntities
+  return div.textContent // resolves entities (eg &quot; becomes ")
+}
+
 export const getParentElementNodeNames = (node: Node): string[] => {
   let pointer = node
   const parents: string[] = []
