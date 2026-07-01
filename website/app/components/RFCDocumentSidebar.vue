@@ -13,7 +13,7 @@
             <GraphicsClose class="text-white" />
           </DialogClose>
           <DialogTitle as="h1" class="px-2 py-4 text-white dark:text-white">
-            <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" />
+            <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon />
           </DialogTitle>
           <nav aria-label="In this RFC (mobile menu)" class="bg-white dark:bg-blue-900">
             <RFCTabs

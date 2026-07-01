@@ -12,9 +12,12 @@ type Props = {
     title: string
   }
   hideTitle?: boolean
+  hasTrailingColon?: boolean
 }
 
 const props = defineProps<Props>()
 
-const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, !props.hideTitle))
+const formattedTitle = computed(() =>
+  formatTitleAsVNode(`rfc${props.rfc.number}`, props.hasTrailingColon ?? !props.hideTitle)
+)
 </script>
