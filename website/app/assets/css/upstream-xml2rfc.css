@@ -291,7 +291,7 @@ h3 a[href]:focus,
 h4 a[href]:focus,
 h5 a[href]:focus,
 h6 a[href]:focus {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 figcaption a[href],
