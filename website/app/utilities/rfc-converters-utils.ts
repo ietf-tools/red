@@ -3,7 +3,7 @@ import { parseSeriesId } from './rfc'
 import type { RfcCommon } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import { assertNever } from './typescript'
-import type { RfcEditorToc } from './tableOfContents'
+import type { TocSectionType } from './rfc-validators'
 
 type RfcAuthor = RfcCommon['authors'][number]
 
@@ -121,7 +121,6 @@ export const formatIdentifiers = (identifiers: RfcCommon['identifiers'], separat
   return identifiers.map((identifier) => `${identifier.type.toUpperCase()}${separator}${identifier.value}`)
 }
 
-type TocSection = RfcEditorToc['sections'][number]
-export const isTocSection = (maybeTocSection?: unknown): maybeTocSection is TocSection => {
+export const isTocSection = (maybeTocSection?: unknown): maybeTocSection is TocSectionType => {
   return Boolean(maybeTocSection && typeof maybeTocSection === 'object' && 'links' in maybeTocSection)
 }

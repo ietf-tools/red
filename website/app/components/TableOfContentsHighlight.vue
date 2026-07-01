@@ -26,12 +26,10 @@
  * Table of Contents that highlights titles that are in the browser viewport
  */
 import { useTocActiveId, useScrollTocContainer, useValidateIds } from '../utilities/scroll'
-import type { RfcEditorToc } from '../utilities/tableOfContents'
-
-type Section = RfcEditorToc['sections'][number]
+import type { TableOfContents, TocSectionType } from '../utilities/rfc-validators'
 
 type Props = {
-  toc: RfcEditorToc
+  toc: TableOfContents
   navAriaLabel: string
   listType: 'numbered' | 'ordered'
   wrapperClass?: string
@@ -63,7 +61,7 @@ const wrapperRef = computed(() => {
   return null
 })
 
-const flattenSectionLinkIds = (section: Section): string[] =>
+const flattenSectionLinkIds = (section: TocSectionType): string[] =>
   (section.links ?? [])
     .map((link) => link.id)
     .concat(section.sections ? section.sections.flatMap(flattenSectionLinkIds) : [])

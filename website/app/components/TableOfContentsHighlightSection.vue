@@ -49,12 +49,10 @@
  * Table of Contents that highlights titles that are in the viewport
  */
 
-import type { RfcEditorToc } from '../utilities/tableOfContents'
-
-type Sections = RfcEditorToc['sections']
+import type { TocSectionType } from '../utilities/rfc-validators'
 
 type Props = {
-  sections: Sections
+  sections: TocSectionType[]
   listTypeElement: 'ol' | 'ul'
   depth: number
   activeId?: string

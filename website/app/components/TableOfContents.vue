@@ -17,10 +17,10 @@
  *
  * See also TableOfContentsHighlight.vue
  */
-import type { RfcEditorToc } from '../utilities/tableOfContents'
+import type { TableOfContents } from '../utilities/rfc-validators'
 
 type Props = {
-  toc: RfcEditorToc
+  toc: TableOfContents
   listType: 'numbered' | 'ordered'
   listClass?: string
   nestedListClass?: string

@@ -18,11 +18,11 @@
 </template>
 
 <script setup lang="ts">
-import type { RfcEditorToc } from '~/utilities/tableOfContents'
+import type { TableOfContents } from '../utilities/rfc-validators'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 
 type Props = {
-  toc: RfcEditorToc
+  toc: TableOfContents
 }
 
 const props = defineProps<Props>()

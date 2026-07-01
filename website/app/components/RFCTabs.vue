@@ -70,7 +70,7 @@
         }
       ]">
       <TableOfContentsHighlight
-        v-if="props.mode === 'desktop'"
+        v-if="tableOfContents && props.mode === 'desktop'"
         :toc="tableOfContents"
         list-type="ordered"
         wrapper-class="min-h-0 pt-4 pb-2 px-4"
@@ -84,7 +84,7 @@
         <Heading level="2" style-level="5" class="mt-4 mb-1 sr-only"> In this section </Heading>
       </TableOfContentsHighlight>
       <TableOfContents
-        v-else-if="props.mode === 'mobile'"
+        v-else-if="tableOfContents && props.mode === 'mobile'"
         :toc="tableOfContents"
         list-type="ordered"
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"

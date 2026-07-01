@@ -32,12 +32,11 @@
 
 <script setup lang="ts">
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { closeModalAndScrollToId, type RfcEditorToc } from '../utilities/tableOfContents'
-
-type Sections = RfcEditorToc['sections']
+import { closeModalAndScrollToId } from '../utilities/tableOfContents'
+import type { TocSectionType } from '../utilities/rfc-validators'
 
 type Props = {
-  sections: Sections
+  sections: TocSectionType[]
   listTypeElement: 'ol' | 'ul'
   depth: number
   listClass?: string
