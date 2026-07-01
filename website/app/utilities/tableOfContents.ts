@@ -17,7 +17,7 @@ export const closeModalAndScrollToId = Symbol() as InjectionKey<(id: string) => 
 export const mergeAdjacentLinks = (tableOfContents: TableOfContents): TableOfContents => {
   const processSection = (section: TocSectionType): TocSectionType => {
     return {
-      ...section,
+      sections: section.sections ? section.sections.map(processSection) : undefined,
       links: section.links
         ? section.links.reduce((acc, link): Links => {
             const firstLink = acc[0]
