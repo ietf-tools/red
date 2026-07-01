@@ -41,7 +41,6 @@
 <script setup lang="ts">
 import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
 type Props = {

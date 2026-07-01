@@ -279,6 +279,21 @@ h6 a[href] {
   text-decoration: none;
 }
 
+h1 a[href]:hover,
+h2 a[href]:hover,
+h3 a[href]:hover,
+h4 a[href]:hover,
+h5 a[href]:hover,
+h6 a[href]:hover,
+h1 a[href]:focus,
+h2 a[href]:focus,
+h3 a[href]:focus,
+h4 a[href]:focus,
+h5 a[href]:focus,
+h6 a[href]:focus {
+  text-decoration: none;
+}
+
 figcaption a[href],
 a[href].selfRef {
   color: #222;

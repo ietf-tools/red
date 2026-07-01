@@ -71,7 +71,7 @@
       ]">
       <TableOfContentsHighlight
         v-if="props.mode === 'desktop'"
-        :toc="props.rfcBucketHtmlDocument.tableOfContents"
+        :toc="tableOfContents"
         list-type="ordered"
         wrapper-class="min-h-0 pt-4 pb-2 px-4"
         list-class="mr-1"
@@ -85,7 +85,7 @@
       </TableOfContentsHighlight>
       <TableOfContents
         v-else-if="props.mode === 'mobile'"
-        :toc="props.rfcBucketHtmlDocument.tableOfContents"
+        :toc="tableOfContents"
         list-type="ordered"
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
         list-class="mt-2 mr-1 pl-0 -ml-1"
@@ -258,6 +258,7 @@ import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString } from '~/utilities/renderDocumentPojo'
+import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -273,6 +274,14 @@ const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return
   const dt = DateTime.fromISO(props.rfcBucketHtmlDocument.rfc.published)
   return formatDatePublished(dt, true)
+})
+
+const tableOfContents = computed(() => {
+  const { tableOfContents } = props.rfcBucketHtmlDocument
+  if (!tableOfContents) {
+    return undefined
+  }
+  return mergeAdjacentLinks(tableOfContents)
 })
 
 const shouldShowArea = (rfc: RfcCommon): boolean => {

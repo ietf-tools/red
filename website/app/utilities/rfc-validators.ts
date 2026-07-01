@@ -16,11 +16,11 @@ export const TocLinkSchema = z.object({
   title: z.string()
 })
 
-// this convoluted code for a schema is required in Zod 3 for recursion and TS support.
+// this convoluted code for a schema is required in Zod for recursion and TS support.
 const baseTocSectionSchema = z.object({
   links: z.array(TocLinkSchema).optional()
 })
-type TocSectionType = z.infer<typeof baseTocSectionSchema> & {
+export type TocSectionType = z.infer<typeof baseTocSectionSchema> & {
   sections?: TocSectionType[]
 }
 const TocSectionSchema: z.ZodType<TocSectionType> = baseTocSectionSchema.extend({
