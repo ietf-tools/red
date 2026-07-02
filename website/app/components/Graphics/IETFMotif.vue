@@ -2,15 +2,14 @@
   <svg
     :width="props.width"
     :height="props.height"
-    viewBox="0 0 475.29364 346.05695"
+    viewBox="0 0 473.88 250.932"
     xmlns="http://www.w3.org/2000/svg"
     :class="['pointer-events-none', props.class]"
     fill="currentColor"
     aria-hidden="true">
     <g :opacity="props.opacity">
-      <path d="M 216.6199,2.4865995 5.794542,213.0781 89.851776,296.95018 300.68055,86.550968 Z" />
-      <path d="M 171.87956,229.45199 306.68695,95.278897 390.20493,179.88715 256.09455,313.8555 Z" />
-      <path d="m 321.40782,263.69426 74.58039,-74.33433 83.68632,83.66101 -73.60691,74.10996 z" />
+      <path
+        d="M210.825-45.607 0 164.985l84.057 83.872 210.829-210.4ZM166.085 181.359 300.892 47.186l83.518 84.608L250.3 265.762ZM315.613 215.601l74.58-74.334 83.687 83.66-73.607 74.11z" />
     </g>
   </svg>
 </template>
@@ -19,15 +18,19 @@
 import type { VueStyleClass } from '~/utilities/vue'
 
 type Props = {
-  width?: string
-  height?: string
+  width?: number
+  height?: number
   class?: VueStyleClass
   opacity?: number
 }
 
+const defaultWidth = 20
+
+const svgWidthHeightRatio = 1.371559633027523
+
 const props = withDefaults(defineProps<Props>(), {
-  width: '20',
-  height: '20',
+  width: defaultWidth,
+  height: defaultWidth / svgWidthHeightRatio,
   opacity: 1
 })
 </script>

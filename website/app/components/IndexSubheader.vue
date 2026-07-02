@@ -1,9 +1,11 @@
 <template>
   <div class="container mx-auto pl-5 pr-3">
     <div class="absolute pointer-events-none inset-0 overflow-hidden">
-      <GraphicsIETFMotif class="absolute z-100 w-[90vw] h-[90vh] -left-[10vw] top-[0vh] print:hidden" :opacity="0.04" />
       <GraphicsIETFMotif
-        class="absolute z-100 w-[40vw] h-[40vh] left-[57vw] md:left-[47vw] xl:left-[37vw] top-[17vh] print:hidden"
+        :class="`absolute z-100 ${motif1Class} right-[0vw] md:right-[18vw] lg:right-[23vw] xl:right-[33vw] top-[0vh] print:hidden`"
+        :opacity="0.04" />
+      <GraphicsIETFMotif
+        :class="`absolute z-100 ${motif2Class} right-[0vw] md:right-[20vw] lg:right-[25vw] xl:right-[37vw] top-[10vh] md:top-[17vh]  print:hidden`"
         :opacity="0.04" />
     </div>
     <div class="sm:flex w-full">
@@ -49,4 +51,8 @@
 
 <script setup lang="ts">
 import { IAB_URL_ORIGIN, IETF_URL_ORIGIN, IRTF_URL_ORIGIN, searchPathBuilder } from '~/utilities/url'
+
+// SVG ratio 1.371559633027523:1
+const motif1Class = 'w-[300px] h-[218px] lg:w-[700px] lg:h-[511px]'
+const motif2Class = 'w-[200px] h-[145px] lg:w-[350px] lg:h-[255px]'
 </script>

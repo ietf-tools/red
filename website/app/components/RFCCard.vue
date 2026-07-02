@@ -52,7 +52,11 @@
           Abstract
         </Heading>
         <div
-          class="leading-snug text-black dark:text-white pb-2 text-pretty"
+          :class="`pb-2 ${
+            'max-w-[34em]' // approx 80 chars wide
+          } text-black dark:text-white ${
+            'leading-[1.5]' // WCAG requires 1.5 minimum and this is body text
+          } text-pretty`"
           v-html="
             props.rfc.abstract // this should already be sanitised
           "></div>
