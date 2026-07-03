@@ -69,6 +69,10 @@ type Props = {
   searchPlaceholder?: string
   showMoreLabel?: string
   showLessLabel?: string
+  /** Accessible name for the toggle; defaults to `"<showMoreLabel> <label>"`. */
+  showMoreAriaLabel?: string
+  /** Accessible name for the toggle when expanded; defaults to `"<showLessLabel> <label>"`. */
+  showLessAriaLabel?: string
   /** Message shown when the facet has no options (e.g. the current search has no results). */
   emptyLabel?: string
   /** Message shown when a facet-search (searchable list) returns no matching options. */
@@ -88,6 +92,8 @@ const props = withDefaults(defineProps<Props>(), {
   searchPlaceholder: 'Search…',
   showMoreLabel: 'Show more',
   showLessLabel: 'Show less',
+  showMoreAriaLabel: undefined,
+  showLessAriaLabel: undefined,
   emptyLabel: 'No options available.',
   noResultsLabel: 'No matches.',
   availableMessage: undefined,
@@ -111,8 +117,12 @@ const { items, isShowingMore, canToggleShowMore, toggleShowMore, searchQuery, is
 
 // Defect #3/#4: descriptive, group-specific accessible names for the facet search and toggle.
 const searchLabel = computed(() => props.searchLabel ?? `Search ${props.label.toLowerCase()}`)
-const showMoreAriaLabel = computed(() => `${props.showMoreLabel} ${props.label.toLowerCase()}`)
-const showLessAriaLabel = computed(() => `${props.showLessLabel} ${props.label.toLowerCase()}`)
+const showMoreAriaLabel = computed(
+  () => props.showMoreAriaLabel ?? `${props.showMoreLabel} ${props.label.toLowerCase()}`
+)
+const showLessAriaLabel = computed(
+  () => props.showLessAriaLabel ?? `${props.showLessLabel} ${props.label.toLowerCase()}`
+)
 
 // Defect #3: announce a concise settled count while filtering, not every option.
 const announcement = computed(() => {

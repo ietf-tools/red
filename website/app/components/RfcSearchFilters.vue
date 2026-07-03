@@ -1,15 +1,27 @@
 <template>
   <div>
-    <ToggleRefinement
-      attribute="contents"
-      label="Search in RFC contents"
-      :class-names="{ root: 'flex items-center gap-2 mb-4 text-base cursor-pointer' }" />
-    <ToggleRefinement
-      attribute="flags.hiddenDefault"
-      label="Hide obsoleted / historic"
-      :class-names="{ root: 'flex items-center gap-2 mb-4 text-base cursor-pointer' }" />
+    <ul>
+      <li>
+        <ToggleRefinement
+          attribute="contents"
+          label="Search in RFC contents"
+          :class-names="{ root: 'inline-block mb-4 text-base cursor-pointer', checkbox: 'mr-2' }" />
+      </li>
+      <li>
+        <ToggleRefinement
+          attribute="flags.hiddenDefault"
+          label="Hide obsoleted / historic"
+          :class-names="{ root: 'inline-block clear-both mb-4 text-base cursor-pointer', checkbox: 'mr-2' }" />
+      </li>
+    </ul>
 
-    <RefinementList attribute="status.name" label="Status" :class-names="filterClasses" :sort-by="sortStatuses" />
+    <RefinementList
+      attribute="status.name"
+      label="Status"
+      :class-names="filterClasses"
+      :sort-by="sortStatuses"
+      show-less-aria-label="Show fewer statuses"
+      show-more-aria-label="Show more statuses" />
 
     <Select attribute="stream.name" label="Stream" :class-names="selectClasses" />
     <Select attribute="area.full" label="Area" :class-names="selectClasses" />
@@ -21,7 +33,8 @@
       show-more
       :limit="5"
       :show-more-limit="50"
-      search-placeholder=""
+      show-less-aria-label="Show fewer working groups"
+      show-more-aria-label="Show more working groups"
       :class-names="filterClasses" />
 
     <RefinementList
@@ -31,7 +44,8 @@
       show-more
       :limit="5"
       :show-more-limit="50"
-      search-placeholder=""
+      show-less-aria-label="Show fewer authors"
+      show-more-aria-label="Show more authors"
       :class-names="filterClasses" />
 
     <YearMonthRangeInput
