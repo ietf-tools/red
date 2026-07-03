@@ -76,7 +76,7 @@ const props = defineProps<Props>()
 
 const isMobileAbstractOpen = ref<boolean>(false)
 
-const abstractDomId = computed(() => `abstract-${props.rfc.subseries ?? ''}-${props.rfc.number}`)
+const abstractDomId = computed(() => `abstract-rfc-${props.rfc.number}`)
 
 function formatDate(isoDate: string): string {
   const datetime = DateTime.fromISO(isoDate)

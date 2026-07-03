@@ -14,7 +14,9 @@
           as-child
           @click="menuItem.click">
           <Anchor>
-            <Icon v-if="menuItem.icon && typeof menuItem.icon === 'string'" :name="menuItem.icon" />
+            <component
+              :is="resolveGraphicsIcon(menuItem.icon)"
+              v-if="menuItem.icon && typeof menuItem.icon === 'string'" />
             <component v-else-if="menuItem.icon && typeof menuItem.icon === 'function'" :is="menuItem.icon()" />
           </Anchor>
         </NavigationMenuLink>
@@ -88,7 +90,7 @@
                       <span
                         class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
                         <RadioGroupIndicator>
-                          <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
+                          <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                         </RadioGroupIndicator>
                       </span>
                       {{ level1.label }}
@@ -134,7 +136,7 @@
                       <span
                         class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
                         <CheckboxIndicator>
-                          <Icon name="fluent:checkmark-12-filled" class="block w-[14px] h-[14px]" />
+                          <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                         </CheckboxIndicator>
                       </span>
                       {{ level1.label }}
@@ -221,9 +223,8 @@
                           'border-1 rounded-xl border-current': level0.role === 'radio'
                         }
                       ]">
-                      <Icon
+                      <GraphicsCheckmark
                         v-if="Boolean(level0.isActiveFn?.())"
-                        name="fluent:checkmark-12-filled"
                         :class="['inline-block w-[14px] h-[14px]']" />
                       <span v-else class="inline-block w-[14px] h-[14px]" />
                     </span>
@@ -275,6 +276,7 @@ import {
   dropdownHeadingDomId
 } from './HeaderNavData'
 import { isInternalLink } from '~/utilities/url'
+import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
 
 const MENU_ITEM_CLASS =
   'group select-none flex justify-between rounded-md data-[state=open]:rounded-b-none mx-1 px-3 py-2 text-sm font-medium leading-none no-underline outline-none text-black dark:text-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'

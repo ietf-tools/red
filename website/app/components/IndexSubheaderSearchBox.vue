@@ -21,7 +21,7 @@
       :disabled="!isMounted"
       class="cursor-pointer bg-blue-200 px-2 flex items-center"
       aria-label="Submit search">
-      <Icon name="fluent:search-12-filled" size="2em" />
+      <GraphicsSearch class="size-[2em]" />
     </button>
   </form>
   <div class="text-sm italic">
@@ -47,8 +47,7 @@ import {
   apiSubseriesPathBuilder,
   infoSeriesPathBuilder,
   SEARCH_PATH,
-  searchPathBuilder,
-  useApiV1UrlOrigin
+  searchPathBuilder
 } from '~/utilities/url'
 import SubseriesTitle from './SubseriesTitle.vue'
 import {

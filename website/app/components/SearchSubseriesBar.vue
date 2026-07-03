@@ -1,6 +1,6 @@
 <template>
   <div class="bg-emerald-800 text-white font-semibold rounded shadow-sm mt-4 px-4 py-2 flex items-center">
-    <Icon name="material-symbols:list-alt" size="1.5em" class="text-emerald-100" />
+    <GraphicsListAlt class="size-[1.5em] text-emerald-100" />
     <Anchor :href="props.href" class="ml-2 no-underline hover:underline">
       {{ props.label }}
     </Anchor>

@@ -35,7 +35,7 @@
           <div
             v-if="items.length >= maxItems && isShowingMore"
             class="text-gray-500 text-sm bg-gray-50 dark:text-gray-300 dark:bg-blue-950 rounded p-2 italic flex items-center shadow mb-2">
-            <Icon name="fluent:warning-24-filled" size="2em" class="mr-2" />
+            <GraphicsWarning class="size-[2em] mr-2" />
             There may be more choices available. Use the search above to refine this list.
           </div>
           <button

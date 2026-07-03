@@ -2,9 +2,9 @@
   <AMaybeRFCLink :id="props.id" :href="props.href!" :class="ANCHOR_COLOR_TAILWIND_STYLE">
     <slot />
     <GraphicsNewWindowIcon v-if="!isInternal && !isMailTo && !isHash" class="text-lg align-middle ml-1" />
-    <Icon v-if="isMailTo" name="fluent:mail-all-20-regular" class="text-lg align-middle ml-1" />
-    <Icon v-if="isRSSFeed" name="ic:sharp-rss-feed" class="text-lg align-middle ml-1" />
-    <Icon v-if="isAtomFeed" name="vscode-icons:file-type-atom" class="text-lg align-middle ml-1" />
+    <GraphicsMail v-if="isMailTo" class="text-lg align-middle ml-1" />
+    <GraphicsRssFeed v-if="isRSSFeed" class="text-lg align-middle ml-1" />
+    <GraphicsAtomFeed v-if="isAtomFeed" class="text-lg align-middle ml-1" />
   </AMaybeRFCLink>
 </template>
 

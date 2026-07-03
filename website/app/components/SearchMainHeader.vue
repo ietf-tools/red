@@ -23,10 +23,10 @@
           show-loading-indicator
           @input="scrollUpToNewSearchResults">
           <template #submit-icon>
-            <Icon name="fluent:search-12-filled" size="2em" />
+            <GraphicsSearch class="size-[2em]" />
           </template>
           <template #loading-indicator>
-            <Icon name="eos-icons:loading" size="2em" />
+            <GraphicsLoading class="size-[2em]" />
           </template>
         </ais-search-box>
       </div>

@@ -6,7 +6,8 @@
 import { renderDocumentPojo, defaultRenderer } from '~/utilities/renderDocumentPojo'
 import type { ElementRenderers } from '~/utilities/renderDocumentPojo'
 import type { DocumentPojo } from '~/utilities/rfc-validators'
-import { AMaybeRFCLink, GraphicsNewWindowIcon, Icon } from '#components'
+import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
+import { AMaybeRFCLink, GraphicsNewWindowIcon } from '#components'
 
 type Props = {
   value: DocumentPojo
@@ -22,13 +23,19 @@ const renderer: ElementRenderers = {
       node.attributes,
       () => childrenForVue
     ),
-  Icon: (node, childrenForVue) =>
-    h(
-      Icon,
+  // Content may reference icons by their (previously Iconify) name; resolve that
+  // name to a local `components/Graphics/` SVG component. See `resolveGraphicsIcon`.
+  Icon: (node, childrenForVue) => {
+    const { name, ...attributes } = node.attributes
+    const iconComponent = typeof name === 'string' ? resolveGraphicsIcon(name) : undefined
+    if (!iconComponent) {
+      console.warn(`[DocumentPojo] No Graphics icon is mapped for icon name ${JSON.stringify(name)}`)
       // @ts-ignore
-      node.attributes,
-      () => childrenForVue
-    ),
+      return h('span', attributes)
+    }
+    // @ts-ignore
+    return h(iconComponent, attributes, () => childrenForVue)
+  },
   GraphicsNewWindowIcon: () => h(GraphicsNewWindowIcon),
   ...defaultRenderer
 }

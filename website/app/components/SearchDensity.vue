@@ -1,41 +1,49 @@
 <template>
-  <ToggleGroupRoot
-    :model-value="value"
-    type="single"
-    class="flex bg-white border border-gray-400 dark:bg-black dark:border-white shadow-sm rounded-xs"
-    @update:model-value="ensureSelectedValue">
-    <ToggleGroupItem value="full" title="Full Display" aria-label="Full Display" :class="toggleGroupItemClasses">
-      <Icon name="f7:rectangle-grid-1x2-fill" class="w-[15px] h-[15px]" />
-    </ToggleGroupItem>
-    <ToggleGroupItem
-      value="dense"
-      title="Dense Display"
-      aria-label="Dense Display"
-      :class="toggleGroupItemClasses"
-      class="border-x">
-      <Icon name="fa-solid:th-list" class="w-[15px] h-[15px]" />
-    </ToggleGroupItem>
-    <ToggleGroupItem
-      value="compact"
-      title="Compact Display"
-      aria-label="Compact Display"
-      :class="toggleGroupItemClasses">
-      <Icon name="vaadin:list" class="w-[15px] h-[15px]" />
-    </ToggleGroupItem>
-  </ToggleGroupRoot>
+  <fieldset
+    class="flex bg-white border border-gray-700 dark:bg-black dark:border-gray-500 shadow-sm rounded-xs"
+    :style="FIELDSET_RESET">
+    <legend class="sr-only">Display results as</legend>
+    <label
+      v-for="(option, index) in options"
+      :key="option.value"
+      :title="option.label"
+      :class="[itemClasses, index > 0 ? 'border-l border-gray-400 dark:border-gray-500' : '']">
+      <input
+        type="radio"
+        :name="groupName"
+        class="sr-only"
+        :value="option.value"
+        :checked="value === option.value"
+        @change="value = option.value" />
+      <component :is="resolveGraphicsIcon(option.icon)" class="w-[15px] h-[15px]" />
+      <span class="sr-only">{{ option.label }}</span>
+    </label>
+  </fieldset>
 </template>
 
 <script lang="ts" setup>
-import { ToggleGroupItem, ToggleGroupRoot, type AcceptableValue } from 'reka-ui'
-
+import { useId } from 'vue'
+import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
+// A11y (report F1): a labelled radio group of mutually-exclusive display options.
+// - fieldset/legend gives the group an accessible name ("Display results as")
+// - native radios give single-selection + arrow-key navigation, and the fieldset is
+//   not an extra tab stop (unlike the previous ToggleGroup with aria-pressed)
+// - the selected state uses an outline so it stays visible in forced-colors / high contrast
 const value = defineModel<string>()
 
-const toggleGroupItemClasses =
-  'hover:bg-gray-100 dark:hover:bg-gray-800 text-sky-950 dark:text-white data-[state=on]:bg-gray-200 dark:data-[state=on]:bg-gray-700 flex h-[36px] w-[36px] items-center justify-center bg-white dark:bg-black first:rounded-l-xs last:rounded-r-xs cursor-pointer'
+// Unique per instance so two mounted density controls (desktop + mobile) don't
+// merge into one document-wide radio group and fight over the checked state.
+const groupName = useId()
 
-function ensureSelectedValue(val: AcceptableValue) {
-  if (val && typeof val === 'string') {
-    value.value = val
-  }
-}
+const options = [
+  { value: 'full', label: 'Full Display', icon: 'f7:rectangle-grid-1x2-fill' },
+  { value: 'dense', label: 'Dense Display', icon: 'fa-solid:th-list' },
+  { value: 'compact', label: 'Compact Display', icon: 'vaadin:list' }
+]
+
+// Reset the UA fieldset box (border/padding come from the classes above).
+const FIELDSET_RESET = 'margin:0;padding:0;min-inline-size:0'
+
+const itemClasses =
+  'relative flex h-[36px] w-[36px] items-center justify-center cursor-pointer bg-white dark:bg-black text-sky-950 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 has-[:checked]:bg-gray-200 dark:has-[:checked]:bg-gray-700 has-[:checked]:outline has-[:checked]:outline-2 has-[:checked]:-outline-offset-2 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-blue-600 first:rounded-l-xs last:rounded-r-xs'
 </script>

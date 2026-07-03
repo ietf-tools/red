@@ -19,7 +19,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
     './modules/color-mode/module.ts',
-    '@nuxt/icon',
     'nuxt-vitalizer'
   ],
   colorMode: {
@@ -52,9 +51,6 @@ export default defineNuxtConfig({
             // }
             if (id.includes('app/components/content')) {
               return 'components-content'
-            }
-            if (id.includes('app/components/search')) {
-              return 'components-search'
             }
             if (id.includes('app/components/Graphics')) {
               return 'components-graphics'

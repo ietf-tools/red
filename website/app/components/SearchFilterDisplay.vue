@@ -18,7 +18,7 @@
           <span class="ml-1"
             >Hide <span class="text-red-800 dark:text-red-400">{{ attr.label }}</span></span
           >
-          <Icon v-if="value.isRefined" name="mdi:hide" class="text-gray-400 ml-2" size="1.2em" />
+          <GraphicsHide v-if="value.isRefined" class="size-[1.2em] text-gray-400 ml-2" />
         </label>
       </template>
     </ais-toggle-refinement>

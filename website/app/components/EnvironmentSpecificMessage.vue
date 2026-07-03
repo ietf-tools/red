@@ -11,7 +11,7 @@
           <div
             class="button-highlight-target my-1 bg-gray-100 text-black rounded-sm px-1 py-1 sm:py-1 sm:px-2 text-xs font-bold text-gray-600 flex items-center gap-1">
             <span class="hidden sm:inline"> beta feedback </span>
-            <Icon name="garden:speech-bubble-plain-fill-12" size="1em" />
+            <GraphicsSpeechBubble />
           </div>
         </div>
       </button>

@@ -3,7 +3,7 @@
     :href="SEARCH_PATH"
     class="absolute top-0 right-10 no-underline block px-2 pt-4.25 pb-2 block lg:hidden"
     aria-label="Search">
-    <Icon name="fluent:search-12-filled" />
+    <GraphicsSearch />
   </Anchor>
 
   <DialogRoot v-model:open="isOpen">
@@ -75,7 +75,7 @@
                           <span
                             class="inline-flex items-center pt-[4px] justify-center w-[24px] h-[24px] mr-2 border-1 rounded-full border-current">
                             <RadioGroupIndicator>
-                              <Icon name="fluent:checkmark-12-filled" class="block w-[16px] h-[16px]" />
+                              <GraphicsCheckmark class="block w-[16px] h-[16px]" />
                             </RadioGroupIndicator>
                           </span>
                           {{ level1.label }}
@@ -120,7 +120,7 @@
                           <span
                             class="inline-flex items-center pt-[4px] justify-center w-[24px] h-[24px] mr-2 border-1 rounded border-current">
                             <CheckboxIndicator>
-                              <Icon name="fluent:checkmark-12-filled" class="block w-[16px] h-[16px]" />
+                              <GraphicsCheckmark class="block w-[16px] h-[16px]" />
                             </CheckboxIndicator>
                           </span>
                           {{ level1.label }}
@@ -146,10 +146,7 @@
                         }
                       ">
                       <HeaderNavIcon :icon="level0.icon" />
-                      <Icon
-                        v-if="level0.isActiveFn?.()"
-                        name="fluent:checkmark-12-filled"
-                        class="inline-block w-[14px] h-[14px] mr-1" />
+                      <GraphicsCheckmark v-if="level0.isActiveFn?.()" class="inline-block w-[14px] h-[14px] mr-1" />
                       <span
                         v-if="
                           level0.isActiveFn && !level0.isActiveFn() // render blank space if isActiveFn()===false

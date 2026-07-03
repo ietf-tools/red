@@ -79,7 +79,7 @@
       :aria-expanded="isPopoverOpen"
       @pointerdown.stop
       @click="toggleTouchPopover">
-      <Icon name="fluent:preview-link-16-regular" />
+      <GraphicsPreviewLink />
     </button>
   </span>
 </template>
