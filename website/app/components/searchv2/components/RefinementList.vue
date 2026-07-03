@@ -24,7 +24,7 @@
             :class="classNames?.checkbox"
             :value="item.value"
             :checked="item.isRefined"
-            @change="refine(item.value)" />
+            @change="onToggle(item.value)" />
           <slot name="label" :item="item">
             <span v-if="item.highlighted" :class="classNames?.text" v-html="item.highlighted" />
             <span v-else :class="classNames?.text">{{ item.label }}</span>
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, useId } from 'vue'
+import { computed, nextTick, ref, useId, watch } from 'vue'
 import Fieldset from '../a11y/Fieldset.vue'
 import LiveRegion from '../a11y/LiveRegion.vue'
 import { useFocusManagement } from '../a11y/useFocusManagement'
@@ -135,6 +135,38 @@ const announcement = computed(() => {
 const onSearchInput = (event: Event) => {
   if (event.target instanceof HTMLInputElement) void searchForItems(event.target.value)
 }
+
+// Toggling a checkbox reruns the search, which can remove the focused option from the
+// list (its count drops out). Vue's keyed reuse keeps focus when the option survives;
+// this guard is the safety net for when it doesn't, so focus never falls to <body>
+// (WCAG 2.4.3 Focus Order). It is a no-op whenever focus is preserved or the user has
+// moved focus elsewhere.
+const pendingFocusValue = ref<string | null>(null)
+let clearPendingTimer: ReturnType<typeof setTimeout> | undefined
+
+const onToggle = (value: string) => {
+  pendingFocusValue.value = value
+  refine(value)
+  if (clearPendingTimer !== undefined) clearTimeout(clearPendingTimer)
+  clearPendingTimer = setTimeout(() => {
+    pendingFocusValue.value = null
+  }, 1500)
+}
+
+watch(items, async () => {
+  if (pendingFocusValue.value === null) return
+  await nextTick()
+  const list = listRef.value
+  const active = document.activeElement
+  // Only intervene when focus was actually lost (dropped to <body>), never steal it back
+  // if the user has moved on to another control.
+  if (!list || (active !== null && active !== document.body)) return
+  const value = pendingFocusValue.value
+  const checkboxes = [...list.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')]
+  const target = checkboxes.find((checkbox) => checkbox.value === value) ?? checkboxes[0] ?? toggleRef.value
+  target?.focus()
+  pendingFocusValue.value = null
+})
 
 // Defect #5: move focus to the first newly revealed option on expand; back to the toggle on collapse.
 const onToggleShowMore = async () => {

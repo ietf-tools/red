@@ -18,7 +18,7 @@ describe('RfcEditorSearch (searchv2)', async () => {
       await page.goto(url('/search/?q=http'))
 
       // v2 renders (heading marker).
-      await page.locator('h1', { hasText: 'Search RFCs v2' }).waitFor({ state: 'visible' })
+      await page.locator('h1', { hasText: 'Search' }).waitFor({ state: 'visible' })
 
       // Defect 2: submit button is named via aria-label, not title.
       const submit = page.locator('button[aria-label="Submit search"]')
@@ -52,7 +52,7 @@ describe('RfcEditorSearch (searchv2)', async () => {
         window.localStorage.setItem('feature-flag-experiments', JSON.stringify({ searchV2: true }))
       )
       await page.goto(url('/search/?q=http'))
-      await page.locator('h1', { hasText: 'Search RFCs v2' }).waitFor({ state: 'visible' })
+      await page.locator('h1', { hasText: 'Search' }).waitFor({ state: 'visible' })
 
       // H1: trigger is a single button with aria-haspopup="dialog" and no aria-expanded
       const filterButton = page.locator('button', { hasText: 'Filter RFCs' })
@@ -89,6 +89,38 @@ describe('RfcEditorSearch (searchv2)', async () => {
       expect(await page.evaluate(() => document.activeElement?.textContent?.includes('Filter RFCs') ?? false)).toBe(
         true
       )
+
+      await page.close()
+    },
+    TEST_DURATION_MS
+  )
+
+  test(
+    'facet checkbox: focus stays on the toggled option after the list updates',
+    async () => {
+      const page = await createPage('/search/')
+      await page.evaluate(() =>
+        window.localStorage.setItem('feature-flag-experiments', JSON.stringify({ searchV2: true }))
+      )
+      await page.goto(url('/search/?q=http'))
+
+      const firstCheckbox = page.locator('fieldset input[type="checkbox"]').first()
+      await firstCheckbox.waitFor({ state: 'visible', timeout: 25_000 })
+      const toggledValue = await firstCheckbox.getAttribute('value')
+
+      await firstCheckbox.focus()
+      await page.keyboard.press('Space')
+      await page.waitForLoadState('networkidle')
+      await page.waitForTimeout(600)
+
+      // After the search reruns and the facet list updates, keyboard focus must not be
+      // lost to <body>; it stays on (or is restored to) a checkbox in the group.
+      const focused = await page.evaluate(() => {
+        const el = document.activeElement as HTMLInputElement | null
+        return { type: el?.getAttribute('type') ?? null, value: el?.getAttribute('value') ?? null }
+      })
+      expect(focused.type).toBe('checkbox')
+      expect(focused.value).toBe(toggledValue)
 
       await page.close()
     },
