@@ -44,7 +44,7 @@
       :defaults="defaultUiState"
       label="Reset filters"
       :class-names="{
-        root: 'mt-10 mb-3 px-2 py-2 bg-red-900 dark:bg-red-950 dark:border-1 dark:border-red-800 font-bold text-white dark:text-white cursor-pointer disabled:opacity-50 disabled:no-underline'
+        root: 'mt-10 mb-3 px-2 py-2 bg-red-900 dark:bg-red-950 dark:border-1 dark:border-red-800 font-bold text-white dark:text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
       }"
       @reset="emit('reset')" />
   </div>
