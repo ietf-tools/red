@@ -12,7 +12,7 @@
           :aria-label="menuItem.label"
           :class="`${
             'border-1 border-blue-900 dark:border-blue-950' // for high contrast mode
-          } rounded-md px-4 py-3 text-white dark:text-white cursor-pointer group flex select-none hover:outline-1 items-center justify-between gap-[2px] text-[15px] leading-none focus:shadow-[0_0_0_2px_white]`"
+          } hover:bg-blue-850 rounded-md px-4 py-3 text-white dark:text-white cursor-pointer group flex select-none hover:outline-1 items-center justify-between gap-[2px] text-[15px] leading-none focus:shadow-[0_0_0_2px_white]`"
           as-child
           @click="menuItem.click">
           <Anchor>
