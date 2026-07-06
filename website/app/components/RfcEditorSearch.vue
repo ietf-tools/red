@@ -11,7 +11,9 @@
         :persistent-facets="PERSISTENT_FACETS"
         :default-hits-per-page="10"
         :stalled-search-delay-ms="800">
-        <Heading level="1" class="container mx-auto lg:max-w-[80rem] pl-5 pr-3 py-1 text-balance"> Search </Heading>
+        <div class="container mx-auto">
+          <Heading level="1" class="mx-auto lg:max-w-[80rem] pl-5 pr-3 py-1 text-balance"> Search </Heading>
+        </div>
 
         <!-- Single `search` landmark for the whole facility (query + filters + results).
              SearchBox's own landmark is disabled below so there is exactly one. -->

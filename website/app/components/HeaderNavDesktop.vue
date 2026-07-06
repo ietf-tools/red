@@ -3,7 +3,7 @@
     v-model="currentNav"
     class="relative w-full justify-end content-end hidden lg:block"
     disable-hover-trigger>
-    <NavigationMenuList class="m-0 flex gap-2 w-full justify-end list-none rounded-md">
+    <NavigationMenuList class="m-0 flex w-full gap-0.5 justify-end items-center list-none rounded-md">
       <NavigationMenuItem v-for="(menuItem, index) in menuDataWithNoScripts" :key="index">
         <NavigationMenuLink
           v-if="menuItem.href && !menuItem.children"
@@ -41,12 +41,12 @@
           </span>
           <span
             :class="[
-              'forced-color-adjust-none bg-blue-900 dark:bg-blue-950', // high contrast mode
-              'px-2 py-2 ml-1'
+              'forced-color-adjust-none forced-colors:bg-blue-900', // high contrast mode
+              ' ml-1'
             ]">
             <GraphicsChevron
               :class="[
-                '  top-[1px] text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
+                'top-[1px] text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
                 hasMounted ? 'visible' : 'invisible'
               ]" />
           </span>
