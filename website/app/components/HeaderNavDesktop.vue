@@ -10,7 +10,9 @@
           :id="`menu-link-${index}`"
           :href="menuItem.href"
           :aria-label="menuItem.label"
-          class="cursor-pointer hover:bg-blue-850 hover:outline-1 group flex select-none items-center justify-between gap-[2px] rounded-md px-4 py-3 text-[15px] leading-none focus:shadow-[0_0_0_2px_white]"
+          :class="`${
+            'border-1 border-blue-900 dark:border-blue-950' // for high contrast mode
+          } rounded-md px-4 py-3 text-white dark:text-white cursor-pointer group flex select-none hover:outline-1 items-center justify-between gap-[2px] text-[15px] leading-none focus:shadow-[0_0_0_2px_white]`"
           as-child
           @click="menuItem.click">
           <Anchor>
@@ -26,9 +28,10 @@
           type="button"
           :disabled="!hasMounted"
           :class="[
+            'border-1 border-blue-900 dark:border-blue-950', // for high contrast mode
             'hover:bg-blue-850 hover:outline-1 group flex select-none items-center justify-between gap-2 rounded-md px-4 py-3 text-base leading-none',
             {
-              'cursor-pointer': hasMounted // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that looks like it's clickable
+              'cursor-pointer': hasMounted // only use cursor-pointer when mounted, so that non-JS browsers don't get a confusing inactive button that behaves like it's clickable
             }
           ]"
           :aria-label="menuItem.label">
@@ -36,11 +39,17 @@
           <span v-if="!menuItem.hideLabelDesktop">
             {{ menuItem.label }}
           </span>
-          <GraphicsChevron
+          <span
             :class="[
-              'ml-1 top-[1px] text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
-              hasMounted ? 'visible' : 'invisible'
-            ]" />
+              'forced-color-adjust-none bg-blue-900 dark:bg-blue-950', // high contrast mode
+              'px-2 py-2 ml-1'
+            ]">
+            <GraphicsChevron
+              :class="[
+                '  top-[1px] text-white transition-transform duration-[150ms] ease-in group-data-[state=open]:-rotate-180',
+                hasMounted ? 'visible' : 'invisible'
+              ]" />
+          </span>
         </NavigationMenuTrigger>
         <NavigationMenuContent
           v-if="menuItem.children"
@@ -88,7 +97,7 @@
                     :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
                     <span class="flex items-center">
                       <span
-                        class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
+                        class="inline-flex items-center justify-center w-[20px] h-[20px] mr-2 border-blue-500 border-1 rounded-full border-current/60">
                         <RadioGroupIndicator>
                           <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                         </RadioGroupIndicator>
@@ -134,7 +143,7 @@
                     :class="[MENU_ITEM_CLASS, 'mb-[1px] w-full cursor-pointer']">
                     <span class="flex items-center">
                       <span
-                        class="inline-flex items-center pt-[2px] justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
+                        class="inline-flex items-center justify-center w-[20px] h-[20px] mr-2 border-1 rounded border-current/60">
                         <CheckboxIndicator>
                           <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                         </CheckboxIndicator>
@@ -217,7 +226,7 @@
                     <span
                       v-if="level0.isActiveFn"
                       :class="[
-                        'inline-block mr-2',
+                        'inline-block mr-2 outline-2 outline-red-500',
                         {
                           'border-1 border-current': level0.role === 'checkbox',
                           'border-1 rounded-xl border-current': level0.role === 'radio'
@@ -226,8 +235,8 @@
                       <GraphicsCheckmark
                         v-if="Boolean(level0.isActiveFn?.())"
                         :class="['inline-block w-[14px] h-[14px]']" />
-                      <span v-else class="inline-block w-[14px] h-[14px]" />
-                    </span>
+                      <span v-else class="inline-block w-[14px] h-[14px]" /> </span
+                    >fffs
                     {{ level0.label }}
                   </span>
                 </button>

@@ -11,7 +11,7 @@
         :persistent-facets="PERSISTENT_FACETS"
         :default-hits-per-page="10"
         :stalled-search-delay-ms="800">
-        <Heading level="1" class="container mx-auto pl-5 pr-3 py-1 text-balance"> Search </Heading>
+        <Heading level="1" class="container mx-auto lg:max-w-[80rem] pl-5 pr-3 py-1 text-balance"> Search </Heading>
 
         <!-- Single `search` landmark for the whole facility (query + filters + results).
              SearchBox's own landmark is disabled below so there is exactly one. -->
@@ -20,9 +20,9 @@
 
           <div
             :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
-            class="lg:sticky lg:top-0 lg:z-60 bg-gray-200 dark:bg-blue-950 text-white dark:border-y-1 dark:border-gray-800">
-            <div class="flex flex-row items-center py-4 container mx-auto pl-5 pr-3">
-              <div class="w-full flex mx-auto">
+            class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-60 bg-gray-200 dark:bg-blue-950 text-white dark:border-y-1 dark:border-gray-800">
+            <div class="flex flex-row items-center py-2 container mx-auto pl-5 pr-3">
+              <div class="w-full flex justify-center mx-auto">
                 <SearchBox
                   :class-names="searchBoxClasses"
                   label="Search RFCs"
@@ -30,7 +30,7 @@
                   submit-label="Submit search"
                   :landmark="false">
                   <template #submit-icon>
-                    <GraphicsSearch class="text-white size-[2em]" />
+                    <GraphicsSearch class="w-[2em] h-[2em]" />
                   </template>
                 </SearchBox>
               </div>
@@ -39,17 +39,17 @@
 
           <div class="container mx-auto w-full" v-html="noScriptIframeHtml" />
 
-          <div class="container mx-auto flex flex-row items-start py-5 pl-5 pr-3">
+          <div class="container mx-auto lg:max-w-[80rem] flex flex-row items-start py-5 pl-5 pr-3">
             <ClientOnly>
-              <aside class="hidden lg:block lg:w-1/3 pr-6">
+              <nav aria-label="filters" class="hidden lg:block lg:w-1/3 pr-6">
                 <h2 ref="filterHeadingRef" tabindex="-1" class="sr-only">Filters</h2>
                 <RfcSearchFilters @reset="focusFilterHeading" />
-              </aside>
+              </nav>
 
-              <div class="w-full lg:w-2/3">
+              <div class="w-full lg:w-2/3 lg:max-w-[50em]">
                 <h2 class="sr-only">Search results</h2>
                 <div class="flex w-full flex-row justify-between items-center gap-3 lg:gap-4 xl:gap-5">
-                  <Stats :class-names="{ root: 'text-base whitespace-nowrap' }" />
+                  <Stats :class-names="{ root: 'text-base font-bold whitespace-nowrap' }" />
                   <div class="hidden lg:flex lg:items-center gap-3">
                     <SortBy :items="SORT_ITEMS" label="Sort by" :class-names="sortClasses" />
                     <Separator
@@ -134,15 +134,13 @@ import { useNuxtStateAdapter } from '~/utilities/searchv2-nuxt-adapter'
 import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '~/utilities/typesense'
 import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
 
 const searchStore = useSearchStore()
 const host = useTypesenseHost()
 const apiKey = useTypesenseApiKey()
-const featureFlags = useFeatureFlags()
 
-const defaultShowObsoleted = Boolean(featureFlags.value.searchObsoletedDefaults)
+const defaultShowObsoleted = true
 
 const searchClient = createRfcSearchClient({
   host,
@@ -204,12 +202,13 @@ const onDialogClick = (event: MouseEvent) => {
 }
 
 const searchBoxClasses: ClassNames = {
-  root: 'w-full',
-  row1: 'flex flex-col sm:flex-row items-center gap-2',
+  root: 'w-full 2xl:ml-32',
+  row1: 'flex flex-col sm:flex-row items-center gap-2 mx-auto',
   inputAndButtons: 'flex w-full',
   input:
-    'flex-1 w-full min-w-0 max-w-192 text-black dark:text-white bg-white dark:bg-black dark:text-white border-1 border-gray-500 pl-4 py-3 pr-2 h-12 rounded-l-md',
-  submit: 'bg-blue-200 px-2 flex items-center rounded-r-md cursor-pointer text-blue-950',
+    'flex-1 w-full min-w-0 max-w-192 text-black dark:text-white bg-white dark:bg-black dark:text-white border-1 border-gray-400 pl-4 py-3 pr-2 h-12 rounded-l-md',
+  submit:
+    'forced-color-adjust-none bg-blue-200 px-2 flex items-center rounded-r-md cursor-pointer text-white border-1 border-gray-400',
   reset: 'hidden cursor-pointer',
   label: 'text-black dark:text-white text-lg md:w-30 font-bold whitespace-nowrap',
   loadingIndicator: 'pl-0 sm:pl-2 text-black dark:text-white',
@@ -219,7 +218,7 @@ const sortClasses: ClassNames = {
   root: 'flex items-center gap-2 text-base',
   label: 'whitespace-nowrap',
   select:
-    'py-2 w-full min-w-0 max-w-full text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer'
+    'py-2 px-2 w-full min-w-0 max-w-full text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer'
 }
 const hitsPerPageClasses: ClassNames = {
   root: 'flex items-center gap-2 text-base',

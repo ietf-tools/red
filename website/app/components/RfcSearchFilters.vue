@@ -28,7 +28,7 @@
 
     <RefinementList
       attribute="group.full"
-      label="Search for Working group"
+      label="Working group"
       searchable
       show-more
       :limit="5"
@@ -39,7 +39,7 @@
 
     <RefinementList
       attribute="authors.name"
-      label="Search for author"
+      label="Author"
       searchable
       show-more
       :limit="5"
@@ -107,27 +107,29 @@ const sortStatuses = (a: RefinementItem, b: RefinementItem): number => {
 
 const filterClasses: ClassNames = {
   root: 'mb-6',
-  legend: 'text-base font-semibold text-blue-900 dark:text-slate-300 mt-3 mb-1',
+  legend: 'text-lg font-semibold text-blue-900 dark:text-slate-300 pt-3 mb-1',
   searchBox: 'mb-2',
+  searchLabel: 'font-bold text-blue-900 dark:text-slate-300',
   searchInput:
     'w-full px-3 py-1.5 text-base border bg-white dark:bg-black border-gray-400 rounded-xs dark:bg-black dark:text-white',
   list: 'w-fit',
-  item: 'whitespace-nowrap',
-  itemLabel: 'flex text-base cursor-pointer w-full items-center gap-2 mb-1',
+  item: '',
+  checkbox: 'mt-1.5',
+  itemLabel: 'flex text-base cursor-pointer w-full items-start justify-start gap-2 mb-1',
   count: 'bg-gray-600 dark:bg-gray-700 rounded-sm text-xs ml-auto px-2 py-1 font-bold text-white',
   showMore: 'underline text-sky-700 dark:text-blue-100 cursor-pointer mb-6'
 }
 const selectClasses: ClassNames = {
   root: 'mb-2 flex flex-col',
   label: 'text-base font-semibold text-blue-900 dark:text-slate-300 mt-3 mb-1',
-  select: 'bg-white text-black dark:bg-black dark:text-white w-full px-1 py-2 border border-gray-400 rounded-xs'
+  select: 'bg-white text-black dark:bg-black dark:text-white w-full px-2 py-2 border border-gray-400 rounded-xs'
 }
 const dateRangeClasses: ClassNames = {
   root: 'flex flex-wrap items-center gap-2 mb-4',
   legend: 'text-base font-semibold text-blue-900 dark:text-slate-300 mt-3 mb-1',
   rangeLabel: 'text-base font-semibold text-blue-900 dark:text-slate-300 w-12',
   select:
-    'px-1 py-2 bg-white text-black dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer',
+    'px-2 py-2 bg-white text-black dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer',
   fromContainer: 'flex items-center gap-2 whitespace-nowrap',
   toContainer: 'flex items-center gap-2 whitespace-nowrap'
 }

@@ -1,7 +1,7 @@
 <template>
   <Fieldset :legend="label" :legend-class="classNames?.legend" :class="classNames?.root">
     <div v-if="searchable" :class="classNames?.searchBox">
-      <label :for="searchDomId" :style="SR_ONLY_STYLE">{{ searchLabel }}</label>
+      <label :for="searchDomId" :class="classNames?.searchLabel">{{ searchLabel }}</label>
       <input
         :id="searchDomId"
         type="search"
@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<Props>(), {
   showMore: false,
   searchable: false,
   searchLabel: undefined,
-  searchPlaceholder: 'Search…',
+  searchPlaceholder: '',
   showMoreLabel: 'Show more',
   showLessLabel: 'Show less',
   showMoreAriaLabel: undefined,

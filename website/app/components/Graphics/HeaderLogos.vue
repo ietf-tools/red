@@ -1,5 +1,11 @@
 <template>
-  <Anchor href="/" :class="[props.class, 'pl-0']">
+  <Anchor
+    href="/"
+    :class="[
+      props.class,
+      'bg-blue-900 dark:bg-blue-950 forced-color-adjust-none', // for high contrast mode
+      'inline-block px-2 pt-1 pb-1 rounded-md'
+    ]">
     <img :src="LogoMobile" class="lg:hidden" alt="RFC Editor - Official home of RFCs" width="131" height="24" />
     <img :src="LogoDesktop" class="hidden lg:block" alt="RFC Editor - Official home of RFCs" width="183" height="37" />
   </Anchor>
