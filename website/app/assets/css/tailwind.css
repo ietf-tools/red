@@ -16,6 +16,19 @@
   }
 }
 
+@utility search-container {
+  @apply container;
+  @variant lg {
+    max-width: 1024px;
+  }
+  @variant xl {
+    max-width: 1160px;
+  }
+  @variant 2xl {
+    max-width: 1160px;
+  }
+}
+
 @theme {
   --font-sans: 'Inter', sans-serif;
 

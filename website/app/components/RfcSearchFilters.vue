@@ -58,7 +58,7 @@
       :defaults="defaultUiState"
       label="Reset filters"
       :class-names="{
-        root: 'mt-10 mb-3 px-2 py-2 bg-red-900 dark:bg-red-950 dark:border-1 dark:border-red-800 font-bold text-white dark:text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
+        root: 'mt-10 mb-3 px-2 py-1 bg-red-900 dark:bg-red-950 rounded dark:border-1 dark:border-red-800 font-bold text-white dark:text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
       }"
       @reset="emit('reset')" />
   </div>
@@ -111,7 +111,7 @@ const filterClasses: ClassNames = {
   searchBox: 'mb-2',
   searchLabel: 'font-bold text-blue-900 dark:text-slate-300',
   searchInput:
-    'w-full px-3 py-1.5 text-base border bg-white dark:bg-black border-gray-400 rounded-xs dark:bg-black dark:text-white',
+    'w-full px-3 py-1.5 text-base border bg-white dark:bg-black border-gray-400 rounded dark:bg-black dark:text-white',
   list: 'w-fit',
   item: '',
   checkbox: 'mt-1.5',

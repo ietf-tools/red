@@ -11,19 +11,21 @@
         :persistent-facets="PERSISTENT_FACETS"
         :default-hits-per-page="10"
         :stalled-search-delay-ms="800">
-        <div class="container mx-auto">
-          <Heading level="1" class="mx-auto lg:max-w-[80rem] pl-5 pr-3 py-1 text-balance"> Search </Heading>
-        </div>
+        <Heading
+          level="1"
+          class="search-container mx-auto pl-5 pr-3 py-1 text-blue-900 dark:text-gray-200 text-balance">
+          Search
+        </Heading>
 
         <!-- Single `search` landmark for the whole facility (query + filters + results).
              SearchBox's own landmark is disabled below so there is exactly one. -->
         <div role="search" aria-label="RFC search">
-          <div class="px-6 container mx-auto" v-html="noScriptFormHtml" />
+          <div class="search-container mx-auto px-6" v-html="noScriptFormHtml" />
 
           <div
             :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
             class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-60 bg-gray-200 dark:bg-blue-950 text-white dark:border-y-1 dark:border-gray-800">
-            <div class="flex flex-row items-center py-2 container mx-auto pl-5 pr-3">
+            <div class="search-container mx-auto pl-5 pr-3 py-2 xl:py-3 flex flex-row items-center">
               <div class="w-full flex justify-center mx-auto">
                 <SearchBox
                   :class-names="searchBoxClasses"
@@ -39,9 +41,9 @@
             </div>
           </div>
 
-          <div class="container mx-auto w-full" v-html="noScriptIframeHtml" />
+          <div class="search-container mx-auto w-full" v-html="noScriptIframeHtml" />
 
-          <div class="container mx-auto lg:max-w-[80rem] flex flex-row items-start py-5 pl-5 pr-3">
+          <div class="search-container mx-auto py-5 pl-5 pr-3 flex flex-row items-start">
             <ClientOnly>
               <nav aria-label="filters" class="hidden lg:block lg:w-1/3 pr-6">
                 <h2 ref="filterHeadingRef" tabindex="-1" class="sr-only">Filters</h2>
@@ -104,7 +106,7 @@
               <dialog
                 ref="filterDialogRef"
                 aria-labelledby="rfc-filter-dialog-title"
-                class="fixed top-0 left-0 w-screen h-screen p-0 rounded-xs bg-white text-black dark:bg-black dark:text-white backdrop:bg-black/50"
+                class="fixed top-0 left-0 w-screen h-screen p-0 rounded-xs bg-white dark:bg-black text-blue-900 dark:text-gray-200 backdrop:bg-black/50"
                 @click="onDialogClick">
                 <div
                   class="flex items-center justify-between border-b border-gray-300 dark:border-gray-700 px-4 py-3 sticky top-0 bg-white dark:bg-black">
@@ -212,7 +214,7 @@ const searchBoxClasses: ClassNames = {
   submit:
     'forced-color-adjust-none bg-blue-200 px-2 flex items-center rounded-r-md cursor-pointer text-white border-1 border-gray-400',
   reset: 'hidden cursor-pointer',
-  label: 'text-black dark:text-white text-lg md:w-30 font-bold whitespace-nowrap',
+  label: 'text-blue-950 dark:text-white text-lg md:w-30 font-bold whitespace-nowrap',
   loadingIndicator: 'pl-0 sm:pl-2 text-black dark:text-white',
   description: 'mt-2 text-center sm:text-left sm:pl-30 text-base text-black dark:text-white italic'
 }
