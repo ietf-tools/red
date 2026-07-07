@@ -3,12 +3,20 @@
     <div :class="classNames?.fromContainer">
       <span :class="classNames?.rangeLabel">{{ fromLabel }}</span>
       <label :for="fromYearDomId" :class="classNames?.label" :style="SR_ONLY_STYLE">{{ fromYearLabel }}</label>
-      <select :id="fromYearDomId" :class="classNames?.select" :value="fromYear ?? ''" @change="onFromYear">
+      <select
+        :id="fromYearDomId"
+        :class="[classNames?.select, classNames?.fromYearSelect]"
+        :value="fromYear ?? ''"
+        @change="onFromYear">
         <option value="">{{ anyYearLabel }}</option>
         <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
       </select>
       <label :for="fromMonthDomId" :class="classNames?.label" :style="SR_ONLY_STYLE">{{ fromMonthLabel }}</label>
-      <select :id="fromMonthDomId" :class="classNames?.select" :value="fromMonth ?? ''" @change="onFromMonth">
+      <select
+        :id="fromMonthDomId"
+        :class="[classNames?.select, classNames?.fromMonthSelect]"
+        :value="fromMonth ?? ''"
+        @change="onFromMonth">
         <option value="">{{ anyMonthLabel }}</option>
         <option v-for="(name, index) in monthNames" :key="index" :value="index + 1">{{ name }}</option>
       </select>
@@ -17,12 +25,20 @@
     <div :class="classNames?.toContainer">
       <span :class="classNames?.rangeLabel">{{ toLabel }}</span>
       <label :for="toYearDomId" :class="classNames?.label" :style="SR_ONLY_STYLE">{{ toYearLabel }}</label>
-      <select :id="toYearDomId" :class="classNames?.select" :value="toYear ?? ''" @change="onToYear">
+      <select
+        :id="toYearDomId"
+        :class="[classNames?.select, classNames?.toYearSelect]"
+        :value="toYear ?? ''"
+        @change="onToYear">
         <option value="">{{ anyYearLabel }}</option>
         <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
       </select>
       <label :for="toMonthDomId" :class="classNames?.label" :style="SR_ONLY_STYLE">{{ toMonthLabel }}</label>
-      <select :id="toMonthDomId" :class="classNames?.select" :value="toMonth ?? ''" @change="onToMonth">
+      <select
+        :id="toMonthDomId"
+        :class="[classNames?.select, classNames?.toMonthSelect]"
+        :value="toMonth ?? ''"
+        @change="onToMonth">
         <option value="">{{ anyMonthLabel }}</option>
         <option v-for="(name, index) in monthNames" :key="index" :value="index + 1">{{ name }}</option>
       </select>
@@ -76,8 +92,8 @@ const props = withDefaults(defineProps<Props>(), {
     'November',
     'December'
   ],
-  fromLabel: 'From',
-  toLabel: 'To',
+  fromLabel: 'From:',
+  toLabel: 'To:',
   fromYearLabel: 'From year',
   fromMonthLabel: 'From month',
   toYearLabel: 'To year',

@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :class="classNames?.root" :disabled="!canReset" @click="onClick">
+  <button type="button" :class="classNames?.root" :disabled="!canReset" @click="onClick" :aria-label="props.ariaLabel">
     <slot :can-reset="canReset">{{ label }}</slot>
   </button>
 </template>
@@ -11,6 +11,7 @@ import type { ClassNames, UiState } from '../types'
 type Props = {
   defaults?: UiState
   label?: string
+  ariaLabel?: string
   classNames?: ClassNames
 }
 

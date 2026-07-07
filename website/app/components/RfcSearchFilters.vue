@@ -1,17 +1,29 @@
 <template>
   <div>
-    <ul>
+    <div class="flex flex-row w-full gap-3">
+      <Heading level="2" class="text-blue-900 dark:text-gray-200 mb-2">Filters</Heading>
+
+      <ResetForm
+        :defaults="defaultUiState"
+        aria-label="Reset filters"
+        label="Reset"
+        :class-names="{
+          root: 'mb-3 px-2 py-1 text-sm uppercase rounded text-red-900 border-1 border-red-700 dark:border-1 dark:border-red-800 font-bold cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
+        }"
+        @reset="emit('reset')" />
+    </div>
+    <ul class="mb-2">
       <li>
         <ToggleRefinement
           attribute="contents"
           label="Search in RFC contents"
-          :class-names="{ root: 'inline-block mb-4 text-base cursor-pointer', checkbox: 'mr-2' }" />
+          :class-names="{ root: 'inline-block mb-3 text-base cursor-pointer', checkbox: 'mr-2' }" />
       </li>
       <li>
         <ToggleRefinement
           attribute="flags.hiddenDefault"
           label="Hide obsoleted / historic"
-          :class-names="{ root: 'inline-block clear-both mb-4 text-base cursor-pointer', checkbox: 'mr-2' }" />
+          :class-names="{ root: 'inline-block clear-both text-base cursor-pointer', checkbox: 'mr-2' }" />
       </li>
     </ul>
 
@@ -51,16 +63,10 @@
     <YearMonthRangeInput
       attribute="publicationDate"
       label="Publication date"
+      from-label="From:"
+      to-label="To:"
       :min-year="1969"
       :class-names="dateRangeClasses" />
-
-    <ResetForm
-      :defaults="defaultUiState"
-      label="Reset filters"
-      :class-names="{
-        root: 'mt-10 mb-3 px-2 py-1 bg-red-900 dark:bg-red-950 rounded dark:border-1 dark:border-red-800 font-bold text-white dark:text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
-      }"
-      @reset="emit('reset')" />
   </div>
 </template>
 
@@ -82,10 +88,10 @@ import { useFeatureFlags } from '~/utilities/feature-flags'
 const emit = defineEmits<{ reset: [] }>()
 
 const featureFlags = useFeatureFlags()
-const defaultShowObsoleted = Boolean(featureFlags.value.searchObsoletedDefaults)
+const defaultShowObsoleted = computed(() => Boolean(featureFlags.value.searchObsoletedDefaults))
 
 const defaultUiState = computed<UiState>(() => ({
-  toggles: { 'flags.hiddenDefault': !defaultShowObsoleted, contents: false }
+  toggles: { 'flags.hiddenDefault': !defaultShowObsoleted.value, contents: false }
 }))
 
 const STATUS_ORDER = [
@@ -127,10 +133,14 @@ const selectClasses: ClassNames = {
 const dateRangeClasses: ClassNames = {
   root: 'flex flex-wrap items-center gap-2 mb-4',
   legend: 'text-base font-semibold text-blue-900 dark:text-slate-300 mt-3 mb-1',
-  rangeLabel: 'text-base font-semibold text-blue-900 dark:text-slate-300 w-12',
+  rangeLabel: 'text-sm font-semibold text-blue-900 dark:text-slate-300 w-12',
   select:
     'px-2 py-2 bg-white text-black dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer',
   fromContainer: 'flex items-center gap-2 whitespace-nowrap',
-  toContainer: 'flex items-center gap-2 whitespace-nowrap'
+  toContainer: 'flex items-center gap-2 whitespace-nowrap',
+  fromYearSelect: 'rounded-l-lg',
+  toYearSelect: 'rounded-l-lg',
+  fromMonthSelect: 'rounded-r-lg',
+  toMonthSelect: 'rounded-r-lg'
 }
 </script>

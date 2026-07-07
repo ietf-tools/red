@@ -24,13 +24,13 @@
 
           <div
             :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
-            class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-60 bg-gray-200 dark:bg-blue-950 text-white dark:border-y-1 dark:border-gray-800">
-            <div class="search-container mx-auto pl-5 pr-3 py-2 xl:py-3 flex flex-row items-center">
+            class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-60 bg-gray-200 dark:bg-blue-950 dark:border-y-1 dark:border-gray-800">
+            <div class="search-container mx-auto pl-5 pr-3 pt-1 pb-0 py-2 xl:py-2 flex flex-row items-center">
               <div class="w-full flex justify-center mx-auto">
                 <SearchBox
                   :class-names="searchBoxClasses"
                   label="Search RFCs"
-                  description="Find an RFC (number, subseries, title, author, etc.)"
+                  :description-id="searchBoxDescriptionId"
                   submit-label="Submit search"
                   :landmark="false">
                   <template #submit-icon>
@@ -38,6 +38,13 @@
                   </template>
                 </SearchBox>
               </div>
+            </div>
+          </div>
+          <div class="pb-2 italic bg-gray-200 dark:bg-blue-950" :id="searchBoxDescriptionId">
+            <div class="search-container mx-auto px-2 text-center md:text-left md:px-0">
+              <p class="xl:-mt-[0.3em] pl-4 md:pl-34 2xl:pl-67 text-black">
+                Find an RFC (number, subseries, title, author, etc.)
+              </p>
             </div>
           </div>
 
@@ -144,7 +151,7 @@ const searchStore = useSearchStore()
 const host = useTypesenseHost()
 const apiKey = useTypesenseApiKey()
 
-const defaultShowObsoleted = true
+const searchBoxDescriptionId = useId()
 
 const searchClient = createRfcSearchClient({
   host,
@@ -156,7 +163,7 @@ const searchClient = createRfcSearchClient({
   }
 })
 
-const stateAdapter = useNuxtStateAdapter({ defaultShowObsoleted })
+const stateAdapter = useNuxtStateAdapter({ defaultShowObsoleted: true })
 
 const PERSISTENT_FACETS = ['status.name', 'stream.name', 'area.full', 'group.full', 'authors.name', 'publicationDate']
 
@@ -207,7 +214,7 @@ const onDialogClick = (event: MouseEvent) => {
 
 const searchBoxClasses: ClassNames = {
   root: 'w-full 2xl:ml-32',
-  row1: 'flex flex-col sm:flex-row items-center gap-2 mx-auto',
+  row1: 'flex flex-col sm:flex-row sm:gap-2 items-center mx-auto',
   inputAndButtons: 'flex w-full',
   input:
     'flex-1 w-full min-w-0 max-w-192 text-black dark:text-white bg-white dark:bg-black dark:text-white border-1 border-gray-400 pl-4 py-3 pr-2 h-12 rounded-l-md',
@@ -215,9 +222,9 @@ const searchBoxClasses: ClassNames = {
     'forced-color-adjust-none bg-blue-200 px-2 flex items-center rounded-r-md cursor-pointer text-white border-1 border-gray-400',
   reset: 'hidden cursor-pointer',
   label: 'text-blue-950 dark:text-white text-lg md:w-30 font-bold whitespace-nowrap',
-  loadingIndicator: 'pl-0 sm:pl-2 text-black dark:text-white',
-  description: 'mt-2 text-center sm:text-left sm:pl-30 text-base text-black dark:text-white italic'
+  loadingIndicator: 'pl-0 sm:pl-2 text-black dark:text-white'
 }
+
 const sortClasses: ClassNames = {
   root: 'flex items-center gap-2 text-base',
   label: 'whitespace-nowrap',

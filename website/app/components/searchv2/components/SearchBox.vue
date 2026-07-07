@@ -15,7 +15,7 @@
           autocorrect="off"
           autocapitalize="off"
           spellcheck="false"
-          :aria-describedby="description ? descriptionDomId : undefined"
+          :aria-describedby="descriptionDomId"
           @input="onInput"
           @focus="onFocus"
           @blur="onBlur" />
@@ -49,6 +49,7 @@ type Props = {
   classNames?: ClassNames
   label?: string
   description?: string
+  descriptionId?: string
   showLabel?: boolean
   placeholder?: string
   submitLabel?: string
@@ -75,7 +76,18 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const inputDomId = useId()
-const descriptionDomId = useId()
+const descriptionUseId = useId()
+
+const descriptionDomId = computed(() => {
+  if (props.descriptionId) {
+    return props.descriptionId
+  }
+  if (props.description) {
+    return descriptionUseId
+  }
+  return undefined
+})
+
 const { query, setQuery, submit, clear, onFocus, onBlur, isSearchStalled } = useSearchBox({
   debounceMs: props.debounceMs
 })
