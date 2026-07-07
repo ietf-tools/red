@@ -11,7 +11,11 @@
       // converting char length to width in a non-monospace/variable-width font isn't exact so this should er on the side of wider numbers
       // Be sure to test with search for BCP finding result RFC 8996: BCP 195 for a near worst case width
       // and test responsive modes
-    } basis-[calc(var(--computed-heading-char-length)*0.34em)] md:basis-[calc(var(--computed-heading-char-length)*0.61em)]`">
+    } basis-[calc(var(--computed-heading-char-length)*0.34em)] md:basis-[calc(var(--computed-heading-char-length)*0.61em)]`"
+    :override-class-defaults="{
+      'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!props.rfc.obsoleted_by?.length,
+      'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !props.rfc.obsoleted_by?.length
+    }">
     <template #headingTitle>
       <component :is="formattedTitleWithSuffix" />
     </template>

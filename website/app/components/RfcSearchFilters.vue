@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="flex flex-row w-full gap-3">
-      <Heading level="2" class="text-blue-900 dark:text-gray-200 mb-2">Filters</Heading>
-
+      <Heading level="2" class="text-blue-900 dark:text-gray-200 mb-2">Search options</Heading>
       <ResetForm
         :defaults="defaultUiState"
         aria-label="Reset filters"
@@ -71,7 +70,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import {
   RefinementList,
   Select,
@@ -82,17 +80,15 @@ import {
   type RefinementItem,
   type UiState
 } from '~/components/searchv2'
-import { useFeatureFlags } from '~/utilities/feature-flags'
+
+type Props = {
+  defaultUiState: UiState
+}
+
+const props = defineProps<Props>()
 
 // Shared filter controls, rendered both in the desktop sidebar and the mobile dialog.
 const emit = defineEmits<{ reset: [] }>()
-
-const featureFlags = useFeatureFlags()
-const defaultShowObsoleted = computed(() => Boolean(featureFlags.value.searchObsoletedDefaults))
-
-const defaultUiState = computed<UiState>(() => ({
-  toggles: { 'flags.hiddenDefault': !defaultShowObsoleted.value, contents: false }
-}))
 
 const STATUS_ORDER = [
   'Internet Standard',

@@ -1,7 +1,10 @@
 <template>
-  <p v-if="featureFlags.formatsAlsoViewAs" class="pt-2 text-sm text-right text-sm text-gray-800 dark:text-gray-200">
-    View as: <DocumentPojo :value="formatsPojo" />
-  </p>
+  <div v-if="featureFlags.formatsAlsoViewAs">
+    <p class="hidden sm:block sm:-mt-10 pr-14 lg:pr-0 pt-2 text-base text-right text-gray-800 dark:text-gray-200">
+      View as: <DocumentPojo :value="formatsPojo" />
+    </p>
+  </div>
+
   <div class="px-2">
     <div class="flex flex-col">
       <RFCDocumentMobileInfoButton @click="isModalOpen = true"> Info </RFCDocumentMobileInfoButton>
@@ -175,7 +178,7 @@ const formatsPojo = computed((): DocumentPojo => {
   const formats = props.rfcBucketHtmlDocument.rfc.formats
   if (formats.length === 0) return []
 
-  const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline`
+  const LINK_CLASS = `cursor-pointer underline hover:underline focus:underline`
 
   const friendlyFormatName = (format: RfcCommonFormatName): string => {
     switch (format) {
@@ -207,7 +210,7 @@ const formatsPojo = computed((): DocumentPojo => {
     {
       type: 'Element',
       nodeName: 'ul',
-      attributes: { class: 'inline text-sm' },
+      attributes: { class: 'inline' },
       children: sortedFormats.map(({ format }, index) => ({
         type: 'Element' as const,
         nodeName: 'li',

@@ -7,6 +7,10 @@
     :class="props.showAbstract && props.rfc.abstract ? 'lg:flex' : undefined"
     :default-slot-class="props.showAbstract && props.rfc.abstract ? 'lg:w-1/2 xl:w-2/5 pr-4' : undefined"
     :aside-slot-class="props.showAbstract && props.rfc.abstract ? 'lg:w-1/2 xl:w-3/5 border-l pl-12 pr-4' : undefined"
+    :override-class-defaults="{
+      'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!props.rfc.obsoleted_by?.length,
+      'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !props.rfc.obsoleted_by?.length
+    }"
     heading-class="text-gray-800 dark:text-gray-200">
     <template #headingTitle>
       <component :is="formattedTitle" />

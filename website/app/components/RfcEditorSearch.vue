@@ -24,7 +24,7 @@
 
           <div
             :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
-            class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-60 bg-gray-200 dark:bg-blue-950 dark:border-y-1 dark:border-gray-800">
+            class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-110 bg-gray-200 dark:bg-blue-950 dark:border-y-1 dark:border-gray-800">
             <div class="search-container mx-auto pl-5 pr-3 pt-1 pb-0 py-2 xl:py-2 flex flex-row items-center">
               <div class="w-full flex justify-center mx-auto">
                 <SearchBox
@@ -54,7 +54,7 @@
             <ClientOnly>
               <nav aria-label="filters" class="hidden lg:block lg:w-1/3 pr-6">
                 <h2 ref="filterHeadingRef" tabindex="-1" class="sr-only">Filters</h2>
-                <RfcSearchFilters @reset="focusFilterHeading" />
+                <RfcSearchFilters @reset="focusFilterHeading" :default-ui-state="defaultUiState" />
               </nav>
 
               <div class="w-full lg:w-2/3 lg:max-w-[50em]">
@@ -125,7 +125,7 @@
                   </button>
                 </div>
                 <div class="p-4 flex-1 overflow-y-auto">
-                  <RfcSearchFilters @reset="focusDialogHeading" />
+                  <RfcSearchFilters @reset="focusDialogHeading" :default-ui-state="defaultUiState" />
                 </div>
               </dialog>
             </ClientOnly>
@@ -139,13 +139,26 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue'
 import { Separator } from 'reka-ui'
-import { SearchRoot, SearchBox, Stats, SortBy, HitsPerPage, Pagination, type ClassNames } from '~/components/searchv2'
+import {
+  SearchRoot,
+  SearchBox,
+  Stats,
+  SortBy,
+  HitsPerPage,
+  Pagination,
+  type ClassNames,
+  type UiState
+} from '~/components/searchv2'
 import { createRfcSearchClient } from '~/utilities/searchv2-rfc-client'
 import { useNuxtStateAdapter } from '~/utilities/searchv2-nuxt-adapter'
 import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '~/utilities/typesense'
 import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
+
+const defaultUiState = computed<UiState>(() => ({
+  toggles: { 'flags.hiddenDefault': false, contents: false }
+}))
 
 const searchStore = useSearchStore()
 const host = useTypesenseHost()
