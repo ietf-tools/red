@@ -17,7 +17,7 @@ const props = defineProps<Props>()
 // eg. X years ago
 const relativeDate = computed(() => props.modifiedDateTime.toRelativeCalendar())
 
-const fullDate = computed(() => props.modifiedDateTime.toUTC().toFormat('d MMM yyyy'))
+const fullDate = computed(() => props.modifiedDateTime.toUTC().toFormat('d MMMM yyyy'))
 
 const isoTimeStamp = computed(() => props.modifiedDateTime.toUTC().toISO() ?? undefined)
 </script>
