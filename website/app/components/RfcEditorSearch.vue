@@ -21,7 +21,11 @@
         <!-- Single `search` landmark for the whole facility (query + filters + results).
              SearchBox's own landmark is disabled below so there is exactly one. -->
         <div role="search" aria-label="RFC search">
-          <div class="search-container mx-auto px-6" v-html="noScriptFormHtml" />
+          <div
+            :class="`search-container ${
+              '' // remember this noscript container is rendered for JS browsers too, so you should probably not apply vertical margins/padding
+            } mx-auto px-6`"
+            v-html="noScriptFormHtml" />
 
           <div
             :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
@@ -53,8 +57,7 @@
 
           <div class="search-container mx-auto py-5 pl-5 pr-3 flex flex-row items-start">
             <ClientOnly>
-              <nav aria-label="filters" class="hidden lg:block lg:w-1/3 pr-6">
-                <h2 ref="filterHeadingRef" tabindex="-1" class="sr-only">Filters</h2>
+              <nav aria-label="search filters" class="hidden lg:block lg:w-1/3 pr-6">
                 <RfcSearchFilters @reset="focusFilterHeading" />
               </nav>
 
@@ -129,6 +132,14 @@
                   <RfcSearchFilters @reset="focusDialogHeading" />
                 </div>
               </dialog>
+
+              <template #fallback>
+                <p class="w-full lg:max-w-[50em] text-black dark:text-white">
+                  Prefer more control over your results? Turn on JavaScript for an enhanced search with filters and
+                  sorting. Your privacy stays intact, rfc-editor.org passes nothing to third parties, per our privacy
+                  policy.
+                </p>
+              </template>
             </ClientOnly>
           </div>
         </div>

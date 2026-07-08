@@ -53,7 +53,7 @@
         </NavigationMenuTrigger>
         <NavigationMenuContent
           v-if="menuItem.children"
-          class="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full min-w-3xs sm:w-auto py-1"
+          class="absolute top-0 left-0 w-full min-w-3xs sm:w-auto py-1"
           :aria-labelledby="menuItem.hideLabelDesktop ? dropdownHeadingDomId('desktop', index) : undefined">
           <h2
             v-if="menuItem.hideLabelDesktop"
@@ -253,9 +253,9 @@
         <div class="hidden lg:block text-sm" v-html="menuItem.noScriptHtml"></div>
       </NavigationMenuItem>
     </NavigationMenuList>
-    <div class="perspective-[2000px] absolute top-full left-0 flex w-full z-120">
+    <div class="absolute transition-none top-full left-0 flex w-full z-120">
       <NavigationMenuViewport
-        class="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 transition-[width,_height] duration-300 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border-1 border-gray-200 dark:border-gray-600 shadow-3xl dark:shadow-blue-950" />
+        class="relative transition-none h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border-1 border-gray-200 dark:border-gray-600 shadow-3xl dark:shadow-blue-950" />
     </div>
   </NavigationMenuRoot>
 </template>
