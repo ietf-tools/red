@@ -12,6 +12,18 @@ export const TARGET_NEW_WINDOW = '_blank'
  **/
 export const EXTERNAL_LINK_REL = 'noopener'
 
+// `currentColor` does not resolve inside a background-image data URI (the SVG is a
+// separate document with no inherited color), so the arrow colour is hard-coded and
+// a `dark:` variant swaps to a white stroke for dark mode. Spaces are `%20`-encoded
+// because Tailwind preserves underscores inside `url()` rather than converting them
+// to spaces, which would corrupt the SVG markup.
+export const TAILWIND_SELECT_ARROW_PADDING_RIGHT = `appearance-none pr-[32px]
+  bg-[length:16px_16px]
+  bg-[position:calc(100%-8px)_center]
+  bg-no-repeat
+  bg-[url('data:image/svg+xml;charset=UTF-8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22black%22%20stroke-width=%222%22><polyline%20points=%226%209%2012%2015%2018%209%22></polyline></svg>')]
+  dark:bg-[url('data:image/svg+xml;charset=UTF-8,<svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22white%22%20stroke-width=%222%22><polyline%20points=%226%209%2012%2015%2018%209%22></polyline></svg>')]`
+
 export type HeadingLevel = '1' | '2' | '3' | '4' | '5' | '6'
 
 export const parseHeadingLevel = (headingLevel: string): HeadingLevel => {

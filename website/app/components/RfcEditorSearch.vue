@@ -10,7 +10,8 @@
         :state-adapter="stateAdapter"
         :persistent-facets="PERSISTENT_FACETS"
         :default-hits-per-page="10"
-        :stalled-search-delay-ms="800">
+        :stalled-search-delay-ms="800"
+        :default-ui-state="defaultUiState">
         <Heading
           level="1"
           class="search-container mx-auto pl-5 pr-3 py-1 text-blue-900 dark:text-gray-200 text-balance">
@@ -24,7 +25,7 @@
 
           <div
             :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
-            class="border-y-1 border-gray-200 lg:sticky lg:top-0 lg:z-110 bg-gray-200 dark:bg-blue-950 dark:border-y-1 dark:border-gray-800">
+            class="lg:sticky lg:top-0 lg:z-110 bg-gray-200 dark:bg-blue-950">
             <div class="search-container mx-auto pl-5 pr-3 pt-1 pb-0 py-2 xl:py-2 flex flex-row items-center">
               <div class="w-full flex justify-center mx-auto">
                 <SearchBox
@@ -42,7 +43,7 @@
           </div>
           <div class="pb-2 italic bg-gray-200 dark:bg-blue-950" :id="searchBoxDescriptionId">
             <div class="search-container mx-auto px-2 text-center md:text-left md:px-0">
-              <p class="xl:-mt-[0.3em] pl-4 md:pl-34 2xl:pl-67 text-black">
+              <p class="xl:-mt-[0.3em] pl-4 md:pl-34 2xl:pl-67 text-black dark:text-white">
                 Find an RFC (number, subseries, title, author, etc.)
               </p>
             </div>
@@ -54,7 +55,7 @@
             <ClientOnly>
               <nav aria-label="filters" class="hidden lg:block lg:w-1/3 pr-6">
                 <h2 ref="filterHeadingRef" tabindex="-1" class="sr-only">Filters</h2>
-                <RfcSearchFilters @reset="focusFilterHeading" :default-ui-state="defaultUiState" />
+                <RfcSearchFilters @reset="focusFilterHeading" />
               </nav>
 
               <div class="w-full lg:w-2/3 lg:max-w-[50em]">
@@ -125,7 +126,7 @@
                   </button>
                 </div>
                 <div class="p-4 flex-1 overflow-y-auto">
-                  <RfcSearchFilters @reset="focusDialogHeading" :default-ui-state="defaultUiState" />
+                  <RfcSearchFilters @reset="focusDialogHeading" />
                 </div>
               </dialog>
             </ClientOnly>
@@ -155,10 +156,11 @@ import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } fro
 import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
+import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
 
-const defaultUiState = computed<UiState>(() => ({
-  toggles: { 'flags.hiddenDefault': false, contents: false }
-}))
+const defaultUiState: UiState = {
+  toggles: { searchObsoleted: true, searchContents: true }
+}
 
 const searchStore = useSearchStore()
 const host = useTypesenseHost()
@@ -176,7 +178,7 @@ const searchClient = createRfcSearchClient({
   }
 })
 
-const stateAdapter = useNuxtStateAdapter({ defaultShowObsoleted: true })
+const stateAdapter = useNuxtStateAdapter(defaultUiState)
 
 const PERSISTENT_FACETS = ['status.name', 'stream.name', 'area.full', 'group.full', 'authors.name', 'publicationDate']
 
@@ -241,12 +243,11 @@ const searchBoxClasses: ClassNames = {
 const sortClasses: ClassNames = {
   root: 'flex items-center gap-2 text-base',
   label: 'whitespace-nowrap',
-  select:
-    'py-2 px-2 w-full min-w-0 max-w-full text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer'
+  select: `py-2 pl-4 w-full min-w-0 max-w-full text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
 }
 const hitsPerPageClasses: ClassNames = {
   root: 'flex items-center gap-2 text-base',
-  select: 'py-2 px-2 bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer'
+  select: `py-2 px-2 bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
 }
 const paginationClasses: ClassNames = {
   root: 'flex justify-center mt-8',

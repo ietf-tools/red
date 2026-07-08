@@ -4,7 +4,7 @@ import type { UiState } from '../types'
 import { stableStringify } from '../utils/stableStringify'
 
 export type UseResetFormOptions = {
-  /** The state to reset to. Defaults to empty (all defaults). */
+  /** The state to reset to. Defaults to the SearchRoot's `defaultUiState`. */
   defaults?: UiState
 }
 
@@ -14,7 +14,7 @@ export type UseResetFormOptions = {
  */
 export function useResetForm(options: UseResetFormOptions = {}) {
   const context = useSearchContext()
-  const defaults = options.defaults ?? {}
+  const defaults = options.defaults ?? context.defaultUiState
 
   const canReset = computed(() => stableStringify(prune(context.uiState.value)) !== stableStringify(prune(defaults)))
 

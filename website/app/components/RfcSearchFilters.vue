@@ -1,28 +1,34 @@
 <template>
   <div>
     <div class="flex flex-row w-full gap-3">
-      <Heading level="2" class="text-blue-900 dark:text-gray-200 mb-2">Search options</Heading>
+      <Heading level="2" class="text-blue-900 dark:text-gray-200 mb-2">Filters</Heading>
       <ResetForm
-        :defaults="defaultUiState"
         aria-label="Reset filters"
         label="Reset"
         :class-names="{
-          root: 'mb-3 px-2 py-1 text-sm uppercase rounded text-red-900 border-1 border-red-700 dark:border-1 dark:border-red-800 font-bold cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
+          root: 'mb-3 px-2 py-1 text-sm uppercase rounded text-red-900 dark:text-red-100 border-1 border-red-700 dark:border-1 dark:border-red-200 font-bold cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
         }"
         @reset="emit('reset')" />
     </div>
-    <ul class="mb-2">
+
+    <ul>
       <li>
         <ToggleRefinement
-          attribute="contents"
-          label="Search in RFC contents"
-          :class-names="{ root: 'inline-block mb-3 text-base cursor-pointer', checkbox: 'mr-2' }" />
+          attribute="searchContents"
+          label="Search RFC text"
+          description="If unchecked only metadata will be searched"
+          :class-names="{
+            root: 'inline-block mb-3',
+            label: 'text-base cursor-pointer',
+            checkbox: 'mr-2 ',
+            description: 'text-sm pl-[22px] text-gray-800 dark:text-gray-300'
+          }" />
       </li>
       <li>
         <ToggleRefinement
-          attribute="flags.hiddenDefault"
-          label="Hide obsoleted / historic"
-          :class-names="{ root: 'inline-block clear-both text-base cursor-pointer', checkbox: 'mr-2' }" />
+          attribute="searchObsoleted"
+          label="Search obsoleted / historic"
+          :class-names="{ root: 'inline-block', label: 'text-base cursor-pointer', checkbox: 'mr-2' }" />
       </li>
     </ul>
 
@@ -40,7 +46,6 @@
     <RefinementList
       attribute="group.full"
       label="Working group"
-      searchable
       show-more
       :limit="5"
       :show-more-limit="50"
@@ -51,8 +56,8 @@
     <RefinementList
       attribute="authors.name"
       label="Author"
-      searchable
       show-more
+      searchable
       :limit="5"
       :show-more-limit="50"
       show-less-aria-label="Show fewer authors"
@@ -77,17 +82,12 @@ import {
   ToggleRefinement,
   ResetForm,
   type ClassNames,
-  type RefinementItem,
-  type UiState
+  type RefinementItem
 } from '~/components/searchv2'
-
-type Props = {
-  defaultUiState: UiState
-}
-
-const props = defineProps<Props>()
+import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
 
 // Shared filter controls, rendered both in the desktop sidebar and the mobile dialog.
+// Reset restores the SearchRoot's `defaultUiState`, read from context by ResetForm.
 const emit = defineEmits<{ reset: [] }>()
 
 const STATUS_ORDER = [
@@ -108,7 +108,7 @@ const sortStatuses = (a: RefinementItem, b: RefinementItem): number => {
 }
 
 const filterClasses: ClassNames = {
-  root: 'mb-6',
+  root: 'pb-10',
   legend: 'text-lg font-semibold text-blue-900 dark:text-slate-300 pt-3 mb-1',
   searchBox: 'mb-2',
   searchLabel: 'font-bold text-blue-900 dark:text-slate-300',
@@ -119,24 +119,25 @@ const filterClasses: ClassNames = {
   checkbox: 'mt-1.5',
   itemLabel: 'flex text-base cursor-pointer w-full items-start justify-start gap-2 mb-1',
   count: 'bg-gray-600 dark:bg-gray-700 rounded-sm text-xs ml-auto px-2 py-1 font-bold text-white',
-  showMore: 'underline text-sky-700 dark:text-blue-100 cursor-pointer mb-6'
+  showMore: 'underline text-sky-700 dark:text-blue-100 cursor-pointer',
+  truncated: 'mt-1 text-sm px-2 py-1 bg-yellow-100 dark:bg-yellow-900 '
 }
 const selectClasses: ClassNames = {
   root: 'mb-2 flex flex-col',
-  label: 'text-base font-semibold text-blue-900 dark:text-slate-300 mt-3 mb-1',
-  select: 'bg-white text-black dark:bg-black dark:text-white w-full px-2 py-2 border border-gray-400 rounded-xs'
+  label: 'text-base font-semibold text-blue-900 dark:text-slate-300 mb-1',
+  select: `bg-white text-black dark:bg-black dark:text-white w-full px-2 py-2 border border-gray-400 rounded-xs ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
 }
 const dateRangeClasses: ClassNames = {
   root: 'flex flex-wrap items-center gap-2 mb-4',
-  legend: 'text-base font-semibold text-blue-900 dark:text-slate-300 mt-3 mb-1',
+  legend: 'text-base font-semibold text-blue-900 dark:text-slate-300 mb-1',
   rangeLabel: 'text-sm font-semibold text-blue-900 dark:text-slate-300 w-12',
   select:
     'px-2 py-2 bg-white text-black dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer',
   fromContainer: 'flex items-center gap-2 whitespace-nowrap',
   toContainer: 'flex items-center gap-2 whitespace-nowrap',
-  fromYearSelect: 'rounded-l-lg',
-  toYearSelect: 'rounded-l-lg',
-  fromMonthSelect: 'rounded-r-lg',
-  toMonthSelect: 'rounded-r-lg'
+  fromYearSelect: `rounded-l-lg pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
+  toYearSelect: `rounded-l-lg pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
+  fromMonthSelect: `rounded-r-lg  ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
+  toMonthSelect: `rounded-r-lg ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
 }
 </script>

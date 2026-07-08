@@ -25,10 +25,15 @@ export function createRfcSearchClient(params: CreateRfcSearchClientParams): Sear
     host,
     apiKey,
     collection: 'docs',
-    preset: (request) => (request.toggles.contents ? 'red-content' : 'red'),
+    // Matches the authors filter's show-more-limit so the main facet response can populate the
+    // full expanded list; also governs when `facetTruncated` fires for capped facets.
+    maxFacetValues: 50,
+    preset: (request) => (request.toggles.searchContents ? 'red-content' : 'red'),
     filterFor: (request) => {
       const clauses = ['type:=rfc']
-      if (request.toggles['flags.hiddenDefault']) clauses.push('flags.hiddenDefault:=false')
+      // `searchObsoleted` is on by default (include everything); when the user turns it off we
+      // constrain to docs not hidden-by-default, i.e. excluding obsoleted/historic RFCs.
+      if (!request.toggles.searchObsoleted) clauses.push('flags.hiddenDefault:=false')
       return clauses
     }
   })

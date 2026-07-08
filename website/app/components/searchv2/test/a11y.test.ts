@@ -62,6 +62,52 @@ describe('accessible defaults', () => {
     expect(wrapper.findAll('input[type="checkbox"]').length).toBe(2)
   })
 
+  it('RefinementList links its description to each option via aria-describedby', async () => {
+    const searchClient: SearchClient = {
+      search: async () => ({
+        hits: [],
+        nbHits: 5,
+        page: 0,
+        nbPages: 1,
+        hitsPerPage: 10,
+        processingTimeMS: 1,
+        facets: { 'group.full': { httpbis: 3, tls: 2 } }
+      })
+    }
+    const wrapper = mountWith(
+      searchClient,
+      h(RefinementList, { attribute: 'group.full', label: 'Working group', description: 'Filter by working group.' })
+    )
+    await flushPromises()
+
+    const checkboxes = wrapper.findAll('input[type="checkbox"]')
+    expect(checkboxes.length).toBe(2)
+    const describedBy = checkboxes[0]!.attributes('aria-describedby')
+    expect(describedBy).toBeTruthy()
+    const description = wrapper.get(`#${describedBy}`)
+    expect(description.text()).toBe('Filter by working group.')
+    // Every option points at the same shared description element.
+    for (const checkbox of checkboxes) expect(checkbox.attributes('aria-describedby')).toBe(describedBy)
+  })
+
+  it('RefinementList omits aria-describedby when no description is given', async () => {
+    const searchClient: SearchClient = {
+      search: async () => ({
+        hits: [],
+        nbHits: 5,
+        page: 0,
+        nbPages: 1,
+        hitsPerPage: 10,
+        processingTimeMS: 1,
+        facets: { 'group.full': { httpbis: 3 } }
+      })
+    }
+    const wrapper = mountWith(searchClient, h(RefinementList, { attribute: 'group.full', label: 'Working group' }))
+    await flushPromises()
+
+    expect(wrapper.get('input[type="checkbox"]').attributes('aria-describedby')).toBeUndefined()
+  })
+
   // Defect 4: show-more accessible name includes the group.
   it('RefinementList show-more has a group-specific accessible name', async () => {
     const facets = Object.fromEntries(Array.from({ length: 12 }, (_, index) => [`group-${index}`, 12 - index]))

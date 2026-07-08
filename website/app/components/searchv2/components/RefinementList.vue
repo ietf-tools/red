@@ -1,6 +1,8 @@
 <template>
   <Fieldset :legend="label" :legend-class="classNames?.legend" :class="classNames?.root">
-    <div v-if="searchable" :class="classNames?.searchBox">
+    <p v-if="description" :id="descriptionId" :class="classNames?.description">{{ description }}</p>
+
+    <div v-if="searchable || isTruncated" :class="classNames?.searchBox">
       <label :for="searchDomId" :class="classNames?.searchLabel">{{ searchLabel }}</label>
       <input
         :id="searchDomId"
@@ -24,6 +26,7 @@
             :class="classNames?.checkbox"
             :value="item.value"
             :checked="item.isRefined"
+            :aria-describedby="description ? descriptionId : undefined"
             @change="onToggle(item.value)" />
           <slot name="label" :item="item">
             <span v-if="item.highlighted" :class="classNames?.text" v-html="item.highlighted" />
@@ -44,6 +47,10 @@
       <slot name="show-more" :is-showing-more="isShowingMore">{{ isShowingMore ? showLessLabel : showMoreLabel }}</slot>
     </button>
 
+    <p v-if="isTruncated && isShowingMore && !isSearching && truncatedLabel" :class="classNames?.truncated">
+      <slot name="truncated">{{ truncatedLabel }}</slot>
+    </p>
+
     <LiveRegion :visible="false" :message="announcement" />
   </Fieldset>
 </template>
@@ -60,6 +67,8 @@ import type { ClassNames } from '../types'
 type Props = {
   attribute: string
   label: string
+  /** Supplementary text linked to each option's checkbox via `aria-describedby`. */
+  description?: string
   classNames?: ClassNames
   limit?: number
   showMoreLimit?: number
@@ -77,12 +86,15 @@ type Props = {
   emptyLabel?: string
   /** Message shown when a facet-search (searchable list) returns no matching options. */
   noResultsLabel?: string
+  /** Hint shown when the facet list was capped and more values exist. Set to `''` to hide it. */
+  truncatedLabel?: string
   /** Builds the settled "N options available" live-region message; override for wording/localisation. */
   availableMessage?: (count: number) => string
   sortBy?: (a: RefinementItem, b: RefinementItem) => number
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  description: undefined,
   classNames: undefined,
   limit: 10,
   showMoreLimit: undefined,
@@ -96,24 +108,35 @@ const props = withDefaults(defineProps<Props>(), {
   showLessAriaLabel: undefined,
   emptyLabel: 'No options available.',
   noResultsLabel: 'No matches.',
+  truncatedLabel: 'There may be more choices available. Use the search above to refine this list',
   availableMessage: undefined,
   sortBy: undefined
 })
 
 const searchDomId = useId()
+const descriptionId = useId()
 const listRef = ref<HTMLElement | null>(null)
 const toggleRef = ref<HTMLElement | null>(null)
 const { focusElement } = useFocusManagement()
 
-const { items, isShowingMore, canToggleShowMore, toggleShowMore, searchQuery, isSearching, searchForItems, refine } =
-  useRefinementList({
-    attribute: props.attribute,
-    limit: props.limit,
-    showMoreLimit: props.showMoreLimit,
-    showMore: props.showMore,
-    searchable: props.searchable,
-    sortBy: props.sortBy
-  })
+const {
+  items,
+  isShowingMore,
+  canToggleShowMore,
+  toggleShowMore,
+  isTruncated,
+  searchQuery,
+  isSearching,
+  searchForItems,
+  refine
+} = useRefinementList({
+  attribute: props.attribute,
+  limit: props.limit,
+  showMoreLimit: props.showMoreLimit,
+  showMore: props.showMore,
+  searchable: props.searchable,
+  sortBy: props.sortBy
+})
 
 // Defect #3/#4: descriptive, group-specific accessible names for the facet search and toggle.
 const searchLabel = computed(() => props.searchLabel ?? `Search ${props.label.toLowerCase()}`)

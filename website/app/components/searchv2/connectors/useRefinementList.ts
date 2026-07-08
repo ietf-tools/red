@@ -44,6 +44,7 @@ export function useRefinementList(options: UseRefinementListOptions) {
 
   const selected = computed(() => context.uiState.value.refinements?.[attribute] ?? [])
   const facetCounts = computed(() => context.results.value?.facets?.[attribute] ?? {})
+  const isTruncated = computed(() => context.results.value?.facetTruncated?.[attribute] ?? false)
 
   const allItems = computed<RefinementItem[]>(() => {
     const counts = facetCounts.value
@@ -107,6 +108,7 @@ export function useRefinementList(options: UseRefinementListOptions) {
     isShowingMore,
     canToggleShowMore,
     toggleShowMore,
+    isTruncated,
     searchable,
     searchQuery,
     isSearching,

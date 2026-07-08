@@ -19,6 +19,8 @@ export type SearchEngineOptions = {
   defaultHitsPerPage?: number
   persistentFacets?: string[]
   stalledSearchDelayMs?: number
+  /** The configured baseline state, exposed on the context for ResetForm. */
+  defaultUiState?: UiState
 }
 
 export type SearchEngine = SearchContext & {
@@ -40,7 +42,8 @@ export function createSearchEngine(options: SearchEngineOptions): SearchEngine {
     adapter,
     defaultHitsPerPage = DEFAULT_HITS_PER_PAGE,
     persistentFacets = [],
-    stalledSearchDelayMs = DEFAULT_STALLED_DELAY_MS
+    stalledSearchDelayMs = DEFAULT_STALLED_DELAY_MS,
+    defaultUiState = {}
   } = options
 
   const widgets = ref<Widget[]>([])
@@ -118,6 +121,7 @@ export function createSearchEngine(options: SearchEngineOptions): SearchEngine {
 
   return {
     uiState: adapter.state,
+    defaultUiState,
     results,
     status,
     error,

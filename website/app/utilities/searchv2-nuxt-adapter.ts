@@ -3,26 +3,36 @@ import type { LocationQuery, LocationQueryValue } from 'vue-router'
 import type { StateAdapter, UiState } from '~/components/searchv2'
 import { SEARCH_PATH } from '~/utilities/url'
 
-const HIDDEN_DEFAULT = 'flags.hiddenDefault'
+/**
+ * Boolean toggles the URL round-trips, mapped to their query param names. A toggle is
+ * written to the URL only when it differs from its configured default (see `serializeQuery`),
+ * so the param encodes the actual value rather than a fixed polarity.
+ */
+const TOGGLE_PARAMS: Record<string, string> = {
+  searchObsoleted: 'searchObsoleted',
+  searchContents: 'searchContents'
+}
 
 /**
  * Nuxt state adapter: the URL query is the source of truth for search state.
  * Reads reactively from the route (so external URL changes and back/forward flow in)
  * and writes via `navigateTo(..., { replace })`.
+ *
+ * `defaultUiState` is the single baseline the adapter diffs against: absent params parse
+ * back to their default, and values equal to their default are omitted from the URL.
  */
-export function useNuxtStateAdapter(options: { defaultShowObsoleted: boolean }): StateAdapter {
+export function useNuxtStateAdapter(defaultUiState: UiState = {}): StateAdapter {
   const route = useRoute()
   const router = useRouter()
-  const { defaultShowObsoleted } = options
 
-  const state = computed<UiState>(() => parseQuery(route.query, defaultShowObsoleted))
+  const state = computed<UiState>(() => parseQuery(route.query, defaultUiState))
 
   const write = (next: UiState) => {
-    void navigateTo({ path: SEARCH_PATH, query: serializeQuery(next, defaultShowObsoleted) }, { replace: true })
+    void navigateTo({ path: SEARCH_PATH, query: serializeQuery(next, defaultUiState) }, { replace: true })
   }
 
   const createURL = (next: UiState) =>
-    router.resolve({ path: SEARCH_PATH, query: serializeQuery(next, defaultShowObsoleted) }).href
+    router.resolve({ path: SEARCH_PATH, query: serializeQuery(next, defaultUiState) }).href
 
   return { state, write, createURL }
 }
@@ -38,7 +48,7 @@ function csv(value: LocationQueryValue | LocationQueryValue[] | undefined): stri
   return parts.length > 0 ? parts : undefined
 }
 
-function parseQuery(query: LocationQuery, defaultShowObsoleted: boolean): UiState {
+export function parseQuery(query: LocationQuery, defaultUiState: UiState = {}): UiState {
   const refinements: Record<string, string[]> = {}
   const status = csv(query.status ?? query.statuses)
   if (status) refinements['status.name'] = status
@@ -57,9 +67,12 @@ function parseQuery(query: LocationQuery, defaultShowObsoleted: boolean): UiStat
   const publicationDate = parsePublicationDate(query)
   if (publicationDate) numericRefinements.publicationDate = publicationDate
 
-  const showObsoleted = first(query.showObsoleted)
-  const hiddenDefault = showObsoleted !== undefined ? showObsoleted !== '1' : !defaultShowObsoleted
-  const contents = first(query.contents) === '1'
+  // Each toggle parses to its URL param when present, otherwise to its configured default.
+  const toggles: Record<string, boolean> = {}
+  for (const [attribute, param] of Object.entries(TOGGLE_PARAMS)) {
+    const raw = first(query[param])
+    toggles[attribute] = raw !== undefined ? raw === '1' : Boolean(defaultUiState.toggles?.[attribute])
+  }
 
   const pageParam = Number(first(query.page))
   const page = Number.isFinite(pageParam) && pageParam > 1 ? pageParam - 1 : 0
@@ -69,7 +82,7 @@ function parseQuery(query: LocationQuery, defaultShowObsoleted: boolean): UiStat
   const state: UiState = {
     query: first(query.q),
     sortBy: first(query.sort),
-    toggles: { [HIDDEN_DEFAULT]: hiddenDefault, contents }
+    toggles
   }
   if (Object.keys(refinements).length > 0) state.refinements = refinements
   if (Object.keys(menu).length > 0) state.menu = menu
@@ -97,7 +110,7 @@ function toNumber(value: string | undefined): number | undefined {
   return Number.isNaN(parsed) ? undefined : parsed
 }
 
-function serializeQuery(state: UiState, defaultShowObsoleted: boolean): LocationQuery {
+export function serializeQuery(state: UiState, defaultUiState: UiState = {}): LocationQuery {
   const query: Record<string, string> = {}
 
   if (state.query) query.q = state.query
@@ -119,9 +132,12 @@ function serializeQuery(state: UiState, defaultShowObsoleted: boolean): Location
     query.pubDate = `${publicationDate.min ?? ''}:${publicationDate.max ?? ''}`
   }
 
-  const hiddenDefault = state.toggles?.[HIDDEN_DEFAULT] ?? !defaultShowObsoleted
-  if (hiddenDefault !== !defaultShowObsoleted) query.showObsoleted = hiddenDefault ? '0' : '1'
-  if (state.toggles?.contents) query.contents = '1'
+  // A toggle appears in the URL only when it differs from its configured default.
+  for (const [attribute, param] of Object.entries(TOGGLE_PARAMS)) {
+    const value = Boolean(state.toggles?.[attribute])
+    const fallback = Boolean(defaultUiState.toggles?.[attribute])
+    if (value !== fallback) query[param] = value ? '1' : '0'
+  }
 
   if (state.sortBy) query.sort = state.sortBy
   if (state.page && state.page > 0) query.page = String(state.page + 1)

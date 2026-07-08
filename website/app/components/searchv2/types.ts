@@ -54,6 +54,8 @@ export type SearchResponse = {
   facets?: Record<string, Record<string, number>>
   /** attribute -> numeric min/max across results */
   facetStats?: Record<string, { min: number; max: number }>
+  /** attribute -> true when the returned facet values were capped (more distinct values exist) */
+  facetTruncated?: Record<string, boolean>
 }
 
 export type FacetHit = {
@@ -104,6 +106,8 @@ export type Widget = {
 /** Provided by SearchRoot, injected by every widget via `useSearchContext`. */
 export type SearchContext = {
   uiState: Readonly<Ref<UiState>>
+  /** The configured baseline state. What ResetForm resets to and diffs against. */
+  defaultUiState: UiState
   results: Readonly<ShallowRef<SearchResponse | null>>
   status: Readonly<Ref<SearchStatus>>
   error: Readonly<ShallowRef<unknown>>

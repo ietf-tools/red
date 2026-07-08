@@ -1,6 +1,6 @@
 <template>
   <div v-if="featureFlags.formatsAlsoViewAs">
-    <p class="hidden sm:block sm:-mt-10 pr-14 lg:pr-0 pt-2 text-base text-right text-gray-800 dark:text-gray-200">
+    <p class="sm:-mt-10 pl-4 pr-4 sm:pr-14 lg:pr-0 pt-2 text-base text-right text-gray-800 dark:text-gray-200">
       View as: <DocumentPojo :value="formatsPojo" />
     </p>
   </div>
@@ -178,7 +178,7 @@ const formatsPojo = computed((): DocumentPojo => {
   const formats = props.rfcBucketHtmlDocument.rfc.formats
   if (formats.length === 0) return []
 
-  const LINK_CLASS = `cursor-pointer underline hover:underline focus:underline`
+  const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline hover:underline focus:underline`
 
   const friendlyFormatName = (format: RfcCommonFormatName): string => {
     switch (format) {

@@ -19,18 +19,21 @@ type Props = {
   persistentFacets?: string[]
   defaultHitsPerPage?: number
   stalledSearchDelayMs?: number
+  /** Baseline state that ResetForm resets to. Also seeds the in-memory adapter. */
+  defaultUiState?: UiState
 }
 
 const props = defineProps<Props>()
 
-const adapter = props.stateAdapter ?? createInMemoryAdapter(props.initialUiState ?? {})
+const adapter = props.stateAdapter ?? createInMemoryAdapter(props.initialUiState ?? props.defaultUiState ?? {})
 
 const engine = createSearchEngine({
   searchClient: props.searchClient,
   adapter,
   persistentFacets: props.persistentFacets,
   defaultHitsPerPage: props.defaultHitsPerPage,
-  stalledSearchDelayMs: props.stalledSearchDelayMs
+  stalledSearchDelayMs: props.stalledSearchDelayMs,
+  defaultUiState: props.defaultUiState
 })
 
 const { start, dispose, ...context } = engine

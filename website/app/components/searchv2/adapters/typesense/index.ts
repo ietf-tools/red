@@ -15,6 +15,12 @@ export type TypesenseAdapterConfig = {
    * a boolean toggle to a filter). Keeps all app-specific filtering out of the library.
    */
   filterFor?: (request: SearchRequest) => string[]
+  /**
+   * Cap on facet values returned per attribute in the main search. Defaults to Typesense's
+   * implicit 10; set explicitly to make the cap intentional and to control when `facetTruncated`
+   * fires. Values beyond this are only reachable via the search-for-facet-values channel.
+   */
+  maxFacetValues?: number
   cacheTtlMs?: number
   protocol?: string
   port?: number
@@ -31,7 +37,9 @@ const FacetCountSchema = z.object({
       highlighted: z.string().optional()
     })
   ),
-  stats: z.object({ min: z.number().optional(), max: z.number().optional() }).optional()
+  stats: z
+    .object({ min: z.number().optional(), max: z.number().optional(), total_values: z.number().optional() })
+    .optional()
 })
 
 const ResultSchema = z.object({
@@ -114,6 +122,7 @@ function buildSearchParams(request: SearchRequest, config: TypesenseAdapterConfi
     preset,
     filter_by: filters.length > 0 ? filters.join(' && ') : undefined,
     facet_by: request.facets.length > 0 ? request.facets.join(',') : undefined,
+    max_facet_values: request.facets.length > 0 ? config.maxFacetValues : undefined,
     sort_by: sortBy,
     page: request.page + 1, // Typesense pages are 1-based
     per_page: request.hitsPerPage
@@ -145,12 +154,18 @@ function quote(value: string): string {
 function toSearchResponse(result: z.infer<typeof ResultSchema>, request: SearchRequest): SearchResponse {
   const facets: Record<string, Record<string, number>> = {}
   const facetStats: Record<string, { min: number; max: number }> = {}
+  const facetTruncated: Record<string, boolean> = {}
 
   for (const facetCount of result.facet_counts ?? []) {
     facets[facetCount.field_name] = Object.fromEntries(facetCount.counts.map((count) => [count.value, count.count]))
     const { stats } = facetCount
     if (stats && stats.min !== undefined && stats.max !== undefined) {
       facetStats[facetCount.field_name] = { min: stats.min, max: stats.max }
+    }
+    // Typesense reports the total distinct values via `stats.total_values`; if it exceeds the
+    // number of counts we got back, the returned list was capped (by `max_facet_values`).
+    if (stats?.total_values !== undefined && stats.total_values > facetCount.counts.length) {
+      facetTruncated[facetCount.field_name] = true
     }
   }
 
@@ -162,6 +177,7 @@ function toSearchResponse(result: z.infer<typeof ResultSchema>, request: SearchR
     hitsPerPage: request.hitsPerPage,
     processingTimeMS: result.search_time_ms ?? 0,
     facets: Object.keys(facets).length > 0 ? facets : undefined,
-    facetStats: Object.keys(facetStats).length > 0 ? facetStats : undefined
+    facetStats: Object.keys(facetStats).length > 0 ? facetStats : undefined,
+    facetTruncated: Object.keys(facetTruncated).length > 0 ? facetTruncated : undefined
   }
 }

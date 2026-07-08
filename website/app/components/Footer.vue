@@ -11,7 +11,9 @@
           </Anchor>
         </p>
         <div class="flex gap-7 items-center mt-2 pl-3 lg:mt-5">
-          <Anchor :href="IETF_URL_ORIGIN" class="bg-blue-900 px-2 py-1 rounded forced-color-adjust-none">
+          <Anchor
+            :href="IETF_URL_ORIGIN"
+            class="bg-blue-900 dark:bg-blue-950 px-2 py-1 rounded forced-color-adjust-none">
             <GraphicsIETFLogo width="105" height="60" />
           </Anchor>
         </div>

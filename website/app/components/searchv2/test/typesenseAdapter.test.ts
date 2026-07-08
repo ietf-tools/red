@@ -79,4 +79,62 @@ describe('typesense adapter', () => {
     expect(search.preset).toBe('red-content')
     expect(search.q).toBe('*')
   })
+
+  it('flags facetTruncated when total_values exceeds the returned counts', async () => {
+    const body = {
+      results: [
+        {
+          found: 50,
+          hits: [{ document: { id: 'rfc1' } }],
+          facet_counts: [
+            {
+              field_name: 'authors',
+              counts: [
+                { value: 'Alice', count: 3 },
+                { value: 'Bob', count: 2 }
+              ],
+              stats: { total_values: 42 }
+            }
+          ]
+        }
+      ]
+    }
+    const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(body))
+    vi.stubGlobal('fetch', fetchMock)
+
+    const client = createTypesenseSearchClient({
+      host: 'example.test',
+      apiKey: 'key',
+      collection: 'docs',
+      maxFacetValues: 2
+    })
+
+    const result = await client.search(baseRequest({ facets: ['authors'], refinements: {} }))
+
+    expect(result.facetTruncated?.authors).toBe(true)
+
+    const search = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)).searches[0]
+    expect(search.max_facet_values).toBe(2)
+  })
+
+  it('does not flag facetTruncated when all values are returned', async () => {
+    const body = {
+      results: [
+        {
+          found: 5,
+          hits: [],
+          facet_counts: [{ field_name: 'authors', counts: [{ value: 'Alice', count: 3 }], stats: { total_values: 1 } }]
+        }
+      ]
+    }
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (_url: string, _init: RequestInit) => okResponse(body))
+    )
+
+    const client = createTypesenseSearchClient({ host: 'example.test', apiKey: 'key', collection: 'docs' })
+    const result = await client.search(baseRequest({ facets: ['authors'], refinements: {} }))
+
+    expect(result.facetTruncated).toBeUndefined()
+  })
 })

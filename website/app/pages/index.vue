@@ -1,14 +1,12 @@
 <template>
   <div class="min-h-[100vh]">
-    <NuxtLayout name="default">
+    <NuxtLayout name="default" has-sub-header>
       <template #subheader>
         <IndexSubheader />
       </template>
       <div class="container mx-auto pl-5 pr-3">
         <div class="md:mx-2 flex lg:flex-row lg:items-center justify-between">
-          <Heading level="2" :id="LATEST_RFCS_HEADING_DOM_ID" has-icon class="text-left mt-2 md:mb-2">
-            Latest RFCs
-          </Heading>
+          <Heading level="2" :id="LATEST_RFCS_HEADING_DOM_ID" has-icon class="text-left mt-6"> Latest RFCs </Heading>
           <p class="hidden mt-8 lg:block text-base text-grey-800 pl-5">
             Looking for works in progress? Go to
             <Anchor :href="datatrackerUrlOrigin" class="text-blue-300 dark:text-blue-100">
@@ -31,7 +29,7 @@
           </li>
         </ul>
 
-        <Heading level="2" :id="LEARN_ABOUT_RFCS_HEADING_DOM_ID" has-icon class="md:mx-2 mt-10 mb-5 pl-5 md:p-0">
+        <Heading level="2" :id="LEARN_ABOUT_RFCS_HEADING_DOM_ID" has-icon class="md:mx-2 mt-6 mb-3">
           Learn about RFCs
         </Heading>
         <ul
@@ -43,9 +41,7 @@
           <li><MarkdownCard id="/about/rfc-editor/" class="h-full" /></li>
         </ul>
 
-        <Heading level="2" :id="BROWSE_RFCS_HEADING_DOM_ID" has-icon class="md:mx-2 mt-10 mb-5 pl-5 md:p-0">
-          Browse RFCs
-        </Heading>
+        <Heading level="2" :id="BROWSE_RFCS_HEADING_DOM_ID" has-icon class="md:mx-2 mt-6 mb-3"> Browse RFCs </Heading>
         <ul
           class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4"
           :aria-describedby="BROWSE_RFCS_HEADING_DOM_ID">
@@ -86,7 +82,7 @@
           </li>
         </ul>
 
-        <Heading level="2" :id="START_PARTICIPATING_HEADING_DOM_ID" has-icon class="md:mx-2 pl-5 mt-10 mb-5 md:p-0">
+        <Heading level="2" :id="START_PARTICIPATING_HEADING_DOM_ID" has-icon class="md:mx-2 mt-6 mb-3">
           Start Participating
         </Heading>
         <ul

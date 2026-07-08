@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col min-h-[100vh]">
-    <HeaderWrapper>
+    <HeaderWrapper :class="!props.hasSubHeader ? 'border-b border-b-white dark:border-b-blue-900' : undefined">
       <Header />
     </HeaderWrapper>
     <Main :class="props.mainClass">
-      <HeaderWrapper>
+      <HeaderWrapper :class="props.hasSubHeader ? 'border-b border-b-white dark:border-b-blue-900' : undefined">
         <slot name="subheader" />
       </HeaderWrapper>
       <slot />
@@ -18,6 +18,7 @@ import type { VueStyleClass } from '~/utilities/vue'
 
 type Props = {
   mainClass?: VueStyleClass
+  hasSubHeader?: boolean
 }
 
 const props = defineProps<Props>()

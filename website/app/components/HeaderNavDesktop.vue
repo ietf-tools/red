@@ -253,7 +253,7 @@
         <div class="hidden lg:block text-sm" v-html="menuItem.noScriptHtml"></div>
       </NavigationMenuItem>
     </NavigationMenuList>
-    <div class="perspective-[2000px] absolute top-full left-0 flex w-full z-110">
+    <div class="perspective-[2000px] absolute top-full left-0 flex w-full z-120">
       <NavigationMenuViewport
         class="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative h-(--reka-navigation-menu-viewport-height) w-full origin-[top_center] overflow-hidden rounded-md bg-white dark:bg-gray-800 transition-[width,_height] duration-300 translate-x-(--reka-navigation-menu-viewport-left) sm:w-(--reka-navigation-menu-viewport-width) border-1 border-gray-200 dark:border-gray-600 shadow-3xl dark:shadow-blue-950" />
     </div>
