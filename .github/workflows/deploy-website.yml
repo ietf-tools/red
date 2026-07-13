@@ -119,10 +119,11 @@ jobs:
         mv red-api.yml ..
 
     - name: Generate API client
-      working-directory: ./
+      working-directory: ./red/precomputer
       run: |
-        npx apigen-ts ./red-api.yml --inline-enums --parse-dates ./api-client.ts
-        cp api-client.ts ./red/precomputer/generated/
+        npm ci
+        npx --no apigen-ts "$GITHUB_WORKSPACE/red-api.yml" --inline-enums --parse-dates "$GITHUB_WORKSPACE/api-client.ts"
+        cp "$GITHUB_WORKSPACE/api-client.ts" ./generated/
 
     - name: Archive red-api client
       uses: actions/upload-artifact@v7
