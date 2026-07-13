@@ -137,7 +137,9 @@ export async function callback(req: IRequest, env: OidcEnv): Promise<Response> {
     response.headers.append('Location', savedState !== 'none' ? savedState : '/')
     response.headers.set(
       'Set-Cookie',
-      cookie.serialize('jwt', result.token, {
+      cookie.stringifySetCookie({
+        name: 'jwt',
+        value: result.token,
         httpOnly: true,
         secure: true,
         path: '/',

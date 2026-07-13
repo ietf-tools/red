@@ -14,20 +14,20 @@
     "format": "oxfmt ."
   },
   "dependencies": {
-    "cookie": "1.0.2",
-    "itty-router": "5.0.22",
+    "cookie": "2.0.1",
+    "itty-router": "5.0.24",
     "luxon": "3.7.2",
     "rfc4648": "1.5.4",
-    "typescript": "5.5.2",
-    "vitest": "4.1.6",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10",
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "0.16.3",
-    "@types/luxon": "3.7.1",
-    "@types/node": "25.7.0",
-    "oxfmt": "0.53.0",
-    "oxlint": "1.60.0",
-    "wrangler": "4.43.0"
+    "@cloudflare/vitest-pool-workers": "0.18.4",
+    "@types/luxon": "3.7.2",
+    "@types/node": "26.1.1",
+    "oxfmt": "0.58.0",
+    "oxlint": "1.73.0",
+    "wrangler": "4.110.0"
   }
 }
