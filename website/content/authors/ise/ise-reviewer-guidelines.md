@@ -61,7 +61,7 @@ Questions that the ISE would like you to answer:
 
   Does the introduction provide enough background for those Internet
   techies who may not be experts in the particular subject matter?  
-   Do the title and abstract fairly and accurately summarize the
+  Do the title and abstract fairly and accurately summarize the
   contents?
 
 - Does the document make clear upfront how the specification does or
