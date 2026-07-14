@@ -58,7 +58,7 @@
           <div class="search-container mx-auto py-5 pl-5 pr-3 flex flex-row items-start">
             <ClientOnly>
               <nav aria-label="search filters" class="hidden lg:block lg:w-1/3 pr-6">
-                <RfcSearchFilters @reset="focusFilterHeading" />
+                <RFCSearchFilters @reset="focusFilterHeading" />
               </nav>
 
               <div class="w-full lg:w-2/3 lg:max-w-[50em]">
@@ -100,7 +100,7 @@
                   :label="searchStore.subseriesLabel"
                   :href="searchStore.subseriesHref" />
 
-                <RfcSearchResults
+                <RFCSearchResults
                   class="mt-4"
                   :pending-focus="pendingResultFocus"
                   @focused="pendingResultFocus = false" />
@@ -129,7 +129,7 @@
                   </button>
                 </div>
                 <div class="p-4 flex-1 overflow-y-auto">
-                  <RfcSearchFilters @reset="focusDialogHeading" />
+                  <RFCSearchFilters @reset="focusDialogHeading" />
                 </div>
               </dialog>
 
