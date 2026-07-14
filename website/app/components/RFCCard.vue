@@ -52,14 +52,14 @@
           Abstract
         </Heading>
         <div
+          v-if="props.rfc.abstract"
           :class="`pb-2 ${
             'max-w-[34em]' // approx 80 chars wide
           } text-black dark:text-white ${
             'leading-[1.5]' // WCAG requires 1.5 minimum and this is body text
-          } text-pretty`"
-          v-html="
-            props.rfc.abstract // this should already be sanitised
-          "></div>
+          } text-pretty`">
+          <p v-for="(line, index) in props.rfc.abstract.split('\n')" :key="index">{{ line }}</p>
+        </div>
       </div>
     </template>
   </Card>

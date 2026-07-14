@@ -41,11 +41,9 @@
           <Heading level="4" style-level="5" class="text-blue-900 dark:text-gray-300 pt-3 border-t inline-block">
             Abstract
           </Heading>
-          <div
-            class="leading-snug text-gray-800 dark:text-gray-300 text-pretty"
-            v-html="
-              props.rfc.abstract // this should already be sanitised
-            "></div>
+          <div v-if="props.rfc.abstract" class="leading-snug text-gray-800 dark:text-gray-300 text-pretty">
+            <p v-for="(line, index) in props.rfc.abstract.split('\n')" :key="index">{{ line }}</p>
+          </div>
         </div>
       </div>
     </template>

@@ -8,7 +8,6 @@ import {
 } from './rfc-validators'
 import { isTypesenseSubseriesWithValues, TypeSenseSearchItemSchema, TypesenseSearchItemStatusSchema } from './typesense'
 import type { TypeSenseSearchItem } from './typesense'
-import { sanitiseHtml } from './html'
 import { logOnce } from './log'
 
 export const typeSenseSearchItemToRFCCommon = (unverifiedTypeSenseSearchItem: TypeSenseSearchItem): RfcCommon => {
@@ -124,7 +123,7 @@ export const typeSenseSearchItemToRFCCommon = (unverifiedTypeSenseSearchItem: Ty
     })) ?? []
 
   return {
-    abstract: sanitiseHtml(item.abstract),
+    abstract: item.abstract,
     area: parseTypesenseArea(item.area),
     authors,
     formats: [],

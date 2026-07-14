@@ -208,7 +208,7 @@ export const RfcCommonSchema = z.object({
   is_also: z.array(z.string()).optional(),
   keywords: z.array(z.string()).optional(),
   formats: z.array(RfcCommonFormatSchema),
-  /** Abstract should be pseudo-HTML, either a text node or several `<p>` tags but no other elements/attributes */
+  /** Abstract is plain text with `\n` line breaks; convert to paragraphs at render time */
   abstract: z.string().optional(),
   text: z.string().optional()
 })
