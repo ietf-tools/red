@@ -178,6 +178,7 @@ router
 
   .get('/rfc/bcp-ref.txt', redirectTo('/std/bcp-index.txt', 302))
   .get('/rfc/rfc-index.txt', redirectTo('/rfc-index.txt', 302))
+  .get('/in-notes/rfc-index.txt', redirectTo('/rfc-index.txt', 302))
   .get('/rfc/rfc-index.xml', redirectTo('/rfc-index.xml', 302))
   // Many RFCs at /rfc/rfc* refer to this CSS file.
   // Apparently it was added so that devs could override the path and add custom CSS when displaying RFCs,
