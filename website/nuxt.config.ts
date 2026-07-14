@@ -111,7 +111,6 @@ export default defineNuxtConfig({
       apiV1Base: '', // NUXT_PUBLIC_API_V1_BASE env var
       errataBase: 'https://errata.rfc-editor.org', // NUXT_PUBLIC_ERRATA_BASE env var
       queueBase: 'https://queue.rfc-editor.org', // NUXT_PUBLIC_QUEUE_BASE env var
-      materialsBase: 'https://materials.rfc-editor.org', // NUXT_PUBLIC_MATERIALS_BASE env var
       iadBase: 'https://iad.rfc-editor.org', // NUXT_PUBLIC_IAD_BASE env var
       dashboardBase: 'https://dashboard.rfc-editor.org', // NUXT_PUBLIC_DASHBOARD_BASE env var
       matomoSiteId: '12', // 12 is Red non-production ie local dev. Otherwise will be provided by env var NUXT_PUBLIC_MATOMO_SITE_ID

@@ -80,10 +80,6 @@ export const useDatatrackerUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
   return assertUrlOrigin(runtimeConfig.public.datatrackerBase, 'datatrackerBase', 'https://datatracker.ietf.org')
 }
-export const useMaterialsUrlOrigin = () => {
-  const runtimeConfig = useRuntimeConfig()
-  return assertUrlOrigin(runtimeConfig.public.materialsBase, 'materialsBase', 'https://materials.rfc-editor.org')
-}
 export const useIadUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
   return assertUrlOrigin(runtimeConfig.public.iadBase, 'iadBase', 'https://iad.rfc-editor.org')
@@ -100,9 +96,6 @@ export const useRfcEditorErrataSearchForRfcUrl = (rfcNumber: number) => {
 }
 export const useRfcEditorQueueClustersUrl = () => {
   return `${useQueueUrlOrigin()}/clusters/`
-}
-export const useMaterialsPathBuilder = (materialsPath: string) => {
-  return `${useMaterialsUrlOrigin()}${materialsPath}` as const
 }
 export const useIadReportsPathBuilder = (IADPath: string) => {
   return `${useIadUrlOrigin()}${IADPath}` as const
