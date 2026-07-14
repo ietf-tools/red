@@ -53,7 +53,7 @@ const subseriesRedirect = (req: IRequest) => {
   }
 }
 
-const excludeInNotesRedirects = ['/in-notes/rfc-ref.txt']
+const excludeInNotesRedirects = ['/in-notes/rfc-ref.txt', '/in-notes/rfc-index.txt']
 
 const router = IttyRouter<IRequest, [Env]>()
 
