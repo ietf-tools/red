@@ -1,11 +1,12 @@
 import { DateTime } from 'luxon'
-import { Feed } from 'feed'
-import type { FeedOptions } from 'feed'
+import { escape as escapeHtml } from 'es-toolkit'
+import { Feed, type Item, type FeedOptions } from 'feed'
 import type { RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
 import { infoRfcPathBuilder, PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
 import { RFC_FEED_ATOM_PATH, RFC_FEED_RSS_PATH, saveToS3 } from '../utilities/s3.ts'
 import { type AsyncTaskItem } from '../utilities/task.ts'
 import { sortByRfcPublish } from '../utilities/rfc-sorting.ts'
+import { sanitiseHtml } from '../utilities/html.ts'
 
 const NUMBER_OF_RFCS_IN_FEED = 15
 
@@ -49,22 +50,40 @@ export const renderFeeds = async (allRfcs: Readonly<RfcCommon[]>): Promise<{ rss
 
   const feed = new Feed(feedOptions)
 
-  feedRfcs.forEach((feedRfc) => {
-    const { published } = feedRfc
-    if (published === undefined) {
-      throw Error(cannotUseUnpublishedMessage)
-    }
-    const url = `${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(feedRfc)}`
-    feed.addItem({
-      title: `RFC ${feedRfc.number}: ${feedRfc.title}`,
-      link: url,
-      description: feedRfc.abstract,
-      date: DateTime.fromISO(published).toJSDate()
+  const feedItems = await Promise.all(
+    feedRfcs.map(async (feedRfc): Promise<Item> => {
+      const { published } = feedRfc
+      if (published === undefined) {
+        throw Error(cannotUseUnpublishedMessage)
+      }
+      const url = `${PUBLIC_SITE_URL_ORIGIN}${infoRfcPathBuilder(feedRfc)}`
+      const item: Item = {
+        title: `RFC ${feedRfc.number}: ${feedRfc.title}`,
+        link: url,
+        description: await renderPlaintextAbstractToHtml(feedRfc.abstract),
+        date: DateTime.fromISO(published).toJSDate()
+      }
+      return item
     })
-  })
+  )
+
+  feedItems.forEach((item) => feed.addItem(item))
 
   return {
     rss2: feed.rss2(),
     atom1: feed.atom1()
   }
+}
+
+const renderPlaintextAbstractToHtml = async (abstract: RfcCommon['abstract']): Promise<undefined | string> => {
+  if (!abstract) {
+    return undefined
+  }
+  const rawAbstract = abstract
+    .trim()
+    .split('\n')
+    .map((line) => `<p>${escapeHtml(line)}</p>`)
+    .join('')
+
+  return sanitiseHtml(rawAbstract, 'abstract')
 }

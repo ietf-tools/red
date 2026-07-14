@@ -1,9 +1,14 @@
 <template>
   <!--
-   template needs to adhere to Satori CSS support
-   https://www.npmjs.com/package/satori
+  Template for RFC thumbnail screenshots.
+   
+  1) be standalone (no imports except for TS).
+  2) adhere to Satori CSS support https://www.npmjs.com/package/satori
+    Satori isn't a real browser and it can't understand moderately complex CSS.
+    But it's much faster and more suitable for headless node image generation.
 
-   Use dev server to prototype changes
+  Use dev server to prototype changes because it's non-obvious what might break
+  with changes.
    -->
   <div style="display: flex; flex-direction: column; padding: 30px">
     <img :src="logoBase64Uri" style="position: absolute; left: 0; top: 0" />
@@ -20,8 +25,10 @@
       </span>
     </p>
     <div
-      style="display: flex; flex-direction: column; font-size: 30px; line-height: 1.5; margin: 8px 0 0 0"
-      v-html="rfc.abstract"></div>
+      v-if="rfc.abstract"
+      style="display: flex; flex-direction: column; font-size: 30px; line-height: 1.5; margin: 8px 0 0 0">
+      <p v-for="line in rfc.abstract.split('\n')">{{ line }}</p>
+    </div>
   </div>
 </template>
 

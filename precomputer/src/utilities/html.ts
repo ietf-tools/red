@@ -50,7 +50,7 @@ const SVG_STYLE_ATTRIBUTES = [
 type ModeKeys = 'rfc-html' | 'abstract'
 
 const modeOptions: Record<ModeKeys, SanitizeHtmlOptions> = {
-  // RFC metadata 'abstract' is pseudo HTML with <p> tags only
+  // RFC metadata 'abstract' is plain text with \n, but sometimes we convert this to pseudo HTML with <p> tags only
   abstract: {
     allowedTags: ['p']
   },
