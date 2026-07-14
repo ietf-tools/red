@@ -21,13 +21,7 @@ exports[`feeds (rss, atom) 1`] = `
         <id>https://www.rfc-editor.org/info/rfc9048/</id>
         <link href="https://www.rfc-editor.org/info/rfc9048/"/>
         <updated>2021-10-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[The 3GPP mobile network Authentication and Key Agreement (AKA) is an authentication mechanism for devices wishing to access mobile networks. RFC 4187 (EAP-AKA) made the use of this mechanism possible within the Extensible Authentication Protocol (EAP) framework. RFC 5448 (EAP-AKA') was an improved version of EAP-AKA.
-
- This document is the most recent specification of EAP-AKA', including, for instance, details about and references related to operating EAP-AKA' in 5G networks.
-
- EAP-AKA' differs from EAP-AKA by providing a key derivation function that binds the keys derived within the method to the name of the access network. The key derivation function has been defined in the 3rd Generation Partnership Project (3GPP). EAP-AKA' allows its use in EAP in an interoperable manner. EAP-AKA' also updates the algorithm used in hash functions, as it employs SHA-256 / HMAC-SHA-256 instead of SHA-1 / HMAC-SHA-1, which is used in EAP-AKA.
-
- This version of the EAP-AKA' specification defines the protocol behavior for both 4G and 5G deployments, whereas the previous version defined protocol behavior for 4G deployments only. While EAP-AKA' as defined in RFC 5448 is not obsolete, this document defines the most recent and fully backwards-compatible specification of EAP-AKA'. This document updates both RFCs 4187 and 5448.]]></summary>
+        <summary type="html"><![CDATA[<p>The 3GPP mobile network Authentication and Key Agreement (AKA) is an authentication mechanism for devices wishing to access mobile networks. RFC 4187 (EAP-AKA) made the use of this mechanism possible within the Extensible Authentication Protocol (EAP) framework. RFC 5448 (EAP-AKA') was an improved version of EAP-AKA.</p><p>This document is the most recent specification of EAP-AKA', including, for instance, details about and references related to operating EAP-AKA' in 5G networks.</p><p>EAP-AKA' differs from EAP-AKA by providing a key derivation function that binds the keys derived within the method to the name of the access network. The key derivation function has been defined in the 3rd Generation Partnership Project (3GPP). EAP-AKA' allows its use in EAP in an interoperable manner. EAP-AKA' also updates the algorithm used in hash functions, as it employs SHA-256 / HMAC-SHA-256 instead of SHA-1 / HMAC-SHA-1, which is used in EAP-AKA.</p><p>This version of the EAP-AKA' specification defines the protocol behavior for both 4G and 5G deployments, whereas the previous version defined protocol behavior for 4G deployments only. While EAP-AKA' as defined in RFC 5448 is not obsolete, this document defines the most recent and fully backwards-compatible specification of EAP-AKA'. This document updates both RFCs 4187 and 5448.</p>]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[RFC 9043: FFV1 Video Coding Format Versions 0, 1, and 3]]></title>
@@ -55,9 +49,7 @@ exports[`feeds (rss, atom) 1`] = `
         <id>https://www.rfc-editor.org/info/rfc9041/</id>
         <link href="https://www.rfc-editor.org/info/rfc9041/"/>
         <updated>2021-07-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This document updates RFCs 8029 and 8611, both of which define IANA registries for MPLS Label Switched Path (LSP) Ping. In particular, the registration procedure "Private Use" (previously known as "Vendor Private Use") has been changed to "First Come First Served" for the TLV and sub-TLV registries.
-
- It also updates the description of the procedures for the responses sent when an unknown or erroneous code point is found. The updates are to clarify and align this namespace with recent developments, e.g., aligning terminology with RFC 8126 instead of the now obsoleted RFC 5226 (both titled "Guidelines for Writing an IANA Considerations Section in RFCs").]]></summary>
+        <summary type="html"><![CDATA[<p>This document updates RFCs 8029 and 8611, both of which define IANA registries for MPLS Label Switched Path (LSP) Ping. In particular, the registration procedure "Private Use" (previously known as "Vendor Private Use") has been changed to "First Come First Served" for the TLV and sub-TLV registries.</p><p>It also updates the description of the procedures for the responses sent when an unknown or erroneous code point is found. The updates are to clarify and align this namespace with recent developments, e.g., aligning terminology with RFC 8126 instead of the now obsoleted RFC 5226 (both titled "Guidelines for Writing an IANA Considerations Section in RFCs").</p>]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[RFC 9028: Native NAT Traversal Mode for the Host Identity Protocol]]></title>
@@ -78,9 +70,7 @@ exports[`feeds (rss, atom) 1`] = `
         <id>https://www.rfc-editor.org/info/rfc9042/</id>
         <link href="https://www.rfc-editor.org/info/rfc9042/"/>
         <updated>2021-06-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[The OBJECTID capability of IMAP (RFC 8474) allows clients to identify mailboxes by a unique identifier that survives renaming.
-
- This document extends the Sieve email filtering language (RFC 5228) to allow using that same unique identifier as a target for fileinto rules and for testing the existence of mailboxes.]]></summary>
+        <summary type="html"><![CDATA[<p>The OBJECTID capability of IMAP (RFC 8474) allows clients to identify mailboxes by a unique identifier that survives renaming.</p><p>This document extends the Sieve email filtering language (RFC 5228) to allow using that same unique identifier as a target for fileinto rules and for testing the existence of mailboxes.</p>]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[RFC 9039: Uniform Resource Names for Device Identifiers]]></title>
@@ -94,9 +84,7 @@ exports[`feeds (rss, atom) 1`] = `
         <id>https://www.rfc-editor.org/info/rfc9049/</id>
         <link href="https://www.rfc-editor.org/info/rfc9049/"/>
         <updated>2021-06-25T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This document is a product of the Path Aware Networking Research Group (PANRG). At the first meeting of the PANRG, the Research Group agreed to catalog and analyze past efforts to develop and deploy Path Aware techniques, most of which were unsuccessful or at most partially successful, in order to extract insights and lessons for Path Aware networking researchers.
-
- This document contains that catalog and analysis.]]></summary>
+        <summary type="html"><![CDATA[<p>This document is a product of the Path Aware Networking Research Group (PANRG). At the first meeting of the PANRG, the Research Group agreed to catalog and analyze past efforts to develop and deploy Path Aware techniques, most of which were unsuccessful or at most partially successful, in order to extract insights and lessons for Path Aware networking researchers.</p><p>This document contains that catalog and analysis.</p>]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[RFC 9047: Propagation of ARP/ND Flags in an Ethernet Virtual Private Network (EVPN)]]></title>
@@ -152,13 +140,7 @@ exports[`feeds (rss, atom) 2`] = `
             <link>https://www.rfc-editor.org/info/rfc9048/</link>
             <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9048/</guid>
             <pubDate>Fri, 29 Oct 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The 3GPP mobile network Authentication and Key Agreement (AKA) is an authentication mechanism for devices wishing to access mobile networks. RFC 4187 (EAP-AKA) made the use of this mechanism possible within the Extensible Authentication Protocol (EAP) framework. RFC 5448 (EAP-AKA') was an improved version of EAP-AKA.
-
- This document is the most recent specification of EAP-AKA', including, for instance, details about and references related to operating EAP-AKA' in 5G networks.
-
- EAP-AKA' differs from EAP-AKA by providing a key derivation function that binds the keys derived within the method to the name of the access network. The key derivation function has been defined in the 3rd Generation Partnership Project (3GPP). EAP-AKA' allows its use in EAP in an interoperable manner. EAP-AKA' also updates the algorithm used in hash functions, as it employs SHA-256 / HMAC-SHA-256 instead of SHA-1 / HMAC-SHA-1, which is used in EAP-AKA.
-
- This version of the EAP-AKA' specification defines the protocol behavior for both 4G and 5G deployments, whereas the previous version defined protocol behavior for 4G deployments only. While EAP-AKA' as defined in RFC 5448 is not obsolete, this document defines the most recent and fully backwards-compatible specification of EAP-AKA'. This document updates both RFCs 4187 and 5448.]]></description>
+            <description><![CDATA[<p>The 3GPP mobile network Authentication and Key Agreement (AKA) is an authentication mechanism for devices wishing to access mobile networks. RFC 4187 (EAP-AKA) made the use of this mechanism possible within the Extensible Authentication Protocol (EAP) framework. RFC 5448 (EAP-AKA') was an improved version of EAP-AKA.</p><p>This document is the most recent specification of EAP-AKA', including, for instance, details about and references related to operating EAP-AKA' in 5G networks.</p><p>EAP-AKA' differs from EAP-AKA by providing a key derivation function that binds the keys derived within the method to the name of the access network. The key derivation function has been defined in the 3rd Generation Partnership Project (3GPP). EAP-AKA' allows its use in EAP in an interoperable manner. EAP-AKA' also updates the algorithm used in hash functions, as it employs SHA-256 / HMAC-SHA-256 instead of SHA-1 / HMAC-SHA-1, which is used in EAP-AKA.</p><p>This version of the EAP-AKA' specification defines the protocol behavior for both 4G and 5G deployments, whereas the previous version defined protocol behavior for 4G deployments only. While EAP-AKA' as defined in RFC 5448 is not obsolete, this document defines the most recent and fully backwards-compatible specification of EAP-AKA'. This document updates both RFCs 4187 and 5448.</p>]]></description>
         </item>
         <item>
             <title><![CDATA[RFC 9043: FFV1 Video Coding Format Versions 0, 1, and 3]]></title>
@@ -186,9 +168,7 @@ exports[`feeds (rss, atom) 2`] = `
             <link>https://www.rfc-editor.org/info/rfc9041/</link>
             <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9041/</guid>
             <pubDate>Mon, 26 Jul 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[This document updates RFCs 8029 and 8611, both of which define IANA registries for MPLS Label Switched Path (LSP) Ping. In particular, the registration procedure "Private Use" (previously known as "Vendor Private Use") has been changed to "First Come First Served" for the TLV and sub-TLV registries.
-
- It also updates the description of the procedures for the responses sent when an unknown or erroneous code point is found. The updates are to clarify and align this namespace with recent developments, e.g., aligning terminology with RFC 8126 instead of the now obsoleted RFC 5226 (both titled "Guidelines for Writing an IANA Considerations Section in RFCs").]]></description>
+            <description><![CDATA[<p>This document updates RFCs 8029 and 8611, both of which define IANA registries for MPLS Label Switched Path (LSP) Ping. In particular, the registration procedure "Private Use" (previously known as "Vendor Private Use") has been changed to "First Come First Served" for the TLV and sub-TLV registries.</p><p>It also updates the description of the procedures for the responses sent when an unknown or erroneous code point is found. The updates are to clarify and align this namespace with recent developments, e.g., aligning terminology with RFC 8126 instead of the now obsoleted RFC 5226 (both titled "Guidelines for Writing an IANA Considerations Section in RFCs").</p>]]></description>
         </item>
         <item>
             <title><![CDATA[RFC 9028: Native NAT Traversal Mode for the Host Identity Protocol]]></title>
@@ -209,9 +189,7 @@ exports[`feeds (rss, atom) 2`] = `
             <link>https://www.rfc-editor.org/info/rfc9042/</link>
             <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9042/</guid>
             <pubDate>Wed, 30 Jun 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The OBJECTID capability of IMAP (RFC 8474) allows clients to identify mailboxes by a unique identifier that survives renaming.
-
- This document extends the Sieve email filtering language (RFC 5228) to allow using that same unique identifier as a target for fileinto rules and for testing the existence of mailboxes.]]></description>
+            <description><![CDATA[<p>The OBJECTID capability of IMAP (RFC 8474) allows clients to identify mailboxes by a unique identifier that survives renaming.</p><p>This document extends the Sieve email filtering language (RFC 5228) to allow using that same unique identifier as a target for fileinto rules and for testing the existence of mailboxes.</p>]]></description>
         </item>
         <item>
             <title><![CDATA[RFC 9039: Uniform Resource Names for Device Identifiers]]></title>
@@ -225,9 +203,7 @@ exports[`feeds (rss, atom) 2`] = `
             <link>https://www.rfc-editor.org/info/rfc9049/</link>
             <guid isPermaLink="true">https://www.rfc-editor.org/info/rfc9049/</guid>
             <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[This document is a product of the Path Aware Networking Research Group (PANRG). At the first meeting of the PANRG, the Research Group agreed to catalog and analyze past efforts to develop and deploy Path Aware techniques, most of which were unsuccessful or at most partially successful, in order to extract insights and lessons for Path Aware networking researchers.
-
- This document contains that catalog and analysis.]]></description>
+            <description><![CDATA[<p>This document is a product of the Path Aware Networking Research Group (PANRG). At the first meeting of the PANRG, the Research Group agreed to catalog and analyze past efforts to develop and deploy Path Aware techniques, most of which were unsuccessful or at most partially successful, in order to extract insights and lessons for Path Aware networking researchers.</p><p>This document contains that catalog and analysis.</p>]]></description>
         </item>
         <item>
             <title><![CDATA[RFC 9047: Propagation of ARP/ND Flags in an Ethernet Virtual Private Network (EVPN)]]></title>

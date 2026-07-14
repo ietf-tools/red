@@ -7,6 +7,7 @@ import { RFC_FEED_ATOM_PATH, RFC_FEED_RSS_PATH, saveToS3 } from '../utilities/s3
 import { type AsyncTaskItem } from '../utilities/task.ts'
 import { sortByRfcPublish } from '../utilities/rfc-sorting.ts'
 import { sanitiseHtml } from '../utilities/html.ts'
+import { LINEBREAK } from '../utilities/string.ts'
 
 const NUMBER_OF_RFCS_IN_FEED = 15
 
@@ -79,10 +80,15 @@ const renderPlaintextAbstractToHtml = async (abstract: RfcCommon['abstract']): P
   if (!abstract) {
     return undefined
   }
+  if (!abstract.includes(LINEBREAK)) {
+    return abstract
+  }
+
   const rawAbstract = abstract
     .trim()
     .split('\n')
-    .map((line) => `<p>${escapeHtml(line)}</p>`)
+    .filter((line) => Boolean(line.trim()))
+    .map((line) => `<p>${escapeHtml(line.trim())}</p>`)
     .join('')
 
   return sanitiseHtml(rawAbstract, 'abstract')

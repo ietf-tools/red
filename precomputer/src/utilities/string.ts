@@ -1,6 +1,8 @@
 import { uniq } from 'es-toolkit'
 import { assertIsString } from './typescript.ts'
 
+export const LINEBREAK = '\n'
+
 const COLONSLASHSLASH = '://'
 
 /**
