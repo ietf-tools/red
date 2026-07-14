@@ -2,7 +2,7 @@
   <DialogRoot v-model:open="isFeatureFlagsModalVisible">
     <DialogPortal>
       <DialogOverlay
-        class="bg-blue-900/50 data-[state=open]:animate-overlayShow fixed inset-0 z-100 overflow-y-scroll py-16">
+        class="bg-blue-900/50 data-[state=open]:animate-overlayShow fixed inset-0 z-110 overflow-y-scroll py-16">
         <DialogContent
           class="data-[state=open]:animate-contentShow mx-auto w-[90vw] max-w-[800px] relative rounded-md bg-white dark:bg-blue-900 px-5 pt-3 pb-5 z-[100]">
           <DialogTitle as="h1" class="text-xl font-bold py-2 pr-16">

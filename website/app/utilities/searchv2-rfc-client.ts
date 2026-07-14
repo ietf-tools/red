@@ -28,7 +28,9 @@ export function createRfcSearchClient(params: CreateRfcSearchClientParams): Sear
     // Matches the authors filter's show-more-limit so the main facet response can populate the
     // full expanded list; also governs when `facetTruncated` fires for capped facets.
     maxFacetValues: 50,
-    preset: (request) => (request.toggles.searchContents ? 'red-content' : 'red'),
+    // `searchMetadataOnly` is off by default (search full RFC text via the `red-content` preset);
+    // when the user opts in we narrow to metadata + abstract only via the `red` preset.
+    preset: (request) => (request.toggles.searchMetadataOnly ? 'red' : 'red-content'),
     filterFor: (request) => {
       const clauses = ['type:=rfc']
       // `searchObsoleted` is on by default (include everything); when the user turns it off we

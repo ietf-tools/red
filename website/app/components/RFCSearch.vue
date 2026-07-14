@@ -170,7 +170,7 @@ import type { BreadcrumbItem } from './BreadcrumbsTypes'
 import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
 
 const defaultUiState: UiState = {
-  toggles: { searchObsoleted: true, searchContents: true }
+  toggles: { searchObsoleted: true, searchMetadataOnly: false }
 }
 
 const searchStore = useSearchStore()

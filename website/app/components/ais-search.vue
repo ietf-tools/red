@@ -6,8 +6,10 @@
       :search-client="searchClient"
       :future="{ preserveSharedStateOnUnmount: true }"
       :routing="routing">
-      <NuxtLayout name="default">
-        <SearchMainHeader ref="searchMainHeader" />
+      <NuxtLayout name="default" has-sub-header>
+        <template #subheader>
+          <SearchMainHeader ref="searchMainHeader" />
+        </template>
         <div class="container mx-auto w-full" v-html="noScriptHtml"></div>
         <!-- <Breadcrumbs
           class="container mx-auto pl-4 pr-3"

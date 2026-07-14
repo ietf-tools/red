@@ -14,20 +14,19 @@
     <ul>
       <li>
         <ToggleRefinement
-          attribute="searchContents"
-          label="Search RFC text"
-          description="If unchecked only metadata will be searched"
+          attribute="searchMetadataOnly"
+          label="Search only Metadata and Abstract"
           :class-names="{
             root: 'inline-block mb-3',
             label: 'text-base cursor-pointer',
-            checkbox: 'mr-2 ',
+            checkbox: 'mr-2',
             description: 'text-sm pl-[22px] text-gray-800 dark:text-gray-300'
           }" />
       </li>
       <li>
         <ToggleRefinement
           attribute="searchObsoleted"
-          label="Search obsoleted / historic"
+          label="Search also obsoleted / historic"
           :class-names="{ root: 'inline-block', label: 'text-base cursor-pointer', checkbox: 'mr-2' }" />
       </li>
     </ul>

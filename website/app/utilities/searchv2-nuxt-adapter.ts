@@ -10,7 +10,7 @@ import { SEARCH_PATH } from '~/utilities/url'
  */
 const TOGGLE_PARAMS: Record<string, string> = {
   searchObsoleted: 'searchObsoleted',
-  searchContents: 'searchContents'
+  searchMetadataOnly: 'searchMetadataOnly'
 }
 
 /**

@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-[100vh]">
-    <RfcEditorSearch v-if="hasSearchV2" />
+    <RFCSearch v-if="hasSearchV2" />
     <AisSearch v-else />
   </div>
 </template>
 
 <script setup lang="ts">
 import AisSearch from '~/components/ais-search.vue'
-import RfcEditorSearch from '~/components/RfcEditorSearch.vue'
+import RFCSearch from '~/components/RFCSearch.vue'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useRfcEditorHead } from '~/utilities/head'
 import { searchPathBuilder } from '~/utilities/url'
