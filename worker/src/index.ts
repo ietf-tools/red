@@ -16,7 +16,7 @@ import {
   blobsSitemap,
   blobsStatics
 } from './blobs'
-import { addNormalizedPath, emptyFileResponse, redirectTo } from './helpers'
+import { addNormalizedPath, emptyFileResponse, redirectTo, staleWhileRevalidate } from './helpers'
 import { legacySearchRedirectPathBuilder } from './legacy-search-redirect'
 import { serverSearch } from './server-search'
 import { legacyErrataSearchRedirectUrlBuilder } from './legacy-errata-search-redirect'
@@ -210,17 +210,23 @@ router
   .get('/*', addNormalizedPath, blobsSitemap)
   .get('/*', addNormalizedPath, blobsStatics)
 
-  // Fallback to origin
-  .all('*', async (req: IRequest) => {
-    let resp = await fetch(req, {
-      cf: {
-        cacheTtl: 60,
-        cacheEverything: true
-      }
-    })
-    resp = new Response(resp.body, resp)
-    resp.headers.set('Cache-Control', 'max-age=120')
-    return resp
+  // Fallback to origin. The site is GET-only, so reject other methods here; GET
+  // requests get stale-while-revalidate caching (fresh for 60s, then served
+  // stale for up to 5 min while revalidating in the background).
+  .all('*', (req: IRequest, _env: Env, ctx: ExecutionContext) => {
+    if (req.method !== 'GET') {
+      return new Response('405 - Method not allowed', {
+        status: 405,
+        headers: { 'Content-Type': 'text/plain;charset=utf-8', Allow: 'GET' }
+      })
+    }
+
+    return staleWhileRevalidate(
+      req,
+      ctx,
+      { maxAgeSeconds: 60, staleWhileRevalidateSeconds: 300 },
+      { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
+    )
   })
 
 export default {

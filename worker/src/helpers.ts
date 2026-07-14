@@ -54,6 +54,113 @@ export function createBlobNotFoundResponse(): Response {
   })
 }
 
+const SWR_STORED_AT_MS_HEADER = 'x-swr-stored-at-ms'
+
+type StaleWhileRevalidateOptions = {
+  maxAgeSeconds: number
+  staleWhileRevalidateSeconds: number
+}
+
+/**
+ * Injectable collaborators so this can be unit tested without touching the
+ * runtime globals. Production callers pass `caches.default`, the global `fetch`,
+ * and `Date.now`; tests pass fakes.
+ */
+type StaleWhileRevalidateDeps = {
+  cache: Pick<Cache, 'match' | 'put'>
+  fetch: (request: Request) => Promise<Response>
+  now: () => number
+}
+
+function withBrowserSwrHeaders(
+  resp: Response,
+  { maxAgeSeconds, staleWhileRevalidateSeconds }: StaleWhileRevalidateOptions
+): Response {
+  const out = new Response(resp.body, resp)
+  out.headers.set(
+    'Cache-Control',
+    `public, max-age=${maxAgeSeconds}, stale-while-revalidate=${staleWhileRevalidateSeconds}`
+  )
+  return out
+}
+
+/**
+ * Cache successful responses and 404s — the latter so that a flood of requests
+ * for non-existent origin pages is absorbed by the cache instead of hammering
+ * the origin. 5xx (and every other error) is never cached, so a failing origin
+ * can neither be cached nor poison an existing good entry.
+ */
+function isCacheable(resp: Response): boolean {
+  return resp.ok || resp.status === 404
+}
+
+/**
+ * Serve a fetch()-backed response with stale-while-revalidate semantics, backed
+ * by the Workers Cache API (per-colo). We manage the cache ourselves because the
+ * Cache API does not honor the `stale-while-revalidate` directive, and a Worker
+ * cannot inject that directive into the edge cache populated by `fetch()`.
+ *
+ * - Fresh (age <= maxAgeSeconds): served from cache.
+ * - Stale (maxAgeSeconds < age <= maxAgeSeconds + staleWhileRevalidateSeconds):
+ *   the stale copy is served immediately and the origin is re-fetched in the
+ *   background via `ctx.waitUntil()`, so no visitor blocks on revalidation.
+ * - Miss or fully expired: fetched from origin synchronously, then cached.
+ *
+ * Only successful responses and 404s are cached (see isCacheable). The origin
+ * does not vary by query string, so the query is stripped from both the cache
+ * key and the origin request: this collapses query-randomized floods (a common
+ * cache-busting DDoS tactic) onto a single cached entry.
+ *
+ * Callers must pass a GET request; non-GET methods are rejected upstream by the
+ * router's `rejectNonGet` guard.
+ */
+export async function staleWhileRevalidate(
+  req: Request,
+  ctx: ExecutionContext,
+  options: StaleWhileRevalidateOptions,
+  { cache, fetch, now }: StaleWhileRevalidateDeps
+): Promise<Response> {
+  const { maxAgeSeconds, staleWhileRevalidateSeconds } = options
+  const totalTtlSeconds = maxAgeSeconds + staleWhileRevalidateSeconds
+
+  const normalizedUrl = new URL(req.url)
+  normalizedUrl.search = ''
+  const cacheKey = new Request(normalizedUrl.toString(), { method: 'GET' })
+  const originRequest = new Request(normalizedUrl.toString(), { method: 'GET', headers: req.headers })
+
+  const revalidate = async (): Promise<Response> => {
+    const fresh = await fetch(originRequest)
+    if (!isCacheable(fresh)) {
+      return fresh
+    }
+    const stored = new Response(fresh.body, fresh)
+    stored.headers.set(SWR_STORED_AT_MS_HEADER, now().toString())
+    // Retain the entry in the Cache API for the whole stale window.
+    stored.headers.set('Cache-Control', `public, max-age=${totalTtlSeconds}`)
+    await cache.put(cacheKey, stored.clone())
+    return stored
+  }
+
+  const cached = await cache.match(cacheKey)
+  if (cached) {
+    const storedAtMs = Number(cached.headers.get(SWR_STORED_AT_MS_HEADER) ?? 0)
+    const ageSeconds = (now() - storedAtMs) / 1000
+
+    if (ageSeconds > maxAgeSeconds && ageSeconds <= totalTtlSeconds) {
+      // Stale but usable: serve now, refresh in the background.
+      ctx.waitUntil(revalidate())
+    }
+    if (ageSeconds <= totalTtlSeconds) {
+      return withBrowserSwrHeaders(cached, options)
+    }
+  }
+
+  // Cold miss (or fully expired): advertise SWR caching only for a cacheable
+  // response (2xx/404) — never tell the browser to cache an origin error.
+  const fresh = await revalidate()
+  return isCacheable(fresh) ? withBrowserSwrHeaders(fresh, options) : fresh
+}
+
 export function detectContentType(path: string): string | undefined {
   if (!path.includes('.')) {
     return
