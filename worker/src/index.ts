@@ -114,6 +114,7 @@ router
   .get('/status_changes.php', redirectTo('/status-changes/', 302))
   .get('/styleguide.html', redirectTo('/authors/rfc-style-guide/', 302))
   .get('/styleguide/', redirectTo('/authors/rfc-style-guide/', 302))
+  .get('/styleguide/headers-and-boilerplate/', redirectTo('/authors/rfc-style-guide/#rfc-headers-and-boilerplate', 302))
   .get('/styleguide/part2/', redirectTo('/authors/rfc-style-guide/', 302))
   .get('/styleguide/tips/', redirectTo('/authors/rfc-style-guide/', 302))
 
