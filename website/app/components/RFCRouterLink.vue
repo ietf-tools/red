@@ -257,12 +257,25 @@ const suppressFocusOpenOnce = () => {
 }
 
 /**
- * When Reka returns focus to the link on
- * close, suppress the re-open (see `suppressFocusOpenOnce`). We don't cancel the
- * event — returning focus to the link is the correct, WCAG-friendly behaviour; we
- * only stop it from re-triggering the popover.
+ * When the card closes, Reka's default is to return focus to the trigger link.
+ *
+ * If focus is already *outside* the card — e.g. the user clicked the trigger link,
+ * which focuses it — there is nothing to restore. In that case Reka's bare
+ * `.focus()` on the (now off-screen, because we've scrolled to the hash target)
+ * trigger scrolls it back into view, yanking the reader back to where they clicked:
+ * the intermittent "scroll bounce" when following an in-content hash link. So we
+ * cancel the focus management entirely when focus has already left the card.
+ *
+ * When focus *is* inside the card (e.g. keyboard dismiss via Escape) we keep the
+ * WCAG-friendly behaviour of returning focus to the link, and only suppress that
+ * returned focus from re-opening the card (see `suppressFocusOpenOnce`).
  */
-const onCloseAutoFocus = () => {
+const onCloseAutoFocus = (event: Event) => {
+  const isFocusInsideCard = document.activeElement?.closest('[role="dialog"]') != null
+  if (!isFocusInsideCard) {
+    event.preventDefault()
+    return
+  }
   suppressFocusOpenOnce()
 }
 
@@ -439,6 +452,14 @@ const popoverAttributes = {
       return
     }
     startPopoverClose()
+  },
+  onClick: () => {
+    // Following the link should dismiss the preview immediately. Focus is already on
+    // this link (outside the card), so combined with `onCloseAutoFocus` the close
+    // skips focus restoration — otherwise Reka would `.focus()` this link and scroll
+    // it back into view, undoing the hash-link jump (the "scroll bounce").
+    clearTimeout(openTimer)
+    isPopoverOpen.value = false
   },
   onKeydown: onTriggerKeydown
 }
