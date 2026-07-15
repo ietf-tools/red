@@ -8,7 +8,6 @@
         <slot name="subheader" />
       </HeaderWrapper>
       <slot />
-      {{ Boolean(props.hasSubHeader).toString() }}
     </Main>
     <Footer />
   </div>
