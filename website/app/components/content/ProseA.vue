@@ -1,10 +1,10 @@
 <template>
   <AMaybeRFCLink :id="props.id" :href="props.href!" :class="ANCHOR_COLOR_TAILWIND_STYLE">
     <slot />
-    <GraphicsNewWindowIcon v-if="!isInternal && !isMailTo && !isHash" class="text-lg align-middle ml-1" />
-    <GraphicsMail v-if="isMailTo" class="text-lg align-middle ml-1" />
-    <GraphicsRssFeed v-if="isRSSFeed" class="text-lg align-middle ml-1" />
-    <GraphicsAtomFeed v-if="isAtomFeed" class="text-lg align-middle ml-1" />
+    <GraphicsNewWindowIcon v-if="!isInternal && !isMailTo && !isHash" class="inline-block text-lg align-middle ml-1" />
+    <GraphicsMail v-if="isMailTo" class="inline-block text-lg align-middle ml-1" />
+    <GraphicsRssFeed v-if="isRSSFeed" class="inline-block text-lg align-middle ml-1" />
+    <GraphicsAtomFeed v-if="isAtomFeed" class="inline-block text-lg align-middle ml-1" />
   </AMaybeRFCLink>
 </template>
 
