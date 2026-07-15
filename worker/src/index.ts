@@ -55,6 +55,10 @@ const subseriesRedirect = (req: IRequest) => {
 
 const excludeInNotesRedirects = ['/in-notes/rfc-ref.txt', '/in-notes/rfc-index.txt']
 
+// Paths that must always reach origin fresh and never be cached (e.g. health
+// checks, whose whole purpose is to report the current origin state).
+const cacheBypassPaths = ['/api/v1/healthcheck.json', '/api/v1/systemcheck.json']
+
 const router = IttyRouter<IRequest, [Env]>()
 
 router
@@ -215,19 +219,23 @@ router
   // stale-while-revalidate caching (fresh for 60s, then served stale for up to
   // 5 min while revalidating in the background).
   .all('*', async (req: IRequest, _env: Env, ctx: ExecutionContext) => {
-    if (req.method !== 'GET' && req.method !== 'HEAD') {
+    const allowedMethods = ['GET', 'HEAD']
+    if (!allowedMethods.includes(req.method)) {
       return new Response('405 - Method not allowed', {
         status: 405,
         headers: { 'Content-Type': 'text/plain;charset=utf-8', Allow: 'GET, HEAD' }
       })
     }
 
-    const response = await staleWhileRevalidate(
-      req,
-      ctx,
-      { maxAgeSeconds: 60, staleWhileRevalidateSeconds: 300 },
-      { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
-    )
+    const { pathname } = new URL(req.url)
+    const response = cacheBypassPaths.includes(pathname)
+      ? await fetch(req)
+      : await staleWhileRevalidate(
+          req,
+          ctx,
+          { maxAgeSeconds: 60, staleWhileRevalidateSeconds: 300 },
+          { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
+        )
 
     // A HEAD response must carry no body; keep its status and headers.
     return req.method === 'HEAD' ? new Response(null, response) : response

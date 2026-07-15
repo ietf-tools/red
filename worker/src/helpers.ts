@@ -123,6 +123,7 @@ export async function staleWhileRevalidate(
   const { maxAgeSeconds, staleWhileRevalidateSeconds } = options
   const totalTtlSeconds = maxAgeSeconds + staleWhileRevalidateSeconds
 
+  // The origin webserver doesn't (shouldn't!) vary responses by query so this should be safe to do
   const normalizedUrl = new URL(req.url)
   normalizedUrl.search = ''
   const cacheKey = new Request(normalizedUrl.toString(), { method: 'GET' })
