@@ -210,23 +210,27 @@ router
   .get('/*', addNormalizedPath, blobsSitemap)
   .get('/*', addNormalizedPath, blobsStatics)
 
-  // Fallback to origin. The site is GET-only, so reject other methods here; GET
-  // requests get stale-while-revalidate caching (fresh for 60s, then served
-  // stale for up to 5 min while revalidating in the background).
-  .all('*', (req: IRequest, _env: Env, ctx: ExecutionContext) => {
-    if (req.method !== 'GET') {
+  // Fallback to origin. The site is read-only, so allow GET and HEAD (the latter
+  // is used by the site health check) and reject everything else. GET/HEAD get
+  // stale-while-revalidate caching (fresh for 60s, then served stale for up to
+  // 5 min while revalidating in the background).
+  .all('*', async (req: IRequest, _env: Env, ctx: ExecutionContext) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
       return new Response('405 - Method not allowed', {
         status: 405,
-        headers: { 'Content-Type': 'text/plain;charset=utf-8', Allow: 'GET' }
+        headers: { 'Content-Type': 'text/plain;charset=utf-8', Allow: 'GET, HEAD' }
       })
     }
 
-    return staleWhileRevalidate(
+    const response = await staleWhileRevalidate(
       req,
       ctx,
       { maxAgeSeconds: 60, staleWhileRevalidateSeconds: 300 },
       { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
     )
+
+    // A HEAD response must carry no body; keep its status and headers.
+    return req.method === 'HEAD' ? new Response(null, response) : response
   })
 
 export default {
