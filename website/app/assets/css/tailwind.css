@@ -78,8 +78,6 @@
   --animate-exitToLeft: exitToLeft 250ms ease;
   --animate-exitToRight: exitToRight 250ms ease;
   --animate-exitToBottom: exitToBottom 250ms ease;
-  --animate-overlayShow: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  --animate-contentShow: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --animate-slideDown: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
   --animate-slideUp: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
   --animate-slideDownAndFade: slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -204,27 +202,6 @@
 
     100% {
       opacity: 0;
-    }
-  }
-
-  @keyframes overlayShow {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes contentShow {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, -48%) scale(0.96);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
     }
   }
 
