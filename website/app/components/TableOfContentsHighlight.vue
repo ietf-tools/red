@@ -1,5 +1,7 @@
 <template>
-  <VerticalScrollable ref="vertical-scrollable" :class="`overflow-y-auto min-h-0 flex flex-col ${props.wrapperClass}`">
+  <VerticalScrollable
+    ref="vertical-scrollable"
+    :class="`overflow-y-auto overscroll-contain min-h-0 flex flex-col ${props.wrapperClass}`">
     <nav :aria-label="props.navAriaLabel">
       <slot />
       <TableOfContentsHighlightSection
@@ -117,7 +119,6 @@ useScrollTocContainer({
 
 const isSSR = ref(true)
 onMounted(() => {
-  console.log('tableofcontentshighlight onmounted')
   if (activeId.value) {
     handleClick(activeId.value)
   }
