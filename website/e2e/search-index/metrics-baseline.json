@@ -1,0 +1,13 @@
+{
+  "target": "prod",
+  "tolerance": 0.03,
+  "metrics": {
+    "n": 1203,
+    "mrrAt10": 0.539,
+    "ndcgAt10": 0.584,
+    "pctTop1": 0.442,
+    "pctTop3": 0.618,
+    "pctTop10": 0.726,
+    "pctFound": 0.795
+  }
+}

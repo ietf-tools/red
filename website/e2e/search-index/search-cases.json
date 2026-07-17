@@ -1,0 +1,7573 @@
+{
+  "$schema": "./search-cases.schema.md",
+  "description": "RFC search-index quality golden set (judgment list). Each case is keyed by its Search Key (query + preset + facets), unique across the file, and states the canonical RFC(s) that SHOULD rank for the query — independent of what the index currently returns. withinTopN (default 5) is the per-case quality target. Regressions are gated on corpus-level rank-weighted metrics (MRR@10, % in top 10) vs metrics-baseline.json, not per-case ranks. Edit via the CSV round-trip: npm run test:unittests:search-index:ingest-csv.",
+  "defaults": {
+    "withinTopN": 5
+  },
+  "cases": [
+    {
+      "query": ".well-known directory registry",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["appsawg"]
+      },
+      "expected": [8615],
+      "confidence": "high"
+    },
+    {
+      "query": "0-rtt early data tls",
+      "preset": "red",
+      "expected": [8446],
+      "confidence": "high"
+    },
+    {
+      "query": "103 early hints",
+      "preset": "red",
+      "expected": [8297],
+      "confidence": "high"
+    },
+    {
+      "query": "4-byte as numbers bgp",
+      "preset": "red",
+      "expected": [6793],
+      "confidence": "medium"
+    },
+    {
+      "query": "6lo over bluetooth low energy",
+      "preset": "red",
+      "expected": [7668],
+      "confidence": "medium"
+    },
+    {
+      "query": "6lowpan header compression",
+      "preset": "red",
+      "expected": [6282],
+      "confidence": "high"
+    },
+    {
+      "query": "6LoWPAN neighbor discovery",
+      "preset": "red",
+      "expected": [6775],
+      "confidence": "medium"
+    },
+    {
+      "query": "6lowpan problem statement",
+      "preset": "red",
+      "expected": [4919],
+      "confidence": "high"
+    },
+    {
+      "query": "6TiSCH",
+      "preset": "red",
+      "expected": [9030],
+      "confidence": "medium"
+    },
+    {
+      "query": "6tisch architecture",
+      "preset": "red",
+      "expected": [9030],
+      "confidence": "medium"
+    },
+    {
+      "query": "6tisch minimal configuration",
+      "preset": "red",
+      "expected": [8180],
+      "confidence": "medium"
+    },
+    {
+      "query": "8BITMIME extension",
+      "preset": "red",
+      "expected": [6152],
+      "confidence": "high"
+    },
+    {
+      "query": "aaaa record ipv6 dns",
+      "preset": "red",
+      "expected": [3596],
+      "confidence": "high"
+    },
+    {
+      "query": "ABE tcp congestion",
+      "preset": "red",
+      "expected": [8511],
+      "confidence": "medium"
+    },
+    {
+      "query": "absolute URI vs relative URI",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "accept-language range matching",
+      "preset": "red",
+      "expected": [4647],
+      "confidence": "medium"
+    },
+    {
+      "query": "acct URI scheme",
+      "preset": "red",
+      "expected": [7565],
+      "confidence": "medium"
+    },
+    {
+      "query": "ACE DTLS profile",
+      "preset": "red",
+      "expected": [9202],
+      "confidence": "medium"
+    },
+    {
+      "query": "ACE OAuth",
+      "preset": "red",
+      "expected": [9200],
+      "confidence": "high"
+    },
+    {
+      "query": "ACE OSCORE profile",
+      "preset": "red",
+      "expected": [9203],
+      "confidence": "medium"
+    },
+    {
+      "query": "acme",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["acme"]
+      },
+      "expected": [8555],
+      "confidence": "high"
+    },
+    {
+      "query": "ACME IP address identifier validation",
+      "preset": "red",
+      "expected": [8738],
+      "confidence": "medium"
+    },
+    {
+      "query": "ACME protocol",
+      "preset": "red",
+      "expected": [8555],
+      "confidence": "high"
+    },
+    {
+      "query": "ACME short-lived automatically renewed certificates",
+      "preset": "red",
+      "expected": [8739],
+      "confidence": "medium"
+    },
+    {
+      "query": "ACME tls-alpn-01 challenge",
+      "preset": "red",
+      "expected": [8737],
+      "confidence": "medium"
+    },
+    {
+      "query": "active queue management recommendations",
+      "preset": "red",
+      "expected": [7567],
+      "confidence": "high"
+    },
+    {
+      "query": "active queue management working group latest recommendations",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["aqm"]
+      },
+      "expected": [7567],
+      "confidence": "high"
+    },
+    {
+      "query": "additional http status codes",
+      "preset": "red",
+      "expected": [6585],
+      "confidence": "high"
+    },
+    {
+      "query": "address resolution protocol",
+      "preset": "red",
+      "expected": [826],
+      "confidence": "high"
+    },
+    {
+      "query": "administratively scoped IP multicast",
+      "preset": "red",
+      "expected": [2365],
+      "confidence": "medium"
+    },
+    {
+      "query": "adress resolution protocol",
+      "preset": "red",
+      "expected": [826],
+      "confidence": "high"
+    },
+    {
+      "query": "AES CTR mode",
+      "preset": "red",
+      "expected": [3686],
+      "confidence": "medium"
+    },
+    {
+      "query": "AES key wrap algorithm",
+      "preset": "red",
+      "expected": [3394],
+      "confidence": "high"
+    },
+    {
+      "query": "AES-CBC ESP",
+      "preset": "red",
+      "expected": [3602],
+      "confidence": "high"
+    },
+    {
+      "query": "AES-CBC mode",
+      "preset": "red",
+      "expected": [3602],
+      "confidence": "medium"
+    },
+    {
+      "query": "AES-CCM mode",
+      "preset": "red",
+      "expected": [3610],
+      "confidence": "high"
+    },
+    {
+      "query": "AES-CMAC",
+      "preset": "red",
+      "expected": [4493],
+      "confidence": "high"
+    },
+    {
+      "query": "AES-GCM cipher suites for tls",
+      "preset": "red",
+      "expected": [5288],
+      "confidence": "high"
+    },
+    {
+      "query": "AES-GCM cipher suites for TLS",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tls"]
+      },
+      "expected": [5288],
+      "confidence": "medium"
+    },
+    {
+      "query": "AES-GCM ESP",
+      "preset": "red",
+      "expected": [4106],
+      "confidence": "high"
+    },
+    {
+      "query": "aggressive use of dnssec validated cache",
+      "preset": "red",
+      "expected": [8198],
+      "confidence": "high"
+    },
+    {
+      "query": "AH header",
+      "preset": "red",
+      "expected": [4302],
+      "confidence": "high"
+    },
+    {
+      "query": "AH vs ESP ipsec",
+      "preset": "red",
+      "expected": [4302, 4303],
+      "confidence": "medium"
+    },
+    {
+      "query": "algorithm requirements for ESP and AH",
+      "preset": "red",
+      "expected": [8221],
+      "confidence": "medium"
+    },
+    {
+      "query": "alpn http2 negotiation extension",
+      "preset": "red",
+      "expected": [7301],
+      "confidence": "high"
+    },
+    {
+      "query": "alternative backoff with ecn",
+      "preset": "red",
+      "expected": [8511],
+      "confidence": "high"
+    },
+    {
+      "query": "ambiguity of uppercase vs lowercase",
+      "preset": "red",
+      "expected": [8174],
+      "confidence": "high"
+    },
+    {
+      "query": "AMT multicast tunnel",
+      "preset": "red",
+      "expected": [7450],
+      "confidence": "medium"
+    },
+    {
+      "query": "anonymous ftp guidelines",
+      "preset": "red",
+      "expected": [1635],
+      "confidence": "medium"
+    },
+    {
+      "query": "anycast rendezvous point PIM",
+      "preset": "red",
+      "expected": [4610],
+      "confidence": "medium"
+    },
+    {
+      "query": "Anycast RP",
+      "preset": "red",
+      "expected": [4610],
+      "confidence": "medium"
+    },
+    {
+      "query": "applicability of quic transport protocol",
+      "preset": "red",
+      "expected": [9308],
+      "confidence": "high"
+    },
+    {
+      "query": "application layer protocol negotiation",
+      "preset": "red",
+      "expected": [7301],
+      "confidence": "high"
+    },
+    {
+      "query": "application/xml content type",
+      "preset": "red",
+      "expected": [7303],
+      "confidence": "medium"
+    },
+    {
+      "query": "arc email header",
+      "preset": "red",
+      "expected": [8617],
+      "confidence": "high"
+    },
+    {
+      "query": "arc-seal arc-message-signature header",
+      "preset": "red",
+      "expected": [8617],
+      "confidence": "medium"
+    },
+    {
+      "query": "argon2 password hashing",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["IRTF"]
+      },
+      "expected": [9106],
+      "confidence": "high"
+    },
+    {
+      "query": "attribute certificate profile",
+      "preset": "red",
+      "expected": [5755],
+      "confidence": "high"
+    },
+    {
+      "query": "authenticated denial of existence dns",
+      "preset": "red",
+      "expected": [5155],
+      "confidence": "medium"
+    },
+    {
+      "query": "authenticated received chain",
+      "preset": "red",
+      "expected": [8617],
+      "confidence": "high"
+    },
+    {
+      "query": "authentication and authorization for constrained environments",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["ace"]
+      },
+      "expected": [9200],
+      "confidence": "high"
+    },
+    {
+      "query": "Authentication Header",
+      "preset": "red",
+      "expected": [4302],
+      "confidence": "high"
+    },
+    {
+      "query": "authentication-results header",
+      "preset": "red",
+      "expected": [8601],
+      "confidence": "high"
+    },
+    {
+      "query": "authentification header ipsec",
+      "preset": "red",
+      "expected": [4302],
+      "confidence": "medium"
+    },
+    {
+      "query": "automated updates of dns security trust anchors",
+      "preset": "red",
+      "expected": [5011],
+      "confidence": "high"
+    },
+    {
+      "query": "automatic certificate management environment",
+      "preset": "red",
+      "expected": [8555],
+      "confidence": "high"
+    },
+    {
+      "query": "automatic multicast tunneling",
+      "preset": "red",
+      "expected": [7450],
+      "confidence": "medium"
+    },
+    {
+      "query": "automating dnssec delegation trust maintenance",
+      "preset": "red",
+      "expected": [7344],
+      "confidence": "high"
+    },
+    {
+      "query": "avian carriers with quality of service",
+      "preset": "red",
+      "expected": [2549],
+      "confidence": "high"
+    },
+    {
+      "query": "axfr zone transfer protocol",
+      "preset": "red",
+      "expected": [5936],
+      "confidence": "high"
+    },
+    {
+      "query": "base16 hex encoding",
+      "preset": "red",
+      "expected": [4648],
+      "confidence": "medium"
+    },
+    {
+      "query": "base32 encoding",
+      "preset": "red",
+      "expected": [4648],
+      "confidence": "high"
+    },
+    {
+      "query": "base64",
+      "preset": "red",
+      "expected": [4648],
+      "confidence": "high"
+    },
+    {
+      "query": "base64 encoding",
+      "preset": "red",
+      "expected": [4648],
+      "confidence": "high"
+    },
+    {
+      "query": "basic auth rfc",
+      "preset": "red",
+      "expected": [7617],
+      "confidence": "high"
+    },
+    {
+      "query": "basic authentication scheme",
+      "preset": "red",
+      "expected": [7617],
+      "confidence": "high"
+    },
+    {
+      "query": "bcp 14 key words",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [2119, 8174],
+      "confidence": "high"
+    },
+    {
+      "query": "BDAT chunking SMTP",
+      "preset": "red",
+      "expected": [3030],
+      "confidence": "high"
+    },
+    {
+      "query": "bearer token",
+      "preset": "red",
+      "expected": [6750],
+      "confidence": "high"
+    },
+    {
+      "query": "better than nothing security ipsec",
+      "preset": "red",
+      "expected": [5386],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp additional paths",
+      "preset": "red",
+      "expected": [7911],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp best path selection algorithm",
+      "preset": "red",
+      "expected": [4271],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp capabilities advertisement",
+      "preset": "red",
+      "expected": [5492],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp communities",
+      "preset": "red",
+      "expected": [1997],
+      "confidence": "high"
+    },
+    {
+      "query": "bgp community attribute",
+      "preset": "red",
+      "expected": [1997],
+      "confidence": "high"
+    },
+    {
+      "query": "bgp confederations",
+      "preset": "red",
+      "expected": [5065],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp extended communities attribute",
+      "preset": "red",
+      "expected": [4360],
+      "confidence": "high"
+    },
+    {
+      "query": "bgp graceful restart",
+      "preset": "red",
+      "expected": [4724],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp large communities",
+      "preset": "red",
+      "expected": [8092],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp monitoring protocol",
+      "preset": "red",
+      "expected": [7854],
+      "confidence": "medium"
+    },
+    {
+      "query": "BGP MVPN",
+      "preset": "red",
+      "expected": [6514],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp route flap damping",
+      "preset": "red",
+      "expected": [2439],
+      "confidence": "medium"
+    },
+    {
+      "query": "bgp route reflection",
+      "preset": "red",
+      "expected": [4456],
+      "confidence": "high"
+    },
+    {
+      "query": "BGP-4",
+      "preset": "red",
+      "expected": [4271],
+      "confidence": "high"
+    },
+    {
+      "query": "BIDIR-PIM",
+      "preset": "red",
+      "expected": [5015],
+      "confidence": "medium"
+    },
+    {
+      "query": "bidirectional http streaming",
+      "preset": "red",
+      "expected": [6202],
+      "confidence": "medium"
+    },
+    {
+      "query": "Bidirectional PIM",
+      "preset": "red",
+      "expected": [5015],
+      "confidence": "medium"
+    },
+    {
+      "query": "bmp bgp",
+      "preset": "red",
+      "expected": [7854],
+      "confidence": "medium"
+    },
+    {
+      "query": "boarder gateway protocol",
+      "preset": "red",
+      "expected": [4271],
+      "confidence": "high",
+      "note": "common misspelling of border"
+    },
+    {
+      "query": "bootstrap protocol",
+      "preset": "red",
+      "expected": [951],
+      "confidence": "high"
+    },
+    {
+      "query": "bootstrapping websockets with http/2",
+      "preset": "red",
+      "expected": [8441],
+      "confidence": "high"
+    },
+    {
+      "query": "bootstring encoding",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "high"
+    },
+    {
+      "query": "border gateway protocol",
+      "preset": "red",
+      "expected": [4271],
+      "confidence": "high"
+    },
+    {
+      "query": "brainpool curves",
+      "preset": "red",
+      "expected": [5639],
+      "confidence": "high"
+    },
+    {
+      "query": "caa dns resource record",
+      "preset": "red",
+      "expected": [8659],
+      "confidence": "high"
+    },
+    {
+      "query": "caa record",
+      "preset": "red",
+      "expected": [8659],
+      "confidence": "high"
+    },
+    {
+      "query": "caldav",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["vcarddav"]
+      },
+      "expected": [4791],
+      "confidence": "high"
+    },
+    {
+      "query": "caldav carddav discovery dns srv",
+      "preset": "red",
+      "expected": [6764],
+      "confidence": "high"
+    },
+    {
+      "query": "caldav scheduling",
+      "preset": "red",
+      "expected": [6638],
+      "confidence": "high"
+    },
+    {
+      "query": "calendaring extensions to webdav",
+      "preset": "red",
+      "expected": [4791],
+      "confidence": "high"
+    },
+    {
+      "query": "canonical IPv6 address format",
+      "preset": "red",
+      "expected": [5952],
+      "confidence": "medium"
+    },
+    {
+      "query": "capsule protocol",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["masque"]
+      },
+      "expected": [9297],
+      "confidence": "high"
+    },
+    {
+      "query": "carddav",
+      "preset": "red",
+      "expected": [6352],
+      "confidence": "high"
+    },
+    {
+      "query": "carddav rfc",
+      "preset": "red",
+      "expected": [6352],
+      "confidence": "high"
+    },
+    {
+      "query": "catalog zones dns",
+      "preset": "red",
+      "expected": [9432],
+      "confidence": "high"
+    },
+    {
+      "query": "CBOR",
+      "preset": "red",
+      "expected": [8949],
+      "confidence": "high"
+    },
+    {
+      "query": "cbor object signing",
+      "preset": "red",
+      "expected": [9052],
+      "confidence": "medium"
+    },
+    {
+      "query": "CBOR Object Signing and Encryption",
+      "preset": "red",
+      "expected": [9052, 9053],
+      "confidence": "high"
+    },
+    {
+      "query": "cbor rfc number",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["cbor"]
+      },
+      "expected": [8949],
+      "confidence": "high"
+    },
+    {
+      "query": "CBOR sequences",
+      "preset": "red",
+      "expected": [8742],
+      "confidence": "high"
+    },
+    {
+      "query": "CBOR Web Token",
+      "preset": "red",
+      "expected": [8392],
+      "confidence": "high"
+    },
+    {
+      "query": "cbor web token claims",
+      "preset": "red",
+      "expected": [8392],
+      "confidence": "medium"
+    },
+    {
+      "query": "CCM in IPsec ESP",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["ipsecme"]
+      },
+      "expected": [4309],
+      "confidence": "medium"
+    },
+    {
+      "query": "CDDL",
+      "preset": "red",
+      "expected": [8610],
+      "confidence": "high"
+    },
+    {
+      "query": "cddl control operators",
+      "preset": "red",
+      "expected": [9165],
+      "confidence": "medium"
+    },
+    {
+      "query": "certifcate transparency",
+      "preset": "red",
+      "expected": [9162],
+      "confidence": "medium"
+    },
+    {
+      "query": "certificate management over CMS",
+      "preset": "red",
+      "expected": [5272],
+      "confidence": "high"
+    },
+    {
+      "query": "certificate management protocol",
+      "preset": "red",
+      "expected": [4210],
+      "confidence": "medium"
+    },
+    {
+      "query": "certificate policy and practice statement framework",
+      "preset": "red",
+      "expected": [3647],
+      "confidence": "high"
+    },
+    {
+      "query": "certificate revocation list format",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "certificate transparency",
+      "preset": "red",
+      "expected": [6962, 9162],
+      "confidence": "high"
+    },
+    {
+      "query": "certificate transparency version 2",
+      "preset": "red",
+      "expected": [9162],
+      "confidence": "high"
+    },
+    {
+      "query": "certification authority authorization",
+      "preset": "red",
+      "expected": [8659],
+      "confidence": "high"
+    },
+    {
+      "query": "chacha20 poly1305 aead",
+      "preset": "red",
+      "expected": [8439],
+      "confidence": "high"
+    },
+    {
+      "query": "chacha20 poly1305 cipher suites tls",
+      "preset": "red",
+      "expected": [7905],
+      "confidence": "high"
+    },
+    {
+      "query": "chacha20-poly1305",
+      "preset": "red",
+      "expected": [8439],
+      "confidence": "high"
+    },
+    {
+      "query": "charset registration",
+      "preset": "red",
+      "expected": [2978],
+      "confidence": "high"
+    },
+    {
+      "query": "child to parent synchronization dns",
+      "preset": "red",
+      "expected": [7477],
+      "confidence": "high"
+    },
+    {
+      "query": "cid content-id URL scheme",
+      "preset": "red",
+      "expected": [2392],
+      "confidence": "medium"
+    },
+    {
+      "query": "cidr",
+      "preset": "red",
+      "expected": [4632],
+      "confidence": "medium"
+    },
+    {
+      "query": "classless inter-domain routing",
+      "preset": "red",
+      "expected": [4632],
+      "confidence": "medium"
+    },
+    {
+      "query": "cmac message authentication code",
+      "preset": "red",
+      "expected": [4493],
+      "confidence": "medium"
+    },
+    {
+      "query": "CMC protocol",
+      "preset": "red",
+      "expected": [5272],
+      "confidence": "medium"
+    },
+    {
+      "query": "CMP",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["lamps"]
+      },
+      "expected": [4210],
+      "confidence": "medium"
+    },
+    {
+      "query": "CoAP",
+      "preset": "red",
+      "expected": [7252],
+      "confidence": "high"
+    },
+    {
+      "query": "CoAP block-wise transfer",
+      "preset": "red",
+      "expected": [7959],
+      "confidence": "high"
+    },
+    {
+      "query": "coap blockwise",
+      "preset": "red",
+      "expected": [7959],
+      "confidence": "high"
+    },
+    {
+      "query": "CoAP observation option",
+      "preset": "red",
+      "expected": [7641],
+      "confidence": "high"
+    },
+    {
+      "query": "CoAP observe",
+      "preset": "red",
+      "expected": [7641],
+      "confidence": "high"
+    },
+    {
+      "query": "CoAP over TCP",
+      "preset": "red",
+      "expected": [8323],
+      "confidence": "high"
+    },
+    {
+      "query": "coap over websockets",
+      "preset": "red",
+      "expected": [8323],
+      "confidence": "high"
+    },
+    {
+      "query": "coap resource directory",
+      "preset": "red",
+      "expected": [9176],
+      "confidence": "medium"
+    },
+    {
+      "query": "CoAP RFC",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["core"]
+      },
+      "expected": [7252],
+      "confidence": "high"
+    },
+    {
+      "query": "coexistence between SNMP versions",
+      "preset": "red",
+      "expected": [3584],
+      "confidence": "high"
+    },
+    {
+      "query": "coffee machine internet protocol joke",
+      "preset": "red",
+      "expected": [2324],
+      "confidence": "medium"
+    },
+    {
+      "query": "coffee pot protocol",
+      "preset": "red",
+      "expected": [2324],
+      "confidence": "high"
+    },
+    {
+      "query": "common misconfigurations in dns",
+      "preset": "red",
+      "expected": [1912],
+      "confidence": "medium"
+    },
+    {
+      "query": "community-based SNMPv2",
+      "preset": "red",
+      "expected": [1901],
+      "confidence": "high"
+    },
+    {
+      "query": "compatible version negotiation for quic",
+      "preset": "red",
+      "expected": [9368],
+      "confidence": "high"
+    },
+    {
+      "query": "compression format for ipv6 over 6lowpan",
+      "preset": "red",
+      "expected": [6282],
+      "confidence": "medium"
+    },
+    {
+      "query": "computing tcp's retransmission timer",
+      "preset": "red",
+      "expected": [6298],
+      "confidence": "high"
+    },
+    {
+      "query": "concise binary object representation",
+      "preset": "red",
+      "expected": [8949],
+      "confidence": "high"
+    },
+    {
+      "query": "concise data definition language",
+      "preset": "red",
+      "expected": [8610],
+      "confidence": "high"
+    },
+    {
+      "query": "conformance statements SMIv2",
+      "preset": "red",
+      "expected": [2580],
+      "confidence": "high"
+    },
+    {
+      "query": "congestion avoidance tcp",
+      "preset": "red",
+      "expected": [5681],
+      "confidence": "high"
+    },
+    {
+      "query": "congestion control principles",
+      "preset": "red",
+      "expected": [2914],
+      "confidence": "high"
+    },
+    {
+      "query": "congestion exposure ConEx",
+      "preset": "red",
+      "expected": [7713],
+      "confidence": "high"
+    },
+    {
+      "query": "conjestion control tcp",
+      "preset": "red",
+      "expected": [5681],
+      "confidence": "medium",
+      "note": "misspelling of congestion"
+    },
+    {
+      "query": "constrained application protocal",
+      "preset": "red",
+      "expected": [7252],
+      "confidence": "high",
+      "note": "common misspelling of protocol"
+    },
+    {
+      "query": "constrained application protocol",
+      "preset": "red",
+      "expected": [7252],
+      "confidence": "high"
+    },
+    {
+      "query": "constrained cbor binary format",
+      "preset": "red",
+      "expected": [8949],
+      "confidence": "medium"
+    },
+    {
+      "query": "constrained node networks terminology",
+      "preset": "red",
+      "expected": [7228],
+      "confidence": "high"
+    },
+    {
+      "query": "content-disposition header",
+      "preset": "red",
+      "expected": [6266],
+      "confidence": "high"
+    },
+    {
+      "query": "content-disposition header email",
+      "preset": "red",
+      "expected": [2183],
+      "confidence": "high"
+    },
+    {
+      "query": "controlled delay active queue management",
+      "preset": "red",
+      "expected": [8289],
+      "confidence": "high"
+    },
+    {
+      "query": "copyright rights contributors provide ietf",
+      "preset": "red",
+      "expected": [5378],
+      "confidence": "high"
+    },
+    {
+      "query": "CoRE link format",
+      "preset": "red",
+      "expected": [6690],
+      "confidence": "high"
+    },
+    {
+      "query": "COSE",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["cose"]
+      },
+      "expected": [9052],
+      "confidence": "medium"
+    },
+    {
+      "query": "COSE",
+      "preset": "red",
+      "expected": [9052],
+      "confidence": "medium"
+    },
+    {
+      "query": "cose algorithms",
+      "preset": "red",
+      "expected": [9053],
+      "confidence": "medium"
+    },
+    {
+      "query": "cose key",
+      "preset": "red",
+      "expected": [9052],
+      "confidence": "medium"
+    },
+    {
+      "query": "coupled congestion control for MPTCP",
+      "preset": "red",
+      "expected": [6356],
+      "confidence": "high"
+    },
+    {
+      "query": "CPS framework",
+      "preset": "red",
+      "expected": [3647],
+      "confidence": "medium"
+    },
+    {
+      "query": "crl profile",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "cryptographic suites for IPsec",
+      "preset": "red",
+      "expected": [4308],
+      "confidence": "high"
+    },
+    {
+      "query": "CUBIC congestion control",
+      "preset": "red",
+      "expected": [9438],
+      "confidence": "high"
+    },
+    {
+      "query": "cubic for fast long-distance networks",
+      "preset": "red",
+      "expected": [9438],
+      "confidence": "high"
+    },
+    {
+      "query": "cubic tcp",
+      "preset": "red",
+      "expected": [9438],
+      "confidence": "high"
+    },
+    {
+      "query": "CWT",
+      "preset": "red",
+      "expected": [8392],
+      "confidence": "high"
+    },
+    {
+      "query": "cwt cose",
+      "preset": "red",
+      "expected": [8392],
+      "confidence": "medium"
+    },
+    {
+      "query": "dane tlsa dns based authentication",
+      "preset": "red",
+      "expected": [6698],
+      "confidence": "high"
+    },
+    {
+      "query": "DANE TLSA record",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dane"]
+      },
+      "expected": [6698],
+      "confidence": "high"
+    },
+    {
+      "query": "data center TCP",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Informational"]
+      },
+      "expected": [8257],
+      "confidence": "high"
+    },
+    {
+      "query": "data encodings base16 base32 base64",
+      "preset": "red",
+      "expected": [4648],
+      "confidence": "high"
+    },
+    {
+      "query": "data URL scheme",
+      "preset": "red",
+      "expected": [2397],
+      "confidence": "high"
+    },
+    {
+      "query": "data: URI",
+      "preset": "red",
+      "expected": [2397],
+      "confidence": "high"
+    },
+    {
+      "query": "datagram extension quic",
+      "preset": "red",
+      "expected": [9221],
+      "confidence": "medium"
+    },
+    {
+      "query": "datagram transport layer security",
+      "preset": "red",
+      "expected": [6347],
+      "confidence": "high"
+    },
+    {
+      "query": "DCTCP",
+      "preset": "red",
+      "expected": [8257],
+      "confidence": "high"
+    },
+    {
+      "query": "default address selection IPv6",
+      "preset": "red",
+      "expected": [6724],
+      "confidence": "high"
+    },
+    {
+      "query": "delay based congestion control background transfer",
+      "preset": "red",
+      "expected": [6817],
+      "confidence": "medium"
+    },
+    {
+      "query": "delegated credentials for tls",
+      "preset": "red",
+      "expected": [9345],
+      "confidence": "medium"
+    },
+    {
+      "query": "delivery status notification",
+      "preset": "red",
+      "expected": [3464],
+      "confidence": "high"
+    },
+    {
+      "query": "demonstrating proof of possession oauth",
+      "preset": "red",
+      "expected": [9449],
+      "confidence": "high"
+    },
+    {
+      "query": "deprecating SSLv3",
+      "preset": "red",
+      "expected": [7568],
+      "confidence": "high"
+    },
+    {
+      "query": "deprecating TLS 1.0 and TLS 1.1",
+      "preset": "red",
+      "expected": [8996],
+      "confidence": "high"
+    },
+    {
+      "query": "deterministic ecdsa",
+      "preset": "red",
+      "expected": [6979],
+      "confidence": "high"
+    },
+    {
+      "query": "deterministic networking",
+      "preset": "red",
+      "expected": [8655],
+      "confidence": "high"
+    },
+    {
+      "query": "DetNet architecture",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Informational"]
+      },
+      "expected": [8655],
+      "confidence": "high"
+    },
+    {
+      "query": "device code flow smart tv login",
+      "preset": "red",
+      "expected": [8628],
+      "confidence": "medium"
+    },
+    {
+      "query": "DHCP options",
+      "preset": "red",
+      "expected": [2132],
+      "confidence": "high"
+    },
+    {
+      "query": "dhcp rapid commit option",
+      "preset": "red",
+      "expected": [4039],
+      "confidence": "medium"
+    },
+    {
+      "query": "dhcp relay agent information option",
+      "preset": "red",
+      "expected": [3046],
+      "confidence": "medium"
+    },
+    {
+      "query": "dhcp vendor extensions",
+      "preset": "red",
+      "expected": [2132],
+      "confidence": "medium"
+    },
+    {
+      "query": "DHCPv6",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["IETF"]
+      },
+      "expected": [8415],
+      "confidence": "high"
+    },
+    {
+      "query": "DHCPv6",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dhc"]
+      },
+      "expected": [8415],
+      "confidence": "high"
+    },
+    {
+      "query": "DHCPv6 prefix delegation",
+      "preset": "red",
+      "expected": [8415],
+      "confidence": "medium"
+    },
+    {
+      "query": "diameter base protocol",
+      "preset": "red",
+      "expected": [6733],
+      "confidence": "high"
+    },
+    {
+      "query": "diameter credit control application",
+      "preset": "red",
+      "expected": [4006],
+      "confidence": "medium"
+    },
+    {
+      "query": "diameter eap application",
+      "preset": "red",
+      "expected": [4072],
+      "confidence": "medium"
+    },
+    {
+      "query": "Diameter protocol",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dime"]
+      },
+      "expected": [6733],
+      "confidence": "high"
+    },
+    {
+      "query": "difference between URL URI and URN",
+      "preset": "red",
+      "expected": [3986, 8141],
+      "confidence": "medium"
+    },
+    {
+      "query": "diffie-hellman group exchange for ssh",
+      "preset": "red",
+      "expected": [4419],
+      "confidence": "high"
+    },
+    {
+      "query": "digest access authentication",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["httpauth"]
+      },
+      "expected": [7616],
+      "confidence": "high"
+    },
+    {
+      "query": "digest access authentication",
+      "preset": "red",
+      "expected": [7616],
+      "confidence": "high"
+    },
+    {
+      "query": "digest athentication rfc",
+      "preset": "red",
+      "expected": [7616],
+      "confidence": "medium"
+    },
+    {
+      "query": "digital certificate standard for internet",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "medium"
+    },
+    {
+      "query": "dissemination of flow specification rules",
+      "preset": "red",
+      "expected": [8955],
+      "confidence": "high"
+    },
+    {
+      "query": "Distance Vector Multicast Routing Protocol",
+      "preset": "red",
+      "expected": [1075],
+      "confidence": "medium"
+    },
+    {
+      "query": "dkim",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "high"
+    },
+    {
+      "query": "dkim canonicalization relaxed simple",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "medium"
+    },
+    {
+      "query": "dkim email authentication",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "high"
+    },
+    {
+      "query": "dkim key rotation",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "medium"
+    },
+    {
+      "query": "dkim selector record",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "medium"
+    },
+    {
+      "query": "dmarc",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "high"
+    },
+    {
+      "query": "dmarc aggregate report rua",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "medium"
+    },
+    {
+      "query": "dmarc alignment spf dkim",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "medium"
+    },
+    {
+      "query": "dmarc forensic report ruf",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "medium"
+    },
+    {
+      "query": "dmarc policy reject quarantine",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "medium"
+    },
+    {
+      "query": "dmarc recird",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "medium",
+      "note": "misspelling of record"
+    },
+    {
+      "query": "dns anycast operational considerations",
+      "preset": "red",
+      "expected": [4786],
+      "confidence": "medium"
+    },
+    {
+      "query": "dns based blackhole list",
+      "preset": "red",
+      "expected": [5782],
+      "confidence": "high"
+    },
+    {
+      "query": "dns blacklist",
+      "preset": "red",
+      "expected": [5782],
+      "confidence": "high"
+    },
+    {
+      "query": "dns concepts and facilities",
+      "preset": "red",
+      "expected": [1034],
+      "confidence": "high"
+    },
+    {
+      "query": "dns cookie mechanism",
+      "preset": "red",
+      "expected": [7873],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS cookies",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [7873],
+      "confidence": "high"
+    },
+    {
+      "query": "dns cookies",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dnsop"]
+      },
+      "expected": [7873],
+      "confidence": "high"
+    },
+    {
+      "query": "dns dynamic update",
+      "preset": "red",
+      "expected": [2136],
+      "confidence": "high"
+    },
+    {
+      "query": "dns notify",
+      "preset": "red",
+      "expected": [1996],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS over HTTPS",
+      "preset": "red",
+      "expected": [8484],
+      "confidence": "high"
+    },
+    {
+      "query": "dns over https doh",
+      "preset": "red",
+      "expected": [8484],
+      "confidence": "high"
+    },
+    {
+      "query": "dns over https rfc",
+      "preset": "red",
+      "expected": [8484],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS over QUIC",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dprive"]
+      },
+      "expected": [9250],
+      "confidence": "high"
+    },
+    {
+      "query": "dns over quic",
+      "preset": "red",
+      "expected": [9250],
+      "confidence": "high"
+    },
+    {
+      "query": "dns over tcp transport",
+      "preset": "red",
+      "expected": [7766],
+      "confidence": "high"
+    },
+    {
+      "query": "dns over tls",
+      "preset": "red",
+      "expected": [7858],
+      "confidence": "high"
+    },
+    {
+      "query": "dns over tls port 853",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dprive"]
+      },
+      "expected": [7858],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS privacy considerations",
+      "preset": "red",
+      "expected": [9076],
+      "confidence": "high"
+    },
+    {
+      "query": "dns privacy problem statement",
+      "preset": "red",
+      "expected": [9076],
+      "confidence": "medium"
+    },
+    {
+      "query": "dns query name minimisation to improve privacy",
+      "preset": "red",
+      "expected": [9156],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS security extensions",
+      "preset": "red",
+      "expected": [4033],
+      "confidence": "high"
+    },
+    {
+      "query": "dns security extensions clarifications",
+      "preset": "red",
+      "expected": [4035],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS service discovery",
+      "preset": "red",
+      "expected": [6763],
+      "confidence": "high"
+    },
+    {
+      "query": "dns terminology",
+      "preset": "red",
+      "expected": [8499],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS-SD",
+      "preset": "red",
+      "expected": [6763],
+      "confidence": "high"
+    },
+    {
+      "query": "dns-sd service discovery",
+      "preset": "red",
+      "expected": [6763],
+      "confidence": "high"
+    },
+    {
+      "query": "DNS64",
+      "preset": "red",
+      "expected": [6147],
+      "confidence": "high"
+    },
+    {
+      "query": "DNSSEC algorithm implementation requirements",
+      "preset": "red",
+      "expected": [8624],
+      "confidence": "high"
+    },
+    {
+      "query": "dnssec algorithm numbers",
+      "preset": "red",
+      "expected": [8624],
+      "confidence": "medium"
+    },
+    {
+      "query": "DNSSEC clarifications and implementation notes",
+      "preset": "red",
+      "expected": [6840],
+      "confidence": "high"
+    },
+    {
+      "query": "DNSSEC introduction and requirements",
+      "preset": "red",
+      "expected": [4033],
+      "confidence": "high"
+    },
+    {
+      "query": "DNSSEC key rollover timing",
+      "preset": "red",
+      "expected": [7583],
+      "confidence": "high"
+    },
+    {
+      "query": "DNSSEC operational practices",
+      "preset": "red",
+      "expected": [6781],
+      "confidence": "high"
+    },
+    {
+      "query": "DNSSEC protocol modifications",
+      "preset": "red",
+      "expected": [4035],
+      "confidence": "high"
+    },
+    {
+      "query": "dnssec resource records",
+      "preset": "red",
+      "expected": [4034],
+      "confidence": "high"
+    },
+    {
+      "query": "DNSSEC trust anchor",
+      "preset": "red",
+      "expected": [5011],
+      "confidence": "high"
+    },
+    {
+      "query": "DoH",
+      "preset": "red",
+      "expected": [8484],
+      "confidence": "high"
+    },
+    {
+      "query": "domain keys identified mail",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "high"
+    },
+    {
+      "query": "domain name system structure and delegation",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [1591],
+      "confidence": "high"
+    },
+    {
+      "query": "domain names implementation and specification",
+      "preset": "red",
+      "expected": [1035],
+      "confidence": "high"
+    },
+    {
+      "query": "domain-based message authentication reporting and conformance",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "high"
+    },
+    {
+      "query": "domainkeys",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Informational"]
+      },
+      "expected": [4870],
+      "confidence": "medium"
+    },
+    {
+      "query": "domainkeys identified mail signatures",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dkim"]
+      },
+      "expected": [6376],
+      "confidence": "high"
+    },
+    {
+      "query": "dpop",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["oauth"]
+      },
+      "expected": [9449],
+      "confidence": "high"
+    },
+    {
+      "query": "DS record sha-256",
+      "preset": "red",
+      "expected": [4509],
+      "confidence": "high"
+    },
+    {
+      "query": "DTLS 1.3",
+      "preset": "red",
+      "expected": [9147],
+      "confidence": "high"
+    },
+    {
+      "query": "dtls over sctp",
+      "preset": "red",
+      "expected": [6083],
+      "confidence": "high"
+    },
+    {
+      "query": "DTLS-SRTP",
+      "preset": "red",
+      "expected": [5764],
+      "confidence": "medium"
+    },
+    {
+      "query": "dtls-srtp key transport",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tls"]
+      },
+      "expected": [5764],
+      "confidence": "high"
+    },
+    {
+      "query": "dual queue coupled AQM",
+      "preset": "red",
+      "expected": [9332],
+      "confidence": "high"
+    },
+    {
+      "query": "duplicate address detection",
+      "preset": "red",
+      "expected": [4862],
+      "confidence": "medium"
+    },
+    {
+      "query": "duplicate sack",
+      "preset": "red",
+      "expected": [2883],
+      "confidence": "high"
+    },
+    {
+      "query": "dynamic host configuration protocol",
+      "preset": "red",
+      "expected": [2131],
+      "confidence": "high"
+    },
+    {
+      "query": "dynamic host configuration protocol for ipv6",
+      "preset": "red",
+      "expected": [8415],
+      "confidence": "high"
+    },
+    {
+      "query": "dynamic subscriptions netconf",
+      "preset": "red",
+      "expected": [8640],
+      "confidence": "high"
+    },
+    {
+      "query": "dynamic updates in the domain name system",
+      "preset": "red",
+      "expected": [2136],
+      "confidence": "high"
+    },
+    {
+      "query": "early hints",
+      "preset": "red",
+      "expected": [8297],
+      "confidence": "high"
+    },
+    {
+      "query": "ECDSA for DNSSEC",
+      "preset": "red",
+      "expected": [6605],
+      "confidence": "high"
+    },
+    {
+      "query": "ecn",
+      "preset": "red",
+      "expected": [3168],
+      "confidence": "high"
+    },
+    {
+      "query": "ECN for RTP over UDP",
+      "preset": "red",
+      "expected": [6679],
+      "confidence": "high"
+    },
+    {
+      "query": "ecn quic",
+      "preset": "red",
+      "expected": [9002],
+      "confidence": "medium"
+    },
+    {
+      "query": "ecn tcp ip",
+      "preset": "red",
+      "expected": [3168],
+      "confidence": "high"
+    },
+    {
+      "query": "EdDSA",
+      "preset": "red",
+      "expected": [8032],
+      "confidence": "high"
+    },
+    {
+      "query": "EdDSA DNSSEC Ed25519",
+      "preset": "red",
+      "expected": [8080],
+      "confidence": "high"
+    },
+    {
+      "query": "EdDSA jose",
+      "preset": "red",
+      "expected": [8037],
+      "confidence": "high"
+    },
+    {
+      "query": "EDHOC",
+      "preset": "red",
+      "expected": [9528],
+      "confidence": "medium"
+    },
+    {
+      "query": "edns client subnet",
+      "preset": "red",
+      "expected": [7871],
+      "confidence": "high"
+    },
+    {
+      "query": "edwards curve digital signature algorithm",
+      "preset": "red",
+      "expected": [8032],
+      "confidence": "high"
+    },
+    {
+      "query": "electricity over ip",
+      "preset": "red",
+      "expected": [3251],
+      "confidence": "medium"
+    },
+    {
+      "query": "elliptic curve cryptography extensions tls",
+      "preset": "red",
+      "expected": [8422],
+      "confidence": "high"
+    },
+    {
+      "query": "elliptic curve cryptography for ssh",
+      "preset": "red",
+      "expected": [5656],
+      "confidence": "medium"
+    },
+    {
+      "query": "elliptic curve cryptography subject public key info",
+      "preset": "red",
+      "expected": [5480],
+      "confidence": "high"
+    },
+    {
+      "query": "email header auth results spf dkim pass",
+      "preset": "red",
+      "expected": [8601],
+      "confidence": "medium"
+    },
+    {
+      "query": "email message format",
+      "preset": "red",
+      "expected": [5322],
+      "confidence": "high"
+    },
+    {
+      "query": "email submission agent",
+      "preset": "red",
+      "expected": [6409],
+      "confidence": "high"
+    },
+    {
+      "query": "embedded rendezvous point IPv6 multicast",
+      "preset": "red",
+      "expected": [3956],
+      "confidence": "medium"
+    },
+    {
+      "query": "embedded RP",
+      "preset": "red",
+      "expected": [3956],
+      "confidence": "high"
+    },
+    {
+      "query": "embedded RP IPv6 multicast",
+      "preset": "red",
+      "expected": [3956],
+      "confidence": "medium"
+    },
+    {
+      "query": "Encapsulating Security Payload",
+      "preset": "red",
+      "expected": [4303],
+      "confidence": "high"
+    },
+    {
+      "query": "enhanced mail system status codes",
+      "preset": "red",
+      "expected": [3463],
+      "confidence": "high"
+    },
+    {
+      "query": "ephemeral diffie-hellman over cose",
+      "preset": "red",
+      "expected": [9528],
+      "confidence": "medium"
+    },
+    {
+      "query": "ESP header",
+      "preset": "red",
+      "expected": [4303],
+      "confidence": "high"
+    },
+    {
+      "query": "ESP protocol",
+      "preset": "red",
+      "expected": [4303],
+      "confidence": "high"
+    },
+    {
+      "query": "est certificate enrollment",
+      "preset": "red",
+      "expected": [7030],
+      "confidence": "medium"
+    },
+    {
+      "query": "EST enrollment over secure transport",
+      "preset": "red",
+      "expected": [7030],
+      "confidence": "high"
+    },
+    {
+      "query": "etymology of foo",
+      "preset": "red",
+      "expected": [3092],
+      "confidence": "medium"
+    },
+    {
+      "query": "expert review iana",
+      "preset": "red",
+      "expected": [8126],
+      "confidence": "medium"
+    },
+    {
+      "query": "explicit congestion notification",
+      "preset": "red",
+      "expected": [3168],
+      "confidence": "high"
+    },
+    {
+      "query": "explicit congestion notification",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [3168],
+      "confidence": "high"
+    },
+    {
+      "query": "explicit congestion notification quic",
+      "preset": "red",
+      "expected": [9002],
+      "confidence": "medium"
+    },
+    {
+      "query": "extended dns error codes",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dnsop"]
+      },
+      "expected": [8914],
+      "confidence": "high"
+    },
+    {
+      "query": "extended master secret tls",
+      "preset": "red",
+      "expected": [7627],
+      "confidence": "high"
+    },
+    {
+      "query": "extensible messaging and presence protocol",
+      "preset": "red",
+      "expected": [6120],
+      "confidence": "high"
+    },
+    {
+      "query": "extensible prioritization scheme",
+      "preset": "red",
+      "expected": [9218],
+      "confidence": "medium"
+    },
+    {
+      "query": "extension mechanisms for dns",
+      "preset": "red",
+      "expected": [6891],
+      "confidence": "high"
+    },
+    {
+      "query": "F-RTO algorithm",
+      "preset": "red",
+      "expected": [5682],
+      "confidence": "high"
+    },
+    {
+      "query": "file transfer protocol",
+      "preset": "red",
+      "expected": [959],
+      "confidence": "high"
+    },
+    {
+      "query": "file URI scheme",
+      "preset": "red",
+      "expected": [8089],
+      "confidence": "high"
+    },
+    {
+      "query": "file:// url format",
+      "preset": "red",
+      "expected": [8089],
+      "confidence": "medium"
+    },
+    {
+      "query": "flow queue codel scheduler",
+      "preset": "red",
+      "expected": [8290],
+      "confidence": "high"
+    },
+    {
+      "query": "flow specification rules bgp",
+      "preset": "red",
+      "expected": [8955],
+      "confidence": "high"
+    },
+    {
+      "query": "forward RTO recovery",
+      "preset": "red",
+      "expected": [5682],
+      "confidence": "high"
+    },
+    {
+      "query": "forwarded http header",
+      "preset": "red",
+      "expected": [7239],
+      "confidence": "high"
+    },
+    {
+      "query": "FQ-CoDel",
+      "preset": "red",
+      "expected": [8290],
+      "confidence": "high"
+    },
+    {
+      "query": "ftp extensions for ipv6",
+      "preset": "red",
+      "expected": [2428],
+      "confidence": "medium"
+    },
+    {
+      "query": "ftp feature negotiation mechanism",
+      "preset": "red",
+      "expected": [2389],
+      "confidence": "medium"
+    },
+    {
+      "query": "ftp security extensions",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [2228],
+      "confidence": "high"
+    },
+    {
+      "query": "ftp URL scheme",
+      "preset": "red",
+      "expected": [1738],
+      "confidence": "medium"
+    },
+    {
+      "query": "full zone transfer dns",
+      "preset": "red",
+      "expected": [5936],
+      "confidence": "medium"
+    },
+    {
+      "query": "GCM in IPsec ESP",
+      "preset": "red",
+      "expected": [4106],
+      "confidence": "medium"
+    },
+    {
+      "query": "generic security service application programming interface",
+      "preset": "red",
+      "expected": [2743],
+      "confidence": "high"
+    },
+    {
+      "query": "geo URI scheme",
+      "preset": "red",
+      "expected": [5870],
+      "confidence": "medium"
+    },
+    {
+      "query": "GLOP addressing",
+      "preset": "red",
+      "expected": [3180],
+      "confidence": "medium"
+    },
+    {
+      "query": "GMAC",
+      "preset": "red",
+      "expected": [4543],
+      "confidence": "medium"
+    },
+    {
+      "query": "google congestion control webrtc",
+      "preset": "red",
+      "expected": [8836],
+      "confidence": "medium"
+    },
+    {
+      "query": "GOST algorithm DNSSEC",
+      "preset": "red",
+      "expected": [5933],
+      "confidence": "medium"
+    },
+    {
+      "query": "grease the quic bit",
+      "preset": "red",
+      "expected": [9287],
+      "confidence": "medium"
+    },
+    {
+      "query": "group communication for coap",
+      "preset": "red",
+      "expected": [7390],
+      "confidence": "medium"
+    },
+    {
+      "query": "gssapi authentication for ssh",
+      "preset": "red",
+      "expected": [4462],
+      "confidence": "medium"
+    },
+    {
+      "query": "gssapi sasl mechanism",
+      "preset": "red",
+      "expected": [4752],
+      "confidence": "medium"
+    },
+    {
+      "query": "guidelines for new URL schemes",
+      "preset": "red",
+      "expected": [7595],
+      "confidence": "high"
+    },
+    {
+      "query": "happy eyeballs",
+      "preset": "red",
+      "expected": [8305],
+      "confidence": "high"
+    },
+    {
+      "query": "hash-based message authentication code",
+      "preset": "red",
+      "expected": [2104],
+      "confidence": "high"
+    },
+    {
+      "query": "hashed authenticated denial of existence",
+      "preset": "red",
+      "expected": [5155],
+      "confidence": "high"
+    },
+    {
+      "query": "header compression http3",
+      "preset": "red",
+      "expected": [9204],
+      "confidence": "medium"
+    },
+    {
+      "query": "HighSpeed TCP",
+      "preset": "red",
+      "expected": [3649],
+      "confidence": "high"
+    },
+    {
+      "query": "HKDF",
+      "preset": "red",
+      "expected": [5869],
+      "confidence": "high"
+    },
+    {
+      "query": "hkdf key derivation function",
+      "preset": "red",
+      "expected": [5869],
+      "confidence": "high"
+    },
+    {
+      "query": "HMAC",
+      "preset": "red",
+      "expected": [2104],
+      "confidence": "high"
+    },
+    {
+      "query": "HMAC-SHA IPsec",
+      "preset": "red",
+      "expected": [4868],
+      "confidence": "medium"
+    },
+    {
+      "query": "hmac-sha256",
+      "preset": "red",
+      "expected": [2104],
+      "confidence": "medium"
+    },
+    {
+      "query": "host extensions for IP multicasting",
+      "preset": "red",
+      "expected": [1112],
+      "confidence": "high"
+    },
+    {
+      "query": "host requirements rfc",
+      "preset": "red",
+      "expected": [1122],
+      "confidence": "high"
+    },
+    {
+      "query": "how does IKEv2 work",
+      "preset": "red",
+      "expected": [7296],
+      "confidence": "medium"
+    },
+    {
+      "query": "how to decode a jwt",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "medium"
+    },
+    {
+      "query": "how to punycode encode a domain name",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "medium"
+    },
+    {
+      "query": "how to write iana considerations",
+      "preset": "red",
+      "expected": [8126],
+      "confidence": "high"
+    },
+    {
+      "query": "hpack header compression",
+      "preset": "red",
+      "expected": [7541],
+      "confidence": "high"
+    },
+    {
+      "query": "hsts",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["websec"]
+      },
+      "expected": [6797],
+      "confidence": "high"
+    },
+    {
+      "query": "htcpcp",
+      "preset": "red",
+      "expected": [2324],
+      "confidence": "high"
+    },
+    {
+      "query": "htcpcp-tea",
+      "preset": "red",
+      "expected": [7168],
+      "confidence": "medium"
+    },
+    {
+      "query": "http alt-svc",
+      "preset": "red",
+      "expected": [7838],
+      "confidence": "high"
+    },
+    {
+      "query": "http authentication framework",
+      "preset": "red",
+      "expected": [9110],
+      "confidence": "medium"
+    },
+    {
+      "query": "http basic authentication",
+      "preset": "red",
+      "expected": [7617],
+      "confidence": "high"
+    },
+    {
+      "query": "http caching",
+      "preset": "red",
+      "expected": [9111],
+      "confidence": "high"
+    },
+    {
+      "query": "http cookie",
+      "preset": "red",
+      "expected": [6265],
+      "confidence": "high"
+    },
+    {
+      "query": "http datagram capsule",
+      "preset": "red",
+      "expected": [9297],
+      "confidence": "high"
+    },
+    {
+      "query": "http datagrams",
+      "preset": "red",
+      "expected": [9297],
+      "confidence": "high"
+    },
+    {
+      "query": "http digest authentication",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["httpauth"]
+      },
+      "expected": [7616],
+      "confidence": "high"
+    },
+    {
+      "query": "http methods",
+      "preset": "red",
+      "expected": [9110],
+      "confidence": "medium"
+    },
+    {
+      "query": "http over quic",
+      "preset": "red",
+      "expected": [9114],
+      "confidence": "high"
+    },
+    {
+      "query": "http persistent connections",
+      "preset": "red",
+      "expected": [9112],
+      "confidence": "medium"
+    },
+    {
+      "query": "http priority",
+      "preset": "red",
+      "expected": [9218],
+      "confidence": "medium"
+    },
+    {
+      "query": "http problem json content type",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["httpapi"]
+      },
+      "expected": [9457],
+      "confidence": "medium"
+    },
+    {
+      "query": "http public key pinning hpkp",
+      "preset": "red",
+      "expected": [7469],
+      "confidence": "high"
+    },
+    {
+      "query": "http semantics",
+      "preset": "red",
+      "expected": [9110],
+      "confidence": "high"
+    },
+    {
+      "query": "http std 97",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [9110],
+      "confidence": "medium"
+    },
+    {
+      "query": "http strict transport security",
+      "preset": "red",
+      "expected": [6797],
+      "confidence": "high"
+    },
+    {
+      "query": "http/1.1",
+      "preset": "red",
+      "expected": [9112],
+      "confidence": "high"
+    },
+    {
+      "query": "http/2",
+      "preset": "red",
+      "expected": [9113],
+      "confidence": "high"
+    },
+    {
+      "query": "http/3",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["httpbis"]
+      },
+      "expected": [9114],
+      "confidence": "high"
+    },
+    {
+      "query": "http/3",
+      "preset": "red",
+      "expected": [9114],
+      "confidence": "high"
+    },
+    {
+      "query": "https resource record dns",
+      "preset": "red",
+      "expected": [9460],
+      "confidence": "high"
+    },
+    {
+      "query": "htttp caching",
+      "preset": "red",
+      "expected": [9111],
+      "confidence": "medium"
+    },
+    {
+      "query": "hyper text coffee pot control protocol",
+      "preset": "red",
+      "expected": [2324],
+      "confidence": "high"
+    },
+    {
+      "query": "i-json internet json",
+      "preset": "red",
+      "expected": [7493],
+      "confidence": "medium"
+    },
+    {
+      "query": "IANA charset registration procedures",
+      "preset": "red",
+      "expected": [2978],
+      "confidence": "high"
+    },
+    {
+      "query": "iana considerations guidelines",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [8126],
+      "confidence": "high"
+    },
+    {
+      "query": "iana considerations section",
+      "preset": "red",
+      "expected": [8126],
+      "confidence": "high"
+    },
+    {
+      "query": "iana port number assignments procedures",
+      "preset": "red",
+      "expected": [6335],
+      "confidence": "medium"
+    },
+    {
+      "query": "iana registration policies",
+      "preset": "red",
+      "expected": [8126],
+      "confidence": "high"
+    },
+    {
+      "query": "ICE nat traversal",
+      "preset": "red",
+      "expected": [8445],
+      "confidence": "medium"
+    },
+    {
+      "query": "ICE over TCP",
+      "preset": "red",
+      "expected": [6544],
+      "confidence": "medium"
+    },
+    {
+      "query": "ICE protocol",
+      "preset": "red",
+      "expected": [8445],
+      "confidence": "high"
+    },
+    {
+      "query": "ICMP for IPv6",
+      "preset": "red",
+      "expected": [4443],
+      "confidence": "high"
+    },
+    {
+      "query": "ICMPv6",
+      "preset": "red",
+      "expected": [4443],
+      "confidence": "high"
+    },
+    {
+      "query": "IDNA",
+      "preset": "red",
+      "expected": [5890],
+      "confidence": "high",
+      "note": "IDNA2008 definitions and framework"
+    },
+    {
+      "query": "idna bidi",
+      "preset": "red",
+      "expected": [5893],
+      "confidence": "medium"
+    },
+    {
+      "query": "IDNA mapping characters",
+      "preset": "red",
+      "expected": [5895],
+      "confidence": "high"
+    },
+    {
+      "query": "IDNA protocol",
+      "preset": "red",
+      "expected": [5891],
+      "confidence": "high"
+    },
+    {
+      "query": "IDNA rationale and background",
+      "preset": "red",
+      "expected": [5894],
+      "confidence": "high"
+    },
+    {
+      "query": "ietf anti-harassment procedures",
+      "preset": "red",
+      "expected": [7776],
+      "confidence": "medium"
+    },
+    {
+      "query": "ietf code of conduct",
+      "preset": "red",
+      "expected": [7154],
+      "confidence": "medium"
+    },
+    {
+      "query": "ietf ipr policy",
+      "preset": "red",
+      "expected": [8179],
+      "confidence": "high"
+    },
+    {
+      "query": "IETF standards process",
+      "preset": "red",
+      "expected": [2026],
+      "confidence": "high"
+    },
+    {
+      "query": "ietf trust legal provisions",
+      "preset": "red",
+      "expected": [5378],
+      "confidence": "high"
+    },
+    {
+      "query": "ietf working group procedures",
+      "preset": "red",
+      "expected": [2418],
+      "confidence": "high"
+    },
+    {
+      "query": "IF-MIB",
+      "preset": "red",
+      "expected": [2863],
+      "confidence": "high"
+    },
+    {
+      "query": "IGMP and MLD snooping switch requirements",
+      "preset": "red",
+      "expected": [4541],
+      "confidence": "medium"
+    },
+    {
+      "query": "IGMP proxy",
+      "preset": "red",
+      "expected": [4605],
+      "confidence": "medium"
+    },
+    {
+      "query": "IGMP snooping",
+      "preset": "red",
+      "expected": [4541],
+      "confidence": "medium"
+    },
+    {
+      "query": "igmp working group",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["pim"]
+      },
+      "expected": [3376],
+      "confidence": "medium"
+    },
+    {
+      "query": "IKEv2",
+      "preset": "red",
+      "expected": [7296],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 cipher suites requirements",
+      "preset": "red",
+      "expected": [8247],
+      "confidence": "medium"
+    },
+    {
+      "query": "IKEv2 extension MOBIKE",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["ipsecme"]
+      },
+      "expected": [4555],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 message fragmentation",
+      "preset": "red",
+      "expected": [7383],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 MOBIKE",
+      "preset": "red",
+      "expected": [4555],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 mobility and multihoming",
+      "preset": "red",
+      "expected": [4555],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 multiple authentication exchanges",
+      "preset": "red",
+      "expected": [4739],
+      "confidence": "medium"
+    },
+    {
+      "query": "ikev2 protocol",
+      "preset": "red",
+      "expected": [7296],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 redirect mechanism",
+      "preset": "red",
+      "expected": [5685],
+      "confidence": "high"
+    },
+    {
+      "query": "IKEv2 session resumption",
+      "preset": "red",
+      "expected": [5723],
+      "confidence": "high"
+    },
+    {
+      "query": "IMAP",
+      "preset": "red",
+      "expected": [9051],
+      "confidence": "high"
+    },
+    {
+      "query": "IMAP IDLE",
+      "preset": "red",
+      "expected": [2177],
+      "confidence": "high"
+    },
+    {
+      "query": "imap protocol RFC",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["IETF"]
+      },
+      "expected": [9051],
+      "confidence": "medium"
+    },
+    {
+      "query": "IMAP support for UTF-8",
+      "preset": "red",
+      "expected": [6855],
+      "confidence": "medium"
+    },
+    {
+      "query": "IMAP URL scheme",
+      "preset": "red",
+      "expected": [5092],
+      "confidence": "medium"
+    },
+    {
+      "query": "increasing tcp initial window",
+      "preset": "red",
+      "expected": [6928],
+      "confidence": "high"
+    },
+    {
+      "query": "incremental zone transfer",
+      "preset": "red",
+      "expected": [1995],
+      "confidence": "high"
+    },
+    {
+      "query": "infinite monkey protocol",
+      "preset": "red",
+      "expected": [2795],
+      "confidence": "medium"
+    },
+    {
+      "query": "informational vs standards track",
+      "preset": "red",
+      "expected": [2026],
+      "confidence": "high"
+    },
+    {
+      "query": "initial congestion window rfc",
+      "preset": "red",
+      "expected": [6928],
+      "confidence": "medium"
+    },
+    {
+      "query": "intellectual property rights ietf",
+      "preset": "red",
+      "expected": [8179],
+      "confidence": "high"
+    },
+    {
+      "query": "Interactive Connectivity Establishment",
+      "preset": "red",
+      "expected": [8445],
+      "confidence": "high"
+    },
+    {
+      "query": "interfaces MIB",
+      "preset": "red",
+      "expected": [2863],
+      "confidence": "high"
+    },
+    {
+      "query": "intermediate system to intermediate system routing",
+      "preset": "red",
+      "expected": [1195],
+      "confidence": "high"
+    },
+    {
+      "query": "internationalisation domain name",
+      "preset": "red",
+      "expected": [5890],
+      "confidence": "medium",
+      "note": "British spelling variant"
+    },
+    {
+      "query": "internationalised resource identifiers",
+      "preset": "red",
+      "expected": [3987],
+      "confidence": "high"
+    },
+    {
+      "query": "internationalized domain names",
+      "preset": "red",
+      "expected": [5890],
+      "confidence": "high"
+    },
+    {
+      "query": "internationalized email headers",
+      "preset": "red",
+      "expected": [6532],
+      "confidence": "high"
+    },
+    {
+      "query": "internationalized strings framework preparation enforcement comparison",
+      "preset": "red",
+      "expected": [8264],
+      "confidence": "high"
+    },
+    {
+      "query": "internationalizing domain names in applications",
+      "preset": "red",
+      "expected": [3490],
+      "confidence": "high",
+      "note": "original IDNA2003 spec"
+    },
+    {
+      "query": "internet contorl message protocol",
+      "preset": "red",
+      "expected": [792],
+      "confidence": "medium"
+    },
+    {
+      "query": "internet control message protocol",
+      "preset": "red",
+      "expected": [792],
+      "confidence": "high"
+    },
+    {
+      "query": "internet group management protocol",
+      "preset": "red",
+      "expected": [1112, 3376],
+      "confidence": "high"
+    },
+    {
+      "query": "internet key exchange",
+      "preset": "red",
+      "expected": [7296],
+      "confidence": "medium"
+    },
+    {
+      "query": "Internet Key Exchange version 2",
+      "preset": "red",
+      "expected": [7296],
+      "confidence": "high"
+    },
+    {
+      "query": "internet message access protocol",
+      "preset": "red",
+      "expected": [9051],
+      "confidence": "high"
+    },
+    {
+      "query": "internet message format",
+      "preset": "red",
+      "expected": [5322],
+      "confidence": "high"
+    },
+    {
+      "query": "internet protocol",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [791],
+      "confidence": "high"
+    },
+    {
+      "query": "internet protocol version 4",
+      "preset": "red",
+      "expected": [791],
+      "confidence": "high"
+    },
+    {
+      "query": "Internet Protocol version 6",
+      "preset": "red",
+      "expected": [8200],
+      "confidence": "high"
+    },
+    {
+      "query": "internet relay chat",
+      "preset": "red",
+      "expected": [1459],
+      "confidence": "high"
+    },
+    {
+      "query": "Internet Security Association and Key Management Protocol",
+      "preset": "red",
+      "expected": [2408],
+      "confidence": "high"
+    },
+    {
+      "query": "internet standard maturity levels",
+      "preset": "red",
+      "expected": [2026, 6410],
+      "confidence": "high"
+    },
+    {
+      "query": "internet standards process",
+      "preset": "red",
+      "expected": [2026],
+      "confidence": "high"
+    },
+    {
+      "query": "internet x.509 public key infrastructure certificate policy",
+      "preset": "red",
+      "expected": [3647],
+      "confidence": "medium"
+    },
+    {
+      "query": "ip datagrams by pigeon",
+      "preset": "red",
+      "expected": [1149],
+      "confidence": "medium"
+    },
+    {
+      "query": "ip over avian carriers",
+      "preset": "red",
+      "expected": [1149],
+      "confidence": "high"
+    },
+    {
+      "query": "IP security architecture",
+      "preset": "red",
+      "expected": [4301],
+      "confidence": "high"
+    },
+    {
+      "query": "ipsec architecture rfc",
+      "preset": "red",
+      "expected": [4301],
+      "confidence": "high"
+    },
+    {
+      "query": "ipsec architecture standard",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["IETF"]
+      },
+      "expected": [4301],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPsec extended sequence number ESN",
+      "preset": "red",
+      "expected": [4304],
+      "confidence": "medium"
+    },
+    {
+      "query": "ipsec nat traversal udp encapsulation",
+      "preset": "red",
+      "expected": [3948],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPSECKEY DNS resource record",
+      "preset": "red",
+      "expected": [4025],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6",
+      "preset": "red",
+      "expected": [8200],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 addressing architecture",
+      "preset": "red",
+      "expected": [4291],
+      "confidence": "high"
+    },
+    {
+      "query": "ipv6 adress autoconfiguration",
+      "preset": "red",
+      "expected": [4862],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 core protocol",
+      "preset": "red",
+      "expected": [8200],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 CPE router requirements",
+      "preset": "red",
+      "expected": [7084],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 extension headers",
+      "preset": "red",
+      "expected": [8200],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 flow label",
+      "preset": "red",
+      "expected": [6437],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 fragmentation",
+      "preset": "red",
+      "expected": [8200],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 jumbograms",
+      "preset": "red",
+      "expected": [2675],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 multicast address format",
+      "preset": "red",
+      "expected": [3306, 4291],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 multicast address scopes",
+      "preset": "red",
+      "expected": [7346],
+      "confidence": "medium"
+    },
+    {
+      "query": "ipv6 neighbour discovery",
+      "preset": "red",
+      "expected": [4861],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 node requirements",
+      "preset": "red",
+      "expected": [8504],
+      "confidence": "high"
+    },
+    {
+      "query": "ipv6 over avian carriers",
+      "preset": "red",
+      "expected": [6214],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 over Ethernet",
+      "preset": "red",
+      "expected": [2464],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 over Low Power WPAN",
+      "preset": "red",
+      "expected": [4944],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 over PPP",
+      "preset": "red",
+      "expected": [5072],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 privacy extensions",
+      "preset": "red",
+      "expected": [8981],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 router renumbering",
+      "preset": "red",
+      "expected": [2894],
+      "confidence": "medium"
+    },
+    {
+      "query": "ipv6 segment routing header",
+      "preset": "red",
+      "expected": [8754],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 specification",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Internet Standard"]
+      },
+      "expected": [8200],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 text representation",
+      "preset": "red",
+      "expected": [5952],
+      "confidence": "high"
+    },
+    {
+      "query": "IPv6 transition mechanisms for hosts and routers",
+      "preset": "red",
+      "expected": [4213],
+      "confidence": "medium"
+    },
+    {
+      "query": "IPv6 zone id in URI",
+      "preset": "red",
+      "expected": [6874],
+      "confidence": "medium"
+    },
+    {
+      "query": "irc architecture",
+      "preset": "red",
+      "expected": [2810],
+      "confidence": "high"
+    },
+    {
+      "query": "irc channel management",
+      "preset": "red",
+      "expected": [2811],
+      "confidence": "high"
+    },
+    {
+      "query": "irc client protocol",
+      "preset": "red",
+      "expected": [2812],
+      "confidence": "high"
+    },
+    {
+      "query": "irc server protocol",
+      "preset": "red",
+      "expected": [2813],
+      "confidence": "high"
+    },
+    {
+      "query": "IRI internationalized resource identifier",
+      "preset": "red",
+      "expected": [3987],
+      "confidence": "high"
+    },
+    {
+      "query": "IRIs for non-ASCII characters in URLs",
+      "preset": "red",
+      "expected": [3987],
+      "confidence": "medium"
+    },
+    {
+      "query": "is-is multi-topology",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["isis"]
+      },
+      "expected": [5120],
+      "confidence": "medium"
+    },
+    {
+      "query": "ISAKMP",
+      "preset": "red",
+      "expected": [2408],
+      "confidence": "high"
+    },
+    {
+      "query": "isis dual ip and osi",
+      "preset": "red",
+      "expected": [1195],
+      "confidence": "medium"
+    },
+    {
+      "query": "isis for ipv6",
+      "preset": "red",
+      "expected": [5308],
+      "confidence": "high"
+    },
+    {
+      "query": "jabber id format",
+      "preset": "red",
+      "expected": [7622],
+      "confidence": "medium"
+    },
+    {
+      "query": "JavaScript Object Notation",
+      "preset": "red",
+      "expected": [8259],
+      "confidence": "high"
+    },
+    {
+      "query": "JCS canonicalization",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["ISE"]
+      },
+      "expected": [8785],
+      "confidence": "medium"
+    },
+    {
+      "query": "JSON",
+      "preset": "red",
+      "expected": [8259],
+      "confidence": "high"
+    },
+    {
+      "query": "json canonicalization scheme",
+      "preset": "red",
+      "expected": [8785],
+      "confidence": "medium"
+    },
+    {
+      "query": "json encoding of yang data",
+      "preset": "red",
+      "expected": [7951],
+      "confidence": "medium"
+    },
+    {
+      "query": "JSON merge patch",
+      "preset": "red",
+      "expected": [7396],
+      "confidence": "high"
+    },
+    {
+      "query": "JSON Patch",
+      "preset": "red",
+      "expected": [6902],
+      "confidence": "high"
+    },
+    {
+      "query": "json patch add remove replace operations",
+      "preset": "red",
+      "expected": [6902],
+      "confidence": "medium"
+    },
+    {
+      "query": "JSON pointer",
+      "preset": "red",
+      "expected": [6901],
+      "confidence": "high"
+    },
+    {
+      "query": "json ponter",
+      "preset": "red",
+      "expected": [6901],
+      "confidence": "medium"
+    },
+    {
+      "query": "json standard",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [8259],
+      "confidence": "high"
+    },
+    {
+      "query": "json text sequences",
+      "preset": "red",
+      "expected": [7464],
+      "confidence": "medium"
+    },
+    {
+      "query": "JSON Web Algorithms",
+      "preset": "red",
+      "expected": [7518],
+      "confidence": "high"
+    },
+    {
+      "query": "JSON Web Encryption",
+      "preset": "red",
+      "expected": [7516],
+      "confidence": "high"
+    },
+    {
+      "query": "json web encryption compact serialization",
+      "preset": "red",
+      "expected": [7516],
+      "confidence": "high"
+    },
+    {
+      "query": "JSON Web Key",
+      "preset": "red",
+      "expected": [7517],
+      "confidence": "high"
+    },
+    {
+      "query": "json web key set jwks",
+      "preset": "red",
+      "expected": [7517],
+      "confidence": "high"
+    },
+    {
+      "query": "JSON Web Signature",
+      "preset": "red",
+      "expected": [7515],
+      "confidence": "high"
+    },
+    {
+      "query": "json web signature algorithms",
+      "preset": "red",
+      "expected": [7518],
+      "confidence": "medium"
+    },
+    {
+      "query": "json web signature format",
+      "preset": "red",
+      "expected": [7515],
+      "confidence": "high"
+    },
+    {
+      "query": "JSON Web Token",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "json web token claims set",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "json web token profile for oauth 2.0 access tokens",
+      "preset": "red",
+      "expected": [9068],
+      "confidence": "high"
+    },
+    {
+      "query": "json web token rfc",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "JWA",
+      "preset": "red",
+      "expected": [7518],
+      "confidence": "high"
+    },
+    {
+      "query": "jwa hmac sha256",
+      "preset": "red",
+      "expected": [7518],
+      "confidence": "medium"
+    },
+    {
+      "query": "JWA json web algorithms",
+      "preset": "red",
+      "expected": [7518],
+      "confidence": "high"
+    },
+    {
+      "query": "JWE",
+      "preset": "red",
+      "expected": [7516],
+      "confidence": "high"
+    },
+    {
+      "query": "jwe compact serialization",
+      "preset": "red",
+      "expected": [7516],
+      "confidence": "high"
+    },
+    {
+      "query": "jwe encryption algorithms",
+      "preset": "red",
+      "expected": [7518],
+      "confidence": "medium"
+    },
+    {
+      "query": "JWK",
+      "preset": "red",
+      "expected": [7517],
+      "confidence": "high"
+    },
+    {
+      "query": "JWK",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["jose"]
+      },
+      "expected": [7517],
+      "confidence": "high"
+    },
+    {
+      "query": "jwk set",
+      "preset": "red",
+      "expected": [7517],
+      "confidence": "high"
+    },
+    {
+      "query": "jwk thumbprint",
+      "preset": "red",
+      "expected": [7638],
+      "confidence": "high"
+    },
+    {
+      "query": "JWS",
+      "preset": "red",
+      "expected": [7515],
+      "confidence": "high"
+    },
+    {
+      "query": "jws json serialization",
+      "preset": "red",
+      "expected": [7515],
+      "confidence": "medium"
+    },
+    {
+      "query": "jws unencoded payload",
+      "preset": "red",
+      "expected": [7797],
+      "confidence": "high"
+    },
+    {
+      "query": "JWT",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "jwt aud claim",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "medium"
+    },
+    {
+      "query": "JWT best practices",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [8725],
+      "confidence": "high"
+    },
+    {
+      "query": "jwt claims",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "jwt expiration claim exp",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "medium"
+    },
+    {
+      "query": "jwt security best current practice",
+      "preset": "red",
+      "expected": [8725],
+      "confidence": "medium"
+    },
+    {
+      "query": "jwt signature verification",
+      "preset": "red",
+      "expected": [7515],
+      "confidence": "medium"
+    },
+    {
+      "query": "jwt spec",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "kerberos",
+      "preset": "red",
+      "expected": [4120],
+      "confidence": "high"
+    },
+    {
+      "query": "kerberos authentification",
+      "preset": "red",
+      "expected": [4120],
+      "confidence": "high"
+    },
+    {
+      "query": "kerberos network authentication service v5",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["kitten"]
+      },
+      "expected": [4120],
+      "confidence": "high"
+    },
+    {
+      "query": "kerberos pkinit",
+      "preset": "red",
+      "expected": [4556],
+      "confidence": "medium"
+    },
+    {
+      "query": "kerberos v5 gss-api mechanism",
+      "preset": "red",
+      "expected": [4121],
+      "confidence": "medium"
+    },
+    {
+      "query": "key words for use in RFCs",
+      "preset": "red",
+      "expected": [2119],
+      "confidence": "high"
+    },
+    {
+      "query": "keyed-hashing for message authentication",
+      "preset": "red",
+      "expected": [2104],
+      "confidence": "high"
+    },
+    {
+      "query": "keying material exporters for tls",
+      "preset": "red",
+      "expected": [5705],
+      "confidence": "high"
+    },
+    {
+      "query": "L2TP over IPsec",
+      "preset": "red",
+      "expected": [3193],
+      "confidence": "high"
+    },
+    {
+      "query": "L4S architecture",
+      "preset": "red",
+      "expected": [9330],
+      "confidence": "high"
+    },
+    {
+      "query": "language tag matching",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["ltru"]
+      },
+      "expected": [4647],
+      "confidence": "high"
+    },
+    {
+      "query": "language tags",
+      "preset": "red",
+      "expected": [5646],
+      "confidence": "high"
+    },
+    {
+      "query": "LDAP URL format",
+      "preset": "red",
+      "expected": [4516],
+      "confidence": "medium"
+    },
+    {
+      "query": "ldp specification",
+      "preset": "red",
+      "expected": [5036],
+      "confidence": "high"
+    },
+    {
+      "query": "LEDBAT",
+      "preset": "red",
+      "expected": [6817],
+      "confidence": "high"
+    },
+    {
+      "query": "lightweight IGMPv3",
+      "preset": "red",
+      "expected": [5790],
+      "confidence": "medium"
+    },
+    {
+      "query": "lightweight MLDv2",
+      "preset": "red",
+      "expected": [5790],
+      "confidence": "medium"
+    },
+    {
+      "query": "limited transmit tcp loss recovery",
+      "preset": "red",
+      "expected": [3042],
+      "confidence": "high"
+    },
+    {
+      "query": "list-id header",
+      "preset": "red",
+      "expected": [2919],
+      "confidence": "high"
+    },
+    {
+      "query": "local mail transfer protocol",
+      "preset": "red",
+      "expected": [2033],
+      "confidence": "high"
+    },
+    {
+      "query": "long polling http best practices",
+      "preset": "red",
+      "expected": [6202],
+      "confidence": "medium"
+    },
+    {
+      "query": "low extra delay background transport",
+      "preset": "red",
+      "expected": [6817],
+      "confidence": "high"
+    },
+    {
+      "query": "low latency low loss scalable throughput",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tsvwg"]
+      },
+      "expected": [9330],
+      "confidence": "high"
+    },
+    {
+      "query": "low power wide area network overview",
+      "preset": "red",
+      "expected": [8376],
+      "confidence": "medium"
+    },
+    {
+      "query": "LPWAN overview",
+      "preset": "red",
+      "expected": [8376],
+      "confidence": "medium"
+    },
+    {
+      "query": "MADCAP multicast address allocation",
+      "preset": "red",
+      "expected": [2730],
+      "confidence": "medium"
+    },
+    {
+      "query": "mailto link syntax",
+      "preset": "red",
+      "expected": [6068],
+      "confidence": "high"
+    },
+    {
+      "query": "mailto URI scheme",
+      "preset": "red",
+      "expected": [6068],
+      "confidence": "high"
+    },
+    {
+      "query": "mailto: subject and body parameters",
+      "preset": "red",
+      "expected": [6068],
+      "confidence": "medium"
+    },
+    {
+      "query": "matching of language tags",
+      "preset": "red",
+      "expected": [4647],
+      "confidence": "high"
+    },
+    {
+      "query": "MD5",
+      "preset": "red",
+      "expected": [1321],
+      "confidence": "high"
+    },
+    {
+      "query": "MD5 message digest algorithm",
+      "preset": "red",
+      "expected": [1321],
+      "confidence": "high"
+    },
+    {
+      "query": "media type registration procedures",
+      "preset": "red",
+      "expected": [6838],
+      "confidence": "high"
+    },
+    {
+      "query": "message digest algorithm 5",
+      "preset": "red",
+      "expected": [1321],
+      "confidence": "high"
+    },
+    {
+      "query": "message disposition notification",
+      "preset": "red",
+      "expected": [8098],
+      "confidence": "high"
+    },
+    {
+      "query": "message submission",
+      "preset": "red",
+      "expected": [6409],
+      "confidence": "high"
+    },
+    {
+      "query": "message submission agent",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["submit"]
+      },
+      "expected": [6409],
+      "confidence": "high"
+    },
+    {
+      "query": "message-id header",
+      "preset": "red",
+      "expected": [5322],
+      "confidence": "medium"
+    },
+    {
+      "query": "MIB-II",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [1213],
+      "confidence": "high"
+    },
+    {
+      "query": "mid message-id URL scheme",
+      "preset": "red",
+      "expected": [2392],
+      "confidence": "medium"
+    },
+    {
+      "query": "MIME",
+      "preset": "red",
+      "expected": [2045, 2046],
+      "confidence": "high"
+    },
+    {
+      "query": "mime charset registration",
+      "preset": "red",
+      "expected": [2978],
+      "confidence": "medium"
+    },
+    {
+      "query": "MIME conformance criteria and examples",
+      "preset": "red",
+      "expected": [2049],
+      "confidence": "high"
+    },
+    {
+      "query": "MIME media types",
+      "preset": "red",
+      "expected": [2046],
+      "confidence": "high"
+    },
+    {
+      "query": "MIME message header extensions for non-ascii text",
+      "preset": "red",
+      "expected": [2047],
+      "confidence": "high"
+    },
+    {
+      "query": "mime multipart mixed",
+      "preset": "red",
+      "expected": [2046],
+      "confidence": "medium"
+    },
+    {
+      "query": "minimum rank with hysteresis objective function",
+      "preset": "red",
+      "expected": [6719],
+      "confidence": "medium"
+    },
+    {
+      "query": "MLDv2",
+      "preset": "red",
+      "expected": [3810],
+      "confidence": "high"
+    },
+    {
+      "query": "mp-bgp multiprotocol extensions",
+      "preset": "red",
+      "expected": [4760],
+      "confidence": "high"
+    },
+    {
+      "query": "MPL multicast",
+      "preset": "red",
+      "expected": [7731],
+      "confidence": "medium"
+    },
+    {
+      "query": "mpls architecture",
+      "preset": "red",
+      "expected": [3031],
+      "confidence": "high"
+    },
+    {
+      "query": "mpls label stack encoding",
+      "preset": "red",
+      "expected": [3032],
+      "confidence": "medium"
+    },
+    {
+      "query": "MSDP",
+      "preset": "red",
+      "expected": [3618],
+      "confidence": "high"
+    },
+    {
+      "query": "msdp protocol spec",
+      "preset": "red",
+      "expected": [3618],
+      "confidence": "high"
+    },
+    {
+      "query": "mta strict transport security policy",
+      "preset": "red",
+      "expected": [8461],
+      "confidence": "medium"
+    },
+    {
+      "query": "mta-sts",
+      "preset": "red",
+      "expected": [8461],
+      "confidence": "high"
+    },
+    {
+      "query": "multicast DNS",
+      "preset": "red",
+      "expected": [6762],
+      "confidence": "high"
+    },
+    {
+      "query": "multicast dns mdns",
+      "preset": "red",
+      "expected": [6762],
+      "confidence": "high"
+    },
+    {
+      "query": "multicast dns rfc",
+      "preset": "red",
+      "expected": [6762],
+      "confidence": "high"
+    },
+    {
+      "query": "multicast listener discovery",
+      "preset": "red",
+      "expected": [3810],
+      "confidence": "high"
+    },
+    {
+      "query": "Multicast Listener Discovery for IPv6",
+      "preset": "red",
+      "expected": [2710],
+      "confidence": "medium"
+    },
+    {
+      "query": "multicast protocol for low power and lossy networks",
+      "preset": "red",
+      "expected": [7731],
+      "confidence": "medium"
+    },
+    {
+      "query": "multicast routing protocol independant multicast dense mode",
+      "preset": "red",
+      "expected": [3973],
+      "confidence": "medium"
+    },
+    {
+      "query": "Multicast Source Discovery Protocol",
+      "preset": "red",
+      "expected": [3618],
+      "confidence": "high"
+    },
+    {
+      "query": "multicast VPN BGP",
+      "preset": "red",
+      "expected": [6513],
+      "confidence": "medium"
+    },
+    {
+      "query": "multipart/report content type",
+      "preset": "red",
+      "expected": [3462],
+      "confidence": "high"
+    },
+    {
+      "query": "multipath tcp",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["mptcp"]
+      },
+      "expected": [8684],
+      "confidence": "high"
+    },
+    {
+      "query": "multipath tcp congestion control",
+      "preset": "red",
+      "expected": [6356],
+      "confidence": "high"
+    },
+    {
+      "query": "multiple certificate status stapling",
+      "preset": "red",
+      "expected": [6961],
+      "confidence": "medium"
+    },
+    {
+      "query": "multiplexing RTP and RTCP on a single port",
+      "preset": "red",
+      "expected": [5761],
+      "confidence": "medium"
+    },
+    {
+      "query": "multiprotocol label switching",
+      "preset": "red",
+      "expected": [3031],
+      "confidence": "high"
+    },
+    {
+      "query": "multipurpose internet mail extensions",
+      "preset": "red",
+      "expected": [2045],
+      "confidence": "high"
+    },
+    {
+      "query": "must-staple certificate extension",
+      "preset": "red",
+      "expected": [7633],
+      "confidence": "medium"
+    },
+    {
+      "query": "name constraints extension certificate",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "medium"
+    },
+    {
+      "query": "nameprep",
+      "preset": "red",
+      "expected": [3491],
+      "confidence": "high"
+    },
+    {
+      "query": "nameprep stringprep profile for IDN",
+      "preset": "red",
+      "expected": [3491],
+      "confidence": "high"
+    },
+    {
+      "query": "NAT traversal IPsec",
+      "preset": "red",
+      "expected": [3947],
+      "confidence": "high"
+    },
+    {
+      "query": "NAT-T",
+      "preset": "red",
+      "expected": [3947],
+      "confidence": "medium"
+    },
+    {
+      "query": "NAT64",
+      "preset": "red",
+      "expected": [6146],
+      "confidence": "high"
+    },
+    {
+      "query": "NDP IPv6",
+      "preset": "red",
+      "expected": [4861],
+      "confidence": "high"
+    },
+    {
+      "query": "negative caching dns",
+      "preset": "red",
+      "expected": [2308],
+      "confidence": "high"
+    },
+    {
+      "query": "neighbor discovery",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["6man"]
+      },
+      "expected": [4861],
+      "confidence": "high"
+    },
+    {
+      "query": "neighbor discovery optimization for low power networks",
+      "preset": "red",
+      "expected": [6775],
+      "confidence": "medium"
+    },
+    {
+      "query": "nested jwt",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "medium"
+    },
+    {
+      "query": "net-unicode definition",
+      "preset": "red",
+      "expected": [5198],
+      "confidence": "high"
+    },
+    {
+      "query": "netbios over tcp/ip",
+      "preset": "red",
+      "expected": [1001],
+      "confidence": "medium"
+    },
+    {
+      "query": "netbios session service detailed spec",
+      "preset": "red",
+      "expected": [1002],
+      "confidence": "medium"
+    },
+    {
+      "query": "NETCONF",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["netconf"]
+      },
+      "expected": [6241],
+      "confidence": "high"
+    },
+    {
+      "query": "netconf notifications",
+      "preset": "red",
+      "expected": [5277],
+      "confidence": "medium"
+    },
+    {
+      "query": "netconf over ssh",
+      "preset": "red",
+      "expected": [6242],
+      "confidence": "high"
+    },
+    {
+      "query": "netconf over tls",
+      "preset": "red",
+      "expected": [7589],
+      "confidence": "high"
+    },
+    {
+      "query": "network configuration access control model",
+      "preset": "red",
+      "expected": [8341],
+      "confidence": "high"
+    },
+    {
+      "query": "network configuration protocol",
+      "preset": "red",
+      "expected": [6241],
+      "confidence": "high"
+    },
+    {
+      "query": "network telemetry",
+      "preset": "red",
+      "expected": [9232],
+      "confidence": "medium"
+    },
+    {
+      "query": "network time protocol",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["ntp"]
+      },
+      "expected": [5905],
+      "confidence": "high"
+    },
+    {
+      "query": "network time security",
+      "preset": "red",
+      "expected": [8915],
+      "confidence": "high"
+    },
+    {
+      "query": "network truths rfc",
+      "preset": "red",
+      "expected": [1925],
+      "confidence": "high"
+    },
+    {
+      "query": "network unicode",
+      "preset": "red",
+      "expected": [5198],
+      "confidence": "medium"
+    },
+    {
+      "query": "NewReno",
+      "preset": "red",
+      "expected": [6582],
+      "confidence": "high"
+    },
+    {
+      "query": "news and nntp URI scheme",
+      "preset": "red",
+      "expected": [5538],
+      "confidence": "medium"
+    },
+    {
+      "query": "nfs",
+      "preset": "red",
+      "expected": [1813],
+      "confidence": "medium"
+    },
+    {
+      "query": "nfs version 3 protocol specification",
+      "preset": "red",
+      "expected": [1813],
+      "confidence": "high"
+    },
+    {
+      "query": "nfs version 4",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["nfsv4"]
+      },
+      "expected": [7530],
+      "confidence": "high"
+    },
+    {
+      "query": "notify slave dns zone change",
+      "preset": "red",
+      "expected": [1996],
+      "confidence": "medium"
+    },
+    {
+      "query": "novice's guide to the ietf",
+      "preset": "red",
+      "expected": [4677],
+      "confidence": "medium"
+    },
+    {
+      "query": "NTP autokey",
+      "preset": "red",
+      "expected": [5906],
+      "confidence": "medium"
+    },
+    {
+      "query": "null MX record",
+      "preset": "red",
+      "expected": [7505],
+      "confidence": "high"
+    },
+    {
+      "query": "nxdomain ttl caching",
+      "preset": "red",
+      "expected": [2308],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth 2.0 authorization framework",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["oauth"]
+      },
+      "expected": [6749],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth 2.0 rfc number",
+      "preset": "red",
+      "expected": [6749],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth 2.0 threat model",
+      "preset": "red",
+      "expected": [6819],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth access token jwt",
+      "preset": "red",
+      "expected": [9068],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth assertion framework",
+      "preset": "red",
+      "expected": [7521],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth authorization server metadata",
+      "preset": "red",
+      "expected": [8414],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth bearer token usage",
+      "preset": "red",
+      "expected": [6750],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth client credentials grant",
+      "preset": "red",
+      "expected": [6749],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth device authorization grant",
+      "preset": "red",
+      "expected": [8628],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth device flow",
+      "preset": "red",
+      "expected": [8628],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth dynamic client registration",
+      "preset": "red",
+      "expected": [7591],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth for native apps",
+      "preset": "red",
+      "expected": [8252],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth jwt bearer grant",
+      "preset": "red",
+      "expected": [7523],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth par",
+      "preset": "red",
+      "expected": [9126],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth protected resource metadata",
+      "preset": "red",
+      "expected": [9728],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth refresh token",
+      "preset": "red",
+      "expected": [6749],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth resource owner password credentials",
+      "preset": "red",
+      "expected": [6749],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth security best current practice",
+      "preset": "red",
+      "expected": [9700],
+      "confidence": "medium"
+    },
+    {
+      "query": "oauth token exchange",
+      "preset": "red",
+      "expected": [8693],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth token introspection",
+      "preset": "red",
+      "expected": [7662],
+      "confidence": "high"
+    },
+    {
+      "query": "oauth token revocation",
+      "preset": "red",
+      "expected": [7009],
+      "confidence": "high"
+    },
+    {
+      "query": "object security for constrained restful environments",
+      "preset": "red",
+      "expected": [8613],
+      "confidence": "high"
+    },
+    {
+      "query": "oblivious dns over https",
+      "preset": "red",
+      "expected": [9230],
+      "confidence": "medium"
+    },
+    {
+      "query": "observing resources in CoAP",
+      "preset": "red",
+      "expected": [7641],
+      "confidence": "high"
+    },
+    {
+      "query": "OCSP",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [6960],
+      "confidence": "high"
+    },
+    {
+      "query": "OCSP nonce extension",
+      "preset": "red",
+      "expected": [8954],
+      "confidence": "medium"
+    },
+    {
+      "query": "ocsp responder",
+      "preset": "red",
+      "expected": [6960],
+      "confidence": "high"
+    },
+    {
+      "query": "OCSP stapling",
+      "preset": "red",
+      "expected": [6066],
+      "confidence": "medium",
+      "note": "TLS status_request extension used for OCSP stapling"
+    },
+    {
+      "query": "OF0 RPL",
+      "preset": "red",
+      "expected": [6552],
+      "confidence": "medium"
+    },
+    {
+      "query": "on-demand mail relay",
+      "preset": "red",
+      "expected": [2645],
+      "confidence": "medium"
+    },
+    {
+      "query": "online certificate status protocol",
+      "preset": "red",
+      "expected": [6960],
+      "confidence": "high"
+    },
+    {
+      "query": "online certificate status protocol ocsp",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["pkix"]
+      },
+      "expected": [6960],
+      "confidence": "high"
+    },
+    {
+      "query": "OSCORE",
+      "preset": "red",
+      "expected": [8613],
+      "confidence": "high"
+    },
+    {
+      "query": "ospf",
+      "preset": "red",
+      "expected": [2328],
+      "confidence": "high"
+    },
+    {
+      "query": "ospf for ipv6",
+      "preset": "red",
+      "expected": [5340],
+      "confidence": "high"
+    },
+    {
+      "query": "ospf graceful restart",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [3623],
+      "confidence": "medium"
+    },
+    {
+      "query": "ospf not-so-stubby area",
+      "preset": "red",
+      "expected": [3101],
+      "confidence": "medium"
+    },
+    {
+      "query": "ospf nssa",
+      "preset": "red",
+      "expected": [3101],
+      "confidence": "medium"
+    },
+    {
+      "query": "ospf version 2",
+      "preset": "red",
+      "expected": [2328],
+      "confidence": "high"
+    },
+    {
+      "query": "overview of source specific multicast",
+      "preset": "red",
+      "expected": [3569],
+      "confidence": "medium"
+    },
+    {
+      "query": "packet too big message",
+      "preset": "red",
+      "expected": [4443],
+      "confidence": "medium"
+    },
+    {
+      "query": "password based key derivation function 2",
+      "preset": "red",
+      "expected": [8018],
+      "confidence": "medium"
+    },
+    {
+      "query": "patch method http",
+      "preset": "red",
+      "expected": [5789],
+      "confidence": "high"
+    },
+    {
+      "query": "path mtu discovery",
+      "preset": "red",
+      "expected": [1191],
+      "confidence": "high"
+    },
+    {
+      "query": "path MTU discovery IPv6",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["6man"]
+      },
+      "expected": [8201],
+      "confidence": "high"
+    },
+    {
+      "query": "percent encoding uri",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "PGM reliable multicast",
+      "preset": "red",
+      "expected": [3208],
+      "confidence": "medium"
+    },
+    {
+      "query": "PIE active queue management",
+      "preset": "red",
+      "expected": [8033],
+      "confidence": "high"
+    },
+    {
+      "query": "pim internet standard",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [7761],
+      "confidence": "medium"
+    },
+    {
+      "query": "PIM sparse mode spec",
+      "preset": "red",
+      "expected": [7761],
+      "confidence": "high"
+    },
+    {
+      "query": "PIM-DM",
+      "preset": "red",
+      "expected": [3973],
+      "confidence": "high"
+    },
+    {
+      "query": "PIM-SM",
+      "preset": "red",
+      "expected": [7761],
+      "confidence": "high"
+    },
+    {
+      "query": "PKCS#1 RSA cryptography",
+      "preset": "red",
+      "expected": [8017],
+      "confidence": "high"
+    },
+    {
+      "query": "PKCS#10 certification request",
+      "preset": "red",
+      "expected": [2986],
+      "confidence": "high"
+    },
+    {
+      "query": "PKCS#5 password based cryptography",
+      "preset": "red",
+      "expected": [8018],
+      "confidence": "high"
+    },
+    {
+      "query": "PKCS#8 private key information syntax",
+      "preset": "red",
+      "expected": [5958],
+      "confidence": "high"
+    },
+    {
+      "query": "PKCS#9 selected attribute types",
+      "preset": "red",
+      "expected": [2985],
+      "confidence": "medium"
+    },
+    {
+      "query": "PKCS10 syntax",
+      "preset": "red",
+      "expected": [2986],
+      "confidence": "medium"
+    },
+    {
+      "query": "PKIX certificate and CRL profile",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "poly1305",
+      "preset": "red",
+      "expected": [8439],
+      "confidence": "medium"
+    },
+    {
+      "query": "POP3 extension mechanism",
+      "preset": "red",
+      "expected": [2449],
+      "confidence": "high"
+    },
+    {
+      "query": "POP3 URL scheme",
+      "preset": "red",
+      "expected": [2384],
+      "confidence": "medium"
+    },
+    {
+      "query": "port numbers registry",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [6335],
+      "confidence": "high"
+    },
+    {
+      "query": "post office protocol",
+      "preset": "red",
+      "expected": [1939],
+      "confidence": "high"
+    },
+    {
+      "query": "postquantum preshared key ikev2",
+      "preset": "red",
+      "expected": [8784],
+      "confidence": "medium"
+    },
+    {
+      "query": "PRACK provisional response acknowledgement",
+      "preset": "red",
+      "expected": [3262],
+      "confidence": "high"
+    },
+    {
+      "query": "pre-shared key ciphersuites for tls",
+      "preset": "red",
+      "expected": [4279],
+      "confidence": "high"
+    },
+    {
+      "query": "PRECIS",
+      "preset": "red",
+      "expected": [8264],
+      "confidence": "high"
+    },
+    {
+      "query": "PRECIS framework",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["precis"]
+      },
+      "expected": [8264],
+      "confidence": "high"
+    },
+    {
+      "query": "PRECIS informational or standards track",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Proposed Standard"]
+      },
+      "expected": [8264],
+      "confidence": "medium"
+    },
+    {
+      "query": "precis nicknames",
+      "preset": "red",
+      "expected": [8266],
+      "confidence": "high"
+    },
+    {
+      "query": "PRECIS usernames and passwords",
+      "preset": "red",
+      "expected": [8265],
+      "confidence": "high"
+    },
+    {
+      "query": "prefer header http",
+      "preset": "red",
+      "expected": [7240],
+      "confidence": "high"
+    },
+    {
+      "query": "preparation of internationalized strings",
+      "preset": "red",
+      "expected": [3454],
+      "confidence": "high"
+    },
+    {
+      "query": "private address space",
+      "preset": "red",
+      "expected": [1918],
+      "confidence": "high"
+    },
+    {
+      "query": "problem details for http apis",
+      "preset": "red",
+      "expected": [9457],
+      "confidence": "high"
+    },
+    {
+      "query": "problem+json",
+      "preset": "red",
+      "expected": [9457],
+      "confidence": "high"
+    },
+    {
+      "query": "proof key for code exchange",
+      "preset": "red",
+      "expected": [7636],
+      "confidence": "high"
+    },
+    {
+      "query": "proof of possession key semantics for jwt",
+      "preset": "red",
+      "expected": [7800],
+      "confidence": "high"
+    },
+    {
+      "query": "proportional integral controller enhanced AQM",
+      "preset": "red",
+      "expected": [8033],
+      "confidence": "high"
+    },
+    {
+      "query": "protocol independant multicast",
+      "preset": "red",
+      "expected": [7761],
+      "confidence": "medium",
+      "note": "misspelling of independent"
+    },
+    {
+      "query": "Protocol Independent Multicast Dense Mode",
+      "preset": "red",
+      "expected": [3973],
+      "confidence": "high"
+    },
+    {
+      "query": "Protocol Independent Multicast Sparse Mode",
+      "preset": "red",
+      "expected": [7761],
+      "confidence": "high"
+    },
+    {
+      "query": "proxy arp",
+      "preset": "red",
+      "expected": [1027],
+      "confidence": "medium"
+    },
+    {
+      "query": "public key jwk format",
+      "preset": "red",
+      "expected": [7517],
+      "confidence": "medium"
+    },
+    {
+      "query": "punycode",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "high"
+    },
+    {
+      "query": "punycode algorithm",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "high"
+    },
+    {
+      "query": "punycode decode",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "high"
+    },
+    {
+      "query": "pushed authorization requests",
+      "preset": "red",
+      "expected": [9126],
+      "confidence": "high"
+    },
+    {
+      "query": "qname minimisation",
+      "preset": "red",
+      "expected": [7816],
+      "confidence": "high"
+    },
+    {
+      "query": "qpack",
+      "preset": "red",
+      "expected": [9204],
+      "confidence": "high"
+    },
+    {
+      "query": "query name minimisation",
+      "preset": "red",
+      "expected": [9156],
+      "confidence": "high"
+    },
+    {
+      "query": "query name minimization privacy",
+      "preset": "red",
+      "expected": [7816],
+      "confidence": "high"
+    },
+    {
+      "query": "QUIC",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "high"
+    },
+    {
+      "query": "quic 0-rtt",
+      "preset": "red",
+      "expected": [9001],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic applicability",
+      "preset": "red",
+      "expected": [9308],
+      "confidence": "high"
+    },
+    {
+      "query": "quic bit grease",
+      "preset": "red",
+      "expected": [9287],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic congestion control",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["quic"]
+      },
+      "expected": [9002],
+      "confidence": "high"
+    },
+    {
+      "query": "QUIC connection migration",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "high"
+    },
+    {
+      "query": "quic datagrams",
+      "preset": "red",
+      "expected": [9221],
+      "confidence": "high"
+    },
+    {
+      "query": "quic flow control",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic greasing",
+      "preset": "red",
+      "expected": [9287],
+      "confidence": "medium"
+    },
+    {
+      "query": "QUIC handshake",
+      "preset": "red",
+      "expected": [9000, 9001],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic http mapping",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["quic"]
+      },
+      "expected": [9114],
+      "confidence": "high"
+    },
+    {
+      "query": "quic invariants",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["IETF"]
+      },
+      "expected": [8999],
+      "confidence": "high"
+    },
+    {
+      "query": "quic key update",
+      "preset": "red",
+      "expected": [9001],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic loss detection",
+      "preset": "red",
+      "expected": [9002],
+      "confidence": "high"
+    },
+    {
+      "query": "quic loss detection and congestion control",
+      "preset": "red",
+      "expected": [9002],
+      "confidence": "high"
+    },
+    {
+      "query": "quic loss recovery",
+      "preset": "red",
+      "expected": [9002],
+      "confidence": "high"
+    },
+    {
+      "query": "quic manageability",
+      "preset": "red",
+      "expected": [9312],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic protcol",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium",
+      "note": "misspelling"
+    },
+    {
+      "query": "quic protocol",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "high"
+    },
+    {
+      "query": "quic stateless reset",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic stream multiplexing",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic tls handshake",
+      "preset": "red",
+      "expected": [9001],
+      "confidence": "medium"
+    },
+    {
+      "query": "QUIC transport protocol",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "high"
+    },
+    {
+      "query": "quic version 1",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium"
+    },
+    {
+      "query": "quic version 2",
+      "preset": "red",
+      "expected": [9369],
+      "confidence": "high"
+    },
+    {
+      "query": "quic version negotiation",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium"
+    },
+    {
+      "query": "QUIC vs TCP",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "medium"
+    },
+    {
+      "query": "quick crash detection IKEv2",
+      "preset": "red",
+      "expected": [6290],
+      "confidence": "medium"
+    },
+    {
+      "query": "quick start for tcp and ip",
+      "preset": "red",
+      "expected": [4782],
+      "confidence": "high"
+    },
+    {
+      "query": "RA guard",
+      "preset": "red",
+      "expected": [6105],
+      "confidence": "medium"
+    },
+    {
+      "query": "RACK loss detection",
+      "preset": "red",
+      "expected": [8985],
+      "confidence": "high"
+    },
+    {
+      "query": "RACK-TLP",
+      "preset": "red",
+      "expected": [8985],
+      "confidence": "high"
+    },
+    {
+      "query": "RADIUS",
+      "preset": "red",
+      "expected": [2865],
+      "confidence": "high"
+    },
+    {
+      "query": "radius accounting",
+      "preset": "red",
+      "expected": [2866],
+      "confidence": "high"
+    },
+    {
+      "query": "radius change of authorization",
+      "preset": "red",
+      "expected": [5176],
+      "confidence": "medium"
+    },
+    {
+      "query": "radius dynamic authorization extensions",
+      "preset": "red",
+      "expected": [5176],
+      "confidence": "medium"
+    },
+    {
+      "query": "radius over tls",
+      "preset": "red",
+      "expected": [6614],
+      "confidence": "medium"
+    },
+    {
+      "query": "radius protocol",
+      "preset": "red",
+      "expected": [2865],
+      "confidence": "high"
+    },
+    {
+      "query": "random number generation for security",
+      "preset": "red",
+      "expected": [4086],
+      "confidence": "medium"
+    },
+    {
+      "query": "randomness requirements for security",
+      "preset": "red",
+      "expected": [4086],
+      "confidence": "high"
+    },
+    {
+      "query": "raw public keys in tls and dtls",
+      "preset": "red",
+      "expected": [7250],
+      "confidence": "high"
+    },
+    {
+      "query": "Real-time Transport Protocol",
+      "preset": "red",
+      "expected": [3550],
+      "confidence": "high"
+    },
+    {
+      "query": "RED queue management algorithm",
+      "preset": "red",
+      "expected": [2309],
+      "confidence": "medium"
+    },
+    {
+      "query": "reducing standards track to two levels",
+      "preset": "red",
+      "expected": [6410],
+      "confidence": "high"
+    },
+    {
+      "query": "relaxing restrictions on ECN",
+      "preset": "red",
+      "expected": [8311],
+      "confidence": "high"
+    },
+    {
+      "query": "remote authentication dial-in user service",
+      "preset": "red",
+      "expected": [2865],
+      "confidence": "high"
+    },
+    {
+      "query": "remote network monitoring MIB",
+      "preset": "red",
+      "expected": [2819],
+      "confidence": "medium"
+    },
+    {
+      "query": "requirement levels",
+      "preset": "red",
+      "expected": [2119],
+      "confidence": "high"
+    },
+    {
+      "query": "reserved characters in a URI",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "RESTCONF",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["IETF"]
+      },
+      "expected": [8040],
+      "confidence": "high"
+    },
+    {
+      "query": "reverse address resolution protocol",
+      "preset": "red",
+      "expected": [903],
+      "confidence": "high"
+    },
+    {
+      "query": "rfc editor model",
+      "preset": "red",
+      "expected": [8728],
+      "confidence": "medium"
+    },
+    {
+      "query": "rfc editor style guide",
+      "preset": "red",
+      "expected": [7322],
+      "confidence": "high"
+    },
+    {
+      "query": "rfc for dns update",
+      "preset": "red",
+      "expected": [2136],
+      "confidence": "high"
+    },
+    {
+      "query": "rfc format",
+      "preset": "red",
+      "expected": [7990],
+      "confidence": "medium"
+    },
+    {
+      "query": "rfc streams headers boilerplate",
+      "preset": "red",
+      "expected": [7841],
+      "confidence": "high"
+    },
+    {
+      "query": "rfc style guide",
+      "preset": "red",
+      "expected": [7322],
+      "confidence": "high"
+    },
+    {
+      "query": "right-to-left scripts domain names",
+      "preset": "red",
+      "expected": [5893],
+      "confidence": "high"
+    },
+    {
+      "query": "rip",
+      "preset": "red",
+      "expected": [2453],
+      "confidence": "medium"
+    },
+    {
+      "query": "rip for ipv6",
+      "preset": "red",
+      "expected": [2080],
+      "confidence": "high"
+    },
+    {
+      "query": "rip md5 authentication",
+      "preset": "red",
+      "expected": [2082],
+      "confidence": "medium"
+    },
+    {
+      "query": "rip version 2",
+      "preset": "red",
+      "expected": [2453],
+      "confidence": "high"
+    },
+    {
+      "query": "ripng",
+      "preset": "red",
+      "expected": [2080],
+      "confidence": "high"
+    },
+    {
+      "query": "RLP routing low power networks",
+      "preset": "red",
+      "expected": [6550],
+      "confidence": "medium",
+      "note": "misspelling RLP for RPL"
+    },
+    {
+      "query": "root server operational requirements",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dnsop"]
+      },
+      "expected": [7720],
+      "confidence": "high"
+    },
+    {
+      "query": "route reflectors",
+      "preset": "red",
+      "expected": [4456],
+      "confidence": "high"
+    },
+    {
+      "query": "router requirements",
+      "preset": "red",
+      "expected": [1812],
+      "confidence": "high"
+    },
+    {
+      "query": "routing protocol for low power and lossy networks",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["roll"]
+      },
+      "expected": [6550],
+      "confidence": "high"
+    },
+    {
+      "query": "RPL",
+      "preset": "red",
+      "expected": [6550],
+      "confidence": "high"
+    },
+    {
+      "query": "RPL objective function zero",
+      "preset": "red",
+      "expected": [6552],
+      "confidence": "high"
+    },
+    {
+      "query": "RPL routing protocol",
+      "preset": "red",
+      "expected": [6550],
+      "confidence": "high"
+    },
+    {
+      "query": "rsa sha-2 signatures ssh",
+      "preset": "red",
+      "expected": [8332],
+      "confidence": "medium"
+    },
+    {
+      "query": "rsvp-te",
+      "preset": "red",
+      "expected": [3209],
+      "confidence": "medium"
+    },
+    {
+      "query": "rsync uri scheme",
+      "preset": "red",
+      "expected": [5781],
+      "confidence": "high"
+    },
+    {
+      "query": "RTCP extended reports",
+      "preset": "red",
+      "expected": [3611],
+      "confidence": "high"
+    },
+    {
+      "query": "RTCP XR",
+      "preset": "red",
+      "expected": [3611],
+      "confidence": "high"
+    },
+    {
+      "query": "RTP",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [3550],
+      "confidence": "high"
+    },
+    {
+      "query": "RTP AVPF feedback profile",
+      "preset": "red",
+      "expected": [4585],
+      "confidence": "medium"
+    },
+    {
+      "query": "RTP control protocol",
+      "preset": "red",
+      "expected": [3550],
+      "confidence": "high"
+    },
+    {
+      "query": "RTP header extensions",
+      "preset": "red",
+      "expected": [8285],
+      "confidence": "medium"
+    },
+    {
+      "query": "RTP payload format H.264",
+      "preset": "red",
+      "expected": [6184],
+      "confidence": "medium"
+    },
+    {
+      "query": "RTP profile for audio and video conferences with minimal control",
+      "preset": "red",
+      "expected": [3551],
+      "confidence": "high"
+    },
+    {
+      "query": "RTP retransmission payload",
+      "preset": "red",
+      "expected": [4588],
+      "confidence": "medium"
+    },
+    {
+      "query": "RTP/AVP profile",
+      "preset": "red",
+      "expected": [3551],
+      "confidence": "high"
+    },
+    {
+      "query": "salted challenge response authentication mechanism",
+      "preset": "red",
+      "expected": [5802],
+      "confidence": "high"
+    },
+    {
+      "query": "sasl",
+      "preset": "red",
+      "expected": [4422],
+      "confidence": "high"
+    },
+    {
+      "query": "scalable congestion control for L4S",
+      "preset": "red",
+      "expected": [9331],
+      "confidence": "high"
+    },
+    {
+      "query": "SCEP simple certificate enrollment protocol",
+      "preset": "red",
+      "expected": [8894],
+      "confidence": "high"
+    },
+    {
+      "query": "SCHC",
+      "preset": "red",
+      "expected": [8724],
+      "confidence": "high"
+    },
+    {
+      "query": "scram",
+      "preset": "red",
+      "expected": [5802],
+      "confidence": "high"
+    },
+    {
+      "query": "scram sasl mechanism",
+      "preset": "red",
+      "expected": [5802],
+      "confidence": "high"
+    },
+    {
+      "query": "scram-sha-256",
+      "preset": "red",
+      "expected": [7677],
+      "confidence": "medium"
+    },
+    {
+      "query": "scrypt",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Informational"]
+      },
+      "expected": [7914],
+      "confidence": "high"
+    },
+    {
+      "query": "SCVP server based certificate validation protocol",
+      "preset": "red",
+      "expected": [5055],
+      "confidence": "high"
+    },
+    {
+      "query": "SDP",
+      "preset": "red",
+      "expected": [4566],
+      "confidence": "high"
+    },
+    {
+      "query": "SDP offer answer model",
+      "preset": "red",
+      "expected": [3264],
+      "confidence": "high"
+    },
+    {
+      "query": "secure hash standard sha1",
+      "preset": "red",
+      "expected": [3174],
+      "confidence": "medium"
+    },
+    {
+      "query": "secure neighbor discovery",
+      "preset": "red",
+      "expected": [3971],
+      "confidence": "high"
+    },
+    {
+      "query": "Secure Real-time Transport Protocol",
+      "preset": "red",
+      "expected": [3711],
+      "confidence": "high"
+    },
+    {
+      "query": "secure rtp dtls extension",
+      "preset": "red",
+      "expected": [5764],
+      "confidence": "high"
+    },
+    {
+      "query": "secure shell",
+      "preset": "red",
+      "expected": [4251],
+      "confidence": "high"
+    },
+    {
+      "query": "securing ftp with tls",
+      "preset": "red",
+      "expected": [4217],
+      "confidence": "high"
+    },
+    {
+      "query": "security association ipsec",
+      "preset": "red",
+      "expected": [4301],
+      "confidence": "medium"
+    },
+    {
+      "query": "security flag ipv4 header april fools",
+      "preset": "red",
+      "expected": [3514],
+      "confidence": "high"
+    },
+    {
+      "query": "segment routing",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["spring"]
+      },
+      "expected": [8402],
+      "confidence": "high"
+    },
+    {
+      "query": "segment routing architecture",
+      "preset": "red",
+      "expected": [8402],
+      "confidence": "high"
+    },
+    {
+      "query": "segment routing with mpls dataplane",
+      "preset": "red",
+      "expected": [8660],
+      "confidence": "medium"
+    },
+    {
+      "query": "SEND protocol IPv6",
+      "preset": "red",
+      "expected": [3971],
+      "confidence": "medium"
+    },
+    {
+      "query": "sender id email authentication",
+      "preset": "red",
+      "expected": [4406],
+      "confidence": "medium"
+    },
+    {
+      "query": "sender policy framework",
+      "preset": "red",
+      "expected": [7208],
+      "confidence": "high"
+    },
+    {
+      "query": "sender policy framwork",
+      "preset": "red",
+      "expected": [7208],
+      "confidence": "medium",
+      "note": "common misspelling of framework"
+    },
+    {
+      "query": "SenML",
+      "preset": "red",
+      "expected": [8428],
+      "confidence": "high"
+    },
+    {
+      "query": "sensor measurement lists",
+      "preset": "red",
+      "expected": [8428],
+      "confidence": "high"
+    },
+    {
+      "query": "serial number arithmetic dns",
+      "preset": "red",
+      "expected": [1982],
+      "confidence": "high"
+    },
+    {
+      "query": "service binding dns records",
+      "preset": "red",
+      "expected": [9460],
+      "confidence": "medium"
+    },
+    {
+      "query": "service name and transport protocol port number registry",
+      "preset": "red",
+      "expected": [6335],
+      "confidence": "high"
+    },
+    {
+      "query": "serving stale dns data",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dnsop"]
+      },
+      "expected": [8767],
+      "confidence": "high"
+    },
+    {
+      "query": "Session Description Protocol",
+      "preset": "red",
+      "expected": [4566],
+      "confidence": "high"
+    },
+    {
+      "query": "session id resumption tls",
+      "preset": "red",
+      "expected": [5077],
+      "confidence": "medium"
+    },
+    {
+      "query": "Session Initiation Protocol",
+      "preset": "red",
+      "expected": [3261],
+      "confidence": "high"
+    },
+    {
+      "query": "session timers",
+      "preset": "red",
+      "expected": [4028],
+      "confidence": "high"
+    },
+    {
+      "query": "Session Traversal Utilities for NAT",
+      "preset": "red",
+      "expected": [8489],
+      "confidence": "high"
+    },
+    {
+      "query": "SHA-2",
+      "preset": "red",
+      "expected": [6234],
+      "confidence": "medium"
+    },
+    {
+      "query": "sha-2 for ssh transport layer",
+      "preset": "red",
+      "expected": [6668],
+      "confidence": "medium"
+    },
+    {
+      "query": "sieve email filtering language",
+      "preset": "red",
+      "expected": [5228],
+      "confidence": "high"
+    },
+    {
+      "query": "sieve imap4flags extension",
+      "preset": "red",
+      "expected": [5232],
+      "confidence": "high"
+    },
+    {
+      "query": "sieve mail filtering",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["sieve"]
+      },
+      "expected": [5228],
+      "confidence": "high"
+    },
+    {
+      "query": "sieve notify extension",
+      "preset": "red",
+      "expected": [5435],
+      "confidence": "medium"
+    },
+    {
+      "query": "sieve reject extension",
+      "preset": "red",
+      "expected": [5429],
+      "confidence": "medium"
+    },
+    {
+      "query": "sieve subaddress extension",
+      "preset": "red",
+      "expected": [5233],
+      "confidence": "medium"
+    },
+    {
+      "query": "sieve vacation extension",
+      "preset": "red",
+      "expected": [5230],
+      "confidence": "high"
+    },
+    {
+      "query": "sieve variables extension",
+      "preset": "red",
+      "expected": [5229],
+      "confidence": "high"
+    },
+    {
+      "query": "signaling trust anchor knowledge edns",
+      "preset": "red",
+      "expected": [8145],
+      "confidence": "high"
+    },
+    {
+      "query": "signature authentication in IKEv2",
+      "preset": "red",
+      "expected": [7427],
+      "confidence": "medium"
+    },
+    {
+      "query": "silly window syndrome",
+      "preset": "red",
+      "expected": [813],
+      "confidence": "medium"
+    },
+    {
+      "query": "simple authentication and security layer",
+      "preset": "red",
+      "expected": [4422],
+      "confidence": "high"
+    },
+    {
+      "query": "simple file transfer protocol",
+      "preset": "red",
+      "expected": [913],
+      "confidence": "high"
+    },
+    {
+      "query": "simple mail transfer protocol",
+      "preset": "red",
+      "expected": [5321],
+      "confidence": "high"
+    },
+    {
+      "query": "simple network management protocol",
+      "preset": "red",
+      "expected": [1157],
+      "confidence": "high"
+    },
+    {
+      "query": "simple network time protocol",
+      "preset": "red",
+      "expected": [4330],
+      "confidence": "medium"
+    },
+    {
+      "query": "SIP",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["sip"]
+      },
+      "expected": [3261],
+      "confidence": "high"
+    },
+    {
+      "query": "SIP events",
+      "preset": "red",
+      "expected": [6665],
+      "confidence": "high"
+    },
+    {
+      "query": "SIP INFO method",
+      "preset": "red",
+      "expected": [6086],
+      "confidence": "medium"
+    },
+    {
+      "query": "SIP instant messaging MESSAGE method",
+      "preset": "red",
+      "expected": [3428],
+      "confidence": "high"
+    },
+    {
+      "query": "SIP presence event package",
+      "preset": "red",
+      "expected": [3856],
+      "confidence": "medium"
+    },
+    {
+      "query": "SIP privacy mechanism",
+      "preset": "red",
+      "expected": [3323],
+      "confidence": "medium"
+    },
+    {
+      "query": "sip protcol",
+      "preset": "red",
+      "expected": [3261],
+      "confidence": "high",
+      "note": "misspelling of protocol"
+    },
+    {
+      "query": "SIP REFER method call transfer",
+      "preset": "red",
+      "expected": [3515],
+      "confidence": "high"
+    },
+    {
+      "query": "SIP registrar registration",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Internet Standard"]
+      },
+      "expected": [3261],
+      "confidence": "medium"
+    },
+    {
+      "query": "SIP session timer extension",
+      "preset": "red",
+      "expected": [4028],
+      "confidence": "high"
+    },
+    {
+      "query": "SIP subscribe notify",
+      "preset": "red",
+      "expected": [6665],
+      "confidence": "medium"
+    },
+    {
+      "query": "SIP UPDATE method",
+      "preset": "red",
+      "expected": [3311],
+      "confidence": "medium"
+    },
+    {
+      "query": "SIP-specific event notification",
+      "preset": "red",
+      "expected": [6665],
+      "confidence": "high"
+    },
+    {
+      "query": "SMIv2",
+      "preset": "red",
+      "expected": [2578],
+      "confidence": "high"
+    },
+    {
+      "query": "SMTP AUTH",
+      "preset": "red",
+      "expected": [4954],
+      "confidence": "high"
+    },
+    {
+      "query": "SMTP authentication",
+      "preset": "red",
+      "expected": [4954],
+      "confidence": "high"
+    },
+    {
+      "query": "SMTP extension for delivery status notifications",
+      "preset": "red",
+      "expected": [3461],
+      "confidence": "high"
+    },
+    {
+      "query": "smtp mta strict transport security",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["uta"]
+      },
+      "expected": [8461],
+      "confidence": "high"
+    },
+    {
+      "query": "SMTP pipelining",
+      "preset": "red",
+      "expected": [2920],
+      "confidence": "high"
+    },
+    {
+      "query": "SMTP size extension",
+      "preset": "red",
+      "expected": [1870],
+      "confidence": "high"
+    },
+    {
+      "query": "smtp tls reporting",
+      "preset": "red",
+      "expected": [8460],
+      "confidence": "high"
+    },
+    {
+      "query": "SNI extension",
+      "preset": "red",
+      "expected": [6066],
+      "confidence": "high"
+    },
+    {
+      "query": "sni tls extension",
+      "preset": "red",
+      "expected": [6066],
+      "confidence": "high"
+    },
+    {
+      "query": "SNMP",
+      "preset": "red",
+      "expected": [3411],
+      "confidence": "medium",
+      "note": "STD 62 framework doc; SNMPv3 architecture"
+    },
+    {
+      "query": "SNMP applications",
+      "preset": "red",
+      "expected": [3413],
+      "confidence": "high"
+    },
+    {
+      "query": "SNMP architecture",
+      "preset": "red",
+      "expected": [3411],
+      "confidence": "high"
+    },
+    {
+      "query": "SNMP message processing model",
+      "preset": "red",
+      "expected": [3412],
+      "confidence": "high"
+    },
+    {
+      "query": "SNMP protocol operations",
+      "preset": "red",
+      "expected": [3416],
+      "confidence": "high"
+    },
+    {
+      "query": "SNTP",
+      "preset": "red",
+      "expected": [4330],
+      "confidence": "medium"
+    },
+    {
+      "query": "source specific multicast",
+      "preset": "red",
+      "expected": [4607],
+      "confidence": "high"
+    },
+    {
+      "query": "source-specific multicast for IP",
+      "preset": "red",
+      "expected": [4607],
+      "confidence": "high"
+    },
+    {
+      "query": "special use domain names",
+      "preset": "red",
+      "expected": [6761],
+      "confidence": "high"
+    },
+    {
+      "query": "specification for dns over dedicated quic connections",
+      "preset": "red",
+      "expected": [9250],
+      "confidence": "high"
+    },
+    {
+      "query": "specification required iana policy",
+      "preset": "red",
+      "expected": [8126],
+      "confidence": "medium"
+    },
+    {
+      "query": "spf hard fail vs soft fail",
+      "preset": "red",
+      "expected": [7208],
+      "confidence": "medium"
+    },
+    {
+      "query": "spf record",
+      "preset": "red",
+      "expected": [7208],
+      "confidence": "high"
+    },
+    {
+      "query": "spf record too many dns lookups",
+      "preset": "red",
+      "expected": [7208],
+      "confidence": "medium"
+    },
+    {
+      "query": "spf txt record dns lookup limit",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["spfbis"]
+      },
+      "expected": [7208],
+      "confidence": "high"
+    },
+    {
+      "query": "SRTP",
+      "preset": "red",
+      "expected": [3711],
+      "confidence": "high"
+    },
+    {
+      "query": "srv6 network programming",
+      "preset": "red",
+      "expected": [8986],
+      "confidence": "medium"
+    },
+    {
+      "query": "ssh authentication protocol",
+      "preset": "red",
+      "expected": [4252],
+      "confidence": "high"
+    },
+    {
+      "query": "ssh connection protocol",
+      "preset": "red",
+      "expected": [4254],
+      "confidence": "high"
+    },
+    {
+      "query": "ssh fingerprint in dns",
+      "preset": "red",
+      "expected": [4255],
+      "confidence": "medium"
+    },
+    {
+      "query": "ssh key exchange method",
+      "preset": "red",
+      "expected": [4253],
+      "confidence": "medium"
+    },
+    {
+      "query": "ssh protocol architecture",
+      "preset": "red",
+      "expected": [4251],
+      "confidence": "high"
+    },
+    {
+      "query": "ssh public key authentication",
+      "preset": "red",
+      "expected": [4252],
+      "confidence": "medium"
+    },
+    {
+      "query": "ssh public key file format",
+      "preset": "red",
+      "expected": [4716],
+      "confidence": "medium"
+    },
+    {
+      "query": "ssh transport layer protocol",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["secsh"]
+      },
+      "expected": [4253],
+      "confidence": "high"
+    },
+    {
+      "query": "sshfp dns record",
+      "preset": "red",
+      "expected": [4255],
+      "confidence": "high"
+    },
+    {
+      "query": "SSL 3.0 specification",
+      "preset": "red",
+      "expected": [6101],
+      "confidence": "medium"
+    },
+    {
+      "query": "stable privacy addresses interface identifiers",
+      "preset": "red",
+      "expected": [7217],
+      "confidence": "high"
+    },
+    {
+      "query": "STARTTLS SMTP",
+      "preset": "red",
+      "expected": [3207],
+      "confidence": "high"
+    },
+    {
+      "query": "stateless address autoconfiguration",
+      "preset": "red",
+      "expected": [4862],
+      "confidence": "high"
+    },
+    {
+      "query": "static context header compression",
+      "preset": "red",
+      "expected": [8724],
+      "confidence": "high"
+    },
+    {
+      "query": "status code 451",
+      "preset": "red",
+      "expected": [7725],
+      "confidence": "high"
+    },
+    {
+      "query": "Stream Control Transmission Protocol",
+      "preset": "red",
+      "expected": [4960],
+      "confidence": "high"
+    },
+    {
+      "query": "stringprep",
+      "preset": "red",
+      "expected": [3454],
+      "confidence": "high"
+    },
+    {
+      "query": "stringprep profile",
+      "preset": "red",
+      "expected": [3454],
+      "confidence": "medium"
+    },
+    {
+      "query": "structure of management information",
+      "preset": "red",
+      "expected": [2578],
+      "confidence": "medium"
+    },
+    {
+      "query": "structured field values",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["httpbis"]
+      },
+      "expected": [9651],
+      "confidence": "medium"
+    },
+    {
+      "query": "structured headers",
+      "preset": "red",
+      "expected": [9651],
+      "confidence": "medium"
+    },
+    {
+      "query": "STUN",
+      "preset": "red",
+      "expected": [8489],
+      "confidence": "high"
+    },
+    {
+      "query": "stun sever nat traversal",
+      "preset": "red",
+      "expected": [8489],
+      "confidence": "medium",
+      "note": "misspelling of server"
+    },
+    {
+      "query": "subscribed notifications yang",
+      "preset": "red",
+      "expected": [8639],
+      "confidence": "high"
+    },
+    {
+      "query": "Suite B cryptographic suites for IPsec",
+      "preset": "red",
+      "expected": [6379],
+      "confidence": "high"
+    },
+    {
+      "query": "Suite B profile for IKEv2",
+      "preset": "red",
+      "expected": [6380],
+      "confidence": "high"
+    },
+    {
+      "query": "supported groups extension tls",
+      "preset": "red",
+      "expected": [8422],
+      "confidence": "medium"
+    },
+    {
+      "query": "svcb record",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["dnsop"]
+      },
+      "expected": [9460],
+      "confidence": "high"
+    },
+    {
+      "query": "syslog",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["syslog"]
+      },
+      "expected": [5424],
+      "confidence": "high"
+    },
+    {
+      "query": "syslog over tcp",
+      "preset": "red",
+      "expected": [6587],
+      "confidence": "high"
+    },
+    {
+      "query": "syslog over tls",
+      "preset": "red",
+      "expected": [5425],
+      "confidence": "high"
+    },
+    {
+      "query": "syslog over udp",
+      "preset": "red",
+      "expected": [5426],
+      "confidence": "high"
+    },
+    {
+      "query": "syslog protocol",
+      "preset": "red",
+      "expected": [5424],
+      "confidence": "high"
+    },
+    {
+      "query": "tacacs",
+      "preset": "red",
+      "expected": [1492],
+      "confidence": "medium"
+    },
+    {
+      "query": "tacacs plus protocol",
+      "preset": "red",
+      "expected": [8907],
+      "confidence": "high"
+    },
+    {
+      "query": "TACACS+",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["opsawg"]
+      },
+      "expected": [8907],
+      "confidence": "high"
+    },
+    {
+      "query": "tag URI scheme",
+      "preset": "red",
+      "refinements": {
+        "status.name": ["Informational"]
+      },
+      "expected": [4151],
+      "confidence": "medium"
+    },
+    {
+      "query": "tags for identifying languages",
+      "preset": "red",
+      "expected": [5646],
+      "confidence": "high"
+    },
+    {
+      "query": "tail loss probe tcp",
+      "preset": "red",
+      "expected": [8985],
+      "confidence": "high"
+    },
+    {
+      "query": "tao of the ietf",
+      "preset": "red",
+      "expected": [4677],
+      "confidence": "medium"
+    },
+    {
+      "query": "TCP",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp authentication option",
+      "preset": "red",
+      "expected": [5925],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp congestion control",
+      "preset": "red",
+      "expected": [5681],
+      "confidence": "high"
+    },
+    {
+      "query": "TCP congestion control mechanisms standard",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tcpm"]
+      },
+      "expected": [5681],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp extensions for high performance",
+      "preset": "red",
+      "expected": [7323],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp fast open",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tcpm"]
+      },
+      "expected": [7413],
+      "confidence": "high"
+    },
+    {
+      "query": "TCP friendly rate control",
+      "preset": "red",
+      "expected": [5348],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp header format",
+      "preset": "red",
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp maximum segment size",
+      "preset": "red",
+      "expected": [879],
+      "confidence": "medium"
+    },
+    {
+      "query": "tcp md5 signature option",
+      "preset": "red",
+      "expected": [2385],
+      "confidence": "high"
+    },
+    {
+      "query": "TCP MIB",
+      "preset": "red",
+      "expected": [4022],
+      "confidence": "high"
+    },
+    {
+      "query": "TCP NewReno fast recovery algorithm",
+      "preset": "red",
+      "expected": [6582],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp newrenoo modification",
+      "preset": "red",
+      "expected": [6582],
+      "confidence": "medium",
+      "note": "misspelling"
+    },
+    {
+      "query": "tcp RTO calculation",
+      "preset": "red",
+      "expected": [6298],
+      "confidence": "medium"
+    },
+    {
+      "query": "tcp selective acknowledgment",
+      "preset": "red",
+      "expected": [2018],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp specification",
+      "preset": "red",
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp three way handshake",
+      "preset": "red",
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp timestamps option",
+      "preset": "red",
+      "expected": [7323],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp window scaling",
+      "preset": "red",
+      "expected": [7323],
+      "confidence": "high"
+    },
+    {
+      "query": "tcp-ao",
+      "preset": "red",
+      "expected": [5925],
+      "confidence": "high"
+    },
+    {
+      "query": "tel URI scheme",
+      "preset": "red",
+      "expected": [3966],
+      "confidence": "high"
+    },
+    {
+      "query": "telephone number URI",
+      "preset": "red",
+      "expected": [3966],
+      "confidence": "high"
+    },
+    {
+      "query": "telnet",
+      "preset": "red",
+      "expected": [854],
+      "confidence": "high"
+    },
+    {
+      "query": "telnet authentication option",
+      "preset": "red",
+      "expected": [2941],
+      "confidence": "medium"
+    },
+    {
+      "query": "telnet environment option",
+      "preset": "red",
+      "expected": [1572],
+      "confidence": "medium"
+    },
+    {
+      "query": "telnet option specifications",
+      "preset": "red",
+      "expected": [855],
+      "confidence": "high"
+    },
+    {
+      "query": "telnet protocol specification",
+      "preset": "red",
+      "refinements": {
+        "stream.name": ["Legacy"]
+      },
+      "expected": [854],
+      "confidence": "high"
+    },
+    {
+      "query": "temporary IPv6 addresses",
+      "preset": "red",
+      "expected": [8981],
+      "confidence": "medium"
+    },
+    {
+      "query": "Teredo",
+      "preset": "red",
+      "expected": [4380],
+      "confidence": "high"
+    },
+    {
+      "query": "terminal access controller access control system",
+      "preset": "red",
+      "expected": [1492],
+      "confidence": "medium"
+    },
+    {
+      "query": "terminology for constrained node networks",
+      "preset": "red",
+      "expected": [7228],
+      "confidence": "high"
+    },
+    {
+      "query": "textual conventions SMIv2",
+      "preset": "red",
+      "expected": [2579],
+      "confidence": "high"
+    },
+    {
+      "query": "TFRC",
+      "preset": "red",
+      "expected": [5348],
+      "confidence": "high"
+    },
+    {
+      "query": "tftp",
+      "preset": "red",
+      "expected": [1350],
+      "confidence": "high"
+    },
+    {
+      "query": "tftp blocksize option",
+      "preset": "red",
+      "expected": [2348],
+      "confidence": "medium"
+    },
+    {
+      "query": "tftp option extension",
+      "preset": "red",
+      "expected": [2347],
+      "confidence": "medium"
+    },
+    {
+      "query": "tftp protocol revision 2",
+      "preset": "red",
+      "expected": [1350],
+      "confidence": "high"
+    },
+    {
+      "query": "tftp timeout interval option",
+      "preset": "red",
+      "expected": [2349],
+      "confidence": "medium"
+    },
+    {
+      "query": "tftp windowsize option",
+      "preset": "red",
+      "expected": [7440],
+      "confidence": "medium"
+    },
+    {
+      "query": "time protocol security requirements",
+      "preset": "red",
+      "expected": [7384],
+      "confidence": "medium"
+    },
+    {
+      "query": "time stamp protocol TSP",
+      "preset": "red",
+      "expected": [3161],
+      "confidence": "high"
+    },
+    {
+      "query": "TLS 1.0",
+      "preset": "red",
+      "expected": [2246],
+      "confidence": "high"
+    },
+    {
+      "query": "TLS 1.1",
+      "preset": "red",
+      "expected": [4346],
+      "confidence": "high"
+    },
+    {
+      "query": "TLS 1.2",
+      "preset": "red",
+      "expected": [5246],
+      "confidence": "high"
+    },
+    {
+      "query": "TLS 1.3",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tls"]
+      },
+      "expected": [8446],
+      "confidence": "high"
+    },
+    {
+      "query": "tls 1.3 middlebox compatibility mode",
+      "preset": "red",
+      "expected": [8446],
+      "confidence": "medium"
+    },
+    {
+      "query": "tls certificate compression",
+      "preset": "red",
+      "expected": [8879],
+      "confidence": "high"
+    },
+    {
+      "query": "tls cipher suite iana registry updates",
+      "preset": "red",
+      "expected": [8447],
+      "confidence": "medium"
+    },
+    {
+      "query": "TLS extensions definitions",
+      "preset": "red",
+      "expected": [6066],
+      "confidence": "high"
+    },
+    {
+      "query": "tls fallback scsv downgrade protection",
+      "preset": "red",
+      "expected": [7507],
+      "confidence": "high"
+    },
+    {
+      "query": "tls false start",
+      "preset": "red",
+      "expected": [7918],
+      "confidence": "medium"
+    },
+    {
+      "query": "tls for xmpp",
+      "preset": "red",
+      "expected": [7590],
+      "confidence": "medium"
+    },
+    {
+      "query": "tls handshake protocol",
+      "preset": "red",
+      "expected": [8446],
+      "confidence": "high"
+    },
+    {
+      "query": "tls heartbeat extension",
+      "preset": "red",
+      "expected": [6520],
+      "confidence": "high"
+    },
+    {
+      "query": "TLS over QUIC",
+      "preset": "red",
+      "expected": [9001],
+      "confidence": "high"
+    },
+    {
+      "query": "tls renegotiation indication extension",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["tls"]
+      },
+      "expected": [5746],
+      "confidence": "high"
+    },
+    {
+      "query": "tls renegotiation vulnerability fix",
+      "preset": "red",
+      "expected": [5746],
+      "confidence": "high"
+    },
+    {
+      "query": "TLS session resumption without server-side state",
+      "preset": "red",
+      "expected": [5077],
+      "confidence": "high"
+    },
+    {
+      "query": "tls session tickets",
+      "preset": "red",
+      "expected": [5077],
+      "confidence": "high"
+    },
+    {
+      "query": "tls-rpt smtp",
+      "preset": "red",
+      "expected": [8460],
+      "confidence": "high"
+    },
+    {
+      "query": "token binding protocol",
+      "preset": "red",
+      "expected": [8471],
+      "confidence": "medium"
+    },
+    {
+      "query": "traffic engineering extensions to rsvp",
+      "preset": "red",
+      "expected": [3209],
+      "confidence": "medium"
+    },
+    {
+      "query": "transmission control protocol",
+      "preset": "red",
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "transmission of IPv6 packets over Ethernet networks",
+      "preset": "red",
+      "expected": [2464],
+      "confidence": "high"
+    },
+    {
+      "query": "transport layer security 1.3 spec",
+      "preset": "red",
+      "expected": [8446],
+      "confidence": "high"
+    },
+    {
+      "query": "trasmission control protocol",
+      "preset": "red",
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "Traversal Using Relays around NAT",
+      "preset": "red",
+      "expected": [8656],
+      "confidence": "high"
+    },
+    {
+      "query": "trickle ICE",
+      "preset": "red",
+      "expected": [8838],
+      "confidence": "high"
+    },
+    {
+      "query": "trust anchor format",
+      "preset": "red",
+      "expected": [5914],
+      "confidence": "medium"
+    },
+    {
+      "query": "trust anchor publication root zone",
+      "preset": "red",
+      "expected": [7958],
+      "confidence": "high"
+    },
+    {
+      "query": "trust legal provisions",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [5378],
+      "confidence": "medium"
+    },
+    {
+      "query": "TSL 1.2 protocol",
+      "preset": "red",
+      "expected": [5246],
+      "confidence": "medium",
+      "note": "common misspelling of TLS"
+    },
+    {
+      "query": "TURN protocol",
+      "preset": "red",
+      "expected": [8656],
+      "confidence": "high"
+    },
+    {
+      "query": "twelve networking truths",
+      "preset": "red",
+      "expected": [1925],
+      "confidence": "high"
+    },
+    {
+      "query": "two maturity levels standards track",
+      "preset": "red",
+      "expected": [6410],
+      "confidence": "high"
+    },
+    {
+      "query": "UDP based multiplexed secure transport",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "high"
+    },
+    {
+      "query": "UDP encapsulation of IPsec ESP packets",
+      "preset": "red",
+      "expected": [3948],
+      "confidence": "high"
+    },
+    {
+      "query": "ULA IPv6",
+      "preset": "red",
+      "expected": [4193],
+      "confidence": "high"
+    },
+    {
+      "query": "unavailable for legal reasons",
+      "preset": "red",
+      "expected": [7725],
+      "confidence": "medium"
+    },
+    {
+      "query": "unicast-prefix-based IPv6 multicast addresses",
+      "preset": "red",
+      "expected": [3306],
+      "confidence": "medium"
+    },
+    {
+      "query": "unicode code points for IDNA",
+      "preset": "red",
+      "expected": [5892],
+      "confidence": "high"
+    },
+    {
+      "query": "unicode format for network interchange",
+      "preset": "red",
+      "expected": [5198],
+      "confidence": "high"
+    },
+    {
+      "query": "unicode idn allowed characters",
+      "preset": "red",
+      "expected": [5892],
+      "confidence": "medium"
+    },
+    {
+      "query": "uniform resource identifier",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "uniform resource name",
+      "preset": "red",
+      "expected": [8141],
+      "confidence": "high"
+    },
+    {
+      "query": "unifrom resource identifer",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "medium",
+      "note": "misspelling of uniform resource identifier"
+    },
+    {
+      "query": "unique local addresses",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["6man"]
+      },
+      "expected": [4193],
+      "confidence": "high"
+    },
+    {
+      "query": "unknown dns rr types handling",
+      "preset": "red",
+      "expected": [3597],
+      "confidence": "high"
+    },
+    {
+      "query": "unreliable datagram extension to quic",
+      "preset": "red",
+      "expected": [9221],
+      "confidence": "high"
+    },
+    {
+      "query": "uppercase lowercase must should",
+      "preset": "red",
+      "expected": [8174],
+      "confidence": "high"
+    },
+    {
+      "query": "URI fragment identifier",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "URI generic syntax",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "URI normalization and comparison",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "URI query component syntax",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "URI scheme registration guidelines",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [7595],
+      "confidence": "high"
+    },
+    {
+      "query": "URI template",
+      "preset": "red",
+      "expected": [6570],
+      "confidence": "high"
+    },
+    {
+      "query": "uri templates rfc",
+      "preset": "red",
+      "expected": [6570],
+      "confidence": "high"
+    },
+    {
+      "query": "URI templates RFC 6570 syntax",
+      "preset": "red",
+      "expected": [6570],
+      "confidence": "high"
+    },
+    {
+      "query": "URL syntax specification",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "urn:uuid namespace",
+      "preset": "red",
+      "expected": [4122],
+      "confidence": "medium"
+    },
+    {
+      "query": "US Secure Hash Algorithm 1",
+      "preset": "red",
+      "expected": [3174],
+      "confidence": "high"
+    },
+    {
+      "query": "US secure hash algorithms sha and hmac-sha",
+      "preset": "red",
+      "expected": [6234],
+      "confidence": "medium"
+    },
+    {
+      "query": "usage profiles for dns over tls and dtls",
+      "preset": "red",
+      "expected": [8310],
+      "confidence": "high"
+    },
+    {
+      "query": "user datagram protocol",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["std"]
+      },
+      "expected": [768],
+      "confidence": "high"
+    },
+    {
+      "query": "user-based security model",
+      "preset": "red",
+      "expected": [3414],
+      "confidence": "high"
+    },
+    {
+      "query": "userinfo component of a URI",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "using tls to secure quic",
+      "preset": "red",
+      "expected": [9001],
+      "confidence": "high"
+    },
+    {
+      "query": "using tls to secure quic",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["quic"]
+      },
+      "expected": [9001],
+      "confidence": "high"
+    },
+    {
+      "query": "USM SNMP",
+      "preset": "red",
+      "expected": [3414],
+      "confidence": "high"
+    },
+    {
+      "query": "UTF-8",
+      "preset": "red",
+      "expected": [3629],
+      "confidence": "high"
+    },
+    {
+      "query": "utf-8 encoding rfc",
+      "preset": "red",
+      "expected": [3629],
+      "confidence": "high"
+    },
+    {
+      "query": "UTF-8, a transformation format of ISO 10646",
+      "preset": "red",
+      "expected": [3629],
+      "confidence": "high"
+    },
+    {
+      "query": "UTF8 email addresses framework",
+      "preset": "red",
+      "expected": [6530],
+      "confidence": "high"
+    },
+    {
+      "query": "utf8 transformation format",
+      "preset": "red",
+      "expected": [3629],
+      "confidence": "high"
+    },
+    {
+      "query": "VACM",
+      "preset": "red",
+      "expected": [3415],
+      "confidence": "high"
+    },
+    {
+      "query": "vary header http",
+      "preset": "red",
+      "expected": [9110],
+      "confidence": "medium"
+    },
+    {
+      "query": "vcard extensions to webdav",
+      "preset": "red",
+      "expected": [6352],
+      "confidence": "high"
+    },
+    {
+      "query": "version independent properties of quic",
+      "preset": "red",
+      "expected": [8999],
+      "confidence": "high"
+    },
+    {
+      "query": "view-based access control model",
+      "preset": "red",
+      "expected": [3415],
+      "confidence": "high"
+    },
+    {
+      "query": "web distributed authoring and versioning",
+      "preset": "red",
+      "expected": [4918],
+      "confidence": "high"
+    },
+    {
+      "query": "web linking",
+      "preset": "red",
+      "expected": [8288],
+      "confidence": "high"
+    },
+    {
+      "query": "web linking Link header",
+      "preset": "red",
+      "expected": [8288],
+      "confidence": "high"
+    },
+    {
+      "query": "web rtc data channel establishment",
+      "preset": "red",
+      "expected": [8832],
+      "confidence": "medium"
+    },
+    {
+      "query": "webdav",
+      "preset": "red",
+      "expected": [4918],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav access control protocol",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["webdav"]
+      },
+      "expected": [3744],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav binding extensions",
+      "preset": "red",
+      "expected": [5842],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav http extensions",
+      "preset": "red",
+      "expected": [4918],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav ordered collections",
+      "preset": "red",
+      "expected": [3648],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav quota and size properties",
+      "preset": "red",
+      "expected": [4331],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav redirect reference resources",
+      "preset": "red",
+      "expected": [4437],
+      "confidence": "high"
+    },
+    {
+      "query": "webdav versioning deltav",
+      "preset": "red",
+      "expected": [3253],
+      "confidence": "high"
+    },
+    {
+      "query": "webdave protocol",
+      "preset": "red",
+      "expected": [4918],
+      "confidence": "medium",
+      "note": "common misspelling of webdav"
+    },
+    {
+      "query": "webfinger well-known",
+      "preset": "red",
+      "expected": [7033],
+      "confidence": "medium"
+    },
+    {
+      "query": "WebRTC data channel",
+      "preset": "red",
+      "expected": [8831],
+      "confidence": "high"
+    },
+    {
+      "query": "WebRTC overview",
+      "preset": "red",
+      "expected": [8825],
+      "confidence": "medium"
+    },
+    {
+      "query": "WebRTC security architecture",
+      "preset": "red",
+      "expected": [8827],
+      "confidence": "medium"
+    },
+    {
+      "query": "websocet protocol",
+      "preset": "red",
+      "expected": [6455],
+      "confidence": "medium",
+      "note": "common misspelling of websocket"
+    },
+    {
+      "query": "websocket",
+      "preset": "red",
+      "expected": [6455],
+      "confidence": "high"
+    },
+    {
+      "query": "websocket compression extension",
+      "preset": "red",
+      "expected": [7692],
+      "confidence": "high"
+    },
+    {
+      "query": "websocket over http/2",
+      "preset": "red",
+      "expected": [8441],
+      "confidence": "high"
+    },
+    {
+      "query": "websocket protocol",
+      "preset": "red",
+      "expected": [6455],
+      "confidence": "high"
+    },
+    {
+      "query": "websocket protocol",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["hybi"]
+      },
+      "expected": [6455],
+      "confidence": "high"
+    },
+    {
+      "query": "well-known URIs",
+      "preset": "red",
+      "expected": [8615],
+      "confidence": "high"
+    },
+    {
+      "query": "wg chair guidelines",
+      "preset": "red",
+      "expected": [2418],
+      "confidence": "medium"
+    },
+    {
+      "query": "what is a JWT",
+      "preset": "red",
+      "expected": [7519],
+      "confidence": "high"
+    },
+    {
+      "query": "what is a MIB",
+      "preset": "red",
+      "expected": [1213],
+      "confidence": "medium"
+    },
+    {
+      "query": "what is a URI",
+      "preset": "red",
+      "expected": [3986],
+      "confidence": "high"
+    },
+    {
+      "query": "what is bgp",
+      "preset": "red",
+      "expected": [4271],
+      "confidence": "high"
+    },
+    {
+      "query": "what is caldav",
+      "preset": "red",
+      "expected": [4791],
+      "confidence": "high"
+    },
+    {
+      "query": "what is CoAP",
+      "preset": "red",
+      "expected": [7252],
+      "confidence": "high"
+    },
+    {
+      "query": "what is CUBIC algorithm",
+      "preset": "red",
+      "expected": [9438],
+      "confidence": "high"
+    },
+    {
+      "query": "what is dkim signature",
+      "preset": "red",
+      "expected": [6376],
+      "confidence": "high"
+    },
+    {
+      "query": "what is dmarc",
+      "preset": "red",
+      "expected": [7489],
+      "confidence": "high"
+    },
+    {
+      "query": "what is edns",
+      "preset": "red",
+      "expected": [6891],
+      "confidence": "high"
+    },
+    {
+      "query": "what is ESP in networking security",
+      "preset": "red",
+      "expected": [4303],
+      "confidence": "medium"
+    },
+    {
+      "query": "what is hkdf",
+      "preset": "red",
+      "expected": [5869],
+      "confidence": "high"
+    },
+    {
+      "query": "what is HMAC",
+      "preset": "red",
+      "expected": [2104],
+      "confidence": "high"
+    },
+    {
+      "query": "what is http",
+      "preset": "red",
+      "expected": [9110],
+      "confidence": "high"
+    },
+    {
+      "query": "what is IKEv2",
+      "preset": "red",
+      "expected": [7296],
+      "confidence": "high"
+    },
+    {
+      "query": "what is IPv6",
+      "preset": "red",
+      "expected": [8200],
+      "confidence": "high"
+    },
+    {
+      "query": "what is JSON",
+      "preset": "red",
+      "expected": [8259],
+      "confidence": "high"
+    },
+    {
+      "query": "what is netconf",
+      "preset": "red",
+      "expected": [6241],
+      "confidence": "high"
+    },
+    {
+      "query": "what is oauth",
+      "preset": "red",
+      "expected": [6749],
+      "confidence": "high"
+    },
+    {
+      "query": "what is OCSP",
+      "preset": "red",
+      "expected": [6960],
+      "confidence": "high"
+    },
+    {
+      "query": "what is PIM multicast routing",
+      "preset": "red",
+      "expected": [7761],
+      "confidence": "medium"
+    },
+    {
+      "query": "what is punycode",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "high"
+    },
+    {
+      "query": "what is QUIC",
+      "preset": "red",
+      "expected": [9000],
+      "confidence": "high"
+    },
+    {
+      "query": "what is restconf",
+      "preset": "red",
+      "expected": [8040],
+      "confidence": "high"
+    },
+    {
+      "query": "what is segment routing",
+      "preset": "red",
+      "expected": [8402],
+      "confidence": "high"
+    },
+    {
+      "query": "what is SIP protocol",
+      "preset": "red",
+      "expected": [3261],
+      "confidence": "high"
+    },
+    {
+      "query": "what is spf email authentication",
+      "preset": "red",
+      "expected": [7208],
+      "confidence": "high"
+    },
+    {
+      "query": "what is ssh",
+      "preset": "red",
+      "expected": [4251],
+      "confidence": "high"
+    },
+    {
+      "query": "what is tcp",
+      "preset": "red",
+      "expected": [9293],
+      "confidence": "high"
+    },
+    {
+      "query": "what is the authentication-results header",
+      "preset": "red",
+      "expected": [8601],
+      "confidence": "high"
+    },
+    {
+      "query": "what is transport layer security",
+      "preset": "red",
+      "expected": [8446],
+      "confidence": "medium"
+    },
+    {
+      "query": "what is webdav",
+      "preset": "red",
+      "expected": [4918],
+      "confidence": "high"
+    },
+    {
+      "query": "what is websocket",
+      "preset": "red",
+      "expected": [6455],
+      "confidence": "high"
+    },
+    {
+      "query": "what is xmpp",
+      "preset": "red",
+      "expected": [6120],
+      "confidence": "high"
+    },
+    {
+      "query": "working group guidelines",
+      "preset": "red",
+      "expected": [2418],
+      "confidence": "high"
+    },
+    {
+      "query": "working group procedures",
+      "preset": "red",
+      "refinements": {
+        "subseries.acronym": ["bcp"]
+      },
+      "expected": [2418],
+      "confidence": "high"
+    },
+    {
+      "query": "X.509 certificate profile",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "x.509 certificate profile pkix",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "x.509 v3 extensions",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "x509 public key infrastructure",
+      "preset": "red",
+      "expected": [5280],
+      "confidence": "high"
+    },
+    {
+      "query": "xml media type",
+      "preset": "red",
+      "expected": [7303],
+      "confidence": "medium"
+    },
+    {
+      "query": "xml2rfc",
+      "preset": "red",
+      "expected": [7991],
+      "confidence": "medium"
+    },
+    {
+      "query": "XMPP",
+      "preset": "red",
+      "expected": [6120],
+      "confidence": "high"
+    },
+    {
+      "query": "xmpp address format",
+      "preset": "red",
+      "expected": [7622],
+      "confidence": "high"
+    },
+    {
+      "query": "XMPP core",
+      "preset": "red",
+      "expected": [6120],
+      "confidence": "high"
+    },
+    {
+      "query": "xmpp end-to-end encryption",
+      "preset": "red",
+      "expected": [3923],
+      "confidence": "medium"
+    },
+    {
+      "query": "xmpp instant messaging and presence",
+      "preset": "red",
+      "expected": [6121],
+      "confidence": "high"
+    },
+    {
+      "query": "xmpp iri uri scheme",
+      "preset": "red",
+      "expected": [5122],
+      "confidence": "medium"
+    },
+    {
+      "query": "xmpp over websocket",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["xmpp"]
+      },
+      "expected": [7395],
+      "confidence": "high"
+    },
+    {
+      "query": "xmpp presence",
+      "preset": "red",
+      "expected": [6121],
+      "confidence": "high"
+    },
+    {
+      "query": "xmpp rfc",
+      "preset": "red",
+      "expected": [6120],
+      "confidence": "high"
+    },
+    {
+      "query": "xn-- prefix domain encoding",
+      "preset": "red",
+      "expected": [3492],
+      "confidence": "medium"
+    },
+    {
+      "query": "yahoo domainkeys",
+      "preset": "red",
+      "expected": [4870],
+      "confidence": "medium"
+    },
+    {
+      "query": "YANG",
+      "preset": "red",
+      "expected": [7950],
+      "confidence": "high"
+    },
+    {
+      "query": "YANG",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["netmod"]
+      },
+      "expected": [7950],
+      "confidence": "high"
+    },
+    {
+      "query": "yang 1.0",
+      "preset": "red",
+      "expected": [6020],
+      "confidence": "medium"
+    },
+    {
+      "query": "yang 1.1",
+      "preset": "red",
+      "expected": [7950],
+      "confidence": "high"
+    },
+    {
+      "query": "yang data modeling language",
+      "preset": "red",
+      "refinements": {
+        "group.acronym": ["netmod"]
+      },
+      "expected": [7950],
+      "confidence": "high"
+    },
+    {
+      "query": "yang library",
+      "preset": "red",
+      "expected": [8525],
+      "confidence": "medium"
+    },
+    {
+      "query": "yang push",
+      "preset": "red",
+      "expected": [8641],
+      "confidence": "high"
+    },
+    {
+      "query": "zero configuration multicast dns",
+      "preset": "red",
+      "expected": [6762],
+      "confidence": "medium"
+    },
+    {
+      "query": "zstd content encoding",
+      "preset": "red",
+      "expected": [8878],
+      "confidence": "medium"
+    },
+    {
+      "query": "a JWT represents a set of claims as a JSON object",
+      "preset": "red-content",
+      "expected": [7519],
+      "confidence": "medium"
+    },
+    {
+      "query": "AEAD_CHACHA20_POLY1305",
+      "preset": "red-content",
+      "expected": [8439],
+      "confidence": "high"
+    },
+    {
+      "query": "base64 data url",
+      "preset": "red-content",
+      "expected": [2397],
+      "confidence": "medium"
+    },
+    {
+      "query": "CoAP block1 block2 option",
+      "preset": "red-content",
+      "expected": [7959],
+      "confidence": "medium"
+    },
+    {
+      "query": "extract-then-expand key derivation",
+      "preset": "red-content",
+      "expected": [5869],
+      "confidence": "medium"
+    },
+    {
+      "query": "mail-originating organization can express domain-level policies and preferences",
+      "preset": "red-content",
+      "expected": [7489],
+      "confidence": "medium",
+      "note": "paraphrase of DMARC abstract wording"
+    },
+    {
+      "query": "minimize information sent to dns servers",
+      "preset": "red-content",
+      "expected": [9156],
+      "confidence": "medium"
+    },
+    {
+      "query": "permitting a signing domain to claim responsibility for the introduction of a message",
+      "preset": "red-content",
+      "expected": [6376],
+      "confidence": "medium",
+      "note": "paraphrase of DKIM abstract wording"
+    },
+    {
+      "query": "ssh port forwarding",
+      "preset": "red-content",
+      "expected": [4254],
+      "confidence": "medium"
+    },
+    {
+      "query": "the key words MUST MUST NOT REQUIRED SHALL",
+      "preset": "red-content",
+      "expected": [2119],
+      "confidence": "high"
+    },
+    {
+      "query": "time-based fast loss detection algorithm",
+      "preset": "red-content",
+      "expected": [8985],
+      "confidence": "medium"
+    }
+  ]
+}

@@ -160,7 +160,7 @@ export default defineNuxtConfig({
        * Uncomment/comment out the lines to adjust the config.
        */
       '/api/v1/**': {
-        proxy: 'https://www.staging.rfc-editor.org/api/v1/**'
+        proxy: 'https://www.rfc-editor.org/api/v1/**'
         // proxy: 'http://localhost:3001/api/v1/**'
       }
     }
