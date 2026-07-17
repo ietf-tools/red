@@ -104,20 +104,29 @@ const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
 const rfcHtmlPojoRenderers: ElementRenderers = {
   ...defaultRenderer,
   a: (node, childrenForVue) => {
-    const classAttr = node.attributes.class
-
     const isRfcLink = parseMaybeRfcLink(node.attributes.href ?? '')
-    const rfcLinkText = isRfcLink ? node.children.map(renderNodePojoToHtmlString).join('') : ''
+
+    if (!isRfcLink) {
+      return h(
+        AMaybeRFCLink,
+        {
+          href: '',
+          ...node.attributes
+        },
+        () => childrenForVue
+      )
+    }
+
+    const rfcLinkText = node.children.map(renderNodePojoToHtmlString).join('')
+    const canPreventWrappingWithoutCausingLayoutProblems =
+      rfcLinkText.length <= RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT
 
     return h(
       AMaybeRFCLink,
       {
         href: '',
         ...node.attributes,
-        class: [
-          classAttr,
-          rfcLinkText.length <= RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT ? 'whitespace-nowrap' : undefined
-        ]
+        class: [node.attributes.class, canPreventWrappingWithoutCausingLayoutProblems ? 'whitespace-nowrap' : undefined]
           .filter(Boolean)
           .join(' ')
       },
