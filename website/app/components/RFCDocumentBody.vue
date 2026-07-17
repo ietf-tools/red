@@ -67,7 +67,7 @@
 <script setup lang="ts">
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
-import { rfcFormatPathBuilder } from '~/utilities/url'
+import { parseMaybeRfcLink, rfcFormatPathBuilder } from '~/utilities/url'
 import { COMMA, NONBREAKING_SPACE, FULLSTOP, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
@@ -77,7 +77,8 @@ import {
   renderNodePojo,
   defaultRenderer,
   type ElementRenderers,
-  nodePojoToInnerText
+  nodePojoToInnerText,
+  renderNodePojoToHtmlString
 } from '~/utilities/renderDocumentPojo'
 import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
@@ -98,9 +99,31 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 
 const featureFlags = useFeatureFlags()
 
+const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
+
 const rfcHtmlPojoRenderers: ElementRenderers = {
   ...defaultRenderer,
-  a: (node, childrenForVue) => h(AMaybeRFCLink, { href: '', ...node.attributes }, () => childrenForVue),
+  a: (node, childrenForVue) => {
+    const classAttr = node.attributes.class
+
+    const isRfcLink = parseMaybeRfcLink(node.attributes.href ?? '')
+    const rfcLinkText = isRfcLink ? node.children.map(renderNodePojoToHtmlString).join('') : ''
+
+    return h(
+      AMaybeRFCLink,
+      {
+        href: '',
+        ...node.attributes,
+        class: [
+          classAttr,
+          rfcLinkText.length <= RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT ? 'whitespace-nowrap' : undefined
+        ]
+          .filter(Boolean)
+          .join(' ')
+      },
+      () => childrenForVue
+    )
+  },
   svg: (node, childrenForVue) =>
     h(
       node.nodeName,
@@ -130,12 +153,14 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     const {
       'data-component': _dataComponent,
       'data-copy-mode': dataCopyModeBoolString,
+      class: classAttr,
       ...attributes
     } = node.attributes
     return h(
       HorizontalScrollable,
       {
         ...attributes,
+        class: `mb-2 md:mb-4 ${classAttr ?? ''}`,
         copyMode: dataCopyModeBoolString === true.toString()
       },
       () => childrenForVue

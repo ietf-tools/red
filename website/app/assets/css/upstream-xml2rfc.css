@@ -394,8 +394,9 @@ th {
 table caption {
   font-style: italic;
   margin: 0;
-  padding-left: var(--layout-bleed-left);
-  padding-right: var(--layout-bleed-right);
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
   text-align: left;
 }
 
