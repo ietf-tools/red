@@ -8,40 +8,47 @@ import type { RouterConfig } from '@nuxt/schema'
  * See https://github.com/ietf-tools/red/issues/441
  *
  * Non-RFC citations (e.g. `[FIPS-203]`) are plain native `<a href="#…">`
- * anchors, not router links. Clicking one scrolls to the reference natively and
- * the browser records the scroll position for that history entry, exactly as the
- * web platform specifies, so Back button should return the reader to where they were.
+ * anchors, not router links. Clicking one scrolls to the reference natively; the
+ * browser records the scroll position for that history entry, exactly as the web
+ * platform specifies, so Back should return the reader to where they were.
  *
- * Nuxt/vue-router breaks this. It installs a global popstate handler that runs
- * its `scrollBehavior` on every Back, including one triggered by a native anchor
- * the router never created (`history.state.scroll` is `null`). With no position
- * of its own to restore, its default overrides the browser's native scroll
- * restoration and forces `{ top: 0 }`, throwing the reader to the top of the
- * page. That is a regression of native browser behaviour caused by the router,
- * not by anything in this app.
+ * Nuxt/vue-router breaks this. Its global popstate handler runs `scrollBehavior`
+ * on every Back, and its default forces `{ top: 0 }` when the hash is removed on
+ * the same page — throwing the reader to the top.
  *
- * This restores the native behaviour: for same-page hash navigation the content
- * is already rendered, so we hand scroll restoration back to the browser (return
- * `false`) instead of letting the router clobber it. The cross-page navigation
- * path is unaffected.
+ * ── This override adopts Nuxt's own fix early ──
+ * Nuxt fixed this upstream by returning `savedPosition ?? { left: 0, top: 0 }`
+ * for the same-page hash-removal case, so the Back button restores the saved
+ * position instead of jumping to the top:
+ *   https://github.com/nuxt/nuxt/pull/35608  (fixes nuxt#35588)
+ *
+ * We mirror that approach here so we're already on the upstream behaviour before
+ * it ships. Once the fix is released and we bump Nuxt, DELETE this file — the
+ * default `scrollBehavior` will then do the right thing on its own.
+ *
+ * (This is the same-page hash logic from Nuxt's default `router.options.ts` plus
+ * the PR #35608 change; it is not a byte-for-byte copy — the async page-load and
+ * scroll-margin-top handling of the full default are not needed for these
+ * same-document hash navigations.)
  */
 export default {
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    // Same-page navigation where only the hash changed (or was removed) — e.g.
-    // pressing Back after clicking an in-document citation link. Hand scroll
-    // restoration back to the browser (its native behaviour) instead of letting
-    // the router force the page to the top.
-    if (to.path === from.path) {
+    // Same-page (hash) navigation — mirrors Nuxt's default incl. PR #35608.
+    if (to.path.replace(/\/$/, '') === from.path.replace(/\/$/, '')) {
+      if (from.hash && !to.hash) {
+        // Back/Forward: restore the saved position; only fall back to the top
+        // when there is none (e.g. a programmatic hash removal, not a history pop).
+        return savedPosition ?? { left: 0, top: 0 }
+      }
       if (to.hash) {
         return { el: to.hash, behavior: 'instant' }
       }
       return false
     }
-    // Navigating to a different page: honour a target hash, otherwise scroll to
-    // the top.
+    // Navigating to a different page.
+    if (savedPosition) {
+      return savedPosition
+    }
     if (to.hash) {
       return { el: to.hash, behavior: 'instant' }
     }
