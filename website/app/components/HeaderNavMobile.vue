@@ -1,7 +1,7 @@
 <template>
   <Anchor
     :href="SEARCH_PATH"
-    class="absolute top-0 right-10 no-underline block px-2 pt-4.25 pb-2 block lg:hidden"
+    class="absolute top-0 right-10 no-underline block px-2 pt-4 pb-2 block lg:hidden text-white"
     aria-label="Search">
     <GraphicsSearch />
   </Anchor>
@@ -15,7 +15,7 @@
       <DialogContent
         :class="[
           'overflow-y-scroll', // needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
-          'absolute inset-0 z-60 bg-blue-900 text-white dark:bg-blue-950 dark:text-white  h-full'
+          'absolute inset-0 z-60 bg-blue-900 text-white dark:bg-blue-950 dark:text-white h-full'
         ]"
         :aria-labelledby="headingId"
         :aria-describedby="undefined">

@@ -33,7 +33,7 @@
           v-for="rfc in subseriesDocument.contents"
           :key="rfc.number"
           :rfc="rfc"
-          heading-level="3"
+          heading-level="2"
           :show-abstract="true" />
         <div v-else class="pl-6 pt-6">
           <i>
