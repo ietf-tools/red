@@ -324,9 +324,40 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
       const REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH = 16
       const WORD_BREAK_ELEMENT = 'wbr'
 
+      // A word containing an underscore is treated as an identifier and always
+      // gets <wbr>s regardless of length, so names like `qualifier_set`,
+      // `valid_policy` and `parent_nodes` can wrap even in deeply-indented /
+      // narrow (~320px) contexts. An underscore is an unambiguous identifier
+      // signal: prose and proper names don't contain internal underscores, so
+      // ordinary text (incl. trailing punctuation like `document.`) is untouched.
+      //
+      // Underscore is the only split char safe to trigger on regardless of
+      // length. Deliberately excluded from the always-break trigger:
+      //  - `.` `?` `%` `&`: common in short prose ("e.g.", "50%", "AT&T") —
+      //    always-breaking would orphan trailing punctuation.
+      //  - `/` `:` `=` `@` `\`: in practice only inside already-long strings
+      //    (URLs, paths, emails) that the length gate already catches.
+      //  - `-` (hyphen): split *before* the char (unlike underscore's after-
+      //    placement, ietf-tools/red#424), so revisit placement before adding.
+      const IDENTIFIER_BOUNDARY = /_/
+
+      // A camelCase hump also marks a code identifier (`exclusiveMaximum`,
+      // `AddressComponent`), but it occurs in surnames too (e.g. "McManus"), so
+      // it only triggers a break once the word is long enough to be an
+      // identifier rather than a name. Hyphenated names like "Delignat-Lavaud"
+      // have no camelCase hump, so they are left intact. This length floor is
+      // what lets exactly-16-char code identifiers break without the main gate
+      // having to be lowered (which would catch 16-char hyphenated names).
+      const CAMEL_CASE = /[a-z][A-Z]/
+      const CAMEL_CASE_MIN_LENGTH = REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH
+
       const textAndWordbreaks = words
         .flatMap((word): Node | Node[] => {
-          if (word.length > REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH) {
+          if (
+            word.length > REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH ||
+            IDENTIFIER_BOUNDARY.test(word) ||
+            (CAMEL_CASE.test(word) && word.length >= CAMEL_CASE_MIN_LENGTH)
+          ) {
             const wordParts = chunkString(word, REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH)
             return wordParts.flatMap((wordPart, i, arr) => {
               if (wordPart.length === 0) {

@@ -17,11 +17,18 @@ export const chunkString = (str: string, maxChunkLength: number): string[] => {
     chunks.push(out.substring(0, protocolIndex + COLONSLASHSLASH.length))
     out = out.substring(protocolIndex + COLONSLASHSLASH.length)
   }
-  const nonWordChars = getAllIndexes(
+  // Separators we break *before*, so the separator starts the next chunk
+  // (URL-style, e.g. `.com`, `/path`). Note `_` is handled separately below.
+  const breakBeforeIndexes = getAllIndexes(
     out,
     // match any char that we can insert a word break at
-    /[@\\\/:&_\-=\(\)\.\?%]+/g
+    /[@\\\/:&\-=\(\)\.\?%]+/g
   )
+  // Underscores: break *after* the underscore run so a wrapped line never
+  // starts with `_` (see ietf-tools/red#424 — people don't expect a break
+  // there, and a leading underscore reads as unnatural). The break point is
+  // the index immediately past the run.
+  const breakAfterUnderscoreIndexes = Array.from(out.matchAll(/_+/g)).map((match) => match.index + match[0].length)
   const camelCaseIndexes = getAllIndexes(
     out,
     // match camelCase
@@ -30,7 +37,7 @@ export const chunkString = (str: string, maxChunkLength: number): string[] => {
     // adjust index to be middle of camelCase
     (index) => index + 1
   )
-  const breakIndexes = uniq([...nonWordChars, ...camelCaseIndexes]).filter(
+  const breakIndexes = uniq([...breakBeforeIndexes, ...breakAfterUnderscoreIndexes, ...camelCaseIndexes]).filter(
     // don't split on 0
     (index) => index !== 0
   )

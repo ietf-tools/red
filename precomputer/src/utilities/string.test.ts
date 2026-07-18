@@ -24,9 +24,9 @@ test(`chunkString with url`, () => {
     '-editor',
     '.org',
     '/search',
-    '/rfc',
-    '_search',
-    '_detail',
+    '/rfc_',
+    'search_',
+    'detail',
     '.php',
     '?title',
     '=test',
@@ -34,16 +34,18 @@ test(`chunkString with url`, () => {
     '%5B',
     '%5D',
     '=Any',
-    '&pub',
-    '_date',
-    '_type',
+    '&pub_',
+    'date_',
+    'type',
     '=any'
   ])
 })
 
 test(`chunkString with underscores`, () => {
+  // Break *after* the underscore so a wrapped line never starts with `_`
+  // (ietf-tools/red#424).
   const chunks = chunkString('AROUND_THE_WORLD_AROUND_THE_WORLD', 16)
-  expect(chunks).toEqual(['AROUND', '_THE', '_WORLD', '_AROUND', '_THE', '_WORLD'])
+  expect(chunks).toEqual(['AROUND_', 'THE_', 'WORLD_', 'AROUND_', 'THE_', 'WORLD'])
 })
 
 test(`chunkString with camelCase`, () => {
@@ -79,7 +81,48 @@ test(`chunkString with camelCase`, () => {
   ])
 
   const chunks2 = chunkString('DecodePacketNumber(largest_pn', 10)
-  expect(chunks2).toEqual(['Decode', 'Packet', 'Number', '(largest', '_pn'])
+  expect(chunks2).toEqual(['Decode', 'Packet', 'Number', '(largest_', 'pn'])
+})
+
+// Parse HTML and run ensureWordBreaks over it, returning the resulting pojo.
+const applyWordBreaks = async (html: string): Promise<ReturnType<typeof rfcDocumentToPojo>> => {
+  const parser = await getDOMParser()
+  const dom = parser.parseFromString(html, 'text/html')
+  const nodes = Array.from(dom.body.childNodes)
+  ensureWordBreaks(nodes)
+  return rfcDocumentToPojo(nodes)
+}
+
+// Serialize a pojo to a string, marking each <wbr> with `|`.
+const serializeWbr = (pojo: ReturnType<typeof rfcDocumentToPojo>): string =>
+  pojo
+    .map((node) => {
+      if (node.type === 'Text') {
+        return node.textContent
+      }
+      if (node.nodeName === 'wbr') {
+        return '|'
+      }
+      return serializeWbr(node.children)
+    })
+    .join('')
+
+test('inserts <wbr> at identifier boundaries regardless of word length', async () => {
+  // snake_case: break after the underscore (ietf-tools/red#424)
+  expect(serializeWbr(await applyWordBreaks('<p>qualifier_set</p>'))).toBe('qualifier_|set')
+  expect(serializeWbr(await applyWordBreaks('<p>valid_policy</p>'))).toBe('valid_|policy')
+  expect(serializeWbr(await applyWordBreaks('<p>parent_nodes</p>'))).toBe('parent_|nodes')
+  // camelCase: break before the hump. Both are exactly 16 chars — previously
+  // skipped by the strict `length > 16` gate.
+  expect(serializeWbr(await applyWordBreaks('<code>exclusiveMaximum</code>'))).toBe('exclusive|Maximum')
+  expect(serializeWbr(await applyWordBreaks('<code>AddressComponent</code>'))).toBe('Address|Component')
+})
+
+test('leaves ordinary prose (incl. trailing punctuation) unbroken', async () => {
+  expect(serializeWbr(await applyWordBreaks('<p>Information about the document.</p>'))).toBe(
+    'Information about the document.'
+  )
+  expect(serializeWbr(await applyWordBreaks('<p>e.g. some text here</p>'))).toBe('e.g. some text here')
 })
 
 test('can break words', async () => {
