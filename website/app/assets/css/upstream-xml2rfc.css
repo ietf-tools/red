@@ -965,10 +965,6 @@ dl.dlParallel > dt {
   margin-right: 1em;
 }
 
-dl.dlParallel dd {
-  padding-top: 0.15em;
-}
-
 dl.dlNewline > dt {
   float: none;
 }
