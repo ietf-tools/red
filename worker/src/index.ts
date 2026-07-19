@@ -219,8 +219,9 @@ router
 
   // Fallback to origin. The site is read-only, so allow GET and HEAD (the latter
   // is used by the site health check) and reject everything else. GET/HEAD get
-  // stale-while-revalidate caching (fresh for 60s, then served stale for up to
-  // 5 min while revalidating in the background).
+  // stale-while-revalidate caching: fresh for maxAgeSeconds, then served stale for
+  // a further additionalStaleWhileRevalidateSeconds while revalidating in the
+  // background.
   .all('*', async (req: IRequest, _env: Env, ctx: ExecutionContext) => {
     const allowedMethods = ['GET', 'HEAD']
     if (!allowedMethods.includes(req.method)) {
@@ -236,7 +237,7 @@ router
       : await staleWhileRevalidate(
           req,
           ctx,
-          { maxAgeSeconds: 60, staleWhileRevalidateSeconds: 300 },
+          { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 3000 },
           { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
         )
 

@@ -36,18 +36,21 @@ let cache: FakeCache
 let nowMs: number
 let originVersion: string
 let originStatus: number
+let originResponseHeaders: Record<string, string>
 let fetchCount: number
 let lastFetchedUrl: string | undefined
+let lastFetchRequest: Request | undefined
 
 // Injected clock; tests advance it by assigning to nowMs.
 const now = () => nowMs
 
-// Injected origin; returns the current originVersion/originStatus, records the
-// URL it was asked to fetch, and counts every hit.
+// Injected origin; returns the current originVersion/originStatus/headers,
+// records the request it was asked to fetch, and counts every hit.
 const fetchFake = async (request: Request): Promise<Response> => {
   fetchCount++
   lastFetchedUrl = request.url
-  return new Response(originVersion, { status: originStatus })
+  lastFetchRequest = request
+  return new Response(originVersion, { status: originStatus, headers: originResponseHeaders })
 }
 
 const deps = () => ({ cache, fetch: fetchFake, now })
@@ -69,15 +72,22 @@ function createCtx() {
 const get = (url = URL_UNDER_TEST) => new Request(url, { method: 'GET' })
 
 const call = (req: Request, ctx: ExecutionContext) =>
-  staleWhileRevalidate(req, ctx, { maxAgeSeconds: MAX_AGE_SECONDS, staleWhileRevalidateSeconds: SWR_SECONDS }, deps())
+  staleWhileRevalidate(
+    req,
+    ctx,
+    { maxAgeSeconds: MAX_AGE_SECONDS, additionalStaleWhileRevalidateSeconds: SWR_SECONDS },
+    deps()
+  )
 
 beforeEach(() => {
   cache = new FakeCache()
   nowMs = 0
   originVersion = 'v1'
   originStatus = 200
+  originResponseHeaders = {}
   fetchCount = 0
   lastFetchedUrl = undefined
+  lastFetchRequest = undefined
 })
 
 test('miss: fetches origin, caches it, and tags the response with SWR cache-control', async () => {
@@ -218,4 +228,81 @@ test('query strings are stripped from the cache key and the origin request', asy
   const resp = await call(get(`${URL_UNDER_TEST}?cachebust=zzz`), createCtx().ctx)
   expect(fetchCount).toBe(1) // no extra origin hit
   expect(await resp.text()).toBe('v1')
+})
+
+test('the origin is fetched with manual redirect mode so 3xx is returned, not followed', async () => {
+  await call(get(), createCtx().ctx)
+  expect(lastFetchRequest?.redirect).toBe('manual')
+})
+
+test('redirects are cached so repeated hits are not proxied to origin', async () => {
+  originStatus = 302
+  originVersion = ''
+  originResponseHeaders = { location: 'https://www.rfc-editor.org/info/rfc9999/' }
+
+  const first = await call(get(), createCtx().ctx)
+  expect(first.status).toBe(302)
+  expect(first.headers.get('location')).toBe('https://www.rfc-editor.org/info/rfc9999/')
+  expect(first.headers.get('cache-control')).toBe(
+    `public, max-age=${MAX_AGE_SECONDS}, stale-while-revalidate=${SWR_SECONDS}`
+  )
+  expect(fetchCount).toBe(1)
+
+  // A repeat within maxAge is served from cache — origin is not hit again.
+  nowMs = (MAX_AGE_SECONDS - 1) * 1000
+  const second = await call(get(), createCtx().ctx)
+  expect(second.status).toBe(302)
+  expect(second.headers.get('location')).toBe('https://www.rfc-editor.org/info/rfc9999/')
+  expect(fetchCount).toBe(1)
+})
+
+test('no client headers are forwarded to origin — only the URL is fetched', async () => {
+  const req = new Request(URL_UNDER_TEST, {
+    method: 'GET',
+    headers: {
+      range: 'bytes=0-99',
+      'if-none-match': '"abc"',
+      'if-modified-since': 'Wed, 21 Oct 2026 07:28:00 GMT',
+      'if-range': '"abc"',
+      cookie: 'session=secret',
+      authorization: 'Bearer secret',
+      'x-custom': 'anything'
+    }
+  })
+  await call(req, createCtx().ctx)
+
+  // The origin request is built from the URL alone; none of the client's
+  // headers ride along, so no denylist can be defeated by one we forgot.
+  for (const header of [
+    'range',
+    'if-none-match',
+    'if-modified-since',
+    'if-range',
+    'cookie',
+    'authorization',
+    'x-custom'
+  ]) {
+    expect(lastFetchRequest?.headers.get(header)).toBeNull()
+  }
+})
+
+test('the internal stored-at timestamp header never leaks to the client', async () => {
+  const miss = await call(get(), createCtx().ctx)
+  expect(miss.headers.get('x-swr-stored-at-ms')).toBeNull()
+
+  nowMs = (MAX_AGE_SECONDS - 1) * 1000
+  const hit = await call(get(), createCtx().ctx)
+  expect(hit.headers.get('x-swr-stored-at-ms')).toBeNull()
+})
+
+test('Set-Cookie from origin is not stored in the shared cache entry', async () => {
+  originResponseHeaders = { 'set-cookie': 'session=secret; Path=/' }
+  const miss = await call(get(), createCtx().ctx)
+  expect(miss.headers.get('set-cookie')).toBeNull()
+
+  // The cached copy served to other users must not carry it either.
+  nowMs = (MAX_AGE_SECONDS - 1) * 1000
+  const hit = await call(get(), createCtx().ctx)
+  expect(hit.headers.get('set-cookie')).toBeNull()
+  expect(fetchCount).toBe(1)
 })
