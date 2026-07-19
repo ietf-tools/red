@@ -56,10 +56,11 @@ export function createBlobNotFoundResponse(): Response {
 
 const SWR_STORED_AT_MS_HEADER = 'x-swr-stored-at-ms'
 
-// These are WIDTHS that compound, not absolute boundaries: expiry is the sum of
-// the two. e.g. { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 3000 }
-// means fresh for 10 min, stale-served for the next 50 min, expired at 60 min —
-// NOT expired at 3000s. Both are assumed non-negative.
+// These are WIDTHS that compound, not absolute boundaries: total lifetime is
+// maxAgeSeconds + additionalStaleWhileRevalidateSeconds. An entry is fresh for
+// maxAgeSeconds, then stale-served for a further additionalStaleWhileRevalidateSeconds,
+// then expired. So additionalStaleWhileRevalidateSeconds is the extra stale width
+// past freshness — NOT the total lifetime. Both are assumed non-negative.
 type StaleWhileRevalidateOptions = {
   maxAgeSeconds: number
   additionalStaleWhileRevalidateSeconds: number
