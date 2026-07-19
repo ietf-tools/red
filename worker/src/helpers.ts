@@ -56,9 +56,13 @@ export function createBlobNotFoundResponse(): Response {
 
 const SWR_STORED_AT_MS_HEADER = 'x-swr-stored-at-ms'
 
+// These are WIDTHS that compound, not absolute boundaries: expiry is the sum of
+// the two. e.g. { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 3000 }
+// means fresh for 10 min, stale-served for the next 50 min, expired at 60 min —
+// NOT expired at 3000s. Both are assumed non-negative.
 type StaleWhileRevalidateOptions = {
   maxAgeSeconds: number
-  staleWhileRevalidateSeconds: number
+  additionalStaleWhileRevalidateSeconds: number
 }
 
 /**
@@ -74,24 +78,35 @@ type StaleWhileRevalidateDeps = {
 
 function withBrowserSwrHeaders(
   resp: Response,
-  { maxAgeSeconds, staleWhileRevalidateSeconds }: StaleWhileRevalidateOptions
+  { maxAgeSeconds, additionalStaleWhileRevalidateSeconds }: StaleWhileRevalidateOptions
 ): Response {
   const out = new Response(resp.body, resp)
   out.headers.set(
     'Cache-Control',
-    `public, max-age=${maxAgeSeconds}, stale-while-revalidate=${staleWhileRevalidateSeconds}`
+    `public, max-age=${maxAgeSeconds}, stale-while-revalidate=${additionalStaleWhileRevalidateSeconds}`
   )
+  // Never leak our internal bookkeeping header to the client.
+  out.headers.delete(SWR_STORED_AT_MS_HEADER)
   return out
 }
 
+const CACHEABLE_REDIRECTS = new Set([301, 302, 307, 308])
+
 /**
- * Cache successful responses and 404s — the latter so that a flood of requests
- * for non-existent origin pages is absorbed by the cache instead of hammering
- * the origin. 5xx (and every other error) is never cached, so a failing origin
- * can neither be cached nor poison an existing good entry.
+ * Cache successful responses, 404s, and redirects.
+ *
+ * - 404s so that a flood of requests for non-existent origin pages is absorbed
+ *   by the cache instead of hammering the origin.
+ * - Redirects (301/302/307/308) so the origin isn't re-hit for what is a fixed
+ *   answer during the stale window. This relies on the origin request using
+ *   `redirect: 'manual'` so `fetch()` hands us the real 3xx + Location instead
+ *   of silently following it.
+ *
+ * 5xx (and every other error) is never cached, so a failing origin can neither
+ * be cached nor poison an existing good entry.
  */
 function isCacheable(resp: Response): boolean {
-  return resp.ok || resp.status === 404
+  return resp.ok || resp.status === 404 || CACHEABLE_REDIRECTS.has(resp.status)
 }
 
 /**
@@ -101,18 +116,19 @@ function isCacheable(resp: Response): boolean {
  * cannot inject that directive into the edge cache populated by `fetch()`.
  *
  * - Fresh (age <= maxAgeSeconds): served from cache.
- * - Stale (maxAgeSeconds < age <= maxAgeSeconds + staleWhileRevalidateSeconds):
+ * - Stale (maxAgeSeconds < age <= maxAgeSeconds + additionalStaleWhileRevalidateSeconds):
  *   the stale copy is served immediately and the origin is re-fetched in the
  *   background via `ctx.waitUntil()`, so no visitor blocks on revalidation.
  * - Miss or fully expired: fetched from origin synchronously, then cached.
  *
- * Only successful responses and 404s are cached (see isCacheable). The origin
- * does not vary by query string, so the query is stripped from both the cache
- * key and the origin request: this collapses query-randomized floods (a common
- * cache-busting DDoS tactic) onto a single cached entry.
+ * Only successful responses, 404s, and redirects are cached (see isCacheable).
+ * The origin does not vary by query string, so the query is stripped from both
+ * the cache key and the origin request: this collapses query-randomized floods
+ * (a common cache-busting DDoS tactic) onto a single cached entry.
  *
- * Callers must pass a GET request; non-GET methods are rejected upstream by the
- * router's `rejectNonGet` guard.
+ * The incoming request may be GET or HEAD (HEAD is used by the site health
+ * check); either way we fetch the origin with GET and share one cache entry.
+ * The `.all('*')` router handler rejects every other method before we get here.
  */
 export async function staleWhileRevalidate(
   req: Request,
@@ -120,14 +136,27 @@ export async function staleWhileRevalidate(
   options: StaleWhileRevalidateOptions,
   { cache, fetch, now }: StaleWhileRevalidateDeps
 ): Promise<Response> {
-  const { maxAgeSeconds, staleWhileRevalidateSeconds } = options
-  const totalTtlSeconds = maxAgeSeconds + staleWhileRevalidateSeconds
+  const { maxAgeSeconds, additionalStaleWhileRevalidateSeconds } = options
+  const totalTtlSeconds = maxAgeSeconds + additionalStaleWhileRevalidateSeconds
 
   // The origin webserver doesn't (shouldn't!) vary responses by query so this should be safe to do
   const normalizedUrl = new URL(req.url)
   normalizedUrl.search = ''
   const cacheKey = new Request(normalizedUrl.toString(), { method: 'GET' })
-  const originRequest = new Request(normalizedUrl.toString(), { method: 'GET', headers: req.headers })
+
+  // Fetch origin with nothing but the URL — deliberately no client headers. The
+  // origin is a public, read-only site that doesn't vary its response by request
+  // headers, so forwarding them buys nothing and only invites cache bugs: Range
+  // would make origin answer 206 (which the Cache API refuses to store, throwing),
+  // a conditional would invite a 304 our cache doesn't model, and Cookie /
+  // Authorization would let a per-user response be cached under the shared key.
+  // `redirect: 'manual'` makes fetch() hand us the actual 3xx response (with its
+  // Location) instead of silently following it — so a redirect can be cached and
+  // returned to the browser rather than costing an extra origin round-trip.
+  const originRequest = new Request(normalizedUrl.toString(), {
+    method: 'GET',
+    redirect: 'manual'
+  })
 
   const revalidate = async (): Promise<Response> => {
     const fresh = await fetch(originRequest)
@@ -136,6 +165,8 @@ export async function staleWhileRevalidate(
     }
     const stored = new Response(fresh.body, fresh)
     stored.headers.set(SWR_STORED_AT_MS_HEADER, now().toString())
+    // Never cache a per-user cookie under a shared key.
+    stored.headers.delete('set-cookie')
     // Retain the entry in the Cache API for the whole stale window.
     stored.headers.set('Cache-Control', `public, max-age=${totalTtlSeconds}`)
     await cache.put(cacheKey, stored.clone())
