@@ -1,6 +1,9 @@
-import { GraphicsSearch, GraphicsUserPreferences } from '#components'
+import { GraphicsBustInSilhouette, GraphicsSearch, GraphicsUserPreferences } from '#components'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { htmlEscapeToText } from '~/utilities/html'
+import { useFeatureFlags } from '~/utilities/feature-flags'
+import { useAuthStore } from '~/stores/auth'
+import { oidcLogin, oidcLogout } from '~/utilities/oidc'
 import {
   IETF_PRIVACY_STATEMENT_URL,
   INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL,
@@ -17,6 +20,7 @@ import type { VueClick } from '~/utilities/vue'
 export type MenuItem = {
   icon?: string | (() => VNode)
   label: string
+  component?: ReturnType<typeof h>
   description?: string
   hideMobile?: boolean
   hideDesktop?: boolean
@@ -68,6 +72,9 @@ export const useMenuData = (mode: Mode) => {
   const uiSettings = useUiSettingsStore()
   const storeRefs = storeToRefs(uiSettings)
   const { setDisabledRFCLinkPreview } = uiSettings
+  const featureFlags = useFeatureFlags()
+  const authStore = useAuthStore()
+  const { isAuthenticated, user } = storeToRefs(authStore)
 
   // Writable model for the theme radio group. The selected value is the
   // colour-mode *preference* (e.g. 'system'), not the resolved value.
@@ -173,46 +180,95 @@ export const useMenuData = (mode: Mode) => {
         icon: () => h(GraphicsSearch, { class: 'w-[19px] h-[19px]' }),
         label: 'Search',
         href: SEARCH_PATH satisfies ValidHrefs
+      }
+    ]
+
+    const themeAndPreferencesChildren: MenuItem[] = [
+      {
+        label: 'Theme',
+        role: 'radiogroup',
+        radioGroupRef: themeRef,
+        children: colorPreferences.map(
+          (colorPreference): MenuItem => ({
+            label: colorPreference.label,
+            activeLabelFn: () =>
+              colorMode.preference === colorPreference.value
+                ? `Selected ${colorPreference.label}`
+                : `Not selected ${colorPreference.label}`,
+            role: 'radio',
+            fieldValue: colorPreference.value
+          })
+        )
       },
       {
-        icon: () => h(GraphicsUserPreferences),
-        label: 'Your preferences',
-        hideLabelDesktop: true,
+        label: 'RFC Info pages',
+        role: 'checkboxgroup',
+        checkboxGroupRef: uiSettingsRef,
         children: [
           {
-            label: 'Theme',
-            role: 'radiogroup',
-            radioGroupRef: themeRef,
-            children: colorPreferences.map(
-              (colorPreference): MenuItem => ({
-                label: colorPreference.label,
-                activeLabelFn: () =>
-                  colorMode.preference === colorPreference.value
-                    ? `Selected ${colorPreference.label}`
-                    : `Not selected ${colorPreference.label}`,
-                role: 'radio',
-                fieldValue: colorPreference.value
-              })
-            )
-          },
-          {
-            label: 'RFC Info pages',
-            role: 'checkboxgroup',
-            checkboxGroupRef: uiSettingsRef,
-            children: [
-              {
-                label: 'Disable RFC Link Preview',
-                role: 'checkbox',
-                fieldValue: 'disableRFCLinkPreview',
-                description: 'Disable the RFC tooltip that activates on some RFC links (typically within RFCs).'
-              }
-            ]
+            label: 'Disable RFC Link Preview',
+            role: 'checkbox',
+            fieldValue: 'disableRFCLinkPreview',
+            description: 'Disable the RFC tooltip that activates on some RFC links (typically within RFCs).'
           }
         ]
       }
     ]
 
+    // Personalisation account menu — gated on the `oidc` feature flag. Absent from SSR
+    // and first client paint (flags default false, hydrate onMounted), so it appears only
+    // after mount when the flag is on: no hydration mismatch, and the cached anonymous
+    // HTML never contains it. Rightmost item.
+    if (featureFlags.value.oidc) {
+      if (isAuthenticated.value) {
+        const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
+        const picture = user.value?.picture
+        data.push({
+          label: displayName,
+          hideLabelDesktop: true,
+          icon: picture
+            ? () => h('img', { src: picture, alt: `Picture of ${displayName}`, class: 'w-6 h-6 rounded-full' })
+            : () => h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' }),
+          children: [
+            {
+              label: 'Sign out',
+              click: () => {
+                void oidcLogout()
+              }
+            },
+            ...themeAndPreferencesChildren
+          ]
+        })
+      } else {
+        data.push({
+          label: 'User menu',
+          hideLabelDesktop: true,
+          icon: () => h(GraphicsBustInSilhouette, { class: 'w-6 h-6 rounded-full' }),
+          click: () => {
+            void oidcLogin()
+          },
+          children: [
+            {
+              label: 'Login',
+              click: () => {
+                void oidcLogin()
+              }
+            },
+            ...themeAndPreferencesChildren
+          ]
+        })
+      }
+    } else {
+      data.push({
+        icon: () => h(GraphicsUserPreferences),
+        label: 'Your preferences',
+        hideLabelDesktop: true,
+        children: themeAndPreferencesChildren
+      })
+    }
+
     return data.filter((item) => {
+      // note: only a shallow filter, not deep
       if (mode === 'desktop' && item.hideDesktop) {
         return false
       }

@@ -13,7 +13,8 @@ export const FeatureFlagsSchema = z.object({
   // narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
   formatsAlsoViewAs: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
-  searchV2: z.boolean().optional()
+  searchV2: z.boolean().optional(),
+  oidc: z.boolean().optional()
 })
 
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
@@ -27,6 +28,12 @@ export type FeatureFlagUIRow = {
 }
 
 const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
+  oidc: {
+    title: 'Personalisation / OIDC',
+    description:
+      'Enables account sign-in (OIDC via account.ietf.org) and the personalisation features layered on top, such as saved preferences and subscriptions.',
+    storageType: 'boolean'
+  },
   isDidYouMeanActive: {
     title: 'Homepage direct RFC/subseries links',
     description: `Homepage search box feature suggesting direct links to RFCs/BCPs/etc when typing "RFCn" or "BCP n" etc into the homepage search box. This only occurs on the homepage, not on the ${SEARCH_PATH} route.`,
@@ -66,7 +73,8 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   formatsAlsoViewAs: false,
   // showPreCopyButton: '',
   searchObsoletedDefaults: false,
-  searchV2: false
+  searchV2: false,
+  oidc: false
 }
 
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)

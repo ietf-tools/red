@@ -1,7 +1,7 @@
 <template>
   <svg
-    :width="props.width"
-    :height="props.height"
+    :width.attr="props.width"
+    :height.attr="props.height"
     viewBox="0 0 473.88 250.932"
     xmlns="http://www.w3.org/2000/svg"
     :class="['pointer-events-none', props.class]"
