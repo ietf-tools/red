@@ -116,7 +116,23 @@ export default defineNuxtConfig({
       matomoSiteId: '12', // 12 is Red non-production ie local dev. Otherwise will be provided by env var NUXT_PUBLIC_MATOMO_SITE_ID
       typesenseApiKey: '2Ic06V287miUyJ32ee25q0ccXK0Dr3RO', // NUXT_PUBLIC_TYPESENSE_API_KEY Be sure to use an API key that only allows search operations
       typesenseHost: 'typesense.staging.ietf.org', // NUXT_PUBLIC_TYPESENSE_HOST
-      websiteVersion: version
+      websiteVersion: version,
+
+      // OIDC — Authentik @ account.ietf.org, "rfc-editor" application.
+      // Client-side public client (Authorization Code + PKCE). client_id is not secret.
+      // oidc-spa only consumes oidcIssuerUri (it auto-discovers the other endpoints via
+      // the .well-known document); the remaining URLs are stored for reference / other
+      // consumers (e.g. a future worker or Nitro proxy). All overridable via NUXT_PUBLIC_OIDC_* env vars.
+      oidcIssuerUri: 'https://account.ietf.org/application/o/rfc-editor/', // NUXT_PUBLIC_OIDC_ISSUER_URI
+      oidcClientId: 'xkIC1bO4M3FaEoUrMyEQhMDvv46zAhba0XKYS64L', // NUXT_PUBLIC_OIDC_CLIENT_ID
+      oidcScopes: 'openid profile email offline_access', // NUXT_PUBLIC_OIDC_SCOPES (space-separated) — offline_access = refresh token
+      oidcHomeUrl: '/', // NUXT_PUBLIC_OIDC_HOME_URL — oidc-spa return target; must match a registered redirect URI
+      oidcConfigurationUrl: 'https://account.ietf.org/application/o/rfc-editor/.well-known/openid-configuration', // NUXT_PUBLIC_OIDC_CONFIGURATION_URL
+      oidcAuthorizeUrl: 'https://account.ietf.org/application/o/authorize/', // NUXT_PUBLIC_OIDC_AUTHORIZE_URL
+      oidcTokenUrl: 'https://account.ietf.org/application/o/token/', // NUXT_PUBLIC_OIDC_TOKEN_URL
+      oidcUserinfoUrl: 'https://account.ietf.org/application/o/userinfo/', // NUXT_PUBLIC_OIDC_USERINFO_URL
+      oidcLogoutUrl: 'https://account.ietf.org/application/o/rfc-editor/end-session/', // NUXT_PUBLIC_OIDC_LOGOUT_URL
+      oidcJwksUrl: 'https://account.ietf.org/application/o/rfc-editor/jwks/' // NUXT_PUBLIC_OIDC_JWKS_URL
     }
   },
   postcss: {

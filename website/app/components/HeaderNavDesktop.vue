@@ -235,8 +235,8 @@
                       <GraphicsCheckmark
                         v-if="Boolean(level0.isActiveFn?.())"
                         :class="['inline-block w-[14px] h-[14px]']" />
-                      <span v-else class="inline-block w-[14px] h-[14px]" /> </span
-                    >fffs
+                      <span v-else class="inline-block w-[14px] h-[14px]" />
+                    </span>
                     {{ level0.label }}
                   </span>
                 </button>
