@@ -235,26 +235,30 @@ test('the origin is fetched with manual redirect mode so 3xx is returned, not fo
   expect(lastFetchRequest?.redirect).toBe('manual')
 })
 
-test('redirects are cached so repeated hits are not proxied to origin', async () => {
-  originStatus = 302
-  originVersion = ''
-  originResponseHeaders = { location: 'https://www.rfc-editor.org/info/rfc9999/' }
+test.each([301, 302, 307, 308])(
+  '%i redirects are cached so repeated hits are not proxied to origin',
+  async (status) => {
+    const location = 'https://www.rfc-editor.org/info/rfc9999/'
+    originStatus = status
+    originVersion = ''
+    originResponseHeaders = { location }
 
-  const first = await call(get(), createCtx().ctx)
-  expect(first.status).toBe(302)
-  expect(first.headers.get('location')).toBe('https://www.rfc-editor.org/info/rfc9999/')
-  expect(first.headers.get('cache-control')).toBe(
-    `public, max-age=${MAX_AGE_SECONDS}, stale-while-revalidate=${SWR_SECONDS}`
-  )
-  expect(fetchCount).toBe(1)
+    const first = await call(get(), createCtx().ctx)
+    expect(first.status).toBe(status)
+    expect(first.headers.get('location')).toBe(location)
+    expect(first.headers.get('cache-control')).toBe(
+      `public, max-age=${MAX_AGE_SECONDS}, stale-while-revalidate=${SWR_SECONDS}`
+    )
+    expect(fetchCount).toBe(1)
 
-  // A repeat within maxAge is served from cache — origin is not hit again.
-  nowMs = (MAX_AGE_SECONDS - 1) * 1000
-  const second = await call(get(), createCtx().ctx)
-  expect(second.status).toBe(302)
-  expect(second.headers.get('location')).toBe('https://www.rfc-editor.org/info/rfc9999/')
-  expect(fetchCount).toBe(1)
-})
+    // A repeat within maxAge is served from cache — origin is not hit again.
+    nowMs = (MAX_AGE_SECONDS - 1) * 1000
+    const second = await call(get(), createCtx().ctx)
+    expect(second.status).toBe(status)
+    expect(second.headers.get('location')).toBe(location)
+    expect(fetchCount).toBe(1)
+  }
+)
 
 test('no client headers are forwarded to origin — only the URL is fetched', async () => {
   const req = new Request(URL_UNDER_TEST, {

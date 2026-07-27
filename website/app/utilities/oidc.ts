@@ -1,12 +1,17 @@
 // Client-side OIDC integration (oidc-client-ts) for the Personalisation feature.
-// Framework-agnostic: no Nuxt/Vue imports here. oidc-client-ts is loaded via a
-// dynamic import() so nothing executes during SSR and it stays out of the main bundle.
+// oidc-client-ts is loaded via a dynamic import() so nothing executes during SSR and it
+// stays out of the main bundle. Session state persists in localStorage and renews via the
+// refresh token (offline_access scope), so page loads never redirect to the identity
+// provider — only an explicit login does.
 //
-// Session state persists in localStorage and renews via the refresh token
-// (offline_access scope), so page loads never redirect to the identity provider —
-// only an explicit login does.
+// The core (getUserManager / oidcRestore / oidcLogin / oidcLogout / getAccessToken) is
+// framework-agnostic. useOidcSession() is a thin Vue composable that wires that core to
+// runtimeConfig, the feature flag and the auth store, so components only call
+// useOidcSession(). If this file grows, split it into a utilities/oidc/ directory.
 
 import type { User, UserManager } from 'oidc-client-ts'
+import { useAuthStore } from '~/stores/auth'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 
 export type OidcConfig = {
   authority: string
@@ -100,4 +105,63 @@ export const oidcLogout = async (): Promise<void> => {
   }
   const userManager = await userManagerPromise
   await userManager.signoutRedirect()
+}
+
+// Returns a valid access token for authenticated API calls, refreshing via the refresh
+// token if the current one has expired. Returns undefined if not logged in or if the
+// refresh fails. This is the primitive for calling authenticated APIs (e.g. Pink).
+export const getAccessToken = async (): Promise<string | undefined> => {
+  if (!userManagerPromise) {
+    return undefined
+  }
+  const userManager = await userManagerPromise
+  let user = await userManager.getUser()
+  if (!user) {
+    return undefined
+  }
+  if (user.expired === true) {
+    try {
+      user = await userManager.signinSilent()
+    } catch (error) {
+      console.warn('[oidc] token refresh failed', error)
+      return undefined
+    }
+  }
+  return user?.access_token
+}
+
+// Vue composable: call once from a component that's always mounted (Header.vue). Restores
+// the OIDC session (or completes a login callback) on the client when the `oidc` feature
+// flag is on, and feeds the reactive auth store. Gated + onMounted so SSR stays anonymous;
+// reactive + immediate so it fires whether the flag is already set or toggled on later.
+export const useOidcSession = (): void => {
+  const { public: config } = useRuntimeConfig()
+  const featureFlags = useFeatureFlags()
+  const authStore = useAuthStore()
+
+  onMounted(() => {
+    watch(
+      () => featureFlags.value.oidc,
+      (enabled) => {
+        if (!enabled) {
+          return
+        }
+        void oidcRestore({
+          authority: config.oidcIssuerUri,
+          clientId: config.oidcClientId,
+          redirectUri: window.location.origin + config.oidcHomeUrl,
+          scopes: config.oidcScopes.split(' ').filter(Boolean)
+        })
+          .then((user) => {
+            if (user) {
+              authStore.setUser(user)
+            }
+          })
+          .catch((error) => {
+            console.error('[oidc] restore failed', error)
+          })
+      },
+      { immediate: true }
+    )
+  })
 }
