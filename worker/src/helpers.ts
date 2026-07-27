@@ -127,9 +127,9 @@ function isCacheable(resp: Response): boolean {
  * the cache key and the origin request: this collapses query-randomized floods
  * (a common cache-busting DDoS tactic) onto a single cached entry.
  *
- * The incoming request may be GET or HEAD (HEAD is used by the site health
- * check); either way we fetch the origin with GET and share one cache entry.
- * The `.all('*')` router handler rejects every other method before we get here.
+ * The incoming request is always a GET: the worker entrypoint rewrites HEAD to GET
+ * so both share one cache entry, and the `.all('*')` router handler rejects every
+ * other method before we get here.
  */
 export async function staleWhileRevalidate(
   req: Request,

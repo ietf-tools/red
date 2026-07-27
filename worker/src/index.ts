@@ -59,7 +59,7 @@ const excludeInNotesRedirects = ['/in-notes/rfc-ref.txt', '/in-notes/rfc-index.t
 // checks, whose whole purpose is to report the current origin state).
 const cacheBypassPaths = ['/api/v1/healthcheck.json', '/api/v1/systemcheck.json']
 
-const router = IttyRouter<IRequest, [Env]>()
+const router = IttyRouter<IRequest, [Env, ExecutionContext]>()
 
 router
   // Static Redirects
@@ -217,14 +217,13 @@ router
   .get('/*', addNormalizedPath, blobsSitemap)
   .get('/*', addNormalizedPath, blobsStatics)
 
-  // Fallback to origin. The site is read-only, so allow GET and HEAD (the latter
-  // is used by the site health check) and reject everything else. GET/HEAD get
-  // stale-while-revalidate caching: fresh for maxAgeSeconds, then served stale for
-  // a further additionalStaleWhileRevalidateSeconds while revalidating in the
-  // background.
+  // Fallback to origin. The site is read-only, so allow GET (and therefore HEAD,
+  // which the entrypoint below has already rewritten to GET) and reject everything
+  // else. Those get stale-while-revalidate caching: fresh for maxAgeSeconds, then
+  // served stale for a further additionalStaleWhileRevalidateSeconds while
+  // revalidating in the background.
   .all('*', async (req: IRequest, _env: Env, ctx: ExecutionContext) => {
-    const allowedMethods = ['GET', 'HEAD']
-    if (!allowedMethods.includes(req.method)) {
+    if (req.method !== 'GET') {
       return new Response('405 - Method not allowed', {
         status: 405,
         headers: { 'Content-Type': 'text/plain;charset=utf-8', Allow: 'GET, HEAD' }
@@ -232,19 +231,44 @@ router
     }
 
     const { pathname } = new URL(req.url)
-    const response = cacheBypassPaths.includes(pathname)
-      ? await fetch(req)
-      : await staleWhileRevalidate(
-          req,
-          ctx,
-          { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 3000 },
-          { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
-        )
+    if (cacheBypassPaths.includes(pathname)) {
+      return fetch(req)
+    }
 
-    // A HEAD response must carry no body; keep its status and headers.
-    return req.method === 'HEAD' ? new Response(null, response) : response
+    return staleWhileRevalidate(
+      req,
+      ctx,
+      { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 3000 },
+      { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
+    )
   })
 
 export default {
-  ...router
+  /**
+   * Every route above is registered with `.get()`, and itty-router matches on the
+   * request method exactly, so HEAD would otherwise match nothing and fall through
+   * to the origin fallback — bypassing all of the redirects and blob serving.
+   *
+   * Instead HEAD is routed as GET (safe: a HEAD request has no body, and `cf` is
+   * preserved when constructing a Request from a Request), then the body is dropped
+   * on the way out. Per RFC 9110 a HEAD response carries the same headers as the
+   * GET it stands in for, with no body — so every `.get()` route serves HEAD too,
+   * and the two share one cache entry.
+   */
+  fetch: async (request: Request, env: Env, ctx: ExecutionContext): Promise<Response> => {
+    const isHead = request.method === 'HEAD'
+    const response: Response | undefined = await router.fetch(
+      isHead ? new Request(request, { method: 'GET' }) : request,
+      env,
+      ctx
+    )
+    if (!response) {
+      // Unreachable: the `.all('*')` fallback answers anything the routes above don't.
+      return new Response('404 - Not found', {
+        status: 404,
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+      })
+    }
+    return isHead ? new Response(null, response) : response
+  }
 }
