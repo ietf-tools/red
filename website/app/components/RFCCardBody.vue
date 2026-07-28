@@ -1,6 +1,6 @@
 <template>
   <div class="md:pr-5 flex-1">
-    <Pill v-if="tagText.length > 0" size="small" :text="tagText" class="relative z-1 print:m-0 my-2" />
+    <RFCCardBodyPill :rfc="rfc" />
     <ul
       v-if="props.rfc.authors"
       class="relative z-1 hidden lg:block print:block text-base text-gray-800 dark:text-white">
@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { DateTime } from 'luxon'
 import { infoSeriesPathBuilder } from '../utilities/url'
-import { getRfcPillText, isAprilFoolsRfc, type RfcCommon } from '~/utilities/rfc'
+import { isAprilFoolsRfc, type RfcCommon } from '~/utilities/rfc'
 import { formatTitlePlaintext } from '~/utilities/rfc-converters-utils'
 
 type Props = {
@@ -136,8 +136,6 @@ const formatStreamName = (streamName: string) => {
   }
   return `${streamName} publication`
 }
-
-const tagText = computed(() => getRfcPillText(props.rfc))
 
 const isAprilFool = computed(() => isAprilFoolsRfc(props.rfc))
 </script>
