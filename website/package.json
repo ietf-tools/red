@@ -42,7 +42,6 @@
     "@pinia/nuxt": "0.11.3",
     "@tailwindcss/vite": "4.3.2",
     "@vueuse/core": "14.3.0",
-    "better-sqlite3": "12.11.1",
     "commander": "15.0.0",
     "core-js": "3.49.0",
     "es-toolkit": "1.49.0",

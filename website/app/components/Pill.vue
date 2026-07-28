@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'inline-flex rounded-lg overflow-hidden print:text-sm print:leading-[2]',
+      'inline-flex w-fit rounded-lg overflow-hidden print:text-sm print:leading-[2]',
       props.class,
       {
         'text-sm font-semibold': props.size === 'normal',
