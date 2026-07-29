@@ -15,11 +15,8 @@
         {{ rfc.title }}
       </h1>
 
-      <div v-if="pillText.length > 0" class="text-gray-200 dark:text-gray-100">
-        <span v-for="(pillTextItem, pillTextItemIndex) in pillText" :key="pillTextItemIndex">
-          {{ pillTextItem }}
-        </span>
-      </div>
+      <RFCCardBodyPill :rfc="rfc" />
+
       <div v-if="props.rfc.obsoleted_by && props.rfc.obsoleted_by.length > 0" class="text-red-400">
         Obsoleted by
         <ul class="inline">

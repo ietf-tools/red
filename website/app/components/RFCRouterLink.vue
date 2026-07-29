@@ -50,7 +50,10 @@
         -->
         <span tabindex="0" data-focus-guard class="sr-only" @focus="onLeadingGuardFocus"></span>
         <!-- Touch has no Escape/hover-away, so the docked panel gets an explicit close (like the former sheet). -->
-        <PopoverClose v-if="isTouch" aria-label="Close preview" class="absolute top-0 right-0 z-50 py-3 px-4">
+        <PopoverClose
+          v-if="isTouch"
+          aria-label="Close preview"
+          class="absolute top-0 right-0 z-50 py-3 px-4 bg-black border-1 border-gray-600">
           <GraphicsClose />
         </PopoverClose>
         <RFCRouterLinkPreview v-if="rfc" :rfc="rfc" />

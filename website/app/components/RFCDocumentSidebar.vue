@@ -6,16 +6,16 @@
         <DialogContent
           :class="[
             'overflow-y-scroll', // needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
-            'fixed inset-0 z-50 bg-blue-900 dark:bg-blue-950 h-full'
+            'fixed inset-0 z-100 bg-blue-900 dark:bg-blue-950 h-full'
           ]"
           :aria-describedby="undefined">
           <DialogClose aria-label="Close menu" class="absolute right-0 top-0 px-5 py-5">
             <GraphicsClose class="text-white" />
           </DialogClose>
-          <DialogTitle as="h1" class="px-2 py-4 text-white dark:text-white">
+          <DialogTitle as="h1" class="pl-2 pr-12 pt-4 text-white dark:text-white">
             <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon />
           </DialogTitle>
-          <nav aria-label="In this RFC (mobile menu)" class="bg-white dark:bg-blue-900">
+          <nav aria-label="In this RFC (mobile menu)" class="bg-white dark:bg-blue-950">
             <RFCTabs
               v-model="selectedTab"
               mode="mobile"
