@@ -15,7 +15,7 @@
       <DialogContent
         :class="[
           'overflow-y-scroll', // needs overflow-y-scroll to force scrollbars, to ensure same page width as the main view
-          'absolute inset-0 z-60 bg-blue-900 text-white dark:bg-blue-950 dark:text-white h-full'
+          'absolute inset-0 z-100 bg-blue-900 text-white dark:bg-blue-950 dark:text-white h-full'
         ]"
         :aria-labelledby="headingId"
         :aria-describedby="undefined">
