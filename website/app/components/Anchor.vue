@@ -15,7 +15,7 @@
  *
  * If you want to ALSO detect RFC links and display a preview use AMaybeRFCLink.vue
  *
- * If you want to detect valid hrefs use AValidHref.vue
+ * If you want to ALSO detect valid hrefs use AValidHref.vue
  */
 import { computed } from 'vue'
 import { NuxtLink } from '#components'

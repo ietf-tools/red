@@ -106,7 +106,7 @@
         }
       ]">
       <VerticalScrollable>
-        <Heading level="3" style-level="4" class="mt-4"> Details </Heading>
+        <Heading level="2" style-level="4" class="mt-4"> Details </Heading>
         <dl class="text-sm pb-6">
           <template
             v-if="props.rfcBucketHtmlDocument.rfc.updates && props.rfcBucketHtmlDocument.rfc.updates.length > 0">
@@ -216,7 +216,7 @@
         }
       ]">
       <VerticalScrollable class="pl-1">
-        <Heading level="3" style-level="4" class="mt-3 mb-1"> About Errata </Heading>
+        <Heading level="2" style-level="4" class="mt-3 mb-1"> About Errata </Heading>
         <p class="text-sm leading-[1.5]">
           RFC Errata are official records of technical or editorial errors found in published RFCs, which remain
           unchanged once issued. You can report Errata only after verifying the issue is not already documented and
