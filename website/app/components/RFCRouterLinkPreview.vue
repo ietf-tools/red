@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-hidden overflow-y-scroll px-4 pt-3 pb-5">
+  <div class="overflow-x-hidden overflow-y-scroll overscroll-contain px-4 pt-3 pb-5">
     <GraphicsIETFMotif class="absolute text-black w-[110px] h-[100px] right-0 top-0 print:hidden" :opacity="0.04" />
     <RFCCard heading-level="3" :rfc="props.rfc" :show-abstract="false" :show-tag-date="true" />
     <template v-if="props.rfc.abstract">
