@@ -17,29 +17,27 @@
       <dl>
         <dt class="font-bold">Status:</dt>
         <dd>{{ props.errataItemForTab.errata_status_code }}</dd>
-        <dt class="font-bold">Date Reported:</dt>
+        <dt class="font-bold mt-1">Date Reported:</dt>
         <dd>{{ props.errataItemForTab.submit_date }}</dd>
         <template v-if="orig_text_nodes">
-          <dt class="font-bold">Original text:</dt>
+          <dt class="font-bold mt-1">Original text:</dt>
           <dd><component :is="orig_text_nodes" /></dd>
         </template>
         <template v-if="correct_text_nodes">
-          <dt class="font-bold">Correct text:</dt>
+          <dt class="font-bold mt-1">Correct text:</dt>
           <dd><component :is="correct_text_nodes" /></dd>
         </template>
         <template v-if="notes_nodes">
-          <dt class="font-bold">Notes:</dt>
+          <dt class="font-bold mt-1">Notes:</dt>
           <dd><component :is="notes_nodes" /></dd>
         </template>
       </dl>
       <p>
-        <Anchor
-          :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)"
-          :class="ANCHOR_COLOR_TAILWIND_STYLE"
-          :aria-label="`View this report: errata report ${props.errataItemForTab.errata_id} on the IETF Errata site`">
-          View this report
+        <Anchor :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+          View errata report {{ props.errataItemForTab.errata_id }} on the IETF Errata site
           <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
         </Anchor>
+        (this may fix report text formatting issues)
       </p>
     </div>
   </details>
