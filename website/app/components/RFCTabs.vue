@@ -204,6 +204,14 @@
 
           <dt class="font-bold mt-2">Cite this RFC</dt>
           <dd><DocumentPojo :value="citeValuePojo(props.rfcBucketHtmlDocument.rfc.number)" /></dd>
+
+          <dt class="font-bold mt-2">Document history</dt>
+          <dd>
+            <Anchor :href="datatrackerRFCUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+              View history of <component :is="formattedTitle" />
+              <NewWindowIcon />
+            </Anchor>
+          </dd>
         </dl>
       </VerticalScrollable>
     </TabsContent>
@@ -252,13 +260,16 @@ import {
   rfcCitePathBuilder,
   doiUrlBuilder,
   useRfcEditorErrataSearchForRfcUrl,
-  infoSeriesPathBuilder
+  infoSeriesPathBuilder,
+  useDatatrackerRFCUrlBuilder
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString } from '~/utilities/renderDocumentPojo'
 import { mergeAdjacentLinks } from '../utilities/tableOfContents'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
+import NewWindowIcon from './Graphics/NewWindowIcon.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -342,6 +353,10 @@ const formats = computed(() =>
     return true
   })
 )
+
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfcBucketHtmlDocument.rfc.number}`, true))
+
+const datatrackerRFCUrl = computed(() => useDatatrackerRFCUrlBuilder(props.rfcBucketHtmlDocument.rfc.number))
 
 const errataSearchForThisRfc = useRfcEditorErrataSearchForRfcUrl(props.rfcBucketHtmlDocument.rfc.number)
 

@@ -486,6 +486,10 @@ export const useWorkingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
   return `${useDatatrackerUrlOrigin()}/wg/${workingGroup.acronym}/about/` as const
 }
 
+export const useDatatrackerRFCUrlBuilder = (rfcNumber: RfcCommon['number']) => {
+  return `${useDatatrackerUrlOrigin()}/doc/rfc${rfcNumber}/` as const
+}
+
 export const useErrataUrlBuilder = (
   errataId: string
   // errataId looks like '1234' (not 'eid1234') so we'll need to add the 'eid' prefix
