@@ -158,6 +158,115 @@ test('renderMarkdownPageData: auto-generates ids for headings without an explici
   ])
 })
 
+// Collects every anchor in a rendered page's htmlObj as { href, title }, at any depth.
+const anchorsOf = (page: Awaited<ReturnType<typeof renderMarkdownPageData>>) => {
+  const anchors: { href: string | undefined; title: string }[] = []
+  const walk = (node: NodePojo): void => {
+    if (node.type !== 'Element') return
+    if (node.nodeName === 'a') {
+      anchors.push({ href: node.attributes.href, title: pojoText(node) })
+    }
+    node.children.forEach(walk)
+  }
+  page.htmlObj.forEach(walk)
+  return anchors
+}
+
+test('markdownToHtml: keeps the tel: protocol on links', () => {
+  const html = markdownToHtml('Phone: [+1-703-625-3917](tel:+17036253917)')
+  expect(html).toContain('<a href="tel:+17036253917">+1-703-625-3917</a>')
+})
+
+test('markdownToHtml: keeps a bare tel: autolink', () => {
+  const html = markdownToHtml('Phone: <tel:+17036253917>')
+  expect(html).toContain('<a href="tel:+17036253917">tel:+17036253917</a>')
+})
+
+test('renderMarkdownPageData: preserves tel:, mailto:, https:, and relative links', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: `# Contact
+
+Phone: [+1-703-625-3917](tel:+17036253917)
+
+Email: [rfc-editor@rfc-editor.org](mailto:rfc-editor@rfc-editor.org)
+
+Web: [RFC Editor](https://www.rfc-editor.org/)
+
+Site: [FAQ](/series/rfc-faq/)
+
+Section: [Above](#contact)
+`,
+    contentMetadata: {},
+    filePath: 'about/contact.md',
+    slug: 'about/contact'
+  })
+
+  expect(anchorsOf(page)).toEqual([
+    { href: 'tel:+17036253917', title: '+1-703-625-3917' },
+    { href: 'mailto:rfc-editor@rfc-editor.org', title: 'rfc-editor@rfc-editor.org' },
+    { href: 'https://www.rfc-editor.org/', title: 'RFC Editor' },
+    { href: '/series/rfc-faq/', title: 'FAQ' },
+    { href: '#contact', title: 'Above' }
+  ])
+})
+
+test('renderMarkdownPageData: empties the href of protocols outside the allowlist', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: `# Title
+
+[Click](javascript:alert(1))
+
+[Open](file:///etc/passwd)
+`,
+    contentMetadata: {},
+    filePath: 'series/example.md',
+    slug: 'series/example'
+  })
+
+  // Empty rather than removed, matching what micromark's own sanitisation would have produced.
+  expect(anchorsOf(page)).toEqual([
+    { href: '', title: 'Click' },
+    { href: '', title: 'Open' }
+  ])
+})
+
+test('renderMarkdownPageData: empties an image src outside the allowlist but keeps http(s)', async () => {
+  const page = await renderMarkdownPageData({
+    fileContent: `# Title
+
+![Bad](javascript:alert(1))
+
+![Good](https://www.rfc-editor.org/logo.png)
+`,
+    contentMetadata: {},
+    filePath: 'series/example.md',
+    slug: 'series/example'
+  })
+
+  const images = page.htmlObj
+    .filter((node): node is Extract<NodePojo, { type: 'Element' }> => node.type === 'Element')
+    .flatMap((node) => node.children)
+    .filter(
+      (node): node is Extract<NodePojo, { type: 'Element' }> => node.type === 'Element' && node.nodeName === 'img'
+    )
+    .map((node) => node.attributes.src)
+
+  expect(images).toEqual(['', 'https://www.rfc-editor.org/logo.png'])
+})
+
+test('renderMarkdownPageData: about/contact.md keeps its tel: link', async () => {
+  const fileContent = await fsPromises.readFile(path.join(CONTENT_DIR, 'about/contact.md'), 'utf-8')
+  const page = await renderMarkdownPageData({
+    fileContent,
+    contentMetadata: {},
+    filePath: 'about/contact.md',
+    slug: 'about/contact'
+  })
+
+  const telAnchors = anchorsOf(page).filter((anchor) => anchor.href?.startsWith('tel:'))
+  expect(telAnchors.length).toBeGreaterThan(0)
+})
+
 test('renderMarkdownPageData: builds a table of contents from the H2 heading ids', async () => {
   const page = await renderMarkdownPageData({
     fileContent: FAQ_MARKDOWN,

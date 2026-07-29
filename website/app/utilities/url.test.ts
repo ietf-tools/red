@@ -8,6 +8,8 @@ import {
   isExternalLink,
   isInternalLink,
   isMailToLink,
+  isTelLink,
+  isOutsideNuxtLink,
   parseMaybeRfcLink,
   isHashLink
 } from './url'
@@ -99,6 +101,34 @@ test('isMailToLink', () => {
   ).toEqual(false)
 
   expect(isMailToLink('mailto:user@example.com')).toEqual(true)
+  expect(isMailToLink('tel:+17036253917')).toEqual(false)
+})
+
+test('isTelLink', () => {
+  expect(isTelLink(undefined)).toEqual(false)
+  expect(isTelLink('/something')).toEqual(false)
+  expect(isTelLink('#something')).toEqual(false)
+  expect(isTelLink('http://')).toEqual(false)
+  expect(isTelLink('https://')).toEqual(false)
+  expect(isTelLink(IETF_PRIVACY_STATEMENT_URL)).toEqual(false)
+  expect(isTelLink('mailto:user@example.com')).toEqual(false)
+  expect(
+    isTelLink(
+      // with a leading space, should not match
+      ' tel:+17036253917'
+    )
+  ).toEqual(false)
+
+  expect(isTelLink('tel:+17036253917')).toEqual(true)
+})
+
+test('isOutsideNuxtLink', () => {
+  // Phone and email links must not become NuxtLinks, otherwise Vue Router treats them as routes
+  // and the browser never gets the chance to hand them to the dialler or mail client.
+  expect(isOutsideNuxtLink('tel:+17036253917')).toEqual(true)
+  expect(isOutsideNuxtLink('mailto:user@example.com')).toEqual(true)
+
+  expect(isOutsideNuxtLink('/about/contact/')).toEqual(false)
 })
 
 test('isHashLink', () => {

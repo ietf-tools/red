@@ -93,8 +93,63 @@ const applyMarkdownHeadingIds = (root: HTMLElement): void => {
   }
 }
 
+/**
+ * Protocols allowed in an `<a href>` and an `<img src>` respectively. These mirror the allowlists
+ * micromark applies by default (which in turn mirror GitHub's) with the addition of `tel`, which
+ * the contact page uses to link a phone number.
+ */
+const ALLOWED_HREF_PROTOCOL = /^(https?|ircs?|mailto|tel|xmpp)$/i
+const ALLOWED_SRC_PROTOCOL = /^https?$/i
+
+/**
+ * Reproduces micromark's protocol check from `micromark-util-sanitize-uri`. A URI is allowed when
+ * it has no protocol at all (ie it's relative, or a fragment link), or when its protocol is in
+ * `allowedProtocol`.
+ */
+const isAllowedUri = (uri: string, allowedProtocol: RegExp): boolean => {
+  const colonIndex = uri.indexOf(':')
+  if (colonIndex < 0) {
+    return true
+  }
+  const delimiterIndex = uri.search(/[?#/]/)
+  if (delimiterIndex > -1 && delimiterIndex < colonIndex) {
+    // The colon appears within a path, query, or fragment, so it isn't a protocol.
+    return true
+  }
+  return allowedProtocol.test(uri.slice(0, colonIndex))
+}
+
+/**
+ * Restores the sanitisation that `allowDangerousProtocol` disables in markdownToHtml(), using
+ * ALLOWED_HREF_PROTOCOL / ALLOWED_SRC_PROTOCOL so that `tel:` survives while `javascript:` and
+ * other unknown protocols are still emptied out, exactly as micromark would have done.
+ *
+ * micromark percent-encodes every URI regardless of that option, so the values seen here can't
+ * contain the raw whitespace or control characters that might otherwise disguise a protocol.
+ */
+const applyMarkdownUriProtocols = (root: HTMLElement): void => {
+  const sanitiseAttribute = (element: Element, attributeName: string, allowedProtocol: RegExp): void => {
+    const uri = element.getAttribute(attributeName)
+    if (uri === null || isAllowedUri(uri, allowedProtocol)) return
+    element.setAttribute(attributeName, '')
+  }
+
+  for (const anchor of Array.from(root.querySelectorAll('a[href]'))) {
+    sanitiseAttribute(anchor, 'href', ALLOWED_HREF_PROTOCOL)
+  }
+  for (const image of Array.from(root.querySelectorAll('img[src]'))) {
+    sanitiseAttribute(image, 'src', ALLOWED_SRC_PROTOCOL)
+  }
+}
+
+/**
+ * `allowDangerousProtocol` is enabled because micromark's own protocol allowlist is hardcoded and
+ * can't be extended, so it's the only way to stop `tel:` links being blanked. The allowlist is
+ * reapplied, widened by `tel`, in applyMarkdownUriProtocols() once the HTML has been parsed.
+ */
 export const markdownToHtml = (markdown: string): string =>
   micromark(markdown, {
+    allowDangerousProtocol: true,
     extensions: [frontmatter(), gfm()],
     htmlExtensions: [frontmatterHtml(), gfmHtml()]
   })
@@ -134,6 +189,7 @@ export const renderMarkdownPageData = async ({
   const dom = parser.parseFromString(html, 'text/html')
 
   applyMarkdownHeadingIds(dom.body)
+  applyMarkdownUriProtocols(dom.body)
 
   const title = dom.body.querySelector('h1')?.textContent?.trim()
   if (title === undefined) {

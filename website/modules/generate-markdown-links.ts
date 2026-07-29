@@ -154,8 +154,19 @@ const textToAnchorId = (text: string): string | undefined => {
   return kebabCase(normalized)
 }
 
+/**
+ * Mirrors markdownToHtml() in the precomputer's markdown-pages.ts, `allowDangerousProtocol`
+ * included: micromark's protocol allowlist is hardcoded and can't be extended, so without that
+ * option it silently blanks the href of any protocol it doesn't know, and the phone number on the
+ * contact page would reach the generated files below as an empty string rather than a `tel:` link.
+ *
+ * Unlike the precomputer this doesn't reapply an allowlist of its own afterwards. The hrefs here
+ * are only ever compared against the ValidHrefs type, never served, and it's the URI as authored
+ * that needs checking — so a link the precomputer would go on to reject should still be reported.
+ */
 const processMarkdown = (markdown: string): string =>
   micromark(markdown, {
+    allowDangerousProtocol: true,
     extensions: [frontmatter(), gfm()],
     htmlExtensions: [frontmatterHtml(), gfmHtml()]
   })

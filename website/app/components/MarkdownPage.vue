@@ -58,6 +58,7 @@ const { data: markdownPage, error } = await useAsyncData(
   `markdown-page-${normalizedSlug}`,
   async () => {
     const apiPath = apiMarkdownPagePathBuilder(normalizedSlug)
+    console.log({ apiPath })
     const json = await $fetch(apiPath, {
       method: 'GET',
       baseURL: import.meta.server ? apiV1UrlOrigin : undefined

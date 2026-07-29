@@ -30,6 +30,7 @@ export type ValidHrefs =
   | ReturnType<typeof markdownPathBuilder>
   | ReturnType<typeof searchPathBuilder>
   | ReturnType<typeof mailToBuilder>
+  | ReturnType<typeof telBuilder>
   | ReturnType<typeof refsRefTxtPathBuilder>
   | ReturnType<typeof infoSeriesPathBuilder>
   | ReturnType<typeof rfcCommonPathBuilder>
@@ -293,6 +294,10 @@ export const mailToBuilder = (email: string) => {
   return `mailto:${encodeURI(email.trim())}` as const
 }
 
+export const telBuilder = (phoneNumber: string) => {
+  return `tel:${encodeURI(phoneNumber.trim())}` as const
+}
+
 export const apiRfcBucketDocumentPathBuilder = (rfcNumber: number) => {
   return `/api/v1/rfc-html/${rfcNumber}.json` as const
 }
@@ -304,6 +309,11 @@ export const apiSubseriesPathBuilder = (seriesType: SeriesId['type'], seriesNumb
 const mailtoRegex = /^mailto:/
 export const isMailToLink = (href?: string): boolean => {
   return mailtoRegex.test(href ?? '')
+}
+
+const telRegex = /^tel:/
+export const isTelLink = (href?: string): boolean => {
+  return telRegex.test(href ?? '')
 }
 
 const httpRegex = /^https?:\/\//
@@ -377,7 +387,7 @@ export const isOutsideNuxtLink = (href?: string): boolean => {
   if (isRSSLink(href) || isAtomLink(href)) {
     return true
   }
-  if (isMailToLink(href)) {
+  if (isMailToLink(href) || isTelLink(href)) {
     return true
   }
   if (isHashLink(href)) {
