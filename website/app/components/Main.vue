@@ -1,6 +1,5 @@
 <template>
-  <main class="flex-1 w-full mx-auto pb-10 visible">
-    <span id="main" tabindex="-1" class="sr-only"></span>
+  <main id="main" tabindex="-1" class="flex-1 w-full mx-auto pb-10 visible">
     <slot />
   </main>
 </template>
