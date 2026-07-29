@@ -6,7 +6,7 @@ showToc: true
 
 ## Can I be notified when a new RFC is published? {#notified}
 
-Yes. An announcement of each new RFC is sent to all members of the rfc-dist mailing list. You can subscribe and unsubscribe from this list at [https://mailman.rfc-editor.org/mailman/listinfo/rfc-dist](https://mailman.rfc-editor.org/mailman/listinfo/rfc-dist). There's also an [RSS feed](/rfcrss.xml) and [Atom feed](/rfcatom.xml). Further information on document retrieval exists on the [Download RFCs page](/series/rfc-download/).
+Yes. An announcement of each new RFC is sent to all members of the [`rfc-dist` mailing list](https://mailman.rfc-editor.org/mailman/listinfo/rfc-dist). There's also an [RSS feed](/rfcrss.xml) and [Atom feed](/rfcatom.xml). Further information on document retrieval exists on the [Download RFCs page](/series/rfc-download/).
 
 ## How can one determine where in the Standards Track an RFC is? {#stdtrack}
 

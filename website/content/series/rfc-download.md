@@ -12,7 +12,11 @@ To be notified of newly published RFCs, use the [RSS feed](/rfcrss.xml) or [Atom
 
 To download RFCs and keep them up to date locally, use [rsync](https://rsync.samba.org).
 
-### To get the list of modules available type `rsync rsync.rfc-editor.org::` This will return the following results:
+### To get the list of modules
+
+Type `rsync rsync.rfc-editor.org::`
+
+This will return the following results:
 
 | Module Names      | Comments                                                                    |
 | :---------------- | :-------------------------------------------------------------------------- |
