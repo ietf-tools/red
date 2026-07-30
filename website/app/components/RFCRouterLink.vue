@@ -76,13 +76,13 @@
   <span v-if="isTouch" class="inline hide-in-preformatted-text">
     <button
       type="button"
-      class="ml-1 px-1 align-baseline hide-in-preformatted-text"
+      class="ml-1 px-1 align-middle hide-in-preformatted-text"
       :aria-label="rfcId ? `${rfcId.type.toUpperCase()} ${rfcId.number} Link Preview` : 'Link Preview'"
       aria-haspopup="dialog"
       :aria-expanded="isPopoverOpen"
       @pointerdown.stop
       @click="toggleTouchPopover">
-      <GraphicsPreviewLink />
+      <GraphicsRFCPreviewButton class="text-lg align-middle" />
     </button>
   </span>
 </template>
