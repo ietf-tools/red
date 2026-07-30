@@ -15,6 +15,7 @@ export type ValidHrefs =
   | MarkdownValidHrefs // generated global type from types/markdown-valid-hrefs.d.ts
   | `https://${string}` // any external link is treated as valid (even if it might 404 we don't verify further)
   | typeof HOME_PATH
+  | typeof ACCOUNT_HOME_PATH
   | typeof RFC_INDEX_XML_PATH
   | typeof RFC_INDEX_PATH
   | typeof RSS_PATH
@@ -122,6 +123,7 @@ export const HOME_PATH = '/'
 export const CONTACT_PATH = '/about/contact/'
 export const SEARCH_PATH = '/search/'
 export const RFC_INDEX_PATH = '/rfc-index/'
+export const ACCOUNT_HOME_PATH = '/account/'
 
 export const API_HOMEPAGE_LATEST_PATH = `/api/v1/homepage-latest.json`
 export const API_RFC_MINI_INDEX_PATH = `/api/v1/rfc-mini-index.json`

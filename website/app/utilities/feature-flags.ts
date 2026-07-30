@@ -2,9 +2,6 @@ import { z } from 'zod'
 import { type Ref } from 'vue'
 import { SEARCH_PATH } from './url'
 
-// string union feature flag values being optional is difficult to model in TS so we'll use a JS falsey value so that Boolean() can evaluate as false
-// const ENUM_STRING_UNDEFINED = z.literal('')
-
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
   // with old versions saved in localStorage values can still validate
@@ -17,9 +14,16 @@ export const FeatureFlagsSchema = z.object({
   oidc: z.boolean().optional()
 })
 
+// this is commented out until next time we need a string union value in feature flags.
+// string union feature flag values being optional is difficult to model in TS
+// so we'll use a JS falsey value so that Boolean() can evaluate as false
+// const ENUM_STRING_UNDEFINED = z.literal('')
+
 export type FeatureFlags = z.infer<typeof FeatureFlagsSchema>
 
 export const featureFlagsKey = Symbol() as InjectionKey<Ref<FeatureFlags>>
+
+export const hasFeatureFlagsLoadedKey = Symbol() as InjectionKey<Ref<boolean>>
 
 export type FeatureFlagUIRow = {
   title: string
@@ -86,7 +90,11 @@ export type WatchInputForFeatureFlagExperimentsProps = {
 
 const LOCALSTORAGE_KEY = 'feature-flag-experiments'
 
-export const loadFeatureFlagsFromLocalStorage = (featureFlagsRef: Ref<FeatureFlags>) => {
+export const loadFeatureFlagsFromLocalStorage = (
+  hasFeatureFlagsLoadedKey: Ref<boolean>,
+  featureFlagsRef: Ref<FeatureFlags>
+) => {
+  hasFeatureFlagsLoadedKey.value = true
   try {
     const valString = window.localStorage.getItem(LOCALSTORAGE_KEY)
     if (!valString) {

@@ -5,6 +5,7 @@ import type { OidcUser } from '~/utilities/oidc'
 // paint render the anonymous view, then enhance once the session is restored.
 export const useAuthStore = defineStore('auth', () => {
   const isAuthenticatedRef = ref(false)
+  const hasCheckedAuthRef = ref(false)
   const userRef = ref<OidcUser>()
 
   const setUser = (user: OidcUser) => {
@@ -18,6 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   return {
+    hasCheckedAuth: hasCheckedAuthRef,
     isAuthenticated: isAuthenticatedRef,
     user: userRef,
     setUser,

@@ -10,6 +10,7 @@
 import {
   isFeatureFlagsModalVisibleKey,
   featureFlagsKey,
+  hasFeatureFlagsLoadedKey,
   loadFeatureFlagsFromLocalStorage,
   DEFAULT_FEATURE_FLAGS,
   type FeatureFlags
@@ -17,7 +18,9 @@ import {
 
 const isFeatureFlagsModalVisible = ref(false)
 const featureFlagsRef = ref<FeatureFlags>(DEFAULT_FEATURE_FLAGS)
+const hasFeatureFlagsLoaded = ref(false)
 provide(isFeatureFlagsModalVisibleKey, isFeatureFlagsModalVisible)
 provide(featureFlagsKey, featureFlagsRef)
-onMounted(() => loadFeatureFlagsFromLocalStorage(featureFlagsRef))
+provide(hasFeatureFlagsLoadedKey, hasFeatureFlagsLoaded)
+onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
 </script>

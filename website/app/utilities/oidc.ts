@@ -153,6 +153,7 @@ export const useOidcSession = (): void => {
           scopes: config.oidcScopes.split(' ').filter(Boolean)
         })
           .then((user) => {
+            authStore.hasCheckedAuth = true
             if (user) {
               authStore.setUser(user)
             }
