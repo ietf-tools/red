@@ -162,7 +162,7 @@
                       :href="datatrackerAuthorUrlBuilder(author.datatracker_person_path)"
                       :class="[ANCHOR_COLOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']">
                       <RFCDocumentAuthor :author="author" />
-                      <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
+                      <GraphicsNewWindowIcon class="text-lg align-middle" />
                     </a>
                     <span v-else>
                       <RFCDocumentAuthor :author="author" />
@@ -659,6 +659,7 @@ const noScriptHtml = computed(() => {
       ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo(rfc.identifiers)) : ''}
       ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo(formats.value, rfc.number)) : ''}
       <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo(rfc.number))}</dd>
+      <dt class="font-bold mt-2">Document history</dt><dd class="text-sm"><a href="${datatrackerRFCUrl.value}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">View history of RFC ${rfc.number}</a></dd>
     </dl>
     <h2 class="text-lg font-bold mt-4">Errata</h2>
     <p><a href="${htmlEscapeToText(errataSearchForThisRfc)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
