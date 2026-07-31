@@ -64,9 +64,16 @@ export const cleanupRedBucket = async (uploadedKeys: string[]): Promise<boolean>
       .withConcurrency(NUMBER_OF_CONCURRENT_S3_USAGES)
       .process(async (keyToPurge) => {
         try {
-          console.log('[Cleanup] would delete ', keyToPurge)
-          // await deleteFromS3(keyToPurge)
-          console.log(`[Cleanup ${keyToPurge}] deleted successfully`)
+          if (keyToPurge.startsWith('other/nuxt-assets')) {
+            // skip
+          } else if (keyToPurge.startsWith('other/sitemap-')) {
+            console.log('[Cleanup] will delete sitemap ', keyToPurge)
+            await deleteFromS3(keyToPurge)
+            console.log(`[Cleanup ${keyToPurge}] deleted successfully`)
+          } else {
+            console.log('[Cleanup] would delete ', keyToPurge)
+            // await deleteFromS3(keyToPurge)
+          }
           return true
         } catch (err) {
           console.error(`[Cleanup ${keyToPurge}] threw exception: ${String(err)}`)
