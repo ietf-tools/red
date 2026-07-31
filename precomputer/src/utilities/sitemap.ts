@@ -63,16 +63,8 @@ export const getSiteMapXmls = async (
           url: `${websiteOrigin}${infoRfcPathBuilder(rfc)}`,
           changefreq: EnumChangefreq.WEEKLY,
           priority: 0.3 // note higher priority than /rfc/* route
-        },
-        ...rfc.formats
-          .filter((format) => format.format === 'html' || format.format === 'pdf')
-          .map((format): SitemapItemLoose => {
-            return {
-              url: rfcFormatPathBuilder(rfc, format.format),
-              changefreq: EnumChangefreq.MONTHLY, // assume that these change less frequently
-              priority: 0.2 // note lower priority than /info/ route RFCs
-            }
-          })
+        }
+        // and we don't link to the formats, only to the canonical path
       ]
     }),
     ...allSubseries.flatMap((subseries): SitemapItemLoose[] => {
@@ -80,7 +72,6 @@ export const getSiteMapXmls = async (
         {
           url: `${websiteOrigin}${subseriesPathBuilder(subseries)}`,
           changefreq: EnumChangefreq.MONTHLY,
-
           priority: 0.3
         }
       ]
