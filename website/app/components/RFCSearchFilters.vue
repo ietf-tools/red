@@ -129,7 +129,7 @@ const sortStatuses = (a: RefinementItem, b: RefinementItem): number => {
 }
 
 const filterClasses: ClassNames = {
-  root: 'pb-10',
+  root: 'pb-4',
   legend: 'text-lg font-semibold text-blue-900 dark:text-slate-300 pt-3 mb-1',
   searchBox: 'mb-2',
   searchLabel: 'font-bold text-blue-900 dark:text-slate-300',
