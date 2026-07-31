@@ -149,13 +149,13 @@ const selectClasses: ClassNames = {
   select: `bg-white text-black dark:bg-black dark:text-white w-full px-2 py-2 border border-gray-400 rounded-xs ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
 }
 const dateRangeClasses: ClassNames = {
-  root: 'flex flex-wrap items-center gap-2 mb-4',
+  root: 'flex flex-col items-start gap-2 mb-4',
   legend: 'text-base font-semibold text-blue-900 dark:text-slate-300 mb-1',
   rangeLabel: 'text-sm font-semibold text-blue-900 dark:text-slate-300 w-12',
   select:
     'px-2 py-2 bg-white text-black dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer',
-  fromContainer: 'flex items-center whitespace-nowrap',
-  toContainer: 'flex items-center whitespace-nowrap',
+  fromContainer: 'clear-both flex items-center whitespace-nowrap',
+  toContainer: 'clear-both flex items-center whitespace-nowrap',
   fromYearSelect: `rounded-l-lg rounded-r-none pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
   toYearSelect: `rounded-l-lg rounded-r-none pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
   fromMonthSelect: `rounded-l-none rounded-r-lg ml-1 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,

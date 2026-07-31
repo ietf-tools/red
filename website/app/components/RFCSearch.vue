@@ -117,19 +117,21 @@
               <dialog
                 ref="filterDialogRef"
                 aria-labelledby="rfc-filter-dialog-title"
-                class="fixed top-0 left-0 w-screen h-screen p-0 rounded-xs bg-white dark:bg-black text-blue-900 dark:text-gray-200 backdrop:bg-black/50"
+                class="fixed top-0 left-0 w-screen h-screen max-h-screen p-0 rounded-xs bg-white dark:bg-black text-blue-900 dark:text-gray-200 backdrop:bg-black/50"
                 @click="onDialogClick">
-                <div
-                  class="sticky z-10 flex items-center justify-between border-b border-gray-300 dark:border-gray-700 px-4 py-3 top-0 bg-white dark:bg-black">
-                  <h1 id="rfc-filter-dialog-title" ref="dialogHeadingRef" tabindex="-1" class="text-lg font-semibold">
-                    Filter RFCs
-                  </h1>
-                  <button type="button" aria-label="Close filters" class="p-1 cursor-pointer" @click="closeFilters">
-                    <GraphicsDismiss class="size-[1.5em]" />
-                  </button>
-                </div>
-                <div class="p-4 flex-1 overflow-y-auto">
-                  <RFCSearchFilters @reset="focusDialogHeading" />
+                <div class="w-full h-full flex flex-col">
+                  <div
+                    class="sticky z-10 flex items-center justify-between border-b border-gray-300 dark:border-gray-700 px-4 py-3 top-0 bg-white dark:bg-black">
+                    <h1 id="rfc-filter-dialog-title" ref="dialogHeadingRef" tabindex="-1" class="text-lg font-semibold">
+                      Filter RFCs
+                    </h1>
+                    <button type="button" aria-label="Close filters" class="p-1 cursor-pointer" @click="closeFilters">
+                      <GraphicsDismiss class="size-[1.5em]" />
+                    </button>
+                  </div>
+                  <div class="p-4 flex-1 overflow-y-auto overscroll-contain">
+                    <RFCSearchFilters @reset="focusDialogHeading" />
+                  </div>
                 </div>
               </dialog>
             </ClientOnly>
