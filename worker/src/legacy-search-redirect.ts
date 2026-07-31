@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { DateTime } from 'luxon'
-import { monthNames, searchPathBuilder, statusSchema } from './helpers'
+import { monthNames, searchPathBuilder, statusSchema, type Status } from './helpers'
 
 const LegacySearchParamsSchema = z.object({
   rfc: z.string().optional(),
@@ -93,7 +93,12 @@ export const buildSearchRedirect = (
       })
       .filter((status) => typeof status === 'string')
       .sort()
-      .map((maybeStatus) => statusSchema.parse(maybeStatus))
+      .flatMap((maybeStatus) => {
+        // Dropped rather than thrown: a legacy status the index can't be filtered by shouldn't
+        // turn the whole redirect into an error page.
+        const parsed = statusSchema.safeParse(maybeStatus)
+        return parsed.success ? [parsed.data] : []
+      })
   }
 
   if (legacySearchObj.std_trk) {
@@ -129,11 +134,12 @@ export const buildSearchRedirect = (
   }
 
   if (legacySearchObj.area_acronym) {
-    for (const [key, value] of Object.entries(areasMappingFromLegacyToNew)) {
-      if (legacySearchObj.area_acronym === value) {
-        searchParam.area = key
-      }
-    }
+    // Passed through unchanged: the legacy area acronym is already what the new search filters
+    // on (`area.acronym`). Previously mapped through a hardcoded list of acronyms, which
+    // silently dropped the filter for any area missing from it — `iesg`, `mgt`, `usv`, `sub`,
+    // `ops-old`, `osi`, `rfceditor` and `ipng` were all absent, and the index gains areas over
+    // time. Not validated here for the same reason.
+    searchParam.area = legacySearchObj.area_acronym
   }
 
   if (legacySearchObj.stream_name) {
@@ -159,7 +165,18 @@ const monthNameToNumber = (monthName: string, defaultMonthNumber: number): numbe
   return index + 1 // index is zero based but we want +1 because Jan=1, Feb=2, etc
 }
 
-const statusMappingFromLegacyToNew: Record<string, string[]> = {
+/**
+ * Legacy `pubstatus[]` values, keyed by the status they map to.
+ *
+ * Typed as `Record<Status, string[]>` so this can't drift from `statusSchema`: every status needs
+ * an entry, and a key that isn't a status is a compile error. It previously mapped 'Not Issued',
+ * which `statusSchema` doesn't include, so that value reached `statusSchema.parse` and threw —
+ * turning a legacy bookmark into an error page instead of a redirect.
+ *
+ * A legacy value with no counterpart here is dropped from the status filter rather than failing
+ * the redirect, so 'Not Issued' now yields a broader search rather than an error.
+ */
+const statusMappingFromLegacyToNew: Record<Status, string[]> = {
   'Proposed Standard': ['Proposed Standard'],
   'Draft Standard': ['Draft Standard'],
   'Internet Standard': ['Internet Standard', 'standard'],
@@ -167,8 +184,7 @@ const statusMappingFromLegacyToNew: Record<string, string[]> = {
   Informational: ['Informational', 'fyi'],
   Experimental: ['Experimental', 'exp'],
   Historic: ['Historic', 'his'],
-  Unknown: ['Unknown', 'unk'],
-  'Not Issued': ['Not Issued']
+  Unknown: ['Unknown', 'unk']
 }
 
 const sortedStatusMappingFromLegacyToNew = Object.entries(statusMappingFromLegacyToNew).sort((a, b) =>
@@ -183,20 +199,4 @@ const streamMappingFromLegacyToNew: Record<string, string> = {
   ise: 'Independent',
   editorial: 'Editorial',
   legacy: 'Legacy'
-}
-
-const areasMappingFromLegacyToNew: Record<string, string> = {
-  '': '',
-  app: 'app',
-  art: 'art',
-  gen: 'gen',
-  int: 'int',
-  ops: 'ops',
-  rai: 'rai',
-  rtg: 'rtg',
-  sec: 'sec',
-  tsv: 'tsv',
-  wit: 'wit',
-  irtf: 'irtf',
-  ietf: 'ietf'
 }

@@ -183,7 +183,18 @@ const searchClient = createRfcSearchClient({
 
 const stateAdapter = useNuxtStateAdapter(defaultUiState)
 
-const PERSISTENT_FACETS = ['status.name', 'stream.name', 'area.full', 'group.full', 'authors.name', 'publicationDate']
+// Stream and area are filtered on their stable identifiers; the display-name facets are here
+// too because they supply the labels for those controls (see RFCSearchFilters).
+const PERSISTENT_FACETS = [
+  'status.name',
+  'stream.slug',
+  'stream.name',
+  'area.acronym',
+  'area.full',
+  'group.full',
+  'authors.name',
+  'publicationDate'
+]
 
 const SORT_ITEMS = [
   { label: 'Relevance', value: '' },

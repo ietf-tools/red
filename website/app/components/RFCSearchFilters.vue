@@ -39,8 +39,24 @@
       show-less-aria-label="Show fewer statuses"
       show-more-aria-label="Show more statuses" />
 
-    <Select attribute="stream.name" label="Stream" :class-names="selectClasses" />
-    <Select attribute="area.full" label="Area" :class-names="selectClasses" />
+    <!--
+      Filtered on the index's stable identifiers rather than its display names, so a rename
+      doesn't silently break existing links, and so the worker's legacy /search/ redirects
+      (which emit `?stream=ietf` and `?area=art`) resolve. Labels come from the matching
+      display-name facet, so areas and streams added to the index need no change here.
+    -->
+    <Select
+      attribute="stream.slug"
+      label="Stream"
+      label-attribute="stream.name"
+      :label-key="streamLabelKey"
+      :class-names="selectClasses" />
+    <Select
+      attribute="area.acronym"
+      label="Area"
+      label-attribute="area.full"
+      :label-key="areaLabelKey"
+      :class-names="selectClasses" />
 
     <RefinementList
       attribute="group.full"
@@ -88,6 +104,12 @@ import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
 // Shared filter controls, rendered both in the desktop sidebar and the mobile dialog.
 // Reset restores the SearchRoot's `defaultUiState`, read from context by ResetForm.
 const emit = defineEmits<{ reset: [] }>()
+
+// `stream.name` is `stream.slug` with the original casing, eg `IETF` labels `ietf`.
+const streamLabelKey = (streamName: string) => streamName.toLowerCase()
+
+// `area.full` is `<acronym> - <name>`, eg `art - Applications and Real-Time Area` labels `art`.
+const areaLabelKey = (areaFull: string) => areaFull.split(' - ')[0] ?? areaFull
 
 const STATUS_ORDER = [
   'Internet Standard',

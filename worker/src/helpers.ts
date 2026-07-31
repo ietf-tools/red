@@ -256,6 +256,12 @@ export const typeSenseEncodeUriComponent = (uriComponent: string) =>
   encodeURIComponent(uriComponent).replace(/%20/g, '+')
 
 const SEARCH_PATH = '/search/'
+/**
+ * The statuses the search index can actually be filtered by, ie the `status.name` facet's
+ * vocabulary. Verified against the index: these eight are all it holds. Notably absent is
+ * 'Not Issued' — never-issued RFCs aren't in the index, they have their own page at
+ * `/never-issued/` — so there is nothing to redirect a 'Not Issued' search to.
+ */
 export const statusSchema = z.union([
   z.literal('Internet Standard'),
   z.literal('Proposed Standard'),
@@ -266,7 +272,7 @@ export const statusSchema = z.union([
   z.literal('Historic'),
   z.literal('Unknown')
 ])
-type Status = z.infer<typeof statusSchema>
+export type Status = z.infer<typeof statusSchema>
 type SearchPathBuilderProps = {
   q: string
   area: string

@@ -54,7 +54,8 @@ const handleSearch = (e: Event) => {
 
 const isFeatureFlagsModalVisible = ref(false)
 const featureFlagsRef = ref<FeatureFlags>(DEFAULT_FEATURE_FLAGS)
+const hasFeatureFlagsLoaded = ref(false)
 provide(isFeatureFlagsModalVisibleKey, isFeatureFlagsModalVisible)
 provide(featureFlagsKey, featureFlagsRef)
-onMounted(() => loadFeatureFlagsFromLocalStorage(featureFlagsRef))
+onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
 </script>

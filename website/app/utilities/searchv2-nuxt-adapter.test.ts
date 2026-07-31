@@ -90,4 +90,73 @@ describe('searchv2 nuxt adapter — multi-value refinements', () => {
     const state = parseQuery({ status: ['Historic'], statuses: 'Internet Standard' }, defaults)
     expect(state.refinements?.['status.name']).toEqual(['Historic'])
   })
+
+  it('accepts a comma-separated status, as the worker redirect emits', () => {
+    const state = parseQuery({ status: 'Internet Standard,Historic' }, defaults)
+    expect(state.refinements?.['status.name']).toEqual(['Internet Standard', 'Historic'])
+  })
+
+  it('accepts repeated and comma-separated status together', () => {
+    const state = parseQuery({ status: ['Historic,Experimental', 'Informational'] }, defaults)
+    expect(state.refinements?.['status.name']).toEqual(['Historic', 'Experimental', 'Informational'])
+  })
+
+  it('keeps commas inside group and authors values, which are open vocabularies', () => {
+    const state = parseQuery({ authors: 'Smith, Jr.', group: 'a,b' }, defaults)
+    expect(state.refinements?.['authors.name']).toEqual(['Smith, Jr.'])
+    expect(state.refinements?.['group.full']).toEqual(['a,b'])
+  })
+
+  it('writes status back as repeated params, not the comma form it accepts', () => {
+    const query = serializeQuery({ refinements: { 'status.name': ['Historic', 'Experimental'] } }, defaults)
+    expect(query.status).toEqual(['Historic', 'Experimental'])
+  })
+})
+
+describe('searchv2 nuxt adapter — publication date', () => {
+  const startOf1990 = Math.floor(Date.UTC(1990, 0, 1, 0, 0, 0) / 1000)
+  const endOfMay1991 = Math.floor(Date.UTC(1991, 5, 0, 23, 59, 59) / 1000)
+
+  it('writes yyyy-M rather than unix seconds', () => {
+    const query = serializeQuery({ numericRefinements: { publicationDate: { min: startOf1990 } } }, defaults)
+    expect(query.from).toBe('1990-1')
+    expect(query.to).toBeUndefined()
+    expect(query.pubDate).toBeUndefined()
+  })
+
+  it('resolves from to the start of its month and to to the end of its month', () => {
+    const state = parseQuery({ from: '1990-1', to: '1991-5' }, defaults)
+    expect(state.numericRefinements?.publicationDate).toEqual({ min: startOf1990, max: endOfMay1991 })
+  })
+
+  it('treats a bare year as the whole year', () => {
+    const state = parseQuery({ from: '1990', to: '1990' }, defaults)
+    expect(state.numericRefinements?.publicationDate).toEqual({
+      min: startOf1990,
+      max: Math.floor(Date.UTC(1990, 12, 0, 23, 59, 59) / 1000)
+    })
+  })
+
+  it('round-trips a range selected in the UI without drift', () => {
+    const original: UiState = { numericRefinements: { publicationDate: { min: startOf1990, max: endOfMay1991 } } }
+    const reparsed = parseQuery(serializeQuery(original, defaults), defaults)
+    expect(reparsed.numericRefinements).toEqual(original.numericRefinements)
+  })
+
+  it('ignores an unparseable or out-of-range bound', () => {
+    expect(parseQuery({ from: 'last tuesday' }, defaults).numericRefinements).toBeUndefined()
+    expect(parseQuery({ from: '1990-13' }, defaults).numericRefinements).toBeUndefined()
+    expect(parseQuery({ from: '631152000' }, defaults).numericRefinements).toBeUndefined()
+  })
+
+  it('still reads the legacy unix-seconds pubDate param, but never writes it', () => {
+    const state = parseQuery({ pubDate: `${startOf1990}:${endOfMay1991}` }, defaults)
+    expect(state.numericRefinements?.publicationDate).toEqual({ min: startOf1990, max: endOfMay1991 })
+    expect(serializeQuery(state, defaults).pubDate).toBeUndefined()
+  })
+
+  it('prefers from/to over the legacy pubDate param', () => {
+    const state = parseQuery({ from: '1990-1', pubDate: '0:0' }, defaults)
+    expect(state.numericRefinements?.publicationDate).toEqual({ min: startOf1990, max: undefined })
+  })
 })
