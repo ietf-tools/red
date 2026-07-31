@@ -6,10 +6,39 @@ import type {
 import type { MarkdownValidHrefs } from '../../shared/utils/markdown-valid-hrefs'
 import { parseSeriesId, type SeriesId } from './rfc'
 import type { RfcCommon } from './rfc-validators'
-// Imported from the status-only module rather than `typesense.ts`, which pulls in
-// browser-only helpers this module can't depend on (it's reachable from the server build).
-import type { TypesenseStatusName } from './typesense-status'
+import { typeSenseEncodeUriComponent } from './typesense-utils'
 import { assertIsString, assertNever } from './typescript'
+import type { searchV2PathBuilder } from './url-searchv2'
+import {
+  ACCOUNT_HOME_PATH,
+  ALL_CLUSTERS_PATH,
+  ATOM_PATH,
+  FIXME_URLS,
+  HOME_PATH,
+  IAB_URL_ORIGIN,
+  IETF_URL_ORIGIN,
+  IN_NOTES_BCP_REF_TXT,
+  IN_NOTES_RFC_REF_TXT,
+  IN_NOTES_STD_REF_TXT,
+  IRTF_URL_ORIGIN,
+  NEVER_ISSUED_PATH,
+  REPORTS_CURRENT_QUEUE_STATS_TXT_PATH,
+  RFC_BLOBSTORE_PREFIX,
+  RFC_INDEX_PATH,
+  RFC_INDEX_XML_PATH,
+  RSS_PATH,
+  SEARCH_PATH,
+  STATUS_CHANGES_PATH
+} from './url-constants'
+
+// Constants moved to `url-constants.ts`; re-exported so existing importers of this module are
+// unaffected. Keeping them dependency-free is what lets `url-searchv2.ts` take `SEARCH_PATH`
+// without importing this module, which is what removed the cycle between the two.
+export * from './url-constants'
+
+// Moved to `typesense-utils.ts`, which is DOM-free; `typesense.ts` is not, and this module is
+// reachable from the Nitro server build.
+export { typeSenseEncodeUriComponent } from './typesense-utils'
 
 /**
  * Represents all known href string patterns
@@ -30,7 +59,7 @@ export type ValidHrefs =
   | typeof NEVER_ISSUED_PATH
   | typeof ALL_CLUSTERS_PATH
   | typeof STATUS_CHANGES_PATH
-  | (typeof _FIXME_URLS)[number]
+  | (typeof FIXME_URLS)[number]
   | ReturnType<typeof markdownPathBuilder>
   | ReturnType<typeof searchPathBuilder>
   | ReturnType<typeof searchV2PathBuilder>
@@ -106,7 +135,6 @@ export const useRfcEditorQueueClustersUrl = () => {
 export const useIadReportsPathBuilder = (IADPath: string) => {
   return `${useIadUrlOrigin()}${IADPath}` as const
 }
-const RFC_BLOBSTORE_PREFIX = '/rfc/'
 /**
  * this assumes that a PDF exists. It doesn't check in advance.
  */
@@ -114,59 +142,7 @@ export const useRfcPdfPathBuilder = (rfcNumber: number) => {
   return `${RFC_BLOBSTORE_PREFIX}rfc${rfcNumber}.pdf` as const
 }
 
-export const IETF_URL_ORIGIN = 'https://www.ietf.org'
-export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
-export const IAB_URL_ORIGIN = 'https://www.iab.org'
-export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
-export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN = 'https://authors.ietf.org'
-export const IETF_PRIVACY_STATEMENT_URL = 'https://www.ietf.org/privacy-statement/'
-
-export const INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL = `${INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN}/rfc-publication-process`
-
-export const HOME_PATH = '/'
-export const CONTACT_PATH = '/about/contact/'
-export const SEARCH_PATH = '/search/'
-export const RFC_INDEX_PATH = '/rfc-index/'
-export const ACCOUNT_HOME_PATH = '/account/'
-
-export const API_HOMEPAGE_LATEST_PATH = `/api/v1/homepage-latest.json`
-export const API_RFC_MINI_INDEX_PATH = `/api/v1/rfc-mini-index.json`
-
-export const API_NO_JS_SERVER_SEARCH_PATH = `/api/v1/search/`
-
 export const apiMarkdownPagePathBuilder = (slug: string) => `/api/v1/content/${slug}.json` as const
-
-export const RFC_INDEX_XML_PATH = '/rfc-index.xml'
-export const REPORTS_CURRENT_QUEUE_STATS_TXT_PATH = '/reports/CurrQstats.txt'
-
-export const RSS_PATH = '/rfcrss.xml'
-export const ATOM_PATH = '/rfcatom.xml'
-
-export const IN_NOTES_BCP_REF_TXT = '/in-notes/bcp-ref.txt'
-export const IN_NOTES_RFC_REF_TXT = '/in-notes/rfc-ref.txt'
-export const IN_NOTES_STD_REF_TXT = '/in-notes/std-ref.txt'
-
-export const NEVER_ISSUED_PATH = '/never-issued/'
-export const ALL_CLUSTERS_PATH = '/all_clusters/'
-export const STATUS_CHANGES_PATH = '/status-changes/'
-
-export const FIXME_IEN_INDEX_PATH = '/ien/ien-index/'
-export const FIXME_REPORTS_SUBPUB_STATS_PATH = '/reports/subpub_stats/'
-export const FIXME_RFCS_PER_YEAR_PATH = '/rfcs-per-year/'
-export const FIXME_ERRATA_DEFINITIONS_PATH = '/errata-definitions/'
-export const FIXME_INNOTES_PRERELEASE_PATH = '/in-notes/prerelease/'
-
-/**
- * URLs to decide upon.
- * Eventually these might be wrong but we'll temporarily add them to VALID_HREFS
- */
-const _FIXME_URLS = [
-  FIXME_IEN_INDEX_PATH,
-  FIXME_REPORTS_SUBPUB_STATS_PATH,
-  FIXME_RFCS_PER_YEAR_PATH,
-  FIXME_ERRATA_DEFINITIONS_PATH,
-  FIXME_INNOTES_PRERELEASE_PATH
-] as const
 
 type Status =
   | 'Internet Standard'
@@ -212,126 +188,11 @@ export const searchPathBuilder = (searchParams: Partial<SearchPathBuilderProps>)
 }
 
 /**
- * The `status.name` values the search index can return, derived from the schema that
- * validates search responses so this can't drift from the facet's actual vocabulary.
+ * Lives in `url-searchv2.ts` to keep this module manageable, and is re-exported here so callers
+ * can import it from either place. That module takes its dependencies from `url-constants.ts`
+ * and `typesense-utils.ts` rather than from here, so this edge is one-way.
  */
-export type SearchV2StatusName = TypesenseStatusName
-
-/**
- * Bounds are `Date`s rather than numbers because the `pubDate` param is unix seconds:
- * accepting a bare number invites a year being passed and silently read as a timestamp
- * a few seconds after the epoch. Each bound is used as given — pick the start or end of
- * the intended period at the call site.
- */
-type SearchV2PublicationDateRange = {
-  from?: Date
-  to?: Date
-}
-
-/** The fields the index is configured to sort on. An empty string selects relevance order. */
-type SearchV2SortValue = '' | `${'publicationDate' | 'rfcNumber'}:${'asc' | 'desc'}`
-
-/** Mirrors the choices offered by the search page's HitsPerPage widget. */
-type SearchV2PerPage = 10 | 25 | 50 | 100
-
-type SearchV2PathBuilderProps = {
-  q: string
-  /** `status.name` refinement, multi-select. */
-  status: SearchV2StatusName[]
-  /** `group.full` refinement, multi-select. Open vocabulary, so untyped. */
-  group: string[]
-  /** `authors.name` refinement, multi-select. Open vocabulary, so untyped. */
-  authors: string[]
-  /** `stream.name` menu, single-select. Untyped because the index schema doesn't constrain stream names. */
-  stream: string
-  /** `area.full` menu, single-select. Untyped because the index schema doesn't constrain area names. */
-  area: string
-  published: SearchV2PublicationDateRange
-  /** 1-based, matching the `page` query param rather than the search engine's internal index. */
-  page: number
-  perPage: SearchV2PerPage
-  sort: SearchV2SortValue
-  searchObsoleted: boolean
-  searchMetadataOnly: boolean
-}
-
-/**
- * Builds a `/search/` path for the searchv2 search page.
- *
- * The param names and encodings here are the inverse of `parseQuery` in
- * `searchv2-nuxt-adapter.ts`, which is what the search page reads its state from.
- *
- * Toggles are written whenever they're supplied, including when the value happens to
- * match the search page's own default, so a link's behaviour doesn't change if that
- * default is later revised.
- *
- * Prefer this over `searchPathBuilder`, which predates searchv2 and can't express
- * group, authors, publication date, sort, page or per-page.
- */
-const toPubDateBound = (date: Date | undefined): string =>
-  date === undefined ? '' : String(Math.floor(date.getTime() / 1000))
-
-export const searchV2PathBuilder = (
-  searchParams: Partial<SearchV2PathBuilderProps>
-): `${typeof SEARCH_PATH}${string}` => {
-  const {
-    q,
-    status,
-    group,
-    authors,
-    stream,
-    area,
-    published,
-    page,
-    perPage,
-    sort,
-    searchObsoleted,
-    searchMetadataOnly
-  } = searchParams
-
-  const params: [key: string, value: string][] = []
-
-  const addValue = (key: string, value: string | undefined) => {
-    if (value) params.push([key, typeSenseEncodeUriComponent(value)])
-  }
-
-  const addList = (key: string, values: string[] | undefined) => {
-    // Repeated params rather than one delimited value, so a value containing the delimiter
-    // can't be read back as two values. Matches `list` in the searchv2 Nuxt adapter.
-    values?.forEach((value) => addValue(key, value))
-  }
-
-  addValue('q', q)
-  addList('status', status)
-  addList('group', group)
-  addList('authors', authors)
-  addValue('stream', stream)
-  addValue('area', area)
-  addValue('sort', sort)
-
-  if (published && (published.from !== undefined || published.to !== undefined)) {
-    params.push(['pubDate', `${toPubDateBound(published.from)}:${toPubDateBound(published.to)}`])
-  }
-
-  if (page !== undefined && page > 1) params.push(['page', String(page)])
-  if (perPage !== undefined) params.push(['perPage', String(perPage)])
-  if (searchObsoleted !== undefined) params.push(['searchObsoleted', searchObsoleted ? '1' : '0'])
-  if (searchMetadataOnly !== undefined) params.push(['searchMetadataOnly', searchMetadataOnly ? '1' : '0'])
-
-  if (params.length === 0) {
-    return SEARCH_PATH
-  }
-
-  const search = params
-    // Normalize order. A codepoint comparison rather than `localeCompare` so the result
-    // doesn't vary with the runtime's locale, and a stable sort so repeated keys keep the
-    // caller's value order.
-    .sort(([keyA], [keyB]) => (keyA === keyB ? 0 : keyA < keyB ? -1 : 1))
-    .map(([key, value]) => `${key}=${value}`)
-    .join('&')
-
-  return `${SEARCH_PATH}?${search}`
-}
+export { searchV2PathBuilder, type SearchV2StatusName } from './url-searchv2'
 
 export const refsRefTxtPathBuilder = (rfcId: string) => {
   const seriesId = parseSeriesId(rfcId)
@@ -654,11 +515,5 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
 export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => {
   return `${useDatatrackerUrlOrigin()}${datatracker_person_path}`
 }
-
-/**
- * TypeSense wants spaces encoded as '+' char not '%20'.
- */
-export const typeSenseEncodeUriComponent = (uriComponent: string) =>
-  encodeURIComponent(uriComponent).replace(/%20/g, '+')
 
 export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/api/v1/favicon/${widthPx}x${heightPx}.png`

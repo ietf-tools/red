@@ -26,6 +26,10 @@ type Props = {
   showLabel?: boolean
   allLabel?: string
   showCounts?: boolean
+  /** See `useMenuSelect`: a second facet supplying display labels for `attribute`'s values. */
+  labelAttribute?: string
+  /** See `useMenuSelect`: maps a `labelAttribute` value back to the `attribute` value it labels. */
+  labelKey?: (labelValue: string) => string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,11 +37,18 @@ const props = withDefaults(defineProps<Props>(), {
   limit: 20,
   showLabel: true,
   allLabel: 'All',
-  showCounts: true
+  showCounts: true,
+  labelAttribute: undefined,
+  labelKey: undefined
 })
 
 const selectDomId = useId()
-const { selected, items, refine } = useMenuSelect({ attribute: props.attribute, limit: props.limit })
+const { selected, items, refine } = useMenuSelect({
+  attribute: props.attribute,
+  limit: props.limit,
+  labelAttribute: props.labelAttribute,
+  labelKey: props.labelKey
+})
 
 const onChange = (event: Event) => {
   if (event.target instanceof HTMLSelectElement) refine(event.target.value)

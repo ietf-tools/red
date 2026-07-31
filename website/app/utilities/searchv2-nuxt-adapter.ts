@@ -2,6 +2,7 @@ import { computed } from 'vue'
 import type { LocationQuery, LocationQueryValue } from 'vue-router'
 import type { StateAdapter, UiState } from '~/components/searchv2'
 import { SEARCH_PATH } from '~/utilities/url'
+import { formatYearMonth, parseYearMonth, yearMonthToEnd, yearMonthToStart } from '~/utilities/year-month'
 
 /**
  * Boolean toggles the URL round-trips, mapped to their query param names. A toggle is
@@ -55,27 +56,38 @@ function list(value: LocationQueryValue | LocationQueryValue[] | undefined): str
   return values.length > 0 ? values : undefined
 }
 
-/** Legacy comma-separated `statuses` param, still honoured for links from the previous site. */
-function csv(value: LocationQueryValue | LocationQueryValue[] | undefined): string[] | undefined {
-  const resolved = first(value)
-  const parts = resolved ? resolved.split(',').filter(Boolean) : []
-  return parts.length > 0 ? parts : undefined
+/**
+ * `status` additionally accepts a comma-separated list, because the worker's legacy search
+ * redirects emit that form (`?status=Historic,Experimental`) and rewriting them isn't on the
+ * table. Sound for this param alone: the status vocabulary is closed and contains no commas.
+ * Open vocabularies (`group`, `authors`) stay repeated-params only — see `list`.
+ */
+function listAllowingCsv(value: LocationQueryValue | LocationQueryValue[] | undefined): string[] | undefined {
+  const values = list(value)
+    ?.flatMap((entry) => entry.split(','))
+    .filter(Boolean)
+  return values && values.length > 0 ? values : undefined
 }
 
 export function parseQuery(query: LocationQuery, defaultUiState: UiState = {}): UiState {
   const refinements: Record<string, string[]> = {}
-  const status = list(query.status) ?? csv(query.statuses)
+  // `statuses` is the pre-searchv2 alias for the same facet.
+  const status = listAllowingCsv(query.status ?? query.statuses)
   if (status) refinements['status.name'] = status
   const group = list(query.group)
   if (group) refinements['group.full'] = group
   const authors = list(query.authors)
   if (authors) refinements['authors.name'] = authors
 
+  // Single-select facets key on the index's stable identifiers, not its display names, so the
+  // `?stream=ietf` / `?area=art` the worker's legacy redirects emit resolve, and a rename in the
+  // index doesn't silently break links. The controls display the matching names — see
+  // RFCSearchFilters.
   const menu: Record<string, string> = {}
   const stream = first(query.stream)
-  if (stream) menu['stream.name'] = stream
+  if (stream) menu['stream.slug'] = stream
   const area = first(query.area)
-  if (area) menu['area.full'] = area
+  if (area) menu['area.acronym'] = area
 
   const numericRefinements: Record<string, { min?: number; max?: number }> = {}
   const publicationDate = parsePublicationDate(query)
@@ -106,15 +118,30 @@ export function parseQuery(query: LocationQuery, defaultUiState: UiState = {}): 
   return state
 }
 
+/**
+ * Publication date bounds are `from`/`to` in `yyyy-M`, which is the format the worker's legacy
+ * search redirects already emit and is far more legible than a unix timestamp. UiState keeps
+ * unix seconds because that's what the index filters on.
+ */
 function parsePublicationDate(query: LocationQuery): { min?: number; max?: number } | undefined {
+  const from = parseYearMonth(first(query.from))
+  const to = parseYearMonth(first(query.to))
+  if (from || to) {
+    return {
+      min: from && yearMonthToStart(from),
+      max: to && yearMonthToEnd(to)
+    }
+  }
+
+  // Legacy `pubDate=<minUnixSeconds>:<maxUnixSeconds>` written by the previous search page,
+  // read so existing bookmarks keep working. Never written back.
   const pubDate = first(query.pubDate)
   if (pubDate) {
     const [min, max] = pubDate.split(':')
-    return { min: toNumber(min), max: toNumber(max) }
+    const parsed = { min: toNumber(min), max: toNumber(max) }
+    if (parsed.min !== undefined || parsed.max !== undefined) return parsed
   }
-  const from = toNumber(first(query.from))
-  const to = toNumber(first(query.to))
-  if (from !== undefined || to !== undefined) return { min: from, max: to }
+
   return undefined
 }
 
@@ -138,15 +165,14 @@ export function serializeQuery(state: UiState, defaultUiState: UiState = {}): Lo
   const authors = state.refinements?.['authors.name']
   if (authors?.length) query.authors = authors
 
-  const stream = state.menu?.['stream.name']
+  const stream = state.menu?.['stream.slug']
   if (stream) query.stream = stream
-  const area = state.menu?.['area.full']
+  const area = state.menu?.['area.acronym']
   if (area) query.area = area
 
   const publicationDate = state.numericRefinements?.publicationDate
-  if (publicationDate && (publicationDate.min !== undefined || publicationDate.max !== undefined)) {
-    query.pubDate = `${publicationDate.min ?? ''}:${publicationDate.max ?? ''}`
-  }
+  if (publicationDate?.min !== undefined) query.from = formatYearMonth(publicationDate.min)
+  if (publicationDate?.max !== undefined) query.to = formatYearMonth(publicationDate.max)
 
   // A toggle appears in the URL only when it differs from its configured default.
   for (const [attribute, param] of Object.entries(TOGGLE_PARAMS)) {
