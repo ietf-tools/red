@@ -6,6 +6,9 @@ import type {
 import type { MarkdownValidHrefs } from '../../shared/utils/markdown-valid-hrefs'
 import { parseSeriesId, type SeriesId } from './rfc'
 import type { RfcCommon } from './rfc-validators'
+// Imported from the status-only module rather than `typesense.ts`, which pulls in
+// browser-only helpers this module can't depend on (it's reachable from the server build).
+import type { TypesenseStatusName } from './typesense-status'
 import { assertIsString, assertNever } from './typescript'
 
 /**
@@ -30,6 +33,7 @@ export type ValidHrefs =
   | (typeof _FIXME_URLS)[number]
   | ReturnType<typeof markdownPathBuilder>
   | ReturnType<typeof searchPathBuilder>
+  | ReturnType<typeof searchV2PathBuilder>
   | ReturnType<typeof mailToBuilder>
   | ReturnType<typeof telBuilder>
   | ReturnType<typeof refsRefTxtPathBuilder>
@@ -205,6 +209,128 @@ export const searchPathBuilder = (searchParams: Partial<SearchPathBuilderProps>)
           .join('&')
       : ''
   }`
+}
+
+/**
+ * The `status.name` values the search index can return, derived from the schema that
+ * validates search responses so this can't drift from the facet's actual vocabulary.
+ */
+export type SearchV2StatusName = TypesenseStatusName
+
+/**
+ * Bounds are `Date`s rather than numbers because the `pubDate` param is unix seconds:
+ * accepting a bare number invites a year being passed and silently read as a timestamp
+ * a few seconds after the epoch. Each bound is used as given — pick the start or end of
+ * the intended period at the call site.
+ */
+type SearchV2PublicationDateRange = {
+  from?: Date
+  to?: Date
+}
+
+/** The fields the index is configured to sort on. An empty string selects relevance order. */
+type SearchV2SortValue = '' | `${'publicationDate' | 'rfcNumber'}:${'asc' | 'desc'}`
+
+/** Mirrors the choices offered by the search page's HitsPerPage widget. */
+type SearchV2PerPage = 10 | 25 | 50 | 100
+
+type SearchV2PathBuilderProps = {
+  q: string
+  /** `status.name` refinement, multi-select. */
+  status: SearchV2StatusName[]
+  /** `group.full` refinement, multi-select. Open vocabulary, so untyped. */
+  group: string[]
+  /** `authors.name` refinement, multi-select. Open vocabulary, so untyped. */
+  authors: string[]
+  /** `stream.name` menu, single-select. Untyped because the index schema doesn't constrain stream names. */
+  stream: string
+  /** `area.full` menu, single-select. Untyped because the index schema doesn't constrain area names. */
+  area: string
+  published: SearchV2PublicationDateRange
+  /** 1-based, matching the `page` query param rather than the search engine's internal index. */
+  page: number
+  perPage: SearchV2PerPage
+  sort: SearchV2SortValue
+  searchObsoleted: boolean
+  searchMetadataOnly: boolean
+}
+
+/**
+ * Builds a `/search/` path for the searchv2 search page.
+ *
+ * The param names and encodings here are the inverse of `parseQuery` in
+ * `searchv2-nuxt-adapter.ts`, which is what the search page reads its state from.
+ *
+ * Toggles are written whenever they're supplied, including when the value happens to
+ * match the search page's own default, so a link's behaviour doesn't change if that
+ * default is later revised.
+ *
+ * Prefer this over `searchPathBuilder`, which predates searchv2 and can't express
+ * group, authors, publication date, sort, page or per-page.
+ */
+const toPubDateBound = (date: Date | undefined): string =>
+  date === undefined ? '' : String(Math.floor(date.getTime() / 1000))
+
+export const searchV2PathBuilder = (
+  searchParams: Partial<SearchV2PathBuilderProps>
+): `${typeof SEARCH_PATH}${string}` => {
+  const {
+    q,
+    status,
+    group,
+    authors,
+    stream,
+    area,
+    published,
+    page,
+    perPage,
+    sort,
+    searchObsoleted,
+    searchMetadataOnly
+  } = searchParams
+
+  const params: [key: string, value: string][] = []
+
+  const addValue = (key: string, value: string | undefined) => {
+    if (value) params.push([key, typeSenseEncodeUriComponent(value)])
+  }
+
+  const addList = (key: string, values: string[] | undefined) => {
+    // Repeated params rather than one delimited value, so a value containing the delimiter
+    // can't be read back as two values. Matches `list` in the searchv2 Nuxt adapter.
+    values?.forEach((value) => addValue(key, value))
+  }
+
+  addValue('q', q)
+  addList('status', status)
+  addList('group', group)
+  addList('authors', authors)
+  addValue('stream', stream)
+  addValue('area', area)
+  addValue('sort', sort)
+
+  if (published && (published.from !== undefined || published.to !== undefined)) {
+    params.push(['pubDate', `${toPubDateBound(published.from)}:${toPubDateBound(published.to)}`])
+  }
+
+  if (page !== undefined && page > 1) params.push(['page', String(page)])
+  if (perPage !== undefined) params.push(['perPage', String(perPage)])
+  if (searchObsoleted !== undefined) params.push(['searchObsoleted', searchObsoleted ? '1' : '0'])
+  if (searchMetadataOnly !== undefined) params.push(['searchMetadataOnly', searchMetadataOnly ? '1' : '0'])
+
+  if (params.length === 0) {
+    return SEARCH_PATH
+  }
+
+  const search = params
+    // Normalize order. A codepoint comparison rather than `localeCompare` so the result
+    // doesn't vary with the runtime's locale, and a stable sort so repeated keys keep the
+    // caller's value order.
+    .sort(([keyA], [keyB]) => (keyA === keyB ? 0 : keyA < keyB ? -1 : 1))
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&')
+
+  return `${SEARCH_PATH}?${search}`
 }
 
 export const refsRefTxtPathBuilder = (rfcId: string) => {

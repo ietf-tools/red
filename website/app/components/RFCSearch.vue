@@ -132,14 +132,6 @@
                   <RFCSearchFilters @reset="focusDialogHeading" />
                 </div>
               </dialog>
-
-              <template #fallback>
-                <p class="w-full lg:max-w-[50em] text-black dark:text-white">
-                  Prefer more control over your results? Turn on JavaScript for an enhanced search with filters and
-                  sorting. Your privacy stays intact, rfc-editor.org passes nothing to third parties, per our privacy
-                  policy.
-                </p>
-              </template>
             </ClientOnly>
           </div>
         </div>

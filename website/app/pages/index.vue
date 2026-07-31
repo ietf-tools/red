@@ -47,7 +47,7 @@
           :aria-describedby="BROWSE_RFCS_HEADING_DOM_ID">
           <li>
             <Card
-              :href="searchPathBuilder({ status: ['Internet Standard'] })"
+              :href="searchV2PathBuilder({ status: ['Internet Standard'] })"
               heading-level="3"
               class="h-full"
               has-cover-link>
@@ -60,7 +60,7 @@
 
           <li>
             <Card
-              :href="searchPathBuilder({ status: ['Best Current Practice'] })"
+              :href="searchV2PathBuilder({ status: ['Best Current Practice'] })"
               heading-level="3"
               class="h-full"
               has-cover-link>
@@ -134,11 +134,11 @@ import {
   IETF_URL_ORIGIN,
   IRTF_URL_ORIGIN,
   API_HOMEPAGE_LATEST_PATH,
-  searchPathBuilder,
   useDatatrackerUrlOrigin,
   usePublicSiteUrlOrigin,
   useApiV1UrlOrigin,
-  RFC_INDEX_PATH
+  RFC_INDEX_PATH,
+  searchV2PathBuilder
 } from '~/utilities/url'
 import type { HomepageLatest } from '~/utilities/rfc-validators'
 

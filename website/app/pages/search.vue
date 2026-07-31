@@ -8,9 +8,9 @@
 <script setup lang="ts">
 import AisSearch from '~/components/ais-search.vue'
 import RFCSearch from '~/components/RFCSearch.vue'
-import { useFeatureFlags } from '~/utilities/feature-flags'
+// import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useRfcEditorHead } from '~/utilities/head'
-import { searchPathBuilder } from '~/utilities/url'
+import { searchV2PathBuilder } from '~/utilities/url'
 
 definePageMeta({
   layout: false
@@ -19,11 +19,11 @@ definePageMeta({
 // The canonical path should not include the various search queries and filters etc.
 // For the purposes of search engines recommended website entry point (which is all
 // a canonical URL is) it should be a default search.
-const canonicalPath = searchPathBuilder({})
+const canonicalPath = searchV2PathBuilder({})
 
-const featureFlags = useFeatureFlags()
+// const featureFlags = useFeatureFlags()
 
-const hasSearchV2 = computed(() => featureFlags.value.searchV2 ?? false)
+const hasSearchV2 = true
 
 useRfcEditorHead({
   title: 'Search',

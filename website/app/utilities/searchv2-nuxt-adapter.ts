@@ -42,6 +42,20 @@ function first(value: LocationQueryValue | LocationQueryValue[] | undefined): st
   return resolved ?? undefined
 }
 
+/**
+ * Multi-value params are read as repeated occurrences of the key (`?authors=A&authors=B`),
+ * which vue-router hands us as an array. Deliberately not delimiter-separated: a value
+ * containing the delimiter would otherwise be read back as two separate values, and no
+ * amount of encoding prevents it because the query is fully decoded before we see it.
+ */
+function list(value: LocationQueryValue | LocationQueryValue[] | undefined): string[] | undefined {
+  const values = (Array.isArray(value) ? value : [value]).filter(
+    (entry): entry is string => typeof entry === 'string' && entry !== ''
+  )
+  return values.length > 0 ? values : undefined
+}
+
+/** Legacy comma-separated `statuses` param, still honoured for links from the previous site. */
 function csv(value: LocationQueryValue | LocationQueryValue[] | undefined): string[] | undefined {
   const resolved = first(value)
   const parts = resolved ? resolved.split(',').filter(Boolean) : []
@@ -50,11 +64,11 @@ function csv(value: LocationQueryValue | LocationQueryValue[] | undefined): stri
 
 export function parseQuery(query: LocationQuery, defaultUiState: UiState = {}): UiState {
   const refinements: Record<string, string[]> = {}
-  const status = csv(query.status ?? query.statuses)
+  const status = list(query.status) ?? csv(query.statuses)
   if (status) refinements['status.name'] = status
-  const group = csv(query.group)
+  const group = list(query.group)
   if (group) refinements['group.full'] = group
-  const authors = csv(query.authors)
+  const authors = list(query.authors)
   if (authors) refinements['authors.name'] = authors
 
   const menu: Record<string, string> = {}
@@ -111,16 +125,18 @@ function toNumber(value: string | undefined): number | undefined {
 }
 
 export function serializeQuery(state: UiState, defaultUiState: UiState = {}): LocationQuery {
-  const query: Record<string, string> = {}
+  const query: LocationQuery = {}
 
   if (state.query) query.q = state.query
 
+  // Multi-select facets are written as arrays, which vue-router stringifies into one
+  // occurrence of the key per value. See `list` for why they aren't delimiter-joined.
   const status = state.refinements?.['status.name']
-  if (status?.length) query.status = status.join(',')
+  if (status?.length) query.status = status
   const group = state.refinements?.['group.full']
-  if (group?.length) query.group = group.join(',')
+  if (group?.length) query.group = group
   const authors = state.refinements?.['authors.name']
-  if (authors?.length) query.authors = authors.join(',')
+  if (authors?.length) query.authors = authors
 
   const stream = state.menu?.['stream.name']
   if (stream) query.stream = stream

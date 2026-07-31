@@ -6,7 +6,7 @@
         aria-label="Reset filters"
         label="Reset"
         :class-names="{
-          root: 'mb-3 px-2 py-1 text-sm uppercase rounded text-red-900 dark:text-red-100 border-1 border-red-700 dark:border-1 dark:border-red-200 font-bold cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
+          root: 'mb-3 px-2 py-1 text-sm uppercase rounded text-red-900 dark:text-red-100 border-1 border-red-700 dark:border-1 dark:border-red-200 hover:bg-red-100 hover:dark:bg-red-900  font-bold cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:no-underline'
         }"
         @reset="emit('reset')" />
     </div>
@@ -132,11 +132,11 @@ const dateRangeClasses: ClassNames = {
   rangeLabel: 'text-sm font-semibold text-blue-900 dark:text-slate-300 w-12',
   select:
     'px-2 py-2 bg-white text-black dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer',
-  fromContainer: 'flex items-center gap-2 whitespace-nowrap',
-  toContainer: 'flex items-center gap-2 whitespace-nowrap',
-  fromYearSelect: `rounded-l-lg pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
-  toYearSelect: `rounded-l-lg pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
-  fromMonthSelect: `rounded-r-lg  ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
-  toMonthSelect: `rounded-r-lg ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
+  fromContainer: 'flex items-center whitespace-nowrap',
+  toContainer: 'flex items-center whitespace-nowrap',
+  fromYearSelect: `rounded-l-lg rounded-r-none pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
+  toYearSelect: `rounded-l-lg rounded-r-none pl-3 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
+  fromMonthSelect: `rounded-l-none rounded-r-lg ml-1 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`,
+  toMonthSelect: `rounded-l-none rounded-r-lg ml-1 ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`
 }
 </script>

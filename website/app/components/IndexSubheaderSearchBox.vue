@@ -47,7 +47,8 @@ import {
   apiSubseriesPathBuilder,
   infoSeriesPathBuilder,
   SEARCH_PATH,
-  searchPathBuilder
+  searchPathBuilder,
+  searchV2PathBuilder
 } from '~/utilities/url'
 import SubseriesTitle from './SubseriesTitle.vue'
 import {
@@ -176,7 +177,7 @@ watchDebounced(() => searchQuery.value, checkSearchForSeriesId, {
 
 const handleSearch = async () => {
   const { value } = searchQuery
-  const searchPath = searchPathBuilder({
+  const searchPath = searchV2PathBuilder({
     q: value
   })
   navigateTo(searchPath)

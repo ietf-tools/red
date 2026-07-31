@@ -1,46 +1,11 @@
 import { prefersReducedMotion } from '~/utilities/accessibility'
 import { z } from 'zod'
 import { FOCUSABLE_QUERY_SELECTOR } from './html'
+// The status facet lives in a DOM-free module so server-reachable code can derive from it.
+import { TypesenseSearchItemStatusSchema, type TypesenseStatusName } from './typesense-status'
 
-// If changing this also consider changing the RfcCommon status parsing code
-export const TypesenseSearchItemStatusSchema = z.union([
-  z.object({
-    slug: z.literal('unkn'),
-    name: z.literal('Unknown')
-  }),
-  z.object({
-    slug: z.literal('bcp'),
-    name: z.literal('Best Current Practice')
-  }),
-  z.object({
-    slug: z.literal('exp'),
-    name: z.literal('Experimental')
-  }),
-  z.object({
-    slug: z.literal('hist'),
-    name: z.literal('Historic')
-  }),
-  z.object({
-    slug: z.literal('inf'),
-    name: z.literal('Informational')
-  }),
-  z.object({
-    slug: z.literal('not-issued'),
-    name: z.literal('Not Issued')
-  }),
-  z.object({
-    slug: z.literal('ps'),
-    name: z.literal('Proposed Standard')
-  }),
-  z.object({
-    slug: z.literal('ds'),
-    name: z.literal('Draft Standard')
-  }),
-  z.object({
-    slug: z.literal('std'),
-    name: z.literal('Internet Standard')
-  })
-])
+// Re-exported so existing importers of this module are unaffected by the move.
+export { TypesenseSearchItemStatusSchema, type TypesenseStatusName }
 
 export const TypesenseSearchItemAreaSchema = z.object({
   acronym: z.string(),

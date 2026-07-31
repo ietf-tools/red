@@ -25,7 +25,7 @@
     <div class="lg:w-2/3 xl:w-1/2 mb-1 md:mb-2 md:pt-2 md:pl-2">
       <p class="hidden leading-6 lg:block pl-5 md:p-0 text-pretty">
         RFCs outline computer networking and Internet foundations, including
-        <AValidHref :href="searchPathBuilder({ status: ['Internet Standard'] })">Internet Standards</AValidHref>
+        <AValidHref :href="searchV2PathBuilder({ status: ['Internet Standard'] })">Internet Standards</AValidHref>
         and historical or informative content. They are published by the RFC Editor for the
         <AValidHref :href="IETF_URL_ORIGIN">
           <abbr title="Internet Engineering Task Force">IETF</abbr>
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { IAB_URL_ORIGIN, IETF_URL_ORIGIN, IRTF_URL_ORIGIN, searchPathBuilder } from '~/utilities/url'
+import { IAB_URL_ORIGIN, IETF_URL_ORIGIN, IRTF_URL_ORIGIN, searchV2PathBuilder } from '~/utilities/url'
 
 // SVG ratio 1.371559633027523:1
 const motif1Class = 'w-[300px] h-[218px] lg:w-[700px] lg:h-[511px]'
