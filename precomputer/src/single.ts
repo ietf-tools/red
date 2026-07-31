@@ -1,6 +1,7 @@
 import { indices } from './tasks/indices.ts'
 import { uploadRfcData } from './tasks/rfc.ts'
 import { getApiClient } from './utilities/api.ts'
+import { cleanupRedBucket } from './utilities/cleanup.ts'
 import { taskItemWasSkipped, taskItemWasSuccessful } from './utilities/task.ts'
 
 const main = async (rfcNumber: number): Promise<void> => {
@@ -17,7 +18,17 @@ const main = async (rfcNumber: number): Promise<void> => {
       console.log(`[RFC ${rfcNumber}] skipped`)
     } else if (taskItemWasSuccessful(results)) {
       console.log(`Pushed RFC ${rfcNumber} to bucket successfully.`)
-      process.exit(0)
+      console.log(`Cleaning Red bucket.`)
+      const didClean = await cleanupRedBucket(results.filter((key) => key !== false))
+      if (didClean) {
+        console.log('[single.ts] finished successfully')
+        process.exit(0)
+      } else {
+        console.error(
+          '[single.ts] finished with error(s)' // these errors should be already printed to console
+        )
+        process.exit(1)
+      }
     } else {
       console.error(
         `Unable to process RFC ${rfcNumber}. If the RFC was NOT_ISSUED this isn't an error. Results: `,
