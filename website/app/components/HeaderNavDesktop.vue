@@ -3,7 +3,7 @@
     v-model="currentNav"
     class="relative w-full justify-end content-end hidden lg:block"
     disable-hover-trigger>
-    <NavigationMenuList class="m-0 flex w-full gap-0.5 justify-end items-center list-none rounded-md">
+    <NavigationMenuList class="m-0 flex w-full gap-0.5 justify-end items-start list-none rounded-md">
       <NavigationMenuItem v-for="(menuItem, index) in menuDataWithNoScripts" :key="index">
         <NavigationMenuLink
           v-if="menuItem.href && !menuItem.children"

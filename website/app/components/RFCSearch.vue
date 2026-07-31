@@ -27,31 +27,33 @@
             } mx-auto px-6`"
             v-html="noScriptFormHtml" />
 
-          <div
-            :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
-            class="lg:sticky lg:top-0 lg:z-110 bg-gray-200 dark:bg-blue-950">
-            <div class="search-container mx-auto pl-5 pr-3 pt-1 pb-0 py-2 xl:py-2 flex flex-row items-center">
-              <div class="w-full flex justify-center mx-auto">
-                <SearchBox
-                  :class-names="searchBoxClasses"
-                  label="Search RFCs"
-                  :description-id="searchBoxDescriptionId"
-                  submit-label="Submit search"
-                  :landmark="false">
-                  <template #submit-icon>
-                    <GraphicsSearch class="w-[2em] h-[2em]" />
-                  </template>
-                </SearchBox>
+          <ClientOnly>
+            <div
+              :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
+              class="lg:sticky lg:top-0 lg:z-110 bg-gray-200 dark:bg-blue-950">
+              <div class="search-container mx-auto pl-5 pr-3 pt-1 pb-0 py-2 xl:py-2 flex flex-row items-center">
+                <div class="w-full flex justify-center mx-auto">
+                  <SearchBox
+                    :class-names="searchBoxClasses"
+                    label="Search RFCs"
+                    :description-id="searchBoxDescriptionId"
+                    submit-label="Submit search"
+                    :landmark="false">
+                    <template #submit-icon>
+                      <GraphicsSearch class="w-[2em] h-[2em]" />
+                    </template>
+                  </SearchBox>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="pb-2 italic bg-gray-200 dark:bg-blue-950" :id="searchBoxDescriptionId">
-            <div class="search-container mx-auto px-2 text-center md:text-left md:px-0">
-              <p class="xl:-mt-[0.3em] pl-4 md:pl-34 2xl:pl-67 text-black dark:text-white">
-                Find an RFC (number, subseries, title, author, etc.)
-              </p>
+            <div class="pb-2 italic bg-gray-200 dark:bg-blue-950" :id="searchBoxDescriptionId">
+              <div class="search-container mx-auto px-2 text-center md:text-left md:px-0">
+                <p class="xl:-mt-[0.3em] pl-4 md:pl-34 2xl:pl-67 text-black dark:text-white">
+                  Find an RFC (number, subseries, title, author, etc.)
+                </p>
+              </div>
             </div>
-          </div>
+          </ClientOnly>
 
           <div class="search-container mx-auto w-full" v-html="noScriptIframeHtml" />
 
@@ -278,9 +280,9 @@ const noScriptFormHtml = computed(
       <b>Your browser has JavaScript disabled.</b> The following free text search is available, but please enable JavaScript for more search features.
     </div>
     <form method="get" action="${API_NO_JS_SERVER_SEARCH_PATH}" target="${NOSCRIPT_IFRAME_DOM_ID}" class="flex flex-row pt-6 pb-2">
-      <input id="search" type="search" name="q" autocomplete="search" class="min-w-0 w-full bg-white text-black pl-4 py-3" />
+      <input id="search" aria-label="Search by text" type="search" name="q" autocomplete="search" class="min-w-0 w-full border-1 border-black bg-white text-black pl-4 py-3" />
       <input type="hidden" name="x-typesense-api-key" value="${apiKey}" />
-      <button type="submit" class="bg-blue-200 px-2 flex items-center text-blue-950 cursor-pointer" aria-label="Submit search">Search</button>
+      <button type="submit" class="bg-blue-100 px-2 flex items-center text-blue-950 cursor-pointer font-bold" aria-label="Submit search">Search</button>
     </form>
   </noscript>`
 )

@@ -25,7 +25,12 @@
           :aria-expanded="isMobileAbstractOpen"
           :aria-controls="abstractDomId"
           class="relative z-50 text-blue-800 cursor-pointer dark:text-blue-100 underline text-base p-3 -ml-3 -mt-2 -mb-3 print:hidden"
-          @click="isMobileAbstractOpen = !isMobileAbstractOpen">
+          @click="isMobileAbstractOpen = !isMobileAbstractOpen"
+          :aria-label="
+            isMobileAbstractOpen
+              ? `Hide abstract for RFC ${props.rfc.number}`
+              : `Show abstract for RFC ${props.rfc.number}`
+          ">
           <template v-if="isMobileAbstractOpen">Hide abstract</template>
           <template v-else>Show abstract</template>
         </button>
