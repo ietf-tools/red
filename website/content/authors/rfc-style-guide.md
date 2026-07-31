@@ -12,7 +12,7 @@ Please see the following for information on RFC style:
 - [Terms List](https://rpc-wiki.rfc-editor.org/doku.php?id=terms) – A non-exhaustive list of decisions on consistent usage of terms in RFCs
 - [IAB Format](https://wiki.ietf.org/en/group/iab/iab-stream-rfc-format) – IAB-specific formatting information for RFCs from the IAB Stream
 - Reference Entries for RFCs – Available in XML (via [BibXML Service](https://bib.ietf.org/)) and [TXT](/in-notes/rfc-ref.txt)
-- Reference Entries for STDs and BCPs – Available in [XML](https://bib.ietf.org/indexed-sources/relaton-data-rfcsubseries/) and TXT (for the [STD subseries](/std/std-ref.txt) and the [BCP subseries](/bcp/bcp-ref.txt) )
+- Reference Entries for STDs and BCPs – Available in [XML](https://bib.ietf.org/indexed-sources/relaton-data-rfcsubseries/) and TXT (for the [STD subseries](/std/std-index.txt) and the [BCP subseries](/bcp/bcp-index.txt) )
 - [Guidelines for Writing an IANA Considerations Section in RFCs](/info/rfc8126/)
 
 In general, authors should focus on using clear, concise language in their documents. Read the document aloud, show it to others for input, and revise it as many times as needed to make sure future readers will understand the content.
