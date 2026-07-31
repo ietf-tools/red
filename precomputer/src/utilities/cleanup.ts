@@ -56,7 +56,13 @@ export const cleanupRedBucket = async (uploadedKeys: string[]): Promise<boolean>
     return true
   })
 
-  const keysToPurge = difference(existingBucketKeysToDelete, [...uploadedKeys, ...GOOD_KEYS])
+  const keysToPurge = difference(existingBucketKeysToDelete, [...uploadedKeys, ...GOOD_KEYS]).filter((key) => {
+    if (key.startsWith('other/nuxt-assets') || key.startsWith('other/legacy')) {
+      // skip
+      return false
+    }
+    return true
+  })
 
   if (keysToPurge.length > 0) {
     console.log(`[Cleanup] File storage purge of ${keysToPurge.length} object(s)`)
@@ -64,17 +70,9 @@ export const cleanupRedBucket = async (uploadedKeys: string[]): Promise<boolean>
       .withConcurrency(NUMBER_OF_CONCURRENT_S3_USAGES)
       .process(async (keyToPurge) => {
         try {
-          if (keyToPurge.startsWith('other/nuxt-assets') || keyToPurge.startsWith('other/legacy')) {
-            // skip
-          } else if (keyToPurge.startsWith('other/sitemap-')) {
-            console.log('[Cleanup] will delete sitemap ', keyToPurge)
-            await deleteFromS3(keyToPurge)
-            console.log(`[Cleanup ${keyToPurge}] deleted successfully`)
-          } else {
-            console.log('[Cleanup] would delete ', keyToPurge)
-            // await deleteFromS3(keyToPurge)
-          }
-          return true
+          console.log('[Cleanup] will delete ', keyToPurge)
+          await deleteFromS3(keyToPurge)
+          console.log(`[Cleanup ${keyToPurge}] deleted successfully`)
         } catch (err) {
           console.error(`[Cleanup ${keyToPurge}] threw exception: ${String(err)}`)
           throw err
