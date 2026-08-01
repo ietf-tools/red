@@ -3,7 +3,7 @@
     <a id="top"></a>
     <HeaderSkipToContent />
     <FeatureFlagsToast />
-    <div aria-label="Primary">
+    <div>
       <div class="container pl-5 pr-3 mx-auto flex justify-between py-4 w-full">
         <GraphicsHeaderLogos />
         <nav aria-label="Primary" class="flex flex-1 flex-row justify-end content-end">
