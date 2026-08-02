@@ -31,7 +31,7 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
     if (['.html'].some((ft) => objectPath.endsWith(ft))) {
       const object = await env.INLINE_ERRATA_BUCKET.get(objectPath)
       if (object) {
-        return createBlobResponse(object, detectContentType(objectPath), canonicalUrl)
+        return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
       }
     } else if (
       objectPath.startsWith(inlineErrataCssPrefix) &&
@@ -40,7 +40,7 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
       const cssBucketPath = `${INLINE_ERRATA_CSS_BUCKET_PREFIX}${objectPath.substring(inlineErrataCssPrefix.length)}`
       const object = await env.INLINE_ERRATA_BUCKET.get(cssBucketPath)
       if (object) {
-        return createBlobResponse(object, detectContentType(objectPath))
+        return createBlobResponse(req, object, detectContentType(objectPath))
       }
     }
   } else if (objectPath === RFC_REF_TXT) {
@@ -49,13 +49,13 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
     // Note RED bucket usage
     const object = await env.RED_BUCKET.get(IN_NOTES_RFC_REF_DOT_TXT_PATH)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath), canonicalUrl)
+      return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
     }
   } else if (['.html', '.json', '.pdf', '.txt', '.xml'].some((ft) => objectPath.endsWith(ft))) {
     const fileType = objectPath.split('.').at(-1)
     const object = await env.RFC_BUCKET.get(`${fileType}/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath), canonicalUrl)
+      return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
     }
   }
 
@@ -87,7 +87,7 @@ export async function blobsRefs(req: IRequest, env: Env): Promise<Response | und
     if (objectPath.endsWith('.txt')) {
       const object = await env.RED_BUCKET.get(`rfc-ref/${objectPath}`)
       if (object) {
-        return createBlobResponse(object, detectContentType(objectPath))
+        return createBlobResponse(req, object, detectContentType(objectPath))
       }
     }
 
@@ -103,7 +103,7 @@ export async function blobsApiRfcHtml(req: IRequest, env: Env): Promise<Response
   if (objectPath.endsWith('.json') || objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`rfc/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath))
+      return createBlobResponse(req, object, detectContentType(objectPath))
     }
   }
 
@@ -118,7 +118,7 @@ export async function blobsApiRfcCommon(req: IRequest, env: Env): Promise<Respon
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`rfc-common/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath))
+      return createBlobResponse(req, object, detectContentType(objectPath))
     }
   }
 
@@ -133,7 +133,7 @@ export async function blobsApiInfoSubseries(req: IRequest, env: Env): Promise<Re
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`subseries/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath))
+      return createBlobResponse(req, object, detectContentType(objectPath))
     }
   }
 
@@ -148,7 +148,7 @@ export async function blobsApiMetaThumbnail(req: IRequest, env: Env): Promise<Re
   if (objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`thumbnail/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath))
+      return createBlobResponse(req, object, detectContentType(objectPath))
     }
   }
 
@@ -163,7 +163,7 @@ export async function blobsApiFavicon(req: IRequest, env: Env): Promise<Response
   if (objectPath.endsWith('.png')) {
     const object = await env.RED_BUCKET.get(`other/favicon-${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath))
+      return createBlobResponse(req, object, detectContentType(objectPath))
     }
   }
 
@@ -180,7 +180,7 @@ export async function blobsApiRfcJson(req: IRequest, env: Env): Promise<Response
       const blobPath = `json/rfc${rfcNumber}.json`
       const object = await env.RFC_BUCKET.get(blobPath)
       if (object) {
-        return createBlobResponse(object, detectContentType(blobPath))
+        return createBlobResponse(req, object, detectContentType(blobPath))
       }
     }
 
@@ -196,7 +196,7 @@ export async function blobsApiContentJson(req: IRequest, env: Env): Promise<Resp
   if (objectPath.endsWith('.json')) {
     const object = await env.RED_BUCKET.get(`content/${objectPath}`)
     if (object) {
-      return createBlobResponse(object, detectContentType(objectPath))
+      return createBlobResponse(req, object, detectContentType(objectPath))
     }
   }
 
@@ -213,7 +213,7 @@ export async function blobsSitemap(req: IRequest, env: Env): Promise<Response | 
       const bucketPath = `other/sitemap-${objectPath}`
       const object = await env.RED_BUCKET.get(bucketPath)
       if (object) {
-        return createBlobResponse(object, detectContentType(objectPath))
+        return createBlobResponse(req, object, detectContentType(objectPath))
       }
     }
 
@@ -228,7 +228,7 @@ export async function blobsNuxtAssets(req: IRequest, env: Env): Promise<Response
   const bucketPath = `other/nuxt-assets/${objectPath}`
   const object = await env.RED_BUCKET.get(bucketPath)
   if (object) {
-    return createBlobResponse(object, detectContentType(objectPath), undefined, 3600)
+    return createBlobResponse(req, object, detectContentType(objectPath), undefined, 3600)
   }
 }
 
@@ -259,7 +259,7 @@ export async function blobsStatics(req: IRequest, env: Env): Promise<Response | 
     const objectPath = mapping.to
     const object = await env.RED_BUCKET.get(objectPath)
     if (object) {
-      return createBlobResponse(object, detectContentType(mapping.to))
+      return createBlobResponse(req, object, detectContentType(mapping.to))
     }
 
     return createBlobNotFoundResponse()

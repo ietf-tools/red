@@ -17,15 +17,57 @@ export function addNormalizedPath(req: IRequest, ..._args: unknown[]): void {
   req.normalizedPath = decodeURIComponent(url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname)
 }
 
+/**
+ * The opaque part of an ETag, ie the value with any `W/` weakness prefix removed.
+ */
+const opaqueTag = (etag: string) => etag.trim().replace(/^W\//, '')
+
+/**
+ * Does an `If-None-Match` value match the ETag we'd serve? Comparison is weak
+ * (RFC 9110 §8.8.3.2), which is both what `If-None-Match` requires and what this
+ * worker specifically needs: R2 hands us a strong `httpEtag`, but Cloudflare's
+ * edge rewrites it to the weak form for clients that don't send
+ * `Accept-Encoding: gzip`, because it decompresses our stored-gzip body for them
+ * and so is serving a transformed representation. Those clients hold `W/"…"` for
+ * an object whose stored ETag is `"…"`, and a strong comparison would never match.
+ *
+ * Splitting the list on commas is safe for the tags we issue (R2 ETags are hex
+ * digests, optionally with a `-<partCount>` suffix). A comma is legal inside a
+ * quoted etag in general, but a tag we never generate failing to match only costs
+ * a full 200 response, which is what would have been sent anyway.
+ */
+export const etagMatches = (ifNoneMatch: string | null, etag: string): boolean => {
+  if (!ifNoneMatch) {
+    return false
+  }
+  const candidates = ifNoneMatch.split(',').map((candidate) => candidate.trim())
+  return candidates.includes('*') || candidates.map(opaqueTag).includes(opaqueTag(etag))
+}
+
+/**
+ * A 304 carries the metadata a cache needs to update its stored entry — ETag,
+ * Cache-Control, Expires, Vary, Date, Content-Location — but RFC 9110 §15.4.5
+ * says not to send the rest of the representation metadata, since the whole
+ * point is to transfer as little as possible. Dropping it also avoids handing
+ * intermediaries a bodiless response that claims to be gzipped.
+ */
+const deleteRepresentationMetadata = (headers: Headers) => {
+  for (const header of ['Content-Type', 'Content-Encoding', 'Content-Language', 'Content-Disposition']) {
+    headers.delete(header)
+  }
+}
+
 export function createBlobResponse(
+  req: IRequest,
   object: R2ObjectBody,
   contentType?: string,
   canonicalUrl?: string,
   cacheControl?: number
 ): Response {
+  const { httpEtag } = object
   const headers = new Headers()
   object.writeHttpMetadata(headers)
-  headers.set('etag', object.httpEtag)
+  headers.set('etag', httpEtag)
   headers.set('Cf-R2-Served', '1')
   headers.set('Access-Control-Allow-Origin', '*')
   headers.set('Content-Encoding', 'gzip')
@@ -40,6 +82,17 @@ export function createBlobResponse(
   }
   if (cacheControl) {
     headers.set('Cache-Control', `public, max-age=${cacheControl}`)
+  }
+
+  // The client already holds this exact representation, so send the validators
+  // back and skip the body. Everything above still applies: a 304 must repeat the
+  // headers of the 200 it stands in for, minus the representation metadata.
+  if (etagMatches(req.headers.get('if-none-match'), httpEtag)) {
+    deleteRepresentationMetadata(headers)
+    return new Response(null, {
+      status: 304,
+      headers
+    })
   }
 
   return new Response(object.body, {
