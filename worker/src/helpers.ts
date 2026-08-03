@@ -57,12 +57,14 @@ const deleteRepresentationMetadata = (headers: Headers) => {
   }
 }
 
+export const CACHE_CONTROL = 'public, max-age=86400'
+
 export function createBlobResponse(
   req: IRequest,
   object: R2ObjectBody,
   contentType?: string,
   canonicalUrl?: string,
-  cacheControl?: number
+  cacheControl?: string
 ): Response {
   const { httpEtag } = object
   const headers = new Headers()
@@ -81,7 +83,7 @@ export function createBlobResponse(
     }
   }
   if (cacheControl) {
-    headers.set('Cache-Control', `public, max-age=${cacheControl}`)
+    headers.set('Cache-Control', cacheControl)
   }
 
   // The client already holds this exact representation, so send the validators

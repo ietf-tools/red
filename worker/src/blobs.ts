@@ -1,10 +1,22 @@
 import type { IRequest } from 'itty-router'
-import { createBlobResponse, createBlobNotFoundResponse, detectContentType } from './helpers'
+import { CACHE_CONTROL, createBlobResponse, createBlobNotFoundResponse, detectContentType } from './helpers'
 
 const RFC_PREFIX = '/rfc/'
 const INLINE_ERRATA_PREFIX = 'inline-errata/'
 const INLINE_ERRATA_CSS_BUCKET_PREFIX = 'inline-errata/css/css/'
 const RFC_REF_TXT = 'rfc-ref.txt'
+
+/**
+ * The formats the RPC publishes an RFC in. A published RFC never changes, so
+ * these are safe to hand to a client with a cache lifetime on them.
+ */
+const CANONICAL_RFC_FILE_TYPES = ['.pdf', '.txt', '.xml']
+/**
+ * Also served out of RFC_BUCKET at the same URLs, but regenerated rather than
+ * published — the HTML rendering changes when the tooling that produces it does,
+ * and the JSON is metadata. Cached like anything else, ie not at all yet.
+ */
+const DERIVED_RFC_FILE_TYPES = ['.html', '.json']
 
 export async function blobsRfc(req: IRequest, env: Env): Promise<Response | undefined> {
   const inlineErrataCssPrefix = `${INLINE_ERRATA_PREFIX}css/`
@@ -51,11 +63,21 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
     if (object) {
       return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
     }
-  } else if (['.html', '.json', '.pdf', '.txt', '.xml'].some((ft) => objectPath.endsWith(ft))) {
+  } else if ([...CANONICAL_RFC_FILE_TYPES, ...DERIVED_RFC_FILE_TYPES].some((ft) => objectPath.endsWith(ft))) {
     const fileType = objectPath.split('.').at(-1)
     const object = await env.RFC_BUCKET.get(`${fileType}/${objectPath}`)
     if (object) {
-      return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
+      // Requiring an RFC number keeps the cache lifetime to documents we've
+      // actually identified as a published RFC, rather than anything else that
+      // might one day be added to the bucket under one of these extensions.
+      const isCanonicalRfcDocument = Boolean(rfcParts) && CANONICAL_RFC_FILE_TYPES.some((ft) => objectPath.endsWith(ft))
+      return createBlobResponse(
+        req,
+        object,
+        detectContentType(objectPath),
+        canonicalUrl,
+        isCanonicalRfcDocument ? CACHE_CONTROL : undefined
+      )
     }
   }
 
@@ -228,7 +250,7 @@ export async function blobsNuxtAssets(req: IRequest, env: Env): Promise<Response
   const bucketPath = `other/nuxt-assets/${objectPath}`
   const object = await env.RED_BUCKET.get(bucketPath)
   if (object) {
-    return createBlobResponse(req, object, detectContentType(objectPath), undefined, 3600)
+    return createBlobResponse(req, object, detectContentType(objectPath), undefined, 'public, max-age=3600')
   }
 }
 

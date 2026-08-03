@@ -170,7 +170,7 @@ test('createBlobResponse: 304 keeps the cache-updating headers', () => {
     fakeBlob(STORED_ETAG),
     'text/plain;charset=utf-8',
     'https://www.rfc-editor.org/info/rfc9999/',
-    3600
+    'public, max-age=3600'
   )
   expect(response.headers.get('etag')).toBe(STORED_ETAG)
   expect(response.headers.get('Cache-Control')).toBe('public, max-age=3600')
@@ -189,4 +189,20 @@ test('createBlobResponse: 304 drops representation metadata', () => {
   expect(response.headers.get('Content-Encoding')).toBe(null)
   expect(response.headers.get('Content-Language')).toBe(null)
   expect(response.headers.get('Content-Disposition')).toBe(null)
+})
+
+test('createBlobResponse: cacheControl is sent verbatim', () => {
+  const response = createBlobResponse(
+    fakeRequest(),
+    fakeBlob(STORED_ETAG),
+    'text/plain;charset=utf-8',
+    undefined,
+    'public, max-age=123, immutable'
+  )
+  expect(response.headers.get('Cache-Control')).toBe('public, max-age=123, immutable')
+})
+
+test('createBlobResponse: no cacheControl means no Cache-Control header', () => {
+  const response = createBlobResponse(fakeRequest(), fakeBlob(STORED_ETAG), 'text/plain;charset=utf-8')
+  expect(response.headers.get('Cache-Control')).toBe(null)
 })
