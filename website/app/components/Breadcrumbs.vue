@@ -1,6 +1,6 @@
 <template>
   <nav aria-label="Breadcrumbs">
-    <ul :class="['block mt-1 mb-2 pl-3 pr-14 leading-[1.5] print:hidden', props.class]">
+    <ul :class="['block pt-1 mb-2 pl-3 pr-14 leading-[1.5] print:hidden', props.class]">
       <li v-for="(item, index) in items" :key="index" class="inline">
         <Anchor
           v-if="item.url"
@@ -10,11 +10,7 @@
           :aria-label="item.ariaLabel">
           {{ item.label }}
         </Anchor>
-        <b
-          v-else
-          class="inline px-2 py-2 text-gray-700 dark:text-gray-300"
-          :aria-current="item.ariaCurrent"
-          :aria-label="item.ariaLabel">
+        <b v-else class="inline px-2 py-2" :aria-current="item.ariaCurrent" :aria-label="item.ariaLabel">
           {{ item.label }}
         </b>
         <template v-if="index < items.length - 1">

@@ -1,5 +1,5 @@
 <template>
-  <div class="rfc-container mx-auto flex body-layout-document lg:gap-5">
+  <div class="rfc-c mx-auto flex body-layout-document lg:gap-5">
     <div class="flex-1 min-w-0">
       <slot />
     </div>
