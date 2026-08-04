@@ -46,7 +46,16 @@ export class ReefError extends Error {
     method: string
     path: string
   }) {
-    super(`[reef] ${method} ${path} failed: ${status} ${statusText}`)
+    // Reef reports why in DRF's `detail` string, and for a 401 that's the whole diagnosis:
+    // "Authentication credentials were not provided" (we sent no token) reads very
+    // differently from "Invalid bearer token: <JWT error>" (we sent one and it was
+    // rejected). Fold it into the message, because an uncaught error logs only
+    // Error.message and `body` would otherwise go unread in the console.
+    const detail =
+      typeof body === 'object' && body !== null && 'detail' in body && typeof body.detail === 'string'
+        ? ` — ${body.detail}`
+        : ''
+    super(`[reef] ${method} ${path} failed: ${status} ${statusText}${detail}`)
     this.name = 'ReefError'
     this.status = status
     this.statusText = statusText
@@ -57,10 +66,13 @@ export class ReefError extends Error {
 type ReefRequest = {
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
   body?: unknown
-  // Attach the OIDC bearer token when a session exists. Set for every operation the spec
-  // marks as authenticated, and also for those where being logged in changes the response
-  // (an authenticated-visibility survey, an attributed response).
-  auth?: boolean
+  // Whether the OIDC bearer token is attached, mirroring the operation's `security` in the
+  // spec. 'required' for the operations that list only BearerAuth/cookieAuth: anonymous is
+  // not a valid outcome, so no token means we fail without sending the request. 'optional'
+  // for those that also list `{}`, where being logged in only changes the response (an
+  // authenticated-visibility survey, an attributed response) and anonymous is fine. Omitted
+  // for the ones Red always calls anonymously.
+  auth?: 'required' | 'optional'
   signal?: AbortSignal
 }
 
@@ -81,9 +93,23 @@ const parseBody = async (response: Response): Promise<unknown> => {
 }
 
 const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T> => {
-  const { method = 'GET', body, auth = false, signal } = request
+  const { method = 'GET', body, auth, signal } = request
   const { reefBase } = useRuntimeConfig().public
-  const token = auth ? await getAccessToken() : undefined
+  const token = auth === undefined ? undefined : await getAccessToken()
+
+  // Sending an authenticated-only operation with no Authorization header can only ever come
+  // back 401, and the resulting error reads like the server rejecting us rather than like a
+  // session we never had. Fail here instead, so the cause is named. Synthesised rather than
+  // observed, but a 401 ReefError is what callers already branch on.
+  if (auth === 'required' && token === undefined) {
+    throw new ReefError({
+      status: 401,
+      statusText: 'Unauthorized',
+      body: { detail: 'Not signed in, or the session could not be refreshed.' },
+      method,
+      path
+    })
+  }
 
   const headers = new Headers({ Accept: 'application/json' })
   if (token !== undefined) {
@@ -136,14 +162,14 @@ export const putRating = (rfc: string, rating: RatingWrite, signal?: AbortSignal
   reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, {
     method: 'PUT',
     body: rating,
-    auth: true,
+    auth: 'required',
     signal
   })
 
 // --- Subscriptions ----------------------------------------------------------------------
 
 export const getSubscriptions = (signal?: AbortSignal): Promise<Subscription[]> =>
-  reefFetch('/api/reef/subscriptions/', { auth: true, signal })
+  reefFetch('/api/reef/subscriptions/', { auth: 'required', signal })
 
 // id, verified and created_at are server-assigned, so callers supply only kind and params.
 export const createSubscription = (
@@ -153,42 +179,42 @@ export const createSubscription = (
   reefFetch('/api/reef/subscriptions/', {
     method: 'POST',
     body: subscription,
-    auth: true,
+    auth: 'required',
     signal
   })
 
 export const deleteSubscription = (id: number, signal?: AbortSignal): Promise<void> =>
-  reefFetch(`/api/reef/subscriptions/${id}/`, { method: 'DELETE', auth: true, signal })
+  reefFetch(`/api/reef/subscriptions/${id}/`, { method: 'DELETE', auth: 'required', signal })
 
 // --- Surveys (management; staff only, used by the builder) -------------------------------
 
 export const getSurveys = (signal?: AbortSignal): Promise<Survey[]> =>
-  reefFetch('/api/reef/surveys/', { auth: true, signal })
+  reefFetch('/api/reef/surveys/', { auth: 'required', signal })
 
 // id, created_at and updated_at are server-assigned.
 export const createSurvey = (
   survey: Omit<Survey, 'id' | 'created_at' | 'updated_at'>,
   signal?: AbortSignal
-): Promise<Survey> => reefFetch('/api/reef/surveys/', { method: 'POST', body: survey, auth: true, signal })
+): Promise<Survey> => reefFetch('/api/reef/surveys/', { method: 'POST', body: survey, auth: 'required', signal })
 
 export const getSurvey = (id: number, signal?: AbortSignal): Promise<Survey> =>
-  reefFetch(`/api/reef/surveys/${id}/`, { auth: true, signal })
+  reefFetch(`/api/reef/surveys/${id}/`, { auth: 'required', signal })
 
 export const updateSurvey = (
   id: number,
   survey: Omit<Survey, 'id' | 'created_at' | 'updated_at'>,
   signal?: AbortSignal
-): Promise<Survey> => reefFetch(`/api/reef/surveys/${id}/`, { method: 'PUT', body: survey, auth: true, signal })
+): Promise<Survey> => reefFetch(`/api/reef/surveys/${id}/`, { method: 'PUT', body: survey, auth: 'required', signal })
 
 export const patchSurvey = (id: number, survey: PatchedSurvey, signal?: AbortSignal): Promise<Survey> =>
-  reefFetch(`/api/reef/surveys/${id}/`, { method: 'PATCH', body: survey, auth: true, signal })
+  reefFetch(`/api/reef/surveys/${id}/`, { method: 'PATCH', body: survey, auth: 'required', signal })
 
 export const deleteSurvey = (id: number, signal?: AbortSignal): Promise<void> =>
-  reefFetch(`/api/reef/surveys/${id}/`, { method: 'DELETE', auth: true, signal })
+  reefFetch(`/api/reef/surveys/${id}/`, { method: 'DELETE', auth: 'required', signal })
 
 // Aggregated responses for one survey. The spec types the payload as a free-form object.
 export const getSurveyResults = (id: number, signal?: AbortSignal): Promise<SurveyResults> =>
-  reefFetch(`/api/reef/surveys/${id}/results/`, { auth: true, signal })
+  reefFetch(`/api/reef/surveys/${id}/results/`, { auth: 'required', signal })
 
 // --- Surveys (runner; keyed by slug) ----------------------------------------------------
 
@@ -196,7 +222,7 @@ export const getSurveyResults = (id: number, signal?: AbortSignal): Promise<Surv
 // only to unlock the ones whose visibility is authenticated.
 export const getSurveyDefinition = (slug: string, signal?: AbortSignal): Promise<SurveyDefinition> =>
   reefFetch(`/api/reef/surveys/${encodeURIComponent(slug)}/definition/`, {
-    auth: true,
+    auth: 'optional',
     signal
   })
 
@@ -208,10 +234,10 @@ export const createSurveyResponse = (
   reefFetch(`/api/reef/surveys/${encodeURIComponent(slug)}/responses/`, {
     method: 'POST',
     body: response,
-    auth: true,
+    auth: 'optional',
     signal
   })
 
 // Surveys currently open to the caller — the list Red uses for its survey popover.
 export const getOpenSurveys = (signal?: AbortSignal): Promise<OpenSurvey[]> =>
-  reefFetch('/api/reef/surveys/open/', { auth: true, signal })
+  reefFetch('/api/reef/surveys/open/', { auth: 'optional', signal })

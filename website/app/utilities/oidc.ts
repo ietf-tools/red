@@ -4,7 +4,8 @@
 // refresh token (offline_access scope), so page loads never redirect to the identity
 // provider — only an explicit login does.
 //
-// The core (getUserManager / oidcRestore / oidcLogin / oidcLogout / getAccessToken) is
+// The core (getUserManager / oidcRestore / oidcLogin / oidcLogout / onOidcSessionEnded /
+// getAccessToken) is
 // framework-agnostic. useOidcSession() is a thin Vue composable that wires that core to
 // runtimeConfig, the feature flag and the auth store, so components only call
 // useOidcSession(). If this file grows, split it into a utilities/oidc/ directory.
@@ -80,8 +81,10 @@ export const oidcRestore = async (config: OidcConfig): Promise<OidcUser | null> 
 
   // Logged-in state is based purely on the stored session (id-token claims), so an
   // expired *access* token doesn't report the user as logged out. automaticSilentRenew
-  // keeps the access token fresh in the background; on-demand refresh for API calls is
-  // handled when we actually need a token (see getAccessToken, added when APIs are wired).
+  // keeps the access token fresh in the background, and getAccessToken refreshes on demand
+  // when an API call needs a token. A *refresh* that the identity provider rejects is a
+  // different matter: it discards the session, which reports the user as logged out via the
+  // onOidcSessionEnded listener.
   const user = await userManager.getUser()
   return user ? toOidcUser(user) : null
 }
@@ -107,6 +110,26 @@ export const oidcLogout = async (): Promise<void> => {
   await userManager.signoutRedirect()
 }
 
+let sessionEndedRegistered = false
+
+// Registers the callback to run whenever the local session ends without us asking — a
+// refresh token that the identity provider rejects, or background renewal giving up. Both
+// funnel through removeUser(), which raises userUnloaded, so one listener covers every
+// route. Idempotent: only the first call registers, so a feature flag toggling back on
+// doesn't stack duplicate listeners.
+export const onOidcSessionEnded = async (config: OidcConfig, onEnded: () => void): Promise<void> => {
+  if (sessionEndedRegistered) {
+    return
+  }
+  sessionEndedRegistered = true
+  const userManager = await getUserManager(config)
+  userManager.events.addUserUnloaded(onEnded)
+  userManager.events.addSilentRenewError((error) => {
+    console.warn('[oidc] background renewal failed; ending session', error)
+    void userManager.removeUser()
+  })
+}
+
 // Returns a valid access token for authenticated API calls, refreshing via the refresh
 // token if the current one has expired. Returns undefined if not logged in or if the
 // refresh fails. This is the primitive for calling authenticated APIs (e.g. Reef).
@@ -124,10 +147,19 @@ export const getAccessToken = async (): Promise<string | undefined> => {
       user = await userManager.signinSilent()
     } catch (error) {
       console.warn('[oidc] token refresh failed', error)
+      user = null
+    }
+    if (!user) {
+      // A refresh the identity provider won't honour is terminal — the refresh token is
+      // expired or revoked and no later attempt can succeed. Discard the stored session so
+      // the UI stops reporting a logged-in user (and so it doesn't survive a page reload,
+      // where getUser() would hand the same dead record straight back). removeUser() raises
+      // userUnloaded, which is what tells the auth store to clear — see onOidcSessionEnded.
+      await userManager.removeUser()
       return undefined
     }
   }
-  return user?.access_token
+  return user.access_token
 }
 
 // Vue composable: call once from a component that's always mounted (Header.vue). Restores
@@ -146,12 +178,16 @@ export const useOidcSession = (): void => {
         if (!enabled) {
           return
         }
-        void oidcRestore({
+        const oidcConfig = {
           authority: config.oidcIssuerUri,
           clientId: config.oidcClientId,
           redirectUri: window.location.origin + config.oidcHomeUrl,
           scopes: config.oidcScopes.split(' ').filter(Boolean)
+        }
+        void onOidcSessionEnded(oidcConfig, () => {
+          authStore.clearUser()
         })
+        void oidcRestore(oidcConfig)
           .then((user) => {
             authStore.hasCheckedAuth = true
             if (user) {
