@@ -77,7 +77,7 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   formatsAlsoViewAs: false,
   // showPreCopyButton: '',
   searchObsoletedDefaults: false,
-  searchV2: true,
+  searchV2: false,
   oidc: false
 }
 
