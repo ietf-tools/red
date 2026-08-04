@@ -165,6 +165,12 @@ export const useFeatureFlags = () => {
   return featureFlagsRef
 }
 
+export const calculateIfFeatureFlagsAreEnabled = (featureFlags: FeatureFlags): boolean => {
+  const entries = Object.entries(featureFlags)
+  const isEnabled = entries.reduce((acc, [_key, value]) => (acc ? acc : Boolean(value)), false)
+  return isEnabled
+}
+
 export const useAreFeatureFlagsEnabled = () => {
   const featureFlagsRef = inject(featureFlagsKey)
   const isMounted = ref(false)
@@ -189,9 +195,6 @@ export const useAreFeatureFlagsEnabled = () => {
     if (isMounted.value === false) {
       return false
     }
-    const entries = Object.entries(featureFlags)
-    const isEnabled = entries.reduce((acc, [_key, value]) => (acc ? acc : Boolean(value)), false)
-    return isEnabled
   })
 
   return areFeatureFlagsEnabled

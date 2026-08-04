@@ -1,0 +1,765 @@
+openapi: 3.0.3
+info:
+  title: Reef
+  version: 0.1.0
+  description: Backend API for the Reef survey and engagement service
+paths:
+  /api/reef/popularity/:
+    get:
+      operationId: popularity_list
+      description: The curated most-popular list. Public; consumed by Red at build
+        time.
+      tags:
+        - popularity
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PopularEntry'
+          description: ''
+  /api/reef/ratings/{rfc}/:
+    get:
+      operationId: ratings_retrieve
+      description: GET the public aggregate (anonymous); PUT the caller's rating (bearer).
+      parameters:
+        - in: path
+          name: rfc
+          schema:
+            type: string
+          required: true
+      tags:
+        - ratings
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatingAggregate'
+          description: ''
+    put:
+      operationId: ratings_update
+      description: GET the public aggregate (anonymous); PUT the caller's rating (bearer).
+      parameters:
+        - in: path
+          name: rfc
+          schema:
+            type: string
+          required: true
+      tags:
+        - ratings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RatingWrite'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RatingWrite'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RatingWrite'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatingAggregate'
+          description: ''
+  /api/reef/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum:
+              - json
+              - yaml
+        - in: query
+          name: lang
+          schema:
+            type: string
+            enum:
+              - af
+              - ar
+              - ar-dz
+              - ast
+              - az
+              - be
+              - bg
+              - bn
+              - br
+              - bs
+              - ca
+              - ckb
+              - cs
+              - cy
+              - da
+              - de
+              - dsb
+              - el
+              - en
+              - en-au
+              - en-gb
+              - eo
+              - es
+              - es-ar
+              - es-co
+              - es-mx
+              - es-ni
+              - es-ve
+              - et
+              - eu
+              - fa
+              - fi
+              - fr
+              - fy
+              - ga
+              - gd
+              - gl
+              - he
+              - hi
+              - hr
+              - hsb
+              - hu
+              - hy
+              - ia
+              - id
+              - ig
+              - io
+              - is
+              - it
+              - ja
+              - ka
+              - kab
+              - kk
+              - km
+              - kn
+              - ko
+              - ky
+              - lb
+              - lt
+              - lv
+              - mk
+              - ml
+              - mn
+              - mr
+              - ms
+              - my
+              - nb
+              - ne
+              - nl
+              - nn
+              - os
+              - pa
+              - pl
+              - pt
+              - pt-br
+              - ro
+              - ru
+              - sk
+              - sl
+              - sq
+              - sr
+              - sr-latn
+              - sv
+              - sw
+              - ta
+              - te
+              - tg
+              - th
+              - tk
+              - tr
+              - tt
+              - udm
+              - ug
+              - uk
+              - ur
+              - uz
+              - vi
+              - zh-hans
+              - zh-hant
+      tags:
+        - schema
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/reef/subscriptions/:
+    get:
+      operationId: subscriptions_list
+      description: List and create the current user's subscriptions.
+      tags:
+        - subscriptions
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+          description: ''
+    post:
+      operationId: subscriptions_create
+      description: List and create the current user's subscriptions.
+      tags:
+        - subscriptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+          description: ''
+  /api/reef/subscriptions/{id}/:
+    delete:
+      operationId: subscriptions_destroy
+      description: Delete one of the current user's subscriptions.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - subscriptions
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/reef/surveys/:
+    get:
+      operationId: surveys_list
+      description: List and create surveys. Staff only; used by the builder.
+      tags:
+        - surveys
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Survey'
+          description: ''
+    post:
+      operationId: surveys_create
+      description: List and create surveys. Staff only; used by the builder.
+      tags:
+        - surveys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Survey'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Survey'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Survey'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+          description: ''
+  /api/reef/surveys/{id}/:
+    get:
+      operationId: surveys_retrieve
+      description: Retrieve, update, or delete a survey. Staff only; used by the builder.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - surveys
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+          description: ''
+    put:
+      operationId: surveys_update
+      description: Retrieve, update, or delete a survey. Staff only; used by the builder.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - surveys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Survey'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Survey'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Survey'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+          description: ''
+    patch:
+      operationId: surveys_partial_update
+      description: Retrieve, update, or delete a survey. Staff only; used by the builder.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - surveys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSurvey'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSurvey'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSurvey'
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Survey'
+          description: ''
+    delete:
+      operationId: surveys_destroy
+      description: Retrieve, update, or delete a survey. Staff only; used by the builder.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - surveys
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/reef/surveys/{id}/results/:
+    get:
+      operationId: surveys_results_retrieve
+      description: Aggregated results feeding the analytics dashboard. Staff only.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - surveys
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/reef/surveys/{slug}/definition/:
+    get:
+      operationId: surveys_definition_retrieve
+      description: |-
+        Definition and theme for the runner. Published surveys only; an
+        authenticated-visibility survey requires a signed-in caller.
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+      tags:
+        - surveys
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyDefinition'
+          description: ''
+  /api/reef/surveys/{slug}/responses/:
+    post:
+      operationId: surveys_responses_create
+      description: Submit a response to a published survey.
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+      tags:
+        - surveys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResponseCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResponseCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ResponseCreate'
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCreate'
+          description: ''
+  /api/reef/surveys/open/:
+    get:
+      operationId: surveys_open_list
+      description: |-
+        Open surveys Red may offer. Bearer optional: an identified user also
+        receives their targeted surveys, an anonymous caller sees open ones only.
+      tags:
+        - surveys
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OpenSurvey'
+          description: ''
+components:
+  schemas:
+    KindEnum:
+      enum:
+        - new_rfc
+        - by_status
+        - obsoleted
+        - subject_tag
+      type: string
+      description: |-
+        * `new_rfc` - Any new RFC
+        * `by_status` - New RFC by status
+        * `obsoleted` - RFC obsoleted or made historic
+        * `subject_tag` - RFC with a subject tag
+    OpenSurvey:
+      type: object
+      description: Minimal representation for Red's open-survey list and popover.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        url:
+          type: string
+          readOnly: true
+      required:
+        - id
+        - slug
+        - title
+        - url
+    PatchedSurvey:
+      type: object
+      description: Full survey representation used by the management API and the builder.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        definition: {}
+        theme:
+          nullable: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        audience:
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+    PopularEntry:
+      type: object
+      properties:
+        rfc:
+          type: string
+          maxLength: 32
+        rank:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+          description: Lower sorts first
+      required:
+        - rfc
+    RatingAggregate:
+      type: object
+      properties:
+        rfc:
+          type: string
+        average:
+          type: number
+          format: double
+          nullable: true
+        count:
+          type: integer
+      required:
+        - average
+        - count
+        - rfc
+    RatingWrite:
+      type: object
+      properties:
+        value:
+          type: integer
+          maximum: 5
+          minimum: 1
+      required:
+        - value
+    ResponseCreate:
+      type: object
+      properties:
+        data: {}
+        meta: {}
+    StatusEnum:
+      enum:
+        - draft
+        - published
+        - closed
+      type: string
+      description: |-
+        * `draft` - Draft
+        * `published` - Published
+        * `closed` - Closed
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        kind:
+          $ref: '#/components/schemas/KindEnum'
+        params: {}
+        verified:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - created_at
+        - id
+        - kind
+        - verified
+    Survey:
+      type: object
+      description: Full survey representation used by the management API and the builder.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        definition: {}
+        theme:
+          nullable: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        audience:
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - created_at
+        - id
+        - slug
+        - title
+        - updated_at
+    SurveyDefinition:
+      type: object
+      description: Definition and theme served to the Nuxt runner.
+      properties:
+        slug:
+          type: string
+          maxLength: 100
+          pattern: ^[-a-zA-Z0-9_]+$
+        title:
+          type: string
+          maxLength: 255
+        description:
+          type: string
+        definition: {}
+        theme:
+          nullable: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+      required:
+        - slug
+        - title
+    VisibilityEnum:
+      enum:
+        - open
+        - authenticated
+      type: string
+      description: |-
+        * `open` - Open (anonymous)
+        * `authenticated` - Authenticated only
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

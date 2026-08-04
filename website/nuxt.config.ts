@@ -113,6 +113,7 @@ export default defineNuxtConfig({
       queueBase: 'https://queue.rfc-editor.org', // NUXT_PUBLIC_QUEUE_BASE env var
       iadBase: 'https://iad.rfc-editor.org', // NUXT_PUBLIC_IAD_BASE env var
       dashboardBase: 'https://dashboard.rfc-editor.org', // NUXT_PUBLIC_DASHBOARD_BASE env var
+      reefBase: 'http://localhost:8088', // NUXT_PUBLIC_REEF_BASE env var — the Reef API, called client-side with the OIDC access token
       matomoSiteId: '12', // 12 is Red non-production ie local dev. Otherwise will be provided by env var NUXT_PUBLIC_MATOMO_SITE_ID
       typesenseApiKey: '2Ic06V287miUyJ32ee25q0ccXK0Dr3RO', // NUXT_PUBLIC_TYPESENSE_API_KEY Be sure to use an API key that only allows search operations
       typesenseHost: 'typesense.staging.ietf.org', // NUXT_PUBLIC_TYPESENSE_HOST

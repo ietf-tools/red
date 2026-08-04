@@ -109,7 +109,7 @@ export const oidcLogout = async (): Promise<void> => {
 
 // Returns a valid access token for authenticated API calls, refreshing via the refresh
 // token if the current one has expired. Returns undefined if not logged in or if the
-// refresh fails. This is the primitive for calling authenticated APIs (e.g. Pink).
+// refresh fails. This is the primitive for calling authenticated APIs (e.g. Reef).
 export const getAccessToken = async (): Promise<string | undefined> => {
   if (!userManagerPromise) {
     return undefined

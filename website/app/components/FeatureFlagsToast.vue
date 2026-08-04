@@ -36,7 +36,6 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
 import { isFeatureFlagsModalVisibleKey, useAreFeatureFlagsEnabled } from '~/utilities/feature-flags'
-import { NONBREAKING_SPACE } from '~/utilities/strings'
 
 const areFeatureFlagsEnabled = useAreFeatureFlagsEnabled()
 const isFeatureFlagsModalVisible = inject(isFeatureFlagsModalVisibleKey)
