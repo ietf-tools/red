@@ -12,9 +12,7 @@
     <AlertBox v-else-if="loadingStatus.type === 'error'" variant="warning" role="alert">
       <p>
         {{ loadingStatus.message }}
-        <button type="button" class="underline text-sky-700 dark:text-blue-100 cursor-pointer" @click="load">
-          Try again
-        </button>
+        <button type="button" class="underline cursor-pointer" @click="load">Try again</button>
       </p>
     </AlertBox>
 
@@ -22,13 +20,13 @@
       <ul v-if="subscriptions.length > 0" class="flex flex-col gap-2 py-3">
         <li v-for="subscription in subscriptions" :key="subscription.id" class="border rounded px-3 py-2">
           <span class="font-bold">{{ subscriptionLabel(subscription) }}</span>
-          <span v-if="subscriptionParamsSummary(subscription)" class="block text-sm">
+          <span v-if="subscriptionParamsSummary(subscription)" class="block">
             {{ subscriptionParamsSummary(subscription) }}
           </span>
-          <span v-if="!subscription.verified" class="block text-sm italic"> Awaiting email verification </span>
+          <span v-if="!subscription.verified" class="block italic"> Awaiting email verification </span>
         </li>
       </ul>
-      <p v-else class="text-sm italic py-3">You have no notifications yet.</p>
+      <p v-else class="italic py-3">You have no notifications yet.</p>
     </template>
   </div>
 </template>
