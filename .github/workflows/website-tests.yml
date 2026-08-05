@@ -1,4 +1,4 @@
-name: Nuxt Vitest, Playwright e2e, TypeScript check, Oxlint
+name: Website tests
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: Unit tests (vitest), TypeScript check, Oxlint
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -37,6 +38,7 @@ jobs:
         working-directory: ./website
 
   e2e:
+    name: E2E playwright (local nuxt server against prod API)
     runs-on: ubuntu-latest
     # Each spec boots its own Nuxt dev server and drives a headless browser.
     timeout-minutes: 30
