@@ -26,8 +26,8 @@
     "test:unittests:search-index:staging": "SEARCH_INDEX_TARGET=staging TZ=UTC vitest run --project search-index --disableConsoleIntercept",
     "test:unittests:search-index:ingest-csv": "node ./e2e/search-index/ingest.ts",
     "test:unittests:search-index:capture-baseline": "node ./e2e/search-index/capture-baseline.ts",
-    "test:e2e": "TZ=UTC vitest run --project e2e",
-    "test:e2e:watch": "TZ=UTC vitest --project e2e",
+    "test:e2e": "nuxt prepare && TZ=UTC vitest run --project e2e",
+    "test:e2e:watch": "nuxt prepare && TZ=UTC vitest --project e2e",
     "generate:reef-api-client": "npx --no openapi-typescript ./reef_api.yaml -o ./generated/reef-api-client.d.ts",
     "generate:content-metadata": "node ./scripts/generate-content-metadata.ts"
   },
