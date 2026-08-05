@@ -1,4 +1,4 @@
-name: Nuxt Vitest, TypeScript check, Oxlint
+name: Website tests
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: Unit tests (vitest), TypeScript check, Oxlint
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -35,3 +36,46 @@ jobs:
       - name: Run all other tests
         run: npm run test
         working-directory: ./website
+
+  e2e:
+    name: E2E playwright (local nuxt server against prod API)
+    runs-on: ubuntu-latest
+    # Each spec boots its own Nuxt dev server and drives a headless browser.
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: "./website"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 24.x
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./website
+
+      - name: Install Playwright browser
+        # @nuxt/test-utils/e2e drives Chromium; --with-deps adds the system
+        # libraries the runner image doesn't ship.
+        run: npx --no playwright install --with-deps chromium
+        working-directory: ./website
+
+      - name: Run Playwright e2e tests (headless)
+        run: npm run test:e2e
+        working-directory: ./website
+
+      - name: Upload e2e artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-e2e-results
+          path: website/test-results/
+          if-no-files-found: ignore
+          retention-days: 7
