@@ -3,7 +3,7 @@
 // Complements e2e/search-index/, which measures *ranking quality* by calling Typesense directly.
 // This is the other half: that the deployed app can reach its index and render hits at all.
 
-import { expect, test } from './fixtures'
+import { expect, test } from './fixtures.ts'
 
 const SEARCH_PATH = '/search'
 const HITS_CONTAINER = '#ais-hits-container'

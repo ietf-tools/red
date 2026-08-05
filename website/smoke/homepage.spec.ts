@@ -1,6 +1,6 @@
 // The homepage renders and hydrates cleanly.
 
-import { expect, test } from './fixtures'
+import { expect, test } from './fixtures.ts'
 
 test('homepage renders its primary content', async ({ page }) => {
   await page.goto('/')

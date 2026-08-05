@@ -12,7 +12,7 @@
 // See smoke/targets.ts for SMOKE_TARGET / SMOKE_BASE_URL, and smoke/README.md for everything else.
 
 import { defineConfig, devices } from '@playwright/test'
-import { getTargetConfig } from './smoke/targets'
+import { getTargetConfig } from './smoke/targets.ts'
 
 const { target, baseURL, storageStatePath } = getTargetConfig()
 

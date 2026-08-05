@@ -132,6 +132,10 @@ Three things to know:
   this app, so a fix only clears here once the target environment's RFC HTML has been
   re-precomputed. Mute known cases with `SMOKE_ALLOW_OVERFLOW` rather than editing the spec, so the
   muting is visible in the run that used it.
+- **Environments carry different RFC corpora** — staging lags production, so a very new RFC can
+  404 there. The spec skips those with a reason rather than failing, and prefers RFCs old enough to
+  exist everywhere. A genuinely broken `/info` route can't hide behind that skip:
+  `info-rfc.spec.ts` asserts `rfc9000` unconditionally.
 
 ## Adding a spec
 

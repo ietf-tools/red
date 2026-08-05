@@ -1,7 +1,7 @@
 // The deployment's own health endpoints, in server/api/v1/.
 
-import { expect, test } from './fixtures'
-import { getTargetConfig } from './targets'
+import { expect, test } from './fixtures.ts'
+import { getTargetConfig } from './targets.ts'
 
 const { target, baseURL } = getTargetConfig()
 

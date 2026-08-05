@@ -6,8 +6,8 @@
 // along with it.
 
 import { expect, test as base, type Page } from '@playwright/test'
-import { getServiceTokenHeaders, readAuthMode } from './auth-cloudflare'
-import { getTargetConfig } from './targets'
+import { getServiceTokenHeaders, readAuthMode } from './auth-cloudflare.ts'
+import { getTargetConfig } from './targets.ts'
 
 const { baseURL, storageStatePath } = getTargetConfig()
 

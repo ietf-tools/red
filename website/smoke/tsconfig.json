@@ -9,6 +9,10 @@
     "module": "preserve",
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
+    // Relative imports carry explicit `.ts` extensions, matching e2e/search-index/ — required for
+    // `node ./smoke/login.ts` to resolve them, since Node's TypeScript support does no
+    // extensionless resolution.
+    "allowImportingTsExtensions": true,
     "types": ["node"],
     "strict": true,
     "noEmit": true,

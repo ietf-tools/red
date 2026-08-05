@@ -13,8 +13,8 @@ import {
   getServiceTokenHeaders,
   readStorageState,
   type StorageState
-} from './auth-cloudflare'
-import { getTargetConfig } from './targets'
+} from './auth-cloudflare.ts'
+import { getTargetConfig } from './targets.ts'
 
 const DEFAULT_VERSION_TIMEOUT_MS = 10 * 60 * 1000
 const VERSION_POLL_INTERVAL_MS = 10 * 1000

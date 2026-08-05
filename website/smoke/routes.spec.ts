@@ -1,8 +1,8 @@
 // Key routes respond, with the right content type and the trailing-slash canonicalisation the
 // site guarantees in docs/MAJOR_CHANGES.md.
 
-import { expect, test } from './fixtures'
-import { infoPath } from './fixtures'
+import { expect, test } from './fixtures.ts'
+import { infoPath } from './fixtures.ts'
 
 type Route = {
   path: string

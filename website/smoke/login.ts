@@ -10,8 +10,8 @@
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import { chromium } from '@playwright/test'
-import { isAuthenticated, readStorageState, writeAuthMode, writeStorageState } from './auth-cloudflare'
-import { getTargetConfig } from './targets'
+import { isAuthenticated, readStorageState, writeAuthMode, writeStorageState } from './auth-cloudflare.ts'
+import { getTargetConfig } from './targets.ts'
 
 const execFileAsync = promisify(execFile)
 

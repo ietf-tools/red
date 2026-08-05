@@ -3,8 +3,8 @@
 // rfc9000 (QUIC) is the fixture: long-lived, Standards Track, and structurally rich enough that
 // a regression in any of the main regions shows up here.
 
-import { expect, test } from './fixtures'
-import { infoPath } from './fixtures'
+import { expect, test } from './fixtures.ts'
+import { infoPath } from './fixtures.ts'
 
 const RFC = 'rfc9000'
 const RFC_TITLE = 'QUIC: A UDP-Based Multiplexed and Secure Transport'
