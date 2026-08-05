@@ -3,6 +3,7 @@
   <NuxtRouteAnnouncer />
   <NuxtLayout>
     <NuxtPage />
+    <Notifications />
   </NuxtLayout>
 </template>
 
