@@ -1,0 +1,22 @@
+{
+  // The deployment smoke suite runs under the Playwright runner with no Nuxt context, so it isn't
+  // covered by any of the generated .nuxt/tsconfig.*.json projects. This project exists so
+  // `npm run test:types` typechecks it. `lib` includes DOM for the `page.evaluate` callbacks,
+  // which execute in the browser.
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "module": "preserve",
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
+    "types": ["node"],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": ["**/*.ts", "../playwright.config.ts"]
+}

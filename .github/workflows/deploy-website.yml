@@ -243,6 +243,87 @@ jobs:
           inputs: '{ "environment":"${{ secrets.GHA_K8S_CLUSTER }}", "app":"red", "appVersion":"${{ env.PKG_VERSION }}", "remoteRef":"${{ github.sha }}" }'
 
   # -----------------------------------------------------------------
+  # SMOKE TEST STAGING
+  # -----------------------------------------------------------------
+  # Playwright tests against the deployed staging site, so a report is waiting by the time the
+  # production deploy's approval is up for decision. See website/smoke/README.md.
+  #
+  # REPORT ONLY — this must not block demo/prod, which is what `continue-on-error` buys. That's
+  # load-bearing, not cosmetic: demo/prod are guarded by `if: !failure()`, which is evaluated
+  # workflow-wide, so a genuinely failing job here would *skip* prod. Failures still surface via
+  # step annotations, the job summary and the uploaded HTML report.
+  #
+  # To make it gate instead: drop `continue-on-error` and add `smoke-staging` to demo/prod's
+  # `needs`.
+  smoke-staging:
+    name: Smoke Test Staging
+    if: ${{ !failure() && !cancelled() && (inputs.deploy == 'Staging Only' || inputs.deploy == 'Staging + Demo' || inputs.deploy == 'Staging + Prod') }}
+    needs: [build, staging]
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: staging
+    defaults:
+      run:
+        working-directory: ./website
+    env:
+      SMOKE_TARGET: staging
+      # The staging job only dispatches the infra-k8s deploy and returns, so the rollout is still
+      # in flight. Global setup waits for this version to actually be served before testing.
+      EXPECT_WEBSITE_VERSION: ${{ needs.build.outputs.pkg_version }}
+      # Cloudflare Access service token — staging is behind Access with a GitHub IdP and CI has no
+      # browser to sign in with. To source these from Vault instead, replace these two lines with a
+      # hashicorp/vault-action step exporting the same names; nothing else changes.
+      CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+      CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          fetch-tags: false
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx --no playwright install --with-deps chromium
+
+      - name: Run smoke tests
+        run: npm run test:smoke
+
+      - name: Upload smoke test report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: smoke-report-staging
+          path: |
+            website/smoke/report/
+            website/test-results/
+          retention-days: 14
+
+      - name: Summarise result
+        if: ${{ always() }}
+        run: |
+          if [[ "${{ job.status }}" == "success" ]]; then
+            echo "### ✅ Staging smoke tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ❌ Staging smoke tests FAILED" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Staging looks broken. Consider **not** approving the production deploy." >> $GITHUB_STEP_SUMMARY
+            echo "Download the \`smoke-report-staging\` artifact for the HTML report and traces." >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Version under test: \`${{ needs.build.outputs.pkg_version }}\`" >> $GITHUB_STEP_SUMMARY
+
+  # -----------------------------------------------------------------
   # DEMO
   # -----------------------------------------------------------------
   demo:
