@@ -8,10 +8,12 @@ import type { Subscription, SubscriptionKind } from '~/utilities/reef'
 
 // Wording taken from the KindEnum descriptions in reef_api.yaml.
 const KIND_LABELS: Record<SubscriptionKind, string> = {
+  rfc: 'A specific RFC',
   new_rfc: 'Any new RFC',
   by_status: 'New RFC by status',
   obsoleted: 'RFC obsoleted or made historic',
-  subject_tag: 'RFC with a subject tag'
+  subject_tag: 'RFC with a subject tag',
+  set: 'Set of RFCs'
 }
 
 // Falls back to the raw kind so a subscription created by a newer Reef than this build knows
