@@ -28,6 +28,7 @@
     "test:unittests:search-index:capture-baseline": "node ./e2e/search-index/capture-baseline.ts",
     "test:e2e": "nuxt prepare && TZ=UTC vitest run --project e2e",
     "test:e2e:watch": "nuxt prepare && TZ=UTC vitest --project e2e",
+    "test:e2e:update-screenshots": "nuxt prepare && UPDATE_SCREENSHOTS=1 TZ=UTC vitest run --project e2e",
     "generate:reef-api-client": "npx --no openapi-typescript ./reef_api.yaml -o ./generated/reef-api-client.d.ts",
     "generate:content-metadata": "node ./scripts/generate-content-metadata.ts"
   },
@@ -67,8 +68,8 @@
   "devDependencies": {
     "@babel/runtime": "7.29.2",
     "@nuxt/test-utils": "4.0.3",
-    "@playwright/test": "1.61.1",
     "@types/luxon": "3.7.2",
+    "@types/pngjs": "6.0.5",
     "@vue/test-utils": "2.4.11",
     "fast-xml-parser": "5.9.3",
     "happy-dom": "20.10.6",
@@ -76,8 +77,10 @@
     "oxfmt": "0.58.0",
     "oxlint": "1.73.0",
     "oxlint-tsgolint": "0.24.0",
+    "pixelmatch": "7.2.0",
     "playwright": "1.61.1",
     "playwright-core": "1.61.1",
+    "pngjs": "7.0.0",
     "vitest": "4.1.10",
     "vue-tsc": "3.3.7"
   },

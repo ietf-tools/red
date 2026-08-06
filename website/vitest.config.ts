@@ -15,7 +15,12 @@ export default defineConfig(async () => ({
         test: {
           name: 'e2e',
           include: ['**/*.e2e.ts'],
-          environment: 'node'
+          environment: 'node',
+          // Starts the one dev server every e2e suite attaches to. Without it each
+          // suite would launch its own, and in dev mode those all serve from the same
+          // `.nuxt` build directory — which is what used to make running these files
+          // in parallel impossible. See e2e/utilities/global-setup.ts.
+          globalSetup: ['./e2e/utilities/global-setup.ts']
         }
       },
       {

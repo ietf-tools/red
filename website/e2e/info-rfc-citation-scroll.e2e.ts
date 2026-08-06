@@ -39,9 +39,11 @@
  * stays at the referenced target and does not bounce back.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, setup } from '@nuxt/test-utils/e2e'
+import { createPage } from '@nuxt/test-utils/e2e'
 import type { Page } from 'playwright-core'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
+import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
+import { setupNuxtServer } from './utilities/setup'
 
 // rfc8900 is available via the `/api/v1/**` dev proxy and has several in-text RFC
 // citations (RFC2119, RFC8174, RFC0791, …) whose preview data also loads.
@@ -77,9 +79,7 @@ const targetOffsetOf = (page: Page, id: string): Promise<number> =>
   }, id)
 
 describe('info/rfcN citation links', async () => {
-  // `dev: true` runs the Nuxt dev server so the `/api/v1/**` proxy in nuxt.config.ts
-  // applies (the preview cards and page content need it).
-  await setup({ browser: true, dev: true })
+  await setupNuxtServer()
 
   test(
     'clicking an in-content RFC citation stays at the target and does not scroll back',
@@ -93,6 +93,10 @@ describe('info/rfcN citation links', async () => {
       await cdp.send('Network.setCacheDisabled', { cacheDisabled: true })
 
       await page.locator('.rfc-content').first().waitFor({ state: 'visible' })
+
+      // Captured before any interaction: the post-load state is the one that stays
+      // stable as the scroll assertions below evolve.
+      await expectScreenshotToMatchBaseline(page, RFC)
 
       // Distinct in-text RFC citation links (rendered as RFCRouterLink previews).
       const ids = await page.evaluate(() => [

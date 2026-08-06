@@ -7,7 +7,8 @@
 // (mobile), both of which run their own arrow-key navigation over every nested
 // collection item. See HeaderNavDesktop.vue / HeaderNavMobile.vue.
 import { describe, expect, test } from 'vitest'
-import { createPage, setup } from '@nuxt/test-utils/e2e'
+import { createPage } from '@nuxt/test-utils/e2e'
+import { setupNuxtServer } from './utilities/setup'
 import type { Page } from 'playwright-core'
 
 const TEST_TIMEOUT_MS = 60_000
@@ -24,7 +25,7 @@ const activeInfo = (page: Page) =>
   }))
 
 describe('header preferences keyboard nav', async () => {
-  await setup({ browser: true, dev: true })
+  await setupNuxtServer()
 
   test(
     'desktop: arrows move selection within the theme radio group and wrap without escaping',

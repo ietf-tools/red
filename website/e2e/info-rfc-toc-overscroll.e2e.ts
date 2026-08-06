@@ -27,9 +27,11 @@
  * stays put (0px of movement).
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, setup } from '@nuxt/test-utils/e2e'
+import { createPage } from '@nuxt/test-utils/e2e'
 import type { Page } from 'playwright-core'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
+import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
+import { setupNuxtServer } from './utilities/setup'
 
 // rfc10008 (the RFC named in the issue) is available via the `/api/v1/**` dev proxy
 // and has a ToC long enough to overflow the short viewport used below.
@@ -78,9 +80,7 @@ const locateTocScrollContainer = (page: Page) =>
   })
 
 describe('info/rfcN/ ToC overscroll', async () => {
-  // `dev: true` runs the Nuxt dev server so the `/api/v1/**` proxy in nuxt.config.ts
-  // applies (the page content needs it).
-  await setup({ browser: true, dev: true })
+  await setupNuxtServer()
 
   test(
     'wheeling up over the ToC at its top boundary does not chain-scroll the page',
@@ -89,6 +89,10 @@ describe('info/rfcN/ ToC overscroll', async () => {
       await page.setViewportSize(VIEWPORT)
 
       await page.locator('nav[aria-label="In this section"]').first().waitFor({ state: 'visible' })
+
+      // Captured before any interaction: the post-load state is the one that stays
+      // stable as the scroll assertions below evolve.
+      await expectScreenshotToMatchBaseline(page, RFC)
 
       const container = await locateTocScrollContainer(page)
       expect(container, 'expected a scrollable ToC container (viewport too tall?)').not.toBeNull()

@@ -7,8 +7,9 @@
  */
 import { Duration } from 'luxon'
 import { describe, expect, test } from 'vitest'
-import { createPage, NuxtPage, setup, url } from '@nuxt/test-utils/e2e'
+import { createPage, NuxtPage, url } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
+import { setupNuxtServer } from './utilities/setup'
 
 // FIXME: decide an appropriate range.
 const FIRST_RFC = 1
@@ -29,9 +30,7 @@ const TIME_FOR_CALLIBRATION_TEST_MS = 15_000
 const timeForRfcTests = rfcNumbers.length * 3 * TIME_PER_TEST_MS
 
 describe.skip('info/rfcN/ routes', async () => {
-  // `dev: true` runs the Nuxt dev server so the `$development` route rules in
-  // nuxt.config.ts apply (notably the `/api/v1/**` proxy the app needs to work).
-  await setup({ browser: true, dev: true })
+  await setupNuxtServer()
 
   // A horizontal scrollbar appears when the rendered content is wider
   // than the viewport's visible area.
