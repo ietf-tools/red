@@ -1,6 +1,6 @@
 <div align="center">
   
-<img src="https://static.ietf.org/logos/icon-rfceditor.svg" alt="IETF Account" height="125" />
+<img src="https://static.ietf.org/logos/icon-rfceditor.svg" alt="RFC Editor" height="125" />
 
 # RFC Editor Website
 
