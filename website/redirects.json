@@ -1,4 +1,0 @@
-{
-  "//": "this is a separate file so that we can potentially migrate it to a worker later",
-  "redirects": []
-}
