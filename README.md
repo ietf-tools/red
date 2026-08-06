@@ -1,6 +1,8 @@
 <div align="center">
   
-<img src="https://raw.githubusercontent.com/ietf-tools/common/main/assets/logos/rfced-www.svg" alt="RFC-Editor.org website" height="125" />
+<img src="https://static.ietf.org/logos/icon-rfceditor.svg" alt="IETF Account" height="125" />
+
+# RFC Editor Website
 
 [![Release](https://img.shields.io/github/release/ietf-tools/red.svg?style=flat&maxAge=300)](https://github.com/ietf-tools/red/releases)
 [![License](https://img.shields.io/github/license/ietf-tools/red)](https://github.com/ietf-tools/red/blob/main/LICENSE)
@@ -8,7 +10,7 @@
 ![Nuxt Version](https://img.shields.io/badge/nuxt-4-green?logo=nuxt.js&logoColor=white)
 ![Vue Version](https://img.shields.io/badge/vue-3-green?logo=vue.js&logoColor=white)
 
-##### Website for the RFC Editor
+##### Website for the RFC Editor (Codename: RED)
 
 </div>
 
