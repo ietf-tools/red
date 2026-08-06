@@ -210,7 +210,14 @@ export const RfcCommonSchema = z.object({
   formats: z.array(RfcCommonFormatSchema),
   /** Abstract is plain text with `\n` line breaks; convert to paragraphs at render time */
   abstract: z.string().optional(),
-  text: z.string().optional()
+  text: z.string().optional(),
+  /** Mimicking Reef API structure */
+  ratingAggregate: z
+    .object({
+      average: z.number().optional(),
+      count: z.number().optional()
+    })
+    .optional()
 })
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>

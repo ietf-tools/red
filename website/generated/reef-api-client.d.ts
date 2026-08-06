@@ -61,6 +61,117 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/sets/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description List and create the caller's document sets. */
+    get: operations['sets_list']
+    put?: never
+    /** @description List and create the caller's document sets. */
+    post: operations['sets_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/sets/{id}/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    get: operations['sets_retrieve']
+    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    put: operations['sets_update']
+    post?: never
+    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    delete: operations['sets_destroy']
+    options?: never
+    head?: never
+    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    patch: operations['sets_partial_update']
+    trace?: never
+  }
+  '/api/reef/sets/{id}/{slug}/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * @description Read a published set, anonymously.
+     *
+     *     A private set is a 404 rather than a 403: the endpoint does not confirm
+     *     that one exists. A stale or wrong slug redirects to the current URL, since
+     *     the id carries identity and the slug only has to be readable.
+     */
+    get: operations['sets_public_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/sets/{id}/documents/{doc}/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    /**
+     * @description Add or remove one document.
+     *
+     *     PUT is idempotent, and the identifier is canonicalized first, so
+     *     .../documents/RFC%209110/ and .../documents/rfc9110/ are the same entry.
+     */
+    put: operations['sets_documents_update']
+    post?: never
+    /**
+     * @description Add or remove one document.
+     *
+     *     PUT is idempotent, and the identifier is canonicalized first, so
+     *     .../documents/RFC%209110/ and .../documents/rfc9110/ are the same entry.
+     */
+    delete: operations['sets_documents_destroy']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/sets/{id}/order/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    /**
+     * @description Rewrite the display order in one request.
+     *
+     *     Ranks are replaced as a block rather than patched per entry, so a
+     *     drag-and-drop is one call that cannot half-apply.
+     */
+    put: operations['sets_order_update']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/subscriptions/': {
     parameters: {
       query?: never
@@ -212,14 +323,52 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    DocumentSet: {
+      readonly id: number
+      title: string
+      readonly slug: string
+      description?: string
+      /**
+       * @description A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+       *
+       *     * `private` - Private
+       *     * `public` - Public
+       */
+      visibility?: components['schemas']['DocumentSetVisibilityEnum']
+      readonly owner_name: string
+      readonly documents: components['schemas']['DocumentSetEntry'][]
+      /** Format: date-time */
+      readonly created_at: string
+      /** Format: date-time */
+      readonly updated_at: string
+    }
+    DocumentSetEntry: {
+      readonly doc: string
+      /** @description Lower sorts first */
+      readonly rank: number
+      /** Format: date-time */
+      readonly added_at: string
+    }
+    /** @description The set's documents, in the order they should be shown. */
+    DocumentSetOrder: {
+      documents: string[]
+    }
+    /**
+     * @description * `private` - Private
+     *     * `public` - Public
+     * @enum {string}
+     */
+    DocumentSetVisibilityEnum: 'private' | 'public'
     /**
      * @description * `new_rfc` - Any new RFC
      *     * `by_status` - New RFC by status
      *     * `obsoleted` - RFC obsoleted or made historic
      *     * `subject_tag` - RFC with a subject tag
+     *     * `rfc` - Changes to one specific RFC
+     *     * `set` - Changes to anything in a document set
      * @enum {string}
      */
-    KindEnum: 'new_rfc' | 'by_status' | 'obsoleted' | 'subject_tag'
+    KindEnum: 'new_rfc' | 'by_status' | 'obsoleted' | 'subject_tag' | 'rfc' | 'set'
     /** @description Minimal representation for Red's open-survey list and popover. */
     OpenSurvey: {
       readonly id: number
@@ -227,6 +376,25 @@ export interface components {
       title: string
       description?: string
       readonly url: string
+    }
+    PatchedDocumentSet: {
+      readonly id?: number
+      title?: string
+      readonly slug?: string
+      description?: string
+      /**
+       * @description A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+       *
+       *     * `private` - Private
+       *     * `public` - Public
+       */
+      visibility?: components['schemas']['DocumentSetVisibilityEnum']
+      readonly owner_name?: string
+      readonly documents?: components['schemas']['DocumentSetEntry'][]
+      /** Format: date-time */
+      readonly created_at?: string
+      /** Format: date-time */
+      readonly updated_at?: string
     }
     /** @description Full survey representation used by the management API and the builder. */
     PatchedSurvey: {
@@ -276,6 +444,7 @@ export interface components {
       readonly id: number
       kind: components['schemas']['KindEnum']
       params?: unknown
+      set?: number | null
       readonly verified: boolean
       /** Format: date-time */
       readonly created_at: string
@@ -515,6 +684,245 @@ export interface operations {
           'application/json': {
             [key: string]: unknown
           }
+        }
+      }
+    }
+  }
+  sets_list: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet'][]
+        }
+      }
+    }
+  }
+  sets_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DocumentSet']
+        'application/x-www-form-urlencoded': components['schemas']['DocumentSet']
+        'multipart/form-data': components['schemas']['DocumentSet']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  sets_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  sets_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DocumentSet']
+        'application/x-www-form-urlencoded': components['schemas']['DocumentSet']
+        'multipart/form-data': components['schemas']['DocumentSet']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  sets_destroy: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  sets_partial_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedDocumentSet']
+        'application/x-www-form-urlencoded': components['schemas']['PatchedDocumentSet']
+        'multipart/form-data': components['schemas']['PatchedDocumentSet']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  sets_public_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+        slug: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  sets_documents_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        doc: string
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  sets_documents_destroy: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        doc: string
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  sets_order_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DocumentSetOrder']
+        'application/x-www-form-urlencoded': components['schemas']['DocumentSetOrder']
+        'multipart/form-data': components['schemas']['DocumentSetOrder']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentSet']
         }
       }
     }

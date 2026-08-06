@@ -226,6 +226,293 @@ paths:
                 type: object
                 additionalProperties: {}
           description: ''
+  /api/reef/sets/:
+    get:
+      operationId: sets_list
+      description: List and create the caller's document sets.
+      tags:
+        - sets
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentSet'
+          description: ''
+    post:
+      operationId: sets_create
+      description: List and create the caller's document sets.
+      tags:
+        - sets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentSet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocumentSet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentSet'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+  /api/reef/sets/{id}/:
+    get:
+      operationId: sets_retrieve
+      description: Read, retitle, redescribe, publish, or delete one of the caller's
+        sets.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+    put:
+      operationId: sets_update
+      description: Read, retitle, redescribe, publish, or delete one of the caller's
+        sets.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentSet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocumentSet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentSet'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+    patch:
+      operationId: sets_partial_update
+      description: Read, retitle, redescribe, publish, or delete one of the caller's
+        sets.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumentSet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumentSet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumentSet'
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+    delete:
+      operationId: sets_destroy
+      description: Read, retitle, redescribe, publish, or delete one of the caller's
+        sets.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/reef/sets/{id}/{slug}/:
+    get:
+      operationId: sets_public_retrieve
+      description: |-
+        Read a published set, anonymously.
+
+        A private set is a 404 rather than a 403: the endpoint does not confirm
+        that one exists. A stale or wrong slug redirects to the current URL, since
+        the id carries identity and the slug only has to be readable.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+      tags:
+        - sets
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+  /api/reef/sets/{id}/documents/{doc}/:
+    put:
+      operationId: sets_documents_update
+      description: |-
+        Add or remove one document.
+
+        PUT is idempotent, and the identifier is canonicalized first, so
+        .../documents/RFC%209110/ and .../documents/rfc9110/ are the same entry.
+      parameters:
+        - in: path
+          name: doc
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
+    delete:
+      operationId: sets_documents_destroy
+      description: |-
+        Add or remove one document.
+
+        PUT is idempotent, and the identifier is canonicalized first, so
+        .../documents/RFC%209110/ and .../documents/rfc9110/ are the same entry.
+      parameters:
+        - in: path
+          name: doc
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/reef/sets/{id}/order/:
+    put:
+      operationId: sets_order_update
+      description: |-
+        Rewrite the display order in one request.
+
+        Ranks are replaced as a block rather than patched per entry, so a
+        drag-and-drop is one call that cannot half-apply.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - sets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentSetOrder'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocumentSetOrder'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentSetOrder'
+        required: true
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentSet'
+          description: ''
   /api/reef/subscriptions/:
     get:
       operationId: subscriptions_list
@@ -543,18 +830,105 @@ paths:
           description: ''
 components:
   schemas:
+    DocumentSet:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        slug:
+          type: string
+          readOnly: true
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+        visibility:
+          allOf:
+            - $ref: '#/components/schemas/DocumentSetVisibilityEnum'
+          description: |-
+            A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+
+            * `private` - Private
+            * `public` - Public
+        owner_name:
+          type: string
+          readOnly: true
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSetEntry'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - created_at
+        - documents
+        - id
+        - owner_name
+        - slug
+        - title
+        - updated_at
+    DocumentSetEntry:
+      type: object
+      properties:
+        doc:
+          type: string
+          readOnly: true
+        rank:
+          type: integer
+          readOnly: true
+          description: Lower sorts first
+        added_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - added_at
+        - doc
+        - rank
+    DocumentSetOrder:
+      type: object
+      description: The set's documents, in the order they should be shown.
+      properties:
+        documents:
+          type: array
+          items:
+            type: string
+      required:
+        - documents
+    DocumentSetVisibilityEnum:
+      enum:
+        - private
+        - public
+      type: string
+      description: |-
+        * `private` - Private
+        * `public` - Public
     KindEnum:
       enum:
         - new_rfc
         - by_status
         - obsoleted
         - subject_tag
+        - rfc
+        - set
       type: string
       description: |-
         * `new_rfc` - Any new RFC
         * `by_status` - New RFC by status
         * `obsoleted` - RFC obsoleted or made historic
         * `subject_tag` - RFC with a subject tag
+        * `rfc` - Changes to one specific RFC
+        * `set` - Changes to anything in a document set
     OpenSurvey:
       type: object
       description: Minimal representation for Red's open-survey list and popover.
@@ -579,6 +953,45 @@ components:
         - slug
         - title
         - url
+    PatchedDocumentSet:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        slug:
+          type: string
+          readOnly: true
+          pattern: ^[-a-zA-Z0-9_]+$
+        description:
+          type: string
+        visibility:
+          allOf:
+            - $ref: '#/components/schemas/DocumentSetVisibilityEnum'
+          description: |-
+            A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+
+            * `private` - Private
+            * `public` - Public
+        owner_name:
+          type: string
+          readOnly: true
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentSetEntry'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
     PatchedSurvey:
       type: object
       description: Full survey representation used by the management API and the builder.
@@ -674,6 +1087,9 @@ components:
         kind:
           $ref: '#/components/schemas/KindEnum'
         params: {}
+        set:
+          type: integer
+          nullable: true
         verified:
           type: boolean
           readOnly: true
