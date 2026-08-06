@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest'
-import { createPage, setup, url } from '@nuxt/test-utils/e2e'
+import { createPage, url } from '@nuxt/test-utils/e2e'
+import { setupNuxtServer } from '../../../../e2e/utilities/setup'
 
 const TEST_DURATION_MS = 60_000
 
 describe('RfcEditorSearch (searchv2)', async () => {
-  // `dev: true` so the `$development` /api proxy route rules apply.
-  await setup({ browser: true, dev: true })
+  await setupNuxtServer()
 
   test(
     'renders the accessible v2 search and loads results',

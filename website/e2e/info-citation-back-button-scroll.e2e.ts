@@ -33,8 +33,10 @@
  * and pressing Back, the page returns to the pre-click scroll position.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, setup } from '@nuxt/test-utils/e2e'
+import { createPage } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
+import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
+import { setupNuxtServer } from './utilities/setup'
 
 // rfc9980 is available via the `/api/v1/**` dev proxy and has several in-text
 // NON-RFC citations ([FIPS-203], [FIPS-204], [FIPS-205]) rendered as plain
@@ -52,9 +54,7 @@ const SETTLE_MS = 800
 const TEST_TIMEOUT_MS = 120_000
 
 describe('info/rfcN non-RFC citation Back button', async () => {
-  // `dev: true` runs the Nuxt dev server so the `/api/v1/**` proxy in nuxt.config.ts
-  // applies (the page content needs it).
-  await setup({ browser: true, dev: true })
+  await setupNuxtServer()
 
   test(
     'pressing Back after following a non-RFC citation restores the reading position',
@@ -63,6 +63,10 @@ describe('info/rfcN non-RFC citation Back button', async () => {
       await page.setViewportSize(VIEWPORT)
 
       await page.locator('.rfc-content').first().waitFor({ state: 'visible' })
+
+      // Captured before any interaction: the post-load state is the one that stays
+      // stable as the scroll assertions below evolve.
+      await expectScreenshotToMatchBaseline(page, RFC)
 
       // In-text non-RFC citation links render as plain native anchors tagged with
       // `data-non-rfc-anchor-link` and pointing at an in-document hash. Choose one
