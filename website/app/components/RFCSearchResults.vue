@@ -1,5 +1,5 @@
 <template>
-  <div :id="INSTANTSEARCH_HITS_CONTAINER_DOM_ID">
+  <div :id="SEARCHV2_HITS_CONTAINER_DOM_ID">
     <div
       v-if="isEmpty"
       class="rounded-xs bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-200 flex flex-col items-center justify-center px-3 py-5">
@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { nextTick, watch } from 'vue'
 import { useHits, useToggleRefinement } from '~/components/searchv2'
-import { INSTANTSEARCH_HITS_CONTAINER_DOM_ID, moveFocusToFirstResult } from '~/utilities/typesense'
+import { SEARCHV2_HITS_CONTAINER_DOM_ID, moveFocusToFirstResult } from '~/utilities/typesense'
 import type { TypeSenseSearchItem } from '~/utilities/typesense'
 
 const props = defineProps<{

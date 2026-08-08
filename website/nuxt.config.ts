@@ -72,16 +72,7 @@ export default defineNuxtConfig({
       }
     },
     optimizeDeps: {
-      include: [
-        'es-toolkit',
-        'es-toolkit/compat',
-        'luxon',
-        'zod',
-        '@vueuse/core',
-        'core-js/actual/array/to-sorted',
-        'vue-instantsearch/vue3/es',
-        'typesense-instantsearch-adapter/src/TypesenseInstantsearchAdapter.js'
-      ]
+      include: ['es-toolkit', 'es-toolkit/compat', 'luxon', 'zod', '@vueuse/core', 'core-js/actual/array/to-sorted']
     }
   },
   nitro: {

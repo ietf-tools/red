@@ -60,9 +60,7 @@
     "reka-ui": "2.10.1",
     "simple-git": "3.36.0",
     "tailwindcss": "4.3.2",
-    "typesense-instantsearch-adapter": "3.0.2",
     "vue": "3.5.39",
-    "vue-instantsearch": "4.27.0",
     "zod": "4.4.3"
   },
   "devDependencies": {

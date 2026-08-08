@@ -96,35 +96,14 @@ export const isTypesenseSubseriesWithValues = (
   return true
 }
 
-export type TypeSenseClient = {
-  clearCache: () => void
-  search: (searchRequests: Array<TypeSenseSearchRequest>) => Promise<TypeSenseSearchResponse>
-  searchForFacetValues: (searchRequests: Array<TypeSenseSearchRequest>) => Promise<TypeSenseSearchResponse>
-}
-
-export type TypeSenseSearchRequest = {
-  indexName: string
-  params: {
-    query: string
-    facets?: string[]
-    facetFilters?: string[]
-  }
-}
-
-export type TypeSenseSearchResponse = {
-  results: {
-    nbHits: number
-  }[]
-}
-
 export type TypeSenseSearchItem = z.infer<typeof TypeSenseSearchItemSchema>
 
 export type Density = 'full' | 'dense' | 'compact'
 
-export const INSTANTSEARCH_HITS_CONTAINER_DOM_ID = 'ais-hits-container'
+export const SEARCHV2_HITS_CONTAINER_DOM_ID = 'searchv2-hits-container'
 
 // DOM ID of the position:sticky container
-export const INSTANTSEARCH_STICKY_CONTAINER_DOM_ID = 'ais-sticky-container'
+export const SEARCHV2_STICKY_CONTAINER_DOM_ID = 'searchv2-sticky-container'
 
 const CSS_POSITION_STICKY = /sticky/i
 const SCROLL_BUFFER_PX = 16 // just a bit further than the container
@@ -136,10 +115,10 @@ const SCROLL_BUFFER_PX = 16 // just a bit further than the container
  * to sync this.
  */
 export const moveFocusToFirstResult = () => {
-  const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
+  const target = document.getElementById(SEARCHV2_HITS_CONTAINER_DOM_ID)
   if (!target) {
     console.warn("moveFocusToFirstResult: Can't find ", {
-      INSTANTSEARCH_HITS_CONTAINER_DOM_ID,
+      SEARCHV2_HITS_CONTAINER_DOM_ID,
       target
     })
     return
@@ -159,13 +138,13 @@ export const moveFocusToFirstResult = () => {
  * this should not move focus
  */
 export const scrollUpToNewSearchResults = () => {
-  const target = document.getElementById(INSTANTSEARCH_HITS_CONTAINER_DOM_ID)
-  const sticky = document.getElementById(INSTANTSEARCH_STICKY_CONTAINER_DOM_ID)
+  const target = document.getElementById(SEARCHV2_HITS_CONTAINER_DOM_ID)
+  const sticky = document.getElementById(SEARCHV2_STICKY_CONTAINER_DOM_ID)
   if (!target || !sticky) {
     console.warn("scrollUpToNewSearchResults: Can't find ", {
-      INSTANTSEARCH_HITS_CONTAINER_DOM_ID,
+      SEARCHV2_HITS_CONTAINER_DOM_ID,
       target,
-      INSTANTSEARCH_STICKY_CONTAINER_DOM_ID,
+      SEARCHV2_STICKY_CONTAINER_DOM_ID,
       sticky
     })
     window.scrollTo(0, 0)

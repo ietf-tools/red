@@ -2,23 +2,21 @@ import { assertIsString } from '~/utilities/typescript'
 import type { Density } from '~/utilities/typesense'
 
 /**
- * Stores UI state that lives outside InstantSearch's own state (query, facets, pagination, etc.).
+ * Stores UI state that lives outside the search engine's own state (query, facets, pagination, etc.).
  *
- * - density / searchContents: user preferences persisted to localStorage
+ * - density: user preference persisted to localStorage
  * - isSubseries / subseriesLabel / subseriesHref: derived from search results by
- *   search-client-middleware and consumed by SearchSubseriesBar; stored here because
- *   the middleware writes and multiple components read
+ *   searchv2-rfc-client, written by RFCSearch and consumed by SearchSubseriesBar
  */
 export const useSearchStore = defineStore('searchStore', {
   state: () => ({
     density: 'full' as Density,
     isSubseries: false,
-    searchContents: false,
     subseriesLabel: '',
     subseriesHref: ''
   }),
   persist: {
-    pick: ['density', 'searchContents']
+    pick: ['density']
   }
 })
 

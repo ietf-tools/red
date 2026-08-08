@@ -35,7 +35,7 @@ describe('RfcEditorSearch (searchv2)', async () => {
       await stats.first().waitFor({ state: 'visible', timeout: 20_000 })
 
       // Results actually load from Typesense into the hits container.
-      const resultItems = page.locator('#ais-hits-container li')
+      const resultItems = page.locator('#searchv2-hits-container li')
       await expect.poll(async () => resultItems.count(), { timeout: 20_000 }).toBeGreaterThan(0)
 
       await page.close()

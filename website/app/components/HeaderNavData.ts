@@ -5,6 +5,7 @@ import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout } from '~/utilities/oidc'
 import {
+  ACCOUNT_HOME_PATH,
   IETF_PRIVACY_STATEMENT_URL,
   INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL,
   markdownPathBuilder,
@@ -230,6 +231,10 @@ export const useMenuData = (mode: Mode) => {
             ? () => h('img', { src: picture, alt: `Picture of ${displayName}`, class: 'w-6 h-6 rounded-full' })
             : () => h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' }),
           children: [
+            {
+              label: 'Account',
+              href: ACCOUNT_HOME_PATH
+            },
             {
               label: 'Sign out',
               click: () => {

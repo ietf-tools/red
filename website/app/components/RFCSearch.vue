@@ -29,7 +29,7 @@
 
           <ClientOnly>
             <div
-              :id="INSTANTSEARCH_STICKY_CONTAINER_DOM_ID"
+              :id="SEARCHV2_STICKY_CONTAINER_DOM_ID"
               class="lg:sticky lg:top-0 lg:z-110 bg-gray-200 dark:bg-blue-950">
               <div class="search-container mx-auto pl-5 pr-3 pt-1 pb-0 py-2 xl:py-2 flex flex-row items-center">
                 <div class="w-full flex justify-center mx-auto">
@@ -159,7 +159,7 @@ import {
 } from '~/components/searchv2'
 import { createRfcSearchClient } from '~/utilities/searchv2-rfc-client'
 import { useNuxtStateAdapter } from '~/utilities/searchv2-nuxt-adapter'
-import { INSTANTSEARCH_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '~/utilities/typesense'
+import { SEARCHV2_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '~/utilities/typesense'
 import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
