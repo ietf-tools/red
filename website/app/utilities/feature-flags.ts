@@ -10,7 +10,6 @@ export const FeatureFlagsSchema = z.object({
   // narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
   formatsAlsoViewAs: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
-  searchV2: z.boolean().optional(),
   oidc: z.boolean().optional()
 })
 
@@ -62,11 +61,6 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'Search default filter includes obsoleted',
     description: 'On the search route include obsoleted results by default',
     storageType: 'boolean'
-  },
-  searchV2: {
-    title: 'Search V2',
-    description: 'Enable the version 2 search',
-    storageType: 'boolean'
   }
 }
 
@@ -77,7 +71,6 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   formatsAlsoViewAs: false,
   // showPreCopyButton: '',
   searchObsoletedDefaults: false,
-  searchV2: false,
   oidc: false
 }
 

@@ -217,7 +217,9 @@ export const RfcCommonSchema = z.object({
       average: z.number().optional(),
       count: z.number().optional()
     })
-    .optional()
+    .optional(),
+  subscriberCount: z.number().optional(),
+  setCount: z.number().optional()
 })
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
