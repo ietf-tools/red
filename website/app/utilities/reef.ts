@@ -97,8 +97,6 @@ const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T>
   const { reefBase } = useRuntimeConfig().public
   const token = auth === undefined ? undefined : await getAccessToken()
 
-  console.log('sdfsdf4', { auth, token })
-
   // Sending an authenticated-only operation with no Authorization header can only ever come
   // back 401, and the resulting error reads like the server rejecting us rather than like a
   // session we never had. Fail here instead, so the cause is named. Synthesised rather than

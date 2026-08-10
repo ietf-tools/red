@@ -60,7 +60,6 @@ const loadUserRFCRating = async (rfcNumber: number, isAuthed: boolean) => {
   // Reef identifies the rating's owner by the bearer token, so there's nothing to ask for while
   // logged out.
   if (!isAuthed) {
-    console.log('sdfsdf isAuthed?', isAuthed)
     return
   }
 
@@ -68,14 +67,11 @@ const loadUserRFCRating = async (rfcNumber: number, isAuthed: boolean) => {
   const { signal } = controller
 
   try {
-    console.log('sdfsdf3 before', rfcNumber)
     const loaded = await getUserRFCRating(rfcNumber, signal)
     // Before the assignment, so the save watcher — which fires on the next tick — already sees
     // this as Reef's own value and leaves it alone.
     syncedRating = loaded
     userRFCRating.value = loaded
-
-    console.log('sdfsdf3 after', rfcNumber)
   } catch (error) {
     if (signal.aborted) {
       // superseded by a newer attempt, or the component has been unmounted
@@ -95,7 +91,6 @@ const loadUserRFCRating = async (rfcNumber: number, isAuthed: boolean) => {
 watch(
   [isAuthenticated, () => props.rfcNumber],
   () => {
-    console.log('sdfsdf1', isAuthenticated.value)
     void loadUserRFCRating(props.rfcNumber, isAuthenticated.value)
   },
   { immediate: true }

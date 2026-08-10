@@ -13,7 +13,6 @@
         `w-[24px] h-[24px]` // must be 24px+ for accessibility reasons ie minimum button size
       ]" />
   </div>
-  <p class="absolute text-sm -mt-6 mb-6 z-100"></p>
 </template>
 
 <script setup lang="ts">

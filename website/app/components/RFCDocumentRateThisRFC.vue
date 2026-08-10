@@ -6,7 +6,7 @@
          the action; DialogTrigger already announces the dialog itself via aria-haspopup. -->
       <DialogTrigger :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'cursor-pointer underline']">
         {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRatingLabel(userRFCRating)}` }}
-        <span v-if="userRFCRating !== undefined" class="sr-only">— change your rating</span>
+        <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>
       </DialogTrigger>
       <DialogPortal>
         <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-30" />

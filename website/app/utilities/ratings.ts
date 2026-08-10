@@ -4,6 +4,7 @@
 // Lives here rather than in RFCDocumentReefStats/RFCDocumentRateThisRFC so the display and the
 // rating dialog share one definition of what a rating is, and one way of fetching and saving one.
 
+import { useAuthStore } from '~/stores/auth'
 import { getRating, putRating, type RatingAggregate } from '~/utilities/reef'
 
 export const STAR_SCORE_LENGTH = 5
@@ -24,22 +25,122 @@ export const ratingKey = (rfcNumber: number): string => `rfc${rfcNumber}`
 export const userRFCRatingLabel = (rating: UserRFCRating): string =>
   rating === undefined ? 'Not rated yet' : `${rating} out of ${STAR_SCORE_LENGTH} stars`
 
-// Reef reports the caller's own rating as `your_rating`, null when they haven't rated the RFC.
-// The spec also notes that a credential is what *adds* the field, so an anonymous response omits
-// it rather than sending null; `??` collapses both of those to undefined, which is the one
-// "no rating" value the rest of this module deals in.
-const userRFCRatingFromAggregate = ({ your_rating }: RatingAggregate): UserRFCRating => your_rating ?? undefined
+// --- Cache ------------------------------------------------------------------------------
+//
+// The reader's own rating, remembered for the lifetime of the tab so that moving between RFCs and
+// coming back doesn't re-ask Reef for a number this tab already knows.
+//
+// sessionStorage rather than localStorage because the tab is the honest lifetime: within one tab
+// the only thing that can change this rating is saveUserRFCRating below, and it writes through, so
+// a hit needs no expiry to be trusted. A rating the same reader changes in another tab or on
+// another device is not picked up until this tab reloads — that bounded staleness is what the
+// per-tab lifetime buys, and it's why this isn't localStorage.
 
-// The caller's own rating of one RFC. Browser-only, like the rest of the Reef client, and it
-// only says anything for a signed-in caller — the bearer token is how Reef knows whose rating
-// to report, so an anonymous call can only ever come back with the aggregate.
-export const getUserRFCRating = async (rfcNumber: number, signal?: AbortSignal): Promise<UserRFCRating> =>
-  userRFCRatingFromAggregate(await getRating(ratingKey(rfcNumber), signal))
+const RATING_CACHE_PREFIX = 'red.reef.user-rating.'
+
+// Keyed by the OIDC subject as well as the RFC, because sessionStorage outlives a sign-out: two
+// readers using the same tab in turn must not be shown each other's ratings. Signed out there's
+// nothing to key by and nothing worth caching either, since an anonymous response carries no
+// rating of its own — so the caller falls through to Reef.
+const ratingCacheKey = (rfcNumber: number): string | undefined => {
+  const { user } = useAuthStore()
+  return user === undefined ? undefined : `${RATING_CACHE_PREFIX}${user.sub}.${ratingKey(rfcNumber)}`
+}
+
+// A hit is the wrapper being present, not the rating being set: `undefined` is a real cached
+// answer ("this reader hasn't rated this RFC") and worth a hit of its own, or every visit by a
+// non-rater would ask Reef again.
+type CachedUserRFCRating = { rating: UserRFCRating }
+
+const isCachedRatingValue = (value: unknown): value is number =>
+  typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= STAR_SCORE_LENGTH
+
+const readCachedUserRFCRating = (rfcNumber: number): CachedUserRFCRating | undefined => {
+  if (!import.meta.client) {
+    return undefined
+  }
+  try {
+    const key = ratingCacheKey(rfcNumber)
+    if (key === undefined) {
+      return undefined
+    }
+    const stored = window.sessionStorage.getItem(key)
+    if (stored === null) {
+      return undefined
+    }
+    const parsed: unknown = JSON.parse(stored)
+    // JSON has no undefined, so "not rated" is stored as null and read back as a hit.
+    if (parsed === null) {
+      return { rating: undefined }
+    }
+    if (isCachedRatingValue(parsed)) {
+      return { rating: parsed }
+    }
+    // Written by an older version of this code, or edited by hand. Discard it and ask Reef, which
+    // is the only thing that can restore a value we're able to trust.
+    window.sessionStorage.removeItem(key)
+    return undefined
+  } catch (error) {
+    // sessionStorage throws outright when browser storage is disabled, and JSON.parse throws on a
+    // truncated value. Either way the cache is unavailable, which is a miss rather than a failure.
+    console.warn('[ratings] unable to read the cached rating; asking Reef instead', error)
+    return undefined
+  }
+}
+
+const writeCachedUserRFCRating = (rfcNumber: number, rating: UserRFCRating): void => {
+  if (!import.meta.client) {
+    return
+  }
+  try {
+    const key = ratingCacheKey(rfcNumber)
+    if (key === undefined) {
+      return
+    }
+    window.sessionStorage.setItem(key, JSON.stringify(rating ?? null))
+  } catch (error) {
+    // Storage disabled, or the quota is full. Nothing to do about it: the next read is a miss and
+    // Reef answers as it did before this cache existed. Never rethrown: this runs after Reef has
+    // already accepted the rating, so a failure to remember it locally is not a failed save.
+    console.warn('[ratings] unable to cache the rating', error)
+  }
+}
+
+// --- Reads and writes -------------------------------------------------------------------
+
+// The caller's own rating of one RFC, from the tab's cache when it has been read or written
+// already. Browser-only, like the rest of the Reef client, and it only says anything for a
+// signed-in caller — the bearer token is how Reef knows whose rating to report, so an anonymous
+// call can only ever come back with the aggregate.
+export const getUserRFCRating = async (rfcNumber: number, signal?: AbortSignal): Promise<UserRFCRating> => {
+  const cached = readCachedUserRFCRating(rfcNumber)
+  if (cached !== undefined) {
+    return cached.rating
+  }
+
+  const { your_rating } = await getRating(ratingKey(rfcNumber), signal)
+  // Reef reports the caller's own rating as `your_rating`, null when they haven't rated the RFC.
+  // The spec also notes that a credential is what *adds* the field, so an anonymous response omits
+  // it rather than sending null; `??` collapses both of those to undefined, which is the one
+  // "no rating" value the rest of this module deals in.
+  const rating = your_rating ?? undefined
+  writeCachedUserRFCRating(rfcNumber, rating)
+  return rating
+}
 
 // Persist the caller's own rating. PUT is Reef's upsert for "my rating of this RFC", so this
 // covers both a first rating and a change of mind, and it needs a token — an anonymous caller has
 // no rating to write. Reef enforces the 1..STAR_SCORE_LENGTH bounds itself and answers a value
 // outside them with a 400. The updated aggregate comes back; callers showing precomputed numbers
 // can ignore it.
-export const saveUserRFCRating = (rfcNumber: number, rating: number, signal?: AbortSignal): Promise<RatingAggregate> =>
-  putRating(ratingKey(rfcNumber), { value: rating }, signal)
+export const saveUserRFCRating = async (
+  rfcNumber: number,
+  rating: number,
+  signal?: AbortSignal
+): Promise<RatingAggregate> => {
+  const aggregate = await putRating(ratingKey(rfcNumber), { value: rating }, signal)
+  // Only once Reef has accepted it. A PUT that 400s, or one aborted because the reader picked
+  // again, rejects before this line, so the tab never caches a rating Reef isn't holding.
+  writeCachedUserRFCRating(rfcNumber, rating)
+  return aggregate
+}
