@@ -9,7 +9,7 @@ on:
         description: 'Datatracker API Spec Repo Ref'
         required: true
         type: string
-        default: 'feat/rpc-api'
+        default: 'main'
       deploy:
         description: 'Deploy to K8S'
         default: 'Skip'
