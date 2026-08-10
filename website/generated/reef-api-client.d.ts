@@ -28,9 +28,17 @@ export interface paths {
       path?: never
       cookie?: never
     }
-    /** @description GET the public aggregate (anonymous); PUT the caller's rating (bearer). */
+    /**
+     * Read an RFC's rating
+     * @description Return the public average and count of ratings for one RFC. Open to anonymous callers. A credential adds nothing but `your_rating`, the caller's own 1-5 rating of this RFC, which is null if they have not rated it; for an anonymous caller it is always null.
+     *
+     *     The identifier is canonicalized, so `9110`, `rfc9110` and `RFC 9110` all address the same document.
+     */
     get: operations['ratings_retrieve']
-    /** @description GET the public aggregate (anonymous); PUT the caller's rating (bearer). */
+    /**
+     * Set the caller's rating of an RFC
+     * @description Record the authenticated caller's 1-5 rating of one RFC, replacing their previous rating of it if there is one. Requires a credential. Returns the same body as GET, so the response carries the recomputed average and count along with `your_rating` echoing the value just set.
+     */
     put: operations['ratings_update']
     post?: never
     delete?: never
@@ -165,6 +173,29 @@ export interface paths {
      *     drag-and-drop is one call that cannot half-apply.
      */
     put: operations['sets_order_update']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/stats/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * @description Rating, subscriber and set numbers per document.
+     *
+     *     Public and unpaginated: Red precomputes the whole series in one call at
+     *     build time, which is too many identifiers to name in a query string.
+     *     Filtering with doc is for one-off lookups.
+     */
+    get: operations['stats_list']
+    put?: never
     post?: never
     delete?: never
     options?: never
@@ -359,6 +390,15 @@ export interface components {
      * @enum {string}
      */
     DocumentSetVisibilityEnum: 'private' | 'public'
+    /** @description Public engagement numbers for one document. */
+    DocumentStats: {
+      doc: string
+      /** Format: double */
+      rating_average: number | null
+      rating_count: number
+      subscriber_count: number
+      set_count: number
+    }
     /**
      * @description * `new_rfc` - Any new RFC
      *     * `by_status` - New RFC by status
@@ -425,6 +465,7 @@ export interface components {
       /** Format: double */
       average: number | null
       count: number
+      your_rating: number | null
     }
     RatingWrite: {
       value: number
@@ -923,6 +964,30 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['DocumentSet']
+        }
+      }
+    }
+  }
+  stats_list: {
+    parameters: {
+      query?: {
+        /** @description Document identifier, repeatable. Omit to get every document that has any engagement at all. A named document is always returned, with zeros if it has none. */
+        doc?: string[]
+        /** @description Document set id. Returns a row per document the set holds, including members with no engagement. Public sets resolve for anyone; a private set resolves only for its owner, and 404s otherwise. Combines with doc as an intersection. */
+        set?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentStats'][]
         }
       }
     }

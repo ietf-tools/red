@@ -26,6 +26,11 @@
       </span>
     </Heading>
 
+    <RFCDocumentReefStats
+      v-if="featureFlags.oidc"
+      :rfc-number="rfcBucketHtmlDocument.rfc.number"
+      :reef-stats="rfcBucketHtmlDocument.reefStats" />
+
     <ul class="block print:text-center font-feature-settings-calt-off ml-2.5">
       <li
         v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"

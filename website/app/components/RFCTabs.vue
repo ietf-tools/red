@@ -358,7 +358,7 @@ const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfcBucketHt
 
 const datatrackerRFCUrl = computed(() => useDatatrackerRFCUrlBuilder(props.rfcBucketHtmlDocument.rfc.number))
 
-const errataSearchForThisRfc = useRfcEditorErrataSearchForRfcUrl(props.rfcBucketHtmlDocument.rfc.number)
+const errataSearchForThisRfc = computed(() => useRfcEditorErrataSearchForRfcUrl(props.rfcBucketHtmlDocument.rfc.number))
 
 const isMounted = ref(false)
 
@@ -662,7 +662,7 @@ const noScriptHtml = computed(() => {
       <dt class="font-bold mt-2">Document history</dt><dd class="text-sm"><a href="${datatrackerRFCUrl.value}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">View history of RFC ${rfc.number}</a></dd>
     </dl>
     <h2 class="text-lg font-bold mt-4">Errata</h2>
-    <p><a href="${htmlEscapeToText(errataSearchForThisRfc)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
+    <p><a href="${htmlEscapeToText(errataSearchForThisRfc.value)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
     </div>
   </noscript>`
 })

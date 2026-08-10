@@ -153,9 +153,11 @@ export const getPopularity = (signal?: AbortSignal): Promise<PopularEntry[]> =>
 
 // --- Ratings ----------------------------------------------------------------------------
 
-// Public aggregate rating for one RFC. Anonymous.
+// Aggregate rating for one RFC. The operation also lists `{}` in its security, so anonymous is
+// fine and the token is sent only to identify the caller — which is what lets a signed-in
+// reader be told their own rating rather than just the public average.
 export const getRating = (rfc: string, signal?: AbortSignal): Promise<RatingAggregate> =>
-  reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, { signal })
+  reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, { auth: 'optional', signal })
 
 // Set the caller's own rating for one RFC, returning the updated aggregate.
 export const putRating = (rfc: string, rating: RatingWrite, signal?: AbortSignal): Promise<RatingAggregate> =>
