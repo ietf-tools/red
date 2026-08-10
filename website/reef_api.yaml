@@ -27,7 +27,11 @@ paths:
   /api/reef/ratings/{rfc}/:
     get:
       operationId: ratings_retrieve
-      description: GET the public aggregate (anonymous); PUT the caller's rating (bearer).
+      description: |-
+        Return the public average and count of ratings for one RFC. Open to anonymous callers. A credential adds nothing but `your_rating`, the caller's own 1-5 rating of this RFC, which is null if they have not rated it; for an anonymous caller it is always null.
+
+        The identifier is canonicalized, so `9110`, `rfc9110` and `RFC 9110` all address the same document.
+      summary: Read an RFC's rating
       parameters:
         - in: path
           name: rfc
@@ -49,7 +53,11 @@ paths:
           description: ''
     put:
       operationId: ratings_update
-      description: GET the public aggregate (anonymous); PUT the caller's rating (bearer).
+      description: Record the authenticated caller's 1-5 rating of one RFC, replacing
+        their previous rating of it if there is one. Requires a credential. Returns
+        the same body as GET, so the response carries the recomputed average and count
+        along with `your_rating` echoing the value just set.
+      summary: Set the caller's rating of an RFC
       parameters:
         - in: path
           name: rfc
@@ -513,6 +521,48 @@ paths:
               schema:
                 $ref: '#/components/schemas/DocumentSet'
           description: ''
+  /api/reef/stats/:
+    get:
+      operationId: stats_list
+      description: |-
+        Rating, subscriber and set numbers per document.
+
+        Public and unpaginated: Red precomputes the whole series in one call at
+        build time, which is too many identifiers to name in a query string.
+        Filtering with doc is for one-off lookups.
+      parameters:
+        - in: query
+          name: doc
+          schema:
+            type: array
+            items:
+              type: string
+          description: Document identifier, repeatable. Omit to get every document that
+            has any engagement at all. A named document is always returned, with zeros
+            if it has none.
+        - in: query
+          name: set
+          schema:
+            type: integer
+          description: Document set id. Returns a row per document the set holds, including
+            members with no engagement. Public sets resolve for anyone; a private set
+            resolves only for its owner, and 404s otherwise. Combines with doc as an
+            intersection.
+      tags:
+        - stats
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentStats'
+          description: ''
   /api/reef/subscriptions/:
     get:
       operationId: subscriptions_list
@@ -913,6 +963,28 @@ components:
       description: |-
         * `private` - Private
         * `public` - Public
+    DocumentStats:
+      type: object
+      description: Public engagement numbers for one document.
+      properties:
+        doc:
+          type: string
+        rating_average:
+          type: number
+          format: double
+          nullable: true
+        rating_count:
+          type: integer
+        subscriber_count:
+          type: integer
+        set_count:
+          type: integer
+      required:
+        - doc
+        - rating_average
+        - rating_count
+        - set_count
+        - subscriber_count
     KindEnum:
       enum:
         - new_rfc
@@ -1050,10 +1122,14 @@ components:
           nullable: true
         count:
           type: integer
+        your_rating:
+          type: integer
+          nullable: true
       required:
         - average
         - count
         - rfc
+        - your_rating
     RatingWrite:
       type: object
       properties:
