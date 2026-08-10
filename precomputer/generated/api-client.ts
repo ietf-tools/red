@@ -139,6 +139,10 @@ export class ApiClient {
       return this.Fetch<PaginatedPersonList>('get', '/api/purple/persons/search/', { search })
     },
 
+    processRpcQueue: (body: RpcQueueDataRequest) => {
+      return this.Fetch<void>('post', '/api/purple/queue/process/', { body })
+    },
+
     rfcUpdate: (rfc_number: string, body: EditableRfcRequest) => {
       return this.Fetch<EditableRfc>('put', `/api/purple/rfc/${rfc_number}/`, {
         body
@@ -307,6 +311,8 @@ export type EditableRfcRequest = {
   std_level?: string | null
   subseries: string[]
   keywords?: unknown
+  updates?: number[]
+  obsoletes?: number[]
 }
 
 export type EmailPerson = {
@@ -483,7 +489,7 @@ export type NotifyRfcPublishedErrorResponse400 = NotifyRfcPublishedValidationErr
 
 export type NotifyRfcPublishedGroupErrorComponent = {
   attr: 'group'
-  code: 'does_not_exist' | 'invalid' | 'null'
+  code: 'does_not_exist' | 'invalid'
   detail: string
 }
 
@@ -613,6 +619,8 @@ export type PatchedEditableRfcRequest = {
   std_level?: string | null
   subseries?: string[]
   keywords?: unknown
+  updates?: number[]
+  obsoletes?: number[]
 }
 
 export type Person = {
@@ -624,6 +632,27 @@ export type Person = {
 }
 
 export type PersonsByEmailErrorResponse400 = ParseErrorResponse
+
+export type ProcessRpcQueueDataErrorComponent = {
+  attr: 'data'
+  code: 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type ProcessRpcQueueError = ProcessRpcQueueNonFieldErrorsErrorComponent | ProcessRpcQueueDataErrorComponent
+
+export type ProcessRpcQueueErrorResponse400 = ProcessRpcQueueValidationError | ParseErrorResponse
+
+export type ProcessRpcQueueNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type ProcessRpcQueueValidationError = {
+  type: ValidationErrorEnum
+  errors: ProcessRpcQueueError[]
+}
 
 export type PurpleRfcAuthorsListErrorResponse400 = ParseErrorResponse
 
@@ -702,6 +731,10 @@ export type PurpleRfcPartialUpdateError =
   | PurpleRfcPartialUpdateSubseriesErrorComponent
   | PurpleRfcPartialUpdateSubseriesINDEXErrorComponent
   | PurpleRfcPartialUpdateKeywordsErrorComponent
+  | PurpleRfcPartialUpdateUpdatesErrorComponent
+  | PurpleRfcPartialUpdateUpdatesINDEXErrorComponent
+  | PurpleRfcPartialUpdateObsoletesErrorComponent
+  | PurpleRfcPartialUpdateObsoletesINDEXErrorComponent
 
 export type PurpleRfcPartialUpdateErrorResponse400 = PurpleRfcPartialUpdateValidationError | ParseErrorResponse
 
@@ -714,6 +747,18 @@ export type PurpleRfcPartialUpdateKeywordsErrorComponent = {
 export type PurpleRfcPartialUpdateNonFieldErrorsErrorComponent = {
   attr: 'non_field_errors'
   code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcPartialUpdateObsoletesErrorComponent = {
+  attr: 'obsoletes'
+  code: 'not_a_list' | 'null'
+  detail: string
+}
+
+export type PurpleRfcPartialUpdateObsoletesINDEXErrorComponent = {
+  attr: 'obsoletes.INDEX'
+  code: 'invalid' | 'max_string_length' | 'null' | 'required'
   detail: string
 }
 
@@ -763,6 +808,18 @@ export type PurpleRfcPartialUpdateTitleErrorComponent = {
     | 'null_characters_not_allowed'
     | 'required'
     | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcPartialUpdateUpdatesErrorComponent = {
+  attr: 'updates'
+  code: 'not_a_list' | 'null'
+  detail: string
+}
+
+export type PurpleRfcPartialUpdateUpdatesINDEXErrorComponent = {
+  attr: 'updates.INDEX'
+  code: 'invalid' | 'max_string_length' | 'null' | 'required'
   detail: string
 }
 
@@ -844,6 +901,10 @@ export type PurpleRfcUpdateError =
   | PurpleRfcUpdateSubseriesErrorComponent
   | PurpleRfcUpdateSubseriesINDEXErrorComponent
   | PurpleRfcUpdateKeywordsErrorComponent
+  | PurpleRfcUpdateUpdatesErrorComponent
+  | PurpleRfcUpdateUpdatesINDEXErrorComponent
+  | PurpleRfcUpdateObsoletesErrorComponent
+  | PurpleRfcUpdateObsoletesINDEXErrorComponent
 
 export type PurpleRfcUpdateErrorResponse400 = PurpleRfcUpdateValidationError | ParseErrorResponse
 
@@ -856,6 +917,18 @@ export type PurpleRfcUpdateKeywordsErrorComponent = {
 export type PurpleRfcUpdateNonFieldErrorsErrorComponent = {
   attr: 'non_field_errors'
   code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PurpleRfcUpdateObsoletesErrorComponent = {
+  attr: 'obsoletes'
+  code: 'not_a_list' | 'null'
+  detail: string
+}
+
+export type PurpleRfcUpdateObsoletesINDEXErrorComponent = {
+  attr: 'obsoletes.INDEX'
+  code: 'invalid' | 'max_string_length' | 'null' | 'required'
   detail: string
 }
 
@@ -905,6 +978,18 @@ export type PurpleRfcUpdateTitleErrorComponent = {
     | 'null_characters_not_allowed'
     | 'required'
     | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type PurpleRfcUpdateUpdatesErrorComponent = {
+  attr: 'updates'
+  code: 'not_a_list' | 'null'
+  detail: string
+}
+
+export type PurpleRfcUpdateUpdatesINDEXErrorComponent = {
+  attr: 'updates.INDEX'
+  code: 'invalid' | 'max_string_length' | 'null' | 'required'
   detail: string
 }
 
@@ -1105,7 +1190,7 @@ export type RfcPubRequest = {
   rfc_number: number
   title: string
   authors: RfcAuthorRequest[]
-  group?: string
+  group?: string | null
   stream: string
   abstract?: string
   pages?: number | null
@@ -1125,6 +1210,10 @@ export type RfcStatus = {
 export type RfcWithAuthors = {
   rfc_number?: number | null
   authors: AuthorPerson[]
+}
+
+export type RpcQueueDataRequest = {
+  data: unknown
 }
 
 export type SchemaRetrieveErrorResponse400 = ParseErrorResponse
