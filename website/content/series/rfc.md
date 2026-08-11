@@ -14,13 +14,13 @@ Once an RFC is published, its contents do not change. If a specification needs t
 
 Anyone is welcome to [participate in the creation of RFCs](https://www.ietf.org/participate/get-started/). You can join a [working group](https://datatracker.ietf.org/wg/) in your area of interest by subscribing to the mailing list, participating in discussions, and contributing to the Internet-Drafts that may one day be published as an RFC.
 
-# How to Read an RFC
+## How to Read an RFC
 
 RFCs use terminology and conventions that may not be familiar to every reader. Before relying on an RFC, it is useful to look at its metadata as well as the document itself. In particular, you should check its status, publication stream, whether the RFC has been obsoleted or updated, and whether any errata have been reported.
 
 The following sections explain some of the most important information you will encounter when reading an RFC.
 
-## RFC Streams
+### RFC Streams
 
 An RFC's stream identifies the process through which the document was produced. There are five RFC streams:
 
@@ -32,7 +32,7 @@ An RFC's stream identifies the process through which the document was produced. 
 
 RFCs that were published before any stream existed are labelled "Legacy Stream" in place of a stream name.
 
-## RFC Status
+### RFC Status
 
 An RFC's status tells you what kind of document it is. You should not assume that something is an Internet Standard simply because it has been published as an RFC.
 
@@ -52,7 +52,7 @@ Other RFC Statuses are:
 - **Best Current Practice** (BCP). BCPs have a dual role: one is to document IETF processes as agreed by the IETF community, and the other is explained in [RFC 2026, Section 5](/info/rfc2026/#section-5) as: "since the Internet itself is composed of networks operated by a great variety of organizations, with diverse goals and rules, good user service requires that the operators and administrators of the Internet follow some common guidelines for policies and operations."
 - **Unknown**. RFCs that were published before Statuses were introduced (before RFC 1128\) are mostly considered to have an Unknown Status, with a handful having had Statuses retroactively applied.
 
-## RFC Subseries: STD and BCP
+### RFC Subseries: STD and BCP
 
 Some RFCs are also assigned identifiers in an RFC subseries. There are two current subseries: **STD** (Internet Standard) and **BCP** (Best Current Practice). Not every RFC belongs to a subseries.
 
@@ -63,7 +63,7 @@ A subseries identifier provides a stable way to identify an Internet Standard or
 
 This means that an STD or BCP number and an RFC number serve different purposes: an RFC number permanently identifies a particular published document, while an STD or BCP identifier can continue to identify a standard or practice as its defining RFCs change.
 
-## RFC Relationships and Changes
+### RFC Relationships and Changes
 
 RFCs form a large body of related documents, and specifications often develop over time. Because the text of a published RFC never changes, revisions and replacements are published as new RFCs.
 
@@ -76,7 +76,7 @@ You may see the following relationships:
 
 When you are trying to determine the current specification for a protocol or technology, checking these relationships is an important part of reading an RFC.
 
-## Errata
+### Errata
 
 Errors discovered after an RFC is published are handled through the RFC Series errata process rather than by changing the published RFC.
 
@@ -86,7 +86,7 @@ Errata are not incorporated into the TXT, PDF, or XML versions of an RFC. They a
 
 If you are using an RFC to implement a protocol or need precise technical information, it is a good idea to check for verified errata.
 
-## Keywords for Requirement Levels
+### Keywords for Requirement Levels
 
 Many RFCs use certain capitalized words to indicate requirement levels. When used as defined by [RFC 2119](/info/rfc2119/) and [RFC 8174](/info/rfc8174/), these words have specific meanings. You will see boilerplate in the text of the RFC when these apply:
 
@@ -96,7 +96,7 @@ Many RFCs use certain capitalized words to indicate requirement levels. When use
 - **SHOULD NOT**: This phrase, or the phrase "**NOT RECOMMENDED**" mean that there may exist valid reasons in particular circumstances when the particular behavior is acceptable or even useful, but the full implications should be understood and the case carefully weighed before implementing any behavior described with this label.
 - **MAY**: This word, or the adjective "**OPTIONAL**", mean that an item is truly optional.
 
-# The History of RFCs
+## The History of RFCs
 
 RFCs have documented the development of Internet technology since 1969. Because published RFCs are never changed or removed from the series, the collection also provides a permanent historical record of the development of the Internet.
 
