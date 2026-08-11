@@ -110,10 +110,6 @@ export const useMenuData = (mode: Mode) => {
             href: markdownPathBuilder('/series/rfc-use/')
           },
           {
-            label: 'Tips for reading RFCs',
-            href: markdownPathBuilder('/series/rfc-tips/')
-          },
-          {
             label: 'Browse all RFCs',
             href: '/rfc-index/' satisfies ValidHrefs
           },
