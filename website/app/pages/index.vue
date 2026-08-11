@@ -36,7 +36,6 @@
           class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4"
           :aria-describedby="LEARN_ABOUT_RFCS_HEADING_DOM_ID">
           <li><MarkdownCard id="/series/rfc/" class="h-full" /></li>
-          <li><MarkdownCard id="/series/rfc-tips/" class="h-full" /></li>
           <li><MarkdownCard id="/series/rfc-errata/" class="h-full" /></li>
           <li><MarkdownCard id="/about/rfc-editor/" class="h-full" /></li>
         </ul>
