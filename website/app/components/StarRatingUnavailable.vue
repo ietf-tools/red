@@ -5,7 +5,7 @@
       :key="item"
       :class="[
         `inline-block`,
-        'blur-[2px]',
+        'blur-[1px]',
         `text-white dark:text-black`,
         `transition-colors duration-150`,
         `[--star-stroke-color:var(--color-gray-600)]`,

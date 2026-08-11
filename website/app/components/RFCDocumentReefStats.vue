@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex mt-2">
     <div class="flex flex-row pl-2 gap-3 text-sm">
       <StarRating
         v-if="props.reefStats?.ratingAggregate?.average !== undefined"
