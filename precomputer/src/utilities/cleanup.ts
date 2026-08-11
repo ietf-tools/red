@@ -77,7 +77,7 @@ export const cleanupRedBucket = async (uploadedKeys: string[]): Promise<boolean>
           console.error(`[Cleanup ${keyToPurge}] threw exception: ${String(err)}`)
           throw err
         }
-        return false
+        return true
       })
 
     if (purgeErrors.length > 0) {
