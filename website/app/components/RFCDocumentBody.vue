@@ -40,10 +40,10 @@
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
-    <RFCDocumentReefStats
+    <RFCDocumentReef
       v-if="featureFlags.oidc"
       :rfc-number="rfcBucketHtmlDocument.rfc.number"
-      :reef-stats="rfcBucketHtmlDocument.reefStats" />
+      :reef-stats="{ ratingAggregate: { average: 3.2, count: 9299499 }, subscriberCount: 99999, setCount: 99999 }" />
 
     <RFCDocumentSuperseded
       :data="obsoleted_by"

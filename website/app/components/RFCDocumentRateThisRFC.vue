@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="border-r-1 border-r-gray-300 pr-2">
     <DialogRoot>
       <!-- The trigger doubles as the readout, so a reader who has already rated sees their own score
          without opening anything. That leaves the button named after a value, so hidden text adds
          the action; DialogTrigger already announces the dialog itself via aria-haspopup. -->
-      <DialogTrigger :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'cursor-pointer underline']">
+      <DialogTrigger
+        :class="['cursor-pointer', 'px-3 py-1 rounded', 'text-blue-900 bg-sky-100 border-1 border-blue-500 font-bold']">
         {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRatingLabel(userRFCRating)}` }}
         <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>
       </DialogTrigger>
@@ -84,8 +85,16 @@
         </DialogContent>
       </DialogPortal>
     </DialogRoot>
-    <div v-if="props.reefStats?.ratingAggregate">
-      <p>{{ props.reefStats.ratingAggregate.count }} ratings (average {{ props.reefStats.ratingAggregate.average }})</p>
+    <div v-if="props.reefStats?.ratingAggregate" class="mt-1">
+      <p>
+        <template v-if="props.reefStats.ratingAggregate.count">
+          {{ formatNumber(props.reefStats.ratingAggregate.count, 0) }} ratings
+        </template>
+        <template v-if="props.reefStats.ratingAggregate.average">
+          (avg.
+          {{ formatNumber(props.reefStats.ratingAggregate.average, 1) }})
+        </template>
+      </p>
     </div>
   </div>
 </template>
@@ -111,7 +120,6 @@ import {
 import { STAR_SCORE_LENGTH, userRFCRatingLabel } from '~/utilities/ratings'
 import { oidcLogin } from '~/utilities/oidc'
 import NewWindowIcon from './Graphics/NewWindowIcon.vue'
-import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
@@ -122,6 +130,14 @@ type Props = {
 const props = defineProps<Props>()
 
 const userRFCRating = defineModel<number | undefined>()
+
+const formatNumber = (val: number, decimalPlaces: number) => {
+  return new Intl.NumberFormat('en-US', {
+    notation: 'compact',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: decimalPlaces
+  }).format(val)
+}
 
 // Reef needs a bearer token to know whose rating to store, so an anonymous pick can only fail with
 // a 401. Ask for a sign-in instead of letting the stars look interactive and then silently lose it.

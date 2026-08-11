@@ -10,7 +10,7 @@
           `text-gray-200 data-[state=active]:text-yellow-400 dark:text-gray-700 dark:data-[state=active]:text-yellow-500`,
           `transition-colors duration-150`,
           `[--star-stroke-color:var(--color-gray-600)] data-[state=active]:[--star-stroke-color:var(--color-yellow-700)]`,
-          `[--star-stroke-length:calc(var(--spacing)*0.5)] data-[state=active]:[--star-stroke-length:calc(var(--spacing)*0.8)]`,
+          `[--star-stroke-length:calc(var(--spacing)*0.25)] data-[state=active]:[--star-stroke-length:calc(var(--spacing)*0.5)]`,
           `focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-950`
         ]">
         <GraphicsStarFilled

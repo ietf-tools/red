@@ -1,6 +1,6 @@
 <template>
   <div class="flex mt-2">
-    <div class="flex flex-row pl-2 gap-3 text-sm">
+    <div class="flex flex-row items-center pl-2 gap-3 text-sm">
       <StarRating
         v-if="props.reefStats?.ratingAggregate?.average !== undefined"
         :length="STAR_SCORE_LENGTH"
@@ -12,6 +12,8 @@
         :reef-stats="props.reefStats"
         :errata-url="errataForThisRfc"
         v-model="userRFCRating" />
+      <RFCDocumentSubscribe :reef-stats="props.reefStats" />
+      <RFCDocumentSets :reef-stats="props.reefStats" />
     </div>
   </div>
 </template>
