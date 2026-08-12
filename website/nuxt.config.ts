@@ -115,6 +115,7 @@ export default defineNuxtConfig({
       // oidc-spa only consumes oidcIssuerUri (it auto-discovers the other endpoints via
       // the .well-known document); the remaining URLs are stored for reference / other
       // consumers (e.g. a future worker or Nitro proxy). All overridable via NUXT_PUBLIC_OIDC_* env vars.
+      oidcRegister: 'https://account.ietf.org/app/register',
       oidcIssuerUri: 'https://account.ietf.org/application/o/rfc-editor/', // NUXT_PUBLIC_OIDC_ISSUER_URI
       oidcClientId: 'xkIC1bO4M3FaEoUrMyEQhMDvv46zAhba0XKYS64L', // NUXT_PUBLIC_OIDC_CLIENT_ID
       oidcScopes: 'openid profile email offline_access', // NUXT_PUBLIC_OIDC_SCOPES (space-separated) — offline_access = refresh token

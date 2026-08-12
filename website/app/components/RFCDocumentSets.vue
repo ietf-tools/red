@@ -15,53 +15,37 @@
           <span :class="COVER_LINK_INNER_STYLE_CLASS"> Add to set </span>
         </DialogTrigger>
         <DialogPortal>
-          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-30" />
+          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
           <DialogContent
             :class="[
-              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] z-[100]',
+              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] z-105',
               'focus:outline-none rounded-md shadow-3xl',
               'bg-white dark:bg-gray-800',
               'px-4 py-3'
             ]">
-            <DialogTitle class="text-lg font-semibold">Your sets</DialogTitle>
+            <DialogTitle class="text-lg font-semibold text-center mb-4">
+              <template v-if="!isAuthenticated">You need an account to</template>
+              <template v-else>Your sets</template>
+            </DialogTitle>
 
-            <template v-if="isAuthenticated">
-              <DialogDescription class="text-sm"> ... </DialogDescription>
-
-              <div class="flex justify-end pb-2">
-                <DialogClose
-                  :class="[
-                    'px-3 py-1 rounded-md',
-                    'text-white bg-blue-600 dark:bg-blue-900',
-                    'border border-gray-400',
-                    'cursor-pointer'
-                  ]">
-                  Done
-                </DialogClose>
-              </div>
-            </template>
-
-            <template v-else>
-              <DialogDescription class="text-sm py-3">
-                <p>
-                  Sign in
-                  <br />
-
-                  <button
-                    v-if="!isAuthenticated"
-                    type="button"
+            <DialogDescription class="text-sm py-3">
+              <template v-if="isAuthenticated">
+                <div class="flex justify-end pb-2">
+                  <DialogClose
                     :class="[
-                      'my-3 px-3 py-1 rounded-md',
+                      'px-3 py-1 rounded-md',
                       'text-white bg-blue-600 dark:bg-blue-900',
-                      'border',
+                      'border border-gray-400',
                       'cursor-pointer'
-                    ]"
-                    @click="oidcLogin">
-                    Login
-                  </button>
-                </p>
-              </DialogDescription>
-            </template>
+                    ]">
+                    Done
+                  </DialogClose>
+                </div>
+              </template>
+              <template v-else>
+                <LoginModalFeatureWall />
+              </template>
+            </DialogDescription>
 
             <DialogClose class="absolute top-2 right-2 px-2 py-2 cursor-pointer" aria-label="Close">
               <GraphicsClose />

@@ -135,6 +135,11 @@ export const useRfcEditorQueueClustersUrl = () => {
 export const useIadReportsPathBuilder = (IADPath: string) => {
   return `${useIadUrlOrigin()}${IADPath}` as const
 }
+export const useOidcRegisterUrl = () => {
+  const runtimeConfig = useRuntimeConfig()
+  return runtimeConfig.public.oidcRegister
+}
+
 /**
  * this assumes that a PDF exists. It doesn't check in advance.
  */

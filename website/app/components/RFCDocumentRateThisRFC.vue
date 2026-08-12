@@ -15,74 +15,53 @@
         <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>
       </DialogTrigger>
       <DialogPortal>
-        <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-30" />
+        <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
         <DialogContent
           :class="[
-            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] z-[100]',
+            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] z-105',
             'focus:outline-none rounded-md shadow-3xl',
             'bg-white dark:bg-gray-800',
             'px-4 py-3'
           ]">
-          <DialogTitle class="text-lg font-semibold">Your rating</DialogTitle>
+          <DialogTitle class="text-lg font-semibold text-center mb-4">
+            <template v-if="!isAuthenticated">You need an account to</template>
+            <template v-else>Your rating</template>
+          </DialogTitle>
 
-          <template v-if="isAuthenticated">
-            <DialogDescription class="text-sm">
+          <DialogDescription class="text-sm py-3">
+            <template v-if="isAuthenticated">
               Your own rating of this RFC. It's saved as soon as you choose, and counts towards the average shown for
               this RFC. The average is not updated live.
-            </DialogDescription>
 
-            <div class="flex flex-col items-center justify-center gap-1 py-3">
-              <div class="bg-gray-100 dark:bg-blue-950 border border-gray-400 rounded-md px-4 py-2">
-                <StarRating
-                  :length="STAR_SCORE_LENGTH"
-                  v-model="userRFCRating"
-                  :aria-label="`Your rating out of ${STAR_SCORE_LENGTH} stars`" />
-                <!-- Announces the change, since picking a star saves without any further confirmation. -->
-                <p class="text-sm" aria-live="polite" aria-atomic="true">
-                  {{ userRFCRatingLabel(userRFCRating) }}
-                </p>
+              <div class="flex flex-col items-center justify-center gap-1 py-3">
+                <div class="bg-gray-100 dark:bg-blue-950 border border-gray-400 rounded-md px-4 py-2">
+                  <StarRating
+                    :length="STAR_SCORE_LENGTH"
+                    v-model="userRFCRating"
+                    :aria-label="`Your rating out of ${STAR_SCORE_LENGTH} stars`" />
+                  <!-- Announces the change, since picking a star saves without any further confirmation. -->
+                  <p class="text-sm" aria-live="polite" aria-atomic="true">
+                    {{ userRFCRatingLabel(userRFCRating) }}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="flex justify-end pb-2">
-              <DialogClose
-                :class="[
-                  'px-3 py-1 rounded-md',
-                  'text-white bg-blue-600 dark:bg-blue-900',
-                  'border border-gray-400',
-                  'cursor-pointer'
-                ]">
-                Done
-              </DialogClose>
-            </div>
-          </template>
-
-          <template v-else>
-            <DialogDescription class="text-sm py-3">
-              <p>
-                Ratings are saved to your account, so you'll need to sign in to rate this RFC. Your rating contributes
-                toward an average.
-                <br />
-
-                <button
-                  v-if="!isAuthenticated"
-                  type="button"
+              <div class="flex justify-end pb-2">
+                <DialogClose
                   :class="[
-                    'my-3 px-3 py-1 rounded-md',
+                    'px-3 py-1 rounded-md',
                     'text-white bg-blue-600 dark:bg-blue-900',
-                    'border',
+                    'border border-gray-400',
                     'cursor-pointer'
-                  ]"
-                  @click="oidcLogin">
-                  Login
-                </button>
-              </p>
+                  ]">
+                  Done
+                </DialogClose>
+              </div>
+            </template>
 
-              <p class="mt-2">
-                If you have technical feedback, please also consider
-                <Anchor :href="props.errataUrl">reporting a new erratum <NewWindowIcon /></Anchor>.
-              </p>
-            </DialogDescription>
-          </template>
+            <template v-else>
+              <LoginModalFeatureWall />
+            </template>
+          </DialogDescription>
 
           <DialogClose class="absolute top-2 right-2 px-2 py-2 cursor-pointer" aria-label="Close">
             <GraphicsClose />

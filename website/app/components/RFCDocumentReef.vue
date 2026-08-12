@@ -1,9 +1,8 @@
 <template>
   <div class="flex mt-2">
     <ul class="flex md:flex-row items-start pl-2 text-sm">
-      <li class="flex flex-col md:flex-row">
+      <li class="flex flex-col md:flex-row pr-2">
         <RFCDocumentCommunityRating :reef-stats="props.reefStats" />
-
         <RFCDocumentRateThisRFC
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
