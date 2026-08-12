@@ -1,26 +1,28 @@
 <template>
   <div class="flex mt-2">
-    <div class="flex flex-row items-center pl-2 gap-3 text-sm">
-      <StarRating
-        v-if="props.reefStats?.ratingAggregate?.average !== undefined"
-        :length="STAR_SCORE_LENGTH"
-        disabled
-        v-model="props.reefStats.ratingAggregate.average" />
-      <StarRatingUnavailable v-else :length="STAR_SCORE_LENGTH" />
-      <RFCDocumentRateThisRFC
-        :rfc-number="props.rfcNumber"
-        :reef-stats="props.reefStats"
-        :errata-url="errataForThisRfc"
-        v-model="userRFCRating" />
-      <RFCDocumentSubscribe :reef-stats="props.reefStats" />
-      <RFCDocumentSets :reef-stats="props.reefStats" />
-    </div>
+    <ul class="flex flex-row items-start pl-2 text-sm">
+      <li>
+        <RFCDocumentCommunityRating :reef-stats="props.reefStats" />
+      </li>
+      <li class="pl-2 pr-2">
+        <RFCDocumentRateThisRFC
+          :rfc-number="props.rfcNumber"
+          :reef-stats="props.reefStats"
+          :errata-url="errataForThisRfc"
+          v-model="userRFCRating" />
+      </li>
+      <li class="pl-2 pr-2 border-l-1 border-r-1 border-gray-300 dark:border-gray-700">
+        <RFCDocumentSubscribe :reef-stats="props.reefStats" />
+      </li>
+      <li class="pl-2">
+        <RFCDocumentSets :reef-stats="props.reefStats" />
+      </li>
+    </ul>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators'
-import StarRating from './StarRating.vue'
 import { getUserRFCRating, saveUserRFCRating, STAR_SCORE_LENGTH, type UserRFCRating } from '~/utilities/ratings'
 import { useRfcEditorErrataSearchForRfcUrl } from '~/utilities/url.js'
 

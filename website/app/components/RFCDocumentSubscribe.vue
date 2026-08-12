@@ -1,72 +1,75 @@
 <template>
-  <div class="border-r-1 border-r-gray-300 pr-2">
-    <DialogRoot>
-      <DialogTrigger
-        :class="[
-          'cursor-pointer',
-          'pl-2 pr-3 py-1 rounded',
-          'flex flex-row gap-2 items-center',
-          'text-blue-900 bg-sky-100 border-1 border-blue-500 font-bold'
-        ]">
-        <GraphicsAddCircle class="w-[20px] h-[20px]" /> Subscribe
-      </DialogTrigger>
-      <DialogPortal>
-        <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-30" />
-        <DialogContent
+  <div class="relative flex flex-row items-center gap-2 px-2 py-1">
+    <GraphicsAlert :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+    <div class="flex flex-col">
+      <DialogRoot>
+        <DialogTrigger
           :class="[
-            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] z-[100]',
-            'focus:outline-none rounded-md shadow-3xl',
-            'bg-white dark:bg-gray-800',
-            'px-4 py-3'
+            'cursor-pointer',
+            'rounded',
+            'text-left',
+            'font-bold',
+            'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
+            COVER_LINK_STYLE_CLASS
           ]">
-          <DialogTitle class="text-lg font-semibold">Your subscriptions</DialogTitle>
+          <span :class="COVER_LINK_INNER_STYLE_CLASS"> Subscribe </span></DialogTrigger
+        >
+        <DialogPortal>
+          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-30" />
+          <DialogContent
+            :class="[
+              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] z-[100]',
+              'focus:outline-none rounded-md shadow-3xl',
+              'bg-white dark:bg-gray-800',
+              'px-4 py-3'
+            ]">
+            <DialogTitle class="text-lg font-semibold">Your subscriptions</DialogTitle>
 
-          <template v-if="isAuthenticated">
-            <DialogDescription class="text-sm"> ... </DialogDescription>
+            <template v-if="isAuthenticated">
+              <DialogDescription class="text-sm"> ... </DialogDescription>
 
-            <div class="flex justify-end pb-2">
-              <DialogClose
-                :class="[
-                  'px-3 py-1 rounded-md',
-                  'text-white bg-blue-600 dark:bg-blue-900',
-                  'border border-gray-400',
-                  'cursor-pointer'
-                ]">
-                Done
-              </DialogClose>
-            </div>
-          </template>
-
-          <template v-else>
-            <DialogDescription class="text-sm py-3">
-              <p>
-                Sign in
-                <br />
-
-                <button
-                  v-if="!isAuthenticated"
-                  type="button"
+              <div class="flex justify-end pb-2">
+                <DialogClose
                   :class="[
-                    'my-3 px-3 py-1 rounded-md',
+                    'px-3 py-1 rounded-md',
                     'text-white bg-blue-600 dark:bg-blue-900',
-                    'border',
+                    'border border-gray-400',
                     'cursor-pointer'
-                  ]"
-                  @click="oidcLogin">
-                  Login
-                </button>
-              </p>
-            </DialogDescription>
-          </template>
+                  ]">
+                  Done
+                </DialogClose>
+              </div>
+            </template>
 
-          <DialogClose class="absolute top-2 right-2 px-2 py-2 cursor-pointer" aria-label="Close">
-            <GraphicsClose />
-          </DialogClose>
-        </DialogContent>
-      </DialogPortal>
-    </DialogRoot>
-    <div v-if="props.reefStats?.subscriberCount" class="mt-1">
-      <p>
+            <template v-else>
+              <DialogDescription class="text-sm py-3">
+                <p>
+                  Sign in
+                  <br />
+
+                  <button
+                    v-if="!isAuthenticated"
+                    type="button"
+                    :class="[
+                      'my-3 px-3 py-1 rounded-md',
+                      'text-white bg-blue-600 dark:bg-blue-900',
+                      'border',
+                      'cursor-pointer'
+                    ]"
+                    @click="oidcLogin">
+                    Login
+                  </button>
+                </p>
+              </DialogDescription>
+            </template>
+
+            <DialogClose class="absolute top-2 right-2 px-2 py-2 cursor-pointer" aria-label="Close">
+              <GraphicsClose />
+            </DialogClose>
+          </DialogContent>
+        </DialogPortal>
+      </DialogRoot>
+      <p v-if="props.reefStats?.subscriberCount" :class="['text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         {{ formatNumber(props.reefStats.subscriberCount, 0) }}
         subscribed
       </p>
@@ -89,6 +92,7 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import { oidcLogin } from '~/utilities/oidc'
+import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/ratings'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {

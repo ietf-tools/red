@@ -1,12 +1,17 @@
 <template>
-  <div class="border-r-1 border-r-gray-300 pr-2">
+  <div>
     <DialogRoot>
       <!-- The trigger doubles as the readout, so a reader who has already rated sees their own score
          without opening anything. That leaves the button named after a value, so hidden text adds
          the action; DialogTrigger already announces the dialog itself via aria-haspopup. -->
       <DialogTrigger
-        :class="['cursor-pointer', 'px-3 py-1 rounded', 'text-blue-900 bg-sky-100 border-1 border-blue-500 font-bold']">
-        {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRatingLabel(userRFCRating)}` }}
+        :class="[
+          'cursor-pointer',
+          'px-3 py-1 rounded',
+          'text-blue-900 dark:text-blue-100 font-bold',
+          'hover:bg-sky-100 dark:hover:bg-sky-950 focus:bg-sky-100 border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600'
+        ]">
+        {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRating}` }}
         <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>
       </DialogTrigger>
       <DialogPortal>
@@ -85,17 +90,6 @@
         </DialogContent>
       </DialogPortal>
     </DialogRoot>
-    <div v-if="props.reefStats?.ratingAggregate" class="mt-1">
-      <p>
-        <template v-if="props.reefStats.ratingAggregate.count">
-          {{ formatNumber(props.reefStats.ratingAggregate.count, 0) }} ratings
-        </template>
-        <template v-if="props.reefStats.ratingAggregate.average">
-          (avg.
-          {{ formatNumber(props.reefStats.ratingAggregate.average, 1) }})
-        </template>
-      </p>
-    </div>
   </div>
 </template>
 

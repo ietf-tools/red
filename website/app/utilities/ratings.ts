@@ -9,6 +9,36 @@ import { getRating, putRating, type RatingAggregate } from '~/utilities/reef'
 
 export const STAR_SCORE_LENGTH = 5
 
+export const COVER_LINK_STYLE_CLASS = `${
+  // the card background colour layer
+  "before:absolute before:content-[''] before:inset-0 before:rounded"
+} ${
+  // card background layer should be below the slots z-index
+  'before:z-0'
+} ${
+  // the card cover link itself (increases clickable area of the link)
+  "after:absolute after:content-[''] after:inset-0"
+} ${
+  // card cover link should be above the card background colour layer, so 40 is
+  // an arbitrary choice.
+  //
+  // Generally slots content should be between these layers, so that means
+  // z-index 1-39.
+  //
+  // however sometimes slot content intentionally rises above (eg RFCCard usage
+  // of Card has Subseries links see RFC2119) and 'Show Abstract' buttons which
+  // should be stacked above 40.
+  'after:z-40'
+} after:transition-all ${
+  // card tint when focus/hover
+  `hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-100 dark:focus:text-blue-100 hover:before:bg-sky-100 focus:before:bg-blue-25 dark:hover:before:bg-blue-900 dark:focus:before:bg-blue-900`
+} ${
+  // Link border
+  `after:border-1 after:border-white dark:after:border-black after:rounded hover:after:border-blue-800 focus:after:outline-2 focus:after:outline-black`
+}`
+
+export const COVER_LINK_INNER_STYLE_CLASS = `relative z-1`
+
 // A rating is a whole number of stars, 1..STAR_SCORE_LENGTH — see RatingWrite.value's minimum
 // and maximum in reef_api.yaml. `undefined` means the user hasn't rated this RFC, which is a
 // different thing from a zero rating: Reef has no such value. It also matches StarRating's

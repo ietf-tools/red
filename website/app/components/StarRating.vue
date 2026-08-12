@@ -1,12 +1,13 @@
 <template>
-  <RatingRoot v-slot="{ items }" v-model="rating">
+  <RatingRoot v-slot="{ items }" v-model="rating" :disabled="props.disabled">
     <RatingItem v-for="item in items" :key="item" v-slot="{ steps }" :item="item">
       <RatingItemIndicator
         v-for="step in steps"
         :key="step"
         :step="step"
         :class="[
-          `overflow-hidden rounded cursor-pointer`,
+          `overflow-hidden rounded`,
+          !props.disabled && `cursor-pointer`,
           `text-gray-200 data-[state=active]:text-yellow-400 dark:text-gray-700 dark:data-[state=active]:text-yellow-500`,
           `transition-colors duration-150`,
           `[--star-stroke-color:var(--color-gray-600)] data-[state=active]:[--star-stroke-color:var(--color-yellow-700)]`,
@@ -24,6 +25,12 @@
 
 <script setup lang="ts">
 import { RatingRoot, RatingItem, RatingItemIndicator } from 'reka-ui'
+
+type Props = {
+  disabled?: boolean
+}
+
+const props = defineProps<Props>()
 
 const rating = defineModel<number>()
 </script>
