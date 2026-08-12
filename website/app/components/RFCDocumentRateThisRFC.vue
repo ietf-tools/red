@@ -7,8 +7,8 @@
       <DialogTrigger
         :class="[
           'cursor-pointer',
-          'px-3 py-1 rounded',
-          'text-blue-900 dark:text-blue-100 font-bold',
+          'px-3 py-0.5 rounded',
+          'text-blue-900 dark:text-blue-100 font-bold hover:text-blue-400 focus:text-blue-400',
           'hover:bg-sky-100 dark:hover:bg-sky-950 focus:bg-sky-100 border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600'
         ]">
         {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRating}` }}

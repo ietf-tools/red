@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-row items-center gap-2 px-2 py-1">
+  <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
     <GraphicsAlert :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
     <div class="flex flex-col">
       <DialogRoot>
@@ -7,7 +7,7 @@
           :class="[
             'cursor-pointer',
             'rounded',
-            'text-left',
+            'text-center md:text-left',
             'font-bold',
             'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
             COVER_LINK_STYLE_CLASS
@@ -69,7 +69,7 @@
           </DialogContent>
         </DialogPortal>
       </DialogRoot>
-      <p v-if="props.reefStats?.subscriberCount" :class="['text-xs', COVER_LINK_INNER_STYLE_CLASS]">
+      <p v-if="props.reefStats?.subscriberCount" :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         {{ formatNumber(props.reefStats.subscriberCount, 0) }}
         subscribed
       </p>
