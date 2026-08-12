@@ -18,7 +18,7 @@ Before a document can be approved for publication, it goes through additional st
 
 The exact path varies depending on the document and the issues that arise during review. Drafts may be substantially revised, returned for additional work, or ultimately not published.
 
-Reefer to this more detailed [overview of the IETF standards process](https://www.ietf.org/process/) for more information.
+Refer to this more detailed [overview of the IETF standards process](https://www.ietf.org/process/) for more information.
 
 ### Interested in participating?
 
