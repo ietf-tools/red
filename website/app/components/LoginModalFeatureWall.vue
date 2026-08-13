@@ -13,7 +13,7 @@
         <p class="text-sm text-center text-gray-800">Get notified when there's news about a published RFC</p>
       </li>
       <li class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2">
-        <GraphicsAddCircle class="inline-block w-[24px] h-[24px]" />
+        <GraphicsStackAddRegular class="inline-block w-[24px] h-[24px]" />
         <Heading level="3" style-level="5" class="text-center"> Create RFC sets</Heading>
         <p class="text-sm text-center text-gray-800">Organise the RFCs most useful to you and your projects</p>
       </li>
