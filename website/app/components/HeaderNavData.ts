@@ -134,7 +134,7 @@ export const useMenuData = (mode: Mode) => {
         label: 'For Authors',
         children: [
           {
-            label: 'How to write an RFC',
+            label: 'How RFCs are created',
             href: markdownPathBuilder('/authors/rfc-how-to/')
           },
           {
