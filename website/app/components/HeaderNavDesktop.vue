@@ -206,12 +206,17 @@
                 <Anchor
                   v-if="level0.href"
                   :href="level0.href"
-                  :class="[MENU_ITEM_CLASS, 'mb-[1px]']"
+                  :class="[MENU_ITEM_CLASS, 'mb-[1px]', level0.highlightLink && 'font-bold underline']"
                   @click="level0.click">
                   <span>
                     <HeaderNavIcon :icon="level0.icon" />
                     {{ level0.label }}
-                    <GraphicsNewWindowIcon v-if="!isInternalLink(level0.href)" class="text-lg absolute ml-1 -mt-1" />
+                    <GraphicsNewWindowIcon
+                      v-if="
+                        (level0.hideNewWindowIcon === false || level0.hideNewWindowIcon === undefined) &&
+                        !isInternalLink(level0.href)
+                      "
+                      class="text-lg absolute ml-1 -mt-1" />
                   </span>
                 </Anchor>
                 <button
@@ -288,7 +293,7 @@ import { isInternalLink } from '~/utilities/url'
 import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
 
 const MENU_ITEM_CLASS =
-  'group select-none flex justify-between rounded-md data-[state=open]:rounded-b-none mx-1 px-3 py-2 text-sm font-medium leading-none no-underline outline-none text-black dark:text-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'
+  'group select-none flex justify-between rounded-md data-[state=open]:rounded-b-none mx-1 px-2 py-2 text-sm leading-none no-underline outline-none text-black dark:text-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'
 
 const menuData = useMenuData('desktop')
 

@@ -10,6 +10,7 @@ import {
   INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL,
   markdownPathBuilder,
   SEARCH_PATH,
+  useOidcRegisterUrl,
   useQueueUrlOrigin,
   type ValidHrefs
 } from '~/utilities/url'
@@ -27,6 +28,8 @@ export type MenuItem = {
   hideDesktop?: boolean
   hideLabelDesktop?: boolean
   hideDropdownIconDesktop?: boolean
+  highlightLink?: boolean
+  hideNewWindowIcon?: boolean
   noSpaLink?: boolean
   href?: string
   click?: VueClick
@@ -245,15 +248,19 @@ export const useMenuData = (mode: Mode) => {
           label: 'User menu',
           hideLabelDesktop: true,
           icon: () => h(GraphicsBustInSilhouette, { class: 'w-6 h-6 rounded-full' }),
-          click: () => {
-            void oidcLogin()
-          },
           children: [
             {
-              label: 'Login',
+              label: 'Create an account',
+              href: useOidcRegisterUrl(),
+              highlightLink: true,
+              hideNewWindowIcon: true
+            },
+            {
+              label: 'Sign in',
               click: () => {
                 void oidcLogin()
-              }
+              },
+              hideNewWindowIcon: true
             },
             ...themeAndPreferencesChildren
           ]

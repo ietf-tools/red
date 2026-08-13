@@ -60,7 +60,7 @@
                       class="pr-2">
                       <span
                         :id="groupLabelDomId('mobile', index, childIndex)"
-                        class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
+                        class="flex pl-4 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
                         {{ level0.label }}
                       </span>
                       <template v-for="(level1, level1Index) in level0.children" :key="level1Index">
@@ -104,7 +104,7 @@
                       class="pr-2">
                       <span
                         :id="groupLabelDomId('mobile', index, childIndex)"
-                        class="flex pl-8 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
+                        class="flex pl-4 pt-4 pb-1 items-center font-bold text-sm text-gray-200 dark:text-gray-100">
                         {{ level0.label }}
                       </span>
                       <div

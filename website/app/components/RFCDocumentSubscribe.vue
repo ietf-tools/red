@@ -21,14 +21,14 @@
               'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-105',
               'focus:outline-none rounded-md shadow-3xl',
               'bg-white dark:bg-gray-800',
-              'px-4 py-3'
+              'px-4 pt-3 pb-1'
             ]">
-            <DialogTitle class="text-lg font-semibold text-center mb-4">
+            <DialogTitle class="text-lg font-semibold text-center pb-3">
               <template v-if="!isAuthenticated">You need an account to</template>
               <template v-else>Your subscriptions</template>
             </DialogTitle>
 
-            <DialogDescription class="text-sm">
+            <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
                 <div class="flex justify-end pb-2">
                   <DialogClose
