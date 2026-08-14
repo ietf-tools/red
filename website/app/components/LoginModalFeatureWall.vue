@@ -20,14 +20,16 @@
     </ul>
     <ul class="mt-8 mb-4 flex flex-row justify-center items-center gap-4">
       <li>
-        <a :href="registerUrl" class="inline-block bg-blue-800 text-white px-3 py-2 no-underline rounded font-bold"
-          >Create an account</a
-        >
+        <button
+          @click="oidcRegister"
+          class="cursor-pointer inline-block bg-blue-800 text-white px-3 py-2 rounded font-bold">
+          Create an account
+        </button>
       </li>
       <li>
         <button
           @click="oidcLogin"
-          class="inline-block text-blue-800 border-1 border-blue-800 px-3 py-2 rounded font-bold">
+          class="cursor-pointer inline-block text-blue-800 border-1 border-blue-800 px-3 py-2 rounded font-bold">
           Sign in
         </button>
       </li>
@@ -35,8 +37,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import { oidcLogin } from '~/utilities/oidc'
-import { useOidcRegisterUrl } from '~/utilities/url'
-
-const registerUrl = useOidcRegisterUrl()
+import { oidcLogin, oidcRegister } from '~/utilities/oidc'
 </script>

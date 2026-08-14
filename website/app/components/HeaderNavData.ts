@@ -3,14 +3,13 @@ import { useUiSettingsStore } from '~/stores/ui-settings'
 import { htmlEscapeToText } from '~/utilities/html'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useAuthStore } from '~/stores/auth'
-import { oidcLogin, oidcLogout } from '~/utilities/oidc'
+import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
 import {
   ACCOUNT_HOME_PATH,
   IETF_PRIVACY_STATEMENT_URL,
   INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL,
   markdownPathBuilder,
   SEARCH_PATH,
-  useOidcRegisterUrl,
   useQueueUrlOrigin,
   type ValidHrefs
 } from '~/utilities/url'
@@ -251,7 +250,9 @@ export const useMenuData = (mode: Mode) => {
           children: [
             {
               label: 'Create an account',
-              href: useOidcRegisterUrl(),
+              click: () => {
+                void oidcRegister()
+              },
               highlightLink: true,
               hideNewWindowIcon: true
             },
