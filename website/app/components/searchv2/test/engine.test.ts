@@ -56,4 +56,35 @@ describe('search engine', () => {
 
     expect(engine.results.value?.nbHits).toBe(20)
   })
+
+  it('hands the current composed search to searchForFacetValues', async () => {
+    const search = vi.fn(async () => response(1))
+    const searchForFacetValues = vi.fn(async () => [])
+    const engine = createSearchEngine({
+      searchClient: { search, searchForFacetValues },
+      adapter: createInMemoryAdapter({ query: 'email', refinements: { 'status.name': ['Historic'] } })
+    })
+    engine.registerWidget({
+      id: 'refinementList:authors.name',
+      getSearchParameters: (request) => {
+        request.facets.push('authors.name')
+        return request
+      }
+    })
+    engine.start()
+    await flushPromises()
+
+    await engine.searchForFacetValues({ attribute: 'authors.name', query: 'kle' })
+
+    expect(searchForFacetValues).toHaveBeenCalledWith(
+      expect.objectContaining({
+        attribute: 'authors.name',
+        query: 'kle',
+        search: expect.objectContaining({
+          query: 'email',
+          refinements: { 'status.name': ['Historic'] }
+        })
+      })
+    )
+  })
 })

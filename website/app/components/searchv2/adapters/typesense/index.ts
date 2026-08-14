@@ -21,6 +21,12 @@ export type TypesenseAdapterConfig = {
    * fires. Values beyond this are only reachable via the search-for-facet-values channel.
    */
   maxFacetValues?: number
+  /**
+   * Typo tolerance for the search-for-facet-values query. Typesense matches `facet_query`
+   * by token prefix, and its default of two typos surfaces values the user plainly did not
+   * type (`lensin` matches `J. Lentini`). Defaults to 0: strict prefix, no typos.
+   */
+  facetQueryNumTypos?: number
   cacheTtlMs?: number
   protocol?: string
   port?: number
@@ -53,9 +59,18 @@ const MultiSearchResponseSchema = z.object({ results: z.array(ResultSchema).min(
 
 /** Creates a backend-agnostic SearchClient backed by Typesense `multi_search`. */
 export function createTypesenseSearchClient(config: TypesenseAdapterConfig): SearchClient {
-  const { host, apiKey, collection, cacheTtlMs = DEFAULT_CACHE_TTL_MS, protocol = 'https', port = 443 } = config
+  const {
+    host,
+    apiKey,
+    collection,
+    cacheTtlMs = DEFAULT_CACHE_TTL_MS,
+    facetQueryNumTypos = 0,
+    protocol = 'https',
+    port = 443
+  } = config
 
   const cache = new Map<string, { at: number; value: SearchResponse }>()
+  const facetCache = new Map<string, { at: number; value: FacetHit[] }>()
 
   const url = `${protocol}://${host}:${port}/multi_search`
 
@@ -88,28 +103,43 @@ export function createTypesenseSearchClient(config: TypesenseAdapterConfig): Sea
   }
 
   const searchForFacetValues = async (request: SearchForFacetValuesRequest): Promise<FacetHit[]> => {
-    const { attribute, query, maxFacetHits = 10 } = request
-    const parsed = await post({
-      searches: [
-        {
-          collection,
-          q: '*',
-          preset: config.preset && typeof config.preset === 'string' ? config.preset : undefined,
-          facet_by: attribute,
-          facet_query: `${attribute}:${query}`,
-          max_facet_values: maxFacetHits,
-          per_page: 1
-        }
-      ]
-    })
+    const { attribute, query, maxFacetHits = 10, search } = request
+
+    // Typesense computes `facet_query` over the facet counts of the search it accompanies, so
+    // replaying the current search parameters is what narrows the offered values (and their
+    // counts) to the current results. Without `search` we can only span the whole collection.
+    const searchParams = {
+      ...(search
+        ? buildSearchParams(search, config, resolvePreset(search))
+        : { q: '*', preset: typeof config.preset === 'string' ? config.preset : undefined }),
+      facet_by: attribute,
+      facet_query: `${attribute}:${query}`,
+      facet_query_num_typos: facetQueryNumTypos,
+      max_facet_values: maxFacetHits,
+      // Facet values are all we want back; without this Typesense also ships whole documents.
+      sort_by: undefined,
+      page: undefined,
+      per_page: 0
+    }
+    const key = stableStringify(searchParams)
+
+    const cached = facetCache.get(key)
+    if (cached && Date.now() - cached.at < cacheTtlMs) return cached.value
+
+    const parsed = await post({ searches: [{ collection, ...searchParams }] })
     const counts = parsed.results[0]?.facet_counts?.find((facet) => facet.field_name === attribute)?.counts ?? []
-    return counts.map((count) => ({ value: count.value, count: count.count, highlighted: count.highlighted }))
+    const value = counts.map((count) => ({ value: count.value, count: count.count, highlighted: count.highlighted }))
+    facetCache.set(key, { at: Date.now(), value })
+    return value
   }
 
   return {
     search,
     searchForFacetValues,
-    clearCache: () => cache.clear()
+    clearCache: () => {
+      cache.clear()
+      facetCache.clear()
+    }
   }
 }
 

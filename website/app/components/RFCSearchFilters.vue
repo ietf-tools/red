@@ -140,6 +140,7 @@ const filterClasses: ClassNames = {
   checkbox: 'mt-1.5',
   itemLabel: 'flex text-base cursor-pointer w-full items-start justify-start gap-2 mb-1',
   count: 'bg-gray-600 dark:bg-gray-700 rounded-sm text-xs ml-auto px-2 py-1 font-bold text-white',
+  searchError: 'text-sm text-red-800 dark:text-red-200',
   showMore: 'underline text-sky-700 dark:text-blue-100 cursor-pointer',
   truncated: 'mt-1 text-sm px-2 py-1 bg-yellow-100 dark:bg-yellow-900 '
 }

@@ -116,7 +116,9 @@ export function createSearchEngine(options: SearchEngineOptions): SearchEngine {
 
   const searchForFacetValues = async (request: SearchForFacetValuesRequest): Promise<FacetHit[]> => {
     if (!searchClient.searchForFacetValues) return []
-    return searchClient.searchForFacetValues(request)
+    // Hand the adapter the search the user is currently looking at, so facet values are
+    // narrowed to it rather than being a free-text lookup across the whole collection.
+    return searchClient.searchForFacetValues({ ...request, search: request.search ?? composedRequest.value })
   }
 
   return {

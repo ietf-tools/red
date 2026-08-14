@@ -2,7 +2,7 @@
   <Fieldset :legend="label" :legend-class="classNames?.legend" :class="classNames?.root">
     <p v-if="description" :id="descriptionId" :class="classNames?.description">{{ description }}</p>
 
-    <div v-if="searchable || isTruncated" :class="classNames?.searchBox">
+    <div v-if="canSearch" :class="classNames?.searchBox">
       <label :for="searchDomId" :class="classNames?.searchLabel">{{ searchLabel }}</label>
       <input
         :id="searchDomId"
@@ -15,7 +15,10 @@
     </div>
 
     <ul ref="listRef" :class="classNames?.list">
-      <li v-if="items.length === 0" :class="classNames?.noResults">
+      <li v-if="searchError" :class="classNames?.searchError">
+        <slot name="search-error">{{ searchErrorLabel }}</slot>
+      </li>
+      <li v-else-if="items.length === 0" :class="classNames?.noResults">
         <slot v-if="isSearching" name="no-results">{{ noResultsLabel }}</slot>
         <slot v-else name="empty">{{ emptyLabel }}</slot>
       </li>
@@ -74,6 +77,8 @@ type Props = {
   showMoreLimit?: number
   showMore?: boolean
   searchable?: boolean
+  /** Debounce before a keystroke in the facet search box hits the network. */
+  searchDebounceMs?: number
   searchLabel?: string
   searchPlaceholder?: string
   showMoreLabel?: string
@@ -86,6 +91,8 @@ type Props = {
   emptyLabel?: string
   /** Message shown when a facet-search (searchable list) returns no matching options. */
   noResultsLabel?: string
+  /** Message shown when the facet search itself fails (e.g. the request errored). */
+  searchErrorLabel?: string
   /** Hint shown when the facet list was capped and more values exist. Set to `''` to hide it. */
   truncatedLabel?: string
   /** Builds the settled "N options available" live-region message; override for wording/localisation. */
@@ -100,6 +107,7 @@ const props = withDefaults(defineProps<Props>(), {
   showMoreLimit: undefined,
   showMore: false,
   searchable: false,
+  searchDebounceMs: undefined,
   searchLabel: undefined,
   searchPlaceholder: '',
   showMoreLabel: 'Show more',
@@ -108,6 +116,7 @@ const props = withDefaults(defineProps<Props>(), {
   showLessAriaLabel: undefined,
   emptyLabel: 'No options available.',
   noResultsLabel: 'No matches.',
+  searchErrorLabel: 'Sorry, these options could not be searched. Please try again.',
   truncatedLabel: 'There may be more choices available. Use the search above to refine this list',
   availableMessage: undefined,
   sortBy: undefined
@@ -125,8 +134,10 @@ const {
   canToggleShowMore,
   toggleShowMore,
   isTruncated,
+  canSearch,
   searchQuery,
   isSearching,
+  searchError,
   searchForItems,
   refine
 } = useRefinementList({
@@ -135,6 +146,7 @@ const {
   showMoreLimit: props.showMoreLimit,
   showMore: props.showMore,
   searchable: props.searchable,
+  searchDebounceMs: props.searchDebounceMs,
   sortBy: props.sortBy
 })
 
@@ -156,7 +168,7 @@ const announcement = computed(() => {
 })
 
 const onSearchInput = (event: Event) => {
-  if (event.target instanceof HTMLInputElement) void searchForItems(event.target.value)
+  if (event.target instanceof HTMLInputElement) searchForItems(event.target.value)
 }
 
 // Toggling a checkbox reruns the search, which can remove the focused option from the

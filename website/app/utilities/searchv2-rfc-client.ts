@@ -1,5 +1,5 @@
 import { createTypesenseSearchClient } from '~/components/searchv2/adapters/typesense'
-import type { SearchClient, SearchRequest } from '~/components/searchv2'
+import type { SearchClient, SearchForFacetValuesRequest, SearchRequest } from '~/components/searchv2'
 
 export type RfcSubseriesInfo = {
   isSubseries: boolean
@@ -51,7 +51,16 @@ export function createRfcSearchClient(params: CreateRfcSearchClientParams): Sear
     return response
   }
 
-  return { ...base, search }
+  // Facet values are scoped to the current search, so they have to be scoped to the *rewritten*
+  // one: with `rfc 2119` typed, the main results are the rfc:=2119 refinement, and offering
+  // facet values for a literal `rfc 2119` text search would describe a different result set.
+  const searchForFacetValues = async (request: SearchForFacetValuesRequest) => {
+    if (!base.searchForFacetValues) return []
+    const { search } = request
+    return base.searchForFacetValues(search ? { ...request, search: rewriteQuery(search).request } : request)
+  }
+
+  return { ...base, search, searchForFacetValues }
 }
 
 type Rewrite = {

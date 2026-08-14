@@ -1,5 +1,6 @@
-import { computed, onScopeDispose, ref } from 'vue'
+import { computed, onScopeDispose, ref, shallowRef } from 'vue'
 import { useSearchContext } from '../core/context'
+import { debounce } from '../utils/debounce'
 import type { SearchRequest } from '../types'
 
 export type RefinementItem = {
@@ -16,8 +17,12 @@ export type UseRefinementListOptions = {
   showMoreLimit?: number
   showMore?: boolean
   searchable?: boolean
+  /** Debounce before a keystroke in the facet search box hits the network. */
+  searchDebounceMs?: number
   sortBy?: (a: RefinementItem, b: RefinementItem) => number
 }
+
+const DEFAULT_SEARCH_DEBOUNCE_MS = 200
 
 /**
  * Multi-select facet. Optionally searchable (via the separate search-for-facet-values
@@ -25,7 +30,15 @@ export type UseRefinementListOptions = {
  */
 export function useRefinementList(options: UseRefinementListOptions) {
   const context = useSearchContext()
-  const { attribute, limit = 10, showMoreLimit, showMore = false, searchable = false, sortBy } = options
+  const {
+    attribute,
+    limit = 10,
+    showMoreLimit,
+    showMore = false,
+    searchable = false,
+    searchDebounceMs = DEFAULT_SEARCH_DEBOUNCE_MS,
+    sortBy
+  } = options
 
   onScopeDispose(
     context.registerWidget({
@@ -40,11 +53,17 @@ export function useRefinementList(options: UseRefinementListOptions) {
   const isShowingMore = ref(false)
   const searchQuery = ref('')
   const searchHits = ref<RefinementItem[]>([])
-  const isSearching = computed(() => searchable && searchQuery.value.length > 0)
+  const searchError = shallowRef<unknown>(null)
 
   const selected = computed(() => context.uiState.value.refinements?.[attribute] ?? [])
   const facetCounts = computed(() => context.results.value?.facets?.[attribute] ?? {})
   const isTruncated = computed(() => context.results.value?.facetTruncated?.[attribute] ?? false)
+
+  // A truncated list hides values behind the facet cap, so its search box is the only way to
+  // reach them: it searches even when the host did not ask for `searchable`. Rendering the box
+  // and honouring it are the same condition, so a shown box is never inert.
+  const canSearch = computed(() => searchable || isTruncated.value)
+  const isSearching = computed(() => canSearch.value && searchQuery.value.length > 0)
 
   const allItems = computed<RefinementItem[]>(() => {
     const counts = facetCounts.value
@@ -72,21 +91,50 @@ export function useRefinementList(options: UseRefinementListOptions) {
     if (canToggleShowMore.value || isShowingMore.value) isShowingMore.value = !isShowingMore.value
   }
 
-  const searchForItems = async (query: string) => {
+  // Bumped for every dispatched (or abandoned) facet search, so a slow response that lands
+  // after a newer keystroke — or after the box was cleared — is dropped instead of replacing
+  // a fresher list.
+  let latestSeq = 0
+
+  const runSearch = async (query: string) => {
+    const seq = ++latestSeq
+    try {
+      const hits = await context.searchForFacetValues({ attribute, query, maxFacetHits: showMoreLimit ?? limit })
+      if (seq !== latestSeq) return
+      searchError.value = null
+      searchHits.value = hits.map((hit) => ({
+        value: hit.value,
+        label: hit.value,
+        count: hit.count,
+        isRefined: selected.value.includes(hit.value),
+        highlighted: hit.highlighted
+      }))
+    } catch (caught) {
+      if (seq !== latestSeq) return
+      searchError.value = caught
+      searchHits.value = []
+    }
+  }
+
+  const debouncedSearch = debounce((query: string) => void runSearch(query), searchDebounceMs)
+
+  const clearSearchResults = () => {
+    debouncedSearch.cancel()
+    latestSeq += 1 // discard whatever is in flight
+    searchHits.value = []
+    searchError.value = null
+  }
+
+  const searchForItems = (query: string) => {
     searchQuery.value = query
     if (!query) {
-      searchHits.value = []
+      clearSearchResults()
       return
     }
-    const hits = await context.searchForFacetValues({ attribute, query, maxFacetHits: showMoreLimit ?? limit })
-    searchHits.value = hits.map((hit) => ({
-      value: hit.value,
-      label: hit.value,
-      count: hit.count,
-      isRefined: selected.value.includes(hit.value),
-      highlighted: hit.highlighted
-    }))
+    debouncedSearch(query)
   }
+
+  onScopeDispose(() => debouncedSearch.cancel())
 
   const refine = (value: string) => {
     const current = context.uiState.value.refinements?.[attribute] ?? []
@@ -98,7 +146,7 @@ export function useRefinementList(options: UseRefinementListOptions) {
       return { ...previous, refinements, page: 0 }
     })
     searchQuery.value = ''
-    searchHits.value = []
+    clearSearchResults()
   }
 
   return {
@@ -110,8 +158,10 @@ export function useRefinementList(options: UseRefinementListOptions) {
     toggleShowMore,
     isTruncated,
     searchable,
+    canSearch,
     searchQuery,
     isSearching,
+    searchError,
     searchForItems,
     refine
   }

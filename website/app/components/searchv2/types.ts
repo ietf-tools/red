@@ -68,6 +68,12 @@ export type SearchForFacetValuesRequest = {
   attribute: string
   query: string
   maxFacetHits?: number
+  /**
+   * The current composed search, injected by the engine. An adapter uses it to scope the
+   * returned values to the documents the user is actually looking at; without it a facet
+   * search spans the whole collection and offers values that match no current result.
+   */
+  search?: SearchRequest
 }
 
 /**
