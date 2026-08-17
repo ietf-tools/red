@@ -168,6 +168,17 @@ export const putRating = (rfc: string, rating: RatingWrite, signal?: AbortSignal
     signal
   })
 
+// Withdraw the caller's own rating of one RFC, returning the updated aggregate with `your_rating`
+// now null. Unlike the other deletes in this file it answers 200 with a body rather than 204, and
+// the spec calls it idempotent: a caller with no rating to remove gets the same response as one
+// whose rating was just removed, so a repeated removal is a success rather than a 404.
+export const deleteRating = (rfc: string, signal?: AbortSignal): Promise<RatingAggregate> =>
+  reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, {
+    method: 'DELETE',
+    auth: 'required',
+    signal
+  })
+
 // --- Subscriptions ----------------------------------------------------------------------
 
 export const getSubscriptions = (signal?: AbortSignal): Promise<Subscription[]> =>

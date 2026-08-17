@@ -21,7 +21,15 @@
 
 <script setup lang="ts">
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators'
-import { getUserRFCRating, saveUserRFCRating, STAR_SCORE_LENGTH, type UserRFCRating } from '~/utilities/ratings'
+import {
+  getUserRFCRating,
+  ratingRemovalFailedNotification,
+  ratingRemovedNotification,
+  removeUserRFCRating,
+  saveUserRFCRating,
+  STAR_SCORE_LENGTH,
+  type UserRFCRating
+} from '~/utilities/ratings'
 import { useRfcEditorErrataSearchForRfcUrl } from '~/utilities/url.js'
 
 type Props = {
@@ -53,8 +61,10 @@ let controller: AbortController | undefined
 // existing rating immediately echoes back out as a PUT of the value we just read.
 let syncedRating: UserRFCRating
 
-// Saves get their own controller: a save must not abort an in-flight load, nor a load a save.
-let saveController: AbortController | undefined
+// Writes get their own controller: a write must not abort an in-flight load, nor a load a write.
+let writeController: AbortController | undefined
+
+const notificationsStore = useNotificationsStore()
 
 const loadUserRFCRating = async (rfcNumber: number, isAuthed: boolean) => {
   controller?.abort()
@@ -98,29 +108,55 @@ watch(
   { immediate: true }
 )
 
-const saveUserRFCRatingChange = async (rating: UserRFCRating) => {
-  // undefined is "not rated", never something to write: it's the initial value, and it's what a
-  // load leaves behind for a reader who hasn't rated this RFC. Reef has no zero rating and no way
-  // to clear one, so there's nothing to send.
-  if (rating === undefined || rating === syncedRating) {
+const persistUserRFCRatingChange = async (rating: UserRFCRating) => {
+  // A pick and a removal both arrive here as a change to the model; what tells either of them from
+  // a load bringing Reef's own value down is syncedRating. Equal means there's nothing to write —
+  // which covers the initial state, where the model and Reef are both undefined and a removal
+  // would have nothing to remove.
+  if (rating === syncedRating) {
     return
   }
 
-  // A deliberate pick supersedes a load that's still open: otherwise the GET lands afterwards,
+  // A deliberate change supersedes a load that's still open: otherwise the GET lands afterwards,
   // overwrites the reader's choice with the stored value and records it as synced, losing the pick.
   controller?.abort()
 
-  // Last pick wins if the reader changes their mind while a save is still open.
-  saveController?.abort()
-  saveController = new AbortController()
-  const { signal } = saveController
+  // Last change wins if the reader picks again, or removes, while a write is still open.
+  writeController?.abort()
+  writeController = new AbortController()
+  const { signal } = writeController
+
+  // undefined is the reader withdrawing their rating rather than any value to store, so it's the
+  // one case that deletes instead of putting.
+  const isRemoval = rating === undefined
 
   try {
-    await saveUserRFCRating(props.rfcNumber, rating, signal)
+    if (isRemoval) {
+      await removeUserRFCRating(props.rfcNumber, signal)
+    } else {
+      await saveUserRFCRating(props.rfcNumber, rating, signal)
+    }
     syncedRating = rating
+
+    if (isRemoval) {
+      // Announced only once Reef has accepted it, and only for a removal: picking a star is
+      // announced by the live region in the dialog, but the dialog closes on a removal, so this
+      // toast is the only report the reader gets.
+      notificationsStore.add(ratingRemovedNotification(props.rfcNumber))
+    }
   } catch (error) {
     if (signal.aborted) {
       // superseded by a later rating
+      return
+    }
+    if (isRemoval) {
+      // The dialog has closed and the stars have already emptied, so leaving it there would show a
+      // removal that didn't happen. Put the rating back — the watcher sees it match syncedRating
+      // and doesn't try to write it out again — and say so, since there's nothing else on screen
+      // that would tell the reader.
+      userRFCRating.value = syncedRating
+      notificationsStore.add(ratingRemovalFailedNotification(props.rfcNumber))
+      console.error('Unable to remove your rating for this RFC.', error)
       return
     }
     // Leaves the stars showing a rating Reef didn't accept. Worth surfacing to the reader
@@ -130,13 +166,13 @@ const saveUserRFCRatingChange = async (rating: UserRFCRating) => {
 }
 
 watch(userRFCRating, (rating) => {
-  void saveUserRFCRatingChange(rating)
+  void persistUserRFCRatingChange(rating)
 })
 
 onBeforeUnmount(() => {
   controller?.abort()
-  // Deliberately not aborting saveController: a rating the reader has just set should reach Reef
-  // even if they navigate away immediately, and unlike the load there's no stale state for a late
-  // response to corrupt.
+  // Deliberately not aborting writeController: a rating the reader has just set, or just removed,
+  // should reach Reef even if they navigate away immediately, and unlike the load there's no stale
+  // state for a late response to corrupt.
 })
 </script>

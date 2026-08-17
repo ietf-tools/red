@@ -88,6 +88,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/RatingAggregate'
           description: ''
+    delete:
+      operationId: ratings_destroy
+      description: "Remove the authenticated caller's rating of one RFC, so it no
+        longer counts towards the average. Requires a credential. Idempotent: a caller
+        who has not rated this RFC gets the same response as one whose rating was
+        just removed. Returns the same body as GET, so the response carries the recomputed
+        average and count, with `your_rating` now null."
+      summary: Withdraw the caller's rating of an RFC
+      parameters:
+        - in: path
+          name: rfc
+          schema:
+            type: string
+          required: true
+      tags:
+        - ratings
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatingAggregate'
+          description: ''
   /api/reef/schema/:
     get:
       operationId: schema_retrieve

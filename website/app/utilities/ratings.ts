@@ -5,7 +5,8 @@
 // rating dialog share one definition of what a rating is, and one way of fetching and saving one.
 
 import { useAuthStore } from '~/stores/auth'
-import { getRating, putRating, type RatingAggregate } from '~/utilities/reef'
+import type { Notification } from '~/stores/notifications'
+import { deleteRating, getRating, putRating, type RatingAggregate } from '~/utilities/reef'
 
 export const STAR_SCORE_LENGTH = 5
 
@@ -53,7 +54,7 @@ export const ratingKey = (rfcNumber: number): string => `rfc${rfcNumber}`
 // label. Spelled out rather than left to the stars alone, so it's available to a screen reader and
 // so "not rated yet" is stated rather than implied by five empty outlines.
 export const userRFCRatingLabel = (rating: UserRFCRating): string =>
-  rating === undefined ? 'Not rated yet' : `${rating} out of ${STAR_SCORE_LENGTH} stars`
+  rating === undefined ? '' : `${rating} out of ${STAR_SCORE_LENGTH} stars`
 
 // --- Cache ------------------------------------------------------------------------------
 //
@@ -174,3 +175,52 @@ export const saveUserRFCRating = async (
   writeCachedUserRFCRating(rfcNumber, rating)
   return aggregate
 }
+
+// Withdraw the caller's own rating, so the RFC goes back to being one they haven't rated and their
+// score stops counting towards the public average. Reef's DELETE is idempotent, so this is safe to
+// call for a reader who has nothing to remove. Like saveUserRFCRating it returns the recomputed
+// aggregate, which callers showing precomputed numbers can ignore.
+export const removeUserRFCRating = async (rfcNumber: number, signal?: AbortSignal): Promise<RatingAggregate> => {
+  const aggregate = await deleteRating(ratingKey(rfcNumber), signal)
+  // Cached as an `undefined` rating rather than dropped from the cache: "this reader hasn't rated
+  // this RFC" is a real answer and worth a hit of its own, and dropping it would send the next
+  // visit back to Reef for a value this tab just decided.
+  writeCachedUserRFCRating(rfcNumber, undefined)
+  return aggregate
+}
+
+// --- Announcements ----------------------------------------------------------------------
+//
+// Picking a star is announced by the live region inside the dialog, but a removal can't be:
+// removing closes the dialog, which takes that live region out of the DOM before a reader hears
+// anything from it. A toast outlives the dialog, so it's what reports the outcome — and `foreground`
+// is what has a screen reader announce it, this being a direct result of pressing the button.
+
+// One id per RFC, shared by both outcomes, so a retry replaces the previous message in place
+// rather than stacking a second toast on top of it.
+const ratingRemovalNotificationId = (rfcNumber: number): string => `rating-removal.${ratingKey(rfcNumber)}`
+
+export const ratingRemovedNotification = (rfcNumber: number): Notification => ({
+  id: ratingRemovalNotificationId(rfcNumber),
+  title: 'Rating removed',
+  description: `Your rating of RFC ${rfcNumber} has been removed, and no longer counts towards the average.`,
+  delayMs: 0,
+  // Short: a confirmation of something the reader just did, with nothing in it to act on, and the
+  // button behind it has already gone back to offering a rating. Nothing is lost by missing it.
+  durationMs: 5_000,
+  position: 'top',
+  type: 'foreground'
+})
+
+export const ratingRemovalFailedNotification = (rfcNumber: number): Notification => ({
+  id: ratingRemovalNotificationId(rfcNumber),
+  title: 'Unable to remove your rating',
+  // Says what the reader is left with, because the stars have been put back and the wording has to
+  // account for them reappearing.
+  description: `Your rating of RFC ${rfcNumber} is unchanged. Please try again.`,
+  delayMs: 0,
+  // Left to the default duration rather than the confirmation's five seconds: this one asks the
+  // reader to do something about it, so it wants longer on screen than a confirmation does.
+  position: 'top',
+  type: 'foreground'
+})

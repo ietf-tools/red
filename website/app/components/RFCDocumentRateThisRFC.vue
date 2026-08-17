@@ -18,38 +18,59 @@
         <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
         <DialogContent
           :class="[
-            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-105',
+            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-105',
             'focus:outline-none rounded-md shadow-3xl',
             'bg-white dark:bg-gray-800',
-            'px-4 pt-3 pb-1'
+            'px-4 pt-3 pb-1',
+            {
+              'max-w-[550px]': !isAuthenticated,
+              'max-w-[350px]': isAuthenticated
+            }
           ]">
-          <DialogTitle class="text-lg font-semibold text-center pb-3">
+          <DialogTitle
+            :class="{
+              'text-lg font-semibold text-center pb-3': !isAuthenticated,
+              'text-xl font-semibold text-center pb-1 pt-3': isAuthenticated
+            }">
             <template v-if="!isAuthenticated">You need an account to</template>
-            <template v-else>Your rating</template>
+            <template v-else>Rate RFC {{ props.rfcNumber }}</template>
           </DialogTitle>
 
           <DialogDescription class="text-sm">
             <template v-if="isAuthenticated">
-              Your own rating of this RFC. It's saved as soon as you choose, and counts towards the average shown for
-              this RFC. The average is not updated live.
-
+              <p class="text-center">Select a rating between 1 and 5</p>
               <div class="flex flex-col items-center justify-center gap-1 py-3">
-                <div class="bg-gray-100 dark:bg-blue-950 border border-gray-400 rounded-md px-4 py-2">
+                <div class="px-4 py-2">
                   <StarRating
                     :length="STAR_SCORE_LENGTH"
                     v-model="userRFCRating"
                     :aria-label="`Your rating out of ${STAR_SCORE_LENGTH} stars`" />
                   <!-- Announces the change, since picking a star saves without any further confirmation. -->
-                  <p class="text-sm" aria-live="polite" aria-atomic="true">
+                  <p class="sr-only" aria-live="polite" aria-atomic="true">
                     {{ userRFCRatingLabel(userRFCRating) }}
                   </p>
                 </div>
               </div>
-              <div class="flex justify-end pb-2">
+              <div class="flex justify-between pb-2">
+                <span>
+                  <!-- Removing is a change to the rating like picking a star is, so it goes out the
+                     same way — through the model, leaving the parent to persist it and to announce
+                     the outcome. DialogClose wraps it because the dialog can't stay open over an
+                     empty set of stars: it exists to show the reader their rating, and there is no
+                     longer one to show. -->
+                  <DialogClose v-if="userRFCRating !== undefined" as-child>
+                    <button
+                      type="button"
+                      class="cursor-pointer border-1 border-blue-500 px-2 py-1 rounded text-gray-900 dark:text-gray-100"
+                      @click="userRFCRating = undefined">
+                      Remove rating
+                    </button>
+                  </DialogClose>
+                </span>
                 <DialogClose
                   :class="[
                     'px-3 py-1 rounded-md',
-                    'text-white bg-blue-600 dark:bg-blue-900',
+                    'text-white bg-blue-600 dark:bg-blue-900 font-bold',
                     'border border-gray-400',
                     'cursor-pointer'
                   ]">
@@ -76,9 +97,10 @@
 /**
  * The "your rating" dialog for one RFC.
  *
- * Holds no state of its own: the rating is a model, so picking a star updates the parent's ref and
- * the parent is what persists it. There's deliberately no save button — the parent writes on
- * change, and offering one would imply the pick hadn't already been saved.
+ * Holds no state of its own: the rating is a model, so picking a star — or removing the rating
+ * altogether — updates the parent's ref and the parent is what persists it. There's deliberately no
+ * save button — the parent writes on change, and offering one would imply the pick hadn't already
+ * been saved.
  */
 import {
   DialogClose,
@@ -94,6 +116,7 @@ import { STAR_SCORE_LENGTH, userRFCRatingLabel } from '~/utilities/ratings'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
+  rfcNumber: number
   errataUrl: string
   reefStats: RfcBucketHtmlDocument['reefStats']
 }

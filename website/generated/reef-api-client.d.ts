@@ -41,7 +41,11 @@ export interface paths {
      */
     put: operations['ratings_update']
     post?: never
-    delete?: never
+    /**
+     * Withdraw the caller's rating of an RFC
+     * @description Remove the authenticated caller's rating of one RFC, so it no longer counts towards the average. Requires a credential. Idempotent: a caller who has not rated this RFC gets the same response as one whose rating was just removed. Returns the same body as GET, so the response carries the recomputed average and count, with `your_rating` now null.
+     */
+    delete: operations['ratings_destroy']
     options?: never
     head?: never
     patch?: never
@@ -586,6 +590,27 @@ export interface operations {
         'multipart/form-data': components['schemas']['RatingWrite']
       }
     }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['RatingAggregate']
+        }
+      }
+    }
+  }
+  ratings_destroy: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        rfc: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
     responses: {
       200: {
         headers: {
