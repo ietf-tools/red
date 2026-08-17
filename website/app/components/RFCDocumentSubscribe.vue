@@ -30,7 +30,22 @@
 
             <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
-                <div class="flex justify-end pb-2">
+                <!-- A checkbox rather than a Subscribe/Unsubscribe button, so the current state is
+                   readable without having to infer it from what the button offers to do — and so a
+                   screen reader gets the change from aria-checked, which CheckboxRoot maintains,
+                   with no live region needed. There's no save button here for the same reason the
+                   rating dialog has none: ticking it writes. -->
+                <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
+                  <span
+                    class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
+                    <CheckboxIndicator>
+                      <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                    </CheckboxIndicator>
+                  </span>
+                  <span>Email me about changes to RFC {{ props.rfcNumber }}</span>
+                </CheckboxRoot>
+
+                <div class="flex justify-end pb-2 pt-4">
                   <DialogClose
                     :class="[
                       'px-3 py-1 rounded-md',
@@ -65,8 +80,14 @@
 <script setup lang="ts">
 /**
  * The subscribe dialog for one RFC.
+ *
+ * Holds no state of its own, the same way the rating dialog doesn't: whether the reader is
+ * subscribed is a model, so ticking the box updates the parent's ref and the parent is what
+ * persists it — and reports a failure, since it's the only one that knows Reef refused.
  */
 import {
+  CheckboxIndicator,
+  CheckboxRoot,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -76,15 +97,22 @@ import {
   DialogTitle,
   DialogTrigger
 } from 'reka-ui'
-import { oidcLogin } from '~/utilities/oidc'
+import type { OidcUser } from '~/utilities/oidc'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/ratings'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
+  rfcNumber: number
   reefStats: RfcBucketHtmlDocument['reefStats']
+  // The signed-in reader, or undefined when nobody is signed in. Passed in rather than read from
+  // the auth store here, so this component renders from what it's given and the parent stays the
+  // one place that decides what "signed in" means for this row.
+  user: OidcUser | undefined
 }
 
 const props = defineProps<Props>()
+
+const isSubscribed = defineModel<boolean>({ default: false })
 
 const formatNumber = (val: number, decimalPlaces: number) => {
   return new Intl.NumberFormat('en-US', {
@@ -94,8 +122,8 @@ const formatNumber = (val: number, decimalPlaces: number) => {
   }).format(val)
 }
 
-// Reef needs a bearer token to know whose rating to store, so an anonymous pick can only fail with
-// a 401. Ask for a sign-in instead of letting the stars look interactive and then silently lose it.
-const authStore = useAuthStore()
-const { isAuthenticated } = storeToRefs(authStore)
+// Reef needs a bearer token to know whose subscription to store, so an anonymous tick could only
+// fail with a 401. Ask for a sign-in instead of letting the checkbox look interactive and then
+// silently lose it.
+const isAuthenticated = computed(() => props.user !== undefined)
 </script>

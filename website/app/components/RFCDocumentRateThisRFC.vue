@@ -21,7 +21,7 @@
             'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-105',
             'focus:outline-none rounded-md shadow-3xl',
             'bg-white dark:bg-gray-800',
-            'px-4 pt-3 pb-1',
+            'px-4 pt-6 pb-1',
             {
               'max-w-[550px]': !isAuthenticated,
               'max-w-[350px]': isAuthenticated
@@ -30,7 +30,7 @@
           <DialogTitle
             :class="{
               'text-lg font-semibold text-center pb-3': !isAuthenticated,
-              'text-xl font-semibold text-center pb-1 pt-3': isAuthenticated
+              'text-xl font-semibold text-center pb-1': isAuthenticated
             }">
             <template v-if="!isAuthenticated">You need an account to</template>
             <template v-else>Rate RFC {{ props.rfcNumber }}</template>

@@ -10,7 +10,11 @@
           v-model="userRFCRating" />
       </li>
       <li class="pl-2 pr-2 border-l-1 border-r-1 border-gray-300 dark:border-gray-700">
-        <RFCDocumentSubscribe :reef-stats="props.reefStats" />
+        <RFCDocumentSubscribe
+          :rfc-number="props.rfcNumber"
+          :reef-stats="props.reefStats"
+          :user="user"
+          v-model="isSubscribedToThisRFC" />
       </li>
       <li class="pl-2">
         <RFCDocumentSets :reef-stats="props.reefStats" />
@@ -30,6 +34,13 @@ import {
   STAR_SCORE_LENGTH,
   type UserRFCRating
 } from '~/utilities/ratings'
+import type { Subscription } from '~/utilities/reef'
+import {
+  getUserRFCSubscription,
+  subscribeToRFC,
+  subscriptionFailedNotification,
+  unsubscribeFromRFC
+} from '~/utilities/subscriptions'
 import { useRfcEditorErrataSearchForRfcUrl } from '~/utilities/url.js'
 
 type Props = {
@@ -42,13 +53,17 @@ const errataForThisRfc = computed(() => useRfcEditorErrataSearchForRfcUrl(props.
 const props = defineProps<Props>()
 
 const authStore = useAuthStore()
-const { isAuthenticated } = storeToRefs(authStore)
+// `user` is passed down to RFCDocumentSubscribe rather than left for it to read from the store
+// itself, so the dialog renders from what it's given and this component stays the one place that
+// decides what "signed in" means for this row.
+const { isAuthenticated, user } = storeToRefs(authStore)
 
 // This reader's own rating, or undefined when they haven't rated the RFC or aren't signed in.
 //
-// The only thing fetched live. The public aggregate comes from `props.reefStats`, precomputed
-// into the bucket JSON — Reef's rating GET happens to return `average`/`count` too, but reading
-// those here would mean a per-visitor request for numbers the cached page already carries.
+// Fetched live, as the subscription below is. Only the per-reader parts are: the public numbers
+// come from `props.reefStats`, precomputed into the bucket JSON — Reef's rating GET happens to
+// return `average`/`count` too, but reading those here would mean a per-visitor request for
+// numbers the cached page already carries.
 const userRFCRating = ref<UserRFCRating>()
 
 // One controller per attempt, so signing out — or the component going away — abandons a request
@@ -63,6 +78,21 @@ let syncedRating: UserRFCRating
 
 // Writes get their own controller: a write must not abort an in-flight load, nor a load a write.
 let writeController: AbortController | undefined
+
+// Whether this reader is subscribed to this RFC, which is all the dialog's checkbox needs. The
+// subscription Reef is holding is kept beside it, because its server-assigned id is the only
+// handle unsubscribing has.
+const isSubscribedToThisRFC = ref(false)
+
+// Reef's own answer, playing the same part for the subscription that syncedRating plays for the
+// rating: undefined is "not subscribed", and comparing it against the checkbox is what tells a
+// load apart from the reader ticking the box.
+let syncedSubscription: Subscription | undefined
+
+// Loads and writes kept apart here for the same reason as the rating's, and kept apart from the
+// rating's too — the two features share a watcher but never each other's requests.
+let subscriptionController: AbortController | undefined
+let subscriptionWriteController: AbortController | undefined
 
 const notificationsStore = useNotificationsStore()
 
@@ -95,6 +125,38 @@ const loadUserRFCRating = async (rfcNumber: number, isAuthed: boolean) => {
   }
 }
 
+const loadUserRFCSubscription = async (rfcNumber: number, isAuthed: boolean) => {
+  subscriptionController?.abort()
+
+  // Subscriptions are per-user and the token is what identifies them, so there's nothing to ask
+  // for while logged out. Reset rather than leave the previous reader's tick behind.
+  if (!isAuthed) {
+    syncedSubscription = undefined
+    isSubscribedToThisRFC.value = false
+    return
+  }
+
+  subscriptionController = new AbortController()
+  const { signal } = subscriptionController
+
+  try {
+    const loaded = await getUserRFCSubscription(rfcNumber, signal)
+    // Before the assignment, so the write watcher — which fires on the next tick — already sees
+    // this as Reef's own answer and leaves it alone.
+    syncedSubscription = loaded
+    isSubscribedToThisRFC.value = loaded !== undefined
+  } catch (error) {
+    if (signal.aborted) {
+      // superseded by a newer attempt, or the component has been unmounted
+      return
+    }
+    // Same call as the account page's list, and the same treatment as a failed rating load: the
+    // row still renders, and the checkbox stays unticked rather than claiming a state we couldn't
+    // confirm.
+    console.error('Unable to load your subscription for this RFC.', error)
+  }
+}
+
 // `immediate` is load-bearing, not a convenience. Both gates in front of this component are
 // async and client-side — the oidc feature flag comes from localStorage, and oidcRestore() runs
 // in Header.vue's onMounted — so a restored session often lands *before* this setup runs, leaving
@@ -104,6 +166,7 @@ watch(
   [isAuthenticated, () => props.rfcNumber],
   () => {
     void loadUserRFCRating(props.rfcNumber, isAuthenticated.value)
+    void loadUserRFCSubscription(props.rfcNumber, isAuthenticated.value)
   },
   { immediate: true }
 )
@@ -169,10 +232,54 @@ watch(userRFCRating, (rating) => {
   void persistUserRFCRatingChange(rating)
 })
 
+const persistUserRFCSubscriptionChange = async (isSubscribed: boolean) => {
+  // Reef holding a subscription is what "subscribed" means, so comparing the checkbox against
+  // syncedSubscription is the whole test for whether there's anything to write. Equal means this
+  // change came from a load, or from the revert below putting the box back.
+  if (isSubscribed === (syncedSubscription !== undefined)) {
+    return
+  }
+
+  // A deliberate tick supersedes a load that's still open, which would otherwise land afterwards
+  // and overwrite the reader's choice with the stored answer.
+  subscriptionController?.abort()
+
+  // Last change wins if the reader ticks and unticks faster than Reef answers.
+  subscriptionWriteController?.abort()
+  subscriptionWriteController = new AbortController()
+  const { signal } = subscriptionWriteController
+
+  try {
+    if (isSubscribed) {
+      // Held onto rather than discarded: the id Reef assigns here is what unsubscribing needs.
+      syncedSubscription = await subscribeToRFC(props.rfcNumber, signal)
+    } else if (syncedSubscription !== undefined) {
+      await unsubscribeFromRFC(syncedSubscription, signal)
+      syncedSubscription = undefined
+    }
+  } catch (error) {
+    if (signal.aborted) {
+      // superseded by a later tick
+      return
+    }
+    // Put the checkbox back to what Reef is actually holding — the watcher sees it match
+    // syncedSubscription and doesn't try to write it out again — and say so. Without the toast the
+    // box would simply spring back with nothing to explain it.
+    isSubscribedToThisRFC.value = syncedSubscription !== undefined
+    notificationsStore.add(subscriptionFailedNotification(props.rfcNumber, isSubscribed))
+    console.error('Unable to change your subscription for this RFC.', error)
+  }
+}
+
+watch(isSubscribedToThisRFC, (isSubscribed) => {
+  void persistUserRFCSubscriptionChange(isSubscribed)
+})
+
 onBeforeUnmount(() => {
   controller?.abort()
-  // Deliberately not aborting writeController: a rating the reader has just set, or just removed,
-  // should reach Reef even if they navigate away immediately, and unlike the load there's no stale
-  // state for a late response to corrupt.
+  subscriptionController?.abort()
+  // Deliberately not aborting either write controller: a rating the reader has just set or removed,
+  // or a subscription they've just ticked, should reach Reef even if they navigate away
+  // immediately, and unlike the loads there's no stale state for a late response to corrupt.
 })
 </script>
