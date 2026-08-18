@@ -40,7 +40,7 @@
  */
 import type { LoadingStatus } from '~/utilities/loading-status'
 import { getSubscriptions, ReefError, type Subscription } from '~/utilities/reef'
-import { sortSubscriptions, subscriptionLabel, subscriptionParamsSummary } from '~/utilities/subscriptions'
+import { sortSubscriptions, subscriptionLabel, subscriptionParamsSummary } from '~/utilities/reef-subscriptions'
 
 const loadingStatus = ref<LoadingStatus>({ type: 'idle' })
 const subscriptions = ref<Subscription[]>([])

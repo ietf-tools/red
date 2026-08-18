@@ -10,10 +10,19 @@
 // Every operation in the spec gets one thin function below; reefFetch holds the single
 // copy of the base-URL, bearer-token, JSON and error-handling policy. If this file grows,
 // split it into a utilities/reef/ directory.
+//
+// The last section is not API surface: it's the request coordination every per-reader feature
+// needs, kept here so the feature modules built on this client — ~/utilities/reef-ratings,
+// ~/utilities/reef-subscriptions and ~/utilities/reef-sets — don't each reinvent it.
 
+import { onBeforeUnmount, watch } from 'vue'
+import { z } from 'zod'
+import { useAuthStore } from '~/stores/auth'
 import type { components, operations } from '../../generated/reef-api-client'
 import { getAccessToken } from '~/utilities/oidc'
 
+export type DocumentSet = components['schemas']['DocumentSet']
+export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
 export type PopularEntry = components['schemas']['PopularEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
 export type RatingWrite = components['schemas']['RatingWrite']
@@ -25,6 +34,11 @@ export type SurveyDefinition = components['schemas']['SurveyDefinition']
 export type SurveyResults = operations['surveys_results_retrieve']['responses'][200]['content']['application/json']
 export type OpenSurvey = components['schemas']['OpenSurvey']
 export type ResponseCreate = components['schemas']['ResponseCreate']
+
+// The one field an error body is read for here. Anything else it carries is left to callers to take
+// off `body`, which keeps the payload as it arrived — a validation error names the fields it
+// rejected, and this is in no position to know them.
+const ErrorDetailSchema = z.object({ detail: z.string() })
 
 // Thrown for any non-2xx response. `body` is the parsed error payload when the server sent
 // JSON, otherwise the raw text, so callers can surface field-level validation errors.
@@ -51,10 +65,8 @@ export class ReefError extends Error {
     // differently from "Invalid bearer token: <JWT error>" (we sent one and it was
     // rejected). Fold it into the message, because an uncaught error logs only
     // Error.message and `body` would otherwise go unread in the console.
-    const detail =
-      typeof body === 'object' && body !== null && 'detail' in body && typeof body.detail === 'string'
-        ? ` — ${body.detail}`
-        : ''
+    const { data } = ErrorDetailSchema.safeParse(body)
+    const detail = data === undefined ? '' : ` — ${data.detail}`
     super(`[reef] ${method} ${path} failed: ${status} ${statusText}${detail}`)
     this.name = 'ReefError'
     this.status = status
@@ -199,6 +211,33 @@ export const createSubscription = (
 export const deleteSubscription = (id: number, signal?: AbortSignal): Promise<void> =>
   reefFetch(`/api/reef/subscriptions/${id}/`, { method: 'DELETE', auth: 'required', signal })
 
+// --- Document sets ------------------------------------------------------------------------
+
+// The caller's own sets, each carrying its `documents` membership. There's no per-document
+// endpoint to ask "which of my sets contain this RFC", so this list is the only read available.
+export const getSets = (signal?: AbortSignal): Promise<DocumentSet[]> =>
+  reefFetch('/api/reef/sets/', { auth: 'required', signal })
+
+// Add one document to one set, returning the updated set. Reef canonicalizes the identifier, so
+// the compact form is what we send. The spec calls PUT idempotent, so adding a document the set
+// already holds answers 200 rather than an error — only the first add answers 201, and callers
+// have no reason to tell those apart.
+export const putSetDocument = (id: number, doc: string, signal?: AbortSignal): Promise<DocumentSet> =>
+  reefFetch(`/api/reef/sets/${id}/documents/${encodeURIComponent(doc)}/`, {
+    method: 'PUT',
+    auth: 'required',
+    signal
+  })
+
+// Remove one document from one set. Answers 204, so unlike the PUT there's no updated set to read
+// the new membership from.
+export const deleteSetDocument = (id: number, doc: string, signal?: AbortSignal): Promise<void> =>
+  reefFetch(`/api/reef/sets/${id}/documents/${encodeURIComponent(doc)}/`, {
+    method: 'DELETE',
+    auth: 'required',
+    signal
+  })
+
 // --- Surveys (management; staff only, used by the builder) -------------------------------
 
 export const getSurveys = (signal?: AbortSignal): Promise<Survey[]> =>
@@ -254,3 +293,129 @@ export const createSurveyResponse = (
 // Surveys currently open to the caller — the list Red uses for its survey popover.
 export const getOpenSurveys = (signal?: AbortSignal): Promise<OpenSurvey[]> =>
   reefFetch('/api/reef/surveys/open/', { auth: 'optional', signal })
+
+// --- Coordinating one reader's reads and writes -------------------------------------------
+//
+// Not API surface: bookkeeping shared by the per-reader features. Each of them — the reader's
+// rating of an RFC, their subscription to it, which of their sets hold it — loads Reef's answer
+// when the reader or the RFC changes and writes their own changes back, and each needs the same
+// care to do it safely. A read that has been superseded must not land and overwrite a newer
+// answer; a deliberate change must supersede a read still in flight, which would otherwise
+// arrive afterwards and overwrite the change with the value it set out to fetch; and of several
+// rapid changes the last must be the one that wins. That care lives here, once, leaving the
+// feature modules holding only what's particular to them.
+
+// What became of one request. `superseded` covers both a newer request having taken over and the
+// component having gone away — callers treat those the same way, by leaving everything alone,
+// since whatever replaced this request is the thing that should decide the state.
+export type ReefRequestOutcome<T> =
+  | { status: 'done'; value: T }
+  | { status: 'superseded' }
+  | { status: 'failed'; error: unknown }
+
+const runReefRequest = async <T>(
+  controller: AbortController,
+  run: (signal: AbortSignal) => Promise<T>
+): Promise<ReefRequestOutcome<T>> => {
+  const { signal } = controller
+  try {
+    const value = await run(signal)
+    // Checked on the way out as well as in the catch below, because a request can resolve without
+    // ever consulting its signal — a cached read answers from sessionStorage and never reaches
+    // fetch — and a superseded read must not report a value the caller would then act on.
+    return signal.aborted ? { status: 'superseded' } : { status: 'done', value }
+  } catch (error) {
+    return signal.aborted ? { status: 'superseded' } : { status: 'failed', error }
+  }
+}
+
+export type ReefRequests = {
+  // Run a read, abandoning any read this feature already had in flight: the newest answer is the
+  // only one worth having.
+  load: <T>(run: (signal: AbortSignal) => Promise<T>) => Promise<ReefRequestOutcome<T>>
+  // Run a write, superseding any write already in flight so the reader's last change wins, and
+  // abandoning any read for the reason given above. Reads and writes have controllers of their
+  // own, so a write is never cancelled by a read.
+  write: <T>(run: (signal: AbortSignal) => Promise<T>) => Promise<ReefRequestOutcome<T>>
+  // As `write`, but for a feature whose parts change independently: one controller per key rather
+  // than one for all of them, so changing two things starts two writes and neither aborts the
+  // other. Only a change to the *same* key supersedes anything.
+  writeFor: <T>(key: string, run: (signal: AbortSignal) => Promise<T>) => Promise<ReefRequestOutcome<T>>
+  // Abandon a read in flight without starting another, for when there's nothing to read — nobody
+  // is signed in, so there's no per-reader answer to ask for.
+  abortLoad: () => void
+}
+
+const createReefRequests = (): ReefRequests => {
+  let loadController: AbortController | undefined
+  let writeController: AbortController | undefined
+  const writeControllersByKey = new Map<string, AbortController>()
+
+  const abortLoad = () => {
+    loadController?.abort()
+  }
+
+  return {
+    load: (run) => {
+      abortLoad()
+      loadController = new AbortController()
+      return runReefRequest(loadController, run)
+    },
+    write: (run) => {
+      abortLoad()
+      writeController?.abort()
+      writeController = new AbortController()
+      return runReefRequest(writeController, run)
+    },
+    writeFor: async (key, run) => {
+      abortLoad()
+      writeControllersByKey.get(key)?.abort()
+      const controller = new AbortController()
+      writeControllersByKey.set(key, controller)
+      try {
+        return await runReefRequest(controller, run)
+      } finally {
+        // Only if this is still the current write for the key — a superseded write must not clear
+        // the controller belonging to the write that replaced it.
+        if (writeControllersByKey.get(key) === controller) {
+          writeControllersByKey.delete(key)
+        }
+      }
+    },
+    abortLoad
+  }
+}
+
+// The Vue side of the above: reads are abandoned when the component goes away. Writes deliberately
+// are not — a rating the reader has just set or removed, a subscription they've just ticked, a set
+// they've just added this RFC to should all reach Reef even if they navigate away immediately, and
+// unlike a read there's no state left behind for a late response to corrupt.
+export const useReefRequests = (): ReefRequests => {
+  const requests = createReefRequests()
+  onBeforeUnmount(requests.abortLoad)
+  return requests
+}
+
+// Run `load` for the current reader and RFC, now and again whenever either changes. Whether anyone
+// is signed in is passed rather than left to be looked up, because it decides what a load even
+// means: Reef identifies a reader by their bearer token, so signed out there is nothing to ask for
+// and the feature resets instead.
+//
+// `immediate` is load-bearing, not a convenience. Both gates in front of the RFC page's Reef row
+// are async and client-side — the oidc feature flag comes from localStorage, and oidcRestore() runs
+// in Header.vue's onMounted — so a restored session often lands *before* setup runs, leaving
+// isAuthenticated already true with no transition left to observe. Without immediate the callback
+// then never fires at all.
+export const watchReefUserDocument = (
+  rfcNumber: () => number,
+  load: (rfcNumber: number, isAuthenticated: boolean) => void
+): void => {
+  const authStore = useAuthStore()
+  watch(
+    [() => authStore.isAuthenticated, rfcNumber],
+    () => {
+      load(rfcNumber(), authStore.isAuthenticated)
+    },
+    { immediate: true }
+  )
+}

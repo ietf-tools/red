@@ -18,14 +18,18 @@
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
           <DialogContent
             :class="[
-              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-105',
+              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-105',
               'focus:outline-none rounded-md shadow-3xl',
               'bg-white dark:bg-gray-800',
-              'px-4 pt-3 pb-1'
+              'px-4 pt-3 pb-1',
+              {
+                'max-w-[550px]': !isAuthenticated,
+                'max-w-[350px]': isAuthenticated
+              }
             ]">
             <DialogTitle class="text-lg font-semibold text-center pb-3">
               <template v-if="!isAuthenticated">You need an account to</template>
-              <template v-else>Your subscriptions</template>
+              <template v-else>RFC subscription</template>
             </DialogTitle>
 
             <DialogDescription class="text-sm pt-3">
@@ -42,7 +46,10 @@
                       <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                     </CheckboxIndicator>
                   </span>
-                  <span>Email me about changes to RFC {{ props.rfcNumber }}</span>
+                  <span
+                    >Subscribe to
+                    <RFCTitle :rfc="{ number: props.rfcNumber, title: '' }" :hide-title="true" /> changes</span
+                  >
                 </CheckboxRoot>
 
                 <div class="flex justify-end pb-2 pt-4">
@@ -98,7 +105,7 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import type { OidcUser } from '~/utilities/oidc'
-import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/ratings'
+import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {

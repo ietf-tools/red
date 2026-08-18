@@ -16,6 +16,7 @@ import { useAuthStore } from '~/stores/auth'
 import type { Notification } from '~/stores/notifications'
 import { useNotificationsStore } from '~/stores/notifications'
 import { useFeatureFlags } from '~/utilities/feature-flags'
+import { clearReefCaches } from '~/utilities/reef-cache'
 
 export type OidcConfig = {
   authority: string
@@ -289,6 +290,11 @@ export const useOidcSession = (): void => {
         }
         void onOidcSessionEnded(oidcConfig, () => {
           authStore.clearUser()
+          // Whatever this tab remembered about the reader's own ratings, subscriptions and sets was
+          // theirs, so it goes when their session does. This runs on every way a session can end,
+          // including an explicit sign-out: signoutRedirect discards the stored user before it
+          // navigates, which is what raises the event this listens to.
+          clearReefCaches()
         })
         void oidcRestore(oidcConfig)
           .then(({ user, isFreshSignIn, returnTo }) => {

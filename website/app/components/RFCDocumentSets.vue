@@ -30,6 +30,36 @@
 
             <DialogDescription class="text-sm">
               <template v-if="isAuthenticated">
+                <!-- One checkbox per set, ticked when the set already holds this RFC. Checkboxes
+                   rather than an add-only list because the dialog has to show what's already true
+                   as well as offer the change, and aria-checked carries both without a live
+                   region. There's no save button here for the same reason the rating dialog has
+                   none: ticking a row writes. -->
+                <CheckboxGroupRoot
+                  v-if="props.sets.length > 0"
+                  v-model="setIdsWithThisRFC"
+                  role="group"
+                  :aria-label="`Sets holding RFC ${props.rfcNumber}`"
+                  class="flex flex-col gap-1 pb-2">
+                  <CheckboxRoot
+                    v-for="set in props.sets"
+                    :key="set.id"
+                    :value="String(set.id)"
+                    class="flex items-start gap-2 cursor-pointer w-full text-left py-1">
+                    <span
+                      class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
+                      <CheckboxIndicator>
+                        <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                      </CheckboxIndicator>
+                    </span>
+                    <span>{{ set.title }}</span>
+                  </CheckboxRoot>
+                </CheckboxGroupRoot>
+
+                <!-- Nothing to tick, and nowhere in Red to fix that yet — so this says what's
+                   missing rather than leaving an empty dialog that looks broken. -->
+                <p v-else class="italic py-3">You have no sets yet.</p>
+
                 <div class="flex justify-end pb-2">
                   <DialogClose
                     :class="[
@@ -65,9 +95,16 @@
 
 <script setup lang="ts">
 /**
- * The subscribe dialog for one RFC.
+ * The "add to set" dialog for one RFC.
+ *
+ * Holds no state of its own, the same way the rating and subscribe dialogs don't: which sets hold
+ * this RFC is a model, so ticking a row updates the parent's ref and the parent is what persists
+ * it — and reports a failure, since it's the only one that knows Reef refused.
  */
 import {
+  CheckboxGroupRoot,
+  CheckboxIndicator,
+  CheckboxRoot,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -77,15 +114,28 @@ import {
   DialogTitle,
   DialogTrigger
 } from 'reka-ui'
-import { oidcLogin } from '~/utilities/oidc'
-import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/ratings'
+import type { OidcUser } from '~/utilities/oidc'
+import type { DocumentSet } from '~/utilities/reef'
+import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
+  rfcNumber: number
   reefStats: RfcBucketHtmlDocument['reefStats']
+  // The signed-in reader, or undefined when nobody is signed in. Passed in rather than read from
+  // the auth store here, so this component renders from what it's given and the parent stays the
+  // one place that decides what "signed in" means for this row.
+  user: OidcUser | undefined
+  // The reader's sets, already in the order they should be listed. Empty while logged out, and
+  // empty for a reader who keeps none.
+  sets: DocumentSet[]
 }
 
 const props = defineProps<Props>()
+
+// The ids of the sets holding this RFC, as strings, because that's what a checkbox group's value
+// is. Built by the parent from Reef's own answer.
+const setIdsWithThisRFC = defineModel<string[]>({ default: () => [] })
 
 const formatNumber = (val: number, decimalPlaces: number) => {
   return new Intl.NumberFormat('en-US', {
@@ -95,8 +145,8 @@ const formatNumber = (val: number, decimalPlaces: number) => {
   }).format(val)
 }
 
-// Reef needs a bearer token to know whose rating to store, so an anonymous pick can only fail with
-// a 401. Ask for a sign-in instead of letting the stars look interactive and then silently lose it.
-const authStore = useAuthStore()
-const { isAuthenticated } = storeToRefs(authStore)
+// Reef needs a bearer token to know whose sets to read and change, so an anonymous tick could only
+// fail with a 401. Ask for a sign-in instead of letting the checkboxes look interactive and then
+// silently lose the change.
+const isAuthenticated = computed(() => props.user !== undefined)
 </script>

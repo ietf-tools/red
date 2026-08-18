@@ -112,7 +112,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from 'reka-ui'
-import { STAR_SCORE_LENGTH, userRFCRatingLabel } from '~/utilities/ratings'
+import { STAR_SCORE_LENGTH, userRFCRatingLabel } from '~/utilities/reef-ratings'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {

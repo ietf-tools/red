@@ -1,44 +1,25 @@
-// Rating feature logic: the star scale itself, and reading and writing the signed-in user's own
-// rating of an RFC through the Reef API.
+// Rating feature logic: the star scale itself, reading and writing the signed-in user's own rating
+// of an RFC through the Reef API, and the model an RFC page binds its rating dialog to.
 //
-// Lives here rather than in RFCDocumentReefStats/RFCDocumentRateThisRFC so the display and the
-// rating dialog share one definition of what a rating is, and one way of fetching and saving one.
+// Lives here rather than in RFCDocumentReef/RFCDocumentRateThisRFC so the display and the rating
+// dialog share one definition of what a rating is, one way of fetching and saving one, and one
+// account of what happens when Reef refuses.
 
+import { ref, watch, type Ref } from 'vue'
+import { z } from 'zod'
 import { useAuthStore } from '~/stores/auth'
-import type { Notification } from '~/stores/notifications'
-import { deleteRating, getRating, putRating, type RatingAggregate } from '~/utilities/reef'
+import { useNotificationsStore, type Notification } from '~/stores/notifications'
+import { REEF_CACHE_PREFIX } from '~/utilities/reef-cache'
+import {
+  deleteRating,
+  getRating,
+  putRating,
+  useReefRequests,
+  watchReefUserDocument,
+  type RatingAggregate
+} from '~/utilities/reef'
 
 export const STAR_SCORE_LENGTH = 5
-
-export const COVER_LINK_STYLE_CLASS = `${
-  // the card background colour layer
-  "before:absolute before:content-[''] before:inset-0 before:rounded"
-} ${
-  // card background layer should be below the slots z-index
-  'before:z-0'
-} ${
-  // the card cover link itself (increases clickable area of the link)
-  "after:absolute after:content-[''] after:inset-0"
-} ${
-  // card cover link should be above the card background colour layer, so 40 is
-  // an arbitrary choice.
-  //
-  // Generally slots content should be between these layers, so that means
-  // z-index 1-39.
-  //
-  // however sometimes slot content intentionally rises above (eg RFCCard usage
-  // of Card has Subseries links see RFC2119) and 'Show Abstract' buttons which
-  // should be stacked above 40.
-  'after:z-40'
-} after:transition-all ${
-  // card tint when focus/hover
-  `hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-100 dark:focus:text-blue-100 hover:before:bg-sky-100 focus:before:bg-blue-25 dark:hover:before:bg-blue-900 dark:focus:before:bg-blue-900`
-} ${
-  // Link border
-  `after:border-1 after:border-white dark:after:border-black after:rounded hover:after:border-blue-800 focus:after:outline-2 focus:after:outline-black`
-}`
-
-export const COVER_LINK_INNER_STYLE_CLASS = `relative z-1`
 
 // A rating is a whole number of stars, 1..STAR_SCORE_LENGTH — see RatingWrite.value's minimum
 // and maximum in reef_api.yaml. `undefined` means the user hasn't rated this RFC, which is a
@@ -67,7 +48,7 @@ export const userRFCRatingLabel = (rating: UserRFCRating): string =>
 // another device is not picked up until this tab reloads — that bounded staleness is what the
 // per-tab lifetime buys, and it's why this isn't localStorage.
 
-const RATING_CACHE_PREFIX = 'red.reef.user-rating.'
+const RATING_CACHE_PREFIX = `${REEF_CACHE_PREFIX}user-rating.`
 
 // Keyed by the OIDC subject as well as the RFC, because sessionStorage outlives a sign-out: two
 // readers using the same tab in turn must not be shown each other's ratings. Signed out there's
@@ -83,8 +64,10 @@ const ratingCacheKey = (rfcNumber: number): string | undefined => {
 // non-rater would ask Reef again.
 type CachedUserRFCRating = { rating: UserRFCRating }
 
-const isCachedRatingValue = (value: unknown): value is number =>
-  typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= STAR_SCORE_LENGTH
+// What a stored rating is allowed to be: a whole number of stars on the scale Reef accepts, or
+// null. JSON has no undefined, so null is how "hasn't rated this RFC" is written — a real answer
+// the schema has to accept rather than a value to reject.
+const CachedUserRFCRatingSchema = z.number().int().min(1).max(STAR_SCORE_LENGTH).nullable()
 
 const readCachedUserRFCRating = (rfcNumber: number): CachedUserRFCRating | undefined => {
   if (!import.meta.client) {
@@ -99,18 +82,15 @@ const readCachedUserRFCRating = (rfcNumber: number): CachedUserRFCRating | undef
     if (stored === null) {
       return undefined
     }
-    const parsed: unknown = JSON.parse(stored)
-    // JSON has no undefined, so "not rated" is stored as null and read back as a hit.
-    if (parsed === null) {
-      return { rating: undefined }
+    const { data, error } = CachedUserRFCRatingSchema.safeParse(JSON.parse(stored))
+    if (error) {
+      // Written by an older version of this code, or edited by hand. Discard it and ask Reef, which
+      // is the only thing that can restore a value we're able to trust.
+      window.sessionStorage.removeItem(key)
+      return undefined
     }
-    if (isCachedRatingValue(parsed)) {
-      return { rating: parsed }
-    }
-    // Written by an older version of this code, or edited by hand. Discard it and ask Reef, which
-    // is the only thing that can restore a value we're able to trust.
-    window.sessionStorage.removeItem(key)
-    return undefined
+    // The stored null becoming the one "no rating" value the rest of this module deals in.
+    return { rating: data ?? undefined }
   } catch (error) {
     // sessionStorage throws outright when browser storage is disabled, and JSON.parse throws on a
     // truncated value. Either way the cache is unavailable, which is a miss rather than a failure.
@@ -224,3 +204,112 @@ export const ratingRemovalFailedNotification = (rfcNumber: number): Notification
   position: 'top',
   type: 'foreground'
 })
+
+// --- The model an RFC page binds ---------------------------------------------------------
+
+// This reader's own rating of one RFC as a model for the rating dialog: loaded from Reef when the
+// reader or the RFC changes, and written back when they pick a star or remove it. `undefined` while
+// they haven't rated the RFC, and while nobody is signed in.
+//
+// Only the per-reader part is fetched. The public numbers shown beside it come from the bucket
+// JSON's precomputed reefStats — Reef's rating GET happens to return `average`/`count` too, but
+// reading those here would mean a per-visitor request for figures the cached page already carries.
+export const useUserRFCRating = (rfcNumber: () => number): Ref<UserRFCRating> => {
+  const notificationsStore = useNotificationsStore()
+  const requests = useReefRequests()
+
+  const userRFCRating = ref<UserRFCRating>()
+
+  // The rating Reef is already holding. `userRFCRating` changes for two quite different reasons — a
+  // load bringing the stored rating down, or the reader picking a star — and only the second should
+  // be written back. Recording what came from Reef is what tells them apart; without it, loading an
+  // existing rating immediately echoes back out as a PUT of the value we just read.
+  let syncedRating: UserRFCRating
+
+  const load = async (rfc: number, isAuthenticated: boolean) => {
+    // Reef identifies the rating's owner by the bearer token, so there's nothing to ask for while
+    // logged out. Reset rather than leave the previous reader's stars behind, and reset what Reef
+    // is holding first so the write watcher reads this as an answer rather than a withdrawal.
+    if (!isAuthenticated) {
+      requests.abortLoad()
+      syncedRating = undefined
+      userRFCRating.value = undefined
+      return
+    }
+
+    const outcome = await requests.load((signal) => getUserRFCRating(rfc, signal))
+
+    if (outcome.status === 'failed') {
+      // Not worth interrupting the page over: the aggregate stars still render, and the reader's
+      // own rating is simply absent.
+      console.error('Unable to load your rating for this RFC.', outcome.error)
+      return
+    }
+    if (outcome.status !== 'done') {
+      return
+    }
+    // Before the assignment, so the save watcher — which fires on the next tick — already sees
+    // this as Reef's own value and leaves it alone.
+    syncedRating = outcome.value
+    userRFCRating.value = outcome.value
+  }
+
+  const persist = async (rating: UserRFCRating) => {
+    // A pick and a removal both arrive here as a change to the model; what tells either of them from
+    // a load bringing Reef's own value down is syncedRating. Equal means there's nothing to write —
+    // which covers the initial state, where the model and Reef are both undefined and a removal
+    // would have nothing to remove.
+    if (rating === syncedRating) {
+      return
+    }
+
+    const rfc = rfcNumber()
+
+    // undefined is the reader withdrawing their rating rather than any value to store, so it's the
+    // one case that deletes instead of putting.
+    const isRemoval = rating === undefined
+
+    const outcome = await requests.write((signal) =>
+      isRemoval ? removeUserRFCRating(rfc, signal) : saveUserRFCRating(rfc, rating, signal)
+    )
+
+    if (outcome.status === 'superseded') {
+      return
+    }
+    if (outcome.status === 'failed') {
+      if (isRemoval) {
+        // The dialog has closed and the stars have already emptied, so leaving it there would show a
+        // removal that didn't happen. Put the rating back — the watcher sees it match syncedRating
+        // and doesn't try to write it out again — and say so, since there's nothing else on screen
+        // that would tell the reader.
+        userRFCRating.value = syncedRating
+        notificationsStore.add(ratingRemovalFailedNotification(rfc))
+        console.error('Unable to remove your rating for this RFC.', outcome.error)
+        return
+      }
+      // Leaves the stars showing a rating Reef didn't accept. Worth surfacing to the reader
+      // eventually; for now it's a console error rather than a silent divergence.
+      console.error('Unable to save your rating for this RFC.', outcome.error)
+      return
+    }
+
+    syncedRating = rating
+
+    if (isRemoval) {
+      // Announced only once Reef has accepted it, and only for a removal: picking a star is
+      // announced by the live region in the dialog, but the dialog closes on a removal, so this
+      // toast is the only report the reader gets.
+      notificationsStore.add(ratingRemovedNotification(rfc))
+    }
+  }
+
+  watchReefUserDocument(rfcNumber, (rfc, isAuthenticated) => {
+    void load(rfc, isAuthenticated)
+  })
+
+  watch(userRFCRating, (rating) => {
+    void persist(rating)
+  })
+
+  return userRFCRating
+}
