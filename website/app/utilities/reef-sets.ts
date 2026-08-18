@@ -11,14 +11,21 @@ import { useAuthStore } from '~/stores/auth'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
 import { REEF_CACHE_PREFIX } from '~/utilities/reef-cache'
 import {
+  createSet,
   deleteSetDocument,
   getSets,
   putSetDocument,
+  ReefError,
   useReefRequests,
   watchReefUserDocument,
   type DocumentSet,
-  type DocumentSetEntry
+  type DocumentSetEntry,
+  type DocumentSetVisibility
 } from '~/utilities/reef'
+
+// From DocumentSet.title's maxLength in reef_api.yaml. Enforced on the input as well as here, so
+// the reader is stopped at the field rather than by a 400 after submitting.
+export const SET_TITLE_MAX_LENGTH = 200
 
 // Reef canonicalizes document identifiers — the sets_documents_update description spells out that
 // `.../documents/RFC%209110/` and `.../documents/rfc9110/` are the same entry — so the compact
@@ -167,6 +174,59 @@ export const getUserSets = async (signal?: AbortSignal): Promise<DocumentSet[]> 
   return sortSets(sets)
 }
 
+// What the reader fills in. Everything else about a set is server-assigned, and membership can't be
+// set at creation — `documents` is read-only, so a new set is always born empty.
+export type NewSet = {
+  title: string
+  description: string
+  // Not optional as it is on DocumentSet: the form always has one of the two selected, so there's
+  // no "unset" state to model here.
+  visibility: DocumentSetVisibility
+}
+
+// Create one set for the caller. Reef answers with the stored set, which is what goes into the
+// cache — the title may have been trimmed and the slug is assigned here, so the response is the
+// only trustworthy copy.
+export const createUserSet = async ({ title, description, visibility }: NewSet, signal?: AbortSignal) => {
+  const created = await createSet(
+    {
+      title: title.trim(),
+      // Omitted rather than sent empty, so Reef stores its own default for a field the reader left
+      // alone instead of an empty string that would read as a deliberate blanking.
+      ...(description.trim() === '' ? {} : { description: description.trim() }),
+      visibility
+    },
+    signal
+  )
+  // Only once Reef has accepted it, so the tab never caches a set Reef isn't holding. A miss is
+  // left alone for the same reason patchCachedSet leaves one alone.
+  const cached = readCachedSets()
+  if (cached !== undefined) {
+    writeCachedSets([...cached, created])
+  }
+  return created
+}
+
+// A creation failure is reported in the form rather than as a toast, so it needs wording rather
+// than a console line. Reef rejects a bad title with DRF's field-errors shape — `{title: ["..."]}`
+// — which names the problem far better than anything this could invent, so it's preferred when
+// present and a generic line is the fallback.
+const FieldErrorsSchema = z.record(z.string(), z.array(z.string()).nonempty())
+
+export const setCreationErrorMessage = (error: unknown): string => {
+  if (error instanceof ReefError) {
+    const { data } = FieldErrorsSchema.safeParse(error.body)
+    const firstMessage = data === undefined ? undefined : Object.values(data)[0]?.[0]
+    if (firstMessage !== undefined) {
+      return firstMessage
+    }
+    if (error.status === 401) {
+      return 'Your session has expired. Sign in again to create a set.'
+    }
+  }
+  return 'Your set could not be created. Please try again.'
+}
+
 // Add this RFC to one set. Reef answers with the updated set, so the cached copy is replaced
 // wholesale rather than patched by hand — membership, ranks and updated_at all come from Reef.
 export const addRFCToSet = async (setId: number, rfcNumber: number, signal?: AbortSignal): Promise<DocumentSet> => {
@@ -221,11 +281,18 @@ export const setMembershipFailedNotification = (
 
 // --- The models an RFC page binds --------------------------------------------------------
 
+// The dialog reports a creation failure inline, next to the field that caused it, so this hands
+// back a message rather than leaving the caller to interpret a ReefError.
+export type CreateSetOutcome = { ok: true; set: DocumentSet } | { ok: false; message: string }
+
 export type UserSets = {
   // The reader's sets, in the order the dialog lists them. Empty while nobody is signed in.
   sets: Ref<DocumentSet[]>
   // Which of those sets hold this RFC, as the checkbox group's value.
   setIdsWithThisRFC: Ref<string[]>
+  // Create a set and put this RFC in it. Resolves once the set exists; see the note on the
+  // implementation for why it doesn't wait for the membership.
+  createSet: (newSet: NewSet) => Promise<CreateSetOutcome>
 }
 
 // This reader's sets and which of them hold one RFC, as models for the "Add to set" dialog: loaded
@@ -352,5 +419,30 @@ export const useUserSets = (rfcNumber: () => number): UserSets => {
     persist(setIds)
   })
 
-  return { sets, setIdsWithThisRFC }
+  // Creating a set from the "Add to set" dialog means the reader wants this RFC in it — offering a
+  // set they'd then have to tick separately would be a strange place to stop. So the new set is
+  // ticked here, and the membership goes out through the same watcher a tick does, which brings its
+  // own retry-less error handling and toast with it.
+  //
+  // That's also why this resolves as soon as the set exists rather than waiting for the membership:
+  // the form has nothing left to do once the set is created, and holding it open through a second
+  // request would leave the reader looking at a form for a set that already exists.
+  const create = async (newSet: NewSet): Promise<CreateSetOutcome> => {
+    // Deliberately not requests.write: that aborts any in-flight load and supersedes other writes,
+    // and a creation is neither — it stands alone, and cancelling it because a membership tick came
+    // along would lose a set the reader has already filled a form in for.
+    try {
+      const created = await createUserSet(newSet)
+      // Before the tick, so the watcher below already finds the new set when it looks up what the
+      // added id refers to. Both land in the same tick, and the watcher runs after it.
+      sets.value = sortSets([...sets.value, created])
+      setIdsWithThisRFC.value = [...setIdsWithThisRFC.value, String(created.id)]
+      return { ok: true, set: created }
+    } catch (error) {
+      console.error('Unable to create a set.', error)
+      return { ok: false, message: setCreationErrorMessage(error) }
+    }
+  }
+
+  return { sets, setIdsWithThisRFC, createSet: create }
 }

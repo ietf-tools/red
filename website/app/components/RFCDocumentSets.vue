@@ -30,46 +30,55 @@
 
             <DialogDescription class="text-sm">
               <template v-if="isAuthenticated">
-                <!-- One checkbox per set, ticked when the set already holds this RFC. Checkboxes
+                <div>
+                  <!-- One checkbox per set, ticked when the set already holds this RFC. Checkboxes
                    rather than an add-only list because the dialog has to show what's already true
                    as well as offer the change, and aria-checked carries both without a live
                    region. There's no save button here for the same reason the rating dialog has
                    none: ticking a row writes. -->
-                <CheckboxGroupRoot
-                  v-if="props.sets.length > 0"
-                  v-model="setIdsWithThisRFC"
-                  role="group"
-                  :aria-label="`Sets holding RFC ${props.rfcNumber}`"
-                  class="flex flex-col gap-1 pb-2">
-                  <CheckboxRoot
-                    v-for="set in props.sets"
-                    :key="set.id"
-                    :value="String(set.id)"
-                    class="flex items-start gap-2 cursor-pointer w-full text-left py-1">
-                    <span
-                      class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
-                      <CheckboxIndicator>
-                        <GraphicsCheckmark class="block w-[14px] h-[14px]" />
-                      </CheckboxIndicator>
-                    </span>
-                    <span>{{ set.title }}</span>
-                  </CheckboxRoot>
-                </CheckboxGroupRoot>
+                  <CheckboxGroupRoot
+                    v-if="props.sets.length > 0"
+                    v-model="setIdsWithThisRFC"
+                    role="group"
+                    :aria-label="`Sets holding RFC ${props.rfcNumber}`"
+                    class="mx-auto max-w-[300px] flex flex-col gap-1 pb-2">
+                    <CheckboxRoot
+                      v-for="set in props.sets"
+                      :key="set.id"
+                      :value="String(set.id)"
+                      class="flex items-center gap-1 justify-between cursor-pointer w-full text-left py-1">
+                      <div>
+                        <span class="font-bold text-base">{{ set.title }}</span>
+                        <div v-if="set.description">{{ set.description }}</div>
+                      </div>
+                      <span
+                        class="inline-flex shrink-0 items-center justify-center w-[24px] h-[24px] mt-0.5 border-1 rounded border-current/60">
+                        <CheckboxIndicator>
+                          <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                        </CheckboxIndicator>
+                      </span>
+                    </CheckboxRoot>
+                  </CheckboxGroupRoot>
 
-                <!-- Nothing to tick, and nowhere in Red to fix that yet — so this says what's
-                   missing rather than leaving an empty dialog that looks broken. -->
-                <p v-else class="italic py-3">You have no sets yet.</p>
-
-                <div class="flex justify-end pb-2">
-                  <DialogClose
-                    :class="[
-                      'px-3 py-1 rounded-md',
-                      'text-white bg-blue-600 dark:bg-blue-900',
-                      'border border-gray-400',
-                      'cursor-pointer'
-                    ]">
-                    Done
-                  </DialogClose>
+                  <!-- Nothing to tick yet. Said rather than left blank, so the reader reads it as
+                   an empty list with the Create button below as the way on, rather than as a
+                   dialog that failed to load. -->
+                  <p v-else class="text-center italic py-3">You have no sets yet.</p>
+                  <RFCDocumentSetsCreate
+                    :rfc-number="props.rfcNumber"
+                    :create-set="props.createSet"
+                    :has-solid-button="props.sets.length === 0" />
+                  <div class="flex justify-end pb-2">
+                    <DialogClose
+                      :class="[
+                        'px-3 py-1 rounded-md',
+                        'text-blue-800 font-bold border-1 border-blue-600 dark:border-blue-900',
+                        'border border-gray-400',
+                        'cursor-pointer'
+                      ]">
+                      Done
+                    </DialogClose>
+                  </div>
                 </div>
               </template>
               <template v-else>
@@ -117,6 +126,7 @@ import {
 import type { OidcUser } from '~/utilities/oidc'
 import type { DocumentSet } from '~/utilities/reef'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
+import type { CreateSetOutcome, NewSet } from '~/utilities/reef-sets'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
@@ -129,6 +139,10 @@ type Props = {
   // The reader's sets, already in the order they should be listed. Empty while logged out, and
   // empty for a reader who keeps none.
   sets: DocumentSet[]
+  // Not called here — handed straight to the create dialog below, which is the only thing that
+  // creates a set. It comes from the parent's useUserSets, where the rest of the Reef work for
+  // sets lives.
+  createSet: (newSet: NewSet) => Promise<CreateSetOutcome>
 }
 
 const props = defineProps<Props>()

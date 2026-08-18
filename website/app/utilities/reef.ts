@@ -23,6 +23,7 @@ import { getAccessToken } from '~/utilities/oidc'
 
 export type DocumentSet = components['schemas']['DocumentSet']
 export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
+export type DocumentSetVisibility = components['schemas']['DocumentSetVisibilityEnum']
 export type PopularEntry = components['schemas']['PopularEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
 export type RatingWrite = components['schemas']['RatingWrite']
@@ -217,6 +218,15 @@ export const deleteSubscription = (id: number, signal?: AbortSignal): Promise<vo
 // endpoint to ask "which of my sets contain this RFC", so this list is the only read available.
 export const getSets = (signal?: AbortSignal): Promise<DocumentSet[]> =>
   reefFetch('/api/reef/sets/', { auth: 'required', signal })
+
+// Create one set. id, slug, owner_name, created_at and updated_at are server-assigned, so callers
+// supply only the title and the optional description and visibility. Membership isn't settable
+// here either — `documents` is read-only on this schema, so a set is always born empty and the
+// first document is a second call to putSetDocument.
+export const createSet = (
+  set: Omit<DocumentSet, 'id' | 'slug' | 'owner_name' | 'documents' | 'created_at' | 'updated_at'>,
+  signal?: AbortSignal
+): Promise<DocumentSet> => reefFetch('/api/reef/sets/', { method: 'POST', body: set, auth: 'required', signal })
 
 // Add one document to one set, returning the updated set. Reef canonicalizes the identifier, so
 // the compact form is what we send. The spec calls PUT idempotent, so adding a document the set

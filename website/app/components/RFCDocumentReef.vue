@@ -22,6 +22,7 @@
           :reef-stats="props.reefStats"
           :user="user"
           :sets="userSets"
+          :create-set="createSet"
           v-model="setIdsWithThisRFC" />
       </li>
     </ul>
@@ -69,5 +70,5 @@ const rfcNumber = () => props.rfcNumber
 
 const userRFCRating = useUserRFCRating(rfcNumber)
 const isSubscribedToThisRFC = useUserRFCSubscription(rfcNumber)
-const { sets: userSets, setIdsWithThisRFC } = useUserSets(rfcNumber)
+const { sets: userSets, setIdsWithThisRFC, createSet } = useUserSets(rfcNumber)
 </script>
