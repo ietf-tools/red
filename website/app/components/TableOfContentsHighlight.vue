@@ -1,7 +1,8 @@
 <template>
   <VerticalScrollable
     ref="vertical-scrollable"
-    :class="`overflow-y-auto overscroll-contain min-h-0 flex flex-col ${props.wrapperClass}`">
+    :class="`overflow-y-auto overscroll-contain min-h-0 flex flex-col ${props.wrapperClass}`"
+    center-on-scroll>
     <nav :aria-label="props.navAriaLabel">
       <slot />
       <TableOfContentsHighlightSection

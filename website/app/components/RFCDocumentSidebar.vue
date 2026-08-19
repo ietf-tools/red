@@ -27,8 +27,12 @@
     </DialogRoot>
 
     <nav
+      ref="nav-desktop-menu"
       aria-label="In this RFC (desktop menu)"
-      :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']">
+      :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']"
+      @scroll.capture="debouncedCenterOnScroll"
+      @focus.capture="debouncedCenterOnScroll"
+      @wheel.capture="debouncedCenterOnScroll">
       <RFCTabs
         v-model="selectedTab"
         mode="desktop"
@@ -39,7 +43,9 @@
 </template>
 
 <script setup lang="ts">
+import { useDebounceFn } from '@vueuse/core'
 import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
+import { prefersReducedMotion } from '~/utilities/accessibility'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 
@@ -55,6 +61,8 @@ const selectedTab = defineModel<number>('selectedTab')
 
 const props = defineProps<Props>()
 
+const navDesktopMenuRef = useTemplateRef<HTMLElement>('nav-desktop-menu')
+
 const handleCloseAndNavigate = (id: string) => {
   isModalOpen.value = false
   nextTick(() => {
@@ -66,6 +74,19 @@ const handleCloseAndNavigate = (id: string) => {
 const isMounted = ref(false)
 
 onMounted(() => (isMounted.value = true))
+
+const centerOnScroll = () => {
+  const { value: navDesktopMenu } = navDesktopMenuRef
+  if (!navDesktopMenu) {
+    console.error('[internal error] expected nav-desktop-menu to be available')
+    return
+  }
+  navDesktopMenu.scrollIntoView({ behavior: prefersReducedMotion() ? 'instant' : 'smooth' })
+}
+
+const CENTER_ON_SCROLL_TIMER_MS = 30
+
+const debouncedCenterOnScroll = useDebounceFn(centerOnScroll, CENTER_ON_SCROLL_TIMER_MS)
 
 provide(closeModalAndScrollToId, handleCloseAndNavigate)
 </script>
