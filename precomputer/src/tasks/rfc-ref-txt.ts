@@ -67,7 +67,8 @@ type Layout = {
 
 const stringifyRFC = (rfc: RfcCommon): string => {
   let rfcdate = ''
-  let also = ''
+  // let also = ''
+  let subseries = ''
   let doi = ''
 
   if (rfc.title === 'Not Issued') {
@@ -75,14 +76,19 @@ const stringifyRFC = (rfc: RfcCommon): string => {
   } else {
     rfcdate = rfc.published ? DateTime.fromISO(rfc.published).toFormat('LLLL yyyy') : ''
 
-    const alsolist = [...(rfc.is_also && rfc.is_also.length > 0 ? rfc.is_also : [])]
-    if (alsolist.length > 0) {
-      also = `${alsolist.map((rfcId) => `RFC ${rfc.number}`).join(', ')}, `
+    const subseriesList = [...(rfc.subseries && rfc.subseries.length > 0 ? rfc.subseries : [])]
+    if (subseriesList.length > 0) {
+      subseries = `${subseriesList.map((subserie) => `${subserie.type.toUpperCase()} ${subserie.number}`).join(', ')}, `
     }
+
+    // const alsolist = [...(rfc.is_also && rfc.is_also.length > 0 ? rfc.is_also : [])]
+    // if (alsolist.length > 0) {
+    //   also = `${alsolist.map((rfcId) => `RFC ${rfc.number}`).join(', ')}, `
+    // }
 
     doi = formatIdentifiers(rfc.identifiers, ' ').join(' ')
 
-    return `${formatAuthorsPerStyleGuide(rfc.authors, 'brief')}, "${rfc.title}", ${also}RFC ${rfc.number}, ${doi},${
+    return `${formatAuthorsPerStyleGuide(rfc.authors, 'brief')}, "${rfc.title}", ${subseries}RFC ${rfc.number}, ${doi},${
       rfcdate ? ` ${rfcdate},` : ''
     } <${PUBLIC_SITE_URL_ORIGIN}/info/rfc${rfc.number}/>.`
   }

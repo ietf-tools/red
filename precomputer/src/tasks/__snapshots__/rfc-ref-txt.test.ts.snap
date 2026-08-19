@@ -23,7 +23,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
    RFC17 |            | , "Some questions re: Host-IMP Protocol", RFC 17, DOI 10.17487/RFC0017, August 1969, <https://www.rfc-editor.org/info/rfc17/>.
    RFC18 |            | , "IMP-IMP and HOST-HOST Control Links", RFC 18, DOI 10.17487/RFC0018, September 1969, <https://www.rfc-editor.org/info/rfc18/>.
    RFC19 |            | , "Two protocol suggestions to reduce congestion at swap bound nodes", RFC 19, DOI 10.17487/RFC0019, October 1969, <https://www.rfc-editor.org/info/rfc19/>.
-   RFC20 |            | , "ASCII format for network interchange", RFC 20, DOI 10.17487/RFC0020, October 1969, <https://www.rfc-editor.org/info/rfc20/>.
+   RFC20 |            | , "ASCII format for network interchange", STD 80, RFC 20, DOI 10.17487/RFC0020, October 1969, <https://www.rfc-editor.org/info/rfc20/>.
    RFC21 |            | , "Network meeting", RFC 21, DOI 10.17487/RFC0021, October 1969, <https://www.rfc-editor.org/info/rfc21/>.
    RFC22 |            | , "Host-host control message formats", RFC 22, DOI 10.17487/RFC0022, October 1969, <https://www.rfc-editor.org/info/rfc22/>.
    RFC23 |            | , "Transmission of Multiple Control Messages", RFC 23, DOI 10.17487/RFC0023, October 1969, <https://www.rfc-editor.org/info/rfc23/>.
@@ -54,12 +54,12 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
    RFC49 |            | , "Conversations with S. Crocker (UCLA)", RFC 49, DOI 10.17487/RFC0049, April 1970, <https://www.rfc-editor.org/info/rfc49/>.
   RFC298 |     RFC306 | , "Network host status", RFC 298, DOI 10.17487/RFC0298, February 1972, <https://www.rfc-editor.org/info/rfc298/>.
  RFC1000 |            | , "Request For Comments reference guide", RFC 1000, DOI 10.17487/RFC1000, August 1987, <https://www.rfc-editor.org/info/rfc1000/>.
- RFC1001 |            | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods", RFC 1001, DOI 10.17487/RFC1001, March 1987, <https://www.rfc-editor.org/info/rfc1001/>.
- RFC1002 |            | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications", RFC 1002, DOI 10.17487/RFC1002, March 1987, <https://www.rfc-editor.org/info/rfc1002/>.
+ RFC1001 |            | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods", STD 19, RFC 1001, DOI 10.17487/RFC1001, March 1987, <https://www.rfc-editor.org/info/rfc1001/>.
+ RFC1002 |            | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications", STD 19, RFC 1002, DOI 10.17487/RFC1002, March 1987, <https://www.rfc-editor.org/info/rfc1002/>.
  RFC1003 |            | , "Issues in defining an equations representation standard", RFC 1003, DOI 10.17487/RFC1003, March 1987, <https://www.rfc-editor.org/info/rfc1003/>.
  RFC1004 |            | , "Distributed-protocol authentication scheme", RFC 1004, DOI 10.17487/RFC1004, April 1987, <https://www.rfc-editor.org/info/rfc1004/>.
  RFC1005 |            | , "ARPANET AHIP-E Host Access Protocol (enhanced AHIP)", RFC 1005, DOI 10.17487/RFC1005, May 1987, <https://www.rfc-editor.org/info/rfc1005/>.
- RFC1006 |            | , "ISO Transport Service on top of the TCP Version: 3", RFC 1006, DOI 10.17487/RFC1006, May 1987, <https://www.rfc-editor.org/info/rfc1006/>.
+ RFC1006 |            | , "ISO Transport Service on top of the TCP Version: 3", STD 35, RFC 1006, DOI 10.17487/RFC1006, May 1987, <https://www.rfc-editor.org/info/rfc1006/>.
  RFC1007 |            | , "Military supplement to the ISO Transport Protocol", RFC 1007, DOI 10.17487/RFC1007, June 1987, <https://www.rfc-editor.org/info/rfc1007/>.
  RFC1008 |            | , "Implementation guide for the ISO Transport Protocol", RFC 1008, DOI 10.17487/RFC1008, June 1987, <https://www.rfc-editor.org/info/rfc1008/>.
  RFC1009 |    RFC1812 | , "Requirements for Internet gateways", RFC 1009, DOI 10.17487/RFC1009, June 1987, <https://www.rfc-editor.org/info/rfc1009/>.
@@ -87,17 +87,17 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC1031 |            | , "MILNET name domain transition", RFC 1031, DOI 10.17487/RFC1031, November 1987, <https://www.rfc-editor.org/info/rfc1031/>.
  RFC1032 |            | , "Domain administrators guide", RFC 1032, DOI 10.17487/RFC1032, November 1987, <https://www.rfc-editor.org/info/rfc1032/>.
  RFC1033 |            | , "Domain Administrators Operations Guide", RFC 1033, DOI 10.17487/RFC1033, November 1987, <https://www.rfc-editor.org/info/rfc1033/>.
- RFC1034 |            | , "Domain names - concepts and facilities", RFC 1034, DOI 10.17487/RFC1034, November 1987, <https://www.rfc-editor.org/info/rfc1034/>.
- RFC1035 |            | , "Domain names - implementation and specification", RFC 1035, DOI 10.17487/RFC1035, November 1987, <https://www.rfc-editor.org/info/rfc1035/>.
+ RFC1034 |            | , "Domain names - concepts and facilities", STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987, <https://www.rfc-editor.org/info/rfc1034/>.
+ RFC1035 |            | , "Domain names - implementation and specification", STD 13, RFC 1035, DOI 10.17487/RFC1035, November 1987, <https://www.rfc-editor.org/info/rfc1035/>.
  RFC1036 | RFC5536, RFC5537 | , "Standard for interchange of USENET messages", RFC 1036, DOI 10.17487/RFC1036, December 1987, <https://www.rfc-editor.org/info/rfc1036/>.
  RFC1037 |            | , "NFILE - a file access protocol", RFC 1037, DOI 10.17487/RFC1037, December 1987, <https://www.rfc-editor.org/info/rfc1037/>.
  RFC1038 |    RFC1108 | , "Draft revised IP security option", RFC 1038, DOI 10.17487/RFC1038, January 1988, <https://www.rfc-editor.org/info/rfc1038/>.
  RFC1039 |            | , "DoD statement on Open Systems Interconnection protocols", RFC 1039, DOI 10.17487/RFC1039, January 1988, <https://www.rfc-editor.org/info/rfc1039/>.
  RFC1040 |    RFC1113 | , "Privacy enhancement for Internet electronic mail: Part I: Message encipherment and authentication procedures", RFC 1040, DOI 10.17487/RFC1040, January 1988, <https://www.rfc-editor.org/info/rfc1040/>.
  RFC1041 |            | , "Telnet 3270 regime option", RFC 1041, DOI 10.17487/RFC1041, January 1988, <https://www.rfc-editor.org/info/rfc1041/>.
- RFC1042 |            | , "Standard for the transmission of IP datagrams over IEEE 802 networks", RFC 1042, DOI 10.17487/RFC1042, February 1988, <https://www.rfc-editor.org/info/rfc1042/>.
+ RFC1042 |            | , "Standard for the transmission of IP datagrams over IEEE 802 networks", STD 43, RFC 1042, DOI 10.17487/RFC1042, February 1988, <https://www.rfc-editor.org/info/rfc1042/>.
  RFC1043 |            | , "Telnet Data Entry Terminal option: DODIIS implementation", RFC 1043, DOI 10.17487/RFC1043, February 1988, <https://www.rfc-editor.org/info/rfc1043/>.
- RFC1044 |            | , "Internet Protocol on Network System's HYPERchannel: Protocol Specification", RFC 1044, DOI 10.17487/RFC1044, February 1988, <https://www.rfc-editor.org/info/rfc1044/>.
+ RFC1044 |            | , "Internet Protocol on Network System's HYPERchannel: Protocol Specification", STD 45, RFC 1044, DOI 10.17487/RFC1044, February 1988, <https://www.rfc-editor.org/info/rfc1044/>.
  RFC1045 |            | , "VMTP: Versatile Message Transaction Protocol: Protocol specification", RFC 1045, DOI 10.17487/RFC1045, February 1988, <https://www.rfc-editor.org/info/rfc1045/>.
  RFC1046 |            | , "Queuing algorithm to provide type-of-service for IP links", RFC 1046, DOI 10.17487/RFC1046, February 1988, <https://www.rfc-editor.org/info/rfc1046/>.
  RFC1047 |            | , "Duplicate messages and SMTP", RFC 1047, DOI 10.17487/RFC1047, February 1988, <https://www.rfc-editor.org/info/rfc1047/>.
@@ -110,14 +110,14 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC2004 |            | Perkins, C., "Minimal Encapsulation within IP", RFC 2004, DOI 10.17487/RFC2004, October 1996, <https://www.rfc-editor.org/info/rfc2004/>.
  RFC2005 |            | Solomon, J., "Applicability Statement for IP Mobility Support", RFC 2005, DOI 10.17487/RFC2005, October 1996, <https://www.rfc-editor.org/info/rfc2005/>.
  RFC2006 |            | Cong, D., Hamlen, M., and C. Perkins, "The Definitions of Managed Objects for IP Mobility Support using SMIv2", RFC 2006, DOI 10.17487/RFC2006, October 1996, <https://www.rfc-editor.org/info/rfc2006/>.
- RFC2007 |            | Foster, J., Prior, M., and M. Isaacs, "Catalogue of Network Training Materials", RFC 2007, DOI 10.17487/RFC2007, October 1996, <https://www.rfc-editor.org/info/rfc2007/>.
- RFC2008 |            | Rekhter, Y. and T. Li, "Implications of Various Address Allocation Policies for Internet Routing", RFC 2008, DOI 10.17487/RFC2008, October 1996, <https://www.rfc-editor.org/info/rfc2008/>.
+ RFC2007 |            | Foster, J., Prior, M., and M. Isaacs, "Catalogue of Network Training Materials", FYI 29, RFC 2007, DOI 10.17487/RFC2007, October 1996, <https://www.rfc-editor.org/info/rfc2007/>.
+ RFC2008 |            | Rekhter, Y. and T. Li, "Implications of Various Address Allocation Policies for Internet Routing", BCP 7, RFC 2008, DOI 10.17487/RFC2008, October 1996, <https://www.rfc-editor.org/info/rfc2008/>.
  RFC2009 |            | Imielinski, T. and J. Navas, "GPS-Based Addressing and Routing", RFC 2009, DOI 10.17487/RFC2009, November 1996, <https://www.rfc-editor.org/info/rfc2009/>.
  RFC2010 |    RFC2870 | Vixie, P. and B. Manning, "Operational Criteria for Root Name Servers", RFC 2010, DOI 10.17487/RFC2010, October 1996, <https://www.rfc-editor.org/info/rfc2010/>.
  RFC2011 |    RFC4293 | McCloghrie, K., "SNMPv2 Management Information Base for the Internet Protocol using SMIv2", RFC 2011, DOI 10.17487/RFC2011, November 1996, <https://www.rfc-editor.org/info/rfc2011/>.
  RFC2012 |    RFC4022 | McCloghrie, K., "SNMPv2 Management Information Base for the Transmission Control Protocol using SMIv2", RFC 2012, DOI 10.17487/RFC2012, November 1996, <https://www.rfc-editor.org/info/rfc2012/>.
  RFC2013 |    RFC4113 | McCloghrie, K., "SNMPv2 Management Information Base for the User Datagram Protocol using SMIv2", RFC 2013, DOI 10.17487/RFC2013, November 1996, <https://www.rfc-editor.org/info/rfc2013/>.
- RFC2014 |            | Weinrib, A. and J. Postel, "IRTF Research Group Guidelines and Procedures", RFC 2014, DOI 10.17487/RFC2014, October 1996, <https://www.rfc-editor.org/info/rfc2014/>.
+ RFC2014 |            | Weinrib, A. and J. Postel, "IRTF Research Group Guidelines and Procedures", BCP 8, RFC 2014, DOI 10.17487/RFC2014, October 1996, <https://www.rfc-editor.org/info/rfc2014/>.
  RFC2015 |            | Elkins, M., "MIME Security with Pretty Good Privacy (PGP)", RFC 2015, DOI 10.17487/RFC2015, October 1996, <https://www.rfc-editor.org/info/rfc2015/>.
  RFC2016 |            | Alpaugh, C., Daigle, L., and P. Deutsch, "Uniform Resource Agents (URAs)", RFC 2016, DOI 10.17487/RFC2016, October 1996, <https://www.rfc-editor.org/info/rfc2016/>.
  RFC2017 |            | Freed, N. and K. Moore, "Definition of the URL MIME External-Body Access-Type", RFC 2017, DOI 10.17487/RFC2017, October 1996, <https://www.rfc-editor.org/info/rfc2017/>.
@@ -129,7 +129,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC2023 |    RFC2472 | Haskin, D. and E. Allen, "IP Version 6 over PPP", RFC 2023, DOI 10.17487/RFC2023, October 1996, <https://www.rfc-editor.org/info/rfc2023/>.
  RFC2024 |            | Chen, D., Gayek, P., and S. Nix, "Definitions of Managed Objects for Data Link Switching using SMIv2", RFC 2024, DOI 10.17487/RFC2024, October 1996, <https://www.rfc-editor.org/info/rfc2024/>.
  RFC2025 |            | Adams, C., "The Simple Public-Key GSS-API Mechanism (SPKM)", RFC 2025, DOI 10.17487/RFC2025, October 1996, <https://www.rfc-editor.org/info/rfc2025/>.
- RFC2026 |            | Bradner, S., "The Internet Standards Process -- Revision 3", RFC 2026, DOI 10.17487/RFC2026, October 1996, <https://www.rfc-editor.org/info/rfc2026/>.
+ RFC2026 |            | Bradner, S., "The Internet Standards Process -- Revision 3", BCP 9, RFC 2026, DOI 10.17487/RFC2026, October 1996, <https://www.rfc-editor.org/info/rfc2026/>.
  RFC2027 |    RFC2282 | Galvin, J., "IAB and IESG Selection, Confirmation, and Recall Process: Operation of the Nominating and Recall Committees", RFC 2027, DOI 10.17487/RFC2027, October 1996, <https://www.rfc-editor.org/info/rfc2027/>.
  RFC2028 |    RFC9281 | Bradner, S. and R. Hovey, "The Organizations Involved in the IETF Standards Process", RFC 2028, DOI 10.17487/RFC2028, October 1996, <https://www.rfc-editor.org/info/rfc2028/>.
  RFC2029 |            | Hoffman, D. and M. Speer, "RTP Payload Format of Sun's CellB Video Encoding", RFC 2029, DOI 10.17487/RFC2029, October 1996, <https://www.rfc-editor.org/info/rfc2029/>.
@@ -166,7 +166,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC3010 |    RFC3530 | Beame, C., Robinson, D., Callaghan, B., Noveck, D., Thurlow, R., Eisler, M., and S. Shepler, "NFS version 4 Protocol", RFC 3010, DOI 10.17487/RFC3010, December 2000, <https://www.rfc-editor.org/info/rfc3010/>.
  RFC3011 |            | Waters, G., "The IPv4 Subnet Selection Option for DHCP", RFC 3011, DOI 10.17487/RFC3011, November 2000, <https://www.rfc-editor.org/info/rfc3011/>.
  RFC3012 |    RFC4721 | Calhoun, P. and C. Perkins, "Mobile IPv4 Challenge/Response Extensions", RFC 3012, DOI 10.17487/RFC3012, November 2000, <https://www.rfc-editor.org/info/rfc3012/>.
- RFC3013 |            | Killalea, T., "Recommended Internet Service Provider Security Services and Procedures", RFC 3013, DOI 10.17487/RFC3013, November 2000, <https://www.rfc-editor.org/info/rfc3013/>.
+ RFC3013 |            | Killalea, T., "Recommended Internet Service Provider Security Services and Procedures", BCP 46, RFC 3013, DOI 10.17487/RFC3013, November 2000, <https://www.rfc-editor.org/info/rfc3013/>.
  RFC3014 |            | Kavasseri, R., "Notification Log MIB", RFC 3014, DOI 10.17487/RFC3014, November 2000, <https://www.rfc-editor.org/info/rfc3014/>.
  RFC3015 |    RFC3525 | Cuervo, F., Greene, N., Huitema, C., Rayhan, A., Rosen, B., and J. Segers, "Megaco Protocol Version 1.0", RFC 3015, DOI 10.17487/RFC3015, November 2000, <https://www.rfc-editor.org/info/rfc3015/>.
  RFC3016 |    RFC6416 | Matsui, Y., Kimata, H., Kikuchi, Y., Fukunaga, S., and T. Nomura, "RTP Payload Format for MPEG-4 Audio/Visual Streams", RFC 3016, DOI 10.17487/RFC3016, November 2000, <https://www.rfc-editor.org/info/rfc3016/>.
@@ -263,7 +263,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC5008 |    RFC6318 | Housley, R. and J. Solinas, "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)", RFC 5008, DOI 10.17487/RFC5008, September 2007, <https://www.rfc-editor.org/info/rfc5008/>.
  RFC5009 |            | Ejzak, R., "Private Header (P-Header) Extension to the Session Initiation Protocol (SIP) for Authorization of Early Media", RFC 5009, DOI 10.17487/RFC5009, September 2007, <https://www.rfc-editor.org/info/rfc5009/>.
  RFC5010 |            | Normoyle, M., Kinnear, K., and M. Stapp, "The Dynamic Host Configuration Protocol Version 4 (DHCPv4) Relay Agent Flags Suboption", RFC 5010, DOI 10.17487/RFC5010, September 2007, <https://www.rfc-editor.org/info/rfc5010/>.
- RFC5011 |            | StJohns, M., "Automated Updates of DNS Security (DNSSEC) Trust Anchors", RFC 5011, DOI 10.17487/RFC5011, September 2007, <https://www.rfc-editor.org/info/rfc5011/>.
+ RFC5011 |            | StJohns, M., "Automated Updates of DNS Security (DNSSEC) Trust Anchors", STD 74, RFC 5011, DOI 10.17487/RFC5011, September 2007, <https://www.rfc-editor.org/info/rfc5011/>.
  RFC5012 |            | Marshall, R. and H. Schulzrinne, "Requirements for Emergency Context Resolution with Internet Technologies", RFC 5012, DOI 10.17487/RFC5012, January 2008, <https://www.rfc-editor.org/info/rfc5012/>.
  RFC5013 |            | Kunze, J. and T. Baker, "The Dublin Core Metadata Element Set", RFC 5013, DOI 10.17487/RFC5013, August 2007, <https://www.rfc-editor.org/info/rfc5013/>.
  RFC5014 |            | Chakrabarti, S., Nordmark, E., and J. Laganier, "IPv6 Socket API for Source Address Selection", RFC 5014, DOI 10.17487/RFC5014, September 2007, <https://www.rfc-editor.org/info/rfc5014/>.
@@ -361,9 +361,9 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC7008 |            | Kiyomoto, S. and W. Shin, "A Description of the KCipher-2 Encryption Algorithm", RFC 7008, DOI 10.17487/RFC7008, August 2013, <https://www.rfc-editor.org/info/rfc7008/>.
  RFC7009 |            | Lodderstedt, T., Dronia, S., and M. Scurtescu, "OAuth 2.0 Token Revocation", RFC 7009, DOI 10.17487/RFC7009, August 2013, <https://www.rfc-editor.org/info/rfc7009/>.
  RFC7010 |            | Liu, B., Carpenter, B., Jiang, S., Venaas, S., and W. George, "IPv6 Site Renumbering Gap Analysis", RFC 7010, DOI 10.17487/RFC7010, September 2013, <https://www.rfc-editor.org/info/rfc7010/>.
- RFC7011 |            | Aitken, P., Claise, B., and B. Trammell, "Specification of the IP Flow Information Export (IPFIX) Protocol for the Exchange of Flow Information", RFC 7011, DOI 10.17487/RFC7011, September 2013, <https://www.rfc-editor.org/info/rfc7011/>.
+ RFC7011 |            | Aitken, P., Claise, B., and B. Trammell, "Specification of the IP Flow Information Export (IPFIX) Protocol for the Exchange of Flow Information", STD 77, RFC 7011, DOI 10.17487/RFC7011, September 2013, <https://www.rfc-editor.org/info/rfc7011/>.
  RFC7012 |            | Claise, B. and B. Trammell, "Information Model for IP Flow Information Export (IPFIX)", RFC 7012, DOI 10.17487/RFC7012, September 2013, <https://www.rfc-editor.org/info/rfc7012/>.
- RFC7013 |            | Trammell, B. and B. Claise, "Guidelines for Authors and Reviewers of IP Flow Information Export (IPFIX) Information Elements", RFC 7013, DOI 10.17487/RFC7013, September 2013, <https://www.rfc-editor.org/info/rfc7013/>.
+ RFC7013 |            | Trammell, B. and B. Claise, "Guidelines for Authors and Reviewers of IP Flow Information Export (IPFIX) Information Elements", BCP 184, RFC 7013, DOI 10.17487/RFC7013, September 2013, <https://www.rfc-editor.org/info/rfc7013/>.
  RFC7014 |            | D'Antonio, S., Zseby, T., Henke, C., and L. Peluso, "Flow Selection Techniques", RFC 7014, DOI 10.17487/RFC7014, September 2013, <https://www.rfc-editor.org/info/rfc7014/>.
  RFC7015 |            | Trammell, B., Wagner, A., and B. Claise, "Flow Aggregation for the IP Flow Information Export (IPFIX) Protocol", RFC 7015, DOI 10.17487/RFC7015, September 2013, <https://www.rfc-editor.org/info/rfc7015/>.
  RFC7016 |            | Thornburgh, M., "Adobe's Secure Real-Time Media Flow Protocol", RFC 7016, DOI 10.17487/RFC7016, November 2013, <https://www.rfc-editor.org/info/rfc7016/>.
@@ -410,8 +410,8 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC8007 |            | Murray, R. and B. Niven-Jenkins, "Content Delivery Network Interconnection (CDNI) Control Interface / Triggers", RFC 8007, DOI 10.17487/RFC8007, December 2016, <https://www.rfc-editor.org/info/rfc8007/>.
  RFC8008 |            | Seedorf, J., Peterson, J., Previdi, S., Brandenburg, R., and K. Ma, "Content Delivery Network Interconnection (CDNI) Request Routing: Footprint and Capabilities Semantics", RFC 8008, DOI 10.17487/RFC8008, December 2016, <https://www.rfc-editor.org/info/rfc8008/>.
  RFC8009 |            | Jenkins, M., Peck, M., and K. Burgin, "AES Encryption with HMAC-SHA2 for Kerberos 5", RFC 8009, DOI 10.17487/RFC8009, October 2016, <https://www.rfc-editor.org/info/rfc8009/>.
- RFC8010 |            | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Encoding and Transport", RFC 8010, DOI 10.17487/RFC8010, January 2017, <https://www.rfc-editor.org/info/rfc8010/>.
- RFC8011 |            | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Model and Semantics", RFC 8011, DOI 10.17487/RFC8011, January 2017, <https://www.rfc-editor.org/info/rfc8011/>.
+ RFC8010 |            | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Encoding and Transport", STD 92, RFC 8010, DOI 10.17487/RFC8010, January 2017, <https://www.rfc-editor.org/info/rfc8010/>.
+ RFC8011 |            | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Model and Semantics", STD 92, RFC 8011, DOI 10.17487/RFC8011, January 2017, <https://www.rfc-editor.org/info/rfc8011/>.
  RFC8012 |            | Akiya, N., Swallow, G., Pignataro, C., Malis, A., and S. Aldrin, "Label Switched Path (LSP) and Pseudowire (PW) Ping/Trace over MPLS Networks Using Entropy Labels (ELs)", RFC 8012, DOI 10.17487/RFC8012, November 2016, <https://www.rfc-editor.org/info/rfc8012/>.
  RFC8013 |            | Joachimpillai, D. and J. Salim, "Forwarding and Control Element Separation (ForCES) Inter-FE Logical Functional Block (LFB)", RFC 8013, DOI 10.17487/RFC8013, February 2017, <https://www.rfc-editor.org/info/rfc8013/>.
  RFC8014 |            | Black, D., Hudson, J., Kreeger, L., Lasserre, M., and T. Narten, "An Architecture for Data-Center Network Virtualization over Layer 3 (NVO3)", RFC 8014, DOI 10.17487/RFC8014, December 2016, <https://www.rfc-editor.org/info/rfc8014/>.
@@ -427,7 +427,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against 5 digit-wide rendering (RFC
  RFC8024 |            | Jiang, Y., Luo, Y., Mallette, E., Shen, Y., and W. Cheng, "Multi-Chassis Passive Optical Network (MC-PON) Protection in MPLS", RFC 8024, DOI 10.17487/RFC8024, November 2016, <https://www.rfc-editor.org/info/rfc8024/>.
  RFC8025 |            | Thubert, P. and R. Cragie, "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Paging Dispatch", RFC 8025, DOI 10.17487/RFC8025, November 2016, <https://www.rfc-editor.org/info/rfc8025/>.
  RFC8026 |            | Boucadair, M. and I. Farrer, "Unified IPv4-in-IPv6 Softwire Customer Premises Equipment (CPE): A DHCPv6-Based Prioritization Mechanism", RFC 8026, DOI 10.17487/RFC8026, November 2016, <https://www.rfc-editor.org/info/rfc8026/>.
- RFC8027 |            | Hardaker, W., Guðmundsson, Ó., and S. Krishnaswamy, "DNSSEC Roadblock Avoidance", RFC 8027, DOI 10.17487/RFC8027, November 2016, <https://www.rfc-editor.org/info/rfc8027/>.
+ RFC8027 |            | Hardaker, W., Guðmundsson, Ó., and S. Krishnaswamy, "DNSSEC Roadblock Avoidance", BCP 207, RFC 8027, DOI 10.17487/RFC8027, November 2016, <https://www.rfc-editor.org/info/rfc8027/>.
  RFC8028 |            | Baker, F. and B. Carpenter, "First-Hop Router Selection by Hosts in a Multi-Prefix Network", RFC 8028, DOI 10.17487/RFC8028, November 2016, <https://www.rfc-editor.org/info/rfc8028/>.
  RFC8029 |            | Kompella, K., Swallow, G., Pignataro, C., Nainar, N., Aldrin, S., and M. Chen, "Detecting Multiprotocol Label Switched (MPLS) Data-Plane Failures", RFC 8029, DOI 10.17487/RFC8029, March 2017, <https://www.rfc-editor.org/info/rfc8029/>.
  RFC8030 |            | Thomson, M., Damaggio, E., and B. Raymor, "Generic Event Delivery Using HTTP Push", RFC 8030, DOI 10.17487/RFC8030, December 2016, <https://www.rfc-editor.org/info/rfc8030/>.
@@ -528,7 +528,7 @@ exports[`renderInNotesRfcRefDotTxt > compare against original 4 digit-wide rende
   RFC17 |           | , "Some questions re: Host-IMP Protocol", RFC 17, DOI 10.17487/RFC0017, August 1969, <https://www.rfc-editor.org/info/rfc17/>.
   RFC18 |           | , "IMP-IMP and HOST-HOST Control Links", RFC 18, DOI 10.17487/RFC0018, September 1969, <https://www.rfc-editor.org/info/rfc18/>.
   RFC19 |           | , "Two protocol suggestions to reduce congestion at swap bound nodes", RFC 19, DOI 10.17487/RFC0019, October 1969, <https://www.rfc-editor.org/info/rfc19/>.
-  RFC20 |           | , "ASCII format for network interchange", RFC 20, DOI 10.17487/RFC0020, October 1969, <https://www.rfc-editor.org/info/rfc20/>.
+  RFC20 |           | , "ASCII format for network interchange", STD 80, RFC 20, DOI 10.17487/RFC0020, October 1969, <https://www.rfc-editor.org/info/rfc20/>.
   RFC21 |           | , "Network meeting", RFC 21, DOI 10.17487/RFC0021, October 1969, <https://www.rfc-editor.org/info/rfc21/>.
   RFC22 |           | , "Host-host control message formats", RFC 22, DOI 10.17487/RFC0022, October 1969, <https://www.rfc-editor.org/info/rfc22/>.
   RFC23 |           | , "Transmission of Multiple Control Messages", RFC 23, DOI 10.17487/RFC0023, October 1969, <https://www.rfc-editor.org/info/rfc23/>.
@@ -559,12 +559,12 @@ exports[`renderInNotesRfcRefDotTxt > compare against original 4 digit-wide rende
   RFC49 |           | , "Conversations with S. Crocker (UCLA)", RFC 49, DOI 10.17487/RFC0049, April 1970, <https://www.rfc-editor.org/info/rfc49/>.
  RFC298 |    RFC306 | , "Network host status", RFC 298, DOI 10.17487/RFC0298, February 1972, <https://www.rfc-editor.org/info/rfc298/>.
 RFC1000 |           | , "Request For Comments reference guide", RFC 1000, DOI 10.17487/RFC1000, August 1987, <https://www.rfc-editor.org/info/rfc1000/>.
-RFC1001 |           | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods", RFC 1001, DOI 10.17487/RFC1001, March 1987, <https://www.rfc-editor.org/info/rfc1001/>.
-RFC1002 |           | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications", RFC 1002, DOI 10.17487/RFC1002, March 1987, <https://www.rfc-editor.org/info/rfc1002/>.
+RFC1001 |           | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods", STD 19, RFC 1001, DOI 10.17487/RFC1001, March 1987, <https://www.rfc-editor.org/info/rfc1001/>.
+RFC1002 |           | , "Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications", STD 19, RFC 1002, DOI 10.17487/RFC1002, March 1987, <https://www.rfc-editor.org/info/rfc1002/>.
 RFC1003 |           | , "Issues in defining an equations representation standard", RFC 1003, DOI 10.17487/RFC1003, March 1987, <https://www.rfc-editor.org/info/rfc1003/>.
 RFC1004 |           | , "Distributed-protocol authentication scheme", RFC 1004, DOI 10.17487/RFC1004, April 1987, <https://www.rfc-editor.org/info/rfc1004/>.
 RFC1005 |           | , "ARPANET AHIP-E Host Access Protocol (enhanced AHIP)", RFC 1005, DOI 10.17487/RFC1005, May 1987, <https://www.rfc-editor.org/info/rfc1005/>.
-RFC1006 |           | , "ISO Transport Service on top of the TCP Version: 3", RFC 1006, DOI 10.17487/RFC1006, May 1987, <https://www.rfc-editor.org/info/rfc1006/>.
+RFC1006 |           | , "ISO Transport Service on top of the TCP Version: 3", STD 35, RFC 1006, DOI 10.17487/RFC1006, May 1987, <https://www.rfc-editor.org/info/rfc1006/>.
 RFC1007 |           | , "Military supplement to the ISO Transport Protocol", RFC 1007, DOI 10.17487/RFC1007, June 1987, <https://www.rfc-editor.org/info/rfc1007/>.
 RFC1008 |           | , "Implementation guide for the ISO Transport Protocol", RFC 1008, DOI 10.17487/RFC1008, June 1987, <https://www.rfc-editor.org/info/rfc1008/>.
 RFC1009 |   RFC1812 | , "Requirements for Internet gateways", RFC 1009, DOI 10.17487/RFC1009, June 1987, <https://www.rfc-editor.org/info/rfc1009/>.
@@ -592,17 +592,17 @@ RFC1030 |           | , "On testing the NETBLT Protocol over divers networks", R
 RFC1031 |           | , "MILNET name domain transition", RFC 1031, DOI 10.17487/RFC1031, November 1987, <https://www.rfc-editor.org/info/rfc1031/>.
 RFC1032 |           | , "Domain administrators guide", RFC 1032, DOI 10.17487/RFC1032, November 1987, <https://www.rfc-editor.org/info/rfc1032/>.
 RFC1033 |           | , "Domain Administrators Operations Guide", RFC 1033, DOI 10.17487/RFC1033, November 1987, <https://www.rfc-editor.org/info/rfc1033/>.
-RFC1034 |           | , "Domain names - concepts and facilities", RFC 1034, DOI 10.17487/RFC1034, November 1987, <https://www.rfc-editor.org/info/rfc1034/>.
-RFC1035 |           | , "Domain names - implementation and specification", RFC 1035, DOI 10.17487/RFC1035, November 1987, <https://www.rfc-editor.org/info/rfc1035/>.
+RFC1034 |           | , "Domain names - concepts and facilities", STD 13, RFC 1034, DOI 10.17487/RFC1034, November 1987, <https://www.rfc-editor.org/info/rfc1034/>.
+RFC1035 |           | , "Domain names - implementation and specification", STD 13, RFC 1035, DOI 10.17487/RFC1035, November 1987, <https://www.rfc-editor.org/info/rfc1035/>.
 RFC1036 | RFC5536, RFC5537 | , "Standard for interchange of USENET messages", RFC 1036, DOI 10.17487/RFC1036, December 1987, <https://www.rfc-editor.org/info/rfc1036/>.
 RFC1037 |           | , "NFILE - a file access protocol", RFC 1037, DOI 10.17487/RFC1037, December 1987, <https://www.rfc-editor.org/info/rfc1037/>.
 RFC1038 |   RFC1108 | , "Draft revised IP security option", RFC 1038, DOI 10.17487/RFC1038, January 1988, <https://www.rfc-editor.org/info/rfc1038/>.
 RFC1039 |           | , "DoD statement on Open Systems Interconnection protocols", RFC 1039, DOI 10.17487/RFC1039, January 1988, <https://www.rfc-editor.org/info/rfc1039/>.
 RFC1040 |   RFC1113 | , "Privacy enhancement for Internet electronic mail: Part I: Message encipherment and authentication procedures", RFC 1040, DOI 10.17487/RFC1040, January 1988, <https://www.rfc-editor.org/info/rfc1040/>.
 RFC1041 |           | , "Telnet 3270 regime option", RFC 1041, DOI 10.17487/RFC1041, January 1988, <https://www.rfc-editor.org/info/rfc1041/>.
-RFC1042 |           | , "Standard for the transmission of IP datagrams over IEEE 802 networks", RFC 1042, DOI 10.17487/RFC1042, February 1988, <https://www.rfc-editor.org/info/rfc1042/>.
+RFC1042 |           | , "Standard for the transmission of IP datagrams over IEEE 802 networks", STD 43, RFC 1042, DOI 10.17487/RFC1042, February 1988, <https://www.rfc-editor.org/info/rfc1042/>.
 RFC1043 |           | , "Telnet Data Entry Terminal option: DODIIS implementation", RFC 1043, DOI 10.17487/RFC1043, February 1988, <https://www.rfc-editor.org/info/rfc1043/>.
-RFC1044 |           | , "Internet Protocol on Network System's HYPERchannel: Protocol Specification", RFC 1044, DOI 10.17487/RFC1044, February 1988, <https://www.rfc-editor.org/info/rfc1044/>.
+RFC1044 |           | , "Internet Protocol on Network System's HYPERchannel: Protocol Specification", STD 45, RFC 1044, DOI 10.17487/RFC1044, February 1988, <https://www.rfc-editor.org/info/rfc1044/>.
 RFC1045 |           | , "VMTP: Versatile Message Transaction Protocol: Protocol specification", RFC 1045, DOI 10.17487/RFC1045, February 1988, <https://www.rfc-editor.org/info/rfc1045/>.
 RFC1046 |           | , "Queuing algorithm to provide type-of-service for IP links", RFC 1046, DOI 10.17487/RFC1046, February 1988, <https://www.rfc-editor.org/info/rfc1046/>.
 RFC1047 |           | , "Duplicate messages and SMTP", RFC 1047, DOI 10.17487/RFC1047, February 1988, <https://www.rfc-editor.org/info/rfc1047/>.
@@ -615,14 +615,14 @@ RFC2003 |           | Perkins, C., "IP Encapsulation within IP", RFC 2003, DOI 1
 RFC2004 |           | Perkins, C., "Minimal Encapsulation within IP", RFC 2004, DOI 10.17487/RFC2004, October 1996, <https://www.rfc-editor.org/info/rfc2004/>.
 RFC2005 |           | Solomon, J., "Applicability Statement for IP Mobility Support", RFC 2005, DOI 10.17487/RFC2005, October 1996, <https://www.rfc-editor.org/info/rfc2005/>.
 RFC2006 |           | Cong, D., Hamlen, M., and C. Perkins, "The Definitions of Managed Objects for IP Mobility Support using SMIv2", RFC 2006, DOI 10.17487/RFC2006, October 1996, <https://www.rfc-editor.org/info/rfc2006/>.
-RFC2007 |           | Foster, J., Prior, M., and M. Isaacs, "Catalogue of Network Training Materials", RFC 2007, DOI 10.17487/RFC2007, October 1996, <https://www.rfc-editor.org/info/rfc2007/>.
-RFC2008 |           | Rekhter, Y. and T. Li, "Implications of Various Address Allocation Policies for Internet Routing", RFC 2008, DOI 10.17487/RFC2008, October 1996, <https://www.rfc-editor.org/info/rfc2008/>.
+RFC2007 |           | Foster, J., Prior, M., and M. Isaacs, "Catalogue of Network Training Materials", FYI 29, RFC 2007, DOI 10.17487/RFC2007, October 1996, <https://www.rfc-editor.org/info/rfc2007/>.
+RFC2008 |           | Rekhter, Y. and T. Li, "Implications of Various Address Allocation Policies for Internet Routing", BCP 7, RFC 2008, DOI 10.17487/RFC2008, October 1996, <https://www.rfc-editor.org/info/rfc2008/>.
 RFC2009 |           | Imielinski, T. and J. Navas, "GPS-Based Addressing and Routing", RFC 2009, DOI 10.17487/RFC2009, November 1996, <https://www.rfc-editor.org/info/rfc2009/>.
 RFC2010 |   RFC2870 | Vixie, P. and B. Manning, "Operational Criteria for Root Name Servers", RFC 2010, DOI 10.17487/RFC2010, October 1996, <https://www.rfc-editor.org/info/rfc2010/>.
 RFC2011 |   RFC4293 | McCloghrie, K., "SNMPv2 Management Information Base for the Internet Protocol using SMIv2", RFC 2011, DOI 10.17487/RFC2011, November 1996, <https://www.rfc-editor.org/info/rfc2011/>.
 RFC2012 |   RFC4022 | McCloghrie, K., "SNMPv2 Management Information Base for the Transmission Control Protocol using SMIv2", RFC 2012, DOI 10.17487/RFC2012, November 1996, <https://www.rfc-editor.org/info/rfc2012/>.
 RFC2013 |   RFC4113 | McCloghrie, K., "SNMPv2 Management Information Base for the User Datagram Protocol using SMIv2", RFC 2013, DOI 10.17487/RFC2013, November 1996, <https://www.rfc-editor.org/info/rfc2013/>.
-RFC2014 |           | Weinrib, A. and J. Postel, "IRTF Research Group Guidelines and Procedures", RFC 2014, DOI 10.17487/RFC2014, October 1996, <https://www.rfc-editor.org/info/rfc2014/>.
+RFC2014 |           | Weinrib, A. and J. Postel, "IRTF Research Group Guidelines and Procedures", BCP 8, RFC 2014, DOI 10.17487/RFC2014, October 1996, <https://www.rfc-editor.org/info/rfc2014/>.
 RFC2015 |           | Elkins, M., "MIME Security with Pretty Good Privacy (PGP)", RFC 2015, DOI 10.17487/RFC2015, October 1996, <https://www.rfc-editor.org/info/rfc2015/>.
 RFC2016 |           | Alpaugh, C., Daigle, L., and P. Deutsch, "Uniform Resource Agents (URAs)", RFC 2016, DOI 10.17487/RFC2016, October 1996, <https://www.rfc-editor.org/info/rfc2016/>.
 RFC2017 |           | Freed, N. and K. Moore, "Definition of the URL MIME External-Body Access-Type", RFC 2017, DOI 10.17487/RFC2017, October 1996, <https://www.rfc-editor.org/info/rfc2017/>.
@@ -634,7 +634,7 @@ RFC2022 |           | Armitage, G., "Support for Multicast over UNI 3.0/3.1 base
 RFC2023 |   RFC2472 | Haskin, D. and E. Allen, "IP Version 6 over PPP", RFC 2023, DOI 10.17487/RFC2023, October 1996, <https://www.rfc-editor.org/info/rfc2023/>.
 RFC2024 |           | Chen, D., Gayek, P., and S. Nix, "Definitions of Managed Objects for Data Link Switching using SMIv2", RFC 2024, DOI 10.17487/RFC2024, October 1996, <https://www.rfc-editor.org/info/rfc2024/>.
 RFC2025 |           | Adams, C., "The Simple Public-Key GSS-API Mechanism (SPKM)", RFC 2025, DOI 10.17487/RFC2025, October 1996, <https://www.rfc-editor.org/info/rfc2025/>.
-RFC2026 |           | Bradner, S., "The Internet Standards Process -- Revision 3", RFC 2026, DOI 10.17487/RFC2026, October 1996, <https://www.rfc-editor.org/info/rfc2026/>.
+RFC2026 |           | Bradner, S., "The Internet Standards Process -- Revision 3", BCP 9, RFC 2026, DOI 10.17487/RFC2026, October 1996, <https://www.rfc-editor.org/info/rfc2026/>.
 RFC2027 |   RFC2282 | Galvin, J., "IAB and IESG Selection, Confirmation, and Recall Process: Operation of the Nominating and Recall Committees", RFC 2027, DOI 10.17487/RFC2027, October 1996, <https://www.rfc-editor.org/info/rfc2027/>.
 RFC2028 |   RFC9281 | Bradner, S. and R. Hovey, "The Organizations Involved in the IETF Standards Process", RFC 2028, DOI 10.17487/RFC2028, October 1996, <https://www.rfc-editor.org/info/rfc2028/>.
 RFC2029 |           | Hoffman, D. and M. Speer, "RTP Payload Format of Sun's CellB Video Encoding", RFC 2029, DOI 10.17487/RFC2029, October 1996, <https://www.rfc-editor.org/info/rfc2029/>.
@@ -671,7 +671,7 @@ RFC3009 |   RFC5109 | Schulzrinne, H. and J. Rosenberg, "Registration of parityf
 RFC3010 |   RFC3530 | Beame, C., Robinson, D., Callaghan, B., Noveck, D., Thurlow, R., Eisler, M., and S. Shepler, "NFS version 4 Protocol", RFC 3010, DOI 10.17487/RFC3010, December 2000, <https://www.rfc-editor.org/info/rfc3010/>.
 RFC3011 |           | Waters, G., "The IPv4 Subnet Selection Option for DHCP", RFC 3011, DOI 10.17487/RFC3011, November 2000, <https://www.rfc-editor.org/info/rfc3011/>.
 RFC3012 |   RFC4721 | Calhoun, P. and C. Perkins, "Mobile IPv4 Challenge/Response Extensions", RFC 3012, DOI 10.17487/RFC3012, November 2000, <https://www.rfc-editor.org/info/rfc3012/>.
-RFC3013 |           | Killalea, T., "Recommended Internet Service Provider Security Services and Procedures", RFC 3013, DOI 10.17487/RFC3013, November 2000, <https://www.rfc-editor.org/info/rfc3013/>.
+RFC3013 |           | Killalea, T., "Recommended Internet Service Provider Security Services and Procedures", BCP 46, RFC 3013, DOI 10.17487/RFC3013, November 2000, <https://www.rfc-editor.org/info/rfc3013/>.
 RFC3014 |           | Kavasseri, R., "Notification Log MIB", RFC 3014, DOI 10.17487/RFC3014, November 2000, <https://www.rfc-editor.org/info/rfc3014/>.
 RFC3015 |   RFC3525 | Cuervo, F., Greene, N., Huitema, C., Rayhan, A., Rosen, B., and J. Segers, "Megaco Protocol Version 1.0", RFC 3015, DOI 10.17487/RFC3015, November 2000, <https://www.rfc-editor.org/info/rfc3015/>.
 RFC3016 |   RFC6416 | Matsui, Y., Kimata, H., Kikuchi, Y., Fukunaga, S., and T. Nomura, "RTP Payload Format for MPEG-4 Audio/Visual Streams", RFC 3016, DOI 10.17487/RFC3016, November 2000, <https://www.rfc-editor.org/info/rfc3016/>.
@@ -768,7 +768,7 @@ RFC5007 |           | Zeng, S., Brzozowski, J., Kinnear, K., and B. Volz, "DHCPv
 RFC5008 |   RFC6318 | Housley, R. and J. Solinas, "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)", RFC 5008, DOI 10.17487/RFC5008, September 2007, <https://www.rfc-editor.org/info/rfc5008/>.
 RFC5009 |           | Ejzak, R., "Private Header (P-Header) Extension to the Session Initiation Protocol (SIP) for Authorization of Early Media", RFC 5009, DOI 10.17487/RFC5009, September 2007, <https://www.rfc-editor.org/info/rfc5009/>.
 RFC5010 |           | Normoyle, M., Kinnear, K., and M. Stapp, "The Dynamic Host Configuration Protocol Version 4 (DHCPv4) Relay Agent Flags Suboption", RFC 5010, DOI 10.17487/RFC5010, September 2007, <https://www.rfc-editor.org/info/rfc5010/>.
-RFC5011 |           | StJohns, M., "Automated Updates of DNS Security (DNSSEC) Trust Anchors", RFC 5011, DOI 10.17487/RFC5011, September 2007, <https://www.rfc-editor.org/info/rfc5011/>.
+RFC5011 |           | StJohns, M., "Automated Updates of DNS Security (DNSSEC) Trust Anchors", STD 74, RFC 5011, DOI 10.17487/RFC5011, September 2007, <https://www.rfc-editor.org/info/rfc5011/>.
 RFC5012 |           | Marshall, R. and H. Schulzrinne, "Requirements for Emergency Context Resolution with Internet Technologies", RFC 5012, DOI 10.17487/RFC5012, January 2008, <https://www.rfc-editor.org/info/rfc5012/>.
 RFC5013 |           | Kunze, J. and T. Baker, "The Dublin Core Metadata Element Set", RFC 5013, DOI 10.17487/RFC5013, August 2007, <https://www.rfc-editor.org/info/rfc5013/>.
 RFC5014 |           | Chakrabarti, S., Nordmark, E., and J. Laganier, "IPv6 Socket API for Source Address Selection", RFC 5014, DOI 10.17487/RFC5014, September 2007, <https://www.rfc-editor.org/info/rfc5014/>.
@@ -866,9 +866,9 @@ RFC7007 |           | Terriberry, T., "Update to Remove DVI4 from the Recommende
 RFC7008 |           | Kiyomoto, S. and W. Shin, "A Description of the KCipher-2 Encryption Algorithm", RFC 7008, DOI 10.17487/RFC7008, August 2013, <https://www.rfc-editor.org/info/rfc7008/>.
 RFC7009 |           | Lodderstedt, T., Dronia, S., and M. Scurtescu, "OAuth 2.0 Token Revocation", RFC 7009, DOI 10.17487/RFC7009, August 2013, <https://www.rfc-editor.org/info/rfc7009/>.
 RFC7010 |           | Liu, B., Carpenter, B., Jiang, S., Venaas, S., and W. George, "IPv6 Site Renumbering Gap Analysis", RFC 7010, DOI 10.17487/RFC7010, September 2013, <https://www.rfc-editor.org/info/rfc7010/>.
-RFC7011 |           | Aitken, P., Claise, B., and B. Trammell, "Specification of the IP Flow Information Export (IPFIX) Protocol for the Exchange of Flow Information", RFC 7011, DOI 10.17487/RFC7011, September 2013, <https://www.rfc-editor.org/info/rfc7011/>.
+RFC7011 |           | Aitken, P., Claise, B., and B. Trammell, "Specification of the IP Flow Information Export (IPFIX) Protocol for the Exchange of Flow Information", STD 77, RFC 7011, DOI 10.17487/RFC7011, September 2013, <https://www.rfc-editor.org/info/rfc7011/>.
 RFC7012 |           | Claise, B. and B. Trammell, "Information Model for IP Flow Information Export (IPFIX)", RFC 7012, DOI 10.17487/RFC7012, September 2013, <https://www.rfc-editor.org/info/rfc7012/>.
-RFC7013 |           | Trammell, B. and B. Claise, "Guidelines for Authors and Reviewers of IP Flow Information Export (IPFIX) Information Elements", RFC 7013, DOI 10.17487/RFC7013, September 2013, <https://www.rfc-editor.org/info/rfc7013/>.
+RFC7013 |           | Trammell, B. and B. Claise, "Guidelines for Authors and Reviewers of IP Flow Information Export (IPFIX) Information Elements", BCP 184, RFC 7013, DOI 10.17487/RFC7013, September 2013, <https://www.rfc-editor.org/info/rfc7013/>.
 RFC7014 |           | D'Antonio, S., Zseby, T., Henke, C., and L. Peluso, "Flow Selection Techniques", RFC 7014, DOI 10.17487/RFC7014, September 2013, <https://www.rfc-editor.org/info/rfc7014/>.
 RFC7015 |           | Trammell, B., Wagner, A., and B. Claise, "Flow Aggregation for the IP Flow Information Export (IPFIX) Protocol", RFC 7015, DOI 10.17487/RFC7015, September 2013, <https://www.rfc-editor.org/info/rfc7015/>.
 RFC7016 |           | Thornburgh, M., "Adobe's Secure Real-Time Media Flow Protocol", RFC 7016, DOI 10.17487/RFC7016, November 2013, <https://www.rfc-editor.org/info/rfc7016/>.
@@ -915,8 +915,8 @@ RFC8006 |           | Niven-Jenkins, B., Murray, R., Caulfield, M., and K. Ma, "
 RFC8007 |           | Murray, R. and B. Niven-Jenkins, "Content Delivery Network Interconnection (CDNI) Control Interface / Triggers", RFC 8007, DOI 10.17487/RFC8007, December 2016, <https://www.rfc-editor.org/info/rfc8007/>.
 RFC8008 |           | Seedorf, J., Peterson, J., Previdi, S., Brandenburg, R., and K. Ma, "Content Delivery Network Interconnection (CDNI) Request Routing: Footprint and Capabilities Semantics", RFC 8008, DOI 10.17487/RFC8008, December 2016, <https://www.rfc-editor.org/info/rfc8008/>.
 RFC8009 |           | Jenkins, M., Peck, M., and K. Burgin, "AES Encryption with HMAC-SHA2 for Kerberos 5", RFC 8009, DOI 10.17487/RFC8009, October 2016, <https://www.rfc-editor.org/info/rfc8009/>.
-RFC8010 |           | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Encoding and Transport", RFC 8010, DOI 10.17487/RFC8010, January 2017, <https://www.rfc-editor.org/info/rfc8010/>.
-RFC8011 |           | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Model and Semantics", RFC 8011, DOI 10.17487/RFC8011, January 2017, <https://www.rfc-editor.org/info/rfc8011/>.
+RFC8010 |           | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Encoding and Transport", STD 92, RFC 8010, DOI 10.17487/RFC8010, January 2017, <https://www.rfc-editor.org/info/rfc8010/>.
+RFC8011 |           | Sweet, M. and I. McDonald, "Internet Printing Protocol/1.1: Model and Semantics", STD 92, RFC 8011, DOI 10.17487/RFC8011, January 2017, <https://www.rfc-editor.org/info/rfc8011/>.
 RFC8012 |           | Akiya, N., Swallow, G., Pignataro, C., Malis, A., and S. Aldrin, "Label Switched Path (LSP) and Pseudowire (PW) Ping/Trace over MPLS Networks Using Entropy Labels (ELs)", RFC 8012, DOI 10.17487/RFC8012, November 2016, <https://www.rfc-editor.org/info/rfc8012/>.
 RFC8013 |           | Joachimpillai, D. and J. Salim, "Forwarding and Control Element Separation (ForCES) Inter-FE Logical Functional Block (LFB)", RFC 8013, DOI 10.17487/RFC8013, February 2017, <https://www.rfc-editor.org/info/rfc8013/>.
 RFC8014 |           | Black, D., Hudson, J., Kreeger, L., Lasserre, M., and T. Narten, "An Architecture for Data-Center Network Virtualization over Layer 3 (NVO3)", RFC 8014, DOI 10.17487/RFC8014, December 2016, <https://www.rfc-editor.org/info/rfc8014/>.
@@ -932,7 +932,7 @@ RFC8023 |           | Thomas, M., Mankin, A., and L. Zhang, "Report from the Wor
 RFC8024 |           | Jiang, Y., Luo, Y., Mallette, E., Shen, Y., and W. Cheng, "Multi-Chassis Passive Optical Network (MC-PON) Protection in MPLS", RFC 8024, DOI 10.17487/RFC8024, November 2016, <https://www.rfc-editor.org/info/rfc8024/>.
 RFC8025 |           | Thubert, P. and R. Cragie, "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Paging Dispatch", RFC 8025, DOI 10.17487/RFC8025, November 2016, <https://www.rfc-editor.org/info/rfc8025/>.
 RFC8026 |           | Boucadair, M. and I. Farrer, "Unified IPv4-in-IPv6 Softwire Customer Premises Equipment (CPE): A DHCPv6-Based Prioritization Mechanism", RFC 8026, DOI 10.17487/RFC8026, November 2016, <https://www.rfc-editor.org/info/rfc8026/>.
-RFC8027 |           | Hardaker, W., Guðmundsson, Ó., and S. Krishnaswamy, "DNSSEC Roadblock Avoidance", RFC 8027, DOI 10.17487/RFC8027, November 2016, <https://www.rfc-editor.org/info/rfc8027/>.
+RFC8027 |           | Hardaker, W., Guðmundsson, Ó., and S. Krishnaswamy, "DNSSEC Roadblock Avoidance", BCP 207, RFC 8027, DOI 10.17487/RFC8027, November 2016, <https://www.rfc-editor.org/info/rfc8027/>.
 RFC8028 |           | Baker, F. and B. Carpenter, "First-Hop Router Selection by Hosts in a Multi-Prefix Network", RFC 8028, DOI 10.17487/RFC8028, November 2016, <https://www.rfc-editor.org/info/rfc8028/>.
 RFC8029 |           | Kompella, K., Swallow, G., Pignataro, C., Nainar, N., Aldrin, S., and M. Chen, "Detecting Multiprotocol Label Switched (MPLS) Data-Plane Failures", RFC 8029, DOI 10.17487/RFC8029, March 2017, <https://www.rfc-editor.org/info/rfc8029/>.
 RFC8030 |           | Thomson, M., Damaggio, E., and B. Raymor, "Generic Event Delivery Using HTTP Push", RFC 8030, DOI 10.17487/RFC8030, December 2016, <https://www.rfc-editor.org/info/rfc8030/>.
