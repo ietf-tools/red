@@ -30,7 +30,6 @@
       ref="nav-desktop-menu"
       aria-label="In this RFC (desktop menu)"
       :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']"
-      @scroll.capture="debouncedCenterOnScroll"
       @focus.capture="debouncedCenterOnScroll"
       @wheel.capture="debouncedCenterOnScroll">
       <RFCTabs
