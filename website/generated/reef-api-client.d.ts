@@ -98,16 +98,36 @@ export interface paths {
       path?: never
       cookie?: never
     }
-    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    /**
+     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     *
+     *     Not unpublish: sets made through the API are public, so visibility takes
+     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     */
     get: operations['sets_retrieve']
-    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    /**
+     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     *
+     *     Not unpublish: sets made through the API are public, so visibility takes
+     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     */
     put: operations['sets_update']
     post?: never
-    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    /**
+     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     *
+     *     Not unpublish: sets made through the API are public, so visibility takes
+     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     */
     delete: operations['sets_destroy']
     options?: never
     head?: never
-    /** @description Read, retitle, redescribe, publish, or delete one of the caller's sets. */
+    /**
+     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     *
+     *     Not unpublish: sets made through the API are public, so visibility takes
+     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     */
     patch: operations['sets_partial_update']
     trace?: never
   }
@@ -359,12 +379,13 @@ export type webhooks = Record<string, never>
 export interface components {
   schemas: {
     DocumentSet: {
-      readonly id: number
+      /** Format: uuid */
+      readonly id: string
       title: string
       readonly slug: string
       description?: string
       /**
-       * @description A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+       * @description Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
        *
        *     * `private` - Private
        *     * `public` - Public
@@ -422,12 +443,13 @@ export interface components {
       readonly url: string
     }
     PatchedDocumentSet: {
-      readonly id?: number
+      /** Format: uuid */
+      readonly id?: string
       title?: string
       readonly slug?: string
       description?: string
       /**
-       * @description A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+       * @description Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
        *
        *     * `private` - Private
        *     * `public` - Public
@@ -489,7 +511,8 @@ export interface components {
       readonly id: number
       kind: components['schemas']['KindEnum']
       params?: unknown
-      set?: number | null
+      /** Format: uuid */
+      set?: string | null
       readonly verified: boolean
       /** Format: date-time */
       readonly created_at: string
@@ -803,7 +826,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -824,7 +847,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -851,7 +874,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -871,7 +894,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -898,7 +921,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        id: number
+        id: string
         slug: string
       }
       cookie?: never
@@ -921,7 +944,7 @@ export interface operations {
       header?: never
       path: {
         doc: string
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -951,7 +974,7 @@ export interface operations {
       header?: never
       path: {
         doc: string
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -971,7 +994,7 @@ export interface operations {
       query?: never
       header?: never
       path: {
-        id: number
+        id: string
       }
       cookie?: never
     }
@@ -999,7 +1022,7 @@ export interface operations {
         /** @description Document identifier, repeatable. Omit to get every document that has any engagement at all. A named document is always returned, with zeros if it has none. */
         doc?: string[]
         /** @description Document set id. Returns a row per document the set holds, including members with no engagement. Public sets resolve for anyone; a private set resolves only for its owner, and 404s otherwise. Combines with doc as an intersection. */
-        set?: number
+        set?: string
       }
       header?: never
       path?: never

@@ -308,13 +308,17 @@ paths:
   /api/reef/sets/{id}/:
     get:
       operationId: sets_retrieve
-      description: Read, retitle, redescribe, publish, or delete one of the caller's
-        sets.
+      description: |-
+        Read, retitle, redescribe, or delete one of the caller's sets.
+
+        Not unpublish: sets made through the API are public, so visibility takes
+        only that one value here. See DocumentSetSerializer.validate_visibility.
       parameters:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -330,13 +334,17 @@ paths:
           description: ''
     put:
       operationId: sets_update
-      description: Read, retitle, redescribe, publish, or delete one of the caller's
-        sets.
+      description: |-
+        Read, retitle, redescribe, or delete one of the caller's sets.
+
+        Not unpublish: sets made through the API are public, so visibility takes
+        only that one value here. See DocumentSetSerializer.validate_visibility.
       parameters:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -364,13 +372,17 @@ paths:
           description: ''
     patch:
       operationId: sets_partial_update
-      description: Read, retitle, redescribe, publish, or delete one of the caller's
-        sets.
+      description: |-
+        Read, retitle, redescribe, or delete one of the caller's sets.
+
+        Not unpublish: sets made through the API are public, so visibility takes
+        only that one value here. See DocumentSetSerializer.validate_visibility.
       parameters:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -397,13 +409,17 @@ paths:
           description: ''
     delete:
       operationId: sets_destroy
-      description: Read, retitle, redescribe, publish, or delete one of the caller's
-        sets.
+      description: |-
+        Read, retitle, redescribe, or delete one of the caller's sets.
+
+        Not unpublish: sets made through the API are public, so visibility takes
+        only that one value here. See DocumentSetSerializer.validate_visibility.
       parameters:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -426,7 +442,8 @@ paths:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
         - in: path
           name: slug
@@ -463,7 +480,8 @@ paths:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -499,7 +517,8 @@ paths:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -521,7 +540,8 @@ paths:
         - in: path
           name: id
           schema:
-            type: integer
+            type: string
+            format: uuid
           required: true
       tags:
         - sets
@@ -569,7 +589,8 @@ paths:
         - in: query
           name: set
           schema:
-            type: integer
+            type: string
+            format: uuid
           description: Document set id. Returns a row per document the set holds, including
             members with no engagement. Public sets resolve for anyone; a private set
             resolves only for its owner, and 404s otherwise. Combines with doc as an
@@ -910,7 +931,8 @@ components:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
           readOnly: true
         title:
           type: string
@@ -925,7 +947,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/DocumentSetVisibilityEnum'
           description: |-
-            A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+            Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
 
             * `private` - Private
             * `public` - Public
@@ -1055,7 +1077,8 @@ components:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
           readOnly: true
         title:
           type: string
@@ -1070,7 +1093,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/DocumentSetVisibilityEnum'
           description: |-
-            A set title and its membership say what someone is tracking, so publishing is the owner's choice.
+            Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
 
             * `private` - Private
             * `public` - Public
@@ -1190,7 +1213,8 @@ components:
           $ref: '#/components/schemas/KindEnum'
         params: {}
         set:
-          type: integer
+          type: string
+          format: uuid
           nullable: true
         verified:
           type: boolean
