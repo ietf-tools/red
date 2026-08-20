@@ -316,9 +316,9 @@ export const useOidcSession = (): void => {
           .catch((error) => {
             console.error('[oidc] restore failed', error)
             // Still an answer, and the only one anything downstream can act on: the restore was
-            // attempted and this tab has no session. Left unset, everything that waits for the
-            // check — AuthWall, useReefAuthSettled — would sit at its loading state for the life
-            // of the page because the provider was unreachable.
+            // attempted and this tab has no session. Left unset, AuthWall — which waits for this
+            // check before it renders either way — would sit at its spinner for the life of the
+            // page because the provider was unreachable.
             authStore.hasCheckedAuth = true
           })
       },

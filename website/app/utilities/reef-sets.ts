@@ -17,7 +17,6 @@ import {
   getSets,
   putSetDocument,
   ReefError,
-  useReefAuthSettled,
   useReefRequests,
   watchReefUserDocument,
   type DocumentSet,
@@ -467,9 +466,7 @@ const SetIdSchema = z.uuid()
 // getter and the load follows it changing — a link from one set to another is a route change, not a
 // remount.
 export const useSet = (setId: () => string): Ref<SetLoad> => {
-  const authStore = useAuthStore()
   const requests = useReefRequests()
-  const isAuthSettled = useReefAuthSettled()
 
   const state = ref<SetLoad>({ status: 'loading' })
 
@@ -497,22 +494,20 @@ export const useSet = (setId: () => string): Ref<SetLoad> => {
     state.value = { status: 'ready', set: outcome.value }
   }
 
-  // Gated on the auth answer rather than loading straight away, because a private set read without
-  // the owner's token is a 404 — and `notFound` is what the page would then be showing when the
-  // session turned up a moment later. Unlike the RFC page's per-reader rows there's nothing to show
-  // in the meantime, so there's nothing lost by waiting.
-  //
-  // Signing in or out is watched as well as the id: whether the caller may read this set is part of
-  // the answer, so a session ending has to take a private set off the screen rather than leave it
-  // there until the next navigation.
+  // Nothing to wait for and nobody to be: a set is public, so this read needs no token and no
+  // session state changes what it answers. The id is watched because /set?id=a → /set?id=b changes
+  // it without remounting the page.
   watch(
-    [isAuthSettled, () => authStore.isAuthenticated, setId],
-    () => {
-      if (!isAuthSettled.value) {
+    setId,
+    (id) => {
+      // Reef is reached from the browser, as the note at the top of ~/utilities/reef explains, so
+      // there is nothing to do until this is running in one: the server renders the loading state
+      // and the client takes it from there.
+      if (!import.meta.client) {
         return
       }
       state.value = { status: 'loading' }
-      void load(setId())
+      void load(id)
     },
     { immediate: true }
   )

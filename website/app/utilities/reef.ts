@@ -15,10 +15,9 @@
 // needs, kept here so the feature modules built on this client — ~/utilities/reef-ratings,
 // ~/utilities/reef-subscriptions and ~/utilities/reef-sets — don't each reinvent it.
 
-import { computed, inject, onBeforeUnmount, watch, type Ref } from 'vue'
+import { onBeforeUnmount, watch } from 'vue'
 import { z } from 'zod'
 import { useAuthStore } from '~/stores/auth'
-import { hasFeatureFlagsLoadedKey, useFeatureFlags } from '~/utilities/feature-flags'
 import type { components, operations } from '../../generated/reef-api-client'
 import { getAccessToken } from '~/utilities/oidc'
 
@@ -412,33 +411,6 @@ export const useReefRequests = (): ReefRequests => {
   const requests = createReefRequests()
   onBeforeUnmount(requests.abortLoad)
   return requests
-}
-
-// Whether "is anyone signed in?" has its final answer yet, for the reads worth waiting for it. A
-// read that is anonymous-capable but says more with a token — a set is public, or it's the caller's
-// own — asked too early is asked anonymously, and for a private set that answers 404. Waiting costs
-// a moment of loading; not waiting costs a 404 the page has to take back.
-//
-// Both gates are client-side and after mount: app.vue reads the feature flags from localStorage, and
-// Header.vue's useOidcSession restores the session and sets hasCheckedAuth either way. With the oidc
-// flag off there's no session to wait for, so the flags landing is the whole answer.
-export const useReefAuthSettled = (): Ref<boolean> => {
-  const authStore = useAuthStore()
-  const featureFlags = useFeatureFlags()
-  // Provided alongside featureFlagsKey in app.vue, and useFeatureFlags above has already thrown if
-  // that provider is missing, so this is only ever undefined on a tree that has neither.
-  const hasFeatureFlagsLoaded = inject(hasFeatureFlagsLoadedKey)
-
-  if (hasFeatureFlagsLoaded === undefined) {
-    throw Error('Expected provide(hasFeatureFlagsLoadedKey) above in component tree.')
-  }
-
-  return computed(() => {
-    if (!hasFeatureFlagsLoaded.value) {
-      return false
-    }
-    return featureFlags.value.oidc !== true || authStore.hasCheckedAuth
-  })
 }
 
 // Run `load` for the current reader and RFC, now and again whenever either changes. Whether anyone
