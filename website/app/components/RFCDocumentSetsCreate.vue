@@ -25,7 +25,12 @@
         ]">
         <DialogTitle class="text-lg font-semibold text-center pb-3">Create set</DialogTitle>
 
-        <DialogDescription class="text-sm">RFC {{ props.rfcNumber }} will be added to the new set.</DialogDescription>
+        <!-- That a set is public is said here rather than left to be discovered: the API carries no
+           visibility, so it isn't something the reader chooses. -->
+        <DialogDescription class="text-sm">
+          RFC {{ props.rfcNumber }} will be added to the new set. Sets are public: anyone with the link can see the
+          title and what's in it.
+        </DialogDescription>
 
         <!-- A real form, so Enter submits and the browser's own required/maxlength handling
            applies before anything is sent. -->
@@ -54,27 +59,6 @@
               :disabled="isCreating"
               class="border-1 border-gray-400 dark:border-gray-500 rounded px-2 py-1 bg-white dark:bg-gray-900" />
           </div>
-
-          <!-- Private is the default because publishing is the owner's choice, as the visibility
-             field's own description in the API spec puts it — so it's opted into rather than out
-             of. -->
-          <RadioGroupRoot v-model="newSetVisibility" :aria-labelledby="visibilityDomId" class="flex flex-col">
-            <span :id="visibilityDomId" class="font-bold pb-1">Visibility</span>
-            <RadioGroupItem
-              v-for="option in VISIBILITY_OPTIONS"
-              :key="option.value"
-              :value="option.value"
-              :disabled="isCreating"
-              class="flex items-start gap-2 cursor-pointer w-full text-left py-1">
-              <span
-                class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded-full border-current/60">
-                <RadioGroupIndicator>
-                  <GraphicsCheckmark class="block w-[14px] h-[14px]" />
-                </RadioGroupIndicator>
-              </span>
-              <span>{{ option.label }}</span>
-            </RadioGroupItem>
-          </RadioGroupRoot>
 
           <!-- role="alert" so the failure is announced: the dialog stays put and the only thing
              that changed is this line appearing. -->
@@ -130,12 +114,8 @@ import {
   DialogPortal,
   DialogRoot,
   DialogTitle,
-  DialogTrigger,
-  RadioGroupIndicator,
-  RadioGroupItem,
-  RadioGroupRoot
+  DialogTrigger
 } from 'reka-ui'
-import type { DocumentSetVisibility } from '~/utilities/reef'
 import { SET_TITLE_MAX_LENGTH, type CreateSetOutcome, type NewSet } from '~/utilities/reef-sets'
 
 type Props = {
@@ -154,19 +134,12 @@ const props = defineProps<Props>()
 // out of it is a DialogClose the reader presses.
 const isOpen = ref(false)
 
-const VISIBILITY_OPTIONS: { value: DocumentSetVisibility; label: string }[] = [
-  { value: 'private', label: 'Private — only you can see this set' },
-  { value: 'public', label: 'Public — anyone can see this set' }
-]
-
 const titleDomId = useId()
 const descriptionDomId = useId()
-const visibilityDomId = useId()
 const errorDomId = useId()
 
 const newSetTitle = ref('')
 const newSetDescription = ref('')
-const newSetVisibility = ref<DocumentSetVisibility>('private')
 const isCreating = ref(false)
 const createError = ref<string>()
 
@@ -181,7 +154,6 @@ watch(isOpen, (isNowOpen) => {
   }
   newSetTitle.value = ''
   newSetDescription.value = ''
-  newSetVisibility.value = 'private'
   createError.value = undefined
 })
 
@@ -202,8 +174,7 @@ const onSubmit = async () => {
   createError.value = undefined
   const outcome = await props.createSet({
     title: newSetTitle.value,
-    description: newSetDescription.value,
-    visibility: newSetVisibility.value
+    description: newSetDescription.value
   })
   isCreating.value = false
 

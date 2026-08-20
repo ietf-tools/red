@@ -19,8 +19,7 @@ import {
   useReefRequests,
   watchReefUserDocument,
   type DocumentSet,
-  type DocumentSetEntry,
-  type DocumentSetVisibility
+  type DocumentSetEntry
 } from '~/utilities/reef'
 
 // From DocumentSet.title's maxLength in reef_api.yaml. Enforced on the input as well as here, so
@@ -42,10 +41,10 @@ export const setContainsRFC = ({ documents }: DocumentSet, rfcNumber: number): b
   return documents.some((entry) => entry.doc === key)
 }
 
-// The ids of the sets holding this RFC, as strings, because that's what a checkbox group's value
-// is — the dialog binds this directly and never converts.
+// The ids of the sets holding this RFC. Reef's set ids are uuid strings, which is already what a
+// checkbox group's value is, so the dialog binds this directly and nothing converts.
 export const setIdsContainingRFC = (sets: DocumentSet[], rfcNumber: number): string[] =>
-  sets.filter((set) => setContainsRFC(set, rfcNumber)).map(({ id }) => String(id))
+  sets.filter((set) => setContainsRFC(set, rfcNumber)).map(({ id }) => id)
 
 // --- Cache ------------------------------------------------------------------------------
 //
@@ -84,11 +83,10 @@ const DocumentSetEntrySchema = z.object({
 }) satisfies z.ZodType<DocumentSetEntry>
 
 const DocumentSetSchema = z.object({
-  id: z.number(),
+  id: z.string(),
   title: z.string(),
   slug: z.string(),
   description: z.string().optional(),
-  visibility: z.enum(['private', 'public']).optional(),
   owner_name: z.string(),
   documents: z.array(DocumentSetEntrySchema),
   created_at: z.string(),
@@ -150,7 +148,7 @@ const writeCachedSets = (sets: DocumentSet[]): void => {
 // rather than seeded from the one set at hand: a list of one would be a hit, and would then answer
 // for every other set as though the reader had none. Leaving it absent costs one fetch, which
 // comes back with this change already in it.
-const patchCachedSet = (id: number, patch: (set: DocumentSet) => DocumentSet): void => {
+const patchCachedSet = (id: string, patch: (set: DocumentSet) => DocumentSet): void => {
   const cached = readCachedSets()
   if (cached === undefined) {
     return
@@ -176,25 +174,24 @@ export const getUserSets = async (signal?: AbortSignal): Promise<DocumentSet[]> 
 
 // What the reader fills in. Everything else about a set is server-assigned, and membership can't be
 // set at creation — `documents` is read-only, so a new set is always born empty.
+//
+// Nothing about who can see it either: the sets endpoints carry no visibility at all — a set is
+// public, as their own description says — so there's nothing for the form to ask.
 export type NewSet = {
   title: string
   description: string
-  // Not optional as it is on DocumentSet: the form always has one of the two selected, so there's
-  // no "unset" state to model here.
-  visibility: DocumentSetVisibility
 }
 
 // Create one set for the caller. Reef answers with the stored set, which is what goes into the
 // cache — the title may have been trimmed and the slug is assigned here, so the response is the
 // only trustworthy copy.
-export const createUserSet = async ({ title, description, visibility }: NewSet, signal?: AbortSignal) => {
+export const createUserSet = async ({ title, description }: NewSet, signal?: AbortSignal) => {
   const created = await createSet(
     {
       title: title.trim(),
       // Omitted rather than sent empty, so Reef stores its own default for a field the reader left
       // alone instead of an empty string that would read as a deliberate blanking.
-      ...(description.trim() === '' ? {} : { description: description.trim() }),
-      visibility
+      ...(description.trim() === '' ? {} : { description: description.trim() })
     },
     signal
   )
@@ -229,7 +226,7 @@ export const setCreationErrorMessage = (error: unknown): string => {
 
 // Add this RFC to one set. Reef answers with the updated set, so the cached copy is replaced
 // wholesale rather than patched by hand — membership, ranks and updated_at all come from Reef.
-export const addRFCToSet = async (setId: number, rfcNumber: number, signal?: AbortSignal): Promise<DocumentSet> => {
+export const addRFCToSet = async (setId: string, rfcNumber: number, signal?: AbortSignal): Promise<DocumentSet> => {
   const updated = await putSetDocument(setId, setDocumentKey(rfcNumber), signal)
   // Only once Reef has accepted it. A PUT that fails, or one aborted because the reader unticked
   // the box, rejects before this line, so the tab never caches a membership Reef isn't holding.
@@ -239,7 +236,7 @@ export const addRFCToSet = async (setId: number, rfcNumber: number, signal?: Abo
 
 // Remove this RFC from one set. The DELETE answers 204, so unlike the add there's no updated set
 // to copy in and the cached membership is edited directly.
-export const removeRFCFromSet = async (setId: number, rfcNumber: number, signal?: AbortSignal): Promise<void> => {
+export const removeRFCFromSet = async (setId: string, rfcNumber: number, signal?: AbortSignal): Promise<void> => {
   const key = setDocumentKey(rfcNumber)
   await deleteSetDocument(setId, key, signal)
   patchCachedSet(setId, (set) => ({
@@ -257,7 +254,7 @@ export const removeRFCFromSet = async (setId: number, rfcNumber: number, signal?
 
 // Keyed by set as well as RFC, because unlike the subscribe checkbox this dialog has a row per set
 // and two of them can fail independently.
-const setMembershipFailureNotificationId = (setId: number, rfcNumber: number): string =>
+const setMembershipFailureNotificationId = (setId: string, rfcNumber: number): string =>
   `rfc-set-membership.${setId}.${setDocumentKey(rfcNumber)}`
 
 export const setMembershipFailedNotification = (
@@ -351,8 +348,7 @@ export const useUserSets = (rfcNumber: () => number): UserSets => {
   }
 
   const persistMembership = async (set: DocumentSet, isAdding: boolean) => {
-    const { id } = set
-    const setId = String(id)
+    const { id: setId } = set
     const rfc = rfcNumber()
 
     // Keyed by set id, so the reader ticking two rows starts two independent writes and neither
@@ -363,10 +359,10 @@ export const useUserSets = (rfcNumber: () => number): UserSets => {
     // membership change doesn't touch.
     const outcome = await requests.writeFor(setId, async (signal): Promise<void> => {
       if (isAdding) {
-        await addRFCToSet(id, rfc, signal)
+        await addRFCToSet(setId, rfc, signal)
         return
       }
-      await removeRFCFromSet(id, rfc, signal)
+      await removeRFCFromSet(setId, rfc, signal)
     })
 
     if (outcome.status === 'superseded') {
@@ -395,7 +391,7 @@ export const useUserSets = (rfcNumber: () => number): UserSets => {
     const added = setIds.filter((id) => !syncedSetIds.includes(id))
     const removed = syncedSetIds.filter((id) => !setIds.includes(id))
 
-    const setById = new Map(sets.value.map((set) => [String(set.id), set]))
+    const setById = new Map(sets.value.map((set) => [set.id, set]))
 
     added.forEach((id) => {
       const set = setById.get(id)
@@ -436,7 +432,7 @@ export const useUserSets = (rfcNumber: () => number): UserSets => {
       // Before the tick, so the watcher below already finds the new set when it looks up what the
       // added id refers to. Both land in the same tick, and the watcher runs after it.
       sets.value = sortSets([...sets.value, created])
-      setIdsWithThisRFC.value = [...setIdsWithThisRFC.value, String(created.id)]
+      setIdsWithThisRFC.value = [...setIdsWithThisRFC.value, created.id]
       return { ok: true, set: created }
     } catch (error) {
       console.error('Unable to create a set.', error)

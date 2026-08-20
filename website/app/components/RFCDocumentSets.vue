@@ -45,7 +45,7 @@
                     <CheckboxRoot
                       v-for="set in props.sets"
                       :key="set.id"
-                      :value="String(set.id)"
+                      :value="set.id"
                       class="flex items-center gap-1 justify-between cursor-pointer w-full text-left py-1">
                       <div>
                         <span class="font-bold text-base">{{ set.title }}</span>
@@ -147,8 +147,8 @@ type Props = {
 
 const props = defineProps<Props>()
 
-// The ids of the sets holding this RFC, as strings, because that's what a checkbox group's value
-// is. Built by the parent from Reef's own answer.
+// The ids of the sets holding this RFC — Reef's uuid strings, which is what a checkbox group's
+// value is. Built by the parent from Reef's own answer.
 const setIdsWithThisRFC = defineModel<string[]>({ default: () => [] })
 
 const formatNumber = (val: number, decimalPlaces: number) => {

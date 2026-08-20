@@ -101,23 +101,23 @@ export interface paths {
     /**
      * @description Read, retitle, redescribe, or delete one of the caller's sets.
      *
-     *     Not unpublish: sets made through the API are public, so visibility takes
-     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     *     Not unpublish: sets are public here and the API carries no visibility, so
+     *     a set staff have taken down stays down. See DocumentSetSerializer.
      */
     get: operations['sets_retrieve']
     /**
      * @description Read, retitle, redescribe, or delete one of the caller's sets.
      *
-     *     Not unpublish: sets made through the API are public, so visibility takes
-     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     *     Not unpublish: sets are public here and the API carries no visibility, so
+     *     a set staff have taken down stays down. See DocumentSetSerializer.
      */
     put: operations['sets_update']
     post?: never
     /**
      * @description Read, retitle, redescribe, or delete one of the caller's sets.
      *
-     *     Not unpublish: sets made through the API are public, so visibility takes
-     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     *     Not unpublish: sets are public here and the API carries no visibility, so
+     *     a set staff have taken down stays down. See DocumentSetSerializer.
      */
     delete: operations['sets_destroy']
     options?: never
@@ -125,8 +125,8 @@ export interface paths {
     /**
      * @description Read, retitle, redescribe, or delete one of the caller's sets.
      *
-     *     Not unpublish: sets made through the API are public, so visibility takes
-     *     only that one value here. See DocumentSetSerializer.validate_visibility.
+     *     Not unpublish: sets are public here and the API carries no visibility, so
+     *     a set staff have taken down stays down. See DocumentSetSerializer.
      */
     patch: operations['sets_partial_update']
     trace?: never
@@ -141,9 +141,9 @@ export interface paths {
     /**
      * @description Read a published set, anonymously.
      *
-     *     A private set is a 404 rather than a 403: the endpoint does not confirm
-     *     that one exists. A stale or wrong slug redirects to the current URL, since
-     *     the id carries identity and the slug only has to be readable.
+     *     A private or taken-down set is a 404 rather than a 403: the endpoint does
+     *     not confirm that one exists. A stale or wrong slug redirects to the current
+     *     URL, since the id carries identity and the slug only has to be readable.
      */
     get: operations['sets_public_retrieve']
     put?: never
@@ -384,13 +384,6 @@ export interface components {
       title: string
       readonly slug: string
       description?: string
-      /**
-       * @description Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
-       *
-       *     * `private` - Private
-       *     * `public` - Public
-       */
-      visibility?: components['schemas']['DocumentSetVisibilityEnum']
       readonly owner_name: string
       readonly documents: components['schemas']['DocumentSetEntry'][]
       /** Format: date-time */
@@ -409,12 +402,6 @@ export interface components {
     DocumentSetOrder: {
       documents: string[]
     }
-    /**
-     * @description * `private` - Private
-     *     * `public` - Public
-     * @enum {string}
-     */
-    DocumentSetVisibilityEnum: 'private' | 'public'
     /** @description Public engagement numbers for one document. */
     DocumentStats: {
       doc: string
@@ -448,13 +435,6 @@ export interface components {
       title?: string
       readonly slug?: string
       description?: string
-      /**
-       * @description Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
-       *
-       *     * `private` - Private
-       *     * `public` - Public
-       */
-      visibility?: components['schemas']['DocumentSetVisibilityEnum']
       readonly owner_name?: string
       readonly documents?: components['schemas']['DocumentSetEntry'][]
       /** Format: date-time */

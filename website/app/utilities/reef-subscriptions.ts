@@ -155,7 +155,7 @@ const SubscriptionSchema = z.object({
   // reader holding a subscription created by a newer Reef than this build.
   kind: z.enum(['rfc', 'new_rfc', 'by_status', 'obsoleted', 'subject_tag', 'set']),
   params: z.unknown().optional(),
-  set: z.number().nullable().optional(),
+  set: z.string().nullable().optional(),
   verified: z.boolean(),
   created_at: z.string()
 }) satisfies z.ZodType<Subscription>

@@ -23,7 +23,6 @@ import { getAccessToken } from '~/utilities/oidc'
 
 export type DocumentSet = components['schemas']['DocumentSet']
 export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
-export type DocumentSetVisibility = components['schemas']['DocumentSetVisibilityEnum']
 export type PopularEntry = components['schemas']['PopularEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
 export type RatingWrite = components['schemas']['RatingWrite']
@@ -220,9 +219,9 @@ export const getSets = (signal?: AbortSignal): Promise<DocumentSet[]> =>
   reefFetch('/api/reef/sets/', { auth: 'required', signal })
 
 // Create one set. id, slug, owner_name, created_at and updated_at are server-assigned, so callers
-// supply only the title and the optional description and visibility. Membership isn't settable
-// here either — `documents` is read-only on this schema, so a set is always born empty and the
-// first document is a second call to putSetDocument.
+// supply only the title and the optional description. Membership isn't settable here either —
+// `documents` is read-only on this schema, so a set is always born empty and the first document is
+// a second call to putSetDocument.
 export const createSet = (
   set: Omit<DocumentSet, 'id' | 'slug' | 'owner_name' | 'documents' | 'created_at' | 'updated_at'>,
   signal?: AbortSignal
@@ -232,7 +231,7 @@ export const createSet = (
 // the compact form is what we send. The spec calls PUT idempotent, so adding a document the set
 // already holds answers 200 rather than an error — only the first add answers 201, and callers
 // have no reason to tell those apart.
-export const putSetDocument = (id: number, doc: string, signal?: AbortSignal): Promise<DocumentSet> =>
+export const putSetDocument = (id: string, doc: string, signal?: AbortSignal): Promise<DocumentSet> =>
   reefFetch(`/api/reef/sets/${id}/documents/${encodeURIComponent(doc)}/`, {
     method: 'PUT',
     auth: 'required',
@@ -241,7 +240,7 @@ export const putSetDocument = (id: number, doc: string, signal?: AbortSignal): P
 
 // Remove one document from one set. Answers 204, so unlike the PUT there's no updated set to read
 // the new membership from.
-export const deleteSetDocument = (id: number, doc: string, signal?: AbortSignal): Promise<void> =>
+export const deleteSetDocument = (id: string, doc: string, signal?: AbortSignal): Promise<void> =>
   reefFetch(`/api/reef/sets/${id}/documents/${encodeURIComponent(doc)}/`, {
     method: 'DELETE',
     auth: 'required',

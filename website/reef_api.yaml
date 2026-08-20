@@ -311,8 +311,8 @@ paths:
       description: |-
         Read, retitle, redescribe, or delete one of the caller's sets.
 
-        Not unpublish: sets made through the API are public, so visibility takes
-        only that one value here. See DocumentSetSerializer.validate_visibility.
+        Not unpublish: sets are public here and the API carries no visibility, so
+        a set staff have taken down stays down. See DocumentSetSerializer.
       parameters:
         - in: path
           name: id
@@ -337,8 +337,8 @@ paths:
       description: |-
         Read, retitle, redescribe, or delete one of the caller's sets.
 
-        Not unpublish: sets made through the API are public, so visibility takes
-        only that one value here. See DocumentSetSerializer.validate_visibility.
+        Not unpublish: sets are public here and the API carries no visibility, so
+        a set staff have taken down stays down. See DocumentSetSerializer.
       parameters:
         - in: path
           name: id
@@ -375,8 +375,8 @@ paths:
       description: |-
         Read, retitle, redescribe, or delete one of the caller's sets.
 
-        Not unpublish: sets made through the API are public, so visibility takes
-        only that one value here. See DocumentSetSerializer.validate_visibility.
+        Not unpublish: sets are public here and the API carries no visibility, so
+        a set staff have taken down stays down. See DocumentSetSerializer.
       parameters:
         - in: path
           name: id
@@ -412,8 +412,8 @@ paths:
       description: |-
         Read, retitle, redescribe, or delete one of the caller's sets.
 
-        Not unpublish: sets made through the API are public, so visibility takes
-        only that one value here. See DocumentSetSerializer.validate_visibility.
+        Not unpublish: sets are public here and the API carries no visibility, so
+        a set staff have taken down stays down. See DocumentSetSerializer.
       parameters:
         - in: path
           name: id
@@ -435,9 +435,9 @@ paths:
       description: |-
         Read a published set, anonymously.
 
-        A private set is a 404 rather than a 403: the endpoint does not confirm
-        that one exists. A stale or wrong slug redirects to the current URL, since
-        the id carries identity and the slug only has to be readable.
+        A private or taken-down set is a 404 rather than a 403: the endpoint does
+        not confirm that one exists. A stale or wrong slug redirects to the current
+        URL, since the id carries identity and the slug only has to be readable.
       parameters:
         - in: path
           name: id
@@ -943,14 +943,6 @@ components:
           pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
-        visibility:
-          allOf:
-            - $ref: '#/components/schemas/DocumentSetVisibilityEnum'
-          description: |-
-            Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
-
-            * `private` - Private
-            * `public` - Public
         owner_name:
           type: string
           readOnly: true
@@ -1003,14 +995,6 @@ components:
             type: string
       required:
         - documents
-    DocumentSetVisibilityEnum:
-      enum:
-        - private
-        - public
-      type: string
-      description: |-
-        * `private` - Private
-        * `public` - Public
     DocumentStats:
       type: object
       description: Public engagement numbers for one document.
@@ -1089,14 +1073,6 @@ components:
           pattern: ^[-a-zA-Z0-9_]+$
         description:
           type: string
-        visibility:
-          allOf:
-            - $ref: '#/components/schemas/DocumentSetVisibilityEnum'
-          description: |-
-            Sets are public: a title and its membership are readable by anyone with the link. Private is kept for staff to unpublish one.
-
-            * `private` - Private
-            * `public` - Public
         owner_name:
           type: string
           readOnly: true
