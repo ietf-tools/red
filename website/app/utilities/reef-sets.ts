@@ -13,14 +13,17 @@ import { REEF_CACHE_PREFIX } from '~/utilities/reef-cache'
 import {
   createSet,
   deleteSetDocument,
+  getSet,
   getSets,
   putSetDocument,
   ReefError,
+  useReefAuthSettled,
   useReefRequests,
   watchReefUserDocument,
   type DocumentSet,
   type DocumentSetEntry
 } from '~/utilities/reef'
+import { infoSeriesPathBuilder } from '~/utilities/url'
 
 // From DocumentSet.title's maxLength in reef_api.yaml. Enforced on the input as well as here, so
 // the reader is stopped at the field rather than by a 400 after submitting.
@@ -442,3 +445,99 @@ export const useUserSets = (rfcNumber: () => number): UserSets => {
 
   return { sets, setIdsWithThisRFC, createSet: create }
 }
+
+// --- One set, for the /set page ---------------------------------------------------------
+
+// What the set page renders. `notFound` is a state of its own rather than an error: Reef leaves a
+// set the caller may not read out of the queryset instead of refusing it, so one 404 covers deleted,
+// taken down, private-and-not-theirs and never-existed, and the page can only say the one thing
+// about all of them. `failed` is the honest other case — something went wrong on the way — and is
+// worth telling apart, because it's the one a reader might fix by trying again.
+export type SetLoad =
+  | { status: 'loading' }
+  | { status: 'ready'; set: DocumentSet }
+  | { status: 'notFound' }
+  | { status: 'failed'; error: unknown }
+
+// A set id is a uuid, so nothing else can name one. Checked before asking, so a junk link is
+// answered without a round trip and without resting on what Reef's router makes of one.
+const SetIdSchema = z.uuid()
+
+// One set by id, as the model for the /set page: the id comes from the URL, so it's read through a
+// getter and the load follows it changing — a link from one set to another is a route change, not a
+// remount.
+export const useSet = (setId: () => string): Ref<SetLoad> => {
+  const authStore = useAuthStore()
+  const requests = useReefRequests()
+  const isAuthSettled = useReefAuthSettled()
+
+  const state = ref<SetLoad>({ status: 'loading' })
+
+  const load = async (id: string) => {
+    if (!SetIdSchema.safeParse(id).success) {
+      state.value = { status: 'notFound' }
+      return
+    }
+
+    const outcome = await requests.load((signal) => getSet(id, signal))
+
+    if (outcome.status === 'superseded') {
+      return
+    }
+    if (outcome.status === 'failed') {
+      const { error } = outcome
+      if (error instanceof ReefError && error.status === 404) {
+        state.value = { status: 'notFound' }
+        return
+      }
+      console.error('Unable to load this set.', error)
+      state.value = { status: 'failed', error }
+      return
+    }
+    state.value = { status: 'ready', set: outcome.value }
+  }
+
+  // Gated on the auth answer rather than loading straight away, because a private set read without
+  // the owner's token is a 404 — and `notFound` is what the page would then be showing when the
+  // session turned up a moment later. Unlike the RFC page's per-reader rows there's nothing to show
+  // in the meantime, so there's nothing lost by waiting.
+  //
+  // Signing in or out is watched as well as the id: whether the caller may read this set is part of
+  // the answer, so a session ending has to take a private set off the screen rather than leave it
+  // there until the next navigation.
+  watch(
+    [isAuthSettled, () => authStore.isAuthenticated, setId],
+    () => {
+      if (!isAuthSettled.value) {
+        return
+      }
+      state.value = { status: 'loading' }
+      void load(setId())
+    },
+    { immediate: true }
+  )
+
+  return state
+}
+
+// One member document as the page lists it: the identifier Reef holds, and the /info/ path for it
+// when this build can name one. Reef canonicalizes identifiers to the compact `rfc9110` form, but a
+// set is free to hold something this site has no page for, and one such entry shouldn't take the
+// rest of the list with it — infoSeriesPathBuilder throws on an identifier it can't parse.
+export type SetDocument = {
+  doc: string
+  infoPath: string | undefined
+}
+
+// In `rank` order, which is the arrangement the set's owner chose (see the sets_order_update
+// endpoint), rather than whatever order the response happened to list them in.
+export const setDocuments = ({ documents }: DocumentSet): SetDocument[] =>
+  documents
+    .toSorted((a, b) => a.rank - b.rank)
+    .map(({ doc }) => {
+      try {
+        return { doc, infoPath: infoSeriesPathBuilder(doc) }
+      } catch {
+        return { doc, infoPath: undefined }
+      }
+    })

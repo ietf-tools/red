@@ -42,22 +42,23 @@
                     role="group"
                     :aria-label="`Sets holding RFC ${props.rfcNumber}`"
                     class="mx-auto max-w-[300px] flex flex-col gap-1 pb-2">
-                    <CheckboxRoot
-                      v-for="set in props.sets"
-                      :key="set.id"
-                      :value="set.id"
-                      class="flex items-center gap-1 justify-between cursor-pointer w-full text-left py-1">
-                      <div>
-                        <span class="font-bold text-base">{{ set.title }}</span>
-                        <div v-if="set.description">{{ set.description }}</div>
-                      </div>
-                      <span
-                        class="inline-flex shrink-0 items-center justify-center w-[24px] h-[24px] mt-0.5 border-1 rounded border-current/60">
-                        <CheckboxIndicator>
-                          <GraphicsCheckmark class="block w-[14px] h-[14px]" />
-                        </CheckboxIndicator>
-                      </span>
-                    </CheckboxRoot>
+                    <template v-for="set in props.sets" :key="set.id">
+                      <Anchor :href="setPathBuilder(set.id)">sdf</Anchor>
+                      <CheckboxRoot
+                        :value="set.id"
+                        class="flex items-center gap-1 justify-between cursor-pointer w-full text-left py-1">
+                        <div>
+                          <span class="font-bold text-base">{{ set.title }}</span>
+                          <div v-if="set.description">{{ set.description }}</div>
+                        </div>
+                        <span
+                          class="inline-flex shrink-0 items-center justify-center w-[24px] h-[24px] mt-0.5 border-1 rounded border-current/60">
+                          <CheckboxIndicator>
+                            <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                          </CheckboxIndicator>
+                        </span>
+                      </CheckboxRoot>
+                    </template>
                   </CheckboxGroupRoot>
 
                   <!-- Nothing to tick yet. Said rather than left blank, so the reader reads it as
@@ -128,6 +129,7 @@ import type { DocumentSet } from '~/utilities/reef'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
 import type { CreateSetOutcome, NewSet } from '~/utilities/reef-sets'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
+import { setPathBuilder } from '~/utilities/url'
 
 type Props = {
   rfcNumber: number

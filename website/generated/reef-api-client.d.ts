@@ -99,59 +99,72 @@ export interface paths {
       cookie?: never
     }
     /**
-     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     Not unpublish: sets are public here and the API carries no visibility, so
-     *     a set staff have taken down stays down. See DocumentSetSerializer.
+     *     One URL for a set, whoever is asking: the id is the whole of a set's
+     *     identity, so a shared link is this link and there is no second read
+     *     endpoint to keep in step with it. Reading needs no token, which is what
+     *     makes the link shareable, and holding the id is the whole of the
+     *     permission: a set is a thing its owner made to be passed around, and the
+     *     id is unguessable so that passing it around is the only way in. Writing is
+     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
+     *     so that the refusal says nothing about whose it is.
+     *
+     *     A set staff have taken down 404s here too, for everyone alike: it is left
+     *     out of the queryset rather than refused, so nothing confirms it exists.
      */
     get: operations['sets_retrieve']
     /**
-     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     Not unpublish: sets are public here and the API carries no visibility, so
-     *     a set staff have taken down stays down. See DocumentSetSerializer.
+     *     One URL for a set, whoever is asking: the id is the whole of a set's
+     *     identity, so a shared link is this link and there is no second read
+     *     endpoint to keep in step with it. Reading needs no token, which is what
+     *     makes the link shareable, and holding the id is the whole of the
+     *     permission: a set is a thing its owner made to be passed around, and the
+     *     id is unguessable so that passing it around is the only way in. Writing is
+     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
+     *     so that the refusal says nothing about whose it is.
+     *
+     *     A set staff have taken down 404s here too, for everyone alike: it is left
+     *     out of the queryset rather than refused, so nothing confirms it exists.
      */
     put: operations['sets_update']
     post?: never
     /**
-     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     Not unpublish: sets are public here and the API carries no visibility, so
-     *     a set staff have taken down stays down. See DocumentSetSerializer.
+     *     One URL for a set, whoever is asking: the id is the whole of a set's
+     *     identity, so a shared link is this link and there is no second read
+     *     endpoint to keep in step with it. Reading needs no token, which is what
+     *     makes the link shareable, and holding the id is the whole of the
+     *     permission: a set is a thing its owner made to be passed around, and the
+     *     id is unguessable so that passing it around is the only way in. Writing is
+     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
+     *     so that the refusal says nothing about whose it is.
+     *
+     *     A set staff have taken down 404s here too, for everyone alike: it is left
+     *     out of the queryset rather than refused, so nothing confirms it exists.
      */
     delete: operations['sets_destroy']
     options?: never
     head?: never
     /**
-     * @description Read, retitle, redescribe, or delete one of the caller's sets.
+     * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     Not unpublish: sets are public here and the API carries no visibility, so
-     *     a set staff have taken down stays down. See DocumentSetSerializer.
+     *     One URL for a set, whoever is asking: the id is the whole of a set's
+     *     identity, so a shared link is this link and there is no second read
+     *     endpoint to keep in step with it. Reading needs no token, which is what
+     *     makes the link shareable, and holding the id is the whole of the
+     *     permission: a set is a thing its owner made to be passed around, and the
+     *     id is unguessable so that passing it around is the only way in. Writing is
+     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
+     *     so that the refusal says nothing about whose it is.
+     *
+     *     A set staff have taken down 404s here too, for everyone alike: it is left
+     *     out of the queryset rather than refused, so nothing confirms it exists.
      */
     patch: operations['sets_partial_update']
-    trace?: never
-  }
-  '/api/reef/sets/{id}/{slug}/': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * @description Read a published set, anonymously.
-     *
-     *     A private or taken-down set is a 404 rather than a 403: the endpoint does
-     *     not confirm that one exists. A stale or wrong slug redirects to the current
-     *     URL, since the id carries identity and the slug only has to be readable.
-     */
-    get: operations['sets_public_retrieve']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
     trace?: never
   }
   '/api/reef/sets/{id}/documents/{doc}/': {
@@ -382,9 +395,7 @@ export interface components {
       /** Format: uuid */
       readonly id: string
       title: string
-      readonly slug: string
       description?: string
-      readonly owner_name: string
       readonly documents: components['schemas']['DocumentSetEntry'][]
       /** Format: date-time */
       readonly created_at: string
@@ -433,9 +444,7 @@ export interface components {
       /** Format: uuid */
       readonly id?: string
       title?: string
-      readonly slug?: string
       description?: string
-      readonly owner_name?: string
       readonly documents?: components['schemas']['DocumentSetEntry'][]
       /** Format: date-time */
       readonly created_at?: string
@@ -896,28 +905,6 @@ export interface operations {
       }
     }
   }
-  sets_public_retrieve: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: string
-        slug: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentSet']
-        }
-      }
-    }
-  }
   sets_documents_update: {
     parameters: {
       query?: never
@@ -1001,7 +988,7 @@ export interface operations {
       query?: {
         /** @description Document identifier, repeatable. Omit to get every document that has any engagement at all. A named document is always returned, with zeros if it has none. */
         doc?: string[]
-        /** @description Document set id. Returns a row per document the set holds, including members with no engagement. Public sets resolve for anyone; a private set resolves only for its owner, and 404s otherwise. Combines with doc as an intersection. */
+        /** @description Document set id. Returns a row per document the set holds, including members with no engagement. Any set resolves for any caller holding its id; an id that names no set 404s. Combines with doc as an intersection. */
         set?: string
       }
       header?: never

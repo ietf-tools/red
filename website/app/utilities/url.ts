@@ -28,7 +28,8 @@ import {
   RFC_INDEX_XML_PATH,
   RSS_PATH,
   SEARCH_PATH,
-  STATUS_CHANGES_PATH
+  STATUS_CHANGES_PATH,
+  SET_PATH
 } from './url-constants'
 
 // Constants moved to `url-constants.ts`; re-exported so existing importers of this module are
@@ -59,6 +60,7 @@ export type ValidHrefs =
   | typeof NEVER_ISSUED_PATH
   | typeof ALL_CLUSTERS_PATH
   | typeof STATUS_CHANGES_PATH
+  | typeof SET_PATH
   | (typeof FIXME_URLS)[number]
   | ReturnType<typeof markdownPathBuilder>
   | ReturnType<typeof searchPathBuilder>
@@ -469,6 +471,8 @@ export const parseMaybeRfcLink = (href?: string): undefined | ReturnType<typeof 
   }
   return undefined
 }
+
+export const setPathBuilder = (setId: string) => `${SET_PATH}?id=${encodeURIComponent(setId)}` as const
 
 export const useWorkingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
   if (!workingGroup) return undefined

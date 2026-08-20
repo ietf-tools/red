@@ -53,6 +53,8 @@ export const FIXME_RFCS_PER_YEAR_PATH = '/rfcs-per-year/'
 export const FIXME_ERRATA_DEFINITIONS_PATH = '/errata-definitions/'
 export const FIXME_INNOTES_PRERELEASE_PATH = '/in-notes/prerelease/'
 
+export const SET_PATH = '/set/'
+
 /**
  * URLs to decide upon.
  * Eventually these might be wrong but we'll temporarily add them to VALID_HREFS

@@ -27,7 +27,7 @@ const SITE_NAME = 'RFC Editor'
 type UseRfcEditorProps = {
   title: string
   description?: string
-  canonicalPath: string
+  canonicalPath: string | false
   /**
    * Markdown pages and RFCs are considered 'articles'
    */
@@ -59,7 +59,7 @@ export const useRfcEditorHead = (props: UseRfcEditorProps) => {
       ...buildNoIndex(newProps)
     ].map(allowDuplicateNames),
     link: [
-      buildCanonical(newProps, publicSiteOrigin),
+      ...buildCanonical(newProps, publicSiteOrigin),
       ...buildFaviconLinks(),
       ...buildFeedAutodiscovery(publicSiteOrigin)
     ],
@@ -137,16 +137,10 @@ const buildOpenGraphMetaTags = (props: UseRfcEditorProps, publicSiteOrigin: stri
     canonicalPath
   } = props
   const linkPreviewImage = linkPreviewImageBuilder('opengraph', publicSiteOrigin, customThumbnail)
-  const canonicalUrl = new URL(canonicalPath, publicSiteOrigin).toString()
-
   const metaTags: MetaTag[] = [
     {
       property: 'og:title',
       content: props.title
-    },
-    {
-      property: 'og:url',
-      content: canonicalUrl
     },
     {
       property: 'og:image',
@@ -169,6 +163,15 @@ const buildOpenGraphMetaTags = (props: UseRfcEditorProps, publicSiteOrigin: stri
       content: linkPreviewImage.widthHeight[1]?.toString() ?? '1024'
     }
   ]
+
+  if (canonicalPath !== false) {
+    const canonicalUrl = new URL(canonicalPath, publicSiteOrigin).toString()
+
+    metaTags.push({
+      property: 'og:url',
+      content: canonicalUrl
+    })
+  }
 
   if (description) {
     metaTags.push({
@@ -408,9 +411,12 @@ export const rfcCommonToGoogleScholar = (rfc: RfcCommon, publicSiteOrigin: strin
   }
 }
 
-const buildCanonical = ({ canonicalPath }: UseRfcEditorProps, publicSiteOrigin: string): LinkTag => {
+const buildCanonical = ({ canonicalPath }: UseRfcEditorProps, publicSiteOrigin: string): LinkTag[] => {
+  if (canonicalPath === false) {
+    return []
+  }
   const canonicalUrl = new URL(canonicalPath, publicSiteOrigin).toString()
-  return { rel: 'canonical', href: canonicalUrl }
+  return [{ rel: 'canonical', href: canonicalUrl }]
 }
 
 const buildFeedAutodiscovery = (publicSiteOrigin: string): LinkTag[] => {

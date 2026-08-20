@@ -10,12 +10,12 @@
         class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2 md:px-2 md:border-r-1 md:border-l-1 md:border-gray-200">
         <GraphicsAlert class="inline-block w-[24px] h-[24px]" />
         <Heading level="3" style-level="5" class="text-center"> Subscribe to RFCs</Heading>
-        <p class="text-sm text-center text-gray-800">Get notified when there's news about a published RFC</p>
+        <p class="text-sm text-center text-gray-800">Get notified when there's an update about a published RFC</p>
       </li>
       <li class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2">
         <GraphicsStackAddRegular class="inline-block w-[24px] h-[24px]" />
         <Heading level="3" style-level="5" class="text-center"> Create RFC sets</Heading>
-        <p class="text-sm text-center text-gray-800">Organise the RFCs most useful to you and your projects</p>
+        <p class="text-sm text-center text-gray-800">Organize the RFCs most useful to you and your projects</p>
       </li>
     </ul>
     <ul class="mt-8 mb-4 flex flex-row justify-center items-center gap-4">
