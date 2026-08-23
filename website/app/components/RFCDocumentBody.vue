@@ -65,8 +65,6 @@
       <component :is="enrichedDocument" />
     </div>
   </div>
-
-  <RFCMobileBanner :rfc="rfcBucketHtmlDocument.rfc" :is-fixed="true" />
 </template>
 
 <script setup lang="ts">
