@@ -5,8 +5,11 @@
 // `npm run generate:reef-api-client`. Regenerate after any spec change and vue-tsc will
 // point at whichever call sites no longer match.
 //
-// Browser-only by design — Reef is reached directly from the client with the user's OIDC
-// access token, so nothing here runs during SSR and we use plain fetch rather than $fetch.
+// Reef is reached directly from the client with the user's OIDC access token, so every
+// operation that takes a credential is browser-only and we use plain fetch rather than
+// $fetch. The exception is getDocumentStats: it is called anonymously, and the RFC page's
+// public numbers want it in the server render, so it must stay free of anything that only
+// exists in a browser — see ~/utilities/reef-stats.
 // Every operation in the spec gets one thin function below; reefFetch holds the single
 // copy of the base-URL, bearer-token, JSON and error-handling policy. If this file grows,
 // split it into a utilities/reef/ directory.
@@ -23,6 +26,7 @@ import { getAccessToken } from '~/utilities/oidc'
 
 export type DocumentSet = components['schemas']['DocumentSet']
 export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
+export type DocumentStats = components['schemas']['DocumentStats']
 export type PopularEntry = components['schemas']['PopularEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
 export type RatingWrite = components['schemas']['RatingWrite']
@@ -162,6 +166,20 @@ const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T>
 // The curated most-popular list. Public.
 export const getPopularity = (signal?: AbortSignal): Promise<PopularEntry[]> =>
   reefFetch('/api/reef/popularity/', { signal })
+
+// --- Stats ------------------------------------------------------------------------------
+
+// The public rating, subscriber and set numbers, one row per document. Public: the operation lists
+// `{}` in its security and a credential changes nothing in what comes back, so no token is asked
+// for — which is what lets this one be called from the server render.
+//
+// `docs` names the documents wanted, one `doc` parameter each. An empty array asks for every
+// document with any engagement at all, which the spec intends for a build-time sweep of the whole
+// series rather than for a page.
+export const getDocumentStats = (docs: string[], signal?: AbortSignal): Promise<DocumentStats[]> => {
+  const query = docs.map((doc) => `doc=${encodeURIComponent(doc)}`).join('&')
+  return reefFetch(`/api/reef/stats/${query === '' ? '' : `?${query}`}`, { signal })
+}
 
 // --- Ratings ----------------------------------------------------------------------------
 

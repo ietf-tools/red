@@ -106,11 +106,11 @@ import {
 } from 'reka-ui'
 import type { OidcUser } from '~/utilities/oidc'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
-import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
+import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
 
 type Props = {
   rfcNumber: number
-  reefStats: RfcBucketHtmlDocument['reefStats']
+  reefStats: ReefRFCStats | undefined
   // The signed-in reader, or undefined when nobody is signed in. Passed in rather than read from
   // the auth store here, so this component renders from what it's given and the parent stays the
   // one place that decides what "signed in" means for this row.

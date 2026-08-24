@@ -113,25 +113,14 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import { STAR_SCORE_LENGTH, userRFCRatingLabel } from '~/utilities/reef-ratings'
-import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
   rfcNumber: number
-  errataUrl: string
-  reefStats: RfcBucketHtmlDocument['reefStats']
 }
 
 const props = defineProps<Props>()
 
 const userRFCRating = defineModel<number | undefined>()
-
-const formatNumber = (val: number, decimalPlaces: number) => {
-  return new Intl.NumberFormat('en-US', {
-    notation: 'compact',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: decimalPlaces
-  }).format(val)
-}
 
 // Reef needs a bearer token to know whose rating to store, so an anonymous pick can only fail with
 // a 401. Ask for a sign-in instead of letting the stars look interactive and then silently lose it.

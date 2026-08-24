@@ -61,6 +61,10 @@
           <p v-for="(line, index) in props.rfc.abstract.split('\n')" :key="index">{{ line }}</p>
         </div>
       </div>
+      <ul v-if="featureFlags.oidc" class="flex flex-row">
+        <li><RFCCardSubscribe :rfc-number="props.rfc.number" :reef-stats="reefStats" /></li>
+        <li><RFCCardSets :rfc-number="props.rfc.number" :reef-stats="reefStats" /></li>
+      </ul>
     </template>
   </Card>
 </template>
@@ -71,6 +75,8 @@ import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc'
 import { parseHeadingLevel, type HeadingLevel } from '~/utilities/html'
 import { SPACE } from '~/utilities/strings'
+import { useRfcReefStats } from '~/utilities/reef-stats'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 
 type Props = {
   rfc: RfcCommon
@@ -84,4 +90,12 @@ const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 const abstractHeadingLevel = computed(() => parseHeadingLevel((parseFloat(props.headingLevel) + 1).toString()))
 
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
+
+const featureFlags = useFeatureFlags()
+
+// the numbers reach the page as payload.
+const reefStats = useRfcReefStats(
+  () => props.rfc.number,
+  () => {}
+)
 </script>

@@ -40,10 +40,7 @@
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
-    <RFCDocumentReef
-      v-if="featureFlags.oidc"
-      :rfc-number="rfcBucketHtmlDocument.rfc.number"
-      :reef-stats="{ ratingAggregate: { average: 3.2, count: 9299499 }, subscriberCount: 99999, setCount: 99999 }" />
+    <RFCDocumentReef v-if="featureFlags.oidc" :rfc-number="rfcBucketHtmlDocument.rfc.number" :reef-stats="reefStats" />
 
     <RFCDocumentSuperseded
       :data="obsoleted_by"
@@ -115,6 +112,7 @@ import {
 import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
+import { useRfcReefStats } from '~/utilities/reef-stats'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
 
@@ -132,6 +130,15 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
+
+// Loaded here rather than in RFCDocumentReef, which is where they're rendered, because the Reef row
+// is behind a feature flag read from localStorage: nothing inside that v-if exists during the server
+// render, so a loader placed there could only ever run in the browser. Here it runs on the server and
+// the numbers reach the page as payload.
+const reefStats = useRfcReefStats(
+  () => props.rfcBucketHtmlDocument.rfc.number,
+  () => props.rfcBucketHtmlDocument.reefStats
+)
 
 const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
 

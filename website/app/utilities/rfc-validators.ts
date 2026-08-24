@@ -324,7 +324,12 @@ export const ErrataListSchema = ErrataItemSchema.array()
 
 export type ErrataList = z.infer<typeof ErrataListSchema>
 
-const ReefRFCStats = z.object({
+/**
+ * The public engagement numbers for one RFC. Named here rather than in ~/utilities/reef-stats
+ * because they can arrive precomputed in the bucket JSON as well as from Reef itself, and the
+ * components that render them shouldn't care which.
+ */
+export const ReefRFCStatsSchema = z.object({
   /** Mimicking Reef API structure */
   ratingAggregate: z
     .object({
@@ -334,16 +339,18 @@ const ReefRFCStats = z.object({
     .optional(),
   /** Mimicking Reef API structure */
   subscriberCount: z.number().optional(),
-  /** Not a setter function, the nu Mimicking Reef API structure */
+  /** The number of document sets holding this RFC, not a setter function. Mimicking Reef API structure */
   setCount: z.number().optional()
 })
+
+export type ReefRFCStats = z.infer<typeof ReefRFCStatsSchema>
 
 /**
  * Bucket JSON schema
  */
 export const RfcBucketHtmlDocumentSchema = z.object({
   rfc: RfcCommonSchema,
-  reefStats: ReefRFCStats.optional(),
+  reefStats: ReefRFCStatsSchema.optional(),
   tableOfContents: TableOfContentsSchema.optional(),
   documentHtmlType: DocumentHtmlTypeSchema,
   documentHtmlObj: z.array(NodePojoSchema),
