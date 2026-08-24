@@ -2,11 +2,21 @@ import { z } from 'zod'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
+// Bounds of the text-scale slider, shared with AdvancedUISettings.vue so the
+// control and the persisted value can't disagree.
+export const TEXT_SCALE_MIN = 1
+export const TEXT_SCALE_MAX = 2
+export const TEXT_SCALE_STEP = 0.1
+export const DEFAULT_TEXT_SCALE = 1.5
+
+const TextScaleSchema = z.number().min(TEXT_SCALE_MIN).max(TEXT_SCALE_MAX)
+
 const UiSettingsSchema = z
   .object({
     obsoletedByMode: SupersededModeSchema,
     updatedByMode: SupersededModeSchema,
-    disableRFCLinkPreview: z.boolean()
+    disableRFCLinkPreview: z.boolean(),
+    textScale: TextScaleSchema.optional()
   })
   .optional()
 
@@ -21,15 +31,21 @@ const LOCALSTORAGE_KEY = 'rfc-ui'
 const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
 
 export const useUiSettingsStore = defineStore('uiSettings', () => {
+  // Whether the UI Settings dialog is showing. Deliberately not persisted: it's
+  // transient UI state, not a setting.
+  const isUiSettingsModalOpenRef = ref<boolean>(false)
+
   const obsoletedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
   const updatedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
   const disableRFCLinkPreviewRef = ref<boolean>(false)
+  const textScaleRef = ref<number>(DEFAULT_TEXT_SCALE)
 
   const saveSettings = () => {
     const uiSettings: UiSettings = {
       obsoletedByMode: obsoletedByModeRef.value,
       updatedByMode: updatedByModeRef.value,
-      disableRFCLinkPreview: disableRFCLinkPreviewRef.value
+      disableRFCLinkPreview: disableRFCLinkPreviewRef.value,
+      textScale: textScaleRef.value
     }
 
     try {
@@ -60,6 +76,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       obsoletedByModeRef.value = data.obsoletedByMode ?? obsoletedByModeRef.value
       updatedByModeRef.value = data.updatedByMode ?? updatedByModeRef.value
       disableRFCLinkPreviewRef.value = data.disableRFCLinkPreview ?? disableRFCLinkPreviewRef.value
+      textScaleRef.value = data.textScale ?? textScaleRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
@@ -83,15 +100,30 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  // Clamped rather than trusted: an out-of-bounds value would fail TextScaleSchema
+  // on the next load, which resets every other setting along with it.
+  const setTextScale = (textScale: number) => {
+    textScaleRef.value = Math.min(Math.max(textScale, TEXT_SCALE_MIN), TEXT_SCALE_MAX)
+    saveSettings()
+  }
+
+  const setIsUiSettingsModalOpen = (isOpen: boolean) => {
+    isUiSettingsModalOpenRef.value = isOpen
+  }
+
   onMounted(() => {
     loadSettings()
   })
 
   return {
+    isUiSettingsModalOpen: isUiSettingsModalOpenRef,
+    setIsUiSettingsModalOpen,
     obsoletedByMode: obsoletedByModeRef,
     updatedByMode: updatedByModeRef,
     setSupersededMode,
     disableRFCLinkPreview: disableRFCLinkPreviewRef,
-    setDisabledRFCLinkPreview
+    setDisabledRFCLinkPreview,
+    textScale: textScaleRef,
+    setTextScale
   }
 })

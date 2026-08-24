@@ -15,7 +15,9 @@
       <HeaderNavMobileNoScript />
     </div>
     <FeatureFlagsModal />
-    <!-- optional slot used to extend the header eg for the homepage -->
+    <NavModals />
+    <!-- optional slot used to extend the header.
+         per page content should still be in the <main> -->
     <slot />
   </header>
 </template>

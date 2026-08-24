@@ -223,7 +223,7 @@
                   v-else-if="level0.click"
                   :id="`menu-link-${index}-${level0Index}`"
                   type="button"
-                  :class="[MENU_ITEM_CLASS, 'cursor-pointer']"
+                  :class="[MENU_ITEM_CLASS, level0.desktopClass, 'cursor-pointer']"
                   :aria-label="level0.activeLabelFn?.()"
                   @click="level0.click">
                   <span class="flex items-center">

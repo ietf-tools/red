@@ -58,10 +58,39 @@
       ui-settings-key="updatedByMode" />
 
     <div
-      :class="`rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off ${
-        //
-        ' leading-[1.5] ' // WCAG requires 1.5 minimum
-      }`">
+      :class="[
+        `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
+        featureFlags.hasTextScale
+          ? {
+              // Line height, letter spacing, word spacing and paragraph spacing are
+              // tweened together, anchored on DEFAULT_TEXT_SCALE so that the default
+              // renders 1.5/0.12em/0.16em/2rem and each half of the range still reaches
+              // its extreme: TEXT_SCALE_MIN gives 1/0em/0em/0rem and TEXT_SCALE_MAX gives
+              // 2/0.5em/1em/3rem. WCAG requires a line height of 1.5 minimum, so scales
+              // below DEFAULT_TEXT_SCALE trade that away for density.
+              'leading-[1] tracking-[0em] [word-spacing:0em] [&_p]:mb-[0rem]': uiSettingsStore.textScale === 1,
+              'leading-[1.1] tracking-[0.024em] [word-spacing:0.032em] [&_p]:mb-[0.4rem]':
+                uiSettingsStore.textScale === 1.1,
+              'leading-[1.2] tracking-[0.048em] [word-spacing:0.064em] [&_p]:mb-[0.8rem]':
+                uiSettingsStore.textScale === 1.2,
+              'leading-[1.3] tracking-[0.072em] [word-spacing:0.096em] [&_p]:mb-[1.2rem]':
+                uiSettingsStore.textScale === 1.3,
+              'leading-[1.4] tracking-[0.096em] [word-spacing:0.128em] [&_p]:mb-[1.6rem]':
+                uiSettingsStore.textScale === 1.4,
+              'leading-[1.5] tracking-[0.12em] [word-spacing:0.16em] [&_p]:mb-[2rem]':
+                uiSettingsStore.textScale === 1.5,
+              'leading-[1.6] tracking-[0.196em] [word-spacing:0.328em] [&_p]:mb-[2.2rem]':
+                uiSettingsStore.textScale === 1.6,
+              'leading-[1.7] tracking-[0.272em] [word-spacing:0.496em] [&_p]:mb-[2.4rem]':
+                uiSettingsStore.textScale === 1.7,
+              'leading-[1.8] tracking-[0.348em] [word-spacing:0.664em] [&_p]:mb-[2.6rem]':
+                uiSettingsStore.textScale === 1.8,
+              'leading-[1.9] tracking-[0.424em] [word-spacing:0.832em] [&_p]:mb-[2.8rem]':
+                uiSettingsStore.textScale === 1.9,
+              'leading-[2] tracking-[0.5em] [word-spacing:1em] [&_p]:mb-[3rem]': uiSettingsStore.textScale === 2
+            }
+          : 'leading-[1.5]' // WCAG requires 1.5 minimum
+      ]">
       <component :is="enrichedDocument" />
     </div>
   </div>
@@ -99,6 +128,8 @@ type Props = {
 const props = defineProps<Props>()
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
+
+const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
 

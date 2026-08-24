@@ -10,7 +10,8 @@ export const FeatureFlagsSchema = z.object({
   // narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
   formatsAlsoViewAs: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
-  oidc: z.boolean().optional()
+  oidc: z.boolean().optional(),
+  hasTextScale: z.boolean().optional()
 })
 
 // this is commented out until next time we need a string union value in feature flags.
@@ -31,6 +32,11 @@ export type FeatureFlagUIRow = {
 }
 
 const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
+  hasTextScale: {
+    title: 'Enable text scaling option',
+    description: 'Text scaling affects line spacing, letter spacing, word spacing, and spacing after paragraphs.',
+    storageType: 'boolean'
+  },
   oidc: {
     title: 'Personalisation / OIDC',
     description:
@@ -65,6 +71,7 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
+  hasTextScale: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
   // narrowerRfcs: '',
@@ -160,6 +167,7 @@ export const useFeatureFlags = () => {
 
 export const calculateIfFeatureFlagsAreEnabled = (featureFlags: FeatureFlags): boolean => {
   const entries = Object.entries(featureFlags)
+  console.log(entries)
   const isEnabled = entries.reduce((acc, [_key, value]) => (acc ? acc : Boolean(value)), false)
   return isEnabled
 }
@@ -188,6 +196,8 @@ export const useAreFeatureFlagsEnabled = () => {
     if (isMounted.value === false) {
       return false
     }
+
+    return calculateIfFeatureFlagsAreEnabled(featureFlags)
   })
 
   return areFeatureFlagsEnabled

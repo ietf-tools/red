@@ -1,4 +1,4 @@
-import { GraphicsBustInSilhouette, GraphicsSearch, GraphicsUserPreferences } from '#components'
+import { AdvancedUISettings, GraphicsBustInSilhouette, GraphicsSearch, GraphicsUserPreferences } from '#components'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { htmlEscapeToText } from '~/utilities/html'
 import { useFeatureFlags } from '~/utilities/feature-flags'
@@ -13,7 +13,7 @@ import {
   useQueueUrlOrigin,
   type ValidHrefs
 } from '~/utilities/url'
-import type { VueClick } from '~/utilities/vue'
+import type { VueClick, VueStyleClass } from '~/utilities/vue'
 
 /**
  * Although this type is recursive the UI only renders about 2 levels deep
@@ -29,6 +29,7 @@ export type MenuItem = {
   hideDropdownIconDesktop?: boolean
   highlightLink?: boolean
   hideNewWindowIcon?: boolean
+  desktopClass?: VueStyleClass
   noSpaLink?: boolean
   href?: string
   click?: VueClick
@@ -37,7 +38,7 @@ export type MenuItem = {
    * Used for the theme picker
    */
   isActiveFn?: () => boolean
-  role?: 'radiogroup' | 'radio' | 'checkboxgroup' | 'checkbox'
+  role?: 'modal-button' | 'radiogroup' | 'radio' | 'checkboxgroup' | 'checkbox'
   /**
    * The value a `radio`/`checkbox` child contributes to its group's model
    */
@@ -50,6 +51,12 @@ export type MenuItem = {
    * Writable model for a `checkboxgroup`: the list of checked `fieldValue`s
    */
   checkboxGroupRef?: Ref<string[]>
+  /**
+   * Writable model for a `modal-button`: whether its dialog is showing
+   */
+  modalOpenRef?: Ref<boolean>
+  modalTitle?: string
+  modalBody?: () => VNode
   activeLabelFn?: () => string
   children?: MenuItem[]
 }
@@ -73,8 +80,8 @@ export const useMenuData = (mode: Mode) => {
   const colorMode = useColorMode()
   const queueUrlOrigin = useQueueUrlOrigin()
   const uiSettings = useUiSettingsStore()
-  const storeRefs = storeToRefs(uiSettings)
-  const { setDisabledRFCLinkPreview } = uiSettings
+  const uiSettingsStoreRefs = storeToRefs(uiSettings)
+  const { setIsUiSettingsModalOpen } = uiSettings
   const featureFlags = useFeatureFlags()
   const authStore = useAuthStore()
   const { isAuthenticated, user } = storeToRefs(authStore)
@@ -88,14 +95,12 @@ export const useMenuData = (mode: Mode) => {
     }
   })
 
-  // Writable model for the UI settings checkbox group, mapping the store's
-  // boolean flags to/from the list of checked field values.
-  const uiSettingsRef = computed<string[]>({
-    get: () => (storeRefs.disableRFCLinkPreview.value ? ['disableRFCLinkPreview'] : []),
-    set: (values) => {
-      const shouldDisable = values.includes('disableRFCLinkPreview')
-      setDisabledRFCLinkPreview(shouldDisable === true)
-    }
+  // Writable model for the UI Settings dialog, backed by the store so that the
+  // desktop nav button, the mobile nav button and the dialog itself (which is
+  // rendered outside both navs, see NavModals) all share one open state.
+  const isUISettingsModalOpenRef = computed<boolean>({
+    get: () => uiSettingsStoreRefs.isUiSettingsModalOpen.value,
+    set: (isOpen) => setIsUiSettingsModalOpen(isOpen)
   })
 
   const menuData = computed(() => {
@@ -200,24 +205,23 @@ export const useMenuData = (mode: Mode) => {
         )
       },
       {
-        label: 'RFC Info pages',
-        role: 'checkboxgroup',
-        checkboxGroupRef: uiSettingsRef,
-        children: [
-          {
-            label: 'Disable RFC Link Preview',
-            role: 'checkbox',
-            fieldValue: 'disableRFCLinkPreview',
-            description: 'Disable the RFC tooltip that activates on some RFC links (typically within RFCs).'
-          }
-        ]
+        label: 'Advanced Settings',
+        role: 'modal-button',
+        modalTitle: 'Advanced Settings',
+        modalOpenRef: isUISettingsModalOpenRef,
+        desktopClass: 'mt-2 pt-2 border-t-1 border-t-gray-200',
+        modalBody: () => h(AdvancedUISettings),
+        click: () => {
+          isUISettingsModalOpenRef.value = true
+        }
       }
     ]
 
     // Personalisation account menu — gated on the `oidc` feature flag. Absent from SSR
     // and first client paint (flags default false, hydrate onMounted), so it appears only
     // after mount when the flag is on: no hydration mismatch, and the cached anonymous
-    // HTML never contains it. Rightmost item.
+    // HTML never contains it, so we don't affect worker proxy cache with per user
+    // variations.
     if (featureFlags.value.oidc) {
       if (isAuthenticated.value) {
         const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
@@ -290,6 +294,27 @@ export const useMenuData = (mode: Mode) => {
 
   return menuData
 }
+
+/**
+ * A `modal-button` menu item that has everything NavModals needs to render its dialog
+ */
+export type ModalMenuItem = MenuItem & {
+  modalOpenRef: Ref<boolean>
+  modalTitle: string
+}
+
+const isModalMenuItem = (menuItem: MenuItem): menuItem is ModalMenuItem =>
+  menuItem.role === 'modal-button' && menuItem.modalOpenRef !== undefined && menuItem.modalTitle !== undefined
+
+/**
+ * Flattens the menu tree down to its `modal-button` items. Their dialogs are rendered
+ * once, outside the navs, rather than inside the menu item that opens them.
+ */
+export const collectModalMenuItems = (menuItems: MenuItem[]): ModalMenuItem[] =>
+  menuItems.flatMap((menuItem) => [
+    ...(isModalMenuItem(menuItem) ? [menuItem] : []),
+    ...collectModalMenuItems(menuItem.children ?? [])
+  ])
 
 type RenderNoScriptMenuItemOptions = {
   renderListDisc?: boolean
