@@ -60,7 +60,7 @@
     <div
       :class="[
         `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
-        featureFlags.hasTextScale
+        props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasTextScale
           ? {
               // Line height, letter spacing, word spacing and paragraph spacing are
               // tweened together, anchored on DEFAULT_TEXT_SCALE so that the default

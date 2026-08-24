@@ -20,10 +20,11 @@
           class="w-full max-w-2xs accent-blue-600 cursor-pointer"
           @change="commitTextScale" />
         <output class="text-sm tabular-nums">{{ textScaleLabel }}</output>
+        <button type="reset" @click="draftTextScale = DEFAULT_TEXT_SCALE">Reset to default</button>
       </div>
 
       <p :id="textScaleDescriptionDomId" class="pt-1 text-sm text-gray-800 dark:text-gray-200">
-        Scale the size of text on the site, relative to its normal size.
+        Scale text line spacing, letter spacing, word spacing, and spacing after paragraphs.
       </p>
     </div>
 
