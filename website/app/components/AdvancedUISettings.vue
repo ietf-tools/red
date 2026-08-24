@@ -1,6 +1,6 @@
 <template>
   <div class="pt-2 flex flex-col gap-5">
-    <Heading :id="linkPreviewLabelDomId" level="2" style-level="4" class="mt-0">RFC Info pages</Heading>
+    <Heading level="2" style-level="4" class="mt-0">RFC Info pages</Heading>
     <div
       v-if="featureFlags.hasTextScale"
       role="group"

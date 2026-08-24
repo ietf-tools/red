@@ -1,11 +1,11 @@
-// Keyboard behaviour of the "Your preferences" theme radio group and UI-settings
-// checkbox group in the header nav, on both the desktop (NavigationMenu) and
-// mobile (Dialog + Accordion) renderers.
+// Keyboard behaviour of the "Your preferences" theme radio group in the header
+// nav, on both the desktop (NavigationMenu) and mobile (Dialog + Accordion)
+// renderers.
 //
-// These guard a fiddly interaction: the radio/checkbox groups use Reka's roving
-// focus, but they are nested inside NavigationMenu (desktop) and Accordion
-// (mobile), both of which run their own arrow-key navigation over every nested
-// collection item. See HeaderNavDesktop.vue / HeaderNavMobile.vue.
+// These guard a fiddly interaction: the radio group uses Reka's roving focus,
+// but it is nested inside NavigationMenu (desktop) and Accordion (mobile), both
+// of which run their own arrow-key navigation over every nested collection
+// item. See HeaderNavDesktop.vue / HeaderNavMobile.vue.
 import { describe, expect, test } from 'vitest'
 import { createPage } from '@nuxt/test-utils/e2e'
 import { setupNuxtServer } from './utilities/setup'
@@ -41,9 +41,8 @@ describe('header preferences keyboard nav', async () => {
       await radios.first().waitFor({ state: 'visible' })
       expect(await radios.count()).toBe(3)
 
-      // The groups expose their heading as an accessible name.
+      // The radio group exposes its heading as an accessible name.
       expect(await page.getByRole('radiogroup', { name: 'Theme' }).count()).toBe(1)
-      expect(await page.getByRole('group', { name: 'RFC Info pages' }).count()).toBe(1)
 
       // Focus the currently-selected radio.
       const initial = await checkedStates(page)
@@ -65,7 +64,7 @@ describe('header preferences keyboard nav', async () => {
       expect((await checkedStates(page))[startIndex]).toBe('true')
 
       // Wrapping past the ends keeps focus inside the group (never escapes to the
-      // checkbox group or links).
+      // other groups or links).
       await page.keyboard.press('ArrowUp')
       await page.keyboard.press('ArrowUp')
       await page.waitForTimeout(50)
