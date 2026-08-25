@@ -5,7 +5,7 @@
       'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!props.rfc.obsoleted_by?.length,
       'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !props.rfc.obsoleted_by?.length
     }">
-    <div class="grid grid-cols-[calc(var(--computed-heading-char-length)*1.1ch)_minmax(0,_1fr)_auto]">
+    <div class="grid grid-cols-[calc(var(--computed-heading-char-length)*1.1ch)_minmax(0,_1fr)]">
       <span>
         <CardLink :href="infoSeriesPathBuilder(`RFC${props.rfc.number}`)" has-cover-link chevron-position="center">
           <component :is="formattedTitleWithSuffix" />
