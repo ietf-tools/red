@@ -1,10 +1,10 @@
 <template>
   <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
-    <GraphicsAlert :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
     <div class="flex flex-col">
       <DialogRoot>
         <DialogTrigger
           :class="[
+            'flex flex-row gap-1',
             'cursor-pointer',
             'rounded',
             'text-center md:text-left',
@@ -12,7 +12,9 @@
             'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
             COVER_LINK_STYLE_CLASS
           ]">
-          <span :class="COVER_LINK_INNER_STYLE_CLASS"> Subscribe </span></DialogTrigger
+          <GraphicsAlert
+            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Subscribe </span></DialogTrigger
         >
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
@@ -115,6 +117,7 @@ type Props = {
   // the auth store here, so this component renders from what it's given and the parent stays the
   // one place that decides what "signed in" means for this row.
   user: OidcUser | undefined
+  iconOnly?: boolean
 }
 
 const props = defineProps<Props>()

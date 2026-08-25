@@ -30,6 +30,9 @@
     <aside v-if="hasAsideSlot" :class="props.asideSlotClass">
       <slot name="aside"></slot>
     </aside>
+    <template v-if="hasEndSlot">
+      <slot name="end"></slot>
+    </template>
   </BaseCard>
 </template>
 
@@ -57,4 +60,5 @@ const props = withDefaults(defineProps<Props>(), {
 
 const slots = useSlots()
 const hasAsideSlot = computed(() => !!slots['aside'])
+const hasEndSlot = computed(() => !!slots['end'])
 </script>

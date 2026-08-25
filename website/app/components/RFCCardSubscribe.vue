@@ -3,6 +3,7 @@
     :rfc-number="props.rfcNumber"
     :reef-stats="reefStats"
     :user="authStore.user"
+    :icon-only="props.iconOnly"
     v-model="isSubscribedToThisRFC" />
 </template>
 
@@ -13,6 +14,7 @@ import type { ReefRFCStats } from '~/utilities/rfc-validators'
 type Props = {
   rfcNumber: number
   reefStats?: ReefRFCStats
+  iconOnly?: boolean
 }
 
 const props = defineProps<Props>()

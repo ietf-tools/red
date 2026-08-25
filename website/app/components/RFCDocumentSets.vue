@@ -1,10 +1,10 @@
 <template>
   <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
-    <GraphicsAddCircle :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
     <div>
       <DialogRoot>
         <DialogTrigger
           :class="[
+            'flex flex-row gap-1',
             'cursor-pointer',
             'rounded',
             'text-center md:text-left',
@@ -12,7 +12,11 @@
             'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
             COVER_LINK_STYLE_CLASS
           ]">
-          <span :class="COVER_LINK_INNER_STYLE_CLASS"> Add to set </span>
+          <GraphicsAddCircle
+            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]">
+            Add to set {{ String(props.iconOnly) }}</span
+          >
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
@@ -145,6 +149,7 @@ type Props = {
   // creates a set. It comes from the parent's useUserSets, where the rest of the Reef work for
   // sets lives.
   createSet: (newSet: NewSet) => Promise<CreateSetOutcome>
+  iconOnly?: boolean
 }
 
 const props = defineProps<Props>()

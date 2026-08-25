@@ -17,6 +17,10 @@
       {{ props.rfc.title }}
     </p>
     <RFCCardBodyPill :rfc="rfc" mode="none" class="col-span-2 mt-1" />
+    <ul v-if="featureFlags.oidc" class="flex flex-row">
+      <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="reefStats" /></li>
+      <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="reefStats" /></li>
+    </ul>
   </BaseCard>
 </template>
 
@@ -26,13 +30,18 @@ import type { RfcCommon } from '~/utilities/rfc'
 import type { HeadingLevel } from '~/utilities/html'
 import { NONBREAKING_SPACE } from '~/utilities/strings'
 import { formatTitleAsVNode, hasSubseries } from '~/utilities/rfc-title'
+import { useFeatureFlags } from '~/utilities/feature-flags'
+import type { ReefRFCStats } from '~/utilities/rfc-validators'
 
 type Props = {
   rfc: RfcCommon
+  reefStats?: ReefRFCStats
   headingLevel?: HeadingLevel
 }
 
 const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 
 const formattedTitleWithSuffix = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, hasSubseries(props.rfc)))
+
+const featureFlags = useFeatureFlags()
 </script>

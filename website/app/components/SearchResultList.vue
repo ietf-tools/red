@@ -1,7 +1,13 @@
 <template>
   <ul class="flex flex-col gap-4 computedHeadingWidth">
-    <li v-for="rfc in rfcs" :key="rfc.number" class="flex flex-col">
-      <RFCCardSearchItem heading-level="3" :rfc="rfc" :density="searchStore.density" show-abstract show-tag-date />
+    <li v-for="item in list" :key="item.rfc.number" class="flex flex-col">
+      <RFCCardSearchItem
+        heading-level="3"
+        :rfc="item.rfc"
+        :density="searchStore.density"
+        show-abstract
+        show-tag-date
+        :reef-stats="reefStats" />
     </li>
   </ul>
 </template>
@@ -12,7 +18,7 @@ import { formatTitleAsVNode, formatSubseriesAsVNode, hasSubseries } from '~/util
 import type { TypeSenseSearchItem } from '../utilities/typesense'
 import { getVNodeText } from '~/utilities/vue'
 import { typeSenseSearchItemToRFCCommon } from '~/utilities/rfc-converters'
-import type { RfcCommon } from '~/utilities/rfc-validators'
+import type { ReefRFCStats, RfcCommon } from '~/utilities/rfc-validators'
 
 type Props = {
   items: TypeSenseSearchItem[]
@@ -20,8 +26,13 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const rfcs = computed(() =>
-  props.items.map((typesenseSearchItem) => typeSenseSearchItemToRFCCommon(typesenseSearchItem))
+const list = computed(() =>
+  props.items.map((typesenseSearchItem) => {
+    return {
+      rfc: typeSenseSearchItemToRFCCommon(typesenseSearchItem),
+      reefStats: reefStats.value?.[typesenseSearchItem.rfcNumber]
+    }
+  })
 )
 
 const calculateHeadingCharWidth = (rfc: RfcCommon): number => {
@@ -37,12 +48,12 @@ const MINIMUM_HEADING_CHAR_WIDTH = 7
 const calculateMaxHeadingWidth = (rfcs: RfcCommon[]): number =>
   Math.max(...rfcs.map((rfc) => calculateHeadingCharWidth(rfc)), MINIMUM_HEADING_CHAR_WIDTH)
 
-const maxHeadingWidth = ref(calculateMaxHeadingWidth(rfcs.value))
+const maxHeadingWidth = ref(calculateMaxHeadingWidth(list.value?.map((item) => item.rfc)))
 
 watchDebounced(
-  () => rfcs,
+  () => list,
   () => {
-    maxHeadingWidth.value = calculateMaxHeadingWidth(rfcs.value)
+    maxHeadingWidth.value = calculateMaxHeadingWidth(list.value?.map((item) => item.rfc))
     // console.log('recomputing max width', maxHeadingWidth.value)
   },
   {
@@ -54,6 +65,10 @@ watchDebounced(
 )
 
 const searchStore = useSearchStore()
+
+const reefStats: Ref<Record<number, ReefRFCStats>> = computed(() => {
+  return {}
+})
 </script>
 
 <style global>

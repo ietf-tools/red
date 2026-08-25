@@ -4,9 +4,7 @@
     :heading-level="props.headingLevel"
     has-cover-link
     chevron-position="center"
-    :class="{
-      'lg:flex': !!(props.showAbstract && props.rfc.abstract)
-    }"
+    :class="['flex flex-col justify-between']"
     :override-class-defaults="{
       'bg-pink-50 dark:bg-pink-950 border-pink-400 dark:border-pink-700': !!props.rfc.obsoleted_by?.length,
       'bg-white dark:bg-blue-950 border-gray-200 dark:border-gray-500': !props.rfc.obsoleted_by?.length
@@ -61,6 +59,8 @@
           <p v-for="(line, index) in props.rfc.abstract.split('\n')" :key="index">{{ line }}</p>
         </div>
       </div>
+    </template>
+    <template #end>
       <ul v-if="featureFlags.oidc" class="flex flex-row">
         <li><RFCCardSubscribe :rfc-number="props.rfc.number" :reef-stats="reefStats" /></li>
         <li><RFCCardSets :rfc-number="props.rfc.number" :reef-stats="reefStats" /></li>
@@ -75,11 +75,12 @@ import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc'
 import { parseHeadingLevel, type HeadingLevel } from '~/utilities/html'
 import { SPACE } from '~/utilities/strings'
-import { useRfcReefStats } from '~/utilities/reef-stats'
 import { useFeatureFlags } from '~/utilities/feature-flags'
+import type { ReefRFCStats } from '~/utilities/rfc-validators'
 
 type Props = {
   rfc: RfcCommon
+  reefStats?: ReefRFCStats
   showAbstract?: boolean
   showTagDate?: boolean
   headingLevel?: HeadingLevel
@@ -92,10 +93,4 @@ const abstractHeadingLevel = computed(() => parseHeadingLevel((parseFloat(props.
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
 
 const featureFlags = useFeatureFlags()
-
-// the numbers reach the page as payload.
-const reefStats = useRfcReefStats(
-  () => props.rfc.number,
-  () => {}
-)
 </script>

@@ -4,6 +4,7 @@
     :reef-stats="reefStats"
     :user="authStore.user"
     :sets="userSets"
+    :icon-only="props.iconOnly"
     :create-set="createSet"
     v-model="setIdsWithThisRFC" />
 </template>
@@ -15,6 +16,7 @@ import type { ReefRFCStats } from '~/utilities/rfc-validators'
 type Props = {
   rfcNumber: number
   reefStats?: ReefRFCStats
+  iconOnly?: boolean
 }
 
 const props = defineProps<Props>()
