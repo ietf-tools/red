@@ -176,6 +176,28 @@ export const RfcCommonGroupSchema = z.object({
   type: RfcCommonGroupTypeSchema
 })
 
+/**
+ * The public engagement numbers for one RFC. Named here rather than alongside the Reef client
+ * because Red never fetches them: they arrive with whatever data the route already loads — the
+ * bucket JSON for an RFC page, the search index for a result list — and this is the one shape all
+ * of those carry, so the components rendering them don't care which route supplied them.
+ */
+export const ReefRFCStatsSchema = z.object({
+  /** Mimicking Reef API structure */
+  ratingAggregate: z
+    .object({
+      average: z.number().optional(),
+      count: z.number().optional()
+    })
+    .optional(),
+  /** Mimicking Reef API structure */
+  subscriberCount: z.number().optional(),
+  /** The number of document sets holding this RFC, not a setter function. Mimicking Reef API structure */
+  setCount: z.number().optional()
+})
+
+export type ReefRFCStats = z.infer<typeof ReefRFCStatsSchema>
+
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
@@ -210,13 +232,20 @@ export const RfcCommonSchema = z.object({
   formats: z.array(RfcCommonFormatSchema),
   /** Abstract is plain text with `\n` line breaks; convert to paragraphs at render time */
   abstract: z.string().optional(),
-  text: z.string().optional()
+  text: z.string().optional(),
+  /**
+   * The public engagement numbers, when the route that supplied this RFC carries them. Optional
+   * because not every source fills it in yet, and a card showing no numbers is what that looks
+   * like — Red never asks Reef for them, so this is the only way they arrive.
+   */
+  reefStats: ReefRFCStatsSchema.optional()
 })
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
 
 export const HomepageLatestSchema = z.object({
   homepageLatest: z.array(RfcCommonSchema),
+  homepageLatestReefStats: z.array(ReefRFCStatsSchema).optional(),
   timestampIso: z.string() // not using `z.coerce.date()` because we'll manually parse into a Luxon DateTime rather than a standard JS Date
 })
 
@@ -323,27 +352,6 @@ export type ErrataItem = z.infer<typeof ErrataItemSchema>
 export const ErrataListSchema = ErrataItemSchema.array()
 
 export type ErrataList = z.infer<typeof ErrataListSchema>
-
-/**
- * The public engagement numbers for one RFC. Named here rather than in ~/utilities/reef-stats
- * because they can arrive precomputed in the bucket JSON as well as from Reef itself, and the
- * components that render them shouldn't care which.
- */
-export const ReefRFCStatsSchema = z.object({
-  /** Mimicking Reef API structure */
-  ratingAggregate: z
-    .object({
-      average: z.number().optional(),
-      count: z.number().optional()
-    })
-    .optional(),
-  /** Mimicking Reef API structure */
-  subscriberCount: z.number().optional(),
-  /** The number of document sets holding this RFC, not a setter function. Mimicking Reef API structure */
-  setCount: z.number().optional()
-})
-
-export type ReefRFCStats = z.infer<typeof ReefRFCStatsSchema>
 
 /**
  * Bucket JSON schema

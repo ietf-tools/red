@@ -1,13 +1,7 @@
 <template>
   <ul class="flex flex-col gap-4 computedHeadingWidth">
     <li v-for="item in list" :key="item.rfc.number" class="flex flex-col">
-      <RFCCardSearchItem
-        heading-level="3"
-        :rfc="item.rfc"
-        :density="searchStore.density"
-        show-abstract
-        show-tag-date
-        :reef-stats="reefStats" />
+      <RFCCardSearchItem heading-level="3" :rfc="item.rfc" :density="searchStore.density" show-abstract show-tag-date />
     </li>
   </ul>
 </template>
@@ -18,7 +12,8 @@ import { formatTitleAsVNode, formatSubseriesAsVNode, hasSubseries } from '~/util
 import type { TypeSenseSearchItem } from '../utilities/typesense'
 import { getVNodeText } from '~/utilities/vue'
 import { typeSenseSearchItemToRFCCommon } from '~/utilities/rfc-converters'
-import type { ReefRFCStats, RfcCommon } from '~/utilities/rfc-validators'
+import { useReefRfcs } from '~/utilities/reef-documents'
+import type { RfcCommon } from '~/utilities/rfc-validators'
 
 type Props = {
   items: TypeSenseSearchItem[]
@@ -29,11 +24,16 @@ const props = defineProps<Props>()
 const list = computed(() =>
   props.items.map((typesenseSearchItem) => {
     return {
-      rfc: typeSenseSearchItemToRFCCommon(typesenseSearchItem),
-      reefStats: reefStats.value?.[typesenseSearchItem.rfcNumber]
+      rfc: typeSenseSearchItemToRFCCommon(typesenseSearchItem)
     }
   })
 )
+
+// The whole page of results in one call, and only for the results this reader's answers aren't
+// already held for — moving to page 2, or refining a query that keeps some of the same RFCs, asks
+// only about what's new. Declared here rather than in the cards because a card that loaded its own
+// would make one request per result.
+useReefRfcs(() => list.value.map(({ rfc }) => rfc))
 
 const calculateHeadingCharWidth = (rfc: RfcCommon): number => {
   const rfcHasSubseries = hasSubseries(rfc)
@@ -65,10 +65,6 @@ watchDebounced(
 )
 
 const searchStore = useSearchStore()
-
-const reefStats: Ref<Record<number, ReefRFCStats>> = computed(() => {
-  return {}
-})
 </script>
 
 <style global>

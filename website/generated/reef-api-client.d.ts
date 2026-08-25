@@ -4,6 +4,32 @@
  */
 
 export interface paths {
+  '/api/reef/me/documents/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Read your own state for a batch of documents
+     * @description Return the authenticated caller's rating, subscription and set membership for each named document, along with the caller's own sets. One call for a whole page of documents.
+     *
+     *     `doc` is repeatable and identifiers are canonicalized, so `rfc9110` and `RFC 9110` address the same document; the series has to be named, so `9110` on its own is rejected. A named document is always returned, with nulls if the caller has no state for it. At most 100 documents per request.
+     *
+     *     Naming no document returns the caller's sets and an empty `documents` list, which is how a client loads the set list on its own. Unlike `/stats/`, an empty `doc` does not mean every document: that endpoint is swept once at build time, whereas this one is called on every page.
+     *
+     *     Carries no public numbers. Ratings averages, subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
+     */
+    get: operations['me_documents_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/popularity/': {
     parameters: {
       query?: never
@@ -432,6 +458,46 @@ export interface components {
      * @enum {string}
      */
     KindEnum: 'new_rfc' | 'by_status' | 'obsoleted' | 'subject_tag' | 'rfc' | 'set'
+    /**
+     * @description What one document is to the caller: their rating, their subscription,
+     *     their sets.
+     *
+     *     Nothing public: no average, no count, no subscriber total. Those are the
+     *     same for everybody, so Red takes them from the data it already has for the
+     *     route rather than from a per-caller request.
+     */
+    MyDocument: {
+      doc: string
+      your_rating: number | null
+      your_subscription_id: number | null
+      your_set_ids: string[]
+    }
+    /**
+     * @description One of the caller's sets, without its membership.
+     *
+     *     Deliberately not docsets.DocumentSetSerializer: that one carries the set's
+     *     whole `documents` array, which is the thing this endpoint exists to avoid
+     *     sending. A client drawing "which of my sets hold this document" needs every
+     *     set the caller owns to label the rows, but it only needs membership for the
+     *     documents it is asking about — and that arrives per document as
+     *     `your_set_ids`. Sending both would make the payload grow with the caller's
+     *     library rather than with the page.
+     */
+    MyDocumentSet: {
+      /** Format: uuid */
+      readonly id: string
+      readonly title: string
+      readonly description: string
+      /** Format: date-time */
+      readonly created_at: string
+      /** Format: date-time */
+      readonly updated_at: string
+    }
+    /** @description The whole response: the caller's sets, and a row per requested document. */
+    MyDocuments: {
+      sets: components['schemas']['MyDocumentSet'][]
+      documents: components['schemas']['MyDocument'][]
+    }
     /** @description Minimal representation for Red's open-survey list and popover. */
     OpenSurvey: {
       readonly id: number
@@ -469,10 +535,7 @@ export interface components {
     }
     PopularEntry: {
       rfc: string
-      /**
-       * Format: int64
-       * @description Lower sorts first
-       */
+      /** @description Lower sorts first */
       rank?: number
     }
     RatingAggregate: {
@@ -546,6 +609,28 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
+  me_documents_retrieve: {
+    parameters: {
+      query?: {
+        /** @description Document identifier, repeatable, at most 100 per request. The series must be named: rfc9110, bcp14, std66. */
+        doc?: string[]
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['MyDocuments']
+        }
+      }
+    }
+  }
   popularity_list: {
     parameters: {
       query?: never

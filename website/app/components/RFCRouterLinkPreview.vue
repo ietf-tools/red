@@ -14,12 +14,18 @@
 <script setup lang="ts">
 import type { RfcCommon } from '~/utilities/rfc-validators'
 import { analyticsMatomoTrackLinkPreview } from '~/utilities/analytics-matomo'
+import { useReefRfcs } from '~/utilities/reef-documents'
 
 type Props = {
   rfc: RfcCommon
 }
 
 const props = defineProps<Props>()
+
+// The card inside shows the same Reef controls as any other, so the one RFC it previews is
+// declared like any other list. A preview only mounts when somebody hovers a link, so this asks
+// about a document the page proper never named — and only the first time it's opened.
+useReefRfcs(() => [props.rfc])
 
 onMounted(() => {
   analyticsMatomoTrackLinkPreview(`rfc${props.rfc.number}`)

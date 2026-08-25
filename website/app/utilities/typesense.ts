@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { FOCUSABLE_QUERY_SELECTOR } from './html'
 // The status facet lives in a DOM-free module so server-reachable code can derive from it.
 import { TypesenseSearchItemStatusSchema, type TypesenseStatusName } from './typesense-status'
+import { ReefRFCStatsSchema } from './rfc-validators'
 
 // Re-exported so existing importers of this module are unaffected by the move.
 export { TypesenseSearchItemStatusSchema, type TypesenseStatusName }
@@ -57,6 +58,9 @@ export const TypeSenseSearchItemSchema = z.object({
 
   subseries: TypesenseSubseriesSchema.optional(),
   rfc: z.string(),
+
+  /** The public engagement numbers, when the index carries them. See ReefRFCStatsSchema. */
+  reefStats: ReefRFCStatsSchema.optional(),
 
   area: TypesenseSearchItemAreaSchema.optional(),
   group: TypesenseSearchItemGroupSchema,

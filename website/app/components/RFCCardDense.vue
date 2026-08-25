@@ -25,8 +25,8 @@
     </template>
     <template #end>
       <ul v-if="featureFlags.oidc" class="flex flex-col md:flex-row">
-        <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="reefStats" /></li>
-        <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="reefStats" /></li>
+        <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only /></li>
+        <li><RFCCardSets :rfc-number="props.rfc.number" icon-only /></li>
       </ul>
     </template>
   </Card>
@@ -40,11 +40,9 @@ import { useResponsiveModeStore } from '~/stores/responsiveMode'
 import type { HeadingLevel } from '~/utilities/html'
 import { SPACE } from '~/utilities/strings'
 import { useFeatureFlags } from '~/utilities/feature-flags'
-import type { ReefRFCStats } from '~/utilities/rfc-validators'
 
 type Props = {
   rfc: RfcCommon
-  reefStats?: ReefRFCStats
   showAbstract?: boolean
   showTagDate?: boolean
   headingLevel?: HeadingLevel

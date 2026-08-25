@@ -24,8 +24,14 @@
           class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4"
           :data-timestamp-iso="homepageLatest?.timestampIso"
           :aria-describedby="LATEST_RFCS_HEADING_DOM_ID">
-          <li v-for="rfc in homepageLatest?.homepageLatest" :key="rfc.number">
-            <RFCCard heading-level="3" :rfc="rfc" :show-abstract="false" :show-tag-date="true" class="h-full" />
+          <li v-for="item in homepageLatest?.rfcs" :key="item.rfc.number">
+            <RFCCard
+              heading-level="3"
+              :rfc="item.rfc"
+              :reef-stats="item.reefStats"
+              :show-abstract="false"
+              :show-tag-date="true"
+              class="h-full" />
           </li>
         </ul>
 
@@ -139,7 +145,6 @@ import {
   RFC_INDEX_PATH,
   searchV2PathBuilder
 } from '~/utilities/url'
-import type { HomepageLatest } from '~/utilities/rfc-validators'
 
 definePageMeta({
   layout: false
@@ -174,7 +179,7 @@ const {
   return maybeHomepageLatest
 })
 
-const homepageLatest = computed((): HomepageLatest | undefined => {
+const homepageLatest = computed(() => {
   if (homepageLatestError.value) {
     console.error('Homepage latest loading problem', homepageLatestError.value)
     return undefined
@@ -184,7 +189,13 @@ const homepageLatest = computed((): HomepageLatest | undefined => {
     console.error('Homepage latest parsing problem', error)
     return undefined
   }
-  return data
+  return {
+    ...data,
+    rfcs: data.homepageLatest.map((rfc, index) => {
+      const reefStats = data.homepageLatestReefStats?.[index]
+      return { rfc, reefStats }
+    })
+  }
 })
 
 useRfcEditorHead({

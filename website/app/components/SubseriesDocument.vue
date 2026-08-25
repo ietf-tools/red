@@ -53,6 +53,7 @@ import { infoSeriesPathBuilder, apiSubseriesPathBuilder, useApiV1UrlOrigin } fro
 import { useRfcEditorHead } from '~/utilities/head'
 import type { SeriesId } from '~/utilities/rfc'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
+import { useReefRfcs } from '~/utilities/reef-documents'
 
 type Props = {
   subseriesId: SeriesId
@@ -91,6 +92,9 @@ const { data: subseriesDocument, error: subseriesDocumentError } = await useAsyn
     return data
   }
 )
+
+// Every RFC the subseries holds in one call, rather than one per card.
+useReefRfcs(() => subseriesDocument.value?.contents ?? [])
 
 if (subseriesDocumentError.value) {
   console.error(subseriesDocumentError.value)

@@ -14,9 +14,7 @@
           ]">
           <GraphicsAddCircle
             :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
-          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]">
-            Add to set {{ String(props.iconOnly) }}</span
-          >
+          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Add to set </span>
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
@@ -129,9 +127,9 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import type { OidcUser } from '~/utilities/oidc'
-import type { DocumentSet } from '~/utilities/reef'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
 import type { CreateSetOutcome, NewSet } from '~/utilities/reef-sets'
+import type { ReefSet } from '~/stores/reef'
 import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
 import { setPathBuilder } from '~/utilities/url'
 
@@ -144,7 +142,7 @@ type Props = {
   user: OidcUser | undefined
   // The reader's sets, already in the order they should be listed. Empty while logged out, and
   // empty for a reader who keeps none.
-  sets: DocumentSet[]
+  sets: ReefSet[]
   // Not called here — handed straight to the create dialog below, which is the only thing that
   // creates a set. It comes from the parent's useUserSets, where the rest of the Reef work for
   // sets lives.

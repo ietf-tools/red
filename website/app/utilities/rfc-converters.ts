@@ -136,6 +136,9 @@ export const typeSenseSearchItemToRFCCommon = (unverifiedTypeSenseSearchItem: Ty
         title: obs
       })) ?? [],
     published,
+    // Carried across as it came: the index either has the numbers or it doesn't, and there is
+    // nowhere else for a search result to get them from.
+    reefStats: item.reefStats,
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,
     status: parseTypesenseStatus(item.status),
     stream: {
