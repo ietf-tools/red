@@ -17,10 +17,10 @@
           <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Add to set </span>
         </DialogTrigger>
         <DialogPortal>
-          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
+          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
           <DialogContent
             :class="[
-              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-105',
+              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-115',
               'focus:outline-none rounded-md shadow-3xl',
               'bg-white dark:bg-gray-800',
               'px-4 pt-3 pb-1'
