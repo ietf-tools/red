@@ -61,9 +61,9 @@
       </div>
     </template>
     <template #end>
-      <ul v-if="featureFlags.oidc" class="flex flex-row">
-        <li><RFCCardSubscribe :rfc-number="props.rfc.number" /></li>
-        <li><RFCCardSets :rfc-number="props.rfc.number" /></li>
+      <ul v-if="featureFlags.oidc" class="flex flex-row gap-1 -ml-1 -mb-1">
+        <li><RFCCardSubscribe :rfc-number="props.rfc.number" :reef-stats="props.rfc.reefStats" /></li>
+        <li><RFCCardSets :rfc-number="props.rfc.number" :reef-stats="props.rfc.reefStats" /></li>
       </ul>
     </template>
   </Card>

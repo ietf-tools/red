@@ -76,18 +76,6 @@ describe('writeUserRFCRating', () => {
     await writing
   })
 
-  test('moves the public average by Reef’s own recount', async () => {
-    const reefStore = await readerHolding([doc()])
-    reefStore.seedStats('rfc9110', { ratingAggregate: { average: 3, count: 1 }, subscriberCount: 7 })
-    reef.putRating.mockResolvedValue({ rfc: 'rfc9110', average: 3.5, count: 2, your_rating: 4 })
-
-    await writeUserRFCRating(9110, 4)
-
-    expect(reefStore.stats.rfc9110?.ratingAggregate).toEqual({ average: 3.5, count: 2 })
-    // Only the rating moved: the other numbers are not this write's business.
-    expect(reefStore.stats.rfc9110?.subscriberCount).toBe(7)
-  })
-
   test('puts the rating back when Reef refuses it', async () => {
     const reefStore = await readerHolding([doc({ your_rating: 2 })])
     reef.putRating.mockRejectedValue(new Error('nope'))
@@ -148,26 +136,14 @@ describe('writeUserRFCSubscription', () => {
     expect(reefStore.userDocuments.rfc9110?.yourSubscriptionId).toBe(812)
   })
 
-  test('counts this reader among the subscribers', async () => {
-    const reefStore = await readerHolding([doc()])
-    reefStore.seedStats('rfc9110', { subscriberCount: 7 })
-    reef.createSubscription.mockResolvedValue({ id: 812 })
-
-    await writeUserRFCSubscription(9110, true)
-
-    expect(reefStore.stats.rfc9110?.subscriberCount).toBe(8)
-  })
-
   test('unsubscribes by the id it was given', async () => {
     const reefStore = await readerHolding([doc({ your_subscription_id: 812 })])
-    reefStore.seedStats('rfc9110', { subscriberCount: 7 })
     reef.deleteSubscription.mockResolvedValue(undefined)
 
     await writeUserRFCSubscription(9110, false)
 
     expect(reef.deleteSubscription).toHaveBeenCalledWith(812)
     expect(reefStore.userDocuments.rfc9110?.isSubscribed).toBe(false)
-    expect(reefStore.stats.rfc9110?.subscriberCount).toBe(6)
   })
 
   test('unticks and says so when Reef refuses', async () => {
@@ -210,16 +186,14 @@ describe('writeUserSetMembership', () => {
     vi.spyOn(console, 'error').mockImplementation(() => {})
   })
 
-  test('adds this document to a set and counts it', async () => {
+  test('adds this document to a set', async () => {
     const reefStore = await readerHolding([doc()], [set('set-a', 'Reading list')])
-    reefStore.seedStats('rfc9110', { setCount: 3 })
     reef.putSetDocument.mockResolvedValue({})
 
     writeUserSetMembership(9110, ['set-a'])
     expect(reefStore.userDocuments.rfc9110?.yourSetIds).toEqual(['set-a'])
-    await vi.waitFor(() => expect(reefStore.stats.rfc9110?.setCount).toBe(4))
 
-    expect(reef.putSetDocument).toHaveBeenCalledWith('set-a', 'rfc9110')
+    await vi.waitFor(() => expect(reef.putSetDocument).toHaveBeenCalledWith('set-a', 'rfc9110'))
   })
 
   test('removes it from a set it was in', async () => {

@@ -233,11 +233,6 @@ export const RfcCommonSchema = z.object({
   /** Abstract is plain text with `\n` line breaks; convert to paragraphs at render time */
   abstract: z.string().optional(),
   text: z.string().optional(),
-  /**
-   * The public engagement numbers, when the route that supplied this RFC carries them. Optional
-   * because not every source fills it in yet, and a card showing no numbers is what that looks
-   * like — Red never asks Reef for them, so this is the only way they arrive.
-   */
   reefStats: ReefRFCStatsSchema.optional()
 })
 
@@ -245,7 +240,6 @@ export type RfcCommon = z.infer<typeof RfcCommonSchema>
 
 export const HomepageLatestSchema = z.object({
   homepageLatest: z.array(RfcCommonSchema),
-  homepageLatestReefStats: z.array(ReefRFCStatsSchema).optional(),
   timestampIso: z.string() // not using `z.coerce.date()` because we'll manually parse into a Luxon DateTime rather than a standard JS Date
 })
 
@@ -358,7 +352,6 @@ export type ErrataList = z.infer<typeof ErrataListSchema>
  */
 export const RfcBucketHtmlDocumentSchema = z.object({
   rfc: RfcCommonSchema,
-  reefStats: ReefRFCStatsSchema.optional(),
   tableOfContents: TableOfContentsSchema.optional(),
   documentHtmlType: DocumentHtmlTypeSchema,
   documentHtmlObj: z.array(NodePojoSchema),

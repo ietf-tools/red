@@ -181,15 +181,12 @@ describe('useReefStore', () => {
   test('forgets this reader’s own state when they sign out', async () => {
     signIn()
     const reefStore = useReefStore()
-    reefStore.seedStats('rfc9110', { subscriberCount: 12 })
     await reefStore.ensureDocuments(['rfc9110'])
 
     useAuthStore().clearUser()
 
     expect(reefStore.userDocuments.rfc9110).toBeUndefined()
     expect(reefStore.sets).toEqual([])
-    // Public numbers were never theirs, so they stay on the page.
-    expect(reefStore.stats.rfc9110).toEqual({ subscriberCount: 12 })
   })
 
   test('does not show one reader what the previous one loaded', async () => {
@@ -216,34 +213,5 @@ describe('useReefStore', () => {
 
     expect(reefStore.userDocuments.rfc9110).toBeUndefined()
     expect(reefStore.sets).toEqual([])
-  })
-
-  // --- Public numbers --------------------------------------------------------
-
-  test('keeps the first numbers a route supplies', () => {
-    const reefStore = useReefStore()
-    reefStore.seedStats('rfc9110', { subscriberCount: 12 })
-    // A later visit reseeds from data precomputed before this reader did anything.
-    reefStore.seedStats('rfc9110', { subscriberCount: 9 })
-    expect(reefStore.stats.rfc9110).toEqual({ subscriberCount: 12 })
-  })
-
-  test('ignores a route with no numbers to supply', () => {
-    const reefStore = useReefStore()
-    reefStore.seedStats('rfc9110', undefined)
-    expect(reefStore.stats.rfc9110).toBeUndefined()
-  })
-
-  test('lets a write move the numbers a route supplied', () => {
-    const reefStore = useReefStore()
-    reefStore.seedStats('rfc9110', { subscriberCount: 12 })
-    reefStore.adjustStats('rfc9110', (current) => ({ ...current, subscriberCount: (current.subscriberCount ?? 0) + 1 }))
-    expect(reefStore.stats.rfc9110?.subscriberCount).toBe(13)
-  })
-
-  test('lets a write move numbers no route supplied', () => {
-    const reefStore = useReefStore()
-    reefStore.adjustStats('rfc9110', (current) => ({ ...current, setCount: (current.setCount ?? 0) + 1 }))
-    expect(reefStore.stats.rfc9110?.setCount).toBe(1)
   })
 })

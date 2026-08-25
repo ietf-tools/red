@@ -4,24 +4,18 @@
 // of one document arrive together in one response and are read together by one card, so keeping
 // them apart only ever meant three requests and three copies of the same bookkeeping.
 //
-// Two kinds of state, with different lifetimes, which is why they're separate maps:
+// Only this reader's own state. The public numbers beside these controls — the rating average, the
+// subscriber and set totals — are not here and never fetched: they arrive with whatever data the
+// route already loaded and are passed down as props, so an anonymous visitor never reaches Reef.
 //
-//   stats         public, the same for every visitor. Seeded from whatever data the route already
-//                 loaded — the RFC page's bucket JSON, the homepage's latest, the search index —
-//                 never fetched from Reef. Survives a sign-out, because it was never this
-//                 reader's to begin with.
-//   userDocuments this reader's own. Loaded from Reef, in the browser, only while somebody is
-//                 signed in, and cleared the moment they aren't.
-//
-// Nothing here is persisted. The per-reader half costs one request per page and belongs to a
-// session; the public half arrives with the page. If a cold page proves slow enough to be worth
+// Nothing here is persisted. Client-side navigation keeps this store, so moving between pages
+// re-asks for nothing; only a full page load starts empty. If that proves slow enough to be worth
 // it, a single serialised snapshot keyed by `subject` is the shape to add — not a cache per
 // feature, which is what this replaced.
 
 import { computed, ref, watch } from 'vue'
 import { useAuthStore } from '~/stores/auth'
 import { getMyDocuments, MY_DOCUMENTS_BATCH_LIMIT, type MyDocument, type MyDocumentSet } from '~/utilities/reef'
-import type { ReefRFCStats } from '~/utilities/rfc-validators'
 
 // How many documents Red names in one request. Under Reef's own limit rather than at it, so a
 // page that grows by a few documents doesn't start failing at the boundary.
@@ -91,7 +85,6 @@ const chunk = <T>(items: T[], size: number): T[][] =>
 export const useReefStore = defineStore('reef', () => {
   const authStore = useAuthStore()
 
-  const stats = ref<Record<string, ReefRFCStats>>({})
   const userDocuments = ref<Record<string, ReefUserDocument>>({})
   const sets = ref<ReefSet[]>([])
 
@@ -125,26 +118,6 @@ export const useReefStore = defineStore('reef', () => {
    * only reachable when the flag is on, so an authenticated reader implies it.
    */
   const isReadable = computed(() => import.meta.client && authStore.isAuthenticated)
-
-  /**
-   * Remember the public numbers a route already loaded.
-   *
-   * First one wins. A route that renders the same document twice, or is returned to later, seeds
-   * again with the same precomputed figures — but by then this reader may have rated it, and the
-   * average held here would have moved to include their rating. Overwriting would quietly undo
-   * that, so the later seed is ignored.
-   */
-  const seedStats = (doc: string, documentStats: ReefRFCStats | undefined): void => {
-    if (documentStats === undefined || stats.value[doc] !== undefined) {
-      return
-    }
-    stats.value[doc] = documentStats
-  }
-
-  /** Adjust the numbers to account for something this reader just did. */
-  const adjustStats = (doc: string, adjust: (current: ReefRFCStats) => ReefRFCStats): void => {
-    stats.value[doc] = adjust(stats.value[doc] ?? {})
-  }
 
   /**
    * Change one document's per-reader state.
@@ -313,13 +286,10 @@ export const useReefStore = defineStore('reef', () => {
   )
 
   return {
-    stats,
     userDocuments,
     sets,
     subject,
     isReadable,
-    seedStats,
-    adjustStats,
     patchUserDocument,
     addSet,
     runWrite,

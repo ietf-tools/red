@@ -67,12 +67,10 @@ describe('useReefDocument', () => {
       documents: [row('rfc9110', { your_rating: 4, your_subscription_id: 7, your_set_ids: ['set-a'] })]
     })
     const reefStore = useReefStore()
-    reefStore.seedStats('rfc9110', { subscriberCount: 12 })
 
     const document = useReefDocument(9110)
     await reefStore.ensureDocuments(['rfc9110'])
 
-    expect(document.stats.value).toEqual({ subscriberCount: 12 })
     expect(document.yourRating.value).toBe(4)
     expect(document.isSubscribed.value).toBe(true)
     expect(document.yourSubscriptionId.value).toBe(7)
@@ -91,15 +89,18 @@ describe('useReefDocument', () => {
   test('follows the document it is given when the page navigates', async () => {
     useAuthStore().setUser({ sub: 'reader-1' })
     const reefStore = useReefStore()
+    getMyDocuments.mockResolvedValue({
+      sets: [],
+      documents: [row('rfc9110', { your_rating: 4 }), row('rfc2119', { your_rating: 1 })]
+    })
+    await reefStore.ensureDocuments(['rfc9110', 'rfc2119'])
+
     const rfcNumber = ref(9110)
     const document = useReefDocument(rfcNumber)
-
-    reefStore.seedStats('rfc9110', { subscriberCount: 12 })
-    reefStore.seedStats('rfc2119', { subscriberCount: 99 })
-    expect(document.stats.value).toEqual({ subscriberCount: 12 })
+    expect(document.yourRating.value).toBe(4)
 
     rfcNumber.value = 2119
-    expect(document.stats.value).toEqual({ subscriberCount: 99 })
+    expect(document.yourRating.value).toBe(1)
   })
 })
 

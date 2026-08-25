@@ -40,7 +40,10 @@
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
-    <RFCDocumentReef v-if="featureFlags.oidc" :rfc-number="rfcBucketHtmlDocument.rfc.number" />
+    <RFCDocumentReef
+      v-if="featureFlags.oidc"
+      :rfc-number="rfcBucketHtmlDocument.rfc.number"
+      :reef-stats="rfcBucketHtmlDocument.rfc.reefStats" />
 
     <RFCDocumentSuperseded
       :data="obsoleted_by"
@@ -112,7 +115,6 @@ import {
 import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
-import { reefDocumentKey } from '~/utilities/reef-documents'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
 
@@ -130,29 +132,6 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
-
-// The public engagement numbers arrive with the document, in the bucket JSON's reefStats, so
-// nothing is fetched for them and a visitor who isn't signed in never reaches Reef.
-//
-// Seeded into the store rather than only handed down as a prop, so that every component showing
-// these numbers shows the same ones, and so a rating this reader gives can move the average
-// without anything re-reading the bucket. Seeded here rather than in RFCDocumentReef, which is
-// where they're rendered, because that row is behind a feature flag read from localStorage:
-// nothing inside that v-if exists during the server render.
-//
-// Watched rather than left to setup: an RFC page that navigates to another RFC reuses this
-// component, so there's no second setup in which to seed the next one.
-const reefStore = useReefStore()
-
-const reefDocument = computed(() => reefDocumentKey(props.rfcBucketHtmlDocument.rfc.number))
-
-watch(
-  reefDocument,
-  (doc) => {
-    reefStore.seedStats(doc, props.rfcBucketHtmlDocument.reefStats)
-  },
-  { immediate: true }
-)
 
 const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
 

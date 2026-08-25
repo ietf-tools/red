@@ -25,8 +25,8 @@
     </template>
     <template #end>
       <ul v-if="featureFlags.oidc" class="flex flex-col md:flex-row">
-        <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only /></li>
-        <li><RFCCardSets :rfc-number="props.rfc.number" icon-only /></li>
+        <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
+        <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
       </ul>
     </template>
   </Card>

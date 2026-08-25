@@ -152,14 +152,6 @@ export const writeUserRFCSubscription = async (rfcNumber: number, isSubscribed: 
   }
 
   reefStore.patchUserDocument(doc, { yourSubscriptionId: outcome.value })
-  // Subscribers are counted per reader rather than per subscription, so this reader moves the
-  // number by one either way. It can be out by one for a reader who also reaches this document
-  // through a subscribed set — Reef counts them once and this counts the tick — and the route's
-  // own figure replaces it on the next page load.
-  reefStore.adjustStats(doc, (current) => ({
-    ...current,
-    subscriberCount: Math.max(0, (current.subscriberCount ?? 0) + (isSubscribed ? 1 : -1))
-  }))
 }
 
 // --- The model an RFC page binds ---------------------------------------------------------

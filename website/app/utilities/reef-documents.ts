@@ -14,7 +14,6 @@
 import { computed, toValue, watch, type ComputedRef, type MaybeRefOrGetter } from 'vue'
 import { useReefStore, type ReefDocumentStatus, type ReefUserDocument } from '~/stores/reef'
 import type { SeriesId } from '~/utilities/rfc'
-import type { ReefRFCStats } from '~/utilities/rfc-validators'
 
 /**
  * The identifier Reef canonicalizes to: the series followed by the number, lowercase, with no
@@ -27,10 +26,13 @@ import type { ReefRFCStats } from '~/utilities/rfc-validators'
 export const reefDocumentKey = (document: SeriesId | number): string =>
   typeof document === 'number' ? `rfc${document}` : `${document.type}${document.number}`
 
-/** What one document is to the reader looking at it. */
+/**
+ * What one document is to the reader looking at it.
+ *
+ * Nothing public: the rating average and the subscriber and set totals arrive with the route's own
+ * data and are passed down as props, so they are never asked for and never held here.
+ */
 export type ReefDocument = {
-  /** The public numbers: seeded from the route's own data, adjusted by this reader's writes. */
-  stats: ComputedRef<ReefRFCStats | undefined>
   /** This reader's own rating, undefined while they haven't rated it. */
   yourRating: ComputedRef<number | undefined>
   /** Whether this reader subscribes to this document directly. */
@@ -59,44 +61,12 @@ export const useReefDocument = (document: MaybeRefOrGetter<SeriesId | number>): 
   const userDocument = computed<ReefUserDocument | undefined>(() => reefStore.userDocuments[key.value])
 
   return {
-    stats: computed(() => reefStore.stats[key.value]),
     yourRating: computed(() => userDocument.value?.yourRating),
     isSubscribed: computed(() => userDocument.value?.yourSubscriptionId !== undefined),
     yourSubscriptionId: computed(() => userDocument.value?.yourSubscriptionId),
     yourSetIds: computed(() => userDocument.value?.yourSetIds ?? []),
     status: computed(() => userDocument.value?.status ?? 'unknown')
   }
-}
-
-/** An RFC as the routes that list them supply it: its number, and the numbers if they came with it. */
-export type ReefRfc = {
-  number: number
-  reefStats?: ReefRFCStats
-}
-
-/**
- * Declare a list of RFCs: remember the public numbers they arrived with, and load this reader's own
- * state for all of them in one call.
- *
- * What every route listing RFCs uses — a page of search results, the homepage's latest, a subseries
- * page — because they all carry RfcCommon, and RfcCommon is where the numbers ride along. The
- * seeding runs during the server render as well, so the numbers are on the page before any of this
- * reaches a browser.
- */
-export const useReefRfcs = (rfcs: MaybeRefOrGetter<ReefRfc[]>): void => {
-  const reefStore = useReefStore()
-
-  watch(
-    () => toValue(rfcs),
-    (list) => {
-      list.forEach(({ number, reefStats }) => {
-        reefStore.seedStats(reefDocumentKey(number), reefStats)
-      })
-    },
-    { immediate: true, deep: true }
-  )
-
-  useReefDocuments(() => toValue(rfcs).map(({ number }) => number))
 }
 
 /**

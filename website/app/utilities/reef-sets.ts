@@ -113,15 +113,7 @@ const writeSetMembership = async (set: ReefSet, rfcNumber: number, isAdding: boo
     })
     notificationsStore.add(setMembershipFailedNotification(set, rfcNumber, isAdding))
     console.error('Unable to change which of your sets hold this RFC.', outcome.error)
-    return
   }
-
-  // One more set holds this document, or one fewer. Reef counts sets rather than owners here, so
-  // this reader's own two sets are two.
-  reefStore.adjustStats(doc, (current) => ({
-    ...current,
-    setCount: Math.max(0, (current.setCount ?? 0) + (isAdding ? 1 : -1))
-  }))
 }
 
 /**

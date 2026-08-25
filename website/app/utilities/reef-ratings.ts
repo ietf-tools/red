@@ -9,7 +9,7 @@
 import { computed, toValue, type MaybeRefOrGetter, type WritableComputedRef } from 'vue'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
 import { useReefStore } from '~/stores/reef'
-import { deleteRating, putRating, type RatingAggregate } from '~/utilities/reef'
+import { deleteRating, putRating } from '~/utilities/reef'
 import { reefDocumentKey, useReefDocument } from '~/utilities/reef-documents'
 
 export const STAR_SCORE_LENGTH = 5
@@ -64,16 +64,6 @@ export const ratingRemovalFailedNotification = (rfcNumber: number): Notification
 
 // --- Writing ------------------------------------------------------------------------------
 
-// Reef answers both the PUT and the DELETE with the recomputed public aggregate, so this reader's
-// own rating moves the average they're looking at without anything re-reading the route's data.
-// Nothing else about the document's numbers is touched.
-const applyRatingAggregate = (doc: string, { average, count }: RatingAggregate): void => {
-  useReefStore().adjustStats(doc, (current) => ({
-    ...current,
-    ratingAggregate: { average: average ?? undefined, count }
-  }))
-}
-
 /**
  * Record or withdraw this reader's rating of one document.
  *
@@ -115,8 +105,6 @@ export const writeUserRFCRating = async (rfcNumber: number, rating: UserRFCRatin
     console.error('Unable to save your rating for this RFC.', outcome.error)
     return
   }
-
-  applyRatingAggregate(doc, outcome.value)
 
   if (isRemoval) {
     // Announced only once Reef has accepted it, and only for a removal: picking a star is

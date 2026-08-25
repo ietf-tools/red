@@ -1,5 +1,5 @@
 // @vitest-environment nuxt
-import { test, expect } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 import type { TypeSenseSearchItem } from './typesense'
 import { typeSenseSearchItemToRFCCommon } from './rfc-converters'
 
@@ -3018,7 +3018,7 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
   ]
 }
 
-test('typeSenseSearchItemToRFC', () => {
+const firstSearchItem = (): TypeSenseSearchItem => {
   const firstResult = typesenseSearchResponse.results[0]
   if (firstResult === undefined) {
     throw Error(`Expected firstResult to be present`)
@@ -3027,6 +3027,37 @@ test('typeSenseSearchItemToRFC', () => {
   if (firstHit === undefined) {
     throw Error(`Expected firstHit to be present`)
   }
+  return firstHit.document
+}
 
-  expect(typeSenseSearchItemToRFCCommon(firstHit.document)).matchSnapshot()
+test('typeSenseSearchItemToRFC', () => {
+  expect(typeSenseSearchItemToRFCCommon(firstSearchItem())).matchSnapshot()
+})
+
+// The index provides reefStats for some documents and not others, so these cover both, plus what
+// the strict parse does with a row it doesn't recognise.
+describe('typeSenseSearchItemToRFCCommon reefStats', () => {
+  test('is undefined for a document the index has no numbers for', () => {
+    expect(typeSenseSearchItemToRFCCommon(firstSearchItem()).reefStats).toBeUndefined()
+  })
+
+  test('carries the numbers through when the index has them', () => {
+    const reefStats = { ratingAggregate: { average: 4.25, count: 12 }, subscriberCount: 340, setCount: 7 }
+    expect(typeSenseSearchItemToRFCCommon({ ...firstSearchItem(), reefStats }).reefStats).toEqual(reefStats)
+  })
+
+  test('keeps a partial row, since every number is optional', () => {
+    expect(typeSenseSearchItemToRFCCommon({ ...firstSearchItem(), reefStats: { setCount: 2 } }).reefStats).toEqual({
+      setCount: 2
+    })
+  })
+
+  test('rejects the whole item when the numbers are the wrong shape', () => {
+    // Strict, like every other field: the converter throws rather than dropping the field, so an
+    // index sending something unexpected here fails loudly instead of silently losing counts.
+    vi.spyOn(console, 'error').mockImplementation(() => {})
+    const item = { ...firstSearchItem(), reefStats: { subscriberCount: 'lots' } }
+
+    expect(() => typeSenseSearchItemToRFCCommon(item as unknown as TypeSenseSearchItem)).toThrow()
+  })
 })

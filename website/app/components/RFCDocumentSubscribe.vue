@@ -1,13 +1,13 @@
 <template>
-  <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
+  <div class="relative flex flex-col md:flex-row md:gap-2 px-2 py-1">
     <div class="flex flex-col">
       <DialogRoot>
         <DialogTrigger
           :class="[
-            'flex flex-row gap-1',
+            'flex flex-row gap-1 items-center',
             'cursor-pointer',
             'rounded',
-            'text-center md:text-left',
+            'text-sm text-center md:text-left',
             'font-bold',
             'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
             COVER_LINK_STYLE_CLASS

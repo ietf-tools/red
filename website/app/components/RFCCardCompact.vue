@@ -20,8 +20,8 @@
       <RFCCardBodyPill :rfc="rfc" mode="none" class="col-span-2 mt-1" />
     </div>
     <ul v-if="featureFlags.oidc" class="flex flex-row">
-      <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only /></li>
-      <li><RFCCardSets :rfc-number="props.rfc.number" icon-only /></li>
+      <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
+      <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
     </ul>
   </BaseCard>
 </template>

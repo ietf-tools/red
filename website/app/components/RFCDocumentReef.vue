@@ -2,20 +2,20 @@
   <div class="flex mt-2">
     <ul class="flex md:flex-row items-start pl-2 text-sm">
       <li class="flex flex-col md:flex-row pr-2">
-        <RFCDocumentCommunityRating :reef-stats="stats" />
+        <RFCDocumentCommunityRating :reef-stats="props.reefStats" />
         <RFCDocumentRateThisRFC :rfc-number="props.rfcNumber" v-model="userRFCRating" />
       </li>
       <li class="pl-2 pr-2 border-l-1 border-r-1 border-gray-300 dark:border-gray-700">
         <RFCDocumentSubscribe
           :rfc-number="props.rfcNumber"
-          :reef-stats="stats"
+          :reef-stats="props.reefStats"
           :user="user"
           v-model="isSubscribedToThisRFC" />
       </li>
       <li class="pl-2">
         <RFCDocumentSets
           :rfc-number="props.rfcNumber"
-          :reef-stats="stats"
+          :reef-stats="props.reefStats"
           :user="user"
           :sets="userSets"
           :create-set="createSet"
@@ -39,19 +39,20 @@
  * and every model below then reads what came back — the same one call a page of fifty search
  * results makes for all fifty.
  *
- * The public numbers beside them are not fetched at all. RFCDocumentBody puts the bucket JSON's
- * own figures into the store — above the feature flag that gates this row, which is the only place
- * that can happen and still run on the server — and they are read back here, so a visitor's
- * browser is handed them with the page instead of asking Reef.
+ * The public numbers beside them are not fetched at all. They arrive as `props.reefStats`, taken
+ * from the bucket JSON by RFCDocumentBody, so a visitor's browser is handed them with the page
+ * instead of asking Reef for them.
  */
-import { useReefDocument, useReefDocuments } from '~/utilities/reef-documents'
+import { useReefDocuments } from '~/utilities/reef-documents'
 import { useUserRFCRating } from '~/utilities/reef-ratings'
+import type { ReefRFCStats } from '~/utilities/rfc-validators'
 import { useUserSets } from '~/utilities/reef-sets'
 import { useUserRFCSubscription } from '~/utilities/reef-subscriptions'
 // import { useRfcEditorErrataSearchForRfcUrl } from '~/utilities/url.js'
 
 type Props = {
   rfcNumber: number
+  reefStats: ReefRFCStats | undefined
 }
 
 const props = defineProps<Props>()
@@ -68,8 +69,6 @@ const { user } = storeToRefs(useAuthStore())
 const rfcNumber = () => props.rfcNumber
 
 useReefDocuments(() => [props.rfcNumber])
-
-const { stats } = useReefDocument(rfcNumber)
 
 const userRFCRating = useUserRFCRating(rfcNumber)
 const isSubscribedToThisRFC = useUserRFCSubscription(rfcNumber)

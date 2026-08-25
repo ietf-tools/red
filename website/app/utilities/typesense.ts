@@ -59,7 +59,11 @@ export const TypeSenseSearchItemSchema = z.object({
   subseries: TypesenseSubseriesSchema.optional(),
   rfc: z.string(),
 
-  /** The public engagement numbers, when the index carries them. See ReefRFCStatsSchema. */
+  /**
+   * The public engagement numbers, when the index carries them. Optional because the index
+   * provides them for some documents and not others, and parsed strictly like every other field
+   * here — numbers of a shape this doesn't recognise fail the item rather than being dropped.
+   */
   reefStats: ReefRFCStatsSchema.optional(),
 
   area: TypesenseSearchItemAreaSchema.optional(),
