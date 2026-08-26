@@ -14,10 +14,8 @@
     "format": "oxfmt ."
   },
   "dependencies": {
-    "cookie": "2.0.1",
     "itty-router": "5.0.24",
     "luxon": "3.7.2",
-    "rfc4648": "1.5.4",
     "typescript": "7.0.2",
     "vitest": "4.1.10",
     "zod": "4.4.3"

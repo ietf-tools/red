@@ -22,13 +22,6 @@
   "env": {
     "staging": {
       "routes": [{ "pattern": "www.staging.rfc-editor.org/*", "zone_name": "rfc-editor.org" }],
-      "kv_namespaces": [
-        {
-          "binding": "KV_STATE",
-          "id": "a111d65a771342cb8501e9793d6fdea2",
-          "preview_id": "a111d65a771342cb8501e9793d6fdea2"
-        }
-      ],
       "r2_buckets": [
         {
           "binding": "RFC_BUCKET",
@@ -48,22 +41,11 @@
       ],
       "vars": {
         "ENV_DOMAIN": ".staging",
-        "NUXT_PUBLIC_TYPESENSE_HOST": "typesense.staging.ietf.org",
-        "OIDC_ISSUER": "https://auth.ietf.org/api/openid",
-        "OIDC_CLIENT_AUTHORIZATION_ENDPOINT": "https://auth.ietf.org/api/openid/authorize",
-        "OIDC_CLIENT_TOKEN_ENDPOINT": "https://auth.ietf.org/api/openid/token",
-        "OIDC_CLIENT_KEYS_ENDPOINT": "https://auth.ietf.org/api/openid/jwks",
-        "OIDC_CLIENT_REDIRECT_URI": "https://www.staging.rfc-editor.org/oidc/callback"
+        "NUXT_PUBLIC_TYPESENSE_HOST": "typesense.staging.ietf.org"
       }
     },
     "demo": {
       "routes": [{ "pattern": "www.demo.rfc-editor.org/*", "zone_name": "rfc-editor.org" }],
-      "kv_namespaces": [
-        {
-          "binding": "KV_STATE",
-          "id": "4c4935d7b85e426c80984e691bf5fb63"
-        }
-      ],
       "r2_buckets": [
         {
           "binding": "RFC_BUCKET",
@@ -81,22 +63,11 @@
       ],
       "vars": {
         "ENV_DOMAIN": ".demo",
-        "NUXT_PUBLIC_TYPESENSE_HOST": "https://typesense.ietf.org",
-        "OIDC_ISSUER": "https://auth.ietf.org/api/openid",
-        "OIDC_CLIENT_AUTHORIZATION_ENDPOINT": "https://auth.ietf.org/api/openid/authorize",
-        "OIDC_CLIENT_TOKEN_ENDPOINT": "https://auth.ietf.org/api/openid/token",
-        "OIDC_CLIENT_KEYS_ENDPOINT": "https://auth.ietf.org/api/openid/jwks",
-        "OIDC_CLIENT_REDIRECT_URI": "https://www.demo.rfc-editor.org/oidc/callback"
+        "NUXT_PUBLIC_TYPESENSE_HOST": "https://typesense.ietf.org"
       }
     },
     "production": {
       "routes": [{ "pattern": "www.rfc-editor.org/*", "zone_name": "rfc-editor.org" }],
-      "kv_namespaces": [
-        {
-          "binding": "KV_STATE",
-          "id": "4c4935d7b85e426c80984e691bf5fb63"
-        }
-      ],
       "r2_buckets": [
         {
           "binding": "RFC_BUCKET",
@@ -114,12 +85,7 @@
       ],
       "vars": {
         "ENV_DOMAIN": "",
-        "NUXT_PUBLIC_TYPESENSE_HOST": "https://typesense.ietf.org",
-        "OIDC_ISSUER": "https://auth.ietf.org/api/openid",
-        "OIDC_CLIENT_AUTHORIZATION_ENDPOINT": "https://auth.ietf.org/api/openid/authorize",
-        "OIDC_CLIENT_TOKEN_ENDPOINT": "https://auth.ietf.org/api/openid/token",
-        "OIDC_CLIENT_KEYS_ENDPOINT": "https://auth.ietf.org/api/openid/jwks",
-        "OIDC_CLIENT_REDIRECT_URI": "https://www.rfc-editor.org/oidc/callback"
+        "NUXT_PUBLIC_TYPESENSE_HOST": "https://typesense.ietf.org"
       }
     }
   }

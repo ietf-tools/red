@@ -1,7 +1,6 @@
 import { env } from 'cloudflare:workers'
 import { IttyRouter, error } from 'itty-router'
 import type { IRequest } from 'itty-router'
-// import * as oidc from './oidc'
 import {
   blobsApiFavicon,
   blobsApiContentJson,
@@ -16,7 +15,8 @@ import {
   blobsSitemap,
   blobsStatics
 } from './blobs'
-import { addNormalizedPath, emptyFileResponse, redirectTo, staleWhileRevalidate } from './helpers'
+import { addNormalizedPath, emptyFileResponse, notFoundResponse, redirectTo, staleWhileRevalidate } from './helpers'
+import { isNuxtIslandPath, rejectBogusPaths, rejectNonOriginPaths, rejectPhpPaths } from './request-filter'
 import { legacySearchRedirectPathBuilder } from './legacy-search-redirect'
 import { serverSearch } from './server-search'
 import { legacyErrataSearchRedirectUrlBuilder } from './legacy-errata-search-redirect'
@@ -62,6 +62,20 @@ const cacheBypassPaths = ['/api/v1/healthcheck.json', '/api/v1/systemcheck.json'
 const router = IttyRouter<IRequest, [Env, ExecutionContext]>()
 
 router
+  /**
+   * Runs before every route: a path whose shape no route here could ever match
+   * is answered with a 404 straight away, rather than being decoded, matched
+   * against every route below, and eventually forwarded to the origin.
+   */
+  .all('*', rejectBogusPaths)
+  /**
+   * Order matters. `addNormalizedPath` decodes the path, which throws on
+   * malformed percent-encoding, and the gate above has just ruled that out — so
+   * it has to sit here rather than any higher. Every route below can rely on
+   * `req.normalizedPath` being set.
+   */
+  .all('*', addNormalizedPath)
+
   // Static Redirects
   .get('/about', redirectTo('/about/rfc-editor/', 302))
   .get('/about/clusters/', redirectTo('https://authors.ietf.org/rfc-publication-process#clusters', 302))
@@ -119,7 +133,7 @@ router
   .get('/styleguide/tips/', redirectTo('/authors/rfc-style-guide/', 302))
 
   // Dynamic Redirects
-  .get('/auth48/*', addNormalizedPath, (req: IRequest) => {
+  .get('/auth48/*', (req: IRequest) => {
     let match = req.normalizedPath.match(/^\/auth48\/c(?<num>\d+)$/i)
     if (match?.groups?.num) {
       return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/C${match.groups.num}`, 302)
@@ -130,7 +144,7 @@ router
       return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/rfc${match.groups.num}`, 302)
     }
   })
-  .get('/authors/:extra+', addNormalizedPath, (req: IRequest) => {
+  .get('/authors/:extra+', (req: IRequest) => {
     if (!excludeAuthorRedirects.some((p) => req.normalizedPath.startsWith(p))) {
       return Response.redirect(`https://auth48-transition.rfc-editor.org/authors/${req.params.extra}`, 302)
     }
@@ -149,10 +163,10 @@ router
   .get('/ien/:extra+', (req: IRequest) =>
     Response.redirect(`https://history.rfc-editor.org/ien/${req.params.extra}`, 302)
   )
-  .get('/in-notes/museum/:extra+', addNormalizedPath, (req: IRequest) => {
+  .get('/in-notes/museum/:extra+', (req: IRequest) => {
     return Response.redirect(`https://history.rfc-editor.org/${req.params.extra}`, 302)
   })
-  .get('/in-notes/prerelease/*', addNormalizedPath, (req: IRequest) => {
+  .get('/in-notes/prerelease/*', (req: IRequest) => {
     const match = req.normalizedPath.match(/^\/in-notes\/prerelease\/rfc(?<num>\d+)\.notprepped\.xml$/i)
     if (match?.groups?.num) {
       return Response.redirect(
@@ -161,7 +175,7 @@ router
       )
     }
   })
-  .get('/in-notes/:extra+', addNormalizedPath, (req: IRequest) => {
+  .get('/in-notes/:extra+', (req: IRequest) => {
     if (!excludeInNotesRedirects.some((p) => req.normalizedPath.startsWith(p))) {
       return error(404)
     }
@@ -178,10 +192,13 @@ router
     Response.redirect(legacySearchRedirectPathBuilder(req.url, env.ENV_DOMAIN), 302)
   )
 
-  // Auth
-  // -> enable to restrict some paths to datatracker login
-  // .get('/oidc', oidc.login)
-  // .get('/oidc/callback', oidc.callback)
+  /**
+   * Every legacy `.php` URL the site still honours is registered above and has
+   * already returned its redirect, so anything reaching here with `.php` in it
+   * is a scan or a mangled link — `/errata_search.php./rfc4641`, say, or
+   * `/cluster_info.php` without a cluster id. None of it goes to the origin.
+   */
+  .all('*', rejectPhpPaths)
 
   .get('/rfc/bcp-ref.txt', redirectTo('/std/bcp-index.txt', 302))
   .get('/rfc/rfc-index.txt', redirectTo('/rfc-index.txt', 302))
@@ -190,32 +207,39 @@ router
   // Many RFCs at /rfc/rfc* refer to this CSS file.
   // Apparently it was added so that devs could override the path and add custom CSS when displaying RFCs,
   // but in the 2026-era there are other ways of inserting CSS (via UserScripts, Greasemonkey etc)
-  .get('/rfc/rfc-local.css', addNormalizedPath, emptyFileResponse)
+  .get('/rfc/rfc-local.css', emptyFileResponse)
   .get('/rfc/std-ref.txt', redirectTo('/std/std-index.txt', 302))
   // note that /rfc/fyi-ref.txt doesn't exist, and /rfc/rfc-ref.txt is not a redirect and is a blob still served
 
-  .get('/bcp/*', addNormalizedPath, subseriesRedirect)
-  .get('/fyi/*', addNormalizedPath, subseriesRedirect)
-  .get('/std/*', addNormalizedPath, subseriesRedirect)
+  .get('/bcp/*', subseriesRedirect)
+  .get('/fyi/*', subseriesRedirect)
+  .get('/std/*', subseriesRedirect)
 
   .get('/refs/bibxml/:extra+', (req: IRequest) =>
     Response.redirect(`https://bib.ietf.org/public/rfc/bibxml/${req.params.extra}`, 302)
   )
 
   // Blobs
-  .get('/api/v1/content/*', addNormalizedPath, blobsApiContentJson)
-  .get('/api/v1/favicon/*', addNormalizedPath, blobsApiFavicon)
-  .get('/api/v1/info-subseries/*', addNormalizedPath, blobsApiInfoSubseries)
-  .get('/api/v1/meta-thumbnail/*', addNormalizedPath, blobsApiMetaThumbnail)
-  .get('/api/v1/rfc-common/*', addNormalizedPath, blobsApiRfcCommon)
-  .get('/api/v1/rfc-html/*', addNormalizedPath, blobsApiRfcHtml)
-  .get('/api/v1/rfc/*', addNormalizedPath, blobsApiRfcJson)
-  .get('/api/v1/search/', addNormalizedPath, serverSearch)
-  .get('/refs/*', addNormalizedPath, blobsRefs)
-  .get('/rfc/*', addNormalizedPath, blobsRfc)
-  .get('/_nuxt/*', addNormalizedPath, blobsNuxtAssets)
-  .get('/*', addNormalizedPath, blobsSitemap)
-  .get('/*', addNormalizedPath, blobsStatics)
+  .get('/api/v1/content/*', blobsApiContentJson)
+  .get('/api/v1/favicon/*', blobsApiFavicon)
+  .get('/api/v1/info-subseries/*', blobsApiInfoSubseries)
+  .get('/api/v1/meta-thumbnail/*', blobsApiMetaThumbnail)
+  .get('/api/v1/rfc-common/*', blobsApiRfcCommon)
+  .get('/api/v1/rfc-html/*', blobsApiRfcHtml)
+  .get('/api/v1/rfc/*', blobsApiRfcJson)
+  .get('/api/v1/search/', serverSearch)
+  .get('/refs/*', blobsRefs)
+  .get('/rfc/*', blobsRfc)
+  .get('/_nuxt/*', blobsNuxtAssets)
+  .get('/*', blobsSitemap)
+  .get('/*', blobsStatics)
+
+  /**
+   * The last gate before the origin: by this point every path the worker serves
+   * itself has been answered above, so anything still travelling is either a
+   * page the Nuxt origin renders or junk. Only the former is forwarded.
+   */
+  .all('*', rejectNonOriginPaths)
 
   // Fallback to origin. The site is read-only, so allow GET (and therefore HEAD,
   // which the entrypoint below has already rewritten to GET) and reject everything
@@ -232,6 +256,18 @@ router
 
     const { pathname } = new URL(req.url)
     if (cacheBypassPaths.includes(pathname)) {
+      return fetch(req)
+    }
+
+    /**
+     * Islands are addressed by their query string — `<NuxtIsland>` puts the
+     * component's props there, and the origin rejects a request whose props
+     * don't match the hash in its path. `staleWhileRevalidate` strips the query
+     * from both its cache key and its origin request, which would collapse every
+     * island onto one entry and hand the origin props it can't verify. So they
+     * skip it, query intact.
+     */
+    if (isNuxtIslandPath(req.normalizedPath)) {
       return fetch(req)
     }
 
@@ -264,10 +300,7 @@ export default {
     )
     if (!response) {
       // Unreachable: the `.all('*')` fallback answers anything the routes above don't.
-      return new Response('404 - Not found', {
-        status: 404,
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-      })
+      return notFoundResponse()
     }
     return isHead ? new Response(null, response) : response
   }

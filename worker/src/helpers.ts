@@ -102,12 +102,11 @@ export function createBlobResponse(
   })
 }
 
-export function createBlobNotFoundResponse(): Response {
-  return new Response('404 - Not found', {
+export const notFoundResponse = (): Response =>
+  new Response('404 - Not found', {
     status: 404,
     headers: { 'Content-Type': 'text/plain;charset=utf-8' }
   })
-}
 
 const SWR_STORED_AT_MS_HEADER = 'x-swr-stored-at-ms'
 
