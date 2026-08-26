@@ -1,24 +1,26 @@
 <template>
   <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
-    <GraphicsAddCircle :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
     <div>
       <DialogRoot>
         <DialogTrigger
           :class="[
+            'flex flex-row gap-1 items-center',
             'cursor-pointer',
             'rounded',
-            'text-center md:text-left',
+            'text-sm text-center md:text-left',
             'font-bold',
             'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
             COVER_LINK_STYLE_CLASS
           ]">
-          <span :class="COVER_LINK_INNER_STYLE_CLASS"> Add to set </span>
+          <GraphicsAddCircle
+            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Add to set </span>
         </DialogTrigger>
         <DialogPortal>
-          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
+          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
           <DialogContent
             :class="[
-              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-105',
+              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[550px] translate-x-[-50%] translate-y-[-50%] z-115',
               'focus:outline-none rounded-md shadow-3xl',
               'bg-white dark:bg-gray-800',
               'px-4 pt-3 pb-1'
@@ -125,26 +127,27 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import type { OidcUser } from '~/utilities/oidc'
-import type { DocumentSet } from '~/utilities/reef'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
 import type { CreateSetOutcome, NewSet } from '~/utilities/reef-sets'
-import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
+import type { ReefSet } from '~/stores/reef'
+import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
 import { setPathBuilder } from '~/utilities/url'
 
 type Props = {
   rfcNumber: number
-  reefStats: RfcBucketHtmlDocument['reefStats']
+  reefStats: ReefRFCStats | undefined
   // The signed-in reader, or undefined when nobody is signed in. Passed in rather than read from
   // the auth store here, so this component renders from what it's given and the parent stays the
   // one place that decides what "signed in" means for this row.
   user: OidcUser | undefined
   // The reader's sets, already in the order they should be listed. Empty while logged out, and
   // empty for a reader who keeps none.
-  sets: DocumentSet[]
+  sets: ReefSet[]
   // Not called here — handed straight to the create dialog below, which is the only thing that
   // creates a set. It comes from the parent's useUserSets, where the rest of the Reef work for
   // sets lives.
   createSet: (newSet: NewSet) => Promise<CreateSetOutcome>
+  iconOnly?: boolean
 }
 
 const props = defineProps<Props>()

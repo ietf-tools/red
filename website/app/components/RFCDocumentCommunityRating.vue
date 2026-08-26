@@ -19,10 +19,10 @@
 
 <script setup lang="ts">
 import { STAR_SCORE_LENGTH } from '~/utilities/reef-ratings'
-import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
+import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
 
 type Props = {
-  reefStats: RfcBucketHtmlDocument['reefStats']
+  reefStats: ReefRFCStats | undefined
 }
 
 const props = defineProps<Props>()

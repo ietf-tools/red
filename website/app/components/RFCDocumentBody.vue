@@ -43,7 +43,7 @@
     <RFCDocumentReef
       v-if="featureFlags.oidc"
       :rfc-number="rfcBucketHtmlDocument.rfc.number"
-      :reef-stats="{ ratingAggregate: { average: 3.2, count: 9299499 }, subscriberCount: 99999, setCount: 99999 }" />
+      :reef-stats="rfcBucketHtmlDocument.rfc.reefStats" />
 
     <RFCDocumentSuperseded
       :data="obsoleted_by"

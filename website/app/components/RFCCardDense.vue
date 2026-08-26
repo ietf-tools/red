@@ -23,6 +23,12 @@
     <template #default>
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />
     </template>
+    <template #end>
+      <ul v-if="featureFlags.oidc" class="flex flex-col md:flex-row">
+        <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
+        <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
+      </ul>
+    </template>
   </Card>
 </template>
 
@@ -33,6 +39,7 @@ import type { RfcCommon } from '~/utilities/rfc'
 import { useResponsiveModeStore } from '~/stores/responsiveMode'
 import type { HeadingLevel } from '~/utilities/html'
 import { SPACE } from '~/utilities/strings'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 
 type Props = {
   rfc: RfcCommon
@@ -46,4 +53,6 @@ const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 const responsiveModeStore = useResponsiveModeStore()
 
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
+
+const featureFlags = useFeatureFlags()
 </script>

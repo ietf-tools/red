@@ -1,24 +1,26 @@
 <template>
-  <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
-    <GraphicsAlert :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+  <div class="relative flex flex-col md:flex-row md:gap-2 px-2 py-1">
     <div class="flex flex-col">
       <DialogRoot>
         <DialogTrigger
           :class="[
+            'flex flex-row gap-1 items-center',
             'cursor-pointer',
             'rounded',
-            'text-center md:text-left',
+            'text-sm text-center md:text-left',
             'font-bold',
             'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
             COVER_LINK_STYLE_CLASS
           ]">
-          <span :class="COVER_LINK_INNER_STYLE_CLASS"> Subscribe </span></DialogTrigger
+          <GraphicsAlert
+            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Subscribe </span></DialogTrigger
         >
         <DialogPortal>
-          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
+          <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
           <DialogContent
             :class="[
-              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-105',
+              'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-115',
               'focus:outline-none rounded-md shadow-3xl',
               'bg-white dark:bg-gray-800',
               'px-4 pt-3 pb-1',
@@ -106,15 +108,16 @@ import {
 } from 'reka-ui'
 import type { OidcUser } from '~/utilities/oidc'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
-import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
+import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
 
 type Props = {
   rfcNumber: number
-  reefStats: RfcBucketHtmlDocument['reefStats']
+  reefStats: ReefRFCStats | undefined
   // The signed-in reader, or undefined when nobody is signed in. Passed in rather than read from
   // the auth store here, so this component renders from what it's given and the parent stays the
   // one place that decides what "signed in" means for this row.
   user: OidcUser | undefined
+  iconOnly?: boolean
 }
 
 const props = defineProps<Props>()

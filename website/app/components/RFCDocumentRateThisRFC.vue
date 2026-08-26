@@ -15,10 +15,10 @@
         <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>
       </DialogTrigger>
       <DialogPortal>
-        <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-100" />
+        <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
         <DialogContent
           :class="[
-            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-105',
+            'fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] translate-x-[-50%] translate-y-[-50%] z-115',
             'focus:outline-none rounded-md shadow-3xl',
             'bg-white dark:bg-gray-800',
             'px-4 pt-6 pb-1',
@@ -113,25 +113,14 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import { STAR_SCORE_LENGTH, userRFCRatingLabel } from '~/utilities/reef-ratings'
-import type { RfcBucketHtmlDocument } from '~/utilities/rfc-validators.js'
 
 type Props = {
   rfcNumber: number
-  errataUrl: string
-  reefStats: RfcBucketHtmlDocument['reefStats']
 }
 
 const props = defineProps<Props>()
 
 const userRFCRating = defineModel<number | undefined>()
-
-const formatNumber = (val: number, decimalPlaces: number) => {
-  return new Intl.NumberFormat('en-US', {
-    notation: 'compact',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: decimalPlaces
-  }).format(val)
-}
 
 // Reef needs a bearer token to know whose rating to store, so an anonymous pick can only fail with
 // a 401. Ask for a sign-in instead of letting the stars look interactive and then silently lose it.

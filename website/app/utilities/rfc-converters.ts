@@ -136,6 +136,8 @@ export const typeSenseSearchItemToRFCCommon = (unverifiedTypeSenseSearchItem: Ty
         title: obs
       })) ?? [],
     published,
+    // Validated by TypeSenseSearchItemSchema above, so it is carried across as it came.
+    reefStats: item.reefStats,
     subseries: item.status?.name ? parseTypeSenseSubseries(item) : undefined,
     status: parseTypesenseStatus(item.status),
     stream: {

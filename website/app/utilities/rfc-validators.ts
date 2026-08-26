@@ -176,6 +176,28 @@ export const RfcCommonGroupSchema = z.object({
   type: RfcCommonGroupTypeSchema
 })
 
+/**
+ * The public engagement numbers for one RFC. Named here rather than alongside the Reef client
+ * because Red never fetches them: they arrive with whatever data the route already loads — the
+ * bucket JSON for an RFC page, the search index for a result list — and this is the one shape all
+ * of those carry, so the components rendering them don't care which route supplied them.
+ */
+export const ReefRFCStatsSchema = z.object({
+  /** Mimicking Reef API structure */
+  ratingAggregate: z
+    .object({
+      average: z.number().optional(),
+      count: z.number().optional()
+    })
+    .optional(),
+  /** Mimicking Reef API structure */
+  subscriberCount: z.number().optional(),
+  /** The number of document sets holding this RFC, not a setter function. Mimicking Reef API structure */
+  setCount: z.number().optional()
+})
+
+export type ReefRFCStats = z.infer<typeof ReefRFCStatsSchema>
+
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
@@ -210,7 +232,8 @@ export const RfcCommonSchema = z.object({
   formats: z.array(RfcCommonFormatSchema),
   /** Abstract is plain text with `\n` line breaks; convert to paragraphs at render time */
   abstract: z.string().optional(),
-  text: z.string().optional()
+  text: z.string().optional(),
+  reefStats: ReefRFCStatsSchema.optional()
 })
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
@@ -324,26 +347,11 @@ export const ErrataListSchema = ErrataItemSchema.array()
 
 export type ErrataList = z.infer<typeof ErrataListSchema>
 
-const ReefRFCStats = z.object({
-  /** Mimicking Reef API structure */
-  ratingAggregate: z
-    .object({
-      average: z.number().optional(),
-      count: z.number().optional()
-    })
-    .optional(),
-  /** Mimicking Reef API structure */
-  subscriberCount: z.number().optional(),
-  /** Not a setter function, the nu Mimicking Reef API structure */
-  setCount: z.number().optional()
-})
-
 /**
  * Bucket JSON schema
  */
 export const RfcBucketHtmlDocumentSchema = z.object({
   rfc: RfcCommonSchema,
-  reefStats: ReefRFCStats.optional(),
   tableOfContents: TableOfContentsSchema.optional(),
   documentHtmlType: DocumentHtmlTypeSchema,
   documentHtmlObj: z.array(NodePojoSchema),

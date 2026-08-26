@@ -24,8 +24,8 @@
           class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4"
           :data-timestamp-iso="homepageLatest?.timestampIso"
           :aria-describedby="LATEST_RFCS_HEADING_DOM_ID">
-          <li v-for="rfc in homepageLatest?.homepageLatest" :key="rfc.number">
-            <RFCCard heading-level="3" :rfc="rfc" :show-abstract="false" :show-tag-date="true" class="h-full" />
+          <li v-for="item in homepageLatest?.homepageLatest" :key="item.number">
+            <RFCCard heading-level="3" :rfc="item" :show-abstract="false" :show-tag-date="true" class="h-full" />
           </li>
         </ul>
 
@@ -127,6 +127,7 @@
 
 <script setup lang="ts">
 import { useRfcEditorHead } from '~/utilities/head'
+import { useReefDocuments } from '~/utilities/reef-documents'
 import { HomepageLatestSchema } from '~/utilities/rfc-validators'
 import {
   IAB_URL_ORIGIN,
@@ -139,7 +140,6 @@ import {
   RFC_INDEX_PATH,
   searchV2PathBuilder
 } from '~/utilities/url'
-import type { HomepageLatest } from '~/utilities/rfc-validators'
 
 definePageMeta({
   layout: false
@@ -174,7 +174,7 @@ const {
   return maybeHomepageLatest
 })
 
-const homepageLatest = computed((): HomepageLatest | undefined => {
+const homepageLatest = computed(() => {
   if (homepageLatestError.value) {
     console.error('Homepage latest loading problem', homepageLatestError.value)
     return undefined
@@ -186,6 +186,12 @@ const homepageLatest = computed((): HomepageLatest | undefined => {
   }
   return data
 })
+
+// This reader's own ratings, subscriptions and sets for the latest RFCs, in one call rather than
+// one per card. Only that: the public numbers ride along on each RFC as reefStats and are handed
+// to the card as a prop. Declared after homepageLatest rather than before it, because the getter
+// is read immediately and would otherwise reach the computed before it exists.
+useReefDocuments(() => homepageLatest.value?.homepageLatest.map((rfc) => rfc.number) ?? [])
 
 useRfcEditorHead({
   title: '',

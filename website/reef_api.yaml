@@ -4,6 +4,39 @@ info:
   version: 0.1.0
   description: Backend API for the Reef survey and engagement service
 paths:
+  /api/reef/me/documents/:
+    get:
+      operationId: me_documents_retrieve
+      description: |-
+        Return the authenticated caller's rating, subscription and set membership for each named document, along with the caller's own sets. One call for a whole page of documents.
+
+        `doc` is repeatable and identifiers are canonicalized, so `rfc9110` and `RFC 9110` address the same document; the series has to be named, so `9110` on its own is rejected. A named document is always returned, with nulls if the caller has no state for it. At most 100 documents per request.
+
+        Naming no document returns the caller's sets and an empty `documents` list, which is how a client loads the set list on its own. Unlike `/stats/`, an empty `doc` does not mean every document: that endpoint is swept once at build time, whereas this one is called on every page.
+
+        Carries no public numbers. Ratings averages, subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
+      summary: Read your own state for a batch of documents
+      parameters:
+        - in: query
+          name: doc
+          schema:
+            type: array
+            items:
+              type: string
+          description: 'Document identifier, repeatable, at most 100 per request. The
+            series must be named: rfc9110, bcp14, std66.'
+      tags:
+        - me
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyDocuments'
+          description: ''
   /api/reef/popularity/:
     get:
       operationId: popularity_list
@@ -1026,6 +1059,87 @@ components:
         * `subject_tag` - RFC with a subject tag
         * `rfc` - Changes to one specific RFC
         * `set` - Changes to anything in a document set
+    MyDocument:
+      type: object
+      description: |-
+        What one document is to the caller: their rating, their subscription,
+        their sets.
+
+        Nothing public: no average, no count, no subscriber total. Those are the
+        same for everybody, so Red takes them from the data it already has for the
+        route rather than from a per-caller request.
+      properties:
+        doc:
+          type: string
+        your_rating:
+          type: integer
+          nullable: true
+        your_subscription_id:
+          type: integer
+          nullable: true
+        your_set_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+        - doc
+        - your_rating
+        - your_set_ids
+        - your_subscription_id
+    MyDocumentSet:
+      type: object
+      description: |-
+        One of the caller's sets, without its membership.
+
+        Deliberately not docsets.DocumentSetSerializer: that one carries the set's
+        whole `documents` array, which is the thing this endpoint exists to avoid
+        sending. A client drawing "which of my sets hold this document" needs every
+        set the caller owns to label the rows, but it only needs membership for the
+        documents it is asking about — and that arrives per document as
+        `your_set_ids`. Sending both would make the payload grow with the caller's
+        library rather than with the page.
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+          readOnly: true
+        description:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - created_at
+        - description
+        - id
+        - title
+        - updated_at
+    MyDocuments:
+      type: object
+      description: "The whole response: the caller's sets, and a row per requested
+        document."
+      properties:
+        sets:
+          type: array
+          items:
+            $ref: '#/components/schemas/MyDocumentSet'
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/MyDocument'
+      required:
+        - documents
+        - sets
     OpenSurvey:
       type: object
       description: Minimal representation for Red's open-survey list and popover.
@@ -1116,9 +1230,8 @@ components:
           maxLength: 32
         rank:
           type: integer
-          maximum: 9223372036854775807
+          maximum: 2147483647
           minimum: 0
-          format: int64
           description: Lower sorts first
       required:
         - rfc
