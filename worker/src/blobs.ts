@@ -1,5 +1,5 @@
 import type { IRequest } from 'itty-router'
-import { CACHE_CONTROL, createBlobResponse, createBlobNotFoundResponse, detectContentType } from './helpers'
+import { CACHE_CONTROL, createBlobResponse, detectContentType, notFoundResponse } from './helpers'
 
 const RFC_PREFIX = '/rfc/'
 const INLINE_ERRATA_PREFIX = 'inline-errata/'
@@ -87,7 +87,7 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
     return Response.redirect(canonicalUrl, 302)
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsRefs(req: IRequest, env: Env): Promise<Response | undefined> {
@@ -113,7 +113,7 @@ export async function blobsRefs(req: IRequest, env: Env): Promise<Response | und
       }
     }
 
-    return createBlobNotFoundResponse()
+    return notFoundResponse()
   }
 }
 
@@ -129,7 +129,7 @@ export async function blobsApiRfcHtml(req: IRequest, env: Env): Promise<Response
     }
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsApiRfcCommon(req: IRequest, env: Env): Promise<Response> {
@@ -144,7 +144,7 @@ export async function blobsApiRfcCommon(req: IRequest, env: Env): Promise<Respon
     }
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsApiInfoSubseries(req: IRequest, env: Env): Promise<Response> {
@@ -159,7 +159,7 @@ export async function blobsApiInfoSubseries(req: IRequest, env: Env): Promise<Re
     }
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsApiMetaThumbnail(req: IRequest, env: Env): Promise<Response> {
@@ -174,7 +174,7 @@ export async function blobsApiMetaThumbnail(req: IRequest, env: Env): Promise<Re
     }
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsApiFavicon(req: IRequest, env: Env): Promise<Response> {
@@ -189,7 +189,7 @@ export async function blobsApiFavicon(req: IRequest, env: Env): Promise<Response
     }
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsApiRfcJson(req: IRequest, env: Env): Promise<Response | undefined> {
@@ -206,7 +206,7 @@ export async function blobsApiRfcJson(req: IRequest, env: Env): Promise<Response
       }
     }
 
-    return createBlobNotFoundResponse()
+    return notFoundResponse()
   }
 }
 
@@ -222,7 +222,7 @@ export async function blobsApiContentJson(req: IRequest, env: Env): Promise<Resp
     }
   }
 
-  return createBlobNotFoundResponse()
+  return notFoundResponse()
 }
 
 export async function blobsSitemap(req: IRequest, env: Env): Promise<Response | undefined> {
@@ -239,7 +239,7 @@ export async function blobsSitemap(req: IRequest, env: Env): Promise<Response | 
       }
     }
 
-    return createBlobNotFoundResponse()
+    return notFoundResponse()
   }
 }
 
@@ -284,6 +284,6 @@ export async function blobsStatics(req: IRequest, env: Env): Promise<Response | 
       return createBlobResponse(req, object, detectContentType(mapping.to))
     }
 
-    return createBlobNotFoundResponse()
+    return notFoundResponse()
   }
 }

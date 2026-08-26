@@ -102,12 +102,11 @@ export function createBlobResponse(
   })
 }
 
-export function createBlobNotFoundResponse(): Response {
-  return new Response('404 - Not found', {
+export const notFoundResponse = (): Response =>
+  new Response('404 - Not found', {
     status: 404,
     headers: { 'Content-Type': 'text/plain;charset=utf-8' }
   })
-}
 
 const SWR_STORED_AT_MS_HEADER = 'x-swr-stored-at-ms'
 
@@ -188,7 +187,10 @@ function isCacheable(resp: Response): boolean {
  */
 export async function staleWhileRevalidate(
   req: Request,
-  ctx: ExecutionContext,
+  // Narrowed to the one method this uses, like the collaborators in
+  // `StaleWhileRevalidateDeps` above. A test doesn't have to fake the rest of
+  // `ExecutionContext` — which grows with the runtime — to call this.
+  ctx: Pick<ExecutionContext, 'waitUntil'>,
   options: StaleWhileRevalidateOptions,
   { cache, fetch, now }: StaleWhileRevalidateDeps
 ): Promise<Response> {
