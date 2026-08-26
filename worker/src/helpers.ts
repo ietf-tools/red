@@ -187,7 +187,10 @@ function isCacheable(resp: Response): boolean {
  */
 export async function staleWhileRevalidate(
   req: Request,
-  ctx: ExecutionContext,
+  // Narrowed to the one method this uses, like the collaborators in
+  // `StaleWhileRevalidateDeps` above. A test doesn't have to fake the rest of
+  // `ExecutionContext` — which grows with the runtime — to call this.
+  ctx: Pick<ExecutionContext, 'waitUntil'>,
   options: StaleWhileRevalidateOptions,
   { cache, fetch, now }: StaleWhileRevalidateDeps
 ): Promise<Response> {

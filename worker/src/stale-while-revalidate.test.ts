@@ -57,12 +57,10 @@ const deps = () => ({ cache, fetch: fetchFake, now })
 
 function createCtx() {
   const tasks: Promise<unknown>[] = []
-  const ctx: ExecutionContext = {
+  const ctx: Pick<ExecutionContext, 'waitUntil'> = {
     waitUntil: (promise) => {
       tasks.push(Promise.resolve(promise))
-    },
-    passThroughOnException: () => {},
-    props: {}
+    }
   }
   // Awaiting this drains any background revalidation the handler scheduled.
   const settled = () => Promise.all(tasks)
@@ -71,7 +69,7 @@ function createCtx() {
 
 const get = (url = URL_UNDER_TEST) => new Request(url, { method: 'GET' })
 
-const call = (req: Request, ctx: ExecutionContext) =>
+const call = (req: Request, ctx: Pick<ExecutionContext, 'waitUntil'>) =>
   staleWhileRevalidate(
     req,
     ctx,
