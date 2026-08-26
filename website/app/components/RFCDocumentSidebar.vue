@@ -30,8 +30,8 @@
       ref="nav-desktop-menu"
       aria-label="In this RFC (desktop menu)"
       :class="['flex flex-col', isMounted && 'sticky top-0 h-[calc(100vh)]']"
-      @focus.capture="debouncedCenterOnScroll"
-      @wheel.capture="debouncedCenterOnScroll">
+      @focus.capture="handleDesktopRFCTabsFocus"
+      @wheel.capture="debouncedDesktopRFCTabsCenterOnScreen">
       <RFCTabs
         v-model="selectedTab"
         mode="desktop"
@@ -72,20 +72,56 @@ const handleCloseAndNavigate = (id: string) => {
 
 const isMounted = ref(false)
 
-onMounted(() => (isMounted.value = true))
+onMounted(() => {
+  isMounted.value = true
+})
 
-const centerOnScroll = () => {
+const desktopRFCTabsCenterOnScreen = () => {
   const { value: navDesktopMenu } = navDesktopMenuRef
   if (!navDesktopMenu) {
     console.error('[internal error] expected nav-desktop-menu to be available')
     return
   }
+  const { top } = navDesktopMenu.getBoundingClientRect()
+  const { scrollY } = window
+  const targetY = scrollY + top
+  if (scrollY >= targetY) {
+    // Already scrolled past the menu's document position: it is stuck to the top of
+    // the viewport and fully visible, so there is nothing to centre.
+    return
+  }
   navDesktopMenu.scrollIntoView({ behavior: prefersReducedMotion() ? 'instant' : 'smooth' })
 }
 
-const CENTER_ON_SCROLL_TIMER_MS = 30
+/**
+ * This is intentionally laggy, as it must not affect page scrolling
+ * of someone clicking a TOC link.
+ * If this is reduced to a small number it can clobber scroll position
+ */
+const CENTER_ON_SCREEN_TIMER_MS = 500
 
-const debouncedCenterOnScroll = useDebounceFn(centerOnScroll, CENTER_ON_SCROLL_TIMER_MS)
+const debouncedDesktopRFCTabsCenterOnScreen = useDebounceFn(desktopRFCTabsCenterOnScreen, CENTER_ON_SCREEN_TIMER_MS)
+
+/**
+ * Centring on focus is for readers who arrive at the menu by keyboard — tabbing into
+ * a ToC link that sits below the fold should bring the menu into view.
+ *
+ * A mouse click on a ToC link also focuses it, but that reader is navigating *away*
+ * from the menu, and centring would fight the anchor scroll: the smooth scroll back
+ * up to the menu outlives the click's jump to the heading, so the page lands at the
+ * menu instead of the section.
+ *
+ * `:focus-visible` is exactly that distinction — a link matches it when focused by
+ * keyboard and not when focused by pointer — so it closes the window entirely rather
+ * than relying on the debounce out-waiting the click.
+ */
+const handleDesktopRFCTabsFocus = (event: FocusEvent) => {
+  const { target } = event
+  if (target instanceof Element && !target.matches(':focus-visible')) {
+    return
+  }
+  debouncedDesktopRFCTabsCenterOnScreen()
+}
 
 provide(closeModalAndScrollToId, handleCloseAndNavigate)
 </script>
