@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 <img src="https://static.ietf.org/logos/icon-rfceditor.svg" alt="RFC Editor" height="125" />
 
 # RFC Editor Website
@@ -47,16 +47,18 @@ The 'last updated' footer on markdown pages is computed from Git log's commit ti
 It is manually synced by a developer by running (from within `website/`) the command `npm run generate:content-metadata`.
 This will update `generated/content-metadata.json` and that file should be committed.
 
+A website deploy isn't involved in updating content. The website downloads markdown content precomputed into JSON, so the precomputer is mostly involved in deploying content changes. Once markdown changes are merged and pushed to GitHub the 'Precomputer Docker Image' must be rebuilt and then, in Tekton, run 'precompute-single' with any RFC to regenerate all website content.
 
 #### Website testing
 
-In `/website/` run `npm run test`
+In `/website/` run `npm run test`. This runs unit tests, type checking, and linting. E2E tests must be run separately with `npm run test:e2e`.
 
 #### Website APIs
 
 The website depends on APIs in the form of:
-* Search (via Typesense, managed outside of this repository)
-* Precomputed API responses (managed in this repository, in `/precomputer/`)
+
+- Search (via Typesense, managed outside of this repository)
+- Precomputed API responses (managed in this repository, in `/precomputer/`)
 
 ### Precomputed API responses
 
@@ -70,9 +72,9 @@ The `/precomputer/` code is intentionally separate from the website/Nuxt. It has
 
 The entry point for the precomputer is `precomputer/src` with the items `single.ts`, `all.ts`, `multiple.ts`, and `cron.ts`:
 
-* `single.ts` calculates a single RFC 'info' page API data and RFC-specific APIs such as `/rfc/rfcN.json`.
-  * `all.ts` does the same with ranges of RFCs. `multiple.ts` handles a comma-separated list of RFC numbers.
-* `cron.ts` handles indices (all subseries, RFC indexes like on the homepage that list all RFCs, RSS/Atom feeds, etc.). As the name `cron.ts` implies this script is run periodically.
+- `single.ts` calculates a single RFC 'info' page API data and RFC-specific APIs such as `/rfc/rfcN.json`.
+  - `all.ts` does the same with ranges of RFCs. `multiple.ts` handles a comma-separated list of RFC numbers.
+- `cron.ts` handles indices (all subseries, RFC indexes like on the homepage that list all RFCs, RSS/Atom feeds, etc.). As the name `cron.ts` implies this script is run periodically.
 
 #### Precomputer tests
 
