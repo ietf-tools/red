@@ -206,6 +206,17 @@ const RfcCommonSubseriesSchema = z.array(
   })
 )
 
+/**
+ * The full shape of one RFC, published per document as `rfc-common/{number}.json`.
+ *
+ * Read outside this repository as well as in it: Reef fetches
+ * `/api/v1/rfc-common/{number}.json` to put a title beside a bare identifier in its
+ * admin and in subscription mail. There is no schema shared with it and no build step
+ * that would catch a break, so treat the published fields as additive-only — add
+ * freely, but do not remove or retype one without saying so. RfcMiniSchema below
+ * carries the same undertaking for the index file, and has a generated JSON Schema
+ * to go with it.
+ */
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
@@ -291,7 +302,14 @@ export const RfcMiniIndexSchema = z.object({
   miniIndex: z.array(RfcMiniSchema)
 })
 
-/** Subseries info page schema */
+/**
+ * Subseries info page schema, published as `info-subseries/{type}{number}.json`.
+ *
+ * Also read outside this repository: it is how Reef expands a BCP or STD to the RFCs
+ * that constitute it, which it needs because a Reef document set or subject can hold
+ * a subseries as well as an RFC. Additive-only for the same reason as RfcCommonSchema
+ * above: nothing between the two projects would catch a removal.
+ */
 export const SubseriesCommonSchema = z.object({
   type: RfcCommonSubseriesTypeSchema,
   number: z.number(),

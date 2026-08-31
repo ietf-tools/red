@@ -645,6 +645,62 @@ paths:
                 items:
                   $ref: '#/components/schemas/DocumentStats'
           description: ''
+  /api/reef/subjects/:
+    get:
+      operationId: subjects_list
+      description: |-
+        Every subject that exists, in name order. Public and unpaginated: the vocabulary is curated by staff rather than self-served, so it stays small enough to hand over whole.
+
+        `doc` narrows the list to the subjects carried by one document, which is how a caller renders the subjects on an RFC page. The identifier is canonicalized, so `rfc9110` and `RFC 9110` address the same document, and the series has to be named.
+      summary: List the subject vocabulary
+      parameters:
+        - in: query
+          name: doc
+          schema:
+            type: string
+          description: 'Return only the subjects carried by this document. The series
+            must be named: rfc9110, bcp14, std66.'
+      tags:
+        - subjects
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subject'
+          description: ''
+  /api/reef/subjects/{slug}/:
+    get:
+      operationId: subjects_retrieve
+      description: Addressed by slug rather than id, because this is the path whose
+        URL a reader sees. Subscribing names the id instead, which the response also
+        carries.
+      summary: Read one subject and the documents carrying it
+      parameters:
+        - in: path
+          name: slug
+          schema:
+            type: string
+          required: true
+      tags:
+        - subjects
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubjectDetail'
+          description: ''
   /api/reef/subscriptions/:
     get:
       operationId: subscriptions_list
@@ -1048,17 +1104,17 @@ components:
         - new_rfc
         - by_status
         - obsoleted
-        - subject_tag
         - rfc
         - set
+        - subject
       type: string
       description: |-
         * `new_rfc` - Any new RFC
         * `by_status` - New RFC by status
         * `obsoleted` - RFC obsoleted or made historic
-        * `subject_tag` - RFC with a subject tag
         * `rfc` - Changes to one specific RFC
         * `set` - Changes to anything in a document set
+        * `subject` - Changes to anything carrying a subject
     MyDocument:
       type: object
       description: |-
@@ -1230,8 +1286,9 @@ components:
           maxLength: 32
         rank:
           type: integer
-          maximum: 2147483647
+          maximum: 9223372036854775807
           minimum: 0
+          format: int64
           description: Lower sorts first
       required:
         - rfc
@@ -1278,6 +1335,80 @@ components:
         * `draft` - Draft
         * `published` - Published
         * `closed` - Closed
+    Subject:
+      type: object
+      description: |-
+        A subject as a caller sees it, without its membership.
+
+        The id is carried as well as the slug because subscribing names the id:
+        the subscription holds a foreign key so that renaming a subject cannot
+        detach its subscribers, and the id is the half of a subject's identity
+        that a rename does not touch.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+          description: Stable identifier used in URLs and by Red. Changing it breaks
+            links that name the old one; the name is the field to edit when the wording
+            is what changed.
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          readOnly: true
+          description: How the subject is shown to readers.
+        description:
+          type: string
+          readOnly: true
+          description: What belongs under this subject, for whoever curates it next
+            and for a caller drawing a picker.
+      required:
+        - description
+        - id
+        - name
+        - slug
+    SubjectDetail:
+      type: object
+      description: |-
+        A subject and the documents carrying it.
+
+        Separate from the list serializer for the reason me.MyDocumentSetSerializer
+        is separate from docsets.DocumentSetSerializer: a picker needs every
+        subject and no membership, so sending membership in the list would make
+        the payload grow with the whole catalogue rather than with the vocabulary.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+          description: Stable identifier used in URLs and by Red. Changing it breaks
+            links that name the old one; the name is the field to edit when the wording
+            is what changed.
+          pattern: ^[-a-zA-Z0-9_]+$
+        name:
+          type: string
+          readOnly: true
+          description: How the subject is shown to readers.
+        description:
+          type: string
+          readOnly: true
+          description: What belongs under this subject, for whoever curates it next
+            and for a caller drawing a picker.
+        documents:
+          type: array
+          items:
+            type: string
+          readOnly: true
+      required:
+        - description
+        - documents
+        - id
+        - name
+        - slug
     Subscription:
       type: object
       properties:
@@ -1290,6 +1421,9 @@ components:
         set:
           type: string
           format: uuid
+          nullable: true
+        subject:
+          type: integer
           nullable: true
         verified:
           type: boolean
