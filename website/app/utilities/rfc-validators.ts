@@ -198,6 +198,14 @@ export const ReefRFCStatsSchema = z.object({
 
 export type ReefRFCStats = z.infer<typeof ReefRFCStatsSchema>
 
+const RfcCommonSubseriesSchema = z.array(
+  z.object({
+    type: RfcCommonSubseriesTypeSchema,
+    number: z.number().optional(),
+    subseriesLength: z.number().optional()
+  })
+)
+
 export const RfcCommonSchema = z.object({
   number: z.number(),
   title: z.string(),
@@ -206,15 +214,7 @@ export const RfcCommonSchema = z.object({
   area: RfcCommonAreaSchema.optional(),
   pages: z.number().optional(),
   status: RfcCommonStatusSchema,
-  subseries: z
-    .array(
-      z.object({
-        type: RfcCommonSubseriesTypeSchema,
-        number: z.number().optional(),
-        subseriesLength: z.number().optional()
-      })
-    )
-    .optional(),
+  subseries: RfcCommonSubseriesSchema.optional(),
   authors: z.array(RfcCommonAuthorSchema),
   group: RfcCommonGroupSchema.optional(),
   stream: z.object({
@@ -245,25 +245,50 @@ export const HomepageLatestSchema = z.object({
 
 export type HomepageLatest = z.infer<typeof HomepageLatestSchema>
 
-export type RfcMini = Pick<
-  RfcCommon,
-  | 'number'
-  | 'title'
-  | 'published'
-  | 'authors'
-  | 'formats'
-  | 'obsoletes'
-  | 'obsoleted_by'
-  | 'updates'
-  | 'updated_by'
-  | 'status'
-  | 'stream'
-  | 'identifiers'
->
+/**
+ * The shape `rfcToRfcMini` emits, and so the shape of the published
+ * `rfc-mini-index.json`. Its own schema rather than a `Pick` of RfcCommon, because the
+ * published file has a consumer outside this repository: Reef reads it to resolve RFC
+ * identifiers to titles, and cannot share these Zod definitions from Python. It
+ * validates against a JSON Schema generated from this object by `npm run
+ * generate:schema` in precomputer/.
+ *
+ * Required here means always emitted, so removing one is a breaking change for that
+ * consumer. Optional means the datatracker may omit it and Red passes the absence
+ * through, which also means Reef cannot detect it going away. Add fields freely; do
+ * not remove or retype one.
+ *
+ * The required set is deliberately the same as RfcCommonSchema's, so that
+ * `rfcToRfcMini` can keep building an RfcCommon and returning it as an RfcMini, and so
+ * that nothing here can fail a precomputer run that RfcCommonSchema would have passed.
+ */
+export const RfcMiniSchema = z.object({
+  number: z.number(),
+  title: z.string(),
+  status: RfcCommonStatusSchema,
+  stream: z.object({
+    slug: RfcCommonStreamSlugSchema,
+    name: z.string(),
+    description: z.string().optional()
+  }),
+  // rfcToRfcMini keeps only the titlepage name; the rest of RfcCommonAuthorSchema is
+  // dropped to keep the index small.
+  authors: z.array(z.object({ titlepage_name: z.string().optional() })),
+  formats: z.array(RfcCommonFormatSchema),
+  published: z.string().optional(),
+  identifiers: z.array(RfcCommonIdentifierSchema).optional(),
+  obsoletes: z.array(RfcCommonObsoleteSchema).optional(),
+  obsoleted_by: z.array(RfcCommonObsoletedBySchema).optional(),
+  updates: z.array(RfcCommonUpdatesSchema).optional(),
+  updated_by: z.array(RfcCommonUpdatedBySchema).optional(),
+  subseries: RfcCommonSubseriesSchema.optional()
+})
+
+export type RfcMini = z.infer<typeof RfcMiniSchema>
 
 export const RfcMiniIndexSchema = z.object({
   createdOn: z.string(),
-  miniIndex: z.array(RfcCommonSchema)
+  miniIndex: z.array(RfcMiniSchema)
 })
 
 /** Subseries info page schema */

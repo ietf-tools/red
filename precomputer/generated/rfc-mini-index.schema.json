@@ -1,0 +1,443 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "createdOn": {
+      "type": "string"
+    },
+    "miniIndex": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "unkn"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "unknown"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "bcp"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "best current practice"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "exp"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "experimental"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "hist"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "historic"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "inf"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "informational"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "not-issued"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "not issued"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "std"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "internet standard"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "ps"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "proposed standard"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "const": "ds"
+                  },
+                  "name": {
+                    "type": "string",
+                    "const": "draft standard"
+                  }
+                },
+                "required": [
+                  "slug",
+                  "name"
+                ]
+              }
+            ]
+          },
+          "stream": {
+            "type": "object",
+            "properties": {
+              "slug": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "const": "IETF"
+                  },
+                  {
+                    "type": "string",
+                    "const": "IAB"
+                  },
+                  {
+                    "type": "string",
+                    "const": "IRTF"
+                  },
+                  {
+                    "type": "string",
+                    "const": "INDEPENDENT"
+                  },
+                  {
+                    "type": "string",
+                    "const": "Editorial"
+                  },
+                  {
+                    "type": "string",
+                    "const": "Legacy"
+                  }
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "slug",
+              "name"
+            ]
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "titlepage_name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "formats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "format": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "xml"
+                    },
+                    {
+                      "type": "string",
+                      "const": "txt"
+                    },
+                    {
+                      "type": "string",
+                      "const": "html"
+                    },
+                    {
+                      "type": "string",
+                      "const": "pdf"
+                    },
+                    {
+                      "type": "string",
+                      "const": "ps"
+                    },
+                    {
+                      "type": "string",
+                      "const": "json"
+                    },
+                    {
+                      "type": "string",
+                      "const": "notprepped"
+                    }
+                  ]
+                },
+                "path": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "format"
+              ]
+            }
+          },
+          "published": {
+            "type": "string"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "doi"
+                    },
+                    {
+                      "type": "string",
+                      "const": "issn"
+                    }
+                  ]
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ]
+            }
+          },
+          "obsoletes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "number": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "number",
+                "title"
+              ]
+            }
+          },
+          "obsoleted_by": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "number": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "number",
+                "title"
+              ]
+            }
+          },
+          "updates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "number": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "number",
+                "title"
+              ]
+            }
+          },
+          "updated_by": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "number": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "number",
+                "title"
+              ]
+            }
+          },
+          "subseries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "const": "bcp"
+                    },
+                    {
+                      "type": "string",
+                      "const": "fyi"
+                    },
+                    {
+                      "type": "string",
+                      "const": "std"
+                    }
+                  ]
+                },
+                "number": {
+                  "type": "number"
+                },
+                "subseriesLength": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            }
+          }
+        },
+        "required": [
+          "number",
+          "title",
+          "status",
+          "stream",
+          "authors",
+          "formats"
+        ]
+      }
+    }
+  },
+  "required": [
+    "createdOn",
+    "miniIndex"
+  ]
+}

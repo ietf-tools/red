@@ -14,6 +14,7 @@
     "test:unittests": "TZ=UTC vitest run",
     "test:unittests:watch": "TZ=UTC vitest run --watch",
     "generate:test-data": "node ./src/utilities/rfcs-test-data-regenerate.ts",
+    "generate:schema": "node ./src/utilities/export-json-schema.ts",
     "generate:api": "npx --no apigen-ts http://localhost:8000/api/schema/ --inline-enums --parse-dates ./generated/api-client.ts",
     "dev-api-server": "node ./src/utilities/dev-api-server.ts",
     "format": "oxfmt --ignore-path=.oxfmtignore ."
