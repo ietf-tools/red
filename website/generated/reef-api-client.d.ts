@@ -540,13 +540,20 @@ export interface components {
       sets: components['schemas']['MyDocumentSet'][]
       documents: components['schemas']['MyDocument'][]
     }
-    /** @description Minimal representation for Red's open-survey list and popover. */
+    /**
+     * @description One survey as Red offers it, which is as a toast.
+     *
+     *     The fields line up with Red's Notification: title, description and url are shown,
+     *     and slug is the string Red keys a dismissal on. documents is the addition that
+     *     tells it where to offer this at all.
+     */
     OpenSurvey: {
       readonly id: number
       slug: string
       title: string
       description?: string
       readonly url: string
+      readonly documents: string[] | null
     }
     PatchedDocumentSet: {
       /** Format: uuid */
