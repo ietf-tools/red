@@ -23,7 +23,7 @@ const KIND_LABELS: Record<SubscriptionKind, string> = {
   new_rfc: 'Any new RFC',
   by_status: 'New RFC by status',
   obsoleted: 'RFC obsoleted or made historic',
-  subject_tag: 'RFC with a subject tag',
+  subject: 'Changes to anything carrying a subject',
   set: 'Set of RFCs'
 }
 

@@ -10,7 +10,6 @@ const subscription = (kind: Subscription['kind'], params: unknown): Subscription
   id: 1,
   kind,
   params,
-  verified: true,
   created_at: '2026-08-18T00:00:00Z'
 })
 
@@ -19,9 +18,7 @@ describe('subscriptionParamsSummary', () => {
     expect(subscriptionParamsSummary(subscription('by_status', { status: 'Proposed Standard' }))).toBe(
       'status: Proposed Standard'
     )
-    expect(subscriptionParamsSummary(subscription('subject_tag', { tags: ['dns', 'tls'], exact: true }))).toBe(
-      'tags: dns, tls, exact: true'
-    )
+    expect(subscriptionParamsSummary(subscription('rfc', { rfc: 'rfc9110' }))).toBe('rfc: rfc9110')
   })
 
   test('is undefined when there is nothing worth showing', () => {

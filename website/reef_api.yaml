@@ -678,9 +678,10 @@ paths:
   /api/reef/subjects/{slug}/:
     get:
       operationId: subjects_retrieve
-      description: Addressed by slug rather than id, because this is the path whose
-        URL a reader sees. Subscribing names the id instead, which the response also
-        carries.
+      description: 'Two shapes, told apart by `retired`. A live subject comes back
+        in full. A retired one comes back as `slug`, `retired` and `merged_into` only:
+        it is no longer offered and should not be rendered as current, and what is
+        left is enough to redirect a link that names it.'
       summary: Read one subject and the documents carrying it
       parameters:
         - in: path
@@ -699,7 +700,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubjectDetail'
+                $ref: '#/components/schemas/SubjectDetailOrRedirect'
           description: ''
   /api/reef/subscriptions/:
     get:
@@ -1286,9 +1287,8 @@ components:
           maxLength: 32
         rank:
           type: integer
-          maximum: 9223372036854775807
+          maximum: 2147483647
           minimum: 0
-          format: int64
           description: Lower sorts first
       required:
         - rfc
@@ -1325,6 +1325,36 @@ components:
       properties:
         data: {}
         meta: {}
+    RetiredSubject:
+      type: object
+      description: |-
+        A retired subject, as the only thing a retired subject is still for.
+
+        Deliberately not the detail shape. A retired subject is not offered, does not
+        appear in the vocabulary, and should not be rendered as though it were current;
+        what is left is enough to redirect a link that names it. Callers tell the two
+        apart by `retired`, which the live shape also carries.
+      properties:
+        slug:
+          type: string
+          readOnly: true
+          description: Stable identifier used in URLs and by Red. Changing it breaks
+            links that name the old one; the name is the field to edit when the wording
+            is what changed.
+          pattern: ^[-a-zA-Z0-9_]+$
+        retired:
+          type: boolean
+          readOnly: true
+        merged_into:
+          type: string
+          description: Stable identifier used in URLs and by Red. Changing it breaks
+            links that name the old one; the name is the field to edit when the wording
+            is what changed.
+          readOnly: true
+      required:
+        - merged_into
+        - retired
+        - slug
     StatusEnum:
       enum:
         - draft
@@ -1398,6 +1428,9 @@ components:
           readOnly: true
           description: What belongs under this subject, for whoever curates it next
             and for a caller drawing a picker.
+        retired:
+          type: boolean
+          readOnly: true
         documents:
           type: array
           items:
@@ -1408,7 +1441,12 @@ components:
         - documents
         - id
         - name
+        - retired
         - slug
+    SubjectDetailOrRedirect:
+      oneOf:
+        - $ref: '#/components/schemas/SubjectDetail'
+        - $ref: '#/components/schemas/RetiredSubject'
     Subscription:
       type: object
       properties:
@@ -1425,9 +1463,6 @@ components:
         subject:
           type: integer
           nullable: true
-        verified:
-          type: boolean
-          readOnly: true
         created_at:
           type: string
           format: date-time
@@ -1436,7 +1471,6 @@ components:
         - created_at
         - id
         - kind
-        - verified
     Survey:
       type: object
       description: Full survey representation used by the management API and the builder.

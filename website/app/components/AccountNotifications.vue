@@ -23,7 +23,6 @@
           <span v-if="subscriptionParamsSummary(subscription)" class="block">
             {{ subscriptionParamsSummary(subscription) }}
           </span>
-          <span v-if="!subscription.verified" class="block italic"> Awaiting email verification </span>
         </li>
       </ul>
       <p v-else class="italic py-3">You have no notifications yet.</p>

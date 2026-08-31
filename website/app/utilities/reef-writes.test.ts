@@ -130,7 +130,7 @@ describe('writeUserRFCSubscription', () => {
     expect(reefStore.userDocuments.rfc9110?.isSubscribed).toBe(true)
     expect(reefStore.userDocuments.rfc9110?.yourSubscriptionId).toBeUndefined()
 
-    confirm({ id: 812, kind: 'rfc', params: { rfc: 'rfc9110' }, verified: true, created_at: '' })
+    confirm({ id: 812, kind: 'rfc', params: { rfc: 'rfc9110' }, created_at: '' })
     await writing
 
     expect(reefStore.userDocuments.rfc9110?.yourSubscriptionId).toBe(812)

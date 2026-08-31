@@ -225,7 +225,7 @@ export const deleteRating = (rfc: string, signal?: AbortSignal): Promise<RatingA
 export const getSubscriptions = (signal?: AbortSignal): Promise<Subscription[]> =>
   reefFetch('/api/reef/subscriptions/', { auth: 'required', signal })
 
-// id, verified and created_at are server-assigned, so callers supply only kind and params.
+// id and created_at are server-assigned, so callers supply only kind and params.
 export const createSubscription = (
   subscription: Pick<Subscription, 'kind' | 'params'>,
   signal?: AbortSignal

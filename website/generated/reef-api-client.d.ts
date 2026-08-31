@@ -266,6 +266,48 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/subjects/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * List the subject vocabulary
+     * @description Every subject that exists, in name order. Public and unpaginated: the vocabulary is curated by staff rather than self-served, so it stays small enough to hand over whole.
+     *
+     *     `doc` narrows the list to the subjects carried by one document, which is how a caller renders the subjects on an RFC page. The identifier is canonicalized, so `rfc9110` and `RFC 9110` address the same document, and the series has to be named.
+     */
+    get: operations['subjects_list']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/subjects/{slug}/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * Read one subject and the documents carrying it
+     * @description Two shapes, told apart by `retired`. A live subject comes back in full. A retired one comes back as `slug`, `retired` and `merged_into` only: it is no longer offered and should not be rendered as current, and what is left is enough to redirect a link that names it.
+     */
+    get: operations['subjects_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/subscriptions/': {
     parameters: {
       query?: never
@@ -452,12 +494,12 @@ export interface components {
      * @description * `new_rfc` - Any new RFC
      *     * `by_status` - New RFC by status
      *     * `obsoleted` - RFC obsoleted or made historic
-     *     * `subject_tag` - RFC with a subject tag
      *     * `rfc` - Changes to one specific RFC
      *     * `set` - Changes to anything in a document set
+     *     * `subject` - Changes to anything carrying a subject
      * @enum {string}
      */
-    KindEnum: 'new_rfc' | 'by_status' | 'obsoleted' | 'subject_tag' | 'rfc' | 'set'
+    KindEnum: 'new_rfc' | 'by_status' | 'obsoleted' | 'rfc' | 'set' | 'subject'
     /**
      * @description What one document is to the caller: their rating, their subscription,
      *     their sets.
@@ -553,19 +595,71 @@ export interface components {
       meta?: unknown
     }
     /**
+     * @description A retired subject, as the only thing a retired subject is still for.
+     *
+     *     Deliberately not the detail shape. A retired subject is not offered, does not
+     *     appear in the vocabulary, and should not be rendered as though it were current;
+     *     what is left is enough to redirect a link that names it. Callers tell the two
+     *     apart by `retired`, which the live shape also carries.
+     */
+    RetiredSubject: {
+      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      readonly slug: string
+      readonly retired: boolean
+      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      readonly merged_into: string
+    }
+    /**
      * @description * `draft` - Draft
      *     * `published` - Published
      *     * `closed` - Closed
      * @enum {string}
      */
     StatusEnum: 'draft' | 'published' | 'closed'
+    /**
+     * @description A subject as a caller sees it, without its membership.
+     *
+     *     The id is carried as well as the slug because subscribing names the id:
+     *     the subscription holds a foreign key so that renaming a subject cannot
+     *     detach its subscribers, and the id is the half of a subject's identity
+     *     that a rename does not touch.
+     */
+    Subject: {
+      readonly id: number
+      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      readonly slug: string
+      /** @description How the subject is shown to readers. */
+      readonly name: string
+      /** @description What belongs under this subject, for whoever curates it next and for a caller drawing a picker. */
+      readonly description: string
+    }
+    /**
+     * @description A subject and the documents carrying it.
+     *
+     *     Separate from the list serializer for the reason me.MyDocumentSetSerializer
+     *     is separate from docsets.DocumentSetSerializer: a picker needs every
+     *     subject and no membership, so sending membership in the list would make
+     *     the payload grow with the whole catalogue rather than with the vocabulary.
+     */
+    SubjectDetail: {
+      readonly id: number
+      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      readonly slug: string
+      /** @description How the subject is shown to readers. */
+      readonly name: string
+      /** @description What belongs under this subject, for whoever curates it next and for a caller drawing a picker. */
+      readonly description: string
+      readonly retired: boolean
+      readonly documents: string[]
+    }
+    SubjectDetailOrRedirect: components['schemas']['SubjectDetail'] | components['schemas']['RetiredSubject']
     Subscription: {
       readonly id: number
       kind: components['schemas']['KindEnum']
       params?: unknown
       /** Format: uuid */
       set?: string | null
-      readonly verified: boolean
+      subject?: number | null
       /** Format: date-time */
       readonly created_at: string
     }
@@ -1088,6 +1182,49 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['DocumentStats'][]
+        }
+      }
+    }
+  }
+  subjects_list: {
+    parameters: {
+      query?: {
+        /** @description Return only the subjects carried by this document. The series must be named: rfc9110, bcp14, std66. */
+        doc?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['Subject'][]
+        }
+      }
+    }
+  }
+  subjects_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        slug: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SubjectDetailOrRedirect']
         }
       }
     }
