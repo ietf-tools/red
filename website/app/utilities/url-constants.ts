@@ -22,6 +22,7 @@ export const INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL = `${IN
 export const HOME_PATH = '/'
 export const CONTACT_PATH = '/about/contact/'
 export const SEARCH_PATH = '/search/'
+export const SUBJECTS_PATH = '/subjects/'
 export const RFC_INDEX_PATH = '/rfc-index/'
 export const ACCOUNT_HOME_PATH = '/account/'
 

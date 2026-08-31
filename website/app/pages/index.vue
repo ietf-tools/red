@@ -138,7 +138,8 @@ import {
   usePublicSiteUrlOrigin,
   useApiV1UrlOrigin,
   RFC_INDEX_PATH,
-  searchV2PathBuilder
+  searchV2PathBuilder,
+  HOME_PATH
 } from '~/utilities/url'
 
 definePageMeta({
@@ -195,7 +196,7 @@ useReefDocuments(() => homepageLatest.value?.homepageLatest.map((rfc) => rfc.num
 
 useRfcEditorHead({
   title: '',
-  canonicalPath: `${publicSiteUrlOrigin}/`,
+  canonicalPath: `${publicSiteUrlOrigin}${HOME_PATH}`,
   description:
     'The official home of RFCs. RFCs outline computer networking and Internet foundations, including Internet Standards and historical or informative content.',
   contentType: 'website'
