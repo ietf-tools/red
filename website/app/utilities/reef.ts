@@ -30,6 +30,10 @@ export type MyDocumentSet = components['schemas']['MyDocumentSet']
 export type PopularEntry = components['schemas']['PopularEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
 export type RatingWrite = components['schemas']['RatingWrite']
+export type Subject = components['schemas']['Subject']
+export type SubjectDetail = components['schemas']['SubjectDetail']
+export type SubjectDetailOrRedirect = components['schemas']['SubjectDetailOrRedirect']
+export type RetiredSubject = components['schemas']['RetiredSubject']
 export type Subscription = components['schemas']['Subscription']
 export type SubscriptionKind = components['schemas']['KindEnum']
 export type Survey = components['schemas']['Survey']
@@ -166,6 +170,22 @@ const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T>
 // The curated most-popular list. Public.
 export const getPopularity = (signal?: AbortSignal): Promise<PopularEntry[]> =>
   reefFetch('/api/reef/popularity/', { signal })
+
+// --- Subjects ---------------------------------------------------------------------------
+
+// The whole subject vocabulary, in name order. Public, and unpaginated because the vocabulary is
+// curated by staff rather than self-served, so there's no page to ask for and no token to send.
+export const getSubjects = (signal?: AbortSignal): Promise<Subject[]> => reefFetch('/api/reef/subjects/', { signal })
+
+// One subject and the documents carrying it. Reef answers this path with either of two shapes and
+// `retired` is what tells them apart, so callers narrow with isRetiredSubject rather than reading a
+// field only one of them has.
+export const getSubject = (slug: string, signal?: AbortSignal): Promise<SubjectDetailOrRedirect> =>
+  reefFetch(`/api/reef/subjects/${encodeURIComponent(slug)}/`, { signal })
+
+// Both shapes carry `retired`, so what separates them is its value rather than the field being
+// there at all — which is why this is a predicate and not an `in` check repeated at each call site.
+export const isRetiredSubject = (subject: SubjectDetailOrRedirect): subject is RetiredSubject => subject.retired
 
 // --- This reader's own state, a page at a time ---------------------------------------------
 
