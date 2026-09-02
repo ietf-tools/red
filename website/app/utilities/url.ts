@@ -29,7 +29,8 @@ import {
   RSS_PATH,
   SEARCH_PATH,
   STATUS_CHANGES_PATH,
-  SET_PATH
+  SET_PATH,
+  SUBJECTS_PATH
 } from './url-constants'
 
 // Constants moved to `url-constants.ts`; re-exported so existing importers of this module are
@@ -522,3 +523,10 @@ export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => 
 }
 
 export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/api/v1/favicon/${widthPx}x${heightPx}.png`
+
+export const subjectsPathBuilder = (
+  /** eg 'a', 'b', ... */
+  subject: string
+) => {
+  return `${SUBJECTS_PATH}${subject ? `${subject}/` : ''}`
+}

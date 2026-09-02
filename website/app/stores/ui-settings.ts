@@ -2,6 +2,9 @@ import { z } from 'zod'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
+// Whether a subject listing shows each subject's description or only its name.
+export const SubjectDensitySchema = z.union([z.literal('full'), z.literal('compact')]).optional()
+
 // Bounds of the text-scale slider, shared with AdvancedUISettings.vue so the
 // control and the persisted value can't disagree.
 export const TEXT_SCALE_MIN = 1
@@ -16,7 +19,8 @@ const UiSettingsSchema = z
     obsoletedByMode: SupersededModeSchema,
     updatedByMode: SupersededModeSchema,
     disableRFCLinkPreview: z.boolean(),
-    textScale: TextScaleSchema.optional()
+    textScale: TextScaleSchema.optional(),
+    subjectDensity: SubjectDensitySchema
   })
   .optional()
 
@@ -26,9 +30,14 @@ type UiSettings = z.infer<typeof UiSettingsSchema>
 
 type SupersededMode = NonNullable<z.infer<typeof SupersededModeSchema>>
 
+export type SubjectDensity = NonNullable<z.infer<typeof SubjectDensitySchema>>
+
 const LOCALSTORAGE_KEY = 'rfc-ui'
 
 const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
+
+// Names alone, so a listing reads as an index rather than as prose.
+export const DEFAULT_SUBJECT_DENSITY: SubjectDensity = 'compact'
 
 export const useUiSettingsStore = defineStore('uiSettings', () => {
   // Whether the UI Settings dialog is showing. Deliberately not persisted: it's
@@ -39,13 +48,15 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   const updatedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
   const disableRFCLinkPreviewRef = ref<boolean>(false)
   const textScaleRef = ref<number>(DEFAULT_TEXT_SCALE)
+  const subjectDensityRef = ref<SubjectDensity>(DEFAULT_SUBJECT_DENSITY)
 
   const saveSettings = () => {
     const uiSettings: UiSettings = {
       obsoletedByMode: obsoletedByModeRef.value,
       updatedByMode: updatedByModeRef.value,
       disableRFCLinkPreview: disableRFCLinkPreviewRef.value,
-      textScale: textScaleRef.value
+      textScale: textScaleRef.value,
+      subjectDensity: subjectDensityRef.value
     }
 
     try {
@@ -77,6 +88,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       updatedByModeRef.value = data.updatedByMode ?? updatedByModeRef.value
       disableRFCLinkPreviewRef.value = data.disableRFCLinkPreview ?? disableRFCLinkPreviewRef.value
       textScaleRef.value = data.textScale ?? textScaleRef.value
+      subjectDensityRef.value = data.subjectDensity ?? subjectDensityRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
@@ -107,6 +119,11 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  const setSubjectDensity = (subjectDensity: SubjectDensity) => {
+    subjectDensityRef.value = subjectDensity
+    saveSettings()
+  }
+
   const setIsUiSettingsModalOpen = (isOpen: boolean) => {
     isUiSettingsModalOpenRef.value = isOpen
   }
@@ -124,6 +141,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     disableRFCLinkPreview: disableRFCLinkPreviewRef,
     setDisabledRFCLinkPreview,
     textScale: textScaleRef,
-    setTextScale
+    setTextScale,
+    subjectDensity: subjectDensityRef,
+    setSubjectDensity
   }
 })
