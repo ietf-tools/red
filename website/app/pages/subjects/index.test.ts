@@ -119,7 +119,9 @@ describe('/subjects/', () => {
 
     const page = await renderPage()
 
-    expect(page.findAll('dd a').map((link) => link.attributes('href'))).toEqual([
+    // The list itself, not the `dd`: each group ends with a back-to-top link that is navigation
+    // within the page rather than one of the subjects.
+    expect(page.findAll('dd ul a').map((link) => link.attributes('href'))).toEqual([
       '/subjects/authentication/',
       '/subjects/networking/',
       '/subjects/routing/'

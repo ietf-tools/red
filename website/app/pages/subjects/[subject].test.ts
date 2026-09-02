@@ -112,6 +112,16 @@ describe('/subjects/<slug>/', () => {
     expect(page.text()).toContain('Subject not found')
   })
 
+  // The identifiers Reef curates subjects over are named in the series this build has info pages
+  // for, so one it cannot link is Reef sending something outside that vocabulary rather than a row
+  // to render without a link.
+  test('fails rather than listing an identifier it cannot link', async () => {
+    const slug = 'authentication'
+    reefAnswers(slug, { ...subjectDetailFixture, slug, documents: ['draft-ietf-oauth-v2-1'] })
+
+    await expect(renderPage(slug)).rejects.toThrow(/draft-ietf-oauth-v2-1/)
+  })
+
   test('tells a subject that could not be loaded apart from one that is not there', async () => {
     reefFails('networking', 500)
 

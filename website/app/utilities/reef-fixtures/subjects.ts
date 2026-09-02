@@ -43,9 +43,7 @@ export const authenticationSubjectDetailFixture: SubjectDetail = {
   name: 'Authentication',
   description: 'Proving who a party is, and what they are allowed to do.',
   retired: false,
-  // The last of these is an identifier no page is built for, which is the case the index renders as
-  // plain text rather than a link.
-  documents: ['rfc7519', 'rfc6749', 'draft-ietf-oauth-v2-1']
+  documents: ['rfc7519', 'rfc6749', 'rfc9068']
 }
 
 export const subjectDetailFixture: SubjectDetail = {

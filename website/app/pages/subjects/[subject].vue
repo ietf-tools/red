@@ -14,10 +14,7 @@
 
           <ul v-if="documents.length > 0" class="flex flex-col gap-2 mt-6">
             <li v-for="{ doc, infoPath } in documents" :key="doc">
-              <Anchor v-if="infoPath !== undefined" :href="infoPath">{{ doc }}</Anchor>
-              <!-- An identifier this build has no page for: still listed, because it carries the
-                 subject either way, just not as a link. -->
-              <span v-else>{{ doc }}</span>
+              <Anchor :href="infoPath">{{ doc }}</Anchor>
             </li>
           </ul>
           <p v-else class="mt-6">No RFCs carry this subject yet.</p>
@@ -90,17 +87,11 @@ if (retiredSubject.value !== undefined) {
   await navigateTo(subjectsPathBuilder(retiredSubject.value.merged_into), { redirectCode: 301, replace: true })
 }
 
-// A subject carries identifiers and nothing else, and it is free to carry one this build has no
-// page for — infoSeriesPathBuilder throws on those, which shouldn't cost the rest of the list
-// their links.
+// Reef names documents in the series this build has info pages for, so infoSeriesPathBuilder
+// throwing means Reef has sent something outside that vocabulary. Left to throw: an identifier this
+// page cannot link is a fault to fix at the source, not a row to quietly render as plain text.
 const documents = computed(() =>
-  (liveSubject.value?.documents ?? []).map((doc) => {
-    try {
-      return { doc, infoPath: infoSeriesPathBuilder(doc) }
-    } catch {
-      return { doc, infoPath: undefined }
-    }
-  })
+  (liveSubject.value?.documents ?? []).map((doc) => ({ doc, infoPath: infoSeriesPathBuilder(doc) }))
 )
 
 useRfcEditorHead({
