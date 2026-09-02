@@ -11,7 +11,7 @@ import {
   emptySubjectDetailFixture,
   retiredSubjectFixture,
   subjectDetailFixture
-} from '~/utilities/test-utils/reef-subject-fixtures'
+} from '~/utilities/reef-fixtures/subjects'
 
 const STUB_LAYOUT = {
   NuxtLayout: { template: '<div><slot /></div>' }

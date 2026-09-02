@@ -11,6 +11,7 @@
     "build:nuxt:dev": "npx --no nuxt prepare && npx --no nuxt build --envName development",
     "dev": "npm run dev:nuxt",
     "dev:nuxt": "nuxt dev",
+    "dev:fixtures": "NUXT_PUBLIC_REEF_FIXTURES=${NUXT_PUBLIC_REEF_FIXTURES:-on} npm run dev:nuxt",
     "cleanup": "nuxt cleanup",
     "preview": "npm run build:nuxt && nuxt preview",
     "preview:dev": "npm run build:nuxt:dev && nuxt preview",

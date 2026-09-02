@@ -112,9 +112,54 @@ const parseBody = async (response: Response): Promise<unknown> => {
   }
 }
 
+// The dev-fixture branch of reefFetch: the stand-in answer for a request, or `answered: false` when
+// nothing covers it. A fixtured failure is raised here rather than described back to the caller, so
+// that ReefError keeps being built in exactly one place.
+//
+// Its own function, and exported, only because reefFetch reaches it behind `import.meta.dev` and
+// that is false under the test environment — so this is where its tests can get at it.
+export const answerFromFixtures = async <T>({
+  configured,
+  method,
+  path
+}: {
+  configured: string
+  method: string
+  path: string
+}): Promise<{ answered: true; body: T } | { answered: false }> => {
+  const { fixtureFor } = await import('~/utilities/reef-fixtures')
+  const fixture = await fixtureFor(configured, method, path)
+
+  // No fixture for this operation: the caller falls through to the real Reef, so one nobody has
+  // written yet is a failed request naming the path rather than a page that quietly renders empty.
+  if (fixture === undefined) {
+    return { answered: false }
+  }
+
+  if (fixture.outcome === 'error') {
+    const { status, statusText, body } = fixture
+    throw new ReefError({ status, statusText, body, method, path })
+  }
+
+  return { answered: true, body: fixture.body as T }
+}
+
 const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T> => {
   const { method = 'GET', body, auth, signal } = request
-  const { reefBase } = useRuntimeConfig().public
+  const { reefBase, reefFixtures } = useRuntimeConfig().public
+
+  // Local dev against stand-in answers, when NUXT_PUBLIC_REEF_FIXTURES names a scenario. Ahead of
+  // the auth guard below on purpose: the point of fixtures is to reach the pages with no Reef
+  // behind them, and most of what they show is behind `auth: 'required'`, which would otherwise
+  // fail here for want of a session. `import.meta.dev` is compile-time, so a production build drops
+  // this branch and the import under it, and no fixture reaches the shipped bundle.
+  if (import.meta.dev && reefFixtures !== '') {
+    const fixture = await answerFromFixtures<T>({ configured: reefFixtures, method, path })
+    if (fixture.answered) {
+      return fixture.body
+    }
+  }
+
   const token = auth === undefined ? undefined : await getAccessToken()
 
   // Sending an authenticated-only operation with no Authorization header can only ever come

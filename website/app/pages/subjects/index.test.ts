@@ -16,7 +16,7 @@ import { mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
 import { createError } from 'h3'
 import SubjectsIndexPage from './index.vue'
 import type { Subject } from '~/utilities/reef'
-import { subjectsFixture } from '~/utilities/test-utils/reef-subject-fixtures'
+import { subjectsFixture } from '~/utilities/reef-fixtures/subjects'
 
 // The layout is the header, footer and navigation around the page, none of which these assertions
 // are about.
