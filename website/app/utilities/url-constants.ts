@@ -23,6 +23,14 @@ export const HOME_PATH = '/'
 export const CONTACT_PATH = '/about/contact/'
 export const SEARCH_PATH = '/search/'
 export const SUBJECTS_PATH = '/subjects/'
+
+/**
+ * Names the filter on /subjects/, which is applied in the browser and nowhere else: the worker
+ * strips the query string from anything it fetches from Nuxt, so this reaches a server render only
+ * in development. It is in the URL so that a filtered view can be linked and stepped back out of.
+ */
+export const SUBJECTS_QUERY_PARAM = 'q'
+
 export const RFC_INDEX_PATH = '/rfc-index/'
 export const ACCOUNT_HOME_PATH = '/account/'
 
