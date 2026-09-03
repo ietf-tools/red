@@ -1,8 +1,4 @@
 // @vitest-environment nuxt
-//
-// The filter box on its own. What it owes its host is narrow — the query, and a word before the
-// query arrives — and the page tests cannot see the second of those: they fetch the search
-// machinery up front, so they would go on passing if the box stopped asking for it.
 import { afterEach, describe, expect, test } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
@@ -19,19 +15,6 @@ const renderFilter = (query = '') =>
   })
 
 describe('SubjectFilter', () => {
-  test('asks its host to get ready as soon as the box is focused', async () => {
-    const filter = await renderFilter()
-
-    // Nothing has been typed, so nothing has been asked for yet.
-    expect(filter.emitted('prepare')).toBeUndefined()
-
-    await filter.find('input[type="search"]').trigger('focus')
-
-    // Focus is the earliest honest warning that filtering is about to happen, and it is what buys
-    // the host time to fetch what it needs before the first keystroke arrives.
-    expect(filter.emitted('prepare')).toHaveLength(1)
-  })
-
   test('reports what was typed', async () => {
     const filter = await renderFilter()
 

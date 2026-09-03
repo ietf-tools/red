@@ -11,7 +11,7 @@
 //
 // This mounts the page in happy-dom, which is a client render. It covers what the page does with
 // what Reef answers; it does not show that the server emitted the same markup.
-import { afterEach, beforeAll, describe, expect, test, vi } from 'vitest'
+import { afterEach, describe, expect, test, vi } from 'vitest'
 import { mockNuxtImport, mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
 import { createError } from 'h3'
@@ -27,14 +27,6 @@ const STUB_LAYOUT = {
 }
 
 const subjectsUrl = (): string => `${useRuntimeConfig().public.reefBase}/api/reef/subjects/`
-
-// The page fetches its search machinery on demand, and the first fetch of it is the only one that
-// is not already resolved by the time a keystroke is made. Fetched up front here so that these
-// assertions are about what the page does with a filter rather than about that one-off wait; the
-// wait itself is covered where it belongs, against the filter in utilities/subject-search.test.ts.
-beforeAll(async () => {
-  await import('~/utilities/subject-search-index')
-})
 
 // A page left mounted goes on watching its filter, and the delay before it writes the URL outlives
 // the test that typed: unmounted here so that one test's keystroke cannot be another's navigation.

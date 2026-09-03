@@ -14,11 +14,7 @@
 
         <template v-else-if="subjectCount > 0">
           <div class="mt-2 mb-6 print:hidden">
-            <SubjectFilter
-              v-model="filterQuery"
-              :match-count="filteredSubjects.length"
-              :total-count="subjectCount"
-              @prepare="prepareFilter" />
+            <SubjectFilter v-model="filterQuery" :match-count="filteredSubjects.length" :total-count="subjectCount" />
           </div>
 
           <template v-if="filteredSubjects.length > 0">
@@ -106,7 +102,7 @@ import { groupBy } from 'es-toolkit'
 import { useUiSettingsStore, type SubjectDensity } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
 import { getSubjects, type Subject } from '~/utilities/reef'
-import { useSubjectFilter } from '~/utilities/subject-search'
+import { filterSubjects } from '~/utilities/subject-search'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { SUBJECTS_PATH, SUBJECTS_QUERY_PARAM, subjectsPathBuilder, usePublicSiteUrlOrigin } from '~/utilities/url'
 
@@ -172,12 +168,7 @@ watchDebounced(
   { debounce: URL_WRITE_DEBOUNCE_MS }
 )
 
-// Holds the index across keystrokes rather than rebuilding it per query, and takes the vocabulary
-// and the query as getters because it is created before either has settled.
-const { filteredSubjects, prepare: prepareFilter } = useSubjectFilter(
-  () => subjects.value ?? [],
-  () => filterQuery.value
-)
+const filteredSubjects = computed(() => filterSubjects(subjects.value ?? [], filterQuery.value))
 
 type SubjectGroup = {
   id: string

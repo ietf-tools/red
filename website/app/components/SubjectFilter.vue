@@ -19,7 +19,6 @@
         autocorrect="off"
         autocapitalize="off"
         spellcheck="false"
-        @focus="emit('prepare')"
         @keydown.esc="clear" />
       <button
         v-if="query.length > 0"
@@ -48,10 +47,6 @@ const { matchCount, totalCount } = defineProps<{
   matchCount: number
   totalCount: number
 }>()
-
-// Focus rather than the first keystroke, so that whatever the host has to fetch or build before it
-// can filter is under way while the reader is still typing the first letter.
-const emit = defineEmits<{ prepare: [] }>()
 
 const inputDomId = useId()
 const hintDomId = useId()
