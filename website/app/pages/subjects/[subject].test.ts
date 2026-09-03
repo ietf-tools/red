@@ -9,16 +9,20 @@ import { createError } from 'h3'
 import SubjectPage from './[subject].vue'
 import type { RetiredSubject, SubjectAlias, SubjectDetail } from '~/utilities/reef'
 import {
-  authenticationSubjectDetailFixture,
   emptySubjectDetailFixture,
+  headingSubjectDetailFixture,
+  leafSubjectDetailFixture,
   retiredSubjectFixture,
-  routingSubjectDetailFixture,
   subjectAliasFixture,
   subjectDetailFixture
 } from '~/utilities/reef-fixtures/subjects'
 
-const STUB_LAYOUT = {
-  NuxtLayout: { template: '<div><slot /></div>' }
+const STUBS = {
+  NuxtLayout: { template: '<div><slot /></div>' },
+  // The wall gating these routes on the `oidc` personalisation feature flag. It draws its slot only
+  // once the flags have been read from localStorage, which nothing here provides; its own
+  // behaviour is covered in components/FeatureFlagWall.test.ts.
+  FeatureFlagWall: { template: '<div><slot /></div>' }
 }
 
 // A page left mounted goes on rendering as the next test clears the data behind it, and a page that
@@ -57,7 +61,7 @@ const reefFails = (slug: string, statusCode: number) => {
 const renderPage = (slug: string) =>
   mountSuspended(SubjectPage, {
     route: `/subjects/${slug}/`,
-    global: { stubs: STUB_LAYOUT }
+    global: { stubs: STUBS }
   })
 
 describe('/subjects/<slug>/', () => {
@@ -76,47 +80,52 @@ describe('/subjects/<slug>/', () => {
   })
 
   test('links each document to its info page', async () => {
+    // The leaf, because it is the case with nothing else on the page: no subjects within it, so
+    // every link drawn is one of its documents.
+    const { slug } = leafSubjectDetailFixture
+    reefAnswers(slug, leafSubjectDetailFixture)
+
+    const page = await renderPage(slug)
+
+    // The lists, not the whole page: the breadcrumb above is an `ol` of links to the subjects this
+    // one sits inside, which are navigation rather than membership.
+    expect(page.findAll('ul a').map((link) => link.attributes('href'))).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
+  })
+
+  test('links the subjects within this one, which Reef names by slug', async () => {
     const { slug } = subjectDetailFixture
     reefAnswers(slug, subjectDetailFixture)
 
     const page = await renderPage(slug)
-
-    expect(page.findAll('a').map((link) => link.attributes('href'))).toEqual([
-      // The subject within this one comes first, because it is drawn above the documents.
-      '/subjects/routing/',
-      '/info/rfc9110/',
-      '/info/bcp14/',
-      '/info/rfc791/'
-    ])
-  })
-
-  test('links the subjects within this one, which Reef names by slug', async () => {
-    const { slug } = authenticationSubjectDetailFixture
-    reefAnswers(slug, authenticationSubjectDetailFixture)
-
-    const page = await renderPage(slug)
-    const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/tokens/')
+    const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/gzip/')
 
     // The slug verbatim: the detail answer carries only slugs for the subjects around this one, and
     // the curated names are on /subjects/ rather than in this response.
-    expect(child?.text()).toBe('tokens')
+    expect(child?.text()).toBe('gzip')
   })
 
   test('shows where the subject sits, without linking back to itself', async () => {
-    const { slug } = authenticationSubjectDetailFixture
-    reefAnswers(slug, authenticationSubjectDetailFixture)
+    const { slug } = leafSubjectDetailFixture
+    reefAnswers(slug, leafSubjectDetailFixture)
 
     const page = await renderPage(slug)
     const breadcrumb = page.find('nav[aria-label="Breadcrumb"]')
 
-    // `security/authentication` less its own last segment, so the trail leads here and stops.
-    expect(breadcrumb.findAll('li').map((item) => item.find('a').text())).toEqual(['security'])
-    expect(breadcrumb.findAll('a').map((link) => link.attributes('href'))).toEqual(['/subjects/security/'])
+    // `applications-and-data-formats/compression/gzip` less its own last segment, so the trail leads
+    // here and stops.
+    expect(breadcrumb.findAll('li').map((item) => item.find('a').text())).toEqual([
+      'applications-and-data-formats',
+      'compression'
+    ])
+    expect(breadcrumb.findAll('a').map((link) => link.attributes('href'))).toEqual([
+      '/subjects/applications-and-data-formats/',
+      '/subjects/compression/'
+    ])
   })
 
   test('leaves the breadcrumb off a subject that is not inside anything', async () => {
-    const { slug } = subjectDetailFixture
-    reefAnswers(slug, subjectDetailFixture)
+    const { slug } = headingSubjectDetailFixture
+    reefAnswers(slug, headingSubjectDetailFixture)
 
     const page = await renderPage(slug)
 
@@ -124,18 +133,19 @@ describe('/subjects/<slug>/', () => {
   })
 
   test('says what the list of documents leaves out, rather than letting the count look wrong', async () => {
-    const { slug } = authenticationSubjectDetailFixture
-    reefAnswers(slug, authenticationSubjectDetailFixture)
+    const { slug } = subjectDetailFixture
+    reefAnswers(slug, subjectDetailFixture)
 
     const page = await renderPage(slug)
 
-    // Three documents are listed and six are counted across the subtree, so three are elsewhere.
-    expect(page.text()).toContain('3 further RFCs are filed under the subjects within this one')
+    // Twenty documents are listed and thirty-nine are counted across the subtree, so nineteen are
+    // filed somewhere the reader cannot see from here.
+    expect(page.text()).toContain('19 further RFCs are filed under the subjects within this one')
   })
 
   test('says nothing about a subtree when the subject holds everything counted against it', async () => {
-    const { slug } = routingSubjectDetailFixture
-    reefAnswers(slug, routingSubjectDetailFixture)
+    const { slug } = leafSubjectDetailFixture
+    reefAnswers(slug, leafSubjectDetailFixture)
 
     const page = await renderPage(slug)
 
@@ -153,9 +163,11 @@ describe('/subjects/<slug>/', () => {
   })
 
   test('says a subject whose documents are all in its subtree is a heading, not an empty subject', async () => {
-    const { slug } = authenticationSubjectDetailFixture
-    const noneOfItsOwn = { ...authenticationSubjectDetailFixture, documents: [], document_count: 0 }
-    reefAnswers(slug, noneOfItsOwn)
+    // Not a contrived case: none of the fourteen roots carries a document of its own, so every one
+    // of them reaches this branch.
+    const { slug, document_count: documentCount } = headingSubjectDetailFixture
+    expect(documentCount).toBe(0)
+    reefAnswers(slug, headingSubjectDetailFixture)
 
     const page = await renderPage(slug)
 

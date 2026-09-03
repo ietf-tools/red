@@ -26,7 +26,7 @@ describe('fixtureFor', () => {
   })
 
   test('answers a subject detail path by slug', async () => {
-    await expect(fixtureFor('on', 'GET', '/api/reef/subjects/networking/')).resolves.toEqual({
+    await expect(fixtureFor('on', 'GET', '/api/reef/subjects/compression/')).resolves.toEqual({
       outcome: 'answer',
       body: subjectDetailFixture
     })
@@ -35,7 +35,7 @@ describe('fixtureFor', () => {
   // The third shape the detail path answers with, and the one a dev server needs in order to reach
   // the redirect an alias is for.
   test('answers an alias with the subject it resolves to', async () => {
-    await expect(fixtureFor('on', 'GET', '/api/reef/subjects/authn/')).resolves.toEqual({
+    await expect(fixtureFor('on', 'GET', '/api/reef/subjects/crypto/')).resolves.toEqual({
       outcome: 'answer',
       body: subjectAliasFixture
     })
@@ -69,7 +69,7 @@ describe('fixtureFor', () => {
     })
 
     test('empties a subject of its documents without changing anything else about it', async () => {
-      await expect(fixtureFor('empty', 'GET', '/api/reef/subjects/networking/')).resolves.toEqual({
+      await expect(fixtureFor('empty', 'GET', '/api/reef/subjects/compression/')).resolves.toEqual({
         outcome: 'answer',
         body: { ...subjectDetailFixture, documents: [] }
       })
@@ -85,7 +85,7 @@ describe('fixtureFor', () => {
     })
 
     test('leaves an alias as it is', async () => {
-      await expect(fixtureFor('empty', 'GET', '/api/reef/subjects/authn/')).resolves.toEqual({
+      await expect(fixtureFor('empty', 'GET', '/api/reef/subjects/crypto/')).resolves.toEqual({
         outcome: 'answer',
         body: subjectAliasFixture
       })

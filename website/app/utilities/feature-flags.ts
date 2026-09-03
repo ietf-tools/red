@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { type Ref } from 'vue'
-import { SEARCH_PATH } from './url'
+import { type ComputedRef, type Ref } from 'vue'
+import { HOME_PATH, SEARCH_PATH, SUBJECTS_PATH } from './url'
 
 export const FeatureFlagsSchema = z.object({
   // Ensure all top-level fields are optional so that browsers
@@ -39,8 +39,7 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   },
   oidc: {
     title: 'Personalisation / OIDC',
-    description:
-      'Enables account sign-in (OIDC via account.ietf.org) and the personalisation features layered on top, such as saved preferences and subscriptions.',
+    description: `Enables account sign-in (OIDC via account.ietf.org) and the personalisation features layered on top, such as saved preferences, subscriptions, and browsing the series by subject at ${SUBJECTS_PATH}.`,
     storageType: 'boolean'
   },
   isDidYouMeanActive: {
@@ -163,6 +162,56 @@ export const useFeatureFlags = () => {
   )
 
   return featureFlagsRef
+}
+
+export const useHasFeatureFlagsLoaded = (): Ref<boolean> => {
+  const hasFeatureFlagsLoadedRef = inject(hasFeatureFlagsLoadedKey)
+
+  if (!hasFeatureFlagsLoadedRef) {
+    throw Error('Expected provide(hasFeatureFlagsLoadedKey) above in component tree.')
+  }
+
+  return hasFeatureFlagsLoadedRef
+}
+
+// Whether whatever a flag gates may be shown. Flags are read from localStorage after mount, so a
+// server render and the first client render have nothing to decide on yet: 'pending' is neither a
+// yes nor a no, and is what keeps a gated feature from being drawn and then taken away again.
+export type FeatureFlagWallStatus = 'pending' | 'enabled' | 'disabled'
+
+/**
+ * Gates a feature on a flag, sending anyone whose flags do not carry it to the homepage.
+ *
+ * The key is taken as a getter because it arrives as a prop, which can change under a wall that
+ * stays mounted.
+ */
+export const useFeatureFlagWall = (getFeatureFlagKey: () => keyof FeatureFlags): ComputedRef<FeatureFlagWallStatus> => {
+  const featureFlagsRef = useFeatureFlags()
+  const hasFeatureFlagsLoadedRef = useHasFeatureFlagsLoaded()
+
+  const status = computed<FeatureFlagWallStatus>(() => {
+    if (!hasFeatureFlagsLoadedRef.value) {
+      return 'pending'
+    }
+    // Truthiness rather than `=== true`, so that a flag which later becomes a string union works
+    // here too: its "unset" value is the falsey sentinel described above.
+    return featureFlagsRef.value[getFeatureFlagKey()] ? 'enabled' : 'disabled'
+  })
+
+  watch(
+    status,
+    (status) => {
+      if (status !== 'disabled') {
+        return
+      }
+      // Replaced rather than pushed: this is an address the reader cannot be at, so leaving it in
+      // history would make Back a way of arriving here again.
+      void navigateTo(HOME_PATH, { replace: true })
+    },
+    { immediate: true }
+  )
+
+  return status
 }
 
 export const calculateIfFeatureFlagsAreEnabled = (featureFlags: FeatureFlags): boolean => {

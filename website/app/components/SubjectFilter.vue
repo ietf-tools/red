@@ -43,9 +43,15 @@ import { watchDebounced } from '@vueuse/core'
 
 const query = defineModel<string>({ required: true })
 
-const { matchCount, totalCount } = defineProps<{
+const { matchCount, totalCount, contextCount } = defineProps<{
   matchCount: number
   totalCount: number
+  /**
+   * How many subjects are on the page only because something inside them matched. They are drawn
+   * the same as any other row and are not highlighted, so without this the announcement would
+   * claim a number the page visibly disagrees with.
+   */
+  contextCount: number
 }>()
 
 const inputDomId = useId()
@@ -68,10 +74,14 @@ const clear = () => {
 
 const ANNOUNCEMENT_DELAY_MS = 400
 
+// The parent subjects are counted out loud because they are on the page: a filtered list that says
+// it is showing one subject while four rows sit under it is describing a page nobody is looking at.
 const announcement = computed(() => {
   if (query.value.trim().length === 0) return ''
   if (matchCount === 0) return 'No subjects match'
-  return `Showing ${matchCount} of ${totalCount} subjects`
+  const showing = `Showing ${matchCount} of ${totalCount} subjects`
+  if (contextCount === 0) return showing
+  return `${showing}, with ${contextCount} parent ${contextCount === 1 ? 'subject' : 'subjects'} for context`
 })
 
 const announced = ref('')

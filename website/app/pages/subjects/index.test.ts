@@ -23,8 +23,12 @@ import { DEFAULT_SUBJECT_DENSITY, useUiSettingsStore } from '~/stores/ui-setting
 
 // The layout is the header, footer and navigation around the page, none of which these assertions
 // are about.
-const STUB_LAYOUT = {
-  NuxtLayout: { template: '<div><slot /></div>' }
+const STUBS = {
+  NuxtLayout: { template: '<div><slot /></div>' },
+  // The wall gating these routes on the `oidc` personalisation feature flag. It draws its slot only
+  // once the flags have been read from localStorage, which nothing here provides; its own
+  // behaviour is covered in components/FeatureFlagWall.test.ts.
+  FeatureFlagWall: { template: '<div><slot /></div>' }
 }
 
 const subjectsUrl = (): string => `${useRuntimeConfig().public.reefBase}/api/reef/subjects/`
@@ -58,7 +62,7 @@ const reefFails = (statusCode: number) => {
   })
 }
 
-const renderPage = (route?: string) => mountSuspended(SubjectsIndexPage, { route, global: { stubs: STUB_LAYOUT } })
+const renderPage = (route?: string) => mountSuspended(SubjectsIndexPage, { route, global: { stubs: STUBS } })
 
 // Stubbed rather than driven, because what the page owes the URL is one replace per settled query
 // and that is what these assert. It stands for every test in the file; none of the others navigate.
@@ -76,9 +80,39 @@ const filterInput = (page: Awaited<ReturnType<typeof renderPage>>) =>
 const listedNames = (page: Awaited<ReturnType<typeof renderPage>>) =>
   page.findAll('dd li').map((item) => item.find('a').text())
 
-// What the index actually draws, which is the vocabulary minus anything nested deeper than the tree
-// is rendered to.
-const renderedSubjects = subjectsFixture.filter(isRenderableSubject)
+// A vocabulary small enough to assert against in full, shaped like the real one: roots that carry
+// nothing themselves, a branch four deep, and one subject deeper than the tree is drawn to. The
+// curated vocabulary in ~/utilities/reef-fixtures is five hundred subjects and nests no deeper than
+// four, so it can show that the page draws the real thing but not what the page does at the edges.
+const subject = (path: string, counts: { own: number; deep?: number }, description?: string): Subject => {
+  const slugs = path.split('/')
+  const slug = slugs.at(-1) ?? path
+  const name = slug[0]?.toUpperCase() + slug.slice(1)
+  return {
+    id: slugs.length,
+    slug,
+    name,
+    description: description ?? `Placeholder description for ${name}.`,
+    parent: slugs.at(-2) ?? null,
+    path,
+    document_count: counts.own,
+    document_count_deep: counts.deep ?? counts.own
+  }
+}
+
+const VOCABULARY: Subject[] = [
+  subject('messaging', { own: 0, deep: 6 }),
+  subject('messaging/email', { own: 2, deep: 6 }),
+  subject('messaging/email/smtp', { own: 2, deep: 4 }),
+  subject('messaging/email/smtp/spf', { own: 1, deep: 2 }),
+  // Deeper than MAX_RENDERED_SUBJECT_DEPTH, so the page is expected to leave it out.
+  subject('messaging/email/smtp/spf/dkim', { own: 1 }),
+  subject('transport', { own: 0, deep: 3 }),
+  subject('transport/tcp', { own: 3 }, 'Moves packets between hosts.')
+]
+
+// What that vocabulary draws: everything in it but the one nested too deep.
+const rendered = VOCABULARY.filter(isRenderableSubject)
 
 // Longer than both the delay before the URL is written and the one before the count is announced.
 const SETTLE_MS = 500
@@ -104,72 +138,90 @@ const typeAndSettle = async (page: Awaited<ReturnType<typeof renderPage>>, ...qu
 }
 
 describe('/subjects/', () => {
-  test('draws each subject inside the subject it belongs to, in the order Reef sent them', async () => {
+  test('draws the whole curated vocabulary, each subject inside the subject it belongs to', async () => {
     reefAnswers(subjectsFixture)
 
     const page = await renderPage()
+    const drawn = listedNames(page)
 
-    expect(listedNames(page)).toEqual([
-      'Networking',
-      'Routing',
-      'Security',
-      'Authentication',
-      'Tokens',
-      'JSON Web Tokens'
-    ])
+    // Nothing in the curated vocabulary is nested too deep to draw, so all of it is on the page, in
+    // the order Reef sent it.
+    expect(drawn).toHaveLength(subjectsFixture.length)
+    expect(drawn).toEqual(subjectsFixture.map(({ name }) => name))
+  })
+
+  test('files only the top of the curated vocabulary by letter', async () => {
+    reefAnswers(subjectsFixture)
+
+    const page = await renderPage()
+    const roots = subjectsFixture.filter(({ parent }) => parent === null)
+
+    // Fourteen roots over twenty-six letters, so most of the table of contents is dead letters. A
+    // subject further down is found inside its parent rather than under its own initial.
+    expect(roots).toHaveLength(14)
+    expect(page.findAll('dt')).toHaveLength(new Set(roots.map(({ name }) => name[0]?.toLowerCase())).size)
+  })
+
+  test('draws each subject inside the subject it belongs to, in the order Reef sent them', async () => {
+    reefAnswers(VOCABULARY)
+
+    const page = await renderPage()
+
+    expect(listedNames(page)).toEqual(['Messaging', 'Email', 'Smtp', 'Spf', 'Transport', 'Tcp'])
   })
 
   test('nests a subject inside its parent rather than beside it', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
-    const networking = page.findAll('dd li').find((item) => item.find('a').text() === 'Networking')
+    const messaging = page.findAll('dd li').find((item) => item.find('a').text() === 'Messaging')
 
-    // The nesting is what says Routing is a kind of Networking. An indent would only look like it.
-    expect(networking?.findAll('li').map((item) => item.find('a').text())).toEqual(['Routing'])
+    // The nesting is what says Email is a kind of Messaging. An indent would only look like it.
+    expect(messaging?.findAll('li').map((item) => item.find('a').text())).toEqual(['Email', 'Smtp', 'Spf'])
   })
 
   test(`refuses to draw a subject nested deeper than ${MAX_RENDERED_SUBJECT_DEPTH} levels`, async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
 
     // Its parent is at the deepest level drawn, so it is the level below that is refused rather
     // than the branch it is on.
-    expect(listedNames(page)).toContain('JSON Web Tokens')
-    expect(listedNames(page)).not.toContain('JWT claims')
-    expect(page.text()).not.toContain('JWT claims')
+    expect(listedNames(page)).toContain('Spf')
+    expect(listedNames(page)).not.toContain('Dkim')
+    expect(page.text()).not.toContain('Dkim')
   })
 
   test('counts the subtree against a subject that has one, and only itself against a leaf', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
-    const textOf = (name: string) =>
+    const countOf = (name: string) =>
       page
         .findAll('dd li')
         .find((item) => item.find('a').text() === name)
         ?.find('span')
         .text()
 
-    // Networking holds three documents itself and five counting Routing's.
-    expect(textOf('Networking')).toBe('5 RFCs')
-    expect(textOf('Routing')).toBe('2 RFCs')
+    // Messaging carries nothing itself and six across everything beneath it; Tcp has no subtree, so
+    // the two counts are the same number and only one of them is worth the space.
+    expect(countOf('Messaging')).toBe('6 RFCs')
+    expect(countOf('Tcp')).toBe('3 RFCs')
   })
 
   test('leaves the descriptions out until they are asked for', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
 
     expect(page.findAll('dd li p')).toHaveLength(0)
-    renderedSubjects.forEach(({ description }) => {
+    rendered.forEach(({ description }) => {
       expect(page.text()).not.toContain(description)
     })
   })
 
   test('offers the density toggle as a radio group naming both of its states', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
     const radios = page.findAll<HTMLInputElement>('fieldset input[type="radio"]')
@@ -180,12 +232,12 @@ describe('/subjects/', () => {
   })
 
   test('reveals every description when the toggle is set to the full display', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
     await page.find<HTMLInputElement>('fieldset input[value="full"]').setValue(true)
 
-    renderedSubjects.forEach(({ description }) => {
+    rendered.forEach(({ description }) => {
       expect(page.text()).toContain(description)
     })
     // A saved preference rather than the state of this one mount: the store is what the next page
@@ -195,41 +247,41 @@ describe('/subjects/', () => {
 
   test('renders with the descriptions already shown when that is the saved preference', async () => {
     useUiSettingsStore().setSubjectDensity('full')
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
 
-    expect(page.findAll('dd li p')).toHaveLength(renderedSubjects.length)
+    expect(page.findAll('dd li p')).toHaveLength(rendered.length)
     expect(page.find<HTMLInputElement>('fieldset input[value="full"]').element.checked).toBe(true)
   })
 
   test('links each subject to its own page', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
 
     // The list itself, not the `dd`: each group ends with a back-to-top link that is navigation
     // within the page rather than one of the subjects.
     expect(page.findAll('dd ul a').map((link) => link.attributes('href'))).toEqual([
-      '/subjects/networking/',
-      '/subjects/routing/',
-      '/subjects/security/',
-      '/subjects/authentication/',
-      '/subjects/tokens/',
-      '/subjects/json-web-tokens/'
+      '/subjects/messaging/',
+      '/subjects/email/',
+      '/subjects/smtp/',
+      '/subjects/spf/',
+      '/subjects/transport/',
+      '/subjects/tcp/'
     ])
   })
 
   test('links the table of contents at the group headings it names', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
     const tocLinks = page.findAll('nav a')
 
     // A fragment that names no element leaves the letter looking like a working link and going
     // nowhere, so each one is matched against the id actually rendered on the heading. Only the top
-    // of the tree is filed by letter: Authentication and Routing are found inside their parents.
-    expect(tocLinks.map((link) => link.attributes('href'))).toEqual(['#n', '#s'])
+    // of the tree is filed by letter: Email and Tcp are found inside their parents.
+    expect(tocLinks.map((link) => link.attributes('href'))).toEqual(['#m', '#t'])
     tocLinks.forEach((link) => {
       const id = link.attributes('href')?.slice(1)
       expect(page.find(`dt#${id}`).exists()).toBe(true)
@@ -237,7 +289,7 @@ describe('/subjects/', () => {
   })
 
   test('leaves letters with no subjects as plain text rather than links', async () => {
-    reefAnswers(subjectsFixture)
+    reefAnswers(VOCABULARY)
 
     const page = await renderPage()
     const toc = page.find('nav')
@@ -263,78 +315,144 @@ describe('/subjects/', () => {
 
     expect(page.text()).toContain('The list of subjects could not be loaded')
   })
+
   describe('the filter', () => {
     test('narrows the list to the subjects matching what was typed', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
-      await typeAndSettle(page, 'routing')
+      await typeAndSettle(page, 'smtp')
 
-      // 'Routing' by its name, and 'Networking' only because Routing sits inside it: a match drawn
+      // 'Smtp' by its name, and Messaging and Email only because it sits inside them: a match drawn
       // without the subjects it belongs to says nothing about where it was found.
-      expect(listedNames(page)).toEqual(['Networking', 'Routing'])
+      expect(listedNames(page)).toEqual(['Messaging', 'Email', 'Smtp'])
     })
 
     test('keeps every subject above a match, however deep the match is', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
-      await typeAndSettle(page, 'json web')
+      await typeAndSettle(page, 'spf')
 
-      expect(listedNames(page)).toEqual(['Security', 'Authentication', 'Tokens', 'JSON Web Tokens'])
+      expect(listedNames(page)).toEqual(['Messaging', 'Email', 'Smtp', 'Spf'])
     })
 
     test('counts the matches rather than the subjects drawn around them', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
-      await typeAndSettle(page, 'json web')
+      await typeAndSettle(page, 'spf')
 
       // Four subjects are on the page and one of them was matched. Counting the other three would
       // tell a reader their query reached subjects it did not.
       expect(page.find('[role="status"][aria-live="polite"]').text()).toBe(
-        `Showing 1 of ${renderedSubjects.length} subjects`
+        `Showing 1 of ${rendered.length} subjects, with 3 parent subjects for context`
       )
     })
 
-    test('matches what a subject is about, not only what it is called', async () => {
-      reefAnswers(subjectsFixture)
+    test('highlights the words that were typed, and only on the rows that matched', async () => {
+      reefAnswers(VOCABULARY)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'spf')
+
+      // The highlight is what says which of the four rows the query actually reached. Messaging,
+      // Email and Smtp are the trail down to it and carry no marks.
+      expect(page.findAll('dd mark').map((run) => run.text())).toEqual(['Spf'])
+    })
+
+    test('highlights part of a word, which is what an as-you-type filter mostly matches', async () => {
+      reefAnswers(VOCABULARY)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'sm')
+
+      expect(page.findAll('dd mark').map((run) => run.text())).toEqual(['Sm'])
+    })
+
+    test('tells a screen reader which rows matched, since the highlight is not announced', async () => {
+      reefAnswers(VOCABULARY)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'spf')
+
+      // One marker for the one match, which is the figure the live region announces: a reader hears
+      // one and finds exactly one.
+      expect(page.findAll('dd li .sr-only').map((marker) => marker.text())).toEqual(['matches the filter'])
+    })
+
+    test('marks nothing at all while the box is empty', async () => {
+      reefAnswers(VOCABULARY)
+
+      const page = await renderPage()
+
+      expect(page.findAll('dd mark')).toHaveLength(0)
+      expect(page.findAll('dd li .sr-only')).toHaveLength(0)
+    })
+
+    test('reveals the description a compact row was matched on, so the row shows its reason', async () => {
+      reefAnswers(VOCABULARY)
+
+      // The compact density hides descriptions, and 'packets' appears in Tcp's description and in
+      // nothing's name. Left hidden, the row would look exactly like one shown for context.
+      expect(useUiSettingsStore().subjectDensity).toBe('compact')
 
       const page = await renderPage()
       await typeAndSettle(page, 'packets')
 
-      // 'Networking' is described as how packets get from one host to another, and named nothing
-      // of the kind.
-      expect(listedNames(page)).toEqual(['Networking'])
+      expect(page.findAll('dd mark').map((run) => run.text())).toEqual(['packets'])
+      expect(page.text()).toContain('Moves packets between hosts.')
+    })
+
+    test('leaves the other compact rows compact while doing it', async () => {
+      reefAnswers(VOCABULARY)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'tcp')
+
+      // Tcp matched on its name, so its own highlight is the reason it is there and its description
+      // stays put. Transport is context and has nothing to reveal either.
+      expect(page.findAll('dd li p')).toHaveLength(0)
+      expect(page.findAll('dd mark').map((run) => run.text())).toEqual(['Tcp'])
+    })
+
+    test('matches what a subject is about, not only what it is called', async () => {
+      reefAnswers(VOCABULARY)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'packets')
+
+      // 'Tcp' is described as moving packets between hosts, and named nothing of the kind.
+      expect(listedNames(page)).toEqual(['Transport', 'Tcp'])
     })
 
     test('keeps the whole vocabulary while the box is empty', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
-      await typeAndSettle(page, 'routing')
+      await typeAndSettle(page, 'tcp')
       await typeAndSettle(page, '')
 
-      expect(listedNames(page)).toHaveLength(renderedSubjects.length)
+      expect(listedNames(page)).toHaveLength(rendered.length)
     })
 
     test('drops the group headings the filter emptied, and mutes their letters', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
-      await typeAndSettle(page, 'routing')
+      await typeAndSettle(page, 'smtp')
 
-      // N rather than R: the heading is the letter of the root the match was found under, because
+      // M rather than S: the heading is the letter of the root the match was found under, because
       // that is where the reader will be looking for it.
-      expect(page.findAll('dt').map((heading) => heading.text())).toEqual(['N'])
-      // Every letter is still drawn; only N is still a link to something.
+      expect(page.findAll('dt').map((heading) => heading.text())).toEqual(['M'])
+      // Every letter is still drawn; only M is still a link to something.
       const toc = page.find('nav')
       expect(toc.findAll('li')).toHaveLength(26)
-      expect(toc.findAll('a').map((link) => link.attributes('href'))).toEqual(['#n'])
+      expect(toc.findAll('a').map((link) => link.attributes('href'))).toEqual(['#m'])
     })
 
     test('says which word emptied the page, and keeps the way back from it', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
       await typeAndSettle(page, 'quantum')
@@ -350,46 +468,46 @@ describe('/subjects/', () => {
     })
 
     test('puts the whole index back when the filter is cleared', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
       await typeAndSettle(page, 'quantum')
       await page.find('button[aria-label="Clear the filter"]').trigger('click')
 
-      expect(listedNames(page)).toHaveLength(renderedSubjects.length)
+      expect(listedNames(page)).toHaveLength(rendered.length)
       expect(filterInput(page).element.value).toBe('')
     })
 
     test('narrows to the query in the URL once the browser has the page', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       // What a shared link has to land on. The server render behind it is the whole vocabulary,
       // because the worker does not pass the query string to Nuxt, so this narrowing is the
       // browser's first act rather than something it inherits.
-      const page = await renderPage('/subjects/?q=routing')
+      const page = await renderPage('/subjects/?q=smtp')
       await nextTick()
 
-      expect(listedNames(page)).toEqual(['Networking', 'Routing'])
-      expect(filterInput(page).element.value).toBe('routing')
+      expect(listedNames(page)).toEqual(['Messaging', 'Email', 'Smtp'])
+      expect(filterInput(page).element.value).toBe('smtp')
       // Reading the URL is not a reason to write it back.
       expect(navigateTo).not.toHaveBeenCalled()
     })
 
     test('writes the settled query to the URL, replacing rather than stacking history', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
-      await typeAndSettle(page, 'rout', 'routing')
+      await typeAndSettle(page, 'sm', 'smtp')
 
       // One entry for the word, not one per letter.
       expect(navigateTo).toHaveBeenCalledTimes(1)
-      expect(navigateTo).toHaveBeenCalledWith({ path: '/subjects/', query: { q: 'routing' } }, { replace: true })
+      expect(navigateTo).toHaveBeenCalledWith({ path: '/subjects/', query: { q: 'smtp' } }, { replace: true })
     })
 
     test('takes the query back out of the URL when the filter is cleared', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
-      const page = await renderPage('/subjects/?q=routing')
+      const page = await renderPage('/subjects/?q=smtp')
       await nextTick()
       await typeAndSettle(page, '')
 
@@ -397,7 +515,7 @@ describe('/subjects/', () => {
     })
 
     test('announces how much of the vocabulary is left, for readers who cannot see the list', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
       const liveRegion = page.find('[role="status"][aria-live="polite"]')
@@ -405,13 +523,13 @@ describe('/subjects/', () => {
       // Silent until there is something to say, rather than announcing the whole vocabulary at rest.
       expect(liveRegion.text()).toBe('')
 
-      await typeAndSettle(page, 'routing')
+      await typeAndSettle(page, 'smtp')
 
-      expect(liveRegion.text()).toBe(`Showing 1 of ${renderedSubjects.length} subjects`)
+      expect(liveRegion.text()).toBe(`Showing 1 of ${rendered.length} subjects, with 2 parent subjects for context`)
     })
 
     test('submits nowhere, because there is nowhere for a filter to be submitted to', async () => {
-      reefAnswers(subjectsFixture)
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
       const form = page.find('form[role="search"]')

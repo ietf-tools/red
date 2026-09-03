@@ -304,6 +304,37 @@ html.dark::selection {
   background: var(--color-blue-600);
 }
 
+/*
+  Where a reader's own words were found. Styled here rather than left to the browser, whose default
+  sets a yellow background and leaves the text colour inherited — which in dark mode is light text
+  on light yellow.
+
+  One rule for both themes, because both halves are stated: the marker metaphor reads the same on a
+  dark page, and a highlight that dimmed to suit the surrounding page would be working against what
+  it is for. Bold as well as coloured, since the highlight carries information and a reader who
+  cannot pick the background out of the page around it would otherwise be told nothing (WCAG 1.4.1).
+*/
+mark {
+  background: var(--color-yellow-200);
+  color: var(--color-black);
+  font-weight: 600;
+  border-radius: 0.125rem;
+  padding-inline: 0.1em;
+}
+
+@media (forced-colors: active) {
+  /*
+    Forced colours drops backgrounds, which would take the highlight with it. The system highlight
+    pair is guaranteed to contrast against itself, and the underline says the same thing again for
+    anyone whose palette makes the two backgrounds hard to tell apart.
+  */
+  mark {
+    background: Highlight;
+    color: HighlightText;
+    text-decoration: underline;
+  }
+}
+
 .print-with-background {
   /*
   To be used sparingly.

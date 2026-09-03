@@ -30,6 +30,7 @@ import type { NuxtError } from '#app'
 import {
   isFeatureFlagsModalVisibleKey,
   featureFlagsKey,
+  hasFeatureFlagsLoadedKey,
   loadFeatureFlagsFromLocalStorage,
   DEFAULT_FEATURE_FLAGS,
   type FeatureFlags
@@ -57,5 +58,6 @@ const featureFlagsRef = ref<FeatureFlags>(DEFAULT_FEATURE_FLAGS)
 const hasFeatureFlagsLoaded = ref(false)
 provide(isFeatureFlagsModalVisibleKey, isFeatureFlagsModalVisible)
 provide(featureFlagsKey, featureFlagsRef)
+provide(hasFeatureFlagsLoadedKey, hasFeatureFlagsLoaded)
 onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
 </script>

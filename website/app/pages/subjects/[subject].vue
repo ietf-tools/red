@@ -1,72 +1,76 @@
 <template>
-  <div class="min-h-[100vh]">
-    <NuxtLayout name="default">
-      <div class="container mx-auto pl-5 pr-3 pb-10">
-        <!-- A retired subject and an alias are both on their way somewhere else, so they get the
-           same holding state as a load that hasn't finished rather than a flash of an error they
-           aren't. -->
-        <div v-if="subjectStatus === 'pending' || redirectTo" class="mt-10 w-full text-center">
-          <GraphicsLoading class="inline-block w-16 h-16" />
-        </div>
+  <FeatureFlagWall feature-flag-key="oidc">
+    <div class="min-h-[100vh]">
+      <NuxtLayout name="default">
+        <div class="container mx-auto pl-5 pr-3 pb-10">
+          <!-- A retired subject and an alias are both on their way somewhere else, so they get the
+             same holding state as a load that hasn't finished rather than a flash of an error they
+             aren't. -->
+          <div v-if="subjectStatus === 'pending' || redirectTo" class="mt-10 w-full text-center">
+            <GraphicsLoading class="inline-block w-16 h-16" />
+          </div>
 
-        <template v-else-if="liveSubject">
-          <!-- Where this subject sits, named by the slugs its path carries. Reef sends the path as
-             slugs and this page reads no other subject, so a slug is what there is to show: the
-             curated names live in the vocabulary listing, which is /subjects/ and one click away. -->
-          <nav v-if="ancestors.length > 0" aria-label="Breadcrumb" class="mt-10">
-            <ol class="flex flex-wrap items-center gap-2">
-              <li v-for="{ slug, path } in ancestors" :key="slug" class="flex items-center gap-2">
-                <Anchor :href="path">{{ slug }}</Anchor>
-                <span aria-hidden="true">›</span>
-              </li>
-            </ol>
-          </nav>
+          <template v-else-if="liveSubject">
+            <!-- Where this subject sits, named by the slugs its path carries. Reef sends the path as
+               slugs and this page reads no other subject, so a slug is what there is to show: the
+               curated names live in the vocabulary listing, which is /subjects/ and one click away. -->
+            <nav v-if="ancestors.length > 0" aria-label="Breadcrumb" class="mt-10">
+              <ol class="flex flex-wrap items-center gap-2">
+                <li v-for="{ slug, path } in ancestors" :key="slug" class="flex items-center gap-2">
+                  <Anchor :href="path">{{ slug }}</Anchor>
+                  <span aria-hidden="true">›</span>
+                </li>
+              </ol>
+            </nav>
 
-          <Heading level="1" :class="ancestors.length > 0 ? 'mt-4 mb-4' : 'mt-10 mb-4'">{{ liveSubject.name }}</Heading>
-          <p v-if="liveSubject.description">{{ liveSubject.description }}</p>
+            <Heading level="1" :class="ancestors.length > 0 ? 'mt-4 mb-4' : 'mt-10 mb-4'">{{
+              liveSubject.name
+            }}</Heading>
+            <p v-if="liveSubject.description">{{ liveSubject.description }}</p>
 
-          <template v-if="children.length > 0">
-            <Heading level="2" class="mt-8 mb-2">Subjects within this one</Heading>
-            <ul class="flex flex-col gap-2">
-              <li v-for="{ slug, path } in children" :key="slug">
-                <Anchor :href="path">{{ slug }}</Anchor>
+            <template v-if="children.length > 0">
+              <Heading level="2" class="mt-8 mb-2">Subjects within this one</Heading>
+              <ul class="flex flex-col gap-2">
+                <li v-for="{ slug, path } in children" :key="slug">
+                  <Anchor :href="path">{{ slug }}</Anchor>
+                </li>
+              </ul>
+            </template>
+
+            <Heading v-if="children.length > 0" level="2" class="mt-8 mb-2">RFCs in this subject</Heading>
+            <ul v-if="documents.length > 0" class="flex flex-col gap-2 mt-6">
+              <li v-for="{ doc, infoPath } in documents" :key="doc">
+                <Anchor :href="infoPath">{{ doc }}</Anchor>
               </li>
             </ul>
+            <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
+               subtree holds them is not empty, it is a heading, and saying it is empty would read as
+               a fault. -->
+            <p v-else class="mt-6">
+              {{
+                children.length > 0 ? 'No RFCs are filed under this subject itself.' : 'No RFCs carry this subject yet.'
+              }}
+            </p>
+
+            <!-- The list above is what this subject holds, not what its subtree does, so the wider
+               figure is said in words rather than left to look like a miscount. -->
+            <p v-if="deeperDocumentCount > 0" class="mt-4">
+              {{ deeperDocumentCount }} further {{ deeperDocumentCount === 1 ? 'RFC is' : 'RFCs are' }} filed under the
+              subjects within this one.
+            </p>
           </template>
 
-          <Heading v-if="children.length > 0" level="2" class="mt-8 mb-2">RFCs in this subject</Heading>
-          <ul v-if="documents.length > 0" class="flex flex-col gap-2 mt-6">
-            <li v-for="{ doc, infoPath } in documents" :key="doc">
-              <Anchor :href="infoPath">{{ doc }}</Anchor>
-            </li>
-          </ul>
-          <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
-             subtree holds them is not empty, it is a heading, and saying it is empty would read as
-             a fault. -->
-          <p v-else class="mt-6">
-            {{
-              children.length > 0 ? 'No RFCs are filed under this subject itself.' : 'No RFCs carry this subject yet.'
-            }}
-          </p>
+          <Alert v-else-if="isNotFound" level="1" variant="warning" heading="Subject not found">
+            <p class="pt-2">No subject found (404). The link may be wrong, or the subject may have been removed.</p>
+          </Alert>
 
-          <!-- The list above is what this subject holds, not what its subtree does, so the wider
-             figure is said in words rather than left to look like a miscount. -->
-          <p v-if="deeperDocumentCount > 0" class="mt-4">
-            {{ deeperDocumentCount }} further {{ deeperDocumentCount === 1 ? 'RFC is' : 'RFCs are' }} filed under the
-            subjects within this one.
-          </p>
-        </template>
-
-        <Alert v-else-if="isNotFound" level="1" variant="warning" heading="Subject not found">
-          <p class="pt-2">No subject found (404). The link may be wrong, or the subject may have been removed.</p>
-        </Alert>
-
-        <Alert v-else level="1" variant="warning" heading="Error">
-          <p class="pt-2">This subject could not be loaded. Please try again.</p>
-        </Alert>
-      </div>
-    </NuxtLayout>
-  </div>
+          <Alert v-else level="1" variant="warning" heading="Error">
+            <p class="pt-2">This subject could not be loaded. Please try again.</p>
+          </Alert>
+        </div>
+      </NuxtLayout>
+    </div>
+  </FeatureFlagWall>
 </template>
 
 <script setup lang="ts">
@@ -160,6 +164,7 @@ const documents = computed(() =>
 )
 
 useRfcEditorHead({
+  noIndex: true, // FIXME: upon release allow indexing
   title: liveSubject.value ? `RFCs about ${liveSubject.value.name}` : 'RFC subject',
   canonicalPath: `${publicSiteUrlOrigin}${subjectsPathBuilder(slug)}`,
   description:
