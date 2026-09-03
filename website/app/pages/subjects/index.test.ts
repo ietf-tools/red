@@ -18,6 +18,7 @@ import { createError } from 'h3'
 import SubjectsIndexPage from './index.vue'
 import type { Subject } from '~/utilities/reef'
 import { subjectsFixture } from '~/utilities/reef-fixtures/subjects'
+import { isRenderableSubject, MAX_RENDERED_SUBJECT_DEPTH } from '~/utilities/subject-tree'
 import { DEFAULT_SUBJECT_DENSITY, useUiSettingsStore } from '~/stores/ui-settings'
 
 // The layout is the header, footer and navigation around the page, none of which these assertions
@@ -69,8 +70,15 @@ mockNuxtImport('navigateTo', () => navigateTo)
 const filterInput = (page: Awaited<ReturnType<typeof renderPage>>) =>
   page.find<HTMLInputElement>('input[type="search"]')
 
+// One name per subject drawn, in document order, so a parent comes before the subjects nested
+// inside it. Read off each item's own link rather than its text, because an item's text is its
+// whole subtree's: the count beside it, its description, and every subject beneath it.
 const listedNames = (page: Awaited<ReturnType<typeof renderPage>>) =>
-  page.findAll('dd ul li').map((item) => item.text())
+  page.findAll('dd li').map((item) => item.find('a').text())
+
+// What the index actually draws, which is the vocabulary minus anything nested deeper than the tree
+// is rendered to.
+const renderedSubjects = subjectsFixture.filter(isRenderableSubject)
 
 // Longer than both the delay before the URL is written and the one before the count is announced.
 const SETTLE_MS = 500
@@ -96,16 +104,57 @@ const typeAndSettle = async (page: Awaited<ReturnType<typeof renderPage>>, ...qu
 }
 
 describe('/subjects/', () => {
-  test('lists every subject Reef sent, in the order it sent them', async () => {
+  test('draws each subject inside the subject it belongs to, in the order Reef sent them', async () => {
     reefAnswers(subjectsFixture)
 
     const page = await renderPage()
-    const names = page.findAll('dd li').map((item) => item.text())
 
-    expect(names).toHaveLength(subjectsFixture.length)
-    subjectsFixture.forEach(({ name }, index) => {
-      expect(names[index]).toContain(name)
-    })
+    expect(listedNames(page)).toEqual([
+      'Networking',
+      'Routing',
+      'Security',
+      'Authentication',
+      'Tokens',
+      'JSON Web Tokens'
+    ])
+  })
+
+  test('nests a subject inside its parent rather than beside it', async () => {
+    reefAnswers(subjectsFixture)
+
+    const page = await renderPage()
+    const networking = page.findAll('dd li').find((item) => item.find('a').text() === 'Networking')
+
+    // The nesting is what says Routing is a kind of Networking. An indent would only look like it.
+    expect(networking?.findAll('li').map((item) => item.find('a').text())).toEqual(['Routing'])
+  })
+
+  test(`refuses to draw a subject nested deeper than ${MAX_RENDERED_SUBJECT_DEPTH} levels`, async () => {
+    reefAnswers(subjectsFixture)
+
+    const page = await renderPage()
+
+    // Its parent is at the deepest level drawn, so it is the level below that is refused rather
+    // than the branch it is on.
+    expect(listedNames(page)).toContain('JSON Web Tokens')
+    expect(listedNames(page)).not.toContain('JWT claims')
+    expect(page.text()).not.toContain('JWT claims')
+  })
+
+  test('counts the subtree against a subject that has one, and only itself against a leaf', async () => {
+    reefAnswers(subjectsFixture)
+
+    const page = await renderPage()
+    const textOf = (name: string) =>
+      page
+        .findAll('dd li')
+        .find((item) => item.find('a').text() === name)
+        ?.find('span')
+        .text()
+
+    // Networking holds three documents itself and five counting Routing's.
+    expect(textOf('Networking')).toBe('5 RFCs')
+    expect(textOf('Routing')).toBe('2 RFCs')
   })
 
   test('leaves the descriptions out until they are asked for', async () => {
@@ -114,7 +163,7 @@ describe('/subjects/', () => {
     const page = await renderPage()
 
     expect(page.findAll('dd li p')).toHaveLength(0)
-    subjectsFixture.forEach(({ description }) => {
+    renderedSubjects.forEach(({ description }) => {
       expect(page.text()).not.toContain(description)
     })
   })
@@ -136,10 +185,8 @@ describe('/subjects/', () => {
     const page = await renderPage()
     await page.find<HTMLInputElement>('fieldset input[value="full"]').setValue(true)
 
-    const names = page.findAll('dd li').map((item) => item.text())
-    subjectsFixture.forEach(({ name, description }, index) => {
-      expect(names[index]).toContain(name)
-      expect(names[index]).toContain(description)
+    renderedSubjects.forEach(({ description }) => {
+      expect(page.text()).toContain(description)
     })
     // A saved preference rather than the state of this one mount: the store is what the next page
     // load reads back.
@@ -152,7 +199,7 @@ describe('/subjects/', () => {
 
     const page = await renderPage()
 
-    expect(page.findAll('dd li p')).toHaveLength(subjectsFixture.length)
+    expect(page.findAll('dd li p')).toHaveLength(renderedSubjects.length)
     expect(page.find<HTMLInputElement>('fieldset input[value="full"]').element.checked).toBe(true)
   })
 
@@ -164,9 +211,12 @@ describe('/subjects/', () => {
     // The list itself, not the `dd`: each group ends with a back-to-top link that is navigation
     // within the page rather than one of the subjects.
     expect(page.findAll('dd ul a').map((link) => link.attributes('href'))).toEqual([
-      '/subjects/authentication/',
       '/subjects/networking/',
-      '/subjects/routing/'
+      '/subjects/routing/',
+      '/subjects/security/',
+      '/subjects/authentication/',
+      '/subjects/tokens/',
+      '/subjects/json-web-tokens/'
     ])
   })
 
@@ -177,8 +227,9 @@ describe('/subjects/', () => {
     const tocLinks = page.findAll('nav a')
 
     // A fragment that names no element leaves the letter looking like a working link and going
-    // nowhere, so each one is matched against the id actually rendered on the heading.
-    expect(tocLinks.map((link) => link.attributes('href'))).toEqual(['#a', '#n', '#r'])
+    // nowhere, so each one is matched against the id actually rendered on the heading. Only the top
+    // of the tree is filed by letter: Authentication and Routing are found inside their parents.
+    expect(tocLinks.map((link) => link.attributes('href'))).toEqual(['#n', '#s'])
     tocLinks.forEach((link) => {
       const id = link.attributes('href')?.slice(1)
       expect(page.find(`dt#${id}`).exists()).toBe(true)
@@ -192,7 +243,7 @@ describe('/subjects/', () => {
     const toc = page.find('nav')
 
     expect(toc.findAll('li')).toHaveLength(26)
-    expect(toc.findAll('a')).toHaveLength(3)
+    expect(toc.findAll('a')).toHaveLength(2)
     expect(toc.text()).toContain('B')
   })
 
@@ -219,9 +270,31 @@ describe('/subjects/', () => {
       const page = await renderPage()
       await typeAndSettle(page, 'routing')
 
-      // 'Routing' by its name, and no one else: 'Networking' and 'Authentication' say nothing about
-      // routes in either field.
-      expect(listedNames(page)).toEqual(['Routing'])
+      // 'Routing' by its name, and 'Networking' only because Routing sits inside it: a match drawn
+      // without the subjects it belongs to says nothing about where it was found.
+      expect(listedNames(page)).toEqual(['Networking', 'Routing'])
+    })
+
+    test('keeps every subject above a match, however deep the match is', async () => {
+      reefAnswers(subjectsFixture)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'json web')
+
+      expect(listedNames(page)).toEqual(['Security', 'Authentication', 'Tokens', 'JSON Web Tokens'])
+    })
+
+    test('counts the matches rather than the subjects drawn around them', async () => {
+      reefAnswers(subjectsFixture)
+
+      const page = await renderPage()
+      await typeAndSettle(page, 'json web')
+
+      // Four subjects are on the page and one of them was matched. Counting the other three would
+      // tell a reader their query reached subjects it did not.
+      expect(page.find('[role="status"][aria-live="polite"]').text()).toBe(
+        `Showing 1 of ${renderedSubjects.length} subjects`
+      )
     })
 
     test('matches what a subject is about, not only what it is called', async () => {
@@ -242,7 +315,7 @@ describe('/subjects/', () => {
       await typeAndSettle(page, 'routing')
       await typeAndSettle(page, '')
 
-      expect(listedNames(page)).toHaveLength(subjectsFixture.length)
+      expect(listedNames(page)).toHaveLength(renderedSubjects.length)
     })
 
     test('drops the group headings the filter emptied, and mutes their letters', async () => {
@@ -251,11 +324,13 @@ describe('/subjects/', () => {
       const page = await renderPage()
       await typeAndSettle(page, 'routing')
 
-      expect(page.findAll('dt').map((heading) => heading.text())).toEqual(['R'])
-      // Every letter is still drawn; only R is still a link to something.
+      // N rather than R: the heading is the letter of the root the match was found under, because
+      // that is where the reader will be looking for it.
+      expect(page.findAll('dt').map((heading) => heading.text())).toEqual(['N'])
+      // Every letter is still drawn; only N is still a link to something.
       const toc = page.find('nav')
       expect(toc.findAll('li')).toHaveLength(26)
-      expect(toc.findAll('a').map((link) => link.attributes('href'))).toEqual(['#r'])
+      expect(toc.findAll('a').map((link) => link.attributes('href'))).toEqual(['#n'])
     })
 
     test('says which word emptied the page, and keeps the way back from it', async () => {
@@ -281,7 +356,7 @@ describe('/subjects/', () => {
       await typeAndSettle(page, 'quantum')
       await page.find('button[aria-label="Clear the filter"]').trigger('click')
 
-      expect(listedNames(page)).toHaveLength(subjectsFixture.length)
+      expect(listedNames(page)).toHaveLength(renderedSubjects.length)
       expect(filterInput(page).element.value).toBe('')
     })
 
@@ -294,7 +369,7 @@ describe('/subjects/', () => {
       const page = await renderPage('/subjects/?q=routing')
       await nextTick()
 
-      expect(listedNames(page)).toEqual(['Routing'])
+      expect(listedNames(page)).toEqual(['Networking', 'Routing'])
       expect(filterInput(page).element.value).toBe('routing')
       // Reading the URL is not a reason to write it back.
       expect(navigateTo).not.toHaveBeenCalled()
@@ -332,7 +407,7 @@ describe('/subjects/', () => {
 
       await typeAndSettle(page, 'routing')
 
-      expect(liveRegion.text()).toBe(`Showing 1 of ${subjectsFixture.length} subjects`)
+      expect(liveRegion.text()).toBe(`Showing 1 of ${renderedSubjects.length} subjects`)
     })
 
     test('submits nowhere, because there is nowhere for a filter to be submitted to', async () => {

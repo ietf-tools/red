@@ -2,22 +2,59 @@
   <div class="min-h-[100vh]">
     <NuxtLayout name="default">
       <div class="container mx-auto pl-5 pr-3 pb-10">
-        <!-- A retired subject is on its way somewhere else, so it gets the same holding state as a
-           load that hasn't finished rather than a flash of an error it isn't. -->
-        <div v-if="subjectStatus === 'pending' || retiredSubject" class="mt-10 w-full text-center">
+        <!-- A retired subject and an alias are both on their way somewhere else, so they get the
+           same holding state as a load that hasn't finished rather than a flash of an error they
+           aren't. -->
+        <div v-if="subjectStatus === 'pending' || redirectTo" class="mt-10 w-full text-center">
           <GraphicsLoading class="inline-block w-16 h-16" />
         </div>
 
         <template v-else-if="liveSubject">
-          <Heading level="1" class="mt-10 mb-4">{{ liveSubject.name }}</Heading>
+          <!-- Where this subject sits, named by the slugs its path carries. Reef sends the path as
+             slugs and this page reads no other subject, so a slug is what there is to show: the
+             curated names live in the vocabulary listing, which is /subjects/ and one click away. -->
+          <nav v-if="ancestors.length > 0" aria-label="Breadcrumb" class="mt-10">
+            <ol class="flex flex-wrap items-center gap-2">
+              <li v-for="{ slug, path } in ancestors" :key="slug" class="flex items-center gap-2">
+                <Anchor :href="path">{{ slug }}</Anchor>
+                <span aria-hidden="true">›</span>
+              </li>
+            </ol>
+          </nav>
+
+          <Heading level="1" :class="ancestors.length > 0 ? 'mt-4 mb-4' : 'mt-10 mb-4'">{{ liveSubject.name }}</Heading>
           <p v-if="liveSubject.description">{{ liveSubject.description }}</p>
 
+          <template v-if="children.length > 0">
+            <Heading level="2" class="mt-8 mb-2">Subjects within this one</Heading>
+            <ul class="flex flex-col gap-2">
+              <li v-for="{ slug, path } in children" :key="slug">
+                <Anchor :href="path">{{ slug }}</Anchor>
+              </li>
+            </ul>
+          </template>
+
+          <Heading v-if="children.length > 0" level="2" class="mt-8 mb-2">RFCs in this subject</Heading>
           <ul v-if="documents.length > 0" class="flex flex-col gap-2 mt-6">
             <li v-for="{ doc, infoPath } in documents" :key="doc">
               <Anchor :href="infoPath">{{ doc }}</Anchor>
             </li>
           </ul>
-          <p v-else class="mt-6">No RFCs carry this subject yet.</p>
+          <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
+             subtree holds them is not empty, it is a heading, and saying it is empty would read as
+             a fault. -->
+          <p v-else class="mt-6">
+            {{
+              children.length > 0 ? 'No RFCs are filed under this subject itself.' : 'No RFCs carry this subject yet.'
+            }}
+          </p>
+
+          <!-- The list above is what this subject holds, not what its subtree does, so the wider
+             figure is said in words rather than left to look like a miscount. -->
+          <p v-if="deeperDocumentCount > 0" class="mt-4">
+            {{ deeperDocumentCount }} further {{ deeperDocumentCount === 1 ? 'RFC is' : 'RFCs are' }} filed under the
+            subjects within this one.
+          </p>
         </template>
 
         <Alert v-else-if="isNotFound" level="1" variant="warning" heading="Subject not found">
@@ -35,7 +72,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRfcEditorHead } from '~/utilities/head'
-import { getSubject, isRetiredSubject, ReefError, type SubjectDetailOrRedirect } from '~/utilities/reef'
+import { getSubject, isRetiredSubject, isSubjectAlias, ReefError, type SubjectDetailOrRedirect } from '~/utilities/reef'
+import { ancestorSlugsOf } from '~/utilities/subject-tree'
 import { infoSeriesPathBuilder, subjectsPathBuilder, usePublicSiteUrlOrigin } from '~/utilities/url'
 
 definePageMeta({
@@ -70,22 +108,49 @@ const { data: subject, status: subjectStatus, error: subjectError } = await useA
 // subjectError rather than which kind of absence turned up.
 const loadedSubject = computed(() => subject.value ?? undefined)
 
-const retiredSubject = computed(() =>
-  loadedSubject.value !== undefined && isRetiredSubject(loadedSubject.value) ? loadedSubject.value : undefined
-)
+// The two shapes that are not a subject but a way to reach one: a retired subject names what it was
+// folded into, an alias names the subject it is another word for. Neither is rendered — a retired
+// subject is no longer offered, and serving a subject under its alias would publish it at two
+// addresses with nothing saying which is canonical — so both become the same redirect.
+const redirectTo = computed(() => {
+  const subject = loadedSubject.value
+  if (subject === undefined) return undefined
+  if (isRetiredSubject(subject)) return subject.merged_into
+  if (isSubjectAlias(subject)) return subject.alias_of
+  return undefined
+})
 
-const liveSubject = computed(() =>
-  loadedSubject.value !== undefined && !isRetiredSubject(loadedSubject.value) ? loadedSubject.value : undefined
-)
+const liveSubject = computed(() => {
+  const subject = loadedSubject.value
+  return subject !== undefined && !isRetiredSubject(subject) && !isSubjectAlias(subject) ? subject : undefined
+})
 
 const isNotFound = computed(() => !subjectError.value && loadedSubject.value === undefined)
 
-// A retired subject is not offered and should not be rendered as though it were current; its
-// `merged_into` is there so that a link naming the old one still arrives somewhere. Awaited in
-// setup rather than watched, so that a server render answers with the redirect itself.
-if (retiredSubject.value !== undefined) {
-  await navigateTo(subjectsPathBuilder(retiredSubject.value.merged_into), { redirectCode: 301, replace: true })
+// Awaited in setup rather than watched, so that a server render answers with the redirect itself.
+if (redirectTo.value !== undefined) {
+  await navigateTo(subjectsPathBuilder(redirectTo.value), { redirectCode: 301, replace: true })
 }
+
+// Outermost first, and without this subject itself: `path` ends in the slug of the subject it
+// describes, which is the heading rather than a link back to here.
+const ancestors = computed(() =>
+  (liveSubject.value ? ancestorSlugsOf(liveSubject.value) : []).map((slug) => ({
+    slug,
+    path: subjectsPathBuilder(slug)
+  }))
+)
+
+const children = computed(() =>
+  (liveSubject.value?.children ?? []).map((slug) => ({ slug, path: subjectsPathBuilder(slug) }))
+)
+
+// What the list of documents on this page does not cover. Reef counts the subtree deduplicated, so
+// this is a count of further documents rather than of further assignments.
+const deeperDocumentCount = computed(() => {
+  const subject = liveSubject.value
+  return subject === undefined ? 0 : subject.document_count_deep - subject.document_count
+})
 
 // Reef names documents in the series this build has info pages for, so infoSeriesPathBuilder
 // throwing means Reef has sent something outside that vocabulary. Left to throw: an identifier this

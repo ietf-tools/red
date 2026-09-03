@@ -4,7 +4,13 @@
 // what's here is the table itself.
 import { afterEach, describe, expect, test, vi } from 'vitest'
 import { fixtureFor } from './index'
-import { emptySubjectDetailFixture, retiredSubjectFixture, subjectDetailFixture, subjectsFixture } from './subjects'
+import {
+  emptySubjectDetailFixture,
+  retiredSubjectFixture,
+  subjectAliasFixture,
+  subjectDetailFixture,
+  subjectsFixture
+} from './subjects'
 
 afterEach(() => {
   vi.useRealTimers()
@@ -23,6 +29,15 @@ describe('fixtureFor', () => {
     await expect(fixtureFor('on', 'GET', '/api/reef/subjects/networking/')).resolves.toEqual({
       outcome: 'answer',
       body: subjectDetailFixture
+    })
+  })
+
+  // The third shape the detail path answers with, and the one a dev server needs in order to reach
+  // the redirect an alias is for.
+  test('answers an alias with the subject it resolves to', async () => {
+    await expect(fixtureFor('on', 'GET', '/api/reef/subjects/authn/')).resolves.toEqual({
+      outcome: 'answer',
+      body: subjectAliasFixture
     })
   })
 
@@ -60,12 +75,19 @@ describe('fixtureFor', () => {
       })
     })
 
-    // A retired subject carries no membership, so there is nothing to empty and it has to arrive
-    // intact — the page redirects on it, and a mangled one would redirect nowhere.
+    // Neither redirect carries membership, so there is nothing to empty and both have to arrive
+    // intact — the page redirects on them, and a mangled one would redirect nowhere.
     test('leaves a retired subject as it is', async () => {
       await expect(fixtureFor('empty', 'GET', '/api/reef/subjects/packet-switching/')).resolves.toEqual({
         outcome: 'answer',
         body: retiredSubjectFixture
+      })
+    })
+
+    test('leaves an alias as it is', async () => {
+      await expect(fixtureFor('empty', 'GET', '/api/reef/subjects/authn/')).resolves.toEqual({
+        outcome: 'answer',
+        body: subjectAliasFixture
       })
     })
 

@@ -34,6 +34,7 @@ export type Subject = components['schemas']['Subject']
 export type SubjectDetail = components['schemas']['SubjectDetail']
 export type SubjectDetailOrRedirect = components['schemas']['SubjectDetailOrRedirect']
 export type RetiredSubject = components['schemas']['RetiredSubject']
+export type SubjectAlias = components['schemas']['SubjectAlias']
 export type Subscription = components['schemas']['Subscription']
 export type SubscriptionKind = components['schemas']['KindEnum']
 export type Survey = components['schemas']['Survey']
@@ -218,19 +219,25 @@ export const getPopularity = (signal?: AbortSignal): Promise<PopularEntry[]> =>
 
 // --- Subjects ---------------------------------------------------------------------------
 
-// The whole subject vocabulary, in name order. Public, and unpaginated because the vocabulary is
+// The whole subject vocabulary, in tree order. Public, and unpaginated because the vocabulary is
 // curated by staff rather than self-served, so there's no page to ask for and no token to send.
+// Every entry carries `parent` and `path`, so ~/utilities/subject-tree builds the hierarchy out of
+// this one answer without a second read.
 export const getSubjects = (signal?: AbortSignal): Promise<Subject[]> => reefFetch('/api/reef/subjects/', { signal })
 
-// One subject and the documents carrying it. Reef answers this path with either of two shapes and
-// `retired` is what tells them apart, so callers narrow with isRetiredSubject rather than reading a
-// field only one of them has.
+// One subject and the documents carrying it. Reef answers this path with one of three shapes: the
+// subject itself, a retired subject naming what it was merged into, or an alias naming the subject
+// it resolves to. Both of the latter are redirects, and callers narrow with the predicates below.
 export const getSubject = (slug: string, signal?: AbortSignal): Promise<SubjectDetailOrRedirect> =>
   reefFetch(`/api/reef/subjects/${encodeURIComponent(slug)}/`, { signal })
 
-// Both shapes carry `retired`, so what separates them is its value rather than the field being
-// there at all — which is why this is a predicate and not an `in` check repeated at each call site.
-export const isRetiredSubject = (subject: SubjectDetailOrRedirect): subject is RetiredSubject => subject.retired
+// What separates the three shapes is which key is present, so these are predicates rather than an
+// `in` check repeated at each call site. `retired` is not enough on its own: a live subject carries
+// it too, and an alias carries it not at all.
+export const isRetiredSubject = (subject: SubjectDetailOrRedirect): subject is RetiredSubject =>
+  'retired' in subject && subject.retired
+
+export const isSubjectAlias = (subject: SubjectDetailOrRedirect): subject is SubjectAlias => 'alias_of' in subject
 
 // --- This reader's own state, a page at a time ---------------------------------------------
 

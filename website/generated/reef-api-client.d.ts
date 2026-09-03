@@ -275,9 +275,11 @@ export interface paths {
     }
     /**
      * List the subject vocabulary
-     * @description Every subject that exists, in name order. Public and unpaginated: the vocabulary is curated by staff rather than self-served, so it stays small enough to hand over whole.
+     * @description Every subject that exists, in tree order. Public and unpaginated: the vocabulary is curated by staff rather than self-served, so it stays small enough to hand over whole.
      *
-     *     `doc` narrows the list to the subjects carried by one document, which is how a caller renders the subjects on an RFC page. The identifier is canonicalized, so `rfc9110` and `RFC 9110` address the same document, and the series has to be named.
+     *     The list is in tree order, and every entry carries `parent` and `path`, so a caller builds the hierarchy from it in one pass without a second read. `document_count` is the documents assigned to the subject itself; `document_count_deep` includes everything beneath it, deduplicated.
+     *
+     *     `doc` narrows the list to the subjects carried by one document, which is how a caller renders the subjects on an RFC page. It returns the subjects actually assigned rather than their ancestors too; a caller wanting the breadcrumb reads it off `path`. The identifier is canonicalized, so `rfc9110` and `RFC 9110` address the same document, and the series has to be named.
      */
     get: operations['subjects_list']
     put?: never
@@ -297,7 +299,9 @@ export interface paths {
     }
     /**
      * Read one subject and the documents carrying it
-     * @description Two shapes, told apart by `retired`. A live subject comes back in full. A retired one comes back as `slug`, `retired` and `merged_into` only: it is no longer offered and should not be rendered as current, and what is left is enough to redirect a link that names it.
+     * @description Three shapes, told apart by which key is present. A live subject comes back in full, with `documents` and its other names in `aliases`. A retired one comes back as `slug`, `retired` and `merged_into` only: it is no longer offered and should not be rendered as current, and what is left is enough to redirect a link that names it. An alias comes back as `slug` and `alias_of`, naming the subject to redirect to.
+     *
+     *     A subject's own slug always wins, so a name is never both.
      */
     get: operations['subjects_retrieve']
     put?: never
@@ -610,10 +614,10 @@ export interface components {
      *     apart by `retired`, which the live shape also carries.
      */
     RetiredSubject: {
-      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
       readonly slug: string
       readonly retired: boolean
-      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
       readonly merged_into: string
     }
     /**
@@ -630,15 +634,40 @@ export interface components {
      *     the subscription holds a foreign key so that renaming a subject cannot
      *     detach its subscribers, and the id is the half of a subject's identity
      *     that a rename does not touch.
+     *
+     *     parent and path are what let a caller build the tree from the flat list in one
+     *     pass, with no second read and nothing nested. Both counts are carried because
+     *     a picker wants a figure against every node without walking the subtree to get
+     *     one, and because they are two integers.
      */
     Subject: {
       readonly id: number
-      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
       readonly slug: string
       /** @description How the subject is shown to readers. */
       readonly name: string
       /** @description What belongs under this subject, for whoever curates it next and for a caller drawing a picker. */
       readonly description: string
+      readonly parent: string | null
+      /** @description Slugs from the top down, separated by a slash. Derived; edit the slug or the parent instead. */
+      readonly path: string
+      readonly document_count: number
+      readonly document_count_deep: number
+    }
+    /**
+     * @description An alias, as the only thing an alias is for: the name it resolves to.
+     *
+     *     Not the subject's own payload served under the alias's URL. That would answer
+     *     the read in one fetch, at the cost of publishing the same subject under two
+     *     addresses with nothing saying which one is canonical, and canonicalising a link
+     *     is the whole reason a caller asked. So the same stub shape a retired subject
+     *     gets, and callers tell the shapes apart by which key is present.
+     */
+    SubjectAlias: {
+      /** @description A name that resolves to this subject. Readers following a link that uses it are redirected to the subject's own slug. */
+      readonly slug: string
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
+      readonly alias_of: string
     }
     /**
      * @description A subject and the documents carrying it.
@@ -650,16 +679,34 @@ export interface components {
      */
     SubjectDetail: {
       readonly id: number
-      /** @description Stable identifier used in URLs and by Red. Changing it breaks links that name the old one; the name is the field to edit when the wording is what changed. */
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
       readonly slug: string
       /** @description How the subject is shown to readers. */
       readonly name: string
       /** @description What belongs under this subject, for whoever curates it next and for a caller drawing a picker. */
       readonly description: string
+      readonly parent: string | null
+      /** @description Slugs from the top down, separated by a slash. Derived; edit the slug or the parent instead. */
+      readonly path: string
+      readonly document_count: number
+      readonly document_count_deep: number
       readonly retired: boolean
+      readonly children: string[]
+      readonly aliases: string[]
+      /**
+       * @description The documents assigned to this subject, and not to those beneath it.
+       *
+       *     Unchanged in meaning, deliberately. Red consumes this array and the
+       *     precomputer keys document_meta off it, so widening it to the subtree would
+       *     be a contract change dressed up as a bug fix. The subtree is the index
+       *     file's business.
+       */
       readonly documents: string[]
     }
-    SubjectDetailOrRedirect: components['schemas']['SubjectDetail'] | components['schemas']['RetiredSubject']
+    SubjectDetailOrRedirect:
+      | components['schemas']['SubjectDetail']
+      | components['schemas']['RetiredSubject']
+      | components['schemas']['SubjectAlias']
     Subscription: {
       readonly id: number
       kind: components['schemas']['KindEnum']

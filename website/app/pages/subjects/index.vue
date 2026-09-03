@@ -57,19 +57,16 @@
                   :id="subjectGroup.id"
                   class="mb-0 bg-white dark:bg-gray-800 text-blue-950 dark:text-white text-2xl font-bold py-8 px-8">
                   <GraphicsIETFMotif
-                    class="absolute ml-[-0.6em] -mt-4 print:hidden"
+                    class="absolute -ml-4 -mt-4 print:hidden"
                     :width="55"
                     :height="55"
                     :opacity="0.05" />
                   {{ subjectGroup.title }}
                 </dt>
-                <dd>
-                  <ul class="bg-white dark:bg-gray-800 px-8 pb-8">
-                    <li v-for="{ slug, name, description } in subjectGroup.items" :key="slug">
-                      <Anchor :href="subjectsPathBuilder(slug)" :class="ANCHOR_COLOR_TAILWIND_STYLE">{{ name }}</Anchor>
-                      <p v-if="description && subjectDensity === 'full'" class="inline">: {{ description }}</p>
-                    </li>
-                  </ul>
+                <dd class="mt-0">
+                  <div class="bg-white dark:bg-gray-800 px-8 pb-8">
+                    <SubjectTreeList :nodes="subjectGroup.items" :density="subjectDensity" />
+                  </div>
                   <a
                     href="#toc"
                     :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'inline-flex gap-1 items-center px-1 py-5 text-sm']">
@@ -101,10 +98,11 @@ import { watchDebounced } from '@vueuse/core'
 import { groupBy } from 'es-toolkit'
 import { useUiSettingsStore, type SubjectDensity } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
-import { getSubjects, type Subject } from '~/utilities/reef'
+import { getSubjects } from '~/utilities/reef'
 import { filterSubjects } from '~/utilities/subject-search'
+import { isRenderableSubject, subjectTreeOfMatches, type SubjectNode } from '~/utilities/subject-tree'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { SUBJECTS_PATH, SUBJECTS_QUERY_PARAM, subjectsPathBuilder, usePublicSiteUrlOrigin } from '~/utilities/url'
+import { SUBJECTS_PATH, SUBJECTS_QUERY_PARAM, usePublicSiteUrlOrigin } from '~/utilities/url'
 
 definePageMeta({
   layout: false
@@ -120,11 +118,16 @@ const subjectDensity = computed<SubjectDensity>({
   set: (density) => uiSettings.setSubjectDensity(density)
 })
 
-// Reef lists the vocabulary in name order and it is small enough to arrive whole, so there is
-// nothing to sort or page through here.
+// Reef lists the vocabulary in tree order and it is small enough to arrive whole, so the hierarchy
+// is built from this one answer and there is nothing to page through here.
 const { data: subjects, status: subjectsStatus, error: subjectsError } = await useAsyncData(() => getSubjects())
 
-const subjectCount = computed(() => subjects.value?.length ?? 0)
+// The vocabulary can nest deeper than the tree is drawn to, and a subject this page will not draw
+// is not one to count or to filter over either — otherwise a query matching only a subject too deep
+// to render announces matches and then shows an empty page.
+const renderableSubjects = computed(() => (subjects.value ?? []).filter(isRenderableSubject))
+
+const subjectCount = computed(() => renderableSubjects.value.length)
 
 const route = useRoute()
 
@@ -168,12 +171,19 @@ watchDebounced(
   { debounce: URL_WRITE_DEBOUNCE_MS }
 )
 
-const filteredSubjects = computed(() => filterSubjects(subjects.value ?? [], filterQuery.value))
+// What the reader is told about, and what the empty state is decided by: the subjects that actually
+// matched. The ancestors drawn around them below are context rather than matches, so they are not
+// here and are not counted.
+const filteredSubjects = computed(() => filterSubjects(renderableSubjects.value, filterQuery.value))
+
+// A match four levels down is drawn under the subjects it belongs to, so the tree carries the
+// ancestors of every match as well as the matches themselves.
+const subjectTree = computed(() => subjectTreeOfMatches(renderableSubjects.value, filteredSubjects.value))
 
 type SubjectGroup = {
   id: string
   title: string
-  items: Subject[]
+  items: SubjectNode[]
 }
 
 const GROUP_NUM = '_subject_group_number'
@@ -181,8 +191,11 @@ const GROUP_MISC = '_subject_group_miscellaneous'
 const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
 const formatIdToTitle = (id: string) => id.toUpperCase()
 
+// Only the top of the tree is grouped by letter. A subject further down is found under the subject
+// it belongs to, which is the whole point of the hierarchy: filing it by its own initial as well
+// would list it twice and say that where it sits does not matter.
 const subjectsByGroup = computed((): SubjectGroup[] => {
-  const groupAlphabetically = (a: Subject): string => {
+  const groupAlphabetically = (a: SubjectNode): string => {
     const firstNonWhitespaceChar = a.name.trim().substring(0, 1).toLowerCase()
     if (firstNonWhitespaceChar.match(/\d+/)) {
       return GROUP_NUM
@@ -192,7 +205,7 @@ const subjectsByGroup = computed((): SubjectGroup[] => {
     }
     return GROUP_MISC
   }
-  const groupObj = groupBy(filteredSubjects.value, groupAlphabetically)
+  const groupObj = groupBy(subjectTree.value, groupAlphabetically)
   const groupArr = Object.entries(groupObj)
   const subjectGroups = groupArr.map(([key, value]): SubjectGroup => {
     return {

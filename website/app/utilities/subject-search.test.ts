@@ -2,14 +2,24 @@ import { describe, expect, test } from 'vitest'
 import { filterSubjects } from './subject-search'
 import type { Subject } from './reef'
 
-const subject = (id: number, name: string, description: string): Subject => ({
-  id,
-  slug: name.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-'),
-  name,
-  description
-})
+// Flat, because matching is flat: filterSubjects looks at a name and a description and knows
+// nothing about where a subject sits. Assembling the hierarchy is ~/utilities/subject-tree's, and
+// is tested there.
+const subject = (id: number, name: string, description: string): Subject => {
+  const slug = name.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-')
+  return {
+    id,
+    slug,
+    name,
+    description,
+    parent: null,
+    path: slug,
+    document_count: 1,
+    document_count_deep: 1
+  }
+}
 
-// In name order, as Reef sends the vocabulary and as matches are expected to come back.
+// In the order Reef sends them, and the order matches are expected to come back in.
 const SUBJECTS: Subject[] = [
   subject(1, 'Authentication', 'Proving who a party is, and what they are allowed to do.'),
   subject(2, 'Internationalisation', 'Text in any script, including naïve round-trips.'),
