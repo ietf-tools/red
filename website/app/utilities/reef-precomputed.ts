@@ -35,18 +35,18 @@ export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
  */
 const REEF_PRECOMPUTED_BASE = ''
 
-/** Thrown for anything that stops a file being read and parsed. */
-export class ReefPrecomputedError extends Error {
-  readonly key: string
-  readonly cause: unknown
-
-  constructor(key: string, cause: unknown) {
-    super(`[reef] could not read the published ${key}: ${String(cause)}`)
-    this.name = 'ReefPrecomputedError'
-    this.key = key
-    this.cause = cause
-  }
-}
+/**
+ * Anything that stops a file being read and parsed. An h3 error rather than an Error of this
+ * module's own: nothing catches these by type — the pages read `error` off useAsyncData and only
+ * ask whether it is set — so a class would buy a name and cost every caller a way to tell one
+ * failure from another. The name it was carrying is in the message, which is where a log reads it.
+ */
+const unreadable = (key: string, cause: unknown) =>
+  createError({
+    statusCode: 500,
+    message: `[reef] could not read the published ${key}: ${String(cause)}`,
+    cause
+  })
 
 // The dev stand-in for the store: ./reef-fixtures/precomputed, which is a verbatim copy of a
 // precompute run laid out under the same keys. Lazy, so a production build that drops the branch
@@ -83,7 +83,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
     return schema.parse(body)
   }
   if (REEF_PRECOMPUTED_BASE === '') {
-    throw new ReefPrecomputedError(key, 'no publishing base is configured')
+    throw unreadable(key, 'no publishing base is configured')
   }
   try {
     const response = await fetch(`${REEF_PRECOMPUTED_BASE}/${key}`)
@@ -95,7 +95,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
     }
     body = await response.json()
   } catch (error) {
-    throw new ReefPrecomputedError(key, error)
+    throw unreadable(key, error)
   }
   try {
     return schema.parse(body)
@@ -103,7 +103,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
     // Separated from the fetch failure on purpose: a file that arrived and did not match the
     // contract is a different problem from one that did not arrive, and it is Reef's rather than
     // the network's.
-    throw new ReefPrecomputedError(key, error)
+    throw unreadable(key, error)
   }
 }
 
@@ -114,7 +114,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
 export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
   const index = await read('subjects.json', SubjectIndex)
   if (index === undefined) {
-    throw new ReefPrecomputedError('subjects.json', 'the index is not published')
+    throw unreadable('subjects.json', 'the index is not published')
   }
   return index
 }

@@ -41,7 +41,7 @@
                         'bg-white dark:bg-gray-800': subjectGroup.items.length > 0
                       }
                     ]"
-                    v-for="subjectGroup in subjectsByGroupWithBlanks"
+                    v-for="subjectGroup in subjectGroups"
                     :key="subjectGroup.id">
                     <a
                       v-if="subjectGroup.items.length > 0"
@@ -57,7 +57,7 @@
                 <SubjectDensity v-model="subjectDensity" />
               </div>
               <dl class="mt-2">
-                <template v-for="subjectGroup in subjectsByGroup" :key="subjectGroup.id">
+                <template v-for="subjectGroup in populatedSubjectGroups" :key="subjectGroup.id">
                   <dt
                     :id="subjectGroup.id"
                     class="mb-0 bg-white dark:bg-gray-800 text-blue-950 dark:text-white text-2xl font-bold py-8 px-8">
@@ -226,44 +226,28 @@ type SubjectGroup = {
 const GROUP_NUM = '_subject_group_number'
 const GROUP_MISC = '_subject_group_miscellaneous'
 const ALPHABET = [...'abcdefghijklmnopqrstuvwxyz']
-const formatIdToTitle = (id: string) => id.toUpperCase()
+const GROUP_TITLES: Record<string, string> = { [GROUP_NUM]: '0-9', [GROUP_MISC]: 'Other' }
+
+const groupIdOf = ({ name }: SubjectNode): string => {
+  const initial = name.trim().slice(0, 1).toLowerCase()
+  if (/\p{Nd}/u.test(initial)) return GROUP_NUM
+  return /\p{L}/u.test(initial) ? initial : GROUP_MISC
+}
 
 // Only the top of the tree is grouped by letter. A subject further down is found under the subject
 // it belongs to, which is the whole point of the hierarchy: filing it by its own initial as well
 // would list it twice and say that where it sits does not matter.
-const subjectsByGroup = computed((): SubjectGroup[] => {
-  const groupAlphabetically = (a: SubjectNode): string => {
-    const firstNonWhitespaceChar = a.name.trim().substring(0, 1).toLowerCase()
-    if (firstNonWhitespaceChar.match(/\d+/)) {
-      return GROUP_NUM
-    }
-    if (firstNonWhitespaceChar.match(/\p{L}+/u)) {
-      return firstNonWhitespaceChar
-    }
-    return GROUP_MISC
-  }
-  const groupObj = groupBy(subjectTree.value, groupAlphabetically)
-  const groupArr = Object.entries(groupObj)
-  const subjectGroups = groupArr.map(([key, value]): SubjectGroup => {
-    return {
-      id: key,
-      title: formatIdToTitle(key),
-      items: value
-    }
-  })
+//
+// Every letter is here whether or not anything is filed under it, because the table of contents
+// draws the empty ones too; the headings below take the populated ones.
+const subjectGroups = computed((): SubjectGroup[] => {
+  const itemsByGroupId = groupBy(subjectTree.value, groupIdOf)
+  const ids = [...ALPHABET, ...Object.keys(itemsByGroupId).filter((id) => !ALPHABET.includes(id))]
 
-  return subjectGroups
+  return ids.map((id) => ({ id, title: GROUP_TITLES[id] ?? id.toUpperCase(), items: itemsByGroupId[id] ?? [] }))
 })
 
-const subjectsByGroupWithBlanks = computed((): SubjectGroup[] => {
-  const groupsById = groupBy(subjectsByGroup.value, ({ id }) => id)
-  const letterGroups = ALPHABET.map(
-    (letter): SubjectGroup => groupsById[letter]?.[0] ?? { id: letter, title: formatIdToTitle(letter), items: [] }
-  )
-  const otherGroups = subjectsByGroup.value.filter(({ id }) => !ALPHABET.includes(id))
-
-  return [...letterGroups, ...otherGroups]
-})
+const populatedSubjectGroups = computed(() => subjectGroups.value.filter(({ items }) => items.length > 0))
 
 useRfcEditorHead({
   noIndex: true, // FIXME: upon release allow indexing

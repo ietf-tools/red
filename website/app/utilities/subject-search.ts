@@ -97,18 +97,20 @@ export const rangesOf = (text: string, terms: string[]): TextRange[] => {
 }
 
 const merged = (ranges: TextRange[]): TextRange[] => {
-  const inOrder = [...ranges].sort((a, b) => a.start - b.start || a.end - b.end)
+  const kept: TextRange[] = []
 
-  return inOrder.reduce<TextRange[]>((keeping, range) => {
-    const previous = keeping.at(-1)
+  for (const range of [...ranges].sort((a, b) => a.start - b.start || a.end - b.end)) {
+    const previous = kept.at(-1)
     // Touching counts as overlapping: two highlights that meet are one highlight, and drawing them
     // as two puts a seam through a word.
     if (previous !== undefined && range.start <= previous.end) {
       previous.end = Math.max(previous.end, range.end)
-      return keeping
+    } else {
+      kept.push({ ...range })
     }
-    return [...keeping, { ...range }]
-  }, [])
+  }
+
+  return kept
 }
 
 /**
@@ -122,26 +124,19 @@ export const matchSubjects = (subjects: Subject[], query: string): SubjectMatch[
     return subjects.map((subject) => ({ subject, nameRanges: [], descriptionRanges: [] }))
   }
 
-  return subjects.reduce<SubjectMatch[]>((matches, subject) => {
-    const { name, description } = subject
+  const matchesEveryTerm = ({ name, description }: Subject): boolean => {
     const text = normalise(`${name} ${description}`)
-    if (!terms.every((term) => text.includes(term))) {
-      return matches
-    }
+    return terms.every((term) => text.includes(term))
+  }
 
-    // Marked per field rather than against the joined text, because the join is only a way of
-    // asking whether the subject matched at all: a term spanning the gap between the name and the
-    // description matches neither of them, and has nowhere to be drawn.
-    return [...matches, { subject, nameRanges: rangesOf(name, terms), descriptionRanges: rangesOf(description, terms) }]
-  }, [])
+  // Marked per field, because the joined text above only answers whether the subject matched at
+  // all: a term spanning the gap between the name and the description has nowhere to be drawn.
+  return subjects.filter(matchesEveryTerm).map((subject) => ({
+    subject,
+    nameRanges: rangesOf(subject.name, terms),
+    descriptionRanges: rangesOf(subject.description, terms)
+  }))
 }
-
-/**
- * The subjects matching every term in `query`, in the order they were given. The same question
- * matchSubjects answers, for callers that only need to know which subjects are left.
- */
-export const filterSubjects = (subjects: Subject[], query: string): Subject[] =>
-  matchSubjects(subjects, query).map(({ subject }) => subject)
 
 export type TextSegment = {
   text: string

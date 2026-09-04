@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest'
-import { filterSubjects, matchSubjects, rangesOf, segmentsOf } from './subject-search'
+import { matchSubjects, rangesOf, segmentsOf } from './subject-search'
 import type { Subject } from './reef'
 
-// Flat, because matching is flat: filterSubjects looks at a name and a description and knows
+// Flat, because matching is flat: matchSubjects looks at a name and a description and knows
 // nothing about where a subject sits. Assembling the hierarchy is ~/utilities/subject-tree's, and
 // is tested there.
 const subject = (id: number, name: string, description: string): Subject => {
@@ -27,12 +27,15 @@ const SUBJECTS: Subject[] = [
   subject(4, 'Routing', 'Choosing the path traffic takes across a network.')
 ]
 
-const matching = (query: string, subjects: Subject[] = SUBJECTS): string[] =>
-  filterSubjects(subjects, query).map(({ name }) => name)
+const matched = (subjects: Subject[], query: string): Subject[] =>
+  matchSubjects(subjects, query).map(({ subject }) => subject)
 
-describe('filterSubjects', () => {
+const matching = (query: string, subjects: Subject[] = SUBJECTS): string[] =>
+  matched(subjects, query).map(({ name }) => name)
+
+describe('matchSubjects, as a filter', () => {
   test('offers the whole vocabulary before anything has been typed', () => {
-    expect(filterSubjects(SUBJECTS, '')).toStrictEqual(SUBJECTS)
+    expect(matched(SUBJECTS, '')).toStrictEqual(SUBJECTS)
   })
 
   test('matches a name', () => {
@@ -68,7 +71,7 @@ describe('filterSubjects', () => {
   })
 
   test('treats whitespace and punctuation as nothing to search on', () => {
-    expect(filterSubjects(SUBJECTS, '  ,  ')).toStrictEqual(SUBJECTS)
+    expect(matched(SUBJECTS, '  ,  ')).toStrictEqual(SUBJECTS)
   })
 
   test('matches nothing when nothing matches', () => {
