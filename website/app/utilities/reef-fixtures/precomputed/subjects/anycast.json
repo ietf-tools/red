@@ -1,0 +1,75 @@
+{
+  "id": 824,
+  "slug": "anycast",
+  "name": "Anycast",
+  "description": "Anycast addressing and operation",
+  "parent": "addressing",
+  "path": "internet-layer/addressing/anycast",
+  "document_count": 21,
+  "document_count_deep": 21,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1546",
+    "rfc2373",
+    "rfc2526",
+    "rfc3068",
+    "rfc3446",
+    "rfc3513",
+    "rfc3627",
+    "rfc4291",
+    "rfc4610",
+    "rfc4786",
+    "rfc5685",
+    "rfc6382",
+    "rfc7094",
+    "rfc7108",
+    "rfc7526",
+    "rfc7534",
+    "rfc7723",
+    "rfc8313",
+    "rfc9199",
+    "rfc9685",
+    "rfc9983"
+  ],
+  "document_meta": {
+    "rfc1546": { "title": "Host Anycasting Service", "subseries": [] },
+    "rfc2373": { "title": "IP Version 6 Addressing Architecture", "subseries": [] },
+    "rfc2526": { "title": "Reserved IPv6 Subnet Anycast Addresses", "subseries": [] },
+    "rfc3068": { "title": "An Anycast Prefix for 6to4 Relay Routers", "subseries": [] },
+    "rfc3446": {
+      "title": "Anycast Rendevous Point (RP) mechanism using Protocol Independent Multicast (PIM) and Multicast Source Discovery Protocol (MSDP)",
+      "subseries": []
+    },
+    "rfc3513": { "title": "Internet Protocol Version 6 (IPv6) Addressing Architecture", "subseries": [] },
+    "rfc3627": { "title": "Use of /127 Prefix Length Between Routers Considered Harmful", "subseries": [] },
+    "rfc4291": { "title": "IP Version 6 Addressing Architecture", "subseries": [] },
+    "rfc4610": { "title": "Anycast-RP Using Protocol Independent Multicast (PIM)", "subseries": [] },
+    "rfc4786": { "title": "Operation of Anycast Services", "subseries": ["bcp126"] },
+    "rfc5685": {
+      "title": "Redirect Mechanism for the Internet Key Exchange Protocol Version 2 (IKEv2)",
+      "subseries": []
+    },
+    "rfc6382": {
+      "title": "Unique Origin Autonomous System Numbers (ASNs) per Node for Globally Anycasted Services",
+      "subseries": ["bcp169"]
+    },
+    "rfc7094": { "title": "Architectural Considerations of IP Anycast", "subseries": [] },
+    "rfc7108": {
+      "title": "A Summary of Various Mechanisms Deployed at L-Root for the Identification of Anycast Nodes",
+      "subseries": []
+    },
+    "rfc7526": { "title": "Deprecating the Anycast Prefix for 6to4 Relay Routers", "subseries": ["bcp196"] },
+    "rfc7534": { "title": "AS112 Nameserver Operations", "subseries": [] },
+    "rfc7723": { "title": "Port Control Protocol (PCP) Anycast Addresses", "subseries": [] },
+    "rfc8313": { "title": "Use of Multicast across Inter-domain Peering Points", "subseries": ["bcp213"] },
+    "rfc9199": { "title": "Considerations for Large Authoritative DNS Server Operators", "subseries": [] },
+    "rfc9685": {
+      "title": "Listener Subscription for IPv6 Neighbor Discovery Multicast and Anycast Addresses",
+      "subseries": []
+    },
+    "rfc9983": { "title": "OSPFv2 Anycast Property Advertisement", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "addressing": { "name": "Addressing" } }
+}

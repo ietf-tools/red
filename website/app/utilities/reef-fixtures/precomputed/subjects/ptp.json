@@ -1,0 +1,34 @@
+{
+  "id": 883,
+  "slug": "ptp",
+  "name": "PTP",
+  "description": "Precision Time Protocol over IP networks",
+  "parent": "time-synchronization",
+  "path": "network-management/time-synchronization/ptp",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc10030", "rfc1589", "rfc7384", "rfc8039", "rfc8173", "rfc8575", "rfc9581", "rfc9760"],
+  "document_meta": {
+    "rfc10030": { "title": "Network Time Protocol (NTP) over the Precision Time Protocol (PTP)", "subseries": [] },
+    "rfc1589": { "title": "A Kernel Model for Precision Timekeeping", "subseries": [] },
+    "rfc7384": { "title": "Security Requirements of Time Protocols in Packet Switched Networks", "subseries": [] },
+    "rfc8039": { "title": "Multipath Time Synchronization", "subseries": [] },
+    "rfc8173": { "title": "Precision Time Protocol Version 2 (PTPv2) Management Information Base", "subseries": [] },
+    "rfc8575": { "title": "YANG Data Model for the Precision Time Protocol (PTP)", "subseries": [] },
+    "rfc9581": {
+      "title": "Concise Binary Object Representation (CBOR) Tags for Time, Duration, and Period",
+      "subseries": []
+    },
+    "rfc9760": {
+      "title": "Enterprise Profile for the Precision Time Protocol with Mixed Multicast and Unicast Messages",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "network-management": { "name": "Network Management" },
+    "time-synchronization": { "name": "Time Synchronization" }
+  }
+}

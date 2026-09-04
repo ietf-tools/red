@@ -1,0 +1,152 @@
+{
+  "id": 960,
+  "slug": "sha",
+  "name": "SHA",
+  "description": "The SHA family of hash functions",
+  "parent": "cryptography",
+  "path": "security/cryptography/sha",
+  "document_count": 40,
+  "document_count_deep": 40,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1852",
+    "rfc2202",
+    "rfc2404",
+    "rfc2841",
+    "rfc3110",
+    "rfc3174",
+    "rfc3874",
+    "rfc4194",
+    "rfc4231",
+    "rfc4359",
+    "rfc4509",
+    "rfc4634",
+    "rfc4635",
+    "rfc4868",
+    "rfc5289",
+    "rfc5310",
+    "rfc5487",
+    "rfc5702",
+    "rfc5709",
+    "rfc5754",
+    "rfc5816",
+    "rfc5932",
+    "rfc6194",
+    "rfc6234",
+    "rfc6594",
+    "rfc6605",
+    "rfc6668",
+    "rfc7630",
+    "rfc7677",
+    "rfc7860",
+    "rfc8009",
+    "rfc8332",
+    "rfc8732",
+    "rfc9054",
+    "rfc9142",
+    "rfc9155",
+    "rfc9688",
+    "rfc9709",
+    "rfc9905",
+    "rfc9941"
+  ],
+  "document_meta": {
+    "rfc1852": { "title": "IP Authentication using Keyed SHA", "subseries": [] },
+    "rfc2202": { "title": "Test Cases for HMAC-MD5 and HMAC-SHA-1", "subseries": [] },
+    "rfc2404": { "title": "The Use of HMAC-SHA-1-96 within ESP and AH", "subseries": [] },
+    "rfc2841": { "title": "IP Authentication using Keyed SHA1 with Interleaved Padding (IP-MAC)", "subseries": [] },
+    "rfc3110": { "title": "RSA/SHA-1 SIGs and RSA KEYs in the Domain Name System (DNS)", "subseries": [] },
+    "rfc3174": { "title": "US Secure Hash Algorithm 1 (SHA1)", "subseries": [] },
+    "rfc3874": { "title": "A 224-bit One-way Hash Function: SHA-224", "subseries": [] },
+    "rfc4194": { "title": "The S Hexdump Format", "subseries": [] },
+    "rfc4231": {
+      "title": "Identifiers and Test Vectors for HMAC-SHA-224, HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512",
+      "subseries": []
+    },
+    "rfc4359": {
+      "title": "The Use of RSA/SHA-1 Signatures within Encapsulating Security Payload (ESP) and Authentication Header (AH)",
+      "subseries": []
+    },
+    "rfc4509": { "title": "Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records (RRs)", "subseries": [] },
+    "rfc4634": { "title": "US Secure Hash Algorithms (SHA and HMAC-SHA)", "subseries": [] },
+    "rfc4635": {
+      "title": "HMAC SHA (Hashed Message Authentication Code, Secure Hash Algorithm) TSIG Algorithm Identifiers",
+      "subseries": []
+    },
+    "rfc4868": { "title": "Using HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512 with IPsec", "subseries": [] },
+    "rfc5289": {
+      "title": "TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)",
+      "subseries": []
+    },
+    "rfc5310": { "title": "IS-IS Generic Cryptographic Authentication", "subseries": [] },
+    "rfc5487": {
+      "title": "Pre-Shared Key Cipher Suites for TLS with SHA-256/384 and AES Galois Counter Mode",
+      "subseries": []
+    },
+    "rfc5702": {
+      "title": "Use of SHA-2 Algorithms with RSA in DNSKEY and RRSIG Resource Records for DNSSEC",
+      "subseries": []
+    },
+    "rfc5709": { "title": "OSPFv2 HMAC-SHA Cryptographic Authentication", "subseries": [] },
+    "rfc5754": { "title": "Using SHA2 Algorithms with Cryptographic Message Syntax", "subseries": [] },
+    "rfc5816": { "title": "ESSCertIDv2 Update for RFC 3161", "subseries": [] },
+    "rfc5932": { "title": "Camellia Cipher Suites for TLS", "subseries": [] },
+    "rfc6194": {
+      "title": "Security Considerations for the SHA-0 and SHA-1 Message-Digest Algorithms",
+      "subseries": []
+    },
+    "rfc6234": { "title": "US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)", "subseries": [] },
+    "rfc6594": {
+      "title": "Use of the SHA-256 Algorithm with RSA, Digital Signature Algorithm (DSA), and Elliptic Curve DSA (ECDSA) in SSHFP Resource Records",
+      "subseries": []
+    },
+    "rfc6605": { "title": "Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC", "subseries": [] },
+    "rfc6668": {
+      "title": "SHA-2 Data Integrity Verification for the Secure Shell (SSH) Transport Layer Protocol",
+      "subseries": []
+    },
+    "rfc7630": {
+      "title": "HMAC-SHA-2 Authentication Protocols in the User-based Security Model (USM) for SNMPv3",
+      "subseries": []
+    },
+    "rfc7677": {
+      "title": "SCRAM-SHA-256 and SCRAM-SHA-256-PLUS Simple Authentication and Security Layer (SASL) Mechanisms",
+      "subseries": []
+    },
+    "rfc7860": {
+      "title": "HMAC-SHA-2 Authentication Protocols in User-Based Security Model (USM) for SNMPv3",
+      "subseries": []
+    },
+    "rfc8009": { "title": "AES Encryption with HMAC-SHA2 for Kerberos 5", "subseries": [] },
+    "rfc8332": {
+      "title": "Use of RSA Keys with SHA-256 and SHA-512 in the Secure Shell (SSH) Protocol",
+      "subseries": []
+    },
+    "rfc8732": {
+      "title": "Generic Security Service Application Program Interface (GSS-API) Key Exchange with SHA-2",
+      "subseries": []
+    },
+    "rfc9054": { "title": "CBOR Object Signing and Encryption (COSE): Hash Algorithms", "subseries": [] },
+    "rfc9142": {
+      "title": "Key Exchange (KEX) Method Updates and Recommendations for Secure Shell (SSH)",
+      "subseries": []
+    },
+    "rfc9155": { "title": "Deprecating MD5 and SHA-1 Signature Hashes in TLS 1.2 and DTLS 1.2", "subseries": [] },
+    "rfc9688": {
+      "title": "Use of the SHA3 One-Way Hash Functions in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc9709": {
+      "title": "Encryption Key Derivation in the Cryptographic Message Syntax (CMS) Using HKDF with SHA-256",
+      "subseries": []
+    },
+    "rfc9905": { "title": "Deprecating the Use of SHA-1 in DNSSEC Signature Algorithms", "subseries": [] },
+    "rfc9941": {
+      "title": "Secure Shell (SSH) Key Exchange Method Using Hybrid Streamlined NTRU Prime sntrup761 and X25519 with SHA-512: sntrup761x25519-sha512",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

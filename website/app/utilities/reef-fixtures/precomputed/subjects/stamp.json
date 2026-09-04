@@ -1,0 +1,33 @@
+{
+  "id": 877,
+  "slug": "stamp",
+  "name": "STAMP",
+  "description": "Simple Two-way Active Measurement Protocol",
+  "parent": "performance-measurement",
+  "path": "network-management/performance-measurement/stamp",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3161", "rfc5544", "rfc6283", "rfc8762", "rfc8972", "rfc9503", "rfc9534"],
+  "document_meta": {
+    "rfc3161": { "title": "Internet X.509 Public Key Infrastructure Time-Stamp Protocol (TSP)", "subseries": [] },
+    "rfc5544": { "title": "Syntax for Binding Documents with Time-Stamps", "subseries": [] },
+    "rfc6283": { "title": "Extensible Markup Language Evidence Record Syntax (XMLERS)", "subseries": [] },
+    "rfc8762": { "title": "Simple Two-Way Active Measurement Protocol", "subseries": [] },
+    "rfc8972": { "title": "Simple Two-Way Active Measurement Protocol Optional Extensions", "subseries": [] },
+    "rfc9503": {
+      "title": "Simple Two-Way Active Measurement Protocol (STAMP) Extensions for Segment Routing Networks",
+      "subseries": []
+    },
+    "rfc9534": {
+      "title": "Simple Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "network-management": { "name": "Network Management" },
+    "performance-measurement": { "name": "Performance Measurement" }
+  }
+}

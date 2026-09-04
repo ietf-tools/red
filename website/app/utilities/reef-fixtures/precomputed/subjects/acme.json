@@ -1,0 +1,79 @@
+{
+  "id": 967,
+  "slug": "acme",
+  "name": "ACME",
+  "description": "Automatic Certificate Management Environment",
+  "parent": "pki",
+  "path": "security/pki/acme",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc8555",
+    "rfc8657",
+    "rfc8737",
+    "rfc8738",
+    "rfc8739",
+    "rfc8823",
+    "rfc9115",
+    "rfc9444",
+    "rfc9447",
+    "rfc9448",
+    "rfc9538",
+    "rfc9773",
+    "rfc9799",
+    "rfc9891"
+  ],
+  "document_meta": {
+    "rfc8555": { "title": "Automatic Certificate Management Environment (ACME)", "subseries": [] },
+    "rfc8657": {
+      "title": "Certification Authority Authorization (CAA) Record Extensions for Account URI and Automatic Certificate Management Environment (ACME) Method Binding",
+      "subseries": []
+    },
+    "rfc8737": {
+      "title": "Automated Certificate Management Environment (ACME) TLS Application-Layer Protocol Negotiation (ALPN) Challenge Extension",
+      "subseries": []
+    },
+    "rfc8738": {
+      "title": "Automated Certificate Management Environment (ACME) IP Identifier Validation Extension",
+      "subseries": []
+    },
+    "rfc8739": {
+      "title": "Support for Short-Term, Automatically Renewed (STAR) Certificates in the Automated Certificate Management Environment (ACME)",
+      "subseries": []
+    },
+    "rfc8823": {
+      "title": "Extensions to Automatic Certificate Management Environment for End-User S/MIME Certificates",
+      "subseries": []
+    },
+    "rfc9115": {
+      "title": "An Automatic Certificate Management Environment (ACME) Profile for Generating Delegated Certificates",
+      "subseries": []
+    },
+    "rfc9444": { "title": "Automated Certificate Management Environment (ACME) for Subdomains", "subseries": [] },
+    "rfc9447": {
+      "title": "Automated Certificate Management Environment (ACME) Challenges Using an Authority Token",
+      "subseries": []
+    },
+    "rfc9448": {
+      "title": "TNAuthList Profile of Automated Certificate Management Environment (ACME) Authority Token",
+      "subseries": []
+    },
+    "rfc9538": {
+      "title": "Content Delivery Network Interconnection (CDNI) Delegation Using the Automated Certificate Management Environment",
+      "subseries": []
+    },
+    "rfc9773": { "title": "ACME Renewal Information (ARI) Extension", "subseries": [] },
+    "rfc9799": {
+      "title": "Automated Certificate Management Environment (ACME) Extensions for \".onion\" Special-Use Domain Names",
+      "subseries": []
+    },
+    "rfc9891": {
+      "title": "Automated Certificate Management Environment (ACME) Delay-Tolerant Networking (DTN) Node ID Validation Extension",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "pki": { "name": "PKI" } }
+}

@@ -1,0 +1,16 @@
+{
+  "id": 921,
+  "slug": "mospf",
+  "name": "MOSPF",
+  "description": "Multicast extensions to OSPF",
+  "parent": "multicast",
+  "path": "routing/multicast/mospf",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1584"],
+  "document_meta": { "rfc1584": { "title": "Multicast Extensions to OSPF", "subseries": [] } },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

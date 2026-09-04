@@ -1,0 +1,29 @@
+{
+  "id": 703,
+  "slug": "egp",
+  "name": "EGP",
+  "description": "The Exterior Gateway Protocol (historic inter-domain routing)",
+  "parent": "routing",
+  "path": "routing/egp",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1092", "rfc1930", "rfc3068", "rfc827", "rfc888", "rfc890", "rfc904", "rfc911", "rfc975"],
+  "document_meta": {
+    "rfc1092": { "title": "EGP and policy based routing in the new NSFNET backbone", "subseries": [] },
+    "rfc1930": {
+      "title": "Guidelines for creation, selection, and registration of an Autonomous System (AS)",
+      "subseries": ["bcp6"]
+    },
+    "rfc3068": { "title": "An Anycast Prefix for 6to4 Relay Routers", "subseries": [] },
+    "rfc827": { "title": "Exterior Gateway Protocol (EGP)", "subseries": [] },
+    "rfc888": { "title": "\"STUB\" Exterior Gateway Protocol", "subseries": [] },
+    "rfc890": { "title": "Exterior Gateway Protocol implementation schedule", "subseries": [] },
+    "rfc904": { "title": "Exterior Gateway Protocol formal specification", "subseries": [] },
+    "rfc911": { "title": "EGP Gateway under Berkeley UNIX 4.2", "subseries": [] },
+    "rfc975": { "title": "Autonomous confederations", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

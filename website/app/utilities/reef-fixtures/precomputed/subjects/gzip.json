@@ -1,0 +1,19 @@
+{
+  "id": 812,
+  "slug": "gzip",
+  "name": "gzip",
+  "description": "The gzip file format",
+  "parent": "compression",
+  "path": "data-formats/compression/gzip",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1952", "rfc6713"],
+  "document_meta": {
+    "rfc1952": { "title": "GZIP file format specification version 4.3", "subseries": [] },
+    "rfc6713": { "title": "The 'application/zlib' and 'application/gzip' Media Types", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "compression": { "name": "Compression" } }
+}

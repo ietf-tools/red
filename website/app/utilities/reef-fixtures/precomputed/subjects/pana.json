@@ -1,0 +1,64 @@
+{
+  "id": 752,
+  "slug": "pana",
+  "name": "PANA",
+  "description": "Protocol for carrying authentication for network access",
+  "parent": "security",
+  "path": "security/pana",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4016",
+    "rfc4058",
+    "rfc5191",
+    "rfc5192",
+    "rfc5193",
+    "rfc5609",
+    "rfc5807",
+    "rfc5872",
+    "rfc5873",
+    "rfc6345",
+    "rfc6786"
+  ],
+  "document_meta": {
+    "rfc4016": {
+      "title": "Protocol for Carrying Authentication and Network Access (PANA) Threat Analysis and Security Requirements",
+      "subseries": []
+    },
+    "rfc4058": {
+      "title": "Protocol for Carrying Authentication for Network Access (PANA) Requirements",
+      "subseries": []
+    },
+    "rfc5191": { "title": "Protocol for Carrying Authentication for Network Access (PANA)", "subseries": [] },
+    "rfc5192": {
+      "title": "DHCP Options for Protocol for Carrying Authentication for Network Access (PANA) Authentication Agents",
+      "subseries": []
+    },
+    "rfc5193": { "title": "Protocol for Carrying Authentication for Network Access (PANA) Framework", "subseries": [] },
+    "rfc5609": {
+      "title": "State Machines for the Protocol for Carrying Authentication for Network Access (PANA)",
+      "subseries": []
+    },
+    "rfc5807": { "title": "Definition of Master Key between PANA Client and Enforcement Point", "subseries": [] },
+    "rfc5872": {
+      "title": "IANA Rules for the Protocol for Carrying Authentication for Network Access (PANA)",
+      "subseries": []
+    },
+    "rfc5873": {
+      "title": "Pre-Authentication Support for the Protocol for Carrying Authentication for Network Access (PANA)",
+      "subseries": []
+    },
+    "rfc6345": {
+      "title": "Protocol for Carrying Authentication for Network Access (PANA) Relay Element",
+      "subseries": []
+    },
+    "rfc6786": {
+      "title": "Encrypting the Protocol for Carrying Authentication for Network Access (PANA) Attribute-Value Pairs",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

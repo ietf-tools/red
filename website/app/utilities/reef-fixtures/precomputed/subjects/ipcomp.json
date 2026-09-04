@@ -1,0 +1,22 @@
+{
+  "id": 813,
+  "slug": "ipcomp",
+  "name": "IPComp",
+  "description": "IP payload compression",
+  "parent": "compression",
+  "path": "data-formats/compression/ipcomp",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2393", "rfc2394", "rfc2395", "rfc3051", "rfc3173"],
+  "document_meta": {
+    "rfc2393": { "title": "IP Payload Compression Protocol (IPComp)", "subseries": [] },
+    "rfc2394": { "title": "IP Payload Compression Using DEFLATE", "subseries": [] },
+    "rfc2395": { "title": "IP Payload Compression Using LZS", "subseries": [] },
+    "rfc3051": { "title": "IP Payload Compression Using ITU-T V.44 Packet Method", "subseries": [] },
+    "rfc3173": { "title": "IP Payload Compression Protocol (IPComp)", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "compression": { "name": "Compression" } }
+}

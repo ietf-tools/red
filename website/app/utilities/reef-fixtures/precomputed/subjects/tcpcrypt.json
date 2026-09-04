@@ -1,0 +1,19 @@
+{
+  "id": 987,
+  "slug": "tcpcrypt",
+  "name": "tcpcrypt",
+  "description": "Opportunistic TCP-level encryption (tcpcrypt)",
+  "parent": "tcp",
+  "path": "transport/tcp/tcpcrypt",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8547", "rfc8548"],
+  "document_meta": {
+    "rfc8547": { "title": "TCP-ENO: Encryption Negotiation Option", "subseries": [] },
+    "rfc8548": { "title": "Cryptographic Protection of TCP Streams (tcpcrypt)", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "tcp": { "name": "TCP" } }
+}

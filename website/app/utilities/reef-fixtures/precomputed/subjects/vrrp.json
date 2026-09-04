@@ -1,0 +1,31 @@
+{
+  "id": 730,
+  "slug": "vrrp",
+  "name": "VRRP",
+  "description": "Virtual Router Redundancy Protocol",
+  "parent": "routing",
+  "path": "routing/vrrp",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2338", "rfc2787", "rfc3768", "rfc5798", "rfc6527", "rfc7910", "rfc8347", "rfc9568"],
+  "document_meta": {
+    "rfc2338": { "title": "Virtual Router Redundancy Protocol", "subseries": [] },
+    "rfc2787": {
+      "title": "Definitions of Managed Objects for the Virtual Router Redundancy Protocol",
+      "subseries": []
+    },
+    "rfc3768": { "title": "Virtual Router Redundancy Protocol (VRRP)", "subseries": [] },
+    "rfc5798": { "title": "Virtual Router Redundancy Protocol (VRRP) Version 3 for IPv4 and IPv6", "subseries": [] },
+    "rfc6527": {
+      "title": "Definitions of Managed Objects for Virtual Router Redundancy Protocol Version 3 (VRRPv3)",
+      "subseries": []
+    },
+    "rfc7910": { "title": "Interoperability between the Virtual Router Redundancy Protocol and PIM", "subseries": [] },
+    "rfc8347": { "title": "A YANG Data Model for the Virtual Router Redundancy Protocol (VRRP)", "subseries": [] },
+    "rfc9568": { "title": "Virtual Router Redundancy Protocol (VRRP) Version 3 for IPv4 and IPv6", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

@@ -1,0 +1,16 @@
+{
+  "id": 823,
+  "slug": "rfcxml",
+  "name": "RFCXML",
+  "description": "RFCXML, the XML vocabulary for RFCs and Internet-Drafts (processed by xml2rfc)",
+  "parent": "rfc-series",
+  "path": "internet-governance/rfc-series/rfcxml",
+  "document_count": 0,
+  "document_count_deep": 0,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": { "internet-governance": { "name": "Internet Governance" }, "rfc-series": { "name": "RFC Series" } }
+}

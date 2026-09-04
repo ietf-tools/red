@@ -1,0 +1,87 @@
+{
+  "id": 615,
+  "slug": "ace",
+  "name": "ACE",
+  "description": "Authentication and authorization for constrained environments",
+  "parent": "iot",
+  "path": "iot/ace",
+  "document_count": 15,
+  "document_count_deep": 18,
+  "retired": false,
+  "children": ["edhoc"],
+  "aliases": [],
+  "documents": [
+    "rfc7744",
+    "rfc8392",
+    "rfc8747",
+    "rfc9148",
+    "rfc9200",
+    "rfc9201",
+    "rfc9202",
+    "rfc9203",
+    "rfc9237",
+    "rfc9430",
+    "rfc9431",
+    "rfc9482",
+    "rfc9594",
+    "rfc9770",
+    "rfc9820"
+  ],
+  "document_meta": {
+    "rfc7744": {
+      "title": "Use Cases for Authentication and Authorization in Constrained Environments",
+      "subseries": []
+    },
+    "rfc8392": { "title": "CBOR Web Token (CWT)", "subseries": [] },
+    "rfc8747": { "title": "Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)", "subseries": [] },
+    "rfc9148": {
+      "title": "EST-coaps: Enrollment over Secure Transport with the Secure Constrained Application Protocol",
+      "subseries": []
+    },
+    "rfc9200": {
+      "title": "Authentication and Authorization for Constrained Environments Using the OAuth 2.0 Framework (ACE-OAuth)",
+      "subseries": []
+    },
+    "rfc9201": {
+      "title": "Additional OAuth Parameters for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9202": {
+      "title": "Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9203": {
+      "title": "The Object Security for Constrained RESTful Environments (OSCORE) Profile of the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9237": {
+      "title": "An Authorization Information Format (AIF) for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9430": {
+      "title": "Extension of the Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE) to Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc9431": {
+      "title": "Message Queuing Telemetry Transport (MQTT) and Transport Layer Security (TLS) Profile of Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9482": {
+      "title": "Constrained Application Protocol (CoAP) Transfer for the Certificate Management Protocol",
+      "subseries": []
+    },
+    "rfc9594": {
+      "title": "Key Provisioning for Group Communication Using Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9770": {
+      "title": "Notification of Revoked Access Tokens in the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9820": {
+      "title": "Authentication Service Based on the Extensible Authentication Protocol (EAP) for Use with the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" }, "edhoc": { "name": "EDHOC" } }
+}

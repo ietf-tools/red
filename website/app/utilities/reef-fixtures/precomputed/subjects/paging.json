@@ -1,0 +1,40 @@
+{
+  "id": 654,
+  "slug": "paging",
+  "name": "Paging",
+  "description": "Radio and network paging protocols",
+  "parent": "messaging",
+  "path": "messaging/paging",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1528", "rfc1529", "rfc1530", "rfc1568", "rfc1569", "rfc1645", "rfc1703", "rfc1861"],
+  "document_meta": {
+    "rfc1528": {
+      "title": "Principles of Operation for the TPC.INT Subdomain: Remote Printing -- Technical Procedures",
+      "subseries": []
+    },
+    "rfc1529": {
+      "title": "Principles of Operation for the TPC.INT Subdomain: Remote Printing -- Administrative Policies",
+      "subseries": []
+    },
+    "rfc1530": {
+      "title": "Principles of Operation for the TPC.INT Subdomain: General Principles and Policy",
+      "subseries": []
+    },
+    "rfc1568": { "title": "Simple Network Paging Protocol - Version 1(b)", "subseries": [] },
+    "rfc1569": {
+      "title": "Principles of Operation for the TPC.INT Subdomain: Radio Paging -- Technical Procedures",
+      "subseries": []
+    },
+    "rfc1645": { "title": "Simple Network Paging Protocol - Version 2", "subseries": [] },
+    "rfc1703": {
+      "title": "Principles of Operation for the TPC.INT Subdomain: Radio Paging -- Technical Procedures",
+      "subseries": []
+    },
+    "rfc1861": { "title": "Simple Network Paging Protocol - Version 3 -Two-Way Enhanced", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" } }
+}

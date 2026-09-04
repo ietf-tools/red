@@ -1,0 +1,64 @@
+{
+  "id": 547,
+  "slug": "beep",
+  "name": "BEEP",
+  "description": "Blocks Extensible Exchange Protocol",
+  "parent": "applications",
+  "path": "applications/beep",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3080",
+    "rfc3081",
+    "rfc3117",
+    "rfc3195",
+    "rfc3288",
+    "rfc3349",
+    "rfc3529",
+    "rfc3620",
+    "rfc3767",
+    "rfc3983",
+    "rfc4227",
+    "rfc4744",
+    "rfc4767",
+    "rfc5573"
+  ],
+  "document_meta": {
+    "rfc3080": { "title": "The Blocks Extensible Exchange Protocol Core", "subseries": [] },
+    "rfc3081": { "title": "Mapping the BEEP Core onto TCP", "subseries": [] },
+    "rfc3117": { "title": "On the Design of Application Protocols", "subseries": [] },
+    "rfc3195": { "title": "Reliable Delivery for syslog", "subseries": [] },
+    "rfc3288": {
+      "title": "Using the Simple Object Access Protocol (SOAP) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc3349": {
+      "title": "A Transient Prefix for Identifying Profiles under Development by the Working Groups of the Internet Engineering Task Force",
+      "subseries": ["bcp59"]
+    },
+    "rfc3529": {
+      "title": "Using Extensible Markup Language-Remote Procedure Calling (XML-RPC) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc3620": { "title": "The TUNNEL Profile", "subseries": [] },
+    "rfc3767": { "title": "Securely Available Credentials Protocol", "subseries": [] },
+    "rfc3983": {
+      "title": "Using the Internet Registry Information Service (IRIS) over the Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4227": {
+      "title": "Using the Simple Object Access Protocol (SOAP) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4744": {
+      "title": "Using the NETCONF Protocol over the Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4767": { "title": "The Intrusion Detection Exchange Protocol (IDXP)", "subseries": [] },
+    "rfc5573": { "title": "Asynchronous Channels for the Blocks Extensible Exchange Protocol (BEEP)", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

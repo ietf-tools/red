@@ -1,0 +1,719 @@
+{
+  "id": 913,
+  "slug": "gmpls",
+  "name": "GMPLS",
+  "description": "Generalized MPLS and optical/transport network control",
+  "parent": "mpls",
+  "path": "routing/mpls/gmpls",
+  "document_count": 172,
+  "document_count_deep": 172,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1619",
+    "rfc2615",
+    "rfc2823",
+    "rfc3255",
+    "rfc3422",
+    "rfc3471",
+    "rfc3472",
+    "rfc3473",
+    "rfc3474",
+    "rfc3475",
+    "rfc3476",
+    "rfc3498",
+    "rfc3572",
+    "rfc3591",
+    "rfc3592",
+    "rfc3604",
+    "rfc3609",
+    "rfc3717",
+    "rfc3945",
+    "rfc3946",
+    "rfc4003",
+    "rfc4054",
+    "rfc4139",
+    "rfc4197",
+    "rfc4201",
+    "rfc4202",
+    "rfc4203",
+    "rfc4204",
+    "rfc4205",
+    "rfc4206",
+    "rfc4207",
+    "rfc4208",
+    "rfc4209",
+    "rfc4257",
+    "rfc4258",
+    "rfc4327",
+    "rfc4328",
+    "rfc4394",
+    "rfc4397",
+    "rfc4426",
+    "rfc4427",
+    "rfc4428",
+    "rfc4558",
+    "rfc4606",
+    "rfc4631",
+    "rfc4652",
+    "rfc4726",
+    "rfc4736",
+    "rfc4783",
+    "rfc4801",
+    "rfc4802",
+    "rfc4803",
+    "rfc4837",
+    "rfc4842",
+    "rfc4872",
+    "rfc4873",
+    "rfc4874",
+    "rfc4906",
+    "rfc4920",
+    "rfc4927",
+    "rfc4929",
+    "rfc4972",
+    "rfc4974",
+    "rfc4990",
+    "rfc5063",
+    "rfc5073",
+    "rfc5143",
+    "rfc5145",
+    "rfc5146",
+    "rfc5150",
+    "rfc5151",
+    "rfc5152",
+    "rfc5212",
+    "rfc5253",
+    "rfc5298",
+    "rfc5307",
+    "rfc5316",
+    "rfc5317",
+    "rfc5339",
+    "rfc5376",
+    "rfc5392",
+    "rfc5420",
+    "rfc5440",
+    "rfc5467",
+    "rfc5493",
+    "rfc5495",
+    "rfc5521",
+    "rfc5553",
+    "rfc5623",
+    "rfc5671",
+    "rfc5710",
+    "rfc5787",
+    "rfc5814",
+    "rfc5817",
+    "rfc5818",
+    "rfc5828",
+    "rfc5852",
+    "rfc5862",
+    "rfc5920",
+    "rfc6001",
+    "rfc6002",
+    "rfc6003",
+    "rfc6004",
+    "rfc6005",
+    "rfc6060",
+    "rfc6107",
+    "rfc6163",
+    "rfc6205",
+    "rfc6240",
+    "rfc6344",
+    "rfc6373",
+    "rfc6383",
+    "rfc6387",
+    "rfc6456",
+    "rfc6457",
+    "rfc6510",
+    "rfc6566",
+    "rfc6689",
+    "rfc6777",
+    "rfc6780",
+    "rfc6805",
+    "rfc6825",
+    "rfc6827",
+    "rfc6898",
+    "rfc6934",
+    "rfc7025",
+    "rfc7062",
+    "rfc7074",
+    "rfc7096",
+    "rfc7138",
+    "rfc7139",
+    "rfc7260",
+    "rfc7271",
+    "rfc7369",
+    "rfc7446",
+    "rfc7449",
+    "rfc7487",
+    "rfc7570",
+    "rfc7571",
+    "rfc7579",
+    "rfc7580",
+    "rfc7581",
+    "rfc7688",
+    "rfc7689",
+    "rfc7698",
+    "rfc7699",
+    "rfc7709",
+    "rfc7792",
+    "rfc7892",
+    "rfc7963",
+    "rfc8024",
+    "rfc8131",
+    "rfc8258",
+    "rfc8271",
+    "rfc8282",
+    "rfc8330",
+    "rfc8363",
+    "rfc8432",
+    "rfc8561",
+    "rfc8625",
+    "rfc8632",
+    "rfc8694",
+    "rfc8779",
+    "rfc8780",
+    "rfc9093",
+    "rfc9094",
+    "rfc9270",
+    "rfc9346",
+    "rfc9376",
+    "rfc9504",
+    "rfc9656",
+    "rfc9730"
+  ],
+  "document_meta": {
+    "rfc1619": { "title": "PPP over SONET/SDH", "subseries": [] },
+    "rfc2615": { "title": "PPP over SONET/SDH", "subseries": [] },
+    "rfc2823": { "title": "PPP over Simple Data Link (SDL) using SONET/SDH with ATM-like framing", "subseries": [] },
+    "rfc3255": {
+      "title": "Extending Point-to-Point Protocol (PPP) over Synchronous Optical NETwork/Synchronous Digital Hierarchy (SONET/SDH) with virtual concatenation, high order and low order payloads",
+      "subseries": []
+    },
+    "rfc3422": {
+      "title": "Forwarding Media Access Control (MAC) Frames over Multiple Access Protocol over Synchronous Optical Network/Synchronous Digital Hierarchy (MAPOS)",
+      "subseries": []
+    },
+    "rfc3471": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Signaling Functional Description",
+      "subseries": []
+    },
+    "rfc3472": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Signaling Constraint-based Routed Label Distribution Protocol (CR-LDP) Extensions",
+      "subseries": []
+    },
+    "rfc3473": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Signaling Resource ReserVation Protocol-Traffic Engineering (RSVP-TE) Extensions",
+      "subseries": []
+    },
+    "rfc3474": {
+      "title": "Documentation of IANA assignments for Generalized MultiProtocol Label Switching (GMPLS) Resource Reservation Protocol - Traffic Engineering (RSVP-TE) Usage and Extensions for Automatically Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc3475": {
+      "title": "Documentation of IANA assignments for Constraint-Based LSP setup using LDP (CR-LDP) Extensions for Automatic Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc3476": {
+      "title": "Documentation of IANA Assignments for Label Distribution Protocol (LDP), Resource ReSerVation Protocol (RSVP), and Resource ReSerVation Protocol-Traffic Engineering (RSVP-TE) Extensions for Optical UNI Signaling",
+      "subseries": []
+    },
+    "rfc3498": {
+      "title": "Definitions of Managed Objects for Synchronous Optical Network (SONET) Linear Automatic Protection Switching (APS) Architectures",
+      "subseries": []
+    },
+    "rfc3572": {
+      "title": "Internet Protocol Version 6 over MAPOS (Multiple Access Protocol Over SONET/SDH)",
+      "subseries": []
+    },
+    "rfc3591": { "title": "Definitions of Managed Objects for the Optical Interface Type", "subseries": [] },
+    "rfc3592": {
+      "title": "Definitions of Managed Objects for the Synchronous Optical Network/Synchronous Digital Hierarchy (SONET/SDH) Interface Type",
+      "subseries": []
+    },
+    "rfc3604": {
+      "title": "Requirements for Adding Optical Support to the General Switch Management Protocol version 3 (GSMPv3)",
+      "subseries": []
+    },
+    "rfc3609": { "title": "Tracing Requirements for Generic Tunnels", "subseries": [] },
+    "rfc3717": { "title": "IP over Optical Networks: A Framework", "subseries": [] },
+    "rfc3945": { "title": "Generalized Multi-Protocol Label Switching (GMPLS) Architecture", "subseries": [] },
+    "rfc3946": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Extensions for Synchronous Optical Network (SONET) and Synchronous Digital Hierarchy (SDH) Control",
+      "subseries": []
+    },
+    "rfc4003": { "title": "GMPLS Signaling Procedure for Egress Control", "subseries": [] },
+    "rfc4054": { "title": "Impairments and Other Constraints on Optical Layer Routing", "subseries": [] },
+    "rfc4139": {
+      "title": "Requirements for Generalized MPLS (GMPLS) Signaling Usage and Extensions for Automatically Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc4197": {
+      "title": "Requirements for Edge-to-Edge Emulation of Time Division Multiplexed (TDM) Circuits over Packet Switching Networks",
+      "subseries": []
+    },
+    "rfc4201": { "title": "Link Bundling in MPLS Traffic Engineering (TE)", "subseries": [] },
+    "rfc4202": {
+      "title": "Routing Extensions in Support of Generalized Multi-Protocol Label Switching (GMPLS)",
+      "subseries": []
+    },
+    "rfc4203": {
+      "title": "OSPF Extensions in Support of Generalized Multi-Protocol Label Switching (GMPLS)",
+      "subseries": []
+    },
+    "rfc4204": { "title": "Link Management Protocol (LMP)", "subseries": [] },
+    "rfc4205": {
+      "title": "Intermediate System to Intermediate System (IS-IS) Extensions in Support of Generalized Multi-Protocol Label Switching (GMPLS)",
+      "subseries": []
+    },
+    "rfc4206": {
+      "title": "Label Switched Paths (LSP) Hierarchy with Generalized Multi-Protocol Label Switching (GMPLS) Traffic Engineering (TE)",
+      "subseries": []
+    },
+    "rfc4207": {
+      "title": "Synchronous Optical Network (SONET)/Synchronous Digital Hierarchy (SDH) Encoding for Link Management Protocol (LMP) Test Messages",
+      "subseries": []
+    },
+    "rfc4208": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) User-Network Interface (UNI): Resource ReserVation Protocol-Traffic Engineering (RSVP-TE) Support for the Overlay Model",
+      "subseries": []
+    },
+    "rfc4209": {
+      "title": "Link Management Protocol (LMP) for Dense Wavelength Division Multiplexing (DWDM) Optical Line Systems",
+      "subseries": []
+    },
+    "rfc4257": {
+      "title": "Framework for Generalized Multi-Protocol Label Switching (GMPLS)-based Control of Synchronous Digital Hierarchy/Synchronous Optical Networking (SDH/SONET) Networks",
+      "subseries": []
+    },
+    "rfc4258": {
+      "title": "Requirements for Generalized Multi-Protocol Label Switching (GMPLS) Routing for the Automatically Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc4327": { "title": "Link Management Protocol (LMP) Management Information Base (MIB)", "subseries": [] },
+    "rfc4328": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Signaling Extensions for G.709 Optical Transport Networks Control",
+      "subseries": []
+    },
+    "rfc4394": { "title": "A Transport Network View of the Link Management Protocol (LMP)", "subseries": [] },
+    "rfc4397": {
+      "title": "A Lexicography for the Interpretation of Generalized Multiprotocol Label Switching (GMPLS) Terminology within the Context of the ITU-T's Automatically Switched Optical Network (ASON) Architecture",
+      "subseries": []
+    },
+    "rfc4426": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Recovery Functional Specification",
+      "subseries": []
+    },
+    "rfc4427": {
+      "title": "Recovery (Protection and Restoration) Terminology for Generalized Multi-Protocol Label Switching (GMPLS)",
+      "subseries": []
+    },
+    "rfc4428": {
+      "title": "Analysis of Generalized Multi-Protocol Label Switching (GMPLS)-based Recovery Mechanisms (including Protection and Restoration)",
+      "subseries": []
+    },
+    "rfc4558": {
+      "title": "Node-ID Based Resource Reservation Protocol (RSVP) Hello: A Clarification Statement",
+      "subseries": []
+    },
+    "rfc4606": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Extensions for Synchronous Optical Network (SONET) and Synchronous Digital Hierarchy (SDH) Control",
+      "subseries": []
+    },
+    "rfc4631": { "title": "Link Management Protocol (LMP) Management Information Base (MIB)", "subseries": [] },
+    "rfc4652": {
+      "title": "Evaluation of Existing Routing Protocols against Automatic Switched Optical Network (ASON) Routing Requirements",
+      "subseries": []
+    },
+    "rfc4726": {
+      "title": "A Framework for Inter-Domain Multiprotocol Label Switching Traffic Engineering",
+      "subseries": []
+    },
+    "rfc4736": {
+      "title": "Reoptimization of Multiprotocol Label Switching (MPLS) Traffic Engineering (TE) Loosely Routed Label Switched Path (LSP)",
+      "subseries": []
+    },
+    "rfc4783": { "title": "GMPLS - Communication of Alarm Information", "subseries": [] },
+    "rfc4801": {
+      "title": "Definitions of Textual Conventions for Generalized Multiprotocol Label Switching (GMPLS) Management",
+      "subseries": []
+    },
+    "rfc4802": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) Traffic Engineering Management Information Base",
+      "subseries": []
+    },
+    "rfc4803": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) Label Switching Router (LSR) Management Information Base",
+      "subseries": []
+    },
+    "rfc4837": { "title": "Managed Objects of Ethernet Passive Optical Networks (EPON)", "subseries": [] },
+    "rfc4842": {
+      "title": "Synchronous Optical Network/Synchronous Digital Hierarchy (SONET/SDH) Circuit Emulation over Packet (CEP)",
+      "subseries": []
+    },
+    "rfc4872": {
+      "title": "RSVP-TE Extensions in Support of End-to-End Generalized Multi-Protocol Label Switching (GMPLS) Recovery",
+      "subseries": []
+    },
+    "rfc4873": { "title": "GMPLS Segment Recovery", "subseries": [] },
+    "rfc4874": {
+      "title": "Exclude Routes - Extension to Resource ReserVation Protocol-Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc4906": { "title": "Transport of Layer 2 Frames Over MPLS", "subseries": [] },
+    "rfc4920": { "title": "Crankback Signaling Extensions for MPLS and GMPLS RSVP-TE", "subseries": [] },
+    "rfc4927": {
+      "title": "Path Computation Element Communication Protocol (PCECP) Specific Requirements for Inter-Area MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc4929": {
+      "title": "Change Process for Multiprotocol Label Switching (MPLS) and Generalized MPLS (GMPLS) Protocols and Procedures",
+      "subseries": ["bcp129"]
+    },
+    "rfc4972": {
+      "title": "Routing Extensions for Discovery of Multiprotocol (MPLS) Label Switch Router (LSR) Traffic Engineering (TE) Mesh Membership",
+      "subseries": []
+    },
+    "rfc4974": {
+      "title": "Generalized MPLS (GMPLS) RSVP-TE Signaling Extensions in Support of Calls",
+      "subseries": []
+    },
+    "rfc4990": {
+      "title": "Use of Addresses in Generalized Multiprotocol Label Switching (GMPLS) Networks",
+      "subseries": []
+    },
+    "rfc5063": {
+      "title": "Extensions to GMPLS Resource Reservation Protocol (RSVP) Graceful Restart",
+      "subseries": []
+    },
+    "rfc5073": {
+      "title": "IGP Routing Protocol Extensions for Discovery of Traffic Engineering Node Capabilities",
+      "subseries": []
+    },
+    "rfc5143": {
+      "title": "Synchronous Optical Network/Synchronous Digital Hierarchy (SONET/SDH) Circuit Emulation Service over MPLS (CEM) Encapsulation",
+      "subseries": []
+    },
+    "rfc5145": { "title": "Framework for MPLS-TE to GMPLS Migration", "subseries": [] },
+    "rfc5146": {
+      "title": "Interworking Requirements to Support Operation of MPLS-TE over GMPLS Networks",
+      "subseries": []
+    },
+    "rfc5150": {
+      "title": "Label Switched Path Stitching with Generalized Multiprotocol Label Switching Traffic Engineering (GMPLS TE)",
+      "subseries": []
+    },
+    "rfc5151": {
+      "title": "Inter-Domain MPLS and GMPLS Traffic Engineering -- Resource Reservation Protocol-Traffic Engineering (RSVP-TE) Extensions",
+      "subseries": []
+    },
+    "rfc5152": {
+      "title": "A Per-Domain Path Computation Method for Establishing Inter-Domain Traffic Engineering (TE) Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc5212": {
+      "title": "Requirements for GMPLS-Based Multi-Region and Multi-Layer Networks (MRN/MLN)",
+      "subseries": []
+    },
+    "rfc5253": {
+      "title": "Applicability Statement for Layer 1 Virtual Private Network (L1VPN) Basic Mode",
+      "subseries": []
+    },
+    "rfc5298": { "title": "Analysis of Inter-Domain Label Switched Path (LSP) Recovery", "subseries": [] },
+    "rfc5307": {
+      "title": "IS-IS Extensions in Support of Generalized Multi-Protocol Label Switching (GMPLS)",
+      "subseries": []
+    },
+    "rfc5316": {
+      "title": "ISIS Extensions in Support of Inter-Autonomous System (AS) MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc5317": {
+      "title": "Joint Working Team (JWT) Report on MPLS Architectural Considerations for a Transport Profile",
+      "subseries": []
+    },
+    "rfc5339": {
+      "title": "Evaluation of Existing GMPLS Protocols against Multi-Layer and Multi-Region Networks (MLN/MRN)",
+      "subseries": []
+    },
+    "rfc5376": {
+      "title": "Inter-AS Requirements for the Path Computation Element Communication Protocol (PCECP)",
+      "subseries": []
+    },
+    "rfc5392": {
+      "title": "OSPF Extensions in Support of Inter-Autonomous System (AS) MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc5420": {
+      "title": "Encoding of Attributes for MPLS LSP Establishment Using Resource Reservation Protocol Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc5440": { "title": "Path Computation Element (PCE) Communication Protocol (PCEP)", "subseries": [] },
+    "rfc5467": { "title": "GMPLS Asymmetric Bandwidth Bidirectional Label Switched Paths (LSPs)", "subseries": [] },
+    "rfc5493": {
+      "title": "Requirements for the Conversion between Permanent Connections and Switched Connections in a Generalized Multiprotocol Label Switching (GMPLS) Network",
+      "subseries": []
+    },
+    "rfc5495": {
+      "title": "Description of the Resource Reservation Protocol - Traffic-Engineered (RSVP-TE) Graceful Restart Procedures",
+      "subseries": []
+    },
+    "rfc5521": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Route Exclusions",
+      "subseries": []
+    },
+    "rfc5553": { "title": "Resource Reservation Protocol (RSVP) Extensions for Path Key Support", "subseries": [] },
+    "rfc5623": { "title": "Framework for PCE-Based Inter-Layer MPLS and GMPLS Traffic Engineering", "subseries": [] },
+    "rfc5671": {
+      "title": "Applicability of the Path Computation Element (PCE) to Point-to-Multipoint (P2MP) MPLS and GMPLS Traffic Engineering (TE)",
+      "subseries": []
+    },
+    "rfc5710": { "title": "PathErr Message Triggered MPLS and GMPLS LSP Reroutes", "subseries": [] },
+    "rfc5787": {
+      "title": "OSPFv2 Routing Protocols Extensions for Automatically Switched Optical Network (ASON) Routing",
+      "subseries": []
+    },
+    "rfc5814": {
+      "title": "Label Switched Path (LSP) Dynamic Provisioning Performance Metrics in Generalized MPLS Networks",
+      "subseries": []
+    },
+    "rfc5817": {
+      "title": "Graceful Shutdown in MPLS and Generalized MPLS Traffic Engineering Networks",
+      "subseries": []
+    },
+    "rfc5818": {
+      "title": "Data Channel Status Confirmation Extensions for the Link Management Protocol",
+      "subseries": []
+    },
+    "rfc5828": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) Ethernet Label Switching Architecture and Framework",
+      "subseries": []
+    },
+    "rfc5852": {
+      "title": "RSVP-TE Signaling Extension for LSP Handover from the Management Plane to the Control Plane in a GMPLS-Enabled Transport Network",
+      "subseries": []
+    },
+    "rfc5862": {
+      "title": "Path Computation Clients (PCC) - Path Computation Element (PCE) Requirements for Point-to-Multipoint MPLS-TE",
+      "subseries": []
+    },
+    "rfc5920": { "title": "Security Framework for MPLS and GMPLS Networks", "subseries": [] },
+    "rfc6001": {
+      "title": "Generalized MPLS (GMPLS) Protocol Extensions for Multi-Layer and Multi-Region Networks (MLN/MRN)",
+      "subseries": []
+    },
+    "rfc6002": {
+      "title": "Generalized MPLS (GMPLS) Data Channel Switching Capable (DCSC) and Channel Set Label Extensions",
+      "subseries": []
+    },
+    "rfc6003": { "title": "Ethernet Traffic Parameters", "subseries": [] },
+    "rfc6004": {
+      "title": "Generalized MPLS (GMPLS) Support for Metro Ethernet Forum and G.8011 Ethernet Service Switching",
+      "subseries": []
+    },
+    "rfc6005": {
+      "title": "Generalized MPLS (GMPLS) Support for Metro Ethernet Forum and G.8011 User Network Interface (UNI)",
+      "subseries": []
+    },
+    "rfc6060": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) Control of Ethernet Provider Backbone Traffic Engineering (PBB-TE)",
+      "subseries": []
+    },
+    "rfc6107": { "title": "Procedures for Dynamically Signaled Hierarchical Label Switched Paths", "subseries": [] },
+    "rfc6163": {
+      "title": "Framework for GMPLS and Path Computation Element (PCE) Control of Wavelength Switched Optical Networks (WSONs)",
+      "subseries": []
+    },
+    "rfc6205": {
+      "title": "Generalized Labels for Lambda-Switch-Capable (LSC) Label Switching Routers",
+      "subseries": []
+    },
+    "rfc6240": {
+      "title": "Synchronous Optical Network/Synchronous Digital Hierarchy (SONET/SDH) Circuit Emulation over Packet (CEP) MIB Using SMIv2",
+      "subseries": []
+    },
+    "rfc6344": {
+      "title": "Operating Virtual Concatenation (VCAT) and the Link Capacity Adjustment Scheme (LCAS) with Generalized Multi-Protocol Label Switching (GMPLS)",
+      "subseries": []
+    },
+    "rfc6373": { "title": "MPLS Transport Profile (MPLS-TP) Control Plane Framework", "subseries": [] },
+    "rfc6383": {
+      "title": "Advice on When It Is Safe to Start Sending Data on Label Switched Paths Established Using RSVP-TE",
+      "subseries": []
+    },
+    "rfc6387": { "title": "GMPLS Asymmetric Bandwidth Bidirectional Label Switched Paths (LSPs)", "subseries": [] },
+    "rfc6456": { "title": "Multi-Segment Pseudowires in Passive Optical Networks", "subseries": [] },
+    "rfc6457": {
+      "title": "PCC-PCE Communication and PCE Discovery Requirements for Inter-Layer Traffic Engineering",
+      "subseries": []
+    },
+    "rfc6510": {
+      "title": "Resource Reservation Protocol (RSVP) Message Formats for Label Switched Path (LSP) Attributes Objects",
+      "subseries": []
+    },
+    "rfc6566": {
+      "title": "A Framework for the Control of Wavelength Switched Optical Networks (WSONs) with Impairments",
+      "subseries": []
+    },
+    "rfc6689": { "title": "Usage of the RSVP ASSOCIATION Object", "subseries": [] },
+    "rfc6777": {
+      "title": "Label Switched Path (LSP) Data Path Delay Metrics in Generalized MPLS and MPLS Traffic Engineering (MPLS-TE) Networks",
+      "subseries": []
+    },
+    "rfc6780": { "title": "RSVP ASSOCIATION Object Extensions", "subseries": [] },
+    "rfc6805": {
+      "title": "The Application of the Path Computation Element Architecture to the Determination of a Sequence of Domains in MPLS and GMPLS",
+      "subseries": []
+    },
+    "rfc6825": {
+      "title": "Traffic Engineering Database Management Information Base in Support of MPLS-TE/GMPLS",
+      "subseries": []
+    },
+    "rfc6827": {
+      "title": "Automatically Switched Optical Network (ASON) Routing for OSPFv2 Protocols",
+      "subseries": []
+    },
+    "rfc6898": {
+      "title": "Link Management Protocol Behavior Negotiation and Configuration Modifications",
+      "subseries": []
+    },
+    "rfc6934": {
+      "title": "Applicability of the Access Node Control Mechanism to Broadband Networks Based on Passive Optical Networks (PONs)",
+      "subseries": []
+    },
+    "rfc7025": { "title": "Requirements for GMPLS Applications of PCE", "subseries": [] },
+    "rfc7062": { "title": "Framework for GMPLS and PCE Control of G.709 Optical Transport Networks", "subseries": [] },
+    "rfc7074": { "title": "Revised Definition of the GMPLS Switching Capability and Type Fields", "subseries": [] },
+    "rfc7096": {
+      "title": "Evaluation of Existing GMPLS Encoding against G.709v3 Optical Transport Networks (OTNs)",
+      "subseries": []
+    },
+    "rfc7138": {
+      "title": "Traffic Engineering Extensions to OSPF for GMPLS Control of Evolving G.709 Optical Transport Networks",
+      "subseries": []
+    },
+    "rfc7139": {
+      "title": "GMPLS Signaling Extensions for Control of Evolving G.709 Optical Transport Networks",
+      "subseries": []
+    },
+    "rfc7260": {
+      "title": "GMPLS RSVP-TE Extensions for Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7271": {
+      "title": "MPLS Transport Profile (MPLS-TP) Linear Protection to Match the Operational Expectations of Synchronous Digital Hierarchy, Optical Transport Network, and Ethernet Transport Network Operators",
+      "subseries": []
+    },
+    "rfc7369": {
+      "title": "GMPLS RSVP-TE Extensions for Ethernet Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7446": {
+      "title": "Routing and Wavelength Assignment Information Model for Wavelength Switched Optical Networks",
+      "subseries": []
+    },
+    "rfc7449": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Requirements for Wavelength Switched Optical Network (WSON) Routing and Wavelength Assignment",
+      "subseries": []
+    },
+    "rfc7487": {
+      "title": "Configuration of Proactive Operations, Administration, and Maintenance (OAM) Functions for MPLS-Based Transport Networks Using RSVP-TE",
+      "subseries": []
+    },
+    "rfc7570": { "title": "Label Switched Path (LSP) Attribute in the Explicit Route Object (ERO)", "subseries": [] },
+    "rfc7571": { "title": "GMPLS RSVP-TE Extensions for Lock Instruct and Loopback", "subseries": [] },
+    "rfc7579": {
+      "title": "General Network Element Constraint Encoding for GMPLS-Controlled Networks",
+      "subseries": []
+    },
+    "rfc7580": { "title": "OSPF-TE Extensions for General Network Element Constraints", "subseries": [] },
+    "rfc7581": {
+      "title": "Routing and Wavelength Assignment Information Encoding for Wavelength Switched Optical Networks",
+      "subseries": []
+    },
+    "rfc7688": {
+      "title": "GMPLS OSPF Enhancement for Signal and Network Element Compatibility for Wavelength Switched Optical Networks",
+      "subseries": []
+    },
+    "rfc7689": { "title": "Signaling Extensions for Wavelength Switched Optical Networks", "subseries": [] },
+    "rfc7698": {
+      "title": "Framework and Requirements for GMPLS-Based Control of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks",
+      "subseries": []
+    },
+    "rfc7699": {
+      "title": "Generalized Labels for the Flexi-Grid in Lambda Switch Capable (LSC) Label Switching Routers",
+      "subseries": []
+    },
+    "rfc7709": { "title": "Requirements for Very Fast Setup of GMPLS Label Switched Paths (LSPs)", "subseries": [] },
+    "rfc7792": {
+      "title": "RSVP-TE Signaling Extensions in Support of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks",
+      "subseries": []
+    },
+    "rfc7892": { "title": "IANA Allocation Procedures for the GMPLS OTN Signal Type Registry", "subseries": [] },
+    "rfc7963": {
+      "title": "RSVP-TE Extension for Additional Signal Types in G.709 Optical Transport Networks (OTNs)",
+      "subseries": []
+    },
+    "rfc8024": { "title": "Multi-Chassis Passive Optical Network (MC-PON) Protection in MPLS", "subseries": [] },
+    "rfc8131": {
+      "title": "RSVP-TE Signaling Procedure for End-to-End GMPLS Restoration and Resource Sharing",
+      "subseries": []
+    },
+    "rfc8258": {
+      "title": "Generalized SCSI: A Generic Structure for Interface Switching Capability Descriptor (ISCD) Switching Capability Specific Information (SCSI)",
+      "subseries": []
+    },
+    "rfc8271": {
+      "title": "Updates to the Resource Reservation Protocol for Fast Reroute of Traffic Engineering GMPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8282": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Inter-Layer MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc8330": {
+      "title": "OSPF Traffic Engineering (OSPF-TE) Link Availability Extension for Links with Variable Discrete Bandwidth",
+      "subseries": []
+    },
+    "rfc8363": {
+      "title": "GMPLS OSPF-TE Extensions in Support of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks",
+      "subseries": []
+    },
+    "rfc8432": {
+      "title": "A Framework for Management and Control of Microwave and Millimeter Wave Interface Parameters",
+      "subseries": []
+    },
+    "rfc8561": { "title": "A YANG Data Model for Microwave Radio Link", "subseries": [] },
+    "rfc8625": { "title": "Ethernet Traffic Parameters with Availability Information", "subseries": [] },
+    "rfc8632": { "title": "A YANG Data Model for Alarm Management", "subseries": [] },
+    "rfc8694": {
+      "title": "Applicability of the Path Computation Element to Inter-area and Inter-AS MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc8779": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for GMPLS",
+      "subseries": []
+    },
+    "rfc8780": {
+      "title": "The Path Computation Element Communication Protocol (PCEP) Extension for Wavelength Switched Optical Network (WSON) Routing and Wavelength Assignment (RWA)",
+      "subseries": []
+    },
+    "rfc9093": { "title": "A YANG Data Model for Layer 0 Types", "subseries": [] },
+    "rfc9094": { "title": "A YANG Data Model for Wavelength Switched Optical Networks (WSONs)", "subseries": [] },
+    "rfc9270": { "title": "GMPLS Signaling Extensions for Shared Mesh Protection", "subseries": [] },
+    "rfc9346": {
+      "title": "IS-IS Extensions in Support of Inter-Autonomous System (AS) MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc9376": { "title": "Applicability of GMPLS for beyond 100 Gbit/s Optical Transport Network", "subseries": [] },
+    "rfc9504": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE Usage in GMPLS-Controlled Networks",
+      "subseries": []
+    },
+    "rfc9656": { "title": "A YANG Data Model for Microwave Topology", "subseries": [] },
+    "rfc9730": { "title": "Interworking of GMPLS Control and Centralized Controller Systems", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "mpls": { "name": "MPLS" } }
+}

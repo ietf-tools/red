@@ -1,0 +1,41 @@
+{
+  "id": 609,
+  "slug": "pmtud",
+  "name": "Path MTU Discovery",
+  "description": "Path MTU discovery",
+  "parent": "internet-layer",
+  "path": "internet-layer/pmtud",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1191",
+    "rfc1435",
+    "rfc1791",
+    "rfc1981",
+    "rfc2923",
+    "rfc4821",
+    "rfc8201",
+    "rfc8899",
+    "rfc9268",
+    "rfc9869"
+  ],
+  "document_meta": {
+    "rfc1191": { "title": "Path MTU discovery", "subseries": [] },
+    "rfc1435": { "title": "IESG Advice from Experience with Path MTU Discovery", "subseries": [] },
+    "rfc1791": { "title": "TCP And UDP Over IPX Networks With Fixed Path MTU", "subseries": [] },
+    "rfc1981": { "title": "Path MTU Discovery for IP version 6", "subseries": [] },
+    "rfc2923": { "title": "TCP Problems with Path MTU Discovery", "subseries": [] },
+    "rfc4821": { "title": "Packetization Layer Path MTU Discovery", "subseries": [] },
+    "rfc8201": { "title": "Path MTU Discovery for IP version 6", "subseries": ["std87"] },
+    "rfc8899": { "title": "Packetization Layer Path MTU Discovery for Datagram Transports", "subseries": [] },
+    "rfc9268": { "title": "IPv6 Minimum Path MTU Hop-by-Hop Option", "subseries": [] },
+    "rfc9869": {
+      "title": "Datagram Packetization Layer Path MTU Discovery (DPLPMTUD) for UDP Options",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

@@ -1,0 +1,89 @@
+{
+  "id": 725,
+  "slug": "sfc",
+  "name": "Service Function Chaining",
+  "description": "Service function chaining and the network service header",
+  "parent": "routing",
+  "path": "routing/sfc",
+  "document_count": 19,
+  "document_count_deep": 19,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7498",
+    "rfc7665",
+    "rfc8300",
+    "rfc8393",
+    "rfc8459",
+    "rfc8592",
+    "rfc8595",
+    "rfc8596",
+    "rfc8677",
+    "rfc8924",
+    "rfc8979",
+    "rfc9015",
+    "rfc9145",
+    "rfc9192",
+    "rfc9263",
+    "rfc9451",
+    "rfc9452",
+    "rfc9491",
+    "rfc9516"
+  ],
+  "document_meta": {
+    "rfc7498": { "title": "Problem Statement for Service Function Chaining", "subseries": [] },
+    "rfc7665": { "title": "Service Function Chaining (SFC) Architecture", "subseries": [] },
+    "rfc8300": { "title": "Network Service Header (NSH)", "subseries": [] },
+    "rfc8393": { "title": "Operating the Network Service Header (NSH) with Next Protocol \"None\"", "subseries": [] },
+    "rfc8459": { "title": "Hierarchical Service Function Chaining (hSFC)", "subseries": [] },
+    "rfc8592": {
+      "title": "Key Performance Indicator (KPI) Stamping for the Network Service Header (NSH)",
+      "subseries": []
+    },
+    "rfc8595": { "title": "An MPLS-Based Forwarding Plane for Service Function Chaining", "subseries": [] },
+    "rfc8596": {
+      "title": "MPLS Transport Encapsulation for the Service Function Chaining (SFC) Network Service Header (NSH)",
+      "subseries": []
+    },
+    "rfc8677": {
+      "title": "Name-Based Service Function Forwarder (nSFF) Component within a Service Function Chaining (SFC) Framework",
+      "subseries": []
+    },
+    "rfc8924": {
+      "title": "Service Function Chaining (SFC) Operations, Administration, and Maintenance (OAM) Framework",
+      "subseries": []
+    },
+    "rfc8979": {
+      "title": "Subscriber and Performance Policy Identifier Context Headers in the Network Service Header (NSH)",
+      "subseries": []
+    },
+    "rfc9015": {
+      "title": "BGP Control Plane for the Network Service Header in Service Function Chaining",
+      "subseries": []
+    },
+    "rfc9145": {
+      "title": "Integrity Protection for the Network Service Header (NSH) and Encryption of Sensitive Context Headers",
+      "subseries": []
+    },
+    "rfc9192": { "title": "Network Service Header (NSH) Fixed-Length Context Header Allocation", "subseries": [] },
+    "rfc9263": {
+      "title": "Network Service Header (NSH) Metadata Type 2 Variable-Length Context Headers",
+      "subseries": []
+    },
+    "rfc9451": {
+      "title": "Operations, Administration, and Maintenance (OAM) Packet and Behavior in the Network Service Header (NSH)",
+      "subseries": []
+    },
+    "rfc9452": { "title": "Network Service Header (NSH) Encapsulation for In Situ OAM (IOAM) Data", "subseries": [] },
+    "rfc9491": {
+      "title": "Integration of the Network Service Header (NSH) and Segment Routing for Service Function Chaining (SFC)",
+      "subseries": []
+    },
+    "rfc9516": {
+      "title": "Active Operations, Administration, and Maintenance (OAM) for Service Function Chaining (SFC)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

@@ -1,0 +1,25 @@
+{
+  "id": 596,
+  "slug": "drip",
+  "name": "DRIP",
+  "description": "Drone Remote Identification Protocol",
+  "parent": "internet-layer",
+  "path": "internet-layer/drip",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9153", "rfc9374", "rfc9434", "rfc9575", "rfc9886"],
+  "document_meta": {
+    "rfc9153": { "title": "Drone Remote Identification Protocol (DRIP) Requirements and Terminology", "subseries": [] },
+    "rfc9374": { "title": "DRIP Entity Tag (DET) for Unmanned Aircraft System Remote ID (UAS RID)", "subseries": [] },
+    "rfc9434": { "title": "Drone Remote Identification Protocol (DRIP) Architecture", "subseries": [] },
+    "rfc9575": {
+      "title": "DRIP Entity Tag (DET) Authentication Formats and Protocols for Broadcast Remote Identification (RID)",
+      "subseries": []
+    },
+    "rfc9886": { "title": "DRIP Entity Tags (DETs) in the Domain Name System", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

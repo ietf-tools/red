@@ -1,0 +1,76 @@
+{
+  "id": 825,
+  "slug": "cidr",
+  "name": "CIDR",
+  "description": "Classless inter-domain routing and aggregation",
+  "parent": "addressing",
+  "path": "internet-layer/addressing/cidr",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1338",
+    "rfc1466",
+    "rfc1467",
+    "rfc1481",
+    "rfc1482",
+    "rfc1517",
+    "rfc1518",
+    "rfc1519",
+    "rfc1520",
+    "rfc1817",
+    "rfc1917",
+    "rfc1918",
+    "rfc2008",
+    "rfc2036",
+    "rfc2519",
+    "rfc4632",
+    "rfc7608"
+  ],
+  "document_meta": {
+    "rfc1338": { "title": "Supernetting: an Address Assignment and Aggregation Strategy", "subseries": [] },
+    "rfc1466": { "title": "Guidelines for Management of IP Address Space", "subseries": [] },
+    "rfc1467": { "title": "Status of CIDR Deployment in the Internet", "subseries": [] },
+    "rfc1481": {
+      "title": "IAB Recommendation for an Intermediate Strategy to Address the Issue of Scaling",
+      "subseries": []
+    },
+    "rfc1482": { "title": "Aggregation Support in the NSFNET Policy-Based Routing Database", "subseries": [] },
+    "rfc1517": {
+      "title": "Applicability Statement for the Implementation of Classless Inter-Domain Routing (CIDR)",
+      "subseries": []
+    },
+    "rfc1518": { "title": "An Architecture for IP Address Allocation with CIDR", "subseries": [] },
+    "rfc1519": {
+      "title": "Classless Inter-Domain Routing (CIDR): an Address Assignment and Aggregation Strategy",
+      "subseries": []
+    },
+    "rfc1520": {
+      "title": "Exchanging Routing Information Across Provider Boundaries in the CIDR Environment",
+      "subseries": []
+    },
+    "rfc1817": { "title": "CIDR and Classful Routing", "subseries": [] },
+    "rfc1917": {
+      "title": "An Appeal to the Internet Community to Return Unused IP Networks (Prefixes) to the IANA",
+      "subseries": ["bcp4"]
+    },
+    "rfc1918": { "title": "Address Allocation for Private Internets", "subseries": ["bcp5"] },
+    "rfc2008": {
+      "title": "Implications of Various Address Allocation Policies for Internet Routing",
+      "subseries": ["bcp7"]
+    },
+    "rfc2036": {
+      "title": "Observations on the use of Components of the Class A Address Space within the Internet",
+      "subseries": []
+    },
+    "rfc2519": { "title": "A Framework for Inter-Domain Route Aggregation", "subseries": [] },
+    "rfc4632": {
+      "title": "Classless Inter-domain Routing (CIDR): The Internet Address Assignment and Aggregation Plan",
+      "subseries": ["bcp122"]
+    },
+    "rfc7608": { "title": "IPv6 Prefix Length Recommendation for Forwarding", "subseries": ["bcp198"] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "addressing": { "name": "Addressing" } }
+}

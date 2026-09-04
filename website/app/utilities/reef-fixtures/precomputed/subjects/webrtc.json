@@ -1,0 +1,117 @@
+{
+  "id": 697,
+  "slug": "webrtc",
+  "name": "WebRTC",
+  "description": "WebRTC: browser real-time media architecture and transports",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/webrtc",
+  "document_count": 34,
+  "document_count_deep": 35,
+  "retired": false,
+  "children": ["sframe", "whip"],
+  "aliases": [],
+  "documents": [
+    "rfc7295",
+    "rfc7340",
+    "rfc7375",
+    "rfc7478",
+    "rfc7635",
+    "rfc7675",
+    "rfc7742",
+    "rfc7874",
+    "rfc7875",
+    "rfc8224",
+    "rfc8451",
+    "rfc8825",
+    "rfc8826",
+    "rfc8827",
+    "rfc8828",
+    "rfc8829",
+    "rfc8830",
+    "rfc8831",
+    "rfc8832",
+    "rfc8833",
+    "rfc8834",
+    "rfc8835",
+    "rfc8836",
+    "rfc8837",
+    "rfc8843",
+    "rfc8844",
+    "rfc8850",
+    "rfc8854",
+    "rfc8858",
+    "rfc8865",
+    "rfc8873",
+    "rfc9143",
+    "rfc9429",
+    "rfc9725"
+  ],
+  "document_meta": {
+    "rfc7295": {
+      "title": "Report from the IAB/IRTF Workshop on Congestion Control for Interactive Real-Time Communication",
+      "subseries": []
+    },
+    "rfc7340": { "title": "Secure Telephone Identity Problem Statement and Requirements", "subseries": [] },
+    "rfc7375": { "title": "Secure Telephone Identity Threat Model", "subseries": [] },
+    "rfc7478": { "title": "Web Real-Time Communication Use Cases and Requirements", "subseries": [] },
+    "rfc7635": {
+      "title": "Session Traversal Utilities for NAT (STUN) Extension for Third-Party Authorization",
+      "subseries": []
+    },
+    "rfc7675": { "title": "Session Traversal Utilities for NAT (STUN) Usage for Consent Freshness", "subseries": [] },
+    "rfc7742": { "title": "WebRTC Video Processing and Codec Requirements", "subseries": [] },
+    "rfc7874": { "title": "WebRTC Audio Codec and Processing Requirements", "subseries": [] },
+    "rfc7875": { "title": "Additional WebRTC Audio Codecs for Interoperability", "subseries": [] },
+    "rfc8224": {
+      "title": "Authenticated Identity Management in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8451": {
+      "title": "Considerations for Selecting RTP Control Protocol (RTCP) Extended Report (XR) Metrics for the WebRTC Statistics API",
+      "subseries": []
+    },
+    "rfc8825": { "title": "Overview: Real-Time Protocols for Browser-Based Applications", "subseries": [] },
+    "rfc8826": { "title": "Security Considerations for WebRTC", "subseries": [] },
+    "rfc8827": { "title": "WebRTC Security Architecture", "subseries": [] },
+    "rfc8828": { "title": "WebRTC IP Address Handling Requirements", "subseries": [] },
+    "rfc8829": { "title": "JavaScript Session Establishment Protocol (JSEP)", "subseries": [] },
+    "rfc8830": { "title": "WebRTC MediaStream Identification in the Session Description Protocol", "subseries": [] },
+    "rfc8831": { "title": "WebRTC Data Channels", "subseries": [] },
+    "rfc8832": { "title": "WebRTC Data Channel Establishment Protocol", "subseries": [] },
+    "rfc8833": { "title": "Application-Layer Protocol Negotiation (ALPN) for WebRTC", "subseries": [] },
+    "rfc8834": { "title": "Media Transport and Use of RTP in WebRTC", "subseries": [] },
+    "rfc8835": { "title": "Transports for WebRTC", "subseries": [] },
+    "rfc8836": { "title": "Congestion Control Requirements for Interactive Real-Time Media", "subseries": [] },
+    "rfc8837": { "title": "Differentiated Services Code Point (DSCP) Packet Markings for WebRTC QoS", "subseries": [] },
+    "rfc8843": {
+      "title": "Negotiating Media Multiplexing Using the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc8844": {
+      "title": "Unknown Key-Share Attacks on Uses of TLS with the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc8850": {
+      "title": "Controlling Multiple Streams for Telepresence (CLUE) Protocol Data Channel",
+      "subseries": []
+    },
+    "rfc8854": { "title": "WebRTC Forward Error Correction Requirements", "subseries": [] },
+    "rfc8858": {
+      "title": "Indicating Exclusive Support of RTP and RTP Control Protocol (RTCP) Multiplexing Using the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc8865": { "title": "T.140 Real-Time Text Conversation over WebRTC Data Channels", "subseries": [] },
+    "rfc8873": { "title": "Message Session Relay Protocol (MSRP) over Data Channels", "subseries": [] },
+    "rfc9143": {
+      "title": "Negotiating Media Multiplexing Using the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc9429": { "title": "JavaScript Session Establishment Protocol (JSEP)", "subseries": [] },
+    "rfc9725": { "title": "WebRTC-HTTP Ingestion Protocol (WHIP)", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "sframe": { "name": "SFrame" },
+    "whip": { "name": "WHIP" }
+  }
+}

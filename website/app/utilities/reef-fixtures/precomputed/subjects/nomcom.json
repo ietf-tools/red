@@ -1,0 +1,63 @@
+{
+  "id": 822,
+  "slug": "nomcom",
+  "name": "NomCom",
+  "description": "IETF nominating committee procedures",
+  "parent": "ietf-process",
+  "path": "internet-governance/ietf-process/nomcom",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2777",
+    "rfc3777",
+    "rfc3797",
+    "rfc5078",
+    "rfc5633",
+    "rfc5680",
+    "rfc6859",
+    "rfc7437",
+    "rfc8318",
+    "rfc8788",
+    "rfc8989",
+    "rfc9389"
+  ],
+  "document_meta": {
+    "rfc2777": { "title": "Publicly Verifiable Nomcom Random Selection", "subseries": [] },
+    "rfc3777": {
+      "title": "IAB and IESG Selection, Confirmation, and Recall Process: Operation of the Nominating and Recall Committees",
+      "subseries": []
+    },
+    "rfc3797": { "title": "Publicly Verifiable Nominations Committee (NomCom) Random Selection", "subseries": [] },
+    "rfc5078": {
+      "title": "IAB and IESG Selection, Confirmation, and Recall Process: Revision of the Nominating and Recall Committees Timeline",
+      "subseries": []
+    },
+    "rfc5633": {
+      "title": "Nominating Committee Process: Earlier Announcement of Open Positions and Solicitation of Volunteers",
+      "subseries": []
+    },
+    "rfc5680": { "title": "The Nominating Committee Process: Open Disclosure of Willing Nominees", "subseries": [] },
+    "rfc6859": {
+      "title": "Update to RFC 3777 to Clarify Nominating Committee Eligibility of IETF Leadership",
+      "subseries": []
+    },
+    "rfc7437": {
+      "title": "IAB, IESG, and IAOC Selection, Confirmation, and Recall Process: Operation of the Nominating and Recall Committees",
+      "subseries": []
+    },
+    "rfc8318": {
+      "title": "IAB, IESG, and IAOC Selection, Confirmation, and Recall Process: IAOC Advisor for the Nominating Committee",
+      "subseries": []
+    },
+    "rfc8788": { "title": "Eligibility for the 2020-2021 Nominating Committee", "subseries": [] },
+    "rfc8989": { "title": "Additional Criteria for Nominating Committee Eligibility", "subseries": [] },
+    "rfc9389": { "title": "Nominating Committee Eligibility", "subseries": ["bcp10"] }
+  },
+  "subject_meta": {
+    "internet-governance": { "name": "Internet Governance" },
+    "ietf-process": { "name": "IETF Process" }
+  }
+}

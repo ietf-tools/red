@@ -1,0 +1,19 @@
+{
+  "id": 569,
+  "slug": "x-window-system",
+  "name": "X Window System",
+  "description": "The X Window System protocol",
+  "parent": "applications",
+  "path": "applications/x-window-system",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1013", "rfc1198"],
+  "document_meta": {
+    "rfc1013": { "title": "X Window System Protocol, version 11: Alpha update April 1987", "subseries": [] },
+    "rfc1198": { "title": "FYI on the X window system", "subseries": ["fyi6"] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

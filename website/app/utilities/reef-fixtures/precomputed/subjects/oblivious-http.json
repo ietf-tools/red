@@ -1,0 +1,20 @@
+{
+  "id": 996,
+  "slug": "oblivious-http",
+  "name": "Oblivious HTTP",
+  "description": "Oblivious HTTP relay-based request privacy",
+  "parent": "http",
+  "path": "web/http/oblivious-http",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9458", "rfc9540", "rfc9614"],
+  "document_meta": {
+    "rfc9458": { "title": "Oblivious HTTP", "subseries": [] },
+    "rfc9540": { "title": "Discovery of Oblivious Services via Service Binding Records", "subseries": [] },
+    "rfc9614": { "title": "Partitioning as an Architecture for Privacy", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

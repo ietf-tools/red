@@ -1,0 +1,168 @@
+{
+  "id": 554,
+  "slug": "geolocation",
+  "name": "Geolocation",
+  "description": "Location information: formats, privacy and conveyance",
+  "parent": "applications",
+  "path": "applications/geolocation",
+  "document_count": 45,
+  "document_count_deep": 45,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1876",
+    "rfc3693",
+    "rfc3694",
+    "rfc3825",
+    "rfc4079",
+    "rfc4119",
+    "rfc4589",
+    "rfc4676",
+    "rfc4745",
+    "rfc4776",
+    "rfc5139",
+    "rfc5222",
+    "rfc5223",
+    "rfc5491",
+    "rfc5580",
+    "rfc5606",
+    "rfc5687",
+    "rfc5774",
+    "rfc5808",
+    "rfc5870",
+    "rfc5964",
+    "rfc5985",
+    "rfc5986",
+    "rfc6155",
+    "rfc6197",
+    "rfc6225",
+    "rfc6280",
+    "rfc6447",
+    "rfc6451",
+    "rfc6739",
+    "rfc6753",
+    "rfc6772",
+    "rfc6848",
+    "rfc6915",
+    "rfc7035",
+    "rfc7105",
+    "rfc7199",
+    "rfc7216",
+    "rfc7459",
+    "rfc7871",
+    "rfc8787",
+    "rfc8805",
+    "rfc9036",
+    "rfc9179",
+    "rfc9632"
+  ],
+  "document_meta": {
+    "rfc1876": { "title": "A Means for Expressing Location Information in the Domain Name System", "subseries": [] },
+    "rfc3693": { "title": "Geopriv Requirements", "subseries": [] },
+    "rfc3694": { "title": "Threat Analysis of the Geopriv Protocol", "subseries": [] },
+    "rfc3825": {
+      "title": "Dynamic Host Configuration Protocol Option for Coordinate-based Location Configuration Information",
+      "subseries": []
+    },
+    "rfc4079": { "title": "A Presence Architecture for the Distribution of GEOPRIV Location Objects", "subseries": [] },
+    "rfc4119": { "title": "A Presence-based GEOPRIV Location Object Format", "subseries": [] },
+    "rfc4589": { "title": "Location Types Registry", "subseries": [] },
+    "rfc4676": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Option for Civic Addresses Configuration Information",
+      "subseries": []
+    },
+    "rfc4745": { "title": "Common Policy: A Document Format for Expressing Privacy Preferences", "subseries": [] },
+    "rfc4776": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Option for Civic Addresses Configuration Information",
+      "subseries": []
+    },
+    "rfc5139": {
+      "title": "Revised Civic Location Format for Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc5222": { "title": "LoST: A Location-to-Service Translation Protocol", "subseries": [] },
+    "rfc5223": {
+      "title": "Discovering Location-to-Service Translation (LoST) Servers Using the Dynamic Host Configuration Protocol (DHCP)",
+      "subseries": []
+    },
+    "rfc5491": {
+      "title": "GEOPRIV Presence Information Data Format Location Object (PIDF-LO) Usage Clarification, Considerations, and Recommendations",
+      "subseries": []
+    },
+    "rfc5580": { "title": "Carrying Location Objects in RADIUS and Diameter", "subseries": [] },
+    "rfc5606": { "title": "Implications of 'retransmission-allowed' for SIP Location Conveyance", "subseries": [] },
+    "rfc5687": {
+      "title": "GEOPRIV Layer 7 Location Configuration Protocol: Problem Statement and Requirements",
+      "subseries": []
+    },
+    "rfc5774": {
+      "title": "Considerations for Civic Addresses in the Presence Information Data Format Location Object (PIDF-LO): Guidelines and IANA Registry Definition",
+      "subseries": ["bcp154"]
+    },
+    "rfc5808": { "title": "Requirements for a Location-by-Reference Mechanism", "subseries": [] },
+    "rfc5870": { "title": "A Uniform Resource Identifier for Geographic Locations ('geo' URI)", "subseries": [] },
+    "rfc5964": {
+      "title": "Specifying Holes in Location-to-Service Translation (LoST) Service Boundaries",
+      "subseries": []
+    },
+    "rfc5985": { "title": "HTTP-Enabled Location Delivery (HELD)", "subseries": [] },
+    "rfc5986": { "title": "Discovering the Local Location Information Server (LIS)", "subseries": [] },
+    "rfc6155": { "title": "Use of Device Identity in HTTP-Enabled Location Delivery (HELD)", "subseries": [] },
+    "rfc6197": { "title": "Location-to-Service Translation (LoST) Service List Boundary Extension", "subseries": [] },
+    "rfc6225": {
+      "title": "Dynamic Host Configuration Protocol Options for Coordinate-Based Location Configuration Information",
+      "subseries": []
+    },
+    "rfc6280": {
+      "title": "An Architecture for Location and Location Privacy in Internet Applications",
+      "subseries": ["bcp160"]
+    },
+    "rfc6447": {
+      "title": "Filtering Location Notifications in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6451": { "title": "Location-to-Service Translation (LoST) Protocol Extensions", "subseries": [] },
+    "rfc6739": {
+      "title": "Synchronizing Service Boundaries and <mapping> Elements Based on the Location-to-Service Translation (LoST) Protocol",
+      "subseries": []
+    },
+    "rfc6753": {
+      "title": "A Location Dereference Protocol Using HTTP-Enabled Location Delivery (HELD)",
+      "subseries": []
+    },
+    "rfc6772": {
+      "title": "Geolocation Policy: A Document Format for Expressing Privacy Preferences for Location Information",
+      "subseries": []
+    },
+    "rfc6848": {
+      "title": "Specifying Civic Address Extensions in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc6915": { "title": "Flow Identity Extension for HTTP-Enabled Location Delivery (HELD)", "subseries": [] },
+    "rfc7035": { "title": "Relative Location Representation", "subseries": [] },
+    "rfc7105": {
+      "title": "Using Device-Provided Location-Related Measurements in Location Configuration Protocols",
+      "subseries": []
+    },
+    "rfc7199": { "title": "Location Configuration Extensions for Policy Management", "subseries": [] },
+    "rfc7216": {
+      "title": "Location Information Server (LIS) Discovery Using IP Addresses and Reverse DNS",
+      "subseries": []
+    },
+    "rfc7459": {
+      "title": "Representation of Uncertainty and Confidence in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc7871": { "title": "Client Subnet in DNS Queries", "subseries": [] },
+    "rfc8787": { "title": "Location Source Parameter for the SIP Geolocation Header Field", "subseries": [] },
+    "rfc8805": { "title": "A Format for Self-Published IP Geolocation Feeds", "subseries": [] },
+    "rfc9036": {
+      "title": "Changing the Location-to-Service Translation (LoST) Location Profiles Registry Policy",
+      "subseries": []
+    },
+    "rfc9179": { "title": "A YANG Grouping for Geographic Locations", "subseries": [] },
+    "rfc9632": { "title": "Finding and Using Geofeed Data", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

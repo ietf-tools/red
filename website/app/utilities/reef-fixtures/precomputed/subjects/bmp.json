@@ -1,0 +1,23 @@
+{
+  "id": 907,
+  "slug": "bmp",
+  "name": "BMP",
+  "description": "BGP Monitoring Protocol",
+  "parent": "bgp",
+  "path": "routing/bgp/bmp",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7854", "rfc8671", "rfc9069", "rfc9515", "rfc9736", "rfc9972"],
+  "document_meta": {
+    "rfc7854": { "title": "BGP Monitoring Protocol (BMP)", "subseries": [] },
+    "rfc8671": { "title": "Support for Adj-RIB-Out in the BGP Monitoring Protocol (BMP)", "subseries": [] },
+    "rfc9069": { "title": "Support for Local RIB in the BGP Monitoring Protocol (BMP)", "subseries": [] },
+    "rfc9515": { "title": "Revision to Registration Procedures for Multiple BMP Registries", "subseries": [] },
+    "rfc9736": { "title": "The BGP Monitoring Protocol (BMP) Peer Up Message Namespace", "subseries": [] },
+    "rfc9972": { "title": "Advanced BGP Monitoring Protocol (BMP) Statistics Types", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "bgp": { "name": "BGP" } }
+}

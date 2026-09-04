@@ -1,0 +1,178 @@
+{
+  "id": 699,
+  "slug": "bfd",
+  "name": "BFD",
+  "description": "Bidirectional Forwarding Detection",
+  "parent": "routing",
+  "path": "routing/bfd",
+  "document_count": 44,
+  "document_count_deep": 44,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5880",
+    "rfc5881",
+    "rfc5882",
+    "rfc5883",
+    "rfc5884",
+    "rfc5885",
+    "rfc6213",
+    "rfc6428",
+    "rfc7130",
+    "rfc7174",
+    "rfc7175",
+    "rfc7177",
+    "rfc7330",
+    "rfc7331",
+    "rfc7419",
+    "rfc7492",
+    "rfc7726",
+    "rfc7880",
+    "rfc7881",
+    "rfc7882",
+    "rfc7883",
+    "rfc7884",
+    "rfc7885",
+    "rfc7886",
+    "rfc8562",
+    "rfc8563",
+    "rfc8564",
+    "rfc8971",
+    "rfc9026",
+    "rfc9127",
+    "rfc9186",
+    "rfc9247",
+    "rfc9314",
+    "rfc9355",
+    "rfc9384",
+    "rfc9468",
+    "rfc9521",
+    "rfc9612",
+    "rfc9747",
+    "rfc9764",
+    "rfc9780",
+    "rfc9978",
+    "rfc9985",
+    "rfc9986"
+  ],
+  "document_meta": {
+    "rfc5880": { "title": "Bidirectional Forwarding Detection (BFD)", "subseries": [] },
+    "rfc5881": { "title": "Bidirectional Forwarding Detection (BFD) for IPv4 and IPv6 (Single Hop)", "subseries": [] },
+    "rfc5882": { "title": "Generic Application of Bidirectional Forwarding Detection (BFD)", "subseries": [] },
+    "rfc5883": { "title": "Bidirectional Forwarding Detection (BFD) for Multihop Paths", "subseries": [] },
+    "rfc5884": {
+      "title": "Bidirectional Forwarding Detection (BFD) for MPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc5885": {
+      "title": "Bidirectional Forwarding Detection (BFD) for the Pseudowire Virtual Circuit Connectivity Verification (VCCV)",
+      "subseries": []
+    },
+    "rfc6213": { "title": "IS-IS BFD-Enabled TLV", "subseries": [] },
+    "rfc6428": {
+      "title": "Proactive Connectivity Verification, Continuity Check, and Remote Defect Indication for the MPLS Transport Profile",
+      "subseries": []
+    },
+    "rfc7130": {
+      "title": "Bidirectional Forwarding Detection (BFD) on Link Aggregation Group (LAG) Interfaces",
+      "subseries": []
+    },
+    "rfc7174": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Operations, Administration, and Maintenance (OAM) Framework",
+      "subseries": []
+    },
+    "rfc7175": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Bidirectional Forwarding Detection (BFD) Support",
+      "subseries": []
+    },
+    "rfc7177": { "title": "Transparent Interconnection of Lots of Links (TRILL): Adjacency", "subseries": [] },
+    "rfc7330": {
+      "title": "Definitions of Textual Conventions (TCs) for Bidirectional Forwarding Detection (BFD) Management",
+      "subseries": []
+    },
+    "rfc7331": { "title": "Bidirectional Forwarding Detection (BFD) Management Information Base", "subseries": [] },
+    "rfc7419": { "title": "Common Interval Support in Bidirectional Forwarding Detection", "subseries": [] },
+    "rfc7492": {
+      "title": "Analysis of Bidirectional Forwarding Detection (BFD) Security According to the Keying and Authentication for Routing Protocols (KARP) Design Guidelines",
+      "subseries": []
+    },
+    "rfc7726": {
+      "title": "Clarifying Procedures for Establishing BFD Sessions for MPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc7880": { "title": "Seamless Bidirectional Forwarding Detection (S-BFD)", "subseries": [] },
+    "rfc7881": {
+      "title": "Seamless Bidirectional Forwarding Detection (S-BFD) for IPv4, IPv6, and MPLS",
+      "subseries": []
+    },
+    "rfc7882": { "title": "Seamless Bidirectional Forwarding Detection (S-BFD) Use Cases", "subseries": [] },
+    "rfc7883": {
+      "title": "Advertising Seamless Bidirectional Forwarding Detection (S-BFD) Discriminators in IS-IS",
+      "subseries": []
+    },
+    "rfc7884": {
+      "title": "OSPF Extensions to Advertise Seamless Bidirectional Forwarding Detection (S-BFD) Target Discriminators",
+      "subseries": []
+    },
+    "rfc7885": {
+      "title": "Seamless Bidirectional Forwarding Detection (S-BFD) for Virtual Circuit Connectivity Verification (VCCV)",
+      "subseries": []
+    },
+    "rfc7886": {
+      "title": "Advertising Seamless Bidirectional Forwarding Detection (S-BFD) Discriminators in the Layer Two Tunneling Protocol Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc8562": { "title": "Bidirectional Forwarding Detection (BFD) for Multipoint Networks", "subseries": [] },
+    "rfc8563": { "title": "Bidirectional Forwarding Detection (BFD) Multipoint Active Tails", "subseries": [] },
+    "rfc8564": {
+      "title": "Support of Point-to-Multipoint Bidirectional Forwarding Detection (BFD) in Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc8971": {
+      "title": "Bidirectional Forwarding Detection (BFD) for Virtual eXtensible Local Area Network (VXLAN)",
+      "subseries": []
+    },
+    "rfc9026": { "title": "Multicast VPN Fast Upstream Failover", "subseries": [] },
+    "rfc9127": { "title": "YANG Data Model for Bidirectional Forwarding Detection (BFD)", "subseries": [] },
+    "rfc9186": {
+      "title": "Fast Failover in Protocol Independent Multicast - Sparse Mode (PIM-SM) Using Bidirectional Forwarding Detection (BFD) for Multipoint Networks",
+      "subseries": []
+    },
+    "rfc9247": {
+      "title": "BGP - Link State (BGP-LS) Extensions for Seamless Bidirectional Forwarding Detection (S-BFD)",
+      "subseries": []
+    },
+    "rfc9314": { "title": "YANG Data Model for Bidirectional Forwarding Detection (BFD)", "subseries": [] },
+    "rfc9355": { "title": "OSPF Bidirectional Forwarding Detection (BFD) Strict-Mode", "subseries": [] },
+    "rfc9384": {
+      "title": "A BGP Cease NOTIFICATION Subcode for Bidirectional Forwarding Detection (BFD)",
+      "subseries": []
+    },
+    "rfc9468": {
+      "title": "Unsolicited Bidirectional Forwarding Detection (BFD) for Sessionless Applications",
+      "subseries": []
+    },
+    "rfc9521": {
+      "title": "Bidirectional Forwarding Detection (BFD) for  Generic Network Virtualization Encapsulation (Geneve)",
+      "subseries": []
+    },
+    "rfc9612": {
+      "title": "Bidirectional Forwarding Detection (BFD) Reverse Path for MPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc9747": { "title": "Unaffiliated Bidirectional Forwarding Detection (BFD) Echo", "subseries": [] },
+    "rfc9764": { "title": "Bidirectional Forwarding Detection (BFD) Encapsulated in Large Packets", "subseries": [] },
+    "rfc9780": {
+      "title": "Bidirectional Forwarding Detection (BFD) for Multipoint Networks over Point-to-Multipoint MPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc9978": { "title": "Bidirectional Forwarding Detection (BFD) Stability", "subseries": [] },
+    "rfc9985": { "title": "Optimizing Bidirectional Forwarding Detection (BFD) Authentication", "subseries": [] },
+    "rfc9986": {
+      "title": "Meticulous Keyed ISAAC for Bidirectional Forwarding Detection (BFD) Optimized Authentication",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

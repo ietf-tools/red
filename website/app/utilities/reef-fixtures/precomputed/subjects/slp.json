@@ -1,0 +1,61 @@
+{
+  "id": 664,
+  "slug": "slp",
+  "name": "SLP",
+  "description": "Service Location Protocol",
+  "parent": "naming",
+  "path": "naming/slp",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2165",
+    "rfc2608",
+    "rfc2609",
+    "rfc2610",
+    "rfc2614",
+    "rfc2926",
+    "rfc3049",
+    "rfc3059",
+    "rfc3082",
+    "rfc3105",
+    "rfc3111",
+    "rfc3224",
+    "rfc3421",
+    "rfc3528",
+    "rfc3822",
+    "rfc3832",
+    "rfc4018"
+  ],
+  "document_meta": {
+    "rfc2165": { "title": "Service Location Protocol", "subseries": [] },
+    "rfc2608": { "title": "Service Location Protocol, Version 2", "subseries": [] },
+    "rfc2609": { "title": "Service Templates and Service: Schemes", "subseries": [] },
+    "rfc2610": { "title": "DHCP Options for Service Location Protocol", "subseries": [] },
+    "rfc2614": { "title": "An API for Service Location", "subseries": [] },
+    "rfc2926": { "title": "Conversion of LDAP Schemas to and from SLP Templates", "subseries": [] },
+    "rfc3049": { "title": "TN3270E Service Location and Session Balancing", "subseries": [] },
+    "rfc3059": { "title": "Attribute List Extension for the Service Location Protocol", "subseries": [] },
+    "rfc3082": { "title": "Notification and Subscription for SLP", "subseries": [] },
+    "rfc3105": { "title": "Finding an RSIP Server with SLP", "subseries": [] },
+    "rfc3111": { "title": "Service Location Protocol Modifications for IPv6", "subseries": [] },
+    "rfc3224": { "title": "Vendor Extensions for Service Location Protocol, Version 2", "subseries": [] },
+    "rfc3421": { "title": "Select and Sort Extensions for the Service Location Protocol (SLP)", "subseries": [] },
+    "rfc3528": { "title": "Mesh-enhanced Service Location Protocol (mSLP)", "subseries": [] },
+    "rfc3822": {
+      "title": "Finding Fibre Channel over TCP/IP (FCIP) Entities Using Service Location Protocol version 2 (SLPv2)",
+      "subseries": []
+    },
+    "rfc3832": {
+      "title": "Remote Service Discovery in the Service Location Protocol (SLP) via DNS SRV",
+      "subseries": []
+    },
+    "rfc4018": {
+      "title": "Finding Internet Small Computer Systems Interface (iSCSI) Targets and Name Servers by Using Service Location Protocol version 2 (SLPv2)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

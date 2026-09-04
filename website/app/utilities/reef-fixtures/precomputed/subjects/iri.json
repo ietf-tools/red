@@ -1,0 +1,79 @@
+{
+  "id": 999,
+  "slug": "iri",
+  "name": "IRI",
+  "description": "Internationalized Resource Identifiers",
+  "parent": "uri",
+  "path": "web/uri/iri",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3981",
+    "rfc3982",
+    "rfc3983",
+    "rfc3987",
+    "rfc4414",
+    "rfc4622",
+    "rfc4698",
+    "rfc4991",
+    "rfc4992",
+    "rfc4993",
+    "rfc5122",
+    "rfc5144",
+    "rfc6068",
+    "rfc6167",
+    "rfc6570",
+    "rfc6943",
+    "rfc7595"
+  ],
+  "document_meta": {
+    "rfc3981": { "title": "IRIS: The Internet Registry Information Service (IRIS) Core Protocol", "subseries": [] },
+    "rfc3982": {
+      "title": "IRIS:  A Domain Registry (dreg) Type for the Internet Registry Information Service (IRIS)",
+      "subseries": []
+    },
+    "rfc3983": {
+      "title": "Using the Internet Registry Information Service (IRIS) over the Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc3987": { "title": "Internationalized Resource Identifiers (IRIs)", "subseries": [] },
+    "rfc4414": {
+      "title": "An ENUM Registry Type for the Internet Registry Information Service (IRIS)",
+      "subseries": []
+    },
+    "rfc4622": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4698": {
+      "title": "IRIS: An Address Registry (areg) Type for the Internet Registry Information Service",
+      "subseries": []
+    },
+    "rfc4991": {
+      "title": "A Common Schema for Internet Registry Information Service Transfer Protocols",
+      "subseries": []
+    },
+    "rfc4992": { "title": "XML Pipelining with Chunks for the Internet Registry Information Service", "subseries": [] },
+    "rfc4993": {
+      "title": "A Lightweight UDP Transfer Protocol for the Internet Registry Information Service",
+      "subseries": []
+    },
+    "rfc5122": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc5144": {
+      "title": "A Domain Availability Check (DCHK) Registry Type for the Internet Registry Information Service (IRIS)",
+      "subseries": []
+    },
+    "rfc6068": { "title": "The 'mailto' URI Scheme", "subseries": [] },
+    "rfc6167": { "title": "URI Scheme for Java(tm) Message Service 1.0", "subseries": [] },
+    "rfc6570": { "title": "URI Template", "subseries": [] },
+    "rfc6943": { "title": "Issues in Identifier Comparison for Security Purposes", "subseries": [] },
+    "rfc7595": { "title": "Guidelines and Registration Procedures for URI Schemes", "subseries": ["bcp35"] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "uri": { "name": "URI" } }
+}

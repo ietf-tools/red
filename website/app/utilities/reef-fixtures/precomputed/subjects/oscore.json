@@ -1,0 +1,37 @@
+{
+  "id": 842,
+  "slug": "oscore",
+  "name": "OSCORE",
+  "description": "Object security for constrained RESTful environments",
+  "parent": "coap",
+  "path": "iot/coap/oscore",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8613", "rfc8824", "rfc9031", "rfc9175", "rfc9203", "rfc9363", "rfc9528", "rfc9668"],
+  "document_meta": {
+    "rfc8613": { "title": "Object Security for Constrained RESTful Environments (OSCORE)", "subseries": [] },
+    "rfc8824": {
+      "title": "Static Context Header Compression (SCHC) for the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9031": { "title": "Constrained Join Protocol (CoJP) for 6TiSCH", "subseries": [] },
+    "rfc9175": {
+      "title": "Constrained Application Protocol (CoAP): Echo, Request-Tag, and Token Processing",
+      "subseries": []
+    },
+    "rfc9203": {
+      "title": "The Object Security for Constrained RESTful Environments (OSCORE) Profile of the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9363": { "title": "A YANG Data Model for Static Context Header Compression (SCHC)", "subseries": [] },
+    "rfc9528": { "title": "Ephemeral Diffie-Hellman Over COSE (EDHOC)", "subseries": [] },
+    "rfc9668": {
+      "title": "Using Ephemeral Diffie-Hellman Over COSE (EDHOC) with the Constrained Application Protocol (CoAP) and Object Security for Constrained RESTful Environments (OSCORE)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" }, "coap": { "name": "CoAP" } }
+}

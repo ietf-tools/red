@@ -1,0 +1,61 @@
+{
+  "id": 635,
+  "slug": "isdn",
+  "name": "ISDN",
+  "description": "ISDN access and IP",
+  "parent": "link-layer",
+  "path": "link-layer/isdn",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1356",
+    "rfc1618",
+    "rfc2127",
+    "rfc2128",
+    "rfc3057",
+    "rfc3398",
+    "rfc3578",
+    "rfc3807",
+    "rfc4129",
+    "rfc4233",
+    "rfc4715",
+    "rfc5133",
+    "rfc7434",
+    "rfc8606"
+  ],
+  "document_meta": {
+    "rfc1356": { "title": "Multiprotocol Interconnect on X.25 and ISDN in the Packet Mode", "subseries": [] },
+    "rfc1618": { "title": "PPP over ISDN", "subseries": [] },
+    "rfc2127": { "title": "ISDN Management Information Base using SMIv2", "subseries": [] },
+    "rfc2128": { "title": "Dial Control Management Information Base using SMIv2", "subseries": [] },
+    "rfc3057": { "title": "ISDN Q.921-User Adaptation Layer", "subseries": [] },
+    "rfc3398": {
+      "title": "Integrated Services Digital Network (ISDN) User Part (ISUP) to Session Initiation Protocol (SIP) Mapping",
+      "subseries": []
+    },
+    "rfc3578": {
+      "title": "Mapping of Integrated Services Digital Network (ISDN) User Part (ISUP) Overlap Signalling to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3807": { "title": "V5.2-User Adaptation Layer (V5UA)", "subseries": [] },
+    "rfc4129": {
+      "title": "Digital Private Network Signaling System (DPNSS)/Digital Access Signaling System 2 (DASS 2) Extensions to the IUA Protocol",
+      "subseries": []
+    },
+    "rfc4233": { "title": "Integrated Services Digital Network (ISDN) Q.921-User Adaptation Layer", "subseries": [] },
+    "rfc4715": {
+      "title": "The Integrated Services Digital Network (ISDN) Subaddress Encoding Type for tel URI",
+      "subseries": []
+    },
+    "rfc5133": { "title": "Terminal Endpoint Identifier (TEI) Query Request Number Change", "subseries": [] },
+    "rfc7434": { "title": "Interworking ISDN Call Control User Information with SIP", "subseries": [] },
+    "rfc8606": {
+      "title": "ISDN User Part (ISUP) Cause Location Parameter for the SIP Reason Header Field",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

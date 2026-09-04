@@ -1,0 +1,265 @@
+{
+  "id": 607,
+  "slug": "nat",
+  "name": "NAT",
+  "description": "Network address translation: behaviour, requirements, deployment",
+  "parent": "internet-layer",
+  "path": "internet-layer/nat",
+  "document_count": 87,
+  "document_count_deep": 106,
+  "retired": false,
+  "children": ["cgn", "pcp"],
+  "aliases": [],
+  "documents": [
+    "rfc1631",
+    "rfc2391",
+    "rfc2428",
+    "rfc2663",
+    "rfc2694",
+    "rfc2709",
+    "rfc2766",
+    "rfc2962",
+    "rfc2993",
+    "rfc3022",
+    "rfc3027",
+    "rfc3102",
+    "rfc3103",
+    "rfc3104",
+    "rfc3105",
+    "rfc3235",
+    "rfc3257",
+    "rfc3304",
+    "rfc3424",
+    "rfc3519",
+    "rfc3605",
+    "rfc3715",
+    "rfc3947",
+    "rfc3989",
+    "rfc4008",
+    "rfc4380",
+    "rfc4787",
+    "rfc4864",
+    "rfc4966",
+    "rfc5128",
+    "rfc5135",
+    "rfc5189",
+    "rfc5382",
+    "rfc5456",
+    "rfc5508",
+    "rfc5597",
+    "rfc5627",
+    "rfc5684",
+    "rfc5770",
+    "rfc5902",
+    "rfc5973",
+    "rfc5978",
+    "rfc6052",
+    "rfc6081",
+    "rfc6127",
+    "rfc6144",
+    "rfc6145",
+    "rfc6146",
+    "rfc6147",
+    "rfc6263",
+    "rfc6264",
+    "rfc6281",
+    "rfc6284",
+    "rfc6333",
+    "rfc6384",
+    "rfc6535",
+    "rfc6598",
+    "rfc6619",
+    "rfc6736",
+    "rfc6751",
+    "rfc6886",
+    "rfc6887",
+    "rfc6888",
+    "rfc6967",
+    "rfc6970",
+    "rfc7016",
+    "rfc7021",
+    "rfc7050",
+    "rfc7051",
+    "rfc7157",
+    "rfc7216",
+    "rfc7289",
+    "rfc7383",
+    "rfc7422",
+    "rfc7648",
+    "rfc7658",
+    "rfc7659",
+    "rfc7723",
+    "rfc7768",
+    "rfc7825",
+    "rfc7934",
+    "rfc7974",
+    "rfc8045",
+    "rfc8158",
+    "rfc8512",
+    "rfc8517",
+    "rfc9146"
+  ],
+  "document_meta": {
+    "rfc1631": { "title": "The IP Network Address Translator (NAT)", "subseries": [] },
+    "rfc2391": { "title": "Load Sharing using IP Network Address Translation (LSNAT)", "subseries": [] },
+    "rfc2428": { "title": "FTP Extensions for IPv6 and NATs", "subseries": [] },
+    "rfc2663": { "title": "IP Network Address Translator (NAT) Terminology and Considerations", "subseries": [] },
+    "rfc2694": { "title": "DNS extensions to Network Address Translators (DNS_ALG)", "subseries": [] },
+    "rfc2709": { "title": "Security Model with Tunnel-mode IPsec for NAT Domains", "subseries": [] },
+    "rfc2766": { "title": "Network Address Translation - Protocol Translation (NAT-PT)", "subseries": [] },
+    "rfc2962": { "title": "An SNMP Application Level Gateway for Payload Address Translation", "subseries": [] },
+    "rfc2993": { "title": "Architectural Implications of NAT", "subseries": [] },
+    "rfc3022": { "title": "Traditional IP Network Address Translator (Traditional NAT)", "subseries": [] },
+    "rfc3027": { "title": "Protocol Complications with the IP Network Address Translator", "subseries": [] },
+    "rfc3102": { "title": "Realm Specific IP: Framework", "subseries": [] },
+    "rfc3103": { "title": "Realm Specific IP: Protocol Specification", "subseries": [] },
+    "rfc3104": { "title": "RSIP Support for End-to-end IPsec", "subseries": [] },
+    "rfc3105": { "title": "Finding an RSIP Server with SLP", "subseries": [] },
+    "rfc3235": { "title": "Network Address Translator (NAT)-Friendly Application Design Guidelines", "subseries": [] },
+    "rfc3257": { "title": "Stream Control Transmission Protocol Applicability Statement", "subseries": [] },
+    "rfc3304": { "title": "Middlebox Communications (midcom) Protocol Requirements", "subseries": [] },
+    "rfc3424": {
+      "title": "IAB Considerations for UNilateral Self-Address Fixing (UNSAF) Across Network Address Translation",
+      "subseries": []
+    },
+    "rfc3519": { "title": "Mobile IP Traversal of Network Address Translation (NAT) Devices", "subseries": [] },
+    "rfc3605": {
+      "title": "Real Time Control Protocol (RTCP) attribute in Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc3715": { "title": "IPsec-Network Address Translation (NAT) Compatibility Requirements", "subseries": [] },
+    "rfc3947": { "title": "Negotiation of NAT-Traversal in the IKE", "subseries": [] },
+    "rfc3989": { "title": "Middlebox Communications (MIDCOM) Protocol Semantics", "subseries": [] },
+    "rfc4008": { "title": "Definitions of Managed Objects for Network Address Translators (NAT)", "subseries": [] },
+    "rfc4380": {
+      "title": "Teredo: Tunneling IPv6 over UDP through Network Address Translations (NATs)",
+      "subseries": []
+    },
+    "rfc4787": {
+      "title": "Network Address Translation (NAT) Behavioral Requirements for Unicast UDP",
+      "subseries": ["bcp127"]
+    },
+    "rfc4864": { "title": "Local Network Protection for IPv6", "subseries": [] },
+    "rfc4966": {
+      "title": "Reasons to Move the Network Address Translator - Protocol Translator (NAT-PT) to Historic Status",
+      "subseries": []
+    },
+    "rfc5128": {
+      "title": "State of Peer-to-Peer (P2P) Communication across Network Address Translators (NATs)",
+      "subseries": []
+    },
+    "rfc5135": {
+      "title": "IP Multicast Requirements for a Network Address Translator (NAT) and a Network Address Port Translator (NAPT)",
+      "subseries": ["bcp135"]
+    },
+    "rfc5189": { "title": "Middlebox Communication (MIDCOM) Protocol Semantics", "subseries": [] },
+    "rfc5382": { "title": "NAT Behavioral Requirements for TCP", "subseries": ["bcp142"] },
+    "rfc5456": { "title": "IAX: Inter-Asterisk eXchange Version 2", "subseries": [] },
+    "rfc5508": { "title": "NAT Behavioral Requirements for ICMP", "subseries": ["bcp148"] },
+    "rfc5597": {
+      "title": "Network Address Translation (NAT) Behavioral Requirements for the Datagram Congestion Control Protocol",
+      "subseries": ["bcp150"]
+    },
+    "rfc5627": {
+      "title": "Obtaining and Using Globally Routable User Agent URIs (GRUUs) in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5684": {
+      "title": "Unintended Consequences of NAT Deployments with Overlapping Address Space",
+      "subseries": []
+    },
+    "rfc5770": {
+      "title": "Basic Host Identity Protocol (HIP) Extensions for Traversal of Network Address Translators",
+      "subseries": []
+    },
+    "rfc5902": { "title": "IAB Thoughts on IPv6 Network Address Translation", "subseries": [] },
+    "rfc5973": { "title": "NAT/Firewall NSIS Signaling Layer Protocol (NSLP)", "subseries": [] },
+    "rfc5978": { "title": "Using and Extending the NSIS Protocol Family", "subseries": [] },
+    "rfc6052": { "title": "IPv6 Addressing of IPv4/IPv6 Translators", "subseries": [] },
+    "rfc6081": { "title": "Teredo Extensions", "subseries": [] },
+    "rfc6127": { "title": "IPv4 Run-Out and IPv4-IPv6 Co-Existence Scenarios", "subseries": [] },
+    "rfc6144": { "title": "Framework for IPv4/IPv6 Translation", "subseries": [] },
+    "rfc6145": { "title": "IP/ICMP Translation Algorithm", "subseries": [] },
+    "rfc6146": {
+      "title": "Stateful NAT64: Network Address and Protocol Translation from IPv6 Clients to IPv4 Servers",
+      "subseries": []
+    },
+    "rfc6147": {
+      "title": "DNS64: DNS Extensions for Network Address Translation from IPv6 Clients to IPv4 Servers",
+      "subseries": []
+    },
+    "rfc6263": {
+      "title": "Application Mechanism for Keeping Alive the NAT Mappings Associated with RTP / RTP Control Protocol (RTCP) Flows",
+      "subseries": []
+    },
+    "rfc6264": { "title": "An Incremental Carrier-Grade NAT (CGN) for IPv6 Transition", "subseries": [] },
+    "rfc6281": { "title": "Understanding Apple's Back to My Mac (BTMM) Service", "subseries": [] },
+    "rfc6284": { "title": "Port Mapping between Unicast and Multicast RTP Sessions", "subseries": [] },
+    "rfc6333": { "title": "Dual-Stack Lite Broadband Deployments Following IPv4 Exhaustion", "subseries": [] },
+    "rfc6384": { "title": "An FTP Application Layer Gateway (ALG) for IPv6-to-IPv4 Translation", "subseries": [] },
+    "rfc6535": { "title": "Dual-Stack Hosts Using \"Bump-in-the-Host\" (BIH)", "subseries": [] },
+    "rfc6598": { "title": "IANA-Reserved IPv4 Prefix for Shared Address Space", "subseries": ["bcp153"] },
+    "rfc6619": { "title": "Scalable Operation of Address Translators with Per-Interface Bindings", "subseries": [] },
+    "rfc6736": { "title": "Diameter Network Address and Port Translation Control Application", "subseries": [] },
+    "rfc6751": { "title": "Native IPv6 behind IPv4-to-IPv4 NAT Customer Premises Equipment (6a44)", "subseries": [] },
+    "rfc6886": { "title": "NAT Port Mapping Protocol (NAT-PMP)", "subseries": [] },
+    "rfc6887": { "title": "Port Control Protocol (PCP)", "subseries": [] },
+    "rfc6888": { "title": "Common Requirements for Carrier-Grade NATs (CGNs)", "subseries": ["bcp127"] },
+    "rfc6967": {
+      "title": "Analysis of Potential Solutions for Revealing a Host Identifier (HOST_ID) in Shared Address Deployments",
+      "subseries": []
+    },
+    "rfc6970": {
+      "title": "Universal Plug and Play (UPnP) Internet Gateway Device - Port Control Protocol Interworking Function (IGD-PCP IWF)",
+      "subseries": []
+    },
+    "rfc7016": { "title": "Adobe's Secure Real-Time Media Flow Protocol", "subseries": [] },
+    "rfc7021": { "title": "Assessing the Impact of Carrier-Grade NAT on Network Applications", "subseries": [] },
+    "rfc7050": { "title": "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis", "subseries": [] },
+    "rfc7051": { "title": "Analysis of Solution Proposals for Hosts to Learn NAT64 Prefix", "subseries": [] },
+    "rfc7157": { "title": "IPv6 Multihoming without Network Address Translation", "subseries": [] },
+    "rfc7216": {
+      "title": "Location Information Server (LIS) Discovery Using IP Addresses and Reverse DNS",
+      "subseries": []
+    },
+    "rfc7289": { "title": "Carrier-Grade NAT (CGN) Deployment with BGP/MPLS IP VPNs", "subseries": [] },
+    "rfc7383": { "title": "Internet Key Exchange Protocol Version 2 (IKEv2) Message Fragmentation", "subseries": [] },
+    "rfc7422": {
+      "title": "Deterministic Address Mapping to Reduce Logging in Carrier-Grade NAT Deployments",
+      "subseries": []
+    },
+    "rfc7648": { "title": "Port Control Protocol (PCP) Proxy Function", "subseries": [] },
+    "rfc7658": {
+      "title": "Deprecation of MIB Module NAT-MIB: Managed Objects for Network Address Translators (NATs)",
+      "subseries": []
+    },
+    "rfc7659": { "title": "Definitions of Managed Objects for Network Address Translators (NATs)", "subseries": [] },
+    "rfc7723": { "title": "Port Control Protocol (PCP) Anycast Addresses", "subseries": [] },
+    "rfc7768": { "title": "Port Management to Reduce Logging in Large-Scale NATs", "subseries": [] },
+    "rfc7825": {
+      "title": "A Network Address Translator (NAT) Traversal Mechanism for Media Controlled by the Real-Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc7934": { "title": "Host Address Availability Recommendations", "subseries": ["bcp204"] },
+    "rfc7974": { "title": "An Experimental TCP Option for Host Identification", "subseries": [] },
+    "rfc8045": { "title": "RADIUS Extensions for IP Port Configuration and Reporting", "subseries": [] },
+    "rfc8158": {
+      "title": "IP Flow Information Export (IPFIX) Information Elements for Logging NAT Events",
+      "subseries": []
+    },
+    "rfc8512": {
+      "title": "A YANG Module for Network Address Translation (NAT) and Network Prefix Translation (NPT)",
+      "subseries": []
+    },
+    "rfc8517": {
+      "title": "An Inventory of Transport-Centric Functions Provided by Middleboxes: An Operator Perspective",
+      "subseries": []
+    },
+    "rfc9146": { "title": "Connection Identifier for DTLS 1.2", "subseries": [] }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "cgn": { "name": "Carrier-Grade NAT" },
+    "pcp": { "name": "PCP" }
+  }
+}

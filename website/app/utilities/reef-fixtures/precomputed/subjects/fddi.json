@@ -1,0 +1,44 @@
+{
+  "id": 631,
+  "slug": "fddi",
+  "name": "FDDI",
+  "description": "IP over FDDI",
+  "parent": "link-layer",
+  "path": "link-layer/fddi",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1103",
+    "rfc1188",
+    "rfc1285",
+    "rfc1306",
+    "rfc1307",
+    "rfc1329",
+    "rfc1390",
+    "rfc1512",
+    "rfc2019",
+    "rfc2467"
+  ],
+  "document_meta": {
+    "rfc1103": {
+      "title": "Proposed standard for the transmission of IP datagrams over FDDI Networks",
+      "subseries": []
+    },
+    "rfc1188": {
+      "title": "Proposed Standard for the Transmission of IP Datagrams over FDDI Networks",
+      "subseries": []
+    },
+    "rfc1285": { "title": "FDDI Management Information Base", "subseries": [] },
+    "rfc1306": { "title": "Experiences Supporting By-Request Circuit-Switched T3 Networks", "subseries": [] },
+    "rfc1307": { "title": "Dynamically Switched Link Control Protocol", "subseries": [] },
+    "rfc1329": { "title": "Thoughts on Address Resolution for Dual MAC FDDI Networks", "subseries": [] },
+    "rfc1390": { "title": "Transmission of IP and ARP over FDDI Networks", "subseries": ["std36"] },
+    "rfc1512": { "title": "FDDI Management Information Base", "subseries": [] },
+    "rfc2019": { "title": "Transmission of IPv6 Packets Over FDDI", "subseries": [] },
+    "rfc2467": { "title": "Transmission of IPv6 Packets over FDDI Networks", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

@@ -1,0 +1,26 @@
+{
+  "id": 1025,
+  "slug": "codel",
+  "name": "CoDel",
+  "description": "The CoDel queue management algorithm",
+  "parent": "aqm",
+  "path": "transport/congestion-control/aqm/codel",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8289", "rfc8290"],
+  "document_meta": {
+    "rfc8289": { "title": "Controlled Delay Active Queue Management", "subseries": [] },
+    "rfc8290": {
+      "title": "The Flow Queue CoDel Packet Scheduler and Active Queue Management Algorithm",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "transport": { "name": "Transport" },
+    "congestion-control": { "name": "Congestion Control" },
+    "aqm": { "name": "Active Queue Management" }
+  }
+}

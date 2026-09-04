@@ -1,0 +1,105 @@
+{
+  "id": 600,
+  "slug": "icn",
+  "name": "Information-Centric Networking",
+  "description": "Information-centric and named-data networking",
+  "parent": "internet-layer",
+  "path": "internet-layer/icn",
+  "document_count": 27,
+  "document_count_deep": 27,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc345",
+    "rfc379",
+    "rfc490",
+    "rfc498",
+    "rfc589",
+    "rfc6920",
+    "rfc7476",
+    "rfc7927",
+    "rfc7933",
+    "rfc7945",
+    "rfc8569",
+    "rfc8609",
+    "rfc8763",
+    "rfc8793",
+    "rfc8884",
+    "rfc90",
+    "rfc9064",
+    "rfc9138",
+    "rfc9139",
+    "rfc9236",
+    "rfc9269",
+    "rfc9273",
+    "rfc9344",
+    "rfc9507",
+    "rfc9508",
+    "rfc9510",
+    "rfc9531"
+  ],
+  "document_meta": {
+    "rfc345": { "title": "Interest in Mixed Integer Programming (MPSX on NIC 360/91 at CCN)", "subseries": [] },
+    "rfc379": { "title": "Using TSO at CCN", "subseries": [] },
+    "rfc490": { "title": "Surrogate RJS for UCLA-CCN", "subseries": [] },
+    "rfc498": { "title": "On mail service to CCN", "subseries": [] },
+    "rfc589": { "title": "CCN NETRJS server messages to remote user", "subseries": [] },
+    "rfc6920": { "title": "Naming Things with Hashes", "subseries": [] },
+    "rfc7476": { "title": "Information-Centric Networking: Baseline Scenarios", "subseries": [] },
+    "rfc7927": { "title": "Information-Centric Networking (ICN) Research Challenges", "subseries": [] },
+    "rfc7933": { "title": "Adaptive Video Streaming over Information-Centric Networking (ICN)", "subseries": [] },
+    "rfc7945": { "title": "Information-Centric Networking: Evaluation and Security Considerations", "subseries": [] },
+    "rfc8569": { "title": "Content-Centric Networking (CCNx) Semantics", "subseries": [] },
+    "rfc8609": { "title": "Content-Centric Networking (CCNx) Messages in TLV Format", "subseries": [] },
+    "rfc8763": { "title": "Deployment Considerations for Information-Centric Networking (ICN)", "subseries": [] },
+    "rfc8793": {
+      "title": "Information-Centric Networking (ICN): Content-Centric Networking (CCNx) and Named Data Networking (NDN) Terminology",
+      "subseries": []
+    },
+    "rfc8884": {
+      "title": "Research Directions for Using Information-Centric Networking (ICN) in Disaster Scenarios",
+      "subseries": []
+    },
+    "rfc90": { "title": "CCN as a Network Service Center", "subseries": [] },
+    "rfc9064": {
+      "title": "Considerations in the Development of a QoS Architecture for CCNx-Like Information-Centric Networking Protocols",
+      "subseries": []
+    },
+    "rfc9138": {
+      "title": "Design Considerations for Name Resolution Service in Information-Centric Networking (ICN)",
+      "subseries": []
+    },
+    "rfc9139": {
+      "title": "Information-Centric Networking (ICN) Adaptation to Low-Power Wireless Personal Area Networks (LoWPANs)",
+      "subseries": []
+    },
+    "rfc9236": {
+      "title": "Architectural Considerations of Information-Centric Networking (ICN) Using a Name Resolution Service",
+      "subseries": []
+    },
+    "rfc9269": {
+      "title": "Experimental Scenarios of Information-Centric Networking (ICN) Integration in 4G Mobile Networks",
+      "subseries": []
+    },
+    "rfc9273": {
+      "title": "Network Coding for Content-Centric Networking / Named Data Networking: Considerations and Challenges",
+      "subseries": []
+    },
+    "rfc9344": {
+      "title": "CCNinfo: Discovering Content and Network Information in Content-Centric Networks",
+      "subseries": []
+    },
+    "rfc9507": { "title": "Information-Centric Networking (ICN) Traceroute Protocol Specification", "subseries": [] },
+    "rfc9508": { "title": "Information-Centric Networking (ICN) Ping Protocol Specification", "subseries": [] },
+    "rfc9510": {
+      "title": "Alternative Delta Time Encoding for Content-Centric Networking (CCNx) Using Compact Floating-Point Arithmetic",
+      "subseries": []
+    },
+    "rfc9531": {
+      "title": "Path Steering in Content-Centric Networking (CCNx) and Named Data Networking (NDN)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

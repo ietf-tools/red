@@ -1,0 +1,81 @@
+{
+  "id": 770,
+  "slug": "dccp",
+  "name": "DCCP",
+  "description": "Datagram Congestion Control Protocol",
+  "parent": "transport",
+  "path": "transport/dccp",
+  "document_count": 18,
+  "document_count_deep": 18,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4336",
+    "rfc4340",
+    "rfc4341",
+    "rfc4342",
+    "rfc4828",
+    "rfc5238",
+    "rfc5348",
+    "rfc5595",
+    "rfc5596",
+    "rfc5597",
+    "rfc5622",
+    "rfc5634",
+    "rfc5762",
+    "rfc6323",
+    "rfc6633",
+    "rfc6773",
+    "rfc7605",
+    "rfc9897"
+  ],
+  "document_meta": {
+    "rfc4336": { "title": "Problem Statement for the Datagram Congestion Control Protocol (DCCP)", "subseries": [] },
+    "rfc4340": { "title": "Datagram Congestion Control Protocol (DCCP)", "subseries": [] },
+    "rfc4341": {
+      "title": "Profile for Datagram Congestion Control Protocol (DCCP) Congestion Control ID 2: TCP-like Congestion Control",
+      "subseries": []
+    },
+    "rfc4342": {
+      "title": "Profile for Datagram Congestion Control Protocol (DCCP) Congestion Control ID 3: TCP-Friendly Rate Control (TFRC)",
+      "subseries": []
+    },
+    "rfc4828": { "title": "TCP Friendly Rate Control (TFRC): The Small-Packet (SP) Variant", "subseries": [] },
+    "rfc5238": {
+      "title": "Datagram Transport Layer Security (DTLS) over the Datagram Congestion Control Protocol (DCCP)",
+      "subseries": []
+    },
+    "rfc5348": { "title": "TCP Friendly Rate Control (TFRC): Protocol Specification", "subseries": [] },
+    "rfc5595": { "title": "The Datagram Congestion Control Protocol (DCCP) Service Codes", "subseries": [] },
+    "rfc5596": {
+      "title": "Datagram Congestion Control Protocol (DCCP) Simultaneous-Open Technique to Facilitate NAT/Middlebox Traversal",
+      "subseries": []
+    },
+    "rfc5597": {
+      "title": "Network Address Translation (NAT) Behavioral Requirements for the Datagram Congestion Control Protocol",
+      "subseries": ["bcp150"]
+    },
+    "rfc5622": {
+      "title": "Profile for Datagram Congestion Control Protocol (DCCP) Congestion ID 4: TCP-Friendly Rate Control for Small Packets (TFRC-SP)",
+      "subseries": []
+    },
+    "rfc5634": { "title": "Quick-Start for the Datagram Congestion Control Protocol (DCCP)", "subseries": [] },
+    "rfc5762": { "title": "RTP and the Datagram Congestion Control Protocol (DCCP)", "subseries": [] },
+    "rfc6323": {
+      "title": "Sender RTT Estimate Option for the Datagram Congestion Control Protocol (DCCP)",
+      "subseries": []
+    },
+    "rfc6633": { "title": "Deprecation of ICMP Source Quench Messages", "subseries": [] },
+    "rfc6773": {
+      "title": "DCCP-UDP: A Datagram Congestion Control Protocol UDP Encapsulation for NAT Traversal",
+      "subseries": []
+    },
+    "rfc7605": { "title": "Recommendations on Using Assigned Transport Port Numbers", "subseries": ["bcp165"] },
+    "rfc9897": {
+      "title": "Datagram Congestion Control Protocol (DCCP) Extensions for Multipath Operation with Multiple Addresses",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

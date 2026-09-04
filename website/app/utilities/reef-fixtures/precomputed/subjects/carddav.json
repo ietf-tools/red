@@ -1,0 +1,35 @@
+{
+  "id": 808,
+  "slug": "carddav",
+  "name": "CardDAV",
+  "description": "CardDAV address book access",
+  "parent": "vcard",
+  "path": "applications/vcard/carddav",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc5689", "rfc6350", "rfc6351", "rfc6352", "rfc6473", "rfc6474", "rfc6715", "rfc6764", "rfc7095"],
+  "document_meta": {
+    "rfc5689": { "title": "Extended MKCOL for Web Distributed Authoring and Versioning (WebDAV)", "subseries": [] },
+    "rfc6350": { "title": "vCard Format Specification", "subseries": [] },
+    "rfc6351": { "title": "xCard: vCard XML Representation", "subseries": [] },
+    "rfc6352": {
+      "title": "CardDAV: vCard Extensions to Web Distributed Authoring and Versioning (WebDAV)",
+      "subseries": []
+    },
+    "rfc6473": { "title": "vCard KIND:application", "subseries": [] },
+    "rfc6474": { "title": "vCard Format Extensions: Place of Birth, Place and Date of Death", "subseries": [] },
+    "rfc6715": {
+      "title": "vCard Format Extensions: Representing vCard Extensions Defined by the Open Mobile Alliance (OMA) Converged Address Book (CAB) Group",
+      "subseries": []
+    },
+    "rfc6764": {
+      "title": "Locating Services for Calendaring Extensions to WebDAV (CalDAV) and vCard Extensions to WebDAV (CardDAV)",
+      "subseries": []
+    },
+    "rfc7095": { "title": "jCard: The JSON Format for vCard", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "vcard": { "name": "vCard" } }
+}

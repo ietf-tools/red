@@ -1,0 +1,53 @@
+{
+  "id": 891,
+  "slug": "mgcp",
+  "name": "MGCP",
+  "description": "Media Gateway Control Protocol",
+  "parent": "media-gateway",
+  "path": "real-time-communications/media-gateway/mgcp",
+  "document_count": 13,
+  "document_count_deep": 13,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2705",
+    "rfc2897",
+    "rfc3064",
+    "rfc3149",
+    "rfc3435",
+    "rfc3441",
+    "rfc3624",
+    "rfc3660",
+    "rfc3661",
+    "rfc3991",
+    "rfc3992",
+    "rfc5347",
+    "rfc6498"
+  ],
+  "document_meta": {
+    "rfc2705": { "title": "Media Gateway Control Protocol (MGCP) Version 1.0", "subseries": [] },
+    "rfc2897": { "title": "Proposal for an MGCP Advanced Audio Package", "subseries": [] },
+    "rfc3064": { "title": "MGCP CAS Packages", "subseries": [] },
+    "rfc3149": { "title": "MGCP Business Phone Packages", "subseries": [] },
+    "rfc3435": { "title": "Media Gateway Control Protocol (MGCP) Version 1.0", "subseries": [] },
+    "rfc3441": {
+      "title": "Asynchronous Transfer Mode (ATM) Package for the Media Gateway Control Protocol (MGCP)",
+      "subseries": []
+    },
+    "rfc3624": { "title": "The Media Gateway Control Protocol (MGCP) Bulk Audit Package", "subseries": [] },
+    "rfc3660": { "title": "Basic Media Gateway Control Protocol (MGCP) Packages", "subseries": [] },
+    "rfc3661": { "title": "Media Gateway Control Protocol (MGCP) Return Code Usage", "subseries": [] },
+    "rfc3991": { "title": "Media Gateway Control Protocol (MGCP) Redirect and Reset Package", "subseries": [] },
+    "rfc3992": { "title": "Media Gateway Control Protocol (MGCP) Lockstep State Reporting Mechanism", "subseries": [] },
+    "rfc5347": { "title": "Media Gateway Control Protocol Fax Package", "subseries": [] },
+    "rfc6498": {
+      "title": "Media Gateway Control Protocol (MGCP) Voiceband Data (VBD) Package and General-Purpose Media Descriptor Parameter Package",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "media-gateway": { "name": "Media Gateways" }
+  }
+}

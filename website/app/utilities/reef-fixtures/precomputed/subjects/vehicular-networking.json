@@ -1,0 +1,25 @@
+{
+  "id": 612,
+  "slug": "vehicular-networking",
+  "name": "Vehicular Networking",
+  "description": "IP in vehicular (V2X) environments",
+  "parent": "internet-layer",
+  "path": "internet-layer/vehicular-networking",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8691", "rfc9365"],
+  "document_meta": {
+    "rfc8691": {
+      "title": "Basic Support for IPv6 Networks Operating Outside the Context of a Basic Service Set over IEEE Std 802.11",
+      "subseries": []
+    },
+    "rfc9365": {
+      "title": "IPv6 Wireless Access in Vehicular Environments (IPWAVE): Problem Statement and Use Cases",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

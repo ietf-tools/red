@@ -1,0 +1,21 @@
+{
+  "id": 908,
+  "slug": "route-reflection",
+  "name": "Route Reflection",
+  "description": "BGP route reflection and confederations",
+  "parent": "bgp",
+  "path": "routing/bgp/route-reflection",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1966", "rfc2796", "rfc4456", "rfc9107"],
+  "document_meta": {
+    "rfc1966": { "title": "BGP Route Reflection An alternative to full mesh IBGP", "subseries": [] },
+    "rfc2796": { "title": "BGP Route Reflection - An Alternative to Full Mesh IBGP", "subseries": [] },
+    "rfc4456": { "title": "BGP Route Reflection: An Alternative to Full Mesh Internal BGP (IBGP)", "subseries": [] },
+    "rfc9107": { "title": "BGP Optimal Route Reflection (BGP ORR)", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "bgp": { "name": "BGP" } }
+}

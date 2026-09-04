@@ -1,0 +1,198 @@
+{
+  "id": 671,
+  "slug": "ipfix",
+  "name": "IPFIX",
+  "description": "IP flow information export and packet sampling",
+  "parent": "network-management",
+  "path": "network-management/ipfix",
+  "document_count": 57,
+  "document_count_deep": 57,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2063",
+    "rfc2064",
+    "rfc2123",
+    "rfc2720",
+    "rfc2721",
+    "rfc2722",
+    "rfc2723",
+    "rfc2724",
+    "rfc3423",
+    "rfc3917",
+    "rfc3954",
+    "rfc3955",
+    "rfc5101",
+    "rfc5102",
+    "rfc5103",
+    "rfc5153",
+    "rfc5470",
+    "rfc5471",
+    "rfc5472",
+    "rfc5473",
+    "rfc5474",
+    "rfc5475",
+    "rfc5476",
+    "rfc5477",
+    "rfc5610",
+    "rfc5655",
+    "rfc5815",
+    "rfc5982",
+    "rfc6183",
+    "rfc6235",
+    "rfc6313",
+    "rfc6526",
+    "rfc6615",
+    "rfc6645",
+    "rfc6727",
+    "rfc6728",
+    "rfc6759",
+    "rfc7011",
+    "rfc7012",
+    "rfc7013",
+    "rfc7014",
+    "rfc7015",
+    "rfc7119",
+    "rfc7125",
+    "rfc7133",
+    "rfc7270",
+    "rfc7373",
+    "rfc8038",
+    "rfc8158",
+    "rfc8549",
+    "rfc9160",
+    "rfc9487",
+    "rfc9565",
+    "rfc9710",
+    "rfc9740",
+    "rfc9870",
+    "rfc9951"
+  ],
+  "document_meta": {
+    "rfc2063": { "title": "Traffic Flow Measurement:  Architecture", "subseries": [] },
+    "rfc2064": { "title": "Traffic Flow Measurement:  Meter MIB", "subseries": [] },
+    "rfc2123": { "title": "Traffic Flow Measurement: Experiences with NeTraMet", "subseries": [] },
+    "rfc2720": { "title": "Traffic Flow Measurement: Meter MIB", "subseries": [] },
+    "rfc2721": { "title": "RTFM: Applicability Statement", "subseries": [] },
+    "rfc2722": { "title": "Traffic Flow Measurement: Architecture", "subseries": [] },
+    "rfc2723": {
+      "title": "SRL: A Language for Describing Traffic Flows and Specifying Actions for Flow Groups",
+      "subseries": []
+    },
+    "rfc2724": { "title": "RTFM: New Attributes for Traffic Flow Measurement", "subseries": [] },
+    "rfc3423": {
+      "title": "XACCT's Common Reliable Accounting for Network Element (CRANE) Protocol Specification Version 1.0",
+      "subseries": []
+    },
+    "rfc3917": { "title": "Requirements for IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc3954": { "title": "Cisco Systems NetFlow Services Export Version 9", "subseries": [] },
+    "rfc3955": { "title": "Evaluation of Candidate Protocols for IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc5101": {
+      "title": "Specification of the IP Flow Information Export (IPFIX) Protocol for the Exchange of IP Traffic Flow Information",
+      "subseries": []
+    },
+    "rfc5102": { "title": "Information Model for IP Flow Information Export", "subseries": [] },
+    "rfc5103": { "title": "Bidirectional Flow Export Using IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc5153": { "title": "IP Flow Information Export (IPFIX) Implementation Guidelines", "subseries": [] },
+    "rfc5470": { "title": "Architecture for IP Flow Information Export", "subseries": [] },
+    "rfc5471": { "title": "Guidelines for IP Flow Information Export (IPFIX) Testing", "subseries": [] },
+    "rfc5472": { "title": "IP Flow Information Export (IPFIX) Applicability", "subseries": [] },
+    "rfc5473": {
+      "title": "Reducing Redundancy in IP Flow Information Export (IPFIX) and Packet Sampling (PSAMP) Reports",
+      "subseries": []
+    },
+    "rfc5474": { "title": "A Framework for Packet Selection and Reporting", "subseries": [] },
+    "rfc5475": { "title": "Sampling and Filtering Techniques for IP Packet Selection", "subseries": [] },
+    "rfc5476": { "title": "Packet Sampling (PSAMP) Protocol Specifications", "subseries": [] },
+    "rfc5477": { "title": "Information Model for Packet Sampling Exports", "subseries": [] },
+    "rfc5610": {
+      "title": "Exporting Type Information for IP Flow Information Export (IPFIX) Information Elements",
+      "subseries": []
+    },
+    "rfc5655": { "title": "Specification of the IP Flow Information Export (IPFIX) File Format", "subseries": [] },
+    "rfc5815": { "title": "Definitions of Managed Objects for IP Flow Information Export", "subseries": [] },
+    "rfc5982": { "title": "IP Flow Information Export (IPFIX) Mediation: Problem Statement", "subseries": [] },
+    "rfc6183": { "title": "IP Flow Information Export (IPFIX) Mediation: Framework", "subseries": [] },
+    "rfc6235": { "title": "IP Flow Anonymization Support", "subseries": [] },
+    "rfc6313": { "title": "Export of Structured Data in IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc6526": {
+      "title": "IP Flow Information Export (IPFIX) Per Stream Control Transmission Protocol (SCTP) Stream",
+      "subseries": []
+    },
+    "rfc6615": { "title": "Definitions of Managed Objects for IP Flow Information Export", "subseries": [] },
+    "rfc6645": { "title": "IP Flow Information Accounting and Export Benchmarking Methodology", "subseries": [] },
+    "rfc6727": { "title": "Definitions of Managed Objects for Packet Sampling", "subseries": [] },
+    "rfc6728": {
+      "title": "Configuration Data Model for the IP Flow Information Export (IPFIX) and Packet Sampling (PSAMP) Protocols",
+      "subseries": []
+    },
+    "rfc6759": {
+      "title": "Cisco Systems Export of Application Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc7011": {
+      "title": "Specification of the IP Flow Information Export (IPFIX) Protocol for the Exchange of Flow Information",
+      "subseries": ["std77"]
+    },
+    "rfc7012": { "title": "Information Model for IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc7013": {
+      "title": "Guidelines for Authors and Reviewers of IP Flow Information Export (IPFIX) Information Elements",
+      "subseries": ["bcp184"]
+    },
+    "rfc7014": { "title": "Flow Selection Techniques", "subseries": [] },
+    "rfc7015": { "title": "Flow Aggregation for the IP Flow Information Export (IPFIX) Protocol", "subseries": [] },
+    "rfc7119": {
+      "title": "Operation of the IP Flow Information Export (IPFIX) Protocol on IPFIX Mediators",
+      "subseries": []
+    },
+    "rfc7125": {
+      "title": "Revision of the tcpControlBits IP Flow Information Export (IPFIX) Information Element",
+      "subseries": []
+    },
+    "rfc7133": { "title": "Information Elements for Data Link Layer Traffic Measurement", "subseries": [] },
+    "rfc7270": {
+      "title": "Cisco-Specific Information Elements Reused in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc7373": {
+      "title": "Textual Representation of IP Flow Information Export (IPFIX) Abstract Data Types",
+      "subseries": []
+    },
+    "rfc8038": {
+      "title": "Exporting MIB Variables Using the IP Flow Information Export (IPFIX) Protocol",
+      "subseries": []
+    },
+    "rfc8158": {
+      "title": "IP Flow Information Export (IPFIX) Information Elements for Logging NAT Events",
+      "subseries": []
+    },
+    "rfc8549": {
+      "title": "Export of BGP Community Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc9160": {
+      "title": "Export of MPLS Segment Routing Label Type Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc9487": {
+      "title": "Export of Segment Routing over IPv6 Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc9565": {
+      "title": "An Update to the tcpControlBits IP Flow Information Export (IPFIX) Information Element",
+      "subseries": []
+    },
+    "rfc9710": {
+      "title": "Simple Fixes to the IP Flow Information Export (IPFIX) Entities IANA Registry",
+      "subseries": []
+    },
+    "rfc9740": {
+      "title": "New IPFIX Information Elements for TCP Options and IPv6 Extension Headers",
+      "subseries": []
+    },
+    "rfc9870": { "title": "Export of UDP Options Information in IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc9951": { "title": "Export of Delay Performance Metrics in IP Flow Information Export (IPFIX)", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

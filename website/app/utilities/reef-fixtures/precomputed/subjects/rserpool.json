@@ -1,0 +1,31 @@
+{
+  "id": 780,
+  "slug": "rserpool",
+  "name": "RSerPool",
+  "description": "Reliable server pooling",
+  "parent": "transport",
+  "path": "transport/rserpool",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3237", "rfc5351", "rfc5352", "rfc5353", "rfc5354", "rfc5355", "rfc5356", "rfc5525"],
+  "document_meta": {
+    "rfc3237": { "title": "Requirements for Reliable Server Pooling", "subseries": [] },
+    "rfc5351": { "title": "An Overview of Reliable Server Pooling Protocols", "subseries": [] },
+    "rfc5352": { "title": "Aggregate Server Access Protocol (ASAP)", "subseries": [] },
+    "rfc5353": { "title": "Endpoint Handlespace Redundancy Protocol (ENRP)", "subseries": [] },
+    "rfc5354": {
+      "title": "Aggregate Server Access Protocol (ASAP) and Endpoint Handlespace Redundancy Protocol (ENRP) Parameters",
+      "subseries": []
+    },
+    "rfc5355": {
+      "title": "Threats Introduced by Reliable Server Pooling (RSerPool) and Requirements for Security in Response to Threats",
+      "subseries": []
+    },
+    "rfc5356": { "title": "Reliable Server Pooling Policies", "subseries": [] },
+    "rfc5525": { "title": "Reliable Server Pooling MIB Module Definition", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

@@ -1,0 +1,714 @@
+{
+  "id": 765,
+  "slug": "tls",
+  "name": "TLS",
+  "description": "Transport Layer Security: protocol, extensions, deployment guidance",
+  "parent": "security",
+  "path": "security/tls",
+  "document_count": 219,
+  "document_count_deep": 227,
+  "retired": false,
+  "children": ["dtls"],
+  "aliases": [],
+  "documents": [
+    "rfc10015",
+    "rfc10024",
+    "rfc2246",
+    "rfc2487",
+    "rfc2595",
+    "rfc2712",
+    "rfc2716",
+    "rfc2817",
+    "rfc2818",
+    "rfc2830",
+    "rfc3207",
+    "rfc3268",
+    "rfc3436",
+    "rfc3546",
+    "rfc3734",
+    "rfc3749",
+    "rfc3943",
+    "rfc4132",
+    "rfc4162",
+    "rfc4169",
+    "rfc4217",
+    "rfc4261",
+    "rfc4279",
+    "rfc4346",
+    "rfc4347",
+    "rfc4366",
+    "rfc4492",
+    "rfc4507",
+    "rfc4511",
+    "rfc4513",
+    "rfc4572",
+    "rfc4642",
+    "rfc4680",
+    "rfc4681",
+    "rfc4785",
+    "rfc4934",
+    "rfc5018",
+    "rfc5027",
+    "rfc5054",
+    "rfc5077",
+    "rfc5081",
+    "rfc5114",
+    "rfc5216",
+    "rfc5238",
+    "rfc5246",
+    "rfc5281",
+    "rfc5288",
+    "rfc5289",
+    "rfc5425",
+    "rfc5430",
+    "rfc5469",
+    "rfc5487",
+    "rfc5489",
+    "rfc5539",
+    "rfc5630",
+    "rfc5705",
+    "rfc5734",
+    "rfc5746",
+    "rfc5763",
+    "rfc5764",
+    "rfc5878",
+    "rfc5922",
+    "rfc5923",
+    "rfc5929",
+    "rfc5932",
+    "rfc5953",
+    "rfc6012",
+    "rfc6042",
+    "rfc6066",
+    "rfc6083",
+    "rfc6084",
+    "rfc6091",
+    "rfc6101",
+    "rfc6125",
+    "rfc6135",
+    "rfc6176",
+    "rfc6209",
+    "rfc6251",
+    "rfc6347",
+    "rfc6353",
+    "rfc6358",
+    "rfc6367",
+    "rfc6394",
+    "rfc6460",
+    "rfc6520",
+    "rfc6546",
+    "rfc6614",
+    "rfc6618",
+    "rfc6655",
+    "rfc6698",
+    "rfc6797",
+    "rfc6876",
+    "rfc6961",
+    "rfc6962",
+    "rfc7027",
+    "rfc7194",
+    "rfc7250",
+    "rfc7251",
+    "rfc7301",
+    "rfc7345",
+    "rfc7350",
+    "rfc7360",
+    "rfc7366",
+    "rfc7457",
+    "rfc7465",
+    "rfc7507",
+    "rfc7525",
+    "rfc7562",
+    "rfc7568",
+    "rfc7585",
+    "rfc7589",
+    "rfc7590",
+    "rfc7627",
+    "rfc7633",
+    "rfc7672",
+    "rfc7685",
+    "rfc7817",
+    "rfc7836",
+    "rfc7858",
+    "rfc7879",
+    "rfc7905",
+    "rfc7918",
+    "rfc7919",
+    "rfc7924",
+    "rfc7925",
+    "rfc7983",
+    "rfc8094",
+    "rfc8122",
+    "rfc8143",
+    "rfc8253",
+    "rfc8261",
+    "rfc8310",
+    "rfc8314",
+    "rfc8323",
+    "rfc8422",
+    "rfc8442",
+    "rfc8446",
+    "rfc8447",
+    "rfc8448",
+    "rfc8449",
+    "rfc8460",
+    "rfc8461",
+    "rfc8470",
+    "rfc8471",
+    "rfc8472",
+    "rfc8473",
+    "rfc8492",
+    "rfc8672",
+    "rfc8689",
+    "rfc8701",
+    "rfc8705",
+    "rfc8734",
+    "rfc8737",
+    "rfc8740",
+    "rfc8744",
+    "rfc8773",
+    "rfc8841",
+    "rfc8842",
+    "rfc8844",
+    "rfc8879",
+    "rfc8902",
+    "rfc8937",
+    "rfc8940",
+    "rfc8968",
+    "rfc8996",
+    "rfc8997",
+    "rfc8998",
+    "rfc9001",
+    "rfc9102",
+    "rfc9103",
+    "rfc9146",
+    "rfc9147",
+    "rfc9149",
+    "rfc9150",
+    "rfc9151",
+    "rfc9155",
+    "rfc9162",
+    "rfc9189",
+    "rfc9190",
+    "rfc9191",
+    "rfc9202",
+    "rfc9257",
+    "rfc9258",
+    "rfc9261",
+    "rfc9266",
+    "rfc9289",
+    "rfc9325",
+    "rfc9345",
+    "rfc9367",
+    "rfc9368",
+    "rfc9427",
+    "rfc9430",
+    "rfc9431",
+    "rfc9456",
+    "rfc9525",
+    "rfc9539",
+    "rfc9645",
+    "rfc9662",
+    "rfc9761",
+    "rfc9765",
+    "rfc9813",
+    "rfc9846",
+    "rfc9847",
+    "rfc9848",
+    "rfc9849",
+    "rfc9850",
+    "rfc9851",
+    "rfc9852",
+    "rfc9853",
+    "rfc9887",
+    "rfc9916",
+    "rfc9918",
+    "rfc9932",
+    "rfc9934",
+    "rfc9950",
+    "rfc9954",
+    "rfc9963",
+    "rfc9966",
+    "rfc9973"
+  ],
+  "document_meta": {
+    "rfc10015": { "title": "Deprecating Obsolete Key Exchange Methods in TLS 1.2 and DTLS 1.2", "subseries": [] },
+    "rfc10024": {
+      "title": "Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3",
+      "subseries": []
+    },
+    "rfc2246": { "title": "The TLS Protocol Version 1.0", "subseries": [] },
+    "rfc2487": { "title": "SMTP Service Extension for Secure SMTP over TLS", "subseries": [] },
+    "rfc2595": { "title": "Using TLS with IMAP, POP3 and ACAP", "subseries": [] },
+    "rfc2712": { "title": "Addition of Kerberos Cipher Suites to Transport Layer Security (TLS)", "subseries": [] },
+    "rfc2716": { "title": "PPP EAP TLS Authentication Protocol", "subseries": [] },
+    "rfc2817": { "title": "Upgrading to TLS Within HTTP/1.1", "subseries": [] },
+    "rfc2818": { "title": "HTTP Over TLS", "subseries": [] },
+    "rfc2830": {
+      "title": "Lightweight Directory Access Protocol (v3): Extension for Transport Layer Security",
+      "subseries": []
+    },
+    "rfc3207": { "title": "SMTP Service Extension for Secure SMTP over Transport Layer Security", "subseries": [] },
+    "rfc3268": {
+      "title": "Advanced Encryption Standard (AES) Ciphersuites for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc3436": { "title": "Transport Layer Security over Stream Control Transmission Protocol", "subseries": [] },
+    "rfc3546": { "title": "Transport Layer Security (TLS) Extensions", "subseries": [] },
+    "rfc3734": { "title": "Extensible Provisioning Protocol (EPP) Transport Over TCP", "subseries": [] },
+    "rfc3749": { "title": "Transport Layer Security Protocol Compression Methods", "subseries": [] },
+    "rfc3943": {
+      "title": "Transport Layer Security (TLS) Protocol Compression Using Lempel-Ziv-Stac (LZS)",
+      "subseries": []
+    },
+    "rfc4132": { "title": "Addition of Camellia Cipher Suites to Transport Layer Security (TLS)", "subseries": [] },
+    "rfc4162": { "title": "Addition of SEED Cipher Suites to Transport Layer Security (TLS)", "subseries": [] },
+    "rfc4169": {
+      "title": "Hypertext Transfer Protocol (HTTP) Digest Authentication Using Authentication and Key Agreement (AKA) Version-2",
+      "subseries": []
+    },
+    "rfc4217": { "title": "Securing FTP with TLS", "subseries": [] },
+    "rfc4261": { "title": "Common Open Policy Service (COPS) Over Transport Layer Security (TLS)", "subseries": [] },
+    "rfc4279": { "title": "Pre-Shared Key Ciphersuites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc4346": { "title": "The Transport Layer Security (TLS) Protocol Version 1.1", "subseries": [] },
+    "rfc4347": { "title": "Datagram Transport Layer Security", "subseries": [] },
+    "rfc4366": { "title": "Transport Layer Security (TLS) Extensions", "subseries": [] },
+    "rfc4492": {
+      "title": "Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc4507": {
+      "title": "Transport Layer Security (TLS) Session Resumption without Server-Side State",
+      "subseries": []
+    },
+    "rfc4511": { "title": "Lightweight Directory Access Protocol (LDAP): The Protocol", "subseries": [] },
+    "rfc4513": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Authentication Methods and Security Mechanisms",
+      "subseries": []
+    },
+    "rfc4572": {
+      "title": "Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc4642": {
+      "title": "Using Transport Layer Security (TLS) with Network News Transfer Protocol (NNTP)",
+      "subseries": []
+    },
+    "rfc4680": { "title": "TLS Handshake Message for Supplemental Data", "subseries": [] },
+    "rfc4681": { "title": "TLS User Mapping Extension", "subseries": [] },
+    "rfc4785": {
+      "title": "Pre-Shared Key (PSK) Ciphersuites with NULL Encryption for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc4934": { "title": "Extensible Provisioning Protocol (EPP) Transport Over TCP", "subseries": [] },
+    "rfc5018": { "title": "Connection Establishment in the Binary Floor Control Protocol (BFCP)", "subseries": [] },
+    "rfc5027": {
+      "title": "Security Preconditions for Session Description Protocol (SDP) Media Streams",
+      "subseries": []
+    },
+    "rfc5054": { "title": "Using the Secure Remote Password (SRP) Protocol for TLS Authentication", "subseries": [] },
+    "rfc5077": {
+      "title": "Transport Layer Security (TLS) Session Resumption without Server-Side State",
+      "subseries": []
+    },
+    "rfc5081": { "title": "Using OpenPGP Keys for Transport Layer Security (TLS) Authentication", "subseries": [] },
+    "rfc5114": { "title": "Additional Diffie-Hellman Groups for Use with IETF Standards", "subseries": [] },
+    "rfc5216": { "title": "The EAP-TLS Authentication Protocol", "subseries": [] },
+    "rfc5238": {
+      "title": "Datagram Transport Layer Security (DTLS) over the Datagram Congestion Control Protocol (DCCP)",
+      "subseries": []
+    },
+    "rfc5246": { "title": "The Transport Layer Security (TLS) Protocol Version 1.2", "subseries": [] },
+    "rfc5281": {
+      "title": "Extensible Authentication Protocol Tunneled Transport Layer Security Authenticated Protocol Version 0 (EAP-TTLSv0)",
+      "subseries": []
+    },
+    "rfc5288": { "title": "AES Galois Counter Mode (GCM) Cipher Suites for TLS", "subseries": [] },
+    "rfc5289": {
+      "title": "TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)",
+      "subseries": []
+    },
+    "rfc5425": { "title": "Transport Layer Security (TLS) Transport Mapping for Syslog", "subseries": [] },
+    "rfc5430": { "title": "Suite B Profile for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5469": { "title": "DES and IDEA Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5487": {
+      "title": "Pre-Shared Key Cipher Suites for TLS with SHA-256/384 and AES Galois Counter Mode",
+      "subseries": []
+    },
+    "rfc5489": { "title": "ECDHE_PSK Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5539": { "title": "NETCONF over Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5630": { "title": "The Use of the SIPS URI Scheme in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5705": { "title": "Keying Material Exporters for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5734": { "title": "Extensible Provisioning Protocol (EPP) Transport over TCP", "subseries": ["std69"] },
+    "rfc5746": { "title": "Transport Layer Security (TLS) Renegotiation Indication Extension", "subseries": [] },
+    "rfc5763": {
+      "title": "Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc5764": {
+      "title": "Datagram Transport Layer Security (DTLS) Extension to Establish Keys for the Secure Real-time Transport Protocol (SRTP)",
+      "subseries": []
+    },
+    "rfc5878": { "title": "Transport Layer Security (TLS) Authorization Extensions", "subseries": [] },
+    "rfc5922": { "title": "Domain Certificates in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5923": { "title": "Connection Reuse in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5929": { "title": "Channel Bindings for TLS", "subseries": [] },
+    "rfc5932": { "title": "Camellia Cipher Suites for TLS", "subseries": [] },
+    "rfc5953": {
+      "title": "Transport Layer Security (TLS) Transport Model for the Simple Network Management Protocol (SNMP)",
+      "subseries": []
+    },
+    "rfc6012": { "title": "Datagram Transport Layer Security (DTLS) Transport Mapping for Syslog", "subseries": [] },
+    "rfc6042": { "title": "Transport Layer Security (TLS) Authorization Using KeyNote", "subseries": [] },
+    "rfc6066": { "title": "Transport Layer Security (TLS) Extensions: Extension Definitions", "subseries": [] },
+    "rfc6083": {
+      "title": "Datagram Transport Layer Security (DTLS) for Stream Control Transmission Protocol (SCTP)",
+      "subseries": []
+    },
+    "rfc6084": {
+      "title": "General Internet Signaling Transport (GIST) over Stream Control Transmission Protocol (SCTP) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc6091": { "title": "Using OpenPGP Keys for Transport Layer Security (TLS) Authentication", "subseries": [] },
+    "rfc6101": { "title": "The Secure Sockets Layer (SSL) Protocol Version 3.0", "subseries": [] },
+    "rfc6125": {
+      "title": "Representation and Verification of Domain-Based Application Service Identity within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc6135": {
+      "title": "An Alternative Connection Model for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc6176": { "title": "Prohibiting Secure Sockets Layer (SSL) Version 2.0", "subseries": [] },
+    "rfc6209": { "title": "Addition of the ARIA Cipher Suites to Transport Layer Security (TLS)", "subseries": [] },
+    "rfc6251": {
+      "title": "Using Kerberos Version 5 over the Transport Layer Security (TLS) Protocol",
+      "subseries": []
+    },
+    "rfc6347": { "title": "Datagram Transport Layer Security Version 1.2", "subseries": [] },
+    "rfc6353": {
+      "title": "Transport Layer Security (TLS) Transport Model for the Simple Network Management Protocol (SNMP)",
+      "subseries": ["std78"]
+    },
+    "rfc6358": { "title": "Additional Master Secret Inputs for TLS", "subseries": [] },
+    "rfc6367": { "title": "Addition of the Camellia Cipher Suites to Transport Layer Security (TLS)", "subseries": [] },
+    "rfc6394": {
+      "title": "Use Cases and Requirements for DNS-Based Authentication of Named Entities (DANE)",
+      "subseries": []
+    },
+    "rfc6460": { "title": "Suite B Profile for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc6520": {
+      "title": "Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS) Heartbeat Extension",
+      "subseries": []
+    },
+    "rfc6546": {
+      "title": "Transport of Real-time Inter-network Defense (RID) Messages over HTTP/TLS",
+      "subseries": []
+    },
+    "rfc6614": { "title": "Transport Layer Security (TLS) Encryption for RADIUS", "subseries": [] },
+    "rfc6618": {
+      "title": "Mobile IPv6 Security Framework Using Transport Layer Security for Communication between the Mobile Node and Home Agent",
+      "subseries": []
+    },
+    "rfc6655": { "title": "AES-CCM Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc6698": {
+      "title": "The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA",
+      "subseries": []
+    },
+    "rfc6797": { "title": "HTTP Strict Transport Security (HSTS)", "subseries": [] },
+    "rfc6876": { "title": "A Posture Transport Protocol over TLS (PT-TLS)", "subseries": [] },
+    "rfc6961": {
+      "title": "The Transport Layer Security (TLS) Multiple Certificate Status Request Extension",
+      "subseries": []
+    },
+    "rfc6962": { "title": "Certificate Transparency", "subseries": [] },
+    "rfc7027": {
+      "title": "Elliptic Curve Cryptography (ECC) Brainpool Curves for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc7194": { "title": "Default Port for Internet Relay Chat (IRC) via TLS/SSL", "subseries": [] },
+    "rfc7250": {
+      "title": "Using Raw Public Keys in Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7251": { "title": "AES-CCM Elliptic Curve Cryptography (ECC) Cipher Suites for TLS", "subseries": [] },
+    "rfc7301": {
+      "title": "Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension",
+      "subseries": []
+    },
+    "rfc7345": {
+      "title": "UDP Transport Layer (UDPTL) over Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7350": {
+      "title": "Datagram Transport Layer Security (DTLS) as Transport for Session Traversal Utilities for NAT (STUN)",
+      "subseries": []
+    },
+    "rfc7360": { "title": "Datagram Transport Layer Security (DTLS) as a Transport Layer for RADIUS", "subseries": [] },
+    "rfc7366": {
+      "title": "Encrypt-then-MAC for Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7457": {
+      "title": "Summarizing Known Attacks on Transport Layer Security (TLS) and Datagram TLS (DTLS)",
+      "subseries": []
+    },
+    "rfc7465": { "title": "Prohibiting RC4 Cipher Suites", "subseries": [] },
+    "rfc7507": {
+      "title": "TLS Fallback Signaling Cipher Suite Value (SCSV) for Preventing Protocol Downgrade Attacks",
+      "subseries": []
+    },
+    "rfc7525": {
+      "title": "Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7562": {
+      "title": "Transport Layer Security (TLS) Authorization Using Digital Transmission Content Protection (DTCP) Certificates",
+      "subseries": []
+    },
+    "rfc7568": { "title": "Deprecating Secure Sockets Layer Version 3.0", "subseries": [] },
+    "rfc7585": {
+      "title": "Dynamic Peer Discovery for RADIUS/TLS and RADIUS/DTLS Based on the Network Access Identifier (NAI)",
+      "subseries": []
+    },
+    "rfc7589": {
+      "title": "Using the NETCONF Protocol over Transport Layer Security (TLS) with Mutual X.509 Authentication",
+      "subseries": []
+    },
+    "rfc7590": {
+      "title": "Use of Transport Layer Security (TLS) in the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7627": {
+      "title": "Transport Layer Security (TLS) Session Hash and Extended Master Secret Extension",
+      "subseries": []
+    },
+    "rfc7633": { "title": "X.509v3 Transport Layer Security (TLS) Feature Extension", "subseries": [] },
+    "rfc7672": {
+      "title": "SMTP Security via Opportunistic DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc7685": { "title": "A Transport Layer Security (TLS) ClientHello Padding Extension", "subseries": [] },
+    "rfc7817": {
+      "title": "Updated Transport Layer Security (TLS) Server Identity Check Procedure for Email-Related Protocols",
+      "subseries": []
+    },
+    "rfc7836": {
+      "title": "Guidelines on the Cryptographic Algorithms to Accompany the Usage of Standards GOST R 34.10-2012 and GOST R 34.11-2012",
+      "subseries": []
+    },
+    "rfc7858": { "title": "Specification for DNS over Transport Layer Security (TLS)", "subseries": [] },
+    "rfc7879": { "title": "DTLS-SRTP Handling in SIP Back-to-Back User Agents", "subseries": [] },
+    "rfc7905": { "title": "ChaCha20-Poly1305 Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc7918": { "title": "Transport Layer Security (TLS) False Start", "subseries": [] },
+    "rfc7919": {
+      "title": "Negotiated Finite Field Diffie-Hellman Ephemeral Parameters for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc7924": { "title": "Transport Layer Security (TLS) Cached Information Extension", "subseries": [] },
+    "rfc7925": {
+      "title": "Transport Layer Security (TLS) / Datagram Transport Layer Security (DTLS) Profiles for the Internet of Things",
+      "subseries": []
+    },
+    "rfc7983": {
+      "title": "Multiplexing Scheme Updates for Secure Real-time Transport Protocol (SRTP) Extension for Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc8094": { "title": "DNS over Datagram Transport Layer Security (DTLS)", "subseries": [] },
+    "rfc8122": {
+      "title": "Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc8143": {
+      "title": "Using Transport Layer Security (TLS) with Network News Transfer Protocol (NNTP)",
+      "subseries": []
+    },
+    "rfc8253": {
+      "title": "PCEPS: Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc8261": { "title": "Datagram Transport Layer Security (DTLS) Encapsulation of SCTP Packets", "subseries": [] },
+    "rfc8310": { "title": "Usage Profiles for DNS over TLS and DNS over DTLS", "subseries": [] },
+    "rfc8314": {
+      "title": "Cleartext Considered Obsolete: Use of Transport Layer Security (TLS) for Email Submission and Access",
+      "subseries": []
+    },
+    "rfc8323": { "title": "CoAP (Constrained Application Protocol) over TCP, TLS, and WebSockets", "subseries": [] },
+    "rfc8422": {
+      "title": "Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS) Versions 1.2 and Earlier",
+      "subseries": []
+    },
+    "rfc8442": {
+      "title": "ECDHE_PSK with AES-GCM and AES-CCM Cipher Suites for TLS 1.2 and DTLS 1.2",
+      "subseries": []
+    },
+    "rfc8446": { "title": "The Transport Layer Security (TLS) Protocol Version 1.3", "subseries": [] },
+    "rfc8447": { "title": "IANA Registry Updates for TLS and DTLS", "subseries": [] },
+    "rfc8448": { "title": "Example Handshake Traces for TLS 1.3", "subseries": [] },
+    "rfc8449": { "title": "Record Size Limit Extension for TLS", "subseries": [] },
+    "rfc8460": { "title": "SMTP TLS Reporting", "subseries": [] },
+    "rfc8461": { "title": "SMTP MTA Strict Transport Security (MTA-STS)", "subseries": [] },
+    "rfc8470": { "title": "Using Early Data in HTTP", "subseries": [] },
+    "rfc8471": { "title": "The Token Binding Protocol Version 1.0", "subseries": [] },
+    "rfc8472": {
+      "title": "Transport Layer Security (TLS) Extension for Token Binding Protocol Negotiation",
+      "subseries": []
+    },
+    "rfc8473": { "title": "Token Binding over HTTP", "subseries": [] },
+    "rfc8492": { "title": "Secure Password Ciphersuites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc8672": { "title": "TLS Server Identity Pinning with Tickets", "subseries": [] },
+    "rfc8689": { "title": "SMTP Require TLS Option", "subseries": [] },
+    "rfc8701": {
+      "title": "Applying Generate Random Extensions And Sustain Extensibility (GREASE) to TLS Extensibility",
+      "subseries": []
+    },
+    "rfc8705": {
+      "title": "OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens",
+      "subseries": []
+    },
+    "rfc8734": {
+      "title": "Elliptic Curve Cryptography (ECC) Brainpool Curves for Transport Layer Security (TLS) Version 1.3",
+      "subseries": []
+    },
+    "rfc8737": {
+      "title": "Automated Certificate Management Environment (ACME) TLS Application-Layer Protocol Negotiation (ALPN) Challenge Extension",
+      "subseries": []
+    },
+    "rfc8740": { "title": "Using TLS 1.3 with HTTP/2", "subseries": [] },
+    "rfc8744": {
+      "title": "Issues and Requirements for Server Name Identification (SNI) Encryption in TLS",
+      "subseries": []
+    },
+    "rfc8773": {
+      "title": "TLS 1.3 Extension for Certificate-Based Authentication with an External Pre-Shared Key",
+      "subseries": []
+    },
+    "rfc8841": {
+      "title": "Session Description Protocol (SDP) Offer/Answer Procedures for Stream Control Transmission Protocol (SCTP) over Datagram Transport Layer Security (DTLS) Transport",
+      "subseries": []
+    },
+    "rfc8842": {
+      "title": "Session Description Protocol (SDP) Offer/Answer Considerations for Datagram Transport Layer Security (DTLS) and Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc8844": {
+      "title": "Unknown Key-Share Attacks on Uses of TLS with the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc8879": { "title": "TLS Certificate Compression", "subseries": [] },
+    "rfc8902": { "title": "TLS Authentication Using Intelligent Transport System (ITS) Certificates", "subseries": [] },
+    "rfc8937": { "title": "Randomness Improvements for Security Protocols", "subseries": [] },
+    "rfc8940": {
+      "title": "Extensible Authentication Protocol (EAP) Session-Id Derivation for EAP Subscriber Identity Module (EAP-SIM), EAP Authentication and Key Agreement (EAP-AKA), and Protected EAP (PEAP)",
+      "subseries": []
+    },
+    "rfc8968": { "title": "Babel Routing Protocol over Datagram Transport Layer Security", "subseries": [] },
+    "rfc8996": { "title": "Deprecating TLS 1.0 and TLS 1.1", "subseries": ["bcp195"] },
+    "rfc8997": { "title": "Deprecation of TLS 1.1 for Email Submission and Access", "subseries": [] },
+    "rfc8998": { "title": "ShangMi (SM) Cipher Suites for TLS 1.3", "subseries": [] },
+    "rfc9001": { "title": "Using TLS to Secure QUIC", "subseries": [] },
+    "rfc9102": { "title": "TLS DNSSEC Chain Extension", "subseries": [] },
+    "rfc9103": { "title": "DNS Zone Transfer over TLS", "subseries": [] },
+    "rfc9146": { "title": "Connection Identifier for DTLS 1.2", "subseries": [] },
+    "rfc9147": { "title": "The Datagram Transport Layer Security (DTLS) Protocol Version 1.3", "subseries": [] },
+    "rfc9149": { "title": "TLS Ticket Requests", "subseries": [] },
+    "rfc9150": { "title": "TLS 1.3 Authentication and Integrity-Only Cipher Suites", "subseries": [] },
+    "rfc9151": {
+      "title": "Commercial National Security Algorithm (CNSA) Suite Profile for TLS and DTLS 1.2 and 1.3",
+      "subseries": []
+    },
+    "rfc9155": { "title": "Deprecating MD5 and SHA-1 Signature Hashes in TLS 1.2 and DTLS 1.2", "subseries": [] },
+    "rfc9162": { "title": "Certificate Transparency Version 2.0", "subseries": [] },
+    "rfc9189": {
+      "title": "GOST Cipher Suites for Transport Layer Security (TLS) Protocol Version 1.2",
+      "subseries": []
+    },
+    "rfc9190": { "title": "EAP-TLS 1.3: Using the Extensible Authentication Protocol with TLS 1.3", "subseries": [] },
+    "rfc9191": {
+      "title": "Handling Large Certificates and Long Certificate Chains in TLS-Based EAP Methods",
+      "subseries": []
+    },
+    "rfc9202": {
+      "title": "Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9257": { "title": "Guidance for External Pre-Shared Key (PSK) Usage in TLS", "subseries": [] },
+    "rfc9258": { "title": "Importing External Pre-Shared Keys (PSKs) for TLS 1.3", "subseries": [] },
+    "rfc9261": { "title": "Exported Authenticators in TLS", "subseries": [] },
+    "rfc9266": { "title": "Channel Bindings for TLS 1.3", "subseries": [] },
+    "rfc9289": { "title": "Towards Remote Procedure Call Encryption by Default", "subseries": [] },
+    "rfc9325": {
+      "title": "Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)",
+      "subseries": ["bcp195"]
+    },
+    "rfc9345": { "title": "Delegated Credentials for TLS and DTLS", "subseries": [] },
+    "rfc9367": {
+      "title": "GOST Cipher Suites for Transport Layer Security (TLS) Protocol Version 1.3",
+      "subseries": []
+    },
+    "rfc9368": { "title": "Compatible Version Negotiation for QUIC", "subseries": [] },
+    "rfc9427": {
+      "title": "TLS-Based Extensible Authentication Protocol (EAP) Types for Use with TLS 1.3",
+      "subseries": []
+    },
+    "rfc9430": {
+      "title": "Extension of the Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE) to Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc9431": {
+      "title": "Message Queuing Telemetry Transport (MQTT) and Transport Layer Security (TLS) Profile of Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9456": { "title": "Updates to the TLS Transport Model for SNMP", "subseries": [] },
+    "rfc9525": { "title": "Service Identity in TLS", "subseries": [] },
+    "rfc9539": {
+      "title": "Unilateral Opportunistic Deployment of Encrypted Recursive-to-Authoritative DNS",
+      "subseries": []
+    },
+    "rfc9645": { "title": "YANG Groupings for TLS Clients and TLS Servers", "subseries": [] },
+    "rfc9662": { "title": "Updates to the Cipher Suites in Secure Syslog", "subseries": [] },
+    "rfc9761": {
+      "title": "Manufacturer Usage Description (MUD) for TLS and DTLS Profiles for Internet of Things (IoT) Devices",
+      "subseries": []
+    },
+    "rfc9765": {
+      "title": "RADIUS/1.1: Leveraging Application-Layer Protocol Negotiation (ALPN) to Remove MD5",
+      "subseries": []
+    },
+    "rfc9813": {
+      "title": "Operational Considerations for Using TLS Pre-Shared Keys (TLS-PSKs) with RADIUS",
+      "subseries": ["bcp243"]
+    },
+    "rfc9846": { "title": "The Transport Layer Security (TLS) Protocol Version 1.3", "subseries": [] },
+    "rfc9847": { "title": "IANA Registry Updates for TLS and DTLS", "subseries": [] },
+    "rfc9848": { "title": "Bootstrapping TLS Encrypted ClientHello with DNS Service Bindings", "subseries": [] },
+    "rfc9849": { "title": "TLS Encrypted Client Hello", "subseries": [] },
+    "rfc9850": { "title": "The SSLKEYLOGFILE Format for TLS", "subseries": [] },
+    "rfc9851": { "title": "TLS 1.2 is in Feature Freeze", "subseries": [] },
+    "rfc9852": { "title": "New Protocols Using TLS Must Require TLS 1.3", "subseries": ["bcp195"] },
+    "rfc9853": { "title": "Return Routability Check for DTLS 1.2 and 1.3", "subseries": [] },
+    "rfc9887": {
+      "title": "Terminal Access Controller Access-Control System Plus (TACACS+) over TLS 1.3",
+      "subseries": []
+    },
+    "rfc9916": {
+      "title": "Updates to the Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc9918": {
+      "title": "Updates to Using the NETCONF Protocol over Transport Layer Security (TLS) with Mutual X.509 Authentication",
+      "subseries": []
+    },
+    "rfc9932": { "title": "Mutually Authenticating TLS in the Context of Federations", "subseries": [] },
+    "rfc9934": { "title": "Privacy-Enhanced Mail (PEM) File Format for Encrypted ClientHello (ECH)", "subseries": [] },
+    "rfc9950": {
+      "title": "A YANG Data Model for Terminal Access Controller Access-Control System Plus (TACACS+)",
+      "subseries": []
+    },
+    "rfc9954": { "title": "Hybrid Key Exchange in TLS 1.3", "subseries": [] },
+    "rfc9963": { "title": "Legacy RSASSA-PKCS1-v1_5 Code Points for TLS 1.3", "subseries": [] },
+    "rfc9966": { "title": "Bootstrapped TLS Authentication with Proof of Knowledge", "subseries": [] },
+    "rfc9973": { "title": "TLS 1.3 Extension for Using Certificates with an External Pre-Shared Key", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "dtls": { "name": "DTLS" } }
+}

@@ -1,0 +1,35 @@
+{
+  "id": 898,
+  "slug": "p2psip",
+  "name": "P2PSIP",
+  "description": "Peer-to-peer SIP and RELOAD",
+  "parent": "sip",
+  "path": "real-time-communications/sip/p2psip",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6940", "rfc7263", "rfc7264", "rfc7363", "rfc7374", "rfc7851", "rfc7890", "rfc7904", "rfc8076"],
+  "document_meta": {
+    "rfc6940": { "title": "REsource LOcation And Discovery (RELOAD) Base Protocol", "subseries": [] },
+    "rfc7263": {
+      "title": "An Extension to the REsource LOcation And Discovery (RELOAD) Protocol to Support Direct Response Routing",
+      "subseries": []
+    },
+    "rfc7264": {
+      "title": "An Extension to the REsource LOcation And Discovery (RELOAD) Protocol to Support Relay Peer Routing",
+      "subseries": []
+    },
+    "rfc7363": {
+      "title": "Self-Tuning Distributed Hash Table (DHT) for REsource LOcation And Discovery (RELOAD)",
+      "subseries": []
+    },
+    "rfc7374": { "title": "Service Discovery Usage for REsource LOcation And Discovery (RELOAD)", "subseries": [] },
+    "rfc7851": { "title": "Peer-to-Peer (P2P) Overlay Diagnostics", "subseries": [] },
+    "rfc7890": { "title": "Concepts and Terminology for Peer-to-Peer SIP (P2PSIP)", "subseries": [] },
+    "rfc7904": { "title": "A SIP Usage for REsource LOcation And Discovery (RELOAD)", "subseries": [] },
+    "rfc8076": { "title": "A Usage for Shared Resources in RELOAD (ShaRe)", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "sip": { "name": "SIP" } }
+}

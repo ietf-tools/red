@@ -1,0 +1,32 @@
+{
+  "id": 948,
+  "slug": "chacha20",
+  "name": "ChaCha20",
+  "description": "ChaCha20 and Poly1305",
+  "parent": "cryptography",
+  "path": "security/cryptography/chacha20",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7539", "rfc7634", "rfc7905", "rfc8103", "rfc8439", "rfc8750"],
+  "document_meta": {
+    "rfc7539": { "title": "ChaCha20 and Poly1305 for IETF Protocols", "subseries": [] },
+    "rfc7634": {
+      "title": "ChaCha20, Poly1305, and Their Use in the Internet Key Exchange Protocol (IKE) and IPsec",
+      "subseries": []
+    },
+    "rfc7905": { "title": "ChaCha20-Poly1305 Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc8103": {
+      "title": "Using ChaCha20-Poly1305 Authenticated Encryption in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc8439": { "title": "ChaCha20 and Poly1305 for IETF Protocols", "subseries": [] },
+    "rfc8750": {
+      "title": "Implicit Initialization Vector (IV) for Counter-Based Ciphers in Encapsulating Security Payload (ESP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

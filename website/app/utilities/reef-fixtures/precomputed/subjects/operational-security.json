@@ -1,0 +1,91 @@
+{
+  "id": 674,
+  "slug": "operational-security",
+  "name": "Operational Security",
+  "description": "Operational security practices for network infrastructure",
+  "parent": "network-management",
+  "path": "network-management/operational-security",
+  "document_count": 23,
+  "document_count_deep": 23,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2179",
+    "rfc2350",
+    "rfc3013",
+    "rfc3227",
+    "rfc3871",
+    "rfc4778",
+    "rfc5635",
+    "rfc6039",
+    "rfc6094",
+    "rfc6192",
+    "rfc6274",
+    "rfc7123",
+    "rfc7126",
+    "rfc7359",
+    "rfc7404",
+    "rfc7454",
+    "rfc7610",
+    "rfc7707",
+    "rfc8704",
+    "rfc9099",
+    "rfc9288",
+    "rfc9424",
+    "rfc9511"
+  ],
+  "document_meta": {
+    "rfc2179": { "title": "Network Security For Trade Shows", "subseries": [] },
+    "rfc2350": { "title": "Expectations for Computer Security Incident Response", "subseries": ["bcp21"] },
+    "rfc3013": {
+      "title": "Recommended Internet Service Provider Security Services and Procedures",
+      "subseries": ["bcp46"]
+    },
+    "rfc3227": { "title": "Guidelines for Evidence Collection and Archiving", "subseries": ["bcp55"] },
+    "rfc3871": {
+      "title": "Operational Security Requirements for Large Internet Service Provider (ISP) IP Network Infrastructure",
+      "subseries": []
+    },
+    "rfc4778": {
+      "title": "Operational Security Current Practices in Internet Service Provider Environments",
+      "subseries": []
+    },
+    "rfc5635": {
+      "title": "Remote Triggered Black Hole Filtering with Unicast Reverse Path Forwarding (uRPF)",
+      "subseries": []
+    },
+    "rfc6039": {
+      "title": "Issues with Existing Cryptographic Protection Methods for Routing Protocols",
+      "subseries": []
+    },
+    "rfc6094": {
+      "title": "Summary of Cryptographic Authentication Algorithm Implementation Requirements for Routing Protocols",
+      "subseries": []
+    },
+    "rfc6192": { "title": "Protecting the Router Control Plane", "subseries": [] },
+    "rfc6274": { "title": "Security Assessment of the Internet Protocol Version 4", "subseries": [] },
+    "rfc7123": { "title": "Security Implications of IPv6 on IPv4 Networks", "subseries": [] },
+    "rfc7126": {
+      "title": "Recommendations on Filtering of IPv4 Packets Containing IPv4 Options",
+      "subseries": ["bcp186"]
+    },
+    "rfc7359": {
+      "title": "Layer 3 Virtual Private Network (VPN) Tunnel Traffic Leakages in Dual-Stack Hosts/Networks",
+      "subseries": []
+    },
+    "rfc7404": { "title": "Using Only Link-Local Addressing inside an IPv6 Network", "subseries": [] },
+    "rfc7454": { "title": "BGP Operations and Security", "subseries": ["bcp194"] },
+    "rfc7610": { "title": "DHCPv6-Shield: Protecting against Rogue DHCPv6 Servers", "subseries": ["bcp199"] },
+    "rfc7707": { "title": "Network Reconnaissance in IPv6 Networks", "subseries": [] },
+    "rfc8704": { "title": "Enhanced Feasible-Path Unicast Reverse Path Forwarding", "subseries": ["bcp84"] },
+    "rfc9099": { "title": "Operational Security Considerations for IPv6 Networks", "subseries": [] },
+    "rfc9288": {
+      "title": "Recommendations on the Filtering of IPv6 Packets Containing IPv6 Extension Headers at Transit Routers",
+      "subseries": []
+    },
+    "rfc9424": { "title": "Indicators of Compromise (IoCs) and Their Role in Attack Defence", "subseries": [] },
+    "rfc9511": { "title": "Attribution of Internet Probes", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

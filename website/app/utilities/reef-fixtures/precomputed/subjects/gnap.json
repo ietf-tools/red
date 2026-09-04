@@ -1,0 +1,19 @@
+{
+  "id": 965,
+  "slug": "gnap",
+  "name": "GNAP",
+  "description": "Grant Negotiation and Authorization Protocol",
+  "parent": "oauth",
+  "path": "security/oauth/gnap",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9635", "rfc9767"],
+  "document_meta": {
+    "rfc9635": { "title": "Grant Negotiation and Authorization Protocol (GNAP)", "subseries": [] },
+    "rfc9767": { "title": "Grant Negotiation and Authorization Protocol Resource Server Connections", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "oauth": { "name": "OAuth" } }
+}

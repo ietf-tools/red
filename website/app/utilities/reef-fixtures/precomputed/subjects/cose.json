@@ -1,0 +1,96 @@
+{
+  "id": 734,
+  "slug": "cose",
+  "name": "COSE",
+  "description": "CBOR Object Signing and Encryption",
+  "parent": "security",
+  "path": "security/cose",
+  "document_count": 24,
+  "document_count_deep": 24,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc8152",
+    "rfc8230",
+    "rfc8392",
+    "rfc8778",
+    "rfc8812",
+    "rfc9021",
+    "rfc9052",
+    "rfc9053",
+    "rfc9054",
+    "rfc9338",
+    "rfc9360",
+    "rfc9459",
+    "rfc9528",
+    "rfc9529",
+    "rfc9596",
+    "rfc9597",
+    "rfc9668",
+    "rfc9679",
+    "rfc9864",
+    "rfc9921",
+    "rfc9942",
+    "rfc9943",
+    "rfc9964",
+    "rfc9995"
+  ],
+  "document_meta": {
+    "rfc8152": { "title": "CBOR Object Signing and Encryption (COSE)", "subseries": [] },
+    "rfc8230": {
+      "title": "Using RSA Algorithms with CBOR Object Signing and Encryption (COSE) Messages",
+      "subseries": []
+    },
+    "rfc8392": { "title": "CBOR Web Token (CWT)", "subseries": [] },
+    "rfc8778": {
+      "title": "Use of the HSS/LMS Hash-Based Signature Algorithm with CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc8812": {
+      "title": "CBOR Object Signing and Encryption (COSE) and JSON Object Signing and Encryption (JOSE) Registrations for Web Authentication (WebAuthn) Algorithms",
+      "subseries": []
+    },
+    "rfc9021": {
+      "title": "Use of the Walnut Digital Signature Algorithm with CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9052": { "title": "CBOR Object Signing and Encryption (COSE): Structures and Process", "subseries": ["std96"] },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9054": { "title": "CBOR Object Signing and Encryption (COSE): Hash Algorithms", "subseries": [] },
+    "rfc9338": { "title": "CBOR Object Signing and Encryption (COSE): Countersignatures", "subseries": ["std96"] },
+    "rfc9360": {
+      "title": "CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates",
+      "subseries": []
+    },
+    "rfc9459": { "title": "CBOR Object Signing and Encryption (COSE): AES-CTR and AES-CBC", "subseries": [] },
+    "rfc9528": { "title": "Ephemeral Diffie-Hellman Over COSE (EDHOC)", "subseries": [] },
+    "rfc9529": { "title": "Traces of Ephemeral Diffie-Hellman Over COSE (EDHOC)", "subseries": [] },
+    "rfc9596": {
+      "title": "CBOR Object Signing and Encryption (COSE) \"typ\" (type) Header Parameter",
+      "subseries": []
+    },
+    "rfc9597": { "title": "CBOR Web Token (CWT) Claims in COSE Headers", "subseries": [] },
+    "rfc9668": {
+      "title": "Using Ephemeral Diffie-Hellman Over COSE (EDHOC) with the Constrained Application Protocol (CoAP) and Object Security for Constrained RESTful Environments (OSCORE)",
+      "subseries": []
+    },
+    "rfc9679": { "title": "CBOR Object Signing and Encryption (COSE) Key Thumbprint", "subseries": [] },
+    "rfc9864": {
+      "title": "Fully-Specified Algorithms for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9921": {
+      "title": "CBOR Object Signing and Encryption (COSE) Header Parameter for Timestamp Tokens as Defined in RFC 3161",
+      "subseries": []
+    },
+    "rfc9942": { "title": "CBOR Object Signing and Encryption (COSE) Receipts", "subseries": [] },
+    "rfc9943": { "title": "An Architecture for Trustworthy and Transparent Digital Supply Chains", "subseries": [] },
+    "rfc9964": {
+      "title": "ML-DSA for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9995": { "title": "CBOR Object Signing and Encryption (COSE) Hash Envelope", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

@@ -1,0 +1,24 @@
+{
+  "id": 993,
+  "slug": "http2",
+  "name": "HTTP/2",
+  "description": "HTTP/2",
+  "parent": "http",
+  "path": "web/http/http2",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7540", "rfc7541", "rfc8164", "rfc8336", "rfc8441", "rfc8740", "rfc9113"],
+  "document_meta": {
+    "rfc7540": { "title": "Hypertext Transfer Protocol Version 2 (HTTP/2)", "subseries": [] },
+    "rfc7541": { "title": "HPACK: Header Compression for HTTP/2", "subseries": [] },
+    "rfc8164": { "title": "Opportunistic Security for HTTP/2", "subseries": [] },
+    "rfc8336": { "title": "The ORIGIN HTTP/2 Frame", "subseries": [] },
+    "rfc8441": { "title": "Bootstrapping WebSockets with HTTP/2", "subseries": [] },
+    "rfc8740": { "title": "Using TLS 1.3 with HTTP/2", "subseries": [] },
+    "rfc9113": { "title": "HTTP/2", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

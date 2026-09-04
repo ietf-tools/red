@@ -1,0 +1,50 @@
+{
+  "id": 954,
+  "slug": "otp",
+  "name": "One-Time Passwords",
+  "description": "One-time password systems",
+  "parent": "cryptography",
+  "path": "security/cryptography/otp",
+  "document_count": 13,
+  "document_count_deep": 13,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1760",
+    "rfc1938",
+    "rfc2243",
+    "rfc2289",
+    "rfc2444",
+    "rfc3310",
+    "rfc4226",
+    "rfc4758",
+    "rfc4793",
+    "rfc6030",
+    "rfc6238",
+    "rfc6287",
+    "rfc6560"
+  ],
+  "document_meta": {
+    "rfc1760": { "title": "The S/KEY One-Time Password System", "subseries": [] },
+    "rfc1938": { "title": "A One-Time Password System", "subseries": [] },
+    "rfc2243": { "title": "OTP Extended Responses", "subseries": [] },
+    "rfc2289": { "title": "A One-Time Password System", "subseries": ["std61"] },
+    "rfc2444": { "title": "The One-Time-Password SASL Mechanism", "subseries": [] },
+    "rfc3310": {
+      "title": "Hypertext Transfer Protocol (HTTP) Digest Authentication Using Authentication and Key Agreement (AKA)",
+      "subseries": []
+    },
+    "rfc4226": { "title": "HOTP: An HMAC-Based One-Time Password Algorithm", "subseries": [] },
+    "rfc4758": {
+      "title": "Cryptographic Token Key Initialization Protocol (CT-KIP) Version 1.0 Revision 1",
+      "subseries": []
+    },
+    "rfc4793": { "title": "The EAP Protected One-Time Password Protocol (EAP-POTP)", "subseries": [] },
+    "rfc6030": { "title": "Portable Symmetric Key Container (PSKC)", "subseries": [] },
+    "rfc6238": { "title": "TOTP: Time-Based One-Time Password Algorithm", "subseries": [] },
+    "rfc6287": { "title": "OCRA: OATH Challenge-Response Algorithm", "subseries": [] },
+    "rfc6560": { "title": "One-Time Password (OTP) Pre-Authentication", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

@@ -1,0 +1,20 @@
+{
+  "id": 879,
+  "slug": "agentx",
+  "name": "AgentX",
+  "description": "AgentX subagent protocol",
+  "parent": "snmp",
+  "path": "network-management/snmp/agentx",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2257", "rfc2741", "rfc2742"],
+  "document_meta": {
+    "rfc2257": { "title": "Agent Extensibility (AgentX) Protocol Version 1", "subseries": [] },
+    "rfc2741": { "title": "Agent Extensibility (AgentX) Protocol Version 1", "subseries": [] },
+    "rfc2742": { "title": "Definitions of Managed Objects for Extensible SNMP Agents", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" }, "snmp": { "name": "SNMP" } }
+}

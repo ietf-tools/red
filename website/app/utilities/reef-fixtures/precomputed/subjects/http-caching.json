@@ -1,0 +1,16 @@
+{
+  "id": 992,
+  "slug": "http-caching",
+  "name": "HTTP Caching",
+  "description": "HTTP and web caching",
+  "parent": "http",
+  "path": "web/http/http-caching",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3040"],
+  "document_meta": { "rfc3040": { "title": "Internet Web Replication and Caching Taxonomy", "subseries": [] } },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

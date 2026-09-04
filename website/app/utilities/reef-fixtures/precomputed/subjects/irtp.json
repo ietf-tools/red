@@ -1,0 +1,21 @@
+{
+  "id": 774,
+  "slug": "irtp",
+  "name": "IRTP",
+  "description": "The Internet Reliable Transaction Protocol",
+  "parent": "transport",
+  "path": "transport/irtp",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc938"],
+  "document_meta": {
+    "rfc938": {
+      "title": "Internet Reliable Transaction Protocol functional and interface specification",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

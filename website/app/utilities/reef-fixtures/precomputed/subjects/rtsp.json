@@ -1,0 +1,39 @@
+{
+  "id": 902,
+  "slug": "rtsp",
+  "name": "RTSP",
+  "description": "Real Time Streaming Protocol",
+  "parent": "streaming",
+  "path": "real-time-communications/streaming/rtsp",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2326", "rfc4567", "rfc6064", "rfc7604", "rfc7825", "rfc7826", "rfc8866"],
+  "document_meta": {
+    "rfc2326": { "title": "Real Time Streaming Protocol (RTSP)", "subseries": [] },
+    "rfc4567": {
+      "title": "Key Management Extensions for Session Description Protocol (SDP) and Real Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc6064": {
+      "title": "SDP and RTSP Extensions Defined for 3GPP Packet-Switched Streaming Service and Multimedia Broadcast/Multicast Service",
+      "subseries": []
+    },
+    "rfc7604": {
+      "title": "Comparison of Different NAT Traversal Techniques for Media Controlled by the Real-Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc7825": {
+      "title": "A Network Address Translator (NAT) Traversal Mechanism for Media Controlled by the Real-Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc7826": { "title": "Real-Time Streaming Protocol Version 2.0", "subseries": [] },
+    "rfc8866": { "title": "SDP: Session Description Protocol", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "streaming": { "name": "Streaming" }
+  }
+}

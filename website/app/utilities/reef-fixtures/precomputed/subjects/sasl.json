@@ -1,0 +1,100 @@
+{
+  "id": 758,
+  "slug": "sasl",
+  "name": "SASL",
+  "description": "Simple Authentication and Security Layer",
+  "parent": "security",
+  "path": "security/sasl",
+  "document_count": 26,
+  "document_count_deep": 26,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2222",
+    "rfc2245",
+    "rfc2444",
+    "rfc2554",
+    "rfc2808",
+    "rfc2831",
+    "rfc3163",
+    "rfc4013",
+    "rfc4422",
+    "rfc4505",
+    "rfc4616",
+    "rfc4643",
+    "rfc4752",
+    "rfc4954",
+    "rfc4959",
+    "rfc5034",
+    "rfc5801",
+    "rfc5802",
+    "rfc5803",
+    "rfc6595",
+    "rfc6616",
+    "rfc7628",
+    "rfc7677",
+    "rfc7804",
+    "rfc7832",
+    "rfc8437"
+  ],
+  "document_meta": {
+    "rfc2222": { "title": "Simple Authentication and Security Layer (SASL)", "subseries": [] },
+    "rfc2245": { "title": "Anonymous SASL Mechanism", "subseries": [] },
+    "rfc2444": { "title": "The One-Time-Password SASL Mechanism", "subseries": [] },
+    "rfc2554": { "title": "SMTP Service Extension for Authentication", "subseries": [] },
+    "rfc2808": { "title": "The SecurID(r) SASL Mechanism", "subseries": [] },
+    "rfc2831": { "title": "Using Digest Authentication as a SASL Mechanism", "subseries": [] },
+    "rfc3163": { "title": "ISO/IEC 9798-3 Authentication SASL Mechanism", "subseries": [] },
+    "rfc4013": { "title": "SASLprep: Stringprep Profile for User Names and Passwords", "subseries": [] },
+    "rfc4422": { "title": "Simple Authentication and Security Layer (SASL)", "subseries": [] },
+    "rfc4505": { "title": "Anonymous Simple Authentication and Security Layer (SASL) Mechanism", "subseries": [] },
+    "rfc4616": { "title": "The PLAIN Simple Authentication and Security Layer (SASL) Mechanism", "subseries": [] },
+    "rfc4643": { "title": "Network News Transfer Protocol (NNTP) Extension for Authentication", "subseries": [] },
+    "rfc4752": {
+      "title": "The Kerberos V5 (\"GSSAPI\") Simple Authentication and Security Layer (SASL) Mechanism",
+      "subseries": []
+    },
+    "rfc4954": { "title": "SMTP Service Extension for Authentication", "subseries": [] },
+    "rfc4959": {
+      "title": "IMAP Extension for Simple Authentication and Security Layer (SASL) Initial Client Response",
+      "subseries": []
+    },
+    "rfc5034": {
+      "title": "The Post Office Protocol (POP3) Simple Authentication and Security Layer (SASL) Authentication Mechanism",
+      "subseries": []
+    },
+    "rfc5801": {
+      "title": "Using Generic Security Service Application Program Interface (GSS-API) Mechanisms in Simple Authentication and Security Layer (SASL): The GS2 Mechanism Family",
+      "subseries": []
+    },
+    "rfc5802": {
+      "title": "Salted Challenge Response Authentication Mechanism (SCRAM) SASL and GSS-API Mechanisms",
+      "subseries": []
+    },
+    "rfc5803": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema for Storing Salted Challenge Response Authentication Mechanism (SCRAM) Secrets",
+      "subseries": []
+    },
+    "rfc6595": {
+      "title": "A Simple Authentication and Security Layer (SASL) and GSS-API Mechanism for the Security Assertion Markup Language (SAML)",
+      "subseries": []
+    },
+    "rfc6616": {
+      "title": "A Simple Authentication and Security Layer (SASL) and Generic Security Service Application Program Interface (GSS-API) Mechanism for OpenID",
+      "subseries": []
+    },
+    "rfc7628": {
+      "title": "A Set of Simple Authentication and Security Layer (SASL) Mechanisms for OAuth",
+      "subseries": []
+    },
+    "rfc7677": {
+      "title": "SCRAM-SHA-256 and SCRAM-SHA-256-PLUS Simple Authentication and Security Layer (SASL) Mechanisms",
+      "subseries": []
+    },
+    "rfc7804": { "title": "Salted Challenge Response HTTP Authentication Mechanism", "subseries": [] },
+    "rfc7832": { "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Use Cases", "subseries": [] },
+    "rfc8437": { "title": "IMAP UNAUTHENTICATE Extension for Connection Reuse", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

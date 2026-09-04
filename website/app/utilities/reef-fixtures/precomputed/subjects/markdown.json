@@ -1,0 +1,22 @@
+{
+  "id": 581,
+  "slug": "markdown",
+  "name": "Markdown",
+  "description": "Markdown text formats",
+  "parent": "data-formats",
+  "path": "data-formats/markdown",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7763", "rfc7764"],
+  "document_meta": {
+    "rfc7763": { "title": "The text/markdown Media Type", "subseries": [] },
+    "rfc7764": {
+      "title": "Guidance on Markdown: Design Philosophies, Stability Strategies, and Select Registrations",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

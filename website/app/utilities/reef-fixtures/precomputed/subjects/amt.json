@@ -1,0 +1,24 @@
+{
+  "id": 917,
+  "slug": "amt",
+  "name": "AMT",
+  "description": "Automatic Multicast Tunneling",
+  "parent": "multicast",
+  "path": "routing/multicast/amt",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7450", "rfc8313", "rfc8777", "rfc9706"],
+  "document_meta": {
+    "rfc7450": { "title": "Automatic Multicast Tunneling", "subseries": [] },
+    "rfc8313": { "title": "Use of Multicast across Inter-domain Peering Points", "subseries": ["bcp213"] },
+    "rfc8777": { "title": "DNS Reverse IP Automatic Multicast Tunneling (AMT) Discovery", "subseries": [] },
+    "rfc9706": {
+      "title": "TreeDN: Tree-Based Content Delivery Network (CDN) for Live Streaming to Mass Audiences",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

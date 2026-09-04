@@ -1,0 +1,340 @@
+{
+  "id": 530,
+  "slug": "internet-governance",
+  "name": "Internet Governance",
+  "description": "How the Internet and its standards are governed, administered, developed and published",
+  "parent": null,
+  "path": "internet-governance",
+  "document_count": 109,
+  "document_count_deep": 811,
+  "retired": false,
+  "children": ["iana", "ietf-process", "ipr", "rfc-series", "terminology", "user-documentation", "workshop-reports"],
+  "aliases": [],
+  "documents": [
+    "rfc1015",
+    "rfc1017",
+    "rfc1039",
+    "rfc1074",
+    "rfc1077",
+    "rfc1087",
+    "rfc1092",
+    "rfc1093",
+    "rfc1124",
+    "rfc1133",
+    "rfc1167",
+    "rfc1169",
+    "rfc1181",
+    "rfc1192",
+    "rfc1210",
+    "rfc1222",
+    "rfc1259",
+    "rfc1291",
+    "rfc1346",
+    "rfc1358",
+    "rfc1396",
+    "rfc1482",
+    "rfc1527",
+    "rfc1591",
+    "rfc1601",
+    "rfc1640",
+    "rfc1690",
+    "rfc1786",
+    "rfc1790",
+    "rfc1956",
+    "rfc2031",
+    "rfc2053",
+    "rfc2134",
+    "rfc2135",
+    "rfc2339",
+    "rfc2429",
+    "rfc2436",
+    "rfc2690",
+    "rfc2691",
+    "rfc2726",
+    "rfc2850",
+    "rfc2860",
+    "rfc3026",
+    "rfc3047",
+    "rfc3051",
+    "rfc3113",
+    "rfc3131",
+    "rfc3245",
+    "rfc3271",
+    "rfc3475",
+    "rfc3508",
+    "rfc3563",
+    "rfc3591",
+    "rfc3677",
+    "rfc3696",
+    "rfc3743",
+    "rfc3975",
+    "rfc3984",
+    "rfc4071",
+    "rfc4351",
+    "rfc4397",
+    "rfc4548",
+    "rfc4612",
+    "rfc4628",
+    "rfc4629",
+    "rfc4652",
+    "rfc4749",
+    "rfc4965",
+    "rfc5104",
+    "rfc5290",
+    "rfc5317",
+    "rfc5391",
+    "rfc5404",
+    "rfc5431",
+    "rfc5459",
+    "rfc5577",
+    "rfc5654",
+    "rfc5704",
+    "rfc5787",
+    "rfc5910",
+    "rfc5921",
+    "rfc5960",
+    "rfc5992",
+    "rfc6185",
+    "rfc6417",
+    "rfc6671",
+    "rfc6852",
+    "rfc6923",
+    "rfc6927",
+    "rfc7085",
+    "rfc7087",
+    "rfc7279",
+    "rfc7428",
+    "rfc7712",
+    "rfc7958",
+    "rfc8128",
+    "rfc8488",
+    "rfc8605",
+    "rfc8712",
+    "rfc8865",
+    "rfc902",
+    "rfc9120",
+    "rfc9121",
+    "rfc9281",
+    "rfc9361",
+    "rfc945",
+    "rfc9476",
+    "rfc963",
+    "rfc964"
+  ],
+  "document_meta": {
+    "rfc1015": { "title": "Implementation plan for interagency research Internet", "subseries": [] },
+    "rfc1017": {
+      "title": "Network requirements for scientific research: Internet task force on scientific computing",
+      "subseries": []
+    },
+    "rfc1039": { "title": "DoD statement on Open Systems Interconnection protocols", "subseries": [] },
+    "rfc1074": { "title": "NSFNET backbone SPF based Interior Gateway Protocol", "subseries": [] },
+    "rfc1077": { "title": "Critical issues in high bandwidth networking", "subseries": [] },
+    "rfc1087": { "title": "Ethics and the Internet", "subseries": [] },
+    "rfc1092": { "title": "EGP and policy based routing in the new NSFNET backbone", "subseries": [] },
+    "rfc1093": { "title": "NSFNET routing architecture", "subseries": [] },
+    "rfc1124": { "title": "Policy issues in interconnecting networks", "subseries": [] },
+    "rfc1133": { "title": "Routing between the NSFNET and the DDN", "subseries": [] },
+    "rfc1167": { "title": "Thoughts on the National Research and Education Network", "subseries": [] },
+    "rfc1169": { "title": "Explaining the role of GOSIP", "subseries": [] },
+    "rfc1181": { "title": "RIPE Terms of Reference", "subseries": [] },
+    "rfc1192": { "title": "Commercialization of the Internet summary report", "subseries": [] },
+    "rfc1210": {
+      "title": "Network and infrastructure user requirements for transatlantic research collaboration: Brussels, July 16-18, and Washington July 24-25, 1990",
+      "subseries": []
+    },
+    "rfc1222": { "title": "Advancing the NSFNET routing architecture", "subseries": [] },
+    "rfc1259": {
+      "title": "Building the open road: The NREN as test-bed for the national public network",
+      "subseries": []
+    },
+    "rfc1291": { "title": "Mid-Level Networks Potential Technical Services", "subseries": [] },
+    "rfc1346": {
+      "title": "Resource Allocation, Control, and Accounting for the Use of Network Resources",
+      "subseries": []
+    },
+    "rfc1358": { "title": "Charter of the Internet Architecture Board (IAB)", "subseries": [] },
+    "rfc1396": {
+      "title": "The Process for Organization of Internet Standards Working Group (POISED)",
+      "subseries": []
+    },
+    "rfc1482": { "title": "Aggregation Support in the NSFNET Policy-Based Routing Database", "subseries": [] },
+    "rfc1527": { "title": "What Should We Plan Given the Dilemma of the Network?", "subseries": [] },
+    "rfc1591": { "title": "Domain Name System Structure and Delegation", "subseries": [] },
+    "rfc1601": { "title": "Charter of the Internet Architecture Board (IAB)", "subseries": [] },
+    "rfc1640": {
+      "title": "The Process for Organization of Internet Standards Working Group (POISED)",
+      "subseries": []
+    },
+    "rfc1690": { "title": "Introducing the Internet Engineering and Planning Group (IEPG)", "subseries": [] },
+    "rfc1786": { "title": "Representation of IP Routing Policies in a Routing Registry (ripe-81++)", "subseries": [] },
+    "rfc1790": {
+      "title": "An Agreement between the Internet Society and Sun Microsystems, Inc. in the Matter of ONC RPC and XDR Protocols",
+      "subseries": []
+    },
+    "rfc1956": { "title": "Registration in the MIL Domain", "subseries": [] },
+    "rfc2031": { "title": "IETF-ISOC relationship", "subseries": [] },
+    "rfc2053": { "title": "The AM (Armenia) Domain", "subseries": [] },
+    "rfc2134": { "title": "Articles of Incorporation of Internet Society", "subseries": [] },
+    "rfc2135": { "title": "Internet Society By-Laws", "subseries": [] },
+    "rfc2339": {
+      "title": "An Agreement Between the Internet Society, the IETF, and Sun Microsystems, Inc. in the matter of NFS V.4 Protocols",
+      "subseries": []
+    },
+    "rfc2429": {
+      "title": "RTP Payload Format for the 1998 Version of ITU-T Rec. H.263 Video (H.263+)",
+      "subseries": []
+    },
+    "rfc2436": { "title": "Collaboration between ISOC/IETF and ITU-T", "subseries": [] },
+    "rfc2690": { "title": "A Proposal for an MOU-Based ICANN Protocol Support Organization", "subseries": [] },
+    "rfc2691": { "title": "A Memorandum of Understanding for an ICANN Protocol Support Organization", "subseries": [] },
+    "rfc2726": { "title": "PGP Authentication for RIPE Database Updates", "subseries": [] },
+    "rfc2850": { "title": "Charter of the Internet Architecture Board (IAB)", "subseries": ["bcp39"] },
+    "rfc2860": {
+      "title": "Memorandum of Understanding Concerning the Technical Work of the Internet Assigned Numbers Authority",
+      "subseries": []
+    },
+    "rfc3026": { "title": "Liaison to IETF/ISOC on ENUM", "subseries": [] },
+    "rfc3047": { "title": "RTP Payload Format for ITU-T Recommendation G.722.1", "subseries": [] },
+    "rfc3051": { "title": "IP Payload Compression Using ITU-T V.44 Packet Method", "subseries": [] },
+    "rfc3113": { "title": "3GPP-IETF Standardization Collaboration", "subseries": [] },
+    "rfc3131": { "title": "3GPP2-IETF Standardization Collaboration", "subseries": [] },
+    "rfc3245": {
+      "title": "The History and Context of Telephone Number Mapping (ENUM) Operational Decisions: Informational Documents Contributed to ITU-T Study Group 2 (SG2)",
+      "subseries": []
+    },
+    "rfc3271": { "title": "The Internet is for Everyone", "subseries": [] },
+    "rfc3475": {
+      "title": "Documentation of IANA assignments for Constraint-Based LSP setup using LDP (CR-LDP) Extensions for Automatic Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc3508": { "title": "H.323 Uniform Resource Locator (URL) Scheme Registration", "subseries": [] },
+    "rfc3563": {
+      "title": "Cooperative Agreement Between the ISOC/IETF and ISO/IEC Joint Technical Committee 1/Sub Committee 6 (JTC1/SC6) on IS-IS Routing Protocol Development",
+      "subseries": []
+    },
+    "rfc3591": { "title": "Definitions of Managed Objects for the Optical Interface Type", "subseries": [] },
+    "rfc3677": { "title": "IETF ISOC Board of Trustee Appointment Procedures", "subseries": ["bcp77"] },
+    "rfc3696": { "title": "Application Techniques for Checking and Transformation of Names", "subseries": [] },
+    "rfc3743": {
+      "title": "Joint Engineering Team (JET) Guidelines for Internationalized Domain Names (IDN) Registration and Administration for Chinese, Japanese, and Korean",
+      "subseries": []
+    },
+    "rfc3975": { "title": "OMA-IETF Standardization Collaboration", "subseries": [] },
+    "rfc3984": { "title": "RTP Payload Format for H.264 Video", "subseries": [] },
+    "rfc4071": { "title": "Structure of the IETF Administrative Support Activity (IASA)", "subseries": [] },
+    "rfc4351": {
+      "title": "Real-Time Transport Protocol (RTP) Payload for Text Conversation Interleaved in an Audio Stream",
+      "subseries": []
+    },
+    "rfc4397": {
+      "title": "A Lexicography for the Interpretation of Generalized Multiprotocol Label Switching (GMPLS) Terminology within the Context of the ITU-T's Automatically Switched Optical Network (ASON) Architecture",
+      "subseries": []
+    },
+    "rfc4548": { "title": "Internet Code Point (ICP) Assignments for NSAP Addresses", "subseries": [] },
+    "rfc4612": { "title": "Real-Time Facsimile (T.38) - audio/t38 MIME Sub-type Registration", "subseries": [] },
+    "rfc4628": { "title": "RTP Payload Format for H.263 Moving RFC 2190 to Historic Status", "subseries": [] },
+    "rfc4629": { "title": "RTP Payload Format for ITU-T Rec. H.263 Video", "subseries": [] },
+    "rfc4652": {
+      "title": "Evaluation of Existing Routing Protocols against Automatic Switched Optical Network (ASON) Routing Requirements",
+      "subseries": []
+    },
+    "rfc4749": { "title": "RTP Payload Format for the G.729.1 Audio Codec", "subseries": [] },
+    "rfc4965": { "title": "CableLabs - IETF Standardization Collaboration", "subseries": [] },
+    "rfc5104": {
+      "title": "Codec Control Messages in the RTP Audio-Visual Profile with Feedback (AVPF)",
+      "subseries": []
+    },
+    "rfc5290": { "title": "Comments on the Usefulness of Simple Best-Effort Traffic", "subseries": [] },
+    "rfc5317": {
+      "title": "Joint Working Team (JWT) Report on MPLS Architectural Considerations for a Transport Profile",
+      "subseries": []
+    },
+    "rfc5391": { "title": "RTP Payload Format for ITU-T Recommendation G.711.1", "subseries": [] },
+    "rfc5404": { "title": "RTP Payload Format for G.719", "subseries": [] },
+    "rfc5431": { "title": "Diameter ITU-T Rw Policy Enforcement Interface Application", "subseries": [] },
+    "rfc5459": {
+      "title": "G.729.1 RTP Payload Format Update: Discontinuous Transmission (DTX) Support",
+      "subseries": []
+    },
+    "rfc5577": { "title": "RTP Payload Format for ITU-T Recommendation G.722.1", "subseries": [] },
+    "rfc5654": { "title": "Requirements of an MPLS Transport Profile", "subseries": [] },
+    "rfc5704": { "title": "Uncoordinated Protocol Development Considered Harmful", "subseries": [] },
+    "rfc5787": {
+      "title": "OSPFv2 Routing Protocols Extensions for Automatically Switched Optical Network (ASON) Routing",
+      "subseries": []
+    },
+    "rfc5910": {
+      "title": "Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    },
+    "rfc5921": { "title": "A Framework for MPLS in Transport Networks", "subseries": [] },
+    "rfc5960": { "title": "MPLS Transport Profile Data Plane Architecture", "subseries": [] },
+    "rfc5992": {
+      "title": "Internationalized Domain Names Registration and Administration Guidelines for European Languages Using Cyrillic",
+      "subseries": []
+    },
+    "rfc6185": {
+      "title": "RTP Payload Format for H.264 Reduced-Complexity Decoding Operation (RCDO) Video",
+      "subseries": []
+    },
+    "rfc6417": { "title": "How to Contribute Research Results to Internet Standardization", "subseries": [] },
+    "rfc6671": {
+      "title": "Allocation of a Generic Associated Channel Type for ITU-T MPLS Transport Profile Operation, Maintenance, and Administration (MPLS-TP OAM)",
+      "subseries": []
+    },
+    "rfc6852": { "title": "Affirmation of the Modern Paradigm for Standards", "subseries": [] },
+    "rfc6923": { "title": "MPLS Transport Profile (MPLS-TP) Identifiers Following ITU-T Conventions", "subseries": [] },
+    "rfc6927": { "title": "Variants in Second-Level Names Registered in Top-Level Domains", "subseries": [] },
+    "rfc7085": { "title": "Top-Level Domains That Are Already Dotless", "subseries": [] },
+    "rfc7087": {
+      "title": "A Thesaurus for the Interpretation of Terminology Used in MPLS Transport Profile (MPLS-TP) Internet-Drafts and RFCs in the Context of the ITU-T's Transport Network Recommendations",
+      "subseries": []
+    },
+    "rfc7279": { "title": "An Acceptable Use Policy for New ICMP Types and Codes", "subseries": ["bcp189"] },
+    "rfc7428": { "title": "Transmission of IPv6 Packets over ITU-T G.9959 Networks", "subseries": [] },
+    "rfc7712": {
+      "title": "Domain Name Associations (DNA) in the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7958": { "title": "DNSSEC Trust Anchor Publication for the Root Zone", "subseries": [] },
+    "rfc8128": {
+      "title": "IETF Appointment Procedures for the ICANN Root Zone Evolution Review Committee",
+      "subseries": []
+    },
+    "rfc8488": {
+      "title": "RIPE NCC's Implementation of Resource Public Key Infrastructure (RPKI) Certificate Tree Validation",
+      "subseries": []
+    },
+    "rfc8605": {
+      "title": "vCard Format Extensions: ICANN Extensions for the Registration Data Access Protocol (RDAP)",
+      "subseries": []
+    },
+    "rfc8712": { "title": "The IETF-ISOC Relationship", "subseries": [] },
+    "rfc8865": { "title": "T.140 Real-Time Text Conversation over WebRTC Data Channels", "subseries": [] },
+    "rfc902": { "title": "ARPA Internet Protocol policy", "subseries": [] },
+    "rfc9120": { "title": "Nameservers for the Address and Routing Parameter Area (\"arpa\") Domain", "subseries": [] },
+    "rfc9121": { "title": "Deprecating Infrastructure \"int\" Domains", "subseries": [] },
+    "rfc9281": { "title": "Entities Involved in the IETF Standards Process", "subseries": ["bcp11"] },
+    "rfc9361": { "title": "ICANN Trademark Clearinghouse (TMCH) Functional Specifications", "subseries": [] },
+    "rfc945": { "title": "DoD statement on the NRC report", "subseries": [] },
+    "rfc9476": { "title": "The .alt Special-Use Top-Level Domain", "subseries": [] },
+    "rfc963": {
+      "title": "Some problems with the specification of the Military Standard Internet Protocol",
+      "subseries": []
+    },
+    "rfc964": {
+      "title": "Some problems with the specification of the Military Standard Transmission Control Protocol",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "iana": { "name": "IANA" },
+    "ietf-process": { "name": "IETF Process" },
+    "ipr": { "name": "IPR" },
+    "rfc-series": { "name": "RFC Series" },
+    "terminology": { "name": "Terminology" },
+    "user-documentation": { "name": "User Documentation" },
+    "workshop-reports": { "name": "Workshop Reports" }
+  }
+}

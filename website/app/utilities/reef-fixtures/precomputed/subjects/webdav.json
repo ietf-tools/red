@@ -1,0 +1,98 @@
+{
+  "id": 998,
+  "slug": "webdav",
+  "name": "WebDAV",
+  "description": "WebDAV distributed authoring and versioning",
+  "parent": "http",
+  "path": "web/http/webdav",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2291",
+    "rfc2518",
+    "rfc3253",
+    "rfc3648",
+    "rfc3744",
+    "rfc4316",
+    "rfc4331",
+    "rfc4437",
+    "rfc4709",
+    "rfc4791",
+    "rfc4918",
+    "rfc5323",
+    "rfc5397",
+    "rfc5689",
+    "rfc5842",
+    "rfc5995",
+    "rfc6352",
+    "rfc6578",
+    "rfc6764",
+    "rfc7809",
+    "rfc8144",
+    "rfc8607"
+  ],
+  "document_meta": {
+    "rfc2291": {
+      "title": "Requirements for a Distributed Authoring and Versioning Protocol for the World Wide Web",
+      "subseries": []
+    },
+    "rfc2518": { "title": "HTTP Extensions for Distributed Authoring -- WEBDAV", "subseries": [] },
+    "rfc3253": {
+      "title": "Versioning Extensions to WebDAV (Web Distributed Authoring and Versioning)",
+      "subseries": []
+    },
+    "rfc3648": {
+      "title": "Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol",
+      "subseries": []
+    },
+    "rfc3744": {
+      "title": "Web Distributed Authoring and Versioning (WebDAV) Access Control Protocol",
+      "subseries": []
+    },
+    "rfc4316": {
+      "title": "Datatypes for Web Distributed Authoring and Versioning (WebDAV) Properties",
+      "subseries": []
+    },
+    "rfc4331": {
+      "title": "Quota and Size Properties for Distributed Authoring and Versioning (DAV) Collections",
+      "subseries": []
+    },
+    "rfc4437": {
+      "title": "Web Distributed Authoring and Versioning (WebDAV) Redirect Reference Resources",
+      "subseries": []
+    },
+    "rfc4709": { "title": "Mounting Web Distributed Authoring and Versioning (WebDAV) Servers", "subseries": [] },
+    "rfc4791": { "title": "Calendaring Extensions to WebDAV (CalDAV)", "subseries": [] },
+    "rfc4918": { "title": "HTTP Extensions for Web Distributed Authoring and Versioning (WebDAV)", "subseries": [] },
+    "rfc5323": { "title": "Web Distributed Authoring and Versioning (WebDAV) SEARCH", "subseries": [] },
+    "rfc5397": { "title": "WebDAV Current Principal Extension", "subseries": [] },
+    "rfc5689": { "title": "Extended MKCOL for Web Distributed Authoring and Versioning (WebDAV)", "subseries": [] },
+    "rfc5842": { "title": "Binding Extensions to Web Distributed Authoring and Versioning (WebDAV)", "subseries": [] },
+    "rfc5995": {
+      "title": "Using POST to Add Members to Web Distributed Authoring and Versioning (WebDAV) Collections",
+      "subseries": []
+    },
+    "rfc6352": {
+      "title": "CardDAV: vCard Extensions to Web Distributed Authoring and Versioning (WebDAV)",
+      "subseries": []
+    },
+    "rfc6578": {
+      "title": "Collection Synchronization for Web Distributed Authoring and Versioning (WebDAV)",
+      "subseries": []
+    },
+    "rfc6764": {
+      "title": "Locating Services for Calendaring Extensions to WebDAV (CalDAV) and vCard Extensions to WebDAV (CardDAV)",
+      "subseries": []
+    },
+    "rfc7809": { "title": "Calendaring Extensions to WebDAV (CalDAV): Time Zones by Reference", "subseries": [] },
+    "rfc8144": {
+      "title": "Use of the Prefer Header Field in Web Distributed Authoring and Versioning (WebDAV)",
+      "subseries": []
+    },
+    "rfc8607": { "title": "Calendaring Extensions to WebDAV (CalDAV): Managed Attachments", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

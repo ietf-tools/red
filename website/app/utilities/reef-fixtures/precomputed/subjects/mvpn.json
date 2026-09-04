@@ -1,0 +1,89 @@
+{
+  "id": 941,
+  "slug": "mvpn",
+  "name": "Multicast VPN",
+  "description": "Multicast in BGP/MPLS VPNs",
+  "parent": "vpn",
+  "path": "routing/vpn/mvpn",
+  "document_count": 25,
+  "document_count_deep": 25,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10018",
+    "rfc4834",
+    "rfc5501",
+    "rfc6037",
+    "rfc6513",
+    "rfc6514",
+    "rfc6515",
+    "rfc6516",
+    "rfc6625",
+    "rfc7582",
+    "rfc7716",
+    "rfc7740",
+    "rfc7899",
+    "rfc7900",
+    "rfc7988",
+    "rfc8502",
+    "rfc8503",
+    "rfc8534",
+    "rfc8556",
+    "rfc8950",
+    "rfc9026",
+    "rfc9081",
+    "rfc9251",
+    "rfc9573",
+    "rfc9856"
+  ],
+  "document_meta": {
+    "rfc10018": {
+      "title": "Multicast and Ethernet VPN with Segment Routing Point-to-Multipoint (P2MP) and Ingress Replication",
+      "subseries": []
+    },
+    "rfc4834": {
+      "title": "Requirements for Multicast in Layer 3 Provider-Provisioned Virtual Private Networks (PPVPNs)",
+      "subseries": []
+    },
+    "rfc5501": { "title": "Requirements for Multicast Support in Virtual Private LAN Services", "subseries": [] },
+    "rfc6037": { "title": "Cisco Systems' Solution for Multicast in BGP/MPLS IP VPNs", "subseries": [] },
+    "rfc6513": { "title": "Multicast in MPLS/BGP IP VPNs", "subseries": [] },
+    "rfc6514": { "title": "BGP Encodings and Procedures for Multicast in MPLS/BGP IP VPNs", "subseries": [] },
+    "rfc6515": { "title": "IPv4 and IPv6 Infrastructure Addresses in BGP Updates for Multicast VPN", "subseries": [] },
+    "rfc6516": {
+      "title": "IPv6 Multicast VPN (MVPN) Support Using PIM Control Plane and Selective Provider Multicast Service Interface (S-PMSI) Join Messages",
+      "subseries": []
+    },
+    "rfc6625": { "title": "Wildcards in Multicast VPN Auto-Discovery Routes", "subseries": [] },
+    "rfc7582": { "title": "Multicast Virtual Private Network (MVPN): Using Bidirectional P-Tunnels", "subseries": [] },
+    "rfc7716": { "title": "Global Table Multicast with BGP Multicast VPN (BGP-MVPN) Procedures", "subseries": [] },
+    "rfc7740": {
+      "title": "Simulating Partial Mesh of Multipoint-to-Multipoint (MP2MP) Provider Tunnels with Ingress Replication",
+      "subseries": []
+    },
+    "rfc7899": { "title": "Multicast VPN State Damping", "subseries": [] },
+    "rfc7900": { "title": "Extranet Multicast in BGP/IP MPLS VPNs", "subseries": [] },
+    "rfc7988": { "title": "Ingress Replication Tunnels in Multicast VPN", "subseries": [] },
+    "rfc8502": { "title": "L2L3 VPN Multicast MIB", "subseries": [] },
+    "rfc8503": { "title": "BGP/MPLS Layer 3 VPN Multicast Management Information Base", "subseries": [] },
+    "rfc8534": { "title": "Explicit Tracking with Wildcard Routes in Multicast VPN", "subseries": [] },
+    "rfc8556": { "title": "Multicast VPN Using Bit Index Explicit Replication (BIER)", "subseries": [] },
+    "rfc8950": {
+      "title": "Advertising IPv4 Network Layer Reachability Information (NLRI) with an IPv6 Next Hop",
+      "subseries": []
+    },
+    "rfc9026": { "title": "Multicast VPN Fast Upstream Failover", "subseries": [] },
+    "rfc9081": {
+      "title": "Interoperation between Multicast Virtual Private Network (MVPN) and Multicast Source Directory Protocol (MSDP) Source-Active Routes",
+      "subseries": []
+    },
+    "rfc9251": {
+      "title": "Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxies for Ethernet VPN (EVPN)",
+      "subseries": []
+    },
+    "rfc9573": { "title": "MVPN/EVPN Tunnel Aggregation with Common Labels", "subseries": [] },
+    "rfc9856": { "title": "Multicast Source Redundancy in EVPNs", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "vpn": { "name": "VPN" } }
+}

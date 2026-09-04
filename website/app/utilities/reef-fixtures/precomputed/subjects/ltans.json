@@ -1,0 +1,28 @@
+{
+  "id": 747,
+  "slug": "ltans",
+  "name": "LTANS",
+  "description": "Long-term archiving and notarization of signed data",
+  "parent": "security",
+  "path": "security/ltans",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4810", "rfc4998", "rfc5276", "rfc5698", "rfc6283"],
+  "document_meta": {
+    "rfc4810": { "title": "Long-Term Archive Service Requirements", "subseries": [] },
+    "rfc4998": { "title": "Evidence Record Syntax (ERS)", "subseries": [] },
+    "rfc5276": {
+      "title": "Using the Server-Based Certificate Validation Protocol (SCVP) to Convey Long-Term Evidence Records",
+      "subseries": []
+    },
+    "rfc5698": {
+      "title": "Data Structure for the Security Suitability of Cryptographic Algorithms (DSSC)",
+      "subseries": []
+    },
+    "rfc6283": { "title": "Extensible Markup Language Evidence Record Syntax (XMLERS)", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

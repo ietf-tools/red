@@ -1,0 +1,40 @@
+{
+  "id": 598,
+  "slug": "homenet",
+  "name": "Homenet",
+  "description": "Home network architecture and protocols",
+  "parent": "internet-layer",
+  "path": "internet-layer/homenet",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4372",
+    "rfc4887",
+    "rfc7368",
+    "rfc7695",
+    "rfc7787",
+    "rfc7788",
+    "rfc8191",
+    "rfc8375",
+    "rfc9080",
+    "rfc9526",
+    "rfc9527"
+  ],
+  "document_meta": {
+    "rfc4372": { "title": "Chargeable User Identity", "subseries": [] },
+    "rfc4887": { "title": "Network Mobility Home Network Models", "subseries": [] },
+    "rfc7368": { "title": "IPv6 Home Networking Architecture Principles", "subseries": [] },
+    "rfc7695": { "title": "Distributed Prefix Assignment Algorithm", "subseries": [] },
+    "rfc7787": { "title": "Distributed Node Consensus Protocol", "subseries": [] },
+    "rfc7788": { "title": "Home Networking Control Protocol", "subseries": [] },
+    "rfc8191": { "title": "Home Network Prefix Renumbering in Proxy Mobile IPv6 (PMIPv6)", "subseries": [] },
+    "rfc8375": { "title": "Special-Use Domain 'home.arpa.'", "subseries": [] },
+    "rfc9080": { "title": "Homenet Profile of the Babel Routing Protocol", "subseries": [] },
+    "rfc9526": { "title": "Simple Provisioning of Public Names for Residential Networks", "subseries": [] },
+    "rfc9527": { "title": "DHCPv6 Options for the Homenet Naming Authority", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

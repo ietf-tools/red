@@ -1,0 +1,41 @@
+{
+  "id": 601,
+  "slug": "ilnp",
+  "name": "ILNP",
+  "description": "The Identifier-Locator Network Protocol",
+  "parent": "internet-layer",
+  "path": "internet-layer/ilnp",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6740", "rfc6741", "rfc6742", "rfc6743", "rfc6744", "rfc6745", "rfc6746", "rfc6747", "rfc6748"],
+  "document_meta": {
+    "rfc6740": { "title": "Identifier-Locator Network Protocol (ILNP) Architectural Description", "subseries": [] },
+    "rfc6741": { "title": "Identifier-Locator Network Protocol (ILNP) Engineering Considerations", "subseries": [] },
+    "rfc6742": { "title": "DNS Resource Records for the Identifier-Locator Network Protocol (ILNP)", "subseries": [] },
+    "rfc6743": {
+      "title": "ICMP Locator Update Message for the Identifier-Locator Network Protocol for IPv6 (ILNPv6)",
+      "subseries": []
+    },
+    "rfc6744": {
+      "title": "IPv6 Nonce Destination Option for the Identifier-Locator Network Protocol for IPv6 (ILNPv6)",
+      "subseries": []
+    },
+    "rfc6745": {
+      "title": "ICMP Locator Update Message for the Identifier-Locator Network Protocol for IPv4 (ILNPv4)",
+      "subseries": []
+    },
+    "rfc6746": { "title": "IPv4 Options for the Identifier-Locator Network Protocol (ILNP)", "subseries": [] },
+    "rfc6747": {
+      "title": "Address Resolution Protocol (ARP) for the Identifier-Locator Network Protocol for IPv4 (ILNPv4)",
+      "subseries": []
+    },
+    "rfc6748": {
+      "title": "Optional Advanced Deployment Scenarios for the Identifier-Locator Network Protocol (ILNP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

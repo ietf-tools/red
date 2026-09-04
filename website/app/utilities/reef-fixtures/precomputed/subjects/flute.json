@@ -1,0 +1,36 @@
+{
+  "id": 1021,
+  "slug": "flute",
+  "name": "FLUTE",
+  "description": "FLUTE file delivery over unidirectional transport",
+  "parent": "reliable-multicast",
+  "path": "routing/multicast/reliable-multicast/flute",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3926", "rfc5776", "rfc6584", "rfc6726", "rfc8095", "rfc9223"],
+  "document_meta": {
+    "rfc3926": { "title": "FLUTE - File Delivery over Unidirectional Transport", "subseries": [] },
+    "rfc5776": {
+      "title": "Use of Timed Efficient Stream Loss-Tolerant Authentication (TESLA) in the Asynchronous Layered Coding (ALC) and NACK-Oriented Reliable Multicast (NORM) Protocols",
+      "subseries": []
+    },
+    "rfc6584": {
+      "title": "Simple Authentication Schemes for the Asynchronous Layered Coding (ALC) and NACK-Oriented Reliable Multicast (NORM) Protocols",
+      "subseries": []
+    },
+    "rfc6726": { "title": "FLUTE - File Delivery over Unidirectional Transport", "subseries": [] },
+    "rfc8095": {
+      "title": "Services Provided by IETF Transport Protocols and Congestion Control Mechanisms",
+      "subseries": []
+    },
+    "rfc9223": { "title": "Real-Time Transport Object Delivery over Unidirectional Transport (ROUTE)", "subseries": [] }
+  },
+  "subject_meta": {
+    "routing": { "name": "Routing" },
+    "multicast": { "name": "Multicast" },
+    "reliable-multicast": { "name": "Reliable Multicast" }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": 582,
+  "slug": "sgml",
+  "name": "SGML",
+  "description": "SGML-based document interchange",
+  "parent": "data-formats",
+  "path": "data-formats/sgml",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1866", "rfc1872", "rfc1873", "rfc1874", "rfc1942"],
+  "document_meta": {
+    "rfc1866": { "title": "Hypertext Markup Language - 2.0", "subseries": [] },
+    "rfc1872": { "title": "The MIME Multipart/Related Content-type", "subseries": [] },
+    "rfc1873": { "title": "Message/External-Body Content-ID Access Type", "subseries": [] },
+    "rfc1874": { "title": "SGML Media Types", "subseries": [] },
+    "rfc1942": { "title": "HTML Tables", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

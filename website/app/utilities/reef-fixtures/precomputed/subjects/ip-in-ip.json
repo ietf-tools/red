@@ -1,0 +1,19 @@
+{
+  "id": 840,
+  "slug": "ip-in-ip",
+  "name": "IP-in-IP",
+  "description": "IP-in-IP encapsulation",
+  "parent": "tunneling",
+  "path": "internet-layer/tunneling/ip-in-ip",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1853", "rfc2003"],
+  "document_meta": {
+    "rfc1853": { "title": "IP in IP Tunneling", "subseries": [] },
+    "rfc2003": { "title": "IP Encapsulation within IP", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "tunneling": { "name": "Tunneling" } }
+}

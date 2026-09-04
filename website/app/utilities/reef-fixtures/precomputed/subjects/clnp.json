@@ -1,0 +1,54 @@
+{
+  "id": 838,
+  "slug": "clnp",
+  "name": "CLNP",
+  "description": "The Connectionless Network Protocol",
+  "parent": "osi",
+  "path": "internet-layer/osi/clnp",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1069",
+    "rfc1348",
+    "rfc1526",
+    "rfc1561",
+    "rfc1574",
+    "rfc1575",
+    "rfc1629",
+    "rfc1768",
+    "rfc926",
+    "rfc941",
+    "rfc986",
+    "rfc994"
+  ],
+  "document_meta": {
+    "rfc1069": {
+      "title": "Guidelines for the use of Internet-IP addresses in the ISO Connectionless-Mode Network Protocol",
+      "subseries": []
+    },
+    "rfc1348": { "title": "DNS NSAP RRs", "subseries": [] },
+    "rfc1526": { "title": "Assignment of System Identifiers for TUBA/CLNP Hosts", "subseries": [] },
+    "rfc1561": { "title": "Use of ISO CLNP in TUBA Environments", "subseries": [] },
+    "rfc1574": { "title": "Essential Tools for the OSI Internet", "subseries": [] },
+    "rfc1575": { "title": "An Echo Function for CLNP (ISO 8473)", "subseries": [] },
+    "rfc1629": { "title": "Guidelines for OSI NSAP Allocation in the Internet", "subseries": [] },
+    "rfc1768": { "title": "Host Group Extensions for CLNP Multicasting", "subseries": [] },
+    "rfc926": { "title": "Protocol for providing the connectionless mode network services", "subseries": [] },
+    "rfc941": {
+      "title": "Addendum to the network service definition covering network layer addressing",
+      "subseries": []
+    },
+    "rfc986": {
+      "title": "Guidelines for the use of Internet-IP addresses in the ISO Connectionless-Mode Network Protocol",
+      "subseries": []
+    },
+    "rfc994": {
+      "title": "Final text of DIS 8473, Protocol for Providing the Connectionless-mode Network Service",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "osi": { "name": "OSI" } }
+}

@@ -1,0 +1,68 @@
+{
+  "id": 969,
+  "slug": "cmp",
+  "name": "CMP",
+  "description": "Certificate Management Protocol",
+  "parent": "pki",
+  "path": "security/pki/cmp",
+  "document_count": 13,
+  "document_count_deep": 13,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2510",
+    "rfc4210",
+    "rfc4212",
+    "rfc5272",
+    "rfc6712",
+    "rfc9480",
+    "rfc9481",
+    "rfc9482",
+    "rfc9483",
+    "rfc9646",
+    "rfc9733",
+    "rfc9810",
+    "rfc9811"
+  ],
+  "document_meta": {
+    "rfc2510": {
+      "title": "Internet X.509 Public Key Infrastructure Certificate Management Protocols",
+      "subseries": []
+    },
+    "rfc4210": {
+      "title": "Internet X.509 Public Key Infrastructure Certificate Management Protocol (CMP)",
+      "subseries": []
+    },
+    "rfc4212": {
+      "title": "Alternative Certificate Formats for the Public-Key Infrastructure Using X.509 (PKIX) Certificate Management Protocols",
+      "subseries": []
+    },
+    "rfc5272": { "title": "Certificate Management over CMS (CMC)", "subseries": [] },
+    "rfc6712": {
+      "title": "Internet X.509 Public Key Infrastructure -- HTTP Transfer for the Certificate Management Protocol (CMP)",
+      "subseries": []
+    },
+    "rfc9480": { "title": "Certificate Management Protocol (CMP) Updates", "subseries": [] },
+    "rfc9481": { "title": "Certificate Management Protocol (CMP) Algorithms", "subseries": [] },
+    "rfc9482": {
+      "title": "Constrained Application Protocol (CoAP) Transfer for the Certificate Management Protocol",
+      "subseries": []
+    },
+    "rfc9483": { "title": "Lightweight Certificate Management Protocol (CMP) Profile", "subseries": [] },
+    "rfc9646": {
+      "title": "Conveying a Certificate Signing Request (CSR) in a Secure Zero-Touch Provisioning (SZTP) Bootstrapping Request",
+      "subseries": []
+    },
+    "rfc9733": { "title": "BRSKI with Alternative Enrollment (BRSKI-AE)", "subseries": [] },
+    "rfc9810": {
+      "title": "Internet X.509 Public Key Infrastructure -- Certificate Management Protocol (CMP)",
+      "subseries": []
+    },
+    "rfc9811": {
+      "title": "Internet X.509 Public Key Infrastructure -- HTTP Transfer for the Certificate Management Protocol (CMP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "pki": { "name": "PKI" } }
+}

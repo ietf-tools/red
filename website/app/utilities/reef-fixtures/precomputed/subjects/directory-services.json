@@ -1,0 +1,71 @@
+{
+  "id": 549,
+  "slug": "directory-services",
+  "name": "Directory Services",
+  "description": "Directory access and synchronization",
+  "parent": "applications",
+  "path": "applications/directory-services",
+  "document_count": 20,
+  "document_count_deep": 176,
+  "retired": false,
+  "children": ["ldap", "x-500"],
+  "aliases": [],
+  "documents": [
+    "rfc1107",
+    "rfc1202",
+    "rfc1218",
+    "rfc1588",
+    "rfc2241",
+    "rfc2552",
+    "rfc2605",
+    "rfc2967",
+    "rfc2968",
+    "rfc2969",
+    "rfc2970",
+    "rfc3528",
+    "rfc3997",
+    "rfc4237",
+    "rfc4238",
+    "rfc7067",
+    "rfc8171",
+    "rfc8380",
+    "rfc9081",
+    "rfc9176"
+  ],
+  "document_meta": {
+    "rfc1107": { "title": "Plan for Internet directory services", "subseries": [] },
+    "rfc1202": { "title": "Directory Assistance service", "subseries": [] },
+    "rfc1218": { "title": "Naming scheme for c=US", "subseries": [] },
+    "rfc1588": { "title": "White Pages Meeting Report", "subseries": [] },
+    "rfc2241": { "title": "DHCP Options for Novell Directory Services", "subseries": [] },
+    "rfc2552": { "title": "Architecture for the Information Brokerage in the ACTS Project GAIA", "subseries": [] },
+    "rfc2605": { "title": "Directory Server Monitoring MIB", "subseries": [] },
+    "rfc2967": { "title": "TISDAG - Technical Infrastructure for Swedish Directory Access Gateways", "subseries": [] },
+    "rfc2968": { "title": "Mesh of Multiple DAG servers - Results from TISDAG", "subseries": [] },
+    "rfc2969": { "title": "Wide Area Directory Deployment - Experiences from TISDAG", "subseries": [] },
+    "rfc2970": { "title": "Architecture for Integrated Directory Services - Result from TISDAG", "subseries": [] },
+    "rfc3528": { "title": "Mesh-enhanced Service Location Protocol (mSLP)", "subseries": [] },
+    "rfc3997": { "title": "Internet Printing Protocol (IPP): Requirements for IPP Notifications", "subseries": [] },
+    "rfc4237": { "title": "Voice Messaging Directory Service", "subseries": [] },
+    "rfc4238": { "title": "Voice Message Routing Service", "subseries": [] },
+    "rfc7067": { "title": "Directory Assistance Problem and High-Level Design Proposal", "subseries": [] },
+    "rfc8171": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Edge Directory Assistance Mechanisms",
+      "subseries": []
+    },
+    "rfc8380": {
+      "title": "Directory-Assisted Transparent Interconnection of Lots of Links (TRILL) Encapsulation",
+      "subseries": []
+    },
+    "rfc9081": {
+      "title": "Interoperation between Multicast Virtual Private Network (MVPN) and Multicast Source Directory Protocol (MSDP) Source-Active Routes",
+      "subseries": []
+    },
+    "rfc9176": { "title": "Constrained RESTful Environments (CoRE) Resource Directory", "subseries": [] }
+  },
+  "subject_meta": {
+    "applications": { "name": "Applications" },
+    "ldap": { "name": "LDAP" },
+    "x-500": { "name": "X.500" }
+  }
+}

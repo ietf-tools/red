@@ -1,0 +1,19 @@
+{
+  "id": 707,
+  "slug": "hsrp",
+  "name": "HSRP",
+  "description": "The Hot Standby Router Protocol",
+  "parent": "routing",
+  "path": "routing/hsrp",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2281", "rfc9856"],
+  "document_meta": {
+    "rfc2281": { "title": "Cisco Hot Standby Router Protocol (HSRP)", "subseries": [] },
+    "rfc9856": { "title": "Multicast Source Redundancy in EVPNs", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

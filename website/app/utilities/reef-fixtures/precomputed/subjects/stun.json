@@ -1,0 +1,95 @@
+{
+  "id": 893,
+  "slug": "stun",
+  "name": "STUN",
+  "description": "Session Traversal Utilities for NAT",
+  "parent": "nat-traversal",
+  "path": "real-time-communications/nat-traversal/stun",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3489",
+    "rfc5389",
+    "rfc5766",
+    "rfc5769",
+    "rfc5780",
+    "rfc6062",
+    "rfc6156",
+    "rfc6223",
+    "rfc7064",
+    "rfc7350",
+    "rfc7376",
+    "rfc7443",
+    "rfc7584",
+    "rfc7635",
+    "rfc7675",
+    "rfc7982",
+    "rfc7983",
+    "rfc8016",
+    "rfc8155",
+    "rfc8489",
+    "rfc8656",
+    "rfc9443"
+  ],
+  "document_meta": {
+    "rfc3489": {
+      "title": "STUN - Simple Traversal of User Datagram Protocol (UDP) Through Network Address Translators (NATs)",
+      "subseries": []
+    },
+    "rfc5389": { "title": "Session Traversal Utilities for NAT (STUN)", "subseries": [] },
+    "rfc5766": {
+      "title": "Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)",
+      "subseries": []
+    },
+    "rfc5769": { "title": "Test Vectors for Session Traversal Utilities for NAT (STUN)", "subseries": [] },
+    "rfc5780": { "title": "NAT Behavior Discovery Using Session Traversal Utilities for NAT (STUN)", "subseries": [] },
+    "rfc6062": { "title": "Traversal Using Relays around NAT (TURN) Extensions for TCP Allocations", "subseries": [] },
+    "rfc6156": { "title": "Traversal Using Relays around NAT (TURN) Extension for IPv6", "subseries": [] },
+    "rfc6223": { "title": "Indication of Support for Keep-Alive", "subseries": [] },
+    "rfc7064": { "title": "URI Scheme for the Session Traversal Utilities for NAT (STUN) Protocol", "subseries": [] },
+    "rfc7350": {
+      "title": "Datagram Transport Layer Security (DTLS) as Transport for Session Traversal Utilities for NAT (STUN)",
+      "subseries": []
+    },
+    "rfc7376": {
+      "title": "Problems with Session Traversal Utilities for NAT (STUN) Long-Term Authentication for Traversal Using Relays around NAT (TURN)",
+      "subseries": []
+    },
+    "rfc7443": {
+      "title": "Application-Layer Protocol Negotiation (ALPN) Labels for Session Traversal Utilities for NAT (STUN) Usages",
+      "subseries": []
+    },
+    "rfc7584": {
+      "title": "Session Traversal Utilities for NAT (STUN) Message Handling for SIP Back-to-Back User Agents (B2BUAs)",
+      "subseries": []
+    },
+    "rfc7635": {
+      "title": "Session Traversal Utilities for NAT (STUN) Extension for Third-Party Authorization",
+      "subseries": []
+    },
+    "rfc7675": { "title": "Session Traversal Utilities for NAT (STUN) Usage for Consent Freshness", "subseries": [] },
+    "rfc7982": {
+      "title": "Measurement of Round-Trip Time and Fractional Loss Using Session Traversal Utilities for NAT (STUN)",
+      "subseries": []
+    },
+    "rfc7983": {
+      "title": "Multiplexing Scheme Updates for Secure Real-time Transport Protocol (SRTP) Extension for Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc8016": { "title": "Mobility with Traversal Using Relays around NAT (TURN)", "subseries": [] },
+    "rfc8155": { "title": "Traversal Using Relays around NAT (TURN) Server Auto Discovery", "subseries": [] },
+    "rfc8489": { "title": "Session Traversal Utilities for NAT (STUN)", "subseries": [] },
+    "rfc8656": {
+      "title": "Traversal Using Relays around NAT (TURN): Relay Extensions to Session Traversal Utilities for NAT (STUN)",
+      "subseries": []
+    },
+    "rfc9443": { "title": "Multiplexing Scheme Updates for QUIC", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "nat-traversal": { "name": "NAT Traversal" }
+  }
+}

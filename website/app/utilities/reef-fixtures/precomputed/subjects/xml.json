@@ -1,0 +1,327 @@
+{
+  "id": 583,
+  "slug": "xml",
+  "name": "XML",
+  "description": "XML usage in protocols and XML-based formats",
+  "parent": "data-formats",
+  "path": "data-formats/xml",
+  "document_count": 111,
+  "document_count_deep": 111,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2376",
+    "rfc2629",
+    "rfc2731",
+    "rfc2802",
+    "rfc2803",
+    "rfc2807",
+    "rfc2935",
+    "rfc3017",
+    "rfc3023",
+    "rfc3075",
+    "rfc3076",
+    "rfc3120",
+    "rfc3236",
+    "rfc3275",
+    "rfc3288",
+    "rfc3470",
+    "rfc3504",
+    "rfc3505",
+    "rfc3529",
+    "rfc3541",
+    "rfc3614",
+    "rfc3653",
+    "rfc3688",
+    "rfc3741",
+    "rfc3767",
+    "rfc3823",
+    "rfc3858",
+    "rfc3863",
+    "rfc3870",
+    "rfc3881",
+    "rfc3902",
+    "rfc3910",
+    "rfc3920",
+    "rfc3921",
+    "rfc3922",
+    "rfc3923",
+    "rfc3994",
+    "rfc4050",
+    "rfc4051",
+    "rfc4153",
+    "rfc4194",
+    "rfc4227",
+    "rfc4267",
+    "rfc4287",
+    "rfc4374",
+    "rfc4536",
+    "rfc4661",
+    "rfc4741",
+    "rfc4743",
+    "rfc4744",
+    "rfc4765",
+    "rfc4825",
+    "rfc4826",
+    "rfc4827",
+    "rfc4910",
+    "rfc4911",
+    "rfc4912",
+    "rfc4913",
+    "rfc4914",
+    "rfc4991",
+    "rfc4992",
+    "rfc5025",
+    "rfc5107",
+    "rfc5168",
+    "rfc5261",
+    "rfc5277",
+    "rfc5361",
+    "rfc5364",
+    "rfc5388",
+    "rfc5731",
+    "rfc5732",
+    "rfc5733",
+    "rfc5734",
+    "rfc5784",
+    "rfc5854",
+    "rfc5874",
+    "rfc5875",
+    "rfc5910",
+    "rfc5935",
+    "rfc6020",
+    "rfc6022",
+    "rfc6087",
+    "rfc6120",
+    "rfc6121",
+    "rfc6122",
+    "rfc6129",
+    "rfc6137",
+    "rfc6207",
+    "rfc6241",
+    "rfc6283",
+    "rfc6321",
+    "rfc6351",
+    "rfc6470",
+    "rfc6536",
+    "rfc6685",
+    "rfc6931",
+    "rfc7061",
+    "rfc7303",
+    "rfc7328",
+    "rfc7351",
+    "rfc7745",
+    "rfc7749",
+    "rfc7807",
+    "rfc7940",
+    "rfc7950",
+    "rfc8341",
+    "rfc8759",
+    "rfc8794",
+    "rfc8846",
+    "rfc9231",
+    "rfc9457"
+  ],
+  "document_meta": {
+    "rfc2376": { "title": "XML Media Types", "subseries": [] },
+    "rfc2629": { "title": "Writing I-Ds and RFCs using XML", "subseries": [] },
+    "rfc2731": { "title": "Encoding Dublin Core Metadata in HTML", "subseries": [] },
+    "rfc2802": { "title": "Digital Signatures for the v1.0 Internet Open Trading Protocol (IOTP)", "subseries": [] },
+    "rfc2803": { "title": "Digest Values for DOM (DOMHASH)", "subseries": [] },
+    "rfc2807": { "title": "XML Signature Requirements", "subseries": [] },
+    "rfc2935": { "title": "Internet Open Trading Protocol (IOTP) HTTP Supplement", "subseries": [] },
+    "rfc3017": { "title": "XML DTD for Roaming Access Phone Book", "subseries": [] },
+    "rfc3023": { "title": "XML Media Types", "subseries": [] },
+    "rfc3075": { "title": "XML-Signature Syntax and Processing", "subseries": [] },
+    "rfc3076": { "title": "Canonical XML Version 1.0", "subseries": [] },
+    "rfc3120": { "title": "A URN Namespace for XML.org", "subseries": [] },
+    "rfc3236": { "title": "The 'application/xhtml+xml' Media Type", "subseries": [] },
+    "rfc3275": { "title": "(Extensible Markup Language) XML-Signature Syntax and Processing", "subseries": [] },
+    "rfc3288": {
+      "title": "Using the Simple Object Access Protocol (SOAP) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc3470": {
+      "title": "Guidelines for the Use of Extensible Markup Language (XML) within IETF Protocols",
+      "subseries": ["bcp70"]
+    },
+    "rfc3504": { "title": "Internet Open Trading Protocol (IOTP) Version 1, Errata", "subseries": [] },
+    "rfc3505": { "title": "Electronic Commerce Modeling Language (ECML): Version 2 Requirements", "subseries": [] },
+    "rfc3529": {
+      "title": "Using Extensible Markup Language-Remote Procedure Calling (XML-RPC) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc3541": { "title": "A Uniform Resource Name (URN) Namespace for the Web3D Consortium (Web3D)", "subseries": [] },
+    "rfc3614": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Motion Picture Experts Group (MPEG)",
+      "subseries": []
+    },
+    "rfc3653": { "title": "XML-Signature XPath Filter 2.0", "subseries": [] },
+    "rfc3688": { "title": "The IETF XML Registry", "subseries": ["bcp81"] },
+    "rfc3741": { "title": "Exclusive XML Canonicalization, Version 1.0", "subseries": [] },
+    "rfc3767": { "title": "Securely Available Credentials Protocol", "subseries": [] },
+    "rfc3823": { "title": "MIME Media Type for the Systems Biology Markup Language (SBML)", "subseries": [] },
+    "rfc3858": { "title": "An Extensible Markup Language (XML) Based Format for Watcher Information", "subseries": [] },
+    "rfc3863": { "title": "Presence Information Data Format (PIDF)", "subseries": [] },
+    "rfc3870": { "title": "application/rdf+xml Media Type Registration", "subseries": [] },
+    "rfc3881": {
+      "title": "Security Audit and Access Accountability Message XML Data Definitions for Healthcare Applications",
+      "subseries": []
+    },
+    "rfc3902": { "title": "The \"application/soap+xml\" media type", "subseries": [] },
+    "rfc3910": { "title": "The SPIRITS (Services in PSTN requesting Internet Services) Protocol", "subseries": [] },
+    "rfc3920": { "title": "Extensible Messaging and Presence Protocol (XMPP): Core", "subseries": [] },
+    "rfc3921": {
+      "title": "Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence",
+      "subseries": []
+    },
+    "rfc3922": {
+      "title": "Mapping the Extensible Messaging and Presence Protocol (XMPP) to Common Presence and Instant Messaging (CPIM)",
+      "subseries": []
+    },
+    "rfc3923": {
+      "title": "End-to-End Signing and Object Encryption for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc3994": { "title": "Indication of Message Composition for Instant Messaging", "subseries": [] },
+    "rfc4050": {
+      "title": "Using the Elliptic Curve Signature Algorithm (ECDSA) for XML Digital Signatures",
+      "subseries": []
+    },
+    "rfc4051": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc4153": { "title": "XML Voucher: Generic Voucher Language", "subseries": [] },
+    "rfc4194": { "title": "The S Hexdump Format", "subseries": [] },
+    "rfc4227": {
+      "title": "Using the Simple Object Access Protocol (SOAP) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4267": {
+      "title": "The W3C Speech Interface Framework Media Types: application/voicexml+xml, application/ssml+xml, application/srgs, application/srgs+xml, application/ccxml+xml, and application/pls+xml",
+      "subseries": []
+    },
+    "rfc4287": { "title": "The Atom Syndication Format", "subseries": [] },
+    "rfc4374": { "title": "The application/xv+xml Media Type", "subseries": [] },
+    "rfc4536": { "title": "The application/smil and application/smil+xml Media Types", "subseries": [] },
+    "rfc4661": {
+      "title": "An Extensible Markup Language (XML)-Based Format for Event Notification Filtering",
+      "subseries": []
+    },
+    "rfc4741": { "title": "NETCONF Configuration Protocol", "subseries": [] },
+    "rfc4743": { "title": "Using NETCONF over the Simple Object Access Protocol (SOAP)", "subseries": [] },
+    "rfc4744": {
+      "title": "Using the NETCONF Protocol over the Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4765": { "title": "The Intrusion Detection Message Exchange Format (IDMEF)", "subseries": [] },
+    "rfc4825": {
+      "title": "The Extensible Markup Language (XML) Configuration Access Protocol (XCAP)",
+      "subseries": []
+    },
+    "rfc4826": { "title": "Extensible Markup Language (XML) Formats for Representing Resource Lists", "subseries": [] },
+    "rfc4827": {
+      "title": "An Extensible Markup Language (XML) Configuration Access Protocol (XCAP) Usage for Manipulating Presence Document Contents",
+      "subseries": []
+    },
+    "rfc4910": {
+      "title": "Robust XML Encoding Rules (RXER) for Abstract Syntax Notation One (ASN.1)",
+      "subseries": []
+    },
+    "rfc4911": { "title": "Encoding Instructions for the Robust XML Encoding Rules (RXER)", "subseries": [] },
+    "rfc4912": { "title": "Abstract Syntax Notation X (ASN.X)", "subseries": [] },
+    "rfc4913": {
+      "title": "Abstract Syntax Notation X (ASN.X) Representation of Encoding Instructions for the Generic String Encoding Rules (GSER)",
+      "subseries": []
+    },
+    "rfc4914": {
+      "title": "Abstract Syntax Notation X (ASN.X) Representation of Encoding Instructions for the XML Encoding Rules (XER)",
+      "subseries": []
+    },
+    "rfc4991": {
+      "title": "A Common Schema for Internet Registry Information Service Transfer Protocols",
+      "subseries": []
+    },
+    "rfc4992": { "title": "XML Pipelining with Chunks for the Internet Registry Information Service", "subseries": [] },
+    "rfc5025": { "title": "Presence Authorization Rules", "subseries": [] },
+    "rfc5107": { "title": "DHCP Server Identifier Override Suboption", "subseries": [] },
+    "rfc5168": { "title": "XML Schema for Media Control", "subseries": [] },
+    "rfc5261": {
+      "title": "An Extensible Markup Language (XML) Patch Operations Framework Utilizing XML Path Language (XPath) Selectors",
+      "subseries": []
+    },
+    "rfc5277": { "title": "NETCONF Event Notifications", "subseries": [] },
+    "rfc5361": { "title": "A Document Format for Requesting Consent", "subseries": [] },
+    "rfc5364": {
+      "title": "Extensible Markup Language (XML) Format Extension for Representing Copy Control Attributes in Resource Lists",
+      "subseries": []
+    },
+    "rfc5388": { "title": "Information Model and XML Data Model for Traceroute Measurements", "subseries": [] },
+    "rfc5731": { "title": "Extensible Provisioning Protocol (EPP) Domain Name Mapping", "subseries": ["std69"] },
+    "rfc5732": { "title": "Extensible Provisioning Protocol (EPP) Host Mapping", "subseries": ["std69"] },
+    "rfc5733": { "title": "Extensible Provisioning Protocol (EPP) Contact Mapping", "subseries": ["std69"] },
+    "rfc5734": { "title": "Extensible Provisioning Protocol (EPP) Transport over TCP", "subseries": ["std69"] },
+    "rfc5784": { "title": "Sieve Email Filtering:  Sieves and Display Directives in XML", "subseries": [] },
+    "rfc5854": { "title": "The Metalink Download Description Format", "subseries": [] },
+    "rfc5874": {
+      "title": "An Extensible Markup Language (XML) Document Format for Indicating a Change in XML Configuration Access Protocol (XCAP) Resources",
+      "subseries": []
+    },
+    "rfc5875": {
+      "title": "An Extensible Markup Language (XML) Configuration Access Protocol (XCAP) Diff Event Package",
+      "subseries": []
+    },
+    "rfc5910": {
+      "title": "Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    },
+    "rfc5935": { "title": "Expressing SNMP SMI Datatypes in XML Schema Definition Language", "subseries": [] },
+    "rfc6020": {
+      "title": "YANG - A Data Modeling Language for the Network Configuration Protocol (NETCONF)",
+      "subseries": []
+    },
+    "rfc6022": { "title": "YANG Module for NETCONF Monitoring", "subseries": [] },
+    "rfc6087": { "title": "Guidelines for Authors and Reviewers of YANG Data Model Documents", "subseries": [] },
+    "rfc6120": { "title": "Extensible Messaging and Presence Protocol (XMPP): Core", "subseries": [] },
+    "rfc6121": {
+      "title": "Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence",
+      "subseries": []
+    },
+    "rfc6122": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc6129": { "title": "The 'application/tei+xml' Media Type", "subseries": [] },
+    "rfc6137": { "title": "The Network Trouble Ticket Data Model (NTTDM)", "subseries": [] },
+    "rfc6207": {
+      "title": "The Media Types application/mods+xml, application/mads+xml, application/mets+xml, application/marcxml+xml, and application/sru+xml",
+      "subseries": []
+    },
+    "rfc6241": { "title": "Network Configuration Protocol (NETCONF)", "subseries": [] },
+    "rfc6283": { "title": "Extensible Markup Language Evidence Record Syntax (XMLERS)", "subseries": [] },
+    "rfc6321": { "title": "xCal: The XML Format for iCalendar", "subseries": [] },
+    "rfc6351": { "title": "xCard: vCard XML Representation", "subseries": [] },
+    "rfc6470": { "title": "Network Configuration Protocol (NETCONF) Base Notifications", "subseries": [] },
+    "rfc6536": { "title": "Network Configuration Protocol (NETCONF) Access Control Model", "subseries": [] },
+    "rfc6685": {
+      "title": "Expert Review for Incident Object Description Exchange Format (IODEF) Extensions in IANA XML Registry",
+      "subseries": []
+    },
+    "rfc6931": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc7061": { "title": "eXtensible Access Control Markup Language (XACML) XML Media Type", "subseries": [] },
+    "rfc7303": { "title": "XML Media Types", "subseries": [] },
+    "rfc7328": { "title": "Writing I-Ds and RFCs Using Pandoc and a Bit of XML", "subseries": [] },
+    "rfc7351": { "title": "A Media Type for XML Patch Operations", "subseries": [] },
+    "rfc7745": { "title": "XML Schemas for Reverse DNS Management", "subseries": [] },
+    "rfc7749": { "title": "The \"xml2rfc\" Version 2 Vocabulary", "subseries": [] },
+    "rfc7807": { "title": "Problem Details for HTTP APIs", "subseries": [] },
+    "rfc7940": { "title": "Representing Label Generation Rulesets Using XML", "subseries": [] },
+    "rfc7950": { "title": "The YANG 1.1 Data Modeling Language", "subseries": [] },
+    "rfc8341": { "title": "Network Configuration Access Control Model", "subseries": ["std91"] },
+    "rfc8759": { "title": "RTP Payload for Timed Text Markup Language (TTML)", "subseries": [] },
+    "rfc8794": { "title": "Extensible Binary Meta Language", "subseries": [] },
+    "rfc8846": {
+      "title": "An XML Schema for the Controlling Multiple Streams for Telepresence (CLUE) Data Model",
+      "subseries": []
+    },
+    "rfc9231": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc9457": { "title": "Problem Details for HTTP APIs", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

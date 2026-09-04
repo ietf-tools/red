@@ -11,13 +11,13 @@
           </div>
 
           <template v-else-if="liveSubject">
-            <!-- Where this subject sits, named by the slugs its path carries. Reef sends the path as
-               slugs and this page reads no other subject, so a slug is what there is to show: the
-               curated names live in the vocabulary listing, which is /subjects/ and one click away. -->
+            <!-- Where this subject sits. The published file names this subject's ancestors and
+               children in `subject_meta`, so the breadcrumb reads "Applications" rather than
+               `applications` without the page having to read the whole vocabulary for one word. -->
             <nav v-if="ancestors.length > 0" aria-label="Breadcrumb" class="mt-10">
               <ol class="flex flex-wrap items-center gap-2">
-                <li v-for="{ slug, path } in ancestors" :key="slug" class="flex items-center gap-2">
-                  <Anchor :href="path">{{ slug }}</Anchor>
+                <li v-for="{ slug, name, path } in ancestors" :key="slug" class="flex items-center gap-2">
+                  <Anchor :href="path">{{ name }}</Anchor>
                   <span aria-hidden="true">›</span>
                 </li>
               </ol>
@@ -31,16 +31,17 @@
             <template v-if="children.length > 0">
               <Heading level="2" class="mt-8 mb-2">Subjects within this one</Heading>
               <ul class="flex flex-col gap-2">
-                <li v-for="{ slug, path } in children" :key="slug">
-                  <Anchor :href="path">{{ slug }}</Anchor>
+                <li v-for="{ slug, name, path } in children" :key="slug">
+                  <Anchor :href="path">{{ name }}</Anchor>
                 </li>
               </ul>
             </template>
 
             <Heading v-if="children.length > 0" level="2" class="mt-8 mb-2">RFCs in this subject</Heading>
             <ul v-if="documents.length > 0" class="flex flex-col gap-2 mt-6">
-              <li v-for="{ doc, infoPath } in documents" :key="doc">
-                <Anchor :href="infoPath">{{ doc }}</Anchor>
+              <li v-for="{ doc, label, title, infoPath } in documents" :key="doc">
+                <Anchor :href="infoPath">{{ label }}</Anchor>
+                <span v-if="title"> — {{ title }}</span>
               </li>
             </ul>
             <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
@@ -76,7 +77,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRfcEditorHead } from '~/utilities/head'
-import { getSubject, isRetiredSubject, isSubjectAlias, ReefError, type SubjectDetailOrRedirect } from '~/utilities/reef'
+import { isRetiredSubject, isSubjectAlias } from '~/utilities/reef'
+import { fetchSubjectFile, type PrecomputedSubjectDetailOrRedirect } from '~/utilities/reef-precomputed'
+import { parseSeriesId } from '~/utilities/rfc'
 import { ancestorSlugsOf } from '~/utilities/subject-tree'
 import { infoSeriesPathBuilder, subjectsPathBuilder, usePublicSiteUrlOrigin } from '~/utilities/url'
 
@@ -92,18 +95,11 @@ const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
 
 const slug = typeof route.params.subject === 'string' ? route.params.subject : ''
 
-// Reef answering 404 is a plain answer about a subject that isn't there, not something going wrong,
-// so it becomes `null` here and everything else is left to fail into `subjectError`.
-const loadSubject = async (): Promise<SubjectDetailOrRedirect | null> => {
-  try {
-    return await getSubject(slug)
-  } catch (error) {
-    if (error instanceof ReefError && error.status === 404) {
-      return null
-    }
-    throw error
-  }
-}
+// The published file rather than Reef's API: this page is server-rendered, and a server render
+// reads the store and never calls Reef. A key that is not there is a plain answer about a subject
+// that isn't there, so it becomes `null`; everything else is left to fail into `subjectError`.
+const loadSubject = async (): Promise<PrecomputedSubjectDetailOrRedirect | null> =>
+  (await fetchSubjectFile(slug)) ?? null
 
 const { data: subject, status: subjectStatus, error: subjectError } = await useAsyncData(`subject:${slug}`, loadSubject)
 
@@ -138,16 +134,17 @@ if (redirectTo.value !== undefined) {
 
 // Outermost first, and without this subject itself: `path` ends in the slug of the subject it
 // describes, which is the heading rather than a link back to here.
-const ancestors = computed(() =>
-  (liveSubject.value ? ancestorSlugsOf(liveSubject.value) : []).map((slug) => ({
-    slug,
-    path: subjectsPathBuilder(slug)
-  }))
-)
+// `subject_meta` names every subject this file mentions, so both lists below read their curated
+// name out of it. The slug is the fallback rather than an error: a name that is missing is a file
+// written before the map existed, and a breadcrumb of slugs is worse than a breadcrumb but better
+// than a page that will not render.
+const nameFor = (slug: string): string => liveSubject.value?.subject_meta?.[slug]?.name ?? slug
 
-const children = computed(() =>
-  (liveSubject.value?.children ?? []).map((slug) => ({ slug, path: subjectsPathBuilder(slug) }))
-)
+const linkTo = (slug: string) => ({ slug, name: nameFor(slug), path: subjectsPathBuilder(slug) })
+
+const ancestors = computed(() => (liveSubject.value ? ancestorSlugsOf(liveSubject.value) : []).map(linkTo))
+
+const children = computed(() => (liveSubject.value?.children ?? []).map(linkTo))
 
 // What the list of documents on this page does not cover. Reef counts the subtree deduplicated, so
 // this is a count of further documents rather than of further assignments.
@@ -159,8 +156,22 @@ const deeperDocumentCount = computed(() => {
 // Reef names documents in the series this build has info pages for, so infoSeriesPathBuilder
 // throwing means Reef has sent something outside that vocabulary. Left to throw: an identifier this
 // page cannot link is a fault to fix at the source, not a row to quietly render as plain text.
+//
+// The title comes from `document_meta`, which the published file carries and the API does not:
+// Reef stores no document metadata and resolves it from Red's own index when it writes the file.
+// It is null for an identifier that index did not resolve, which is a real state rather than an
+// error — the link is still the document, so the row renders without a title rather than not at
+// all. `label` is the identifier as a reader writes it: "RFC 4686", not `rfc4686`.
 const documents = computed(() =>
-  (liveSubject.value?.documents ?? []).map((doc) => ({ doc, infoPath: infoSeriesPathBuilder(doc) }))
+  (liveSubject.value?.documents ?? []).map((doc) => {
+    const seriesId = parseSeriesId(doc)
+    return {
+      doc,
+      label: seriesId ? `${seriesId.type.toUpperCase()} ${seriesId.number}` : doc,
+      title: liveSubject.value?.document_meta?.[doc]?.title ?? undefined,
+      infoPath: infoSeriesPathBuilder(doc)
+    }
+  })
 )
 
 useRfcEditorHead({

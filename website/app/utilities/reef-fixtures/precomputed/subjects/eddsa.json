@@ -1,0 +1,77 @@
+{
+  "id": 1024,
+  "slug": "eddsa",
+  "name": "EdDSA",
+  "description": "Edwards-curve digital signatures",
+  "parent": "elliptic-curve",
+  "path": "security/cryptography/elliptic-curve/eddsa",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7479",
+    "rfc8032",
+    "rfc8037",
+    "rfc8080",
+    "rfc8410",
+    "rfc8419",
+    "rfc8420",
+    "rfc8422",
+    "rfc8463",
+    "rfc8709",
+    "rfc9053",
+    "rfc9295",
+    "rfc9373",
+    "rfc9591"
+  ],
+  "document_meta": {
+    "rfc7479": { "title": "Using Ed25519 in SSHFP Resource Records", "subseries": [] },
+    "rfc8032": { "title": "Edwards-Curve Digital Signature Algorithm (EdDSA)", "subseries": [] },
+    "rfc8037": {
+      "title": "CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures in JSON Object Signing and Encryption (JOSE)",
+      "subseries": []
+    },
+    "rfc8080": { "title": "Edwards-Curve Digital Security Algorithm (EdDSA) for DNSSEC", "subseries": [] },
+    "rfc8410": {
+      "title": "Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure",
+      "subseries": []
+    },
+    "rfc8419": {
+      "title": "Use of Edwards-Curve Digital Signature Algorithm (EdDSA) Signatures in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc8420": {
+      "title": "Using the Edwards-Curve Digital Signature Algorithm (EdDSA) in the Internet Key Exchange Protocol Version 2 (IKEv2)",
+      "subseries": []
+    },
+    "rfc8422": {
+      "title": "Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS) Versions 1.2 and Earlier",
+      "subseries": []
+    },
+    "rfc8463": {
+      "title": "A New Cryptographic Signature Method for DomainKeys Identified Mail (DKIM)",
+      "subseries": []
+    },
+    "rfc8709": {
+      "title": "Ed25519 and Ed448 Public Key Algorithms for the Secure Shell (SSH) Protocol",
+      "subseries": []
+    },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9295": {
+      "title": "Clarifications for Ed25519, Ed448, X25519, and X448 Algorithm Identifiers",
+      "subseries": []
+    },
+    "rfc9373": { "title": "EdDSA Value for IPSECKEY", "subseries": [] },
+    "rfc9591": {
+      "title": "The Flexible Round-Optimized Schnorr Threshold (FROST) Protocol for Two-Round Schnorr Signatures",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "security": { "name": "Security" },
+    "cryptography": { "name": "Cryptography" },
+    "elliptic-curve": { "name": "Elliptic-Curve Cryptography" }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": 955,
+  "slug": "pake",
+  "name": "PAKE",
+  "description": "Password-authenticated key exchange",
+  "parent": "cryptography",
+  "path": "security/cryptography/pake",
+  "document_count": 20,
+  "document_count_deep": 20,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2370",
+    "rfc3224",
+    "rfc5250",
+    "rfc5683",
+    "rfc5931",
+    "rfc6124",
+    "rfc6628",
+    "rfc7217",
+    "rfc7664",
+    "rfc7684",
+    "rfc7943",
+    "rfc8125",
+    "rfc8133",
+    "rfc8146",
+    "rfc8236",
+    "rfc8492",
+    "rfc9382",
+    "rfc9383",
+    "rfc9588",
+    "rfc9807"
+  ],
+  "document_meta": {
+    "rfc2370": { "title": "The OSPF Opaque LSA Option", "subseries": [] },
+    "rfc3224": { "title": "Vendor Extensions for Service Location Protocol, Version 2", "subseries": [] },
+    "rfc5250": { "title": "The OSPF Opaque LSA Option", "subseries": [] },
+    "rfc5683": { "title": "Password-Authenticated Key (PAK) Diffie-Hellman Exchange", "subseries": [] },
+    "rfc5931": {
+      "title": "Extensible Authentication Protocol (EAP) Authentication Using Only a Password",
+      "subseries": []
+    },
+    "rfc6124": {
+      "title": "An EAP Authentication Method Based on the Encrypted Key Exchange (EKE) Protocol",
+      "subseries": []
+    },
+    "rfc6628": {
+      "title": "Efficient Augmented Password-Only Authentication and Key Exchange for IKEv2",
+      "subseries": []
+    },
+    "rfc7217": {
+      "title": "A Method for Generating Semantically Opaque Interface Identifiers with IPv6 Stateless Address Autoconfiguration (SLAAC)",
+      "subseries": []
+    },
+    "rfc7664": { "title": "Dragonfly Key Exchange", "subseries": [] },
+    "rfc7684": { "title": "OSPFv2 Prefix/Link Attribute Advertisement", "subseries": [] },
+    "rfc7943": {
+      "title": "A Method for Generating Semantically Opaque Interface Identifiers (IIDs) with the Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc8125": { "title": "Requirements for Password-Authenticated Key Agreement (PAKE) Schemes", "subseries": [] },
+    "rfc8133": {
+      "title": "The Security Evaluated Standardized Password-Authenticated Key Exchange (SESPAKE) Protocol",
+      "subseries": []
+    },
+    "rfc8146": { "title": "Adding Support for Salted Password Databases to EAP-pwd", "subseries": [] },
+    "rfc8236": { "title": "J-PAKE: Password-Authenticated Key Exchange by Juggling", "subseries": [] },
+    "rfc8492": { "title": "Secure Password Ciphersuites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc9382": { "title": "SPAKE2, a Password-Authenticated Key Exchange", "subseries": [] },
+    "rfc9383": {
+      "title": "SPAKE2+, an Augmented Password-Authenticated Key Exchange (PAKE) Protocol",
+      "subseries": []
+    },
+    "rfc9588": {
+      "title": "Kerberos Simple Password-Authenticated Key Exchange (SPAKE) Pre-authentication",
+      "subseries": []
+    },
+    "rfc9807": { "title": "The OPAQUE Augmented Password-Authenticated Key Exchange (aPAKE) Protocol", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

@@ -1,0 +1,49 @@
+{
+  "id": 857,
+  "slug": "vpim",
+  "name": "VPIM",
+  "description": "Voice Profile for Internet Mail: voice messaging",
+  "parent": "email",
+  "path": "messaging/email/vpim",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2421",
+    "rfc2423",
+    "rfc3458",
+    "rfc3459",
+    "rfc3773",
+    "rfc3801",
+    "rfc3802",
+    "rfc3803",
+    "rfc3804",
+    "rfc3939",
+    "rfc4024",
+    "rfc4237",
+    "rfc4238",
+    "rfc4239"
+  ],
+  "document_meta": {
+    "rfc2421": { "title": "Voice Profile for Internet Mail - version 2", "subseries": [] },
+    "rfc2423": { "title": "VPIM Voice Message MIME Sub-type Registration", "subseries": [] },
+    "rfc3458": { "title": "Message Context for Internet Mail", "subseries": [] },
+    "rfc3459": { "title": "Critical Content Multi-purpose Internet Mail Extensions (MIME) Parameter", "subseries": [] },
+    "rfc3773": { "title": "High-Level Requirements for Internet Voice Mail", "subseries": [] },
+    "rfc3801": { "title": "Voice Profile for Internet Mail - version 2 (VPIMv2)", "subseries": [] },
+    "rfc3802": {
+      "title": "Toll Quality Voice - 32 kbit/s Adaptive Differential Pulse Code Modulation (ADPCM) MIME Sub-type Registration",
+      "subseries": []
+    },
+    "rfc3803": { "title": "Content Duration MIME Header Definition", "subseries": [] },
+    "rfc3804": { "title": "Voice Profile for Internet Mail (VPIM) Addressing", "subseries": [] },
+    "rfc3939": { "title": "Calling Line Identification for Voice Mail Messages", "subseries": [] },
+    "rfc4024": { "title": "Voice Messaging Client Behaviour", "subseries": [] },
+    "rfc4237": { "title": "Voice Messaging Directory Service", "subseries": [] },
+    "rfc4238": { "title": "Voice Message Routing Service", "subseries": [] },
+    "rfc4239": { "title": "Internet Voice Messaging (IVM)", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "email": { "name": "Email" } }
+}

@@ -1,0 +1,45 @@
+{
+  "id": 670,
+  "slug": "i2rs",
+  "name": "I2RS",
+  "description": "Interface to the routing system",
+  "parent": "network-management",
+  "path": "network-management/i2rs",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7920",
+    "rfc7921",
+    "rfc7922",
+    "rfc7923",
+    "rfc8241",
+    "rfc8242",
+    "rfc8345",
+    "rfc8346",
+    "rfc8430",
+    "rfc8431",
+    "rfc8542",
+    "rfc8944"
+  ],
+  "document_meta": {
+    "rfc7920": { "title": "Problem Statement for the Interface to the Routing System", "subseries": [] },
+    "rfc7921": { "title": "An Architecture for the Interface to the Routing System", "subseries": [] },
+    "rfc7922": {
+      "title": "Interface to the Routing System (I2RS) Traceability: Framework and Information Model",
+      "subseries": []
+    },
+    "rfc7923": { "title": "Requirements for Subscription to YANG Datastores", "subseries": [] },
+    "rfc8241": { "title": "Interface to the Routing System (I2RS) Security-Related Requirements", "subseries": [] },
+    "rfc8242": { "title": "Interface to the Routing System (I2RS) Ephemeral State Requirements", "subseries": [] },
+    "rfc8345": { "title": "A YANG Data Model for Network Topologies", "subseries": [] },
+    "rfc8346": { "title": "A YANG Data Model for Layer 3 Topologies", "subseries": [] },
+    "rfc8430": { "title": "RIB Information Model", "subseries": [] },
+    "rfc8431": { "title": "A YANG Data Model for the Routing Information Base (RIB)", "subseries": [] },
+    "rfc8542": { "title": "A YANG Data Model for Fabric Topology in Data-Center Networks", "subseries": [] },
+    "rfc8944": { "title": "A YANG Data Model for Layer 2 Network Topologies", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

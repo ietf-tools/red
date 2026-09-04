@@ -1,0 +1,127 @@
+{
+  "id": 826,
+  "slug": "multihoming",
+  "name": "Multihoming",
+  "description": "Multihoming architectures",
+  "parent": "addressing",
+  "path": "internet-layer/addressing/multihoming",
+  "document_count": 39,
+  "document_count_deep": 41,
+  "retired": false,
+  "children": ["shim6"],
+  "aliases": [],
+  "documents": [
+    "rfc3178",
+    "rfc3257",
+    "rfc3582",
+    "rfc3704",
+    "rfc4116",
+    "rfc4177",
+    "rfc4218",
+    "rfc4219",
+    "rfc4555",
+    "rfc4621",
+    "rfc4980",
+    "rfc5206",
+    "rfc5266",
+    "rfc5533",
+    "rfc5534",
+    "rfc5902",
+    "rfc6084",
+    "rfc6316",
+    "rfc6418",
+    "rfc6419",
+    "rfc6629",
+    "rfc6731",
+    "rfc7157",
+    "rfc7556",
+    "rfc7829",
+    "rfc8046",
+    "rfc8047",
+    "rfc8278",
+    "rfc8421",
+    "rfc8475",
+    "rfc8678",
+    "rfc8684",
+    "rfc8973",
+    "rfc9063",
+    "rfc9079",
+    "rfc9284",
+    "rfc9746",
+    "rfc9786",
+    "rfc9897"
+  ],
+  "document_meta": {
+    "rfc3178": { "title": "IPv6 Multihoming Support at Site Exit Routers", "subseries": [] },
+    "rfc3257": { "title": "Stream Control Transmission Protocol Applicability Statement", "subseries": [] },
+    "rfc3582": { "title": "Goals for IPv6 Site-Multihoming Architectures", "subseries": [] },
+    "rfc3704": { "title": "Ingress Filtering for Multihomed Networks", "subseries": ["bcp84"] },
+    "rfc4116": { "title": "IPv4 Multihoming Practices and Limitations", "subseries": [] },
+    "rfc4177": { "title": "Architectural Approaches to Multi-homing for IPv6", "subseries": [] },
+    "rfc4218": { "title": "Threats Relating to IPv6 Multihoming Solutions", "subseries": [] },
+    "rfc4219": { "title": "Things Multihoming in IPv6 (MULTI6) Developers Should Think About", "subseries": [] },
+    "rfc4555": { "title": "IKEv2 Mobility and Multihoming Protocol (MOBIKE)", "subseries": [] },
+    "rfc4621": { "title": "Design of the IKEv2 Mobility and Multihoming (MOBIKE) Protocol", "subseries": [] },
+    "rfc4980": { "title": "Analysis of Multihoming in Network Mobility Support", "subseries": [] },
+    "rfc5206": { "title": "End-Host Mobility and Multihoming with the Host Identity Protocol", "subseries": [] },
+    "rfc5266": {
+      "title": "Secure Connectivity and Mobility Using Mobile IPv4 and IKEv2 Mobility and Multihoming (MOBIKE)",
+      "subseries": ["bcp136"]
+    },
+    "rfc5533": { "title": "Shim6: Level 3 Multihoming Shim Protocol for IPv6", "subseries": [] },
+    "rfc5534": {
+      "title": "Failure Detection and Locator Pair Exploration Protocol for IPv6 Multihoming",
+      "subseries": []
+    },
+    "rfc5902": { "title": "IAB Thoughts on IPv6 Network Address Translation", "subseries": [] },
+    "rfc6084": {
+      "title": "General Internet Signaling Transport (GIST) over Stream Control Transmission Protocol (SCTP) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc6316": { "title": "Sockets Application Program Interface (API) for Multihoming Shim", "subseries": [] },
+    "rfc6418": { "title": "Multiple Interfaces and Provisioning Domains Problem Statement", "subseries": [] },
+    "rfc6419": { "title": "Current Practices for Multiple-Interface Hosts", "subseries": [] },
+    "rfc6629": {
+      "title": "Considerations on the Application of the Level 3 Multihoming Shim Protocol for IPv6 (Shim6)",
+      "subseries": []
+    },
+    "rfc6731": { "title": "Improved Recursive DNS Server Selection for Multi-Interfaced Nodes", "subseries": [] },
+    "rfc7157": { "title": "IPv6 Multihoming without Network Address Translation", "subseries": [] },
+    "rfc7556": { "title": "Multiple Provisioning Domain Architecture", "subseries": [] },
+    "rfc7829": {
+      "title": "SCTP-PF: A Quick Failover Algorithm for the Stream Control Transmission Protocol",
+      "subseries": []
+    },
+    "rfc8046": { "title": "Host Mobility with the Host Identity Protocol", "subseries": [] },
+    "rfc8047": { "title": "Host Multihoming with the Host Identity Protocol", "subseries": [] },
+    "rfc8278": { "title": "Mobile Access Gateway (MAG) Multipath Options", "subseries": [] },
+    "rfc8421": {
+      "title": "Guidelines for Multihomed and IPv4/IPv6 Dual-Stack Interactive Connectivity Establishment (ICE)",
+      "subseries": ["bcp217"]
+    },
+    "rfc8475": { "title": "Using Conditional Router Advertisements for Enterprise Multihoming", "subseries": [] },
+    "rfc8678": {
+      "title": "Enterprise Multihoming using Provider-Assigned IPv6 Addresses without Network Prefix Translation: Requirements and Solutions",
+      "subseries": []
+    },
+    "rfc8684": { "title": "TCP Extensions for Multipath Operation with Multiple Addresses", "subseries": [] },
+    "rfc8973": { "title": "DDoS Open Threat Signaling (DOTS) Agent Discovery", "subseries": [] },
+    "rfc9063": { "title": "Host Identity Protocol Architecture", "subseries": [] },
+    "rfc9079": { "title": "Source-Specific Routing in the Babel Routing Protocol", "subseries": [] },
+    "rfc9284": {
+      "title": "Multihoming Deployment Considerations for DDoS Open Threat Signaling (DOTS)",
+      "subseries": []
+    },
+    "rfc9746": { "title": "BGP EVPN Multihoming Extensions for Split-Horizon Filtering", "subseries": [] },
+    "rfc9786": { "title": "EVPN Port-Active Redundancy Mode", "subseries": [] },
+    "rfc9897": {
+      "title": "Datagram Congestion Control Protocol (DCCP) Extensions for Multipath Operation with Multiple Addresses",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "addressing": { "name": "Addressing" },
+    "shim6": { "name": "Shim6" }
+  }
+}

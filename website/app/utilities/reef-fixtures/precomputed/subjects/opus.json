@@ -1,0 +1,24 @@
+{
+  "id": 886,
+  "slug": "opus",
+  "name": "Opus",
+  "description": "The Opus audio codec",
+  "parent": "codecs",
+  "path": "real-time-communications/codecs/opus",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6366", "rfc6569", "rfc6716", "rfc7587", "rfc7845", "rfc8251", "rfc8486"],
+  "document_meta": {
+    "rfc6366": { "title": "Requirements for an Internet Audio Codec", "subseries": [] },
+    "rfc6569": { "title": "Guidelines for Development of an Audio Codec within the IETF", "subseries": [] },
+    "rfc6716": { "title": "Definition of the Opus Audio Codec", "subseries": [] },
+    "rfc7587": { "title": "RTP Payload Format for the Opus Speech and Audio Codec", "subseries": [] },
+    "rfc7845": { "title": "Ogg Encapsulation for the Opus Audio Codec", "subseries": [] },
+    "rfc8251": { "title": "Updates to the Opus Audio Codec", "subseries": [] },
+    "rfc8486": { "title": "Ambisonics in an Ogg Opus Container", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "codecs": { "name": "Codecs" } }
+}

@@ -1,0 +1,26 @@
+{
+  "id": 743,
+  "slug": "intrusion-detection",
+  "name": "Intrusion Detection",
+  "description": "Intrusion detection message exchange",
+  "parent": "security",
+  "path": "security/intrusion-detection",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1189", "rfc1214", "rfc3620", "rfc4765", "rfc4766", "rfc4767"],
+  "document_meta": {
+    "rfc1189": {
+      "title": "Common Management Information Services and Protocols for the Internet (CMOT and CMIP)",
+      "subseries": []
+    },
+    "rfc1214": { "title": "OSI internet management: Management Information Base", "subseries": [] },
+    "rfc3620": { "title": "The TUNNEL Profile", "subseries": [] },
+    "rfc4765": { "title": "The Intrusion Detection Message Exchange Format (IDMEF)", "subseries": [] },
+    "rfc4766": { "title": "Intrusion Detection Message Exchange Requirements", "subseries": [] },
+    "rfc4767": { "title": "The Intrusion Detection Exchange Protocol (IDXP)", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

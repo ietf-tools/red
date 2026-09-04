@@ -1,0 +1,170 @@
+{
+  "id": 613,
+  "slug": "6lowpan",
+  "name": "6LoWPAN",
+  "description": "IPv6 over low-power personal-area and constrained link layers",
+  "parent": "iot",
+  "path": "iot/6lowpan",
+  "document_count": 40,
+  "document_count_deep": 40,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4919",
+    "rfc4944",
+    "rfc6282",
+    "rfc6568",
+    "rfc6606",
+    "rfc6775",
+    "rfc7228",
+    "rfc7388",
+    "rfc7400",
+    "rfc7428",
+    "rfc7668",
+    "rfc7731",
+    "rfc7973",
+    "rfc8025",
+    "rfc8065",
+    "rfc8066",
+    "rfc8105",
+    "rfc8138",
+    "rfc8163",
+    "rfc8180",
+    "rfc8352",
+    "rfc8505",
+    "rfc8724",
+    "rfc8928",
+    "rfc8929",
+    "rfc8930",
+    "rfc8931",
+    "rfc9006",
+    "rfc9008",
+    "rfc9030",
+    "rfc9034",
+    "rfc9035",
+    "rfc9139",
+    "rfc9159",
+    "rfc9354",
+    "rfc9428",
+    "rfc9453",
+    "rfc9685",
+    "rfc9926",
+    "rfc9927"
+  ],
+  "document_meta": {
+    "rfc4919": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs): Overview, Assumptions, Problem Statement, and Goals",
+      "subseries": []
+    },
+    "rfc4944": { "title": "Transmission of IPv6 Packets over IEEE 802.15.4 Networks", "subseries": [] },
+    "rfc6282": { "title": "Compression Format for IPv6 Datagrams over IEEE 802.15.4-Based Networks", "subseries": [] },
+    "rfc6568": {
+      "title": "Design and Application Spaces for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc6606": {
+      "title": "Problem Statement and Requirements for IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Routing",
+      "subseries": []
+    },
+    "rfc6775": {
+      "title": "Neighbor Discovery Optimization for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc7228": { "title": "Terminology for Constrained-Node Networks", "subseries": [] },
+    "rfc7388": {
+      "title": "Definition of Managed Objects for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc7400": {
+      "title": "6LoWPAN-GHC: Generic Header Compression for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc7428": { "title": "Transmission of IPv6 Packets over ITU-T G.9959 Networks", "subseries": [] },
+    "rfc7668": { "title": "IPv6 over BLUETOOTH(R) Low Energy", "subseries": [] },
+    "rfc7731": { "title": "Multicast Protocol for Low-Power and Lossy Networks (MPL)", "subseries": [] },
+    "rfc7973": {
+      "title": "Assignment of an Ethertype for IPv6 with Low-Power Wireless Personal Area Network (LoWPAN) Encapsulation",
+      "subseries": []
+    },
+    "rfc8025": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Paging Dispatch",
+      "subseries": []
+    },
+    "rfc8065": { "title": "Privacy Considerations for IPv6 Adaptation-Layer Mechanisms", "subseries": [] },
+    "rfc8066": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) ESC Dispatch Code Points and Guidelines",
+      "subseries": []
+    },
+    "rfc8105": {
+      "title": "Transmission of IPv6 Packets over Digital Enhanced Cordless Telecommunications (DECT) Ultra Low Energy (ULE)",
+      "subseries": []
+    },
+    "rfc8138": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Routing Header",
+      "subseries": []
+    },
+    "rfc8163": { "title": "Transmission of IPv6 over Master-Slave/Token-Passing (MS/TP) Networks", "subseries": [] },
+    "rfc8180": {
+      "title": "Minimal IPv6 over the TSCH Mode of IEEE 802.15.4e (6TiSCH) Configuration",
+      "subseries": ["bcp210"]
+    },
+    "rfc8352": { "title": "Energy-Efficient Features of Internet of Things Protocols", "subseries": [] },
+    "rfc8505": {
+      "title": "Registration Extensions for IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Neighbor Discovery",
+      "subseries": []
+    },
+    "rfc8724": {
+      "title": "SCHC: Generic Framework for Static Context Header Compression and Fragmentation",
+      "subseries": []
+    },
+    "rfc8928": { "title": "Address-Protected Neighbor Discovery for Low-Power and Lossy Networks", "subseries": [] },
+    "rfc8929": { "title": "IPv6 Backbone Router", "subseries": [] },
+    "rfc8930": { "title": "On Forwarding 6LoWPAN Fragments over a Multi-Hop IPv6 Network", "subseries": [] },
+    "rfc8931": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Selective Fragment Recovery",
+      "subseries": []
+    },
+    "rfc9006": { "title": "TCP Usage Guidance in the Internet of Things (IoT)", "subseries": [] },
+    "rfc9008": {
+      "title": "Using RPI Option Type, Routing Header for Source Routes, and IPv6-in-IPv6 Encapsulation in the RPL Data Plane",
+      "subseries": []
+    },
+    "rfc9030": {
+      "title": "An Architecture for IPv6 over the Time-Slotted Channel Hopping Mode of IEEE 802.15.4 (6TiSCH)",
+      "subseries": []
+    },
+    "rfc9034": {
+      "title": "Packet Delivery Deadline Time in the Routing Header for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc9035": {
+      "title": "A Routing Protocol for Low-Power and Lossy Networks (RPL) Destination-Oriented Directed Acyclic Graph (DODAG) Configuration Option for the 6LoWPAN Routing Header",
+      "subseries": []
+    },
+    "rfc9139": {
+      "title": "Information-Centric Networking (ICN) Adaptation to Low-Power Wireless Personal Area Networks (LoWPANs)",
+      "subseries": []
+    },
+    "rfc9159": {
+      "title": "IPv6 Mesh over BLUETOOTH(R) Low Energy Using the Internet Protocol Support Profile (IPSP)",
+      "subseries": []
+    },
+    "rfc9354": {
+      "title": "Transmission of IPv6 Packets over Power Line Communication (PLC) Networks",
+      "subseries": []
+    },
+    "rfc9428": { "title": "Transmission of IPv6 Packets over Near Field Communication", "subseries": [] },
+    "rfc9453": {
+      "title": "Applicability and Use Cases for IPv6 over Networks of Resource-constrained Nodes (6lo)",
+      "subseries": []
+    },
+    "rfc9685": {
+      "title": "Listener Subscription for IPv6 Neighbor Discovery Multicast and Anycast Addresses",
+      "subseries": []
+    },
+    "rfc9926": { "title": "Prefix Registration for IPv6 Neighbor Discovery", "subseries": [] },
+    "rfc9927": { "title": "Fixing the C-Flag in the Extended Address Registration Option (EARO)", "subseries": [] }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

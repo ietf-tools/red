@@ -1,0 +1,20 @@
+{
+  "id": 865,
+  "slug": "dns-update",
+  "name": "DNS Update",
+  "description": "Dynamic DNS updates",
+  "parent": "dns",
+  "path": "naming/dns/dns-update",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2136", "rfc9664", "rfc9665"],
+  "document_meta": {
+    "rfc2136": { "title": "Dynamic Updates in the Domain Name System (DNS UPDATE)", "subseries": [] },
+    "rfc9664": { "title": "An EDNS(0) Option to Negotiate Leases on DNS Updates", "subseries": [] },
+    "rfc9665": { "title": "Service Registration Protocol for DNS-Based Service Discovery", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" } }
+}

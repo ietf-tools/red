@@ -1,0 +1,21 @@
+{
+  "id": 578,
+  "slug": "data-encodings",
+  "name": "Data Encodings",
+  "description": "Base16/32/45/64 and related textual data encodings",
+  "parent": "data-formats",
+  "path": "data-formats/data-encodings",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3072", "rfc3548", "rfc4648", "rfc9285"],
+  "document_meta": {
+    "rfc3072": { "title": "Structured Data Exchange Format (SDXF)", "subseries": [] },
+    "rfc3548": { "title": "The Base16, Base32, and Base64 Data Encodings", "subseries": [] },
+    "rfc4648": { "title": "The Base16, Base32, and Base64 Data Encodings", "subseries": [] },
+    "rfc9285": { "title": "The Base45 Data Encoding", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

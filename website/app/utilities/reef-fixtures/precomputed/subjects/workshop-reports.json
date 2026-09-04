@@ -1,0 +1,178 @@
+{
+  "id": 590,
+  "slug": "workshop-reports",
+  "name": "Workshop Reports",
+  "description": "Reports from IAB, IRTF and community workshops",
+  "parent": "internet-governance",
+  "path": "internet-governance/workshop-reports",
+  "document_count": 50,
+  "document_count_deep": 50,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1019",
+    "rfc1124",
+    "rfc1152",
+    "rfc1636",
+    "rfc1862",
+    "rfc2130",
+    "rfc2166",
+    "rfc222",
+    "rfc2316",
+    "rfc2353",
+    "rfc2413",
+    "rfc2768",
+    "rfc2902",
+    "rfc295",
+    "rfc2956",
+    "rfc3002",
+    "rfc309",
+    "rfc320",
+    "rfc327",
+    "rfc3535",
+    "rfc4417",
+    "rfc471",
+    "rfc4948",
+    "rfc4984",
+    "rfc504",
+    "rfc5594",
+    "rfc6462",
+    "rfc6574",
+    "rfc7295",
+    "rfc7305",
+    "rfc7397",
+    "rfc7663",
+    "rfc7687",
+    "rfc8023",
+    "rfc8073",
+    "rfc8240",
+    "rfc8462",
+    "rfc8477",
+    "rfc8752",
+    "rfc8953",
+    "rfc8980",
+    "rfc9075",
+    "rfc9307",
+    "rfc9318",
+    "rfc9490",
+    "rfc9547",
+    "rfc9707",
+    "rfc9968",
+    "rfc9969",
+    "rfc9998"
+  ],
+  "document_meta": {
+    "rfc1019": { "title": "Report of the Workshop on Environments for Computational Mathematics", "subseries": [] },
+    "rfc1124": { "title": "Policy issues in interconnecting networks", "subseries": [] },
+    "rfc1152": {
+      "title": "Workshop report: Internet research steering group workshop on very-high-speed networks",
+      "subseries": []
+    },
+    "rfc1636": {
+      "title": "Report of IAB Workshop on Security in the Internet Architecture - February 8-10, 1994",
+      "subseries": []
+    },
+    "rfc1862": {
+      "title": "Report of the IAB Workshop on Internet Information Infrastructure, October 12-14, 1994",
+      "subseries": []
+    },
+    "rfc2130": {
+      "title": "The Report of the IAB Character Set Workshop held 29 February - 1 March, 1996",
+      "subseries": []
+    },
+    "rfc2166": { "title": "APPN Implementer's Workshop Closed Pages Document DLSw v2.0 Enhancements", "subseries": [] },
+    "rfc222": { "title": "Subject: System programmer's workshop", "subseries": [] },
+    "rfc2316": { "title": "Report of the IAB Security Architecture Workshop", "subseries": [] },
+    "rfc2353": {
+      "title": "APPN/HPR in IP Networks APPN Implementers' Workshop Closed Pages Document",
+      "subseries": []
+    },
+    "rfc2413": { "title": "Dublin Core Metadata for Resource Discovery", "subseries": [] },
+    "rfc2768": { "title": "Network Policy and Services: A Report of a Workshop on Middleware", "subseries": [] },
+    "rfc2902": { "title": "Overview of the 1998 IAB Routing Workshop", "subseries": [] },
+    "rfc295": { "title": "Report of the Protocol Workshop, 12 October 1971", "subseries": [] },
+    "rfc2956": { "title": "Overview of 1999 IAB Network Layer Workshop", "subseries": [] },
+    "rfc3002": { "title": "Overview of 2000 IAB Wireless Internetworking Workshop", "subseries": [] },
+    "rfc309": { "title": "Data and File Transfer Workshop Announcement", "subseries": [] },
+    "rfc320": { "title": "Workshop on Hard Copy Line Graphics", "subseries": [] },
+    "rfc327": { "title": "Data and File Transfer workshop notes", "subseries": [] },
+    "rfc3535": { "title": "Overview of the 2002 IAB Network Management Workshop", "subseries": [] },
+    "rfc4417": { "title": "Report of the 2004 IAB Messaging Workshop", "subseries": [] },
+    "rfc471": { "title": "Workshop on multi-site executive programs", "subseries": [] },
+    "rfc4948": { "title": "Report from the IAB workshop on Unwanted Traffic March 9-10, 2006", "subseries": [] },
+    "rfc4984": { "title": "Report from the IAB Workshop on Routing and Addressing", "subseries": [] },
+    "rfc504": { "title": "Distributed resources workshop announcement", "subseries": [] },
+    "rfc5594": {
+      "title": "Report from the IETF Workshop on Peer-to-Peer (P2P) Infrastructure, May 28, 2008",
+      "subseries": []
+    },
+    "rfc6462": { "title": "Report from the Internet Privacy Workshop", "subseries": [] },
+    "rfc6574": { "title": "Report from the Smart Object Workshop", "subseries": [] },
+    "rfc7295": {
+      "title": "Report from the IAB/IRTF Workshop on Congestion Control for Interactive Real-Time Communication",
+      "subseries": []
+    },
+    "rfc7305": {
+      "title": "Report from the IAB Workshop on Internet Technology Adoption and Transition (ITAT)",
+      "subseries": []
+    },
+    "rfc7397": { "title": "Report from the Smart Object Security Workshop", "subseries": [] },
+    "rfc7663": {
+      "title": "Report from the IAB Workshop on Stack Evolution in a Middlebox Internet (SEMI)",
+      "subseries": []
+    },
+    "rfc7687": { "title": "Report from the Strengthening the Internet (STRINT) Workshop", "subseries": [] },
+    "rfc8023": {
+      "title": "Report from the Workshop and Prize on Root Causes and Mitigation of Name Collisions",
+      "subseries": []
+    },
+    "rfc8073": { "title": "Coordinating Attack Response at Internet Scale (CARIS) Workshop Report", "subseries": [] },
+    "rfc8240": { "title": "Report from the Internet of Things Software Update (IoTSU) Workshop 2016", "subseries": [] },
+    "rfc8462": {
+      "title": "Report from the IAB Workshop on Managing Radio Networks in an Encrypted World (MaRNEW)",
+      "subseries": []
+    },
+    "rfc8477": {
+      "title": "Report from the Internet of Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016",
+      "subseries": []
+    },
+    "rfc8752": {
+      "title": "Report from the IAB Workshop on Exploring Synergy between Content Aggregation and the Publisher Ecosystem (ESCAPE)",
+      "subseries": []
+    },
+    "rfc8953": {
+      "title": "Coordinating Attack Response at Internet Scale 2 (CARIS2) Workshop Report",
+      "subseries": []
+    },
+    "rfc8980": {
+      "title": "Report from the IAB Workshop on Design Expectations vs. Deployment Reality in Protocol Development",
+      "subseries": []
+    },
+    "rfc9075": { "title": "Report from the IAB COVID-19 Network Impacts Workshop 2020", "subseries": [] },
+    "rfc9307": { "title": "Report from the IAB Workshop on Analyzing IETF Data (AID) 2021", "subseries": [] },
+    "rfc9318": { "title": "IAB Workshop Report: Measuring Network Quality for End-Users", "subseries": [] },
+    "rfc9490": {
+      "title": "Report from the IAB Workshop on Management Techniques in Encrypted Networks (M-TEN)",
+      "subseries": []
+    },
+    "rfc9547": {
+      "title": "Report from the IAB Workshop on Environmental Impact of Internet Applications and Systems, 2022",
+      "subseries": []
+    },
+    "rfc9707": {
+      "title": "Report from the IAB Workshop on Barriers to Internet Access of Services (BIAS)",
+      "subseries": []
+    },
+    "rfc9968": {
+      "title": "Report from the IAB Workshop on the Next Era of Network Management Operations (NEMOPS)",
+      "subseries": []
+    },
+    "rfc9969": { "title": "Report from the IAB Workshop on AI-CONTROL", "subseries": [] },
+    "rfc9998": {
+      "title": "Report from the IAB/W3C Workshop on Age-Based Restrictions on Content Access",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-governance": { "name": "Internet Governance" } }
+}

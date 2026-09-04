@@ -1,0 +1,69 @@
+{
+  "id": 688,
+  "slug": "media-gateway",
+  "name": "Media Gateways",
+  "description": "Decomposed media gateway control",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/media-gateway",
+  "document_count": 16,
+  "document_count_deep": 26,
+  "retired": false,
+  "children": ["megaco", "mgcp"],
+  "aliases": [],
+  "documents": [
+    "rfc2705",
+    "rfc2805",
+    "rfc3054",
+    "rfc3331",
+    "rfc3332",
+    "rfc3435",
+    "rfc3441",
+    "rfc3624",
+    "rfc3660",
+    "rfc3661",
+    "rfc3991",
+    "rfc3992",
+    "rfc4233",
+    "rfc4666",
+    "rfc5347",
+    "rfc6498"
+  ],
+  "document_meta": {
+    "rfc2705": { "title": "Media Gateway Control Protocol (MGCP) Version 1.0", "subseries": [] },
+    "rfc2805": { "title": "Media Gateway Control Protocol Architecture and Requirements", "subseries": [] },
+    "rfc3054": { "title": "Megaco IP Phone Media Gateway Application Profile", "subseries": [] },
+    "rfc3331": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 2 (MTP2) - User Adaptation Layer",
+      "subseries": []
+    },
+    "rfc3332": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 3 (MTP3) - User Adaptation Layer (M3UA)",
+      "subseries": []
+    },
+    "rfc3435": { "title": "Media Gateway Control Protocol (MGCP) Version 1.0", "subseries": [] },
+    "rfc3441": {
+      "title": "Asynchronous Transfer Mode (ATM) Package for the Media Gateway Control Protocol (MGCP)",
+      "subseries": []
+    },
+    "rfc3624": { "title": "The Media Gateway Control Protocol (MGCP) Bulk Audit Package", "subseries": [] },
+    "rfc3660": { "title": "Basic Media Gateway Control Protocol (MGCP) Packages", "subseries": [] },
+    "rfc3661": { "title": "Media Gateway Control Protocol (MGCP) Return Code Usage", "subseries": [] },
+    "rfc3991": { "title": "Media Gateway Control Protocol (MGCP) Redirect and Reset Package", "subseries": [] },
+    "rfc3992": { "title": "Media Gateway Control Protocol (MGCP) Lockstep State Reporting Mechanism", "subseries": [] },
+    "rfc4233": { "title": "Integrated Services Digital Network (ISDN) Q.921-User Adaptation Layer", "subseries": [] },
+    "rfc4666": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 3 (MTP3) - User Adaptation Layer (M3UA)",
+      "subseries": []
+    },
+    "rfc5347": { "title": "Media Gateway Control Protocol Fax Package", "subseries": [] },
+    "rfc6498": {
+      "title": "Media Gateway Control Protocol (MGCP) Voiceband Data (VBD) Package and General-Purpose Media Descriptor Parameter Package",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "megaco": { "name": "Megaco/H.248" },
+    "mgcp": { "name": "MGCP" }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": 761,
+  "slug": "secevent",
+  "name": "Security Event Tokens",
+  "description": "Security event tokens and event delivery",
+  "parent": "security",
+  "path": "security/secevent",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2448", "rfc3521", "rfc8417", "rfc8935", "rfc8936", "rfc9493", "rfc9967"],
+  "document_meta": {
+    "rfc2448": { "title": "AT&T's Error Resilient Video Transmission Technique", "subseries": [] },
+    "rfc3521": { "title": "Framework for Session Set-up with Media Authorization", "subseries": [] },
+    "rfc8417": { "title": "Security Event Token (SET)", "subseries": [] },
+    "rfc8935": { "title": "Push-Based Security Event Token (SET) Delivery Using HTTP", "subseries": [] },
+    "rfc8936": { "title": "Poll-Based Security Event Token (SET) Delivery Using HTTP", "subseries": [] },
+    "rfc9493": { "title": "Subject Identifiers for Security Event Tokens", "subseries": [] },
+    "rfc9967": {
+      "title": "System for Cross-Domain Identity Management (SCIM) Profile for Security Event Tokens (SETs)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

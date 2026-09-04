@@ -1,0 +1,26 @@
+{
+  "id": 531,
+  "slug": "internet-history",
+  "name": "Internet History",
+  "description": "Histories and retrospectives of the Internet and its protocols",
+  "parent": null,
+  "path": "internet-history",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1121", "rfc1300", "rfc1882", "rfc2235", "rfc2441", "rfc5540", "rfc8700", "rfc9414", "rfc968"],
+  "document_meta": {
+    "rfc1121": { "title": "Act one - the poems", "subseries": [] },
+    "rfc1300": { "title": "Remembrances of Things Past", "subseries": [] },
+    "rfc1882": { "title": "The 12-Days of Technology Before Christmas", "subseries": [] },
+    "rfc2235": { "title": "Hobbes' Internet Timeline", "subseries": ["fyi32"] },
+    "rfc2441": { "title": "Working with Jon, Tribute delivered at UCLA, October 30, 1998", "subseries": [] },
+    "rfc5540": { "title": "40 Years of RFCs", "subseries": [] },
+    "rfc8700": { "title": "Fifty Years of RFCs", "subseries": [] },
+    "rfc9414": { "title": "Unfortunate History of Transient Numeric Identifiers", "subseries": [] },
+    "rfc968": { "title": "Twas the night before start-up", "subseries": [] }
+  },
+  "subject_meta": {}
+}

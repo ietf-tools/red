@@ -1,0 +1,43 @@
+{
+  "id": 844,
+  "slug": "nhrp",
+  "name": "NHRP",
+  "description": "Next Hop Resolution Protocol for NBMA networks",
+  "parent": "atm",
+  "path": "link-layer/atm/nhrp",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1735",
+    "rfc1937",
+    "rfc2332",
+    "rfc2333",
+    "rfc2335",
+    "rfc2336",
+    "rfc2520",
+    "rfc2583",
+    "rfc2603",
+    "rfc2677",
+    "rfc2735"
+  ],
+  "document_meta": {
+    "rfc1735": { "title": "NBMA Address Resolution Protocol (NARP)", "subseries": [] },
+    "rfc1937": { "title": "\"Local/Remote\" Forwarding Decision in Switched Data Link Subnetworks", "subseries": [] },
+    "rfc2332": { "title": "NBMA Next Hop Resolution Protocol (NHRP)", "subseries": [] },
+    "rfc2333": { "title": "NHRP Protocol Applicability Statement", "subseries": [] },
+    "rfc2335": { "title": "A Distributed NHRP Service Using SCSP", "subseries": [] },
+    "rfc2336": { "title": "Classical IP and ARP over ATM to NHRP Transition", "subseries": [] },
+    "rfc2520": { "title": "NHRP with Mobile NHCs", "subseries": [] },
+    "rfc2583": { "title": "Guidelines for Next Hop Client (NHC) Developers", "subseries": [] },
+    "rfc2603": { "title": "ILMI-Based Server Discovery for NHRP", "subseries": [] },
+    "rfc2677": {
+      "title": "Definitions of Managed Objects for the NBMA Next Hop Resolution Protocol (NHRP)",
+      "subseries": []
+    },
+    "rfc2735": { "title": "NHRP Support for Virtual Private Networks", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" }, "atm": { "name": "ATM" } }
+}

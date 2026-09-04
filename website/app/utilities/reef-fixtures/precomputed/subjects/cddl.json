@@ -1,0 +1,34 @@
+{
+  "id": 809,
+  "slug": "cddl",
+  "name": "CDDL",
+  "description": "Concise Data Definition Language",
+  "parent": "cbor",
+  "path": "data-formats/cbor/cddl",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8610", "rfc9165", "rfc9682", "rfc9741", "rfc9781"],
+  "document_meta": {
+    "rfc8610": {
+      "title": "Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures",
+      "subseries": []
+    },
+    "rfc9165": {
+      "title": "Additional Control Operators for the Concise Data Definition Language (CDDL)",
+      "subseries": []
+    },
+    "rfc9682": { "title": "Updates to the Concise Data Definition Language (CDDL) Grammar", "subseries": [] },
+    "rfc9741": {
+      "title": "Concise Data Definition Language (CDDL): Additional Control Operators for the Conversion and Processing of Text",
+      "subseries": []
+    },
+    "rfc9781": {
+      "title": "A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "cbor": { "name": "CBOR" } }
+}

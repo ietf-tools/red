@@ -1,0 +1,28 @@
+{
+  "id": 928,
+  "slug": "geneve",
+  "name": "Geneve",
+  "description": "Generic Network Virtualization Encapsulation",
+  "parent": "overlay-networks",
+  "path": "routing/overlay-networks/geneve",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8293", "rfc8926", "rfc9521", "rfc9638", "rfc9772"],
+  "document_meta": {
+    "rfc8293": { "title": "A Framework for Multicast in Network Virtualization over Layer 3", "subseries": [] },
+    "rfc8926": { "title": "Geneve: Generic Network Virtualization Encapsulation", "subseries": [] },
+    "rfc9521": {
+      "title": "Bidirectional Forwarding Detection (BFD) for  Generic Network Virtualization Encapsulation (Geneve)",
+      "subseries": []
+    },
+    "rfc9638": { "title": "Network Virtualization over Layer 3 (NVO3) Encapsulation Considerations", "subseries": [] },
+    "rfc9772": {
+      "title": "Active Operations, Administration, and Maintenance (OAM) for Use in Generic Network Virtualization Encapsulation (Geneve)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "overlay-networks": { "name": "Overlay Networks" } }
+}

@@ -1,0 +1,23 @@
+{
+  "id": 841,
+  "slug": "edhoc",
+  "name": "EDHOC",
+  "description": "Ephemeral Diffie-Hellman over COSE key exchange",
+  "parent": "ace",
+  "path": "iot/ace/edhoc",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9528", "rfc9529", "rfc9668"],
+  "document_meta": {
+    "rfc9528": { "title": "Ephemeral Diffie-Hellman Over COSE (EDHOC)", "subseries": [] },
+    "rfc9529": { "title": "Traces of Ephemeral Diffie-Hellman Over COSE (EDHOC)", "subseries": [] },
+    "rfc9668": {
+      "title": "Using Ephemeral Diffie-Hellman Over COSE (EDHOC) with the Constrained Application Protocol (CoAP) and Object Security for Constrained RESTful Environments (OSCORE)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" }, "ace": { "name": "ACE" } }
+}

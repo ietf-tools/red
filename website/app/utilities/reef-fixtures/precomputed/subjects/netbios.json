@@ -1,0 +1,41 @@
+{
+  "id": 559,
+  "slug": "netbios",
+  "name": "NetBIOS",
+  "description": "NetBIOS services over TCP/IP",
+  "parent": "applications",
+  "path": "applications/netbios",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1001", "rfc1002", "rfc1088", "rfc1434", "rfc1795", "rfc1877", "rfc2097", "rfc2106", "rfc2114"],
+  "document_meta": {
+    "rfc1001": {
+      "title": "Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods",
+      "subseries": ["std19"]
+    },
+    "rfc1002": {
+      "title": "Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications",
+      "subseries": ["std19"]
+    },
+    "rfc1088": {
+      "title": "Standard for the transmission of IP datagrams over NetBIOS networks",
+      "subseries": ["std48"]
+    },
+    "rfc1434": { "title": "Data Link Switching: Switch-to-Switch Protocol", "subseries": [] },
+    "rfc1795": {
+      "title": "Data Link Switching: Switch-to-Switch Protocol AIW DLSw RIG: DLSw Closed Pages, DLSw Standard Version 1",
+      "subseries": []
+    },
+    "rfc1877": {
+      "title": "PPP Internet Protocol Control Protocol Extensions for Name Server Addresses",
+      "subseries": []
+    },
+    "rfc2097": { "title": "The PPP NetBIOS Frames Control Protocol (NBFCP)", "subseries": [] },
+    "rfc2106": { "title": "Data Link Switching Remote Access Protocol", "subseries": [] },
+    "rfc2114": { "title": "Data Link Switching Client Access Protocol", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

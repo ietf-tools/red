@@ -1,0 +1,22 @@
+{
+  "id": 594,
+  "slug": "decnet",
+  "name": "DECnet",
+  "description": "DECnet protocol suite over IP infrastructure",
+  "parent": "internet-layer",
+  "path": "internet-layer/decnet",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1289", "rfc1376", "rfc1405", "rfc1559", "rfc1762"],
+  "document_meta": {
+    "rfc1289": { "title": "DECnet Phase IV MIB Extensions", "subseries": [] },
+    "rfc1376": { "title": "The PPP DECnet Phase IV Control Protocol (DNCP)", "subseries": [] },
+    "rfc1405": { "title": "Mapping between X.400(1984/1988) and Mail-11 (DECnet mail)", "subseries": [] },
+    "rfc1559": { "title": "DECnet Phase IV MIB Extensions", "subseries": [] },
+    "rfc1762": { "title": "The PPP DECnet Phase IV Control Protocol (DNCP)", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

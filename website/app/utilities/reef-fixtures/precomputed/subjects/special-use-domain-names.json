@@ -1,0 +1,25 @@
+{
+  "id": 870,
+  "slug": "special-use-domain-names",
+  "name": "Special-Use Domain Names",
+  "description": "Special-use and reserved domain names",
+  "parent": "dns",
+  "path": "naming/dns/special-use-domain-names",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6761", "rfc7686", "rfc8244", "rfc8375", "rfc9799"],
+  "document_meta": {
+    "rfc6761": { "title": "Special-Use Domain Names", "subseries": [] },
+    "rfc7686": { "title": "The \".onion\" Special-Use Domain Name", "subseries": [] },
+    "rfc8244": { "title": "Special-Use Domain Names Problem Statement", "subseries": [] },
+    "rfc8375": { "title": "Special-Use Domain 'home.arpa.'", "subseries": [] },
+    "rfc9799": {
+      "title": "Automated Certificate Management Environment (ACME) Extensions for \".onion\" Special-Use Domain Names",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" } }
+}

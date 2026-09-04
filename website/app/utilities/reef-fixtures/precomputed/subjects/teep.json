@@ -1,0 +1,18 @@
+{
+  "id": 764,
+  "slug": "teep",
+  "name": "TEEP",
+  "description": "Trusted execution environment provisioning",
+  "parent": "security",
+  "path": "security/teep",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9397"],
+  "document_meta": {
+    "rfc9397": { "title": "Trusted Execution Environment Provisioning (TEEP) Architecture", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

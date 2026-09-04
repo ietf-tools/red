@@ -1,0 +1,83 @@
+{
+  "id": 586,
+  "slug": "ipr",
+  "name": "IPR",
+  "description": "Intellectual property rights, copyright and trust legal provisions",
+  "parent": "internet-governance",
+  "path": "internet-governance/ipr",
+  "document_count": 25,
+  "document_count_deep": 25,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1170",
+    "rfc1822",
+    "rfc1988",
+    "rfc2026",
+    "rfc3667",
+    "rfc3668",
+    "rfc3669",
+    "rfc3905",
+    "rfc3978",
+    "rfc3979",
+    "rfc4163",
+    "rfc4371",
+    "rfc4748",
+    "rfc4879",
+    "rfc4946",
+    "rfc5377",
+    "rfc5378",
+    "rfc5741",
+    "rfc6701",
+    "rfc6702",
+    "rfc7841",
+    "rfc8179",
+    "rfc8715",
+    "rfc9282",
+    "rfc9680"
+  ],
+  "document_meta": {
+    "rfc1170": { "title": "Public key standards and licenses", "subseries": [] },
+    "rfc1822": { "title": "A Grant of Rights to Use a Specific IBM patent with Photuris", "subseries": [] },
+    "rfc1988": {
+      "title": "Conditional Grant of Rights to Specific Hewlett-Packard Patents In Conjunction With the Internet Engineering Task Force's Internet-Standard Network Management Framework",
+      "subseries": []
+    },
+    "rfc2026": { "title": "The Internet Standards Process -- Revision 3", "subseries": ["bcp9"] },
+    "rfc3667": { "title": "IETF Rights in Contributions", "subseries": [] },
+    "rfc3668": { "title": "Intellectual Property Rights in IETF Technology", "subseries": [] },
+    "rfc3669": { "title": "Guidelines for Working Groups on Intellectual Property Issues", "subseries": [] },
+    "rfc3905": { "title": "A Template for IETF Patent Disclosures and Licensing Declarations", "subseries": [] },
+    "rfc3978": { "title": "IETF Rights in Contributions", "subseries": [] },
+    "rfc3979": { "title": "Intellectual Property Rights in IETF Technology", "subseries": [] },
+    "rfc4163": {
+      "title": "RObust Header Compression (ROHC): Requirements on TCP/IP Header Compression",
+      "subseries": []
+    },
+    "rfc4371": { "title": "BCP 101 Update for IPR Trust", "subseries": [] },
+    "rfc4748": { "title": "RFC 3978 Update to Recognize the IETF Trust", "subseries": [] },
+    "rfc4879": { "title": "Clarification of the Third Party Disclosure Procedure in RFC 3979", "subseries": [] },
+    "rfc4946": { "title": "Atom License Extension", "subseries": [] },
+    "rfc5377": {
+      "title": "Advice to the Trustees of the IETF Trust on Rights to Be Granted in IETF Documents",
+      "subseries": []
+    },
+    "rfc5378": { "title": "Rights Contributors Provide to the IETF Trust", "subseries": ["bcp78"] },
+    "rfc5741": { "title": "RFC Streams, Headers, and Boilerplates", "subseries": [] },
+    "rfc6701": { "title": "Sanctions Available for Application to Violators of IETF IPR Policy", "subseries": [] },
+    "rfc6702": {
+      "title": "Promoting Compliance with Intellectual Property Rights (IPR) Disclosure Rules",
+      "subseries": []
+    },
+    "rfc7841": { "title": "RFC Streams, Headers, and Boilerplates", "subseries": [] },
+    "rfc8179": { "title": "Intellectual Property Rights in IETF Technology", "subseries": ["bcp79"] },
+    "rfc8715": {
+      "title": "IETF Administrative Support Activity 2.0: Update to the Process for Selection of Trustees for the IETF Trust",
+      "subseries": []
+    },
+    "rfc9282": { "title": "Responsibility Change for the RFC Series", "subseries": ["bcp9"] },
+    "rfc9680": { "title": "Antitrust Guidelines for IETF Participants", "subseries": [] }
+  },
+  "subject_meta": { "internet-governance": { "name": "Internet Governance" } }
+}

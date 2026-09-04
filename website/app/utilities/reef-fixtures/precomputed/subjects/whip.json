@@ -1,0 +1,16 @@
+{
+  "id": 904,
+  "slug": "whip",
+  "name": "WHIP",
+  "description": "WebRTC-HTTP ingestion (WHIP)",
+  "parent": "webrtc",
+  "path": "real-time-communications/webrtc/whip",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9725"],
+  "document_meta": { "rfc9725": { "title": "WebRTC-HTTP Ingestion Protocol (WHIP)", "subseries": [] } },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "webrtc": { "name": "WebRTC" } }
+}

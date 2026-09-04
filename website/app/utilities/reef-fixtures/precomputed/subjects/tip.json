@@ -1,0 +1,19 @@
+{
+  "id": 567,
+  "slug": "tip",
+  "name": "TIP",
+  "description": "Transaction Internet Protocol",
+  "parent": "applications",
+  "path": "applications/tip",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2371", "rfc2372"],
+  "document_meta": {
+    "rfc2371": { "title": "Transaction Internet Protocol Version 3.0", "subseries": [] },
+    "rfc2372": { "title": "Transaction Internet Protocol - Requirements and Supplemental Information", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

@@ -1,0 +1,41 @@
+{
+  "id": 767,
+  "slug": "xml-signatures",
+  "name": "XML Signatures",
+  "description": "XML digital signatures and encryption",
+  "parent": "security",
+  "path": "security/xml-signatures",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2807",
+    "rfc3075",
+    "rfc3076",
+    "rfc3275",
+    "rfc3653",
+    "rfc3741",
+    "rfc4050",
+    "rfc4051",
+    "rfc6283",
+    "rfc9231"
+  ],
+  "document_meta": {
+    "rfc2807": { "title": "XML Signature Requirements", "subseries": [] },
+    "rfc3075": { "title": "XML-Signature Syntax and Processing", "subseries": [] },
+    "rfc3076": { "title": "Canonical XML Version 1.0", "subseries": [] },
+    "rfc3275": { "title": "(Extensible Markup Language) XML-Signature Syntax and Processing", "subseries": [] },
+    "rfc3653": { "title": "XML-Signature XPath Filter 2.0", "subseries": [] },
+    "rfc3741": { "title": "Exclusive XML Canonicalization, Version 1.0", "subseries": [] },
+    "rfc4050": {
+      "title": "Using the Elliptic Curve Signature Algorithm (ECDSA) for XML Digital Signatures",
+      "subseries": []
+    },
+    "rfc4051": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc6283": { "title": "Extensible Markup Language Evidence Record Syntax (XMLERS)", "subseries": [] },
+    "rfc9231": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

@@ -1,0 +1,92 @@
+{
+  "id": 926,
+  "slug": "ssm",
+  "name": "Source-Specific Multicast",
+  "description": "Source-specific multicast",
+  "parent": "multicast",
+  "path": "routing/multicast/ssm",
+  "document_count": 25,
+  "document_count_deep": 25,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3569",
+    "rfc3810",
+    "rfc3913",
+    "rfc4570",
+    "rfc4604",
+    "rfc4607",
+    "rfc4608",
+    "rfc4609",
+    "rfc5757",
+    "rfc5760",
+    "rfc6051",
+    "rfc6128",
+    "rfc6285",
+    "rfc6308",
+    "rfc6332",
+    "rfc6450",
+    "rfc7450",
+    "rfc7667",
+    "rfc8114",
+    "rfc8115",
+    "rfc8313",
+    "rfc8638",
+    "rfc8777",
+    "rfc8815",
+    "rfc9706"
+  ],
+  "document_meta": {
+    "rfc3569": { "title": "An Overview of Source-Specific Multicast (SSM)", "subseries": [] },
+    "rfc3810": { "title": "Multicast Listener Discovery Version 2 (MLDv2) for IPv6", "subseries": [] },
+    "rfc3913": { "title": "Border Gateway Multicast Protocol (BGMP): Protocol Specification", "subseries": [] },
+    "rfc4570": { "title": "Session Description Protocol (SDP) Source Filters", "subseries": [] },
+    "rfc4604": {
+      "title": "Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source-Specific Multicast",
+      "subseries": []
+    },
+    "rfc4607": { "title": "Source-Specific Multicast for IP", "subseries": [] },
+    "rfc4608": { "title": "Source-Specific Protocol Independent Multicast in 232/8", "subseries": ["bcp120"] },
+    "rfc4609": {
+      "title": "Protocol Independent Multicast - Sparse Mode (PIM-SM) Multicast Routing Security Issues and Enhancements",
+      "subseries": []
+    },
+    "rfc5757": {
+      "title": "Multicast Mobility in Mobile IP Version 6 (MIPv6): Problem Statement and Brief Survey",
+      "subseries": []
+    },
+    "rfc5760": {
+      "title": "RTP Control Protocol (RTCP) Extensions for Single-Source Multicast Sessions with Unicast Feedback",
+      "subseries": []
+    },
+    "rfc6051": { "title": "Rapid Synchronisation of RTP Flows", "subseries": [] },
+    "rfc6128": {
+      "title": "RTP Control Protocol (RTCP) Port for Source-Specific Multicast (SSM) Sessions",
+      "subseries": []
+    },
+    "rfc6285": { "title": "Unicast-Based Rapid Acquisition of Multicast RTP Sessions", "subseries": [] },
+    "rfc6308": { "title": "Overview of the Internet Multicast Addressing Architecture", "subseries": [] },
+    "rfc6332": {
+      "title": "Multicast Acquisition Report Block Type for RTP Control Protocol (RTCP) Extended Reports (XRs)",
+      "subseries": []
+    },
+    "rfc6450": { "title": "Multicast Ping Protocol", "subseries": [] },
+    "rfc7450": { "title": "Automatic Multicast Tunneling", "subseries": [] },
+    "rfc7667": { "title": "RTP Topologies", "subseries": [] },
+    "rfc8114": {
+      "title": "Delivery of IPv4 Multicast Services to IPv4 Clients over an IPv6 Multicast Network",
+      "subseries": []
+    },
+    "rfc8115": { "title": "DHCPv6 Option for IPv4-Embedded Multicast and Unicast IPv6 Prefixes", "subseries": [] },
+    "rfc8313": { "title": "Use of Multicast across Inter-domain Peering Points", "subseries": ["bcp213"] },
+    "rfc8638": { "title": "IPv4 Multicast over an IPv6 Multicast in Softwire Mesh Networks", "subseries": [] },
+    "rfc8777": { "title": "DNS Reverse IP Automatic Multicast Tunneling (AMT) Discovery", "subseries": [] },
+    "rfc8815": { "title": "Deprecating Any-Source Multicast (ASM) for Interdomain Multicast", "subseries": ["bcp229"] },
+    "rfc9706": {
+      "title": "TreeDN: Tree-Based Content Delivery Network (CDN) for Live Streaming to Mass Audiences",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

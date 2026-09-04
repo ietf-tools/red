@@ -1,0 +1,28 @@
+{
+  "id": 929,
+  "slug": "vxlan",
+  "name": "VXLAN",
+  "description": "Virtual eXtensible LAN encapsulation",
+  "parent": "overlay-networks",
+  "path": "routing/overlay-networks/vxlan",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7348", "rfc8293", "rfc8365", "rfc8971", "rfc9638"],
+  "document_meta": {
+    "rfc7348": {
+      "title": "Virtual eXtensible Local Area Network (VXLAN): A Framework for Overlaying Virtualized Layer 2 Networks over Layer 3 Networks",
+      "subseries": []
+    },
+    "rfc8293": { "title": "A Framework for Multicast in Network Virtualization over Layer 3", "subseries": [] },
+    "rfc8365": { "title": "A Network Virtualization Overlay Solution Using Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc8971": {
+      "title": "Bidirectional Forwarding Detection (BFD) for Virtual eXtensible Local Area Network (VXLAN)",
+      "subseries": []
+    },
+    "rfc9638": { "title": "Network Virtualization over Layer 3 (NVO3) Encapsulation Considerations", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "overlay-networks": { "name": "Overlay Networks" } }
+}

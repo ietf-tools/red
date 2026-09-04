@@ -1,0 +1,128 @@
+{
+  "id": 686,
+  "slug": "conferencing",
+  "name": "Conferencing",
+  "description": "Multiparty conferencing frameworks and control",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/conferencing",
+  "document_count": 38,
+  "document_count_deep": 51,
+  "retired": false,
+  "children": ["bfcp", "telepresence"],
+  "aliases": [],
+  "documents": [
+    "rfc1324",
+    "rfc1453",
+    "rfc2810",
+    "rfc2811",
+    "rfc2812",
+    "rfc2813",
+    "rfc4245",
+    "rfc4353",
+    "rfc4376",
+    "rfc4579",
+    "rfc4582",
+    "rfc4597",
+    "rfc5018",
+    "rfc5167",
+    "rfc5239",
+    "rfc5552",
+    "rfc5567",
+    "rfc5707",
+    "rfc5850",
+    "rfc6230",
+    "rfc6231",
+    "rfc6501",
+    "rfc6502",
+    "rfc6503",
+    "rfc6504",
+    "rfc6505",
+    "rfc6623",
+    "rfc6917",
+    "rfc7058",
+    "rfc7082",
+    "rfc8076",
+    "rfc8723",
+    "rfc8845",
+    "rfc8866",
+    "rfc8870",
+    "rfc8871",
+    "rfc9185",
+    "rfc9392"
+  ],
+  "document_meta": {
+    "rfc1324": { "title": "A Discussion on Computer Network Conferencing", "subseries": [] },
+    "rfc1453": {
+      "title": "A Comment on Packet Video Remote Conferencing and the Transport/Network Layers",
+      "subseries": []
+    },
+    "rfc2810": { "title": "Internet Relay Chat: Architecture", "subseries": [] },
+    "rfc2811": { "title": "Internet Relay Chat: Channel Management", "subseries": [] },
+    "rfc2812": { "title": "Internet Relay Chat: Client Protocol", "subseries": [] },
+    "rfc2813": { "title": "Internet Relay Chat: Server Protocol", "subseries": [] },
+    "rfc4245": { "title": "High-Level Requirements for Tightly Coupled SIP Conferencing", "subseries": [] },
+    "rfc4353": { "title": "A Framework for Conferencing with the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc4376": { "title": "Requirements for Floor Control Protocols", "subseries": [] },
+    "rfc4579": {
+      "title": "Session Initiation Protocol (SIP) Call Control - Conferencing for User Agents",
+      "subseries": ["bcp119"]
+    },
+    "rfc4582": { "title": "The Binary Floor Control Protocol (BFCP)", "subseries": [] },
+    "rfc4597": { "title": "Conferencing Scenarios", "subseries": [] },
+    "rfc5018": { "title": "Connection Establishment in the Binary Floor Control Protocol (BFCP)", "subseries": [] },
+    "rfc5167": { "title": "Media Server Control Protocol Requirements", "subseries": [] },
+    "rfc5239": { "title": "A Framework for Centralized Conferencing", "subseries": [] },
+    "rfc5552": { "title": "SIP Interface to VoiceXML Media Services", "subseries": [] },
+    "rfc5567": { "title": "An Architectural Framework for Media Server Control", "subseries": [] },
+    "rfc5707": { "title": "Media Server Markup Language (MSML)", "subseries": [] },
+    "rfc5850": {
+      "title": "A Call Control and Multi-Party Usage Framework for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6230": { "title": "Media Control Channel Framework", "subseries": [] },
+    "rfc6231": {
+      "title": "An Interactive Voice Response (IVR) Control Package for the Media Control Channel Framework",
+      "subseries": []
+    },
+    "rfc6501": { "title": "Conference Information Data Model for Centralized Conferencing (XCON)", "subseries": [] },
+    "rfc6502": {
+      "title": "Conference Event Package Data Format Extension for Centralized Conferencing (XCON)",
+      "subseries": []
+    },
+    "rfc6503": { "title": "Centralized Conferencing Manipulation Protocol", "subseries": [] },
+    "rfc6504": { "title": "Centralized Conferencing Manipulation Protocol (CCMP) Call Flow Examples", "subseries": [] },
+    "rfc6505": { "title": "A Mixer Control Package for the Media Control Channel Framework", "subseries": [] },
+    "rfc6623": { "title": "IANA Registry for MEDIACTRL Interactive Voice Response Control Package", "subseries": [] },
+    "rfc6917": { "title": "Media Resource Brokering", "subseries": [] },
+    "rfc7058": { "title": "Media Control Channel Framework (CFW) Call Flow Examples", "subseries": [] },
+    "rfc7082": {
+      "title": "Indication of Conference Focus Support for the Centralized Conferencing Manipulation Protocol (CCMP)",
+      "subseries": []
+    },
+    "rfc8076": { "title": "A Usage for Shared Resources in RELOAD (ShaRe)", "subseries": [] },
+    "rfc8723": {
+      "title": "Double Encryption Procedures for the Secure Real-Time Transport Protocol (SRTP)",
+      "subseries": []
+    },
+    "rfc8845": { "title": "Framework for Telepresence Multi-Streams", "subseries": [] },
+    "rfc8866": { "title": "SDP: Session Description Protocol", "subseries": [] },
+    "rfc8870": { "title": "Encrypted Key Transport for DTLS and Secure RTP", "subseries": [] },
+    "rfc8871": {
+      "title": "A Solution Framework for Private Media in Privacy-Enhanced RTP Conferencing (PERC)",
+      "subseries": []
+    },
+    "rfc9185": {
+      "title": "DTLS Tunnel between a Media Distributor and Key Distributor to Facilitate Key Exchange",
+      "subseries": []
+    },
+    "rfc9392": {
+      "title": "Sending RTP Control Protocol (RTCP) Feedback for Congestion Control in Interactive Multimedia Conferences",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "bfcp": { "name": "BFCP" },
+    "telepresence": { "name": "Telepresence" }
+  }
+}

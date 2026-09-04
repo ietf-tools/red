@@ -1,0 +1,42 @@
+{
+  "id": 606,
+  "slug": "ipx",
+  "name": "IPX",
+  "description": "Novell IPX interworking",
+  "parent": "internet-layer",
+  "path": "internet-layer/ipx",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1132",
+    "rfc1234",
+    "rfc1298",
+    "rfc1362",
+    "rfc1420",
+    "rfc1551",
+    "rfc1552",
+    "rfc1553",
+    "rfc1634",
+    "rfc1791",
+    "rfc1792",
+    "rfc2241"
+  ],
+  "document_meta": {
+    "rfc1132": { "title": "Standard for the transmission of 802.2 packets over IPX networks", "subseries": ["std49"] },
+    "rfc1234": { "title": "Tunneling IPX traffic through IP networks", "subseries": [] },
+    "rfc1298": { "title": "SNMP over IPX", "subseries": [] },
+    "rfc1362": { "title": "Novell IPX over Various WAN Media (IPXWAN)", "subseries": [] },
+    "rfc1420": { "title": "SNMP over IPX", "subseries": [] },
+    "rfc1551": { "title": "Novell IPX Over Various WAN Media (IPXWAN)", "subseries": [] },
+    "rfc1552": { "title": "The PPP Internetworking Packet Exchange Control Protocol (IPXCP)", "subseries": [] },
+    "rfc1553": { "title": "Compressing IPX Headers Over WAN Media (CIPX)", "subseries": [] },
+    "rfc1634": { "title": "Novell IPX Over Various WAN Media (IPXWAN)", "subseries": [] },
+    "rfc1791": { "title": "TCP And UDP Over IPX Networks With Fixed Path MTU", "subseries": [] },
+    "rfc1792": { "title": "TCP/IPX Connection Mib Specification", "subseries": [] },
+    "rfc2241": { "title": "DHCP Options for Novell Directory Services", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

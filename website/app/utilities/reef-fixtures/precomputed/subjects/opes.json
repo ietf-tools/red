@@ -1,0 +1,54 @@
+{
+  "id": 792,
+  "slug": "opes",
+  "name": "OPES",
+  "description": "Open Pluggable Edge Services: intermediary content adaptation",
+  "parent": "web",
+  "path": "web/opes",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3238",
+    "rfc3752",
+    "rfc3835",
+    "rfc3836",
+    "rfc3837",
+    "rfc3838",
+    "rfc3897",
+    "rfc3914",
+    "rfc4037",
+    "rfc4236",
+    "rfc4496",
+    "rfc4902"
+  ],
+  "document_meta": {
+    "rfc3238": {
+      "title": "IAB Architectural and Policy Considerations for Open Pluggable Edge Services",
+      "subseries": []
+    },
+    "rfc3752": { "title": "Open Pluggable Edge Services (OPES) Use Cases and Deployment Scenarios", "subseries": [] },
+    "rfc3835": { "title": "An Architecture for Open Pluggable Edge Services (OPES)", "subseries": [] },
+    "rfc3836": { "title": "Requirements for Open Pluggable Edge Services (OPES) Callout Protocols", "subseries": [] },
+    "rfc3837": { "title": "Security Threats and Risks for Open Pluggable Edge Services (OPES)", "subseries": [] },
+    "rfc3838": {
+      "title": "Policy, Authorization, and Enforcement Requirements of the Open Pluggable Edge Services (OPES)",
+      "subseries": []
+    },
+    "rfc3897": {
+      "title": "Open Pluggable Edge Services (OPES) Entities and End Points Communication",
+      "subseries": []
+    },
+    "rfc3914": { "title": "Open Pluggable Edge Services (OPES) Treatment of IAB Considerations", "subseries": [] },
+    "rfc4037": { "title": "Open Pluggable Edge Services (OPES) Callout Protocol (OCP) Core", "subseries": [] },
+    "rfc4236": { "title": "HTTP Adaptation with Open Pluggable Edge Services (OPES)", "subseries": [] },
+    "rfc4496": { "title": "Open Pluggable Edge Services (OPES) SMTP Use Cases", "subseries": [] },
+    "rfc4902": {
+      "title": "Integrity, Privacy, and Security in Open Pluggable Edge Services (OPES) for SMTP",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "web": { "name": "Web" } }
+}

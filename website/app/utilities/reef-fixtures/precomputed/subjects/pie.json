@@ -1,0 +1,29 @@
+{
+  "id": 1026,
+  "slug": "pie",
+  "name": "PIE",
+  "description": "The PIE queue management algorithm",
+  "parent": "aqm",
+  "path": "transport/congestion-control/aqm/pie",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8033", "rfc8034"],
+  "document_meta": {
+    "rfc8033": {
+      "title": "Proportional Integral Controller Enhanced (PIE): A Lightweight Control Scheme to Address the Bufferbloat Problem",
+      "subseries": []
+    },
+    "rfc8034": {
+      "title": "Active Queue Management (AQM) Based on Proportional Integral Controller Enhanced (PIE) for Data-Over-Cable Service Interface Specifications (DOCSIS) Cable Modems",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "transport": { "name": "Transport" },
+    "congestion-control": { "name": "Congestion Control" },
+    "aqm": { "name": "Active Queue Management" }
+  }
+}

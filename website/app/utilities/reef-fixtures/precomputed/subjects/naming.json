@@ -1,0 +1,38 @@
+{
+  "id": 536,
+  "slug": "naming",
+  "name": "Naming",
+  "description": "Naming and name resolution in general, not specific to one system",
+  "parent": null,
+  "path": "naming",
+  "document_count": 0,
+  "document_count_deep": 614,
+  "retired": false,
+  "children": [
+    "dns",
+    "domain-registration",
+    "enum",
+    "handle-system",
+    "hostnames",
+    "idn",
+    "service-discovery",
+    "slp",
+    "uuid",
+    "zeroconf"
+  ],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": {
+    "dns": { "name": "DNS" },
+    "domain-registration": { "name": "Domain Registration" },
+    "enum": { "name": "ENUM" },
+    "handle-system": { "name": "Handle System" },
+    "hostnames": { "name": "Hostnames" },
+    "idn": { "name": "IDN" },
+    "service-discovery": { "name": "Service Discovery" },
+    "slp": { "name": "SLP" },
+    "uuid": { "name": "UUID" },
+    "zeroconf": { "name": "Zeroconf" }
+  }
+}

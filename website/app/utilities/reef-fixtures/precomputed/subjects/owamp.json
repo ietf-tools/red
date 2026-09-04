@@ -1,0 +1,39 @@
+{
+  "id": 876,
+  "slug": "owamp",
+  "name": "OWAMP",
+  "description": "One-Way Active Measurement Protocol",
+  "parent": "performance-measurement",
+  "path": "network-management/performance-measurement/owamp",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3763", "rfc4656", "rfc7717", "rfc7718", "rfc7820", "rfc8545", "rfc9533"],
+  "document_meta": {
+    "rfc3763": { "title": "One-way Active Measurement Protocol (OWAMP) Requirements", "subseries": [] },
+    "rfc4656": { "title": "A One-way Active Measurement Protocol (OWAMP)", "subseries": [] },
+    "rfc7717": {
+      "title": "IKEv2-Derived Shared Secret Key for the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc7718": { "title": "Registries for the One-Way Active Measurement Protocol (OWAMP)", "subseries": [] },
+    "rfc7820": {
+      "title": "UDP Checksum Complement in the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc8545": {
+      "title": "Well-Known Port Assignments for the One-Way Active Measurement Protocol (OWAMP) and the Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc9533": {
+      "title": "One-Way and Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "network-management": { "name": "Network Management" },
+    "performance-measurement": { "name": "Performance Measurement" }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": 552,
+  "slug": "finger",
+  "name": "Finger",
+  "description": "The Finger user information protocol",
+  "parent": "applications",
+  "path": "applications/finger",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1194", "rfc1196", "rfc1288", "rfc1739", "rfc4146", "rfc742"],
+  "document_meta": {
+    "rfc1194": { "title": "Finger User Information Protocol", "subseries": [] },
+    "rfc1196": { "title": "Finger User Information Protocol", "subseries": [] },
+    "rfc1288": { "title": "The Finger User Information Protocol", "subseries": [] },
+    "rfc1739": { "title": "A Primer On Internet and TCP/IP Tools", "subseries": [] },
+    "rfc4146": { "title": "Simple New Mail Notification", "subseries": [] },
+    "rfc742": { "title": "NAME/FINGER Protocol", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

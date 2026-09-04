@@ -1,0 +1,70 @@
+{
+  "id": 745,
+  "slug": "jose",
+  "name": "JOSE",
+  "description": "JSON Object Signing and Encryption (JWS, JWE, JWK)",
+  "parent": "security",
+  "path": "security/jose",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7165",
+    "rfc7515",
+    "rfc7516",
+    "rfc7517",
+    "rfc7518",
+    "rfc7519",
+    "rfc7520",
+    "rfc7638",
+    "rfc7797",
+    "rfc8037",
+    "rfc8725",
+    "rfc8812",
+    "rfc9101",
+    "rfc9278",
+    "rfc9597",
+    "rfc9864",
+    "rfc9964"
+  ],
+  "document_meta": {
+    "rfc7165": { "title": "Use Cases and Requirements for JSON Object Signing and Encryption (JOSE)", "subseries": [] },
+    "rfc7515": { "title": "JSON Web Signature (JWS)", "subseries": [] },
+    "rfc7516": { "title": "JSON Web Encryption (JWE)", "subseries": [] },
+    "rfc7517": { "title": "JSON Web Key (JWK)", "subseries": [] },
+    "rfc7518": { "title": "JSON Web Algorithms (JWA)", "subseries": [] },
+    "rfc7519": { "title": "JSON Web Token (JWT)", "subseries": [] },
+    "rfc7520": {
+      "title": "Examples of Protecting Content Using JSON Object Signing and Encryption (JOSE)",
+      "subseries": []
+    },
+    "rfc7638": { "title": "JSON Web Key (JWK) Thumbprint", "subseries": [] },
+    "rfc7797": { "title": "JSON Web Signature (JWS) Unencoded Payload Option", "subseries": [] },
+    "rfc8037": {
+      "title": "CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures in JSON Object Signing and Encryption (JOSE)",
+      "subseries": []
+    },
+    "rfc8725": { "title": "JSON Web Token Best Current Practices", "subseries": ["bcp225"] },
+    "rfc8812": {
+      "title": "CBOR Object Signing and Encryption (COSE) and JSON Object Signing and Encryption (JOSE) Registrations for Web Authentication (WebAuthn) Algorithms",
+      "subseries": []
+    },
+    "rfc9101": {
+      "title": "The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)",
+      "subseries": []
+    },
+    "rfc9278": { "title": "JWK Thumbprint URI", "subseries": [] },
+    "rfc9597": { "title": "CBOR Web Token (CWT) Claims in COSE Headers", "subseries": [] },
+    "rfc9864": {
+      "title": "Fully-Specified Algorithms for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9964": {
+      "title": "ML-DSA for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

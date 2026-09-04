@@ -1,0 +1,16 @@
+{
+  "id": 728,
+  "slug": "tvr",
+  "name": "Time-Variant Routing",
+  "description": "Time-variant routing over scheduled connectivity",
+  "parent": "routing",
+  "path": "routing/tvr",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9657"],
+  "document_meta": { "rfc9657": { "title": "Time-Variant Routing (TVR) Use Cases", "subseries": [] } },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

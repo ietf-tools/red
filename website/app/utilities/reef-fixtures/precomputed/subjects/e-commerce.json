@@ -1,0 +1,26 @@
+{
+  "id": 550,
+  "slug": "e-commerce",
+  "name": "E-commerce",
+  "description": "Electronic commerce and payment protocols",
+  "parent": "applications",
+  "path": "applications/e-commerce",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1898", "rfc2351", "rfc2706", "rfc2825", "rfc3106", "rfc8905"],
+  "document_meta": {
+    "rfc1898": { "title": "CyberCash Credit Card Protocol Version 0.8", "subseries": [] },
+    "rfc2351": { "title": "Mapping of Airline Reservation, Ticketing, and Messaging Traffic over IP", "subseries": [] },
+    "rfc2706": { "title": "ECML v1: Field Names for E-Commerce", "subseries": [] },
+    "rfc2825": {
+      "title": "A Tangled Web: Issues of I18N, Domain Names, and the Other Internet protocols",
+      "subseries": []
+    },
+    "rfc3106": { "title": "ECML v1.1: Field Specifications for E-Commerce", "subseries": [] },
+    "rfc8905": { "title": "The 'payto' URI Scheme for Payments", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

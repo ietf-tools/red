@@ -1,0 +1,22 @@
+{
+  "id": 1019,
+  "slug": "dot",
+  "name": "DNS over TLS",
+  "description": "DNS over TLS",
+  "parent": "dns-privacy",
+  "path": "naming/dns/dns-privacy/dot",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8310", "rfc9539"],
+  "document_meta": {
+    "rfc8310": { "title": "Usage Profiles for DNS over TLS and DNS over DTLS", "subseries": [] },
+    "rfc9539": {
+      "title": "Unilateral Opportunistic Deployment of Encrypted Recursive-to-Authoritative DNS",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" }, "dns-privacy": { "name": "DNS Privacy" } }
+}

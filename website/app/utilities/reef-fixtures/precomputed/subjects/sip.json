@@ -1,0 +1,1313 @@
+{
+  "id": 695,
+  "slug": "sip",
+  "name": "SIP",
+  "description": "Session Initiation Protocol: call signalling, extensions, deployment",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/sip",
+  "document_count": 363,
+  "document_count_deep": 378,
+  "retired": false,
+  "children": ["p2psip", "siprec", "stir"],
+  "aliases": [],
+  "documents": [
+    "rfc10006",
+    "rfc1304",
+    "rfc1454",
+    "rfc1694",
+    "rfc2543",
+    "rfc2848",
+    "rfc2976",
+    "rfc3050",
+    "rfc3087",
+    "rfc3204",
+    "rfc3261",
+    "rfc3262",
+    "rfc3263",
+    "rfc3265",
+    "rfc3310",
+    "rfc3311",
+    "rfc3312",
+    "rfc3313",
+    "rfc3319",
+    "rfc3320",
+    "rfc3321",
+    "rfc3322",
+    "rfc3323",
+    "rfc3324",
+    "rfc3325",
+    "rfc3326",
+    "rfc3327",
+    "rfc3329",
+    "rfc3351",
+    "rfc3361",
+    "rfc3372",
+    "rfc3398",
+    "rfc3420",
+    "rfc3427",
+    "rfc3428",
+    "rfc3455",
+    "rfc3485",
+    "rfc3486",
+    "rfc3487",
+    "rfc3515",
+    "rfc3578",
+    "rfc3581",
+    "rfc3603",
+    "rfc3608",
+    "rfc3665",
+    "rfc3666",
+    "rfc3680",
+    "rfc3702",
+    "rfc3725",
+    "rfc3764",
+    "rfc3824",
+    "rfc3840",
+    "rfc3841",
+    "rfc3842",
+    "rfc3853",
+    "rfc3856",
+    "rfc3857",
+    "rfc3858",
+    "rfc3891",
+    "rfc3892",
+    "rfc3893",
+    "rfc3903",
+    "rfc3910",
+    "rfc3911",
+    "rfc3944",
+    "rfc3959",
+    "rfc3960",
+    "rfc3968",
+    "rfc3969",
+    "rfc3976",
+    "rfc3994",
+    "rfc4028",
+    "rfc4032",
+    "rfc4083",
+    "rfc4092",
+    "rfc4117",
+    "rfc4123",
+    "rfc4168",
+    "rfc4189",
+    "rfc4235",
+    "rfc4240",
+    "rfc4244",
+    "rfc4245",
+    "rfc4320",
+    "rfc4321",
+    "rfc4353",
+    "rfc4354",
+    "rfc4411",
+    "rfc4412",
+    "rfc4453",
+    "rfc4457",
+    "rfc4458",
+    "rfc4474",
+    "rfc4475",
+    "rfc4479",
+    "rfc4480",
+    "rfc4481",
+    "rfc4482",
+    "rfc4483",
+    "rfc4484",
+    "rfc4485",
+    "rfc4488",
+    "rfc4497",
+    "rfc4504",
+    "rfc4508",
+    "rfc4538",
+    "rfc4569",
+    "rfc4575",
+    "rfc4579",
+    "rfc4590",
+    "rfc4596",
+    "rfc4660",
+    "rfc4661",
+    "rfc4662",
+    "rfc4722",
+    "rfc4730",
+    "rfc4740",
+    "rfc4769",
+    "rfc4780",
+    "rfc4787",
+    "rfc4825",
+    "rfc4826",
+    "rfc4827",
+    "rfc4896",
+    "rfc4904",
+    "rfc4916",
+    "rfc4964",
+    "rfc4967",
+    "rfc4975",
+    "rfc4976",
+    "rfc5002",
+    "rfc5009",
+    "rfc5022",
+    "rfc5025",
+    "rfc5039",
+    "rfc5049",
+    "rfc5057",
+    "rfc5079",
+    "rfc5090",
+    "rfc5115",
+    "rfc5118",
+    "rfc5194",
+    "rfc5196",
+    "rfc5261",
+    "rfc5262",
+    "rfc5263",
+    "rfc5264",
+    "rfc5278",
+    "rfc5318",
+    "rfc5344",
+    "rfc5359",
+    "rfc5360",
+    "rfc5361",
+    "rfc5362",
+    "rfc5363",
+    "rfc5364",
+    "rfc5365",
+    "rfc5366",
+    "rfc5367",
+    "rfc5368",
+    "rfc5369",
+    "rfc5370",
+    "rfc5373",
+    "rfc5379",
+    "rfc5390",
+    "rfc5393",
+    "rfc5407",
+    "rfc5411",
+    "rfc5438",
+    "rfc5478",
+    "rfc5479",
+    "rfc5486",
+    "rfc5502",
+    "rfc5503",
+    "rfc5509",
+    "rfc5552",
+    "rfc5589",
+    "rfc5606",
+    "rfc5616",
+    "rfc5621",
+    "rfc5626",
+    "rfc5627",
+    "rfc5628",
+    "rfc5629",
+    "rfc5630",
+    "rfc5631",
+    "rfc5638",
+    "rfc5658",
+    "rfc5688",
+    "rfc5727",
+    "rfc5763",
+    "rfc5767",
+    "rfc5768",
+    "rfc5806",
+    "rfc5839",
+    "rfc5850",
+    "rfc5853",
+    "rfc5866",
+    "rfc5874",
+    "rfc5875",
+    "rfc5876",
+    "rfc5888",
+    "rfc5897",
+    "rfc5898",
+    "rfc5922",
+    "rfc5923",
+    "rfc5924",
+    "rfc5947",
+    "rfc5954",
+    "rfc5989",
+    "rfc6011",
+    "rfc6026",
+    "rfc6035",
+    "rfc6044",
+    "rfc6050",
+    "rfc6072",
+    "rfc6076",
+    "rfc6080",
+    "rfc6086",
+    "rfc6135",
+    "rfc6140",
+    "rfc6141",
+    "rfc6157",
+    "rfc6193",
+    "rfc6216",
+    "rfc6223",
+    "rfc6228",
+    "rfc6271",
+    "rfc6314",
+    "rfc6337",
+    "rfc6341",
+    "rfc6357",
+    "rfc6404",
+    "rfc6405",
+    "rfc6406",
+    "rfc6432",
+    "rfc6442",
+    "rfc6446",
+    "rfc6447",
+    "rfc6461",
+    "rfc6468",
+    "rfc6567",
+    "rfc6665",
+    "rfc6714",
+    "rfc6794",
+    "rfc6795",
+    "rfc6796",
+    "rfc6809",
+    "rfc6872",
+    "rfc6873",
+    "rfc6878",
+    "rfc6881",
+    "rfc6910",
+    "rfc6913",
+    "rfc6914",
+    "rfc6993",
+    "rfc7044",
+    "rfc7081",
+    "rfc7088",
+    "rfc7090",
+    "rfc7092",
+    "rfc7106",
+    "rfc7118",
+    "rfc7131",
+    "rfc7134",
+    "rfc7135",
+    "rfc7163",
+    "rfc7200",
+    "rfc7206",
+    "rfc7245",
+    "rfc7247",
+    "rfc7248",
+    "rfc7255",
+    "rfc7315",
+    "rfc7316",
+    "rfc7329",
+    "rfc7332",
+    "rfc7339",
+    "rfc7340",
+    "rfc7345",
+    "rfc7355",
+    "rfc7375",
+    "rfc7403",
+    "rfc7415",
+    "rfc7433",
+    "rfc7434",
+    "rfc7462",
+    "rfc7463",
+    "rfc7501",
+    "rfc7502",
+    "rfc7544",
+    "rfc7549",
+    "rfc7572",
+    "rfc7573",
+    "rfc7584",
+    "rfc7614",
+    "rfc7621",
+    "rfc7647",
+    "rfc7700",
+    "rfc7701",
+    "rfc7702",
+    "rfc7865",
+    "rfc7877",
+    "rfc7878",
+    "rfc7879",
+    "rfc7890",
+    "rfc7904",
+    "rfc7913",
+    "rfc7957",
+    "rfc7976",
+    "rfc7984",
+    "rfc7989",
+    "rfc8048",
+    "rfc8055",
+    "rfc8068",
+    "rfc8076",
+    "rfc8079",
+    "rfc8101",
+    "rfc8119",
+    "rfc8123",
+    "rfc8197",
+    "rfc8217",
+    "rfc8224",
+    "rfc8255",
+    "rfc8262",
+    "rfc8266",
+    "rfc8373",
+    "rfc8396",
+    "rfc8433",
+    "rfc8443",
+    "rfc8496",
+    "rfc8497",
+    "rfc8498",
+    "rfc8507",
+    "rfc8591",
+    "rfc8599",
+    "rfc8606",
+    "rfc8643",
+    "rfc8688",
+    "rfc8760",
+    "rfc8787",
+    "rfc8816",
+    "rfc8840",
+    "rfc8844",
+    "rfc8850",
+    "rfc8862",
+    "rfc8866",
+    "rfc8898",
+    "rfc8946",
+    "rfc9027",
+    "rfc9060",
+    "rfc9071",
+    "rfc9239",
+    "rfc9248",
+    "rfc9366",
+    "rfc9409",
+    "rfc9475",
+    "rfc9796",
+    "rfc9806",
+    "rfc9878",
+    "rfc9888",
+    "rfc9970",
+    "rfc9996"
+  ],
+  "document_meta": {
+    "rfc10006": { "title": "Automatic SIP Trunking and Peering", "subseries": [] },
+    "rfc1304": { "title": "Definitions of Managed Objects for the SIP Interface Type", "subseries": [] },
+    "rfc1454": { "title": "Comparison of Proposals for Next Version of IP", "subseries": [] },
+    "rfc1694": { "title": "Definitions of Managed Objects for SMDS Interfaces using SMIv2", "subseries": [] },
+    "rfc2543": { "title": "SIP: Session Initiation Protocol", "subseries": [] },
+    "rfc2848": {
+      "title": "The PINT Service Protocol: Extensions to SIP and SDP for IP Access to Telephone Call Services",
+      "subseries": []
+    },
+    "rfc2976": { "title": "The SIP INFO Method", "subseries": [] },
+    "rfc3050": { "title": "Common Gateway Interface for SIP", "subseries": [] },
+    "rfc3087": { "title": "Control of Service Context using SIP Request-URI", "subseries": [] },
+    "rfc3204": { "title": "MIME media types for ISUP and QSIG Objects", "subseries": [] },
+    "rfc3261": { "title": "SIP: Session Initiation Protocol", "subseries": [] },
+    "rfc3262": {
+      "title": "Reliability of Provisional Responses in Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3263": { "title": "Session Initiation Protocol (SIP): Locating SIP Servers", "subseries": [] },
+    "rfc3265": { "title": "Session Initiation Protocol (SIP)-Specific Event Notification", "subseries": [] },
+    "rfc3310": {
+      "title": "Hypertext Transfer Protocol (HTTP) Digest Authentication Using Authentication and Key Agreement (AKA)",
+      "subseries": []
+    },
+    "rfc3311": { "title": "The Session Initiation Protocol (SIP) UPDATE Method", "subseries": [] },
+    "rfc3312": { "title": "Integration of Resource Management and Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3313": {
+      "title": "Private Session Initiation Protocol (SIP) Extensions for Media Authorization",
+      "subseries": []
+    },
+    "rfc3319": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv6) Options for Session Initiation Protocol (SIP) Servers",
+      "subseries": []
+    },
+    "rfc3320": { "title": "Signaling Compression (SigComp)", "subseries": [] },
+    "rfc3321": { "title": "Signaling Compression (SigComp) - Extended Operations", "subseries": [] },
+    "rfc3322": { "title": "Signaling Compression (SigComp) Requirements & Assumptions", "subseries": [] },
+    "rfc3323": { "title": "A Privacy Mechanism for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3324": { "title": "Short Term Requirements for Network Asserted Identity", "subseries": [] },
+    "rfc3325": {
+      "title": "Private Extensions to the Session Initiation Protocol (SIP) for Asserted Identity within Trusted Networks",
+      "subseries": []
+    },
+    "rfc3326": { "title": "The Reason Header Field for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3327": {
+      "title": "Session Initiation Protocol (SIP) Extension Header Field for Registering Non-Adjacent Contacts",
+      "subseries": []
+    },
+    "rfc3329": { "title": "Security Mechanism Agreement for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3351": {
+      "title": "User Requirements for the Session Initiation Protocol (SIP) in Support of Deaf, Hard of Hearing and Speech-impaired Individuals",
+      "subseries": []
+    },
+    "rfc3361": {
+      "title": "Dynamic Host Configuration Protocol (DHCP-for-IPv4) Option for Session Initiation Protocol (SIP) Servers",
+      "subseries": []
+    },
+    "rfc3372": {
+      "title": "Session Initiation Protocol for Telephones (SIP-T): Context and Architectures",
+      "subseries": ["bcp63"]
+    },
+    "rfc3398": {
+      "title": "Integrated Services Digital Network (ISDN) User Part (ISUP) to Session Initiation Protocol (SIP) Mapping",
+      "subseries": []
+    },
+    "rfc3420": { "title": "Internet Media Type message/sipfrag", "subseries": [] },
+    "rfc3427": { "title": "Change Process for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3428": { "title": "Session Initiation Protocol (SIP) Extension for Instant Messaging", "subseries": [] },
+    "rfc3455": {
+      "title": "Private Header (P-Header) Extensions to the Session Initiation Protocol (SIP) for the 3rd-Generation Partnership Project (3GPP)",
+      "subseries": []
+    },
+    "rfc3485": {
+      "title": "The Session Initiation Protocol (SIP) and Session Description Protocol (SDP) Static Dictionary for Signaling Compression (SigComp)",
+      "subseries": []
+    },
+    "rfc3486": { "title": "Compressing the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3487": {
+      "title": "Requirements for Resource Priority Mechanisms for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3515": { "title": "The Session Initiation Protocol (SIP) Refer Method", "subseries": [] },
+    "rfc3578": {
+      "title": "Mapping of Integrated Services Digital Network (ISDN) User Part (ISUP) Overlap Signalling to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3581": {
+      "title": "An Extension to the Session Initiation Protocol (SIP) for Symmetric Response Routing",
+      "subseries": []
+    },
+    "rfc3603": {
+      "title": "Private Session Initiation Protocol (SIP) Proxy-to-Proxy Extensions for Supporting the PacketCable Distributed Call Signaling Architecture",
+      "subseries": []
+    },
+    "rfc3608": {
+      "title": "Session Initiation Protocol (SIP) Extension Header Field for Service Route Discovery During Registration",
+      "subseries": []
+    },
+    "rfc3665": { "title": "Session Initiation Protocol (SIP) Basic Call Flow Examples", "subseries": ["bcp75"] },
+    "rfc3666": {
+      "title": "Session Initiation Protocol (SIP) Public Switched Telephone Network (PSTN) Call Flows",
+      "subseries": ["bcp76"]
+    },
+    "rfc3680": { "title": "A Session Initiation Protocol (SIP) Event Package for Registrations", "subseries": [] },
+    "rfc3702": {
+      "title": "Authentication, Authorization, and Accounting Requirements for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3725": {
+      "title": "Best Current Practices for Third Party Call Control (3pcc) in the Session Initiation Protocol (SIP)",
+      "subseries": ["bcp85"]
+    },
+    "rfc3764": {
+      "title": "enumservice registration for Session Initiation Protocol (SIP) Addresses-of-Record",
+      "subseries": []
+    },
+    "rfc3824": { "title": "Using E.164 numbers with the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3840": {
+      "title": "Indicating User Agent Capabilities in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3841": { "title": "Caller Preferences for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3842": {
+      "title": "A Message Summary and Message Waiting Indication Event Package for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3853": {
+      "title": "S/MIME Advanced Encryption Standard (AES) Requirement for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3856": { "title": "A Presence Event Package for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3857": {
+      "title": "A Watcher Information Event Template-Package for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3858": { "title": "An Extensible Markup Language (XML) Based Format for Watcher Information", "subseries": [] },
+    "rfc3891": { "title": "The Session Initiation Protocol (SIP) \"Replaces\" Header", "subseries": [] },
+    "rfc3892": { "title": "The Session Initiation Protocol (SIP) Referred-By Mechanism", "subseries": [] },
+    "rfc3893": {
+      "title": "Session Initiation Protocol (SIP) Authenticated Identity Body (AIB) Format",
+      "subseries": []
+    },
+    "rfc3903": { "title": "Session Initiation Protocol (SIP) Extension for Event State Publication", "subseries": [] },
+    "rfc3910": { "title": "The SPIRITS (Services in PSTN requesting Internet Services) Protocol", "subseries": [] },
+    "rfc3911": { "title": "The Session Initiation Protocol (SIP) \"Join\" Header", "subseries": [] },
+    "rfc3944": { "title": "H.350 Directory Services", "subseries": [] },
+    "rfc3959": {
+      "title": "The Early Session Disposition Type for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3960": {
+      "title": "Early Media and Ringing Tone Generation in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3968": {
+      "title": "The Internet Assigned Number Authority (IANA) Header Field Parameter Registry for the Session Initiation Protocol (SIP)",
+      "subseries": ["bcp98"]
+    },
+    "rfc3969": {
+      "title": "The Internet Assigned Number Authority (IANA) Uniform Resource Identifier (URI) Parameter Registry for the Session Initiation Protocol (SIP)",
+      "subseries": ["bcp99"]
+    },
+    "rfc3976": { "title": "Interworking SIP and Intelligent Network (IN) Applications", "subseries": [] },
+    "rfc3994": { "title": "Indication of Message Composition for Instant Messaging", "subseries": [] },
+    "rfc4028": { "title": "Session Timers in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc4032": { "title": "Update to the Session Initiation Protocol (SIP) Preconditions Framework", "subseries": [] },
+    "rfc4083": {
+      "title": "Input 3rd-Generation Partnership Project (3GPP) Release 5 Requirements on the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4092": {
+      "title": "Usage of the Session Description Protocol (SDP) Alternative Network Address Types (ANAT) Semantics in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4117": {
+      "title": "Transcoding Services Invocation in the Session Initiation Protocol (SIP) Using Third Party Call Control (3pcc)",
+      "subseries": []
+    },
+    "rfc4123": { "title": "Session Initiation Protocol (SIP)-H.323 Interworking Requirements", "subseries": [] },
+    "rfc4168": {
+      "title": "The Stream Control Transmission Protocol (SCTP) as a Transport for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4189": {
+      "title": "Requirements for End-to-Middle Security for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4235": {
+      "title": "An INVITE-Initiated Dialog Event Package for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4240": { "title": "Basic Network Media Services with SIP", "subseries": [] },
+    "rfc4244": {
+      "title": "An Extension to the Session Initiation Protocol (SIP) for Request History Information",
+      "subseries": []
+    },
+    "rfc4245": { "title": "High-Level Requirements for Tightly Coupled SIP Conferencing", "subseries": [] },
+    "rfc4320": {
+      "title": "Actions Addressing Identified Issues with the Session Initiation Protocol's (SIP) Non-INVITE Transaction",
+      "subseries": []
+    },
+    "rfc4321": {
+      "title": "Problems Identified Associated with the Session Initiation Protocol's (SIP) Non-INVITE Transaction",
+      "subseries": []
+    },
+    "rfc4353": { "title": "A Framework for Conferencing with the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc4354": {
+      "title": "A Session Initiation Protocol (SIP) Event Package and Data Format for Various Settings in Support for the Push-to-Talk over Cellular (PoC) Service",
+      "subseries": []
+    },
+    "rfc4411": {
+      "title": "Extending the Session Initiation Protocol (SIP) Reason Header for Preemption Events",
+      "subseries": []
+    },
+    "rfc4412": {
+      "title": "Communications Resource Priority for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4453": {
+      "title": "Requirements for Consent-Based Communications in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4457": {
+      "title": "The Session Initiation Protocol (SIP) P-User-Database Private-Header (P-Header)",
+      "subseries": []
+    },
+    "rfc4458": {
+      "title": "Session Initiation Protocol (SIP) URIs for Applications such as Voicemail and Interactive Voice Response (IVR)",
+      "subseries": []
+    },
+    "rfc4474": {
+      "title": "Enhancements for Authenticated Identity Management in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4475": { "title": "Session Initiation Protocol (SIP) Torture Test Messages", "subseries": [] },
+    "rfc4479": { "title": "A Data Model for Presence", "subseries": [] },
+    "rfc4480": {
+      "title": "RPID: Rich Presence Extensions to the Presence Information Data Format (PIDF)",
+      "subseries": []
+    },
+    "rfc4481": {
+      "title": "Timed Presence Extensions to the Presence Information Data Format (PIDF) to Indicate Status Information for Past and Future Time Intervals",
+      "subseries": []
+    },
+    "rfc4482": { "title": "CIPID: Contact Information for the Presence Information Data Format", "subseries": [] },
+    "rfc4483": {
+      "title": "A Mechanism for Content Indirection in Session Initiation Protocol (SIP) Messages",
+      "subseries": []
+    },
+    "rfc4484": {
+      "title": "Trait-Based Authorization Requirements for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4485": {
+      "title": "Guidelines for Authors of Extensions to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4488": {
+      "title": "Suppression of Session Initiation Protocol (SIP) REFER Method Implicit Subscription",
+      "subseries": []
+    },
+    "rfc4497": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and QSIG",
+      "subseries": ["bcp117"]
+    },
+    "rfc4504": { "title": "SIP Telephony Device Requirements and Configuration", "subseries": [] },
+    "rfc4508": {
+      "title": "Conveying Feature Tags with the Session Initiation Protocol (SIP) REFER Method",
+      "subseries": []
+    },
+    "rfc4538": {
+      "title": "Request Authorization through Dialog Identification in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4569": {
+      "title": "Internet Assigned Number Authority (IANA) Registration of the Message Media Feature Tag",
+      "subseries": []
+    },
+    "rfc4575": { "title": "A Session Initiation Protocol (SIP) Event Package for Conference State", "subseries": [] },
+    "rfc4579": {
+      "title": "Session Initiation Protocol (SIP) Call Control - Conferencing for User Agents",
+      "subseries": ["bcp119"]
+    },
+    "rfc4590": { "title": "RADIUS Extension for Digest Authentication", "subseries": [] },
+    "rfc4596": {
+      "title": "Guidelines for Usage of the Session Initiation Protocol (SIP) Caller Preferences Extension",
+      "subseries": []
+    },
+    "rfc4660": { "title": "Functional Description of Event Notification Filtering", "subseries": [] },
+    "rfc4661": {
+      "title": "An Extensible Markup Language (XML)-Based Format for Event Notification Filtering",
+      "subseries": []
+    },
+    "rfc4662": {
+      "title": "A Session Initiation Protocol (SIP) Event Notification Extension for Resource Lists",
+      "subseries": []
+    },
+    "rfc4722": { "title": "Media Server Control Markup Language (MSCML) and Protocol", "subseries": [] },
+    "rfc4730": {
+      "title": "A Session Initiation Protocol (SIP) Event Package for Key Press Stimulus (KPML)",
+      "subseries": []
+    },
+    "rfc4740": { "title": "Diameter Session Initiation Protocol (SIP) Application", "subseries": [] },
+    "rfc4769": {
+      "title": "IANA Registration for an Enumservice Containing Public Switched Telephone Network (PSTN) Signaling Information",
+      "subseries": []
+    },
+    "rfc4780": { "title": "Management Information Base for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc4787": {
+      "title": "Network Address Translation (NAT) Behavioral Requirements for Unicast UDP",
+      "subseries": ["bcp127"]
+    },
+    "rfc4825": {
+      "title": "The Extensible Markup Language (XML) Configuration Access Protocol (XCAP)",
+      "subseries": []
+    },
+    "rfc4826": { "title": "Extensible Markup Language (XML) Formats for Representing Resource Lists", "subseries": [] },
+    "rfc4827": {
+      "title": "An Extensible Markup Language (XML) Configuration Access Protocol (XCAP) Usage for Manipulating Presence Document Contents",
+      "subseries": []
+    },
+    "rfc4896": { "title": "Signaling Compression (SigComp) Corrections and Clarifications", "subseries": [] },
+    "rfc4904": { "title": "Representing Trunk Groups in tel/sip Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc4916": { "title": "Connected Identity in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc4964": {
+      "title": "The P-Answer-State Header Extension to the Session Initiation Protocol for the Open Mobile Alliance Push to Talk over Cellular",
+      "subseries": []
+    },
+    "rfc4967": {
+      "title": "Dial String Parameter for the Session Initiation Protocol Uniform Resource Identifier",
+      "subseries": []
+    },
+    "rfc4975": { "title": "The Message Session Relay Protocol (MSRP)", "subseries": [] },
+    "rfc4976": { "title": "Relay Extensions for the Message Sessions Relay Protocol (MSRP)", "subseries": [] },
+    "rfc5002": {
+      "title": "The Session Initiation Protocol (SIP) P-Profile-Key Private Header (P-Header)",
+      "subseries": []
+    },
+    "rfc5009": {
+      "title": "Private Header (P-Header) Extension to the Session Initiation Protocol (SIP) for Authorization of Early Media",
+      "subseries": []
+    },
+    "rfc5022": { "title": "Media Server Control Markup Language (MSCML) and Protocol", "subseries": [] },
+    "rfc5025": { "title": "Presence Authorization Rules", "subseries": [] },
+    "rfc5039": { "title": "The Session Initiation Protocol (SIP) and Spam", "subseries": [] },
+    "rfc5049": {
+      "title": "Applying Signaling Compression (SigComp) to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5057": { "title": "Multiple Dialog Usages in the Session Initiation Protocol", "subseries": [] },
+    "rfc5079": { "title": "Rejecting Anonymous Requests in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5090": { "title": "RADIUS Extension for Digest Authentication", "subseries": [] },
+    "rfc5115": { "title": "Telephony Routing over IP (TRIP) Attribute for Resource Priority", "subseries": [] },
+    "rfc5118": {
+      "title": "Session Initiation Protocol (SIP) Torture Test Messages for Internet Protocol Version 6 (IPv6)",
+      "subseries": []
+    },
+    "rfc5194": {
+      "title": "Framework for Real-Time Text over IP Using the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5196": {
+      "title": "Session Initiation Protocol (SIP) User Agent Capability Extension to Presence Information Data Format (PIDF)",
+      "subseries": []
+    },
+    "rfc5261": {
+      "title": "An Extensible Markup Language (XML) Patch Operations Framework Utilizing XML Path Language (XPath) Selectors",
+      "subseries": []
+    },
+    "rfc5262": { "title": "Presence Information Data Format (PIDF) Extension for Partial Presence", "subseries": [] },
+    "rfc5263": {
+      "title": "Session Initiation Protocol (SIP) Extension for Partial Notification of Presence Information",
+      "subseries": []
+    },
+    "rfc5264": { "title": "Publication of Partial Presence Information", "subseries": [] },
+    "rfc5278": { "title": "IANA Registration of Enumservices for Voice and Video Messaging", "subseries": [] },
+    "rfc5318": {
+      "title": "The Session Initiation Protocol (SIP) P-Refused-URI-List Private-Header (P-Header)",
+      "subseries": []
+    },
+    "rfc5344": { "title": "Presence and Instant Messaging Peering Use Cases", "subseries": [] },
+    "rfc5359": { "title": "Session Initiation Protocol Service Examples", "subseries": ["bcp144"] },
+    "rfc5360": {
+      "title": "A Framework for Consent-Based Communications in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5361": { "title": "A Document Format for Requesting Consent", "subseries": [] },
+    "rfc5362": { "title": "The Session Initiation Protocol (SIP) Pending Additions Event Package", "subseries": [] },
+    "rfc5363": {
+      "title": "Framework and Security Considerations for Session Initiation Protocol (SIP) URI-List Services",
+      "subseries": []
+    },
+    "rfc5364": {
+      "title": "Extensible Markup Language (XML) Format Extension for Representing Copy Control Attributes in Resource Lists",
+      "subseries": []
+    },
+    "rfc5365": {
+      "title": "Multiple-Recipient MESSAGE Requests in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5366": {
+      "title": "Conference Establishment Using Request-Contained Lists in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5367": {
+      "title": "Subscriptions to Request-Contained Resource Lists in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5368": { "title": "Referring to Multiple Resources in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5369": { "title": "Framework for Transcoding with the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5370": {
+      "title": "The Session Initiation Protocol (SIP) Conference Bridge Transcoding Model",
+      "subseries": []
+    },
+    "rfc5373": { "title": "Requesting Answering Modes for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5379": { "title": "Guidelines for Using the Privacy Mechanism for SIP", "subseries": [] },
+    "rfc5390": {
+      "title": "Requirements for Management of Overload in the Session Initiation Protocol",
+      "subseries": []
+    },
+    "rfc5393": {
+      "title": "Addressing an Amplification Vulnerability in Session Initiation Protocol (SIP) Forking Proxies",
+      "subseries": []
+    },
+    "rfc5407": {
+      "title": "Example Call Flows of Race Conditions in the Session Initiation Protocol (SIP)",
+      "subseries": ["bcp147"]
+    },
+    "rfc5411": { "title": "A Hitchhiker's Guide to the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5438": { "title": "Instant Message Disposition Notification (IMDN)", "subseries": [] },
+    "rfc5478": {
+      "title": "IANA Registration of New Session Initiation Protocol (SIP) Resource-Priority Namespaces",
+      "subseries": []
+    },
+    "rfc5479": { "title": "Requirements and Analysis of Media Security Management Protocols", "subseries": [] },
+    "rfc5486": { "title": "Session Peering for Multimedia Interconnect (SPEERMINT) Terminology", "subseries": [] },
+    "rfc5502": {
+      "title": "The SIP P-Served-User Private-Header (P-Header) for the 3GPP IP Multimedia (IM) Core Network (CN) Subsystem",
+      "subseries": []
+    },
+    "rfc5503": {
+      "title": "Private Session Initiation Protocol (SIP) Proxy-to-Proxy Extensions for Supporting the PacketCable Distributed Call Signaling Architecture",
+      "subseries": []
+    },
+    "rfc5509": {
+      "title": "Internet Assigned Numbers Authority (IANA) Registration of Instant Messaging and Presence DNS SRV RRs for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5552": { "title": "SIP Interface to VoiceXML Media Services", "subseries": [] },
+    "rfc5589": { "title": "Session Initiation Protocol (SIP) Call Control - Transfer", "subseries": ["bcp149"] },
+    "rfc5606": { "title": "Implications of 'retransmission-allowed' for SIP Location Conveyance", "subseries": [] },
+    "rfc5616": { "title": "Streaming Internet Messaging Attachments", "subseries": [] },
+    "rfc5621": { "title": "Message Body Handling in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5626": {
+      "title": "Managing Client-Initiated Connections in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5627": {
+      "title": "Obtaining and Using Globally Routable User Agent URIs (GRUUs) in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5628": {
+      "title": "Registration Event Package Extension for Session Initiation Protocol (SIP) Globally Routable User Agent URIs (GRUUs)",
+      "subseries": []
+    },
+    "rfc5629": {
+      "title": "A Framework for Application Interaction in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5630": { "title": "The Use of the SIPS URI Scheme in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5631": { "title": "Session Initiation Protocol (SIP) Session Mobility", "subseries": [] },
+    "rfc5638": { "title": "Simple SIP Usage Scenario for Applications in the Endpoints", "subseries": [] },
+    "rfc5658": { "title": "Addressing Record-Route Issues in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5688": {
+      "title": "A Session Initiation Protocol (SIP) Media Feature Tag for MIME Application Subtypes",
+      "subseries": []
+    },
+    "rfc5727": {
+      "title": "Change Process for the Session Initiation Protocol (SIP) and the Real-time Applications and Infrastructure Area",
+      "subseries": ["bcp67"]
+    },
+    "rfc5763": {
+      "title": "Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc5767": { "title": "User-Agent-Driven Privacy Mechanism for SIP", "subseries": [] },
+    "rfc5768": {
+      "title": "Indicating Support for Interactive Connectivity Establishment (ICE) in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5806": { "title": "Diversion Indication in SIP", "subseries": [] },
+    "rfc5839": {
+      "title": "An Extension to Session Initiation Protocol (SIP) Events for Conditional Event Notification",
+      "subseries": []
+    },
+    "rfc5850": {
+      "title": "A Call Control and Multi-Party Usage Framework for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5853": {
+      "title": "Requirements from Session Initiation Protocol (SIP) Session Border Control (SBC) Deployments",
+      "subseries": []
+    },
+    "rfc5866": { "title": "Diameter Quality-of-Service Application", "subseries": [] },
+    "rfc5874": {
+      "title": "An Extensible Markup Language (XML) Document Format for Indicating a Change in XML Configuration Access Protocol (XCAP) Resources",
+      "subseries": []
+    },
+    "rfc5875": {
+      "title": "An Extensible Markup Language (XML) Configuration Access Protocol (XCAP) Diff Event Package",
+      "subseries": []
+    },
+    "rfc5876": { "title": "Updates to Asserted Identity in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5888": { "title": "The Session Description Protocol (SDP) Grouping Framework", "subseries": [] },
+    "rfc5897": {
+      "title": "Identification of Communications Services in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5898": {
+      "title": "Connectivity Preconditions for Session Description Protocol (SDP) Media Streams",
+      "subseries": []
+    },
+    "rfc5922": { "title": "Domain Certificates in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5923": { "title": "Connection Reuse in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5924": {
+      "title": "Extended Key Usage (EKU) for Session Initiation Protocol (SIP) X.509 Certificates",
+      "subseries": []
+    },
+    "rfc5947": {
+      "title": "Requirements for Multiple Address of Record (AOR) Reachability Information in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5954": { "title": "Essential Correction for IPv6 ABNF and URI Comparison in RFC 3261", "subseries": [] },
+    "rfc5989": { "title": "A SIP Event Package for Subscribing to Changes to an HTTP Resource", "subseries": [] },
+    "rfc6011": { "title": "Session Initiation Protocol (SIP) User Agent Configuration", "subseries": [] },
+    "rfc6026": {
+      "title": "Correct Transaction Handling for 2xx Responses to Session Initiation Protocol (SIP) INVITE Requests",
+      "subseries": []
+    },
+    "rfc6035": { "title": "Session Initiation Protocol Event Package for Voice Quality Reporting", "subseries": [] },
+    "rfc6044": {
+      "title": "Mapping and Interworking of Diversion Information between Diversion and History-Info Headers in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6050": {
+      "title": "A Session Initiation Protocol (SIP) Extension for the Identification of Services",
+      "subseries": []
+    },
+    "rfc6072": { "title": "Certificate Management Service for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc6076": { "title": "Basic Telephony SIP End-to-End Performance Metrics", "subseries": [] },
+    "rfc6080": { "title": "A Framework for Session Initiation Protocol User Agent Profile Delivery", "subseries": [] },
+    "rfc6086": { "title": "Session Initiation Protocol (SIP) INFO Method and Package Framework", "subseries": [] },
+    "rfc6135": {
+      "title": "An Alternative Connection Model for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc6140": {
+      "title": "Registration for Multiple Phone Numbers in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6141": {
+      "title": "Re-INVITE and Target-Refresh Request Handling in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6157": { "title": "IPv6 Transition in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc6193": {
+      "title": "Media Description for the Internet Key Exchange Protocol (IKE) in the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc6216": {
+      "title": "Example Call Flows Using Session Initiation Protocol (SIP) Security Mechanisms",
+      "subseries": []
+    },
+    "rfc6223": { "title": "Indication of Support for Keep-Alive", "subseries": [] },
+    "rfc6228": {
+      "title": "Session Initiation Protocol (SIP) Response Code for Indication of Terminated Dialog",
+      "subseries": []
+    },
+    "rfc6271": { "title": "Requirements for SIP-Based Session Peering", "subseries": [] },
+    "rfc6314": { "title": "NAT Traversal Practices for Client-Server SIP", "subseries": [] },
+    "rfc6337": { "title": "Session Initiation Protocol (SIP) Usage of the Offer/Answer Model", "subseries": [] },
+    "rfc6341": { "title": "Use Cases and Requirements for SIP-Based Media Recording (SIPREC)", "subseries": [] },
+    "rfc6357": {
+      "title": "Design Considerations for Session Initiation Protocol (SIP) Overload Control",
+      "subseries": []
+    },
+    "rfc6404": {
+      "title": "Session PEERing for Multimedia INTerconnect (SPEERMINT) Security Threats and Suggested Countermeasures",
+      "subseries": []
+    },
+    "rfc6405": { "title": "Voice over IP (VoIP) SIP Peering Use Cases", "subseries": [] },
+    "rfc6406": { "title": "Session PEERing for Multimedia INTerconnect (SPEERMINT) Architecture", "subseries": [] },
+    "rfc6432": {
+      "title": "Carrying Q.850 Codes in Reason Header Fields in SIP (Session Initiation Protocol) Responses",
+      "subseries": []
+    },
+    "rfc6442": { "title": "Location Conveyance for the Session Initiation Protocol", "subseries": [] },
+    "rfc6446": {
+      "title": "Session Initiation Protocol (SIP) Event Notification Extension for Notification Rate Control",
+      "subseries": []
+    },
+    "rfc6447": {
+      "title": "Filtering Location Notifications in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6461": {
+      "title": "Data for Reachability of Inter-/Intra-NetworK SIP (DRINKS) Use Cases and Protocol Requirements",
+      "subseries": []
+    },
+    "rfc6468": { "title": "Sieve Notification Mechanism: SIP MESSAGE", "subseries": [] },
+    "rfc6567": {
+      "title": "Problem Statement and Requirements for Transporting User-to-User Call Control Information in SIP",
+      "subseries": []
+    },
+    "rfc6665": { "title": "SIP-Specific Event Notification", "subseries": [] },
+    "rfc6714": {
+      "title": "Connection Establishment for Media Anchoring (CEMA) for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc6794": { "title": "A Framework for Session Initiation Protocol (SIP) Session Policies", "subseries": [] },
+    "rfc6795": {
+      "title": "A Session Initiation Protocol (SIP) Event Package for Session-Specific Policies",
+      "subseries": []
+    },
+    "rfc6796": { "title": "A User Agent Profile Data Set for Media Policy", "subseries": [] },
+    "rfc6809": {
+      "title": "Mechanism to Indicate Support of Features and Capabilities in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6872": {
+      "title": "The Common Log Format (CLF) for the Session Initiation Protocol (SIP): Framework and Information Model",
+      "subseries": []
+    },
+    "rfc6873": { "title": "Format for the Session Initiation Protocol (SIP) Common Log Format (CLF)", "subseries": [] },
+    "rfc6878": {
+      "title": "IANA Registry for the Session Initiation Protocol (SIP) \"Priority\" Header Field",
+      "subseries": []
+    },
+    "rfc6881": {
+      "title": "Best Current Practice for Communications Services in Support of Emergency Calling",
+      "subseries": ["bcp181"]
+    },
+    "rfc6910": { "title": "Completion of Calls for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc6913": {
+      "title": "Indicating Fax over IP Capability in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6914": {
+      "title": "SIMPLE Made Simple: An Overview of the IETF Specifications for Instant Messaging and Presence Using the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6993": {
+      "title": "Instant Messaging and Presence Purpose for the Call-Info Header Field in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7044": {
+      "title": "An Extension to the Session Initiation Protocol (SIP) for Request History Information",
+      "subseries": []
+    },
+    "rfc7081": {
+      "title": "CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7088": { "title": "Session Initiation Protocol Service Example -- Music on Hold", "subseries": [] },
+    "rfc7090": { "title": "Public Safety Answering Point (PSAP) Callback", "subseries": [] },
+    "rfc7092": { "title": "A Taxonomy of Session Initiation Protocol (SIP) Back-to-Back User Agents", "subseries": [] },
+    "rfc7106": {
+      "title": "A Group Text Chat Purpose for Conference and Service URIs in the SIP Event Package for Conference State",
+      "subseries": []
+    },
+    "rfc7118": {
+      "title": "The WebSocket Protocol as a Transport for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7131": { "title": "Session Initiation Protocol (SIP) History-Info Header Call Flow Examples", "subseries": [] },
+    "rfc7134": {
+      "title": "The Management Policy of the Resource Priority Header (RPH) Registry Changed to \"IETF Review\"",
+      "subseries": []
+    },
+    "rfc7135": {
+      "title": "Registering a SIP Resource Priority Header Field Namespace for Local Emergency Communications",
+      "subseries": []
+    },
+    "rfc7163": { "title": "URN for Country-Specific Emergency Services", "subseries": [] },
+    "rfc7200": { "title": "A Session Initiation Protocol (SIP) Load-Control Event Package", "subseries": [] },
+    "rfc7206": {
+      "title": "Requirements for an End-to-End Session Identification in IP-Based Multimedia Communication Networks",
+      "subseries": []
+    },
+    "rfc7245": {
+      "title": "An Architecture for Media Recording Using the Session Initiation Protocol",
+      "subseries": []
+    },
+    "rfc7247": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Architecture, Addresses, and Error Handling",
+      "subseries": []
+    },
+    "rfc7248": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Presence",
+      "subseries": []
+    },
+    "rfc7255": {
+      "title": "Using the International Mobile station Equipment Identity (IMEI) Uniform Resource Name (URN) as an Instance ID",
+      "subseries": []
+    },
+    "rfc7315": {
+      "title": "Private Header (P-Header) Extensions to the Session Initiation Protocol (SIP) for the 3GPP",
+      "subseries": []
+    },
+    "rfc7316": {
+      "title": "The Session Initiation Protocol (SIP) P-Private-Network-Indication Private Header (P-Header)",
+      "subseries": []
+    },
+    "rfc7329": { "title": "A Session Identifier for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc7332": {
+      "title": "Loop Detection Mechanisms for Session Initiation Protocol (SIP) Back-to-Back User Agents (B2BUAs)",
+      "subseries": []
+    },
+    "rfc7339": { "title": "Session Initiation Protocol (SIP) Overload Control", "subseries": [] },
+    "rfc7340": { "title": "Secure Telephone Identity Problem Statement and Requirements", "subseries": [] },
+    "rfc7345": {
+      "title": "UDP Transport Layer (UDPTL) over Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7355": {
+      "title": "Indicating WebSocket Protocol as a Transport in the Session Initiation Protocol (SIP) Common Log Format (CLF)",
+      "subseries": []
+    },
+    "rfc7375": { "title": "Secure Telephone Identity Threat Model", "subseries": [] },
+    "rfc7403": {
+      "title": "A Media-Based Traceroute Function for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7415": { "title": "Session Initiation Protocol (SIP) Rate Control", "subseries": [] },
+    "rfc7433": {
+      "title": "A Mechanism for Transporting User-to-User Call Control Information in SIP",
+      "subseries": []
+    },
+    "rfc7434": { "title": "Interworking ISDN Call Control User Information with SIP", "subseries": [] },
+    "rfc7462": {
+      "title": "URNs for the Alert-Info Header Field of the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7463": {
+      "title": "Shared Appearances of a Session Initiation Protocol (SIP) Address of Record (AOR)",
+      "subseries": []
+    },
+    "rfc7501": {
+      "title": "Terminology for Benchmarking Session Initiation Protocol (SIP) Devices: Basic Session Setup and Registration",
+      "subseries": []
+    },
+    "rfc7502": {
+      "title": "Methodology for Benchmarking Session Initiation Protocol (SIP) Devices: Basic Session Setup and Registration",
+      "subseries": []
+    },
+    "rfc7544": {
+      "title": "Mapping and Interworking of Diversion Information between Diversion and History-Info Header Fields in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7549": { "title": "3GPP SIP URI Inter-Operator Traffic Leg Parameter", "subseries": [] },
+    "rfc7572": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Instant Messaging",
+      "subseries": []
+    },
+    "rfc7573": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): One-to-One Text Chat Sessions",
+      "subseries": []
+    },
+    "rfc7584": {
+      "title": "Session Traversal Utilities for NAT (STUN) Message Handling for SIP Back-to-Back User Agents (B2BUAs)",
+      "subseries": []
+    },
+    "rfc7614": { "title": "Explicit Subscriptions for the REFER Method", "subseries": [] },
+    "rfc7621": {
+      "title": "A Clarification on the Use of Globally Routable User Agent URIs (GRUUs) in the SIP Event Notification Framework",
+      "subseries": []
+    },
+    "rfc7647": { "title": "Clarifications for the Use of REFER with RFC 6665", "subseries": [] },
+    "rfc7700": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc7701": { "title": "Multi-party Chat Using the Message Session Relay Protocol (MSRP)", "subseries": [] },
+    "rfc7702": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Groupchat",
+      "subseries": []
+    },
+    "rfc7865": { "title": "Session Initiation Protocol (SIP) Recording Metadata", "subseries": [] },
+    "rfc7877": { "title": "Session Peering Provisioning Framework (SPPF)", "subseries": [] },
+    "rfc7878": { "title": "Session Peering Provisioning (SPP) Protocol over SOAP", "subseries": [] },
+    "rfc7879": { "title": "DTLS-SRTP Handling in SIP Back-to-Back User Agents", "subseries": [] },
+    "rfc7890": { "title": "Concepts and Terminology for Peer-to-Peer SIP (P2PSIP)", "subseries": [] },
+    "rfc7904": { "title": "A SIP Usage for REsource LOcation And Discovery (RELOAD)", "subseries": [] },
+    "rfc7913": { "title": "P-Access-Network-Info ABNF Update", "subseries": [] },
+    "rfc7957": { "title": "DISPATCH-Style Working Groups and the SIP Change Process", "subseries": ["bcp67"] },
+    "rfc7976": {
+      "title": "Updates to Private Header (P-Header) Extension Usage in Session Initiation Protocol (SIP) Requests and Responses",
+      "subseries": []
+    },
+    "rfc7984": {
+      "title": "Locating Session Initiation Protocol (SIP) Servers in a Dual-Stack IP Network",
+      "subseries": []
+    },
+    "rfc7989": {
+      "title": "End-to-End Session Identification in IP-Based Multimedia Communication Networks",
+      "subseries": []
+    },
+    "rfc8048": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Presence",
+      "subseries": []
+    },
+    "rfc8055": {
+      "title": "Session Initiation Protocol (SIP) Via Header Field Parameter to Indicate Received Realm",
+      "subseries": []
+    },
+    "rfc8068": { "title": "Session Initiation Protocol (SIP) Recording Call Flows", "subseries": [] },
+    "rfc8076": { "title": "A Usage for Shared Resources in RELOAD (ShaRe)", "subseries": [] },
+    "rfc8079": {
+      "title": "Guidelines for End-to-End Support of the RTP Control Protocol (RTCP) in Back-to-Back User Agents (B2BUAs)",
+      "subseries": []
+    },
+    "rfc8101": {
+      "title": "IANA Registration of New Session Initiation Protocol (SIP) Resource-Priority Namespace for Mission Critical Push To Talk Service",
+      "subseries": []
+    },
+    "rfc8119": { "title": "SIP \"cause\" URI Parameter for Service Number Translation", "subseries": [] },
+    "rfc8123": { "title": "Requirements for Marking SIP Messages to be Logged", "subseries": [] },
+    "rfc8197": { "title": "A SIP Response Code for Unwanted Calls", "subseries": [] },
+    "rfc8217": { "title": "Clarifications for When to Use the name-addr Production in SIP Messages", "subseries": [] },
+    "rfc8224": {
+      "title": "Authenticated Identity Management in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8255": { "title": "Multiple Language Content Type", "subseries": [] },
+    "rfc8262": { "title": "Content-ID Header Field in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc8266": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc8373": { "title": "Negotiating Human Language in Real-Time Communications", "subseries": [] },
+    "rfc8396": {
+      "title": "Managing, Ordering, Distributing, Exposing, and Registering Telephone Numbers (MODERN): Problem Statement, Use Cases, and Framework",
+      "subseries": []
+    },
+    "rfc8433": { "title": "A Simpler Method for Resolving Alert-Info URNs", "subseries": [] },
+    "rfc8443": {
+      "title": "Personal Assertion Token (PASSporT) Extension for Resource Priority Authorization",
+      "subseries": []
+    },
+    "rfc8496": {
+      "title": "P-Charge-Info: A Private Header Field (P-Header) Extension to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8497": { "title": "Marking SIP Messages to Be Logged", "subseries": [] },
+    "rfc8498": {
+      "title": "A P-Served-User Header Field Parameter for an Originating Call Diversion (CDIV) Session Case in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8507": { "title": "Simple Internet Protocol (SIP) Specification", "subseries": [] },
+    "rfc8591": { "title": "SIP-Based Messaging with S/MIME", "subseries": [] },
+    "rfc8599": { "title": "Push Notification with the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc8606": {
+      "title": "ISDN User Part (ISUP) Cause Location Parameter for the SIP Reason Header Field",
+      "subseries": []
+    },
+    "rfc8643": {
+      "title": "An Opportunistic Approach for Secure Real-time Transport Protocol (OSRTP)",
+      "subseries": []
+    },
+    "rfc8688": { "title": "A Session Initiation Protocol (SIP) Response Code for Rejected Calls", "subseries": [] },
+    "rfc8760": {
+      "title": "The Session Initiation Protocol (SIP) Digest Access Authentication Scheme",
+      "subseries": []
+    },
+    "rfc8787": { "title": "Location Source Parameter for the SIP Geolocation Header Field", "subseries": [] },
+    "rfc8816": {
+      "title": "Secure Telephone Identity Revisited (STIR) Out-of-Band Architecture and Use Cases",
+      "subseries": []
+    },
+    "rfc8840": {
+      "title": "A Session Initiation Protocol (SIP) Usage for Incremental Provisioning of Candidates for the Interactive Connectivity Establishment (Trickle ICE)",
+      "subseries": []
+    },
+    "rfc8844": {
+      "title": "Unknown Key-Share Attacks on Uses of TLS with the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc8850": {
+      "title": "Controlling Multiple Streams for Telepresence (CLUE) Protocol Data Channel",
+      "subseries": []
+    },
+    "rfc8862": { "title": "Best Practices for Securing RTP Media Signaled with SIP", "subseries": ["bcp228"] },
+    "rfc8866": { "title": "SDP: Session Description Protocol", "subseries": [] },
+    "rfc8898": {
+      "title": "Third-Party Token-Based Authentication and Authorization for Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8946": { "title": "Personal Assertion Token (PASSporT) Extension for Diverted Calls", "subseries": [] },
+    "rfc9027": {
+      "title": "Assertion Values for Resource Priority Header and SIP Priority Header Claims in Support of Emergency Services Networks",
+      "subseries": []
+    },
+    "rfc9060": { "title": "Secure Telephone Identity Revisited (STIR) Certificate Delegation", "subseries": [] },
+    "rfc9071": { "title": "RTP-Mixer Formatting of Multiparty Real-Time Text", "subseries": [] },
+    "rfc9239": { "title": "Updates to ECMAScript Media Types", "subseries": [] },
+    "rfc9248": { "title": "Interoperability Profile for Relay User Equipment", "subseries": [] },
+    "rfc9366": { "title": "Multiple SIP Reason Header Field Values", "subseries": [] },
+    "rfc9409": { "title": "The 'sip-trunking-capability' Link Relation Type", "subseries": [] },
+    "rfc9475": {
+      "title": "Messaging Use Cases and Extensions for Secure Telephone Identity Revisited (STIR)",
+      "subseries": []
+    },
+    "rfc9796": { "title": "SIP Call-Info Parameters for Rich Call Data", "subseries": [] },
+    "rfc9806": {
+      "title": "Updates to SIP-Based Media Recording (SIPREC) to Correct Metadata Media Type",
+      "subseries": []
+    },
+    "rfc9878": {
+      "title": "Updates to Private Header (P-Header) Extension Usage in Session Initiation Protocol (SIP) Requests and Responses",
+      "subseries": []
+    },
+    "rfc9888": {
+      "title": "Out-of-Band Secure Telephone Identity Revisited (STIR) for Service Providers",
+      "subseries": []
+    },
+    "rfc9970": { "title": "Connected Identity for Secure Telephone Identity Revisited (STIR)", "subseries": [] },
+    "rfc9996": { "title": "Media Types for Protocol Buffers", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "p2psip": { "name": "P2PSIP" },
+    "siprec": { "name": "SIPREC" },
+    "stir": { "name": "STIR" }
+  }
+}

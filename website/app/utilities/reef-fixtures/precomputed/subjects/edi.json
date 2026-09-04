@@ -1,0 +1,89 @@
+{
+  "id": 648,
+  "slug": "edi",
+  "name": "EDI",
+  "description": "Electronic Data Interchange over Internet transports",
+  "parent": "messaging",
+  "path": "messaging/edi",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1767",
+    "rfc1865",
+    "rfc2801",
+    "rfc2802",
+    "rfc2803",
+    "rfc2935",
+    "rfc2936",
+    "rfc3335",
+    "rfc3354",
+    "rfc3504",
+    "rfc3505",
+    "rfc3506",
+    "rfc3538",
+    "rfc3867",
+    "rfc4112",
+    "rfc4130",
+    "rfc4153",
+    "rfc4154",
+    "rfc4823",
+    "rfc5402",
+    "rfc6017",
+    "rfc6362"
+  ],
+  "document_meta": {
+    "rfc1767": { "title": "MIME Encapsulation of EDI Objects", "subseries": [] },
+    "rfc1865": {
+      "title": "EDI Meets the Internet Frequently Asked Questions about Electronic Data Interchange (EDI) on the Internet",
+      "subseries": []
+    },
+    "rfc2801": { "title": "Internet Open Trading Protocol - IOTP Version 1.0", "subseries": [] },
+    "rfc2802": { "title": "Digital Signatures for the v1.0 Internet Open Trading Protocol (IOTP)", "subseries": [] },
+    "rfc2803": { "title": "Digest Values for DOM (DOMHASH)", "subseries": [] },
+    "rfc2935": { "title": "Internet Open Trading Protocol (IOTP) HTTP Supplement", "subseries": [] },
+    "rfc2936": { "title": "HTTP MIME Type Handler Detection", "subseries": [] },
+    "rfc3335": {
+      "title": "MIME-based Secure Peer-to-Peer Business Data Interchange over the Internet",
+      "subseries": []
+    },
+    "rfc3354": { "title": "Internet Open Trading Protocol Version 2 Requirements", "subseries": [] },
+    "rfc3504": { "title": "Internet Open Trading Protocol (IOTP) Version 1, Errata", "subseries": [] },
+    "rfc3505": { "title": "Electronic Commerce Modeling Language (ECML): Version 2 Requirements", "subseries": [] },
+    "rfc3506": { "title": "Requirements and Design for Voucher Trading System (VTS)", "subseries": [] },
+    "rfc3538": {
+      "title": "Secure Electronic Transaction (SET) Supplement for the v1.0 Internet Open Trading Protocol (IOTP)",
+      "subseries": []
+    },
+    "rfc3867": {
+      "title": "Payment Application Programmers Interface (API) for v1.0 Internet Open Trading Protocol (IOTP)",
+      "subseries": []
+    },
+    "rfc4112": { "title": "Electronic Commerce Modeling Language (ECML) Version 2 Specification", "subseries": [] },
+    "rfc4130": {
+      "title": "MIME-Based Secure Peer-to-Peer Business Data Interchange Using HTTP, Applicability Statement 2 (AS2)",
+      "subseries": []
+    },
+    "rfc4153": { "title": "XML Voucher: Generic Voucher Language", "subseries": [] },
+    "rfc4154": { "title": "Voucher Trading System Application Programming Interface (VTS-API)", "subseries": [] },
+    "rfc4823": {
+      "title": "FTP Transport for Secure Peer-to-Peer Business Data Interchange over the Internet",
+      "subseries": []
+    },
+    "rfc5402": {
+      "title": "Compressed Data within an Internet Electronic Data Interchange (EDI) Message",
+      "subseries": []
+    },
+    "rfc6017": {
+      "title": "Electronic Data Interchange - Internet Integration (EDIINT) Features Header Field",
+      "subseries": []
+    },
+    "rfc6362": {
+      "title": "Multiple Attachments for Electronic Data Interchange - Internet Integration (EDIINT)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" } }
+}

@@ -1,0 +1,104 @@
+{
+  "id": 597,
+  "slug": "hip",
+  "name": "HIP",
+  "description": "Host Identity Protocol",
+  "parent": "internet-layer",
+  "path": "internet-layer/hip",
+  "document_count": 31,
+  "document_count_deep": 31,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4423",
+    "rfc5201",
+    "rfc5202",
+    "rfc5203",
+    "rfc5204",
+    "rfc5205",
+    "rfc5206",
+    "rfc5207",
+    "rfc5338",
+    "rfc5770",
+    "rfc6028",
+    "rfc6078",
+    "rfc6079",
+    "rfc6253",
+    "rfc6261",
+    "rfc6316",
+    "rfc6317",
+    "rfc6537",
+    "rfc6538",
+    "rfc7086",
+    "rfc7343",
+    "rfc7401",
+    "rfc7402",
+    "rfc8002",
+    "rfc8003",
+    "rfc8004",
+    "rfc8005",
+    "rfc8046",
+    "rfc8047",
+    "rfc9028",
+    "rfc9063"
+  ],
+  "document_meta": {
+    "rfc4423": { "title": "Host Identity Protocol (HIP) Architecture", "subseries": [] },
+    "rfc5201": { "title": "Host Identity Protocol", "subseries": [] },
+    "rfc5202": {
+      "title": "Using the Encapsulating Security Payload (ESP) Transport Format with the Host Identity Protocol (HIP)",
+      "subseries": []
+    },
+    "rfc5203": { "title": "Host Identity Protocol (HIP) Registration Extension", "subseries": [] },
+    "rfc5204": { "title": "Host Identity Protocol (HIP) Rendezvous Extension", "subseries": [] },
+    "rfc5205": { "title": "Host Identity Protocol (HIP) Domain Name System (DNS) Extensions", "subseries": [] },
+    "rfc5206": { "title": "End-Host Mobility and Multihoming with the Host Identity Protocol", "subseries": [] },
+    "rfc5207": {
+      "title": "NAT and Firewall Traversal Issues of Host Identity Protocol (HIP) Communication",
+      "subseries": []
+    },
+    "rfc5338": { "title": "Using the Host Identity Protocol with Legacy Applications", "subseries": [] },
+    "rfc5770": {
+      "title": "Basic Host Identity Protocol (HIP) Extensions for Traversal of Network Address Translators",
+      "subseries": []
+    },
+    "rfc6028": { "title": "Host Identity Protocol (HIP) Multi-Hop Routing Extension", "subseries": [] },
+    "rfc6078": {
+      "title": "Host Identity Protocol (HIP) Immediate Carriage and Conveyance of Upper-Layer Protocol Signaling (HICCUPS)",
+      "subseries": []
+    },
+    "rfc6079": {
+      "title": "HIP BONE: Host Identity Protocol (HIP) Based Overlay Networking Environment (BONE)",
+      "subseries": []
+    },
+    "rfc6253": { "title": "Host Identity Protocol Certificates", "subseries": [] },
+    "rfc6261": { "title": "Encrypted Signaling Transport Modes for the Host Identity Protocol", "subseries": [] },
+    "rfc6316": { "title": "Sockets Application Program Interface (API) for Multihoming Shim", "subseries": [] },
+    "rfc6317": { "title": "Basic Socket Interface Extensions for the Host Identity Protocol (HIP)", "subseries": [] },
+    "rfc6537": { "title": "Host Identity Protocol Distributed Hash Table Interface", "subseries": [] },
+    "rfc6538": { "title": "The Host Identity Protocol (HIP) Experiment Report", "subseries": [] },
+    "rfc7086": {
+      "title": "Host Identity Protocol-Based Overlay Networking Environment (HIP BONE) Instance Specification for REsource LOcation And Discovery (RELOAD)",
+      "subseries": []
+    },
+    "rfc7343": {
+      "title": "An IPv6 Prefix for Overlay Routable Cryptographic Hash Identifiers Version 2 (ORCHIDv2)",
+      "subseries": []
+    },
+    "rfc7401": { "title": "Host Identity Protocol Version 2 (HIPv2)", "subseries": [] },
+    "rfc7402": {
+      "title": "Using the Encapsulating Security Payload (ESP) Transport Format with the Host Identity Protocol (HIP)",
+      "subseries": []
+    },
+    "rfc8002": { "title": "Host Identity Protocol Certificates", "subseries": [] },
+    "rfc8003": { "title": "Host Identity Protocol (HIP) Registration Extension", "subseries": [] },
+    "rfc8004": { "title": "Host Identity Protocol (HIP) Rendezvous Extension", "subseries": [] },
+    "rfc8005": { "title": "Host Identity Protocol (HIP) Domain Name System (DNS) Extension", "subseries": [] },
+    "rfc8046": { "title": "Host Mobility with the Host Identity Protocol", "subseries": [] },
+    "rfc8047": { "title": "Host Multihoming with the Host Identity Protocol", "subseries": [] },
+    "rfc9028": { "title": "Native NAT Traversal Mode for the Host Identity Protocol", "subseries": [] },
+    "rfc9063": { "title": "Host Identity Protocol Architecture", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

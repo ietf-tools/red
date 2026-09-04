@@ -1,0 +1,32 @@
+{
+  "id": 573,
+  "slug": "abnf",
+  "name": "ABNF",
+  "description": "Augmented BNF and formal syntax notations",
+  "parent": "data-formats",
+  "path": "data-formats/abnf",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2234", "rfc4234", "rfc4466", "rfc5234", "rfc5511", "rfc5954", "rfc7405", "rfc7913", "rfc9165"],
+  "document_meta": {
+    "rfc2234": { "title": "Augmented BNF for Syntax Specifications: ABNF", "subseries": [] },
+    "rfc4234": { "title": "Augmented BNF for Syntax Specifications: ABNF", "subseries": [] },
+    "rfc4466": { "title": "Collected Extensions to IMAP4 ABNF", "subseries": [] },
+    "rfc5234": { "title": "Augmented BNF for Syntax Specifications: ABNF", "subseries": ["std68"] },
+    "rfc5511": {
+      "title": "Routing Backus-Naur Form (RBNF): A Syntax Used to Form Encoding Rules in Various Routing Protocol Specifications",
+      "subseries": []
+    },
+    "rfc5954": { "title": "Essential Correction for IPv6 ABNF and URI Comparison in RFC 3261", "subseries": [] },
+    "rfc7405": { "title": "Case-Sensitive String Support in ABNF", "subseries": [] },
+    "rfc7913": { "title": "P-Access-Network-Info ABNF Update", "subseries": [] },
+    "rfc9165": {
+      "title": "Additional Control Operators for the Concise Data Definition Language (CDDL)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

@@ -1,0 +1,45 @@
+{
+  "id": 905,
+  "slug": "bgp-communities",
+  "name": "BGP Communities",
+  "description": "BGP communities: standard, extended and large",
+  "parent": "bgp",
+  "path": "routing/bgp/bgp-communities",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1997",
+    "rfc1998",
+    "rfc4360",
+    "rfc4384",
+    "rfc5668",
+    "rfc5701",
+    "rfc7153",
+    "rfc8092",
+    "rfc8195",
+    "rfc8549",
+    "rfc8642",
+    "rfc9184"
+  ],
+  "document_meta": {
+    "rfc1997": { "title": "BGP Communities Attribute", "subseries": [] },
+    "rfc1998": { "title": "An Application of the BGP Community Attribute in Multi-home Routing", "subseries": [] },
+    "rfc4360": { "title": "BGP Extended Communities Attribute", "subseries": [] },
+    "rfc4384": { "title": "BGP Communities for Data Collection", "subseries": ["bcp114"] },
+    "rfc5668": { "title": "4-Octet AS Specific BGP Extended Community", "subseries": [] },
+    "rfc5701": { "title": "IPv6 Address Specific BGP Extended Community Attribute", "subseries": [] },
+    "rfc7153": { "title": "IANA Registries for BGP Extended Communities", "subseries": [] },
+    "rfc8092": { "title": "BGP Large Communities Attribute", "subseries": [] },
+    "rfc8195": { "title": "Use of BGP Large Communities", "subseries": [] },
+    "rfc8549": {
+      "title": "Export of BGP Community Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc8642": { "title": "Policy Behavior for Well-Known BGP Communities", "subseries": [] },
+    "rfc9184": { "title": "BGP Extended Community Registries Update", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "bgp": { "name": "BGP" } }
+}

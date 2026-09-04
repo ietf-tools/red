@@ -1,0 +1,19 @@
+{
+  "id": 972,
+  "slug": "spki",
+  "name": "SPKI",
+  "description": "Simple Public Key Infrastructure (historic)",
+  "parent": "pki",
+  "path": "security/pki/spki",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2692", "rfc2693"],
+  "document_meta": {
+    "rfc2692": { "title": "SPKI Requirements", "subseries": [] },
+    "rfc2693": { "title": "SPKI Certificate Theory", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "pki": { "name": "PKI" } }
+}

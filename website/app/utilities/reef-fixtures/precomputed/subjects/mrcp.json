@@ -1,0 +1,26 @@
+{
+  "id": 689,
+  "slug": "mrcp",
+  "name": "MRCP",
+  "description": "Media Resource Control Protocol: speech services",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/mrcp",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4313", "rfc4463", "rfc6787"],
+  "document_meta": {
+    "rfc4313": {
+      "title": "Requirements for Distributed Control of Automatic Speech Recognition (ASR), Speaker Identification/Speaker Verification (SI/SV), and Text-to-Speech (TTS) Resources",
+      "subseries": []
+    },
+    "rfc4463": {
+      "title": "A Media Resource Control Protocol (MRCP) Developed by Cisco, Nuance, and Speechworks",
+      "subseries": []
+    },
+    "rfc6787": { "title": "Media Resource Control Protocol Version 2 (MRCPv2)", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" } }
+}

@@ -1,0 +1,22 @@
+{
+  "id": 814,
+  "slug": "zstd",
+  "name": "Zstandard",
+  "description": "Zstandard compression",
+  "parent": "compression",
+  "path": "data-formats/compression/zstd",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8478", "rfc8878", "rfc8879", "rfc9659", "rfc9842"],
+  "document_meta": {
+    "rfc8478": { "title": "Zstandard Compression and the application/zstd Media Type", "subseries": [] },
+    "rfc8878": { "title": "Zstandard Compression and the 'application/zstd' Media Type", "subseries": [] },
+    "rfc8879": { "title": "TLS Certificate Compression", "subseries": [] },
+    "rfc9659": { "title": "Window Sizing for Zstandard Content Encoding", "subseries": [] },
+    "rfc9842": { "title": "Compression Dictionary Transport", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "compression": { "name": "Compression" } }
+}

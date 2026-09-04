@@ -1,0 +1,35 @@
+{
+  "id": 970,
+  "slug": "est",
+  "name": "EST",
+  "description": "Enrollment over Secure Transport",
+  "parent": "pki",
+  "path": "security/pki/est",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7030", "rfc7894", "rfc8295", "rfc8951", "rfc9148", "rfc9152"],
+  "document_meta": {
+    "rfc7030": { "title": "Enrollment over Secure Transport", "subseries": [] },
+    "rfc7894": {
+      "title": "Alternative Challenge Password Attributes for Enrollment over Secure Transport",
+      "subseries": []
+    },
+    "rfc8295": { "title": "EST (Enrollment over Secure Transport) Extensions", "subseries": [] },
+    "rfc8951": {
+      "title": "Clarification of Enrollment over Secure Transport (EST): Transfer Encodings and ASN.1",
+      "subseries": []
+    },
+    "rfc9148": {
+      "title": "EST-coaps: Enrollment over Secure Transport with the Secure Constrained Application Protocol",
+      "subseries": []
+    },
+    "rfc9152": {
+      "title": "Secure Object Delivery Protocol (SODP) Server Interfaces: NSA's Profile for Delivery of Certificates, Certificate Revocation Lists (CRLs), and Symmetric Keys to Clients",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "pki": { "name": "PKI" } }
+}

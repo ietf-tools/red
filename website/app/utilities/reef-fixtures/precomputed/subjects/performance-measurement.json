@@ -1,0 +1,453 @@
+{
+  "id": 677,
+  "slug": "performance-measurement",
+  "name": "Performance Measurement",
+  "description": "Active and passive network performance metrics and methods",
+  "parent": "network-management",
+  "path": "network-management/performance-measurement",
+  "document_count": 135,
+  "document_count_deep": 138,
+  "retired": false,
+  "children": ["lmap", "owamp", "stamp", "twamp"],
+  "aliases": [],
+  "documents": [
+    "rfc1262",
+    "rfc1273",
+    "rfc2041",
+    "rfc2063",
+    "rfc2064",
+    "rfc2123",
+    "rfc2330",
+    "rfc2498",
+    "rfc2678",
+    "rfc2679",
+    "rfc2680",
+    "rfc2681",
+    "rfc2720",
+    "rfc2721",
+    "rfc2722",
+    "rfc2723",
+    "rfc2724",
+    "rfc3148",
+    "rfc323",
+    "rfc3357",
+    "rfc3393",
+    "rfc3432",
+    "rfc3729",
+    "rfc3763",
+    "rfc392",
+    "rfc4148",
+    "rfc4150",
+    "rfc4656",
+    "rfc4737",
+    "rfc5136",
+    "rfc5236",
+    "rfc5357",
+    "rfc5388",
+    "rfc5481",
+    "rfc5560",
+    "rfc5618",
+    "rfc5644",
+    "rfc573",
+    "rfc5814",
+    "rfc5835",
+    "rfc5938",
+    "rfc6038",
+    "rfc6049",
+    "rfc6248",
+    "rfc6349",
+    "rfc6374",
+    "rfc6375",
+    "rfc6390",
+    "rfc6534",
+    "rfc6576",
+    "rfc6673",
+    "rfc6703",
+    "rfc6776",
+    "rfc6777",
+    "rfc6798",
+    "rfc6802",
+    "rfc6808",
+    "rfc6843",
+    "rfc6958",
+    "rfc6990",
+    "rfc7002",
+    "rfc7003",
+    "rfc7004",
+    "rfc7005",
+    "rfc7097",
+    "rfc7133",
+    "rfc7226",
+    "rfc7243",
+    "rfc7244",
+    "rfc7266",
+    "rfc7290",
+    "rfc7294",
+    "rfc7297",
+    "rfc7312",
+    "rfc7380",
+    "rfc7398",
+    "rfc7456",
+    "rfc7497",
+    "rfc7509",
+    "rfc7536",
+    "rfc7594",
+    "rfc7679",
+    "rfc7680",
+    "rfc7717",
+    "rfc7718",
+    "rfc7750",
+    "rfc7799",
+    "rfc7820",
+    "rfc7867",
+    "rfc7876",
+    "rfc7982",
+    "rfc8015",
+    "rfc8169",
+    "rfc8186",
+    "rfc8193",
+    "rfc8194",
+    "rfc8250",
+    "rfc8321",
+    "rfc8337",
+    "rfc8428",
+    "rfc8451",
+    "rfc8468",
+    "rfc8545",
+    "rfc8571",
+    "rfc8762",
+    "rfc8790",
+    "rfc8798",
+    "rfc8889",
+    "rfc8911",
+    "rfc8912",
+    "rfc8913",
+    "rfc8972",
+    "rfc9097",
+    "rfc9100",
+    "rfc9193",
+    "rfc9197",
+    "rfc9198",
+    "rfc9322",
+    "rfc9326",
+    "rfc9341",
+    "rfc9342",
+    "rfc9359",
+    "rfc9378",
+    "rfc9486",
+    "rfc9503",
+    "rfc9506",
+    "rfc9533",
+    "rfc9534",
+    "rfc9544",
+    "rfc9571",
+    "rfc9617",
+    "rfc9714",
+    "rfc9779",
+    "rfc9946",
+    "rfc9951"
+  ],
+  "document_meta": {
+    "rfc1262": { "title": "Guidelines for Internet Measurement Activities", "subseries": [] },
+    "rfc1273": {
+      "title": "Measurement Study of Changes in Service-Level Reachability in the Global TCP/IP Internet: Goals, Experimental Design, Implementation, and Policy Considerations",
+      "subseries": []
+    },
+    "rfc2041": { "title": "Mobile Network Tracing", "subseries": [] },
+    "rfc2063": { "title": "Traffic Flow Measurement:  Architecture", "subseries": [] },
+    "rfc2064": { "title": "Traffic Flow Measurement:  Meter MIB", "subseries": [] },
+    "rfc2123": { "title": "Traffic Flow Measurement: Experiences with NeTraMet", "subseries": [] },
+    "rfc2330": { "title": "Framework for IP Performance Metrics", "subseries": [] },
+    "rfc2498": { "title": "IPPM Metrics for Measuring Connectivity", "subseries": [] },
+    "rfc2678": { "title": "IPPM Metrics for Measuring Connectivity", "subseries": [] },
+    "rfc2679": { "title": "A One-way Delay Metric for IPPM", "subseries": [] },
+    "rfc2680": { "title": "A One-way Packet Loss Metric for IPPM", "subseries": [] },
+    "rfc2681": { "title": "A Round-trip Delay Metric for IPPM", "subseries": [] },
+    "rfc2720": { "title": "Traffic Flow Measurement: Meter MIB", "subseries": [] },
+    "rfc2721": { "title": "RTFM: Applicability Statement", "subseries": [] },
+    "rfc2722": { "title": "Traffic Flow Measurement: Architecture", "subseries": [] },
+    "rfc2723": {
+      "title": "SRL: A Language for Describing Traffic Flows and Specifying Actions for Flow Groups",
+      "subseries": []
+    },
+    "rfc2724": { "title": "RTFM: New Attributes for Traffic Flow Measurement", "subseries": [] },
+    "rfc3148": { "title": "A Framework for Defining Empirical Bulk Transfer Capacity Metrics", "subseries": [] },
+    "rfc323": { "title": "Formation of Network Measurement Group (NMG)", "subseries": [] },
+    "rfc3357": { "title": "One-way Loss Pattern Sample Metrics", "subseries": [] },
+    "rfc3393": { "title": "IP Packet Delay Variation Metric for IP Performance Metrics (IPPM)", "subseries": [] },
+    "rfc3432": { "title": "Network performance measurement with periodic streams", "subseries": [] },
+    "rfc3729": { "title": "Application Performance Measurement MIB", "subseries": [] },
+    "rfc3763": { "title": "One-way Active Measurement Protocol (OWAMP) Requirements", "subseries": [] },
+    "rfc392": { "title": "Measurement of host costs for transmitting network data", "subseries": [] },
+    "rfc4148": { "title": "IP Performance Metrics (IPPM) Metrics Registry", "subseries": ["bcp108"] },
+    "rfc4150": { "title": "Transport Performance Metrics MIB", "subseries": [] },
+    "rfc4656": { "title": "A One-way Active Measurement Protocol (OWAMP)", "subseries": [] },
+    "rfc4737": { "title": "Packet Reordering Metrics", "subseries": [] },
+    "rfc5136": { "title": "Defining Network Capacity", "subseries": [] },
+    "rfc5236": { "title": "Improved Packet Reordering Metrics", "subseries": [] },
+    "rfc5357": { "title": "A Two-Way Active Measurement Protocol (TWAMP)", "subseries": [] },
+    "rfc5388": { "title": "Information Model and XML Data Model for Traceroute Measurements", "subseries": [] },
+    "rfc5481": { "title": "Packet Delay Variation Applicability Statement", "subseries": [] },
+    "rfc5560": { "title": "A One-Way Packet Duplication Metric", "subseries": [] },
+    "rfc5618": { "title": "Mixed Security Mode for the Two-Way Active Measurement Protocol (TWAMP)", "subseries": [] },
+    "rfc5644": { "title": "IP Performance Metrics (IPPM): Spatial and Multicast", "subseries": [] },
+    "rfc573": { "title": "DATA AND FILE TRANSFER - SOME MEASUREMENT RESULTS", "subseries": [] },
+    "rfc5814": {
+      "title": "Label Switched Path (LSP) Dynamic Provisioning Performance Metrics in Generalized MPLS Networks",
+      "subseries": []
+    },
+    "rfc5835": { "title": "Framework for Metric Composition", "subseries": [] },
+    "rfc5938": {
+      "title": "Individual Session Control Feature for the Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc6038": {
+      "title": "Two-Way Active Measurement Protocol (TWAMP) Reflect Octets and Symmetrical Size Features",
+      "subseries": []
+    },
+    "rfc6049": { "title": "Spatial Composition of Metrics", "subseries": [] },
+    "rfc6248": {
+      "title": "RFC 4148 and the IP Performance Metrics (IPPM) Registry of Metrics Are Obsolete",
+      "subseries": []
+    },
+    "rfc6349": { "title": "Framework for TCP Throughput Testing", "subseries": [] },
+    "rfc6374": { "title": "Packet Loss and Delay Measurement for MPLS Networks", "subseries": [] },
+    "rfc6375": {
+      "title": "A Packet Loss and Delay Measurement Profile for MPLS-Based Transport Networks",
+      "subseries": []
+    },
+    "rfc6390": { "title": "Guidelines for Considering New Performance Metric Development", "subseries": ["bcp170"] },
+    "rfc6534": { "title": "Loss Episode Metrics for IP Performance Metrics (IPPM)", "subseries": [] },
+    "rfc6576": { "title": "IP Performance Metrics (IPPM) Standard Advancement Testing", "subseries": ["bcp176"] },
+    "rfc6673": { "title": "Round-Trip Packet Loss Metrics", "subseries": [] },
+    "rfc6703": { "title": "Reporting IP Network Performance Metrics: Different Points of View", "subseries": [] },
+    "rfc6776": {
+      "title": "Measurement Identity and Information Reporting Using a Source Description (SDES) Item and an RTCP Extended Report (XR) Block",
+      "subseries": []
+    },
+    "rfc6777": {
+      "title": "Label Switched Path (LSP) Data Path Delay Metrics in Generalized MPLS and MPLS Traffic Engineering (MPLS-TE) Networks",
+      "subseries": []
+    },
+    "rfc6798": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Packet Delay Variation Metric Reporting",
+      "subseries": []
+    },
+    "rfc6802": { "title": "Ericsson Two-Way Active Measurement Protocol (TWAMP) Value-Added Octets", "subseries": [] },
+    "rfc6808": {
+      "title": "Test Plan and Results Supporting Advancement of RFC 2679 on the Standards Track",
+      "subseries": []
+    },
+    "rfc6843": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Delay Metric Reporting",
+      "subseries": []
+    },
+    "rfc6958": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Burst/Gap Loss Metric Reporting",
+      "subseries": []
+    },
+    "rfc6990": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for MPEG-2 Transport Stream (TS) Program Specific Information (PSI) Independent Decodability Statistics Metrics Reporting",
+      "subseries": []
+    },
+    "rfc7002": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Discard Count Metric Reporting",
+      "subseries": []
+    },
+    "rfc7003": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Burst/Gap Discard Metric Reporting",
+      "subseries": []
+    },
+    "rfc7004": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Blocks for Summary Statistics Metrics Reporting",
+      "subseries": []
+    },
+    "rfc7005": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for De-Jitter Buffer Metric Reporting",
+      "subseries": []
+    },
+    "rfc7097": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) for RLE of Discarded Packets",
+      "subseries": []
+    },
+    "rfc7133": { "title": "Information Elements for Data Link Layer Traffic Measurement", "subseries": [] },
+    "rfc7226": { "title": "Requirements for Advanced Multipath in MPLS Networks", "subseries": [] },
+    "rfc7243": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for the Bytes Discarded Metric",
+      "subseries": []
+    },
+    "rfc7244": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Blocks for Synchronization Delay and Offset Metrics Reporting",
+      "subseries": []
+    },
+    "rfc7266": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Blocks for Mean Opinion Score (MOS) Metric Reporting",
+      "subseries": []
+    },
+    "rfc7290": { "title": "Test Plan and Results for Advancing RFC 2680 on the Standards Track", "subseries": [] },
+    "rfc7294": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Blocks for Concealment Metrics Reporting on Audio Applications",
+      "subseries": []
+    },
+    "rfc7297": { "title": "IP Connectivity Provisioning Profile (CPP)", "subseries": [] },
+    "rfc7312": { "title": "Advanced Stream and Sampling Framework for IP Performance Metrics (IPPM)", "subseries": [] },
+    "rfc7380": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for MPEG2 Transport Stream (TS) Program Specific Information (PSI) Decodability Statistics Metrics Reporting",
+      "subseries": []
+    },
+    "rfc7398": {
+      "title": "A Reference Path and Measurement Points for Large-Scale Measurement of Broadband Performance",
+      "subseries": []
+    },
+    "rfc7456": {
+      "title": "Loss and Delay Measurement in Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc7497": { "title": "Rate Measurement Test Protocol Problem Statement and Requirements", "subseries": [] },
+    "rfc7509": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) for Post-Repair Loss Count Metrics",
+      "subseries": []
+    },
+    "rfc7536": { "title": "Large-Scale Broadband Measurement Use Cases", "subseries": [] },
+    "rfc7594": { "title": "A Framework for Large-Scale Measurement of Broadband Performance (LMAP)", "subseries": [] },
+    "rfc7679": { "title": "A One-Way Delay Metric for IP Performance Metrics (IPPM)", "subseries": ["std81"] },
+    "rfc7680": { "title": "A One-Way Loss Metric for IP Performance Metrics (IPPM)", "subseries": ["std82"] },
+    "rfc7717": {
+      "title": "IKEv2-Derived Shared Secret Key for the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc7718": { "title": "Registries for the One-Way Active Measurement Protocol (OWAMP)", "subseries": [] },
+    "rfc7750": {
+      "title": "Differentiated Service Code Point and Explicit Congestion Notification Monitoring in the Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc7799": { "title": "Active and Passive Metrics and Methods (with Hybrid Types In-Between)", "subseries": [] },
+    "rfc7820": {
+      "title": "UDP Checksum Complement in the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc7867": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Loss Concealment Metrics for Video Applications",
+      "subseries": []
+    },
+    "rfc7876": { "title": "UDP Return Path for Packet Loss and Delay Measurement for MPLS Networks", "subseries": [] },
+    "rfc7982": {
+      "title": "Measurement of Round-Trip Time and Fractional Loss Using Session Traversal Utilities for NAT (STUN)",
+      "subseries": []
+    },
+    "rfc8015": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for Independent Reporting of Burst/Gap Discard Metrics",
+      "subseries": []
+    },
+    "rfc8169": { "title": "Residence Time Measurement in MPLS Networks", "subseries": [] },
+    "rfc8186": {
+      "title": "Support of the IEEE 1588 Timestamp Format in a Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc8193": { "title": "Information Model for Large-Scale Measurement Platforms (LMAPs)", "subseries": [] },
+    "rfc8194": { "title": "A YANG Data Model for LMAP Measurement Agents", "subseries": [] },
+    "rfc8250": { "title": "IPv6 Performance and Diagnostic Metrics (PDM) Destination Option", "subseries": [] },
+    "rfc8321": { "title": "Alternate-Marking Method for Passive and Hybrid Performance Monitoring", "subseries": [] },
+    "rfc8337": { "title": "Model-Based Metrics for Bulk Transport Capacity", "subseries": [] },
+    "rfc8428": { "title": "Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8451": {
+      "title": "Considerations for Selecting RTP Control Protocol (RTCP) Extended Report (XR) Metrics for the WebRTC Statistics API",
+      "subseries": []
+    },
+    "rfc8468": {
+      "title": "IPv4, IPv6, and IPv4-IPv6 Coexistence: Updates for the IP Performance Metrics (IPPM) Framework",
+      "subseries": []
+    },
+    "rfc8545": {
+      "title": "Well-Known Port Assignments for the One-Way Active Measurement Protocol (OWAMP) and the Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc8571": {
+      "title": "BGP - Link State (BGP-LS) Advertisement of IGP Traffic Engineering Performance Metric Extensions",
+      "subseries": []
+    },
+    "rfc8762": { "title": "Simple Two-Way Active Measurement Protocol", "subseries": [] },
+    "rfc8790": { "title": "FETCH and PATCH with Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8798": { "title": "Additional Units for Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8889": {
+      "title": "Multipoint Alternate-Marking Method for Passive and Hybrid Performance Monitoring",
+      "subseries": []
+    },
+    "rfc8911": { "title": "Registry for Performance Metrics", "subseries": [] },
+    "rfc8912": { "title": "Initial Performance Metrics Registry Entries", "subseries": [] },
+    "rfc8913": { "title": "Two-Way Active Measurement Protocol (TWAMP) YANG Data Model", "subseries": [] },
+    "rfc8972": { "title": "Simple Two-Way Active Measurement Protocol Optional Extensions", "subseries": [] },
+    "rfc9097": { "title": "Metrics and Methods for One-Way IP Capacity", "subseries": [] },
+    "rfc9100": { "title": "Sensor Measurement Lists (SenML) Features and Versions", "subseries": [] },
+    "rfc9193": {
+      "title": "Sensor Measurement Lists (SenML) Fields for Indicating Data Value Content-Format",
+      "subseries": []
+    },
+    "rfc9197": {
+      "title": "Data Fields for In Situ Operations, Administration, and Maintenance (IOAM)",
+      "subseries": []
+    },
+    "rfc9198": { "title": "Advanced Unidirectional Route Assessment (AURA)", "subseries": [] },
+    "rfc9322": {
+      "title": "In Situ Operations, Administration, and Maintenance (IOAM) Loopback and Active Flags",
+      "subseries": []
+    },
+    "rfc9326": {
+      "title": "In Situ Operations, Administration, and Maintenance (IOAM) Direct Exporting",
+      "subseries": []
+    },
+    "rfc9341": { "title": "Alternate-Marking Method", "subseries": [] },
+    "rfc9342": { "title": "Clustered Alternate-Marking Method", "subseries": [] },
+    "rfc9359": { "title": "Echo Request/Reply for Enabled In Situ OAM (IOAM) Capabilities", "subseries": [] },
+    "rfc9378": { "title": "In Situ Operations, Administration, and Maintenance (IOAM) Deployment", "subseries": [] },
+    "rfc9486": {
+      "title": "IPv6 Options for In Situ Operations, Administration, and Maintenance (IOAM)",
+      "subseries": []
+    },
+    "rfc9503": {
+      "title": "Simple Two-Way Active Measurement Protocol (STAMP) Extensions for Segment Routing Networks",
+      "subseries": []
+    },
+    "rfc9506": { "title": "Explicit Host-to-Network Flow Measurements Techniques", "subseries": [] },
+    "rfc9533": {
+      "title": "One-Way and Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group",
+      "subseries": []
+    },
+    "rfc9534": {
+      "title": "Simple Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group",
+      "subseries": []
+    },
+    "rfc9544": {
+      "title": "Precision Availability Metrics (PAMs) for Services Governed by Service Level Objectives (SLOs)",
+      "subseries": []
+    },
+    "rfc9571": {
+      "title": "Extension of RFC 6374-Based Performance Measurement Using Synonymous Flow Labels",
+      "subseries": []
+    },
+    "rfc9617": {
+      "title": "A YANG Data Model for In Situ Operations, Administration, and Maintenance (IOAM)",
+      "subseries": []
+    },
+    "rfc9714": {
+      "title": "Encapsulation for MPLS Performance Measurement with the Alternate-Marking Method",
+      "subseries": []
+    },
+    "rfc9779": {
+      "title": "Performance Measurement for Segment Routing Networks with the MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9946": {
+      "title": "The UDP Speed Test Protocol (UDPSTP) for One-Way IP Capacity Metric Measurement",
+      "subseries": []
+    },
+    "rfc9951": { "title": "Export of Delay Performance Metrics in IP Flow Information Export (IPFIX)", "subseries": [] }
+  },
+  "subject_meta": {
+    "network-management": { "name": "Network Management" },
+    "lmap": { "name": "LMAP" },
+    "owamp": { "name": "OWAMP" },
+    "stamp": { "name": "STAMP" },
+    "twamp": { "name": "TWAMP" }
+  }
+}

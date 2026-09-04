@@ -1,0 +1,16 @@
+{
+  "id": 675,
+  "slug": "ovsdb",
+  "name": "OVSDB",
+  "description": "The Open vSwitch Database management protocol",
+  "parent": "network-management",
+  "path": "network-management/ovsdb",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7047"],
+  "document_meta": { "rfc7047": { "title": "The Open vSwitch Database Management Protocol", "subseries": [] } },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

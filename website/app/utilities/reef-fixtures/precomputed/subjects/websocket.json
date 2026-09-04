@@ -1,0 +1,63 @@
+{
+  "id": 797,
+  "slug": "websocket",
+  "name": "WebSocket",
+  "description": "The WebSocket protocol",
+  "parent": "web",
+  "path": "web/websocket",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6455",
+    "rfc7118",
+    "rfc7355",
+    "rfc7395",
+    "rfc7478",
+    "rfc7692",
+    "rfc7936",
+    "rfc7977",
+    "rfc8124",
+    "rfc8307",
+    "rfc8857",
+    "rfc8887"
+  ],
+  "document_meta": {
+    "rfc6455": { "title": "The WebSocket Protocol", "subseries": [] },
+    "rfc7118": {
+      "title": "The WebSocket Protocol as a Transport for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7355": {
+      "title": "Indicating WebSocket Protocol as a Transport in the Session Initiation Protocol (SIP) Common Log Format (CLF)",
+      "subseries": []
+    },
+    "rfc7395": {
+      "title": "An Extensible Messaging and Presence Protocol (XMPP) Subprotocol for WebSocket",
+      "subseries": []
+    },
+    "rfc7478": { "title": "Web Real-Time Communication Use Cases and Requirements", "subseries": [] },
+    "rfc7692": { "title": "Compression Extensions for WebSocket", "subseries": [] },
+    "rfc7936": {
+      "title": "Clarifying Registry Procedures for the WebSocket Subprotocol Name Registry",
+      "subseries": []
+    },
+    "rfc7977": {
+      "title": "The WebSocket Protocol as a Transport for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc8124": {
+      "title": "The Session Description Protocol (SDP) WebSocket Connection URI Attribute",
+      "subseries": []
+    },
+    "rfc8307": { "title": "Well-Known URIs for the WebSocket Protocol", "subseries": [] },
+    "rfc8857": {
+      "title": "The WebSocket Protocol as a Transport for the Binary Floor Control Protocol (BFCP)",
+      "subseries": []
+    },
+    "rfc8887": { "title": "A JSON Meta Application Protocol (JMAP) Subprotocol for WebSocket", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" } }
+}

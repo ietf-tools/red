@@ -1,0 +1,32 @@
+{
+  "id": 665,
+  "slug": "uuid",
+  "name": "UUID",
+  "description": "Universally Unique Identifiers",
+  "parent": "naming",
+  "path": "naming/uuid",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1439", "rfc3501", "rfc4122", "rfc4530", "rfc6355", "rfc7669", "rfc7989", "rfc9562", "rfc9586"],
+  "document_meta": {
+    "rfc1439": { "title": "The Uniqueness of Unique Identifiers", "subseries": [] },
+    "rfc3501": { "title": "INTERNET MESSAGE ACCESS PROTOCOL - VERSION 4rev1", "subseries": [] },
+    "rfc4122": { "title": "A Universally Unique IDentifier (UUID) URN Namespace", "subseries": [] },
+    "rfc4530": {
+      "title": "Lightweight Directory Access Protocol (LDAP) entryUUID Operational Attribute",
+      "subseries": []
+    },
+    "rfc6355": { "title": "Definition of the UUID-Based DHCPv6 Unique Identifier (DUID-UUID)", "subseries": [] },
+    "rfc7669": { "title": "Assigning Digital Object Identifiers to RFCs", "subseries": [] },
+    "rfc7989": {
+      "title": "End-to-End Session Identification in IP-Based Multimedia Communication Networks",
+      "subseries": []
+    },
+    "rfc9562": { "title": "Universally Unique IDentifiers (UUIDs)", "subseries": [] },
+    "rfc9586": { "title": "IMAP Extension for Using and Returning Unique Identifiers (UIDs) Only", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

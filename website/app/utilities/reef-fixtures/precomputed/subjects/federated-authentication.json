@@ -1,0 +1,66 @@
+{
+  "id": 738,
+  "slug": "federated-authentication",
+  "name": "Federated Authentication",
+  "description": "Cross-domain federated authentication frameworks",
+  "parent": "security",
+  "path": "security/federated-authentication",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6595",
+    "rfc7055",
+    "rfc7056",
+    "rfc7057",
+    "rfc7521",
+    "rfc7522",
+    "rfc7773",
+    "rfc7831",
+    "rfc7832",
+    "rfc7833",
+    "rfc8409",
+    "rfc8485"
+  ],
+  "document_meta": {
+    "rfc6595": {
+      "title": "A Simple Authentication and Security Layer (SASL) and GSS-API Mechanism for the Security Assertion Markup Language (SAML)",
+      "subseries": []
+    },
+    "rfc7055": { "title": "A GSS-API Mechanism for the Extensible Authentication Protocol", "subseries": [] },
+    "rfc7056": {
+      "title": "Name Attributes for the GSS-API Extensible Authentication Protocol (EAP) Mechanism",
+      "subseries": []
+    },
+    "rfc7057": {
+      "title": "Update to the Extensible Authentication Protocol (EAP) Applicability Statement for Application Bridging for Federated Access Beyond Web (ABFAB)",
+      "subseries": []
+    },
+    "rfc7521": {
+      "title": "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7522": {
+      "title": "Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7773": { "title": "Authentication Context Certificate Extension", "subseries": [] },
+    "rfc7831": {
+      "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Architecture",
+      "subseries": []
+    },
+    "rfc7832": { "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Use Cases", "subseries": [] },
+    "rfc7833": {
+      "title": "A RADIUS Attribute, Binding, Profiles, Name Identifier Format, and Confirmation Methods for the Security Assertion Markup Language (SAML)",
+      "subseries": []
+    },
+    "rfc8409": {
+      "title": "The Entity Category Security Assertion Markup Language (SAML) Attribute Types",
+      "subseries": []
+    },
+    "rfc8485": { "title": "Vectors of Trust", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

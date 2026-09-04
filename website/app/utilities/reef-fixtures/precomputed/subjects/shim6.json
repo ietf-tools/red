@@ -1,0 +1,33 @@
+{
+  "id": 1004,
+  "slug": "shim6",
+  "name": "Shim6",
+  "description": "The Shim6 host multihoming shim",
+  "parent": "multihoming",
+  "path": "internet-layer/addressing/multihoming/shim6",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc5533", "rfc5534", "rfc5535", "rfc6316", "rfc6317", "rfc6629"],
+  "document_meta": {
+    "rfc5533": { "title": "Shim6: Level 3 Multihoming Shim Protocol for IPv6", "subseries": [] },
+    "rfc5534": {
+      "title": "Failure Detection and Locator Pair Exploration Protocol for IPv6 Multihoming",
+      "subseries": []
+    },
+    "rfc5535": { "title": "Hash-Based Addresses (HBA)", "subseries": [] },
+    "rfc6316": { "title": "Sockets Application Program Interface (API) for Multihoming Shim", "subseries": [] },
+    "rfc6317": { "title": "Basic Socket Interface Extensions for the Host Identity Protocol (HIP)", "subseries": [] },
+    "rfc6629": {
+      "title": "Considerations on the Application of the Level 3 Multihoming Shim Protocol for IPv6 (Shim6)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "addressing": { "name": "Addressing" },
+    "multihoming": { "name": "Multihoming" }
+  }
+}

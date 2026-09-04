@@ -1,0 +1,24 @@
+{
+  "id": 555,
+  "slug": "gopher",
+  "name": "Gopher",
+  "description": "The Gopher document retrieval protocol",
+  "parent": "applications",
+  "path": "applications/gopher",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1436", "rfc1580", "rfc1739", "rfc4266"],
+  "document_meta": {
+    "rfc1436": {
+      "title": "The Internet Gopher Protocol (a distributed document search and retrieval protocol)",
+      "subseries": []
+    },
+    "rfc1580": { "title": "Guide to Network Resource Tools", "subseries": ["fyi23"] },
+    "rfc1739": { "title": "A Primer On Internet and TCP/IP Tools", "subseries": [] },
+    "rfc4266": { "title": "The gopher URI Scheme", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

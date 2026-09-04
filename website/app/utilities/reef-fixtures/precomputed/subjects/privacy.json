@@ -1,0 +1,388 @@
+{
+  "id": 755,
+  "slug": "privacy",
+  "name": "Privacy",
+  "description": "Privacy threat models and protocol privacy considerations",
+  "parent": "security",
+  "path": "security/privacy",
+  "document_count": 116,
+  "document_count_deep": 116,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1040",
+    "rfc1113",
+    "rfc1114",
+    "rfc1115",
+    "rfc1281",
+    "rfc1355",
+    "rfc1421",
+    "rfc1422",
+    "rfc1423",
+    "rfc1424",
+    "rfc1984",
+    "rfc1991",
+    "rfc2015",
+    "rfc2315",
+    "rfc2440",
+    "rfc2726",
+    "rfc2804",
+    "rfc3041",
+    "rfc3083",
+    "rfc3156",
+    "rfc3323",
+    "rfc3693",
+    "rfc3694",
+    "rfc3825",
+    "rfc3924",
+    "rfc4079",
+    "rfc4119",
+    "rfc4131",
+    "rfc4589",
+    "rfc4651",
+    "rfc4676",
+    "rfc4683",
+    "rfc4745",
+    "rfc4776",
+    "rfc4882",
+    "rfc4902",
+    "rfc4941",
+    "rfc5139",
+    "rfc5209",
+    "rfc5379",
+    "rfc5403",
+    "rfc5491",
+    "rfc5580",
+    "rfc5606",
+    "rfc5687",
+    "rfc5726",
+    "rfc5767",
+    "rfc5774",
+    "rfc5808",
+    "rfc5870",
+    "rfc5902",
+    "rfc5904",
+    "rfc5985",
+    "rfc5986",
+    "rfc6155",
+    "rfc6225",
+    "rfc6235",
+    "rfc6280",
+    "rfc6444",
+    "rfc6447",
+    "rfc6462",
+    "rfc6753",
+    "rfc6772",
+    "rfc6848",
+    "rfc6915",
+    "rfc6973",
+    "rfc7035",
+    "rfc7105",
+    "rfc7199",
+    "rfc7216",
+    "rfc7258",
+    "rfc7293",
+    "rfc7459",
+    "rfc7624",
+    "rfc7626",
+    "rfc7687",
+    "rfc7721",
+    "rfc7785",
+    "rfc7816",
+    "rfc7819",
+    "rfc7824",
+    "rfc7844",
+    "rfc7861",
+    "rfc7871",
+    "rfc7943",
+    "rfc8065",
+    "rfc8280",
+    "rfc8324",
+    "rfc8386",
+    "rfc8568",
+    "rfc8576",
+    "rfc8828",
+    "rfc8871",
+    "rfc8882",
+    "rfc8932",
+    "rfc8981",
+    "rfc9076",
+    "rfc9156",
+    "rfc9230",
+    "rfc9415",
+    "rfc9416",
+    "rfc9446",
+    "rfc9458",
+    "rfc9498",
+    "rfc9505",
+    "rfc9576",
+    "rfc9577",
+    "rfc9578",
+    "rfc9614",
+    "rfc9620",
+    "rfc9724",
+    "rfc9781",
+    "rfc9788",
+    "rfc9797",
+    "rfc981",
+    "rfc989"
+  ],
+  "document_meta": {
+    "rfc1040": {
+      "title": "Privacy enhancement for Internet electronic mail: Part I: Message encipherment and authentication procedures",
+      "subseries": []
+    },
+    "rfc1113": {
+      "title": "Privacy enhancement for Internet electronic mail: Part I - message encipherment and authentication procedures",
+      "subseries": []
+    },
+    "rfc1114": {
+      "title": "Privacy enhancement for Internet electronic mail: Part II - certificate-based key management",
+      "subseries": []
+    },
+    "rfc1115": {
+      "title": "Privacy enhancement for Internet electronic mail: Part III - algorithms, modes, and identifiers",
+      "subseries": []
+    },
+    "rfc1281": { "title": "Guidelines for the Secure Operation of the Internet", "subseries": [] },
+    "rfc1355": {
+      "title": "Privacy and Accuracy Issues in Network Information Center Databases",
+      "subseries": ["fyi15"]
+    },
+    "rfc1421": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part I: Message Encryption and Authentication Procedures",
+      "subseries": []
+    },
+    "rfc1422": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part II: Certificate-Based Key Management",
+      "subseries": []
+    },
+    "rfc1423": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers",
+      "subseries": []
+    },
+    "rfc1424": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part IV: Key Certification and Related Services",
+      "subseries": []
+    },
+    "rfc1984": {
+      "title": "IAB and IESG Statement on Cryptographic Technology and the Internet",
+      "subseries": ["bcp200"]
+    },
+    "rfc1991": { "title": "PGP Message Exchange Formats", "subseries": [] },
+    "rfc2015": { "title": "MIME Security with Pretty Good Privacy (PGP)", "subseries": [] },
+    "rfc2315": { "title": "PKCS #7: Cryptographic Message Syntax Version 1.5", "subseries": [] },
+    "rfc2440": { "title": "OpenPGP Message Format", "subseries": [] },
+    "rfc2726": { "title": "PGP Authentication for RIPE Database Updates", "subseries": [] },
+    "rfc2804": { "title": "IETF Policy on Wiretapping", "subseries": [] },
+    "rfc3041": { "title": "Privacy Extensions for Stateless Address Autoconfiguration in IPv6", "subseries": [] },
+    "rfc3083": {
+      "title": "Baseline Privacy Interface Management Information Base for DOCSIS Compliant Cable Modems and Cable Modem Termination Systems",
+      "subseries": []
+    },
+    "rfc3156": { "title": "MIME Security with OpenPGP", "subseries": [] },
+    "rfc3323": { "title": "A Privacy Mechanism for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3693": { "title": "Geopriv Requirements", "subseries": [] },
+    "rfc3694": { "title": "Threat Analysis of the Geopriv Protocol", "subseries": [] },
+    "rfc3825": {
+      "title": "Dynamic Host Configuration Protocol Option for Coordinate-based Location Configuration Information",
+      "subseries": []
+    },
+    "rfc3924": { "title": "Cisco Architecture for Lawful Intercept in IP Networks", "subseries": [] },
+    "rfc4079": { "title": "A Presence Architecture for the Distribution of GEOPRIV Location Objects", "subseries": [] },
+    "rfc4119": { "title": "A Presence-based GEOPRIV Location Object Format", "subseries": [] },
+    "rfc4131": {
+      "title": "Management Information Base for Data Over Cable Service Interface Specification (DOCSIS) Cable Modems and Cable Modem Termination Systems for Baseline Privacy Plus",
+      "subseries": []
+    },
+    "rfc4589": { "title": "Location Types Registry", "subseries": [] },
+    "rfc4651": {
+      "title": "A Taxonomy and Analysis of Enhancements to Mobile IPv6 Route Optimization",
+      "subseries": []
+    },
+    "rfc4676": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Option for Civic Addresses Configuration Information",
+      "subseries": []
+    },
+    "rfc4683": {
+      "title": "Internet X.509 Public Key Infrastructure Subject Identification Method (SIM)",
+      "subseries": []
+    },
+    "rfc4745": { "title": "Common Policy: A Document Format for Expressing Privacy Preferences", "subseries": [] },
+    "rfc4776": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Option for Civic Addresses Configuration Information",
+      "subseries": []
+    },
+    "rfc4882": { "title": "IP Address Location Privacy and Mobile IPv6: Problem Statement", "subseries": [] },
+    "rfc4902": {
+      "title": "Integrity, Privacy, and Security in Open Pluggable Edge Services (OPES) for SMTP",
+      "subseries": []
+    },
+    "rfc4941": { "title": "Privacy Extensions for Stateless Address Autoconfiguration in IPv6", "subseries": [] },
+    "rfc5139": {
+      "title": "Revised Civic Location Format for Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc5209": { "title": "Network Endpoint Assessment (NEA): Overview and Requirements", "subseries": [] },
+    "rfc5379": { "title": "Guidelines for Using the Privacy Mechanism for SIP", "subseries": [] },
+    "rfc5403": { "title": "RPCSEC_GSS Version 2", "subseries": [] },
+    "rfc5491": {
+      "title": "GEOPRIV Presence Information Data Format Location Object (PIDF-LO) Usage Clarification, Considerations, and Recommendations",
+      "subseries": []
+    },
+    "rfc5580": { "title": "Carrying Location Objects in RADIUS and Diameter", "subseries": [] },
+    "rfc5606": { "title": "Implications of 'retransmission-allowed' for SIP Location Conveyance", "subseries": [] },
+    "rfc5687": {
+      "title": "GEOPRIV Layer 7 Location Configuration Protocol: Problem Statement and Requirements",
+      "subseries": []
+    },
+    "rfc5726": { "title": "Mobile IPv6 Location Privacy Solutions", "subseries": [] },
+    "rfc5767": { "title": "User-Agent-Driven Privacy Mechanism for SIP", "subseries": [] },
+    "rfc5774": {
+      "title": "Considerations for Civic Addresses in the Presence Information Data Format Location Object (PIDF-LO): Guidelines and IANA Registry Definition",
+      "subseries": ["bcp154"]
+    },
+    "rfc5808": { "title": "Requirements for a Location-by-Reference Mechanism", "subseries": [] },
+    "rfc5870": { "title": "A Uniform Resource Identifier for Geographic Locations ('geo' URI)", "subseries": [] },
+    "rfc5902": { "title": "IAB Thoughts on IPv6 Network Address Translation", "subseries": [] },
+    "rfc5904": {
+      "title": "RADIUS Attributes for IEEE 802.16 Privacy Key Management Version 1 (PKMv1) Protocol Support",
+      "subseries": []
+    },
+    "rfc5985": { "title": "HTTP-Enabled Location Delivery (HELD)", "subseries": [] },
+    "rfc5986": { "title": "Discovering the Local Location Information Server (LIS)", "subseries": [] },
+    "rfc6155": { "title": "Use of Device Identity in HTTP-Enabled Location Delivery (HELD)", "subseries": [] },
+    "rfc6225": {
+      "title": "Dynamic Host Configuration Protocol Options for Coordinate-Based Location Configuration Information",
+      "subseries": []
+    },
+    "rfc6235": { "title": "IP Flow Anonymization Support", "subseries": [] },
+    "rfc6280": {
+      "title": "An Architecture for Location and Location Privacy in Internet Applications",
+      "subseries": ["bcp160"]
+    },
+    "rfc6444": { "title": "Location Hiding: Problem Statement and Requirements", "subseries": [] },
+    "rfc6447": {
+      "title": "Filtering Location Notifications in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6462": { "title": "Report from the Internet Privacy Workshop", "subseries": [] },
+    "rfc6753": {
+      "title": "A Location Dereference Protocol Using HTTP-Enabled Location Delivery (HELD)",
+      "subseries": []
+    },
+    "rfc6772": {
+      "title": "Geolocation Policy: A Document Format for Expressing Privacy Preferences for Location Information",
+      "subseries": []
+    },
+    "rfc6848": {
+      "title": "Specifying Civic Address Extensions in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc6915": { "title": "Flow Identity Extension for HTTP-Enabled Location Delivery (HELD)", "subseries": [] },
+    "rfc6973": { "title": "Privacy Considerations for Internet Protocols", "subseries": [] },
+    "rfc7035": { "title": "Relative Location Representation", "subseries": [] },
+    "rfc7105": {
+      "title": "Using Device-Provided Location-Related Measurements in Location Configuration Protocols",
+      "subseries": []
+    },
+    "rfc7199": { "title": "Location Configuration Extensions for Policy Management", "subseries": [] },
+    "rfc7216": {
+      "title": "Location Information Server (LIS) Discovery Using IP Addresses and Reverse DNS",
+      "subseries": []
+    },
+    "rfc7258": { "title": "Pervasive Monitoring Is an Attack", "subseries": ["bcp188"] },
+    "rfc7293": {
+      "title": "The Require-Recipient-Valid-Since Header Field and SMTP Service Extension",
+      "subseries": []
+    },
+    "rfc7459": {
+      "title": "Representation of Uncertainty and Confidence in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc7624": {
+      "title": "Confidentiality in the Face of Pervasive Surveillance: A Threat Model and Problem Statement",
+      "subseries": []
+    },
+    "rfc7626": { "title": "DNS Privacy Considerations", "subseries": [] },
+    "rfc7687": { "title": "Report from the Strengthening the Internet (STRINT) Workshop", "subseries": [] },
+    "rfc7721": {
+      "title": "Security and Privacy Considerations for IPv6 Address Generation Mechanisms",
+      "subseries": []
+    },
+    "rfc7785": {
+      "title": "Recommendations for Prefix Binding in the Context of Softwire Dual-Stack Lite",
+      "subseries": []
+    },
+    "rfc7816": { "title": "DNS Query Name Minimisation to Improve Privacy", "subseries": [] },
+    "rfc7819": { "title": "Privacy Considerations for DHCP", "subseries": [] },
+    "rfc7824": { "title": "Privacy Considerations for DHCPv6", "subseries": [] },
+    "rfc7844": { "title": "Anonymity Profiles for DHCP Clients", "subseries": [] },
+    "rfc7861": { "title": "Remote Procedure Call (RPC) Security Version 3", "subseries": [] },
+    "rfc7871": { "title": "Client Subnet in DNS Queries", "subseries": [] },
+    "rfc7943": {
+      "title": "A Method for Generating Semantically Opaque Interface Identifiers (IIDs) with the Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc8065": { "title": "Privacy Considerations for IPv6 Adaptation-Layer Mechanisms", "subseries": [] },
+    "rfc8280": { "title": "Research into Human Rights Protocol Considerations", "subseries": [] },
+    "rfc8324": {
+      "title": "DNS Privacy, Authorization, Special Uses, Encoding, Characters, Matching, and Root Structure: Time for Another Look?",
+      "subseries": []
+    },
+    "rfc8386": {
+      "title": "Privacy Considerations for Protocols Relying on IP Broadcast or Multicast",
+      "subseries": []
+    },
+    "rfc8568": { "title": "Network Virtualization Research Challenges", "subseries": [] },
+    "rfc8576": { "title": "Internet of Things (IoT) Security: State of the Art and Challenges", "subseries": [] },
+    "rfc8828": { "title": "WebRTC IP Address Handling Requirements", "subseries": [] },
+    "rfc8871": {
+      "title": "A Solution Framework for Private Media in Privacy-Enhanced RTP Conferencing (PERC)",
+      "subseries": []
+    },
+    "rfc8882": { "title": "DNS-Based Service Discovery (DNS-SD) Privacy and Security Requirements", "subseries": [] },
+    "rfc8932": { "title": "Recommendations for DNS Privacy Service Operators", "subseries": ["bcp232"] },
+    "rfc8981": {
+      "title": "Temporary Address Extensions for Stateless Address Autoconfiguration in IPv6",
+      "subseries": []
+    },
+    "rfc9076": { "title": "DNS Privacy Considerations", "subseries": [] },
+    "rfc9156": { "title": "DNS Query Name Minimisation to Improve Privacy", "subseries": [] },
+    "rfc9230": { "title": "Oblivious DNS over HTTPS", "subseries": [] },
+    "rfc9415": { "title": "On the Generation of Transient Numeric Identifiers", "subseries": [] },
+    "rfc9416": {
+      "title": "Security Considerations for Transient Numeric Identifiers Employed in Network Protocols",
+      "subseries": ["bcp72"]
+    },
+    "rfc9446": { "title": "Reflections on Ten Years Past the Snowden Revelations", "subseries": [] },
+    "rfc9458": { "title": "Oblivious HTTP", "subseries": [] },
+    "rfc9498": { "title": "The GNU Name System", "subseries": [] },
+    "rfc9505": { "title": "A Survey of Worldwide Censorship Techniques", "subseries": [] },
+    "rfc9576": { "title": "The Privacy Pass Architecture", "subseries": [] },
+    "rfc9577": { "title": "The Privacy Pass HTTP Authentication Scheme", "subseries": [] },
+    "rfc9578": { "title": "Privacy Pass Issuance Protocols", "subseries": [] },
+    "rfc9614": { "title": "Partitioning as an Architecture for Privacy", "subseries": [] },
+    "rfc9620": { "title": "Guidelines for Human Rights Protocol and Architecture Considerations", "subseries": [] },
+    "rfc9724": {
+      "title": "State of Affairs for Randomized and Changing Media Access Control (MAC) Addresses",
+      "subseries": []
+    },
+    "rfc9781": {
+      "title": "A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)",
+      "subseries": []
+    },
+    "rfc9788": { "title": "Header Protection for Cryptographically Protected Email", "subseries": [] },
+    "rfc9797": {
+      "title": "Randomized and Changing Media Access Control (MAC) Addresses: Context, Network Impacts, and Use Cases",
+      "subseries": []
+    },
+    "rfc981": { "title": "Experimental multiple-path routing algorithm", "subseries": [] },
+    "rfc989": {
+      "title": "Privacy enhancement for Internet electronic mail: Part I: Message encipherment and authentication procedures",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

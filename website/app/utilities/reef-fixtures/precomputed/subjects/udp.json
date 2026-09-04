@@ -1,0 +1,257 @@
+{
+  "id": 787,
+  "slug": "udp",
+  "name": "UDP",
+  "description": "User Datagram Protocol and its usage guidelines",
+  "parent": "transport",
+  "path": "transport/udp",
+  "document_count": 76,
+  "document_count_deep": 76,
+  "retired": false,
+  "children": ["udp-lite"],
+  "aliases": [],
+  "documents": [
+    "rfc1001",
+    "rfc1002",
+    "rfc1240",
+    "rfc1347",
+    "rfc1791",
+    "rfc1936",
+    "rfc2013",
+    "rfc2147",
+    "rfc2354",
+    "rfc2454",
+    "rfc2508",
+    "rfc2556",
+    "rfc3095",
+    "rfc3096",
+    "rfc3242",
+    "rfc3243",
+    "rfc3257",
+    "rfc3409",
+    "rfc3489",
+    "rfc3519",
+    "rfc3828",
+    "rfc3948",
+    "rfc4019",
+    "rfc4113",
+    "rfc4362",
+    "rfc4380",
+    "rfc4445",
+    "rfc4727",
+    "rfc4787",
+    "rfc4815",
+    "rfc4993",
+    "rfc5097",
+    "rfc5225",
+    "rfc5405",
+    "rfc5426",
+    "rfc5456",
+    "rfc6633",
+    "rfc6679",
+    "rfc6773",
+    "rfc6812",
+    "rfc6935",
+    "rfc6936",
+    "rfc6951",
+    "rfc7345",
+    "rfc7510",
+    "rfc7604",
+    "rfc7605",
+    "rfc7663",
+    "rfc768",
+    "rfc7820",
+    "rfc7821",
+    "rfc7876",
+    "rfc8084",
+    "rfc8085",
+    "rfc8086",
+    "rfc8304",
+    "rfc8357",
+    "rfc8517",
+    "rfc8663",
+    "rfc8724",
+    "rfc8899",
+    "rfc8999",
+    "rfc9000",
+    "rfc9011",
+    "rfc9025",
+    "rfc9298",
+    "rfc9363",
+    "rfc9484",
+    "rfc955",
+    "rfc9566",
+    "rfc9715",
+    "rfc9868",
+    "rfc9869",
+    "rfc9870",
+    "rfc9946",
+    "rfc9984"
+  ],
+  "document_meta": {
+    "rfc1001": {
+      "title": "Protocol standard for a NetBIOS service on a TCP/UDP transport: Concepts and methods",
+      "subseries": ["std19"]
+    },
+    "rfc1002": {
+      "title": "Protocol standard for a NetBIOS service on a TCP/UDP transport: Detailed specifications",
+      "subseries": ["std19"]
+    },
+    "rfc1240": { "title": "OSI connectionless transport services on top of UDP: Version 1", "subseries": [] },
+    "rfc1347": {
+      "title": "TCP and UDP with Bigger Addresses (TUBA), A Simple Proposal for Internet Addressing and Routing",
+      "subseries": []
+    },
+    "rfc1791": { "title": "TCP And UDP Over IPX Networks With Fixed Path MTU", "subseries": [] },
+    "rfc1936": { "title": "Implementing the Internet Checksum in Hardware", "subseries": [] },
+    "rfc2013": {
+      "title": "SNMPv2 Management Information Base for the User Datagram Protocol using SMIv2",
+      "subseries": []
+    },
+    "rfc2147": { "title": "TCP and UDP over IPv6 Jumbograms", "subseries": [] },
+    "rfc2354": { "title": "Options for Repair of Streaming Media", "subseries": [] },
+    "rfc2454": { "title": "IP Version 6 Management Information Base for the User Datagram Protocol", "subseries": [] },
+    "rfc2508": { "title": "Compressing IP/UDP/RTP Headers for Low-Speed Serial Links", "subseries": [] },
+    "rfc2556": {
+      "title": "OSI connectionless transport services on top of UDP Applicability Statement for Historic Status",
+      "subseries": []
+    },
+    "rfc3095": {
+      "title": "RObust Header Compression (ROHC): Framework and four profiles: RTP, UDP, ESP, and uncompressed",
+      "subseries": []
+    },
+    "rfc3096": { "title": "Requirements for robust IP/UDP/RTP header compression", "subseries": [] },
+    "rfc3242": {
+      "title": "RObust Header Compression (ROHC): A Link-Layer Assisted Profile for IP/UDP/RTP",
+      "subseries": []
+    },
+    "rfc3243": {
+      "title": "RObust Header Compression (ROHC): Requirements and Assumptions for 0-byte IP/UDP/RTP Compression",
+      "subseries": []
+    },
+    "rfc3257": { "title": "Stream Control Transmission Protocol Applicability Statement", "subseries": [] },
+    "rfc3409": { "title": "Lower Layer Guidelines for Robust RTP/UDP/IP Header Compression", "subseries": [] },
+    "rfc3489": {
+      "title": "STUN - Simple Traversal of User Datagram Protocol (UDP) Through Network Address Translators (NATs)",
+      "subseries": []
+    },
+    "rfc3519": { "title": "Mobile IP Traversal of Network Address Translation (NAT) Devices", "subseries": [] },
+    "rfc3828": { "title": "The Lightweight User Datagram Protocol (UDP-Lite)", "subseries": [] },
+    "rfc3948": { "title": "UDP Encapsulation of IPsec ESP Packets", "subseries": [] },
+    "rfc4019": {
+      "title": "RObust Header Compression (ROHC): Profiles for User Datagram Protocol (UDP) Lite",
+      "subseries": []
+    },
+    "rfc4113": { "title": "Management Information Base for the User Datagram Protocol (UDP)", "subseries": [] },
+    "rfc4362": {
+      "title": "RObust Header Compression (ROHC): A Link-Layer Assisted Profile for IP/UDP/RTP",
+      "subseries": []
+    },
+    "rfc4380": {
+      "title": "Teredo: Tunneling IPv6 over UDP through Network Address Translations (NATs)",
+      "subseries": []
+    },
+    "rfc4445": { "title": "A Proposed Media Delivery Index (MDI)", "subseries": [] },
+    "rfc4727": { "title": "Experimental Values In IPv4, IPv6, ICMPv4, ICMPv6, UDP, and TCP Headers", "subseries": [] },
+    "rfc4787": {
+      "title": "Network Address Translation (NAT) Behavioral Requirements for Unicast UDP",
+      "subseries": ["bcp127"]
+    },
+    "rfc4815": {
+      "title": "RObust Header Compression (ROHC): Corrections and Clarifications to RFC 3095",
+      "subseries": []
+    },
+    "rfc4993": {
+      "title": "A Lightweight UDP Transfer Protocol for the Internet Registry Information Service",
+      "subseries": []
+    },
+    "rfc5097": { "title": "MIB for the UDP-Lite protocol", "subseries": [] },
+    "rfc5225": {
+      "title": "RObust Header Compression Version 2 (ROHCv2): Profiles for RTP, UDP, IP, ESP and UDP-Lite",
+      "subseries": []
+    },
+    "rfc5405": { "title": "Unicast UDP Usage Guidelines for Application Designers", "subseries": [] },
+    "rfc5426": { "title": "Transmission of Syslog Messages over UDP", "subseries": [] },
+    "rfc5456": { "title": "IAX: Inter-Asterisk eXchange Version 2", "subseries": [] },
+    "rfc6633": { "title": "Deprecation of ICMP Source Quench Messages", "subseries": [] },
+    "rfc6679": { "title": "Explicit Congestion Notification (ECN) for RTP over UDP", "subseries": [] },
+    "rfc6773": {
+      "title": "DCCP-UDP: A Datagram Congestion Control Protocol UDP Encapsulation for NAT Traversal",
+      "subseries": []
+    },
+    "rfc6812": { "title": "Cisco Service-Level Assurance Protocol", "subseries": [] },
+    "rfc6935": { "title": "IPv6 and UDP Checksums for Tunneled Packets", "subseries": [] },
+    "rfc6936": {
+      "title": "Applicability Statement for the Use of IPv6 UDP Datagrams with Zero Checksums",
+      "subseries": []
+    },
+    "rfc6951": {
+      "title": "UDP Encapsulation of Stream Control Transmission Protocol (SCTP) Packets for End-Host to End-Host Communication",
+      "subseries": []
+    },
+    "rfc7345": {
+      "title": "UDP Transport Layer (UDPTL) over Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7510": { "title": "Encapsulating MPLS in UDP", "subseries": [] },
+    "rfc7604": {
+      "title": "Comparison of Different NAT Traversal Techniques for Media Controlled by the Real-Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc7605": { "title": "Recommendations on Using Assigned Transport Port Numbers", "subseries": ["bcp165"] },
+    "rfc7663": {
+      "title": "Report from the IAB Workshop on Stack Evolution in a Middlebox Internet (SEMI)",
+      "subseries": []
+    },
+    "rfc768": { "title": "User Datagram Protocol", "subseries": ["std6"] },
+    "rfc7820": {
+      "title": "UDP Checksum Complement in the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc7821": { "title": "UDP Checksum Complement in the Network Time Protocol (NTP)", "subseries": [] },
+    "rfc7876": { "title": "UDP Return Path for Packet Loss and Delay Measurement for MPLS Networks", "subseries": [] },
+    "rfc8084": { "title": "Network Transport Circuit Breakers", "subseries": ["bcp208"] },
+    "rfc8085": { "title": "UDP Usage Guidelines", "subseries": ["bcp145"] },
+    "rfc8086": { "title": "GRE-in-UDP Encapsulation", "subseries": [] },
+    "rfc8304": {
+      "title": "Transport Features of the User Datagram Protocol (UDP) and Lightweight UDP (UDP-Lite)",
+      "subseries": []
+    },
+    "rfc8357": { "title": "Generalized UDP Source Port for DHCP Relay", "subseries": [] },
+    "rfc8517": {
+      "title": "An Inventory of Transport-Centric Functions Provided by Middleboxes: An Operator Perspective",
+      "subseries": []
+    },
+    "rfc8663": { "title": "MPLS Segment Routing over IP", "subseries": [] },
+    "rfc8724": {
+      "title": "SCHC: Generic Framework for Static Context Header Compression and Fragmentation",
+      "subseries": []
+    },
+    "rfc8899": { "title": "Packetization Layer Path MTU Discovery for Datagram Transports", "subseries": [] },
+    "rfc8999": { "title": "Version-Independent Properties of QUIC", "subseries": [] },
+    "rfc9000": { "title": "QUIC: A UDP-Based Multiplexed and Secure Transport", "subseries": [] },
+    "rfc9011": { "title": "Static Context Header Compression and Fragmentation (SCHC) over LoRaWAN", "subseries": [] },
+    "rfc9025": { "title": "Deterministic Networking (DetNet) Data Plane: MPLS over UDP/IP", "subseries": [] },
+    "rfc9298": { "title": "Proxying UDP in HTTP", "subseries": [] },
+    "rfc9363": { "title": "A YANG Data Model for Static Context Header Compression (SCHC)", "subseries": [] },
+    "rfc9484": { "title": "Proxying IP in HTTP", "subseries": [] },
+    "rfc955": { "title": "Towards a transport service for transaction processing applications", "subseries": [] },
+    "rfc9566": {
+      "title": "Deterministic Networking (DetNet) Packet Replication, Elimination, and Ordering Functions (PREOF) via MPLS over UDP/IP",
+      "subseries": []
+    },
+    "rfc9715": { "title": "IP Fragmentation Avoidance in DNS over UDP", "subseries": [] },
+    "rfc9868": { "title": "Transport Options for UDP", "subseries": [] },
+    "rfc9869": {
+      "title": "Datagram Packetization Layer Path MTU Discovery (DPLPMTUD) for UDP Options",
+      "subseries": []
+    },
+    "rfc9870": { "title": "Export of UDP Options Information in IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc9946": {
+      "title": "The UDP Speed Test Protocol (UDPSTP) for One-Way IP Capacity Metric Measurement",
+      "subseries": []
+    },
+    "rfc9984": { "title": "YANG Groupings for UDP Clients and UDP Servers", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "udp-lite": { "name": "UDP-Lite" } }
+}

@@ -1,0 +1,23 @@
+{
+  "id": 622,
+  "slug": "suit",
+  "name": "SUIT",
+  "description": "Software update for IoT devices",
+  "parent": "iot",
+  "path": "iot/suit",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8240", "rfc9019", "rfc9124"],
+  "document_meta": {
+    "rfc8240": { "title": "Report from the Internet of Things Software Update (IoTSU) Workshop 2016", "subseries": [] },
+    "rfc9019": { "title": "A Firmware Update Architecture for Internet of Things", "subseries": [] },
+    "rfc9124": {
+      "title": "A Manifest Information Model for Firmware Updates in Internet of Things (IoT) Devices",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

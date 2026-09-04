@@ -1,0 +1,24 @@
+{
+  "id": 719,
+  "slug": "rift",
+  "name": "RIFT",
+  "description": "RIFT: Routing in Fat Trees",
+  "parent": "routing",
+  "path": "routing/rift",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9692", "rfc9696", "rfc9719", "rfc9992"],
+  "document_meta": {
+    "rfc9692": { "title": "RIFT: Routing in Fat Trees", "subseries": [] },
+    "rfc9696": { "title": "Routing in Fat Trees (RIFT) Applicability and Operational Considerations", "subseries": [] },
+    "rfc9719": { "title": "YANG Data Model for Routing in Fat Trees (RIFT)", "subseries": [] },
+    "rfc9992": {
+      "title": "Routing in Fat Trees (RIFT) Key/Value Topology Information Elements Structure and Processing",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

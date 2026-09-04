@@ -1,0 +1,242 @@
+{
+  "id": 950,
+  "slug": "elliptic-curve",
+  "name": "Elliptic-Curve Cryptography",
+  "description": "Elliptic curve cryptography",
+  "parent": "cryptography",
+  "path": "security/cryptography/elliptic-curve",
+  "document_count": 60,
+  "document_count_deep": 71,
+  "retired": false,
+  "children": ["curve25519", "eddsa"],
+  "aliases": [],
+  "documents": [
+    "rfc10015",
+    "rfc10024",
+    "rfc3278",
+    "rfc4050",
+    "rfc4492",
+    "rfc4753",
+    "rfc4754",
+    "rfc4869",
+    "rfc5091",
+    "rfc5114",
+    "rfc5289",
+    "rfc5349",
+    "rfc5480",
+    "rfc5489",
+    "rfc5639",
+    "rfc5656",
+    "rfc5753",
+    "rfc5754",
+    "rfc5758",
+    "rfc5903",
+    "rfc5915",
+    "rfc6090",
+    "rfc6161",
+    "rfc6162",
+    "rfc6278",
+    "rfc6379",
+    "rfc6507",
+    "rfc6594",
+    "rfc6605",
+    "rfc6637",
+    "rfc6932",
+    "rfc6954",
+    "rfc6955",
+    "rfc6979",
+    "rfc6989",
+    "rfc7027",
+    "rfc7251",
+    "rfc7427",
+    "rfc7664",
+    "rfc7748",
+    "rfc7836",
+    "rfc7859",
+    "rfc8037",
+    "rfc8133",
+    "rfc8152",
+    "rfc8410",
+    "rfc8418",
+    "rfc8422",
+    "rfc8423",
+    "rfc8608",
+    "rfc8692",
+    "rfc8731",
+    "rfc8734",
+    "rfc8813",
+    "rfc9053",
+    "rfc9142",
+    "rfc9295",
+    "rfc9380",
+    "rfc9496",
+    "rfc9497"
+  ],
+  "document_meta": {
+    "rfc10015": { "title": "Deprecating Obsolete Key Exchange Methods in TLS 1.2 and DTLS 1.2", "subseries": [] },
+    "rfc10024": {
+      "title": "Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3",
+      "subseries": []
+    },
+    "rfc3278": {
+      "title": "Use of Elliptic Curve Cryptography (ECC) Algorithms in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4050": {
+      "title": "Using the Elliptic Curve Signature Algorithm (ECDSA) for XML Digital Signatures",
+      "subseries": []
+    },
+    "rfc4492": {
+      "title": "Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc4753": { "title": "ECP Groups For IKE and IKEv2", "subseries": [] },
+    "rfc4754": {
+      "title": "IKE and IKEv2 Authentication Using the Elliptic Curve Digital Signature Algorithm (ECDSA)",
+      "subseries": []
+    },
+    "rfc4869": { "title": "Suite B Cryptographic Suites for IPsec", "subseries": [] },
+    "rfc5091": {
+      "title": "Identity-Based Cryptography Standard (IBCS) #1: Supersingular Curve Implementations of the BF and BB1 Cryptosystems",
+      "subseries": []
+    },
+    "rfc5114": { "title": "Additional Diffie-Hellman Groups for Use with IETF Standards", "subseries": [] },
+    "rfc5289": {
+      "title": "TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)",
+      "subseries": []
+    },
+    "rfc5349": {
+      "title": "Elliptic Curve Cryptography (ECC) Support for Public Key Cryptography for Initial Authentication in Kerberos (PKINIT)",
+      "subseries": []
+    },
+    "rfc5480": { "title": "Elliptic Curve Cryptography Subject Public Key Information", "subseries": [] },
+    "rfc5489": { "title": "ECDHE_PSK Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5639": {
+      "title": "Elliptic Curve Cryptography (ECC) Brainpool Standard Curves and Curve Generation",
+      "subseries": []
+    },
+    "rfc5656": { "title": "Elliptic Curve Algorithm Integration in the Secure Shell Transport Layer", "subseries": [] },
+    "rfc5753": {
+      "title": "Use of Elliptic Curve Cryptography (ECC) Algorithms in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc5754": { "title": "Using SHA2 Algorithms with Cryptographic Message Syntax", "subseries": [] },
+    "rfc5758": {
+      "title": "Internet X.509 Public Key Infrastructure: Additional Algorithms and Identifiers for DSA and ECDSA",
+      "subseries": []
+    },
+    "rfc5903": { "title": "Elliptic Curve Groups modulo a Prime (ECP Groups) for IKE and IKEv2", "subseries": [] },
+    "rfc5915": { "title": "Elliptic Curve Private Key Structure", "subseries": [] },
+    "rfc6090": { "title": "Fundamental Elliptic Curve Cryptography Algorithms", "subseries": [] },
+    "rfc6161": {
+      "title": "Elliptic Curve Algorithms for Cryptographic Message Syntax (CMS) Encrypted Key Package Content Type",
+      "subseries": []
+    },
+    "rfc6162": {
+      "title": "Elliptic Curve Algorithms for Cryptographic Message Syntax (CMS) Asymmetric Key Package Content Type",
+      "subseries": []
+    },
+    "rfc6278": {
+      "title": "Use of Static-Static Elliptic Curve Diffie-Hellman Key Agreement in Cryptographic Message Syntax",
+      "subseries": []
+    },
+    "rfc6379": { "title": "Suite B Cryptographic Suites for IPsec", "subseries": [] },
+    "rfc6507": {
+      "title": "Elliptic Curve-Based Certificateless Signatures for Identity-Based Encryption (ECCSI)",
+      "subseries": []
+    },
+    "rfc6594": {
+      "title": "Use of the SHA-256 Algorithm with RSA, Digital Signature Algorithm (DSA), and Elliptic Curve DSA (ECDSA) in SSHFP Resource Records",
+      "subseries": []
+    },
+    "rfc6605": { "title": "Elliptic Curve Digital Signature Algorithm (DSA) for DNSSEC", "subseries": [] },
+    "rfc6637": { "title": "Elliptic Curve Cryptography (ECC) in OpenPGP", "subseries": [] },
+    "rfc6932": {
+      "title": "Brainpool Elliptic Curves for the Internet Key Exchange (IKE) Group Description Registry",
+      "subseries": []
+    },
+    "rfc6954": {
+      "title": "Using the Elliptic Curve Cryptography (ECC) Brainpool Curves for the Internet Key Exchange Protocol Version 2 (IKEv2)",
+      "subseries": []
+    },
+    "rfc6955": { "title": "Diffie-Hellman Proof-of-Possession Algorithms", "subseries": [] },
+    "rfc6979": {
+      "title": "Deterministic Usage of the Digital Signature Algorithm (DSA) and Elliptic Curve Digital Signature Algorithm (ECDSA)",
+      "subseries": []
+    },
+    "rfc6989": {
+      "title": "Additional Diffie-Hellman Tests for the Internet Key Exchange Protocol Version 2 (IKEv2)",
+      "subseries": []
+    },
+    "rfc7027": {
+      "title": "Elliptic Curve Cryptography (ECC) Brainpool Curves for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc7251": { "title": "AES-CCM Elliptic Curve Cryptography (ECC) Cipher Suites for TLS", "subseries": [] },
+    "rfc7427": { "title": "Signature Authentication in the Internet Key Exchange Version 2 (IKEv2)", "subseries": [] },
+    "rfc7664": { "title": "Dragonfly Key Exchange", "subseries": [] },
+    "rfc7748": { "title": "Elliptic Curves for Security", "subseries": [] },
+    "rfc7836": {
+      "title": "Guidelines on the Cryptographic Algorithms to Accompany the Usage of Standards GOST R 34.10-2012 and GOST R 34.11-2012",
+      "subseries": []
+    },
+    "rfc7859": {
+      "title": "Identity-Based Signatures for Mobile Ad Hoc Network (MANET) Routing Protocols",
+      "subseries": []
+    },
+    "rfc8037": {
+      "title": "CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures in JSON Object Signing and Encryption (JOSE)",
+      "subseries": []
+    },
+    "rfc8133": {
+      "title": "The Security Evaluated Standardized Password-Authenticated Key Exchange (SESPAKE) Protocol",
+      "subseries": []
+    },
+    "rfc8152": { "title": "CBOR Object Signing and Encryption (COSE)", "subseries": [] },
+    "rfc8410": {
+      "title": "Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure",
+      "subseries": []
+    },
+    "rfc8418": {
+      "title": "Use of the Elliptic Curve Diffie-Hellman Key Agreement Algorithm with X25519 and X448 in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc8422": {
+      "title": "Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS) Versions 1.2 and Earlier",
+      "subseries": []
+    },
+    "rfc8423": { "title": "Reclassification of Suite B Documents to Historic Status", "subseries": [] },
+    "rfc8608": { "title": "BGPsec Algorithms, Key Formats, and Signature Formats", "subseries": [] },
+    "rfc8692": {
+      "title": "Internet X.509 Public Key Infrastructure: Additional Algorithm Identifiers for RSASSA-PSS and ECDSA Using SHAKEs",
+      "subseries": []
+    },
+    "rfc8731": { "title": "Secure Shell (SSH) Key Exchange Method Using Curve25519 and Curve448", "subseries": [] },
+    "rfc8734": {
+      "title": "Elliptic Curve Cryptography (ECC) Brainpool Curves for Transport Layer Security (TLS) Version 1.3",
+      "subseries": []
+    },
+    "rfc8813": {
+      "title": "Clarifications for Elliptic Curve Cryptography Subject Public Key Information",
+      "subseries": []
+    },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9142": {
+      "title": "Key Exchange (KEX) Method Updates and Recommendations for Secure Shell (SSH)",
+      "subseries": []
+    },
+    "rfc9295": {
+      "title": "Clarifications for Ed25519, Ed448, X25519, and X448 Algorithm Identifiers",
+      "subseries": []
+    },
+    "rfc9380": { "title": "Hashing to Elliptic Curves", "subseries": [] },
+    "rfc9496": { "title": "The ristretto255 and decaf448 Groups", "subseries": [] },
+    "rfc9497": { "title": "Oblivious Pseudorandom Functions (OPRFs) Using Prime-Order Groups", "subseries": [] }
+  },
+  "subject_meta": {
+    "security": { "name": "Security" },
+    "cryptography": { "name": "Cryptography" },
+    "curve25519": { "name": "Curve25519" },
+    "eddsa": { "name": "EdDSA" }
+  }
+}

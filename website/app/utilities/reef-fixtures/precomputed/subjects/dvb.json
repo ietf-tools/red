@@ -1,0 +1,69 @@
+{
+  "id": 629,
+  "slug": "dvb",
+  "name": "DVB",
+  "description": "IP over MPEG-2/DVB broadcast links",
+  "parent": "link-layer",
+  "path": "link-layer/dvb",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2728",
+    "rfc4259",
+    "rfc4326",
+    "rfc4947",
+    "rfc5163",
+    "rfc5328",
+    "rfc5458",
+    "rfc5728",
+    "rfc6015",
+    "rfc6683",
+    "rfc6990",
+    "rfc7354"
+  ],
+  "document_meta": {
+    "rfc2728": {
+      "title": "The Transmission of IP Over the Vertical Blanking Interval of a Television Signal",
+      "subseries": []
+    },
+    "rfc4259": { "title": "A Framework for Transmission of IP Datagrams over MPEG-2 Networks", "subseries": [] },
+    "rfc4326": {
+      "title": "Unidirectional Lightweight Encapsulation (ULE) for Transmission of IP Datagrams over an MPEG-2 Transport Stream (TS)",
+      "subseries": []
+    },
+    "rfc4947": { "title": "Address Resolution Mechanisms for IP Datagrams over MPEG-2 Networks", "subseries": [] },
+    "rfc5163": {
+      "title": "Extension Formats for Unidirectional Lightweight Encapsulation (ULE) and the Generic Stream Encapsulation (GSE)",
+      "subseries": []
+    },
+    "rfc5328": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Digital Video Broadcasting Project (DVB)",
+      "subseries": []
+    },
+    "rfc5458": {
+      "title": "Security Requirements for the Unidirectional Lightweight Encapsulation (ULE) Protocol",
+      "subseries": []
+    },
+    "rfc5728": { "title": "The SatLabs Group DVB-RCS MIB", "subseries": [] },
+    "rfc6015": {
+      "title": "RTP Payload Format for 1-D Interleaved Parity Forward Error Correction (FEC)",
+      "subseries": []
+    },
+    "rfc6683": {
+      "title": "Guidelines for Implementing Digital Video Broadcasting - IPTV (DVB-IPTV) Application-Layer Hybrid Forward Error Correction (FEC) Protection",
+      "subseries": []
+    },
+    "rfc6990": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for MPEG-2 Transport Stream (TS) Program Specific Information (PSI) Independent Decodability Statistics Metrics Reporting",
+      "subseries": []
+    },
+    "rfc7354": {
+      "title": "Update to the Registrant Information for the Digital Video Broadcasting Project (DVB) Uniform Resource Name (URN) Namespace",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

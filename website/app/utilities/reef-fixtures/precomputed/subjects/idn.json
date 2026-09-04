@@ -1,0 +1,111 @@
+{
+  "id": 662,
+  "slug": "idn",
+  "name": "IDN",
+  "description": "Internationalized Domain Names: IDNA, punycode, label validity",
+  "parent": "naming",
+  "path": "naming/idn",
+  "document_count": 24,
+  "document_count_deep": 24,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3490",
+    "rfc3491",
+    "rfc3492",
+    "rfc3743",
+    "rfc4290",
+    "rfc4690",
+    "rfc5890",
+    "rfc5891",
+    "rfc5892",
+    "rfc5893",
+    "rfc5894",
+    "rfc5895",
+    "rfc5992",
+    "rfc6055",
+    "rfc6452",
+    "rfc6797",
+    "rfc6855",
+    "rfc7484",
+    "rfc7940",
+    "rfc8228",
+    "rfc8753",
+    "rfc9095",
+    "rfc9224",
+    "rfc9233"
+  ],
+  "document_meta": {
+    "rfc3490": { "title": "Internationalizing Domain Names in Applications (IDNA)", "subseries": [] },
+    "rfc3491": { "title": "Nameprep: A Stringprep Profile for Internationalized Domain Names (IDN)", "subseries": [] },
+    "rfc3492": {
+      "title": "Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc3743": {
+      "title": "Joint Engineering Team (JET) Guidelines for Internationalized Domain Names (IDN) Registration and Administration for Chinese, Japanese, and Korean",
+      "subseries": []
+    },
+    "rfc4290": {
+      "title": "Suggested Practices for Registration of Internationalized Domain Names (IDN)",
+      "subseries": []
+    },
+    "rfc4690": { "title": "Review and Recommendations for Internationalized Domain Names (IDNs)", "subseries": [] },
+    "rfc5890": {
+      "title": "Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework",
+      "subseries": []
+    },
+    "rfc5891": { "title": "Internationalized Domain Names in Applications (IDNA): Protocol", "subseries": [] },
+    "rfc5892": {
+      "title": "The Unicode Code Points and Internationalized Domain Names for Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc5893": {
+      "title": "Right-to-Left Scripts for Internationalized Domain Names for Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc5894": {
+      "title": "Internationalized Domain Names for Applications (IDNA): Background, Explanation, and Rationale",
+      "subseries": []
+    },
+    "rfc5895": {
+      "title": "Mapping Characters for Internationalized Domain Names in Applications (IDNA) 2008",
+      "subseries": []
+    },
+    "rfc5992": {
+      "title": "Internationalized Domain Names Registration and Administration Guidelines for European Languages Using Cyrillic",
+      "subseries": []
+    },
+    "rfc6055": { "title": "IAB Thoughts on Encodings for Internationalized Domain Names", "subseries": [] },
+    "rfc6452": {
+      "title": "The Unicode Code Points and Internationalized Domain Names for Applications (IDNA) - Unicode 6.0",
+      "subseries": []
+    },
+    "rfc6797": { "title": "HTTP Strict Transport Security (HSTS)", "subseries": [] },
+    "rfc6855": { "title": "IMAP Support for UTF-8", "subseries": [] },
+    "rfc7484": { "title": "Finding the Authoritative Registration Data (RDAP) Service", "subseries": [] },
+    "rfc7940": { "title": "Representing Label Generation Rulesets Using XML", "subseries": [] },
+    "rfc8228": {
+      "title": "Guidance on Designing Label Generation Rulesets (LGRs) Supporting Variant Labels",
+      "subseries": []
+    },
+    "rfc8753": {
+      "title": "Internationalized Domain Names for Applications (IDNA) Review for New Unicode Versions",
+      "subseries": []
+    },
+    "rfc9095": {
+      "title": "Extensible Provisioning Protocol (EPP) Domain Name Mapping Extension for Strict Bundling Registration",
+      "subseries": []
+    },
+    "rfc9224": {
+      "title": "Finding the Authoritative Registration Data Access Protocol (RDAP) Service",
+      "subseries": ["std95"]
+    },
+    "rfc9233": {
+      "title": "Internationalized Domain Names for Applications 2008 (IDNA2008) and Unicode 12.0.0",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

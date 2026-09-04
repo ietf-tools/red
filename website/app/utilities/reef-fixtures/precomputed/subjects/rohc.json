@@ -1,0 +1,125 @@
+{
+  "id": 980,
+  "slug": "rohc",
+  "name": "ROHC",
+  "description": "Robust Header Compression",
+  "parent": "header-compression",
+  "path": "transport/header-compression/rohc",
+  "document_count": 34,
+  "document_count_deep": 34,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3095",
+    "rfc3096",
+    "rfc3241",
+    "rfc3242",
+    "rfc3243",
+    "rfc3320",
+    "rfc3321",
+    "rfc3322",
+    "rfc3408",
+    "rfc3409",
+    "rfc3759",
+    "rfc3816",
+    "rfc3843",
+    "rfc4019",
+    "rfc4077",
+    "rfc4163",
+    "rfc4164",
+    "rfc4224",
+    "rfc4362",
+    "rfc4413",
+    "rfc4464",
+    "rfc4465",
+    "rfc4815",
+    "rfc4896",
+    "rfc4995",
+    "rfc4996",
+    "rfc4997",
+    "rfc5049",
+    "rfc5225",
+    "rfc5795",
+    "rfc5856",
+    "rfc5857",
+    "rfc5858",
+    "rfc6846"
+  ],
+  "document_meta": {
+    "rfc3095": {
+      "title": "RObust Header Compression (ROHC): Framework and four profiles: RTP, UDP, ESP, and uncompressed",
+      "subseries": []
+    },
+    "rfc3096": { "title": "Requirements for robust IP/UDP/RTP header compression", "subseries": [] },
+    "rfc3241": { "title": "Robust Header Compression (ROHC) over PPP", "subseries": [] },
+    "rfc3242": {
+      "title": "RObust Header Compression (ROHC): A Link-Layer Assisted Profile for IP/UDP/RTP",
+      "subseries": []
+    },
+    "rfc3243": {
+      "title": "RObust Header Compression (ROHC): Requirements and Assumptions for 0-byte IP/UDP/RTP Compression",
+      "subseries": []
+    },
+    "rfc3320": { "title": "Signaling Compression (SigComp)", "subseries": [] },
+    "rfc3321": { "title": "Signaling Compression (SigComp) - Extended Operations", "subseries": [] },
+    "rfc3322": { "title": "Signaling Compression (SigComp) Requirements & Assumptions", "subseries": [] },
+    "rfc3408": {
+      "title": "Zero-byte Support for Bidirectional Reliable Mode (R-mode) in Extended Link-Layer Assisted RObust Header Compression (ROHC) Profile",
+      "subseries": []
+    },
+    "rfc3409": { "title": "Lower Layer Guidelines for Robust RTP/UDP/IP Header Compression", "subseries": [] },
+    "rfc3759": {
+      "title": "RObust Header Compression (ROHC): Terminology and Channel Mapping Examples",
+      "subseries": []
+    },
+    "rfc3816": { "title": "Definitions of Managed Objects for RObust Header Compression (ROHC)", "subseries": [] },
+    "rfc3843": { "title": "RObust Header Compression (ROHC): A Compression Profile for IP", "subseries": [] },
+    "rfc4019": {
+      "title": "RObust Header Compression (ROHC): Profiles for User Datagram Protocol (UDP) Lite",
+      "subseries": []
+    },
+    "rfc4077": { "title": "A Negative Acknowledgement Mechanism for Signaling Compression", "subseries": [] },
+    "rfc4163": {
+      "title": "RObust Header Compression (ROHC): Requirements on TCP/IP Header Compression",
+      "subseries": []
+    },
+    "rfc4164": { "title": "RObust Header Compression (ROHC): Context Replication for ROHC Profiles", "subseries": [] },
+    "rfc4224": {
+      "title": "RObust Header Compression (ROHC): ROHC over Channels That Can Reorder Packets",
+      "subseries": []
+    },
+    "rfc4362": {
+      "title": "RObust Header Compression (ROHC): A Link-Layer Assisted Profile for IP/UDP/RTP",
+      "subseries": []
+    },
+    "rfc4413": { "title": "TCP/IP Field Behavior", "subseries": [] },
+    "rfc4464": { "title": "Signaling Compression (SigComp) Users' Guide", "subseries": [] },
+    "rfc4465": { "title": "Signaling Compression (SigComp) Torture Tests", "subseries": [] },
+    "rfc4815": {
+      "title": "RObust Header Compression (ROHC): Corrections and Clarifications to RFC 3095",
+      "subseries": []
+    },
+    "rfc4896": { "title": "Signaling Compression (SigComp) Corrections and Clarifications", "subseries": [] },
+    "rfc4995": { "title": "The RObust Header Compression (ROHC) Framework", "subseries": [] },
+    "rfc4996": { "title": "RObust Header Compression (ROHC): A Profile for TCP/IP (ROHC-TCP)", "subseries": [] },
+    "rfc4997": { "title": "Formal Notation for RObust Header Compression (ROHC-FN)", "subseries": [] },
+    "rfc5049": {
+      "title": "Applying Signaling Compression (SigComp) to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5225": {
+      "title": "RObust Header Compression Version 2 (ROHCv2): Profiles for RTP, UDP, IP, ESP and UDP-Lite",
+      "subseries": []
+    },
+    "rfc5795": { "title": "The RObust Header Compression (ROHC) Framework", "subseries": [] },
+    "rfc5856": {
+      "title": "Integration of Robust Header Compression over IPsec Security Associations",
+      "subseries": []
+    },
+    "rfc5857": { "title": "IKEv2 Extensions to Support Robust Header Compression over IPsec", "subseries": [] },
+    "rfc5858": { "title": "IPsec Extensions to Support Robust Header Compression over IPsec", "subseries": [] },
+    "rfc6846": { "title": "RObust Header Compression (ROHC): A Profile for TCP/IP (ROHC-TCP)", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "header-compression": { "name": "Header Compression" } }
+}

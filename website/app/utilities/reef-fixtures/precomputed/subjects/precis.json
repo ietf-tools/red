@@ -1,0 +1,53 @@
+{
+  "id": 817,
+  "slug": "precis",
+  "name": "PRECIS",
+  "description": "PRECIS internationalized string handling",
+  "parent": "internationalization",
+  "path": "data-formats/internationalization/precis",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6885", "rfc7564", "rfc7613", "rfc7622", "rfc7700", "rfc7790", "rfc8264", "rfc8265", "rfc8266"],
+  "document_meta": {
+    "rfc6885": {
+      "title": "Stringprep Revision and Problem Statement for the Preparation and Comparison of Internationalized Strings (PRECIS)",
+      "subseries": []
+    },
+    "rfc7564": {
+      "title": "PRECIS Framework: Preparation, Enforcement, and Comparison of Internationalized Strings in Application Protocols",
+      "subseries": []
+    },
+    "rfc7613": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords",
+      "subseries": []
+    },
+    "rfc7622": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc7700": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc7790": {
+      "title": "Mapping Characters for Classes of the Preparation, Enforcement, and Comparison of Internationalized Strings (PRECIS)",
+      "subseries": []
+    },
+    "rfc8264": {
+      "title": "PRECIS Framework: Preparation, Enforcement, and Comparison of Internationalized Strings in Application Protocols",
+      "subseries": []
+    },
+    "rfc8265": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords",
+      "subseries": []
+    },
+    "rfc8266": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "data-formats": { "name": "Data Formats" },
+    "internationalization": { "name": "Internationalization" }
+  }
+}

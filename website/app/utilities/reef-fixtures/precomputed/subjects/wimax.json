@@ -1,0 +1,35 @@
+{
+  "id": 646,
+  "slug": "wimax",
+  "name": "WiMAX",
+  "description": "IP over IEEE 802.16 (WiMAX) networks",
+  "parent": "link-layer",
+  "path": "link-layer/wimax",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4968", "rfc5121", "rfc5154", "rfc5181", "rfc5270", "rfc5563", "rfc5692", "rfc5904", "rfc5948"],
+  "document_meta": {
+    "rfc4968": { "title": "Analysis of IPv6 Link Models for 802.16 Based Networks", "subseries": [] },
+    "rfc5121": {
+      "title": "Transmission of IPv6 via the IPv6 Convergence Sublayer over IEEE 802.16 Networks",
+      "subseries": []
+    },
+    "rfc5154": { "title": "IP over IEEE 802.16 Problem Statement and Goals", "subseries": [] },
+    "rfc5181": { "title": "IPv6 Deployment Scenarios in 802.16 Networks", "subseries": [] },
+    "rfc5270": { "title": "Mobile IPv6 Fast Handovers over IEEE 802.16e Networks", "subseries": [] },
+    "rfc5563": { "title": "WiMAX Forum / 3GPP2 Proxy Mobile IPv4", "subseries": [] },
+    "rfc5692": { "title": "Transmission of IP over Ethernet over IEEE 802.16 Networks", "subseries": [] },
+    "rfc5904": {
+      "title": "RADIUS Attributes for IEEE 802.16 Privacy Key Management Version 1 (PKMv1) Protocol Support",
+      "subseries": []
+    },
+    "rfc5948": {
+      "title": "Transmission of IPv4 Packets over the IP Convergence Sublayer of IEEE 802.16",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

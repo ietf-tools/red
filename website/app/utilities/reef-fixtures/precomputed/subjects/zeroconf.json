@@ -1,0 +1,16 @@
+{
+  "id": 666,
+  "slug": "zeroconf",
+  "name": "Zeroconf",
+  "description": "Zero-configuration networking",
+  "parent": "naming",
+  "path": "naming/zeroconf",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3927"],
+  "document_meta": { "rfc3927": { "title": "Dynamic Configuration of IPv4 Link-Local Addresses", "subseries": [] } },
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

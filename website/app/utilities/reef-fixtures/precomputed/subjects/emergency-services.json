@@ -1,0 +1,141 @@
+{
+  "id": 687,
+  "slug": "emergency-services",
+  "name": "Emergency Services",
+  "description": "Emergency calling and preparedness communications",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/emergency-services",
+  "document_count": 36,
+  "document_count_deep": 36,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3487",
+    "rfc3523",
+    "rfc3689",
+    "rfc3690",
+    "rfc4190",
+    "rfc4375",
+    "rfc4412",
+    "rfc4542",
+    "rfc4958",
+    "rfc5012",
+    "rfc5031",
+    "rfc5069",
+    "rfc5115",
+    "rfc5194",
+    "rfc5222",
+    "rfc5223",
+    "rfc5582",
+    "rfc5964",
+    "rfc6197",
+    "rfc6443",
+    "rfc6444",
+    "rfc6451",
+    "rfc6739",
+    "rfc6881",
+    "rfc7090",
+    "rfc7163",
+    "rfc7378",
+    "rfc7406",
+    "rfc7840",
+    "rfc7852",
+    "rfc8147",
+    "rfc8148",
+    "rfc8876",
+    "rfc8917",
+    "rfc9027",
+    "rfc9036"
+  ],
+  "document_meta": {
+    "rfc3487": {
+      "title": "Requirements for Resource Priority Mechanisms for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3523": { "title": "Internet Emergency Preparedness (IEPREP) Telephony Topology Terminology", "subseries": [] },
+    "rfc3689": { "title": "General Requirements for Emergency Telecommunication Service (ETS)", "subseries": [] },
+    "rfc3690": { "title": "IP Telephony Requirements for Emergency Telecommunication Service (ETS)", "subseries": [] },
+    "rfc4190": {
+      "title": "Framework for Supporting Emergency Telecommunications Service (ETS) in IP Telephony",
+      "subseries": []
+    },
+    "rfc4375": {
+      "title": "Emergency Telecommunications Services (ETS) Requirements for a Single Administrative Domain",
+      "subseries": []
+    },
+    "rfc4412": {
+      "title": "Communications Resource Priority for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4542": {
+      "title": "Implementing an Emergency Telecommunications Service (ETS) for Real-Time Services in the Internet Protocol Suite",
+      "subseries": []
+    },
+    "rfc4958": {
+      "title": "A Framework for Supporting Emergency Telecommunications Services (ETS) within a Single Administrative Domain",
+      "subseries": []
+    },
+    "rfc5012": { "title": "Requirements for Emergency Context Resolution with Internet Technologies", "subseries": [] },
+    "rfc5031": {
+      "title": "A Uniform Resource Name (URN) for Emergency and Other Well-Known Services",
+      "subseries": []
+    },
+    "rfc5069": { "title": "Security Threats and Requirements for Emergency Call Marking and Mapping", "subseries": [] },
+    "rfc5115": { "title": "Telephony Routing over IP (TRIP) Attribute for Resource Priority", "subseries": [] },
+    "rfc5194": {
+      "title": "Framework for Real-Time Text over IP Using the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5222": { "title": "LoST: A Location-to-Service Translation Protocol", "subseries": [] },
+    "rfc5223": {
+      "title": "Discovering Location-to-Service Translation (LoST) Servers Using the Dynamic Host Configuration Protocol (DHCP)",
+      "subseries": []
+    },
+    "rfc5582": { "title": "Location-to-URL Mapping Architecture and Framework", "subseries": [] },
+    "rfc5964": {
+      "title": "Specifying Holes in Location-to-Service Translation (LoST) Service Boundaries",
+      "subseries": []
+    },
+    "rfc6197": { "title": "Location-to-Service Translation (LoST) Service List Boundary Extension", "subseries": [] },
+    "rfc6443": { "title": "Framework for Emergency Calling Using Internet Multimedia", "subseries": [] },
+    "rfc6444": { "title": "Location Hiding: Problem Statement and Requirements", "subseries": [] },
+    "rfc6451": { "title": "Location-to-Service Translation (LoST) Protocol Extensions", "subseries": [] },
+    "rfc6739": {
+      "title": "Synchronizing Service Boundaries and <mapping> Elements Based on the Location-to-Service Translation (LoST) Protocol",
+      "subseries": []
+    },
+    "rfc6881": {
+      "title": "Best Current Practice for Communications Services in Support of Emergency Calling",
+      "subseries": ["bcp181"]
+    },
+    "rfc7090": { "title": "Public Safety Answering Point (PSAP) Callback", "subseries": [] },
+    "rfc7163": { "title": "URN for Country-Specific Emergency Services", "subseries": [] },
+    "rfc7378": { "title": "Trustworthy Location", "subseries": [] },
+    "rfc7406": {
+      "title": "Extensions to the Emergency Services Architecture for Dealing With Unauthenticated and Unauthorized Devices",
+      "subseries": []
+    },
+    "rfc7840": {
+      "title": "A Routing Request Extension for the HTTP-Enabled Location Delivery (HELD) Protocol",
+      "subseries": []
+    },
+    "rfc7852": { "title": "Additional Data Related to an Emergency Call", "subseries": [] },
+    "rfc8147": { "title": "Next-Generation Pan-European eCall", "subseries": [] },
+    "rfc8148": { "title": "Next-Generation Vehicle-Initiated Emergency Calls", "subseries": [] },
+    "rfc8876": { "title": "Non-interactive Emergency Calls", "subseries": [] },
+    "rfc8917": {
+      "title": "The LoST-Validation Straightforward-Naming Authority PoinTeR (S-NAPTR) Application Service Tag",
+      "subseries": []
+    },
+    "rfc9027": {
+      "title": "Assertion Values for Resource Priority Header and SIP Priority Header Claims in Support of Emergency Services Networks",
+      "subseries": []
+    },
+    "rfc9036": {
+      "title": "Changing the Location-to-Service Translation (LoST) Location Profiles Registry Policy",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" } }
+}

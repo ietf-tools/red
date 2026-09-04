@@ -1,0 +1,24 @@
+{
+  "id": 557,
+  "slug": "irc",
+  "name": "IRC",
+  "description": "Internet Relay Chat",
+  "parent": "applications",
+  "path": "applications/irc",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1459", "rfc1580", "rfc2810", "rfc2811", "rfc2812", "rfc2813", "rfc7194"],
+  "document_meta": {
+    "rfc1459": { "title": "Internet Relay Chat Protocol", "subseries": [] },
+    "rfc1580": { "title": "Guide to Network Resource Tools", "subseries": ["fyi23"] },
+    "rfc2810": { "title": "Internet Relay Chat: Architecture", "subseries": [] },
+    "rfc2811": { "title": "Internet Relay Chat: Channel Management", "subseries": [] },
+    "rfc2812": { "title": "Internet Relay Chat: Client Protocol", "subseries": [] },
+    "rfc2813": { "title": "Internet Relay Chat: Server Protocol", "subseries": [] },
+    "rfc7194": { "title": "Default Port for Internet Relay Chat (IRC) via TLS/SSL", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

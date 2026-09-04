@@ -1,0 +1,176 @@
+{
+  "id": 560,
+  "slug": "p2p",
+  "name": "Peer-to-Peer",
+  "description": "Peer-to-peer overlay networks and applications",
+  "parent": "applications",
+  "path": "applications/p2p",
+  "document_count": 46,
+  "document_count_deep": 46,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2232",
+    "rfc2353",
+    "rfc2455",
+    "rfc2456",
+    "rfc2584",
+    "rfc3335",
+    "rfc4130",
+    "rfc4165",
+    "rfc4823",
+    "rfc4981",
+    "rfc5128",
+    "rfc5594",
+    "rfc5632",
+    "rfc5693",
+    "rfc5694",
+    "rfc5765",
+    "rfc6029",
+    "rfc6392",
+    "rfc6646",
+    "rfc6817",
+    "rfc6821",
+    "rfc6875",
+    "rfc6940",
+    "rfc6972",
+    "rfc6997",
+    "rfc6998",
+    "rfc7016",
+    "rfc7046",
+    "rfc7069",
+    "rfc7086",
+    "rfc7177",
+    "rfc7263",
+    "rfc7264",
+    "rfc7363",
+    "rfc7374",
+    "rfc7425",
+    "rfc7574",
+    "rfc7846",
+    "rfc7851",
+    "rfc7890",
+    "rfc7904",
+    "rfc7933",
+    "rfc8076",
+    "rfc8316",
+    "rfc9296",
+    "rfc9854"
+  ],
+  "document_meta": {
+    "rfc2232": { "title": "Definitions of Managed Objects for DLUR using SMIv2", "subseries": [] },
+    "rfc2353": {
+      "title": "APPN/HPR in IP Networks APPN Implementers' Workshop Closed Pages Document",
+      "subseries": []
+    },
+    "rfc2455": { "title": "Definitions of Managed Objects for APPN", "subseries": [] },
+    "rfc2456": { "title": "Definitions of Managed Objects for APPN TRAPS", "subseries": [] },
+    "rfc2584": { "title": "Definitions of Managed Objects for APPN/HPR in IP Networks", "subseries": [] },
+    "rfc3335": {
+      "title": "MIME-based Secure Peer-to-Peer Business Data Interchange over the Internet",
+      "subseries": []
+    },
+    "rfc4130": {
+      "title": "MIME-Based Secure Peer-to-Peer Business Data Interchange Using HTTP, Applicability Statement 2 (AS2)",
+      "subseries": []
+    },
+    "rfc4165": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 2 (MTP2) - User Peer-to-Peer Adaptation Layer (M2PA)",
+      "subseries": []
+    },
+    "rfc4823": {
+      "title": "FTP Transport for Secure Peer-to-Peer Business Data Interchange over the Internet",
+      "subseries": []
+    },
+    "rfc4981": { "title": "Survey of Research towards Robust Peer-to-Peer Networks: Search Methods", "subseries": [] },
+    "rfc5128": {
+      "title": "State of Peer-to-Peer (P2P) Communication across Network Address Translators (NATs)",
+      "subseries": []
+    },
+    "rfc5594": {
+      "title": "Report from the IETF Workshop on Peer-to-Peer (P2P) Infrastructure, May 28, 2008",
+      "subseries": []
+    },
+    "rfc5632": {
+      "title": "Comcast's ISP Experiences in a Proactive Network Provider Participation for P2P (P4P) Technical Trial",
+      "subseries": []
+    },
+    "rfc5693": { "title": "Application-Layer Traffic Optimization (ALTO) Problem Statement", "subseries": [] },
+    "rfc5694": {
+      "title": "Peer-to-Peer (P2P) Architecture: Definition, Taxonomies, Examples, and Applicability",
+      "subseries": []
+    },
+    "rfc5765": {
+      "title": "Security Issues and Solutions in Peer-to-Peer Systems for Realtime Communications",
+      "subseries": []
+    },
+    "rfc6029": {
+      "title": "A Survey on Research on the Application-Layer Traffic Optimization (ALTO) Problem",
+      "subseries": []
+    },
+    "rfc6392": { "title": "A Survey of In-Network Storage Systems", "subseries": [] },
+    "rfc6646": { "title": "DECoupled Application Data Enroute (DECADE) Problem Statement", "subseries": [] },
+    "rfc6817": { "title": "Low Extra Delay Background Transport (LEDBAT)", "subseries": [] },
+    "rfc6821": { "title": "Improving Peer Selection in Peer-to-peer Applications: Myths vs. Reality", "subseries": [] },
+    "rfc6875": {
+      "title": "The P2P Network Experiment Council's Activities and Experiments with Application-Layer Traffic Optimization (ALTO) in Japan",
+      "subseries": []
+    },
+    "rfc6940": { "title": "REsource LOcation And Discovery (RELOAD) Base Protocol", "subseries": [] },
+    "rfc6972": {
+      "title": "Problem Statement and Requirements of the Peer-to-Peer Streaming Protocol (PPSP)",
+      "subseries": []
+    },
+    "rfc6997": {
+      "title": "Reactive Discovery of Point-to-Point Routes in Low-Power and Lossy Networks",
+      "subseries": []
+    },
+    "rfc6998": {
+      "title": "A Mechanism to Measure the Routing Metrics along a Point-to-Point Route in a Low-Power and Lossy Network",
+      "subseries": []
+    },
+    "rfc7016": { "title": "Adobe's Secure Real-Time Media Flow Protocol", "subseries": [] },
+    "rfc7046": { "title": "A Common API for Transparent Hybrid Multicast", "subseries": [] },
+    "rfc7069": { "title": "DECoupled Application Data Enroute (DECADE)", "subseries": [] },
+    "rfc7086": {
+      "title": "Host Identity Protocol-Based Overlay Networking Environment (HIP BONE) Instance Specification for REsource LOcation And Discovery (RELOAD)",
+      "subseries": []
+    },
+    "rfc7177": { "title": "Transparent Interconnection of Lots of Links (TRILL): Adjacency", "subseries": [] },
+    "rfc7263": {
+      "title": "An Extension to the REsource LOcation And Discovery (RELOAD) Protocol to Support Direct Response Routing",
+      "subseries": []
+    },
+    "rfc7264": {
+      "title": "An Extension to the REsource LOcation And Discovery (RELOAD) Protocol to Support Relay Peer Routing",
+      "subseries": []
+    },
+    "rfc7363": {
+      "title": "Self-Tuning Distributed Hash Table (DHT) for REsource LOcation And Discovery (RELOAD)",
+      "subseries": []
+    },
+    "rfc7374": { "title": "Service Discovery Usage for REsource LOcation And Discovery (RELOAD)", "subseries": [] },
+    "rfc7425": { "title": "Adobe's RTMFP Profile for Flash Communication", "subseries": [] },
+    "rfc7574": { "title": "Peer-to-Peer Streaming Peer Protocol (PPSPP)", "subseries": [] },
+    "rfc7846": { "title": "Peer-to-Peer Streaming Tracker Protocol (PPSTP)", "subseries": [] },
+    "rfc7851": { "title": "Peer-to-Peer (P2P) Overlay Diagnostics", "subseries": [] },
+    "rfc7890": { "title": "Concepts and Terminology for Peer-to-Peer SIP (P2PSIP)", "subseries": [] },
+    "rfc7904": { "title": "A SIP Usage for REsource LOcation And Discovery (RELOAD)", "subseries": [] },
+    "rfc7933": { "title": "Adaptive Video Streaming over Information-Centric Networking (ICN)", "subseries": [] },
+    "rfc8076": { "title": "A Usage for Shared Resources in RELOAD (ShaRe)", "subseries": [] },
+    "rfc8316": {
+      "title": "Autonomic Networking Use Case for Distributed Detection of Service Level Agreement (SLA) Violations",
+      "subseries": []
+    },
+    "rfc9296": {
+      "title": "ifStackTable for the Point-to-Point (P2P) Interface over a LAN Type: Definition and Examples",
+      "subseries": []
+    },
+    "rfc9854": {
+      "title": "AODV-RPL: The Routing Protocol for Low-Power and Lossy Networks (RPL) Based on Ad Hoc On-Demand Distance Vector (AODV) Routing",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

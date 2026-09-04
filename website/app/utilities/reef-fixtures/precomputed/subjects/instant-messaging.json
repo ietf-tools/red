@@ -1,0 +1,270 @@
+{
+  "id": 651,
+  "slug": "instant-messaging",
+  "name": "Instant Messaging",
+  "description": "Instant messaging and presence",
+  "parent": "messaging",
+  "path": "messaging/instant-messaging",
+  "document_count": 72,
+  "document_count_deep": 93,
+  "retired": false,
+  "children": ["msrp", "xmpp"],
+  "aliases": [],
+  "documents": [
+    "rfc1756",
+    "rfc2778",
+    "rfc2779",
+    "rfc3339",
+    "rfc3428",
+    "rfc3856",
+    "rfc3857",
+    "rfc3858",
+    "rfc3859",
+    "rfc3860",
+    "rfc3861",
+    "rfc3862",
+    "rfc3863",
+    "rfc3920",
+    "rfc3921",
+    "rfc3922",
+    "rfc3923",
+    "rfc3994",
+    "rfc4119",
+    "rfc4479",
+    "rfc4480",
+    "rfc4481",
+    "rfc4482",
+    "rfc4660",
+    "rfc4661",
+    "rfc4662",
+    "rfc4770",
+    "rfc4825",
+    "rfc4826",
+    "rfc4827",
+    "rfc4854",
+    "rfc4975",
+    "rfc4976",
+    "rfc5025",
+    "rfc5028",
+    "rfc5139",
+    "rfc5194",
+    "rfc5196",
+    "rfc5261",
+    "rfc5262",
+    "rfc5263",
+    "rfc5264",
+    "rfc5344",
+    "rfc5438",
+    "rfc5491",
+    "rfc5509",
+    "rfc5606",
+    "rfc5774",
+    "rfc5874",
+    "rfc5962",
+    "rfc6120",
+    "rfc6121",
+    "rfc6122",
+    "rfc6132",
+    "rfc6133",
+    "rfc6135",
+    "rfc6714",
+    "rfc6848",
+    "rfc6910",
+    "rfc6914",
+    "rfc6993",
+    "rfc7081",
+    "rfc7248",
+    "rfc7259",
+    "rfc7459",
+    "rfc7572",
+    "rfc7573",
+    "rfc7590",
+    "rfc7622",
+    "rfc7701",
+    "rfc7702",
+    "rfc9734"
+  ],
+  "document_meta": {
+    "rfc1756": { "title": "Remote Write Protocol - Version 1.0", "subseries": [] },
+    "rfc2778": { "title": "A Model for Presence and Instant Messaging", "subseries": [] },
+    "rfc2779": { "title": "Instant Messaging / Presence Protocol Requirements", "subseries": [] },
+    "rfc3339": { "title": "Date and Time on the Internet: Timestamps", "subseries": [] },
+    "rfc3428": { "title": "Session Initiation Protocol (SIP) Extension for Instant Messaging", "subseries": [] },
+    "rfc3856": { "title": "A Presence Event Package for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3857": {
+      "title": "A Watcher Information Event Template-Package for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3858": { "title": "An Extensible Markup Language (XML) Based Format for Watcher Information", "subseries": [] },
+    "rfc3859": { "title": "Common Profile for Presence (CPP)", "subseries": [] },
+    "rfc3860": { "title": "Common Profile for Instant Messaging (CPIM)", "subseries": [] },
+    "rfc3861": { "title": "Address Resolution for Instant Messaging and Presence", "subseries": [] },
+    "rfc3862": { "title": "Common Presence and Instant Messaging (CPIM): Message Format", "subseries": [] },
+    "rfc3863": { "title": "Presence Information Data Format (PIDF)", "subseries": [] },
+    "rfc3920": { "title": "Extensible Messaging and Presence Protocol (XMPP): Core", "subseries": [] },
+    "rfc3921": {
+      "title": "Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence",
+      "subseries": []
+    },
+    "rfc3922": {
+      "title": "Mapping the Extensible Messaging and Presence Protocol (XMPP) to Common Presence and Instant Messaging (CPIM)",
+      "subseries": []
+    },
+    "rfc3923": {
+      "title": "End-to-End Signing and Object Encryption for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc3994": { "title": "Indication of Message Composition for Instant Messaging", "subseries": [] },
+    "rfc4119": { "title": "A Presence-based GEOPRIV Location Object Format", "subseries": [] },
+    "rfc4479": { "title": "A Data Model for Presence", "subseries": [] },
+    "rfc4480": {
+      "title": "RPID: Rich Presence Extensions to the Presence Information Data Format (PIDF)",
+      "subseries": []
+    },
+    "rfc4481": {
+      "title": "Timed Presence Extensions to the Presence Information Data Format (PIDF) to Indicate Status Information for Past and Future Time Intervals",
+      "subseries": []
+    },
+    "rfc4482": { "title": "CIPID: Contact Information for the Presence Information Data Format", "subseries": [] },
+    "rfc4660": { "title": "Functional Description of Event Notification Filtering", "subseries": [] },
+    "rfc4661": {
+      "title": "An Extensible Markup Language (XML)-Based Format for Event Notification Filtering",
+      "subseries": []
+    },
+    "rfc4662": {
+      "title": "A Session Initiation Protocol (SIP) Event Notification Extension for Resource Lists",
+      "subseries": []
+    },
+    "rfc4770": { "title": "vCard Extensions for Instant Messaging (IM)", "subseries": [] },
+    "rfc4825": {
+      "title": "The Extensible Markup Language (XML) Configuration Access Protocol (XCAP)",
+      "subseries": []
+    },
+    "rfc4826": { "title": "Extensible Markup Language (XML) Formats for Representing Resource Lists", "subseries": [] },
+    "rfc4827": {
+      "title": "An Extensible Markup Language (XML) Configuration Access Protocol (XCAP) Usage for Manipulating Presence Document Contents",
+      "subseries": []
+    },
+    "rfc4854": {
+      "title": "A Uniform Resource Name (URN) Namespace for Extensions to the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4975": { "title": "The Message Session Relay Protocol (MSRP)", "subseries": [] },
+    "rfc4976": { "title": "Relay Extensions for the Message Sessions Relay Protocol (MSRP)", "subseries": [] },
+    "rfc5025": { "title": "Presence Authorization Rules", "subseries": [] },
+    "rfc5028": {
+      "title": "A Telephone Number Mapping (ENUM) Service Registration for Instant Messaging (IM) Services",
+      "subseries": []
+    },
+    "rfc5139": {
+      "title": "Revised Civic Location Format for Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc5194": {
+      "title": "Framework for Real-Time Text over IP Using the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5196": {
+      "title": "Session Initiation Protocol (SIP) User Agent Capability Extension to Presence Information Data Format (PIDF)",
+      "subseries": []
+    },
+    "rfc5261": {
+      "title": "An Extensible Markup Language (XML) Patch Operations Framework Utilizing XML Path Language (XPath) Selectors",
+      "subseries": []
+    },
+    "rfc5262": { "title": "Presence Information Data Format (PIDF) Extension for Partial Presence", "subseries": [] },
+    "rfc5263": {
+      "title": "Session Initiation Protocol (SIP) Extension for Partial Notification of Presence Information",
+      "subseries": []
+    },
+    "rfc5264": { "title": "Publication of Partial Presence Information", "subseries": [] },
+    "rfc5344": { "title": "Presence and Instant Messaging Peering Use Cases", "subseries": [] },
+    "rfc5438": { "title": "Instant Message Disposition Notification (IMDN)", "subseries": [] },
+    "rfc5491": {
+      "title": "GEOPRIV Presence Information Data Format Location Object (PIDF-LO) Usage Clarification, Considerations, and Recommendations",
+      "subseries": []
+    },
+    "rfc5509": {
+      "title": "Internet Assigned Numbers Authority (IANA) Registration of Instant Messaging and Presence DNS SRV RRs for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5606": { "title": "Implications of 'retransmission-allowed' for SIP Location Conveyance", "subseries": [] },
+    "rfc5774": {
+      "title": "Considerations for Civic Addresses in the Presence Information Data Format Location Object (PIDF-LO): Guidelines and IANA Registry Definition",
+      "subseries": ["bcp154"]
+    },
+    "rfc5874": {
+      "title": "An Extensible Markup Language (XML) Document Format for Indicating a Change in XML Configuration Access Protocol (XCAP) Resources",
+      "subseries": []
+    },
+    "rfc5962": {
+      "title": "Dynamic Extensions to the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc6120": { "title": "Extensible Messaging and Presence Protocol (XMPP): Core", "subseries": [] },
+    "rfc6121": {
+      "title": "Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence",
+      "subseries": []
+    },
+    "rfc6122": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc6132": { "title": "Sieve Notification Using Presence Information", "subseries": [] },
+    "rfc6133": {
+      "title": "Sieve Email Filtering: Use of Presence Information with Auto-Responder Functionality",
+      "subseries": []
+    },
+    "rfc6135": {
+      "title": "An Alternative Connection Model for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc6714": {
+      "title": "Connection Establishment for Media Anchoring (CEMA) for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc6848": {
+      "title": "Specifying Civic Address Extensions in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc6910": { "title": "Completion of Calls for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc6914": {
+      "title": "SIMPLE Made Simple: An Overview of the IETF Specifications for Instant Messaging and Presence Using the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6993": {
+      "title": "Instant Messaging and Presence Purpose for the Call-Info Header Field in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7081": {
+      "title": "CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7248": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Presence",
+      "subseries": []
+    },
+    "rfc7259": { "title": "The Jabber-ID Header Field", "subseries": [] },
+    "rfc7459": {
+      "title": "Representation of Uncertainty and Confidence in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc7572": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Instant Messaging",
+      "subseries": []
+    },
+    "rfc7573": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): One-to-One Text Chat Sessions",
+      "subseries": []
+    },
+    "rfc7590": {
+      "title": "Use of Transport Layer Security (TLS) in the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7622": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc7701": { "title": "Multi-party Chat Using the Message Session Relay Protocol (MSRP)", "subseries": [] },
+    "rfc7702": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Groupchat",
+      "subseries": []
+    },
+    "rfc9734": { "title": "X.509 Certificate Extended Key Usage (EKU) for Instant Messaging URIs", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "msrp": { "name": "MSRP" }, "xmpp": { "name": "XMPP" } }
+}

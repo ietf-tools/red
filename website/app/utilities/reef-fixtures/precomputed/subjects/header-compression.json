@@ -1,0 +1,166 @@
+{
+  "id": 773,
+  "slug": "header-compression",
+  "name": "Header Compression",
+  "description": "Compressing protocol headers on constrained links",
+  "parent": "transport",
+  "path": "transport/header-compression",
+  "document_count": 44,
+  "document_count_deep": 52,
+  "retired": false,
+  "children": ["rohc"],
+  "aliases": [],
+  "documents": [
+    "rfc2507",
+    "rfc2509",
+    "rfc3095",
+    "rfc3096",
+    "rfc3241",
+    "rfc3242",
+    "rfc3243",
+    "rfc3374",
+    "rfc3408",
+    "rfc3409",
+    "rfc3544",
+    "rfc3759",
+    "rfc3816",
+    "rfc3843",
+    "rfc4019",
+    "rfc4163",
+    "rfc4164",
+    "rfc4224",
+    "rfc4247",
+    "rfc4362",
+    "rfc4413",
+    "rfc4815",
+    "rfc4901",
+    "rfc4995",
+    "rfc4996",
+    "rfc4997",
+    "rfc5225",
+    "rfc5795",
+    "rfc5856",
+    "rfc5857",
+    "rfc5858",
+    "rfc6846",
+    "rfc7400",
+    "rfc7541",
+    "rfc7973",
+    "rfc8724",
+    "rfc8824",
+    "rfc9011",
+    "rfc9035",
+    "rfc9139",
+    "rfc9363",
+    "rfc9391",
+    "rfc9441",
+    "rfc9442"
+  ],
+  "document_meta": {
+    "rfc2507": { "title": "IP Header Compression", "subseries": [] },
+    "rfc2509": { "title": "IP Header Compression over PPP", "subseries": [] },
+    "rfc3095": {
+      "title": "RObust Header Compression (ROHC): Framework and four profiles: RTP, UDP, ESP, and uncompressed",
+      "subseries": []
+    },
+    "rfc3096": { "title": "Requirements for robust IP/UDP/RTP header compression", "subseries": [] },
+    "rfc3241": { "title": "Robust Header Compression (ROHC) over PPP", "subseries": [] },
+    "rfc3242": {
+      "title": "RObust Header Compression (ROHC): A Link-Layer Assisted Profile for IP/UDP/RTP",
+      "subseries": []
+    },
+    "rfc3243": {
+      "title": "RObust Header Compression (ROHC): Requirements and Assumptions for 0-byte IP/UDP/RTP Compression",
+      "subseries": []
+    },
+    "rfc3374": {
+      "title": "Problem Description: Reasons For Performing Context Transfers Between Nodes in an IP Access Network",
+      "subseries": []
+    },
+    "rfc3408": {
+      "title": "Zero-byte Support for Bidirectional Reliable Mode (R-mode) in Extended Link-Layer Assisted RObust Header Compression (ROHC) Profile",
+      "subseries": []
+    },
+    "rfc3409": { "title": "Lower Layer Guidelines for Robust RTP/UDP/IP Header Compression", "subseries": [] },
+    "rfc3544": { "title": "IP Header Compression over PPP", "subseries": [] },
+    "rfc3759": {
+      "title": "RObust Header Compression (ROHC): Terminology and Channel Mapping Examples",
+      "subseries": []
+    },
+    "rfc3816": { "title": "Definitions of Managed Objects for RObust Header Compression (ROHC)", "subseries": [] },
+    "rfc3843": { "title": "RObust Header Compression (ROHC): A Compression Profile for IP", "subseries": [] },
+    "rfc4019": {
+      "title": "RObust Header Compression (ROHC): Profiles for User Datagram Protocol (UDP) Lite",
+      "subseries": []
+    },
+    "rfc4163": {
+      "title": "RObust Header Compression (ROHC): Requirements on TCP/IP Header Compression",
+      "subseries": []
+    },
+    "rfc4164": { "title": "RObust Header Compression (ROHC): Context Replication for ROHC Profiles", "subseries": [] },
+    "rfc4224": {
+      "title": "RObust Header Compression (ROHC): ROHC over Channels That Can Reorder Packets",
+      "subseries": []
+    },
+    "rfc4247": { "title": "Requirements for Header Compression over MPLS", "subseries": [] },
+    "rfc4362": {
+      "title": "RObust Header Compression (ROHC): A Link-Layer Assisted Profile for IP/UDP/RTP",
+      "subseries": []
+    },
+    "rfc4413": { "title": "TCP/IP Field Behavior", "subseries": [] },
+    "rfc4815": {
+      "title": "RObust Header Compression (ROHC): Corrections and Clarifications to RFC 3095",
+      "subseries": []
+    },
+    "rfc4901": { "title": "Protocol Extensions for Header Compression over MPLS", "subseries": [] },
+    "rfc4995": { "title": "The RObust Header Compression (ROHC) Framework", "subseries": [] },
+    "rfc4996": { "title": "RObust Header Compression (ROHC): A Profile for TCP/IP (ROHC-TCP)", "subseries": [] },
+    "rfc4997": { "title": "Formal Notation for RObust Header Compression (ROHC-FN)", "subseries": [] },
+    "rfc5225": {
+      "title": "RObust Header Compression Version 2 (ROHCv2): Profiles for RTP, UDP, IP, ESP and UDP-Lite",
+      "subseries": []
+    },
+    "rfc5795": { "title": "The RObust Header Compression (ROHC) Framework", "subseries": [] },
+    "rfc5856": {
+      "title": "Integration of Robust Header Compression over IPsec Security Associations",
+      "subseries": []
+    },
+    "rfc5857": { "title": "IKEv2 Extensions to Support Robust Header Compression over IPsec", "subseries": [] },
+    "rfc5858": { "title": "IPsec Extensions to Support Robust Header Compression over IPsec", "subseries": [] },
+    "rfc6846": { "title": "RObust Header Compression (ROHC): A Profile for TCP/IP (ROHC-TCP)", "subseries": [] },
+    "rfc7400": {
+      "title": "6LoWPAN-GHC: Generic Header Compression for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc7541": { "title": "HPACK: Header Compression for HTTP/2", "subseries": [] },
+    "rfc7973": {
+      "title": "Assignment of an Ethertype for IPv6 with Low-Power Wireless Personal Area Network (LoWPAN) Encapsulation",
+      "subseries": []
+    },
+    "rfc8724": {
+      "title": "SCHC: Generic Framework for Static Context Header Compression and Fragmentation",
+      "subseries": []
+    },
+    "rfc8824": {
+      "title": "Static Context Header Compression (SCHC) for the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9011": { "title": "Static Context Header Compression and Fragmentation (SCHC) over LoRaWAN", "subseries": [] },
+    "rfc9035": {
+      "title": "A Routing Protocol for Low-Power and Lossy Networks (RPL) Destination-Oriented Directed Acyclic Graph (DODAG) Configuration Option for the 6LoWPAN Routing Header",
+      "subseries": []
+    },
+    "rfc9139": {
+      "title": "Information-Centric Networking (ICN) Adaptation to Low-Power Wireless Personal Area Networks (LoWPANs)",
+      "subseries": []
+    },
+    "rfc9363": { "title": "A YANG Data Model for Static Context Header Compression (SCHC)", "subseries": [] },
+    "rfc9391": { "title": "Static Context Header Compression over Narrowband Internet of Things", "subseries": [] },
+    "rfc9441": { "title": "Static Context Header Compression (SCHC) Compound Acknowledgement (ACK)", "subseries": [] },
+    "rfc9442": {
+      "title": "Static Context Header Compression (SCHC) over Sigfox Low-Power Wide Area Network (LPWAN)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "rohc": { "name": "ROHC" } }
+}

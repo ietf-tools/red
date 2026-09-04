@@ -1,0 +1,29 @@
+{
+  "id": 890,
+  "slug": "megaco",
+  "name": "Megaco/H.248",
+  "description": "Megaco/H.248 gateway control",
+  "parent": "media-gateway",
+  "path": "real-time-communications/media-gateway/megaco",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2805", "rfc2885", "rfc2886", "rfc3015", "rfc3054", "rfc3525", "rfc4097", "rfc5125", "rfc5615"],
+  "document_meta": {
+    "rfc2805": { "title": "Media Gateway Control Protocol Architecture and Requirements", "subseries": [] },
+    "rfc2885": { "title": "Megaco Protocol version 0.8", "subseries": [] },
+    "rfc2886": { "title": "Megaco Errata", "subseries": [] },
+    "rfc3015": { "title": "Megaco Protocol Version 1.0", "subseries": [] },
+    "rfc3054": { "title": "Megaco IP Phone Media Gateway Application Profile", "subseries": [] },
+    "rfc3525": { "title": "Gateway Control Protocol Version 1", "subseries": [] },
+    "rfc4097": { "title": "Middlebox Communications (MIDCOM) Protocol Evaluation", "subseries": [] },
+    "rfc5125": { "title": "Reclassification of RFC 3525 to Historic", "subseries": [] },
+    "rfc5615": { "title": "H.248/MEGACO Registration Procedures", "subseries": ["bcp151"] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "media-gateway": { "name": "Media Gateways" }
+  }
+}

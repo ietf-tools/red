@@ -1,0 +1,21 @@
+{
+  "id": 641,
+  "slug": "smds",
+  "name": "SMDS",
+  "description": "Switched Multimegabit Data Service",
+  "parent": "link-layer",
+  "path": "link-layer/smds",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1209", "rfc1304", "rfc1433", "rfc1694"],
+  "document_meta": {
+    "rfc1209": { "title": "The Transmission of IP Datagrams over the SMDS Service", "subseries": ["std52"] },
+    "rfc1304": { "title": "Definitions of Managed Objects for the SIP Interface Type", "subseries": [] },
+    "rfc1433": { "title": "Directed ARP", "subseries": [] },
+    "rfc1694": { "title": "Definitions of Managed Objects for SMDS Interfaces using SMIv2", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

@@ -1,0 +1,27 @@
+{
+  "id": 542,
+  "slug": "web",
+  "name": "Web",
+  "description": "The web in general: architecture and cross-protocol web matters",
+  "parent": null,
+  "path": "web",
+  "document_count": 0,
+  "document_count_deep": 536,
+  "retired": false,
+  "children": ["atom", "cdn", "html", "http", "opes", "robots-txt", "uri", "web-push", "web-security", "websocket"],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": {
+    "atom": { "name": "Atom" },
+    "cdn": { "name": "CDN" },
+    "html": { "name": "HTML" },
+    "http": { "name": "HTTP" },
+    "opes": { "name": "OPES" },
+    "robots-txt": { "name": "robots.txt" },
+    "uri": { "name": "URI" },
+    "web-push": { "name": "Web Push" },
+    "web-security": { "name": "Web Security" },
+    "websocket": { "name": "WebSocket" }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": 775,
+  "slug": "netblt",
+  "name": "NETBLT",
+  "description": "NETBLT bulk data transfer protocol",
+  "parent": "transport",
+  "path": "transport/netblt",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1030", "rfc1986", "rfc969", "rfc998"],
+  "document_meta": {
+    "rfc1030": { "title": "On testing the NETBLT Protocol over divers networks", "subseries": [] },
+    "rfc1986": {
+      "title": "Experiments with a Simple File Transfer Protocol for Radio Links using Enhanced Trivial File Transfer Protocol (ETFTP)",
+      "subseries": []
+    },
+    "rfc969": { "title": "NETBLT: A bulk data transfer protocol", "subseries": [] },
+    "rfc998": { "title": "NETBLT: A bulk data transfer protocol", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

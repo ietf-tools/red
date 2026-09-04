@@ -1,0 +1,22 @@
+{
+  "id": 782,
+  "slug": "st2",
+  "name": "ST-II",
+  "description": "The ST-II internet stream protocol",
+  "parent": "transport",
+  "path": "transport/st2",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1190", "rfc1819"],
+  "document_meta": {
+    "rfc1190": { "title": "Experimental Internet Stream Protocol: Version 2 (ST-II)", "subseries": [] },
+    "rfc1819": {
+      "title": "Internet Stream Protocol Version 2 (ST2) Protocol Specification - Version ST2+",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

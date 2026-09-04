@@ -1,0 +1,238 @@
+{
+  "id": 932,
+  "slug": "rpki",
+  "name": "RPKI",
+  "description": "Resource Public Key Infrastructure and route origin validation",
+  "parent": "routing-security",
+  "path": "routing/routing-security/rpki",
+  "document_count": 65,
+  "document_count_deep": 65,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6382",
+    "rfc6472",
+    "rfc6480",
+    "rfc6481",
+    "rfc6482",
+    "rfc6483",
+    "rfc6484",
+    "rfc6485",
+    "rfc6486",
+    "rfc6487",
+    "rfc6488",
+    "rfc6489",
+    "rfc6490",
+    "rfc6491",
+    "rfc6492",
+    "rfc6493",
+    "rfc6494",
+    "rfc6810",
+    "rfc6811",
+    "rfc6907",
+    "rfc6916",
+    "rfc6945",
+    "rfc7115",
+    "rfc7128",
+    "rfc7132",
+    "rfc7318",
+    "rfc7353",
+    "rfc7382",
+    "rfc7730",
+    "rfc7909",
+    "rfc7935",
+    "rfc8097",
+    "rfc8181",
+    "rfc8182",
+    "rfc8183",
+    "rfc8205",
+    "rfc8206",
+    "rfc8207",
+    "rfc8208",
+    "rfc8209",
+    "rfc8210",
+    "rfc8211",
+    "rfc8360",
+    "rfc8416",
+    "rfc8481",
+    "rfc8488",
+    "rfc8608",
+    "rfc8630",
+    "rfc8634",
+    "rfc8635",
+    "rfc8893",
+    "rfc8897",
+    "rfc9255",
+    "rfc9286",
+    "rfc9319",
+    "rfc9323",
+    "rfc9324",
+    "rfc9455",
+    "rfc9582",
+    "rfc9589",
+    "rfc9674",
+    "rfc9691",
+    "rfc9697",
+    "rfc9829",
+    "rfc9981"
+  ],
+  "document_meta": {
+    "rfc6382": {
+      "title": "Unique Origin Autonomous System Numbers (ASNs) per Node for Globally Anycasted Services",
+      "subseries": ["bcp169"]
+    },
+    "rfc6472": { "title": "Recommendation for Not Using AS_SET and AS_CONFED_SET in BGP", "subseries": ["bcp172"] },
+    "rfc6480": { "title": "An Infrastructure to Support Secure Internet Routing", "subseries": [] },
+    "rfc6481": { "title": "A Profile for Resource Certificate Repository Structure", "subseries": [] },
+    "rfc6482": { "title": "A Profile for Route Origin Authorizations (ROAs)", "subseries": [] },
+    "rfc6483": {
+      "title": "Validation of Route Origination Using the Resource Certificate Public Key Infrastructure (PKI) and Route Origin Authorizations (ROAs)",
+      "subseries": []
+    },
+    "rfc6484": {
+      "title": "Certificate Policy (CP) for the Resource Public Key Infrastructure (RPKI)",
+      "subseries": ["bcp173"]
+    },
+    "rfc6485": {
+      "title": "The Profile for Algorithms and Key Sizes for Use in the Resource Public Key Infrastructure (RPKI)",
+      "subseries": []
+    },
+    "rfc6486": { "title": "Manifests for the Resource Public Key Infrastructure (RPKI)", "subseries": [] },
+    "rfc6487": { "title": "A Profile for X.509 PKIX Resource Certificates", "subseries": [] },
+    "rfc6488": { "title": "Signed Object Template for the Resource Public Key Infrastructure (RPKI)", "subseries": [] },
+    "rfc6489": {
+      "title": "Certification Authority (CA) Key Rollover in the Resource Public Key Infrastructure (RPKI)",
+      "subseries": ["bcp174"]
+    },
+    "rfc6490": { "title": "Resource Public Key Infrastructure (RPKI) Trust Anchor Locator", "subseries": [] },
+    "rfc6491": { "title": "Resource Public Key Infrastructure (RPKI) Objects Issued by IANA", "subseries": [] },
+    "rfc6492": { "title": "A Protocol for Provisioning Resource Certificates", "subseries": [] },
+    "rfc6493": { "title": "The Resource Public Key Infrastructure (RPKI) Ghostbusters Record", "subseries": [] },
+    "rfc6494": {
+      "title": "Certificate Profile and Certificate Management for SEcure Neighbor Discovery (SEND)",
+      "subseries": []
+    },
+    "rfc6810": { "title": "The Resource Public Key Infrastructure (RPKI) to Router Protocol", "subseries": [] },
+    "rfc6811": { "title": "BGP Prefix Origin Validation", "subseries": [] },
+    "rfc6907": {
+      "title": "Use Cases and Interpretations of Resource Public Key Infrastructure (RPKI) Objects for Issuers and Relying Parties",
+      "subseries": []
+    },
+    "rfc6916": {
+      "title": "Algorithm Agility Procedure for the Resource Public Key Infrastructure (RPKI)",
+      "subseries": ["bcp182"]
+    },
+    "rfc6945": {
+      "title": "Definitions of Managed Objects for the Resource Public Key Infrastructure (RPKI) to Router Protocol",
+      "subseries": []
+    },
+    "rfc7115": {
+      "title": "Origin Validation Operation Based on the Resource Public Key Infrastructure (RPKI)",
+      "subseries": ["bcp185"]
+    },
+    "rfc7128": { "title": "Resource Public Key Infrastructure (RPKI) Router Implementation Report", "subseries": [] },
+    "rfc7132": { "title": "Threat Model for BGP Path Security", "subseries": [] },
+    "rfc7318": {
+      "title": "Policy Qualifiers in Resource Public Key Infrastructure (RPKI) Certificates",
+      "subseries": []
+    },
+    "rfc7353": { "title": "Security Requirements for BGP Path Validation", "subseries": [] },
+    "rfc7382": {
+      "title": "Template for a Certification Practice Statement (CPS) for the Resource PKI (RPKI)",
+      "subseries": ["bcp173"]
+    },
+    "rfc7730": { "title": "Resource Public Key Infrastructure (RPKI) Trust Anchor Locator", "subseries": [] },
+    "rfc7909": {
+      "title": "Securing Routing Policy Specification Language (RPSL) Objects with Resource Public Key Infrastructure (RPKI) Signatures",
+      "subseries": []
+    },
+    "rfc7935": {
+      "title": "The Profile for Algorithms and Key Sizes for Use in the Resource Public Key Infrastructure",
+      "subseries": []
+    },
+    "rfc8097": { "title": "BGP Prefix Origin Validation State Extended Community", "subseries": [] },
+    "rfc8181": { "title": "A Publication Protocol for the Resource Public Key Infrastructure (RPKI)", "subseries": [] },
+    "rfc8182": { "title": "The RPKI Repository Delta Protocol (RRDP)", "subseries": [] },
+    "rfc8183": {
+      "title": "An Out-of-Band Setup Protocol for Resource Public Key Infrastructure (RPKI) Production Services",
+      "subseries": []
+    },
+    "rfc8205": { "title": "BGPsec Protocol Specification", "subseries": [] },
+    "rfc8206": { "title": "BGPsec Considerations for Autonomous System (AS) Migration", "subseries": [] },
+    "rfc8207": { "title": "BGPsec Operational Considerations", "subseries": ["bcp211"] },
+    "rfc8208": { "title": "BGPsec Algorithms, Key Formats, and Signature Formats", "subseries": [] },
+    "rfc8209": {
+      "title": "A Profile for BGPsec Router Certificates, Certificate Revocation Lists, and Certification Requests",
+      "subseries": []
+    },
+    "rfc8210": {
+      "title": "The Resource Public Key Infrastructure (RPKI) to Router Protocol, Version 1",
+      "subseries": []
+    },
+    "rfc8211": {
+      "title": "Adverse Actions by a Certification Authority (CA) or Repository Manager in the Resource Public Key Infrastructure (RPKI)",
+      "subseries": []
+    },
+    "rfc8360": { "title": "Resource Public Key Infrastructure (RPKI) Validation Reconsidered", "subseries": [] },
+    "rfc8416": {
+      "title": "Simplified Local Internet Number Resource Management with the RPKI (SLURM)",
+      "subseries": []
+    },
+    "rfc8481": {
+      "title": "Clarifications to BGP Origin Validation Based on Resource Public Key Infrastructure (RPKI)",
+      "subseries": []
+    },
+    "rfc8488": {
+      "title": "RIPE NCC's Implementation of Resource Public Key Infrastructure (RPKI) Certificate Tree Validation",
+      "subseries": []
+    },
+    "rfc8608": { "title": "BGPsec Algorithms, Key Formats, and Signature Formats", "subseries": [] },
+    "rfc8630": { "title": "Resource Public Key Infrastructure (RPKI) Trust Anchor Locator", "subseries": [] },
+    "rfc8634": { "title": "BGPsec Router Certificate Rollover", "subseries": ["bcp224"] },
+    "rfc8635": { "title": "Router Keying for BGPsec", "subseries": [] },
+    "rfc8893": {
+      "title": "Resource Public Key Infrastructure (RPKI) Origin Validation for BGP Export",
+      "subseries": []
+    },
+    "rfc8897": {
+      "title": "Requirements for Resource Public Key Infrastructure (RPKI) Relying Parties",
+      "subseries": []
+    },
+    "rfc9255": { "title": "The 'I' in RPKI Does Not Stand for Identity", "subseries": [] },
+    "rfc9286": { "title": "Manifests for the Resource Public Key Infrastructure (RPKI)", "subseries": [] },
+    "rfc9319": {
+      "title": "The Use of maxLength in the Resource Public Key Infrastructure (RPKI)",
+      "subseries": ["bcp185"]
+    },
+    "rfc9323": { "title": "A Profile for RPKI Signed Checklists (RSCs)", "subseries": [] },
+    "rfc9324": {
+      "title": "Policy Based on the Resource Public Key Infrastructure (RPKI) without Route Refresh",
+      "subseries": []
+    },
+    "rfc9455": {
+      "title": "Avoiding Route Origin Authorizations (ROAs) Containing Multiple IP Prefixes",
+      "subseries": ["bcp238"]
+    },
+    "rfc9582": { "title": "A Profile for Route Origin Authorizations (ROAs)", "subseries": [] },
+    "rfc9589": {
+      "title": "On the Use of the Cryptographic Message Syntax (CMS) Signing-Time Attribute in Resource Public Key Infrastructure (RPKI) Signed Objects",
+      "subseries": []
+    },
+    "rfc9674": { "title": "Same-Origin Policy for the RPKI Repository Delta Protocol (RRDP)", "subseries": [] },
+    "rfc9691": {
+      "title": "A Profile for Resource Public Key Infrastructure (RPKI) Trust Anchor Keys (TAKs)",
+      "subseries": []
+    },
+    "rfc9697": {
+      "title": "Detecting RPKI Repository Delta Protocol (RRDP) Session Desynchronization",
+      "subseries": []
+    },
+    "rfc9829": {
+      "title": "Handling of Resource Public Key Infrastructure (RPKI) Certificate Revocation List (CRL) Number Extensions",
+      "subseries": []
+    },
+    "rfc9981": { "title": "Resource Public Key Infrastructure (RPKI) Manifest Number Handling", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "routing-security": { "name": "Routing Security" } }
+}

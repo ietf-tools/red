@@ -1,0 +1,184 @@
+{
+  "id": 608,
+  "slug": "osi",
+  "name": "OSI",
+  "description": "OSI network-layer protocols and coexistence with IP",
+  "parent": "internet-layer",
+  "path": "internet-layer/osi",
+  "document_count": 59,
+  "document_count_deep": 64,
+  "retired": false,
+  "children": ["clnp"],
+  "aliases": [],
+  "documents": [
+    "rfc1006",
+    "rfc1007",
+    "rfc1008",
+    "rfc1024",
+    "rfc1069",
+    "rfc1070",
+    "rfc1085",
+    "rfc1095",
+    "rfc1126",
+    "rfc1136",
+    "rfc1139",
+    "rfc1142",
+    "rfc1161",
+    "rfc1165",
+    "rfc1195",
+    "rfc1214",
+    "rfc1223",
+    "rfc1237",
+    "rfc1240",
+    "rfc1277",
+    "rfc1278",
+    "rfc1283",
+    "rfc1330",
+    "rfc1377",
+    "rfc1415",
+    "rfc1418",
+    "rfc1431",
+    "rfc1484",
+    "rfc1485",
+    "rfc1561",
+    "rfc1564",
+    "rfc1574",
+    "rfc1629",
+    "rfc1637",
+    "rfc1698",
+    "rfc1706",
+    "rfc1768",
+    "rfc1781",
+    "rfc1859",
+    "rfc1888",
+    "rfc2030",
+    "rfc2126",
+    "rfc2237",
+    "rfc2503",
+    "rfc2556",
+    "rfc3359",
+    "rfc3563",
+    "rfc4330",
+    "rfc5308",
+    "rfc5458",
+    "rfc892",
+    "rfc905",
+    "rfc9134",
+    "rfc939",
+    "rfc941",
+    "rfc942",
+    "rfc983",
+    "rfc986",
+    "rfc995"
+  ],
+  "document_meta": {
+    "rfc1006": { "title": "ISO Transport Service on top of the TCP Version: 3", "subseries": ["std35"] },
+    "rfc1007": { "title": "Military supplement to the ISO Transport Protocol", "subseries": [] },
+    "rfc1008": { "title": "Implementation guide for the ISO Transport Protocol", "subseries": [] },
+    "rfc1024": { "title": "HEMS variable definitions", "subseries": [] },
+    "rfc1069": {
+      "title": "Guidelines for the use of Internet-IP addresses in the ISO Connectionless-Mode Network Protocol",
+      "subseries": []
+    },
+    "rfc1070": {
+      "title": "Use of the Internet as a subnetwork for experimentation with the OSI network layer",
+      "subseries": []
+    },
+    "rfc1085": { "title": "ISO presentation services on top of TCP/IP based internets", "subseries": [] },
+    "rfc1095": { "title": "Common Management Information Services and Protocol over TCP/IP (CMOT)", "subseries": [] },
+    "rfc1126": { "title": "Goals and functional requirements for inter-autonomous system routing", "subseries": [] },
+    "rfc1136": {
+      "title": "Administrative Domains and Routing Domains: A model for routing in the Internet",
+      "subseries": []
+    },
+    "rfc1139": { "title": "Echo function for ISO 8473", "subseries": [] },
+    "rfc1142": { "title": "OSI IS-IS Intra-domain Routing Protocol", "subseries": [] },
+    "rfc1161": { "title": "SNMP over OSI", "subseries": [] },
+    "rfc1165": { "title": "Network Time Protocol (NTP) over the OSI Remote Operations Service", "subseries": [] },
+    "rfc1195": { "title": "Use of OSI IS-IS for routing in TCP/IP and dual environments", "subseries": [] },
+    "rfc1214": { "title": "OSI internet management: Management Information Base", "subseries": [] },
+    "rfc1223": { "title": "OSI CLNS and LLC1 protocols on Network Systems HYPERchannel", "subseries": [] },
+    "rfc1237": { "title": "Guidelines for OSI NSAP Allocation in the Internet", "subseries": [] },
+    "rfc1240": { "title": "OSI connectionless transport services on top of UDP: Version 1", "subseries": [] },
+    "rfc1277": {
+      "title": "Encoding Network Addresses to Support Operation over Non-OSI Lower Layers",
+      "subseries": []
+    },
+    "rfc1278": { "title": "A string encoding of Presentation Address", "subseries": [] },
+    "rfc1283": { "title": "SNMP over OSI", "subseries": [] },
+    "rfc1330": {
+      "title": "Recommendations for the Phase I Deployment of OSI Directory Services (X.500) and OSI Message Handling Services (X.400) within the ESNET Community",
+      "subseries": []
+    },
+    "rfc1377": { "title": "The PPP OSI Network Layer Control Protocol (OSINLCP)", "subseries": [] },
+    "rfc1415": { "title": "FTP-FTAM Gateway Specification", "subseries": [] },
+    "rfc1418": { "title": "SNMP over OSI", "subseries": [] },
+    "rfc1431": { "title": "DUA Metrics (OSI-DS 33 (v2))", "subseries": [] },
+    "rfc1484": {
+      "title": "Using the OSI Directory to achieve User Friendly Naming (OSI-DS 24 (v1.2))",
+      "subseries": []
+    },
+    "rfc1485": { "title": "A String Representation of Distinguished Names (OSI-DS 23 (v5))", "subseries": [] },
+    "rfc1561": { "title": "Use of ISO CLNP in TUBA Environments", "subseries": [] },
+    "rfc1564": { "title": "DSA Metrics (OSI-DS 34 (v3))", "subseries": [] },
+    "rfc1574": { "title": "Essential Tools for the OSI Internet", "subseries": [] },
+    "rfc1629": { "title": "Guidelines for OSI NSAP Allocation in the Internet", "subseries": [] },
+    "rfc1637": { "title": "DNS NSAP Resource Records", "subseries": [] },
+    "rfc1698": {
+      "title": "Octet Sequences for Upper-Layer OSI to Support Basic Communications Applications",
+      "subseries": []
+    },
+    "rfc1706": { "title": "DNS NSAP Resource Records", "subseries": [] },
+    "rfc1768": { "title": "Host Group Extensions for CLNP Multicasting", "subseries": [] },
+    "rfc1781": { "title": "Using the OSI Directory to Achieve User Friendly Naming", "subseries": [] },
+    "rfc1859": {
+      "title": "ISO Transport Class 2 Non-use of Explicit Flow Control over TCP RFC1006 extension",
+      "subseries": []
+    },
+    "rfc1888": { "title": "OSI NSAPs and IPv6", "subseries": [] },
+    "rfc2030": { "title": "Simple Network Time Protocol (SNTP) Version 4 for IPv4, IPv6 and OSI", "subseries": [] },
+    "rfc2126": { "title": "ISO Transport Service on top of TCP (ITOT)", "subseries": [] },
+    "rfc2237": { "title": "Japanese Character Encoding for Internet Messages", "subseries": [] },
+    "rfc2503": { "title": "MIME Types for Use with the ISO ILL Protocol", "subseries": [] },
+    "rfc2556": {
+      "title": "OSI connectionless transport services on top of UDP Applicability Statement for Historic Status",
+      "subseries": []
+    },
+    "rfc3359": {
+      "title": "Reserved Type, Length and Value (TLV) Codepoints in Intermediate System to Intermediate System",
+      "subseries": []
+    },
+    "rfc3563": {
+      "title": "Cooperative Agreement Between the ISOC/IETF and ISO/IEC Joint Technical Committee 1/Sub Committee 6 (JTC1/SC6) on IS-IS Routing Protocol Development",
+      "subseries": []
+    },
+    "rfc4330": { "title": "Simple Network Time Protocol (SNTP) Version 4 for IPv4, IPv6 and OSI", "subseries": [] },
+    "rfc5308": { "title": "Routing IPv6 with IS-IS", "subseries": [] },
+    "rfc5458": {
+      "title": "Security Requirements for the Unidirectional Lightweight Encapsulation (ULE) Protocol",
+      "subseries": []
+    },
+    "rfc892": { "title": "ISO Transport Protocol specification", "subseries": [] },
+    "rfc905": { "title": "ISO Transport Protocol specification ISO DP 8073", "subseries": [] },
+    "rfc9134": { "title": "RTP Payload Format for ISO/IEC 21122 (JPEG XS)", "subseries": [] },
+    "rfc939": {
+      "title": "Executive summary of the NRC report on transport protocols for Department of Defense data networks",
+      "subseries": []
+    },
+    "rfc941": {
+      "title": "Addendum to the network service definition covering network layer addressing",
+      "subseries": []
+    },
+    "rfc942": { "title": "Transport protocols for Department of Defense data networks", "subseries": [] },
+    "rfc983": { "title": "ISO transport arrives on top of the TCP", "subseries": [] },
+    "rfc986": {
+      "title": "Guidelines for the use of Internet-IP addresses in the ISO Connectionless-Mode Network Protocol",
+      "subseries": []
+    },
+    "rfc995": {
+      "title": "End System to Intermediate System Routing Exchange Protocol for use in conjunction with ISO 8473",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "clnp": { "name": "CLNP" } }
+}

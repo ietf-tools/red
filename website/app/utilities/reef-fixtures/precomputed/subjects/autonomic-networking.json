@@ -1,0 +1,60 @@
+{
+  "id": 667,
+  "slug": "autonomic-networking",
+  "name": "Autonomic Networking",
+  "description": "Autonomic and self-managing network infrastructure",
+  "parent": "network-management",
+  "path": "network-management/autonomic-networking",
+  "document_count": 15,
+  "document_count_deep": 15,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7149",
+    "rfc7575",
+    "rfc7576",
+    "rfc8316",
+    "rfc8366",
+    "rfc8368",
+    "rfc8990",
+    "rfc8991",
+    "rfc8992",
+    "rfc8993",
+    "rfc8994",
+    "rfc8995",
+    "rfc9222",
+    "rfc9315",
+    "rfc9733"
+  ],
+  "document_meta": {
+    "rfc7149": {
+      "title": "Software-Defined Networking: A Perspective from within a Service Provider Environment",
+      "subseries": []
+    },
+    "rfc7575": { "title": "Autonomic Networking: Definitions and Design Goals", "subseries": [] },
+    "rfc7576": { "title": "General Gap Analysis for Autonomic Networking", "subseries": [] },
+    "rfc8316": {
+      "title": "Autonomic Networking Use Case for Distributed Detection of Service Level Agreement (SLA) Violations",
+      "subseries": []
+    },
+    "rfc8366": { "title": "A Voucher Artifact for Bootstrapping Protocols", "subseries": [] },
+    "rfc8368": {
+      "title": "Using an Autonomic Control Plane for Stable Connectivity of Network Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc8990": { "title": "GeneRic Autonomic Signaling Protocol (GRASP)", "subseries": [] },
+    "rfc8991": {
+      "title": "GeneRic Autonomic Signaling Protocol Application Program Interface (GRASP API)",
+      "subseries": []
+    },
+    "rfc8992": { "title": "Autonomic IPv6 Edge Prefix Management in Large-Scale Networks", "subseries": [] },
+    "rfc8993": { "title": "A Reference Model for Autonomic Networking", "subseries": [] },
+    "rfc8994": { "title": "An Autonomic Control Plane (ACP)", "subseries": [] },
+    "rfc8995": { "title": "Bootstrapping Remote Secure Key Infrastructure (BRSKI)", "subseries": [] },
+    "rfc9222": { "title": "Guidelines for Autonomic Service Agents", "subseries": [] },
+    "rfc9315": { "title": "Intent-Based Networking - Concepts and Definitions", "subseries": [] },
+    "rfc9733": { "title": "BRSKI with Alternative Enrollment (BRSKI-AE)", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

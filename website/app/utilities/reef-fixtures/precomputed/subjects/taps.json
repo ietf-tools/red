@@ -1,0 +1,37 @@
+{
+  "id": 783,
+  "slug": "taps",
+  "name": "TAPS",
+  "description": "Transport services architecture and APIs",
+  "parent": "transport",
+  "path": "transport/taps",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8095", "rfc8303", "rfc8304", "rfc8922", "rfc8923", "rfc9621", "rfc9622", "rfc9623"],
+  "document_meta": {
+    "rfc8095": {
+      "title": "Services Provided by IETF Transport Protocols and Congestion Control Mechanisms",
+      "subseries": []
+    },
+    "rfc8303": { "title": "On the Usage of Transport Features Provided by IETF Transport Protocols", "subseries": [] },
+    "rfc8304": {
+      "title": "Transport Features of the User Datagram Protocol (UDP) and Lightweight UDP (UDP-Lite)",
+      "subseries": []
+    },
+    "rfc8922": {
+      "title": "A Survey of the Interaction between Security Protocols and Transport Services",
+      "subseries": []
+    },
+    "rfc8923": { "title": "A Minimal Set of Transport Services for End Systems", "subseries": [] },
+    "rfc9621": { "title": "Architecture and Requirements for Transport Services", "subseries": [] },
+    "rfc9622": {
+      "title": "An Abstract Application Programming Interface (API) for Transport Services",
+      "subseries": []
+    },
+    "rfc9623": { "title": "Implementing Interfaces to Transport Services", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

@@ -1,0 +1,112 @@
+{
+  "id": 709,
+  "slug": "ip-fast-reroute",
+  "name": "IP Fast Reroute",
+  "description": "IP and LDP fast reroute, loop-free alternates",
+  "parent": "routing",
+  "path": "routing/ip-fast-reroute",
+  "document_count": 29,
+  "document_count_deep": 29,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4090",
+    "rfc5286",
+    "rfc5714",
+    "rfc5715",
+    "rfc6445",
+    "rfc6571",
+    "rfc6894",
+    "rfc6976",
+    "rfc6981",
+    "rfc7431",
+    "rfc7490",
+    "rfc7811",
+    "rfc7812",
+    "rfc7916",
+    "rfc8102",
+    "rfc8104",
+    "rfc8271",
+    "rfc8320",
+    "rfc8333",
+    "rfc8400",
+    "rfc8424",
+    "rfc8518",
+    "rfc8537",
+    "rfc8679",
+    "rfc8796",
+    "rfc9488",
+    "rfc9705",
+    "rfc9855",
+    "rfc9860"
+  ],
+  "document_meta": {
+    "rfc4090": { "title": "Fast Reroute Extensions to RSVP-TE for LSP Tunnels", "subseries": [] },
+    "rfc5286": { "title": "Basic Specification for IP Fast Reroute: Loop-Free Alternates", "subseries": [] },
+    "rfc5714": { "title": "IP Fast Reroute Framework", "subseries": [] },
+    "rfc5715": { "title": "A Framework for Loop-Free Convergence", "subseries": [] },
+    "rfc6445": {
+      "title": "Multiprotocol Label Switching (MPLS) Traffic Engineering Management Information Base for Fast Reroute",
+      "subseries": []
+    },
+    "rfc6571": {
+      "title": "Loop-Free Alternate (LFA) Applicability in Service Provider (SP) Networks",
+      "subseries": []
+    },
+    "rfc6894": {
+      "title": "Methodology for Benchmarking MPLS Traffic Engineered (MPLS-TE) Fast Reroute Protection",
+      "subseries": []
+    },
+    "rfc6976": {
+      "title": "Framework for Loop-Free Convergence Using the Ordered Forwarding Information Base (oFIB) Approach",
+      "subseries": []
+    },
+    "rfc6981": { "title": "A Framework for IP and MPLS Fast Reroute Using Not-Via Addresses", "subseries": [] },
+    "rfc7431": { "title": "Multicast-Only Fast Reroute", "subseries": [] },
+    "rfc7490": { "title": "Remote Loop-Free Alternate (LFA) Fast Reroute (FRR)", "subseries": [] },
+    "rfc7811": {
+      "title": "An Algorithm for Computing IP/LDP Fast Reroute Using Maximally Redundant Trees (MRT-FRR)",
+      "subseries": []
+    },
+    "rfc7812": {
+      "title": "An Architecture for IP/LDP Fast Reroute Using Maximally Redundant Trees (MRT-FRR)",
+      "subseries": []
+    },
+    "rfc7916": { "title": "Operational Management of Loop-Free Alternates", "subseries": [] },
+    "rfc8102": { "title": "Remote-LFA Node Protection and Manageability", "subseries": [] },
+    "rfc8104": { "title": "Pseudowire (PW) Endpoint Fast Failure Protection", "subseries": [] },
+    "rfc8271": {
+      "title": "Updates to the Resource Reservation Protocol for Fast Reroute of Traffic Engineering GMPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8320": { "title": "LDP Extensions to Support Maximally Redundant Trees", "subseries": [] },
+    "rfc8333": { "title": "Micro-loop Prevention by Introducing a Local Convergence Delay", "subseries": [] },
+    "rfc8400": { "title": "Extensions to RSVP-TE for Label Switched Path (LSP) Egress Protection", "subseries": [] },
+    "rfc8424": {
+      "title": "Extensions to RSVP-TE for Label Switched Path (LSP) Ingress Fast Reroute (FRR) Protection",
+      "subseries": []
+    },
+    "rfc8518": { "title": "Selection of Loop-Free Alternates for Multi-Homed Prefixes", "subseries": [] },
+    "rfc8537": {
+      "title": "Updates to the Fast Reroute Procedures for Co-routed Associated Bidirectional Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8679": { "title": "MPLS Egress Protection Framework", "subseries": [] },
+    "rfc8796": {
+      "title": "RSVP-TE Summary Fast Reroute Extensions for Label Switched Path (LSP) Tunnels",
+      "subseries": []
+    },
+    "rfc9488": {
+      "title": "Local Protection Enforcement in the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc9705": { "title": "Refresh-Interval Independent RSVP Fast Reroute Facility Protection", "subseries": [] },
+    "rfc9855": { "title": "Topology Independent Fast Reroute Using Segment Routing", "subseries": [] },
+    "rfc9860": {
+      "title": "Multicast-Only Fast Reroute (MoFRR) Based on Topology Independent Loop-Free Alternate (TI-LFA) Fast Reroute",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

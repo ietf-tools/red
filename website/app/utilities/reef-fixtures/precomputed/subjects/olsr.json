@@ -1,0 +1,26 @@
+{
+  "id": 912,
+  "slug": "olsr",
+  "name": "OLSR",
+  "description": "Optimized Link State Routing",
+  "parent": "manet",
+  "path": "routing/manet/olsr",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3626", "rfc7185", "rfc7779"],
+  "document_meta": {
+    "rfc3626": { "title": "Optimized Link State Routing Protocol (OLSR)", "subseries": [] },
+    "rfc7185": {
+      "title": "Link Metrics for the Mobile Ad Hoc Network (MANET) Routing Protocol OLSRv2 - Rationale",
+      "subseries": []
+    },
+    "rfc7779": {
+      "title": "Directional Airtime Metric Based on Packet Sequence Numbers for Optimized Link State Routing Version 2 (OLSRv2)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "MANET" } }
+}

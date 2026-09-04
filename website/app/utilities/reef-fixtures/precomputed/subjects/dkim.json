@@ -1,0 +1,106 @@
+{
+  "id": 1015,
+  "slug": "dkim",
+  "name": "DKIM",
+  "description": "DomainKeys Identified Mail",
+  "parent": "email-authentication",
+  "path": "messaging/email/email-authentication/dkim",
+  "document_count": 30,
+  "document_count_deep": 30,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4686",
+    "rfc4870",
+    "rfc4871",
+    "rfc5016",
+    "rfc5518",
+    "rfc5585",
+    "rfc5617",
+    "rfc5672",
+    "rfc5863",
+    "rfc6008",
+    "rfc6212",
+    "rfc6376",
+    "rfc6377",
+    "rfc6541",
+    "rfc6591",
+    "rfc6651",
+    "rfc7001",
+    "rfc7070",
+    "rfc7071",
+    "rfc7072",
+    "rfc7073",
+    "rfc7489",
+    "rfc7601",
+    "rfc7960",
+    "rfc8301",
+    "rfc8463",
+    "rfc8601",
+    "rfc8617",
+    "rfc9057",
+    "rfc9991"
+  ],
+  "document_meta": {
+    "rfc4686": { "title": "Analysis of Threats Motivating DomainKeys Identified Mail (DKIM)", "subseries": [] },
+    "rfc4870": {
+      "title": "Domain-Based Email Authentication Using Public Keys Advertised in the DNS (DomainKeys)",
+      "subseries": []
+    },
+    "rfc4871": { "title": "DomainKeys Identified Mail (DKIM) Signatures", "subseries": [] },
+    "rfc5016": {
+      "title": "Requirements for a DomainKeys Identified Mail (DKIM) Signing Practices Protocol",
+      "subseries": []
+    },
+    "rfc5518": { "title": "Vouch By Reference", "subseries": [] },
+    "rfc5585": { "title": "DomainKeys Identified Mail (DKIM) Service Overview", "subseries": [] },
+    "rfc5617": { "title": "DomainKeys Identified Mail (DKIM) Author Domain Signing Practices (ADSP)", "subseries": [] },
+    "rfc5672": { "title": "RFC 4871 DomainKeys Identified Mail (DKIM) Signatures -- Update", "subseries": [] },
+    "rfc5863": {
+      "title": "DomainKeys Identified Mail (DKIM) Development, Deployment, and Operations",
+      "subseries": []
+    },
+    "rfc6008": {
+      "title": "Authentication-Results Registration for Differentiating among Cryptographic Results",
+      "subseries": []
+    },
+    "rfc6212": { "title": "Authentication-Results Registration for Vouch by Reference Results", "subseries": [] },
+    "rfc6376": { "title": "DomainKeys Identified Mail (DKIM) Signatures", "subseries": ["std76"] },
+    "rfc6377": { "title": "DomainKeys Identified Mail (DKIM) and Mailing Lists", "subseries": ["bcp167"] },
+    "rfc6541": { "title": "DomainKeys Identified Mail (DKIM) Authorized Third-Party Signatures", "subseries": [] },
+    "rfc6591": { "title": "Authentication Failure Reporting Using the Abuse Reporting Format", "subseries": [] },
+    "rfc6651": { "title": "Extensions to DomainKeys Identified Mail (DKIM) for Failure Reporting", "subseries": [] },
+    "rfc7001": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc7070": { "title": "An Architecture for Reputation Reporting", "subseries": [] },
+    "rfc7071": { "title": "A Media Type for Reputation Interchange", "subseries": [] },
+    "rfc7072": { "title": "A Reputation Query Protocol", "subseries": [] },
+    "rfc7073": { "title": "A Reputation Response Set for Email Identifiers", "subseries": [] },
+    "rfc7489": { "title": "Domain-based Message Authentication, Reporting, and Conformance (DMARC)", "subseries": [] },
+    "rfc7601": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc7960": {
+      "title": "Interoperability Issues between Domain-based Message Authentication, Reporting, and Conformance (DMARC) and Indirect Email Flows",
+      "subseries": []
+    },
+    "rfc8301": {
+      "title": "Cryptographic Algorithm and Key Usage Update to DomainKeys Identified Mail (DKIM)",
+      "subseries": []
+    },
+    "rfc8463": {
+      "title": "A New Cryptographic Signature Method for DomainKeys Identified Mail (DKIM)",
+      "subseries": []
+    },
+    "rfc8601": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc8617": { "title": "The Authenticated Received Chain (ARC) Protocol", "subseries": [] },
+    "rfc9057": { "title": "Email Author Header Field", "subseries": [] },
+    "rfc9991": {
+      "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC) Failure Reporting",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "messaging": { "name": "Messaging" },
+    "email": { "name": "Email" },
+    "email-authentication": { "name": "Email Authentication" }
+  }
+}

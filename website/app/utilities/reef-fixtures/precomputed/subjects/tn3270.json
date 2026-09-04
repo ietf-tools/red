@@ -1,0 +1,29 @@
+{
+  "id": 846,
+  "slug": "tn3270",
+  "name": "TN3270",
+  "description": "TN3270 terminal emulation",
+  "parent": "sna",
+  "path": "link-layer/sna/tn3270",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1576", "rfc1646", "rfc1647", "rfc2355", "rfc2561", "rfc2562", "rfc2877", "rfc3049", "rfc6270"],
+  "document_meta": {
+    "rfc1576": { "title": "TN3270 Current Practices", "subseries": [] },
+    "rfc1646": { "title": "TN3270 Extensions for LUname and Printer Selection", "subseries": [] },
+    "rfc1647": { "title": "TN3270 Enhancements", "subseries": [] },
+    "rfc2355": { "title": "TN3270 Enhancements", "subseries": [] },
+    "rfc2561": { "title": "Base Definitions of Managed Objects for TN3270E Using SMIv2", "subseries": [] },
+    "rfc2562": {
+      "title": "Definitions of Protocol and Managed Objects for TN3270E Response Time Collection Using SMIv2 (TN3270E-RT-MIB)",
+      "subseries": []
+    },
+    "rfc2877": { "title": "5250 Telnet Enhancements", "subseries": [] },
+    "rfc3049": { "title": "TN3270E Service Location and Session Balancing", "subseries": [] },
+    "rfc6270": { "title": "The 'tn3270' URI Scheme", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" }, "sna": { "name": "SNA" } }
+}

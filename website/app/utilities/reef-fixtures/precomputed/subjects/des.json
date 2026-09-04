@@ -1,0 +1,68 @@
+{
+  "id": 949,
+  "slug": "des",
+  "name": "DES",
+  "description": "DES and Triple-DES (historic ciphers)",
+  "parent": "cryptography",
+  "path": "security/cryptography/des",
+  "document_count": 19,
+  "document_count_deep": 19,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1829",
+    "rfc1851",
+    "rfc1969",
+    "rfc2405",
+    "rfc2419",
+    "rfc2420",
+    "rfc2947",
+    "rfc2948",
+    "rfc2952",
+    "rfc2953",
+    "rfc3217",
+    "rfc3537",
+    "rfc3607",
+    "rfc4772",
+    "rfc5469",
+    "rfc6030",
+    "rfc6649",
+    "rfc8429",
+    "rfc9142"
+  ],
+  "document_meta": {
+    "rfc1829": { "title": "The ESP DES-CBC Transform", "subseries": [] },
+    "rfc1851": { "title": "The ESP Triple DES Transform", "subseries": [] },
+    "rfc1969": { "title": "The PPP DES Encryption Protocol (DESE)", "subseries": [] },
+    "rfc2405": { "title": "The ESP DES-CBC Cipher Algorithm With Explicit IV", "subseries": [] },
+    "rfc2419": { "title": "The PPP DES Encryption Protocol, Version 2 (DESE-bis)", "subseries": [] },
+    "rfc2420": { "title": "The PPP Triple-DES Encryption Protocol (3DESE)", "subseries": [] },
+    "rfc2947": { "title": "Telnet Encryption: DES3 64 bit Cipher Feedback", "subseries": [] },
+    "rfc2948": { "title": "Telnet Encryption: DES3 64 bit Output Feedback", "subseries": [] },
+    "rfc2952": { "title": "Telnet Encryption: DES 64 bit Cipher Feedback", "subseries": [] },
+    "rfc2953": { "title": "Telnet Encryption: DES 64 bit Output Feedback", "subseries": [] },
+    "rfc3217": { "title": "Triple-DES and RC2 Key Wrapping", "subseries": [] },
+    "rfc3537": {
+      "title": "Wrapping a Hashed Message Authentication Code (HMAC) key with a Triple-Data Encryption Standard (DES) Key or an Advanced Encryption Standard (AES) Key",
+      "subseries": []
+    },
+    "rfc3607": {
+      "title": "Chinese Lottery Cryptanalysis Revisited: The Internet as a Codebreaking Tool",
+      "subseries": []
+    },
+    "rfc4772": { "title": "Security Implications of Using the Data Encryption Standard (DES)", "subseries": [] },
+    "rfc5469": { "title": "DES and IDEA Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc6030": { "title": "Portable Symmetric Key Container (PSKC)", "subseries": [] },
+    "rfc6649": {
+      "title": "Deprecate DES, RC4-HMAC-EXP, and Other Weak Cryptographic Algorithms in Kerberos",
+      "subseries": ["bcp179"]
+    },
+    "rfc8429": { "title": "Deprecate Triple-DES (3DES) and RC4 in Kerberos", "subseries": ["bcp218"] },
+    "rfc9142": {
+      "title": "Key Exchange (KEX) Method Updates and Recommendations for Secure Shell (SSH)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

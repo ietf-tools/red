@@ -15,6 +15,7 @@
 import { describe, expect, test } from 'vitest'
 import {
   PrecomputedSubjectDetail,
+  PrecomputedSubjectDetailOrRedirect,
   SubjectAlias,
   Subject as SubjectSchema,
   SubjectDetailOrRedirect,
@@ -30,6 +31,7 @@ import {
   headingSubjectDetailFixture,
   leafSubjectDetailFixture
 } from './reef-fixtures/subjects'
+import publishedIndex from './reef-fixtures/precomputed/subjects.json'
 
 describe('the served subject fixtures satisfy the contract', () => {
   test('every entry in the vocabulary parses', () => {
@@ -68,11 +70,69 @@ describe('the three subject shapes stay disjoint', () => {
   })
 })
 
+describe("Reef's published files parse", () => {
+  // The real thing: ./reef-fixtures/precomputed is a verbatim copy of a precompute run, so this is
+  // the check that what Reef writes and what Reef's contract says have not come apart. Nothing else
+  // in either repository compares the two — Reef asserts its files are its views' bytes, and Red
+  // generates from the contract, but only this reads an actual file against an actual schema.
+  const index = publishedIndex as unknown
+  const files = Object.entries(import.meta.glob('./reef-fixtures/precomputed/subjects/*.json', { eager: true })) as [
+    string,
+    { default: unknown }
+  ][]
+
+  test('there is a file for every subject in the index, and one each', () => {
+    const parsed = SubjectIndex.parse(index)
+    const slugs = new Set(Object.keys(parsed.subjects))
+    // Both directions. Without the count, a glob that resolved to a handful of
+    // files would satisfy every other test here.
+    expect(files.length).toBe(slugs.size)
+    const onDisk = new Set(
+      files.map(([path]) =>
+        path
+          .split('/')
+          .pop()
+          ?.replace(/\.json$/, '')
+      )
+    )
+    expect(slugs.size).toBeGreaterThan(0)
+    for (const slug of slugs) {
+      expect(onDisk.has(slug)).toBe(true)
+    }
+  })
+
+  test('the index parses', () => {
+    expect(() => SubjectIndex.parse(index)).not.toThrow()
+  })
+
+  test('every published subject file parses', () => {
+    expect(files.length).toBeGreaterThan(0)
+    const failures = files.filter(([, module]) => !PrecomputedSubjectDetailOrRedirect.safeParse(module.default).success)
+    expect(failures.map(([path]) => path)).toEqual([])
+  })
+
+  test('a subject names its ancestors and children, and only those', () => {
+    // subject_meta is what lets a breadcrumb render "Applications" rather than `applications`
+    // without a second fetch, so this is the property the whole map exists for.
+    const parsed = SubjectIndex.parse(index)
+    for (const [path, module] of files) {
+      const file = PrecomputedSubjectDetail.safeParse(module.default)
+      if (!file.success) continue
+      const entry = parsed.subjects[file.data.slug]
+      if (entry === undefined) continue
+      const expected = new Set([...entry.path.split('/').slice(0, -1), ...entry.children])
+      expect({ path, named: new Set(Object.keys(file.data.subject_meta)) }).toEqual({
+        path,
+        named: expected
+      })
+    }
+  })
+})
+
 describe('the published shapes', () => {
-  // Hand-built rather than fixtured, because the fixtures are still the served shapes: the
-  // precomputed ones carry document_meta and subject_meta, and the intent is that they become a
-  // copy of a real precompute run's output rather than data written here. Until that sync exists,
-  // these pin the schemas against the smallest payload that exercises both maps.
+  // Hand-built, because these are the states the real vocabulary does not contain: it has no
+  // retired subject, no alias, and — until assignments are imported — no document to carry a
+  // title. Real data above, invented data here, and nothing invented that real data could show.
   const publishedSubject = {
     id: 3,
     slug: 'email',

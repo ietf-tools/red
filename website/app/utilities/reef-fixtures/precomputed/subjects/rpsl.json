@@ -1,0 +1,51 @@
+{
+  "id": 723,
+  "slug": "rpsl",
+  "name": "RPSL",
+  "description": "Routing Policy Specification Language and Internet routing registries",
+  "parent": "routing",
+  "path": "routing/rpsl",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2280",
+    "rfc2622",
+    "rfc2650",
+    "rfc2725",
+    "rfc2769",
+    "rfc4012",
+    "rfc5943",
+    "rfc7682",
+    "rfc7909",
+    "rfc9092",
+    "rfc9632",
+    "rfc9977"
+  ],
+  "document_meta": {
+    "rfc2280": { "title": "Routing Policy Specification Language (RPSL)", "subseries": [] },
+    "rfc2622": { "title": "Routing Policy Specification Language (RPSL)", "subseries": [] },
+    "rfc2650": { "title": "Using RPSL in Practice", "subseries": [] },
+    "rfc2725": { "title": "Routing Policy System Security", "subseries": [] },
+    "rfc2769": { "title": "Routing Policy System Replication", "subseries": [] },
+    "rfc4012": { "title": "Routing Policy Specification Language next generation (RPSLng)", "subseries": [] },
+    "rfc5943": {
+      "title": "A Dedicated Routing Policy Specification Language Interface Identifier for Operational Testing",
+      "subseries": []
+    },
+    "rfc7682": {
+      "title": "Considerations for Internet Routing Registries (IRRs) and Routing Policy Configuration",
+      "subseries": []
+    },
+    "rfc7909": {
+      "title": "Securing Routing Policy Specification Language (RPSL) Objects with Resource Public Key Infrastructure (RPKI) Signatures",
+      "subseries": []
+    },
+    "rfc9092": { "title": "Finding and Using Geofeed Data", "subseries": [] },
+    "rfc9632": { "title": "Finding and Using Geofeed Data", "subseries": [] },
+    "rfc9977": { "title": "Publishing End-Site Prefix Lengths", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

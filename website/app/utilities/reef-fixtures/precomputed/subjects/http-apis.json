@@ -1,0 +1,26 @@
+{
+  "id": 990,
+  "slug": "http-apis",
+  "name": "HTTP APIs",
+  "description": "Conventions for building APIs on HTTP (problem details, rate limits, etc.)",
+  "parent": "http",
+  "path": "web/http/http-apis",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9264", "rfc9457", "rfc9512", "rfc9652", "rfc9727", "rfc9745"],
+  "document_meta": {
+    "rfc9264": { "title": "Linkset: Media Types and a Link Relation Type for Link Sets", "subseries": [] },
+    "rfc9457": { "title": "Problem Details for HTTP APIs", "subseries": [] },
+    "rfc9512": { "title": "YAML Media Type", "subseries": [] },
+    "rfc9652": { "title": "The Link-Template HTTP Header Field", "subseries": [] },
+    "rfc9727": {
+      "title": "api-catalog: A Well-Known URI and Link Relation to Help Discovery of APIs",
+      "subseries": []
+    },
+    "rfc9745": { "title": "The Deprecation HTTP Response Header Field", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

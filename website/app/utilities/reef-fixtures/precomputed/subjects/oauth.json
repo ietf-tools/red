@@ -1,0 +1,158 @@
+{
+  "id": 750,
+  "slug": "oauth",
+  "name": "OAuth",
+  "description": "OAuth authorization framework",
+  "parent": "security",
+  "path": "security/oauth",
+  "document_count": 49,
+  "document_count_deep": 57,
+  "retired": false,
+  "children": ["gnap", "jwt"],
+  "aliases": [],
+  "documents": [
+    "rfc10017",
+    "rfc10027",
+    "rfc5849",
+    "rfc6749",
+    "rfc6750",
+    "rfc6755",
+    "rfc6819",
+    "rfc7009",
+    "rfc7165",
+    "rfc7519",
+    "rfc7521",
+    "rfc7522",
+    "rfc7523",
+    "rfc7591",
+    "rfc7592",
+    "rfc7628",
+    "rfc7635",
+    "rfc7636",
+    "rfc7662",
+    "rfc7800",
+    "rfc8176",
+    "rfc8252",
+    "rfc8392",
+    "rfc8414",
+    "rfc8473",
+    "rfc8628",
+    "rfc8693",
+    "rfc8705",
+    "rfc8707",
+    "rfc8725",
+    "rfc8898",
+    "rfc9068",
+    "rfc9101",
+    "rfc9126",
+    "rfc9200",
+    "rfc9201",
+    "rfc9202",
+    "rfc9203",
+    "rfc9207",
+    "rfc9237",
+    "rfc9278",
+    "rfc9396",
+    "rfc9430",
+    "rfc9449",
+    "rfc9470",
+    "rfc9700",
+    "rfc9701",
+    "rfc9728",
+    "rfc9901"
+  ],
+  "document_meta": {
+    "rfc10017": { "title": "OAuth 2.0 for Browser-Based Applications", "subseries": ["bcp212"] },
+    "rfc10027": { "title": "Best Current Practice for Security of Cross-Device Flows", "subseries": ["bcp247"] },
+    "rfc5849": { "title": "The OAuth 1.0 Protocol", "subseries": [] },
+    "rfc6749": { "title": "The OAuth 2.0 Authorization Framework", "subseries": [] },
+    "rfc6750": { "title": "The OAuth 2.0 Authorization Framework: Bearer Token Usage", "subseries": [] },
+    "rfc6755": { "title": "An IETF URN Sub-Namespace for OAuth", "subseries": [] },
+    "rfc6819": { "title": "OAuth 2.0 Threat Model and Security Considerations", "subseries": [] },
+    "rfc7009": { "title": "OAuth 2.0 Token Revocation", "subseries": [] },
+    "rfc7165": { "title": "Use Cases and Requirements for JSON Object Signing and Encryption (JOSE)", "subseries": [] },
+    "rfc7519": { "title": "JSON Web Token (JWT)", "subseries": [] },
+    "rfc7521": {
+      "title": "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7522": {
+      "title": "Security Assertion Markup Language (SAML) 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7523": {
+      "title": "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7591": { "title": "OAuth 2.0 Dynamic Client Registration Protocol", "subseries": [] },
+    "rfc7592": { "title": "OAuth 2.0 Dynamic Client Registration Management Protocol", "subseries": [] },
+    "rfc7628": {
+      "title": "A Set of Simple Authentication and Security Layer (SASL) Mechanisms for OAuth",
+      "subseries": []
+    },
+    "rfc7635": {
+      "title": "Session Traversal Utilities for NAT (STUN) Extension for Third-Party Authorization",
+      "subseries": []
+    },
+    "rfc7636": { "title": "Proof Key for Code Exchange by OAuth Public Clients", "subseries": [] },
+    "rfc7662": { "title": "OAuth 2.0 Token Introspection", "subseries": [] },
+    "rfc7800": { "title": "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)", "subseries": [] },
+    "rfc8176": { "title": "Authentication Method Reference Values", "subseries": [] },
+    "rfc8252": { "title": "OAuth 2.0 for Native Apps", "subseries": ["bcp212"] },
+    "rfc8392": { "title": "CBOR Web Token (CWT)", "subseries": [] },
+    "rfc8414": { "title": "OAuth 2.0 Authorization Server Metadata", "subseries": [] },
+    "rfc8473": { "title": "Token Binding over HTTP", "subseries": [] },
+    "rfc8628": { "title": "OAuth 2.0 Device Authorization Grant", "subseries": [] },
+    "rfc8693": { "title": "OAuth 2.0 Token Exchange", "subseries": [] },
+    "rfc8705": {
+      "title": "OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens",
+      "subseries": []
+    },
+    "rfc8707": { "title": "Resource Indicators for OAuth 2.0", "subseries": [] },
+    "rfc8725": { "title": "JSON Web Token Best Current Practices", "subseries": ["bcp225"] },
+    "rfc8898": {
+      "title": "Third-Party Token-Based Authentication and Authorization for Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc9068": { "title": "JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens", "subseries": [] },
+    "rfc9101": {
+      "title": "The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)",
+      "subseries": []
+    },
+    "rfc9126": { "title": "OAuth 2.0 Pushed Authorization Requests", "subseries": [] },
+    "rfc9200": {
+      "title": "Authentication and Authorization for Constrained Environments Using the OAuth 2.0 Framework (ACE-OAuth)",
+      "subseries": []
+    },
+    "rfc9201": {
+      "title": "Additional OAuth Parameters for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9202": {
+      "title": "Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9203": {
+      "title": "The Object Security for Constrained RESTful Environments (OSCORE) Profile of the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9207": { "title": "OAuth 2.0 Authorization Server Issuer Identification", "subseries": [] },
+    "rfc9237": {
+      "title": "An Authorization Information Format (AIF) for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9278": { "title": "JWK Thumbprint URI", "subseries": [] },
+    "rfc9396": { "title": "OAuth 2.0 Rich Authorization Requests", "subseries": [] },
+    "rfc9430": {
+      "title": "Extension of the Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE) to Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc9449": { "title": "OAuth 2.0 Demonstrating Proof of Possession (DPoP)", "subseries": [] },
+    "rfc9470": { "title": "OAuth 2.0 Step Up Authentication Challenge Protocol", "subseries": [] },
+    "rfc9700": { "title": "Best Current Practice for OAuth 2.0 Security", "subseries": ["bcp240"] },
+    "rfc9701": { "title": "JSON Web Token (JWT) Response for OAuth Token Introspection", "subseries": [] },
+    "rfc9728": { "title": "OAuth 2.0 Protected Resource Metadata", "subseries": [] },
+    "rfc9901": { "title": "Selective Disclosure for JSON Web Tokens", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "gnap": { "name": "GNAP" }, "jwt": { "name": "JWT" } }
+}

@@ -1,0 +1,82 @@
+{
+  "id": 874,
+  "slug": "restconf",
+  "name": "RESTCONF",
+  "description": "RESTCONF: NETCONF semantics over HTTP",
+  "parent": "netconf",
+  "path": "network-management/netconf/restconf",
+  "document_count": 23,
+  "document_count_deep": 23,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7895",
+    "rfc7951",
+    "rfc8022",
+    "rfc8040",
+    "rfc8071",
+    "rfc8072",
+    "rfc8309",
+    "rfc8341",
+    "rfc8342",
+    "rfc8349",
+    "rfc8404",
+    "rfc8407",
+    "rfc8515",
+    "rfc8527",
+    "rfc8650",
+    "rfc8676",
+    "rfc8783",
+    "rfc9182",
+    "rfc9196",
+    "rfc9403",
+    "rfc9890",
+    "rfc9907",
+    "rfc9968"
+  ],
+  "document_meta": {
+    "rfc7895": { "title": "YANG Module Library", "subseries": [] },
+    "rfc7951": { "title": "JSON Encoding of Data Modeled with YANG", "subseries": [] },
+    "rfc8022": { "title": "A YANG Data Model for Routing Management", "subseries": [] },
+    "rfc8040": { "title": "RESTCONF Protocol", "subseries": [] },
+    "rfc8071": { "title": "NETCONF Call Home and RESTCONF Call Home", "subseries": [] },
+    "rfc8072": { "title": "YANG Patch Media Type", "subseries": [] },
+    "rfc8309": { "title": "Service Models Explained", "subseries": [] },
+    "rfc8341": { "title": "Network Configuration Access Control Model", "subseries": ["std91"] },
+    "rfc8342": { "title": "Network Management Datastore Architecture (NMDA)", "subseries": [] },
+    "rfc8349": { "title": "A YANG Data Model for Routing Management (NMDA Version)", "subseries": [] },
+    "rfc8404": { "title": "Effects of Pervasive Encryption on Operators", "subseries": [] },
+    "rfc8407": {
+      "title": "Guidelines for Authors and Reviewers of Documents Containing YANG Data Models",
+      "subseries": []
+    },
+    "rfc8515": { "title": "URN Namespace for ETSI Documents", "subseries": [] },
+    "rfc8527": {
+      "title": "RESTCONF Extensions to Support the Network Management Datastore Architecture",
+      "subseries": []
+    },
+    "rfc8650": { "title": "Dynamic Subscription to YANG Events and Datastores over RESTCONF", "subseries": [] },
+    "rfc8676": { "title": "YANG Modules for IPv4-in-IPv6 Address plus Port (A+P) Softwires", "subseries": [] },
+    "rfc8783": {
+      "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Data Channel Specification",
+      "subseries": []
+    },
+    "rfc9182": { "title": "A YANG Network Data Model for Layer 3 VPNs", "subseries": [] },
+    "rfc9196": {
+      "title": "YANG Modules Describing Capabilities for Systems and Datastore Update Notifications",
+      "subseries": []
+    },
+    "rfc9403": { "title": "A YANG Data Model for RIB Extensions", "subseries": [] },
+    "rfc9890": { "title": "An Update to YANG Module Names Registration", "subseries": [] },
+    "rfc9907": {
+      "title": "Guidelines for Authors and Reviewers of Documents Containing YANG Data Models",
+      "subseries": ["bcp216"]
+    },
+    "rfc9968": {
+      "title": "Report from the IAB Workshop on the Next Era of Network Management Operations (NEMOPS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" }, "netconf": { "name": "NETCONF" } }
+}

@@ -1,0 +1,19 @@
+{
+  "id": 978,
+  "slug": "ledbat",
+  "name": "LEDBAT",
+  "description": "Low extra delay background transport",
+  "parent": "congestion-control",
+  "path": "transport/congestion-control/ledbat",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6297", "rfc6817"],
+  "document_meta": {
+    "rfc6297": { "title": "A Survey of Lower-than-Best-Effort Transport Protocols", "subseries": [] },
+    "rfc6817": { "title": "Low Extra Delay Background Transport (LEDBAT)", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "congestion-control": { "name": "Congestion Control" } }
+}

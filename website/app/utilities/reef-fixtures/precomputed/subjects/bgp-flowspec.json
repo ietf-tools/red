@@ -1,0 +1,27 @@
+{
+  "id": 906,
+  "slug": "bgp-flowspec",
+  "name": "BGP Flow Specification",
+  "description": "BGP flow specification for traffic filtering",
+  "parent": "bgp",
+  "path": "routing/bgp/bgp-flowspec",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1363", "rfc5575", "rfc7674", "rfc8955", "rfc8956", "rfc9117", "rfc9168"],
+  "document_meta": {
+    "rfc1363": { "title": "A Proposed Flow Specification", "subseries": [] },
+    "rfc5575": { "title": "Dissemination of Flow Specification Rules", "subseries": [] },
+    "rfc7674": { "title": "Clarification of the Flowspec Redirect Extended Community", "subseries": [] },
+    "rfc8955": { "title": "Dissemination of Flow Specification Rules", "subseries": [] },
+    "rfc8956": { "title": "Dissemination of Flow Specification Rules for IPv6", "subseries": [] },
+    "rfc9117": { "title": "Revised Validation Procedure for BGP Flow Specifications", "subseries": [] },
+    "rfc9168": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extension for Flow Specification",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "bgp": { "name": "BGP" } }
+}

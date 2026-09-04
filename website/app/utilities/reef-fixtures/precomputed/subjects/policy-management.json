@@ -1,0 +1,29 @@
+{
+  "id": 678,
+  "slug": "policy-management",
+  "name": "Policy Management",
+  "description": "Policy-based network management information models",
+  "parent": "network-management",
+  "path": "network-management/policy-management",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3060", "rfc3198", "rfc3460", "rfc3512", "rfc3644", "rfc3670", "rfc3703", "rfc3747", "rfc4011"],
+  "document_meta": {
+    "rfc3060": { "title": "Policy Core Information Model -- Version 1 Specification", "subseries": [] },
+    "rfc3198": { "title": "Terminology for Policy-Based Management", "subseries": [] },
+    "rfc3460": { "title": "Policy Core Information Model (PCIM) Extensions", "subseries": [] },
+    "rfc3512": {
+      "title": "Configuring Networks and Devices with Simple Network Management Protocol (SNMP)",
+      "subseries": []
+    },
+    "rfc3644": { "title": "Policy Quality of Service (QoS) Information Model", "subseries": [] },
+    "rfc3670": { "title": "Information Model for Describing Network Device QoS Datapath Mechanisms", "subseries": [] },
+    "rfc3703": { "title": "Policy Core Lightweight Directory Access Protocol (LDAP) Schema", "subseries": [] },
+    "rfc3747": { "title": "The Differentiated Services Configuration MIB", "subseries": [] },
+    "rfc4011": { "title": "Policy Based Management MIB", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

@@ -1,0 +1,195 @@
+{
+  "id": 746,
+  "slug": "kerberos",
+  "name": "Kerberos",
+  "description": "The Kerberos authentication system",
+  "parent": "security",
+  "path": "security/kerberos",
+  "document_count": 60,
+  "document_count_deep": 60,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1411",
+    "rfc1507",
+    "rfc1508",
+    "rfc1509",
+    "rfc1510",
+    "rfc1964",
+    "rfc2025",
+    "rfc2078",
+    "rfc2228",
+    "rfc2478",
+    "rfc2479",
+    "rfc2623",
+    "rfc2712",
+    "rfc2743",
+    "rfc2744",
+    "rfc2773",
+    "rfc2847",
+    "rfc2853",
+    "rfc2942",
+    "rfc3129",
+    "rfc3244",
+    "rfc3961",
+    "rfc3962",
+    "rfc4120",
+    "rfc4121",
+    "rfc4402",
+    "rfc4430",
+    "rfc4537",
+    "rfc4556",
+    "rfc4557",
+    "rfc4559",
+    "rfc4752",
+    "rfc4757",
+    "rfc5021",
+    "rfc5179",
+    "rfc5349",
+    "rfc5403",
+    "rfc5868",
+    "rfc6111",
+    "rfc6112",
+    "rfc6113",
+    "rfc6251",
+    "rfc6448",
+    "rfc6542",
+    "rfc6560",
+    "rfc6649",
+    "rfc6717",
+    "rfc6784",
+    "rfc6803",
+    "rfc6806",
+    "rfc6880",
+    "rfc7751",
+    "rfc7802",
+    "rfc8009",
+    "rfc8062",
+    "rfc8070",
+    "rfc8129",
+    "rfc8429",
+    "rfc8636",
+    "rfc9588"
+  ],
+  "document_meta": {
+    "rfc1411": { "title": "Telnet Authentication: Kerberos Version 4", "subseries": [] },
+    "rfc1507": { "title": "DASS - Distributed Authentication Security Service", "subseries": [] },
+    "rfc1508": { "title": "Generic Security Service Application Program Interface", "subseries": [] },
+    "rfc1509": { "title": "Generic Security Service API : C-bindings", "subseries": [] },
+    "rfc1510": { "title": "The Kerberos Network Authentication Service (V5)", "subseries": [] },
+    "rfc1964": { "title": "The Kerberos Version 5 GSS-API Mechanism", "subseries": [] },
+    "rfc2025": { "title": "The Simple Public-Key GSS-API Mechanism (SPKM)", "subseries": [] },
+    "rfc2078": { "title": "Generic Security Service Application Program Interface, Version 2", "subseries": [] },
+    "rfc2228": { "title": "FTP Security Extensions", "subseries": [] },
+    "rfc2478": { "title": "The Simple and Protected GSS-API Negotiation Mechanism", "subseries": [] },
+    "rfc2479": {
+      "title": "Independent Data Unit Protection Generic Security Service Application Program Interface (IDUP-GSS-API)",
+      "subseries": []
+    },
+    "rfc2623": {
+      "title": "NFS Version 2 and Version 3 Security Issues and the NFS Protocol's Use of RPCSEC_GSS and Kerberos V5",
+      "subseries": []
+    },
+    "rfc2712": { "title": "Addition of Kerberos Cipher Suites to Transport Layer Security (TLS)", "subseries": [] },
+    "rfc2743": {
+      "title": "Generic Security Service Application Program Interface Version 2, Update 1",
+      "subseries": []
+    },
+    "rfc2744": { "title": "Generic Security Service API Version 2 : C-bindings", "subseries": [] },
+    "rfc2773": { "title": "Encryption using KEA and SKIPJACK", "subseries": [] },
+    "rfc2847": { "title": "LIPKEY - A Low Infrastructure Public Key Mechanism Using SPKM", "subseries": [] },
+    "rfc2853": { "title": "Generic Security Service API Version 2 : Java Bindings", "subseries": [] },
+    "rfc2942": { "title": "Telnet Authentication: Kerberos Version 5", "subseries": [] },
+    "rfc3129": { "title": "Requirements for Kerberized Internet Negotiation of Keys", "subseries": [] },
+    "rfc3244": {
+      "title": "Microsoft Windows 2000 Kerberos Change Password and Set Password Protocols",
+      "subseries": []
+    },
+    "rfc3961": { "title": "Encryption and Checksum Specifications for Kerberos 5", "subseries": [] },
+    "rfc3962": { "title": "Advanced Encryption Standard (AES) Encryption for Kerberos 5", "subseries": [] },
+    "rfc4120": { "title": "The Kerberos Network Authentication Service (V5)", "subseries": [] },
+    "rfc4121": {
+      "title": "The Kerberos Version 5 Generic Security Service Application Program Interface (GSS-API) Mechanism: Version 2",
+      "subseries": []
+    },
+    "rfc4402": {
+      "title": "A Pseudo-Random Function (PRF) for the Kerberos V Generic Security Service Application Program Interface (GSS-API) Mechanism",
+      "subseries": []
+    },
+    "rfc4430": { "title": "Kerberized Internet Negotiation of Keys (KINK)", "subseries": [] },
+    "rfc4537": { "title": "Kerberos Cryptosystem Negotiation Extension", "subseries": [] },
+    "rfc4556": { "title": "Public Key Cryptography for Initial Authentication in Kerberos (PKINIT)", "subseries": [] },
+    "rfc4557": {
+      "title": "Online Certificate Status Protocol (OCSP) Support for Public Key Cryptography for Initial Authentication in Kerberos (PKINIT)",
+      "subseries": []
+    },
+    "rfc4559": { "title": "SPNEGO-based Kerberos and NTLM HTTP Authentication in Microsoft Windows", "subseries": [] },
+    "rfc4752": {
+      "title": "The Kerberos V5 (\"GSSAPI\") Simple Authentication and Security Layer (SASL) Mechanism",
+      "subseries": []
+    },
+    "rfc4757": { "title": "The RC4-HMAC Kerberos Encryption Types Used by Microsoft Windows", "subseries": [] },
+    "rfc5021": {
+      "title": "Extended Kerberos Version 5 Key Distribution Center (KDC) Exchanges over TCP",
+      "subseries": []
+    },
+    "rfc5179": {
+      "title": "Generic Security Service Application Program Interface (GSS-API) Domain-Based Service Names Mapping for the Kerberos V GSS Mechanism",
+      "subseries": []
+    },
+    "rfc5349": {
+      "title": "Elliptic Curve Cryptography (ECC) Support for Public Key Cryptography for Initial Authentication in Kerberos (PKINIT)",
+      "subseries": []
+    },
+    "rfc5403": { "title": "RPCSEC_GSS Version 2", "subseries": [] },
+    "rfc5868": { "title": "Problem Statement on the Cross-Realm Operation of Kerberos", "subseries": [] },
+    "rfc6111": { "title": "Additional Kerberos Naming Constraints", "subseries": [] },
+    "rfc6112": { "title": "Anonymity Support for Kerberos", "subseries": [] },
+    "rfc6113": { "title": "A Generalized Framework for Kerberos Pre-Authentication", "subseries": [] },
+    "rfc6251": {
+      "title": "Using Kerberos Version 5 over the Transport Layer Security (TLS) Protocol",
+      "subseries": []
+    },
+    "rfc6448": { "title": "The Unencrypted Form of Kerberos 5 KRB-CRED Message", "subseries": [] },
+    "rfc6542": {
+      "title": "Kerberos Version 5 Generic Security Service Application Program Interface (GSS-API) Channel Binding Hash Agility",
+      "subseries": []
+    },
+    "rfc6560": { "title": "One-Time Password (OTP) Pre-Authentication", "subseries": [] },
+    "rfc6649": {
+      "title": "Deprecate DES, RC4-HMAC-EXP, and Other Weak Cryptographic Algorithms in Kerberos",
+      "subseries": ["bcp179"]
+    },
+    "rfc6717": { "title": "kx509 Kerberized Certificate Issuance Protocol in Use in 2012", "subseries": [] },
+    "rfc6784": { "title": "Kerberos Options for DHCPv6", "subseries": [] },
+    "rfc6803": { "title": "Camellia Encryption for Kerberos 5", "subseries": [] },
+    "rfc6806": { "title": "Kerberos Principal Name Canonicalization and Cross-Realm Referrals", "subseries": [] },
+    "rfc6880": { "title": "An Information Model for Kerberos Version 5", "subseries": [] },
+    "rfc7751": {
+      "title": "Kerberos Authorization Data Container Authenticated by Multiple Message Authentication Codes (MACs)",
+      "subseries": []
+    },
+    "rfc7802": {
+      "title": "A Pseudo-Random Function (PRF) for the Kerberos V Generic Security Service Application Program Interface (GSS-API) Mechanism",
+      "subseries": []
+    },
+    "rfc8009": { "title": "AES Encryption with HMAC-SHA2 for Kerberos 5", "subseries": [] },
+    "rfc8062": { "title": "Anonymity Support for Kerberos", "subseries": [] },
+    "rfc8070": {
+      "title": "Public Key Cryptography for Initial Authentication in Kerberos (PKINIT) Freshness Extension",
+      "subseries": []
+    },
+    "rfc8129": { "title": "Authentication Indicator in Kerberos Tickets", "subseries": [] },
+    "rfc8429": { "title": "Deprecate Triple-DES (3DES) and RC4 in Kerberos", "subseries": ["bcp218"] },
+    "rfc8636": {
+      "title": "Public Key Cryptography for Initial Authentication in Kerberos (PKINIT) Algorithm Agility",
+      "subseries": []
+    },
+    "rfc9588": {
+      "title": "Kerberos Simple Password-Authenticated Key Exchange (SPAKE) Pre-authentication",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

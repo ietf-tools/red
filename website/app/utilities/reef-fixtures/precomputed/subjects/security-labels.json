@@ -1,0 +1,28 @@
+{
+  "id": 762,
+  "slug": "security-labels",
+  "name": "Security Labels",
+  "description": "Security labels for networked data (CIPSO, CALIPSO and frameworks)",
+  "parent": "security",
+  "path": "security/security-labels",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1457", "rfc3114", "rfc5570", "rfc7444", "rfc7569"],
+  "document_meta": {
+    "rfc1457": { "title": "Security Label Framework for the Internet", "subseries": [] },
+    "rfc3114": {
+      "title": "Implementing Company Classification Policy with the S/MIME Security Label",
+      "subseries": []
+    },
+    "rfc5570": { "title": "Common Architecture Label IPv6 Security Option (CALIPSO)", "subseries": [] },
+    "rfc7444": { "title": "Security Labels in Internet Email", "subseries": [] },
+    "rfc7569": {
+      "title": "Registry Specification for Mandatory Access Control (MAC) Security Label Formats",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

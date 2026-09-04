@@ -1,0 +1,16 @@
+{
+  "id": 623,
+  "slug": "amateur-radio",
+  "name": "Amateur Radio",
+  "description": "Amateur packet radio (AX.25) and IP",
+  "parent": "link-layer",
+  "path": "link-layer/amateur-radio",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1226"],
+  "document_meta": { "rfc1226": { "title": "Internet protocol encapsulation of AX.25 frames", "subseries": [] } },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

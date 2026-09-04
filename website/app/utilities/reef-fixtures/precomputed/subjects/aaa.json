@@ -1,0 +1,177 @@
+{
+  "id": 731,
+  "slug": "aaa",
+  "name": "AAA",
+  "description": "Authentication, authorization and accounting frameworks",
+  "parent": "security",
+  "path": "security/aaa",
+  "document_count": 53,
+  "document_count_deep": 159,
+  "retired": false,
+  "children": ["diameter", "radius", "tacacs"],
+  "aliases": [],
+  "documents": [
+    "rfc1272",
+    "rfc1704",
+    "rfc2903",
+    "rfc2904",
+    "rfc2905",
+    "rfc2906",
+    "rfc2924",
+    "rfc2975",
+    "rfc2977",
+    "rfc2989",
+    "rfc3127",
+    "rfc3141",
+    "rfc3169",
+    "rfc3334",
+    "rfc3374",
+    "rfc3539",
+    "rfc3580",
+    "rfc3588",
+    "rfc3702",
+    "rfc3846",
+    "rfc3957",
+    "rfc4004",
+    "rfc4005",
+    "rfc4006",
+    "rfc4072",
+    "rfc4441",
+    "rfc4740",
+    "rfc4962",
+    "rfc5281",
+    "rfc5472",
+    "rfc5637",
+    "rfc5779",
+    "rfc5866",
+    "rfc5904",
+    "rfc5998",
+    "rfc6065",
+    "rfc6097",
+    "rfc6614",
+    "rfc6733",
+    "rfc6734",
+    "rfc6840",
+    "rfc6911",
+    "rfc7057",
+    "rfc7155",
+    "rfc7241",
+    "rfc7423",
+    "rfc7585",
+    "rfc7593",
+    "rfc7831",
+    "rfc7832",
+    "rfc7833",
+    "rfc8658",
+    "rfc9950"
+  ],
+  "document_meta": {
+    "rfc1272": { "title": "Internet Accounting: Background", "subseries": [] },
+    "rfc1704": { "title": "On Internet Authentication", "subseries": [] },
+    "rfc2903": { "title": "Generic AAA Architecture", "subseries": [] },
+    "rfc2904": { "title": "AAA Authorization Framework", "subseries": [] },
+    "rfc2905": { "title": "AAA Authorization Application Examples", "subseries": [] },
+    "rfc2906": { "title": "AAA Authorization Requirements", "subseries": [] },
+    "rfc2924": { "title": "Accounting Attributes and Record Formats", "subseries": [] },
+    "rfc2975": { "title": "Introduction to Accounting Management", "subseries": [] },
+    "rfc2977": { "title": "Mobile IP Authentication, Authorization, and Accounting Requirements", "subseries": [] },
+    "rfc2989": { "title": "Criteria for Evaluating AAA Protocols for Network Access", "subseries": [] },
+    "rfc3127": { "title": "Authentication, Authorization, and Accounting: Protocol Evaluation", "subseries": [] },
+    "rfc3141": { "title": "CDMA2000 Wireless Data Requirements for AAA", "subseries": [] },
+    "rfc3169": { "title": "Criteria for Evaluating Network Access Server Protocols", "subseries": [] },
+    "rfc3334": { "title": "Policy-Based Accounting", "subseries": [] },
+    "rfc3374": {
+      "title": "Problem Description: Reasons For Performing Context Transfers Between Nodes in an IP Access Network",
+      "subseries": []
+    },
+    "rfc3539": { "title": "Authentication, Authorization and Accounting (AAA) Transport Profile", "subseries": [] },
+    "rfc3580": {
+      "title": "IEEE 802.1X Remote Authentication Dial In User Service (RADIUS) Usage Guidelines",
+      "subseries": []
+    },
+    "rfc3588": { "title": "Diameter Base Protocol", "subseries": [] },
+    "rfc3702": {
+      "title": "Authentication, Authorization, and Accounting Requirements for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3846": { "title": "Mobile IPv4 Extension for Carrying Network Access Identifiers", "subseries": [] },
+    "rfc3957": {
+      "title": "Authentication, Authorization, and Accounting (AAA) Registration Keys for Mobile IPv4",
+      "subseries": []
+    },
+    "rfc4004": { "title": "Diameter Mobile IPv4 Application", "subseries": [] },
+    "rfc4005": { "title": "Diameter Network Access Server Application", "subseries": [] },
+    "rfc4006": { "title": "Diameter Credit-Control Application", "subseries": [] },
+    "rfc4072": { "title": "Diameter Extensible Authentication Protocol (EAP) Application", "subseries": [] },
+    "rfc4441": { "title": "The IEEE 802/IETF Relationship", "subseries": [] },
+    "rfc4740": { "title": "Diameter Session Initiation Protocol (SIP) Application", "subseries": [] },
+    "rfc4962": {
+      "title": "Guidance for Authentication, Authorization, and Accounting (AAA) Key Management",
+      "subseries": ["bcp132"]
+    },
+    "rfc5281": {
+      "title": "Extensible Authentication Protocol Tunneled Transport Layer Security Authenticated Protocol Version 0 (EAP-TTLSv0)",
+      "subseries": []
+    },
+    "rfc5472": { "title": "IP Flow Information Export (IPFIX) Applicability", "subseries": [] },
+    "rfc5637": {
+      "title": "Authentication, Authorization, and Accounting (AAA) Goals for Mobile IPv6",
+      "subseries": []
+    },
+    "rfc5779": {
+      "title": "Diameter Proxy Mobile IPv6: Mobile Access Gateway and Local Mobility Anchor Interaction with Diameter Server",
+      "subseries": []
+    },
+    "rfc5866": { "title": "Diameter Quality-of-Service Application", "subseries": [] },
+    "rfc5904": {
+      "title": "RADIUS Attributes for IEEE 802.16 Privacy Key Management Version 1 (PKMv1) Protocol Support",
+      "subseries": []
+    },
+    "rfc5998": { "title": "An Extension for EAP-Only Authentication in IKEv2", "subseries": [] },
+    "rfc6065": {
+      "title": "Using Authentication, Authorization, and Accounting Services to Dynamically Provision View-Based Access Control Model User-to-Group Mappings",
+      "subseries": []
+    },
+    "rfc6097": { "title": "Local Mobility Anchor (LMA) Discovery for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6614": { "title": "Transport Layer Security (TLS) Encryption for RADIUS", "subseries": [] },
+    "rfc6733": { "title": "Diameter Base Protocol", "subseries": [] },
+    "rfc6734": { "title": "Diameter Attribute-Value Pairs for Cryptographic Key Transport", "subseries": [] },
+    "rfc6840": { "title": "Clarifications and Implementation Notes for DNS Security (DNSSEC)", "subseries": [] },
+    "rfc6911": { "title": "RADIUS Attributes for IPv6 Access Networks", "subseries": [] },
+    "rfc7057": {
+      "title": "Update to the Extensible Authentication Protocol (EAP) Applicability Statement for Application Bridging for Federated Access Beyond Web (ABFAB)",
+      "subseries": []
+    },
+    "rfc7155": { "title": "Diameter Network Access Server Application", "subseries": [] },
+    "rfc7241": { "title": "The IEEE 802/IETF Relationship", "subseries": [] },
+    "rfc7423": { "title": "Diameter Applications Design Guidelines", "subseries": ["bcp193"] },
+    "rfc7585": {
+      "title": "Dynamic Peer Discovery for RADIUS/TLS and RADIUS/DTLS Based on the Network Access Identifier (NAI)",
+      "subseries": []
+    },
+    "rfc7593": { "title": "The eduroam Architecture for Network Roaming", "subseries": [] },
+    "rfc7831": {
+      "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Architecture",
+      "subseries": []
+    },
+    "rfc7832": { "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Use Cases", "subseries": [] },
+    "rfc7833": {
+      "title": "A RADIUS Attribute, Binding, Profiles, Name Identifier Format, and Confirmation Methods for the Security Assertion Markup Language (SAML)",
+      "subseries": []
+    },
+    "rfc8658": {
+      "title": "RADIUS Attributes for Softwire Mechanisms Based on Address plus Port (A+P)",
+      "subseries": []
+    },
+    "rfc9950": {
+      "title": "A YANG Data Model for Terminal Access Controller Access-Control System Plus (TACACS+)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "security": { "name": "Security" },
+    "diameter": { "name": "Diameter" },
+    "radius": { "name": "RADIUS" },
+    "tacacs": { "name": "TACACS+" }
+  }
+}

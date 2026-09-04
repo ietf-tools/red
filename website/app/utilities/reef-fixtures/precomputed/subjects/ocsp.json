@@ -1,0 +1,68 @@
+{
+  "id": 971,
+  "slug": "ocsp",
+  "name": "OCSP",
+  "description": "Online Certificate Status Protocol",
+  "parent": "pki",
+  "path": "security/pki/ocsp",
+  "document_count": 13,
+  "document_count_deep": 13,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2560",
+    "rfc4557",
+    "rfc4806",
+    "rfc5019",
+    "rfc5940",
+    "rfc6277",
+    "rfc6664",
+    "rfc6960",
+    "rfc6961",
+    "rfc8739",
+    "rfc8954",
+    "rfc9654",
+    "rfc9919"
+  ],
+  "document_meta": {
+    "rfc2560": {
+      "title": "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP",
+      "subseries": []
+    },
+    "rfc4557": {
+      "title": "Online Certificate Status Protocol (OCSP) Support for Public Key Cryptography for Initial Authentication in Kerberos (PKINIT)",
+      "subseries": []
+    },
+    "rfc4806": { "title": "Online Certificate Status Protocol (OCSP) Extensions to IKEv2", "subseries": [] },
+    "rfc5019": {
+      "title": "The Lightweight Online Certificate Status Protocol (OCSP) Profile for High-Volume Environments",
+      "subseries": []
+    },
+    "rfc5940": {
+      "title": "Additional Cryptographic Message Syntax (CMS) Revocation Information Choices",
+      "subseries": []
+    },
+    "rfc6277": { "title": "Online Certificate Status Protocol Algorithm Agility", "subseries": [] },
+    "rfc6664": { "title": "S/MIME Capabilities for Public Key Definitions", "subseries": [] },
+    "rfc6960": {
+      "title": "X.509 Internet Public Key Infrastructure Online Certificate Status Protocol - OCSP",
+      "subseries": []
+    },
+    "rfc6961": {
+      "title": "The Transport Layer Security (TLS) Multiple Certificate Status Request Extension",
+      "subseries": []
+    },
+    "rfc8739": {
+      "title": "Support for Short-Term, Automatically Renewed (STAR) Certificates in the Automated Certificate Management Environment (ACME)",
+      "subseries": []
+    },
+    "rfc8954": { "title": "Online Certificate Status Protocol (OCSP) Nonce Extension", "subseries": [] },
+    "rfc9654": { "title": "Online Certificate Status Protocol (OCSP) Nonce Extension", "subseries": [] },
+    "rfc9919": {
+      "title": "The Lightweight Online Certificate Status Protocol (OCSP) Profile for High-Volume Environments",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "pki": { "name": "PKI" } }
+}

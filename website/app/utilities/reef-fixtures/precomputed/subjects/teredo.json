@@ -1,0 +1,27 @@
+{
+  "id": 1012,
+  "slug": "teredo",
+  "name": "Teredo",
+  "description": "Teredo: IPv6 through NATs via UDP",
+  "parent": "ipv6-transition",
+  "path": "internet-layer/ipv6/ipv6-transition/teredo",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4380", "rfc5991", "rfc6081"],
+  "document_meta": {
+    "rfc4380": {
+      "title": "Teredo: Tunneling IPv6 over UDP through Network Address Translations (NATs)",
+      "subseries": []
+    },
+    "rfc5991": { "title": "Teredo Security Updates", "subseries": [] },
+    "rfc6081": { "title": "Teredo Extensions", "subseries": [] }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "ipv6-transition": { "name": "IPv6 Transition" }
+  }
+}

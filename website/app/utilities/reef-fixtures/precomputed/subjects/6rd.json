@@ -1,0 +1,33 @@
+{
+  "id": 1006,
+  "slug": "6rd",
+  "name": "6rd",
+  "description": "IPv6 rapid deployment (6rd)",
+  "parent": "ipv6-transition",
+  "path": "internet-layer/ipv6/ipv6-transition/6rd",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc5569", "rfc5969", "rfc6324", "rfc6654", "rfc6930", "rfc7084"],
+  "document_meta": {
+    "rfc5569": { "title": "IPv6 Rapid Deployment on IPv4 Infrastructures (6rd)", "subseries": [] },
+    "rfc5969": {
+      "title": "IPv6 Rapid Deployment on IPv4 Infrastructures (6rd) -- Protocol Specification",
+      "subseries": []
+    },
+    "rfc6324": {
+      "title": "Routing Loop Attack Using IPv6 Automatic Tunnels: Problem Statement and Proposed Mitigations",
+      "subseries": []
+    },
+    "rfc6654": { "title": "Gateway-Initiated IPv6 Rapid Deployment on IPv4 Infrastructures (GI 6rd)", "subseries": [] },
+    "rfc6930": { "title": "RADIUS Attribute for IPv6 Rapid Deployment on IPv4 Infrastructures (6rd)", "subseries": [] },
+    "rfc7084": { "title": "Basic Requirements for IPv6 Customer Edge Routers", "subseries": [] }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "ipv6-transition": { "name": "IPv6 Transition" }
+  }
+}

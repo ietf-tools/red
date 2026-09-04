@@ -1,0 +1,145 @@
+{
+  "id": 943,
+  "slug": "diameter",
+  "name": "Diameter",
+  "description": "The Diameter protocol",
+  "parent": "aaa",
+  "path": "security/aaa/diameter",
+  "document_count": 47,
+  "document_count_deep": 47,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3588",
+    "rfc3589",
+    "rfc4004",
+    "rfc4005",
+    "rfc4006",
+    "rfc4072",
+    "rfc4097",
+    "rfc4740",
+    "rfc4818",
+    "rfc5224",
+    "rfc5431",
+    "rfc5447",
+    "rfc5516",
+    "rfc5580",
+    "rfc5624",
+    "rfc5719",
+    "rfc5729",
+    "rfc5777",
+    "rfc5778",
+    "rfc5779",
+    "rfc5866",
+    "rfc6159",
+    "rfc6408",
+    "rfc6733",
+    "rfc6734",
+    "rfc6735",
+    "rfc6736",
+    "rfc6737",
+    "rfc6738",
+    "rfc6942",
+    "rfc7068",
+    "rfc7075",
+    "rfc7155",
+    "rfc7156",
+    "rfc7423",
+    "rfc7660",
+    "rfc7678",
+    "rfc7683",
+    "rfc7831",
+    "rfc7832",
+    "rfc7944",
+    "rfc7966",
+    "rfc8506",
+    "rfc8581",
+    "rfc8582",
+    "rfc8583",
+    "rfc9390"
+  ],
+  "document_meta": {
+    "rfc3588": { "title": "Diameter Base Protocol", "subseries": [] },
+    "rfc3589": {
+      "title": "Diameter Command Codes for Third Generation Partnership Project (3GPP) Release 5",
+      "subseries": []
+    },
+    "rfc4004": { "title": "Diameter Mobile IPv4 Application", "subseries": [] },
+    "rfc4005": { "title": "Diameter Network Access Server Application", "subseries": [] },
+    "rfc4006": { "title": "Diameter Credit-Control Application", "subseries": [] },
+    "rfc4072": { "title": "Diameter Extensible Authentication Protocol (EAP) Application", "subseries": [] },
+    "rfc4097": { "title": "Middlebox Communications (MIDCOM) Protocol Evaluation", "subseries": [] },
+    "rfc4740": { "title": "Diameter Session Initiation Protocol (SIP) Application", "subseries": [] },
+    "rfc4818": { "title": "RADIUS Delegated-IPv6-Prefix Attribute", "subseries": [] },
+    "rfc5224": { "title": "Diameter Policy Processing Application", "subseries": [] },
+    "rfc5431": { "title": "Diameter ITU-T Rw Policy Enforcement Interface Application", "subseries": [] },
+    "rfc5447": {
+      "title": "Diameter Mobile IPv6: Support for Network Access Server to Diameter Server Interaction",
+      "subseries": []
+    },
+    "rfc5516": {
+      "title": "Diameter Command Code Registration for the Third Generation Partnership Project (3GPP) Evolved Packet System (EPS)",
+      "subseries": []
+    },
+    "rfc5580": { "title": "Carrying Location Objects in RADIUS and Diameter", "subseries": [] },
+    "rfc5624": { "title": "Quality of Service Parameters for Usage with Diameter", "subseries": [] },
+    "rfc5719": { "title": "Updated IANA Considerations for Diameter Command Code Allocations", "subseries": [] },
+    "rfc5729": {
+      "title": "Clarifications on the Routing of Diameter Requests Based on the Username and the Realm",
+      "subseries": []
+    },
+    "rfc5777": {
+      "title": "Traffic Classification and Quality of Service (QoS) Attributes for Diameter",
+      "subseries": []
+    },
+    "rfc5778": {
+      "title": "Diameter Mobile IPv6: Support for Home Agent to Diameter Server Interaction",
+      "subseries": []
+    },
+    "rfc5779": {
+      "title": "Diameter Proxy Mobile IPv6: Mobile Access Gateway and Local Mobility Anchor Interaction with Diameter Server",
+      "subseries": []
+    },
+    "rfc5866": { "title": "Diameter Quality-of-Service Application", "subseries": [] },
+    "rfc6159": { "title": "Session-Specific Explicit Diameter Request Routing", "subseries": [] },
+    "rfc6408": { "title": "Diameter Straightforward-Naming Authority Pointer (S-NAPTR) Usage", "subseries": [] },
+    "rfc6733": { "title": "Diameter Base Protocol", "subseries": [] },
+    "rfc6734": { "title": "Diameter Attribute-Value Pairs for Cryptographic Key Transport", "subseries": [] },
+    "rfc6735": { "title": "Diameter Priority Attribute-Value Pairs", "subseries": [] },
+    "rfc6736": { "title": "Diameter Network Address and Port Translation Control Application", "subseries": [] },
+    "rfc6737": { "title": "The Diameter Capabilities Update Application", "subseries": [] },
+    "rfc6738": {
+      "title": "Diameter IKEv2 SK: Using Shared Keys to Support Interaction between IKEv2 Servers and Diameter Servers",
+      "subseries": []
+    },
+    "rfc6942": { "title": "Diameter Support for the EAP Re-authentication Protocol (ERP)", "subseries": [] },
+    "rfc7068": { "title": "Diameter Overload Control Requirements", "subseries": [] },
+    "rfc7075": { "title": "Realm-Based Redirection In Diameter", "subseries": [] },
+    "rfc7155": { "title": "Diameter Network Access Server Application", "subseries": [] },
+    "rfc7156": { "title": "Diameter Support for Proxy Mobile IPv6 Localized Routing", "subseries": [] },
+    "rfc7423": { "title": "Diameter Applications Design Guidelines", "subseries": ["bcp193"] },
+    "rfc7660": { "title": "Diameter Congestion and Filter Attributes", "subseries": [] },
+    "rfc7678": {
+      "title": "Attribute-Value Pairs for Provisioning Customer Equipment Supporting IPv4-Over-IPv6 Transitional Solutions",
+      "subseries": []
+    },
+    "rfc7683": { "title": "Diameter Overload Indication Conveyance", "subseries": [] },
+    "rfc7831": {
+      "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Architecture",
+      "subseries": []
+    },
+    "rfc7832": { "title": "Application Bridging for Federated Access Beyond Web (ABFAB) Use Cases", "subseries": [] },
+    "rfc7944": { "title": "Diameter Routing Message Priority", "subseries": [] },
+    "rfc7966": {
+      "title": "Security at the Attribute-Value Pair (AVP) Level for Non-neighboring Diameter Nodes: Scenarios and Requirements",
+      "subseries": []
+    },
+    "rfc8506": { "title": "Diameter Credit-Control Application", "subseries": [] },
+    "rfc8581": { "title": "Diameter Agent Overload and the Peer Overload Report", "subseries": [] },
+    "rfc8582": { "title": "Diameter Overload Rate Control", "subseries": [] },
+    "rfc8583": { "title": "Diameter Load Information Conveyance", "subseries": [] },
+    "rfc9390": { "title": "Diameter Group Signaling", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "aaa": { "name": "AAA" } }
+}

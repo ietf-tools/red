@@ -1,0 +1,24 @@
+{
+  "id": 669,
+  "slug": "energy-management",
+  "name": "Energy Management",
+  "description": "Energy monitoring and management of networked devices",
+  "parent": "network-management",
+  "path": "network-management/energy-management",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6933", "rfc6988", "rfc7326", "rfc7460", "rfc7461", "rfc7577", "rfc7603"],
+  "document_meta": {
+    "rfc6933": { "title": "Entity MIB (Version 4)", "subseries": [] },
+    "rfc6988": { "title": "Requirements for Energy Management", "subseries": [] },
+    "rfc7326": { "title": "Energy Management Framework", "subseries": [] },
+    "rfc7460": { "title": "Monitoring and Control MIB for Power and Energy", "subseries": [] },
+    "rfc7461": { "title": "Energy Object Context MIB", "subseries": [] },
+    "rfc7577": { "title": "Definition of Managed Objects for Battery Monitoring", "subseries": [] },
+    "rfc7603": { "title": "Energy Management (EMAN) Applicability Statement", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

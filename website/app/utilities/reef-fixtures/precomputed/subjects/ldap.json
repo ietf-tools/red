@@ -1,0 +1,385 @@
+{
+  "id": 801,
+  "slug": "ldap",
+  "name": "LDAP",
+  "description": "Lightweight Directory Access Protocol",
+  "parent": "directory-services",
+  "path": "applications/directory-services/ldap",
+  "document_count": 119,
+  "document_count_deep": 119,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1487",
+    "rfc1488",
+    "rfc1491",
+    "rfc1558",
+    "rfc1632",
+    "rfc1777",
+    "rfc1778",
+    "rfc1779",
+    "rfc1781",
+    "rfc1803",
+    "rfc1804",
+    "rfc1823",
+    "rfc1943",
+    "rfc1959",
+    "rfc1960",
+    "rfc2079",
+    "rfc2116",
+    "rfc2120",
+    "rfc2148",
+    "rfc2164",
+    "rfc2218",
+    "rfc2219",
+    "rfc2247",
+    "rfc2251",
+    "rfc2252",
+    "rfc2253",
+    "rfc2254",
+    "rfc2255",
+    "rfc2256",
+    "rfc2258",
+    "rfc2259",
+    "rfc2307",
+    "rfc2377",
+    "rfc2378",
+    "rfc2425",
+    "rfc2426",
+    "rfc2559",
+    "rfc2587",
+    "rfc2589",
+    "rfc2596",
+    "rfc2649",
+    "rfc2657",
+    "rfc2696",
+    "rfc2713",
+    "rfc2714",
+    "rfc2739",
+    "rfc2798",
+    "rfc2820",
+    "rfc2829",
+    "rfc2830",
+    "rfc2849",
+    "rfc2891",
+    "rfc2926",
+    "rfc2927",
+    "rfc2985",
+    "rfc3045",
+    "rfc3062",
+    "rfc3088",
+    "rfc3112",
+    "rfc3254",
+    "rfc3296",
+    "rfc3352",
+    "rfc3377",
+    "rfc3383",
+    "rfc3384",
+    "rfc3494",
+    "rfc3663",
+    "rfc3671",
+    "rfc3672",
+    "rfc3673",
+    "rfc3674",
+    "rfc3687",
+    "rfc3698",
+    "rfc3703",
+    "rfc3712",
+    "rfc3727",
+    "rfc3771",
+    "rfc3829",
+    "rfc3866",
+    "rfc3876",
+    "rfc3909",
+    "rfc3928",
+    "rfc3944",
+    "rfc4104",
+    "rfc4370",
+    "rfc4373",
+    "rfc4403",
+    "rfc4510",
+    "rfc4511",
+    "rfc4512",
+    "rfc4513",
+    "rfc4514",
+    "rfc4515",
+    "rfc4516",
+    "rfc4517",
+    "rfc4518",
+    "rfc4519",
+    "rfc4520",
+    "rfc4521",
+    "rfc4522",
+    "rfc4523",
+    "rfc4524",
+    "rfc4525",
+    "rfc4526",
+    "rfc4527",
+    "rfc4528",
+    "rfc4529",
+    "rfc4530",
+    "rfc4531",
+    "rfc4532",
+    "rfc4533",
+    "rfc4876",
+    "rfc5020",
+    "rfc5803",
+    "rfc5805",
+    "rfc6171",
+    "rfc6880",
+    "rfc7612",
+    "rfc8284"
+  ],
+  "document_meta": {
+    "rfc1487": { "title": "X.500 Lightweight Directory Access Protocol", "subseries": [] },
+    "rfc1488": { "title": "The X.500 String Representation of Standard Attribute Syntaxes", "subseries": [] },
+    "rfc1491": { "title": "A Survey of Advanced Usages of X.500", "subseries": ["fyi21"] },
+    "rfc1558": { "title": "A String Representation of LDAP Search Filters", "subseries": [] },
+    "rfc1632": { "title": "A Revised Catalog of Available X.500 Implementations", "subseries": [] },
+    "rfc1777": { "title": "Lightweight Directory Access Protocol", "subseries": [] },
+    "rfc1778": { "title": "The String Representation of Standard Attribute Syntaxes", "subseries": [] },
+    "rfc1779": { "title": "A String Representation of Distinguished Names", "subseries": [] },
+    "rfc1781": { "title": "Using the OSI Directory to Achieve User Friendly Naming", "subseries": [] },
+    "rfc1803": { "title": "Recommendations for an X.500 Production Directory Service", "subseries": [] },
+    "rfc1804": { "title": "Schema Publishing in X.500 Directory", "subseries": [] },
+    "rfc1823": { "title": "The LDAP Application Program Interface", "subseries": [] },
+    "rfc1943": { "title": "Building an X.500 Directory Service in the US", "subseries": [] },
+    "rfc1959": { "title": "An LDAP URL Format", "subseries": [] },
+    "rfc1960": { "title": "A String Representation of LDAP Search Filters", "subseries": [] },
+    "rfc2079": {
+      "title": "Definition of an X.500 Attribute Type and an Object Class to Hold Uniform Resource Identifiers (URIs)",
+      "subseries": []
+    },
+    "rfc2116": { "title": "X.500 Implementations Catalog-96", "subseries": ["fyi11"] },
+    "rfc2120": { "title": "Managing the X.500 Root Naming Context", "subseries": [] },
+    "rfc2148": { "title": "Deployment of the Internet White Pages Service", "subseries": ["bcp15"] },
+    "rfc2164": { "title": "Use of an X.500/LDAP directory to support MIXER address mapping", "subseries": [] },
+    "rfc2218": { "title": "A Common Schema for the Internet White Pages Service", "subseries": [] },
+    "rfc2219": { "title": "Use of DNS Aliases for Network Services", "subseries": ["bcp17"] },
+    "rfc2247": { "title": "Using Domains in LDAP/X.500 Distinguished Names", "subseries": [] },
+    "rfc2251": { "title": "Lightweight Directory Access Protocol (v3)", "subseries": [] },
+    "rfc2252": { "title": "Lightweight Directory Access Protocol (v3): Attribute Syntax Definitions", "subseries": [] },
+    "rfc2253": {
+      "title": "Lightweight Directory Access Protocol (v3): UTF-8 String Representation of Distinguished Names",
+      "subseries": []
+    },
+    "rfc2254": { "title": "The String Representation of LDAP Search Filters", "subseries": [] },
+    "rfc2255": { "title": "The LDAP URL Format", "subseries": [] },
+    "rfc2256": { "title": "A Summary of the X.500(96) User Schema for use with LDAPv3", "subseries": [] },
+    "rfc2258": { "title": "Internet Nomenclator Project", "subseries": [] },
+    "rfc2259": { "title": "Simple Nomenclator Query Protocol (SNQP)", "subseries": [] },
+    "rfc2307": { "title": "An Approach for Using LDAP as a Network Information Service", "subseries": [] },
+    "rfc2377": { "title": "Naming Plan for Internet Directory-Enabled Applications", "subseries": [] },
+    "rfc2378": { "title": "The CCSO Nameserver (Ph) Architecture", "subseries": [] },
+    "rfc2425": { "title": "A MIME Content-Type for Directory Information", "subseries": [] },
+    "rfc2426": { "title": "vCard MIME Directory Profile", "subseries": [] },
+    "rfc2559": { "title": "Internet X.509 Public Key Infrastructure Operational Protocols - LDAPv2", "subseries": [] },
+    "rfc2587": { "title": "Internet X.509 Public Key Infrastructure LDAPv2 Schema", "subseries": [] },
+    "rfc2589": {
+      "title": "Lightweight Directory Access Protocol (v3): Extensions for Dynamic Directory Services",
+      "subseries": []
+    },
+    "rfc2596": { "title": "Use of Language Codes in LDAP", "subseries": [] },
+    "rfc2649": { "title": "An LDAP Control and Schema for Holding Operation Signatures", "subseries": [] },
+    "rfc2657": { "title": "LDAPv2 Client vs. the Index Mesh", "subseries": [] },
+    "rfc2696": { "title": "LDAP Control Extension for Simple Paged Results Manipulation", "subseries": [] },
+    "rfc2713": { "title": "Schema for Representing Java(tm) Objects in an LDAP Directory", "subseries": [] },
+    "rfc2714": { "title": "Schema for Representing CORBA Object References in an LDAP Directory", "subseries": [] },
+    "rfc2739": { "title": "Calendar Attributes for vCard and LDAP", "subseries": [] },
+    "rfc2798": { "title": "Definition of the inetOrgPerson LDAP Object Class", "subseries": [] },
+    "rfc2820": { "title": "Access Control Requirements for LDAP", "subseries": [] },
+    "rfc2829": { "title": "Authentication Methods for LDAP", "subseries": [] },
+    "rfc2830": {
+      "title": "Lightweight Directory Access Protocol (v3): Extension for Transport Layer Security",
+      "subseries": []
+    },
+    "rfc2849": { "title": "The LDAP Data Interchange Format (LDIF) - Technical Specification", "subseries": [] },
+    "rfc2891": { "title": "LDAP Control Extension for Server Side Sorting of Search Results", "subseries": [] },
+    "rfc2926": { "title": "Conversion of LDAP Schemas to and from SLP Templates", "subseries": [] },
+    "rfc2927": { "title": "MIME Directory Profile for LDAP Schema", "subseries": [] },
+    "rfc2985": { "title": "PKCS #9: Selected Object Classes and Attribute Types Version 2.0", "subseries": [] },
+    "rfc3045": { "title": "Storing Vendor Information in the LDAP root DSE", "subseries": [] },
+    "rfc3062": { "title": "LDAP Password Modify Extended Operation", "subseries": [] },
+    "rfc3088": { "title": "OpenLDAP Root Service An experimental LDAP referral service", "subseries": [] },
+    "rfc3112": { "title": "LDAP Authentication Password Schema", "subseries": [] },
+    "rfc3254": { "title": "Definitions for talking about directories", "subseries": [] },
+    "rfc3296": {
+      "title": "Named Subordinate References in Lightweight Directory Access Protocol (LDAP) Directories",
+      "subseries": []
+    },
+    "rfc3352": {
+      "title": "Connection-less Lightweight Directory Access Protocol (CLDAP) to Historic Status",
+      "subseries": []
+    },
+    "rfc3377": { "title": "Lightweight Directory Access Protocol (v3): Technical Specification", "subseries": [] },
+    "rfc3383": {
+      "title": "Internet Assigned Numbers Authority (IANA) Considerations for the Lightweight Directory Access Protocol (LDAP)",
+      "subseries": []
+    },
+    "rfc3384": {
+      "title": "Lightweight Directory Access Protocol (version 3) Replication Requirements",
+      "subseries": []
+    },
+    "rfc3494": {
+      "title": "Lightweight Directory Access Protocol version 2 (LDAPv2) to Historic Status",
+      "subseries": []
+    },
+    "rfc3663": {
+      "title": "Domain Administrative Data in Lightweight Directory Access Protocol (LDAP)",
+      "subseries": []
+    },
+    "rfc3671": {
+      "title": "Collective Attributes in the Lightweight Directory Access Protocol (LDAP)",
+      "subseries": []
+    },
+    "rfc3672": { "title": "Subentries in the Lightweight Directory Access Protocol (LDAP)", "subseries": [] },
+    "rfc3673": {
+      "title": "Lightweight Directory Access Protocol version 3 (LDAPv3): All Operational Attributes",
+      "subseries": []
+    },
+    "rfc3674": { "title": "Feature Discovery in Lightweight Directory Access Protocol (LDAP)", "subseries": [] },
+    "rfc3687": {
+      "title": "Lightweight Directory Access Protocol (LDAP) and X.500 Component Matching Rules",
+      "subseries": []
+    },
+    "rfc3698": { "title": "Lightweight Directory Access Protocol (LDAP): Additional Matching Rules", "subseries": [] },
+    "rfc3703": { "title": "Policy Core Lightweight Directory Access Protocol (LDAP) Schema", "subseries": [] },
+    "rfc3712": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Schema for Printer Services",
+      "subseries": []
+    },
+    "rfc3727": { "title": "ASN.1 Module Definition for the LDAP and X.500 Component Matching Rules", "subseries": [] },
+    "rfc3771": {
+      "title": "The Lightweight Directory Access Protocol (LDAP) Intermediate Response Message",
+      "subseries": []
+    },
+    "rfc3829": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Authorization Identity Request and Response Controls",
+      "subseries": []
+    },
+    "rfc3866": {
+      "title": "Language Tags and Ranges in the Lightweight Directory Access Protocol (LDAP)",
+      "subseries": []
+    },
+    "rfc3876": {
+      "title": "Returning Matched Values with the Lightweight Directory Access Protocol version 3 (LDAPv3)",
+      "subseries": []
+    },
+    "rfc3909": { "title": "Lightweight Directory Access Protocol (LDAP) Cancel Operation", "subseries": [] },
+    "rfc3928": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Client Update Protocol (LCUP)",
+      "subseries": []
+    },
+    "rfc3944": { "title": "H.350 Directory Services", "subseries": [] },
+    "rfc4104": {
+      "title": "Policy Core Extension Lightweight Directory Access Protocol Schema (PCELS)",
+      "subseries": []
+    },
+    "rfc4370": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Proxied Authorization Control",
+      "subseries": []
+    },
+    "rfc4373": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Bulk Update/Replication Protocol (LBURP)",
+      "subseries": []
+    },
+    "rfc4403": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema for Universal Description, Discovery, and Integration version 3 (UDDIv3)",
+      "subseries": []
+    },
+    "rfc4510": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Technical Specification Road Map",
+      "subseries": []
+    },
+    "rfc4511": { "title": "Lightweight Directory Access Protocol (LDAP): The Protocol", "subseries": [] },
+    "rfc4512": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Directory Information Models",
+      "subseries": []
+    },
+    "rfc4513": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Authentication Methods and Security Mechanisms",
+      "subseries": []
+    },
+    "rfc4514": {
+      "title": "Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names",
+      "subseries": []
+    },
+    "rfc4515": {
+      "title": "Lightweight Directory Access Protocol (LDAP): String Representation of Search Filters",
+      "subseries": []
+    },
+    "rfc4516": { "title": "Lightweight Directory Access Protocol (LDAP): Uniform Resource Locator", "subseries": [] },
+    "rfc4517": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Syntaxes and Matching Rules",
+      "subseries": []
+    },
+    "rfc4518": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Internationalized String Preparation",
+      "subseries": []
+    },
+    "rfc4519": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Schema for User Applications",
+      "subseries": []
+    },
+    "rfc4520": {
+      "title": "Internet Assigned Numbers Authority (IANA) Considerations for the Lightweight Directory Access Protocol (LDAP)",
+      "subseries": ["bcp64"]
+    },
+    "rfc4521": {
+      "title": "Considerations for Lightweight Directory Access Protocol (LDAP) Extensions",
+      "subseries": ["bcp118"]
+    },
+    "rfc4522": { "title": "Lightweight Directory Access Protocol (LDAP): The Binary Encoding Option", "subseries": [] },
+    "rfc4523": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema Definitions for X.509 Certificates",
+      "subseries": []
+    },
+    "rfc4524": { "title": "COSINE LDAP/X.500 Schema", "subseries": [] },
+    "rfc4525": { "title": "Lightweight Directory Access Protocol (LDAP) Modify-Increment Extension", "subseries": [] },
+    "rfc4526": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Absolute True and False Filters",
+      "subseries": []
+    },
+    "rfc4527": { "title": "Lightweight Directory Access Protocol (LDAP) Read Entry Controls", "subseries": [] },
+    "rfc4528": { "title": "Lightweight Directory Access Protocol (LDAP) Assertion Control", "subseries": [] },
+    "rfc4529": {
+      "title": "Requesting Attributes by Object Class in the Lightweight Directory Access Protocol",
+      "subseries": []
+    },
+    "rfc4530": {
+      "title": "Lightweight Directory Access Protocol (LDAP) entryUUID Operational Attribute",
+      "subseries": []
+    },
+    "rfc4531": { "title": "Lightweight Directory Access Protocol (LDAP) Turn Operation", "subseries": [] },
+    "rfc4532": { "title": "Lightweight Directory Access Protocol (LDAP) \"Who am I?\" Operation", "subseries": [] },
+    "rfc4533": {
+      "title": "The Lightweight Directory Access Protocol (LDAP) Content Synchronization Operation",
+      "subseries": []
+    },
+    "rfc4876": {
+      "title": "A Configuration Profile Schema for Lightweight Directory Access Protocol (LDAP)-Based Agents",
+      "subseries": []
+    },
+    "rfc5020": {
+      "title": "The Lightweight Directory Access Protocol (LDAP) entryDN Operational Attribute",
+      "subseries": []
+    },
+    "rfc5803": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema for Storing Salted Challenge Response Authentication Mechanism (SCRAM) Secrets",
+      "subseries": []
+    },
+    "rfc5805": { "title": "Lightweight Directory Access Protocol (LDAP) Transactions", "subseries": [] },
+    "rfc6171": { "title": "The Lightweight Directory Access Protocol (LDAP) Don't Use Copy Control", "subseries": [] },
+    "rfc6880": { "title": "An Information Model for Kerberos Version 5", "subseries": [] },
+    "rfc7612": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Schema for Printer Services",
+      "subseries": []
+    },
+    "rfc8284": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema for Supporting the Extensible Messaging and Presence Protocol (XMPP) in White Pages",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "directory-services": { "name": "Directory Services" } }
+}

@@ -1,0 +1,25 @@
+{
+  "id": 811,
+  "slug": "deflate",
+  "name": "DEFLATE",
+  "description": "DEFLATE and zlib",
+  "parent": "compression",
+  "path": "data-formats/compression/deflate",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1950", "rfc1951", "rfc1979", "rfc2394", "rfc6713", "rfc7692", "rfc8054", "rfc8879"],
+  "document_meta": {
+    "rfc1950": { "title": "ZLIB Compressed Data Format Specification version 3.3", "subseries": [] },
+    "rfc1951": { "title": "DEFLATE Compressed Data Format Specification version 1.3", "subseries": [] },
+    "rfc1979": { "title": "PPP Deflate Protocol", "subseries": [] },
+    "rfc2394": { "title": "IP Payload Compression Using DEFLATE", "subseries": [] },
+    "rfc6713": { "title": "The 'application/zlib' and 'application/gzip' Media Types", "subseries": [] },
+    "rfc7692": { "title": "Compression Extensions for WebSocket", "subseries": [] },
+    "rfc8054": { "title": "Network News Transfer Protocol (NNTP) Extension for Compression", "subseries": [] },
+    "rfc8879": { "title": "TLS Certificate Compression", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "compression": { "name": "Compression" } }
+}

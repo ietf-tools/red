@@ -1,0 +1,80 @@
+{
+  "id": 837,
+  "slug": "pcp",
+  "name": "PCP",
+  "description": "Port Control Protocol",
+  "parent": "nat",
+  "path": "internet-layer/nat/pcp",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4172",
+    "rfc4173",
+    "rfc4585",
+    "rfc4586",
+    "rfc4588",
+    "rfc4953",
+    "rfc4992",
+    "rfc5124",
+    "rfc5506",
+    "rfc6887",
+    "rfc6970",
+    "rfc7220",
+    "rfc7225",
+    "rfc7291",
+    "rfc7393",
+    "rfc7488",
+    "rfc7648",
+    "rfc7652",
+    "rfc7723",
+    "rfc7753",
+    "rfc7767",
+    "rfc7843"
+  ],
+  "document_meta": {
+    "rfc4172": { "title": "iFCP - A Protocol for Internet Fibre Channel Storage Networking", "subseries": [] },
+    "rfc4173": {
+      "title": "Bootstrapping Clients using the Internet Small Computer System Interface (iSCSI) Protocol",
+      "subseries": []
+    },
+    "rfc4585": {
+      "title": "Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)",
+      "subseries": []
+    },
+    "rfc4586": {
+      "title": "Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback: Results of the Timing Rule Simulations",
+      "subseries": []
+    },
+    "rfc4588": { "title": "RTP Retransmission Payload Format", "subseries": [] },
+    "rfc4953": { "title": "Defending TCP Against Spoofing Attacks", "subseries": [] },
+    "rfc4992": { "title": "XML Pipelining with Chunks for the Internet Registry Information Service", "subseries": [] },
+    "rfc5124": {
+      "title": "Extended Secure RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/SAVPF)",
+      "subseries": []
+    },
+    "rfc5506": {
+      "title": "Support for Reduced-Size Real-Time Transport Control Protocol (RTCP): Opportunities and Consequences",
+      "subseries": []
+    },
+    "rfc6887": { "title": "Port Control Protocol (PCP)", "subseries": [] },
+    "rfc6970": {
+      "title": "Universal Plug and Play (UPnP) Internet Gateway Device - Port Control Protocol Interworking Function (IGD-PCP IWF)",
+      "subseries": []
+    },
+    "rfc7220": { "title": "Description Option for the Port Control Protocol (PCP)", "subseries": [] },
+    "rfc7225": { "title": "Discovering NAT64 IPv6 Prefixes Using the Port Control Protocol (PCP)", "subseries": [] },
+    "rfc7291": { "title": "DHCP Options for the Port Control Protocol (PCP)", "subseries": [] },
+    "rfc7393": { "title": "Using the Port Control Protocol (PCP) to Update Dynamic DNS", "subseries": [] },
+    "rfc7488": { "title": "Port Control Protocol (PCP) Server Selection", "subseries": [] },
+    "rfc7648": { "title": "Port Control Protocol (PCP) Proxy Function", "subseries": [] },
+    "rfc7652": { "title": "Port Control Protocol (PCP) Authentication Mechanism", "subseries": [] },
+    "rfc7723": { "title": "Port Control Protocol (PCP) Anycast Addresses", "subseries": [] },
+    "rfc7753": { "title": "Port Control Protocol (PCP) Extension for Port-Set Allocation", "subseries": [] },
+    "rfc7767": { "title": "Application-Initiated Check-Pointing via the Port Control Protocol (PCP)", "subseries": [] },
+    "rfc7843": { "title": "Port Control Protocol (PCP) Third-Party ID Option", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "nat": { "name": "NAT" } }
+}

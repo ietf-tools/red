@@ -1,0 +1,125 @@
+{
+  "id": 711,
+  "slug": "lisp",
+  "name": "LISP",
+  "description": "Locator/ID Separation Protocol",
+  "parent": "routing",
+  "path": "routing/lisp",
+  "document_count": 34,
+  "document_count_deep": 34,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6830",
+    "rfc6831",
+    "rfc6832",
+    "rfc6833",
+    "rfc6834",
+    "rfc6835",
+    "rfc6836",
+    "rfc6837",
+    "rfc7052",
+    "rfc7215",
+    "rfc7834",
+    "rfc7835",
+    "rfc7954",
+    "rfc7955",
+    "rfc8059",
+    "rfc8060",
+    "rfc8061",
+    "rfc8111",
+    "rfc8112",
+    "rfc8113",
+    "rfc8378",
+    "rfc9299",
+    "rfc9300",
+    "rfc9301",
+    "rfc9302",
+    "rfc9303",
+    "rfc9304",
+    "rfc9305",
+    "rfc9306",
+    "rfc9437",
+    "rfc9706",
+    "rfc9735",
+    "rfc9798",
+    "rfc9962"
+  ],
+  "document_meta": {
+    "rfc6830": { "title": "The Locator/ID Separation Protocol (LISP)", "subseries": [] },
+    "rfc6831": { "title": "The Locator/ID Separation Protocol (LISP) for Multicast Environments", "subseries": [] },
+    "rfc6832": {
+      "title": "Interworking between Locator/ID Separation Protocol (LISP) and Non-LISP Sites",
+      "subseries": []
+    },
+    "rfc6833": { "title": "Locator/ID Separation Protocol (LISP) Map-Server Interface", "subseries": [] },
+    "rfc6834": { "title": "Locator/ID Separation Protocol (LISP) Map-Versioning", "subseries": [] },
+    "rfc6835": { "title": "The Locator/ID Separation Protocol Internet Groper (LIG)", "subseries": [] },
+    "rfc6836": { "title": "Locator/ID Separation Protocol Alternative Logical Topology (LISP+ALT)", "subseries": [] },
+    "rfc6837": {
+      "title": "NERD: A Not-so-novel Endpoint ID (EID) to Routing Locator (RLOC) Database",
+      "subseries": []
+    },
+    "rfc7052": { "title": "Locator/ID Separation Protocol (LISP) MIB", "subseries": [] },
+    "rfc7215": {
+      "title": "Locator/Identifier Separation Protocol (LISP) Network Element Deployment Considerations",
+      "subseries": []
+    },
+    "rfc7834": { "title": "Locator/ID Separation Protocol (LISP) Impact", "subseries": [] },
+    "rfc7835": { "title": "Locator/ID Separation Protocol (LISP) Threat Analysis", "subseries": [] },
+    "rfc7954": { "title": "Locator/ID Separation Protocol (LISP) Endpoint Identifier (EID) Block", "subseries": [] },
+    "rfc7955": {
+      "title": "Management Guidelines for the Locator/ID Separation Protocol (LISP) Endpoint Identifier (EID) Block",
+      "subseries": []
+    },
+    "rfc8059": {
+      "title": "PIM Join Attributes for Locator/ID Separation Protocol (LISP) Environments",
+      "subseries": []
+    },
+    "rfc8060": { "title": "LISP Canonical Address Format (LCAF)", "subseries": [] },
+    "rfc8061": { "title": "Locator/ID Separation Protocol (LISP) Data-Plane Confidentiality", "subseries": [] },
+    "rfc8111": { "title": "Locator/ID Separation Protocol Delegated Database Tree (LISP-DDT)", "subseries": [] },
+    "rfc8112": {
+      "title": "Locator/ID Separation Protocol Delegated Database Tree (LISP-DDT) Referral Internet Groper (RIG)",
+      "subseries": []
+    },
+    "rfc8113": {
+      "title": "Locator/ID Separation Protocol (LISP): Shared Extension Message & IANA Registry for Packet Type Allocations",
+      "subseries": []
+    },
+    "rfc8378": { "title": "Signal-Free Locator/ID Separation Protocol (LISP) Multicast", "subseries": [] },
+    "rfc9299": {
+      "title": "An Architectural Introduction to the Locator/ID Separation Protocol (LISP)",
+      "subseries": []
+    },
+    "rfc9300": { "title": "The Locator/ID Separation Protocol (LISP)", "subseries": [] },
+    "rfc9301": { "title": "Locator/ID Separation Protocol (LISP) Control Plane", "subseries": [] },
+    "rfc9302": { "title": "Locator/ID Separation Protocol (LISP) Map-Versioning", "subseries": [] },
+    "rfc9303": { "title": "Locator/ID Separation Protocol Security (LISP-SEC)", "subseries": [] },
+    "rfc9304": {
+      "title": "Locator/ID Separation Protocol (LISP): Shared Extension Message and IANA Registry for Packet Type Allocations",
+      "subseries": []
+    },
+    "rfc9305": { "title": "Locator/ID Separation Protocol (LISP) Generic Protocol Extension", "subseries": [] },
+    "rfc9306": { "title": "Vendor-Specific LISP Canonical Address Format (LCAF)", "subseries": [] },
+    "rfc9437": {
+      "title": "Publish/Subscribe Functionality for the Locator/ID Separation Protocol (LISP)",
+      "subseries": []
+    },
+    "rfc9706": {
+      "title": "TreeDN: Tree-Based Content Delivery Network (CDN) for Live Streaming to Mass Audiences",
+      "subseries": []
+    },
+    "rfc9735": { "title": "Locator/ID Separation Protocol (LISP) Distinguished Name Encoding", "subseries": [] },
+    "rfc9798": {
+      "title": "PIM Join/Prune Attributes for Locator/ID Separation Protocol (LISP) Environments Using Underlay Multicast",
+      "subseries": []
+    },
+    "rfc9962": {
+      "title": "A Decentralized Locator/ID Separation Protocol Mapping System (LISP-Decent)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

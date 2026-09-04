@@ -1,0 +1,69 @@
+{
+  "id": 975,
+  "slug": "aqm",
+  "name": "Active Queue Management",
+  "description": "Active queue management",
+  "parent": "congestion-control",
+  "path": "transport/congestion-control/aqm",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": ["codel", "pie"],
+  "aliases": [],
+  "documents": [
+    "rfc4594",
+    "rfc7141",
+    "rfc7567",
+    "rfc7806",
+    "rfc7928",
+    "rfc8033",
+    "rfc8034",
+    "rfc8087",
+    "rfc8289",
+    "rfc8290",
+    "rfc9330",
+    "rfc9331",
+    "rfc9332",
+    "rfc970"
+  ],
+  "document_meta": {
+    "rfc4594": { "title": "Configuration Guidelines for DiffServ Service Classes", "subseries": [] },
+    "rfc7141": { "title": "Byte and Packet Congestion Notification", "subseries": ["bcp41"] },
+    "rfc7567": { "title": "IETF Recommendations Regarding Active Queue Management", "subseries": ["bcp197"] },
+    "rfc7806": { "title": "On Queuing, Marking, and Dropping", "subseries": [] },
+    "rfc7928": { "title": "Characterization Guidelines for Active Queue Management (AQM)", "subseries": [] },
+    "rfc8033": {
+      "title": "Proportional Integral Controller Enhanced (PIE): A Lightweight Control Scheme to Address the Bufferbloat Problem",
+      "subseries": []
+    },
+    "rfc8034": {
+      "title": "Active Queue Management (AQM) Based on Proportional Integral Controller Enhanced (PIE) for Data-Over-Cable Service Interface Specifications (DOCSIS) Cable Modems",
+      "subseries": []
+    },
+    "rfc8087": { "title": "The Benefits of Using Explicit Congestion Notification (ECN)", "subseries": [] },
+    "rfc8289": { "title": "Controlled Delay Active Queue Management", "subseries": [] },
+    "rfc8290": {
+      "title": "The Flow Queue CoDel Packet Scheduler and Active Queue Management Algorithm",
+      "subseries": []
+    },
+    "rfc9330": {
+      "title": "Low Latency, Low Loss, and Scalable Throughput (L4S) Internet Service: Architecture",
+      "subseries": []
+    },
+    "rfc9331": {
+      "title": "The Explicit Congestion Notification (ECN) Protocol for Low Latency, Low Loss, and Scalable Throughput (L4S)",
+      "subseries": []
+    },
+    "rfc9332": {
+      "title": "Dual-Queue Coupled Active Queue Management (AQM) for Low Latency, Low Loss, and Scalable Throughput (L4S)",
+      "subseries": []
+    },
+    "rfc970": { "title": "On Packet Switches With Infinite Storage", "subseries": [] }
+  },
+  "subject_meta": {
+    "transport": { "name": "Transport" },
+    "congestion-control": { "name": "Congestion Control" },
+    "codel": { "name": "CoDel" },
+    "pie": { "name": "PIE" }
+  }
+}

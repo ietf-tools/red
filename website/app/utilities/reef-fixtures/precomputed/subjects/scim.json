@@ -1,0 +1,35 @@
+{
+  "id": 759,
+  "slug": "scim",
+  "name": "SCIM",
+  "description": "System for Cross-domain Identity Management",
+  "parent": "security",
+  "path": "security/scim",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7642", "rfc7643", "rfc7644", "rfc9865", "rfc9944", "rfc9967"],
+  "document_meta": {
+    "rfc7642": {
+      "title": "System for Cross-domain Identity Management: Definitions, Overview, Concepts, and Requirements",
+      "subseries": []
+    },
+    "rfc7643": { "title": "System for Cross-domain Identity Management: Core Schema", "subseries": [] },
+    "rfc7644": { "title": "System for Cross-domain Identity Management: Protocol", "subseries": [] },
+    "rfc9865": {
+      "title": "Cursor-Based Pagination of System of Cross-domain Identity Management (SCIM) Resources",
+      "subseries": []
+    },
+    "rfc9944": {
+      "title": "Device Schema Extensions to the System for Cross-Domain Identity Management (SCIM) Model",
+      "subseries": []
+    },
+    "rfc9967": {
+      "title": "System for Cross-Domain Identity Management (SCIM) Profile for Security Event Tokens (SETs)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

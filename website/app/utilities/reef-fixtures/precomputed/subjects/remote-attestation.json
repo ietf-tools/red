@@ -1,0 +1,35 @@
+{
+  "id": 757,
+  "slug": "remote-attestation",
+  "name": "Remote Attestation",
+  "description": "Remote attestation of device state",
+  "parent": "security",
+  "path": "security/remote-attestation",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc10013", "rfc9334", "rfc9683", "rfc9684", "rfc9711", "rfc9781", "rfc9782", "rfc9783", "rfc9999"],
+  "document_meta": {
+    "rfc10013": { "title": "Entity Attestation Token (EAT) Measured Component", "subseries": [] },
+    "rfc9334": { "title": "Remote ATtestation procedureS (RATS) Architecture", "subseries": [] },
+    "rfc9683": {
+      "title": "Remote Integrity Verification of Network Devices Containing Trusted Platform Modules",
+      "subseries": []
+    },
+    "rfc9684": {
+      "title": "A YANG Data Model for Challenge-Response-Based Remote Attestation (CHARRA) Procedures Using Trusted Platform Modules (TPMs)",
+      "subseries": []
+    },
+    "rfc9711": { "title": "The Entity Attestation Token (EAT)", "subseries": [] },
+    "rfc9781": {
+      "title": "A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)",
+      "subseries": []
+    },
+    "rfc9782": { "title": "Entity Attestation Token (EAT) Media Types", "subseries": [] },
+    "rfc9783": { "title": "Arm's Platform Security Architecture (PSA) Attestation Token", "subseries": [] },
+    "rfc9999": { "title": "Remote ATtestation procedureS (RATS) Conceptual Message Wrapper (CMW)", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

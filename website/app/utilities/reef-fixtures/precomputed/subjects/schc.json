@@ -1,0 +1,32 @@
+{
+  "id": 843,
+  "slug": "schc",
+  "name": "SCHC",
+  "description": "Static context header compression",
+  "parent": "lpwan",
+  "path": "iot/lpwan/schc",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8724", "rfc8824", "rfc9011", "rfc9391", "rfc9441", "rfc9442"],
+  "document_meta": {
+    "rfc8724": {
+      "title": "SCHC: Generic Framework for Static Context Header Compression and Fragmentation",
+      "subseries": []
+    },
+    "rfc8824": {
+      "title": "Static Context Header Compression (SCHC) for the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9011": { "title": "Static Context Header Compression and Fragmentation (SCHC) over LoRaWAN", "subseries": [] },
+    "rfc9391": { "title": "Static Context Header Compression over Narrowband Internet of Things", "subseries": [] },
+    "rfc9441": { "title": "Static Context Header Compression (SCHC) Compound Acknowledgement (ACK)", "subseries": [] },
+    "rfc9442": {
+      "title": "Static Context Header Compression (SCHC) over Sigfox Low-Power Wide Area Network (LPWAN)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" }, "lpwan": { "name": "LPWAN" } }
+}

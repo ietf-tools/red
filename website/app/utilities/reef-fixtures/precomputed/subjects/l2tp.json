@@ -1,0 +1,113 @@
+{
+  "id": 636,
+  "slug": "l2tp",
+  "name": "L2TP",
+  "description": "Layer Two Tunneling Protocol",
+  "parent": "link-layer",
+  "path": "link-layer/l2tp",
+  "document_count": 28,
+  "document_count_deep": 28,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2661",
+    "rfc2809",
+    "rfc2888",
+    "rfc3070",
+    "rfc3145",
+    "rfc3193",
+    "rfc3301",
+    "rfc3308",
+    "rfc3355",
+    "rfc3371",
+    "rfc3437",
+    "rfc3438",
+    "rfc3573",
+    "rfc3817",
+    "rfc3931",
+    "rfc4045",
+    "rfc4349",
+    "rfc4454",
+    "rfc4591",
+    "rfc4667",
+    "rfc4719",
+    "rfc4951",
+    "rfc5515",
+    "rfc5571",
+    "rfc5611",
+    "rfc5641",
+    "rfc7886",
+    "rfc8159"
+  ],
+  "document_meta": {
+    "rfc2661": { "title": "Layer Two Tunneling Protocol \"L2TP\"", "subseries": [] },
+    "rfc2809": { "title": "Implementation of L2TP Compulsory Tunneling via RADIUS", "subseries": [] },
+    "rfc2888": { "title": "Secure Remote Access with L2TP", "subseries": [] },
+    "rfc3070": { "title": "Layer Two Tunneling Protocol (L2TP) over Frame Relay", "subseries": [] },
+    "rfc3145": { "title": "L2TP Disconnect Cause Information", "subseries": [] },
+    "rfc3193": { "title": "Securing L2TP using IPsec", "subseries": [] },
+    "rfc3301": { "title": "Layer Two Tunnelling Protocol (L2TP): ATM access network extensions", "subseries": [] },
+    "rfc3308": { "title": "Layer Two Tunneling Protocol (L2TP) Differentiated Services Extension", "subseries": [] },
+    "rfc3355": { "title": "Layer Two Tunnelling Protocol (L2TP) Over ATM Adaptation Layer 5 (AAL5)", "subseries": [] },
+    "rfc3371": { "title": "Layer Two Tunneling Protocol \"L2TP\" Management Information Base", "subseries": [] },
+    "rfc3437": {
+      "title": "Layer-Two Tunneling Protocol Extensions for PPP Link Control Protocol Negotiation",
+      "subseries": []
+    },
+    "rfc3438": {
+      "title": "Layer Two Tunneling Protocol (L2TP) Internet Assigned Numbers Authority (IANA) Considerations Update",
+      "subseries": ["bcp68"]
+    },
+    "rfc3573": { "title": "Signalling of Modem-On-Hold status in Layer 2 Tunneling Protocol (L2TP)", "subseries": [] },
+    "rfc3817": {
+      "title": "Layer 2 Tunneling Protocol (L2TP) Active Discovery Relay for PPP over Ethernet (PPPoE)",
+      "subseries": []
+    },
+    "rfc3931": { "title": "Layer Two Tunneling Protocol - Version 3 (L2TPv3)", "subseries": [] },
+    "rfc4045": {
+      "title": "Extensions to Support Efficient Carrying of Multicast Traffic in Layer-2 Tunneling Protocol (L2TP)",
+      "subseries": []
+    },
+    "rfc4349": {
+      "title": "High-Level Data Link Control (HDLC) Frames over Layer 2 Tunneling Protocol, Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc4454": {
+      "title": "Asynchronous Transfer Mode (ATM) over Layer 2 Tunneling Protocol Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc4591": { "title": "Frame Relay over Layer 2 Tunneling Protocol Version 3 (L2TPv3)", "subseries": [] },
+    "rfc4667": {
+      "title": "Layer 2 Virtual Private Network (L2VPN) Extensions for Layer 2 Tunneling Protocol (L2TP)",
+      "subseries": []
+    },
+    "rfc4719": {
+      "title": "Transport of Ethernet Frames over Layer 2 Tunneling Protocol Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc4951": { "title": "Fail Over Extensions for Layer 2 Tunneling Protocol (L2TP) \"failover\"", "subseries": [] },
+    "rfc5515": {
+      "title": "Layer 2 Tunneling Protocol (L2TP) Access Line Information Attribute Value Pair (AVP) Extensions",
+      "subseries": []
+    },
+    "rfc5571": {
+      "title": "Softwire Hub and Spoke Deployment Framework with Layer Two Tunneling Protocol Version 2 (L2TPv2)",
+      "subseries": []
+    },
+    "rfc5611": {
+      "title": "Layer Two Tunneling Protocol version 3 - Setup of Time-Division Multiplexing (TDM) Pseudowires",
+      "subseries": []
+    },
+    "rfc5641": {
+      "title": "Layer 2 Tunneling Protocol Version 3 (L2TPv3) Extended Circuit Status Values",
+      "subseries": []
+    },
+    "rfc7886": {
+      "title": "Advertising Seamless Bidirectional Forwarding Detection (S-BFD) Discriminators in the Layer Two Tunneling Protocol Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc8159": { "title": "Keyed IPv6 Tunnel", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

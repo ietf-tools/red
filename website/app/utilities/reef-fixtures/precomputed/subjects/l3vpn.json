@@ -1,0 +1,184 @@
+{
+  "id": 940,
+  "slug": "l3vpn",
+  "name": "L3VPN",
+  "description": "BGP/MPLS layer 3 VPNs",
+  "parent": "vpn",
+  "path": "routing/vpn/l3vpn",
+  "document_count": 50,
+  "document_count_deep": 50,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2547",
+    "rfc3809",
+    "rfc4026",
+    "rfc4031",
+    "rfc4110",
+    "rfc4111",
+    "rfc4176",
+    "rfc4265",
+    "rfc4364",
+    "rfc4365",
+    "rfc4381",
+    "rfc4382",
+    "rfc4576",
+    "rfc4577",
+    "rfc4659",
+    "rfc4684",
+    "rfc4797",
+    "rfc4834",
+    "rfc5668",
+    "rfc5701",
+    "rfc5824",
+    "rfc6016",
+    "rfc6037",
+    "rfc6368",
+    "rfc6513",
+    "rfc6514",
+    "rfc6515",
+    "rfc6516",
+    "rfc6517",
+    "rfc6565",
+    "rfc6625",
+    "rfc6882",
+    "rfc7024",
+    "rfc7246",
+    "rfc7289",
+    "rfc7359",
+    "rfc7385",
+    "rfc7439",
+    "rfc7611",
+    "rfc7814",
+    "rfc8049",
+    "rfc8299",
+    "rfc8503",
+    "rfc9181",
+    "rfc9182",
+    "rfc9833",
+    "rfc9834",
+    "rfc9835",
+    "rfc9836",
+    "rfc9889"
+  ],
+  "document_meta": {
+    "rfc2547": { "title": "BGP/MPLS VPNs", "subseries": [] },
+    "rfc3809": {
+      "title": "Generic Requirements for Provider Provisioned Virtual Private Networks (PPVPN)",
+      "subseries": []
+    },
+    "rfc4026": { "title": "Provider Provisioned Virtual Private Network (VPN) Terminology", "subseries": [] },
+    "rfc4031": {
+      "title": "Service Requirements for Layer 3 Provider Provisioned Virtual Private Networks (PPVPNs)",
+      "subseries": []
+    },
+    "rfc4110": {
+      "title": "A Framework for Layer 3 Provider-Provisioned Virtual Private Networks (PPVPNs)",
+      "subseries": []
+    },
+    "rfc4111": {
+      "title": "Security Framework for Provider-Provisioned Virtual Private Networks (PPVPNs)",
+      "subseries": []
+    },
+    "rfc4176": {
+      "title": "Framework for Layer 3 Virtual Private Networks (L3VPN) Operations and Management",
+      "subseries": []
+    },
+    "rfc4265": {
+      "title": "Definition of Textual Conventions for Virtual Private Network (VPN) Management",
+      "subseries": []
+    },
+    "rfc4364": { "title": "BGP/MPLS IP Virtual Private Networks (VPNs)", "subseries": [] },
+    "rfc4365": { "title": "Applicability Statement for BGP/MPLS IP Virtual Private Networks (VPNs)", "subseries": [] },
+    "rfc4381": { "title": "Analysis of the Security of BGP/MPLS IP Virtual Private Networks (VPNs)", "subseries": [] },
+    "rfc4382": {
+      "title": "MPLS/BGP Layer 3 Virtual Private Network (VPN) Management Information Base",
+      "subseries": []
+    },
+    "rfc4576": {
+      "title": "Using a Link State Advertisement (LSA) Options Bit to Prevent Looping in BGP/MPLS IP Virtual Private Networks (VPNs)",
+      "subseries": []
+    },
+    "rfc4577": {
+      "title": "OSPF as the Provider/Customer Edge Protocol for BGP/MPLS IP Virtual Private Networks (VPNs)",
+      "subseries": []
+    },
+    "rfc4659": { "title": "BGP-MPLS IP Virtual Private Network (VPN) Extension for IPv6 VPN", "subseries": [] },
+    "rfc4684": {
+      "title": "Constrained Route Distribution for Border Gateway Protocol/MultiProtocol Label Switching (BGP/MPLS) Internet Protocol (IP) Virtual Private Networks (VPNs)",
+      "subseries": []
+    },
+    "rfc4797": {
+      "title": "Use of Provider Edge to Provider Edge (PE-PE) Generic Routing Encapsulation (GRE) or IP in BGP/MPLS IP Virtual Private Networks",
+      "subseries": []
+    },
+    "rfc4834": {
+      "title": "Requirements for Multicast in Layer 3 Provider-Provisioned Virtual Private Networks (PPVPNs)",
+      "subseries": []
+    },
+    "rfc5668": { "title": "4-Octet AS Specific BGP Extended Community", "subseries": [] },
+    "rfc5701": { "title": "IPv6 Address Specific BGP Extended Community Attribute", "subseries": [] },
+    "rfc5824": {
+      "title": "Requirements for Supporting Customer Resource ReSerVation Protocol (RSVP) and RSVP Traffic Engineering (RSVP-TE) over a BGP/MPLS IP-VPN",
+      "subseries": []
+    },
+    "rfc6016": { "title": "Support for the Resource Reservation Protocol (RSVP) in Layer 3 VPNs", "subseries": [] },
+    "rfc6037": { "title": "Cisco Systems' Solution for Multicast in BGP/MPLS IP VPNs", "subseries": [] },
+    "rfc6368": {
+      "title": "Internal BGP as the Provider/Customer Edge Protocol for BGP/MPLS IP Virtual Private Networks (VPNs)",
+      "subseries": []
+    },
+    "rfc6513": { "title": "Multicast in MPLS/BGP IP VPNs", "subseries": [] },
+    "rfc6514": { "title": "BGP Encodings and Procedures for Multicast in MPLS/BGP IP VPNs", "subseries": [] },
+    "rfc6515": { "title": "IPv4 and IPv6 Infrastructure Addresses in BGP Updates for Multicast VPN", "subseries": [] },
+    "rfc6516": {
+      "title": "IPv6 Multicast VPN (MVPN) Support Using PIM Control Plane and Selective Provider Multicast Service Interface (S-PMSI) Join Messages",
+      "subseries": []
+    },
+    "rfc6517": { "title": "Mandatory Features in a Layer 3 Multicast BGP/MPLS VPN Solution", "subseries": [] },
+    "rfc6565": { "title": "OSPFv3 as a Provider Edge to Customer Edge (PE-CE) Routing Protocol", "subseries": [] },
+    "rfc6625": { "title": "Wildcards in Multicast VPN Auto-Discovery Routes", "subseries": [] },
+    "rfc6882": {
+      "title": "Support for Resource Reservation Protocol Traffic Engineering (RSVP-TE) in Layer 3 Virtual Private Networks (L3VPNs)",
+      "subseries": []
+    },
+    "rfc7024": { "title": "Virtual Hub-and-Spoke in BGP/MPLS VPNs", "subseries": [] },
+    "rfc7246": {
+      "title": "Multipoint Label Distribution Protocol In-Band Signaling in a Virtual Routing and Forwarding (VRF) Table Context",
+      "subseries": []
+    },
+    "rfc7289": { "title": "Carrier-Grade NAT (CGN) Deployment with BGP/MPLS IP VPNs", "subseries": [] },
+    "rfc7359": {
+      "title": "Layer 3 Virtual Private Network (VPN) Tunnel Traffic Leakages in Dual-Stack Hosts/Networks",
+      "subseries": []
+    },
+    "rfc7385": {
+      "title": "IANA Registry for P-Multicast Service Interface (PMSI) Tunnel Type Code Points",
+      "subseries": []
+    },
+    "rfc7439": { "title": "Gap Analysis for Operating IPv6-Only MPLS Networks", "subseries": [] },
+    "rfc7611": { "title": "BGP ACCEPT_OWN Community Attribute", "subseries": [] },
+    "rfc7814": { "title": "Virtual Subnet: A BGP/MPLS IP VPN-Based Subnet Extension Solution", "subseries": [] },
+    "rfc8049": { "title": "YANG Data Model for L3VPN Service Delivery", "subseries": [] },
+    "rfc8299": { "title": "YANG Data Model for L3VPN Service Delivery", "subseries": [] },
+    "rfc8503": { "title": "BGP/MPLS Layer 3 VPN Multicast Management Information Base", "subseries": [] },
+    "rfc9181": { "title": "A Common YANG Data Model for Layer 2 and Layer 3 VPNs", "subseries": [] },
+    "rfc9182": { "title": "A YANG Network Data Model for Layer 3 VPNs", "subseries": [] },
+    "rfc9833": { "title": "A Common YANG Data Model for Attachment Circuits", "subseries": [] },
+    "rfc9834": {
+      "title": "YANG Data Models for Bearers and Attachment Circuits as a Service (ACaaS)",
+      "subseries": []
+    },
+    "rfc9835": { "title": "A Network YANG Data Model for Attachment Circuits", "subseries": [] },
+    "rfc9836": {
+      "title": "A YANG Data Model for Augmenting VPN Service and Network Models with Attachment Circuits",
+      "subseries": []
+    },
+    "rfc9889": {
+      "title": "A Realization of Network Slices for 5G Networks Using Current IP/MPLS Technologies",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "vpn": { "name": "VPN" } }
+}

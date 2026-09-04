@@ -1,0 +1,125 @@
+{
+  "id": 951,
+  "slug": "hmac",
+  "name": "HMAC",
+  "description": "Keyed-hash message authentication",
+  "parent": "cryptography",
+  "path": "security/cryptography/hmac",
+  "document_count": 34,
+  "document_count_deep": 34,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2085",
+    "rfc2104",
+    "rfc2202",
+    "rfc2286",
+    "rfc2403",
+    "rfc2404",
+    "rfc2857",
+    "rfc3537",
+    "rfc4226",
+    "rfc4231",
+    "rfc4357",
+    "rfc4490",
+    "rfc4634",
+    "rfc4635",
+    "rfc4650",
+    "rfc4757",
+    "rfc4868",
+    "rfc4895",
+    "rfc5304",
+    "rfc5310",
+    "rfc5709",
+    "rfc5869",
+    "rfc6151",
+    "rfc6234",
+    "rfc6268",
+    "rfc6649",
+    "rfc7298",
+    "rfc7630",
+    "rfc7836",
+    "rfc7860",
+    "rfc8009",
+    "rfc8619",
+    "rfc9053",
+    "rfc9150"
+  ],
+  "document_meta": {
+    "rfc2085": { "title": "HMAC-MD5 IP Authentication with Replay Prevention", "subseries": [] },
+    "rfc2104": { "title": "HMAC: Keyed-Hashing for Message Authentication", "subseries": [] },
+    "rfc2202": { "title": "Test Cases for HMAC-MD5 and HMAC-SHA-1", "subseries": [] },
+    "rfc2286": { "title": "Test Cases for HMAC-RIPEMD160 and HMAC-RIPEMD128", "subseries": [] },
+    "rfc2403": { "title": "The Use of HMAC-MD5-96 within ESP and AH", "subseries": [] },
+    "rfc2404": { "title": "The Use of HMAC-SHA-1-96 within ESP and AH", "subseries": [] },
+    "rfc2857": { "title": "The Use of HMAC-RIPEMD-160-96 within ESP and AH", "subseries": [] },
+    "rfc3537": {
+      "title": "Wrapping a Hashed Message Authentication Code (HMAC) key with a Triple-Data Encryption Standard (DES) Key or an Advanced Encryption Standard (AES) Key",
+      "subseries": []
+    },
+    "rfc4226": { "title": "HOTP: An HMAC-Based One-Time Password Algorithm", "subseries": [] },
+    "rfc4231": {
+      "title": "Identifiers and Test Vectors for HMAC-SHA-224, HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512",
+      "subseries": []
+    },
+    "rfc4357": {
+      "title": "Additional Cryptographic Algorithms for Use with GOST 28147-89, GOST R 34.10-94, GOST R 34.10-2001, and GOST R 34.11-94 Algorithms",
+      "subseries": []
+    },
+    "rfc4490": {
+      "title": "Using the GOST 28147-89, GOST R 34.11-94, GOST R 34.10-94, and GOST R 34.10-2001 Algorithms with Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4634": { "title": "US Secure Hash Algorithms (SHA and HMAC-SHA)", "subseries": [] },
+    "rfc4635": {
+      "title": "HMAC SHA (Hashed Message Authentication Code, Secure Hash Algorithm) TSIG Algorithm Identifiers",
+      "subseries": []
+    },
+    "rfc4650": { "title": "HMAC-Authenticated Diffie-Hellman for Multimedia Internet KEYing (MIKEY)", "subseries": [] },
+    "rfc4757": { "title": "The RC4-HMAC Kerberos Encryption Types Used by Microsoft Windows", "subseries": [] },
+    "rfc4868": { "title": "Using HMAC-SHA-256, HMAC-SHA-384, and HMAC-SHA-512 with IPsec", "subseries": [] },
+    "rfc4895": { "title": "Authenticated Chunks for the Stream Control Transmission Protocol (SCTP)", "subseries": [] },
+    "rfc5304": { "title": "IS-IS Cryptographic Authentication", "subseries": [] },
+    "rfc5310": { "title": "IS-IS Generic Cryptographic Authentication", "subseries": [] },
+    "rfc5709": { "title": "OSPFv2 HMAC-SHA Cryptographic Authentication", "subseries": [] },
+    "rfc5869": { "title": "HMAC-based Extract-and-Expand Key Derivation Function (HKDF)", "subseries": [] },
+    "rfc6151": {
+      "title": "Updated Security Considerations for the MD5 Message-Digest and the HMAC-MD5 Algorithms",
+      "subseries": []
+    },
+    "rfc6234": { "title": "US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)", "subseries": [] },
+    "rfc6268": {
+      "title": "Additional New ASN.1 Modules for the Cryptographic Message Syntax (CMS) and the Public Key Infrastructure Using X.509 (PKIX)",
+      "subseries": []
+    },
+    "rfc6649": {
+      "title": "Deprecate DES, RC4-HMAC-EXP, and Other Weak Cryptographic Algorithms in Kerberos",
+      "subseries": ["bcp179"]
+    },
+    "rfc7298": {
+      "title": "Babel Hashed Message Authentication Code (HMAC) Cryptographic Authentication",
+      "subseries": []
+    },
+    "rfc7630": {
+      "title": "HMAC-SHA-2 Authentication Protocols in the User-based Security Model (USM) for SNMPv3",
+      "subseries": []
+    },
+    "rfc7836": {
+      "title": "Guidelines on the Cryptographic Algorithms to Accompany the Usage of Standards GOST R 34.10-2012 and GOST R 34.11-2012",
+      "subseries": []
+    },
+    "rfc7860": {
+      "title": "HMAC-SHA-2 Authentication Protocols in User-Based Security Model (USM) for SNMPv3",
+      "subseries": []
+    },
+    "rfc8009": { "title": "AES Encryption with HMAC-SHA2 for Kerberos 5", "subseries": [] },
+    "rfc8619": {
+      "title": "Algorithm Identifiers for the HMAC-based Extract-and-Expand Key Derivation Function (HKDF)",
+      "subseries": []
+    },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9150": { "title": "TLS 1.3 Authentication and Integrity-Only Cipher Suites", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

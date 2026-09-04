@@ -1,0 +1,41 @@
+{
+  "id": 889,
+  "slug": "telepresence",
+  "name": "Telepresence",
+  "description": "Telepresence (CLUE) multi-stream conferencing",
+  "parent": "conferencing",
+  "path": "real-time-communications/conferencing/telepresence",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4696", "rfc7205", "rfc7262", "rfc8845", "rfc8846", "rfc8847", "rfc8848", "rfc8849", "rfc8850"],
+  "document_meta": {
+    "rfc4696": { "title": "An Implementation Guide for RTP MIDI", "subseries": [] },
+    "rfc7205": { "title": "Use Cases for Telepresence Multistreams", "subseries": [] },
+    "rfc7262": { "title": "Requirements for Telepresence Multistreams", "subseries": [] },
+    "rfc8845": { "title": "Framework for Telepresence Multi-Streams", "subseries": [] },
+    "rfc8846": {
+      "title": "An XML Schema for the Controlling Multiple Streams for Telepresence (CLUE) Data Model",
+      "subseries": []
+    },
+    "rfc8847": { "title": "Protocol for Controlling Multiple Streams for Telepresence (CLUE)", "subseries": [] },
+    "rfc8848": {
+      "title": "Session Signaling for Controlling Multiple Streams for Telepresence (CLUE)",
+      "subseries": []
+    },
+    "rfc8849": {
+      "title": "Mapping RTP Streams to Controlling Multiple Streams for Telepresence (CLUE) Media Captures",
+      "subseries": []
+    },
+    "rfc8850": {
+      "title": "Controlling Multiple Streams for Telepresence (CLUE) Protocol Data Channel",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "conferencing": { "name": "Conferencing" }
+  }
+}

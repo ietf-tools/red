@@ -1,0 +1,16 @@
+{
+  "id": 683,
+  "slug": "y2k",
+  "name": "Y2K",
+  "description": "Year 2000 readiness",
+  "parent": "network-management",
+  "path": "network-management/y2k",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2626"],
+  "document_meta": { "rfc2626": { "title": "The Internet and the Millennium Problem (Year 2000)", "subseries": [] } },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

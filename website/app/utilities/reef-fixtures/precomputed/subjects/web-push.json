@@ -1,0 +1,20 @@
+{
+  "id": 795,
+  "slug": "web-push",
+  "name": "Web Push",
+  "description": "Web push notification delivery",
+  "parent": "web",
+  "path": "web/web-push",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8030", "rfc8291", "rfc8292"],
+  "document_meta": {
+    "rfc8030": { "title": "Generic Event Delivery Using HTTP Push", "subseries": [] },
+    "rfc8291": { "title": "Message Encryption for Web Push", "subseries": [] },
+    "rfc8292": { "title": "Voluntary Application Server Identification (VAPID) for Web Push", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" } }
+}

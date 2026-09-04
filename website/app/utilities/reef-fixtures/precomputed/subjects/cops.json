@@ -1,0 +1,67 @@
+{
+  "id": 981,
+  "slug": "cops",
+  "name": "COPS",
+  "description": "Common Open Policy Service and policy provisioning",
+  "parent": "qos",
+  "path": "transport/qos/cops",
+  "document_count": 20,
+  "document_count_deep": 20,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2748",
+    "rfc2749",
+    "rfc2750",
+    "rfc2751",
+    "rfc2752",
+    "rfc2753",
+    "rfc2872",
+    "rfc2940",
+    "rfc3084",
+    "rfc3159",
+    "rfc3181",
+    "rfc3182",
+    "rfc3216",
+    "rfc3318",
+    "rfc3483",
+    "rfc3520",
+    "rfc3521",
+    "rfc3571",
+    "rfc4097",
+    "rfc4261"
+  ],
+  "document_meta": {
+    "rfc2748": { "title": "The COPS (Common Open Policy Service) Protocol", "subseries": [] },
+    "rfc2749": { "title": "COPS usage for RSVP", "subseries": [] },
+    "rfc2750": { "title": "RSVP Extensions for Policy Control", "subseries": [] },
+    "rfc2751": { "title": "Signaled Preemption Priority Policy Element", "subseries": [] },
+    "rfc2752": { "title": "Identity Representation for RSVP", "subseries": [] },
+    "rfc2753": { "title": "A Framework for Policy-based Admission Control", "subseries": [] },
+    "rfc2872": {
+      "title": "Application and Sub Application Identity Policy Element for Use with RSVP",
+      "subseries": []
+    },
+    "rfc2940": {
+      "title": "Definitions of Managed Objects for Common Open Policy Service (COPS) Protocol Clients",
+      "subseries": []
+    },
+    "rfc3084": { "title": "COPS Usage for Policy Provisioning (COPS-PR)", "subseries": [] },
+    "rfc3159": { "title": "Structure of Policy Provisioning Information (SPPI)", "subseries": [] },
+    "rfc3181": { "title": "Signaled Preemption Priority Policy Element", "subseries": [] },
+    "rfc3182": { "title": "Identity Representation for RSVP", "subseries": [] },
+    "rfc3216": { "title": "SMIng Objectives", "subseries": [] },
+    "rfc3318": { "title": "Framework Policy Information Base", "subseries": [] },
+    "rfc3483": {
+      "title": "Framework for Policy Usage Feedback for Common Open Policy Service with Policy Provisioning (COPS-PR)",
+      "subseries": []
+    },
+    "rfc3520": { "title": "Session Authorization Policy Element", "subseries": [] },
+    "rfc3521": { "title": "Framework for Session Set-up with Media Authorization", "subseries": [] },
+    "rfc3571": { "title": "Framework Policy Information Base for Usage Feedback", "subseries": [] },
+    "rfc4097": { "title": "Middlebox Communications (MIDCOM) Protocol Evaluation", "subseries": [] },
+    "rfc4261": { "title": "Common Open Policy Service (COPS) Over Transport Layer Security (TLS)", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "qos": { "name": "QoS" } }
+}

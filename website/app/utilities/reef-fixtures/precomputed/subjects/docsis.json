@@ -1,0 +1,92 @@
+{
+  "id": 627,
+  "slug": "docsis",
+  "name": "DOCSIS",
+  "description": "DOCSIS cable access networks",
+  "parent": "link-layer",
+  "path": "link-layer/docsis",
+  "document_count": 16,
+  "document_count_deep": 16,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2669",
+    "rfc2670",
+    "rfc3083",
+    "rfc3256",
+    "rfc4036",
+    "rfc4131",
+    "rfc4323",
+    "rfc4546",
+    "rfc4547",
+    "rfc4639",
+    "rfc4682",
+    "rfc4965",
+    "rfc5098",
+    "rfc5428",
+    "rfc8034",
+    "rfc9957"
+  ],
+  "document_meta": {
+    "rfc2669": {
+      "title": "DOCSIS Cable Device MIB Cable Device Management Information Base for DOCSIS compliant Cable Modems and Cable Modem Termination Systems",
+      "subseries": []
+    },
+    "rfc2670": {
+      "title": "Radio Frequency (RF) Interface Management Information Base for MCNS/DOCSIS compliant RF interfaces",
+      "subseries": []
+    },
+    "rfc3083": {
+      "title": "Baseline Privacy Interface Management Information Base for DOCSIS Compliant Cable Modems and Cable Modem Termination Systems",
+      "subseries": []
+    },
+    "rfc3256": {
+      "title": "The DOCSIS (Data-Over-Cable Service Interface Specifications) Device Class DHCP (Dynamic Host Configuration Protocol) Relay Agent Information Sub-option",
+      "subseries": []
+    },
+    "rfc4036": {
+      "title": "Management Information Base for Data Over Cable Service Interface Specification (DOCSIS) Cable Modem Termination Systems for Subscriber Management",
+      "subseries": []
+    },
+    "rfc4131": {
+      "title": "Management Information Base for Data Over Cable Service Interface Specification (DOCSIS) Cable Modems and Cable Modem Termination Systems for Baseline Privacy Plus",
+      "subseries": []
+    },
+    "rfc4323": {
+      "title": "Data Over Cable System Interface Specification Quality of Service Management Information Base (DOCSIS-QoS MIB)",
+      "subseries": []
+    },
+    "rfc4546": {
+      "title": "Radio Frequency (RF) Interface Management Information Base for Data over Cable Service Interface Specifications (DOCSIS) 2.0 Compliant RF Interfaces",
+      "subseries": []
+    },
+    "rfc4547": {
+      "title": "Event Notification Management Information Base for Data over Cable Service Interface Specifications (DOCSIS)-Compliant Cable Modems and Cable Modem Termination Systems",
+      "subseries": []
+    },
+    "rfc4639": {
+      "title": "Cable Device Management Information Base for Data-Over-Cable Service Interface Specification (DOCSIS) Compliant Cable Modems and Cable Modem Termination Systems",
+      "subseries": []
+    },
+    "rfc4682": {
+      "title": "Multimedia Terminal Adapter (MTA) Management Information Base for PacketCable- and IPCablecom-Compliant Devices",
+      "subseries": []
+    },
+    "rfc4965": { "title": "CableLabs - IETF Standardization Collaboration", "subseries": [] },
+    "rfc5098": {
+      "title": "Signaling MIB for PacketCable and IPCablecom Multimedia Terminal Adapters (MTAs)",
+      "subseries": []
+    },
+    "rfc5428": {
+      "title": "Management Event Management Information Base (MIB) for PacketCable- and IPCablecom-Compliant Devices",
+      "subseries": []
+    },
+    "rfc8034": {
+      "title": "Active Queue Management (AQM) Based on Proportional Integral Controller Enhanced (PIE) for Data-Over-Cable Service Interface Specifications (DOCSIS) Cable Modems",
+      "subseries": []
+    },
+    "rfc9957": { "title": "The DOCSIS Queue Protection Algorithm to Preserve Low Latency", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

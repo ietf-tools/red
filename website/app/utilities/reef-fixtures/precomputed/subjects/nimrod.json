@@ -1,0 +1,24 @@
+{
+  "id": 716,
+  "slug": "nimrod",
+  "name": "Nimrod",
+  "description": "The Nimrod routing architecture",
+  "parent": "routing",
+  "path": "routing/nimrod",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1753", "rfc1992", "rfc2102", "rfc2103"],
+  "document_meta": {
+    "rfc1753": {
+      "title": "IPng Technical Requirements Of the Nimrod Routing and Addressing Architecture",
+      "subseries": []
+    },
+    "rfc1992": { "title": "The Nimrod Routing Architecture", "subseries": [] },
+    "rfc2102": { "title": "Multicast Support for Nimrod :  Requirements and Solution Approaches", "subseries": [] },
+    "rfc2103": { "title": "Mobility Support for Nimrod :  Challenges and Solution Approaches", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

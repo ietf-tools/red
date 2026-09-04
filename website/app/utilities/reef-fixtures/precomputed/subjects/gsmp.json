@@ -1,0 +1,34 @@
+{
+  "id": 706,
+  "slug": "gsmp",
+  "name": "GSMP",
+  "description": "General Switch Management Protocol",
+  "parent": "routing",
+  "path": "routing/gsmp",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1987", "rfc2297", "rfc3292", "rfc3293", "rfc3294", "rfc3295", "rfc3532", "rfc3604"],
+  "document_meta": {
+    "rfc1987": { "title": "Ipsilon's General Switch Management Protocol Specification Version 1.1", "subseries": [] },
+    "rfc2297": { "title": "Ipsilon's General Switch Management Protocol Specification Version 2.0", "subseries": [] },
+    "rfc3292": { "title": "General Switch Management Protocol (GSMP) V3", "subseries": [] },
+    "rfc3293": {
+      "title": "General Switch Management Protocol (GSMP) Packet Encapsulations for Asynchronous Transfer Mode (ATM), Ethernet and Transmission Control Protocol (TCP)",
+      "subseries": []
+    },
+    "rfc3294": { "title": "General Switch Management Protocol (GSMP) Applicability", "subseries": [] },
+    "rfc3295": {
+      "title": "Definitions of Managed Objects for the General Switch Management Protocol (GSMP)",
+      "subseries": []
+    },
+    "rfc3532": { "title": "Requirements for the Dynamic Partitioning of Switching Elements", "subseries": [] },
+    "rfc3604": {
+      "title": "Requirements for Adding Optical Support to the General Switch Management Protocol version 3 (GSMPv3)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

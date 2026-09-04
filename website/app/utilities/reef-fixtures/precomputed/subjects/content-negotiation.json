@@ -1,0 +1,61 @@
+{
+  "id": 577,
+  "slug": "content-negotiation",
+  "name": "Content Negotiation",
+  "description": "Media feature and content negotiation",
+  "parent": "data-formats",
+  "path": "data-formats/content-negotiation",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2295",
+    "rfc2506",
+    "rfc2530",
+    "rfc2533",
+    "rfc2534",
+    "rfc2703",
+    "rfc2738",
+    "rfc2912",
+    "rfc2913",
+    "rfc2938",
+    "rfc2987",
+    "rfc3297",
+    "rfc4569",
+    "rfc5688",
+    "rfc6913",
+    "rfc7089",
+    "rfc8942"
+  ],
+  "document_meta": {
+    "rfc2295": { "title": "Transparent Content Negotiation in HTTP", "subseries": [] },
+    "rfc2506": { "title": "Media Feature Tag Registration Procedure", "subseries": ["bcp31"] },
+    "rfc2530": { "title": "Indicating Supported Media Features Using Extensions to DSN and MDN", "subseries": [] },
+    "rfc2533": { "title": "A Syntax for Describing Media Feature Sets", "subseries": [] },
+    "rfc2534": { "title": "Media Features for Display, Print, and Fax", "subseries": [] },
+    "rfc2703": { "title": "Protocol-independent Content Negotiation Framework", "subseries": [] },
+    "rfc2738": { "title": "Corrections to \"A Syntax for Describing Media Feature Sets\"", "subseries": [] },
+    "rfc2912": { "title": "Indicating Media Features for MIME Content", "subseries": [] },
+    "rfc2913": { "title": "MIME Content Types in Media Feature Expressions", "subseries": [] },
+    "rfc2938": { "title": "Identifying Composite Media Features", "subseries": [] },
+    "rfc2987": { "title": "Registration of Charset and Languages Media Features Tags", "subseries": [] },
+    "rfc3297": { "title": "Content Negotiation for Messaging Services based on Email", "subseries": [] },
+    "rfc4569": {
+      "title": "Internet Assigned Number Authority (IANA) Registration of the Message Media Feature Tag",
+      "subseries": []
+    },
+    "rfc5688": {
+      "title": "A Session Initiation Protocol (SIP) Media Feature Tag for MIME Application Subtypes",
+      "subseries": []
+    },
+    "rfc6913": {
+      "title": "Indicating Fax over IP Capability in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7089": { "title": "HTTP Framework for Time-Based Access to Resource States -- Memento", "subseries": [] },
+    "rfc8942": { "title": "HTTP Client Hints", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

@@ -1,0 +1,33 @@
+{
+  "id": 722,
+  "slug": "routing-security",
+  "name": "Routing Security",
+  "description": "Securing routing protocols and infrastructure",
+  "parent": "routing",
+  "path": "routing/routing-security",
+  "document_count": 7,
+  "document_count_deep": 74,
+  "retired": false,
+  "children": ["bgpsec", "rpki"],
+  "aliases": [],
+  "documents": ["rfc4593", "rfc6518", "rfc6862", "rfc6863", "rfc6952", "rfc7210", "rfc7211"],
+  "document_meta": {
+    "rfc4593": { "title": "Generic Threats to Routing Protocols", "subseries": [] },
+    "rfc6518": { "title": "Keying and Authentication for Routing Protocols (KARP) Design Guidelines", "subseries": [] },
+    "rfc6862": {
+      "title": "Keying and Authentication for Routing Protocols (KARP) Overview, Threats, and Requirements",
+      "subseries": []
+    },
+    "rfc6863": {
+      "title": "Analysis of OSPF Security According to the Keying and Authentication for Routing Protocols (KARP) Design Guide",
+      "subseries": []
+    },
+    "rfc6952": {
+      "title": "Analysis of BGP, LDP, PCEP, and MSDP Issues According to the Keying and Authentication for Routing Protocols (KARP) Design Guide",
+      "subseries": []
+    },
+    "rfc7210": { "title": "Database of Long-Lived Symmetric Cryptographic Keys", "subseries": [] },
+    "rfc7211": { "title": "Operations Model for Router Keying", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "bgpsec": { "name": "BGPsec" }, "rpki": { "name": "RPKI" } }
+}

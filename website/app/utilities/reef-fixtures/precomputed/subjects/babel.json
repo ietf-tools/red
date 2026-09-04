@@ -1,0 +1,49 @@
+{
+  "id": 698,
+  "slug": "babel",
+  "name": "Babel",
+  "description": "The Babel routing protocol",
+  "parent": "routing",
+  "path": "routing/babel",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6126",
+    "rfc7298",
+    "rfc7557",
+    "rfc8965",
+    "rfc8966",
+    "rfc8967",
+    "rfc8968",
+    "rfc9046",
+    "rfc9079",
+    "rfc9080",
+    "rfc9229",
+    "rfc9467",
+    "rfc9616",
+    "rfc9647"
+  ],
+  "document_meta": {
+    "rfc6126": { "title": "The Babel Routing Protocol", "subseries": [] },
+    "rfc7298": {
+      "title": "Babel Hashed Message Authentication Code (HMAC) Cryptographic Authentication",
+      "subseries": []
+    },
+    "rfc7557": { "title": "Extension Mechanism for the Babel Routing Protocol", "subseries": [] },
+    "rfc8965": { "title": "Applicability of the Babel Routing Protocol", "subseries": [] },
+    "rfc8966": { "title": "The Babel Routing Protocol", "subseries": [] },
+    "rfc8967": { "title": "MAC Authentication for the Babel Routing Protocol", "subseries": [] },
+    "rfc8968": { "title": "Babel Routing Protocol over Datagram Transport Layer Security", "subseries": [] },
+    "rfc9046": { "title": "Babel Information Model", "subseries": [] },
+    "rfc9079": { "title": "Source-Specific Routing in the Babel Routing Protocol", "subseries": [] },
+    "rfc9080": { "title": "Homenet Profile of the Babel Routing Protocol", "subseries": [] },
+    "rfc9229": { "title": "IPv4 Routes with an IPv6 Next Hop in the Babel Routing Protocol", "subseries": [] },
+    "rfc9467": { "title": "Relaxed Packet Counter Verification for Babel MAC Authentication", "subseries": [] },
+    "rfc9616": { "title": "Delay-Based Metric Extension for the Babel Routing Protocol", "subseries": [] },
+    "rfc9647": { "title": "A YANG Data Model for Babel", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

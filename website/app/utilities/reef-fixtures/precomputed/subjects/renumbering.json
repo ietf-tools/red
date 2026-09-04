@@ -1,0 +1,63 @@
+{
+  "id": 827,
+  "slug": "renumbering",
+  "name": "Renumbering",
+  "description": "Site renumbering procedures",
+  "parent": "addressing",
+  "path": "internet-layer/addressing/renumbering",
+  "document_count": 15,
+  "document_count_deep": 15,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1900",
+    "rfc1916",
+    "rfc2071",
+    "rfc2072",
+    "rfc2874",
+    "rfc2894",
+    "rfc4076",
+    "rfc4192",
+    "rfc5887",
+    "rfc6866",
+    "rfc6879",
+    "rfc7010",
+    "rfc8191",
+    "rfc8978",
+    "rfc9096"
+  ],
+  "document_meta": {
+    "rfc1900": { "title": "Renumbering Needs Work", "subseries": [] },
+    "rfc1916": { "title": "Enterprise Renumbering: Experience and Information Solicitation", "subseries": [] },
+    "rfc2071": { "title": "Network Renumbering Overview: Why would I want it and what is it anyway?", "subseries": [] },
+    "rfc2072": { "title": "Router Renumbering Guide", "subseries": [] },
+    "rfc2874": { "title": "DNS Extensions to Support IPv6 Address Aggregation and Renumbering", "subseries": [] },
+    "rfc2894": { "title": "Router Renumbering for IPv6", "subseries": [] },
+    "rfc4076": {
+      "title": "Renumbering Requirements for Stateless Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc4192": { "title": "Procedures for Renumbering an IPv6 Network without a Flag Day", "subseries": [] },
+    "rfc5887": { "title": "Renumbering Still Needs Work", "subseries": [] },
+    "rfc6866": {
+      "title": "Problem Statement for Renumbering IPv6 Hosts with Static Addresses in Enterprise Networks",
+      "subseries": []
+    },
+    "rfc6879": {
+      "title": "IPv6 Enterprise Network Renumbering Scenarios, Considerations, and Methods",
+      "subseries": []
+    },
+    "rfc7010": { "title": "IPv6 Site Renumbering Gap Analysis", "subseries": [] },
+    "rfc8191": { "title": "Home Network Prefix Renumbering in Proxy Mobile IPv6 (PMIPv6)", "subseries": [] },
+    "rfc8978": {
+      "title": "Reaction of IPv6 Stateless Address Autoconfiguration (SLAAC) to Flash-Renumbering Events",
+      "subseries": []
+    },
+    "rfc9096": {
+      "title": "Improving the Reaction of Customer Edge Routers to IPv6 Renumbering Events",
+      "subseries": ["bcp234"]
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "addressing": { "name": "Addressing" } }
+}

@@ -1,0 +1,523 @@
+{
+  "id": 630,
+  "slug": "ethernet",
+  "name": "Ethernet",
+  "description": "IP over Ethernet, Ethernet interworking and OAM",
+  "parent": "link-layer",
+  "path": "link-layer/ethernet",
+  "document_count": 149,
+  "document_count_deep": 149,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10018",
+    "rfc10031",
+    "rfc1044",
+    "rfc1089",
+    "rfc1284",
+    "rfc1286",
+    "rfc1368",
+    "rfc1369",
+    "rfc1398",
+    "rfc1493",
+    "rfc1515",
+    "rfc1516",
+    "rfc1525",
+    "rfc1623",
+    "rfc1643",
+    "rfc1650",
+    "rfc1972",
+    "rfc2020",
+    "rfc2108",
+    "rfc2239",
+    "rfc2266",
+    "rfc2340",
+    "rfc2358",
+    "rfc2464",
+    "rfc2641",
+    "rfc2643",
+    "rfc2665",
+    "rfc2666",
+    "rfc2668",
+    "rfc2674",
+    "rfc2892",
+    "rfc3069",
+    "rfc3293",
+    "rfc3378",
+    "rfc3422",
+    "rfc3580",
+    "rfc3619",
+    "rfc3621",
+    "rfc3635",
+    "rfc3636",
+    "rfc3637",
+    "rfc3638",
+    "rfc4188",
+    "rfc4318",
+    "rfc4363",
+    "rfc4448",
+    "rfc4554",
+    "rfc4562",
+    "rfc4663",
+    "rfc4719",
+    "rfc4836",
+    "rfc4837",
+    "rfc4878",
+    "rfc4919",
+    "rfc4944",
+    "rfc4968",
+    "rfc5066",
+    "rfc5121",
+    "rfc5154",
+    "rfc5171",
+    "rfc5181",
+    "rfc5270",
+    "rfc5342",
+    "rfc5517",
+    "rfc5556",
+    "rfc5603",
+    "rfc5692",
+    "rfc5828",
+    "rfc5904",
+    "rfc5948",
+    "rfc5994",
+    "rfc6003",
+    "rfc6004",
+    "rfc6005",
+    "rfc6060",
+    "rfc6085",
+    "rfc6282",
+    "rfc6329",
+    "rfc6606",
+    "rfc6767",
+    "rfc6847",
+    "rfc7023",
+    "rfc7042",
+    "rfc7043",
+    "rfc7124",
+    "rfc7152",
+    "rfc7172",
+    "rfc7176",
+    "rfc7209",
+    "rfc7213",
+    "rfc7260",
+    "rfc7271",
+    "rfc7357",
+    "rfc7361",
+    "rfc7369",
+    "rfc7387",
+    "rfc7400",
+    "rfc7432",
+    "rfc7448",
+    "rfc7554",
+    "rfc7593",
+    "rfc7623",
+    "rfc7731",
+    "rfc7734",
+    "rfc7796",
+    "rfc7844",
+    "rfc7968",
+    "rfc8052",
+    "rfc8137",
+    "rfc8139",
+    "rfc8180",
+    "rfc8214",
+    "rfc826",
+    "rfc8317",
+    "rfc8365",
+    "rfc8383",
+    "rfc8388",
+    "rfc8469",
+    "rfc8560",
+    "rfc8584",
+    "rfc8625",
+    "rfc8724",
+    "rfc8772",
+    "rfc894",
+    "rfc8948",
+    "rfc895",
+    "rfc9006",
+    "rfc9011",
+    "rfc9014",
+    "rfc9023",
+    "rfc9024",
+    "rfc9030",
+    "rfc9037",
+    "rfc9039",
+    "rfc9047",
+    "rfc9062",
+    "rfc9135",
+    "rfc9136",
+    "rfc9161",
+    "rfc9251",
+    "rfc9469",
+    "rfc948",
+    "rfc9541",
+    "rfc9542",
+    "rfc9574",
+    "rfc9721",
+    "rfc9784",
+    "rfc9892",
+    "rfc9895"
+  ],
+  "document_meta": {
+    "rfc10018": {
+      "title": "Multicast and Ethernet VPN with Segment Routing Point-to-Multipoint (P2MP) and Ingress Replication",
+      "subseries": []
+    },
+    "rfc10031": { "title": "Media Access Control (MAC) Addresses in X.509 Certificates", "subseries": [] },
+    "rfc1044": {
+      "title": "Internet Protocol on Network System's HYPERchannel: Protocol Specification",
+      "subseries": ["std45"]
+    },
+    "rfc1089": { "title": "SNMP over Ethernet", "subseries": [] },
+    "rfc1284": { "title": "Definitions of Managed Objects for the Ethernet-like Interface Types", "subseries": [] },
+    "rfc1286": { "title": "Definitions of Managed Objects for Bridges", "subseries": [] },
+    "rfc1368": { "title": "Definition of Managed Objects for IEEE 802.3 Repeater Devices", "subseries": [] },
+    "rfc1369": { "title": "Implementation Notes and Experience for the Internet Ethernet MIB", "subseries": [] },
+    "rfc1398": { "title": "Definitions of Managed Objects for the Ethernet-Like Interface Types", "subseries": [] },
+    "rfc1493": { "title": "Definitions of Managed Objects for Bridges", "subseries": [] },
+    "rfc1515": {
+      "title": "Definitions of Managed Objects for IEEE 802.3 Medium Attachment Units (MAUs)",
+      "subseries": []
+    },
+    "rfc1516": { "title": "Definitions of Managed Objects for IEEE 802.3 Repeater Devices", "subseries": [] },
+    "rfc1525": { "title": "Definitions of Managed Objects for Source Routing Bridges", "subseries": [] },
+    "rfc1623": { "title": "Definitions of Managed Objects for the Ethernet-like Interface Types", "subseries": [] },
+    "rfc1643": { "title": "Definitions of Managed Objects for the Ethernet-like Interface Types", "subseries": [] },
+    "rfc1650": {
+      "title": "Definitions of Managed Objects for the Ethernet-like Interface Types using SMIv2",
+      "subseries": []
+    },
+    "rfc1972": { "title": "A Method for the Transmission of IPv6 Packets over Ethernet Networks", "subseries": [] },
+    "rfc2020": { "title": "IEEE 802.12 Interface MIB", "subseries": [] },
+    "rfc2108": {
+      "title": "Definitions of Managed Objects for IEEE 802.3 Repeater Devices using SMIv2",
+      "subseries": []
+    },
+    "rfc2239": {
+      "title": "Definitions of Managed Objects for IEEE 802.3 Medium Attachment Units (MAUs) using SMIv2",
+      "subseries": []
+    },
+    "rfc2266": { "title": "Definitions of Managed Objects for IEEE 802.12 Repeater Devices", "subseries": [] },
+    "rfc2340": { "title": "Nortel's Virtual Network Switching (VNS) Overview", "subseries": [] },
+    "rfc2358": { "title": "Definitions of Managed Objects for the Ethernet-like Interface Types", "subseries": [] },
+    "rfc2464": { "title": "Transmission of IPv6 Packets over Ethernet Networks", "subseries": [] },
+    "rfc2641": { "title": "Cabletron's VlanHello Protocol Specification Version 4", "subseries": [] },
+    "rfc2643": { "title": "Cabletron's SecureFast VLAN Operational Model", "subseries": [] },
+    "rfc2665": { "title": "Definitions of Managed Objects for the Ethernet-like Interface Types", "subseries": [] },
+    "rfc2666": { "title": "Definitions of Object Identifiers for Identifying Ethernet Chip Sets", "subseries": [] },
+    "rfc2668": {
+      "title": "Definitions of Managed Objects for IEEE 802.3 Medium Attachment Units (MAUs)",
+      "subseries": []
+    },
+    "rfc2674": {
+      "title": "Definitions of Managed Objects for Bridges with Traffic Classes, Multicast Filtering and Virtual LAN Extensions",
+      "subseries": []
+    },
+    "rfc2892": { "title": "The Cisco SRP MAC Layer Protocol", "subseries": [] },
+    "rfc3069": { "title": "VLAN Aggregation for Efficient IP Address Allocation", "subseries": [] },
+    "rfc3293": {
+      "title": "General Switch Management Protocol (GSMP) Packet Encapsulations for Asynchronous Transfer Mode (ATM), Ethernet and Transmission Control Protocol (TCP)",
+      "subseries": []
+    },
+    "rfc3378": { "title": "EtherIP: Tunneling Ethernet Frames in IP Datagrams", "subseries": [] },
+    "rfc3422": {
+      "title": "Forwarding Media Access Control (MAC) Frames over Multiple Access Protocol over Synchronous Optical Network/Synchronous Digital Hierarchy (MAPOS)",
+      "subseries": []
+    },
+    "rfc3580": {
+      "title": "IEEE 802.1X Remote Authentication Dial In User Service (RADIUS) Usage Guidelines",
+      "subseries": []
+    },
+    "rfc3619": {
+      "title": "Extreme Networks' Ethernet Automatic Protection Switching (EAPS) Version 1",
+      "subseries": []
+    },
+    "rfc3621": { "title": "Power Ethernet MIB", "subseries": [] },
+    "rfc3635": { "title": "Definitions of Managed Objects for the Ethernet-like Interface Types", "subseries": [] },
+    "rfc3636": {
+      "title": "Definitions of Managed Objects for IEEE 802.3 Medium Attachment Units (MAUs)",
+      "subseries": []
+    },
+    "rfc3637": { "title": "Definitions of Managed Objects for the Ethernet WAN Interface Sublayer", "subseries": [] },
+    "rfc3638": {
+      "title": "Applicability Statement for Reclassification of RFC 1643 to Historic Status",
+      "subseries": []
+    },
+    "rfc4188": { "title": "Definitions of Managed Objects for Bridges", "subseries": [] },
+    "rfc4318": {
+      "title": "Definitions of Managed Objects for Bridges with Rapid Spanning Tree Protocol",
+      "subseries": []
+    },
+    "rfc4363": {
+      "title": "Definitions of Managed Objects for Bridges with Traffic Classes, Multicast Filtering, and Virtual LAN Extensions",
+      "subseries": []
+    },
+    "rfc4448": { "title": "Encapsulation Methods for Transport of Ethernet over MPLS Networks", "subseries": [] },
+    "rfc4554": { "title": "Use of VLANs for IPv4-IPv6 Coexistence in Enterprise Networks", "subseries": [] },
+    "rfc4562": {
+      "title": "MAC-Forced Forwarding: A Method for Subscriber Separation on an Ethernet Access Network",
+      "subseries": []
+    },
+    "rfc4663": { "title": "Transferring MIB Work from IETF Bridge MIB WG to IEEE 802.1 WG", "subseries": [] },
+    "rfc4719": {
+      "title": "Transport of Ethernet Frames over Layer 2 Tunneling Protocol Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc4836": {
+      "title": "Definitions of Managed Objects for IEEE 802.3 Medium Attachment Units (MAUs)",
+      "subseries": []
+    },
+    "rfc4837": { "title": "Managed Objects of Ethernet Passive Optical Networks (EPON)", "subseries": [] },
+    "rfc4878": {
+      "title": "Definitions and Managed Objects for Operations, Administration, and Maintenance (OAM) Functions on Ethernet-Like Interfaces",
+      "subseries": []
+    },
+    "rfc4919": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs): Overview, Assumptions, Problem Statement, and Goals",
+      "subseries": []
+    },
+    "rfc4944": { "title": "Transmission of IPv6 Packets over IEEE 802.15.4 Networks", "subseries": [] },
+    "rfc4968": { "title": "Analysis of IPv6 Link Models for 802.16 Based Networks", "subseries": [] },
+    "rfc5066": { "title": "Ethernet in the First Mile Copper (EFMCu) Interfaces MIB", "subseries": [] },
+    "rfc5121": {
+      "title": "Transmission of IPv6 via the IPv6 Convergence Sublayer over IEEE 802.16 Networks",
+      "subseries": []
+    },
+    "rfc5154": { "title": "IP over IEEE 802.16 Problem Statement and Goals", "subseries": [] },
+    "rfc5171": { "title": "Cisco Systems UniDirectional Link Detection (UDLD) Protocol", "subseries": [] },
+    "rfc5181": { "title": "IPv6 Deployment Scenarios in 802.16 Networks", "subseries": [] },
+    "rfc5270": { "title": "Mobile IPv6 Fast Handovers over IEEE 802.16e Networks", "subseries": [] },
+    "rfc5342": { "title": "IANA Considerations and IETF Protocol Usage for IEEE 802 Parameters", "subseries": [] },
+    "rfc5517": {
+      "title": "Cisco Systems' Private VLANs: Scalable Security in a Multi-Client Environment",
+      "subseries": []
+    },
+    "rfc5556": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Problem and Applicability Statement",
+      "subseries": []
+    },
+    "rfc5603": { "title": "Ethernet Pseudowire (PW) Management Information Base (MIB)", "subseries": [] },
+    "rfc5692": { "title": "Transmission of IP over Ethernet over IEEE 802.16 Networks", "subseries": [] },
+    "rfc5828": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) Ethernet Label Switching Architecture and Framework",
+      "subseries": []
+    },
+    "rfc5904": {
+      "title": "RADIUS Attributes for IEEE 802.16 Privacy Key Management Version 1 (PKMv1) Protocol Support",
+      "subseries": []
+    },
+    "rfc5948": {
+      "title": "Transmission of IPv4 Packets over the IP Convergence Sublayer of IEEE 802.16",
+      "subseries": []
+    },
+    "rfc5994": { "title": "Application of Ethernet Pseudowires to MPLS Transport Networks", "subseries": [] },
+    "rfc6003": { "title": "Ethernet Traffic Parameters", "subseries": [] },
+    "rfc6004": {
+      "title": "Generalized MPLS (GMPLS) Support for Metro Ethernet Forum and G.8011 Ethernet Service Switching",
+      "subseries": []
+    },
+    "rfc6005": {
+      "title": "Generalized MPLS (GMPLS) Support for Metro Ethernet Forum and G.8011 User Network Interface (UNI)",
+      "subseries": []
+    },
+    "rfc6060": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) Control of Ethernet Provider Backbone Traffic Engineering (PBB-TE)",
+      "subseries": []
+    },
+    "rfc6085": { "title": "Address Mapping of IPv6 Multicast Packets on Ethernet", "subseries": [] },
+    "rfc6282": { "title": "Compression Format for IPv6 Datagrams over IEEE 802.15.4-Based Networks", "subseries": [] },
+    "rfc6329": { "title": "IS-IS Extensions Supporting IEEE 802.1aq Shortest Path Bridging", "subseries": [] },
+    "rfc6606": {
+      "title": "Problem Statement and Requirements for IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Routing",
+      "subseries": []
+    },
+    "rfc6767": { "title": "Ethernet-Based xDSL Multi-Pair Bonding (G.Bond/Ethernet) MIB", "subseries": [] },
+    "rfc6847": {
+      "title": "Fibre Channel over Ethernet (FCoE) over Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc7023": {
+      "title": "MPLS and Ethernet Operations, Administration, and Maintenance (OAM) Interworking",
+      "subseries": []
+    },
+    "rfc7042": {
+      "title": "IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters",
+      "subseries": []
+    },
+    "rfc7043": { "title": "Resource Records for EUI-48 and EUI-64 Addresses in the DNS", "subseries": [] },
+    "rfc7124": { "title": "Ethernet in the First Mile Copper (EFMCu) Interfaces MIB", "subseries": [] },
+    "rfc7152": {
+      "title": "Requirements for Metro Ethernet Forum (MEF) Ethernet-Tree (E-Tree) Support in Layer 2 Virtual Private Network (L2VPN)",
+      "subseries": []
+    },
+    "rfc7172": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Fine-Grained Labeling",
+      "subseries": []
+    },
+    "rfc7176": { "title": "Transparent Interconnection of Lots of Links (TRILL) Use of IS-IS", "subseries": [] },
+    "rfc7209": { "title": "Requirements for Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc7213": { "title": "MPLS Transport Profile (MPLS-TP) Next-Hop Ethernet Addressing", "subseries": [] },
+    "rfc7260": {
+      "title": "GMPLS RSVP-TE Extensions for Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7271": {
+      "title": "MPLS Transport Profile (MPLS-TP) Linear Protection to Match the Operational Expectations of Synchronous Digital Hierarchy, Optical Transport Network, and Ethernet Transport Network Operators",
+      "subseries": []
+    },
+    "rfc7357": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): End Station Address Distribution Information (ESADI) Protocol",
+      "subseries": []
+    },
+    "rfc7361": {
+      "title": "LDP Extensions for Optimized MAC Address Withdrawal in a Hierarchical Virtual Private LAN Service (H-VPLS)",
+      "subseries": []
+    },
+    "rfc7369": {
+      "title": "GMPLS RSVP-TE Extensions for Ethernet Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7387": {
+      "title": "A Framework for Ethernet Tree (E-Tree) Service over a Multiprotocol Label Switching (MPLS) Network",
+      "subseries": []
+    },
+    "rfc7400": {
+      "title": "6LoWPAN-GHC: Generic Header Compression for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc7432": { "title": "BGP MPLS-Based Ethernet VPN", "subseries": [] },
+    "rfc7448": { "title": "MIB Transfer from the IETF to the IEEE 802.3 WG", "subseries": [] },
+    "rfc7554": {
+      "title": "Using IEEE 802.15.4e Time-Slotted Channel Hopping (TSCH) in the Internet of Things (IoT): Problem Statement",
+      "subseries": []
+    },
+    "rfc7593": { "title": "The eduroam Architecture for Network Roaming", "subseries": [] },
+    "rfc7623": { "title": "Provider Backbone Bridging Combined with Ethernet VPN (PBB-EVPN)", "subseries": [] },
+    "rfc7731": { "title": "Multicast Protocol for Low-Power and Lossy Networks (MPL)", "subseries": [] },
+    "rfc7734": { "title": "Support for Shortest Path Bridging MAC Mode over Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc7796": { "title": "Ethernet-Tree (E-Tree) Support in Virtual Private LAN Service (VPLS)", "subseries": [] },
+    "rfc7844": { "title": "Anonymity Profiles for DHCP Clients", "subseries": [] },
+    "rfc7968": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Using Data Labels for Tree Selection for Multi-Destination Data",
+      "subseries": []
+    },
+    "rfc8052": {
+      "title": "Group Domain of Interpretation (GDOI) Protocol Support for IEC 62351 Security Services",
+      "subseries": []
+    },
+    "rfc8137": { "title": "IEEE 802.15.4 Information Element for the IETF", "subseries": [] },
+    "rfc8139": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Appointed Forwarders",
+      "subseries": []
+    },
+    "rfc8180": {
+      "title": "Minimal IPv6 over the TSCH Mode of IEEE 802.15.4e (6TiSCH) Configuration",
+      "subseries": ["bcp210"]
+    },
+    "rfc8214": { "title": "Virtual Private Wire Service Support in Ethernet VPN", "subseries": [] },
+    "rfc826": {
+      "title": "An Ethernet Address Resolution Protocol: Or Converting Network Protocol Addresses to 48.bit Ethernet Address for Transmission on Ethernet Hardware",
+      "subseries": ["std37"]
+    },
+    "rfc8317": {
+      "title": "Ethernet-Tree (E-Tree) Support in Ethernet VPN (EVPN) and Provider Backbone Bridging EVPN (PBB-EVPN)",
+      "subseries": []
+    },
+    "rfc8365": { "title": "A Network Virtualization Overlay Solution Using Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc8383": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Address Flush Message",
+      "subseries": []
+    },
+    "rfc8388": { "title": "Usage and Applicability of BGP MPLS-Based Ethernet VPN", "subseries": [] },
+    "rfc8469": { "title": "Recommendation to Use the Ethernet Control Word", "subseries": [] },
+    "rfc8560": {
+      "title": "Seamless Integration of Ethernet VPN (EVPN) with Virtual Private LAN Service (VPLS) and Their Provider Backbone Bridge (PBB) Equivalents",
+      "subseries": []
+    },
+    "rfc8584": { "title": "Framework for Ethernet VPN Designated Forwarder Election Extensibility", "subseries": [] },
+    "rfc8625": { "title": "Ethernet Traffic Parameters with Availability Information", "subseries": [] },
+    "rfc8724": {
+      "title": "SCHC: Generic Framework for Static Context Header Compression and Fragmentation",
+      "subseries": []
+    },
+    "rfc8772": {
+      "title": "The China Mobile, Huawei, and ZTE Broadband Network Gateway (BNG) Simple Control and User Plane Separation Protocol (S-CUSP)",
+      "subseries": []
+    },
+    "rfc894": {
+      "title": "A Standard for the Transmission of IP Datagrams over Ethernet Networks",
+      "subseries": ["std41"]
+    },
+    "rfc8948": {
+      "title": "Structured Local Address Plan (SLAP) Quadrant Selection Option for DHCPv6",
+      "subseries": []
+    },
+    "rfc895": {
+      "title": "Standard for the transmission of IP datagrams over experimental Ethernet networks",
+      "subseries": ["std42"]
+    },
+    "rfc9006": { "title": "TCP Usage Guidance in the Internet of Things (IoT)", "subseries": [] },
+    "rfc9011": { "title": "Static Context Header Compression and Fragmentation (SCHC) over LoRaWAN", "subseries": [] },
+    "rfc9014": { "title": "Interconnect Solution for Ethernet VPN (EVPN) Overlay Networks", "subseries": [] },
+    "rfc9023": {
+      "title": "Deterministic Networking (DetNet) Data Plane: IP over IEEE 802.1 Time-Sensitive Networking (TSN)",
+      "subseries": []
+    },
+    "rfc9024": {
+      "title": "Deterministic Networking (DetNet) Data Plane: IEEE 802.1 Time-Sensitive Networking over MPLS",
+      "subseries": []
+    },
+    "rfc9030": {
+      "title": "An Architecture for IPv6 over the Time-Slotted Channel Hopping Mode of IEEE 802.15.4 (6TiSCH)",
+      "subseries": []
+    },
+    "rfc9037": {
+      "title": "Deterministic Networking (DetNet) Data Plane: MPLS over IEEE 802.1 Time-Sensitive Networking (TSN)",
+      "subseries": []
+    },
+    "rfc9039": { "title": "Uniform Resource Names for Device Identifiers", "subseries": [] },
+    "rfc9047": {
+      "title": "Propagation of ARP/ND Flags in an Ethernet Virtual Private Network (EVPN)",
+      "subseries": []
+    },
+    "rfc9062": {
+      "title": "Framework and Requirements for Ethernet VPN (EVPN) Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc9135": { "title": "Integrated Routing and Bridging in Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc9136": { "title": "IP Prefix Advertisement in Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc9161": { "title": "Operational Aspects of Proxy ARP/ND in Ethernet Virtual Private Networks", "subseries": [] },
+    "rfc9251": {
+      "title": "Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxies for Ethernet VPN (EVPN)",
+      "subseries": []
+    },
+    "rfc9469": {
+      "title": "Applicability of Ethernet Virtual Private Network (EVPN) to Network Virtualization over Layer 3 (NVO3) Networks",
+      "subseries": []
+    },
+    "rfc948": { "title": "Two methods for the transmission of IP datagrams over IEEE 802.3 networks", "subseries": [] },
+    "rfc9541": {
+      "title": "Flush Mechanism for Customer MAC Addresses Based on Service Instance Identifier (I-SID) in Provider Backbone Bridging EVPN (PBB-EVPN)",
+      "subseries": []
+    },
+    "rfc9542": {
+      "title": "IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters",
+      "subseries": ["bcp141"]
+    },
+    "rfc9574": { "title": "Optimized Ingress Replication Solution for Ethernet VPNs (EVPNs)", "subseries": [] },
+    "rfc9721": {
+      "title": "Extended Mobility Procedures for Ethernet VPN Integrated Routing and Bridging (EVPN-IRB)",
+      "subseries": []
+    },
+    "rfc9784": { "title": "Virtual Ethernet Segments for EVPN and Provider Backbone Bridge EVPN", "subseries": [] },
+    "rfc9892": { "title": "Dynamic Link Exchange Protocol (DLEP) Traffic Classification Data Item", "subseries": [] },
+    "rfc9895": {
+      "title": "Dynamic Link Exchange Protocol (DLEP) IEEE 802.1Q Aware Credit Window Extension",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

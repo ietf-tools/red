@@ -1,0 +1,80 @@
+{
+  "id": 789,
+  "slug": "cdn",
+  "name": "CDN",
+  "description": "Content delivery networks and CDN interconnection",
+  "parent": "web",
+  "path": "web/cdn",
+  "document_count": 19,
+  "document_count_deep": 19,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3466",
+    "rfc3568",
+    "rfc3570",
+    "rfc6707",
+    "rfc6770",
+    "rfc7336",
+    "rfc7337",
+    "rfc7736",
+    "rfc7937",
+    "rfc7975",
+    "rfc8006",
+    "rfc8007",
+    "rfc8008",
+    "rfc8804",
+    "rfc9246",
+    "rfc9388",
+    "rfc9538",
+    "rfc9677",
+    "rfc9808"
+  ],
+  "document_meta": {
+    "rfc3466": { "title": "A Model for Content Internetworking (CDI)", "subseries": [] },
+    "rfc3568": { "title": "Known Content Network (CN) Request-Routing Mechanisms", "subseries": [] },
+    "rfc3570": { "title": "Content Internetworking (CDI) Scenarios", "subseries": [] },
+    "rfc6707": { "title": "Content Distribution Network Interconnection (CDNI) Problem Statement", "subseries": [] },
+    "rfc6770": { "title": "Use Cases for Content Delivery Network Interconnection", "subseries": [] },
+    "rfc7336": { "title": "Framework for Content Distribution Network Interconnection (CDNI)", "subseries": [] },
+    "rfc7337": { "title": "Content Distribution Network Interconnection (CDNI) Requirements", "subseries": [] },
+    "rfc7736": { "title": "Content Delivery Network Interconnection (CDNI) Media Type Registration", "subseries": [] },
+    "rfc7937": { "title": "Content Distribution Network Interconnection (CDNI) Logging Interface", "subseries": [] },
+    "rfc7975": {
+      "title": "Request Routing Redirection Interface for Content Delivery Network (CDN) Interconnection",
+      "subseries": []
+    },
+    "rfc8006": { "title": "Content Delivery Network Interconnection (CDNI) Metadata", "subseries": [] },
+    "rfc8007": {
+      "title": "Content Delivery Network Interconnection (CDNI) Control Interface / Triggers",
+      "subseries": []
+    },
+    "rfc8008": {
+      "title": "Content Delivery Network Interconnection (CDNI) Request Routing: Footprint and Capabilities Semantics",
+      "subseries": []
+    },
+    "rfc8804": {
+      "title": "Content Delivery Network Interconnection (CDNI) Request Routing Extensions",
+      "subseries": []
+    },
+    "rfc9246": { "title": "URI Signing for Content Delivery Network Interconnection (CDNI)", "subseries": [] },
+    "rfc9388": {
+      "title": "Content Delivery Network Interconnection (CDNI) Footprint Types: Country Subdivision Code and Footprint Union",
+      "subseries": []
+    },
+    "rfc9538": {
+      "title": "Content Delivery Network Interconnection (CDNI) Delegation Using the Automated Certificate Management Environment",
+      "subseries": []
+    },
+    "rfc9677": {
+      "title": "Content Delivery Network Interconnection (CDNI) Metadata for Delegated Credentials",
+      "subseries": []
+    },
+    "rfc9808": {
+      "title": "Content Delivery Network Interconnection (CDNI) Capacity Capability Advertisement Extensions",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "web": { "name": "Web" } }
+}

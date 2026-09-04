@@ -1,0 +1,238 @@
+{
+  "id": 924,
+  "slug": "pim",
+  "name": "PIM",
+  "description": "Protocol Independent Multicast",
+  "parent": "multicast",
+  "path": "routing/multicast/pim",
+  "document_count": 71,
+  "document_count_deep": 71,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10019",
+    "rfc10028",
+    "rfc2117",
+    "rfc2337",
+    "rfc2362",
+    "rfc2934",
+    "rfc3446",
+    "rfc3618",
+    "rfc3973",
+    "rfc4601",
+    "rfc4602",
+    "rfc4608",
+    "rfc4609",
+    "rfc4610",
+    "rfc4611",
+    "rfc5015",
+    "rfc5059",
+    "rfc5060",
+    "rfc5240",
+    "rfc5294",
+    "rfc5384",
+    "rfc5496",
+    "rfc5501",
+    "rfc5796",
+    "rfc6166",
+    "rfc6226",
+    "rfc6395",
+    "rfc6420",
+    "rfc6516",
+    "rfc6517",
+    "rfc6559",
+    "rfc6754",
+    "rfc6807",
+    "rfc7063",
+    "rfc7095",
+    "rfc7411",
+    "rfc7442",
+    "rfc7761",
+    "rfc7887",
+    "rfc7891",
+    "rfc7899",
+    "rfc7910",
+    "rfc8059",
+    "rfc8114",
+    "rfc8115",
+    "rfc8220",
+    "rfc8313",
+    "rfc8364",
+    "rfc8487",
+    "rfc8652",
+    "rfc8736",
+    "rfc8775",
+    "rfc8815",
+    "rfc8916",
+    "rfc9128",
+    "rfc9166",
+    "rfc9186",
+    "rfc9279",
+    "rfc9398",
+    "rfc9436",
+    "rfc9465",
+    "rfc9466",
+    "rfc9706",
+    "rfc9739",
+    "rfc9776",
+    "rfc9777",
+    "rfc9778",
+    "rfc9798",
+    "rfc9860",
+    "rfc9960",
+    "rfc9961"
+  ],
+  "document_meta": {
+    "rfc10019": {
+      "title": "Zeroconf Multicast Address Allocation Problem Statement and Requirements",
+      "subseries": []
+    },
+    "rfc10028": { "title": "Updates to Dynamic IPv6 Multicast Address Group IDs", "subseries": [] },
+    "rfc2117": {
+      "title": "Protocol Independent Multicast-Sparse Mode (PIM-SM): Protocol Specification",
+      "subseries": []
+    },
+    "rfc2337": { "title": "Intra-LIS IP multicast among routers over ATM using Sparse Mode PIM", "subseries": [] },
+    "rfc2362": {
+      "title": "Protocol Independent Multicast-Sparse Mode (PIM-SM): Protocol Specification",
+      "subseries": []
+    },
+    "rfc2934": { "title": "Protocol Independent Multicast MIB for IPv4", "subseries": [] },
+    "rfc3446": {
+      "title": "Anycast Rendevous Point (RP) mechanism using Protocol Independent Multicast (PIM) and Multicast Source Discovery Protocol (MSDP)",
+      "subseries": []
+    },
+    "rfc3618": { "title": "Multicast Source Discovery Protocol (MSDP)", "subseries": [] },
+    "rfc3973": {
+      "title": "Protocol Independent Multicast - Dense Mode (PIM-DM): Protocol Specification (Revised)",
+      "subseries": []
+    },
+    "rfc4601": {
+      "title": "Protocol Independent Multicast - Sparse Mode (PIM-SM): Protocol Specification (Revised)",
+      "subseries": []
+    },
+    "rfc4602": {
+      "title": "Protocol Independent Multicast - Sparse Mode (PIM-SM) IETF Proposed Standard Requirements Analysis",
+      "subseries": []
+    },
+    "rfc4608": { "title": "Source-Specific Protocol Independent Multicast in 232/8", "subseries": ["bcp120"] },
+    "rfc4609": {
+      "title": "Protocol Independent Multicast - Sparse Mode (PIM-SM) Multicast Routing Security Issues and Enhancements",
+      "subseries": []
+    },
+    "rfc4610": { "title": "Anycast-RP Using Protocol Independent Multicast (PIM)", "subseries": [] },
+    "rfc4611": { "title": "Multicast Source Discovery Protocol (MSDP) Deployment Scenarios", "subseries": ["bcp121"] },
+    "rfc5015": { "title": "Bidirectional Protocol Independent Multicast (BIDIR-PIM)", "subseries": [] },
+    "rfc5059": {
+      "title": "Bootstrap Router (BSR) Mechanism for Protocol Independent Multicast (PIM)",
+      "subseries": []
+    },
+    "rfc5060": { "title": "Protocol Independent Multicast MIB", "subseries": [] },
+    "rfc5240": { "title": "Protocol Independent Multicast (PIM) Bootstrap Router MIB", "subseries": [] },
+    "rfc5294": { "title": "Host Threats to Protocol Independent Multicast (PIM)", "subseries": [] },
+    "rfc5384": { "title": "The Protocol Independent Multicast (PIM) Join Attribute Format", "subseries": [] },
+    "rfc5496": { "title": "The Reverse Path Forwarding (RPF) Vector TLV", "subseries": [] },
+    "rfc5501": { "title": "Requirements for Multicast Support in Virtual Private LAN Services", "subseries": [] },
+    "rfc5796": {
+      "title": "Authentication and Confidentiality in Protocol Independent Multicast Sparse Mode (PIM-SM) Link-Local Messages",
+      "subseries": []
+    },
+    "rfc6166": { "title": "A Registry for PIM Message Types", "subseries": [] },
+    "rfc6226": { "title": "PIM Group-to-Rendezvous-Point Mapping", "subseries": [] },
+    "rfc6395": { "title": "An Interface Identifier (ID) Hello Option for PIM", "subseries": [] },
+    "rfc6420": { "title": "PIM Multi-Topology ID (MT-ID) Join Attribute", "subseries": [] },
+    "rfc6516": {
+      "title": "IPv6 Multicast VPN (MVPN) Support Using PIM Control Plane and Selective Provider Multicast Service Interface (S-PMSI) Join Messages",
+      "subseries": []
+    },
+    "rfc6517": { "title": "Mandatory Features in a Layer 3 Multicast BGP/MPLS VPN Solution", "subseries": [] },
+    "rfc6559": { "title": "A Reliable Transport Mechanism for PIM", "subseries": [] },
+    "rfc6754": { "title": "Protocol Independent Multicast Equal-Cost Multipath (ECMP) Redirect", "subseries": [] },
+    "rfc6807": { "title": "Population Count Extensions to Protocol Independent Multicast (PIM)", "subseries": [] },
+    "rfc7063": {
+      "title": "Survey Report on Protocol Independent Multicast - Sparse Mode (PIM-SM) Implementations and Deployments",
+      "subseries": []
+    },
+    "rfc7095": { "title": "jCard: The JSON Format for vCard", "subseries": [] },
+    "rfc7411": {
+      "title": "Multicast Listener Extensions for Mobile IPv6 (MIPv6) and Proxy Mobile IPv6 (PMIPv6) Fast Handovers",
+      "subseries": []
+    },
+    "rfc7442": {
+      "title": "Carrying Protocol Independent Multicast - Sparse Mode (PIM-SM) in Any-Source Multicast (ASM) Mode Trees over Multipoint LDP (mLDP)",
+      "subseries": []
+    },
+    "rfc7761": {
+      "title": "Protocol Independent Multicast - Sparse Mode (PIM-SM): Protocol Specification (Revised)",
+      "subseries": ["std83"]
+    },
+    "rfc7887": { "title": "Hierarchical Join/Prune Attributes", "subseries": [] },
+    "rfc7891": { "title": "Explicit Reverse Path Forwarding (RPF) Vector", "subseries": [] },
+    "rfc7899": { "title": "Multicast VPN State Damping", "subseries": [] },
+    "rfc7910": { "title": "Interoperability between the Virtual Router Redundancy Protocol and PIM", "subseries": [] },
+    "rfc8059": {
+      "title": "PIM Join Attributes for Locator/ID Separation Protocol (LISP) Environments",
+      "subseries": []
+    },
+    "rfc8114": {
+      "title": "Delivery of IPv4 Multicast Services to IPv4 Clients over an IPv6 Multicast Network",
+      "subseries": []
+    },
+    "rfc8115": { "title": "DHCPv6 Option for IPv4-Embedded Multicast and Unicast IPv6 Prefixes", "subseries": [] },
+    "rfc8220": {
+      "title": "Protocol Independent Multicast (PIM) over Virtual Private LAN Service (VPLS)",
+      "subseries": []
+    },
+    "rfc8313": { "title": "Use of Multicast across Inter-domain Peering Points", "subseries": ["bcp213"] },
+    "rfc8364": { "title": "PIM Flooding Mechanism (PFM) and Source Discovery (SD)", "subseries": [] },
+    "rfc8487": { "title": "Mtrace Version 2: Traceroute Facility for IP Multicast", "subseries": [] },
+    "rfc8652": {
+      "title": "A YANG Data Model for the Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD)",
+      "subseries": []
+    },
+    "rfc8736": { "title": "PIM Message Type Space Extension and Reserved Bits", "subseries": [] },
+    "rfc8775": { "title": "PIM Designated Router Load Balancing", "subseries": [] },
+    "rfc8815": { "title": "Deprecating Any-Source Multicast (ASM) for Interdomain Multicast", "subseries": ["bcp229"] },
+    "rfc8916": { "title": "A YANG Data Model for the Multicast Source Discovery Protocol (MSDP)", "subseries": [] },
+    "rfc9128": { "title": "YANG Data Model for Protocol Independent Multicast (PIM)", "subseries": [] },
+    "rfc9166": {
+      "title": "A YANG Data Model for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Snooping",
+      "subseries": []
+    },
+    "rfc9186": {
+      "title": "Fast Failover in Protocol Independent Multicast - Sparse Mode (PIM-SM) Using Bidirectional Forwarding Detection (BFD) for Multipoint Networks",
+      "subseries": []
+    },
+    "rfc9279": {
+      "title": "Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Version 2 (MLDv2) Message Extension",
+      "subseries": []
+    },
+    "rfc9398": {
+      "title": "A YANG Data Model for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxy Devices",
+      "subseries": []
+    },
+    "rfc9436": { "title": "PIM Message Type Space Extension and Reserved Bits", "subseries": [] },
+    "rfc9465": { "title": "PIM Null-Register Packing", "subseries": [] },
+    "rfc9466": { "title": "PIM Assert Message Packing", "subseries": [] },
+    "rfc9706": {
+      "title": "TreeDN: Tree-Based Content Delivery Network (CDN) for Live Streaming to Mass Audiences",
+      "subseries": []
+    },
+    "rfc9739": { "title": "Protocol Independent Multicast Light (PIM Light)", "subseries": [] },
+    "rfc9776": { "title": "Internet Group Management Protocol, Version 3", "subseries": ["std100"] },
+    "rfc9777": { "title": "Multicast Listener Discovery Version 2 (MLDv2) for IPv6", "subseries": ["std101"] },
+    "rfc9778": { "title": "IANA Considerations for Internet Group Management Protocols", "subseries": ["bcp57"] },
+    "rfc9798": {
+      "title": "PIM Join/Prune Attributes for Locator/ID Separation Protocol (LISP) Environments Using Underlay Multicast",
+      "subseries": []
+    },
+    "rfc9860": {
+      "title": "Multicast-Only Fast Reroute (MoFRR) Based on Topology Independent Loop-Free Alternate (TI-LFA) Fast Reroute",
+      "subseries": []
+    },
+    "rfc9960": { "title": "Segment Routing Point-to-Multipoint Policy", "subseries": [] },
+    "rfc9961": { "title": "MPLS Segment Routing Point-to-Multipoint (P2MP) Policy Ping", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

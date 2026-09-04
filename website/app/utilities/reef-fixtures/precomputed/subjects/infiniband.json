@@ -1,0 +1,23 @@
+{
+  "id": 634,
+  "slug": "infiniband",
+  "name": "InfiniBand",
+  "description": "IP over InfiniBand",
+  "parent": "link-layer",
+  "path": "link-layer/infiniband",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4390", "rfc4391", "rfc4392", "rfc4755", "rfc5666", "rfc5667"],
+  "document_meta": {
+    "rfc4390": { "title": "Dynamic Host Configuration Protocol (DHCP) over InfiniBand", "subseries": [] },
+    "rfc4391": { "title": "Transmission of IP over InfiniBand (IPoIB)", "subseries": [] },
+    "rfc4392": { "title": "IP over InfiniBand (IPoIB) Architecture", "subseries": [] },
+    "rfc4755": { "title": "IP over InfiniBand: Connected Mode", "subseries": [] },
+    "rfc5666": { "title": "Remote Direct Memory Access Transport for Remote Procedure Call", "subseries": [] },
+    "rfc5667": { "title": "Network File System (NFS) Direct Data Placement", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

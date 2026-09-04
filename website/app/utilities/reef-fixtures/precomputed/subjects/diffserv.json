@@ -1,0 +1,210 @@
+{
+  "id": 982,
+  "slug": "diffserv",
+  "name": "Diffserv",
+  "description": "Differentiated services",
+  "parent": "qos",
+  "path": "transport/qos/diffserv",
+  "document_count": 60,
+  "document_count_deep": 60,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2430",
+    "rfc2474",
+    "rfc2475",
+    "rfc2597",
+    "rfc2598",
+    "rfc2638",
+    "rfc2697",
+    "rfc2698",
+    "rfc2836",
+    "rfc2859",
+    "rfc2963",
+    "rfc2983",
+    "rfc2998",
+    "rfc3086",
+    "rfc3140",
+    "rfc3246",
+    "rfc3247",
+    "rfc3248",
+    "rfc3260",
+    "rfc3270",
+    "rfc3287",
+    "rfc3289",
+    "rfc3290",
+    "rfc3308",
+    "rfc3317",
+    "rfc3496",
+    "rfc3564",
+    "rfc3662",
+    "rfc3747",
+    "rfc3754",
+    "rfc4115",
+    "rfc4124",
+    "rfc4125",
+    "rfc4126",
+    "rfc4127",
+    "rfc4128",
+    "rfc4594",
+    "rfc4804",
+    "rfc5127",
+    "rfc5129",
+    "rfc5160",
+    "rfc5455",
+    "rfc5559",
+    "rfc5696",
+    "rfc5865",
+    "rfc5977",
+    "rfc6660",
+    "rfc6663",
+    "rfc7657",
+    "rfc8100",
+    "rfc8325",
+    "rfc8436",
+    "rfc8459",
+    "rfc8622",
+    "rfc8837",
+    "rfc9145",
+    "rfc9435",
+    "rfc9892",
+    "rfc9894",
+    "rfc9956"
+  ],
+  "document_meta": {
+    "rfc2430": {
+      "title": "A Provider Architecture for Differentiated Services and Traffic Engineering (PASTE)",
+      "subseries": []
+    },
+    "rfc2474": {
+      "title": "Definition of the Differentiated Services Field (DS Field) in the IPv4 and IPv6 Headers",
+      "subseries": []
+    },
+    "rfc2475": { "title": "An Architecture for Differentiated Services", "subseries": [] },
+    "rfc2597": { "title": "Assured Forwarding PHB Group", "subseries": [] },
+    "rfc2598": { "title": "An Expedited Forwarding PHB", "subseries": [] },
+    "rfc2638": { "title": "A Two-bit Differentiated Services Architecture for the Internet", "subseries": [] },
+    "rfc2697": { "title": "A Single Rate Three Color Marker", "subseries": [] },
+    "rfc2698": { "title": "A Two Rate Three Color Marker", "subseries": [] },
+    "rfc2836": { "title": "Per Hop Behavior Identification Codes", "subseries": [] },
+    "rfc2859": { "title": "A Time Sliding Window Three Colour Marker (TSWTCM)", "subseries": [] },
+    "rfc2963": { "title": "A Rate Adaptive Shaper for Differentiated Services", "subseries": [] },
+    "rfc2983": { "title": "Differentiated Services and Tunnels", "subseries": [] },
+    "rfc2998": { "title": "A Framework for Integrated Services Operation over Diffserv Networks", "subseries": [] },
+    "rfc3086": {
+      "title": "Definition of Differentiated Services Per Domain Behaviors and Rules for their Specification",
+      "subseries": []
+    },
+    "rfc3140": { "title": "Per Hop Behavior Identification Codes", "subseries": [] },
+    "rfc3246": { "title": "An Expedited Forwarding PHB (Per-Hop Behavior)", "subseries": [] },
+    "rfc3247": {
+      "title": "Supplemental Information for the New Definition of the EF PHB (Expedited Forwarding Per-Hop Behavior)",
+      "subseries": []
+    },
+    "rfc3248": { "title": "A Delay Bound alternative revision of RFC 2598", "subseries": [] },
+    "rfc3260": { "title": "New Terminology and Clarifications for Diffserv", "subseries": [] },
+    "rfc3270": { "title": "Multi-Protocol Label Switching (MPLS) Support of Differentiated Services", "subseries": [] },
+    "rfc3287": { "title": "Remote Monitoring MIB Extensions for Differentiated Services", "subseries": [] },
+    "rfc3289": { "title": "Management Information Base for the Differentiated Services Architecture", "subseries": [] },
+    "rfc3290": { "title": "An Informal Management Model for Diffserv Routers", "subseries": [] },
+    "rfc3308": { "title": "Layer Two Tunneling Protocol (L2TP) Differentiated Services Extension", "subseries": [] },
+    "rfc3317": { "title": "Differentiated Services Quality of Service Policy Information Base", "subseries": [] },
+    "rfc3496": {
+      "title": "Protocol Extension for Support of Asynchronous Transfer Mode (ATM) Service Class-aware Multiprotocol Label Switching (MPLS) Traffic Engineering",
+      "subseries": []
+    },
+    "rfc3564": {
+      "title": "Requirements for Support of Differentiated Services-aware MPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc3662": { "title": "A Lower Effort Per-Domain Behavior (PDB) for Differentiated Services", "subseries": [] },
+    "rfc3747": { "title": "The Differentiated Services Configuration MIB", "subseries": [] },
+    "rfc3754": { "title": "IP Multicast in Differentiated Services (DS) Networks", "subseries": [] },
+    "rfc4115": {
+      "title": "A Differentiated Service Two-Rate, Three-Color Marker with Efficient Handling of in-Profile Traffic",
+      "subseries": []
+    },
+    "rfc4124": {
+      "title": "Protocol Extensions for Support of Diffserv-aware MPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc4125": {
+      "title": "Maximum Allocation Bandwidth Constraints Model for Diffserv-aware MPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc4126": {
+      "title": "Max Allocation with Reservation Bandwidth Constraints Model for Diffserv-aware MPLS Traffic Engineering & Performance Comparisons",
+      "subseries": []
+    },
+    "rfc4127": {
+      "title": "Russian Dolls Bandwidth Constraints Model for Diffserv-aware MPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc4128": {
+      "title": "Bandwidth Constraints Models for Differentiated Services (Diffserv)-aware MPLS Traffic Engineering: Performance Evaluation",
+      "subseries": []
+    },
+    "rfc4594": { "title": "Configuration Guidelines for DiffServ Service Classes", "subseries": [] },
+    "rfc4804": {
+      "title": "Aggregation of Resource ReSerVation Protocol (RSVP) Reservations over MPLS TE/DS-TE Tunnels",
+      "subseries": []
+    },
+    "rfc5127": { "title": "Aggregation of Diffserv Service Classes", "subseries": [] },
+    "rfc5129": { "title": "Explicit Congestion Marking in MPLS", "subseries": [] },
+    "rfc5160": {
+      "title": "Considerations of Provider-to-Provider Agreements for Internet-Scale Quality of Service (QoS)",
+      "subseries": []
+    },
+    "rfc5455": {
+      "title": "Diffserv-Aware Class-Type Object for the Path Computation Element Communication Protocol",
+      "subseries": []
+    },
+    "rfc5559": { "title": "Pre-Congestion Notification (PCN) Architecture", "subseries": [] },
+    "rfc5696": { "title": "Baseline Encoding and Transport of Pre-Congestion Information", "subseries": [] },
+    "rfc5865": {
+      "title": "A Differentiated Services Code Point (DSCP) for Capacity-Admitted Traffic",
+      "subseries": []
+    },
+    "rfc5977": {
+      "title": "RMD-QOSM: The NSIS Quality-of-Service Model for Resource Management in Diffserv",
+      "subseries": []
+    },
+    "rfc6660": {
+      "title": "Encoding Three Pre-Congestion Notification (PCN) States in the IP Header Using a Single Diffserv Codepoint (DSCP)",
+      "subseries": []
+    },
+    "rfc6663": {
+      "title": "Requirements for Signaling of Pre-Congestion Information in a Diffserv Domain",
+      "subseries": []
+    },
+    "rfc7657": { "title": "Differentiated Services (Diffserv) and Real-Time Communication", "subseries": [] },
+    "rfc8100": { "title": "Diffserv-Interconnection Classes and Practice", "subseries": [] },
+    "rfc8325": { "title": "Mapping Diffserv to IEEE 802.11", "subseries": [] },
+    "rfc8436": {
+      "title": "Update to IANA Registration Procedures for Pool 3 Values in the Differentiated Services Field Codepoints (DSCP) Registry",
+      "subseries": []
+    },
+    "rfc8459": { "title": "Hierarchical Service Function Chaining (hSFC)", "subseries": [] },
+    "rfc8622": { "title": "A Lower-Effort Per-Hop Behavior (LE PHB) for Differentiated Services", "subseries": [] },
+    "rfc8837": { "title": "Differentiated Services Code Point (DSCP) Packet Markings for WebRTC QoS", "subseries": [] },
+    "rfc9145": {
+      "title": "Integrity Protection for the Network Service Header (NSH) and Encryption of Sensitive Context Headers",
+      "subseries": []
+    },
+    "rfc9435": {
+      "title": "Considerations for Assigning a New Recommended Differentiated Services Code Point (DSCP)",
+      "subseries": []
+    },
+    "rfc9892": { "title": "Dynamic Link Exchange Protocol (DLEP) Traffic Classification Data Item", "subseries": [] },
+    "rfc9894": {
+      "title": "Dynamic Link Exchange Protocol (DLEP) Diffserv Aware Credit Window Extension",
+      "subseries": []
+    },
+    "rfc9956": {
+      "title": "A Non-Queue-Building Per-Hop Behavior (NQB PHB) for Differentiated Services",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "qos": { "name": "QoS" } }
+}

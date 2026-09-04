@@ -1,0 +1,31 @@
+{
+  "id": 696,
+  "slug": "streaming",
+  "name": "Streaming",
+  "description": "Media streaming delivery and operations",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/streaming",
+  "document_count": 4,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": ["ppsp", "rtsp"],
+  "aliases": [],
+  "documents": ["rfc9317", "rfc9389", "rfc9699", "rfc9706"],
+  "document_meta": {
+    "rfc9317": { "title": "Operational Considerations for Streaming Media", "subseries": [] },
+    "rfc9389": { "title": "Nominating Committee Eligibility", "subseries": ["bcp10"] },
+    "rfc9699": {
+      "title": "Use Case for an Extended Reality Application on Edge Computing Infrastructure",
+      "subseries": []
+    },
+    "rfc9706": {
+      "title": "TreeDN: Tree-Based Content Delivery Network (CDN) for Live Streaming to Mass Audiences",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "ppsp": { "name": "PPSP" },
+    "rtsp": { "name": "RTSP" }
+  }
+}

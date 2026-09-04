@@ -1,0 +1,47 @@
+{
+  "id": 989,
+  "slug": "cookies",
+  "name": "Cookies",
+  "description": "HTTP state management: cookies",
+  "parent": "http",
+  "path": "web/http/cookies",
+  "document_count": 13,
+  "document_count_deep": 13,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1004",
+    "rfc2109",
+    "rfc2964",
+    "rfc2965",
+    "rfc4987",
+    "rfc6013",
+    "rfc6265",
+    "rfc6896",
+    "rfc7873",
+    "rfc8471",
+    "rfc8472",
+    "rfc8473",
+    "rfc9018"
+  ],
+  "document_meta": {
+    "rfc1004": { "title": "Distributed-protocol authentication scheme", "subseries": [] },
+    "rfc2109": { "title": "HTTP State Management Mechanism", "subseries": [] },
+    "rfc2964": { "title": "Use of HTTP State Management", "subseries": ["bcp44"] },
+    "rfc2965": { "title": "HTTP State Management Mechanism", "subseries": [] },
+    "rfc4987": { "title": "TCP SYN Flooding Attacks and Common Mitigations", "subseries": [] },
+    "rfc6013": { "title": "TCP Cookie Transactions (TCPCT)", "subseries": [] },
+    "rfc6265": { "title": "HTTP State Management Mechanism", "subseries": [] },
+    "rfc6896": { "title": "SCS: KoanLogic's Secure Cookie Sessions for HTTP", "subseries": [] },
+    "rfc7873": { "title": "Domain Name System (DNS) Cookies", "subseries": [] },
+    "rfc8471": { "title": "The Token Binding Protocol Version 1.0", "subseries": [] },
+    "rfc8472": {
+      "title": "Transport Layer Security (TLS) Extension for Token Binding Protocol Negotiation",
+      "subseries": []
+    },
+    "rfc8473": { "title": "Token Binding over HTTP", "subseries": [] },
+    "rfc9018": { "title": "Interoperable Domain Name System (DNS) Server Cookies", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

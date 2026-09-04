@@ -1,0 +1,224 @@
+{
+  "id": 914,
+  "slug": "ldp",
+  "name": "LDP",
+  "description": "Label Distribution Protocol",
+  "parent": "mpls",
+  "path": "routing/mpls/ldp",
+  "document_count": 64,
+  "document_count_deep": 64,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3035",
+    "rfc3036",
+    "rfc3037",
+    "rfc3038",
+    "rfc3212",
+    "rfc3213",
+    "rfc3214",
+    "rfc3215",
+    "rfc3468",
+    "rfc3472",
+    "rfc3475",
+    "rfc3476",
+    "rfc3478",
+    "rfc3479",
+    "rfc3480",
+    "rfc3612",
+    "rfc3815",
+    "rfc3988",
+    "rfc4447",
+    "rfc4762",
+    "rfc5036",
+    "rfc5037",
+    "rfc5038",
+    "rfc5283",
+    "rfc5443",
+    "rfc5561",
+    "rfc5918",
+    "rfc5919",
+    "rfc6138",
+    "rfc6348",
+    "rfc6388",
+    "rfc6389",
+    "rfc6512",
+    "rfc6517",
+    "rfc6667",
+    "rfc6720",
+    "rfc6826",
+    "rfc6952",
+    "rfc7032",
+    "rfc7060",
+    "rfc7140",
+    "rfc7246",
+    "rfc7307",
+    "rfc7349",
+    "rfc7358",
+    "rfc7361",
+    "rfc7438",
+    "rfc7439",
+    "rfc7441",
+    "rfc7442",
+    "rfc7473",
+    "rfc7552",
+    "rfc7715",
+    "rfc7811",
+    "rfc7812",
+    "rfc7965",
+    "rfc8077",
+    "rfc8223",
+    "rfc8320",
+    "rfc8338",
+    "rfc8661",
+    "rfc9070",
+    "rfc909",
+    "rfc9658"
+  ],
+  "document_meta": {
+    "rfc3035": { "title": "MPLS using LDP and ATM VC Switching", "subseries": [] },
+    "rfc3036": { "title": "LDP Specification", "subseries": [] },
+    "rfc3037": { "title": "LDP Applicability", "subseries": [] },
+    "rfc3038": { "title": "VCID Notification over ATM link for LDP", "subseries": [] },
+    "rfc3212": { "title": "Constraint-Based LSP Setup using LDP", "subseries": [] },
+    "rfc3213": { "title": "Applicability Statement for CR-LDP", "subseries": [] },
+    "rfc3214": { "title": "LSP Modification Using CR-LDP", "subseries": [] },
+    "rfc3215": { "title": "LDP State Machine", "subseries": [] },
+    "rfc3468": {
+      "title": "The Multiprotocol Label Switching (MPLS) Working Group decision on MPLS signaling protocols",
+      "subseries": []
+    },
+    "rfc3472": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Signaling Constraint-based Routed Label Distribution Protocol (CR-LDP) Extensions",
+      "subseries": []
+    },
+    "rfc3475": {
+      "title": "Documentation of IANA assignments for Constraint-Based LSP setup using LDP (CR-LDP) Extensions for Automatic Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc3476": {
+      "title": "Documentation of IANA Assignments for Label Distribution Protocol (LDP), Resource ReSerVation Protocol (RSVP), and Resource ReSerVation Protocol-Traffic Engineering (RSVP-TE) Extensions for Optical UNI Signaling",
+      "subseries": []
+    },
+    "rfc3478": { "title": "Graceful Restart Mechanism for Label Distribution Protocol", "subseries": [] },
+    "rfc3479": { "title": "Fault Tolerance for the Label Distribution Protocol (LDP)", "subseries": [] },
+    "rfc3480": {
+      "title": "Signalling Unnumbered Links in CR-LDP (Constraint-Routing Label Distribution Protocol)",
+      "subseries": []
+    },
+    "rfc3612": {
+      "title": "Applicability Statement for Restart Mechanisms for the Label Distribution Protocol (LDP)",
+      "subseries": []
+    },
+    "rfc3815": {
+      "title": "Definitions of Managed Objects for the Multiprotocol Label Switching (MPLS), Label Distribution Protocol (LDP)",
+      "subseries": []
+    },
+    "rfc3988": {
+      "title": "Maximum Transmission Unit Signalling Extensions for the Label Distribution Protocol",
+      "subseries": []
+    },
+    "rfc4447": {
+      "title": "Pseudowire Setup and Maintenance Using the Label Distribution Protocol (LDP)",
+      "subseries": []
+    },
+    "rfc4762": {
+      "title": "Virtual Private LAN Service (VPLS) Using Label Distribution Protocol (LDP) Signaling",
+      "subseries": []
+    },
+    "rfc5036": { "title": "LDP Specification", "subseries": [] },
+    "rfc5037": { "title": "Experience with the Label Distribution Protocol (LDP)", "subseries": [] },
+    "rfc5038": { "title": "The Label Distribution Protocol (LDP) Implementation Survey Results", "subseries": [] },
+    "rfc5283": { "title": "LDP Extension for Inter-Area Label Switched Paths (LSPs)", "subseries": [] },
+    "rfc5443": { "title": "LDP IGP Synchronization", "subseries": [] },
+    "rfc5561": { "title": "LDP Capabilities", "subseries": [] },
+    "rfc5918": {
+      "title": "Label Distribution Protocol (LDP) 'Typed Wildcard' Forward Equivalence Class (FEC)",
+      "subseries": []
+    },
+    "rfc5919": { "title": "Signaling LDP Label Advertisement Completion", "subseries": [] },
+    "rfc6138": { "title": "LDP IGP Synchronization for Broadcast Networks", "subseries": [] },
+    "rfc6348": {
+      "title": "Requirements for Point-to-Multipoint Extensions to the Label Distribution Protocol",
+      "subseries": []
+    },
+    "rfc6388": {
+      "title": "Label Distribution Protocol Extensions for Point-to-Multipoint and Multipoint-to-Multipoint Label Switched Paths",
+      "subseries": []
+    },
+    "rfc6389": { "title": "MPLS Upstream Label Assignment for LDP", "subseries": [] },
+    "rfc6512": { "title": "Using Multipoint LDP When the Backbone Has No Route to the Root", "subseries": [] },
+    "rfc6517": { "title": "Mandatory Features in a Layer 3 Multicast BGP/MPLS VPN Solution", "subseries": [] },
+    "rfc6667": {
+      "title": "LDP 'Typed Wildcard' Forwarding Equivalence Class (FEC) for PWid and Generalized PWid FEC Elements",
+      "subseries": []
+    },
+    "rfc6720": {
+      "title": "The Generalized TTL Security Mechanism (GTSM) for the Label Distribution Protocol (LDP)",
+      "subseries": []
+    },
+    "rfc6826": {
+      "title": "Multipoint LDP In-Band Signaling for Point-to-Multipoint and Multipoint-to-Multipoint Label Switched Paths",
+      "subseries": []
+    },
+    "rfc6952": {
+      "title": "Analysis of BGP, LDP, PCEP, and MSDP Issues According to the Keying and Authentication for Routing Protocols (KARP) Design Guide",
+      "subseries": []
+    },
+    "rfc7032": { "title": "LDP Downstream-on-Demand in Seamless MPLS", "subseries": [] },
+    "rfc7060": { "title": "Using LDP Multipoint Extensions on Targeted LDP Sessions", "subseries": [] },
+    "rfc7140": { "title": "LDP Extensions for Hub and Spoke Multipoint Label Switched Path", "subseries": [] },
+    "rfc7246": {
+      "title": "Multipoint Label Distribution Protocol In-Band Signaling in a Virtual Routing and Forwarding (VRF) Table Context",
+      "subseries": []
+    },
+    "rfc7307": { "title": "LDP Extensions for Multi-Topology", "subseries": [] },
+    "rfc7349": { "title": "LDP Hello Cryptographic Authentication", "subseries": [] },
+    "rfc7358": {
+      "title": "Label Advertisement Discipline for LDP Forwarding Equivalence Classes (FECs)",
+      "subseries": []
+    },
+    "rfc7361": {
+      "title": "LDP Extensions for Optimized MAC Address Withdrawal in a Hierarchical Virtual Private LAN Service (H-VPLS)",
+      "subseries": []
+    },
+    "rfc7438": { "title": "Multipoint LDP (mLDP) In-Band Signaling with Wildcards", "subseries": [] },
+    "rfc7439": { "title": "Gap Analysis for Operating IPv6-Only MPLS Networks", "subseries": [] },
+    "rfc7441": {
+      "title": "Encoding Multipoint LDP (mLDP) Forwarding Equivalence Classes (FECs) in the NLRI of BGP MCAST-VPN Routes",
+      "subseries": []
+    },
+    "rfc7442": {
+      "title": "Carrying Protocol Independent Multicast - Sparse Mode (PIM-SM) in Any-Source Multicast (ASM) Mode Trees over Multipoint LDP (mLDP)",
+      "subseries": []
+    },
+    "rfc7473": { "title": "Controlling State Advertisements of Non-negotiated LDP Applications", "subseries": [] },
+    "rfc7552": { "title": "Updates to LDP for IPv6", "subseries": [] },
+    "rfc7715": { "title": "Multipoint LDP (mLDP) Node Protection", "subseries": [] },
+    "rfc7811": {
+      "title": "An Algorithm for Computing IP/LDP Fast Reroute Using Maximally Redundant Trees (MRT-FRR)",
+      "subseries": []
+    },
+    "rfc7812": {
+      "title": "An Architecture for IP/LDP Fast Reroute Using Maximally Redundant Trees (MRT-FRR)",
+      "subseries": []
+    },
+    "rfc7965": {
+      "title": "LDP Extensions for Pseudowire Binding to Label Switched Path (LSP) Tunnels",
+      "subseries": []
+    },
+    "rfc8077": {
+      "title": "Pseudowire Setup and Maintenance Using the Label Distribution Protocol (LDP)",
+      "subseries": ["std84"]
+    },
+    "rfc8223": { "title": "Application-Aware Targeted LDP", "subseries": [] },
+    "rfc8320": { "title": "LDP Extensions to Support Maximally Redundant Trees", "subseries": [] },
+    "rfc8338": { "title": "Signaling Root-Initiated Point-to-Multipoint Pseudowire Using LDP", "subseries": [] },
+    "rfc8661": { "title": "Segment Routing MPLS Interworking with LDP", "subseries": [] },
+    "rfc9070": { "title": "YANG Data Model for MPLS LDP", "subseries": [] },
+    "rfc909": { "title": "Loader Debugger Protocol", "subseries": [] },
+    "rfc9658": { "title": "Multipoint LDP Extensions for Multi-Topology Routing", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "mpls": { "name": "MPLS" } }
+}

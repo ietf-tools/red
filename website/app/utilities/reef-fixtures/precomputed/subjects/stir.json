@@ -1,0 +1,88 @@
+{
+  "id": 900,
+  "slug": "stir",
+  "name": "STIR",
+  "description": "Secure Telephone Identity Revisited: caller-ID authentication",
+  "parent": "sip",
+  "path": "real-time-communications/sip/stir",
+  "document_count": 20,
+  "document_count_deep": 20,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7340",
+    "rfc7375",
+    "rfc8224",
+    "rfc8225",
+    "rfc8226",
+    "rfc8443",
+    "rfc8588",
+    "rfc8688",
+    "rfc8816",
+    "rfc8946",
+    "rfc9027",
+    "rfc9060",
+    "rfc9118",
+    "rfc9334",
+    "rfc9410",
+    "rfc9448",
+    "rfc9475",
+    "rfc9795",
+    "rfc9888",
+    "rfc9970"
+  ],
+  "document_meta": {
+    "rfc7340": { "title": "Secure Telephone Identity Problem Statement and Requirements", "subseries": [] },
+    "rfc7375": { "title": "Secure Telephone Identity Threat Model", "subseries": [] },
+    "rfc8224": {
+      "title": "Authenticated Identity Management in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8225": { "title": "PASSporT: Personal Assertion Token", "subseries": [] },
+    "rfc8226": { "title": "Secure Telephone Identity Credentials: Certificates", "subseries": [] },
+    "rfc8443": {
+      "title": "Personal Assertion Token (PASSporT) Extension for Resource Priority Authorization",
+      "subseries": []
+    },
+    "rfc8588": {
+      "title": "Personal Assertion Token (PaSSporT) Extension for Signature-based Handling of Asserted information using toKENs (SHAKEN)",
+      "subseries": []
+    },
+    "rfc8688": { "title": "A Session Initiation Protocol (SIP) Response Code for Rejected Calls", "subseries": [] },
+    "rfc8816": {
+      "title": "Secure Telephone Identity Revisited (STIR) Out-of-Band Architecture and Use Cases",
+      "subseries": []
+    },
+    "rfc8946": { "title": "Personal Assertion Token (PASSporT) Extension for Diverted Calls", "subseries": [] },
+    "rfc9027": {
+      "title": "Assertion Values for Resource Priority Header and SIP Priority Header Claims in Support of Emergency Services Networks",
+      "subseries": []
+    },
+    "rfc9060": { "title": "Secure Telephone Identity Revisited (STIR) Certificate Delegation", "subseries": [] },
+    "rfc9118": {
+      "title": "Enhanced JSON Web Token (JWT) Claim Constraints for Secure Telephone Identity Revisited (STIR) Certificates",
+      "subseries": []
+    },
+    "rfc9334": { "title": "Remote ATtestation procedureS (RATS) Architecture", "subseries": [] },
+    "rfc9410": {
+      "title": "Handling of Identity Header Errors for Secure Telephone Identity Revisited (STIR)",
+      "subseries": []
+    },
+    "rfc9448": {
+      "title": "TNAuthList Profile of Automated Certificate Management Environment (ACME) Authority Token",
+      "subseries": []
+    },
+    "rfc9475": {
+      "title": "Messaging Use Cases and Extensions for Secure Telephone Identity Revisited (STIR)",
+      "subseries": []
+    },
+    "rfc9795": { "title": "Personal Assertion Token (PASSporT) Extension for Rich Call Data", "subseries": [] },
+    "rfc9888": {
+      "title": "Out-of-Band Secure Telephone Identity Revisited (STIR) for Service Providers",
+      "subseries": []
+    },
+    "rfc9970": { "title": "Connected Identity for Secure Telephone Identity Revisited (STIR)", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "sip": { "name": "SIP" } }
+}

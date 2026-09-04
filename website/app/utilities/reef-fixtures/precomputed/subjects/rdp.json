@@ -1,0 +1,19 @@
+{
+  "id": 779,
+  "slug": "rdp",
+  "name": "RDP",
+  "description": "The Reliable Data Protocol (historic transport)",
+  "parent": "transport",
+  "path": "transport/rdp",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1151", "rfc908"],
+  "document_meta": {
+    "rfc1151": { "title": "Version 2 of the Reliable Data Protocol (RDP)", "subseries": [] },
+    "rfc908": { "title": "Reliable Data Protocol", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

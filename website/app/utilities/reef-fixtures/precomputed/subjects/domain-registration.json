@@ -1,0 +1,60 @@
+{
+  "id": 658,
+  "slug": "domain-registration",
+  "name": "Domain Registration",
+  "description": "Domain registry and registrar operations and protocols",
+  "parent": "naming",
+  "path": "naming/domain-registration",
+  "document_count": 11,
+  "document_count_deep": 116,
+  "retired": false,
+  "children": ["epp", "rdap", "whois"],
+  "aliases": [],
+  "documents": [
+    "rfc1261",
+    "rfc1400",
+    "rfc2901",
+    "rfc3743",
+    "rfc3915",
+    "rfc3982",
+    "rfc5144",
+    "rfc5992",
+    "rfc8334",
+    "rfc9022",
+    "rfc920"
+  ],
+  "document_meta": {
+    "rfc1261": { "title": "Transition of Nic Services", "subseries": [] },
+    "rfc1400": { "title": "Transition and Modernization of the Internet Registration Service", "subseries": [] },
+    "rfc2901": { "title": "Guide to Administrative Procedures of the Internet Infrastructure", "subseries": ["fyi37"] },
+    "rfc3743": {
+      "title": "Joint Engineering Team (JET) Guidelines for Internationalized Domain Names (IDN) Registration and Administration for Chinese, Japanese, and Korean",
+      "subseries": []
+    },
+    "rfc3915": {
+      "title": "Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    },
+    "rfc3982": {
+      "title": "IRIS:  A Domain Registry (dreg) Type for the Internet Registry Information Service (IRIS)",
+      "subseries": []
+    },
+    "rfc5144": {
+      "title": "A Domain Availability Check (DCHK) Registry Type for the Internet Registry Information Service (IRIS)",
+      "subseries": []
+    },
+    "rfc5992": {
+      "title": "Internationalized Domain Names Registration and Administration Guidelines for European Languages Using Cyrillic",
+      "subseries": []
+    },
+    "rfc8334": { "title": "Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc9022": { "title": "Domain Name Registration Data (DNRD) Objects Mapping", "subseries": [] },
+    "rfc920": { "title": "Domain requirements", "subseries": [] }
+  },
+  "subject_meta": {
+    "naming": { "name": "Naming" },
+    "epp": { "name": "EPP" },
+    "rdap": { "name": "RDAP" },
+    "whois": { "name": "WHOIS" }
+  }
+}

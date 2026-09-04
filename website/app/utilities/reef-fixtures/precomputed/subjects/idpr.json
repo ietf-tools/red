@@ -1,0 +1,20 @@
+{
+  "id": 708,
+  "slug": "idpr",
+  "name": "IDPR",
+  "description": "Inter-domain policy routing",
+  "parent": "routing",
+  "path": "routing/idpr",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1477", "rfc1478", "rfc1479"],
+  "document_meta": {
+    "rfc1477": { "title": "IDPR as a Proposed Standard", "subseries": [] },
+    "rfc1478": { "title": "An Architecture for Inter-Domain Policy Routing", "subseries": [] },
+    "rfc1479": { "title": "Inter-Domain Policy Routing Protocol Specification: Version 1", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

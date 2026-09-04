@@ -1,0 +1,71 @@
+{
+  "id": 690,
+  "slug": "nat-traversal",
+  "name": "NAT Traversal",
+  "description": "Interactive traversal of NATs for real-time media",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/nat-traversal",
+  "document_count": 15,
+  "document_count_deep": 49,
+  "retired": false,
+  "children": ["ice", "stun", "turn"],
+  "aliases": [],
+  "documents": [
+    "rfc5207",
+    "rfc5596",
+    "rfc5844",
+    "rfc6223",
+    "rfc6314",
+    "rfc6544",
+    "rfc6773",
+    "rfc6889",
+    "rfc6978",
+    "rfc7362",
+    "rfc7604",
+    "rfc7857",
+    "rfc8323",
+    "rfc9028",
+    "rfc9063"
+  ],
+  "document_meta": {
+    "rfc5207": {
+      "title": "NAT and Firewall Traversal Issues of Host Identity Protocol (HIP) Communication",
+      "subseries": []
+    },
+    "rfc5596": {
+      "title": "Datagram Congestion Control Protocol (DCCP) Simultaneous-Open Technique to Facilitate NAT/Middlebox Traversal",
+      "subseries": []
+    },
+    "rfc5844": { "title": "IPv4 Support for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6223": { "title": "Indication of Support for Keep-Alive", "subseries": [] },
+    "rfc6314": { "title": "NAT Traversal Practices for Client-Server SIP", "subseries": [] },
+    "rfc6544": { "title": "TCP Candidates with Interactive Connectivity Establishment (ICE)", "subseries": [] },
+    "rfc6773": {
+      "title": "DCCP-UDP: A Datagram Congestion Control Protocol UDP Encapsulation for NAT Traversal",
+      "subseries": []
+    },
+    "rfc6889": { "title": "Analysis of Stateful 64 Translation", "subseries": [] },
+    "rfc6978": { "title": "A TCP Authentication Option Extension for NAT Traversal", "subseries": [] },
+    "rfc7362": {
+      "title": "Latching: Hosted NAT Traversal (HNT) for Media in Real-Time Communication",
+      "subseries": []
+    },
+    "rfc7604": {
+      "title": "Comparison of Different NAT Traversal Techniques for Media Controlled by the Real-Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc7857": {
+      "title": "Updates to Network Address Translation (NAT) Behavioral Requirements",
+      "subseries": ["bcp127"]
+    },
+    "rfc8323": { "title": "CoAP (Constrained Application Protocol) over TCP, TLS, and WebSockets", "subseries": [] },
+    "rfc9028": { "title": "Native NAT Traversal Mode for the Host Identity Protocol", "subseries": [] },
+    "rfc9063": { "title": "Host Identity Protocol Architecture", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "ice": { "name": "ICE" },
+    "stun": { "name": "STUN" },
+    "turn": { "name": "TURN" }
+  }
+}

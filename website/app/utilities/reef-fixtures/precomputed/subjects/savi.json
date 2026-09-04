@@ -1,0 +1,38 @@
+{
+  "id": 610,
+  "slug": "savi",
+  "name": "SAVI",
+  "description": "Source address validation",
+  "parent": "internet-layer",
+  "path": "internet-layer/savi",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc5210", "rfc6620", "rfc6957", "rfc6959", "rfc7039", "rfc7219", "rfc7513", "rfc8074", "rfc8704"],
+  "document_meta": {
+    "rfc5210": {
+      "title": "A Source Address Validation Architecture (SAVA) Testbed and Deployment Experience",
+      "subseries": []
+    },
+    "rfc6620": {
+      "title": "FCFS SAVI: First-Come, First-Served Source Address Validation Improvement for Locally Assigned IPv6 Addresses",
+      "subseries": []
+    },
+    "rfc6957": { "title": "Duplicate Address Detection Proxy", "subseries": [] },
+    "rfc6959": { "title": "Source Address Validation Improvement (SAVI) Threat Scope", "subseries": [] },
+    "rfc7039": { "title": "Source Address Validation Improvement (SAVI) Framework", "subseries": [] },
+    "rfc7219": {
+      "title": "SEcure Neighbor Discovery (SEND) Source Address Validation Improvement (SAVI)",
+      "subseries": []
+    },
+    "rfc7513": { "title": "Source Address Validation Improvement (SAVI) Solution for DHCP", "subseries": [] },
+    "rfc8074": {
+      "title": "Source Address Validation Improvement (SAVI) for Mixed Address Assignment Methods Scenario",
+      "subseries": []
+    },
+    "rfc8704": { "title": "Enhanced Feasible-Path Unicast Reverse Path Forwarding", "subseries": ["bcp84"] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

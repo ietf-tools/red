@@ -1,0 +1,31 @@
+{
+  "id": 988,
+  "slug": "udp-lite",
+  "name": "UDP-Lite",
+  "description": "The Lightweight User Datagram Protocol",
+  "parent": "udp",
+  "path": "transport/udp/udp-lite",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3828", "rfc4019", "rfc5097", "rfc5225", "rfc8304"],
+  "document_meta": {
+    "rfc3828": { "title": "The Lightweight User Datagram Protocol (UDP-Lite)", "subseries": [] },
+    "rfc4019": {
+      "title": "RObust Header Compression (ROHC): Profiles for User Datagram Protocol (UDP) Lite",
+      "subseries": []
+    },
+    "rfc5097": { "title": "MIB for the UDP-Lite protocol", "subseries": [] },
+    "rfc5225": {
+      "title": "RObust Header Compression Version 2 (ROHCv2): Profiles for RTP, UDP, IP, ESP and UDP-Lite",
+      "subseries": []
+    },
+    "rfc8304": {
+      "title": "Transport Features of the User Datagram Protocol (UDP) and Lightweight UDP (UDP-Lite)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "udp": { "name": "UDP" } }
+}

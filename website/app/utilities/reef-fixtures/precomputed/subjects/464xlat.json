@@ -1,0 +1,34 @@
+{
+  "id": 1005,
+  "slug": "464xlat",
+  "name": "464XLAT",
+  "description": "464XLAT combined translation",
+  "parent": "ipv6-transition",
+  "path": "internet-layer/ipv6/ipv6-transition/464xlat",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6877", "rfc7050", "rfc7051", "rfc7934", "rfc8219", "rfc8683", "rfc9313"],
+  "document_meta": {
+    "rfc6877": { "title": "464XLAT: Combination of Stateful and Stateless Translation", "subseries": [] },
+    "rfc7050": { "title": "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis", "subseries": [] },
+    "rfc7051": { "title": "Analysis of Solution Proposals for Hosts to Learn NAT64 Prefix", "subseries": [] },
+    "rfc7934": { "title": "Host Address Availability Recommendations", "subseries": ["bcp204"] },
+    "rfc8219": { "title": "Benchmarking Methodology for IPv6 Transition Technologies", "subseries": [] },
+    "rfc8683": {
+      "title": "Additional Deployment Guidelines for NAT64/464XLAT in Operator and Enterprise Networks",
+      "subseries": []
+    },
+    "rfc9313": {
+      "title": "Pros and Cons of IPv6 Transition Technologies for IPv4-as-a-Service (IPv4aaS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "ipv6-transition": { "name": "IPv6 Transition" }
+  }
+}

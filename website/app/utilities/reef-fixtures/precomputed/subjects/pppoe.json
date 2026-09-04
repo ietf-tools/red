@@ -1,0 +1,30 @@
+{
+  "id": 845,
+  "slug": "pppoe",
+  "name": "PPPoE",
+  "description": "PPP over Ethernet",
+  "parent": "ppp",
+  "path": "link-layer/ppp/pppoe",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2516", "rfc3817", "rfc4638", "rfc4937", "rfc4938", "rfc5578", "rfc8822"],
+  "document_meta": {
+    "rfc2516": { "title": "A Method for Transmitting PPP Over Ethernet (PPPoE)", "subseries": [] },
+    "rfc3817": {
+      "title": "Layer 2 Tunneling Protocol (L2TP) Active Discovery Relay for PPP over Ethernet (PPPoE)",
+      "subseries": []
+    },
+    "rfc4638": {
+      "title": "Accommodating a Maximum Transit Unit/Maximum Receive Unit (MTU/MRU) Greater Than 1492 in the Point-to-Point Protocol over Ethernet (PPPoE)",
+      "subseries": []
+    },
+    "rfc4937": { "title": "IANA Considerations for PPP over Ethernet (PPPoE)", "subseries": [] },
+    "rfc4938": { "title": "PPP Over Ethernet (PPPoE) Extensions for Credit Flow and Link Metrics", "subseries": [] },
+    "rfc5578": { "title": "PPP over Ethernet (PPPoE) Extensions for Credit Flow and Link Metrics", "subseries": [] },
+    "rfc8822": { "title": "5G Wireless Wireline Convergence User Plane Encapsulation (5WE)", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" }, "ppp": { "name": "PPP" } }
+}

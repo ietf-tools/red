@@ -1,0 +1,87 @@
+{
+  "id": 807,
+  "slug": "rdma",
+  "name": "RDMA",
+  "description": "Remote direct memory access protocols",
+  "parent": "storage",
+  "path": "applications/storage/rdma",
+  "document_count": 21,
+  "document_count_deep": 21,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4296",
+    "rfc4297",
+    "rfc5040",
+    "rfc5041",
+    "rfc5042",
+    "rfc5043",
+    "rfc5044",
+    "rfc5045",
+    "rfc5046",
+    "rfc5532",
+    "rfc5666",
+    "rfc5667",
+    "rfc6580",
+    "rfc6581",
+    "rfc7145",
+    "rfc7306",
+    "rfc7609",
+    "rfc8166",
+    "rfc8167",
+    "rfc8267",
+    "rfc8797"
+  ],
+  "document_meta": {
+    "rfc4296": {
+      "title": "The Architecture of Direct Data Placement (DDP) and Remote Direct Memory Access (RDMA) on Internet Protocols",
+      "subseries": []
+    },
+    "rfc4297": { "title": "Remote Direct Memory Access (RDMA) over IP Problem Statement", "subseries": [] },
+    "rfc5040": { "title": "A Remote Direct Memory Access Protocol Specification", "subseries": [] },
+    "rfc5041": { "title": "Direct Data Placement over Reliable Transports", "subseries": [] },
+    "rfc5042": {
+      "title": "Direct Data Placement Protocol (DDP) / Remote Direct Memory Access Protocol (RDMAP) Security",
+      "subseries": []
+    },
+    "rfc5043": {
+      "title": "Stream Control Transmission Protocol (SCTP) Direct Data Placement (DDP) Adaptation",
+      "subseries": []
+    },
+    "rfc5044": { "title": "Marker PDU Aligned Framing for TCP Specification", "subseries": [] },
+    "rfc5045": {
+      "title": "Applicability of Remote Direct Memory Access Protocol (RDMA) and Direct Data Placement (DDP)",
+      "subseries": []
+    },
+    "rfc5046": {
+      "title": "Internet Small Computer System Interface (iSCSI) Extensions for Remote Direct Memory Access (RDMA)",
+      "subseries": []
+    },
+    "rfc5532": {
+      "title": "Network File System (NFS) Remote Direct Memory Access (RDMA) Problem Statement",
+      "subseries": []
+    },
+    "rfc5666": { "title": "Remote Direct Memory Access Transport for Remote Procedure Call", "subseries": [] },
+    "rfc5667": { "title": "Network File System (NFS) Direct Data Placement", "subseries": [] },
+    "rfc6580": { "title": "IANA Registries for the Remote Direct Data Placement (RDDP) Protocols", "subseries": [] },
+    "rfc6581": { "title": "Enhanced Remote Direct Memory Access (RDMA) Connection Establishment", "subseries": [] },
+    "rfc7145": {
+      "title": "Internet Small Computer System Interface (iSCSI) Extensions for the Remote Direct Memory Access (RDMA) Specification",
+      "subseries": []
+    },
+    "rfc7306": { "title": "Remote Direct Memory Access (RDMA) Protocol Extensions", "subseries": [] },
+    "rfc7609": { "title": "IBM's Shared Memory Communications over RDMA (SMC-R) Protocol", "subseries": [] },
+    "rfc8166": {
+      "title": "Remote Direct Memory Access Transport for Remote Procedure Call Version 1",
+      "subseries": []
+    },
+    "rfc8167": { "title": "Bidirectional Remote Procedure Call on RPC-over-RDMA Transports", "subseries": [] },
+    "rfc8267": { "title": "Network File System (NFS) Upper-Layer Binding to RPC-over-RDMA Version 1", "subseries": [] },
+    "rfc8797": {
+      "title": "Remote Direct Memory Access - Connection Manager (RDMA-CM) Private Data for RPC-over-RDMA Version 1",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "storage": { "name": "Storage" } }
+}

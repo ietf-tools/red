@@ -1,0 +1,92 @@
+{
+  "id": 691,
+  "slug": "pstn-interop",
+  "name": "PSTN Interworking",
+  "description": "PSTN/Internet interworking and telephony routing",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/pstn-interop",
+  "document_count": 28,
+  "document_count_deep": 28,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1789",
+    "rfc2458",
+    "rfc2824",
+    "rfc2848",
+    "rfc2871",
+    "rfc2995",
+    "rfc3055",
+    "rfc3136",
+    "rfc3219",
+    "rfc3298",
+    "rfc3872",
+    "rfc3880",
+    "rfc3910",
+    "rfc3966",
+    "rfc4694",
+    "rfc4759",
+    "rfc4904",
+    "rfc5140",
+    "rfc5341",
+    "rfc5344",
+    "rfc5486",
+    "rfc6271",
+    "rfc6404",
+    "rfc6405",
+    "rfc6406",
+    "rfc6461",
+    "rfc7877",
+    "rfc7878"
+  ],
+  "document_meta": {
+    "rfc1789": { "title": "INETPhone: Telephone Services and Servers on Internet", "subseries": [] },
+    "rfc2458": { "title": "Toward the PSTN/Internet Inter-Networking--Pre-PINT Implementations", "subseries": [] },
+    "rfc2824": { "title": "Call Processing Language Framework and Requirements", "subseries": [] },
+    "rfc2848": {
+      "title": "The PINT Service Protocol: Extensions to SIP and SDP for IP Access to Telephone Call Services",
+      "subseries": []
+    },
+    "rfc2871": { "title": "A Framework for Telephony Routing over IP", "subseries": [] },
+    "rfc2995": { "title": "Pre-Spirits Implementations of PSTN-initiated Services", "subseries": [] },
+    "rfc3055": { "title": "Management Information Base for the PINT Services Architecture", "subseries": [] },
+    "rfc3136": { "title": "The SPIRITS Architecture", "subseries": [] },
+    "rfc3219": { "title": "Telephony Routing over IP (TRIP)", "subseries": [] },
+    "rfc3298": {
+      "title": "Service in the Public Switched Telephone Network/Intelligent Network (PSTN/IN) Requesting InTernet Service (SPIRITS) Protocol Requirements",
+      "subseries": []
+    },
+    "rfc3872": { "title": "Management Information Base for Telephony Routing over IP (TRIP)", "subseries": [] },
+    "rfc3880": {
+      "title": "Call Processing Language (CPL): A Language for User Control of Internet Telephony Services",
+      "subseries": []
+    },
+    "rfc3910": { "title": "The SPIRITS (Services in PSTN requesting Internet Services) Protocol", "subseries": [] },
+    "rfc3966": { "title": "The tel URI for Telephone Numbers", "subseries": [] },
+    "rfc4694": { "title": "Number Portability Parameters for the \"tel\" URI", "subseries": [] },
+    "rfc4759": { "title": "The ENUM Dip Indicator Parameter for the \"tel\" URI", "subseries": [] },
+    "rfc4904": { "title": "Representing Trunk Groups in tel/sip Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc5140": { "title": "A Telephony Gateway REgistration Protocol (TGREP)", "subseries": [] },
+    "rfc5341": {
+      "title": "The Internet Assigned Number Authority (IANA) tel Uniform Resource Identifier (URI) Parameter Registry",
+      "subseries": []
+    },
+    "rfc5344": { "title": "Presence and Instant Messaging Peering Use Cases", "subseries": [] },
+    "rfc5486": { "title": "Session Peering for Multimedia Interconnect (SPEERMINT) Terminology", "subseries": [] },
+    "rfc6271": { "title": "Requirements for SIP-Based Session Peering", "subseries": [] },
+    "rfc6404": {
+      "title": "Session PEERing for Multimedia INTerconnect (SPEERMINT) Security Threats and Suggested Countermeasures",
+      "subseries": []
+    },
+    "rfc6405": { "title": "Voice over IP (VoIP) SIP Peering Use Cases", "subseries": [] },
+    "rfc6406": { "title": "Session PEERing for Multimedia INTerconnect (SPEERMINT) Architecture", "subseries": [] },
+    "rfc6461": {
+      "title": "Data for Reachability of Inter-/Intra-NetworK SIP (DRINKS) Use Cases and Protocol Requirements",
+      "subseries": []
+    },
+    "rfc7877": { "title": "Session Peering Provisioning Framework (SPPF)", "subseries": [] },
+    "rfc7878": { "title": "Session Peering Provisioning (SPP) Protocol over SOAP", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" } }
+}

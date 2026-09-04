@@ -1,0 +1,152 @@
+{
+  "id": 834,
+  "slug": "neighbor-discovery",
+  "name": "Neighbor Discovery",
+  "description": "IPv6 neighbor discovery",
+  "parent": "ipv6",
+  "path": "internet-layer/ipv6/neighbor-discovery",
+  "document_count": 44,
+  "document_count_deep": 54,
+  "retired": false,
+  "children": ["send"],
+  "aliases": [],
+  "documents": [
+    "rfc1970",
+    "rfc2461",
+    "rfc2469",
+    "rfc3122",
+    "rfc3684",
+    "rfc3756",
+    "rfc3971",
+    "rfc3972",
+    "rfc4140",
+    "rfc4389",
+    "rfc4429",
+    "rfc4861",
+    "rfc4943",
+    "rfc5075",
+    "rfc5121",
+    "rfc5175",
+    "rfc5269",
+    "rfc5380",
+    "rfc5909",
+    "rfc6059",
+    "rfc6105",
+    "rfc6273",
+    "rfc6494",
+    "rfc6495",
+    "rfc6496",
+    "rfc6583",
+    "rfc6775",
+    "rfc6779",
+    "rfc6820",
+    "rfc6980",
+    "rfc7048",
+    "rfc7219",
+    "rfc7342",
+    "rfc7939",
+    "rfc8043",
+    "rfc8161",
+    "rfc8302",
+    "rfc8425",
+    "rfc8505",
+    "rfc8928",
+    "rfc9131",
+    "rfc9685",
+    "rfc9898",
+    "rfc9926"
+  ],
+  "document_meta": {
+    "rfc1970": { "title": "Neighbor Discovery for IP Version 6 (IPv6)", "subseries": [] },
+    "rfc2461": { "title": "Neighbor Discovery for IP Version 6 (IPv6)", "subseries": [] },
+    "rfc2469": { "title": "A Caution On The Canonical Ordering Of Link-Layer Addresses", "subseries": [] },
+    "rfc3122": {
+      "title": "Extensions to IPv6 Neighbor Discovery for Inverse Discovery Specification",
+      "subseries": []
+    },
+    "rfc3684": { "title": "Topology Dissemination Based on Reverse-Path Forwarding (TBRPF)", "subseries": [] },
+    "rfc3756": { "title": "IPv6 Neighbor Discovery (ND) Trust Models and Threats", "subseries": [] },
+    "rfc3971": { "title": "SEcure Neighbor Discovery (SEND)", "subseries": [] },
+    "rfc3972": { "title": "Cryptographically Generated Addresses (CGA)", "subseries": [] },
+    "rfc4140": { "title": "Hierarchical Mobile IPv6 Mobility Management (HMIPv6)", "subseries": [] },
+    "rfc4389": { "title": "Neighbor Discovery Proxies (ND Proxy)", "subseries": [] },
+    "rfc4429": { "title": "Optimistic Duplicate Address Detection (DAD) for IPv6", "subseries": [] },
+    "rfc4861": { "title": "Neighbor Discovery for IP version 6 (IPv6)", "subseries": [] },
+    "rfc4943": { "title": "IPv6 Neighbor Discovery On-Link Assumption Considered Harmful", "subseries": [] },
+    "rfc5075": { "title": "IPv6 Router Advertisement Flags Option", "subseries": [] },
+    "rfc5121": {
+      "title": "Transmission of IPv6 via the IPv6 Convergence Sublayer over IEEE 802.16 Networks",
+      "subseries": []
+    },
+    "rfc5175": { "title": "IPv6 Router Advertisement Flags Option", "subseries": [] },
+    "rfc5269": {
+      "title": "Distributing a Symmetric Fast Mobile IPv6 (FMIPv6) Handover Key Using SEcure Neighbor Discovery (SEND)",
+      "subseries": []
+    },
+    "rfc5380": { "title": "Hierarchical Mobile IPv6 (HMIPv6) Mobility Management", "subseries": [] },
+    "rfc5909": { "title": "Securing Neighbor Discovery Proxy: Problem Statement", "subseries": [] },
+    "rfc6059": { "title": "Simple Procedures for Detecting Network Attachment in IPv6", "subseries": [] },
+    "rfc6105": { "title": "IPv6 Router Advertisement Guard", "subseries": [] },
+    "rfc6273": { "title": "The Secure Neighbor Discovery (SEND) Hash Threat Analysis", "subseries": [] },
+    "rfc6494": {
+      "title": "Certificate Profile and Certificate Management for SEcure Neighbor Discovery (SEND)",
+      "subseries": []
+    },
+    "rfc6495": {
+      "title": "Subject Key Identifier (SKI) SEcure Neighbor Discovery (SEND) Name Type Fields",
+      "subseries": []
+    },
+    "rfc6496": { "title": "Secure Proxy ND Support for SEcure Neighbor Discovery (SEND)", "subseries": [] },
+    "rfc6583": { "title": "Operational Neighbor Discovery Problems", "subseries": [] },
+    "rfc6775": {
+      "title": "Neighbor Discovery Optimization for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc6779": { "title": "Definition of Managed Objects for the Neighborhood Discovery Protocol", "subseries": [] },
+    "rfc6820": { "title": "Address Resolution Problems in Large Data Center Networks", "subseries": [] },
+    "rfc6980": { "title": "Security Implications of IPv6 Fragmentation with IPv6 Neighbor Discovery", "subseries": [] },
+    "rfc7048": { "title": "Neighbor Unreachability Detection Is Too Impatient", "subseries": [] },
+    "rfc7219": {
+      "title": "SEcure Neighbor Discovery (SEND) Source Address Validation Improvement (SAVI)",
+      "subseries": []
+    },
+    "rfc7342": {
+      "title": "Practices for Scaling ARP and Neighbor Discovery (ND) in Large Data Centers",
+      "subseries": []
+    },
+    "rfc7939": { "title": "Definition of Managed Objects for the Neighborhood Discovery Protocol", "subseries": [] },
+    "rfc8043": {
+      "title": "Source-Address-Dependent Routing and Source Address Selection for IPv6 Hosts: Overview of the Problem Space",
+      "subseries": []
+    },
+    "rfc8161": { "title": "Benchmarking the Neighbor Discovery Protocol", "subseries": [] },
+    "rfc8302": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): ARP and Neighbor Discovery (ND) Optimization",
+      "subseries": []
+    },
+    "rfc8425": {
+      "title": "IANA Considerations for IPv6 Neighbor Discovery Prefix Information Option Flags",
+      "subseries": []
+    },
+    "rfc8505": {
+      "title": "Registration Extensions for IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Neighbor Discovery",
+      "subseries": []
+    },
+    "rfc8928": { "title": "Address-Protected Neighbor Discovery for Low-Power and Lossy Networks", "subseries": [] },
+    "rfc9131": {
+      "title": "Gratuitous Neighbor Discovery: Creating Neighbor Cache Entries on First-Hop Routers",
+      "subseries": []
+    },
+    "rfc9685": {
+      "title": "Listener Subscription for IPv6 Neighbor Discovery Multicast and Anycast Addresses",
+      "subseries": []
+    },
+    "rfc9898": { "title": "Neighbor Discovery Considerations in IPv6 Deployments", "subseries": [] },
+    "rfc9926": { "title": "Prefix Registration for IPv6 Neighbor Discovery", "subseries": [] }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "send": { "name": "SEND" }
+  }
+}

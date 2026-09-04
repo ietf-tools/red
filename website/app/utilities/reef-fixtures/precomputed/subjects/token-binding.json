@@ -1,0 +1,23 @@
+{
+  "id": 1003,
+  "slug": "token-binding",
+  "name": "Token Binding",
+  "description": "TLS token binding",
+  "parent": "web-security",
+  "path": "web/web-security/token-binding",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8471", "rfc8472", "rfc8473"],
+  "document_meta": {
+    "rfc8471": { "title": "The Token Binding Protocol Version 1.0", "subseries": [] },
+    "rfc8472": {
+      "title": "Transport Layer Security (TLS) Extension for Token Binding Protocol Negotiation",
+      "subseries": []
+    },
+    "rfc8473": { "title": "Token Binding over HTTP", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "web-security": { "name": "Web Security" } }
+}

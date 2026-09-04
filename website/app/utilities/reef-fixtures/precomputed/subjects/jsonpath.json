@@ -1,0 +1,20 @@
+{
+  "id": 821,
+  "slug": "jsonpath",
+  "name": "JSONPath",
+  "description": "JSONPath query expressions",
+  "parent": "json",
+  "path": "data-formats/json/jsonpath",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9485", "rfc9535", "rfc9537"],
+  "document_meta": {
+    "rfc9485": { "title": "I-Regexp: An Interoperable Regular Expression Format", "subseries": [] },
+    "rfc9535": { "title": "JSONPath: Query Expressions for JSON", "subseries": [] },
+    "rfc9537": { "title": "Redacted Fields in the Registration Data Access Protocol (RDAP) Response", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "json": { "name": "JSON" } }
+}

@@ -1,0 +1,53 @@
+{
+  "id": 831,
+  "slug": "nemo",
+  "name": "NEMO",
+  "description": "Network mobility (NEMO)",
+  "parent": "ip-mobility",
+  "path": "internet-layer/ip-mobility/nemo",
+  "document_count": 16,
+  "document_count_deep": 16,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3963",
+    "rfc4885",
+    "rfc4886",
+    "rfc4887",
+    "rfc4888",
+    "rfc4889",
+    "rfc4908",
+    "rfc4980",
+    "rfc5177",
+    "rfc5488",
+    "rfc5522",
+    "rfc5555",
+    "rfc6089",
+    "rfc6276",
+    "rfc6626",
+    "rfc7629"
+  ],
+  "document_meta": {
+    "rfc3963": { "title": "Network Mobility (NEMO) Basic Support Protocol", "subseries": [] },
+    "rfc4885": { "title": "Network Mobility Support Terminology", "subseries": [] },
+    "rfc4886": { "title": "Network Mobility Support Goals and Requirements", "subseries": [] },
+    "rfc4887": { "title": "Network Mobility Home Network Models", "subseries": [] },
+    "rfc4888": { "title": "Network Mobility Route Optimization Problem Statement", "subseries": [] },
+    "rfc4889": { "title": "Network Mobility Route Optimization Solution Space Analysis", "subseries": [] },
+    "rfc4908": { "title": "Multi-homing for small scale fixed network Using Mobile IP and NEMO", "subseries": [] },
+    "rfc4980": { "title": "Analysis of Multihoming in Network Mobility Support", "subseries": [] },
+    "rfc5177": { "title": "Network Mobility (NEMO) Extensions for Mobile IPv4", "subseries": [] },
+    "rfc5488": { "title": "Network Mobility (NEMO) Management Information Base", "subseries": [] },
+    "rfc5522": {
+      "title": "Network Mobility Route Optimization Requirements for Operational Use in Aeronautics and Space Exploration Mobile Networks",
+      "subseries": []
+    },
+    "rfc5555": { "title": "Mobile IPv6 Support for Dual Stack Hosts and Routers", "subseries": [] },
+    "rfc6089": { "title": "Flow Bindings in Mobile IPv6 and Network Mobility (NEMO) Basic Support", "subseries": [] },
+    "rfc6276": { "title": "DHCPv6 Prefix Delegation for Network Mobility (NEMO)", "subseries": [] },
+    "rfc6626": { "title": "Dynamic Prefix Allocation for Network Mobility for Mobile IPv4 (NEMOv4)", "subseries": [] },
+    "rfc7629": { "title": "Flow-Binding Support for Mobile IP", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "ip-mobility": { "name": "IP Mobility" } }
+}

@@ -1,0 +1,109 @@
+{
+  "id": 983,
+  "slug": "intserv",
+  "name": "Intserv",
+  "description": "Integrated services",
+  "parent": "qos",
+  "path": "transport/qos/intserv",
+  "document_count": 32,
+  "document_count_deep": 32,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1618",
+    "rfc1633",
+    "rfc2210",
+    "rfc2211",
+    "rfc2212",
+    "rfc2213",
+    "rfc2214",
+    "rfc2215",
+    "rfc2216",
+    "rfc2379",
+    "rfc2380",
+    "rfc2381",
+    "rfc2382",
+    "rfc2686",
+    "rfc2687",
+    "rfc2688",
+    "rfc2689",
+    "rfc2814",
+    "rfc2815",
+    "rfc2816",
+    "rfc2996",
+    "rfc2997",
+    "rfc2998",
+    "rfc3006",
+    "rfc3175",
+    "rfc3398",
+    "rfc3578",
+    "rfc4233",
+    "rfc4715",
+    "rfc4883",
+    "rfc4923",
+    "rfc6660"
+  ],
+  "document_meta": {
+    "rfc1618": { "title": "PPP over ISDN", "subseries": [] },
+    "rfc1633": { "title": "Integrated Services in the Internet Architecture: an Overview", "subseries": [] },
+    "rfc2210": { "title": "The Use of RSVP with IETF Integrated Services", "subseries": [] },
+    "rfc2211": { "title": "Specification of the Controlled-Load Network Element Service", "subseries": [] },
+    "rfc2212": { "title": "Specification of Guaranteed Quality of Service", "subseries": [] },
+    "rfc2213": { "title": "Integrated Services Management Information Base using SMIv2", "subseries": [] },
+    "rfc2214": {
+      "title": "Integrated Services Management Information Base Guaranteed Service Extensions using SMIv2",
+      "subseries": []
+    },
+    "rfc2215": {
+      "title": "General Characterization Parameters for Integrated Service Network Elements",
+      "subseries": []
+    },
+    "rfc2216": { "title": "Network Element Service Specification Template", "subseries": [] },
+    "rfc2379": { "title": "RSVP over ATM Implementation Guidelines", "subseries": ["bcp24"] },
+    "rfc2380": { "title": "RSVP over ATM Implementation Requirements", "subseries": [] },
+    "rfc2381": {
+      "title": "Interoperation of Controlled-Load Service and Guaranteed Service with ATM",
+      "subseries": []
+    },
+    "rfc2382": { "title": "A Framework for Integrated Services and RSVP over ATM", "subseries": [] },
+    "rfc2686": { "title": "The Multi-Class Extension to Multi-Link PPP", "subseries": [] },
+    "rfc2687": { "title": "PPP in a Real-time Oriented HDLC-like Framing", "subseries": [] },
+    "rfc2688": { "title": "Integrated Services Mappings for Low Speed Networks", "subseries": [] },
+    "rfc2689": { "title": "Providing Integrated Services over Low-bitrate Links", "subseries": [] },
+    "rfc2814": {
+      "title": "SBM (Subnet Bandwidth Manager): A Protocol for RSVP-based Admission Control over IEEE 802-style networks",
+      "subseries": []
+    },
+    "rfc2815": { "title": "Integrated Service Mappings on IEEE 802 Networks", "subseries": [] },
+    "rfc2816": {
+      "title": "A Framework for Integrated Services Over Shared and Switched IEEE 802 LAN Technologies",
+      "subseries": []
+    },
+    "rfc2996": { "title": "Format of the RSVP DCLASS Object", "subseries": [] },
+    "rfc2997": { "title": "Specification of the Null Service Type", "subseries": [] },
+    "rfc2998": { "title": "A Framework for Integrated Services Operation over Diffserv Networks", "subseries": [] },
+    "rfc3006": { "title": "Integrated Services in the Presence of Compressible Flows", "subseries": [] },
+    "rfc3175": { "title": "Aggregation of RSVP for IPv4 and IPv6 Reservations", "subseries": [] },
+    "rfc3398": {
+      "title": "Integrated Services Digital Network (ISDN) User Part (ISUP) to Session Initiation Protocol (SIP) Mapping",
+      "subseries": []
+    },
+    "rfc3578": {
+      "title": "Mapping of Integrated Services Digital Network (ISDN) User Part (ISUP) Overlap Signalling to the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4233": { "title": "Integrated Services Digital Network (ISDN) Q.921-User Adaptation Layer", "subseries": [] },
+    "rfc4715": {
+      "title": "The Integrated Services Digital Network (ISDN) Subaddress Encoding Type for tel URI",
+      "subseries": []
+    },
+    "rfc4883": { "title": "Benchmarking Terminology for Resource Reservation Capable Routers", "subseries": [] },
+    "rfc4923": { "title": "Quality of Service (QoS) Signaling in a Nested Virtual Private Network", "subseries": [] },
+    "rfc6660": {
+      "title": "Encoding Three Pre-Congestion Notification (PCN) States in the IP Header Using a Single Diffserv Codepoint (DSCP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "qos": { "name": "QoS" } }
+}

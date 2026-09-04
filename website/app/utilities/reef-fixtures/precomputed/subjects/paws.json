@@ -1,0 +1,22 @@
+{
+  "id": 637,
+  "slug": "paws",
+  "name": "PAWS",
+  "description": "Protocol to access TV white-space databases",
+  "parent": "link-layer",
+  "path": "link-layer/paws",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6953", "rfc7545"],
+  "document_meta": {
+    "rfc6953": {
+      "title": "Protocol to Access White-Space (PAWS) Databases: Use Cases and Requirements",
+      "subseries": []
+    },
+    "rfc7545": { "title": "Protocol to Access White-Space (PAWS) Databases", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

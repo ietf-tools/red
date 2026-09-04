@@ -1,0 +1,48 @@
+{
+  "id": 816,
+  "slug": "language-tags",
+  "name": "Language Tags",
+  "description": "Language tags and matching",
+  "parent": "internationalization",
+  "path": "data-formats/internationalization/language-tags",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2482",
+    "rfc3066",
+    "rfc3866",
+    "rfc4645",
+    "rfc4646",
+    "rfc4647",
+    "rfc5131",
+    "rfc5645",
+    "rfc5646",
+    "rfc6067",
+    "rfc6082",
+    "rfc9290"
+  ],
+  "document_meta": {
+    "rfc2482": { "title": "Language Tagging in Unicode Plain Text", "subseries": [] },
+    "rfc3066": { "title": "Tags for the Identification of Languages", "subseries": [] },
+    "rfc3866": {
+      "title": "Language Tags and Ranges in the Lightweight Directory Access Protocol (LDAP)",
+      "subseries": []
+    },
+    "rfc4645": { "title": "Initial Language Subtag Registry", "subseries": [] },
+    "rfc4646": { "title": "Tags for Identifying Languages", "subseries": [] },
+    "rfc4647": { "title": "Matching of Language Tags", "subseries": ["bcp47"] },
+    "rfc5131": { "title": "A MIB Textual Convention for Language Tags", "subseries": [] },
+    "rfc5645": { "title": "Update to the Language Subtag Registry", "subseries": [] },
+    "rfc5646": { "title": "Tags for Identifying Languages", "subseries": ["bcp47"] },
+    "rfc6067": { "title": "BCP 47 Extension U", "subseries": [] },
+    "rfc6082": { "title": "Deprecating Unicode Language Tag Characters: RFC 2482 is Historic", "subseries": [] },
+    "rfc9290": { "title": "Concise Problem Details for Constrained Application Protocol (CoAP) APIs", "subseries": [] }
+  },
+  "subject_meta": {
+    "data-formats": { "name": "Data Formats" },
+    "internationalization": { "name": "Internationalization" }
+  }
+}

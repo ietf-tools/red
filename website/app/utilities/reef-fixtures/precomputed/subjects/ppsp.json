@@ -1,0 +1,26 @@
+{
+  "id": 901,
+  "slug": "ppsp",
+  "name": "PPSP",
+  "description": "Peer-to-peer streaming protocols",
+  "parent": "streaming",
+  "path": "real-time-communications/streaming/ppsp",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6972", "rfc7574", "rfc7846"],
+  "document_meta": {
+    "rfc6972": {
+      "title": "Problem Statement and Requirements of the Peer-to-Peer Streaming Protocol (PPSP)",
+      "subseries": []
+    },
+    "rfc7574": { "title": "Peer-to-Peer Streaming Peer Protocol (PPSPP)", "subseries": [] },
+    "rfc7846": { "title": "Peer-to-Peer Streaming Tracker Protocol (PPSTP)", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "streaming": { "name": "Streaming" }
+  }
+}

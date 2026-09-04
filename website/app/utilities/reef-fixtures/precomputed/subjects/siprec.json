@@ -1,0 +1,25 @@
+{
+  "id": 899,
+  "slug": "siprec",
+  "name": "SIPREC",
+  "description": "SIP-based session recording",
+  "parent": "sip",
+  "path": "real-time-communications/sip/siprec",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6341", "rfc7245", "rfc7865", "rfc7866", "rfc8068"],
+  "document_meta": {
+    "rfc6341": { "title": "Use Cases and Requirements for SIP-Based Media Recording (SIPREC)", "subseries": [] },
+    "rfc7245": {
+      "title": "An Architecture for Media Recording Using the Session Initiation Protocol",
+      "subseries": []
+    },
+    "rfc7865": { "title": "Session Initiation Protocol (SIP) Recording Metadata", "subseries": [] },
+    "rfc7866": { "title": "Session Recording Protocol", "subseries": [] },
+    "rfc8068": { "title": "Session Initiation Protocol (SIP) Recording Call Flows", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "sip": { "name": "SIP" } }
+}

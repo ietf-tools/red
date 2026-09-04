@@ -1,0 +1,24 @@
+{
+  "id": 875,
+  "slug": "lmap",
+  "name": "LMAP",
+  "description": "Large-scale measurement platforms",
+  "parent": "performance-measurement",
+  "path": "network-management/performance-measurement/lmap",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7536", "rfc7594", "rfc8193", "rfc8194"],
+  "document_meta": {
+    "rfc7536": { "title": "Large-Scale Broadband Measurement Use Cases", "subseries": [] },
+    "rfc7594": { "title": "A Framework for Large-Scale Measurement of Broadband Performance (LMAP)", "subseries": [] },
+    "rfc8193": { "title": "Information Model for Large-Scale Measurement Platforms (LMAPs)", "subseries": [] },
+    "rfc8194": { "title": "A YANG Data Model for LMAP Measurement Agents", "subseries": [] }
+  },
+  "subject_meta": {
+    "network-management": { "name": "Network Management" },
+    "performance-measurement": { "name": "Performance Measurement" }
+  }
+}

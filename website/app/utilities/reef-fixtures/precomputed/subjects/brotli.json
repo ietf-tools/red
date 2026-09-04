@@ -1,0 +1,21 @@
+{
+  "id": 810,
+  "slug": "brotli",
+  "name": "Brotli",
+  "description": "Brotli compression",
+  "parent": "compression",
+  "path": "data-formats/compression/brotli",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7932", "rfc8879", "rfc9841", "rfc9842"],
+  "document_meta": {
+    "rfc7932": { "title": "Brotli Compressed Data Format", "subseries": [] },
+    "rfc8879": { "title": "TLS Certificate Compression", "subseries": [] },
+    "rfc9841": { "title": "Shared Brotli Compressed Data Format", "subseries": [] },
+    "rfc9842": { "title": "Compression Dictionary Transport", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "compression": { "name": "Compression" } }
+}

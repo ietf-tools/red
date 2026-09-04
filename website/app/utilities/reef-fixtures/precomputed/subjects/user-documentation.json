@@ -1,0 +1,155 @@
+{
+  "id": 589,
+  "slug": "user-documentation",
+  "name": "User Documentation",
+  "description": "Introductory guides and FYI documents for Internet users",
+  "parent": "internet-governance",
+  "path": "internet-governance/user-documentation",
+  "document_count": 40,
+  "document_count_deep": 40,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1118",
+    "rfc1147",
+    "rfc1150",
+    "rfc1175",
+    "rfc1177",
+    "rfc1178",
+    "rfc1198",
+    "rfc1206",
+    "rfc1207",
+    "rfc1244",
+    "rfc1290",
+    "rfc1302",
+    "rfc1325",
+    "rfc1355",
+    "rfc1359",
+    "rfc1392",
+    "rfc1402",
+    "rfc1432",
+    "rfc1462",
+    "rfc1463",
+    "rfc1470",
+    "rfc1501",
+    "rfc1578",
+    "rfc1594",
+    "rfc1689",
+    "rfc1709",
+    "rfc1746",
+    "rfc1855",
+    "rfc1935",
+    "rfc1941",
+    "rfc1983",
+    "rfc2007",
+    "rfc2150",
+    "rfc2151",
+    "rfc2635",
+    "rfc2664",
+    "rfc3098",
+    "rfc3160",
+    "rfc6360",
+    "rfc7418"
+  ],
+  "document_meta": {
+    "rfc1118": { "title": "Hitchhikers guide to the Internet", "subseries": [] },
+    "rfc1147": {
+      "title": "FYI on a Network Management Tool Catalog: Tools for Monitoring and Debugging TCP/IP Internets and Interconnected Devices",
+      "subseries": []
+    },
+    "rfc1150": { "title": "FYI on FYI: Introduction to the FYI Notes", "subseries": [] },
+    "rfc1175": {
+      "title": "FYI on where to start: A bibliography of internetworking information",
+      "subseries": ["fyi3"]
+    },
+    "rfc1177": {
+      "title": "FYI on Questions and Answers: Answers to commonly asked \"new internet user\" questions",
+      "subseries": []
+    },
+    "rfc1178": { "title": "Choosing a name for your computer", "subseries": ["fyi5"] },
+    "rfc1198": { "title": "FYI on the X window system", "subseries": ["fyi6"] },
+    "rfc1206": {
+      "title": "FYI on Questions and Answers: Answers to commonly asked \"new Internet user\" questions",
+      "subseries": []
+    },
+    "rfc1207": {
+      "title": "FYI on Questions and Answers: Answers to commonly asked \"experienced Internet user\" questions",
+      "subseries": ["fyi7"]
+    },
+    "rfc1244": { "title": "Site Security Handbook", "subseries": [] },
+    "rfc1290": {
+      "title": "There's Gold in them thar Networks! or Searching for Treasure in all the Wrong Places",
+      "subseries": []
+    },
+    "rfc1302": { "title": "Building a Network Information Services Infrastructure", "subseries": ["fyi12"] },
+    "rfc1325": {
+      "title": "FYI on Questions and Answers Answers to Commonly asked \"New Internet User\" Questions",
+      "subseries": []
+    },
+    "rfc1355": {
+      "title": "Privacy and Accuracy Issues in Network Information Center Databases",
+      "subseries": ["fyi15"]
+    },
+    "rfc1359": {
+      "title": "Connecting to the Internet - What Connecting Institutions Should Anticipate",
+      "subseries": ["fyi16"]
+    },
+    "rfc1392": { "title": "Internet Users' Glossary", "subseries": [] },
+    "rfc1402": {
+      "title": "There's Gold in them thar Networks! or Searching for Treasure in all the Wrong Places",
+      "subseries": ["fyi10"]
+    },
+    "rfc1432": { "title": "Recent Internet Books", "subseries": [] },
+    "rfc1462": { "title": "FYI on \"What is the Internet?\"", "subseries": ["fyi20"] },
+    "rfc1463": {
+      "title": "FYI on Introducing the Internet-- A Short Bibliography of Introductory Internetworking Readings",
+      "subseries": ["fyi19"]
+    },
+    "rfc1470": {
+      "title": "FYI on a Network Management Tool Catalog: Tools for Monitoring and Debugging TCP/IP Internets and Interconnected Devices",
+      "subseries": ["fyi2"]
+    },
+    "rfc1501": { "title": "OS/2 User Group", "subseries": [] },
+    "rfc1578": {
+      "title": "FYI on Questions and Answers - Answers to Commonly Asked \"Primary and Secondary School Internet User\" Questions",
+      "subseries": []
+    },
+    "rfc1594": {
+      "title": "FYI on Questions and Answers - Answers to Commonly asked \"New Internet User\" Questions",
+      "subseries": []
+    },
+    "rfc1689": {
+      "title": "A Status Report on Networked Information Retrieval: Tools and Groups",
+      "subseries": ["fyi25"]
+    },
+    "rfc1709": { "title": "K-12 Internetworking Guidelines", "subseries": ["fyi26"] },
+    "rfc1746": { "title": "Ways to Define User Expectations", "subseries": [] },
+    "rfc1855": { "title": "Netiquette Guidelines", "subseries": ["fyi28"] },
+    "rfc1935": { "title": "What is the Internet, Anyway?", "subseries": [] },
+    "rfc1941": { "title": "Frequently Asked Questions for Schools", "subseries": ["fyi22"] },
+    "rfc1983": { "title": "Internet Users' Glossary", "subseries": ["fyi18"] },
+    "rfc2007": { "title": "Catalogue of Network Training Materials", "subseries": ["fyi29"] },
+    "rfc2150": { "title": "Humanities and Arts: Sharing Center Stage on the Internet", "subseries": ["fyi31"] },
+    "rfc2151": { "title": "A Primer On Internet and TCP/IP Tools and Utilities", "subseries": ["fyi30"] },
+    "rfc2635": {
+      "title": "DON'T SPEW A Set of Guidelines for Mass Unsolicited Mailings and Postings (spam*)",
+      "subseries": ["fyi35"]
+    },
+    "rfc2664": {
+      "title": "FYI on Questions and Answers - Answers to Commonly Asked \"New Internet User\" Questions",
+      "subseries": ["fyi4"]
+    },
+    "rfc3098": {
+      "title": "How to Advertise Responsibly Using E-Mail and Newsgroups or - how NOT to $$$$$  MAKE ENEMIES FAST!  $$$$$",
+      "subseries": ["fyi38"]
+    },
+    "rfc3160": {
+      "title": "The Tao of IETF - A Novice's Guide to the Internet Engineering Task Force",
+      "subseries": []
+    },
+    "rfc6360": { "title": "Conclusion of FYI RFC Sub-Series", "subseries": [] },
+    "rfc7418": { "title": "An IRTF Primer for IETF Participants", "subseries": [] }
+  },
+  "subject_meta": { "internet-governance": { "name": "Internet Governance" } }
+}

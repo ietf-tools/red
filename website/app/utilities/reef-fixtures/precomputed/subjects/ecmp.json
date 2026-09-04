@@ -1,0 +1,80 @@
+{
+  "id": 930,
+  "slug": "ecmp",
+  "name": "ECMP",
+  "description": "Equal-cost multipath and load-balanced forwarding",
+  "parent": "routing-architecture",
+  "path": "routing/routing-architecture/ecmp",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2642",
+    "rfc2991",
+    "rfc2992",
+    "rfc4928",
+    "rfc6436",
+    "rfc6438",
+    "rfc6754",
+    "rfc6790",
+    "rfc7098",
+    "rfc7130",
+    "rfc7190",
+    "rfc7226",
+    "rfc7325",
+    "rfc7424",
+    "rfc7510",
+    "rfc7938",
+    "rfc8469",
+    "rfc8611",
+    "rfc8662",
+    "rfc9262",
+    "rfc9533",
+    "rfc9534"
+  ],
+  "document_meta": {
+    "rfc2642": { "title": "Cabletron's VLS Protocol Specification", "subseries": [] },
+    "rfc2991": { "title": "Multipath Issues in Unicast and Multicast Next-Hop Selection", "subseries": [] },
+    "rfc2992": { "title": "Analysis of an Equal-Cost Multi-Path Algorithm", "subseries": [] },
+    "rfc4928": { "title": "Avoiding Equal Cost Multipath Treatment in MPLS Networks", "subseries": ["bcp128"] },
+    "rfc6436": { "title": "Rationale for Update to the IPv6 Flow Label Specification", "subseries": [] },
+    "rfc6438": {
+      "title": "Using the IPv6 Flow Label for Equal Cost Multipath Routing and Link Aggregation in Tunnels",
+      "subseries": []
+    },
+    "rfc6754": { "title": "Protocol Independent Multicast Equal-Cost Multipath (ECMP) Redirect", "subseries": [] },
+    "rfc6790": { "title": "The Use of Entropy Labels in MPLS Forwarding", "subseries": [] },
+    "rfc7098": { "title": "Using the IPv6 Flow Label for Load Balancing in Server Farms", "subseries": [] },
+    "rfc7130": {
+      "title": "Bidirectional Forwarding Detection (BFD) on Link Aggregation Group (LAG) Interfaces",
+      "subseries": []
+    },
+    "rfc7190": { "title": "Use of Multipath with MPLS and MPLS Transport Profile (MPLS-TP)", "subseries": [] },
+    "rfc7226": { "title": "Requirements for Advanced Multipath in MPLS Networks", "subseries": [] },
+    "rfc7325": { "title": "MPLS Forwarding Compliance and Performance Requirements", "subseries": [] },
+    "rfc7424": {
+      "title": "Mechanisms for Optimizing Link Aggregation Group (LAG) and Equal-Cost Multipath (ECMP) Component Link Utilization in Networks",
+      "subseries": []
+    },
+    "rfc7510": { "title": "Encapsulating MPLS in UDP", "subseries": [] },
+    "rfc7938": { "title": "Use of BGP for Routing in Large-Scale Data Centers", "subseries": [] },
+    "rfc8469": { "title": "Recommendation to Use the Ethernet Control Word", "subseries": [] },
+    "rfc8611": {
+      "title": "Label Switched Path (LSP) Ping and Traceroute Multipath Support for Link Aggregation Group (LAG) Interfaces",
+      "subseries": []
+    },
+    "rfc8662": { "title": "Entropy Label for Source Packet Routing in Networking (SPRING) Tunnels", "subseries": [] },
+    "rfc9262": { "title": "Tree Engineering for Bit Index Explicit Replication (BIER-TE)", "subseries": [] },
+    "rfc9533": {
+      "title": "One-Way and Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group",
+      "subseries": []
+    },
+    "rfc9534": {
+      "title": "Simple Two-Way Active Measurement Protocol Extensions for Performance Measurement on a Link Aggregation Group",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "routing-architecture": { "name": "Routing Architecture" } }
+}

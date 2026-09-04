@@ -1,0 +1,79 @@
+{
+  "id": 545,
+  "slug": "alto",
+  "name": "ALTO",
+  "description": "Application-layer traffic optimization",
+  "parent": "applications",
+  "path": "applications/alto",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5693",
+    "rfc6029",
+    "rfc6708",
+    "rfc6875",
+    "rfc7285",
+    "rfc7286",
+    "rfc7971",
+    "rfc8189",
+    "rfc8686",
+    "rfc8895",
+    "rfc8896",
+    "rfc9240",
+    "rfc9241",
+    "rfc9274",
+    "rfc9275",
+    "rfc9439",
+    "rfc9569"
+  ],
+  "document_meta": {
+    "rfc5693": { "title": "Application-Layer Traffic Optimization (ALTO) Problem Statement", "subseries": [] },
+    "rfc6029": {
+      "title": "A Survey on Research on the Application-Layer Traffic Optimization (ALTO) Problem",
+      "subseries": []
+    },
+    "rfc6708": { "title": "Application-Layer Traffic Optimization (ALTO) Requirements", "subseries": [] },
+    "rfc6875": {
+      "title": "The P2P Network Experiment Council's Activities and Experiments with Application-Layer Traffic Optimization (ALTO) in Japan",
+      "subseries": []
+    },
+    "rfc7285": { "title": "Application-Layer Traffic Optimization (ALTO) Protocol", "subseries": [] },
+    "rfc7286": { "title": "Application-Layer Traffic Optimization (ALTO) Server Discovery", "subseries": [] },
+    "rfc7971": { "title": "Application-Layer Traffic Optimization (ALTO) Deployment Considerations", "subseries": [] },
+    "rfc8189": { "title": "Multi-Cost Application-Layer Traffic Optimization (ALTO)", "subseries": [] },
+    "rfc8686": {
+      "title": "Application-Layer Traffic Optimization (ALTO) Cross-Domain Server Discovery",
+      "subseries": []
+    },
+    "rfc8895": {
+      "title": "Application-Layer Traffic Optimization (ALTO) Incremental Updates Using Server-Sent Events (SSE)",
+      "subseries": []
+    },
+    "rfc8896": { "title": "Application-Layer Traffic Optimization (ALTO) Cost Calendar", "subseries": [] },
+    "rfc9240": {
+      "title": "An Extension for Application-Layer Traffic Optimization (ALTO): Entity Property Maps",
+      "subseries": []
+    },
+    "rfc9241": {
+      "title": "Content Delivery Network Interconnection (CDNI) Footprint and Capabilities Advertisement Using Application-Layer Traffic Optimization (ALTO)",
+      "subseries": []
+    },
+    "rfc9274": {
+      "title": "A Cost Mode Registry for the Application-Layer Traffic Optimization (ALTO) Protocol",
+      "subseries": []
+    },
+    "rfc9275": {
+      "title": "An Extension for Application-Layer Traffic Optimization (ALTO): Path Vector",
+      "subseries": []
+    },
+    "rfc9439": { "title": "Application-Layer Traffic Optimization (ALTO) Performance Cost Metrics", "subseries": [] },
+    "rfc9569": {
+      "title": "The Application-Layer Traffic Optimization (ALTO) Transport Information Publication Service (TIPS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

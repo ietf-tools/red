@@ -1,0 +1,48 @@
+{
+  "id": 931,
+  "slug": "bgpsec",
+  "name": "BGPsec",
+  "description": "BGPsec path validation",
+  "parent": "routing-security",
+  "path": "routing/routing-security/bgpsec",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7132",
+    "rfc7908",
+    "rfc8205",
+    "rfc8206",
+    "rfc8207",
+    "rfc8208",
+    "rfc8209",
+    "rfc8374",
+    "rfc8416",
+    "rfc8608",
+    "rfc8634",
+    "rfc8635"
+  ],
+  "document_meta": {
+    "rfc7132": { "title": "Threat Model for BGP Path Security", "subseries": [] },
+    "rfc7908": { "title": "Problem Definition and Classification of BGP Route Leaks", "subseries": [] },
+    "rfc8205": { "title": "BGPsec Protocol Specification", "subseries": [] },
+    "rfc8206": { "title": "BGPsec Considerations for Autonomous System (AS) Migration", "subseries": [] },
+    "rfc8207": { "title": "BGPsec Operational Considerations", "subseries": ["bcp211"] },
+    "rfc8208": { "title": "BGPsec Algorithms, Key Formats, and Signature Formats", "subseries": [] },
+    "rfc8209": {
+      "title": "A Profile for BGPsec Router Certificates, Certificate Revocation Lists, and Certification Requests",
+      "subseries": []
+    },
+    "rfc8374": { "title": "BGPsec Design Choices and Summary of Supporting Discussions", "subseries": [] },
+    "rfc8416": {
+      "title": "Simplified Local Internet Number Resource Management with the RPKI (SLURM)",
+      "subseries": []
+    },
+    "rfc8608": { "title": "BGPsec Algorithms, Key Formats, and Signature Formats", "subseries": [] },
+    "rfc8634": { "title": "BGPsec Router Certificate Rollover", "subseries": ["bcp224"] },
+    "rfc8635": { "title": "Router Keying for BGPsec", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "routing-security": { "name": "Routing Security" } }
+}

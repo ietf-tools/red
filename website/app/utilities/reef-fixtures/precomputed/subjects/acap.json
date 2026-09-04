@@ -1,0 +1,26 @@
+{
+  "id": 543,
+  "slug": "acap",
+  "name": "ACAP",
+  "description": "Application Configuration Access Protocol",
+  "parent": "applications",
+  "path": "applications/acap",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2244", "rfc2245", "rfc2595", "rfc2604", "rfc2636", "rfc6075"],
+  "document_meta": {
+    "rfc2244": { "title": "ACAP -- Application Configuration Access Protocol", "subseries": [] },
+    "rfc2245": { "title": "Anonymous SASL Mechanism", "subseries": [] },
+    "rfc2595": { "title": "Using TLS with IMAP, POP3 and ACAP", "subseries": [] },
+    "rfc2604": { "title": "Wireless Device Configuration (OTASP/OTAPA) via ACAP", "subseries": [] },
+    "rfc2636": { "title": "Wireless Device Configuration (OTASP/OTAPA) via ACAP", "subseries": [] },
+    "rfc6075": {
+      "title": "The Internet Assigned Number Authority (IANA) Application Configuration Access Protocol (ACAP) Vendor Subtrees Registry",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

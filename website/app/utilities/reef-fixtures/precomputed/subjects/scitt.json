@@ -1,0 +1,18 @@
+{
+  "id": 760,
+  "slug": "scitt",
+  "name": "SCITT",
+  "description": "Supply chain integrity and transparency",
+  "parent": "security",
+  "path": "security/scitt",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9943"],
+  "document_meta": {
+    "rfc9943": { "title": "An Architecture for Trustworthy and Transparent Digital Supply Chains", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

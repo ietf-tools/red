@@ -1,0 +1,24 @@
+{
+  "id": 788,
+  "slug": "atom",
+  "name": "Atom",
+  "description": "Atom syndication format and publishing protocol",
+  "parent": "web",
+  "path": "web/atom",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4287", "rfc4685", "rfc4946", "rfc5005", "rfc5023", "rfc6721", "rfc8322"],
+  "document_meta": {
+    "rfc4287": { "title": "The Atom Syndication Format", "subseries": [] },
+    "rfc4685": { "title": "Atom Threading Extensions", "subseries": [] },
+    "rfc4946": { "title": "Atom License Extension", "subseries": [] },
+    "rfc5005": { "title": "Feed Paging and Archiving", "subseries": [] },
+    "rfc5023": { "title": "The Atom Publishing Protocol", "subseries": [] },
+    "rfc6721": { "title": "The Atom \"deleted-entry\" Element", "subseries": [] },
+    "rfc8322": { "title": "Resource-Oriented Lightweight Information Exchange (ROLIE)", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" } }
+}

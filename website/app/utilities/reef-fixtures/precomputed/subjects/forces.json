@@ -1,0 +1,90 @@
+{
+  "id": 705,
+  "slug": "forces",
+  "name": "ForCES",
+  "description": "Forwarding and control element separation",
+  "parent": "routing",
+  "path": "routing/forces",
+  "document_count": 18,
+  "document_count_deep": 18,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3549",
+    "rfc3654",
+    "rfc3746",
+    "rfc5810",
+    "rfc5811",
+    "rfc5812",
+    "rfc5813",
+    "rfc6041",
+    "rfc6053",
+    "rfc6369",
+    "rfc6956",
+    "rfc6984",
+    "rfc7121",
+    "rfc7391",
+    "rfc7408",
+    "rfc7409",
+    "rfc7729",
+    "rfc8013"
+  ],
+  "document_meta": {
+    "rfc3549": { "title": "Linux Netlink as an IP Services Protocol", "subseries": [] },
+    "rfc3654": { "title": "Requirements for Separation of IP Control and Forwarding", "subseries": [] },
+    "rfc3746": { "title": "Forwarding and Control Element Separation (ForCES) Framework", "subseries": [] },
+    "rfc5810": {
+      "title": "Forwarding and Control Element Separation (ForCES) Protocol Specification",
+      "subseries": []
+    },
+    "rfc5811": {
+      "title": "SCTP-Based Transport Mapping Layer (TML) for the Forwarding and Control Element Separation (ForCES) Protocol",
+      "subseries": []
+    },
+    "rfc5812": {
+      "title": "Forwarding and Control Element Separation (ForCES) Forwarding Element Model",
+      "subseries": []
+    },
+    "rfc5813": { "title": "Forwarding and Control Element Separation (ForCES) MIB", "subseries": [] },
+    "rfc6041": {
+      "title": "Forwarding and Control Element Separation (ForCES) Applicability Statement",
+      "subseries": []
+    },
+    "rfc6053": {
+      "title": "Implementation Report for Forwarding and Control Element Separation (ForCES)",
+      "subseries": []
+    },
+    "rfc6369": {
+      "title": "Forwarding and Control Element Separation (ForCES) Implementation Experience",
+      "subseries": []
+    },
+    "rfc6956": {
+      "title": "Forwarding and Control Element Separation (ForCES) Logical Function Block (LFB) Library",
+      "subseries": []
+    },
+    "rfc6984": {
+      "title": "Interoperability Report for Forwarding and Control Element Separation (ForCES)",
+      "subseries": []
+    },
+    "rfc7121": {
+      "title": "High Availability within a Forwarding and Control Element Separation (ForCES) Network Element",
+      "subseries": []
+    },
+    "rfc7391": { "title": "Forwarding and Control Element Separation (ForCES) Protocol Extensions", "subseries": [] },
+    "rfc7408": { "title": "Forwarding and Control Element Separation (ForCES) Model Extension", "subseries": [] },
+    "rfc7409": {
+      "title": "Forwarding and Control Element Separation (ForCES) Packet Parallelization",
+      "subseries": []
+    },
+    "rfc7729": {
+      "title": "Forwarding and Control Element Separation (ForCES) Logical Functional Block (LFB) Subsidiary Management",
+      "subseries": []
+    },
+    "rfc8013": {
+      "title": "Forwarding and Control Element Separation (ForCES) Inter-FE Logical Functional Block (LFB)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

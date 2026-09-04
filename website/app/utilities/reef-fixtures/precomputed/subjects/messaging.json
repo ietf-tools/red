@@ -1,0 +1,26 @@
+{
+  "id": 535,
+  "slug": "messaging",
+  "name": "Messaging",
+  "description": "Messaging in general: store-and-forward and interpersonal message systems",
+  "parent": null,
+  "path": "messaging",
+  "document_count": 0,
+  "document_count_deep": 912,
+  "retired": false,
+  "children": ["edi", "email", "fax", "instant-messaging", "mime", "netnews", "paging", "uucp", "x400"],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": {
+    "edi": { "name": "EDI" },
+    "email": { "name": "Email" },
+    "fax": { "name": "Fax" },
+    "instant-messaging": { "name": "Instant Messaging" },
+    "mime": { "name": "MIME" },
+    "netnews": { "name": "Netnews" },
+    "paging": { "name": "Paging" },
+    "uucp": { "name": "UUCP" },
+    "x400": { "name": "X.400" }
+  }
+}

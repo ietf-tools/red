@@ -1,0 +1,266 @@
+{
+  "id": 776,
+  "slug": "qos",
+  "name": "QoS",
+  "description": "Quality of service architectures and signalling",
+  "parent": "transport",
+  "path": "transport/qos",
+  "document_count": 83,
+  "document_count_deep": 266,
+  "retired": false,
+  "children": ["cops", "diffserv", "intserv", "nsis", "rsvp"],
+  "aliases": [],
+  "documents": [
+    "rfc1046",
+    "rfc1193",
+    "rfc1245",
+    "rfc1257",
+    "rfc1349",
+    "rfc1363",
+    "rfc1455",
+    "rfc1946",
+    "rfc2124",
+    "rfc2129",
+    "rfc2205",
+    "rfc2207",
+    "rfc2209",
+    "rfc2210",
+    "rfc2211",
+    "rfc2212",
+    "rfc2215",
+    "rfc2216",
+    "rfc2386",
+    "rfc2676",
+    "rfc2748",
+    "rfc2755",
+    "rfc2990",
+    "rfc2996",
+    "rfc2997",
+    "rfc2998",
+    "rfc3086",
+    "rfc3246",
+    "rfc3247",
+    "rfc3292",
+    "rfc3312",
+    "rfc3313",
+    "rfc3317",
+    "rfc3334",
+    "rfc3374",
+    "rfc3387",
+    "rfc3521",
+    "rfc3583",
+    "rfc3644",
+    "rfc3670",
+    "rfc3714",
+    "rfc4032",
+    "rfc4094",
+    "rfc4445",
+    "rfc4696",
+    "rfc4923",
+    "rfc5129",
+    "rfc5148",
+    "rfc5160",
+    "rfc5290",
+    "rfc5432",
+    "rfc5450",
+    "rfc5472",
+    "rfc5624",
+    "rfc5777",
+    "rfc5866",
+    "rfc5974",
+    "rfc5975",
+    "rfc5976",
+    "rfc5977",
+    "rfc5978",
+    "rfc5979",
+    "rfc6294",
+    "rfc7005",
+    "rfc7141",
+    "rfc7222",
+    "rfc7243",
+    "rfc7561",
+    "rfc7679",
+    "rfc7680",
+    "rfc7713",
+    "rfc7837",
+    "rfc8325",
+    "rfc8568",
+    "rfc8592",
+    "rfc8802",
+    "rfc8837",
+    "rfc9064",
+    "rfc9318",
+    "rfc9330",
+    "rfc9331",
+    "rfc9332",
+    "rfc9956"
+  ],
+  "document_meta": {
+    "rfc1046": { "title": "Queuing algorithm to provide type-of-service for IP links", "subseries": [] },
+    "rfc1193": { "title": "Client requirements for real-time communication services", "subseries": [] },
+    "rfc1245": { "title": "OSPF Protocol Analysis", "subseries": [] },
+    "rfc1257": { "title": "Isochronous applications do not require jitter-controlled networks", "subseries": [] },
+    "rfc1349": { "title": "Type of Service in the Internet Protocol Suite", "subseries": [] },
+    "rfc1363": { "title": "A Proposed Flow Specification", "subseries": [] },
+    "rfc1455": { "title": "Physical Link Security Type of Service", "subseries": [] },
+    "rfc1946": { "title": "Native ATM Support for ST2+", "subseries": [] },
+    "rfc2124": {
+      "title": "Cabletron's Light-weight Flow Admission Protocol Specification Version 1.0",
+      "subseries": []
+    },
+    "rfc2129": { "title": "Toshiba's Flow Attribute Notification Protocol (FANP) Specification", "subseries": [] },
+    "rfc2205": {
+      "title": "Resource ReSerVation Protocol (RSVP) -- Version 1 Functional Specification",
+      "subseries": []
+    },
+    "rfc2207": { "title": "RSVP Extensions for IPSEC Data Flows", "subseries": [] },
+    "rfc2209": {
+      "title": "Resource ReSerVation Protocol (RSVP) -- Version 1 Message Processing Rules",
+      "subseries": []
+    },
+    "rfc2210": { "title": "The Use of RSVP with IETF Integrated Services", "subseries": [] },
+    "rfc2211": { "title": "Specification of the Controlled-Load Network Element Service", "subseries": [] },
+    "rfc2212": { "title": "Specification of Guaranteed Quality of Service", "subseries": [] },
+    "rfc2215": {
+      "title": "General Characterization Parameters for Integrated Service Network Elements",
+      "subseries": []
+    },
+    "rfc2216": { "title": "Network Element Service Specification Template", "subseries": [] },
+    "rfc2386": { "title": "A Framework for QoS-based Routing in the Internet", "subseries": [] },
+    "rfc2676": { "title": "QoS Routing Mechanisms and OSPF Extensions", "subseries": [] },
+    "rfc2748": { "title": "The COPS (Common Open Policy Service) Protocol", "subseries": [] },
+    "rfc2755": { "title": "Security Negotiation for WebNFS", "subseries": [] },
+    "rfc2990": { "title": "Next Steps for the IP QoS Architecture", "subseries": [] },
+    "rfc2996": { "title": "Format of the RSVP DCLASS Object", "subseries": [] },
+    "rfc2997": { "title": "Specification of the Null Service Type", "subseries": [] },
+    "rfc2998": { "title": "A Framework for Integrated Services Operation over Diffserv Networks", "subseries": [] },
+    "rfc3086": {
+      "title": "Definition of Differentiated Services Per Domain Behaviors and Rules for their Specification",
+      "subseries": []
+    },
+    "rfc3246": { "title": "An Expedited Forwarding PHB (Per-Hop Behavior)", "subseries": [] },
+    "rfc3247": {
+      "title": "Supplemental Information for the New Definition of the EF PHB (Expedited Forwarding Per-Hop Behavior)",
+      "subseries": []
+    },
+    "rfc3292": { "title": "General Switch Management Protocol (GSMP) V3", "subseries": [] },
+    "rfc3312": { "title": "Integration of Resource Management and Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3313": {
+      "title": "Private Session Initiation Protocol (SIP) Extensions for Media Authorization",
+      "subseries": []
+    },
+    "rfc3317": { "title": "Differentiated Services Quality of Service Policy Information Base", "subseries": [] },
+    "rfc3334": { "title": "Policy-Based Accounting", "subseries": [] },
+    "rfc3374": {
+      "title": "Problem Description: Reasons For Performing Context Transfers Between Nodes in an IP Access Network",
+      "subseries": []
+    },
+    "rfc3387": {
+      "title": "Considerations from the Service Management Research Group (SMRG) on Quality of Service (QoS) in the IP Network",
+      "subseries": []
+    },
+    "rfc3521": { "title": "Framework for Session Set-up with Media Authorization", "subseries": [] },
+    "rfc3583": { "title": "Requirements of a Quality of Service (QoS) Solution for Mobile IP", "subseries": [] },
+    "rfc3644": { "title": "Policy Quality of Service (QoS) Information Model", "subseries": [] },
+    "rfc3670": { "title": "Information Model for Describing Network Device QoS Datapath Mechanisms", "subseries": [] },
+    "rfc3714": {
+      "title": "IAB Concerns Regarding Congestion Control for Voice Traffic in the Internet",
+      "subseries": []
+    },
+    "rfc4032": { "title": "Update to the Session Initiation Protocol (SIP) Preconditions Framework", "subseries": [] },
+    "rfc4094": { "title": "Analysis of Existing Quality-of-Service Signaling Protocols", "subseries": [] },
+    "rfc4445": { "title": "A Proposed Media Delivery Index (MDI)", "subseries": [] },
+    "rfc4696": { "title": "An Implementation Guide for RTP MIDI", "subseries": [] },
+    "rfc4923": { "title": "Quality of Service (QoS) Signaling in a Nested Virtual Private Network", "subseries": [] },
+    "rfc5129": { "title": "Explicit Congestion Marking in MPLS", "subseries": [] },
+    "rfc5148": { "title": "Jitter Considerations in Mobile Ad Hoc Networks (MANETs)", "subseries": [] },
+    "rfc5160": {
+      "title": "Considerations of Provider-to-Provider Agreements for Internet-Scale Quality of Service (QoS)",
+      "subseries": []
+    },
+    "rfc5290": { "title": "Comments on the Usefulness of Simple Best-Effort Traffic", "subseries": [] },
+    "rfc5432": {
+      "title": "Quality of Service (QoS) Mechanism Selection in the Session Description Protocol (SDP)",
+      "subseries": []
+    },
+    "rfc5450": { "title": "Transmission Time Offsets in RTP Streams", "subseries": [] },
+    "rfc5472": { "title": "IP Flow Information Export (IPFIX) Applicability", "subseries": [] },
+    "rfc5624": { "title": "Quality of Service Parameters for Usage with Diameter", "subseries": [] },
+    "rfc5777": {
+      "title": "Traffic Classification and Quality of Service (QoS) Attributes for Diameter",
+      "subseries": []
+    },
+    "rfc5866": { "title": "Diameter Quality-of-Service Application", "subseries": [] },
+    "rfc5974": { "title": "NSIS Signaling Layer Protocol (NSLP) for Quality-of-Service Signaling", "subseries": [] },
+    "rfc5975": {
+      "title": "QSPEC Template for the Quality-of-Service NSIS Signaling Layer Protocol (NSLP)",
+      "subseries": []
+    },
+    "rfc5976": { "title": "Y.1541-QOSM: Model for Networks Using Y.1541 Quality-of-Service Classes", "subseries": [] },
+    "rfc5977": {
+      "title": "RMD-QOSM: The NSIS Quality-of-Service Model for Resource Management in Diffserv",
+      "subseries": []
+    },
+    "rfc5978": { "title": "Using and Extending the NSIS Protocol Family", "subseries": [] },
+    "rfc5979": { "title": "NSIS Operation over IP Tunnels", "subseries": [] },
+    "rfc6294": { "title": "Survey of Proposed Use Cases for the IPv6 Flow Label", "subseries": [] },
+    "rfc7005": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for De-Jitter Buffer Metric Reporting",
+      "subseries": []
+    },
+    "rfc7141": { "title": "Byte and Packet Congestion Notification", "subseries": ["bcp41"] },
+    "rfc7222": { "title": "Quality-of-Service Option for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7243": {
+      "title": "RTP Control Protocol (RTCP) Extended Report (XR) Block for the Bytes Discarded Metric",
+      "subseries": []
+    },
+    "rfc7561": {
+      "title": "Mapping Quality of Service (QoS) Procedures of Proxy Mobile IPv6 (PMIPv6) and WLAN",
+      "subseries": []
+    },
+    "rfc7679": { "title": "A One-Way Delay Metric for IP Performance Metrics (IPPM)", "subseries": ["std81"] },
+    "rfc7680": { "title": "A One-Way Loss Metric for IP Performance Metrics (IPPM)", "subseries": ["std82"] },
+    "rfc7713": {
+      "title": "Congestion Exposure (ConEx) Concepts, Abstract Mechanism, and Requirements",
+      "subseries": []
+    },
+    "rfc7837": { "title": "IPv6 Destination Option for Congestion Exposure (ConEx)", "subseries": [] },
+    "rfc8325": { "title": "Mapping Diffserv to IEEE 802.11", "subseries": [] },
+    "rfc8568": { "title": "Network Virtualization Research Challenges", "subseries": [] },
+    "rfc8592": {
+      "title": "Key Performance Indicator (KPI) Stamping for the Network Service Header (NSH)",
+      "subseries": []
+    },
+    "rfc8802": { "title": "The Quality for Service (Q4S) Protocol", "subseries": [] },
+    "rfc8837": { "title": "Differentiated Services Code Point (DSCP) Packet Markings for WebRTC QoS", "subseries": [] },
+    "rfc9064": {
+      "title": "Considerations in the Development of a QoS Architecture for CCNx-Like Information-Centric Networking Protocols",
+      "subseries": []
+    },
+    "rfc9318": { "title": "IAB Workshop Report: Measuring Network Quality for End-Users", "subseries": [] },
+    "rfc9330": {
+      "title": "Low Latency, Low Loss, and Scalable Throughput (L4S) Internet Service: Architecture",
+      "subseries": []
+    },
+    "rfc9331": {
+      "title": "The Explicit Congestion Notification (ECN) Protocol for Low Latency, Low Loss, and Scalable Throughput (L4S)",
+      "subseries": []
+    },
+    "rfc9332": {
+      "title": "Dual-Queue Coupled Active Queue Management (AQM) for Low Latency, Low Loss, and Scalable Throughput (L4S)",
+      "subseries": []
+    },
+    "rfc9956": {
+      "title": "A Non-Queue-Building Per-Hop Behavior (NQB PHB) for Differentiated Services",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "transport": { "name": "Transport" },
+    "cops": { "name": "COPS" },
+    "diffserv": { "name": "Diffserv" },
+    "intserv": { "name": "Intserv" },
+    "nsis": { "name": "NSIS" },
+    "rsvp": { "name": "RSVP" }
+  }
+}

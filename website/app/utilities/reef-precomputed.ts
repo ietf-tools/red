@@ -48,16 +48,43 @@ export class ReefPrecomputedError extends Error {
   }
 }
 
+// The dev stand-in for the store: ./reef-fixtures/precomputed, which is a verbatim copy of a
+// precompute run laid out under the same keys. Lazy, so a production build that drops the branch
+// below does not carry five hundred files it will never read, and keyed by the same string the
+// fetch uses so that nothing here can answer a key the real store would not.
+const fixtures = import.meta.glob('./reef-fixtures/precomputed/**/*.json') as Record<
+  string,
+  () => Promise<{ default: unknown }>
+>
+
+const fixtureFor = async (key: string): Promise<unknown | undefined> => {
+  const load = fixtures[`./reef-fixtures/precomputed/${key}`]
+  return load === undefined ? undefined : (await load()).default
+}
+
 /**
  * A published file, parsed. `undefined` when the key is not there, which for a subject is an
  * ordinary answer about a subject that does not exist rather than something going wrong; anything
  * else raises, because a page cannot be rendered from a file that failed to arrive.
+ *
+ * In development with NUXT_PUBLIC_REEF_FIXTURES set, the copy in ./reef-fixtures/precomputed
+ * answers instead, so the subject pages can be worked on with no bucket and no Reef. The parse
+ * still runs: a fixture that has drifted from the contract should fail here exactly as a published
+ * file would.
  */
 const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
+  let body: unknown
+  const { reefFixtures } = useRuntimeConfig().public
+  if (import.meta.dev && reefFixtures !== '') {
+    body = await fixtureFor(key)
+    if (body === undefined) {
+      return undefined
+    }
+    return schema.parse(body)
+  }
   if (REEF_PRECOMPUTED_BASE === '') {
     throw new ReefPrecomputedError(key, 'no publishing base is configured')
   }
-  let body: unknown
   try {
     const response = await fetch(`${REEF_PRECOMPUTED_BASE}/${key}`)
     if (response.status === 404) {

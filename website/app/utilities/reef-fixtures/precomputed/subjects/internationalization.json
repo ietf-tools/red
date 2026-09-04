@@ -1,0 +1,247 @@
+{
+  "id": 579,
+  "slug": "internationalization",
+  "name": "Internationalization",
+  "description": "Internationalization of text in protocols",
+  "parent": "data-formats",
+  "path": "data-formats/internationalization",
+  "document_count": 72,
+  "document_count_deep": 136,
+  "retired": false,
+  "children": ["character-sets", "language-tags", "precis", "unicode", "utf-8"],
+  "aliases": [],
+  "documents": [
+    "rfc2070",
+    "rfc2484",
+    "rfc2640",
+    "rfc2825",
+    "rfc3454",
+    "rfc3467",
+    "rfc3490",
+    "rfc3491",
+    "rfc3492",
+    "rfc3536",
+    "rfc3743",
+    "rfc3987",
+    "rfc4185",
+    "rfc4290",
+    "rfc4518",
+    "rfc4622",
+    "rfc4690",
+    "rfc4790",
+    "rfc4952",
+    "rfc5051",
+    "rfc5122",
+    "rfc5137",
+    "rfc5178",
+    "rfc5198",
+    "rfc5255",
+    "rfc5335",
+    "rfc5336",
+    "rfc5337",
+    "rfc5504",
+    "rfc5721",
+    "rfc5825",
+    "rfc5890",
+    "rfc5891",
+    "rfc5892",
+    "rfc5893",
+    "rfc5894",
+    "rfc5895",
+    "rfc5983",
+    "rfc5987",
+    "rfc5992",
+    "rfc6055",
+    "rfc6365",
+    "rfc6409",
+    "rfc6452",
+    "rfc6530",
+    "rfc6531",
+    "rfc6532",
+    "rfc6533",
+    "rfc6570",
+    "rfc6783",
+    "rfc6856",
+    "rfc6857",
+    "rfc6858",
+    "rfc6885",
+    "rfc7564",
+    "rfc7595",
+    "rfc7613",
+    "rfc7622",
+    "rfc7700",
+    "rfc7790",
+    "rfc8255",
+    "rfc8264",
+    "rfc8265",
+    "rfc8266",
+    "rfc8373",
+    "rfc8398",
+    "rfc8399",
+    "rfc8616",
+    "rfc8753",
+    "rfc9233",
+    "rfc9549",
+    "rfc9598"
+  ],
+  "document_meta": {
+    "rfc2070": { "title": "Internationalization of the Hypertext Markup Language", "subseries": [] },
+    "rfc2484": { "title": "PPP LCP Internationalization Configuration Option", "subseries": [] },
+    "rfc2640": { "title": "Internationalization of the File Transfer Protocol", "subseries": [] },
+    "rfc2825": {
+      "title": "A Tangled Web: Issues of I18N, Domain Names, and the Other Internet protocols",
+      "subseries": []
+    },
+    "rfc3454": { "title": "Preparation of Internationalized Strings (\"stringprep\")", "subseries": [] },
+    "rfc3467": { "title": "Role of the Domain Name System (DNS)", "subseries": [] },
+    "rfc3490": { "title": "Internationalizing Domain Names in Applications (IDNA)", "subseries": [] },
+    "rfc3491": { "title": "Nameprep: A Stringprep Profile for Internationalized Domain Names (IDN)", "subseries": [] },
+    "rfc3492": {
+      "title": "Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc3536": { "title": "Terminology Used in Internationalization in the IETF", "subseries": [] },
+    "rfc3743": {
+      "title": "Joint Engineering Team (JET) Guidelines for Internationalized Domain Names (IDN) Registration and Administration for Chinese, Japanese, and Korean",
+      "subseries": []
+    },
+    "rfc3987": { "title": "Internationalized Resource Identifiers (IRIs)", "subseries": [] },
+    "rfc4185": { "title": "National and Local Characters for DNS Top Level Domain (TLD) Names", "subseries": [] },
+    "rfc4290": {
+      "title": "Suggested Practices for Registration of Internationalized Domain Names (IDN)",
+      "subseries": []
+    },
+    "rfc4518": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Internationalized String Preparation",
+      "subseries": []
+    },
+    "rfc4622": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4690": { "title": "Review and Recommendations for Internationalized Domain Names (IDNs)", "subseries": [] },
+    "rfc4790": { "title": "Internet Application Protocol Collation Registry", "subseries": [] },
+    "rfc4952": { "title": "Overview and Framework for Internationalized Email", "subseries": [] },
+    "rfc5051": { "title": "i;unicode-casemap - Simple Unicode Collation Algorithm", "subseries": [] },
+    "rfc5122": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc5137": { "title": "ASCII Escaping of Unicode Characters", "subseries": ["bcp137"] },
+    "rfc5178": {
+      "title": "Generic Security Service Application Program Interface (GSS-API) Internationalization and Domain-Based Service Names and Name Type",
+      "subseries": []
+    },
+    "rfc5198": { "title": "Unicode Format for Network Interchange", "subseries": [] },
+    "rfc5255": { "title": "Internet Message Access Protocol Internationalization", "subseries": [] },
+    "rfc5335": { "title": "Internationalized Email Headers", "subseries": [] },
+    "rfc5336": { "title": "SMTP Extension for Internationalized Email Addresses", "subseries": [] },
+    "rfc5337": { "title": "Internationalized Delivery Status and Disposition Notifications", "subseries": [] },
+    "rfc5504": { "title": "Downgrading Mechanism for Email Address Internationalization", "subseries": [] },
+    "rfc5721": { "title": "POP3 Support for UTF-8", "subseries": [] },
+    "rfc5825": { "title": "Displaying Downgraded Messages for Email Address Internationalization", "subseries": [] },
+    "rfc5890": {
+      "title": "Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework",
+      "subseries": []
+    },
+    "rfc5891": { "title": "Internationalized Domain Names in Applications (IDNA): Protocol", "subseries": [] },
+    "rfc5892": {
+      "title": "The Unicode Code Points and Internationalized Domain Names for Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc5893": {
+      "title": "Right-to-Left Scripts for Internationalized Domain Names for Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc5894": {
+      "title": "Internationalized Domain Names for Applications (IDNA): Background, Explanation, and Rationale",
+      "subseries": []
+    },
+    "rfc5895": {
+      "title": "Mapping Characters for Internationalized Domain Names in Applications (IDNA) 2008",
+      "subseries": []
+    },
+    "rfc5983": { "title": "Mailing Lists and Internationalized Email Addresses", "subseries": [] },
+    "rfc5987": {
+      "title": "Character Set and Language Encoding for Hypertext Transfer Protocol (HTTP) Header Field Parameters",
+      "subseries": []
+    },
+    "rfc5992": {
+      "title": "Internationalized Domain Names Registration and Administration Guidelines for European Languages Using Cyrillic",
+      "subseries": []
+    },
+    "rfc6055": { "title": "IAB Thoughts on Encodings for Internationalized Domain Names", "subseries": [] },
+    "rfc6365": { "title": "Terminology Used in Internationalization in the IETF", "subseries": ["bcp166"] },
+    "rfc6409": { "title": "Message Submission for Mail", "subseries": ["std72"] },
+    "rfc6452": {
+      "title": "The Unicode Code Points and Internationalized Domain Names for Applications (IDNA) - Unicode 6.0",
+      "subseries": []
+    },
+    "rfc6530": { "title": "Overview and Framework for Internationalized Email", "subseries": [] },
+    "rfc6531": { "title": "SMTP Extension for Internationalized Email", "subseries": [] },
+    "rfc6532": { "title": "Internationalized Email Headers", "subseries": [] },
+    "rfc6533": { "title": "Internationalized Delivery Status and Disposition Notifications", "subseries": [] },
+    "rfc6570": { "title": "URI Template", "subseries": [] },
+    "rfc6783": { "title": "Mailing Lists and Non-ASCII Addresses", "subseries": [] },
+    "rfc6856": { "title": "Post Office Protocol Version 3 (POP3) Support for UTF-8", "subseries": [] },
+    "rfc6857": { "title": "Post-Delivery Message Downgrading for Internationalized Email Messages", "subseries": [] },
+    "rfc6858": { "title": "Simplified POP and IMAP Downgrading for Internationalized Email", "subseries": [] },
+    "rfc6885": {
+      "title": "Stringprep Revision and Problem Statement for the Preparation and Comparison of Internationalized Strings (PRECIS)",
+      "subseries": []
+    },
+    "rfc7564": {
+      "title": "PRECIS Framework: Preparation, Enforcement, and Comparison of Internationalized Strings in Application Protocols",
+      "subseries": []
+    },
+    "rfc7595": { "title": "Guidelines and Registration Procedures for URI Schemes", "subseries": ["bcp35"] },
+    "rfc7613": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords",
+      "subseries": []
+    },
+    "rfc7622": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc7700": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc7790": {
+      "title": "Mapping Characters for Classes of the Preparation, Enforcement, and Comparison of Internationalized Strings (PRECIS)",
+      "subseries": []
+    },
+    "rfc8255": { "title": "Multiple Language Content Type", "subseries": [] },
+    "rfc8264": {
+      "title": "PRECIS Framework: Preparation, Enforcement, and Comparison of Internationalized Strings in Application Protocols",
+      "subseries": []
+    },
+    "rfc8265": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords",
+      "subseries": []
+    },
+    "rfc8266": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc8373": { "title": "Negotiating Human Language in Real-Time Communications", "subseries": [] },
+    "rfc8398": { "title": "Internationalized Email Addresses in X.509 Certificates", "subseries": [] },
+    "rfc8399": { "title": "Internationalization Updates to RFC 5280", "subseries": [] },
+    "rfc8616": { "title": "Email Authentication for Internationalized Mail", "subseries": [] },
+    "rfc8753": {
+      "title": "Internationalized Domain Names for Applications (IDNA) Review for New Unicode Versions",
+      "subseries": []
+    },
+    "rfc9233": {
+      "title": "Internationalized Domain Names for Applications 2008 (IDNA2008) and Unicode 12.0.0",
+      "subseries": []
+    },
+    "rfc9549": { "title": "Internationalization Updates to RFC 5280", "subseries": [] },
+    "rfc9598": { "title": "Internationalized Email Addresses in X.509 Certificates", "subseries": [] }
+  },
+  "subject_meta": {
+    "data-formats": { "name": "Data Formats" },
+    "character-sets": { "name": "Character Sets" },
+    "language-tags": { "name": "Language Tags" },
+    "precis": { "name": "PRECIS" },
+    "unicode": { "name": "Unicode" },
+    "utf-8": { "name": "UTF-8" }
+  }
+}

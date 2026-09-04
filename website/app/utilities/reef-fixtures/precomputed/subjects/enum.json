@@ -1,0 +1,120 @@
+{
+  "id": 659,
+  "slug": "enum",
+  "name": "ENUM",
+  "description": "ENUM: E.164 telephone number mapping in the DNS",
+  "parent": "naming",
+  "path": "naming/enum",
+  "document_count": 33,
+  "document_count_deep": 33,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2916",
+    "rfc3026",
+    "rfc3245",
+    "rfc3482",
+    "rfc3761",
+    "rfc3762",
+    "rfc3764",
+    "rfc3953",
+    "rfc4002",
+    "rfc4114",
+    "rfc4143",
+    "rfc4355",
+    "rfc4414",
+    "rfc4415",
+    "rfc4725",
+    "rfc4759",
+    "rfc4769",
+    "rfc4969",
+    "rfc4979",
+    "rfc5028",
+    "rfc5067",
+    "rfc5076",
+    "rfc5105",
+    "rfc5278",
+    "rfc5333",
+    "rfc5346",
+    "rfc5483",
+    "rfc5526",
+    "rfc5527",
+    "rfc6116",
+    "rfc6117",
+    "rfc6118",
+    "rfc6315"
+  ],
+  "document_meta": {
+    "rfc2916": { "title": "E.164 number and DNS", "subseries": [] },
+    "rfc3026": { "title": "Liaison to IETF/ISOC on ENUM", "subseries": [] },
+    "rfc3245": {
+      "title": "The History and Context of Telephone Number Mapping (ENUM) Operational Decisions: Informational Documents Contributed to ITU-T Study Group 2 (SG2)",
+      "subseries": []
+    },
+    "rfc3482": {
+      "title": "Number Portability in the Global Switched Telephone Network (GSTN): An Overview",
+      "subseries": []
+    },
+    "rfc3761": {
+      "title": "The E.164 to Uniform Resource Identifiers (URI) Dynamic Delegation Discovery System (DDDS) Application (ENUM)",
+      "subseries": []
+    },
+    "rfc3762": { "title": "Telephone Number Mapping (ENUM) Service Registration for H.323", "subseries": [] },
+    "rfc3764": {
+      "title": "enumservice registration for Session Initiation Protocol (SIP) Addresses-of-Record",
+      "subseries": []
+    },
+    "rfc3953": {
+      "title": "Telephone Number Mapping (ENUM) Service Registration for Presence Services",
+      "subseries": []
+    },
+    "rfc4002": { "title": "IANA Registration for Enumservice 'web' and 'ft'", "subseries": [] },
+    "rfc4114": { "title": "E.164 Number Mapping for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc4143": { "title": "Facsimile Using Internet Mail (IFAX) Service of ENUM", "subseries": [] },
+    "rfc4355": { "title": "IANA Registration for Enumservices email, fax, mms, ems, and sms", "subseries": [] },
+    "rfc4414": {
+      "title": "An ENUM Registry Type for the Internet Registry Information Service (IRIS)",
+      "subseries": []
+    },
+    "rfc4415": { "title": "IANA Registration for Enumservice Voice", "subseries": [] },
+    "rfc4725": { "title": "ENUM Validation Architecture", "subseries": [] },
+    "rfc4759": { "title": "The ENUM Dip Indicator Parameter for the \"tel\" URI", "subseries": [] },
+    "rfc4769": {
+      "title": "IANA Registration for an Enumservice Containing Public Switched Telephone Network (PSTN) Signaling Information",
+      "subseries": []
+    },
+    "rfc4969": { "title": "IANA Registration for vCard Enumservice", "subseries": [] },
+    "rfc4979": { "title": "IANA Registration for Enumservice 'XMPP'", "subseries": [] },
+    "rfc5028": {
+      "title": "A Telephone Number Mapping (ENUM) Service Registration for Instant Messaging (IM) Services",
+      "subseries": []
+    },
+    "rfc5067": { "title": "Infrastructure ENUM Requirements", "subseries": [] },
+    "rfc5076": {
+      "title": "ENUM Validation Information Mapping for the Extensible Provisioning Protocol",
+      "subseries": []
+    },
+    "rfc5105": { "title": "ENUM Validation Token Format Definition", "subseries": [] },
+    "rfc5278": { "title": "IANA Registration of Enumservices for Voice and Video Messaging", "subseries": [] },
+    "rfc5333": { "title": "IANA Registration of Enumservices for Internet Calendaring", "subseries": [] },
+    "rfc5346": { "title": "Operational Requirements for ENUM-Based Softswitch Use", "subseries": [] },
+    "rfc5483": { "title": "ENUM Implementation Issues and Experiences", "subseries": [] },
+    "rfc5526": {
+      "title": "The E.164 to Uniform Resource Identifiers (URI) Dynamic Delegation Discovery System (DDDS) Application for Infrastructure ENUM",
+      "subseries": []
+    },
+    "rfc5527": { "title": "Combined User and Infrastructure ENUM in the e164.arpa Tree", "subseries": [] },
+    "rfc6116": {
+      "title": "The E.164 to Uniform Resource Identifiers (URI) Dynamic Delegation Discovery System (DDDS) Application (ENUM)",
+      "subseries": []
+    },
+    "rfc6117": {
+      "title": "IANA Registration of Enumservices: Guide, Template, and IANA Considerations",
+      "subseries": []
+    },
+    "rfc6118": { "title": "Update of Legacy IANA Registrations of Enumservices", "subseries": [] },
+    "rfc6315": { "title": "IANA Registration for Enumservice 'iax'", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

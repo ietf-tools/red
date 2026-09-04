@@ -1,18 +1,16 @@
 // @vitest-environment nuxt
 //
-// The /subjects/ index with Reef stubbed, so this runs with no Reef behind it.
+// The /subjects/ index with the published file stubbed, so this runs with no store behind it.
 //
-// registerEndpoint is what stands in for Reef. The `nuxt` environment replaces global fetch with
-// one that diverts any URL in its registry into a local h3 app, and it matches the whole URL rather
-// than just the path — so the absolute address ~/utilities/reef builds can be registered directly
-// and there is no proxy or server route in the way. A key that does not match that address exactly
-// is not an error: the request falls through to the real network and fails as a refused connection
-// to whatever reefBase names, so check the key first when a test fails that way.
+// The page reads Reef's blob store rather than its API — a server render never calls Reef — so
+// what is stubbed here is ~/utilities/reef-precomputed rather than an HTTP endpoint. The tests
+// still speak in a list of subjects, which is what the page works in; the helper below keys it by
+// slug on the way in, because that is the shape the file has.
 //
 // This mounts the page in happy-dom, which is a client render. It covers what the page does with
 // what Reef answers; it does not show that the server emitted the same markup.
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { mockNuxtImport, mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
+import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
 import { createError } from 'h3'
 import SubjectsIndexPage from './index.vue'
@@ -31,7 +29,9 @@ const STUBS = {
   FeatureFlagWall: { template: '<div><slot /></div>' }
 }
 
-const subjectsUrl = (): string => `${useRuntimeConfig().public.reefBase}/api/reef/subjects/`
+// Hoisted with the mock that uses it, because vi.mock's factory runs before the module body.
+const { fetchSubjectIndex } = vi.hoisted(() => ({ fetchSubjectIndex: vi.fn() }))
+vi.mock('~/utilities/reef-precomputed', () => ({ fetchSubjectIndex }))
 
 // A page left mounted goes on watching its filter, and the delay before it writes the URL outlives
 // the test that typed: unmounted here so that one test's keystroke cannot be another's navigation.
@@ -52,14 +52,20 @@ afterEach(() => {
   navigateTo.mockClear()
 })
 
+// The file keys its subjects by slug and carries the two arrays the list read does not, so the
+// list these tests are written in is turned into one on the way through. `documents` is empty
+// because a vocabulary sheet carries no assignments, which is what the real file looks like too.
 const reefAnswers = (subjects: Subject[]) => {
-  unregister = registerEndpoint(subjectsUrl(), () => subjects)
+  fetchSubjectIndex.mockResolvedValue({
+    documents: {},
+    subjects: Object.fromEntries(
+      subjects.map(({ slug, ...entry }) => [slug, { ...entry, children: [], documents: [] }])
+    )
+  })
 }
 
 const reefFails = (statusCode: number) => {
-  unregister = registerEndpoint(subjectsUrl(), () => {
-    throw createError({ statusCode })
-  })
+  fetchSubjectIndex.mockRejectedValue(createError({ statusCode }))
 }
 
 const renderPage = (route?: string) => mountSuspended(SubjectsIndexPage, { route, global: { stubs: STUBS } })

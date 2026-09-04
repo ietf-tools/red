@@ -1,0 +1,147 @@
+{
+  "id": 685,
+  "slug": "codecs",
+  "name": "Codecs",
+  "description": "Audio and video codec definitions and containers",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/codecs",
+  "document_count": 39,
+  "document_count_deep": 46,
+  "retired": false,
+  "children": ["ffv1", "matroska", "opus", "vp8"],
+  "aliases": [],
+  "documents": [
+    "rfc2361",
+    "rfc3441",
+    "rfc3533",
+    "rfc3951",
+    "rfc3952",
+    "rfc4281",
+    "rfc4348",
+    "rfc4352",
+    "rfc4424",
+    "rfc4425",
+    "rfc4749",
+    "rfc4788",
+    "rfc5104",
+    "rfc5188",
+    "rfc5404",
+    "rfc5459",
+    "rfc5574",
+    "rfc5686",
+    "rfc5993",
+    "rfc6262",
+    "rfc6366",
+    "rfc6381",
+    "rfc6569",
+    "rfc6716",
+    "rfc6884",
+    "rfc7587",
+    "rfc7742",
+    "rfc7845",
+    "rfc7874",
+    "rfc7875",
+    "rfc8082",
+    "rfc8130",
+    "rfc8251",
+    "rfc8761",
+    "rfc8817",
+    "rfc9607",
+    "rfc9639",
+    "rfc978",
+    "rfc9924"
+  ],
+  "document_meta": {
+    "rfc2361": { "title": "WAVE and AVI Codec Registries", "subseries": [] },
+    "rfc3441": {
+      "title": "Asynchronous Transfer Mode (ATM) Package for the Media Gateway Control Protocol (MGCP)",
+      "subseries": []
+    },
+    "rfc3533": { "title": "The Ogg Encapsulation Format Version 0", "subseries": [] },
+    "rfc3951": { "title": "Internet Low Bit Rate Codec (iLBC)", "subseries": [] },
+    "rfc3952": {
+      "title": "Real-time Transport Protocol (RTP) Payload Format for internet Low Bit Rate Codec (iLBC) Speech",
+      "subseries": []
+    },
+    "rfc4281": { "title": "The Codecs Parameter for \"Bucket\" Media Types", "subseries": [] },
+    "rfc4348": {
+      "title": "Real-Time Transport Protocol (RTP) Payload Format for the Variable-Rate Multimode Wideband (VMR-WB) Audio Codec",
+      "subseries": []
+    },
+    "rfc4352": {
+      "title": "RTP Payload Format for the Extended Adaptive Multi-Rate Wideband (AMR-WB+) Audio Codec",
+      "subseries": []
+    },
+    "rfc4424": {
+      "title": "Real-Time Transport Protocol (RTP) Payload Format for the Variable-Rate Multimode Wideband (VMR-WB) Extension Audio Codec",
+      "subseries": []
+    },
+    "rfc4425": { "title": "RTP Payload Format for Video Codec 1 (VC-1)", "subseries": [] },
+    "rfc4749": { "title": "RTP Payload Format for the G.729.1 Audio Codec", "subseries": [] },
+    "rfc4788": { "title": "Enhancements to RTP Payload Formats for EVRC Family Codecs", "subseries": [] },
+    "rfc5104": {
+      "title": "Codec Control Messages in the RTP Audio-Visual Profile with Feedback (AVPF)",
+      "subseries": []
+    },
+    "rfc5188": {
+      "title": "RTP Payload Format for the Enhanced Variable Rate Wideband Codec (EVRC-WB) and the Media Subtype Updates for EVRC-B Codec",
+      "subseries": []
+    },
+    "rfc5404": { "title": "RTP Payload Format for G.719", "subseries": [] },
+    "rfc5459": {
+      "title": "G.729.1 RTP Payload Format Update: Discontinuous Transmission (DTX) Support",
+      "subseries": []
+    },
+    "rfc5574": { "title": "RTP Payload Format for the Speex Codec", "subseries": [] },
+    "rfc5686": {
+      "title": "RTP Payload Format for mU-law EMbedded Codec for Low-delay IP Communication (UEMCLIP) Speech Codec",
+      "subseries": []
+    },
+    "rfc5993": {
+      "title": "RTP Payload Format for Global System for Mobile Communications Half Rate (GSM-HR)",
+      "subseries": []
+    },
+    "rfc6262": { "title": "RTP Payload Format for IP-MR Speech Codec", "subseries": [] },
+    "rfc6366": { "title": "Requirements for an Internet Audio Codec", "subseries": [] },
+    "rfc6381": { "title": "The 'Codecs' and 'Profiles' Parameters for \"Bucket\" Media Types", "subseries": [] },
+    "rfc6569": { "title": "Guidelines for Development of an Audio Codec within the IETF", "subseries": [] },
+    "rfc6716": { "title": "Definition of the Opus Audio Codec", "subseries": [] },
+    "rfc6884": {
+      "title": "RTP Payload Format for the Enhanced Variable Rate Narrowband-Wideband Codec (EVRC-NW)",
+      "subseries": []
+    },
+    "rfc7587": { "title": "RTP Payload Format for the Opus Speech and Audio Codec", "subseries": [] },
+    "rfc7742": { "title": "WebRTC Video Processing and Codec Requirements", "subseries": [] },
+    "rfc7845": { "title": "Ogg Encapsulation for the Opus Audio Codec", "subseries": [] },
+    "rfc7874": { "title": "WebRTC Audio Codec and Processing Requirements", "subseries": [] },
+    "rfc7875": { "title": "Additional WebRTC Audio Codecs for Interoperability", "subseries": [] },
+    "rfc8082": {
+      "title": "Using Codec Control Messages in the RTP Audio-Visual Profile with Feedback with Layered Codecs",
+      "subseries": []
+    },
+    "rfc8130": {
+      "title": "RTP Payload Format for the Mixed Excitation Linear Prediction Enhanced (MELPe) Codec",
+      "subseries": []
+    },
+    "rfc8251": { "title": "Updates to the Opus Audio Codec", "subseries": [] },
+    "rfc8761": { "title": "Video Codec Requirements and Evaluation Methodology", "subseries": [] },
+    "rfc8817": {
+      "title": "RTP Payload Format for Tactical Secure Voice Cryptographic Interoperability Specification (TSVCIS) Codec",
+      "subseries": []
+    },
+    "rfc9607": {
+      "title": "RTP Payload Format for the Secure Communication Interoperability Protocol (SCIP) Codec",
+      "subseries": []
+    },
+    "rfc9639": { "title": "Free Lossless Audio Codec (FLAC)", "subseries": [] },
+    "rfc978": { "title": "Voice File Interchange Protocol (VFIP)", "subseries": [] },
+    "rfc9924": { "title": "Advanced Professional Video", "subseries": [] }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "ffv1": { "name": "FFV1" },
+    "matroska": { "name": "Matroska" },
+    "opus": { "name": "Opus" },
+    "vp8": { "name": "VP8" }
+  }
+}

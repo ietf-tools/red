@@ -1,0 +1,94 @@
+{
+  "id": 702,
+  "slug": "detnet",
+  "name": "DetNet",
+  "description": "Deterministic networking: bounded latency and loss",
+  "parent": "routing",
+  "path": "routing/detnet",
+  "document_count": 26,
+  "document_count_deep": 26,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc8557",
+    "rfc8578",
+    "rfc8655",
+    "rfc8938",
+    "rfc8939",
+    "rfc8964",
+    "rfc9016",
+    "rfc9023",
+    "rfc9024",
+    "rfc9025",
+    "rfc9037",
+    "rfc9055",
+    "rfc9056",
+    "rfc9320",
+    "rfc9372",
+    "rfc9450",
+    "rfc9546",
+    "rfc9550",
+    "rfc9551",
+    "rfc9566",
+    "rfc9633",
+    "rfc9634",
+    "rfc9912",
+    "rfc9913",
+    "rfc9914",
+    "rfc9938"
+  ],
+  "document_meta": {
+    "rfc8557": { "title": "Deterministic Networking Problem Statement", "subseries": [] },
+    "rfc8578": { "title": "Deterministic Networking Use Cases", "subseries": [] },
+    "rfc8655": { "title": "Deterministic Networking Architecture", "subseries": [] },
+    "rfc8938": { "title": "Deterministic Networking (DetNet) Data Plane Framework", "subseries": [] },
+    "rfc8939": { "title": "Deterministic Networking (DetNet) Data Plane: IP", "subseries": [] },
+    "rfc8964": { "title": "Deterministic Networking (DetNet) Data Plane: MPLS", "subseries": [] },
+    "rfc9016": { "title": "Flow and Service Information Model for Deterministic Networking (DetNet)", "subseries": [] },
+    "rfc9023": {
+      "title": "Deterministic Networking (DetNet) Data Plane: IP over IEEE 802.1 Time-Sensitive Networking (TSN)",
+      "subseries": []
+    },
+    "rfc9024": {
+      "title": "Deterministic Networking (DetNet) Data Plane: IEEE 802.1 Time-Sensitive Networking over MPLS",
+      "subseries": []
+    },
+    "rfc9025": { "title": "Deterministic Networking (DetNet) Data Plane: MPLS over UDP/IP", "subseries": [] },
+    "rfc9037": {
+      "title": "Deterministic Networking (DetNet) Data Plane: MPLS over IEEE 802.1 Time-Sensitive Networking (TSN)",
+      "subseries": []
+    },
+    "rfc9055": { "title": "Deterministic Networking (DetNet) Security Considerations", "subseries": [] },
+    "rfc9056": { "title": "Deterministic Networking (DetNet) Data Plane: IP over MPLS", "subseries": [] },
+    "rfc9320": { "title": "Deterministic Networking (DetNet) Bounded Latency", "subseries": [] },
+    "rfc9372": { "title": "L-Band Digital Aeronautical Communications System (LDACS)", "subseries": [] },
+    "rfc9450": { "title": "Reliable and Available Wireless (RAW) Use Cases", "subseries": [] },
+    "rfc9546": {
+      "title": "Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet) with the MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9550": { "title": "Deterministic Networking (DetNet): Packet Ordering Function", "subseries": [] },
+    "rfc9551": {
+      "title": "Framework of Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet)",
+      "subseries": []
+    },
+    "rfc9566": {
+      "title": "Deterministic Networking (DetNet) Packet Replication, Elimination, and Ordering Functions (PREOF) via MPLS over UDP/IP",
+      "subseries": []
+    },
+    "rfc9633": { "title": "Deterministic Networking (DetNet) YANG Data Model", "subseries": [] },
+    "rfc9634": {
+      "title": "Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet) with the IP Data Plane",
+      "subseries": []
+    },
+    "rfc9912": { "title": "Reliable and Available Wireless (RAW) Architecture", "subseries": [] },
+    "rfc9913": { "title": "Reliable and Available Wireless (RAW) Technologies", "subseries": [] },
+    "rfc9914": {
+      "title": "Root-Initiated Routing State in the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    },
+    "rfc9938": { "title": "A Framework for the Deterministic Networking (DetNet) Controller Plane", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

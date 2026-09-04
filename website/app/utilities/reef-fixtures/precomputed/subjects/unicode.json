@@ -1,0 +1,113 @@
+{
+  "id": 818,
+  "slug": "unicode",
+  "name": "Unicode",
+  "description": "Unicode usage in Internet protocols",
+  "parent": "internationalization",
+  "path": "data-formats/internationalization/unicode",
+  "document_count": 31,
+  "document_count_deep": 31,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1641",
+    "rfc1642",
+    "rfc2044",
+    "rfc2152",
+    "rfc2279",
+    "rfc2482",
+    "rfc2781",
+    "rfc3454",
+    "rfc3467",
+    "rfc3492",
+    "rfc3629",
+    "rfc3718",
+    "rfc4013",
+    "rfc5051",
+    "rfc5137",
+    "rfc5198",
+    "rfc5335",
+    "rfc5892",
+    "rfc5895",
+    "rfc6055",
+    "rfc6067",
+    "rfc6082",
+    "rfc6409",
+    "rfc6452",
+    "rfc6912",
+    "rfc7373",
+    "rfc7613",
+    "rfc8265",
+    "rfc8753",
+    "rfc9233",
+    "rfc9839"
+  ],
+  "document_meta": {
+    "rfc1641": { "title": "Using Unicode with MIME", "subseries": [] },
+    "rfc1642": { "title": "UTF-7 - A Mail-Safe Transformation Format of Unicode", "subseries": [] },
+    "rfc2044": { "title": "UTF-8, a transformation format of Unicode and ISO 10646", "subseries": [] },
+    "rfc2152": { "title": "UTF-7 A Mail-Safe Transformation Format of Unicode", "subseries": [] },
+    "rfc2279": { "title": "UTF-8, a transformation format of ISO 10646", "subseries": [] },
+    "rfc2482": { "title": "Language Tagging in Unicode Plain Text", "subseries": [] },
+    "rfc2781": { "title": "UTF-16, an encoding of ISO 10646", "subseries": [] },
+    "rfc3454": { "title": "Preparation of Internationalized Strings (\"stringprep\")", "subseries": [] },
+    "rfc3467": { "title": "Role of the Domain Name System (DNS)", "subseries": [] },
+    "rfc3492": {
+      "title": "Punycode: A Bootstring encoding of Unicode for Internationalized Domain Names in Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc3629": { "title": "UTF-8, a transformation format of ISO 10646", "subseries": ["std63"] },
+    "rfc3718": {
+      "title": "A Summary of Unicode Consortium Procedures, Policies, Stability, and Public Access",
+      "subseries": []
+    },
+    "rfc4013": { "title": "SASLprep: Stringprep Profile for User Names and Passwords", "subseries": [] },
+    "rfc5051": { "title": "i;unicode-casemap - Simple Unicode Collation Algorithm", "subseries": [] },
+    "rfc5137": { "title": "ASCII Escaping of Unicode Characters", "subseries": ["bcp137"] },
+    "rfc5198": { "title": "Unicode Format for Network Interchange", "subseries": [] },
+    "rfc5335": { "title": "Internationalized Email Headers", "subseries": [] },
+    "rfc5892": {
+      "title": "The Unicode Code Points and Internationalized Domain Names for Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc5895": {
+      "title": "Mapping Characters for Internationalized Domain Names in Applications (IDNA) 2008",
+      "subseries": []
+    },
+    "rfc6055": { "title": "IAB Thoughts on Encodings for Internationalized Domain Names", "subseries": [] },
+    "rfc6067": { "title": "BCP 47 Extension U", "subseries": [] },
+    "rfc6082": { "title": "Deprecating Unicode Language Tag Characters: RFC 2482 is Historic", "subseries": [] },
+    "rfc6409": { "title": "Message Submission for Mail", "subseries": ["std72"] },
+    "rfc6452": {
+      "title": "The Unicode Code Points and Internationalized Domain Names for Applications (IDNA) - Unicode 6.0",
+      "subseries": []
+    },
+    "rfc6912": { "title": "Principles for Unicode Code Point Inclusion in Labels in the DNS", "subseries": [] },
+    "rfc7373": {
+      "title": "Textual Representation of IP Flow Information Export (IPFIX) Abstract Data Types",
+      "subseries": []
+    },
+    "rfc7613": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords",
+      "subseries": []
+    },
+    "rfc8265": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Usernames and Passwords",
+      "subseries": []
+    },
+    "rfc8753": {
+      "title": "Internationalized Domain Names for Applications (IDNA) Review for New Unicode Versions",
+      "subseries": []
+    },
+    "rfc9233": {
+      "title": "Internationalized Domain Names for Applications 2008 (IDNA2008) and Unicode 12.0.0",
+      "subseries": []
+    },
+    "rfc9839": { "title": "Unicode Character Repertoire Subsets", "subseries": [] }
+  },
+  "subject_meta": {
+    "data-formats": { "name": "Data Formats" },
+    "internationalization": { "name": "Internationalization" }
+  }
+}

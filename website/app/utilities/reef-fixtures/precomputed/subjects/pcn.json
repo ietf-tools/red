@@ -1,0 +1,41 @@
+{
+  "id": 979,
+  "slug": "pcn",
+  "name": "PCN",
+  "description": "Pre-congestion notification",
+  "parent": "congestion-control",
+  "path": "transport/congestion-control/pcn",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc5559", "rfc5670", "rfc5696", "rfc6627", "rfc6660", "rfc6661", "rfc6662", "rfc6663", "rfc7417"],
+  "document_meta": {
+    "rfc5559": { "title": "Pre-Congestion Notification (PCN) Architecture", "subseries": [] },
+    "rfc5670": { "title": "Metering and Marking Behaviour of PCN-Nodes", "subseries": [] },
+    "rfc5696": { "title": "Baseline Encoding and Transport of Pre-Congestion Information", "subseries": [] },
+    "rfc6627": { "title": "Overview of Pre-Congestion Notification Encoding", "subseries": [] },
+    "rfc6660": {
+      "title": "Encoding Three Pre-Congestion Notification (PCN) States in the IP Header Using a Single Diffserv Codepoint (DSCP)",
+      "subseries": []
+    },
+    "rfc6661": {
+      "title": "Pre-Congestion Notification (PCN) Boundary-Node Behavior for the Controlled Load (CL) Mode of Operation",
+      "subseries": []
+    },
+    "rfc6662": {
+      "title": "Pre-Congestion Notification (PCN) Boundary-Node Behavior for the Single Marking (SM) Mode of Operation",
+      "subseries": []
+    },
+    "rfc6663": {
+      "title": "Requirements for Signaling of Pre-Congestion Information in a Diffserv Domain",
+      "subseries": []
+    },
+    "rfc7417": {
+      "title": "Extensions to Generic Aggregate RSVP for IPv4 and IPv6 Reservations over Pre-Congestion Notification (PCN) Domains",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "congestion-control": { "name": "Congestion Control" } }
+}

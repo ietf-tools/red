@@ -1,0 +1,46 @@
+{
+  "id": 1022,
+  "slug": "norm",
+  "name": "NORM",
+  "description": "NACK-oriented reliable multicast",
+  "parent": "reliable-multicast",
+  "path": "routing/multicast/reliable-multicast/norm",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3940", "rfc3941", "rfc5740", "rfc5776", "rfc6584", "rfc6968", "rfc8095"],
+  "document_meta": {
+    "rfc3940": {
+      "title": "Negative-acknowledgment (NACK)-Oriented Reliable Multicast (NORM) Protocol",
+      "subseries": []
+    },
+    "rfc3941": {
+      "title": "Negative-Acknowledgment (NACK)-Oriented Reliable Multicast (NORM) Building Blocks",
+      "subseries": []
+    },
+    "rfc5740": { "title": "NACK-Oriented Reliable Multicast (NORM) Transport Protocol", "subseries": [] },
+    "rfc5776": {
+      "title": "Use of Timed Efficient Stream Loss-Tolerant Authentication (TESLA) in the Asynchronous Layered Coding (ALC) and NACK-Oriented Reliable Multicast (NORM) Protocols",
+      "subseries": []
+    },
+    "rfc6584": {
+      "title": "Simple Authentication Schemes for the Asynchronous Layered Coding (ALC) and NACK-Oriented Reliable Multicast (NORM) Protocols",
+      "subseries": []
+    },
+    "rfc6968": {
+      "title": "FCAST: Object Delivery for the Asynchronous Layered Coding (ALC) and NACK-Oriented Reliable Multicast (NORM) Protocols",
+      "subseries": []
+    },
+    "rfc8095": {
+      "title": "Services Provided by IETF Transport Protocols and Congestion Control Mechanisms",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "routing": { "name": "Routing" },
+    "multicast": { "name": "Multicast" },
+    "reliable-multicast": { "name": "Reliable Multicast" }
+  }
+}

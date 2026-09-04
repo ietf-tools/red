@@ -1,0 +1,51 @@
+{
+  "id": 653,
+  "slug": "netnews",
+  "name": "Netnews",
+  "description": "Netnews article format and distribution",
+  "parent": "messaging",
+  "path": "messaging/netnews",
+  "document_count": 15,
+  "document_count_deep": 21,
+  "retired": false,
+  "children": ["nntp"],
+  "aliases": [],
+  "documents": [
+    "rfc1036",
+    "rfc1580",
+    "rfc1739",
+    "rfc1849",
+    "rfc3864",
+    "rfc3977",
+    "rfc4707",
+    "rfc5536",
+    "rfc5537",
+    "rfc6048",
+    "rfc7259",
+    "rfc8054",
+    "rfc8143",
+    "rfc8315",
+    "rfc850"
+  ],
+  "document_meta": {
+    "rfc1036": { "title": "Standard for interchange of USENET messages", "subseries": [] },
+    "rfc1580": { "title": "Guide to Network Resource Tools", "subseries": ["fyi23"] },
+    "rfc1739": { "title": "A Primer On Internet and TCP/IP Tools", "subseries": [] },
+    "rfc1849": { "title": "\"Son of 1036\": News Article Format and Transmission", "subseries": [] },
+    "rfc3864": { "title": "Registration Procedures for Message Header Fields", "subseries": ["bcp90"] },
+    "rfc3977": { "title": "Network News Transfer Protocol (NNTP)", "subseries": [] },
+    "rfc4707": { "title": "Netnews Administration System (NAS)", "subseries": [] },
+    "rfc5536": { "title": "Netnews Article Format", "subseries": [] },
+    "rfc5537": { "title": "Netnews Architecture and Protocols", "subseries": [] },
+    "rfc6048": { "title": "Network News Transfer Protocol (NNTP) Additions to LIST Command", "subseries": [] },
+    "rfc7259": { "title": "The Jabber-ID Header Field", "subseries": [] },
+    "rfc8054": { "title": "Network News Transfer Protocol (NNTP) Extension for Compression", "subseries": [] },
+    "rfc8143": {
+      "title": "Using Transport Layer Security (TLS) with Network News Transfer Protocol (NNTP)",
+      "subseries": []
+    },
+    "rfc8315": { "title": "Cancel-Locks in Netnews Articles", "subseries": [] },
+    "rfc850": { "title": "Standard for interchange of USENET messages", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "nntp": { "name": "NNTP" } }
+}

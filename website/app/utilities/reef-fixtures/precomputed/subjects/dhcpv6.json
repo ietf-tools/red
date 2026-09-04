@@ -1,0 +1,230 @@
+{
+  "id": 828,
+  "slug": "dhcpv6",
+  "name": "DHCPv6",
+  "description": "DHCP for IPv6",
+  "parent": "dhcp",
+  "path": "internet-layer/dhcp/dhcpv6",
+  "document_count": 73,
+  "document_count_deep": 73,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10038",
+    "rfc3315",
+    "rfc3319",
+    "rfc3646",
+    "rfc3898",
+    "rfc4075",
+    "rfc4076",
+    "rfc4242",
+    "rfc4339",
+    "rfc4361",
+    "rfc4580",
+    "rfc4649",
+    "rfc4676",
+    "rfc4704",
+    "rfc4776",
+    "rfc4994",
+    "rfc5007",
+    "rfc5460",
+    "rfc5678",
+    "rfc5908",
+    "rfc5970",
+    "rfc6011",
+    "rfc6059",
+    "rfc6153",
+    "rfc6221",
+    "rfc6276",
+    "rfc6334",
+    "rfc6355",
+    "rfc6422",
+    "rfc6440",
+    "rfc6603",
+    "rfc6607",
+    "rfc6644",
+    "rfc6653",
+    "rfc6784",
+    "rfc6853",
+    "rfc6939",
+    "rfc6977",
+    "rfc7031",
+    "rfc7037",
+    "rfc7078",
+    "rfc7227",
+    "rfc7283",
+    "rfc7341",
+    "rfc7550",
+    "rfc7598",
+    "rfc7610",
+    "rfc7653",
+    "rfc7774",
+    "rfc7824",
+    "rfc7839",
+    "rfc7844",
+    "rfc7934",
+    "rfc7943",
+    "rfc7969",
+    "rfc8026",
+    "rfc8156",
+    "rfc8168",
+    "rfc8415",
+    "rfc8539",
+    "rfc8947",
+    "rfc8948",
+    "rfc8987",
+    "rfc9096",
+    "rfc9243",
+    "rfc9527",
+    "rfc9663",
+    "rfc9686",
+    "rfc9762",
+    "rfc9818",
+    "rfc9898",
+    "rfc9915",
+    "rfc9928"
+  ],
+  "document_meta": {
+    "rfc10038": { "title": "Distributing the Segment Routing over IPv6 (SRv6) Locator Using DHCPv6", "subseries": [] },
+    "rfc3315": { "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)", "subseries": [] },
+    "rfc3319": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv6) Options for Session Initiation Protocol (SIP) Servers",
+      "subseries": []
+    },
+    "rfc3646": {
+      "title": "DNS Configuration options for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc3898": {
+      "title": "Network Information Service (NIS) Configuration Options for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc4075": { "title": "Simple Network Time Protocol (SNTP) Configuration Option for DHCPv6", "subseries": [] },
+    "rfc4076": {
+      "title": "Renumbering Requirements for Stateless Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc4242": {
+      "title": "Information Refresh Time Option for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc4339": { "title": "IPv6 Host Configuration of DNS Server Information Approaches", "subseries": [] },
+    "rfc4361": {
+      "title": "Node-specific Client Identifiers for Dynamic Host Configuration Protocol Version Four (DHCPv4)",
+      "subseries": []
+    },
+    "rfc4580": {
+      "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6) Relay Agent Subscriber-ID Option",
+      "subseries": []
+    },
+    "rfc4649": {
+      "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6) Relay Agent Remote-ID Option",
+      "subseries": []
+    },
+    "rfc4676": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Option for Civic Addresses Configuration Information",
+      "subseries": []
+    },
+    "rfc4704": {
+      "title": "The Dynamic Host Configuration Protocol for IPv6 (DHCPv6) Client Fully Qualified Domain Name (FQDN) Option",
+      "subseries": []
+    },
+    "rfc4776": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Option for Civic Addresses Configuration Information",
+      "subseries": []
+    },
+    "rfc4994": { "title": "DHCPv6 Relay Agent Echo Request Option", "subseries": [] },
+    "rfc5007": { "title": "DHCPv6 Leasequery", "subseries": [] },
+    "rfc5460": { "title": "DHCPv6 Bulk Leasequery", "subseries": [] },
+    "rfc5678": {
+      "title": "Dynamic Host Configuration Protocol (DHCPv4 and DHCPv6) Options for IEEE 802.21 Mobility Services (MoS) Discovery",
+      "subseries": []
+    },
+    "rfc5908": { "title": "Network Time Protocol (NTP) Server Option for DHCPv6", "subseries": [] },
+    "rfc5970": { "title": "DHCPv6 Options for Network Boot", "subseries": [] },
+    "rfc6011": { "title": "Session Initiation Protocol (SIP) User Agent Configuration", "subseries": [] },
+    "rfc6059": { "title": "Simple Procedures for Detecting Network Attachment in IPv6", "subseries": [] },
+    "rfc6153": {
+      "title": "DHCPv4 and DHCPv6 Options for Access Network Discovery and Selection Function (ANDSF) Discovery",
+      "subseries": []
+    },
+    "rfc6221": { "title": "Lightweight DHCPv6 Relay Agent", "subseries": [] },
+    "rfc6276": { "title": "DHCPv6 Prefix Delegation for Network Mobility (NEMO)", "subseries": [] },
+    "rfc6334": {
+      "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6) Option for Dual-Stack Lite",
+      "subseries": []
+    },
+    "rfc6355": { "title": "Definition of the UUID-Based DHCPv6 Unique Identifier (DUID-UUID)", "subseries": [] },
+    "rfc6422": { "title": "Relay-Supplied DHCP Options", "subseries": [] },
+    "rfc6440": { "title": "The EAP Re-authentication Protocol (ERP) Local Domain Name DHCPv6 Option", "subseries": [] },
+    "rfc6603": { "title": "Prefix Exclude Option for DHCPv6-based Prefix Delegation", "subseries": [] },
+    "rfc6607": { "title": "Virtual Subnet Selection Options for DHCPv4 and DHCPv6", "subseries": [] },
+    "rfc6644": { "title": "Rebind Capability in DHCPv6 Reconfigure Messages", "subseries": [] },
+    "rfc6653": { "title": "DHCPv6 Prefix Delegation in Long-Term Evolution (LTE) Networks", "subseries": [] },
+    "rfc6784": { "title": "Kerberos Options for DHCPv6", "subseries": [] },
+    "rfc6853": { "title": "DHCPv6 Redundancy Deployment Considerations", "subseries": ["bcp180"] },
+    "rfc6939": { "title": "Client Link-Layer Address Option in DHCPv6", "subseries": [] },
+    "rfc6977": { "title": "Triggering DHCPv6 Reconfiguration from Relay Agents", "subseries": [] },
+    "rfc7031": { "title": "DHCPv6 Failover Requirements", "subseries": [] },
+    "rfc7037": { "title": "RADIUS Option for the DHCPv6 Relay Agent", "subseries": [] },
+    "rfc7078": { "title": "Distributing Address Selection Policy Using DHCPv6", "subseries": [] },
+    "rfc7227": { "title": "Guidelines for Creating New DHCPv6 Options", "subseries": ["bcp187"] },
+    "rfc7283": { "title": "Handling Unknown DHCPv6 Messages", "subseries": [] },
+    "rfc7341": { "title": "DHCPv4-over-DHCPv6 (DHCP 4o6) Transport", "subseries": [] },
+    "rfc7550": { "title": "Issues and Recommendations with Multiple Stateful DHCPv6 Options", "subseries": [] },
+    "rfc7598": {
+      "title": "DHCPv6 Options for Configuration of Softwire Address and Port-Mapped Clients",
+      "subseries": []
+    },
+    "rfc7610": { "title": "DHCPv6-Shield: Protecting against Rogue DHCPv6 Servers", "subseries": ["bcp199"] },
+    "rfc7653": { "title": "DHCPv6 Active Leasequery", "subseries": [] },
+    "rfc7774": {
+      "title": "Multicast Protocol for Low-Power and Lossy Networks (MPL) Parameter Configuration Option for DHCPv6",
+      "subseries": []
+    },
+    "rfc7824": { "title": "Privacy Considerations for DHCPv6", "subseries": [] },
+    "rfc7839": { "title": "Access-Network-Identifier Option in DHCP", "subseries": [] },
+    "rfc7844": { "title": "Anonymity Profiles for DHCP Clients", "subseries": [] },
+    "rfc7934": { "title": "Host Address Availability Recommendations", "subseries": ["bcp204"] },
+    "rfc7943": {
+      "title": "A Method for Generating Semantically Opaque Interface Identifiers (IIDs) with the Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc7969": { "title": "Customizing DHCP Configuration on the Basis of Network Topology", "subseries": [] },
+    "rfc8026": {
+      "title": "Unified IPv4-in-IPv6 Softwire Customer Premises Equipment (CPE): A DHCPv6-Based Prioritization Mechanism",
+      "subseries": []
+    },
+    "rfc8156": { "title": "DHCPv6 Failover Protocol", "subseries": [] },
+    "rfc8168": { "title": "DHCPv6 Prefix-Length Hint Issues", "subseries": [] },
+    "rfc8415": { "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)", "subseries": [] },
+    "rfc8539": { "title": "Softwire Provisioning Using DHCPv4 over DHCPv6", "subseries": [] },
+    "rfc8947": { "title": "Link-Layer Address Assignment Mechanism for DHCPv6", "subseries": [] },
+    "rfc8948": {
+      "title": "Structured Local Address Plan (SLAP) Quadrant Selection Option for DHCPv6",
+      "subseries": []
+    },
+    "rfc8987": { "title": "DHCPv6 Prefix Delegating Relay Requirements", "subseries": [] },
+    "rfc9096": {
+      "title": "Improving the Reaction of Customer Edge Routers to IPv6 Renumbering Events",
+      "subseries": ["bcp234"]
+    },
+    "rfc9243": { "title": "A YANG Data Model for DHCPv6 Configuration", "subseries": [] },
+    "rfc9527": { "title": "DHCPv6 Options for the Homenet Naming Authority", "subseries": [] },
+    "rfc9663": {
+      "title": "Using DHCPv6 Prefix Delegation (DHCPv6-PD) to Allocate Unique IPv6 Prefixes per Client in Large Broadcast Networks",
+      "subseries": []
+    },
+    "rfc9686": { "title": "Registering Self-Generated IPv6 Addresses Using DHCPv6", "subseries": [] },
+    "rfc9762": {
+      "title": "Using Router Advertisements to Signal the Availability of DHCPv6 Prefix Delegation to Clients",
+      "subseries": []
+    },
+    "rfc9818": { "title": "DHCPv6 Prefix Delegation on IPv6 Customer Edge (CE) Routers in LANs", "subseries": [] },
+    "rfc9898": { "title": "Neighbor Discovery Considerations in IPv6 Deployments", "subseries": [] },
+    "rfc9915": { "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)", "subseries": ["std102"] },
+    "rfc9928": { "title": "DHCPv4 over DHCPv6 with Relay Agent Support", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "dhcp": { "name": "DHCP" } }
+}

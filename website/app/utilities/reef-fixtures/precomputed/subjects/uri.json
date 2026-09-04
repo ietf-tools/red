@@ -1,0 +1,619 @@
+{
+  "id": 794,
+  "slug": "uri",
+  "name": "URI",
+  "description": "Uniform Resource Identifiers: syntax, schemes, resolution, templates",
+  "parent": "web",
+  "path": "web/uri",
+  "document_count": 206,
+  "document_count_deep": 250,
+  "retired": false,
+  "children": ["iri", "urn"],
+  "aliases": [],
+  "documents": [
+    "rfc1625",
+    "rfc1630",
+    "rfc1635",
+    "rfc1727",
+    "rfc1728",
+    "rfc1729",
+    "rfc1736",
+    "rfc1737",
+    "rfc1738",
+    "rfc1808",
+    "rfc1959",
+    "rfc1980",
+    "rfc2016",
+    "rfc2017",
+    "rfc2056",
+    "rfc2079",
+    "rfc2111",
+    "rfc2122",
+    "rfc2168",
+    "rfc2187",
+    "rfc2192",
+    "rfc2224",
+    "rfc2244",
+    "rfc2255",
+    "rfc2276",
+    "rfc2288",
+    "rfc2295",
+    "rfc2296",
+    "rfc2345",
+    "rfc2368",
+    "rfc2369",
+    "rfc2384",
+    "rfc2392",
+    "rfc2396",
+    "rfc2397",
+    "rfc2483",
+    "rfc2557",
+    "rfc2609",
+    "rfc2717",
+    "rfc2718",
+    "rfc2732",
+    "rfc2806",
+    "rfc2838",
+    "rfc2972",
+    "rfc3044",
+    "rfc3087",
+    "rfc3187",
+    "rfc3188",
+    "rfc3305",
+    "rfc3367",
+    "rfc3368",
+    "rfc3404",
+    "rfc3405",
+    "rfc3406",
+    "rfc3421",
+    "rfc3508",
+    "rfc3510",
+    "rfc3541",
+    "rfc3553",
+    "rfc3613",
+    "rfc3614",
+    "rfc3615",
+    "rfc3616",
+    "rfc3617",
+    "rfc3622",
+    "rfc3761",
+    "rfc3841",
+    "rfc3861",
+    "rfc3937",
+    "rfc3953",
+    "rfc3966",
+    "rfc3969",
+    "rfc3986",
+    "rfc3987",
+    "rfc4002",
+    "rfc4051",
+    "rfc4078",
+    "rfc4088",
+    "rfc4095",
+    "rfc4122",
+    "rfc4151",
+    "rfc4152",
+    "rfc4156",
+    "rfc4157",
+    "rfc4179",
+    "rfc4195",
+    "rfc4198",
+    "rfc4246",
+    "rfc4248",
+    "rfc4266",
+    "rfc4350",
+    "rfc4358",
+    "rfc4395",
+    "rfc4415",
+    "rfc4452",
+    "rfc4467",
+    "rfc4501",
+    "rfc4510",
+    "rfc4516",
+    "rfc4575",
+    "rfc4617",
+    "rfc4622",
+    "rfc4688",
+    "rfc4694",
+    "rfc4715",
+    "rfc4729",
+    "rfc4759",
+    "rfc4769",
+    "rfc4854",
+    "rfc4904",
+    "rfc4926",
+    "rfc4967",
+    "rfc5017",
+    "rfc5028",
+    "rfc5031",
+    "rfc5092",
+    "rfc5119",
+    "rfc5122",
+    "rfc5134",
+    "rfc5138",
+    "rfc5141",
+    "rfc5147",
+    "rfc5165",
+    "rfc5174",
+    "rfc5279",
+    "rfc5318",
+    "rfc5328",
+    "rfc5341",
+    "rfc5363",
+    "rfc5365",
+    "rfc5366",
+    "rfc5526",
+    "rfc5538",
+    "rfc5582",
+    "rfc5593",
+    "rfc5630",
+    "rfc5724",
+    "rfc5781",
+    "rfc5785",
+    "rfc5870",
+    "rfc5954",
+    "rfc5986",
+    "rfc6061",
+    "rfc6068",
+    "rfc6116",
+    "rfc6167",
+    "rfc6196",
+    "rfc6207",
+    "rfc6270",
+    "rfc6289",
+    "rfc6338",
+    "rfc6415",
+    "rfc6570",
+    "rfc6694",
+    "rfc6874",
+    "rfc6893",
+    "rfc6910",
+    "rfc6920",
+    "rfc6931",
+    "rfc6943",
+    "rfc6963",
+    "rfc7064",
+    "rfc7065",
+    "rfc7106",
+    "rfc7111",
+    "rfc7207",
+    "rfc7254",
+    "rfc7255",
+    "rfc7284",
+    "rfc7320",
+    "rfc7354",
+    "rfc7472",
+    "rfc7512",
+    "rfc7528",
+    "rfc7549",
+    "rfc7553",
+    "rfc7565",
+    "rfc7566",
+    "rfc7595",
+    "rfc7738",
+    "rfc7869",
+    "rfc8057",
+    "rfc8089",
+    "rfc8119",
+    "rfc8124",
+    "rfc8141",
+    "rfc8254",
+    "rfc8307",
+    "rfc8458",
+    "rfc8574",
+    "rfc8589",
+    "rfc8615",
+    "rfc8657",
+    "rfc8820",
+    "rfc8905",
+    "rfc8958",
+    "rfc8959",
+    "rfc9038",
+    "rfc9039",
+    "rfc9231",
+    "rfc9246",
+    "rfc9278",
+    "rfc9676",
+    "rfc9727",
+    "rfc9734",
+    "rfc9758"
+  ],
+  "document_meta": {
+    "rfc1625": { "title": "WAIS over Z39.50-1988", "subseries": [] },
+    "rfc1630": {
+      "title": "Universal Resource Identifiers in WWW: A Unifying Syntax for the Expression of Names and Addresses of Objects on the Network as used in the World-Wide Web",
+      "subseries": []
+    },
+    "rfc1635": { "title": "How to Use Anonymous FTP", "subseries": ["fyi24"] },
+    "rfc1727": { "title": "A Vision of an Integrated Internet Information Service", "subseries": [] },
+    "rfc1728": { "title": "Resource Transponders", "subseries": [] },
+    "rfc1729": { "title": "Using the Z39.50 Information Retrieval Protocol", "subseries": [] },
+    "rfc1736": { "title": "Functional Recommendations for Internet Resource Locators", "subseries": [] },
+    "rfc1737": { "title": "Functional Requirements for Uniform Resource Names", "subseries": [] },
+    "rfc1738": { "title": "Uniform Resource Locators (URL)", "subseries": [] },
+    "rfc1808": { "title": "Relative Uniform Resource Locators", "subseries": [] },
+    "rfc1959": { "title": "An LDAP URL Format", "subseries": [] },
+    "rfc1980": { "title": "A Proposed Extension to HTML : Client-Side Image Maps", "subseries": [] },
+    "rfc2016": { "title": "Uniform Resource Agents (URAs)", "subseries": [] },
+    "rfc2017": { "title": "Definition of the URL MIME External-Body Access-Type", "subseries": [] },
+    "rfc2056": { "title": "Uniform Resource Locators for Z39.50", "subseries": [] },
+    "rfc2079": {
+      "title": "Definition of an X.500 Attribute Type and an Object Class to Hold Uniform Resource Identifiers (URIs)",
+      "subseries": []
+    },
+    "rfc2111": { "title": "Content-ID and Message-ID Uniform Resource Locators", "subseries": [] },
+    "rfc2122": { "title": "VEMMI URL Specification", "subseries": [] },
+    "rfc2168": { "title": "Resolution of Uniform Resource Identifiers using the Domain Name System", "subseries": [] },
+    "rfc2187": { "title": "Application of Internet Cache Protocol (ICP), version 2", "subseries": [] },
+    "rfc2192": { "title": "IMAP URL Scheme", "subseries": [] },
+    "rfc2224": { "title": "NFS URL Scheme", "subseries": [] },
+    "rfc2244": { "title": "ACAP -- Application Configuration Access Protocol", "subseries": [] },
+    "rfc2255": { "title": "The LDAP URL Format", "subseries": [] },
+    "rfc2276": { "title": "Architectural Principles of Uniform Resource Name Resolution", "subseries": [] },
+    "rfc2288": { "title": "Using Existing Bibliographic Identifiers as Uniform Resource Names", "subseries": [] },
+    "rfc2295": { "title": "Transparent Content Negotiation in HTTP", "subseries": [] },
+    "rfc2296": { "title": "HTTP Remote Variant Selection Algorithm -- RVSA/1.0", "subseries": [] },
+    "rfc2345": { "title": "Domain Names and Company Name Retrieval", "subseries": [] },
+    "rfc2368": { "title": "The mailto URL scheme", "subseries": [] },
+    "rfc2369": {
+      "title": "The Use of URLs as Meta-Syntax for Core Mail List Commands and their Transport through Message Header Fields",
+      "subseries": []
+    },
+    "rfc2384": { "title": "POP URL Scheme", "subseries": [] },
+    "rfc2392": { "title": "Content-ID and Message-ID Uniform Resource Locators", "subseries": [] },
+    "rfc2396": { "title": "Uniform Resource Identifiers (URI): Generic Syntax", "subseries": [] },
+    "rfc2397": { "title": "The \"data\" URL scheme", "subseries": [] },
+    "rfc2483": { "title": "URI Resolution Services Necessary for URN Resolution", "subseries": [] },
+    "rfc2557": { "title": "MIME Encapsulation of Aggregate Documents, such as HTML (MHTML)", "subseries": [] },
+    "rfc2609": { "title": "Service Templates and Service: Schemes", "subseries": [] },
+    "rfc2717": { "title": "Registration Procedures for URL Scheme Names", "subseries": [] },
+    "rfc2718": { "title": "Guidelines for new URL Schemes", "subseries": [] },
+    "rfc2732": { "title": "Format for Literal IPv6 Addresses in URL's", "subseries": [] },
+    "rfc2806": { "title": "URLs for Telephone Calls", "subseries": [] },
+    "rfc2838": { "title": "Uniform Resource Identifiers for Television Broadcasts", "subseries": [] },
+    "rfc2972": { "title": "Context and Goals for Common Name Resolution", "subseries": [] },
+    "rfc3044": {
+      "title": "Using The ISSN (International Serial Standard Number) as URN (Uniform Resource Names) within an ISSN-URN Namespace",
+      "subseries": []
+    },
+    "rfc3087": { "title": "Control of Service Context using SIP Request-URI", "subseries": [] },
+    "rfc3187": { "title": "Using International Standard Book Numbers as Uniform Resource Names", "subseries": [] },
+    "rfc3188": { "title": "Using National Bibliography Numbers as Uniform Resource Names", "subseries": [] },
+    "rfc3305": {
+      "title": "Report from the Joint W3C/IETF URI Planning Interest Group: Uniform Resource Identifiers (URIs), URLs, and Uniform Resource Names (URNs): Clarifications and Recommendations",
+      "subseries": []
+    },
+    "rfc3367": { "title": "Common Name Resolution Protocol (CNRP)", "subseries": [] },
+    "rfc3368": { "title": "The 'go' URI Scheme for the Common Name Resolution Protocol", "subseries": [] },
+    "rfc3404": {
+      "title": "Dynamic Delegation Discovery System (DDDS) Part Four: The Uniform Resource Identifiers (URI)",
+      "subseries": []
+    },
+    "rfc3405": {
+      "title": "Dynamic Delegation Discovery System (DDDS) Part Five: URI.ARPA Assignment Procedures",
+      "subseries": ["bcp65"]
+    },
+    "rfc3406": { "title": "Uniform Resource Names (URN) Namespace Definition Mechanisms", "subseries": [] },
+    "rfc3421": { "title": "Select and Sort Extensions for the Service Location Protocol (SLP)", "subseries": [] },
+    "rfc3508": { "title": "H.323 Uniform Resource Locator (URL) Scheme Registration", "subseries": [] },
+    "rfc3510": { "title": "Internet Printing Protocol/1.1: IPP URL Scheme", "subseries": [] },
+    "rfc3541": { "title": "A Uniform Resource Name (URN) Namespace for the Web3D Consortium (Web3D)", "subseries": [] },
+    "rfc3553": { "title": "An IETF URN Sub-namespace for Registered Protocol Parameters", "subseries": ["bcp73"] },
+    "rfc3613": {
+      "title": "Definition of a Uniform Resource Name (URN) Namespace for the Middleware Architecture Committee for Education (MACE)",
+      "subseries": []
+    },
+    "rfc3614": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Motion Picture Experts Group (MPEG)",
+      "subseries": []
+    },
+    "rfc3615": { "title": "A Uniform Resource Name (URN) Namespace for SWIFT Financial Messaging", "subseries": [] },
+    "rfc3616": {
+      "title": "A Uniform Resource Name (URN) Namespace for Foundation for Intelligent Physical Agents (FIPA)",
+      "subseries": []
+    },
+    "rfc3617": {
+      "title": "Uniform Resource Identifier (URI) Scheme and Applicability Statement for the Trivial File Transfer Protocol (TFTP)",
+      "subseries": []
+    },
+    "rfc3622": { "title": "A Uniform Resource Name (URN) Namespace for the Liberty Alliance Project", "subseries": [] },
+    "rfc3761": {
+      "title": "The E.164 to Uniform Resource Identifiers (URI) Dynamic Delegation Discovery System (DDDS) Application (ENUM)",
+      "subseries": []
+    },
+    "rfc3841": { "title": "Caller Preferences for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc3861": { "title": "Address Resolution for Instant Messaging and Presence", "subseries": [] },
+    "rfc3937": {
+      "title": "A Uniform Resource Name (URN) Namespace for the International Press Telecommunications Council (IPTC)",
+      "subseries": []
+    },
+    "rfc3953": {
+      "title": "Telephone Number Mapping (ENUM) Service Registration for Presence Services",
+      "subseries": []
+    },
+    "rfc3966": { "title": "The tel URI for Telephone Numbers", "subseries": [] },
+    "rfc3969": {
+      "title": "The Internet Assigned Number Authority (IANA) Uniform Resource Identifier (URI) Parameter Registry for the Session Initiation Protocol (SIP)",
+      "subseries": ["bcp99"]
+    },
+    "rfc3986": { "title": "Uniform Resource Identifier (URI): Generic Syntax", "subseries": ["std66"] },
+    "rfc3987": { "title": "Internationalized Resource Identifiers (IRIs)", "subseries": [] },
+    "rfc4002": { "title": "IANA Registration for Enumservice 'web' and 'ft'", "subseries": [] },
+    "rfc4051": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc4078": { "title": "The TV-Anytime Content Reference Identifier (CRID)", "subseries": [] },
+    "rfc4088": {
+      "title": "Uniform Resource Identifier (URI) Scheme for the Simple Network Management Protocol (SNMP)",
+      "subseries": []
+    },
+    "rfc4095": { "title": "Attaching Meaning to Solicitation Class Keywords", "subseries": [] },
+    "rfc4122": { "title": "A Universally Unique IDentifier (UUID) URN Namespace", "subseries": [] },
+    "rfc4151": { "title": "The 'tag' URI Scheme", "subseries": [] },
+    "rfc4152": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Common Language Equipment Identifier (CLEI) Code",
+      "subseries": []
+    },
+    "rfc4156": { "title": "The wais URI Scheme", "subseries": [] },
+    "rfc4157": { "title": "The prospero URI Scheme", "subseries": [] },
+    "rfc4179": { "title": "Using Universal Content Identifier (UCI) as Uniform Resource Names (URN)", "subseries": [] },
+    "rfc4195": { "title": "A Uniform Resource Name (URN) Namespace for the TV-Anytime Forum", "subseries": [] },
+    "rfc4198": { "title": "A Uniform Resource Name (URN) Namespace for Federated Content", "subseries": [] },
+    "rfc4246": { "title": "International Standard Audiovisual Number (ISAN) URN Definition", "subseries": [] },
+    "rfc4248": { "title": "The telnet URI Scheme", "subseries": [] },
+    "rfc4266": { "title": "The gopher URI Scheme", "subseries": [] },
+    "rfc4350": {
+      "title": "A Uniform Resource Name (URN) Formal Namespace for the New Zealand Government",
+      "subseries": []
+    },
+    "rfc4358": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Open Mobile Alliance (OMA)",
+      "subseries": []
+    },
+    "rfc4395": { "title": "Guidelines and Registration Procedures for New URI Schemes", "subseries": [] },
+    "rfc4415": { "title": "IANA Registration for Enumservice Voice", "subseries": [] },
+    "rfc4452": {
+      "title": "The \"info\" URI Scheme for Information Assets with Identifiers in Public Namespaces",
+      "subseries": []
+    },
+    "rfc4467": { "title": "Internet Message Access Protocol (IMAP) - URLAUTH Extension", "subseries": [] },
+    "rfc4501": { "title": "Domain Name System Uniform Resource Identifiers", "subseries": [] },
+    "rfc4510": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Technical Specification Road Map",
+      "subseries": []
+    },
+    "rfc4516": { "title": "Lightweight Directory Access Protocol (LDAP): Uniform Resource Locator", "subseries": [] },
+    "rfc4575": { "title": "A Session Initiation Protocol (SIP) Event Package for Conference State", "subseries": [] },
+    "rfc4617": {
+      "title": "A Uniform Resource Name (URN) Formal Namespace for the Latvian National Government Integration Project",
+      "subseries": []
+    },
+    "rfc4622": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4688": {
+      "title": "A Uniform Resource Name (URN) Namespace for Aerospace and Defence Industries Association of Europe (ASD) Specification 1000D",
+      "subseries": []
+    },
+    "rfc4694": { "title": "Number Portability Parameters for the \"tel\" URI", "subseries": [] },
+    "rfc4715": {
+      "title": "The Integrated Services Digital Network (ISDN) Subaddress Encoding Type for tel URI",
+      "subseries": []
+    },
+    "rfc4729": {
+      "title": "A Uniform Resource Name (URN) Namespace for  the Near Field Communication (NFC) Forum",
+      "subseries": []
+    },
+    "rfc4759": { "title": "The ENUM Dip Indicator Parameter for the \"tel\" URI", "subseries": [] },
+    "rfc4769": {
+      "title": "IANA Registration for an Enumservice Containing Public Switched Telephone Network (PSTN) Signaling Information",
+      "subseries": []
+    },
+    "rfc4854": {
+      "title": "A Uniform Resource Name (URN) Namespace for Extensions to the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4904": { "title": "Representing Trunk Groups in tel/sip Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc4926": { "title": "A URN Namespace for GEANT", "subseries": [] },
+    "rfc4967": {
+      "title": "Dial String Parameter for the Session Initiation Protocol Uniform Resource Identifier",
+      "subseries": []
+    },
+    "rfc5017": { "title": "MIB Textual Conventions for Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc5028": {
+      "title": "A Telephone Number Mapping (ENUM) Service Registration for Instant Messaging (IM) Services",
+      "subseries": []
+    },
+    "rfc5031": {
+      "title": "A Uniform Resource Name (URN) for Emergency and Other Well-Known Services",
+      "subseries": []
+    },
+    "rfc5092": { "title": "IMAP URL Scheme", "subseries": [] },
+    "rfc5119": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Society of Motion Picture and Television Engineers (SMPTE)",
+      "subseries": []
+    },
+    "rfc5122": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc5134": {
+      "title": "A Uniform Resource Name Namespace for the EPCglobal Electronic Product Code (EPC) and Related Standards",
+      "subseries": []
+    },
+    "rfc5138": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Commission for the Management and Application of Geoscience Information (CGI)",
+      "subseries": []
+    },
+    "rfc5141": {
+      "title": "A Uniform Resource Name (URN) Namespace for the International Organization for Standardization (ISO)",
+      "subseries": []
+    },
+    "rfc5147": { "title": "URI Fragment Identifiers for the text/plain Media Type", "subseries": [] },
+    "rfc5165": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Open Geospatial Consortium (OGC)",
+      "subseries": []
+    },
+    "rfc5174": {
+      "title": "A Uniform Resource Name (URN) Namespace for the European Broadcasting Union (EBU)",
+      "subseries": []
+    },
+    "rfc5279": {
+      "title": "A Uniform Resource Name (URN) Namespace for the 3rd Generation Partnership Project (3GPP)",
+      "subseries": []
+    },
+    "rfc5318": {
+      "title": "The Session Initiation Protocol (SIP) P-Refused-URI-List Private-Header (P-Header)",
+      "subseries": []
+    },
+    "rfc5328": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Digital Video Broadcasting Project (DVB)",
+      "subseries": []
+    },
+    "rfc5341": {
+      "title": "The Internet Assigned Number Authority (IANA) tel Uniform Resource Identifier (URI) Parameter Registry",
+      "subseries": []
+    },
+    "rfc5363": {
+      "title": "Framework and Security Considerations for Session Initiation Protocol (SIP) URI-List Services",
+      "subseries": []
+    },
+    "rfc5365": {
+      "title": "Multiple-Recipient MESSAGE Requests in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5366": {
+      "title": "Conference Establishment Using Request-Contained Lists in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5526": {
+      "title": "The E.164 to Uniform Resource Identifiers (URI) Dynamic Delegation Discovery System (DDDS) Application for Infrastructure ENUM",
+      "subseries": []
+    },
+    "rfc5538": { "title": "The 'news' and 'nntp' URI Schemes", "subseries": [] },
+    "rfc5582": { "title": "Location-to-URL Mapping Architecture and Framework", "subseries": [] },
+    "rfc5593": {
+      "title": "Internet Message Access Protocol (IMAP) - URL Access Identifier Extension",
+      "subseries": []
+    },
+    "rfc5630": { "title": "The Use of the SIPS URI Scheme in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5724": {
+      "title": "URI Scheme for Global System for Mobile Communications (GSM) Short Message Service (SMS)",
+      "subseries": []
+    },
+    "rfc5781": { "title": "The rsync URI Scheme", "subseries": [] },
+    "rfc5785": { "title": "Defining Well-Known Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc5870": { "title": "A Uniform Resource Identifier for Geographic Locations ('geo' URI)", "subseries": [] },
+    "rfc5954": { "title": "Essential Correction for IPv6 ABNF and URI Comparison in RFC 3261", "subseries": [] },
+    "rfc5986": { "title": "Discovering the Local Location Information Server (LIS)", "subseries": [] },
+    "rfc6061": {
+      "title": "Uniform Resource Name (URN) Namespace for the National Emergency Number Association (NENA)",
+      "subseries": []
+    },
+    "rfc6068": { "title": "The 'mailto' URI Scheme", "subseries": [] },
+    "rfc6116": {
+      "title": "The E.164 to Uniform Resource Identifiers (URI) Dynamic Delegation Discovery System (DDDS) Application (ENUM)",
+      "subseries": []
+    },
+    "rfc6167": { "title": "URI Scheme for Java(tm) Message Service 1.0", "subseries": [] },
+    "rfc6196": { "title": "Moving mailserver: URI Scheme to Historic", "subseries": [] },
+    "rfc6207": {
+      "title": "The Media Types application/mods+xml, application/mads+xml, application/mets+xml, application/marcxml+xml, and application/sru+xml",
+      "subseries": []
+    },
+    "rfc6270": { "title": "The 'tn3270' URI Scheme", "subseries": [] },
+    "rfc6289": { "title": "A Uniform Resource Name (URN) Namespace for CableLabs", "subseries": [] },
+    "rfc6338": {
+      "title": "Definition of a Uniform Resource Name (URN) Namespace for the Schema for Academia (SCHAC)",
+      "subseries": []
+    },
+    "rfc6415": { "title": "Web Host Metadata", "subseries": [] },
+    "rfc6570": { "title": "URI Template", "subseries": [] },
+    "rfc6694": { "title": "The \"about\" URI Scheme", "subseries": [] },
+    "rfc6874": {
+      "title": "Representing IPv6 Zone Identifiers in Address Literals and Uniform Resource Identifiers",
+      "subseries": []
+    },
+    "rfc6893": { "title": "A Uniform Resource Name (URN) Namespace for the Open IPTV Forum (OIPF)", "subseries": [] },
+    "rfc6910": { "title": "Completion of Calls for the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc6920": { "title": "Naming Things with Hashes", "subseries": [] },
+    "rfc6931": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc6943": { "title": "Issues in Identifier Comparison for Security Purposes", "subseries": [] },
+    "rfc6963": { "title": "A Uniform Resource Name (URN) Namespace for Examples", "subseries": ["bcp183"] },
+    "rfc7064": { "title": "URI Scheme for the Session Traversal Utilities for NAT (STUN) Protocol", "subseries": [] },
+    "rfc7065": { "title": "Traversal Using Relays around NAT (TURN) Uniform Resource Identifiers", "subseries": [] },
+    "rfc7106": {
+      "title": "A Group Text Chat Purpose for Conference and Service URIs in the SIP Event Package for Conference State",
+      "subseries": []
+    },
+    "rfc7111": { "title": "URI Fragment Identifiers for the text/csv Media Type", "subseries": [] },
+    "rfc7207": { "title": "A Uniform Resource Name (URN) Namespace for Eurosystem Messaging", "subseries": [] },
+    "rfc7254": {
+      "title": "A Uniform Resource Name Namespace for the Global System for Mobile Communications Association (GSMA) and the International Mobile station Equipment Identity (IMEI)",
+      "subseries": []
+    },
+    "rfc7255": {
+      "title": "Using the International Mobile station Equipment Identity (IMEI) Uniform Resource Name (URN) as an Instance ID",
+      "subseries": []
+    },
+    "rfc7284": { "title": "The Profile URI Registry", "subseries": [] },
+    "rfc7320": { "title": "URI Design and Ownership", "subseries": [] },
+    "rfc7354": {
+      "title": "Update to the Registrant Information for the Digital Video Broadcasting Project (DVB) Uniform Resource Name (URN) Namespace",
+      "subseries": []
+    },
+    "rfc7472": {
+      "title": "Internet Printing Protocol (IPP) over HTTPS Transport Binding and the 'ipps' URI Scheme",
+      "subseries": []
+    },
+    "rfc7512": { "title": "The PKCS #11 URI Scheme", "subseries": [] },
+    "rfc7528": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Hybrid Broadcast Broadband TV (HbbTV) Association",
+      "subseries": []
+    },
+    "rfc7549": { "title": "3GPP SIP URI Inter-Operator Traffic Leg Parameter", "subseries": [] },
+    "rfc7553": { "title": "The Uniform Resource Identifier (URI) DNS Resource Record", "subseries": [] },
+    "rfc7565": { "title": "The 'acct' URI Scheme", "subseries": [] },
+    "rfc7566": { "title": "Enumservice Registration for 'acct' URI", "subseries": [] },
+    "rfc7595": { "title": "Guidelines and Registration Procedures for URI Schemes", "subseries": ["bcp35"] },
+    "rfc7738": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Consultative Committee for Space Data Systems (CCSDS)",
+      "subseries": []
+    },
+    "rfc7869": { "title": "The \"vnc\" URI Scheme", "subseries": [] },
+    "rfc8057": { "title": "Uniform Resource Name (URN) Namespaces for Broadband Forum", "subseries": [] },
+    "rfc8089": { "title": "The \"file\" URI Scheme", "subseries": [] },
+    "rfc8119": { "title": "SIP \"cause\" URI Parameter for Service Number Translation", "subseries": [] },
+    "rfc8124": {
+      "title": "The Session Description Protocol (SDP) WebSocket Connection URI Attribute",
+      "subseries": []
+    },
+    "rfc8141": { "title": "Uniform Resource Names (URNs)", "subseries": [] },
+    "rfc8254": { "title": "Uniform Resource Name (URN) Namespace Registration Transition", "subseries": [] },
+    "rfc8307": { "title": "Well-Known URIs for the WebSocket Protocol", "subseries": [] },
+    "rfc8458": { "title": "Using National Bibliography Numbers as Uniform Resource Names", "subseries": [] },
+    "rfc8574": { "title": "cite-as: A Link Relation to Convey a Preferred URI for Referencing", "subseries": [] },
+    "rfc8589": { "title": "The 'leaptofrogans' URI Scheme", "subseries": [] },
+    "rfc8615": { "title": "Well-Known Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc8657": {
+      "title": "Certification Authority Authorization (CAA) Record Extensions for Account URI and Automatic Certificate Management Environment (ACME) Method Binding",
+      "subseries": []
+    },
+    "rfc8820": { "title": "URI Design and Ownership", "subseries": ["bcp190"] },
+    "rfc8905": { "title": "The 'payto' URI Scheme for Payments", "subseries": [] },
+    "rfc8958": { "title": "Updated Registration Rules for URI.ARPA", "subseries": ["bcp65"] },
+    "rfc8959": { "title": "The \"secret-token\" URI Scheme", "subseries": [] },
+    "rfc9038": { "title": "Extensible Provisioning Protocol (EPP) Unhandled Namespaces", "subseries": [] },
+    "rfc9039": { "title": "Uniform Resource Names for Device Identifiers", "subseries": [] },
+    "rfc9231": { "title": "Additional XML Security Uniform Resource Identifiers (URIs)", "subseries": [] },
+    "rfc9246": { "title": "URI Signing for Content Delivery Network Interconnection (CDNI)", "subseries": [] },
+    "rfc9278": { "title": "JWK Thumbprint URI", "subseries": [] },
+    "rfc9676": { "title": "LEX: A Uniform Resource Name (URN) Namespace for Sources of Law", "subseries": [] },
+    "rfc9727": {
+      "title": "api-catalog: A Well-Known URI and Link Relation to Help Discovery of APIs",
+      "subseries": []
+    },
+    "rfc9734": { "title": "X.509 Certificate Extended Key Usage (EKU) for Instant Messaging URIs", "subseries": [] },
+    "rfc9758": { "title": "Updates to the 'ipn' URI Scheme", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "iri": { "name": "IRI" }, "urn": { "name": "URN" } }
+}

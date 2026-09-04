@@ -1,0 +1,19 @@
+{
+  "id": 793,
+  "slug": "robots-txt",
+  "name": "robots.txt",
+  "description": "The Robots Exclusion Protocol (robots.txt)",
+  "parent": "web",
+  "path": "web/robots-txt",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9309", "rfc9969"],
+  "document_meta": {
+    "rfc9309": { "title": "Robots Exclusion Protocol", "subseries": [] },
+    "rfc9969": { "title": "Report from the IAB Workshop on AI-CONTROL", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" } }
+}

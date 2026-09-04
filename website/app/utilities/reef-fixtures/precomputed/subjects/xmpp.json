@@ -1,0 +1,148 @@
+{
+  "id": 859,
+  "slug": "xmpp",
+  "name": "XMPP",
+  "description": "Extensible Messaging and Presence Protocol",
+  "parent": "instant-messaging",
+  "path": "messaging/instant-messaging/xmpp",
+  "document_count": 32,
+  "document_count_deep": 32,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3920",
+    "rfc3921",
+    "rfc3922",
+    "rfc3923",
+    "rfc4622",
+    "rfc4854",
+    "rfc4979",
+    "rfc5122",
+    "rfc5437",
+    "rfc6120",
+    "rfc6121",
+    "rfc6122",
+    "rfc7081",
+    "rfc7165",
+    "rfc7247",
+    "rfc7248",
+    "rfc7259",
+    "rfc7340",
+    "rfc7395",
+    "rfc7572",
+    "rfc7573",
+    "rfc7590",
+    "rfc7622",
+    "rfc7649",
+    "rfc7700",
+    "rfc7702",
+    "rfc7711",
+    "rfc7712",
+    "rfc8048",
+    "rfc8266",
+    "rfc8284",
+    "rfc8600"
+  ],
+  "document_meta": {
+    "rfc3920": { "title": "Extensible Messaging and Presence Protocol (XMPP): Core", "subseries": [] },
+    "rfc3921": {
+      "title": "Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence",
+      "subseries": []
+    },
+    "rfc3922": {
+      "title": "Mapping the Extensible Messaging and Presence Protocol (XMPP) to Common Presence and Instant Messaging (CPIM)",
+      "subseries": []
+    },
+    "rfc3923": {
+      "title": "End-to-End Signing and Object Encryption for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4622": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4854": {
+      "title": "A Uniform Resource Name (URN) Namespace for Extensions to the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4979": { "title": "IANA Registration for Enumservice 'XMPP'", "subseries": [] },
+    "rfc5122": {
+      "title": "Internationalized Resource Identifiers (IRIs) and Uniform Resource Identifiers (URIs) for the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc5437": {
+      "title": "Sieve Notification Mechanism: Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc6120": { "title": "Extensible Messaging and Presence Protocol (XMPP): Core", "subseries": [] },
+    "rfc6121": {
+      "title": "Extensible Messaging and Presence Protocol (XMPP): Instant Messaging and Presence",
+      "subseries": []
+    },
+    "rfc6122": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc7081": {
+      "title": "CUSAX: Combined Use of the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7165": { "title": "Use Cases and Requirements for JSON Object Signing and Encryption (JOSE)", "subseries": [] },
+    "rfc7247": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Architecture, Addresses, and Error Handling",
+      "subseries": []
+    },
+    "rfc7248": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Presence",
+      "subseries": []
+    },
+    "rfc7259": { "title": "The Jabber-ID Header Field", "subseries": [] },
+    "rfc7340": { "title": "Secure Telephone Identity Problem Statement and Requirements", "subseries": [] },
+    "rfc7395": {
+      "title": "An Extensible Messaging and Presence Protocol (XMPP) Subprotocol for WebSocket",
+      "subseries": []
+    },
+    "rfc7572": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Instant Messaging",
+      "subseries": []
+    },
+    "rfc7573": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): One-to-One Text Chat Sessions",
+      "subseries": []
+    },
+    "rfc7590": {
+      "title": "Use of Transport Layer Security (TLS) in the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc7622": { "title": "Extensible Messaging and Presence Protocol (XMPP): Address Format", "subseries": [] },
+    "rfc7649": { "title": "The Jabber Scribe Role at IETF Meetings", "subseries": [] },
+    "rfc7700": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc7702": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Groupchat",
+      "subseries": []
+    },
+    "rfc7711": { "title": "PKIX over Secure HTTP (POSH)", "subseries": [] },
+    "rfc7712": {
+      "title": "Domain Name Associations (DNA) in the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc8048": {
+      "title": "Interworking between the Session Initiation Protocol (SIP) and the Extensible Messaging and Presence Protocol (XMPP): Presence",
+      "subseries": []
+    },
+    "rfc8266": {
+      "title": "Preparation, Enforcement, and Comparison of Internationalized Strings Representing Nicknames",
+      "subseries": []
+    },
+    "rfc8284": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema for Supporting the Extensible Messaging and Presence Protocol (XMPP) in White Pages",
+      "subseries": []
+    },
+    "rfc8600": {
+      "title": "Using Extensible Messaging and Presence Protocol (XMPP) for Security Information Exchange",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "instant-messaging": { "name": "Instant Messaging" } }
+}

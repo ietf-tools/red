@@ -1,0 +1,64 @@
+{
+  "id": 862,
+  "slug": "dane",
+  "name": "DANE",
+  "description": "DNS-Based Authentication of Named Entities: TLSA and certificate association via DNSSEC",
+  "parent": "dns",
+  "path": "naming/dns/dane",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6394",
+    "rfc6698",
+    "rfc7218",
+    "rfc7250",
+    "rfc7671",
+    "rfc7672",
+    "rfc7673",
+    "rfc7929",
+    "rfc8162",
+    "rfc8314",
+    "rfc8460"
+  ],
+  "document_meta": {
+    "rfc6394": {
+      "title": "Use Cases and Requirements for DNS-Based Authentication of Named Entities (DANE)",
+      "subseries": []
+    },
+    "rfc6698": {
+      "title": "The DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS) Protocol: TLSA",
+      "subseries": []
+    },
+    "rfc7218": {
+      "title": "Adding Acronyms to Simplify Conversations about DNS-Based Authentication of Named Entities (DANE)",
+      "subseries": []
+    },
+    "rfc7250": {
+      "title": "Using Raw Public Keys in Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc7671": {
+      "title": "The DNS-Based Authentication of Named Entities (DANE) Protocol: Updates and Operational Guidance",
+      "subseries": []
+    },
+    "rfc7672": {
+      "title": "SMTP Security via Opportunistic DNS-Based Authentication of Named Entities (DANE) Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc7673": {
+      "title": "Using DNS-Based Authentication of Named Entities (DANE) TLSA Records with SRV Records",
+      "subseries": []
+    },
+    "rfc7929": { "title": "DNS-Based Authentication of Named Entities (DANE) Bindings for OpenPGP", "subseries": [] },
+    "rfc8162": { "title": "Using Secure DNS to Associate Certificates with Domain Names for S/MIME", "subseries": [] },
+    "rfc8314": {
+      "title": "Cleartext Considered Obsolete: Use of Transport Layer Security (TLS) for Email Submission and Access",
+      "subseries": []
+    },
+    "rfc8460": { "title": "SMTP TLS Reporting", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" } }
+}

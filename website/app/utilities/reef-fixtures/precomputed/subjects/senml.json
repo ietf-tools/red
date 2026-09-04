@@ -1,0 +1,25 @@
+{
+  "id": 621,
+  "slug": "senml",
+  "name": "SenML",
+  "description": "Sensor Measurement Lists data format",
+  "parent": "iot",
+  "path": "iot/senml",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8428", "rfc8790", "rfc8798", "rfc9100", "rfc9193"],
+  "document_meta": {
+    "rfc8428": { "title": "Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8790": { "title": "FETCH and PATCH with Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8798": { "title": "Additional Units for Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc9100": { "title": "Sensor Measurement Lists (SenML) Features and Versions", "subseries": [] },
+    "rfc9193": {
+      "title": "Sensor Measurement Lists (SenML) Fields for Indicating Data Value Content-Format",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

@@ -1,0 +1,237 @@
+{
+  "id": 724,
+  "slug": "segment-routing",
+  "name": "Segment Routing",
+  "description": "Segment routing architecture",
+  "parent": "routing",
+  "path": "routing/segment-routing",
+  "document_count": 66,
+  "document_count_deep": 68,
+  "retired": false,
+  "children": ["sr-mpls", "srv6"],
+  "aliases": [],
+  "documents": [
+    "rfc10018",
+    "rfc10038",
+    "rfc7855",
+    "rfc7880",
+    "rfc7881",
+    "rfc7882",
+    "rfc7884",
+    "rfc8287",
+    "rfc8354",
+    "rfc8355",
+    "rfc8402",
+    "rfc8403",
+    "rfc8426",
+    "rfc8604",
+    "rfc8660",
+    "rfc8661",
+    "rfc8663",
+    "rfc8664",
+    "rfc8665",
+    "rfc8666",
+    "rfc8667",
+    "rfc8669",
+    "rfc8670",
+    "rfc8754",
+    "rfc8986",
+    "rfc9020",
+    "rfc9085",
+    "rfc9086",
+    "rfc9087",
+    "rfc9125",
+    "rfc9160",
+    "rfc9252",
+    "rfc9256",
+    "rfc9259",
+    "rfc9294",
+    "rfc9351",
+    "rfc9352",
+    "rfc9433",
+    "rfc9487",
+    "rfc9488",
+    "rfc9491",
+    "rfc9503",
+    "rfc9513",
+    "rfc9514",
+    "rfc9524",
+    "rfc9545",
+    "rfc9602",
+    "rfc9603",
+    "rfc9703",
+    "rfc9716",
+    "rfc9717",
+    "rfc9723",
+    "rfc9779",
+    "rfc9800",
+    "rfc9819",
+    "rfc9830",
+    "rfc9831",
+    "rfc9855",
+    "rfc9857",
+    "rfc9862",
+    "rfc9884",
+    "rfc9902",
+    "rfc9903",
+    "rfc9947",
+    "rfc9960",
+    "rfc9961"
+  ],
+  "document_meta": {
+    "rfc10018": {
+      "title": "Multicast and Ethernet VPN with Segment Routing Point-to-Multipoint (P2MP) and Ingress Replication",
+      "subseries": []
+    },
+    "rfc10038": { "title": "Distributing the Segment Routing over IPv6 (SRv6) Locator Using DHCPv6", "subseries": [] },
+    "rfc7855": {
+      "title": "Source Packet Routing in Networking (SPRING) Problem Statement and Requirements",
+      "subseries": []
+    },
+    "rfc7880": { "title": "Seamless Bidirectional Forwarding Detection (S-BFD)", "subseries": [] },
+    "rfc7881": {
+      "title": "Seamless Bidirectional Forwarding Detection (S-BFD) for IPv4, IPv6, and MPLS",
+      "subseries": []
+    },
+    "rfc7882": { "title": "Seamless Bidirectional Forwarding Detection (S-BFD) Use Cases", "subseries": [] },
+    "rfc7884": {
+      "title": "OSPF Extensions to Advertise Seamless Bidirectional Forwarding Detection (S-BFD) Target Discriminators",
+      "subseries": []
+    },
+    "rfc8287": {
+      "title": "Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) IGP-Prefix and IGP-Adjacency Segment Identifiers (SIDs) with MPLS Data Planes",
+      "subseries": []
+    },
+    "rfc8354": { "title": "Use Cases for IPv6 Source Packet Routing in Networking (SPRING)", "subseries": [] },
+    "rfc8355": {
+      "title": "Resiliency Use Cases in Source Packet Routing in Networking (SPRING) Networks",
+      "subseries": []
+    },
+    "rfc8402": { "title": "Segment Routing Architecture", "subseries": [] },
+    "rfc8403": { "title": "A Scalable and Topology-Aware MPLS Data-Plane Monitoring System", "subseries": [] },
+    "rfc8426": {
+      "title": "Recommendations for RSVP-TE and Segment Routing (SR) Label Switched Path (LSP) Coexistence",
+      "subseries": []
+    },
+    "rfc8604": { "title": "Interconnecting Millions of Endpoints with Segment Routing", "subseries": [] },
+    "rfc8660": { "title": "Segment Routing with the MPLS Data Plane", "subseries": [] },
+    "rfc8661": { "title": "Segment Routing MPLS Interworking with LDP", "subseries": [] },
+    "rfc8663": { "title": "MPLS Segment Routing over IP", "subseries": [] },
+    "rfc8664": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Segment Routing",
+      "subseries": []
+    },
+    "rfc8665": { "title": "OSPF Extensions for Segment Routing", "subseries": [] },
+    "rfc8666": { "title": "OSPFv3 Extensions for Segment Routing", "subseries": [] },
+    "rfc8667": { "title": "IS-IS Extensions for Segment Routing", "subseries": [] },
+    "rfc8669": { "title": "Segment Routing Prefix Segment Identifier Extensions for BGP", "subseries": [] },
+    "rfc8670": { "title": "BGP Prefix Segment in Large-Scale Data Centers", "subseries": [] },
+    "rfc8754": { "title": "IPv6 Segment Routing Header (SRH)", "subseries": [] },
+    "rfc8986": { "title": "Segment Routing over IPv6 (SRv6) Network Programming", "subseries": [] },
+    "rfc9020": { "title": "YANG Data Model for Segment Routing", "subseries": [] },
+    "rfc9085": {
+      "title": "Border Gateway Protocol - Link State (BGP-LS) Extensions for Segment Routing",
+      "subseries": []
+    },
+    "rfc9086": {
+      "title": "Border Gateway Protocol - Link State (BGP-LS) Extensions for Segment Routing BGP Egress Peer Engineering",
+      "subseries": []
+    },
+    "rfc9087": { "title": "Segment Routing Centralized BGP Egress Peer Engineering", "subseries": [] },
+    "rfc9125": {
+      "title": "Gateway Auto-Discovery and Route Advertisement for Site Interconnection Using Segment Routing",
+      "subseries": []
+    },
+    "rfc9160": {
+      "title": "Export of MPLS Segment Routing Label Type Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc9252": { "title": "BGP Overlay Services Based on Segment Routing over IPv6 (SRv6)", "subseries": [] },
+    "rfc9256": { "title": "Segment Routing Policy Architecture", "subseries": [] },
+    "rfc9259": {
+      "title": "Operations, Administration, and Maintenance (OAM) in Segment Routing over IPv6 (SRv6)",
+      "subseries": []
+    },
+    "rfc9294": {
+      "title": "Application-Specific Link Attributes Advertisement Using the Border Gateway Protocol - Link State (BGP-LS)",
+      "subseries": []
+    },
+    "rfc9351": {
+      "title": "Border Gateway Protocol - Link State (BGP-LS) Extensions for Flexible Algorithm Advertisement",
+      "subseries": []
+    },
+    "rfc9352": { "title": "IS-IS Extensions to Support Segment Routing over the IPv6 Data Plane", "subseries": [] },
+    "rfc9433": { "title": "Segment Routing over IPv6 for the Mobile User Plane", "subseries": [] },
+    "rfc9487": {
+      "title": "Export of Segment Routing over IPv6 Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc9488": {
+      "title": "Local Protection Enforcement in the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc9491": {
+      "title": "Integration of the Network Service Header (NSH) and Segment Routing for Service Function Chaining (SFC)",
+      "subseries": []
+    },
+    "rfc9503": {
+      "title": "Simple Two-Way Active Measurement Protocol (STAMP) Extensions for Segment Routing Networks",
+      "subseries": []
+    },
+    "rfc9513": { "title": "OSPFv3 Extensions for Segment Routing over IPv6 (SRv6)", "subseries": [] },
+    "rfc9514": {
+      "title": "Border Gateway Protocol - Link State (BGP-LS) Extensions for Segment Routing over IPv6 (SRv6)",
+      "subseries": []
+    },
+    "rfc9524": { "title": "Segment Routing Replication for Multipoint Service Delivery", "subseries": [] },
+    "rfc9545": { "title": "Path Segment Identifier in MPLS-Based Segment Routing Networks", "subseries": [] },
+    "rfc9602": {
+      "title": "Segment Routing over IPv6 (SRv6) Segment Identifiers in the IPv6 Addressing Architecture",
+      "subseries": []
+    },
+    "rfc9603": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for IPv6 Segment Routing",
+      "subseries": []
+    },
+    "rfc9703": {
+      "title": "Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) Egress Peer Engineering (EPE) Segment Identifiers (SIDs) with MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9716": {
+      "title": "Mechanisms for MPLS Ping and Traceroute Procedures in Inter-Domain Segment Routing Networks",
+      "subseries": []
+    },
+    "rfc9717": { "title": "A Routing Architecture for Satellite Networks", "subseries": [] },
+    "rfc9723": {
+      "title": "BGP Colored Prefix Routing (CPR) for Services Based on Segment Routing over IPv6 (SRv6)",
+      "subseries": []
+    },
+    "rfc9779": {
+      "title": "Performance Measurement for Segment Routing Networks with the MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9800": { "title": "Compressed SRv6 Segment List Encoding", "subseries": [] },
+    "rfc9819": { "title": "Argument Signaling for BGP Services in Segment Routing over IPv6 (SRv6)", "subseries": [] },
+    "rfc9830": { "title": "Advertising Segment Routing Policies in BGP", "subseries": [] },
+    "rfc9831": { "title": "Segment Type Extensions for BGP Segment Routing (SR) Policy", "subseries": [] },
+    "rfc9855": { "title": "Topology Independent Fast Reroute Using Segment Routing", "subseries": [] },
+    "rfc9857": { "title": "Advertisement of Segment Routing Policies Using BGP - Link State", "subseries": [] },
+    "rfc9862": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Segment Routing (SR) Policy Candidate Paths",
+      "subseries": []
+    },
+    "rfc9884": {
+      "title": "Label Switched Path Ping for Segment Routing Path Segment Identifier with MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9902": { "title": "A YANG Data Model for IS-IS Segment Routing over the MPLS Data Plane", "subseries": [] },
+    "rfc9903": { "title": "A YANG Data Model for OSPF Segment Routing over the MPLS Data Plane", "subseries": [] },
+    "rfc9947": {
+      "title": "Application of the Alternate-Marking Method to the Segment Routing Header",
+      "subseries": []
+    },
+    "rfc9960": { "title": "Segment Routing Point-to-Multipoint Policy", "subseries": [] },
+    "rfc9961": { "title": "MPLS Segment Routing Point-to-Multipoint (P2MP) Policy Ping", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "sr-mpls": { "name": "SR-MPLS" }, "srv6": { "name": "SRv6" } }
+}

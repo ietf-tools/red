@@ -1,0 +1,64 @@
+{
+  "id": 603,
+  "slug": "ipng",
+  "name": "IPng",
+  "description": "Historic IP next-generation candidate protocols (TUBA, PIP, SIPP, TP/IX)",
+  "parent": "internet-layer",
+  "path": "internet-layer/ipng",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1347",
+    "rfc1365",
+    "rfc1385",
+    "rfc1454",
+    "rfc1475",
+    "rfc1476",
+    "rfc1526",
+    "rfc1561",
+    "rfc1621",
+    "rfc1622",
+    "rfc1710",
+    "rfc1768",
+    "rfc3598",
+    "rfc5233",
+    "rfc6848",
+    "rfc8981",
+    "rfc9873"
+  ],
+  "document_meta": {
+    "rfc1347": {
+      "title": "TCP and UDP with Bigger Addresses (TUBA), A Simple Proposal for Internet Addressing and Routing",
+      "subseries": []
+    },
+    "rfc1365": { "title": "An IP Address Extension Proposal", "subseries": [] },
+    "rfc1385": { "title": "EIP: The Extended Internet Protocol", "subseries": [] },
+    "rfc1454": { "title": "Comparison of Proposals for Next Version of IP", "subseries": [] },
+    "rfc1475": { "title": "TP/IX: The Next Internet", "subseries": [] },
+    "rfc1476": { "title": "RAP: Internet Route Access Protocol", "subseries": [] },
+    "rfc1526": { "title": "Assignment of System Identifiers for TUBA/CLNP Hosts", "subseries": [] },
+    "rfc1561": { "title": "Use of ISO CLNP in TUBA Environments", "subseries": [] },
+    "rfc1621": { "title": "Pip Near-term Architecture", "subseries": [] },
+    "rfc1622": { "title": "Pip Header Processing", "subseries": [] },
+    "rfc1710": { "title": "Simple Internet Protocol Plus White Paper", "subseries": [] },
+    "rfc1768": { "title": "Host Group Extensions for CLNP Multicasting", "subseries": [] },
+    "rfc3598": { "title": "Sieve Email Filtering -- Subaddress Extension", "subseries": [] },
+    "rfc5233": { "title": "Sieve Email Filtering: Subaddress Extension", "subseries": [] },
+    "rfc6848": {
+      "title": "Specifying Civic Address Extensions in the Presence Information Data Format Location Object (PIDF-LO)",
+      "subseries": []
+    },
+    "rfc8981": {
+      "title": "Temporary Address Extensions for Stateless Address Autoconfiguration in IPv6",
+      "subseries": []
+    },
+    "rfc9873": {
+      "title": "Additional Email Address Extension for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

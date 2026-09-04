@@ -1,0 +1,134 @@
+{
+  "id": 832,
+  "slug": "pmipv6",
+  "name": "Proxy Mobile IPv6",
+  "description": "Proxy Mobile IPv6 and network-based mobility",
+  "parent": "ip-mobility",
+  "path": "internet-layer/ip-mobility/pmipv6",
+  "document_count": 43,
+  "document_count_deep": 43,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4830",
+    "rfc4831",
+    "rfc4832",
+    "rfc5149",
+    "rfc5213",
+    "rfc5563",
+    "rfc5779",
+    "rfc5844",
+    "rfc5845",
+    "rfc5847",
+    "rfc5949",
+    "rfc6058",
+    "rfc6097",
+    "rfc6224",
+    "rfc6279",
+    "rfc6463",
+    "rfc6475",
+    "rfc6496",
+    "rfc6543",
+    "rfc6572",
+    "rfc6602",
+    "rfc6612",
+    "rfc6705",
+    "rfc6757",
+    "rfc6909",
+    "rfc7028",
+    "rfc7077",
+    "rfc7148",
+    "rfc7156",
+    "rfc7161",
+    "rfc7222",
+    "rfc7287",
+    "rfc7389",
+    "rfc7411",
+    "rfc7458",
+    "rfc7561",
+    "rfc7563",
+    "rfc7839",
+    "rfc7847",
+    "rfc7864",
+    "rfc8191",
+    "rfc8278",
+    "rfc8885"
+  ],
+  "document_meta": {
+    "rfc4830": {
+      "title": "Problem Statement for Network-Based Localized Mobility Management (NETLMM)",
+      "subseries": []
+    },
+    "rfc4831": { "title": "Goals for Network-Based Localized Mobility Management (NETLMM)", "subseries": [] },
+    "rfc4832": { "title": "Security Threats to Network-Based Localized Mobility Management (NETLMM)", "subseries": [] },
+    "rfc5149": { "title": "Service Selection for Mobile IPv6", "subseries": [] },
+    "rfc5213": { "title": "Proxy Mobile IPv6", "subseries": [] },
+    "rfc5563": { "title": "WiMAX Forum / 3GPP2 Proxy Mobile IPv4", "subseries": [] },
+    "rfc5779": {
+      "title": "Diameter Proxy Mobile IPv6: Mobile Access Gateway and Local Mobility Anchor Interaction with Diameter Server",
+      "subseries": []
+    },
+    "rfc5844": { "title": "IPv4 Support for Proxy Mobile IPv6", "subseries": [] },
+    "rfc5845": { "title": "Generic Routing Encapsulation (GRE) Key Option for Proxy Mobile IPv6", "subseries": [] },
+    "rfc5847": { "title": "Heartbeat Mechanism for Proxy Mobile IPv6", "subseries": [] },
+    "rfc5949": { "title": "Fast Handovers for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6058": { "title": "Transient Binding for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6097": { "title": "Local Mobility Anchor (LMA) Discovery for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6224": {
+      "title": "Base Deployment for Multicast Listener Support in Proxy Mobile IPv6 (PMIPv6) Domains",
+      "subseries": []
+    },
+    "rfc6279": { "title": "Proxy Mobile IPv6 (PMIPv6) Localized Routing Problem Statement", "subseries": [] },
+    "rfc6463": {
+      "title": "Runtime Local Mobility Anchor (LMA) Assignment Support for Proxy Mobile IPv6",
+      "subseries": []
+    },
+    "rfc6475": { "title": "Proxy Mobile IPv6 Management Information Base", "subseries": [] },
+    "rfc6496": { "title": "Secure Proxy ND Support for SEcure Neighbor Discovery (SEND)", "subseries": [] },
+    "rfc6543": { "title": "Reserved IPv6 Interface Identifier for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6572": { "title": "RADIUS Support for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6602": { "title": "Bulk Binding Update Support for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6612": {
+      "title": "Interactions between Proxy Mobile IPv6 (PMIPv6) and Mobile IPv6 (MIPv6): Scenarios and Related Issues",
+      "subseries": []
+    },
+    "rfc6705": { "title": "Localized Routing for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6757": { "title": "Access Network Identifier (ANI) Option for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6909": { "title": "IPv4 Traffic Offload Selector Option for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7028": { "title": "Multicast Mobility Routing Optimizations for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7077": { "title": "Update Notifications for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7148": { "title": "Prefix Delegation Support for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7156": { "title": "Diameter Support for Proxy Mobile IPv6 Localized Routing", "subseries": [] },
+    "rfc7161": {
+      "title": "Proxy Mobile IPv6 (PMIPv6) Multicast Handover Optimization by the Subscription Information Acquisition through the LMA (SIAL)",
+      "subseries": []
+    },
+    "rfc7222": { "title": "Quality-of-Service Option for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7287": { "title": "Mobile Multicast Sender Support in Proxy Mobile IPv6 (PMIPv6) Domains", "subseries": [] },
+    "rfc7389": { "title": "Separation of Control and User Plane for Proxy Mobile IPv6", "subseries": [] },
+    "rfc7411": {
+      "title": "Multicast Listener Extensions for Mobile IPv6 (MIPv6) and Proxy Mobile IPv6 (PMIPv6) Fast Handovers",
+      "subseries": []
+    },
+    "rfc7458": {
+      "title": "Extensible Authentication Protocol (EAP) Attributes for Wi-Fi Integration with the Evolved Packet Core",
+      "subseries": []
+    },
+    "rfc7561": {
+      "title": "Mapping Quality of Service (QoS) Procedures of Proxy Mobile IPv6 (PMIPv6) and WLAN",
+      "subseries": []
+    },
+    "rfc7563": {
+      "title": "Extensions to the Proxy Mobile IPv6 (PMIPv6) Access Network Identifier Option",
+      "subseries": []
+    },
+    "rfc7839": { "title": "Access-Network-Identifier Option in DHCP", "subseries": [] },
+    "rfc7847": { "title": "Logical-Interface Support for IP Hosts with Multi-Access Support", "subseries": [] },
+    "rfc7864": { "title": "Proxy Mobile IPv6 Extensions to Support Flow Mobility", "subseries": [] },
+    "rfc8191": { "title": "Home Network Prefix Renumbering in Proxy Mobile IPv6 (PMIPv6)", "subseries": [] },
+    "rfc8278": { "title": "Mobile Access Gateway (MAG) Multipath Options", "subseries": [] },
+    "rfc8885": { "title": "Proxy Mobile IPv6 Extensions for Distributed Mobility Management", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "ip-mobility": { "name": "IP Mobility" } }
+}

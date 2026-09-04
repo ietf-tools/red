@@ -1,0 +1,81 @@
+{
+  "id": 1013,
+  "slug": "send",
+  "name": "SEND",
+  "description": "Secure Neighbor Discovery",
+  "parent": "neighbor-discovery",
+  "path": "internet-layer/ipv6/neighbor-discovery/send",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1159",
+    "rfc1312",
+    "rfc1428",
+    "rfc1440",
+    "rfc2075",
+    "rfc3756",
+    "rfc3971",
+    "rfc3972",
+    "rfc5269",
+    "rfc5909",
+    "rfc6059",
+    "rfc6105",
+    "rfc6273",
+    "rfc6494",
+    "rfc6495",
+    "rfc6496",
+    "rfc7219",
+    "rfc779",
+    "rfc8074",
+    "rfc9413",
+    "rfc9687",
+    "rfc996"
+  ],
+  "document_meta": {
+    "rfc1159": { "title": "Message Send Protocol", "subseries": [] },
+    "rfc1312": { "title": "Message Send Protocol 2", "subseries": [] },
+    "rfc1428": { "title": "Transition of Internet Mail from Just-Send-8 to 8bit-SMTP/MIME", "subseries": [] },
+    "rfc1440": { "title": "SIFT/UFT: Sender-Initiated/Unsolicited File Transfer", "subseries": [] },
+    "rfc2075": { "title": "IP Echo Host Service", "subseries": [] },
+    "rfc3756": { "title": "IPv6 Neighbor Discovery (ND) Trust Models and Threats", "subseries": [] },
+    "rfc3971": { "title": "SEcure Neighbor Discovery (SEND)", "subseries": [] },
+    "rfc3972": { "title": "Cryptographically Generated Addresses (CGA)", "subseries": [] },
+    "rfc5269": {
+      "title": "Distributing a Symmetric Fast Mobile IPv6 (FMIPv6) Handover Key Using SEcure Neighbor Discovery (SEND)",
+      "subseries": []
+    },
+    "rfc5909": { "title": "Securing Neighbor Discovery Proxy: Problem Statement", "subseries": [] },
+    "rfc6059": { "title": "Simple Procedures for Detecting Network Attachment in IPv6", "subseries": [] },
+    "rfc6105": { "title": "IPv6 Router Advertisement Guard", "subseries": [] },
+    "rfc6273": { "title": "The Secure Neighbor Discovery (SEND) Hash Threat Analysis", "subseries": [] },
+    "rfc6494": {
+      "title": "Certificate Profile and Certificate Management for SEcure Neighbor Discovery (SEND)",
+      "subseries": []
+    },
+    "rfc6495": {
+      "title": "Subject Key Identifier (SKI) SEcure Neighbor Discovery (SEND) Name Type Fields",
+      "subseries": []
+    },
+    "rfc6496": { "title": "Secure Proxy ND Support for SEcure Neighbor Discovery (SEND)", "subseries": [] },
+    "rfc7219": {
+      "title": "SEcure Neighbor Discovery (SEND) Source Address Validation Improvement (SAVI)",
+      "subseries": []
+    },
+    "rfc779": { "title": "Telnet send-location option", "subseries": [] },
+    "rfc8074": {
+      "title": "Source Address Validation Improvement (SAVI) for Mixed Address Assignment Methods Scenario",
+      "subseries": []
+    },
+    "rfc9413": { "title": "Maintaining Robust Protocols", "subseries": [] },
+    "rfc9687": { "title": "Border Gateway Protocol 4 (BGP-4) Send Hold Timer", "subseries": [] },
+    "rfc996": { "title": "Statistics server", "subseries": [] }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "neighbor-discovery": { "name": "Neighbor Discovery" }
+  }
+}

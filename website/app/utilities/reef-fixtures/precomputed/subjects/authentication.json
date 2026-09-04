@@ -1,0 +1,16 @@
+{
+  "id": 732,
+  "slug": "authentication",
+  "name": "Authentication",
+  "description": "Authentication of users, hosts and messages across protocols",
+  "parent": "security",
+  "path": "security/authentication",
+  "document_count": 0,
+  "document_count_deep": 0,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": { "security": { "name": "Security" } }
+}

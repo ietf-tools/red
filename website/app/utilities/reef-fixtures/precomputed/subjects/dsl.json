@@ -1,0 +1,103 @@
+{
+  "id": 628,
+  "slug": "dsl",
+  "name": "DSL",
+  "description": "Digital subscriber line access networks",
+  "parent": "link-layer",
+  "path": "link-layer/dsl",
+  "document_count": 23,
+  "document_count_deep": 23,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2662",
+    "rfc3276",
+    "rfc3440",
+    "rfc3705",
+    "rfc3728",
+    "rfc4069",
+    "rfc4070",
+    "rfc4241",
+    "rfc4319",
+    "rfc4679",
+    "rfc4706",
+    "rfc5650",
+    "rfc5713",
+    "rfc5851",
+    "rfc6221",
+    "rfc6320",
+    "rfc637",
+    "rfc6765",
+    "rfc6766",
+    "rfc6767",
+    "rfc6768",
+    "rfc6934",
+    "rfc7256"
+  ],
+  "document_meta": {
+    "rfc2662": { "title": "Definitions of Managed Objects for the ADSL Lines", "subseries": [] },
+    "rfc3276": {
+      "title": "Definitions of Managed Objects for High Bit-Rate DSL - 2nd generation (HDSL2) and Single-Pair High-Speed Digital Subscriber Line (SHDSL) Lines Processing",
+      "subseries": []
+    },
+    "rfc3440": {
+      "title": "Definitions of Extension Managed Objects for Asymmetric Digital Subscriber Lines",
+      "subseries": []
+    },
+    "rfc3705": {
+      "title": "High Capacity Textual Conventions for MIB Modules Using Performance History Based on 15 Minute Intervals",
+      "subseries": []
+    },
+    "rfc3728": {
+      "title": "Definitions of Managed Objects for Very High Speed Digital Subscriber Lines (VDSL)",
+      "subseries": []
+    },
+    "rfc4069": {
+      "title": "Definitions of Managed Object Extensions for Very High Speed Digital Subscriber Lines (VDSL) Using Single Carrier Modulation (SCM) Line Coding",
+      "subseries": []
+    },
+    "rfc4070": {
+      "title": "Definitions of Managed Object Extensions for Very High Speed Digital Subscriber Lines (VDSL) Using Multiple Carrier Modulation (MCM) Line Coding",
+      "subseries": []
+    },
+    "rfc4241": { "title": "A Model of IPv6/IPv4 Dual Stack Internet Access Service", "subseries": [] },
+    "rfc4319": {
+      "title": "Definitions of Managed Objects for High Bit-Rate DSL - 2nd generation (HDSL2) and Single-Pair High-Speed Digital Subscriber Line (SHDSL) Lines",
+      "subseries": []
+    },
+    "rfc4679": { "title": "DSL Forum Vendor-Specific RADIUS Attributes", "subseries": [] },
+    "rfc4706": {
+      "title": "Definitions of Managed Objects for Asymmetric Digital Subscriber Line 2 (ADSL2)",
+      "subseries": []
+    },
+    "rfc5650": {
+      "title": "Definitions of Managed Objects for Very High Speed Digital Subscriber Line 2 (VDSL2)",
+      "subseries": []
+    },
+    "rfc5713": {
+      "title": "Security Threats and Security Requirements for the Access Node Control Protocol (ANCP)",
+      "subseries": []
+    },
+    "rfc5851": {
+      "title": "Framework and Requirements for an Access Node Control Mechanism in Broadband Multi-Service Networks",
+      "subseries": []
+    },
+    "rfc6221": { "title": "Lightweight DHCPv6 Relay Agent", "subseries": [] },
+    "rfc6320": { "title": "Protocol for Access Node Control Mechanism in Broadband Networks", "subseries": [] },
+    "rfc637": { "title": "Change of network address for SU-DSL", "subseries": [] },
+    "rfc6765": { "title": "xDSL Multi-Pair Bonding (G.Bond) MIB", "subseries": [] },
+    "rfc6766": {
+      "title": "xDSL Multi-Pair Bonding Using Time-Division Inverse Multiplexing (G.Bond/TDIM) MIB",
+      "subseries": []
+    },
+    "rfc6767": { "title": "Ethernet-Based xDSL Multi-Pair Bonding (G.Bond/Ethernet) MIB", "subseries": [] },
+    "rfc6768": { "title": "ATM-Based xDSL Bonded Interfaces MIB", "subseries": [] },
+    "rfc6934": {
+      "title": "Applicability of the Access Node Control Mechanism to Broadband Networks Based on Passive Optical Networks (PONs)",
+      "subseries": []
+    },
+    "rfc7256": { "title": "Multicast Control Extensions for the Access Node Control Protocol (ANCP)", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

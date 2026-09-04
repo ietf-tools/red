@@ -1,0 +1,30 @@
+{
+  "id": 1018,
+  "slug": "doh",
+  "name": "DNS over HTTPS",
+  "description": "DNS over HTTPS",
+  "parent": "dns-privacy",
+  "path": "naming/dns/dns-privacy/doh",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8484", "rfc9230", "rfc9445", "rfc9461", "rfc9462", "rfc9463", "rfc9464"],
+  "document_meta": {
+    "rfc8484": { "title": "DNS Queries over HTTPS (DoH)", "subseries": [] },
+    "rfc9230": { "title": "Oblivious DNS over HTTPS", "subseries": [] },
+    "rfc9445": { "title": "RADIUS Extensions for DHCP-Configured Services", "subseries": [] },
+    "rfc9461": { "title": "Service Binding Mapping for DNS Servers", "subseries": [] },
+    "rfc9462": { "title": "Discovery of Designated Resolvers", "subseries": [] },
+    "rfc9463": {
+      "title": "DHCP and Router Advertisement Options for the Discovery of Network-designated Resolvers (DNR)",
+      "subseries": []
+    },
+    "rfc9464": {
+      "title": "Internet Key Exchange Protocol Version 2 (IKEv2) Configuration for Encrypted DNS",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" }, "dns-privacy": { "name": "DNS Privacy" } }
+}

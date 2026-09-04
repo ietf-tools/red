@@ -1,0 +1,25 @@
+{
+  "id": 976,
+  "slug": "conex",
+  "name": "ConEx",
+  "description": "Congestion exposure",
+  "parent": "congestion-control",
+  "path": "transport/congestion-control/conex",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6789", "rfc7713", "rfc7778", "rfc7786", "rfc7837"],
+  "document_meta": {
+    "rfc6789": { "title": "Congestion Exposure (ConEx) Concepts and Use Cases", "subseries": [] },
+    "rfc7713": {
+      "title": "Congestion Exposure (ConEx) Concepts, Abstract Mechanism, and Requirements",
+      "subseries": []
+    },
+    "rfc7778": { "title": "Mobile Communication Congestion Exposure Scenario", "subseries": [] },
+    "rfc7786": { "title": "TCP Modifications for Congestion Exposure (ConEx)", "subseries": [] },
+    "rfc7837": { "title": "IPv6 Destination Option for Congestion Exposure (ConEx)", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "congestion-control": { "name": "Congestion Control" } }
+}

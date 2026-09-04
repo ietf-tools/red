@@ -1,0 +1,22 @@
+{
+  "id": 910,
+  "slug": "aodv",
+  "name": "AODV",
+  "description": "Ad hoc On-Demand Distance Vector routing",
+  "parent": "manet",
+  "path": "routing/manet/aodv",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3561", "rfc9854"],
+  "document_meta": {
+    "rfc3561": { "title": "Ad hoc On-Demand Distance Vector (AODV) Routing", "subseries": [] },
+    "rfc9854": {
+      "title": "AODV-RPL: The Routing Protocol for Low-Power and Lossy Networks (RPL) Based on Ad Hoc On-Demand Distance Vector (AODV) Routing",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "MANET" } }
+}

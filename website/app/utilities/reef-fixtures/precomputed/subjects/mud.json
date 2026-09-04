@@ -1,0 +1,27 @@
+{
+  "id": 618,
+  "slug": "mud",
+  "name": "MUD",
+  "description": "Manufacturer Usage Descriptions",
+  "parent": "iot",
+  "path": "iot/mud",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8520", "rfc9238", "rfc9726", "rfc9761"],
+  "document_meta": {
+    "rfc8520": { "title": "Manufacturer Usage Description Specification", "subseries": [] },
+    "rfc9238": { "title": "Loading Manufacturer Usage Description (MUD) URLs from QR Codes", "subseries": [] },
+    "rfc9726": {
+      "title": "Operational Considerations for Use of DNS in Internet of Things (IoT) Devices",
+      "subseries": ["bcp241"]
+    },
+    "rfc9761": {
+      "title": "Manufacturer Usage Description (MUD) for TLS and DTLS Profiles for Internet of Things (IoT) Devices",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

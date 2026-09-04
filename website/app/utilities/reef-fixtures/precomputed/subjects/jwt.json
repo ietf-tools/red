@@ -1,0 +1,78 @@
+{
+  "id": 966,
+  "slug": "jwt",
+  "name": "JWT",
+  "description": "JSON Web Tokens",
+  "parent": "oauth",
+  "path": "security/oauth/jwt",
+  "document_count": 21,
+  "document_count_deep": 21,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7165",
+    "rfc7519",
+    "rfc7521",
+    "rfc7523",
+    "rfc7800",
+    "rfc8392",
+    "rfc8414",
+    "rfc8417",
+    "rfc8443",
+    "rfc8693",
+    "rfc8705",
+    "rfc8725",
+    "rfc8935",
+    "rfc8936",
+    "rfc9068",
+    "rfc9101",
+    "rfc9118",
+    "rfc9493",
+    "rfc9701",
+    "rfc9728",
+    "rfc9901"
+  ],
+  "document_meta": {
+    "rfc7165": { "title": "Use Cases and Requirements for JSON Object Signing and Encryption (JOSE)", "subseries": [] },
+    "rfc7519": { "title": "JSON Web Token (JWT)", "subseries": [] },
+    "rfc7521": {
+      "title": "Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7523": {
+      "title": "JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants",
+      "subseries": []
+    },
+    "rfc7800": { "title": "Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)", "subseries": [] },
+    "rfc8392": { "title": "CBOR Web Token (CWT)", "subseries": [] },
+    "rfc8414": { "title": "OAuth 2.0 Authorization Server Metadata", "subseries": [] },
+    "rfc8417": { "title": "Security Event Token (SET)", "subseries": [] },
+    "rfc8443": {
+      "title": "Personal Assertion Token (PASSporT) Extension for Resource Priority Authorization",
+      "subseries": []
+    },
+    "rfc8693": { "title": "OAuth 2.0 Token Exchange", "subseries": [] },
+    "rfc8705": {
+      "title": "OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens",
+      "subseries": []
+    },
+    "rfc8725": { "title": "JSON Web Token Best Current Practices", "subseries": ["bcp225"] },
+    "rfc8935": { "title": "Push-Based Security Event Token (SET) Delivery Using HTTP", "subseries": [] },
+    "rfc8936": { "title": "Poll-Based Security Event Token (SET) Delivery Using HTTP", "subseries": [] },
+    "rfc9068": { "title": "JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens", "subseries": [] },
+    "rfc9101": {
+      "title": "The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)",
+      "subseries": []
+    },
+    "rfc9118": {
+      "title": "Enhanced JSON Web Token (JWT) Claim Constraints for Secure Telephone Identity Revisited (STIR) Certificates",
+      "subseries": []
+    },
+    "rfc9493": { "title": "Subject Identifiers for Security Event Tokens", "subseries": [] },
+    "rfc9701": { "title": "JSON Web Token (JWT) Response for OAuth Token Introspection", "subseries": [] },
+    "rfc9728": { "title": "OAuth 2.0 Protected Resource Metadata", "subseries": [] },
+    "rfc9901": { "title": "Selective Disclosure for JSON Web Tokens", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "oauth": { "name": "OAuth" } }
+}

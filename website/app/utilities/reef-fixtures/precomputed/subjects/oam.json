@@ -1,0 +1,314 @@
+{
+  "id": 673,
+  "slug": "oam",
+  "name": "OAM",
+  "description": "Operations, administration and maintenance mechanisms",
+  "parent": "network-management",
+  "path": "network-management/oam",
+  "document_count": 73,
+  "document_count_deep": 73,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10014",
+    "rfc3429",
+    "rfc4377",
+    "rfc4378",
+    "rfc4687",
+    "rfc4878",
+    "rfc5317",
+    "rfc5586",
+    "rfc5860",
+    "rfc5884",
+    "rfc5885",
+    "rfc5921",
+    "rfc6136",
+    "rfc6291",
+    "rfc6310",
+    "rfc6424",
+    "rfc6425",
+    "rfc6426",
+    "rfc6427",
+    "rfc6428",
+    "rfc6435",
+    "rfc6669",
+    "rfc6670",
+    "rfc6671",
+    "rfc6905",
+    "rfc7023",
+    "rfc7174",
+    "rfc7260",
+    "rfc7276",
+    "rfc7319",
+    "rfc7369",
+    "rfc7455",
+    "rfc7487",
+    "rfc7506",
+    "rfc7537",
+    "rfc7571",
+    "rfc7697",
+    "rfc7737",
+    "rfc7759",
+    "rfc7784",
+    "rfc8012",
+    "rfc8256",
+    "rfc8287",
+    "rfc8368",
+    "rfc8372",
+    "rfc8403",
+    "rfc8531",
+    "rfc8532",
+    "rfc8533",
+    "rfc8611",
+    "rfc8924",
+    "rfc8994",
+    "rfc9062",
+    "rfc9214",
+    "rfc9232",
+    "rfc9259",
+    "rfc9359",
+    "rfc9451",
+    "rfc9452",
+    "rfc9489",
+    "rfc9516",
+    "rfc9546",
+    "rfc9551",
+    "rfc9570",
+    "rfc9612",
+    "rfc9617",
+    "rfc9634",
+    "rfc9655",
+    "rfc9703",
+    "rfc9716",
+    "rfc9772",
+    "rfc9961",
+    "rfc9974"
+  ],
+  "document_meta": {
+    "rfc10014": { "title": "Guidelines for Characterizing the Term \"OAM\"", "subseries": ["bcp161"] },
+    "rfc3429": {
+      "title": "Assignment of the 'OAM Alert Label' for Multiprotocol Label Switching Architecture (MPLS) Operation and Maintenance (OAM) Functions",
+      "subseries": []
+    },
+    "rfc4377": {
+      "title": "Operations and Management (OAM) Requirements for Multi-Protocol Label Switched (MPLS) Networks",
+      "subseries": []
+    },
+    "rfc4378": {
+      "title": "A Framework for Multi-Protocol Label Switching (MPLS) Operations and Management (OAM)",
+      "subseries": []
+    },
+    "rfc4687": {
+      "title": "Operations and Management (OAM) Requirements  for Point-to-Multipoint MPLS Networks",
+      "subseries": []
+    },
+    "rfc4878": {
+      "title": "Definitions and Managed Objects for Operations, Administration, and Maintenance (OAM) Functions on Ethernet-Like Interfaces",
+      "subseries": []
+    },
+    "rfc5317": {
+      "title": "Joint Working Team (JWT) Report on MPLS Architectural Considerations for a Transport Profile",
+      "subseries": []
+    },
+    "rfc5586": { "title": "MPLS Generic Associated Channel", "subseries": [] },
+    "rfc5860": {
+      "title": "Requirements for Operations, Administration, and Maintenance (OAM) in MPLS Transport Networks",
+      "subseries": []
+    },
+    "rfc5884": {
+      "title": "Bidirectional Forwarding Detection (BFD) for MPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc5885": {
+      "title": "Bidirectional Forwarding Detection (BFD) for the Pseudowire Virtual Circuit Connectivity Verification (VCCV)",
+      "subseries": []
+    },
+    "rfc5921": { "title": "A Framework for MPLS in Transport Networks", "subseries": [] },
+    "rfc6136": {
+      "title": "Layer 2 Virtual Private Network (L2VPN) Operations, Administration, and Maintenance (OAM) Requirements and Framework",
+      "subseries": []
+    },
+    "rfc6291": { "title": "Guidelines for the Use of the \"OAM\" Acronym in the IETF", "subseries": ["bcp161"] },
+    "rfc6310": {
+      "title": "Pseudowire (PW) Operations, Administration, and Maintenance (OAM) Message Mapping",
+      "subseries": []
+    },
+    "rfc6424": {
+      "title": "Mechanism for Performing Label Switched Path Ping (LSP Ping) over MPLS Tunnels",
+      "subseries": []
+    },
+    "rfc6425": {
+      "title": "Detecting Data-Plane Failures in Point-to-Multipoint MPLS - Extensions to LSP Ping",
+      "subseries": []
+    },
+    "rfc6426": { "title": "MPLS On-Demand Connectivity Verification and Route Tracing", "subseries": [] },
+    "rfc6427": { "title": "MPLS Fault Management Operations, Administration, and Maintenance (OAM)", "subseries": [] },
+    "rfc6428": {
+      "title": "Proactive Connectivity Verification, Continuity Check, and Remote Defect Indication for the MPLS Transport Profile",
+      "subseries": []
+    },
+    "rfc6435": { "title": "MPLS Transport Profile Lock Instruct and Loopback Functions", "subseries": [] },
+    "rfc6669": {
+      "title": "An Overview of the Operations, Administration, and Maintenance (OAM) Toolset for MPLS-Based Transport Networks",
+      "subseries": []
+    },
+    "rfc6670": {
+      "title": "The Reasons for Selecting a Single Solution for MPLS Transport Profile (MPLS-TP) Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc6671": {
+      "title": "Allocation of a Generic Associated Channel Type for ITU-T MPLS Transport Profile Operation, Maintenance, and Administration (MPLS-TP OAM)",
+      "subseries": []
+    },
+    "rfc6905": {
+      "title": "Requirements for Operations, Administration, and Maintenance (OAM) in Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc7023": {
+      "title": "MPLS and Ethernet Operations, Administration, and Maintenance (OAM) Interworking",
+      "subseries": []
+    },
+    "rfc7174": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Operations, Administration, and Maintenance (OAM) Framework",
+      "subseries": []
+    },
+    "rfc7260": {
+      "title": "GMPLS RSVP-TE Extensions for Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7276": { "title": "An Overview of Operations, Administration, and Maintenance (OAM) Tools", "subseries": [] },
+    "rfc7319": {
+      "title": "IANA Considerations for Connectivity Fault Management (CFM) Code Points",
+      "subseries": ["bcp191"]
+    },
+    "rfc7369": {
+      "title": "GMPLS RSVP-TE Extensions for Ethernet Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7455": { "title": "Transparent Interconnection of Lots of Links (TRILL): Fault Management", "subseries": [] },
+    "rfc7487": {
+      "title": "Configuration of Proactive Operations, Administration, and Maintenance (OAM) Functions for MPLS-Based Transport Networks Using RSVP-TE",
+      "subseries": []
+    },
+    "rfc7506": {
+      "title": "IPv6 Router Alert Option for MPLS Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc7537": { "title": "IANA Registries for LSP Ping Code Points", "subseries": [] },
+    "rfc7571": { "title": "GMPLS RSVP-TE Extensions for Lock Instruct and Loopback", "subseries": [] },
+    "rfc7697": {
+      "title": "MPLS Transport Profile (MPLS-TP) Operations, Administration, and Maintenance (OAM) Identifiers Management Information Base (MIB)",
+      "subseries": []
+    },
+    "rfc7737": { "title": "Label Switched Path (LSP) Ping and Traceroute Reply Mode Simplification", "subseries": [] },
+    "rfc7759": {
+      "title": "Configuration of Proactive Operations, Administration, and Maintenance (OAM) Functions for MPLS-Based Transport Networks Using Label Switched Path (LSP) Ping",
+      "subseries": []
+    },
+    "rfc7784": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Operations, Administration, and Maintenance (OAM) MIB",
+      "subseries": []
+    },
+    "rfc8012": {
+      "title": "Label Switched Path (LSP) and Pseudowire (PW) Ping/Trace over MPLS Networks Using Entropy Labels (ELs)",
+      "subseries": []
+    },
+    "rfc8256": { "title": "Requirements for Hitless MPLS Path Segment Monitoring", "subseries": [] },
+    "rfc8287": {
+      "title": "Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) IGP-Prefix and IGP-Adjacency Segment Identifiers (SIDs) with MPLS Data Planes",
+      "subseries": []
+    },
+    "rfc8368": {
+      "title": "Using an Autonomic Control Plane for Stable Connectivity of Network Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc8372": { "title": "MPLS Flow Identification Considerations", "subseries": [] },
+    "rfc8403": { "title": "A Scalable and Topology-Aware MPLS Data-Plane Monitoring System", "subseries": [] },
+    "rfc8531": {
+      "title": "Generic YANG Data Model for Connection-Oriented Operations, Administration, and Maintenance (OAM) Protocols",
+      "subseries": []
+    },
+    "rfc8532": {
+      "title": "Generic YANG Data Model for the Management of Operations, Administration, and Maintenance (OAM) Protocols That Use Connectionless Communications",
+      "subseries": []
+    },
+    "rfc8533": {
+      "title": "A YANG Data Model for Retrieval Methods for the Management of Operations, Administration, and Maintenance (OAM) Protocols That Use Connectionless Communications",
+      "subseries": []
+    },
+    "rfc8611": {
+      "title": "Label Switched Path (LSP) Ping and Traceroute Multipath Support for Link Aggregation Group (LAG) Interfaces",
+      "subseries": []
+    },
+    "rfc8924": {
+      "title": "Service Function Chaining (SFC) Operations, Administration, and Maintenance (OAM) Framework",
+      "subseries": []
+    },
+    "rfc8994": { "title": "An Autonomic Control Plane (ACP)", "subseries": [] },
+    "rfc9062": {
+      "title": "Framework and Requirements for Ethernet VPN (EVPN) Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc9214": { "title": "OSPFv3 Code Point for MPLS LSP Ping", "subseries": [] },
+    "rfc9232": { "title": "Network Telemetry Framework", "subseries": [] },
+    "rfc9259": {
+      "title": "Operations, Administration, and Maintenance (OAM) in Segment Routing over IPv6 (SRv6)",
+      "subseries": []
+    },
+    "rfc9359": { "title": "Echo Request/Reply for Enabled In Situ OAM (IOAM) Capabilities", "subseries": [] },
+    "rfc9451": {
+      "title": "Operations, Administration, and Maintenance (OAM) Packet and Behavior in the Network Service Header (NSH)",
+      "subseries": []
+    },
+    "rfc9452": { "title": "Network Service Header (NSH) Encapsulation for In Situ OAM (IOAM) Data", "subseries": [] },
+    "rfc9489": {
+      "title": "Label Switched Path (LSP) Ping Mechanisms for EVPN and Provider Backbone Bridging EVPN (PBB-EVPN)",
+      "subseries": []
+    },
+    "rfc9516": {
+      "title": "Active Operations, Administration, and Maintenance (OAM) for Service Function Chaining (SFC)",
+      "subseries": []
+    },
+    "rfc9546": {
+      "title": "Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet) with the MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9551": {
+      "title": "Framework of Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet)",
+      "subseries": []
+    },
+    "rfc9570": { "title": "Deprecating the Use of Router Alert in LSP Ping", "subseries": [] },
+    "rfc9612": {
+      "title": "Bidirectional Forwarding Detection (BFD) Reverse Path for MPLS Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc9617": {
+      "title": "A YANG Data Model for In Situ Operations, Administration, and Maintenance (IOAM)",
+      "subseries": []
+    },
+    "rfc9634": {
+      "title": "Operations, Administration, and Maintenance (OAM) for Deterministic Networking (DetNet) with the IP Data Plane",
+      "subseries": []
+    },
+    "rfc9655": { "title": "Egress Validation in Label Switched Path Ping and Traceroute Mechanisms", "subseries": [] },
+    "rfc9703": {
+      "title": "Label Switched Path (LSP) Ping/Traceroute for Segment Routing (SR) Egress Peer Engineering (EPE) Segment Identifiers (SIDs) with MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9716": {
+      "title": "Mechanisms for MPLS Ping and Traceroute Procedures in Inter-Domain Segment Routing Networks",
+      "subseries": []
+    },
+    "rfc9772": {
+      "title": "Active Operations, Administration, and Maintenance (OAM) for Use in Generic Network Virtualization Encapsulation (Geneve)",
+      "subseries": []
+    },
+    "rfc9961": { "title": "MPLS Segment Routing Point-to-Multipoint (P2MP) Policy Ping", "subseries": [] },
+    "rfc9974": {
+      "title": "Operations, Administration, and Maintenance (OAM) Requirements for the Bit Index Explicit Replication (BIER) Layer",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

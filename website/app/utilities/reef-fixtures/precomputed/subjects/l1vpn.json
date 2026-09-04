@@ -1,0 +1,26 @@
+{
+  "id": 938,
+  "slug": "l1vpn",
+  "name": "L1VPN",
+  "description": "Layer 1 VPNs",
+  "parent": "vpn",
+  "path": "routing/vpn/l1vpn",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4847", "rfc5195", "rfc5251", "rfc5252", "rfc5253", "rfc5523"],
+  "document_meta": {
+    "rfc4847": { "title": "Framework and Requirements for Layer 1 Virtual Private Networks", "subseries": [] },
+    "rfc5195": { "title": "BGP-Based Auto-Discovery for Layer-1 VPNs", "subseries": [] },
+    "rfc5251": { "title": "Layer 1 VPN Basic Mode", "subseries": [] },
+    "rfc5252": { "title": "OSPF-Based Layer 1 VPN Auto-Discovery", "subseries": [] },
+    "rfc5253": {
+      "title": "Applicability Statement for Layer 1 Virtual Private Network (L1VPN) Basic Mode",
+      "subseries": []
+    },
+    "rfc5523": { "title": "OSPFv3-Based Layer 1 VPN Auto-Discovery", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "vpn": { "name": "VPN" } }
+}

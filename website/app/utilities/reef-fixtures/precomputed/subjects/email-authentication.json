@@ -1,0 +1,37 @@
+{
+  "id": 848,
+  "slug": "email-authentication",
+  "name": "Email Authentication",
+  "description": "Email domain authentication and anti-spoofing",
+  "parent": "email",
+  "path": "messaging/email/email-authentication",
+  "document_count": 7,
+  "document_count_deep": 59,
+  "retired": false,
+  "children": ["arc", "dkim", "dmarc", "spf"],
+  "aliases": [],
+  "documents": ["rfc5965", "rfc6430", "rfc6590", "rfc6591", "rfc6650", "rfc6651", "rfc6652"],
+  "document_meta": {
+    "rfc5965": { "title": "An Extensible Format for Email Feedback Reports", "subseries": [] },
+    "rfc6430": { "title": "Email Feedback Report Type Value: not-spam", "subseries": [] },
+    "rfc6590": { "title": "Redaction of Potentially Sensitive Data from Mail Abuse Reports", "subseries": [] },
+    "rfc6591": { "title": "Authentication Failure Reporting Using the Abuse Reporting Format", "subseries": [] },
+    "rfc6650": {
+      "title": "Creation and Use of Email Feedback Reports: An Applicability Statement for the Abuse Reporting Format (ARF)",
+      "subseries": []
+    },
+    "rfc6651": { "title": "Extensions to DomainKeys Identified Mail (DKIM) for Failure Reporting", "subseries": [] },
+    "rfc6652": {
+      "title": "Sender Policy Framework (SPF) Authentication Failure Reporting Using the Abuse Reporting Format",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "messaging": { "name": "Messaging" },
+    "email": { "name": "Email" },
+    "arc": { "name": "ARC" },
+    "dkim": { "name": "DKIM" },
+    "dmarc": { "name": "DMARC" },
+    "spf": { "name": "SPF" }
+  }
+}

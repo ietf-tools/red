@@ -1,0 +1,28 @@
+{
+  "id": 868,
+  "slug": "edns",
+  "name": "EDNS",
+  "description": "Extension Mechanisms for DNS (EDNS(0)) and EDNS options",
+  "parent": "dns",
+  "path": "naming/dns/edns",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6891", "rfc6975", "rfc7314", "rfc7828", "rfc7830", "rfc7871", "rfc8467", "rfc9664"],
+  "document_meta": {
+    "rfc6891": { "title": "Extension Mechanisms for DNS (EDNS(0))", "subseries": ["std75"] },
+    "rfc6975": {
+      "title": "Signaling Cryptographic Algorithm Understanding in DNS Security Extensions (DNSSEC)",
+      "subseries": []
+    },
+    "rfc7314": { "title": "Extension Mechanisms for DNS (EDNS) EXPIRE Option", "subseries": [] },
+    "rfc7828": { "title": "The edns-tcp-keepalive EDNS0 Option", "subseries": [] },
+    "rfc7830": { "title": "The EDNS(0) Padding Option", "subseries": [] },
+    "rfc7871": { "title": "Client Subnet in DNS Queries", "subseries": [] },
+    "rfc8467": { "title": "Padding Policies for Extension Mechanisms for DNS (EDNS(0))", "subseries": [] },
+    "rfc9664": { "title": "An EDNS(0) Option to Negotiate Leases on DNS Updates", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" } }
+}

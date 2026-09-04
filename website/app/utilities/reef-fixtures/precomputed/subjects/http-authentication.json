@@ -1,0 +1,27 @@
+{
+  "id": 991,
+  "slug": "http-authentication",
+  "name": "HTTP Authentication",
+  "description": "HTTP authentication schemes (Basic, Digest, and others)",
+  "parent": "http",
+  "path": "web/http/http-authentication",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7486", "rfc7616", "rfc7617", "rfc7804", "rfc8053", "rfc8120", "rfc8121"],
+  "document_meta": {
+    "rfc7486": { "title": "HTTP Origin-Bound Authentication (HOBA)", "subseries": [] },
+    "rfc7616": { "title": "HTTP Digest Access Authentication", "subseries": [] },
+    "rfc7617": { "title": "The 'Basic' HTTP Authentication Scheme", "subseries": [] },
+    "rfc7804": { "title": "Salted Challenge Response HTTP Authentication Mechanism", "subseries": [] },
+    "rfc8053": { "title": "HTTP Authentication Extensions for Interactive Clients", "subseries": [] },
+    "rfc8120": { "title": "Mutual Authentication Protocol for HTTP", "subseries": [] },
+    "rfc8121": {
+      "title": "Mutual Authentication Protocol for HTTP: Cryptographic Algorithms Based on the Key Agreement Mechanism 3 (KAM3)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

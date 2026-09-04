@@ -1,0 +1,72 @@
+{
+  "id": 568,
+  "slug": "vcard",
+  "name": "vCard",
+  "description": "vCard contact data",
+  "parent": "applications",
+  "path": "applications/vcard",
+  "document_count": 21,
+  "document_count_deep": 21,
+  "retired": false,
+  "children": ["carddav"],
+  "aliases": [],
+  "documents": [
+    "rfc2426",
+    "rfc2739",
+    "rfc4770",
+    "rfc4969",
+    "rfc5689",
+    "rfc6350",
+    "rfc6351",
+    "rfc6352",
+    "rfc6473",
+    "rfc6474",
+    "rfc6493",
+    "rfc6715",
+    "rfc6764",
+    "rfc6868",
+    "rfc6869",
+    "rfc7095",
+    "rfc7265",
+    "rfc8605",
+    "rfc9553",
+    "rfc9554",
+    "rfc9555"
+  ],
+  "document_meta": {
+    "rfc2426": { "title": "vCard MIME Directory Profile", "subseries": [] },
+    "rfc2739": { "title": "Calendar Attributes for vCard and LDAP", "subseries": [] },
+    "rfc4770": { "title": "vCard Extensions for Instant Messaging (IM)", "subseries": [] },
+    "rfc4969": { "title": "IANA Registration for vCard Enumservice", "subseries": [] },
+    "rfc5689": { "title": "Extended MKCOL for Web Distributed Authoring and Versioning (WebDAV)", "subseries": [] },
+    "rfc6350": { "title": "vCard Format Specification", "subseries": [] },
+    "rfc6351": { "title": "xCard: vCard XML Representation", "subseries": [] },
+    "rfc6352": {
+      "title": "CardDAV: vCard Extensions to Web Distributed Authoring and Versioning (WebDAV)",
+      "subseries": []
+    },
+    "rfc6473": { "title": "vCard KIND:application", "subseries": [] },
+    "rfc6474": { "title": "vCard Format Extensions: Place of Birth, Place and Date of Death", "subseries": [] },
+    "rfc6493": { "title": "The Resource Public Key Infrastructure (RPKI) Ghostbusters Record", "subseries": [] },
+    "rfc6715": {
+      "title": "vCard Format Extensions: Representing vCard Extensions Defined by the Open Mobile Alliance (OMA) Converged Address Book (CAB) Group",
+      "subseries": []
+    },
+    "rfc6764": {
+      "title": "Locating Services for Calendaring Extensions to WebDAV (CalDAV) and vCard Extensions to WebDAV (CardDAV)",
+      "subseries": []
+    },
+    "rfc6868": { "title": "Parameter Value Encoding in iCalendar and vCard", "subseries": [] },
+    "rfc6869": { "title": "vCard KIND:device", "subseries": [] },
+    "rfc7095": { "title": "jCard: The JSON Format for vCard", "subseries": [] },
+    "rfc7265": { "title": "jCal: The JSON Format for iCalendar", "subseries": [] },
+    "rfc8605": {
+      "title": "vCard Format Extensions: ICANN Extensions for the Registration Data Access Protocol (RDAP)",
+      "subseries": []
+    },
+    "rfc9553": { "title": "JSContact: A JSON Representation of Contact Data", "subseries": [] },
+    "rfc9554": { "title": "vCard Format Extensions for JSContact", "subseries": [] },
+    "rfc9555": { "title": "JSContact: Converting from and to vCard", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "carddav": { "name": "CardDAV" } }
+}

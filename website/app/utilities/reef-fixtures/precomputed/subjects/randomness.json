@@ -1,0 +1,27 @@
+{
+  "id": 958,
+  "slug": "randomness",
+  "name": "Randomness",
+  "description": "Randomness requirements and generation",
+  "parent": "cryptography",
+  "path": "security/cryptography/randomness",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1750", "rfc4086", "rfc8682", "rfc8937", "rfc8954", "rfc972", "rfc9986"],
+  "document_meta": {
+    "rfc1750": { "title": "Randomness Recommendations for Security", "subseries": [] },
+    "rfc4086": { "title": "Randomness Requirements for Security", "subseries": ["bcp106"] },
+    "rfc8682": { "title": "TinyMT32 Pseudorandom Number Generator (PRNG)", "subseries": [] },
+    "rfc8937": { "title": "Randomness Improvements for Security Protocols", "subseries": [] },
+    "rfc8954": { "title": "Online Certificate Status Protocol (OCSP) Nonce Extension", "subseries": [] },
+    "rfc972": { "title": "Password Generator Protocol", "subseries": [] },
+    "rfc9986": {
+      "title": "Meticulous Keyed ISAAC for Bidirectional Forwarding Detection (BFD) Optimized Authentication",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

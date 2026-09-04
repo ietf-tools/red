@@ -1,0 +1,46 @@
+{
+  "id": 869,
+  "slug": "mdns",
+  "name": "mDNS",
+  "description": "Multicast DNS",
+  "parent": "dns",
+  "path": "naming/dns/mdns",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10029",
+    "rfc6762",
+    "rfc6804",
+    "rfc7558",
+    "rfc8098",
+    "rfc8222",
+    "rfc8765",
+    "rfc8766",
+    "rfc8882",
+    "rfc9664",
+    "rfc9665"
+  ],
+  "document_meta": {
+    "rfc10029": { "title": "DNS Multiple QTYPEs", "subseries": [] },
+    "rfc6762": { "title": "Multicast DNS", "subseries": [] },
+    "rfc6804": { "title": "DISCOVER: Supporting Multicast DNS Queries", "subseries": [] },
+    "rfc7558": {
+      "title": "Requirements for Scalable DNS-Based Service Discovery (DNS-SD) / Multicast DNS (mDNS) Extensions",
+      "subseries": []
+    },
+    "rfc8098": { "title": "Message Disposition Notification", "subseries": ["std85"] },
+    "rfc8222": {
+      "title": "Selecting Labels for Use with Conventional DNS and Other Resolution Systems in DNS-Based Service Discovery",
+      "subseries": []
+    },
+    "rfc8765": { "title": "DNS Push Notifications", "subseries": [] },
+    "rfc8766": { "title": "Discovery Proxy for Multicast DNS-Based Service Discovery", "subseries": [] },
+    "rfc8882": { "title": "DNS-Based Service Discovery (DNS-SD) Privacy and Security Requirements", "subseries": [] },
+    "rfc9664": { "title": "An EDNS(0) Option to Negotiate Leases on DNS Updates", "subseries": [] },
+    "rfc9665": { "title": "Service Registration Protocol for DNS-Based Service Discovery", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" } }
+}

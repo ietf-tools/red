@@ -1,0 +1,40 @@
+{
+  "id": 888,
+  "slug": "bfcp",
+  "name": "BFCP",
+  "description": "Binary Floor Control Protocol",
+  "parent": "conferencing",
+  "path": "real-time-communications/conferencing/bfcp",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4376", "rfc4582", "rfc4583", "rfc5018", "rfc8124", "rfc8855", "rfc8856", "rfc8857"],
+  "document_meta": {
+    "rfc4376": { "title": "Requirements for Floor Control Protocols", "subseries": [] },
+    "rfc4582": { "title": "The Binary Floor Control Protocol (BFCP)", "subseries": [] },
+    "rfc4583": {
+      "title": "Session Description Protocol (SDP) Format for Binary Floor Control Protocol (BFCP) Streams",
+      "subseries": []
+    },
+    "rfc5018": { "title": "Connection Establishment in the Binary Floor Control Protocol (BFCP)", "subseries": [] },
+    "rfc8124": {
+      "title": "The Session Description Protocol (SDP) WebSocket Connection URI Attribute",
+      "subseries": []
+    },
+    "rfc8855": { "title": "The Binary Floor Control Protocol (BFCP)", "subseries": [] },
+    "rfc8856": {
+      "title": "Session Description Protocol (SDP) Format for Binary Floor Control Protocol (BFCP) Streams",
+      "subseries": []
+    },
+    "rfc8857": {
+      "title": "The WebSocket Protocol as a Transport for the Binary Floor Control Protocol (BFCP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "conferencing": { "name": "Conferencing" }
+  }
+}

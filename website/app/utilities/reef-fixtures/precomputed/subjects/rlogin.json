@@ -1,0 +1,19 @@
+{
+  "id": 561,
+  "slug": "rlogin",
+  "name": "rlogin",
+  "description": "The BSD rlogin remote login protocol",
+  "parent": "applications",
+  "path": "applications/rlogin",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1258", "rfc1282"],
+  "document_meta": {
+    "rfc1258": { "title": "BSD Rlogin", "subseries": [] },
+    "rfc1282": { "title": "BSD Rlogin", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

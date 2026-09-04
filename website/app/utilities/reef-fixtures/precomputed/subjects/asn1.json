@@ -1,0 +1,116 @@
+{
+  "id": 574,
+  "slug": "asn1",
+  "name": "ASN.1",
+  "description": "ASN.1 modules and encoding rules",
+  "parent": "data-formats",
+  "path": "data-formats/asn1",
+  "document_count": 31,
+  "document_count_deep": 31,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1023",
+    "rfc1024",
+    "rfc1076",
+    "rfc1278",
+    "rfc2253",
+    "rfc2254",
+    "rfc3279",
+    "rfc3641",
+    "rfc3642",
+    "rfc3727",
+    "rfc4049",
+    "rfc4055",
+    "rfc4510",
+    "rfc4514",
+    "rfc4515",
+    "rfc4792",
+    "rfc4910",
+    "rfc4911",
+    "rfc4912",
+    "rfc4913",
+    "rfc4914",
+    "rfc5480",
+    "rfc5911",
+    "rfc5912",
+    "rfc6019",
+    "rfc6025",
+    "rfc6268",
+    "rfc8410",
+    "rfc8951",
+    "rfc9090",
+    "rfc9169"
+  ],
+  "document_meta": {
+    "rfc1023": { "title": "HEMS monitoring and control language", "subseries": [] },
+    "rfc1024": { "title": "HEMS variable definitions", "subseries": [] },
+    "rfc1076": { "title": "HEMS monitoring and control language", "subseries": [] },
+    "rfc1278": { "title": "A string encoding of Presentation Address", "subseries": [] },
+    "rfc2253": {
+      "title": "Lightweight Directory Access Protocol (v3): UTF-8 String Representation of Distinguished Names",
+      "subseries": []
+    },
+    "rfc2254": { "title": "The String Representation of LDAP Search Filters", "subseries": [] },
+    "rfc3279": {
+      "title": "Algorithms and Identifiers for the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile",
+      "subseries": []
+    },
+    "rfc3641": { "title": "Generic String Encoding Rules (GSER) for ASN.1 Types", "subseries": [] },
+    "rfc3642": { "title": "Common Elements of Generic String Encoding Rules (GSER) Encodings", "subseries": [] },
+    "rfc3727": { "title": "ASN.1 Module Definition for the LDAP and X.500 Component Matching Rules", "subseries": [] },
+    "rfc4049": { "title": "BinaryTime: An Alternate Format for Representing Date and Time in ASN.1", "subseries": [] },
+    "rfc4055": {
+      "title": "Additional Algorithms and Identifiers for RSA Cryptography for use in the Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile",
+      "subseries": []
+    },
+    "rfc4510": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Technical Specification Road Map",
+      "subseries": []
+    },
+    "rfc4514": {
+      "title": "Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names",
+      "subseries": []
+    },
+    "rfc4515": {
+      "title": "Lightweight Directory Access Protocol (LDAP): String Representation of Search Filters",
+      "subseries": []
+    },
+    "rfc4792": { "title": "Encoding Instructions for the Generic String Encoding Rules (GSER)", "subseries": [] },
+    "rfc4910": {
+      "title": "Robust XML Encoding Rules (RXER) for Abstract Syntax Notation One (ASN.1)",
+      "subseries": []
+    },
+    "rfc4911": { "title": "Encoding Instructions for the Robust XML Encoding Rules (RXER)", "subseries": [] },
+    "rfc4912": { "title": "Abstract Syntax Notation X (ASN.X)", "subseries": [] },
+    "rfc4913": {
+      "title": "Abstract Syntax Notation X (ASN.X) Representation of Encoding Instructions for the Generic String Encoding Rules (GSER)",
+      "subseries": []
+    },
+    "rfc4914": {
+      "title": "Abstract Syntax Notation X (ASN.X) Representation of Encoding Instructions for the XML Encoding Rules (XER)",
+      "subseries": []
+    },
+    "rfc5480": { "title": "Elliptic Curve Cryptography Subject Public Key Information", "subseries": [] },
+    "rfc5911": { "title": "New ASN.1 Modules for Cryptographic Message Syntax (CMS) and S/MIME", "subseries": [] },
+    "rfc5912": { "title": "New ASN.1 Modules for the Public Key Infrastructure Using X.509 (PKIX)", "subseries": [] },
+    "rfc6019": { "title": "BinaryTime: An Alternate Format for Representing Date and Time in ASN.1", "subseries": [] },
+    "rfc6025": { "title": "ASN.1 Translation", "subseries": [] },
+    "rfc6268": {
+      "title": "Additional New ASN.1 Modules for the Cryptographic Message Syntax (CMS) and the Public Key Infrastructure Using X.509 (PKIX)",
+      "subseries": []
+    },
+    "rfc8410": {
+      "title": "Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure",
+      "subseries": []
+    },
+    "rfc8951": {
+      "title": "Clarification of Enrollment over Secure Transport (EST): Transfer Encodings and ASN.1",
+      "subseries": []
+    },
+    "rfc9090": { "title": "Concise Binary Object Representation (CBOR) Tags for Object Identifiers", "subseries": [] },
+    "rfc9169": { "title": "New ASN.1 Modules for the Evidence Record Syntax (ERS)", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" } }
+}

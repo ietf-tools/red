@@ -1,0 +1,251 @@
+{
+  "id": 936,
+  "slug": "rsvp-te",
+  "name": "RSVP-TE",
+  "description": "RSVP-TE signalling for traffic-engineered LSPs",
+  "parent": "traffic-engineering",
+  "path": "routing/traffic-engineering/rsvp-te",
+  "document_count": 55,
+  "document_count_deep": 55,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3209",
+    "rfc3468",
+    "rfc3473",
+    "rfc3474",
+    "rfc3476",
+    "rfc3477",
+    "rfc3496",
+    "rfc4090",
+    "rfc4208",
+    "rfc4420",
+    "rfc4558",
+    "rfc4736",
+    "rfc4859",
+    "rfc4872",
+    "rfc4873",
+    "rfc4874",
+    "rfc4875",
+    "rfc4920",
+    "rfc4974",
+    "rfc5151",
+    "rfc5420",
+    "rfc5467",
+    "rfc5495",
+    "rfc5710",
+    "rfc5711",
+    "rfc5814",
+    "rfc5824",
+    "rfc5852",
+    "rfc6383",
+    "rfc6511",
+    "rfc6517",
+    "rfc6882",
+    "rfc7260",
+    "rfc7369",
+    "rfc7487",
+    "rfc7551",
+    "rfc7570",
+    "rfc7571",
+    "rfc7699",
+    "rfc7792",
+    "rfc7898",
+    "rfc7963",
+    "rfc8001",
+    "rfc8131",
+    "rfc8370",
+    "rfc8390",
+    "rfc8400",
+    "rfc8424",
+    "rfc8426",
+    "rfc8537",
+    "rfc8577",
+    "rfc8625",
+    "rfc8779",
+    "rfc8796",
+    "rfc9059"
+  ],
+  "document_meta": {
+    "rfc3209": { "title": "RSVP-TE: Extensions to RSVP for LSP Tunnels", "subseries": [] },
+    "rfc3468": {
+      "title": "The Multiprotocol Label Switching (MPLS) Working Group decision on MPLS signaling protocols",
+      "subseries": []
+    },
+    "rfc3473": {
+      "title": "Generalized Multi-Protocol Label Switching (GMPLS) Signaling Resource ReserVation Protocol-Traffic Engineering (RSVP-TE) Extensions",
+      "subseries": []
+    },
+    "rfc3474": {
+      "title": "Documentation of IANA assignments for Generalized MultiProtocol Label Switching (GMPLS) Resource Reservation Protocol - Traffic Engineering (RSVP-TE) Usage and Extensions for Automatically Switched Optical Network (ASON)",
+      "subseries": []
+    },
+    "rfc3476": {
+      "title": "Documentation of IANA Assignments for Label Distribution Protocol (LDP), Resource ReSerVation Protocol (RSVP), and Resource ReSerVation Protocol-Traffic Engineering (RSVP-TE) Extensions for Optical UNI Signaling",
+      "subseries": []
+    },
+    "rfc3477": {
+      "title": "Signalling Unnumbered Links in Resource ReSerVation Protocol - Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc3496": {
+      "title": "Protocol Extension for Support of Asynchronous Transfer Mode (ATM) Service Class-aware Multiprotocol Label Switching (MPLS) Traffic Engineering",
+      "subseries": []
+    },
+    "rfc4090": { "title": "Fast Reroute Extensions to RSVP-TE for LSP Tunnels", "subseries": [] },
+    "rfc4208": {
+      "title": "Generalized Multiprotocol Label Switching (GMPLS) User-Network Interface (UNI): Resource ReserVation Protocol-Traffic Engineering (RSVP-TE) Support for the Overlay Model",
+      "subseries": []
+    },
+    "rfc4420": {
+      "title": "Encoding of Attributes for Multiprotocol Label Switching (MPLS) Label Switched Path (LSP) Establishment Using Resource ReserVation Protocol-Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc4558": {
+      "title": "Node-ID Based Resource Reservation Protocol (RSVP) Hello: A Clarification Statement",
+      "subseries": []
+    },
+    "rfc4736": {
+      "title": "Reoptimization of Multiprotocol Label Switching (MPLS) Traffic Engineering (TE) Loosely Routed Label Switched Path (LSP)",
+      "subseries": []
+    },
+    "rfc4859": {
+      "title": "Codepoint Registry for the Flags Field in the Resource Reservation Protocol-Traffic Engineering (RSVP-TE) Session Attribute Object",
+      "subseries": []
+    },
+    "rfc4872": {
+      "title": "RSVP-TE Extensions in Support of End-to-End Generalized Multi-Protocol Label Switching (GMPLS) Recovery",
+      "subseries": []
+    },
+    "rfc4873": { "title": "GMPLS Segment Recovery", "subseries": [] },
+    "rfc4874": {
+      "title": "Exclude Routes - Extension to Resource ReserVation Protocol-Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc4875": {
+      "title": "Extensions to Resource Reservation Protocol - Traffic Engineering (RSVP-TE) for Point-to-Multipoint TE Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc4920": { "title": "Crankback Signaling Extensions for MPLS and GMPLS RSVP-TE", "subseries": [] },
+    "rfc4974": {
+      "title": "Generalized MPLS (GMPLS) RSVP-TE Signaling Extensions in Support of Calls",
+      "subseries": []
+    },
+    "rfc5151": {
+      "title": "Inter-Domain MPLS and GMPLS Traffic Engineering -- Resource Reservation Protocol-Traffic Engineering (RSVP-TE) Extensions",
+      "subseries": []
+    },
+    "rfc5420": {
+      "title": "Encoding of Attributes for MPLS LSP Establishment Using Resource Reservation Protocol Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc5467": { "title": "GMPLS Asymmetric Bandwidth Bidirectional Label Switched Paths (LSPs)", "subseries": [] },
+    "rfc5495": {
+      "title": "Description of the Resource Reservation Protocol - Traffic-Engineered (RSVP-TE) Graceful Restart Procedures",
+      "subseries": []
+    },
+    "rfc5710": { "title": "PathErr Message Triggered MPLS and GMPLS LSP Reroutes", "subseries": [] },
+    "rfc5711": {
+      "title": "Node Behavior upon Originating and Receiving Resource Reservation Protocol (RSVP) Path Error Messages",
+      "subseries": []
+    },
+    "rfc5814": {
+      "title": "Label Switched Path (LSP) Dynamic Provisioning Performance Metrics in Generalized MPLS Networks",
+      "subseries": []
+    },
+    "rfc5824": {
+      "title": "Requirements for Supporting Customer Resource ReSerVation Protocol (RSVP) and RSVP Traffic Engineering (RSVP-TE) over a BGP/MPLS IP-VPN",
+      "subseries": []
+    },
+    "rfc5852": {
+      "title": "RSVP-TE Signaling Extension for LSP Handover from the Management Plane to the Control Plane in a GMPLS-Enabled Transport Network",
+      "subseries": []
+    },
+    "rfc6383": {
+      "title": "Advice on When It Is Safe to Start Sending Data on Label Switched Paths Established Using RSVP-TE",
+      "subseries": []
+    },
+    "rfc6511": {
+      "title": "Non-Penultimate Hop Popping Behavior and Out-of-Band Mapping for RSVP-TE Label Switched Paths",
+      "subseries": []
+    },
+    "rfc6517": { "title": "Mandatory Features in a Layer 3 Multicast BGP/MPLS VPN Solution", "subseries": [] },
+    "rfc6882": {
+      "title": "Support for Resource Reservation Protocol Traffic Engineering (RSVP-TE) in Layer 3 Virtual Private Networks (L3VPNs)",
+      "subseries": []
+    },
+    "rfc7260": {
+      "title": "GMPLS RSVP-TE Extensions for Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7369": {
+      "title": "GMPLS RSVP-TE Extensions for Ethernet Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7487": {
+      "title": "Configuration of Proactive Operations, Administration, and Maintenance (OAM) Functions for MPLS-Based Transport Networks Using RSVP-TE",
+      "subseries": []
+    },
+    "rfc7551": {
+      "title": "RSVP-TE Extensions for Associated Bidirectional Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc7570": { "title": "Label Switched Path (LSP) Attribute in the Explicit Route Object (ERO)", "subseries": [] },
+    "rfc7571": { "title": "GMPLS RSVP-TE Extensions for Lock Instruct and Loopback", "subseries": [] },
+    "rfc7699": {
+      "title": "Generalized Labels for the Flexi-Grid in Lambda Switch Capable (LSC) Label Switching Routers",
+      "subseries": []
+    },
+    "rfc7792": {
+      "title": "RSVP-TE Signaling Extensions in Support of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks",
+      "subseries": []
+    },
+    "rfc7898": {
+      "title": "Domain Subobjects for Resource Reservation Protocol - Traffic Engineering (RSVP-TE)",
+      "subseries": []
+    },
+    "rfc7963": {
+      "title": "RSVP-TE Extension for Additional Signal Types in G.709 Optical Transport Networks (OTNs)",
+      "subseries": []
+    },
+    "rfc8001": {
+      "title": "RSVP-TE Extensions for Collecting Shared Risk Link Group (SRLG) Information",
+      "subseries": []
+    },
+    "rfc8131": {
+      "title": "RSVP-TE Signaling Procedure for End-to-End GMPLS Restoration and Resource Sharing",
+      "subseries": []
+    },
+    "rfc8370": { "title": "Techniques to Improve the Scalability of RSVP-TE Deployments", "subseries": [] },
+    "rfc8390": { "title": "RSVP-TE Path Diversity Using Exclude Route", "subseries": [] },
+    "rfc8400": { "title": "Extensions to RSVP-TE for Label Switched Path (LSP) Egress Protection", "subseries": [] },
+    "rfc8424": {
+      "title": "Extensions to RSVP-TE for Label Switched Path (LSP) Ingress Fast Reroute (FRR) Protection",
+      "subseries": []
+    },
+    "rfc8426": {
+      "title": "Recommendations for RSVP-TE and Segment Routing (SR) Label Switched Path (LSP) Coexistence",
+      "subseries": []
+    },
+    "rfc8537": {
+      "title": "Updates to the Fast Reroute Procedures for Co-routed Associated Bidirectional Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8577": { "title": "Signaling RSVP-TE Tunnels on a Shared MPLS Forwarding Plane", "subseries": [] },
+    "rfc8625": { "title": "Ethernet Traffic Parameters with Availability Information", "subseries": [] },
+    "rfc8779": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for GMPLS",
+      "subseries": []
+    },
+    "rfc8796": {
+      "title": "RSVP-TE Summary Fast Reroute Extensions for Label Switched Path (LSP) Tunnels",
+      "subseries": []
+    },
+    "rfc9059": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Associated Bidirectional Label Switched Paths (LSPs)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "traffic-engineering": { "name": "Traffic Engineering" } }
+}

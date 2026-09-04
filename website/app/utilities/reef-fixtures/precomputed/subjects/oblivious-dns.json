@@ -1,0 +1,16 @@
+{
+  "id": 1020,
+  "slug": "oblivious-dns",
+  "name": "Oblivious DNS",
+  "description": "Oblivious DNS over HTTPS",
+  "parent": "dns-privacy",
+  "path": "naming/dns/dns-privacy/oblivious-dns",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9230"],
+  "document_meta": { "rfc9230": { "title": "Oblivious DNS over HTTPS", "subseries": [] } },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" }, "dns-privacy": { "name": "DNS Privacy" } }
+}

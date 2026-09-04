@@ -1,0 +1,30 @@
+{
+  "id": 564,
+  "slug": "storage",
+  "name": "Storage",
+  "description": "Storage access and block/file protocols over IP",
+  "parent": "applications",
+  "path": "applications/storage",
+  "document_count": 6,
+  "document_count_deep": 147,
+  "retired": false,
+  "children": ["fibre-channel", "iscsi", "nfs", "onc-rpc", "rdma"],
+  "aliases": [],
+  "documents": ["rfc1691", "rfc3018", "rfc5013", "rfc6392", "rfc6646", "rfc8493"],
+  "document_meta": {
+    "rfc1691": { "title": "The Document Architecture for the Cornell Digital Library", "subseries": [] },
+    "rfc3018": { "title": "Unified Memory Space Protocol Specification", "subseries": [] },
+    "rfc5013": { "title": "The Dublin Core Metadata Element Set", "subseries": [] },
+    "rfc6392": { "title": "A Survey of In-Network Storage Systems", "subseries": [] },
+    "rfc6646": { "title": "DECoupled Application Data Enroute (DECADE) Problem Statement", "subseries": [] },
+    "rfc8493": { "title": "The BagIt File Packaging Format (V1.0)", "subseries": [] }
+  },
+  "subject_meta": {
+    "applications": { "name": "Applications" },
+    "fibre-channel": { "name": "Fibre Channel" },
+    "iscsi": { "name": "iSCSI" },
+    "nfs": { "name": "NFS" },
+    "onc-rpc": { "name": "ONC RPC" },
+    "rdma": { "name": "RDMA" }
+  }
+}

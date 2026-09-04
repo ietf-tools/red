@@ -1,0 +1,107 @@
+{
+  "id": 919,
+  "slug": "igmp",
+  "name": "IGMP",
+  "description": "Internet Group Management Protocol",
+  "parent": "multicast",
+  "path": "routing/multicast/igmp",
+  "document_count": 25,
+  "document_count_deep": 25,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1112",
+    "rfc1885",
+    "rfc2236",
+    "rfc2933",
+    "rfc3228",
+    "rfc3376",
+    "rfc3590",
+    "rfc3678",
+    "rfc3810",
+    "rfc4286",
+    "rfc4541",
+    "rfc4604",
+    "rfc4605",
+    "rfc5186",
+    "rfc5501",
+    "rfc5519",
+    "rfc5790",
+    "rfc6398",
+    "rfc6636",
+    "rfc7028",
+    "rfc8114",
+    "rfc8652",
+    "rfc9166",
+    "rfc9251",
+    "rfc9398"
+  ],
+  "document_meta": {
+    "rfc1112": { "title": "Host extensions for IP multicasting", "subseries": ["std5"] },
+    "rfc1885": {
+      "title": "Internet Control Message Protocol (ICMPv6) for the Internet Protocol Version 6 (IPv6)",
+      "subseries": []
+    },
+    "rfc2236": { "title": "Internet Group Management Protocol, Version 2", "subseries": [] },
+    "rfc2933": { "title": "Internet Group Management Protocol MIB", "subseries": [] },
+    "rfc3228": { "title": "IANA Considerations for IPv4 Internet Group Management Protocol (IGMP)", "subseries": [] },
+    "rfc3376": { "title": "Internet Group Management Protocol, Version 3", "subseries": [] },
+    "rfc3590": {
+      "title": "Source Address Selection for the Multicast Listener Discovery (MLD) Protocol",
+      "subseries": []
+    },
+    "rfc3678": { "title": "Socket Interface Extensions for Multicast Source Filters", "subseries": [] },
+    "rfc3810": { "title": "Multicast Listener Discovery Version 2 (MLDv2) for IPv6", "subseries": [] },
+    "rfc4286": { "title": "Multicast Router Discovery", "subseries": [] },
+    "rfc4541": {
+      "title": "Considerations for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Snooping Switches",
+      "subseries": []
+    },
+    "rfc4604": {
+      "title": "Using Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Protocol Version 2 (MLDv2) for Source-Specific Multicast",
+      "subseries": []
+    },
+    "rfc4605": {
+      "title": "Internet Group Management Protocol (IGMP) / Multicast Listener Discovery (MLD)-Based Multicast Forwarding (\"IGMP/MLD Proxying\")",
+      "subseries": []
+    },
+    "rfc5186": {
+      "title": "Internet Group Management Protocol Version 3 (IGMPv3) / Multicast Listener Discovery Version 2 (MLDv2) and Multicast Routing Protocol Interaction",
+      "subseries": []
+    },
+    "rfc5501": { "title": "Requirements for Multicast Support in Virtual Private LAN Services", "subseries": [] },
+    "rfc5519": { "title": "Multicast Group Membership Discovery MIB", "subseries": [] },
+    "rfc5790": {
+      "title": "Lightweight Internet Group Management Protocol Version 3 (IGMPv3) and Multicast Listener Discovery Version 2 (MLDv2) Protocols",
+      "subseries": []
+    },
+    "rfc6398": { "title": "IP Router Alert Considerations and Usage", "subseries": ["bcp168"] },
+    "rfc6636": {
+      "title": "Tuning the Behavior of the Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) for Routers in Mobile and Wireless Networks",
+      "subseries": []
+    },
+    "rfc7028": { "title": "Multicast Mobility Routing Optimizations for Proxy Mobile IPv6", "subseries": [] },
+    "rfc8114": {
+      "title": "Delivery of IPv4 Multicast Services to IPv4 Clients over an IPv6 Multicast Network",
+      "subseries": []
+    },
+    "rfc8652": {
+      "title": "A YANG Data Model for the Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD)",
+      "subseries": []
+    },
+    "rfc9166": {
+      "title": "A YANG Data Model for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Snooping",
+      "subseries": []
+    },
+    "rfc9251": {
+      "title": "Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxies for Ethernet VPN (EVPN)",
+      "subseries": []
+    },
+    "rfc9398": {
+      "title": "A YANG Data Model for Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxy Devices",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

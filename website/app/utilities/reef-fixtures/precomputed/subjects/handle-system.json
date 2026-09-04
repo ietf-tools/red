@@ -1,0 +1,20 @@
+{
+  "id": 660,
+  "slug": "handle-system",
+  "name": "Handle System",
+  "description": "The Handle System persistent identifier infrastructure",
+  "parent": "naming",
+  "path": "naming/handle-system",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3650", "rfc3651", "rfc3652"],
+  "document_meta": {
+    "rfc3650": { "title": "Handle System Overview", "subseries": [] },
+    "rfc3651": { "title": "Handle System Namespace and Service Definition", "subseries": [] },
+    "rfc3652": { "title": "Handle System Protocol (ver 2.1) Specification", "subseries": [] }
+  },
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

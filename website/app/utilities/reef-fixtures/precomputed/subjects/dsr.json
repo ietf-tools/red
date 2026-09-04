@@ -1,0 +1,29 @@
+{
+  "id": 911,
+  "slug": "dsr",
+  "name": "DSR",
+  "description": "Dynamic Source Routing",
+  "parent": "manet",
+  "path": "routing/manet/dsr",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3557", "rfc4060", "rfc4728"],
+  "document_meta": {
+    "rfc3557": {
+      "title": "RTP Payload Format for European Telecommunications Standards Institute (ETSI) European Standard ES 201 108 Distributed Speech Recognition Encoding",
+      "subseries": []
+    },
+    "rfc4060": {
+      "title": "RTP Payload Formats for European Telecommunications Standards Institute (ETSI) European Standard ES 202 050, ES 202 211, and ES 202 212 Distributed Speech Recognition Encoding",
+      "subseries": []
+    },
+    "rfc4728": {
+      "title": "The Dynamic Source Routing Protocol (DSR) for Mobile Ad Hoc Networks for IPv4",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "MANET" } }
+}

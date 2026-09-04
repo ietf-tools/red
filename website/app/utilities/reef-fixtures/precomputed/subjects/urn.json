@@ -1,0 +1,319 @@
+{
+  "id": 1000,
+  "slug": "urn",
+  "name": "URN",
+  "description": "Uniform Resource Names and URN namespaces",
+  "parent": "uri",
+  "path": "web/uri/urn",
+  "document_count": 95,
+  "document_count_deep": 95,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1737",
+    "rfc2141",
+    "rfc2168",
+    "rfc2169",
+    "rfc2276",
+    "rfc2288",
+    "rfc2483",
+    "rfc2611",
+    "rfc2648",
+    "rfc2915",
+    "rfc3001",
+    "rfc3043",
+    "rfc3044",
+    "rfc3061",
+    "rfc3085",
+    "rfc3120",
+    "rfc3121",
+    "rfc3151",
+    "rfc3187",
+    "rfc3188",
+    "rfc3305",
+    "rfc3401",
+    "rfc3402",
+    "rfc3403",
+    "rfc3404",
+    "rfc3405",
+    "rfc3406",
+    "rfc3541",
+    "rfc3553",
+    "rfc3613",
+    "rfc3614",
+    "rfc3615",
+    "rfc3616",
+    "rfc3622",
+    "rfc3937",
+    "rfc4122",
+    "rfc4152",
+    "rfc4179",
+    "rfc4195",
+    "rfc4198",
+    "rfc4246",
+    "rfc4350",
+    "rfc4358",
+    "rfc4617",
+    "rfc4688",
+    "rfc4729",
+    "rfc4854",
+    "rfc4926",
+    "rfc5031",
+    "rfc5119",
+    "rfc5134",
+    "rfc5138",
+    "rfc5141",
+    "rfc5165",
+    "rfc5174",
+    "rfc5279",
+    "rfc5328",
+    "rfc6061",
+    "rfc6288",
+    "rfc6289",
+    "rfc6338",
+    "rfc6453",
+    "rfc6588",
+    "rfc6755",
+    "rfc6893",
+    "rfc6924",
+    "rfc6963",
+    "rfc7163",
+    "rfc7207",
+    "rfc7254",
+    "rfc7255",
+    "rfc7302",
+    "rfc7354",
+    "rfc7462",
+    "rfc7467",
+    "rfc7528",
+    "rfc7738",
+    "rfc7803",
+    "rfc7818",
+    "rfc7853",
+    "rfc7972",
+    "rfc8057",
+    "rfc8069",
+    "rfc8107",
+    "rfc8141",
+    "rfc8254",
+    "rfc8433",
+    "rfc8458",
+    "rfc8464",
+    "rfc8465",
+    "rfc8515",
+    "rfc9039",
+    "rfc9278",
+    "rfc9517",
+    "rfc9676"
+  ],
+  "document_meta": {
+    "rfc1737": { "title": "Functional Requirements for Uniform Resource Names", "subseries": [] },
+    "rfc2141": { "title": "URN Syntax", "subseries": [] },
+    "rfc2168": { "title": "Resolution of Uniform Resource Identifiers using the Domain Name System", "subseries": [] },
+    "rfc2169": { "title": "A Trivial Convention for using HTTP in URN Resolution", "subseries": [] },
+    "rfc2276": { "title": "Architectural Principles of Uniform Resource Name Resolution", "subseries": [] },
+    "rfc2288": { "title": "Using Existing Bibliographic Identifiers as Uniform Resource Names", "subseries": [] },
+    "rfc2483": { "title": "URI Resolution Services Necessary for URN Resolution", "subseries": [] },
+    "rfc2611": { "title": "URN Namespace Definition Mechanisms", "subseries": ["bcp33"] },
+    "rfc2648": { "title": "A URN Namespace for IETF Documents", "subseries": [] },
+    "rfc2915": { "title": "The Naming Authority Pointer (NAPTR) DNS Resource Record", "subseries": [] },
+    "rfc3001": { "title": "A URN Namespace of Object Identifiers", "subseries": [] },
+    "rfc3043": {
+      "title": "The Network Solutions Personal Internet Name (PIN): A URN Namespace for People and Organizations",
+      "subseries": []
+    },
+    "rfc3044": {
+      "title": "Using The ISSN (International Serial Standard Number) as URN (Uniform Resource Names) within an ISSN-URN Namespace",
+      "subseries": []
+    },
+    "rfc3061": { "title": "A URN Namespace of Object Identifiers", "subseries": [] },
+    "rfc3085": { "title": "URN Namespace for NewsML Resources", "subseries": [] },
+    "rfc3120": { "title": "A URN Namespace for XML.org", "subseries": [] },
+    "rfc3121": { "title": "A URN Namespace for OASIS", "subseries": [] },
+    "rfc3151": { "title": "A URN Namespace for Public Identifiers", "subseries": [] },
+    "rfc3187": { "title": "Using International Standard Book Numbers as Uniform Resource Names", "subseries": [] },
+    "rfc3188": { "title": "Using National Bibliography Numbers as Uniform Resource Names", "subseries": [] },
+    "rfc3305": {
+      "title": "Report from the Joint W3C/IETF URI Planning Interest Group: Uniform Resource Identifiers (URIs), URLs, and Uniform Resource Names (URNs): Clarifications and Recommendations",
+      "subseries": []
+    },
+    "rfc3401": {
+      "title": "Dynamic Delegation Discovery System (DDDS) Part One: The Comprehensive DDDS",
+      "subseries": []
+    },
+    "rfc3402": { "title": "Dynamic Delegation Discovery System (DDDS) Part Two: The Algorithm", "subseries": [] },
+    "rfc3403": {
+      "title": "Dynamic Delegation Discovery System (DDDS) Part Three: The Domain Name System (DNS) Database",
+      "subseries": []
+    },
+    "rfc3404": {
+      "title": "Dynamic Delegation Discovery System (DDDS) Part Four: The Uniform Resource Identifiers (URI)",
+      "subseries": []
+    },
+    "rfc3405": {
+      "title": "Dynamic Delegation Discovery System (DDDS) Part Five: URI.ARPA Assignment Procedures",
+      "subseries": ["bcp65"]
+    },
+    "rfc3406": { "title": "Uniform Resource Names (URN) Namespace Definition Mechanisms", "subseries": [] },
+    "rfc3541": { "title": "A Uniform Resource Name (URN) Namespace for the Web3D Consortium (Web3D)", "subseries": [] },
+    "rfc3553": { "title": "An IETF URN Sub-namespace for Registered Protocol Parameters", "subseries": ["bcp73"] },
+    "rfc3613": {
+      "title": "Definition of a Uniform Resource Name (URN) Namespace for the Middleware Architecture Committee for Education (MACE)",
+      "subseries": []
+    },
+    "rfc3614": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Motion Picture Experts Group (MPEG)",
+      "subseries": []
+    },
+    "rfc3615": { "title": "A Uniform Resource Name (URN) Namespace for SWIFT Financial Messaging", "subseries": [] },
+    "rfc3616": {
+      "title": "A Uniform Resource Name (URN) Namespace for Foundation for Intelligent Physical Agents (FIPA)",
+      "subseries": []
+    },
+    "rfc3622": { "title": "A Uniform Resource Name (URN) Namespace for the Liberty Alliance Project", "subseries": [] },
+    "rfc3937": {
+      "title": "A Uniform Resource Name (URN) Namespace for the International Press Telecommunications Council (IPTC)",
+      "subseries": []
+    },
+    "rfc4122": { "title": "A Universally Unique IDentifier (UUID) URN Namespace", "subseries": [] },
+    "rfc4152": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Common Language Equipment Identifier (CLEI) Code",
+      "subseries": []
+    },
+    "rfc4179": { "title": "Using Universal Content Identifier (UCI) as Uniform Resource Names (URN)", "subseries": [] },
+    "rfc4195": { "title": "A Uniform Resource Name (URN) Namespace for the TV-Anytime Forum", "subseries": [] },
+    "rfc4198": { "title": "A Uniform Resource Name (URN) Namespace for Federated Content", "subseries": [] },
+    "rfc4246": { "title": "International Standard Audiovisual Number (ISAN) URN Definition", "subseries": [] },
+    "rfc4350": {
+      "title": "A Uniform Resource Name (URN) Formal Namespace for the New Zealand Government",
+      "subseries": []
+    },
+    "rfc4358": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Open Mobile Alliance (OMA)",
+      "subseries": []
+    },
+    "rfc4617": {
+      "title": "A Uniform Resource Name (URN) Formal Namespace for the Latvian National Government Integration Project",
+      "subseries": []
+    },
+    "rfc4688": {
+      "title": "A Uniform Resource Name (URN) Namespace for Aerospace and Defence Industries Association of Europe (ASD) Specification 1000D",
+      "subseries": []
+    },
+    "rfc4729": {
+      "title": "A Uniform Resource Name (URN) Namespace for  the Near Field Communication (NFC) Forum",
+      "subseries": []
+    },
+    "rfc4854": {
+      "title": "A Uniform Resource Name (URN) Namespace for Extensions to the Extensible Messaging and Presence Protocol (XMPP)",
+      "subseries": []
+    },
+    "rfc4926": { "title": "A URN Namespace for GEANT", "subseries": [] },
+    "rfc5031": {
+      "title": "A Uniform Resource Name (URN) for Emergency and Other Well-Known Services",
+      "subseries": []
+    },
+    "rfc5119": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Society of Motion Picture and Television Engineers (SMPTE)",
+      "subseries": []
+    },
+    "rfc5134": {
+      "title": "A Uniform Resource Name Namespace for the EPCglobal Electronic Product Code (EPC) and Related Standards",
+      "subseries": []
+    },
+    "rfc5138": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Commission for the Management and Application of Geoscience Information (CGI)",
+      "subseries": []
+    },
+    "rfc5141": {
+      "title": "A Uniform Resource Name (URN) Namespace for the International Organization for Standardization (ISO)",
+      "subseries": []
+    },
+    "rfc5165": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Open Geospatial Consortium (OGC)",
+      "subseries": []
+    },
+    "rfc5174": {
+      "title": "A Uniform Resource Name (URN) Namespace for the European Broadcasting Union (EBU)",
+      "subseries": []
+    },
+    "rfc5279": {
+      "title": "A Uniform Resource Name (URN) Namespace for the 3rd Generation Partnership Project (3GPP)",
+      "subseries": []
+    },
+    "rfc5328": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Digital Video Broadcasting Project (DVB)",
+      "subseries": []
+    },
+    "rfc6061": {
+      "title": "Uniform Resource Name (URN) Namespace for the National Emergency Number Association (NENA)",
+      "subseries": []
+    },
+    "rfc6288": {
+      "title": "URN Namespace for the Defence Geospatial Information Working Group (DGIWG)",
+      "subseries": []
+    },
+    "rfc6289": { "title": "A Uniform Resource Name (URN) Namespace for CableLabs", "subseries": [] },
+    "rfc6338": {
+      "title": "Definition of a Uniform Resource Name (URN) Namespace for the Schema for Academia (SCHAC)",
+      "subseries": []
+    },
+    "rfc6453": { "title": "A URN Namespace for the Open Grid Forum (OGF)", "subseries": [] },
+    "rfc6588": { "title": "A URN Namespace for ucode", "subseries": [] },
+    "rfc6755": { "title": "An IETF URN Sub-Namespace for OAuth", "subseries": [] },
+    "rfc6893": { "title": "A Uniform Resource Name (URN) Namespace for the Open IPTV Forum (OIPF)", "subseries": [] },
+    "rfc6924": { "title": "Registration of Second-Level URN Namespaces under \"ietf\"", "subseries": [] },
+    "rfc6963": { "title": "A Uniform Resource Name (URN) Namespace for Examples", "subseries": ["bcp183"] },
+    "rfc7163": { "title": "URN for Country-Specific Emergency Services", "subseries": [] },
+    "rfc7207": { "title": "A Uniform Resource Name (URN) Namespace for Eurosystem Messaging", "subseries": [] },
+    "rfc7254": {
+      "title": "A Uniform Resource Name Namespace for the Global System for Mobile Communications Association (GSMA) and the International Mobile station Equipment Identity (IMEI)",
+      "subseries": []
+    },
+    "rfc7255": {
+      "title": "Using the International Mobile station Equipment Identity (IMEI) Uniform Resource Name (URN) as an Instance ID",
+      "subseries": []
+    },
+    "rfc7302": { "title": "Entertainment Identifier Registry (EIDR) URN Namespace Definition", "subseries": [] },
+    "rfc7354": {
+      "title": "Update to the Registrant Information for the Digital Video Broadcasting Project (DVB) Uniform Resource Name (URN) Namespace",
+      "subseries": []
+    },
+    "rfc7462": {
+      "title": "URNs for the Alert-Info Header Field of the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc7467": { "title": "URN Namespace for the North Atlantic Treaty Organization (NATO)", "subseries": [] },
+    "rfc7528": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Hybrid Broadcast Broadband TV (HbbTV) Association",
+      "subseries": []
+    },
+    "rfc7738": {
+      "title": "A Uniform Resource Name (URN) Namespace for the Consultative Committee for Space Data Systems (CCSDS)",
+      "subseries": []
+    },
+    "rfc7803": {
+      "title": "Changing the Registration Policy for the NETCONF Capability URNs Registry",
+      "subseries": ["bcp203"]
+    },
+    "rfc7818": { "title": "URN Namespace for MEF Documents", "subseries": [] },
+    "rfc7853": { "title": "A URN Namespace for Globus", "subseries": [] },
+    "rfc7972": { "title": "Entertainment Identifier Registry (EIDR) URN Namespace Definition", "subseries": [] },
+    "rfc8057": { "title": "Uniform Resource Name (URN) Namespaces for Broadband Forum", "subseries": [] },
+    "rfc8069": { "title": "URN Namespace for IEEE", "subseries": [] },
+    "rfc8107": { "title": "Advertising Digital Identifier (Ad-ID) URN Namespace Definition", "subseries": [] },
+    "rfc8141": { "title": "Uniform Resource Names (URNs)", "subseries": [] },
+    "rfc8254": { "title": "Uniform Resource Name (URN) Namespace Registration Transition", "subseries": [] },
+    "rfc8433": { "title": "A Simpler Method for Resolving Alert-Info URNs", "subseries": [] },
+    "rfc8458": { "title": "Using National Bibliography Numbers as Uniform Resource Names", "subseries": [] },
+    "rfc8464": { "title": "A URN Namespace for Device Identity and Mobile Equipment Identity (MEID)", "subseries": [] },
+    "rfc8465": { "title": "Using the Mobile Equipment Identity (MEID) URN as an Instance ID", "subseries": [] },
+    "rfc8515": { "title": "URN Namespace for ETSI Documents", "subseries": [] },
+    "rfc9039": { "title": "Uniform Resource Names for Device Identifiers", "subseries": [] },
+    "rfc9278": { "title": "JWK Thumbprint URI", "subseries": [] },
+    "rfc9517": { "title": "A URN Namespace for the Data Documentation Initiative (DDI)", "subseries": [] },
+    "rfc9676": { "title": "LEX: A Uniform Resource Name (URN) Namespace for Sources of Law", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "uri": { "name": "URI" } }
+}

@@ -1,0 +1,210 @@
+{
+  "id": 537,
+  "slug": "network-management",
+  "name": "Network Management",
+  "description": "Network operations and management: manageability, operational considerations, Network management architectures and operational practice",
+  "parent": null,
+  "path": "network-management",
+  "document_count": 47,
+  "document_count_deep": 1142,
+  "retired": false,
+  "children": [
+    "autonomic-networking",
+    "benchmarking",
+    "energy-management",
+    "i2rs",
+    "ipfix",
+    "netconf",
+    "oam",
+    "operational-security",
+    "ovsdb",
+    "packet-capture",
+    "performance-measurement",
+    "policy-management",
+    "snmp",
+    "sustainability",
+    "syslog",
+    "time-synchronization",
+    "y2k",
+    "yang"
+  ],
+  "aliases": [],
+  "documents": [
+    "rfc1021",
+    "rfc1022",
+    "rfc1023",
+    "rfc1024",
+    "rfc1147",
+    "rfc1404",
+    "rfc1470",
+    "rfc1794",
+    "rfc1856",
+    "rfc1857",
+    "rfc3052",
+    "rfc3074",
+    "rfc3139",
+    "rfc3387",
+    "rfc4176",
+    "rfc4323",
+    "rfc4377",
+    "rfc4378",
+    "rfc4474",
+    "rfc4678",
+    "rfc4687",
+    "rfc5416",
+    "rfc5706",
+    "rfc6790",
+    "rfc7098",
+    "rfc7632",
+    "rfc7642",
+    "rfc7643",
+    "rfc7644",
+    "rfc7791",
+    "rfc8224",
+    "rfc8328",
+    "rfc8662",
+    "rfc869",
+    "rfc8775",
+    "rfc8921",
+    "rfc9065",
+    "rfc9315",
+    "rfc9316",
+    "rfc9417",
+    "rfc9418",
+    "rfc9832",
+    "rfc9865",
+    "rfc9871",
+    "rfc9940",
+    "rfc9944",
+    "rfc9967"
+  ],
+  "document_meta": {
+    "rfc1021": { "title": "High-level Entity Management System (HEMS)", "subseries": [] },
+    "rfc1022": { "title": "High-level Entity Management Protocol (HEMP)", "subseries": [] },
+    "rfc1023": { "title": "HEMS monitoring and control language", "subseries": [] },
+    "rfc1024": { "title": "HEMS variable definitions", "subseries": [] },
+    "rfc1147": {
+      "title": "FYI on a Network Management Tool Catalog: Tools for Monitoring and Debugging TCP/IP Internets and Interconnected Devices",
+      "subseries": []
+    },
+    "rfc1404": { "title": "A Model for Common Operational Statistics", "subseries": [] },
+    "rfc1470": {
+      "title": "FYI on a Network Management Tool Catalog: Tools for Monitoring and Debugging TCP/IP Internets and Interconnected Devices",
+      "subseries": ["fyi2"]
+    },
+    "rfc1794": { "title": "DNS Support for Load Balancing", "subseries": [] },
+    "rfc1856": { "title": "The Opstat Client-Server Model for Statistics Retrieval", "subseries": [] },
+    "rfc1857": { "title": "A Model for Common Operational Statistics", "subseries": [] },
+    "rfc3052": { "title": "Service Management Architectures Issues and Review", "subseries": [] },
+    "rfc3074": { "title": "DHC Load Balancing Algorithm", "subseries": [] },
+    "rfc3139": { "title": "Requirements for Configuration Management of IP-based Networks", "subseries": [] },
+    "rfc3387": {
+      "title": "Considerations from the Service Management Research Group (SMRG) on Quality of Service (QoS) in the IP Network",
+      "subseries": []
+    },
+    "rfc4176": {
+      "title": "Framework for Layer 3 Virtual Private Networks (L3VPN) Operations and Management",
+      "subseries": []
+    },
+    "rfc4323": {
+      "title": "Data Over Cable System Interface Specification Quality of Service Management Information Base (DOCSIS-QoS MIB)",
+      "subseries": []
+    },
+    "rfc4377": {
+      "title": "Operations and Management (OAM) Requirements for Multi-Protocol Label Switched (MPLS) Networks",
+      "subseries": []
+    },
+    "rfc4378": {
+      "title": "A Framework for Multi-Protocol Label Switching (MPLS) Operations and Management (OAM)",
+      "subseries": []
+    },
+    "rfc4474": {
+      "title": "Enhancements for Authenticated Identity Management in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4678": { "title": "Server/Application State Protocol v1", "subseries": [] },
+    "rfc4687": {
+      "title": "Operations and Management (OAM) Requirements  for Point-to-Multipoint MPLS Networks",
+      "subseries": []
+    },
+    "rfc5416": {
+      "title": "Control and Provisioning of Wireless Access Points (CAPWAP) Protocol Binding for IEEE 802.11",
+      "subseries": []
+    },
+    "rfc5706": {
+      "title": "Guidelines for Considering Operations and Management of New Protocols and Protocol Extensions",
+      "subseries": []
+    },
+    "rfc6790": { "title": "The Use of Entropy Labels in MPLS Forwarding", "subseries": [] },
+    "rfc7098": { "title": "Using the IPv6 Flow Label for Load Balancing in Server Farms", "subseries": [] },
+    "rfc7632": { "title": "Endpoint Security Posture Assessment: Enterprise Use Cases", "subseries": [] },
+    "rfc7642": {
+      "title": "System for Cross-domain Identity Management: Definitions, Overview, Concepts, and Requirements",
+      "subseries": []
+    },
+    "rfc7643": { "title": "System for Cross-domain Identity Management: Core Schema", "subseries": [] },
+    "rfc7644": { "title": "System for Cross-domain Identity Management: Protocol", "subseries": [] },
+    "rfc7791": {
+      "title": "Cloning the IKE Security Association in the Internet Key Exchange Protocol Version 2 (IKEv2)",
+      "subseries": []
+    },
+    "rfc8224": {
+      "title": "Authenticated Identity Management in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc8328": {
+      "title": "Policy-Based Management Framework for the Simplified Use of Policy Abstractions (SUPA)",
+      "subseries": []
+    },
+    "rfc8662": { "title": "Entropy Label for Source Packet Routing in Networking (SPRING) Tunnels", "subseries": [] },
+    "rfc869": { "title": "Host Monitoring Protocol", "subseries": [] },
+    "rfc8775": { "title": "PIM Designated Router Load Balancing", "subseries": [] },
+    "rfc8921": {
+      "title": "Dynamic Service Negotiation: The Connectivity Provisioning Negotiation Protocol (CPNP)",
+      "subseries": []
+    },
+    "rfc9065": {
+      "title": "Considerations around Transport Header Confidentiality, Network Operations, and the Evolution of Internet Transport Protocols",
+      "subseries": []
+    },
+    "rfc9315": { "title": "Intent-Based Networking - Concepts and Definitions", "subseries": [] },
+    "rfc9316": { "title": "Intent Classification", "subseries": [] },
+    "rfc9417": { "title": "Service Assurance for Intent-Based Networking Architecture", "subseries": [] },
+    "rfc9418": { "title": "A YANG Data Model for Service Assurance", "subseries": [] },
+    "rfc9832": { "title": "BGP Classful Transport Planes", "subseries": [] },
+    "rfc9865": {
+      "title": "Cursor-Based Pagination of System of Cross-domain Identity Management (SCIM) Resources",
+      "subseries": []
+    },
+    "rfc9871": { "title": "BGP Color-Aware Routing (CAR)", "subseries": [] },
+    "rfc9940": { "title": "Some Key Terms for Network Fault and Problem Management", "subseries": [] },
+    "rfc9944": {
+      "title": "Device Schema Extensions to the System for Cross-Domain Identity Management (SCIM) Model",
+      "subseries": []
+    },
+    "rfc9967": {
+      "title": "System for Cross-Domain Identity Management (SCIM) Profile for Security Event Tokens (SETs)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "autonomic-networking": { "name": "Autonomic Networking" },
+    "benchmarking": { "name": "Benchmarking" },
+    "energy-management": { "name": "Energy Management" },
+    "i2rs": { "name": "I2RS" },
+    "ipfix": { "name": "IPFIX" },
+    "netconf": { "name": "NETCONF" },
+    "oam": { "name": "OAM" },
+    "operational-security": { "name": "Operational Security" },
+    "ovsdb": { "name": "OVSDB" },
+    "packet-capture": { "name": "Packet Capture" },
+    "performance-measurement": { "name": "Performance Measurement" },
+    "policy-management": { "name": "Policy Management" },
+    "snmp": { "name": "SNMP" },
+    "sustainability": { "name": "Sustainability" },
+    "syslog": { "name": "Syslog" },
+    "time-synchronization": { "name": "Time Synchronization" },
+    "y2k": { "name": "Y2K" },
+    "yang": { "name": "YANG" }
+  }
+}

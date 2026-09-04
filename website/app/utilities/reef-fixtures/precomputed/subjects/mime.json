@@ -1,0 +1,631 @@
+{
+  "id": 652,
+  "slug": "mime",
+  "name": "MIME",
+  "description": "Multipurpose Internet Mail Extensions: body structure and encodings",
+  "parent": "messaging",
+  "path": "messaging/mime",
+  "document_count": 218,
+  "document_count_deep": 284,
+  "retired": false,
+  "children": ["media-types"],
+  "aliases": [],
+  "documents": [
+    "rfc1003",
+    "rfc1049",
+    "rfc1197",
+    "rfc1341",
+    "rfc1342",
+    "rfc1343",
+    "rfc1344",
+    "rfc1345",
+    "rfc1428",
+    "rfc1468",
+    "rfc1494",
+    "rfc1495",
+    "rfc1496",
+    "rfc1521",
+    "rfc1522",
+    "rfc1523",
+    "rfc1524",
+    "rfc1544",
+    "rfc1556",
+    "rfc1563",
+    "rfc1614",
+    "rfc1641",
+    "rfc1740",
+    "rfc1741",
+    "rfc1767",
+    "rfc1806",
+    "rfc1820",
+    "rfc1830",
+    "rfc1844",
+    "rfc1847",
+    "rfc1848",
+    "rfc1864",
+    "rfc1867",
+    "rfc1872",
+    "rfc1873",
+    "rfc1874",
+    "rfc1892",
+    "rfc1895",
+    "rfc1896",
+    "rfc1911",
+    "rfc1947",
+    "rfc2015",
+    "rfc2017",
+    "rfc2045",
+    "rfc2046",
+    "rfc2047",
+    "rfc2048",
+    "rfc2049",
+    "rfc2077",
+    "rfc2110",
+    "rfc2111",
+    "rfc2112",
+    "rfc2156",
+    "rfc2157",
+    "rfc2159",
+    "rfc2160",
+    "rfc2161",
+    "rfc2162",
+    "rfc2163",
+    "rfc2164",
+    "rfc2183",
+    "rfc2184",
+    "rfc2220",
+    "rfc2231",
+    "rfc2278",
+    "rfc2298",
+    "rfc2301",
+    "rfc2302",
+    "rfc2311",
+    "rfc2312",
+    "rfc2318",
+    "rfc2346",
+    "rfc2387",
+    "rfc2388",
+    "rfc2392",
+    "rfc2421",
+    "rfc2422",
+    "rfc2423",
+    "rfc2424",
+    "rfc2425",
+    "rfc2426",
+    "rfc2442",
+    "rfc2445",
+    "rfc2480",
+    "rfc2503",
+    "rfc2557",
+    "rfc2586",
+    "rfc2632",
+    "rfc2633",
+    "rfc2634",
+    "rfc2646",
+    "rfc2652",
+    "rfc2778",
+    "rfc2779",
+    "rfc2785",
+    "rfc2912",
+    "rfc2913",
+    "rfc2927",
+    "rfc2936",
+    "rfc2957",
+    "rfc2958",
+    "rfc2978",
+    "rfc3003",
+    "rfc3009",
+    "rfc3030",
+    "rfc3058",
+    "rfc3073",
+    "rfc3114",
+    "rfc3156",
+    "rfc3183",
+    "rfc3204",
+    "rfc3211",
+    "rfc3236",
+    "rfc3240",
+    "rfc3250",
+    "rfc3282",
+    "rfc3302",
+    "rfc3335",
+    "rfc3362",
+    "rfc3391",
+    "rfc3420",
+    "rfc3459",
+    "rfc3462",
+    "rfc3464",
+    "rfc3534",
+    "rfc3555",
+    "rfc3625",
+    "rfc3676",
+    "rfc3745",
+    "rfc3798",
+    "rfc3801",
+    "rfc3802",
+    "rfc3803",
+    "rfc3823",
+    "rfc3839",
+    "rfc3850",
+    "rfc3851",
+    "rfc3853",
+    "rfc3854",
+    "rfc3855",
+    "rfc3870",
+    "rfc3949",
+    "rfc3950",
+    "rfc4010",
+    "rfc4021",
+    "rfc4047",
+    "rfc4102",
+    "rfc4130",
+    "rfc4134",
+    "rfc4141",
+    "rfc4180",
+    "rfc4249",
+    "rfc4262",
+    "rfc4288",
+    "rfc4289",
+    "rfc4329",
+    "rfc4337",
+    "rfc4374",
+    "rfc4393",
+    "rfc4483",
+    "rfc4490",
+    "rfc4573",
+    "rfc4612",
+    "rfc4855",
+    "rfc4856",
+    "rfc5008",
+    "rfc5068",
+    "rfc5147",
+    "rfc5334",
+    "rfc5598",
+    "rfc5621",
+    "rfc5686",
+    "rfc5688",
+    "rfc5703",
+    "rfc5750",
+    "rfc5751",
+    "rfc5911",
+    "rfc5912",
+    "rfc6025",
+    "rfc6109",
+    "rfc6129",
+    "rfc6152",
+    "rfc6210",
+    "rfc6211",
+    "rfc6318",
+    "rfc6522",
+    "rfc6657",
+    "rfc6664",
+    "rfc6922",
+    "rfc7107",
+    "rfc7111",
+    "rfc7114",
+    "rfc7165",
+    "rfc7281",
+    "rfc7508",
+    "rfc767",
+    "rfc7681",
+    "rfc7912",
+    "rfc807",
+    "rfc8081",
+    "rfc8098",
+    "rfc8118",
+    "rfc8162",
+    "rfc8255",
+    "rfc8550",
+    "rfc8551",
+    "rfc8591",
+    "rfc8755",
+    "rfc8823",
+    "rfc9078",
+    "rfc910",
+    "rfc9216",
+    "rfc9219",
+    "rfc9239",
+    "rfc971",
+    "rfc9787",
+    "rfc9788",
+    "rfc9996"
+  ],
+  "document_meta": {
+    "rfc1003": { "title": "Issues in defining an equations representation standard", "subseries": [] },
+    "rfc1049": { "title": "Content-type header field for Internet messages", "subseries": [] },
+    "rfc1197": { "title": "Using ODA for translating multimedia information", "subseries": [] },
+    "rfc1341": {
+      "title": "MIME (Multipurpose Internet Mail Extensions): Mechanisms for Specifying and Describing the Format of Internet Message Bodies",
+      "subseries": []
+    },
+    "rfc1342": { "title": "Representation of Non-ASCII Text in Internet Message Headers", "subseries": [] },
+    "rfc1343": {
+      "title": "A User Agent Configuration Mechanism for Multimedia Mail Format Information",
+      "subseries": []
+    },
+    "rfc1344": { "title": "Implications of MIME for Internet Mail Gateways", "subseries": [] },
+    "rfc1345": { "title": "Character Mnemonics and Character Sets", "subseries": [] },
+    "rfc1428": { "title": "Transition of Internet Mail from Just-Send-8 to 8bit-SMTP/MIME", "subseries": [] },
+    "rfc1468": { "title": "Japanese Character Encoding for Internet Messages", "subseries": [] },
+    "rfc1494": { "title": "Equivalences between 1988 X.400 and RFC-822 Message Bodies", "subseries": [] },
+    "rfc1495": { "title": "Mapping between X.400 and RFC-822 Message Bodies", "subseries": [] },
+    "rfc1496": {
+      "title": "Rules for downgrading messages from X.400/88 to X.400/84 when MIME content-types are present in the messages",
+      "subseries": []
+    },
+    "rfc1521": {
+      "title": "MIME (Multipurpose Internet Mail Extensions) Part One: Mechanisms for Specifying and Describing the Format of Internet Message Bodies",
+      "subseries": []
+    },
+    "rfc1522": {
+      "title": "MIME (Multipurpose Internet Mail Extensions) Part Two: Message Header Extensions for Non-ASCII Text",
+      "subseries": []
+    },
+    "rfc1523": { "title": "The text/enriched MIME Content-type", "subseries": [] },
+    "rfc1524": {
+      "title": "A User Agent Configuration Mechanism For Multimedia Mail Format Information",
+      "subseries": []
+    },
+    "rfc1544": { "title": "The Content-MD5 Header Field", "subseries": [] },
+    "rfc1556": { "title": "Handling of Bi-directional Texts in MIME", "subseries": [] },
+    "rfc1563": { "title": "The text/enriched MIME Content-type", "subseries": [] },
+    "rfc1614": { "title": "Network Access to Multimedia Information", "subseries": [] },
+    "rfc1641": { "title": "Using Unicode with MIME", "subseries": [] },
+    "rfc1740": { "title": "MIME Encapsulation of Macintosh Files - MacMIME", "subseries": [] },
+    "rfc1741": { "title": "MIME Content Type for BinHex Encoded Files", "subseries": [] },
+    "rfc1767": { "title": "MIME Encapsulation of EDI Objects", "subseries": [] },
+    "rfc1806": {
+      "title": "Communicating Presentation Information in Internet Messages: The Content-Disposition Header",
+      "subseries": []
+    },
+    "rfc1820": { "title": "Multimedia E-mail (MIME) User Agent Checklist", "subseries": [] },
+    "rfc1830": {
+      "title": "SMTP Service Extensions for Transmission of Large and Binary MIME Messages",
+      "subseries": []
+    },
+    "rfc1844": { "title": "Multimedia E-mail (MIME) User Agent Checklist", "subseries": [] },
+    "rfc1847": { "title": "Security Multiparts for MIME: Multipart/Signed and Multipart/Encrypted", "subseries": [] },
+    "rfc1848": { "title": "MIME Object Security Services", "subseries": [] },
+    "rfc1864": { "title": "The Content-MD5 Header Field", "subseries": [] },
+    "rfc1867": { "title": "Form-based File Upload in HTML", "subseries": [] },
+    "rfc1872": { "title": "The MIME Multipart/Related Content-type", "subseries": [] },
+    "rfc1873": { "title": "Message/External-Body Content-ID Access Type", "subseries": [] },
+    "rfc1874": { "title": "SGML Media Types", "subseries": [] },
+    "rfc1892": {
+      "title": "The Multipart/Report Content Type for the Reporting of Mail System Administrative Messages",
+      "subseries": []
+    },
+    "rfc1895": { "title": "The Application/CALS-1840 Content-type", "subseries": [] },
+    "rfc1896": { "title": "The text/enriched MIME Content-type", "subseries": [] },
+    "rfc1911": { "title": "Voice Profile for Internet Mail", "subseries": [] },
+    "rfc1947": { "title": "Greek Character Encoding for Electronic Mail Messages", "subseries": [] },
+    "rfc2015": { "title": "MIME Security with Pretty Good Privacy (PGP)", "subseries": [] },
+    "rfc2017": { "title": "Definition of the URL MIME External-Body Access-Type", "subseries": [] },
+    "rfc2045": {
+      "title": "Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies",
+      "subseries": []
+    },
+    "rfc2046": { "title": "Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types", "subseries": [] },
+    "rfc2047": {
+      "title": "MIME (Multipurpose Internet Mail Extensions) Part Three: Message Header Extensions for Non-ASCII Text",
+      "subseries": []
+    },
+    "rfc2048": {
+      "title": "Multipurpose Internet Mail Extensions (MIME) Part Four: Registration Procedures",
+      "subseries": []
+    },
+    "rfc2049": {
+      "title": "Multipurpose Internet Mail Extensions (MIME) Part Five: Conformance Criteria and Examples",
+      "subseries": []
+    },
+    "rfc2077": { "title": "The Model Primary Content Type for Multipurpose Internet Mail Extensions", "subseries": [] },
+    "rfc2110": { "title": "MIME E-mail Encapsulation of Aggregate Documents, such as HTML (MHTML)", "subseries": [] },
+    "rfc2111": { "title": "Content-ID and Message-ID Uniform Resource Locators", "subseries": [] },
+    "rfc2112": { "title": "The MIME Multipart/Related Content-type", "subseries": [] },
+    "rfc2156": {
+      "title": "MIXER (Mime Internet X.400 Enhanced Relay): Mapping between X.400 and RFC 822/MIME",
+      "subseries": []
+    },
+    "rfc2157": { "title": "Mapping between X.400 and RFC-822/MIME Message Bodies", "subseries": [] },
+    "rfc2159": { "title": "A MIME Body Part for FAX", "subseries": [] },
+    "rfc2160": { "title": "Carrying PostScript in X.400 and MIME", "subseries": [] },
+    "rfc2161": { "title": "A MIME Body Part for ODA", "subseries": [] },
+    "rfc2162": { "title": "MaXIM-11 - Mapping between X.400 / Internet mail and  Mail-11 mail", "subseries": [] },
+    "rfc2163": {
+      "title": "Using the Internet DNS to Distribute MIXER Conformant Global Address Mapping (MCGAM)",
+      "subseries": []
+    },
+    "rfc2164": { "title": "Use of an X.500/LDAP directory to support MIXER address mapping", "subseries": [] },
+    "rfc2183": {
+      "title": "Communicating Presentation Information in Internet Messages: The Content-Disposition Header Field",
+      "subseries": []
+    },
+    "rfc2184": {
+      "title": "MIME Parameter Value and Encoded Word Extensions: Character Sets, Languages, and Continuations",
+      "subseries": []
+    },
+    "rfc2220": { "title": "The Application/MARC Content-type", "subseries": [] },
+    "rfc2231": {
+      "title": "MIME Parameter Value and Encoded Word Extensions: Character Sets, Languages, and Continuations",
+      "subseries": []
+    },
+    "rfc2278": { "title": "IANA Charset Registration Procedures", "subseries": [] },
+    "rfc2298": { "title": "An Extensible Message Format for Message Disposition Notifications", "subseries": [] },
+    "rfc2301": { "title": "File Format for Internet Fax", "subseries": [] },
+    "rfc2302": { "title": "Tag Image File Format (TIFF) - image/tiff MIME Sub-type Registration", "subseries": [] },
+    "rfc2311": { "title": "S/MIME Version 2 Message Specification", "subseries": [] },
+    "rfc2312": { "title": "S/MIME Version 2 Certificate Handling", "subseries": [] },
+    "rfc2318": { "title": "The text/css Media Type", "subseries": [] },
+    "rfc2346": { "title": "Making Postscript and PDF International", "subseries": [] },
+    "rfc2387": { "title": "The MIME Multipart/Related Content-type", "subseries": [] },
+    "rfc2388": { "title": "Returning Values from Forms: multipart/form-data", "subseries": [] },
+    "rfc2392": { "title": "Content-ID and Message-ID Uniform Resource Locators", "subseries": [] },
+    "rfc2421": { "title": "Voice Profile for Internet Mail - version 2", "subseries": [] },
+    "rfc2422": { "title": "Toll Quality Voice - 32 kbit/s ADPCM MIME Sub-type Registration", "subseries": [] },
+    "rfc2423": { "title": "VPIM Voice Message MIME Sub-type Registration", "subseries": [] },
+    "rfc2424": { "title": "Content Duration MIME Header Definition", "subseries": [] },
+    "rfc2425": { "title": "A MIME Content-Type for Directory Information", "subseries": [] },
+    "rfc2426": { "title": "vCard MIME Directory Profile", "subseries": [] },
+    "rfc2442": { "title": "The Batch SMTP Media Type", "subseries": [] },
+    "rfc2445": {
+      "title": "Internet Calendaring and Scheduling Core Object Specification (iCalendar)",
+      "subseries": []
+    },
+    "rfc2480": { "title": "Gateways and MIME Security Multiparts", "subseries": [] },
+    "rfc2503": { "title": "MIME Types for Use with the ISO ILL Protocol", "subseries": [] },
+    "rfc2557": { "title": "MIME Encapsulation of Aggregate Documents, such as HTML (MHTML)", "subseries": [] },
+    "rfc2586": { "title": "The Audio/L16 MIME content type", "subseries": [] },
+    "rfc2632": { "title": "S/MIME Version 3 Certificate Handling", "subseries": [] },
+    "rfc2633": { "title": "S/MIME Version 3 Message Specification", "subseries": [] },
+    "rfc2634": { "title": "Enhanced Security Services for S/MIME", "subseries": [] },
+    "rfc2646": { "title": "The Text/Plain Format Parameter", "subseries": [] },
+    "rfc2652": { "title": "MIME Object Definitions for the Common Indexing Protocol (CIP)", "subseries": [] },
+    "rfc2778": { "title": "A Model for Presence and Instant Messaging", "subseries": [] },
+    "rfc2779": { "title": "Instant Messaging / Presence Protocol Requirements", "subseries": [] },
+    "rfc2785": {
+      "title": "Methods for Avoiding the \"Small-Subgroup\" Attacks on the Diffie-Hellman Key Agreement Method for S/MIME",
+      "subseries": []
+    },
+    "rfc2912": { "title": "Indicating Media Features for MIME Content", "subseries": [] },
+    "rfc2913": { "title": "MIME Content Types in Media Feature Expressions", "subseries": [] },
+    "rfc2927": { "title": "MIME Directory Profile for LDAP Schema", "subseries": [] },
+    "rfc2936": { "title": "HTTP MIME Type Handler Detection", "subseries": [] },
+    "rfc2957": { "title": "The application/whoispp-query Content-Type", "subseries": [] },
+    "rfc2958": { "title": "The application/whoispp-response Content-type", "subseries": [] },
+    "rfc2978": { "title": "IANA Charset Registration Procedures", "subseries": ["bcp19"] },
+    "rfc3003": { "title": "The audio/mpeg Media Type", "subseries": [] },
+    "rfc3009": { "title": "Registration of parityfec MIME types", "subseries": [] },
+    "rfc3030": {
+      "title": "SMTP Service Extensions for Transmission of Large and Binary MIME Messages",
+      "subseries": []
+    },
+    "rfc3058": { "title": "Use of the IDEA Encryption Algorithm in CMS", "subseries": [] },
+    "rfc3073": {
+      "title": "Portable Font Resource (PFR) - application/font-tdpfr MIME Sub-type Registration",
+      "subseries": []
+    },
+    "rfc3114": {
+      "title": "Implementing Company Classification Policy with the S/MIME Security Label",
+      "subseries": []
+    },
+    "rfc3156": { "title": "MIME Security with OpenPGP", "subseries": [] },
+    "rfc3183": { "title": "Domain Security Services using S/MIME", "subseries": [] },
+    "rfc3204": { "title": "MIME media types for ISUP and QSIG Objects", "subseries": [] },
+    "rfc3211": { "title": "Password-based Encryption for CMS", "subseries": [] },
+    "rfc3236": { "title": "The 'application/xhtml+xml' Media Type", "subseries": [] },
+    "rfc3240": {
+      "title": "Digital Imaging and Communications in Medicine (DICOM) - Application/dicom MIME Sub-type Registration",
+      "subseries": []
+    },
+    "rfc3250": {
+      "title": "Tag Image File Format Fax eXtended (TIFF-FX) - image/tiff-fx MIME Sub-type Registration",
+      "subseries": []
+    },
+    "rfc3282": { "title": "Content Language Headers", "subseries": [] },
+    "rfc3302": { "title": "Tag Image File Format (TIFF) - image/tiff MIME Sub-type Registration", "subseries": [] },
+    "rfc3335": {
+      "title": "MIME-based Secure Peer-to-Peer Business Data Interchange over the Internet",
+      "subseries": []
+    },
+    "rfc3362": { "title": "Real-time Facsimile (T.38) - image/t38 MIME Sub-type Registration", "subseries": [] },
+    "rfc3391": { "title": "The MIME Application/Vnd.pwg-multiplexed Content-Type", "subseries": [] },
+    "rfc3420": { "title": "Internet Media Type message/sipfrag", "subseries": [] },
+    "rfc3459": { "title": "Critical Content Multi-purpose Internet Mail Extensions (MIME) Parameter", "subseries": [] },
+    "rfc3462": {
+      "title": "The Multipart/Report Content Type for the Reporting of Mail System Administrative Messages",
+      "subseries": []
+    },
+    "rfc3464": { "title": "An Extensible Message Format for Delivery Status Notifications", "subseries": [] },
+    "rfc3534": { "title": "The application/ogg Media Type", "subseries": [] },
+    "rfc3555": { "title": "MIME Type Registration of RTP Payload Formats", "subseries": [] },
+    "rfc3625": { "title": "The QCP File Format and Media Types for Speech Data", "subseries": [] },
+    "rfc3676": { "title": "The Text/Plain Format and DelSp Parameters", "subseries": [] },
+    "rfc3745": { "title": "MIME Type Registrations for JPEG 2000 (ISO/IEC 15444)", "subseries": [] },
+    "rfc3798": { "title": "Message Disposition Notification", "subseries": [] },
+    "rfc3801": { "title": "Voice Profile for Internet Mail - version 2 (VPIMv2)", "subseries": [] },
+    "rfc3802": {
+      "title": "Toll Quality Voice - 32 kbit/s Adaptive Differential Pulse Code Modulation (ADPCM) MIME Sub-type Registration",
+      "subseries": []
+    },
+    "rfc3803": { "title": "Content Duration MIME Header Definition", "subseries": [] },
+    "rfc3823": { "title": "MIME Media Type for the Systems Biology Markup Language (SBML)", "subseries": [] },
+    "rfc3839": {
+      "title": "MIME Type Registrations for 3rd Generation Partnership Project (3GPP) Multimedia files",
+      "subseries": []
+    },
+    "rfc3850": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.1 Certificate Handling",
+      "subseries": []
+    },
+    "rfc3851": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.1 Message Specification",
+      "subseries": []
+    },
+    "rfc3853": {
+      "title": "S/MIME Advanced Encryption Standard (AES) Requirement for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3854": {
+      "title": "Securing X.400 Content with Secure/Multipurpose Internet Mail Extensions (S/MIME)",
+      "subseries": []
+    },
+    "rfc3855": {
+      "title": "Transporting Secure/Multipurpose Internet Mail Extensions (S/MIME) Objects in X.400",
+      "subseries": []
+    },
+    "rfc3870": { "title": "application/rdf+xml Media Type Registration", "subseries": [] },
+    "rfc3949": { "title": "File Format for Internet Fax", "subseries": [] },
+    "rfc3950": {
+      "title": "Tag Image File Format Fax eXtended (TIFF-FX) - image/tiff-fx MIME Sub-type Registration",
+      "subseries": []
+    },
+    "rfc4010": {
+      "title": "Use of the SEED Encryption Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4021": { "title": "Registration of Mail and MIME Header Fields", "subseries": [] },
+    "rfc4047": { "title": "MIME Sub-type Registrations for Flexible Image Transport System (FITS)", "subseries": [] },
+    "rfc4102": { "title": "Registration of the text/red MIME Sub-Type", "subseries": [] },
+    "rfc4130": {
+      "title": "MIME-Based Secure Peer-to-Peer Business Data Interchange Using HTTP, Applicability Statement 2 (AS2)",
+      "subseries": []
+    },
+    "rfc4134": { "title": "Examples of S/MIME Messages", "subseries": [] },
+    "rfc4141": { "title": "SMTP and MIME Extensions for Content Conversion", "subseries": [] },
+    "rfc4180": { "title": "Common Format and MIME Type for Comma-Separated Values (CSV) Files", "subseries": [] },
+    "rfc4249": {
+      "title": "Implementer-Friendly Specification of Message and MIME-Part Header Fields and Field Components",
+      "subseries": []
+    },
+    "rfc4262": {
+      "title": "X.509 Certificate Extension for Secure/Multipurpose Internet Mail Extensions (S/MIME) Capabilities",
+      "subseries": []
+    },
+    "rfc4288": { "title": "Media Type Specifications and Registration Procedures", "subseries": [] },
+    "rfc4289": {
+      "title": "Multipurpose Internet Mail Extensions (MIME) Part Four: Registration Procedures",
+      "subseries": ["bcp13"]
+    },
+    "rfc4329": { "title": "Scripting Media Types", "subseries": [] },
+    "rfc4337": { "title": "MIME Type Registration for MPEG-4", "subseries": [] },
+    "rfc4374": { "title": "The application/xv+xml Media Type", "subseries": [] },
+    "rfc4393": { "title": "MIME Type Registrations for 3GPP2 Multimedia Files", "subseries": [] },
+    "rfc4483": {
+      "title": "A Mechanism for Content Indirection in Session Initiation Protocol (SIP) Messages",
+      "subseries": []
+    },
+    "rfc4490": {
+      "title": "Using the GOST 28147-89, GOST R 34.11-94, GOST R 34.10-94, and GOST R 34.10-2001 Algorithms with Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4573": { "title": "MIME Type Registration for RTP Payload Format for H.224", "subseries": [] },
+    "rfc4612": { "title": "Real-Time Facsimile (T.38) - audio/t38 MIME Sub-type Registration", "subseries": [] },
+    "rfc4855": { "title": "Media Type Registration of RTP Payload Formats", "subseries": [] },
+    "rfc4856": {
+      "title": "Media Type Registration of Payload Formats in the RTP Profile for Audio and Video Conferences",
+      "subseries": []
+    },
+    "rfc5008": { "title": "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)", "subseries": [] },
+    "rfc5068": {
+      "title": "Email Submission Operations: Access and Accountability Requirements",
+      "subseries": ["bcp134"]
+    },
+    "rfc5147": { "title": "URI Fragment Identifiers for the text/plain Media Type", "subseries": [] },
+    "rfc5334": { "title": "Ogg Media Types", "subseries": [] },
+    "rfc5598": { "title": "Internet Mail Architecture", "subseries": [] },
+    "rfc5621": { "title": "Message Body Handling in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5686": {
+      "title": "RTP Payload Format for mU-law EMbedded Codec for Low-delay IP Communication (UEMCLIP) Speech Codec",
+      "subseries": []
+    },
+    "rfc5688": {
+      "title": "A Session Initiation Protocol (SIP) Media Feature Tag for MIME Application Subtypes",
+      "subseries": []
+    },
+    "rfc5703": {
+      "title": "Sieve Email Filtering: MIME Part Tests, Iteration, Extraction, Replacement, and Enclosure",
+      "subseries": []
+    },
+    "rfc5750": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.2 Certificate Handling",
+      "subseries": []
+    },
+    "rfc5751": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.2 Message Specification",
+      "subseries": []
+    },
+    "rfc5911": { "title": "New ASN.1 Modules for Cryptographic Message Syntax (CMS) and S/MIME", "subseries": [] },
+    "rfc5912": { "title": "New ASN.1 Modules for the Public Key Infrastructure Using X.509 (PKIX)", "subseries": [] },
+    "rfc6025": { "title": "ASN.1 Translation", "subseries": [] },
+    "rfc6109": { "title": "La Posta Elettronica Certificata - Italian Certified Electronic Mail", "subseries": [] },
+    "rfc6129": { "title": "The 'application/tei+xml' Media Type", "subseries": [] },
+    "rfc6152": { "title": "SMTP Service Extension for 8-bit MIME Transport", "subseries": ["std71"] },
+    "rfc6210": {
+      "title": "Experiment: Hash Functions with Parameters in the Cryptographic Message Syntax (CMS) and S/MIME",
+      "subseries": []
+    },
+    "rfc6211": {
+      "title": "Cryptographic Message Syntax (CMS) Algorithm Identifier Protection Attribute",
+      "subseries": []
+    },
+    "rfc6318": { "title": "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)", "subseries": [] },
+    "rfc6522": {
+      "title": "The Multipart/Report Media Type for the Reporting of Mail System Administrative Messages",
+      "subseries": ["std73"]
+    },
+    "rfc6657": {
+      "title": "Update to MIME regarding \"charset\" Parameter Handling in Textual Media Types",
+      "subseries": []
+    },
+    "rfc6664": { "title": "S/MIME Capabilities for Public Key Definitions", "subseries": [] },
+    "rfc6922": { "title": "The application/sql Media Type", "subseries": [] },
+    "rfc7107": { "title": "Object Identifier Registry for the S/MIME Mail Security Working Group", "subseries": [] },
+    "rfc7111": { "title": "URI Fragment Identifiers for the text/csv Media Type", "subseries": [] },
+    "rfc7114": { "title": "Creation of a Registry for smime-type Parameter Values", "subseries": [] },
+    "rfc7165": { "title": "Use Cases and Requirements for JSON Object Signing and Encryption (JOSE)", "subseries": [] },
+    "rfc7281": { "title": "Authentication-Results Registration for S/MIME Signature Verification", "subseries": [] },
+    "rfc7508": { "title": "Securing Header Fields with S/MIME", "subseries": [] },
+    "rfc767": { "title": "Structured format for transmission of multi-media documents", "subseries": [] },
+    "rfc7681": { "title": "Email Exchange of Secondary School Transcripts", "subseries": [] },
+    "rfc7912": {
+      "title": "Message Authorizing Email Header Field and Its Use for the Draft and Release Procedure",
+      "subseries": []
+    },
+    "rfc807": { "title": "Multimedia mail meeting notes", "subseries": [] },
+    "rfc8081": { "title": "The \"font\" Top-Level Media Type", "subseries": [] },
+    "rfc8098": { "title": "Message Disposition Notification", "subseries": ["std85"] },
+    "rfc8118": { "title": "The application/pdf Media Type", "subseries": [] },
+    "rfc8162": { "title": "Using Secure DNS to Associate Certificates with Domain Names for S/MIME", "subseries": [] },
+    "rfc8255": { "title": "Multiple Language Content Type", "subseries": [] },
+    "rfc8550": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Certificate Handling",
+      "subseries": []
+    },
+    "rfc8551": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Message Specification",
+      "subseries": []
+    },
+    "rfc8591": { "title": "SIP-Based Messaging with S/MIME", "subseries": [] },
+    "rfc8755": {
+      "title": "Using Commercial National Security Algorithm Suite Algorithms in Secure/Multipurpose Internet Mail Extensions",
+      "subseries": []
+    },
+    "rfc8823": {
+      "title": "Extensions to Automatic Certificate Management Environment for End-User S/MIME Certificates",
+      "subseries": []
+    },
+    "rfc9078": { "title": "Reaction: Indicating Summary Reaction to a Message", "subseries": [] },
+    "rfc910": { "title": "Multimedia mail meeting notes", "subseries": [] },
+    "rfc9216": { "title": "S/MIME Example Keys and Certificates", "subseries": [] },
+    "rfc9219": {
+      "title": "S/MIME Signature Verification Extension to the JSON Meta Application Protocol (JMAP)",
+      "subseries": []
+    },
+    "rfc9239": { "title": "Updates to ECMAScript Media Types", "subseries": [] },
+    "rfc971": { "title": "Survey of data representation standards", "subseries": [] },
+    "rfc9787": { "title": "Guidance on End-to-End Email Security", "subseries": [] },
+    "rfc9788": { "title": "Header Protection for Cryptographically Protected Email", "subseries": [] },
+    "rfc9996": { "title": "Media Types for Protocol Buffers", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "media-types": { "name": "Media Types" } }
+}

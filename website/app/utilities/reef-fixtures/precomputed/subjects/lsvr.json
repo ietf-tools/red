@@ -1,0 +1,22 @@
+{
+  "id": 712,
+  "slug": "lsvr",
+  "name": "LSVR",
+  "description": "Link State Vector Routing (BGP-SPF)",
+  "parent": "routing",
+  "path": "routing/lsvr",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9815", "rfc9816"],
+  "document_meta": {
+    "rfc9815": { "title": "BGP Link State (BGP-LS) Shortest Path First (SPF) Routing", "subseries": [] },
+    "rfc9816": {
+      "title": "Usage and Applicability of BGP Link State (BGP-LS) Shortest Path First (SPF) Routing in Data Centers",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

@@ -1,0 +1,163 @@
+{
+  "id": 781,
+  "slug": "sctp",
+  "name": "SCTP",
+  "description": "Stream Control Transmission Protocol",
+  "parent": "transport",
+  "path": "transport/sctp",
+  "document_count": 41,
+  "document_count_deep": 41,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3286",
+    "rfc3309",
+    "rfc3436",
+    "rfc3554",
+    "rfc3708",
+    "rfc3758",
+    "rfc4138",
+    "rfc4168",
+    "rfc4460",
+    "rfc4820",
+    "rfc4895",
+    "rfc4960",
+    "rfc5043",
+    "rfc5061",
+    "rfc5062",
+    "rfc5811",
+    "rfc5827",
+    "rfc5923",
+    "rfc6053",
+    "rfc6083",
+    "rfc6084",
+    "rfc6096",
+    "rfc6458",
+    "rfc6525",
+    "rfc6526",
+    "rfc6633",
+    "rfc6951",
+    "rfc7053",
+    "rfc7496",
+    "rfc7605",
+    "rfc7765",
+    "rfc7829",
+    "rfc8087",
+    "rfc8260",
+    "rfc8261",
+    "rfc8540",
+    "rfc8841",
+    "rfc8850",
+    "rfc8899",
+    "rfc9260",
+    "rfc9653"
+  ],
+  "document_meta": {
+    "rfc3286": { "title": "An Introduction to the Stream Control Transmission Protocol (SCTP)", "subseries": [] },
+    "rfc3309": { "title": "Stream Control Transmission Protocol (SCTP) Checksum Change", "subseries": [] },
+    "rfc3436": { "title": "Transport Layer Security over Stream Control Transmission Protocol", "subseries": [] },
+    "rfc3554": { "title": "On the Use of Stream Control Transmission Protocol (SCTP) with IPsec", "subseries": [] },
+    "rfc3708": {
+      "title": "Using TCP Duplicate Selective Acknowledgement (DSACKs) and Stream Control Transmission Protocol (SCTP) Duplicate Transmission Sequence Numbers (TSNs) to Detect Spurious Retransmissions",
+      "subseries": []
+    },
+    "rfc3758": {
+      "title": "Stream Control Transmission Protocol (SCTP) Partial Reliability Extension",
+      "subseries": []
+    },
+    "rfc4138": {
+      "title": "Forward RTO-Recovery (F-RTO): An Algorithm for Detecting Spurious Retransmission Timeouts with TCP and the Stream Control Transmission Protocol (SCTP)",
+      "subseries": []
+    },
+    "rfc4168": {
+      "title": "The Stream Control Transmission Protocol (SCTP) as a Transport for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc4460": {
+      "title": "Stream Control Transmission Protocol (SCTP) Specification Errata and Issues",
+      "subseries": []
+    },
+    "rfc4820": {
+      "title": "Padding Chunk and Parameter for the Stream Control Transmission Protocol (SCTP)",
+      "subseries": []
+    },
+    "rfc4895": { "title": "Authenticated Chunks for the Stream Control Transmission Protocol (SCTP)", "subseries": [] },
+    "rfc4960": { "title": "Stream Control Transmission Protocol", "subseries": [] },
+    "rfc5043": {
+      "title": "Stream Control Transmission Protocol (SCTP) Direct Data Placement (DDP) Adaptation",
+      "subseries": []
+    },
+    "rfc5061": {
+      "title": "Stream Control Transmission Protocol (SCTP) Dynamic Address Reconfiguration",
+      "subseries": []
+    },
+    "rfc5062": {
+      "title": "Security Attacks Found Against the Stream Control Transmission Protocol (SCTP) and Current Countermeasures",
+      "subseries": []
+    },
+    "rfc5811": {
+      "title": "SCTP-Based Transport Mapping Layer (TML) for the Forwarding and Control Element Separation (ForCES) Protocol",
+      "subseries": []
+    },
+    "rfc5827": { "title": "Early Retransmit for TCP and Stream Control Transmission Protocol (SCTP)", "subseries": [] },
+    "rfc5923": { "title": "Connection Reuse in the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc6053": {
+      "title": "Implementation Report for Forwarding and Control Element Separation (ForCES)",
+      "subseries": []
+    },
+    "rfc6083": {
+      "title": "Datagram Transport Layer Security (DTLS) for Stream Control Transmission Protocol (SCTP)",
+      "subseries": []
+    },
+    "rfc6084": {
+      "title": "General Internet Signaling Transport (GIST) over Stream Control Transmission Protocol (SCTP) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    },
+    "rfc6096": { "title": "Stream Control Transmission Protocol (SCTP) Chunk Flags Registration", "subseries": [] },
+    "rfc6458": {
+      "title": "Sockets API Extensions for the Stream Control Transmission Protocol (SCTP)",
+      "subseries": []
+    },
+    "rfc6525": { "title": "Stream Control Transmission Protocol (SCTP) Stream Reconfiguration", "subseries": [] },
+    "rfc6526": {
+      "title": "IP Flow Information Export (IPFIX) Per Stream Control Transmission Protocol (SCTP) Stream",
+      "subseries": []
+    },
+    "rfc6633": { "title": "Deprecation of ICMP Source Quench Messages", "subseries": [] },
+    "rfc6951": {
+      "title": "UDP Encapsulation of Stream Control Transmission Protocol (SCTP) Packets for End-Host to End-Host Communication",
+      "subseries": []
+    },
+    "rfc7053": { "title": "SACK-IMMEDIATELY Extension for the Stream Control Transmission Protocol", "subseries": [] },
+    "rfc7496": {
+      "title": "Additional Policies for the Partially Reliable Stream Control Transmission Protocol Extension",
+      "subseries": []
+    },
+    "rfc7605": { "title": "Recommendations on Using Assigned Transport Port Numbers", "subseries": ["bcp165"] },
+    "rfc7765": { "title": "TCP and Stream Control Transmission Protocol (SCTP) RTO Restart", "subseries": [] },
+    "rfc7829": {
+      "title": "SCTP-PF: A Quick Failover Algorithm for the Stream Control Transmission Protocol",
+      "subseries": []
+    },
+    "rfc8087": { "title": "The Benefits of Using Explicit Congestion Notification (ECN)", "subseries": [] },
+    "rfc8260": {
+      "title": "Stream Schedulers and User Message Interleaving for the Stream Control Transmission Protocol",
+      "subseries": []
+    },
+    "rfc8261": { "title": "Datagram Transport Layer Security (DTLS) Encapsulation of SCTP Packets", "subseries": [] },
+    "rfc8540": { "title": "Stream Control Transmission Protocol: Errata and Issues in RFC 4960", "subseries": [] },
+    "rfc8841": {
+      "title": "Session Description Protocol (SDP) Offer/Answer Procedures for Stream Control Transmission Protocol (SCTP) over Datagram Transport Layer Security (DTLS) Transport",
+      "subseries": []
+    },
+    "rfc8850": {
+      "title": "Controlling Multiple Streams for Telepresence (CLUE) Protocol Data Channel",
+      "subseries": []
+    },
+    "rfc8899": { "title": "Packetization Layer Path MTU Discovery for Datagram Transports", "subseries": [] },
+    "rfc9260": { "title": "Stream Control Transmission Protocol", "subseries": [] },
+    "rfc9653": { "title": "Zero Checksum for the Stream Control Transmission Protocol", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

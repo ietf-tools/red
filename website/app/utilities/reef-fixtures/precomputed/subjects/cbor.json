@@ -1,0 +1,164 @@
+{
+  "id": 575,
+  "slug": "cbor",
+  "name": "CBOR",
+  "description": "Concise Binary Object Representation",
+  "parent": "data-formats",
+  "path": "data-formats/cbor",
+  "document_count": 43,
+  "document_count_deep": 43,
+  "retired": false,
+  "children": ["cddl"],
+  "aliases": [],
+  "documents": [
+    "rfc7049",
+    "rfc8152",
+    "rfc8230",
+    "rfc8392",
+    "rfc8610",
+    "rfc8727",
+    "rfc8742",
+    "rfc8746",
+    "rfc8747",
+    "rfc8769",
+    "rfc8778",
+    "rfc8812",
+    "rfc8943",
+    "rfc8949",
+    "rfc9021",
+    "rfc9052",
+    "rfc9053",
+    "rfc9054",
+    "rfc9090",
+    "rfc9164",
+    "rfc9165",
+    "rfc9254",
+    "rfc9277",
+    "rfc9290",
+    "rfc9338",
+    "rfc9360",
+    "rfc9459",
+    "rfc9542",
+    "rfc9581",
+    "rfc9595",
+    "rfc9596",
+    "rfc9597",
+    "rfc9679",
+    "rfc9682",
+    "rfc9711",
+    "rfc9741",
+    "rfc9781",
+    "rfc9864",
+    "rfc9921",
+    "rfc9942",
+    "rfc9964",
+    "rfc9995",
+    "rfc9997"
+  ],
+  "document_meta": {
+    "rfc7049": { "title": "Concise Binary Object Representation (CBOR)", "subseries": [] },
+    "rfc8152": { "title": "CBOR Object Signing and Encryption (COSE)", "subseries": [] },
+    "rfc8230": {
+      "title": "Using RSA Algorithms with CBOR Object Signing and Encryption (COSE) Messages",
+      "subseries": []
+    },
+    "rfc8392": { "title": "CBOR Web Token (CWT)", "subseries": [] },
+    "rfc8610": {
+      "title": "Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures",
+      "subseries": []
+    },
+    "rfc8727": { "title": "JSON Binding of the Incident Object Description Exchange Format", "subseries": [] },
+    "rfc8742": { "title": "Concise Binary Object Representation (CBOR) Sequences", "subseries": [] },
+    "rfc8746": { "title": "Concise Binary Object Representation (CBOR) Tags for Typed Arrays", "subseries": [] },
+    "rfc8747": { "title": "Proof-of-Possession Key Semantics for CBOR Web Tokens (CWTs)", "subseries": [] },
+    "rfc8769": {
+      "title": "Cryptographic Message Syntax (CMS) Content Types for Concise Binary Object Representation (CBOR)",
+      "subseries": []
+    },
+    "rfc8778": {
+      "title": "Use of the HSS/LMS Hash-Based Signature Algorithm with CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc8812": {
+      "title": "CBOR Object Signing and Encryption (COSE) and JSON Object Signing and Encryption (JOSE) Registrations for Web Authentication (WebAuthn) Algorithms",
+      "subseries": []
+    },
+    "rfc8943": { "title": "Concise Binary Object Representation (CBOR) Tags for Date", "subseries": [] },
+    "rfc8949": { "title": "Concise Binary Object Representation (CBOR)", "subseries": ["std94"] },
+    "rfc9021": {
+      "title": "Use of the Walnut Digital Signature Algorithm with CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9052": { "title": "CBOR Object Signing and Encryption (COSE): Structures and Process", "subseries": ["std96"] },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9054": { "title": "CBOR Object Signing and Encryption (COSE): Hash Algorithms", "subseries": [] },
+    "rfc9090": { "title": "Concise Binary Object Representation (CBOR) Tags for Object Identifiers", "subseries": [] },
+    "rfc9164": {
+      "title": "Concise Binary Object Representation (CBOR) Tags for IPv4 and IPv6 Addresses and Prefixes",
+      "subseries": []
+    },
+    "rfc9165": {
+      "title": "Additional Control Operators for the Concise Data Definition Language (CDDL)",
+      "subseries": []
+    },
+    "rfc9254": {
+      "title": "Encoding of Data Modeled with YANG in the Concise Binary Object Representation (CBOR)",
+      "subseries": []
+    },
+    "rfc9277": {
+      "title": "On Stable Storage for Items in Concise Binary Object Representation (CBOR)",
+      "subseries": []
+    },
+    "rfc9290": { "title": "Concise Problem Details for Constrained Application Protocol (CoAP) APIs", "subseries": [] },
+    "rfc9338": { "title": "CBOR Object Signing and Encryption (COSE): Countersignatures", "subseries": ["std96"] },
+    "rfc9360": {
+      "title": "CBOR Object Signing and Encryption (COSE): Header Parameters for Carrying and Referencing X.509 Certificates",
+      "subseries": []
+    },
+    "rfc9459": { "title": "CBOR Object Signing and Encryption (COSE): AES-CTR and AES-CBC", "subseries": [] },
+    "rfc9542": {
+      "title": "IANA Considerations and IETF Protocol and Documentation Usage for IEEE 802 Parameters",
+      "subseries": ["bcp141"]
+    },
+    "rfc9581": {
+      "title": "Concise Binary Object Representation (CBOR) Tags for Time, Duration, and Period",
+      "subseries": []
+    },
+    "rfc9595": { "title": "YANG Schema Item iDentifier (YANG SID)", "subseries": [] },
+    "rfc9596": {
+      "title": "CBOR Object Signing and Encryption (COSE) \"typ\" (type) Header Parameter",
+      "subseries": []
+    },
+    "rfc9597": { "title": "CBOR Web Token (CWT) Claims in COSE Headers", "subseries": [] },
+    "rfc9679": { "title": "CBOR Object Signing and Encryption (COSE) Key Thumbprint", "subseries": [] },
+    "rfc9682": { "title": "Updates to the Concise Data Definition Language (CDDL) Grammar", "subseries": [] },
+    "rfc9711": { "title": "The Entity Attestation Token (EAT)", "subseries": [] },
+    "rfc9741": {
+      "title": "Concise Data Definition Language (CDDL): Additional Control Operators for the Conversion and Processing of Text",
+      "subseries": []
+    },
+    "rfc9781": {
+      "title": "A Concise Binary Object Representation (CBOR) Tag for Unprotected CBOR Web Token Claims Sets (UCCS)",
+      "subseries": []
+    },
+    "rfc9864": {
+      "title": "Fully-Specified Algorithms for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9921": {
+      "title": "CBOR Object Signing and Encryption (COSE) Header Parameter for Timestamp Tokens as Defined in RFC 3161",
+      "subseries": []
+    },
+    "rfc9942": { "title": "CBOR Object Signing and Encryption (COSE) Receipts", "subseries": [] },
+    "rfc9964": {
+      "title": "ML-DSA for JSON Object Signing and Encryption (JOSE) and CBOR Object Signing and Encryption (COSE)",
+      "subseries": []
+    },
+    "rfc9995": { "title": "CBOR Object Signing and Encryption (COSE) Hash Envelope", "subseries": [] },
+    "rfc9997": {
+      "title": "YANG-CBOR: Allocating SID Ranges for Private Enterprise Number (PEN) Holders",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "cddl": { "name": "CDDL" } }
+}

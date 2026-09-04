@@ -1,0 +1,399 @@
+{
+  "id": 935,
+  "slug": "pce",
+  "name": "PCE",
+  "description": "Path Computation Element architecture and PCEP",
+  "parent": "traffic-engineering",
+  "path": "routing/traffic-engineering/pce",
+  "document_count": 90,
+  "document_count_deep": 90,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4655",
+    "rfc4657",
+    "rfc4674",
+    "rfc4927",
+    "rfc5088",
+    "rfc5089",
+    "rfc5376",
+    "rfc5394",
+    "rfc5440",
+    "rfc5441",
+    "rfc5455",
+    "rfc5468",
+    "rfc5520",
+    "rfc5521",
+    "rfc5541",
+    "rfc5557",
+    "rfc5623",
+    "rfc5671",
+    "rfc5862",
+    "rfc5886",
+    "rfc6006",
+    "rfc6007",
+    "rfc6123",
+    "rfc6163",
+    "rfc6457",
+    "rfc6805",
+    "rfc6952",
+    "rfc7025",
+    "rfc7062",
+    "rfc7150",
+    "rfc7334",
+    "rfc7399",
+    "rfc7420",
+    "rfc7449",
+    "rfc7470",
+    "rfc7491",
+    "rfc7792",
+    "rfc7896",
+    "rfc7897",
+    "rfc8051",
+    "rfc8231",
+    "rfc8232",
+    "rfc8233",
+    "rfc8253",
+    "rfc8281",
+    "rfc8282",
+    "rfc8283",
+    "rfc8306",
+    "rfc8356",
+    "rfc8408",
+    "rfc8413",
+    "rfc8623",
+    "rfc8637",
+    "rfc8664",
+    "rfc8685",
+    "rfc8694",
+    "rfc8697",
+    "rfc8733",
+    "rfc8735",
+    "rfc8741",
+    "rfc8745",
+    "rfc8751",
+    "rfc8779",
+    "rfc8780",
+    "rfc8786",
+    "rfc8800",
+    "rfc8821",
+    "rfc8934",
+    "rfc9005",
+    "rfc9050",
+    "rfc9059",
+    "rfc9160",
+    "rfc9168",
+    "rfc9353",
+    "rfc9357",
+    "rfc9358",
+    "rfc9488",
+    "rfc9504",
+    "rfc9603",
+    "rfc9604",
+    "rfc9689",
+    "rfc9752",
+    "rfc9753",
+    "rfc9756",
+    "rfc9757",
+    "rfc9826",
+    "rfc9862",
+    "rfc9863",
+    "rfc9916",
+    "rfc9933"
+  ],
+  "document_meta": {
+    "rfc4655": { "title": "A Path Computation Element (PCE)-Based Architecture", "subseries": [] },
+    "rfc4657": {
+      "title": "Path Computation Element (PCE) Communication Protocol Generic Requirements",
+      "subseries": []
+    },
+    "rfc4674": { "title": "Requirements for Path Computation Element (PCE) Discovery", "subseries": [] },
+    "rfc4927": {
+      "title": "Path Computation Element Communication Protocol (PCECP) Specific Requirements for Inter-Area MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc5088": { "title": "OSPF Protocol Extensions for Path Computation Element (PCE) Discovery", "subseries": [] },
+    "rfc5089": { "title": "IS-IS Protocol Extensions for Path Computation Element (PCE) Discovery", "subseries": [] },
+    "rfc5376": {
+      "title": "Inter-AS Requirements for the Path Computation Element Communication Protocol (PCECP)",
+      "subseries": []
+    },
+    "rfc5394": { "title": "Policy-Enabled Path Computation Framework", "subseries": [] },
+    "rfc5440": { "title": "Path Computation Element (PCE) Communication Protocol (PCEP)", "subseries": [] },
+    "rfc5441": {
+      "title": "A Backward-Recursive PCE-Based Computation (BRPC) Procedure to Compute Shortest Constrained Inter-Domain Traffic Engineering Label Switched Paths",
+      "subseries": []
+    },
+    "rfc5455": {
+      "title": "Diffserv-Aware Class-Type Object for the Path Computation Element Communication Protocol",
+      "subseries": []
+    },
+    "rfc5468": { "title": "Performance Analysis of Inter-Domain Path Computation Methodologies", "subseries": [] },
+    "rfc5520": {
+      "title": "Preserving Topology Confidentiality in Inter-Domain Path Computation Using a Path-Key-Based Mechanism",
+      "subseries": []
+    },
+    "rfc5521": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Route Exclusions",
+      "subseries": []
+    },
+    "rfc5541": {
+      "title": "Encoding of Objective Functions in the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc5557": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Requirements and Protocol Extensions in Support of Global Concurrent Optimization",
+      "subseries": []
+    },
+    "rfc5623": { "title": "Framework for PCE-Based Inter-Layer MPLS and GMPLS Traffic Engineering", "subseries": [] },
+    "rfc5671": {
+      "title": "Applicability of the Path Computation Element (PCE) to Point-to-Multipoint (P2MP) MPLS and GMPLS Traffic Engineering (TE)",
+      "subseries": []
+    },
+    "rfc5862": {
+      "title": "Path Computation Clients (PCC) - Path Computation Element (PCE) Requirements for Point-to-Multipoint MPLS-TE",
+      "subseries": []
+    },
+    "rfc5886": {
+      "title": "A Set of Monitoring Tools for Path Computation Element (PCE)-Based Architecture",
+      "subseries": []
+    },
+    "rfc6006": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Point-to-Multipoint Traffic Engineering Label Switched Paths",
+      "subseries": []
+    },
+    "rfc6007": {
+      "title": "Use of the Synchronization VECtor (SVEC) List for Synchronized Dependent Path Computations",
+      "subseries": []
+    },
+    "rfc6123": {
+      "title": "Inclusion of Manageability Sections in Path Computation Element (PCE) Working Group Drafts",
+      "subseries": []
+    },
+    "rfc6163": {
+      "title": "Framework for GMPLS and Path Computation Element (PCE) Control of Wavelength Switched Optical Networks (WSONs)",
+      "subseries": []
+    },
+    "rfc6457": {
+      "title": "PCC-PCE Communication and PCE Discovery Requirements for Inter-Layer Traffic Engineering",
+      "subseries": []
+    },
+    "rfc6805": {
+      "title": "The Application of the Path Computation Element Architecture to the Determination of a Sequence of Domains in MPLS and GMPLS",
+      "subseries": []
+    },
+    "rfc6952": {
+      "title": "Analysis of BGP, LDP, PCEP, and MSDP Issues According to the Keying and Authentication for Routing Protocols (KARP) Design Guide",
+      "subseries": []
+    },
+    "rfc7025": { "title": "Requirements for GMPLS Applications of PCE", "subseries": [] },
+    "rfc7062": { "title": "Framework for GMPLS and PCE Control of G.709 Optical Transport Networks", "subseries": [] },
+    "rfc7150": {
+      "title": "Conveying Vendor-Specific Constraints in the Path Computation Element Communication Protocol",
+      "subseries": []
+    },
+    "rfc7334": {
+      "title": "PCE-Based Computation Procedure to Compute Shortest Constrained Point-to-Multipoint (P2MP) Inter-Domain Traffic Engineering Label Switched Paths",
+      "subseries": []
+    },
+    "rfc7399": { "title": "Unanswered Questions in the Path Computation Element Architecture", "subseries": [] },
+    "rfc7420": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Management Information Base (MIB) Module",
+      "subseries": []
+    },
+    "rfc7449": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Requirements for Wavelength Switched Optical Network (WSON) Routing and Wavelength Assignment",
+      "subseries": []
+    },
+    "rfc7470": {
+      "title": "Conveying Vendor-Specific Constraints in the Path Computation Element Communication Protocol",
+      "subseries": []
+    },
+    "rfc7491": { "title": "A PCE-Based Architecture for Application-Based Network Operations", "subseries": [] },
+    "rfc7792": {
+      "title": "RSVP-TE Signaling Extensions in Support of Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) Networks",
+      "subseries": []
+    },
+    "rfc7896": {
+      "title": "Update to the Include Route Object (IRO) Specification in the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc7897": {
+      "title": "Domain Subobjects for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc8051": { "title": "Applicability of a Stateful Path Computation Element (PCE)", "subseries": [] },
+    "rfc8231": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE",
+      "subseries": []
+    },
+    "rfc8232": {
+      "title": "Optimizations of Label Switched Path State Synchronization Procedures for a Stateful PCE",
+      "subseries": []
+    },
+    "rfc8233": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) to Compute Service-Aware Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8253": {
+      "title": "PCEPS: Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc8281": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for PCE-Initiated LSP Setup in a Stateful PCE Model",
+      "subseries": []
+    },
+    "rfc8282": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Inter-Layer MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc8283": {
+      "title": "An Architecture for Use of PCE and the PCE Communication Protocol (PCEP) in a Network with Central Control",
+      "subseries": []
+    },
+    "rfc8306": {
+      "title": "Extensions to the Path Computation Element Communication Protocol (PCEP) for Point-to-Multipoint Traffic Engineering Label Switched Paths",
+      "subseries": []
+    },
+    "rfc8356": {
+      "title": "Experimental Codepoint Allocation for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc8408": { "title": "Conveying Path Setup Type in PCE Communication Protocol (PCEP) Messages", "subseries": [] },
+    "rfc8413": { "title": "Framework for Scheduled Use of Resources", "subseries": [] },
+    "rfc8623": {
+      "title": "Stateful Path Computation Element (PCE) Protocol Extensions for Usage with Point-to-Multipoint TE Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8637": {
+      "title": "Applicability of the Path Computation Element (PCE) to the Abstraction and Control of TE Networks (ACTN)",
+      "subseries": []
+    },
+    "rfc8664": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Segment Routing",
+      "subseries": []
+    },
+    "rfc8685": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for the Hierarchical Path Computation Element (H-PCE) Architecture",
+      "subseries": []
+    },
+    "rfc8694": {
+      "title": "Applicability of the Path Computation Element to Inter-area and Inter-AS MPLS and GMPLS Traffic Engineering",
+      "subseries": []
+    },
+    "rfc8697": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Establishing Relationships between Sets of Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc8733": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for MPLS-TE Label Switched Path (LSP) Auto-Bandwidth Adjustment with Stateful PCE",
+      "subseries": []
+    },
+    "rfc8735": { "title": "Scenarios and Simulation Results of PCE in a Native IP Network", "subseries": [] },
+    "rfc8741": {
+      "title": "Ability for a Stateful Path Computation Element (PCE) to Request and Obtain Control of a Label Switched Path (LSP)",
+      "subseries": []
+    },
+    "rfc8745": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Associating Working and Protection Label Switched Paths (LSPs) with Stateful PCE",
+      "subseries": []
+    },
+    "rfc8751": { "title": "Hierarchical Stateful Path Computation Element (PCE)", "subseries": [] },
+    "rfc8779": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for GMPLS",
+      "subseries": []
+    },
+    "rfc8780": {
+      "title": "The Path Computation Element Communication Protocol (PCEP) Extension for Wavelength Switched Optical Network (WSON) Routing and Wavelength Assignment (RWA)",
+      "subseries": []
+    },
+    "rfc8786": { "title": "Updated Rules for Processing Stateful PCE Request Parameters Flags", "subseries": [] },
+    "rfc8800": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extension for Label Switched Path (LSP) Diversity Constraint Signaling",
+      "subseries": []
+    },
+    "rfc8821": { "title": "PCE-Based Traffic Engineering (TE) in Native IP Networks", "subseries": [] },
+    "rfc8934": {
+      "title": "PCE Communication Protocol (PCEP) Extensions for Label Switched Path (LSP) Scheduling with Stateful PCE",
+      "subseries": []
+    },
+    "rfc9005": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extension for Associating Policies and Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc9050": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Procedures and Extensions for Using the PCE as a Central Controller (PCECC) of LSPs",
+      "subseries": []
+    },
+    "rfc9059": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Associated Bidirectional Label Switched Paths (LSPs)",
+      "subseries": []
+    },
+    "rfc9160": {
+      "title": "Export of MPLS Segment Routing Label Type Information in IP Flow Information Export (IPFIX)",
+      "subseries": []
+    },
+    "rfc9168": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extension for Flow Specification",
+      "subseries": []
+    },
+    "rfc9353": {
+      "title": "IGP Extension for Path Computation Element Communication Protocol (PCEP) Security Capability Support in PCE Discovery (PCED)",
+      "subseries": []
+    },
+    "rfc9357": { "title": "Label Switched Path (LSP) Object Flag Extension for Stateful PCE", "subseries": [] },
+    "rfc9358": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Establishing Relationships between Sets of Label Switched Paths and Virtual Networks",
+      "subseries": []
+    },
+    "rfc9488": {
+      "title": "Local Protection Enforcement in the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc9504": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE Usage in GMPLS-Controlled Networks",
+      "subseries": []
+    },
+    "rfc9603": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for IPv6 Segment Routing",
+      "subseries": []
+    },
+    "rfc9604": { "title": "Carrying Binding Label/SID in PCE-Based Networks", "subseries": [] },
+    "rfc9689": { "title": "Use Cases for a PCE as a Central Controller (PCECC)", "subseries": [] },
+    "rfc9752": {
+      "title": "Conveying Vendor-Specific Information in the Path Computation Element Communication Protocol (PCEP) Extensions for Stateful PCE",
+      "subseries": []
+    },
+    "rfc9753": {
+      "title": "Extension for Stateful PCE to Allow Optional Processing of Path Computation Element Communication Protocol (PCEP) Objects",
+      "subseries": []
+    },
+    "rfc9756": {
+      "title": "Update to the IANA Path Communication Element Protocol (PCEP) Numbers Registration Procedures and the Allowance of Experimental Error Codes",
+      "subseries": []
+    },
+    "rfc9757": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Native IP Networks",
+      "subseries": []
+    },
+    "rfc9826": {
+      "title": "A YANG Data Model for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc9862": {
+      "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Segment Routing (SR) Policy Candidate Paths",
+      "subseries": []
+    },
+    "rfc9863": { "title": "Path Computation Element Protocol (PCEP) Extension for Color", "subseries": [] },
+    "rfc9916": {
+      "title": "Updates to the Usage of TLS to Provide a Secure Transport for the Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    },
+    "rfc9933": {
+      "title": "Carrying SR-Algorithm in Path Computation Element Communication Protocol (PCEP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "traffic-engineering": { "name": "Traffic Engineering" } }
+}

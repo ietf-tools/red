@@ -104,7 +104,7 @@ import { watchDebounced } from '@vueuse/core'
 import { groupBy } from 'es-toolkit'
 import { useUiSettingsStore, type SubjectDensity } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
-import { getSubjects } from '~/utilities/reef'
+import { fetchSubjectIndex } from '~/utilities/reef-precomputed'
 import { matchSubjects, type SubjectMatch } from '~/utilities/subject-search'
 import { isRenderableSubject, subjectTreeOfMatches, type SubjectNode } from '~/utilities/subject-tree'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
@@ -124,9 +124,21 @@ const subjectDensity = computed<SubjectDensity>({
   set: (density) => uiSettings.setSubjectDensity(density)
 })
 
-// Reef lists the vocabulary in tree order and it is small enough to arrive whole, so the hierarchy
-// is built from this one answer and there is nothing to page through here.
-const { data: subjects, status: subjectsStatus, error: subjectsError } = await useAsyncData(() => getSubjects())
+// The published index rather than Reef's API: this page is server-rendered, and a server render
+// reads the store and never calls Reef. The file lists the vocabulary in tree order and is small
+// enough to arrive whole, so the hierarchy is built from this one answer with nothing to page.
+//
+// Keyed by slug there, a list here, because the slug is a field everything downstream reads off a
+// subject rather than a key it has been handed separately. Object.entries keeps insertion order,
+// which is the tree order the file was written in.
+const {
+  data: subjects,
+  status: subjectsStatus,
+  error: subjectsError
+} = await useAsyncData(async () => {
+  const index = await fetchSubjectIndex()
+  return Object.entries(index.subjects).map(([slug, entry]) => ({ ...entry, slug }))
+})
 
 // The vocabulary can nest deeper than the tree is drawn to, and a subject this page will not draw
 // is not one to count or to filter over either — otherwise a query matching only a subject too deep

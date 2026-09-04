@@ -1,0 +1,169 @@
+{
+  "id": 815,
+  "slug": "character-sets",
+  "name": "Character Sets",
+  "description": "Character set registration and use",
+  "parent": "internationalization",
+  "path": "data-formats/internationalization/character-sets",
+  "document_count": 53,
+  "document_count_deep": 53,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1342",
+    "rfc1345",
+    "rfc1456",
+    "rfc1489",
+    "rfc1502",
+    "rfc1522",
+    "rfc1554",
+    "rfc1555",
+    "rfc1556",
+    "rfc1557",
+    "rfc1815",
+    "rfc183",
+    "rfc1842",
+    "rfc1843",
+    "rfc20",
+    "rfc2047",
+    "rfc2066",
+    "rfc2130",
+    "rfc2184",
+    "rfc2231",
+    "rfc2237",
+    "rfc2277",
+    "rfc2278",
+    "rfc2319",
+    "rfc2482",
+    "rfc2640",
+    "rfc2825",
+    "rfc2978",
+    "rfc2987",
+    "rfc338",
+    "rfc3467",
+    "rfc3490",
+    "rfc3629",
+    "rfc373",
+    "rfc3808",
+    "rfc3987",
+    "rfc5051",
+    "rfc5137",
+    "rfc570",
+    "rfc5721",
+    "rfc5890",
+    "rfc5891",
+    "rfc5893",
+    "rfc5894",
+    "rfc5987",
+    "rfc6082",
+    "rfc627",
+    "rfc6409",
+    "rfc6657",
+    "rfc6783",
+    "rfc698",
+    "rfc7994",
+    "rfc7997"
+  ],
+  "document_meta": {
+    "rfc1342": { "title": "Representation of Non-ASCII Text in Internet Message Headers", "subseries": [] },
+    "rfc1345": { "title": "Character Mnemonics and Character Sets", "subseries": [] },
+    "rfc1456": {
+      "title": "Conventions for Encoding the Vietnamese Language  VISCII: VIetnamese Standard Code for Information Interchange VIQR: VIetnamese Quoted-Readable Specification",
+      "subseries": []
+    },
+    "rfc1489": { "title": "Registration of a Cyrillic Character Set", "subseries": [] },
+    "rfc1502": { "title": "X.400 Use of Extended Character Sets", "subseries": [] },
+    "rfc1522": {
+      "title": "MIME (Multipurpose Internet Mail Extensions) Part Two: Message Header Extensions for Non-ASCII Text",
+      "subseries": []
+    },
+    "rfc1554": { "title": "ISO-2022-JP-2: Multilingual Extension of ISO-2022-JP", "subseries": [] },
+    "rfc1555": { "title": "Hebrew Character Encoding for Internet Messages", "subseries": [] },
+    "rfc1556": { "title": "Handling of Bi-directional Texts in MIME", "subseries": [] },
+    "rfc1557": { "title": "Korean Character Encoding for Internet Messages", "subseries": [] },
+    "rfc1815": { "title": "Character Sets ISO-10646 and ISO-10646-J-1", "subseries": [] },
+    "rfc183": { "title": "EBCDIC Codes and Their Mapping to ASCII", "subseries": [] },
+    "rfc1842": {
+      "title": "ASCII Printable Characters-Based Chinese Character Encoding for Internet Messages",
+      "subseries": []
+    },
+    "rfc1843": {
+      "title": "HZ - A Data Format for Exchanging Files of Arbitrarily Mixed Chinese and ASCII characters",
+      "subseries": []
+    },
+    "rfc20": { "title": "ASCII format for network interchange", "subseries": ["std80"] },
+    "rfc2047": {
+      "title": "MIME (Multipurpose Internet Mail Extensions) Part Three: Message Header Extensions for Non-ASCII Text",
+      "subseries": []
+    },
+    "rfc2066": { "title": "TELNET CHARSET Option", "subseries": [] },
+    "rfc2130": {
+      "title": "The Report of the IAB Character Set Workshop held 29 February - 1 March, 1996",
+      "subseries": []
+    },
+    "rfc2184": {
+      "title": "MIME Parameter Value and Encoded Word Extensions: Character Sets, Languages, and Continuations",
+      "subseries": []
+    },
+    "rfc2231": {
+      "title": "MIME Parameter Value and Encoded Word Extensions: Character Sets, Languages, and Continuations",
+      "subseries": []
+    },
+    "rfc2237": { "title": "Japanese Character Encoding for Internet Messages", "subseries": [] },
+    "rfc2277": { "title": "IETF Policy on Character Sets and Languages", "subseries": ["bcp18"] },
+    "rfc2278": { "title": "IANA Charset Registration Procedures", "subseries": [] },
+    "rfc2319": { "title": "Ukrainian Character Set KOI8-U", "subseries": [] },
+    "rfc2482": { "title": "Language Tagging in Unicode Plain Text", "subseries": [] },
+    "rfc2640": { "title": "Internationalization of the File Transfer Protocol", "subseries": [] },
+    "rfc2825": {
+      "title": "A Tangled Web: Issues of I18N, Domain Names, and the Other Internet protocols",
+      "subseries": []
+    },
+    "rfc2978": { "title": "IANA Charset Registration Procedures", "subseries": ["bcp19"] },
+    "rfc2987": { "title": "Registration of Charset and Languages Media Features Tags", "subseries": [] },
+    "rfc338": { "title": "EBCDIC/ASCII Mapping for Network RJE", "subseries": [] },
+    "rfc3467": { "title": "Role of the Domain Name System (DNS)", "subseries": [] },
+    "rfc3490": { "title": "Internationalizing Domain Names in Applications (IDNA)", "subseries": [] },
+    "rfc3629": { "title": "UTF-8, a transformation format of ISO 10646", "subseries": ["std63"] },
+    "rfc373": { "title": "Arbitrary Character Sets", "subseries": [] },
+    "rfc3808": { "title": "IANA Charset MIB", "subseries": [] },
+    "rfc3987": { "title": "Internationalized Resource Identifiers (IRIs)", "subseries": [] },
+    "rfc5051": { "title": "i;unicode-casemap - Simple Unicode Collation Algorithm", "subseries": [] },
+    "rfc5137": { "title": "ASCII Escaping of Unicode Characters", "subseries": ["bcp137"] },
+    "rfc570": { "title": "Experimental input mapping between NVT ASCII and UCSB On Line System", "subseries": [] },
+    "rfc5721": { "title": "POP3 Support for UTF-8", "subseries": [] },
+    "rfc5890": {
+      "title": "Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework",
+      "subseries": []
+    },
+    "rfc5891": { "title": "Internationalized Domain Names in Applications (IDNA): Protocol", "subseries": [] },
+    "rfc5893": {
+      "title": "Right-to-Left Scripts for Internationalized Domain Names for Applications (IDNA)",
+      "subseries": []
+    },
+    "rfc5894": {
+      "title": "Internationalized Domain Names for Applications (IDNA): Background, Explanation, and Rationale",
+      "subseries": []
+    },
+    "rfc5987": {
+      "title": "Character Set and Language Encoding for Hypertext Transfer Protocol (HTTP) Header Field Parameters",
+      "subseries": []
+    },
+    "rfc6082": { "title": "Deprecating Unicode Language Tag Characters: RFC 2482 is Historic", "subseries": [] },
+    "rfc627": { "title": "ASCII text file of hostnames", "subseries": [] },
+    "rfc6409": { "title": "Message Submission for Mail", "subseries": ["std72"] },
+    "rfc6657": {
+      "title": "Update to MIME regarding \"charset\" Parameter Handling in Textual Media Types",
+      "subseries": []
+    },
+    "rfc6783": { "title": "Mailing Lists and Non-ASCII Addresses", "subseries": [] },
+    "rfc698": { "title": "Telnet extended ASCII option", "subseries": [] },
+    "rfc7994": { "title": "Requirements for Plain-Text RFCs", "subseries": [] },
+    "rfc7997": { "title": "The Use of Non-ASCII Characters in RFCs", "subseries": [] }
+  },
+  "subject_meta": {
+    "data-formats": { "name": "Data Formats" },
+    "internationalization": { "name": "Internationalization" }
+  }
+}

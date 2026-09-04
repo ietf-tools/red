@@ -1,0 +1,59 @@
+{
+  "id": 839,
+  "slug": "gre",
+  "name": "GRE",
+  "description": "Generic Routing Encapsulation",
+  "parent": "tunneling",
+  "path": "internet-layer/tunneling/gre",
+  "document_count": 16,
+  "document_count_deep": 16,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1701",
+    "rfc1702",
+    "rfc2784",
+    "rfc2890",
+    "rfc3147",
+    "rfc4023",
+    "rfc4797",
+    "rfc5845",
+    "rfc6245",
+    "rfc7588",
+    "rfc7637",
+    "rfc7676",
+    "rfc8086",
+    "rfc8157",
+    "rfc8313",
+    "rfc8350"
+  ],
+  "document_meta": {
+    "rfc1701": { "title": "Generic Routing Encapsulation (GRE)", "subseries": [] },
+    "rfc1702": { "title": "Generic Routing Encapsulation over IPv4 networks", "subseries": [] },
+    "rfc2784": { "title": "Generic Routing Encapsulation (GRE)", "subseries": [] },
+    "rfc2890": { "title": "Key and Sequence Number Extensions to GRE", "subseries": [] },
+    "rfc3147": { "title": "Generic Routing Encapsulation over CLNS Networks", "subseries": [] },
+    "rfc4023": { "title": "Encapsulating MPLS in IP or Generic Routing Encapsulation (GRE)", "subseries": [] },
+    "rfc4797": {
+      "title": "Use of Provider Edge to Provider Edge (PE-PE) Generic Routing Encapsulation (GRE) or IP in BGP/MPLS IP Virtual Private Networks",
+      "subseries": []
+    },
+    "rfc5845": { "title": "Generic Routing Encapsulation (GRE) Key Option for Proxy Mobile IPv6", "subseries": [] },
+    "rfc6245": { "title": "Generic Routing Encapsulation (GRE) Key Extension for Mobile IPv4", "subseries": [] },
+    "rfc7588": {
+      "title": "A Widely Deployed Solution to the Generic Routing Encapsulation (GRE) Fragmentation Problem",
+      "subseries": []
+    },
+    "rfc7637": { "title": "NVGRE: Network Virtualization Using Generic Routing Encapsulation", "subseries": [] },
+    "rfc7676": { "title": "IPv6 Support for Generic Routing Encapsulation (GRE)", "subseries": [] },
+    "rfc8086": { "title": "GRE-in-UDP Encapsulation", "subseries": [] },
+    "rfc8157": { "title": "Huawei's GRE Tunnel Bonding Protocol", "subseries": [] },
+    "rfc8313": { "title": "Use of Multicast across Inter-domain Peering Points", "subseries": ["bcp213"] },
+    "rfc8350": {
+      "title": "Alternate Tunnel Encapsulation for Data Frames in Control and Provisioning of Wireless Access Points (CAPWAP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "tunneling": { "name": "Tunneling" } }
+}

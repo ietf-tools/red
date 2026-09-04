@@ -1,0 +1,224 @@
+{
+  "id": 727,
+  "slug": "trill",
+  "name": "TRILL",
+  "description": "TRILL: transparent interconnection of lots of links",
+  "parent": "routing",
+  "path": "routing/trill",
+  "document_count": 49,
+  "document_count_deep": 49,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5556",
+    "rfc6325",
+    "rfc6326",
+    "rfc6327",
+    "rfc6361",
+    "rfc6439",
+    "rfc6847",
+    "rfc6850",
+    "rfc6905",
+    "rfc7067",
+    "rfc7172",
+    "rfc7173",
+    "rfc7174",
+    "rfc7175",
+    "rfc7176",
+    "rfc7177",
+    "rfc7178",
+    "rfc7179",
+    "rfc7180",
+    "rfc7319",
+    "rfc7357",
+    "rfc7379",
+    "rfc7455",
+    "rfc7456",
+    "rfc7780",
+    "rfc7781",
+    "rfc7782",
+    "rfc7783",
+    "rfc7784",
+    "rfc7956",
+    "rfc7961",
+    "rfc7968",
+    "rfc7978",
+    "rfc8139",
+    "rfc8171",
+    "rfc8243",
+    "rfc8249",
+    "rfc8302",
+    "rfc8361",
+    "rfc8377",
+    "rfc8380",
+    "rfc8381",
+    "rfc8383",
+    "rfc8384",
+    "rfc8385",
+    "rfc8397",
+    "rfc8564",
+    "rfc9183",
+    "rfc9600"
+  ],
+  "document_meta": {
+    "rfc5556": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Problem and Applicability Statement",
+      "subseries": []
+    },
+    "rfc6325": { "title": "Routing Bridges (RBridges): Base Protocol Specification", "subseries": [] },
+    "rfc6326": { "title": "Transparent Interconnection of Lots of Links (TRILL) Use of IS-IS", "subseries": [] },
+    "rfc6327": { "title": "Routing Bridges (RBridges): Adjacency", "subseries": [] },
+    "rfc6361": {
+      "title": "PPP Transparent Interconnection of Lots of Links (TRILL) Protocol Control Protocol",
+      "subseries": []
+    },
+    "rfc6439": { "title": "Routing Bridges (RBridges): Appointed Forwarders", "subseries": [] },
+    "rfc6847": {
+      "title": "Fibre Channel over Ethernet (FCoE) over Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc6850": { "title": "Definitions of Managed Objects for Routing Bridges (RBridges)", "subseries": [] },
+    "rfc6905": {
+      "title": "Requirements for Operations, Administration, and Maintenance (OAM) in Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc7067": { "title": "Directory Assistance Problem and High-Level Design Proposal", "subseries": [] },
+    "rfc7172": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Fine-Grained Labeling",
+      "subseries": []
+    },
+    "rfc7173": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Transport Using Pseudowires",
+      "subseries": []
+    },
+    "rfc7174": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Operations, Administration, and Maintenance (OAM) Framework",
+      "subseries": []
+    },
+    "rfc7175": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Bidirectional Forwarding Detection (BFD) Support",
+      "subseries": []
+    },
+    "rfc7176": { "title": "Transparent Interconnection of Lots of Links (TRILL) Use of IS-IS", "subseries": [] },
+    "rfc7177": { "title": "Transparent Interconnection of Lots of Links (TRILL): Adjacency", "subseries": [] },
+    "rfc7178": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): RBridge Channel Support",
+      "subseries": []
+    },
+    "rfc7179": { "title": "Transparent Interconnection of Lots of Links (TRILL): Header Extension", "subseries": [] },
+    "rfc7180": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Clarifications, Corrections, and Updates",
+      "subseries": []
+    },
+    "rfc7319": {
+      "title": "IANA Considerations for Connectivity Fault Management (CFM) Code Points",
+      "subseries": ["bcp191"]
+    },
+    "rfc7357": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): End Station Address Distribution Information (ESADI) Protocol",
+      "subseries": []
+    },
+    "rfc7379": {
+      "title": "Problem Statement and Goals for Active-Active Connection at the Transparent Interconnection of Lots of Links (TRILL) Edge",
+      "subseries": []
+    },
+    "rfc7455": { "title": "Transparent Interconnection of Lots of Links (TRILL): Fault Management", "subseries": [] },
+    "rfc7456": {
+      "title": "Loss and Delay Measurement in Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc7780": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Clarifications, Corrections, and Updates",
+      "subseries": []
+    },
+    "rfc7781": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Pseudo-Nickname for Active-Active Access",
+      "subseries": []
+    },
+    "rfc7782": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Active-Active Edge Using Multiple MAC Attachments",
+      "subseries": []
+    },
+    "rfc7783": {
+      "title": "Coordinated Multicast Trees (CMT) for Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc7784": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Operations, Administration, and Maintenance (OAM) MIB",
+      "subseries": []
+    },
+    "rfc7956": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Distributed Layer 3 Gateway",
+      "subseries": []
+    },
+    "rfc7961": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Interface Addresses APPsub-TLV",
+      "subseries": []
+    },
+    "rfc7968": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Using Data Labels for Tree Selection for Multi-Destination Data",
+      "subseries": []
+    },
+    "rfc7978": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): RBridge Channel Header Extension",
+      "subseries": []
+    },
+    "rfc8139": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Appointed Forwarders",
+      "subseries": []
+    },
+    "rfc8171": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Edge Directory Assistance Mechanisms",
+      "subseries": []
+    },
+    "rfc8243": {
+      "title": "Alternatives for Multilevel Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc8249": { "title": "Transparent Interconnection of Lots of Links (TRILL): MTU Negotiation", "subseries": [] },
+    "rfc8302": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): ARP and Neighbor Discovery (ND) Optimization",
+      "subseries": []
+    },
+    "rfc8361": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Centralized Replication for Active-Active Broadcast, Unknown Unicast, and Multicast (BUM) Traffic",
+      "subseries": []
+    },
+    "rfc8377": { "title": "Transparent Interconnection of Lots of Links (TRILL): Multi-Topology", "subseries": [] },
+    "rfc8380": {
+      "title": "Directory-Assisted Transparent Interconnection of Lots of Links (TRILL) Encapsulation",
+      "subseries": []
+    },
+    "rfc8381": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Vendor-Specific RBridge Channel Protocol",
+      "subseries": []
+    },
+    "rfc8383": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL): Address Flush Message",
+      "subseries": []
+    },
+    "rfc8384": { "title": "Transparent Interconnection of Lots of Links (TRILL) Smart Endnodes", "subseries": [] },
+    "rfc8385": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Transparent Transport over MPLS",
+      "subseries": []
+    },
+    "rfc8397": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Multilevel Using Unique Nicknames",
+      "subseries": []
+    },
+    "rfc8564": {
+      "title": "Support of Point-to-Multipoint Bidirectional Forwarding Detection (BFD) in Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc9183": {
+      "title": "Single Nickname for an Area Border RBridge in Multilevel Transparent Interconnection of Lots of Links (TRILL)",
+      "subseries": []
+    },
+    "rfc9600": {
+      "title": "TRansparent Interconnection of Lots of Links (TRILL): Explicit Congestion Notification (ECN) Support",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

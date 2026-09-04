@@ -1,0 +1,20 @@
+{
+  "id": 593,
+  "slug": "captive-portal",
+  "name": "Captive portals",
+  "description": "Captive portal detection and interaction",
+  "parent": "internet-layer",
+  "path": "internet-layer/captive-portal",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8908", "rfc8910", "rfc8952"],
+  "document_meta": {
+    "rfc8908": { "title": "Captive Portal API", "subseries": [] },
+    "rfc8910": { "title": "Captive-Portal Identification in DHCP and Router Advertisements (RAs)", "subseries": [] },
+    "rfc8952": { "title": "Captive Portal Architecture", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

@@ -1,0 +1,72 @@
+{
+  "id": 1008,
+  "slug": "ds-lite",
+  "name": "DS-Lite",
+  "description": "Dual-Stack Lite",
+  "parent": "ipv6-transition",
+  "path": "internet-layer/ipv6/ipv6-transition/ds-lite",
+  "document_count": 16,
+  "document_count_deep": 16,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6333",
+    "rfc6334",
+    "rfc6519",
+    "rfc6674",
+    "rfc6908",
+    "rfc7021",
+    "rfc7084",
+    "rfc7393",
+    "rfc7596",
+    "rfc7648",
+    "rfc7678",
+    "rfc7785",
+    "rfc7857",
+    "rfc7870",
+    "rfc8026",
+    "rfc8513"
+  ],
+  "document_meta": {
+    "rfc6333": { "title": "Dual-Stack Lite Broadband Deployments Following IPv4 Exhaustion", "subseries": [] },
+    "rfc6334": {
+      "title": "Dynamic Host Configuration Protocol for IPv6 (DHCPv6) Option for Dual-Stack Lite",
+      "subseries": []
+    },
+    "rfc6519": { "title": "RADIUS Extensions for Dual-Stack Lite", "subseries": [] },
+    "rfc6674": { "title": "Gateway-Initiated Dual-Stack Lite Deployment", "subseries": [] },
+    "rfc6908": { "title": "Deployment Considerations for Dual-Stack Lite", "subseries": [] },
+    "rfc7021": { "title": "Assessing the Impact of Carrier-Grade NAT on Network Applications", "subseries": [] },
+    "rfc7084": { "title": "Basic Requirements for IPv6 Customer Edge Routers", "subseries": [] },
+    "rfc7393": { "title": "Using the Port Control Protocol (PCP) to Update Dynamic DNS", "subseries": [] },
+    "rfc7596": { "title": "Lightweight 4over6: An Extension to the Dual-Stack Lite Architecture", "subseries": [] },
+    "rfc7648": { "title": "Port Control Protocol (PCP) Proxy Function", "subseries": [] },
+    "rfc7678": {
+      "title": "Attribute-Value Pairs for Provisioning Customer Equipment Supporting IPv4-Over-IPv6 Transitional Solutions",
+      "subseries": []
+    },
+    "rfc7785": {
+      "title": "Recommendations for Prefix Binding in the Context of Softwire Dual-Stack Lite",
+      "subseries": []
+    },
+    "rfc7857": {
+      "title": "Updates to Network Address Translation (NAT) Behavioral Requirements",
+      "subseries": ["bcp127"]
+    },
+    "rfc7870": {
+      "title": "Dual-Stack Lite (DS-Lite) Management Information Base (MIB) for Address Family Transition Routers (AFTRs)",
+      "subseries": []
+    },
+    "rfc8026": {
+      "title": "Unified IPv4-in-IPv6 Softwire Customer Premises Equipment (CPE): A DHCPv6-Based Prioritization Mechanism",
+      "subseries": []
+    },
+    "rfc8513": { "title": "A YANG Data Model for Dual-Stack Lite (DS-Lite)", "subseries": [] }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "ipv6-transition": { "name": "IPv6 Transition" }
+  }
+}

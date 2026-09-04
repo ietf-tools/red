@@ -1,0 +1,57 @@
+{
+  "id": 682,
+  "slug": "time-synchronization",
+  "name": "Time Synchronization",
+  "description": "Clock synchronization over networks",
+  "parent": "network-management",
+  "path": "network-management/time-synchronization",
+  "document_count": 16,
+  "document_count_deep": 56,
+  "retired": false,
+  "children": ["ntp", "ptp"],
+  "aliases": [],
+  "documents": [
+    "rfc2733",
+    "rfc2738",
+    "rfc28",
+    "rfc3119",
+    "rfc4",
+    "rfc5104",
+    "rfc5219",
+    "rfc5718",
+    "rfc7758",
+    "rfc778",
+    "rfc867",
+    "rfc868",
+    "rfc8825",
+    "rfc891",
+    "rfc956",
+    "rfc957"
+  ],
+  "document_meta": {
+    "rfc2733": { "title": "An RTP Payload Format for Generic Forward Error Correction", "subseries": [] },
+    "rfc2738": { "title": "Corrections to \"A Syntax for Describing Media Feature Sets\"", "subseries": [] },
+    "rfc28": { "title": "Time Standards", "subseries": [] },
+    "rfc3119": { "title": "A More Loss-Tolerant RTP Payload Format for MP3 Audio", "subseries": [] },
+    "rfc4": { "title": "Network timetable", "subseries": [] },
+    "rfc5104": {
+      "title": "Codec Control Messages in the RTP Audio-Visual Profile with Feedback (AVPF)",
+      "subseries": []
+    },
+    "rfc5219": { "title": "A More Loss-Tolerant RTP Payload Format for MP3 Audio", "subseries": [] },
+    "rfc5718": { "title": "An In-Band Data Communication Network For the MPLS Transport Profile", "subseries": [] },
+    "rfc7758": { "title": "Time Capability in NETCONF", "subseries": [] },
+    "rfc778": { "title": "DCNET Internet Clock Service", "subseries": [] },
+    "rfc867": { "title": "Daytime Protocol", "subseries": ["std25"] },
+    "rfc868": { "title": "Time Protocol", "subseries": ["std26"] },
+    "rfc8825": { "title": "Overview: Real-Time Protocols for Browser-Based Applications", "subseries": [] },
+    "rfc891": { "title": "DCN Local-Network Protocols", "subseries": ["std44"] },
+    "rfc956": { "title": "Algorithms for synchronizing network clocks", "subseries": [] },
+    "rfc957": { "title": "Experiments in network clock synchronization", "subseries": [] }
+  },
+  "subject_meta": {
+    "network-management": { "name": "Network Management" },
+    "ntp": { "name": "NTP" },
+    "ptp": { "name": "PTP" }
+  }
+}

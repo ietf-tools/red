@@ -1,0 +1,18 @@
+{
+  "id": 704,
+  "slug": "eigrp",
+  "name": "EIGRP",
+  "description": "Enhanced Interior Gateway Routing Protocol",
+  "parent": "routing",
+  "path": "routing/eigrp",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7868"],
+  "document_meta": {
+    "rfc7868": { "title": "Cisco's Enhanced Interior Gateway Routing Protocol (EIGRP)", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" } }
+}

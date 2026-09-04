@@ -1,0 +1,132 @@
+{
+  "id": 872,
+  "slug": "rdap",
+  "name": "RDAP",
+  "description": "Registration Data Access Protocol",
+  "parent": "domain-registration",
+  "path": "naming/domain-registration/rdap",
+  "document_count": 36,
+  "document_count_deep": 36,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10037",
+    "rfc7480",
+    "rfc7481",
+    "rfc7482",
+    "rfc7483",
+    "rfc7484",
+    "rfc7485",
+    "rfc8056",
+    "rfc8063",
+    "rfc8334",
+    "rfc8495",
+    "rfc8521",
+    "rfc8543",
+    "rfc8544",
+    "rfc8590",
+    "rfc8605",
+    "rfc8748",
+    "rfc8807",
+    "rfc8909",
+    "rfc8977",
+    "rfc8982",
+    "rfc9022",
+    "rfc9038",
+    "rfc9082",
+    "rfc9083",
+    "rfc9154",
+    "rfc9167",
+    "rfc9224",
+    "rfc9536",
+    "rfc9537",
+    "rfc9560",
+    "rfc9803",
+    "rfc9873",
+    "rfc9874",
+    "rfc9877",
+    "rfc9910"
+  ],
+  "document_meta": {
+    "rfc10037": {
+      "title": "Registration Data Access Protocol (RDAP) Extension for DNS Time-to-Live (TTL) Values",
+      "subseries": []
+    },
+    "rfc7480": { "title": "HTTP Usage in the Registration Data Access Protocol (RDAP)", "subseries": ["std95"] },
+    "rfc7481": {
+      "title": "Security Services for the Registration Data Access Protocol (RDAP)",
+      "subseries": ["std95"]
+    },
+    "rfc7482": { "title": "Registration Data Access Protocol (RDAP) Query Format", "subseries": [] },
+    "rfc7483": { "title": "JSON Responses for the Registration Data Access Protocol (RDAP)", "subseries": [] },
+    "rfc7484": { "title": "Finding the Authoritative Registration Data (RDAP) Service", "subseries": [] },
+    "rfc7485": { "title": "Inventory and Analysis of WHOIS Registration Objects", "subseries": [] },
+    "rfc8056": {
+      "title": "Extensible Provisioning Protocol (EPP) and Registration Data Access Protocol (RDAP) Status Mapping",
+      "subseries": []
+    },
+    "rfc8063": { "title": "Key Relay Mapping for the Extensible Provisioning Protocol", "subseries": [] },
+    "rfc8334": { "title": "Launch Phase Mapping for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc8495": {
+      "title": "Allocation Token Extension for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    },
+    "rfc8521": { "title": "Registration Data Access Protocol (RDAP) Object Tagging", "subseries": ["bcp221"] },
+    "rfc8543": { "title": "Extensible Provisioning Protocol (EPP) Organization Mapping", "subseries": [] },
+    "rfc8544": { "title": "Organization Extension for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc8590": { "title": "Change Poll Extension for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc8605": {
+      "title": "vCard Format Extensions: ICANN Extensions for the Registration Data Access Protocol (RDAP)",
+      "subseries": []
+    },
+    "rfc8748": { "title": "Registry Fee Extension for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc8807": { "title": "Login Security Extension for the Extensible Provisioning Protocol (EPP)", "subseries": [] },
+    "rfc8909": { "title": "Registry Data Escrow Specification", "subseries": [] },
+    "rfc8977": {
+      "title": "Registration Data Access Protocol (RDAP) Query Parameters for Result Sorting and Paging",
+      "subseries": []
+    },
+    "rfc8982": { "title": "Registration Data Access Protocol (RDAP) Partial Response", "subseries": [] },
+    "rfc9022": { "title": "Domain Name Registration Data (DNRD) Objects Mapping", "subseries": [] },
+    "rfc9038": { "title": "Extensible Provisioning Protocol (EPP) Unhandled Namespaces", "subseries": [] },
+    "rfc9082": { "title": "Registration Data Access Protocol (RDAP) Query Format", "subseries": ["std95"] },
+    "rfc9083": { "title": "JSON Responses for the Registration Data Access Protocol (RDAP)", "subseries": ["std95"] },
+    "rfc9154": {
+      "title": "Extensible Provisioning Protocol (EPP) Secure Authorization Information for Transfer",
+      "subseries": []
+    },
+    "rfc9167": {
+      "title": "Registry Maintenance Notification for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    },
+    "rfc9224": {
+      "title": "Finding the Authoritative Registration Data Access Protocol (RDAP) Service",
+      "subseries": ["std95"]
+    },
+    "rfc9536": { "title": "Registration Data Access Protocol (RDAP) Reverse Search", "subseries": [] },
+    "rfc9537": { "title": "Redacted Fields in the Registration Data Access Protocol (RDAP) Response", "subseries": [] },
+    "rfc9560": {
+      "title": "Federated Authentication for the Registration Data Access Protocol (RDAP) Using OpenID Connect",
+      "subseries": []
+    },
+    "rfc9803": {
+      "title": "Extensible Provisioning Protocol (EPP) Mapping for DNS Time-to-Live (TTL) Values",
+      "subseries": []
+    },
+    "rfc9873": {
+      "title": "Additional Email Address Extension for the Extensible Provisioning Protocol (EPP)",
+      "subseries": []
+    },
+    "rfc9874": {
+      "title": "Best Practices for Deletion of Domain and Host Objects in the Extensible Provisioning Protocol (EPP)",
+      "subseries": ["bcp244"]
+    },
+    "rfc9877": { "title": "Registration Data Access Protocol (RDAP) Extension for Geofeed Data", "subseries": [] },
+    "rfc9910": {
+      "title": "Registration Data Access Protocol (RDAP) Regional Internet Registry (RIR) Search",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "domain-registration": { "name": "Domain Registration" } }
+}

@@ -1,0 +1,31 @@
+{
+  "id": 933,
+  "slug": "sr-mpls",
+  "name": "SR-MPLS",
+  "description": "Segment routing with the MPLS data plane",
+  "parent": "segment-routing",
+  "path": "routing/segment-routing/sr-mpls",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc8660", "rfc8661", "rfc8663", "rfc9256", "rfc9779", "rfc9801", "rfc9857", "rfc9860"],
+  "document_meta": {
+    "rfc8660": { "title": "Segment Routing with the MPLS Data Plane", "subseries": [] },
+    "rfc8661": { "title": "Segment Routing MPLS Interworking with LDP", "subseries": [] },
+    "rfc8663": { "title": "MPLS Segment Routing over IP", "subseries": [] },
+    "rfc9256": { "title": "Segment Routing Policy Architecture", "subseries": [] },
+    "rfc9779": {
+      "title": "Performance Measurement for Segment Routing Networks with the MPLS Data Plane",
+      "subseries": []
+    },
+    "rfc9801": { "title": "Private Line Emulation over Packet Switched Networks", "subseries": [] },
+    "rfc9857": { "title": "Advertisement of Segment Routing Policies Using BGP - Link State", "subseries": [] },
+    "rfc9860": {
+      "title": "Multicast-Only Fast Reroute (MoFRR) Based on Topology Independent Loop-Free Alternate (TI-LFA) Fast Reroute",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "segment-routing": { "name": "Segment Routing" } }
+}

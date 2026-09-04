@@ -1,0 +1,42 @@
+{
+  "id": 1016,
+  "slug": "dmarc",
+  "name": "DMARC",
+  "description": "Domain-based Message Authentication, Reporting and Conformance",
+  "parent": "email-authentication",
+  "path": "messaging/email/email-authentication/dmarc",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7489", "rfc7960", "rfc8601", "rfc8616", "rfc8617", "rfc9091", "rfc9989", "rfc9990", "rfc9991"],
+  "document_meta": {
+    "rfc7489": { "title": "Domain-based Message Authentication, Reporting, and Conformance (DMARC)", "subseries": [] },
+    "rfc7960": {
+      "title": "Interoperability Issues between Domain-based Message Authentication, Reporting, and Conformance (DMARC) and Indirect Email Flows",
+      "subseries": []
+    },
+    "rfc8601": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc8616": { "title": "Email Authentication for Internationalized Mail", "subseries": [] },
+    "rfc8617": { "title": "The Authenticated Received Chain (ARC) Protocol", "subseries": [] },
+    "rfc9091": {
+      "title": "Experimental Domain-Based Message Authentication, Reporting, and Conformance (DMARC) Extension for Public Suffix Domains",
+      "subseries": []
+    },
+    "rfc9989": { "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC)", "subseries": [] },
+    "rfc9990": {
+      "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC) Aggregate Reporting",
+      "subseries": []
+    },
+    "rfc9991": {
+      "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC) Failure Reporting",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "messaging": { "name": "Messaging" },
+    "email": { "name": "Email" },
+    "email-authentication": { "name": "Email Authentication" }
+  }
+}

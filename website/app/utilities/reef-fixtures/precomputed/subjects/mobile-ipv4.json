@@ -1,0 +1,71 @@
+{
+  "id": 829,
+  "slug": "mobile-ipv4",
+  "name": "Mobile IPv4",
+  "description": "Mobile IPv4",
+  "parent": "ip-mobility",
+  "path": "internet-layer/ip-mobility/mobile-ipv4",
+  "document_count": 22,
+  "document_count_deep": 22,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3846",
+    "rfc3957",
+    "rfc4064",
+    "rfc4093",
+    "rfc4433",
+    "rfc4636",
+    "rfc4721",
+    "rfc4857",
+    "rfc4881",
+    "rfc4917",
+    "rfc4988",
+    "rfc5030",
+    "rfc5177",
+    "rfc5265",
+    "rfc5266",
+    "rfc5454",
+    "rfc5944",
+    "rfc6098",
+    "rfc6245",
+    "rfc6521",
+    "rfc6626",
+    "rfc7629"
+  ],
+  "document_meta": {
+    "rfc3846": { "title": "Mobile IPv4 Extension for Carrying Network Access Identifiers", "subseries": [] },
+    "rfc3957": {
+      "title": "Authentication, Authorization, and Accounting (AAA) Registration Keys for Mobile IPv4",
+      "subseries": []
+    },
+    "rfc4064": { "title": "Experimental Message, Extensions, and Error Codes for Mobile IPv4", "subseries": [] },
+    "rfc4093": {
+      "title": "Problem Statement: Mobile IPv4 Traversal of Virtual Private Network (VPN) Gateways",
+      "subseries": []
+    },
+    "rfc4433": { "title": "Mobile IPv4 Dynamic Home Agent (HA) Assignment", "subseries": [] },
+    "rfc4636": { "title": "Foreign Agent Error Extension for Mobile IPv4", "subseries": [] },
+    "rfc4721": { "title": "Mobile IPv4 Challenge/Response Extensions (Revised)", "subseries": [] },
+    "rfc4857": { "title": "Mobile IPv4 Regional Registration", "subseries": [] },
+    "rfc4881": { "title": "Low-Latency Handoffs in Mobile IPv4", "subseries": [] },
+    "rfc4917": { "title": "Mobile IPv4 Message String Extension", "subseries": [] },
+    "rfc4988": { "title": "Mobile IPv4 Fast Handovers", "subseries": [] },
+    "rfc5030": { "title": "Mobile IPv4 RADIUS Requirements", "subseries": [] },
+    "rfc5177": { "title": "Network Mobility (NEMO) Extensions for Mobile IPv4", "subseries": [] },
+    "rfc5265": { "title": "Mobile IPv4 Traversal across IPsec-Based VPN Gateways", "subseries": [] },
+    "rfc5266": {
+      "title": "Secure Connectivity and Mobility Using Mobile IPv4 and IKEv2 Mobility and Multihoming (MOBIKE)",
+      "subseries": ["bcp136"]
+    },
+    "rfc5454": { "title": "Dual-Stack Mobile IPv4", "subseries": [] },
+    "rfc5944": { "title": "IP Mobility Support for IPv4, Revised", "subseries": [] },
+    "rfc6098": { "title": "Generic Notification Message for Mobile IPv4", "subseries": [] },
+    "rfc6245": { "title": "Generic Routing Encapsulation (GRE) Key Extension for Mobile IPv4", "subseries": [] },
+    "rfc6521": { "title": "Home Agent-Assisted Route Optimization between Mobile IPv4 Networks", "subseries": [] },
+    "rfc6626": { "title": "Dynamic Prefix Allocation for Network Mobility for Mobile IPv4 (NEMOv4)", "subseries": [] },
+    "rfc7629": { "title": "Flow-Binding Support for Mobile IP", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "ip-mobility": { "name": "IP Mobility" } }
+}

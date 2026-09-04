@@ -1,0 +1,38 @@
+{
+  "id": 866,
+  "slug": "dns64",
+  "name": "DNS64",
+  "description": "DNS64 address synthesis for IPv6/IPv4 translation",
+  "parent": "dns",
+  "path": "naming/dns/dns64",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6147", "rfc6889", "rfc7050", "rfc7051", "rfc8219", "rfc8683", "rfc8880", "rfc9313", "rfc9872"],
+  "document_meta": {
+    "rfc6147": {
+      "title": "DNS64: DNS Extensions for Network Address Translation from IPv6 Clients to IPv4 Servers",
+      "subseries": []
+    },
+    "rfc6889": { "title": "Analysis of Stateful 64 Translation", "subseries": [] },
+    "rfc7050": { "title": "Discovery of the IPv6 Prefix Used for IPv6 Address Synthesis", "subseries": [] },
+    "rfc7051": { "title": "Analysis of Solution Proposals for Hosts to Learn NAT64 Prefix", "subseries": [] },
+    "rfc8219": { "title": "Benchmarking Methodology for IPv6 Transition Technologies", "subseries": [] },
+    "rfc8683": {
+      "title": "Additional Deployment Guidelines for NAT64/464XLAT in Operator and Enterprise Networks",
+      "subseries": []
+    },
+    "rfc8880": { "title": "Special Use Domain Name 'ipv4only.arpa'", "subseries": [] },
+    "rfc9313": {
+      "title": "Pros and Cons of IPv6 Transition Technologies for IPv4-as-a-Service (IPv4aaS)",
+      "subseries": []
+    },
+    "rfc9872": {
+      "title": "Recommendations for Discovering IPv6 Prefix Used for IPv6 Address Synthesis",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" } }
+}

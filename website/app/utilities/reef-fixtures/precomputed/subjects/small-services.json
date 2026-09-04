@@ -1,0 +1,24 @@
+{
+  "id": 562,
+  "slug": "small-services",
+  "name": "Small Services",
+  "description": "The TCP/UDP small services: Echo, Discard, Chargen, QOTD, Daytime, Active Users",
+  "parent": "applications",
+  "path": "applications/small-services",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc429", "rfc862", "rfc863", "rfc864", "rfc865", "rfc866", "rfc867"],
+  "document_meta": {
+    "rfc429": { "title": "Character Generator Process", "subseries": [] },
+    "rfc862": { "title": "Echo Protocol", "subseries": ["std20"] },
+    "rfc863": { "title": "Discard Protocol", "subseries": ["std21"] },
+    "rfc864": { "title": "Character Generator Protocol", "subseries": ["std22"] },
+    "rfc865": { "title": "Quote of the Day Protocol", "subseries": ["std23"] },
+    "rfc866": { "title": "Active users", "subseries": ["std24"] },
+    "rfc867": { "title": "Daytime Protocol", "subseries": ["std25"] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

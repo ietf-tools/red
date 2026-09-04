@@ -1,0 +1,144 @@
+{
+  "id": 656,
+  "slug": "x400",
+  "name": "X.400",
+  "description": "X.400 message handling systems and interworking",
+  "parent": "messaging",
+  "path": "messaging/x400",
+  "document_count": 42,
+  "document_count_deep": 42,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1026",
+    "rfc1138",
+    "rfc1148",
+    "rfc1327",
+    "rfc1328",
+    "rfc1330",
+    "rfc1405",
+    "rfc1465",
+    "rfc1494",
+    "rfc1495",
+    "rfc1496",
+    "rfc1502",
+    "rfc1506",
+    "rfc1615",
+    "rfc1616",
+    "rfc1648",
+    "rfc1649",
+    "rfc1664",
+    "rfc1685",
+    "rfc1801",
+    "rfc1802",
+    "rfc1836",
+    "rfc1837",
+    "rfc1838",
+    "rfc2156",
+    "rfc2157",
+    "rfc2158",
+    "rfc2159",
+    "rfc2160",
+    "rfc2161",
+    "rfc2162",
+    "rfc2163",
+    "rfc2164",
+    "rfc2293",
+    "rfc2294",
+    "rfc3854",
+    "rfc3855",
+    "rfc5068",
+    "rfc5598",
+    "rfc6477",
+    "rfc9228",
+    "rfc987"
+  ],
+  "document_meta": {
+    "rfc1026": { "title": "Addendum to RFC 987: (Mapping between X.400 and RFC-822)", "subseries": [] },
+    "rfc1138": { "title": "Mapping between X.400(1988) / ISO 10021 and RFC 822", "subseries": [] },
+    "rfc1148": { "title": "Mapping between X.400(1988) / ISO 10021 and RFC 822", "subseries": [] },
+    "rfc1327": { "title": "Mapping between X.400(1988) / ISO 10021 and RFC 822", "subseries": [] },
+    "rfc1328": { "title": "X.400 1988 to 1984 downgrading", "subseries": [] },
+    "rfc1330": {
+      "title": "Recommendations for the Phase I Deployment of OSI Directory Services (X.500) and OSI Message Handling Services (X.400) within the ESNET Community",
+      "subseries": []
+    },
+    "rfc1405": { "title": "Mapping between X.400(1984/1988) and Mail-11 (DECnet mail)", "subseries": [] },
+    "rfc1465": {
+      "title": "Routing Coordination for X.400 MHS Services Within a Multi Protocol / Multi Network Environment Table Format V3 for Static Routing",
+      "subseries": []
+    },
+    "rfc1494": { "title": "Equivalences between 1988 X.400 and RFC-822 Message Bodies", "subseries": [] },
+    "rfc1495": { "title": "Mapping between X.400 and RFC-822 Message Bodies", "subseries": [] },
+    "rfc1496": {
+      "title": "Rules for downgrading messages from X.400/88 to X.400/84 when MIME content-types are present in the messages",
+      "subseries": []
+    },
+    "rfc1502": { "title": "X.400 Use of Extended Character Sets", "subseries": [] },
+    "rfc1506": { "title": "A Tutorial on Gatewaying between X.400 and Internet Mail", "subseries": [] },
+    "rfc1615": { "title": "Migrating from X.400(84) to X.400(88)", "subseries": [] },
+    "rfc1616": { "title": "X.400(1988) for the Academic and Research Community in Europe", "subseries": [] },
+    "rfc1648": { "title": "Postmaster Convention for X.400 Operations", "subseries": [] },
+    "rfc1649": {
+      "title": "Operational Requirements for X.400 Management Domains in the GO-MHS Community",
+      "subseries": []
+    },
+    "rfc1664": { "title": "Using the Internet DNS to Distribute RFC1327 Mail Address Mapping Tables", "subseries": [] },
+    "rfc1685": { "title": "Writing X.400 O/R Names", "subseries": [] },
+    "rfc1801": { "title": "MHS use of the X.500 Directory to support MHS Routing", "subseries": [] },
+    "rfc1802": {
+      "title": "Introducing Project Long Bud: Internet Pilot Project for the Deployment of X.500 Directory Information in Support of X.400 Routing",
+      "subseries": []
+    },
+    "rfc1836": {
+      "title": "Representing the O/R Address hierarchy in the X.500 Directory Information Tree",
+      "subseries": []
+    },
+    "rfc1837": { "title": "Representing Tables and Subtrees in the X.500 Directory", "subseries": [] },
+    "rfc1838": {
+      "title": "Use of the X.500 Directory to support mapping between X.400 and RFC 822 Addresses",
+      "subseries": []
+    },
+    "rfc2156": {
+      "title": "MIXER (Mime Internet X.400 Enhanced Relay): Mapping between X.400 and RFC 822/MIME",
+      "subseries": []
+    },
+    "rfc2157": { "title": "Mapping between X.400 and RFC-822/MIME Message Bodies", "subseries": [] },
+    "rfc2158": { "title": "X.400 Image Body Parts", "subseries": [] },
+    "rfc2159": { "title": "A MIME Body Part for FAX", "subseries": [] },
+    "rfc2160": { "title": "Carrying PostScript in X.400 and MIME", "subseries": [] },
+    "rfc2161": { "title": "A MIME Body Part for ODA", "subseries": [] },
+    "rfc2162": { "title": "MaXIM-11 - Mapping between X.400 / Internet mail and  Mail-11 mail", "subseries": [] },
+    "rfc2163": {
+      "title": "Using the Internet DNS to Distribute MIXER Conformant Global Address Mapping (MCGAM)",
+      "subseries": []
+    },
+    "rfc2164": { "title": "Use of an X.500/LDAP directory to support MIXER address mapping", "subseries": [] },
+    "rfc2293": { "title": "Representing Tables and Subtrees in the X.500 Directory", "subseries": [] },
+    "rfc2294": {
+      "title": "Representing the O/R Address hierarchy in the X.500 Directory Information Tree",
+      "subseries": []
+    },
+    "rfc3854": {
+      "title": "Securing X.400 Content with Secure/Multipurpose Internet Mail Extensions (S/MIME)",
+      "subseries": []
+    },
+    "rfc3855": {
+      "title": "Transporting Secure/Multipurpose Internet Mail Extensions (S/MIME) Objects in X.400",
+      "subseries": []
+    },
+    "rfc5068": {
+      "title": "Email Submission Operations: Access and Accountability Requirements",
+      "subseries": ["bcp134"]
+    },
+    "rfc5598": { "title": "Internet Mail Architecture", "subseries": [] },
+    "rfc6477": {
+      "title": "Registration of Military Message Handling System (MMHS) Header Fields for Use in Internet Mail",
+      "subseries": []
+    },
+    "rfc9228": { "title": "Delivered-To Email Header Field", "subseries": [] },
+    "rfc987": { "title": "Mapping between X.400 and RFC 822", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" } }
+}

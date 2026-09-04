@@ -1,0 +1,25 @@
+{
+  "id": 741,
+  "slug": "ident",
+  "name": "Ident",
+  "description": "The Identification (ident) protocol",
+  "parent": "security",
+  "path": "security/ident",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1413", "rfc1414", "rfc2619", "rfc4669", "rfc8235", "rfc9153", "rfc931", "rfc9434"],
+  "document_meta": {
+    "rfc1413": { "title": "Identification Protocol", "subseries": [] },
+    "rfc1414": { "title": "Identification MIB", "subseries": [] },
+    "rfc2619": { "title": "RADIUS Authentication Server MIB", "subseries": [] },
+    "rfc4669": { "title": "RADIUS Authentication Server MIB for IPv6", "subseries": [] },
+    "rfc8235": { "title": "Schnorr Non-interactive Zero-Knowledge Proof", "subseries": [] },
+    "rfc9153": { "title": "Drone Remote Identification Protocol (DRIP) Requirements and Terminology", "subseries": [] },
+    "rfc931": { "title": "Authentication server", "subseries": [] },
+    "rfc9434": { "title": "Drone Remote Identification Protocol (DRIP) Architecture", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

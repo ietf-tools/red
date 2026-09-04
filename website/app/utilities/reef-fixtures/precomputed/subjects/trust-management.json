@@ -1,0 +1,24 @@
+{
+  "id": 766,
+  "slug": "trust-management",
+  "name": "Trust Management",
+  "description": "Trust management systems (KeyNote and successors)",
+  "parent": "security",
+  "path": "security/trust-management",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2704", "rfc2792", "rfc5708", "rfc6042"],
+  "document_meta": {
+    "rfc2704": { "title": "The KeyNote Trust-Management System Version 2", "subseries": [] },
+    "rfc2792": {
+      "title": "DSA and RSA Key and Signature Encoding for the KeyNote Trust Management System",
+      "subseries": []
+    },
+    "rfc5708": { "title": "X.509 Key and Signature Encoding for the KeyNote Trust Management System", "subseries": [] },
+    "rfc6042": { "title": "Transport Layer Security (TLS) Authorization Using KeyNote", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

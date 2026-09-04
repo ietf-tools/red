@@ -1,0 +1,26 @@
+{
+  "id": 796,
+  "slug": "web-security",
+  "name": "Web Security",
+  "description": "Web platform security mechanisms",
+  "parent": "web",
+  "path": "web/web-security",
+  "document_count": 4,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": ["hsts", "s-http", "token-binding"],
+  "aliases": [],
+  "documents": ["rfc6454", "rfc6797", "rfc7034", "rfc7469"],
+  "document_meta": {
+    "rfc6454": { "title": "The Web Origin Concept", "subseries": [] },
+    "rfc6797": { "title": "HTTP Strict Transport Security (HSTS)", "subseries": [] },
+    "rfc7034": { "title": "HTTP Header Field X-Frame-Options", "subseries": [] },
+    "rfc7469": { "title": "Public Key Pinning Extension for HTTP", "subseries": [] }
+  },
+  "subject_meta": {
+    "web": { "name": "Web" },
+    "hsts": { "name": "HSTS" },
+    "s-http": { "name": "S-HTTP" },
+    "token-binding": { "name": "Token Binding" }
+  }
+}

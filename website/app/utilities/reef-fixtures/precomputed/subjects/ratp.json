@@ -1,0 +1,16 @@
+{
+  "id": 778,
+  "slug": "ratp",
+  "name": "RATP",
+  "description": "The Reliable Asynchronous Transfer Protocol",
+  "parent": "transport",
+  "path": "transport/ratp",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc916"],
+  "document_meta": { "rfc916": { "title": "Reliable Asynchronous Transfer Protocol (RATP)", "subseries": [] } },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

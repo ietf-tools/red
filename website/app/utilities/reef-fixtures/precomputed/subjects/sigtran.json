@@ -1,0 +1,80 @@
+{
+  "id": 694,
+  "slug": "sigtran",
+  "name": "SIGTRAN",
+  "description": "SS7 signalling transport over IP",
+  "parent": "real-time-communications",
+  "path": "real-time-communications/sigtran",
+  "document_count": 19,
+  "document_count_deep": 19,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2719",
+    "rfc2960",
+    "rfc3057",
+    "rfc3094",
+    "rfc3257",
+    "rfc3331",
+    "rfc3332",
+    "rfc3398",
+    "rfc3788",
+    "rfc3807",
+    "rfc3868",
+    "rfc3873",
+    "rfc4129",
+    "rfc4165",
+    "rfc4166",
+    "rfc4233",
+    "rfc4666",
+    "rfc5133",
+    "rfc6910"
+  ],
+  "document_meta": {
+    "rfc2719": { "title": "Framework Architecture for Signaling Transport", "subseries": [] },
+    "rfc2960": { "title": "Stream Control Transmission Protocol", "subseries": [] },
+    "rfc3057": { "title": "ISDN Q.921-User Adaptation Layer", "subseries": [] },
+    "rfc3094": { "title": "Tekelec's Transport Adapter Layer Interface", "subseries": [] },
+    "rfc3257": { "title": "Stream Control Transmission Protocol Applicability Statement", "subseries": [] },
+    "rfc3331": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 2 (MTP2) - User Adaptation Layer",
+      "subseries": []
+    },
+    "rfc3332": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 3 (MTP3) - User Adaptation Layer (M3UA)",
+      "subseries": []
+    },
+    "rfc3398": {
+      "title": "Integrated Services Digital Network (ISDN) User Part (ISUP) to Session Initiation Protocol (SIP) Mapping",
+      "subseries": []
+    },
+    "rfc3788": { "title": "Security Considerations for Signaling Transport (SIGTRAN) Protocols", "subseries": [] },
+    "rfc3807": { "title": "V5.2-User Adaptation Layer (V5UA)", "subseries": [] },
+    "rfc3868": { "title": "Signalling Connection Control Part User Adaptation Layer (SUA)", "subseries": [] },
+    "rfc3873": {
+      "title": "Stream Control Transmission Protocol (SCTP) Management Information Base (MIB)",
+      "subseries": []
+    },
+    "rfc4129": {
+      "title": "Digital Private Network Signaling System (DPNSS)/Digital Access Signaling System 2 (DASS 2) Extensions to the IUA Protocol",
+      "subseries": []
+    },
+    "rfc4165": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 2 (MTP2) - User Peer-to-Peer Adaptation Layer (M2PA)",
+      "subseries": []
+    },
+    "rfc4166": {
+      "title": "Telephony Signalling Transport over Stream Control Transmission Protocol (SCTP) Applicability Statement",
+      "subseries": []
+    },
+    "rfc4233": { "title": "Integrated Services Digital Network (ISDN) Q.921-User Adaptation Layer", "subseries": [] },
+    "rfc4666": {
+      "title": "Signaling System 7 (SS7) Message Transfer Part 3 (MTP3) - User Adaptation Layer (M3UA)",
+      "subseries": []
+    },
+    "rfc5133": { "title": "Terminal Endpoint Identifier (TEI) Query Request Number Change", "subseries": [] },
+    "rfc6910": { "title": "Completion of Calls for the Session Initiation Protocol (SIP)", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" } }
+}

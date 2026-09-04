@@ -1,0 +1,19 @@
+{
+  "id": 820,
+  "slug": "geojson",
+  "name": "GeoJSON",
+  "description": "GeoJSON geographic data",
+  "parent": "json",
+  "path": "data-formats/json/geojson",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7946", "rfc8142"],
+  "document_meta": {
+    "rfc7946": { "title": "The GeoJSON Format", "subseries": [] },
+    "rfc8142": { "title": "GeoJSON Text Sequences", "subseries": [] }
+  },
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "json": { "name": "JSON" } }
+}

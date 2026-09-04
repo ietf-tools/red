@@ -1,0 +1,92 @@
+{
+  "id": 548,
+  "slug": "calendaring",
+  "name": "Calendaring",
+  "description": "Calendaring and scheduling",
+  "parent": "applications",
+  "path": "applications/calendaring",
+  "document_count": 27,
+  "document_count_deep": 38,
+  "retired": false,
+  "children": ["caldav", "icalendar", "time-zones"],
+  "aliases": [],
+  "documents": [
+    "rfc2445",
+    "rfc2446",
+    "rfc2447",
+    "rfc2739",
+    "rfc3283",
+    "rfc4791",
+    "rfc5333",
+    "rfc5545",
+    "rfc5546",
+    "rfc6047",
+    "rfc6638",
+    "rfc6764",
+    "rfc7529",
+    "rfc7808",
+    "rfc7809",
+    "rfc7953",
+    "rfc7986",
+    "rfc8607",
+    "rfc8984",
+    "rfc9073",
+    "rfc9074",
+    "rfc9253",
+    "rfc9553",
+    "rfc9554",
+    "rfc9555",
+    "rfc9922",
+    "rfc9982"
+  ],
+  "document_meta": {
+    "rfc2445": {
+      "title": "Internet Calendaring and Scheduling Core Object Specification (iCalendar)",
+      "subseries": []
+    },
+    "rfc2446": {
+      "title": "iCalendar Transport-Independent Interoperability Protocol (iTIP) Scheduling Events, BusyTime, To-dos and Journal Entries",
+      "subseries": []
+    },
+    "rfc2447": { "title": "iCalendar Message-Based Interoperability Protocol (iMIP)", "subseries": [] },
+    "rfc2739": { "title": "Calendar Attributes for vCard and LDAP", "subseries": [] },
+    "rfc3283": { "title": "Guide to Internet Calendaring", "subseries": [] },
+    "rfc4791": { "title": "Calendaring Extensions to WebDAV (CalDAV)", "subseries": [] },
+    "rfc5333": { "title": "IANA Registration of Enumservices for Internet Calendaring", "subseries": [] },
+    "rfc5545": {
+      "title": "Internet Calendaring and Scheduling Core Object Specification (iCalendar)",
+      "subseries": []
+    },
+    "rfc5546": { "title": "iCalendar Transport-Independent Interoperability Protocol (iTIP)", "subseries": [] },
+    "rfc6047": { "title": "iCalendar Message-Based Interoperability Protocol (iMIP)", "subseries": [] },
+    "rfc6638": { "title": "Scheduling Extensions to CalDAV", "subseries": [] },
+    "rfc6764": {
+      "title": "Locating Services for Calendaring Extensions to WebDAV (CalDAV) and vCard Extensions to WebDAV (CardDAV)",
+      "subseries": []
+    },
+    "rfc7529": {
+      "title": "Non-Gregorian Recurrence Rules in the Internet Calendaring and Scheduling Core Object Specification (iCalendar)",
+      "subseries": []
+    },
+    "rfc7808": { "title": "Time Zone Data Distribution Service", "subseries": [] },
+    "rfc7809": { "title": "Calendaring Extensions to WebDAV (CalDAV): Time Zones by Reference", "subseries": [] },
+    "rfc7953": { "title": "Calendar Availability", "subseries": [] },
+    "rfc7986": { "title": "New Properties for iCalendar", "subseries": [] },
+    "rfc8607": { "title": "Calendaring Extensions to WebDAV (CalDAV): Managed Attachments", "subseries": [] },
+    "rfc8984": { "title": "JSCalendar: A JSON Representation of Calendar Data", "subseries": [] },
+    "rfc9073": { "title": "Event Publishing Extensions to iCalendar", "subseries": [] },
+    "rfc9074": { "title": "\"VALARM\" Extensions for iCalendar", "subseries": [] },
+    "rfc9253": { "title": "Support for iCalendar Relationships", "subseries": [] },
+    "rfc9553": { "title": "JSContact: A JSON Representation of Contact Data", "subseries": [] },
+    "rfc9554": { "title": "vCard Format Extensions for JSContact", "subseries": [] },
+    "rfc9555": { "title": "JSContact: Converting from and to vCard", "subseries": [] },
+    "rfc9922": { "title": "A Common YANG Data Model for Scheduling", "subseries": [] },
+    "rfc9982": { "title": "JSContact Version 2.0: A JSON Representation of Contact Data", "subseries": [] }
+  },
+  "subject_meta": {
+    "applications": { "name": "Applications" },
+    "caldav": { "name": "CalDAV" },
+    "icalendar": { "name": "iCalendar" },
+    "time-zones": { "name": "Time Zones" }
+  }
+}

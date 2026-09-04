@@ -1,0 +1,16 @@
+{
+  "id": 785,
+  "slug": "tmux",
+  "name": "TMux",
+  "description": "The Transport Multiplexing Protocol",
+  "parent": "transport",
+  "path": "transport/tmux",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1692"],
+  "document_meta": { "rfc1692": { "title": "Transport Multiplexing Protocol (TMux)", "subseries": [] } },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

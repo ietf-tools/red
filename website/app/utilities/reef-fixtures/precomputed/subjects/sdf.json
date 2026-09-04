@@ -1,0 +1,18 @@
+{
+  "id": 620,
+  "slug": "sdf",
+  "name": "SDF",
+  "description": "Semantic Definition Format for IoT data models",
+  "parent": "iot",
+  "path": "iot/sdf",
+  "document_count": 1,
+  "document_count_deep": 1,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9880"],
+  "document_meta": {
+    "rfc9880": { "title": "Semantic Definition Format (SDF) for Data and Interactions of Things", "subseries": [] }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

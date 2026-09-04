@@ -1,0 +1,24 @@
+{
+  "id": 800,
+  "slug": "time-zones",
+  "name": "Time Zones",
+  "description": "Time zone data distribution and timestamps",
+  "parent": "calendaring",
+  "path": "applications/calendaring/time-zones",
+  "document_count": 7,
+  "document_count_deep": 7,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc4833", "rfc6557", "rfc7808", "rfc7809", "rfc8536", "rfc9557", "rfc9636"],
+  "document_meta": {
+    "rfc4833": { "title": "Timezone Options for DHCP", "subseries": [] },
+    "rfc6557": { "title": "Procedures for Maintaining the Time Zone Database", "subseries": ["bcp175"] },
+    "rfc7808": { "title": "Time Zone Data Distribution Service", "subseries": [] },
+    "rfc7809": { "title": "Calendaring Extensions to WebDAV (CalDAV): Time Zones by Reference", "subseries": [] },
+    "rfc8536": { "title": "The Time Zone Information Format (TZif)", "subseries": [] },
+    "rfc9557": { "title": "Date and Time on the Internet: Timestamps with Additional Information", "subseries": [] },
+    "rfc9636": { "title": "The Time Zone Information Format (TZif)", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "calendaring": { "name": "Calendaring" } }
+}

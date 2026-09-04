@@ -1,0 +1,21 @@
+{
+  "id": 961,
+  "slug": "socks",
+  "name": "SOCKS",
+  "description": "The SOCKS proxy protocol",
+  "parent": "firewall",
+  "path": "security/firewall/socks",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1928", "rfc1929", "rfc1961", "rfc3089"],
+  "document_meta": {
+    "rfc1928": { "title": "SOCKS Protocol Version 5", "subseries": [] },
+    "rfc1929": { "title": "Username/Password Authentication for SOCKS V5", "subseries": [] },
+    "rfc1961": { "title": "GSS-API Authentication Method for SOCKS Version 5", "subseries": [] },
+    "rfc3089": { "title": "A SOCKS-based IPv6/IPv4 Gateway Mechanism", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "firewall": { "name": "Firewalls" } }
+}

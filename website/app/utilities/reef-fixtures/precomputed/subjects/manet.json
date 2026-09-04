@@ -1,0 +1,207 @@
+{
+  "id": 713,
+  "slug": "manet",
+  "name": "MANET",
+  "description": "Mobile ad hoc network routing",
+  "parent": "routing",
+  "path": "routing/manet",
+  "document_count": 53,
+  "document_count_deep": 56,
+  "retired": false,
+  "children": ["aodv", "dsr", "olsr"],
+  "aliases": [],
+  "documents": [
+    "rfc1109",
+    "rfc2501",
+    "rfc3561",
+    "rfc3626",
+    "rfc3684",
+    "rfc4728",
+    "rfc5148",
+    "rfc5444",
+    "rfc5449",
+    "rfc5497",
+    "rfc5498",
+    "rfc5558",
+    "rfc5614",
+    "rfc5720",
+    "rfc5820",
+    "rfc5889",
+    "rfc6130",
+    "rfc6139",
+    "rfc6179",
+    "rfc6621",
+    "rfc6622",
+    "rfc6779",
+    "rfc7038",
+    "rfc7137",
+    "rfc7181",
+    "rfc7182",
+    "rfc7183",
+    "rfc7184",
+    "rfc7185",
+    "rfc7186",
+    "rfc7187",
+    "rfc7188",
+    "rfc7367",
+    "rfc7466",
+    "rfc7631",
+    "rfc7722",
+    "rfc7733",
+    "rfc7779",
+    "rfc7859",
+    "rfc7939",
+    "rfc7985",
+    "rfc8116",
+    "rfc8175",
+    "rfc8218",
+    "rfc8245",
+    "rfc8629",
+    "rfc8651",
+    "rfc8703",
+    "rfc8757",
+    "rfc9892",
+    "rfc9893",
+    "rfc9894",
+    "rfc9895"
+  ],
+  "document_meta": {
+    "rfc1109": { "title": "Report of the second Ad Hoc Network Management Review Group", "subseries": [] },
+    "rfc2501": {
+      "title": "Mobile Ad hoc Networking (MANET): Routing Protocol Performance Issues and Evaluation Considerations",
+      "subseries": []
+    },
+    "rfc3561": { "title": "Ad hoc On-Demand Distance Vector (AODV) Routing", "subseries": [] },
+    "rfc3626": { "title": "Optimized Link State Routing Protocol (OLSR)", "subseries": [] },
+    "rfc3684": { "title": "Topology Dissemination Based on Reverse-Path Forwarding (TBRPF)", "subseries": [] },
+    "rfc4728": {
+      "title": "The Dynamic Source Routing Protocol (DSR) for Mobile Ad Hoc Networks for IPv4",
+      "subseries": []
+    },
+    "rfc5148": { "title": "Jitter Considerations in Mobile Ad Hoc Networks (MANETs)", "subseries": [] },
+    "rfc5444": { "title": "Generalized Mobile Ad Hoc Network (MANET) Packet/Message Format", "subseries": [] },
+    "rfc5449": { "title": "OSPF Multipoint Relay (MPR) Extension for Ad Hoc Networks", "subseries": [] },
+    "rfc5497": { "title": "Representing Multi-Value Time in Mobile Ad Hoc Networks (MANETs)", "subseries": [] },
+    "rfc5498": { "title": "IANA Allocations for Mobile Ad Hoc Network (MANET) Protocols", "subseries": [] },
+    "rfc5558": { "title": "Virtual Enterprise Traversal (VET)", "subseries": [] },
+    "rfc5614": {
+      "title": "Mobile Ad Hoc Network (MANET) Extension of OSPF Using Connected Dominating Set (CDS) Flooding",
+      "subseries": []
+    },
+    "rfc5720": {
+      "title": "Routing and Addressing in Networks with Global Enterprise Recursion (RANGER)",
+      "subseries": []
+    },
+    "rfc5820": { "title": "Extensions to OSPF to Support Mobile Ad Hoc Networking", "subseries": [] },
+    "rfc5889": { "title": "IP Addressing Model in Ad Hoc Networks", "subseries": [] },
+    "rfc6130": { "title": "Mobile Ad Hoc Network (MANET) Neighborhood Discovery Protocol (NHDP)", "subseries": [] },
+    "rfc6139": {
+      "title": "Routing and Addressing in Networks with Global Enterprise Recursion (RANGER) Scenarios",
+      "subseries": []
+    },
+    "rfc6179": { "title": "The Internet Routing Overlay Network (IRON)", "subseries": [] },
+    "rfc6621": { "title": "Simplified Multicast Forwarding", "subseries": [] },
+    "rfc6622": {
+      "title": "Integrity Check Value and Timestamp TLV Definitions for Mobile Ad Hoc Networks (MANETs)",
+      "subseries": []
+    },
+    "rfc6779": { "title": "Definition of Managed Objects for the Neighborhood Discovery Protocol", "subseries": [] },
+    "rfc7038": { "title": "Use of OSPF-MDR in Single-Hop Broadcast Networks", "subseries": [] },
+    "rfc7137": { "title": "Use of the OSPF-MANET Interface in Single-Hop Broadcast Networks", "subseries": [] },
+    "rfc7181": { "title": "The Optimized Link State Routing Protocol Version 2", "subseries": [] },
+    "rfc7182": {
+      "title": "Integrity Check Value and Timestamp TLV Definitions for Mobile Ad Hoc Networks (MANETs)",
+      "subseries": []
+    },
+    "rfc7183": {
+      "title": "Integrity Protection for the Neighborhood Discovery Protocol (NHDP) and Optimized Link State Routing Protocol Version 2 (OLSRv2)",
+      "subseries": []
+    },
+    "rfc7184": {
+      "title": "Definition of Managed Objects for the Optimized Link State Routing Protocol Version 2",
+      "subseries": []
+    },
+    "rfc7185": {
+      "title": "Link Metrics for the Mobile Ad Hoc Network (MANET) Routing Protocol OLSRv2 - Rationale",
+      "subseries": []
+    },
+    "rfc7186": { "title": "Security Threats for the Neighborhood Discovery Protocol (NHDP)", "subseries": [] },
+    "rfc7187": {
+      "title": "Routing Multipoint Relay Optimization for the Optimized Link State Routing Protocol Version 2 (OLSRv2)",
+      "subseries": []
+    },
+    "rfc7188": {
+      "title": "Optimized Link State Routing Protocol Version 2 (OLSRv2) and MANET Neighborhood Discovery Protocol (NHDP) Extension TLVs",
+      "subseries": []
+    },
+    "rfc7367": {
+      "title": "Definition of Managed Objects for the Mobile Ad Hoc Network (MANET) Simplified Multicast Framework Relay Set Process",
+      "subseries": []
+    },
+    "rfc7466": {
+      "title": "An Optimization for the Mobile Ad Hoc Network (MANET) Neighborhood Discovery Protocol (NHDP)",
+      "subseries": []
+    },
+    "rfc7631": {
+      "title": "TLV Naming in the Mobile Ad Hoc Network (MANET) Generalized Packet/Message Format",
+      "subseries": []
+    },
+    "rfc7722": {
+      "title": "Multi-Topology Extension for the Optimized Link State Routing Protocol Version 2 (OLSRv2)",
+      "subseries": []
+    },
+    "rfc7733": {
+      "title": "Applicability Statement: The Use of the Routing Protocol for Low-Power and Lossy Networks (RPL) Protocol Suite in Home Automation and Building Control",
+      "subseries": []
+    },
+    "rfc7779": {
+      "title": "Directional Airtime Metric Based on Packet Sequence Numbers for Optimized Link State Routing Version 2 (OLSRv2)",
+      "subseries": []
+    },
+    "rfc7859": {
+      "title": "Identity-Based Signatures for Mobile Ad Hoc Network (MANET) Routing Protocols",
+      "subseries": []
+    },
+    "rfc7939": { "title": "Definition of Managed Objects for the Neighborhood Discovery Protocol", "subseries": [] },
+    "rfc7985": { "title": "Security Threats to Simplified Multicast Forwarding (SMF)", "subseries": [] },
+    "rfc8116": {
+      "title": "Security Threats to the Optimized Link State Routing Protocol Version 2 (OLSRv2)",
+      "subseries": []
+    },
+    "rfc8175": { "title": "Dynamic Link Exchange Protocol (DLEP)", "subseries": [] },
+    "rfc8218": {
+      "title": "Multipath Extension for the Optimized Link State Routing Protocol Version 2 (OLSRv2)",
+      "subseries": []
+    },
+    "rfc8245": {
+      "title": "Rules for Designing Protocols Using the Generalized Packet/Message Format from RFC 5444",
+      "subseries": []
+    },
+    "rfc8629": { "title": "Dynamic Link Exchange Protocol (DLEP) Multi-Hop Forwarding Extension", "subseries": [] },
+    "rfc8651": {
+      "title": "Dynamic Link Exchange Protocol (DLEP) Control-Plane-Based Pause Extension",
+      "subseries": []
+    },
+    "rfc8703": { "title": "Dynamic Link Exchange Protocol (DLEP) Link Identifier Extension", "subseries": [] },
+    "rfc8757": { "title": "Dynamic Link Exchange Protocol (DLEP) Latency Range Extension", "subseries": [] },
+    "rfc9892": { "title": "Dynamic Link Exchange Protocol (DLEP) Traffic Classification Data Item", "subseries": [] },
+    "rfc9893": {
+      "title": "Dynamic Link Exchange Protocol (DLEP) Credit-Based Flow Control Messages and Data Items",
+      "subseries": []
+    },
+    "rfc9894": {
+      "title": "Dynamic Link Exchange Protocol (DLEP) Diffserv Aware Credit Window Extension",
+      "subseries": []
+    },
+    "rfc9895": {
+      "title": "Dynamic Link Exchange Protocol (DLEP) IEEE 802.1Q Aware Credit Window Extension",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "routing": { "name": "Routing" },
+    "aodv": { "name": "AODV" },
+    "dsr": { "name": "DSR" },
+    "olsr": { "name": "OLSR" }
+  }
+}

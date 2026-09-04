@@ -1,0 +1,123 @@
+{
+  "id": 1017,
+  "slug": "spf",
+  "name": "SPF",
+  "description": "Sender Policy Framework",
+  "parent": "email-authentication",
+  "path": "messaging/email/email-authentication/spf",
+  "document_count": 34,
+  "document_count_deep": 34,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1074",
+    "rfc1245",
+    "rfc1246",
+    "rfc1248",
+    "rfc1252",
+    "rfc1850",
+    "rfc3906",
+    "rfc4061",
+    "rfc4062",
+    "rfc4063",
+    "rfc4408",
+    "rfc4750",
+    "rfc6008",
+    "rfc6577",
+    "rfc6591",
+    "rfc6652",
+    "rfc6686",
+    "rfc7001",
+    "rfc7070",
+    "rfc7071",
+    "rfc7072",
+    "rfc7073",
+    "rfc7208",
+    "rfc7489",
+    "rfc7601",
+    "rfc7960",
+    "rfc8042",
+    "rfc8405",
+    "rfc8541",
+    "rfc8601",
+    "rfc9057",
+    "rfc9815",
+    "rfc9816",
+    "rfc9991"
+  ],
+  "document_meta": {
+    "rfc1074": { "title": "NSFNET backbone SPF based Interior Gateway Protocol", "subseries": [] },
+    "rfc1245": { "title": "OSPF Protocol Analysis", "subseries": [] },
+    "rfc1246": { "title": "Experience with the OSPF Protocol", "subseries": [] },
+    "rfc1248": { "title": "OSPF Version 2 Management Information Base", "subseries": [] },
+    "rfc1252": { "title": "OSPF Version 2 Management Information Base", "subseries": [] },
+    "rfc1850": { "title": "OSPF Version 2 Management Information Base", "subseries": [] },
+    "rfc3906": {
+      "title": "Calculating Interior Gateway Protocol (IGP) Routes Over Traffic Engineering Tunnels",
+      "subseries": []
+    },
+    "rfc4061": { "title": "Benchmarking Basic OSPF Single Router Control Plane Convergence", "subseries": [] },
+    "rfc4062": { "title": "OSPF Benchmarking Terminology and Concepts", "subseries": [] },
+    "rfc4063": { "title": "Considerations When Using Basic OSPF Convergence Benchmarks", "subseries": [] },
+    "rfc4408": {
+      "title": "Sender Policy Framework (SPF) for Authorizing Use of Domains in E-Mail, Version 1",
+      "subseries": []
+    },
+    "rfc4750": { "title": "OSPF Version 2 Management Information Base", "subseries": [] },
+    "rfc6008": {
+      "title": "Authentication-Results Registration for Differentiating among Cryptographic Results",
+      "subseries": []
+    },
+    "rfc6577": {
+      "title": "Authentication-Results Registration Update for Sender Policy Framework (SPF) Results",
+      "subseries": []
+    },
+    "rfc6591": { "title": "Authentication Failure Reporting Using the Abuse Reporting Format", "subseries": [] },
+    "rfc6652": {
+      "title": "Sender Policy Framework (SPF) Authentication Failure Reporting Using the Abuse Reporting Format",
+      "subseries": []
+    },
+    "rfc6686": {
+      "title": "Resolution of the Sender Policy Framework (SPF) and Sender ID Experiments",
+      "subseries": []
+    },
+    "rfc7001": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc7070": { "title": "An Architecture for Reputation Reporting", "subseries": [] },
+    "rfc7071": { "title": "A Media Type for Reputation Interchange", "subseries": [] },
+    "rfc7072": { "title": "A Reputation Query Protocol", "subseries": [] },
+    "rfc7073": { "title": "A Reputation Response Set for Email Identifiers", "subseries": [] },
+    "rfc7208": {
+      "title": "Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1",
+      "subseries": []
+    },
+    "rfc7489": { "title": "Domain-based Message Authentication, Reporting, and Conformance (DMARC)", "subseries": [] },
+    "rfc7601": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc7960": {
+      "title": "Interoperability Issues between Domain-based Message Authentication, Reporting, and Conformance (DMARC) and Indirect Email Flows",
+      "subseries": []
+    },
+    "rfc8042": { "title": "OSPF Two-Part Metric", "subseries": [] },
+    "rfc8405": { "title": "Shortest Path First (SPF) Back-Off Delay Algorithm for Link-State IGPs", "subseries": [] },
+    "rfc8541": {
+      "title": "Impact of Shortest Path First (SPF) Trigger and Delay Strategies on IGP Micro-loops",
+      "subseries": []
+    },
+    "rfc8601": { "title": "Message Header Field for Indicating Message Authentication Status", "subseries": [] },
+    "rfc9057": { "title": "Email Author Header Field", "subseries": [] },
+    "rfc9815": { "title": "BGP Link State (BGP-LS) Shortest Path First (SPF) Routing", "subseries": [] },
+    "rfc9816": {
+      "title": "Usage and Applicability of BGP Link State (BGP-LS) Shortest Path First (SPF) Routing in Data Centers",
+      "subseries": []
+    },
+    "rfc9991": {
+      "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC) Failure Reporting",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "messaging": { "name": "Messaging" },
+    "email": { "name": "Email" },
+    "email-authentication": { "name": "Email Authentication" }
+  }
+}

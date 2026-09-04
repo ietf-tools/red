@@ -1,0 +1,144 @@
+{
+  "id": 619,
+  "slug": "rpl",
+  "name": "RPL",
+  "description": "The RPL routing protocol for low-power and lossy networks",
+  "parent": "iot",
+  "path": "iot/rpl",
+  "document_count": 33,
+  "document_count_deep": 33,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5548",
+    "rfc5673",
+    "rfc5826",
+    "rfc5867",
+    "rfc6206",
+    "rfc6550",
+    "rfc6551",
+    "rfc6552",
+    "rfc6553",
+    "rfc6554",
+    "rfc6687",
+    "rfc6719",
+    "rfc6997",
+    "rfc6998",
+    "rfc7102",
+    "rfc7416",
+    "rfc7731",
+    "rfc7732",
+    "rfc7733",
+    "rfc7774",
+    "rfc8036",
+    "rfc8138",
+    "rfc8352",
+    "rfc8928",
+    "rfc8994",
+    "rfc9008",
+    "rfc9009",
+    "rfc9010",
+    "rfc9035",
+    "rfc9685",
+    "rfc9854",
+    "rfc9866",
+    "rfc9914"
+  ],
+  "document_meta": {
+    "rfc5548": { "title": "Routing Requirements for Urban Low-Power and Lossy Networks", "subseries": [] },
+    "rfc5673": { "title": "Industrial Routing Requirements in Low-Power and Lossy Networks", "subseries": [] },
+    "rfc5826": { "title": "Home Automation Routing Requirements in Low-Power and Lossy Networks", "subseries": [] },
+    "rfc5867": { "title": "Building Automation Routing Requirements in Low-Power and Lossy Networks", "subseries": [] },
+    "rfc6206": { "title": "The Trickle Algorithm", "subseries": [] },
+    "rfc6550": { "title": "RPL: IPv6 Routing Protocol for Low-Power and Lossy Networks", "subseries": [] },
+    "rfc6551": {
+      "title": "Routing Metrics Used for Path Calculation in Low-Power and Lossy Networks",
+      "subseries": []
+    },
+    "rfc6552": {
+      "title": "Objective Function Zero for the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    },
+    "rfc6553": {
+      "title": "The Routing Protocol for Low-Power and Lossy Networks (RPL) Option for Carrying RPL Information in Data-Plane Datagrams",
+      "subseries": []
+    },
+    "rfc6554": {
+      "title": "An IPv6 Routing Header for Source Routes with the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    },
+    "rfc6687": {
+      "title": "Performance Evaluation of the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    },
+    "rfc6719": { "title": "The Minimum Rank with Hysteresis Objective Function", "subseries": [] },
+    "rfc6997": {
+      "title": "Reactive Discovery of Point-to-Point Routes in Low-Power and Lossy Networks",
+      "subseries": []
+    },
+    "rfc6998": {
+      "title": "A Mechanism to Measure the Routing Metrics along a Point-to-Point Route in a Low-Power and Lossy Network",
+      "subseries": []
+    },
+    "rfc7102": { "title": "Terms Used in Routing for Low-Power and Lossy Networks", "subseries": [] },
+    "rfc7416": {
+      "title": "A Security Threat Analysis for the Routing Protocol for Low-Power and Lossy Networks (RPLs)",
+      "subseries": []
+    },
+    "rfc7731": { "title": "Multicast Protocol for Low-Power and Lossy Networks (MPL)", "subseries": [] },
+    "rfc7732": {
+      "title": "Forwarder Policy for Multicast with Admin-Local Scope in the Multicast Protocol for Low-Power and Lossy Networks (MPL)",
+      "subseries": []
+    },
+    "rfc7733": {
+      "title": "Applicability Statement: The Use of the Routing Protocol for Low-Power and Lossy Networks (RPL) Protocol Suite in Home Automation and Building Control",
+      "subseries": []
+    },
+    "rfc7774": {
+      "title": "Multicast Protocol for Low-Power and Lossy Networks (MPL) Parameter Configuration Option for DHCPv6",
+      "subseries": []
+    },
+    "rfc8036": {
+      "title": "Applicability Statement for the Routing Protocol for Low-Power and Lossy Networks (RPL) in Advanced Metering Infrastructure (AMI) Networks",
+      "subseries": []
+    },
+    "rfc8138": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Routing Header",
+      "subseries": []
+    },
+    "rfc8352": { "title": "Energy-Efficient Features of Internet of Things Protocols", "subseries": [] },
+    "rfc8928": { "title": "Address-Protected Neighbor Discovery for Low-Power and Lossy Networks", "subseries": [] },
+    "rfc8994": { "title": "An Autonomic Control Plane (ACP)", "subseries": [] },
+    "rfc9008": {
+      "title": "Using RPI Option Type, Routing Header for Source Routes, and IPv6-in-IPv6 Encapsulation in the RPL Data Plane",
+      "subseries": []
+    },
+    "rfc9009": { "title": "Efficient Route Invalidation", "subseries": [] },
+    "rfc9010": {
+      "title": "Routing for RPL (Routing Protocol for Low-Power and Lossy Networks) Leaves",
+      "subseries": []
+    },
+    "rfc9035": {
+      "title": "A Routing Protocol for Low-Power and Lossy Networks (RPL) Destination-Oriented Directed Acyclic Graph (DODAG) Configuration Option for the 6LoWPAN Routing Header",
+      "subseries": []
+    },
+    "rfc9685": {
+      "title": "Listener Subscription for IPv6 Neighbor Discovery Multicast and Anycast Addresses",
+      "subseries": []
+    },
+    "rfc9854": {
+      "title": "AODV-RPL: The Routing Protocol for Low-Power and Lossy Networks (RPL) Based on Ad Hoc On-Demand Distance Vector (AODV) Routing",
+      "subseries": []
+    },
+    "rfc9866": {
+      "title": "Root Node Failure Detector (RNFD): Fast Detection of Border Router Crashes in the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    },
+    "rfc9914": {
+      "title": "Root-Initiated Routing State in the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

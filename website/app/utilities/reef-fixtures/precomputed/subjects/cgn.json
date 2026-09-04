@@ -1,0 +1,48 @@
+{
+  "id": 836,
+  "slug": "cgn",
+  "name": "Carrier-Grade NAT",
+  "description": "Carrier-grade NAT",
+  "parent": "nat",
+  "path": "internet-layer/nat/cgn",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6264",
+    "rfc6598",
+    "rfc6736",
+    "rfc6888",
+    "rfc7021",
+    "rfc7289",
+    "rfc7393",
+    "rfc7422",
+    "rfc7648",
+    "rfc7659",
+    "rfc7857",
+    "rfc8045"
+  ],
+  "document_meta": {
+    "rfc6264": { "title": "An Incremental Carrier-Grade NAT (CGN) for IPv6 Transition", "subseries": [] },
+    "rfc6598": { "title": "IANA-Reserved IPv4 Prefix for Shared Address Space", "subseries": ["bcp153"] },
+    "rfc6736": { "title": "Diameter Network Address and Port Translation Control Application", "subseries": [] },
+    "rfc6888": { "title": "Common Requirements for Carrier-Grade NATs (CGNs)", "subseries": ["bcp127"] },
+    "rfc7021": { "title": "Assessing the Impact of Carrier-Grade NAT on Network Applications", "subseries": [] },
+    "rfc7289": { "title": "Carrier-Grade NAT (CGN) Deployment with BGP/MPLS IP VPNs", "subseries": [] },
+    "rfc7393": { "title": "Using the Port Control Protocol (PCP) to Update Dynamic DNS", "subseries": [] },
+    "rfc7422": {
+      "title": "Deterministic Address Mapping to Reduce Logging in Carrier-Grade NAT Deployments",
+      "subseries": []
+    },
+    "rfc7648": { "title": "Port Control Protocol (PCP) Proxy Function", "subseries": [] },
+    "rfc7659": { "title": "Definitions of Managed Objects for Network Address Translators (NATs)", "subseries": [] },
+    "rfc7857": {
+      "title": "Updates to Network Address Translation (NAT) Behavioral Requirements",
+      "subseries": ["bcp127"]
+    },
+    "rfc8045": { "title": "RADIUS Extensions for IP Port Configuration and Reporting", "subseries": [] }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "nat": { "name": "NAT" } }
+}

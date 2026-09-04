@@ -1,0 +1,86 @@
+{
+  "id": 556,
+  "slug": "ipp",
+  "name": "IPP",
+  "description": "The Internet Printing Protocol",
+  "parent": "applications",
+  "path": "applications/ipp",
+  "document_count": 25,
+  "document_count_deep": 25,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1759",
+    "rfc2565",
+    "rfc2566",
+    "rfc2567",
+    "rfc2568",
+    "rfc2569",
+    "rfc2639",
+    "rfc2707",
+    "rfc2708",
+    "rfc2910",
+    "rfc2911",
+    "rfc3196",
+    "rfc3239",
+    "rfc3380",
+    "rfc3381",
+    "rfc3382",
+    "rfc3510",
+    "rfc3805",
+    "rfc3995",
+    "rfc3996",
+    "rfc3997",
+    "rfc3998",
+    "rfc7472",
+    "rfc8010",
+    "rfc8011"
+  ],
+  "document_meta": {
+    "rfc1759": { "title": "Printer MIB", "subseries": [] },
+    "rfc2565": { "title": "Internet Printing Protocol/1.0: Encoding and Transport", "subseries": [] },
+    "rfc2566": { "title": "Internet Printing Protocol/1.0: Model and Semantics", "subseries": [] },
+    "rfc2567": { "title": "Design Goals for an Internet Printing Protocol", "subseries": [] },
+    "rfc2568": {
+      "title": "Rationale for the Structure of the Model and Protocol for the Internet Printing Protocol",
+      "subseries": []
+    },
+    "rfc2569": { "title": "Mapping between LPD and IPP Protocols", "subseries": [] },
+    "rfc2639": { "title": "Internet Printing Protocol/1.0: Implementer's Guide", "subseries": [] },
+    "rfc2707": { "title": "Job Monitoring MIB - V1.0", "subseries": [] },
+    "rfc2708": {
+      "title": "Job Submission Protocol Mapping Recommendations for the Job Monitoring MIB",
+      "subseries": []
+    },
+    "rfc2910": { "title": "Internet Printing Protocol/1.1: Encoding and Transport", "subseries": [] },
+    "rfc2911": { "title": "Internet Printing Protocol/1.1: Model and Semantics", "subseries": [] },
+    "rfc3196": { "title": "Internet Printing Protocol/1.1: Implementor's Guide", "subseries": [] },
+    "rfc3239": {
+      "title": "Internet Printing Protocol (IPP): Requirements for Job, Printer, and Device Administrative Operations",
+      "subseries": []
+    },
+    "rfc3380": { "title": "Internet Printing Protocol (IPP): Job and Printer Set Operations", "subseries": [] },
+    "rfc3381": { "title": "Internet Printing Protocol (IPP): Job Progress Attributes", "subseries": [] },
+    "rfc3382": { "title": "Internet Printing Protocol (IPP): The 'collection' attribute syntax", "subseries": [] },
+    "rfc3510": { "title": "Internet Printing Protocol/1.1: IPP URL Scheme", "subseries": [] },
+    "rfc3805": { "title": "Printer MIB v2", "subseries": [] },
+    "rfc3995": { "title": "Internet Printing Protocol (IPP): Event Notifications and Subscriptions", "subseries": [] },
+    "rfc3996": {
+      "title": "Internet Printing Protocol (IPP): The 'ippget' Delivery Method for Event Notifications",
+      "subseries": []
+    },
+    "rfc3997": { "title": "Internet Printing Protocol (IPP): Requirements for IPP Notifications", "subseries": [] },
+    "rfc3998": {
+      "title": "Internet Printing Protocol (IPP): Job and Printer Administrative Operations",
+      "subseries": []
+    },
+    "rfc7472": {
+      "title": "Internet Printing Protocol (IPP) over HTTPS Transport Binding and the 'ipps' URI Scheme",
+      "subseries": []
+    },
+    "rfc8010": { "title": "Internet Printing Protocol/1.1: Encoding and Transport", "subseries": ["std92"] },
+    "rfc8011": { "title": "Internet Printing Protocol/1.1: Model and Semantics", "subseries": ["std92"] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

@@ -1,0 +1,52 @@
+{
+  "id": 681,
+  "slug": "syslog",
+  "name": "Syslog",
+  "description": "The syslog logging protocol",
+  "parent": "network-management",
+  "path": "network-management/syslog",
+  "document_count": 14,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3164",
+    "rfc3195",
+    "rfc5424",
+    "rfc5425",
+    "rfc5426",
+    "rfc5427",
+    "rfc5674",
+    "rfc5675",
+    "rfc5676",
+    "rfc5848",
+    "rfc6012",
+    "rfc6587",
+    "rfc9662",
+    "rfc9742"
+  ],
+  "document_meta": {
+    "rfc3164": { "title": "The BSD Syslog Protocol", "subseries": [] },
+    "rfc3195": { "title": "Reliable Delivery for syslog", "subseries": [] },
+    "rfc5424": { "title": "The Syslog Protocol", "subseries": [] },
+    "rfc5425": { "title": "Transport Layer Security (TLS) Transport Mapping for Syslog", "subseries": [] },
+    "rfc5426": { "title": "Transmission of Syslog Messages over UDP", "subseries": [] },
+    "rfc5427": { "title": "Textual Conventions for Syslog Management", "subseries": [] },
+    "rfc5674": { "title": "Alarms in Syslog", "subseries": [] },
+    "rfc5675": {
+      "title": "Mapping Simple Network Management Protocol (SNMP) Notifications to SYSLOG Messages",
+      "subseries": []
+    },
+    "rfc5676": {
+      "title": "Definitions of Managed Objects for Mapping SYSLOG Messages to Simple Network Management Protocol (SNMP) Notifications",
+      "subseries": []
+    },
+    "rfc5848": { "title": "Signed Syslog Messages", "subseries": [] },
+    "rfc6012": { "title": "Datagram Transport Layer Security (DTLS) Transport Mapping for Syslog", "subseries": [] },
+    "rfc6587": { "title": "Transmission of Syslog Messages over TCP", "subseries": [] },
+    "rfc9662": { "title": "Updates to the Cipher Suites in Secure Syslog", "subseries": [] },
+    "rfc9742": { "title": "A YANG Data Model for Syslog Management", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

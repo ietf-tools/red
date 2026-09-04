@@ -1,0 +1,66 @@
+{
+  "id": 1023,
+  "slug": "curve25519",
+  "name": "Curve25519",
+  "description": "Curve25519 and Curve448",
+  "parent": "elliptic-curve",
+  "path": "security/cryptography/elliptic-curve/curve25519",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10024",
+    "rfc8031",
+    "rfc8037",
+    "rfc8410",
+    "rfc8418",
+    "rfc8731",
+    "rfc9142",
+    "rfc9295",
+    "rfc9496",
+    "rfc9941"
+  ],
+  "document_meta": {
+    "rfc10024": {
+      "title": "Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3",
+      "subseries": []
+    },
+    "rfc8031": {
+      "title": "Curve25519 and Curve448 for the Internet Key Exchange Protocol Version 2 (IKEv2) Key Agreement",
+      "subseries": []
+    },
+    "rfc8037": {
+      "title": "CFRG Elliptic Curve Diffie-Hellman (ECDH) and Signatures in JSON Object Signing and Encryption (JOSE)",
+      "subseries": []
+    },
+    "rfc8410": {
+      "title": "Algorithm Identifiers for Ed25519, Ed448, X25519, and X448 for Use in the Internet X.509 Public Key Infrastructure",
+      "subseries": []
+    },
+    "rfc8418": {
+      "title": "Use of the Elliptic Curve Diffie-Hellman Key Agreement Algorithm with X25519 and X448 in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc8731": { "title": "Secure Shell (SSH) Key Exchange Method Using Curve25519 and Curve448", "subseries": [] },
+    "rfc9142": {
+      "title": "Key Exchange (KEX) Method Updates and Recommendations for Secure Shell (SSH)",
+      "subseries": []
+    },
+    "rfc9295": {
+      "title": "Clarifications for Ed25519, Ed448, X25519, and X448 Algorithm Identifiers",
+      "subseries": []
+    },
+    "rfc9496": { "title": "The ristretto255 and decaf448 Groups", "subseries": [] },
+    "rfc9941": {
+      "title": "Secure Shell (SSH) Key Exchange Method Using Hybrid Streamlined NTRU Prime sntrup761 and X25519 with SHA-512: sntrup761x25519-sha512",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "security": { "name": "Security" },
+    "cryptography": { "name": "Cryptography" },
+    "elliptic-curve": { "name": "Elliptic-Curve Cryptography" }
+  }
+}

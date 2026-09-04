@@ -1,0 +1,171 @@
+{
+  "id": 739,
+  "slug": "firewall",
+  "name": "Firewalls",
+  "description": "Firewalls and middlebox security traversal",
+  "parent": "security",
+  "path": "security/firewall",
+  "document_count": 57,
+  "document_count_deep": 59,
+  "retired": false,
+  "children": ["socks"],
+  "aliases": [],
+  "documents": [
+    "rfc1579",
+    "rfc1919",
+    "rfc1928",
+    "rfc1929",
+    "rfc2057",
+    "rfc2356",
+    "rfc2588",
+    "rfc2647",
+    "rfc2979",
+    "rfc3128",
+    "rfc3234",
+    "rfc3235",
+    "rfc3303",
+    "rfc3304",
+    "rfc3424",
+    "rfc3489",
+    "rfc3511",
+    "rfc3620",
+    "rfc3726",
+    "rfc3917",
+    "rfc3989",
+    "rfc4097",
+    "rfc4487",
+    "rfc4540",
+    "rfc4890",
+    "rfc5153",
+    "rfc5189",
+    "rfc5190",
+    "rfc5207",
+    "rfc5389",
+    "rfc5407",
+    "rfc5456",
+    "rfc5575",
+    "rfc5596",
+    "rfc5973",
+    "rfc5978",
+    "rfc6092",
+    "rfc6714",
+    "rfc6887",
+    "rfc6935",
+    "rfc7288",
+    "rfc7362",
+    "rfc7383",
+    "rfc7604",
+    "rfc7639",
+    "rfc7648",
+    "rfc7663",
+    "rfc7667",
+    "rfc7723",
+    "rfc7754",
+    "rfc8041",
+    "rfc8165",
+    "rfc8192",
+    "rfc8329",
+    "rfc8517",
+    "rfc8519",
+    "rfc9061"
+  ],
+  "document_meta": {
+    "rfc1579": { "title": "Firewall-Friendly FTP", "subseries": [] },
+    "rfc1919": { "title": "Classical versus Transparent IP Proxies", "subseries": [] },
+    "rfc1928": { "title": "SOCKS Protocol Version 5", "subseries": [] },
+    "rfc1929": { "title": "Username/Password Authentication for SOCKS V5", "subseries": [] },
+    "rfc2057": { "title": "Source Directed Access Control on the Internet", "subseries": [] },
+    "rfc2356": { "title": "Sun's SKIP Firewall Traversal for Mobile IP", "subseries": [] },
+    "rfc2588": { "title": "IP Multicast and Firewalls", "subseries": [] },
+    "rfc2647": { "title": "Benchmarking Terminology for Firewall Performance", "subseries": [] },
+    "rfc2979": { "title": "Behavior of and Requirements for Internet Firewalls", "subseries": [] },
+    "rfc3128": { "title": "Protection Against a Variant of the Tiny Fragment Attack (RFC 1858)", "subseries": [] },
+    "rfc3234": { "title": "Middleboxes: Taxonomy and Issues", "subseries": [] },
+    "rfc3235": { "title": "Network Address Translator (NAT)-Friendly Application Design Guidelines", "subseries": [] },
+    "rfc3303": { "title": "Middlebox communication architecture and framework", "subseries": [] },
+    "rfc3304": { "title": "Middlebox Communications (midcom) Protocol Requirements", "subseries": [] },
+    "rfc3424": {
+      "title": "IAB Considerations for UNilateral Self-Address Fixing (UNSAF) Across Network Address Translation",
+      "subseries": []
+    },
+    "rfc3489": {
+      "title": "STUN - Simple Traversal of User Datagram Protocol (UDP) Through Network Address Translators (NATs)",
+      "subseries": []
+    },
+    "rfc3511": { "title": "Benchmarking Methodology for Firewall Performance", "subseries": [] },
+    "rfc3620": { "title": "The TUNNEL Profile", "subseries": [] },
+    "rfc3726": { "title": "Requirements for Signaling Protocols", "subseries": [] },
+    "rfc3917": { "title": "Requirements for IP Flow Information Export (IPFIX)", "subseries": [] },
+    "rfc3989": { "title": "Middlebox Communications (MIDCOM) Protocol Semantics", "subseries": [] },
+    "rfc4097": { "title": "Middlebox Communications (MIDCOM) Protocol Evaluation", "subseries": [] },
+    "rfc4487": { "title": "Mobile IPv6 and Firewalls: Problem Statement", "subseries": [] },
+    "rfc4540": { "title": "NEC's Simple Middlebox Configuration (SIMCO) Protocol Version 3.0", "subseries": [] },
+    "rfc4890": { "title": "Recommendations for Filtering ICMPv6 Messages in Firewalls", "subseries": [] },
+    "rfc5153": { "title": "IP Flow Information Export (IPFIX) Implementation Guidelines", "subseries": [] },
+    "rfc5189": { "title": "Middlebox Communication (MIDCOM) Protocol Semantics", "subseries": [] },
+    "rfc5190": { "title": "Definitions of Managed Objects for Middlebox Communication", "subseries": [] },
+    "rfc5207": {
+      "title": "NAT and Firewall Traversal Issues of Host Identity Protocol (HIP) Communication",
+      "subseries": []
+    },
+    "rfc5389": { "title": "Session Traversal Utilities for NAT (STUN)", "subseries": [] },
+    "rfc5407": {
+      "title": "Example Call Flows of Race Conditions in the Session Initiation Protocol (SIP)",
+      "subseries": ["bcp147"]
+    },
+    "rfc5456": { "title": "IAX: Inter-Asterisk eXchange Version 2", "subseries": [] },
+    "rfc5575": { "title": "Dissemination of Flow Specification Rules", "subseries": [] },
+    "rfc5596": {
+      "title": "Datagram Congestion Control Protocol (DCCP) Simultaneous-Open Technique to Facilitate NAT/Middlebox Traversal",
+      "subseries": []
+    },
+    "rfc5973": { "title": "NAT/Firewall NSIS Signaling Layer Protocol (NSLP)", "subseries": [] },
+    "rfc5978": { "title": "Using and Extending the NSIS Protocol Family", "subseries": [] },
+    "rfc6092": {
+      "title": "Recommended Simple Security Capabilities in Customer Premises Equipment (CPE) for Providing Residential IPv6 Internet Service",
+      "subseries": []
+    },
+    "rfc6714": {
+      "title": "Connection Establishment for Media Anchoring (CEMA) for the Message Session Relay Protocol (MSRP)",
+      "subseries": []
+    },
+    "rfc6887": { "title": "Port Control Protocol (PCP)", "subseries": [] },
+    "rfc6935": { "title": "IPv6 and UDP Checksums for Tunneled Packets", "subseries": [] },
+    "rfc7288": { "title": "Reflections on Host Firewalls", "subseries": [] },
+    "rfc7362": {
+      "title": "Latching: Hosted NAT Traversal (HNT) for Media in Real-Time Communication",
+      "subseries": []
+    },
+    "rfc7383": { "title": "Internet Key Exchange Protocol Version 2 (IKEv2) Message Fragmentation", "subseries": [] },
+    "rfc7604": {
+      "title": "Comparison of Different NAT Traversal Techniques for Media Controlled by the Real-Time Streaming Protocol (RTSP)",
+      "subseries": []
+    },
+    "rfc7639": { "title": "The ALPN HTTP Header Field", "subseries": [] },
+    "rfc7648": { "title": "Port Control Protocol (PCP) Proxy Function", "subseries": [] },
+    "rfc7663": {
+      "title": "Report from the IAB Workshop on Stack Evolution in a Middlebox Internet (SEMI)",
+      "subseries": []
+    },
+    "rfc7667": { "title": "RTP Topologies", "subseries": [] },
+    "rfc7723": { "title": "Port Control Protocol (PCP) Anycast Addresses", "subseries": [] },
+    "rfc7754": { "title": "Technical Considerations for Internet Service Blocking and Filtering", "subseries": [] },
+    "rfc8041": { "title": "Use Cases and Operational Experience with Multipath TCP", "subseries": [] },
+    "rfc8165": { "title": "Design Considerations for Metadata Insertion", "subseries": [] },
+    "rfc8192": {
+      "title": "Interface to Network Security Functions (I2NSF): Problem Statement and Use Cases",
+      "subseries": []
+    },
+    "rfc8329": { "title": "Framework for Interface to Network Security Functions", "subseries": [] },
+    "rfc8517": {
+      "title": "An Inventory of Transport-Centric Functions Provided by Middleboxes: An Operator Perspective",
+      "subseries": []
+    },
+    "rfc8519": { "title": "YANG Data Model for Network Access Control Lists (ACLs)", "subseries": [] },
+    "rfc9061": {
+      "title": "A YANG Data Model for IPsec Flow Protection Based on Software-Defined Networking (SDN)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "socks": { "name": "SOCKS" } }
+}

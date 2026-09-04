@@ -1,0 +1,16 @@
+{
+  "id": 786,
+  "slug": "transport-mapping",
+  "name": "Transport Mappings",
+  "description": "Carrying one protocol over another transport: X-over-TLS/TCP/UDP/QUIC bindings and transport models",
+  "parent": "transport",
+  "path": "transport/transport-mapping",
+  "document_count": 0,
+  "document_count_deep": 0,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

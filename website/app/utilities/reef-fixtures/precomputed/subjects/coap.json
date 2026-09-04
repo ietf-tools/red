@@ -1,0 +1,180 @@
+{
+  "id": 616,
+  "slug": "coap",
+  "name": "CoAP",
+  "description": "The Constrained Application Protocol",
+  "parent": "iot",
+  "path": "iot/coap",
+  "document_count": 48,
+  "document_count_deep": 50,
+  "retired": false,
+  "children": ["oscore"],
+  "aliases": [],
+  "documents": [
+    "rfc6690",
+    "rfc7252",
+    "rfc7390",
+    "rfc7641",
+    "rfc7650",
+    "rfc7959",
+    "rfc7967",
+    "rfc8075",
+    "rfc8132",
+    "rfc8152",
+    "rfc8323",
+    "rfc8352",
+    "rfc8387",
+    "rfc8428",
+    "rfc8516",
+    "rfc8613",
+    "rfc8710",
+    "rfc8768",
+    "rfc8790",
+    "rfc8798",
+    "rfc8824",
+    "rfc8974",
+    "rfc9006",
+    "rfc9039",
+    "rfc9100",
+    "rfc9148",
+    "rfc9175",
+    "rfc9176",
+    "rfc9177",
+    "rfc9178",
+    "rfc9193",
+    "rfc9200",
+    "rfc9201",
+    "rfc9203",
+    "rfc9254",
+    "rfc9290",
+    "rfc9363",
+    "rfc9423",
+    "rfc9482",
+    "rfc9594",
+    "rfc9595",
+    "rfc9668",
+    "rfc9770",
+    "rfc9820",
+    "rfc9876",
+    "rfc9952",
+    "rfc9953",
+    "rfc9997"
+  ],
+  "document_meta": {
+    "rfc6690": { "title": "Constrained RESTful Environments (CoRE) Link Format", "subseries": [] },
+    "rfc7252": { "title": "The Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc7390": { "title": "Group Communication for the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc7641": { "title": "Observing Resources in the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc7650": {
+      "title": "A Constrained Application Protocol (CoAP) Usage for REsource LOcation And Discovery (RELOAD)",
+      "subseries": []
+    },
+    "rfc7959": { "title": "Block-Wise Transfers in the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc7967": { "title": "Constrained Application Protocol (CoAP) Option for No Server Response", "subseries": [] },
+    "rfc8075": {
+      "title": "Guidelines for Mapping Implementations: HTTP to the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc8132": { "title": "PATCH and FETCH Methods for the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc8152": { "title": "CBOR Object Signing and Encryption (COSE)", "subseries": [] },
+    "rfc8323": { "title": "CoAP (Constrained Application Protocol) over TCP, TLS, and WebSockets", "subseries": [] },
+    "rfc8352": { "title": "Energy-Efficient Features of Internet of Things Protocols", "subseries": [] },
+    "rfc8387": {
+      "title": "Practical Considerations and Implementation Experiences in Securing Smart Object Networks",
+      "subseries": []
+    },
+    "rfc8428": { "title": "Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8516": {
+      "title": "\"Too Many Requests\" Response Code for the Constrained Application Protocol",
+      "subseries": []
+    },
+    "rfc8613": { "title": "Object Security for Constrained RESTful Environments (OSCORE)", "subseries": [] },
+    "rfc8710": { "title": "Multipart Content-Format for the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc8768": { "title": "Constrained Application Protocol (CoAP) Hop-Limit Option", "subseries": [] },
+    "rfc8790": { "title": "FETCH and PATCH with Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8798": { "title": "Additional Units for Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8824": {
+      "title": "Static Context Header Compression (SCHC) for the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc8974": {
+      "title": "Extended Tokens and Stateless Clients in the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9006": { "title": "TCP Usage Guidance in the Internet of Things (IoT)", "subseries": [] },
+    "rfc9039": { "title": "Uniform Resource Names for Device Identifiers", "subseries": [] },
+    "rfc9100": { "title": "Sensor Measurement Lists (SenML) Features and Versions", "subseries": [] },
+    "rfc9148": {
+      "title": "EST-coaps: Enrollment over Secure Transport with the Secure Constrained Application Protocol",
+      "subseries": []
+    },
+    "rfc9175": {
+      "title": "Constrained Application Protocol (CoAP): Echo, Request-Tag, and Token Processing",
+      "subseries": []
+    },
+    "rfc9176": { "title": "Constrained RESTful Environments (CoRE) Resource Directory", "subseries": [] },
+    "rfc9177": {
+      "title": "Constrained Application Protocol (CoAP) Block-Wise Transfer Options Supporting Robust Transmission",
+      "subseries": []
+    },
+    "rfc9178": {
+      "title": "Building Power-Efficient Constrained Application Protocol (CoAP) Devices for Cellular Networks",
+      "subseries": []
+    },
+    "rfc9193": {
+      "title": "Sensor Measurement Lists (SenML) Fields for Indicating Data Value Content-Format",
+      "subseries": []
+    },
+    "rfc9200": {
+      "title": "Authentication and Authorization for Constrained Environments Using the OAuth 2.0 Framework (ACE-OAuth)",
+      "subseries": []
+    },
+    "rfc9201": {
+      "title": "Additional OAuth Parameters for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9203": {
+      "title": "The Object Security for Constrained RESTful Environments (OSCORE) Profile of the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9254": {
+      "title": "Encoding of Data Modeled with YANG in the Concise Binary Object Representation (CBOR)",
+      "subseries": []
+    },
+    "rfc9290": { "title": "Concise Problem Details for Constrained Application Protocol (CoAP) APIs", "subseries": [] },
+    "rfc9363": { "title": "A YANG Data Model for Static Context Header Compression (SCHC)", "subseries": [] },
+    "rfc9423": { "title": "Constrained RESTful Environments (CoRE) Target Attributes Registry", "subseries": [] },
+    "rfc9482": {
+      "title": "Constrained Application Protocol (CoAP) Transfer for the Certificate Management Protocol",
+      "subseries": []
+    },
+    "rfc9594": {
+      "title": "Key Provisioning for Group Communication Using Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9595": { "title": "YANG Schema Item iDentifier (YANG SID)", "subseries": [] },
+    "rfc9668": {
+      "title": "Using Ephemeral Diffie-Hellman Over COSE (EDHOC) with the Constrained Application Protocol (CoAP) and Object Security for Constrained RESTful Environments (OSCORE)",
+      "subseries": []
+    },
+    "rfc9770": {
+      "title": "Notification of Revoked Access Tokens in the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9820": {
+      "title": "Authentication Service Based on the Extensible Authentication Protocol (EAP) for Use with the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9876": {
+      "title": "Updates to the IANA Registration Procedures for Constrained Application Protocol (CoAP) Content-Formats",
+      "subseries": []
+    },
+    "rfc9952": { "title": "Application-Layer Protocol Negotiation (ALPN) ID for CoAP over DTLS", "subseries": [] },
+    "rfc9953": { "title": "DNS over CoAP (DoC)", "subseries": [] },
+    "rfc9997": {
+      "title": "YANG-CBOR: Allocating SID Ranges for Private Enterprise Number (PEN) Holders",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "iot": { "name": "IoT" }, "oscore": { "name": "OSCORE" } }
+}

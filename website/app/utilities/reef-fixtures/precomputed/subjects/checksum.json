@@ -1,0 +1,65 @@
+{
+  "id": 768,
+  "slug": "checksum",
+  "name": "Internet Checksum",
+  "description": "The Internet checksum and packet integrity checks",
+  "parent": "transport",
+  "path": "transport/checksum",
+  "document_count": 19,
+  "document_count_deep": 19,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1071",
+    "rfc1141",
+    "rfc1145",
+    "rfc1146",
+    "rfc1624",
+    "rfc1936",
+    "rfc1950",
+    "rfc3309",
+    "rfc3358",
+    "rfc3385",
+    "rfc3961",
+    "rfc528",
+    "rfc6935",
+    "rfc6936",
+    "rfc7510",
+    "rfc7820",
+    "rfc7821",
+    "rfc8976",
+    "rfc9653"
+  ],
+  "document_meta": {
+    "rfc1071": { "title": "Computing the Internet checksum", "subseries": [] },
+    "rfc1141": { "title": "Incremental updating of the Internet checksum", "subseries": [] },
+    "rfc1145": { "title": "TCP alternate checksum options", "subseries": [] },
+    "rfc1146": { "title": "TCP alternate checksum options", "subseries": [] },
+    "rfc1624": { "title": "Computation of the Internet Checksum via Incremental Update", "subseries": [] },
+    "rfc1936": { "title": "Implementing the Internet Checksum in Hardware", "subseries": [] },
+    "rfc1950": { "title": "ZLIB Compressed Data Format Specification version 3.3", "subseries": [] },
+    "rfc3309": { "title": "Stream Control Transmission Protocol (SCTP) Checksum Change", "subseries": [] },
+    "rfc3358": { "title": "Optional Checksums in Intermediate System to Intermediate System (ISIS)", "subseries": [] },
+    "rfc3385": {
+      "title": "Internet Protocol Small Computer System Interface (iSCSI) Cyclic Redundancy Check (CRC)/Checksum Considerations",
+      "subseries": []
+    },
+    "rfc3961": { "title": "Encryption and Checksum Specifications for Kerberos 5", "subseries": [] },
+    "rfc528": { "title": "Software checksumming in the IMP and network reliability", "subseries": [] },
+    "rfc6935": { "title": "IPv6 and UDP Checksums for Tunneled Packets", "subseries": [] },
+    "rfc6936": {
+      "title": "Applicability Statement for the Use of IPv6 UDP Datagrams with Zero Checksums",
+      "subseries": []
+    },
+    "rfc7510": { "title": "Encapsulating MPLS in UDP", "subseries": [] },
+    "rfc7820": {
+      "title": "UDP Checksum Complement in the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
+      "subseries": []
+    },
+    "rfc7821": { "title": "UDP Checksum Complement in the Network Time Protocol (NTP)", "subseries": [] },
+    "rfc8976": { "title": "Message Digest for DNS Zones", "subseries": [] },
+    "rfc9653": { "title": "Zero Checksum for the Stream Control Transmission Protocol", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" } }
+}

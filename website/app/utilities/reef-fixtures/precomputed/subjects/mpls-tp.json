@@ -1,0 +1,181 @@
+{
+  "id": 915,
+  "slug": "mpls-tp",
+  "name": "MPLS-TP",
+  "description": "MPLS Transport Profile",
+  "parent": "mpls",
+  "path": "routing/mpls/mpls-tp",
+  "document_count": 50,
+  "document_count_deep": 50,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5317",
+    "rfc5586",
+    "rfc5654",
+    "rfc5704",
+    "rfc5718",
+    "rfc5860",
+    "rfc5921",
+    "rfc5950",
+    "rfc5951",
+    "rfc5960",
+    "rfc5994",
+    "rfc6215",
+    "rfc6370",
+    "rfc6372",
+    "rfc6373",
+    "rfc6378",
+    "rfc6423",
+    "rfc6426",
+    "rfc6428",
+    "rfc6435",
+    "rfc6639",
+    "rfc6670",
+    "rfc6671",
+    "rfc6923",
+    "rfc6941",
+    "rfc6965",
+    "rfc6974",
+    "rfc7026",
+    "rfc7087",
+    "rfc7167",
+    "rfc7189",
+    "rfc7190",
+    "rfc7213",
+    "rfc7260",
+    "rfc7271",
+    "rfc7324",
+    "rfc7325",
+    "rfc7347",
+    "rfc7412",
+    "rfc7453",
+    "rfc7487",
+    "rfc7697",
+    "rfc7759",
+    "rfc7771",
+    "rfc8150",
+    "rfc8184",
+    "rfc8185",
+    "rfc8227",
+    "rfc8234",
+    "rfc8256"
+  ],
+  "document_meta": {
+    "rfc5317": {
+      "title": "Joint Working Team (JWT) Report on MPLS Architectural Considerations for a Transport Profile",
+      "subseries": []
+    },
+    "rfc5586": { "title": "MPLS Generic Associated Channel", "subseries": [] },
+    "rfc5654": { "title": "Requirements of an MPLS Transport Profile", "subseries": [] },
+    "rfc5704": { "title": "Uncoordinated Protocol Development Considered Harmful", "subseries": [] },
+    "rfc5718": { "title": "An In-Band Data Communication Network For the MPLS Transport Profile", "subseries": [] },
+    "rfc5860": {
+      "title": "Requirements for Operations, Administration, and Maintenance (OAM) in MPLS Transport Networks",
+      "subseries": []
+    },
+    "rfc5921": { "title": "A Framework for MPLS in Transport Networks", "subseries": [] },
+    "rfc5950": { "title": "Network Management Framework for MPLS-based Transport Networks", "subseries": [] },
+    "rfc5951": { "title": "Network Management Requirements for MPLS-based Transport Networks", "subseries": [] },
+    "rfc5960": { "title": "MPLS Transport Profile Data Plane Architecture", "subseries": [] },
+    "rfc5994": { "title": "Application of Ethernet Pseudowires to MPLS Transport Networks", "subseries": [] },
+    "rfc6215": { "title": "MPLS Transport Profile User-to-Network and Network-to-Network Interfaces", "subseries": [] },
+    "rfc6370": { "title": "MPLS Transport Profile (MPLS-TP) Identifiers", "subseries": [] },
+    "rfc6372": { "title": "MPLS Transport Profile (MPLS-TP) Survivability Framework", "subseries": [] },
+    "rfc6373": { "title": "MPLS Transport Profile (MPLS-TP) Control Plane Framework", "subseries": [] },
+    "rfc6378": { "title": "MPLS Transport Profile (MPLS-TP) Linear Protection", "subseries": [] },
+    "rfc6423": {
+      "title": "Using the Generic Associated Channel Label for Pseudowire in the MPLS Transport Profile (MPLS-TP)",
+      "subseries": []
+    },
+    "rfc6426": { "title": "MPLS On-Demand Connectivity Verification and Route Tracing", "subseries": [] },
+    "rfc6428": {
+      "title": "Proactive Connectivity Verification, Continuity Check, and Remote Defect Indication for the MPLS Transport Profile",
+      "subseries": []
+    },
+    "rfc6435": { "title": "MPLS Transport Profile Lock Instruct and Loopback Functions", "subseries": [] },
+    "rfc6639": {
+      "title": "Multiprotocol Label Switching Transport Profile (MPLS-TP) MIB-Based Management Overview",
+      "subseries": []
+    },
+    "rfc6670": {
+      "title": "The Reasons for Selecting a Single Solution for MPLS Transport Profile (MPLS-TP) Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc6671": {
+      "title": "Allocation of a Generic Associated Channel Type for ITU-T MPLS Transport Profile Operation, Maintenance, and Administration (MPLS-TP OAM)",
+      "subseries": []
+    },
+    "rfc6923": { "title": "MPLS Transport Profile (MPLS-TP) Identifiers Following ITU-T Conventions", "subseries": [] },
+    "rfc6941": { "title": "MPLS Transport Profile (MPLS-TP) Security Framework", "subseries": [] },
+    "rfc6965": { "title": "MPLS Transport Profile (MPLS-TP) Applicability: Use Cases and Design", "subseries": [] },
+    "rfc6974": { "title": "Applicability of MPLS Transport Profile for Ring Topologies", "subseries": [] },
+    "rfc7026": {
+      "title": "Retiring TLVs from the Associated Channel Header of the MPLS Generic Associated Channel",
+      "subseries": []
+    },
+    "rfc7087": {
+      "title": "A Thesaurus for the Interpretation of Terminology Used in MPLS Transport Profile (MPLS-TP) Internet-Drafts and RFCs in the Context of the ITU-T's Transport Network Recommendations",
+      "subseries": []
+    },
+    "rfc7167": { "title": "A Framework for Point-to-Multipoint MPLS in Transport Networks", "subseries": [] },
+    "rfc7189": {
+      "title": "Virtual Circuit Connectivity Verification (VCCV) Capability Advertisement for MPLS Transport Profile (MPLS-TP)",
+      "subseries": []
+    },
+    "rfc7190": { "title": "Use of Multipath with MPLS and MPLS Transport Profile (MPLS-TP)", "subseries": [] },
+    "rfc7213": { "title": "MPLS Transport Profile (MPLS-TP) Next-Hop Ethernet Addressing", "subseries": [] },
+    "rfc7260": {
+      "title": "GMPLS RSVP-TE Extensions for Operations, Administration, and Maintenance (OAM) Configuration",
+      "subseries": []
+    },
+    "rfc7271": {
+      "title": "MPLS Transport Profile (MPLS-TP) Linear Protection to Match the Operational Expectations of Synchronous Digital Hierarchy, Optical Transport Network, and Ethernet Transport Network Operators",
+      "subseries": []
+    },
+    "rfc7324": { "title": "Updates to MPLS Transport Profile Linear Protection", "subseries": [] },
+    "rfc7325": { "title": "MPLS Forwarding Compliance and Performance Requirements", "subseries": [] },
+    "rfc7347": {
+      "title": "Pre-standard Linear Protection Switching in MPLS Transport Profile (MPLS-TP)",
+      "subseries": []
+    },
+    "rfc7412": { "title": "Requirements for MPLS Transport Profile (MPLS-TP) Shared Mesh Protection", "subseries": [] },
+    "rfc7453": {
+      "title": "MPLS Transport Profile (MPLS-TP) Traffic Engineering (TE) Management Information Base (MIB)",
+      "subseries": []
+    },
+    "rfc7487": {
+      "title": "Configuration of Proactive Operations, Administration, and Maintenance (OAM) Functions for MPLS-Based Transport Networks Using RSVP-TE",
+      "subseries": []
+    },
+    "rfc7697": {
+      "title": "MPLS Transport Profile (MPLS-TP) Operations, Administration, and Maintenance (OAM) Identifiers Management Information Base (MIB)",
+      "subseries": []
+    },
+    "rfc7759": {
+      "title": "Configuration of Proactive Operations, Administration, and Maintenance (OAM) Functions for MPLS-Based Transport Networks Using Label Switched Path (LSP) Ping",
+      "subseries": []
+    },
+    "rfc7771": {
+      "title": "Switching Provider Edge (S-PE) Protection for MPLS and MPLS Transport Profile (MPLS-TP) Static Multi-Segment Pseudowires",
+      "subseries": []
+    },
+    "rfc8150": { "title": "MPLS Transport Profile Linear Protection MIB", "subseries": [] },
+    "rfc8184": {
+      "title": "Dual-Homing Protection for MPLS and the MPLS Transport Profile (MPLS-TP) Pseudowires",
+      "subseries": []
+    },
+    "rfc8185": {
+      "title": "Dual-Homing Coordination for MPLS Transport Profile (MPLS-TP) Pseudowires Protection",
+      "subseries": []
+    },
+    "rfc8227": { "title": "MPLS-TP Shared-Ring Protection (MSRP) Mechanism for Ring Topology", "subseries": [] },
+    "rfc8234": {
+      "title": "Updates to MPLS Transport Profile (MPLS-TP) Linear Protection in Automatic Protection Switching (APS) Mode",
+      "subseries": []
+    },
+    "rfc8256": { "title": "Requirements for Hitless MPLS Path Segment Monitoring", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "mpls": { "name": "MPLS" } }
+}

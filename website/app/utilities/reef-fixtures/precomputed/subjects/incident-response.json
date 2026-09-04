@@ -1,0 +1,79 @@
+{
+  "id": 742,
+  "slug": "incident-response",
+  "name": "Incident Response",
+  "description": "Security incident exchange and coordination",
+  "parent": "security",
+  "path": "security/incident-response",
+  "document_count": 20,
+  "document_count_deep": 23,
+  "retired": false,
+  "children": ["iodef"],
+  "aliases": [],
+  "documents": [
+    "rfc1135",
+    "rfc2350",
+    "rfc3013",
+    "rfc3227",
+    "rfc5070",
+    "rfc6045",
+    "rfc6046",
+    "rfc6545",
+    "rfc6546",
+    "rfc6684",
+    "rfc6685",
+    "rfc7203",
+    "rfc7495",
+    "rfc7970",
+    "rfc8134",
+    "rfc8274",
+    "rfc8322",
+    "rfc8600",
+    "rfc8727",
+    "rfc9116"
+  ],
+  "document_meta": {
+    "rfc1135": { "title": "Helminthiasis of the Internet", "subseries": [] },
+    "rfc2350": { "title": "Expectations for Computer Security Incident Response", "subseries": ["bcp21"] },
+    "rfc3013": {
+      "title": "Recommended Internet Service Provider Security Services and Procedures",
+      "subseries": ["bcp46"]
+    },
+    "rfc3227": { "title": "Guidelines for Evidence Collection and Archiving", "subseries": ["bcp55"] },
+    "rfc5070": { "title": "The Incident Object Description Exchange Format", "subseries": [] },
+    "rfc6045": { "title": "Real-time Inter-network Defense (RID)", "subseries": [] },
+    "rfc6046": { "title": "Transport of Real-time Inter-network Defense (RID) Messages", "subseries": [] },
+    "rfc6545": { "title": "Real-time Inter-network Defense (RID)", "subseries": [] },
+    "rfc6546": {
+      "title": "Transport of Real-time Inter-network Defense (RID) Messages over HTTP/TLS",
+      "subseries": []
+    },
+    "rfc6684": {
+      "title": "Guidelines and Template for Defining Extensions to the Incident Object Description Exchange Format (IODEF)",
+      "subseries": []
+    },
+    "rfc6685": {
+      "title": "Expert Review for Incident Object Description Exchange Format (IODEF) Extensions in IANA XML Registry",
+      "subseries": []
+    },
+    "rfc7203": {
+      "title": "An Incident Object Description Exchange Format (IODEF) Extension for Structured Cybersecurity Information",
+      "subseries": []
+    },
+    "rfc7495": {
+      "title": "Enumeration Reference Format for the Incident Object Description Exchange Format (IODEF)",
+      "subseries": []
+    },
+    "rfc7970": { "title": "The Incident Object Description Exchange Format Version 2", "subseries": [] },
+    "rfc8134": { "title": "Management Incident Lightweight Exchange (MILE) Implementation Report", "subseries": [] },
+    "rfc8274": { "title": "Incident Object Description Exchange Format Usage Guidance", "subseries": [] },
+    "rfc8322": { "title": "Resource-Oriented Lightweight Information Exchange (ROLIE)", "subseries": [] },
+    "rfc8600": {
+      "title": "Using Extensible Messaging and Presence Protocol (XMPP) for Security Information Exchange",
+      "subseries": []
+    },
+    "rfc8727": { "title": "JSON Binding of the Incident Object Description Exchange Format", "subseries": [] },
+    "rfc9116": { "title": "A File Format to Aid in Security Vulnerability Disclosure", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "iodef": { "name": "IODEF" } }
+}

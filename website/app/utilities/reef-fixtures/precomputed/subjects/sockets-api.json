@@ -1,0 +1,29 @@
+{
+  "id": 563,
+  "slug": "sockets-api",
+  "name": "Sockets API",
+  "description": "Sockets API extensions",
+  "parent": "applications",
+  "path": "applications/sockets-api",
+  "document_count": 9,
+  "document_count_deep": 9,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2133", "rfc2292", "rfc2553", "rfc3493", "rfc3678", "rfc4584", "rfc5014", "rfc6317", "rfc6458"],
+  "document_meta": {
+    "rfc2133": { "title": "Basic Socket Interface Extensions for IPv6", "subseries": [] },
+    "rfc2292": { "title": "Advanced Sockets API for IPv6", "subseries": [] },
+    "rfc2553": { "title": "Basic Socket Interface Extensions for IPv6", "subseries": [] },
+    "rfc3493": { "title": "Basic Socket Interface Extensions for IPv6", "subseries": [] },
+    "rfc3678": { "title": "Socket Interface Extensions for Multicast Source Filters", "subseries": [] },
+    "rfc4584": { "title": "Extension to Sockets API for Mobile IPv6", "subseries": [] },
+    "rfc5014": { "title": "IPv6 Socket API for Source Address Selection", "subseries": [] },
+    "rfc6317": { "title": "Basic Socket Interface Extensions for the Host Identity Protocol (HIP)", "subseries": [] },
+    "rfc6458": {
+      "title": "Sockets API Extensions for the Stream Control Transmission Protocol (SCTP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

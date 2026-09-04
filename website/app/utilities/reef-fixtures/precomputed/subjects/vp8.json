@@ -1,0 +1,20 @@
+{
+  "id": 887,
+  "slug": "vp8",
+  "name": "VP8",
+  "description": "The VP8 video codec",
+  "parent": "codecs",
+  "path": "real-time-communications/codecs/vp8",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6386", "rfc7741", "rfc9649"],
+  "document_meta": {
+    "rfc6386": { "title": "VP8 Data Format and Decoding Guide", "subseries": [] },
+    "rfc7741": { "title": "RTP Payload Format for VP8 Video", "subseries": [] },
+    "rfc9649": { "title": "WebP Image Format", "subseries": [] }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "codecs": { "name": "Codecs" } }
+}

@@ -1,0 +1,22 @@
+{
+  "id": 680,
+  "slug": "sustainability",
+  "name": "Sustainability",
+  "description": "Energy efficiency and environmental impact of Internet infrastructure",
+  "parent": "network-management",
+  "path": "network-management/sustainability",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9547", "rfc9845"],
+  "document_meta": {
+    "rfc9547": {
+      "title": "Report from the IAB Workshop on Environmental Impact of Internet Applications and Systems, 2022",
+      "subseries": []
+    },
+    "rfc9845": { "title": "Challenges and Opportunities in Management for Green Networking", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" } }
+}

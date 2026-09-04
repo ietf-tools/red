@@ -1,0 +1,65 @@
+{
+  "id": 892,
+  "slug": "ice",
+  "name": "ICE",
+  "description": "Interactive Connectivity Establishment",
+  "parent": "nat-traversal",
+  "path": "real-time-communications/nat-traversal/ice",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5245",
+    "rfc5768",
+    "rfc6336",
+    "rfc6544",
+    "rfc8421",
+    "rfc8445",
+    "rfc8838",
+    "rfc8839",
+    "rfc8840",
+    "rfc8863"
+  ],
+  "document_meta": {
+    "rfc5245": {
+      "title": "Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal for Offer/Answer Protocols",
+      "subseries": []
+    },
+    "rfc5768": {
+      "title": "Indicating Support for Interactive Connectivity Establishment (ICE) in the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc6336": { "title": "IANA Registry for Interactive Connectivity Establishment (ICE) Options", "subseries": [] },
+    "rfc6544": { "title": "TCP Candidates with Interactive Connectivity Establishment (ICE)", "subseries": [] },
+    "rfc8421": {
+      "title": "Guidelines for Multihomed and IPv4/IPv6 Dual-Stack Interactive Connectivity Establishment (ICE)",
+      "subseries": ["bcp217"]
+    },
+    "rfc8445": {
+      "title": "Interactive Connectivity Establishment (ICE): A Protocol for Network Address Translator (NAT) Traversal",
+      "subseries": []
+    },
+    "rfc8838": {
+      "title": "Trickle ICE: Incremental Provisioning of Candidates for the Interactive Connectivity Establishment (ICE) Protocol",
+      "subseries": []
+    },
+    "rfc8839": {
+      "title": "Session Description Protocol (SDP) Offer/Answer Procedures for Interactive Connectivity Establishment (ICE)",
+      "subseries": []
+    },
+    "rfc8840": {
+      "title": "A Session Initiation Protocol (SIP) Usage for Incremental Provisioning of Candidates for the Interactive Connectivity Establishment (Trickle ICE)",
+      "subseries": []
+    },
+    "rfc8863": {
+      "title": "Interactive Connectivity Establishment Patiently Awaiting Connectivity (ICE PAC)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "real-time-communications": { "name": "Real-Time Communications" },
+    "nat-traversal": { "name": "NAT Traversal" }
+  }
+}

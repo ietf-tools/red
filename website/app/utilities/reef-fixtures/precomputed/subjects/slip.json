@@ -1,0 +1,29 @@
+{
+  "id": 640,
+  "slug": "slip",
+  "name": "SLIP",
+  "description": "Serial Line IP",
+  "parent": "link-layer",
+  "path": "link-layer/slip",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1055", "rfc1331", "rfc1332", "rfc1333", "rfc914", "rfc935"],
+  "document_meta": {
+    "rfc1055": {
+      "title": "Nonstandard for transmission of IP datagrams over serial lines: SLIP",
+      "subseries": ["std47"]
+    },
+    "rfc1331": {
+      "title": "The Point-to-Point Protocol (PPP) for the Transmission of Multi-protocol Datagrams over Point-to-Point Links",
+      "subseries": []
+    },
+    "rfc1332": { "title": "The PPP Internet Protocol Control Protocol (IPCP)", "subseries": [] },
+    "rfc1333": { "title": "PPP Link Quality Monitoring", "subseries": [] },
+    "rfc914": { "title": "Thinwire protocol for connecting personal computers to the Internet", "subseries": [] },
+    "rfc935": { "title": "Reliable link layer protocols", "subseries": [] }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

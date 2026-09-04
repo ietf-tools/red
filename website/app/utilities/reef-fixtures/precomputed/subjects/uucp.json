@@ -1,0 +1,19 @@
+{
+  "id": 655,
+  "slug": "uucp",
+  "name": "UUCP",
+  "description": "UUCP mail interchange",
+  "parent": "messaging",
+  "path": "messaging/uucp",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc915", "rfc976"],
+  "document_meta": {
+    "rfc915": { "title": "Network mail path service", "subseries": [] },
+    "rfc976": { "title": "UUCP mail interchange format standard", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" } }
+}

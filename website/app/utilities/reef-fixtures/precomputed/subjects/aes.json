@@ -1,0 +1,154 @@
+{
+  "id": 947,
+  "slug": "aes",
+  "name": "AES",
+  "description": "The AES block cipher and its modes",
+  "parent": "cryptography",
+  "path": "security/cryptography/aes",
+  "document_count": 38,
+  "document_count_deep": 38,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3268",
+    "rfc3394",
+    "rfc3537",
+    "rfc3565",
+    "rfc3566",
+    "rfc3602",
+    "rfc3664",
+    "rfc3686",
+    "rfc3826",
+    "rfc3853",
+    "rfc3962",
+    "rfc4106",
+    "rfc4309",
+    "rfc4434",
+    "rfc4493",
+    "rfc4494",
+    "rfc4615",
+    "rfc5084",
+    "rfc5282",
+    "rfc5288",
+    "rfc5289",
+    "rfc5297",
+    "rfc5487",
+    "rfc5647",
+    "rfc5649",
+    "rfc5930",
+    "rfc6030",
+    "rfc6188",
+    "rfc6655",
+    "rfc7251",
+    "rfc7714",
+    "rfc8009",
+    "rfc8442",
+    "rfc8452",
+    "rfc9044",
+    "rfc9053",
+    "rfc9142",
+    "rfc9459"
+  ],
+  "document_meta": {
+    "rfc3268": {
+      "title": "Advanced Encryption Standard (AES) Ciphersuites for Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc3394": { "title": "Advanced Encryption Standard (AES) Key Wrap Algorithm", "subseries": [] },
+    "rfc3537": {
+      "title": "Wrapping a Hashed Message Authentication Code (HMAC) key with a Triple-Data Encryption Standard (DES) Key or an Advanced Encryption Standard (AES) Key",
+      "subseries": []
+    },
+    "rfc3565": {
+      "title": "Use of the Advanced Encryption Standard (AES) Encryption Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc3566": { "title": "The AES-XCBC-MAC-96 Algorithm and Its Use With IPsec", "subseries": [] },
+    "rfc3602": { "title": "The AES-CBC Cipher Algorithm and Its Use with IPsec", "subseries": [] },
+    "rfc3664": {
+      "title": "The AES-XCBC-PRF-128 Algorithm for the Internet Key Exchange Protocol (IKE)",
+      "subseries": []
+    },
+    "rfc3686": {
+      "title": "Using Advanced Encryption Standard (AES) Counter Mode With IPsec Encapsulating Security Payload (ESP)",
+      "subseries": []
+    },
+    "rfc3826": {
+      "title": "The Advanced Encryption Standard (AES) Cipher Algorithm in the SNMP User-based Security Model",
+      "subseries": []
+    },
+    "rfc3853": {
+      "title": "S/MIME Advanced Encryption Standard (AES) Requirement for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3962": { "title": "Advanced Encryption Standard (AES) Encryption for Kerberos 5", "subseries": [] },
+    "rfc4106": {
+      "title": "The Use of Galois/Counter Mode (GCM) in IPsec Encapsulating Security Payload (ESP)",
+      "subseries": []
+    },
+    "rfc4309": {
+      "title": "Using Advanced Encryption Standard (AES) CCM Mode with IPsec Encapsulating Security Payload (ESP)",
+      "subseries": []
+    },
+    "rfc4434": {
+      "title": "The AES-XCBC-PRF-128 Algorithm for the Internet Key Exchange Protocol (IKE)",
+      "subseries": []
+    },
+    "rfc4493": { "title": "The AES-CMAC Algorithm", "subseries": [] },
+    "rfc4494": { "title": "The AES-CMAC-96 Algorithm and Its Use with IPsec", "subseries": [] },
+    "rfc4615": {
+      "title": "The Advanced Encryption Standard-Cipher-based Message Authentication Code-Pseudo-Random Function-128 (AES-CMAC-PRF-128) Algorithm for the Internet Key Exchange Protocol (IKE)",
+      "subseries": []
+    },
+    "rfc5084": {
+      "title": "Using AES-CCM and AES-GCM Authenticated Encryption in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc5282": {
+      "title": "Using Authenticated Encryption Algorithms with the Encrypted Payload of the Internet Key Exchange version 2 (IKEv2) Protocol",
+      "subseries": []
+    },
+    "rfc5288": { "title": "AES Galois Counter Mode (GCM) Cipher Suites for TLS", "subseries": [] },
+    "rfc5289": {
+      "title": "TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)",
+      "subseries": []
+    },
+    "rfc5297": {
+      "title": "Synthetic Initialization Vector (SIV) Authenticated Encryption Using the Advanced Encryption Standard (AES)",
+      "subseries": []
+    },
+    "rfc5487": {
+      "title": "Pre-Shared Key Cipher Suites for TLS with SHA-256/384 and AES Galois Counter Mode",
+      "subseries": []
+    },
+    "rfc5647": { "title": "AES Galois Counter Mode for the Secure Shell Transport Layer Protocol", "subseries": [] },
+    "rfc5649": { "title": "Advanced Encryption Standard (AES) Key Wrap with Padding Algorithm", "subseries": [] },
+    "rfc5930": {
+      "title": "Using Advanced Encryption Standard Counter Mode (AES-CTR) with the Internet Key Exchange version 02 (IKEv2) Protocol",
+      "subseries": []
+    },
+    "rfc6030": { "title": "Portable Symmetric Key Container (PSKC)", "subseries": [] },
+    "rfc6188": { "title": "The Use of AES-192 and AES-256 in Secure RTP", "subseries": [] },
+    "rfc6655": { "title": "AES-CCM Cipher Suites for Transport Layer Security (TLS)", "subseries": [] },
+    "rfc7251": { "title": "AES-CCM Elliptic Curve Cryptography (ECC) Cipher Suites for TLS", "subseries": [] },
+    "rfc7714": {
+      "title": "AES-GCM Authenticated Encryption in the Secure Real-time Transport Protocol (SRTP)",
+      "subseries": []
+    },
+    "rfc8009": { "title": "AES Encryption with HMAC-SHA2 for Kerberos 5", "subseries": [] },
+    "rfc8442": {
+      "title": "ECDHE_PSK with AES-GCM and AES-CCM Cipher Suites for TLS 1.2 and DTLS 1.2",
+      "subseries": []
+    },
+    "rfc8452": { "title": "AES-GCM-SIV: Nonce Misuse-Resistant Authenticated Encryption", "subseries": [] },
+    "rfc9044": { "title": "Using the AES-GMAC Algorithm with the Cryptographic Message Syntax (CMS)", "subseries": [] },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9142": {
+      "title": "Key Exchange (KEX) Method Updates and Recommendations for Secure Shell (SSH)",
+      "subseries": []
+    },
+    "rfc9459": { "title": "CBOR Object Signing and Encryption (COSE): AES-CTR and AES-CBC", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cryptography": { "name": "Cryptography" } }
+}

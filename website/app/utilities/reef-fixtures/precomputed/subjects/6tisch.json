@@ -1,0 +1,37 @@
+{
+  "id": 614,
+  "slug": "6tisch",
+  "name": "6TiSCH",
+  "description": "IPv6 over TSCH IEEE 802.15.4e networks",
+  "parent": "iot",
+  "path": "iot/6tisch",
+  "document_count": 8,
+  "document_count_deep": 8,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc7554", "rfc8180", "rfc8480", "rfc8974", "rfc9030", "rfc9031", "rfc9032", "rfc9033"],
+  "document_meta": {
+    "rfc7554": {
+      "title": "Using IEEE 802.15.4e Time-Slotted Channel Hopping (TSCH) in the Internet of Things (IoT): Problem Statement",
+      "subseries": []
+    },
+    "rfc8180": {
+      "title": "Minimal IPv6 over the TSCH Mode of IEEE 802.15.4e (6TiSCH) Configuration",
+      "subseries": ["bcp210"]
+    },
+    "rfc8480": { "title": "6TiSCH Operation Sublayer (6top) Protocol (6P)", "subseries": [] },
+    "rfc8974": {
+      "title": "Extended Tokens and Stateless Clients in the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9030": {
+      "title": "An Architecture for IPv6 over the Time-Slotted Channel Hopping Mode of IEEE 802.15.4 (6TiSCH)",
+      "subseries": []
+    },
+    "rfc9031": { "title": "Constrained Join Protocol (CoJP) for 6TiSCH", "subseries": [] },
+    "rfc9032": { "title": "Encapsulation of 6TiSCH Join and Enrollment Information Elements", "subseries": [] },
+    "rfc9033": { "title": "6TiSCH Minimal Scheduling Function (MSF)", "subseries": [] }
+  },
+  "subject_meta": { "iot": { "name": "IoT" } }
+}

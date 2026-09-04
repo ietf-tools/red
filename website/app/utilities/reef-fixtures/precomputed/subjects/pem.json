@@ -1,0 +1,54 @@
+{
+  "id": 753,
+  "slug": "pem",
+  "name": "PEM",
+  "description": "Privacy Enhanced Mail (historic secure email)",
+  "parent": "security",
+  "path": "security/pem",
+  "document_count": 12,
+  "document_count_deep": 12,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1319",
+    "rfc1320",
+    "rfc1321",
+    "rfc1421",
+    "rfc1422",
+    "rfc1423",
+    "rfc1424",
+    "rfc1847",
+    "rfc1848",
+    "rfc2315",
+    "rfc5224",
+    "rfc9934"
+  ],
+  "document_meta": {
+    "rfc1319": { "title": "The MD2 Message-Digest Algorithm", "subseries": [] },
+    "rfc1320": { "title": "The MD4 Message-Digest Algorithm", "subseries": [] },
+    "rfc1321": { "title": "The MD5 Message-Digest Algorithm", "subseries": [] },
+    "rfc1421": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part I: Message Encryption and Authentication Procedures",
+      "subseries": []
+    },
+    "rfc1422": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part II: Certificate-Based Key Management",
+      "subseries": []
+    },
+    "rfc1423": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part III: Algorithms, Modes, and Identifiers",
+      "subseries": []
+    },
+    "rfc1424": {
+      "title": "Privacy Enhancement for Internet Electronic Mail: Part IV: Key Certification and Related Services",
+      "subseries": []
+    },
+    "rfc1847": { "title": "Security Multiparts for MIME: Multipart/Signed and Multipart/Encrypted", "subseries": [] },
+    "rfc1848": { "title": "MIME Object Security Services", "subseries": [] },
+    "rfc2315": { "title": "PKCS #7: Cryptographic Message Syntax Version 1.5", "subseries": [] },
+    "rfc5224": { "title": "Diameter Policy Processing Application", "subseries": [] },
+    "rfc9934": { "title": "Privacy-Enhanced Mail (PEM) File Format for Encrypted ClientHello (ECH)", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

@@ -1,0 +1,62 @@
+{
+  "id": 863,
+  "slug": "dns-privacy",
+  "name": "DNS Privacy",
+  "description": "Encrypted and privacy-preserving DNS transport",
+  "parent": "dns",
+  "path": "naming/dns/dns-privacy",
+  "document_count": 16,
+  "document_count_deep": 20,
+  "retired": false,
+  "children": ["doh", "dot", "oblivious-dns"],
+  "aliases": [],
+  "documents": [
+    "rfc7626",
+    "rfc7830",
+    "rfc7858",
+    "rfc8094",
+    "rfc8310",
+    "rfc8467",
+    "rfc8932",
+    "rfc9076",
+    "rfc9103",
+    "rfc9250",
+    "rfc9461",
+    "rfc9462",
+    "rfc9463",
+    "rfc9539",
+    "rfc9606",
+    "rfc9704"
+  ],
+  "document_meta": {
+    "rfc7626": { "title": "DNS Privacy Considerations", "subseries": [] },
+    "rfc7830": { "title": "The EDNS(0) Padding Option", "subseries": [] },
+    "rfc7858": { "title": "Specification for DNS over Transport Layer Security (TLS)", "subseries": [] },
+    "rfc8094": { "title": "DNS over Datagram Transport Layer Security (DTLS)", "subseries": [] },
+    "rfc8310": { "title": "Usage Profiles for DNS over TLS and DNS over DTLS", "subseries": [] },
+    "rfc8467": { "title": "Padding Policies for Extension Mechanisms for DNS (EDNS(0))", "subseries": [] },
+    "rfc8932": { "title": "Recommendations for DNS Privacy Service Operators", "subseries": ["bcp232"] },
+    "rfc9076": { "title": "DNS Privacy Considerations", "subseries": [] },
+    "rfc9103": { "title": "DNS Zone Transfer over TLS", "subseries": [] },
+    "rfc9250": { "title": "DNS over Dedicated QUIC Connections", "subseries": [] },
+    "rfc9461": { "title": "Service Binding Mapping for DNS Servers", "subseries": [] },
+    "rfc9462": { "title": "Discovery of Designated Resolvers", "subseries": [] },
+    "rfc9463": {
+      "title": "DHCP and Router Advertisement Options for the Discovery of Network-designated Resolvers (DNR)",
+      "subseries": []
+    },
+    "rfc9539": {
+      "title": "Unilateral Opportunistic Deployment of Encrypted Recursive-to-Authoritative DNS",
+      "subseries": []
+    },
+    "rfc9606": { "title": "DNS Resolver Information", "subseries": [] },
+    "rfc9704": { "title": "Establishing Local DNS Authority in Validated Split-Horizon Environments", "subseries": [] }
+  },
+  "subject_meta": {
+    "naming": { "name": "Naming" },
+    "dns": { "name": "DNS" },
+    "doh": { "name": "DNS over HTTPS" },
+    "dot": { "name": "DNS over TLS" },
+    "oblivious-dns": { "name": "Oblivious DNS" }
+  }
+}

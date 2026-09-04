@@ -1,0 +1,316 @@
+{
+  "id": 916,
+  "slug": "pseudowire",
+  "name": "Pseudowires",
+  "description": "Pseudowire emulation edge-to-edge",
+  "parent": "mpls",
+  "path": "routing/mpls/pseudowire",
+  "document_count": 83,
+  "document_count_deep": 83,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3916",
+    "rfc3985",
+    "rfc4197",
+    "rfc4349",
+    "rfc4385",
+    "rfc4446",
+    "rfc4447",
+    "rfc4448",
+    "rfc4553",
+    "rfc4618",
+    "rfc4619",
+    "rfc4623",
+    "rfc4667",
+    "rfc4717",
+    "rfc4720",
+    "rfc4816",
+    "rfc4842",
+    "rfc4863",
+    "rfc5003",
+    "rfc5085",
+    "rfc5086",
+    "rfc5087",
+    "rfc5254",
+    "rfc5287",
+    "rfc5317",
+    "rfc5542",
+    "rfc5601",
+    "rfc5602",
+    "rfc5603",
+    "rfc5604",
+    "rfc5605",
+    "rfc5611",
+    "rfc5641",
+    "rfc5659",
+    "rfc5885",
+    "rfc5994",
+    "rfc6073",
+    "rfc6240",
+    "rfc6307",
+    "rfc6310",
+    "rfc6391",
+    "rfc6423",
+    "rfc6456",
+    "rfc6478",
+    "rfc6624",
+    "rfc6658",
+    "rfc6667",
+    "rfc6718",
+    "rfc6723",
+    "rfc6829",
+    "rfc6870",
+    "rfc7023",
+    "rfc7026",
+    "rfc7079",
+    "rfc7173",
+    "rfc7189",
+    "rfc7267",
+    "rfc7275",
+    "rfc7338",
+    "rfc7392",
+    "rfc7708",
+    "rfc7727",
+    "rfc7769",
+    "rfc7771",
+    "rfc7795",
+    "rfc7796",
+    "rfc7885",
+    "rfc7893",
+    "rfc7965",
+    "rfc8012",
+    "rfc8024",
+    "rfc8077",
+    "rfc8104",
+    "rfc8159",
+    "rfc8184",
+    "rfc8185",
+    "rfc8220",
+    "rfc8237",
+    "rfc8338",
+    "rfc8339",
+    "rfc8395",
+    "rfc8469",
+    "rfc9801"
+  ],
+  "document_meta": {
+    "rfc3916": { "title": "Requirements for Pseudo-Wire Emulation Edge-to-Edge (PWE3)", "subseries": [] },
+    "rfc3985": { "title": "Pseudo Wire Emulation Edge-to-Edge (PWE3) Architecture", "subseries": [] },
+    "rfc4197": {
+      "title": "Requirements for Edge-to-Edge Emulation of Time Division Multiplexed (TDM) Circuits over Packet Switching Networks",
+      "subseries": []
+    },
+    "rfc4349": {
+      "title": "High-Level Data Link Control (HDLC) Frames over Layer 2 Tunneling Protocol, Version 3 (L2TPv3)",
+      "subseries": []
+    },
+    "rfc4385": {
+      "title": "Pseudowire Emulation Edge-to-Edge (PWE3) Control Word for Use over an MPLS PSN",
+      "subseries": []
+    },
+    "rfc4446": { "title": "IANA Allocations for Pseudowire Edge to Edge Emulation (PWE3)", "subseries": ["bcp116"] },
+    "rfc4447": {
+      "title": "Pseudowire Setup and Maintenance Using the Label Distribution Protocol (LDP)",
+      "subseries": []
+    },
+    "rfc4448": { "title": "Encapsulation Methods for Transport of Ethernet over MPLS Networks", "subseries": [] },
+    "rfc4553": { "title": "Structure-Agnostic Time Division Multiplexing (TDM) over Packet (SAToP)", "subseries": [] },
+    "rfc4618": {
+      "title": "Encapsulation Methods for Transport of PPP/High-Level Data Link Control (HDLC) over MPLS Networks",
+      "subseries": []
+    },
+    "rfc4619": {
+      "title": "Encapsulation Methods for Transport of Frame Relay over Multiprotocol Label Switching (MPLS) Networks",
+      "subseries": []
+    },
+    "rfc4623": { "title": "Pseudowire Emulation Edge-to-Edge (PWE3) Fragmentation and Reassembly", "subseries": [] },
+    "rfc4667": {
+      "title": "Layer 2 Virtual Private Network (L2VPN) Extensions for Layer 2 Tunneling Protocol (L2TP)",
+      "subseries": []
+    },
+    "rfc4717": {
+      "title": "Encapsulation Methods for Transport of Asynchronous Transfer Mode (ATM) over MPLS Networks",
+      "subseries": []
+    },
+    "rfc4720": { "title": "Pseudowire Emulation Edge-to-Edge (PWE3) Frame Check Sequence Retention", "subseries": [] },
+    "rfc4816": {
+      "title": "Pseudowire Emulation Edge-to-Edge (PWE3) Asynchronous Transfer Mode (ATM) Transparent Cell Transport Service",
+      "subseries": []
+    },
+    "rfc4842": {
+      "title": "Synchronous Optical Network/Synchronous Digital Hierarchy (SONET/SDH) Circuit Emulation over Packet (CEP)",
+      "subseries": []
+    },
+    "rfc4863": { "title": "Wildcard Pseudowire Type", "subseries": [] },
+    "rfc5003": { "title": "Attachment Individual Identifier (AII) Types for Aggregation", "subseries": [] },
+    "rfc5085": {
+      "title": "Pseudowire Virtual Circuit Connectivity Verification (VCCV): A Control Channel for Pseudowires",
+      "subseries": []
+    },
+    "rfc5086": {
+      "title": "Structure-Aware Time Division Multiplexed (TDM) Circuit Emulation Service over Packet Switched Network (CESoPSN)",
+      "subseries": []
+    },
+    "rfc5087": { "title": "Time Division Multiplexing over IP (TDMoIP)", "subseries": [] },
+    "rfc5254": { "title": "Requirements for Multi-Segment Pseudowire Emulation Edge-to-Edge (PWE3)", "subseries": [] },
+    "rfc5287": {
+      "title": "Control Protocol Extensions for the Setup of Time-Division Multiplexing (TDM) Pseudowires in MPLS Networks",
+      "subseries": []
+    },
+    "rfc5317": {
+      "title": "Joint Working Team (JWT) Report on MPLS Architectural Considerations for a Transport Profile",
+      "subseries": []
+    },
+    "rfc5542": { "title": "Definitions of Textual Conventions for Pseudowire (PW) Management", "subseries": [] },
+    "rfc5601": { "title": "Pseudowire (PW) Management Information Base (MIB)", "subseries": [] },
+    "rfc5602": { "title": "Pseudowire (PW) over MPLS PSN Management Information Base (MIB)", "subseries": [] },
+    "rfc5603": { "title": "Ethernet Pseudowire (PW) Management Information Base (MIB)", "subseries": [] },
+    "rfc5604": {
+      "title": "Managed Objects for Time Division Multiplexing (TDM) over Packet Switched Networks (PSNs)",
+      "subseries": []
+    },
+    "rfc5605": { "title": "Managed Objects for ATM over Packet Switched Networks (PSNs)", "subseries": [] },
+    "rfc5611": {
+      "title": "Layer Two Tunneling Protocol version 3 - Setup of Time-Division Multiplexing (TDM) Pseudowires",
+      "subseries": []
+    },
+    "rfc5641": {
+      "title": "Layer 2 Tunneling Protocol Version 3 (L2TPv3) Extended Circuit Status Values",
+      "subseries": []
+    },
+    "rfc5659": { "title": "An Architecture for Multi-Segment Pseudowire Emulation Edge-to-Edge", "subseries": [] },
+    "rfc5885": {
+      "title": "Bidirectional Forwarding Detection (BFD) for the Pseudowire Virtual Circuit Connectivity Verification (VCCV)",
+      "subseries": []
+    },
+    "rfc5994": { "title": "Application of Ethernet Pseudowires to MPLS Transport Networks", "subseries": [] },
+    "rfc6073": { "title": "Segmented Pseudowire", "subseries": [] },
+    "rfc6240": {
+      "title": "Synchronous Optical Network/Synchronous Digital Hierarchy (SONET/SDH) Circuit Emulation over Packet (CEP) MIB Using SMIv2",
+      "subseries": []
+    },
+    "rfc6307": {
+      "title": "Encapsulation Methods for Transport of Fibre Channel Traffic over MPLS Networks",
+      "subseries": []
+    },
+    "rfc6310": {
+      "title": "Pseudowire (PW) Operations, Administration, and Maintenance (OAM) Message Mapping",
+      "subseries": []
+    },
+    "rfc6391": { "title": "Flow-Aware Transport of Pseudowires over an MPLS Packet Switched Network", "subseries": [] },
+    "rfc6423": {
+      "title": "Using the Generic Associated Channel Label for Pseudowire in the MPLS Transport Profile (MPLS-TP)",
+      "subseries": []
+    },
+    "rfc6456": { "title": "Multi-Segment Pseudowires in Passive Optical Networks", "subseries": [] },
+    "rfc6478": { "title": "Pseudowire Status for Static Pseudowires", "subseries": [] },
+    "rfc6624": {
+      "title": "Layer 2 Virtual Private Networks Using BGP for Auto-Discovery and Signaling",
+      "subseries": []
+    },
+    "rfc6658": { "title": "Packet Pseudowire Encapsulation over an MPLS PSN", "subseries": [] },
+    "rfc6667": {
+      "title": "LDP 'Typed Wildcard' Forwarding Equivalence Class (FEC) for PWid and Generalized PWid FEC Elements",
+      "subseries": []
+    },
+    "rfc6718": { "title": "Pseudowire Redundancy", "subseries": [] },
+    "rfc6723": { "title": "Update of the Pseudowire Control-Word Negotiation Mechanism", "subseries": [] },
+    "rfc6829": {
+      "title": "Label Switched Path (LSP) Ping for Pseudowire Forwarding Equivalence Classes (FECs) Advertised over IPv6",
+      "subseries": []
+    },
+    "rfc6870": { "title": "Pseudowire Preferential Forwarding Status Bit", "subseries": [] },
+    "rfc7023": {
+      "title": "MPLS and Ethernet Operations, Administration, and Maintenance (OAM) Interworking",
+      "subseries": []
+    },
+    "rfc7026": {
+      "title": "Retiring TLVs from the Associated Channel Header of the MPLS Generic Associated Channel",
+      "subseries": []
+    },
+    "rfc7079": {
+      "title": "The Pseudowire (PW) and Virtual Circuit Connectivity Verification (VCCV) Implementation Survey Results",
+      "subseries": []
+    },
+    "rfc7173": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Transport Using Pseudowires",
+      "subseries": []
+    },
+    "rfc7189": {
+      "title": "Virtual Circuit Connectivity Verification (VCCV) Capability Advertisement for MPLS Transport Profile (MPLS-TP)",
+      "subseries": []
+    },
+    "rfc7267": { "title": "Dynamic Placement of Multi-Segment Pseudowires", "subseries": [] },
+    "rfc7275": {
+      "title": "Inter-Chassis Communication Protocol for Layer 2 Virtual Private Network (L2VPN) Provider Edge (PE) Redundancy",
+      "subseries": []
+    },
+    "rfc7338": {
+      "title": "Requirements and Framework for Point-to-Multipoint Pseudowires over MPLS Packet Switched Networks",
+      "subseries": []
+    },
+    "rfc7392": { "title": "Explicit Path Routing for Dynamic Multi-Segment Pseudowires", "subseries": [] },
+    "rfc7708": {
+      "title": "Using a Generic Associated Channel Label as a Virtual Circuit Connectivity Verification Channel Indicator",
+      "subseries": []
+    },
+    "rfc7727": {
+      "title": "Spanning Tree Protocol (STP) Application of the Inter-Chassis Communication Protocol (ICCP)",
+      "subseries": []
+    },
+    "rfc7769": { "title": "Media Access Control (MAC) Address Withdrawal over Static Pseudowire", "subseries": [] },
+    "rfc7771": {
+      "title": "Switching Provider Edge (S-PE) Protection for MPLS and MPLS Transport Profile (MPLS-TP) Static Multi-Segment Pseudowires",
+      "subseries": []
+    },
+    "rfc7795": { "title": "Pseudowire Redundancy on the Switching Provider Edge (S-PE)", "subseries": [] },
+    "rfc7796": { "title": "Ethernet-Tree (E-Tree) Support in Virtual Private LAN Service (VPLS)", "subseries": [] },
+    "rfc7885": {
+      "title": "Seamless Bidirectional Forwarding Detection (S-BFD) for Virtual Circuit Connectivity Verification (VCCV)",
+      "subseries": []
+    },
+    "rfc7893": { "title": "Pseudowire Congestion Considerations", "subseries": [] },
+    "rfc7965": {
+      "title": "LDP Extensions for Pseudowire Binding to Label Switched Path (LSP) Tunnels",
+      "subseries": []
+    },
+    "rfc8012": {
+      "title": "Label Switched Path (LSP) and Pseudowire (PW) Ping/Trace over MPLS Networks Using Entropy Labels (ELs)",
+      "subseries": []
+    },
+    "rfc8024": { "title": "Multi-Chassis Passive Optical Network (MC-PON) Protection in MPLS", "subseries": [] },
+    "rfc8077": {
+      "title": "Pseudowire Setup and Maintenance Using the Label Distribution Protocol (LDP)",
+      "subseries": ["std84"]
+    },
+    "rfc8104": { "title": "Pseudowire (PW) Endpoint Fast Failure Protection", "subseries": [] },
+    "rfc8159": { "title": "Keyed IPv6 Tunnel", "subseries": [] },
+    "rfc8184": {
+      "title": "Dual-Homing Protection for MPLS and the MPLS Transport Profile (MPLS-TP) Pseudowires",
+      "subseries": []
+    },
+    "rfc8185": {
+      "title": "Dual-Homing Coordination for MPLS Transport Profile (MPLS-TP) Pseudowires Protection",
+      "subseries": []
+    },
+    "rfc8220": {
+      "title": "Protocol Independent Multicast (PIM) over Virtual Private LAN Service (VPLS)",
+      "subseries": []
+    },
+    "rfc8237": {
+      "title": "MPLS Label Switched Path (LSP) Pseudowire (PW) Status Refresh Reduction for Static PWs",
+      "subseries": []
+    },
+    "rfc8338": { "title": "Signaling Root-Initiated Point-to-Multipoint Pseudowire Using LDP", "subseries": [] },
+    "rfc8339": { "title": "Definition of P2MP PW TLV for Label Switched Path (LSP) Ping Mechanisms", "subseries": [] },
+    "rfc8395": {
+      "title": "Extensions to BGP-Signaled Pseudowires to Support Flow-Aware Transport Labels",
+      "subseries": []
+    },
+    "rfc8469": { "title": "Recommendation to Use the Ethernet Control Word", "subseries": [] },
+    "rfc9801": { "title": "Private Line Emulation over Packet Switched Networks", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "mpls": { "name": "MPLS" } }
+}

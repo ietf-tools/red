@@ -1,0 +1,56 @@
+{
+  "id": 566,
+  "slug": "tftp",
+  "name": "TFTP",
+  "description": "The Trivial File Transfer Protocol",
+  "parent": "applications",
+  "path": "applications/tftp",
+  "document_count": 16,
+  "document_count_deep": 16,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1350",
+    "rfc1782",
+    "rfc1783",
+    "rfc1784",
+    "rfc1785",
+    "rfc1986",
+    "rfc2090",
+    "rfc2347",
+    "rfc2348",
+    "rfc2349",
+    "rfc3617",
+    "rfc5859",
+    "rfc7440",
+    "rfc783",
+    "rfc8886",
+    "rfc906"
+  ],
+  "document_meta": {
+    "rfc1350": { "title": "The TFTP Protocol (Revision 2)", "subseries": ["std33"] },
+    "rfc1782": { "title": "TFTP Option Extension", "subseries": [] },
+    "rfc1783": { "title": "TFTP Blocksize Option", "subseries": [] },
+    "rfc1784": { "title": "TFTP Timeout Interval and Transfer Size Options", "subseries": [] },
+    "rfc1785": { "title": "TFTP Option Negotiation Analysis", "subseries": [] },
+    "rfc1986": {
+      "title": "Experiments with a Simple File Transfer Protocol for Radio Links using Enhanced Trivial File Transfer Protocol (ETFTP)",
+      "subseries": []
+    },
+    "rfc2090": { "title": "TFTP Multicast Option", "subseries": [] },
+    "rfc2347": { "title": "TFTP Option Extension", "subseries": [] },
+    "rfc2348": { "title": "TFTP Blocksize Option", "subseries": [] },
+    "rfc2349": { "title": "TFTP Timeout Interval and Transfer Size Options", "subseries": [] },
+    "rfc3617": {
+      "title": "Uniform Resource Identifier (URI) Scheme and Applicability Statement for the Trivial File Transfer Protocol (TFTP)",
+      "subseries": []
+    },
+    "rfc5859": { "title": "TFTP Server Address Option for DHCPv4", "subseries": [] },
+    "rfc7440": { "title": "TFTP Windowsize Option", "subseries": [] },
+    "rfc783": { "title": "TFTP Protocol (revision 2)", "subseries": [] },
+    "rfc8886": { "title": "Secure Device Install", "subseries": [] },
+    "rfc906": { "title": "Bootstrap loading using TFTP", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

@@ -1,0 +1,20 @@
+{
+  "id": 968,
+  "slug": "certificate-transparency",
+  "name": "Certificate Transparency",
+  "description": "Certificate transparency logs",
+  "parent": "pki",
+  "path": "security/pki/certificate-transparency",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6962", "rfc9162", "rfc9163"],
+  "document_meta": {
+    "rfc6962": { "title": "Certificate Transparency", "subseries": [] },
+    "rfc9162": { "title": "Certificate Transparency Version 2.0", "subseries": [] },
+    "rfc9163": { "title": "Expect-CT Extension for HTTP", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "pki": { "name": "PKI" } }
+}

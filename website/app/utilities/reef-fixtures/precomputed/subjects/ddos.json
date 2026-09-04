@@ -1,0 +1,140 @@
+{
+  "id": 736,
+  "slug": "ddos",
+  "name": "DDoS",
+  "description": "DDoS attack mitigation and signalling",
+  "parent": "security",
+  "path": "security/ddos",
+  "document_count": 40,
+  "document_count_deep": 40,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2267",
+    "rfc2644",
+    "rfc2827",
+    "rfc3631",
+    "rfc3704",
+    "rfc3882",
+    "rfc4732",
+    "rfc4832",
+    "rfc4987",
+    "rfc5358",
+    "rfc5575",
+    "rfc6274",
+    "rfc6382",
+    "rfc6429",
+    "rfc6561",
+    "rfc7141",
+    "rfc7739",
+    "rfc7837",
+    "rfc7873",
+    "rfc8019",
+    "rfc8482",
+    "rfc8612",
+    "rfc8704",
+    "rfc8767",
+    "rfc8768",
+    "rfc8782",
+    "rfc8783",
+    "rfc8811",
+    "rfc8903",
+    "rfc8973",
+    "rfc9066",
+    "rfc9132",
+    "rfc9133",
+    "rfc9175",
+    "rfc9244",
+    "rfc9284",
+    "rfc9288",
+    "rfc9362",
+    "rfc9387",
+    "rfc9416"
+  ],
+  "document_meta": {
+    "rfc2267": {
+      "title": "Network Ingress Filtering: Defeating Denial of Service Attacks which employ IP Source Address Spoofing",
+      "subseries": []
+    },
+    "rfc2644": { "title": "Changing the Default for Directed Broadcasts in Routers", "subseries": ["bcp34"] },
+    "rfc2827": {
+      "title": "Network Ingress Filtering: Defeating Denial of Service Attacks which employ IP Source Address Spoofing",
+      "subseries": ["bcp38"]
+    },
+    "rfc3631": { "title": "Security Mechanisms for the Internet", "subseries": [] },
+    "rfc3704": { "title": "Ingress Filtering for Multihomed Networks", "subseries": ["bcp84"] },
+    "rfc3882": { "title": "Configuring BGP to Block Denial-of-Service Attacks", "subseries": [] },
+    "rfc4732": { "title": "Internet Denial-of-Service Considerations", "subseries": [] },
+    "rfc4832": { "title": "Security Threats to Network-Based Localized Mobility Management (NETLMM)", "subseries": [] },
+    "rfc4987": { "title": "TCP SYN Flooding Attacks and Common Mitigations", "subseries": [] },
+    "rfc5358": { "title": "Preventing Use of Recursive Nameservers in Reflector Attacks", "subseries": ["bcp140"] },
+    "rfc5575": { "title": "Dissemination of Flow Specification Rules", "subseries": [] },
+    "rfc6274": { "title": "Security Assessment of the Internet Protocol Version 4", "subseries": [] },
+    "rfc6382": {
+      "title": "Unique Origin Autonomous System Numbers (ASNs) per Node for Globally Anycasted Services",
+      "subseries": ["bcp169"]
+    },
+    "rfc6429": { "title": "TCP Sender Clarification for Persist Condition", "subseries": [] },
+    "rfc6561": { "title": "Recommendations for the Remediation of Bots in ISP Networks", "subseries": [] },
+    "rfc7141": { "title": "Byte and Packet Congestion Notification", "subseries": ["bcp41"] },
+    "rfc7739": { "title": "Security Implications of Predictable Fragment Identification Values", "subseries": [] },
+    "rfc7837": { "title": "IPv6 Destination Option for Congestion Exposure (ConEx)", "subseries": [] },
+    "rfc7873": { "title": "Domain Name System (DNS) Cookies", "subseries": [] },
+    "rfc8019": {
+      "title": "Protecting Internet Key Exchange Protocol Version 2 (IKEv2) Implementations from Distributed Denial-of-Service Attacks",
+      "subseries": []
+    },
+    "rfc8482": { "title": "Providing Minimal-Sized Responses to DNS Queries That Have QTYPE=ANY", "subseries": [] },
+    "rfc8612": { "title": "DDoS Open Threat Signaling (DOTS) Requirements", "subseries": [] },
+    "rfc8704": { "title": "Enhanced Feasible-Path Unicast Reverse Path Forwarding", "subseries": ["bcp84"] },
+    "rfc8767": { "title": "Serving Stale Data to Improve DNS Resiliency", "subseries": [] },
+    "rfc8768": { "title": "Constrained Application Protocol (CoAP) Hop-Limit Option", "subseries": [] },
+    "rfc8782": {
+      "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Specification",
+      "subseries": []
+    },
+    "rfc8783": {
+      "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Data Channel Specification",
+      "subseries": []
+    },
+    "rfc8811": { "title": "DDoS Open Threat Signaling (DOTS) Architecture", "subseries": [] },
+    "rfc8903": { "title": "Use Cases for DDoS Open Threat Signaling", "subseries": [] },
+    "rfc8973": { "title": "DDoS Open Threat Signaling (DOTS) Agent Discovery", "subseries": [] },
+    "rfc9066": {
+      "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Call Home",
+      "subseries": []
+    },
+    "rfc9132": {
+      "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Specification",
+      "subseries": []
+    },
+    "rfc9133": {
+      "title": "Controlling Filtering Rules Using Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel",
+      "subseries": []
+    },
+    "rfc9175": {
+      "title": "Constrained Application Protocol (CoAP): Echo, Request-Tag, and Token Processing",
+      "subseries": []
+    },
+    "rfc9244": { "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Telemetry", "subseries": [] },
+    "rfc9284": {
+      "title": "Multihoming Deployment Considerations for DDoS Open Threat Signaling (DOTS)",
+      "subseries": []
+    },
+    "rfc9288": {
+      "title": "Recommendations on the Filtering of IPv6 Packets Containing IPv6 Extension Headers at Transit Routers",
+      "subseries": []
+    },
+    "rfc9362": {
+      "title": "Distributed Denial-of-Service Open Threat Signaling (DOTS) Signal Channel Configuration Attributes for Robust Block Transmission",
+      "subseries": []
+    },
+    "rfc9387": { "title": "Use Cases for DDoS Open Threat Signaling (DOTS) Telemetry", "subseries": [] },
+    "rfc9416": {
+      "title": "Security Considerations for Transient Numeric Identifiers Employed in Network Protocols",
+      "subseries": ["bcp72"]
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

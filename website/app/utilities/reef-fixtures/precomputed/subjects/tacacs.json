@@ -1,0 +1,35 @@
+{
+  "id": 945,
+  "slug": "tacacs",
+  "name": "TACACS+",
+  "description": "TACACS and TACACS+",
+  "parent": "aaa",
+  "path": "security/aaa/tacacs",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1492", "rfc8907", "rfc9105", "rfc927", "rfc9887", "rfc9950"],
+  "document_meta": {
+    "rfc1492": { "title": "An Access Control Protocol, Sometimes Called TACACS", "subseries": [] },
+    "rfc8907": {
+      "title": "The Terminal Access Controller Access-Control System Plus (TACACS+) Protocol",
+      "subseries": []
+    },
+    "rfc9105": {
+      "title": "A YANG Data Model for Terminal Access Controller Access-Control System Plus (TACACS+)",
+      "subseries": []
+    },
+    "rfc927": { "title": "TACACS user identification Telnet option", "subseries": [] },
+    "rfc9887": {
+      "title": "Terminal Access Controller Access-Control System Plus (TACACS+) over TLS 1.3",
+      "subseries": []
+    },
+    "rfc9950": {
+      "title": "A YANG Data Model for Terminal Access Controller Access-Control System Plus (TACACS+)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "aaa": { "name": "AAA" } }
+}

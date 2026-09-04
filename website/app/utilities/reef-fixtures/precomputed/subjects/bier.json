@@ -1,0 +1,52 @@
+{
+  "id": 918,
+  "slug": "bier",
+  "name": "BIER",
+  "description": "Bit Index Explicit Replication",
+  "parent": "multicast",
+  "path": "routing/multicast/bier",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc8279",
+    "rfc8296",
+    "rfc8401",
+    "rfc8444",
+    "rfc8556",
+    "rfc9262",
+    "rfc9272",
+    "rfc9359",
+    "rfc9624",
+    "rfc9793",
+    "rfc9974"
+  ],
+  "document_meta": {
+    "rfc8279": { "title": "Multicast Using Bit Index Explicit Replication (BIER)", "subseries": [] },
+    "rfc8296": {
+      "title": "Encapsulation for Bit Index Explicit Replication (BIER) in MPLS and Non-MPLS Networks",
+      "subseries": []
+    },
+    "rfc8401": { "title": "Bit Index Explicit Replication (BIER) Support via IS-IS", "subseries": [] },
+    "rfc8444": { "title": "OSPFv2 Extensions for Bit Index Explicit Replication (BIER)", "subseries": [] },
+    "rfc8556": { "title": "Multicast VPN Using Bit Index Explicit Replication (BIER)", "subseries": [] },
+    "rfc9262": { "title": "Tree Engineering for Bit Index Explicit Replication (BIER-TE)", "subseries": [] },
+    "rfc9272": {
+      "title": "Underlay Path Calculation Algorithm and Constraints for Bit Index Explicit Replication (BIER)",
+      "subseries": []
+    },
+    "rfc9359": { "title": "Echo Request/Reply for Enabled In Situ OAM (IOAM) Capabilities", "subseries": [] },
+    "rfc9624": {
+      "title": "EVPN Broadcast, Unknown Unicast, or Multicast (BUM) Using Bit Index Explicit Replication (BIER)",
+      "subseries": []
+    },
+    "rfc9793": { "title": "BGP Extensions for Bit Index Explicit Replication (BIER)", "subseries": [] },
+    "rfc9974": {
+      "title": "Operations, Administration, and Maintenance (OAM) Requirements for the Bit Index Explicit Replication (BIER) Layer",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

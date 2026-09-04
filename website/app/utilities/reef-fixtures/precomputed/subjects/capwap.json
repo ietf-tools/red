@@ -1,0 +1,84 @@
+{
+  "id": 626,
+  "slug": "capwap",
+  "name": "CAPWAP",
+  "description": "Control and provisioning of wireless access points",
+  "parent": "link-layer",
+  "path": "link-layer/capwap",
+  "document_count": 15,
+  "document_count_deep": 15,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3990",
+    "rfc4118",
+    "rfc4564",
+    "rfc4565",
+    "rfc5412",
+    "rfc5413",
+    "rfc5414",
+    "rfc5415",
+    "rfc5416",
+    "rfc5417",
+    "rfc5418",
+    "rfc5833",
+    "rfc5834",
+    "rfc7494",
+    "rfc8350"
+  ],
+  "document_meta": {
+    "rfc3990": {
+      "title": "Configuration and Provisioning for Wireless Access Points (CAPWAP) Problem Statement",
+      "subseries": []
+    },
+    "rfc4118": {
+      "title": "Architecture Taxonomy for Control and Provisioning of Wireless Access Points (CAPWAP)",
+      "subseries": []
+    },
+    "rfc4564": {
+      "title": "Objectives for Control and Provisioning of Wireless Access Points (CAPWAP)",
+      "subseries": []
+    },
+    "rfc4565": {
+      "title": "Evaluation of Candidate Control and Provisioning of Wireless Access Points (CAPWAP) Protocols",
+      "subseries": []
+    },
+    "rfc5412": { "title": "Lightweight Access Point Protocol", "subseries": [] },
+    "rfc5413": { "title": "SLAPP: Secure Light Access Point Protocol", "subseries": [] },
+    "rfc5414": { "title": "Wireless LAN Control Protocol (WiCoP)", "subseries": [] },
+    "rfc5415": {
+      "title": "Control And Provisioning of Wireless Access Points (CAPWAP) Protocol Specification",
+      "subseries": []
+    },
+    "rfc5416": {
+      "title": "Control and Provisioning of Wireless Access Points (CAPWAP) Protocol Binding for IEEE 802.11",
+      "subseries": []
+    },
+    "rfc5417": {
+      "title": "Control And Provisioning of Wireless Access Points (CAPWAP) Access Controller DHCP Option",
+      "subseries": []
+    },
+    "rfc5418": {
+      "title": "Control And Provisioning of Wireless Access Points (CAPWAP) Threat Analysis for IEEE 802.11 Deployments",
+      "subseries": []
+    },
+    "rfc5833": {
+      "title": "Control and Provisioning of Wireless Access Points (CAPWAP) Protocol Base MIB",
+      "subseries": []
+    },
+    "rfc5834": {
+      "title": "Control and Provisioning of Wireless Access Points (CAPWAP) Protocol Binding MIB for IEEE 802.11",
+      "subseries": []
+    },
+    "rfc7494": {
+      "title": "IEEE 802.11 Medium Access Control (MAC) Profile for Control and Provisioning of Wireless Access Points (CAPWAP)",
+      "subseries": []
+    },
+    "rfc8350": {
+      "title": "Alternate Tunnel Encapsulation for Data Frames in Control and Provisioning of Wireless Access Points (CAPWAP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "link-layer": { "name": "Link Layer" } }
+}

@@ -1,0 +1,121 @@
+{
+  "id": 937,
+  "slug": "evpn",
+  "name": "EVPN",
+  "description": "Ethernet VPN",
+  "parent": "vpn",
+  "path": "routing/vpn/evpn",
+  "document_count": 32,
+  "document_count_deep": 32,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc10018",
+    "rfc7209",
+    "rfc7432",
+    "rfc7623",
+    "rfc7734",
+    "rfc8214",
+    "rfc8317",
+    "rfc8365",
+    "rfc8388",
+    "rfc8560",
+    "rfc8584",
+    "rfc9014",
+    "rfc9047",
+    "rfc9062",
+    "rfc9135",
+    "rfc9136",
+    "rfc9251",
+    "rfc9469",
+    "rfc9489",
+    "rfc9541",
+    "rfc9572",
+    "rfc9573",
+    "rfc9574",
+    "rfc9624",
+    "rfc9625",
+    "rfc9721",
+    "rfc9722",
+    "rfc9744",
+    "rfc9746",
+    "rfc9784",
+    "rfc9785",
+    "rfc9786"
+  ],
+  "document_meta": {
+    "rfc10018": {
+      "title": "Multicast and Ethernet VPN with Segment Routing Point-to-Multipoint (P2MP) and Ingress Replication",
+      "subseries": []
+    },
+    "rfc7209": { "title": "Requirements for Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc7432": { "title": "BGP MPLS-Based Ethernet VPN", "subseries": [] },
+    "rfc7623": { "title": "Provider Backbone Bridging Combined with Ethernet VPN (PBB-EVPN)", "subseries": [] },
+    "rfc7734": { "title": "Support for Shortest Path Bridging MAC Mode over Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc8214": { "title": "Virtual Private Wire Service Support in Ethernet VPN", "subseries": [] },
+    "rfc8317": {
+      "title": "Ethernet-Tree (E-Tree) Support in Ethernet VPN (EVPN) and Provider Backbone Bridging EVPN (PBB-EVPN)",
+      "subseries": []
+    },
+    "rfc8365": { "title": "A Network Virtualization Overlay Solution Using Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc8388": { "title": "Usage and Applicability of BGP MPLS-Based Ethernet VPN", "subseries": [] },
+    "rfc8560": {
+      "title": "Seamless Integration of Ethernet VPN (EVPN) with Virtual Private LAN Service (VPLS) and Their Provider Backbone Bridge (PBB) Equivalents",
+      "subseries": []
+    },
+    "rfc8584": { "title": "Framework for Ethernet VPN Designated Forwarder Election Extensibility", "subseries": [] },
+    "rfc9014": { "title": "Interconnect Solution for Ethernet VPN (EVPN) Overlay Networks", "subseries": [] },
+    "rfc9047": {
+      "title": "Propagation of ARP/ND Flags in an Ethernet Virtual Private Network (EVPN)",
+      "subseries": []
+    },
+    "rfc9062": {
+      "title": "Framework and Requirements for Ethernet VPN (EVPN) Operations, Administration, and Maintenance (OAM)",
+      "subseries": []
+    },
+    "rfc9135": { "title": "Integrated Routing and Bridging in Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc9136": { "title": "IP Prefix Advertisement in Ethernet VPN (EVPN)", "subseries": [] },
+    "rfc9251": {
+      "title": "Internet Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Proxies for Ethernet VPN (EVPN)",
+      "subseries": []
+    },
+    "rfc9469": {
+      "title": "Applicability of Ethernet Virtual Private Network (EVPN) to Network Virtualization over Layer 3 (NVO3) Networks",
+      "subseries": []
+    },
+    "rfc9489": {
+      "title": "Label Switched Path (LSP) Ping Mechanisms for EVPN and Provider Backbone Bridging EVPN (PBB-EVPN)",
+      "subseries": []
+    },
+    "rfc9541": {
+      "title": "Flush Mechanism for Customer MAC Addresses Based on Service Instance Identifier (I-SID) in Provider Backbone Bridging EVPN (PBB-EVPN)",
+      "subseries": []
+    },
+    "rfc9572": {
+      "title": "Updates to EVPN Broadcast, Unknown Unicast, or Multicast (BUM) Procedures",
+      "subseries": []
+    },
+    "rfc9573": { "title": "MVPN/EVPN Tunnel Aggregation with Common Labels", "subseries": [] },
+    "rfc9574": { "title": "Optimized Ingress Replication Solution for Ethernet VPNs (EVPNs)", "subseries": [] },
+    "rfc9624": {
+      "title": "EVPN Broadcast, Unknown Unicast, or Multicast (BUM) Using Bit Index Explicit Replication (BIER)",
+      "subseries": []
+    },
+    "rfc9625": { "title": "EVPN Optimized Inter-Subnet Multicast (OISM) Forwarding", "subseries": [] },
+    "rfc9721": {
+      "title": "Extended Mobility Procedures for Ethernet VPN Integrated Routing and Bridging (EVPN-IRB)",
+      "subseries": []
+    },
+    "rfc9722": { "title": "Fast Recovery for EVPN Designated Forwarder Election", "subseries": [] },
+    "rfc9744": {
+      "title": "EVPN Virtual Private Wire Service (VPWS) Flexible Cross-Connect (FXC) Service",
+      "subseries": []
+    },
+    "rfc9746": { "title": "BGP EVPN Multihoming Extensions for Split-Horizon Filtering", "subseries": [] },
+    "rfc9784": { "title": "Virtual Ethernet Segments for EVPN and Provider Backbone Bridge EVPN", "subseries": [] },
+    "rfc9785": { "title": "Preference-Based EVPN Designated Forwarder (DF) Election", "subseries": [] },
+    "rfc9786": { "title": "EVPN Port-Active Redundancy Mode", "subseries": [] }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "vpn": { "name": "VPN" } }
+}

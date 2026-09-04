@@ -1,0 +1,40 @@
+{
+  "id": 527,
+  "slug": "data-formats",
+  "name": "Data Formats",
+  "description": "Data formats, encodings and representations in general",
+  "parent": null,
+  "path": "data-formats",
+  "document_count": 0,
+  "document_count_deep": 472,
+  "retired": false,
+  "children": [
+    "abnf",
+    "asn1",
+    "cbor",
+    "compression",
+    "content-negotiation",
+    "data-encodings",
+    "internationalization",
+    "json",
+    "markdown",
+    "sgml",
+    "xml"
+  ],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": {
+    "abnf": { "name": "ABNF" },
+    "asn1": { "name": "ASN.1" },
+    "cbor": { "name": "CBOR" },
+    "compression": { "name": "Compression" },
+    "content-negotiation": { "name": "Content Negotiation" },
+    "data-encodings": { "name": "Data Encodings" },
+    "internationalization": { "name": "Internationalization" },
+    "json": { "name": "JSON" },
+    "markdown": { "name": "Markdown" },
+    "sgml": { "name": "SGML" },
+    "xml": { "name": "XML" }
+  }
+}

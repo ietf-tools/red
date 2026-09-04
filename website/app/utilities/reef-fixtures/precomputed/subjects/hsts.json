@@ -1,0 +1,23 @@
+{
+  "id": 1001,
+  "slug": "hsts",
+  "name": "HSTS",
+  "description": "HTTP Strict Transport Security",
+  "parent": "web-security",
+  "path": "web/web-security/hsts",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6797", "rfc8461", "rfc9460"],
+  "document_meta": {
+    "rfc6797": { "title": "HTTP Strict Transport Security (HSTS)", "subseries": [] },
+    "rfc8461": { "title": "SMTP MTA Strict Transport Security (MTA-STS)", "subseries": [] },
+    "rfc9460": {
+      "title": "Service Binding and Parameter Specification via the DNS (SVCB and HTTPS Resource Records)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "web-security": { "name": "Web Security" } }
+}

@@ -1,0 +1,90 @@
+{
+  "id": 942,
+  "slug": "vpls",
+  "name": "VPLS",
+  "description": "Virtual Private LAN Service",
+  "parent": "vpn",
+  "path": "routing/vpn/vpls",
+  "document_count": 18,
+  "document_count_deep": 18,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc4665",
+    "rfc4761",
+    "rfc4762",
+    "rfc5501",
+    "rfc6246",
+    "rfc6718",
+    "rfc7041",
+    "rfc7080",
+    "rfc7117",
+    "rfc7152",
+    "rfc7257",
+    "rfc7309",
+    "rfc7361",
+    "rfc7796",
+    "rfc8220",
+    "rfc8385",
+    "rfc8560",
+    "rfc8614"
+  ],
+  "document_meta": {
+    "rfc4665": {
+      "title": "Service Requirements for Layer 2 Provider-Provisioned Virtual Private Networks",
+      "subseries": []
+    },
+    "rfc4761": {
+      "title": "Virtual Private LAN Service (VPLS) Using BGP for Auto-Discovery and Signaling",
+      "subseries": []
+    },
+    "rfc4762": {
+      "title": "Virtual Private LAN Service (VPLS) Using Label Distribution Protocol (LDP) Signaling",
+      "subseries": []
+    },
+    "rfc5501": { "title": "Requirements for Multicast Support in Virtual Private LAN Services", "subseries": [] },
+    "rfc6246": {
+      "title": "Virtual Private LAN Service (VPLS) Interoperability with Customer Edge (CE) Bridges",
+      "subseries": []
+    },
+    "rfc6718": { "title": "Pseudowire Redundancy", "subseries": [] },
+    "rfc7041": {
+      "title": "Extensions to the Virtual Private LAN Service (VPLS) Provider Edge (PE) Model for Provider Backbone Bridging",
+      "subseries": []
+    },
+    "rfc7080": {
+      "title": "Virtual Private LAN Service (VPLS) Interoperability with Provider Backbone Bridges",
+      "subseries": []
+    },
+    "rfc7117": { "title": "Multicast in Virtual Private LAN Service (VPLS)", "subseries": [] },
+    "rfc7152": {
+      "title": "Requirements for Metro Ethernet Forum (MEF) Ethernet-Tree (E-Tree) Support in Layer 2 Virtual Private Network (L2VPN)",
+      "subseries": []
+    },
+    "rfc7257": { "title": "Virtual Private LAN Service (VPLS) Management Information Base", "subseries": [] },
+    "rfc7309": { "title": "Redundancy Mechanism for Inter-domain VPLS Service", "subseries": [] },
+    "rfc7361": {
+      "title": "LDP Extensions for Optimized MAC Address Withdrawal in a Hierarchical Virtual Private LAN Service (H-VPLS)",
+      "subseries": []
+    },
+    "rfc7796": { "title": "Ethernet-Tree (E-Tree) Support in Virtual Private LAN Service (VPLS)", "subseries": [] },
+    "rfc8220": {
+      "title": "Protocol Independent Multicast (PIM) over Virtual Private LAN Service (VPLS)",
+      "subseries": []
+    },
+    "rfc8385": {
+      "title": "Transparent Interconnection of Lots of Links (TRILL) Transparent Transport over MPLS",
+      "subseries": []
+    },
+    "rfc8560": {
+      "title": "Seamless Integration of Ethernet VPN (EVPN) with Virtual Private LAN Service (VPLS) and Their Provider Backbone Bridge (PBB) Equivalents",
+      "subseries": []
+    },
+    "rfc8614": {
+      "title": "Updated Processing of Control Flags for BGP Virtual Private LAN Service (VPLS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "vpn": { "name": "VPN" } }
+}

@@ -1,9 +1,15 @@
 // @vitest-environment nuxt
 //
-// The /subjects/<slug>/ page with Reef stubbed. See ./index.test.ts for how registerEndpoint stands
-// in for Reef, and for what a client-side mount does and does not cover.
+// The /subjects/<slug>/ page with the published file stubbed. The page reads Reef's blob store
+// rather than its API — a server render never calls Reef — so ~/utilities/reef-precomputed is what
+// is mocked. See ./index.test.ts for what a client-side mount does and does not cover.
+//
+// `published` below adds the two maps a published file carries and the served response does not:
+// the titles of its documents, and the curated names of the subjects around it. Those names are
+// the reason the file exists rather than the endpoint, so the tests give each one a name that is
+// visibly not its slug.
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import { mockNuxtImport, mountSuspended, registerEndpoint } from '@nuxt/test-utils/runtime'
+import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
 import { createError } from 'h3'
 import SubjectPage from './[subject].vue'
@@ -34,28 +40,46 @@ const { navigateToMock } = vi.hoisted(() => ({ navigateToMock: vi.fn() }))
 
 mockNuxtImport('navigateTo', () => navigateToMock)
 
-const subjectUrl = (slug: string): string => `${useRuntimeConfig().public.reefBase}/api/reef/subjects/${slug}/`
+const { fetchSubjectFile } = vi.hoisted(() => ({ fetchSubjectFile: vi.fn() }))
+vi.mock('~/utilities/reef-precomputed', () => ({ fetchSubjectFile }))
 
-let unregister: (() => void) | undefined
+// A curated name for every subject a file mentions, made by title-casing the slug and marking it,
+// so an assertion that finds the slug where a name belongs fails rather than passing by luck.
+const nameOf = (slug: string): string =>
+  `The ${slug.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())}`
+
+// Titles carry no identifier in them on purpose: a title that read "Title of rfc1952" would
+// satisfy an assertion about the identifier and hide the label never being rendered.
+const titleOf = (index: number): string => `The Title Of Document Number ${index}`
+
+const published = (subject: SubjectDetail) => ({
+  ...subject,
+  document_meta: Object.fromEntries(
+    subject.documents.map((doc, index) => [doc, { title: titleOf(index), subseries: [] }])
+  ),
+  subject_meta: Object.fromEntries(
+    [...subject.path.split('/').slice(0, -1), ...subject.children].map((slug) => [slug, { name: nameOf(slug) }])
+  )
+})
 
 beforeEach(() => {
   navigateToMock.mockReset()
 })
 
 afterEach(() => {
-  unregister?.()
-  unregister = undefined
+  fetchSubjectFile.mockReset()
+  // Every mount in this file resolves the same useAsyncData key, so without this a test renders
+  // the previous test's answer instead of asking for its own.
   clearNuxtData()
 })
 
-const reefAnswers = (slug: string, subject: SubjectDetail | RetiredSubject | SubjectAlias) => {
-  unregister = registerEndpoint(subjectUrl(slug), () => subject)
+const reefAnswers = (_slug: string, subject: SubjectDetail | RetiredSubject | SubjectAlias) => {
+  // A redirect stub carries neither map, so only a live subject is wrapped.
+  fetchSubjectFile.mockResolvedValue('documents' in subject ? published(subject) : subject)
 }
 
-const reefFails = (slug: string, statusCode: number) => {
-  unregister = registerEndpoint(subjectUrl(slug), () => {
-    throw createError({ statusCode })
-  })
+const reefFails = (_slug: string, statusCode: number) => {
+  fetchSubjectFile.mockRejectedValue(createError({ statusCode }))
 }
 
 const renderPage = (slug: string) =>
@@ -74,9 +98,38 @@ describe('/subjects/<slug>/', () => {
 
     expect(text).toContain(name)
     expect(text).toContain(description)
-    documents.forEach((doc) => {
-      expect(text).toContain(doc)
+    documents.forEach((_doc, index) => {
+      expect(text).toContain(titleOf(index))
     })
+  })
+
+  test('names each document as a reader writes it, with its title beside', async () => {
+    // `rfc1952` is how Reef files it and how the URL is built; "RFC 1952" is how it is read. The
+    // title comes from document_meta, which the published file carries and the API does not.
+    const { slug } = leafSubjectDetailFixture
+    reefAnswers(slug, leafSubjectDetailFixture)
+
+    const page = await renderPage(slug)
+    const text = page.text()
+
+    expect(text).toContain('RFC 1952')
+    expect(text).toContain(titleOf(0))
+    expect(text).not.toContain('rfc1952')
+  })
+
+  test('a document whose title Reef could not resolve still renders as a link', async () => {
+    // Null is a real state rather than an error: Reef resolves titles from Red's published index
+    // when it writes the file, and an identifier that index does not carry has none.
+    const { slug } = leafSubjectDetailFixture
+    fetchSubjectFile.mockResolvedValue({
+      ...published(leafSubjectDetailFixture),
+      document_meta: { rfc1952: { title: null, subseries: [] }, rfc6713: { title: null, subseries: [] } }
+    })
+
+    const page = await renderPage(slug)
+
+    expect(page.text()).toContain('RFC 1952')
+    expect(page.findAll('ul a').map((link) => link.attributes('href'))).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
   })
 
   test('links each document to its info page', async () => {
@@ -92,15 +145,27 @@ describe('/subjects/<slug>/', () => {
     expect(page.findAll('ul a').map((link) => link.attributes('href'))).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
   })
 
-  test('links the subjects within this one, which Reef names by slug', async () => {
+  test('links the subjects within this one by their curated name', async () => {
     const { slug } = subjectDetailFixture
     reefAnswers(slug, subjectDetailFixture)
 
     const page = await renderPage(slug)
     const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/gzip/')
 
-    // The slug verbatim: the detail answer carries only slugs for the subjects around this one, and
-    // the curated names are on /subjects/ rather than in this response.
+    // The name out of subject_meta, not the slug. `children` carries slugs and always did; what
+    // changed is that the file now says what each of them is called.
+    expect(child?.text()).toBe(nameOf('gzip'))
+  })
+
+  test('falls back to the slug when a file names no name for a child', async () => {
+    // A file written before subject_meta existed, or one whose map has a gap. A breadcrumb of
+    // slugs is worse than a breadcrumb of names and far better than a page that will not render.
+    const { slug } = subjectDetailFixture
+    fetchSubjectFile.mockResolvedValue({ ...published(subjectDetailFixture), subject_meta: {} })
+
+    const page = await renderPage(slug)
+    const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/gzip/')
+
     expect(child?.text()).toBe('gzip')
   })
 
@@ -112,10 +177,10 @@ describe('/subjects/<slug>/', () => {
     const breadcrumb = page.find('nav[aria-label="Breadcrumb"]')
 
     // `applications-and-data-formats/compression/gzip` less its own last segment, so the trail leads
-    // here and stops.
+    // here and stops, and each step is named rather than slugged.
     expect(breadcrumb.findAll('li').map((item) => item.find('a').text())).toEqual([
-      'applications-and-data-formats',
-      'compression'
+      nameOf('applications-and-data-formats'),
+      nameOf('compression')
     ])
     expect(breadcrumb.findAll('a').map((link) => link.attributes('href'))).toEqual([
       '/subjects/applications-and-data-formats/',
@@ -205,8 +270,11 @@ describe('/subjects/<slug>/', () => {
     expect(page.text()).not.toContain(slug)
   })
 
-  test('reports a subject Reef does not have as not found', async () => {
-    reefFails('nonexistent', 404)
+  test('reports a subject Reef does not publish as not found', async () => {
+    // A key that is not in the store, which the store answers with a 404 and the util turns into
+    // `undefined`. That is a plain answer about a subject that does not exist, so it is told apart
+    // here from a read that failed — which still reaches the error branch below.
+    fetchSubjectFile.mockResolvedValue(undefined)
 
     const page = await renderPage('nonexistent')
 

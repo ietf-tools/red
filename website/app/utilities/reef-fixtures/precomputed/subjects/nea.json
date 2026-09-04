@@ -1,0 +1,47 @@
+{
+  "id": 749,
+  "slug": "nea",
+  "name": "NEA",
+  "description": "Network endpoint assessment and posture",
+  "parent": "security",
+  "path": "security/nea",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc5209",
+    "rfc5792",
+    "rfc5793",
+    "rfc6813",
+    "rfc6876",
+    "rfc7171",
+    "rfc7632",
+    "rfc8248",
+    "rfc8412",
+    "rfc9393"
+  ],
+  "document_meta": {
+    "rfc5209": { "title": "Network Endpoint Assessment (NEA): Overview and Requirements", "subseries": [] },
+    "rfc5792": {
+      "title": "PA-TNC: A Posture Attribute (PA) Protocol Compatible with Trusted Network Connect (TNC)",
+      "subseries": []
+    },
+    "rfc5793": {
+      "title": "PB-TNC: A Posture Broker (PB) Protocol Compatible with Trusted Network Connect (TNC)",
+      "subseries": []
+    },
+    "rfc6813": { "title": "The Network Endpoint Assessment (NEA) Asokan Attack Analysis", "subseries": [] },
+    "rfc6876": { "title": "A Posture Transport Protocol over TLS (PT-TLS)", "subseries": [] },
+    "rfc7171": {
+      "title": "PT-EAP: Posture Transport (PT) Protocol for Extensible Authentication Protocol (EAP) Tunnel Methods",
+      "subseries": []
+    },
+    "rfc7632": { "title": "Endpoint Security Posture Assessment: Enterprise Use Cases", "subseries": [] },
+    "rfc8248": { "title": "Security Automation and Continuous Monitoring (SACM) Requirements", "subseries": [] },
+    "rfc8412": { "title": "Software Inventory Message and Attributes (SWIMA) for PA-TNC", "subseries": [] },
+    "rfc9393": { "title": "Concise Software Identification Tags", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

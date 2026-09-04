@@ -1,0 +1,21 @@
+{
+  "id": 546,
+  "slug": "apex",
+  "name": "APEX",
+  "description": "Application Exchange (APEX) messaging",
+  "parent": "applications",
+  "path": "applications/apex",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3340", "rfc3341", "rfc3342", "rfc3343"],
+  "document_meta": {
+    "rfc3340": { "title": "The Application Exchange Core", "subseries": [] },
+    "rfc3341": { "title": "The Application Exchange (APEX) Access Service", "subseries": [] },
+    "rfc3342": { "title": "The Application Exchange (APEX) Option Party Pack, Part Deux!", "subseries": [] },
+    "rfc3343": { "title": "The Application Exchange (APEX) Presence Service", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

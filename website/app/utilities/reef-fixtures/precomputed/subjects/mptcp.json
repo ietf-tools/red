@@ -1,0 +1,47 @@
+{
+  "id": 986,
+  "slug": "mptcp",
+  "name": "Multipath TCP",
+  "description": "Multipath TCP",
+  "parent": "tcp",
+  "path": "transport/tcp/mptcp",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc6181",
+    "rfc6182",
+    "rfc6356",
+    "rfc6824",
+    "rfc6897",
+    "rfc7430",
+    "rfc8041",
+    "rfc8684",
+    "rfc8743",
+    "rfc8803"
+  ],
+  "document_meta": {
+    "rfc6181": {
+      "title": "Threat Analysis for TCP Extensions for Multipath Operation with Multiple Addresses",
+      "subseries": []
+    },
+    "rfc6182": { "title": "Architectural Guidelines for Multipath TCP Development", "subseries": [] },
+    "rfc6356": { "title": "Coupled Congestion Control for Multipath Transport Protocols", "subseries": [] },
+    "rfc6824": { "title": "TCP Extensions for Multipath Operation with Multiple Addresses", "subseries": [] },
+    "rfc6897": { "title": "Multipath TCP (MPTCP) Application Interface Considerations", "subseries": [] },
+    "rfc7430": {
+      "title": "Analysis of Residual Threats and Possible Fixes for Multipath TCP (MPTCP)",
+      "subseries": []
+    },
+    "rfc8041": { "title": "Use Cases and Operational Experience with Multipath TCP", "subseries": [] },
+    "rfc8684": { "title": "TCP Extensions for Multipath Operation with Multiple Addresses", "subseries": [] },
+    "rfc8743": {
+      "title": "Multiple Access Management Services Multi-Access Management Services (MAMS)",
+      "subseries": []
+    },
+    "rfc8803": { "title": "0-RTT TCP Convert Protocol", "subseries": [] }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "tcp": { "name": "TCP" } }
+}

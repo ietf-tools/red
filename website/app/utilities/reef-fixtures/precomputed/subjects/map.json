@@ -1,0 +1,62 @@
+{
+  "id": 1010,
+  "slug": "map",
+  "name": "MAP (Mapping of Address and Port)",
+  "description": "Mapping of address and port (MAP-E and MAP-T)",
+  "parent": "ipv6-transition",
+  "path": "internet-layer/ipv6/ipv6-transition/map",
+  "document_count": 11,
+  "document_count_deep": 11,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc7597",
+    "rfc7599",
+    "rfc7678",
+    "rfc7703",
+    "rfc7753",
+    "rfc8026",
+    "rfc8115",
+    "rfc8219",
+    "rfc8389",
+    "rfc8658",
+    "rfc9313"
+  ],
+  "document_meta": {
+    "rfc7597": { "title": "Mapping of Address and Port with Encapsulation (MAP-E)", "subseries": [] },
+    "rfc7599": { "title": "Mapping of Address and Port using Translation (MAP-T)", "subseries": [] },
+    "rfc7678": {
+      "title": "Attribute-Value Pairs for Provisioning Customer Equipment Supporting IPv4-Over-IPv6 Transitional Solutions",
+      "subseries": []
+    },
+    "rfc7703": {
+      "title": "Experience with Testing of Mapping of Address and Port Using Translation (MAP-T)",
+      "subseries": []
+    },
+    "rfc7753": { "title": "Port Control Protocol (PCP) Extension for Port-Set Allocation", "subseries": [] },
+    "rfc8026": {
+      "title": "Unified IPv4-in-IPv6 Softwire Customer Premises Equipment (CPE): A DHCPv6-Based Prioritization Mechanism",
+      "subseries": []
+    },
+    "rfc8115": { "title": "DHCPv6 Option for IPv4-Embedded Multicast and Unicast IPv6 Prefixes", "subseries": [] },
+    "rfc8219": { "title": "Benchmarking Methodology for IPv6 Transition Technologies", "subseries": [] },
+    "rfc8389": {
+      "title": "Definitions of Managed Objects for Mapping of Address and Port with Encapsulation (MAP-E)",
+      "subseries": []
+    },
+    "rfc8658": {
+      "title": "RADIUS Attributes for Softwire Mechanisms Based on Address plus Port (A+P)",
+      "subseries": []
+    },
+    "rfc9313": {
+      "title": "Pros and Cons of IPv6 Transition Technologies for IPv4-as-a-Service (IPv4aaS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "ipv6-transition": { "name": "IPv6 Transition" }
+  }
+}

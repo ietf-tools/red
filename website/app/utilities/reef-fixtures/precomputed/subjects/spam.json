@@ -1,0 +1,87 @@
+{
+  "id": 856,
+  "slug": "spam",
+  "name": "Spam",
+  "description": "Unsolicited bulk email: filtering, reporting, reputation",
+  "parent": "email",
+  "path": "messaging/email/spam",
+  "document_count": 27,
+  "document_count_deep": 27,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2505",
+    "rfc2635",
+    "rfc3865",
+    "rfc4405",
+    "rfc4406",
+    "rfc4871",
+    "rfc4948",
+    "rfc5039",
+    "rfc5068",
+    "rfc5429",
+    "rfc5672",
+    "rfc5782",
+    "rfc5965",
+    "rfc6430",
+    "rfc6449",
+    "rfc6561",
+    "rfc6590",
+    "rfc6591",
+    "rfc6647",
+    "rfc6650",
+    "rfc6651",
+    "rfc6652",
+    "rfc6692",
+    "rfc7070",
+    "rfc7071",
+    "rfc7072",
+    "rfc7073"
+  ],
+  "document_meta": {
+    "rfc2505": { "title": "Anti-Spam Recommendations for SMTP MTAs", "subseries": ["bcp30"] },
+    "rfc2635": {
+      "title": "DON'T SPEW A Set of Guidelines for Mass Unsolicited Mailings and Postings (spam*)",
+      "subseries": ["fyi35"]
+    },
+    "rfc3865": { "title": "A No Soliciting Simple Mail Transfer Protocol (SMTP) Service Extension", "subseries": [] },
+    "rfc4405": {
+      "title": "SMTP Service Extension for Indicating the Responsible Submitter of an E-Mail Message",
+      "subseries": []
+    },
+    "rfc4406": { "title": "Sender ID: Authenticating E-Mail", "subseries": [] },
+    "rfc4871": { "title": "DomainKeys Identified Mail (DKIM) Signatures", "subseries": [] },
+    "rfc4948": { "title": "Report from the IAB workshop on Unwanted Traffic March 9-10, 2006", "subseries": [] },
+    "rfc5039": { "title": "The Session Initiation Protocol (SIP) and Spam", "subseries": [] },
+    "rfc5068": {
+      "title": "Email Submission Operations: Access and Accountability Requirements",
+      "subseries": ["bcp134"]
+    },
+    "rfc5429": { "title": "Sieve Email Filtering: Reject and Extended Reject Extensions", "subseries": [] },
+    "rfc5672": { "title": "RFC 4871 DomainKeys Identified Mail (DKIM) Signatures -- Update", "subseries": [] },
+    "rfc5782": { "title": "DNS Blacklists and Whitelists", "subseries": [] },
+    "rfc5965": { "title": "An Extensible Format for Email Feedback Reports", "subseries": [] },
+    "rfc6430": { "title": "Email Feedback Report Type Value: not-spam", "subseries": [] },
+    "rfc6449": { "title": "Complaint Feedback Loop Operational Recommendations", "subseries": [] },
+    "rfc6561": { "title": "Recommendations for the Remediation of Bots in ISP Networks", "subseries": [] },
+    "rfc6590": { "title": "Redaction of Potentially Sensitive Data from Mail Abuse Reports", "subseries": [] },
+    "rfc6591": { "title": "Authentication Failure Reporting Using the Abuse Reporting Format", "subseries": [] },
+    "rfc6647": { "title": "Email Greylisting: An Applicability Statement for SMTP", "subseries": [] },
+    "rfc6650": {
+      "title": "Creation and Use of Email Feedback Reports: An Applicability Statement for the Abuse Reporting Format (ARF)",
+      "subseries": []
+    },
+    "rfc6651": { "title": "Extensions to DomainKeys Identified Mail (DKIM) for Failure Reporting", "subseries": [] },
+    "rfc6652": {
+      "title": "Sender Policy Framework (SPF) Authentication Failure Reporting Using the Abuse Reporting Format",
+      "subseries": []
+    },
+    "rfc6692": { "title": "Source Ports in Abuse Reporting Format (ARF) Reports", "subseries": [] },
+    "rfc7070": { "title": "An Architecture for Reputation Reporting", "subseries": [] },
+    "rfc7071": { "title": "A Media Type for Reputation Interchange", "subseries": [] },
+    "rfc7072": { "title": "A Reputation Query Protocol", "subseries": [] },
+    "rfc7073": { "title": "A Reputation Response Set for Email Identifiers", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "email": { "name": "Email" } }
+}

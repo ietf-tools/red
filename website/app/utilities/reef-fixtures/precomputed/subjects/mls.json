@@ -1,0 +1,20 @@
+{
+  "id": 748,
+  "slug": "mls",
+  "name": "MLS",
+  "description": "Messaging Layer Security for end-to-end group messaging",
+  "parent": "security",
+  "path": "security/mls",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc5570", "rfc9420", "rfc9750"],
+  "document_meta": {
+    "rfc5570": { "title": "Common Architecture Label IPv6 Security Option (CALIPSO)", "subseries": [] },
+    "rfc9420": { "title": "The Messaging Layer Security (MLS) Protocol", "subseries": [] },
+    "rfc9750": { "title": "The Messaging Layer Security (MLS) Architecture", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" } }
+}

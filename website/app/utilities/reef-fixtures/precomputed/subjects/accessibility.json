@@ -1,0 +1,35 @@
+{
+  "id": 544,
+  "slug": "accessibility",
+  "name": "Accessibility",
+  "description": "Accessibility of Internet communications",
+  "parent": "applications",
+  "path": "applications/accessibility",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc3351", "rfc4117", "rfc5194", "rfc5369", "rfc5370", "rfc9248"],
+  "document_meta": {
+    "rfc3351": {
+      "title": "User Requirements for the Session Initiation Protocol (SIP) in Support of Deaf, Hard of Hearing and Speech-impaired Individuals",
+      "subseries": []
+    },
+    "rfc4117": {
+      "title": "Transcoding Services Invocation in the Session Initiation Protocol (SIP) Using Third Party Call Control (3pcc)",
+      "subseries": []
+    },
+    "rfc5194": {
+      "title": "Framework for Real-Time Text over IP Using the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc5369": { "title": "Framework for Transcoding with the Session Initiation Protocol (SIP)", "subseries": [] },
+    "rfc5370": {
+      "title": "The Session Initiation Protocol (SIP) Conference Bridge Transcoding Model",
+      "subseries": []
+    },
+    "rfc9248": { "title": "Interoperability Profile for Relay User Equipment", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

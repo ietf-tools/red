@@ -1,0 +1,26 @@
+{
+  "id": 592,
+  "slug": "appletalk",
+  "name": "AppleTalk",
+  "description": "AppleTalk protocols and tunnelling",
+  "parent": "internet-layer",
+  "path": "internet-layer/appletalk",
+  "document_count": 6,
+  "document_count_deep": 6,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1243", "rfc1378", "rfc1419", "rfc1504", "rfc1742", "rfc6760"],
+  "document_meta": {
+    "rfc1243": { "title": "AppleTalk Management Information Base", "subseries": [] },
+    "rfc1378": { "title": "The PPP AppleTalk Control Protocol (ATCP)", "subseries": [] },
+    "rfc1419": { "title": "SNMP over AppleTalk", "subseries": [] },
+    "rfc1504": { "title": "Appletalk Update-Based Routing Protocol: Enhanced Appletalk Routing", "subseries": [] },
+    "rfc1742": { "title": "AppleTalk Management Information Base II", "subseries": [] },
+    "rfc6760": {
+      "title": "Requirements for a Protocol to Replace the AppleTalk Name Binding Protocol (NBP)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" } }
+}

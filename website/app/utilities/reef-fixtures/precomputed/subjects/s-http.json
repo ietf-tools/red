@@ -1,0 +1,20 @@
+{
+  "id": 1002,
+  "slug": "s-http",
+  "name": "S-HTTP",
+  "description": "Secure HTTP (S-HTTP, historic)",
+  "parent": "web-security",
+  "path": "web/web-security/s-http",
+  "document_count": 3,
+  "document_count_deep": 3,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc2084", "rfc2659", "rfc2660"],
+  "document_meta": {
+    "rfc2084": { "title": "Considerations for Web Transaction Security", "subseries": [] },
+    "rfc2659": { "title": "Security Extensions For HTML", "subseries": [] },
+    "rfc2660": { "title": "The Secure HyperText Transfer Protocol", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "web-security": { "name": "Web Security" } }
+}

@@ -1,0 +1,88 @@
+{
+  "id": 881,
+  "slug": "rmon",
+  "name": "RMON",
+  "description": "Remote network monitoring",
+  "parent": "snmp",
+  "path": "network-management/snmp/rmon",
+  "document_count": 26,
+  "document_count_deep": 26,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1028",
+    "rfc1271",
+    "rfc1513",
+    "rfc1757",
+    "rfc2021",
+    "rfc2074",
+    "rfc2613",
+    "rfc2819",
+    "rfc2895",
+    "rfc2896",
+    "rfc3144",
+    "rfc3273",
+    "rfc3287",
+    "rfc3395",
+    "rfc3434",
+    "rfc3577",
+    "rfc3729",
+    "rfc3737",
+    "rfc3919",
+    "rfc4149",
+    "rfc4150",
+    "rfc4502",
+    "rfc4710",
+    "rfc4711",
+    "rfc4712",
+    "rfc996"
+  ],
+  "document_meta": {
+    "rfc1028": { "title": "Simple Gateway Monitoring Protocol", "subseries": [] },
+    "rfc1271": { "title": "Remote Network Monitoring Management Information Base", "subseries": [] },
+    "rfc1513": { "title": "Token Ring Extensions to the Remote Network Monitoring MIB", "subseries": [] },
+    "rfc1757": { "title": "Remote Network Monitoring Management Information Base", "subseries": [] },
+    "rfc2021": {
+      "title": "Remote Network Monitoring Management Information Base Version 2 using SMIv2",
+      "subseries": []
+    },
+    "rfc2074": { "title": "Remote Network Monitoring MIB Protocol Identifiers", "subseries": [] },
+    "rfc2613": {
+      "title": "Remote Network Monitoring MIB Extensions for Switched Networks Version 1.0",
+      "subseries": []
+    },
+    "rfc2819": { "title": "Remote Network Monitoring Management Information Base", "subseries": ["std59"] },
+    "rfc2895": { "title": "Remote Network Monitoring MIB Protocol Identifier Reference", "subseries": [] },
+    "rfc2896": { "title": "Remote Network Monitoring MIB Protocol Identifier Macros", "subseries": [] },
+    "rfc3144": { "title": "Remote Monitoring MIB Extensions for Interface Parameters Monitoring", "subseries": [] },
+    "rfc3273": {
+      "title": "Remote Network Monitoring Management Information Base for High Capacity Networks",
+      "subseries": []
+    },
+    "rfc3287": { "title": "Remote Monitoring MIB Extensions for Differentiated Services", "subseries": [] },
+    "rfc3395": { "title": "Remote Network Monitoring MIB Protocol Identifier Reference Extensions", "subseries": [] },
+    "rfc3434": { "title": "Remote Monitoring MIB Extensions for High Capacity Alarms", "subseries": [] },
+    "rfc3577": { "title": "Introduction to the Remote Monitoring (RMON) Family of MIB Modules", "subseries": [] },
+    "rfc3729": { "title": "Application Performance Measurement MIB", "subseries": [] },
+    "rfc3737": { "title": "IANA Guidelines for the Registry of Remote Monitoring (RMON) MIB modules", "subseries": [] },
+    "rfc3919": {
+      "title": "Remote Network Monitoring (RMON) Protocol Identifiers for IPv6 and Multi Protocol Label Switching (MPLS)",
+      "subseries": []
+    },
+    "rfc4149": {
+      "title": "Definition of Managed Objects for Synthetic Sources for Performance Monitoring Algorithms",
+      "subseries": []
+    },
+    "rfc4150": { "title": "Transport Performance Metrics MIB", "subseries": [] },
+    "rfc4502": { "title": "Remote Network Monitoring Management Information Base Version 2", "subseries": [] },
+    "rfc4710": { "title": "Real-time Application Quality-of-Service Monitoring (RAQMON) Framework", "subseries": [] },
+    "rfc4711": { "title": "Real-time Application Quality-of-Service Monitoring (RAQMON) MIB", "subseries": [] },
+    "rfc4712": {
+      "title": "Transport Mappings for Real-time Application Quality-of-Service Monitoring (RAQMON) Protocol Data Unit (PDU)",
+      "subseries": []
+    },
+    "rfc996": { "title": "Statistics server", "subseries": [] }
+  },
+  "subject_meta": { "network-management": { "name": "Network Management" }, "snmp": { "name": "SNMP" } }
+}

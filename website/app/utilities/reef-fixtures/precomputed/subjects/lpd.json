@@ -1,0 +1,19 @@
+{
+  "id": 558,
+  "slug": "lpd",
+  "name": "LPD",
+  "description": "The Line Printer Daemon protocol",
+  "parent": "applications",
+  "path": "applications/lpd",
+  "document_count": 2,
+  "document_count_deep": 2,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc1179", "rfc2569"],
+  "document_meta": {
+    "rfc1179": { "title": "Line printer daemon protocol", "subseries": [] },
+    "rfc2569": { "title": "Mapping between LPD and IPP Protocols", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" } }
+}

@@ -1,0 +1,16 @@
+{
+  "id": 663,
+  "slug": "service-discovery",
+  "name": "Service Discovery",
+  "description": "Discovering services and resources on a network",
+  "parent": "naming",
+  "path": "naming/service-discovery",
+  "document_count": 0,
+  "document_count_deep": 0,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [],
+  "document_meta": {},
+  "subject_meta": { "naming": { "name": "Naming" } }
+}

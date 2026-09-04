@@ -1,0 +1,131 @@
+{
+  "id": 806,
+  "slug": "onc-rpc",
+  "name": "ONC RPC",
+  "description": "ONC remote procedure call and XDR",
+  "parent": "storage",
+  "path": "applications/storage/onc-rpc",
+  "document_count": 37,
+  "document_count_deep": 37,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1014",
+    "rfc1045",
+    "rfc1050",
+    "rfc1057",
+    "rfc1790",
+    "rfc1831",
+    "rfc1832",
+    "rfc1833",
+    "rfc2188",
+    "rfc2203",
+    "rfc2623",
+    "rfc2695",
+    "rfc3529",
+    "rfc4227",
+    "rfc4506",
+    "rfc4741",
+    "rfc5403",
+    "rfc5531",
+    "rfc5532",
+    "rfc5539",
+    "rfc5662",
+    "rfc5665",
+    "rfc5666",
+    "rfc5667",
+    "rfc5717",
+    "rfc7531",
+    "rfc7861",
+    "rfc7863",
+    "rfc8166",
+    "rfc8167",
+    "rfc8267",
+    "rfc8797",
+    "rfc9144",
+    "rfc9289",
+    "rfc971",
+    "rfc9896",
+    "rfc9920"
+  ],
+  "document_meta": {
+    "rfc1014": { "title": "XDR: External Data Representation standard", "subseries": [] },
+    "rfc1045": { "title": "VMTP: Versatile Message Transaction Protocol: Protocol specification", "subseries": [] },
+    "rfc1050": { "title": "RPC: Remote Procedure Call Protocol specification", "subseries": [] },
+    "rfc1057": { "title": "RPC: Remote Procedure Call Protocol specification: Version 2", "subseries": [] },
+    "rfc1790": {
+      "title": "An Agreement between the Internet Society and Sun Microsystems, Inc. in the Matter of ONC RPC and XDR Protocols",
+      "subseries": []
+    },
+    "rfc1831": { "title": "RPC: Remote Procedure Call Protocol Specification Version 2", "subseries": [] },
+    "rfc1832": { "title": "XDR: External Data Representation Standard", "subseries": [] },
+    "rfc1833": { "title": "Binding Protocols for ONC RPC Version 2", "subseries": [] },
+    "rfc2188": {
+      "title": "AT&T/Neda's Efficient Short Remote Operations (ESRO) Protocol Specification Version 1.2",
+      "subseries": []
+    },
+    "rfc2203": { "title": "RPCSEC_GSS Protocol Specification", "subseries": [] },
+    "rfc2623": {
+      "title": "NFS Version 2 and Version 3 Security Issues and the NFS Protocol's Use of RPCSEC_GSS and Kerberos V5",
+      "subseries": []
+    },
+    "rfc2695": { "title": "Authentication Mechanisms for ONC RPC", "subseries": [] },
+    "rfc3529": {
+      "title": "Using Extensible Markup Language-Remote Procedure Calling (XML-RPC) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4227": {
+      "title": "Using the Simple Object Access Protocol (SOAP) in Blocks Extensible Exchange Protocol (BEEP)",
+      "subseries": []
+    },
+    "rfc4506": { "title": "XDR: External Data Representation Standard", "subseries": ["std67"] },
+    "rfc4741": { "title": "NETCONF Configuration Protocol", "subseries": [] },
+    "rfc5403": { "title": "RPCSEC_GSS Version 2", "subseries": [] },
+    "rfc5531": { "title": "RPC: Remote Procedure Call Protocol Specification Version 2", "subseries": [] },
+    "rfc5532": {
+      "title": "Network File System (NFS) Remote Direct Memory Access (RDMA) Problem Statement",
+      "subseries": []
+    },
+    "rfc5539": { "title": "NETCONF over Transport Layer Security (TLS)", "subseries": [] },
+    "rfc5662": {
+      "title": "Network File System (NFS) Version 4 Minor Version 1 External Data Representation Standard (XDR) Description",
+      "subseries": []
+    },
+    "rfc5665": {
+      "title": "IANA Considerations for Remote Procedure Call (RPC) Network Identifiers and Universal Address Formats",
+      "subseries": []
+    },
+    "rfc5666": { "title": "Remote Direct Memory Access Transport for Remote Procedure Call", "subseries": [] },
+    "rfc5667": { "title": "Network File System (NFS) Direct Data Placement", "subseries": [] },
+    "rfc5717": { "title": "Partial Lock Remote Procedure Call (RPC) for NETCONF", "subseries": [] },
+    "rfc7531": {
+      "title": "Network File System (NFS) Version 4 External Data Representation Standard (XDR) Description",
+      "subseries": []
+    },
+    "rfc7861": { "title": "Remote Procedure Call (RPC) Security Version 3", "subseries": [] },
+    "rfc7863": {
+      "title": "Network File System (NFS) Version 4 Minor Version 2 External Data Representation Standard (XDR) Description",
+      "subseries": []
+    },
+    "rfc8166": {
+      "title": "Remote Direct Memory Access Transport for Remote Procedure Call Version 1",
+      "subseries": []
+    },
+    "rfc8167": { "title": "Bidirectional Remote Procedure Call on RPC-over-RDMA Transports", "subseries": [] },
+    "rfc8267": { "title": "Network File System (NFS) Upper-Layer Binding to RPC-over-RDMA Version 1", "subseries": [] },
+    "rfc8797": {
+      "title": "Remote Direct Memory Access - Connection Manager (RDMA-CM) Private Data for RPC-over-RDMA Version 1",
+      "subseries": []
+    },
+    "rfc9144": {
+      "title": "Comparison of Network Management Datastore Architecture (NMDA) Datastores",
+      "subseries": []
+    },
+    "rfc9289": { "title": "Towards Remote Procedure Call Encryption by Default", "subseries": [] },
+    "rfc971": { "title": "Survey of data representation standards", "subseries": [] },
+    "rfc9896": { "title": "SVG in RFCs", "subseries": [] },
+    "rfc9920": { "title": "RFC Editor Model (Version 3)", "subseries": [] }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "storage": { "name": "Storage" } }
+}

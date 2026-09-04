@@ -1,0 +1,44 @@
+{
+  "id": 861,
+  "slug": "nntp",
+  "name": "NNTP",
+  "description": "Network News Transfer Protocol",
+  "parent": "netnews",
+  "path": "messaging/netnews/nntp",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2980",
+    "rfc3977",
+    "rfc4642",
+    "rfc4643",
+    "rfc4644",
+    "rfc5538",
+    "rfc6048",
+    "rfc8054",
+    "rfc8143",
+    "rfc977"
+  ],
+  "document_meta": {
+    "rfc2980": { "title": "Common NNTP Extensions", "subseries": [] },
+    "rfc3977": { "title": "Network News Transfer Protocol (NNTP)", "subseries": [] },
+    "rfc4642": {
+      "title": "Using Transport Layer Security (TLS) with Network News Transfer Protocol (NNTP)",
+      "subseries": []
+    },
+    "rfc4643": { "title": "Network News Transfer Protocol (NNTP) Extension for Authentication", "subseries": [] },
+    "rfc4644": { "title": "Network News Transfer Protocol (NNTP) Extension for Streaming Feeds", "subseries": [] },
+    "rfc5538": { "title": "The 'news' and 'nntp' URI Schemes", "subseries": [] },
+    "rfc6048": { "title": "Network News Transfer Protocol (NNTP) Additions to LIST Command", "subseries": [] },
+    "rfc8054": { "title": "Network News Transfer Protocol (NNTP) Extension for Compression", "subseries": [] },
+    "rfc8143": {
+      "title": "Using Transport Layer Security (TLS) with Network News Transfer Protocol (NNTP)",
+      "subseries": []
+    },
+    "rfc977": { "title": "Network News Transfer Protocol", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "netnews": { "name": "Netnews" } }
+}

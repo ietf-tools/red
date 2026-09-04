@@ -1,0 +1,53 @@
+{
+  "id": 850,
+  "slug": "jmap",
+  "name": "JMAP",
+  "description": "JSON Meta Application Protocol for mail and related data",
+  "parent": "email",
+  "path": "messaging/email/jmap",
+  "document_count": 13,
+  "document_count_deep": 13,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc8620",
+    "rfc8621",
+    "rfc8887",
+    "rfc9007",
+    "rfc9219",
+    "rfc9404",
+    "rfc9425",
+    "rfc9610",
+    "rfc9661",
+    "rfc9670",
+    "rfc9698",
+    "rfc9749",
+    "rfc9979"
+  ],
+  "document_meta": {
+    "rfc8620": { "title": "The JSON Meta Application Protocol (JMAP)", "subseries": [] },
+    "rfc8621": { "title": "The JSON Meta Application Protocol (JMAP) for Mail", "subseries": [] },
+    "rfc8887": { "title": "A JSON Meta Application Protocol (JMAP) Subprotocol for WebSocket", "subseries": [] },
+    "rfc9007": {
+      "title": "Handling Message Disposition Notification with the JSON Meta Application Protocol (JMAP)",
+      "subseries": []
+    },
+    "rfc9219": {
+      "title": "S/MIME Signature Verification Extension to the JSON Meta Application Protocol (JMAP)",
+      "subseries": []
+    },
+    "rfc9404": { "title": "JSON Meta Application Protocol (JMAP) Blob Management Extension", "subseries": [] },
+    "rfc9425": { "title": "JSON Meta Application Protocol (JMAP) for Quotas", "subseries": [] },
+    "rfc9610": { "title": "JSON Meta Application Protocol (JMAP) for Contacts", "subseries": [] },
+    "rfc9661": { "title": "The JSON Meta Application Protocol (JMAP) for Sieve Scripts", "subseries": [] },
+    "rfc9670": { "title": "JSON Meta Application Protocol (JMAP) Sharing", "subseries": [] },
+    "rfc9698": { "title": "The JMAPACCESS Extension for IMAP", "subseries": [] },
+    "rfc9749": {
+      "title": "Use of Voluntary Application Server Identification (VAPID) in JSON Meta Application Protocol (JMAP) Web Push",
+      "subseries": []
+    },
+    "rfc9979": { "title": "Registration of Further IMAP/JMAP Keywords and Mailbox Name Attributes", "subseries": [] }
+  },
+  "subject_meta": { "messaging": { "name": "Messaging" }, "email": { "name": "Email" } }
+}

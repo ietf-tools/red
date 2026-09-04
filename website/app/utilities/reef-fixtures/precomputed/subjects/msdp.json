@@ -1,0 +1,47 @@
+{
+  "id": 922,
+  "slug": "msdp",
+  "name": "MSDP",
+  "description": "Multicast Source Discovery Protocol",
+  "parent": "multicast",
+  "path": "routing/multicast/msdp",
+  "document_count": 10,
+  "document_count_deep": 10,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3446",
+    "rfc3618",
+    "rfc3682",
+    "rfc4610",
+    "rfc4611",
+    "rfc4624",
+    "rfc6952",
+    "rfc8815",
+    "rfc8916",
+    "rfc9081"
+  ],
+  "document_meta": {
+    "rfc3446": {
+      "title": "Anycast Rendevous Point (RP) mechanism using Protocol Independent Multicast (PIM) and Multicast Source Discovery Protocol (MSDP)",
+      "subseries": []
+    },
+    "rfc3618": { "title": "Multicast Source Discovery Protocol (MSDP)", "subseries": [] },
+    "rfc3682": { "title": "The Generalized TTL Security Mechanism (GTSM)", "subseries": [] },
+    "rfc4610": { "title": "Anycast-RP Using Protocol Independent Multicast (PIM)", "subseries": [] },
+    "rfc4611": { "title": "Multicast Source Discovery Protocol (MSDP) Deployment Scenarios", "subseries": ["bcp121"] },
+    "rfc4624": { "title": "Multicast Source Discovery Protocol (MSDP) MIB", "subseries": [] },
+    "rfc6952": {
+      "title": "Analysis of BGP, LDP, PCEP, and MSDP Issues According to the Keying and Authentication for Routing Protocols (KARP) Design Guide",
+      "subseries": []
+    },
+    "rfc8815": { "title": "Deprecating Any-Source Multicast (ASM) for Interdomain Multicast", "subseries": ["bcp229"] },
+    "rfc8916": { "title": "A YANG Data Model for the Multicast Source Discovery Protocol (MSDP)", "subseries": [] },
+    "rfc9081": {
+      "title": "Interoperation between Multicast Virtual Private Network (MVPN) and Multicast Source Directory Protocol (MSDP) Source-Active Routes",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
+}

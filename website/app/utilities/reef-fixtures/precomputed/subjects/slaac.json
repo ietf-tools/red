@@ -1,0 +1,73 @@
+{
+  "id": 835,
+  "slug": "slaac",
+  "name": "SLAAC",
+  "description": "IPv6 stateless address autoconfiguration",
+  "parent": "ipv6",
+  "path": "internet-layer/ipv6/slaac",
+  "document_count": 17,
+  "document_count_deep": 17,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1971",
+    "rfc2462",
+    "rfc3041",
+    "rfc4076",
+    "rfc4429",
+    "rfc4862",
+    "rfc4941",
+    "rfc6105",
+    "rfc6957",
+    "rfc7217",
+    "rfc7934",
+    "rfc8978",
+    "rfc8981",
+    "rfc9131",
+    "rfc9663",
+    "rfc9686",
+    "rfc9762"
+  ],
+  "document_meta": {
+    "rfc1971": { "title": "IPv6 Stateless Address Autoconfiguration", "subseries": [] },
+    "rfc2462": { "title": "IPv6 Stateless Address Autoconfiguration", "subseries": [] },
+    "rfc3041": { "title": "Privacy Extensions for Stateless Address Autoconfiguration in IPv6", "subseries": [] },
+    "rfc4076": {
+      "title": "Renumbering Requirements for Stateless Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+      "subseries": []
+    },
+    "rfc4429": { "title": "Optimistic Duplicate Address Detection (DAD) for IPv6", "subseries": [] },
+    "rfc4862": { "title": "IPv6 Stateless Address Autoconfiguration", "subseries": [] },
+    "rfc4941": { "title": "Privacy Extensions for Stateless Address Autoconfiguration in IPv6", "subseries": [] },
+    "rfc6105": { "title": "IPv6 Router Advertisement Guard", "subseries": [] },
+    "rfc6957": { "title": "Duplicate Address Detection Proxy", "subseries": [] },
+    "rfc7217": {
+      "title": "A Method for Generating Semantically Opaque Interface Identifiers with IPv6 Stateless Address Autoconfiguration (SLAAC)",
+      "subseries": []
+    },
+    "rfc7934": { "title": "Host Address Availability Recommendations", "subseries": ["bcp204"] },
+    "rfc8978": {
+      "title": "Reaction of IPv6 Stateless Address Autoconfiguration (SLAAC) to Flash-Renumbering Events",
+      "subseries": []
+    },
+    "rfc8981": {
+      "title": "Temporary Address Extensions for Stateless Address Autoconfiguration in IPv6",
+      "subseries": []
+    },
+    "rfc9131": {
+      "title": "Gratuitous Neighbor Discovery: Creating Neighbor Cache Entries on First-Hop Routers",
+      "subseries": []
+    },
+    "rfc9663": {
+      "title": "Using DHCPv6 Prefix Delegation (DHCPv6-PD) to Allocate Unique IPv6 Prefixes per Client in Large Broadcast Networks",
+      "subseries": []
+    },
+    "rfc9686": { "title": "Registering Self-Generated IPv6 Addresses Using DHCPv6", "subseries": [] },
+    "rfc9762": {
+      "title": "Using Router Advertisements to Signal the Availability of DHCPv6 Prefix Delegation to Clients",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "internet-layer": { "name": "Internet Layer" }, "ipv6": { "name": "IPv6" } }
+}

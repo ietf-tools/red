@@ -1,0 +1,297 @@
+{
+  "id": 533,
+  "slug": "iot",
+  "name": "IoT",
+  "description": "Internet of Things: architectures, terminology, guidance for constrained devices",
+  "parent": null,
+  "path": "iot",
+  "document_count": 80,
+  "document_count_deep": 164,
+  "retired": false,
+  "children": ["6lowpan", "6tisch", "ace", "coap", "lpwan", "mud", "rpl", "sdf", "senml", "suit"],
+  "aliases": [],
+  "documents": [
+    "rfc1085",
+    "rfc3585",
+    "rfc4684",
+    "rfc6574",
+    "rfc6690",
+    "rfc7228",
+    "rfc7390",
+    "rfc7397",
+    "rfc7400",
+    "rfc7452",
+    "rfc7547",
+    "rfc7548",
+    "rfc7554",
+    "rfc7641",
+    "rfc7744",
+    "rfc7815",
+    "rfc7925",
+    "rfc7959",
+    "rfc8025",
+    "rfc8036",
+    "rfc8105",
+    "rfc8240",
+    "rfc8272",
+    "rfc8323",
+    "rfc8352",
+    "rfc8387",
+    "rfc8428",
+    "rfc8449",
+    "rfc8477",
+    "rfc8520",
+    "rfc8576",
+    "rfc8613",
+    "rfc8628",
+    "rfc8790",
+    "rfc8798",
+    "rfc8824",
+    "rfc8931",
+    "rfc8995",
+    "rfc9006",
+    "rfc9011",
+    "rfc9019",
+    "rfc9035",
+    "rfc9052",
+    "rfc9053",
+    "rfc9100",
+    "rfc9124",
+    "rfc9139",
+    "rfc9140",
+    "rfc9150",
+    "rfc9159",
+    "rfc9176",
+    "rfc9178",
+    "rfc9193",
+    "rfc9200",
+    "rfc9201",
+    "rfc9202",
+    "rfc9203",
+    "rfc9237",
+    "rfc9333",
+    "rfc9391",
+    "rfc9423",
+    "rfc9428",
+    "rfc9430",
+    "rfc9431",
+    "rfc9441",
+    "rfc9442",
+    "rfc9453",
+    "rfc9510",
+    "rfc9528",
+    "rfc9556",
+    "rfc9594",
+    "rfc9668",
+    "rfc9726",
+    "rfc9733",
+    "rfc9761",
+    "rfc9770",
+    "rfc9783",
+    "rfc9820",
+    "rfc9880",
+    "rfc9914"
+  ],
+  "document_meta": {
+    "rfc1085": { "title": "ISO presentation services on top of TCP/IP based internets", "subseries": [] },
+    "rfc3585": { "title": "IPsec Configuration Policy Information Model", "subseries": [] },
+    "rfc4684": {
+      "title": "Constrained Route Distribution for Border Gateway Protocol/MultiProtocol Label Switching (BGP/MPLS) Internet Protocol (IP) Virtual Private Networks (VPNs)",
+      "subseries": []
+    },
+    "rfc6574": { "title": "Report from the Smart Object Workshop", "subseries": [] },
+    "rfc6690": { "title": "Constrained RESTful Environments (CoRE) Link Format", "subseries": [] },
+    "rfc7228": { "title": "Terminology for Constrained-Node Networks", "subseries": [] },
+    "rfc7390": { "title": "Group Communication for the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc7397": { "title": "Report from the Smart Object Security Workshop", "subseries": [] },
+    "rfc7400": {
+      "title": "6LoWPAN-GHC: Generic Header Compression for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)",
+      "subseries": []
+    },
+    "rfc7452": { "title": "Architectural Considerations in Smart Object Networking", "subseries": [] },
+    "rfc7547": {
+      "title": "Management of Networks with Constrained Devices: Problem Statement and Requirements",
+      "subseries": []
+    },
+    "rfc7548": { "title": "Management of Networks with Constrained Devices: Use Cases", "subseries": [] },
+    "rfc7554": {
+      "title": "Using IEEE 802.15.4e Time-Slotted Channel Hopping (TSCH) in the Internet of Things (IoT): Problem Statement",
+      "subseries": []
+    },
+    "rfc7641": { "title": "Observing Resources in the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc7744": {
+      "title": "Use Cases for Authentication and Authorization in Constrained Environments",
+      "subseries": []
+    },
+    "rfc7815": { "title": "Minimal Internet Key Exchange Version 2 (IKEv2) Initiator Implementation", "subseries": [] },
+    "rfc7925": {
+      "title": "Transport Layer Security (TLS) / Datagram Transport Layer Security (DTLS) Profiles for the Internet of Things",
+      "subseries": []
+    },
+    "rfc7959": { "title": "Block-Wise Transfers in the Constrained Application Protocol (CoAP)", "subseries": [] },
+    "rfc8025": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Paging Dispatch",
+      "subseries": []
+    },
+    "rfc8036": {
+      "title": "Applicability Statement for the Routing Protocol for Low-Power and Lossy Networks (RPL) in Advanced Metering Infrastructure (AMI) Networks",
+      "subseries": []
+    },
+    "rfc8105": {
+      "title": "Transmission of IPv6 Packets over Digital Enhanced Cordless Telecommunications (DECT) Ultra Low Energy (ULE)",
+      "subseries": []
+    },
+    "rfc8240": { "title": "Report from the Internet of Things Software Update (IoTSU) Workshop 2016", "subseries": [] },
+    "rfc8272": { "title": "TinyIPFIX for Smart Meters in Constrained Networks", "subseries": [] },
+    "rfc8323": { "title": "CoAP (Constrained Application Protocol) over TCP, TLS, and WebSockets", "subseries": [] },
+    "rfc8352": { "title": "Energy-Efficient Features of Internet of Things Protocols", "subseries": [] },
+    "rfc8387": {
+      "title": "Practical Considerations and Implementation Experiences in Securing Smart Object Networks",
+      "subseries": []
+    },
+    "rfc8428": { "title": "Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8449": { "title": "Record Size Limit Extension for TLS", "subseries": [] },
+    "rfc8477": {
+      "title": "Report from the Internet of Things (IoT) Semantic Interoperability (IOTSI) Workshop 2016",
+      "subseries": []
+    },
+    "rfc8520": { "title": "Manufacturer Usage Description Specification", "subseries": [] },
+    "rfc8576": { "title": "Internet of Things (IoT) Security: State of the Art and Challenges", "subseries": [] },
+    "rfc8613": { "title": "Object Security for Constrained RESTful Environments (OSCORE)", "subseries": [] },
+    "rfc8628": { "title": "OAuth 2.0 Device Authorization Grant", "subseries": [] },
+    "rfc8790": { "title": "FETCH and PATCH with Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8798": { "title": "Additional Units for Sensor Measurement Lists (SenML)", "subseries": [] },
+    "rfc8824": {
+      "title": "Static Context Header Compression (SCHC) for the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc8931": {
+      "title": "IPv6 over Low-Power Wireless Personal Area Network (6LoWPAN) Selective Fragment Recovery",
+      "subseries": []
+    },
+    "rfc8995": { "title": "Bootstrapping Remote Secure Key Infrastructure (BRSKI)", "subseries": [] },
+    "rfc9006": { "title": "TCP Usage Guidance in the Internet of Things (IoT)", "subseries": [] },
+    "rfc9011": { "title": "Static Context Header Compression and Fragmentation (SCHC) over LoRaWAN", "subseries": [] },
+    "rfc9019": { "title": "A Firmware Update Architecture for Internet of Things", "subseries": [] },
+    "rfc9035": {
+      "title": "A Routing Protocol for Low-Power and Lossy Networks (RPL) Destination-Oriented Directed Acyclic Graph (DODAG) Configuration Option for the 6LoWPAN Routing Header",
+      "subseries": []
+    },
+    "rfc9052": { "title": "CBOR Object Signing and Encryption (COSE): Structures and Process", "subseries": ["std96"] },
+    "rfc9053": { "title": "CBOR Object Signing and Encryption (COSE): Initial Algorithms", "subseries": [] },
+    "rfc9100": { "title": "Sensor Measurement Lists (SenML) Features and Versions", "subseries": [] },
+    "rfc9124": {
+      "title": "A Manifest Information Model for Firmware Updates in Internet of Things (IoT) Devices",
+      "subseries": []
+    },
+    "rfc9139": {
+      "title": "Information-Centric Networking (ICN) Adaptation to Low-Power Wireless Personal Area Networks (LoWPANs)",
+      "subseries": []
+    },
+    "rfc9140": { "title": "Nimble Out-of-Band Authentication for EAP (EAP-NOOB)", "subseries": [] },
+    "rfc9150": { "title": "TLS 1.3 Authentication and Integrity-Only Cipher Suites", "subseries": [] },
+    "rfc9159": {
+      "title": "IPv6 Mesh over BLUETOOTH(R) Low Energy Using the Internet Protocol Support Profile (IPSP)",
+      "subseries": []
+    },
+    "rfc9176": { "title": "Constrained RESTful Environments (CoRE) Resource Directory", "subseries": [] },
+    "rfc9178": {
+      "title": "Building Power-Efficient Constrained Application Protocol (CoAP) Devices for Cellular Networks",
+      "subseries": []
+    },
+    "rfc9193": {
+      "title": "Sensor Measurement Lists (SenML) Fields for Indicating Data Value Content-Format",
+      "subseries": []
+    },
+    "rfc9200": {
+      "title": "Authentication and Authorization for Constrained Environments Using the OAuth 2.0 Framework (ACE-OAuth)",
+      "subseries": []
+    },
+    "rfc9201": {
+      "title": "Additional OAuth Parameters for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9202": {
+      "title": "Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9203": {
+      "title": "The Object Security for Constrained RESTful Environments (OSCORE) Profile of the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9237": {
+      "title": "An Authorization Information Format (AIF) for Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9333": { "title": "Minimal IP Encapsulating Security Payload (ESP)", "subseries": [] },
+    "rfc9391": { "title": "Static Context Header Compression over Narrowband Internet of Things", "subseries": [] },
+    "rfc9423": { "title": "Constrained RESTful Environments (CoRE) Target Attributes Registry", "subseries": [] },
+    "rfc9428": { "title": "Transmission of IPv6 Packets over Near Field Communication", "subseries": [] },
+    "rfc9430": {
+      "title": "Extension of the Datagram Transport Layer Security (DTLS) Profile for Authentication and Authorization for Constrained Environments (ACE) to Transport Layer Security (TLS)",
+      "subseries": []
+    },
+    "rfc9431": {
+      "title": "Message Queuing Telemetry Transport (MQTT) and Transport Layer Security (TLS) Profile of Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9441": { "title": "Static Context Header Compression (SCHC) Compound Acknowledgement (ACK)", "subseries": [] },
+    "rfc9442": {
+      "title": "Static Context Header Compression (SCHC) over Sigfox Low-Power Wide Area Network (LPWAN)",
+      "subseries": []
+    },
+    "rfc9453": {
+      "title": "Applicability and Use Cases for IPv6 over Networks of Resource-constrained Nodes (6lo)",
+      "subseries": []
+    },
+    "rfc9510": {
+      "title": "Alternative Delta Time Encoding for Content-Centric Networking (CCNx) Using Compact Floating-Point Arithmetic",
+      "subseries": []
+    },
+    "rfc9528": { "title": "Ephemeral Diffie-Hellman Over COSE (EDHOC)", "subseries": [] },
+    "rfc9556": { "title": "Internet of Things (IoT) Edge Challenges and Functions", "subseries": [] },
+    "rfc9594": {
+      "title": "Key Provisioning for Group Communication Using Authentication and Authorization for Constrained Environments (ACE)",
+      "subseries": []
+    },
+    "rfc9668": {
+      "title": "Using Ephemeral Diffie-Hellman Over COSE (EDHOC) with the Constrained Application Protocol (CoAP) and Object Security for Constrained RESTful Environments (OSCORE)",
+      "subseries": []
+    },
+    "rfc9726": {
+      "title": "Operational Considerations for Use of DNS in Internet of Things (IoT) Devices",
+      "subseries": ["bcp241"]
+    },
+    "rfc9733": { "title": "BRSKI with Alternative Enrollment (BRSKI-AE)", "subseries": [] },
+    "rfc9761": {
+      "title": "Manufacturer Usage Description (MUD) for TLS and DTLS Profiles for Internet of Things (IoT) Devices",
+      "subseries": []
+    },
+    "rfc9770": {
+      "title": "Notification of Revoked Access Tokens in the Authentication and Authorization for Constrained Environments (ACE) Framework",
+      "subseries": []
+    },
+    "rfc9783": { "title": "Arm's Platform Security Architecture (PSA) Attestation Token", "subseries": [] },
+    "rfc9820": {
+      "title": "Authentication Service Based on the Extensible Authentication Protocol (EAP) for Use with the Constrained Application Protocol (CoAP)",
+      "subseries": []
+    },
+    "rfc9880": { "title": "Semantic Definition Format (SDF) for Data and Interactions of Things", "subseries": [] },
+    "rfc9914": {
+      "title": "Root-Initiated Routing State in the Routing Protocol for Low-Power and Lossy Networks (RPL)",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "6lowpan": { "name": "6LoWPAN" },
+    "6tisch": { "name": "6TiSCH" },
+    "ace": { "name": "ACE" },
+    "coap": { "name": "CoAP" },
+    "lpwan": { "name": "LPWAN" },
+    "mud": { "name": "MUD" },
+    "rpl": { "name": "RPL" },
+    "sdf": { "name": "SDF" },
+    "senml": { "name": "SenML" },
+    "suit": { "name": "SUIT" }
+  }
+}

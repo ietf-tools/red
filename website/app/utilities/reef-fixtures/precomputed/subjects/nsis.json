@@ -1,0 +1,63 @@
+{
+  "id": 984,
+  "slug": "nsis",
+  "name": "NSIS",
+  "description": "Next Steps in Signaling",
+  "parent": "qos",
+  "path": "transport/qos/nsis",
+  "document_count": 18,
+  "document_count_deep": 18,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc3583",
+    "rfc3726",
+    "rfc4080",
+    "rfc4081",
+    "rfc4094",
+    "rfc4230",
+    "rfc5971",
+    "rfc5972",
+    "rfc5973",
+    "rfc5974",
+    "rfc5975",
+    "rfc5976",
+    "rfc5977",
+    "rfc5978",
+    "rfc5979",
+    "rfc5980",
+    "rfc5981",
+    "rfc6084"
+  ],
+  "document_meta": {
+    "rfc3583": { "title": "Requirements of a Quality of Service (QoS) Solution for Mobile IP", "subseries": [] },
+    "rfc3726": { "title": "Requirements for Signaling Protocols", "subseries": [] },
+    "rfc4080": { "title": "Next Steps in Signaling (NSIS): Framework", "subseries": [] },
+    "rfc4081": { "title": "Security Threats for Next Steps in Signaling (NSIS)", "subseries": [] },
+    "rfc4094": { "title": "Analysis of Existing Quality-of-Service Signaling Protocols", "subseries": [] },
+    "rfc4230": { "title": "RSVP Security Properties", "subseries": [] },
+    "rfc5971": { "title": "GIST: General Internet Signalling Transport", "subseries": [] },
+    "rfc5972": { "title": "General Internet Signaling Transport (GIST) State Machine", "subseries": [] },
+    "rfc5973": { "title": "NAT/Firewall NSIS Signaling Layer Protocol (NSLP)", "subseries": [] },
+    "rfc5974": { "title": "NSIS Signaling Layer Protocol (NSLP) for Quality-of-Service Signaling", "subseries": [] },
+    "rfc5975": {
+      "title": "QSPEC Template for the Quality-of-Service NSIS Signaling Layer Protocol (NSLP)",
+      "subseries": []
+    },
+    "rfc5976": { "title": "Y.1541-QOSM: Model for Networks Using Y.1541 Quality-of-Service Classes", "subseries": [] },
+    "rfc5977": {
+      "title": "RMD-QOSM: The NSIS Quality-of-Service Model for Resource Management in Diffserv",
+      "subseries": []
+    },
+    "rfc5978": { "title": "Using and Extending the NSIS Protocol Family", "subseries": [] },
+    "rfc5979": { "title": "NSIS Operation over IP Tunnels", "subseries": [] },
+    "rfc5980": { "title": "NSIS Protocol Operation in Mobile Environments", "subseries": [] },
+    "rfc5981": { "title": "Authorization for NSIS Signaling Layer Protocols", "subseries": [] },
+    "rfc6084": {
+      "title": "General Internet Signaling Transport (GIST) over Stream Control Transmission Protocol (SCTP) and Datagram Transport Layer Security (DTLS)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "transport": { "name": "Transport" }, "qos": { "name": "QoS" } }
+}

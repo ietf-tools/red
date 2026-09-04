@@ -1,0 +1,52 @@
+{
+  "id": 718,
+  "slug": "overlay-networks",
+  "name": "Overlay Networks",
+  "description": "Data-plane network virtualization overlays",
+  "parent": "routing",
+  "path": "routing/overlay-networks",
+  "document_count": 11,
+  "document_count_deep": 14,
+  "retired": false,
+  "children": ["geneve", "vxlan"],
+  "aliases": [],
+  "documents": [
+    "rfc7364",
+    "rfc7365",
+    "rfc8014",
+    "rfc8151",
+    "rfc8293",
+    "rfc8394",
+    "rfc8926",
+    "rfc9469",
+    "rfc9521",
+    "rfc9638",
+    "rfc9772"
+  ],
+  "document_meta": {
+    "rfc7364": { "title": "Problem Statement: Overlays for Network Virtualization", "subseries": [] },
+    "rfc7365": { "title": "Framework for Data Center (DC) Network Virtualization", "subseries": [] },
+    "rfc8014": {
+      "title": "An Architecture for Data-Center Network Virtualization over Layer 3 (NVO3)",
+      "subseries": []
+    },
+    "rfc8151": { "title": "Use Cases for Data Center Network Virtualization Overlay Networks", "subseries": [] },
+    "rfc8293": { "title": "A Framework for Multicast in Network Virtualization over Layer 3", "subseries": [] },
+    "rfc8394": { "title": "Split Network Virtualization Edge (Split-NVE) Control-Plane Requirements", "subseries": [] },
+    "rfc8926": { "title": "Geneve: Generic Network Virtualization Encapsulation", "subseries": [] },
+    "rfc9469": {
+      "title": "Applicability of Ethernet Virtual Private Network (EVPN) to Network Virtualization over Layer 3 (NVO3) Networks",
+      "subseries": []
+    },
+    "rfc9521": {
+      "title": "Bidirectional Forwarding Detection (BFD) for  Generic Network Virtualization Encapsulation (Geneve)",
+      "subseries": []
+    },
+    "rfc9638": { "title": "Network Virtualization over Layer 3 (NVO3) Encapsulation Considerations", "subseries": [] },
+    "rfc9772": {
+      "title": "Active Operations, Administration, and Maintenance (OAM) for Use in Generic Network Virtualization Encapsulation (Geneve)",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "routing": { "name": "Routing" }, "geneve": { "name": "Geneve" }, "vxlan": { "name": "VXLAN" } }
+}

@@ -1,0 +1,260 @@
+{
+  "id": 946,
+  "slug": "s-mime",
+  "name": "S/MIME",
+  "description": "S/MIME secure email",
+  "parent": "cms",
+  "path": "security/cms/s-mime",
+  "document_count": 76,
+  "document_count_deep": 76,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc2311",
+    "rfc2312",
+    "rfc2630",
+    "rfc2631",
+    "rfc2632",
+    "rfc2633",
+    "rfc2634",
+    "rfc2785",
+    "rfc2876",
+    "rfc2984",
+    "rfc3058",
+    "rfc3114",
+    "rfc3125",
+    "rfc3126",
+    "rfc3183",
+    "rfc3185",
+    "rfc3211",
+    "rfc3217",
+    "rfc3218",
+    "rfc3274",
+    "rfc3278",
+    "rfc3369",
+    "rfc3370",
+    "rfc3394",
+    "rfc3537",
+    "rfc3560",
+    "rfc3565",
+    "rfc3657",
+    "rfc3850",
+    "rfc3851",
+    "rfc3852",
+    "rfc3853",
+    "rfc3854",
+    "rfc3855",
+    "rfc4010",
+    "rfc4056",
+    "rfc4134",
+    "rfc4262",
+    "rfc4490",
+    "rfc4853",
+    "rfc5008",
+    "rfc5035",
+    "rfc5083",
+    "rfc5084",
+    "rfc5126",
+    "rfc5275",
+    "rfc5408",
+    "rfc5409",
+    "rfc5652",
+    "rfc5750",
+    "rfc5751",
+    "rfc5752",
+    "rfc5753",
+    "rfc5754",
+    "rfc5911",
+    "rfc5912",
+    "rfc5990",
+    "rfc6025",
+    "rfc6210",
+    "rfc6211",
+    "rfc6318",
+    "rfc6664",
+    "rfc7107",
+    "rfc7114",
+    "rfc7165",
+    "rfc7281",
+    "rfc7508",
+    "rfc7912",
+    "rfc8162",
+    "rfc8550",
+    "rfc8551",
+    "rfc8591",
+    "rfc8823",
+    "rfc9216",
+    "rfc9219",
+    "rfc9788"
+  ],
+  "document_meta": {
+    "rfc2311": { "title": "S/MIME Version 2 Message Specification", "subseries": [] },
+    "rfc2312": { "title": "S/MIME Version 2 Certificate Handling", "subseries": [] },
+    "rfc2630": { "title": "Cryptographic Message Syntax", "subseries": [] },
+    "rfc2631": { "title": "Diffie-Hellman Key Agreement Method", "subseries": [] },
+    "rfc2632": { "title": "S/MIME Version 3 Certificate Handling", "subseries": [] },
+    "rfc2633": { "title": "S/MIME Version 3 Message Specification", "subseries": [] },
+    "rfc2634": { "title": "Enhanced Security Services for S/MIME", "subseries": [] },
+    "rfc2785": {
+      "title": "Methods for Avoiding the \"Small-Subgroup\" Attacks on the Diffie-Hellman Key Agreement Method for S/MIME",
+      "subseries": []
+    },
+    "rfc2876": { "title": "Use of the KEA and SKIPJACK Algorithms in CMS", "subseries": [] },
+    "rfc2984": { "title": "Use of the CAST-128 Encryption Algorithm in CMS", "subseries": [] },
+    "rfc3058": { "title": "Use of the IDEA Encryption Algorithm in CMS", "subseries": [] },
+    "rfc3114": {
+      "title": "Implementing Company Classification Policy with the S/MIME Security Label",
+      "subseries": []
+    },
+    "rfc3125": { "title": "Electronic Signature Policies", "subseries": [] },
+    "rfc3126": { "title": "Electronic Signature Formats for long term electronic signatures", "subseries": [] },
+    "rfc3183": { "title": "Domain Security Services using S/MIME", "subseries": [] },
+    "rfc3185": { "title": "Reuse of CMS Content Encryption Keys", "subseries": [] },
+    "rfc3211": { "title": "Password-based Encryption for CMS", "subseries": [] },
+    "rfc3217": { "title": "Triple-DES and RC2 Key Wrapping", "subseries": [] },
+    "rfc3218": { "title": "Preventing the Million Message Attack on Cryptographic Message Syntax", "subseries": [] },
+    "rfc3274": { "title": "Compressed Data Content Type for Cryptographic Message Syntax (CMS)", "subseries": [] },
+    "rfc3278": {
+      "title": "Use of Elliptic Curve Cryptography (ECC) Algorithms in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc3369": { "title": "Cryptographic Message Syntax (CMS)", "subseries": [] },
+    "rfc3370": { "title": "Cryptographic Message Syntax (CMS) Algorithms", "subseries": [] },
+    "rfc3394": { "title": "Advanced Encryption Standard (AES) Key Wrap Algorithm", "subseries": [] },
+    "rfc3537": {
+      "title": "Wrapping a Hashed Message Authentication Code (HMAC) key with a Triple-Data Encryption Standard (DES) Key or an Advanced Encryption Standard (AES) Key",
+      "subseries": []
+    },
+    "rfc3560": {
+      "title": "Use of the RSAES-OAEP Key Transport Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc3565": {
+      "title": "Use of the Advanced Encryption Standard (AES) Encryption Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc3657": {
+      "title": "Use of the Camellia Encryption Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc3850": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.1 Certificate Handling",
+      "subseries": []
+    },
+    "rfc3851": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.1 Message Specification",
+      "subseries": []
+    },
+    "rfc3852": { "title": "Cryptographic Message Syntax (CMS)", "subseries": [] },
+    "rfc3853": {
+      "title": "S/MIME Advanced Encryption Standard (AES) Requirement for the Session Initiation Protocol (SIP)",
+      "subseries": []
+    },
+    "rfc3854": {
+      "title": "Securing X.400 Content with Secure/Multipurpose Internet Mail Extensions (S/MIME)",
+      "subseries": []
+    },
+    "rfc3855": {
+      "title": "Transporting Secure/Multipurpose Internet Mail Extensions (S/MIME) Objects in X.400",
+      "subseries": []
+    },
+    "rfc4010": {
+      "title": "Use of the SEED Encryption Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4056": {
+      "title": "Use of the RSASSA-PSS Signature Algorithm in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4134": { "title": "Examples of S/MIME Messages", "subseries": [] },
+    "rfc4262": {
+      "title": "X.509 Certificate Extension for Secure/Multipurpose Internet Mail Extensions (S/MIME) Capabilities",
+      "subseries": []
+    },
+    "rfc4490": {
+      "title": "Using the GOST 28147-89, GOST R 34.11-94, GOST R 34.10-94, and GOST R 34.10-2001 Algorithms with Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc4853": { "title": "Cryptographic Message Syntax (CMS) Multiple Signer Clarification", "subseries": [] },
+    "rfc5008": { "title": "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)", "subseries": [] },
+    "rfc5035": { "title": "Enhanced Security Services (ESS) Update: Adding CertID Algorithm Agility", "subseries": [] },
+    "rfc5083": {
+      "title": "Cryptographic Message Syntax (CMS) Authenticated-Enveloped-Data Content Type",
+      "subseries": []
+    },
+    "rfc5084": {
+      "title": "Using AES-CCM and AES-GCM Authenticated Encryption in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc5126": { "title": "CMS Advanced Electronic Signatures (CAdES)", "subseries": [] },
+    "rfc5275": { "title": "CMS Symmetric Key Management and Distribution", "subseries": [] },
+    "rfc5408": { "title": "Identity-Based Encryption Architecture and Supporting Data Structures", "subseries": [] },
+    "rfc5409": {
+      "title": "Using the Boneh-Franklin and Boneh-Boyen Identity-Based Encryption Algorithms with the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc5652": { "title": "Cryptographic Message Syntax (CMS)", "subseries": ["std70"] },
+    "rfc5750": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.2 Certificate Handling",
+      "subseries": []
+    },
+    "rfc5751": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 3.2 Message Specification",
+      "subseries": []
+    },
+    "rfc5752": { "title": "Multiple Signatures in Cryptographic Message Syntax (CMS)", "subseries": [] },
+    "rfc5753": {
+      "title": "Use of Elliptic Curve Cryptography (ECC) Algorithms in Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc5754": { "title": "Using SHA2 Algorithms with Cryptographic Message Syntax", "subseries": [] },
+    "rfc5911": { "title": "New ASN.1 Modules for Cryptographic Message Syntax (CMS) and S/MIME", "subseries": [] },
+    "rfc5912": { "title": "New ASN.1 Modules for the Public Key Infrastructure Using X.509 (PKIX)", "subseries": [] },
+    "rfc5990": {
+      "title": "Use of the RSA-KEM Key Transport Algorithm in the Cryptographic Message Syntax (CMS)",
+      "subseries": []
+    },
+    "rfc6025": { "title": "ASN.1 Translation", "subseries": [] },
+    "rfc6210": {
+      "title": "Experiment: Hash Functions with Parameters in the Cryptographic Message Syntax (CMS) and S/MIME",
+      "subseries": []
+    },
+    "rfc6211": {
+      "title": "Cryptographic Message Syntax (CMS) Algorithm Identifier Protection Attribute",
+      "subseries": []
+    },
+    "rfc6318": { "title": "Suite B in Secure/Multipurpose Internet Mail Extensions (S/MIME)", "subseries": [] },
+    "rfc6664": { "title": "S/MIME Capabilities for Public Key Definitions", "subseries": [] },
+    "rfc7107": { "title": "Object Identifier Registry for the S/MIME Mail Security Working Group", "subseries": [] },
+    "rfc7114": { "title": "Creation of a Registry for smime-type Parameter Values", "subseries": [] },
+    "rfc7165": { "title": "Use Cases and Requirements for JSON Object Signing and Encryption (JOSE)", "subseries": [] },
+    "rfc7281": { "title": "Authentication-Results Registration for S/MIME Signature Verification", "subseries": [] },
+    "rfc7508": { "title": "Securing Header Fields with S/MIME", "subseries": [] },
+    "rfc7912": {
+      "title": "Message Authorizing Email Header Field and Its Use for the Draft and Release Procedure",
+      "subseries": []
+    },
+    "rfc8162": { "title": "Using Secure DNS to Associate Certificates with Domain Names for S/MIME", "subseries": [] },
+    "rfc8550": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Certificate Handling",
+      "subseries": []
+    },
+    "rfc8551": {
+      "title": "Secure/Multipurpose Internet Mail Extensions (S/MIME) Version 4.0 Message Specification",
+      "subseries": []
+    },
+    "rfc8591": { "title": "SIP-Based Messaging with S/MIME", "subseries": [] },
+    "rfc8823": {
+      "title": "Extensions to Automatic Certificate Management Environment for End-User S/MIME Certificates",
+      "subseries": []
+    },
+    "rfc9216": { "title": "S/MIME Example Keys and Certificates", "subseries": [] },
+    "rfc9219": {
+      "title": "S/MIME Signature Verification Extension to the JSON Meta Application Protocol (JMAP)",
+      "subseries": []
+    },
+    "rfc9788": { "title": "Header Protection for Cryptographically Protected Email", "subseries": [] }
+  },
+  "subject_meta": { "security": { "name": "Security" }, "cms": { "name": "CMS" } }
+}

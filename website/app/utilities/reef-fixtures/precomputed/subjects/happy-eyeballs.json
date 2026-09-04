@@ -1,0 +1,31 @@
+{
+  "id": 1009,
+  "slug": "happy-eyeballs",
+  "name": "Happy Eyeballs",
+  "description": "Happy Eyeballs connection racing",
+  "parent": "ipv6-transition",
+  "path": "internet-layer/ipv6/ipv6-transition/happy-eyeballs",
+  "document_count": 4,
+  "document_count_deep": 4,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc6555", "rfc7984", "rfc8305", "rfc9622"],
+  "document_meta": {
+    "rfc6555": { "title": "Happy Eyeballs: Success with Dual-Stack Hosts", "subseries": [] },
+    "rfc7984": {
+      "title": "Locating Session Initiation Protocol (SIP) Servers in a Dual-Stack IP Network",
+      "subseries": []
+    },
+    "rfc8305": { "title": "Happy Eyeballs Version 2: Better Connectivity Using Concurrency", "subseries": [] },
+    "rfc9622": {
+      "title": "An Abstract Application Programming Interface (API) for Transport Services",
+      "subseries": []
+    }
+  },
+  "subject_meta": {
+    "internet-layer": { "name": "Internet Layer" },
+    "ipv6": { "name": "IPv6" },
+    "ipv6-transition": { "name": "IPv6 Transition" }
+  }
+}

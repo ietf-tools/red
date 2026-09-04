@@ -1,0 +1,22 @@
+{
+  "id": 995,
+  "slug": "masque",
+  "name": "MASQUE",
+  "description": "MASQUE: proxying IP/UDP over HTTP",
+  "parent": "http",
+  "path": "web/http/masque",
+  "document_count": 5,
+  "document_count_deep": 5,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": ["rfc9297", "rfc9298", "rfc9484", "rfc9614", "rfc9729"],
+  "document_meta": {
+    "rfc9297": { "title": "HTTP Datagrams and the Capsule Protocol", "subseries": [] },
+    "rfc9298": { "title": "Proxying UDP in HTTP", "subseries": [] },
+    "rfc9484": { "title": "Proxying IP in HTTP", "subseries": [] },
+    "rfc9614": { "title": "Partitioning as an Architecture for Privacy", "subseries": [] },
+    "rfc9729": { "title": "The Concealed HTTP Authentication Scheme", "subseries": [] }
+  },
+  "subject_meta": { "web": { "name": "Web" }, "http": { "name": "HTTP" } }
+}

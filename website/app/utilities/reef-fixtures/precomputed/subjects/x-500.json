@@ -1,0 +1,256 @@
+{
+  "id": 802,
+  "slug": "x-500",
+  "name": "X.500",
+  "description": "The X.500 directory",
+  "parent": "directory-services",
+  "path": "applications/directory-services/x-500",
+  "document_count": 83,
+  "document_count_deep": 83,
+  "retired": false,
+  "children": [],
+  "aliases": [],
+  "documents": [
+    "rfc1249",
+    "rfc1255",
+    "rfc1274",
+    "rfc1275",
+    "rfc1276",
+    "rfc1277",
+    "rfc1278",
+    "rfc1279",
+    "rfc1292",
+    "rfc1295",
+    "rfc1308",
+    "rfc1309",
+    "rfc1330",
+    "rfc1373",
+    "rfc1384",
+    "rfc1417",
+    "rfc1430",
+    "rfc1431",
+    "rfc1484",
+    "rfc1485",
+    "rfc1487",
+    "rfc1488",
+    "rfc1491",
+    "rfc1558",
+    "rfc1562",
+    "rfc1564",
+    "rfc1567",
+    "rfc1580",
+    "rfc1608",
+    "rfc1609",
+    "rfc1617",
+    "rfc1632",
+    "rfc1684",
+    "rfc1758",
+    "rfc1777",
+    "rfc1778",
+    "rfc1779",
+    "rfc1781",
+    "rfc1798",
+    "rfc1801",
+    "rfc1802",
+    "rfc1803",
+    "rfc1804",
+    "rfc1823",
+    "rfc1836",
+    "rfc1837",
+    "rfc1838",
+    "rfc1943",
+    "rfc2079",
+    "rfc2116",
+    "rfc2120",
+    "rfc2148",
+    "rfc2164",
+    "rfc2218",
+    "rfc2219",
+    "rfc2247",
+    "rfc2251",
+    "rfc2252",
+    "rfc2253",
+    "rfc2254",
+    "rfc2256",
+    "rfc2258",
+    "rfc2259",
+    "rfc2293",
+    "rfc2294",
+    "rfc2377",
+    "rfc2378",
+    "rfc3494",
+    "rfc3671",
+    "rfc3687",
+    "rfc3727",
+    "rfc3771",
+    "rfc4510",
+    "rfc4511",
+    "rfc4512",
+    "rfc4514",
+    "rfc4515",
+    "rfc4517",
+    "rfc4523",
+    "rfc4524",
+    "rfc4526",
+    "rfc4530",
+    "rfc5020"
+  ],
+  "document_meta": {
+    "rfc1249": { "title": "DIXIE Protocol Specification", "subseries": [] },
+    "rfc1255": { "title": "A Naming Scheme for c=US", "subseries": [] },
+    "rfc1274": { "title": "The COSINE and Internet X.500 Schema", "subseries": [] },
+    "rfc1275": { "title": "Replication Requirements to provide an Internet Directory using X.500", "subseries": [] },
+    "rfc1276": {
+      "title": "Replication and Distributed Operations extensions to provide an Internet Directory using X.500",
+      "subseries": []
+    },
+    "rfc1277": {
+      "title": "Encoding Network Addresses to Support Operation over Non-OSI Lower Layers",
+      "subseries": []
+    },
+    "rfc1278": { "title": "A string encoding of Presentation Address", "subseries": [] },
+    "rfc1279": { "title": "X.500 and Domains", "subseries": [] },
+    "rfc1292": { "title": "A Catalog of Available X.500 Implementations", "subseries": [] },
+    "rfc1295": { "title": "User Bill of Rights for entries and listings in the Public Directory", "subseries": [] },
+    "rfc1308": {
+      "title": "Executive Introduction to Directory Services Using the X.500 Protocol",
+      "subseries": ["fyi13"]
+    },
+    "rfc1309": { "title": "Technical Overview of Directory Services Using the X.500 Protocol", "subseries": ["fyi14"] },
+    "rfc1330": {
+      "title": "Recommendations for the Phase I Deployment of OSI Directory Services (X.500) and OSI Message Handling Services (X.400) within the ESNET Community",
+      "subseries": []
+    },
+    "rfc1373": { "title": "Portable DUAs", "subseries": [] },
+    "rfc1384": { "title": "Naming Guidelines for Directory Pilots", "subseries": [] },
+    "rfc1417": { "title": "NADF Standing Documents: A Brief Overview", "subseries": [] },
+    "rfc1430": { "title": "A Strategic Plan for Deploying an Internet X.500 Directory Service", "subseries": [] },
+    "rfc1431": { "title": "DUA Metrics (OSI-DS 33 (v2))", "subseries": [] },
+    "rfc1484": {
+      "title": "Using the OSI Directory to achieve User Friendly Naming (OSI-DS 24 (v1.2))",
+      "subseries": []
+    },
+    "rfc1485": { "title": "A String Representation of Distinguished Names (OSI-DS 23 (v5))", "subseries": [] },
+    "rfc1487": { "title": "X.500 Lightweight Directory Access Protocol", "subseries": [] },
+    "rfc1488": { "title": "The X.500 String Representation of Standard Attribute Syntaxes", "subseries": [] },
+    "rfc1491": { "title": "A Survey of Advanced Usages of X.500", "subseries": ["fyi21"] },
+    "rfc1558": { "title": "A String Representation of LDAP Search Filters", "subseries": [] },
+    "rfc1562": { "title": "Naming Guidelines for the AARNet X.500 Directory Service", "subseries": [] },
+    "rfc1564": { "title": "DSA Metrics (OSI-DS 34 (v3))", "subseries": [] },
+    "rfc1567": { "title": "X.500 Directory Monitoring MIB", "subseries": [] },
+    "rfc1580": { "title": "Guide to Network Resource Tools", "subseries": ["fyi23"] },
+    "rfc1608": { "title": "Representing IP Information in the X.500 Directory", "subseries": [] },
+    "rfc1609": { "title": "Charting Networks in the X.500 Directory", "subseries": [] },
+    "rfc1617": { "title": "Naming and Structuring Guidelines for X.500 Directory Pilots", "subseries": [] },
+    "rfc1632": { "title": "A Revised Catalog of Available X.500 Implementations", "subseries": [] },
+    "rfc1684": { "title": "Introduction to White Pages Services based on X.500", "subseries": [] },
+    "rfc1758": { "title": "NADF Standing Documents: A Brief Overview", "subseries": [] },
+    "rfc1777": { "title": "Lightweight Directory Access Protocol", "subseries": [] },
+    "rfc1778": { "title": "The String Representation of Standard Attribute Syntaxes", "subseries": [] },
+    "rfc1779": { "title": "A String Representation of Distinguished Names", "subseries": [] },
+    "rfc1781": { "title": "Using the OSI Directory to Achieve User Friendly Naming", "subseries": [] },
+    "rfc1798": { "title": "Connection-less Lightweight X.500 Directory Access Protocol", "subseries": [] },
+    "rfc1801": { "title": "MHS use of the X.500 Directory to support MHS Routing", "subseries": [] },
+    "rfc1802": {
+      "title": "Introducing Project Long Bud: Internet Pilot Project for the Deployment of X.500 Directory Information in Support of X.400 Routing",
+      "subseries": []
+    },
+    "rfc1803": { "title": "Recommendations for an X.500 Production Directory Service", "subseries": [] },
+    "rfc1804": { "title": "Schema Publishing in X.500 Directory", "subseries": [] },
+    "rfc1823": { "title": "The LDAP Application Program Interface", "subseries": [] },
+    "rfc1836": {
+      "title": "Representing the O/R Address hierarchy in the X.500 Directory Information Tree",
+      "subseries": []
+    },
+    "rfc1837": { "title": "Representing Tables and Subtrees in the X.500 Directory", "subseries": [] },
+    "rfc1838": {
+      "title": "Use of the X.500 Directory to support mapping between X.400 and RFC 822 Addresses",
+      "subseries": []
+    },
+    "rfc1943": { "title": "Building an X.500 Directory Service in the US", "subseries": [] },
+    "rfc2079": {
+      "title": "Definition of an X.500 Attribute Type and an Object Class to Hold Uniform Resource Identifiers (URIs)",
+      "subseries": []
+    },
+    "rfc2116": { "title": "X.500 Implementations Catalog-96", "subseries": ["fyi11"] },
+    "rfc2120": { "title": "Managing the X.500 Root Naming Context", "subseries": [] },
+    "rfc2148": { "title": "Deployment of the Internet White Pages Service", "subseries": ["bcp15"] },
+    "rfc2164": { "title": "Use of an X.500/LDAP directory to support MIXER address mapping", "subseries": [] },
+    "rfc2218": { "title": "A Common Schema for the Internet White Pages Service", "subseries": [] },
+    "rfc2219": { "title": "Use of DNS Aliases for Network Services", "subseries": ["bcp17"] },
+    "rfc2247": { "title": "Using Domains in LDAP/X.500 Distinguished Names", "subseries": [] },
+    "rfc2251": { "title": "Lightweight Directory Access Protocol (v3)", "subseries": [] },
+    "rfc2252": { "title": "Lightweight Directory Access Protocol (v3): Attribute Syntax Definitions", "subseries": [] },
+    "rfc2253": {
+      "title": "Lightweight Directory Access Protocol (v3): UTF-8 String Representation of Distinguished Names",
+      "subseries": []
+    },
+    "rfc2254": { "title": "The String Representation of LDAP Search Filters", "subseries": [] },
+    "rfc2256": { "title": "A Summary of the X.500(96) User Schema for use with LDAPv3", "subseries": [] },
+    "rfc2258": { "title": "Internet Nomenclator Project", "subseries": [] },
+    "rfc2259": { "title": "Simple Nomenclator Query Protocol (SNQP)", "subseries": [] },
+    "rfc2293": { "title": "Representing Tables and Subtrees in the X.500 Directory", "subseries": [] },
+    "rfc2294": {
+      "title": "Representing the O/R Address hierarchy in the X.500 Directory Information Tree",
+      "subseries": []
+    },
+    "rfc2377": { "title": "Naming Plan for Internet Directory-Enabled Applications", "subseries": [] },
+    "rfc2378": { "title": "The CCSO Nameserver (Ph) Architecture", "subseries": [] },
+    "rfc3494": {
+      "title": "Lightweight Directory Access Protocol version 2 (LDAPv2) to Historic Status",
+      "subseries": []
+    },
+    "rfc3671": {
+      "title": "Collective Attributes in the Lightweight Directory Access Protocol (LDAP)",
+      "subseries": []
+    },
+    "rfc3687": {
+      "title": "Lightweight Directory Access Protocol (LDAP) and X.500 Component Matching Rules",
+      "subseries": []
+    },
+    "rfc3727": { "title": "ASN.1 Module Definition for the LDAP and X.500 Component Matching Rules", "subseries": [] },
+    "rfc3771": {
+      "title": "The Lightweight Directory Access Protocol (LDAP) Intermediate Response Message",
+      "subseries": []
+    },
+    "rfc4510": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Technical Specification Road Map",
+      "subseries": []
+    },
+    "rfc4511": { "title": "Lightweight Directory Access Protocol (LDAP): The Protocol", "subseries": [] },
+    "rfc4512": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Directory Information Models",
+      "subseries": []
+    },
+    "rfc4514": {
+      "title": "Lightweight Directory Access Protocol (LDAP): String Representation of Distinguished Names",
+      "subseries": []
+    },
+    "rfc4515": {
+      "title": "Lightweight Directory Access Protocol (LDAP): String Representation of Search Filters",
+      "subseries": []
+    },
+    "rfc4517": {
+      "title": "Lightweight Directory Access Protocol (LDAP): Syntaxes and Matching Rules",
+      "subseries": []
+    },
+    "rfc4523": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Schema Definitions for X.509 Certificates",
+      "subseries": []
+    },
+    "rfc4524": { "title": "COSINE LDAP/X.500 Schema", "subseries": [] },
+    "rfc4526": {
+      "title": "Lightweight Directory Access Protocol (LDAP) Absolute True and False Filters",
+      "subseries": []
+    },
+    "rfc4530": {
+      "title": "Lightweight Directory Access Protocol (LDAP) entryUUID Operational Attribute",
+      "subseries": []
+    },
+    "rfc5020": {
+      "title": "The Lightweight Directory Access Protocol (LDAP) entryDN Operational Attribute",
+      "subseries": []
+    }
+  },
+  "subject_meta": { "applications": { "name": "Applications" }, "directory-services": { "name": "Directory Services" } }
+}
