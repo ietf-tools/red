@@ -47,6 +47,54 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/precomputed/subjects/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * The published subject index
+     * @description Not a served endpoint. This describes the payload the precomputer publishes to `subjects.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+     *
+     *     It is the vocabulary as a tree with every assignment and every document title, in one file, so that a caller renders the subject listing from a single fetch. Two keyed maps: `subjects` by slug in tree order, and `documents` by identifier, referenced from the entries rather than repeated beside each subject that covers the document.
+     *
+     *     Retired subjects and aliases are absent: they are not offered, and the per-subject files are what answer for them.
+     */
+    get: operations['precomputed_subject_index_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/precomputed/subjects/{slug}/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * A published subject file
+     * @description Not a served endpoint. This describes the payload the precomputer publishes to `subjects/<slug>.json` in the blob store; no deployment routes this path.
+     *
+     *     One file per subject, which is what lets a subject page in Red be a single fetch. It is the served `/api/reef/subjects/{slug}/` response plus `document_meta`, the title of each document assigned here, and `subject_meta`, the curated names of this subject's ancestors and children so that a breadcrumb need not read the whole vocabulary.
+     *
+     *     A retired subject and an alias are published here too, as the same redirect stubs the served read returns, because a blob store cannot answer with a 301. Neither carries `documents`, so neither gains the two maps.
+     */
+    get: operations['precomputed_subject_detail_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/ratings/{rfc}/': {
     parameters: {
       query?: never
@@ -463,6 +511,11 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    /** @description A document as a published file names it: what Red's index says about it. */
+    DocumentMetadata: {
+      title: string | null
+      subseries: string[]
+    }
     DocumentSet: {
       /** Format: uuid */
       readonly id: string
@@ -591,6 +644,50 @@ export interface components {
       /** @description Lower sorts first */
       rank?: number
     }
+    /**
+     * @description A subject's own file: the served shape plus what a page cannot look up.
+     *
+     *     Both additions are sibling maps rather than changes to the arrays they
+     *     describe. Retyping `documents` into a list of objects, or `children` into
+     *     one, is the change that breaks a caller, and it is what Reef asks Red not to
+     *     do to it. A map also grows a field later without retyping anything.
+     */
+    PrecomputedSubjectDetail: {
+      readonly id: number
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
+      readonly slug: string
+      /** @description How the subject is shown to readers. */
+      readonly name: string
+      /** @description What belongs under this subject, for whoever curates it next and for a caller drawing a picker. */
+      readonly description: string
+      readonly parent: string | null
+      /** @description Slugs from the top down, separated by a slash. Derived; edit the slug or the parent instead. */
+      readonly path: string
+      readonly document_count: number
+      readonly document_count_deep: number
+      readonly retired: boolean
+      readonly children: string[]
+      readonly aliases: string[]
+      /**
+       * @description The documents assigned to this subject, and not to those beneath it.
+       *
+       *     Unchanged in meaning, deliberately. Red consumes this array and the
+       *     precomputer keys document_meta off it, so widening it to the subtree would
+       *     be a contract change dressed up as a bug fix. The subtree is the index
+       *     file's business.
+       */
+      readonly documents: string[]
+      readonly document_meta: {
+        [key: string]: components['schemas']['DocumentMetadata']
+      }
+      readonly subject_meta: {
+        [key: string]: components['schemas']['SubjectMetadata']
+      }
+    }
+    PrecomputedSubjectDetailOrRedirect:
+      | components['schemas']['PrecomputedSubjectDetail']
+      | components['schemas']['RetiredSubject']
+      | components['schemas']['SubjectAlias']
     RatingAggregate: {
       rfc: string
       /** Format: double */
@@ -707,6 +804,55 @@ export interface components {
       | components['schemas']['SubjectDetail']
       | components['schemas']['RetiredSubject']
       | components['schemas']['SubjectAlias']
+    /**
+     * @description The whole vocabulary in one payload: the tree, the assignments, the titles.
+     *
+     *     Two maps rather than two lists, both keyed, so that a caller looks a subject
+     *     or a document up directly instead of building an index of its own. The
+     *     metadata sits in one map referenced by identifier rather than beside each
+     *     subject that carries the document, which would repeat every title once per
+     *     covering subject.
+     *
+     *     What is deliberately absent is each subject's subtree. It is derivable from
+     *     ``path`` and ``children`` in the pass a caller is already making, and writing
+     *     it out would store every identifier once per ancestor.
+     */
+    SubjectIndex: {
+      documents: {
+        [key: string]: components['schemas']['DocumentMetadata']
+      }
+      subjects: {
+        [key: string]: components['schemas']['SubjectIndexEntry']
+      }
+    }
+    /**
+     * @description One subject in the index file.
+     *
+     *     Field order is the file's key order and is load-bearing while the byte
+     *     equality test against the old hand-built payload stands. It is the list
+     *     serializer's fields plus the two the index adds.
+     */
+    SubjectIndexEntry: {
+      id: number
+      name: string
+      description: string
+      parent: string | null
+      path: string
+      children: string[]
+      documents: string[]
+      document_count: number
+      document_count_deep: number
+    }
+    /**
+     * @description A subject named by another subject's file, so a page can render it.
+     *
+     *     Only the curated name. ``children`` and ``path`` carry slugs, and a page
+     *     showing "Email" rather than ``email`` would otherwise have to read the whole
+     *     vocabulary to find one word.
+     */
+    SubjectMetadata: {
+      name: string
+    }
     Subscription: {
       readonly id: number
       kind: components['schemas']['KindEnum']
@@ -794,6 +940,46 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['PopularEntry'][]
+        }
+      }
+    }
+  }
+  precomputed_subject_index_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SubjectIndex']
+        }
+      }
+    }
+  }
+  precomputed_subject_detail_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        slug: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['PrecomputedSubjectDetailOrRedirect']
         }
       }
     }

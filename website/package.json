@@ -31,6 +31,7 @@
     "test:e2e:watch": "nuxt prepare && TZ=UTC vitest --project e2e",
     "test:e2e:update-screenshots": "nuxt prepare && UPDATE_SCREENSHOTS=1 TZ=UTC vitest run --project e2e",
     "generate:reef-api-client": "npx --no openapi-typescript ./reef_api.yaml -o ./generated/reef-api-client.d.ts",
+    "generate:reef-api-zod": "npx --no typed-openapi ./reef_api.yaml --runtime zod -o ./generated/reef-api-zod.ts",
     "generate:content-metadata": "node ./scripts/generate-content-metadata.ts"
   },
   "dependencies": {
@@ -80,6 +81,7 @@
     "playwright": "1.61.1",
     "playwright-core": "1.61.1",
     "pngjs": "7.0.0",
+    "typed-openapi": "4.0.1",
     "vitest": "4.1.10",
     "vue-tsc": "3.3.7"
   },
