@@ -18,7 +18,7 @@ const UiSettingsSchema = z
   .object({
     obsoletedByMode: SupersededModeSchema,
     updatedByMode: SupersededModeSchema,
-    disableRFCLinkPreview: z.boolean(),
+    disableRFCLinkPreview: z.boolean().optional(),
     textScale: TextScaleSchema.optional(),
     subjectDensity: SubjectDensitySchema
   })

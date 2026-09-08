@@ -1,0 +1,1669 @@
+{
+  "generatedAt": "2026-09-07T07:21:41.220Z",
+  "corpus": "broad",
+  "failures": [],
+  "audits": [
+    {
+      "rfc": 8650,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8650,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 67,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 5,
+          "elementWidthPx": 160,
+          "parentAvailablePx": 0,
+          "detail": "widest word 160px in 0px",
+          "snippet": "8650",
+          "anchorId": "dynamic-subscription-to-yang-events-and-datastores-over-restconf"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 67,
+          "elementWidthPx": 355,
+          "parentAvailablePx": 272,
+          "detail": "widest word 355px in 272px",
+          "snippet": "Dynamic Subscription to YANG Events and Datastores over REST",
+          "anchorId": "dynamic-subscription-to-yang-events-and-datastores-over-restconf"
+        },
+        {
+          "signature": "a.email — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "a",
+          "identifier": "a.email",
+          "overflowPx": 3,
+          "elementWidthPx": 291,
+          "parentAvailablePx": 272,
+          "detail": "widest word 291px in 272px",
+          "snippet": "ludwig@clemm.org",
+          "anchorId": "section-appendix.c"
+        }
+      ]
+    },
+    {
+      "rfc": 8675,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8675,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 16,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 16,
+          "elementWidthPx": 304,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 8675:",
+          "anchorId": "a-yang-data-model-for-tunnel-interface-types"
+        }
+      ]
+    },
+    {
+      "rfc": 8700,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8700,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 78,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 2,
+          "elementWidthPx": 157,
+          "parentAvailablePx": 0,
+          "detail": "widest word 157px in 0px",
+          "snippet": "8700",
+          "anchorId": "fifty-years-of-rfcs"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 9,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-3.1-16.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 7,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-3.1-16.2"
+        }
+      ]
+    },
+    {
+      "rfc": 8725,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8725,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 15,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 15,
+          "elementWidthPx": 303,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 8725:",
+          "anchorId": "json-web-token-best-current-practices"
+        }
+      ]
+    },
+    {
+      "rfc": 8750,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8750,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 110,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 17,
+          "elementWidthPx": 305,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 8750:",
+          "anchorId": "implicit-initialization-vector-iv-for-counter-based-ciphers-in-encapsulating-security-payload-esp"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 110,
+          "elementWidthPx": 398,
+          "parentAvailablePx": 272,
+          "detail": "widest word 431px in 272px",
+          "snippet": "Implicit Initialization Vector (IV) for Counter-Based Cipher",
+          "anchorId": "implicit-initialization-vector-iv-for-counter-based-ciphers-in-encapsulating-security-payload-esp"
+        }
+      ]
+    },
+    {
+      "rfc": 8775,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8775,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 35,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 13,
+          "elementWidthPx": 301,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 8775:",
+          "anchorId": "pim-designated-router-load-balancing"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 35,
+          "elementWidthPx": 323,
+          "parentAvailablePx": 272,
+          "detail": "widest word 323px in 272px",
+          "snippet": "PIM Designated Router Load Balancing",
+          "anchorId": "pim-designated-router-load-balancing"
+        }
+      ]
+    },
+    {
+      "rfc": 8800,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8800,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 155,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 7,
+          "elementWidthPx": 162,
+          "parentAvailablePx": 0,
+          "detail": "widest word 162px in 0px",
+          "snippet": "8800",
+          "anchorId": "path-computation-element-communication-protocol-pcep-extension-for-label-switched-path-lsp-diversity-constraint-signaling"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 155,
+          "elementWidthPx": 443,
+          "parentAvailablePx": 272,
+          "detail": "widest word 443px in 272px",
+          "snippet": "Path Computation Element Communication Protocol (PCEP) Exten",
+          "anchorId": "path-computation-element-communication-protocol-pcep-extension-for-label-switched-path-lsp-diversity-constraint-signaling"
+        },
+        {
+          "signature": "span.refTitle — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.refTitle",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 0,
+          "detail": "widest word 296px in 0px",
+          "snippet": "\"Recommendations for Secure Use of Transport Layer Security ",
+          "anchorId": "section-9.2"
+        }
+      ]
+    },
+    {
+      "rfc": 8825,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8825,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 61,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 2,
+          "elementWidthPx": 157,
+          "parentAvailablePx": 0,
+          "detail": "widest word 157px in 0px",
+          "snippet": "8825",
+          "anchorId": "overview-real-time-protocols-for-browser-based-applications"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 61,
+          "elementWidthPx": 349,
+          "parentAvailablePx": 272,
+          "detail": "widest word 434px in 272px",
+          "snippet": "Overview: Real-Time Protocols for Browser-Based Applications",
+          "anchorId": "overview-real-time-protocols-for-browser-based-applications"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 3,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-2.3-3.2"
+        }
+      ]
+    },
+    {
+      "rfc": 8850,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8850,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 93,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 5,
+          "elementWidthPx": 160,
+          "parentAvailablePx": 0,
+          "detail": "widest word 160px in 0px",
+          "snippet": "8850",
+          "anchorId": "controlling-multiple-streams-for-telepresence-clue-protocol-data-channel"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 93,
+          "elementWidthPx": 381,
+          "parentAvailablePx": 272,
+          "detail": "widest word 381px in 272px",
+          "snippet": "Controlling Multiple Streams for Telepresence (CLUE) Protoco",
+          "anchorId": "controlling-multiple-streams-for-telepresence-clue-protocol-data-channel"
+        },
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 6,
+          "elementWidthPx": 165,
+          "parentAvailablePx": 79,
+          "detail": "display: inline",
+          "snippet": "[RFC8832]",
+          "anchorId": "section-1-4.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 21,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-1-4.1"
+        },
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 2,
+          "elementWidthPx": 161,
+          "parentAvailablePx": 79,
+          "detail": "display: inline",
+          "snippet": "[RFC8831]",
+          "anchorId": "section-3.2.2-2.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 63,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-3.3.1-2.1"
+        },
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 8,
+          "elementWidthPx": 167,
+          "parentAvailablePx": 79,
+          "detail": "display: inline",
+          "snippet": "[RFC8864]",
+          "anchorId": "section-3.3.2-3.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 4,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-3.3.2-3.1"
+        }
+      ]
+    },
+    {
+      "rfc": 8875,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8875,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 121,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 16,
+          "elementWidthPx": 304,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 8875:",
+          "anchorId": "working-group-github-administration"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 121,
+          "elementWidthPx": 409,
+          "parentAvailablePx": 272,
+          "detail": "widest word 409px in 272px",
+          "snippet": "Working Group GitHub Administration",
+          "anchorId": "working-group-github-administration"
+        }
+      ]
+    },
+    {
+      "rfc": 8900,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8900,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 125,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 7,
+          "elementWidthPx": 162,
+          "parentAvailablePx": 0,
+          "detail": "widest word 162px in 0px",
+          "snippet": "8900",
+          "anchorId": "ip-fragmentation-considered-fragile"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 125,
+          "elementWidthPx": 413,
+          "parentAvailablePx": 272,
+          "detail": "widest word 413px in 272px",
+          "snippet": "IP Fragmentation Considered Fragile",
+          "anchorId": "ip-fragmentation-considered-fragile"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 19,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 142,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-4.2-2"
+        },
+        {
+          "signature": "span.refTitle — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.refTitle",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 0,
+          "detail": "widest word 296px in 0px",
+          "snippet": "\"Recommendations for Filtering ICMPv6 Messages in Firewalls\"",
+          "anchorId": "section-9.2"
+        }
+      ]
+    },
+    {
+      "rfc": 8925,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8925,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 25,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 2,
+          "elementWidthPx": 157,
+          "parentAvailablePx": 0,
+          "detail": "widest word 157px in 0px",
+          "snippet": "8925",
+          "anchorId": "ipv-6-only-preferred-option-for-dhcpv-4"
+        }
+      ]
+    },
+    {
+      "rfc": 8950,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8950,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 56,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 5,
+          "elementWidthPx": 160,
+          "parentAvailablePx": 0,
+          "detail": "widest word 160px in 0px",
+          "snippet": "8950",
+          "anchorId": "advertising-ipv-4-network-layer-reachability-information-nlri-with-an-ipv-6-next-hop"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 56,
+          "elementWidthPx": 344,
+          "parentAvailablePx": 272,
+          "detail": "widest word 344px in 272px",
+          "snippet": "Advertising IPv4 Network Layer Reachability Information (NLR",
+          "anchorId": "advertising-ipv-4-network-layer-reachability-information-nlri-with-an-ipv-6-next-hop"
+        }
+      ]
+    },
+    {
+      "rfc": 8975,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 8975,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 15,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 15,
+          "elementWidthPx": 303,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 8975:",
+          "anchorId": "network-coding-for-satellite-systems"
+        }
+      ]
+    },
+    {
+      "rfc": 9000,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9000,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 65,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 8,
+          "elementWidthPx": 163,
+          "parentAvailablePx": 0,
+          "detail": "widest word 163px in 0px",
+          "snippet": "9000",
+          "anchorId": "quic-a-udp-based-multiplexed-and-secure-transport"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 38,
+          "elementWidthPx": 326,
+          "parentAvailablePx": 272,
+          "detail": "widest word 326px in 272px",
+          "snippet": "QUIC: A UDP-Based Multiplexed and Secure Transport",
+          "anchorId": "quic-a-udp-based-multiplexed-and-secure-transport"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 15,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 208,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-7-3.1.2.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 15,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 208,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-7-3.1.2.2"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 18,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-8.1.3-11.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 14,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-14-4.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 7,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 272,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-17.4-2"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 11,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-21.1.1.1-3.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 7,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-21.5.6-6.1"
+        }
+      ]
+    },
+    {
+      "rfc": 9025,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9025,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 85,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 3,
+          "elementWidthPx": 158,
+          "parentAvailablePx": 0,
+          "detail": "widest word 158px in 0px",
+          "snippet": "9025",
+          "anchorId": "deterministic-networking-detnet-data-plane-mpls-over-udpip"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 85,
+          "elementWidthPx": 373,
+          "parentAvailablePx": 272,
+          "detail": "widest word 373px in 272px",
+          "snippet": "Deterministic Networking (DetNet) Data Plane: MPLS over UDP/",
+          "anchorId": "deterministic-networking-detnet-data-plane-mpls-over-udpip"
+        }
+      ]
+    },
+    {
+      "rfc": 9050,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9050,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 155,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 6,
+          "elementWidthPx": 161,
+          "parentAvailablePx": 0,
+          "detail": "widest word 161px in 0px",
+          "snippet": "9050",
+          "anchorId": "path-computation-element-communication-protocol-pcep-procedures-and-extensions-for-using-the-pce-as-a-central-controller-pcecc-of-lsps"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 155,
+          "elementWidthPx": 443,
+          "parentAvailablePx": 272,
+          "detail": "widest word 443px in 272px",
+          "snippet": "Path Computation Element Communication Protocol (PCEP) Proce",
+          "anchorId": "path-computation-element-communication-protocol-pcep-procedures-and-extensions-for-using-the-pce-as-a-central-controller-pcecc-of-lsps"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 10,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 79,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5.5.2-10.2"
+        },
+        {
+          "signature": "span.refTitle — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.refTitle",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 0,
+          "detail": "widest word 296px in 0px",
+          "snippet": "\"Recommendations for Secure Use of Transport Layer Security ",
+          "anchorId": "section-11.1"
+        }
+      ]
+    },
+    {
+      "rfc": 9075,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9075,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 41,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 16,
+          "elementWidthPx": 304,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9075:",
+          "anchorId": "report-from-the-iab-covid-19-network-impacts-workshop-2020"
+        },
+        {
+          "signature": "a.xref — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "a",
+          "identifier": "a.xref",
+          "overflowPx": 10,
+          "elementWidthPx": 254,
+          "parentAvailablePx": 0,
+          "detail": "widest word 254px in 0px",
+          "snippet": "Afxanasyev2020",
+          "anchorId": "section-5-2.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 41,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5-2.1"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 9,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5-2.4"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 14,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5-2.8"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 10,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5-2.9"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 3,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5-2.12"
+        },
+        {
+          "signature": "dt — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "dt",
+          "identifier": "dt",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 272,
+          "detail": "widest word 296px in 272px",
+          "snippet": "[Afxanasyev2020]",
+          "anchorId": "Afxanasyev2020"
+        },
+        {
+          "signature": "span — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 5,
+          "elementWidthPx": 293,
+          "parentAvailablePx": 0,
+          "detail": "widest word 21px in 0px",
+          "snippet": "<https://www.ncta.com/COVIDdashboard>",
+          "anchorId": "section-7"
+        }
+      ]
+    },
+    {
+      "rfc": 9100,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9100,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 100,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 13,
+          "elementWidthPx": 301,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9100:",
+          "anchorId": "sensor-measurement-lists-senml-features-and-versions"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 100,
+          "elementWidthPx": 388,
+          "parentAvailablePx": 272,
+          "detail": "widest word 388px in 272px",
+          "snippet": "Sensor Measurement Lists (SenML) Features and Versions",
+          "anchorId": "sensor-measurement-lists-senml-features-and-versions"
+        },
+        {
+          "signature": "code — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "code",
+          "identifier": "code",
+          "overflowPx": 19,
+          "elementWidthPx": 307,
+          "parentAvailablePx": 272,
+          "detail": "widest word 307px in 272px",
+          "snippet": "0b00000000000000000000000000000000000000000000000001010",
+          "anchorId": "section-2.1-2"
+        }
+      ]
+    },
+    {
+      "rfc": 9125,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9125,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 157,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9125:",
+          "anchorId": "gateway-auto-discovery-and-route-advertisement-for-site-interconnection-using-segment-routing"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 157,
+          "elementWidthPx": 445,
+          "parentAvailablePx": 272,
+          "detail": "widest word 445px in 272px",
+          "snippet": "Gateway Auto-Discovery and Route Advertisement for Site Inte",
+          "anchorId": "gateway-auto-discovery-and-route-advertisement-for-site-interconnection-using-segment-routing"
+        }
+      ]
+    },
+    {
+      "rfc": 9150,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9150,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 127,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 11,
+          "elementWidthPx": 299,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9150:",
+          "anchorId": "tls-1-3-authentication-and-integrity-only-cipher-suites"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 127,
+          "elementWidthPx": 415,
+          "parentAvailablePx": 272,
+          "detail": "widest word 415px in 272px",
+          "snippet": "TLS 1.3 Authentication and Integrity-Only Cipher Suites",
+          "anchorId": "tls-1-3-authentication-and-integrity-only-cipher-suites"
+        }
+      ]
+    },
+    {
+      "rfc": 9175,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9175,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 57,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 5,
+          "elementWidthPx": 293,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9175:",
+          "anchorId": "constrained-application-protocol-coap-echo-request-tag-and-token-processing"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 57,
+          "elementWidthPx": 345,
+          "parentAvailablePx": 272,
+          "detail": "widest word 379px in 272px",
+          "snippet": "Constrained Application Protocol (CoAP): Echo, Request-Tag, ",
+          "anchorId": "constrained-application-protocol-coap-echo-request-tag-and-token-processing"
+        }
+      ]
+    },
+    {
+      "rfc": 9200,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9200,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 127,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 5,
+          "elementWidthPx": 160,
+          "parentAvailablePx": 0,
+          "detail": "widest word 160px in 0px",
+          "snippet": "9200",
+          "anchorId": "authentication-and-authorization-for-constrained-environments-using-the-oauth-2-0-framework-ace-oauth"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 127,
+          "elementWidthPx": 415,
+          "parentAvailablePx": 272,
+          "detail": "widest word 415px in 272px",
+          "snippet": "Authentication and Authorization for Constrained Environment",
+          "anchorId": "authentication-and-authorization-for-constrained-environments-using-the-oauth-2-0-framework-ace-oauth"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 6,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 176,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-3.1-3.8.4.4"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 16,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 224,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-5.10.1.1-7.2"
+        },
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 8,
+          "elementWidthPx": 248,
+          "parentAvailablePx": 224,
+          "detail": "display: inline",
+          "snippet": "[Margi10impact]",
+          "anchorId": "appendix-A-3.2"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 2,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 224,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "appendix-A-5.10"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 18,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 160,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "appendix-B-1.8.1.4.2.3"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 35,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 160,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "appendix-B-1.10.1.2.2.4"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 33,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 192,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "appendix-B-1.10.1.4"
+        }
+      ]
+    },
+    {
+      "rfc": 9225,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9225,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 37,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 17,
+          "elementWidthPx": 305,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9225:",
+          "anchorId": "software-defects-considered-harmful"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 37,
+          "elementWidthPx": 325,
+          "parentAvailablePx": 272,
+          "detail": "widest word 325px in 272px",
+          "snippet": "Software Defects Considered Harmful",
+          "anchorId": "software-defects-considered-harmful"
+        },
+        {
+          "signature": "a — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "a",
+          "identifier": "a",
+          "overflowPx": 6,
+          "elementWidthPx": 294,
+          "parentAvailablePx": 0,
+          "detail": "widest word 294px in 0px",
+          "snippet": "https://twitter.com/USCPSC/status/1478794691634155523",
+          "anchorId": "section-7.2"
+        }
+      ]
+    },
+    {
+      "rfc": 9250,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9250,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 69,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 3,
+          "elementWidthPx": 158,
+          "parentAvailablePx": 0,
+          "detail": "widest word 158px in 0px",
+          "snippet": "9250",
+          "anchorId": "dns-over-dedicated-quic-connections"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 69,
+          "elementWidthPx": 357,
+          "parentAvailablePx": 272,
+          "detail": "widest word 357px in 272px",
+          "snippet": "DNS over Dedicated QUIC Connections",
+          "anchorId": "dns-over-dedicated-quic-connections"
+        },
+        {
+          "signature": "span.refTitle — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.refTitle",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 272,
+          "detail": "widest word 296px in 272px",
+          "snippet": "\"Recommendations for Secure Use of Transport Layer Security ",
+          "anchorId": "RFC7525"
+        },
+        {
+          "signature": "span.refTitle — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.refTitle",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 0,
+          "detail": "widest word 296px in 0px",
+          "snippet": "\"Recommendations for DNS Privacy Service Operators\"",
+          "anchorId": "section-9.2"
+        },
+        {
+          "signature": "a.email — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "a",
+          "identifier": "a.email",
+          "overflowPx": 2,
+          "elementWidthPx": 290,
+          "parentAvailablePx": 272,
+          "detail": "widest word 290px in 272px",
+          "snippet": "sara@sinodun.com",
+          "anchorId": "appendix-C"
+        }
+      ]
+    },
+    {
+      "rfc": 9275,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9275,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 70,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 14,
+          "elementWidthPx": 302,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9275:",
+          "anchorId": "an-extension-for-application-layer-traffic-optimization-alto-path-vector"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 70,
+          "elementWidthPx": 358,
+          "parentAvailablePx": 272,
+          "detail": "widest word 502px in 272px",
+          "snippet": "An Extension for Application-Layer Traffic Optimization (ALT",
+          "anchorId": "an-extension-for-application-layer-traffic-optimization-alto-path-vector"
+        },
+        {
+          "signature": "code — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "code",
+          "identifier": "code",
+          "overflowPx": 19,
+          "elementWidthPx": 307,
+          "parentAvailablePx": 272,
+          "detail": "widest word 307px in 272px",
+          "snippet": "JSONArray<ANEName>",
+          "anchorId": "section-5.2-2"
+        },
+        {
+          "signature": "a — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "a",
+          "identifier": "a",
+          "overflowPx": 10,
+          "elementWidthPx": 298,
+          "parentAvailablePx": 0,
+          "detail": "widest word 298px in 0px",
+          "snippet": "https://www.sciencedirect.com/science/article/abs/pii/S01677",
+          "anchorId": "section-13.2"
+        }
+      ]
+    },
+    {
+      "rfc": 9300,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9300,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 24,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 7,
+          "elementWidthPx": 162,
+          "parentAvailablePx": 0,
+          "detail": "widest word 162px in 0px",
+          "snippet": "9300",
+          "anchorId": "the-locatorid-separation-protocol-lisp"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 19,
+          "elementWidthPx": 307,
+          "parentAvailablePx": 272,
+          "detail": "widest word 307px in 272px",
+          "snippet": "The Locator/ID Separation Protocol (LISP)",
+          "anchorId": "the-locatorid-separation-protocol-lisp"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 3,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-4-5.5"
+        }
+      ]
+    },
+    {
+      "rfc": 9325,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9325,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 238,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 2,
+          "elementWidthPx": 157,
+          "parentAvailablePx": 0,
+          "detail": "widest word 157px in 0px",
+          "snippet": "9325",
+          "anchorId": "recommendations-for-secure-use-of-transport-layer-security-tls-and-datagram-transport-layer-security-dtls"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 238,
+          "elementWidthPx": 526,
+          "parentAvailablePx": 272,
+          "detail": "widest word 526px in 272px",
+          "snippet": "Recommendations for Secure Use of Transport Layer Security (",
+          "anchorId": "recommendations-for-secure-use-of-transport-layer-security-tls-and-datagram-transport-layer-security-dtls"
+        },
+        {
+          "signature": "code — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "code",
+          "identifier": "code",
+          "overflowPx": 27,
+          "elementWidthPx": 250,
+          "parentAvailablePx": 142,
+          "detail": "widest word 250px in 142px",
+          "snippet": "unrecognized_name(112)",
+          "anchorId": "section-3.7-4"
+        },
+        {
+          "signature": "code — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "code",
+          "identifier": "code",
+          "overflowPx": 7,
+          "elementWidthPx": 230,
+          "parentAvailablePx": 142,
+          "detail": "widest word 230px in 142px",
+          "snippet": "no_application_protocol",
+          "anchorId": "section-3.8-3"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 7,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-7.3-4.3"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 5,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-7.3-4.4"
+        },
+        {
+          "signature": "a.pilcrow — positioned or shifted outside parent",
+          "cause": "positioned or shifted outside parent",
+          "tag": "a",
+          "identifier": "a.pilcrow",
+          "overflowPx": 9,
+          "elementWidthPx": 19,
+          "parentAvailablePx": 240,
+          "detail": "position: static, float: none",
+          "snippet": "¶",
+          "anchorId": "section-7.3-4.5"
+        },
+        {
+          "signature": "dt — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "dt",
+          "identifier": "dt",
+          "overflowPx": 2,
+          "elementWidthPx": 290,
+          "parentAvailablePx": 272,
+          "detail": "widest word 290px in 272px",
+          "snippet": "[Poddebniak2017]",
+          "anchorId": "Poddebniak2017"
+        },
+        {
+          "signature": "span.refTitle — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.refTitle",
+          "overflowPx": 8,
+          "elementWidthPx": 296,
+          "parentAvailablePx": 0,
+          "detail": "widest word 296px in 0px",
+          "snippet": "\"Recommendations for Secure Use of Transport Layer Security ",
+          "anchorId": "section-8.2"
+        }
+      ]
+    },
+    {
+      "rfc": 9350,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9350,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 22,
+      "offenders": [
+        {
+          "signature": "span.font-bold — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-bold",
+          "overflowPx": 5,
+          "elementWidthPx": 160,
+          "parentAvailablePx": 0,
+          "detail": "widest word 160px in 0px",
+          "snippet": "9350",
+          "anchorId": "igp-flexible-algorithm"
+        }
+      ]
+    },
+    {
+      "rfc": 9375,
+      "rootFontSizePx": 16,
+      "documentOverflowPx": 0,
+      "offenders": []
+    },
+    {
+      "rfc": 9375,
+      "rootFontSizePx": 32,
+      "documentOverflowPx": 78,
+      "offenders": [
+        {
+          "signature": "span — box wider than parent for another reason",
+          "cause": "box wider than parent for another reason",
+          "tag": "span",
+          "identifier": "span",
+          "overflowPx": 16,
+          "elementWidthPx": 304,
+          "parentAvailablePx": 272,
+          "detail": "display: inline",
+          "snippet": "RFC 9375:",
+          "anchorId": "a-yang-data-model-for-network-and-vpn-service-performance-monitoring"
+        },
+        {
+          "signature": "span.font-normal — unbreakable text run",
+          "cause": "unbreakable text run",
+          "tag": "span",
+          "identifier": "span.font-normal",
+          "overflowPx": 78,
+          "elementWidthPx": 366,
+          "parentAvailablePx": 272,
+          "detail": "widest word 366px in 272px",
+          "snippet": "A YANG Data Model for Network and VPN Service Performance Mo",
+          "anchorId": "a-yang-data-model-for-network-and-vpn-service-performance-monitoring"
+        },
+        {
+          "signature": "span.whitespace-nowrap — white-space prevents wrapping",
+          "cause": "white-space prevents wrapping",
+          "tag": "span",
+          "identifier": "span.whitespace-nowrap",
+          "overflowPx": 22,
+          "elementWidthPx": 306,
+          "parentAvailablePx": 315,
+          "detail": "white-space: nowrap",
+          "snippet": "O. Gonzalez de Dios",
+          "anchorId": "main"
+        }
+      ]
+    }
+  ]
+}

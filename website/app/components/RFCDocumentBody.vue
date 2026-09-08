@@ -12,7 +12,7 @@
 
     <Heading
       level="1"
-      class="mt-4 mb-2 ml-2 max-w-[var(--max-text-block-width)] px-0 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off">
+      class="mt-4 mb-2 ml-2 max-w-[var(--max-text-block-width)] px-0 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off wrap-anywhere">
       <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title has-trailing-colon />
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />
@@ -336,7 +336,7 @@ const formatsPojo = computed((): DocumentPojo => {
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
      to reduce maintenance burden.
   */
-  @nested-import "../assets/css/upstream-xml2rfc.css";
+  @nested-import "../assets/css/xml2rfc.css";
 }
 
 html.dark .rfc-content-type-xml2rfc {

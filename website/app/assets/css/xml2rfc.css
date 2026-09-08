@@ -182,7 +182,18 @@ svg [font-family~='monospace' i] {
 ol,
 ul {
   padding: 0;
-  margin: 0 0 1em 2em;
+  margin: 0 0 1em 1em;
+}
+
+/* 40em rather than 640px so the breakpoint tracks the reader text size, as the reference indent
+   below does: a reader on an enlarged browser default keeps the narrow indent at window widths where
+   a reader on defaults has room for the wider one. 40em is the same width as 640px at a default font
+   size, so default-size rendering is unchanged. */
+@media (min-width: 40em) {
+  ol,
+  ul {
+    margin: 0 0 1em 2em;
+  }
 }
 
 ol ol,
@@ -210,9 +221,17 @@ ul.empty li,
   margin-top: 0.5em;
 }
 
-ul.ulBare,
-li.ulBare {
-  margin-left: 0em !important;
+/* Marker-less lists lose their indent on narrow screens only. They need no room for a bullet, so
+   the indent buys nothing there, and RFC 9110 nests two of them around its index — 64px of a
+   320px column. Above the threshold that same indent is what makes the nesting legible, so it
+   stays. Scoped like the compact-list rule above, at the same breakpoint. */
+@media (max-width: 60em) {
+  ul.ulBare,
+  li.ulBare,
+  ul.empty,
+  .ulEmpty {
+    margin-left: 0em;
+  }
 }
 
 ul.compact,
@@ -222,19 +241,40 @@ ol.compact,
   margin: 0 0 0 2em;
 }
 
+/* Narrow screens reclaim the indent: it is what pushes list content off-screen at 320px, where a
+   nested list can otherwise sit several levels deep in a column only a few words wide. Wider
+   screens keep it, because indentation is how a nested list reads as nested — at 0.5em a nested
+   list's markers sit almost flush with its parent item's text.
+
+   60em matches the definition-list rules rather than introducing a second breakpoint, and being
+   in em it also catches a reader at enlarged text on a wide screen, who has the same problem as
+   a narrow one. ulEmpty is untouched: it has no markers, so it has nothing to align. */
+@media (max-width: 60em) {
+  ul.compact,
+  .ulCompact,
+  ol.compact,
+  .olCompact {
+    margin-left: 0.5em;
+  }
+}
+
 /* definition lists */
+
+/* Term layout is defined here only. A duplicate elsewhere in this file ties on specificity and
+   wins on source order, which silently applies narrow-screen overrides to definitions but not to
+   their terms. */
 dl > dt {
   clear: both;
   float: left;
+  margin-right: 1em;
   padding-left: var(--layout-bleed-left);
   padding-right: var(--layout-bleed-right);
 }
 
-/* 
-dl.nohang > dt {
+/* The class means "term on its own line", so it never floats. */
+dl.dlNewline > dt {
   float: none;
 }
-*/
 dl > dd {
   margin-bottom: 0.8em;
   min-height: 1.3em;
@@ -257,6 +297,72 @@ dl.dlCompact p {
 dl > dd > dl {
   margin-top: 0.5em;
   margin-bottom: 0em;
+}
+
+/* Below this width the floated term/definition layout runs out of room: the term box is sized to
+   its content and the definition must clear it with a fixed indent, so a long term pushes the
+   definition off-screen (RFC 9110 Appendix D: 23 items past a 320px viewport). Below the threshold
+   the pair flows as one wrapping line instead, which needs no indent and no coupling between the
+   term's width and the definition's margin.
+
+   `dd.break` is xml2rfc's empty float-clearing spacer — present 1:1 with terms in every document
+   sampled — so it serves as the entry separator.
+
+   `dlNewline` is excluded: it already sets no float because the class means "term on its own
+   line", and inlining would pull terms up onto the definition instead.
+
+   60em rather than a px width so the threshold tracks the reader's text size, as the list rule
+   does. Not 64em: that is exactly 1024px at default text, so a 1024px tablet would land on the
+   narrow side of an inclusive `max-width` and lose the layout it had before. 60em leaves it 64px
+   of clearance. */
+@media (max-width: 60em) {
+  dl:not(.dlNewline) {
+    > dt {
+      float: none;
+      display: inline;
+      min-width: 0;
+      margin-right: 0.5em;
+      text-align: left;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    /* `!important` because xml2rfc emits the hanging indent as an inline
+       `style="margin-left:7.0em"` attribute on each `dd` — 13 to 493 of them per document — which
+       no stylesheet rule can override without it. It comes out once the precomputer emits the value
+       as a custom property instead (see `dd.dd-ml` below and
+       docs/mobile-layout/implementation-plan.md). */
+    > dd {
+      margin-left: 0 !important;
+    }
+
+    /* Definitions holding block content — nested lists, tables, artwork, or more than one
+       paragraph — cannot flow inline, so they keep their own line and merely lose the indent.
+       Where `:has()` is unsupported this rule is dropped and they behave the same way. */
+    > dd:not(:has(> dl, > ul, > ol, > table, > pre, > figure, > aside, > blockquote, > p + p)) {
+      display: inline;
+
+      > p:only-child {
+        display: inline;
+      }
+    }
+
+    > dd.break {
+      display: block;
+      height: 0.8em;
+    }
+  }
+}
+
+/* Wide screens honour the per-list hanging indent that the precomputer measures from each list's
+   longest term. The value arrives as `style="--dd-ml:7.0em"` on the element while the declaration
+   lives here, so the indent applies only where there is room for it — including for readers at
+   enlarged text, since a 1200px window at a 32px browser default is 37.5em and falls below this
+   threshold. Inert until documents carry the class. */
+@media (min-width: 60em) {
+  dl > dd.dd-ml {
+    margin-left: var(--dd-ml, 0px);
+  }
 }
 
 /* links */
@@ -351,6 +457,29 @@ blockquote {
   padding: 1.2em 2em;
 }
 
+/* Set asides apart. Defined here only, for the same reason as the term layout above:
+   silently overrode the padding above — the declarations here are that rule's. */
+aside {
+  border-left: 1px solid #ddd;
+  margin: 1em 0 1em 2em;
+  padding: 0.2em 2em;
+}
+
+/* 2em of horizontal padding costs 128px at 200% text, and an aside also carries a 2em left margin:
+   together 192px of a 272px column, leaving the note paragraph in RFC 9000 section 10.2.1 just 79px
+   to wrap in, against a 224px word. Narrowing the padding alone recovers it to 175px; dropping the
+   margin as well would reach 239px. See docs/mobile-layout/report.md.
+
+   One block for both selectors, after both rules, because their vertical padding differs and only
+   the horizontal part changes here. */
+@media (max-width: 60em) {
+  aside,
+  blockquote {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+}
+
 blockquote {
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -369,6 +498,82 @@ cite {
 
 .xref {
   overflow-wrap: normal;
+}
+
+/* A bracketed citation such as [RFC3629] is one referent, but its reference name contains hyphens
+   and periods, which are line-break opportunities in their own right — so browsers split
+   [QUIC-INVARIANTS] into "[QUIC-" and "INVARIANTS]" on a narrow screen, which reads as a typo.
+   Measured at 320px, 6% of citations wrapped at default text size and 14% at 200%.
+
+   The precomputer marks only those narrow enough to hold together (see markShortReferenceCitations), using
+   measured font metrics rather than a character count, so this rule needs no width condition of its
+   own: anything too wide to fit is simply not marked. */
+/* Word breaks are switched off where the containing block is provably wide enough for the whole
+   word, so a break only stays live where it might be needed. The precomputer measures each word
+   and labels its breaks with the width it needs, in em; each rule below hides the breaks of words
+   that fit. `wordsize-wide` has no rule, so words wider than the largest grouping always keep them.
+
+   The query is on the container rather than the viewport, so indentation, list nesting and table
+   cells are accounted for — those decide the available width far more than screen size does.
+   Thresholds carry a 1.2 factor over each grouping's ceiling, covering a substituted font or added
+   letter spacing. Relative units in a container query resolve against the container's own font,
+   so these compare like with like.
+
+   Where container queries are unsupported the rules are dropped and every break stays live, which
+   is the behaviour without this feature. */
+p,
+li,
+dd,
+dt,
+blockquote,
+aside {
+  container-type: inline-size;
+}
+
+@container (min-width: 4.8em) {
+  wbr.wordsize-4 {
+    display: none;
+  }
+}
+
+@container (min-width: 7.2em) {
+  wbr.wordsize-6 {
+    display: none;
+  }
+}
+
+@container (min-width: 9.6em) {
+  wbr.wordsize-8 {
+    display: none;
+  }
+}
+
+@container (min-width: 12em) {
+  wbr.wordsize-10 {
+    display: none;
+  }
+}
+
+@container (min-width: 14.4em) {
+  wbr.wordsize-12 {
+    display: none;
+  }
+}
+
+@container (min-width: 19.2em) {
+  wbr.wordsize-16 {
+    display: none;
+  }
+}
+
+@container (min-width: 28.8em) {
+  wbr.wordsize-24 {
+    display: none;
+  }
+}
+
+.reference-citation {
+  white-space: nowrap;
 }
 
 /* tables */
@@ -513,6 +718,10 @@ hr {
 }
 
 /* references */
+
+/* The term floats left and the definition clears it with a matching indent, both in em, so they
+   grow with the reader's text size while the screen does not. Narrow screens are handled by the
+   inline rule in the definition-list section above; see docs/mobile-layout/report.md. */
 .references dt {
   text-align: right;
   font-weight: bold;
@@ -521,7 +730,8 @@ hr {
 
 .references dd {
   margin-left: 8em;
-  overflow: auto;
+  /* Visible rather than `auto` so an unindented definition isn't made a scroll container. */
+  overflow: visible;
 }
 
 .refInstance {
@@ -958,17 +1168,6 @@ a.toplink {
   margin-right: 0.5em;
 }
 
-/* Fix the dl styling to match the RFC 7992 attributes */
-dl > dt,
-dl.dlParallel > dt {
-  float: left;
-  margin-right: 1em;
-}
-
-dl.dlNewline > dt {
-  float: none;
-}
-
 /* Provide styling for table cell text alignment */
 table td.text-left,
 table th.text-left {
@@ -999,12 +1198,6 @@ address .non-ascii {
   left, center, and right, { width: 100%; } does not make sense */
 table {
   width: auto;
-}
-
-/* Avoid reference text that sits in a block with very wide left margin,
-   because of a long floating dt label.*/
-.references dd {
-  overflow: visible;
 }
 
 /* Control caption placement */
@@ -1140,13 +1333,6 @@ h1#rfcnum {
 dl.olPercent > dd {
   margin-bottom: 0.25em;
   min-height: initial;
-}
-
-/* Give aside some styling to set it apart */
-aside {
-  border-left: 1px solid #ddd;
-  margin: 1em 0 1em 2em;
-  padding: 0.2em 2em;
 }
 
 aside > dl,

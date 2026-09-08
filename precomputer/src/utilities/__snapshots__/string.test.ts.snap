@@ -28,7 +28,9 @@ exports[`can break words (2) 1`] = `
                 "type": "Text",
               },
               {
-                "attributes": {},
+                "attributes": {
+                  "class": "wordsize-24",
+                },
                 "children": [],
                 "nodeName": "wbr",
                 "type": "Element",
@@ -38,27 +40,33 @@ exports[`can break words (2) 1`] = `
                 "type": "Text",
               },
               {
-                "attributes": {},
+                "attributes": {
+                  "class": "wordsize-24",
+                },
                 "children": [],
                 "nodeName": "wbr",
                 "type": "Element",
               },
               {
-                "textContent": ".rfc",
+                "textContent": ".rfc-",
                 "type": "Text",
               },
               {
-                "attributes": {},
+                "attributes": {
+                  "class": "wordsize-24",
+                },
                 "children": [],
                 "nodeName": "wbr",
                 "type": "Element",
               },
               {
-                "textContent": "-editor",
+                "textContent": "editor",
                 "type": "Text",
               },
               {
-                "attributes": {},
+                "attributes": {
+                  "class": "wordsize-24",
+                },
                 "children": [],
                 "nodeName": "wbr",
                 "type": "Element",
@@ -68,7 +76,9 @@ exports[`can break words (2) 1`] = `
                 "type": "Text",
               },
               {
-                "attributes": {},
+                "attributes": {
+                  "class": "wordsize-24",
+                },
                 "children": [],
                 "nodeName": "wbr",
                 "type": "Element",
@@ -78,7 +88,9 @@ exports[`can break words (2) 1`] = `
                 "type": "Text",
               },
               {
-                "attributes": {},
+                "attributes": {
+                  "class": "wordsize-24",
+                },
                 "children": [],
                 "nodeName": "wbr",
                 "type": "Element",

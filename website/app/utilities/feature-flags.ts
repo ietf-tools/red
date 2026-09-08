@@ -87,7 +87,7 @@ export type WatchInputForFeatureFlagExperimentsProps = {
   isFeatureFlagsModalVisibleRef: Ref<boolean>
 }
 
-const LOCALSTORAGE_KEY = 'feature-flag-experiments'
+export const LOCALSTORAGE_KEY = 'feature-flag-experiments'
 
 export const loadFeatureFlagsFromLocalStorage = (
   hasFeatureFlagsLoadedKey: Ref<boolean>,

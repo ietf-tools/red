@@ -26,6 +26,7 @@ import { PUBLIC_SITE_URL_ORIGIN } from '../utilities/url.ts'
 import { getPlaintextMaxLineLength, getPlaintextRfcDocument, parsePlaintextBody } from './rfc-html-plaintext.ts'
 import { getXml2RfcMaxLineLength, getXml2RfcRfcDocument, parseXml2RfcBody } from './rfc-html-xml2rfc.ts'
 import { chunkString, getAllIndexes } from '../utilities/string.ts'
+import { textWidthEm, type TextStyle } from '../utilities/font-metrics.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { getFromS3, rfcBucketHtmlPathBuilder } from '../utilities/s3.ts'
 import { redactRfc } from './rfc.ts'
@@ -97,6 +98,8 @@ export const rfcBucketHtmlToRfcDocument = async ({
   )
 
   convertHrefs(rfcDocument, baseUrl, rfcNumber)
+  moveDefinitionIndentToCustomProperty(rfcDocument)
+  markShortReferenceCitations(rfcDocument)
   ensureWordBreaks(rfcDocument)
 
   const errataList = await getErrataList(rfcNumber)
@@ -273,6 +276,169 @@ const convertHrefs = (rfcDocument: Node[], baseUrl: URL, rfcNumberForDebug: numb
 }
 
 /**
+ * Word width ceilings in em. A word is labelled with the first ceiling it fits inside, and the site
+ * hides its breaks once the containing block is at least that wide — so what has to fit is the
+ * ceiling, not the measured width, and suppression can never cause an overflow.
+ */
+const WORD_SIZE_GROUPINGS_EM = [4, 6, 8, 10, 12, 16, 24]
+
+/**
+ * Absorbs the error in summing per-character advances rather than measuring a whole word. Kerning
+ * and ligatures narrow text so the sum usually runs wide, but subpixel rounding can make it run
+ * short; measured worst case is 3.9%.
+ */
+const WIDTH_ESTIMATE_ERROR_FACTOR = 1.05
+
+/** Wider than the largest grouping: the word keeps its breaks at every container width. */
+const WORD_SIZE_WIDE_CLASS = 'wordsize-wide'
+
+/** Elements whose text is not rendered in the body font, so a body-metric estimate would be wrong. */
+const MONOSPACE_CONTEXTS = ['code', 'tt', 'kbd', 'samp']
+const BOLD_CONTEXTS = ['strong', 'b', 'th', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+
+const textStyleForContext = (parents: string[]): TextStyle => {
+  if (parents.some((name) => MONOSPACE_CONTEXTS.includes(name))) {
+    return 'monospace'
+  }
+  return parents.some((name) => BOLD_CONTEXTS.includes(name)) ? 'bold' : 'body'
+}
+
+/**
+ * The class naming how much room a word needs, so CSS can switch its breaks off where there is
+ * enough. Prefixed `wordsize-` rather than `w-` because Tailwind is loaded on these pages and
+ * would otherwise apply a width to the element.
+ */
+const wordSizeClass = (word: string, style: TextStyle): string => {
+  const widthEm = textWidthEm(word, style) * WIDTH_ESTIMATE_ERROR_FACTOR
+  const groupingEm = WORD_SIZE_GROUPINGS_EM.find((ceilingEm) => widthEm <= ceilingEm)
+  return groupingEm === undefined ? WORD_SIZE_WIDE_CLASS : `wordsize-${groupingEm}`
+}
+
+/** Class marking a reference citation short enough to keep on one line. */
+const REFERENCE_CITATION_CLASS = 'reference-citation'
+
+/** Widest citation kept whole, in em. A narrow column offers about 8.5em at 200% text. */
+const REFERENCE_CITATION_MAX_WIDTH_EM = 8
+
+/** Contexts where a citation renders wider than the body table describes, so it is left alone. */
+const WIDER_THAN_BODY = ['strong', 'b', 'th', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+
+/**
+ * Marks reference citations — `[RFC3629]`, `[OAM-CONS]` — so CSS can hold them on one line. Without
+ * it browsers split `[QUIC-INVARIANTS]` at its hyphen, which reads as a typo.
+ *
+ * RFC 7322 separates the two terms: a *citation* is the square-bracketed tag in the running text,
+ * and a *reference* is the matching entry in the References section. What is marked here is the
+ * citation, brackets included, so naming it after references would name the wrong element.
+ *
+ * Only citations narrow enough to fit are marked, measured by width rather than character count:
+ * reference labels are uppercase acronyms, and capitals are wide enough that a character cap holds
+ * citations together that then overflow.
+ *
+ * Must run before `ensureWordBreaks`, which splits text nodes and would leave the span no longer
+ * matching the shape this looks for.
+ */
+export const markShortReferenceCitations = (rfcDocument: Node[]): void => {
+  const isReferenceCitation = (node: HTMLElement): boolean => {
+    if (node.nodeName.toLowerCase() !== 'span') {
+      return false
+    }
+    const children = Array.from(node.childNodes)
+    if (children.length !== 3) {
+      return false
+    }
+    const [open, link, close] = children
+    return (
+      isTextNode(open) &&
+      (open.textContent ?? '').endsWith('[') &&
+      isHtmlElement(link) &&
+      link.nodeName.toLowerCase() === 'a' &&
+      isTextNode(close) &&
+      (close.textContent ?? '').startsWith(']')
+    )
+  }
+
+  const walk = (node: Node): void => {
+    if (!isHtmlElement(node)) {
+      return
+    }
+
+    if (isReferenceCitation(node)) {
+      const text = node.textContent ?? ''
+      const parents = getParentElementNodeNames(node)
+      const rendersWider = WIDER_THAN_BODY.some((name) => parents.includes(name))
+
+      if (!rendersWider && textWidthEm(text) <= REFERENCE_CITATION_MAX_WIDTH_EM) {
+        const existingClass = node.getAttribute('class')
+        node.setAttribute(
+          'class',
+          existingClass ? `${existingClass} ${REFERENCE_CITATION_CLASS}` : REFERENCE_CITATION_CLASS
+        )
+      }
+    }
+
+    Array.from(node.childNodes).forEach(walk)
+  }
+
+  rfcDocument.forEach(walk)
+}
+
+/** Marks definitions whose hanging indent has moved into a custom property. */
+const DEFINITION_INDENT_CLASS = 'dd-ml'
+
+const DEFINITION_INDENT_CUSTOM_PROPERTY = '--dd-ml'
+
+/**
+ * Moves the hanging indent xml2rfc puts on each `<dd>` from an inline `margin-left` to a custom
+ * property, so the site can decide when to apply it.
+ *
+ * An inline declaration beats every stylesheet rule regardless of specificity, so without this no
+ * `@media` rule can reduce the indent, and on a narrow screen it leaves almost no room for the
+ * definition text. The per-list measured value is preserved.
+ *
+ * Only `margin-left` is moved; other inline declarations are left alone.
+ */
+export const moveDefinitionIndentToCustomProperty = (rfcDocument: Node[]): void => {
+  const walk = (node: Node): void => {
+    if (!isHtmlElement(node)) {
+      return
+    }
+
+    if (node.nodeName.toLowerCase() === 'dd') {
+      const style = node.getAttribute('style')
+
+      if (style !== null) {
+        const declarations = style
+          .split(';')
+          .map((declaration) => declaration.trim())
+          .filter((declaration) => declaration.length > 0)
+
+        const indent = declarations
+          .find((declaration) => declaration.toLowerCase().startsWith('margin-left'))
+          ?.split(':')[1]
+          ?.trim()
+
+        if (indent !== undefined && indent.length > 0) {
+          const remaining = declarations.filter((declaration) => !declaration.toLowerCase().startsWith('margin-left'))
+
+          node.setAttribute('style', [...remaining, `${DEFINITION_INDENT_CUSTOM_PROPERTY}:${indent}`].join(';'))
+
+          const existingClass = node.getAttribute('class')
+          node.setAttribute(
+            'class',
+            existingClass ? `${existingClass} ${DEFINITION_INDENT_CLASS}` : DEFINITION_INDENT_CLASS
+          )
+        }
+      }
+    }
+
+    Array.from(node.childNodes).forEach(walk)
+  }
+
+  rfcDocument.forEach(walk)
+}
+
+/**
  * This function splits long words and inserts <wbr> elements
  *
  * RFC content has long 'words' (ie, text content of URLs as text nodes) that break mobile layout
@@ -321,44 +487,64 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
         words.push(textContent)
       }
 
-      const REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH = 16
       const WORD_BREAK_ELEMENT = 'wbr'
 
-      // A word containing an underscore is treated as an identifier and always
-      // gets <wbr>s regardless of length, so names like `qualifier_set`,
-      // `valid_policy` and `parent_nodes` can wrap even in deeply-indented /
-      // narrow (~320px) contexts. An underscore is an unambiguous identifier
-      // signal: prose and proper names don't contain internal underscores, so
-      // ordinary text (incl. trailing punctuation like `document.`) is untouched.
-      //
-      // Underscore is the only split char safe to trigger on regardless of
-      // length. Deliberately excluded from the always-break trigger:
-      //  - `.` `?` `%` `&`: common in short prose ("e.g.", "50%", "AT&T") —
-      //    always-breaking would orphan trailing punctuation.
-      //  - `/` `:` `=` `@` `\`: in practice only inside already-long strings
-      //    (URLs, paths, emails) that the length gate already catches.
-      //  - `-` (hyphen): split *before* the char (unlike underscore's after-
-      //    placement, ietf-tools/red#424), so revisit placement before adding.
+      // Shortest word worth breaking. Chosen by corpus measurement; `wbr-split-length.ts` in the
+      // website scripts re-runs it.
+      const WORD_BREAK_TRIGGER_LENGTH = 14
+
+      // A camelCase hump also occurs in surnames ("McManus"), so it only counts once a word is long
+      // enough to be an identifier.
+      const CAMEL_CASE_MIN_LENGTH = 14
+
+      // How finely a run offering no break of its own is subdivided.
+      const MAX_UNBREAKABLE_RUN_LENGTH = 10
+
+      // Never strand a fragment this short on a line of its own.
+      const MIN_BREAK_FRAGMENT_LENGTH = 3
+
+      // An underscore always triggers a break, whatever the word's length: prose and proper names
+      // have no internal underscores, so nothing else can match. No other separator is safe to
+      // trigger on unconditionally — `.`, `?`, `%` and `&` all appear in short prose ("e.g.",
+      // "50%", "AT&T").
       const IDENTIFIER_BOUNDARY = /_/
 
-      // A camelCase hump also marks a code identifier (`exclusiveMaximum`,
-      // `AddressComponent`), but it occurs in surnames too (e.g. "McManus"), so
-      // it only triggers a break once the word is long enough to be an
-      // identifier rather than a name. Hyphenated names like "Delignat-Lavaud"
-      // have no camelCase hump, so they are left intact. This length floor is
-      // what lets exactly-16-char code identifiers break without the main gate
-      // having to be lowered (which would catch 16-char hyphenated names).
       const CAMEL_CASE = /[a-z][A-Z]/
-      const CAMEL_CASE_MIN_LENGTH = REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH
+
+      // A dotted name (`mail.isp.example`) breaks at its periods however short it is. Both
+      // segments must carry a letter and be at least two characters, which keeps section
+      // cross-references (`19.15`) and decimals out — breaking those would start a line with `.15`.
+      const DOTTED_NAME_SEGMENTS = /[A-Za-z0-9]{2,}\.[A-Za-z0-9]{2,}/
+      const DOTTED_NAME_HAS_LETTERS = /[A-Za-z0-9]*[A-Za-z][A-Za-z0-9]*\.[A-Za-z0-9]*[A-Za-z][A-Za-z0-9]*/
+
+      // Both separators are required: a slash alone matches prose (`and/or`, `N/A`, `HTTP/3`),
+      // while a dot and a slash together make a path or DOI (`10.17487/RFC9000`).
+      const INTERNAL_DOT = /[A-Za-z0-9]\.[A-Za-z0-9]/
+      const INTERNAL_SLASH = /[A-Za-z0-9]\/[A-Za-z0-9]/
+
+      const isMachineReadableName = (word: string): boolean =>
+        (DOTTED_NAME_SEGMENTS.test(word) && DOTTED_NAME_HAS_LETTERS.test(word)) ||
+        (INTERNAL_DOT.test(word) && INTERNAL_SLASH.test(word))
 
       const textAndWordbreaks = words
         .flatMap((word): Node | Node[] => {
+          // Words are sliced at whitespace, so every word but the first carries its leading
+          // separator. Measuring that made the gate behave as 16 characters mid-sentence and 17 at
+          // the start of an element: the same word broke differently depending on where it sat, and
+          // a 16-character name as an element's only content escaped breaking entirely.
+          const leading = /^[\s\n]*/.exec(word)?.[0] ?? ''
+          const visible = word.substring(leading.length)
+
           if (
-            word.length > REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH ||
-            IDENTIFIER_BOUNDARY.test(word) ||
-            (CAMEL_CASE.test(word) && word.length >= CAMEL_CASE_MIN_LENGTH)
+            visible.length > WORD_BREAK_TRIGGER_LENGTH ||
+            IDENTIFIER_BOUNDARY.test(visible) ||
+            isMachineReadableName(visible) ||
+            (CAMEL_CASE.test(visible) && visible.length >= CAMEL_CASE_MIN_LENGTH)
           ) {
-            const wordParts = chunkString(word, REQUIRE_WORDBREAK_AFTER_CHARS_LENGTH)
+            const visibleParts = chunkString(visible, MAX_UNBREAKABLE_RUN_LENGTH, MIN_BREAK_FRAGMENT_LENGTH)
+            const sizeClass = wordSizeClass(visible, textStyleForContext(parents))
+            // The leading whitespace belongs to the first fragment: it is text, not a break point.
+            const wordParts = visibleParts.map((part, index) => (index === 0 ? `${leading}${part}` : part))
             return wordParts.flatMap((wordPart, i, arr) => {
               if (wordPart.length === 0) {
                 return []
@@ -373,6 +559,7 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
                 // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/wbr
                 WORD_BREAK_ELEMENT
               )
+              wbrElement.setAttribute('class', sizeClass)
 
               return [textNode, wbrElement]
             })

@@ -1,0 +1,107 @@
+{
+  "$comment": [
+    "Shared RFC selections for the measurement scripts in this directory.",
+    "",
+    "'complexLayouts' is a curated set covering the document structures that have actually broken",
+    "narrow-screen layout, one entry per distinct structure rather than per document. Each note says",
+    "what the document is useful for, so a failure points at a cause rather than just a number. Add",
+    "to it whenever a new structure turns up a bug — that is cheaper than rediscovering it.",
+    "",
+    "'firstXml2Rfc' is where the xml2rfc format starts. Earlier RFCs are published as plain text",
+    "inside <pre>, receive no word breaks at all, and dilute every proportion if sampled. A few",
+    "documents inside the range are plain text too; the scripts detect and skip those.",
+    "",
+    "There is deliberately no highest-RFC value here: it would go stale silently, and it did.",
+    "latestPublishedRfc() in rfc-samples.ts reads the homepage's Latest RFCs each run instead. Note",
+    "RFC numbers are not contiguous — 10000 is unissued while 10001 and 10005 exist — so probing for",
+    "the first missing number reports the wrong answer.",
+    "",
+    "See docs/mobile-layout/report.md for the measurements these selections produced."
+  ],
+  "eligibleRange": {
+    "firstXml2Rfc": 8650,
+    "defaultStride": 25
+  },
+  "complexLayouts": [
+    {
+      "rfc": 9110,
+      "note": "576-entry index, 493 inline dd indents, largest dl corpus; long hyphenated field names in narrow cells"
+    },
+    {
+      "rfc": 9000,
+      "note": "1,694 word breaks, 92 reference entries, terminology lists, Note asides"
+    },
+    {
+      "rfc": 9297,
+      "note": "small but has both references and underscore identifiers; quick smoke test"
+    },
+    {
+      "rfc": 9505,
+      "note": "122 references with the widest URLs found (2,103px unbroken)"
+    },
+    {
+      "rfc": 9210,
+      "note": "80-entry reference list, otherwise ordinary"
+    },
+    {
+      "rfc": 9010,
+      "note": "dense abbreviation glossary, 42 short terms"
+    },
+    {
+      "rfc": 9330,
+      "note": "longest definition terms found (61 characters)"
+    },
+    {
+      "rfc": 9290,
+      "note": "a definition list nested inside a definition"
+    },
+    {
+      "rfc": 9370,
+      "note": "ordered list expressed as a dl (terms are '1)'), multi-paragraph definitions"
+    },
+    {
+      "rfc": 9610,
+      "note": "dlNewline, whose terms already sit on their own line"
+    },
+    {
+      "rfc": 9690,
+      "note": "dlNewline whose definitions contain pre blocks and nested lists"
+    },
+    {
+      "rfc": 9025,
+      "note": "widest inline dd indent measured (7em, 224px at 200% text)"
+    },
+    {
+      "rfc": 9496,
+      "note": "long numeric literals with no separator to break at"
+    },
+    {
+      "rfc": 9559,
+      "note": "backslash-separated paths and long camelCase identifiers in table cells"
+    },
+    {
+      "rfc": 9325,
+      "note": "longest document title; overflowed 238px before the title was allowed to wrap"
+    },
+    {
+      "rfc": 9525,
+      "note": "dotted DNS names such as mail.isp.example that fell exactly on the length gate"
+    },
+    {
+      "rfc": 8446,
+      "note": "no definition lists at all — a control for dl changes"
+    },
+    {
+      "rfc": 8975,
+      "note": "worst definition-list overflow before the inline change (166px)"
+    },
+    {
+      "rfc": 9075,
+      "note": "several unbreakable-text cases in one document"
+    },
+    {
+      "rfc": 8750,
+      "note": "long title, and the shortest document in the sample"
+    }
+  ]
+}

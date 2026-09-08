@@ -4,24 +4,40 @@ import { chunkString } from './string'
 import { ensureWordBreaks } from '../tasks/rfc-html'
 import { getDOMParser, rfcDocumentToPojo } from './dom'
 
+const NO_MINIMUM_FRAGMENT = 1
+
 test(`chunkString`, () => {
-  const chunks = chunkString('abcdefghijklmnopqrstuvwxyz', 10)
-  expect(chunks).toEqual(['abcdefghij', 'klmnopqrst', 'uvwxyz'])
+  // 26 letters is longer than any word expected whole, so it is treated as machine data and
+  // subdivided — shared evenly between its pieces rather than filled to the limit with a short
+  // remainder, so 26 characters at 10 gives 9/9/8 rather than 10/10/6.
+  expect(chunkString('abcdefghijklmnopqrstuvwxyz', 10, NO_MINIMUM_FRAGMENT)).toEqual([
+    'abcdefghi',
+    'jklmnopqr',
+    'stuvwxyz'
+  ])
+
+  // Digits make a run machine data at any length.
+  expect(chunkString('a1b2c3d4e5f6g7h8i9j0k1l2m3', 10, NO_MINIMUM_FRAGMENT)).toEqual([
+    'a1b2c3d4e',
+    '5f6g7h8i9',
+    'j0k1l2m3'
+  ])
 })
 
 test(`chunkString with url`, () => {
-  const chunks = chunkString('https://www.example.com/path1/path2', 16)
+  const chunks = chunkString('https://www.example.com/path1/path2', 16, NO_MINIMUM_FRAGMENT)
   expect(chunks).toEqual(['https://', 'www', '.example', '.com', '/path1', '/path2'])
 
   const chunks2 = chunkString(
     'https://www.rfc-editor.org/search/rfc_search_detail.php?title=test&pubstatus%5B%5D=Any&pub_date_type=any',
-    16
+    16,
+    NO_MINIMUM_FRAGMENT
   )
   expect(chunks2).toEqual([
     'https://',
     'www',
-    '.rfc',
-    '-editor',
+    '.rfc-',
+    'editor',
     '.org',
     '/search',
     '/rfc_',
@@ -41,17 +57,45 @@ test(`chunkString with url`, () => {
   ])
 })
 
+test('breaks after a hyphen, not before it', () => {
+  // Breaking before the hyphen put it at the start of the next line — the shape
+  // ietf-tools/red#424 objected to. Hyphens now end their chunk, as underscores do.
+  expect(chunkString('draft-ietf-quic-manageability-11', 10, NO_MINIMUM_FRAGMENT)).toEqual([
+    'draft-',
+    'ietf-',
+    'quic-',
+    'manageability-',
+    '11'
+  ])
+  // A hyphen mixed with another separator keeps the break before the run, since the run no longer
+  // reads as a hyphenated compound.
+  expect(chunkString('a-(b', 10, NO_MINIMUM_FRAGMENT)).toEqual(['a', '-(b'])
+})
+
+test('does not break a slash that joins two ordinary words', () => {
+  // Prose: a line may not begin with `/`, and these need no break to fit.
+  expect(chunkString('and/or', 10, NO_MINIMUM_FRAGMENT)).toEqual(['and/or'])
+  expect(chunkString('request/response', 10, NO_MINIMUM_FRAGMENT)).toEqual(['request/response'])
+  expect(chunkString('N/A', 10, NO_MINIMUM_FRAGMENT)).toEqual(['N/A'])
+  expect(chunkString('request/response,', 10, NO_MINIMUM_FRAGMENT)).toEqual(['request/response,'])
+
+  // Machine strings still break at their slashes: a segment carrying digits or a dot is not a word.
+  expect(chunkString('10.7551/mitpress', 10, NO_MINIMUM_FRAGMENT)).toEqual(['10', '.7551', '/mitpress'])
+  expect(chunkString('example.com/path', 10, NO_MINIMUM_FRAGMENT)).toEqual(['example', '.com', '/path'])
+})
+
 test(`chunkString with underscores`, () => {
   // Break *after* the underscore so a wrapped line never starts with `_`
   // (ietf-tools/red#424).
-  const chunks = chunkString('AROUND_THE_WORLD_AROUND_THE_WORLD', 16)
+  const chunks = chunkString('AROUND_THE_WORLD_AROUND_THE_WORLD', 16, NO_MINIMUM_FRAGMENT)
   expect(chunks).toEqual(['AROUND_', 'THE_', 'WORLD_', 'AROUND_', 'THE_', 'WORLD'])
 })
 
 test(`chunkString with camelCase`, () => {
   const chunks = chunkString(
     'aroundTheWorldAroundTheWorldAroundTheWorldAroundTheWorldAroundTheWorldAroundTheWorldAroundTheWorldAroundTheWorld',
-    16
+    16,
+    NO_MINIMUM_FRAGMENT
   )
   expect(chunks).toEqual([
     'around',
@@ -80,7 +124,9 @@ test(`chunkString with camelCase`, () => {
     'World'
   ])
 
-  const chunks2 = chunkString('DecodePacketNumber(largest_pn', 10)
+  // `pn` keeps its own chunk despite being under the minimum: it follows an underscore, so it is a
+  // segment of `largest_pn` rather than a fragment of a word. See `mergeShortChunks`.
+  const chunks2 = chunkString('DecodePacketNumber(largest_pn', 10, 3)
   expect(chunks2).toEqual(['Decode', 'Packet', 'Number', '(largest_', 'pn'])
 })
 
@@ -112,8 +158,7 @@ test('inserts <wbr> at identifier boundaries regardless of word length', async (
   expect(serializeWbr(await applyWordBreaks('<p>qualifier_set</p>'))).toBe('qualifier_|set')
   expect(serializeWbr(await applyWordBreaks('<p>valid_policy</p>'))).toBe('valid_|policy')
   expect(serializeWbr(await applyWordBreaks('<p>parent_nodes</p>'))).toBe('parent_|nodes')
-  // camelCase: break before the hump. Both are exactly 16 chars — previously
-  // skipped by the strict `length > 16` gate.
+  // camelCase: break before the hump.
   expect(serializeWbr(await applyWordBreaks('<code>exclusiveMaximum</code>'))).toBe('exclusive|Maximum')
   expect(serializeWbr(await applyWordBreaks('<code>AddressComponent</code>'))).toBe('Address|Component')
 })
@@ -149,7 +194,7 @@ test('can break words', async () => {
         {
           type: 'Element',
           nodeName: 'wbr',
-          attributes: {},
+          attributes: { class: 'wordsize-24' },
           children: []
         },
         {
@@ -159,27 +204,27 @@ test('can break words', async () => {
         {
           type: 'Element',
           nodeName: 'wbr',
-          attributes: {},
+          attributes: { class: 'wordsize-24' },
           children: []
         },
         {
           type: 'Text',
-          textContent: '.rfc'
+          textContent: '.rfc-'
         },
         {
           type: 'Element',
           nodeName: 'wbr',
-          attributes: {},
+          attributes: { class: 'wordsize-24' },
           children: []
         },
         {
           type: 'Text',
-          textContent: '-editor'
+          textContent: 'editor'
         },
         {
           type: 'Element',
           nodeName: 'wbr',
-          attributes: {},
+          attributes: { class: 'wordsize-24' },
           children: []
         },
         {
@@ -189,7 +234,7 @@ test('can break words', async () => {
         {
           type: 'Element',
           nodeName: 'wbr',
-          attributes: {},
+          attributes: { class: 'wordsize-24' },
           children: []
         },
         {
@@ -199,7 +244,7 @@ test('can break words', async () => {
         {
           type: 'Element',
           nodeName: 'wbr',
-          attributes: {},
+          attributes: { class: 'wordsize-24' },
           children: []
         },
         {
@@ -220,4 +265,122 @@ test('can break words (2)', async () => {
   ensureWordBreaks(nodes)
   const pojo = rfcDocumentToPojo(nodes)
   expect(pojo).toMatchSnapshot()
+})
+
+test('the length gate no longer depends on where a word sits', async () => {
+  // The gate must not depend on where a word sits: leading whitespace once counted towards its
+  // length, so the same word broke mid-sentence but not as an element's first word.
+  expect(serializeWbr(await applyWordBreaks('<p>client-initiated</p>'))).toBe('client-|initiated')
+  expect(serializeWbr(await applyWordBreaks('<p>a client-initiated</p>'))).toBe('a client-|initiated')
+  // 17 letters qualifies on length but is left whole in both positions: a run of letters reads as
+  // a word, and splitting one mid-word is the orphaning this is meant to avoid. Machine strings of
+  // the same length do get subdivided — see the chunkString tests.
+  expect(serializeWbr(await applyWordBreaks('<p>abcdefghijklmnopq</p>'))).toBe('abcdefghijklmnopq')
+  expect(serializeWbr(await applyWordBreaks('<p>a abcdefghijklmnopq</p>'))).toBe('a abcdefghijklmnopq')
+  // Position independence still holds where a break does apply.
+  expect(serializeWbr(await applyWordBreaks('<p>a1b2c3d4e5f6g7h8i</p>'))).toBe('a1b2c3d4e|5f6g7h8i')
+  expect(serializeWbr(await applyWordBreaks('<p>a a1b2c3d4e5f6g7h8i</p>'))).toBe('a a1b2c3d4e|5f6g7h8i')
+})
+
+test('does not strand punctuation or single letters on a line', async () => {
+  // Hard chunking must not orphan a trailing character: 'confidentiality|,',
+  // 'interoperabilit|y', 'acknowledgement|s|.'.
+  expect(serializeWbr(await applyWordBreaks('<p>data confidentiality, integrity</p>'))).toBe(
+    'data confidentiality, integrity'
+  )
+  expect(serializeWbr(await applyWordBreaks('<p>the interoperability of it</p>'))).toBe('the interoperability of it')
+  expect(serializeWbr(await applyWordBreaks('<p>see acknowledgements.</p>'))).toBe('see acknowledgements.')
+})
+
+test('breaks dotted machine-readable names at their periods, whatever their length', async () => {
+  // 16 characters as an element's only content, so no length gate reaches it.
+  expect(serializeWbr(await applyWordBreaks('<code>mail.isp.example</code>'))).toBe('mail|.isp|.example')
+  expect(serializeWbr(await applyWordBreaks('<p>at isp.example</p>'))).toBe('at isp|.example')
+  // `@` is one of the existing break-*before* separators, so the break lands ahead of it.
+  expect(serializeWbr(await applyWordBreaks('<p>mail user@isp.example</p>'))).toBe('mail user|@isp|.example')
+})
+
+test('leaves dotted numbers alone, having no letters in their segments', async () => {
+  expect(serializeWbr(await applyWordBreaks('<p>see Section 19.15 and 4.2.2</p>'))).toBe('see Section 19.15 and 4.2.2')
+  expect(serializeWbr(await applyWordBreaks('<p>about 1.5 times</p>'))).toBe('about 1.5 times')
+})
+
+test('breaks path-like machine strings whose segments are numeric', async () => {
+  // `10` and `17487` have no letters, so the dotted-name rule does not apply; `10` alone would
+  // strand two characters, so the leading fragment is folded forward.
+  expect(serializeWbr(await applyWordBreaks('<p>DOI 10.17487/RFC9000</p>'))).toBe('DOI 10.17487|/RFC9000')
+})
+
+test('leaves prose containing a slash alone', async () => {
+  expect(serializeWbr(await applyWordBreaks('<p>and/or a request/response N/A</p>'))).toBe(
+    'and/or a request/response N/A'
+  )
+})
+
+test('protects prose from mid-word subdivision without protecting machine strings', async () => {
+  // Prose, including a hyphenated compound and trailing punctuation: left whole.
+  expect(serializeWbr(await applyWordBreaks('<p>data confidentiality, integrity</p>'))).toBe(
+    'data confidentiality, integrity'
+  )
+  expect(serializeWbr(await applyWordBreaks('<p>see acknowledgements.</p>'))).toBe('see acknowledgements.')
+
+  // Machine strings that a looser guard wrongly protected: a DOI reduced to `mitpress`, an
+  // Internet-Draft name reduced to its hyphenated stem, and a multi-hyphen identifier.
+  expect(serializeWbr(await applyWordBreaks('<p>at 10.7551/mitpress/7617.003.0006</p>'))).toBe(
+    'at 10.7551|/mitpress|/7617|.003|.0006'
+  )
+  expect(serializeWbr(await applyWordBreaks('<p>see draft-ietf-quic-manageability-11</p>'))).toBe(
+    'see draft-|ietf-|quic-|manageability-11'
+  )
+
+  // Longer than any word a reader expects whole, so it must be allowed to wrap.
+  // 26 letters exceeds LONGEST_PLAUSIBLE_WORD, so it subdivides at the run length (10) rather than
+  // in half: 9/9/8.
+  expect(serializeWbr(await applyWordBreaks('<p>a abcdefghijklmnopqrstuvwxyz</p>'))).toBe(
+    'a abcdefghi|jklmnopqr|stuvwxyz'
+  )
+})
+
+test('breaks an underscore identifier at its underscore, never inside a word', () => {
+  // A ten-character first segment plus its underscore exceeds the run length, so without care it
+  // subdivides mid-word into `connec|tion_id`.
+  expect(chunkString('connection_id', 10, 3)).toEqual(['connection_', 'id'])
+  expect(chunkString('connection_ids', 10, 3)).toEqual(['connection_', 'ids'])
+  expect(chunkString('connection_id_length', 10, 3)).toEqual(['connection_', 'id_', 'length'])
+
+  // Shorter segments were always fine and stay unchanged.
+  expect(chunkString('qualifier_set', 10, 3)).toEqual(['qualifier_', 'set'])
+  expect(chunkString('stream_data_blocked', 10, 3)).toEqual(['stream_', 'data_', 'blocked'])
+
+  // The exemption is for underscores only, so punctuation and word fragments are still never
+  // stranded: a trailing period, and a leading `10` that would sit alone.
+  expect(chunkString('acknowledgements.', 10, 3)).toEqual(['acknowledgements.'])
+  expect(chunkString('10.17487/RFC9000', 10, 3)).toEqual(['10.17487', '/RFC9000'])
+
+  // And the segment has to be a name: RFC 9000's frame-types table has cells of a bare `___1`,
+  // where the underscores mark a footnote rather than separate an identifier.
+  expect(chunkString('___1', 10, 3)).toEqual(['___1'])
+})
+
+test('labels each break with the width its word needs', async () => {
+  // The class names the bucket the whole word fits inside, so CSS can switch the breaks off once
+  // the containing block is at least that wide.
+  const classesFor = async (html: string) => {
+    const pojo = await applyWordBreaks(html)
+    const classes: string[] = []
+    const walk = (nodes: ReturnType<typeof rfcDocumentToPojo>) =>
+      nodes.forEach((node) => {
+        if (node.type !== 'Element') return
+        if (node.nodeName === 'wbr') classes.push(node.attributes.class ?? '')
+        walk(node.children)
+      })
+    walk(pojo)
+    return [...new Set(classes)]
+  }
+
+  expect(await classesFor('<p>connection_id</p>')).toEqual(['wordsize-8'])
+  expect(await classesFor('<p>a1b2c3d4e5f6g7h8i</p>')).toEqual(['wordsize-10'])
+
+  // Monospace and bold render wider than the body font, so the estimate uses the right table.
+  expect(await classesFor('<code>mail.isp.example</code>')).toEqual(['wordsize-12'])
 })
