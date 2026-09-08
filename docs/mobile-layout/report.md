@@ -9,9 +9,9 @@ or at enlarged text, so the document has to be scrolled horizontally as well as 
 breaks that let text reflow are a necessary means to that end, but not the end itself.
 
 This document is a draft. It describes the current algorithm for inserting `<wbr>` (word break)
-elements inside words, which turns the text `example.com` into the HTML `example<wbr>.com` and
-gives the browser somewhere to break a word across lines. It also records why the CSS
-`overflow-wrap` approaches were set aside.
+elements inside words, which turns text such as `example.com` into the HTML `example<wbr>.com` and
+gives the browser somewhere to break a word across lines. It also records why `<wbr>` is currently
+preferred to the CSS `overflow-wrap` alternatives.
 
 ## Summary
 
@@ -120,8 +120,9 @@ The same tokens, same 320px viewport, with text at 200%:
 | underscore rule only                                | 1456   | 381          | 1075  | 74%     |
 | camelCase rule only                                 | 154    | 100          | 54    | 35%     |
 
-Overall, the load-bearing share rises from 29% to 79%. `PATH_CHALLENGE` appears 44 times in RFC9000.
-At default text it needs 145px and has 196–296px, overflowing **zero** times. At 200% it needs
+Overall, the load-bearing share rises from 29% to 79%. `PATH_CHALLENGE` appears 44 times in
+RFC 9000. At default text it needs 145px and has 196–296px, overflowing **zero** times. At 200% it
+needs
 287px against 272px and overflows in **42 of 44** appearances, including [section
 8.2](https://www.rfc-editor.org/info/rfc9000/#section-8.2-6); the two that fit are a heading and a
 table cell inside a scroller. `CONNECTION_CLOSE`, `MAX_ACK_REQUESTS`, `H3_CONNECT_ERROR` and
@@ -311,9 +312,9 @@ The 9.6em is the grouping's 8em ceiling plus a buffer of 1.2 for a substituted f
 added letter spacing. If the container is at least as wide as the ceiling the word provably fits, so
 suppression can never cause an overflow. The **container** is queried rather than the viewport, so
 indentation, table cells and nesting count. Blocks (`p`, `li`, `dd`, `blockquote`, `aside`) are the
-query containers; the word itself cannot be, since `inline-block` would stop it wrapping, and `dt`
-cannot be either, since inline-size containment removes a term's intrinsic width and a floated or
-grid-placed term then shrinks to its widest word and overlaps its definition (RFC 8900, "NOTE 1:").
+query containers; the word itself cannot be, since `inline-block` would stop it wrapping. Nor can
+`dt`: inline-size containment removes a term's intrinsic width, so a floated or grid-placed term
+shrinks to its widest word and overlaps its definition (RFC 8900, "NOTE 1:").
 Words past the largest grouping get `wordsize-wide`, which has no rule, so their breaks stay active,
 as they do where container queries are unsupported. Widths come from the committed font metrics in
 the style the word renders in (monospace in `code`, bold in `strong`, `th`, `dt` and headings). The
@@ -344,7 +345,7 @@ hyphen is a break opportunity any browser takes unprompted. Surveyed at 320px ac
 at 200%** (39 and 179 of 585). The survey must run against a corpus that does not yet carry the
 citation class, or it measures the fix rather than the problem.
 
-xml2rfc wraps each citation in a CSS classless span (`[`, one link, `]`); the precomputer recognises
+xml2rfc wraps each citation in a span with no class (`[`, one link, `]`); the precomputer recognises
 that shape and adds a class, after which `white-space: nowrap` holds the citation together.
 Trailing punctuation always sits outside the span with no whitespace before it, so it needs no
 handling.
@@ -403,10 +404,9 @@ No RFC text is altered; what changes is layout and where a line may break.
   9110's index went from **23 items past a 320px viewport at 200% text to none**, RFC 8975 from
   166px of page overflow to 15px. Above 60em nothing changes, so a 1024px tablet renders as before.
 - **`dlParallel` lists are a two-column grid above 60em.** Terms take the first column at their own
-  width and definitions the second, so a term can no longer overlap a definition whose indent was
-  measured without it; the measured indent is switched off inside the grid, since the column gap
-  already separates the two. Below 60em the inline flow above applies, where a grid column could
-  wrap under.
+  width and definitions the second, so a term can no longer overlap its definition. The measured
+  indent is switched off inside the grid, since the column gap already separates the two. Below
+  60em the inline flow above applies, where a grid column could wrap under.
 - **The inline indent xml2rfc emits is moved out of the way.** `style="margin-left:7.0em"` on each
   `dd` (13 to 493 per document) beats any stylesheet rule, so the precomputer rewrites it as a class
   and custom property the stylesheet applies conditionally. RFC 9025 went from 147px of overflow to
