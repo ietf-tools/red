@@ -397,7 +397,9 @@ is indistinguishable from the first row.
 
 ## Changes made
 
-No RFC text is altered; what changes is layout and where a line may break.
+The characters of an RFC are left as published. What changes is layout and where a line may
+break, and a break inside a word does change how that word reads, so this is not a neutral
+difference.
 
 ### Website
 
