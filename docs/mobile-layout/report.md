@@ -342,7 +342,7 @@ hyphen is a break opportunity any browser takes unprompted. Surveyed at 320px ac
 at 200%** (39 and 179 of 585). The survey must run against a corpus that does not yet carry the
 citation class, or it measures the fix rather than the problem.
 
-xml2rfc wraps each citation in a classless span (`[`, one link, `]`); the precomputer recognises
+xml2rfc wraps each citation in a CSS classless span (`[`, one link, `]`); the precomputer recognises
 that shape and adds a class, after which `white-space: nowrap` holds the citation together.
 Trailing punctuation always sits outside the span with no whitespace before it, so it needs no
 handling.

@@ -77,6 +77,13 @@ type ScreenshotOptions = {
   maskCss?: string
   /** Overrides DEFAULT_MAX_DIFF_PIXEL_RATIO for a page with unavoidable noise. */
   maxDiffPixelRatio?: number
+  /**
+   * A known, tracked visual defect. The capture, the diff and the baseline are all still
+   * produced, so the evidence stays current, but a mismatch is reported rather than failed.
+   * The value is the reason, printed with every report so nobody has to go looking for it.
+   * Remove the option once the defect is fixed; the helper says so when the comparison clears.
+   */
+  knownMismatch?: string
 }
 
 const isTruthyEnv = (value: string | undefined): boolean => value !== undefined && value !== '' && value !== '0'
@@ -155,7 +162,7 @@ export const expectScreenshotToMatchBaseline = async (
   name: string,
   options: ScreenshotOptions = {}
 ): Promise<void> => {
-  const { maskCss, maxDiffPixelRatio = DEFAULT_MAX_DIFF_PIXEL_RATIO } = options
+  const { maskCss, maxDiffPixelRatio = DEFAULT_MAX_DIFF_PIXEL_RATIO, knownMismatch } = options
 
   const actual = await captureFullPage(page, name, maskCss)
 
@@ -189,9 +196,12 @@ export const expectScreenshotToMatchBaseline = async (
   // regression signal — and pixelmatch cannot diff mismatched dimensions anyway.
   if (baselinePng.width !== actualPng.width || baselinePng.height !== actualPng.height) {
     const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
-    expect.fail(
-      `screenshot "${name}" changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}. Captured image written to ${actualPath}`
-    )
+    const message = `screenshot "${name}" changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}. Captured image written to ${actualPath}`
+    if (knownMismatch) {
+      console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
+      return
+    }
+    expect.fail(message)
   }
 
   const { width, height } = baselinePng
@@ -204,8 +214,17 @@ export const expectScreenshotToMatchBaseline = async (
   if (diffRatio > maxDiffPixelRatio) {
     const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
     const diffPath = await writePng(DIFF_DIR, fileName, PNG.sync.write(diffPng))
-    expect.fail(
-      `screenshot "${name}" differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%).\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\`.`
+    const message = `screenshot "${name}" differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%).\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\`.`
+    if (knownMismatch) {
+      console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
+      return
+    }
+    expect.fail(message)
+  }
+
+  if (knownMismatch) {
+    console.warn(
+      `[screenshot] "${name}" now matches its baseline; the known mismatch (${knownMismatch}) has cleared, so remove the knownMismatch option.`
     )
   }
 }
