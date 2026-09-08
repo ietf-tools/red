@@ -576,6 +576,51 @@ aside {
   white-space: nowrap;
 }
 
+/* Reader preference for how long words break, applied as a class on the document wrapper (see
+   uiSettings.wordBreakMode). The default mode adds nothing. The browser-driven modes hide the
+   inserted <wbr> elements, since display: none removes a break opportunity, and every non-default
+   mode undoes the two rules that would otherwise keep cross-references and citations unbreakable,
+   so a reader compares whole strategies rather than a mixture. */
+&.word-break-mode-overflow-wrap-anywhere,
+&.word-break-mode-overflow-wrap-break-word,
+&.word-break-mode-word-break-break-all,
+&.word-break-mode-none {
+  wbr {
+    display: none;
+  }
+}
+
+&.word-break-mode-wbr-with-fallback,
+&.word-break-mode-overflow-wrap-anywhere,
+&.word-break-mode-overflow-wrap-break-word,
+&.word-break-mode-word-break-break-all,
+&.word-break-mode-none {
+  .xref {
+    overflow-wrap: inherit;
+  }
+
+  .reference-citation {
+    white-space: normal;
+  }
+}
+
+&.word-break-mode-wbr-with-fallback,
+&.word-break-mode-overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+&.word-break-mode-overflow-wrap-break-word {
+  overflow-wrap: break-word;
+}
+
+&.word-break-mode-word-break-break-all {
+  word-break: break-all;
+}
+
+&.word-break-mode-none {
+  overflow-wrap: normal;
+}
+
 /* tables */
 table {
   width: 100%;

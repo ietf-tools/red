@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-09-08T01:23:15.796Z",
+  "origin": "http://localhost:3000",
+  "viewportWidth": 320,
+  "widthCapEm": 8,
+  "documents": 20,
+  "citations": 585,
+  "distinctNames": 366,
+  "widthEm": {
+    "median": 5.94,
+    "p90": 8.94,
+    "max": 13.63
+  },
+  "withinCap": 500,
+  "withinCapPercent": 85,
+  "wrapping": {
+    "100%": {
+      "wrapped": 39,
+      "total": 585,
+      "percent": 7
+    },
+    "200%": {
+      "wrapped": 179,
+      "total": 585,
+      "percent": 31
+    }
+  },
+  "widest": [
+    {
+      "text": "[KSK_ROLLOVER_ARCHIVES]",
+      "widthEm": 13.63
+    },
+    {
+      "text": "[NETCOD-FUNCTION-VIRT]",
+      "widthEm": 13.19
+    },
+    {
+      "text": "[NETCOD-FUNCTION-VIRT]",
+      "widthEm": 13.19
+    },
+    {
+      "text": "[ConsumerlabReport2020]",
+      "widthEm": 12.75
+    },
+    {
+      "text": "[ConsumerlabReport2020]",
+      "widthEm": 12.75
+    }
+  ],
+  "perRfc": {
+    "8446": 0,
+    "8750": 3,
+    "8975": 15,
+    "9000": 56,
+    "9010": 0,
+    "9025": 1,
+    "9075": 33,
+    "9110": 65,
+    "9210": 29,
+    "9290": 20,
+    "9297": 0,
+    "9325": 43,
+    "9330": 63,
+    "9370": 6,
+    "9496": 6,
+    "9505": 152,
+    "9525": 15,
+    "9559": 59,
+    "9610": 1,
+    "9690": 18
+  }
+}

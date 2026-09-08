@@ -17,7 +17,7 @@
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />
       {{ SPACE }}
-      <span class="font-normal">{{ props.rfcBucketHtmlDocument.rfc.title }}</span>
+      <span class="font-normal"><component :is="titleVNode" /></span>
     </Heading>
 
     <Heading v-if="isAprilFool" level="2" class="mb-2 px-3 xs:px-0 print:text-center">
@@ -60,6 +60,9 @@
     <div
       :class="[
         `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
+        props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasWordBreakMode
+          ? wordBreakModeClass(uiSettingsStore.wordBreakMode)
+          : undefined,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasTextScale
           ? {
               // Line height, letter spacing, word spacing and paragraph spacing are
@@ -115,6 +118,8 @@ import {
 import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
+import { wordBreakModeClass } from '~/utilities/word-break-mode'
+import { titleWithWordBreaks } from '~/utilities/word-break-title'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
 
@@ -224,6 +229,8 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     return h(PdfPages, node.attributes, () => children)
   }
 }
+
+const titleVNode = computed<VNode>(() => titleWithWordBreaks(props.rfcBucketHtmlDocument.rfc.title))
 
 const enrichedDocument = computed<VNode>(() =>
   renderDocumentPojo(props.rfcBucketHtmlDocument.documentHtmlObj, rfcHtmlPojoRenderers)

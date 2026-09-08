@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { DEFAULT_WORD_BREAK_MODE, WordBreakModeSchema, type WordBreakMode } from '~/utilities/word-break-mode'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
@@ -20,7 +21,8 @@ const UiSettingsSchema = z
     updatedByMode: SupersededModeSchema,
     disableRFCLinkPreview: z.boolean().optional(),
     textScale: TextScaleSchema.optional(),
-    subjectDensity: SubjectDensitySchema
+    subjectDensity: SubjectDensitySchema,
+    wordBreakMode: WordBreakModeSchema.optional()
   })
   .optional()
 
@@ -49,6 +51,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   const disableRFCLinkPreviewRef = ref<boolean>(false)
   const textScaleRef = ref<number>(DEFAULT_TEXT_SCALE)
   const subjectDensityRef = ref<SubjectDensity>(DEFAULT_SUBJECT_DENSITY)
+  const wordBreakModeRef = ref<WordBreakMode>(DEFAULT_WORD_BREAK_MODE)
 
   const saveSettings = () => {
     const uiSettings: UiSettings = {
@@ -56,7 +59,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       updatedByMode: updatedByModeRef.value,
       disableRFCLinkPreview: disableRFCLinkPreviewRef.value,
       textScale: textScaleRef.value,
-      subjectDensity: subjectDensityRef.value
+      subjectDensity: subjectDensityRef.value,
+      wordBreakMode: wordBreakModeRef.value
     }
 
     try {
@@ -89,6 +93,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       disableRFCLinkPreviewRef.value = data.disableRFCLinkPreview ?? disableRFCLinkPreviewRef.value
       textScaleRef.value = data.textScale ?? textScaleRef.value
       subjectDensityRef.value = data.subjectDensity ?? subjectDensityRef.value
+      wordBreakModeRef.value = data.wordBreakMode ?? wordBreakModeRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
@@ -124,6 +129,11 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  const setWordBreakMode = (wordBreakMode: WordBreakMode) => {
+    wordBreakModeRef.value = wordBreakMode
+    saveSettings()
+  }
+
   const setIsUiSettingsModalOpen = (isOpen: boolean) => {
     isUiSettingsModalOpenRef.value = isOpen
   }
@@ -143,6 +153,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     textScale: textScaleRef,
     setTextScale,
     subjectDensity: subjectDensityRef,
-    setSubjectDensity
+    setSubjectDensity,
+    wordBreakMode: wordBreakModeRef,
+    setWordBreakMode
   }
 })

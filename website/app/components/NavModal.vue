@@ -1,7 +1,7 @@
 <template>
   <DialogRoot v-model:open="openModel">
     <DialogPortal>
-      <DialogOverlay class="bg-blue-900/50 fixed inset-0 z-110 overflow-y-scroll py-16">
+      <DialogOverlay class="bg-blue-900/50 fixed inset-0 z-110 overflow-y-scroll py-4 md:py-16">
         <DialogContent
           :aria-describedby="
             // The body holds controls rather than prose, so there is nothing for

@@ -11,7 +11,8 @@ export const FeatureFlagsSchema = z.object({
   formatsAlsoViewAs: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
   oidc: z.boolean().optional(),
-  hasTextScale: z.boolean().optional()
+  hasTextScale: z.boolean().optional(),
+  hasWordBreakMode: z.boolean().optional()
 })
 
 // this is commented out until next time we need a string union value in feature flags.
@@ -35,6 +36,12 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   hasTextScale: {
     title: 'Text scaling option',
     description: 'Text scaling affects line spacing, letter spacing, word spacing, and spacing after paragraphs.',
+    storageType: 'boolean'
+  },
+  hasWordBreakMode: {
+    title: 'Word breaking preference',
+    description:
+      "Adds a UI setting choosing how long words and URLs in RFC documents break: the inserted break points, or one of the browser's own strategies.",
     storageType: 'boolean'
   },
   oidc: {
@@ -71,6 +78,7 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   hasTextScale: false,
+  hasWordBreakMode: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
   // narrowerRfcs: '',
