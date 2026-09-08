@@ -1,5 +1,7 @@
 # Mobile layout in RFC documents
 
+_DRAFT_
+
 RFCs were written for desktop resolutions. Modern RFC HTML supports reflowing text, but RFCs are
 not designed for mobile layout or for accessibility requirements such as WCAG and text resizing.
 
