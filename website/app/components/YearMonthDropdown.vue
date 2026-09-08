@@ -98,7 +98,8 @@ const yearMonthsByYear = Array.from({ length: numberOfOptions })
  * To have placeholder-like behaviour in a native <select> you can make the first option disabled.
  * The first option will appear selected by default, but the user can't choose it, so it functions
  * a bit like a placeholder.
- * Unfortunately Vue doesn't want to select an
+ * Vue's v-model will not select a disabled option, so the first option is disabled only after
+ * the initial selection has been made.
  **/
 const isDisabled = ref(false)
 nextTick(() => {

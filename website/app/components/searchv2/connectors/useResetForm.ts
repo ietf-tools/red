@@ -10,7 +10,7 @@ export type UseResetFormOptions = {
 
 /**
  * Resets the whole form to its configured defaults (query, refinements, sort, page,
- * toggles). Replaces InstantSearch's ClearRefinements, which only cleared facets.
+ * toggles).
  */
 export function useResetForm(options: UseResetFormOptions = {}) {
   const context = useSearchContext()

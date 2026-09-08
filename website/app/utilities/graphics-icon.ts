@@ -22,11 +22,8 @@ import {
 } from '#components'
 
 /**
- * Maps the Iconify icon names that were previously rendered by `@nuxt/icon`'s
- * `<Icon>` component to the local `components/Graphics/` SVG components that
- * replaced them. Used to resolve icon names that arrive as strings from data
- * (e.g. document content, menu definitions) rather than being known at author
- * time.
+ * Iconify-style icon names to the local `components/Graphics/` SVG components,
+ * for names that arrive as strings from data (document content, menu definitions).
  */
 const GRAPHICS_ICON_BY_NAME: Record<string, Component> = {
   'eos-icons:loading': GraphicsLoading,

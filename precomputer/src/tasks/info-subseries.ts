@@ -37,14 +37,8 @@ export const uploadAllSubseries = async (allSubseries: Readonly<SubseriesCommon[
       return [s3Path]
     })
 
-  console.log(
-    ` - subseries 100% ${
-      logItems.length > 0
-        ? // print any remaining log items
-          `${logItems.join(', ')}.`
-        : ''
-    }`
-  )
+  // print any remaining log items
+  console.log(` - subseries 100% ${logItems.length > 0 ? `${logItems.join(', ')}.` : ''}`)
 
   if (errors.length > 0) {
     console.error(` - subseries error ${errors}`)

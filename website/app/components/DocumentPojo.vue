@@ -23,8 +23,8 @@ const renderer: ElementRenderers = {
       node.attributes,
       () => childrenForVue
     ),
-  // Content may reference icons by their (previously Iconify) name; resolve that
-  // name to a local `components/Graphics/` SVG component. See `resolveGraphicsIcon`.
+  // Content may reference icons by name; resolve that name to a local
+  // `components/Graphics/` SVG component. See `resolveGraphicsIcon`.
   Icon: (node, childrenForVue) => {
     const { name, ...attributes } = node.attributes
     const iconComponent = typeof name === 'string' ? resolveGraphicsIcon(name) : undefined

@@ -48,7 +48,7 @@ const subseriesRedirect = (req: IRequest) => {
     url.pathname.match(/^\/fyi\/fyi[0-9]+$/)
   ) {
     url.pathname = url.pathname.replace(/^\/(bcp|std|fyi)\//, '/info/')
-    url.pathname += '/' // add the trailing space expected on the new site
+    url.pathname += '/' // the new site expects a trailing slash
     return redirectTo(url.toString(), 302)(req)
   }
 }
@@ -76,7 +76,6 @@ router
    */
   .all('*', addNormalizedPath)
 
-  // Static Redirects
   .get('/about', redirectTo('/about/rfc-editor/', 302))
   .get('/about/clusters/', redirectTo('https://authors.ietf.org/rfc-publication-process#clusters', 302))
   .get('/about/governing', redirectTo('/about/rfc-editor/', 302))
@@ -132,7 +131,6 @@ router
   .get('/styleguide/part2/', redirectTo('/authors/rfc-style-guide/', 302))
   .get('/styleguide/tips/', redirectTo('/authors/rfc-style-guide/', 302))
 
-  // Dynamic Redirects
   .get('/auth48/*', (req: IRequest) => {
     let match = req.normalizedPath.match(/^\/auth48\/c(?<num>\d+)$/i)
     if (match?.groups?.num) {
@@ -219,7 +217,6 @@ router
     Response.redirect(`https://bib.ietf.org/public/rfc/bibxml/${req.params.extra}`, 302)
   )
 
-  // Blobs
   .get('/api/v1/content/*', blobsApiContentJson)
   .get('/api/v1/favicon/*', blobsApiFavicon)
   .get('/api/v1/info-subseries/*', blobsApiInfoSubseries)

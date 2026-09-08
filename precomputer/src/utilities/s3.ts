@@ -126,7 +126,6 @@ export async function saveToS3(key: string, contents: StreamingBlobPayloadInputT
   const prefixForDebug = `[S3 Upload ${key}]`
   const S3_RED_BUCKET = process.env.S3_RED_BUCKET
   assertIsString(S3_RED_BUCKET, `process.env.S3_RED_BUCKET wasn't a string. Was ${typeof S3_RED_BUCKET}`)
-  // console.log(`[${S3_RED_BUCKET}] saving ${key}`, ' with contents ', contents)
   const { s3RedCli } = getS3Singleton()
   let attemptsRemaining = NUMBER_OF_S3_RETRIES
 
@@ -142,7 +141,6 @@ export async function saveToS3(key: string, contents: StreamingBlobPayloadInputT
         })
       )
       if (putResult.$metadata.httpStatusCode === 200) {
-        // console.log(prefixForDebug, `succeeded`)
         return
       }
       throw Error(String(putResult))
@@ -289,7 +287,7 @@ export const HOMEPAGE_LATEST_PATH = `other/homepage-latest.json` as const
 
 export const RFC_INDEX_TXT_PATH = 'other/rfc-index.txt' as const
 
-// This file isn't created by Red anymore. It's created by Datatracker.
+// Produced by Datatracker; Red only serves it.
 export const RFC_INDEX_XML_PATH = 'other/rfc-index.xml' as const
 
 export const RFC_MINI_INDEX_JSON_PATH = 'other/rfc-mini-index.json' as const

@@ -41,8 +41,8 @@
     </template>
     <template #default>
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />
+      <!-- desktop abstract -->
       <div v-if="props.showAbstract && !!props.rfc.abstract" class="relative z-1 hidden lg:block">
-        <!-- desktop abstract -->
         <Heading
           :level="abstractHeadingLevel"
           style-level="5"

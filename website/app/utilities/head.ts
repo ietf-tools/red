@@ -82,11 +82,7 @@ const formatTitle = (title?: string) => {
   if (!title) {
     return SITE_NAME
   }
-  return `${title} | ${SITE_NAME}`.replace(
-    // remove linebreaks
-    /\s/g,
-    ' '
-  )
+  return `${title} | ${SITE_NAME}`.replace(/\s/g, ' ') // collapse whitespace, including linebreaks
 }
 
 const linkPreviewImageBuilder = (mode: 'opengraph' | 'twitter', publicSiteOrigin: string, customThumbnail?: string) => {

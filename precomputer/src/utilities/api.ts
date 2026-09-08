@@ -68,6 +68,7 @@ export const getApiClient = (): ApiClient => {
  * and try again.
  */
 export const safeDocRetrieve = async (api: ApiClient, rfcNumber: number): Promise<Rfc | null> => {
+  // The API client can throw to indicate 404s... if so, return null
   const isDocRetrieveNotFoundError = (e: unknown) => {
     return (
       e &&
@@ -77,12 +78,7 @@ export const safeDocRetrieve = async (api: ApiClient, rfcNumber: number): Promis
       'errors' in e &&
       Array.isArray(e.errors) &&
       e.errors.length > 0 &&
-      e.errors.some(
-        (error) =>
-          'code' in error &&
-          // The API client can throw to indicate 404s... if so, return null
-          error.code === 'not_found'
-      )
+      e.errors.some((error) => 'code' in error && error.code === 'not_found')
     )
   }
 
@@ -244,7 +240,6 @@ export const getRfcCommonCached = async (rfcNumber: number): Promise<RfcCommon |
   return _getRfcCommonCache[rfcNumber]
 }
 
-/** Convert `Rfc` to `RfcCommon` */
 export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
   return {
     formats:
@@ -277,7 +272,6 @@ export const rfcToRfcCommon = (rfc: Rfc): RfcCommon => {
   }
 }
 
-/** Convert `RfcMetadata` to `RfcCommon` */
 export const rfcMetadataToRfcCommon = (rfcMetadata: RfcMetadata): RfcCommon => {
   return {
     formats:
@@ -371,6 +365,7 @@ export const getAllRFCs = async ({ api, limit }: GetAllRFCsProps): Promise<Reado
   return frozenRfcs
 }
 
+// Parsers for parts of RFC/subseries documents
 export const parseSubseriesName = (name: string) => {
   const nameParts = name.match(
     // contiguous blocks of either letters or numbers
@@ -423,10 +418,6 @@ export const sortSubseriesCommon = (a: SubseriesCommon, b: SubseriesCommon): num
   }
   return a.number - b.number
 }
-
-/**
- * Parsers for parts of RFC/subseries documents
- */
 
 export const parseStatus = (
   status: Rfc['status'] | RfcMetadata['status'] | undefined,

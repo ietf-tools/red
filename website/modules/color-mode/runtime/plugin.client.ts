@@ -96,8 +96,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       }
 
       setPreferenceToStorage(preference)
-      // Local storage to sync with other tabs
-      // window.localStorage?.setItem(storageKey, preference)
     },
     { immediate: true }
   )

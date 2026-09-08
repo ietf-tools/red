@@ -15,8 +15,7 @@ export const uploadRfcMiniIndexJson = async (allRfcs: Readonly<RfcCommon[]>): As
 export const renderRfcMiniIndexJson = async (allRfcs: Readonly<RfcCommon[]>): Promise<string> => {
   let jsonParts: string[] = []
 
-  // This was a .map() callback but that got a 'RangeError: Maximum call stack size exceeded'
-  // so it's a simple forloop to avoid callback functions on the stack.
+  // A plain loop: a `.map()` callback over 10k+ RFCs overflowed the call stack.
   for (let i = 0; i < allRfcs.length; i++) {
     const rfc = allRfcs[i]
     const rfcMini = rfcToRfcMini(rfc)

@@ -5,20 +5,12 @@
  * Keeping it as a plain object (not DOM/VNodes) lets us also serialise the
  * diagram to a standalone SVG string for export without touching the DOM.
  *
- * Arc helpers (all quarter-circles, radius R = C.ARC_R). Only the four
- * downward turns are needed; see the aRD/aDR/aLD/aDL definitions below:
- *   aRD  — traveling Right, curving Down   (clockwise in SVG coords)
- *   aDR  — traveling Down,  curving Right  (counter-clockwise)
- *   aLD  — traveling Left,  curving Down   (counter-clockwise)
- *   aDL  — traveling Down,  curving Left   (clockwise)
- *
- * "Clockwise in SVG coords" means sweep-flag=1 (y-axis points down).
+ * In the arc helpers, "CW" means sweep-flag=1, which is clockwise on screen because the SVG
+ * y-axis points down.
  */
 
 import { C } from '../layout/layout'
 import type { LayoutNode } from '../layout/types'
-
-// ── output types ─────────────────────────────────────────────────────────
 
 export interface SvgEl {
   tag: string
@@ -30,18 +22,15 @@ export interface SvgEl {
 export interface DiagramSvg {
   width: number
   height: number
-  // Extra padding so arcs and clipping don't cut off at the edge.
   elements: SvgEl[]
 }
-
-// ── public API ────────────────────────────────────────────────────────────
 
 const RAIL_LEAD = 16 // horizontal stub before/after the root node
 
 export function renderDiagram(root: LayoutNode): DiagramSvg {
   const els: SvgEl[] = []
   const W = root.box.width + RAIL_LEAD * 2
-  const H = root.box.up + root.box.down + C.ARC_R * 2 // vertical padding for arcs
+  const H = root.box.up + root.box.down + C.ARC_R * 2 // extra padding so arcs and clipping don't cut off at the edge
 
   // Opening and closing rail stubs.
   const railY = root.box.up + C.ARC_R
@@ -52,8 +41,6 @@ export function renderDiagram(root: LayoutNode): DiagramSvg {
 
   return { width: W, height: H, elements: els }
 }
-
-// ── arc helpers ───────────────────────────────────────────────────────────
 
 const R = C.ARC_R
 
@@ -69,8 +56,6 @@ const aLD = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 0 ${x - R} ${
 
 // arcDL: traveling Down, exits going Left. CW. End: (-R, +R).
 const aDL = (x: number, y: number) => `M ${x} ${y} A ${R} ${R} 0 0 1 ${x - R} ${y + R}`
-
-// ── node renderer ────────────────────────────────────────────────────────
 
 function renderNode(node: LayoutNode, x: number, y: number, out: SvgEl[]): void {
   const { box } = node
@@ -191,8 +176,6 @@ function renderNode(node: LayoutNode, x: number, y: number, out: SvgEl[]): void 
   }
 }
 
-// ── Optional bypass arc ───────────────────────────────────────────────────
-
 function renderBypassAbove(x: number, railY: number, totalW: number, itemUp: number, out: SvgEl[]): void {
   // Bypass arc goes from (x, railY) up and over the item.
   // The bypass track is at bypassY = railY - itemUp - R (above the item top edge).
@@ -217,8 +200,6 @@ function renderBypassAbove(x: number, railY: number, totalW: number, itemUp: num
   )
 }
 
-// ── OneOrMore / ZeroOrMore ────────────────────────────────────────────────
-
 function renderRepeat(
   item: LayoutNode,
   rep: LayoutNode | undefined,
@@ -232,8 +213,8 @@ function renderRepeat(
   const innerW = Math.max(item.box.width, rep?.box.width ?? 0)
   const itemX = x + R + C.STUB
 
-  // Item on the rail.
   out.push(path(hLine(x, itemX, railY)))
+  // Item on the rail.
   renderNode(item, itemX, railY - item.box.up, out)
   out.push(path(hLine(itemX + item.box.width, x + totalW, railY)))
 
@@ -275,8 +256,6 @@ function renderRepeat(
     )
   )
 }
-
-// ── SVG element helpers ───────────────────────────────────────────────────
 
 function path(d: string): SvgEl {
   return { tag: 'path', attrs: { d }, children: [] }

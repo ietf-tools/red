@@ -16,7 +16,7 @@ type CreateRfcSearchClientParams = {
 /**
  * RFC Editor specific SearchClient. Wraps the generic Typesense adapter with the
  * `type:=rfc` constraint, the red/red-content preset swap, and the RFC-number and
- * subseries query rewrites (ported from the old search-client-middleware).
+ * subseries query rewrites.
  */
 export function createRfcSearchClient(params: CreateRfcSearchClientParams): SearchClient {
   const { host, apiKey, onSubseries } = params

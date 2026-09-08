@@ -29,8 +29,8 @@ export default defineNuxtModule({
   async setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    // Read script from disk and add to options
     const scriptPath = resolver.resolve('./script.min.js')
+    // Read script from disk and add to options
     const scriptT = await fsp.readFile(scriptPath, 'utf-8')
     type ScriptOption =
       | 'storageKey'
@@ -46,12 +46,12 @@ export default defineNuxtModule({
       options.cookieAttrs ??= { 'max-age': '31536000', path: '/', ...(options.cookieAttrs ? options.cookieAttrs : {}) }
     }
 
-    // Inject options via virtual template
     const storageTypes: Record<ColorModeStorage, `"${ColorModeStorage}"`> = {
       cookie: '"cookie"',
       localStorage: '"localStorage"',
       sessionStorage: '"sessionStorage"'
     }
+    // Inject options via virtual template
     addTemplate({
       filename: 'color-mode-options.mjs',
       getContents: () =>
@@ -141,9 +141,7 @@ export interface ModuleOptions {
    * @default `localStorage`
    */
   storage?: ColorModeStorage
-  /**
-   * Storage cookie's attributes
-   */
+  /** Storage cookie's attributes */
   cookieAttrs?: Record<string, unknown>
   /**
    * The script that will be injected into the head of the page

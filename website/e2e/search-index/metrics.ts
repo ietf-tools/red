@@ -71,7 +71,6 @@ export const aggregate = (scores: CaseScore[]): AggregateMetrics => ({
 export const pct = (value: number): string => `${(value * 100).toFixed(1)}%`
 export const round3 = (value: number): number => Math.round(value * 1000) / 1000
 
-// --- regression gating against a committed baseline -------------------------------------------
 import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'

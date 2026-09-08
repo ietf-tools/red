@@ -75,7 +75,6 @@ const parseExpected = (raw: string): number[] => {
   return [...new Set(numbers)]
 }
 
-/** Builds a SearchCase from a CSV row, given the default withinTopN. */
 const rowToCase = (get: (header: string) => string, defaultWithinTopN: number): SearchCase => {
   const query = get('query').trim()
   const preset = get('preset').trim()

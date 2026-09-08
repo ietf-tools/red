@@ -113,7 +113,10 @@ type UppercaseFormats = Uppercase<FormatNames> | 'ASCII'
 
 export const formatFormat = (
   format: string,
-  isPreV3: boolean // we need to know whether it's pre-V3 https://www.rfc-editor.org/rpc/wiki/doku.php?id=rfc_metadata_in_the_v3_era
+  // Before the xml2rfc v3 era the text file was canonical, so `txt` is labelled ASCII for
+  // those RFCs.
+  // https://www.rfc-editor.org/rpc/wiki/doku.php?id=rfc_metadata_in_the_v3_era
+  isPreV3: boolean
 ): UppercaseFormats => {
   switch (format) {
     case 'txt':
@@ -136,6 +139,7 @@ export const formatFormat = (
 }
 
 export const formatDatePublished = (dt: DateTime, isAprilFirstMode: boolean): string => {
+  // handle April 1st
   if (isAprilFirstMode && dt.month === 4 && dt.day === 1) {
     // handle April 1st
     return dt.toFormat('d LLLL yyyy')

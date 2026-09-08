@@ -347,7 +347,6 @@ const formatsPojo = computed((): DocumentPojo => {
 }
 
 html.dark .rfc-content-type-xml2rfc {
-  /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/xml2rfc-darkmode-patches.css";
 }
 
@@ -361,12 +360,10 @@ html.dark .rfc-content-type-xml2rfc {
   container-type: inline-size;
   --preformatted-max-line-length: v-bind(maxPreformattedLineLength);
 
-  /* Using postcss-nested-import scope these imported styles */
   @nested-import "../assets/css/rfc-plaintext.css";
 }
 
 html.dark .rfc-content-type-plaintext {
-  /* Using postcss-nested-import to scope/sandbox these imported styles so style rules don't leak out to the rest of the page */
   @nested-import "../assets/css/rfc-plaintext-darkmode-patches.css";
 }
 

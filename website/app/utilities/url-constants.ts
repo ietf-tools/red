@@ -1,13 +1,9 @@
 /**
  * Static URL origins and paths.
  *
- * Split out of `url.ts` so that modules needing only a path constant don't have to import the
- * builders and predicates alongside it — which is what previously forced an import cycle
- * between `url.ts` and `url-searchv2.ts`.
- *
- * Deliberately dependency-free: nothing here imports anything, so any module can use it
- * without pulling in a graph. `url.ts` re-exports all of it, so existing callers are
- * unaffected by the move.
+ * Dependency-free on purpose: a module that needs only a path constant (`url-searchv2.ts` for one)
+ * can import this without `url.ts`'s builders and predicates, which is what keeps those two out of
+ * a cycle. `url.ts` re-exports all of it.
  */
 
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'

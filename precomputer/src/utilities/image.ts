@@ -11,7 +11,6 @@ export const isSharpImageGreyscale = async (sharpImage: SharpImage): Promise<boo
   const greyscaleThreshold = 1
 
   try {
-    // Get image metadata first
     const metadata = await sharpImage.metadata()
 
     // If image has only one channel, it's definitely grayscale

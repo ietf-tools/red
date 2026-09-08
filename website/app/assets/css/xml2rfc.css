@@ -5,7 +5,6 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 
 */
 
-/* fonts */
 :root {
   --font-sans: Arial, Helvetica, sans-serif;
   --font-serif: 'Times', 'Times New Roman', serif;
@@ -43,20 +42,14 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   }
 
   .horizontal-scrollable pre {
-    max-width: none; /* constrain layout width, but allow overflow of <pre> text so that it's still visible. constraining layout width is necessary to prevent <pre> from stretching page width on small screens */
+    max-width: none;
   }
 }
 
-/**
- * END OF 80 char max width fixes
- **/
-
-/* general and mobile first */
 .ears {
   display: none;
 }
 
-/* headings */
 #title,
 h1,
 h2,
@@ -117,7 +110,6 @@ h6 {
   margin-bottom: 1em;
 }
 
-/* general structure */
 p {
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
   margin: 0 0 1em 0;
@@ -178,7 +170,6 @@ svg [font-family~='monospace' i] {
   margin-bottom: 1.5em;
 }
 
-/* lists */
 ol,
 ul {
   padding: 0;
@@ -257,8 +248,6 @@ ol.compact,
     margin-left: 0.5em;
   }
 }
-
-/* definition lists */
 
 /* Term layout is defined here only. A duplicate elsewhere in this file ties on specificity and
    wins on source order, which silently applies narrow-screen overrides to definitions but not to
@@ -397,7 +386,6 @@ dl > dd > dl {
   }
 }
 
-/* links */
 a {
   text-decoration: none;
 }
@@ -405,7 +393,7 @@ a {
 a[href] {
   color: var(--color-blue-150, #22e);
   text-decoration: underline;
-  /* Arlen: WCAG 2019 */
+  /* WCAG contrast */
 }
 
 h1 a[href],
@@ -452,7 +440,6 @@ a.selfRef:hover {
   cursor: default;
 } */
 
-/* Figures */
 tt,
 code {
   font-family: var(--font-mono);
@@ -482,15 +469,15 @@ figcaption {
   padding-right: var(--layout-bleed-right);
 }
 
-/* aside, blockquote */
 aside,
 blockquote {
   margin-left: 0;
   padding: 1.2em 2em;
 }
 
-/* Set asides apart. Defined here only, for the same reason as the term layout above:
-   silently overrode the padding above — the declarations here are that rule's. */
+/* Set asides apart. Defined here only, for the same reason as the term layout above: a
+   duplicate `aside` rule elsewhere in this file ties on specificity and wins on source order,
+   silently overriding the padding above. */
 aside {
   border-left: 1px solid #ddd;
   margin: 1em 0 1em 2em;
@@ -655,7 +642,6 @@ aside {
   overflow-wrap: normal;
 }
 
-/* tables */
 table {
   width: 100%;
   margin: 0 0 1em;
@@ -690,10 +676,8 @@ table p {
   margin: 0;
 }
 
-/* pilcrow */
 a.pilcrow {
   color: #666;
-  /* Arlen: AHDJ 2019 */
   text-decoration: none;
   opacity: 0;
   user-select: none;
@@ -733,7 +717,6 @@ a.pilcrow:hover {
   }
 }
 
-/* misc */
 hr {
   border: 0;
   border-top: 1px solid #eee;
@@ -747,7 +730,6 @@ hr {
   font-variant: all-small-caps;
 }
 
-/* info block */
 #identifiers {
   margin: 0;
   font-size: 0.9em;
@@ -763,7 +745,7 @@ hr {
   margin-bottom: 0;
 }
 
-/* Fix PDF info block run off issue */
+/* Keeps the info block from running off the printed page */
 @media print {
   #identifiers dd {
     max-width: 100%;
@@ -782,7 +764,7 @@ hr {
 /* The prepared/rendered info at the very bottom of the page */
 .docInfo {
   color: #666;
-  /* Arlen: WCAG 2019 */
+  /* WCAG contrast */
   font-size: 0.9em;
   font-style: italic;
   margin-top: 2em;
@@ -795,8 +777,6 @@ hr {
 .docInfo .prepared {
   float: right;
 }
-
-/* references */
 
 /* The term floats left and the definition clears it with a matching indent, both in em, so they
    grow with the reader's text size while the screen does not. Narrow screens are handled by the
@@ -825,7 +805,6 @@ hr {
   margin-bottom: 0.25em;
 }
 
-/* index */
 .index ul {
   margin: 0 0 0 1em;
   padding: 0;
@@ -864,7 +843,6 @@ hr {
   }
 }
 
-/* authors */
 address.vcard {
   font-style: normal;
   margin: 1em 0;
@@ -904,9 +882,8 @@ hr.addr {
   padding: 0.2em;
   content: 'The RFC Editor will remove this note';
   color: #9e2a00;
-  /* Arlen: WCAG 2019 */
+  /* WCAG contrast */
   background-color: #ffd;
-  /* Arlen: WCAG 2019 */
 }
 
 .rfcEditorRemove {
@@ -923,7 +900,6 @@ hr.addr {
   font-style: italic;
 }
 
-/* alternative layout for smaller screens */
 @media screen and (max-width: 1023px) {
   body {
     padding-top: 2em;
@@ -994,7 +970,6 @@ hr.addr {
   }
 }
 
-/* alternative layout for wide screens */
 @media screen and (min-width: 1024px) {
   body {
     max-width: 724px;
@@ -1030,14 +1005,13 @@ hr.addr {
     overflow: auto;
   }
 
+  /* future proofing */
   img {
-    /* future proofing */
     max-width: 100%;
     height: auto;
   }
 }
 
-/* pagination */
 @media print {
   body {
     width: 100%;
@@ -1180,7 +1154,6 @@ hr.addr {
   */
 }
 
-/* Changes introduced to fix issues found during implementation */
 /* Make sure links are clickable even if overlapped by following H* */
 a {
   z-index: 2;
@@ -1364,9 +1337,8 @@ h4 {
   padding-top: 24px;
 }
 
-/* Float artwork pilcrow to the right */
-/* Make pilcrows on dd visible */
 @media screen {
+  /* Make pilcrows on dd visible */
   dd:hover > a.pilcrow {
     visibility: visible;
   }
@@ -1492,7 +1464,6 @@ table {
   min-width: 20em;
 }
 
-/* ol type a */
 ol.type-a {
   list-style-type: lower-alpha;
 }
@@ -1549,7 +1520,6 @@ tr:nth-child(even) > td {
   break-before: avoid-page;
 }
 
-/* Change the approach to avoiding breaks inside artwork etc. */
 figure,
 pre,
 table,
@@ -1589,7 +1559,6 @@ dd.break {
   break-after: auto;
 }
 
-/* Undo break-before ToC */
 @media print {
   #toc {
     break-before: auto;
@@ -1614,8 +1583,7 @@ section .olCompact {
   /* same as p not within ul.compact etc. */
 }
 
-/* The tt and code background above interferes with for instance table cell
-   backgrounds.  Changed to something a bit more selective. */
+/* No background on inline code: it clashes with table cell backgrounds. */
 tt,
 code {
   background-color: transparent;
@@ -1638,7 +1606,6 @@ dl > dd > dl {
 }
 
 /* Elements that should not be rendered on the same line as a <dt> */
-/* This should match the element list in writer.text.TextWriter.render_dl() */
 dd > div.artwork:first-child,
 dd > aside:first-child,
 dd > blockquote:first-child,

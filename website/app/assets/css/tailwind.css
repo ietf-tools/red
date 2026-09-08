@@ -336,10 +336,7 @@ mark {
 }
 
 .print-with-background {
-  /*
-  To be used sparingly.
-  See also https://stackoverflow.com/questions/3893986/css-media-print-issues-with-background-color
-  */
+  /* Browsers drop backgrounds when printing; this forces them to print. Use sparingly. */
   -webkit-print-color-adjust: exact !important;
 }
 

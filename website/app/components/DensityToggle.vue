@@ -25,10 +25,10 @@
 import { useId } from 'vue'
 import type { DensityOption } from '~/utilities/density'
 import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
-// A11y (report F1): a labelled radio group of mutually-exclusive display options.
+// A labelled radio group of mutually-exclusive display options.
 // - fieldset/legend gives the group an accessible name (supplied by the `legend` prop)
 // - native radios give single-selection + arrow-key navigation, and the fieldset is
-//   not an extra tab stop (unlike the previous ToggleGroup with aria-pressed)
+//   not an extra tab stop
 // - the selected state uses an outline so it stays visible in forced-colors / high contrast
 const value = defineModel<T>()
 

@@ -2,11 +2,9 @@
 // by the /set page.
 //
 // Which of this reader's sets hold a document, and what their sets are, are read from
-// ~/stores/reef along with every other per-reader answer. Reef used to offer only the caller's
-// whole list with every set's full membership attached, so an RFC page paid that to settle one
-// document's rows; now the membership arrives per document and the sets carry only what labels a
-// row. What's left here is what's particular to sets: creating one, changing what it holds, and
-// the /set page's read of a single set by id.
+// ~/stores/reef along with every other per-reader answer: membership arrives per document, and
+// the sets carry only what labels a row. What's left here is what's particular to sets: creating
+// one, changing what it holds, and the /set page's read of a single set by id.
 
 import { computed, ref, toValue, watch, type MaybeRefOrGetter, type Ref, type WritableComputedRef } from 'vue'
 import { z } from 'zod'
@@ -83,8 +81,6 @@ export const setMembershipFailedNotification = (
   // noticed.
   type: 'foreground'
 })
-
-// --- Writing ------------------------------------------------------------------------------
 
 // Add this document to one set, or take it out. Ticked first and put back if Reef refuses, and
 // keyed by set so a failure on one row can't undo a change the reader made to another.
@@ -196,8 +192,6 @@ export const createUserSet = async (rfcNumber: number, { title, description }: N
   }
 }
 
-// --- The models an RFC page binds --------------------------------------------------------
-
 export type UserSets = {
   // The reader's sets, in the order the dialog lists them. Empty while nobody is signed in.
   sets: Ref<ReefSet[]>
@@ -224,8 +218,6 @@ export const useUserSets = (rfcNumber: MaybeRefOrGetter<number>): UserSets => {
     createSet: (newSet) => createUserSet(toValue(rfcNumber), newSet)
   }
 }
-
-// --- One set, for the /set page ---------------------------------------------------------
 
 // What the set page renders. `notFound` is a state of its own rather than an error: Reef leaves a
 // set the caller may not read out of the queryset instead of refusing it, so one 404 covers deleted,

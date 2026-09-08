@@ -1,11 +1,11 @@
 import type { NodePojo } from './rfc-validators'
 
 /**
- * W3C DOMParser factory that works on server and browser
+ * Browser only; throws outside one.
  */
 export const getDOMParser = (): DOMParser => {
-  // browser environment
   if (typeof window !== 'undefined') {
+    // browser environment
     return new DOMParser()
   }
   throw Error(`Unable to get DOMParser`)
@@ -72,7 +72,8 @@ export const getInnerText = (element: HTMLElement): string => {
 type NodeReplacementFn = (node: NodePojo) => NodePojo
 
 /**
- * Walks a NodePojo and Provides a callback for
+ * Applies `reviver` to each node before descending into it, so the children walked are the
+ * replacement's rather than the original's.
  */
 export const nodePojoWalker = (nodes: NodePojo[], reviver: NodeReplacementFn): NodePojo[] => {
   return nodes.map((node) => {

@@ -43,8 +43,8 @@ export const getXMLBuilder = (additionalConfig: XmlBuilderOptions) =>
  * The Platform[tm] https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
  */
 export const parseHtml = (html: string) => {
+  // HTML parse mode config
   const parser = getXMLParser({
-    // HTML parse mode config
     unpairedTags: ['hr', 'br', 'link', 'meta'],
     stopNodes: ['*.pre', '*.script'],
     htmlEntities: true

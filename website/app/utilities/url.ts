@@ -33,20 +33,19 @@ import {
   SUBJECTS_PATH
 } from './url-constants'
 
-// Constants moved to `url-constants.ts`; re-exported so existing importers of this module are
-// unaffected. Keeping them dependency-free is what lets `url-searchv2.ts` take `SEARCH_PATH`
-// without importing this module, which is what removed the cycle between the two.
+// Re-exported so callers can take the constants from here. `url-searchv2.ts` imports `SEARCH_PATH`
+// from `url-constants.ts` directly, which keeps it and this module out of an import cycle.
 export * from './url-constants'
 
-// Moved to `typesense-utils.ts`, which is DOM-free; `typesense.ts` is not, and this module is
-// reachable from the Nitro server build.
+// From `typesense-utils.ts` rather than `typesense.ts`: this module is reachable from the Nitro
+// server build and `typesense.ts` reaches for the DOM.
 export { typeSenseEncodeUriComponent } from './typesense-utils'
 
 /**
  * Represents all known href string patterns
  */
 export type ValidHrefs =
-  | MarkdownValidHrefs // generated global type from types/markdown-valid-hrefs.d.ts
+  | MarkdownValidHrefs
   | `https://${string}` // any external link is treated as valid (even if it might 404 we don't verify further)
   | typeof HOME_PATH
   | typeof ACCOUNT_HOME_PATH
@@ -346,7 +345,6 @@ export const isOutsideNuxtLink = (href?: string): boolean => {
      *  * https://www.rfc-editor.org/fyi/fyi2
      *  * https://www.rfc-editor.org/std/std3
      */
-    //
     href.startsWith('/bcp/') ||
     href.startsWith('/fyi/') ||
     href.startsWith('/std/')
@@ -408,10 +406,8 @@ export const textToAnchorId = (text: string): string | undefined => {
     .toLowerCase() // lowercase before kebabCase() because otherwise kebabCase() will split 'RFCs' into 'rf-cs'
     .replace(/\./g, '-') // replace periods because otherwise "section 2.2" becomes "section22" rather than "section2-2" which is more readable in the url
     .replace(/[^0-9\-a-zA-Z\s]/g, '') // removes non-alphanumeric eg question marks
-  if (
-    // if it's an empty string then getVNodeText() probably returned an empty string, so just return `undefined`
-    !normalized
-  ) {
+  // if it's an empty string then getVNodeText() probably returned an empty string, so just return `undefined`
+  if (!normalized) {
     return
   }
 
@@ -427,14 +423,8 @@ export const linkPreviewImageUrlBuilder = (
 
 export const metaThumbnailPathBuilder = (rfcId: string) => `/api/v1/meta-thumbnail/${rfcId}.png` as const
 
-/**
- * Based on the URL of the API base
- */
 export const needsCloudflareHeaderForApi = (apiBaseUrl: string): boolean => !apiBaseUrl.includes('localhost')
 
-/**
- * Based on the URL of the API detect whether it's prod
- */
 export const isProd = (): boolean => !import.meta.dev
 
 const RFC_REGEX = /(rfc[0-9]+)/i

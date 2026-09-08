@@ -1,7 +1,7 @@
 /**
  * Measures whether each `<wbr>` we insert into RFC documents is doing any work.
  *
- * Background: ietf-tools/red#498 asks us to stop inserting `<wbr>`. The insertion rules in
+ * Background: https://github.com/ietf-tools/red/issues/498 asks us to stop inserting `<wbr>`. The insertion rules in
  * precomputer/src/tasks/rfc-html.ts were tuned by eye, so we have no per-token evidence of
  * which insertions actually prevent a mobile overflow and which are inert. This produces that
  * evidence so the discussion can be about data rather than recollection.
@@ -50,7 +50,10 @@ const TEXT_SCALES = [16, 24, 32]
 
 const BROAD_TEXT_SCALES = [16, 32]
 
-/** The two RFCs cited in ietf-tools/red#498 and #424, plus a spread of document shapes. */
+/**
+ * The two RFCs cited in https://github.com/ietf-tools/red/issues/498 and
+ * https://github.com/ietf-tools/red/issues/424, plus a spread of document shapes.
+ */
 const TARGETED_RFCS = [9000, 9297, 9114, 9110, 8446, 7540, 5234, 3986, 2119, 6749]
 
 /**

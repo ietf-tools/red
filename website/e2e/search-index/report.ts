@@ -34,17 +34,14 @@ const REPORT_DIR = resolve(HERE, 'report')
 export const CSV_PATH = resolve(REPORT_DIR, 'last-run.csv')
 const JSON_PATH = resolve(REPORT_DIR, 'last-run.json')
 
-/** RFC 4180 CSV escaping: wrap in quotes and double any embedded quotes. */
 const csvCell = (value: string | number | boolean): string => `"${String(value).replaceAll('"', '""')}"`
 
-// Column headers ingest-csv reads to rebuild a case. Keep in sync with ingest.ts.
+// Column headers ingest-csv reads to rebuild a case.
 export const CSV_EXPECTED_HEADER = 'expected_rfcs'
 export const CSV_WITHIN_TOP_N_HEADER = 'within_top_n'
 export const CSV_CONFIDENCE_HEADER = 'confidence'
 export const CSV_NOTE_HEADER = 'note'
 
-// Column order is cosmetic — ingest-csv reads the definition columns (query, preset, facets,
-// expected_rfc, within_top_n, confidence, note) by header NAME, so this can be reordered freely.
 const COLUMNS: { header: string; get: (report: CaseReport) => string | number | boolean }[] = [
   { header: 'preset', get: (r) => r.preset },
   { header: 'query', get: (r) => r.query },

@@ -121,7 +121,7 @@ export const parseCSSLength = (
   lengthNumberAndCSSUnit: string // eg '12.34px'
 ): [number, CSSLengthUnit] | null => {
   if (
-    // if there are no units default to 'px'
+    // if it has no CSS unit
     !lengthNumberAndCSSUnit.match(/[a-z]/i)
   ) {
     return [parseFloat(lengthNumberAndCSSUnit), 'px']
@@ -130,7 +130,7 @@ export const parseCSSLength = (
   if (parts === null) return null
   const length = parseFloat(parts[1])
   if (
-    // let's not return NaN's that wouldn't be expected
+    // is a number is a NaN we shouldn't return that
     Number.isNaN(length)
   ) {
     return null

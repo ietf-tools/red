@@ -5,7 +5,7 @@ import { FOCUSABLE_QUERY_SELECTOR } from './html'
 import { TypesenseSearchItemStatusSchema, type TypesenseStatusName } from './typesense-status'
 import { ReefRFCStatsSchema } from './rfc-validators'
 
-// Re-exported so existing importers of this module are unaffected by the move.
+// Re-exported so the status vocabulary is importable from here as well as its own module.
 export { TypesenseSearchItemStatusSchema, type TypesenseStatusName }
 
 export const TypesenseSearchItemAreaSchema = z.object({
@@ -179,9 +179,7 @@ export const scrollUpToNewSearchResults = () => {
 
   if (currentTopPx < targetTopPx) {
     console.info('Not scrolling to ', targetTopPx, " because it's not > ", currentTopPx)
-  } else if (Math.round(currentTopPx) === Math.round(targetTopPx)) {
-    // pass
-  } else {
+  } else if (Math.round(currentTopPx) !== Math.round(targetTopPx)) {
     console.log('scroll up', targetTopPx, currentTopPx)
     const behavior: ScrollBehavior = prefersReducedMotion() ? 'instant' : 'smooth'
 

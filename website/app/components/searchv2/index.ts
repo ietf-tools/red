@@ -47,7 +47,6 @@ export type { SortByItem } from './connectors/useSortBy'
 export type { RefinementItem, UseRefinementListOptions } from './connectors/useRefinementList'
 export type { MenuItem, UseMenuSelectOptions } from './connectors/useMenuSelect'
 
-// Types
 export type {
   ClassNames,
   FacetHit,
@@ -62,4 +61,5 @@ export type {
   StateAdapter,
   UiState,
   Widget
+  // Types
 } from './types'

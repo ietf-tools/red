@@ -181,7 +181,7 @@ if (
   })
 }
 
-// see https://github.com/ietf-tools/red/issues/196
+// Title format is "RFC <number>: <title>" (https://github.com/ietf-tools/red/issues/196)
 const pageTitle = rfcBucketHtmlDocument.value
   ? `RFC ${rfcBucketHtmlDocument.value.rfc.number}: ${rfcBucketHtmlDocument.value.rfc.title}`
   : ''

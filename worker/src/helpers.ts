@@ -17,9 +17,7 @@ export function addNormalizedPath(req: IRequest, ..._args: unknown[]): void {
   req.normalizedPath = decodeURIComponent(url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname)
 }
 
-/**
- * The opaque part of an ETag, ie the value with any `W/` weakness prefix removed.
- */
+/** The opaque part of an ETag, ie the value with any `W/` weakness prefix removed. */
 const opaqueTag = (etag: string) => etag.trim().replace(/^W\//, '')
 
 /**
@@ -197,8 +195,8 @@ export async function staleWhileRevalidate(
   const { maxAgeSeconds, additionalStaleWhileRevalidateSeconds } = options
   const totalTtlSeconds = maxAgeSeconds + additionalStaleWhileRevalidateSeconds
 
-  // The origin webserver doesn't (shouldn't!) vary responses by query so this should be safe to do
   const normalizedUrl = new URL(req.url)
+  // The origin webserver doesn't (shouldn't!) vary responses by query so this should be safe to do
   normalizedUrl.search = ''
   const cacheKey = new Request(normalizedUrl.toString(), { method: 'GET' })
 
@@ -245,8 +243,7 @@ export async function staleWhileRevalidate(
     }
   }
 
-  // Cold miss (or fully expired): advertise SWR caching only for a cacheable
-  // response (2xx/404) — never tell the browser to cache an origin error.
+  // Cold miss (or fully expired). Never tell the browser to cache an origin error.
   const fresh = await revalidate()
   return isCacheable(fresh) ? withBrowserSwrHeaders(fresh, options) : fresh
 }

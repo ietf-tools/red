@@ -8,7 +8,6 @@ import type { ImageDimensions, ImageDimensionsOptionalHeight } from './html.ts'
 process.on('message', async (messageFromParent: unknown) => {
   const message = parseMessageFromParent(messageFromParent)
   if (message === null) return
-  // console.log(' - PDF was', message.base64Data.length)
   switch (message.type) {
     case 'SCREENSHOT_PAGE':
       const { screenshotDimensions, base64Png } = await screenshotPdfPage(
@@ -35,7 +34,6 @@ const screenshotPdfPage = async (
   dimensions: ImageDimensionsOptionalHeight
 ): Promise<Pick<ScreenshotPageDone, 'screenshotDimensions' | 'base64Png'>> => {
   const blob = parseBase64Data(base64Data)
-  // console.log('- CHILD before', blob.byteLength)
   const screenshot = await renderPageAsImage(blob, pageNumber, {
     canvasImport: () => import('@napi-rs/canvas'),
     scale: 1,
@@ -58,7 +56,6 @@ const screenshotPdfPage = async (
     if (shouldUploadToS3) {
       const bucketPath = rfcImagePathBuilder(fileName)
       await saveToS3(bucketPath, png)
-      // console.log(` - uploaded screenshot of page ${pageNumber} to ${bucketPath}`)
     }
     const base64Png = png.toString('base64')
     return {
@@ -134,14 +131,8 @@ const send = (msg: SendMessages) => {
 }
 
 const parseBase64Data = (base64: string) => {
-  // console.log(
-  //   ' - CHILD parsing',
-  //   base64.substring(0, 100),
-  //   base64.substring(0, 100)
-  // )
   const buffer = Buffer.from(base64, 'base64')
   const uint8Array = new Uint8Array(buffer.buffer)
-  // console.log(' - CHILD buffer', buffer.byteLength)
   return uint8Array
 }
 

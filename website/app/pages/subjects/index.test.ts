@@ -451,8 +451,8 @@ describe('/subjects/', () => {
       // M rather than S: the heading is the letter of the root the match was found under, because
       // that is where the reader will be looking for it.
       expect(page.findAll('dt').map((heading) => heading.text())).toEqual(['M'])
-      // Every letter is still drawn; only M is still a link to something.
       const toc = page.find('nav')
+      // Every letter is still drawn; only M is still a link to something.
       expect(toc.findAll('li')).toHaveLength(26)
       expect(toc.findAll('a').map((link) => link.attributes('href'))).toEqual(['#m'])
     })

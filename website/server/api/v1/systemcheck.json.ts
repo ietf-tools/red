@@ -2,9 +2,6 @@ import https from 'https'
 import { DateTime } from 'luxon'
 import { usePublicSiteUrlOrigin } from '~/utilities/url'
 
-/**
- * Health check
- */
 export default defineEventHandler(async (event) => {
   const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
 

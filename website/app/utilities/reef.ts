@@ -211,13 +211,9 @@ const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T>
   return (await parseBody(response)) as T
 }
 
-// --- Popularity -------------------------------------------------------------------------
-
 // The curated most-popular list. Public.
 export const getPopularity = (signal?: AbortSignal): Promise<PopularEntry[]> =>
   reefFetch('/api/reef/popularity/', { signal })
-
-// --- Subjects ---------------------------------------------------------------------------
 
 // The whole subject vocabulary, in tree order. Public, and unpaginated because the vocabulary is
 // curated by staff rather than self-served, so there's no page to ask for and no token to send.
@@ -243,8 +239,7 @@ export const isSubjectAlias = (subject: SubjectDetailOrRedirect): subject is Sub
 
 // What the signed-in caller's rating, subscription and set membership are for each of the named
 // documents, plus the caller's own sets. One request for a whole page of documents: the pages that
-// show these controls show them beside ten to fifty documents at once, and asking per document per
-// feature is what this replaces.
+// show these controls show them beside ten to fifty documents at once.
 //
 // Carries nothing public. The averages and totals beside these controls are the same for every
 // visitor, so they come from the data the route already loaded rather than from here — which is
@@ -263,8 +258,6 @@ export const getMyDocuments = (docs: string[], signal?: AbortSignal): Promise<My
     signal
   })
 }
-
-// --- Ratings ----------------------------------------------------------------------------
 
 // Aggregate rating for one RFC. The operation also lists `{}` in its security, so anonymous is
 // fine and the token is sent only to identify the caller — which is what lets a signed-in
@@ -292,8 +285,6 @@ export const deleteRating = (rfc: string, signal?: AbortSignal): Promise<RatingA
     signal
   })
 
-// --- Subscriptions ----------------------------------------------------------------------
-
 export const getSubscriptions = (signal?: AbortSignal): Promise<Subscription[]> =>
   reefFetch('/api/reef/subscriptions/', { auth: 'required', signal })
 
@@ -311,8 +302,6 @@ export const createSubscription = (
 
 export const deleteSubscription = (id: number, signal?: AbortSignal): Promise<void> =>
   reefFetch(`/api/reef/subscriptions/${id}/`, { method: 'DELETE', auth: 'required', signal })
-
-// --- Document sets ------------------------------------------------------------------------
 
 // The caller's own sets, each carrying its `documents` membership. There's no per-document
 // endpoint to ask "which of my sets contain this RFC", so this list is the only read available.

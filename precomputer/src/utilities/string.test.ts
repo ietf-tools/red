@@ -58,8 +58,8 @@ test(`chunkString with url`, () => {
 })
 
 test('breaks after a hyphen, not before it', () => {
-  // Breaking before the hyphen put it at the start of the next line — the shape
-  // ietf-tools/red#424 objected to. Hyphens now end their chunk, as underscores do.
+  // A wrapped line must not begin with a hyphen, so hyphens end their chunk, as underscores do
+  // (https://github.com/ietf-tools/red/issues/424).
   expect(chunkString('draft-ietf-quic-manageability-11', 10, NO_MINIMUM_FRAGMENT)).toEqual([
     'draft-',
     'ietf-',
@@ -86,7 +86,7 @@ test('does not break a slash that joins two ordinary words', () => {
 
 test(`chunkString with underscores`, () => {
   // Break *after* the underscore so a wrapped line never starts with `_`
-  // (ietf-tools/red#424).
+  // (https://github.com/ietf-tools/red/issues/424).
   const chunks = chunkString('AROUND_THE_WORLD_AROUND_THE_WORLD', 16, NO_MINIMUM_FRAGMENT)
   expect(chunks).toEqual(['AROUND_', 'THE_', 'WORLD_', 'AROUND_', 'THE_', 'WORLD'])
 })
@@ -130,7 +130,6 @@ test(`chunkString with camelCase`, () => {
   expect(chunks2).toEqual(['Decode', 'Packet', 'Number', '(largest_', 'pn'])
 })
 
-// Parse HTML and run ensureWordBreaks over it, returning the resulting pojo.
 const applyWordBreaks = async (html: string): Promise<ReturnType<typeof rfcDocumentToPojo>> => {
   const parser = await getDOMParser()
   const dom = parser.parseFromString(html, 'text/html')
@@ -154,7 +153,7 @@ const serializeWbr = (pojo: ReturnType<typeof rfcDocumentToPojo>): string =>
     .join('')
 
 test('inserts <wbr> at identifier boundaries regardless of word length', async () => {
-  // snake_case: break after the underscore (ietf-tools/red#424)
+  // snake_case: break after the underscore (https://github.com/ietf-tools/red/issues/424)
   expect(serializeWbr(await applyWordBreaks('<p>qualifier_set</p>'))).toBe('qualifier_|set')
   expect(serializeWbr(await applyWordBreaks('<p>valid_policy</p>'))).toBe('valid_|policy')
   expect(serializeWbr(await applyWordBreaks('<p>parent_nodes</p>'))).toBe('parent_|nodes')
@@ -267,9 +266,9 @@ test('can break words (2)', async () => {
   expect(pojo).toMatchSnapshot()
 })
 
-test('the length gate no longer depends on where a word sits', async () => {
-  // The gate must not depend on where a word sits: leading whitespace once counted towards its
-  // length, so the same word broke mid-sentence but not as an element's first word.
+test('the length gate does not depend on where a word sits', async () => {
+  // Leading whitespace is not part of a word's length, so the same word breaks identically
+  // mid-sentence and as an element's first word.
   expect(serializeWbr(await applyWordBreaks('<p>client-initiated</p>'))).toBe('client-|initiated')
   expect(serializeWbr(await applyWordBreaks('<p>a client-initiated</p>'))).toBe('a client-|initiated')
   // 17 letters qualifies on length but is left whole in both positions: a run of letters reads as
@@ -296,7 +295,7 @@ test('breaks dotted machine-readable names at their periods, whatever their leng
   // 16 characters as an element's only content, so no length gate reaches it.
   expect(serializeWbr(await applyWordBreaks('<code>mail.isp.example</code>'))).toBe('mail|.isp|.example')
   expect(serializeWbr(await applyWordBreaks('<p>at isp.example</p>'))).toBe('at isp|.example')
-  // `@` is one of the existing break-*before* separators, so the break lands ahead of it.
+  // `@` is one of the break-*before* separators, so the break lands ahead of it.
   expect(serializeWbr(await applyWordBreaks('<p>mail user@isp.example</p>'))).toBe('mail user|@isp|.example')
 })
 
@@ -324,8 +323,8 @@ test('protects prose from mid-word subdivision without protecting machine string
   )
   expect(serializeWbr(await applyWordBreaks('<p>see acknowledgements.</p>'))).toBe('see acknowledgements.')
 
-  // Machine strings that a looser guard wrongly protected: a DOI reduced to `mitpress`, an
-  // Internet-Draft name reduced to its hyphenated stem, and a multi-hyphen identifier.
+  // Machine strings a word-shaped guard must not protect: a DOI, an Internet-Draft name and a
+  // multi-hyphen identifier all subdivide.
   expect(serializeWbr(await applyWordBreaks('<p>at 10.7551/mitpress/7617.003.0006</p>'))).toBe(
     'at 10.7551|/mitpress|/7617|.003|.0006'
   )
@@ -348,7 +347,7 @@ test('breaks an underscore identifier at its underscore, never inside a word', (
   expect(chunkString('connection_ids', 10, 3)).toEqual(['connection_', 'ids'])
   expect(chunkString('connection_id_length', 10, 3)).toEqual(['connection_', 'id_', 'length'])
 
-  // Shorter segments were always fine and stay unchanged.
+  // Segments within the run length break only at their underscores.
   expect(chunkString('qualifier_set', 10, 3)).toEqual(['qualifier_', 'set'])
   expect(chunkString('stream_data_blocked', 10, 3)).toEqual(['stream_', 'data_', 'blocked'])
 

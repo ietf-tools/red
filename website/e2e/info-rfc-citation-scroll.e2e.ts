@@ -25,18 +25,7 @@
  * Clicking >= 1000ms after focus (popover already open) does not bounce.
  *
  * So focusing then clicking after a sub-1000ms delay reproduces the bounce ~100% of
- * the time (verified: 100/100 on the unfixed code, 0/100 with the fix).
- *
- * THE FIX (app/components/RFCRouterLink.vue)
- * -----------------------------------------
- * `onCloseAutoFocus` cancels Reka's focus restoration when focus is already outside
- * the card (e.g. on the just-clicked trigger link) — there is nothing to restore,
- * so nothing scrolls. When focus is inside the card (keyboard Escape) the
- * WCAG-friendly focus-return is preserved. `onClick` also dismisses the preview and
- * clears the pending open timer so it cannot open after the click.
- *
- * This test asserts the user-facing behaviour: after clicking a citation the page
- * stays at the referenced target and does not bounce back.
+ * the time (verified over 100 runs), so the test is deterministic.
  */
 import { describe, expect, test } from 'vitest'
 import { createPage } from '@nuxt/test-utils/e2e'

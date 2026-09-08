@@ -1,9 +1,8 @@
 /**
  * Audits RFC pages for content that stretches the page horizontally on a narrow screen.
  *
- * The reference-indent fix removed the dominant source of narrow-screen overflow (see
- * the reference indent fix), which is expected to expose smaller ones previously
- * hidden behind it. This finds and classifies what is left.
+ * The reference-list hanging indent was the dominant narrow-screen overflow and is handled in the
+ * stylesheet; this finds and classifies the smaller sources it masked.
  *
  * For each element whose right edge crosses the viewport, the deepest such element is taken — an
  * overflowing element pushes all of its ancestors out too, so only the innermost is the culprit —
@@ -85,9 +84,9 @@ const auditInPage = ({ extraCss }: { extraCss: string }) => {
   /**
    * Content is exempt when it is allowed to be wider than the screen: artwork, anything inside a
    * horizontal scroller, and the scroller itself — a scroll container having `scrollWidth >
-   * clientWidth` is what scrolling is, not a defect. Checking only ancestors, as this once did,
-   * reports a scroller as a 1,000px overflow and reports containers whose excess comes entirely
-   * from a scrolling descendant.
+   * clientWidth` is what scrolling is, not a defect. Checking only ancestors reports a scroller
+   * as a 1,000px overflow and reports containers whose excess comes entirely from a scrolling
+   * descendant.
    */
   const isExempt = (el: Element): boolean => {
     if (isScroller(el)) {

@@ -28,16 +28,9 @@
  * spread of realistic press durations is what actually pins the behaviour, and keeps
  * this test honest if the timer is ever retuned.
  *
- * THE FIX (app/components/RFCDocumentSidebar.vue)
- * ----------------------------------------------
- * The focus handler centres only when the focused element matches `:focus-visible`.
- * That is precisely the keyboard/pointer distinction wanted here: a reader tabbing to
- * a ToC link below the fold still gets the menu brought into view, while a reader
- * clicking one is navigating away from the menu and is left alone — so there is no
- * window left for the debounce to fire in, at any press duration.
- *
- * The second test guards that keyboard half, so the bug cannot be "fixed" by deleting
- * the centring outright.
+ * The second test guards the keyboard half: a reader tabbing to a ToC link below the
+ * fold must still get the menu brought into view, so the bug cannot be "fixed" by
+ * deleting the centring outright.
  */
 import { describe, expect, test } from 'vitest'
 import { createPage } from '@nuxt/test-utils/e2e'

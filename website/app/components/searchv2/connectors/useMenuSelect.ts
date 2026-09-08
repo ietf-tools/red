@@ -30,7 +30,7 @@ export type UseMenuSelectOptions = {
   labelKey?: (labelValue: string) => string
 }
 
-/** Single-select facet (replaces InstantSearch's MenuSelect). */
+/** Single-select facet. */
 export function useMenuSelect(options: UseMenuSelectOptions) {
   const context = useSearchContext()
   const { attribute, limit = 20, labelAttribute, labelKey } = options

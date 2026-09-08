@@ -62,8 +62,6 @@ export const ratingRemovalFailedNotification = (rfcNumber: number): Notification
   type: 'foreground'
 })
 
-// --- Writing ------------------------------------------------------------------------------
-
 /**
  * Record or withdraw this reader's rating of one document.
  *
@@ -114,16 +112,14 @@ export const writeUserRFCRating = async (rfcNumber: number, rating: UserRFCRatin
   }
 }
 
-// --- The model an RFC page binds ---------------------------------------------------------
-
 /**
  * This reader's own rating of one document, as a model for the rating dialog: read from the store,
  * and written back when they pick a star or remove it. `undefined` while they haven't rated it,
  * and while nobody is signed in.
  *
- * A writable computed rather than a ref with a watcher on it, which is what the store replaced.
- * The store already holds what Reef is holding, so there is nothing to compare against to tell a
- * load from a deliberate change — a load is not a change to this model at all.
+ * A writable computed rather than a ref with a watcher on it: the store already holds what Reef is
+ * holding, so there is nothing to compare against to tell a load from a deliberate change, and a
+ * load is not a change to this model at all.
  */
 export const useUserRFCRating = (rfcNumber: MaybeRefOrGetter<number>): WritableComputedRef<UserRFCRating> => {
   const { yourRating } = useReefDocument(rfcNumber)

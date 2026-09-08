@@ -78,8 +78,8 @@ export const formatFormat = (
 }
 
 export const formatDatePublished = (dt: DateTime, isAprilFirstMode: boolean): string => {
+  // handle April 1st
   if (isAprilFirstMode && dt.month === 4 && dt.day === 1) {
-    // handle April 1st
     return dt.toFormat('d LLLL yyyy')
   }
   return dt.toFormat('LLLL yyyy')

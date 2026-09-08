@@ -178,7 +178,7 @@ const mockLocalBucket: typeof getFromS3 = async (bucket, key, outputType, prefix
     const data = fsPromises.readFile(localPath, outputType === 'base64' ? 'base64' : 'utf-8')
     return data
   } catch (e: unknown) {
-    // Probably just a missing file, so suppress the error
+    // Probably just a missing mock file
     console.error(`[${prefixForDebug}]`, 'Problem reading', localPath, e)
   }
   return null

@@ -13,9 +13,8 @@ export const validateDocument = (doc: unknown, schema: z.ZodObject<any>): void =
    */
   const responseRoundTrippedThroughJSON = JSON.parse(JSON.stringify(doc))
 
-  const validationResult = schema
-    .strict() // use strict mode.. disallow additional keys
-    .safeParse(responseRoundTrippedThroughJSON)
+  // use strict mode.. disallow additional keys
+  const validationResult = schema.strict().safeParse(responseRoundTrippedThroughJSON)
 
   if (validationResult.error) {
     const errorTitle = `Failed to generate valid document due to validation error:`

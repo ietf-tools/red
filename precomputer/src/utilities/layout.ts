@@ -1,5 +1,5 @@
 /**
- * Remaining width available in the new design, in the middle column (not the sidebar),
- * at 1920px... ie, maximum width without causing horizontal scrollbars
+ * Width of the middle column (excluding the sidebar) at 1920px: the widest a PDF page image can
+ * be without a horizontal scrollbar.
  */
 export const PDF_WIDTH_PX = 1000

@@ -180,19 +180,12 @@ const cleanupChild = async (child: ChildProcess) => {
   // Disconnect IPC channel
   child.disconnect()
 
-  // Call unref if process is detached
   if (process.platform !== 'win32') {
     child.unref()
   }
 
   child.kill('SIGTERM')
-
-  // The following code seems to make the current (parent) process exit.
-  //
-  // Wait for exit
-  // await new Promise((resolve) => {
-  //   child.once('exit', resolve)
-  // })
+  // Not awaiting the child's 'exit' event: doing so made the parent exit as well.
 
   await gc()
 }

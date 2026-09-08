@@ -86,7 +86,7 @@ describe('useReefStore', () => {
     signIn()
     const reefStore = useReefStore()
 
-    // Separate callers in the same tick, which is what used to make one request each.
+    // Separate callers in the same tick.
     await Promise.all(['rfc1', 'rfc2', 'rfc3'].map((doc) => reefStore.ensureDocuments([doc])))
 
     expect(getMyDocuments).toHaveBeenCalledTimes(1)

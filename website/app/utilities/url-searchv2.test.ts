@@ -139,8 +139,9 @@ describe('worker legacy search redirect compatibility', () => {
     expect(roundTrip('/search/?stream=ise').menu).toEqual({ 'stream.slug': 'ise' })
   })
 
-  test('round-trips an area the old worker acronym list omitted', () => {
-    // `iesg` was one of eight acronyms absent from the removed hardcoded map.
+  test('round-trips an area acronym without validating it against a fixed list', () => {
+    // Any acronym the index carries must round-trip; a hardcoded list would silently drop ones
+    // like `iesg`.
     const state = roundTrip('/search/?area=iesg')
     expect(state.menu).toEqual({ 'area.acronym': 'iesg' })
     expect(serializeQuery(state).area).toBe('iesg')

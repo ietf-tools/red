@@ -48,7 +48,6 @@ import { useUserRFCRating } from '~/utilities/reef-ratings'
 import type { ReefRFCStats } from '~/utilities/rfc-validators'
 import { useUserSets } from '~/utilities/reef-sets'
 import { useUserRFCSubscription } from '~/utilities/reef-subscriptions'
-// import { useRfcEditorErrataSearchForRfcUrl } from '~/utilities/url.js'
 
 type Props = {
   rfcNumber: number
@@ -56,8 +55,6 @@ type Props = {
 }
 
 const props = defineProps<Props>()
-
-// const errataForThisRfc = computed(() => useRfcEditorErrataSearchForRfcUrl(props.rfcNumber))
 
 // `user` is passed down to the subscribe and sets dialogs rather than left for them to read from
 // the store themselves, so they render from what they're given and this component stays the one

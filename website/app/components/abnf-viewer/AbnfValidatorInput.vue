@@ -70,7 +70,6 @@ const statusText = computed(() => {
     const matched = inputValue.value.slice(0, r.ok ? r.end : 0)
     return `matched ${r.ok ? r.end : 0}/${inputValue.value.length} chars`
   }
-  // err
   if (!r.ok) {
     const exp = [...new Set(r.expected)].slice(0, 3).join(', ')
     return `✗ invalid at position ${r.pos}${exp ? ` — expected ${exp}` : ''}`

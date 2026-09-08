@@ -7,7 +7,6 @@ const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'))
 // this is intentionally inserted in the <head> so that it runs immediately in the browser
 const scrollbarWidthInlineJS = `function _updateScrollbarWidth(){if(!document.body||!document.body.style)return;document.body.style.setProperty('--rfc-editor-org-scrollbar-width',(window.innerWidth-document.documentElement.clientWidth)+'px')}window.addEventListener('resize', _updateScrollbarWidth, false);document.addEventListener('DOMContentLoaded', _updateScrollbarWidth, false);window.addEventListener('load', _updateScrollbarWidth);window.setInterval(_updateScrollbarWidth,1000)`
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-05',
   devtools: { enabled: false },
@@ -91,7 +90,6 @@ export default defineNuxtConfig({
       }
     }
   },
-  // https://nuxt.com/docs/guide/going-further/runtime-config
   runtimeConfig: {
     cfServiceTokenId: '', // NUXT_CF_SERVICE_TOKEN_ID env var
     cfServiceTokenSecret: '', // NUXT_CF_SERVICE_TOKEN_SECRET env var

@@ -11,7 +11,7 @@
 // Nothing here is persisted. Client-side navigation keeps this store, so moving between pages
 // re-asks for nothing; only a full page load starts empty. If that proves slow enough to be worth
 // it, a single serialised snapshot keyed by `subject` is the shape to add — not a cache per
-// feature, which is what this replaced.
+// feature.
 
 import { computed, ref, watch } from 'vue'
 import { useAuthStore } from '~/stores/auth'
@@ -54,9 +54,8 @@ export type ReefSet = MyDocumentSet
  * What became of one write.
  *
  * There is no `superseded`: writes for one document and concern are queued rather than cancelled,
- * so every one of them runs and the last still wins. Cancelling was what the per-component
- * coordination this replaced did, and it could leave a subscription created by an aborted POST
- * that nothing afterwards held the id to remove.
+ * so every one runs and the last still wins. Cancelling a subscribe mid-flight can leave a
+ * subscription Reef recorded but nothing afterwards holds the id to remove.
  */
 export type ReefWriteOutcome<T> = { status: 'done'; value: T } | { status: 'failed'; error: unknown }
 
@@ -138,11 +137,8 @@ export const useReefStore = defineStore('reef', () => {
    * Run one write, after any write already queued for the same key.
    *
    * Queued rather than cancelled, and per key so that ticking two sets starts two independent
-   * chains. Cancelling is what the per-component coordination this replaced did, and it had a hole
-   * in it: a subscribe cancelled mid-flight can still have been recorded by Reef, and nothing
-   * afterwards holds the id needed to undo it. Running every write in order costs a request when
-   * somebody toggles a checkbox twice, and in exchange the last thing they did is what Reef ends
-   * up holding.
+   * chains. Running every write in order costs a request when somebody toggles twice; in exchange
+   * the last thing they did is what Reef holds.
    *
    * Never rejects. Callers read the outcome instead, so a failure is something to put right on
    * screen rather than an exception to catch.

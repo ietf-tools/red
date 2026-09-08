@@ -25,9 +25,7 @@
 import { AccordionContent, AccordionItem, AccordionTrigger } from 'reka-ui'
 
 type Props = {
-  /**
-   * Text of the button to toggle the accordion item
-   */
+  /** Text of the button to toggle the accordion item */
   triggerText: string | VNode
   id: string
   /**

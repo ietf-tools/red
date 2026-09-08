@@ -20,17 +20,6 @@
  * forces `{ top: 0 }`, throwing the reader to the top of the page. It is a
  * regression of native browser behaviour caused by the router — the app clicks a
  * standard hash anchor and the router breaks it.
- *
- * THE FIX (app/router.options.ts)
- * -------------------------------
- * A `scrollBehavior` that hands scroll restoration back to the browser (returns
- * `false`) for same-page hash navigation — where the content is already rendered
- * and native restoration is correct — instead of letting the router force the
- * page to the top. This restores the native behaviour: pressing Back returns the
- * reader to their original position.
- *
- * This test asserts the user-facing behaviour: after clicking a non-RFC citation
- * and pressing Back, the page returns to the pre-click scroll position.
  */
 import { describe, expect, test } from 'vitest'
 import { createPage } from '@nuxt/test-utils/e2e'

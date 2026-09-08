@@ -11,20 +11,15 @@
  * (app/utilities/scroll.ts) re-centres the ToC on the active heading whenever the
  * page scrolls — so as soon as overscroll nudges the page, the ToC jumps back to
  * the active heading and the reader can never reach the first section.
- *
- * THE FIX (app/components/TableOfContentsHighlight.vue)
- * ----------------------------------------------------
- * `overscroll-contain` (CSS `overscroll-behavior: contain`) on the ToC scroll
- * container stops the wheel gesture from chaining to the page once the ToC hits a
- * boundary, which in turn stops the auto re-centring cascade.
+ * `overscroll-behavior: contain` on the ToC scroll container is what stops the
+ * gesture chaining to the page, and with it the re-centring cascade.
  *
  * THE TEST
  * --------
  * A short viewport forces the ToC to overflow (so it is a real scroll container).
  * With the ToC pinned to its top boundary and the page scrolled partway down,
- * wheeling *up* over the ToC must NOT move the page. On the unfixed code the page
- * scrolls all the way to the top (verified: 600px -> 0 on prod); with the fix it
- * stays put (0px of movement).
+ * wheeling *up* over the ToC must NOT move the page. Without containment the page
+ * scrolls all the way to the top (verified: 600px -> 0); with it, 0px of movement.
  */
 import { describe, expect, test } from 'vitest'
 import { createPage } from '@nuxt/test-utils/e2e'
@@ -43,7 +38,7 @@ const RFC = 'rfc10008'
 const VIEWPORT = { width: 1280, height: 700 }
 
 // How far to scroll the page down before wheeling up over the ToC. This is the
-// distance the page would chain-scroll (back to the top) on the unfixed code, so
+// distance the page would chain-scroll (back to the top) without containment, so
 // it must be comfortably larger than PAGE_MOVE_TOLERANCE_PX.
 const PAGE_SCROLL_Y = 600
 
@@ -52,11 +47,7 @@ const PAGE_MOVE_TOLERANCE_PX = 20
 
 const TEST_TIMEOUT_MS = 120_000
 
-/**
- * Finds the ToC scroll container (nearest scrollable ancestor of the ToC nav),
- * tags it with `data-toc-scroll`, and returns its centre point plus computed
- * overscroll-behaviour. Returns null if no scrollable container is found.
- */
+/** Tags the ToC's scroll container with `data-toc-scroll` so later steps can reach it. */
 const locateTocScrollContainer = (page: Page) =>
   page.evaluate(() => {
     const nav = document.querySelector('nav[aria-label="In this section"]')
@@ -97,7 +88,7 @@ describe('info/rfcN/ ToC overscroll', async () => {
       const container = await locateTocScrollContainer(page)
       expect(container, 'expected a scrollable ToC container (viewport too tall?)').not.toBeNull()
 
-      // Guard the CSS itself: the fix is `overscroll-behavior: contain` on this container.
+      // Guard the CSS itself, not only its effect.
       expect(container!.overscrollBehaviorY).toBe('contain')
 
       // Pin the ToC to its top boundary and scroll the page partway down so there is

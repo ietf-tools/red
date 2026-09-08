@@ -2,7 +2,6 @@
   <NuxtLayout name="auth" has-sub-header>
     <template #subheader>
       <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1 container mx-auto pl-5" />
-      <!--  -->
       <div v-if="user" class="container mx-auto px-4 pt-5">
         <Heading level="1">Welcome, {{ user.name }}</Heading>
         <p class="py-2">

@@ -26,8 +26,6 @@ export const renderInNotesRfcRefDotTxt = async (
     0
   )
   const rfcNumberColumnCharWidth = Math.max(rfcNumberColumnMinimumCharWidth, rfcNumberColumnCalculatedCharWidth)
-  // const column1Width = rfcNumberColumnCharWidth + COLUMN_PADDING
-  // const column2width = 72 - rfcNumberColumnCharWidth
 
   const layout: Layout = {
     longestRfcNumberLength: rfcNumberColumnCharWidth
@@ -35,15 +33,13 @@ export const renderInNotesRfcRefDotTxt = async (
 
   let txts: string[] = [getHeader(layout)]
 
-  // This was a .map() callback but that got a 'RangeError: Maximum call stack size exceeded'
-  // so it's a simple forloop to avoid callback functions on the stack.
+  // A plain loop: a `.map()` callback over 10k+ RFCs overflowed the call stack.
   for (let i = 0; i < allRfcs.length; i++) {
     const rfc = allRfcs[i]
 
     const rfcText = stringifyRFC(rfc)
     txts.push(
       [
-        // No RFC prefix on these results
         padStart(`RFC${rfc.number.toString()}`, rfcNumberColumnCharWidth + 3, ' '),
         ' | ',
         padStart(
@@ -67,7 +63,6 @@ type Layout = {
 
 const stringifyRFC = (rfc: RfcCommon): string => {
   let rfcdate = ''
-  // let also = ''
   let subseries = ''
   let doi = ''
 
@@ -80,11 +75,6 @@ const stringifyRFC = (rfc: RfcCommon): string => {
     if (subseriesList.length > 0) {
       subseries = `${subseriesList.map((subserie) => `${subserie.type.toUpperCase()} ${subserie.number}`).join(', ')}, `
     }
-
-    // const alsolist = [...(rfc.is_also && rfc.is_also.length > 0 ? rfc.is_also : [])]
-    // if (alsolist.length > 0) {
-    //   also = `${alsolist.map((rfcId) => `RFC ${rfc.number}`).join(', ')}, `
-    // }
 
     doi = formatIdentifiers(rfc.identifiers, ' ').join(' ')
 

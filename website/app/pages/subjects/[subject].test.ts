@@ -152,8 +152,8 @@ describe('/subjects/<slug>/', () => {
     const page = await renderPage(slug)
     const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/gzip/')
 
-    // The name out of subject_meta, not the slug. `children` carries slugs and always did; what
-    // changed is that the file now says what each of them is called.
+    // The name out of subject_meta, not the slug: `children` carries slugs, and the file's map is
+    // what says what each one is called.
     expect(child?.text()).toBe(nameOf('gzip'))
   })
 

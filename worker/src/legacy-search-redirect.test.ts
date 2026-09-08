@@ -86,9 +86,8 @@ test('translateParamsString: complex example (2)', () => {
 })
 
 test("translateParamsString: 'Not Issued' pubstatus doesn't fail the redirect", () => {
-  // Never-issued RFCs aren't in the search index (verified: `status.name` holds eight values and
-  // none is 'Not Issued'), they live at /never-issued/. This used to reach `statusSchema.parse`
-  // and throw, so the legacy URL produced an error instead of a redirect.
+  // There is no filter to map 'Not Issued' to, so the value is dropped rather than failing the
+  // redirect.
   expect(legacySearchRedirectPathBuilder('?pubstatus[]=Not Issued')).toEqual(`${origin}/search/`)
 
   // A status it can filter by still survives alongside one it can't.
@@ -97,9 +96,9 @@ test("translateParamsString: 'Not Issued' pubstatus doesn't fail the redirect", 
   )
 })
 
-test('translateParamsString: area acronyms outside the old hardcoded list', () => {
-  // `iesg`, `mgt` and `ops-old` are real `area.acronym` values that the removed mapping omitted,
-  // so the area filter was silently dropped for them.
+test('translateParamsString: area acronyms pass through regardless of whether a fixed list would know them', () => {
+  // Real `area.acronym` values a fixed list would be likely to miss; the filter must pass through
+  // regardless.
   expect(legacySearchRedirectPathBuilder('?area_acronym=iesg')).toEqual(`${origin}/search/?area=iesg`)
   expect(legacySearchRedirectPathBuilder('?area_acronym=mgt')).toEqual(`${origin}/search/?area=mgt`)
   expect(legacySearchRedirectPathBuilder('?area_acronym=ops-old')).toEqual(`${origin}/search/?area=ops-old`)

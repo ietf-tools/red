@@ -150,7 +150,7 @@ const {
   sortBy: props.sortBy
 })
 
-// Defect #3/#4: descriptive, group-specific accessible names for the facet search and toggle.
+// Descriptive, group-specific accessible names for the facet search and toggle.
 const searchLabel = computed(() => props.searchLabel ?? `Search ${props.label.toLowerCase()}`)
 const showMoreAriaLabel = computed(
   () => props.showMoreAriaLabel ?? `${props.showMoreLabel} ${props.label.toLowerCase()}`
@@ -159,7 +159,7 @@ const showLessAriaLabel = computed(
   () => props.showLessAriaLabel ?? `${props.showLessLabel} ${props.label.toLowerCase()}`
 )
 
-// Defect #3: announce a concise settled count while filtering, not every option.
+// Announce a concise settled count while filtering, not every option.
 const announcement = computed(() => {
   if (!isSearching.value) return ''
   const count = items.value.length
@@ -203,7 +203,7 @@ watch(items, async () => {
   pendingFocusValue.value = null
 })
 
-// Defect #5: move focus to the first newly revealed option on expand; back to the toggle on collapse.
+// Move focus to the first newly revealed option on expand; back to the toggle on collapse.
 const onToggleShowMore = async () => {
   const wasShowingMore = isShowingMore.value
   toggleShowMore()

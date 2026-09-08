@@ -36,9 +36,7 @@ import type { HeadingLevel } from '~/utilities/html'
 type Level = HeadingLevel
 
 type Props = {
-  /**
-   * The heading level eg 1-6.
-   */
+  /** The heading level eg 1-6. */
   level: Level
   /**
    * By default the 'level' prop is also used for styling, but you can optionally override this
@@ -62,15 +60,8 @@ type Props = {
   class?: VueStyleClass
   hasIcon?: boolean
   /**
-   * This Heading component can generate an HTML internal link id and link, eg
-   *
-   * 1.  `id="internal-link"` on the heading element, and;
-   * 2.  `<a href="#internal-link">#</a>` in the heading.
-   *
-   * You can enable it with this prop.
-   *
-   * The DOM Id is derived from the text of the default `<slot />`. This text is reformatted into a
-   * DOM Id (eg the text is kebab-cased to remove whitespace but check the code for specifics).
+   * Adds `id` to the heading and a `<a href="#id">#</a>` inside it. The id is derived from the
+   * default slot text via `textToAnchorId`.
    */
   hasInternalLink?: boolean
   /** provide a custom id rather than deriving one from the innerText */
@@ -100,9 +91,6 @@ type VueDefaultSlotType =
   Slot<any> | undefined // this type is from Vue itself ie $slots.default in the template, it's not an intentional use of `any`.
 
 /**
- * Derives an DOM Id from the text of the default <slot />.
- * A DOM Id is a string with no whitespace and adhering to other DOM Id rules.
- *
  * This calculation is done in the render rather than as a Vue `setup`-phase computed() property because accessing
  * the content of the slot outside the render would trigger this Vue warning:
  *

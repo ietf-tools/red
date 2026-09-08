@@ -2,14 +2,14 @@
 //
 // Two things live here, and they're the whole of what a component needs:
 //
-//   reefDocumentKey  — the one canonical identifier, replacing the four identical copies the
-//                      rating, subscription, set and stats features each used to keep.
+//   reefDocumentKey  — the one canonical identifier, shared by the rating, subscription, set and
+//                      stats features.
 //   useReefDocument  — what one document is to this reader. Reads only; fires no request.
 //   useReefDocuments — declares which documents are on screen, so they're loaded in one call.
 //
-// The split between the two composables is the point of the redesign. A card used to load its
-// own Reef state, so a page of fifty cards made fifty requests per feature; now the page says
-// what it's showing and every card reads the answer out of ~/stores/reef.
+// The split between the two composables is the point: the page declares what it shows once and
+// every card reads the answer out of ~/stores/reef, so fifty cards cost one request per page
+// rather than fifty per feature.
 
 import { computed, toValue, watch, type ComputedRef, type MaybeRefOrGetter } from 'vue'
 import { useReefStore, type ReefDocumentStatus, type ReefUserDocument } from '~/stores/reef'

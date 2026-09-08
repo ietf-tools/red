@@ -218,20 +218,20 @@ const PER_PAGE_ITEMS = [
 const filterHeadingRef = ref<HTMLElement | null>(null)
 const pendingResultFocus = ref(false)
 
-// G4: flag the pending focus move; RfcSearchResults performs it once new results render.
+// Flag the pending focus move; RFCSearchResults performs it once new results render.
 const onPaginate = () => {
   scrollUpToNewSearchResults()
   pendingResultFocus.value = true
 }
 
-// D2: after a reset, move focus to the (stable) filter panel heading so it is not lost.
+// After a reset, move focus to the (stable) filter panel heading so it is not lost.
 const focusFilterHeading = async () => {
   await nextTick()
   filterHeadingRef.value?.focus()
 }
 
 // Mobile filter dialog. Native <dialog>: the browser traps focus while open and
-// restores focus to the trigger on close (H3). Escape-to-close is also native.
+// restores focus to the trigger on close. Escape-to-close is also native.
 const filterDialogRef = ref<HTMLDialogElement | null>(null)
 const dialogHeadingRef = ref<HTMLElement | null>(null)
 const openFilters = () => filterDialogRef.value?.showModal()

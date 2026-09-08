@@ -20,16 +20,16 @@ describe('RfcEditorSearch (searchv2)', async () => {
       // v2 renders (heading marker).
       await page.locator('h1', { hasText: 'Search' }).waitFor({ state: 'visible' })
 
-      // Defect 2: submit button is named via aria-label, not title.
+      // Submit button is named via aria-label, not title.
       const submit = page.locator('button[aria-label="Submit search"]')
       await submit.waitFor({ state: 'visible' })
       expect(await submit.getAttribute('title')).toBeNull()
 
-      // Exactly one search landmark (the host's enclosing region); SearchBox no longer duplicates it
+      // Exactly one search landmark: the host's enclosing region, not SearchBox's form.
       expect(await page.locator('[role="search"][aria-label="RFC search"]').count()).toBe(1)
       expect(await page.locator('form[role="search"]').count()).toBe(0)
 
-      // Defect 1: the result count is in a polite live region (distinct from Nuxt's
+      // The result count is in a polite live region (distinct from Nuxt's
       // route announcer, which is also role=status/aria-live=polite).
       const stats = page.locator('[aria-live="polite"]').filter({ hasText: 'results' })
       await stats.first().waitFor({ state: 'visible', timeout: 20_000 })
@@ -54,13 +54,13 @@ describe('RfcEditorSearch (searchv2)', async () => {
       await page.goto(url('/search/?q=http'))
       await page.locator('h1', { hasText: 'Search' }).waitFor({ state: 'visible' })
 
-      // H1: trigger is a single button with aria-haspopup="dialog" and no aria-expanded
+      // Trigger is a single button with aria-haspopup="dialog" and no aria-expanded
       const filterButton = page.locator('button', { hasText: 'Filter RFCs' })
       await filterButton.waitFor({ state: 'visible' })
       expect(await filterButton.getAttribute('aria-haspopup')).toBe('dialog')
       expect(await filterButton.getAttribute('aria-expanded')).toBeNull()
 
-      // E1: a sort control is reachable on mobile
+      // A sort control is reachable on mobile
       const sortControls = page.getByLabel('Sort by')
       const sortCount = await sortControls.count()
       let sortVisible = false
@@ -69,7 +69,7 @@ describe('RfcEditorSearch (searchv2)', async () => {
       }
       expect(sortVisible).toBe(true)
 
-      // F1: density control is a labelled radio group of mutually-exclusive options
+      // Density control is a labelled radio group of mutually-exclusive options
       expect(await page.getByRole('group', { name: 'Display results as' }).count()).toBeGreaterThan(0)
       expect(await page.getByRole('radio').count()).toBeGreaterThanOrEqual(3)
 
@@ -78,12 +78,12 @@ describe('RfcEditorSearch (searchv2)', async () => {
       const dialog = page.locator('dialog[open]')
       await dialog.waitFor({ state: 'visible' })
 
-      // H2: dialog labelled by an <h1> containing only the heading text, with a close button outside it
+      // Dialog labelled by an <h1> containing only the heading text, with a close button outside it
       expect(await dialog.getAttribute('aria-labelledby')).toBe('rfc-filter-dialog-title')
       expect(await dialog.locator('h1#rfc-filter-dialog-title').textContent()).toContain('Filter RFCs')
       await dialog.locator('button[aria-label="Close filters"]').waitFor({ state: 'visible' })
 
-      // H3: closing returns focus to the trigger (native <dialog> behaviour)
+      // Closing returns focus to the trigger (native <dialog> behaviour)
       await dialog.locator('button[aria-label="Close filters"]').click()
       await expect.poll(async () => page.locator('dialog[open]').count()).toBe(0)
       expect(await page.evaluate(() => document.activeElement?.textContent?.includes('Filter RFCs') ?? false)).toBe(

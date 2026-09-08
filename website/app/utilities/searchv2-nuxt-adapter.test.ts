@@ -58,7 +58,7 @@ describe('searchv2 nuxt adapter — multi-value refinements', () => {
   })
 
   it('round-trips values containing a comma', () => {
-    // The delimited format split this into two refinements.
+    // A delimiter-joined param would read this back as two refinements.
     const original: UiState = { refinements: { 'authors.name': ['Smith, Jr.', 'Bob'] } }
     const reparsed = parseQuery(serializeQuery(original, defaults), defaults)
     expect(reparsed.refinements?.['authors.name']).toEqual(['Smith, Jr.', 'Bob'])

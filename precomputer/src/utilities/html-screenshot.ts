@@ -23,6 +23,8 @@ const dejavuSansMonoBinary = fsPromises.readFile(dejavuSansMonoPath)
 const dejavuSansItalicPath = path.join(fontsPath, 'DejaVuSans-Oblique.ttf')
 const dejavuSansItalicBinary = fsPromises.readFile(dejavuSansItalicPath)
 
+// Built once per size and reused rather than per render: satori parses the fonts it is handed on
+// every call, which costs about as much as the render itself.
 // https://github.com/vercel/satori/issues/590
 const cacheOfSatoriOptions: Record<string, SatoriOptions> = {}
 
@@ -46,10 +48,6 @@ const decodeHtmlEntities = (text: string): string =>
 
 const isObject = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null
 
-/**
- * Walks a satori-html VNode tree and decodes HTML entities in every text
- * node, mutating the tree in place.
- */
 const decodeEntitiesInTree = (node: unknown): void => {
   if (Array.isArray(node)) {
     node.forEach(decodeEntitiesInTree)

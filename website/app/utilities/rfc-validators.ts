@@ -8,9 +8,7 @@ import { kebabCase } from 'es-toolkit'
 const DocumentHtmlTypeSchema = z.union([z.literal('xml2rfc'), z.literal('plaintext'), z.literal('pdf-or-ps')])
 export type DocumentHtmlType = z.infer<typeof DocumentHtmlTypeSchema>
 
-/**
- * Table Of Contents
- */
+// Table Of Contents
 export const TocLinkSchema = z.object({
   id: z.string(),
   title: z.string()
@@ -34,9 +32,7 @@ export const TableOfContentsSchema = z.object({
 
 export type TableOfContents = z.infer<typeof TableOfContentsSchema>
 
-/**
- * RFC Common
- */
+// RFC Common
 export const RfcCommonStreamSlugSchema = z.union([
   z.literal('IETF'),
   z.literal('IAB'),
@@ -181,18 +177,18 @@ export const RfcCommonGroupSchema = z.object({
  * because Red never fetches them: they arrive with whatever data the route already loads — the
  * bucket JSON for an RFC page, the search index for a result list — and this is the one shape all
  * of those carry, so the components rendering them don't care which route supplied them.
+ *
+ * Field names follow Reef's API.
  */
 export const ReefRFCStatsSchema = z.object({
-  /** Mimicking Reef API structure */
   ratingAggregate: z
     .object({
       average: z.number().optional(),
       count: z.number().optional()
     })
     .optional(),
-  /** Mimicking Reef API structure */
   subscriberCount: z.number().optional(),
-  /** The number of document sets holding this RFC, not a setter function. Mimicking Reef API structure */
+  /** The number of document sets holding this RFC, not a setter function. */
   setCount: z.number().optional()
 })
 
@@ -318,15 +314,13 @@ export const SubseriesCommonSchema = z.object({
 
 export type SubseriesCommon = z.infer<typeof SubseriesCommonSchema>
 
-/**
- * Document HTML Schema (html/vue as pojo)
- */
+// Document HTML Schema (html/vue as pojo)
 const TextPojoSchema = z.object({
   type: z.literal('Text'),
   textContent: z.string()
 })
 
-// this convoluted code for a schema is required in Zod 3 for recursion and TS support.
+// this convoluted code for a schema is required for recursion and TS support.
 const _baseNodeElementSchema = z.object({
   type: z.literal('Element'),
   nodeName: z.string(),
@@ -355,9 +349,7 @@ const MaxPreformattedLineLengthSchema = z.object({
 })
 export type MaxPreformattedLineLengthSchemaType = z.infer<typeof MaxPreformattedLineLengthSchema>
 
-/**
- * Errata
- */
+// Errata
 export const ErrataStatusSchema = z.union([
   z.literal('Verified'),
   z.literal('Reported'),
@@ -390,9 +382,7 @@ export const ErrataListSchema = ErrataItemSchema.array()
 
 export type ErrataList = z.infer<typeof ErrataListSchema>
 
-/**
- * Bucket JSON schema
- */
+// Bucket JSON schema
 export const RfcBucketHtmlDocumentSchema = z.object({
   rfc: RfcCommonSchema,
   tableOfContents: TableOfContentsSchema.optional(),
@@ -415,9 +405,7 @@ export const isNodePojo = (maybeNode: unknown): maybeNode is NodePojo => {
   )
 }
 
-/**
- * Markdown Page
- */
+// Markdown Page
 export const MarkdownPageSchema = z.object({
   slug: z.string(),
   title: z.string().optional(),

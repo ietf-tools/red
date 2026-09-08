@@ -35,7 +35,7 @@ const emit = defineEmits<{ focused: [] }>()
 const { items, isEmpty } = useHits<TypeSenseSearchItem>()
 const { value: searchObsoleted, refine } = useToggleRefinement({ attribute: 'searchObsoleted' })
 
-// G4: move focus to the first result only after the new results have rendered,
+// Move focus to the first result only after the new results have rendered,
 // avoiding the race where focus moves before pagination results arrive.
 watch(items, async () => {
   if (!props.pendingFocus) return

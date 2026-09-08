@@ -30,9 +30,6 @@ export const defaultRenderer: ElementRenderers = {
 
 type ChildrenForVue = VNode | VNode[] | undefined
 type ElementRenderer = (node: ElementPojo, childrenForVue: ChildrenForVue) => VNode
-/**
- * Defines a mapping between nodeNames of a DocumentPojo and a renderer. There's also a `__default`
- */
 export type ElementRenderers = Record<string, ElementRenderer> & { __default: ElementRenderer }
 
 /**

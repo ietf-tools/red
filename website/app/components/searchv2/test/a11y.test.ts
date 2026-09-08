@@ -16,7 +16,6 @@ const mountWith = (searchClient: SearchClient, widget: ReturnType<typeof h>) =>
   mount(SearchRoot, { props: { searchClient }, slots: { default: () => widget } })
 
 describe('accessible defaults', () => {
-  // Defect 2: submit button named without relying on `title`.
   it('SearchBox submit button has an aria-label and no title', async () => {
     const wrapper = mountWith(client(), h(SearchBox))
     const submit = wrapper.get('button[type="submit"]')
@@ -24,7 +23,6 @@ describe('accessible defaults', () => {
     expect(submit.attributes('title')).toBeUndefined()
   })
 
-  // Defect 1: result count lives in a polite live region.
   it('Stats renders a polite live region with the count', async () => {
     const wrapper = mountWith(client({ nbHits: 42 }), h(Stats))
     await flushPromises()
@@ -33,7 +31,6 @@ describe('accessible defaults', () => {
     expect(region.text()).toContain('42')
   })
 
-  // Defect 3: searchable facet is a labelled group with its own labelled search field.
   it('searchable RefinementList is a fieldset/legend with a labelled facet search', async () => {
     const searchClient: SearchClient = {
       search: async () => ({
@@ -108,7 +105,6 @@ describe('accessible defaults', () => {
     expect(wrapper.get('input[type="checkbox"]').attributes('aria-describedby')).toBeUndefined()
   })
 
-  // Defect 4: show-more accessible name includes the group.
   it('RefinementList show-more has a group-specific accessible name', async () => {
     const facets = Object.fromEntries(Array.from({ length: 12 }, (_, index) => [`group-${index}`, 12 - index]))
     const searchClient: SearchClient = {
@@ -131,7 +127,6 @@ describe('accessible defaults', () => {
     expect(showMore.attributes('aria-label')).toBe('Show more working group')
   })
 
-  // Defect 6: current pagination page carries aria-current="page".
   it('Pagination marks the current page with aria-current', async () => {
     const searchClient: SearchClient = {
       search: async () => ({ hits: [], nbHits: 50, page: 0, nbPages: 5, hitsPerPage: 10, processingTimeMS: 1 })
@@ -142,7 +137,6 @@ describe('accessible defaults', () => {
     expect(current.text()).toBe('1')
   })
 
-  // Defect 5: expanding moves focus to the first newly revealed option.
   it('RefinementList moves focus to the first new option on show more', async () => {
     const facets = Object.fromEntries(Array.from({ length: 12 }, (_, index) => [`g${index}`, 12 - index]))
     const searchClient: SearchClient = {

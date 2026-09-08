@@ -146,7 +146,6 @@ export const getPlaintextRfcDocument = (dom: Document): Node[] => {
           )
         case 'pre':
           hasPassedPreTag = true
-          // pass
           break
       }
     }

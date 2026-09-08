@@ -180,9 +180,6 @@ type Rfc8792CopyTextOptions = {
  * - `single`: removes the trailing `\` and the leading whitespace of the continuation line.
  * - `double`: removes the trailing `\`, the leading `\` of the continuation line, and
  *   any whitespace between them.
- *
- * If `options.stripSourcecodeMarkers` is true, `<CODE BEGINS>`/`<CODE ENDS>` wrappers
- * are removed from the result before returning.
  */
 export const getRfc8792CopyText = (text: string, options: Rfc8792CopyTextOptions = {}): string | null => {
   const lines = normaliseLineEndings(text).split('\n')

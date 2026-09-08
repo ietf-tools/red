@@ -14,9 +14,6 @@ import { setupNuxtServer } from './utilities/setup'
 /** Has paragraphs, bold reference labels and inline code, so every style is present. */
 const RFC_UNDER_TEST = 'rfc9000'
 
-/** Advances are quantised to 1/10000 em, and layout rounds, so exact equality is not the test. */
-// `toBeCloseTo(…, 2)` allows 0.005em, which absorbs quantisation and layout rounding.
-
 const SELECTORS: Record<TextStyle, string> = {
   body: '.rfc-content p',
   bold: '.rfc-content .references dt',
@@ -69,6 +66,7 @@ describe('committed font metrics still match the browser', async () => {
         expect(live, `no element matched ${SELECTORS[style]} — the selector or the markup changed`).toBeTruthy()
 
         for (const character of SAMPLE) {
+          // 2 decimal places (0.005em) absorbs quantisation to 1/10000 em and layout rounding.
           expect(
             live[character],
             `advance for ${JSON.stringify(character)} in ${style} drifted from the committed table; regenerate it`

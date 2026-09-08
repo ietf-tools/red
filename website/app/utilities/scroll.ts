@@ -107,15 +107,11 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
 
   const getIdsIndexOfClosestTop = (scrollY: number): number => {
     if (scrollY < ENDS_THRESHOLD_PX) {
-      // console.log('at top so use index 0')
       return 0
     } else if (scrollY > document.body.scrollHeight - window.innerHeight - ENDS_THRESHOLD_PX) {
-      // console.log('at bottom so use index ', elementTops.length - 1)
       return elementTops.length - 1
     }
-    // console.log(scrollY, ' < ', document.body.scrollHeight - ENDS_THRESHOLD_PX)
     let closestIndex = 0
-    // console.log('elementTops.length', elementTops.length)
     for (let i = 0; i < elementTops.length; i++) {
       const elementTop = elementTops[i]
       const closestTop = elementTops[closestIndex]
@@ -126,7 +122,6 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
         closestIndex = i
       }
     }
-    // console.log({ closestIndex })
     return closestIndex
   }
 
@@ -180,21 +175,12 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     }
     if (targetIdIndex === activeIdIndex) {
       // nothing to do, exit early
-      // console.log('No activeId change needed')
       return
     }
     if (shouldScrollImmediately) {
       animateActiveIndex(shouldScrollImmediately)
       return
     }
-    // console.log(
-    //   `New scroll target from `,
-    //   activeIdIndex,
-    //   JSON.stringify(ids.value[activeIdIndex]),
-    //   ' to ',
-    //   targetIdIndex,
-    //   JSON.stringify(ids.value[targetIdIndex])
-    // )
     const direction = targetIdIndex > activeIdIndex ? 1 : -1
     const distanceToIndex = Math.abs(targetIdIndex - activeIdIndex)
     velocity = Math.max(distanceToIndex / 5, MINIMUM_VELOCITY) * direction
@@ -300,21 +286,7 @@ export const useScrollTocContainer = ({ toTargetIdRef, wrapperRef, makeTocId }: 
     const isLessThanBottom = tocLinkRect.bottom <= wrapperRect.bottom - SCROLL_BUFFER_PX
     const isVisible = isMoreThanTop && isLessThanBottom // is visible within viewport
 
-    if (!shouldScrollImmediately && isVisible) {
-      // no scrolling is required. There's nothing to do in this loop
-      //
-      // console.log(
-      //   "Checked whether TOC needed scrolling but it didn't (active option was already visible)",
-      //   {
-      //     isVisible,
-      //     isMoreThanTop,
-      //     isLessThanBottom,
-      //     SCROLL_BUFFER_PX,
-      //     tocLinkRect,
-      //     wrapperRect
-      //   }
-      // )
-    } else {
+    if (shouldScrollImmediately || !isVisible) {
       const middleOfScrollableAreaPx = wrapper.offsetHeight / 2
 
       const previousTocLinkRect = previousTocLink.getBoundingClientRect()
@@ -364,14 +336,11 @@ export const useScrollTocContainer = ({ toTargetIdRef, wrapperRef, makeTocId }: 
  *      *  For markdown pages, heading ids are derived from heading text by the
  *         precomputer and embedded in the htmlObj. We're trying to maintain the
  *         existing page anchor links from a previous implementation.
- *
- *  Verifying them as a way of surfacing bugs is what this function does.
  */
 export const useValidateIds = (ids: Ref<string[]>) => {
   watch(ids, () => {
+    // returns problematic ids, ie those that appear zero or 2+ times
     const problemIds = ids.value.filter((id) => {
-      // returns problematic ids, ie those that appear more than once
-
       // DON'T REFACTOR THIS TO getElementById() because we're using querySelectorAll()
       // intentionally to query multiple identical ids (ie coding mistakes), whereas
       // getElementById would only return 1 max.

@@ -1,4 +1,4 @@
-// Sync changes to modules/generate-link-preview-images.ts
+// Sync changes to precomputer/src/utilities/meta-thumbnails.ts
 export const OPENGRAPH_DIMENSIONS = [1200, 630] as const
 export const TWITTER_DIMENSIONS = [1200, 675] as const
 export const imagePreviewDimensions = [

@@ -23,10 +23,8 @@ watch(
       // do nothing, wait until authed
       return
     }
-    if (
-      // we have checked auth, so either they're logged in or not
-      !isAuthenticated.value
-    ) {
+    // we have checked auth, so either they're logged in or not
+    if (!isAuthenticated.value) {
       // await navigateTo({ path: HOME_PATH })
       return
     }

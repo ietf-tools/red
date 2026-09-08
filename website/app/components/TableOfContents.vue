@@ -12,13 +12,13 @@
 </template>
 
 <script setup lang="ts">
+import type { TableOfContents } from '../utilities/rfc-validators'
+
 /**
  * Table of Contents
  *
  * See also TableOfContentsHighlight.vue
  */
-import type { TableOfContents } from '../utilities/rfc-validators'
-
 type Props = {
   toc: TableOfContents
   listType: 'numbered' | 'ordered'

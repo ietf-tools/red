@@ -18,8 +18,7 @@ export default defineConfig(async () => ({
           environment: 'node',
           // Starts the one dev server every e2e suite attaches to. Without it each
           // suite would launch its own, and in dev mode those all serve from the same
-          // `.nuxt` build directory — which is what used to make running these files
-          // in parallel impossible. See e2e/utilities/global-setup.ts.
+          // `.nuxt` build directory and collide. See e2e/utilities/global-setup.ts.
           globalSetup: ['./e2e/utilities/global-setup.ts'],
           // Concurrent tests each open a page against that one dev server. The layout screenshot
           // suite runs its captures concurrently, and above four of them a page could be queued

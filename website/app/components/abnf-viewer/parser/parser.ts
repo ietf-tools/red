@@ -41,20 +41,18 @@ class AbnfParser {
 
   constructor(private readonly src: string) {}
 
-  // ── public ───────────────────────────────────────────────────────────────
-
   parseAll(): ParseResult {
     const rules: AbnfRule[] = []
     const index = new Map<string, AbnfRule>()
 
     while (this.pos < this.src.length) {
-      // Skip blank lines.
       if (this.ch() === '\r' || this.ch() === '\n') {
+        // Skip blank lines.
         this.advanceNewline()
         continue
       }
-      // Skip comment-only lines.
       if (this.ch() === ';') {
+        // Skip comment-only lines.
         this.skipToEOL()
         continue
       }
@@ -62,6 +60,7 @@ class AbnfParser {
       // xml2rfc indents ABNF blocks — strip leading whitespace before each
       // top-level attempt. True continuation lines are consumed inside
       // parseAlternation via skipCwsp and never reach here.
+      // Inline whitespace before = / =/
       while (this.ch() === ' ' || this.ch() === '\t') this.pos++
 
       // After whitespace-stripping we may be at EOL/comment/EOF again.
@@ -83,7 +82,6 @@ class AbnfParser {
           continue
         }
 
-        // Inline whitespace before = / =/
         while (this.ch() === ' ' || this.ch() === '\t') this.pos++
 
         let incremental = false
@@ -128,8 +126,6 @@ class AbnfParser {
 
     return { rules, errors: this.errors }
   }
-
-  // ── character utilities ──────────────────────────────────────────────────
 
   private ch(offset = 0): string {
     return this.src[this.pos + offset] ?? ''
@@ -184,16 +180,12 @@ class AbnfParser {
     }
   }
 
-  // ── rule name ────────────────────────────────────────────────────────────
-
   private parseRulename(): string | null {
     if (!/[a-zA-Z]/.test(this.ch())) return null
     const start = this.pos
     while (/[a-zA-Z0-9\-]/.test(this.ch())) this.pos++
     return this.src.slice(start, this.pos)
   }
-
-  // ── grammar ──────────────────────────────────────────────────────────────
 
   private parseAlternation(): AbnfNode {
     const items: AbnfNode[] = [this.parseConcatenation()]

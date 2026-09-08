@@ -125,7 +125,7 @@ const lastRfcPublished = computed(() => {
   return DateTime.fromISO(lastRfc.published)
 })
 
-// see https://github.com/ietf-tools/red/issues/196
+// Title format is "<TYPE> <number> subseries contains <count> RFCs" (https://github.com/ietf-tools/red/issues/196)
 const pageTitle = subseriesDocument.value
   ? `${subseriesDocument.value.type.toUpperCase()} ${subseriesDocument.value.number} subseries contains ${subseriesDocument.value.contents.length} RFC${subseriesDocument.value.contents.length === 1 ? '' : 's'}`
   : ''

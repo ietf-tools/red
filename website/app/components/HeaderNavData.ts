@@ -33,10 +33,6 @@ export type MenuItem = {
   noSpaLink?: boolean
   href?: string
   click?: VueClick
-  /**
-   * A function that returns whether the menu item is active
-   * Used for the theme picker
-   */
   isActiveFn?: () => boolean
   role?: 'modal-button' | 'radiogroup' | 'radio' | 'checkboxgroup' | 'checkbox'
   /**

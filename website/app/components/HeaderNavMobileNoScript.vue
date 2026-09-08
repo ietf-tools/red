@@ -7,8 +7,7 @@ import { renderNoScriptMenuItem, useMenuData } from './HeaderNavData'
 
 const menuData = useMenuData('mobile')
 
-// Vue can't render <noscript> elements except in `v-html`, so we need to generate
-// a menu in basic menu in HTML on the server
+// Vue can only emit <noscript> via v-html, so the no-JS menu is built as an HTML string.
 const noScriptHtml = computed(() => {
   return `<noscript data-nosnippet><ul class="w-full lg:hidden px-7 py-2 text-sm">${menuData.value
     .map((menuItem) =>

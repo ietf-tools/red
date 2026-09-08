@@ -49,7 +49,7 @@
           title, abstract links) — see onLeadingGuardFocus / onTrailingGuardFocus.
         -->
         <span tabindex="0" data-focus-guard class="sr-only" @focus="onLeadingGuardFocus"></span>
-        <!-- Touch has no Escape/hover-away, so the docked panel gets an explicit close (like the former sheet). -->
+        <!-- Touch has no Escape/hover-away, so the docked panel gets an explicit close. -->
         <PopoverClose
           v-if="isTouch"
           aria-label="Close preview"
@@ -178,7 +178,6 @@ const loadRfc = async (): Promise<void> => {
   loadingStatus.value = {
     type: 'loading'
   }
-  // console.log(`Loading ${rfcPath}`)
 
   try {
     const response = await fetch(rfcPath, {
@@ -416,7 +415,8 @@ const onTrailingGuardFocus = (event: FocusEvent) => {
 /**
  * Events spread onto every link variant. They drive the Wikipedia-style open/close
  * behaviour — open on hover or focus after a delay, without stealing focus — and
- * kick off the RFC data fetch.
+ * kick off the RFC data fetch. On touch devices the dedicated preview button drives
+ * open/close instead, so the hover, focus and blur handlers bail out.
  */
 const popoverAttributes = {
   class: props.class,
@@ -425,7 +425,6 @@ const popoverAttributes = {
   },
   onBlur: () => {
     if (isTouch.value) {
-      // touch devices should use button not this event, so we can ignore it
       return
     }
     startPopoverClose()
@@ -433,7 +432,6 @@ const popoverAttributes = {
   onFocus: () => {
     loadRfc()
     if (isTouch.value) {
-      // touch devices should use button not this event, so we can ignore it
       return
     }
     if (isReturningFocusToTrigger) {
@@ -444,14 +442,12 @@ const popoverAttributes = {
   },
   onMouseenter: () => {
     if (isTouch.value) {
-      // touch devices should use button not this event, so we can ignore it
       return
     }
     startPopoverOpen()
   },
   onMouseleave: () => {
     if (isTouch.value) {
-      // touch devices should use button not this event, so we can ignore it
       return
     }
     startPopoverClose()
@@ -484,8 +480,8 @@ defineOptions({
 
 <style>
 /*
- * Touch: dock the preview to the bottom-right of the screen (like the former bottom-sheet)
- * by overriding the anchored position Reka applies to its floating wrapper. The marker
+ * Touch: dock the preview to the bottom-right of the screen by overriding the anchored
+ * position Reka applies to its floating wrapper. The marker
  * attribute sits on the inner content element, so we select its wrapper via :has().
  * Not scoped: the wrapper is portalled to <body>.
  */

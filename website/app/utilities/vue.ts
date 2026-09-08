@@ -46,7 +46,4 @@ export const getVNodeText = (vnode: unknown): string => {
  **/
 export type VueStyleClass = string | Record<string, boolean | undefined> | VueStyleClass[]
 
-/**
- * https://stackoverflow.com/questions/55140448/what-is-the-type-for-an-event-in-vue-typescript-project
- */
 export type VueClick = (event: Event) => void

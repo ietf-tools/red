@@ -37,7 +37,8 @@ const RFC_CONTENT_SELECTOR = '.rfc-content'
 /** The current value, included so the table always shows the status quo for comparison. */
 const CURRENT_SPLIT_LENGTH = 16
 
-// Below 16 was never explored before, which left the shipped value unverified rather than chosen.
+// Candidates below the shipped value are included so the table shows whether it is a floor or
+// merely where tuning stopped.
 const TRIGGER_LENGTHS = [8, 10, 12, 14, 16, 20, 24, 30, 40]
 
 const CHUNK_LENGTHS = [8, 10, 12, 16, 20, 30]

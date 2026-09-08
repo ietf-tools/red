@@ -26,7 +26,6 @@ const props = defineProps<Props>()
 
 <style>
 html {
-  /* https://fonts.nuxt.com/get-started/configuration */
   font-family: 'Inter', sans-serif;
 }
 </style>

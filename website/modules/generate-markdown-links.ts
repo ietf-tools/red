@@ -58,16 +58,12 @@ const attemptToGetAttribute = (
 }
 
 /**
- * This should only be used in tests.
- * It's useful because it returns a JSON serializable data structure (rather than objects)
- * so vitest can test/diff data structures easily.
- *
- * If you need an HTML parser but not for tests (eg in Vue/Nuxt) then try
- * The Platform[tm] https://developer.mozilla.org/en-US/docs/Web/API/DOMParser
+ * A JSON-serialisable tree rather than DOM objects, so the result can be walked as plain data and
+ * diffed in tests.
  */
 const parseHtml = (html: string) => {
+  // HTML parse mode config
   const parser = getXMLParser({
-    // HTML parse mode config
     unpairedTags: ['hr', 'br', 'link', 'meta'],
     stopNodes: ['*.pre', '*.script'],
     htmlEntities: true
@@ -144,10 +140,7 @@ const textToAnchorId = (text: string): string | undefined => {
     .toLowerCase() // lowercase before kebabCase() because otherwise kebabCase() will split 'RFCs' into 'rf-cs'
     .replace(/\./g, '-') // replace periods because otherwise "section 2.2" becomes "section22" rather than "section2-2" which is more readable in the url
     .replace(/[^0-9\-a-zA-Z\s]/g, '') // removes non-alphanumeric eg question marks
-  if (
-    // if it's an empty string then getVNodeText() probably returned an empty string, so just return `undefined`
-    !normalized
-  ) {
+  if (!normalized) {
     return
   }
 
@@ -229,8 +222,8 @@ const regenerateValidMarkdownLinks = async (logger?: Logger) => {
           ('h1' in node || 'h2' in node || 'h3' in node || 'h4' in node || 'h5' in node || 'h6' in node)
         ) {
           const innerText = await getInnerText([node])
-          // Support the `## Heading {#custom-id}` syntax, falling back to an id derived from the text.
           const explicitId = innerText.match(HEADING_CUSTOM_ID_SYNTAX)?.[1]
+          // Support the `## Heading {#custom-id}` syntax, falling back to an id derived from the text.
           const anchorId = explicitId ?? textToAnchorId(innerText)
           if (anchorId) {
             anchorIds.push(anchorId)

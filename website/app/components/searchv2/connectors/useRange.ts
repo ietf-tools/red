@@ -6,7 +6,7 @@ export type UseRangeOptions = {
   attribute: string
 }
 
-/** Numeric range facet (replaces InstantSearch's RangeInput). */
+/** Numeric range facet. */
 export function useRange(options: UseRangeOptions) {
   const context = useSearchContext()
   const { attribute } = options

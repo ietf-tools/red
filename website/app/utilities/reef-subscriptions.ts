@@ -6,9 +6,8 @@
 // particular document — is feature logic and lives here rather than in the component or in the API
 // client (~/utilities/reef).
 //
-// Reading whether this reader subscribes to a document happens in ~/stores/reef, along with every
-// other per-reader answer. Reef used to offer only the caller's whole list, so an RFC page paid a
-// full list fetch to settle one yes/no; now the answer arrives per document with everything else.
+// Whether this reader subscribes to a document is read from ~/stores/reef, which receives every
+// per-reader answer per document in one response.
 
 import { computed, toValue, type MaybeRefOrGetter, type WritableComputedRef } from 'vue'
 import { z } from 'zod'
@@ -100,8 +99,6 @@ export const subscriptionFailedNotification = (rfcNumber: number, wasSubscribing
   type: 'foreground'
 })
 
-// --- Writing ------------------------------------------------------------------------------
-
 /**
  * Subscribe this reader to one document, or unsubscribe them.
  *
@@ -153,8 +150,6 @@ export const writeUserRFCSubscription = async (rfcNumber: number, isSubscribed: 
 
   reefStore.patchUserDocument(doc, { yourSubscriptionId: outcome.value })
 }
-
-// --- The model an RFC page binds ---------------------------------------------------------
 
 /**
  * Whether this reader subscribes to one document, as a model for the subscribe dialog's checkbox:

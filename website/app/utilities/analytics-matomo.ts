@@ -17,7 +17,6 @@ const eventuallyDispatchEvent = (events: Window['_paq'], attemptsRemaining = 5) 
   if (matomoEventQueue !== undefined) {
     events?.forEach((event) => {
       matomoEventQueue.push(event)
-      // console.info('Analytics (Matomo) queued:', event)
     })
   } else if (attemptsRemaining > 0) {
     setTimeout(() => {

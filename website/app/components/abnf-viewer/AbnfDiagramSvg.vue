@@ -83,7 +83,6 @@ const svgVNode = computed(() => {
 </script>
 
 <style>
-/* ── container ────────────────────────────────────────────────────────────── */
 .rr-diagram-wrap {
   display: flex;
   flex-direction: column;
@@ -100,7 +99,6 @@ const svgVNode = computed(() => {
   display: block;
 }
 
-/* ── rail and connectors ──────────────────────────────────────────────────── */
 .rr-diagram-content path {
   stroke: var(--rr-rail, #444);
   stroke-width: 2;
@@ -108,7 +106,6 @@ const svgVNode = computed(() => {
   stroke-linecap: round;
 }
 
-/* ── terminal ─────────────────────────────────────────────────────────────── */
 .rr-terminal {
   fill: var(--rr-terminal-bg, #d8f3dc);
   stroke: var(--rr-terminal-border, #2c6e49);
@@ -121,7 +118,6 @@ const svgVNode = computed(() => {
   pointer-events: none;
 }
 
-/* ── non-terminal ────────────────────────────────────────────────────────── */
 .rr-nonterminal {
   fill: var(--rr-nonterminal-bg, #dbeafe);
   stroke: var(--rr-nonterminal-border, #1d4e89);
@@ -140,7 +136,6 @@ const svgVNode = computed(() => {
   fill: var(--rr-nonterminal-hover, #bfdbfe);
 }
 
-/* ── comment / prose (ellipse) ───────────────────────────────────────────── */
 .rr-comment {
   fill: var(--rr-comment-bg, #f0f0f0);
   stroke: var(--rr-comment-border, #888);
@@ -166,7 +161,6 @@ const svgVNode = computed(() => {
   pointer-events: none;
 }
 
-/* ── zoom ────────────────────────────────────────────────────────────────── */
 .rr-zoom-bar {
   display: inline-flex;
   align-items: center;
@@ -201,7 +195,6 @@ const svgVNode = computed(() => {
   display: inline-block;
 }
 
-/* ── dark mode ───────────────────────────────────────────────────────────── */
 html.dark {
   --rr-rail: #aaa;
   --rr-terminal-bg: #1b4332;

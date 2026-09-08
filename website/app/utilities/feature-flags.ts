@@ -7,7 +7,6 @@ export const FeatureFlagsSchema = z.object({
   // with old versions saved in localStorage values can still validate
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
-  // narrowerRfcs: z.union([ENUM_STRING_UNDEFINED, z.literal('narrow-left'), z.literal('narrow-center')]).optional(),
   formatsAlsoViewAs: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
   oidc: z.boolean().optional(),
@@ -59,11 +58,6 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     description: `Renders ABNF grammar blocks in RFC documents as interactive railroad diagrams, making protocol grammars easier to read at a glance.`,
     storageType: 'boolean'
   },
-  // narrowerRfcs: {
-  //   title: 'Narrower /info/ RFCs',
-  //   description: 'Reduce space between /info/rfcN/ content and the sidebar',
-  //   storageType: ['', 'narrow-left', 'narrow-center']
-  // },
   formatsAlsoViewAs: {
     title: 'RFC formats "Also view as" links',
     description: 'On the info route adds a list of formats to the top-right of the RFC content',
@@ -81,9 +75,7 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   hasWordBreakMode: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
-  // narrowerRfcs: '',
   formatsAlsoViewAs: false,
-  // showPreCopyButton: '',
   searchObsoletedDefaults: false,
   oidc: false
 }
@@ -121,9 +113,8 @@ export const loadFeatureFlagsFromLocalStorage = (
       ...featureFlagsRef.value,
       ...data
     }
-  } catch (e: unknown) {
-    const _errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
-    // console.log(`[feature-flag-experiments] ${errorTitle}`, e)
+  } catch {
+    // Reading throws when localStorage is disabled, which is expected
   }
 }
 

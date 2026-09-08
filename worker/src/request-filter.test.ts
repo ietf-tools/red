@@ -2,9 +2,7 @@
 import { test, expect } from 'vitest'
 import { isBlockedPhpPath, isBogusPath, isNuxtIslandPath, isOriginPath } from './request-filter'
 
-/**
- * Paths whose shape rules them out before any route gets to look at them.
- */
+/** Paths whose shape rules them out before any route gets to look at them. */
 const BOGUS_PATHS = [
   // Characters no route on this site uses. The first is from a real report:
   // it reached the origin and rendered 'No "rfc9266>." page found.'

@@ -27,8 +27,8 @@ export const chunkString = (str: string, maxChunkLength: number, minChunkLength:
     chunks.push(out.substring(0, protocolIndex + COLONSLASHSLASH.length))
     out = out.substring(protocolIndex + COLONSLASHSLASH.length)
   }
-  // A wrapped line may not begin with a separator (ietf-tools/red#424), so hyphens end their
-  // chunk. A slash joining two ordinary words — `and/or`, `request/response` — is not a break
+  // A wrapped line may not begin with a separator, so hyphens end their chunk
+  // (https://github.com/ietf-tools/red/issues/424). A slash joining two ordinary words — `and/or`, `request/response` — is not a break
   // point at all, while a slash inside a machine string is; only the surrounding text tells them
   // apart.
   const separatorRuns = Array.from(out.matchAll(/[@\\\/:&\-=\(\)\.\?%]+/g))

@@ -1,4 +1,5 @@
-// See https://stackoverflow.com/questions/61047551/typescript-union-of-string-and-string-literals
+// `string & {}` keeps the literal members from collapsing into `string`, so editors still suggest
+// KnownValues while any string is accepted.
 export type HintedString<KnownValues extends string> = (string & {}) | KnownValues
 
 export const assertNever = (value: never) => {

@@ -333,7 +333,7 @@ Measured at 320px, suppression never made a page or element wider:
 | RFC 9000 | 200% | 25 (3%) | 25 (1%) | 37px → 37px |
 | RFC 9110 | 200% | 3 (1%) | 7 (1%) | 47px → 47px |
 
-**This is what changes for the reader.** At default text size 40% of RFC 9000's breaks are
+At default text size 40% of RFC 9000's breaks are
 suppressed because the container is wide enough; at 200% almost none are, because there they are
 load-bearing. The rule a reader meets is no longer "this word is long" but "this word does not fit
 here".

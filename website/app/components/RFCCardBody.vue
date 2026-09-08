@@ -18,8 +18,8 @@
       </li>
     </ul>
     <template v-if="props.showAbstract && props.rfc.abstract">
+      <!-- mobile abstract -->
       <div class="block lg:hidden">
-        <!-- mobile abstract -->
         <button
           type="button"
           :aria-expanded="isMobileAbstractOpen"

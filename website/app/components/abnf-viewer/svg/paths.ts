@@ -1,6 +1,9 @@
 /**
  * SVG path string helpers for railroad diagram arcs.
  *
+ * The caller supplies the *start* point of the arc; the function returns the
+ * path segment string (without a leading M command).
+ *
  * All arcs are quarter-circles of radius R.  There are four possible turns
  * (named by the direction of travel before and after the curve):
  *
@@ -8,9 +11,6 @@
  *   Down→Right  (bottom-left bracket corner)  sweep=0 (counter-clockwise)
  *   Left→Down   (top-left bracket corner)     sweep=0
  *   Down→Left   (bottom-right bracket corner) sweep=1
- *
- * The caller supplies the *start* point of the arc; the function returns the
- * path segment string (without a leading M command).
  */
 
 const R = 10 // must match C.ARC_R in layout.ts

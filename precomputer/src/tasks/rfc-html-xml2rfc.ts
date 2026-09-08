@@ -121,12 +121,11 @@ export const getXml2RfcRfcDocument = (dom: Document): Node[] => {
         'toc',
         'rfcnum',
         'title',
-        'external-metadata',
-        'internal-metadata'
-
         // 'section-abstract'
         // 'status-of-memo',
         // 'copyright'
+        'external-metadata',
+        'internal-metadata'
       ]
       if (idsToRemove.includes(node.id)) {
         return false
@@ -263,7 +262,6 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
         const x2 = parseFloat(x2Attr)
         const y2 = parseFloat(y2Attr)
         if (Number.isNaN(x1) || Number.isNaN(y1) || Number.isNaN(x2) || Number.isNaN(y2)) {
-          // fallback to default value
           console.error('Could not find width/height/viewBox of SVG. This could break mobile layout', {
             widthAttr,
             heightAttr,
@@ -321,14 +319,11 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
         svg.parentElement.classList.remove(RIGHT)
         horizontalScrollable.classList.add(RIGHT)
       }
-      // console.log(' - horizontalscrollable ', hs2.className)
     }
     horizontalScrollable.appendChild(svg)
-    // console.log(' - big SVG', widthPx, heightPx)
     return horizontalScrollable
   }
 
-  // console.log(' - small SVG', widthPx, heightPx)
   const wrappedChildren = Array.from(svg.childNodes).flatMap((node) => fixNodeForMobile(node, true))
   svg.replaceChildren(...wrappedChildren)
   return svg
@@ -341,13 +336,8 @@ const wrapSvg = (svg: HTMLElement): HTMLElement => {
  */
 export const getXml2RfcMaxLineLength = async (dom: Document): Promise<MaxPreformattedLineLengthSchemaType> => {
   /**
-   * The DEFAULT_MAX_LINE_LENGTH is less than the plaintext equivalent.
-   *
-   * This is because HTML RFC <pre> sections might be just ASCII art, and as such there's
-   * without any
-   * particular width conventions. Unlike plaintext RFCs we can't assume <pre> sections within
-   * HTML are 80 chars by default. , so we'll
-   * start off with a smaller number than 80.
+   * Lower than the plaintext default: a `<pre>` in an HTML RFC is often ASCII art with no
+   * 80-column convention behind it.
    */
   const DEFAULT_MAX_LINE_LENGTH = 40
 

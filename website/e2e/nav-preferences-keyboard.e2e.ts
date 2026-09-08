@@ -44,10 +44,10 @@ describe('header preferences keyboard nav', async () => {
       // The radio group exposes its heading as an accessible name.
       expect(await page.getByRole('radiogroup', { name: 'Theme' }).count()).toBe(1)
 
-      // Focus the currently-selected radio.
       const initial = await checkedStates(page)
       const startIndex = initial.indexOf('true')
       expect(startIndex).toBeGreaterThanOrEqual(0)
+      // Focus the currently-selected radio.
       await radios.nth(startIndex).focus()
 
       // ArrowDown selects the next option (selection follows focus, per APG).
@@ -82,10 +82,10 @@ describe('header preferences keyboard nav', async () => {
       await page.setViewportSize({ width: 390, height: 844 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
-      // Open the mobile menu dialog and expand "Your preferences".
       await page.getByRole('button', { name: 'Menu' }).click()
       const preferencesHeader = page.getByRole('button', { name: 'Your preferences' })
       await preferencesHeader.waitFor({ state: 'visible' })
+      // Open the mobile menu dialog and expand "Your preferences".
       await preferencesHeader.click()
 
       const radios = page.getByRole('radio')
@@ -153,9 +153,9 @@ describe('header preferences keyboard nav', async () => {
 
       await page.getByRole('button', { name: 'Menu' }).click()
 
-      // Expand "The RFC Series", then tab into its first submenu link.
       const seriesHeader = page.getByRole('button', { name: 'The RFC Series' })
       await seriesHeader.waitFor({ state: 'visible' })
+      // Expand "The RFC Series", then focus its first submenu link.
       await seriesHeader.click()
       const firstLink = page.getByRole('link', { name: 'What is an RFC?' })
       await firstLink.waitFor({ state: 'visible' })
@@ -168,8 +168,6 @@ describe('header preferences keyboard nav', async () => {
       await page.waitForTimeout(50)
       expect(await activeName()).toBe('How can I use RFCs?')
 
-      // ArrowUp goes back, and wrapping past the top stays inside the submenu
-      // (it must not escape up to the "The RFC Series" header).
       await page.keyboard.press('ArrowUp')
       await page.keyboard.press('ArrowUp')
       await page.waitForTimeout(50)

@@ -101,8 +101,8 @@ export const rfcBucketPdfToRfcDocument = async ({
 
     const pageNode = dom.createElement('div')
 
+    // add a divider between pages
     if (pageNumber > 1) {
-      // add a divider between pages
       const pageHr = dom.createElement('hr')
       pageNode.appendChild(pageHr)
     }
@@ -113,9 +113,9 @@ export const rfcBucketPdfToRfcDocument = async ({
     pageImg.setAttribute('width', screenshot.screenshotDimensions.widthPx.toString())
     pageImg.setAttribute('height', screenshot.screenshotDimensions.heightPx.toString())
     pageImg.setAttribute('alt', `Page ${pageNumber}: ${pageText}`)
+    // for pages 2+ we'll lazy load images
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#loading
     if (pageNumber >= 2) {
-      // for pages 2+ we'll lazy load images
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#loading
       pageImg.setAttribute('loading', 'lazy')
     }
     pageNode.appendChild(pageImg)

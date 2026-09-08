@@ -78,14 +78,11 @@ const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
 const observerRef = ref<ResizeObserver | null>(null)
 
 /**
- * Feature primarily developed by [Filip Skokan (Panva)](https://github.com/panva) see [PR](https://github.com/ietf-tools/red/pull/404).
- *
  * When the `<pre>` text is unfolded the success message says that text was modified from the raw `<pre>` innerText.
  *
  * It is intentional not to have multiple buttons to copy different variations of text.
  * Instead, users wanting the wrapped text must select the `<pre>` text like any other webpage text.
- *
- * See discussion on https://github.com/ietf-tools/red/pull/404
+ * https://github.com/ietf-tools/red/pull/404
  */
 const handleCopy = async (): Promise<ButtonResult> => {
   if (!props.copyMode) {

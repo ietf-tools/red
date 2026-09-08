@@ -53,16 +53,12 @@ export const formatSubseriesAsVNode = (rfc: RfcCommon, hasTrailingColon: boolean
           }
         )
       )
-      .reduce(
-        // when there are multiple subseries add commas
-        (acc, item, index, arr) => {
-          acc.push(item)
-          if (index < arr.length - 1) {
-            acc.push(h('span', ', '))
-          }
-          return acc
-        },
-        [] as VNode[]
-      )
+      .reduce((acc, item, index, arr) => {
+        acc.push(item)
+        if (index < arr.length - 1) {
+          acc.push(h('span', ', '))
+        }
+        return acc
+      }, [] as VNode[])
   )
 }

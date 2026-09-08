@@ -23,8 +23,6 @@ export function validate(input: string, ruleName: string, ruleMap: Map<string, A
   return matchNode(rule.def, input, 0, ruleMap, new Set())
 }
 
-// ── core ──────────────────────────────────────────────────────────────────
-
 function matchNode(
   node: AbnfNode,
   input: string,

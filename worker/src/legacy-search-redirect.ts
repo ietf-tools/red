@@ -18,9 +18,9 @@ const LegacySearchParamsSchema = z.object({
 
 export const legacySearchRedirectPathBuilder = (url: string, envDomain = ''): string => {
   const legacyURLParams = new URL(url, 'https://localhost/').searchParams
+  // convert URL into object so we can validate it
   const legacyObj: Record<string, string | string[]> = {}
 
-  // convert URL into object so we can validate it
   for (const [key, value] of legacyURLParams.entries()) {
     if (Object.prototype.hasOwnProperty.call(legacyObj, key)) {
       const legacyObjValue = legacyObj[key]
@@ -134,11 +134,9 @@ export const buildSearchRedirect = (
   }
 
   if (legacySearchObj.area_acronym) {
-    // Passed through unchanged: the legacy area acronym is already what the new search filters
-    // on (`area.acronym`). Previously mapped through a hardcoded list of acronyms, which
-    // silently dropped the filter for any area missing from it — `iesg`, `mgt`, `usv`, `sub`,
-    // `ops-old`, `osi`, `rfceditor` and `ipng` were all absent, and the index gains areas over
-    // time. Not validated here for the same reason.
+    // Passed through unvalidated: the legacy acronym is already what the new search filters on
+    // (`area.acronym`), and the index gains areas over time, so any fixed list here would
+    // silently drop the filter for an area it lacked.
     searchParam.area = legacySearchObj.area_acronym
   }
 
@@ -169,12 +167,10 @@ const monthNameToNumber = (monthName: string, defaultMonthNumber: number): numbe
  * Legacy `pubstatus[]` values, keyed by the status they map to.
  *
  * Typed as `Record<Status, string[]>` so this can't drift from `statusSchema`: every status needs
- * an entry, and a key that isn't a status is a compile error. It previously mapped 'Not Issued',
- * which `statusSchema` doesn't include, so that value reached `statusSchema.parse` and threw —
- * turning a legacy bookmark into an error page instead of a redirect.
+ * an entry, and a key that isn't a status is a compile error.
  *
- * A legacy value with no counterpart here is dropped from the status filter rather than failing
- * the redirect, so 'Not Issued' now yields a broader search rather than an error.
+ * 'Not Issued' has no entry on purpose: never-issued RFCs are not in the index. A legacy value
+ * with no counterpart is dropped from the filter rather than failing the redirect.
  */
 const statusMappingFromLegacyToNew: Record<Status, string[]> = {
   'Proposed Standard': ['Proposed Standard'],

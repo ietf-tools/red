@@ -119,7 +119,7 @@ test('etagMatches: list containing no match', () => {
 
 /**
  * Minimal stand-ins for the runtime objects. The casts are contained here so the
- * tests themselves stay untyped-free: neither R2ObjectBody nor IRequest can be
+ * tests themselves stay cast-free: neither R2ObjectBody nor IRequest can be
  * constructed outside the Workers runtime.
  */
 const fakeBlob = (httpEtag: string, storedMetadata: Record<string, string> = {}) =>

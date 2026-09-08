@@ -51,7 +51,6 @@ watchDebounced(
   () => list,
   () => {
     maxHeadingWidth.value = calculateMaxHeadingWidth(list.value)
-    // console.log('recomputing max width', maxHeadingWidth.value)
   },
   {
     debounce: 200,

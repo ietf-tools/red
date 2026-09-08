@@ -26,9 +26,6 @@ export type Notification = {
   title: string
   description?: string
   url?: string
-  /**
-   * Delay in milliseconds, after which the toast is displayed
-   */
   delayMs: number
   /**
    * How long in milliseconds the toast stays on screen once displayed, defaulting to
@@ -67,7 +64,7 @@ const PLACEHOLDER_NOTIFICATIONS: Notification[] = [
     delayMs: 2000,
     // Stays up until the user decides. An announcement is meant to be read once, and this is
     // the toast that offers Dismiss — timing out would take that choice off the screen before
-    // they'd made it, though it would now be offered again on the next page load.
+    // they'd made it, though it would be offered again on the next page load.
     durationMs: Number.POSITIVE_INFINITY,
     position: 'bottom',
     allowDismiss: true

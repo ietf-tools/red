@@ -64,10 +64,8 @@ const firstStatusWithACount = Object.entries(statusCounts.value)
     const keyB = _keyB as ErrataStatus
     return preferredOrder.indexOf(keyA) - preferredOrder.indexOf(keyB)
   })
-  .find(
-    // find first one with some results
-    ([_key, count]) => count > 0
-  )
+  // find first one with some results
+  .find(([_key, count]) => count > 0)
 
 const selectedStatusType = ref(
   firstStatusWithACount ? (firstStatusWithACount[0] as ErrataStatus) : (allStatusTypes.value[0] as ErrataStatus)

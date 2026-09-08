@@ -10,8 +10,6 @@
 import type { AbnfNode, AbnfRule } from '../parser/types'
 import type { Box, LayoutNode } from './types'
 
-// ── constants ──────────────────────────────────────────────────────────────
-
 export const C = {
   ARC_R: 10, // quarter-circle radius for all bends
   VERT_SEP: 8, // vertical gap between Choice alternatives
@@ -25,15 +23,11 @@ export const C = {
   MIN_BOX_WIDTH: 30
 }
 
-// ── public API ──────────────────────────────────────────────────────────────
-
 export function layoutRule(rule: AbnfRule, _ruleMap: Map<string, AbnfRule>): LayoutNode {
   // Refs render as linked nonterminal boxes rather than being inlined, so the
   // rule map isn't needed for layout. It's kept in the signature for the caller.
   return layout(rule.def)
 }
-
-// ── internal ─────────────────────────────────────────────────────────────
 
 function layout(node: AbnfNode): LayoutNode {
   switch (node.kind) {
@@ -116,8 +110,6 @@ function layout(node: AbnfNode): LayoutNode {
     }
   }
 }
-
-// ── element constructors ──────────────────────────────────────────────────
 
 function boxForText(text: string): Box {
   const w = Math.max(C.MIN_BOX_WIDTH, text.length * C.CHAR_WIDTH + C.PADDING_H * 2)

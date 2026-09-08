@@ -35,10 +35,8 @@ export const renderHomepageLatest = async (allRfcs: Readonly<RfcCommon[]>): Prom
         // The homepage latest list is of the latest PUBLISHED rfcs
         // not the largest RFC number
         sortByRfcPublish
-        // sorting all RFCs then slicing off NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE
-        // seems very inefficient so this could be optimised. Not sure it's worth making
-        // a less thorough version of it though, and sorting 10k+ things is very fast
-        // so maybe it's ok to leave this unoptimised.
+        // Sorting everything to take NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE is wasteful, but sorting
+        // 10k RFCs is fast enough not to matter.
       )
       .slice(0, NUMBER_OF_LATEST_RFCS_ON_HOMEPAGE)
       .map(redactRfc),

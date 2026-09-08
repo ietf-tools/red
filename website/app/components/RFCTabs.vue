@@ -296,6 +296,7 @@ const tableOfContents = computed(() => {
 })
 
 const shouldShowArea = (rfc: RfcCommon): boolean => {
+  // Area is only meaningful for IETF-stream WG/AG documents.
   // https://github.com/ietf-tools/red/issues/201
   // https://github.com/ietf-tools/red/issues/147#issuecomment-3300346145
   if (!rfc.area) {
@@ -309,6 +310,7 @@ const shouldShowArea = (rfc: RfcCommon): boolean => {
 
 const shouldShowStreamValue = (rfc: RfcCommon): boolean => {
   if (
+    // 'Legacy' is a placeholder stream, not one worth showing.
     // https://github.com/ietf-tools/red/issues/147#issuecomment-4337849819
     rfc.stream.slug === 'Legacy'
   ) {
@@ -370,6 +372,7 @@ type RfcReferences = NonNullable<
 
 const groupName = (rfc: RfcCommon): string => {
   if (
+    // IRTF documents come from research groups, not working groups.
     // https://github.com/ietf-tools/red/issues/147#issuecomment-3417450159
     rfc.stream.slug === 'IRTF'
   ) {
@@ -619,9 +622,7 @@ const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
   return [{ type: 'Text', textContent: stream.name }]
 }
 
-/**
- * For non-JS users
- */
+/** For non-JS users */
 const noScriptHtml = computed(() => {
   const { rfc } = props.rfcBucketHtmlDocument
   const renderRfcList = (rfcs: RfcReferences): string =>

@@ -159,37 +159,18 @@ const sniffRfcBucketHtmlType = (dom: Document): DocumentHtmlType => {
 }
 
 /**
- * This function converts link `href`s by changing (mutating) the given Nodes, by
- * changing attribute `href` values.
+ * Rewrites link `href`s in place (mutating the given Nodes) so that RFC links keep the
+ * reader within the '/info/*' route.
  *
- * 1) Many RFCs have relative hrefs of `./rfcN.html` which resolves differently from
- *    a page at `/rfc/rfcN.html` and the new republished path of `/info/rfcN/`
- *    (regardless of the trailing slash, the `/info/` will make relative hrefs resolve
- *    differently). Converting the hrefs is very simple as the web standard URL() takes
- *    a 2nd arg to resolve relative links against, so this function resolves relative
- *    paths from `./rfcN.html` to `/rfc/rfcN.html`. So they're still relative hrefs but
- *    they're relative to the domain, not the path.
- * 2) Many RFCs have absolute hrefs of `https://www.rfc-editor.org/ANYTHING` so
- *    when they hardcode links to prod we'll we'll convert those to `/ANYTHING`. This
- *    also makes these links work relatively on localhost/staging etc.
- * 3) Many RFCs have links to '/rfc/rfcN.html', so —when browsing from '/info/*'—
- *    users would keep leaving the '/info/*' route and instead browse '/rfc/*' HTML.
- *    The '/rfc/*' routes are not part of the Nuxt routes with the new UI.
- *    So there is a high-level question of whether users should be able to follow RFC
- *    link after RFC link while staying within the Nuxt '/info/*' route’s UI/UX, or
- *    whether we should maintain the original `href` string as-is, or interpret hrefs
- *    to RFCs as something we can use to link to 'info' RFCs.
- *
- *    The original '/rfc/*' HTML is still available for those who prefer it. That's not
- *    being taken away.
- *
- *    The 'info' route is a ~*NEW*~ UI for browsing RFC content that tries to make
- *    documents more usable by providing a responsive and accessible UI (more zoomable),
- *    with ToC, etc. It's believed that preserving `href`s as-is would would limit users.
- *    So it's been decided to change the `href`s to encourage users to read RFC content
- *    within the '/info/*' route, as if it were a mirror of RFC content, and users can
- *    always browse the original HTML if they wish.
- *
+ * 1) Relative hrefs such as `./rfcN.html` resolve against the page path, so from
+ *    `/info/rfcN/` they would point somewhere other than from `/rfc/rfcN.html`. They are
+ *    resolved against `/rfc/` (the second argument of URL()), which leaves them relative
+ *    to the domain rather than the path.
+ * 2) Absolute hrefs of `https://www.rfc-editor.org/ANYTHING` become `/ANYTHING`, so links
+ *    hardcoded to prod also work on localhost, staging etc.
+ * 3) Hrefs to '/rfc/rfcN.html' become '/info/rfcN/'. The '/rfc/*' HTML is not served by the
+ *    Nuxt routes, so following such a link would leave the responsive, accessible '/info/*'
+ *    UI; the original HTML remains available for those who prefer it.
  **/
 const convertHrefs = (rfcDocument: Node[], baseUrl: URL, rfcNumberForDebug: number): void => {
   const publicSiteUrl = new URL(PUBLIC_SITE_URL_ORIGIN)
@@ -247,20 +228,8 @@ const convertHrefs = (rfcDocument: Node[], baseUrl: URL, rfcNumberForDebug: numb
               }
             }
 
-            // console.log(
-            //   `[RFC ${rfcNumberForDebug}] replace href?`,
-            //   JSON.stringify(originalHref),
-            //   JSON.stringify(href)
-            // )
-
             if (href !== originalHref) {
-              // console.log(
-              //   ' - replace href',
-              //   JSON.stringify(originalHref),
-              //   JSON.stringify(href)
-              // )
               node.setAttribute('href', href)
-            } else {
             }
           } else {
             console.info(
@@ -439,19 +408,18 @@ export const moveDefinitionIndentToCustomProperty = (rfcDocument: Node[]): void 
 }
 
 /**
- * This function splits long words and inserts <wbr> elements
+ * Splits long words by inserting <wbr> elements.
  *
- * RFC content has long 'words' (ie, text content of URLs as text nodes) that break mobile layout
- * because they prevent line wrapping. Using CSS `overflow-wrap: anywhere` mostly worked but it
- * caused 'orphan' chars eg in table headings it'll linewrap just the 'n' in 'description'.
+ * RFC content has long 'words' (eg the text content of URLs) that break mobile layout because
+ * they prevent line wrapping. CSS `overflow-wrap: anywhere` mostly works but it causes 'orphan'
+ * chars, eg in table headings it will linewrap just the 'n' in 'description'.
  *
- * This function has a new approach where it inserts <wbr> elements. These <wbr> elements seem to
- * work better than unicode approaches (zero-width spaces etc) because being non-characters they
- * aren't copied to the clipboard.
+ * <wbr> elements work better than unicode approaches (zero-width spaces etc) because, being
+ * non-characters, they aren't copied to the clipboard.
  *
- * This also means we can control potential line breaks so if the 'word' looks like a URL we can
- * insert <wbr> at appropriate points, eg https://<wbr>domain/<wbr>path1/<wbr>path2?<wbr>query1=1
- * etc which is more readable than artitrary line break points.
+ * They also give control over where a line may break, so a 'word' that looks like a URL breaks
+ * at meaningful points, eg https://<wbr>domain/<wbr>path1/<wbr>path2?<wbr>query1=1, which is
+ * more readable than arbitrary line break points.
  **/
 export const ensureWordBreaks = (rfcDocument: Node[]): void => {
   const walk = (node: Node): void => {
@@ -529,9 +497,8 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
       const textAndWordbreaks = words
         .flatMap((word): Node | Node[] => {
           // Words are sliced at whitespace, so every word but the first carries its leading
-          // separator. Measuring that made the gate behave as 16 characters mid-sentence and 17 at
-          // the start of an element: the same word broke differently depending on where it sat, and
-          // a 16-character name as an element's only content escaped breaking entirely.
+          // separator. The gate measures only the visible characters; otherwise the same word
+          // breaks differently depending on where in the sentence it sits.
           const leading = /^[\s\n]*/.exec(word)?.[0] ?? ''
           const visible = word.substring(leading.length)
 
@@ -555,10 +522,7 @@ export const ensureWordBreaks = (rfcDocument: Node[]): void => {
                 return [textNode]
               }
 
-              const wbrElement = node.ownerDocument.createElement(
-                // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/wbr
-                WORD_BREAK_ELEMENT
-              )
+              const wbrElement = node.ownerDocument.createElement(WORD_BREAK_ELEMENT)
               wbrElement.setAttribute('class', sizeClass)
 
               return [textNode, wbrElement]
@@ -615,8 +579,7 @@ const logoBase64UriPromise = new Promise<string>((resolve, reject) => {
   const canvasWidthPx = 2000
   fsPromises.readFile(metaThumbnailRfcNLogoPath, 'utf-8').then((svgString) =>
     sharp(Buffer.from(svgString))
-      // render logo at logo size
-      .resize(logoWidthPx)
+      .resize(logoWidthPx) // render logo at logo size
       // extend canvas so that logo takes less than half the width of the graphic
       .extend({
         top: paddingPx,

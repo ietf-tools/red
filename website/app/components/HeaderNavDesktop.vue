@@ -330,8 +330,7 @@ const onRadioGroupNav = (event: KeyboardEvent, radioGroupRef?: Ref<string>) => {
   })
 }
 
-// Vue can't render <noscript> elements except in `v-html`, so we need to generate
-// a menu in basic menu in HTML on the server
+// Vue can only emit <noscript> via v-html, so the no-JS menu is built as an HTML string.
 const menuDataWithNoScripts = computed(() => {
   return menuData.value.map((menuItem) => {
     const linkChildren = menuItem.children?.filter((child) => child.href && !child.click)
