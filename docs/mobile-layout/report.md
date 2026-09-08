@@ -2,8 +2,9 @@
 
 _DRAFT_
 
-RFCs were written for desktop resolutions. Modern RFC HTML supports reflowing text, but RFCs are
-not designed for mobile layout or for accessibility requirements such as WCAG and text resizing.
+RFCs were written for desktop resolutions. Modern RFC HTML supports reflowing text, but RFCs were
+not written/designed for mobile layout or for accessibility requirements such as WCAG and
+text resizing.
 
 RFC-Editor.org's `/info/rfcN/` route reads the published `/rfc/rfcN.html` files and adapts them so
 that they do not **break mobile layout**: content stretching the page sideways on a narrow screen,
