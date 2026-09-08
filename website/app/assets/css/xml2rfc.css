@@ -365,6 +365,38 @@ dl > dd > dl {
   }
 }
 
+/* `dlParallel` sets each term beside its definitions. Floating the term and indenting the
+   definition by a fixed measure couples two widths that were never measured against each other:
+   RFC 8900's "NOTE 1:" is wider than the 1.5em indent xml2rfc gave its definition, so the two
+   overlapped. A grid removes the coupling: terms take the first column at their own width and
+   definitions the second, with a term's later definitions continuing down the second column. Wide
+   screens only; below 60em the inline flow above applies, where a grid column could wrap under. */
+@media (min-width: 60em) {
+  dl.dlParallel {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1em;
+    align-items: baseline;
+  }
+
+  dl.dlParallel > dt {
+    float: none;
+    clear: none;
+    grid-column: 1;
+    margin-right: 0;
+  }
+
+  /* The grid column already separates term and definition, so the measured indent would only add
+     to the gap. */
+  dl.dlParallel > dd.dd-ml {
+    margin-left: 0;
+  }
+
+  dl.dlParallel > dd {
+    grid-column: 2;
+  }
+}
+
 /* links */
 a {
   text-decoration: none;
@@ -521,10 +553,12 @@ cite {
 
    Where container queries are unsupported the rules are dropped and every break stays live, which
    is the behaviour without this feature. */
+/* `dt` is deliberately absent: inline-size containment removes an element's intrinsic width, so a
+   term made a container shrinks to its widest word whether it floats or sits in a grid column, and
+   the definition beside it overlaps (RFC 8900, "NOTE 1:"). Breaks inside terms stay live instead. */
 p,
 li,
 dd,
-dt,
 blockquote,
 aside {
   container-type: inline-size;

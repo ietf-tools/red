@@ -310,8 +310,10 @@ connection_<wbr class="wordsize-8">id
 The 9.6em is the grouping's 8em ceiling plus a buffer of 1.2 for a substituted font or
 added letter spacing. If the container is at least as wide as the ceiling the word provably fits, so
 suppression can never cause an overflow. The **container** is queried rather than the viewport, so
-indentation, table cells and nesting count. Blocks (`p`, `li`, `dd`, `dt`, `blockquote`, `aside`)
-are the query containers; the word itself cannot be, since `inline-block` would stop it wrapping.
+indentation, table cells and nesting count. Blocks (`p`, `li`, `dd`, `blockquote`, `aside`) are the
+query containers; the word itself cannot be, since `inline-block` would stop it wrapping, and `dt`
+cannot be either, since inline-size containment removes a term's intrinsic width and a floated or
+grid-placed term then shrinks to its widest word and overlaps its definition (RFC 8900, "NOTE 1:").
 Words past the largest grouping get `wordsize-wide`, which has no rule, so their breaks stay active,
 as they do where container queries are unsupported. Widths come from the committed font metrics in
 the style the word renders in (monospace in `code`, bold in `strong`, `th`, `dt` and headings). The
@@ -400,6 +402,11 @@ No RFC text is altered; what changes is layout and where a line may break.
   separator. Definitions holding block content keep their own line and lose only the indent. RFC
   9110's index went from **23 items past a 320px viewport at 200% text to none**, RFC 8975 from
   166px of page overflow to 15px. Above 60em nothing changes, so a 1024px tablet renders as before.
+- **`dlParallel` lists are a two-column grid above 60em.** Terms take the first column at their own
+  width and definitions the second, so a term can no longer overlap a definition whose indent was
+  measured without it; the measured indent is switched off inside the grid, since the column gap
+  already separates the two. Below 60em the inline flow above applies, where a grid column could
+  wrap under.
 - **The inline indent xml2rfc emits is moved out of the way.** `style="margin-left:7.0em"` on each
   `dd` (13 to 493 per document) beats any stylesheet rule, so the precomputer rewrites it as a class
   and custom property the stylesheet applies conditionally. RFC 9025 went from 147px of overflow to

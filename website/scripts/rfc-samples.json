@@ -24,6 +24,10 @@
   },
   "complexLayouts": [
     {
+      "rfc": 8900,
+      "note": "dlParallel Note list whose terms overlapped their definitions once dt became a size container"
+    },
+    {
       "rfc": 9110,
       "note": "576-entry index, 493 inline dd indents, largest dl corpus; long hyphenated field names in narrow cells"
     },

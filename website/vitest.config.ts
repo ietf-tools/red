@@ -20,7 +20,11 @@ export default defineConfig(async () => ({
           // suite would launch its own, and in dev mode those all serve from the same
           // `.nuxt` build directory — which is what used to make running these files
           // in parallel impossible. See e2e/utilities/global-setup.ts.
-          globalSetup: ['./e2e/utilities/global-setup.ts']
+          globalSetup: ['./e2e/utilities/global-setup.ts'],
+          // Concurrent tests each open a page against that one dev server. The layout screenshot
+          // suite runs its captures concurrently, and above four of them a page could be queued
+          // past its hydration wait when the other suites were loading pages too.
+          maxConcurrency: 4
         }
       },
       {

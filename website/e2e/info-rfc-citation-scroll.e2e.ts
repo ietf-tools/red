@@ -96,12 +96,7 @@ describe('info/rfcN citation links', async () => {
 
       // Captured before any interaction: the post-load state is the one that stays
       // stable as the scroll assertions below evolve.
-      // Terms in `dlParallel` lists overlap their definitions on wide screens until the corpus is
-      // regenerated with the `dd-ml` class the stylesheet now indents by. Reported, not failed, so
-      // the capture and diff keep tracking it; remove the option once the documents carry the class.
-      await expectScreenshotToMatchBaseline(page, RFC, {
-        knownMismatch: 'dlParallel term overlap pending precomputer regeneration with dd-ml'
-      })
+      await expectScreenshotToMatchBaseline(page, RFC)
 
       // Distinct in-text RFC citation links (rendered as RFCRouterLink previews).
       const ids = await page.evaluate(() => [
