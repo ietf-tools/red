@@ -240,13 +240,23 @@ const buildGenericMetaTags = (props: UseRfcEditorProps): MetaTag[] => {
     })
   }
 
-  // RFCs can have keywords. It's unclear who the consumers of this meta tag would be as keywords is mostly ignored these days, but the previous site had it so we will too
-  if (props.keywords) {
-    props.keywords.forEach((keyword) => {
-      metaTags.push({
-        name: 'keywords',
-        content: keyword
-      })
+  // RFCs can have keywords which we expose as a meta tag.
+  // These are different to 'subject tags' from Reef.
+  //
+  // HTML Spec allows multiple `keywords` meta tags or a single tag comma separated,
+  // but unhead is opinionated about consolidating 'keywords' to one so it effectively
+  // requires comma-separated.
+  //
+  // https://html.spec.whatwg.org/multipage/semantics.html#meta-keywords
+  // https://unhead.unjs.io/docs/head/guides/core-concepts/handling-duplicates
+
+  if (props.keywords && props.keywords.length > 0) {
+    metaTags.push({
+      name: 'keywords',
+      content: props.keywords
+        .map((keyword) => keyword.replace(/,/g, ' ').trim())
+        .join(', ')
+        .trim()
     })
   }
 
@@ -433,9 +443,15 @@ const buildFeedAutodiscovery = (publicSiteOrigin: string): LinkTag[] => {
 }
 
 /**
- * useHead requires a `key` per meta tag or it will deduplicate
- * based on name/property.
- * See https://github.com/nuxt/nuxt/discussions/32212
+ * useHead deduplicates meta tags by name/property. A `key` opts a tag out of
+ * that, which we need for repeated names such as citation_author.
+ *
+ * The opt-out does not apply to `viewport`, `description`, `keywords` or `robots`,
+ * which are collapsed to one tag regardless of `key`. That is why 'keywords'
+ * are emitted as a single comma-separated tag.
+ *
+ * See https://unhead.unjs.io/docs/head/guides/core-concepts/handling-duplicates
+ *
  */
 const allowDuplicateNames = (metaTag: MetaTag): MetaTag => {
   return {

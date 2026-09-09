@@ -18,8 +18,10 @@
  * text differently from a headless one, the same way a different platform does, so captures
  * taken this way disagree with baselines recorded headless.
  */
-import { inject } from 'vitest'
-import { setup } from '@nuxt/test-utils/e2e'
+import { afterAll, beforeAll, inject } from 'vitest'
+import { setup, waitForHydration } from '@nuxt/test-utils/e2e'
+import { chromium } from 'playwright-core'
+import type { Browser, LaunchOptions, Page } from 'playwright-core'
 import { isTruthyEnv } from './screenshot'
 
 // Declared here as well as in global-setup.ts, which sits outside the type-checked
@@ -35,6 +37,11 @@ const HEADED_SLOW_MO_MS = 250
 
 const isHeaded = isTruthyEnv(process.env.E2E_HEADED)
 
+const LAUNCH_OPTIONS: LaunchOptions = {
+  headless: !isHeaded,
+  slowMo: isHeaded ? HEADED_SLOW_MO_MS : undefined
+}
+
 /** Attaches a browser to the shared e2e dev server. */
 export const setupNuxtServer = (): Promise<void> =>
   setup({
@@ -42,9 +49,45 @@ export const setupNuxtServer = (): Promise<void> =>
     host: inject('e2eBaseUrl'),
     browserOptions: {
       type: 'chromium',
-      launch: {
-        headless: !isHeaded,
-        slowMo: isHeaded ? HEADED_SLOW_MO_MS : undefined
-      }
+      launch: LAUNCH_OPTIONS
     }
   })
+
+/**
+ * Gives a suite whose tests run concurrently its own browser, and an opener to use in place of
+ * test-utils' `createPage()`.
+ *
+ * `setup()` holds the context `createPage()` reads in a single module-level variable, and clears
+ * it in an afterEach. Under `test.concurrent` the tests overlap, so whichever finishes first
+ * clears the context out from under its still-running siblings and the next `createPage()` fails
+ * with "No context is available" — intermittently, because it depends on which moment the
+ * teardown lands in. Owning the browser for the file removes the shared mutable state the race
+ * needs, so the tests can keep running in parallel.
+ *
+ * Suites that run their tests one at a time never see the race and should keep to
+ * setupNuxtServer() and `createPage()`.
+ */
+export const setupConcurrentPages = (): ((path: string) => Promise<Page>) => {
+  const baseUrl = inject('e2eBaseUrl')
+  let browser: Browser | undefined
+
+  beforeAll(async () => {
+    browser = await chromium.launch(LAUNCH_OPTIONS)
+  })
+
+  afterAll(async () => {
+    await browser?.close()
+  })
+
+  return async (path: string): Promise<Page> => {
+    if (!browser) {
+      throw Error('setupConcurrentPages() must be called from a describe body so its beforeAll can launch the browser')
+    }
+    const page = await browser.newPage()
+    const href = new URL(path, baseUrl).href
+    await page.goto(href)
+    // The app renders client-side, so anything read before hydration finishes is of the shell.
+    await waitForHydration(page, href, 'hydration')
+    return page
+  }
+}

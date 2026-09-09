@@ -5,9 +5,8 @@
 // rather than in production. The full curated set, with a note per document, is in
 // scripts/rfc-samples.json; this is the half of it that covers each structure once.
 import { describe, test } from 'vitest'
-import { createPage } from '@nuxt/test-utils/e2e'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
-import { setupNuxtServer } from './utilities/setup'
+import { setupConcurrentPages } from './utilities/setup'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 
 const RFCS = [
@@ -34,15 +33,15 @@ const VIEWPORTS = [
 // against a single dev server.
 const TEST_DURATION_MS = 60_000
 
-describe('info/rfcN layout', async () => {
-  await setupNuxtServer()
+describe('info/rfcN layout', () => {
+  const openPage = setupConcurrentPages()
 
   for (const rfc of RFCS) {
     for (const viewport of VIEWPORTS) {
       test.concurrent(
         `${rfc} at ${viewport.name}px`,
         async () => {
-          const page = await createPage(infoSeriesPathBuilder(rfc))
+          const page = await openPage(infoSeriesPathBuilder(rfc))
           await page.setViewportSize({ width: viewport.width, height: viewport.height })
           await page.locator('.rfc-content').first().waitFor({ state: 'visible' })
           await expectScreenshotToMatchBaseline(page, `layout-${rfc}-${viewport.name}`)
