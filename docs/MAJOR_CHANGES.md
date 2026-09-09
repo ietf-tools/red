@@ -6,7 +6,9 @@
 
 * On  the `/info/rfcN/` route meta tag keywords now uses a single meta tag with a comma-separated value, rather than multiple meta tags.
 
-### April 2026
+### May 2026
+
+([release announcement](https://www.ietf.org/blog/rfc-editor-website-launch/))
 
 Great care has been taken to ensure consistency with previous API formats where possible. There are substantial unit tests to verify that the same data is being served, except for changes deemed necessary for future compatibility. Developers using rfc-editor.org APIs should read the following document and adjust their code accordingly.
 

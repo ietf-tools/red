@@ -2,9 +2,10 @@
  * Surveys bracketed reference citations — `[RFC3629]`, `[OAM-CONS]` — measuring how wide they are
  * and how often they wrap.
  *
- * The precomputer holds a citation on one line only when it is narrow enough to fit, so the cap it
- * applies has to come from a measured distribution rather than a guess. This produces that
- * distribution, and the wrap rates that justify doing anything at all.
+ * The precomputer holds a citation on one line wherever its container has room for it, and
+ * unconditionally up to a cap that fits the narrowest column, so that cap has to come from a
+ * measured distribution rather than a guess. This produces that distribution, and the wrap rates
+ * that justify doing anything at all.
  *
  * Widths are in em so they can be compared against the cap, which is also in em.
  *
@@ -19,7 +20,7 @@ import { selectRfcs } from '../rfc-samples.ts'
 const DEFAULT_ORIGIN = 'https://www.rfc-editor.org'
 const origin = process.argv.find((arg) => arg.startsWith('--origin='))?.split('=')[1] ?? DEFAULT_ORIGIN
 
-/** The cap the precomputer applies, so the survey can report what it keeps and what it leaves. */
+/** The width up to which a citation is held whole unconditionally, so the survey can report what falls under it. */
 const WIDTH_CAP_EM = 8
 
 const VIEWPORT = { width: 320, height: 900 }

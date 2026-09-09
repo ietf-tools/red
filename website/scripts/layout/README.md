@@ -49,16 +49,18 @@ regressions. Run it before a republish, or read the results knowing which classe
 
 ## `citation-survey.ts` — how wide are bracketed citations, and how often do they wrap
 
-The precomputer holds a reference citation on one line only when it is narrow enough to fit, so the
-cap it applies has to come from a measured distribution. This produces that distribution, plus the
-wrap rates that justify the mechanism at all.
+The precomputer marks each reference citation with the width it needs, and the stylesheet holds it
+on one line only where its container has that much room. Up to an 8em cap a citation is held
+unconditionally, because it fits the narrowest column the site offers; that cap has to come from a
+measured distribution. This produces that distribution, plus the wrap rates that justify the
+mechanism at all.
 
 ```sh
 node scripts/layout/citation-survey.ts --origin=http://localhost:3000
 ```
 
-Widths are in em, matching the units the cap is expressed in, so the output can be compared against
-`REFERENCE_CITATION_MAX_WIDTH_EM` directly. Output goes to `docs/mobile-layout/data/`.
+Widths are in em, matching the units the cap and the `wordsize-` groupings are expressed in, so the
+output can be compared against them directly. Output goes to `docs/mobile-layout/data/`.
 
 **Measure before the class is published.** The survey counts a citation as wrapped when its client
 rects span more than one line. Once documents carry `reference-citation` and the stylesheet applies

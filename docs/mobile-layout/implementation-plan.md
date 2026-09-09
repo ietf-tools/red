@@ -155,8 +155,8 @@ RFC 9525 is not worth buying that way. This item is complete with the title chan
 
 **Status: done.** Checked by `website/scripts/layout/wide-screen-check.ts`, which compares prod against the
 dev server at 1024px and 1280px across the complex-layout set. Prod serves the previous CSS and dev
-the new one, while both read the same published documents — neither carries `dd-ml` or `citation`
-yet — so any difference at a wide viewport is caused by the CSS rather than by content.
+the new one, while both read the same published documents — neither carries `dd-ml` or
+`reference-citation` yet — so any difference at a wide viewport is caused by the CSS rather than by content.
 
 Screenshot baselines were considered and rejected for this purpose. A baseline recorded now encodes
 today's CSS as correct: it guards against future drift, but it cannot answer whether today's change
@@ -555,17 +555,21 @@ font. Assuming the declared stack was wrong, and only measuring caught it.
 - Characters missing from the table fall back to the style's mean advance rather than throwing;
   `unmeasuredCharacters()` reports them so the table can be regenerated.
 - What it still cannot know: a reader substituting a different face. Consumers keep a safety margin —
-  the 8em citation cap against an 8.5em column is that margin.
+  the 8em unconditional citation tier against an 8.5em column, and the 1.2 buffer on every
+  `@container` threshold, are that margin.
 - Because advances are per-character, letter spacing can be added arithmetically (`n × spacing`),
   which removes part of what blocks [word-metadata](#word-metadata).
 
 ## citation-nowrap
 
-**Status: done, pending a republish.** `markShortCitations()` in the precomputer marks each
-qualifying span with a `citation` class, and `.citation { white-space: nowrap }` in `xml2rfc.css`
-holds it together. Verified on RFC 9000 by marking the spans the transform would mark: of 89
-citations, 70 qualify, every one of them stops wrapping, and the 19 too wide to hold together wrap as
-before. Page overflow was unchanged at both text sizes, so nothing was traded for it.
+**Status: done, pending a republish.** `markReferenceCitations()` in the precomputer marks every
+citation span with `reference-citation` and the `wordsize-` class its width falls in. In
+`xml2rfc.css` the groupings up to 8em compute to `nowrap` unconditionally; each grouping above has a
+`@container` rule at 1.2 times its ceiling, mirroring the word-break rules. Verified on RFC 9000 by
+marking the spans the transform would mark: of 89 citations, 70 fall under the 8em grouping and every
+one of them stops wrapping; the 19 above it wrap on a 320px screen and hold together once their
+paragraph is wide enough. Page overflow was unchanged at both text sizes, so nothing was traded for
+it. An earlier version stopped at the 8em cap and left the 19 unmarked at every width.
 
 Keep bracketed citations — `[RFC3629]`, `[OAM-CONS]` — from wrapping mid-name on
 narrow screens. The report carries the survey behind this.
@@ -596,31 +600,40 @@ and add a class. Surveyed across 6 documents and 338 distinct citations the shap
 link, never two, and trailing punctuation always outside the span, so `],` needs no special handling
 — there is no whitespace between them, so no break opportunity either.
 
-**Apply the class only up to a size cap.** Keeping a citation whole is safe only while it fits: at
-200% text `[NIST-SP-800-133r2]` needs 10.2em against 8.5em of column. Citation widths are median
-5.1em, 90th percentile 8.3em, widest 11.7em, so a cap of **8em keeps 89% of them whole** and leaves
-the long ones wrapping as now.
+**Hold a citation together only where it fits.** At 200% text `[NIST-SP-800-133r2]` needs 10.2em
+against 8.5em of column, so the class alone cannot mean `nowrap`; each citation also carries the
+`wordsize-` grouping its width falls in, and the stylesheet decides per container. Citation widths
+are median 5.1em, 90th percentile 8.3em, widest 11.7em, so the groupings up to **8em cover 89%** and
+need no condition; the rest hold once their container is wide enough.
 
-The cap is applied with `textWidthEm()` from [font-metrics](#font-metrics), not a character count:
+The width is measured with `textWidthEm()` from [font-metrics](#font-metrics), not counted:
 a 16-character cap would wrongly keep 18 of 420 citations whole, since reference labels are uppercase
 acronyms and capitals are wide.
 
 ### Website side
 
 ```css
-.rfc-content span.citation { white-space: nowrap }
+.reference-citation.wordsize-4,
+.reference-citation.wordsize-6,
+.reference-citation.wordsize-8 { white-space: nowrap }
+
+@container (min-width: 12em)   { .reference-citation.wordsize-10 { white-space: nowrap } }
+@container (min-width: 14.4em) { .reference-citation.wordsize-12 { white-space: nowrap } }
+@container (min-width: 19.2em) { .reference-citation.wordsize-16 { white-space: nowrap } }
+@container (min-width: 28.8em) { .reference-citation.wordsize-24 { white-space: nowrap } }
 ```
 
-Unconditional — the cap has already excluded anything that cannot fit. Add an e2e assertion that a
-short citation computes to `nowrap` and a long one does not.
+The first rule needs no condition and still holds where container queries are unsupported. The e2e
+test injects a `wordsize-8` and a `wordsize-24` citation into a paragraph and asserts that the first
+computes to `nowrap` at 320px, the second does not, and the second does at 1200px.
 
 ### Interaction with word breaks
 
 Negligible, and measured: 5 of 338 citations contain an inserted word break, and only `[NIST_PQ]`
 (4.8em) is under the cap. It fits in every context measured, so `nowrap` suppressing its break costs
-nothing. The other four are above the cap and keep their breaks. Where the two mechanisms meet, the
-cap decides — but re-run `wbr-split-length.ts` after this lands, since a `nowrap` span changes what
-the surrounding line can do.
+nothing. The other four are above it and keep their breaks in a narrow container. Where the two
+mechanisms meet, one width condition decides both — but re-run `wbr-split-length.ts` after this
+lands, since a `nowrap` span changes what the surrounding line can do.
 
 ## break-kind-marking
 

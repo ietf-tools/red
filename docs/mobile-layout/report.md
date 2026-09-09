@@ -36,8 +36,9 @@ preferred to the CSS `overflow-wrap` alternatives.
    in a paragraph ([Finding 7](#finding-7-a-dotted-name-that-was-not-allowed-to-wrap)).
 6. **URLs are the one category that needs breaking at every size**
    ([Finding 5](#finding-5-urls-are-the-category-that-needs-breaking)).
-7. **Bracketed citations no longer wrap mid-name.** Those narrow enough to fit, 85% of them, are
-   held together ([Finding 10](#finding-10-bracketed-citations-wrapped-when-they-should-not)).
+7. **Bracketed citations no longer wrap mid-name.** Each carries the width it needs and is held
+   together wherever its containing block has room
+   ([Finding 10](#finding-10-bracketed-citations-wrapped-when-they-should-not)).
 8. **Breaks are suppressed where the word provably fits.** Each `<wbr>` carries a class naming the
    width its word needs, and CSS suppresses it once the containing block is that wide. 40% of RFC
    9000's breaks are suppressed at default text size, almost none at 200%
@@ -349,16 +350,23 @@ at 200%** (39 and 179 of 585). The survey must run against a corpus that does no
 citation class, or it measures the fix rather than the problem.
 
 xml2rfc wraps each citation in a span with no class (`[`, one link, `]`); the precomputer recognises
-that shape and adds a class, after which `white-space: nowrap` holds the citation together.
-Trailing punctuation always sits outside the span with no whitespace before it, so it needs no
-handling.
+that shape and adds a class, plus the same `wordsize-` class a broken word gets, after which
+`white-space: nowrap` holds the citation together wherever its container has room. Trailing
+punctuation always sits outside the span with no whitespace before it, so it needs no handling.
 
-**A width cap is needed**, because keeping a citation whole is only safe while it fits. Widths are
-median 5.94em, 90th percentile 8.94em, widest 13.63em (`[KSK_ROLLOVER_ARCHIVES]`); at 200% in a
-narrow column the long ones do not fit and must keep their breaks. A cap of **8em keeps
-85% whole** (500 of 585). On RFC 9000, 70 of the 89 spans in the source qualify and none now wraps.
-Word breaks and the cap barely meet: of the six documents first examined, five citations contained
-an inserted break and only `[NIST_PQ]` was under the cap. Where they meet, the cap decides.
+**Holding a citation whole is only safe while it fits**, so the condition is the container's width,
+exactly as for word breaks. Widths are median 5.94em, 90th percentile 8.94em, widest 13.63em
+(`[KSK_ROLLOVER_ARCHIVES]`). Up to the 8em grouping a citation fits the narrowest column the site
+offers, about 8.5em at 200% text, so those, **85% (500 of 585)**, are held together unconditionally,
+and that rule survives where container queries are unsupported. Each grouping above has a
+`@container` rule at 1.2 times its ceiling, the same buffer as the word-break rules:
+`[QUIC-INVARIANTS]` measures 10.1em with the estimate factor, is labelled `wordsize-12`, and holds
+once its paragraph is 14.4em wide. On RFC 9000, 70 of the 89 spans in the source fall under the 8em
+grouping and the other 19 hold wherever their paragraph is wide enough. Word breaks and citations
+barely meet: of the six documents first examined, five citations contained an inserted break. Where
+they meet, `nowrap` suppresses the break under the same width condition that would have hidden it.
+An earlier version stopped at the 8em cap and covered only that 85%; every citation in body text is
+now covered.
 
 ## Alternatives considered
 
@@ -443,8 +451,9 @@ do nothing on the lists xml2rfc marks `dlParallel`.
   runs that read as words left whole.
 - **Machine names break at their separators** regardless of length.
 - The `dd` indent moves to a class and a custom property.
-- **Bracketed citations are held on one line where they fit**, via `class="reference-citation"` and
-  `white-space: nowrap`, under an 8em cap from the font metrics.
+- **Bracketed citations are held on one line where they fit**, via `class="reference-citation"` plus
+  a `wordsize-` class from the font metrics: unconditionally up to 8em, and under a `@container`
+  rule above that.
 - **Each `<wbr>` carries a `wordsize-` class** naming the width its word needs, so CSS suppresses it
   where the container is wide enough.
 

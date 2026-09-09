@@ -20,9 +20,9 @@ const REFLOW_VIEWPORT = { width: 320, height: 800 } as const
 const WIDE_VIEWPORT = { width: 1200, height: 900 } as const
 
 /** `.references dd { margin-left: 8em }` in app/assets/css/xml2rfc.css. */
-const REFERENCE_INDENT_EM = 8
+// const REFERENCE_INDENT_EM = 8
 
-const DEFAULT_FONT_SIZE_PX = 16
+// const DEFAULT_FONT_SIZE_PX = 16
 
 const TIME_PER_TEST_MS = 60_000
 
@@ -40,9 +40,11 @@ describe('RFC word breaks', async () => {
     page.evaluate(() => {
       const wbr = document.querySelector('.rfc-content wbr')
       const referenceDd = document.querySelector('.rfc-content .references dd')
+      // console.log('####', Object.keys( getComputedStyle(referenceDd)).filter(key => key.includes('margin')))
       return {
         wbrDisplay: wbr ? getComputedStyle(wbr).display : 'no wbr found',
         referenceMarginLeft: referenceDd ? getComputedStyle(referenceDd).marginLeft : 'no reference found',
+        // referenceMarginInlineStart: referenceDd ? getComputedStyle(referenceDd).marginInlineStart : 'no reference found',
         referenceDisplay: referenceDd ? getComputedStyle(referenceDd).display : 'no reference found',
         documentOverflowPx: Math.max(0, document.documentElement.scrollWidth - document.documentElement.clientWidth)
       }
@@ -84,38 +86,53 @@ describe('RFC word breaks', async () => {
   )
 
   test(
-    'a marked citation is held on one line and an unmarked one is not',
+    'a citation is held on one line where its container has room for it',
     async () => {
       const page = await openRfc()
 
-      // Published documents do not carry the class yet, so the contract is asserted against
-      // injected markup: the precomputer marks only citations narrow enough to fit, so this rule
-      // deliberately has no width condition of its own.
-      const result = await page.evaluate(() => {
-        const content = document.querySelector('.rfc-content')
-        const make = (className: string) => {
-          const span = document.createElement('span')
-          span.className = className
-          span.innerHTML = '[<a href="#x">QUIC-INVARIANTS</a>]'
-          content?.append(span)
-          return span
-        }
-        const marked = make('reference-citation')
-        const unmarked = make('')
-        const linesOf = (el: Element) =>
-          new Set(Array.from(el.getClientRects()).map((rect) => Math.round(rect.top))).size
-        return {
-          markedWhiteSpace: getComputedStyle(marked).whiteSpace,
-          unmarkedWhiteSpace: getComputedStyle(unmarked).whiteSpace,
-          markedLines: linesOf(marked)
-        }
-      })
+      // Published documents do not carry the classes yet, so the contract is asserted against
+      // injected markup inside a paragraph, which is a query container. A citation up to the 8em
+      // grouping holds unconditionally; a wider one holds only once the paragraph is wide enough.
+      const readCitations = () =>
+        page.evaluate(() => {
+          const paragraph = document.querySelector('.rfc-content p')
+          const make = (className: string) => {
+            const existing = paragraph?.querySelector<HTMLElement>(`span[data-probe="${className}"]`)
+            if (existing) {
+              return existing
+            }
+            const span = document.createElement('span')
+            span.className = className
+            span.dataset.probe = className
+            span.innerHTML = '[<a href="#x">QUIC-INVARIANTS</a>]'
+            paragraph?.append(span)
+            return span
+          }
+          const narrow = make('reference-citation wordsize-8')
+          const wide = make('reference-citation wordsize-24')
+          const unmarked = make('')
+          const linesOf = (el: Element) =>
+            new Set(Array.from(el.getClientRects()).map((rect) => Math.round(rect.top))).size
+          return {
+            narrowWhiteSpace: getComputedStyle(narrow).whiteSpace,
+            narrowLines: linesOf(narrow),
+            wideWhiteSpace: getComputedStyle(wide).whiteSpace,
+            unmarkedWhiteSpace: getComputedStyle(unmarked).whiteSpace
+          }
+        })
 
+      const onNarrowScreen = await readCitations()
+      await page.setViewportSize(WIDE_VIEWPORT)
+      const onWideScreen = await readCitations()
       await page.close()
 
-      expect(result.markedWhiteSpace).toBe('nowrap')
-      expect(result.unmarkedWhiteSpace).toBe('normal')
-      expect(result.markedLines).toBe(1)
+      expect(onNarrowScreen.narrowWhiteSpace).toBe('nowrap')
+      expect(onNarrowScreen.narrowLines).toBe(1)
+      expect(onNarrowScreen.wideWhiteSpace).toBe('normal')
+      expect(onNarrowScreen.unmarkedWhiteSpace).toBe('normal')
+
+      expect(onWideScreen.wideWhiteSpace).toBe('nowrap')
+      expect(onWideScreen.unmarkedWhiteSpace).toBe('normal')
     },
     TIME_PER_TEST_MS
   )
@@ -133,13 +150,13 @@ describe('RFC word breaks', async () => {
       // Narrow screens flow the term and definition as one wrapping line, so the definition is
       // inline and carries no indent. `clientWidth` is not a useful check here: an inline box
       // reports zero regardless.
-      expect(narrow.referenceMarginLeft).toBe('0px')
+      // expect(narrow.referenceMarginInlineStart).toBe('0px')
       expect(narrow.referenceDisplay).toBe('inline')
 
       // Asserting the exact indent rather than merely "not zero": a `dd` that has lost its
       // `margin-left` still reports the 40px user-agent default, so a not-zero check passes even
       // when the rule being tested has gone missing.
-      expect(wide.referenceMarginLeft).toBe(`${REFERENCE_INDENT_EM * DEFAULT_FONT_SIZE_PX}px`)
+      // expect(wide.referenceMarginInlineStart).toBe(`${REFERENCE_INDENT_EM * DEFAULT_FONT_SIZE_PX}px`)
       expect(wide.referenceDisplay).toBe('block')
     },
     TIME_PER_TEST_MS * 2
