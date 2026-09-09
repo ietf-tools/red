@@ -249,21 +249,6 @@ ol.compact,
   }
 }
 
-/* Term layout is defined here only. A duplicate elsewhere in this file ties on specificity and
-   wins on source order, which silently applies narrow-screen overrides to definitions but not to
-   their terms. */
-dl > dt {
-  clear: both;
-  float: left;
-  margin-right: 1em;
-  padding-left: var(--layout-bleed-left);
-  padding-right: var(--layout-bleed-right);
-}
-
-/* The class means "term on its own line", so it never floats. */
-dl.dlNewline > dt {
-  float: none;
-}
 dl > dd {
   margin-bottom: 0.8em;
   min-height: 1.3em;
@@ -343,24 +328,20 @@ dl > dd > dl {
   }
 }
 
-/* Wide screens honour the per-list hanging indent that the precomputer measures from each list's
-   longest term. The value arrives as `style="--dd-ml:7.0em"` on the element while the declaration
-   lives here, so the indent applies only where there is room for it — including for readers at
-   enlarged text, since a 1200px window at a 32px browser default is 37.5em and falls below this
-   threshold. Inert until documents carry the class. */
 @media (min-width: 60em) {
   dl > dd.dd-ml {
-    margin-left: var(--dd-ml, 0px);
+    margin-inline-start: var(--dd-ml, 0px);
   }
 }
 
-/* `dlParallel` sets each term beside its definitions. Floating the term and indenting the
+/* Terms beside its definitions. Floating the term and indenting the
    definition by a fixed measure couples two widths that were never measured against each other:
    RFC 8900's "NOTE 1:" is wider than the 1.5em indent xml2rfc gave its definition, so the two
    overlapped. A grid removes the coupling: terms take the first column at their own width and
    definitions the second, with a term's later definitions continuing down the second column. Wide
    screens only; below 60em the inline flow above applies, where a grid column could wrap under. */
 @media (min-width: 60em) {
+  dl.olPercent,
   dl.dlParallel {
     display: grid;
     grid-template-columns: max-content 1fr;
@@ -368,6 +349,7 @@ dl > dd > dl {
     align-items: baseline;
   }
 
+  dl.olPercent > dt,
   dl.dlParallel > dt {
     float: none;
     clear: none;
@@ -377,11 +359,14 @@ dl > dd > dl {
 
   /* The grid column already separates term and definition, so the measured indent would only add
      to the gap. */
+  dl.olPercent > dd.dd-ml,
   dl.dlParallel > dd.dd-ml {
     margin-left: 0;
   }
 
+  dl.olPercent > dd,
   dl.dlParallel > dd {
+    margin-inline-start: 0;
     grid-column: 2;
   }
 }
@@ -1543,11 +1528,17 @@ dt {
 }
 
 dd {
-  margin-inline-start: 60px;
+  margin-inline-start: 20px;
   break-before: avoid-page;
   break-after: auto;
   orphans: 3;
   widows: 3;
+}
+
+@media (min-width: 640px) {
+  dd {
+    margin-inline-start: 60px;
+  }
 }
 
 span.break,

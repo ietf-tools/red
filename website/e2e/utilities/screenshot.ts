@@ -86,7 +86,7 @@ type ScreenshotOptions = {
   knownMismatch?: string
 }
 
-const isTruthyEnv = (value: string | undefined): boolean => value !== undefined && value !== '' && value !== '0'
+export const isTruthyEnv = (value: string | undefined): boolean => value !== undefined && value !== '' && value !== '0'
 
 const baselineFileNameFor = (name: string): string => `${name}-${process.platform}.png`
 

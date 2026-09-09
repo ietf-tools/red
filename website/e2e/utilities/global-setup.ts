@@ -21,13 +21,20 @@
  * starts nothing and leaves that server alone.
  */
 import { spawn } from 'node:child_process'
+import { rm } from 'node:fs/promises'
 import { createServer } from 'node:net'
 import { fileURLToPath } from 'node:url'
 import type { TestProject } from 'vitest/node'
+import { writeScreenshotReview } from '../../scripts/screenshot-review'
 
 const ROOT_DIR = fileURLToPath(new URL('../../', import.meta.url))
 
 const HOST = '127.0.0.1'
+
+/** Written only on a screenshot mismatch; see clearScreenshotFailureOutput. */
+const SCREENSHOT_FAILURE_DIRS = ['actual', 'diff'].map((directory) =>
+  fileURLToPath(new URL(`../screenshots/${directory}/`, import.meta.url))
+)
 
 /** Long enough for a cold Vite dev start on a loaded CI runner. */
 const SERVER_START_TIMEOUT_MS = 180_000
@@ -68,6 +75,30 @@ const findFreePort = (): Promise<number> =>
 
 const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms))
 
+/**
+ * Empties the screenshot failure output directories.
+ *
+ * e2e/utilities/screenshot.ts only writes to them, so a capture left behind by an earlier run
+ * would sit there indefinitely, and neither a reviewer nor scripts/screenshot-review.ts can tell
+ * it apart from one this run produced. Clearing up front makes their contents mean exactly "what
+ * the last run disagreed with".
+ */
+const clearScreenshotFailureOutput = async (): Promise<void> => {
+  await Promise.all(SCREENSHOT_FAILURE_DIRS.map((directory) => rm(directory, { recursive: true, force: true })))
+}
+
+/**
+ * Rebuilds the screenshot review page for the run that just finished.
+ *
+ * Vitest runs a globalSetup teardown whether the suite passed or failed, which is the only place
+ * this can go and still be current after a failing run — the run that produces something to review
+ * is by definition the run that fails.
+ */
+const rebuildScreenshotReview = (): void => {
+  const { outputPath, changed, total } = writeScreenshotReview()
+  console.log(`[e2e] screenshot review (${changed} of ${total} changed): ${outputPath}`)
+}
+
 const isServing = async (baseUrl: string): Promise<boolean> => {
   try {
     const response = await fetch(baseUrl, { signal: AbortSignal.timeout(READINESS_POLL_INTERVAL_MS * 4) })
@@ -95,11 +126,13 @@ const waitForServer = async (baseUrl: string, hasExited: () => boolean): Promise
 }
 
 export default async ({ provide }: TestProject) => {
+  await clearScreenshotFailureOutput()
+
   const existingBaseUrl = process.env.E2E_BASE_URL
   if (existingBaseUrl) {
     console.log(`[e2e] using the server already running at ${existingBaseUrl}`)
     provide('e2eBaseUrl', existingBaseUrl)
-    return () => {}
+    return rebuildScreenshotReview
   }
 
   const port = await findFreePort()
@@ -136,6 +169,9 @@ export default async ({ provide }: TestProject) => {
   provide('e2eBaseUrl', baseUrl)
 
   return async () => {
+    // Before the shutdown below, so a server that will not die cannot cost us the page.
+    rebuildScreenshotReview()
+
     const { pid } = server
     if (exited || pid === undefined) {
       return

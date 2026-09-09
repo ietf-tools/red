@@ -35,6 +35,9 @@
   --sidebar-width: 400px;
   --info-rfc-sidebar-buffer: 10px;
 
+  /* approx 470px */
+  --breakpoint-reef: 29.6875rem;
+
   /**
    * WCAG requires max-width of 80 chars.
    * We attempt to meet this requirement through a container width.

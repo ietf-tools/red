@@ -20,7 +20,8 @@ const RFCS = [
   'rfc9505', // widest unbroken URLs in the references
   'rfc9525', // dotted DNS names on the length gate
   'rfc9559', // backslash paths and camelCase identifiers in table cells
-  'rfc9690' // dlNewline whose definitions hold pre blocks and nested lists
+  'rfc9690', // dlNewline whose definitions hold pre blocks and nested lists
+  'rfc9940' // datatracker draft URLs 85 characters long, shown as their own link text
 ]
 
 // The WCAG reflow width and a common desktop width, so both layouts are covered.

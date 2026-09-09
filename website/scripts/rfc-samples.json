@@ -106,6 +106,10 @@
     {
       "rfc": 8750,
       "note": "long title, and the shortest document in the sample"
+    },
+    {
+      "rfc": 9940,
+      "note": "terminology document whose references link datatracker drafts: 85-character URLs shown as their own link text, breakable only at hyphens"
     }
   ]
 }

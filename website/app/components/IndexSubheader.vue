@@ -9,7 +9,7 @@
         :opacity="0.04" />
     </div>
     <div class="sm:flex w-full">
-      <Heading level="1" style-level="1" class="w-full md:pt-1 md:pl-2 xs:mt-5 md:mb-3 font-semibold text-balance">
+      <Heading level="1" style-level="1" class="w-full md:pt-1 md:pl-2 md:mb-3 font-semibold text-balance">
         The official home of RFCs
       </Heading>
       <div class="self-end lg:text-right">

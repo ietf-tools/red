@@ -20,7 +20,7 @@
       <span class="font-normal"><component :is="titleVNode" /></span>
     </Heading>
 
-    <Heading v-if="isAprilFool" level="2" class="mb-2 px-3 xs:px-0 print:text-center">
+    <Heading v-if="isAprilFool" level="2" class="mb-2 px-3 print:text-center">
       <span class="inline pr-2">
         <AprilFools />
       </span>
