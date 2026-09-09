@@ -99,7 +99,7 @@ export const rfcBucketHtmlToRfcDocument = async ({
 
   convertHrefs(rfcDocument, baseUrl, rfcNumber)
   moveDefinitionIndentToCustomProperty(rfcDocument)
-  markShortReferenceCitations(rfcDocument)
+  markReferenceCitations(rfcDocument)
   ensureWordBreaks(rfcDocument)
 
   const errataList = await getErrataList(rfcNumber)
@@ -283,11 +283,8 @@ const wordSizeClass = (word: string, style: TextStyle): string => {
   return groupingEm === undefined ? WORD_SIZE_WIDE_CLASS : `wordsize-${groupingEm}`
 }
 
-/** Class marking a reference citation short enough to keep on one line. */
+/** Class marking a reference citation, so CSS can hold it on one line where it fits. */
 const REFERENCE_CITATION_CLASS = 'reference-citation'
-
-/** Widest citation kept whole, in em. A narrow column offers about 8.5em at 200% text. */
-const REFERENCE_CITATION_MAX_WIDTH_EM = 8
 
 /** Contexts where a citation renders wider than the body table describes, so it is left alone. */
 const WIDER_THAN_BODY = ['strong', 'b', 'th', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
@@ -300,14 +297,15 @@ const WIDER_THAN_BODY = ['strong', 'b', 'th', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5'
  * and a *reference* is the matching entry in the References section. What is marked here is the
  * citation, brackets included, so naming it after references would name the wrong element.
  *
- * Only citations narrow enough to fit are marked, measured by width rather than character count:
- * reference labels are uppercase acronyms, and capitals are wide enough that a character cap holds
- * citations together that then overflow.
+ * Each citation also carries the same width class as a broken word, so CSS holds it together only
+ * where the containing block is wide enough — keeping a citation whole is safe only while it fits.
+ * Width is measured rather than counted: reference labels are uppercase acronyms, and capitals are
+ * wide enough that a character count holds citations together that then overflow.
  *
  * Must run before `ensureWordBreaks`, which splits text nodes and would leave the span no longer
  * matching the shape this looks for.
  */
-export const markShortReferenceCitations = (rfcDocument: Node[]): void => {
+export const markReferenceCitations = (rfcDocument: Node[]): void => {
   const isReferenceCitation = (node: HTMLElement): boolean => {
     if (node.nodeName.toLowerCase() !== 'span') {
       return false
@@ -337,12 +335,10 @@ export const markShortReferenceCitations = (rfcDocument: Node[]): void => {
       const parents = getParentElementNodeNames(node)
       const rendersWider = WIDER_THAN_BODY.some((name) => parents.includes(name))
 
-      if (!rendersWider && textWidthEm(text) <= REFERENCE_CITATION_MAX_WIDTH_EM) {
+      if (!rendersWider) {
+        const classes = `${REFERENCE_CITATION_CLASS} ${wordSizeClass(text, 'body')}`
         const existingClass = node.getAttribute('class')
-        node.setAttribute(
-          'class',
-          existingClass ? `${existingClass} ${REFERENCE_CITATION_CLASS}` : REFERENCE_CITATION_CLASS
-        )
+        node.setAttribute('class', existingClass ? `${existingClass} ${classes}` : classes)
       }
     }
 

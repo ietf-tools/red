@@ -4,7 +4,7 @@ import fsPromises from 'fs/promises'
 import { test, expect, vi } from 'vitest'
 import {
   fetchSourceRfcHtml,
-  markShortReferenceCitations,
+  markReferenceCitations,
   moveDefinitionIndentToCustomProperty,
   rfcBucketHtmlToRfcDocument
 } from './rfc-html.ts'
@@ -109,7 +109,7 @@ const referenceCitationSpansAfterMarking = async (html: string): Promise<{ text:
   const parser = await getDOMParser()
   const dom = parser.parseFromString(html, 'text/html')
   const nodes = Array.from(dom.body.childNodes)
-  markShortReferenceCitations(nodes)
+  markReferenceCitations(nodes)
 
   const spansOf = (pojo: ReturnType<typeof rfcDocumentToPojo>): { text: string; class: string }[] =>
     pojo.flatMap((node) => {
@@ -129,29 +129,30 @@ const referenceCitationSpansAfterMarking = async (html: string): Promise<{ text:
 
 const referenceCitation = (name: string) => `<p><span>[<a href="#${name}" class="xref">${name}</a>]</span></p>`
 
-test('marks a bracketed citation that fits on one line', async () => {
+test('marks a bracketed citation with the width it needs', async () => {
   expect(await referenceCitationSpansAfterMarking(referenceCitation('RFC3629'))).toEqual([
-    { text: '[RFC3629]', class: 'reference-citation' }
+    { text: '[RFC3629]', class: 'reference-citation wordsize-6' }
   ])
   expect(await referenceCitationSpansAfterMarking(referenceCitation('OAM-CONS'))).toEqual([
-    { text: '[OAM-CONS]', class: 'reference-citation' }
+    { text: '[OAM-CONS]', class: 'reference-citation wordsize-8' }
   ])
 })
 
-test('leaves a citation too wide to hold together', async () => {
-  // 10.2em measured: wider than a narrow column offers at 200% text.
+test('a citation too wide for a narrow column is still marked, with a larger size', async () => {
+  // 10.2em measured: wider than a narrow column offers at 200% text, so the CSS holds it together
+  // only where the container has room.
   expect(await referenceCitationSpansAfterMarking(referenceCitation('NIST-SP-800-133r2'))).toEqual([
-    { text: '[NIST-SP-800-133r2]', class: '' }
+    { text: '[NIST-SP-800-133r2]', class: 'reference-citation wordsize-12' }
   ])
 })
 
 test('measures width rather than counting characters', async () => {
-  // Both are 15 characters inside the brackets; only the lowercase one fits.
+  // Both are 15 characters inside the brackets; capitals put the first in a larger grouping.
   expect(await referenceCitationSpansAfterMarking(referenceCitation('QUIC-RECOVERY'))).toEqual([
-    { text: '[QUIC-RECOVERY]', class: '' }
+    { text: '[QUIC-RECOVERY]', class: 'reference-citation wordsize-10' }
   ])
   expect(await referenceCitationSpansAfterMarking(referenceCitation('quic-recovery'))).toEqual([
-    { text: '[quic-recovery]', class: 'reference-citation' }
+    { text: '[quic-recovery]', class: 'reference-citation wordsize-8' }
   ])
 })
 
@@ -171,5 +172,5 @@ test('ignores spans that are not a bracketed citation', async () => {
 
 test('keeps an existing class on the span', async () => {
   const withClass = `<p><span class="refs">[<a href="#RFC3629" class="xref">RFC3629</a>]</span></p>`
-  expect((await referenceCitationSpansAfterMarking(withClass))[0].class).toBe('refs reference-citation')
+  expect((await referenceCitationSpansAfterMarking(withClass))[0].class).toBe('refs reference-citation wordsize-6')
 })

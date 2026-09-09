@@ -13342,7 +13342,9 @@ properties of QUIC defined in ",
                   "type": "Text",
                 },
                 {
-                  "attributes": {},
+                  "attributes": {
+                    "class": "reference-citation wordsize-12",
+                  },
                   "children": [
                     {
                       "textContent": "[",
@@ -13466,7 +13468,7 @@ parameters. QUIC integrates the TLS handshake ",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-4",
                   },
                   "children": [
                     {
@@ -13503,7 +13505,7 @@ described in more detail in ",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-6",
                   },
                   "children": [
                     {
@@ -13577,7 +13579,7 @@ packet as is practical. QUIC packets are carried in UDP datagrams
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-4",
                   },
                   "children": [
                     {
@@ -15403,7 +15405,9 @@ carrying QUIC packets.",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-10",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -15438,7 +15442,7 @@ carrying QUIC packets.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -15505,7 +15509,9 @@ in ",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-12",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -15595,7 +15601,9 @@ set of version-",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-12",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -15952,7 +15960,7 @@ document are to be interpreted as described in BCP 14 ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -15987,7 +15995,7 @@ document are to be interpreted as described in BCP 14 ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -23577,7 +23585,7 @@ states that loosely correspond to the stream states defined in HTTP/2
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -25659,7 +25667,7 @@ excessive buffering of data; see ",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-6",
                   },
                   "children": [
                     {
@@ -29100,7 +29108,7 @@ establish a shared secret using the cryptographic handshake protocol
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-6",
                   },
                   "children": [
                     {
@@ -35469,7 +35477,7 @@ document is identified as 0x00000001 and uses TLS as described in ",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-6",
                   },
                   "children": [
                     {
@@ -35896,7 +35904,7 @@ Application-",
                     },
                     {
                       "attributes": {
-                        "class": "reference-citation",
+                        "class": "reference-citation wordsize-4",
                       },
                       "children": [
                         {
@@ -36421,7 +36429,7 @@ situations where there is a disagreement about the protocol that is in use.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -40081,7 +40089,7 @@ connection IDs during the handshake; see ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-4",
                           },
                           "children": [
                             {
@@ -48328,7 +48336,9 @@ in ",
                                   "type": "Text",
                                 },
                                 {
-                                  "attributes": {},
+                                  "attributes": {
+                                    "class": "reference-citation wordsize-10",
+                                  },
                                   "children": [
                                     {
                                       "textContent": "[",
@@ -51475,7 +51485,9 @@ the new path to initial values (see Appendices ",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-10",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -51602,7 +51614,9 @@ congestion control context and a single loss recovery context (as described in
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-10",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -52325,7 +52339,7 @@ HTTP alternative services ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -52395,7 +52409,7 @@ source UDP port, or IP address (see ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -54171,7 +54185,7 @@ compliance with ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -54304,7 +54318,7 @@ enable correlating activity on multiple paths; see ",
                       "children": [
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -55603,7 +55617,7 @@ that.  Though REQ-5 in ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -55641,7 +55655,7 @@ the majority of middleboxes from losing state for UDP flows
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-8",
                                   },
                                   "children": [
                                     {
@@ -56100,7 +56114,9 @@ defined in ",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-10",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -59116,7 +59132,7 @@ give an example, with the set of AEAD functions defined in ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -59858,7 +59874,7 @@ using a secret key (e.g., block cipher, Hashed Message Authentication Code
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -60086,7 +60102,7 @@ stateless reset token, an endpoint could randomly generate ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -60178,7 +60194,7 @@ endpoint could use HMAC ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -60250,7 +60266,7 @@ connection_",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -62596,7 +62612,7 @@ type of packet. Details of packet protection are found in ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -62664,7 +62680,9 @@ section includes an overview of the protections that are provided.",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-12",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -62742,7 +62760,7 @@ section includes an overview of the protections that are provided.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-4",
                           },
                           "children": [
                             {
@@ -64270,7 +64288,7 @@ space.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -69573,7 +69591,9 @@ in flight for congestion control purposes; see ",
                                   "type": "Text",
                                 },
                                 {
-                                  "attributes": {},
+                                  "attributes": {
+                                    "class": "reference-citation wordsize-10",
+                                  },
                                   "children": [
                                     {
                                       "textContent": "[",
@@ -72463,7 +72483,9 @@ time to congestion events.",
                                   "type": "Text",
                                 },
                                 {
-                                  "attributes": {},
+                                  "attributes": {
+                                    "class": "reference-citation wordsize-10",
+                                  },
                                   "children": [
                                     {
                                       "textContent": "[",
@@ -72887,7 +72909,7 @@ recommendations for TCP endpoint behavior ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -74406,7 +74428,9 @@ control purposes ",
                                   "type": "Text",
                                 },
                                 {
-                                  "attributes": {},
+                                  "attributes": {
+                                    "class": "reference-citation wordsize-10",
+                                  },
                                   "children": [
                                     {
                                       "textContent": "[",
@@ -74682,7 +74706,9 @@ containing that information is acknowledged.",
                               "type": "Text",
                             },
                             {
-                              "attributes": {},
+                              "attributes": {
+                                "class": "reference-citation wordsize-10",
+                              },
                               "children": [
                                 {
                                   "textContent": "[",
@@ -76250,7 +76276,9 @@ The details of loss detection and congestion control are described in
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-10",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -76406,7 +76434,7 @@ The details of loss detection and congestion control are described in
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -76445,7 +76473,7 @@ the packet ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -76480,7 +76508,9 @@ their sending rate in response, as described in ",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-10",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -77137,7 +77167,7 @@ packets sent on a new path to the peer ",
                                     },
                                     {
                                       "attributes": {
-                                        "class": "reference-citation",
+                                        "class": "reference-citation wordsize-6",
                                       },
                                       "children": [
                                         {
@@ -77460,7 +77490,7 @@ marking strategies. Implementations ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -78338,7 +78368,7 @@ minimum size ",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-4",
                   },
                   "children": [
                     {
@@ -78642,7 +78672,7 @@ smallest allowed maximum datagram size of 1200 bytes.",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-4",
                   },
                   "children": [
                     {
@@ -79514,7 +79544,7 @@ the datagram being fragmented or dropped ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -79838,7 +79868,7 @@ size to allow for unknown tunnel overheads or IP header options/extensions.",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -79873,7 +79903,7 @@ size to allow for unknown tunnel overheads or IP header options/extensions.",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -80008,7 +80038,7 @@ QUIC's smallest allowed maximum datagram size.",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -80043,7 +80073,7 @@ QUIC's smallest allowed maximum datagram size.",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -80179,7 +80209,7 @@ injection as specified in ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -80346,7 +80376,7 @@ IP addresses and UDP ports ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -80656,7 +80686,7 @@ algorithm determines that the quoted packet has actually been lost.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-8",
                           },
                           "children": [
                             {
@@ -82275,7 +82305,9 @@ the protocol are described in ",
                   "type": "Text",
                 },
                 {
-                  "attributes": {},
+                  "attributes": {
+                    "class": "reference-citation wordsize-12",
+                  },
                   "children": [
                     {
                       "textContent": "[",
@@ -82354,7 +82386,7 @@ described in ",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-6",
                   },
                   "children": [
                     {
@@ -84727,7 +84759,7 @@ bit allows QUIC to coexist with other protocols; see ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -86318,7 +86350,9 @@ See ",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-12",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -87497,7 +87531,7 @@ with other protocols (see ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -88654,7 +88688,7 @@ described in ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -91150,7 +91184,7 @@ long header, it contains these additional fields:",
                                         },
                                         {
                                           "attributes": {
-                                            "class": "reference-citation",
+                                            "class": "reference-citation wordsize-6",
                                           },
                                           "children": [
                                             {
@@ -92917,7 +92951,7 @@ value of 1 for this bit allows QUIC to coexist with other protocols; see
                                         },
                                         {
                                           "attributes": {
-                                            "class": "reference-citation",
+                                            "class": "reference-citation wordsize-6",
                                           },
                                           "children": [
                                             {
@@ -93371,7 +93405,7 @@ protect the packet.  See ",
                                         },
                                         {
                                           "attributes": {
-                                            "class": "reference-citation",
+                                            "class": "reference-citation wordsize-6",
                                           },
                                           "children": [
                                             {
@@ -93992,7 +94026,9 @@ selected QUIC version.  See ",
                                   "type": "Text",
                                 },
                                 {
-                                  "attributes": {},
+                                  "attributes": {
+                                    "class": "reference-citation wordsize-12",
+                                  },
                                   "children": [
                                     {
                                       "textContent": "[",
@@ -94237,7 +94273,9 @@ discussed in ",
                           "type": "Text",
                         },
                         {
-                          "attributes": {},
+                          "attributes": {
+                            "class": "reference-citation wordsize-16",
+                          },
                           "children": [
                             {
                               "textContent": "[",
@@ -94824,7 +94862,7 @@ connection ID being used on that network path.",
                 },
                 {
                   "attributes": {
-                    "class": "reference-citation",
+                    "class": "reference-citation wordsize-6",
                   },
                   "children": [
                     {
@@ -100631,7 +100669,7 @@ reneging for TCP Selective Acknowledgments (SACKs) ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -117481,7 +117519,7 @@ the sender chooses not to give details beyond the Error Code value.  This
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -121538,7 +121576,7 @@ as an aid to implementers and to help guide protocol analysis.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-8",
                           },
                           "children": [
                             {
@@ -122921,7 +122959,7 @@ keying material; see ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -126216,7 +126254,7 @@ most part, the cryptographic handshake protocol ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -126869,7 +126907,7 @@ the attacker.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-4",
                           },
                           "children": [
                             {
@@ -126906,7 +126944,7 @@ cookies ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -127120,7 +127158,7 @@ ingress filtering ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -128759,7 +128797,7 @@ particular, ingress filtering ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -129025,7 +129063,7 @@ protections (",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -129291,7 +129329,7 @@ these capabilities could offer an option to disable these protections.",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -129326,7 +129364,7 @@ these capabilities could offer an option to disable these protections.",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -129362,7 +129400,7 @@ unique-local ",
                                 },
                                 {
                                   "attributes": {
-                                    "class": "reference-citation",
+                                    "class": "reference-citation wordsize-6",
                                   },
                                   "children": [
                                     {
@@ -129750,7 +129788,7 @@ problematic without using them.",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-8",
                           },
                           "children": [
                             {
@@ -130838,7 +130876,7 @@ to influence the sender's rate. ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -133168,7 +133206,9 @@ assignment process ",
                                   "type": "Text",
                                 },
                                 {
-                                  "attributes": {},
+                                  "attributes": {
+                                    "class": "reference-citation wordsize-10",
+                                  },
                                   "children": [
                                     {
                                       "textContent": "[",
@@ -134771,7 +134811,7 @@ in Sections ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -137838,7 +137878,7 @@ Sections ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -138456,7 +138496,7 @@ Approval as defined in Sections ",
                         },
                         {
                           "attributes": {
-                            "class": "reference-citation",
+                            "class": "reference-citation wordsize-6",
                           },
                           "children": [
                             {
@@ -157157,7 +157197,9 @@ work by ",
                   "type": "Text",
                 },
                 {
-                  "attributes": {},
+                  "attributes": {
+                    "class": "reference-citation wordsize-10",
+                  },
                   "children": [
                     {
                       "textContent": "[",
