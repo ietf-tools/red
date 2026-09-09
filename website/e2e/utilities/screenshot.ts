@@ -25,8 +25,9 @@
  * Set `UPDATE_SCREENSHOTS=1` to re-record every baseline after an intended visual
  * change. Failures write the captured image and a highlighted diff for inspection.
  *
- * Captures are full-page up to MAX_CAPTURE_HEIGHT_PX — see the note there for why the
- * ceiling exists and what it costs.
+ * Captures are full-page with no height ceiling. A long RFC produces a large PNG, and
+ * that cost is accepted: a capture cut off at a fixed height hid defects further down
+ * the document, which defeats the point of a layout baseline.
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -59,14 +60,6 @@ const DEFAULT_MAX_DIFF_PIXEL_RATIO = 0.001
 
 /** Time allowed for late layout shifts (webfont swap, image decode) to settle before capture. */
 const SETTLE_BEFORE_CAPTURE_MS = 400
-
-/**
- * Ceiling on captured page height. The longest RFCs render a document tall enough that
- * an uncapped full-page PNG runs to tens of megabytes, which is not something to commit
- * on every re-record. Pages past the ceiling are captured from the top down to it, and
- * the clip is logged so a shortened baseline is never mistaken for full coverage.
- */
-const MAX_CAPTURE_HEIGHT_PX = 8000
 
 type ScreenshotOptions = {
   /**
@@ -114,7 +107,7 @@ const readPngIfPresent = async (path: string): Promise<Buffer | undefined> => {
  * and rasterised at CSS pixel scale so the host's device pixel ratio cannot change
  * the image dimensions.
  */
-const captureFullPage = async (page: Page, name: string, maskCss: string | undefined): Promise<Buffer> => {
+const captureFullPage = async (page: Page, maskCss: string | undefined): Promise<Buffer> => {
   if (maskCss) {
     await page.addStyleTag({ content: maskCss })
   }
@@ -128,26 +121,11 @@ const captureFullPage = async (page: Page, name: string, maskCss: string | undef
   await page.evaluate(() => document.fonts.ready.then(() => undefined))
   await page.waitForTimeout(SETTLE_BEFORE_CAPTURE_MS)
 
-  const { scrollWidth, scrollHeight } = await page.evaluate(() => ({
-    scrollWidth: document.documentElement.scrollWidth,
-    scrollHeight: document.documentElement.scrollHeight
-  }))
-
-  // A clip region has to be passed alongside `fullPage` to bound the capture; without
-  // it Playwright rasterises the entire document however tall it is.
-  const isOverlong = scrollHeight > MAX_CAPTURE_HEIGHT_PX
-  if (isOverlong) {
-    console.log(
-      `[screenshot] "${name}" is ${scrollHeight}px tall; capturing the top ${MAX_CAPTURE_HEIGHT_PX}px only. Content below that is not covered by this baseline.`
-    )
-  }
-
   return page.screenshot({
     fullPage: true,
     animations: 'disabled',
     caret: 'hide',
-    scale: 'css',
-    clip: isOverlong ? { x: 0, y: 0, width: scrollWidth, height: MAX_CAPTURE_HEIGHT_PX } : undefined
+    scale: 'css'
   })
 }
 
@@ -164,7 +142,7 @@ export const expectScreenshotToMatchBaseline = async (
 ): Promise<void> => {
   const { maskCss, maxDiffPixelRatio = DEFAULT_MAX_DIFF_PIXEL_RATIO, knownMismatch } = options
 
-  const actual = await captureFullPage(page, name, maskCss)
+  const actual = await captureFullPage(page, maskCss)
 
   const fileName = baselineFileNameFor(name)
   const baselinePath = join(BASELINE_DIR, fileName)
