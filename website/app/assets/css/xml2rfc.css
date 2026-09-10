@@ -345,9 +345,27 @@ dl > dd > dl {
   dl.olPercent,
   dl.dlParallel {
     display: grid;
-    grid-template-columns: max-content 1fr;
+    /* A max-content column takes the longest term at its full unwrapped width before the
+       definitions get anything (RFC 9781 Section 6.3, "Person and email address to contact for
+       further information:"). Two auto tracks share the width between what the terms and the
+       definitions each need, so a long term wraps only when its definitions want the room. The
+       definition track's minimum is 0 rather than auto so a wide pre or table in a definition
+       overflows its own cell instead of forcing the term column to its narrowest. */
+    grid-template-columns: auto minmax(0, auto);
+    /* Auto tracks stretch to fill leftover width equally, which for a list of short terms and
+       short definitions pushes the definitions out to the middle of the list. */
+    justify-content: start;
     column-gap: 1em;
     align-items: baseline;
+  }
+
+  /* Inline-size containment removes an element's intrinsic width, which would leave the
+     definition track with nothing to size by and hand the whole width to the terms. Lifting it
+     here means the word-break and citation container queries have no container inside these
+     definitions, so their breaks stay live. */
+  :is(dl.references, dl.olPercent, dl.dlParallel) > dd,
+  :is(dl.references, dl.olPercent, dl.dlParallel) > dd > p {
+    container-type: normal;
   }
 
   dl.references > dt,
@@ -357,6 +375,14 @@ dl > dd > dl {
     clear: none;
     grid-column: 1;
     margin-right: 0;
+    /* Row spacing is carried by the definition's bottom margin; a wrapped term is the taller item
+       in its row and would otherwise leave no gap before the next entry. */
+    margin-bottom: 0.8em;
+  }
+
+  /* `:is()` matches the specificity of the rule above so this wins by order. */
+  dl:is(.compact, .dlCompact) > dt {
+    margin-bottom: 0;
   }
 
   /* The grid column already separates term and definition, so the measured indent would only add

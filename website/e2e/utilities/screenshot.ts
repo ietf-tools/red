@@ -33,6 +33,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { expect } from 'vitest'
+import { waitForHydration } from '@nuxt/test-utils/e2e'
 import pixelmatch from 'pixelmatch'
 import { PNG } from 'pngjs'
 import type { Page } from 'playwright-core'
@@ -60,6 +61,20 @@ const DEFAULT_MAX_DIFF_PIXEL_RATIO = 0.001
 
 /** Time allowed for late layout shifts (webfont swap, image decode) to settle before capture. */
 const SETTLE_BEFORE_CAPTURE_MS = 400
+
+/**
+ * How long the DOM must go without a mutation before the page counts as settled after hydration.
+ * Long enough to outlast the debounced observers the app runs on mount, short enough not to
+ * dominate a suite that captures dozens of documents.
+ */
+const DOM_QUIET_MS = 500
+
+/**
+ * Upper bound on waiting for the DOM to go quiet. A page with something that mutates on a timer
+ * would otherwise hold the capture forever; past this the capture proceeds with whatever state the
+ * page is in, and the comparison reports the consequence.
+ */
+const DOM_QUIET_TIMEOUT_MS = 10_000
 
 type ScreenshotOptions = {
   /**
@@ -90,6 +105,25 @@ const writePng = async (directory: string, fileName: string, data: Buffer): Prom
   return path
 }
 
+/**
+ * pixelmatch refuses images of unequal dimensions, and a full-page capture changes height whenever
+ * the content reflows, so both sides are laid onto a canvas the size of the larger before they are
+ * compared. The padding is white to match the page background, so the highlighted difference is
+ * the reflow itself rather than a solid block where the shorter image ends.
+ */
+const padTo = (png: PNG, width: number, height: number): PNG => {
+  if (png.width === width && png.height === height) {
+    return png
+  }
+  const padded = new PNG({ width, height })
+  padded.data.fill(255)
+  const rowBytes = png.width * 4
+  for (let y = 0; y < png.height; y++) {
+    png.data.copy(padded.data, y * width * 4, y * rowBytes, (y + 1) * rowBytes)
+  }
+  return padded
+}
+
 const readPngIfPresent = async (path: string): Promise<Buffer | undefined> => {
   try {
     return await readFile(path)
@@ -102,12 +136,53 @@ const readPngIfPresent = async (path: string): Promise<Buffer | undefined> => {
 }
 
 /**
+ * Waits until the app has hydrated and the client-only rendering that follows has landed.
+ *
+ * Nuxt clears `isHydrating` when the root Suspense resolves, which Vue fires before it flushes the
+ * queued mounted hooks. Components that render something only once mounted — the copy button on
+ * tables and artwork, the sticky sidebar — re-render after that flag flips, so a capture taken at
+ * the flag alone is a coin toss between the two states (RFC 9559 at 320px: 54 bands of diff, all
+ * copy buttons). Waiting for the DOM to stop changing catches every such render at once, rather
+ * than naming each component that has one.
+ */
+const waitForHydratedAndSettled = async (page: Page): Promise<void> => {
+  await waitForHydration(page, page.url(), 'hydration')
+  await page.evaluate(
+    ({ quietMs, timeoutMs }) =>
+      new Promise<void>((resolve) => {
+        let quietTimer: ReturnType<typeof setTimeout> | undefined
+        const observer = new MutationObserver(() => {
+          clearTimeout(quietTimer)
+          quietTimer = setTimeout(finish, quietMs)
+        })
+        const deadline = setTimeout(() => finish(), timeoutMs)
+        const finish = (): void => {
+          observer.disconnect()
+          clearTimeout(quietTimer)
+          clearTimeout(deadline)
+          resolve()
+        }
+        observer.observe(document.documentElement, {
+          subtree: true,
+          childList: true,
+          attributes: true,
+          characterData: true
+        })
+        quietTimer = setTimeout(finish, quietMs)
+      }),
+    { quietMs: DOM_QUIET_MS, timeoutMs: DOM_QUIET_TIMEOUT_MS }
+  )
+}
+
+/**
  * Captures the whole scrollable page in a state that is reproducible run to run:
- * scrolled to the top, webfonts resolved, animations and the text caret suppressed,
- * and rasterised at CSS pixel scale so the host's device pixel ratio cannot change
- * the image dimensions.
+ * hydrated and settled, scrolled to the top, webfonts resolved, animations and the
+ * text caret suppressed, and rasterised at CSS pixel scale so the host's device pixel
+ * ratio cannot change the image dimensions.
  */
 const captureFullPage = async (page: Page, maskCss: string | undefined): Promise<Buffer> => {
+  await waitForHydratedAndSettled(page)
+
   if (maskCss) {
     await page.addStyleTag({ content: maskCss })
   }
@@ -170,29 +245,29 @@ export const expectScreenshotToMatchBaseline = async (
   const baselinePng = PNG.sync.read(baseline)
   const actualPng = PNG.sync.read(actual)
 
-  // A full-page capture's height tracks the content, so a size change is itself a
-  // regression signal — and pixelmatch cannot diff mismatched dimensions anyway.
-  if (baselinePng.width !== actualPng.width || baselinePng.height !== actualPng.height) {
-    const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
-    const message = `screenshot "${name}" changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}. Captured image written to ${actualPath}`
-    if (knownMismatch) {
-      console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
-      return
-    }
-    expect.fail(message)
-  }
-
-  const { width, height } = baselinePng
+  const width = Math.max(baselinePng.width, actualPng.width)
+  const height = Math.max(baselinePng.height, actualPng.height)
   const diffPng = new PNG({ width, height })
-  const diffPixels = pixelmatch(baselinePng.data, actualPng.data, diffPng.data, width, height, {
-    threshold: PIXELMATCH_THRESHOLD
-  })
+  const diffPixels = pixelmatch(
+    padTo(baselinePng, width, height).data,
+    padTo(actualPng, width, height).data,
+    diffPng.data,
+    width,
+    height,
+    { threshold: PIXELMATCH_THRESHOLD }
+  )
 
+  // A full-page capture's height tracks the content, so a size change is itself a regression
+  // signal, however few pixels moved.
+  const sizeChanged = baselinePng.width !== actualPng.width || baselinePng.height !== actualPng.height
   const diffRatio = diffPixels / (width * height)
-  if (diffRatio > maxDiffPixelRatio) {
+  if (sizeChanged || diffRatio > maxDiffPixelRatio) {
     const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
     const diffPath = await writePng(DIFF_DIR, fileName, PNG.sync.write(diffPng))
-    const message = `screenshot "${name}" differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%).\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\`.`
+    const reason = sizeChanged
+      ? `changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}`
+      : `differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%)`
+    const message = `screenshot "${name}" ${reason}.\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\`.`
     if (knownMismatch) {
       console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
       return

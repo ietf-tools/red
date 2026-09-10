@@ -29,9 +29,11 @@ const VIEWPORTS = [
   { name: '1280', width: 1280, height: 720 }
 ]
 
-// A load, a settle and one full-page capture; generous because the pages run concurrently
-// against a single dev server.
-const TEST_DURATION_MS = 60_000
+// A load, a settle and one full-page capture, and on a mismatch the encoding of a full-page diff
+// PNG, which for the largest documents is a gigabyte of pixels on the one thread every test here
+// shares. Generous because the pages run concurrently against a single dev server, and because
+// several mismatches at once serialise their encodes behind each other.
+const TEST_DURATION_MS = 180_000
 
 describe('info/rfcN layout', () => {
   const openPage = setupConcurrentPages()
