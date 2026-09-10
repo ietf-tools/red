@@ -50,7 +50,7 @@
     "@vueuse/core": "14.3.0",
     "commander": "15.0.0",
     "core-js": "3.49.0",
-    "es-toolkit": "1.49.0",
+    "es-toolkit": "1.52.0",
     "luxon": "3.7.2",
     "micromark": "4.0.2",
     "micromark-extension-frontmatter": "2.0.0",
