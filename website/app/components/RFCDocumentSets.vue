@@ -44,21 +44,30 @@
                     role="group"
                     :aria-label="`Sets holding RFC ${props.rfcNumber}`"
                     class="mx-auto max-w-[300px] flex flex-col gap-1 pb-2">
+                    <p class="text-sm italic">
+                      Tick a set to add <Component :is="formattedTitle" /> to it.<br />
+                      Untick to remove it.
+                    </p>
                     <template v-for="set in props.sets" :key="set.id">
-                      <Anchor :href="setPathBuilder(set.id)">sdf</Anchor>
                       <CheckboxRoot
                         :value="set.id"
-                        class="flex items-center gap-1 justify-between cursor-pointer w-full text-left py-1">
-                        <div>
-                          <span class="font-bold text-base">{{ set.title }}</span>
-                          <div v-if="set.description">{{ set.description }}</div>
-                        </div>
+                        class="flex items-start gap-2 justify-between cursor-pointer w-full text-left py-1">
                         <span
                           class="inline-flex shrink-0 items-center justify-center w-[24px] h-[24px] mt-0.5 border-1 rounded border-current/60">
                           <CheckboxIndicator>
-                            <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                            <GraphicsCheckmark class="block w-[20px] h-[20px]" />
                           </CheckboxIndicator>
                         </span>
+                        <div class="flex-1">
+                          <span class="font-bold text-base">{{ set.title }}</span>
+                          <div>{{ set.description }}</div>
+                        </div>
+                        <Anchor
+                          :aria-label="`Set '${set.title}'`"
+                          :href="setPathBuilder(set.id)"
+                          class="relative z-100 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 dark:bg-gray-900 hover:dark:bg-black focus:dark:bg-black color-black dark:color-black px-1 py-1 rounded-lg">
+                          <GraphicsNewWindowIcon class="text-lg align-middle" />
+                        </Anchor>
                       </CheckboxRoot>
                     </template>
                   </CheckboxGroupRoot>
@@ -66,7 +75,7 @@
                   <!-- Nothing to tick yet. Said rather than left blank, so the reader reads it as
                    an empty list with the Create button below as the way on, rather than as a
                    dialog that failed to load. -->
-                  <p v-else class="text-center italic py-3">You have no sets yet.</p>
+                  <p v-else class="text-center italic pb-5">You have no sets yet.</p>
                   <RFCDocumentSetsCreate
                     :rfc-number="props.rfcNumber"
                     :create-set="props.createSet"
@@ -75,8 +84,7 @@
                     <DialogClose
                       :class="[
                         'px-3 py-1 rounded-md',
-                        'text-blue-800 font-bold border-1 border-blue-600 dark:border-blue-900',
-                        'border border-gray-400',
+                        'text-blue-800 dark:text-white light:bg-blue-950 font-bold border-1 border-blue-600 dark:border-blue-200',
                         'cursor-pointer'
                       ]">
                       Done
@@ -132,6 +140,7 @@ import type { CreateSetOutcome, NewSet } from '~/utilities/reef-sets'
 import type { ReefSet } from '~/stores/reef'
 import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
 import { setPathBuilder } from '~/utilities/url'
+import { formatTitleAsVNode } from '~/utilities/rfc-title'
 
 type Props = {
   rfcNumber: number
@@ -163,6 +172,8 @@ const formatNumber = (val: number, decimalPlaces: number) => {
     maximumFractionDigits: decimalPlaces
   }).format(val)
 }
+
+const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfcNumber}`))
 
 // Reef needs a bearer token to know whose sets to read and change, so an anonymous tick could only
 // fail with a 401. Ask for a sign-in instead of letting the checkboxes look interactive and then

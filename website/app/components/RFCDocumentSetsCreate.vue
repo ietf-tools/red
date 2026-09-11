@@ -6,7 +6,7 @@
           'font-bold px-2 py-1 rounded cursor-pointer',
           {
             'bg-blue-600 text-white': props.hasSolidButton,
-            'bg-white text-blue-600 border-1 border-blue-600': !props.hasSolidButton
+            'bg-white dark:bg-blue-950 text-blue-600 dark:text-white border-1 border-blue-600': !props.hasSolidButton
           }
         ]">
         Create a new Set

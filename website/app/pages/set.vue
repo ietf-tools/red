@@ -3,19 +3,21 @@
     <NuxtLayout name="default">
       <div class="container mx-auto pb-10">
         <template v-if="setLoad.status === 'ready'">
-          <p class="pt-16 ml-4 italic">This set was created by a community member.</p>
-          <Heading level="1" class="text-left mt-10 mb-4 pl-5">
-            Community Set: {{ JSON.stringify(setLoad.set.title) }}
+          <Alert level="1" variant="info" heading="Community content">
+            <p>This set was created by a community member.</p>
+          </Alert>
+          <Heading level="2" style-level="1" class="text-left mt-10 mb-4 pl-5">
+            RFC Set <template v-if="setLoad.set.title">&quot;{{ setLoad.set.title }}&quot;</template>
           </Heading>
 
-          <div class="pl-5 flex flex-col gap-4">
-            <p v-if="setLoad.set.description">{{ JSON.stringify(setLoad.set.description) }}</p>
-            <ul v-if="rows.length > 0" class="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <li v-for="{ doc, infoPath, rfc } in rows" :key="doc" class="flex flex-col">
+          <p class="pl-5" v-if="setLoad.set.description">&quot;{{ setLoad.set.description }}&quot;</p>
+          <div class="pl-3 flex flex-col gap-4">
+            <ul v-if="rows.length > 0" class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <li v-for="{ doc, infoPath, rfc } in rows" :key="doc">
                 <!-- The card, once this document's rfc-common has arrived. Everything below is what
                    stands in until it has, and stays for a document there's never going to be a card
                    for, so a row is never missing while the set is read. -->
-                <RFCCard v-if="rfc" :rfc="rfc" heading-level="2" />
+                <RFCCard v-if="rfc" :rfc="rfc" heading-level="2" class="h-full" />
                 <Anchor v-else-if="infoPath !== undefined" :href="infoPath">
                   <component :is="formatTitleAsVNode(doc)" />
                 </Anchor>
