@@ -20,14 +20,11 @@ export default defineConfig(async () => ({
           // suite would launch its own, and in dev mode those all serve from the same
           // `.nuxt` build directory and collide. See e2e/utilities/global-setup.ts.
           globalSetup: ['./e2e/utilities/global-setup.ts'],
-          // Concurrent tests each open a page against that one dev server. The layout screenshot
-          // suite captures whole documents of up to 300,000px, and with several of those rasterising
-          // at once Chromium leaves tiles blank or stale in the frame it captures: white bands where
-          // text should be, copy buttons present on one block and missing on the next. At four
-          // concurrent captures that hit three runs in seven; at two, five consecutive runs were
-          // pixel-identical. Above four, a page could also be queued past its hydration wait when
-          // the other suites were loading pages too.
-          maxConcurrency: 2
+          // Concurrent tests each open a page against that one dev server. Above this, a page could
+          // be queued past its hydration wait when the other suites were loading pages too. Blank
+          // tiles in the layout captures are handled by the height ceiling in
+          // e2e/utilities/screenshot.ts rather than by concurrency.
+          maxConcurrency: 4
         }
       },
       {

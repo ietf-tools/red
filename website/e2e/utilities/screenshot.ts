@@ -25,9 +25,8 @@
  * Set `UPDATE_SCREENSHOTS=1` to re-record every baseline after an intended visual
  * change. Failures write the captured image and a highlighted diff for inspection.
  *
- * Captures are full-page with no height ceiling. A long RFC produces a large PNG, and
- * that cost is accepted: a capture cut off at a fixed height hid defects further down
- * the document, which defeats the point of a layout baseline.
+ * Captures are full-page up to MAX_CAPTURE_HEIGHT_PX; see that constant for why there is
+ * a ceiling. Layout below it is not asserted.
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -61,6 +60,23 @@ const DEFAULT_MAX_DIFF_PIXEL_RATIO = 0.001
 
 /** Time allowed for late layout shifts (webfont swap, image decode) to settle before capture. */
 const SETTLE_BEFORE_CAPTURE_MS = 400
+
+/**
+ * Height at which a capture is cut off.
+ *
+ * Chromium leaves whole regions of a very long full-page capture blank, and which regions
+ * shifts with CPU load: the longest RFCs captured with white bands from around 150,000px down
+ * even on an idle machine, and under a 4-CPU soak the bands moved between runs while every
+ * shorter document captured identically. Past this height a comparison measures rasterisation
+ * luck rather than layout, so the ceiling trades coverage of the tail for a stable baseline.
+ *
+ * DO NOT raise this without re-running that soak. On a 4-CPU-pinned, cold-cache soak matching
+ * a GitHub Actions runner, the layout suite failed 3 of 10 runs with no ceiling (maxConcurrency
+ * 2) and 0 of 30 with this ceiling at 100,000px (maxConcurrency 4) — always on the tallest
+ * captures, and always the same blank-band symptom. Raising the ceiling reopens that failure
+ * mode; it will not reproduce on an idle local machine, only under CI-like CPU pressure.
+ */
+const MAX_CAPTURE_HEIGHT_PX = 100_000
 
 /**
  * How long the DOM must go without a mutation before the page counts as settled after hydration.
@@ -196,8 +212,11 @@ const captureFullPage = async (page: Page, maskCss: string | undefined): Promise
   await page.evaluate(() => document.fonts.ready.then(() => undefined))
   await page.waitForTimeout(SETTLE_BEFORE_CAPTURE_MS)
 
+  // With `fullPage`, Playwright trims the clip to the document's own size, so the width needs
+  // no measuring here: only the height ceiling has any effect.
   return page.screenshot({
     fullPage: true,
+    clip: { x: 0, y: 0, width: Number.MAX_SAFE_INTEGER, height: MAX_CAPTURE_HEIGHT_PX },
     animations: 'disabled',
     caret: 'hide',
     scale: 'css'
@@ -257,8 +276,8 @@ export const expectScreenshotToMatchBaseline = async (
     { threshold: PIXELMATCH_THRESHOLD }
   )
 
-  // A full-page capture's height tracks the content, so a size change is itself a regression
-  // signal, however few pixels moved.
+  // A capture's height tracks the content up to MAX_CAPTURE_HEIGHT_PX, so a size change is itself
+  // a regression signal, however few pixels moved.
   const sizeChanged = baselinePng.width !== actualPng.width || baselinePng.height !== actualPng.height
   const diffRatio = diffPixels / (width * height)
   if (sizeChanged || diffRatio > maxDiffPixelRatio) {
