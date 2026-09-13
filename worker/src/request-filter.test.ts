@@ -102,6 +102,8 @@ test('isOriginPath: forwards the pages the Nuxt origin renders', () => {
     '/series/errata/how-to-verify',
     '/set',
     '/status-changes',
+    '/subjects',
+    '/subjects/networking',
     '/api/v1/healthcheck.json',
     '/api/v1/systemcheck.json',
     // Every series type the `/info/` page parses, leading zeros allowed
@@ -142,6 +144,7 @@ test('isOriginPath: refuses everything else', () => {
     '/aboutus',
     '/searchengine',
     '/setup',
+    '/subjectsx',
     // R2-served namespaces: a miss there is a worker 404, not an origin round-trip
     '/_nuxt/missing.js',
     '/refs/missing.txt',
