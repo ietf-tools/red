@@ -649,6 +649,68 @@ aside {
   }
 }
 
+/* On a touch device RFCRouterLink renders a preview button inside the citation, between the link
+   and the closing bracket, so the citation is wider than the precomputer measured. Its presence is
+   the condition, not touch itself: no JavaScript, previews switched off or a fine pointer all mean
+   no button. The button is sized in rem (icon, padding and margin), so the extra term is in rem and
+   carries the same 1.2 factor. Browsers without :has() drop these rules and keep the plain tiers.
+
+   The 2.66rem allowance is repeated as a literal because a custom property cannot appear in a
+   container query condition: like a media query prelude it has no element to substitute against,
+   so var() there is silently never matched. The word-breaks e2e test measures the rendered button
+   against this allowance, so a change to the button's size fails there rather than overflowing. */
+.reference-citation.wordsize-4:has([data-rfc-preview-button]),
+.reference-citation.wordsize-6:has([data-rfc-preview-button]),
+.reference-citation.wordsize-8:has([data-rfc-preview-button]),
+.reference-citation.wordsize-10:has([data-rfc-preview-button]),
+.reference-citation.wordsize-12:has([data-rfc-preview-button]),
+.reference-citation.wordsize-16:has([data-rfc-preview-button]),
+.reference-citation.wordsize-24:has([data-rfc-preview-button]) {
+  white-space: normal;
+}
+
+@container (min-width: calc(4.8em + 2.66rem)) {
+  .reference-citation.wordsize-4:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
+@container (min-width: calc(7.2em + 2.66rem)) {
+  .reference-citation.wordsize-6:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
+@container (min-width: calc(9.6em + 2.66rem)) {
+  .reference-citation.wordsize-8:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
+@container (min-width: calc(12em + 2.66rem)) {
+  .reference-citation.wordsize-10:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
+@container (min-width: calc(14.4em + 2.66rem)) {
+  .reference-citation.wordsize-12:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
+@container (min-width: calc(19.2em + 2.66rem)) {
+  .reference-citation.wordsize-16:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
+@container (min-width: calc(28.8em + 2.66rem)) {
+  .reference-citation.wordsize-24:has([data-rfc-preview-button]) {
+    white-space: nowrap;
+  }
+}
+
 /* Reader preference for how long words break, applied as a class on the document wrapper (see
    uiSettings.wordBreakMode). The default mode adds nothing. The browser-driven modes hide the
    inserted <wbr> elements, since display: none removes a break opportunity, and every non-default

@@ -627,6 +627,17 @@ The first rule needs no condition and still holds where container queries are un
 test injects a `wordsize-8` and a `wordsize-24` citation into a paragraph and asserts that the first
 computes to `nowrap` at 320px, the second does not, and the second does at 1200px.
 
+**Touch preview button.** On a coarse pointer `RFCRouterLink` renders a preview button inside the
+citation span, between the link and the closing bracket, about 2.2rem wide. A second set of rules
+selects citations that contain it, `.reference-citation.wordsize-N:has([data-rfc-preview-button])`,
+resets them to normal wrapping and re-applies `nowrap` at each threshold plus 1.2 × 2.2rem, in rem
+because the icon, padding and margin are rem-sized. The button's presence is the condition rather
+than a touch class: no JavaScript, previews switched off and a fine pointer all mean no button and
+need no extra state, and the precomputer stays ignorant of which links are RFCs. Browsers without
+`:has()` drop these rules and keep the plain tiers. The e2e test emulates a coarse pointer, measures
+the button against the width the CSS allows, and asserts a citation is released between the plain
+and widened thresholds and held above.
+
 ### Interaction with word breaks
 
 Negligible, and measured: 5 of 338 citations contain an inserted word break, and only `[NIST_PQ]`

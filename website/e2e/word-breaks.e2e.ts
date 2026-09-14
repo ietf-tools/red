@@ -24,6 +24,9 @@ const WIDE_VIEWPORT = { width: 1200, height: 900 } as const
 
 // const DEFAULT_FONT_SIZE_PX = 16
 
+/** The touch preview button's inline width that the `2.66rem` (1.2 × this) term in xml2rfc.css allows for. */
+const PREVIEW_BUTTON_MAX_REM = 2.22
+
 const TIME_PER_TEST_MS = 60_000
 
 describe('RFC word breaks', async () => {
@@ -90,9 +93,10 @@ describe('RFC word breaks', async () => {
     async () => {
       const page = await openRfc()
 
-      // Published documents do not carry the classes yet, so the contract is asserted against
-      // injected markup inside a paragraph, which is a query container. A citation up to the 8em
-      // grouping holds unconditionally; a wider one holds only once the paragraph is wide enough.
+      // The contract is asserted against injected markup inside a paragraph, which is a query
+      // container, so the groupings under test are chosen rather than whatever the document carries.
+      // A citation up to the 8em grouping holds unconditionally; a wider one holds only once the
+      // paragraph is wide enough.
       const readCitations = () =>
         page.evaluate(() => {
           const paragraph = document.querySelector('.rfc-content p')
@@ -133,6 +137,86 @@ describe('RFC word breaks', async () => {
 
       expect(onWideScreen.wideWhiteSpace).toBe('nowrap')
       expect(onWideScreen.unmarkedWhiteSpace).toBe('normal')
+    },
+    TIME_PER_TEST_MS
+  )
+
+  test(
+    'a citation holding a touch preview button needs a correspondingly wider container',
+    async () => {
+      const page = await createPage()
+      // The touch store reads `(pointer: coarse)`; answering yes is what makes RFCRouterLink render
+      // the preview button inside each RFC citation.
+      await page.addInitScript(() => {
+        const original = window.matchMedia.bind(window)
+        window.matchMedia = (query: string) =>
+          query === '(pointer: coarse)'
+            ? ({
+                matches: true,
+                media: query,
+                onchange: null,
+                addEventListener: () => {},
+                removeEventListener: () => {},
+                addListener: () => {},
+                removeListener: () => {},
+                dispatchEvent: () => false
+              } as MediaQueryList)
+            : original(query)
+      })
+      await page.setViewportSize(REFLOW_VIEWPORT)
+      await page.goto(url(infoSeriesPathBuilder(RFC_UNDER_TEST)), { waitUntil: 'networkidle' })
+
+      // A real citation span is used because it holds the rendered button. Whatever grouping the
+      // document gave it is replaced with `wordsize-12`, and its paragraph is sized so that the plain
+      // 14.4em threshold is met but the button-widened one (14.4em + 2.66rem) is not.
+      const result = await page.evaluate((groupingCeilingEm: number) => {
+        // Not every RFC link is a citation; a bare `RFC 9297` in prose gets the button too.
+        const isCitationText = (element: Element | null | undefined) => {
+          const text = element?.textContent?.trim() ?? ''
+          return text.startsWith('[') && text.endsWith(']')
+        }
+        const button = Array.from(
+          document.querySelectorAll<HTMLElement>('.rfc-content p [data-rfc-preview-button]')
+        ).find((candidate) => isCitationText(candidate.parentElement?.parentElement))
+        const citation = button?.parentElement?.parentElement
+        const paragraph = citation?.closest('p')
+        if (!button || !citation || !paragraph) {
+          return null
+        }
+        const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize)
+        const fontPx = parseFloat(getComputedStyle(paragraph).fontSize)
+        // The wrapper span is what sits inside the citation, margin included.
+        const buttonRem = (button.parentElement?.getBoundingClientRect().width ?? 0) / rootPx
+        citation.classList.remove(...Array.from(citation.classList).filter((name) => name.startsWith('wordsize-')))
+        citation.classList.add('reference-citation', `wordsize-${groupingCeilingEm}`)
+        const plainThresholdPx = 1.2 * groupingCeilingEm * fontPx
+        const between = plainThresholdPx + 1 * rootPx
+        paragraph.style.width = `${between}px`
+        const betweenWithButton = getComputedStyle(citation).whiteSpace
+        paragraph.style.width = `${plainThresholdPx + 2.66 * rootPx + 1}px`
+        const wideEnoughWithButton = getComputedStyle(citation).whiteSpace
+        paragraph.style.width = `${between}px`
+        button.parentElement?.remove()
+        const betweenWithoutButton = getComputedStyle(citation).whiteSpace
+        return { buttonRem, betweenWithButton, wideEnoughWithButton, betweenWithoutButton }
+      }, 12)
+
+      await page.close()
+
+      expect(
+        result,
+        'no RFC citation with a preview button found — is the touch store still reading (pointer: coarse)?'
+      ).toBeTruthy()
+      if (!result) {
+        return
+      }
+      // The rem term in xml2rfc.css assumes the button is no wider than this; the icon, its padding
+      // and its margin are all rem-sized.
+      expect(result.buttonRem).toBeLessThanOrEqual(PREVIEW_BUTTON_MAX_REM)
+      expect(result.buttonRem).toBeGreaterThan(1)
+      expect(result.betweenWithButton).toBe('normal')
+      expect(result.wideEnoughWithButton).toBe('nowrap')
+      expect(result.betweenWithoutButton).toBe('nowrap')
     },
     TIME_PER_TEST_MS
   )

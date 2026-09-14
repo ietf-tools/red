@@ -373,7 +373,9 @@ once its paragraph is 14.4em wide. On RFC 9000, 70 of the 89 spans in the source
 grouping and the other 19 hold wherever their paragraph is wide enough. Word breaks and citations
 barely meet: of the six documents first examined, five citations contained an inserted break. Where
 they meet, `nowrap` suppresses the break under the same width condition that would have hidden it.
-An earlier version stopped at the 8em cap and covered only that 85%; every citation outside a
+On a touch device the site renders a preview button inside each RFC citation, about 2.2rem wide, so
+a further set of rules keyed to the button's presence with `:has()` adds that width to every
+threshold; the precomputer stays ignorant of which links are RFCs. An earlier version stopped at the 8em cap and covered only that 85%; every citation outside a
 wider-than-body context is now covered.
 
 ## Alternatives considered

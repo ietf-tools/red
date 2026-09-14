@@ -78,6 +78,7 @@
       type="button"
       class="ml-1 px-1 align-middle hide-in-preformatted-text"
       :aria-label="rfcId ? `${rfcId.type.toUpperCase()} ${rfcId.number} Link Preview` : 'Link Preview'"
+      data-rfc-preview-button
       aria-haspopup="dialog"
       :aria-expanded="isPopoverOpen"
       @pointerdown.stop
