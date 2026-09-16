@@ -9,7 +9,7 @@
   <ul :class="depth === 1 ? '' : 'ml-6 border-l-1 border-gray-300 dark:border-gray-600 pl-4'">
     <li v-for="node in nodes" :key="node.slug" class="pt-1">
       <Anchor :href="subjectsPathBuilder(node.slug)" :class="ANCHOR_COLOR_TAILWIND_STYLE">
-        <HighlightedText :text="node.description || node.name" :ranges="matches.get(node.slug)?.nameRanges ?? []" />
+        <HighlightedText :text="node.name" :ranges="matches.get(node.slug)?.nameRanges ?? []" />
       </Anchor>
       <!-- Which rows the reader's words actually reached. The highlight says it on screen, and
          `mark` is not reliably announced, so the same thing is said again for anyone listening.
