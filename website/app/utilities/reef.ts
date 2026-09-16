@@ -18,8 +18,8 @@
 // reader or the page changes, queueing their changes, putting a control back when Reef refuses —
 // belongs to ~/stores/reef, which is the thing that holds the answers.
 
-import { z } from 'zod'
 import type { components, operations } from '../../generated/reef-api-client'
+import { DjangoErrorDetailSchema } from '~/utilities/django-schema'
 import { getAccessToken } from '~/utilities/oidc'
 
 export type DocumentSet = components['schemas']['DocumentSet']
@@ -43,11 +43,6 @@ export type SurveyDefinition = components['schemas']['SurveyDefinition']
 export type SurveyResults = operations['surveys_results_retrieve']['responses'][200]['content']['application/json']
 export type OpenSurvey = components['schemas']['OpenSurvey']
 export type ResponseCreate = components['schemas']['ResponseCreate']
-
-// The one field an error body is read for here. Anything else it carries is left to callers to take
-// off `body`, which keeps the payload as it arrived — a validation error names the fields it
-// rejected, and this is in no position to know them.
-const ErrorDetailSchema = z.object({ detail: z.string() })
 
 // Thrown for any non-2xx response. `body` is the parsed error payload when the server sent
 // JSON, otherwise the raw text, so callers can surface field-level validation errors.
@@ -74,7 +69,7 @@ export class ReefError extends Error {
     // differently from "Invalid bearer token: <JWT error>" (we sent one and it was
     // rejected). Fold it into the message, because an uncaught error logs only
     // Error.message and `body` would otherwise go unread in the console.
-    const { data } = ErrorDetailSchema.safeParse(body)
+    const { data } = DjangoErrorDetailSchema.safeParse(body)
     const detail = data === undefined ? '' : ` — ${data.detail}`
     super(`[reef] ${method} ${path} failed: ${status} ${statusText}${detail}`)
     this.name = 'ReefError'

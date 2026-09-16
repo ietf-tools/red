@@ -25,6 +25,7 @@
 // The generated module exports a value and a type under each name, so one import brings both and
 // there is no `z.infer` here to keep in step with it.
 import { PrecomputedSubjectDetailOrRedirect, SubjectIndex } from '../../generated/reef-api-zod'
+import { API_REEF_SUBJECTS_INDEX_PATH, apiReefSubjectPathBuilder } from './url'
 
 export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
 
@@ -32,11 +33,9 @@ export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
  * The host Reef publishes to. No bucket is configured in any Reef environment yet, so this has no
  * value to hold: fill it in when one exists.
  *
- * What sits under it is versioned and directory-shaped — `/api/v1/precomputed/subjects/`,
- * `/api/v1/precomputed/subjects/<slug>/` — rather than bare filenames, so `read` below takes a
- * logical key (`subjects`, `subjects/<slug>`) and renders it two ways: that path for the real
- * fetch, and a bare `<key>.json` for the dev fixture, which stays a plain file on disk regardless
- * of how the real store shapes its URLs.
+ * What sits under it is versioned and `.json`-suffixed, one file per logical key —
+ * `/api/v1/subjects.json`, `/api/v1/subjects/<slug>.json` — built by the `apiReef*PathBuilder`s in
+ * ~/utilities/url, and mirrored one-to-one by the dev fixture's own `<key>.json` layout below.
  */
 const REEF_PRECOMPUTED_BASE = ''
 
@@ -73,12 +72,15 @@ const fixtureFor = async (key: string): Promise<unknown | undefined> => {
  * ordinary answer about a subject that does not exist rather than something going wrong; anything
  * else raises, because a page cannot be rendered from a file that failed to arrive.
  *
+ * `key` is the fixture's logical name (`subjects`, `subjects/<slug>`); `path` is the real store's
+ * URL for the same file, built by one of the `apiReef*PathBuilder`s in ~/utilities/url.
+ *
  * In development with NUXT_PUBLIC_REEF_FIXTURES set, the copy in ./reef-fixtures/precomputed
  * answers instead, so the subject pages can be worked on with no bucket and no Reef. The parse
  * still runs: a fixture that has drifted from the contract should fail here exactly as a published
  * file would.
  */
-const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
+const read = async <T>(key: string, path: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
   let body: unknown
   const { reefFixtures } = useRuntimeConfig().public
   if (import.meta.dev && reefFixtures !== '') {
@@ -91,7 +93,6 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
   if (REEF_PRECOMPUTED_BASE === '') {
     throw unreadable(key, 'no publishing base is configured')
   }
-  const path = `/api/v1/precomputed/${key}/`
   try {
     const response = await fetch(`${REEF_PRECOMPUTED_BASE}${path}`)
     if (response.status === 404) {
@@ -119,7 +120,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
  * the /subjects/ listing renders from, in a single fetch.
  */
 export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
-  const index = await read('subjects', SubjectIndex)
+  const index = await read('subjects', API_REEF_SUBJECTS_INDEX_PATH, SubjectIndex)
   if (index === undefined) {
     throw unreadable('subjects', 'the index is not published')
   }
@@ -136,4 +137,4 @@ export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
  * shapes apart with the predicates in ~/utilities/reef, which read which key is present.
  */
 export const fetchSubjectFile = (slug: string): Promise<PrecomputedSubjectDetailOrRedirect | undefined> =>
-  read(`subjects/${encodeURIComponent(slug)}`, PrecomputedSubjectDetailOrRedirect)
+  read(`subjects/${encodeURIComponent(slug)}`, apiReefSubjectPathBuilder(slug), PrecomputedSubjectDetailOrRedirect)

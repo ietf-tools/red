@@ -298,6 +298,9 @@ export const apiSubseriesPathBuilder = (seriesType: SeriesId['type'], seriesNumb
   return `/api/v1/info-subseries/${seriesType}${seriesNumber}.json` as const
 }
 
+/** One Reef-published subject file — see ~/utilities/reef-precomputed. */
+export const apiReefSubjectPathBuilder = (slug: string) => `/api/v1/subjects/${encodeURIComponent(slug)}.json` as const
+
 const mailtoRegex = /^mailto:/
 export const isMailToLink = (href?: string): boolean => {
   return mailtoRegex.test(href ?? '')

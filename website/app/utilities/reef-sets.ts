@@ -10,6 +10,7 @@ import { computed, ref, toValue, watch, type MaybeRefOrGetter, type Ref, type Wr
 import { z } from 'zod'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
 import { useReefStore, type ReefSet } from '~/stores/reef'
+import { DjangoFieldErrorsSchema } from '~/utilities/django-schema'
 import { createSet, deleteSetDocument, getSet, putSetDocument, ReefError, type DocumentSet } from '~/utilities/reef'
 import { reefDocumentKey, useReefDocument } from '~/utilities/reef-documents'
 import { infoSeriesPathBuilder } from '~/utilities/url'
@@ -38,11 +39,9 @@ export type NewSet = {
 // than a console line. Reef rejects a bad title with DRF's field-errors shape — `{title: ["..."]}`
 // — which names the problem far better than anything this could invent, so it's preferred when
 // present and a generic line is the fallback.
-const FieldErrorsSchema = z.record(z.string(), z.array(z.string()).nonempty())
-
 export const setCreationErrorMessage = (error: unknown): string => {
   if (error instanceof ReefError) {
-    const { data } = FieldErrorsSchema.safeParse(error.body)
+    const { data } = DjangoFieldErrorsSchema.safeParse(error.body)
     const firstMessage = data === undefined ? undefined : Object.values(data)[0]?.[0]
     if (firstMessage !== undefined) {
       return firstMessage
