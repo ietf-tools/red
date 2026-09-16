@@ -11,6 +11,7 @@
 
           <Alert v-else-if="subjectsError" level="2" variant="warning" heading="Error">
             <p class="pt-2">The list of subjects could not be loaded. Please try again.</p>
+            <p class="pt-2 text-sm">{{ httpErrorMessage(subjectsError) }}</p>
           </Alert>
 
           <template v-else-if="subjectCount > 0">
@@ -104,6 +105,7 @@ import { watchDebounced } from '@vueuse/core'
 import { groupBy } from 'es-toolkit'
 import { useUiSettingsStore, type SubjectDensity } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
+import { httpErrorMessage } from '~/utilities/network'
 import { fetchSubjectIndex } from '~/utilities/reef-precomputed'
 import { matchSubjects, type SubjectMatch } from '~/utilities/subject-search'
 import { isRenderableSubject, subjectTreeOfMatches, type SubjectNode } from '~/utilities/subject-tree'

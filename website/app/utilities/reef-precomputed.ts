@@ -25,6 +25,7 @@
 // The generated module exports a value and a type under each name, so one import brings both and
 // there is no `z.infer` here to keep in step with it.
 import { PrecomputedSubjectDetailOrRedirect, SubjectIndex } from '../../generated/reef-api-zod'
+import { describeNetworkFailure } from './network'
 import { API_REEF_SUBJECTS_INDEX_PATH, apiReefSubjectPathBuilder } from './url'
 
 export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
@@ -44,13 +45,23 @@ const REEF_PRECOMPUTED_BASE = ''
  * module's own: nothing catches these by type — the pages read `error` off useAsyncData and only
  * ask whether it is set — so a class would buy a name and cost every caller a way to tell one
  * failure from another. The name it was carrying is in the message, which is where a log reads it.
+ *
+ * `describeNetworkFailure` runs here, against `cause` while it's still the live object `fetch()`
+ * threw, and its answer (when it has one — a fetch that reached the bucket and just got a bad
+ * response gets no answer here) goes into `data` rather than staying implicit in `cause`: a
+ * server-rendered page's `error` ref crosses to the client through Nuxt's payload, which keeps
+ * `data` but drops `cause` outright, so `~/utilities/network`'s `httpErrorMessage` would otherwise
+ * lose the diagnosis the moment the client re-renders. See that function's own doc comment.
  */
-const unreadable = (key: string, cause: unknown) =>
-  createError({
+const unreadable = (key: string, cause: unknown) => {
+  const networkFailureMessage = describeNetworkFailure(cause)
+  return createError({
     statusCode: 500,
     message: `[reef] could not read the published ${key}: ${String(cause)}`,
-    cause
+    cause,
+    data: networkFailureMessage === undefined ? undefined : { networkFailureMessage }
   })
+}
 
 // The dev stand-in for the store: ./reef-fixtures/precomputed, which is a verbatim copy of a
 // precompute run laid out under the same keys, each as a `.json` file. Lazy, so a production
