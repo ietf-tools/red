@@ -1,8 +1,9 @@
 // Reading the files Reef publishes for anonymous, server-rendered reads -- the /subjects/ pages'
-// data. Same origin as ~/utilities/reef's reefBase (Reef used to publish these to a separate blob
-// store with its own base URL; that's gone, and this reads reefBase like everything else does now),
-// but still a distinct code path from that file: a server render has no reader token to attach, and
-// these paths need none, so this calls the plain `fetch()` below rather than reef.ts's `reefFetch`.
+// data. Same origin as ~/utilities/reef's reefBase: these used to need a base URL of their own to
+// reach the bucket Reef writes them to directly, but a routing change on Reef's side put them
+// behind the same origin as everything else, so this reads reefBase too. Still a distinct code
+// path from that file though: a server render has no reader token to attach, and these paths need
+// none, so this calls the plain `fetch()` below rather than reef.ts's `reefFetch`.
 //
 // Who reads what, and this file is the third case:
 //
@@ -19,8 +20,8 @@
 // the views behind them exist and are deliberately not routed -- so the contract stays the one
 // description of them and there is no hand-maintained schema on either side.
 //
-// Parsing, rather than trusting: these arrive over the network from Reef, and a server render that
-// trusts a truncated file answers a public page with a 500 rather than a caught error. The
+// Parsing, rather than trusting: these arrive over the network from a bucket, and a server render
+// that trusts a truncated file answers a public page with a 500 rather than a caught error. The
 // generated schemas allow unknown keys, which is Reef's additive guarantee holding up on this
 // side: a field Reef adds must not break Red, so nothing here may tighten them.
 //
@@ -39,8 +40,8 @@ export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
  * failure from another. The name it was carrying is in the message, which is where a log reads it.
  *
  * `describeNetworkFailure` runs here, against `cause` while it's still the live object `fetch()`
- * threw, and its answer (when it has one — a fetch that reached Reef and just got a bad response
- * gets no answer here) goes into `data` rather than staying implicit in `cause`: a
+ * threw, and its answer (when it has one — a fetch that reached the bucket and just got a bad
+ * response gets no answer here) goes into `data` rather than staying implicit in `cause`: a
  * server-rendered page's `error` ref crosses to the client through Nuxt's payload, which keeps
  * `data` but drops `cause` outright, so `~/utilities/network`'s `httpErrorMessage` would otherwise
  * lose the diagnosis the moment the client re-renders. See that function's own doc comment.
@@ -133,9 +134,8 @@ export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
  * second read.
  *
  * Answers for a retired subject and for an alias too, as the redirect stubs Reef publishes for
- * them — these are published snapshots rather than live views, so a redirect here is baked into
- * the body rather than sent as an HTTP redirect. Callers tell the three shapes apart with the
- * predicates in ~/utilities/reef, which read which key is present.
+ * them — a blob store cannot serve a 301, so the body is the redirect. Callers tell the three
+ * shapes apart with the predicates in ~/utilities/reef, which read which key is present.
  */
 export const fetchSubjectFile = (slug: string): Promise<PrecomputedSubjectDetailOrRedirect | undefined> =>
   read(`subjects/${encodeURIComponent(slug)}`, apiReefSubjectPathBuilder(slug), PrecomputedSubjectDetailOrRedirect)
