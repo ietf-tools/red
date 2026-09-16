@@ -29,9 +29,14 @@ import { PrecomputedSubjectDetailOrRedirect, SubjectIndex } from '../../generate
 export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
 
 /**
- * Where Reef publishes. No bucket is configured in any Reef environment yet, so this has no value
- * to hold: fill it in when one exists, and note that the keys underneath it are bare —
- * `subjects.json`, `subjects/<slug>.json` — with no prefix of their own.
+ * The host Reef publishes to. No bucket is configured in any Reef environment yet, so this has no
+ * value to hold: fill it in when one exists.
+ *
+ * What sits under it is versioned and directory-shaped — `/api/v1/precomputed/subjects/`,
+ * `/api/v1/precomputed/subjects/<slug>/` — rather than bare filenames, so `read` below takes a
+ * logical key (`subjects`, `subjects/<slug>`) and renders it two ways: that path for the real
+ * fetch, and a bare `<key>.json` for the dev fixture, which stays a plain file on disk regardless
+ * of how the real store shapes its URLs.
  */
 const REEF_PRECOMPUTED_BASE = ''
 
@@ -49,9 +54,10 @@ const unreadable = (key: string, cause: unknown) =>
   })
 
 // The dev stand-in for the store: ./reef-fixtures/precomputed, which is a verbatim copy of a
-// precompute run laid out under the same keys. Lazy, so a production build that drops the branch
-// below does not carry five hundred files it will never read, and keyed by the same string the
-// fetch uses so that nothing here can answer a key the real store would not.
+// precompute run laid out under the same keys, each as a `.json` file. Lazy, so a production
+// build that drops the branch below does not carry five hundred files it will never read, and
+// keyed the same way `read` derives a fixture path from its logical key so that nothing here can
+// answer a key the real store would not.
 const fixtures = import.meta.glob('./reef-fixtures/precomputed/**/*.json') as Record<
   string,
   () => Promise<{ default: unknown }>
@@ -76,7 +82,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
   let body: unknown
   const { reefFixtures } = useRuntimeConfig().public
   if (import.meta.dev && reefFixtures !== '') {
-    body = await fixtureFor(key)
+    body = await fixtureFor(`${key}.json`)
     if (body === undefined) {
       return undefined
     }
@@ -85,8 +91,9 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
   if (REEF_PRECOMPUTED_BASE === '') {
     throw unreadable(key, 'no publishing base is configured')
   }
+  const path = `/api/v1/precomputed/${key}/`
   try {
-    const response = await fetch(`${REEF_PRECOMPUTED_BASE}/${key}`)
+    const response = await fetch(`${REEF_PRECOMPUTED_BASE}${path}`)
     if (response.status === 404) {
       return undefined
     }
@@ -95,7 +102,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
     }
     body = await response.json()
   } catch (error) {
-    throw unreadable(key, error)
+    throw unreadable(path, error)
   }
   try {
     return schema.parse(body)
@@ -103,7 +110,7 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
     // Separated from the fetch failure on purpose: a file that arrived and did not match the
     // contract is a different problem from one that did not arrive, and it is Reef's rather than
     // the network's.
-    throw unreadable(key, error)
+    throw unreadable(path, error)
   }
 }
 
@@ -112,9 +119,9 @@ const read = async <T>(key: string, schema: { parse: (value: unknown) => T }): P
  * the /subjects/ listing renders from, in a single fetch.
  */
 export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
-  const index = await read('subjects.json', SubjectIndex)
+  const index = await read('subjects', SubjectIndex)
   if (index === undefined) {
-    throw unreadable('subjects.json', 'the index is not published')
+    throw unreadable('subjects', 'the index is not published')
   }
   return index
 }
@@ -129,4 +136,4 @@ export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
  * shapes apart with the predicates in ~/utilities/reef, which read which key is present.
  */
 export const fetchSubjectFile = (slug: string): Promise<PrecomputedSubjectDetailOrRedirect | undefined> =>
-  read(`subjects/${encodeURIComponent(slug)}.json`, PrecomputedSubjectDetailOrRedirect)
+  read(`subjects/${encodeURIComponent(slug)}`, PrecomputedSubjectDetailOrRedirect)
