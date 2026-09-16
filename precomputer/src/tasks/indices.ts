@@ -1,6 +1,7 @@
 import { uploadHomepageLatest } from './homepage-latest.ts'
 import { uploadRfcRefDotTxt } from './rfc-ref-txt.ts'
 import { uploadFeeds } from './rfc-feeds.ts'
+import { uploadRfcIndexJson } from './rfc-index-json.ts'
 import { uploadRfcMiniIndexJson } from './rfc-mini-index-json.ts'
 import { uploadAllSubseries } from './info-subseries.ts'
 import { getAllRFCs, getAllSubseries } from '../utilities/api.ts'
@@ -34,6 +35,7 @@ export const indices = async ({ api }: Props): AsyncTaskItem => {
 
   const resultsArray = await Promise.all([
     uploadHomepageLatest(allRfcsWithContent),
+    uploadRfcIndexJson(allRfcsWithContent),
     uploadRfcMiniIndexJson(allRfcsWithContent),
     uploadFeeds(allRfcsWithContent),
     uploadRfcRefDotTxt(allRfcsWithContent, RFC_NUMBER_MINIMUM_CHAR_WIDTH),

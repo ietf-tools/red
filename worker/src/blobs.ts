@@ -259,6 +259,7 @@ export async function blobsStatics(req: IRequest, env: Env): Promise<Response | 
     { from: '/favicon.ico', to: 'other/favicon-32x32.png' },
     { from: '/api/v1/homepage-latest.json', to: 'other/homepage-latest.json' },
     { from: '/api/v1/rfc-mini-index.json', to: 'other/rfc-mini-index.json' },
+    { from: '/api/v1/rfc-index.json', to: 'other/rfc-index.json' },
     { from: '/api/v1/errata.json', to: 'other/errata.json' },
     { from: '/rfc-index.txt', to: 'other/rfc-index.txt' },
     { from: '/rfc-index.xml', to: 'other/rfc-index.xml' },

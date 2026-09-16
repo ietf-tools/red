@@ -252,6 +252,13 @@ export const HomepageLatestSchema = z.object({
 
 export type HomepageLatest = z.infer<typeof HomepageLatestSchema>
 
+export const RfcIndexSchema = z.object({
+  createdOn: z.string(),
+  index: z.array(RfcCommonSchema)
+})
+
+export type RfcIndex = z.infer<typeof RfcIndexSchema>
+
 /**
  * The shape `rfcToRfcMini` emits, and so the shape of the published
  * `rfc-mini-index.json`. Its own schema rather than a `Pick` of RfcCommon, because the
