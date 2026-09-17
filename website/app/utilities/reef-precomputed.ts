@@ -14,6 +14,13 @@
 // One function per file, wired by hand. There are a handful of these and a generated client would
 // be more machinery than the thing it replaces.
 //
+// Dev stand-in: NUXT_PUBLIC_REEF_FIXTURES points this at Reef's staging deployment
+// (reefPrecomputedFixturesBase) instead of reefBase, so /subjects/ pages work with no Reef running
+// locally. Fetched live rather than kept as a local snapshot: Reef's index alone runs several
+// megabytes, too large for Vite's dev-time `import.meta.glob` transform to serve as a client-side
+// dynamic import — it failed only on client-side navigation, since a server render reads reefBase
+// directly — and a static copy of a vocabulary this size would drift stale regardless.
+//
 // Shapes are not written here: they are the Zod schemas generated from reef_api.yaml by
 // `npm run generate:reef-api-zod`, the same file `generate:reef-api-client` produces the types
 // from. Reef describes these payloads in its API contract even though it serves none of them --
@@ -62,46 +69,22 @@ const unreadable = (key: string, cause: unknown) => {
   })
 }
 
-// The dev stand-in for the store: ./reef-fixtures/precomputed, which is a verbatim copy of a
-// precompute run laid out under the same keys, each as a `.json` file. Lazy, so a production
-// build that drops the branch below does not carry five hundred files it will never read, and
-// keyed the same way `read` derives a fixture path from its logical key so that nothing here can
-// answer a key the real store would not.
-const fixtures = import.meta.glob('./reef-fixtures/precomputed/**/*.json') as Record<
-  string,
-  () => Promise<{ default: unknown }>
->
-
-const fixtureFor = async (key: string): Promise<unknown | undefined> => {
-  const load = fixtures[`./reef-fixtures/precomputed/${key}`]
-  return load === undefined ? undefined : (await load()).default
-}
-
 /**
  * A published file, parsed. `undefined` when the key is not there, which for a subject is an
  * ordinary answer about a subject that does not exist rather than something going wrong; anything
  * else raises, because a page cannot be rendered from a file that failed to arrive.
  *
- * `key` is the fixture's logical name (`subjects`, `subjects/<slug>`); `path` is the real one's
- * path under `reefBase`, built by one of the `apiReef*PathBuilder`s in ~/utilities/url.
- *
- * In development with NUXT_PUBLIC_REEF_FIXTURES set, the copy in ./reef-fixtures/precomputed
- * answers instead, so the subject pages can be worked on with no Reef running at all. The parse
- * still runs: a fixture that has drifted from the contract should fail here exactly as a published
- * file would.
+ * `path` is built by one of the `apiReef*PathBuilder`s in ~/utilities/url. In development with
+ * NUXT_PUBLIC_REEF_FIXTURES set, it's read against Reef's staging deployment instead of `reefBase`,
+ * so the subject pages can be worked on with no Reef running locally. The parse still runs: a file
+ * that has drifted from the contract should fail here exactly as a production one would.
  */
-const read = async <T>(key: string, path: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
+const read = async <T>(path: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
   let body: unknown
-  const { reefBase, reefFixtures } = useRuntimeConfig().public
-  if (import.meta.dev && reefFixtures !== '') {
-    body = await fixtureFor(`${key}.json`)
-    if (body === undefined) {
-      return undefined
-    }
-    return schema.parse(body)
-  }
+  const { reefBase, reefFixtures, reefPrecomputedFixturesBase } = useRuntimeConfig().public
+  const base = import.meta.dev && reefFixtures !== '' ? reefPrecomputedFixturesBase : reefBase
   try {
-    const response = await fetch(`${reefBase}${path}`)
+    const response = await fetch(`${base}${path}`)
     if (response.status === 404) {
       return undefined
     }
@@ -127,7 +110,7 @@ const read = async <T>(key: string, path: string, schema: { parse: (value: unkno
  * the /subjects/ listing renders from, in a single fetch.
  */
 export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
-  const index = await read('subjects', API_REEF_SUBJECTS_INDEX_PATH, SubjectIndex)
+  const index = await read(API_REEF_SUBJECTS_INDEX_PATH, SubjectIndex)
   if (index === undefined) {
     throw unreadable('subjects', 'the index is not published')
   }
@@ -144,4 +127,4 @@ export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
  * shapes apart with the predicates in ~/utilities/reef, which read which key is present.
  */
 export const fetchSubjectFile = (slug: string): Promise<PrecomputedSubjectDetailOrRedirect | undefined> =>
-  read(`subjects/${encodeURIComponent(slug)}`, apiReefSubjectPathBuilder(slug), PrecomputedSubjectDetailOrRedirect)
+  read(apiReefSubjectPathBuilder(slug), PrecomputedSubjectDetailOrRedirect)

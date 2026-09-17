@@ -17,12 +17,16 @@
         class="relative z-1 ml-2 pl-4 border-l-1 border-gray-300 dark:border-gray-600 text-base text-blue-900 dark:text-white flex items-start">
         {{ props.rfc.title }}
       </p>
-      <RFCCardBodyPill :rfc="rfc" mode="none" class="col-span-2 mt-1" />
+      <div class="col-span-2">
+        <RFCCardBodyPill :rfc="rfc" mode="none" class="mt-1" />
+      </div>
     </div>
-    <ul v-if="featureFlags.oidc" class="flex flex-row">
-      <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
-      <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
-    </ul>
+    <template #end>
+      <ul v-if="featureFlags.oidc" class="flex flex-row">
+        <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
+        <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
+      </ul>
+    </template>
   </BaseCard>
 </template>
 

@@ -14,22 +14,19 @@
             <!-- Where this subject sits. The published file names this subject's ancestors and
                children in `subject_meta`, so the breadcrumb reads "Applications" rather than
                `applications` without the page having to read the whole vocabulary for one word. -->
-            <nav v-if="ancestors.length > 0" aria-label="Breadcrumb" class="mt-10">
-              <ol class="flex flex-wrap items-center gap-2">
-                <li v-for="{ slug, name, path } in ancestors" :key="slug" class="flex items-center gap-2">
-                  <Anchor :href="path">{{ name }}</Anchor>
-                  <span aria-hidden="true">›</span>
-                </li>
-              </ol>
-            </nav>
+            <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
 
-            <Heading level="1" :class="ancestors.length > 0 ? 'mt-4 mb-4' : 'mt-10 mb-4'">{{
-              liveSubject.name
-            }}</Heading>
-            <p v-if="liveSubject.description">{{ liveSubject.description }}</p>
+            <Heading level="1" class="mt-4 mb-4 md:mx-2">
+              {{ liveSubject.name }}
+            </Heading>
+            <p v-if="liveSubject.description" class="md:mx-2">{{ liveSubject.description }}</p>
+
+            <div class="mt-0 flex justify-end print:hidden">
+              <SubjectDensity v-model="documentDensity" />
+            </div>
 
             <template v-if="children.length > 0">
-              <Heading level="2" class="mt-8 mb-2">Subjects within this one</Heading>
+              <Heading level="2" class="mt-8 mb-2 md:mx-2">Subjects within this one</Heading>
               <ul class="flex flex-col gap-2">
                 <li v-for="{ slug, name, path } in children" :key="slug">
                   <Anchor :href="path">{{ name }}</Anchor>
@@ -38,10 +35,19 @@
             </template>
 
             <Heading v-if="children.length > 0" level="2" class="mt-8 mb-2">RFCs in this subject</Heading>
-            <ul v-if="documents.length > 0" class="flex flex-col gap-2 mt-6">
-              <li v-for="{ doc, label, title, infoPath } in documents" :key="doc">
-                <Anchor :href="infoPath">{{ label }}</Anchor>
-                <span v-if="title"> — {{ title }}</span>
+            <ul
+              v-if="documents.length > 0"
+              class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              :style="{ '--computed-heading-char-length': maxHeadingCharWidth }">
+              <li v-for="{ doc, label, title, infoPath, rfc } in documents" :key="doc" class="flex flex-col">
+                <!-- `rfc` is unset for a document_meta entry Red's index hasn't resolved yet (or,
+                   defensively, one missing from document_meta entirely), so the row falls back to
+                   a plain link rather than going without a title. -->
+                <RFCCardSearchItem v-if="rfc" :rfc="rfc" :density="documentDensity" class="h-full" />
+                <template v-else>
+                  <Anchor :href="infoPath">{{ label }}</Anchor>
+                  <span v-if="title"> — {{ title }}</span>
+                </template>
               </li>
             </ul>
             <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
@@ -76,12 +82,23 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
+import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
 import { isRetiredSubject, isSubjectAlias } from '~/utilities/reef'
 import { fetchSubjectFile, type PrecomputedSubjectDetailOrRedirect } from '~/utilities/reef-precomputed'
+import { documentMetaToRfcCommon } from '~/utilities/rfc-converters'
 import { parseSeriesId } from '~/utilities/rfc'
+import { calculateMaxHeadingCharWidth } from '~/utilities/rfc-title'
 import { ancestorSlugsOf } from '~/utilities/subject-tree'
-import { infoSeriesPathBuilder, subjectsPathBuilder, usePublicSiteUrlOrigin } from '~/utilities/url'
+import type { Density } from '~/utilities/typesense'
+import {
+  HOME_PATH,
+  infoSeriesPathBuilder,
+  SUBJECTS_PATH,
+  subjectsPathBuilder,
+  usePublicSiteUrlOrigin
+} from '~/utilities/url'
 
 definePageMeta({
   layout: false,
@@ -91,9 +108,21 @@ definePageMeta({
 })
 
 const route = useRoute()
+
 const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
 
 const slug = typeof route.params.subject === 'string' ? route.params.subject : ''
+
+const canonicalPath = subjectsPathBuilder(slug)
+
+if (
+  // only compare route.path not route.fullPath as that will clobber ?search#id params
+  route.path !== canonicalPath
+) {
+  await navigateTo({
+    path: canonicalPath
+  })
+}
 
 // The published file rather than Reef's API: this page is server-rendered, and a server render
 // reads the store and never calls Reef. A key that is not there is a plain answer about a subject
@@ -146,6 +175,15 @@ const ancestors = computed(() => (liveSubject.value ? ancestorSlugsOf(liveSubjec
 
 const children = computed(() => (liveSubject.value?.children ?? []).map(linkTo))
 
+// Home, then this subject's ancestors outermost first, then this subject itself unlinked — the
+// same shape every other page's breadcrumb trail takes, so this one only supplies the items.
+const breadcrumbItems = computed((): BreadcrumbItem[] => [
+  { url: HOME_PATH, label: 'Home' },
+  { url: SUBJECTS_PATH, label: 'RFCs by Subject' },
+  ...ancestors.value.map(({ name, path }) => ({ url: path, label: name })),
+  ...(liveSubject.value ? [{ label: liveSubject.value.name }] : [])
+])
+
 // What the list of documents on this page does not cover. Reef counts the subtree deduplicated, so
 // this is a count of further documents rather than of further assignments.
 const deeperDocumentCount = computed(() => {
@@ -164,20 +202,37 @@ const deeperDocumentCount = computed(() => {
 // all. `label` is the identifier as a reader writes it: "RFC 4686", not `rfc4686`.
 const documents = computed(() =>
   (liveSubject.value?.documents ?? []).map((doc) => {
+    const meta = liveSubject.value?.document_meta?.[doc]
     const seriesId = parseSeriesId(doc)
     return {
       doc,
       label: seriesId ? `${seriesId.type.toUpperCase()} ${seriesId.number}` : doc,
-      title: liveSubject.value?.document_meta?.[doc]?.title ?? undefined,
-      infoPath: infoSeriesPathBuilder(doc)
+      title: meta?.title ?? undefined,
+      infoPath: infoSeriesPathBuilder(doc),
+      rfc: meta ? documentMetaToRfcCommon(doc, meta) : undefined
     }
   })
+)
+
+// Reads through the store rather than holding its own copy, so the control shows the saved
+// preference and every change is written back to localStorage. Same scale as search's own control,
+// so the two toggles read as one idea.
+const uiSettings = useUiSettingsStore()
+const documentDensity = computed<Density>({
+  get: () => uiSettings.subjectDocumentDensity,
+  set: (density) => uiSettings.setSubjectDocumentDensity(density)
+})
+
+// RFCCardCompact sizes its heading column in characters, off `--computed-heading-char-length` set
+// on an ancestor — see SearchResultList's own use of the same property for why.
+const maxHeadingCharWidth = computed(() =>
+  calculateMaxHeadingCharWidth(documents.value.flatMap(({ rfc }) => (rfc ? [rfc] : [])))
 )
 
 useRfcEditorHead({
   noIndex: true, // FIXME: upon release allow indexing
   title: liveSubject.value ? `RFCs about ${liveSubject.value.name}` : 'RFC subject',
-  canonicalPath: `${publicSiteUrlOrigin}${subjectsPathBuilder(slug)}`,
+  canonicalPath: `${publicSiteUrlOrigin}${canonicalPath}`,
   description:
     liveSubject.value?.description ??
     'Subjects such as networking, broadband, aerospace, authentication, cloud computing',

@@ -101,7 +101,7 @@ export const RfcCommonFormatSchema = z.object({
   path: z.string().optional()
 })
 
-const RfcCommonIdentifierSchema = z.object({
+export const RfcCommonIdentifierSchema = z.object({
   type: z.union([z.literal('doi'), z.literal('issn')]),
   value: z.string()
 })

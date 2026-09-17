@@ -12,6 +12,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
 import { createError } from 'h3'
+import { ref } from 'vue'
 import SubjectPage from './[subject].vue'
 import type { RetiredSubject, SubjectAlias, SubjectDetail } from '~/utilities/reef'
 import {
@@ -22,6 +23,8 @@ import {
   subjectAliasFixture,
   subjectDetailFixture
 } from '~/utilities/reef-fixtures/subjects'
+import { DEFAULT_FEATURE_FLAGS, featureFlagsKey } from '~/utilities/feature-flags'
+import { NONBREAKING_SPACE } from '~/utilities/strings'
 
 const STUBS = {
   NuxtLayout: { template: '<div><slot /></div>' },
@@ -52,11 +55,34 @@ const nameOf = (slug: string): string =>
 // satisfy an assertion about the identifier and hide the label never being rendered.
 const titleOf = (index: number): string => `The Title Of Document Number ${index}`
 
+// A resolved document_meta entry, complete enough to satisfy FullDocumentMetadata and so to
+// convert into an RFCCard: real Reef data never sends a resolved title alongside a null status or
+// stream, so the test double doesn't either. The rest is nullable and left null, same as an entry
+// this build's index has nothing further to say about.
+const documentMetaOf = (index: number) => ({
+  title: titleOf(index),
+  subseries: [],
+  status: 'unkn',
+  status_name: 'unknown',
+  stream: 'Legacy',
+  stream_name: 'Legacy',
+  obsoletes: [],
+  obsoleted_by: [],
+  updates: [],
+  updated_by: [],
+  authors: [],
+  published: null,
+  identifiers: [],
+  area: null,
+  group: null,
+  keywords: [],
+  pages: null,
+  abstract: null
+})
+
 const published = (subject: SubjectDetail) => ({
   ...subject,
-  document_meta: Object.fromEntries(
-    subject.documents.map((doc, index) => [doc, { title: titleOf(index), subseries: [] }])
-  ),
+  document_meta: Object.fromEntries(subject.documents.map((doc, index) => [doc, documentMetaOf(index)])),
   subject_meta: Object.fromEntries(
     [...subject.path.split('/').slice(0, -1), ...subject.children].map((slug) => [slug, { name: nameOf(slug) }])
   )
@@ -85,8 +111,22 @@ const reefFails = (_slug: string, statusCode: number) => {
 const renderPage = (slug: string) =>
   mountSuspended(SubjectPage, {
     route: `/subjects/${slug}/`,
-    global: { stubs: STUBS }
+    global: {
+      stubs: STUBS,
+      // RFCCard, rendered for every document with a resolved document_meta entry, reads its own
+      // feature flags rather than receiving them as a prop — normally provided above app.vue,
+      // which isn't in this page's own mount.
+      provide: { [featureFlagsKey]: ref(DEFAULT_FEATURE_FLAGS) }
+    }
   })
+
+// By href prefix rather than by tag or position, so the breadcrumb's own links — inside a `ul` of
+// its own, same as the document list — aren't counted as documents.
+const documentLinks = (page: Awaited<ReturnType<typeof renderPage>>): (string | undefined)[] =>
+  page
+    .findAll('a')
+    .map((link) => link.attributes('href'))
+    .filter((href) => href?.startsWith('/info/'))
 
 describe('/subjects/<slug>/', () => {
   test('renders the subject and the documents carrying it', async () => {
@@ -104,15 +144,16 @@ describe('/subjects/<slug>/', () => {
   })
 
   test('names each document as a reader writes it, with its title beside', async () => {
-    // `rfc1952` is how Reef files it and how the URL is built; "RFC 1952" is how it is read. The
-    // title comes from document_meta, which the published file carries and the API does not.
+    // `rfc1952` is how Reef files it and how the URL is built; "RFC 1952" (an RFCCard, once
+    // document_meta resolves it) is how it is read, with a non-breaking space between the two
+    // words so the pair never wraps.
     const { slug } = leafSubjectDetailFixture
     reefAnswers(slug, leafSubjectDetailFixture)
 
     const page = await renderPage(slug)
     const text = page.text()
 
-    expect(text).toContain('RFC 1952')
+    expect(text).toContain(`RFC${NONBREAKING_SPACE}1952`)
     expect(text).toContain(titleOf(0))
     expect(text).not.toContain('rfc1952')
   })
@@ -129,7 +170,7 @@ describe('/subjects/<slug>/', () => {
     const page = await renderPage(slug)
 
     expect(page.text()).toContain('RFC 1952')
-    expect(page.findAll('ul a').map((link) => link.attributes('href'))).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
+    expect(documentLinks(page)).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
   })
 
   test('links each document to its info page', async () => {
@@ -140,9 +181,9 @@ describe('/subjects/<slug>/', () => {
 
     const page = await renderPage(slug)
 
-    // The lists, not the whole page: the breadcrumb above is an `ol` of links to the subjects this
-    // one sits inside, which are navigation rather than membership.
-    expect(page.findAll('ul a').map((link) => link.attributes('href'))).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
+    // By href prefix rather than by tag, so the breadcrumb's own links — also inside a `ul`, now
+    // that it draws through the conventional Breadcrumbs component — aren't counted as documents.
+    expect(documentLinks(page)).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
   })
 
   test('links the subjects within this one by their curated name', async () => {
@@ -169,32 +210,40 @@ describe('/subjects/<slug>/', () => {
     expect(child?.text()).toBe('gzip')
   })
 
-  test('shows where the subject sits, without linking back to itself', async () => {
+  test('shows where the subject sits, ending with itself unlinked', async () => {
     const { slug } = leafSubjectDetailFixture
     reefAnswers(slug, leafSubjectDetailFixture)
 
     const page = await renderPage(slug)
-    const breadcrumb = page.find('nav[aria-label="Breadcrumb"]')
+    const breadcrumb = page.find('nav[aria-label="Breadcrumbs"]')
 
-    // `applications-and-data-formats/compression/gzip` less its own last segment, so the trail leads
-    // here and stops, and each step is named rather than slugged.
-    expect(breadcrumb.findAll('li').map((item) => item.find('a').text())).toEqual([
+    // Home, then the index, then `applications-and-data-formats/compression/gzip` named one step
+    // at a time. The leaf itself is last and carries no link, the same convention every other
+    // page's breadcrumb uses for the page a reader is already on.
+    expect(breadcrumb.findAll('a').map((link) => link.text())).toEqual([
+      'Home',
+      'RFCs by Subject',
       nameOf('applications-and-data-formats'),
       nameOf('compression')
     ])
     expect(breadcrumb.findAll('a').map((link) => link.attributes('href'))).toEqual([
+      '/',
+      '/subjects/',
       '/subjects/applications-and-data-formats/',
       '/subjects/compression/'
     ])
+    expect(breadcrumb.text()).toContain(leafSubjectDetailFixture.name)
   })
 
-  test('leaves the breadcrumb off a subject that is not inside anything', async () => {
-    const { slug } = headingSubjectDetailFixture
+  test('leads with Home and the index for a subject that is not inside anything', async () => {
+    const { slug, name } = headingSubjectDetailFixture
     reefAnswers(slug, headingSubjectDetailFixture)
 
     const page = await renderPage(slug)
+    const breadcrumb = page.find('nav[aria-label="Breadcrumbs"]')
 
-    expect(page.find('nav[aria-label="Breadcrumb"]').exists()).toBe(false)
+    expect(breadcrumb.findAll('a').map((link) => link.text())).toEqual(['Home', 'RFCs by Subject'])
+    expect(breadcrumb.text()).toContain(name)
   })
 
   test('says what the list of documents leaves out, rather than letting the count look wrong', async () => {

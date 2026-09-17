@@ -105,10 +105,13 @@ export default defineNuxtConfig({
       reefBase: 'http://localhost:8088', // NUXT_PUBLIC_REEF_BASE env var — the Reef API, called client-side with the OIDC access token
       // NUXT_PUBLIC_REEF_FIXTURES env var — local dev only. Empty means every Reef call goes to
       // reefBase. Set it to a scenario name from ~/utilities/reef-fixtures (on, empty, slow, error)
-      // and the operations with fixtures are answered locally, with no Reef and no sign-in needed.
-      // `npm run dev:fixtures` is this with a scenario already chosen. Read only under
-      // import.meta.dev, so setting it in a deployed environment does nothing.
+      // and the operations with fixtures are answered locally, with no Reef and no sign-in needed;
+      // the /subjects/ pages instead read reefPrecomputedFixturesBase below, since Reef's own
+      // vocabulary is too large to serve as a local fixture (see reef-precomputed.ts). `npm run
+      // dev:fixtures` is this with a scenario already chosen. Read only under import.meta.dev, so
+      // setting it in a deployed environment does nothing.
       reefFixtures: '',
+      reefPrecomputedFixturesBase: 'https://surveys.staging.rfc-editor.org', // NUXT_PUBLIC_REEF_PRECOMPUTED_FIXTURES_BASE env var — where /subjects/ dev-fixtures mode reads Reef's precomputed files from
       matomoSiteId: '12', // 12 is Red non-production ie local dev. Otherwise will be provided by env var NUXT_PUBLIC_MATOMO_SITE_ID
       typesenseApiKey: '2Ic06V287miUyJ32ee25q0ccXK0Dr3RO', // NUXT_PUBLIC_TYPESENSE_API_KEY Be sure to use an API key that only allows search operations
       typesenseHost: 'typesense.staging.ietf.org', // NUXT_PUBLIC_TYPESENSE_HOST

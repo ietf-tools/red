@@ -521,5 +521,5 @@ export const subjectsPathBuilder = (
   /** eg 'a', 'b', ... */
   subject: string
 ) => {
-  return `${SUBJECTS_PATH}${subject ? `${subject}/` : ''}`
+  return `${SUBJECTS_PATH}${subject}/` as const
 }

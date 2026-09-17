@@ -3,7 +3,9 @@
     <div class="min-h-[100vh]">
       <NuxtLayout name="default">
         <div class="container mx-auto pl-5 pr-3 pb-10">
-          <Heading level="1" class="mt-10 mb-4">RFCs by subject</Heading>
+          <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
+
+          <Heading level="1" class="mt-4 mb-4">RFCs by subject</Heading>
 
           <div v-if="subjectsStatus === 'pending'" class="mt-10 w-full text-center">
             <GraphicsLoading class="inline-block w-16 h-16" />
@@ -55,7 +57,7 @@
                 </ul>
               </nav>
               <div class="mt-0 flex justify-end print:hidden">
-                <SubjectDensity v-model="subjectDensity" />
+                <SubjectsIndexDensity v-model="subjectDensity" />
               </div>
               <dl class="mt-2">
                 <template v-for="subjectGroup in populatedSubjectGroups" :key="subjectGroup.id">
@@ -103,6 +105,7 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
 import { groupBy } from 'es-toolkit'
+import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import { useUiSettingsStore, type SubjectDensity } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
 import { httpErrorMessage } from '~/utilities/network'
@@ -110,13 +113,30 @@ import { fetchSubjectIndex } from '~/utilities/reef-precomputed'
 import { matchSubjects, type SubjectMatch } from '~/utilities/subject-search'
 import { isRenderableSubject, subjectTreeOfMatches, type SubjectNode } from '~/utilities/subject-tree'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
-import { SUBJECTS_PATH, SUBJECTS_QUERY_PARAM, usePublicSiteUrlOrigin } from '~/utilities/url'
+import { HOME_PATH, SUBJECTS_PATH, SUBJECTS_QUERY_PARAM, usePublicSiteUrlOrigin } from '~/utilities/url'
 
 definePageMeta({
   layout: false
 })
 
+// Static rather than derived: unlike a single subject's page, the index has no ancestors to name,
+// just itself under Home.
+const breadcrumbItems: BreadcrumbItem[] = [{ url: HOME_PATH, label: 'Home' }, { label: 'RFCs by subject' }]
+
 const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
+
+const canonicalPath = SUBJECTS_PATH
+
+const route = useRoute()
+
+if (
+  // only compare route.path not route.fullPath as that will clobber ?search#id params
+  route.path !== canonicalPath
+) {
+  await navigateTo({
+    path: canonicalPath
+  })
+}
 
 // Reads through the store rather than holding its own copy, so the control shows the saved
 // preference and every change is written back to localStorage.
@@ -148,8 +168,6 @@ const {
 const renderableSubjects = computed(() => (subjects.value ?? []).filter(isRenderableSubject))
 
 const subjectCount = computed(() => renderableSubjects.value.length)
-
-const route = useRoute()
 
 // The filter lives in the URL so that a filtered view can be linked and stepped back out of. It is
 // read on the browser's side of the render only: the worker strips the query string from anything
@@ -254,7 +272,7 @@ const populatedSubjectGroups = computed(() => subjectGroups.value.filter(({ item
 useRfcEditorHead({
   noIndex: true, // FIXME: upon release allow indexing
   title: 'RFCs organised by subject',
-  canonicalPath: `${publicSiteUrlOrigin}${SUBJECTS_PATH}`,
+  canonicalPath: `${publicSiteUrlOrigin}${canonicalPath}`,
   description: 'Subjects such as networking, broadband, aerospace, authentication, cloud computing',
   contentType: 'article'
 })

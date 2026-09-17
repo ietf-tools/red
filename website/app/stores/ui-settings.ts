@@ -1,10 +1,18 @@
 import { z } from 'zod'
 import { DEFAULT_WORD_BREAK_MODE, WordBreakModeSchema, type WordBreakMode } from '~/utilities/word-break-mode'
+import type { Density } from '~/utilities/typesense'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
 // Whether a subject listing shows each subject's description or only its name.
 export const SubjectDensitySchema = z.union([z.literal('full'), z.literal('compact')]).optional()
+
+// The same three-way scale search's result list offers, reused here rather than given its own
+// type: a subject page's document list is the same kind of thing search's is, just fed from a
+// different source.
+export const SubjectDocumentDensitySchema = z
+  .union([z.literal('full'), z.literal('dense'), z.literal('compact')])
+  .optional()
 
 // Bounds of the text-scale slider, shared with AdvancedUISettings.vue so the
 // control and the persisted value can't disagree.
@@ -22,6 +30,7 @@ const UiSettingsSchema = z
     disableRFCLinkPreview: z.boolean().optional(),
     textScale: TextScaleSchema.optional(),
     subjectDensity: SubjectDensitySchema,
+    subjectDocumentDensity: SubjectDocumentDensitySchema,
     wordBreakMode: WordBreakModeSchema.optional()
   })
   .optional()
@@ -41,6 +50,8 @@ const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
 // Names alone, so a listing reads as an index rather than as prose.
 export const DEFAULT_SUBJECT_DENSITY: SubjectDensity = 'compact'
 
+export const DEFAULT_SUBJECT_DOCUMENT_DENSITY: Density = 'full'
+
 export const useUiSettingsStore = defineStore('uiSettings', () => {
   // Whether the UI Settings dialog is showing. Deliberately not persisted: it's
   // transient UI state, not a setting.
@@ -51,6 +62,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   const disableRFCLinkPreviewRef = ref<boolean>(false)
   const textScaleRef = ref<number>(DEFAULT_TEXT_SCALE)
   const subjectDensityRef = ref<SubjectDensity>(DEFAULT_SUBJECT_DENSITY)
+  const subjectDocumentDensityRef = ref<Density>(DEFAULT_SUBJECT_DOCUMENT_DENSITY)
   const wordBreakModeRef = ref<WordBreakMode>(DEFAULT_WORD_BREAK_MODE)
 
   const saveSettings = () => {
@@ -60,6 +72,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       disableRFCLinkPreview: disableRFCLinkPreviewRef.value,
       textScale: textScaleRef.value,
       subjectDensity: subjectDensityRef.value,
+      subjectDocumentDensity: subjectDocumentDensityRef.value,
       wordBreakMode: wordBreakModeRef.value
     }
 
@@ -93,6 +106,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       disableRFCLinkPreviewRef.value = data.disableRFCLinkPreview ?? disableRFCLinkPreviewRef.value
       textScaleRef.value = data.textScale ?? textScaleRef.value
       subjectDensityRef.value = data.subjectDensity ?? subjectDensityRef.value
+      subjectDocumentDensityRef.value = data.subjectDocumentDensity ?? subjectDocumentDensityRef.value
       wordBreakModeRef.value = data.wordBreakMode ?? wordBreakModeRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
@@ -129,6 +143,11 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  const setSubjectDocumentDensity = (subjectDocumentDensity: Density) => {
+    subjectDocumentDensityRef.value = subjectDocumentDensity
+    saveSettings()
+  }
+
   const setWordBreakMode = (wordBreakMode: WordBreakMode) => {
     wordBreakModeRef.value = wordBreakMode
     saveSettings()
@@ -154,6 +173,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     setTextScale,
     subjectDensity: subjectDensityRef,
     setSubjectDensity,
+    subjectDocumentDensity: subjectDocumentDensityRef,
+    setSubjectDocumentDensity,
     wordBreakMode: wordBreakModeRef,
     setWordBreakMode
   }

@@ -1,18 +1,18 @@
 <template>
-  <DensityToggle v-model="value" legend="Display subjects as" :options="OPTIONS" />
+  <DensityToggle v-model="value" legend="Display RFCs as" :options="OPTIONS" />
 </template>
 
 <script lang="ts" setup>
-import type { SubjectDensity } from '~/stores/ui-settings'
+import type { Density } from '~/utilities/typesense'
 import type { DensityOption } from '~/utilities/density'
 
-const value = defineModel<SubjectDensity>()
+const value = defineModel<Density>()
 
-// The ends of the same scale the search density control offers, drawn with the same two icons so
-// the two toggles read as one idea. There is no middle state to draw here: a subject is a name and
-// a description, so the only thing density can trade away is the description.
-const OPTIONS: DensityOption<SubjectDensity>[] = [
-  { value: 'full', label: 'Full display (with descriptions)', icon: 'f7:rectangle-grid-1x2-fill' },
-  { value: 'compact', label: 'Compact display (names only)', icon: 'vaadin:list' }
+// The same scale and icons as the search density control, so the two toggles read as one idea:
+// this one just trades RFCCard for RFCCardDense/RFCCardCompact instead of Typesense results.
+const OPTIONS: DensityOption<Density>[] = [
+  { value: 'full', label: 'Full Display', icon: 'f7:rectangle-grid-1x2-fill' },
+  { value: 'dense', label: 'Dense Display', icon: 'fa-solid:th-list' },
+  { value: 'compact', label: 'Compact Display', icon: 'vaadin:list' }
 ]
 </script>

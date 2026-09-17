@@ -3,6 +3,7 @@ import { parseSeriesId } from './rfc'
 import type { RfcCommon } from './rfc-validators'
 import { NONBREAKING_SPACE } from './strings'
 import { infoSeriesPathBuilder } from './url'
+import { getVNodeText } from './vue'
 
 /**
  * Formats a string of 'RFCnumber' with non-bold/bold text with an NBSP between
@@ -62,3 +63,21 @@ export const formatSubseriesAsVNode = (rfc: RfcCommon, hasTrailingColon: boolean
       }, [] as VNode[])
   )
 }
+
+const MINIMUM_HEADING_CHAR_WIDTH = 7
+
+const headingCharWidth = (rfc: RfcCommon): number => {
+  const rfcHasSubseries = hasSubseries(rfc)
+  const rfcTitle = getVNodeText(formatTitleAsVNode(`rfc${rfc.number}`, rfcHasSubseries))
+  const rfcSubseries = getVNodeText(formatSubseriesAsVNode(rfc, false, false))
+  return `${rfcTitle}${rfcHasSubseries ? ' ' : ''}${rfcSubseries}`.length
+}
+
+/**
+ * RFCCardCompact's heading column is sized in characters, via the `--computed-heading-char-length`
+ * custom property a caller sets on an ancestor of every card it draws — this is the widest heading
+ * among `rfcs` to give it, so every row's title column lines up rather than each card sizing its
+ * own.
+ */
+export const calculateMaxHeadingCharWidth = (rfcs: RfcCommon[]): number =>
+  Math.max(...rfcs.map(headingCharWidth), MINIMUM_HEADING_CHAR_WIDTH)

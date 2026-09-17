@@ -8,12 +8,10 @@
 
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
-import { formatTitleAsVNode, formatSubseriesAsVNode, hasSubseries } from '~/utilities/rfc-title'
+import { calculateMaxHeadingCharWidth } from '~/utilities/rfc-title'
 import type { TypeSenseSearchItem } from '../utilities/typesense'
-import { getVNodeText } from '~/utilities/vue'
 import { typeSenseSearchItemToRFCCommon } from '~/utilities/rfc-converters'
 import { useReefDocuments } from '~/utilities/reef-documents'
-import type { RfcCommon } from '~/utilities/rfc-validators'
 
 type Props = {
   items: TypeSenseSearchItem[]
@@ -32,25 +30,12 @@ const list = computed(() =>
 // come from the search index, carried on each RFC as reefStats.
 useReefDocuments(() => list.value.map((rfc) => rfc.number))
 
-const calculateHeadingCharWidth = (rfc: RfcCommon): number => {
-  const rfcHasSubseries = hasSubseries(rfc)
-  const rfcTitle = getVNodeText(formatTitleAsVNode(`rfc${rfc.number}`, rfcHasSubseries))
-  const rfcSubseries = getVNodeText(formatSubseriesAsVNode(rfc, false, false))
-  const headingText = `${rfcTitle}${rfcHasSubseries ? ' ' : ''}${rfcSubseries}`
-  return headingText.length
-}
-
-const MINIMUM_HEADING_CHAR_WIDTH = 7
-
-const calculateMaxHeadingWidth = (rfcs: RfcCommon[]): number =>
-  Math.max(...rfcs.map((rfc) => calculateHeadingCharWidth(rfc)), MINIMUM_HEADING_CHAR_WIDTH)
-
-const maxHeadingWidth = ref(calculateMaxHeadingWidth(list.value))
+const maxHeadingWidth = ref(calculateMaxHeadingCharWidth(list.value))
 
 watchDebounced(
   () => list,
   () => {
-    maxHeadingWidth.value = calculateMaxHeadingWidth(list.value)
+    maxHeadingWidth.value = calculateMaxHeadingCharWidth(list.value)
   },
   {
     debounce: 200,
