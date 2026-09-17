@@ -30,12 +30,12 @@
 <script setup lang="ts">
 import type { SubjectDensity } from '~/stores/ui-settings'
 import type { SubjectMatch } from '~/utilities/subject-search'
-import type { SubjectNode } from '~/utilities/subject-tree'
+import type { SubjectTreeNode } from '~/utilities/subject-tree'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { subjectsPathBuilder } from '~/utilities/url'
 
 const { nodes, density, matches } = defineProps<{
-  nodes: SubjectNode[]
+  nodes: SubjectTreeNode[]
   density: SubjectDensity
   /**
    * Where the filter's terms were found, by slug. A subject that is absent is on the page as a step
@@ -49,7 +49,7 @@ const { nodes, density, matches } = defineProps<{
 // with. Every node in one list is at the same depth, and an empty list draws nothing anyway.
 const depth = computed(() => nodes[0]?.depth ?? 1)
 
-const isMatch = ({ slug }: SubjectNode): boolean => matches.has(slug)
+const isMatch = ({ slug }: SubjectTreeNode): boolean => matches.has(slug)
 
 /**
  * The description to draw beneath this subject, if any.
@@ -59,7 +59,7 @@ const isMatch = ({ slug }: SubjectNode): boolean => matches.has(slug)
  * the compact page reveals that one description rather than drawing a row with no visible reason to
  * be on the page — which is exactly how a subject shown only for context looks.
  */
-const descriptionOf = (node: SubjectNode): string | undefined => {
+const descriptionOf = (node: SubjectTreeNode): string | undefined => {
   if (!node.description) return undefined
   if (density === 'full') return node.description
 
@@ -73,7 +73,7 @@ const descriptionOf = (node: SubjectNode): string | undefined => {
 // A subject with subjects beneath it is asked about as a whole — "what is there on security" is
 // answered by the subtree, not by the handful of documents filed at the top of it. A leaf has no
 // subtree, so the two counts are the same number and only one of them is worth the space.
-const countLabel = ({ children, document_count, document_count_deep }: SubjectNode): string => {
+const countLabel = ({ children, document_count, document_count_deep }: SubjectTreeNode): string => {
   const count = children.length > 0 ? document_count_deep : document_count
   return count === 1 ? '1 RFC' : `${count} RFCs`
 }

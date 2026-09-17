@@ -1,10 +1,10 @@
 <template>
-  <div class="relative flex flex-col md:flex-row items-center md:gap-2 px-2 py-1">
+  <div class="relative flex flex-row md:flex-row md:gap-2 px-2 py-1">
     <div>
       <DialogRoot>
         <DialogTrigger
           :class="[
-            'flex flex-row gap-1 items-center',
+            'flex flex-row items-center gap-1',
             'cursor-pointer',
             'rounded',
             'text-sm text-center md:text-left',

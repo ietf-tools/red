@@ -34,11 +34,11 @@
 //
 // The generated module exports a value and a type under each name, so one import brings both and
 // there is no `z.infer` here to keep in step with it.
-import { PrecomputedSubjectDetailOrRedirect, SubjectIndex } from '../../generated/reef-api-zod'
+import { PrecomputedSubjectDetailOrRedirect, SubjectBranchNode, SubjectIndex } from '../../generated/reef-api-zod'
 import { describeCauseChain, describeNetworkFailure } from './network'
 import { API_REEF_SUBJECTS_INDEX_PATH, apiReefSubjectPathBuilder } from './url'
 
-export type { PrecomputedSubjectDetailOrRedirect, SubjectIndex }
+export type { PrecomputedSubjectDetailOrRedirect, SubjectBranchNode, SubjectIndex }
 
 /**
  * Anything that stops a file being read and parsed. An h3 error rather than an Error of this

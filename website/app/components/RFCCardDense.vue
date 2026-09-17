@@ -24,7 +24,7 @@
       <RFCCardBody :rfc="props.rfc" :show-abstract="props.showAbstract" :show-tag-date="props.showTagDate" />
     </template>
     <template #end>
-      <ul v-if="featureFlags.oidc" class="flex flex-col md:flex-row">
+      <ul v-if="featureFlags.oidc" class="flex flex-row md:flex-row">
         <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
         <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
       </ul>

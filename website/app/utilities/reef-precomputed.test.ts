@@ -107,7 +107,27 @@ describe('the published shapes', () => {
         abstract: 'This document specifies the Internet Message Format (IMF)...'
       }
     },
-    subject_meta: { messaging: { name: 'Messaging' }, dkim: { name: 'DKIM' } }
+    subject_meta: {
+      ancestors: [
+        {
+          slug: 'messaging',
+          name: 'Messaging',
+          description: 'Mail and messaging protocols.',
+          document_count: 0,
+          document_count_deep: 6
+        }
+      ],
+      descendants: [
+        {
+          slug: 'dkim',
+          name: 'DKIM',
+          description: 'Domain Keys Identified Mail.',
+          document_count: 4,
+          document_count_deep: 4,
+          children: []
+        }
+      ]
+    }
   }
 
   test('a subject file parses', () => {

@@ -2,7 +2,7 @@
   <FeatureFlagWall feature-flag-key="oidc">
     <div class="min-h-[100vh]">
       <NuxtLayout name="default">
-        <div class="container mx-auto pl-5 pr-3 pb-10">
+        <div class="container mx-auto pl-1 pr-3 pb-10">
           <!-- A retired subject and an alias are both on their way somewhere else, so they get the
              same holding state as a load that hasn't finished rather than a flash of an error they
              aren't. -->
@@ -16,55 +16,83 @@
                `applications` without the page having to read the whole vocabulary for one word. -->
             <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
 
-            <Heading level="1" class="mt-4 mb-4 md:mx-2">
-              {{ liveSubject.name }}
-            </Heading>
-            <p v-if="liveSubject.description" class="md:mx-2">{{ liveSubject.description }}</p>
+            <div class="search-container mx-auto ml-3">
+              <Heading level="1" style-level="3" class="sr-only mt-4 mb-4 md:mx-2">
+                {{ liveSubject.name }}
+              </Heading>
 
-            <div class="mt-0 flex justify-end print:hidden">
-              <SubjectDensity v-model="documentDensity" />
-            </div>
+              <nav aria-label="Subject" class="block mt-4 md:hidden">
+                <Heading level="2" style-level="4" class="mb-1">Within this page</Heading>
+                <ul class="list-disc ml-6 mb-4">
+                  <li>
+                    <a href="#subjects" :class="ANCHOR_COLOR_TAILWIND_STYLE">Subjects below {{ liveSubject.name }}</a>
+                  </li>
+                  <li>
+                    <a href="#rfcs" :class="ANCHOR_COLOR_TAILWIND_STYLE">RFCs within {{ liveSubject.name }}</a>
+                  </li>
+                </ul>
+              </nav>
 
-            <template v-if="children.length > 0">
-              <Heading level="2" class="mt-8 mb-2 md:mx-2">Subjects within this one</Heading>
-              <ul class="flex flex-col gap-2">
-                <li v-for="{ slug, name, path } in children" :key="slug">
-                  <Anchor :href="path">{{ name }}</Anchor>
-                </li>
-              </ul>
-            </template>
+              <p v-if="liveSubject.description" class="italic mt-0 md:mt-6 lg:mt-12 mb-5 md:mb-4 md:mx-2">
+                {{ liveSubject.description }}
+              </p>
 
-            <Heading v-if="children.length > 0" level="2" class="mt-8 mb-2">RFCs in this subject</Heading>
-            <ul
-              v-if="documents.length > 0"
-              class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4"
-              :style="{ '--computed-heading-char-length': maxHeadingCharWidth }">
-              <li v-for="{ doc, label, title, infoPath, rfc } in documents" :key="doc" class="flex flex-col">
-                <!-- `rfc` is unset for a document_meta entry Red's index hasn't resolved yet (or,
+              <div class="md:flex md:flex-row md:gap-2">
+                <div v-if="subjectSubtree.length > 0" class="flex-1 md:min-w-64">
+                  <Heading id="subjects" level="2" style-level="5" class="md:mt-3 lg:mt-6 md:mx-2"
+                    >{{ liveSubject.name }} subjects:</Heading
+                  >
+
+                  <SubjectTreeList
+                    :nodes="subjectSubtree"
+                    density="compact"
+                    :matches="NO_SUBJECT_MATCHES"
+                    class="md:mx-2" />
+                </div>
+
+                <div>
+                  <div class="mt-6 md:mt-0 flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
+                    <Heading
+                      id="rfcs"
+                      v-if="subjectSubtree.length > 0"
+                      level="2"
+                      style-level="1"
+                      class="text-blue-900 md:ml-3 md:mb-2">
+                      {{ liveSubject.name }} RFCs <span class="text-gray-700">({{ documents.length }})</span>
+                    </Heading>
+                    <div>
+                      <SubjectDensity class="print:hidden" v-model="documentDensity" />
+                    </div>
+                  </div>
+
+                  <ul
+                    v-if="documents.length > 0"
+                    class="md:mx-2 grid grid-cols-1 mt-3 gap-4"
+                    :style="{ '--computed-heading-char-length': maxHeadingCharWidth }">
+                    <li v-for="{ doc, label, title, infoPath, rfc } in documents" :key="doc" class="flex flex-col">
+                      <!-- `rfc` is unset for a document_meta entry Red's index hasn't resolved yet (or,
                    defensively, one missing from document_meta entirely), so the row falls back to
                    a plain link rather than going without a title. -->
-                <RFCCardSearchItem v-if="rfc" :rfc="rfc" :density="documentDensity" class="h-full" />
-                <template v-else>
-                  <Anchor :href="infoPath">{{ label }}</Anchor>
-                  <span v-if="title"> — {{ title }}</span>
-                </template>
-              </li>
-            </ul>
-            <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
+                      <RFCCardSearchItem v-if="rfc" :rfc="rfc" :density="documentDensity" class="h-full" />
+                      <template v-else>
+                        <Anchor :href="infoPath">{{ label }}</Anchor>
+                        <span v-if="title"> — {{ title }}</span>
+                      </template>
+                    </li>
+                  </ul>
+                  <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
                subtree holds them is not empty, it is a heading, and saying it is empty would read as
                a fault. -->
-            <p v-else class="mt-6">
-              {{
-                children.length > 0 ? 'No RFCs are filed under this subject itself.' : 'No RFCs carry this subject yet.'
-              }}
-            </p>
-
-            <!-- The list above is what this subject holds, not what its subtree does, so the wider
-               figure is said in words rather than left to look like a miscount. -->
-            <p v-if="deeperDocumentCount > 0" class="mt-4">
-              {{ deeperDocumentCount }} further {{ deeperDocumentCount === 1 ? 'RFC is' : 'RFCs are' }} filed under the
-              subjects within this one.
-            </p>
+                  <p v-else class="mt-6">
+                    {{
+                      subjectSubtree.length > 0
+                        ? 'No RFCs are filed under this subject itself.'
+                        : 'No RFCs carry this subject yet.'
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
           </template>
 
           <Alert v-else-if="isNotFound" level="1" variant="warning" heading="Subject not found">
@@ -86,11 +114,16 @@ import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
 import { isRetiredSubject, isSubjectAlias } from '~/utilities/reef'
-import { fetchSubjectFile, type PrecomputedSubjectDetailOrRedirect } from '~/utilities/reef-precomputed'
+import {
+  fetchSubjectFile,
+  type PrecomputedSubjectDetailOrRedirect,
+  type SubjectBranchNode
+} from '~/utilities/reef-precomputed'
 import { documentMetaToRfcCommon } from '~/utilities/rfc-converters'
 import { parseSeriesId } from '~/utilities/rfc'
 import { calculateMaxHeadingCharWidth } from '~/utilities/rfc-title'
-import { ancestorSlugsOf } from '~/utilities/subject-tree'
+import type { SubjectMatch } from '~/utilities/subject-search'
+import type { SubjectTreeNode } from '~/utilities/subject-tree'
 import type { Density } from '~/utilities/typesense'
 import {
   HOME_PATH,
@@ -99,6 +132,7 @@ import {
   subjectsPathBuilder,
   usePublicSiteUrlOrigin
 } from '~/utilities/url'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 
 definePageMeta({
   layout: false,
@@ -161,19 +195,32 @@ if (redirectTo.value !== undefined) {
   await navigateTo(subjectsPathBuilder(redirectTo.value), { redirectCode: 301, replace: true })
 }
 
-// Outermost first, and without this subject itself: `path` ends in the slug of the subject it
-// describes, which is the heading rather than a link back to here.
-// `subject_meta` names every subject this file mentions, so both lists below read their curated
-// name out of it. The slug is the fallback rather than an error: a name that is missing is a file
-// written before the map existed, and a breadcrumb of slugs is worse than a breadcrumb but better
-// than a page that will not render.
-const nameFor = (slug: string): string => liveSubject.value?.subject_meta?.[slug]?.name ?? slug
+// subject_meta.ancestors is already root-first, the same order the breadcrumb wants, so this only
+// adds the path each one links to.
+const ancestors = computed(() =>
+  (liveSubject.value?.subject_meta.ancestors ?? []).map(({ slug, name }) => ({
+    slug,
+    name,
+    path: subjectsPathBuilder(slug)
+  }))
+)
 
-const linkTo = (slug: string) => ({ slug, name: nameFor(slug), path: subjectsPathBuilder(slug) })
+// subject_meta.descendants is already a real tree — each branch carries its own children, not just
+// a slug — so this only adds the depth SubjectTreeList indents by, one level deeper per level of
+// recursion.
+const toSubjectTreeNode = (branch: SubjectBranchNode, depth: number): SubjectTreeNode => ({
+  ...branch,
+  depth,
+  children: branch.children.map((child) => toSubjectTreeNode(child, depth + 1))
+})
 
-const ancestors = computed(() => (liveSubject.value ? ancestorSlugsOf(liveSubject.value) : []).map(linkTo))
+const subjectSubtree = computed((): SubjectTreeNode[] =>
+  (liveSubject.value?.subject_meta.descendants ?? []).map((branch) => toSubjectTreeNode(branch, 1))
+)
 
-const children = computed(() => (liveSubject.value?.children ?? []).map(linkTo))
+// No filter on this page, so nothing is ever a match — every description shows or hides by density
+// alone, the same as an unfiltered index page.
+const NO_SUBJECT_MATCHES = new Map<string, SubjectMatch>()
 
 // Home, then this subject's ancestors outermost first, then this subject itself unlinked — the
 // same shape every other page's breadcrumb trail takes, so this one only supplies the items.
@@ -183,13 +230,6 @@ const breadcrumbItems = computed((): BreadcrumbItem[] => [
   ...ancestors.value.map(({ name, path }) => ({ url: path, label: name })),
   ...(liveSubject.value ? [{ label: liveSubject.value.name }] : [])
 ])
-
-// What the list of documents on this page does not cover. Reef counts the subtree deduplicated, so
-// this is a count of further documents rather than of further assignments.
-const deeperDocumentCount = computed(() => {
-  const subject = liveSubject.value
-  return subject === undefined ? 0 : subject.document_count_deep - subject.document_count
-})
 
 // Reef names documents in the series this build has info pages for, so infoSeriesPathBuilder
 // throwing means Reef has sent something outside that vocabulary. Left to throw: an identifier this

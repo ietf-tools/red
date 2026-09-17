@@ -20,6 +20,22 @@ export type SubjectNode = Subject & {
   children: SubjectNode[]
 }
 
+/**
+ * What SubjectTreeList actually draws a node from — a subject's name, description, and the two
+ * counts a heading wants, plus its own children drawn the same way and the depth that says how far
+ * to indent them. `SubjectNode` satisfies this structurally, but so does a shallower tree built
+ * from one file's own `subject_meta` and `children`, which carries these fields and nothing else.
+ * The narrower type is what lets both build the same component's input without one inventing
+ * fields the other has no way to answer.
+ */
+export type SubjectTreeNode = Pick<
+  Subject,
+  'slug' | 'name' | 'description' | 'document_count' | 'document_count_deep'
+> & {
+  depth: number
+  children: SubjectTreeNode[]
+}
+
 const PATH_SEPARATOR = '/'
 
 /**

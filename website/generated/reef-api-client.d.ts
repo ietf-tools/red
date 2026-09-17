@@ -82,7 +82,7 @@ export interface paths {
      * A published subject file
      * @description Not a served endpoint. This describes the payload the precomputer publishes to `subjects/<slug>.json` in the blob store; no deployment routes this path.
      *
-     *     One file per subject, which is what lets a subject page in Red be a single fetch. It is the served `/api/reef/subjects/{slug}/` response plus `document_meta`, Red's own metadata for each document assigned here, and `subject_meta`, the curated names of this subject's ancestors and children so that a breadcrumb need not read the whole vocabulary.
+     *     One file per subject, which is what lets a subject page in Red be a single fetch. It is the served `/api/reef/subjects/{slug}/` response plus `document_meta`, Red's own metadata for each document assigned here, and `subject_meta`, every ancestor up to the root and every descendant through this subject's whole branch -- not siblings -- so that a page can draw a breadcrumb or a nested listing without a second fetch for the rest of the vocabulary.
      *
      *     A retired subject and an alias are published here too, as the same redirect stubs the served read returns, because a blob store cannot answer with a 301. Neither carries `documents`, so neither gains the two maps.
      */
@@ -690,9 +690,7 @@ export interface components {
       readonly document_meta: {
         [key: string]: components['schemas']['FullDocumentMetadata']
       }
-      readonly subject_meta: {
-        [key: string]: components['schemas']['SubjectMetadata']
-      }
+      readonly subject_meta: components['schemas']['SubjectMeta']
     }
     PrecomputedSubjectDetailOrRedirect:
       | components['schemas']['PrecomputedSubjectDetail']
@@ -777,6 +775,36 @@ export interface components {
       readonly alias_of: string
     }
     /**
+     * @description One ancestor on the way up to the root, root first.
+     *
+     *     The same fields ``Subject``/``SubjectIndexEntrySerializer`` already carry,
+     *     minus what only makes sense on a subject's own file (``children``,
+     *     ``path``). No nested children of its own: the ancestor chain is a single
+     *     line up to the root, so there is nothing to nest.
+     */
+    SubjectAncestor: {
+      slug: string
+      name: string
+      description: string
+      document_count: number
+      document_count_deep: number
+    }
+    /**
+     * @description One subject in a descendant branch, with its own children nested beneath it.
+     *
+     *     A tree, not a flat map keyed by slug: a page rendering a nested listing
+     *     needs to know which subject is whose child, and a flat map throws that
+     *     relationship away.
+     */
+    SubjectBranchNode: {
+      slug: string
+      name: string
+      description: string
+      document_count: number
+      document_count_deep: number
+      children: components['schemas']['SubjectBranchNode'][]
+    }
+    /**
      * @description A subject and the documents carrying it.
      *
      *     Separate from the list serializer for the reason me.MyDocumentSetSerializer
@@ -853,14 +881,15 @@ export interface components {
       document_count_deep: number
     }
     /**
-     * @description A subject named by another subject's file, so a page can render it.
+     * @description A subject's branch of the vocabulary: its ancestors and its whole
+     *     descendant subtree, so that a page renders both without a second fetch.
      *
-     *     Only the curated name. ``children`` and ``path`` carry slugs, and a page
-     *     showing "Email" rather than ``email`` would otherwise have to read the whole
-     *     vocabulary to find one word.
+     *     Not siblings, and not the subject itself, which carries its own name and
+     *     description at the top level of this same file already.
      */
-    SubjectMetadata: {
-      name: string
+    SubjectMeta: {
+      ancestors: components['schemas']['SubjectAncestor'][]
+      descendants: components['schemas']['SubjectBranchNode'][]
     }
     Subscription: {
       readonly id: number

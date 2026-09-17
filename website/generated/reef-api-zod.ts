@@ -153,8 +153,35 @@ export const PopularEntry = z
   .object({ rfc: z.string().max(32), rank: z.number().int().min(0).max(2147483647).optional() })
   .catchall(z.unknown())
 
-export type SubjectMetadata = __TypedOpenapi.Schemas.SubjectMetadata
-export const SubjectMetadata = z.object({ name: z.string() }).catchall(z.unknown())
+export type SubjectAncestor = __TypedOpenapi.Schemas.SubjectAncestor
+export const SubjectAncestor = z
+  .object({
+    slug: z.string(),
+    name: z.string(),
+    description: z.string(),
+    document_count: z.number().int(),
+    document_count_deep: z.number().int()
+  })
+  .catchall(z.unknown())
+
+export type SubjectBranchNode = __TypedOpenapi.Schemas.SubjectBranchNode
+export const SubjectBranchNode = z.lazy(() =>
+  z
+    .object({
+      slug: z.string(),
+      name: z.string(),
+      description: z.string(),
+      document_count: z.number().int(),
+      document_count_deep: z.number().int(),
+      children: z.array(SubjectBranchNode)
+    })
+    .catchall(z.unknown())
+)
+
+export type SubjectMeta = __TypedOpenapi.Schemas.SubjectMeta
+export const SubjectMeta = z
+  .object({ ancestors: z.array(SubjectAncestor), descendants: z.array(SubjectBranchNode) })
+  .catchall(z.unknown())
 
 export type PrecomputedSubjectDetail = __TypedOpenapi.Schemas.PrecomputedSubjectDetail
 export const PrecomputedSubjectDetail = z
@@ -172,7 +199,7 @@ export const PrecomputedSubjectDetail = z
     aliases: z.array(z.string()),
     documents: z.array(z.string()),
     document_meta: z.record(z.string(), FullDocumentMetadata),
-    subject_meta: z.record(z.string(), SubjectMetadata)
+    subject_meta: SubjectMeta
   })
   .catchall(z.unknown())
 

@@ -80,12 +80,32 @@ const documentMetaOf = (index: number) => ({
   abstract: null
 })
 
+// A curated name, description, and both counts for a subject a file mentions — ancestor or
+// descendant alike — distinguishable from anything derived from the slug alone or left at zero, so
+// a test that finds the slug or an empty count where curated data belongs fails rather than passing
+// by luck.
+const subjectMetaOf = (slug: string) => ({
+  name: nameOf(slug),
+  description: `Placeholder description for ${nameOf(slug)}.`,
+  document_count: slug.length,
+  document_count_deep: slug.length
+})
+
+// One leaf of a descendant branch: this subject's own subject_meta and nothing beneath it. Tests
+// after real nesting build their own, deeper, branch by hand instead of reaching for this.
+const subjectBranchOf = (slug: string) => ({ slug, ...subjectMetaOf(slug), children: [] })
+
 const published = (subject: SubjectDetail) => ({
   ...subject,
   document_meta: Object.fromEntries(subject.documents.map((doc, index) => [doc, documentMetaOf(index)])),
-  subject_meta: Object.fromEntries(
-    [...subject.path.split('/').slice(0, -1), ...subject.children].map((slug) => [slug, { name: nameOf(slug) }])
-  )
+  subject_meta: {
+    // Root first, the same order subject_meta itself carries them in.
+    ancestors: subject.path
+      .split('/')
+      .slice(0, -1)
+      .map((slug) => ({ slug, ...subjectMetaOf(slug) })),
+    descendants: subject.children.map(subjectBranchOf)
+  }
 })
 
 beforeEach(() => {
@@ -186,28 +206,54 @@ describe('/subjects/<slug>/', () => {
     expect(documentLinks(page)).toEqual(['/info/rfc1952/', '/info/rfc6713/'])
   })
 
-  test('links the subjects within this one by their curated name', async () => {
+  test('draws a subject in the tree from subject_meta', async () => {
     const { slug } = subjectDetailFixture
     reefAnswers(slug, subjectDetailFixture)
 
     const page = await renderPage(slug)
     const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/gzip/')
 
-    // The name out of subject_meta, not the slug: `children` carries slugs, and the file's map is
-    // what says what each one is called.
+    // subject_meta's own curated name and count, not the slug: this list is built from the
+    // published file alone, with no second fetch to carry a real name or count that subject_meta
+    // itself did not.
     expect(child?.text()).toBe(nameOf('gzip'))
+    expect(page.text()).toContain(`${nameOf('gzip')}${'gzip'.length} RFCs`)
   })
 
-  test('falls back to the slug when a file names no name for a child', async () => {
-    // A file written before subject_meta existed, or one whose map has a gap. A breadcrumb of
-    // slugs is worse than a breadcrumb of names and far better than a page that will not render.
+  test('draws a grandchild too, nested inside its own parent branch', async () => {
+    // subject_meta.descendants is a real tree: a grandchild sits inside its parent's own
+    // `children`, not beside everything else in a flat map with nothing saying whose it is.
     const { slug } = subjectDetailFixture
-    fetchSubjectFile.mockResolvedValue({ ...published(subjectDetailFixture), subject_meta: {} })
+    const grandchildSlug = 'imaginary-grandchild'
+    const withGrandchild = published(subjectDetailFixture)
+    fetchSubjectFile.mockResolvedValue({
+      ...withGrandchild,
+      subject_meta: {
+        ...withGrandchild.subject_meta,
+        descendants: withGrandchild.subject_meta.descendants.map((branch) =>
+          branch.slug === 'gzip' ? { ...branch, children: [subjectBranchOf(grandchildSlug)] } : branch
+        )
+      }
+    })
 
     const page = await renderPage(slug)
-    const child = page.findAll('a').find((link) => link.attributes('href') === '/subjects/gzip/')
+    const grandchild = page.findAll('a').find((link) => link.attributes('href') === `/subjects/${grandchildSlug}/`)
 
-    expect(child?.text()).toBe('gzip')
+    expect(grandchild?.text()).toBe(nameOf(grandchildSlug))
+  })
+
+  test('leaves out this subject and its own ancestors, even though subject_meta names them too', async () => {
+    // subject_meta also names this subject's ancestors, for the breadcrumb -- they are not part of
+    // its subtree, and drawing them a second time here would say a subject is its own descendant.
+    // One link to an ancestor's path (the breadcrumb's) rather than two is what tells them apart.
+    const { slug } = subjectDetailFixture
+    reefAnswers(slug, subjectDetailFixture)
+
+    const page = await renderPage(slug)
+
+    expect(
+      page.findAll('a').filter((link) => link.attributes('href') === '/subjects/applications-and-data-formats/')
+    ).toHaveLength(1)
   })
 
   test('shows where the subject sits, ending with itself unlinked', async () => {
@@ -244,26 +290,6 @@ describe('/subjects/<slug>/', () => {
 
     expect(breadcrumb.findAll('a').map((link) => link.text())).toEqual(['Home', 'RFCs by Subject'])
     expect(breadcrumb.text()).toContain(name)
-  })
-
-  test('says what the list of documents leaves out, rather than letting the count look wrong', async () => {
-    const { slug } = subjectDetailFixture
-    reefAnswers(slug, subjectDetailFixture)
-
-    const page = await renderPage(slug)
-
-    // Twenty documents are listed and thirty-nine are counted across the subtree, so nineteen are
-    // filed somewhere the reader cannot see from here.
-    expect(page.text()).toContain('19 further RFCs are filed under the subjects within this one')
-  })
-
-  test('says nothing about a subtree when the subject holds everything counted against it', async () => {
-    const { slug } = leafSubjectDetailFixture
-    reefAnswers(slug, leafSubjectDetailFixture)
-
-    const page = await renderPage(slug)
-
-    expect(page.text()).not.toContain('further')
   })
 
   test('says a subject nothing carries yet is empty rather than missing', async () => {

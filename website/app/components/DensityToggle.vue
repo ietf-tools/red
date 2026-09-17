@@ -1,6 +1,6 @@
 <template>
   <fieldset
-    class="flex bg-white border border-gray-700 dark:bg-black dark:border-gray-500 shadow-sm rounded-xs"
+    class="flex flex-row w-fit bg-white border border-gray-700 dark:bg-black dark:border-gray-500 shadow-sm rounded-xs"
     :style="FIELDSET_RESET">
     <legend class="sr-only">{{ legend }}</legend>
     <label
