@@ -1,8 +1,8 @@
 {
-  "id": 904,
+  "id": 510,
   "slug": "whip",
-  "name": "WHIP",
-  "description": "WebRTC-HTTP ingestion (WHIP)",
+  "name": "Whip",
+  "description": "WebRTC-HTTP ingestion (WHIP (WebRTC-HTTP Ingestion Protocol))",
   "parent": "webrtc",
   "path": "real-time-communications/webrtc/whip",
   "document_count": 1,
@@ -11,6 +11,27 @@
   "children": [],
   "aliases": [],
   "documents": ["rfc9725"],
-  "document_meta": { "rfc9725": { "title": "WebRTC-HTTP Ingestion Protocol (WHIP)", "subseries": [] } },
-  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "webrtc": { "name": "WebRTC" } }
+  "document_meta": {
+    "rfc9725": {
+      "title": "WebRTC-HTTP Ingestion Protocol (WHIP)",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [8840, 8842],
+      "updated_by": [],
+      "authors": ["S. Garcia Murillo", "A. Gouaillard"],
+      "published": "2025-03-26",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9725" }],
+      "area": { "acronym": "wit", "name": "Web and Internet Transport" },
+      "group": { "acronym": "wish", "name": "WebRTC Ingest Signaling over HTTPS" },
+      "keywords": ["webrtc", "streaming", "ingest"],
+      "pages": 28,
+      "abstract": "This document describes a simple HTTP-based protocol that will allow WebRTC-based ingestion of content into streaming services and/or Content Delivery Networks (CDNs).\n\n This document updates RFCs 8840 and 8842."
+    }
+  },
+  "subject_meta": { "real-time-communications": { "name": "Real Time Communications" }, "webrtc": { "name": "Webrtc" } }
 }

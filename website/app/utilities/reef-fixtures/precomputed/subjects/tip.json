@@ -1,8 +1,8 @@
 {
-  "id": 567,
+  "id": 249,
   "slug": "tip",
-  "name": "TIP",
-  "description": "Transaction Internet Protocol",
+  "name": "Tip",
+  "description": "TIP (Transaction Internet Protocol)",
   "parent": "applications",
   "path": "applications/tip",
   "document_count": 2,
@@ -12,8 +12,46 @@
   "aliases": [],
   "documents": ["rfc2371", "rfc2372"],
   "document_meta": {
-    "rfc2371": { "title": "Transaction Internet Protocol Version 3.0", "subseries": [] },
-    "rfc2372": { "title": "Transaction Internet Protocol - Requirements and Supplemental Information", "subseries": [] }
+    "rfc2371": {
+      "title": "Transaction Internet Protocol Version 3.0",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["J. Lyon", "K. Evans", "J. Klein"],
+      "published": "1998-07-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC2371" }],
+      "area": { "acronym": "app", "name": "Applications Area" },
+      "group": { "acronym": "tip", "name": "Transaction Internet Protocol" },
+      "keywords": ["TIPV3", "Transaction Internet Protocol", "commit", "electronic", "commerce"],
+      "pages": 31,
+      "abstract": "In many applications where different nodes cooperate on some work, there is a need to guarantee that the work happens atomically.  That is, each node must reach the same conclusion as to whether the work is to be completed, even in the face of failures.  This document proposes a simple, easily-implemented protocol for achieving this end. [STANDARDS-TRACK]"
+    },
+    "rfc2372": {
+      "title": "Transaction Internet Protocol - Requirements and Supplemental Information",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["K. Evans", "J. Klein", "J. Lyon"],
+      "published": "1998-07-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC2372" }],
+      "area": { "acronym": "app", "name": "Applications Area" },
+      "group": { "acronym": "tip", "name": "Transaction Internet Protocol" },
+      "keywords": ["TIP", "commit", "protocol", "electronic", "commerce"],
+      "pages": 24,
+      "abstract": "This document describes the purpose (usage scenarios), and requirements for the Transaction Internet Protocol.  This memo provides information for the Internet community.  It does not specify an Internet standard of any kind."
+    }
   },
   "subject_meta": { "applications": { "name": "Applications" } }
 }

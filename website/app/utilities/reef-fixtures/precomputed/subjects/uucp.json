@@ -1,8 +1,8 @@
 {
-  "id": 655,
+  "id": 263,
   "slug": "uucp",
-  "name": "UUCP",
-  "description": "UUCP mail interchange",
+  "name": "Uucp",
+  "description": "UUCP (Unix-to-Unix Copy) mail interchange",
   "parent": "messaging",
   "path": "messaging/uucp",
   "document_count": 2,
@@ -12,8 +12,46 @@
   "aliases": [],
   "documents": ["rfc915", "rfc976"],
   "document_meta": {
-    "rfc915": { "title": "Network mail path service", "subseries": [] },
-    "rfc976": { "title": "UUCP mail interchange format standard", "subseries": [] }
+    "rfc915": {
+      "title": "Network mail path service",
+      "subseries": [],
+      "status": "unkn",
+      "status_name": "unknown",
+      "stream": "Legacy",
+      "stream_name": "Legacy",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["M.A. Elvy", "R. Nedved"],
+      "published": "1984-12-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC915" }],
+      "area": null,
+      "group": { "acronym": "none", "name": "Individual Submissions" },
+      "keywords": [],
+      "pages": 11,
+      "abstract": "This RFC proposed a new service for the ARPA-Internet community and requests discussion and suggestions for improvements.  The network mail path service fills the current need of people to determine mailbox addresses for hosts that are not part of the ARPA-Internet but can be reached by one or more relay hosts that have Unix to Unix Copy (UUCP) mail, CSNET mail, MAILNET mail, BITNET mail, etc.  Anyone can use the service if they have TCP/TELENET to one of the hosts with a mail path server."
+    },
+    "rfc976": {
+      "title": "UUCP mail interchange format standard",
+      "subseries": [],
+      "status": "unkn",
+      "status_name": "unknown",
+      "stream": "Legacy",
+      "stream_name": "Legacy",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [1137],
+      "authors": ["M.R. Horton"],
+      "published": "1986-02-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC976" }],
+      "area": null,
+      "group": { "acronym": "none", "name": "Individual Submissions" },
+      "keywords": [],
+      "pages": 12,
+      "abstract": "This document defines the standard format for the transmission of mail messages between computers in the UUCP Project.  It does not however, address the format for storage of messages on one machine, nor the lower level transport mechanisms used to get the date from one machine to the next.  It represents a standard for conformance by hosts in the UUCP zone."
+    }
   },
   "subject_meta": { "messaging": { "name": "Messaging" } }
 }

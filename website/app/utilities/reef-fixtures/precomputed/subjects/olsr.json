@@ -1,8 +1,8 @@
 {
-  "id": 912,
+  "id": 420,
   "slug": "olsr",
-  "name": "OLSR",
-  "description": "Optimized Link State Routing",
+  "name": "Olsr",
+  "description": "OLSR (Optimized Link State Routing)",
   "parent": "manet",
   "path": "routing/manet/olsr",
   "document_count": 3,
@@ -12,15 +12,94 @@
   "aliases": [],
   "documents": ["rfc3626", "rfc7185", "rfc7779"],
   "document_meta": {
-    "rfc3626": { "title": "Optimized Link State Routing Protocol (OLSR)", "subseries": [] },
+    "rfc3626": {
+      "title": "Optimized Link State Routing Protocol (OLSR)",
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["T. Clausen", "P. Jacquet"],
+      "published": "2003-10-13",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC3626" }],
+      "area": { "acronym": "rtg", "name": "Routing Area" },
+      "group": { "acronym": "manet", "name": "Mobile Ad-hoc Networks" },
+      "keywords": [
+        "OLSR",
+        "Optimized Link State Routing",
+        "mobile ad hoc",
+        "wireless multipoint relays",
+        "mpr",
+        "mprs"
+      ],
+      "pages": 75,
+      "abstract": "This document describes the Optimized Link State Routing (OLSR) protocol for mobile ad hoc networks.  The protocol is an optimization of the classical link state algorithm tailored to the requirements of a mobile wireless LAN.  The key concept used in the protocol is that of multipoint relays (MPRs).  MPRs are selected nodes which forward broadcast messages during the flooding process.  This technique substantially reduces the message overhead as compared to a classical flooding mechanism, where every node retransmits each message when it receives the first copy of the message.  In OLSR, link state information is generated only by nodes elected as MPRs.  Thus, a second optimization is achieved by minimizing the number of control messages flooded in the network.  As a third optimization, an MPR node may chose to report only links between itself and its MPR selectors.  Hence, as contrary to the classic link state algorithm, partial link state information is distributed in the network.  This information is then used for route calculation.  OLSR provides optimal routes (in terms of number of hops).  The protocol is particularly suitable for large and dense networks as the technique of MPRs works well in this context."
+    },
     "rfc7185": {
       "title": "Link Metrics for the Mobile Ad Hoc Network (MANET) Routing Protocol OLSRv2 - Rationale",
-      "subseries": []
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["C. Dearlove", "T. Clausen", "P. Jacquet"],
+      "published": "2014-04-10",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC7185" }],
+      "area": { "acronym": "rtg", "name": "Routing Area" },
+      "group": { "acronym": "manet", "name": "Mobile Ad-hoc Networks" },
+      "keywords": [
+        "MANET",
+        "ad hoc network",
+        "proactive",
+        "NHDP",
+        "neighborhood discovery",
+        "OLSR",
+        "OLSRv2",
+        "routing protocol",
+        "metrics"
+      ],
+      "pages": 25,
+      "abstract": "The Optimized Link State Routing Protocol version 2 (OLSRv2) includes the ability to assign metrics to links and to use those metrics to allow routing by other than minimum hop count routes.  This document provides a historic record of the rationale for, and design considerations behind, how link metrics were included in OLSRv2."
     },
     "rfc7779": {
       "title": "Directional Airtime Metric Based on Packet Sequence Numbers for Optimized Link State Routing Version 2 (OLSRv2)",
-      "subseries": []
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["H. Rogge", "E. Baccelli"],
+      "published": "2016-04-19",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC7779" }],
+      "area": { "acronym": "rtg", "name": "Routing Area" },
+      "group": { "acronym": "manet", "name": "Mobile Ad-hoc Networks" },
+      "keywords": [
+        "MANET",
+        "metric",
+        "ad hoc network",
+        "routing",
+        "IP networks",
+        "OLSR",
+        "ETT",
+        "ETX",
+        "Funkfeuer",
+        "DAT"
+      ],
+      "pages": 21,
+      "abstract": "This document specifies a Directional Airtime (DAT) link metric for usage in Optimized Link State Routing version 2 (OLSRv2)."
     }
   },
-  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "MANET" } }
+  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "Manet" } }
 }

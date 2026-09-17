@@ -1,8 +1,8 @@
 {
-  "id": 921,
+  "id": 401,
   "slug": "mospf",
-  "name": "MOSPF",
-  "description": "Multicast extensions to OSPF",
+  "name": "Mospf",
+  "description": "MOSPF (Multicast Extensions to OSPF)",
   "parent": "multicast",
   "path": "routing/multicast/mospf",
   "document_count": 1,
@@ -11,6 +11,27 @@
   "children": [],
   "aliases": [],
   "documents": ["rfc1584"],
-  "document_meta": { "rfc1584": { "title": "Multicast Extensions to OSPF", "subseries": [] } },
+  "document_meta": {
+    "rfc1584": {
+      "title": "Multicast Extensions to OSPF",
+      "subseries": [],
+      "status": "hist",
+      "status_name": "historic",
+      "stream": "Legacy",
+      "stream_name": "Legacy",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["J. Moy"],
+      "published": "1994-03-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC1584" }],
+      "area": null,
+      "group": { "acronym": "mospf", "name": "Multicast Extensions to OSPF" },
+      "keywords": ["OSPF-Multi", "Open", "Shortest", "Path", "First"],
+      "pages": 102,
+      "abstract": "This memo documents enhancements to the OSPF protocol enabling the routing of IP multicast datagrams. [STANDARDS-TRACK]"
+    }
+  },
   "subject_meta": { "routing": { "name": "Routing" }, "multicast": { "name": "Multicast" } }
 }

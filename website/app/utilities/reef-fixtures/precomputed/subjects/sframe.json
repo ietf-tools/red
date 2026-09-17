@@ -1,8 +1,8 @@
 {
-  "id": 903,
+  "id": 467,
   "slug": "sframe",
-  "name": "SFrame",
-  "description": "SFrame end-to-end media encryption",
+  "name": "Sframe",
+  "description": "SFrame (Secure Frame) end-to-end media encryption",
   "parent": "webrtc",
   "path": "real-time-communications/webrtc/sframe",
   "document_count": 1,
@@ -14,8 +14,24 @@
   "document_meta": {
     "rfc9605": {
       "title": "Secure Frame (SFrame): Lightweight Authenticated Encryption for Real-Time Media",
-      "subseries": []
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["E. Omara", "J. Uberti", "S. G. Murillo", "R. Barnes", "Y. Fablet"],
+      "published": "2024-08-27",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9605" }],
+      "area": { "acronym": "art", "name": "Applications and Real-Time Area" },
+      "group": { "acronym": "sframe", "name": "Secure Media Frames" },
+      "keywords": ["security", "real-time media encryption", "end-to-end encryption"],
+      "pages": 68,
+      "abstract": "This document describes the Secure Frame (SFrame) end-to-end encryption and authentication mechanism for media frames in a multiparty conference call, in which central media servers (Selective Forwarding Units or SFUs) can access the media metadata needed to make forwarding decisions without having access to the actual media.\n\n This mechanism differs from the Secure Real-Time Protocol (SRTP) in that it is independent of RTP (thus compatible with non-RTP media transport) and can be applied to whole media frames in order to be more bandwidth efficient."
     }
   },
-  "subject_meta": { "real-time-communications": { "name": "Real-Time Communications" }, "webrtc": { "name": "WebRTC" } }
+  "subject_meta": { "real-time-communications": { "name": "Real Time Communications" }, "webrtc": { "name": "Webrtc" } }
 }

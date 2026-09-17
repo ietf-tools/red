@@ -1,8 +1,8 @@
 {
-  "id": 620,
+  "id": 213,
   "slug": "sdf",
-  "name": "SDF",
-  "description": "Semantic Definition Format for IoT data models",
+  "name": "Sdf",
+  "description": "SDF (Semantic Definition Format) for IoT data models",
   "parent": "iot",
   "path": "iot/sdf",
   "document_count": 1,
@@ -12,7 +12,26 @@
   "aliases": [],
   "documents": ["rfc9880"],
   "document_meta": {
-    "rfc9880": { "title": "Semantic Definition Format (SDF) for Data and Interactions of Things", "subseries": [] }
+    "rfc9880": {
+      "title": "Semantic Definition Format (SDF) for Data and Interactions of Things",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["M. Koster", "C. Bormann", "A. Keränen"],
+      "published": "2026-01-30",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9880" }],
+      "area": { "acronym": "art", "name": "Applications and Real-Time Area" },
+      "group": { "acronym": "asdf", "name": "A Semantic Definition Format for Data and Interactions of Things" },
+      "keywords": ["IoT", "Device Model", "Interaction Model", "Affordance", "Property", "Action", "Event"],
+      "pages": 92,
+      "abstract": "The Semantic Definition Format (SDF) is a format for domain experts to use in the creation and maintenance of data and interaction models that describe Things, i.e., physical objects that are available for interaction over a network.  An SDF specification describes definitions of SDF Objects/SDF Things and their associated interactions (Events, Actions, and Properties), as well as the Data types for the information exchanged in those interactions.  Tools convert this format to database formats and other serializations as needed."
+    }
   },
-  "subject_meta": { "iot": { "name": "IoT" } }
+  "subject_meta": { "iot": { "name": "Iot" } }
 }

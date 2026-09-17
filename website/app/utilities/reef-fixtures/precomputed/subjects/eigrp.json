@@ -1,8 +1,8 @@
 {
-  "id": 704,
+  "id": 81,
   "slug": "eigrp",
-  "name": "EIGRP",
-  "description": "Enhanced Interior Gateway Routing Protocol",
+  "name": "Eigrp",
+  "description": "EIGRP (Enhanced Interior Gateway Routing Protocol)",
   "parent": "routing",
   "path": "routing/eigrp",
   "document_count": 1,
@@ -12,7 +12,26 @@
   "aliases": [],
   "documents": ["rfc7868"],
   "document_meta": {
-    "rfc7868": { "title": "Cisco's Enhanced Interior Gateway Routing Protocol (EIGRP)", "subseries": [] }
+    "rfc7868": {
+      "title": "Cisco's Enhanced Interior Gateway Routing Protocol (EIGRP)",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "INDEPENDENT",
+      "stream_name": "Independent Stream",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["D. Savage", "J. Ng", "S. Moore", "D. Slice", "P. Paluch", "R. White"],
+      "published": "2016-05-25",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC7868" }],
+      "area": null,
+      "group": { "acronym": "none", "name": "Individual Submissions" },
+      "keywords": [],
+      "pages": 80,
+      "abstract": "This document describes the protocol design and architecture for Enhanced Interior Gateway Routing Protocol (EIGRP).  EIGRP is a routing protocol based on Distance Vector technology.  The specific algorithm used is called \"DUAL\", a Diffusing Update Algorithm as referenced in \"Loop-Free Routing Using Diffusing Computations\" (Garcia-Luna-Aceves 1993).  The algorithm and procedures were researched, developed, and simulated by SRI International."
+    }
   },
   "subject_meta": { "routing": { "name": "Routing" } }
 }

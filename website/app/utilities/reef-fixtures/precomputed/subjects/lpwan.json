@@ -1,34 +1,37 @@
 {
-  "id": 617,
+  "id": 146,
   "slug": "lpwan",
-  "name": "LPWAN",
-  "description": "Low-power wide-area networks",
+  "name": "Lpwan",
+  "description": "LPWAN (Low-Power Wide-Area Network) technologies over IP",
   "parent": "iot",
   "path": "iot/lpwan",
-  "document_count": 8,
+  "document_count": 1,
   "document_count_deep": 8,
   "retired": false,
   "children": ["schc"],
   "aliases": [],
-  "documents": ["rfc8376", "rfc8724", "rfc8824", "rfc9011", "rfc9363", "rfc9391", "rfc9441", "rfc9442"],
+  "documents": ["rfc8376"],
   "document_meta": {
-    "rfc8376": { "title": "Low-Power Wide Area Network (LPWAN) Overview", "subseries": [] },
-    "rfc8724": {
-      "title": "SCHC: Generic Framework for Static Context Header Compression and Fragmentation",
-      "subseries": []
-    },
-    "rfc8824": {
-      "title": "Static Context Header Compression (SCHC) for the Constrained Application Protocol (CoAP)",
-      "subseries": []
-    },
-    "rfc9011": { "title": "Static Context Header Compression and Fragmentation (SCHC) over LoRaWAN", "subseries": [] },
-    "rfc9363": { "title": "A YANG Data Model for Static Context Header Compression (SCHC)", "subseries": [] },
-    "rfc9391": { "title": "Static Context Header Compression over Narrowband Internet of Things", "subseries": [] },
-    "rfc9441": { "title": "Static Context Header Compression (SCHC) Compound Acknowledgement (ACK)", "subseries": [] },
-    "rfc9442": {
-      "title": "Static Context Header Compression (SCHC) over Sigfox Low-Power Wide Area Network (LPWAN)",
-      "subseries": []
+    "rfc8376": {
+      "title": "Low-Power Wide Area Network (LPWAN) Overview",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["S. Farrell"],
+      "published": "2018-05-31",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC8376" }],
+      "area": { "acronym": "int", "name": "Internet Area" },
+      "group": { "acronym": "lpwan", "name": "IPv6 over Low Power Wide-Area Networks" },
+      "keywords": ["Low Power Wide Area Network Overview"],
+      "pages": 43,
+      "abstract": "Low-Power Wide Area Networks (LPWANs) are wireless technologies with characteristics such as large coverage areas, low bandwidth, possibly very small packet and application-layer data sizes, and long battery life operation.  This memo is an informational overview of the set of LPWAN technologies being considered in the IETF and of the gaps that exist between the needs of those technologies and the goal of running IP in LPWANs."
     }
   },
-  "subject_meta": { "iot": { "name": "IoT" }, "schc": { "name": "SCHC" } }
+  "subject_meta": { "iot": { "name": "Iot" }, "schc": { "name": "Schc" } }
 }

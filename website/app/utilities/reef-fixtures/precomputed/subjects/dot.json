@@ -1,8 +1,8 @@
 {
-  "id": 1019,
+  "id": 527,
   "slug": "dot",
-  "name": "DNS over TLS",
-  "description": "DNS over TLS",
+  "name": "Dot",
+  "description": "DNS over TLS (DoT)",
   "parent": "dns-privacy",
   "path": "naming/dns/dns-privacy/dot",
   "document_count": 2,
@@ -12,11 +12,56 @@
   "aliases": [],
   "documents": ["rfc8310", "rfc9539"],
   "document_meta": {
-    "rfc8310": { "title": "Usage Profiles for DNS over TLS and DNS over DTLS", "subseries": [] },
+    "rfc8310": {
+      "title": "Usage Profiles for DNS over TLS and DNS over DTLS",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [7858],
+      "updated_by": [],
+      "authors": ["S. Dickinson", "D. Gillmor", "T. Reddy"],
+      "published": "2018-03-21",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC8310" }],
+      "area": { "acronym": "int", "name": "Internet Area" },
+      "group": { "acronym": "dprive", "name": "DNS PRIVate Exchange" },
+      "keywords": ["DNS", "transport"],
+      "pages": 27,
+      "abstract": "This document discusses usage profiles, based on one or more authentication mechanisms, which can be used for DNS over Transport Layer Security (TLS) or Datagram TLS (DTLS).  These profiles can increase the privacy of DNS transactions compared to using only cleartext DNS.  This document also specifies new authentication mechanisms -- it describes several ways that a DNS client can use an authentication domain name to authenticate a (D)TLS connection to a DNS server.  Additionally, it defines (D)TLS protocol profiles for DNS clients and servers implementing DNS over (D)TLS.  This document updates RFC 7858."
+    },
     "rfc9539": {
       "title": "Unilateral Opportunistic Deployment of Encrypted Recursive-to-Authoritative DNS",
-      "subseries": []
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["D. K. Gillmor", "J. Salazar", "P. Hoffman"],
+      "published": "2024-02-28",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9539" }],
+      "area": { "acronym": "int", "name": "Internet Area" },
+      "group": { "acronym": "dprive", "name": "DNS PRIVate Exchange" },
+      "keywords": [
+        "DNS over TLS",
+        "DNS over QUIC",
+        "ToT",
+        "DoQ",
+        "encryption",
+        "unilateral",
+        "recursive",
+        "authoritative",
+        "DNS"
+      ],
+      "pages": 24,
+      "abstract": "This document sets out steps that DNS servers (recursive resolvers and authoritative servers) can take unilaterally (without any coordination with other peers) to defend DNS query privacy against a passive network monitor. The protections provided by the guidance in this document can be defeated by an active attacker, but they should be simpler and less risky to deploy than more powerful defenses.\n\n The goal of this document is to simplify and speed up deployment of opportunistic encrypted transport in the recursive-to-authoritative hop of the DNS ecosystem. Wider easy deployment of the underlying encrypted transport on an opportunistic basis may facilitate the future specification of stronger cryptographic protections against more-powerful attacks."
     }
   },
-  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "DNS" }, "dns-privacy": { "name": "DNS Privacy" } }
+  "subject_meta": { "naming": { "name": "Naming" }, "dns": { "name": "Dns" }, "dns-privacy": { "name": "Dns Privacy" } }
 }

@@ -1,5 +1,5 @@
 {
-  "id": 569,
+  "id": 278,
   "slug": "x-window-system",
   "name": "X Window System",
   "description": "The X Window System protocol",
@@ -12,8 +12,46 @@
   "aliases": [],
   "documents": ["rfc1013", "rfc1198"],
   "document_meta": {
-    "rfc1013": { "title": "X Window System Protocol, version 11: Alpha update April 1987", "subseries": [] },
-    "rfc1198": { "title": "FYI on the X window system", "subseries": ["fyi6"] }
+    "rfc1013": {
+      "title": "X Window System Protocol, version 11: Alpha update April 1987",
+      "subseries": [],
+      "status": "unkn",
+      "status_name": "unknown",
+      "stream": "Legacy",
+      "stream_name": "Legacy",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["R.W. Scheifler"],
+      "published": "1987-06-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC1013" }],
+      "area": null,
+      "group": { "acronym": "none", "name": "Individual Submissions" },
+      "keywords": [],
+      "pages": 101,
+      "abstract": "This RFC is distributed to the Internet community for information only.  It does not establish an Internet standard.  The X window system has been widely reviewed and tested.  The Internet community is encouraged to experiment with it."
+    },
+    "rfc1198": {
+      "title": "FYI on the X window system",
+      "subseries": ["fyi6"],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "Legacy",
+      "stream_name": "Legacy",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["R.W. Scheifler"],
+      "published": "1991-01-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC1198" }],
+      "area": null,
+      "group": { "acronym": "none", "name": "Individual Submissions" },
+      "keywords": [],
+      "pages": 3,
+      "abstract": "This FYI RFC provides pointers to the published standards of the MIT X Consortium.  This memo provides information for the Internet community.  It does not specify any Internet standard."
+    }
   },
   "subject_meta": { "applications": { "name": "Applications" } }
 }

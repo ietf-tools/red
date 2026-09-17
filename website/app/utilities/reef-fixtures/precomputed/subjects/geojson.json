@@ -1,7 +1,7 @@
 {
-  "id": 820,
+  "id": 346,
   "slug": "geojson",
-  "name": "GeoJSON",
+  "name": "Geojson",
   "description": "GeoJSON geographic data",
   "parent": "json",
   "path": "data-formats/json/geojson",
@@ -12,8 +12,46 @@
   "aliases": [],
   "documents": ["rfc7946", "rfc8142"],
   "document_meta": {
-    "rfc7946": { "title": "The GeoJSON Format", "subseries": [] },
-    "rfc8142": { "title": "GeoJSON Text Sequences", "subseries": [] }
+    "rfc7946": {
+      "title": "The GeoJSON Format",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["H. Butler", "M. Daly", "A. Doyle", "S. Gillies", "S. Hagen", "T. Schaub"],
+      "published": "2016-08-10",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC7946" }],
+      "area": { "acronym": "art", "name": "Applications and Real-Time Area" },
+      "group": { "acronym": "geojson", "name": "Geographic JSON" },
+      "keywords": ["JSON", "Geospatial", "JavaScript Object Notation"],
+      "pages": 28,
+      "abstract": "GeoJSON is a geospatial data interchange format based on JavaScript Object Notation (JSON).  It defines several types of JSON objects and the manner in which they are combined to represent data about geographic features, their properties, and their spatial extents.  GeoJSON uses a geographic coordinate reference system, World Geodetic System 1984, and units of decimal degrees."
+    },
+    "rfc8142": {
+      "title": "GeoJSON Text Sequences",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["S. Gillies"],
+      "published": "2017-04-27",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC8142" }],
+      "area": { "acronym": "art", "name": "Applications and Real-Time Area" },
+      "group": { "acronym": "geojson", "name": "Geographic JSON" },
+      "keywords": ["JSON", "Geospatial", "JavaScript Object Notation"],
+      "pages": 5,
+      "abstract": "This document describes the GeoJSON text sequence format and \"application/geo+json-seq\" media type.  This format is based on JavaScript Object Notation (JSON) text sequences and GeoJSON, and it makes arbitrarily large geographic datasets incrementally parseable without restricting the form of GeoJSON texts within a sequence."
+    }
   },
-  "subject_meta": { "data-formats": { "name": "Data Formats" }, "json": { "name": "JSON" } }
+  "subject_meta": { "data-formats": { "name": "Data Formats" }, "json": { "name": "Json" } }
 }

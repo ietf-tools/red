@@ -1,8 +1,8 @@
 {
-  "id": 637,
+  "id": 179,
   "slug": "paws",
-  "name": "PAWS",
-  "description": "Protocol to access TV white-space databases",
+  "name": "Paws",
+  "description": "PAWS (Protocol to Access White-Space databases)",
   "parent": "link-layer",
   "path": "link-layer/paws",
   "document_count": 2,
@@ -14,9 +14,55 @@
   "document_meta": {
     "rfc6953": {
       "title": "Protocol to Access White-Space (PAWS) Databases: Use Cases and Requirements",
-      "subseries": []
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["A. Mancuso", "S. Probasco", "B. Patil"],
+      "published": "2013-05-22",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC6953" }],
+      "area": { "acronym": "app", "name": "Applications Area" },
+      "group": { "acronym": "paws", "name": "Protocol to Access WS database" },
+      "keywords": [],
+      "pages": 23,
+      "abstract": "Portions of the radio spectrum that are assigned to a particular use but are unused or unoccupied at specific locations and times are defined as \"white space\".  The concept of allowing additional transmissions (which may or may not be licensed) in white space is a technique to \"unlock\" existing spectrum for new use.  This document includes the problem statement for the development of a protocol to access a database of white-space information followed by use cases and requirements for that protocol.  Finally, requirements associated with the protocol are presented."
     },
-    "rfc7545": { "title": "Protocol to Access White-Space (PAWS) Databases", "subseries": [] }
+    "rfc7545": {
+      "title": "Protocol to Access White-Space (PAWS) Databases",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["V. Chen", "S. Das", "L. Zhu", "J. Malyar", "P. McCann"],
+      "published": "2015-05-19",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC7545" }],
+      "area": { "acronym": "app", "name": "Applications Area" },
+      "group": { "acronym": "paws", "name": "Protocol to Access WS database" },
+      "keywords": [
+        "dynamic spectrum",
+        "radio spectrum",
+        "wireless spectrum",
+        "spectrum",
+        "spectrum database",
+        "TV white space",
+        "TVWS",
+        "TVBD",
+        "white space device",
+        "WSD"
+      ],
+      "pages": 90,
+      "abstract": "Portions of the radio spectrum that are allocated to licensees are available for non-interfering use. This available spectrum is called \"white space\". Allowing secondary users access to available spectrum \"unlocks\" existing spectrum to maximize its utilization and to provide opportunities for innovation, resulting in greater overall spectrum utilization.\n\n One approach to managing spectrum sharing uses databases to report spectrum availability to devices. To achieve interoperability among multiple devices and databases, a standardized protocol must be defined and implemented. This document defines such a protocol, the \"Protocol to Access White-Space (PAWS) Databases\"."
+    }
   },
   "subject_meta": { "link-layer": { "name": "Link Layer" } }
 }

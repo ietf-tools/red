@@ -1,8 +1,8 @@
 {
-  "id": 728,
+  "id": 259,
   "slug": "tvr",
-  "name": "Time-Variant Routing",
-  "description": "Time-variant routing over scheduled connectivity",
+  "name": "Tvr",
+  "description": "Time-Variant Routing over scheduled connectivity",
   "parent": "routing",
   "path": "routing/tvr",
   "document_count": 1,
@@ -11,6 +11,27 @@
   "children": [],
   "aliases": [],
   "documents": ["rfc9657"],
-  "document_meta": { "rfc9657": { "title": "Time-Variant Routing (TVR) Use Cases", "subseries": [] } },
+  "document_meta": {
+    "rfc9657": {
+      "title": "Time-Variant Routing (TVR) Use Cases",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["E. Birrane, III", "N. Kuhn", "Y. Qu", "R. Taylor", "L. Zhang"],
+      "published": "2024-10-08",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9657" }],
+      "area": { "acronym": "rtg", "name": "Routing Area" },
+      "group": { "acronym": "tvr", "name": "Time-Variant Routing" },
+      "keywords": ["Time-variant", "Routing", "Mobility", "Green computing", "Resource management"],
+      "pages": 14,
+      "abstract": "This document introduces use cases where Time-Variant Routing (TVR) computations (i.e., routing computations that take into consideration time-based or scheduled changes to a network) could improve routing protocol convergence and/or network performance."
+    }
+  },
   "subject_meta": { "routing": { "name": "Routing" } }
 }

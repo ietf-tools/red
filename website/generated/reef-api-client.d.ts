@@ -58,7 +58,7 @@ export interface paths {
      * The published subject index
      * @description Not a served endpoint. This describes the payload the precomputer publishes to `subjects.json` in the blob store, which is where Red reads it from; no deployment routes this path.
      *
-     *     It is the vocabulary as a tree with every assignment and every document title, in one file, so that a caller renders the subject listing from a single fetch. Two keyed maps: `subjects` by slug in tree order, and `documents` by identifier, referenced from the entries rather than repeated beside each subject that covers the document.
+     *     It is the vocabulary as a tree with every assignment and every document title, in one file, so that a caller renders the subject listing from a single fetch. Two keyed maps: `subjects` by slug in tree order, and `documents` by identifier, referenced from the entries rather than repeated beside each subject that covers the document. A document's fuller metadata -- status, authors, abstract and the rest -- is on its own subject's file, not repeated here for every subject that covers it.
      *
      *     Retired subjects and aliases are absent: they are not offered, and the per-subject files are what answer for them.
      */
@@ -82,7 +82,7 @@ export interface paths {
      * A published subject file
      * @description Not a served endpoint. This describes the payload the precomputer publishes to `subjects/<slug>.json` in the blob store; no deployment routes this path.
      *
-     *     One file per subject, which is what lets a subject page in Red be a single fetch. It is the served `/api/reef/subjects/{slug}/` response plus `document_meta`, the title of each document assigned here, and `subject_meta`, the curated names of this subject's ancestors and children so that a breadcrumb need not read the whole vocabulary.
+     *     One file per subject, which is what lets a subject page in Red be a single fetch. It is the served `/api/reef/subjects/{slug}/` response plus `document_meta`, Red's own metadata for each document assigned here, and `subject_meta`, the curated names of this subject's ancestors and children so that a breadcrumb need not read the whole vocabulary.
      *
      *     A retired subject and an alias are published here too, as the same redirect stubs the served read returns, because a blob store cannot answer with a 301. Neither carries `documents`, so neither gains the two maps.
      */
@@ -175,14 +175,9 @@ export interface paths {
     /**
      * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     One URL for a set, whoever is asking: the id is the whole of a set's
-     *     identity, so a shared link is this link and there is no second read
-     *     endpoint to keep in step with it. Reading needs no token, which is what
-     *     makes the link shareable, and holding the id is the whole of the
-     *     permission: a set is a thing its owner made to be passed around, and the
-     *     id is unguessable so that passing it around is the only way in. Writing is
-     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
-     *     so that the refusal says nothing about whose it is.
+     *     One URL for a set, whoever is asking. Holding the unguessable id is the
+     *     whole of the read permission; writes are the owner's, and 404 rather than
+     *     403 so the refusal says nothing about whose it is.
      *
      *     A set staff have taken down 404s here too, for everyone alike: it is left
      *     out of the queryset rather than refused, so nothing confirms it exists.
@@ -191,14 +186,9 @@ export interface paths {
     /**
      * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     One URL for a set, whoever is asking: the id is the whole of a set's
-     *     identity, so a shared link is this link and there is no second read
-     *     endpoint to keep in step with it. Reading needs no token, which is what
-     *     makes the link shareable, and holding the id is the whole of the
-     *     permission: a set is a thing its owner made to be passed around, and the
-     *     id is unguessable so that passing it around is the only way in. Writing is
-     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
-     *     so that the refusal says nothing about whose it is.
+     *     One URL for a set, whoever is asking. Holding the unguessable id is the
+     *     whole of the read permission; writes are the owner's, and 404 rather than
+     *     403 so the refusal says nothing about whose it is.
      *
      *     A set staff have taken down 404s here too, for everyone alike: it is left
      *     out of the queryset rather than refused, so nothing confirms it exists.
@@ -208,14 +198,9 @@ export interface paths {
     /**
      * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     One URL for a set, whoever is asking: the id is the whole of a set's
-     *     identity, so a shared link is this link and there is no second read
-     *     endpoint to keep in step with it. Reading needs no token, which is what
-     *     makes the link shareable, and holding the id is the whole of the
-     *     permission: a set is a thing its owner made to be passed around, and the
-     *     id is unguessable so that passing it around is the only way in. Writing is
-     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
-     *     so that the refusal says nothing about whose it is.
+     *     One URL for a set, whoever is asking. Holding the unguessable id is the
+     *     whole of the read permission; writes are the owner's, and 404 rather than
+     *     403 so the refusal says nothing about whose it is.
      *
      *     A set staff have taken down 404s here too, for everyone alike: it is left
      *     out of the queryset rather than refused, so nothing confirms it exists.
@@ -226,14 +211,9 @@ export interface paths {
     /**
      * @description Read a set; retitle, redescribe or delete your own.
      *
-     *     One URL for a set, whoever is asking: the id is the whole of a set's
-     *     identity, so a shared link is this link and there is no second read
-     *     endpoint to keep in step with it. Reading needs no token, which is what
-     *     makes the link shareable, and holding the id is the whole of the
-     *     permission: a set is a thing its owner made to be passed around, and the
-     *     id is unguessable so that passing it around is the only way in. Writing is
-     *     the owner's alone, and a write to somebody else's set 404s rather than 403s
-     *     so that the refusal says nothing about whose it is.
+     *     One URL for a set, whoever is asking. Holding the unguessable id is the
+     *     whole of the read permission; writes are the owner's, and 404 rather than
+     *     403 so the refusal says nothing about whose it is.
      *
      *     A set staff have taken down 404s here too, for everyone alike: it is left
      *     out of the queryset rather than refused, so nothing confirms it exists.
@@ -511,7 +491,17 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
-    /** @description A document as a published file names it: what Red's index says about it. */
+    /** @description The area or group a document belongs to, narrowed to what a page names. */
+    DocumentAreaOrGroup: {
+      acronym: string
+      name: string
+    }
+    /** @description One persistent identifier -- a DOI or an ISSN -- Red records for a document. */
+    DocumentIdentifier: {
+      type: string
+      value: string
+    }
+    /** @description A document as the index file names it: just enough to render a row. */
     DocumentMetadata: {
       title: string | null
       subseries: string[]
@@ -546,6 +536,27 @@ export interface components {
       rating_count: number
       subscriber_count: number
       set_count: number
+    }
+    /** @description A document as its own subject's file names it: everything Red's index says. */
+    FullDocumentMetadata: {
+      title: string | null
+      subseries: string[]
+      status: string | null
+      status_name: string | null
+      stream: string | null
+      stream_name: string | null
+      obsoletes: number[]
+      obsoleted_by: number[]
+      updates: number[]
+      updated_by: number[]
+      authors: string[]
+      published: string | null
+      identifiers: components['schemas']['DocumentIdentifier'][]
+      area: components['schemas']['DocumentAreaOrGroup'] | null
+      group: components['schemas']['DocumentAreaOrGroup'] | null
+      keywords: string[]
+      pages: number | null
+      abstract: string | null
     }
     /**
      * @description * `new_rfc` - Any new RFC
@@ -671,14 +682,13 @@ export interface components {
       /**
        * @description The documents assigned to this subject, and not to those beneath it.
        *
-       *     Unchanged in meaning, deliberately. Red consumes this array and the
-       *     precomputer keys document_meta off it, so widening it to the subtree would
-       *     be a contract change dressed up as a bug fix. The subtree is the index
-       *     file's business.
+       *     Direct assignments only. Red consumes this array and the precomputer keys
+       *     document_meta off it, so widening it to the subtree would be a contract
+       *     change. The subtree is the index file's business.
        */
       readonly documents: string[]
       readonly document_meta: {
-        [key: string]: components['schemas']['DocumentMetadata']
+        [key: string]: components['schemas']['FullDocumentMetadata']
       }
       readonly subject_meta: {
         [key: string]: components['schemas']['SubjectMetadata']
@@ -793,10 +803,9 @@ export interface components {
       /**
        * @description The documents assigned to this subject, and not to those beneath it.
        *
-       *     Unchanged in meaning, deliberately. Red consumes this array and the
-       *     precomputer keys document_meta off it, so widening it to the subtree would
-       *     be a contract change dressed up as a bug fix. The subtree is the index
-       *     file's business.
+       *     Direct assignments only. Red consumes this array and the precomputer keys
+       *     document_meta off it, so widening it to the subtree would be a contract
+       *     change. The subtree is the index file's business.
        */
       readonly documents: string[]
     }
@@ -828,9 +837,9 @@ export interface components {
     /**
      * @description One subject in the index file.
      *
-     *     Field order is the file's key order and is load-bearing while the byte
-     *     equality test against the old hand-built payload stands. It is the list
-     *     serializer's fields plus the two the index adds.
+     *     Field order is the file's key order: a run that finds the same data must
+     *     write the same bytes. It is the list serializer's fields plus the two the
+     *     index adds.
      */
     SubjectIndexEntry: {
       id: number

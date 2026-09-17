@@ -1,8 +1,8 @@
 {
-  "id": 910,
+  "id": 292,
   "slug": "aodv",
-  "name": "AODV",
-  "description": "Ad hoc On-Demand Distance Vector routing",
+  "name": "Aodv",
+  "description": "AODV (Ad hoc On-Demand Distance Vector routing)",
   "parent": "manet",
   "path": "routing/manet/aodv",
   "document_count": 2,
@@ -12,11 +12,46 @@
   "aliases": [],
   "documents": ["rfc3561", "rfc9854"],
   "document_meta": {
-    "rfc3561": { "title": "Ad hoc On-Demand Distance Vector (AODV) Routing", "subseries": [] },
+    "rfc3561": {
+      "title": "Ad hoc On-Demand Distance Vector (AODV) Routing",
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["C. Perkins", "E. Belding-Royer", "S. Das"],
+      "published": "2003-07-07",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC3561" }],
+      "area": { "acronym": "rtg", "name": "Routing Area" },
+      "group": { "acronym": "manet", "name": "Mobile Ad-hoc Networks" },
+      "keywords": ["AODV", "Ad hoc On-Demand Distance Vector", "unicast", "multiple nodes"],
+      "pages": 37,
+      "abstract": "The Ad hoc On-Demand Distance Vector (AODV) routing protocol is intended for use by mobile nodes in an ad hoc network.  It offers quick adaptation to dynamic link conditions, low processing and memory overhead, low network utilization, and determines unicast routes to destinations within the ad hoc network.  It uses destination sequence numbers to ensure loop freedom at all times (even in the face of anomalous delivery of routing control messages), avoiding problems (such as \"counting to infinity\") associated with classical distance vector protocols.  This memo defines an Experimental Protocol for the Internet community."
+    },
     "rfc9854": {
       "title": "AODV-RPL: The Routing Protocol for Low-Power and Lossy Networks (RPL) Based on Ad Hoc On-Demand Distance Vector (AODV) Routing",
-      "subseries": []
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["C.E. Perkins", "S.V.R. Anand", "S. Anamalamudi", "B. Liu"],
+      "published": "2025-10-29",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9854" }],
+      "area": { "acronym": "rtg", "name": "Routing Area" },
+      "group": { "acronym": "roll", "name": "Routing Over Low power and Lossy networks" },
+      "keywords": ["AODV", "Peer-to-Peer Route Discovery", "Asymmetric"],
+      "pages": 31,
+      "abstract": "Route discovery for symmetric and asymmetric Peer-to-Peer (P2P) traffic flows is a desirable feature in Low-Power and Lossy Networks (LLNs).  For that purpose, this document specifies AODV-RPL -- the Routing Protocol for Low-Power and Lossy Networks (RPL) based on Ad hoc On-demand Distance Vector (AODV) routing.  AODV-RPL is a reactive P2P route discovery mechanism for both hop-by-hop routes and source routing.  Paired instances are used to construct directional paths for cases where there are asymmetric links between source and target nodes."
     }
   },
-  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "MANET" } }
+  "subject_meta": { "routing": { "name": "Routing" }, "manet": { "name": "Manet" } }
 }

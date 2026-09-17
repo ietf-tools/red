@@ -1,5 +1,5 @@
 {
-  "id": 623,
+  "id": 28,
   "slug": "amateur-radio",
   "name": "Amateur Radio",
   "description": "Amateur packet radio (AX.25) and IP",
@@ -11,6 +11,27 @@
   "children": [],
   "aliases": [],
   "documents": ["rfc1226"],
-  "document_meta": { "rfc1226": { "title": "Internet protocol encapsulation of AX.25 frames", "subseries": [] } },
+  "document_meta": {
+    "rfc1226": {
+      "title": "Internet protocol encapsulation of AX.25 frames",
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "Legacy",
+      "stream_name": "Legacy",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["B. Kantor"],
+      "published": "1991-05-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC1226" }],
+      "area": null,
+      "group": { "acronym": "none", "name": "Individual Submissions" },
+      "keywords": ["IP-AX.25"],
+      "pages": 2,
+      "abstract": "This memo describes a method for the encapsulation of AX.25 (the Amateur Packet-Radio Link-Layer Protocol) frames within IP packets.  This technique is an Experimental Protocol for the Internet community.  It does not specify an Internet standard."
+    }
+  },
   "subject_meta": { "link-layer": { "name": "Link Layer" } }
 }

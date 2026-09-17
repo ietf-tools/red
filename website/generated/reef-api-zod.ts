@@ -4,6 +4,12 @@ import type * as __TypedOpenapi from './reef-api-zod.types.js'
 import { z } from 'zod'
 
 // <Schemas>
+export type DocumentAreaOrGroup = __TypedOpenapi.Schemas.DocumentAreaOrGroup
+export const DocumentAreaOrGroup = z.object({ acronym: z.string(), name: z.string() }).catchall(z.unknown())
+
+export type DocumentIdentifier = __TypedOpenapi.Schemas.DocumentIdentifier
+export const DocumentIdentifier = z.object({ type: z.string(), value: z.string() }).catchall(z.unknown())
+
 export type DocumentMetadata = __TypedOpenapi.Schemas.DocumentMetadata
 export const DocumentMetadata = z
   .object({ title: z.string().nullable(), subseries: z.array(z.string()) })
@@ -37,6 +43,30 @@ export const DocumentStats = z
     rating_count: z.number().int(),
     subscriber_count: z.number().int(),
     set_count: z.number().int()
+  })
+  .catchall(z.unknown())
+
+export type FullDocumentMetadata = __TypedOpenapi.Schemas.FullDocumentMetadata
+export const FullDocumentMetadata = z
+  .object({
+    title: z.string().nullable(),
+    subseries: z.array(z.string()),
+    status: z.string().nullable(),
+    status_name: z.string().nullable(),
+    stream: z.string().nullable(),
+    stream_name: z.string().nullable(),
+    obsoletes: z.array(z.number().int()),
+    obsoleted_by: z.array(z.number().int()),
+    updates: z.array(z.number().int()),
+    updated_by: z.array(z.number().int()),
+    authors: z.array(z.string()),
+    published: z.string().nullable(),
+    identifiers: z.array(DocumentIdentifier),
+    area: DocumentAreaOrGroup.nullable(),
+    group: DocumentAreaOrGroup.nullable(),
+    keywords: z.array(z.string()),
+    pages: z.number().int().nullable(),
+    abstract: z.string().nullable()
   })
   .catchall(z.unknown())
 
@@ -141,7 +171,7 @@ export const PrecomputedSubjectDetail = z
     children: z.array(z.string()),
     aliases: z.array(z.string()),
     documents: z.array(z.string()),
-    document_meta: z.record(z.string(), DocumentMetadata),
+    document_meta: z.record(z.string(), FullDocumentMetadata),
     subject_meta: z.record(z.string(), SubjectMetadata)
   })
   .catchall(z.unknown())

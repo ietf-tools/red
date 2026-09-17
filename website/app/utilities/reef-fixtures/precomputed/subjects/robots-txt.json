@@ -1,7 +1,7 @@
 {
-  "id": 793,
+  "id": 199,
   "slug": "robots-txt",
-  "name": "robots.txt",
+  "name": "Robots Txt",
   "description": "The Robots Exclusion Protocol (robots.txt)",
   "parent": "web",
   "path": "web/robots-txt",
@@ -12,8 +12,46 @@
   "aliases": [],
   "documents": ["rfc9309", "rfc9969"],
   "document_meta": {
-    "rfc9309": { "title": "Robots Exclusion Protocol", "subseries": [] },
-    "rfc9969": { "title": "Report from the IAB Workshop on AI-CONTROL", "subseries": [] }
+    "rfc9309": {
+      "title": "Robots Exclusion Protocol",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["M. Koster", "G. Illyes", "H. Zeller", "L. Sassman"],
+      "published": "2022-09-09",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9309" }],
+      "area": null,
+      "group": { "acronym": "art", "name": "Applications and Real-Time Area" },
+      "keywords": ["robot", "crawler", "robots.txt"],
+      "pages": 12,
+      "abstract": "This document specifies and extends the \"Robots Exclusion Protocol\" method originally defined by Martijn Koster in 1994 for service owners to control how content served by their services may be accessed, if at all, by automatic clients known as crawlers.  Specifically, it adds definition language for the protocol, instructions for handling errors, and instructions for caching."
+    },
+    "rfc9969": {
+      "title": "Report from the IAB Workshop on AI-CONTROL",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IAB",
+      "stream_name": "IAB",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["M. Nottingham", "S. Krishnan"],
+      "published": "2026-05-19",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9969" }],
+      "area": null,
+      "group": { "acronym": "iab", "name": "Internet Architecture Board" },
+      "keywords": ["policy", "Artificial Intelligence", "Robots Exclusion Protocol", "web crawler", "robots.txt"],
+      "pages": 12,
+      "abstract": "The AI-CONTROL Workshop was convened by the Internet Architecture Board (IAB) in September 2024. This report summarizes its significant points of discussion and identifies topics that may warrant further consideration and work.\n\n Note that this document is a report on the proceedings of the workshop. The views and positions documented in this report are those of the workshop participants and do not necessarily reflect IAB views and positions."
+    }
   },
   "subject_meta": { "web": { "name": "Web" } }
 }

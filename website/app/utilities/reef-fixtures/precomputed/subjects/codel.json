@@ -1,8 +1,8 @@
 {
-  "id": 1025,
+  "id": 522,
   "slug": "codel",
-  "name": "CoDel",
-  "description": "The CoDel queue management algorithm",
+  "name": "Codel",
+  "description": "The CoDel (Controlled Delay) queue management algorithm",
   "parent": "aqm",
   "path": "transport/congestion-control/aqm/codel",
   "document_count": 2,
@@ -12,15 +12,50 @@
   "aliases": [],
   "documents": ["rfc8289", "rfc8290"],
   "document_meta": {
-    "rfc8289": { "title": "Controlled Delay Active Queue Management", "subseries": [] },
+    "rfc8289": {
+      "title": "Controlled Delay Active Queue Management",
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["K. Nichols", "V. Jacobson", "A. McGregor", "J. Iyengar"],
+      "published": "2018-01-05",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC8289" }],
+      "area": { "acronym": "tsv", "name": "Transport Area" },
+      "group": { "acronym": "aqm", "name": "Active Queue Management and Packet Scheduling" },
+      "keywords": ["CoDel", "AQM", "Active Queue Management"],
+      "pages": 25,
+      "abstract": "This document describes CoDel (Controlled Delay) -- a general framework that controls bufferbloat-generated excess delay in modern networking environments.  CoDel consists of an estimator, a setpoint, and a control loop.  It requires no configuration in normal Internet deployments."
+    },
     "rfc8290": {
       "title": "The Flow Queue CoDel Packet Scheduler and Active Queue Management Algorithm",
-      "subseries": []
+      "subseries": [],
+      "status": "exp",
+      "status_name": "experimental",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["T. Hoeiland-Joergensen", "P. McKenney", "D. Taht", "J. Gettys", "E. Dumazet"],
+      "published": "2018-01-05",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC8290" }],
+      "area": { "acronym": "tsv", "name": "Transport Area" },
+      "group": { "acronym": "aqm", "name": "Active Queue Management and Packet Scheduling" },
+      "keywords": ["bufferbloat", "aqm", "fq_codel", "fq-codel"],
+      "pages": 25,
+      "abstract": "This memo presents the FQ-CoDel hybrid packet scheduler and Active Queue Management (AQM) algorithm, a powerful tool for fighting bufferbloat and reducing latency.\n\n FQ-CoDel mixes packets from multiple flows and reduces the impact of head-of-line blocking from bursty traffic. It provides isolation for low-rate traffic such as DNS, web, and videoconferencing traffic. It improves utilisation across the networking fabric, especially for bidirectional traffic, by keeping queue lengths short, and it can be implemented in a memory- and CPU-efficient fashion across a wide range of hardware."
     }
   },
   "subject_meta": {
     "transport": { "name": "Transport" },
     "congestion-control": { "name": "Congestion Control" },
-    "aqm": { "name": "Active Queue Management" }
+    "aqm": { "name": "Aqm" }
   }
 }

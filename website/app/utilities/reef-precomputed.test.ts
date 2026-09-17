@@ -146,7 +146,28 @@ describe('the published shapes', () => {
     children: ['dkim'],
     aliases: ['e-mail'],
     documents: ['rfc5322'],
-    document_meta: { rfc5322: { title: 'Internet Message Format', subseries: [] } },
+    document_meta: {
+      rfc5322: {
+        title: 'Internet Message Format',
+        subseries: [],
+        status: 'ds',
+        status_name: 'draft standard',
+        stream: 'IETF',
+        stream_name: 'IETF',
+        obsoletes: [2822],
+        obsoleted_by: [],
+        updates: [],
+        updated_by: [],
+        authors: ['P. Resnick'],
+        published: '2008-10-01',
+        identifiers: [{ type: 'doi', value: '10.17487/RFC5322' }],
+        area: { acronym: 'app', name: 'Applications Area' },
+        group: { acronym: 'none', name: 'Individual Submissions' },
+        keywords: [],
+        pages: 57,
+        abstract: 'This document specifies the Internet Message Format (IMF)...'
+      }
+    },
     subject_meta: { messaging: { name: 'Messaging' }, dkim: { name: 'DKIM' } }
   }
 
@@ -159,7 +180,9 @@ describe('the published shapes', () => {
     // document" from "not looked up".
     const unresolved = {
       ...publishedSubject,
-      document_meta: { rfc5322: { title: null, subseries: [] } }
+      document_meta: {
+        rfc5322: { ...publishedSubject.document_meta.rfc5322, title: null }
+      }
     }
     expect(() => PrecomputedSubjectDetail.parse(unresolved)).not.toThrow()
   })

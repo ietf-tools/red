@@ -1,8 +1,8 @@
 {
-  "id": 965,
+  "id": 348,
   "slug": "gnap",
-  "name": "GNAP",
-  "description": "Grant Negotiation and Authorization Protocol",
+  "name": "Gnap",
+  "description": "GNAP (Grant Negotiation and Authorization Protocol)",
   "parent": "oauth",
   "path": "security/oauth/gnap",
   "document_count": 2,
@@ -12,8 +12,46 @@
   "aliases": [],
   "documents": ["rfc9635", "rfc9767"],
   "document_meta": {
-    "rfc9635": { "title": "Grant Negotiation and Authorization Protocol (GNAP)", "subseries": [] },
-    "rfc9767": { "title": "Grant Negotiation and Authorization Protocol Resource Server Connections", "subseries": [] }
+    "rfc9635": {
+      "title": "Grant Negotiation and Authorization Protocol (GNAP)",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["J. Richer", "F. Imbault"],
+      "published": "2024-10-08",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9635" }],
+      "area": { "acronym": "sec", "name": "Security Area" },
+      "group": { "acronym": "gnap", "name": "Grant Negotiation and Authorization Protocol" },
+      "keywords": ["authentication", "delegation", "security"],
+      "pages": 187,
+      "abstract": "The Grant Negotiation and Authorization Protocol (GNAP) defines a mechanism for delegating authorization to a piece of software and conveying the results and artifacts of that delegation to the software.  This delegation can include access to a set of APIs as well as subject information passed directly to the software."
+    },
+    "rfc9767": {
+      "title": "Grant Negotiation and Authorization Protocol Resource Server Connections",
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["J. Richer", "F. Imbault"],
+      "published": "2025-04-22",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9767" }],
+      "area": { "acronym": "sec", "name": "Security Area" },
+      "group": { "acronym": "gnap", "name": "Grant Negotiation and Authorization Protocol" },
+      "keywords": [],
+      "pages": 35,
+      "abstract": "The Grant Negotiation and Authorization Protocol (GNAP) defines a mechanism for delegating authorization to a piece of software (the client) and conveying the results and artifacts of that delegation to the software.  This extension defines methods for resource servers (RSs) to connect with authorization servers (ASs) in an interoperable fashion."
+    }
   },
-  "subject_meta": { "security": { "name": "Security" }, "oauth": { "name": "OAuth" } }
+  "subject_meta": { "security": { "name": "Security" }, "oauth": { "name": "Oauth" } }
 }

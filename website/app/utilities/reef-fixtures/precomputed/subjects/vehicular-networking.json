@@ -1,8 +1,8 @@
 {
-  "id": 612,
+  "id": 266,
   "slug": "vehicular-networking",
   "name": "Vehicular Networking",
-  "description": "IP in vehicular (V2X) environments",
+  "description": "Vehicular Networking: IP in vehicular (V2X) environments",
   "parent": "internet-layer",
   "path": "internet-layer/vehicular-networking",
   "document_count": 2,
@@ -14,11 +14,43 @@
   "document_meta": {
     "rfc8691": {
       "title": "Basic Support for IPv6 Networks Operating Outside the Context of a Basic Service Set over IEEE Std 802.11",
-      "subseries": []
+      "subseries": [],
+      "status": "ps",
+      "status_name": "proposed standard",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["N. Benamar", "J. Härri", "J. Lee", "T. Ernst"],
+      "published": "2019-12-27",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC8691" }],
+      "area": { "acronym": "int", "name": "Internet Area" },
+      "group": { "acronym": "ipwave", "name": "IP Wireless Access in Vehicular Environments" },
+      "keywords": ["IPv6 over 802.11p", "OCB", "IPv6 over 802.11-OCB"],
+      "pages": 29,
+      "abstract": "This document provides methods and settings for using IPv6 to communicate among nodes within range of one another over a single IEEE 802.11-OCB link.  Support for these methods and settings require minimal changes to existing stacks.  This document also describes limitations associated with using these methods.  Optimizations and usage of IPv6 over more complex scenarios are not covered in this specification and are a subject for future work."
     },
     "rfc9365": {
       "title": "IPv6 Wireless Access in Vehicular Environments (IPWAVE): Problem Statement and Use Cases",
-      "subseries": []
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["J. Jeong"],
+      "published": "2023-03-15",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC9365" }],
+      "area": { "acronym": "int", "name": "Internet Area" },
+      "group": { "acronym": "ipwave", "name": "IP Wireless Access in Vehicular Environments" },
+      "keywords": [],
+      "pages": 47,
+      "abstract": "This document discusses the problem statement and use cases of IPv6-based vehicular networking for Intelligent Transportation Systems (ITS).  The main scenarios of vehicular communications are vehicle-to-vehicle (V2V), vehicle-to-infrastructure (V2I), and vehicle-to-everything (V2X) communications.  First, this document explains use cases using V2V, V2I, and V2X networking.  Next, for IPv6-based vehicular networks, it makes a gap analysis of current IPv6 protocols (e.g., IPv6 Neighbor Discovery, mobility management, as well as security and privacy)."
     }
   },
   "subject_meta": { "internet-layer": { "name": "Internet Layer" } }

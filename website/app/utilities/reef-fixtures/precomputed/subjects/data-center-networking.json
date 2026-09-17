@@ -1,8 +1,8 @@
 {
-  "id": 701,
+  "id": 61,
   "slug": "data-center-networking",
   "name": "Data Center Networking",
-  "description": "Routing and address resolution at data-centre scale",
+  "description": "Data Center Networking: routing and address resolution at data-centre scale",
   "parent": "routing",
   "path": "routing/data-center-networking",
   "document_count": 1,
@@ -12,7 +12,26 @@
   "aliases": [],
   "documents": ["rfc6820"],
   "document_meta": {
-    "rfc6820": { "title": "Address Resolution Problems in Large Data Center Networks", "subseries": [] }
+    "rfc6820": {
+      "title": "Address Resolution Problems in Large Data Center Networks",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["T. Narten", "M. Karir", "I. Foo"],
+      "published": "2013-01-30",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC6820" }],
+      "area": { "acronym": "ops", "name": "Operations and Management Area" },
+      "group": { "acronym": "armd", "name": "Address Resolution for Massive numbers of hosts in the Data center" },
+      "keywords": ["ARMD", "data center", "ARP", "ND", "Neighbor Discovery"],
+      "pages": 17,
+      "abstract": "This document examines address resolution issues related to the scaling of data centers with a very large number of hosts.  The scope of this document is relatively narrow, focusing on address resolution (the Address Resolution Protocol (ARP) in IPv4 and Neighbor Discovery (ND) in IPv6) within a data center.  This document is a product of the Internet Engineering Task Force (IETF)."
+    }
   },
   "subject_meta": { "routing": { "name": "Routing" } }
 }

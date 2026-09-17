@@ -1,8 +1,8 @@
 {
-  "id": 683,
+  "id": 283,
   "slug": "y2k",
   "name": "Y2K",
-  "description": "Year 2000 readiness",
+  "description": "Y2K (Year 2000) readiness",
   "parent": "network-management",
   "path": "network-management/y2k",
   "document_count": 1,
@@ -11,6 +11,27 @@
   "children": [],
   "aliases": [],
   "documents": ["rfc2626"],
-  "document_meta": { "rfc2626": { "title": "The Internet and the Millennium Problem (Year 2000)", "subseries": [] } },
+  "document_meta": {
+    "rfc2626": {
+      "title": "The Internet and the Millennium Problem (Year 2000)",
+      "subseries": [],
+      "status": "inf",
+      "status_name": "informational",
+      "stream": "IETF",
+      "stream_name": "IETF",
+      "obsoletes": [],
+      "obsoleted_by": [],
+      "updates": [],
+      "updated_by": [],
+      "authors": ["P. Nesser II"],
+      "published": "1999-06-01",
+      "identifiers": [{ "type": "doi", "value": "10.17487/RFC2626" }],
+      "area": { "acronym": "ops", "name": "Operations and Management Area" },
+      "group": { "acronym": "2000", "name": "The Internet and the Millennium Problem" },
+      "keywords": ["Y2K"],
+      "pages": 275,
+      "abstract": "The Year 2000 Working Group (WG) has conducted an investigation into the millennium problem as it regards Internet related protocols.  This investigation only targeted the protocols as documented in the Request For Comments Series (RFCs).  This investigation discovered little reason for concern with regards to the functionality of the protocols.  A few minor cases of older implementations still using two digit years (ala RFC 850) were discovered, but almost all Internet protocols were given a clean bill of health.  Several cases of \"period\" problems were discovered, where a time field would \"roll over\" as the size of field was reached.  In particular, there are several protocols, which have 32 bit, signed integer representations of the number of seconds since January 1, 1970 which will turn negative at Tue Jan 19 03:14:07 GMT 2038.  Areas whose protocols will be effected by such problems have been notified so that new revisions will remove this limitation.  This memo provides information for the Internet community."
+    }
+  },
   "subject_meta": { "network-management": { "name": "Network Management" } }
 }
