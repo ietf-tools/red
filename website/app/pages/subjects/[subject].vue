@@ -16,7 +16,7 @@
                `applications` without the page having to read the whole vocabulary for one word. -->
             <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
 
-            <div class="search-container mx-auto ml-3">
+            <div class="search-container mx-auto">
               <Heading level="1" style-level="3" class="sr-only mt-4 mb-4 md:mx-2">
                 {{ liveSubject.name }}
               </Heading>
