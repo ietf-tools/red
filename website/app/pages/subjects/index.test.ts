@@ -18,6 +18,7 @@ import type { Subject } from '~/utilities/reef'
 import { subjectsFixture } from '~/utilities/reef-fixtures/subjects'
 import { isRenderableSubject, MAX_RENDERED_SUBJECT_DEPTH } from '~/utilities/subject-tree'
 import { DEFAULT_SUBJECT_DENSITY, useUiSettingsStore } from '~/stores/ui-settings'
+import { SUBJECTS_PATH } from '~/utilities/url'
 
 // The layout is the header, footer and navigation around the page, none of which these assertions
 // are about.
@@ -68,7 +69,11 @@ const reefFails = (statusCode: number) => {
   fetchSubjectIndex.mockRejectedValue(createError({ statusCode }))
 }
 
-const renderPage = (route?: string) => mountSuspended(SubjectsIndexPage, { route, global: { stubs: STUBS } })
+// Defaults to the canonical path itself: mounting at anything else — the default an omitted route
+// would otherwise leave this on — makes the page's own canonical-path redirect fire, which is a
+// real navigation these tests don't otherwise expect and would double up against.
+const renderPage = (route: string = SUBJECTS_PATH) =>
+  mountSuspended(SubjectsIndexPage, { route, global: { stubs: STUBS } })
 
 // Stubbed rather than driven, because what the page owes the URL is one replace per settled query
 // and that is what these assert. It stands for every test in the file; none of the others navigate.
