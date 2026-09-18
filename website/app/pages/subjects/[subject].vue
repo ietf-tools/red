@@ -39,9 +39,9 @@
 
               <div class="md:flex md:flex-row md:gap-2">
                 <div v-if="subjectSubtree.length > 0" class="flex-1 md:min-w-64">
-                  <Heading id="subjects" level="2" style-level="5" class="md:mt-3 lg:mt-6 md:mx-2"
-                    >{{ liveSubject.name }} subjects:</Heading
-                  >
+                  <Heading id="subjects" level="2" style-level="5" class="md:mt-3 lg:mt-6 md:mx-2">
+                    {{ liveSubject.name }} subjects:
+                  </Heading>
 
                   <SubjectTreeList
                     :nodes="subjectSubtree"
@@ -50,15 +50,15 @@
                     class="md:mx-2" />
                 </div>
 
-                <div>
+                <div class="w-full">
                   <div class="mt-6 md:mt-0 flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
                     <Heading
                       id="rfcs"
-                      v-if="subjectSubtree.length > 0"
                       level="2"
                       style-level="1"
-                      class="text-blue-900 md:ml-3 md:mb-2">
-                      {{ liveSubject.name }} RFCs <span class="text-gray-700">({{ documents.length }})</span>
+                      class="text-blue-900 dark:text-gray-100 md:ml-3 md:mb-2">
+                      {{ liveSubject.name }} RFCs
+                      <span class="text-gray-700 dark:text-gray-200">({{ documents.length }})</span>
                     </Heading>
                     <div>
                       <SubjectDensity class="print:hidden" v-model="documentDensity" />
