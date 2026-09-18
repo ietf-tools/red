@@ -60,7 +60,22 @@
                       {{ liveSubject.name }} RFCs
                       <span class="text-gray-700 dark:text-gray-200">({{ documents.length }})</span>
                     </Heading>
-                    <div>
+                    <div class="flex items-center gap-2">
+                      <div class="flex items-center gap-2">
+                        <label :for="documentSortId" class="whitespace-nowrap">Sort by</label>
+                        <select
+                          :id="documentSortId"
+                          v-model="documentSort"
+                          :class="`py-2 pl-4 w-full min-w-0 max-w-44 text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`">
+                          <option v-for="option in DOCUMENT_SORT_OPTIONS" :key="option.value" :value="option.value">
+                            {{ option.label }}
+                          </option>
+                        </select>
+                      </div>
+                      <Separator
+                        orientation="vertical"
+                        decorative
+                        class="bg-gray-400 data-[orientation=vertical]:h-7 data-[orientation=vertical]:w-px" />
                       <SubjectDensity class="print:hidden" v-model="documentDensity" />
                     </div>
                   </div>
@@ -109,7 +124,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, useId } from 'vue'
+import { DateTime } from 'luxon'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useRfcEditorHead } from '~/utilities/head'
@@ -133,6 +149,7 @@ import {
   usePublicSiteUrlOrigin
 } from '~/utilities/url'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
+import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
 
 definePageMeta({
   layout: false,
@@ -231,6 +248,44 @@ const breadcrumbItems = computed((): BreadcrumbItem[] => [
   ...(liveSubject.value ? [{ label: liveSubject.value.name }] : [])
 ])
 
+type DocumentSort = 'published-desc' | 'published-asc' | 'number-asc' | 'number-desc'
+
+const DOCUMENT_SORT_OPTIONS: { value: DocumentSort; label: string }[] = [
+  { value: 'published-desc', label: 'Newest first' },
+  { value: 'published-asc', label: 'Oldest first' },
+  { value: 'number-asc', label: 'RFC number (ascending)' },
+  { value: 'number-desc', label: 'RFC number (descending)' }
+]
+
+const documentSort = ref<DocumentSort>('published-desc')
+const documentSortId = useId()
+
+// A document whose metadata never resolved has no publication date to place it by, so it sorts
+// after every dated document regardless of direction — the same rule `number` below follows for
+// an identifier that didn't parse.
+const comparePublished = (
+  a: { rfc?: { published?: string } },
+  b: { rfc?: { published?: string } },
+  direction: 1 | -1
+): number => {
+  const aTime = a.rfc?.published ? DateTime.fromISO(a.rfc.published).toMillis() : undefined
+  const bTime = b.rfc?.published ? DateTime.fromISO(b.rfc.published).toMillis() : undefined
+  if (aTime === undefined || bTime === undefined) {
+    return aTime === undefined && bTime === undefined ? 0 : aTime === undefined ? 1 : -1
+  }
+  return (aTime - bTime) * direction
+}
+
+const DOCUMENT_SORT_COMPARATORS: Record<
+  DocumentSort,
+  (a: { number: number; rfc?: { published?: string } }, b: { number: number; rfc?: { published?: string } }) => number
+> = {
+  'published-desc': (a, b) => comparePublished(a, b, -1),
+  'published-asc': (a, b) => comparePublished(a, b, 1),
+  'number-asc': (a, b) => a.number - b.number,
+  'number-desc': (a, b) => b.number - a.number
+}
+
 // Reef names documents in the series this build has info pages for, so infoSeriesPathBuilder
 // throwing means Reef has sent something outside that vocabulary. Left to throw: an identifier this
 // page cannot link is a fault to fix at the source, not a row to quietly render as plain text.
@@ -240,19 +295,23 @@ const breadcrumbItems = computed((): BreadcrumbItem[] => [
 // It is null for an identifier that index did not resolve, which is a real state rather than an
 // error — the link is still the document, so the row renders without a title rather than not at
 // all. `label` is the identifier as a reader writes it: "RFC 4686", not `rfc4686`.
-const documents = computed(() =>
-  (liveSubject.value?.documents ?? []).map((doc) => {
+const documents = computed(() => {
+  const rows = (liveSubject.value?.documents ?? []).map((doc) => {
     const meta = liveSubject.value?.document_meta?.[doc]
     const seriesId = parseSeriesId(doc)
     return {
       doc,
+      // Unresolved identifiers sort after every real number rather than reordering by parse
+      // failure, which reads as arbitrary.
+      number: seriesId?.number ?? Number.POSITIVE_INFINITY,
       label: seriesId ? `${seriesId.type.toUpperCase()} ${seriesId.number}` : doc,
       title: meta?.title ?? undefined,
       infoPath: infoSeriesPathBuilder(doc),
       rfc: meta ? documentMetaToRfcCommon(doc, meta) : undefined
     }
   })
-)
+  return rows.sort(DOCUMENT_SORT_COMPARATORS[documentSort.value])
+})
 
 // Reads through the store rather than holding its own copy, so the control shows the saved
 // preference and every change is written back to localStorage. Same scale as search's own control,
