@@ -7,7 +7,7 @@
  * usable width at 200% text on a narrow screen.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, url } from '@nuxt/test-utils/e2e'
+import { createPage, url, waitForHydration } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 import { setupNuxtServer } from './utilities/setup'
 
@@ -35,7 +35,11 @@ describe('RFC word breaks', async () => {
   const openRfc = async () => {
     const page = await createPage()
     await page.setViewportSize(REFLOW_VIEWPORT)
-    await page.goto(url(infoSeriesPathBuilder(RFC_UNDER_TEST)), { waitUntil: 'networkidle' })
+    const href = url(infoSeriesPathBuilder(RFC_UNDER_TEST))
+    await page.goto(href, { waitUntil: 'networkidle' })
+    // The app renders client-side, so a read right after `networkidle` can land before the
+    // precomputed content — the `<wbr>`s included — replaces the SSR shell.
+    await waitForHydration(page, href, 'hydration')
     return page
   }
 
@@ -164,7 +168,9 @@ describe('RFC word breaks', async () => {
             : original(query)
       })
       await page.setViewportSize(REFLOW_VIEWPORT)
-      await page.goto(url(infoSeriesPathBuilder(RFC_UNDER_TEST)), { waitUntil: 'networkidle' })
+      const href = url(infoSeriesPathBuilder(RFC_UNDER_TEST))
+      await page.goto(href, { waitUntil: 'networkidle' })
+      await waitForHydration(page, href, 'hydration')
 
       // A real citation span is used because it holds the rendered button. Whatever grouping the
       // document gave it is replaced with `wordsize-12`, and its paragraph is sized so that the plain
