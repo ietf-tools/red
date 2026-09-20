@@ -54,7 +54,7 @@ describe('searchv2 nuxt adapter — multi-value refinements', () => {
 
   it('reads a single occurrence back as a one-value refinement', () => {
     const state = parseQuery({ group: 'quic' }, defaults)
-    expect(state.refinements?.['group.full']).toEqual(['quic'])
+    expect(state.refinements?.['group.name']).toEqual(['quic'])
   })
 
   it('round-trips values containing a comma', () => {
@@ -68,7 +68,7 @@ describe('searchv2 nuxt adapter — multi-value refinements', () => {
     const original: UiState = {
       refinements: {
         'status.name': ['Internet Standard', 'Best Current Practice'],
-        'group.full': ['quic'],
+        'group.name': ['quic'],
         'authors.name': ['Ann, PhD', 'Bo']
       }
     }
@@ -104,7 +104,7 @@ describe('searchv2 nuxt adapter — multi-value refinements', () => {
   it('keeps commas inside group and authors values, which are open vocabularies', () => {
     const state = parseQuery({ authors: 'Smith, Jr.', group: 'a,b' }, defaults)
     expect(state.refinements?.['authors.name']).toEqual(['Smith, Jr.'])
-    expect(state.refinements?.['group.full']).toEqual(['a,b'])
+    expect(state.refinements?.['group.name']).toEqual(['a,b'])
   })
 
   it('writes status back as repeated params, not the comma form it accepts', () => {

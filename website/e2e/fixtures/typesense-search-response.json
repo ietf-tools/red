@@ -1,0 +1,352 @@
+{
+  "results": [
+    {
+      "found": 264,
+      "hits": [
+        {
+          "document": {
+            "abstract": "This specification defines the QUERY method for HTTP. A QUERY requests that the request target process the enclosed content in a safe and idempotent manner and then respond with the result of that processing. This is similar to POST requests, but QUERY requests can be automatically repeated or restarted without concern for partial state changes.",
+            "adName": "Gorry Fairhurst",
+            "area": {
+              "acronym": "wit",
+              "full": "wit - Web and Internet Transport",
+              "name": "Web and Internet Transport"
+            },
+            "authors": [
+              {
+                "affiliation": "greenbytes GmbH",
+                "name": "J. Reschke"
+              },
+              {
+                "affiliation": "Cloudflare",
+                "name": "J.M. Snell"
+              },
+              {
+                "affiliation": "Akamai",
+                "name": "M. Bishop"
+              }
+            ],
+            "date": 1781576497,
+            "filename": "rfc10008",
+            "flags": {
+              "hiddenDefault": false,
+              "obsoleted": false,
+              "updated": false
+            },
+            "group": {
+              "acronym": "httpbis",
+              "full": "httpbis - HTTP",
+              "name": "HTTP",
+              "type": "wg"
+            },
+            "id": "doc-157270",
+            "keywords": ["http", "query", "method"],
+            "obsoletedBy": [],
+            "pages": 24,
+            "popularityRanking": 3,
+            "publicationDate": 1781576495,
+            "ranking": 10008,
+            "rfc": "10008",
+            "rfcNumber": 10008,
+            "state": ["Published"],
+            "status": {
+              "name": "Proposed Standard",
+              "slug": "ps"
+            },
+            "stream": {
+              "name": "IETF",
+              "slug": "ietf"
+            },
+            "title": "The HTTP QUERY Method",
+            "type": "rfc",
+            "updatedBy": []
+          }
+        },
+        {
+          "document": {
+            "abstract": "This document proposes a simple extension to HTTP, using a new \"Meter\" header. [STANDARDS-TRACK]",
+            "area": {
+              "acronym": "app",
+              "full": "app - Applications Area",
+              "name": "Applications Area"
+            },
+            "authors": [
+              {
+                "affiliation": "Microsoft",
+                "name": "J. Mogul"
+              },
+              {
+                "affiliation": "Microsoft",
+                "name": "P. Leach"
+              }
+            ],
+            "date": 1779290885,
+            "filename": "rfc2227",
+            "flags": {
+              "hiddenDefault": false,
+              "obsoleted": false,
+              "updated": false
+            },
+            "group": {
+              "acronym": "http",
+              "full": "http - HyperText Transfer Protocol",
+              "name": "HyperText Transfer Protocol",
+              "type": "wg"
+            },
+            "id": "doc-124236",
+            "keywords": ["HTTP", "Hypertext Transfer Protocol", "extension"],
+            "obsoletedBy": [],
+            "pages": 37,
+            "publicationDate": 875689200,
+            "ranking": 2227,
+            "rfc": "2227",
+            "rfcNumber": 2227,
+            "state": ["Published"],
+            "status": {
+              "name": "Proposed Standard",
+              "slug": "ps"
+            },
+            "stream": {
+              "name": "IETF",
+              "slug": "ietf"
+            },
+            "title": "Simple Hit-Metering and Usage-Limiting for HTTP",
+            "type": "rfc",
+            "updatedBy": []
+          }
+        },
+        {
+          "document": {
+            "abstract": "This document specifies a way to create a stateful session with Hypertext Transfer Protocol (HTTP) requests and responses. [STANDARDS-TRACK]",
+            "area": {
+              "acronym": "app",
+              "full": "app - Applications Area",
+              "name": "Applications Area"
+            },
+            "authors": [
+              {
+                "affiliation": "Bell Laboratories, Lucent Technologies",
+                "name": "D. Kristol"
+              },
+              {
+                "affiliation": "Epinions.com, Inc.",
+                "name": "L. Montulli"
+              }
+            ],
+            "date": 1779290750,
+            "filename": "rfc2965",
+            "flags": {
+              "hiddenDefault": true,
+              "obsoleted": true,
+              "updated": false
+            },
+            "group": {
+              "acronym": "http",
+              "full": "http - HyperText Transfer Protocol",
+              "name": "HyperText Transfer Protocol",
+              "type": "wg"
+            },
+            "id": "doc-124938",
+            "keywords": ["HTTP", "hypertext transfer protocol"],
+            "obsoletedBy": ["6265"],
+            "pages": 26,
+            "publicationDate": 970383600,
+            "ranking": 2965,
+            "rfc": "2965",
+            "rfcNumber": 2965,
+            "state": ["Published"],
+            "status": {
+              "name": "Historic",
+              "slug": "hist"
+            },
+            "stream": {
+              "name": "IETF",
+              "slug": "ietf"
+            },
+            "title": "HTTP State Management Mechanism",
+            "type": "rfc",
+            "updatedBy": []
+          }
+        }
+      ],
+      "facet_counts": [
+        {
+          "field_name": "status.name",
+          "counts": [
+            {
+              "count": 172,
+              "highlighted": "Proposed Standard",
+              "value": "Proposed Standard"
+            },
+            {
+              "count": 49,
+              "highlighted": "Informational",
+              "value": "Informational"
+            },
+            {
+              "count": 16,
+              "highlighted": "Experimental",
+              "value": "Experimental"
+            },
+            {
+              "count": 12,
+              "highlighted": "Historic",
+              "value": "Historic"
+            }
+          ]
+        },
+        {
+          "field_name": "group.name",
+          "counts": [
+            {
+              "count": 54,
+              "highlighted": "HTTP",
+              "value": "HTTP"
+            },
+            {
+              "count": 28,
+              "highlighted": "Applications Area",
+              "value": "Applications Area"
+            },
+            {
+              "count": 24,
+              "highlighted": "Individual Submissions",
+              "value": "Individual Submissions"
+            },
+            {
+              "count": 12,
+              "highlighted": "HyperText Transfer Protocol",
+              "value": "HyperText Transfer Protocol"
+            }
+          ]
+        },
+        {
+          "field_name": "area.acronym",
+          "counts": [
+            {
+              "count": 78,
+              "highlighted": "wit",
+              "value": "wit"
+            },
+            {
+              "count": 43,
+              "highlighted": "sec",
+              "value": "sec"
+            },
+            {
+              "count": 35,
+              "highlighted": "app",
+              "value": "app"
+            },
+            {
+              "count": 32,
+              "highlighted": "iesg",
+              "value": "iesg"
+            }
+          ]
+        },
+        {
+          "field_name": "area.full",
+          "counts": [
+            {
+              "count": 78,
+              "highlighted": "wit - Web and Internet Transport",
+              "value": "wit - Web and Internet Transport"
+            },
+            {
+              "count": 43,
+              "highlighted": "sec - Security Area",
+              "value": "sec - Security Area"
+            },
+            {
+              "count": 35,
+              "highlighted": "app - Applications Area",
+              "value": "app - Applications Area"
+            },
+            {
+              "count": 32,
+              "highlighted": "iesg - Internet Engineering Steering Group",
+              "value": "iesg - Internet Engineering Steering Group"
+            }
+          ]
+        },
+        {
+          "field_name": "stream.slug",
+          "counts": [
+            {
+              "count": 234,
+              "highlighted": "ietf",
+              "value": "ietf"
+            },
+            {
+              "count": 17,
+              "highlighted": "ise",
+              "value": "ise"
+            },
+            {
+              "count": 11,
+              "highlighted": "legacy",
+              "value": "legacy"
+            },
+            {
+              "count": 1,
+              "highlighted": "iab",
+              "value": "iab"
+            }
+          ]
+        },
+        {
+          "field_name": "stream.name",
+          "counts": [
+            {
+              "count": 234,
+              "highlighted": "IETF",
+              "value": "IETF"
+            },
+            {
+              "count": 17,
+              "highlighted": "ISE",
+              "value": "ISE"
+            },
+            {
+              "count": 11,
+              "highlighted": "Legacy",
+              "value": "Legacy"
+            },
+            {
+              "count": 1,
+              "highlighted": "IAB",
+              "value": "IAB"
+            }
+          ]
+        },
+        {
+          "field_name": "authors.name",
+          "counts": [
+            {
+              "count": 27,
+              "highlighted": "M. Nottingham",
+              "value": "M. Nottingham"
+            },
+            {
+              "count": 26,
+              "highlighted": "J. Reschke",
+              "value": "J. Reschke"
+            },
+            {
+              "count": 14,
+              "highlighted": "R. Fielding",
+              "value": "R. Fielding"
+            },
+            {
+              "count": 12,
+              "highlighted": "M. Thomson",
+              "value": "M. Thomson"
+            }
+          ]
+        }
+      ],
+      "search_time_ms": 1
+    }
+  ]
+}

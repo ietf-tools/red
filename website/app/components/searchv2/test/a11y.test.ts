@@ -40,12 +40,12 @@ describe('accessible defaults', () => {
         nbPages: 1,
         hitsPerPage: 10,
         processingTimeMS: 1,
-        facets: { 'group.full': { httpbis: 3, tls: 2 } }
+        facets: { 'group.name': { httpbis: 3, tls: 2 } }
       })
     }
     const wrapper = mountWith(
       searchClient,
-      h(RefinementList, { attribute: 'group.full', label: 'Working group', searchable: true })
+      h(RefinementList, { attribute: 'group.name', label: 'Working group', searchable: true })
     )
     await flushPromises()
 
@@ -68,12 +68,12 @@ describe('accessible defaults', () => {
         nbPages: 1,
         hitsPerPage: 10,
         processingTimeMS: 1,
-        facets: { 'group.full': { httpbis: 3, tls: 2 } }
+        facets: { 'group.name': { httpbis: 3, tls: 2 } }
       })
     }
     const wrapper = mountWith(
       searchClient,
-      h(RefinementList, { attribute: 'group.full', label: 'Working group', description: 'Filter by working group.' })
+      h(RefinementList, { attribute: 'group.name', label: 'Working group', description: 'Filter by working group.' })
     )
     await flushPromises()
 
@@ -96,10 +96,10 @@ describe('accessible defaults', () => {
         nbPages: 1,
         hitsPerPage: 10,
         processingTimeMS: 1,
-        facets: { 'group.full': { httpbis: 3 } }
+        facets: { 'group.name': { httpbis: 3 } }
       })
     }
-    const wrapper = mountWith(searchClient, h(RefinementList, { attribute: 'group.full', label: 'Working group' }))
+    const wrapper = mountWith(searchClient, h(RefinementList, { attribute: 'group.name', label: 'Working group' }))
     await flushPromises()
 
     expect(wrapper.get('input[type="checkbox"]').attributes('aria-describedby')).toBeUndefined()
@@ -115,12 +115,12 @@ describe('accessible defaults', () => {
         nbPages: 1,
         hitsPerPage: 10,
         processingTimeMS: 1,
-        facets: { 'group.full': facets }
+        facets: { 'group.name': facets }
       })
     }
     const wrapper = mountWith(
       searchClient,
-      h(RefinementList, { attribute: 'group.full', label: 'Working group', showMore: true, limit: 5 })
+      h(RefinementList, { attribute: 'group.name', label: 'Working group', showMore: true, limit: 5 })
     )
     await flushPromises()
     const showMore = wrapper.get('button')
@@ -147,7 +147,7 @@ describe('accessible defaults', () => {
         nbPages: 1,
         hitsPerPage: 10,
         processingTimeMS: 1,
-        facets: { 'group.full': facets }
+        facets: { 'group.name': facets }
       })
     }
     const wrapper = mount(SearchRoot, {
@@ -156,7 +156,7 @@ describe('accessible defaults', () => {
       slots: {
         default: () =>
           h(RefinementList, {
-            attribute: 'group.full',
+            attribute: 'group.name',
             label: 'Working group',
             showMore: true,
             limit: 5,
@@ -189,7 +189,7 @@ describe('accessible defaults', () => {
         facets: {}
       })
     }
-    const wrapper = mountWith(searchClient, h(RefinementList, { attribute: 'group.full', label: 'Working group' }))
+    const wrapper = mountWith(searchClient, h(RefinementList, { attribute: 'group.name', label: 'Working group' }))
     await flushPromises()
     expect(wrapper.get('fieldset').text()).toContain('No options available.')
   })

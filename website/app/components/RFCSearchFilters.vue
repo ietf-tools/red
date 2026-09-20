@@ -59,7 +59,7 @@
       :class-names="selectClasses" />
 
     <RefinementList
-      attribute="group.full"
+      attribute="group.name"
       label="Working group"
       show-more
       :limit="5"

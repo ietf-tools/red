@@ -44,7 +44,7 @@ type SearchV2PathBuilderProps = {
   q: string
   /** `status.name` refinement, multi-select. */
   status: SearchV2StatusName[]
-  /** `group.full` refinement, multi-select. Open vocabulary, so untyped. */
+  /** `group.name` refinement, multi-select. Open vocabulary, so untyped. */
   group: string[]
   /** `authors.name` refinement, multi-select. Open vocabulary, so untyped. */
   authors: string[]

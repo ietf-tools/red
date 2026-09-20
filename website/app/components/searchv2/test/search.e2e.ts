@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import { createPage, url } from '@nuxt/test-utils/e2e'
 import { setupNuxtServer } from '../../../../e2e/utilities/setup'
+import { mockTypesenseSearch } from '../../../../e2e/utilities/mock-typesense'
 
 const TEST_DURATION_MS = 60_000
 
@@ -10,7 +11,9 @@ describe('RfcEditorSearch (searchv2)', async () => {
   test(
     'renders the accessible v2 search and loads results',
     async () => {
-      const page = await createPage('/search/')
+      const page = await createPage()
+      await mockTypesenseSearch(page)
+      await page.goto(url('/search/'))
       // Enable the searchV2 feature flag, then reload so app.vue picks it up on mount.
       await page.evaluate(() =>
         window.localStorage.setItem('feature-flag-experiments', JSON.stringify({ searchV2: true }))
@@ -46,7 +49,9 @@ describe('RfcEditorSearch (searchv2)', async () => {
   test(
     'mobile: sort is available and the filter dialog is accessible',
     async () => {
-      const page = await createPage('/search/')
+      const page = await createPage()
+      await mockTypesenseSearch(page)
+      await page.goto(url('/search/'))
       await page.setViewportSize({ width: 390, height: 800 })
       await page.evaluate(() =>
         window.localStorage.setItem('feature-flag-experiments', JSON.stringify({ searchV2: true }))
@@ -98,7 +103,9 @@ describe('RfcEditorSearch (searchv2)', async () => {
   test(
     'facet checkbox: focus stays on the toggled option after the list updates',
     async () => {
-      const page = await createPage('/search/')
+      const page = await createPage()
+      await mockTypesenseSearch(page)
+      await page.goto(url('/search/'))
       await page.evaluate(() =>
         window.localStorage.setItem('feature-flag-experiments', JSON.stringify({ searchV2: true }))
       )

@@ -75,7 +75,7 @@ export function parseQuery(query: LocationQuery, defaultUiState: UiState = {}): 
   const status = listAllowingCsv(query.status ?? query.statuses)
   if (status) refinements['status.name'] = status
   const group = list(query.group)
-  if (group) refinements['group.full'] = group
+  if (group) refinements['group.name'] = group
   const authors = list(query.authors)
   if (authors) refinements['authors.name'] = authors
 
@@ -160,7 +160,7 @@ export function serializeQuery(state: UiState, defaultUiState: UiState = {}): Lo
   // occurrence of the key per value. See `list` for why they aren't delimiter-joined.
   const status = state.refinements?.['status.name']
   if (status?.length) query.status = status
-  const group = state.refinements?.['group.full']
+  const group = state.refinements?.['group.name']
   if (group?.length) query.group = group
   const authors = state.refinements?.['authors.name']
   if (authors?.length) query.authors = authors

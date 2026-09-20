@@ -35,6 +35,11 @@ declare module 'vitest' {
 /** How far to slow a headed run down, so a reader can follow what the browser is doing. */
 const HEADED_SLOW_MO_MS = 250
 
+// Playwright's 30s default has been too tight for setupConcurrentPages: its callers open many
+// pages against the single shared dev server at once (e.g. info-rfc-layout.e2e.ts's 22 concurrent
+// loads), and a large RFC's SSR render can queue behind the others long enough to trip it.
+const CONCURRENT_PAGE_NAVIGATION_TIMEOUT_MS = 60_000
+
 const isHeaded = isTruthyEnv(process.env.E2E_HEADED)
 
 const LAUNCH_OPTIONS: LaunchOptions = {
@@ -85,7 +90,7 @@ export const setupConcurrentPages = (): ((path: string) => Promise<Page>) => {
     }
     const page = await browser.newPage()
     const href = new URL(path, baseUrl).href
-    await page.goto(href)
+    await page.goto(href, { timeout: CONCURRENT_PAGE_NAVIGATION_TIMEOUT_MS })
     // The app renders client-side, so anything read before hydration finishes is of the shell.
     await waitForHydration(page, href, 'hydration')
     return page

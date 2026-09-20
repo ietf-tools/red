@@ -1350,7 +1350,7 @@ const typesenseSearchResponse: TypesenseSearchResponse = {
               value: 'nwcrg - Coding for efficient NetWork Communications Research Group'
             }
           ],
-          field_name: 'group.full',
+          field_name: 'group.name',
           sampled: false,
           stats: {
             total_values: 50

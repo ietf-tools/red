@@ -195,7 +195,7 @@ const PERSISTENT_FACETS = [
   'stream.name',
   'area.acronym',
   'area.full',
-  'group.full',
+  'group.name',
   'authors.name',
   'publicationDate'
 ]
