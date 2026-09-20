@@ -1,10 +1,10 @@
 <template>
   <nav aria-label="Breadcrumbs">
-    <ul :class="['block pt-1 mb-2 pl-3 pr-14 leading-[1.5] print:hidden', props.class]">
+    <ul :class="['block mb-2 pt-1 pl-1 pr-14 leading-[1.5] print:hidden', props.class]">
       <li v-for="(item, index) in items" :key="index" class="inline">
         <Anchor
           v-if="item.url"
-          class="inline pl-2 -ml-2 pr-2 py-2 underline rounded hover:bg-gray-200 hover:text-blue-800"
+          class="inline px-2 py-2 underline rounded hover:bg-gray-200 hover:text-blue-800"
           :href="item.url"
           :aria-current="item.ariaCurrent"
           :aria-label="item.ariaLabel">
