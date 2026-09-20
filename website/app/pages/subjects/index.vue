@@ -5,7 +5,7 @@
         <div class="container mx-auto pl-5 pr-3 pb-10">
           <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
 
-          <Heading level="1" class="mt-4 mb-4">RFCs by subject</Heading>
+          <Heading level="1" class="mt-4 mb-4">RFCs by Subject</Heading>
 
           <div v-if="subjectsStatus === 'pending'" class="mt-10 w-full text-center">
             <GraphicsLoading class="inline-block w-16 h-16" />
