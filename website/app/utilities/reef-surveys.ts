@@ -38,7 +38,7 @@ type Narrowing = {
   seriesId?: SeriesId
 }
 
-const chooseSurvey = (openSurveys: OpenSurvey[], narrowing: Narrowing): OpenSurvey | null => {
+export const chooseSurvey = (openSurveys: OpenSurvey[], narrowing: Narrowing): OpenSurvey | null => {
   let narrowedSurveys = openSurveys.filter((survey) => !narrowing.dismissedIds.includes(survey.slug))
 
   const anonymousSurveys = narrowedSurveys.filter((survey) => survey.visibility === 'open')
