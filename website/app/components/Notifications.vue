@@ -6,29 +6,31 @@
       :type="notification.type ?? 'background'"
       :open="true"
       :duration="notification.durationMs ?? DEFAULT_TOAST_DURATION_MS"
-      class="data-[state=closed]:animate-none data-[swipe=end]:translate-x-full relative flex flex-col gap-1 bg-white dark:bg-black text-black dark:text-white border-1 border-gray-300 dark:border-gray-500 shadow-2xl rounded-xs px-4 py-3 pr-10"
+      class="data-[state=closed]:animate-none data-[swipe=end]:translate-x-full relative flex flex-col gap-1 bg-white dark:bg-black text-black dark:text-white border-1 border-gray-300 dark:border-gray-500 shadow-2xl rounded-xs px-4 py-3"
       @update:open="(isOpen: boolean) => !isOpen && hide(notification.id)">
-      <ToastTitle class="font-bold text-sm">
+      <ToastTitle class="font-bold text-sm pr-10">
         {{ notification.title }}
       </ToastTitle>
       <ToastDescription v-if="notification.description" class="text-sm">
         {{ notification.description }}
       </ToastDescription>
-      <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
-        <Anchor
-          :href="notification.url"
-          class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 self-start">
-          Read more
-        </Anchor>
-      </ToastAction>
-      <button
-        v-if="notification.allowDismiss"
-        type="button"
-        aria-label="Dismiss — don't show this notification again"
-        class="cursor-pointer text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 self-start"
-        @click="dismiss(notification)">
-        Dismiss
-      </button>
+      <div class="w-full flex flex-row justify-between items-center pt-2">
+        <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
+          <Anchor
+            :href="notification.url"
+            class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 -ml-2 px-2 py-1">
+            {{ notification.readMoreText || 'Read more' }}
+          </Anchor>
+        </ToastAction>
+        <button
+          v-if="notification.allowDismiss"
+          type="button"
+          aria-label="Dismiss — don't show this notification again"
+          class="cursor-pointer text-sm border-1 border-gray-400 px-2 py-1 rounded-md hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800"
+          @click="dismiss(notification)">
+          Dismiss
+        </button>
+      </div>
       <ToastClose aria-label="Close notification" class="absolute right-3 top-3 cursor-pointer">
         <GraphicsClose />
       </ToastClose>

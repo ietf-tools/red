@@ -1,5 +1,12 @@
-import { AdvancedUISettings, GraphicsBustInSilhouette, GraphicsSearch, GraphicsUserPreferences } from '#components'
+import {
+  AdvancedUISettings,
+  SurveysModal,
+  GraphicsBustInSilhouette,
+  GraphicsSearch,
+  GraphicsUserPreferences
+} from '#components'
 import { useUiSettingsStore } from '~/stores/ui-settings'
+import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { htmlEscapeToText } from '~/utilities/html'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useAuthStore } from '~/stores/auth'
@@ -77,6 +84,8 @@ export const useMenuData = (mode: Mode) => {
   const queueUrlOrigin = useQueueUrlOrigin()
   const uiSettings = useUiSettingsStore()
   const uiSettingsStoreRefs = storeToRefs(uiSettings)
+  const surveysStore = useReefSurveysStore()
+  const surveysStoreRefs = storeToRefs(surveysStore)
   const { setIsUiSettingsModalOpen } = uiSettings
   const featureFlags = useFeatureFlags()
   const authStore = useAuthStore()
@@ -91,12 +100,16 @@ export const useMenuData = (mode: Mode) => {
     }
   })
 
-  // Writable model for the UI Settings dialog, backed by the store so that the
-  // desktop nav button, the mobile nav button and the dialog itself (which is
-  // rendered outside both navs, see NavModals) all share one open state.
   const isUISettingsModalOpenRef = computed<boolean>({
     get: () => uiSettingsStoreRefs.isUiSettingsModalOpen.value,
     set: (isOpen) => setIsUiSettingsModalOpen(isOpen)
+  })
+
+  const isSurveysModalOpenRef = computed<boolean>({
+    get: () => surveysStoreRefs.isSurveysModalOpen.value,
+    set: (isOpen) => {
+      surveysStoreRefs.isSurveysModalOpen.value = isOpen
+    }
   })
 
   const menuData = computed(() => {
@@ -199,6 +212,17 @@ export const useMenuData = (mode: Mode) => {
             fieldValue: colorPreference.value
           })
         )
+      },
+      {
+        label: 'Surveys',
+        role: 'modal-button',
+        modalTitle: 'Surveys',
+        modalOpenRef: isSurveysModalOpenRef,
+        desktopClass: 'mt-2 pt-2 border-t-1 border-t-gray-200',
+        modalBody: () => h(SurveysModal),
+        click: () => {
+          isSurveysModalOpenRef.value = true
+        }
       },
       {
         label: 'Advanced Settings',

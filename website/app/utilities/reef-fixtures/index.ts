@@ -1,11 +1,11 @@
 // Stand-in Reef answers for local dev, so the Personalisation pages can be worked on with no Reef
 // running and without an Authentik round trip for the signed-in-only operations.
 //
-// `npm run dev:fixtures` is the dev server with these on; the scenario is NUXT_PUBLIC_REEF_FIXTURES,
+// `npm run dev:staging` is the dev server with these on; the scenario is NUXT_PUBLIC_REEF_STAGING,
 // which that script defaults to `on` and takes from the environment when it is already set.
 //
 // Reached from exactly one place — reefFetch in ~/utilities/reef, behind `import.meta.dev` and the
-// NUXT_PUBLIC_REEF_FIXTURES runtime flag. Intercepting there rather than swapping the per-operation
+// NUXT_PUBLIC_REEF_STAGING runtime flag. Intercepting there rather than swapping the per-operation
 // functions out at their call sites is what makes this reach every operation in the spec, including
 // the ones a page never calls directly because ~/stores/reef calls them for it.
 //
@@ -14,7 +14,7 @@
 // Reefs.
 import { emptied, subjectDetailFor, subjectsFixture } from './subjects'
 
-// What NUXT_PUBLIC_REEF_FIXTURES selects. `on` is the populated vocabulary; the rest are the states
+// What NUXT_PUBLIC_REEF_STAGING selects. `on` is the populated vocabulary; the rest are the states
 // the pages branch on and that a populated, instantly-resolved fixture never reaches on its own —
 // the empty vocabulary, the loading spinner, the error alert.
 export type FixtureScenario = 'on' | 'empty' | 'slow' | 'error'
@@ -94,7 +94,7 @@ const readScenario = (configured: string): FixtureScenario => {
   }
   if (configured !== '1' && configured !== 'true') {
     console.warn(
-      `[reef-fixtures] NUXT_PUBLIC_REEF_FIXTURES="${configured}" is not one of ${Object.keys(SCENARIOS).join(', ')}; using "on".`
+      `[reef-fixtures] NUXT_PUBLIC_REEF_STAGING="${configured}" is not one of ${Object.keys(SCENARIOS).join(', ')}; using "on".`
     )
   }
   return 'on'

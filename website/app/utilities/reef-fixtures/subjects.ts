@@ -1,5 +1,5 @@
 // Stand-in Reef answers for the /subjects/ pages, used both by the tests for those pages and, via
-// ./index, by a dev server running with NUXT_PUBLIC_REEF_FIXTURES set. One set of answers for both,
+// ./index, by a dev server running with NUXT_PUBLIC_REEF_STAGING set. One set of answers for both,
 // so what a page is developed against and what it is tested against cannot drift apart.
 //
 // Typed against the generated client rather than declared loosely, which is what makes these

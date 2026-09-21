@@ -36,6 +36,9 @@ export const API_RFC_MINI_INDEX_PATH = `/api/v1/rfc-mini-index.json`
 /** Reef's published subject vocabulary — see ~/utilities/reef-precomputed. */
 export const API_REEF_SUBJECTS_INDEX_PATH = `/api/v1/subjects.json`
 
+/** Every published survey, of either visibility — see ~/utilities/reef-precomputed. */
+export const API_REEF_SURVEYS_PUBLISHED_PATH = `/api/v1/surveys/published.json`
+
 export const API_NO_JS_SERVER_SEARCH_PATH = `/api/v1/search/`
 
 export const RFC_INDEX_XML_PATH = '/rfc-index.xml'

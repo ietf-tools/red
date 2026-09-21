@@ -16,6 +16,7 @@ import {
   DEFAULT_FEATURE_FLAGS,
   type FeatureFlags
 } from '~/utilities/feature-flags'
+import { initReefSurveys } from '~/utilities/reef-surveys'
 
 const isFeatureFlagsModalVisible = ref(false)
 const featureFlagsRef = ref<FeatureFlags>(DEFAULT_FEATURE_FLAGS)
@@ -24,4 +25,5 @@ provide(isFeatureFlagsModalVisibleKey, isFeatureFlagsModalVisible)
 provide(featureFlagsKey, featureFlagsRef)
 provide(hasFeatureFlagsLoadedKey, hasFeatureFlagsLoaded)
 onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
+onMounted(initReefSurveys)
 </script>

@@ -142,15 +142,15 @@ export const answerFromFixtures = async <T>({
 
 const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T> => {
   const { method = 'GET', body, auth, signal } = request
-  const { reefBase, reefFixtures } = useRuntimeConfig().public
+  const { reefBase, reefStaging } = useRuntimeConfig().public
 
-  // Local dev against stand-in answers, when NUXT_PUBLIC_REEF_FIXTURES names a scenario. Ahead of
+  // Local dev against stand-in answers, when NUXT_PUBLIC_REEF_STAGING names a scenario. Ahead of
   // the auth guard below on purpose: the point of fixtures is to reach the pages with no Reef
   // behind them, and most of what they show is behind `auth: 'required'`, which would otherwise
   // fail here for want of a session. `import.meta.dev` is compile-time, so a production build drops
   // this branch and the import under it, and no fixture reaches the shipped bundle.
-  if (import.meta.dev && reefFixtures !== '') {
-    const fixture = await answerFromFixtures<T>({ configured: reefFixtures, method, path })
+  if (import.meta.dev && reefStaging !== '') {
+    const fixture = await answerFromFixtures<T>({ configured: reefStaging, method, path })
     if (fixture.answered) {
       return fixture.body
     }

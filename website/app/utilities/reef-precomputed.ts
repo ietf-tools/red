@@ -14,7 +14,7 @@
 // One function per file, wired by hand. There are a handful of these and a generated client would
 // be more machinery than the thing it replaces.
 //
-// Dev stand-in: NUXT_PUBLIC_REEF_FIXTURES points this at Reef's staging deployment
+// Dev stand-in: NUXT_PUBLIC_REEF_STAGING points this at Reef's staging deployment
 // (reefPrecomputedFixturesBase) instead of reefBase, so /subjects/ pages work with no Reef running
 // locally. Fetched live rather than kept as a local snapshot: Reef's index alone runs several
 // megabytes, too large for Vite's dev-time `import.meta.glob` transform to serve as a client-side
@@ -34,11 +34,17 @@
 //
 // The generated module exports a value and a type under each name, so one import brings both and
 // there is no `z.infer` here to keep in step with it.
-import { PrecomputedSubjectDetailOrRedirect, SubjectBranchNode, SubjectIndex } from '../../generated/reef-api-zod'
+import { z } from 'zod'
+import {
+  OpenSurvey,
+  PrecomputedSubjectDetailOrRedirect,
+  SubjectBranchNode,
+  SubjectIndex
+} from '../../generated/reef-api-zod'
 import { describeCauseChain, describeNetworkFailure } from './network'
-import { API_REEF_SUBJECTS_INDEX_PATH, apiReefSubjectPathBuilder } from './url'
+import { API_REEF_SUBJECTS_INDEX_PATH, API_REEF_SURVEYS_PUBLISHED_PATH, apiReefSubjectPathBuilder } from './url'
 
-export type { PrecomputedSubjectDetailOrRedirect, SubjectBranchNode, SubjectIndex }
+export type { OpenSurvey, PrecomputedSubjectDetailOrRedirect, SubjectBranchNode, SubjectIndex }
 
 /**
  * Anything that stops a file being read and parsed. An h3 error rather than an Error of this
@@ -75,14 +81,14 @@ const unreadable = (key: string, cause: unknown) => {
  * else raises, because a page cannot be rendered from a file that failed to arrive.
  *
  * `path` is built by one of the `apiReef*PathBuilder`s in ~/utilities/url. In development with
- * NUXT_PUBLIC_REEF_FIXTURES set, it's read against Reef's staging deployment instead of `reefBase`,
+ * NUXT_PUBLIC_REEF_STAGING set, it's read against Reef's staging deployment instead of `reefBase`,
  * so the subject pages can be worked on with no Reef running locally. The parse still runs: a file
  * that has drifted from the contract should fail here exactly as a production one would.
  */
 const read = async <T>(path: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
   let body: unknown
-  const { reefBase, reefFixtures, reefPrecomputedFixturesBase } = useRuntimeConfig().public
-  const base = import.meta.dev && reefFixtures !== '' ? reefPrecomputedFixturesBase : reefBase
+  const { reefBase, reefStaging, reefPrecomputedFixturesBase } = useRuntimeConfig().public
+  const base = import.meta.dev && reefStaging !== '' ? reefPrecomputedFixturesBase : reefBase
   try {
     const response = await fetch(`${base}${path}`)
     if (response.status === 404) {
@@ -128,3 +134,14 @@ export const fetchSubjectIndex = async (): Promise<SubjectIndex> => {
  */
 export const fetchSubjectFile = (slug: string): Promise<PrecomputedSubjectDetailOrRedirect | undefined> =>
   read(apiReefSubjectPathBuilder(slug), PrecomputedSubjectDetailOrRedirect)
+
+/**
+ * Every published survey, whatever its visibility — the toast popover's data. `visibility` is
+ * what tells an `authenticated` row from one anyone can be offered; ~/utilities/reef-surveys reads
+ * it to choose which the reader qualifies for, which needs both kinds in one answer rather than
+ * the anonymous-only subset `surveys/open.json` publishes. A missing file is treated as "nothing
+ * to offer" rather than raised: unlike the subject vocabulary, there's no page that can't render
+ * without it.
+ */
+export const fetchPublishedSurveys = async (): Promise<OpenSurvey[]> =>
+  (await read(API_REEF_SURVEYS_PUBLISHED_PATH, z.array(OpenSurvey))) ?? []

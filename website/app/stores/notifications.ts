@@ -53,6 +53,7 @@ export type Notification = {
    * an earlier one.
    */
   allowDismiss?: boolean
+  readMoreText?: string
 }
 
 const PLACEHOLDER_NOTIFICATIONS: Notification[] = [
@@ -219,6 +220,7 @@ export const useNotificationsStore = defineStore('notifications', () => {
     visibleNotifications,
     add,
     hide,
-    dismiss
+    dismiss,
+    dismissedIds
   }
 })
