@@ -56,24 +56,8 @@ export type Notification = {
   readMoreText?: string
 }
 
-const PLACEHOLDER_NOTIFICATIONS: Notification[] = [
-  {
-    id: 'placeholder',
-    title: 'Placeholder notification',
-    description: 'This is a placeholder notification to demonstrate the toast queue.',
-    url: '/info/rfc9000/',
-    delayMs: 2000,
-    // Stays up until the user decides. An announcement is meant to be read once, and this is
-    // the toast that offers Dismiss — timing out would take that choice off the screen before
-    // they'd made it, though it would be offered again on the next page load.
-    durationMs: Number.POSITIVE_INFINITY,
-    position: 'bottom',
-    allowDismiss: true
-  }
-]
-
 export const useNotificationsStore = defineStore('notifications', () => {
-  const queue = ref<Notification[]>([...PLACEHOLDER_NOTIFICATIONS])
+  const queue = ref<Notification[]>([])
   const visibleIds = ref<string[]>([])
   const dismissedIds = ref<string[]>([])
   const hasLoadedDismissedIds = ref(false)

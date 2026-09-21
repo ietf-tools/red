@@ -20,6 +20,10 @@
       <span class="font-normal"><component :is="titleVNode" /></span>
     </Heading>
 
+    <RFCDocumentReefSubjectTags
+      v-if="props.rfcBucketHtmlDocument.rfc.reefSubjectTags"
+      :reef-subject-tags="props.rfcBucketHtmlDocument.rfc.reefSubjectTags" />
+
     <Heading v-if="isAprilFool" level="2" class="mb-2 px-3 print:text-center">
       <span class="inline pr-2">
         <AprilFools />
@@ -40,7 +44,7 @@
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
-    <RFCDocumentReef
+    <RFCDocumentReefStats
       v-if="featureFlags.oidc"
       :rfc-number="rfcBucketHtmlDocument.rfc.number"
       :reef-stats="rfcBucketHtmlDocument.rfc.reefStats" />
