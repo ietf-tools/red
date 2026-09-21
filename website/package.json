@@ -33,7 +33,7 @@
     "test:e2e:review": "node ./scripts/screenshot-review.ts",
     "test:e2e:update-screenshots": "nuxt prepare && UPDATE_SCREENSHOTS=1 TZ=UTC vitest run --project e2e",
     "generate:reef-api-client": "npx --no openapi-typescript ./reef_api.yaml -o ./generated/reef-api-client.d.ts",
-    "generate:reef-api-zod": "npx --no typed-openapi ./reef_api.yaml --runtime zod -o ./generated/reef-api-zod.ts",
+    "generate:reef-api-zod": "npx --no typed-openapi ./reef_api.yaml --runtime zod --schemas-only -o ./generated/reef-api-zod.ts",
     "generate:content-metadata": "node ./scripts/generate-content-metadata.ts"
   },
   "dependencies": {

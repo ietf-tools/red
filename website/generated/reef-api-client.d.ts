@@ -95,6 +95,28 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/precomputed/stats/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * The published stats file
+     * @description Not a served endpoint. This describes the payload the precomputer publishes to `stats.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+     *
+     *     The same public engagement numbers as `/api/reef/stats/`, swept for every document with any engagement at once rather than queried per document, plus `title` and `subseries` so a consumer without its own copy of Red's index can still label a row. A document with no rating, subscriber or set at all is omitted rather than listed with zeros.
+     */
+    get: operations['precomputed_stats_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/precomputed/surveys/': {
     parameters: {
       query?: never
@@ -1050,6 +1072,25 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['PrecomputedSubjectDetailOrRedirect']
+        }
+      }
+    }
+  }
+  precomputed_stats_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentStats'][]
         }
       }
     }

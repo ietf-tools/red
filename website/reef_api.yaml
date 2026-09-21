@@ -109,6 +109,29 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrecomputedSubjectDetailOrRedirect'
           description: ''
+  /api/reef/precomputed/stats/:
+    get:
+      operationId: precomputed_stats_retrieve
+      description: |-
+        Not a served endpoint. This describes the payload the precomputer publishes to `stats.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+
+        The same public engagement numbers as `/api/reef/stats/`, swept for every document with any engagement at once rather than queried per document, plus `title` and `subseries` so a consumer without its own copy of Red's index can still label a row. A document with no rating, subscriber or set at all is omitted rather than listed with zeros.
+      summary: The published stats file
+      tags:
+        - precomputed
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentStats'
+          description: ''
   /api/reef/precomputed/surveys/:
     get:
       operationId: precomputed_survey_list_retrieve

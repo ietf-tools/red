@@ -9,6 +9,7 @@ import type { SubseriesCommon, RfcCommon } from '../../../website/app/utilities/
 import { assertIsString } from './typescript.ts'
 import { sleep } from './sleep.ts'
 import { isRecovereableFetchError } from './fetch.ts'
+import { getReefStats, getSubjects } from './reef.ts'
 
 type Api = InstanceType<typeof ApiClient>
 type RedApi = Api['red']
@@ -224,7 +225,8 @@ const getRfcCommon = async (rfcNumber: number): Promise<RfcCommon | null> => {
       return null
     }
     const rfcCommon = rfcToRfcCommon(rfc)
-    return rfcCommon
+    const [reefStats, reefSubjectTags] = await Promise.all([getReefStats(rfcNumber), getSubjects(rfcNumber)])
+    return { ...rfcCommon, reefStats, reefSubjectTags }
   } catch (e) {
     console.error('safeDocRetrieve catch()', e)
     throw e

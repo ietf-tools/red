@@ -524,6 +524,19 @@ export namespace Endpoints {
     responses: { 200: Schemas.PrecomputedSubjectDetailOrRedirect }
   }
   /**
+   * Not a served endpoint. This describes the payload the precomputer publishes to `stats.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+   *
+   * The same public engagement numbers as `/api/reef/stats/`, swept for every document with any engagement at once rather than queried per document, plus `title` and `subseries` so a consumer without its own copy of Red's index can still label a row. A document with no rating, subscriber or set at all is omitted rather than listed with zeros.
+   */
+  export type get_Precomputed_stats_retrieve = {
+    method: 'GET'
+    path: '/api/reef/precomputed/stats/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: never
+    responses: { 200: Array<Schemas.DocumentStats> }
+  }
+  /**
    * Not a served endpoint. This describes the payload the precomputer publishes to `surveys/published.json` in the blob store, which is where Red reads it from; no deployment routes this path.
    *
    * Every published survey, whatever its visibility, so that Red can decide what to offer a signed-in reader without a call to the API. `visibility` is the field that decides: offer an `authenticated` row only to a reader who is signed in, since the runner refuses an anonymous visitor and the survey's definition is not published for them either.
@@ -1088,6 +1101,7 @@ export type EndpointByMethod = {
     '/api/reef/popularity/': Endpoints.get_Popularity_list
     '/api/reef/precomputed/subjects/': Endpoints.get_Precomputed_subject_index_retrieve
     '/api/reef/precomputed/subjects/{slug}/': Endpoints.get_Precomputed_subject_detail_retrieve
+    '/api/reef/precomputed/stats/': Endpoints.get_Precomputed_stats_retrieve
     '/api/reef/precomputed/surveys/': Endpoints.get_Precomputed_survey_list_retrieve
     '/api/reef/ratings/{rfc}/': Endpoints.get_Ratings_retrieve
     '/api/reef/schema/': Endpoints.get_Schema_retrieve

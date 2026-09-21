@@ -202,6 +202,13 @@ const RfcCommonSubseriesSchema = z.array(
   })
 )
 
+const ReefSubjectTagsSchema = z.array(
+  z.object({
+    slug: z.string(),
+    title: z.string()
+  })
+)
+
 /**
  * The full shape of one RFC, published per document as `rfc-common/{number}.json`.
  *
@@ -240,7 +247,8 @@ export const RfcCommonSchema = z.object({
   /** Abstract is plain text with `\n` line breaks; convert to paragraphs at render time */
   abstract: z.string().optional(),
   text: z.string().optional(),
-  reefStats: ReefRFCStatsSchema.optional()
+  reefStats: ReefRFCStatsSchema.optional(),
+  reefSubjectTags: ReefSubjectTagsSchema.optional()
 })
 
 export type RfcCommon = z.infer<typeof RfcCommonSchema>
