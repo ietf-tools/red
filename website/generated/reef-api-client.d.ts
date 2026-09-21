@@ -95,6 +95,30 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/precomputed/surveys/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * The published survey list
+     * @description Not a served endpoint. This describes the payload the precomputer publishes to `surveys/published.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+     *
+     *     Every published survey, whatever its visibility, so that Red can decide what to offer a signed-in reader without a call to the API. `visibility` is the field that decides: offer an `authenticated` row only to a reader who is signed in, since the runner refuses an anonymous visitor and the survey's definition is not published for them either.
+     *
+     *     `surveys/open.json` is the subset an anonymous reader may be offered, and is what the served `/api/reef/surveys/open/` returns without a credential. Unlike that endpoint with one, this file cannot leave out a survey the reader has already answered: it is one payload for every reader.
+     */
+    get: operations['precomputed_survey_list_retrieve']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/ratings/{rfc}/': {
     parameters: {
       query?: never
@@ -614,6 +638,13 @@ export interface components {
      *     The fields line up with Red's Notification: title, description and url are shown,
      *     and slug is the string Red keys a dismissal on. documents is the addition that
      *     tells it where to offer this at all.
+     *
+     *     visibility says whether the runner will admit an anonymous visitor, so Red can
+     *     offer an authenticated-only survey to a signed-in reader alone rather than
+     *     sending an anonymous one to a runner that refuses them. It is the field that
+     *     tells the two apart in the one payload that mixes them, which is the
+     *     precomputed surveys/published.json; the rows an anonymous caller is served,
+     *     here or from that store's surveys/open.json, are all "open" by construction.
      */
     OpenSurvey: {
       readonly id: number
@@ -622,6 +653,7 @@ export interface components {
       description?: string
       readonly url: string
       readonly documents: string[] | null
+      visibility?: components['schemas']['VisibilityEnum']
     }
     PatchedDocumentSet: {
       /** Format: uuid */
@@ -1018,6 +1050,25 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['PrecomputedSubjectDetailOrRedirect']
+        }
+      }
+    }
+  }
+  precomputed_survey_list_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['OpenSurvey'][]
         }
       }
     }

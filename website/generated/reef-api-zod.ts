@@ -99,6 +99,9 @@ export const MyDocuments = z
   .object({ sets: z.array(MyDocumentSet), documents: z.array(MyDocument) })
   .catchall(z.unknown())
 
+export type VisibilityEnum = __TypedOpenapi.Schemas.VisibilityEnum
+export const VisibilityEnum = z.enum(['open', 'authenticated'])
+
 export type OpenSurvey = __TypedOpenapi.Schemas.OpenSurvey
 export const OpenSurvey = z
   .object({
@@ -107,7 +110,8 @@ export const OpenSurvey = z
     title: z.string().max(255),
     description: z.string().optional(),
     url: z.string(),
-    documents: z.array(z.string()).nullable()
+    documents: z.array(z.string()).nullable(),
+    visibility: VisibilityEnum.optional()
   })
   .catchall(z.unknown())
 
@@ -126,9 +130,6 @@ export const PatchedDocumentSet = z
 
 export type StatusEnum = __TypedOpenapi.Schemas.StatusEnum
 export const StatusEnum = z.enum(['draft', 'published', 'closed'])
-
-export type VisibilityEnum = __TypedOpenapi.Schemas.VisibilityEnum
-export const VisibilityEnum = z.enum(['open', 'authenticated'])
 
 export type PatchedSurvey = __TypedOpenapi.Schemas.PatchedSurvey
 export const PatchedSurvey = z
@@ -395,6 +396,16 @@ export const get_Precomputed_subject_detail_retrieve = {
   responseFormat: z.literal('json'),
   parameters: { path: z.object({ slug: z.string() }).strict() },
   responses: { 200: PrecomputedSubjectDetailOrRedirect }
+}
+
+export type get_Precomputed_survey_list_retrieve = __TypedOpenapi.Endpoints.get_Precomputed_survey_list_retrieve
+export const get_Precomputed_survey_list_retrieve = {
+  method: z.literal('GET'),
+  path: z.literal('/api/reef/precomputed/surveys/'),
+  requestFormat: z.literal('json'),
+  responseFormat: z.literal('json'),
+  parameters: z.never(),
+  responses: { 200: z.array(OpenSurvey) }
 }
 
 export type get_Ratings_retrieve = __TypedOpenapi.Endpoints.get_Ratings_retrieve
@@ -811,6 +822,7 @@ export const EndpointByMethod = {
     '/api/reef/popularity/': get_Popularity_list,
     '/api/reef/precomputed/subjects/': get_Precomputed_subject_index_retrieve,
     '/api/reef/precomputed/subjects/{slug}/': get_Precomputed_subject_detail_retrieve,
+    '/api/reef/precomputed/surveys/': get_Precomputed_survey_list_retrieve,
     '/api/reef/ratings/{rfc}/': get_Ratings_retrieve,
     '/api/reef/schema/': get_Schema_retrieve,
     '/api/reef/sets/': get_Sets_list,
@@ -970,6 +982,7 @@ export const endpointSecurityRequirements = {
     '/api/reef/popularity/': [['BearerAuth'], ['cookieAuth'], []],
     '/api/reef/precomputed/subjects/': [['BearerAuth'], ['cookieAuth'], []],
     '/api/reef/precomputed/subjects/{slug}/': [['BearerAuth'], ['cookieAuth'], []],
+    '/api/reef/precomputed/surveys/': [['BearerAuth'], ['cookieAuth'], []],
     '/api/reef/ratings/{rfc}/': [['BearerAuth'], ['cookieAuth'], []],
     '/api/reef/schema/': [['BearerAuth'], ['cookieAuth'], []],
     '/api/reef/sets/{id}/': [['BearerAuth'], ['cookieAuth'], []],

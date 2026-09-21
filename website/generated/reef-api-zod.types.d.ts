@@ -111,11 +111,23 @@ export namespace Schemas {
    */
   export type MyDocuments = { sets: Array<MyDocumentSet>; documents: Array<MyDocument> } & Record<string, unknown>
   /**
+   * * `open` - Open (anonymous)
+   * * `authenticated` - Authenticated only
+   */
+  export type VisibilityEnum = 'open' | 'authenticated'
+  /**
    * One survey as Red offers it, which is as a toast.
    *
    * The fields line up with Red's Notification: title, description and url are shown,
    * and slug is the string Red keys a dismissal on. documents is the addition that
    * tells it where to offer this at all.
+   *
+   * visibility says whether the runner will admit an anonymous visitor, so Red can
+   * offer an authenticated-only survey to a signed-in reader alone rather than
+   * sending an anonymous one to a runner that refuses them. It is the field that
+   * tells the two apart in the one payload that mixes them, which is the
+   * precomputed surveys/published.json; the rows an anonymous caller is served,
+   * here or from that store's surveys/open.json, are all "open" by construction.
    */
   export type OpenSurvey = {
     id: number
@@ -124,6 +136,7 @@ export namespace Schemas {
     description?: string
     url: string
     documents: Array<string> | null
+    visibility?: VisibilityEnum
   } & Record<string, unknown>
   export type PatchedDocumentSet = Partial<{
     id: string
@@ -139,11 +152,6 @@ export namespace Schemas {
    * * `closed` - Closed
    */
   export type StatusEnum = 'draft' | 'published' | 'closed'
-  /**
-   * * `open` - Open (anonymous)
-   * * `authenticated` - Authenticated only
-   */
-  export type VisibilityEnum = 'open' | 'authenticated'
   /**
    * Full survey representation used by the management API and the builder.
    */
@@ -514,6 +522,21 @@ export namespace Endpoints {
       path: { slug: string }
     }
     responses: { 200: Schemas.PrecomputedSubjectDetailOrRedirect }
+  }
+  /**
+   * Not a served endpoint. This describes the payload the precomputer publishes to `surveys/published.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+   *
+   * Every published survey, whatever its visibility, so that Red can decide what to offer a signed-in reader without a call to the API. `visibility` is the field that decides: offer an `authenticated` row only to a reader who is signed in, since the runner refuses an anonymous visitor and the survey's definition is not published for them either.
+   *
+   * `surveys/open.json` is the subset an anonymous reader may be offered, and is what the served `/api/reef/surveys/open/` returns without a credential. Unlike that endpoint with one, this file cannot leave out a survey the reader has already answered: it is one payload for every reader.
+   */
+  export type get_Precomputed_survey_list_retrieve = {
+    method: 'GET'
+    path: '/api/reef/precomputed/surveys/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: never
+    responses: { 200: Array<Schemas.OpenSurvey> }
   }
   /**
    * Return the public average and count of ratings for one RFC. Open to anonymous callers. A credential adds nothing but `your_rating`, the caller's own 1-5 rating of this RFC, which is null if they have not rated it; for an anonymous caller it is always null.
@@ -1065,6 +1088,7 @@ export type EndpointByMethod = {
     '/api/reef/popularity/': Endpoints.get_Popularity_list
     '/api/reef/precomputed/subjects/': Endpoints.get_Precomputed_subject_index_retrieve
     '/api/reef/precomputed/subjects/{slug}/': Endpoints.get_Precomputed_subject_detail_retrieve
+    '/api/reef/precomputed/surveys/': Endpoints.get_Precomputed_survey_list_retrieve
     '/api/reef/ratings/{rfc}/': Endpoints.get_Ratings_retrieve
     '/api/reef/schema/': Endpoints.get_Schema_retrieve
     '/api/reef/sets/': Endpoints.get_Sets_list

@@ -109,6 +109,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/PrecomputedSubjectDetailOrRedirect'
           description: ''
+  /api/reef/precomputed/surveys/:
+    get:
+      operationId: precomputed_survey_list_retrieve
+      description: |-
+        Not a served endpoint. This describes the payload the precomputer publishes to `surveys/published.json` in the blob store, which is where Red reads it from; no deployment routes this path.
+
+        Every published survey, whatever its visibility, so that Red can decide what to offer a signed-in reader without a call to the API. `visibility` is the field that decides: offer an `authenticated` row only to a reader who is signed in, since the runner refuses an anonymous visitor and the survey's definition is not published for them either.
+
+        `surveys/open.json` is the subset an anonymous reader may be offered, and is what the served `/api/reef/surveys/open/` returns without a credential. Unlike that endpoint with one, this file cannot leave out a survey the reader has already answered: it is one payload for every reader.
+      summary: The published survey list
+      tags:
+        - precomputed
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+        - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OpenSurvey'
+          description: ''
   /api/reef/ratings/{rfc}/:
     get:
       operationId: ratings_retrieve
@@ -1366,6 +1391,13 @@ components:
         The fields line up with Red's Notification: title, description and url are shown,
         and slug is the string Red keys a dismissal on. documents is the addition that
         tells it where to offer this at all.
+
+        visibility says whether the runner will admit an anonymous visitor, so Red can
+        offer an authenticated-only survey to a signed-in reader alone rather than
+        sending an anonymous one to a runner that refuses them. It is the field that
+        tells the two apart in the one payload that mixes them, which is the
+        precomputed surveys/published.json; the rows an anonymous caller is served,
+        here or from that store's surveys/open.json, are all "open" by construction.
       properties:
         id:
           type: integer
@@ -1388,6 +1420,8 @@ components:
             type: string
           nullable: true
           readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
       required:
         - documents
         - id
