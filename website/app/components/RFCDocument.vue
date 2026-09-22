@@ -87,6 +87,10 @@ const { data: rfcBucketHtmlDocument, error: rfcBucketHtmlDocumentError } = await
         method: 'GET',
         baseURL: import.meta.server ? apiV1UrlOrigin : undefined
       })
+      // maybeRfcBucketDocument = await $fetch(rfcDataPath, {
+      //   method: 'GET',
+      //   baseURL: 'https://www.staging.rfc-editor.org'
+      // })
     }
 
     if (typeof maybeRfcBucketDocument !== 'object') {

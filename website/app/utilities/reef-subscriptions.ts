@@ -9,11 +9,18 @@
 // Whether this reader subscribes to a document is read from ~/stores/reef, which receives every
 // per-reader answer per document in one response.
 
-import { computed, toValue, type MaybeRefOrGetter, type WritableComputedRef } from 'vue'
+import { computed, onMounted, ref, toValue, watch, type MaybeRefOrGetter, type WritableComputedRef } from 'vue'
 import { z } from 'zod'
+import { useAuthStore } from '~/stores/auth'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
 import { useReefStore } from '~/stores/reef'
-import { createSubscription, deleteSubscription, type Subscription, type SubscriptionKind } from '~/utilities/reef'
+import {
+  createSubscription,
+  deleteSubscription,
+  getSubscriptions,
+  type Subscription,
+  type SubscriptionKind
+} from '~/utilities/reef'
 import { reefDocumentKey, useReefDocument } from '~/utilities/reef-documents'
 
 // Wording taken from the KindEnum descriptions in reef_api.yaml.
@@ -163,6 +170,98 @@ export const useUserRFCSubscription = (rfcNumber: MaybeRefOrGetter<number>): Wri
     get: () => isSubscribed.value,
     set: (subscribed) => {
       void writeUserRFCSubscription(toValue(rfcNumber), subscribed)
+    }
+  })
+}
+
+// --- Subscribing to all new RFCs ------------------------------------------------------------
+//
+// The `new_rfc` kind — "Any new RFC" — is one subscription for the whole account rather than one
+// per document, so unlike the `rfc` kind above there's no document to key it by and no reef store
+// entry already holding it. It's found the same way the account page's full list is: asking Reef
+// for every subscription this reader has and picking the `new_rfc` one out.
+
+export const newRfcSubscriptionFailedNotification = (wasSubscribing: boolean): Notification => ({
+  id: 'new-rfc-subscription',
+  title: wasSubscribing ? 'Unable to subscribe' : 'Unable to unsubscribe',
+  description: wasSubscribing
+    ? 'You have not been subscribed to new RFCs. Please try again.'
+    : 'You are still subscribed to new RFCs. Please try again.',
+  delayMs: 0,
+  position: 'top',
+  type: 'foreground'
+})
+
+/**
+ * Whether this reader subscribes to all new RFCs, as a model for the "subscribe to all" dialog's
+ * checkbox: loaded from Reef on mount, and written back when they tick or untick it. False while
+ * nobody is signed in, and while the load is still in flight.
+ */
+export const useUserNewRfcSubscription = (): WritableComputedRef<boolean> => {
+  const authStore = useAuthStore()
+  const reefStore = useReefStore()
+  const notificationsStore = useNotificationsStore()
+
+  const isSubscribed = ref(false)
+  const subscriptionId = ref<number>()
+
+  const load = async () => {
+    if (!authStore.isAuthenticated) {
+      isSubscribed.value = false
+      subscriptionId.value = undefined
+      return
+    }
+    try {
+      const subscriptions = await getSubscriptions()
+      const existing = subscriptions.find((subscription) => subscription.kind === 'new_rfc')
+      isSubscribed.value = existing !== undefined
+      subscriptionId.value = existing?.id
+    } catch (error) {
+      console.error('Unable to load your new-RFC subscription.', error)
+    }
+  }
+
+  // Reef is browser-only, so the initial load happens on mount rather than during SSR; the watch
+  // (not immediate — that's what onMounted is for) covers a reader who signs in or out while this
+  // stays on screen.
+  onMounted(load)
+  watch(() => authStore.isAuthenticated, load)
+
+  const write = async (subscribed: boolean) => {
+    if (subscribed === isSubscribed.value) {
+      return
+    }
+    const previous = isSubscribed.value
+    const previousId = subscriptionId.value
+
+    isSubscribed.value = subscribed
+
+    const outcome = await reefStore.runWrite('new_rfc-subscription', async (): Promise<number | undefined> => {
+      if (subscribed) {
+        const { id } = await createSubscription({ kind: 'new_rfc' })
+        return id
+      }
+      if (previousId !== undefined) {
+        await deleteSubscription(previousId)
+      }
+      return undefined
+    })
+
+    if (outcome.status === 'failed') {
+      isSubscribed.value = previous
+      subscriptionId.value = previousId
+      notificationsStore.add(newRfcSubscriptionFailedNotification(subscribed))
+      console.error('Unable to change your new-RFC subscription.', outcome.error)
+      return
+    }
+
+    subscriptionId.value = outcome.value
+  }
+
+  return computed({
+    get: () => isSubscribed.value,
+    set: (subscribed) => {
+      void write(subscribed)
     }
   })
 }

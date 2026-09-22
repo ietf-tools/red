@@ -14,7 +14,9 @@
       <ToastDescription v-if="notification.description" class="text-sm">
         {{ notification.description }}
       </ToastDescription>
-      <div class="w-full flex flex-row justify-between items-center pt-2">
+      <div
+        v-if="notification.url || notification.allowDismiss"
+        class="w-full flex flex-row justify-between items-center pt-2">
         <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
           <Anchor
             :href="notification.url"

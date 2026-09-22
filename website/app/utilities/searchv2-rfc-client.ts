@@ -36,6 +36,10 @@ export function createRfcSearchClient(params: CreateRfcSearchClientParams): Sear
       // `searchObsoleted` is on by default (include everything); when the user turns it off we
       // constrain to docs not hidden-by-default, i.e. excluding obsoleted/historic RFCs.
       if (!request.toggles.searchObsoleted) clauses.push('flags.hiddenDefault:=false')
+      // `popularityRanking` is only set on the top-100 most popular RFCs; every other doc lacks
+      // the field entirely, so sorting by it needs this filter or the rest of the collection
+      // would interleave with the ranked results instead of being excluded.
+      if (request.sortBy === 'popularityRanking:asc') clauses.push('popularityRanking:>0')
       return clauses
     }
   })

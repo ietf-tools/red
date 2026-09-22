@@ -5,14 +5,19 @@
         <IndexSubheader />
       </template>
       <div class="container mx-auto pl-5 pr-3">
-        <div class="md:mx-2 flex lg:flex-row lg:items-center justify-between">
+        <div class="md:mx-2 flex lg:flex-row lg:items-end justify-between">
           <Heading level="2" :id="LATEST_RFCS_HEADING_DOM_ID" has-icon class="text-left mt-6"> Latest RFCs </Heading>
-          <p class="hidden mt-8 lg:block text-base text-grey-800 pl-5">
-            Looking for works in progress? Go to
-            <Anchor :href="datatrackerUrlOrigin" class="text-blue-300 dark:text-blue-100">
-              datatracker.ietf.org
-            </Anchor>
-          </p>
+          <div class="flex gap-6 flex-col md:flex-row items-end">
+            <p class="hidden mt-8 lg:block text-base text-grey-800 pl-5 mb-3">
+              Looking for works in progress? Go to
+              <Anchor :href="datatrackerUrlOrigin" class="text-blue-300 dark:text-blue-100">
+                datatracker.ietf.org
+              </Anchor>
+            </p>
+            <div>
+              <ReefSubscribeToAllRFCs />
+            </div>
+          </div>
         </div>
 
         <div v-if="homepageLatestStatus === 'error' && homepageLatestError">

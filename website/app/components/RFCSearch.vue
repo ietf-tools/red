@@ -164,6 +164,7 @@ import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
 import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 
 const defaultUiState: UiState = {
   toggles: { searchObsoleted: true, searchMetadataOnly: false }
@@ -172,6 +173,7 @@ const defaultUiState: UiState = {
 const searchStore = useSearchStore()
 const host = useTypesenseHost()
 const apiKey = useTypesenseApiKey()
+const featureFlags = useFeatureFlags()
 
 const searchBoxDescriptionId = useId()
 
@@ -200,13 +202,18 @@ const PERSISTENT_FACETS = [
   'publicationDate'
 ]
 
-const SORT_ITEMS = [
+// "Most popular" is gated on the `oidc` feature flag alongside the rest of the
+// personalisation work it's part of. Absent from SSR and first client paint (flags
+// default false, hydrate onMounted), so it appears only after mount when the flag is on.
+const SORT_ITEMS = computed(() => [
   { label: 'Relevance', value: '' },
   { label: 'Newest first', value: 'publicationDate:desc' },
   { label: 'Oldest first', value: 'publicationDate:asc' },
   { label: 'RFC number (ascending)', value: 'rfcNumber:asc' },
-  { label: 'RFC number (descending)', value: 'rfcNumber:desc' }
-]
+  { label: 'RFC number (descending)', value: 'rfcNumber:desc' },
+  // Lower popularityRanking is more popular (1 = most popular, 100 = least), so ascending order.
+  ...(featureFlags.value.oidc ? [{ label: 'Most popular', value: 'popularityRanking:asc' }] : [])
+])
 
 const PER_PAGE_ITEMS = [
   { label: '10 per page', value: 10, default: true },

@@ -67,4 +67,24 @@ describe('createRfcSearchClient', () => {
     // they must not contribute authors to the offered values either.
     expect(search.filter_by).toContain('flags.hiddenDefault:=false')
   })
+
+  test('sorting by popularity filters out docs the field is unset on', async () => {
+    const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(facetBody))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await client().search(request({ sortBy: 'popularityRanking:asc' }))
+
+    const search = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)).searches[0]
+    expect(search.filter_by).toContain('popularityRanking:>0')
+  })
+
+  test('other sorts do not add the popularity filter', async () => {
+    const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(facetBody))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await client().search(request({ sortBy: 'publicationDate:desc' }))
+
+    const search = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)).searches[0]
+    expect(search.filter_by).not.toContain('popularityRanking')
+  })
 })
