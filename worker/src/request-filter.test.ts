@@ -92,7 +92,7 @@ test('isOriginPath: forwards the pages the Nuxt origin renders', () => {
     '',
     '/about',
     '/about/rfc-editor',
-    '/account',
+    '/my',
     '/authors/rfc-style-guide',
     '/images/authors/rfc-how-to-flowchart.png',
     '/never-issued',
