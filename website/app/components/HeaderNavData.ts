@@ -19,7 +19,8 @@ import {
   SEARCH_PATH,
   useQueueUrlOrigin,
   type ValidHrefs,
-  IETF_ACCOUNT_URL_ORIGIN
+  IETF_ACCOUNT_URL_ORIGIN,
+  SUBJECTS_PATH
 } from '~/utilities/url'
 import type { VueClick, VueStyleClass } from '~/utilities/vue'
 
@@ -129,6 +130,10 @@ export const useMenuData = (mode: Mode) => {
           {
             label: 'Browse all RFCs',
             href: '/rfc-index/' satisfies ValidHrefs
+          },
+          {
+            label: 'RFCs by Subject',
+            href: SUBJECTS_PATH
           },
           {
             label: 'Download RFCs',

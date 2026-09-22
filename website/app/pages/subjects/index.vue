@@ -121,7 +121,7 @@ definePageMeta({
 
 // Static rather than derived: unlike a single subject's page, the index has no ancestors to name,
 // just itself under Home.
-const breadcrumbItems: BreadcrumbItem[] = [{ url: HOME_PATH, label: 'Home' }, { label: 'RFCs by subject' }]
+const breadcrumbItems: BreadcrumbItem[] = [{ url: HOME_PATH, label: 'Home' }, { label: 'RFCs by Subject' }]
 
 const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
 

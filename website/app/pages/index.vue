@@ -80,6 +80,15 @@
           <li><MarkdownCard id="/series/rfc-download/" class="h-full" /></li>
 
           <li>
+            <Card :href="SUBJECTS_PATH" heading-level="3" class="h-full" has-cover-link>
+              <template #headingTitle>RFCs by Subject</template>
+              <CardContent>
+                <p class="text-base mt-2 text-blue-900 dark:text-white">Browse and filter RFCs by subject</p>
+              </CardContent>
+            </Card>
+          </li>
+
+          <li>
             <Card :href="RFC_INDEX_PATH" heading-level="3" class="h-full" has-cover-link>
               <template #headingTitle>Browse all RFCs</template>
             </Card>
@@ -144,7 +153,8 @@ import {
   useApiV1UrlOrigin,
   RFC_INDEX_PATH,
   searchV2PathBuilder,
-  HOME_PATH
+  HOME_PATH,
+  SUBJECTS_PATH
 } from '~/utilities/url'
 
 definePageMeta({
