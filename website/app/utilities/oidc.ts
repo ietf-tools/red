@@ -38,12 +38,21 @@ let userManagerPromise: Promise<UserManager> | undefined
 // settings the UserManager doesn't hold, without every caller having to pass config in.
 let resolvedConfig: OidcConfig | undefined
 
+declare global {
+  interface Window {
+    // Manual trigger for investigating background renewal failing with invalid_grant: call
+    // `await oidcRenew()` from devtools at any point after login instead of waiting for the
+    // ~5 minute access-token lifetime to elapse.
+    oidcRenew?: () => Promise<void>
+  }
+}
+
 const getUserManager = (config: OidcConfig): Promise<UserManager> => {
   if (!userManagerPromise) {
     resolvedConfig = config
     userManagerPromise = (async () => {
       const { UserManager, WebStorageStateStore } = await import('oidc-client-ts')
-      return new UserManager({
+      const userManager = new UserManager({
         authority: config.authority,
         client_id: config.clientId,
         redirect_uri: config.redirectUri,
@@ -53,6 +62,16 @@ const getUserManager = (config: OidcConfig): Promise<UserManager> => {
         post_logout_redirect_uri: config.redirectUri,
         userStore: new WebStorageStateStore({ store: window.localStorage })
       })
+      window.oidcRenew = async () => {
+        console.debug('[oidc] manual renew triggered')
+        try {
+          await userManager.signinSilent()
+          console.debug('[oidc] manual renew succeeded')
+        } catch (error) {
+          console.warn('[oidc] manual renew failed', error)
+        }
+      }
+      return userManager
     })()
   }
   return userManagerPromise
