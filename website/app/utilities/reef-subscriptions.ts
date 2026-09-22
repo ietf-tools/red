@@ -1,78 +1,16 @@
-// Feature logic for a user's notification subscriptions — the presentation of the list on the
-// account page, and the model an RFC page binds its subscribe dialog to.
-//
-// Reef models a subscription as a `kind` plus a free-form `params` object whose shape varies
-// by kind, so turning that pair into something a person can read — or building one for a
-// particular document — is feature logic and lives here rather than in the component or in the API
-// client (~/utilities/reef).
+// Feature logic for a user's notification subscriptions — the model an RFC page binds its
+// subscribe dialog to. The account page's own list and delete presentation lives in
+// ~/components/Account.vue, since nothing else needs it.
 //
 // Whether this reader subscribes to a document is read from ~/stores/reef, which receives every
 // per-reader answer per document in one response.
 
 import { computed, onMounted, ref, toValue, watch, type MaybeRefOrGetter, type WritableComputedRef } from 'vue'
-import { z } from 'zod'
 import { useAuthStore } from '~/stores/auth'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
 import { useReefStore } from '~/stores/reef'
-import {
-  createSubscription,
-  deleteSubscription,
-  getSubscriptions,
-  type Subscription,
-  type SubscriptionKind
-} from '~/utilities/reef'
+import { createSubscription, deleteSubscription, getSubscriptions } from '~/utilities/reef'
 import { reefDocumentKey, useReefDocument } from '~/utilities/reef-documents'
-
-// Wording taken from the KindEnum descriptions in reef_api.yaml.
-const KIND_LABELS: Record<SubscriptionKind, string> = {
-  rfc: 'A specific RFC',
-  new_rfc: 'Any new RFC',
-  by_status: 'New RFC by status',
-  obsoleted: 'RFC obsoleted or made historic',
-  subject: 'Changes to anything carrying a subject',
-  set: 'Set of RFCs'
-}
-
-// Falls back to the raw kind so a subscription created by a newer Reef than this build knows
-// about still shows something rather than an empty row.
-export const subscriptionLabel = ({ kind }: Subscription): string => KIND_LABELS[kind] ?? kind
-
-const formatParamValue = (value: unknown): string => {
-  if (Array.isArray(value)) {
-    return value.map(formatParamValue).join(', ')
-  }
-  if (typeof value === 'string') {
-    return value
-  }
-  if (typeof value === 'number' || typeof value === 'boolean') {
-    return String(value)
-  }
-  return JSON.stringify(value) ?? ''
-}
-
-// `params` is typed as `unknown` in the spec, so it's parsed rather than trusted — a record of
-// unknown values is the most any kind's params can be relied on to be, which is enough to list
-// them. Returns undefined when there's nothing worth showing, which is the common case for the
-// new_rfc kind, and the caller then renders the label on its own.
-const SubscriptionParamsSchema = z.record(z.string(), z.unknown())
-
-export const subscriptionParamsSummary = ({ params }: Subscription): string | undefined => {
-  const { data } = SubscriptionParamsSchema.safeParse(params)
-  if (data === undefined) {
-    return undefined
-  }
-
-  const summary = Object.entries(data)
-    .filter(([, value]) => value !== null && value !== undefined && value !== '')
-    .map(([key, value]) => `${key}: ${formatParamValue(value)}`)
-    .join(', ')
-
-  return summary === '' ? undefined : summary
-}
-
-// Newest first, so a subscription the user just created appears at the top of the list.
-export const sortSubscriptions = (subscriptions: Subscription[]): Subscription[] =>
-  subscriptions.toSorted((a, b) => b.created_at.localeCompare(a.created_at))
 
 // --- Subscribing to one document ----------------------------------------------------------
 //

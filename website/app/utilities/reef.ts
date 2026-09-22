@@ -23,6 +23,7 @@ import { DjangoErrorDetailSchema } from '~/utilities/django-schema'
 import { getAccessToken } from '~/utilities/oidc'
 
 export type DocumentSet = components['schemas']['DocumentSet']
+export type PatchedDocumentSet = components['schemas']['PatchedDocumentSet']
 export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
 export type MyDocuments = components['schemas']['MyDocuments']
 export type MyDocument = components['schemas']['MyDocument']
@@ -339,6 +340,15 @@ export const deleteSetDocument = (id: string, doc: string, signal?: AbortSignal)
     auth: 'required',
     signal
   })
+
+// Update a set's title and/or description. PATCH rather than PUT: `documents` is read-only, so a
+// PUT body would have to carry it right back unchanged just to change these two fields.
+export const patchSet = (id: string, set: PatchedDocumentSet, signal?: AbortSignal): Promise<DocumentSet> =>
+  reefFetch(`/api/reef/sets/${id}/`, { method: 'PATCH', body: set, auth: 'required', signal })
+
+// Delete a set outright, along with its membership. Answers 204.
+export const deleteSet = (id: string, signal?: AbortSignal): Promise<void> =>
+  reefFetch(`/api/reef/sets/${id}/`, { method: 'DELETE', auth: 'required', signal })
 
 // --- Surveys (management; staff only, used by the builder) -------------------------------
 

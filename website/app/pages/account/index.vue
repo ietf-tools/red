@@ -9,17 +9,7 @@
         </p>
       </div>
     </template>
-    <div v-if="user" class="container mx-auto px-4 pt-5 flex">
-      <div class="flex-1 min-w-0">
-        <Heading level="2">Your notifications</Heading>
-        ...
-        <AccountNotifications />
-      </div>
-      <div>
-        <Heading level="2" style-level="3">Your sets</Heading>
-        ...
-      </div>
-    </div>
+    <Account v-if="user"></Account>
   </NuxtLayout>
 </template>
 
