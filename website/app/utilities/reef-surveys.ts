@@ -59,6 +59,7 @@ export const chooseSurvey = (openSurveys: OpenSurvey[], narrowing: Narrowing): O
 const loadOpenSurveys = async (): Promise<void> => {
   const authStore = useAuthStore()
   const notificationsStore = useNotificationsStore()
+  const notificationsStoreRefs = storeToRefs(notificationsStore)
   const reefSurveysStore = useReefSurveysStore()
   const router = useRouter()
   // Only /info/[id].vue's route carries an `id` param, so this is undefined — correctly, no
@@ -67,14 +68,11 @@ const loadOpenSurveys = async (): Promise<void> => {
   // never parses.
   const idParam = router.currentRoute.value.params.id
   const seriesId = typeof idParam === 'string' ? parseSeriesId(idParam) : undefined
-  console.log('Waiting for auth')
   await until(() => authStore.hasCheckedAuth).toBe(true, { timeout: AUTH_CHECK_TIMEOUT_MS })
-  console.log('After auth')
   try {
     const surveys = await reefSurveysStore.load()
-    console.log('[surveys]', surveys)
     const narrowing: Narrowing = {
-      dismissedIds: notificationsStore.dismissedIds,
+      dismissedIds: notificationsStoreRefs.dismissedIds.value,
       isAuthenticated: authStore.isAuthenticated,
       seriesId
     }

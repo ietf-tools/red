@@ -13,6 +13,7 @@
  * localStorage, which stops that notification being shown on this device again.
  */
 
+import { skipHydrate } from 'pinia'
 import { z } from 'zod'
 
 const DismissedIdsSchema = z.string().array()
@@ -209,6 +210,9 @@ export const useNotificationsStore = defineStore('notifications', () => {
     add,
     hide,
     dismiss,
-    dismissedIds
+    // Derived from localStorage, which only exists client-side: the server always serializes
+    // this as its initial empty/unloaded value, so without skipHydrate() that snapshot would
+    // clobber the real value loadDismissedIds() just set during this store's client-side setup.
+    dismissedIds: skipHydrate(dismissedIds)
   }
 })
