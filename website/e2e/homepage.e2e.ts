@@ -19,6 +19,22 @@ const LATEST_RFCS_MASK_CSS = `
     visibility: hidden;
     height: 320px;
     overflow: hidden;
+    position: relative;
+  }
+
+  ul[aria-describedby="latest-rfcs-heading"]::before {
+    content: 'DYNAMIC CONTENT HIDDEN FOR TEST STABILITY';
+    visibility: visible;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #666;
+    background: repeating-linear-gradient(45deg, #eee, #eee 10px, #ddd 10px, #ddd 20px);
   }
 `
 

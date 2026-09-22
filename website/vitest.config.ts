@@ -36,7 +36,7 @@ export default defineConfig(async () => ({
           include: ['e2e/search-index/**/*.search-index.ts'],
           environment: 'node',
           // A cold Typesense query plus generous per-case network latency.
-          testTimeout: 30_000,
+          testTimeout: 50_000,
           hookTimeout: 30_000,
           // Cases hit the live API; cap concurrent in-flight requests (it.concurrent.each).
           maxConcurrency: 8
