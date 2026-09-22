@@ -173,9 +173,13 @@ export const useNotificationsStore = defineStore('notifications', () => {
   const dismiss = (notification: Notification) => {
     const { id, allowDismiss } = notification
     hide(id)
-    if (!allowDismiss) {
+    if (!allowDismiss || !import.meta.client) {
       return
     }
+    // Re-read localStorage rather than trusting the in-memory copy: another tab may have
+    // dismissed a different notification since this store last loaded it, and writing the
+    // stale in-memory array back out would clobber that tab's dismissal.
+    loadDismissedIds()
     if (!dismissedIds.value.includes(id)) {
       dismissedIds.value = [...dismissedIds.value, id]
       saveDismissedIds()
