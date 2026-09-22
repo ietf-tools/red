@@ -34,7 +34,7 @@
       </dl>
       <p>
         <Anchor :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)" :class="ANCHOR_COLOR_TAILWIND_STYLE">
-          View errata report {{ props.errataItemForTab.errata_id }} on the IETF Errata site
+          View errata report {{ props.errataItemForTab.errata_id }} on the RFC Errata site
           <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
         </Anchor>
         (this may fix report text formatting issues)
