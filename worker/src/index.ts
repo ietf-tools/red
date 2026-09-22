@@ -130,6 +130,10 @@ router
   .get('/styleguide/headers-and-boilerplate/', redirectTo('/authors/rfc-style-guide/#rfc-headers-and-boilerplate', 302))
   .get('/styleguide/part2/', redirectTo('/authors/rfc-style-guide/', 302))
   .get('/styleguide/tips/', redirectTo('/authors/rfc-style-guide/', 302))
+  .get(
+    '/rfc-style-guide/part2.html', // https://www.rfc-editor.org/info/rfc7322/#section-6.1
+    redirectTo('/authors/rfc-style-guide/', 302)
+  )
 
   .get('/auth48/*', (req: IRequest) => {
     let match = req.normalizedPath.match(/^\/auth48\/c(?<num>\d+)$/i)
