@@ -25,8 +25,8 @@
         name="feature-flags-close"
         type="button"
         class="cursor-pointer px-2 py-1 rounded text-black dark:text-white border-1 border-yellow-50 dark:border-yellow-900 hover:border-yellow-500 hover:bg-yellow-100 dark:hover:text-white dark:focus:text-white dark:hover:bg-black dark:focus:bg-black"
-        aria-label="Close feature flags being enabled message"
-        @click="shouldShowToast = false">
+        aria-label="Close feature flags prompt"
+        @click="close">
         <span aria-hidden> &times; </span>
       </button>
     </form>
@@ -35,21 +35,35 @@
 
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
-import { isFeatureFlagsModalVisibleKey, useAreFeatureFlagsEnabled } from '~/utilities/feature-flags'
+import {
+  hasFeatureFlagsToastBeenDismissedKey,
+  isFeatureFlagsModalVisibleKey,
+  useAreFeatureFlagsEnabled
+} from '~/utilities/feature-flags'
 
 const areFeatureFlagsEnabled = useAreFeatureFlagsEnabled()
 const isFeatureFlagsModalVisible = inject(isFeatureFlagsModalVisibleKey)
+const hasFeatureFlagsToastBeenDismissed = inject(hasFeatureFlagsToastBeenDismissedKey)
 
 const shouldShowToast = ref(false)
 
 watchDebounced(
   areFeatureFlagsEnabled,
   () => {
-    shouldShowToast.value = true
+    if (!hasFeatureFlagsToastBeenDismissed?.value) {
+      shouldShowToast.value = true
+    }
   },
   {
     debounce: 200,
     maxWait: 400
   }
 )
+
+const close = () => {
+  shouldShowToast.value = false
+  if (hasFeatureFlagsToastBeenDismissed) {
+    hasFeatureFlagsToastBeenDismissed.value = true
+  }
+}
 </script>

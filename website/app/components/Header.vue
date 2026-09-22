@@ -2,7 +2,6 @@
   <header class="flex-1 relative print:hidden">
     <a id="top"></a>
     <HeaderSkipToContent />
-    <FeatureFlagsToast />
     <div>
       <div class="container pl-5 pr-3 mx-auto flex justify-between py-4 w-full">
         <GraphicsHeaderLogos />

@@ -135,6 +135,13 @@ export const watchInputForFeatureFlagExperiments = ({
 
 export const isFeatureFlagsModalVisibleKey = Symbol() as InjectionKey<Ref<boolean>>
 
+// Owned by app.vue rather than the toast component: the toast is rendered inside <NuxtLayout>'s
+// slot content, which is re-parented into a fresh layout instance (and so unmounted/remounted)
+// whenever navigation switches layouts, same as the notifications store's timers had to avoid
+// depending on a component's lifecycle for the same reason. Keeping "has this been dismissed"
+// here instead of as component-local state means it survives that remount.
+export const hasFeatureFlagsToastBeenDismissedKey = Symbol() as InjectionKey<Ref<boolean>>
+
 export const useFeatureFlags = () => {
   const featureFlagsRef = inject(featureFlagsKey)
 
