@@ -10,7 +10,7 @@ import { typeSenseEncodeUriComponent } from './typesense-utils'
 import { assertIsString, assertNever } from './typescript'
 import type { searchV2PathBuilder } from './url-searchv2'
 import {
-  ACCOUNT_HOME_PATH,
+  MY_ACCOUNT_HOME_PATH,
   ALL_CLUSTERS_PATH,
   ATOM_PATH,
   FIXME_URLS,
@@ -48,7 +48,7 @@ export type ValidHrefs =
   | MarkdownValidHrefs
   | `https://${string}` // any external link is treated as valid (even if it might 404 we don't verify further)
   | typeof HOME_PATH
-  | typeof ACCOUNT_HOME_PATH
+  | typeof MY_ACCOUNT_HOME_PATH
   | typeof RFC_INDEX_XML_PATH
   | typeof RFC_INDEX_PATH
   | typeof RSS_PATH

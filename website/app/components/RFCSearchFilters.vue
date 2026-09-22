@@ -26,7 +26,7 @@
       <li>
         <ToggleRefinement
           attribute="searchObsoleted"
-          label="Search also obsoleted / historic"
+          label="Search also Obsoleted / Historic"
           :class-names="{ root: 'inline-block', label: 'text-base cursor-pointer', checkbox: 'mr-2' }" />
       </li>
     </ul>

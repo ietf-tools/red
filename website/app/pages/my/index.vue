@@ -16,11 +16,11 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import { useRfcEditorHead } from '~/utilities/head'
-import { ACCOUNT_HOME_PATH } from '~/utilities/url'
+import { MY_ACCOUNT_HOME_PATH } from '~/utilities/url'
 
 const route = useRoute()
 
-const canonicalPath = ACCOUNT_HOME_PATH
+const canonicalPath = MY_ACCOUNT_HOME_PATH
 if (route.path !== canonicalPath) {
   await navigateTo({ path: canonicalPath })
 }

@@ -12,13 +12,14 @@ import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
 import {
-  ACCOUNT_HOME_PATH,
+  MY_ACCOUNT_HOME_PATH,
   IETF_PRIVACY_STATEMENT_URL,
   INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL,
   markdownPathBuilder,
   SEARCH_PATH,
   useQueueUrlOrigin,
-  type ValidHrefs
+  type ValidHrefs,
+  IETF_ACCOUNT_URL_ORIGIN
 } from '~/utilities/url'
 import type { VueClick, VueStyleClass } from '~/utilities/vue'
 
@@ -254,8 +255,12 @@ export const useMenuData = (mode: Mode) => {
             : () => h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' }),
           children: [
             {
-              label: 'Account',
-              href: ACCOUNT_HOME_PATH
+              label: 'My Subscriptions and Sets',
+              href: MY_ACCOUNT_HOME_PATH
+            },
+            {
+              label: 'IETF Account',
+              href: IETF_ACCOUNT_URL_ORIGIN
             },
             {
               label: 'Sign out',

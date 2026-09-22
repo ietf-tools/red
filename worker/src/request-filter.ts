@@ -103,7 +103,7 @@ const HOME_PATH = ''
  */
 const ORIGIN_PATHS = [
   '/about',
-  '/account',
+  '/my',
   '/authors',
   '/images',
   '/never-issued',

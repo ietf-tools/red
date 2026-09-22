@@ -11,6 +11,7 @@ export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'
 export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN = 'https://authors.ietf.org'
+export const IETF_ACCOUNT_URL_ORIGIN = 'https://account.ietf.org'
 export const IETF_PRIVACY_STATEMENT_URL = 'https://www.ietf.org/privacy-statement/'
 
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL = `${INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN}/rfc-publication-process`
@@ -28,7 +29,7 @@ export const SUBJECTS_PATH = '/subjects/'
 export const SUBJECTS_QUERY_PARAM = 'q'
 
 export const RFC_INDEX_PATH = '/rfc-index/'
-export const ACCOUNT_HOME_PATH = '/account/'
+export const MY_ACCOUNT_HOME_PATH = '/my/'
 
 export const API_HOMEPAGE_LATEST_PATH = `/api/v1/homepage-latest.json`
 export const API_RFC_MINI_INDEX_PATH = `/api/v1/rfc-mini-index.json`
