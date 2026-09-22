@@ -6,17 +6,17 @@
       :type="notification.type ?? 'background'"
       :open="true"
       :duration="notification.durationMs ?? DEFAULT_TOAST_DURATION_MS"
-      class="data-[state=closed]:animate-none data-[swipe=end]:translate-x-full relative flex flex-col gap-1 bg-white dark:bg-black text-black dark:text-white border-1 border-gray-300 dark:border-gray-500 shadow-2xl rounded-xs px-4 py-3"
+      class="data-[state=closed]:animate-none data-[swipe=end]:translate-x-full relative flex flex-col gap-1 bg-white dark:bg-black text-black dark:text-white border-1 border-gray-300 dark:border-gray-500 shadow-2xl rounded-xs px-1 py-3"
       @update:open="(isOpen: boolean) => !isOpen && hide(notification.id)">
-      <ToastTitle class="font-bold text-sm pr-10">
+      <ToastTitle class="font-bold text-sm pl-2 pr-10">
         {{ notification.title }}
       </ToastTitle>
-      <ToastDescription v-if="notification.description" class="text-sm">
+      <ToastDescription v-if="notification.description?.trim()" class="pl-2 text-sm">
         {{ notification.description }}
       </ToastDescription>
       <div
         v-if="notification.url || notification.allowDismiss"
-        class="w-full flex flex-row justify-between items-center pt-2">
+        class="w-full flex flex-row justify-between items-center pl-2 pt-2">
         <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
           <Anchor
             :href="notification.url"
@@ -40,7 +40,7 @@
     <ToastViewport
       :label="VIEWPORT_LABELS[position]"
       :class="[
-        'fixed right-0 z-100 flex flex-col gap-2 w-[min(24em,calc(100vw-2rem))] max-w-full m-4 list-none outline-none',
+        'fixed right-0 z-100 flex flex-col gap-2 w-[min(24em,calc(100vw-1.2rem))] max-w-full m-2 list-none outline-none',
         position === 'top' ? 'top-0' : 'bottom-0'
       ]" />
   </ToastProvider>

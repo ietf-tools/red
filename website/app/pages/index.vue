@@ -6,7 +6,9 @@
       </template>
       <div class="container mx-auto pl-5 pr-3">
         <div class="md:mx-2 flex lg:flex-row lg:items-end justify-between">
-          <Heading level="2" :id="LATEST_RFCS_HEADING_DOM_ID" has-icon class="text-left mt-6"> Latest RFCs </Heading>
+          <Heading level="2" :id="LATEST_RFCS_HEADING_DOM_ID" has-icon class="text-left mt-6 lg:mb-2">
+            Latest RFCs
+          </Heading>
           <div class="flex gap-6 flex-col md:flex-row items-end">
             <p class="hidden mt-8 lg:block text-base text-grey-800 pl-5 mb-3">
               Looking for works in progress? Go to
@@ -14,9 +16,7 @@
                 datatracker.ietf.org
               </Anchor>
             </p>
-            <div>
-              <ReefSubscribeToAllRFCs />
-            </div>
+            <ReefSubscribeToAllRFCs />
           </div>
         </div>
 
@@ -77,13 +77,11 @@
             </Card>
           </li>
 
-          <li><MarkdownCard id="/series/rfc-download/" class="h-full" /></li>
-
           <li>
             <Card :href="SUBJECTS_PATH" heading-level="3" class="h-full" has-cover-link>
-              <template #headingTitle>RFCs by Subject</template>
+              <template #headingTitle>Browse RFCs by Subject</template>
               <CardContent>
-                <p class="text-base mt-2 text-blue-900 dark:text-white">Browse and filter RFCs by subject</p>
+                <p class="text-base mt-2 text-blue-900 dark:text-white">Explore RFCs by topic</p>
               </CardContent>
             </Card>
           </li>

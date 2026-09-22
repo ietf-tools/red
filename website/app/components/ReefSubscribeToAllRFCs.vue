@@ -1,12 +1,12 @@
 <template>
-  <div class="relative flex flex-col md:flex-row md:gap-2">
+  <div class="mt-5 lg:mt-0 relative flex flex-col md:flex-row md:gap-2">
     <div class="flex flex-col">
       <DialogRoot>
         <DialogTrigger
           type="button"
-          class="flex flex-row gap-2 cursor-pointer px-3 py-2 font-bold text-blue-300 border-[2px] border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-500 dark:focus:bg-blue-500">
-          <GraphicsAlert class="text-blue-300 dark:text-blue-100 w-[24px] h-[24px]" />
-          Subscribe to all new RFCs
+          class="text-pretty flex flex-row gap-2 cursor-pointer px-2 md:px-3 py-1 md:py-2 font-bold text-blue-300 border-[2px] border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-500 dark:focus:bg-blue-500">
+          <GraphicsAlert class="hidden lg:inline-block text-blue-300 dark:text-blue-100 w-[24px] h-[24px]" />
+          Subscribe to new RFCs
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
@@ -35,7 +35,7 @@
                       <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                     </CheckboxIndicator>
                   </span>
-                  <span>Subscribe to all new RFCs</span>
+                  <span>Subscribe to new RFCs</span>
                 </CheckboxRoot>
 
                 <div class="flex justify-end pb-2 pt-4">
