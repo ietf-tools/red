@@ -11,7 +11,8 @@ import {
   isTelLink,
   isOutsideNuxtLink,
   parseMaybeRfcLink,
-  isHashLink
+  isHashLink,
+  subjectsPathBuilder
 } from './url'
 import type { ValidHrefs } from './url'
 
@@ -173,4 +174,8 @@ test('parseMaybeRfcLink', () => {
     // might be wrong about, even though it's got RFC stuff in the `href`
     parseMaybeRfcLink('https://example.com/rfc/rfc10101#section-2.1')
   ).toEqual(undefined)
+})
+
+test('subjectsPathBuilder: path safe encoding', () => {
+  expect(subjectsPathBuilder('http/2')).toBe('/subjects/http%2F2/')
 })

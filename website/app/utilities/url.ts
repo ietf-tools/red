@@ -519,7 +519,7 @@ export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/api/v
 
 export const subjectsPathBuilder = (
   /** eg 'a', 'b', ... */
-  subject: string
+  slug: string
 ) => {
-  return `${SUBJECTS_PATH}${subject}/` as const
+  return `${SUBJECTS_PATH}${encodeURIComponent(slug)}/` as const
 }

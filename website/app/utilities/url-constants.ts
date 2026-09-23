@@ -13,6 +13,11 @@ export const INTERNET_SOCIETY_URL_ORIGIN = 'https://www.internetsociety.org'
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN = 'https://authors.ietf.org'
 export const IETF_ACCOUNT_URL_ORIGIN = 'https://account.ietf.org'
 export const IETF_PRIVACY_STATEMENT_URL = 'https://www.ietf.org/privacy-statement/'
+export const GITHUB_RFC_EDITOR_RFC_SUBJECT_TAGS_ISSUES_NEW_URL =
+  'https://github.com/rfc-editor/rfc-subject-tags/issues/new/choose'
+
+export const RFC_EDITOR_EMAIL = 'rfc-editor@rfc-editor.org'
+export const RFC_EDITOR_MAILTO = `mailto:${RFC_EDITOR_EMAIL}` as const
 
 export const INTERNET_DRAFT_AUTHOR_RESOURCES_RFC_PUBLICATION_PROCESS_URL = `${INTERNET_DRAFT_AUTHOR_RESOURCES_URL_ORIGIN}/rfc-publication-process`
 
