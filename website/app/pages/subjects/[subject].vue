@@ -21,90 +21,109 @@
                 {{ liveSubject.name }}
               </Heading>
 
-              <nav aria-label="Subject" class="block mt-4 md:hidden">
-                <Heading level="2" style-level="4" class="mb-1">Within this page</Heading>
-                <ul class="list-disc ml-6 mb-4">
-                  <li>
-                    <a href="#subjects" :class="ANCHOR_COLOR_TAILWIND_STYLE">Subjects below {{ liveSubject.name }}</a>
-                  </li>
-                  <li>
-                    <a href="#rfcs" :class="ANCHOR_COLOR_TAILWIND_STYLE">RFCs within {{ liveSubject.name }}</a>
-                  </li>
-                </ul>
-              </nav>
-
               <p v-if="liveSubject.description" class="italic mt-0 md:mt-6 lg:mt-12 mb-5 md:mb-4 md:mx-2">
                 {{ liveSubject.description }}
               </p>
 
-              <div class="md:flex md:flex-row md:gap-2">
-                <div v-if="subjectSubtree.length > 0" class="flex-1 md:min-w-64">
-                  <Heading id="subjects" level="2" style-level="5" class="md:mt-3 lg:mt-6 md:mx-2">
-                    {{ liveSubject.name }} subjects:
-                  </Heading>
+              <div class="flex flex-col lg:flex-row lg:gap-5">
+                <div class="lg:flex-3">
+                  <nav aria-label="Subject" class="block mt-4 md:hidden">
+                    <Heading level="2" style-level="4" class="mb-1">Within this page</Heading>
+                    <ul class="list-disc ml-6 mb-4">
+                      <li>
+                        <a href="#subjects" :class="ANCHOR_COLOR_TAILWIND_STYLE"
+                          >Subjects below {{ liveSubject.name }}</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#rfcs" :class="ANCHOR_COLOR_TAILWIND_STYLE">RFCs within {{ liveSubject.name }}</a>
+                      </li>
+                    </ul>
+                  </nav>
 
-                  <SubjectTreeList
-                    :nodes="subjectSubtree"
-                    density="compact"
-                    :matches="NO_SUBJECT_MATCHES"
-                    class="md:mx-2" />
-                </div>
+                  <div class="md:flex md:flex-row md:gap-2">
+                    <div v-if="subjectSubtree.length > 0" class="flex-1 md:min-w-64">
+                      <Heading id="subjects" level="2" style-level="5" class="md:mt-3 lg:mt-3 md:mx-2">
+                        {{ liveSubject.name }} subjects:
+                      </Heading>
 
-                <div class="w-full">
-                  <div class="mt-6 md:mt-0 flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
-                    <Heading
-                      id="rfcs"
-                      level="2"
-                      style-level="1"
-                      class="text-blue-900 dark:text-gray-100 md:ml-3 md:mb-2">
-                      {{ liveSubject.name }} RFCs
-                      <span class="text-gray-700 dark:text-gray-200">({{ documents.length }})</span>
-                    </Heading>
-                    <div class="flex items-center gap-2">
-                      <div class="flex items-center gap-2">
-                        <label :for="documentSortId" class="whitespace-nowrap">Sort by</label>
-                        <select
-                          :id="documentSortId"
-                          v-model="documentSort"
-                          :class="`py-2 pl-4 w-full min-w-0 max-w-44 text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`">
-                          <option v-for="option in DOCUMENT_SORT_OPTIONS" :key="option.value" :value="option.value">
-                            {{ option.label }}
-                          </option>
-                        </select>
-                      </div>
-                      <Separator
-                        orientation="vertical"
-                        decorative
-                        class="bg-gray-400 data-[orientation=vertical]:h-7 data-[orientation=vertical]:w-px" />
-                      <SubjectDensity class="print:hidden" v-model="documentDensity" />
+                      <SubjectTreeList
+                        :nodes="subjectSubtree"
+                        density="compact"
+                        :matches="NO_SUBJECT_MATCHES"
+                        class="md:mx-2" />
                     </div>
-                  </div>
 
-                  <ul
-                    v-if="documents.length > 0"
-                    class="md:mx-2 grid grid-cols-1 mt-3 gap-4"
-                    :style="{ '--computed-heading-char-length': maxHeadingCharWidth }">
-                    <li v-for="{ doc, label, title, infoPath, rfc } in documents" :key="doc" class="flex flex-col">
-                      <!-- `rfc` is unset for a document_meta entry Red's index hasn't resolved yet (or,
+                    <div class="w-full">
+                      <div class="mt-6 md:mt-0 md:mr-2 flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
+                        <Heading
+                          id="rfcs"
+                          level="2"
+                          style-level="1"
+                          class="text-blue-900 dark:text-gray-100 md:ml-3 md:mb-2">
+                          {{ liveSubject.name }} RFCs
+                          <span class="text-gray-700 dark:text-gray-200">({{ documents.length }})</span>
+                        </Heading>
+                        <div class="flex items-center gap-2">
+                          <div class="flex items-center gap-2">
+                            <label :for="documentSortId" class="whitespace-nowrap">Sort by</label>
+                            <select
+                              :id="documentSortId"
+                              v-model="documentSort"
+                              :class="`py-2 pl-4 w-full min-w-0 max-w-44 text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`">
+                              <option v-for="option in DOCUMENT_SORT_OPTIONS" :key="option.value" :value="option.value">
+                                {{ option.label }}
+                              </option>
+                            </select>
+                          </div>
+                          <Separator
+                            orientation="vertical"
+                            decorative
+                            class="bg-gray-400 data-[orientation=vertical]:h-7 data-[orientation=vertical]:w-px" />
+                          <SubjectDensity class="print:hidden" v-model="documentDensity" />
+                        </div>
+                      </div>
+
+                      <ul
+                        v-if="documents.length > 0"
+                        class="md:mx-2 grid grid-cols-1 mt-3 gap-4"
+                        :style="{ '--computed-heading-char-length': maxHeadingCharWidth }">
+                        <li v-for="{ doc, label, title, infoPath, rfc } in documents" :key="doc" class="flex flex-col">
+                          <!-- `rfc` is unset for a document_meta entry Red's index hasn't resolved yet (or,
                    defensively, one missing from document_meta entirely), so the row falls back to
                    a plain link rather than going without a title. -->
-                      <RFCCardSearchItem v-if="rfc" :rfc="rfc" :density="documentDensity" class="h-full" />
-                      <template v-else>
-                        <Anchor :href="infoPath">{{ label }}</Anchor>
-                        <span v-if="title"> — {{ title }}</span>
-                      </template>
-                    </li>
-                  </ul>
-                  <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
+                          <RFCCardSearchItem v-if="rfc" :rfc="rfc" :density="documentDensity" class="h-full" />
+                          <template v-else>
+                            <Anchor :href="infoPath">{{ label }}</Anchor>
+                            <span v-if="title"> — {{ title }}</span>
+                          </template>
+                        </li>
+                      </ul>
+                      <!-- A subject with nothing under it and nothing in it is waiting for documents; one whose
                subtree holds them is not empty, it is a heading, and saying it is empty would read as
                a fault. -->
-                  <p v-else class="mt-6">
-                    {{
-                      subjectSubtree.length > 0
-                        ? 'No RFCs are filed under this subject itself.'
-                        : 'No RFCs carry this subject yet.'
-                    }}
-                  </p>
+                      <p v-else class="mt-6">
+                        {{
+                          subjectSubtree.length > 0
+                            ? 'No RFCs are filed under this subject itself.'
+                            : 'No RFCs carry this subject yet.'
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="lg:flex-1">
+                  <div class="bg-blue-25 px-5 py-4">
+                    <Heading level="2"> Subscribe to {{ liveSubject.name }} </Heading>
+                    <ReefSubscribeToSubjectTag :subject="liveSubject" />
+                    <div class="mt-3 leading-[1.5] text-sm">
+                      <p>Get notified when:</p>
+                      <ul class="list-disc ml-5 mt-1">
+                        <li class="mb-2">The RFC becomes updated and/or obsoleted by another RFC</li>
+                        <li>The RFC's status is changed</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

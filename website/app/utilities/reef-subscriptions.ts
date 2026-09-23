@@ -203,3 +203,108 @@ export const useUserNewRfcSubscription = (): WritableComputedRef<boolean> => {
     }
   })
 }
+
+// --- Subscribing to one subject ------------------------------------------------------------
+//
+// The `subject` kind — "Changes to anything carrying a subject" — names its subject by a foreign
+// key on the subscription itself (`subject`), not under `params` the way the `rfc` kind names its
+// document. Otherwise this is the same shape as `new_rfc` above: one subscription for the whole
+// account rather than one per document, found by asking Reef for every subscription this reader
+// has and picking the matching one out.
+
+export const subjectSubscriptionFailedNotification = (
+  subjectId: number,
+  subjectName: string,
+  wasSubscribing: boolean
+): Notification => ({
+  // One id per subject whichever way the toggle was going, so a retry replaces the previous
+  // message rather than stacking a second toast on top of it.
+  id: `subject-subscription.${subjectId}`,
+  title: wasSubscribing ? 'Unable to subscribe' : 'Unable to unsubscribe',
+  description: wasSubscribing
+    ? `You have not been subscribed to ${subjectName}. Please try again.`
+    : `You are still subscribed to ${subjectName}. Please try again.`,
+  delayMs: 0,
+  position: 'top',
+  type: 'foreground'
+})
+
+/**
+ * Whether this reader subscribes to one subject, as a model for the subject page's subscribe
+ * dialog: loaded from Reef on mount, and written back when they tick or untick it. False while
+ * nobody is signed in, and while the load is still in flight.
+ */
+export const useUserSubjectSubscription = (
+  subjectId: MaybeRefOrGetter<number>,
+  subjectName: MaybeRefOrGetter<string>
+): WritableComputedRef<boolean> => {
+  const authStore = useAuthStore()
+  const reefStore = useReefStore()
+  const notificationsStore = useNotificationsStore()
+
+  const isSubscribed = ref(false)
+  const subscriptionId = ref<number>()
+
+  const load = async () => {
+    if (!authStore.isAuthenticated) {
+      isSubscribed.value = false
+      subscriptionId.value = undefined
+      return
+    }
+    try {
+      const subscriptions = await getSubscriptions()
+      const existing = subscriptions.find(
+        (subscription) => subscription.kind === 'subject' && subscription.subject === toValue(subjectId)
+      )
+      isSubscribed.value = existing !== undefined
+      subscriptionId.value = existing?.id
+    } catch (error) {
+      console.error('Unable to load your subject subscription.', error)
+    }
+  }
+
+  // Reef is browser-only, so the initial load happens on mount rather than during SSR; the watch
+  // (not immediate — that's what onMounted is for) covers a reader who signs in or out while this
+  // stays on screen.
+  onMounted(load)
+  watch(() => authStore.isAuthenticated, load)
+
+  const write = async (subscribed: boolean) => {
+    if (subscribed === isSubscribed.value) {
+      return
+    }
+    const previous = isSubscribed.value
+    const previousId = subscriptionId.value
+    const id = toValue(subjectId)
+
+    isSubscribed.value = subscribed
+
+    const outcome = await reefStore.runWrite(`subject-${id}-subscription`, async (): Promise<number | undefined> => {
+      if (subscribed) {
+        const { id: newId } = await createSubscription({ kind: 'subject', subject: id })
+        return newId
+      }
+      if (previousId !== undefined) {
+        await deleteSubscription(previousId)
+      }
+      return undefined
+    })
+
+    if (outcome.status === 'failed') {
+      isSubscribed.value = previous
+      subscriptionId.value = previousId
+      notificationsStore.add(subjectSubscriptionFailedNotification(id, toValue(subjectName), subscribed))
+      console.error('Unable to change your subject subscription.', outcome.error)
+      return
+    }
+
+    subscriptionId.value = outcome.value
+  }
+
+  return computed({
+    get: () => isSubscribed.value,
+    set: (subscribed) => {
+      void write(subscribed)
+    }
+  })
+}
