@@ -65,6 +65,8 @@
                     <template v-for="subjectGroup in populatedSubjectGroups" :key="subjectGroup.id">
                       <dt
                         :id="subjectGroup.id"
+                        role="heading"
+                        aria-level="2"
                         class="mb-0 bg-white dark:bg-gray-800 text-blue-950 dark:text-white text-2xl font-bold py-8 px-8">
                         <GraphicsIETFMotif
                           class="absolute -ml-4 -mt-4 print:hidden"

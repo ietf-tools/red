@@ -5,6 +5,7 @@
         v-for="step in steps"
         :key="step"
         :step="step"
+        :aria-label="`${item} star${item === 1 ? '' : 's'}`"
         :class="[
           `overflow-hidden rounded`,
           !props.disabled && `cursor-pointer`,

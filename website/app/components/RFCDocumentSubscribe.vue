@@ -3,6 +3,7 @@
     <div class="flex flex-col">
       <DialogRoot>
         <DialogTrigger
+          type="button"
           :class="[
             'flex flex-row gap-1 items-center',
             'cursor-pointer',
