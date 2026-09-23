@@ -6,6 +6,8 @@
  * a cycle. `url.ts` re-exports all of it.
  */
 
+import type { ValidHrefs } from './url'
+
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'
 export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'
@@ -60,6 +62,8 @@ export const IN_NOTES_STD_REF_TXT = '/in-notes/std-ref.txt'
 export const NEVER_ISSUED_PATH = '/never-issued/'
 export const ALL_CLUSTERS_PATH = '/all_clusters/'
 export const STATUS_CHANGES_PATH = '/status-changes/'
+
+export const MARKDOWN_AUTHORS_INDEPENDENT = '/authors/rfc-independent-submissions/' satisfies ValidHrefs
 
 /** Prefix for blobstore-served RFC documents, which are outside Nuxt's routing. */
 export const RFC_BLOBSTORE_PREFIX = '/rfc/'

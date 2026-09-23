@@ -468,10 +468,22 @@ export const parseMaybeRfcLink = (href?: string): undefined | ReturnType<typeof 
 
 export const setPathBuilder = (setId: string) => `${SET_PATH}?id=${encodeURIComponent(setId)}` as const
 
-export const useWorkingGroupUrlBuilder = (workingGroup: RfcCommon['group']) => {
+type DatatrackerWorkingGroupSection = 'documents' | 'about' | 'meetings'
+
+export const useWorkingGroupUrlBuilder = (
+  workingGroup: RfcCommon['group'],
+  section?: DatatrackerWorkingGroupSection
+) => {
   if (!workingGroup) return undefined
   // See https://github.com/ietf-tools/red/issues/179
-  return `${useDatatrackerUrlOrigin()}/wg/${workingGroup.acronym}/about/` as const
+  const base = `${useDatatrackerUrlOrigin()}/wg/${workingGroup.acronym}` as const
+  switch (section) {
+    case 'about':
+      return `${base}/about/` as const
+    case 'meetings':
+      return `${base}/meetings/` as const
+  }
+  return base
 }
 
 export const useDatatrackerRFCUrlBuilder = (rfcNumber: RfcCommon['number']) => {

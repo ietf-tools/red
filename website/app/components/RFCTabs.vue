@@ -57,6 +57,22 @@
             v-if="props.rfcBucketHtmlDocument.errataList && props.rfcBucketHtmlDocument.errataList.length > 0"
             :text="props.rfcBucketHtmlDocument.errataList.length.toString()" />
         </TabsTrigger>
+        <TabsTrigger
+          :class="[
+            DEFAULT_CLASS,
+            {
+              [ONMOUNTED_CLASS]: isMounted,
+              [ONUNMOUNTED_CLASS]: !isMounted,
+              [SELECTED_CLASS]: selectedTab === 3 && isMounted,
+              [UNSELECTED_CLASS]: selectedTab !== 3
+            }
+          ]"
+          :disabled="
+            !isMounted // ensure they're not clickable buttons in non-JS
+          "
+          :value="3">
+          Participate
+        </TabsTrigger>
       </HorizontalScrollable>
     </TabsList>
 
@@ -241,6 +257,19 @@
         <ErrataList :errata-list="props.rfcBucketHtmlDocument.errataList" />
       </VerticalScrollable>
     </TabsContent>
+    <TabsContent
+      :value="3"
+      :class="[
+        TAB_CONTENT_CLASS,
+        {
+          'px-4': props.mode === 'mobile'
+        }
+      ]">
+      <VerticalScrollable class="pl-1">
+        <Heading level="2" style-level="4" class="mt-3 mb-1"> Participate </Heading>
+        <DocumentPojo :value="participateValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+      </VerticalScrollable>
+    </TabsContent>
   </TabsRoot>
   <div v-html="noScriptHtml"></div>
 </template>
@@ -261,7 +290,11 @@ import {
   doiUrlBuilder,
   useRfcEditorErrataSearchForRfcUrl,
   infoSeriesPathBuilder,
-  useDatatrackerRFCUrlBuilder
+  useDatatrackerRFCUrlBuilder,
+  IAB_URL_ORIGIN,
+  MARKDOWN_AUTHORS_INDEPENDENT,
+  IETF_URL_ORIGIN,
+  IRTF_URL_ORIGIN
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
@@ -622,6 +655,189 @@ const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
   return [{ type: 'Text', textContent: stream.name }]
 }
 
+const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
+  switch (rfc.stream.slug) {
+    case 'Editorial':
+    case 'IRTF':
+    case 'IETF':
+      /**
+        FIXME: when rfc contains 'active' vs 'concluded' state use that to display better text
+
+        For Active IETF working group
+          * WG name links to data tracker about page (ex)
+          * Include beginning of charter statement from about page
+          * “Read work in progress” link to current working group documents (ex)
+          * “Meetings” Link to read minutes from past meetings or learn about upcoming meetings (ex)
+          * “Recent conversations”” link to mailing list archive (ex)
+        For Inactive IETF working groups
+          * “This working group has concluded. See this/these groups instead:
+       */
+      const wgAbout = useWorkingGroupUrlBuilder(rfc.group, 'about')
+      const wgDocuments = useWorkingGroupUrlBuilder(rfc.group, 'documents')
+      const wgMeetings = useWorkingGroupUrlBuilder(rfc.group, 'meetings')
+      if (wgAbout || wgDocuments || wgMeetings) {
+        let pojo: DocumentPojo = []
+        if (wgAbout) {
+          pojo.push({
+            type: 'Element',
+            nodeName: 'p',
+            attributes: { class: 'leading-[1.5] py-1 text-sm' },
+            children: [
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: wgAbout,
+                  class: LINK_CLASS
+                },
+                children: [
+                  {
+                    type: 'Text',
+                    textContent: `About working group ${rfc.group ? rfc.group.name : ''}`
+                  }
+                ]
+              },
+              { type: 'Text', textContent: '.' }
+            ]
+          })
+        }
+        if (wgDocuments) {
+          pojo.push({
+            type: 'Element',
+            nodeName: 'p',
+            attributes: { class: 'leading-[1.5] py-1 text-sm' },
+            children: [
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: wgDocuments,
+                  class: LINK_CLASS
+                },
+                children: [
+                  {
+                    type: 'Text',
+                    textContent: `${rfc.group ? rfc.group.name : ''} documents`
+                  }
+                ]
+              },
+              { type: 'Text', textContent: '.' }
+            ]
+          })
+        }
+        if (wgMeetings) {
+          pojo.push({
+            type: 'Element',
+            nodeName: 'p',
+            attributes: { class: 'leading-[1.5] py-1 text-sm' },
+            children: [
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: wgMeetings,
+                  class: LINK_CLASS
+                },
+                children: [
+                  {
+                    type: 'Text',
+                    textContent: `Meetings for ${rfc.group ? rfc.group.name : ''}`
+                  }
+                ]
+              },
+              { type: 'Text', textContent: '.' }
+            ]
+          })
+        }
+
+        return pojo
+      }
+      if (rfc.group) {
+        return [{ type: 'Text', textContent: `${rfc.group.name} ${rfc.group.acronym ? `(${rfc.group.acronym})` : ''}` }]
+      }
+      return []
+    case 'IAB':
+      return [
+        {
+          type: 'Text',
+          textContent:
+            'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
+        },
+        {
+          type: 'Element',
+          nodeName: 'Anchor',
+          attributes: {
+            href: IAB_URL_ORIGIN,
+            class: LINK_CLASS
+          },
+          children: [{ type: 'Text', textContent: 'iab.org' }]
+        },
+        { type: 'Text', textContent: '.' }
+      ]
+    case 'INDEPENDENT':
+      return [
+        {
+          type: 'Text',
+          textContent:
+            'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
+        },
+        {
+          type: 'Element',
+          nodeName: 'Anchor',
+          attributes: {
+            href: MARKDOWN_AUTHORS_INDEPENDENT,
+            class: LINK_CLASS
+          },
+          children: [{ type: 'Text', textContent: 'Read more' }]
+        },
+        { type: 'Text', textContent: ' about submitting an independent RFC. ' }
+      ]
+    case 'Legacy':
+      return [
+        {
+          type: 'Text',
+          textContent: 'This publication predates the establishment of the '
+        },
+        {
+          type: 'Element',
+          nodeName: 'Anchor',
+          attributes: {
+            href: IETF_URL_ORIGIN,
+            class: LINK_CLASS
+          },
+          children: [{ type: 'Text', textContent: 'IETF' }]
+        },
+        { type: 'Text', textContent: ', ' },
+        {
+          type: 'Element',
+          nodeName: 'Anchor',
+          attributes: {
+            href: IRTF_URL_ORIGIN,
+            class: LINK_CLASS
+          },
+          children: [{ type: 'Text', textContent: 'IRTF' }]
+        },
+        { type: 'Text', textContent: ', and ' },
+        {
+          type: 'Element',
+          nodeName: 'Anchor',
+          attributes: {
+            href: IAB_URL_ORIGIN,
+            class: LINK_CLASS
+          },
+          children: [{ type: 'Text', textContent: 'IAB' }]
+        },
+        {
+          type: 'Text',
+          textContent:
+            '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
+        }
+      ]
+  }
+
+  return []
+}
+
 /** For non-JS users */
 const noScriptHtml = computed(() => {
   const { rfc } = props.rfcBucketHtmlDocument
@@ -662,8 +878,10 @@ const noScriptHtml = computed(() => {
       <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo(rfc.number))}</dd>
       <dt class="font-bold mt-2">Document history</dt><dd class="text-sm"><a href="${datatrackerRFCUrl.value}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">View history of RFC ${rfc.number}</a></dd>
     </dl>
-    <h2 class="text-lg font-bold mt-4">Errata</h2>
+    <h3 class="text-lg font-bold mt-4">Errata</h3>
     <p><a href="${htmlEscapeToText(errataSearchForThisRfc.value)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
+    <h3 class="text-lg font-bold mt-4">Participate</h3>
+    ${renderDocumentPojoToHtmlString(participateValuePojo(rfc))}
     </div>
   </noscript>`
 })
