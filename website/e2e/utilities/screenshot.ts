@@ -229,38 +229,16 @@ const captureFullPage = async (page: Page, maskCss: string | undefined): Promise
  * Call this on a freshly loaded page, before the test drives any interaction — the
  * post-load state is the one that stays stable as the surrounding test evolves.
  */
-export const expectScreenshotToMatchBaseline = async (
-  page: Page,
-  name: string,
-  options: ScreenshotOptions = {}
-): Promise<void> => {
-  const { maskCss, maxDiffPixelRatio = DEFAULT_MAX_DIFF_PIXEL_RATIO, knownMismatch } = options
-
-  const actual = await captureFullPage(page, maskCss)
-
-  const fileName = baselineFileNameFor(name)
-  const baselinePath = join(BASELINE_DIR, fileName)
-  const baseline = await readPngIfPresent(baselinePath)
-
-  if (isTruthyEnv(process.env.UPDATE_SCREENSHOTS)) {
-    await writePng(BASELINE_DIR, fileName, actual)
-    console.log(`[screenshot] re-recorded baseline ${baselinePath}`)
-    return
-  }
-
-  if (!baseline) {
-    // Recording a baseline on CI would compare the run against itself, so the check
-    // has to fail loudly and let a human record and review the image locally.
-    expect(
-      isTruthyEnv(process.env.CI),
-      `no screenshot baseline for "${name}" on ${process.platform}. Record one locally with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\` and commit ${baselinePath}`
-    ).toBe(false)
-
-    await writePng(BASELINE_DIR, fileName, actual)
-    console.log(`[screenshot] recorded new baseline ${baselinePath}`)
-    return
-  }
-
+/**
+ * Pixel-compares a captured screenshot against a committed baseline, at the same
+ * antialiasing-tolerant threshold used to decide pass/fail. Shared by the assertion
+ * below and by the UPDATE_SCREENSHOTS path, so re-recording never overwrites a
+ * baseline with nothing more than a run's rendering jitter (see PIXELMATCH_THRESHOLD).
+ */
+const diffAgainstBaseline = (
+  baseline: Buffer,
+  actual: Buffer
+): { sizeChanged: boolean; diffRatio: number; diffPixels: number; diffPng: PNG; baselinePng: PNG; actualPng: PNG } => {
   const baselinePng = PNG.sync.read(baseline)
   const actualPng = PNG.sync.read(actual)
 
@@ -280,6 +258,57 @@ export const expectScreenshotToMatchBaseline = async (
   // a regression signal, however few pixels moved.
   const sizeChanged = baselinePng.width !== actualPng.width || baselinePng.height !== actualPng.height
   const diffRatio = diffPixels / (width * height)
+  return { sizeChanged, diffRatio, diffPixels, diffPng, baselinePng, actualPng }
+}
+
+export const expectScreenshotToMatchBaseline = async (
+  page: Page,
+  name: string,
+  options: ScreenshotOptions = {}
+): Promise<void> => {
+  const { maskCss, maxDiffPixelRatio = DEFAULT_MAX_DIFF_PIXEL_RATIO, knownMismatch } = options
+
+  const actual = await captureFullPage(page, maskCss)
+
+  const fileName = baselineFileNameFor(name)
+  const baselinePath = join(BASELINE_DIR, fileName)
+  const baseline = await readPngIfPresent(baselinePath)
+
+  if (isTruthyEnv(process.env.UPDATE_SCREENSHOTS)) {
+    if (!baseline) {
+      await writePng(BASELINE_DIR, fileName, actual)
+      console.log(`[screenshot] recorded new baseline ${baselinePath}`)
+      return
+    }
+
+    const { sizeChanged, diffRatio } = diffAgainstBaseline(baseline, actual)
+    if (!sizeChanged && diffRatio <= maxDiffPixelRatio) {
+      // Within the same tolerance the pass/fail check uses: rewriting here would only
+      // swap in this run's antialiasing jitter, producing a byte-different but
+      // visually identical file. Leave the committed baseline alone.
+      console.log(`[screenshot] "${name}" unchanged (within tolerance), baseline left as-is`)
+      return
+    }
+
+    await writePng(BASELINE_DIR, fileName, actual)
+    console.log(`[screenshot] re-recorded baseline ${baselinePath}`)
+    return
+  }
+
+  if (!baseline) {
+    // Recording a baseline on CI would compare the run against itself, so the check
+    // has to fail loudly and let a human record and review the image locally.
+    expect(
+      isTruthyEnv(process.env.CI),
+      `no screenshot baseline for "${name}" on ${process.platform}. Record one locally with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\` and commit ${baselinePath}`
+    ).toBe(false)
+
+    await writePng(BASELINE_DIR, fileName, actual)
+    console.log(`[screenshot] recorded new baseline ${baselinePath}`)
+    return
+  }
+
+  const { sizeChanged, diffRatio, diffPixels, diffPng, baselinePng, actualPng } = diffAgainstBaseline(baseline, actual)
   if (sizeChanged || diffRatio > maxDiffPixelRatio) {
     const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
     const diffPath = await writePng(DIFF_DIR, fileName, PNG.sync.write(diffPng))
