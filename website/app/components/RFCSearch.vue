@@ -211,8 +211,10 @@ const SORT_ITEMS = computed(() => [
   { label: 'Oldest first', value: 'publicationDate:asc' },
   { label: 'RFC number (ascending)', value: 'rfcNumber:asc' },
   { label: 'RFC number (descending)', value: 'rfcNumber:desc' },
-  // Lower popularityRanking is more popular (1 = most popular, 100 = least), so ascending order.
-  ...(featureFlags.value.oidc ? [{ label: 'Most popular', value: 'popularityRanking:asc' }] : [])
+  // Lower popularityRanking is more popular (1 = most popular), so ascending order.
+  // Results with no popularityRanking sort to the end - use the _text_match:desc to
+  // order these.
+  ...(featureFlags.value.oidc ? [{ label: 'Most popular', value: 'popularityRanking:asc,_text_match:desc' }] : [])
 ])
 
 const PER_PAGE_ITEMS = [
