@@ -68,7 +68,7 @@ describe('createRfcSearchClient', () => {
     expect(search.filter_by).toContain('flags.hiddenDefault:=false')
   })
 
-    test('other sorts do not add the popularity filter', async () => {
+  test('other sorts do not add the popularity filter', async () => {
     const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(facetBody))
     vi.stubGlobal('fetch', fetchMock)
 
