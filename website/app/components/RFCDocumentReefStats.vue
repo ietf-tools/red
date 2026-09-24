@@ -1,6 +1,6 @@
 <template>
   <div class="flex mt-2">
-    <ul class="flex flex-col reef:flex-row items-start pl-2 text-sm">
+    <ul class="flex flex-col reef:flex-row items-start pl-0.5 text-sm">
       <li class="h-full flex flex-col md:flex-row items-start pr-2">
         <RFCDocumentCommunityRating v-if="props.reefStats?.ratingAggregate" :reef-stats="props.reefStats" />
         <RFCDocumentRateThisRFC :rfc-number="props.rfcNumber" v-model="userRFCRating" />

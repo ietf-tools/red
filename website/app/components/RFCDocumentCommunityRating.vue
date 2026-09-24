@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-32 flex flex-col md:pr-2">
+  <div class="min-w-32 flex flex-col mt-0.5 md:pr-2">
     <StarRating
       v-if="props.reefStats?.ratingAggregate?.average !== undefined"
       :length="STAR_SCORE_LENGTH"
