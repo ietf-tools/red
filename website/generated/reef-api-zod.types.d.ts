@@ -75,6 +75,26 @@ export namespace Schemas {
    */
   export type KindEnum = 'new_rfc' | 'by_status' | 'obsoleted' | 'rfc' | 'set' | 'subject'
   /**
+   * The fields a subscription list needs to show and link a subject.
+   *
+   * Avoid SubjectSerializer: its document counts run two queries per subject
+   * when nothing has precomputed them.
+   */
+  export type MinimalSubject = {
+    /**
+     * Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed.
+     */
+    slug: string
+    /**
+     * How the subject is shown to readers.
+     */
+    name: string
+    /**
+     * Slugs from the top down, separated by a slash. Derived; edit the slug or the parent instead.
+     */
+    path: string
+  } & Record<string, unknown>
+  /**
    * What one document is to the caller: their rating, their subscription,
    * their sets.
    *
@@ -127,7 +147,14 @@ export namespace Schemas {
    * sending an anonymous one to a runner that refuses them. It is the field that
    * tells the two apart in the one payload that mixes them, which is the
    * precomputed surveys/published.json; the rows an anonymous caller is served,
-   * here or from that store's surveys/open.json, are all "open" by construction.
+   * here or from that store's surveys/open.json, are all "open" by construction --
+   * unless the caller asked the served endpoint to widen that with
+   * include_authenticated, which is what Reef's own survey list does so it can
+   * list a survey the runner will still turn an anonymous visitor away from.
+   *
+   * answered says whether the signed-in caller has already responded, for a list
+   * that still names answered surveys; it is always false for an anonymous caller
+   * and in every precomputed file.
    */
   export type OpenSurvey = {
     id: number
@@ -137,6 +164,7 @@ export namespace Schemas {
     url: string
     documents: Array<string> | null
     visibility?: VisibilityEnum
+    answered: boolean
   } & Record<string, unknown>
   export type PatchedDocumentSet = Partial<{
     id: string
@@ -425,6 +453,7 @@ export namespace Schemas {
     params?: unknown
     set?: string | null
     subject?: number | null
+    subject_details: MinimalSubject
     created_at: string
   } & Record<string, unknown>
   /**
@@ -522,19 +551,6 @@ export namespace Endpoints {
       path: { slug: string }
     }
     responses: { 200: Schemas.PrecomputedSubjectDetailOrRedirect }
-  }
-  /**
-   * Not a served endpoint. This describes the payload the precomputer publishes to `stats.json` in the blob store, which is where Red reads it from; no deployment routes this path.
-   *
-   * The same public engagement numbers as `/api/reef/stats/`, swept for every document with any engagement at once rather than queried per document, plus `title` and `subseries` so a consumer without its own copy of Red's index can still label a row. A document with no rating, subscriber or set at all is omitted rather than listed with zeros.
-   */
-  export type get_Precomputed_stats_retrieve = {
-    method: 'GET'
-    path: '/api/reef/precomputed/stats/'
-    requestFormat: 'json'
-    responseFormat: 'json'
-    parameters: never
-    responses: { 200: Array<Schemas.DocumentStats> }
   }
   /**
    * Not a served endpoint. This describes the payload the precomputer publishes to `surveys/published.json` in the blob store, which is where Red reads it from; no deployment routes this path.
@@ -1079,15 +1095,20 @@ export namespace Endpoints {
     responses: { 201: Schemas.ResponseCreate }
   }
   /**
-   * Open surveys Red may offer. Bearer optional: an identified user also
-   * receives their targeted surveys, an anonymous caller sees open ones only.
+   * Open surveys Red may offer, and the surveys Reef's own list page
+   * offers. Bearer optional: an identified user always receives their
+   * targeted surveys; an anonymous caller sees open ones only, unless
+   * ``include_authenticated`` is set. Surveys the identified user has
+   * already answered are left out unless ``include_answered`` is set.
    */
   export type get_Surveys_open_list = {
     method: 'GET'
     path: '/api/reef/surveys/open/'
     requestFormat: 'json'
     responseFormat: 'json'
-    parameters: never
+    parameters: {
+      query?: Partial<{ include_answered: boolean; include_authenticated: boolean }>
+    }
     responses: { 200: Array<Schemas.OpenSurvey> }
   }
 
@@ -1101,7 +1122,6 @@ export type EndpointByMethod = {
     '/api/reef/popularity/': Endpoints.get_Popularity_list
     '/api/reef/precomputed/subjects/': Endpoints.get_Precomputed_subject_index_retrieve
     '/api/reef/precomputed/subjects/{slug}/': Endpoints.get_Precomputed_subject_detail_retrieve
-    '/api/reef/precomputed/stats/': Endpoints.get_Precomputed_stats_retrieve
     '/api/reef/precomputed/surveys/': Endpoints.get_Precomputed_survey_list_retrieve
     '/api/reef/ratings/{rfc}/': Endpoints.get_Ratings_retrieve
     '/api/reef/schema/': Endpoints.get_Schema_retrieve

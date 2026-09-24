@@ -73,6 +73,11 @@ export const FullDocumentMetadata = z
 export type KindEnum = __TypedOpenapi.Schemas.KindEnum
 export const KindEnum = z.enum(['new_rfc', 'by_status', 'obsoleted', 'rfc', 'set', 'subject'])
 
+export type MinimalSubject = __TypedOpenapi.Schemas.MinimalSubject
+export const MinimalSubject = z
+  .object({ slug: z.string().regex(new RegExp('^[-a-zA-Z0-9_]+$')), name: z.string(), path: z.string() })
+  .catchall(z.unknown())
+
 export type MyDocument = __TypedOpenapi.Schemas.MyDocument
 export const MyDocument = z
   .object({
@@ -111,7 +116,8 @@ export const OpenSurvey = z
     description: z.string().optional(),
     url: z.string(),
     documents: z.array(z.string()).nullable(),
-    visibility: VisibilityEnum.optional()
+    visibility: VisibilityEnum.optional(),
+    answered: z.boolean()
   })
   .catchall(z.unknown())
 
@@ -316,6 +322,7 @@ export const Subscription = z
     params: z.unknown().optional(),
     set: z.uuid().nullable().optional(),
     subject: z.number().int().nullable().optional(),
+    subject_details: MinimalSubject,
     created_at: z.iso.datetime()
   })
   .catchall(z.unknown())

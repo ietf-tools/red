@@ -95,28 +95,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/reef/precomputed/stats/': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /**
-     * The published stats file
-     * @description Not a served endpoint. This describes the payload the precomputer publishes to `stats.json` in the blob store, which is where Red reads it from; no deployment routes this path.
-     *
-     *     The same public engagement numbers as `/api/reef/stats/`, swept for every document with any engagement at once rather than queried per document, plus `title` and `subseries` so a consumer without its own copy of Red's index can still label a row. A document with no rating, subscriber or set at all is omitted rather than listed with zeros.
-     */
-    get: operations['precomputed_stats_retrieve']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
   '/api/reef/precomputed/surveys/': {
     parameters: {
       query?: never
@@ -521,8 +499,11 @@ export interface paths {
       cookie?: never
     }
     /**
-     * @description Open surveys Red may offer. Bearer optional: an identified user also
-     *     receives their targeted surveys, an anonymous caller sees open ones only.
+     * @description Open surveys Red may offer, and the surveys Reef's own list page
+     *     offers. Bearer optional: an identified user always receives their
+     *     targeted surveys; an anonymous caller sees open ones only, unless
+     *     ``include_authenticated`` is set. Surveys the identified user has
+     *     already answered are left out unless ``include_answered`` is set.
      */
     get: operations['surveys_open_list']
     put?: never
@@ -615,6 +596,20 @@ export interface components {
      */
     KindEnum: 'new_rfc' | 'by_status' | 'obsoleted' | 'rfc' | 'set' | 'subject'
     /**
+     * @description The fields a subscription list needs to show and link a subject.
+     *
+     *     Avoid SubjectSerializer: its document counts run two queries per subject
+     *     when nothing has precomputed them.
+     */
+    MinimalSubject: {
+      /** @description Stable identifier used in URLs and by Red. Changing it leaves the old one behind as an alias, so links naming it still resolve; the name is still the field to edit when only the wording changed. */
+      readonly slug: string
+      /** @description How the subject is shown to readers. */
+      readonly name: string
+      /** @description Slugs from the top down, separated by a slash. Derived; edit the slug or the parent instead. */
+      readonly path: string
+    }
+    /**
      * @description What one document is to the caller: their rating, their subscription,
      *     their sets.
      *
@@ -666,7 +661,14 @@ export interface components {
      *     sending an anonymous one to a runner that refuses them. It is the field that
      *     tells the two apart in the one payload that mixes them, which is the
      *     precomputed surveys/published.json; the rows an anonymous caller is served,
-     *     here or from that store's surveys/open.json, are all "open" by construction.
+     *     here or from that store's surveys/open.json, are all "open" by construction --
+     *     unless the caller asked the served endpoint to widen that with
+     *     include_authenticated, which is what Reef's own survey list does so it can
+     *     list a survey the runner will still turn an anonymous visitor away from.
+     *
+     *     answered says whether the signed-in caller has already responded, for a list
+     *     that still names answered surveys; it is always false for an anonymous caller
+     *     and in every precomputed file.
      */
     OpenSurvey: {
       readonly id: number
@@ -676,6 +678,7 @@ export interface components {
       readonly url: string
       readonly documents: string[] | null
       visibility?: components['schemas']['VisibilityEnum']
+      readonly answered: boolean
     }
     PatchedDocumentSet: {
       /** Format: uuid */
@@ -952,6 +955,7 @@ export interface components {
       /** Format: uuid */
       set?: string | null
       subject?: number | null
+      readonly subject_details: components['schemas']['MinimalSubject']
       /** Format: date-time */
       readonly created_at: string
     }
@@ -1072,25 +1076,6 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['PrecomputedSubjectDetailOrRedirect']
-        }
-      }
-    }
-  }
-  precomputed_stats_retrieve: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentStats'][]
         }
       }
     }
@@ -1875,7 +1860,12 @@ export interface operations {
   }
   surveys_open_list: {
     parameters: {
-      query?: never
+      query?: {
+        /** @description Keep surveys the signed-in caller has already answered, instead of leaving them out. For a list the visitor opened themselves; an unprompted invitation should leave this off. No effect for an anonymous caller, whose responses record no submitter to match on. */
+        include_answered?: boolean
+        /** @description List an authenticated-visibility survey to an anonymous caller too, instead of leaving it out. The runner still refuses that survey's definition to an anonymous visitor and prompts a login instead; this only lets the caller see that the survey exists before that prompt. No effect once the caller is signed in, since they already see every visibility either way. */
+        include_authenticated?: boolean
+      }
       header?: never
       path?: never
       cookie?: never

@@ -332,7 +332,7 @@ import {
 } from '~/utilities/reef'
 import { SET_TITLE_MAX_LENGTH, sortSets } from '~/utilities/reef-sets'
 import { parseSeriesId } from '~/utilities/rfc'
-import { infoSeriesPathBuilder, setPathBuilder } from '~/utilities/url'
+import { infoSeriesPathBuilder, setPathBuilder, subjectsPathBuilder } from '~/utilities/url'
 
 // Wording taken from the KindEnum descriptions in reef_api.yaml. Only Account.vue reads
 // subscriptions this way, so the label and summary presentation live here rather than as
@@ -359,18 +359,30 @@ const rfcSubscriptionDoc = (subscription: Subscription): string | undefined => {
   return typeof data?.rfc === 'string' ? data.rfc : undefined
 }
 
+// The tag name rather than the generic "Changes to anything carrying a subject" kind label, for
+// the same reason as rfc below: `subject_details` is what Reef added to a subscription so a list
+// can show and link the subject it names (see MinimalSubject in reef_api.yaml), and the name is
+// the part worth showing. Empty when `kind` isn't `subject`, or when a subscription pointing at a
+// deleted subject leaves the details blank.
+const subjectSubscriptionName = (subscription: Subscription): string | undefined => {
+  if (subscription.kind !== 'subject' || subscription.subject_details.name === '') {
+    return undefined
+  }
+  return subscription.subject_details.name
+}
+
 // Names the document rather than the generic "A specific RFC" kind label, since the whole point
-// of an rfc-kind subscription is which one. Falls back to the kind label — and, failing that, the
-// raw kind — for anything this build can't parse a document out of, so a subscription created by a
-// newer Reef, or with params in a shape this build doesn't expect, still shows something rather
-// than an empty row.
+// of an rfc-kind subscription is which one. Same for a subject-kind subscription and its tag name.
+// Falls back to the kind label — and, failing that, the raw kind — for anything this build can't
+// parse a document or subject out of, so a subscription created by a newer Reef, or with params in
+// a shape this build doesn't expect, still shows something rather than an empty row.
 const subscriptionLabel = (subscription: Subscription): string => {
   const doc = rfcSubscriptionDoc(subscription)
   const rfc = doc !== undefined ? parseSeriesId(doc) : undefined
   if (rfc !== undefined) {
     return `${rfc.type.toUpperCase()} ${rfc.number}`
   }
-  return KIND_LABELS[subscription.kind] ?? subscription.kind
+  return subjectSubscriptionName(subscription) ?? KIND_LABELS[subscription.kind] ?? subscription.kind
 }
 
 const formatParamValue = (value: unknown): string => {
@@ -403,10 +415,10 @@ const subscriptionParamsSummary = ({ params }: Subscription): string | undefined
   return summary === '' ? undefined : summary
 }
 
-// Where "browse to that thing" goes, per kind. rfc carries its document under params.rfc, and set
-// carries its uuid on the subscription itself rather than in params — the two places Reef puts an
-// identifier depending on kind. The other kinds (new_rfc, by_status, obsoleted, subject) name no
-// single thing to browse to, so there's nothing to link.
+// Where "browse to that thing" goes, per kind. rfc carries its document under params.rfc, set
+// carries its uuid on the subscription itself rather than in params, and subject carries its slug
+// under subject_details — three places Reef puts an identifier depending on kind. The other kinds
+// (new_rfc, by_status, obsoleted) name no single thing to browse to, so there's nothing to link.
 const subscriptionBrowsePath = (subscription: Subscription): string | undefined => {
   const doc = rfcSubscriptionDoc(subscription)
   if (doc !== undefined) {
@@ -418,6 +430,9 @@ const subscriptionBrowsePath = (subscription: Subscription): string | undefined 
   }
   if (subscription.kind === 'set' && subscription.set) {
     return setPathBuilder(subscription.set)
+  }
+  if (subjectSubscriptionName(subscription) !== undefined) {
+    return subjectsPathBuilder(subscription.subject_details.slug)
   }
   return undefined
 }

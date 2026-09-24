@@ -3,7 +3,10 @@ import { describe, expect, test } from 'vitest'
 import type { OpenSurvey } from '~/utilities/reef-precomputed'
 import { chooseSurvey } from './reef-surveys'
 
-// `id`, `url` and `description` are never read by chooseSurvey; the rest is what it narrows on.
+// `id`, `url`, `description` and `answered` are never read by chooseSurvey; the rest is what it
+// narrows on. `answered` is always false on this payload anyway (see reef_api.yaml on OpenSurvey):
+// it's precomputed for every reader alike, so it can't leave out one reader's already-answered
+// survey the way the served, per-reader endpoint can.
 const survey = (
   slug: string,
   opts: { visibility?: OpenSurvey['visibility']; documents?: string[] } = {}
@@ -13,7 +16,8 @@ const survey = (
   title: slug,
   url: `https://example.com/${slug}`,
   documents: opts.documents ?? null,
-  visibility: opts.visibility
+  visibility: opts.visibility,
+  answered: false
 })
 
 const narrowing = (overrides: Partial<Parameters<typeof chooseSurvey>[1]> = {}) => ({
