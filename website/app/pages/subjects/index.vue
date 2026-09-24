@@ -28,38 +28,40 @@
                 </div>
 
                 <template v-if="filteredSubjects.length > 0">
-                  <nav aria-labelledby="subjects-toc-label" id="toc">
-                    <p id="subjects-toc-label" class="sr-only">Table of Contents:</p>
-                    <ul class="inline mb-6">
-                      <!-- Letters with no subjects are muted but stay legible rather than going merely faint.
+                  <div class="flex flex-col md:flex-row">
+                    <nav aria-labelledby="subjects-toc-label" id="toc" class="sm:mr-8 md:mr-16 lg:mr-32 xl:mr-64">
+                      <p id="subjects-toc-label" class="sr-only">Table of Contents:</p>
+                      <ul class="block mb-6 text-pretty">
+                        <!-- Letters with no subjects are muted but stay legible rather than going merely faint.
                      They are content, not an inactive control, so nothing exempts them from the full text
                      contrast requirement, and the chip background is what distinguishes a link from a
                      dead letter anyway. Nor are they hidden from assistive technology: aria-hidden would
                      not help with contrast, which is about what is on screen, and it would drop the one
                      thing they say, which is that the letter has nothing under it. Rendered as text
                      rather than links they are already passed over by anyone browsing the page by link. -->
-                      <li
-                        :class="[
-                          'inline-flex items-center justify-center w-8 h-8 uppercase mr-2 mb-2 border-1',
-                          {
-                            'text-gray-600 dark:text-gray-400': subjectGroup.items.length === 0,
-                            'bg-white dark:bg-gray-800': subjectGroup.items.length > 0
-                          }
-                        ]"
-                        v-for="subjectGroup in subjectGroups"
-                        :key="subjectGroup.id">
-                        <a
-                          v-if="subjectGroup.items.length > 0"
-                          :href="`#${subjectGroup.id}`"
-                          class="no-underline w-full h-full flex items-center justify-center">
-                          {{ subjectGroup.title }}
-                        </a>
-                        <template v-else>{{ subjectGroup.title }}</template>
-                      </li>
-                    </ul>
-                  </nav>
-                  <div class="mt-0 flex justify-end print:hidden">
-                    <SubjectsIndexDensity v-model="subjectDensity" />
+                        <li
+                          :class="[
+                            'inline-flex items-center justify-center w-8 h-8 uppercase mr-2 mb-2 border-1',
+                            {
+                              'text-gray-600 dark:text-gray-400': subjectGroup.items.length === 0,
+                              'bg-white dark:bg-gray-800': subjectGroup.items.length > 0
+                            }
+                          ]"
+                          v-for="subjectGroup in subjectGroups"
+                          :key="subjectGroup.id">
+                          <a
+                            v-if="subjectGroup.items.length > 0"
+                            :href="`#${subjectGroup.id}`"
+                            class="no-underline w-full h-full flex items-center justify-center">
+                            {{ subjectGroup.title }}
+                          </a>
+                          <template v-else>{{ subjectGroup.title }}</template>
+                        </li>
+                      </ul>
+                    </nav>
+                    <div class="mt-0 justify-end print:hidden">
+                      <SubjectsIndexDensity v-model="subjectDensity" />
+                    </div>
                   </div>
                   <dl class="mt-2">
                     <template v-for="subjectGroup in populatedSubjectGroups" :key="subjectGroup.id">
