@@ -74,6 +74,7 @@ The entry point for the precomputer is `precomputer/src` with the items `single.
 
 - `single.ts` calculates a single RFC 'info' page API data and RFC-specific APIs such as `/rfc/rfcN.json`.
   - `all.ts` does the same with ranges of RFCs. `multiple.ts` handles a comma-separated list of RFC numbers.
+    - `multiple.ts --skip-indices` rebuilds only the per-RFC files. Without the flag `multiple.ts` also rebuilds the indices, so a newly published RFC is listed
 - `cron.ts` handles indices (all subseries, RFC indexes like on the homepage that list all RFCs, RSS/Atom feeds, etc.). As the name `cron.ts` implies this script is run periodically.
 
 #### Precomputer tests
