@@ -231,6 +231,15 @@ if (redirectTo.value !== undefined) {
   await navigateTo(subjectsPathBuilder(redirectTo.value), { redirectCode: 301, replace: true })
 }
 
+// Read synchronously in setup rather than watched, so a server render answers with the 404 itself
+// rather than the 200 a client-side status change can no longer take back. The page still renders
+// its own "Subject not found" alert in place — a plain createError({fatal: true}) would replace it
+// with the app-wide error page instead.
+if (isNotFound.value) {
+  const event = useRequestEvent()
+  if (event) setResponseStatus(event, 404)
+}
+
 // subject_meta.ancestors is already root-first, the same order the breadcrumb wants, so this only
 // adds the path each one links to.
 const ancestors = computed(() =>
