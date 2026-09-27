@@ -4,6 +4,37 @@
  */
 
 export interface paths {
+  '/api/reef/digest-preference/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /**
+     * @description Read or set whether the caller receives the subscription digest by mail.
+     *
+     *     Always the caller's own account: there is nothing else this could name.
+     */
+    get: operations['digest_preference_retrieve']
+    /**
+     * @description Read or set whether the caller receives the subscription digest by mail.
+     *
+     *     Always the caller's own account: there is nothing else this could name.
+     */
+    put: operations['digest_preference_update']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    /**
+     * @description Read or set whether the caller receives the subscription digest by mail.
+     *
+     *     Always the caller's own account: there is nothing else this could name.
+     */
+    patch: operations['digest_preference_partial_update']
+    trace?: never
+  }
   '/api/reef/me/documents/': {
     parameters: {
       query?: never
@@ -30,6 +61,44 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/notifications/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description The caller's own notification feed, newest first. */
+    get: operations['notifications_list']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/reef/notifications/{id}/read/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /**
+     * @description Mark one of the caller's own notifications read.
+     *
+     *     Idempotent: a notification already read stays read rather than erroring.
+     */
+    post: operations['notifications_read_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/popularity/': {
     parameters: {
       query?: never
@@ -37,7 +106,10 @@ export interface paths {
       path?: never
       cookie?: never
     }
-    /** @description The curated most-popular list. Public; consumed by Red at build time. */
+    /**
+     * The popularity ranking
+     * @description Every RFC with a popularity score, most popular first. `popularity` is a rank percentile in [0, 1]: 1 is the most popular ranked document and 0 the least, and only ordering is expressed, never traffic. An RFC without an entry has not been ranked. `computed_at` is when the ranking was last recomputed, null while it is empty.
+     */
     get: operations['popularity_list']
     put?: never
     post?: never
@@ -518,6 +590,9 @@ export interface paths {
 export type webhooks = Record<string, never>
 export interface components {
   schemas: {
+    DigestPreference: {
+      receive_digest_email?: boolean
+    }
     /** @description The area or group a document belongs to, narrowed to what a page names. */
     DocumentAreaOrGroup: {
       acronym: string
@@ -680,6 +755,22 @@ export interface components {
       visibility?: components['schemas']['VisibilityEnum']
       readonly answered: boolean
     }
+    PaginatedWebNotificationList: {
+      /**
+       * Format: uri
+       * @example http://api.example.org/accounts/?cursor=cD00ODY%3D"
+       */
+      next?: string | null
+      /**
+       * Format: uri
+       * @example http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+       */
+      previous?: string | null
+      results: components['schemas']['WebNotification'][]
+    }
+    PatchedDigestPreference: {
+      receive_digest_email?: boolean
+    }
     PatchedDocumentSet: {
       /** Format: uuid */
       readonly id?: string
@@ -707,10 +798,22 @@ export interface components {
       /** Format: date-time */
       readonly updated_at?: string
     }
-    PopularEntry: {
+    /** @description The whole ranking, most popular first, with when it was last computed. */
+    Popularity: {
+      /**
+       * Format: date-time
+       * @description When the ranking was last recomputed; null while it is empty.
+       */
+      computed_at: string | null
+      entries: components['schemas']['PopularityEntry'][]
+    }
+    PopularityEntry: {
       rfc: string
-      /** @description Lower sorts first */
-      rank?: number
+      /**
+       * Format: double
+       * @description 0 is the least popular ranked document, 1 the most.
+       */
+      popularity: number
     }
     /**
      * @description A subject's own file: the served shape plus what a page cannot look up.
@@ -990,6 +1093,20 @@ export interface components {
      * @enum {string}
      */
     VisibilityEnum: 'open' | 'authenticated'
+    /**
+     * @description One row of the caller's own notification feed.
+     *
+     *     subscription_ids stays off the wire: nothing on Red needs it yet, and event
+     *     already carries doc and url, everything a display needs to render and link.
+     */
+    WebNotification: {
+      readonly id: number
+      readonly kind: string
+      readonly event: unknown
+      readonly read: boolean
+      /** Format: date-time */
+      readonly created_at: string
+    }
   }
   responses: never
   parameters: never
@@ -999,6 +1116,75 @@ export interface components {
 }
 export type $defs = Record<string, never>
 export interface operations {
+  digest_preference_retrieve: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DigestPreference']
+        }
+      }
+    }
+  }
+  digest_preference_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['DigestPreference']
+        'application/x-www-form-urlencoded': components['schemas']['DigestPreference']
+        'multipart/form-data': components['schemas']['DigestPreference']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DigestPreference']
+        }
+      }
+    }
+  }
+  digest_preference_partial_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: {
+      content: {
+        'application/json': components['schemas']['PatchedDigestPreference']
+        'application/x-www-form-urlencoded': components['schemas']['PatchedDigestPreference']
+        'multipart/form-data': components['schemas']['PatchedDigestPreference']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DigestPreference']
+        }
+      }
+    }
+  }
   me_documents_retrieve: {
     parameters: {
       query?: {
@@ -1021,6 +1207,49 @@ export interface operations {
       }
     }
   }
+  notifications_list: {
+    parameters: {
+      query?: {
+        /** @description The pagination cursor value. */
+        cursor?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['PaginatedWebNotificationList']
+        }
+      }
+    }
+  }
+  notifications_read_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['WebNotification']
+        }
+      }
+    }
+  }
   popularity_list: {
     parameters: {
       query?: never
@@ -1035,7 +1264,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['PopularEntry'][]
+          'application/json': components['schemas']['Popularity']
         }
       }
     }

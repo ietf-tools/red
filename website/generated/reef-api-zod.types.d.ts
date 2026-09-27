@@ -1,5 +1,6 @@
 export namespace Schemas {
   // <Schemas>
+  export type DigestPreference = Partial<{ receive_digest_email: boolean }>
   /**
    * The area or group a document belongs to, narrowed to what a page names.
    */
@@ -166,6 +167,25 @@ export namespace Schemas {
     visibility?: VisibilityEnum
     answered: boolean
   } & Record<string, unknown>
+  /**
+   * One row of the caller's own notification feed.
+   *
+   * subscription_ids stays off the wire: nothing on Red needs it yet, and event
+   * already carries doc and url, everything a display needs to render and link.
+   */
+  export type WebNotification = {
+    id: number
+    kind: string
+    event: unknown
+    read: boolean
+    created_at: string
+  } & Record<string, unknown>
+  export type PaginatedWebNotificationList = {
+    next?: string | null
+    previous?: string | null
+    results: Array<WebNotification>
+  } & Record<string, unknown>
+  export type PatchedDigestPreference = Partial<{ receive_digest_email: boolean }>
   export type PatchedDocumentSet = Partial<{
     id: string
     title: string
@@ -196,12 +216,22 @@ export namespace Schemas {
     created_at: string
     updated_at: string
   }>
-  export type PopularEntry = {
+  export type PopularityEntry = {
     rfc: string
     /**
-     * Lower sorts first
+     * 0 is the least popular ranked document, 1 the most.
      */
-    rank?: number
+    popularity: number
+  } & Record<string, unknown>
+  /**
+   * The whole ranking, most popular first, with when it was last computed.
+   */
+  export type Popularity = {
+    /**
+     * When the ranking was last recomputed; null while it is empty.
+     */
+    computed_at: string | null
+    entries: Array<PopularityEntry>
   } & Record<string, unknown>
   /**
    * One ancestor on the way up to the root, root first.
@@ -491,6 +521,49 @@ export namespace Endpoints {
   // <Endpoints>
 
   /**
+   * Read or set whether the caller receives the subscription digest by mail.
+   *
+   * Always the caller's own account: there is nothing else this could name.
+   */
+  export type get_Digest_preference_retrieve = {
+    method: 'GET'
+    path: '/api/reef/digest-preference/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: never
+    responses: { 200: Schemas.DigestPreference }
+  }
+  /**
+   * Read or set whether the caller receives the subscription digest by mail.
+   *
+   * Always the caller's own account: there is nothing else this could name.
+   */
+  export type put_Digest_preference_update = {
+    method: 'PUT'
+    path: '/api/reef/digest-preference/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: {
+      body: Schemas.DigestPreference
+    }
+    responses: { 200: Schemas.DigestPreference }
+  }
+  /**
+   * Read or set whether the caller receives the subscription digest by mail.
+   *
+   * Always the caller's own account: there is nothing else this could name.
+   */
+  export type patch_Digest_preference_partial_update = {
+    method: 'PATCH'
+    path: '/api/reef/digest-preference/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: {
+      body: Schemas.PatchedDigestPreference
+    }
+    responses: { 200: Schemas.DigestPreference }
+  }
+  /**
    * Return the authenticated caller's rating, subscription and set membership for each named document, along with the caller's own sets. One call for a whole page of documents.
    *
    * `doc` is repeatable and identifiers are canonicalized, so `rfc9110` and `RFC 9110` address the same document; the series has to be named, so `9110` on its own is rejected. A named document is always returned, with nulls if the caller has no state for it. At most 100 documents per request.
@@ -510,7 +583,35 @@ export namespace Endpoints {
     responses: { 200: Schemas.MyDocuments }
   }
   /**
-   * The curated most-popular list. Public; consumed by Red at build time.
+   * The caller's own notification feed, newest first.
+   */
+  export type get_Notifications_list = {
+    method: 'GET'
+    path: '/api/reef/notifications/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: {
+      query?: Partial<{ cursor: string }>
+    }
+    responses: { 200: Schemas.PaginatedWebNotificationList }
+  }
+  /**
+   * Mark one of the caller's own notifications read.
+   *
+   * Idempotent: a notification already read stays read rather than erroring.
+   */
+  export type post_Notifications_read_create = {
+    method: 'POST'
+    path: '/api/reef/notifications/{id}/read/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: {
+      path: { id: number }
+    }
+    responses: { 200: Schemas.WebNotification }
+  }
+  /**
+   * Every RFC with a popularity score, most popular first. `popularity` is a rank percentile in [0, 1]: 1 is the most popular ranked document and 0 the least, and only ordering is expressed, never traffic. An RFC without an entry has not been ranked. `computed_at` is when the ranking was last recomputed, null while it is empty.
    */
   export type get_Popularity_list = {
     method: 'GET'
@@ -518,7 +619,7 @@ export namespace Endpoints {
     requestFormat: 'json'
     responseFormat: 'json'
     parameters: never
-    responses: { 200: Array<Schemas.PopularEntry> }
+    responses: { 200: Schemas.Popularity }
   }
   /**
    * Not a served endpoint. This describes the payload the precomputer publishes to `subjects.json` in the blob store, which is where Red reads it from; no deployment routes this path.
@@ -1118,7 +1219,9 @@ export namespace Endpoints {
 // <EndpointByMethod>
 export type EndpointByMethod = {
   get: {
+    '/api/reef/digest-preference/': Endpoints.get_Digest_preference_retrieve
     '/api/reef/me/documents/': Endpoints.get_Me_documents_retrieve
+    '/api/reef/notifications/': Endpoints.get_Notifications_list
     '/api/reef/popularity/': Endpoints.get_Popularity_list
     '/api/reef/precomputed/subjects/': Endpoints.get_Precomputed_subject_index_retrieve
     '/api/reef/precomputed/subjects/{slug}/': Endpoints.get_Precomputed_subject_detail_retrieve
@@ -1138,11 +1241,24 @@ export type EndpointByMethod = {
     '/api/reef/surveys/open/': Endpoints.get_Surveys_open_list
   }
   put: {
+    '/api/reef/digest-preference/': Endpoints.put_Digest_preference_update
     '/api/reef/ratings/{rfc}/': Endpoints.put_Ratings_update
     '/api/reef/sets/{id}/': Endpoints.put_Sets_update
     '/api/reef/sets/{id}/documents/{doc}/': Endpoints.put_Sets_documents_update
     '/api/reef/sets/{id}/order/': Endpoints.put_Sets_order_update
     '/api/reef/surveys/{id}/': Endpoints.put_Surveys_update
+  }
+  patch: {
+    '/api/reef/digest-preference/': Endpoints.patch_Digest_preference_partial_update
+    '/api/reef/sets/{id}/': Endpoints.patch_Sets_partial_update
+    '/api/reef/surveys/{id}/': Endpoints.patch_Surveys_partial_update
+  }
+  post: {
+    '/api/reef/notifications/{id}/read/': Endpoints.post_Notifications_read_create
+    '/api/reef/sets/': Endpoints.post_Sets_create
+    '/api/reef/subscriptions/': Endpoints.post_Subscriptions_create
+    '/api/reef/surveys/': Endpoints.post_Surveys_create
+    '/api/reef/surveys/{slug}/responses/': Endpoints.post_Surveys_responses_create
   }
   delete: {
     '/api/reef/ratings/{rfc}/': Endpoints.delete_Ratings_destroy
@@ -1151,16 +1267,6 @@ export type EndpointByMethod = {
     '/api/reef/subscriptions/{id}/': Endpoints.delete_Subscriptions_destroy
     '/api/reef/surveys/{id}/': Endpoints.delete_Surveys_destroy
   }
-  post: {
-    '/api/reef/sets/': Endpoints.post_Sets_create
-    '/api/reef/subscriptions/': Endpoints.post_Subscriptions_create
-    '/api/reef/surveys/': Endpoints.post_Surveys_create
-    '/api/reef/surveys/{slug}/responses/': Endpoints.post_Surveys_responses_create
-  }
-  patch: {
-    '/api/reef/sets/{id}/': Endpoints.patch_Sets_partial_update
-    '/api/reef/surveys/{id}/': Endpoints.patch_Surveys_partial_update
-  }
 }
 
 // </EndpointByMethod>
@@ -1168,7 +1274,7 @@ export type EndpointByMethod = {
 // <EndpointByMethod.Shorthands>
 export type GetEndpoints = EndpointByMethod['get']
 export type PutEndpoints = EndpointByMethod['put']
-export type DeleteEndpoints = EndpointByMethod['delete']
-export type PostEndpoints = EndpointByMethod['post']
 export type PatchEndpoints = EndpointByMethod['patch']
+export type PostEndpoints = EndpointByMethod['post']
+export type DeleteEndpoints = EndpointByMethod['delete']
 // </EndpointByMethod.Shorthands>

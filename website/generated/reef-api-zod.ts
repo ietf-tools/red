@@ -4,6 +4,9 @@ import type * as __TypedOpenapi from './reef-api-zod.types.js'
 import { z } from 'zod'
 
 // <Schemas>
+export type DigestPreference = __TypedOpenapi.Schemas.DigestPreference
+export const DigestPreference = z.object({ receive_digest_email: z.boolean() }).partial().catchall(z.unknown())
+
 export type DocumentAreaOrGroup = __TypedOpenapi.Schemas.DocumentAreaOrGroup
 export const DocumentAreaOrGroup = z.object({ acronym: z.string(), name: z.string() }).catchall(z.unknown())
 
@@ -121,6 +124,29 @@ export const OpenSurvey = z
   })
   .catchall(z.unknown())
 
+export type WebNotification = __TypedOpenapi.Schemas.WebNotification
+export const WebNotification = z
+  .object({
+    id: z.number().int(),
+    kind: z.string(),
+    event: z.unknown(),
+    read: z.boolean(),
+    created_at: z.iso.datetime()
+  })
+  .catchall(z.unknown())
+
+export type PaginatedWebNotificationList = __TypedOpenapi.Schemas.PaginatedWebNotificationList
+export const PaginatedWebNotificationList = z
+  .object({
+    next: z.url().nullable().optional(),
+    previous: z.url().nullable().optional(),
+    results: z.array(WebNotification)
+  })
+  .catchall(z.unknown())
+
+export type PatchedDigestPreference = __TypedOpenapi.Schemas.PatchedDigestPreference
+export const PatchedDigestPreference = z.object({ receive_digest_email: z.boolean() }).partial().catchall(z.unknown())
+
 export type PatchedDocumentSet = __TypedOpenapi.Schemas.PatchedDocumentSet
 export const PatchedDocumentSet = z
   .object({
@@ -155,9 +181,14 @@ export const PatchedSurvey = z
   .partial()
   .catchall(z.unknown())
 
-export type PopularEntry = __TypedOpenapi.Schemas.PopularEntry
-export const PopularEntry = z
-  .object({ rfc: z.string().max(32), rank: z.number().int().min(0).max(2147483647).optional() })
+export type PopularityEntry = __TypedOpenapi.Schemas.PopularityEntry
+export const PopularityEntry = z
+  .object({ rfc: z.string().max(32), popularity: z.number().min(0).max(1) })
+  .catchall(z.unknown())
+
+export type Popularity = __TypedOpenapi.Schemas.Popularity
+export const Popularity = z
+  .object({ computed_at: z.iso.datetime().nullable(), entries: z.array(PopularityEntry) })
   .catchall(z.unknown())
 
 export type SubjectAncestor = __TypedOpenapi.Schemas.SubjectAncestor

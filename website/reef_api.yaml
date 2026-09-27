@@ -4,6 +4,83 @@ info:
   version: 0.1.0
   description: Backend API for the Reef survey and engagement service
 paths:
+  /api/reef/digest-preference/:
+    get:
+      operationId: digest_preference_retrieve
+      description: |-
+        Read or set whether the caller receives the subscription digest by mail.
+
+        Always the caller's own account: there is nothing else this could name.
+      tags:
+        - digest-preference
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DigestPreference'
+          description: ''
+    put:
+      operationId: digest_preference_update
+      description: |-
+        Read or set whether the caller receives the subscription digest by mail.
+
+        Always the caller's own account: there is nothing else this could name.
+      tags:
+        - digest-preference
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DigestPreference'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DigestPreference'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DigestPreference'
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DigestPreference'
+          description: ''
+    patch:
+      operationId: digest_preference_partial_update
+      description: |-
+        Read or set whether the caller receives the subscription digest by mail.
+
+        Always the caller's own account: there is nothing else this could name.
+      tags:
+        - digest-preference
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDigestPreference'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDigestPreference'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDigestPreference'
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DigestPreference'
+          description: ''
   /api/reef/me/documents/:
     get:
       operationId: me_documents_retrieve
@@ -37,11 +114,63 @@ paths:
               schema:
                 $ref: '#/components/schemas/MyDocuments'
           description: ''
+  /api/reef/notifications/:
+    get:
+      operationId: notifications_list
+      description: The caller's own notification feed, newest first.
+      parameters:
+        - name: cursor
+          required: false
+          in: query
+          description: The pagination cursor value.
+          schema:
+            type: string
+      tags:
+        - notifications
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWebNotificationList'
+          description: ''
+  /api/reef/notifications/{id}/read/:
+    post:
+      operationId: notifications_read_create
+      description: |-
+        Mark one of the caller's own notifications read.
+
+        Idempotent: a notification already read stays read rather than erroring.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      tags:
+        - notifications
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebNotification'
+          description: ''
   /api/reef/popularity/:
     get:
       operationId: popularity_list
-      description: The curated most-popular list. Public; consumed by Red at build
-        time.
+      description: 'Every RFC with a popularity score, most popular first. `popularity`
+        is a rank percentile in [0, 1]: 1 is the most popular ranked document and
+        0 the least, and only ordering is expressed, never traffic. An RFC without
+        an entry has not been ranked. `computed_at` is when the ranking was last recomputed,
+        null while it is empty.'
+      summary: The popularity ranking
       tags:
         - popularity
       security:
@@ -53,9 +182,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PopularEntry'
+                $ref: '#/components/schemas/Popularity'
           description: ''
   /api/reef/precomputed/subjects/:
     get:
@@ -1099,6 +1226,11 @@ paths:
           description: ''
 components:
   schemas:
+    DigestPreference:
+      type: object
+      properties:
+        receive_digest_email:
+          type: boolean
     DocumentAreaOrGroup:
       type: object
       description: The area or group a document belongs to, narrowed to what a page
@@ -1488,6 +1620,30 @@ components:
         - slug
         - title
         - url
+    PaginatedWebNotificationList:
+      type: object
+      required:
+        - results
+      properties:
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cD00ODY%3D"
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?cursor=cj0xJnA9NDg3
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebNotification'
+    PatchedDigestPreference:
+      type: object
+      properties:
+        receive_digest_email:
+          type: boolean
     PatchedDocumentSet:
       type: object
       properties:
@@ -1546,18 +1702,36 @@ components:
           type: string
           format: date-time
           readOnly: true
-    PopularEntry:
+    Popularity:
+      type: object
+      description: The whole ranking, most popular first, with when it was last computed.
+      properties:
+        computed_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: When the ranking was last recomputed; null while it is empty.
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/PopularityEntry'
+      required:
+        - computed_at
+        - entries
+    PopularityEntry:
       type: object
       properties:
         rfc:
           type: string
           maxLength: 32
-        rank:
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-          description: Lower sorts first
+        popularity:
+          type: number
+          format: double
+          maximum: 1.0
+          minimum: 0.0
+          description: 0 is the least popular ranked document, 1 the most.
       required:
+        - popularity
         - rfc
     PrecomputedSubjectDetail:
       type: object
@@ -2144,6 +2318,35 @@ components:
       description: |-
         * `open` - Open (anonymous)
         * `authenticated` - Authenticated only
+    WebNotification:
+      type: object
+      description: |-
+        One row of the caller's own notification feed.
+
+        subscription_ids stays off the wire: nothing on Red needs it yet, and event
+        already carries doc and url, everything a display needs to render and link.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        kind:
+          type: string
+          readOnly: true
+        event:
+          readOnly: true
+        read:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - created_at
+        - event
+        - id
+        - kind
+        - read
   securitySchemes:
     BearerAuth:
       type: http

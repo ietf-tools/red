@@ -28,7 +28,8 @@ export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
 export type MyDocuments = components['schemas']['MyDocuments']
 export type MyDocument = components['schemas']['MyDocument']
 export type MyDocumentSet = components['schemas']['MyDocumentSet']
-export type PopularEntry = components['schemas']['PopularEntry']
+export type Popularity = components['schemas']['Popularity']
+export type PopularityEntry = components['schemas']['PopularityEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
 export type RatingWrite = components['schemas']['RatingWrite']
 export type Subject = components['schemas']['Subject']
@@ -207,8 +208,8 @@ const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T>
   return (await parseBody(response)) as T
 }
 
-// The curated most-popular list. Public.
-export const getPopularity = (signal?: AbortSignal): Promise<PopularEntry[]> =>
+// The curated most-popular list, most popular first, plus when it was last recomputed. Public.
+export const getPopularity = (signal?: AbortSignal): Promise<Popularity> =>
   reefFetch('/api/reef/popularity/', { signal })
 
 // The whole subject vocabulary, in tree order. Public, and unpaginated because the vocabulary is
