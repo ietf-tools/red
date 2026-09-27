@@ -5,19 +5,29 @@ import { getApiClient } from './utilities/api.ts'
 
 const NUMBER_OF_CONCURRENT_RFC_PROCESSORS = 8
 
-const main = async (rfcNumbers: number[]): Promise<void> => {
-  console.log(
-    `Processing RFCs ${rfcNumbers.join(', ')}. Using ${NUMBER_OF_CONCURRENT_RFC_PROCESSORS} concurrent promises (results may appear out of order).`
-  )
+/**
+ * Rebuild only the per-RFC files. The indices exist so a newly published RFC is listed in
+ * the same run as its page; a caller whose RFCs are already indexed, may skip this step.
+ */
+const SKIP_INDICES_FLAG = '--skip-indices'
 
-  const api = getApiClient()
+type Options = {
+  skipIndices: boolean
+}
+
+const main = async (rfcNumbers: number[], { skipIndices }: Options): Promise<void> => {
+  console.log(
+    `Processing RFCs ${rfcNumbers.join(', ')}${skipIndices ? ` (${SKIP_INDICES_FLAG})` : ''}. Using ${NUMBER_OF_CONCURRENT_RFC_PROCESSORS} concurrent promises (results may appear out of order).`
+  )
 
   const [rfcUploadTasks, indicesUploadTasks] = await Promise.all([
     PromisePool.for(rfcNumbers).withConcurrency(NUMBER_OF_CONCURRENT_RFC_PROCESSORS).process(processRfcUploadTask),
-    indices({ api })
+    skipIndices ? undefined : indices({ api: getApiClient() })
   ])
 
-  if (taskItemWasSuccessful(indicesUploadTasks)) {
+  if (indicesUploadTasks === undefined) {
+    console.log(`[multiple.ts] Indices skipped (${SKIP_INDICES_FLAG}).`)
+  } else if (taskItemWasSuccessful(indicesUploadTasks)) {
     console.log('[multiple.ts] Indices updated successfully.')
   } else {
     console.error(
@@ -34,12 +44,21 @@ const main = async (rfcNumbers: number[]): Promise<void> => {
   })
 }
 
-if (!process.argv[2]) {
+const args = process.argv.slice(2)
+const flags = args.filter((arg) => arg.startsWith('--'))
+const positionals = args.filter((arg) => !arg.startsWith('--'))
+
+const unknownFlags = flags.filter((flag) => flag !== SKIP_INDICES_FLAG)
+if (unknownFlags.length > 0) {
+  throw Error(`Unknown flag(s) ${JSON.stringify(unknownFlags)}. The only flag is ${SKIP_INDICES_FLAG}`)
+}
+
+if (!positionals[0]) {
   throw Error(`Script requires RFC Numbers arg but argv was ${JSON.stringify(process.argv)}`)
 }
 
-const rfcNumbers = process.argv[2].split(',').map((rfc) => parseInt(rfc.trim(), 10))
+const rfcNumbers = positionals[0].split(',').map((rfc) => parseInt(rfc.trim(), 10))
 if (rfcNumbers.some((rfcNumber) => Number.isNaN(rfcNumber))) {
-  throw Error(`RFC number list ${JSON.stringify(process.argv[2])} included a NaN`)
+  throw Error(`RFC number list ${JSON.stringify(positionals[0])} included a NaN`)
 }
-main(rfcNumbers)
+main(rfcNumbers, { skipIndices: flags.includes(SKIP_INDICES_FLAG) })
