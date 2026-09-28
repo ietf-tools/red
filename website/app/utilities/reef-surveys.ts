@@ -11,6 +11,13 @@ import { parseSeriesId, type SeriesId } from './rfc'
 
 const LOAD_SURVEYS_AFTER_MS = 5_000
 
+// Reef reads `returnTo` off the survey link and sends the taker back there once they're done.
+const withReturnTo = (surveyUrl: string): string => {
+  const url = new URL(surveyUrl)
+  url.searchParams.set('returnTo', `${window.location.pathname}${window.location.search}`)
+  return url.href
+}
+
 // How long to wait for ~/utilities/oidc's session restore to settle before giving up and treating
 // the reader as signed out. Covers both outcomes it can still be waiting on this far in — an
 // Authentik round trip, or finding no session cookie at all — with room to spare, and also the
@@ -25,7 +32,7 @@ export const openSurveyNotification = (survey: OpenSurvey): Notification => ({
   title: `Survey: ${survey.title}`,
   readMoreText: 'Take Survey',
   description: survey.description,
-  url: survey.url,
+  url: withReturnTo(survey.url),
   delayMs: 0,
   durationMs: 60_000,
   allowDismiss: true,
