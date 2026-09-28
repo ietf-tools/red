@@ -28,6 +28,7 @@
 
             <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
+                <SubscriptionCheckboxHelpText />
                 <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
                   <span
                     class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
@@ -46,7 +47,7 @@
                       'border border-gray-400',
                       'cursor-pointer'
                     ]">
-                    Done
+                    Close
                   </DialogClose>
                 </div>
               </template>

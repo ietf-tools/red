@@ -42,6 +42,7 @@
                    screen reader gets the change from aria-checked, which CheckboxRoot maintains,
                    with no live region needed. There's no save button here for the same reason the
                    rating dialog has none: ticking it writes. -->
+                <SubscriptionCheckboxHelpText />
                 <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
                   <span
                     class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
@@ -63,7 +64,7 @@
                       'border border-gray-400',
                       'cursor-pointer'
                     ]">
-                    Done
+                    Close
                   </DialogClose>
                 </div>
               </template>
