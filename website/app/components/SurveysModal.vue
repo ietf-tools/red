@@ -8,7 +8,7 @@
       <thead>
         <TableRow>
           <TableCellHeader background="solid">Title</TableCellHeader>
-          <TableCellHeader background="solid">Audience</TableCellHeader>
+          <!-- <TableCellHeader background="solid">Audience</TableCellHeader> -->
           <TableCellHeader background="solid">Dismissed on this device?</TableCellHeader>
         </TableRow>
       </thead>
@@ -20,10 +20,10 @@
               <GraphicsNewWindowIcon />
             </Anchor>
           </TableCell>
-          <TableCell
+          <!-- <TableCell
             >{{ survey.visibility === 'authenticated' ? 'logged in only' : 'anonymous' }}
             {{ survey.documents?.join(', ') || '' }}</TableCell
-          >
+          > -->
           <TableCell>{{ isDismissed(survey.slug) ? 'Yes' : 'No' }}</TableCell>
         </TableRow>
       </tbody>
