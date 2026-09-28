@@ -37,7 +37,13 @@
 
             <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
-                <p v-if="isLoading" class="flex items-center gap-2 py-3" aria-live="polite" aria-atomic="true">
+                <!-- A separate hidden region rather than aria-live on the paragraph itself, so the
+                   announcement doesn't sit inside the same element the checkbox later renders into —
+                   nesting a live region around an interactive control it would otherwise re-announce
+                   on every tick, which this avoids by only ever holding this one status string. -->
+                <span class="sr-only" aria-live="polite" aria-atomic="true">{{ loadAnnouncement }}</span>
+
+                <p v-if="isLoading" class="flex items-center gap-2 py-3">
                   <GraphicsLoading class="inline-block w-5 h-5" />
                   Loading...
                 </p>
@@ -138,6 +144,28 @@ const props = defineProps<Props>()
 const isSubscribed = defineModel<boolean>({ default: false })
 
 const isLoading = computed(() => props.status === 'unknown' || props.status === 'loading')
+
+// Whether a load has been seen in flight, so `loadAnnouncement` only speaks up once loading
+// actually happened. Without it, a dialog opened after the load already settled — the common case,
+// since it starts as soon as the page does — would announce "loaded" for something the reader
+// never saw as pending.
+const hasLoaded = ref(false)
+watch(
+  isLoading,
+  (loading) => {
+    if (loading) {
+      hasLoaded.value = true
+    }
+  },
+  { immediate: true }
+)
+
+const loadAnnouncement = computed(() => {
+  if (isLoading.value) {
+    return 'Loading your subscription status.'
+  }
+  return hasLoaded.value ? 'Subscription status loaded.' : ''
+})
 
 const formatNumber = (val: number, decimalPlaces: number) => {
   return new Intl.NumberFormat('en-US', {
