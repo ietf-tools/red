@@ -211,10 +211,9 @@ const SORT_ITEMS = computed(() => [
   { label: 'Oldest first', value: 'publicationDate:asc' },
   { label: 'RFC number (ascending)', value: 'rfcNumber:asc' },
   { label: 'RFC number (descending)', value: 'rfcNumber:desc' },
-  // Lower popularityRanking is more popular (1 = most popular), so ascending order.
-  // Results with no popularityRanking sort to the end - use the _text_match:desc to
-  // order these.
-  ...(featureFlags.value.oidc ? [{ label: 'Most popular', value: 'popularityRanking:asc,_text_match:desc' }] : [])
+  // popularity is Reef's score from 0 to 1, higher is more popular, so descending order.
+  // Results with no popularity sort to the end - use the _text_match:desc to order these.
+  ...(featureFlags.value.oidc ? [{ label: 'Most popular', value: 'popularity:desc,_text_match:desc' }] : [])
 ])
 
 const PER_PAGE_ITEMS = [
