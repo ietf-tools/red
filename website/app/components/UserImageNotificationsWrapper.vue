@@ -1,8 +1,8 @@
 <template>
-  <div :class="['relative pr-4', unreadCount > 0 ? 'pl-2' : '']">
+  <div class="relative pr-7">
     <span
       v-if="unreadCount"
-      class="absolute -left-1 min-w-5 -top-1 bg-yellow-200 text-yellow-800 rounded-xl shadow-xl px-1 text-sm font-bold border-1 border-yellow-600"
+      class="absolute -right-2 -top-2 min-w-5 bg-blue-200 text-white rounded-xl shadow-xl px-1 text-sm font-bold border-1 border-blue-600"
       >{{ unreadCount }}</span
     >
     <slot />
