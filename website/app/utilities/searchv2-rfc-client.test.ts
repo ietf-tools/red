@@ -75,6 +75,6 @@ describe('createRfcSearchClient', () => {
     await client().search(request({ sortBy: 'publicationDate:desc' }))
 
     const search = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)).searches[0]
-    expect(search.filter_by).not.toContain('popularityRanking')
+    expect(search.filter_by).not.toContain('popularity')
   })
 })
