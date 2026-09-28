@@ -3,6 +3,7 @@
     <AccountWebNotifications />
 
     <section>
+      <AccountToggleEmail />
       <AccountSubscriptions />
       <AccountSets />
     </section>

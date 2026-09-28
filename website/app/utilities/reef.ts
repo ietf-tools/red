@@ -22,6 +22,8 @@ import type { components, operations } from '../../generated/reef-api-client'
 import { DjangoErrorDetailSchema } from '~/utilities/django-schema'
 import { getAccessToken } from '~/utilities/oidc'
 
+export type DigestPreference = components['schemas']['DigestPreference']
+export type PatchedDigestPreference = components['schemas']['PatchedDigestPreference']
 export type DocumentSet = components['schemas']['DocumentSet']
 export type PatchedDocumentSet = components['schemas']['PatchedDocumentSet']
 export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
@@ -426,3 +428,17 @@ export const getNotifications = (cursor?: string, signal?: AbortSignal): Promise
 // idempotent, so a notification already read is a success rather than an error.
 export const markNotificationRead = (id: number, signal?: AbortSignal): Promise<WebNotification> =>
   reefFetch(`/api/reef/notifications/${id}/read/`, { method: 'POST', auth: 'required', signal })
+
+// --- Digest email preference (this reader's own) -------------------------------------------
+
+// Whether the caller receives Reef's subscription digest by mail. One preference per account —
+// there's no id or per-subscription row, so unlike the operations above there's nothing to key
+// this by beyond the caller themselves.
+export const getDigestPreference = (signal?: AbortSignal): Promise<DigestPreference> =>
+  reefFetch('/api/reef/digest-preference/', { auth: 'required', signal })
+
+export const patchDigestPreference = (
+  preference: PatchedDigestPreference,
+  signal?: AbortSignal
+): Promise<DigestPreference> =>
+  reefFetch('/api/reef/digest-preference/', { method: 'PATCH', body: preference, auth: 'required', signal })
