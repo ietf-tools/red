@@ -17,7 +17,7 @@
     <CheckboxRoot
       v-else-if="status.type === 'success'"
       v-model="receivesDigestEmail"
-      class="flex items-start gap-2 cursor-pointer w-full text-left py-3">
+      class="flex items-start gap-2 cursor-pointer text-left py-3">
       <span
         class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
         <CheckboxIndicator>
