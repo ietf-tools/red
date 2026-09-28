@@ -22,7 +22,7 @@ vi.mock('~/utilities/reef', async (importOriginal) => ({
 // A harness rather than mounting ReefSubscribeToAllRFCs itself: what's under test is the model —
 // loaded on mount, written back on change — not the dialog chrome around it.
 const Harness = defineComponent({
-  setup: () => ({ isSubscribed: useUserNewRfcSubscription() })
+  setup: () => useUserNewRfcSubscription()
 })
 
 describe('useUserNewRfcSubscription', () => {
@@ -98,7 +98,7 @@ describe('useUserNewRfcSubscription', () => {
 // A harness rather than mounting ReefSubscribeToSubjectTag itself, for the same reason as above:
 // what's under test is the model, not the dialog chrome around it.
 const SubjectHarness = defineComponent({
-  setup: () => ({ isSubscribed: useUserSubjectSubscription(9, 'Applications') })
+  setup: () => useUserSubjectSubscription(9, 'Applications')
 })
 
 describe('useUserSubjectSubscription', () => {

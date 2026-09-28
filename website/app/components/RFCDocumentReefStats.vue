@@ -10,6 +10,7 @@
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
           :user="user"
+          :status="subscriptionStatus"
           v-model="isSubscribedToThisRFC" />
       </li>
       <li class="pl-2">
@@ -68,6 +69,6 @@ const rfcNumber = () => props.rfcNumber
 useReefDocuments(() => [props.rfcNumber])
 
 const userRFCRating = useUserRFCRating(rfcNumber)
-const isSubscribedToThisRFC = useUserRFCSubscription(rfcNumber)
+const { isSubscribed: isSubscribedToThisRFC, status: subscriptionStatus } = useUserRFCSubscription(rfcNumber)
 const { sets: userSets, setIdsWithThisRFC, createSet } = useUserSets(rfcNumber)
 </script>

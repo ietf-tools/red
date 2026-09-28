@@ -28,16 +28,27 @@
 
             <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
-                <SubscriptionCheckboxHelpText />
-                <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
-                  <span
-                    class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
-                    <CheckboxIndicator>
-                      <GraphicsCheckmark class="block w-[14px] h-[14px]" />
-                    </CheckboxIndicator>
-                  </span>
-                  <span>Subscribe to {{ props.subject.name }}</span>
-                </CheckboxRoot>
+                <p
+                  v-if="status.type === 'loading'"
+                  class="flex items-center gap-2 py-3"
+                  aria-live="polite"
+                  aria-atomic="true">
+                  <GraphicsLoading class="inline-block w-5 h-5" />
+                  Loading...
+                </p>
+
+                <template v-else>
+                  <SubscriptionCheckboxHelpText />
+                  <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
+                    <span
+                      class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
+                      <CheckboxIndicator>
+                        <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                      </CheckboxIndicator>
+                    </span>
+                    <span>Subscribe to {{ props.subject.name }}</span>
+                  </CheckboxRoot>
+                </template>
 
                 <div class="flex justify-end pb-2 pt-4">
                   <DialogClose
@@ -92,7 +103,7 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const isSubscribed = useUserSubjectSubscription(
+const { isSubscribed, status } = useUserSubjectSubscription(
   () => props.subject.id,
   () => props.subject.name
 )

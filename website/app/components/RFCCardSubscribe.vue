@@ -3,6 +3,7 @@
     :rfc-number="props.rfcNumber"
     :reef-stats="reefStats"
     :user="authStore.user"
+    :status="status"
     :icon-only="props.iconOnly"
     v-model="isSubscribedToThisRFC" />
 </template>
@@ -19,7 +20,7 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const isSubscribedToThisRFC = useUserRFCSubscription(() => props.rfcNumber)
+const { isSubscribed: isSubscribedToThisRFC, status } = useUserRFCSubscription(() => props.rfcNumber)
 
 const authStore = useAuthStore()
 </script>

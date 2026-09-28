@@ -28,7 +28,19 @@
 
             <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
-                <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
+                <p
+                  v-if="status.type === 'loading'"
+                  class="flex items-center gap-2 py-3"
+                  aria-live="polite"
+                  aria-atomic="true">
+                  <GraphicsLoading class="inline-block w-5 h-5" />
+                  Loading...
+                </p>
+
+                <CheckboxRoot
+                  v-else
+                  v-model="isSubscribed"
+                  class="flex items-start gap-2 cursor-pointer w-full text-left">
                   <span
                     class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
                     <CheckboxIndicator>
@@ -84,7 +96,7 @@ import {
 } from 'reka-ui'
 import { useUserNewRfcSubscription } from '~/utilities/reef-subscriptions'
 
-const isSubscribed = useUserNewRfcSubscription()
+const { isSubscribed, status } = useUserNewRfcSubscription()
 
 // `user` is passed down to the subscribe and sets dialogs rather than left for them to read from
 // the store themselves, so they render from what they're given and this component stays the one

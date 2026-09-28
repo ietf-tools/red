@@ -37,24 +37,31 @@
 
             <DialogDescription class="text-sm pt-3">
               <template v-if="isAuthenticated">
-                <!-- A checkbox rather than a Subscribe/Unsubscribe button, so the current state is
-                   readable without having to infer it from what the button offers to do — and so a
-                   screen reader gets the change from aria-checked, which CheckboxRoot maintains,
-                   with no live region needed. There's no save button here for the same reason the
-                   rating dialog has none: ticking it writes. -->
-                <SubscriptionCheckboxHelpText />
-                <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
-                  <span
-                    class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
-                    <CheckboxIndicator>
-                      <GraphicsCheckmark class="block w-[14px] h-[14px]" />
-                    </CheckboxIndicator>
-                  </span>
-                  <span
-                    >Subscribe to
-                    <RFCTitle :rfc="{ number: props.rfcNumber, title: '' }" :hide-title="true" /> changes</span
-                  >
-                </CheckboxRoot>
+                <p v-if="isLoading" class="flex items-center gap-2 py-3" aria-live="polite" aria-atomic="true">
+                  <GraphicsLoading class="inline-block w-5 h-5" />
+                  Loading...
+                </p>
+
+                <template v-else>
+                  <!-- A checkbox rather than a Subscribe/Unsubscribe button, so the current state is
+                     readable without having to infer it from what the button offers to do — and so a
+                     screen reader gets the change from aria-checked, which CheckboxRoot maintains,
+                     with no live region needed. There's no save button here for the same reason the
+                     rating dialog has none: ticking it writes. -->
+                  <SubscriptionCheckboxHelpText />
+                  <CheckboxRoot v-model="isSubscribed" class="flex items-start gap-2 cursor-pointer w-full text-left">
+                    <span
+                      class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
+                      <CheckboxIndicator>
+                        <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+                      </CheckboxIndicator>
+                    </span>
+                    <span
+                      >Subscribe to
+                      <RFCTitle :rfc="{ number: props.rfcNumber, title: '' }" :hide-title="true" /> changes</span
+                    >
+                  </CheckboxRoot>
+                </template>
 
                 <div class="flex justify-end pb-2 pt-4">
                   <DialogClose
@@ -108,6 +115,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from 'reka-ui'
+import type { ReefDocumentStatus } from '~/stores/reef'
 import type { OidcUser } from '~/utilities/oidc'
 import { COVER_LINK_INNER_STYLE_CLASS, COVER_LINK_STYLE_CLASS } from '~/utilities/reef-cover-link'
 import type { ReefRFCStats } from '~/utilities/rfc-validators.js'
@@ -119,12 +127,17 @@ type Props = {
   // the auth store here, so this component renders from what it's given and the parent stays the
   // one place that decides what "signed in" means for this row.
   user: OidcUser | undefined
+  // Whether this reader's own half has arrived yet, so the checkbox stays hidden behind a loading
+  // message rather than showing unticked before there's a true state to show.
+  status: ReefDocumentStatus
   iconOnly?: boolean
 }
 
 const props = defineProps<Props>()
 
 const isSubscribed = defineModel<boolean>({ default: false })
+
+const isLoading = computed(() => props.status === 'unknown' || props.status === 'loading')
 
 const formatNumber = (val: number, decimalPlaces: number) => {
   return new Intl.NumberFormat('en-US', {

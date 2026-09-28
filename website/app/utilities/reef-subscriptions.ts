@@ -5,12 +5,23 @@
 // Whether this reader subscribes to a document is read from ~/stores/reef, which receives every
 // per-reader answer per document in one response.
 
-import { computed, onMounted, ref, toValue, watch, type MaybeRefOrGetter, type WritableComputedRef } from 'vue'
+import {
+  computed,
+  onMounted,
+  ref,
+  toValue,
+  watch,
+  type ComputedRef,
+  type MaybeRefOrGetter,
+  type Ref,
+  type WritableComputedRef
+} from 'vue'
 import { useAuthStore } from '~/stores/auth'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
-import { useReefStore } from '~/stores/reef'
+import { useReefStore, type ReefDocumentStatus } from '~/stores/reef'
 import { createSubscription, deleteSubscription, getSubscriptions } from '~/utilities/reef'
 import { reefDocumentKey, useReefDocument } from '~/utilities/reef-documents'
+import type { LoadingStatus } from '~/utilities/loading-status'
 
 // --- Subscribing to one document ----------------------------------------------------------
 //
@@ -100,16 +111,25 @@ export const writeUserRFCSubscription = async (rfcNumber: number, isSubscribed: 
  * Whether this reader subscribes to one document, as a model for the subscribe dialog's checkbox:
  * read from the store, and written back when they tick or untick it. False while nobody is signed
  * in.
+ *
+ * `status` is exposed alongside so the dialog can hold off showing the checkbox until the
+ * per-reader half has arrived — an unticked box while it's still loading would read as "not
+ * subscribed" rather than "not known yet".
  */
-export const useUserRFCSubscription = (rfcNumber: MaybeRefOrGetter<number>): WritableComputedRef<boolean> => {
-  const { isSubscribed } = useReefDocument(rfcNumber)
+export const useUserRFCSubscription = (
+  rfcNumber: MaybeRefOrGetter<number>
+): { isSubscribed: WritableComputedRef<boolean>; status: ComputedRef<ReefDocumentStatus> } => {
+  const { isSubscribed, status } = useReefDocument(rfcNumber)
 
-  return computed({
-    get: () => isSubscribed.value,
-    set: (subscribed) => {
-      void writeUserRFCSubscription(toValue(rfcNumber), subscribed)
-    }
-  })
+  return {
+    isSubscribed: computed({
+      get: () => isSubscribed.value,
+      set: (subscribed) => {
+        void writeUserRFCSubscription(toValue(rfcNumber), subscribed)
+      }
+    }),
+    status
+  }
 }
 
 // --- Subscribing to all new RFCs ------------------------------------------------------------
@@ -134,28 +154,43 @@ export const newRfcSubscriptionFailedNotification = (wasSubscribing: boolean): N
  * Whether this reader subscribes to all new RFCs, as a model for the "subscribe to all" dialog's
  * checkbox: loaded from Reef on mount, and written back when they tick or untick it. False while
  * nobody is signed in, and while the load is still in flight.
+ *
+ * `status` is exposed alongside the checkbox model so a caller can hold off showing it until the
+ * load settles — while it's in flight there's no true state to show yet, and an unticked box
+ * would read as "off" rather than "not known yet".
  */
-export const useUserNewRfcSubscription = (): WritableComputedRef<boolean> => {
+export const useUserNewRfcSubscription = (): {
+  isSubscribed: WritableComputedRef<boolean>
+  status: Ref<LoadingStatus>
+} => {
   const authStore = useAuthStore()
   const reefStore = useReefStore()
   const notificationsStore = useNotificationsStore()
 
   const isSubscribed = ref(false)
   const subscriptionId = ref<number>()
+  const status = ref<LoadingStatus>({ type: 'idle' })
 
   const load = async () => {
     if (!authStore.isAuthenticated) {
       isSubscribed.value = false
       subscriptionId.value = undefined
+      status.value = { type: 'idle' }
       return
     }
+    status.value = { type: 'loading' }
     try {
       const subscriptions = await getSubscriptions()
       const existing = subscriptions.find((subscription) => subscription.kind === 'new_rfc')
       isSubscribed.value = existing !== undefined
       subscriptionId.value = existing?.id
+      status.value = { type: 'success' }
     } catch (error) {
       console.error('Unable to load your new-RFC subscription.', error)
+      status.value = {
+        type: 'error',
+        message: 'Unable to load your new-RFC subscription. See the web console for details.'
+      }
     }
   }
 
@@ -196,12 +231,15 @@ export const useUserNewRfcSubscription = (): WritableComputedRef<boolean> => {
     subscriptionId.value = outcome.value
   }
 
-  return computed({
-    get: () => isSubscribed.value,
-    set: (subscribed) => {
-      void write(subscribed)
-    }
-  })
+  return {
+    isSubscribed: computed({
+      get: () => isSubscribed.value,
+      set: (subscribed) => {
+        void write(subscribed)
+      }
+    }),
+    status
+  }
 }
 
 // --- Subscribing to one subject ------------------------------------------------------------
@@ -233,24 +271,31 @@ export const subjectSubscriptionFailedNotification = (
  * Whether this reader subscribes to one subject, as a model for the subject page's subscribe
  * dialog: loaded from Reef on mount, and written back when they tick or untick it. False while
  * nobody is signed in, and while the load is still in flight.
+ *
+ * `status` is exposed alongside the checkbox model so a caller can hold off showing it until the
+ * load settles — while it's in flight there's no true state to show yet, and an unticked box
+ * would read as "off" rather than "not known yet".
  */
 export const useUserSubjectSubscription = (
   subjectId: MaybeRefOrGetter<number>,
   subjectName: MaybeRefOrGetter<string>
-): WritableComputedRef<boolean> => {
+): { isSubscribed: WritableComputedRef<boolean>; status: Ref<LoadingStatus> } => {
   const authStore = useAuthStore()
   const reefStore = useReefStore()
   const notificationsStore = useNotificationsStore()
 
   const isSubscribed = ref(false)
   const subscriptionId = ref<number>()
+  const status = ref<LoadingStatus>({ type: 'idle' })
 
   const load = async () => {
     if (!authStore.isAuthenticated) {
       isSubscribed.value = false
       subscriptionId.value = undefined
+      status.value = { type: 'idle' }
       return
     }
+    status.value = { type: 'loading' }
     try {
       const subscriptions = await getSubscriptions()
       const existing = subscriptions.find(
@@ -258,8 +303,13 @@ export const useUserSubjectSubscription = (
       )
       isSubscribed.value = existing !== undefined
       subscriptionId.value = existing?.id
+      status.value = { type: 'success' }
     } catch (error) {
       console.error('Unable to load your subject subscription.', error)
+      status.value = {
+        type: 'error',
+        message: 'Unable to load your subject subscription. See the web console for details.'
+      }
     }
   }
 
@@ -301,10 +351,13 @@ export const useUserSubjectSubscription = (
     subscriptionId.value = outcome.value
   }
 
-  return computed({
-    get: () => isSubscribed.value,
-    set: (subscribed) => {
-      void write(subscribed)
-    }
-  })
+  return {
+    isSubscribed: computed({
+      get: () => isSubscribed.value,
+      set: (subscribed) => {
+        void write(subscribed)
+      }
+    }),
+    status
+  }
 }
