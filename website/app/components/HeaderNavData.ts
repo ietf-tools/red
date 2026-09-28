@@ -20,9 +20,12 @@ import {
   useQueueUrlOrigin,
   type ValidHrefs,
   IETF_ACCOUNT_URL_ORIGIN,
-  SUBJECTS_PATH
+  SUBJECTS_PATH,
+  sanitiseUserProfileImage
 } from '~/utilities/url'
 import type { VueClick, VueStyleClass } from '~/utilities/vue'
+import UserImageNotificationsWrapper from './UserImageNotificationsWrapper.vue'
+import HeaderNavNotificationsIcon from './HeaderNavNotificationsIcon.vue'
 
 /**
  * Although this type is recursive the UI only renders about 2 levels deep
@@ -252,16 +255,32 @@ export const useMenuData = (mode: Mode) => {
       if (isAuthenticated.value) {
         const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
         const picture = user.value?.picture
+        const sanitisedPicture = sanitiseUserProfileImage(picture)
         data.push({
           label: displayName,
           hideLabelDesktop: true,
-          icon: picture
-            ? () => h('img', { src: picture, alt: `Picture of ${displayName}`, class: 'w-6 h-6 rounded-full' })
-            : () => h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' }),
+          icon: sanitisedPicture
+            ? () =>
+                h(UserImageNotificationsWrapper, [
+                  h('img', {
+                    src: sanitisedPicture,
+                    /***
+                     * blocks referrer leak via user provided image url
+                     */
+                    referrerpolicy: 'no-referrer',
+                    alt: `Picture of ${displayName}`,
+                    class: 'w-6 h-6 rounded-full'
+                  })
+                ])
+            : () =>
+                h(UserImageNotificationsWrapper, [
+                  h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' })
+                ]),
           children: [
             {
               label: 'My Subscriptions and Sets',
-              href: MY_ACCOUNT_HOME_PATH
+              href: MY_ACCOUNT_HOME_PATH,
+              icon: () => h(HeaderNavNotificationsIcon)
             },
             {
               label: 'IETF Account',

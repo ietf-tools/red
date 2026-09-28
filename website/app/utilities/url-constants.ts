@@ -8,6 +8,7 @@
 
 import type { ValidHrefs } from './url'
 
+export const RFC_EDITOR_PRODUCTION_ORIGIN = 'https://www.rfc-editor.org'
 export const IETF_URL_ORIGIN = 'https://www.ietf.org'
 export const IRTF_URL_ORIGIN = 'https://www.irtf.org'
 export const IAB_URL_ORIGIN = 'https://www.iab.org'

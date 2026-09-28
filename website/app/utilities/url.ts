@@ -290,6 +290,33 @@ export const telBuilder = (phoneNumber: string) => {
   return `tel:${encodeURI(phoneNumber.trim())}` as const
 }
 
+const USER_PROFILE_IMAGE_MAX_LENGTH = 2048
+
+/**
+ * Hardens a user profile picture URL (eg an OIDC `picture` claim) before it's used as an
+ * `<img src>`. Only accepts `https:` so a malicious claim can't smuggle in `javascript:`,
+ * `data:`, or another scheme, and caps the length so an oversized claim can't be handed to
+ * the DOM unchecked. All modern browsers block these already, so arguably not needed,
+ * but it still feels like the right thing to do.
+ */
+export const sanitiseUserProfileImage = (userPictureUrl: string | undefined | null): string | undefined => {
+  const trimmed = userPictureUrl?.trim()
+  if (!trimmed) {
+    return undefined
+  }
+  if (trimmed.length > USER_PROFILE_IMAGE_MAX_LENGTH) {
+    console.error('[sanitiseUserProfileImage] user image url too long. ignoring.', userPictureUrl)
+    return undefined
+  }
+  try {
+    const url = new URL(trimmed)
+    return url.protocol === 'https:' ? trimmed : undefined
+  } catch {
+    console.error('[sanitiseUserProfileImage] blocked url', userPictureUrl)
+    return undefined
+  }
+}
+
 export const apiRfcBucketDocumentPathBuilder = (rfcNumber: number) => {
   return `/api/v1/rfc-html/${rfcNumber}.json` as const
 }

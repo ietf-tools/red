@@ -1,6 +1,6 @@
 // Feature logic for a user's notification subscriptions — the model an RFC page binds its
 // subscribe dialog to. The account page's own list and delete presentation lives in
-// ~/components/Account.vue, since nothing else needs it.
+// ~/components/AccountSubscriptions.vue, since nothing else needs it.
 //
 // Whether this reader subscribes to a document is read from ~/stores/reef, which receives every
 // per-reader answer per document in one response.

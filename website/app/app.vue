@@ -20,6 +20,7 @@ import {
   DEFAULT_FEATURE_FLAGS,
   type FeatureFlags
 } from '~/utilities/feature-flags'
+import { initReefNotifications } from '~/stores/reef-notifications'
 import { initReefSurveys } from '~/utilities/reef-surveys'
 
 const isFeatureFlagsModalVisible = ref(false)
@@ -32,4 +33,5 @@ provide(hasFeatureFlagsLoadedKey, hasFeatureFlagsLoaded)
 provide(hasFeatureFlagsToastBeenDismissedKey, hasFeatureFlagsToastBeenDismissed)
 onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
 onMounted(initReefSurveys)
+onMounted(initReefNotifications)
 </script>

@@ -28,6 +28,8 @@ export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
 export type MyDocuments = components['schemas']['MyDocuments']
 export type MyDocument = components['schemas']['MyDocument']
 export type MyDocumentSet = components['schemas']['MyDocumentSet']
+export type WebNotification = components['schemas']['WebNotification']
+export type PaginatedWebNotificationList = components['schemas']['PaginatedWebNotificationList']
 export type Popularity = components['schemas']['Popularity']
 export type PopularityEntry = components['schemas']['PopularityEntry']
 export type RatingAggregate = components['schemas']['RatingAggregate']
@@ -407,3 +409,20 @@ export const createSurveyResponse = (
 // Surveys currently open to the caller — the list Red uses for its survey popover.
 export const getOpenSurveys = (signal?: AbortSignal): Promise<OpenSurvey[]> =>
   reefFetch('/api/reef/surveys/open/', { auth: 'optional', signal })
+
+// --- Notifications (this reader's own feed) -----------------------------------------------
+
+// One page of the caller's own notification feed, newest first. `cursor` is `next` (or
+// `previous`) off a page already read, not one built by hand — it's an opaque cursor value, not an
+// offset, so ~/stores/reef-notifications is what keeps it rather than a caller trying to construct
+// one.
+export const getNotifications = (cursor?: string, signal?: AbortSignal): Promise<PaginatedWebNotificationList> =>
+  reefFetch(`/api/reef/notifications/${cursor === undefined ? '' : `?cursor=${encodeURIComponent(cursor)}`}`, {
+    auth: 'required',
+    signal
+  })
+
+// Mark one of the caller's own notifications read, returning the updated row. The spec calls it
+// idempotent, so a notification already read is a success rather than an error.
+export const markNotificationRead = (id: number, signal?: AbortSignal): Promise<WebNotification> =>
+  reefFetch(`/api/reef/notifications/${id}/read/`, { method: 'POST', auth: 'required', signal })

@@ -12,7 +12,8 @@ import {
   isOutsideNuxtLink,
   parseMaybeRfcLink,
   isHashLink,
-  subjectsPathBuilder
+  subjectsPathBuilder,
+  sanitiseUserProfileImage
 } from './url'
 import type { ValidHrefs } from './url'
 
@@ -178,4 +179,35 @@ test('parseMaybeRfcLink', () => {
 
 test('subjectsPathBuilder: path safe encoding', () => {
   expect(subjectsPathBuilder('http/2')).toBe('/subjects/http%2F2/')
+})
+
+test('sanitiseUserProfileImage: accepts https URLs, trimming surrounding whitespace', () => {
+  expect(sanitiseUserProfileImage('https://example.com/avatar.png')).toEqual('https://example.com/avatar.png')
+  expect(sanitiseUserProfileImage('  https://example.com/avatar.png  ')).toEqual('https://example.com/avatar.png')
+})
+
+test('sanitiseUserProfileImage: rejects missing/empty values', () => {
+  expect(sanitiseUserProfileImage(undefined)).toEqual(undefined)
+  expect(sanitiseUserProfileImage(null)).toEqual(undefined)
+  expect(sanitiseUserProfileImage('')).toEqual(undefined)
+  expect(sanitiseUserProfileImage('   ')).toEqual(undefined)
+})
+
+test('sanitiseUserProfileImage: rejects non-https schemes', () => {
+  expect(sanitiseUserProfileImage('http://example.com/avatar.png')).toEqual(undefined)
+  expect(sanitiseUserProfileImage('javascript:alert(1)')).toEqual(undefined)
+  expect(sanitiseUserProfileImage('data:image/png;base64,aGVsbG8=')).toEqual(undefined)
+  expect(sanitiseUserProfileImage('ftp://example.com/avatar.png')).toEqual(undefined)
+})
+
+test('sanitiseUserProfileImage: rejects unparseable URLs', () => {
+  expect(sanitiseUserProfileImage('not a url')).toEqual(undefined)
+})
+
+test('sanitiseUserProfileImage: rejects oversized values, accepts values right at the limit', () => {
+  const path = 'a'.repeat(2048 - 'https://example.com/'.length)
+  const atLimit = `https://example.com/${path}`
+  expect(atLimit.length).toEqual(2048)
+  expect(sanitiseUserProfileImage(atLimit)).toEqual(atLimit)
+  expect(sanitiseUserProfileImage(`${atLimit}a`)).toEqual(undefined)
 })
