@@ -1,14 +1,7 @@
-import {
-  AdvancedUISettings,
-  SurveysModal,
-  GraphicsBustInSilhouette,
-  GraphicsSearch,
-  GraphicsUserPreferences
-} from '#components'
+import { AdvancedUISettings, SurveysModal, GraphicsBustInSilhouette, GraphicsSearch } from '#components'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { htmlEscapeToText } from '~/utilities/html'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
 import {
@@ -92,7 +85,6 @@ export const useMenuData = (mode: Mode) => {
   const surveysStore = useReefSurveysStore()
   const surveysStoreRefs = storeToRefs(surveysStore)
   const { setIsUiSettingsModalOpen } = uiSettings
-  const featureFlags = useFeatureFlags()
   const authStore = useAuthStore()
   const { isAuthenticated, user } = storeToRefs(authStore)
 
@@ -246,86 +238,72 @@ export const useMenuData = (mode: Mode) => {
       }
     ]
 
-    // Personalisation account menu — gated on the `oidc` feature flag. Absent from SSR
-    // and first client paint (flags default false, hydrate onMounted), so it appears only
-    // after mount when the flag is on: no hydration mismatch, and the cached anonymous
-    // HTML never contains it, so we don't affect worker proxy cache with per user
-    // variations.
-    if (featureFlags.value.oidc) {
-      if (isAuthenticated.value) {
-        const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
-        const picture = user.value?.picture
-        const sanitisedPicture = sanitiseUserProfileImage(picture)
-        data.push({
-          label: displayName,
-          hideLabelDesktop: true,
-          icon: sanitisedPicture
-            ? () =>
-                h(UserImageNotificationsWrapper, [
-                  h('img', {
-                    src: sanitisedPicture,
-                    /***
-                     * blocks referrer leak via user provided image url
-                     */
-                    referrerpolicy: 'no-referrer',
-                    alt: `Picture of ${displayName}`,
-                    class: 'w-6 h-6 rounded-full'
-                  })
-                ])
-            : () =>
-                h(UserImageNotificationsWrapper, [
-                  h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' })
-                ]),
-          children: [
-            {
-              label: 'My Subscriptions and Sets',
-              href: MY_ACCOUNT_HOME_PATH,
-              icon: () => h(HeaderNavNotificationsIcon)
-            },
-            {
-              label: 'IETF Account',
-              href: IETF_ACCOUNT_URL_ORIGIN
-            },
-            {
-              label: 'Sign out',
-              click: () => {
-                void oidcLogout()
-              }
-            },
-            ...themeAndPreferencesChildren
-          ]
-        })
-      } else {
-        data.push({
-          label: 'User menu',
-          hideLabelDesktop: true,
-          icon: () => h(GraphicsBustInSilhouette, { class: 'w-6 h-6 rounded-full' }),
-          children: [
-            {
-              label: 'Create an account',
-              click: () => {
-                void oidcRegister()
-              },
-              highlightLink: true,
-              hideNewWindowIcon: true
-            },
-            {
-              label: 'Sign in',
-              click: () => {
-                void oidcLogin()
-              },
-              hideNewWindowIcon: true
-            },
-            ...themeAndPreferencesChildren
-          ]
-        })
-      }
+    if (isAuthenticated.value) {
+      const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
+      const picture = user.value?.picture
+      const sanitisedPicture = sanitiseUserProfileImage(picture)
+      data.push({
+        label: displayName,
+        hideLabelDesktop: true,
+        icon: sanitisedPicture
+          ? () =>
+              h(UserImageNotificationsWrapper, [
+                h('img', {
+                  src: sanitisedPicture,
+                  /***
+                   * blocks referrer leak via user provided image url
+                   */
+                  referrerpolicy: 'no-referrer',
+                  alt: `Picture of ${displayName}`,
+                  class: 'w-6 h-6 rounded-full'
+                })
+              ])
+          : () =>
+              h(UserImageNotificationsWrapper, [
+                h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-6 h-6 rounded-full' })
+              ]),
+        children: [
+          {
+            label: 'My Subscriptions and Sets',
+            href: MY_ACCOUNT_HOME_PATH,
+            icon: () => h(HeaderNavNotificationsIcon)
+          },
+          {
+            label: 'IETF Account',
+            href: IETF_ACCOUNT_URL_ORIGIN
+          },
+          {
+            label: 'Sign out',
+            click: () => {
+              void oidcLogout()
+            }
+          },
+          ...themeAndPreferencesChildren
+        ]
+      })
     } else {
       data.push({
-        icon: () => h(GraphicsUserPreferences),
-        label: 'Your preferences',
+        label: 'User menu',
         hideLabelDesktop: true,
-        children: themeAndPreferencesChildren
+        icon: () => h(GraphicsBustInSilhouette, { class: 'w-6 h-6 rounded-full' }),
+        children: [
+          {
+            label: 'Create an account',
+            click: () => {
+              void oidcRegister()
+            },
+            highlightLink: true,
+            hideNewWindowIcon: true
+          },
+          {
+            label: 'Sign in',
+            click: () => {
+              void oidcLogin()
+            },
+            hideNewWindowIcon: true
+          },
+          ...themeAndPreferencesChildren
+        ]
       })
     }
 

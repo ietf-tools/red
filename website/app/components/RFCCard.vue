@@ -61,7 +61,7 @@
       </div>
     </template>
     <template #end>
-      <ul v-if="featureFlags.oidc" class="flex w-fit flex-row -ml-1 -mb-1 gap-4 z-50 py-1 px-1">
+      <ul class="flex w-fit flex-row -ml-1 -mb-1 gap-4 z-50 py-1 px-1">
         <li><RFCCardSubscribe :rfc-number="props.rfc.number" :reef-stats="props.rfc.reefStats" /></li>
         <li><RFCCardSets :rfc-number="props.rfc.number" :reef-stats="props.rfc.reefStats" /></li>
       </ul>
@@ -75,7 +75,6 @@ import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import type { RfcCommon } from '~/utilities/rfc'
 import { parseHeadingLevel, type HeadingLevel } from '~/utilities/html'
 import { SPACE } from '~/utilities/strings'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 
 type Props = {
   rfc: RfcCommon
@@ -89,6 +88,4 @@ const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 const abstractHeadingLevel = computed(() => parseHeadingLevel((parseFloat(props.headingLevel) + 1).toString()))
 
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, true))
-
-const featureFlags = useFeatureFlags()
 </script>

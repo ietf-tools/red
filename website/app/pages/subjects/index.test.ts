@@ -23,11 +23,7 @@ import { SUBJECTS_PATH } from '~/utilities/url'
 // The layout is the header, footer and navigation around the page, none of which these assertions
 // are about.
 const STUBS = {
-  NuxtLayout: { template: '<div><slot /></div>' },
-  // The wall gating these routes on the `oidc` personalisation feature flag. It draws its slot only
-  // once the flags have been read from localStorage, which nothing here provides; its own
-  // behaviour is covered in components/FeatureFlagWall.test.ts.
-  FeatureFlagWall: { template: '<div><slot /></div>' }
+  NuxtLayout: { template: '<div><slot /></div>' }
 }
 
 // Hoisted with the mock that uses it, because vi.mock's factory runs before the module body.

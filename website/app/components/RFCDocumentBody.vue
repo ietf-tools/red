@@ -45,7 +45,6 @@
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
     <RFCDocumentReefStats
-      v-if="featureFlags.oidc"
       :rfc-number="rfcBucketHtmlDocument.rfc.number"
       :reef-stats="rfcBucketHtmlDocument.rfc.reefStats" />
 

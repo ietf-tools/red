@@ -1,134 +1,132 @@
 <template>
-  <FeatureFlagWall feature-flag-key="oidc">
-    <div class="min-h-[100vh]">
-      <NuxtLayout name="default">
-        <div class="container mx-auto pl-5 pr-3 pb-10">
-          <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
+  <div class="min-h-[100vh]">
+    <NuxtLayout name="default">
+      <div class="container mx-auto pl-5 pr-3 pb-10">
+        <Breadcrumbs :breadcrumb-items="breadcrumbItems" />
 
-          <Heading level="1" class="mt-4 mb-4">RFCs by Subject</Heading>
+        <Heading level="1" class="mt-4 mb-4">RFCs by Subject</Heading>
 
-          <div class="flex flex-col lg:flex-row lg:gap-5">
-            <div class="lg:flex-3">
-              <div v-if="subjectsStatus === 'pending'" class="mt-10 w-full text-center">
-                <GraphicsLoading class="inline-block w-16 h-16" />
+        <div class="flex flex-col lg:flex-row lg:gap-5">
+          <div class="lg:flex-3">
+            <div v-if="subjectsStatus === 'pending'" class="mt-10 w-full text-center">
+              <GraphicsLoading class="inline-block w-16 h-16" />
+            </div>
+
+            <Alert v-else-if="subjectsError" level="2" variant="warning" heading="Error">
+              <p class="pt-2">The list of subjects could not be loaded. Please try again.</p>
+              <p class="pt-2 text-sm">{{ httpErrorMessage(subjectsError) }}</p>
+            </Alert>
+
+            <template v-else-if="subjectCount > 0">
+              <div class="mt-2 mb-6 print:hidden">
+                <SubjectFilter
+                  v-model="filterQuery"
+                  :match-count="filteredSubjects.length"
+                  :total-count="subjectCount"
+                  :context-count="contextCount" />
               </div>
 
-              <Alert v-else-if="subjectsError" level="2" variant="warning" heading="Error">
-                <p class="pt-2">The list of subjects could not be loaded. Please try again.</p>
-                <p class="pt-2 text-sm">{{ httpErrorMessage(subjectsError) }}</p>
-              </Alert>
-
-              <template v-else-if="subjectCount > 0">
-                <div class="mt-2 mb-6 print:hidden">
-                  <SubjectFilter
-                    v-model="filterQuery"
-                    :match-count="filteredSubjects.length"
-                    :total-count="subjectCount"
-                    :context-count="contextCount" />
-                </div>
-
-                <template v-if="filteredSubjects.length > 0">
-                  <div class="flex flex-col md:flex-row">
-                    <nav aria-labelledby="subjects-toc-label" id="toc" class="sm:mr-8 md:mr-16 lg:mr-32 xl:mr-64">
-                      <p id="subjects-toc-label" class="sr-only">Table of Contents:</p>
-                      <ul class="block mb-6 text-pretty">
-                        <!-- Letters with no subjects are muted but stay legible rather than going merely faint.
-                     They are content, not an inactive control, so nothing exempts them from the full text
-                     contrast requirement, and the chip background is what distinguishes a link from a
-                     dead letter anyway. Nor are they hidden from assistive technology: aria-hidden would
-                     not help with contrast, which is about what is on screen, and it would drop the one
-                     thing they say, which is that the letter has nothing under it. Rendered as text
-                     rather than links they are already passed over by anyone browsing the page by link. -->
-                        <li
-                          :class="[
-                            'inline-flex items-center justify-center w-8 h-8 uppercase mr-2 mb-2 border-1',
-                            {
-                              'text-gray-600 dark:text-gray-400': subjectGroup.items.length === 0,
-                              'bg-white dark:bg-gray-800': subjectGroup.items.length > 0
-                            }
-                          ]"
-                          v-for="subjectGroup in subjectGroups"
-                          :key="subjectGroup.id">
-                          <a
-                            v-if="subjectGroup.items.length > 0"
-                            :href="`#${subjectGroup.id}`"
-                            class="no-underline w-full h-full flex items-center justify-center">
-                            {{ subjectGroup.title }}
-                          </a>
-                          <template v-else>{{ subjectGroup.title }}</template>
-                        </li>
-                      </ul>
-                    </nav>
-                    <div class="mt-0 justify-end print:hidden">
-                      <SubjectsIndexDensity v-model="subjectDensity" />
-                    </div>
-                  </div>
-                  <dl class="mt-2">
-                    <template v-for="subjectGroup in populatedSubjectGroups" :key="subjectGroup.id">
-                      <dt
-                        :id="subjectGroup.id"
-                        role="heading"
-                        aria-level="2"
-                        class="mb-0 bg-white dark:bg-gray-800 text-blue-950 dark:text-white text-2xl font-bold py-8 px-8">
-                        <GraphicsIETFMotif
-                          class="absolute -ml-4 -mt-4 print:hidden"
-                          :width="55"
-                          :height="55"
-                          :opacity="0.05" />
-                        {{ subjectGroup.title }}
-                      </dt>
-                      <dd class="mt-0">
-                        <div class="bg-white dark:bg-gray-800 px-8 pb-8">
-                          <SubjectTreeList
-                            :nodes="subjectGroup.items"
-                            :density="subjectDensity"
-                            :matches="matchesBySlug" />
-                        </div>
+              <template v-if="filteredSubjects.length > 0">
+                <div class="flex flex-col md:flex-row">
+                  <nav aria-labelledby="subjects-toc-label" id="toc" class="sm:mr-8 md:mr-16 lg:mr-32 xl:mr-64">
+                    <p id="subjects-toc-label" class="sr-only">Table of Contents:</p>
+                    <ul class="block mb-6 text-pretty">
+                      <!-- Letters with no subjects are muted but stay legible rather than going merely faint.
+                   They are content, not an inactive control, so nothing exempts them from the full text
+                   contrast requirement, and the chip background is what distinguishes a link from a
+                   dead letter anyway. Nor are they hidden from assistive technology: aria-hidden would
+                   not help with contrast, which is about what is on screen, and it would drop the one
+                   thing they say, which is that the letter has nothing under it. Rendered as text
+                   rather than links they are already passed over by anyone browsing the page by link. -->
+                      <li
+                        :class="[
+                          'inline-flex items-center justify-center w-8 h-8 uppercase mr-2 mb-2 border-1',
+                          {
+                            'text-gray-600 dark:text-gray-400': subjectGroup.items.length === 0,
+                            'bg-white dark:bg-gray-800': subjectGroup.items.length > 0
+                          }
+                        ]"
+                        v-for="subjectGroup in subjectGroups"
+                        :key="subjectGroup.id">
                         <a
-                          href="#toc"
-                          :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'inline-flex gap-1 items-center px-1 py-5 text-sm']">
-                          <GraphicsArrowUp />
-                          Back to top</a
-                        >
-                      </dd>
-                    </template>
-                  </dl>
-                </template>
-
-                <!-- Named rather than a bare "nothing found", because the filter is what emptied the page
-               and the reader needs to see which word did it. The box above still holds the query and
-               its clear button, so there is a way back from here. The table of contents and the
-               density control go with the list they describe, rather than standing over nothing. -->
-                <p v-else class="mt-2 bg-white dark:bg-gray-800 px-8 py-8">No subjects match “{{ filterQuery }}”.</p>
+                          v-if="subjectGroup.items.length > 0"
+                          :href="`#${subjectGroup.id}`"
+                          class="no-underline w-full h-full flex items-center justify-center">
+                          {{ subjectGroup.title }}
+                        </a>
+                        <template v-else>{{ subjectGroup.title }}</template>
+                      </li>
+                    </ul>
+                  </nav>
+                  <div class="mt-0 justify-end print:hidden">
+                    <SubjectsIndexDensity v-model="subjectDensity" />
+                  </div>
+                </div>
+                <dl class="mt-2">
+                  <template v-for="subjectGroup in populatedSubjectGroups" :key="subjectGroup.id">
+                    <dt
+                      :id="subjectGroup.id"
+                      role="heading"
+                      aria-level="2"
+                      class="mb-0 bg-white dark:bg-gray-800 text-blue-950 dark:text-white text-2xl font-bold py-8 px-8">
+                      <GraphicsIETFMotif
+                        class="absolute -ml-4 -mt-4 print:hidden"
+                        :width="55"
+                        :height="55"
+                        :opacity="0.05" />
+                      {{ subjectGroup.title }}
+                    </dt>
+                    <dd class="mt-0">
+                      <div class="bg-white dark:bg-gray-800 px-8 pb-8">
+                        <SubjectTreeList
+                          :nodes="subjectGroup.items"
+                          :density="subjectDensity"
+                          :matches="matchesBySlug" />
+                      </div>
+                      <a
+                        href="#toc"
+                        :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'inline-flex gap-1 items-center px-1 py-5 text-sm']">
+                        <GraphicsArrowUp />
+                        Back to top</a
+                      >
+                    </dd>
+                  </template>
+                </dl>
               </template>
 
-              <!-- The vocabulary is curated by staff, so an empty one is a stage it passes through rather
-             than a sign that anything is wrong. -->
-              <p v-else class="mt-4">No subjects have been published yet.</p>
-            </div>
-            <div class="lg:flex-1">
-              <div class="bg-blue-25 px-5 py-4">
-                <Heading level="2"> Are we missing a subject? </Heading>
-                <p class="mt-2 leading-[1.5]">
-                  If you can't find it by filtering this list, you can
-                  <Anchor :href="GITHUB_RFC_EDITOR_RFC_SUBJECT_TAGS_ISSUES_NEW_URL"
-                    >suggest a new subject on GitHub
-                    <GraphicsNewWindowIcon class="inline-block text-lg align-middle ml-1" /> </Anchor
-                  >. Please include the new subject, one or more RFCs you believe it applies to, and any other
-                  information that might be helpful. You may also send
-                  <a :href="RFC_EDITOR_MAILTO">
-                    <GraphicsMail class="inline-block text-lg align-middle ml-1" />
-                    an email</a
-                  >
-                  with this information.
-                </p>
-              </div>
+              <!-- Named rather than a bare "nothing found", because the filter is what emptied the page
+             and the reader needs to see which word did it. The box above still holds the query and
+             its clear button, so there is a way back from here. The table of contents and the
+             density control go with the list they describe, rather than standing over nothing. -->
+              <p v-else class="mt-2 bg-white dark:bg-gray-800 px-8 py-8">No subjects match “{{ filterQuery }}”.</p>
+            </template>
+
+            <!-- The vocabulary is curated by staff, so an empty one is a stage it passes through rather
+           than a sign that anything is wrong. -->
+            <p v-else class="mt-4">No subjects have been published yet.</p>
+          </div>
+          <div class="lg:flex-1">
+            <div class="bg-blue-25 px-5 py-4">
+              <Heading level="2"> Are we missing a subject? </Heading>
+              <p class="mt-2 leading-[1.5]">
+                If you can't find it by filtering this list, you can
+                <Anchor :href="GITHUB_RFC_EDITOR_RFC_SUBJECT_TAGS_ISSUES_NEW_URL"
+                  >suggest a new subject on GitHub
+                  <GraphicsNewWindowIcon class="inline-block text-lg align-middle ml-1" /> </Anchor
+                >. Please include the new subject, one or more RFCs you believe it applies to, and any other information
+                that might be helpful. You may also send
+                <a :href="RFC_EDITOR_MAILTO">
+                  <GraphicsMail class="inline-block text-lg align-middle ml-1" />
+                  an email</a
+                >
+                with this information.
+              </p>
             </div>
           </div>
         </div>
-      </NuxtLayout>
-    </div>
-  </FeatureFlagWall>
+      </div>
+    </NuxtLayout>
+  </div>
 </template>
 
 <script setup lang="ts">

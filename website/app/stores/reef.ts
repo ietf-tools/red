@@ -112,9 +112,6 @@ export const useReefStore = defineStore('reef', () => {
   /**
    * Whether there's anything to ask Reef for. Browser-only, because the access token lives in the
    * browser; signed-in-only, because every field is the caller's own.
-   *
-   * The oidc feature flag isn't checked here even though it gates the whole feature: signing in is
-   * only reachable when the flag is on, so an authenticated reader implies it.
    */
   const isReadable = computed(() => import.meta.client && authStore.isAuthenticated)
 

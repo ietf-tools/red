@@ -22,7 +22,7 @@
       </div>
     </div>
     <template #end>
-      <ul v-if="featureFlags.oidc" class="flex flex-row">
+      <ul class="flex flex-row">
         <li><RFCCardSubscribe :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
         <li><RFCCardSets :rfc-number="props.rfc.number" icon-only :reef-stats="props.rfc.reefStats" /></li>
       </ul>
@@ -36,7 +36,6 @@ import type { RfcCommon } from '~/utilities/rfc'
 import type { HeadingLevel } from '~/utilities/html'
 import { NONBREAKING_SPACE } from '~/utilities/strings'
 import { formatTitleAsVNode, hasSubseries } from '~/utilities/rfc-title'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 
 type Props = {
   rfc: RfcCommon
@@ -46,6 +45,4 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), { headingLevel: '1' })
 
 const formattedTitleWithSuffix = computed(() => formatTitleAsVNode(`rfc${props.rfc.number}`, hasSubseries(props.rfc)))
-
-const featureFlags = useFeatureFlags()
 </script>

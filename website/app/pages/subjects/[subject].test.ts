@@ -12,7 +12,6 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
 import { createError } from 'h3'
-import { ref } from 'vue'
 import SubjectPage from './[subject].vue'
 import type { RetiredSubject, SubjectAlias, SubjectDetail } from '~/utilities/reef'
 import {
@@ -23,15 +22,10 @@ import {
   subjectAliasFixture,
   subjectDetailFixture
 } from '~/utilities/reef-fixtures/subjects'
-import { DEFAULT_FEATURE_FLAGS, featureFlagsKey } from '~/utilities/feature-flags'
 import { NONBREAKING_SPACE } from '~/utilities/strings'
 
 const STUBS = {
-  NuxtLayout: { template: '<div><slot /></div>' },
-  // The wall gating these routes on the `oidc` personalisation feature flag. It draws its slot only
-  // once the flags have been read from localStorage, which nothing here provides; its own
-  // behaviour is covered in components/FeatureFlagWall.test.ts.
-  FeatureFlagWall: { template: '<div><slot /></div>' }
+  NuxtLayout: { template: '<div><slot /></div>' }
 }
 
 // A page left mounted goes on rendering as the next test clears the data behind it, and a page that
@@ -131,13 +125,7 @@ const reefFails = (_slug: string, statusCode: number) => {
 const renderPage = (slug: string) =>
   mountSuspended(SubjectPage, {
     route: `/subjects/${slug}/`,
-    global: {
-      stubs: STUBS,
-      // RFCCard, rendered for every document with a resolved document_meta entry, reads its own
-      // feature flags rather than receiving them as a prop — normally provided above app.vue,
-      // which isn't in this page's own mount.
-      provide: { [featureFlagsKey]: ref(DEFAULT_FEATURE_FLAGS) }
-    }
+    global: { stubs: STUBS }
   })
 
 // By href prefix rather than by tag or position, so the breadcrumb's own links — inside a `ul` of

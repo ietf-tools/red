@@ -164,7 +164,6 @@ import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
 import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 
 const defaultUiState: UiState = {
   toggles: { searchObsoleted: true, searchMetadataOnly: false }
@@ -173,7 +172,6 @@ const defaultUiState: UiState = {
 const searchStore = useSearchStore()
 const host = useTypesenseHost()
 const apiKey = useTypesenseApiKey()
-const featureFlags = useFeatureFlags()
 
 const searchBoxDescriptionId = useId()
 
@@ -202,19 +200,14 @@ const PERSISTENT_FACETS = [
   'publicationDate'
 ]
 
-// "Most popular" is gated on the `oidc` feature flag alongside the rest of the
-// personalisation work it's part of. Absent from SSR and first client paint (flags
-// default false, hydrate onMounted), so it appears only after mount when the flag is on.
-const SORT_ITEMS = computed(() => [
+const SORT_ITEMS = [
   { label: 'Relevance', value: '' },
   { label: 'Newest first', value: 'publicationDate:desc' },
   { label: 'Oldest first', value: 'publicationDate:asc' },
   { label: 'RFC number (ascending)', value: 'rfcNumber:asc' },
   { label: 'RFC number (descending)', value: 'rfcNumber:desc' },
-  // popularity is Reef's score from 0 to 1, higher is more popular, so descending order.
-  // Results with no popularity sort to the end - use the _text_match:desc to order these.
-  ...(featureFlags.value.oidc ? [{ label: 'Most popular', value: 'popularity:desc,_text_match:desc' }] : [])
-])
+  { label: 'Most popular', value: 'popularityRanking:asc,_text_match:desc' }
+]
 
 const PER_PAGE_ITEMS = [
   { label: '10 per page', value: 10, default: true },

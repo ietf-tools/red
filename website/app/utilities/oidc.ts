@@ -7,7 +7,7 @@
 // The core (getUserManager / oidcRestore / oidcLogin / oidcRegister / oidcLogout /
 // onOidcSessionEnded / getAccessToken) is
 // framework-agnostic. useOidcSession() is a thin Vue composable that wires that core to
-// runtimeConfig, the feature flag and the auth store, so components only call
+// runtimeConfig and the auth store, so components only call
 // useOidcSession(). If this file grows, split it into a utilities/oidc/ directory.
 
 import type { User, UserManager } from 'oidc-client-ts'
@@ -15,7 +15,6 @@ import { z } from 'zod'
 import { useAuthStore } from '~/stores/auth'
 import type { Notification } from '~/stores/notifications'
 import { useNotificationsStore } from '~/stores/notifications'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 
 export type OidcConfig = {
   authority: string
@@ -214,8 +213,8 @@ let sessionEndedRegistered = false
 // Registers the callback to run whenever the local session ends without us asking — a
 // refresh token that the identity provider rejects, or background renewal giving up. Both
 // funnel through removeUser(), which raises userUnloaded, so one listener covers every
-// route. Idempotent: only the first call registers, so a feature flag toggling back on
-// doesn't stack duplicate listeners.
+// route. Idempotent: only the first call registers, so a remount doesn't stack duplicate
+// listeners.
 export const onOidcSessionEnded = async (config: OidcConfig, onEnded: () => void): Promise<void> => {
   if (sessionEndedRegistered) {
     return
@@ -283,64 +282,53 @@ const signedInNotification = (user: OidcUser): Notification => {
 }
 
 // Vue composable: call once from a component that's always mounted (Header.vue). Restores
-// the OIDC session (or completes a login callback) on the client when the `oidc` feature
-// flag is on, and feeds the reactive auth store. Gated + onMounted so SSR stays anonymous;
-// reactive + immediate so it fires whether the flag is already set or toggled on later.
+// the OIDC session (or completes a login callback) on the client, and feeds the reactive
+// auth store. onMounted so SSR stays anonymous.
 export const useOidcSession = (): void => {
   const { public: config } = useRuntimeConfig()
-  const featureFlags = useFeatureFlags()
   const authStore = useAuthStore()
   const notificationsStore = useNotificationsStore()
 
   onMounted(() => {
-    watch(
-      () => featureFlags.value.oidc,
-      (enabled) => {
-        if (!enabled) {
+    const oidcConfig = {
+      authority: config.oidcIssuerUri,
+      clientId: config.oidcClientId,
+      redirectUri: window.location.origin + config.oidcHomeUrl,
+      scopes: config.oidcScopes.split(' ').filter(Boolean),
+      enrollmentUrl: config.oidcEnrollmentUrl
+    }
+    void onOidcSessionEnded(oidcConfig, () => {
+      // Whatever this tab holds of the reader's own ratings, subscriptions and sets goes with
+      // their session: ~/stores/reef watches the signed-in subject and empties itself when it
+      // changes, so clearing the user here is the whole of it. This runs on every way a session
+      // can end, including an explicit sign-out — signoutRedirect discards the stored user
+      // before it navigates, which is what raises the event this listens to.
+      authStore.clearUser()
+    })
+    void oidcRestore(oidcConfig)
+      .then(({ user, isFreshSignIn, returnTo }) => {
+        authStore.hasCheckedAuth = true
+        if (!user) {
           return
         }
-        const oidcConfig = {
-          authority: config.oidcIssuerUri,
-          clientId: config.oidcClientId,
-          redirectUri: window.location.origin + config.oidcHomeUrl,
-          scopes: config.oidcScopes.split(' ').filter(Boolean),
-          enrollmentUrl: config.oidcEnrollmentUrl
+        authStore.setUser(user)
+        if (!isFreshSignIn) {
+          return
         }
-        void onOidcSessionEnded(oidcConfig, () => {
-          // Whatever this tab holds of the reader's own ratings, subscriptions and sets goes with
-          // their session: ~/stores/reef watches the signed-in subject and empties itself when it
-          // changes, so clearing the user here is the whole of it. This runs on every way a session
-          // can end, including an explicit sign-out — signoutRedirect discards the stored user
-          // before it navigates, which is what raises the event this listens to.
-          authStore.clearUser()
-        })
-        void oidcRestore(oidcConfig)
-          .then(({ user, isFreshSignIn, returnTo }) => {
-            authStore.hasCheckedAuth = true
-            if (!user) {
-              return
-            }
-            authStore.setUser(user)
-            if (!isFreshSignIn) {
-              return
-            }
-            notificationsStore.add(signedInNotification(user))
-            if (returnTo) {
-              // A client-side route rather than a location change, so the stores — and so
-              // the toast queued just above — survive the hop back to the original page.
-              void navigateTo(returnTo, { replace: true })
-            }
-          })
-          .catch((error) => {
-            console.error('[oidc] restore failed', error)
-            // Still an answer, and the only one anything downstream can act on: the restore was
-            // attempted and this tab has no session. Left unset, AuthWall — which waits for this
-            // check before it renders either way — would sit at its spinner for the life of the
-            // page because the provider was unreachable.
-            authStore.hasCheckedAuth = true
-          })
-      },
-      { immediate: true }
-    )
+        notificationsStore.add(signedInNotification(user))
+        if (returnTo) {
+          // A client-side route rather than a location change, so the stores — and so
+          // the toast queued just above — survive the hop back to the original page.
+          void navigateTo(returnTo, { replace: true })
+        }
+      })
+      .catch((error) => {
+        console.error('[oidc] restore failed', error)
+        // Still an answer, and the only one anything downstream can act on: the restore was
+        // attempted and this tab has no session. Left unset, AuthWall — which waits for this
+        // check before it renders either way — would sit at its spinner for the life of the
+        // page because the provider was unreachable.
+        authStore.hasCheckedAuth = true
+      })
   })
 }

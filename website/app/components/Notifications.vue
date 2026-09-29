@@ -48,7 +48,6 @@
 
 <script setup lang="ts">
 import { ToastAction, ToastClose, ToastDescription, ToastProvider, ToastRoot, ToastTitle, ToastViewport } from 'reka-ui'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useNotificationsStore, type NotificationPosition } from '~/stores/notifications'
 
 const DEFAULT_TOAST_DURATION_MS = 10_000
@@ -63,8 +62,6 @@ const VIEWPORT_LABELS: Record<NotificationPosition, string> = {
   bottom: 'Site announcements ({hotkey})'
 }
 
-const featureFlags = useFeatureFlags()
-
 const notificationsStore = useNotificationsStore()
 
 const { visibleNotifications } = storeToRefs(notificationsStore)
@@ -77,7 +74,5 @@ const notificationsAt = (position: NotificationPosition) =>
 // the same hotkey to focus itself, so two of them at once leaves whichever handles it first
 // unreachable — keeping the empty one out of the DOM confines that to the rare moment when
 // both corners are genuinely occupied, and avoids a hotkey that lands on nothing.
-const activePositions = computed(() =>
-  featureFlags.value.oidc ? TOAST_POSITIONS.filter((position) => notificationsAt(position).length > 0) : []
-)
+const activePositions = computed(() => TOAST_POSITIONS.filter((position) => notificationsAt(position).length > 0))
 </script>
