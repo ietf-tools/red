@@ -4,9 +4,18 @@
       <DialogRoot>
         <DialogTrigger
           type="button"
-          class="text-pretty flex flex-row gap-2 cursor-pointer px-2 md:px-3 py-1 md:py-2 font-bold text-blue-300 border-[2px] border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-500 dark:focus:bg-blue-500">
-          <GraphicsAlert class="hidden lg:inline-block text-blue-300 dark:text-blue-100 w-[24px] h-[24px]" />
-          Subscribe to new RFCs
+          :class="[
+            'text-pretty flex flex-row gap-2 cursor-pointer px-2 md:px-3 py-1 md:py-2 font-bold border-[2px]',
+            {
+              'text-white bg-blue-300 border-blue-300 dark:bg-blue-500 dark:border-blue-200 hover:bg-blue-400 focus:bg-blue-400 dark:hover:bg-blue-600 dark:focus:bg-blue-600':
+                isSubscribedToAll,
+              'text-blue-300 border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-500 dark:focus:bg-blue-500':
+                !isSubscribedToAll
+            }
+          ]">
+          <GraphicsCheckmark v-if="isSubscribedToAll" class="hidden lg:inline-block text-white w-[24px] h-[24px]" />
+          <GraphicsAlert v-else class="hidden lg:inline-block text-blue-300 dark:text-blue-100 w-[24px] h-[24px]" />
+          {{ isSubscribedToAll ? 'Subscribed to new RFCs' : 'Subscribe to new RFCs' }}
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
@@ -133,4 +142,8 @@ const { user } = storeToRefs(useAuthStore())
 // fail with a 401. Ask for a sign-in instead of letting the checkbox look interactive and then
 // silently lose it.
 const isAuthenticated = computed(() => user.value !== undefined)
+
+// Only true once signed in and the checkbox model reflects a loaded subscription, so the trigger
+// doesn't flash the subscribed style for a signed-out reader or before the real status has arrived.
+const isSubscribedToAll = computed(() => isAuthenticated.value && !isLoading.value && isSubscribed.value)
 </script>
