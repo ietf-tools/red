@@ -28,8 +28,8 @@
         <!-- That a set is public is said here rather than left to be discovered: the API carries no
            visibility, so it isn't something the reader chooses. -->
         <DialogDescription class="text-sm">
-          RFC {{ props.rfcNumber }} will be added to the new set. Sets are public: anyone with the link can see the
-          title and what's in it.
+          RFC {{ props.rfcNumber }} will be added to the new set. This content is public, do not include any private
+          information. Inappropriate data may be removed.
         </DialogDescription>
 
         <!-- A real form, so Enter submits and the browser's own required/maxlength handling
