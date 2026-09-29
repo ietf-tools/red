@@ -1,4 +1,4 @@
-// Keyboard behaviour of the "Your preferences" theme radio group in the header
+// Keyboard behaviour of the "User menu" theme radio group in the header
 // nav, on both the desktop (NavigationMenu) and mobile (Dialog + Accordion)
 // renderers.
 //
@@ -34,8 +34,8 @@ describe('header preferences keyboard nav', async () => {
       await page.setViewportSize({ width: 1400, height: 900 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
-      // Open the "Your preferences" dropdown (the mobile trigger is hidden here).
-      await page.getByRole('button', { name: 'Your preferences' }).click()
+      // Open the "User menu" dropdown (the mobile trigger is hidden here).
+      await page.getByRole('button', { name: 'User menu' }).click()
 
       const radios = page.getByRole('radio')
       await radios.first().waitFor({ state: 'visible' })
@@ -83,9 +83,9 @@ describe('header preferences keyboard nav', async () => {
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
       await page.getByRole('button', { name: 'Menu' }).click()
-      const preferencesHeader = page.getByRole('button', { name: 'Your preferences' })
+      const preferencesHeader = page.getByRole('button', { name: 'User menu' })
       await preferencesHeader.waitFor({ state: 'visible' })
-      // Open the mobile menu dialog and expand "Your preferences".
+      // Open the mobile menu dialog and expand "User menu".
       await preferencesHeader.click()
 
       const radios = page.getByRole('radio')
@@ -188,7 +188,7 @@ describe('header preferences keyboard nav', async () => {
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
       await page.getByRole('button', { name: 'Menu' }).click()
-      const preferencesHeader = page.getByRole('button', { name: 'Your preferences' })
+      const preferencesHeader = page.getByRole('button', { name: 'User menu' })
       await preferencesHeader.waitFor({ state: 'visible' })
       await preferencesHeader.click()
 
