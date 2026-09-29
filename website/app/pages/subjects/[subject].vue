@@ -116,8 +116,9 @@
                   <div class="mt-3 leading-[1.5] text-sm">
                     <p>Get notified when:</p>
                     <ul class="list-disc ml-5 mt-1">
-                      <li class="mb-2">The RFC becomes updated and/or obsoleted by another RFC</li>
-                      <li>The RFC's status is changed</li>
+                      <li class="mb-2">RFC changes to status, obsoleted by, updates, updated by, or subseries.</li>
+                      <li class="mb-2">New RFC added to this subject or below</li>
+                      <li>The subject was merged into another.</li>
                     </ul>
                   </div>
                 </div>
