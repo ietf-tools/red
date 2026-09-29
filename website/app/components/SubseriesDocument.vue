@@ -2,7 +2,17 @@
   <BodyLayoutDocument>
     <template #sidebar>
       <div v-if="subseriesDocument" class="lg:min-w-[300px] px-5 py-3">
-        <ReefSubscribeToSubseries :subseries-id="props.subseriesId" />
+        <!-- <div class="bg-blue-25 px-5 py-4 mb-6">
+          <Heading level="2"> Subscribe to <SubseriesTitle :series="props.subseriesId" /> </Heading>
+          <ReefSubscribeToSubseries :subseries-id="props.subseriesId" />
+          <div class="mt-3 leading-[1.5] text-sm">
+            <p>Get notified when:</p>
+            <ul class="list-disc ml-5 mt-1">
+              <li class="mb-2">The collection changes.</li>
+              <li>A RFC within the collection changes metadata</li>
+            </ul>
+          </div>
+        </div> -->
 
         <p v-if="subseriesDocument.type === 'bcp'">
           BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs
