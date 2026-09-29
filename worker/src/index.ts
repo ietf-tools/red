@@ -275,7 +275,7 @@ router
     return staleWhileRevalidate(
       req,
       ctx,
-      { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 3000 },
+      { maxAgeSeconds: 600, additionalStaleWhileRevalidateSeconds: 600 },
       { cache: caches.default, fetch: (request) => fetch(request), now: () => Date.now() }
     )
   })
