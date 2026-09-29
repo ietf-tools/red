@@ -13,7 +13,7 @@
         </TableRow>
       </thead>
       <tbody>
-        <TableRow v-for="survey in surveysStore.surveys" :key="survey.slug">
+        <TableRow v-for="survey in surveys" :key="survey.slug">
           <TableCell>
             <Anchor :href="survey.url"
               >{{ survey.title }}
@@ -34,11 +34,24 @@
 <script setup lang="ts">
 import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { useNotificationsStore } from '~/stores/notifications'
+import { withReturnTo } from '~/utilities/reef-surveys'
 
 const surveysStore = useReefSurveysStore()
 const notificationsStore = useNotificationsStore()
 
 const isDismissed = (slug: string): boolean => notificationsStore.dismissedIds.includes(slug)
+
+const surveys = computed(() =>
+  surveysStore.surveys.map((survey) => {
+    let { url } = survey
+    url = withReturnTo(url)
+
+    return {
+      ...survey,
+      url
+    }
+  })
+)
 
 onMounted(() => {
   surveysStore.load().catch((error: unknown) => console.error('Unable to load surveys.', error))

@@ -12,7 +12,7 @@ import { parseSeriesId, type SeriesId } from './rfc'
 const LOAD_SURVEYS_AFTER_MS = 5_000
 
 // Reef reads `returnTo` off the survey link and sends the taker back there once they're done.
-const withReturnTo = (surveyUrl: string): string => {
+export const withReturnTo = (surveyUrl: string): string => {
   const url = new URL(surveyUrl)
   url.searchParams.set('returnTo', `${window.location.pathname}${window.location.search}`)
   return url.href

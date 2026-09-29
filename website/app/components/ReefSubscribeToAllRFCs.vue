@@ -7,9 +7,9 @@
           :class="[
             'text-pretty flex flex-row gap-2 cursor-pointer px-2 md:px-3 py-1 md:py-2 font-bold border-[2px]',
             {
-              'text-white bg-blue-300 border-blue-300 dark:bg-blue-500 dark:border-blue-200 hover:bg-blue-400 focus:bg-blue-400 dark:hover:bg-blue-600 dark:focus:bg-blue-600':
+              'text-white bg-blue-300 border-blue-300 dark:bg-blue-600 dark:border-blue-600 hover:bg-blue-400 focus:bg-blue-400 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:hover:border-blue-700 dark:focus:border-blue-700':
                 isSubscribedToAll,
-              'text-blue-300 border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-500 dark:focus:bg-blue-500':
+              'text-blue-300 dark:text-blue-100 border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-950 dark:focus:bg-blue-950':
                 !isSubscribedToAll
             }
           ]">
