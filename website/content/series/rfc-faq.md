@@ -9,7 +9,7 @@ showToc: true
 There are “Subscribe” buttons across the site that allow you to receive notifications about the RFCs and subjects you care about. You must be logged in to subscribe.
 
 - Subscription notifications are available on [your account](/my/) page and via email digests.
-- Unsubscribe from all email notifications at once by unchecking the “Send email digest?“ box on your account page.
+- To receive email digests of your notifications, check the “Send email digest?“ box on your account page. Uncheck this box to unsubscribe from these emails.
 - Cancel individual subscriptions by clicking the appropriate “Unsubscribe” button on your account page.
 
 **Subscribe to individual RFCs:**
@@ -19,12 +19,17 @@ There are “Subscribe” buttons across the site that allow you to receive noti
 
 **Subscribe to subjects:**
 
-- Receive notifications when an RFC is published on your chosen subject.
+- Receive notifications when an RFC is published on your chosen subject, or when RFCs tagged with that subject are updated, obsoleted, etc.
 - Subscribe in the right side margin on any subject page. Browse the [subjects](/subjects/) or follow the subject links on RFCs to find the topics you’re interested in.
+
+**Subscribe to Subseries (STD, BCP, FYI)**
+
+- Receive notifications when an RFC is added to or removed from a subseries, or when RFCs in the subseries are updated, obsoleted, etc.
+- Subscribe in the right side margin on any subseries page.
 
 **Subscribe to all new RFCs:**
 
-- Receive notifications about the publication of all new RFCs as they are released.
+- Receive notifications about the publication of all new RFCs when they are released.
 - Subscribe by clicking the “Subscribe to new RFCs” button on the home page.
 
 Please note that if you have joined the [`rfc-dist` mailing list](https://mailman3.rfc-editor.org/mailman3/lists/rfc-dist.rfc-editor.org/), to stop receiving these emails you will need to unsubscribe from that mailing list page as it is maintained separately from this site. You may also find new RFCs using an [RSS feed](/rfcrss.xml), an [Atom feed](/rfcatom.xml), via [search](/search/?sort=publicationDate:desc), or by [browsing all RFCs](/rfc-index/).
@@ -35,8 +40,8 @@ Sets allow you to create lists of RFCs you might want to return to later or shar
 
 - You must be logged in to create or manage a set.
 - Add an RFC to a set anywhere you see the “Add to set” button.
-- View your set page in [your account](/my/) by clicking on the title of the set.
-- Share your set with others by sending them the URL of the set page.
+- View a set page in [your account](/my/) by clicking on the title of the set.
+- Share a set with others by sending them the URL of the set page.
 - Remember that this content is public, so do not include any private information when creating a set. Inappropriate data may be removed.
 
 ## Why didn’t the numbers change as soon as I rated an RFC? {#stats}
