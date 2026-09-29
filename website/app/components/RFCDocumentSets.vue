@@ -46,8 +46,8 @@
                     :aria-label="`Sets holding RFC ${props.rfcNumber}`"
                     class="mx-auto max-w-[300px] flex flex-col gap-1 pb-2">
                     <p class="text-sm italic">
-                      Tick a set to add <Component :is="formattedTitle" /> to it.<br />
-                      Untick to remove it.
+                      Check a set to add <Component :is="formattedTitle" /> to it.<br />
+                      Uncheck to remove it.
                     </p>
                     <template v-for="set in props.sets" :key="set.id">
                       <CheckboxRoot

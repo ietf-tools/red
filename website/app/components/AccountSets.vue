@@ -102,7 +102,7 @@
                           Cancel
                         </DialogClose>
                         <button
-                          type="button"
+                          type="submit"
                           :disabled="editSaving"
                           class="font-bold bg-blue-600 text-white px-3 py-2 rounded cursor-pointer disabled:opacity-60 disabled:cursor-default">
                           {{ editSaving ? 'Saving…' : 'Save' }}
