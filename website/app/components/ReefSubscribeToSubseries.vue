@@ -8,14 +8,16 @@
             'text-pretty flex flex-row gap-2 cursor-pointer mt-2 px-1 md:px-2 py-1 md:py-1 font-bold border-[2px]',
             {
               'text-white bg-blue-300 border-blue-300 dark:bg-blue-600 dark:border-blue-600 hover:bg-blue-400 focus:bg-blue-400 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:hover:border-blue-700 dark:focus:border-blue-700':
-                isSubscribedToSubject,
+                isSubscribedToSubseries,
               'text-blue-300 dark:text-blue-100 border-blue-300 dark:border-blue-200 hover:bg-blue-25 focus:bg-blue-25 dark:hover:bg-blue-950 dark:focus:bg-blue-950':
-                !isSubscribedToSubject
+                !isSubscribedToSubseries
             }
           ]">
-          <GraphicsCheckmark v-if="isSubscribedToSubject" class="hidden sm:inline-block text-white w-[24px] h-[24px]" />
+          <GraphicsCheckmark
+            v-if="isSubscribedToSubseries"
+            class="hidden sm:inline-block text-white w-[24px] h-[24px]" />
           <GraphicsAlert v-else class="hidden lg:inline-block text-blue-300 dark:text-blue-100 w-[24px] h-[24px]" />
-          {{ isSubscribedToSubject ? 'Subscribed' : 'Subscribe' }}
+          {{ isSubscribedToSubseries ? 'Subscribed' : 'Subscribe' }}
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
@@ -32,7 +34,7 @@
             ]">
             <DialogTitle class="text-lg font-semibold text-center pb-3">
               <template v-if="!isAuthenticated">You need an account to</template>
-              <template v-else>{{ props.subject.name }} subscription</template>
+              <template v-else>{{ subseriesLabel }} subscription</template>
             </DialogTitle>
 
             <DialogDescription class="text-sm pt-3">
@@ -43,7 +45,7 @@
                    on every tick, which this avoids by only ever holding this one status string. -->
                 <span class="sr-only" aria-live="polite" aria-atomic="true">{{ loadAnnouncement }}</span>
 
-                <p v-if="status.type === 'loading'" class="flex items-center gap-2 py-3">
+                <p v-if="isLoading" class="flex items-center gap-2 py-3">
                   <GraphicsLoading class="inline-block w-5 h-5" />
                   Loading...
                 </p>
@@ -57,7 +59,7 @@
                         <GraphicsCheckmark class="block w-[14px] h-[14px]" />
                       </CheckboxIndicator>
                     </span>
-                    <span>Subscribe to {{ props.subject.name }}</span>
+                    <span>Subscribe to {{ subseriesLabel }}</span>
                   </CheckboxRoot>
                 </template>
 
@@ -91,7 +93,7 @@
 
 <script setup lang="ts">
 /**
- * The subscribe dialog for one subject.
+ * The subscribe dialog for one subseries.
  */
 import {
   CheckboxIndicator,
@@ -105,21 +107,21 @@ import {
   DialogTitle,
   DialogTrigger
 } from 'reka-ui'
-import { useUserSubjectSubscription } from '~/utilities/reef-subscriptions'
-import type { PrecomputedSubjectDetail } from '~~/generated/reef-api-zod'
+import { useUserRFCSubscription } from '~/utilities/reef-subscriptions'
+import type { SeriesId } from '~/utilities/rfc'
 
 type Props = {
-  subject: PrecomputedSubjectDetail
+  subseriesId: SeriesId
 }
 
 const props = defineProps<Props>()
 
-const { isSubscribed, status } = useUserSubjectSubscription(
-  () => props.subject.id,
-  () => props.subject.name
-)
+const subseriesLabel = computed(() => `${props.subseriesId.type.toUpperCase()} ${props.subseriesId.number}`)
 
-const isLoading = computed(() => status.value.type === 'loading')
+const { isSubscribed, status } = useUserRFCSubscription(() => props.subseriesId)
+
+// `unknown` is a signed-in reader whose answer hasn't arrived yet, which reads the same as loading.
+const isLoading = computed(() => status.value === 'unknown' || status.value === 'loading')
 
 // Whether a load has been seen in flight, so `loadAnnouncement` only speaks up once loading
 // actually happened. Without it, a dialog opened after the load already settled — the common case,
@@ -155,5 +157,5 @@ const isAuthenticated = computed(() => user.value !== undefined)
 
 // Only true once signed in and the checkbox model reflects a loaded subscription, so the trigger
 // doesn't flash the subscribed style for a signed-out reader or before the real status has arrived.
-const isSubscribedToSubject = computed(() => isAuthenticated.value && !isLoading.value && isSubscribed.value)
+const isSubscribedToSubseries = computed(() => isAuthenticated.value && !isLoading.value && isSubscribed.value)
 </script>

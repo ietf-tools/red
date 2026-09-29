@@ -2,6 +2,8 @@
   <BodyLayoutDocument>
     <template #sidebar>
       <div v-if="subseriesDocument" class="lg:min-w-[300px] px-5 py-3">
+        <ReefSubscribeToSubseries :subseries-id="props.subseriesId" />
+
         <p v-if="subseriesDocument.type === 'bcp'">
           BCPs are stable identifiers for Best Current Practices. A BCP may consist of a single RFC or a group of RFCs
           related to a specific IETF process or recommended guidelines. The collection may become empty as the BCP
@@ -93,8 +95,9 @@ const { data: subseriesDocument, error: subseriesDocumentError } = await useAsyn
   }
 )
 
-// This reader's own state for every RFC the subseries holds, in one call rather than one per card.
-useReefDocuments(() => subseriesDocument.value?.contents.map(({ number }) => number) ?? [])
+// This reader's own state for the subseries itself and every RFC it holds, in one call rather than
+// one per card.
+useReefDocuments(() => [props.subseriesId, ...(subseriesDocument.value?.contents.map(({ number }) => number) ?? [])])
 
 if (subseriesDocumentError.value) {
   console.error(subseriesDocumentError.value)

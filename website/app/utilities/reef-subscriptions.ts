@@ -22,11 +22,13 @@ import { useReefStore, type ReefDocumentStatus } from '~/stores/reef'
 import { createSubscription, deleteSubscription, getSubscriptions } from '~/utilities/reef'
 import { reefDocumentKey, useReefDocument } from '~/utilities/reef-documents'
 import type { LoadingStatus } from '~/utilities/loading-status'
+import type { SeriesId } from '~/utilities/rfc'
 
 // --- Subscribing to one document ----------------------------------------------------------
 //
-// The `rfc` kind — "Changes to one specific RFC" — is the only kind an RFC page deals in, and
-// the only one Red creates. Everything below is about that one kind.
+// The `rfc` kind — "Changes to one specific RFC" — is the only kind a document page deals in, and
+// the only one Red creates. Reef takes any canonical document id under it, so a BCP, STD or FYI
+// subseries is subscribed to the same way as an RFC. Everything below is about that one kind.
 
 // The spec types `params` as a free-form object, so the shape per kind isn't something the
 // generated types can check. For the `rfc` kind it's the canonical document id under `rfc`, and
@@ -40,14 +42,17 @@ export const rfcSubscriptionParams = (doc: string): { rfc: string } => ({ rfc: d
 // aria-checked. A failure is different — the checkbox is put back the way it was, so without this
 // the only visible result of pressing it would be nothing happening.
 
-export const subscriptionFailedNotification = (rfcNumber: number, wasSubscribing: boolean): Notification => ({
+const documentLabel = (document: SeriesId | number): string =>
+  typeof document === 'number' ? `RFC ${document}` : `${document.type.toUpperCase()} ${document.number}`
+
+export const subscriptionFailedNotification = (document: SeriesId | number, wasSubscribing: boolean): Notification => ({
   // One id per document whichever way the toggle was going, so a retry replaces the previous
   // message rather than stacking a second toast on top of it.
-  id: `rfc-subscription.${reefDocumentKey(rfcNumber)}`,
+  id: `rfc-subscription.${reefDocumentKey(document)}`,
   title: wasSubscribing ? 'Unable to subscribe' : 'Unable to unsubscribe',
   description: wasSubscribing
-    ? `You have not been subscribed to RFC ${rfcNumber}. Please try again.`
-    : `You are still subscribed to RFC ${rfcNumber}. Please try again.`,
+    ? `You have not been subscribed to ${documentLabel(document)}. Please try again.`
+    : `You are still subscribed to ${documentLabel(document)}. Please try again.`,
   delayMs: 0,
   position: 'top',
   // A direct result of the reader pressing the checkbox, so it's announced rather than left to be
@@ -63,10 +68,10 @@ export const subscriptionFailedNotification = (rfcNumber: number, wasSubscribing
  * between the tick and the response the reader is subscribed as far as the page is concerned, and
  * unsubscribing is what needs the id.
  */
-export const writeUserRFCSubscription = async (rfcNumber: number, isSubscribed: boolean): Promise<void> => {
+export const writeUserRFCSubscription = async (document: SeriesId | number, isSubscribed: boolean): Promise<void> => {
   const reefStore = useReefStore()
   const notificationsStore = useNotificationsStore()
-  const doc = reefDocumentKey(rfcNumber)
+  const doc = reefDocumentKey(document)
 
   const previous = reefStore.userDocuments[doc]
   if (isSubscribed === (previous?.isSubscribed ?? false)) {
@@ -99,8 +104,8 @@ export const writeUserRFCSubscription = async (rfcNumber: number, isSubscribed: 
       isSubscribed: previous?.isSubscribed ?? false,
       yourSubscriptionId: subscriptionToRemove
     })
-    notificationsStore.add(subscriptionFailedNotification(rfcNumber, isSubscribed))
-    console.error('Unable to change your subscription for this RFC.', outcome.error)
+    notificationsStore.add(subscriptionFailedNotification(document, isSubscribed))
+    console.error('Unable to change your subscription for this document.', outcome.error)
     return
   }
 
@@ -117,15 +122,15 @@ export const writeUserRFCSubscription = async (rfcNumber: number, isSubscribed: 
  * subscribed" rather than "not known yet".
  */
 export const useUserRFCSubscription = (
-  rfcNumber: MaybeRefOrGetter<number>
+  document: MaybeRefOrGetter<SeriesId | number>
 ): { isSubscribed: WritableComputedRef<boolean>; status: ComputedRef<ReefDocumentStatus> } => {
-  const { isSubscribed, status } = useReefDocument(rfcNumber)
+  const { isSubscribed, status } = useReefDocument(document)
 
   return {
     isSubscribed: computed({
       get: () => isSubscribed.value,
       set: (subscribed) => {
-        void writeUserRFCSubscription(toValue(rfcNumber), subscribed)
+        void writeUserRFCSubscription(toValue(document), subscribed)
       }
     }),
     status
