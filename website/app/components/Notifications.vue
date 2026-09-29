@@ -40,7 +40,7 @@
     <ToastViewport
       :label="VIEWPORT_LABELS[position]"
       :class="[
-        'fixed right-0 z-100 flex flex-col gap-2 w-[min(24em,calc(100vw-1.2rem))] max-w-full m-2 list-none outline-none',
+        'fixed right-0 z-130 flex flex-col gap-2 w-[min(24em,calc(100vw-1.2rem))] max-w-full m-2 list-none outline-none',
         position === 'top' ? 'top-0' : 'bottom-0'
       ]" />
   </ToastProvider>
