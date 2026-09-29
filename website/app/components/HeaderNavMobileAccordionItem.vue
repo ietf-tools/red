@@ -3,10 +3,15 @@
     <AccordionTrigger
       class="flex flex-row w-full justify-between items-center border border-gray-500 hover:bg-blue-400 focus:bg-blue-400">
       <span
-        :class="{
-          'p-4': props.styleDepth === 1,
-          'px-6 py-3': props.styleDepth === 2
-        }">
+        :class="[
+          'flex flex-row gap-4',
+          {
+            'p-4': props.styleDepth === 1,
+            'px-6 py-3': props.styleDepth === 2
+          }
+        ]">
+        <HeaderNavIcon v-if="props.triggerIcon" :icon="props.triggerIcon" class="w-6" />
+
         {{ props.triggerText }}
       </span>
       <GraphicsChevron
@@ -23,10 +28,12 @@
 
 <script setup lang="ts">
 import { AccordionContent, AccordionItem, AccordionTrigger } from 'reka-ui'
+import type { MenuItem } from './HeaderNavData'
 
 type Props = {
   /** Text of the button to toggle the accordion item */
   triggerText: string | VNode
+  triggerIcon?: MenuItem['icon']
   id: string
   /**
    * Styles the accordion at a certain nesting depth. ie, an accordion

@@ -1,5 +1,5 @@
 <template>
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 64 64">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
     <!-- Icon from Emoji One by Joypixels - https://creativecommons.org/licenses/by/4.0/ -->
     <path
       fill="currentColor"

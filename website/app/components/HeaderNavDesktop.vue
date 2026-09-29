@@ -16,10 +16,7 @@
           as-child
           @click="menuItem.click">
           <Anchor>
-            <component
-              :is="resolveGraphicsIcon(menuItem.icon)"
-              v-if="menuItem.icon && typeof menuItem.icon === 'string'" />
-            <component v-else-if="menuItem.icon && typeof menuItem.icon === 'function'" :is="menuItem.icon()" />
+            <HeaderNavIcon :icon="menuItem.icon" />
           </Anchor>
         </NavigationMenuLink>
 

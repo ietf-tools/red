@@ -1,6 +1,6 @@
 <template>
   <component :is="resolveGraphicsIcon(props.icon)" v-if="props.icon && typeof props.icon === 'string'" />
-  <component v-else-if="props.icon && typeof props.icon === 'function'" :is="props.icon()" class="w-[18px] h-[18px]" />
+  <component v-else-if="props.icon && typeof props.icon === 'function'" :is="props.icon" />
 </template>
 
 <script setup lang="ts">

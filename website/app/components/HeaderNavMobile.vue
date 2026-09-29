@@ -39,10 +39,15 @@
                   class="absolute right-0 mt-1 mr-4 size-4 -rotate-90 text-blue-100" />
                 {{ item.label }}
               </Anchor>
-              <HeaderNavMobileAccordionItem v-else :id="index.toString()" :trigger-text="item.label">
+              <HeaderNavMobileAccordionItem
+                v-else
+                :id="index.toString()"
+                :trigger-text="item.label"
+                :trigger-icon="item.icon">
                 <ul class="ml-4">
                   <li v-for="(level0, childIndex) in item.children" :key="childIndex">
                     <Anchor v-if="level0.href" :href="level0.href" :class="MENU_ITEM_CLASS" @click="isOpen = false">
+                      <HeaderNavIcon v-if="level0.icon" :icon="level0.icon" class="mr-2" />
                       {{ level0.label }}
                     </Anchor>
                     <RadioGroupRoot

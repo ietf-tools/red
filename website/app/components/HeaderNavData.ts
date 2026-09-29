@@ -238,8 +238,6 @@ export const useMenuData = (mode: Mode) => {
       }
     ]
 
-    const avatarCss = 'w-6 h-6 rounded-full'
-
     if (isAuthenticated.value) {
       const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
       const picture = user.value?.picture
@@ -257,12 +255,12 @@ export const useMenuData = (mode: Mode) => {
                    */
                   referrerpolicy: 'no-referrer',
                   alt: `Picture of ${displayName}`,
-                  class: avatarCss
+                  class: 'object-contain w-6 h-6 rounded-full'
                 })
               ])
           : () =>
               h(UserImageNotificationsWrapper, [
-                h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: avatarCss })
+                h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-5 h-5 rounded-full' })
               ]),
         children: [
           {
@@ -287,7 +285,7 @@ export const useMenuData = (mode: Mode) => {
       data.push({
         label: 'User menu',
         hideLabelDesktop: true,
-        icon: () => h(GraphicsBustInSilhouette, { class: avatarCss }),
+        icon: () => h(GraphicsBustInSilhouette, { class: 'w-5 h-5 rounded-full' }),
         children: [
           {
             label: 'Create an account',

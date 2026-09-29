@@ -18,7 +18,7 @@
           <div class="flex justify-end mt-5 border-t-1 border-t-gray-300 dark:border-t-gray-600 pt-4">
             <DialogClose
               class="rounded cursor-pointer font-bold border-1 border-gray-200 px-3 py-1 focus:bg-gray-500/25 hover:bg-gray-500/25">
-              Done
+              Close
             </DialogClose>
           </div>
           <DialogClose

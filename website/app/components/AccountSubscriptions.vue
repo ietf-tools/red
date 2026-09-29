@@ -26,12 +26,12 @@
           class="bg-white dark:bg-black border border-gray-300 dark:border-gray-500 rounded px-3 py-2">
           <div class="flex items-start justify-between gap-2">
             <span>
-              <AMaybeRFCLink v-if="browsePath" :href="browsePath" class="block px-2 py-1">
-                <span class="block font-bold">{{ subscriptionLabel(subscription) }}</span>
-                <span v-if="subscriptionParamsSummary(subscription)" class="block text-sm">
+              <Anchor v-if="browsePath" :href="browsePath" class="block px-2 py-1">
+                <span class="font-bold">{{ subscriptionLabel(subscription) }}</span>
+                <span v-if="subscriptionParamsSummary(subscription)" class="text-sm">
                   {{ subscriptionParamsSummary(subscription) }}
                 </span>
-              </AMaybeRFCLink>
+              </Anchor>
               <span v-else class="block px-2 py-1">
                 <span class="block font-bold">{{ subscriptionLabel(subscription) }}</span>
                 <span v-if="subscriptionParamsSummary(subscription)" class="block text-sm">

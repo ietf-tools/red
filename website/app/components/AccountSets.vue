@@ -23,7 +23,7 @@
         <li
           v-for="set in sets"
           :key="set.id"
-          class="bg-white dark:bg-black border border-gray-300 dark:border-gray-500 rounded px-4 py-2">
+          class="bg-white dark:bg-black border border-gray-300 dark:border-gray-500 rounded px-5 py-2">
           <div class="flex items-start justify-between gap-2">
             <span>
               <Anchor :href="setPathBuilder(set.id)" class="underline font-bold">
