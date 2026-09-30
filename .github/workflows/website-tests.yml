@@ -76,6 +76,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: website-e2e-results
-          path: website/test-results/
+          path: |
+            website/test-results/
+            website/e2e/screenshots/diff/
           if-no-files-found: ignore
           retention-days: 7
