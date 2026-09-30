@@ -156,13 +156,16 @@ export const oidcRestore = async (config: OidcConfig): Promise<OidcRestoreResult
 // Header.vue). Takes no
 // arguments: the page to return to is read from the current location here, so that call
 // sites can pass this straight to `@click` without a click event becoming an argument.
-export const oidcLogin = async (): Promise<void> => {
+export const oidcLogin = async (): Promise<void> => oidcLoginTo(getCurrentPath())
+
+// For callers whose current location is no place to come back to (the login page itself).
+export const oidcLoginTo = async (returnTo: string): Promise<void> => {
   if (!userManagerPromise) {
     console.warn('[oidc] login called before initialisation')
     return
   }
   const userManager = await userManagerPromise
-  await userManager.signinRedirect({ state: { returnTo: getCurrentPath() } })
+  await userManager.signinRedirect({ state: { returnTo } })
 }
 
 // Explicit registration. Registration is the same authorization request as a login — same
