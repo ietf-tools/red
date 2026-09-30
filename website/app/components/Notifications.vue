@@ -20,7 +20,8 @@
         <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
           <Anchor
             :href="notification.url"
-            class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 -ml-2 px-2 py-1">
+            class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 -ml-2 px-2 py-1"
+            @click="hide(notification.id)">
             {{ notification.readMoreText || 'Read more' }}
           </Anchor>
         </ToastAction>
