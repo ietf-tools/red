@@ -354,7 +354,6 @@ const maxHeadingCharWidth = computed(() =>
 )
 
 useRfcEditorHead({
-  noIndex: true, // FIXME: upon release allow indexing
   title: liveSubject.value ? `RFCs about ${liveSubject.value.name}` : 'RFC subject',
   canonicalPath: `${publicSiteUrlOrigin}${canonicalPath}`,
   description:

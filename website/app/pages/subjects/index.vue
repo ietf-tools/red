@@ -304,7 +304,6 @@ const subjectGroups = computed((): SubjectGroup[] => {
 const populatedSubjectGroups = computed(() => subjectGroups.value.filter(({ items }) => items.length > 0))
 
 useRfcEditorHead({
-  noIndex: true, // FIXME: upon release allow indexing
   title: 'RFCs organised by subject',
   canonicalPath: `${publicSiteUrlOrigin}${canonicalPath}`,
   description: 'Subjects such as networking, broadband, aerospace, authentication, cloud computing',

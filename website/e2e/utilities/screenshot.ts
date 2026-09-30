@@ -315,7 +315,7 @@ export const expectScreenshotToMatchBaseline = async (
     const reason = sizeChanged
       ? `changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}`
       : `differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%)`
-    const message = `screenshot "${name}" ${reason}.\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`UPDATE_SCREENSHOTS=1 npm run test:e2e\`.`
+    const message = `screenshot "${name}" ${reason}.\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`npm run test:e2e:update-screenshots\`.`
     if (knownMismatch) {
       console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
       return
