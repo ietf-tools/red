@@ -28,7 +28,7 @@ export const HOME_PATH = '/'
 export const CONTACT_PATH = '/about/contact/'
 export const SEARCH_PATH = '/search/'
 export const SUBJECTS_PATH = '/subjects/'
-export const AFTER_LOGIN_PATH = '/login/'
+export const AFTER_LOGIN_PATH = '/after-login/'
 
 /**
  * Names the filter on /subjects/, which is applied in the browser and nowhere else: the worker

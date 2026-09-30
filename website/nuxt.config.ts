@@ -129,7 +129,7 @@ export default defineNuxtConfig({
       oidcIssuerUri: 'https://account.ietf.org/application/o/rfc-editor-staging/', // NUXT_PUBLIC_OIDC_ISSUER_URI
       oidcClientId: 'g2uRUBCyxPlUDuEh11lw71iLQRc6CLh3tgvJvhUH', // NUXT_PUBLIC_OIDC_CLIENT_ID
       oidcScopes: 'openid profile email offline_access', // NUXT_PUBLIC_OIDC_SCOPES (space-separated) — offline_access = refresh token
-      oidcHomeUrl: '/login/', // NUXT_PUBLIC_OIDC_HOME_URL — login callback target (AFTER_LOGIN_PATH); must match a registered redirect URI
+      oidcHomeUrl: '/after-login/', // NUXT_PUBLIC_OIDC_HOME_URL — login callback target (AFTER_LOGIN_PATH); must match a registered redirect URI
       oidcConfigurationUrl:
         'https://account.ietf.org/application/o/rfc-editor-staging/.well-known/openid-configuration', // NUXT_PUBLIC_OIDC_CONFIGURATION_URL
       oidcAuthorizeUrl: 'https://account.ietf.org/application/o/authorize/', // NUXT_PUBLIC_OIDC_AUTHORIZE_URL
