@@ -104,7 +104,8 @@ const HOME_PATH = ''
 const ORIGIN_PATHS = [
   '/about',
   '/my',
-  '/login', // after login redirect
+  '/login', // login redirect
+  '/after-login', // after login redirect
   '/authors',
   '/images',
   '/never-issued',
