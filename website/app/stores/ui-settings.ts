@@ -47,7 +47,7 @@ const LOCALSTORAGE_KEY = 'rfc-ui'
 
 const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
 
-// Names alone, so a listing reads as an index rather than as prose.
+// Descriptions shown, so a reader sees what a subject covers without opening it.
 export const DEFAULT_SUBJECT_DENSITY: SubjectDensity = 'full'
 
 export const DEFAULT_SUBJECT_DOCUMENT_DENSITY: Density = 'full'

@@ -216,7 +216,8 @@ describe('/subjects/', () => {
     expect(countOf('Tcp')).toBe('3 RFCs')
   })
 
-  test('leaves the descriptions out until they are asked for', async () => {
+  test('leaves the descriptions out when the saved preference is the compact display', async () => {
+    useUiSettingsStore().setSubjectDensity('compact')
     reefAnswers(VOCABULARY)
 
     const page = await renderPage()
@@ -235,10 +236,11 @@ describe('/subjects/', () => {
 
     expect(page.find('fieldset legend').text()).toBe('Display subjects as')
     expect(radios.map((radio) => radio.attributes('value'))).toEqual(['full', 'compact'])
-    expect(radios.map((radio) => radio.element.checked)).toEqual([false, true])
+    expect(radios.map((radio) => radio.element.checked)).toEqual([true, false])
   })
 
   test('reveals every description when the toggle is set to the full display', async () => {
+    useUiSettingsStore().setSubjectDensity('compact')
     reefAnswers(VOCABULARY)
 
     const page = await renderPage()
@@ -252,8 +254,7 @@ describe('/subjects/', () => {
     expect(useUiSettingsStore().subjectDensity).toBe('full')
   })
 
-  test('renders with the descriptions already shown when that is the saved preference', async () => {
-    useUiSettingsStore().setSubjectDensity('full')
+  test('renders with the descriptions shown by default', async () => {
     reefAnswers(VOCABULARY)
 
     const page = await renderPage()
@@ -360,6 +361,7 @@ describe('/subjects/', () => {
     })
 
     test('highlights the words that were typed, and only on the rows that matched', async () => {
+      useUiSettingsStore().setSubjectDensity('compact')
       reefAnswers(VOCABULARY)
 
       const page = await renderPage()
@@ -371,6 +373,7 @@ describe('/subjects/', () => {
     })
 
     test('highlights part of a word, which is what an as-you-type filter mostly matches', async () => {
+      useUiSettingsStore().setSubjectDensity('compact')
       reefAnswers(VOCABULARY)
 
       const page = await renderPage()
@@ -400,11 +403,10 @@ describe('/subjects/', () => {
     })
 
     test('reveals the description a compact row was matched on, so the row shows its reason', async () => {
-      reefAnswers(VOCABULARY)
-
       // The compact density hides descriptions, and 'packets' appears in Tcp's description and in
       // nothing's name. Left hidden, the row would look exactly like one shown for context.
-      expect(useUiSettingsStore().subjectDensity).toBe('compact')
+      useUiSettingsStore().setSubjectDensity('compact')
+      reefAnswers(VOCABULARY)
 
       const page = await renderPage()
       await typeAndSettle(page, 'packets')
@@ -414,6 +416,7 @@ describe('/subjects/', () => {
     })
 
     test('leaves the other compact rows compact while doing it', async () => {
+      useUiSettingsStore().setSubjectDensity('compact')
       reefAnswers(VOCABULARY)
 
       const page = await renderPage()
