@@ -2,7 +2,13 @@
   <div class="flex mt-2">
     <ul class="flex flex-col reef:flex-row items-start pl-0.5 text-sm">
       <li class="h-full flex flex-col md:flex-row items-start pr-2">
-        <RFCDocumentCommunityRating v-if="props.reefStats?.ratingAggregate" :reef-stats="props.reefStats" />
+        <RFCDocumentCommunityRating
+          v-if="
+            props.reefStats?.ratingAggregate &&
+            props.reefStats.ratingAggregate.average &&
+            props.reefStats.ratingAggregate.average > 0 // an average of 0 means there are no ratings (users can only rate 1-5)
+          "
+          :reef-stats="props.reefStats" />
         <RFCDocumentRateThisRFC :rfc-number="props.rfcNumber" v-model="userRFCRating" />
       </li>
       <li class="pl-2 pr-2 border-l-1 border-r-1 border-gray-300 dark:border-gray-700">
