@@ -205,8 +205,8 @@ const SORT_ITEMS = [
   { label: 'Newest first', value: 'publicationDate:desc' },
   { label: 'Oldest first', value: 'publicationDate:asc' },
   { label: 'RFC number (ascending)', value: 'rfcNumber:asc' },
-  { label: 'RFC number (descending)', value: 'rfcNumber:desc' },
-  { label: 'Most popular', value: 'popularity:desc,_text_match:desc' }
+  { label: 'RFC number (descending)', value: 'rfcNumber:desc' }
+  // { label: 'Most popular', value: 'popularity:desc,_text_match:desc' }
 ]
 
 const PER_PAGE_ITEMS = [
