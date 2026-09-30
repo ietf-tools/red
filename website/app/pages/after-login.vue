@@ -1,5 +1,5 @@
 <template>
-  <Heading level="1" class="text-center mt-10" style-level="3">Logged in...</Heading>
+  <Heading level="1" class="text-center mt-10" style-level="3">Signed in...</Heading>
   <noscript>
     <a :href="HOME_PATH">Go to homepage</a>
   </noscript>
@@ -19,7 +19,7 @@ useOidcSession()
 
 useRfcEditorHead({
   noIndex: true,
-  title: 'Logged in...',
+  title: 'Signed in...',
   canonicalPath: AFTER_LOGIN_PATH,
   contentType: 'website'
 })

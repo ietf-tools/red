@@ -1,7 +1,7 @@
 <template>
   <Heading level="1" class="text-center mt-10" style-level="3">Please wait...</Heading>
   <noscript>
-    <p>Login requires JavaScript.</p>
+    <p>Sign in requires JavaScript.</p>
     <a :href="HOME_PATH">Go to homepage.</a>
   </noscript>
 </template>
@@ -10,7 +10,7 @@
 import Heading from '~/components/Heading.vue'
 import { useRfcEditorHead } from '~/utilities/head'
 import { oidcLoginTo, useOidcSession } from '~/utilities/oidc'
-import { AFTER_LOGIN_PATH, HOME_PATH, LOGIN_PATH } from '~/utilities/url-constants'
+import { HOME_PATH, LOGIN_PATH } from '~/utilities/url-constants'
 
 definePageMeta({
   layout: false
@@ -20,7 +20,7 @@ definePageMeta({
 useOidcSession()
 
 onMounted(() => {
-  void oidcLoginTo(AFTER_LOGIN_PATH)
+  void oidcLoginTo(HOME_PATH)
 })
 
 useRfcEditorHead({
