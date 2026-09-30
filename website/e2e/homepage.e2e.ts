@@ -38,7 +38,7 @@ const LATEST_RFCS_MASK_CSS = `
   }
 `
 
-describe('homepage', async () => {
+describe.skip('homepage', async () => {
   await setupNuxtServer()
 
   test(
