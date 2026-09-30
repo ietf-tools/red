@@ -21,7 +21,7 @@
           <Anchor
             :href="notification.url"
             class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 -ml-2 px-2 py-1"
-            @click="hide(notification.id)">
+            @click="dismiss(notification)">
             {{ notification.readMoreText || 'Read more' }}
           </Anchor>
         </ToastAction>
