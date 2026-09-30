@@ -104,7 +104,10 @@
           </DialogContent>
         </DialogPortal>
       </DialogRoot>
-      <p v-if="props.reefStats?.setCount" :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
+      <p
+        v-if="props.reefStats?.setCount"
+        data-reef-stat
+        :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         Added to
         {{ formatNumber(props.reefStats.setCount, 0) }}
         <template v-if="props.reefStats.setCount === 1">set</template>

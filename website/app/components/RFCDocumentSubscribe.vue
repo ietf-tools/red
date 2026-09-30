@@ -93,7 +93,10 @@
           </DialogContent>
         </DialogPortal>
       </DialogRoot>
-      <p v-if="props.reefStats?.subscriberCount" :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
+      <p
+        v-if="props.reefStats?.subscriberCount"
+        data-reef-stat
+        :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         {{ formatNumber(props.reefStats.subscriberCount, 0) }}
         subscribed
       </p>

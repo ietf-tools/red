@@ -38,6 +38,11 @@ const TEST_DURATION_MS = 180_000
 describe('info/rfcN layout', () => {
   const openPage = setupConcurrentPages()
 
+  // The rating, subscriber and set counts come from live Reef data in the bucket JSON, so an RFC
+  // gaining its first rating or set changes the height of the row under its title and shifts the
+  // whole document. Not reachable by stubbing the request, because it is fetched during SSR.
+  const REEF_STATS_MASK_CSS = '[data-reef-stat] { display: none; }'
+
   for (const rfc of RFCS) {
     for (const viewport of VIEWPORTS) {
       test.concurrent(
@@ -46,7 +51,9 @@ describe('info/rfcN layout', () => {
           const page = await openPage(infoSeriesPathBuilder(rfc))
           await page.setViewportSize({ width: viewport.width, height: viewport.height })
           await page.locator('.rfc-content').first().waitFor({ state: 'visible' })
-          await expectScreenshotToMatchBaseline(page, `layout-${rfc}-${viewport.name}`)
+          await expectScreenshotToMatchBaseline(page, `layout-${rfc}-${viewport.name}`, {
+            maskCss: REEF_STATS_MASK_CSS
+          })
           await page.close()
         },
         TEST_DURATION_MS
