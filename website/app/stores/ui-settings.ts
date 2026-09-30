@@ -48,7 +48,7 @@ const LOCALSTORAGE_KEY = 'rfc-ui'
 const DEFAULT_SUPERSEDED_MODE: SupersededMode = 'compact'
 
 // Names alone, so a listing reads as an index rather than as prose.
-export const DEFAULT_SUBJECT_DENSITY: SubjectDensity = 'compact'
+export const DEFAULT_SUBJECT_DENSITY: SubjectDensity = 'full'
 
 export const DEFAULT_SUBJECT_DOCUMENT_DENSITY: Density = 'full'
 
