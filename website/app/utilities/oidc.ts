@@ -317,11 +317,11 @@ export const useOidcSession = (): void => {
           return
         }
         notificationsStore.add(signedInNotification(user))
-        if (returnTo) {
-          // A client-side route rather than a location change, so the stores — and so
-          // the toast queued just above — survive the hop back to the original page.
-          void navigateTo(returnTo, { replace: true })
-        }
+        // The callback page is only a stop on the way: without a usable returnTo (no state, or
+        // a path that failed parseReturnTo) the reader goes home rather than staying on it.
+        // A client-side route rather than a location change, so the stores — and so
+        // the toast queued just above — survive the hop back to the original page.
+        void navigateTo(returnTo ?? HOME_PATH, { replace: true })
       })
       .catch((error) => {
         console.error('[oidc] restore failed', error)
