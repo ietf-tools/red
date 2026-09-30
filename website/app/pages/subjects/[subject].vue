@@ -110,7 +110,7 @@
                 </div>
               </div>
               <div class="lg:flex-1">
-                <div class="bg-blue-25 px-5 py-4">
+                <div class="bg-blue-25 dark:bg-blue-900 px-5 py-4">
                   <Heading level="2"> Subscribe to {{ liveSubject.name }} </Heading>
                   <ReefSubscribeToSubjectTag :subject="liveSubject" />
                   <div class="mt-3 leading-[1.5] text-sm">

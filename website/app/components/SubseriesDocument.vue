@@ -2,7 +2,7 @@
   <BodyLayoutDocument>
     <template #sidebar>
       <div v-if="subseriesDocument" class="lg:min-w-[300px] px-5 py-3">
-        <div class="bg-blue-25 px-5 py-4 mb-6">
+        <div class="bg-blue-25 dark:bg-blue-900 px-5 py-4 mb-6">
           <Heading level="2"> Subscribe to <SubseriesTitle :series="props.subseriesId" /> </Heading>
           <ReefSubscribeToSubseries :subseries-id="props.subseriesId" />
           <div class="mt-3 leading-[1.5] text-sm">

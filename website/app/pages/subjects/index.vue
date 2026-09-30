@@ -106,7 +106,7 @@
             <p v-else class="mt-4">No subjects have been published yet.</p>
           </div>
           <div class="lg:flex-1">
-            <div class="bg-blue-25 px-5 py-4">
+            <div class="bg-blue-25 dark:bg-blue-900 px-5 py-4">
               <Heading level="2"> Are we missing a subject? </Heading>
               <p class="mt-2 leading-[1.5]">
                 If you can't find it by filtering this list, you can

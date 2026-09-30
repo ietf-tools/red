@@ -11,7 +11,9 @@
         avg. {{ formatNumber(props.reefStats.ratingAggregate.average, 1) }}
       </template>
       <template v-if="props.reefStats.ratingAggregate.count">
-        ({{ formatNumber(props.reefStats.ratingAggregate.count, 0) }} ratings)
+        ({{ formatNumber(props.reefStats.ratingAggregate.count, 0) }}
+        <template v-if="props.reefStats.ratingAggregate.count === 1">rating</template
+        ><template v-else>ratings</template>)
       </template>
     </p>
   </div>

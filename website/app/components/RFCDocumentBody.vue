@@ -24,11 +24,11 @@
       v-if="props.rfcBucketHtmlDocument.rfc.reefSubjectTags"
       :reef-subject-tags="props.rfcBucketHtmlDocument.rfc.reefSubjectTags" />
 
-    <Heading v-if="isAprilFool" level="2" class="mb-2 px-3 print:text-center">
+    <p v-if="isAprilFool" class="px-3 print:text-center">
       <span class="inline pr-2">
         <AprilFools />
       </span>
-    </Heading>
+    </p>
 
     <ul class="block print:text-center font-feature-settings-calt-off ml-2.5">
       <li
