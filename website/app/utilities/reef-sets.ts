@@ -1,9 +1,9 @@
-// Feature logic for a user's document sets, as used by the "Add to set" dialog on an RFC page and
+// Feature logic for a user's document sets, as used by the "Add to Set" dialog on an RFC page and
 // by the /set page.
 //
 // Which of this reader's sets hold a document, and what their sets are, are read from
 // ~/stores/reef along with every other per-reader answer: membership arrives per document, and
-// the sets carry only what labels a row. What's left here is what's particular to sets: creating
+// the sets carry only what labels a row. What's left here is what's particular to Sets: creating
 // one, changing what it holds, and the /set page's read of a single set by id.
 
 import { computed, ref, toValue, watch, type MaybeRefOrGetter, type Ref, type WritableComputedRef } from 'vue'
@@ -68,7 +68,7 @@ export const setMembershipFailedNotification = (
   // Keyed by set as well as document, because unlike the subscribe checkbox this dialog has a row
   // per set and two of them can fail independently.
   id: `rfc-set-membership.${id}.${reefDocumentKey(rfcNumber)}`,
-  title: wasAdding ? 'Unable to add to set' : 'Unable to remove from set',
+  title: wasAdding ? 'Unable to add to Set' : 'Unable to remove from Set',
   // Names the set, because the reader may have several and the toast appears away from the row
   // that failed.
   description: wasAdding
@@ -154,7 +154,7 @@ export type CreateSetOutcome = { ok: true; set: ReefSet } | { ok: false; message
 /**
  * Create one set and put this document in it.
  *
- * Creating a set from the "Add to set" dialog means the reader wants this document in it —
+ * Creating a set from the "Add to Set" dialog means the reader wants this document in it —
  * offering a set they'd then have to tick separately would be a strange place to stop. So the new
  * set is ticked here, and the membership goes out through the same path a tick does, bringing its
  * error handling and toast with it.
@@ -200,7 +200,7 @@ export type UserSets = {
   createSet: (newSet: NewSet) => Promise<CreateSetOutcome>
 }
 
-// This reader's sets and which of them hold one document, as models for the "Add to set" dialog.
+// This reader's sets and which of them hold one document, as models for the "Add to Set" dialog.
 // The dialog needs both — the sets to label its rows, and the ids to tick.
 export const useUserSets = (rfcNumber: MaybeRefOrGetter<number>): UserSets => {
   const reefStore = useReefStore()

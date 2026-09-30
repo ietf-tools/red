@@ -39,7 +39,7 @@ Please note that if you have joined the [`rfc-dist` mailing list](https://mailma
 Sets allow you to create lists of RFCs you might want to return to later or share with others.
 
 - You must be logged in to create or manage a set.
-- Add an RFC to a set anywhere you see the “Add to set” button.
+- Add an RFC to a set anywhere you see the “Add to Set” button.
 - View a set page in [your account](/my/) by clicking on the title of the set.
 - Share a set with others by sending them the URL of the set page.
 - Remember that this content is public, so do not include any private information when creating a set. Inappropriate data may be removed.

@@ -13,7 +13,7 @@
       </DialogTrigger>
     </div>
     <DialogPortal>
-      <!-- Above the "Add to set" dialog's own overlay and content, so the two read as a stack
+      <!-- Above the "Add to Set" dialog's own overlay and content, so the two read as a stack
          rather than as one dialog with something drawn over it. -->
       <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
       <DialogContent
@@ -94,7 +94,7 @@
 
 <script setup lang="ts">
 /**
- * The "create set" dialog, opened from inside the "Add to set" dialog (RFCDocumentSets).
+ * The "create set" dialog, opened from inside the "Add to Set" dialog (RFCDocumentSets).
  *
  * A dialog of its own rather than a second page of that one. Creating a set is a detour from
  * picking one, and it's the reader's own list underneath that tells them the detour worked — a new

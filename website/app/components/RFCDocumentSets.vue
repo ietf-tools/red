@@ -15,7 +15,7 @@
           ]">
           <GraphicsAddCircle
             :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
-          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Add to set </span>
+          <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Add to Set </span>
         </DialogTrigger>
         <DialogPortal>
           <DialogOverlay class="bg-black/10 backdrop-blur-xs fixed inset-0 z-110" />
@@ -119,7 +119,7 @@
 
 <script setup lang="ts">
 /**
- * The "add to set" dialog for one RFC.
+ * The "add to Set" dialog for one RFC.
  *
  * Holds no state of its own, the same way the rating and subscribe dialogs don't: which sets hold
  * this RFC is a model, so ticking a row updates the parent's ref and the parent is what persists

@@ -218,7 +218,7 @@ describe('writeUserSetMembership', () => {
     writeUserSetMembership(9110, ['set-a', 'set-b'])
     await vi.waitFor(() => expect(reefStore.userDocuments.rfc9110?.yourSetIds).toEqual(['set-a']))
 
-    expect(notificationTitles()).toContain('Unable to add to set')
+    expect(notificationTitles()).toContain('Unable to add to Set')
   })
 
   test('writes nothing when the ticks have not changed', async () => {

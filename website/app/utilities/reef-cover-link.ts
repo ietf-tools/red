@@ -1,5 +1,5 @@
 // Shared styling for the dialog triggers in the Reef row on an RFC page — the "Subscribe" and
-// "Add to set" buttons, which are laid out as cards whose whole area is the clickable target.
+// "Add to Set" buttons, which are laid out as cards whose whole area is the clickable target.
 //
 // Its own module rather than any one feature's, because it belongs to none of them: it's here so
 // the two triggers can't drift apart, and so neither has to import the other's feature logic to
