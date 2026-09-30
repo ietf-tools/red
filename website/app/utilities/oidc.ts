@@ -15,6 +15,7 @@ import { z } from 'zod'
 import { useAuthStore } from '~/stores/auth'
 import type { Notification } from '~/stores/notifications'
 import { useNotificationsStore } from '~/stores/notifications'
+import { HOME_PATH } from '~/utilities/url-constants'
 
 export type OidcConfig = {
   authority: string
@@ -58,7 +59,7 @@ const getUserManager = (config: OidcConfig): Promise<UserManager> => {
         scope: config.scopes.join(' '),
         response_type: 'code',
         automaticSilentRenew: true,
-        post_logout_redirect_uri: config.redirectUri,
+        post_logout_redirect_uri: window.location.origin + HOME_PATH,
         userStore: new WebStorageStateStore({ store: window.localStorage })
       })
       window.oidcRenew = async () => {
@@ -96,7 +97,7 @@ const isCallbackUrl = (): boolean => {
 // the OIDC `state` parameter: oidc-client-ts keeps this object in local storage keyed by the
 // opaque, single-use state value it sends to the identity provider, so the path itself never
 // leaves the browser, it can't be confused with a different login attempt, and it's cleaned
-// up on callback. That's also why `redirect_uri` stays fixed at oidcHomeUrl — one registered
+// up on callback. That's also why `redirect_uri` stays fixed at oidcHomeUrl (the login page) — one registered
 // redirect URI at the identity provider, whatever page the user signed in from.
 const SigninStateSchema = z.object({ returnTo: z.string() })
 
