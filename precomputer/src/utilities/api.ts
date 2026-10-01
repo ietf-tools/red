@@ -1,6 +1,7 @@
 import { ApiClient } from '../../generated/api-client.ts'
 import type { Rfc, RfcMetadata } from '../../generated/api-client.ts'
 import {
+  RfcCommonGroupStateSchema,
   RfcCommonGroupTypeSchema,
   RfcCommonStatusSchema,
   RfcCommonSubseriesTypeSchema
@@ -514,19 +515,22 @@ const parseGroup = (group: Rfc['group'] | RfcMetadata['group'], rfcNumberForDebu
     return undefined
   }
 
-  const { acronym, name, type } = group
-  const { data: parsedType, error } = RfcCommonGroupTypeSchema.safeParse(type)
-  if (error) {
-    console.error('Zod error for input type: ', JSON.stringify(type), error)
+  const { acronym, name, type, state } = group
+
+  const { data: parsedType, error: errorType } = RfcCommonGroupTypeSchema.safeParse(type)
+  if (errorType) {
+    console.error('Zod error for input type: ', JSON.stringify(type), errorType)
     throw Error(
       `Problem parsing group type ${JSON.stringify(group)} ${
         rfcNumberForDebug !== undefined ? `from RFC ${rfcNumberForDebug}` : ''
       }`
     )
   }
+
   return {
     acronym,
     name,
+    state,
     type: parsedType
   }
 }

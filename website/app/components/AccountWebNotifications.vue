@@ -164,7 +164,18 @@ const notificationHref = (notification: WebNotification): string | undefined => 
   }
 }
 
-const formatNotificationDate = (createdAt: string): string => DateTime.fromISO(createdAt).toFormat('d LLLL yyyy, HH:mm')
+const formatNotificationDate = (createdAt: string): string => {
+  const dateTime = DateTime.fromISO(createdAt)
+
+  return (
+    dateTime.toRelativeCalendar({
+      // by default would be localised in user language, but we should force English because the website's
+      // language is English, and switching to a localised language for just this one part would be odd
+      // (and remember this generates words, so would require lang attributes for those, so let's avoid that
+      locale: 'en'
+    }) ?? createdAt
+  )
+}
 
 // Each row's link and content, computed once here rather than in the template: AMaybeRFCLink needs
 // a definite string, and vue-tsc can't narrow that from a v-if guard and a binding that each call

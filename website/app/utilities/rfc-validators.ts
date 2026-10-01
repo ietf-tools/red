@@ -166,9 +166,12 @@ export const RfcCommonGroupTypeSchema = z.union([
   z.literal('rfcedtyp')
 ])
 
+export const RfcCommonGroupStateSchema = z.union([z.literal('active'), z.literal('concluded'), z.literal('other')])
+
 export const RfcCommonGroupSchema = z.object({
   acronym: z.string(),
   name: z.string(),
+  state: RfcCommonGroupStateSchema.optional(),
   type: RfcCommonGroupTypeSchema
 })
 

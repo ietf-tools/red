@@ -100,6 +100,64 @@ export class ApiClient {
     }
   }
 
+  migration = {
+    accountMigrationClaimEmail: (body: ClaimEmailRequestRequest) => {
+      return this.Fetch<MigrationEmail>('post', '/api/accounts/migration/claim-email/', { body })
+    },
+
+    accountMigrationVerify: (body: VerifyRequestRequest) => {
+      return this.Fetch<VerifyResponse>('post', '/api/accounts/migration/verify/', { body })
+    }
+  }
+
+  meeting = {
+    registrationAttendedRetrieve: (email: string) => {
+      return this.Fetch<PersonAttendedMeetings>('get', `/api/meeting/registration/attended/${email}/`, {})
+    },
+
+    registrationAttendedByUuid: (uuid: string) => {
+      return this.Fetch<PersonAttendedMeetings>('get', `/api/meeting/registration/attended/by-uuid/${uuid}/`, {})
+    },
+
+    sessionAddAttendees: (id: string, body: SessionAttendeesRequest) => {
+      return this.Fetch<SessionUpdated>('post', `/api/meeting/session/${id}/attendees/`, { body })
+    },
+
+    sessionUploadBluesheet: (id: string, body: SessionBluesheetRequest) => {
+      return this.Fetch<SessionUpdated>('post', `/api/meeting/session/${id}/bluesheet/`, { body })
+    },
+
+    sessionUploadChatlog: (id: string, body: SessionChatlogRequest) => {
+      return this.Fetch<SessionUpdated>('post', `/api/meeting/session/${id}/chatlog/`, { body })
+    },
+
+    sessionUploadPolls: (id: string, body: SessionPollsRequest) => {
+      return this.Fetch<SessionUpdated>('post', `/api/meeting/session/${id}/polls/`, { body })
+    },
+
+    sessionSetRecordingName: (id: string, body: SessionRecordingNameRequest) => {
+      return this.Fetch<SessionUpdated>('post', `/api/meeting/session/${id}/recording-name/`, { body })
+    },
+
+    sessionSetVideoUrl: (id: string, body: SessionVideoUrlRequest) => {
+      return this.Fetch<SessionUpdated>('post', `/api/meeting/session/${id}/video-url/`, { body })
+    }
+  }
+
+  person = {
+    uuidRetrieve: (uuid: string) => {
+      return this.Fetch<PersonUUIDResolution>('get', `/api/person/uuid/${uuid}/`, {})
+    },
+
+    uuidByPersonPk: (body: PersonPkBatchRequestRequest) => {
+      return this.Fetch<PersonPkBatchResponse>('post', '/api/person/uuid/by-person-pk/', { body })
+    },
+
+    uuidLookup: (body: PersonUUIDBatchRequestRequest) => {
+      return this.Fetch<PersonUUIDBatchResponse>('post', '/api/person/uuid/lookup/', { body })
+    }
+  }
+
   purple = {
     getDraftsByNames: (body: string[]) => {
       return this.Fetch<Draft[]>('post', '/api/purple/doc/drafts_by_names/', {
@@ -225,6 +283,12 @@ export class ApiClient {
     }
   }
 
+  reef = {
+    refreshRfcPopularity: () => {
+      return this.Fetch<void>('post', '/api/reef/rfc/popularity_updated/', {})
+    }
+  }
+
   schema = {
     retrieve: (search: { format?: 'json' | 'yaml' }) => {
       return this.Fetch<Record<string, unknown>>('get', '/api/schema/', {
@@ -232,6 +296,81 @@ export class ApiClient {
       })
     }
   }
+}
+
+export type AccountMigrationClaimEmailAddressErrorComponent = {
+  attr: 'address'
+  code:
+    | 'address_has_no_owner'
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type AccountMigrationClaimEmailError =
+  | AccountMigrationClaimEmailNonFieldErrorsErrorComponent
+  | AccountMigrationClaimEmailPersonUuidErrorComponent
+  | AccountMigrationClaimEmailAddressErrorComponent
+
+export type AccountMigrationClaimEmailErrorResponse400 = AccountMigrationClaimEmailValidationError | ParseErrorResponse
+
+export type AccountMigrationClaimEmailNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'address_belongs_to_another_person' | 'invalid' | 'null'
+  detail: string
+}
+
+export type AccountMigrationClaimEmailPersonUuidErrorComponent = {
+  attr: 'person_uuid'
+  code: 'invalid' | 'null' | 'required' | 'unknown_person_uuid'
+  detail: string
+}
+
+export type AccountMigrationClaimEmailValidationError = {
+  type: ValidationErrorEnum
+  errors: AccountMigrationClaimEmailError[]
+}
+
+export type AccountMigrationVerifyEncryptedPasswordErrorComponent = {
+  attr: 'encrypted_password'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+    | 'undecryptable_password'
+  detail: string
+}
+
+export type AccountMigrationVerifyError =
+  | AccountMigrationVerifyNonFieldErrorsErrorComponent
+  | AccountMigrationVerifyUsernameOrEmailErrorComponent
+  | AccountMigrationVerifyEncryptedPasswordErrorComponent
+
+export type AccountMigrationVerifyErrorResponse400 = AccountMigrationVerifyValidationError | ParseErrorResponse
+
+export type AccountMigrationVerifyNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null' | 'verification_failed'
+  detail: string
+}
+
+export type AccountMigrationVerifyUsernameOrEmailErrorComponent = {
+  attr: 'username_or_email'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'required' | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type AccountMigrationVerifyValidationError = {
+  type: ValidationErrorEnum
+  errors: AccountMigrationVerifyError[]
 }
 
 export type Area = {
@@ -245,12 +384,28 @@ export type AreaDirector = {
   email?: string
 }
 
+export type AttendedMeeting = {
+  meeting?: string
+  attendance_type?: string
+  ticket_type?: string
+}
+
 export type AuthorPerson = {
   person_pk?: number
   name: string
   last_name: string
   initials: string
   email_addresses: string[]
+}
+
+export type BluesheetEntryRequest = {
+  name: string
+  affiliation?: string
+}
+
+export type ClaimEmailRequestRequest = {
+  person_uuid: string
+  address: string
 }
 
 export type ClientErrorEnum = 'client_error'
@@ -379,7 +534,253 @@ export type Group = {
   acronym: string
   name: string
   type?: string | null
+  state?: StateEnum
   list_email?: string
+}
+
+export type MeetingRegistrationAttendedByUuidErrorResponse400 = ParseErrorResponse
+
+export type MeetingRegistrationAttendedRetrieveErrorResponse400 = ParseErrorResponse
+
+export type MeetingSessionAddAttendeesAttendeesINDEXJoinTimeErrorComponent = {
+  attr: 'attendees.INDEX.join_time'
+  code: 'date' | 'invalid' | 'make_aware' | 'naive' | 'null' | 'overflow' | 'required'
+  detail: string
+}
+
+export type MeetingSessionAddAttendeesAttendeesINDEXNonFieldErrorsErrorComponent = {
+  attr: 'attendees.INDEX.non_field_errors'
+  code: 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionAddAttendeesAttendeesINDEXPersonUuidErrorComponent = {
+  attr: 'attendees.INDEX.person_uuid'
+  code: 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionAddAttendeesAttendeesNonFieldErrorsErrorComponent = {
+  attr: 'attendees.non_field_errors'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionAddAttendeesError =
+  | MeetingSessionAddAttendeesNonFieldErrorsErrorComponent
+  | MeetingSessionAddAttendeesAttendeesNonFieldErrorsErrorComponent
+  | MeetingSessionAddAttendeesAttendeesINDEXNonFieldErrorsErrorComponent
+  | MeetingSessionAddAttendeesAttendeesINDEXPersonUuidErrorComponent
+  | MeetingSessionAddAttendeesAttendeesINDEXJoinTimeErrorComponent
+
+export type MeetingSessionAddAttendeesErrorResponse400 = MeetingSessionAddAttendeesValidationError | ParseErrorResponse
+
+export type MeetingSessionAddAttendeesNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type MeetingSessionAddAttendeesValidationError = {
+  type: ValidationErrorEnum
+  errors: MeetingSessionAddAttendeesError[]
+}
+
+export type MeetingSessionSetRecordingNameError =
+  | MeetingSessionSetRecordingNameNonFieldErrorsErrorComponent
+  | MeetingSessionSetRecordingNameNameErrorComponent
+
+export type MeetingSessionSetRecordingNameErrorResponse400 =
+  | MeetingSessionSetRecordingNameValidationError
+  | ParseErrorResponse
+
+export type MeetingSessionSetRecordingNameNameErrorComponent = {
+  attr: 'name'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type MeetingSessionSetRecordingNameNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type MeetingSessionSetRecordingNameValidationError = {
+  type: ValidationErrorEnum
+  errors: MeetingSessionSetRecordingNameError[]
+}
+
+export type MeetingSessionSetVideoUrlError =
+  | MeetingSessionSetVideoUrlNonFieldErrorsErrorComponent
+  | MeetingSessionSetVideoUrlUrlErrorComponent
+
+export type MeetingSessionSetVideoUrlErrorResponse400 = MeetingSessionSetVideoUrlValidationError | ParseErrorResponse
+
+export type MeetingSessionSetVideoUrlNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type MeetingSessionSetVideoUrlUrlErrorComponent = {
+  attr: 'url'
+  code:
+    | 'blank'
+    | 'invalid'
+    | 'max_length'
+    | 'null'
+    | 'null_characters_not_allowed'
+    | 'required'
+    | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type MeetingSessionSetVideoUrlValidationError = {
+  type: ValidationErrorEnum
+  errors: MeetingSessionSetVideoUrlError[]
+}
+
+export type MeetingSessionUploadBluesheetBluesheetINDEXAffiliationErrorComponent = {
+  attr: 'bluesheet.INDEX.affiliation'
+  code: 'invalid' | 'null' | 'null_characters_not_allowed' | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type MeetingSessionUploadBluesheetBluesheetINDEXNameErrorComponent = {
+  attr: 'bluesheet.INDEX.name'
+  code: 'blank' | 'invalid' | 'null' | 'null_characters_not_allowed' | 'required' | 'surrogate_characters_not_allowed'
+  detail: string
+}
+
+export type MeetingSessionUploadBluesheetBluesheetINDEXNonFieldErrorsErrorComponent = {
+  attr: 'bluesheet.INDEX.non_field_errors'
+  code: 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadBluesheetBluesheetNonFieldErrorsErrorComponent = {
+  attr: 'bluesheet.non_field_errors'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadBluesheetError =
+  | MeetingSessionUploadBluesheetNonFieldErrorsErrorComponent
+  | MeetingSessionUploadBluesheetBluesheetNonFieldErrorsErrorComponent
+  | MeetingSessionUploadBluesheetBluesheetINDEXNonFieldErrorsErrorComponent
+  | MeetingSessionUploadBluesheetBluesheetINDEXNameErrorComponent
+  | MeetingSessionUploadBluesheetBluesheetINDEXAffiliationErrorComponent
+
+export type MeetingSessionUploadBluesheetErrorResponse400 =
+  | MeetingSessionUploadBluesheetValidationError
+  | ParseErrorResponse
+
+export type MeetingSessionUploadBluesheetNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type MeetingSessionUploadBluesheetValidationError = {
+  type: ValidationErrorEnum
+  errors: MeetingSessionUploadBluesheetError[]
+}
+
+export type MeetingSessionUploadChatlogChatlogErrorComponent = {
+  attr: 'chatlog'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadChatlogChatlogINDEXErrorComponent = {
+  attr: 'chatlog.INDEX'
+  code: 'not_a_dict' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadChatlogChatlogINDEXKEYErrorComponent = {
+  attr: 'chatlog.INDEX.KEY'
+  code: 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadChatlogError =
+  | MeetingSessionUploadChatlogNonFieldErrorsErrorComponent
+  | MeetingSessionUploadChatlogChatlogErrorComponent
+  | MeetingSessionUploadChatlogChatlogINDEXErrorComponent
+  | MeetingSessionUploadChatlogChatlogINDEXKEYErrorComponent
+
+export type MeetingSessionUploadChatlogErrorResponse400 =
+  | MeetingSessionUploadChatlogValidationError
+  | ParseErrorResponse
+
+export type MeetingSessionUploadChatlogNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type MeetingSessionUploadChatlogValidationError = {
+  type: ValidationErrorEnum
+  errors: MeetingSessionUploadChatlogError[]
+}
+
+export type MeetingSessionUploadPollsError =
+  | MeetingSessionUploadPollsNonFieldErrorsErrorComponent
+  | MeetingSessionUploadPollsPollsErrorComponent
+  | MeetingSessionUploadPollsPollsINDEXErrorComponent
+  | MeetingSessionUploadPollsPollsINDEXKEYErrorComponent
+
+export type MeetingSessionUploadPollsErrorResponse400 = MeetingSessionUploadPollsValidationError | ParseErrorResponse
+
+export type MeetingSessionUploadPollsNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type MeetingSessionUploadPollsPollsErrorComponent = {
+  attr: 'polls'
+  code: 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadPollsPollsINDEXErrorComponent = {
+  attr: 'polls.INDEX'
+  code: 'not_a_dict' | 'null' | 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadPollsPollsINDEXKEYErrorComponent = {
+  attr: 'polls.INDEX.KEY'
+  code: 'required'
+  detail: string
+}
+
+export type MeetingSessionUploadPollsValidationError = {
+  type: ValidationErrorEnum
+  errors: MeetingSessionUploadPollsError[]
+}
+
+export type MigrationEmail = {
+  address: string
+  primary: boolean
+  active: boolean
+}
+
+export type Name = {
+  full: string
+  plain: string
+  first: string
+  last: string
 }
 
 export type NotificationAck = {
@@ -519,7 +920,7 @@ export type NotifyRfcPublishedPagesErrorComponent = {
 
 export type NotifyRfcPublishedPublishedErrorComponent = {
   attr: 'published'
-  code: 'date' | 'invalid' | 'make_aware' | 'null' | 'overflow' | 'required'
+  code: 'date' | 'invalid' | 'make_aware' | 'naive' | 'null' | 'overflow' | 'required'
   detail: string
 }
 
@@ -630,6 +1031,113 @@ export type Person = {
   picture?: string
   url?: string
 }
+
+export type PersonAttendedMeetings = {
+  first_name: string
+  last_name: string
+  email: string
+  attended: AttendedMeeting[]
+}
+
+export type PersonPkBatchEntry = {
+  person_pk: number
+  status: StatusEnum
+  primary_uuid: string | null
+  prior_uuids: string[]
+}
+
+export type PersonPkBatchRequestRequest = {
+  person_pks: number[]
+}
+
+export type PersonPkBatchResponse = {
+  results: PersonPkBatchEntry[]
+}
+
+export type PersonUUIDBatchEntry = {
+  uuid: string
+  status: StatusEnum
+  is_primary: boolean | null
+  primary_uuid: string | null
+  prior_uuids: string[]
+}
+
+export type PersonUUIDBatchRequestRequest = {
+  uuids: string[]
+}
+
+export type PersonUUIDBatchResponse = {
+  results: PersonUUIDBatchEntry[]
+}
+
+export type PersonUUIDResolution = {
+  uuid?: string
+  is_primary?: boolean
+  primary_uuid?: string
+  prior_uuids?: string[]
+}
+
+export type PersonUuidByPersonPkError =
+  | PersonUuidByPersonPkNonFieldErrorsErrorComponent
+  | PersonUuidByPersonPkPersonPksErrorComponent
+  | PersonUuidByPersonPkPersonPksINDEXErrorComponent
+
+export type PersonUuidByPersonPkErrorResponse400 = PersonUuidByPersonPkValidationError | ParseErrorResponse
+
+export type PersonUuidByPersonPkNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PersonUuidByPersonPkPersonPksErrorComponent = {
+  attr: 'person_pks'
+  code: 'empty' | 'max_length' | 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type PersonUuidByPersonPkPersonPksINDEXErrorComponent = {
+  attr: 'person_pks.INDEX'
+  code: 'invalid' | 'max_string_length' | 'null' | 'required'
+  detail: string
+}
+
+export type PersonUuidByPersonPkValidationError = {
+  type: ValidationErrorEnum
+  errors: PersonUuidByPersonPkError[]
+}
+
+export type PersonUuidLookupError =
+  | PersonUuidLookupNonFieldErrorsErrorComponent
+  | PersonUuidLookupUuidsErrorComponent
+  | PersonUuidLookupUuidsINDEXErrorComponent
+
+export type PersonUuidLookupErrorResponse400 = PersonUuidLookupValidationError | ParseErrorResponse
+
+export type PersonUuidLookupNonFieldErrorsErrorComponent = {
+  attr: 'non_field_errors'
+  code: 'invalid' | 'null'
+  detail: string
+}
+
+export type PersonUuidLookupUuidsErrorComponent = {
+  attr: 'uuids'
+  code: 'empty' | 'max_length' | 'not_a_list' | 'null' | 'required'
+  detail: string
+}
+
+export type PersonUuidLookupUuidsINDEXErrorComponent = {
+  attr: 'uuids.INDEX'
+  code: 'invalid' | 'null' | 'required'
+  detail: string
+}
+
+export type PersonUuidLookupValidationError = {
+  type: ValidationErrorEnum
+  errors: PersonUuidLookupError[]
+}
+
+export type PersonUuidRetrieveErrorResponse400 = ParseErrorResponse
 
 export type PersonsByEmailErrorResponse400 = ParseErrorResponse
 
@@ -770,7 +1278,7 @@ export type PurpleRfcPartialUpdatePagesErrorComponent = {
 
 export type PurpleRfcPartialUpdatePublishedErrorComponent = {
   attr: 'published'
-  code: 'date' | 'invalid' | 'make_aware' | 'null' | 'overflow' | 'required'
+  code: 'date' | 'invalid' | 'make_aware' | 'naive' | 'null' | 'overflow' | 'required'
   detail: string
 }
 
@@ -940,7 +1448,7 @@ export type PurpleRfcUpdatePagesErrorComponent = {
 
 export type PurpleRfcUpdatePublishedErrorComponent = {
   attr: 'published'
-  code: 'date' | 'invalid' | 'make_aware' | 'null' | 'overflow' | 'required'
+  code: 'date' | 'invalid' | 'make_aware' | 'naive' | 'null' | 'overflow' | 'required'
   detail: string
 }
 
@@ -1082,6 +1590,8 @@ export type Reference = {
 
 export type RefreshRfcIndexErrorResponse400 = ParseErrorResponse
 
+export type RefreshRfcPopularityErrorResponse400 = ParseErrorResponse
+
 export type RelatedDraft = {
   id: number
   name: string
@@ -1220,6 +1730,39 @@ export type SchemaRetrieveErrorResponse400 = ParseErrorResponse
 
 export type SearchPersonErrorResponse400 = ParseErrorResponse
 
+export type SessionAttendeeRequest = {
+  person_uuid: string
+  join_time: Date
+}
+
+export type SessionAttendeesRequest = {
+  attendees: SessionAttendeeRequest[]
+}
+
+export type SessionBluesheetRequest = {
+  bluesheet: BluesheetEntryRequest[]
+}
+
+export type SessionChatlogRequest = {
+  chatlog: Record<string, unknown>[]
+}
+
+export type SessionPollsRequest = {
+  polls: Record<string, unknown>[]
+}
+
+export type SessionRecordingNameRequest = {
+  name: string
+}
+
+export type SessionUpdated = {
+  session_id: number
+}
+
+export type SessionVideoUrlRequest = {
+  url: string
+}
+
 export type Shepherd = {
   email: string
 }
@@ -1227,6 +1770,10 @@ export type Shepherd = {
 export type SlugEnum = 'bcp' | 'ds' | 'exp' | 'hist' | 'inf' | 'not-issued' | 'ps' | 'std' | 'unkn'
 
 export type SourceFormatEnum = 'unknown' | 'xml-v2' | 'xml-v3' | 'txt'
+
+export type StateEnum = 'active' | 'concluded' | 'other'
+
+export type StatusEnum = 'resolved' | 'unknown'
 
 export type StreamName = {
   slug: string
@@ -1299,7 +1846,7 @@ export type UploadRfcFilesErrorResponse400 = UploadRfcFilesValidationError | Par
 
 export type UploadRfcFilesMtimeErrorComponent = {
   attr: 'mtime'
-  code: 'date' | 'invalid' | 'make_aware' | 'null' | 'overflow'
+  code: 'date' | 'invalid' | 'make_aware' | 'naive' | 'null' | 'overflow'
   detail: string
 }
 
@@ -1327,6 +1874,23 @@ export type UploadRfcFilesValidationError = {
 }
 
 export type ValidationErrorEnum = 'validation_error'
+
+export type VerifyRequestRequest = {
+  username_or_email: string
+  encrypted_password: string
+}
+
+export type VerifyResponse = {
+  person_uuid: string | null
+  name: Name
+  emails: MigrationEmail[]
+  pronouns: string | null
+  github_username: string | null
+  portrait_url: string | null
+  legacy_sub: string
+  last_login: Date | null
+  already_linked: boolean
+}
 
 export type WgChair = {
   name?: string

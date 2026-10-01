@@ -4,127 +4,60 @@ exports[`homepage latest RFCs 1`] = `
 {
   "homepageLatest": [
     {
-      "abstract": "This memo specifies the data structure representation that was devised to support Simple Public Key Infrastructure (SPKI) certificates, as detailed in RFC 2692, with the intent that it be more widely applicable.  It has been and is being used elsewhere.  There are multiple implementations in a variety of programming languages.  Uses of this representation are referred to in this document as "S-expressions".  This memo makes precise the encodings of these SPKI S-expressions: It gives a "canonical form" for them, describes two "transport" representations, and also describes an "advanced" format for display to people.",
-      "authors": [
-        {
-          "affiliation": "MIT CSAIL",
-          "country": "USA",
-          "datatracker_person_path": "/person/Ronald%20L.%20Rivest",
-          "email": "rivest@theory.lcs.mit.edu",
-          "is_editor": false,
-          "person": 19822,
-          "titlepage_name": "Ronald Rivest",
-        },
-        {
-          "affiliation": "Independent",
-          "country": "US",
-          "datatracker_person_path": "/person/Donald%20E.%20Eastlake%203rd",
-          "email": "d3e3e3@gmail.com",
-          "is_editor": false,
-          "person": 102391,
-          "titlepage_name": "Donald Eastlake",
-        },
-      ],
-      "formats": [],
-      "group": {
-        "acronym": "art",
-        "name": "Applications and Real-Time Area",
-        "type": "area",
-      },
-      "identifiers": [
-        {
-          "type": "doi",
-          "value": "10.17487/RFC9804",
-        },
-      ],
-      "keywords": [],
-      "number": 9804,
-      "obsoleted_by": [],
-      "obsoletes": [],
-      "pages": 22,
-      "published": "2025-06-17",
-      "status": {
-        "name": "informational",
-        "slug": "inf",
-      },
-      "stream": {
-        "description": "Internet Engineering Task Force (IETF)",
-        "name": "IETF",
-        "slug": "IETF",
-      },
-      "subseries": [],
-      "title": "Simple Public Key Infrastructure (SPKI) S-Expressions",
-      "updated_by": [],
-      "updates": [],
-    },
-    {
-      "abstract": "The 3GPP mobile network Authentication and Key Agreement (AKA) is an authentication mechanism for devices wishing to access mobile networks. RFC 4187 (EAP-AKA) made the use of this mechanism possible within the Extensible Authentication Protocol (EAP) framework. RFC 5448 (EAP-AKA') was an improved version of EAP-AKA.
-
- This document is the most recent specification of EAP-AKA', including, for instance, details about and references related to operating EAP-AKA' in 5G networks.
-
- EAP-AKA' differs from EAP-AKA by providing a key derivation function that binds the keys derived within the method to the name of the access network. The key derivation function has been defined in the 3rd Generation Partnership Project (3GPP). EAP-AKA' allows its use in EAP in an interoperable manner. EAP-AKA' also updates the algorithm used in hash functions, as it employs SHA-256 / HMAC-SHA-256 instead of SHA-1 / HMAC-SHA-1, which is used in EAP-AKA.
-
- This version of the EAP-AKA' specification defines the protocol behavior for both 4G and 5G deployments, whereas the previous version defined protocol behavior for 4G deployments only. While EAP-AKA' as defined in RFC 5448 is not obsolete, this document defines the most recent and fully backwards-compatible specification of EAP-AKA'. This document updates both RFCs 4187 and 5448.",
+      "abstract": "This document specifies a method for a DNS client to request additional DNS record types to be delivered alongside the primary record type specified in the Question section of a DNS QUERY (OpCode=0).",
       "area": {
-        "acronym": "sec",
-        "name": "Security Area",
+        "acronym": "int",
+        "name": "Internet Area",
       },
       "authors": [
         {
-          "affiliation": "Ericsson",
-          "country": "Finland",
-          "datatracker_person_path": "/person/Jari%20Arkko",
-          "email": "jari.arkko@ericsson.com",
+          "affiliation": "Internet Systems Consortium, Inc.",
+          "country": "",
+          "datatracker_person_path": "/person/Ray%20Bellis",
+          "email": "ray@bellis.me.uk",
           "is_editor": false,
-          "person": 21072,
-          "titlepage_name": "Jari Arkko",
-        },
-        {
-          "affiliation": "Ericsson",
-          "country": "Finland",
-          "datatracker_person_path": "/person/Vesa%20Lehtovirta",
-          "email": "vesa.lehtovirta@ericsson.com",
-          "is_editor": false,
-          "person": 107410,
-          "titlepage_name": "Vesa Lehtovirta",
-        },
-        {
-          "affiliation": "Ericsson",
-          "country": "Finland",
-          "datatracker_person_path": "/person/Vesa%20Torvinen",
-          "email": "vesa.torvinen@ericsson.com",
-          "is_editor": false,
-          "person": 105361,
-          "titlepage_name": "Vesa Torvinen",
-        },
-        {
-          "affiliation": "Independent",
-          "country": "Finland",
-          "datatracker_person_path": "/person/Pasi%20Eronen",
-          "email": "pe@iki.fi",
-          "is_editor": false,
-          "person": 106164,
-          "titlepage_name": "Pasi Eronen",
+          "person": 109059,
+          "titlepage_name": "R. Bellis",
         },
       ],
-      "formats": [],
+      "formats": [
+        {
+          "format": "xml",
+        },
+        {
+          "format": "txt",
+        },
+        {
+          "format": "html",
+        },
+        {
+          "format": "pdf",
+        },
+        {
+          "format": "json",
+        },
+      ],
       "group": {
-        "acronym": "emu",
-        "name": "EAP Method Update",
+        "acronym": "dnssd",
+        "name": "Extensions for Scalable DNS Service Discovery",
+        "state": "active",
         "type": "wg",
       },
       "identifiers": [
         {
           "type": "doi",
-          "value": "10.17487/RFC9048",
+          "value": "10.17487/RFC10029",
         },
       ],
-      "keywords": [],
-      "number": 9048,
+      "keywords": [
+        "DNS",
+        "resource records",
+      ],
+      "number": 10029,
       "obsoleted_by": [],
       "obsoletes": [],
-      "pages": 40,
-      "published": "2021-10-29",
+      "pages": 12,
+      "published": "2026-07-31",
       "status": {
         "name": "proposed standard",
         "slug": "ps",
@@ -135,80 +68,143 @@ exports[`homepage latest RFCs 1`] = `
         "slug": "IETF",
       },
       "subseries": [],
-      "title": "Improved Extensible Authentication Protocol Method for 3GPP Mobile Network Authentication and Key Agreement (EAP-AKA')",
-      "updated_by": [
-        {
-          "id": 143548,
-          "number": 9678,
-          "title": "Forward Secrecy Extension to the Improved Extensible Authentication Protocol Method for Authentication and Key Agreement (EAP-AKA' FS)",
-        },
-      ],
-      "updates": [
-        {
-          "id": 126119,
-          "number": 4187,
-          "title": "Extensible Authentication Protocol Method for 3rd Generation Authentication and Key Agreement (EAP-AKA)",
-        },
-        {
-          "id": 127335,
-          "number": 5448,
-          "title": "Improved Extensible Authentication Protocol Method for 3rd Generation Authentication and Key Agreement (EAP-AKA')",
-        },
-      ],
+      "title": "DNS Multiple QTYPEs",
+      "updated_by": [],
+      "updates": [],
     },
     {
-      "abstract": "This document defines FFV1, a lossless, intra-frame video encoding format.  FFV1 is designed to efficiently compress video data in a variety of pixel formats.  Compared to uncompressed video, FFV1 offers storage compression, frame fixity, and self-description, which makes FFV1 useful as a preservation or intermediate video format.",
+      "abstract": "The UIDBATCHES extension of the Internet Message Access Protocol (IMAP) allows clients to retrieve Unique Identifier (UID) ranges that partition a mailbox's messages into equally sized batches. This enables clients to perform operations such as FETCH, SEARCH, and STORE on specific message batches, providing better control over resource usage and response sizes. The extension is particularly useful with the UIDONLY mode where sequence numbers are unavailable.",
       "area": {
         "acronym": "art",
         "name": "Applications and Real-Time Area",
       },
       "authors": [
         {
-          "affiliation": "",
+          "affiliation": "Apple Inc",
           "country": "",
-          "datatracker_person_path": "/person/Michael%20Niedermayer",
-          "email": "michael@niedermayer.cc",
-          "is_editor": false,
-          "person": 123033,
-          "titlepage_name": "Michael Niedermayer",
-        },
-        {
-          "affiliation": "",
-          "country": "",
-          "datatracker_person_path": "/person/Dave%20Rice",
-          "email": "dave@dericed.com",
-          "is_editor": false,
-          "person": 122286,
-          "titlepage_name": "Dave Rice",
-        },
-        {
-          "affiliation": "",
-          "country": "",
-          "datatracker_person_path": "/person/J%C3%A9r%C3%B4me%20Martinez",
-          "email": "jerome@mediaarea.net",
-          "is_editor": false,
-          "person": 123034,
-          "titlepage_name": "Jérôme Martinez",
+          "datatracker_person_path": "/person/Daniel%20Eggert",
+          "email": "deggert@apple.com",
+          "is_editor": true,
+          "person": 137791,
+          "titlepage_name": "D. Eggert",
         },
       ],
-      "formats": [],
+      "formats": [
+        {
+          "format": "xml",
+        },
+        {
+          "format": "txt",
+        },
+        {
+          "format": "html",
+        },
+        {
+          "format": "pdf",
+        },
+        {
+          "format": "json",
+        },
+      ],
       "group": {
-        "acronym": "cellar",
-        "name": "Codec Encoding for LossLess Archiving and Realtime transmission",
+        "acronym": "mailmaint",
+        "name": "Mail Maintenance",
+        "state": "active",
         "type": "wg",
       },
       "identifiers": [
         {
           "type": "doi",
-          "value": "10.17487/RFC9043",
+          "value": "10.17487/RFC10022",
         },
       ],
-      "keywords": [],
-      "number": 9043,
+      "keywords": [
+        "IMAP",
+      ],
+      "number": 10022,
       "obsoleted_by": [],
       "obsoletes": [],
-      "pages": 51,
-      "published": "2021-08-23",
+      "pages": 14,
+      "published": "2026-07-31",
+      "status": {
+        "name": "proposed standard",
+        "slug": "ps",
+      },
+      "stream": {
+        "description": "Internet Engineering Task Force (IETF)",
+        "name": "IETF",
+        "slug": "IETF",
+      },
+      "subseries": [],
+      "title": "IMAP UIDBATCHES Extension",
+      "updated_by": [],
+      "updates": [],
+    },
+    {
+      "abstract": "This document defines an operational convention that uses the
+   reserved underscored DNS leaf node name "_for-sale" to indicate the
+   parent domain name is available for purchase.
+
+   The convention can be deployed without disrupting existing
+   operations, and it may be applied even when the domain name is still
+   actively in use.",
+      "area": {
+        "acronym": "gen",
+        "name": "General Area",
+      },
+      "authors": [
+        {
+          "affiliation": "SIDN Labs",
+          "country": "",
+          "datatracker_person_path": "/person/Marco%20Davids",
+          "email": "marco.davids@sidn.nl",
+          "is_editor": false,
+          "person": 113569,
+          "titlepage_name": "M. Davids",
+        },
+      ],
+      "formats": [
+        {
+          "format": "xml",
+        },
+        {
+          "format": "txt",
+        },
+        {
+          "format": "html",
+        },
+        {
+          "format": "pdf",
+        },
+        {
+          "format": "json",
+        },
+      ],
+      "group": {
+        "acronym": "none",
+        "name": "Individual Submissions",
+        "state": "active",
+        "type": "individ",
+      },
+      "identifiers": [
+        {
+          "type": "doi",
+          "value": "10.17487/RFC10023",
+        },
+      ],
+      "keywords": [
+        "domain name system",
+        "domain sale",
+        "domain brokerage",
+        "domain aftermarket",
+        "TXT record",
+        "attrleaf",
+      ],
+      "number": 10023,
+      "obsoleted_by": [],
+      "obsoletes": [],
+      "pages": 18,
+      "published": "2026-07-30",
       "status": {
         "name": "informational",
         "slug": "inf",
@@ -219,7 +215,7 @@ exports[`homepage latest RFCs 1`] = `
         "slug": "IETF",
       },
       "subseries": [],
-      "title": "FFV1 Video Coding Format Versions 0, 1, and 3",
+      "title": "The "_for-sale" Underscored and Globally Scoped DNS Node Name",
       "updated_by": [],
       "updates": [],
     },
