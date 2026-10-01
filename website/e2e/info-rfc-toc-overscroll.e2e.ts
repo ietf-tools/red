@@ -22,11 +22,10 @@
  * scrolls all the way to the top (verified: 600px -> 0); with it, 0px of movement.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage } from '@nuxt/test-utils/e2e'
 import type { Page } from 'playwright-core'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 // rfc10008 (the RFC named in the issue) is available via the `/api/v1/**` dev proxy
 // and has a ToC long enough to overflow the short viewport used below.
@@ -76,7 +75,7 @@ describe('info/rfcN/ ToC overscroll', async () => {
   test(
     'wheeling up over the ToC at its top boundary does not chain-scroll the page',
     async () => {
-      const page = await createPage(infoSeriesPathBuilder(RFC))
+      const page = await openHydratedPage(infoSeriesPathBuilder(RFC))
       await page.setViewportSize(VIEWPORT)
 
       await page.locator('nav[aria-label="In this section"]').first().waitFor({ state: 'visible' })

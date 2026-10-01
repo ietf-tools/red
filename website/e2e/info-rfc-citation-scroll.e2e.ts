@@ -28,11 +28,10 @@
  * the time (verified over 100 runs), so the test is deterministic.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage } from '@nuxt/test-utils/e2e'
 import type { Page } from 'playwright-core'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 // rfc8900 is available via the `/api/v1/**` dev proxy and has several in-text RFC
 // citations (RFC2119, RFC8174, RFC0791, …) whose preview data also loads.
@@ -73,7 +72,7 @@ describe('info/rfcN citation links', async () => {
   test(
     'clicking an in-content RFC citation stays at the target and does not scroll back',
     async () => {
-      const page = await createPage(infoSeriesPathBuilder(RFC))
+      const page = await openHydratedPage(infoSeriesPathBuilder(RFC))
       await page.setViewportSize(VIEWPORT)
 
       // Behave like a real first visit: preview data is fetched fresh, so the popover

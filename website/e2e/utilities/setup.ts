@@ -19,7 +19,7 @@
  * taken this way disagree with baselines recorded headless.
  */
 import { afterAll, beforeAll, inject } from 'vitest'
-import { setup, waitForHydration } from '@nuxt/test-utils/e2e'
+import { createPage, setup, url, waitForHydration } from '@nuxt/test-utils/e2e'
 import { chromium } from 'playwright-core'
 import type { Browser, LaunchOptions, Page } from 'playwright-core'
 import { isTruthyEnv } from './screenshot'
@@ -35,10 +35,11 @@ declare module 'vitest' {
 /** How far to slow a headed run down, so a reader can follow what the browser is doing. */
 const HEADED_SLOW_MO_MS = 250
 
-// Playwright's 30s default has been too tight for setupConcurrentPages: its callers open many
-// pages against the single shared dev server at once (e.g. info-rfc-layout.e2e.ts's 22 concurrent
-// loads), and a large RFC's SSR render can queue behind the others long enough to trip it.
-const CONCURRENT_PAGE_NAVIGATION_TIMEOUT_MS = 60_000
+// Playwright's 30s default has been too tight for loading a page here: the suites share a single
+// dev server, so a large RFC's SSR render, or the client bundle compiling cold, can queue behind
+// other files' pages (info-rfc-layout.e2e.ts alone opens 22 concurrently). It covers the
+// navigation and the hydration wait that follows it, both of which have timed out at 30s.
+const PAGE_LOAD_TIMEOUT_MS = 60_000
 
 const isHeaded = isTruthyEnv(process.env.E2E_HEADED)
 
@@ -89,10 +90,26 @@ export const setupConcurrentPages = (): ((path: string) => Promise<Page>) => {
       throw Error('setupConcurrentPages() must be called from a describe body so its beforeAll can launch the browser')
     }
     const page = await browser.newPage()
+    page.setDefaultTimeout(PAGE_LOAD_TIMEOUT_MS)
     const href = new URL(path, baseUrl).href
-    await page.goto(href, { timeout: CONCURRENT_PAGE_NAVIGATION_TIMEOUT_MS })
+    await page.goto(href)
     // The app renders client-side, so anything read before hydration finishes is of the shell.
     await waitForHydration(page, href, 'hydration')
     return page
   }
+}
+
+/**
+ * Opens a page on a path and waits for it to hydrate, in place of `createPage(path)`, whose
+ * navigation and hydration wait are both capped at Playwright's 30s default with no way to widen it.
+ */
+export const openHydratedPage = async (
+  path: string,
+  { beforeLoad }: { beforeLoad?: (page: Page) => Promise<void> } = {}
+): Promise<Page> => {
+  const page = await createPage()
+  page.setDefaultTimeout(PAGE_LOAD_TIMEOUT_MS)
+  await beforeLoad?.(page)
+  await page.goto(url(path), { waitUntil: 'hydration' })
+  return page
 }

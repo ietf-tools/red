@@ -7,9 +7,8 @@
  * usable width at 200% text on a narrow screen.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, url, waitForHydration } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 /** Small, has both a references list and underscore identifiers. */
 const RFC_UNDER_TEST = 'rfc9297'
@@ -33,13 +32,12 @@ describe('RFC word breaks', async () => {
   await setupNuxtServer()
 
   const openRfc = async () => {
-    const page = await createPage()
-    await page.setViewportSize(REFLOW_VIEWPORT)
-    const href = url(infoSeriesPathBuilder(RFC_UNDER_TEST))
-    await page.goto(href, { waitUntil: 'networkidle' })
-    // The app renders client-side, so a read right after `networkidle` can land before the
-    // precomputed content — the `<wbr>`s included — replaces the SSR shell.
-    await waitForHydration(page, href, 'hydration')
+    const page = await openHydratedPage(infoSeriesPathBuilder(RFC_UNDER_TEST), {
+      beforeLoad: (loading) => loading.setViewportSize(REFLOW_VIEWPORT)
+    })
+    // Hydration finishing does not mean the precomputed content has replaced the SSR shell, and the
+    // `<wbr>`s arrive with it. A `<wbr>` has no box, so it is attached rather than visible.
+    await page.locator('.rfc-content wbr').first().waitFor({ state: 'attached' })
     return page
   }
 
@@ -148,29 +146,31 @@ describe('RFC word breaks', async () => {
   test(
     'a citation holding a touch preview button needs a correspondingly wider container',
     async () => {
-      const page = await createPage()
       // The touch store reads `(pointer: coarse)`; answering yes is what makes RFCRouterLink render
       // the preview button inside each RFC citation.
-      await page.addInitScript(() => {
-        const original = window.matchMedia.bind(window)
-        window.matchMedia = (query: string) =>
-          query === '(pointer: coarse)'
-            ? ({
-                matches: true,
-                media: query,
-                onchange: null,
-                addEventListener: () => {},
-                removeEventListener: () => {},
-                addListener: () => {},
-                removeListener: () => {},
-                dispatchEvent: () => false
-              } as MediaQueryList)
-            : original(query)
+      const page = await openHydratedPage(infoSeriesPathBuilder(RFC_UNDER_TEST), {
+        beforeLoad: async (loading) => {
+          await loading.addInitScript(() => {
+            const original = window.matchMedia.bind(window)
+            window.matchMedia = (query: string) =>
+              query === '(pointer: coarse)'
+                ? ({
+                    matches: true,
+                    media: query,
+                    onchange: null,
+                    addEventListener: () => {},
+                    removeEventListener: () => {},
+                    addListener: () => {},
+                    removeListener: () => {},
+                    dispatchEvent: () => false
+                  } as MediaQueryList)
+                : original(query)
+          })
+          await loading.setViewportSize(REFLOW_VIEWPORT)
+        }
       })
-      await page.setViewportSize(REFLOW_VIEWPORT)
-      const href = url(infoSeriesPathBuilder(RFC_UNDER_TEST))
-      await page.goto(href, { waitUntil: 'networkidle' })
-      await waitForHydration(page, href, 'hydration')
+      // The button renders with the precomputed content, after hydration.
+      await page.locator('.rfc-content p [data-rfc-preview-button]').first().waitFor({ state: 'attached' })
 
       // A real citation span is used because it holds the rendered button. Whatever grouping the
       // document gave it is replaced with `wordsize-12`, and its paragraph is sized so that the plain

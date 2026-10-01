@@ -1,8 +1,7 @@
 // loads homepage
 import { describe, expect, test } from 'vitest'
-import { createPage } from '@nuxt/test-utils/e2e'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 const HOMEPAGE_TEST_DURATION_MS = 30_000
 
@@ -44,7 +43,7 @@ describe.skip('homepage', async () => {
   test(
     'loads homepage',
     async () => {
-      const page = await createPage('/')
+      const page = await openHydratedPage('/')
       await page.setViewportSize(VIEWPORT)
 
       // The document responded and rendered a non-empty title.

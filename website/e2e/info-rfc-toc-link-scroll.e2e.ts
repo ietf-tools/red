@@ -33,10 +33,9 @@
  * deleting the centring outright.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, url } from '@nuxt/test-utils/e2e'
 import type { Page } from 'playwright-core'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 // rfc8792 is available via the `/api/v1/**` dev proxy and is the document the bug was
 // reported against. Its ToC is deep enough that section 4 sits thousands of px down.
@@ -70,10 +69,6 @@ const MIN_TARGET_DISTANCE_PX = 500
 
 const TEST_TIMEOUT_MS = 120_000
 
-// createPage()'s own navigation is capped at Playwright's 30s default, which a cold SSR render of a
-// large RFC can exceed on a loaded CI runner.
-const NAVIGATION_TIMEOUT_MS = 60_000
-
 /** Absolute document offset (px) of the element an in-page link points at. */
 const targetOffsetOf = (page: Page, href: string): Promise<number> =>
   page.evaluate((hash) => {
@@ -98,8 +93,7 @@ const scrollYOf = (page: Page): Promise<number> => page.evaluate(() => Math.roun
 
 /** A loaded info page with the desktop menu rendered and settled. */
 const openInfoPage = async (): Promise<Page> => {
-  const page = await createPage()
-  await page.goto(url(infoSeriesPathBuilder(RFC)), { waitUntil: 'hydration', timeout: NAVIGATION_TIMEOUT_MS })
+  const page = await openHydratedPage(infoSeriesPathBuilder(RFC))
   await page.setViewportSize(VIEWPORT)
   await page.locator(DESKTOP_NAV).first().waitFor({ state: 'visible' })
   // The menu is only `sticky` once mounted, and centring only runs after mount.

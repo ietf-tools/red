@@ -7,8 +7,7 @@
 // of which run their own arrow-key navigation over every nested collection
 // item. See HeaderNavDesktop.vue / HeaderNavMobile.vue.
 import { describe, expect, test } from 'vitest'
-import { createPage } from '@nuxt/test-utils/e2e'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 import type { Page } from 'playwright-core'
 
 const TEST_TIMEOUT_MS = 60_000
@@ -30,7 +29,7 @@ describe('header preferences keyboard nav', async () => {
   test(
     'desktop: arrows move selection within the theme radio group and wrap without escaping',
     async () => {
-      const page = await createPage('/')
+      const page = await openHydratedPage('/')
       await page.setViewportSize({ width: 1400, height: 900 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
@@ -78,7 +77,7 @@ describe('header preferences keyboard nav', async () => {
   test(
     'mobile: arrows from an accordion header stay on headers and never change the theme',
     async () => {
-      const page = await createPage('/')
+      const page = await openHydratedPage('/')
       await page.setViewportSize({ width: 390, height: 844 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
@@ -114,7 +113,7 @@ describe('header preferences keyboard nav', async () => {
   test(
     'mobile: arrows move between top-level items including the Search link',
     async () => {
-      const page = await createPage('/')
+      const page = await openHydratedPage('/')
       await page.setViewportSize({ width: 390, height: 844 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
@@ -147,7 +146,7 @@ describe('header preferences keyboard nav', async () => {
   test(
     'mobile: arrows move between sibling links inside an expanded submenu',
     async () => {
-      const page = await createPage('/')
+      const page = await openHydratedPage('/')
       await page.setViewportSize({ width: 390, height: 844 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 
@@ -183,7 +182,7 @@ describe('header preferences keyboard nav', async () => {
   test(
     'mobile: once inside the theme radio group, arrows move selection',
     async () => {
-      const page = await createPage('/')
+      const page = await openHydratedPage('/')
       await page.setViewportSize({ width: 390, height: 844 })
       await page.locator('text=Latest RFCs').first().waitFor({ state: 'visible' })
 

@@ -22,10 +22,9 @@
  * standard hash anchor and the router breaks it.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 // rfc9980 is available via the `/api/v1/**` dev proxy and has several in-text
 // NON-RFC citations ([FIPS-203], [FIPS-204], [FIPS-205]) rendered as plain
@@ -48,7 +47,7 @@ describe('info/rfcN non-RFC citation Back button', async () => {
   test(
     'pressing Back after following a non-RFC citation restores the reading position',
     async () => {
-      const page = await createPage(infoSeriesPathBuilder(RFC))
+      const page = await openHydratedPage(infoSeriesPathBuilder(RFC))
       await page.setViewportSize(VIEWPORT)
 
       await page.locator('.rfc-content').first().waitFor({ state: 'visible' })

@@ -6,10 +6,9 @@
  * notice.
  */
 import { describe, expect, test } from 'vitest'
-import { createPage, url } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 import { fontMetrics, type TextStyle } from '../../precomputer/src/utilities/font-metrics'
-import { setupNuxtServer } from './utilities/setup'
+import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
 /** Has paragraphs, bold reference labels and inline code, so every style is present. */
 const RFC_UNDER_TEST = 'rfc9000'
@@ -28,11 +27,22 @@ const TIME_PER_TEST_MS = 60_000
 describe('committed font metrics still match the browser', async () => {
   await setupNuxtServer()
 
+  const openRfc = async () => {
+    const page = await openHydratedPage(infoSeriesPathBuilder(RFC_UNDER_TEST))
+    // Hydration finishing does not mean the precomputed content has replaced the SSR shell, and the
+    // elements measured below are in it. The fonts are waited for as well, since an advance measured
+    // in the fallback face would read as drift in the table.
+    for (const selector of Object.values(SELECTORS)) {
+      await page.locator(selector).first().waitFor({ state: 'attached' })
+    }
+    await page.evaluate(() => document.fonts.ready.then(() => undefined))
+    return page
+  }
+
   test(
     'per-character advances agree with a live measurement',
     async () => {
-      const page = await createPage()
-      await page.goto(url(infoSeriesPathBuilder(RFC_UNDER_TEST)), { waitUntil: 'networkidle' })
+      const page = await openRfc()
 
       const measured = await page.evaluate(
         ([selectors, sample]) =>
@@ -80,8 +90,7 @@ describe('committed font metrics still match the browser', async () => {
   test(
     'the table describes the font that is actually rendering',
     async () => {
-      const page = await createPage()
-      await page.goto(url(infoSeriesPathBuilder(RFC_UNDER_TEST)), { waitUntil: 'networkidle' })
+      const page = await openRfc()
       const live = await page.evaluate((selector) => {
         const element = document.querySelector(selector as string)
         return element ? getComputedStyle(element).fontFamily : null
