@@ -4,7 +4,7 @@
       <div class="container mx-auto pb-10">
         <template v-if="setLoad.status === 'ready'">
           <Alert level="1" variant="info" heading="Community content">
-            <p>This set was created by a community member.</p>
+            <p>This Set was created by a community member.</p>
           </Alert>
           <Heading level="2" style-level="1" class="text-left mt-10 mb-4 pl-5">
             RFC Set <template v-if="setLoad.set.title">&quot;{{ setLoad.set.title }}&quot;</template>
@@ -26,7 +26,7 @@
                 <span v-else>{{ doc }}</span>
               </li>
             </ul>
-            <p v-else>This set is empty.</p>
+            <p v-else>This Set is empty.</p>
           </div>
         </template>
 
@@ -42,12 +42,12 @@
            worded to cover all of them rather than claim which. -->
         <Alert v-else-if="setLoad.status === 'notFound'" level="1" variant="warning" heading="Set not found">
           <p class="pt-2">
-            No set found (404). The link may be wrong, or the set may have been deleted or may not be public.
+            No Set found (404). The link may be wrong, or the Set may have been deleted or may not be public.
           </p>
         </Alert>
 
         <Alert v-else level="1" variant="warning" heading="Error">
-          <p class="pt-2">This set could not be loaded. Please try again.</p>
+          <p class="pt-2">This Set could not be loaded. Please try again.</p>
         </Alert>
       </div>
     </NuxtLayout>
@@ -168,7 +168,7 @@ useRfcEditorHead({
   title: 'RFC Set',
   canonicalPath: false,
   noIndex: true,
-  description: 'A public set',
+  description: 'A public Set',
   contentType: 'article'
 })
 </script>

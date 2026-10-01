@@ -111,7 +111,7 @@ const KIND_CHANGE: Record<SubscriptionKind, string> = {
   by_status: 'Published',
   obsoleted: 'Obsoleted',
   rfc: 'Updated',
-  set: 'Added to a set you follow',
+  set: 'Added to a Set you follow',
   subject: 'Added to a subject you follow'
 }
 

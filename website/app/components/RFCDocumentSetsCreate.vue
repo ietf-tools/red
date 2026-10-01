@@ -23,12 +23,12 @@
           'bg-white dark:bg-gray-800',
           'px-4 pt-3 pb-1'
         ]">
-        <DialogTitle class="text-lg font-semibold text-center pb-3">Create set</DialogTitle>
+        <DialogTitle class="text-lg font-semibold text-center pb-3">Create Set</DialogTitle>
 
         <!-- That a set is public is said here rather than left to be discovered: the API carries no
            visibility, so it isn't something the reader chooses. -->
         <DialogDescription class="text-sm">
-          RFC {{ props.rfcNumber }} will be added to the new set. This content is public, do not include any private
+          RFC {{ props.rfcNumber }} will be added to the new Set. This content is public, do not include any private
           information. Inappropriate data may be removed.
         </DialogDescription>
 
@@ -79,7 +79,7 @@
               type="submit"
               :disabled="isCreating"
               class="font-bold bg-blue-600 text-white px-3 py-2 rounded cursor-pointer disabled:opacity-60 disabled:cursor-default">
-              {{ isCreating ? 'Creating…' : 'Create set' }}
+              {{ isCreating ? 'Creating…' : 'Create Set' }}
             </button>
           </div>
         </form>
@@ -166,7 +166,7 @@ const onSubmit = async () => {
 
   // `required` on the input already stops an empty title, but not one that's only spaces.
   if (newSetTitle.value.trim() === '') {
-    createError.value = 'A set needs a title.'
+    createError.value = 'A Set needs a title.'
     return
   }
 

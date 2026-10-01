@@ -18,7 +18,7 @@
       </li>
       <li class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2">
         <GraphicsStackAddRegular class="inline-block w-[24px] h-[24px]" />
-        <Heading level="3" style-level="5" class="text-center"> Create RFC sets</Heading>
+        <Heading level="3" style-level="5" class="text-center"> Create RFC Sets</Heading>
         <p class="text-sm text-center text-gray-800 dark:text-gray-200">
           Organize the RFCs most useful to you and your projects
         </p>

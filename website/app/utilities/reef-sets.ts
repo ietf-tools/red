@@ -47,10 +47,10 @@ export const setCreationErrorMessage = (error: unknown): string => {
       return firstMessage
     }
     if (error.status === 401) {
-      return 'Your session has expired. Sign in again to create a set.'
+      return 'Your session has expired. Sign in again to create a Set.'
     }
   }
-  return 'Your set could not be created. Please try again.'
+  return 'Your Set could not be created. Please try again.'
 }
 
 // --- Announcements ----------------------------------------------------------------------

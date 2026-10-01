@@ -28,7 +28,7 @@
             ]">
             <DialogTitle class="text-lg font-semibold text-center pb-3">
               <template v-if="!isAuthenticated">You need an account to</template>
-              <template v-else>Your sets</template>
+              <template v-else>Your Sets</template>
             </DialogTitle>
 
             <DialogDescription class="text-sm">
@@ -46,7 +46,7 @@
                     :aria-label="`Sets holding RFC ${props.rfcNumber}`"
                     class="mx-auto max-w-[300px] flex flex-col gap-1 pb-2">
                     <p class="text-sm italic">
-                      Check a set to add <Component :is="formattedTitle" /> to it.<br />
+                      Check a Set to add <Component :is="formattedTitle" /> to it.<br />
                       Uncheck to remove it.
                     </p>
                     <template v-for="set in props.sets" :key="set.id">
@@ -76,7 +76,7 @@
                   <!-- Nothing to tick yet. Said rather than left blank, so the reader reads it as
                    an empty list with the Create button below as the way on, rather than as a
                    dialog that failed to load. -->
-                  <p v-else class="text-center italic pb-5">You have no sets yet.</p>
+                  <p v-else class="text-center italic pb-5">You have no Sets yet.</p>
                   <RFCDocumentSetsCreate
                     :rfc-number="props.rfcNumber"
                     :create-set="props.createSet"
@@ -110,8 +110,8 @@
         :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         Added to
         {{ formatNumber(props.reefStats.setCount, 0) }}
-        <template v-if="props.reefStats.setCount === 1">set</template>
-        <template v-else>sets</template>
+        <template v-if="props.reefStats.setCount === 1">Set</template>
+        <template v-else>Sets</template>
       </p>
     </div>
   </div>

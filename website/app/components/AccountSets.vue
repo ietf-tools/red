@@ -1,6 +1,6 @@
 <template>
   <section aria-labelledby="account-sets-heading">
-    <Heading id="account-sets-heading" level="2">Your sets</Heading>
+    <Heading id="account-sets-heading" level="2">Your Sets</Heading>
 
     <p
       v-if="setsLoadingStatus.type === 'loading'"
@@ -27,7 +27,7 @@
           <div class="flex items-start justify-between gap-2">
             <span>
               <Anchor :href="setPathBuilder(set.id)" class="underline font-bold">
-                {{ set.title || 'Untitled set' }}
+                {{ set.title || 'Untitled Set' }}
               </Anchor>
               <template v-if="set.description">: {{ set.description }}</template>
               <span v-if="setDeleteErrors[set.id]" class="block text-sm text-red-700" role="alert">
@@ -40,7 +40,7 @@
                 :open="editSetId === set.id"
                 @update:open="(open) => (open ? openEditSet(set) : (editSetId = undefined))">
                 <DialogTrigger
-                  :aria-label="`Edit set: ${set.title || 'Untitled set'}`"
+                  :aria-label="`Edit Set: ${set.title || 'Untitled Set'}`"
                   class="cursor-pointer px-2 py-1 font-bold text-sm rounded-md border-1 border-gray-400 hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800">
                   Edit
                 </DialogTrigger>
@@ -53,7 +53,7 @@
                       'bg-white dark:bg-gray-800',
                       'px-4 pt-3 pb-1'
                     ]">
-                    <DialogTitle class="text-lg font-semibold text-center pb-3">Edit set</DialogTitle>
+                    <DialogTitle class="text-lg font-semibold text-center pb-3">Edit Set</DialogTitle>
 
                     <DialogDescription class="text-sm">
                       Sets are public: anyone with the link can see the title and description.
@@ -121,7 +121,7 @@
                 :open="confirmDeleteSetId === set.id"
                 @update:open="(open) => (confirmDeleteSetId = open ? set.id : undefined)">
                 <DialogTrigger
-                  :aria-label="`Delete set: ${set.title || 'Untitled set'}`"
+                  :aria-label="`Delete Set: ${set.title || 'Untitled Set'}`"
                   class="cursor-pointer px-2 py-1 font-bold text-sm rounded-md border-1 border-gray-400 hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800">
                   Delete
                 </DialogTrigger>
@@ -134,10 +134,10 @@
                       'bg-white dark:bg-gray-800',
                       'px-4 pt-3 pb-1'
                     ]">
-                    <DialogTitle class="text-lg font-semibold text-center pb-3">Delete this set?</DialogTitle>
+                    <DialogTitle class="text-lg font-semibold text-center pb-3">Delete this Set?</DialogTitle>
 
                     <DialogDescription class="text-sm">
-                      <p>{{ set.title || 'Untitled set' }}</p>
+                      <p>{{ set.title || 'Untitled Set' }}</p>
                       <p class="pt-2">This can't be undone, and anyone else with the link will lose it too.</p>
 
                       <!-- role="alert" so a failed delete is announced: the dialog stays put and
@@ -175,7 +175,7 @@
           </div>
         </li>
       </ul>
-      <p v-else class="italic py-3">You have no sets yet.</p>
+      <p v-else class="italic py-3">You have no Sets yet.</p>
     </template>
   </section>
 </template>
@@ -227,8 +227,8 @@ const loadSets = async () => {
       type: 'error',
       message:
         error instanceof ReefError && error.status === 403
-          ? "You don't have permission to view these sets."
-          : 'Unable to load your sets. See the web console for details.'
+          ? "You don't have permission to view these Sets."
+          : 'Unable to load your Sets. See the web console for details.'
     }
   }
 }
@@ -259,7 +259,7 @@ const saveEditSet = async () => {
   }
   // `required` on the input already stops an empty title, but not one that's only spaces.
   if (editTitle.value.trim() === '') {
-    editError.value = 'A set needs a title.'
+    editError.value = 'A Set needs a title.'
     return
   }
 
@@ -275,7 +275,7 @@ const saveEditSet = async () => {
     editSetId.value = undefined
   } catch (error) {
     console.error('Unable to update this set.', error)
-    editError.value = 'Unable to update this set. Please try again.'
+    editError.value = 'Unable to update this Set. Please try again.'
   } finally {
     editSaving.value = false
   }
@@ -297,7 +297,7 @@ const deleteSetRow = async (set: DocumentSet) => {
     sets.value = sets.value.filter(({ id }) => id !== set.id)
   } catch (error) {
     console.error('Unable to delete this set.', error)
-    setDeleteErrors[set.id] = 'Unable to delete this set. Please try again.'
+    setDeleteErrors[set.id] = 'Unable to delete this Set. Please try again.'
   } finally {
     delete setsDeleting[set.id]
   }
