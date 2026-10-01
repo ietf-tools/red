@@ -24,7 +24,7 @@
           <GraphicsCheckmark class="block w-[14px] h-[14px]" />
         </CheckboxIndicator>
       </span>
-      <span>Send me a daily digest of my subscriptions by email</span>
+      <span>Send me a daily digest of my Subscriptions by email</span>
     </CheckboxRoot>
   </section>
 </template>

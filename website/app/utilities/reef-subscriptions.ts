@@ -194,7 +194,7 @@ export const useUserNewRfcSubscription = (): {
       console.error('Unable to load your new-RFC subscription.', error)
       status.value = {
         type: 'error',
-        message: 'Unable to load your new-RFC subscription. See the web console for details.'
+        message: 'Unable to load your new-RFC Subscription. See the web console for details.'
       }
     }
   }
@@ -313,7 +313,7 @@ export const useUserSubjectSubscription = (
       console.error('Unable to load your subject subscription.', error)
       status.value = {
         type: 'error',
-        message: 'Unable to load your subject subscription. See the web console for details.'
+        message: 'Unable to load your subject Subscription. See the web console for details.'
       }
     }
   }

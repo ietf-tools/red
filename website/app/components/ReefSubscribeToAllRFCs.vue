@@ -32,7 +32,7 @@
             ]">
             <DialogTitle class="text-lg font-semibold text-center pb-3">
               <template v-if="!isAuthenticated">You need an account to</template>
-              <template v-else>New RFCs subscription</template>
+              <template v-else>New RFCs Subscription</template>
             </DialogTitle>
 
             <DialogDescription class="text-sm pt-3">
@@ -128,7 +128,7 @@ watch(
 
 const loadAnnouncement = computed(() => {
   if (isLoading.value) {
-    return 'Loading your subscription status.'
+    return 'Loading your Subscription status.'
   }
   return hasLoaded.value ? 'Subscription status loaded.' : ''
 })

@@ -1,7 +1,7 @@
 <template>
   <section aria-labelledby="account-web-notifications-heading">
     <Heading id="account-web-notifications-heading" level="2"
-      >Your subscription notifications ({{ unreadCount }} unread)</Heading
+      >Your Subscription notifications ({{ unreadCount }} unread)</Heading
     >
 
     <p

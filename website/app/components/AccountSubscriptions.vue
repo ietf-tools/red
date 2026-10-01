@@ -1,6 +1,6 @@
 <template>
   <section aria-labelledby="account-subscriptions-heading">
-    <Heading id="account-subscriptions-heading" level="2">Your subscriptions</Heading>
+    <Heading id="account-subscriptions-heading" level="2">Your Subscriptions</Heading>
 
     <p
       v-if="subscriptionsLoadingStatus.type === 'loading'"
@@ -51,7 +51,7 @@
                 :open="confirmDeleteId === subscription.id"
                 @update:open="(open) => (confirmDeleteId = open ? subscription.id : undefined)">
                 <DialogTrigger
-                  :aria-label="`Delete subscription: ${subscriptionLabel(subscription)}`"
+                  :aria-label="`Delete Subscription: ${subscriptionLabel(subscription)}`"
                   class="font-bold text-sm flex flex-row items-center gap-2 cursor-pointer px-2 py-1 rounded-md border-1 border-gray-400 hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800">
                   <GraphicsDismiss class="align-middle" />
                   Unsubscribe
@@ -65,7 +65,7 @@
                       'bg-white dark:bg-gray-800',
                       'px-4 pt-3 pb-1'
                     ]">
-                    <DialogTitle class="text-lg font-semibold text-center pb-3">Delete this subscription?</DialogTitle>
+                    <DialogTitle class="text-lg font-semibold text-center pb-3">Delete this Subscription?</DialogTitle>
 
                     <DialogDescription class="text-sm">
                       <p>
@@ -114,7 +114,7 @@
           </div>
         </li>
       </ul>
-      <p v-else class="italic py-3">You have no subscriptions yet.</p>
+      <p v-else class="italic py-3">You have no Subscriptions yet.</p>
     </template>
   </section>
 </template>
@@ -310,7 +310,7 @@ const deleteSubscriptionRow = async (subscription: Subscription) => {
     subscriptions.value = subscriptions.value.filter(({ id }) => id !== subscription.id)
   } catch (error) {
     console.error('Unable to delete this subscription.', error)
-    subscriptionDeleteErrors[subscription.id] = 'Unable to delete this subscription. Please try again.'
+    subscriptionDeleteErrors[subscription.id] = 'Unable to delete this Subscription. Please try again.'
   } finally {
     delete subscriptionsDeleting[subscription.id]
   }
