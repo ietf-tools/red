@@ -238,6 +238,9 @@ export const useMenuData = (mode: Mode) => {
       }
     ]
 
+    // Ensure same dimensions for logged in / logged out, to avoid layout shift at page load when logged in
+    const imageSize = 'w-5 h-5'
+
     if (isAuthenticated.value) {
       const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
       const picture = user.value?.picture
@@ -255,12 +258,12 @@ export const useMenuData = (mode: Mode) => {
                    */
                   referrerpolicy: 'no-referrer',
                   alt: `Picture of ${displayName}`,
-                  class: 'object-contain w-6 h-6 rounded-full'
+                  class: `object-contain rounded-full ${imageSize}`
                 })
               ])
           : () =>
               h(UserImageNotificationsWrapper, [
-                h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: 'w-5 h-5 rounded-full' })
+                h(GraphicsBustInSilhouette, { 'aria-label': `${displayName}`, class: `${imageSize} rounded-full` })
               ]),
         children: [
           {
@@ -285,7 +288,7 @@ export const useMenuData = (mode: Mode) => {
       data.push({
         label: 'User menu',
         hideLabelDesktop: true,
-        icon: () => h(GraphicsBustInSilhouette, { class: 'w-5 h-5 rounded-full' }),
+        icon: () => h(GraphicsBustInSilhouette, { class: `${imageSize} rounded-full` }),
         children: [
           {
             label: 'Create an account',
