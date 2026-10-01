@@ -28,7 +28,7 @@ export const DocumentSet = z
   .object({
     id: z.uuid(),
     title: z.string().max(200),
-    description: z.string().optional(),
+    description: z.string().max(1000).optional(),
     documents: z.array(DocumentSetEntry),
     created_at: z.iso.datetime(),
     updated_at: z.iso.datetime()
@@ -152,7 +152,7 @@ export const PatchedDocumentSet = z
   .object({
     id: z.uuid(),
     title: z.string().max(200),
-    description: z.string(),
+    description: z.string().max(1000),
     documents: z.array(DocumentSetEntry),
     created_at: z.iso.datetime(),
     updated_at: z.iso.datetime()
@@ -278,7 +278,7 @@ export type RatingWrite = __TypedOpenapi.Schemas.RatingWrite
 export const RatingWrite = z.object({ value: z.number().int().min(1).max(5) }).catchall(z.unknown())
 
 export type ResponseCreate = __TypedOpenapi.Schemas.ResponseCreate
-export const ResponseCreate = z.object({ data: z.unknown(), meta: z.unknown() }).partial().catchall(z.unknown())
+export const ResponseCreate = z.object({ data: z.unknown() }).partial().catchall(z.unknown())
 
 export type Subject = __TypedOpenapi.Schemas.Subject
 export const Subject = z

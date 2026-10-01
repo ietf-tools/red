@@ -364,7 +364,7 @@ export namespace Schemas {
     your_rating: number | null
   } & Record<string, unknown>
   export type RatingWrite = { value: number } & Record<string, unknown>
-  export type ResponseCreate = Partial<{ data: unknown; meta: unknown }>
+  export type ResponseCreate = Partial<{ data: unknown }>
   /**
    * A subject as a caller sees it, without its membership.
    *
@@ -609,6 +609,19 @@ export namespace Endpoints {
       path: { id: number }
     }
     responses: { 200: Schemas.WebNotification }
+  }
+  /**
+   * Mark every one of the caller's own notifications read.
+   *
+   * Idempotent: with nothing unread it changes nothing and still succeeds.
+   */
+  export type put_Notifications_read_update = {
+    method: 'PUT'
+    path: '/api/reef/notifications/read/'
+    requestFormat: 'json'
+    responseFormat: 'json'
+    parameters: never
+    responses: { 204: unknown }
   }
   /**
    * Every RFC with a popularity score, most popular first. `popularity` is a rank percentile in [0, 1]: 1 is the most popular ranked document and 0 the least, and only ordering is expressed, never traffic. An RFC without an entry has not been ranked. `computed_at` is when the ranking was last recomputed, null while it is empty.
@@ -1242,6 +1255,7 @@ export type EndpointByMethod = {
   }
   put: {
     '/api/reef/digest-preference/': Endpoints.put_Digest_preference_update
+    '/api/reef/notifications/read/': Endpoints.put_Notifications_read_update
     '/api/reef/ratings/{rfc}/': Endpoints.put_Ratings_update
     '/api/reef/sets/{id}/': Endpoints.put_Sets_update
     '/api/reef/sets/{id}/documents/{doc}/': Endpoints.put_Sets_documents_update

@@ -11,7 +11,12 @@
 
 import type { AsyncDataRequestStatus } from 'nuxt/app'
 import { useAuthStore } from '~/stores/auth'
-import { getNotifications, markNotificationRead, type WebNotification } from '~/utilities/reef'
+import {
+  getNotifications,
+  markAllNotificationsRead,
+  markNotificationRead,
+  type WebNotification
+} from '~/utilities/reef'
 
 export const useReefNotificationsStore = defineStore('reefNotifications', () => {
   const authStore = useAuthStore()
@@ -127,6 +132,17 @@ export const useReefNotificationsStore = defineStore('reefNotifications', () => 
     }
   }
 
+  // Marks everything read in Reef with one call, including pages not yet loaded here, and locally
+  // for what is held.
+  const markAllRead = async (): Promise<void> => {
+    notifications.value = notifications.value.map((notification) => ({ ...notification, read: true }))
+    try {
+      await markAllNotificationsRead()
+    } catch (error) {
+      console.error('[reef] unable to mark your notifications read.', error)
+    }
+  }
+
   // The only thing that empties the feed, and what loads it for whoever signs in — including a
   // second reader replacing the first on the same tab, which is why this is keyed on the subject
   // rather than only on isAuthenticated flipping true.
@@ -146,7 +162,7 @@ export const useReefNotificationsStore = defineStore('reefNotifications', () => 
     { immediate: true, flush: 'sync' }
   )
 
-  return { notifications, status, hasMore, load, loadMore, markRead, reset }
+  return { notifications, status, hasMore, load, loadMore, markRead, markAllRead, reset }
 })
 
 export const filterNotificationsByUnread = (notifications: WebNotification[]): WebNotification[] =>

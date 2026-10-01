@@ -1,8 +1,8 @@
 <template>
   <section aria-labelledby="account-web-notifications-heading">
-    <Heading id="account-web-notifications-heading" level="2"
-      >Your Subscription notifications ({{ unreadCount }} unread)</Heading
-    >
+    <Heading id="account-web-notifications-heading" level="2">
+      Your Subscription notifications ({{ unreadCount }} unread)
+    </Heading>
 
     <p
       v-if="webNotifications.status === 'pending' && webNotifications.notifications.length === 0"
@@ -21,39 +21,62 @@
     </AlertBox>
 
     <template v-else>
-      <ul v-if="notificationRows.length > 0" class="flex flex-col gap-2 py-3">
+      <button
+        v-if="unreadCount > 0"
+        type="button"
+        :class="[
+          'mt-4 ml-4 cursor-pointer',
+          'py-1 px-3',
+          'font-bold rounded text-xs tracking-wider text-blue-500 dark:text-blue-100',
+          'border-2 border-blue-500 dark:border-blue-200',
+          ' bg-white hover:bg-blue-400 focus:bg-blue-400 focus:text-white hover:text-white dark:bg-blue-950'
+        ]"
+        @click="webNotifications.markAllRead">
+        Mark all as read
+      </button>
+      <ul v-if="notificationRows.length > 0" class="flex flex-col py-3 rounded-xl border-gray-200">
         <li
           v-for="{ notification, href, content } in notificationRows"
           :key="notification.id"
           :class="[
-            'border rounded',
-            notification.read
-              ? 'bg-transparent border-gray-500 dark:border-gray-300'
-              : 'bg-white dark:bg-blue-950 border-gray-300 dark:border-gray-500'
+            'py-4 px-4 flex flex-row justify-between border border-b-1 border-gray-200 dark:border-gray-600',
+            notification.read ? 'bg-transparent' : 'bg-white dark:bg-gray-800'
           ]">
-          <template v-if="href">
+          <div class="flex flex-row">
+            <div>
+              <span
+                :class="[
+                  'inline-block w-20 text-xs font-bold uppercase tracking-wider text-center py-1 px-3 rounded-xl border-1',
+                  {
+                    'border-gray-400 dark:border-gray-500 bg-blue-400 text-gray-200 dark:bg-blue-950 dark:text-white':
+                      !notification.read,
+                    'border-gray-400 dark:border-gray-500 bg-transparent text-gray-800 dark:bg-transaprent dark:text-white':
+                      notification.read
+                  }
+                ]"
+                >{{ notification.read ? 'read' : 'unread' }}</span
+              >
+            </div>
             <Anchor
+              v-if="href"
               :href="href"
-              class="no-underline inline-block px-3 py-2"
+              class="no-underline inline-block px-3"
               @click="webNotifications.markRead(notification.id)">
               <span class="underline">
                 <Renderable :val="content" />
               </span>
-              <span class="sr-only ml-4 no-underline">{{ notification.read ? '(read)' : '(unread)' }}</span>
             </Anchor>
-            <p class="block text-sm px-3 pb-2 text-gray-600 dark:text-gray-400">
-              {{ formatNotificationDate(notification.created_at) }}
-            </p>
-          </template>
-          <span v-else class="flex flex-col gap-0.5 px-3 py-2">
-            <span class="block">
+            <div v-else class="px-3">
               <Renderable :val="content" />
-              <span class="sr-only">{{ notification.read ? '(read)' : '(unread)' }}</span>
-            </span>
-            <span class="block text-sm text-gray-600 dark:text-gray-400">
+            </div>
+          </div>
+          <div class="pt-1 pr-1">
+            <time
+              :datetime="notification.created_at"
+              class="block font-bold tracking-wider bg-gray-300 dark:bg-gray-600 rounded-xl px-3 py-1 text-xs whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">
               {{ formatNotificationDate(notification.created_at) }}
-            </span>
-          </span>
+            </time>
+          </div>
         </li>
       </ul>
       <p v-else class="italic py-3">You have no notifications yet.</p>

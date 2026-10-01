@@ -162,6 +162,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebNotification'
           description: ''
+  /api/reef/notifications/read/:
+    put:
+      operationId: notifications_read_update
+      description: |-
+        Mark every one of the caller's own notifications read.
+
+        Idempotent: with nothing unread it changes nothing and still succeeds.
+      tags:
+        - notifications
+      security:
+        - BearerAuth: []
+        - cookieAuth: []
+      responses:
+        '204':
+          description: No response body
   /api/reef/popularity/:
     get:
       operationId: popularity_list
@@ -1282,6 +1297,7 @@ components:
           maxLength: 200
         description:
           type: string
+          maxLength: 1000
         documents:
           type: array
           items:
@@ -1656,6 +1672,7 @@ components:
           maxLength: 200
         description:
           type: string
+          maxLength: 1000
         documents:
           type: array
           items:
@@ -1864,7 +1881,6 @@ components:
       type: object
       properties:
         data: {}
-        meta: {}
     RetiredSubject:
       type: object
       description: |-

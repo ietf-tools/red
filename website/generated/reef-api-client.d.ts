@@ -99,6 +99,27 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/reef/notifications/read/': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    /**
+     * @description Mark every one of the caller's own notifications read.
+     *
+     *     Idempotent: with nothing unread it changes nothing and still succeeds.
+     */
+    put: operations['notifications_read_update']
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
   '/api/reef/popularity/': {
     parameters: {
       query?: never
@@ -868,7 +889,6 @@ export interface components {
     }
     ResponseCreate: {
       data?: unknown
-      meta?: unknown
     }
     /**
      * @description A retired subject, as the only thing a retired subject is still for.
@@ -1247,6 +1267,24 @@ export interface operations {
         content: {
           'application/json': components['schemas']['WebNotification']
         }
+      }
+    }
+  }
+  notifications_read_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
       }
     }
   }

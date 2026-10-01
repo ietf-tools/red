@@ -429,6 +429,11 @@ export const getNotifications = (cursor?: string, signal?: AbortSignal): Promise
 export const markNotificationRead = (id: number, signal?: AbortSignal): Promise<WebNotification> =>
   reefFetch(`/api/reef/notifications/${id}/read/`, { method: 'POST', auth: 'required', signal })
 
+// Mark every one of the caller's own notifications read, in one call. Idempotent like the
+// single-notification operation above.
+export const markAllNotificationsRead = (signal?: AbortSignal): Promise<void> =>
+  reefFetch('/api/reef/notifications/read/', { method: 'POST', auth: 'required', signal })
+
 // --- Digest email preference (this reader's own) -------------------------------------------
 
 // Whether the caller receives Reef's subscription digest by mail. One preference per account —
