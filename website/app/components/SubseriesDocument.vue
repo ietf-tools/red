@@ -1,7 +1,15 @@
 <template>
-  <BodyLayoutDocument>
-    <template #sidebar>
-      <div v-if="subseriesDocument" class="lg:min-w-[300px] px-5 py-3">
+  <div class="mx-auto w-full container">
+    <template v-if="subseriesDocumentError">
+      <div class="container mx-auto">
+        <Alert level="1" variant="warning" heading="Error">
+          {{ subseriesDocumentError }}
+        </Alert>
+      </div>
+    </template>
+
+    <div v-if="subseriesDocument" class="flex flex-col md:flex-row md:flex-row-reverse mt-6">
+      <div class="flex-1 px-5 pb-6 min-w-0">
         <div class="bg-blue-25 dark:bg-blue-900 px-5 py-4 mb-6">
           <Heading level="2"> Subscribe to <SubseriesTitle :series="props.subseriesId" /> </Heading>
           <ReefSubscribeToSubseries :subseries-id="props.subseriesId" />
@@ -29,17 +37,8 @@
           retired in 2011.
         </p>
       </div>
-    </template>
-    <template v-if="subseriesDocumentError">
-      <div class="container mx-auto">
-        <Alert level="1" variant="warning" heading="Error">
-          {{ subseriesDocumentError }}
-        </Alert>
-      </div>
-    </template>
 
-    <div class="min-h-screen">
-      <div v-if="subseriesDocument" class="mt-3 flex flex-col gap-4">
+      <div class="flex-3 min-w-0 flex flex-col gap-4">
         <RFCCard
           v-if="subseriesDocument.contents.length > 0"
           v-for="rfc in subseriesDocument.contents"
@@ -55,7 +54,7 @@
         </div>
       </div>
     </div>
-  </BodyLayoutDocument>
+  </div>
 </template>
 
 <script setup lang="ts">
