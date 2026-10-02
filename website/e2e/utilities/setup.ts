@@ -37,7 +37,7 @@ const HEADED_SLOW_MO_MS = 250
 
 // Playwright's 30s default has been too tight for loading a page here: the suites share a single
 // dev server, so a large RFC's SSR render, or the client bundle compiling cold, can queue behind
-// other files' pages (info-rfc-layout.e2e.ts alone opens 22 concurrently). It covers the
+// other files' pages (info-rfc-layout.e2e.ts alone opens a page per RFC and viewport). It covers the
 // navigation and the hydration wait that follows it, both of which have timed out at 30s.
 const PAGE_LOAD_TIMEOUT_MS = 60_000
 

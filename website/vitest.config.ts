@@ -24,7 +24,7 @@ export default defineConfig(async () => ({
           // be queued past its hydration wait when the other suites were loading pages too. Blank
           // tiles in the layout captures are handled by the height ceiling in
           // e2e/utilities/screenshot.ts rather than by concurrency.
-          maxConcurrency: 4
+          maxConcurrency: 2
         }
       },
       {
