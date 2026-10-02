@@ -112,13 +112,13 @@ const hasTouchStore = useHasTouchStore()
 const isTouch = computed(() => hasTouchStore.hasTouch === true)
 
 const popoverBaseClass =
-  'group flex border-[1px] shadow-3xl shadow-blue-950/15 dark:after:shadow-blue-100/20 dark:ring-8 dark:ring-black/65 bg-white dark:bg-black border-gray-400'
+  'group z-101 flex border-[1px] shadow-3xl shadow-blue-950/15 dark:after:shadow-blue-100/20 dark:ring-8 dark:ring-black/65 bg-white dark:bg-black border-gray-400'
 const popoverAnchoredClass =
   'w-full h-full max-w-xs lg:max-w-120 max-h-64 lg:max-h-80 rounded-md overflow-hidden data-[side=bottom]:animate-slideUpAndFade data-[side=right]:animate-slideLeftAndFade data-[side=left]:animate-slideRightAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all'
 // Sizing/animation only — the docked position lives in the <style> override below, which
 // targets Reka's floating wrapper (our classes land on the inner content element).
 const popoverDockedClass =
-  'relative z-100 w-full h-full rounded-t-xl overflow-y-scroll data-[state=open]:animate-enterFromBottom data-[state=closed]:animate-exitToBottom'
+  'relative w-full h-full rounded-t-xl overflow-y-scroll data-[state=open]:animate-enterFromBottom data-[state=closed]:animate-exitToBottom'
 
 const rfc = ref<RfcCommon | undefined>()
 const isPopoverOpen = (() => {
