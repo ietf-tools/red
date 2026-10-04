@@ -34,4 +34,4 @@ describe('info/rfcN preview stacking', async () => {
     },
     120_000
   )
-}
+})
