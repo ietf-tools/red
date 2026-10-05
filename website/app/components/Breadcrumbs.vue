@@ -1,6 +1,6 @@
 <template>
   <nav aria-label="Breadcrumbs">
-    <ul :class="['block mb-2 pt-1 pl-1 pr-14 leading-[1.5] print:hidden', props.class]">
+    <ul :class="['block mb-2 pt-1 pr-14 leading-[1.5] print:hidden', props.class]">
       <li v-for="(item, index) in items" :key="index" class="inline">
         <Anchor
           v-if="item.url"

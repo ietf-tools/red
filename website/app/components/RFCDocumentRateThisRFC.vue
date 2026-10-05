@@ -7,9 +7,10 @@
       <DialogTrigger
         :class="[
           'cursor-pointer',
-          'px-2 py-1.25 rounded',
-          'text-blue-900 dark:text-blue-100 font-bold hover:text-blue-400 focus:text-blue-400',
-          'hover:bg-sky-100 dark:hover:bg-sky-950 focus:bg-sky-100 border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600'
+          'px-2 pt-1.25 pb-1 rounded',
+          'text-blue-900 dark:text-blue-100 font-bold',
+          'hover:text-blue-400 dark:hover:text-blue-25 focus:text-blue-400 hover:bg-sky-100 dark:hover:bg-sky-950 focus:bg-sky-100',
+          'border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600 dark:hover:border-blue-25'
         ]">
         {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRating}` }}
         <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>

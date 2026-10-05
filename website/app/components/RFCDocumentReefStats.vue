@@ -1,7 +1,7 @@
 <template>
   <div class="flex mt-2">
-    <ul class="flex flex-col reef:flex-row items-start pl-0.5 text-sm">
-      <li class="h-full flex flex-col md:flex-row items-start pr-2">
+    <ul class="flex reef-stats-container items-start pl-0.5 text-sm">
+      <li class="h-full flex flex-col md:flex-row items-start pr-1 sm:pr-2">
         <RFCDocumentCommunityRating
           v-if="
             props.reefStats?.ratingAggregate &&
@@ -11,7 +11,7 @@
           :reef-stats="props.reefStats" />
         <RFCDocumentRateThisRFC :rfc-number="props.rfcNumber" v-model="userRFCRating" />
       </li>
-      <li class="pl-2 pr-2 border-l-1 border-r-1 border-gray-300 dark:border-gray-700">
+      <li class="sm:pl-2 sm:pr-2 sm:border-l-1 sm:border-r-1 border-gray-300 dark:border-gray-700">
         <RFCDocumentSubscribe
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
@@ -19,7 +19,7 @@
           :status="subscriptionStatus"
           v-model="isSubscribedToThisRFC" />
       </li>
-      <li class="pl-2">
+      <li class="pl-1 sm:pl-2">
         <RFCDocumentSets
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
@@ -31,6 +31,18 @@
     </ul>
   </div>
 </template>
+
+<style scoped>
+.reef-stats-container {
+  flex-direction: column;
+}
+
+@media (min-width: 300px) {
+  .reef-stats-container {
+    flex-direction: row;
+  }
+}
+</style>
 
 <script setup lang="ts">
 /**

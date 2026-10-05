@@ -5,7 +5,7 @@
     </p>
   </div>
 
-  <div class="px-2">
+  <div class="px-2 w-full">
     <div class="flex flex-col">
       <RFCDocumentMobileInfoButton @click="isModalOpen = true"> Info </RFCDocumentMobileInfoButton>
     </div>

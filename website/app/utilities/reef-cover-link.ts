@@ -27,10 +27,10 @@ export const COVER_LINK_STYLE_CLASS = `${
   'after:z-40'
 } after:transition-all ${
   // card tint when focus/hover
-  `hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-100 dark:focus:text-blue-100 hover:before:bg-sky-100 focus:before:bg-blue-25 dark:hover:before:bg-blue-900 dark:focus:before:bg-blue-900`
+  `text-blue-900 dark:text-blue-100 hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-25 dark:focus:text-blue-100 hover:before:bg-sky-100 focus:before:bg-blue-25 dark:hover:before:bg-blue-900 dark:focus:before:bg-blue-900`
 } ${
   // Link border
-  `after:border-1 after:border-white dark:after:border-black after:rounded hover:after:border-blue-800 focus:after:outline-2 focus:after:outline-black`
+  `after:border-1 after:border-white dark:after:border-black after:rounded hover:after:border-blue-800 dark:hover:after:border-blue-25 focus:after:outline-2 focus:after:outline-black`
 }`
 
 export const COVER_LINK_INNER_STYLE_CLASS = `relative z-1`

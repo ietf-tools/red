@@ -1,6 +1,6 @@
 <template>
   <div class="flex mt-2 mb-2">
-    <ul class="flex flex-col gap-4 reef:flex-row items-start pl-2 text-sm">
+    <ul class="flex flex-col gap-4 md:flex-row items-start pl-2 text-sm">
       <li v-for="subjectTag in props.reefSubjectTags" class="flex flex-col md:flex-row pr-2">
         <Anchor
           :href="subjectsPathBuilder(subjectTag.slug)"

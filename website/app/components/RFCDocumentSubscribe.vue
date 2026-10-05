@@ -5,16 +5,17 @@
         <DialogTrigger
           type="button"
           :class="[
-            'flex flex-row gap-1 items-center',
+            'flex flex-col sm:flex-row gap-1 items-center',
             'cursor-pointer',
             'rounded',
             'text-sm text-center md:text-left',
             'font-bold',
-            'text-blue-900 dark:text-blue-100 hover:bg-sky-100 focus:bg-sky-100',
+            'hover:bg-sky-100 focus:bg-sky-100',
+            'border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600 dark:hover:border-blue-100',
             COVER_LINK_STYLE_CLASS
           ]">
           <GraphicsAlert
-            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px]', COVER_LINK_INNER_STYLE_CLASS]" />
+            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
           <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]"> Subscribe </span></DialogTrigger
         >
         <DialogPortal>
@@ -96,7 +97,7 @@
       <p
         v-if="props.reefStats?.subscriberCount"
         data-reef-stat
-        :class="['hidden md:block text-xs', COVER_LINK_INNER_STYLE_CLASS]">
+        :class="['hidden md:block sm:pl-8 text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         {{ formatNumber(props.reefStats.subscriberCount, 0) }}
         subscribed
       </p>
