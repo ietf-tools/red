@@ -10,7 +10,6 @@
             'rounded',
             'text-sm text-center md:text-left',
             'font-bold',
-            'border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600 dark:hover:border-blue-100',
             COVER_LINK_STYLE_CLASS
           ]">
           <GraphicsAddCircle
