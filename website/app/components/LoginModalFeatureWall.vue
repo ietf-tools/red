@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="flex flex-col items-center md:flex-row gap-2">
+    <ul class="flex flex-col items-start md:flex-row gap-2">
       <li class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2">
         <GraphicsStarFilled class="inline-block w-[24px] h-[24px] text-yellow-200 dark:text-yellow-700" />
         <Heading level="3" style-level="5" class="text-center"> Rate RFCs</Heading>

@@ -3,7 +3,11 @@
     <GraphicsLoading class="inline-block w-16 h-16" />
   </div>
   <div v-else-if="isAuthenticated === false" class="mt-10 w-full text-center">
-    Not logged in. <Anchor :href="HOME_PATH">Go to home</Anchor>.
+    <Heading level="1" style-level="2">You need an account to</Heading>
+
+    <LoginModalFeatureWall class="mt-6 mx-auto max-w-120" />
+
+    <p class="mt-10">...or <Anchor :href="HOME_PATH" :class="ANCHOR_COLOR_TAILWIND_STYLE">go to home page</Anchor>.</p>
   </div>
   <div v-else-if="isAuthenticated === true">
     <slot />
@@ -11,6 +15,8 @@
 </template>
 
 <script setup lang="ts">
+import { oidcLogin, oidcRegister } from '~/utilities/oidc'
+import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { HOME_PATH } from '~/utilities/url'
 
 const authStore = useAuthStore()
