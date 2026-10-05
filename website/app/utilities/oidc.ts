@@ -319,6 +319,7 @@ export const useOidcSession = (): void => {
         if (!isFreshSignIn) {
           return
         }
+        authStore.returnTo = returnTo
         notificationsStore.add(signedInNotification(user))
         // The callback page is only a stop on the way: without a usable returnTo (no state, or
         // a path that failed parseReturnTo) the reader goes home rather than staying on it.

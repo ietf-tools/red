@@ -7,6 +7,7 @@ export const useAuthStore = defineStore('auth', () => {
   const isAuthenticatedRef = ref(false)
   const hasCheckedAuthRef = ref(false)
   const userRef = ref<OidcUser>()
+  const returnToRef = ref<string>()
 
   const setUser = (user: OidcUser) => {
     isAuthenticatedRef.value = true
@@ -22,6 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
     hasCheckedAuth: hasCheckedAuthRef,
     isAuthenticated: isAuthenticatedRef,
     user: userRef,
+    returnTo: returnToRef,
     setUser,
     clearUser
   }
