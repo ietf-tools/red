@@ -103,15 +103,19 @@ export default defineNuxtConfig({
       iadBase: 'https://iad.rfc-editor.org', // NUXT_PUBLIC_IAD_BASE env var
       dashboardBase: 'https://dashboard.rfc-editor.org', // NUXT_PUBLIC_DASHBOARD_BASE env var
       reefBase: 'http://localhost:8088', // NUXT_PUBLIC_REEF_BASE env var — the Reef API, called client-side with the OIDC access token
-      // NUXT_PUBLIC_REEF_STAGING env var — local dev only. Empty means every Reef call goes to
+      // NUXT_PUBLIC_REEF_API env var — local dev only. Empty means every Reef call goes to
       // reefBase. Set it to a scenario name from ~/utilities/reef-fixtures (on, empty, slow, error)
-      // and the operations with fixtures are answered locally, with no Reef and no sign-in needed;
-      // the /subjects/ pages instead read reefPrecomputedFixturesBase below, since Reef's own
-      // vocabulary is too large to serve as a local fixture (see reef-precomputed.ts). `npm run
-      // dev:staging` is this with a scenario already chosen. Read only under import.meta.dev, so
+      // and the operations with fixtures are answered locally, with no Reef and no sign-in needed.
+      // The /subjects/ pages are not covered by it: see reefPrecomputedSource below. `npm run
+      // dev:fixtures` is this with a scenario already chosen. Read only under import.meta.dev, so
       // setting it in a deployed environment does nothing.
-      reefStaging: '',
-      reefPrecomputedFixturesBase: 'https://surveys.staging.rfc-editor.org', // NUXT_PUBLIC_REEF_PRECOMPUTED_FIXTURES_BASE env var — where /subjects/ dev-staging mode reads Reef's precomputed files from
+      reefApi: '',
+      // NUXT_PUBLIC_REEF_PRECOMPUTED_SOURCE env var — local dev only. Empty means the /subjects/
+      // pages read Reef's precomputed files from reefBase. `staging` or `prod` reads them from that
+      // deployment instead, since Reef's own vocabulary is too large to serve as a local fixture (see
+      // reef-precomputed.ts). `npm run dev:staging` and `dev:prod` are this with a source already
+      // chosen. Read only under import.meta.dev, so setting it in a deployed environment does nothing.
+      reefPrecomputedSource: '',
       matomoSiteId: '12', // 12 is Red non-production ie local dev. Otherwise will be provided by env var NUXT_PUBLIC_MATOMO_SITE_ID
       typesenseApiKey: '2Ic06V287miUyJ32ee25q0ccXK0Dr3RO', // NUXT_PUBLIC_TYPESENSE_API_KEY Be sure to use an API key that only allows search operations
       typesenseHost: 'typesense.staging.ietf.org', // NUXT_PUBLIC_TYPESENSE_HOST

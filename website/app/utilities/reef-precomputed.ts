@@ -14,8 +14,8 @@
 // One function per file, wired by hand. There are a handful of these and a generated client would
 // be more machinery than the thing it replaces.
 //
-// Dev stand-in: NUXT_PUBLIC_REEF_STAGING points this at Reef's staging deployment
-// (reefPrecomputedFixturesBase) instead of reefBase, so /subjects/ pages work with no Reef running
+// Dev stand-in: NUXT_PUBLIC_REEF_PRECOMPUTED_SOURCE points this at Reef's staging or prod
+// deployment (reefPrecomputedSource) instead of reefBase, so /subjects/ pages work with no Reef running
 // locally. Fetched live rather than kept as a local snapshot: Reef's index alone runs several
 // megabytes, too large for Vite's dev-time `import.meta.glob` transform to serve as a client-side
 // dynamic import — it failed only on client-side navigation, since a server render reads reefBase
@@ -75,20 +75,36 @@ const unreadable = (key: string, cause: unknown) => {
   })
 }
 
+const DEPLOYMENT_BASES: Record<string, string> = {
+  staging: 'https://surveys.staging.rfc-editor.org',
+  prod: 'https://surveys.rfc-editor.org'
+}
+
+const deploymentBase = (source: string) => {
+  const base = DEPLOYMENT_BASES[source]
+  if (base === undefined) {
+    throw createError({
+      statusCode: 500,
+      message: `[reef] NUXT_PUBLIC_REEF_PRECOMPUTED_SOURCE="${source}" is not one of ${Object.keys(DEPLOYMENT_BASES).join(', ')}`
+    })
+  }
+  return base
+}
+
 /**
  * A published file, parsed. `undefined` when the key is not there, which for a subject is an
  * ordinary answer about a subject that does not exist rather than something going wrong; anything
  * else raises, because a page cannot be rendered from a file that failed to arrive.
  *
  * `path` is built by one of the `apiReef*PathBuilder`s in ~/utilities/url. In development with
- * NUXT_PUBLIC_REEF_STAGING set, it's read against Reef's staging deployment instead of `reefBase`,
+ * NUXT_PUBLIC_REEF_PRECOMPUTED_SOURCE set, it's read against that deployment instead of `reefBase`,
  * so the subject pages can be worked on with no Reef running locally. The parse still runs: a file
  * that has drifted from the contract should fail here exactly as a production one would.
  */
 const read = async <T>(path: string, schema: { parse: (value: unknown) => T }): Promise<T | undefined> => {
   let body: unknown
-  const { reefBase, reefStaging, reefPrecomputedFixturesBase } = useRuntimeConfig().public
-  const base = import.meta.dev && reefStaging !== '' ? reefPrecomputedFixturesBase : reefBase
+  const { reefBase, reefPrecomputedSource } = useRuntimeConfig().public
+  const base = import.meta.dev && reefPrecomputedSource !== '' ? deploymentBase(reefPrecomputedSource) : reefBase
   try {
     const response = await fetch(`${base}${path}`)
     if (response.status === 404) {

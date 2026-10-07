@@ -20,13 +20,13 @@
               {{ liveSubject.name }}
             </Heading>
 
-            <p v-if="liveSubject.description" class="italic mt-0 md:mt-6 lg:mt-12 mb-5 md:mb-4 md:mx-2">
+            <p v-if="liveSubject.description" class="italic mt-0 md:mt-6 lg:mt-12 mb-5 md:mb-4 mx-2 md:mx-2">
               {{ liveSubject.description }}
             </p>
 
-            <div class="flex flex-col lg:flex-row lg:gap-5">
+            <div class="flex flex-col-reverse flex-col lg:flex-row lg:gap-5">
               <div class="lg:flex-3">
-                <nav aria-label="Subject" class="block mt-4 md:hidden">
+                <nav aria-label="Subject" class="block mt-4 md:hidden mx-2 md:mx-0">
                   <Heading level="2" style-level="4" class="mb-1">Within this page</Heading>
                   <ul class="list-disc ml-6 mb-4">
                     <li>
@@ -38,7 +38,7 @@
                   </ul>
                 </nav>
 
-                <div class="md:flex md:flex-row md:gap-2">
+                <div class="md:flex md:flex-row md:gap-2 mx-2 md:mx-0">
                   <div v-if="subjectSubtree.length > 0" class="flex-1 md:min-w-64">
                     <Heading id="subjects" level="2" style-level="5" class="md:mt-3 lg:mt-3 md:mx-2">
                       {{ liveSubject.name }} subjects:
@@ -110,7 +110,7 @@
                 </div>
               </div>
               <div class="lg:flex-1">
-                <div class="bg-blue-25 dark:bg-blue-900 px-5 py-4">
+                <div class="bg-blue-25 dark:bg-blue-900 px-2 md:px-5 py-4">
                   <Heading level="2"> Subscribe to {{ liveSubject.name }} </Heading>
                   <ReefSubscribeToSubjectTag :subject="liveSubject" />
                   <div class="mt-3 leading-[1.5] text-sm">

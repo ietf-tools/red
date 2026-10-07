@@ -1,11 +1,11 @@
 <template>
-  <div class="mt-5 lg:mt-0 relative flex flex-col md:flex-row md:gap-2">
+  <div class="mt-0 md:mt-5 lg:mt-0 relative flex flex-col md:flex-row md:gap-2">
     <div class="flex flex-col">
       <DialogRoot>
         <DialogTrigger
           type="button"
           :class="[
-            'text-pretty flex flex-row gap-2 cursor-pointer mt-2 px-1 md:px-2 py-1 md:py-1 font-bold border-[2px]',
+            'text-pretty flex w-fit flex-row gap-2 cursor-pointer mt-2 px-2 md:px-2 py-1 md:py-1 font-bold border-[2px]',
             {
               'text-white bg-blue-300 border-blue-300 dark:bg-blue-600 dark:border-blue-600 hover:bg-blue-400 focus:bg-blue-400 dark:hover:bg-blue-700 dark:focus:bg-blue-700 dark:hover:border-blue-700 dark:focus:border-blue-700':
                 isSubscribedToSubject,
