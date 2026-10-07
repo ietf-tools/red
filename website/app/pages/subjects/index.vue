@@ -20,6 +20,7 @@
             <template v-else-if="subjectCount > 0">
               <div class="flex flex-row justify-between mt-2 mb-6 md:mb-0 print:hidden">
                 <SubjectFilter
+                  :id="filterDOMId"
                   class="flex-1"
                   v-model="filterQuery"
                   :match-count="filteredSubjects.length"
@@ -53,7 +54,7 @@
                           :matches="matchesBySlug" />
                       </div>
                       <a
-                        href="#toc"
+                        :href="`#${filterDOMId}`"
                         :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'inline-flex gap-1 items-center px-1 py-5 text-sm']">
                         <GraphicsArrowUp />
                         Back to top</a
@@ -125,6 +126,8 @@ definePageMeta({
 // Static rather than derived: unlike a single subject's page, the index has no ancestors to name,
 // just itself under Home.
 const breadcrumbItems: BreadcrumbItem[] = [{ url: HOME_PATH, label: 'Home' }, { label: 'RFCs by Subject' }]
+
+const filterDOMId = 'filter'
 
 const publicSiteUrlOrigin = usePublicSiteUrlOrigin()
 

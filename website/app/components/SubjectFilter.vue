@@ -5,10 +5,10 @@
      also why it is rendered rather than withheld — it holds its own space, so nothing below it
      moves when scripting arrives. Enter is stopped for the same reason the action is absent. -->
   <form role="search" aria-label="Filter subjects" class="flex flex-col gap-1" @submit.prevent>
-    <label :for="inputDomId" class="text-blue-950 dark:text-white font-bold">Filter subjects</label>
+    <label :for="id" class="text-blue-950 dark:text-white font-bold">Filter subjects</label>
     <div class="flex w-full max-w-lg">
       <input
-        :id="inputDomId"
+        :id="id"
         ref="filter-input"
         v-model="query"
         type="search"
@@ -43,7 +43,8 @@ import { watchDebounced } from '@vueuse/core'
 
 const query = defineModel<string>({ required: true })
 
-const { matchCount, totalCount, contextCount } = defineProps<{
+type Props = {
+  id: string
   matchCount: number
   totalCount: number
   /**
@@ -52,9 +53,10 @@ const { matchCount, totalCount, contextCount } = defineProps<{
    * claim a number the page visibly disagrees with.
    */
   contextCount: number
-}>()
+}
 
-const inputDomId = useId()
+const { id, matchCount, totalCount, contextCount } = defineProps<Props>()
+
 const hintDomId = useId()
 
 const filterInputRef = useTemplateRef<HTMLInputElement>('filter-input')
