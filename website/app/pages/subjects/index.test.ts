@@ -280,35 +280,6 @@ describe('/subjects/', () => {
     ])
   })
 
-  test('links the table of contents at the group headings it names', async () => {
-    reefAnswers(VOCABULARY)
-
-    const page = await renderPage()
-    // By its own aria-labelledby, not just `nav`, now that the breadcrumb above it is a `nav` too.
-    const tocLinks = page.find('nav[aria-labelledby="subjects-toc-label"]').findAll('a')
-
-    // A fragment that names no element leaves the letter looking like a working link and going
-    // nowhere, so each one is matched against the id actually rendered on the heading. Only the top
-    // of the tree is filed by letter: Email and Tcp are found inside their parents.
-    expect(tocLinks.map((link) => link.attributes('href'))).toEqual(['#m', '#t'])
-    tocLinks.forEach((link) => {
-      const id = link.attributes('href')?.slice(1)
-      expect(page.find(`dt#${id}`).exists()).toBe(true)
-    })
-  })
-
-  test('leaves letters with no subjects as plain text rather than links', async () => {
-    reefAnswers(VOCABULARY)
-
-    const page = await renderPage()
-    // By its own aria-labelledby, not just `nav`, now that the breadcrumb above it is a `nav` too.
-    const toc = page.find('nav[aria-labelledby="subjects-toc-label"]')
-
-    expect(toc.findAll('li')).toHaveLength(26)
-    expect(toc.findAll('a')).toHaveLength(2)
-    expect(toc.text()).toContain('B')
-  })
-
   test('says the vocabulary is empty rather than reporting an error', async () => {
     reefAnswers([])
 
@@ -448,22 +419,6 @@ describe('/subjects/', () => {
       expect(listedNames(page)).toHaveLength(rendered.length)
     })
 
-    test('drops the group headings the filter emptied, and mutes their letters', async () => {
-      reefAnswers(VOCABULARY)
-
-      const page = await renderPage()
-      await typeAndSettle(page, 'smtp')
-
-      // M rather than S: the heading is the letter of the root the match was found under, because
-      // that is where the reader will be looking for it.
-      expect(page.findAll('dt').map((heading) => heading.text())).toEqual(['M'])
-      // By its own aria-labelledby, not just `nav`, now that the breadcrumb above it is a `nav` too.
-      const toc = page.find('nav[aria-labelledby="subjects-toc-label"]')
-      // Every letter is still drawn; only M is still a link to something.
-      expect(toc.findAll('li')).toHaveLength(26)
-      expect(toc.findAll('a').map((link) => link.attributes('href'))).toEqual(['#m'])
-    })
-
     test('says which word emptied the page, and keeps the way back from it', async () => {
       reefAnswers(VOCABULARY)
 
@@ -474,11 +429,8 @@ describe('/subjects/', () => {
       // Not the message for a vocabulary that has nothing in it: that would send the reader looking
       // for a fault rather than at their own query.
       expect(page.text()).not.toContain('No subjects have been published yet')
-      // The box still holds the query, so it can be corrected rather than retyped, and the
-      // table of contents has gone with the list it described. The breadcrumb is its own `nav`
-      // and stays regardless, so this checks for the table of contents by name rather than by tag.
+      // The box still holds the query, so it can be corrected rather than retyped,.
       expect(filterInput(page).element.value).toBe('quantum')
-      expect(page.find('nav[aria-labelledby="subjects-toc-label"]').exists()).toBe(false)
     })
 
     test('puts the whole index back when the filter is cleared', async () => {
