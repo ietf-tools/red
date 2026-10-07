@@ -11,7 +11,7 @@ enableAutoUnmount(afterEach)
 const renderFilter = (query = '', counts: { matchCount?: number; totalCount?: number; contextCount?: number } = {}) =>
   mountSuspended(SubjectFilter, {
     attachTo: document.body,
-    props: { modelValue: query, matchCount: 1, totalCount: 3, contextCount: 0, ...counts }
+    props: { id: 'subject-filter', modelValue: query, matchCount: 1, totalCount: 3, contextCount: 0, ...counts }
   })
 
 // Longer than the delay the announcement is held back by.
