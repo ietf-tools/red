@@ -32,6 +32,6 @@ provide(featureFlagsKey, featureFlagsRef)
 provide(hasFeatureFlagsLoadedKey, hasFeatureFlagsLoaded)
 provide(hasFeatureFlagsToastBeenDismissedKey, hasFeatureFlagsToastBeenDismissed)
 onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
-onMounted(initReefSurveys)
+onMounted(() => initReefSurveys(featureFlagsRef))
 onMounted(initReefNotifications)
 </script>

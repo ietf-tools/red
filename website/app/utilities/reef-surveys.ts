@@ -3,12 +3,13 @@
 // only where the delay and the fetch live.
 
 import { until } from '@vueuse/core'
+import type { Ref } from 'vue'
 import type { OpenSurvey } from '~/utilities/reef-precomputed'
 import { useNotificationsStore, type Notification } from '~/stores/notifications'
 import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { reefDocumentKey } from '~/utilities/reef-documents'
 import { parseSeriesId, type SeriesId } from './rfc'
-import { useFeatureFlags } from './feature-flags'
+import type { FeatureFlags } from './feature-flags'
 import { SURVEY_PATH } from './url-constants'
 
 const LOAD_SURVEYS_AFTER_MS = 5_000
@@ -63,16 +64,14 @@ export const chooseSurvey = (openSurveys: OpenSurvey[], narrowing: Narrowing): O
   return narrowedSurveys[Math.floor(Math.random() * narrowedSurveys.length)] ?? null
 }
 
-const loadOpenSurveys = async (): Promise<void> => {
+const loadOpenSurveys = async (featureFlags: Ref<FeatureFlags>): Promise<void> => {
   const authStore = useAuthStore()
   const notificationsStore = useNotificationsStore()
   const notificationsStoreRefs = storeToRefs(notificationsStore)
   const reefSurveysStore = useReefSurveysStore()
   const router = useRouter()
   const route = useRoute()
-  const featureFlags = useFeatureFlags()
-  // Only /info/[id].vue's route carries an `id` param, so this is undefined — correctly, no
-  // narrowing — everywhere else. Read from the route rather than parseSeriesId-ing the path
+  // Read from the route rather than parseSeriesId-ing the path
   // itself: a full path like /info/rfc9000/ splits into more than the two parts it expects and
   // never parses.
   const idParam = router.currentRoute.value.params.id
@@ -89,7 +88,7 @@ const loadOpenSurveys = async (): Promise<void> => {
     if (survey?.url && featureFlags.value.redSurveys) {
       const surveyUrl = new URL(survey.url)
       surveyUrl.pathname = SURVEY_PATH
-      survey.url = surveyUrl.toString()
+      survey.url = `${surveyUrl.pathname}${surveyUrl.search}${surveyUrl.hash}`
     }
     if (survey) {
       console.info('[survey]', `valid survey found`, { survey, surveys, narrowing })
@@ -102,6 +101,6 @@ const loadOpenSurveys = async (): Promise<void> => {
   }
 }
 
-export const initReefSurveys = (): void => {
-  setTimeout(loadOpenSurveys, LOAD_SURVEYS_AFTER_MS)
+export const initReefSurveys = (featureFlags: Ref<FeatureFlags>): void => {
+  setTimeout(() => loadOpenSurveys(featureFlags), LOAD_SURVEYS_AFTER_MS)
 }

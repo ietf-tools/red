@@ -53,8 +53,9 @@ const surveys = computed(() =>
 
     if (featureFlags.value.redSurveys) {
       const redSurveyUrl = new URL(url)
+      redSurveyUrl.host = ''
       redSurveyUrl.pathname = SURVEY_PATH
-      url = redSurveyUrl.toString()
+      url = `${redSurveyUrl.pathname}${redSurveyUrl.search}`
     }
 
     return {
