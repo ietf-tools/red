@@ -18,7 +18,7 @@
 // reader or the page changes, queueing their changes, putting a control back when Reef refuses —
 // belongs to ~/stores/reef, which is the thing that holds the answers.
 
-import type { components, operations } from '../../generated/reef-api-client'
+import type { components, operations, paths } from '../../generated/reef-api-client'
 import { DjangoErrorDetailSchema } from '~/utilities/django-schema'
 import { getAccessToken } from '~/utilities/oidc'
 
@@ -85,8 +85,33 @@ export class ReefError extends Error {
   }
 }
 
-type ReefRequest = {
-  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+type ReefMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+
+// A spec path with each `{param}` made a wildcard, so the path a call builds with its id spliced in
+// can be matched against it, with or without a query string.
+type PathPattern<Path extends string> = Path extends `${infer Head}{${string}}${infer Tail}`
+  ? `${Head}${string}${PathPattern<Tail>}`
+  : Path
+
+type SpecPathsMatching<Candidate extends string> = {
+  [Path in keyof paths & string]: Candidate extends PathPattern<Path> | `${PathPattern<Path>}?${string}` ? Path : never
+}[keyof paths & string]
+
+// Whether the spec defines this method on this path. Without it a call can name a path that exists
+// and a method that does not, which type-checks as a string and then fails as a 405 in the browser.
+type IsSpecOperation<Candidate extends string, Method extends ReefMethod> = [
+  Extract<
+    {
+      [Path in SpecPathsMatching<Candidate>]: NonNullable<paths[Path][Lowercase<Method> & keyof paths[Path]]>
+    }[SpecPathsMatching<Candidate>],
+    object
+  >
+] extends [never]
+  ? false
+  : true
+
+type ReefRequest<Method extends ReefMethod = ReefMethod> = {
+  method?: Method
   body?: unknown
   // Whether the OIDC bearer token is attached, mirroring the operation's `security` in the
   // spec. 'required' for the operations that list only BearerAuth/cookieAuth: anonymous is
@@ -146,8 +171,11 @@ export const answerFromFixtures = async <T>({
   return { answered: true, body: fixture.body as T }
 }
 
-const reefFetch = async <T>(path: string, request: ReefRequest = {}): Promise<T> => {
-  const { method = 'GET', body, auth, signal } = request
+const reefFetch = async <T, Path extends string, Method extends ReefMethod = 'GET'>(
+  path: Path,
+  request?: ReefRequest<Method> & (IsSpecOperation<Path, Method> extends true ? unknown : { notInSpec: never })
+): Promise<T> => {
+  const { method = 'GET', body, auth, signal } = (request ?? {}) as ReefRequest
   const { reefBase, reefApi } = useRuntimeConfig().public
 
   // Local dev against stand-in answers, when NUXT_PUBLIC_REEF_API names a scenario. Ahead of
@@ -254,7 +282,8 @@ export const MY_DOCUMENTS_BATCH_LIMIT = 100
 
 export const getMyDocuments = (docs: string[], signal?: AbortSignal): Promise<MyDocuments> => {
   const query = docs.map((doc) => `doc=${encodeURIComponent(doc)}`).join('&')
-  return reefFetch(`/api/reef/me/documents/${query === '' ? '' : `?${query}`}`, {
+  const path = '/api/reef/me/documents/'
+  return reefFetch(query === '' ? path : `${path}?${query}`, {
     auth: 'required',
     signal
   })
@@ -419,10 +448,10 @@ export const getOpenSurveys = (signal?: AbortSignal): Promise<OpenSurvey[]> =>
 // offset, so ~/stores/reef-notifications is what keeps it rather than a caller trying to construct
 // one.
 export const getNotifications = (cursor?: string, signal?: AbortSignal): Promise<PaginatedWebNotificationList> =>
-  reefFetch(`/api/reef/notifications/${cursor === undefined ? '' : `?cursor=${encodeURIComponent(cursor)}`}`, {
-    auth: 'required',
-    signal
-  })
+  reefFetch(
+    cursor === undefined ? '/api/reef/notifications/' : `/api/reef/notifications/?cursor=${encodeURIComponent(cursor)}`,
+    { auth: 'required', signal }
+  )
 
 // Mark one of the caller's own notifications read, returning the updated row. The spec calls it
 // idempotent, so a notification already read is a success rather than an error.
@@ -432,7 +461,7 @@ export const markNotificationRead = (id: number, signal?: AbortSignal): Promise<
 // Mark every one of the caller's own notifications read, in one call. Idempotent like the
 // single-notification operation above.
 export const markAllNotificationsRead = (signal?: AbortSignal): Promise<void> =>
-  reefFetch('/api/reef/notifications/read/', { method: 'POST', auth: 'required', signal })
+  reefFetch('/api/reef/notifications/read/', { method: 'PUT', auth: 'required', signal })
 
 // --- Digest email preference (this reader's own) -------------------------------------------
 
