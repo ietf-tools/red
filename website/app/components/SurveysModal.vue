@@ -15,7 +15,7 @@
       <tbody>
         <TableRow v-for="survey in surveys" :key="survey.slug">
           <TableCell>
-            <Anchor :href="survey.url"
+            <Anchor :href="survey.url" @click="surveysStore.isSurveysModalOpen = false"
               >{{ survey.title }}
               <GraphicsNewWindowIcon />
             </Anchor>
@@ -41,6 +41,7 @@ import { SURVEY_PATH } from '~/utilities/url-constants'
 const surveysStore = useReefSurveysStore()
 const notificationsStore = useNotificationsStore()
 const featureFlags = useFeatureFlags()
+const surveysStoreRefs = storeToRefs(surveysStore)
 
 const isDismissed = (slug: string): boolean => notificationsStore.dismissedIds.includes(slug)
 
