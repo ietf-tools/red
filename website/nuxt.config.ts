@@ -33,6 +33,11 @@ export default defineNuxtConfig({
     disablePrefetchLinks: true,
     disablePreloadLinks: true
   },
+  // Its `main` is a UMD bundle, which Node's ESM loader cannot read named exports from; inlining it
+  // makes the server bundle resolve its `module` ES build instead, as the client already does.
+  build: {
+    transpile: ['survey-vue3-ui']
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {
