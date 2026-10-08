@@ -23,6 +23,7 @@
  */
 import { describe, expect, test } from 'vitest'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
+import { REEF_STATS_MASK_CSS } from './utilities/reef-stats-mask'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
 import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
@@ -54,7 +55,7 @@ describe('info/rfcN non-RFC citation Back button', async () => {
 
       // Captured before any interaction: the post-load state is the one that stays
       // stable as the scroll assertions below evolve.
-      await expectScreenshotToMatchBaseline(page, RFC)
+      await expectScreenshotToMatchBaseline(page, RFC, { maskCss: REEF_STATS_MASK_CSS })
 
       // In-text non-RFC citation links render as plain native anchors tagged with
       // `data-non-rfc-anchor-link` and pointing at an in-document hash. Choose one
