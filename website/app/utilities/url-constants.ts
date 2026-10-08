@@ -30,6 +30,7 @@ export const SEARCH_PATH = '/search/'
 export const SUBJECTS_PATH = '/subjects/'
 export const AFTER_LOGIN_PATH = '/after-login/'
 export const LOGIN_PATH = '/login/'
+export const SURVEY_PATH = '/survey/'
 
 /**
  * Names the filter on /subjects/, which is applied in the browser and nowhere else: the worker

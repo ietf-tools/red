@@ -4,7 +4,7 @@
       <Header />
     </HeaderWrapper>
     <Main :class="props.mainClass">
-      <HeaderWrapper :class="props.hasSubHeader ? 'border-b border-b-white dark:border-b-blue-900' : undefined">
+      <HeaderWrapper>
         <slot name="subheader" />
       </HeaderWrapper>
       <slot />
@@ -22,6 +22,10 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+
+const hasSubHeader = computed(() => {
+  return props.hasSubHeader
+})
 </script>
 
 <style>
