@@ -1,6 +1,6 @@
 <template>
   <div class="flex mt-2">
-    <ul class="flex reef-stats-container items-start pl-0.5 text-sm">
+    <ul data-reef-stats class="flex reef-stats-container items-start pl-0.5 text-sm">
       <li class="h-full flex flex-col md:flex-row items-start pr-1 sm:pr-2">
         <RFCDocumentCommunityRating
           v-if="

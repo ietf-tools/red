@@ -7,6 +7,7 @@
 // from being overloaded.
 import { describe, test } from 'vitest'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
+import { REEF_STATS_MASK_CSS } from './utilities/reef-stats-mask'
 import { setupConcurrentPages } from './utilities/setup'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
 
@@ -33,11 +34,6 @@ const TEST_DURATION_MS = 180_000
 
 describe('info/rfcN layout', () => {
   const openPage = setupConcurrentPages()
-
-  // The rating, subscriber and set counts come from live Reef data in the bucket JSON, so an RFC
-  // gaining its first rating or set changes the height of the row under its title and shifts the
-  // whole document. Not reachable by stubbing the request, because it is fetched during SSR.
-  const REEF_STATS_MASK_CSS = '[data-reef-stat] { display: none; }'
 
   for (const rfc of RFCS) {
     for (const viewport of VIEWPORTS) {

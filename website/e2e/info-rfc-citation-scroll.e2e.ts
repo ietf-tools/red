@@ -30,6 +30,7 @@
 import { describe, expect, test } from 'vitest'
 import type { Page } from 'playwright-core'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
+import { REEF_STATS_MASK_CSS } from './utilities/reef-stats-mask'
 import { expectScreenshotToMatchBaseline } from './utilities/screenshot'
 import { openHydratedPage, setupNuxtServer } from './utilities/setup'
 
@@ -84,7 +85,7 @@ describe('info/rfcN citation links', async () => {
 
       // Captured before any interaction: the post-load state is the one that stays
       // stable as the scroll assertions below evolve.
-      await expectScreenshotToMatchBaseline(page, RFC)
+      await expectScreenshotToMatchBaseline(page, RFC, { maskCss: REEF_STATS_MASK_CSS })
 
       // Distinct in-text RFC citation links (rendered as RFCRouterLink previews).
       const ids = await page.evaluate(() => [
