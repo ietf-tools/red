@@ -8,13 +8,15 @@ import { useNotificationsStore, type Notification } from '~/stores/notifications
 import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { reefDocumentKey } from '~/utilities/reef-documents'
 import { parseSeriesId, type SeriesId } from './rfc'
+import { useFeatureFlags } from './feature-flags'
+import { SURVEY_PATH } from './url-constants'
 
 const LOAD_SURVEYS_AFTER_MS = 5_000
 
 // Reef reads `returnTo` off the survey link and sends the taker back there once they're done.
-export const withReturnTo = (surveyUrl: string): string => {
+export const withReturnTo = (surveyUrl: string, returnToPath: string): string => {
   const url = new URL(surveyUrl)
-  url.searchParams.set('returnTo', `${window.location.pathname}${window.location.search}`)
+  url.searchParams.set('returnTo', returnToPath)
   return url.href
 }
 
@@ -25,12 +27,12 @@ const AUTH_CHECK_TIMEOUT_MS = 5_000
 
 // slug is what a dismissal is keyed on (see OpenSurvey), so it's the notification's id too —
 // not a derived string of our own that could drift from what the reader already dismissed.
-export const openSurveyNotification = (survey: OpenSurvey): Notification => ({
+export const openSurveyNotification = (survey: OpenSurvey, returnToPath: string): Notification => ({
   id: survey.slug,
   title: `Survey: ${survey.title}`,
   readMoreText: 'Take Survey',
   description: survey.description,
-  url: withReturnTo(survey.url),
+  url: withReturnTo(survey.url, returnToPath),
   delayMs: 0,
   durationMs: 60_000,
   allowDismiss: true,
@@ -67,6 +69,8 @@ const loadOpenSurveys = async (): Promise<void> => {
   const notificationsStoreRefs = storeToRefs(notificationsStore)
   const reefSurveysStore = useReefSurveysStore()
   const router = useRouter()
+  const route = useRoute()
+  const featureFlags = useFeatureFlags()
   // Only /info/[id].vue's route carries an `id` param, so this is undefined — correctly, no
   // narrowing — everywhere else. Read from the route rather than parseSeriesId-ing the path
   // itself: a full path like /info/rfc9000/ splits into more than the two parts it expects and
@@ -82,9 +86,14 @@ const loadOpenSurveys = async (): Promise<void> => {
       seriesId
     }
     const survey = chooseSurvey(surveys, narrowing)
+    if (survey?.url && featureFlags.value.redSurveys) {
+      const surveyUrl = new URL(survey.url)
+      surveyUrl.pathname = SURVEY_PATH
+      survey.url = surveyUrl.toString()
+    }
     if (survey) {
       console.info('[survey]', `valid survey found`, { survey, surveys, narrowing })
-      notificationsStore.add(openSurveyNotification(survey))
+      notificationsStore.add(openSurveyNotification(survey, route.fullPath))
     } else {
       console.info('[survey]', `no valid surveys found`, surveys, narrowing)
     }

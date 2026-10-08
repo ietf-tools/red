@@ -1,56 +1,68 @@
 <template>
-  <div
-    :class="[
-      'mx-auto pb-10',
-      {
-        container: load.status !== 'ready'
-      }
-    ]">
-    <div v-if="load.status === 'loading'" class="mt-10 w-full text-center">
-      <GraphicsLoading class="inline-block w-16 h-16" />
-    </div>
+  <div class="min-h-[100vh]">
+    <NuxtLayout name="default" has-sub-header>
+      <div
+        v-if="featureFlags.redSurveys"
+        :class="[
+          'mx-auto pb-10',
+          {
+            container: load.status !== 'ready'
+          }
+        ]">
+        <div v-if="load.status === 'loading'" class="mt-10 w-full text-center">
+          <GraphicsLoading class="inline-block w-16 h-16" />
+        </div>
 
-    <div v-else-if="load.status === 'authRequired'" class="mt-10 w-full text-center">
-      <Heading level="1" style-level="2">You need an account to take this survey</Heading>
-      <LoginModalFeatureWall class="mt-6 mx-auto max-w-120" />
-    </div>
+        <div v-else-if="load.status === 'authRequired'" class="mt-10 w-full text-center">
+          <Heading level="1" style-level="2">You need an account to take this survey</Heading>
+          <LoginModalFeatureWall class="mt-6 mx-auto max-w-120" />
+        </div>
 
-    <Alert v-else-if="load.status === 'notFound'" level="1" variant="warning" heading="Survey not found">
-      <p class="pt-2">This survey is not available. The link may be wrong, or the survey may have closed.</p>
-    </Alert>
+        <Alert v-else-if="load.status === 'notFound'" level="1" variant="warning" heading="Survey not found">
+          <p class="pt-2">This survey is not available. The link may be wrong, or the survey may have closed.</p>
+        </Alert>
 
-    <Alert v-else-if="load.status === 'failed'" level="1" variant="warning" heading="Error">
-      <p class="pt-2">This survey could not be loaded. Please try again.</p>
-    </Alert>
+        <Alert v-else-if="load.status === 'failed'" level="1" variant="warning" heading="Error">
+          <p class="pt-2">This survey could not be loaded. Please try again.</p>
+        </Alert>
 
-    <Alert v-else-if="submitted" level="1" variant="info" heading="Thank you">
-      <p class="pt-2">Your response has been recorded.</p>
-      <p v-if="returnToPath" class="pt-2">
-        <Anchor :href="returnToPath" :class="ANCHOR_COLOR_TAILWIND_STYLE">Return to your previous page</Anchor>
-      </p>
-    </Alert>
+        <Alert v-else-if="submitted" level="1" variant="info" heading="Thank you">
+          <p class="pt-2">Your response has been recorded.</p>
+          <p v-if="returnToPath" class="pt-2">
+            <Anchor :href="returnToPath" :class="ANCHOR_COLOR_TAILWIND_STYLE">Return to your previous page</Anchor>
+          </p>
+        </Alert>
 
-    <SurveyRunner
-      v-else
-      :key="load.slug"
-      :definition="load.definition"
-      :theme="load.theme"
-      :save="load.save"
-      @saved="submitted = true" />
+        <SurveyRunner
+          v-else
+          :key="load.slug"
+          :definition="load.definition"
+          :theme="load.theme"
+          :save="load.save"
+          @saved="submitted = true" />
+      </div>
+    </NuxtLayout>
   </div>
 </template>
 
 <script setup lang="ts">
 import { until } from '@vueuse/core'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useRfcEditorHead } from '~/utilities/head'
 import { createSurveyResponse, getSurveyDefinition, ReefError, type SurveyDefinition } from '~/utilities/reef'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
 import { SURVEY_PATH } from '~/utilities/url'
 
+definePageMeta({
+  layout: false
+})
+
 // the canonical path doesn't include the slug query param
 // intentionally, because surveys shouldn't be indexed and
-// they must be deleted so canonical has no use for us
+// they can be deleted so canonical has no use for us
 const canonicalPath = SURVEY_PATH
+
+const featureFlags = useFeatureFlags()
 
 const route = useRoute()
 
@@ -163,7 +175,6 @@ useRfcEditorHead({
   title: 'Survey',
   noIndex: true,
   canonicalPath,
-  description: 'Subscriptions, etc',
   contentType: 'website'
 })
 </script>
