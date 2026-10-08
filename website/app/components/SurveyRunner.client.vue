@@ -159,8 +159,12 @@ watch(
 
   .sd-root-modern .sd-container-modern__title {
     background: var(--sjs-header-backcolor);
-    color: white;
+    color: var(--sjs-font-surveytitle-color);
     box-shadow: none;
+  }
+
+  .sv-header__title.sd-title {
+    color: var(--sjs-font-surveytitle-color);
   }
 
   .sv-components-row {
