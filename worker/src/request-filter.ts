@@ -115,7 +115,7 @@ const ORIGIN_PATHS = [
   '/set',
   '/status-changes',
   '/subjects',
-  '/surveys',
+  '/survey',
   // The health checks are the only `/api/v1/*` paths the origin owns; the rest
   // are served from R2 above.
   '/api/v1/healthcheck.json',
