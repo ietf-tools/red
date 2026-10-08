@@ -1,5 +1,11 @@
 <template>
-  <div class="container mx-auto pb-10">
+  <div
+    :class="[
+      'mx-auto pb-10',
+      {
+        container: load.status !== 'ready'
+      }
+    ]">
     <div v-if="load.status === 'loading'" class="mt-10 w-full text-center">
       <GraphicsLoading class="inline-block w-16 h-16" />
     </div>
