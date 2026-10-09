@@ -161,6 +161,11 @@ watch(
     background: var(--sjs-header-backcolor);
     color: var(--sjs-font-surveytitle-color);
     box-shadow: none;
+    text-align: center;
+  }
+
+  .sv-header__title {
+    text-align: center;
   }
 
   .sv-header__title .sv-string-viewer {
