@@ -6,7 +6,7 @@
         :class="[
           'mx-auto pb-10',
           {
-            container: load.status !== 'ready'
+            container: submitted || load.status !== 'ready'
           }
         ]">
         <div v-if="load.status === 'loading'" class="mt-10 w-full text-center">
