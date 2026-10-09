@@ -89,7 +89,7 @@ const loadOpenSurveys = async (featureFlags: Ref<FeatureFlags>): Promise<void> =
       const surveyUrl = new URL(survey.url)
       surveyUrl.host = location.host
       surveyUrl.pathname = SURVEY_PATH
-      survey.url = `${surveyUrl.pathname}${surveyUrl.search}${surveyUrl.hash}`
+      survey.url = surveyUrl.href
     }
     if (survey) {
       console.info('[survey]', `valid survey found`, { survey, surveys, narrowing })

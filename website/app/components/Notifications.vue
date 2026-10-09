@@ -19,7 +19,7 @@
         class="w-full flex flex-row justify-between items-center pl-2 pt-2">
         <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
           <Anchor
-            :href="notification.url"
+            :href="normaliseUrl(notification.url)"
             class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 -ml-2 px-2 py-1"
             @click="dismiss(notification)">
             {{ notification.readMoreText || 'Read more' }}
@@ -76,4 +76,20 @@ const notificationsAt = (position: NotificationPosition) =>
 // unreachable — keeping the empty one out of the DOM confines that to the rare moment when
 // both corners are genuinely occupied, and avoids a hotkey that lands on nothing.
 const activePositions = computed(() => TOAST_POSITIONS.filter((position) => notificationsAt(position).length > 0))
+
+const normaliseUrl = (url: string) => {
+  try {
+    const newUrl = new URL(url)
+    if (newUrl.host === location.host) {
+      const relativePath = `${newUrl.pathname}${newUrl.search}${newUrl.hash}`
+      console.log('[notification-url] changed ', url, ' to ', relativePath)
+      return relativePath
+    }
+  } catch (e) {
+    console.error(`[notification-url] can't parse ${url}`, e)
+    return url
+  }
+  console.error(`[notification-url] offsite link to ${url} not making relative url`)
+  return url
+}
 </script>
