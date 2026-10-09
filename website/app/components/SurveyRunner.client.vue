@@ -104,7 +104,7 @@ const applyTheme = (model: Model, theme: unknown, mode: string) => {
   model.applyTheme({
     ...base,
     ...custom,
-    ...(custom?.header && { header: { ...custom.header, titlePositionX: 'center' } }),
+    header: { ...custom?.header, titlePositionX: 'center' },
     cssVariables: { ...base.cssVariables, ...custom?.cssVariables }
   })
 }
