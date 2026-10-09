@@ -46,7 +46,10 @@ const retryable = ref(false)
 
 // A survey's own theme (from the SurveyJS Theme Editor) carries only the colours a designer picked,
 // so it's laid over a base that follows the site's colour mode.
-const ThemeSchema = z.looseObject({ cssVariables: z.record(z.string(), z.string()).optional() })
+const ThemeSchema = z.looseObject({
+  cssVariables: z.record(z.string(), z.string()).optional(),
+  header: z.looseObject({}).optional()
+})
 
 // SurveyJS's Default themes are not enough on their own: the primary colour must
 // follow the site's navy in light mode, but in dark mode navy is nearly the same
@@ -101,6 +104,7 @@ const applyTheme = (model: Model, theme: unknown, mode: string) => {
   model.applyTheme({
     ...base,
     ...custom,
+    ...(custom?.header && { header: { ...custom.header, titlePositionX: 'center' } }),
     cssVariables: { ...base.cssVariables, ...custom?.cssVariables }
   })
 }
@@ -161,11 +165,6 @@ watch(
     background: var(--sjs-header-backcolor);
     color: var(--sjs-font-surveytitle-color);
     box-shadow: none;
-    text-align: center;
-  }
-
-  .sv-header__title {
-    text-align: center;
   }
 
   .sv-header__title .sv-string-viewer {
