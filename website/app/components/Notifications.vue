@@ -19,7 +19,7 @@
         class="w-full flex flex-row justify-between items-center pl-2 pt-2">
         <ToastAction v-if="notification.url" as-child :alt-text="`Go to ${notification.title}`">
           <Anchor
-            :href="normaliseUrl(notification.url)"
+            :href="normalisedUrls.get(notification.id)"
             class="text-sm underline hover:bg-gray-100 focus:bg-gray-100 dark:hover:bg-gray-800 dark:focus:bg-gray-800 -ml-2 px-2 py-1"
             @click="dismiss(notification)">
             {{ notification.readMoreText || 'Read more' }}
@@ -92,4 +92,8 @@ const normaliseUrl = (url: string) => {
   console.error(`[notification-url] offsite link to ${url} not making relative url`)
   return url
 }
+
+const normalisedUrls = computed(
+  () => new Map(visibleNotifications.value.flatMap(({ id, url }) => (url ? [[id, normaliseUrl(url)] as const] : [])))
+)
 </script>
