@@ -163,7 +163,7 @@ watch(
     box-shadow: none;
   }
 
-  .sv-header__title.sd-title .sv-string-viewer {
+  .sv-header__title .sv-string-viewer {
     color: var(--sjs-font-surveytitle-color);
   }
 
