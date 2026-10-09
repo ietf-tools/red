@@ -41,7 +41,6 @@ import { SURVEY_PATH } from '~/utilities/url-constants'
 const surveysStore = useReefSurveysStore()
 const notificationsStore = useNotificationsStore()
 const featureFlags = useFeatureFlags()
-const surveysStoreRefs = storeToRefs(surveysStore)
 
 const isDismissed = (slug: string): boolean => notificationsStore.dismissedIds.includes(slug)
 
@@ -54,7 +53,7 @@ const surveys = computed(() =>
 
     if (featureFlags.value.redSurveys) {
       const redSurveyUrl = new URL(url)
-      redSurveyUrl.host = ''
+      redSurveyUrl.host = location.host
       redSurveyUrl.pathname = SURVEY_PATH
       url = `${redSurveyUrl.pathname}${redSurveyUrl.search}`
     }

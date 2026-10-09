@@ -87,6 +87,7 @@ const loadOpenSurveys = async (featureFlags: Ref<FeatureFlags>): Promise<void> =
     const survey = chooseSurvey(surveys, narrowing)
     if (survey?.url && featureFlags.value.redSurveys) {
       const surveyUrl = new URL(survey.url)
+      surveyUrl.host = location.host
       surveyUrl.pathname = SURVEY_PATH
       survey.url = `${surveyUrl.pathname}${surveyUrl.search}${surveyUrl.hash}`
     }
