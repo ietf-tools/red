@@ -40,8 +40,8 @@
 
       <div class="flex-3 min-w-0 flex flex-col gap-4">
         <RFCCard
-          v-if="subseriesDocument.contents.length > 0"
-          v-for="rfc in subseriesDocument.contents"
+          v-if="sortedDocuments.length > 0"
+          v-for="rfc in sortedDocuments"
           :key="rfc.number"
           :rfc="rfc"
           heading-level="2"
@@ -130,9 +130,19 @@ if (
 
 const formattedTitle = computed(() => formatTitleAsVNode(`${props.subseriesId.type}${props.subseriesId.number}`))
 
+const sortedDocuments = computed(() => {
+  if (!subseriesDocument.value) return []
+  const { contents } = subseriesDocument.value
+  return [...contents].sort((a, b) => {
+    const aTime = a.published ? DateTime.fromISO(a.published).toMillis() : Infinity
+    const bTime = b.published ? DateTime.fromISO(b.published).toMillis() : Infinity
+    if (aTime === bTime) return 0
+    return aTime < bTime ? -1 : 1
+  })
+})
+
 const lastRfcPublished = computed(() => {
-  if (!subseriesDocument.value) return ''
-  const lastRfc = subseriesDocument.value.contents[subseriesDocument.value.contents.length - 1]
+  const lastRfc = sortedDocuments.value[sortedDocuments.value.length - 1]
   if (!lastRfc || !lastRfc.published) return ''
   return DateTime.fromISO(lastRfc.published)
 })
