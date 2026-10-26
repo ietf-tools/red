@@ -78,6 +78,14 @@ The entry point for the precomputer is `precomputer/src` with the items `single.
   - `multiple.ts --skip-indices` rebuilds only the per-RFC files. 
 - `cron.ts` handles indices (all subseries, RFC indexes like on the homepage that list all RFCs, RSS/Atom feeds, etc.). As the name `cron.ts` implies this script is run periodically.
 
+### Redirects
+
+Redirects live in three places. They are listed here from highest to lowest server cost, so prefer the lowest-cost option that can do the job:
+
+* **Nuxt redirects:** highest cost, so use sparingly. Best for trivial URL normalization (adding a trailing slash, fixing casing, removing leading zeros) where it's tidier to keep the redirect next to the code that defines the canonical URL.
+* **Cloudflare worker redirects:** medium cost. These are in `/worker/` and run as JavaScript at the edge, without Nuxt's overhead. This is the default place for most redirects.
+* **Cloudflare bulk redirects:** lowest cost, but limited in what they can express.
+
 #### Precomputer tests
 
 In `/precomputer/` run `npm run test`.
