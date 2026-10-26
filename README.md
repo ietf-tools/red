@@ -84,6 +84,7 @@ Redirects live in three places. They are listed here from highest to lowest serv
 
 * **Nuxt redirects:** highest cost, so use sparingly. Best for trivial URL normalization (adding a trailing slash, fixing casing, removing leading zeros) where it's tidier to keep the redirect next to the code that defines the canonical URL.
 * **Cloudflare worker redirects:** medium cost. These are in `/worker/` and run as JavaScript at the edge, without Nuxt's overhead. This is the default place for most redirects.
+* **Cloudflare redirect rules:** This has the ability to configure complex regex rules.
 * **Cloudflare bulk redirects:** lowest cost, but limited in what they can express.
 
 #### Precomputer tests
