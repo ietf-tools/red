@@ -11,15 +11,6 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
 }
 
-@viewport {
-  zoom: 1;
-}
-
-@-ms-viewport {
-  width: extend-to-zoom;
-  zoom: 1;
-}
-
 .horizontal-scrollable {
   margin-left: calc(var(--spacing) * 4 * -1);
   margin-right: calc(var(--spacing) * 2 * -1);
