@@ -1,9 +1,15 @@
 <template>
-  <div v-if="featureFlags.formatsAlsoViewAs">
-    <p class="sm:-mt-10 pl-4 pr-4 sm:pr-14 lg:pr-0 pt-2 text-base text-right text-gray-800 dark:text-gray-200">
-      View as: <DocumentPojo :value="formatsPojo" />
-    </p>
-  </div>
+  <p
+    :class="[
+      'pt-0 sm:pt-2',
+      'sm:-mt-9',
+      'pb-0',
+      'pl-4',
+      'pr-14 lg:pr-0', // spacing for mobile 'Info' button
+      'text-base lg:text-sm text-left sm:text-right text-gray-800 dark:text-gray-200'
+    ]">
+    View as: <DocumentPojo :value="formatsPojo" />
+  </p>
 
   <div class="px-2 w-full">
     <div class="flex flex-col">
@@ -259,7 +265,7 @@ const formatsPojo = computed((): DocumentPojo => {
   const formats = props.rfcBucketHtmlDocument.rfc.formats
   if (formats.length === 0) return []
 
-  const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline hover:underline focus:underline`
+  const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer no-underline hover:underline focus:underline`
 
   const friendlyFormatName = (format: RfcCommonFormatName): string => {
     switch (format) {
@@ -308,7 +314,7 @@ const formatsPojo = computed((): DocumentPojo => {
             },
             children: [{ type: 'Text' as const, textContent: friendlyFormatName(format) }]
           },
-          { type: 'Text' as const, textContent: index < sortedFormats.length - 1 ? `${COMMA}${SPACE}` : FULLSTOP }
+          { type: 'Text' as const, textContent: index < sortedFormats.length - 1 ? `${COMMA}${SPACE}` : '' }
         ]
       }))
     }

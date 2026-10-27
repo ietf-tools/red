@@ -137,7 +137,7 @@
       <p
         v-if="props.reefStats?.setCount"
         data-reef-stat
-        :class="['hidden md:block sm:pl-7 text-xs', COVER_LINK_INNER_STYLE_CLASS]">
+        :class="['hidden md:block sm:pl-8 text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         Added to
         {{ formatNumber(props.reefStats.setCount, 0) }}
         <template v-if="props.reefStats.setCount === 1">Set</template>

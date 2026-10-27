@@ -101,7 +101,7 @@
       <p
         v-if="props.reefStats?.subscriberCount"
         data-reef-stat
-        :class="['hidden md:block sm:pl-7 text-xs', COVER_LINK_INNER_STYLE_CLASS]">
+        :class="['hidden md:block sm:pl-8 text-xs', COVER_LINK_INNER_STYLE_CLASS]">
         {{ formatNumber(props.reefStats.subscriberCount, 0) }}
         subscribed
       </p>
