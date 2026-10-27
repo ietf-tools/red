@@ -137,7 +137,7 @@ const sortedDocuments = computed(() => {
     const aTime = a.published ? DateTime.fromISO(a.published).toMillis() : Infinity
     const bTime = b.published ? DateTime.fromISO(b.published).toMillis() : Infinity
     if (aTime === bTime) return 0
-    return aTime < bTime ? -1 : 1
+    return aTime > bTime ? -1 : 1
   })
 })
 
