@@ -63,6 +63,9 @@
     <div
       :class="[
         `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
+        props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc'
+          ? 'max-w-[var(--max-text-block-width)] ml-2 text-pretty'
+          : undefined,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasWordBreakMode
           ? wordBreakModeClass(uiSettingsStore.wordBreakMode)
           : undefined,
@@ -343,11 +346,6 @@ const formatsPojo = computed((): DocumentPojo => {
 }
 
 .rfc-content-type-xml2rfc {
-  max-width: var(--max-text-block-width, 42rem);
-  text-wrap: pretty;
-
-  margin-left: calc(var(--spacing) * 2);
-
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
      to reduce maintenance burden.

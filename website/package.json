@@ -16,6 +16,7 @@
     "dev:prod": "NUXT_PUBLIC_REEF_PRECOMPUTED_SOURCE=prod npm run dev:nuxt",
     "cleanup": "nuxt cleanup",
     "preview": "npm run build:nuxt && nuxt preview",
+    "preview:prod": "NUXT_PUBLIC_API_V1_BASE=https://www.rfc-editor.org npm run preview",
     "preview:dev": "npm run build:nuxt:dev && nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "TZ=UTC npm run test:unittests && npm run test:types && npm run test:lint",
