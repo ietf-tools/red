@@ -4,6 +4,7 @@ import { DateTime } from 'luxon'
 import { createSSRApp } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { parse, type SFCDescriptor } from '@vue/compiler-sfc'
+import sharp from 'sharp'
 import {
   getDOMParser,
   getParentElementNodeNames,
@@ -33,7 +34,6 @@ import { redactRfc } from './rfc.ts'
 import { renderHtmlToImage } from '../utilities/html-screenshot.ts'
 import { OPENGRAPH_IMAGE_DIMENSIONS, sanitiseHtml } from '../utilities/html.ts'
 import { getRfcCommonCached } from '../utilities/api.ts'
-import sharp from 'sharp'
 
 type Props = {
   rfcBucketHtml: string
@@ -89,9 +89,8 @@ export const rfcBucketHtmlToRfcDocument = async ({
       break
   }
 
-  // the HTML was written assuming it will be published to this URL.
+  // the original source HTML was written assuming its published location will be this URL,
   // so relative links are relative to this URL.
-
   const baseUrl = new URL(
     `/rfc/rfc${rfcNumber}.html`,
     PUBLIC_SITE_URL_ORIGIN // This should not change per-environment.

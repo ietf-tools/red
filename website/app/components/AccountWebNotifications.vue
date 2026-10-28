@@ -170,10 +170,7 @@ const notificationContent = (notification: WebNotification): VNode => {
 
   if (rfcCommon !== undefined) {
     const { number, title } = rfcCommon
-    return h('span', [
-      change ? `${change} ` : undefined,
-      h(RFCTitle, { rfc: { number, title }, hasTrailingColon: true })
-    ])
+    return h('span', [h(RFCTitle, { rfc: { number, title }, hasTrailingColon: true }), changePill(change)])
   }
 
   const doc = notificationEventString(notification, 'doc')
@@ -183,10 +180,13 @@ const notificationContent = (notification: WebNotification): VNode => {
     return h('span', change ?? notification.kind)
   }
 
-  return h('span', [
-    change ? `${change} ` : undefined,
-    h(RFCTitle, { rfc: { number: rfc.number, title: '' }, hideTitle: true })
-  ])
+  return h('span', [h(RFCTitle, { rfc: { number: rfc.number, title: '' }, hideTitle: true }), changePill(change)])
+}
+
+const changePill = (change: string | undefined) => {
+  return change
+    ? h('span', { class: 'inline-block px-2 py-1 bg-gray-100 dark:bg-gray-800 ml-1 whitespace-nowrap' }, change)
+    : undefined
 }
 
 // Reef's own url is used as-is when present. Falling back to building one from `doc` covers a
