@@ -122,22 +122,33 @@ const writePng = async (directory: string, fileName: string, data: Buffer): Prom
 }
 
 /**
- * pixelmatch refuses images of unequal dimensions, and a full-page capture changes height whenever
- * the content reflows, so both sides are laid onto a canvas the size of the larger before they are
- * compared. The padding is white to match the page background, so the highlighted difference is
- * the reflow itself rather than a solid block where the shorter image ends.
+ * Rows per comparison band. A decoded full-page capture is up to ~500MB, so the comparison works
+ * on views of a band at a time instead of copying whole images onto a common canvas.
  */
-const padTo = (png: PNG, width: number, height: number): PNG => {
-  if (png.width === width && png.height === height) {
-    return png
-  }
-  const padded = new PNG({ width, height })
-  padded.data.fill(255)
+const COMPARE_BAND_ROWS = 1_000
+
+/**
+ * The rows `[startRow, endRow)` of a decoded capture as a `width`-wide RGBA band.
+ *
+ * pixelmatch refuses images of unequal dimensions, and a full-page capture changes height whenever
+ * the content reflows, so a band that runs past the end of the capture (or a capture narrower than
+ * `width`) is padded with white to match the page background, which makes the highlighted difference
+ * the reflow itself rather than a solid block where the shorter image ends. A band that lies wholly
+ * inside the capture is a view onto it, with no copy.
+ */
+const bandOf = (png: PNG, startRow: number, endRow: number, width: number): Uint8Array => {
+  const rows = endRow - startRow
+  const availableRows = Math.max(0, Math.min(endRow, png.height) - startRow)
   const rowBytes = png.width * 4
-  for (let y = 0; y < png.height; y++) {
-    png.data.copy(padded.data, y * width * 4, y * rowBytes, (y + 1) * rowBytes)
+  if (png.width === width && availableRows === rows) {
+    return png.data.subarray(startRow * rowBytes, endRow * rowBytes)
   }
-  return padded
+  const band = Buffer.alloc(width * rows * 4, 255)
+  for (let row = 0; row < availableRows; row++) {
+    const from = (startRow + row) * rowBytes
+    png.data.copy(band, row * width * 4, from, from + rowBytes)
+  }
+  return band
 }
 
 const readPngIfPresent = async (path: string): Promise<Buffer | undefined> => {
@@ -223,44 +234,81 @@ const captureFullPage = async (page: Page, maskCss: string | undefined): Promise
   })
 }
 
+type Comparison =
+  | { identical: true }
+  | { identical: false; sizeChanged: boolean; diffRatio: number; diffPixels: number; baselinePng: PNG; actualPng: PNG }
+
 /**
- * Captures a full-page screenshot and asserts it matches the committed baseline.
- *
- * Call this on a freshly loaded page, before the test drives any interaction — the
- * post-load state is the one that stays stable as the surrounding test evolves.
+ * Runs pixelmatch over the two captures a band at a time, so no full-size padded copy of either is
+ * built. Differences are counted per band, which means the antialiasing check cannot see across a
+ * band boundary; a boundary row can be classified differently from a whole-image run, by a handful
+ * of pixels against a tolerance of thousands. Writes the highlighted difference to `diffPng` when
+ * one is given, and only counts otherwise.
  */
+const countDifferingPixels = (baselinePng: PNG, actualPng: PNG, diffPng?: PNG): number => {
+  const width = Math.max(baselinePng.width, actualPng.width)
+  const height = Math.max(baselinePng.height, actualPng.height)
+  let diffPixels = 0
+  for (let startRow = 0; startRow < height; startRow += COMPARE_BAND_ROWS) {
+    const endRow = Math.min(startRow + COMPARE_BAND_ROWS, height)
+    diffPixels += pixelmatch(
+      bandOf(baselinePng, startRow, endRow, width),
+      bandOf(actualPng, startRow, endRow, width),
+      diffPng ? diffPng.data.subarray(startRow * width * 4, endRow * width * 4) : undefined,
+      width,
+      endRow - startRow,
+      { threshold: PIXELMATCH_THRESHOLD }
+    )
+  }
+  return diffPixels
+}
+
+/**
+ * Builds the highlighted-difference image for a comparison that failed. Kept apart from the count
+ * so a passing screenshot never pays for a full-size diff canvas.
+ */
+const renderDiff = (baselinePng: PNG, actualPng: PNG): PNG => {
+  const diffPng = new PNG({
+    width: Math.max(baselinePng.width, actualPng.width),
+    height: Math.max(baselinePng.height, actualPng.height)
+  })
+  countDifferingPixels(baselinePng, actualPng, diffPng)
+  return diffPng
+}
+
 /**
  * Pixel-compares a captured screenshot against a committed baseline, at the same
  * antialiasing-tolerant threshold used to decide pass/fail. Shared by the assertion
  * below and by the UPDATE_SCREENSHOTS path, so re-recording never overwrites a
  * baseline with nothing more than a run's rendering jitter (see PIXELMATCH_THRESHOLD).
  */
-const diffAgainstBaseline = (
-  baseline: Buffer,
-  actual: Buffer
-): { sizeChanged: boolean; diffRatio: number; diffPixels: number; diffPng: PNG; baselinePng: PNG; actualPng: PNG } => {
+const diffAgainstBaseline = (baseline: Buffer, actual: Buffer): Comparison => {
+  // The same renderer encodes the same pixels to the same bytes, so a passing run usually skips
+  // decoding two ~500MB images altogether.
+  if (baseline.equals(actual)) {
+    return { identical: true }
+  }
+
   const baselinePng = PNG.sync.read(baseline)
   const actualPng = PNG.sync.read(actual)
 
+  const diffPixels = countDifferingPixels(baselinePng, actualPng)
   const width = Math.max(baselinePng.width, actualPng.width)
   const height = Math.max(baselinePng.height, actualPng.height)
-  const diffPng = new PNG({ width, height })
-  const diffPixels = pixelmatch(
-    padTo(baselinePng, width, height).data,
-    padTo(actualPng, width, height).data,
-    diffPng.data,
-    width,
-    height,
-    { threshold: PIXELMATCH_THRESHOLD }
-  )
 
   // A capture's height tracks the content up to MAX_CAPTURE_HEIGHT_PX, so a size change is itself
   // a regression signal, however few pixels moved.
   const sizeChanged = baselinePng.width !== actualPng.width || baselinePng.height !== actualPng.height
   const diffRatio = diffPixels / (width * height)
-  return { sizeChanged, diffRatio, diffPixels, diffPng, baselinePng, actualPng }
+  return { identical: false, sizeChanged, diffRatio, diffPixels, baselinePng, actualPng }
 }
 
+/**
+ * Captures a full-page screenshot and asserts it matches the committed baseline.
+ *
+ * Call this on a freshly loaded page, before the test drives any interaction — the
+ * post-load state is the one that stays stable as the surrounding test evolves.
+ */
 export const expectScreenshotToMatchBaseline = async (
   page: Page,
   name: string,
@@ -281,8 +329,8 @@ export const expectScreenshotToMatchBaseline = async (
       return
     }
 
-    const { sizeChanged, diffRatio } = diffAgainstBaseline(baseline, actual)
-    if (!sizeChanged && diffRatio <= maxDiffPixelRatio) {
+    const comparison = diffAgainstBaseline(baseline, actual)
+    if (comparison.identical || (!comparison.sizeChanged && comparison.diffRatio <= maxDiffPixelRatio)) {
       // Within the same tolerance the pass/fail check uses: rewriting here would only
       // swap in this run's antialiasing jitter, producing a byte-different but
       // visually identical file. Leave the committed baseline alone.
@@ -308,19 +356,22 @@ export const expectScreenshotToMatchBaseline = async (
     return
   }
 
-  const { sizeChanged, diffRatio, diffPixels, diffPng, baselinePng, actualPng } = diffAgainstBaseline(baseline, actual)
-  if (sizeChanged || diffRatio > maxDiffPixelRatio) {
-    const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
-    const diffPath = await writePng(DIFF_DIR, fileName, PNG.sync.write(diffPng))
-    const reason = sizeChanged
-      ? `changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}`
-      : `differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%)`
-    const message = `screenshot "${name}" ${reason}.\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`npm run test:e2e:update-screenshots\`.`
-    if (knownMismatch) {
-      console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
-      return
+  const comparison = diffAgainstBaseline(baseline, actual)
+  if (!comparison.identical) {
+    const { sizeChanged, diffRatio, diffPixels, baselinePng, actualPng } = comparison
+    if (sizeChanged || diffRatio > maxDiffPixelRatio) {
+      const actualPath = await writePng(ACTUAL_DIR, fileName, actual)
+      const diffPath = await writePng(DIFF_DIR, fileName, PNG.sync.write(renderDiff(baselinePng, actualPng)))
+      const reason = sizeChanged
+        ? `changed size: baseline is ${baselinePng.width}×${baselinePng.height}, got ${actualPng.width}×${actualPng.height}`
+        : `differs from baseline by ${diffPixels} pixels (${(diffRatio * 100).toFixed(3)}%, tolerance ${(maxDiffPixelRatio * 100).toFixed(3)}%)`
+      const message = `screenshot "${name}" ${reason}.\n  baseline: ${baselinePath}\n  actual:   ${actualPath}\n  diff:     ${diffPath}\nIf the change is intended, re-record with \`npm run test:e2e:update-screenshots\`.`
+      if (knownMismatch) {
+        console.warn(`[screenshot] known mismatch (${knownMismatch}): ${message}`)
+        return
+      }
+      expect.fail(message)
     }
-    expect.fail(message)
   }
 
   if (knownMismatch) {
