@@ -190,7 +190,7 @@ const changePill = (change: string | undefined) => {
     'span',
     {
       class:
-        'inline-block px-2 py-1 bg-gray-100 dark:bg-gray-800 ml-2 text-sm whitespace-nowrap rounded border-1 border-gray-300 dark:border-gray-700 text-gray-25 dark:text-gray-300 font-bold uppercase'
+        'inline-block ml-2 px-2 py-1 bg-gray-100 dark:bg-gray-800 text-sm whitespace-nowrap rounded border-1 border-gray-300 dark:border-gray-700 text-gray-25 dark:text-gray-300 font-bold uppercase'
     },
     normalizedText
   )
