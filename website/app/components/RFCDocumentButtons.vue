@@ -1,7 +1,9 @@
 <template>
   <div class="flex mt-2">
-    <ul data-reef-stats class="flex reef-stats-container items-start pl-0.5 text-sm divide-x divide-gray-300">
-      <li class="h-full flex flex-col md:flex-row items-start pr-1 sm:pr-2">
+    <ul
+      data-reef-stats
+      class="flex flex-col min-[380px]:flex-row min-[380px]:divide-x min-[380px]:divide-gray-300 gap-2 items-start pl-0.5 text-sm">
+      <li class="h-full flex flex-col md:flex-row items-start sm:pr-2">
         <RFCDocumentCommunityRating
           v-if="
             props.reefStats?.ratingAggregate &&
@@ -15,7 +17,7 @@
           @retry="retryRating"
           v-model="userRFCRating" />
       </li>
-      <li class="sm:pl-2 sm:pr-2">
+      <li class="sm:pr-2">
         <RFCDocumentSubscribe
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
@@ -25,7 +27,7 @@
           @retry="retrySubscription"
           v-model="isSubscribedToThisRFC" />
       </li>
-      <li class="pl-1 sm:pl-2">
+      <li class="sm:pr-2">
         <RFCDocumentSets
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
@@ -37,26 +39,12 @@
           @retry="retrySets"
           v-model="setIdsWithThisRFC" />
       </li>
-      <li v-if="featureFlags.hasReadingMode && props.showReadAloud">
-        <div class="ml-2 print:hidden">
-          <RFCReadingModeButton :status="readingStatus" @toggle="toggleReading" />
-        </div>
+      <li v-if="featureFlags.hasReadingMode && props.showReadAloud" class="sm:pr-2 print:hidden">
+        <RFCReadingModeButton :status="readingStatus" @toggle="toggleReading" />
       </li>
     </ul>
   </div>
 </template>
-
-<style scoped>
-.reef-stats-container {
-  flex-direction: column;
-}
-
-@media (min-width: 300px) {
-  .reef-stats-container {
-    flex-direction: row;
-  }
-}
-</style>
 
 <script setup lang="ts">
 /**

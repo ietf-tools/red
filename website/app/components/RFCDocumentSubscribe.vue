@@ -14,7 +14,7 @@
             COVER_LINK_STYLE_CLASS,
             {
               'gap-0': isSubscribedToThisRFC,
-              'gap-1': !isSubscribedToThisRFC
+              'sm:gap-1': !isSubscribedToThisRFC
             }
           ]">
           <GraphicsCheckmark

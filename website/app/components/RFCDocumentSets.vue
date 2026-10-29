@@ -13,7 +13,7 @@
             COVER_LINK_STYLE_CLASS,
             {
               'gap-0': isInASet,
-              'gap-1': !isInASet
+              'sm:gap-1': !isInASet
             }
           ]">
           <GraphicsCheckmark
