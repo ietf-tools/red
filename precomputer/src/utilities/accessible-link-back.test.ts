@@ -17,7 +17,8 @@ const el = (nodeName: string, attributes: Record<string, string>, children: Node
 const selfRefHeading = (nodeName: string, id: string, className = 'selfRef') =>
   el(nodeName, { id }, [el('a', { href: `#${id}`, class: className }, [text('Title')])])
 
-const linkBack = (id: string) => el('a', { href: `#toc-${id}`, class: 'sr-only' }, [text('Back to TOC')])
+const linkBack = (id: string, tocTitle: string) =>
+  el('a', { href: `#toc-${id}`, 'aria-label': `Back to TOC: ${tocTitle}`, class: 'sr-only' }, [text('Back to TOC')])
 
 const makeDoc = (documentHtmlObj: NodePojo[], withToc = true): RfcBucketHtmlDocument => ({
   rfc: testMockAllRfcs[testMockAllRfcs.length - 1]!,
@@ -45,7 +46,7 @@ describe('addHeadingLinkBacks', () => {
     expect(result.documentHtmlObj).toEqual([
       el('h2', { id: 'abstract' }, [
         el('a', { href: '#abstract', class: 'selfRef' }, [text('Title')]),
-        linkBack('abstract')
+        linkBack('abstract', 'Abstract')
       ])
     ])
   })
@@ -55,7 +56,7 @@ describe('addHeadingLinkBacks', () => {
     expect(result.documentHtmlObj).toEqual([
       el('h3', { id: 'section-4.1' }, [
         el('a', { href: '#section-4.1', class: 'selfRef' }, [text('Title')]),
-        linkBack('section-4.1')
+        linkBack('section-4.1', 'Four point one')
       ])
     ])
   })
@@ -65,7 +66,7 @@ describe('addHeadingLinkBacks', () => {
     expect(result.documentHtmlObj).toEqual([
       el('h2', { id: 'abstract' }, [
         el('a', { href: '#abstract', class: 'section-name selfRef' }, [text('Title')]),
-        linkBack('abstract')
+        linkBack('abstract', 'Abstract')
       ])
     ])
   })

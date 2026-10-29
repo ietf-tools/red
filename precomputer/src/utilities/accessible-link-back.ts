@@ -14,16 +14,16 @@ export const addHeadingLinkBacks = (doc: RfcBucketHtmlDocument): RfcBucketHtmlDo
     return doc
   }
 
-  const tocIds = new Set<string>()
-  const collectTocIds = (sections: TocSectionType[]) => {
+  const tocTitles = new Map<string, string>()
+  const collectTocTitles = (sections: TocSectionType[]) => {
     for (const { links, sections: childSections } of sections) {
-      links?.forEach(({ id }) => tocIds.add(id))
+      links?.forEach(({ id, title }) => tocTitles.set(id, title))
       if (childSections) {
-        collectTocIds(childSections)
+        collectTocTitles(childSections)
       }
     }
   }
-  collectTocIds(tableOfContents.sections)
+  collectTocTitles(tableOfContents.sections)
 
   const findSelfRefTocId = (nodes: NodePojo[]): string | undefined => {
     for (const node of nodes) {
@@ -34,7 +34,7 @@ export const addHeadingLinkBacks = (doc: RfcBucketHtmlDocument): RfcBucketHtmlDo
       const { href, class: className } = attributes
       if (nodeName === 'a' && href?.startsWith('#') && className?.split(/\s+/).includes('selfRef')) {
         const id = href.slice(1)
-        if (tocIds.has(id)) {
+        if (tocTitles.has(id)) {
           return id
         }
       }
@@ -55,7 +55,8 @@ export const addHeadingLinkBacks = (doc: RfcBucketHtmlDocument): RfcBucketHtmlDo
       return { ...node, children: children.map(walk) }
     }
     const id = findSelfRefTocId(children)
-    if (id === undefined) {
+    const title = id === undefined ? undefined : tocTitles.get(id)
+    if (id === undefined || title === undefined) {
       return node
     }
     return {
@@ -65,7 +66,7 @@ export const addHeadingLinkBacks = (doc: RfcBucketHtmlDocument): RfcBucketHtmlDo
         {
           type: 'Element',
           nodeName: 'a',
-          attributes: { href: `#toc-${id}`, class: 'sr-only' },
+          attributes: { href: `#toc-${id}`, 'aria-label': `Jump to TOC: ${title}`, class: 'sr-only' },
           children: [{ type: 'Text', textContent: 'Back to TOC' }]
         }
       ]
