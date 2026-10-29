@@ -18,8 +18,8 @@ const selfRefHeading = (nodeName: string, id: string, className = 'selfRef') =>
   el(nodeName, { id }, [el('a', { href: `#${id}`, class: className }, [text('Title')])])
 
 const linkBack = (id: string, tocTitle: string) =>
-  el('a', { href: `#toc-${id}`, 'aria-label': `Jump to TOC: ${tocTitle}`, class: 'toc-link-back' }, [
-    text('Back to TOC')
+  el('a', { href: `#toc-${id}`, 'aria-label': `Skip to TOC: ${tocTitle}`, class: 'toc-link-back' }, [
+    text('Skip to TOC')
   ])
 
 const makeDoc = (documentHtmlObj: NodePojo[], withToc = true): RfcBucketHtmlDocument => ({

@@ -66,8 +66,8 @@ export const addHeadingLinkBacks = (doc: RfcBucketHtmlDocument): RfcBucketHtmlDo
         {
           type: 'Element',
           nodeName: 'a',
-          attributes: { href: `#toc-${id}`, 'aria-label': `Jump to TOC: ${title}`, class: 'toc-link-back' },
-          children: [{ type: 'Text', textContent: 'Back to TOC' }]
+          attributes: { href: `#toc-${id}`, 'aria-label': `Skip to TOC: ${title}`, class: 'toc-link-back' },
+          children: [{ type: 'Text', textContent: 'Skip to TOC' }]
         }
       ]
     }
