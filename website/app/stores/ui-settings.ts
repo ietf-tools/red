@@ -23,6 +23,15 @@ export const DEFAULT_TEXT_SCALE = 1.5
 
 const TextScaleSchema = z.number().min(TEXT_SCALE_MIN).max(TEXT_SCALE_MAX)
 
+// Bounds of the reading-mode speech rate slider, shared with AdvancedUISettings.vue for the same
+// reason as the text-scale bounds.
+export const READING_RATE_MIN = 0.5
+export const READING_RATE_MAX = 2
+export const READING_RATE_STEP = 0.1
+export const DEFAULT_READING_RATE = 1
+
+const ReadingRateSchema = z.number().min(READING_RATE_MIN).max(READING_RATE_MAX)
+
 const UiSettingsSchema = z
   .object({
     obsoletedByMode: SupersededModeSchema,
@@ -31,7 +40,10 @@ const UiSettingsSchema = z
     textScale: TextScaleSchema.optional(),
     subjectDensity: SubjectDensitySchema,
     subjectDocumentDensity: SubjectDocumentDensitySchema,
-    wordBreakMode: WordBreakModeSchema.optional()
+    wordBreakMode: WordBreakModeSchema.optional(),
+    readAloudPreformatted: z.boolean().optional(),
+    readingRate: ReadingRateSchema.optional(),
+    readingVoiceUri: z.string().optional()
   })
   .optional()
 
@@ -64,6 +76,10 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   const subjectDensityRef = ref<SubjectDensity>(DEFAULT_SUBJECT_DENSITY)
   const subjectDocumentDensityRef = ref<Density>(DEFAULT_SUBJECT_DOCUMENT_DENSITY)
   const wordBreakModeRef = ref<WordBreakMode>(DEFAULT_WORD_BREAK_MODE)
+  const readAloudPreformattedRef = ref<boolean>(false)
+  const readingRateRef = ref<number>(DEFAULT_READING_RATE)
+  // Empty means the browser's default voice for the document's language.
+  const readingVoiceUriRef = ref<string>('')
 
   const saveSettings = () => {
     const uiSettings: UiSettings = {
@@ -73,7 +89,10 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       textScale: textScaleRef.value,
       subjectDensity: subjectDensityRef.value,
       subjectDocumentDensity: subjectDocumentDensityRef.value,
-      wordBreakMode: wordBreakModeRef.value
+      wordBreakMode: wordBreakModeRef.value,
+      readAloudPreformatted: readAloudPreformattedRef.value,
+      readingRate: readingRateRef.value,
+      readingVoiceUri: readingVoiceUriRef.value
     }
 
     try {
@@ -108,6 +127,9 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       subjectDensityRef.value = data.subjectDensity ?? subjectDensityRef.value
       subjectDocumentDensityRef.value = data.subjectDocumentDensity ?? subjectDocumentDensityRef.value
       wordBreakModeRef.value = data.wordBreakMode ?? wordBreakModeRef.value
+      readAloudPreformattedRef.value = data.readAloudPreformatted ?? readAloudPreformattedRef.value
+      readingRateRef.value = data.readingRate ?? readingRateRef.value
+      readingVoiceUriRef.value = data.readingVoiceUri ?? readingVoiceUriRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
@@ -153,6 +175,22 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  const setReadAloudPreformatted = (readAloudPreformatted: boolean) => {
+    readAloudPreformattedRef.value = readAloudPreformatted
+    saveSettings()
+  }
+
+  // Clamped for the same reason as setTextScale.
+  const setReadingRate = (readingRate: number) => {
+    readingRateRef.value = Math.min(Math.max(readingRate, READING_RATE_MIN), READING_RATE_MAX)
+    saveSettings()
+  }
+
+  const setReadingVoiceUri = (readingVoiceUri: string) => {
+    readingVoiceUriRef.value = readingVoiceUri
+    saveSettings()
+  }
+
   const setIsUiSettingsModalOpen = (isOpen: boolean) => {
     isUiSettingsModalOpenRef.value = isOpen
   }
@@ -176,6 +214,12 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     subjectDocumentDensity: subjectDocumentDensityRef,
     setSubjectDocumentDensity,
     wordBreakMode: wordBreakModeRef,
-    setWordBreakMode
+    setWordBreakMode,
+    readAloudPreformatted: readAloudPreformattedRef,
+    setReadAloudPreformatted,
+    readingRate: readingRateRef,
+    setReadingRate,
+    readingVoiceUri: readingVoiceUriRef,
+    setReadingVoiceUri
   }
 })

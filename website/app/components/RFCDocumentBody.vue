@@ -67,6 +67,20 @@
       ui-settings-key="updatedByMode" />
 
     <div
+      v-if="featureFlags.hasReadingMode && props.rfcBucketHtmlDocument.documentHtmlType !== 'pdf-or-ps'"
+      class="mt-5 ml-2 print:hidden">
+      <template v-if="isReadingModeSupported">
+        <RFCReadingModeButton :status="readingStatus" @toggle="toggleReading" />
+        <RFCReadingModeNoVoicesModal v-model:open="isReadingNoVoicesModalOpen" />
+        <p v-if="readingErrorMessage" role="alert" class="mt-2 text-sm text-gray-800 dark:text-gray-200">
+          {{ readingErrorMessage }}
+        </p>
+      </template>
+      <RFCReadingModeUnsupportedNotice v-else-if="isReadingModeUnsupported" />
+    </div>
+
+    <div
+      ref="contentElement"
       :class="[
         `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc'
@@ -131,6 +145,7 @@ import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { wordBreakModeClass } from '~/utilities/word-break-mode'
+import { useReadingMode } from '~/utilities/reading-mode/use-reading-mode'
 import { titleWithWordBreaks } from '~/utilities/word-break-title'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
@@ -149,6 +164,21 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
+
+const contentElement = useTemplateRef<HTMLElement>('contentElement')
+
+const {
+  isSupported: isReadingModeSupported,
+  isUnsupported: isReadingModeUnsupported,
+  status: readingStatus,
+  errorMessage: readingErrorMessage,
+  isNoVoicesModalOpen: isReadingNoVoicesModalOpen,
+  toggle: toggleReading
+} = useReadingMode({
+  contentElement,
+  isPlainText: () => props.rfcBucketHtmlDocument.documentHtmlType === 'plaintext',
+  documentSource: () => props.rfcBucketHtmlDocument.documentHtmlObj
+})
 
 const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
 

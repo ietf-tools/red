@@ -335,6 +335,50 @@ mark {
   }
 }
 
+/*
+  Reading mode (CSS Custom Highlight API): the sentence being read, and inside it the word. Both are
+  registered from script without touching the document's DOM. A highlight pseudo-element accepts only
+  colour, background and text decoration, so the word is told apart from the sentence by an underline
+  as well as a stronger colour (WCAG 1.4.1), not by weight.
+*/
+:root {
+  --reading-sentence-background: var(--color-blue-25);
+  --reading-sentence-color: var(--color-black);
+  --reading-word-background: var(--color-yellow-200);
+  --reading-word-color: var(--color-black);
+}
+
+html.dark {
+  --reading-sentence-background: var(--color-blue-400);
+  --reading-sentence-color: var(--color-white);
+  --reading-word-background: var(--color-yellow-200);
+  --reading-word-color: var(--color-black);
+}
+
+::highlight(rfc-reading-sentence) {
+  background-color: var(--reading-sentence-background);
+  color: var(--reading-sentence-color);
+}
+
+::highlight(rfc-reading-word) {
+  background-color: var(--reading-word-background);
+  color: var(--reading-word-color);
+  text-decoration: underline;
+}
+
+@media (forced-colors: active) {
+  ::highlight(rfc-reading-sentence) {
+    background-color: Canvas;
+    color: CanvasText;
+    text-decoration: underline dotted;
+  }
+
+  ::highlight(rfc-reading-word) {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+
 .print-with-background {
   /* Browsers drop backgrounds when printing; this forces them to print. Use sparingly. */
   -webkit-print-color-adjust: exact !important;
