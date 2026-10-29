@@ -341,11 +341,23 @@ const formatsPojo = computed((): DocumentPojo => {
     all: revert;
   }
 
+  .toc-link-back {
+    opacity: 0;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
   pre .hide-in-preformatted-text {
     /* The touch-based UX for RFCRouterLink inserts buttons after RFC links which
        breaks <pre> layout so we hide the buttons in <pre> sections.
        The pointer-based UX still works, as does the touch-based UX in non-<pre>
-       sections.
+       sections. Arguably we could position:absolute them to pull them out of the
+       layout flow, and then only reveal them to keyboard users, but that hasn't
+       been done yet.
     */
     display: none;
   }
