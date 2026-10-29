@@ -45,6 +45,8 @@
 import { useDebounceFn } from '@vueuse/core'
 import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTitle } from 'reka-ui'
 import { prefersReducedMotion } from '~/utilities/accessibility'
+import { useFeatureFlags } from '~/utilities/feature-flags'
+import { useReadingMode } from '~/utilities/reading-mode/use-reading-mode'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
 

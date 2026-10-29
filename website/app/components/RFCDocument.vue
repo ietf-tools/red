@@ -27,6 +27,8 @@
       :goto-errata="gotoErrata"
       :change-tab="changeTab" />
   </BodyLayoutRFCDocument>
+  <!-- Once, here, because reading mode is offered from more than one place on the page -->
+  <RFCReadingModeErrorModal v-model:error="readingError" />
 </template>
 
 <script setup lang="ts">
@@ -41,6 +43,7 @@ import {
 import { rfcCommonToGoogleScholar, useRfcEditorHead } from '~/utilities/head'
 import type { SeriesId } from '~/utilities/rfc'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
+import { useReadingModeError } from '~/utilities/reading-mode/use-reading-mode'
 
 type Props = {
   rfcId: SeriesId
@@ -49,6 +52,8 @@ type Props = {
 const props = defineProps<Props>()
 
 const route = useRoute()
+
+const readingError = useReadingModeError()
 
 const apiV1UrlOrigin = useApiV1UrlOrigin()
 

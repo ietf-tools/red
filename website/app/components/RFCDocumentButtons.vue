@@ -1,6 +1,6 @@
 <template>
   <div class="flex mt-2">
-    <ul data-reef-stats class="flex reef-stats-container items-start pl-0.5 text-sm">
+    <ul data-reef-stats class="flex reef-stats-container items-start pl-0.5 text-sm divide-x divide-gray-300">
       <li class="h-full flex flex-col md:flex-row items-start pr-1 sm:pr-2">
         <RFCDocumentCommunityRating
           v-if="
@@ -15,7 +15,7 @@
           @retry="retryRating"
           v-model="userRFCRating" />
       </li>
-      <li class="sm:pl-2 sm:pr-2 sm:border-l-1 sm:border-r-1 border-gray-300 dark:border-gray-700">
+      <li class="sm:pl-2 sm:pr-2">
         <RFCDocumentSubscribe
           :rfc-number="props.rfcNumber"
           :reef-stats="props.reefStats"
@@ -36,6 +36,11 @@
           :sync-status="setsSyncStatus"
           @retry="retrySets"
           v-model="setIdsWithThisRFC" />
+      </li>
+      <li v-if="featureFlags.hasReadingMode && props.showReadAloud">
+        <div class="ml-2 print:hidden">
+          <RFCReadingModeButton :status="readingStatus" @toggle="toggleReading" />
+        </div>
       </li>
     </ul>
   </div>
@@ -74,10 +79,13 @@ import { useUserRFCRating } from '~/utilities/reef-ratings'
 import type { ReefRFCStats } from '~/utilities/rfc-validators'
 import { useUserSets } from '~/utilities/reef-sets'
 import { useUserRFCSubscription } from '~/utilities/reef-subscriptions'
+import { useFeatureFlags } from '~/utilities/feature-flags'
+import { useReadingMode } from '~/utilities/reading-mode/use-reading-mode'
 
 type Props = {
   rfcNumber: number
   reefStats: ReefRFCStats | undefined
+  showReadAloud?: boolean
 }
 
 const props = defineProps<Props>()
@@ -86,6 +94,10 @@ const props = defineProps<Props>()
 // the store themselves, so they render from what they're given and this component stays the one
 // place that decides what "signed in" means for this row.
 const { user } = storeToRefs(useAuthStore())
+
+const featureFlags = useFeatureFlags()
+
+const { status: readingStatus, toggle: toggleReading } = useReadingMode()
 
 // A getter rather than the number itself, because each of these follows it: an RFC page that
 // navigates to another RFC reuses this component, and every model has to follow it to the new one.

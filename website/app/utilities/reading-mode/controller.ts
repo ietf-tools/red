@@ -43,20 +43,6 @@ const VOICE_ERROR_CODES = new Set([
 // Errors that mean the engine has nothing it can speak with, as opposed to one that went wrong midway.
 export const isVoiceError = (error: string): boolean => VOICE_ERROR_CODES.has(error)
 
-export const describeSpeechError = (error: string): string => {
-  switch (error) {
-    case 'synthesis-failed':
-    case 'synthesis-unavailable':
-    case 'language-unavailable':
-    case 'voice-unavailable':
-      return 'Your browser could not speak this text. It may have no English speech voice installed.'
-    case 'not-allowed':
-      return 'Your browser blocked speech. Try pressing the button again.'
-    default:
-      return `Reading stopped unexpectedly (${error}).`
-  }
-}
-
 const CLAUSE_MIN_WORDS = 6
 
 const CLAUSE_DELIMITER = /[,;:](?=\s)/g
