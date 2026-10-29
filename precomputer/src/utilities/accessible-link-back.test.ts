@@ -18,7 +18,9 @@ const selfRefHeading = (nodeName: string, id: string, className = 'selfRef') =>
   el(nodeName, { id }, [el('a', { href: `#${id}`, class: className }, [text('Title')])])
 
 const linkBack = (id: string, tocTitle: string) =>
-  el('a', { href: `#toc-${id}`, 'aria-label': `Back to TOC: ${tocTitle}`, class: 'sr-only' }, [text('Back to TOC')])
+  el('a', { href: `#toc-${id}`, 'aria-label': `Jump to TOC: ${tocTitle}`, class: 'toc-link-back' }, [
+    text('Back to TOC')
+  ])
 
 const makeDoc = (documentHtmlObj: NodePojo[], withToc = true): RfcBucketHtmlDocument => ({
   rfc: testMockAllRfcs[testMockAllRfcs.length - 1]!,
@@ -80,7 +82,7 @@ describe('addHeadingLinkBacks', () => {
     const [result] = addHeadingLinkBacks(makeDoc([heading])).documentHtmlObj
     expect(
       result?.type === 'Element' &&
-        result.children.filter((c) => c.type === 'Element' && c.attributes.class === 'sr-only')
+        result.children.filter((c) => c.type === 'Element' && c.attributes.class === 'toc-link-back')
     ).toHaveLength(1)
   })
 
