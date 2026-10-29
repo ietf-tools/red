@@ -24,6 +24,7 @@ import { formatIdentifiers } from '../utilities/rfc-converters-utils.ts'
 import { getErrataForRfc } from '../utilities/errata.ts'
 import { type AsyncTaskItem } from '../utilities/task.ts'
 import { formatAuthorsPerStyleGuide } from '../utilities/authors.ts'
+import { addHeadingLinkBacks } from '../utilities/accessible-link-back.ts'
 
 export const uploadRfcData = async (rfcNumber: number): AsyncTaskItem => {
   const unusableRfcNumbers = await getUnusableRfcNumbersCached()
@@ -74,7 +75,7 @@ export const getRfcBucketHtmlDocument = async (
     if (rfcDocFromHtml === null) {
       return false
     }
-    return rfcDocFromHtml
+    return addHeadingLinkBacks(rfcDocFromHtml)
   }
 
   console.log(`[RFC ${rfcNumber}] No HTML available. Trying PDF`)
@@ -91,7 +92,7 @@ export const getRfcBucketHtmlDocument = async (
     return false
   }
 
-  return rfcDocFromPdf
+  return addHeadingLinkBacks(rfcDocFromPdf)
 }
 
 export const uploadRfcMetaThumbnail = async (rfcNumber: number): AsyncTaskItem => {
