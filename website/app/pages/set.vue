@@ -156,7 +156,22 @@ watch(
 
 // One row per member document, in the set's own order: its card once there is one, and the
 // identifier and /info/ path the list shows until then.
-const rows = computed(() => documents.value.map(({ doc, infoPath }) => ({ doc, infoPath, rfc: rfcs.value[doc] })))
+const rows = computed(() => {
+  return documents.value
+    .map(({ doc, infoPath }) => ({ doc, infoPath, rfc: rfcs.value[doc] }))
+    .toSorted((a, b) => {
+      // Rows without a card yet, or without a date, keep their set order after the dated ones
+      // (toSorted is stable), so the list doesn't reshuffle as cards arrive for undated members.
+      const { rfc: rfcA } = a
+      const { rfc: rfcB } = b
+      const timeA = rfcA?.published ? Date.parse(rfcA.published) : NaN
+      const timeB = rfcB?.published ? Date.parse(rfcB.published) : NaN
+      if (Number.isNaN(timeA) || Number.isNaN(timeB)) {
+        return Number.isNaN(timeA) === Number.isNaN(timeB) ? 0 : Number.isNaN(timeA) ? 1 : -1
+      }
+      return timeB - timeA
+    })
+})
 
 useRfcEditorHead({
   title: 'RFC Set',
