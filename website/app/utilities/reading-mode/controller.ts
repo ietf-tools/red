@@ -131,7 +131,9 @@ export const createReadingController = ({
     while (from < sentence.end && /\s/.test(text[from] ?? '')) {
       from += 1
     }
-    const to = boundaryEvents === 'absent' ? clauseChunkEnd(text, from, sentence.end) : sentence.end
+    // Until a voice has shown it reports words, a pause that has to restart the utterance could only
+    // return to where it began, so the first utterance is chunked as well.
+    const to = boundaryEvents === 'present' ? sentence.end : clauseChunkEnd(text, from, sentence.end)
     cursor = from
 
     cancelSpeech()

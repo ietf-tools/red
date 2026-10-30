@@ -256,12 +256,28 @@ describe('createReadingController', () => {
       })
       controller.setIndex(buildTextIndex(root, { skipPreformatted: false }))
       controller.play()
-      expect(spoken[0]?.text).toBe('One two three four five six, seven eight nine ten.')
-      spoken[0]?.onend?.()
-      controller.play()
       expect(states.at(-1)?.wordEnd).toBeUndefined()
-      expect(spoken.at(-1)?.text).toBe('One two three four five six,')
-      spoken.at(-1)?.onend?.()
+      expect(spoken[0]?.text).toBe('One two three four five six,')
+      spoken[0]?.onend?.()
+      expect(spoken.at(-1)?.text).toBe('seven eight nine ten.')
+    })
+
+    test('a pause partway through the first utterance resumes from its clause, not the clicked word', () => {
+      const root = document.createElement('div')
+      root.innerHTML = '<p>Zero one two three four five six, seven eight nine ten.</p>'
+      const { synth, spoken } = createFakeSynth()
+      const controller = createReadingController({
+        synth: synth as never,
+        createUtterance: createFakeUtterance as never,
+        canPauseNatively: false,
+        onChange: () => {}
+      })
+      controller.setIndex(buildTextIndex(root, { skipPreformatted: false }))
+      controller.seekTo(5)
+      controller.play()
+      spoken[0]?.onend?.()
+      controller.pause()
+      controller.play()
       expect(spoken.at(-1)?.text).toBe('seven eight nine ten.')
     })
   })
