@@ -3,6 +3,7 @@
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
       <HorizontalScrollable :inner-class="['flex flex-row gap-5', { 'px-2': props.mode === 'mobile' }]">
+        <button type="button" class="absolute w-[20px] h-[20px] bg-red-500">..</button>
         <TabsIndicator class="absolute" />
         <TabsTrigger
           v-if="props.hasTableOfContents"

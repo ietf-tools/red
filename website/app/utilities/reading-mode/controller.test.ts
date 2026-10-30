@@ -8,6 +8,7 @@ type FakeUtterance = {
   rate: number
   lang: string
   voice: SpeechSynthesisVoice | null
+  onstart: (() => void) | null
   onboundary: ((event: { name: string; charIndex: number }) => void) | null
   onend: (() => void) | null
   onerror: ((event: { error: string }) => void) | null
@@ -45,6 +46,7 @@ const createFakeUtterance = (text: string): FakeUtterance => ({
   rate: 1,
   lang: '',
   voice: null,
+  onstart: null,
   onboundary: null,
   onend: null,
   onerror: null

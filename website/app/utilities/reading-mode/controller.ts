@@ -12,6 +12,9 @@ export type ReadingState = {
   wordEnd: number | undefined
   // The SpeechSynthesisErrorEvent code that stopped playback, for the reader to be told.
   error: string | undefined
+  // Whether the engine has begun speaking since the last failure. Until it has, there is nothing
+  // to say reading mode works here.
+  hasStarted: boolean
 }
 
 export type ReadingSettings = {
@@ -74,6 +77,7 @@ export const createReadingController = ({
   let cursor: number | undefined
   let isNativelyPaused = false
   let error: string | undefined
+  let hasStarted = false
   // Whether the voice reports each word as it is spoken. Firefox through speech-dispatcher, for one,
   // reports only start and end. Unknown until a boundary arrives or an utterance ends without one.
   let boundaryEvents: 'unknown' | 'present' | 'absent' = 'unknown'
@@ -92,7 +96,8 @@ export const createReadingController = ({
       cursor,
       sentenceIndex: sentenceIndex === undefined || sentenceIndex < 0 ? undefined : sentenceIndex,
       wordEnd,
-      error
+      error,
+      hasStarted
     }
   }
 
@@ -146,6 +151,14 @@ export const createReadingController = ({
     }
     let sawBoundary = false
 
+    utterance.onstart = () => {
+      if (myGeneration !== generation || hasStarted) {
+        return
+      }
+      hasStarted = true
+      emit()
+    }
+
     utterance.onboundary = (event) => {
       if (myGeneration !== generation || (event.name && event.name !== 'word')) {
         return
@@ -183,6 +196,7 @@ export const createReadingController = ({
       })
       // Nothing was read, so no position is left marked in the document.
       cursor = undefined
+      hasStarted = false
       status = 'idle'
       error = event.error
       emit()

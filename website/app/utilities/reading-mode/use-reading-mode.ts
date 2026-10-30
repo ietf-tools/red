@@ -59,9 +59,9 @@ const startSession = ({
   let indexRoot: HTMLElement | undefined
   let indexObserver: MutationObserver | undefined
   let previousError: string | undefined
-  // Set once speech has failed for want of a usable voice. Reading mode is then not available, and
-  // the text is left alone: clicking it would mark a position nothing can read from.
-  let isSpeechUnusable = false
+  // Clicking the text marks a position to read from, which is only offered once speech has really
+  // started here, and not again after it fails.
+  let hasStarted = false
 
   const getContentElement = (): HTMLElement | undefined => document.getElementById(RFC_CONTENT_DOM_ID) ?? undefined
 
@@ -94,12 +94,12 @@ const startSession = ({
         return
       }
       status.value = state.status
+      hasStarted = state.hasStarted
       // On the failure itself rather than on later updates that still carry it, so closing the
       // modal isn't followed by it reopening.
       if (state.error !== undefined && state.error !== previousError) {
         const classified = classifySpeechError(state.error, totalVoiceCount.value === 0)
         error.value = classified
-        isSpeechUnusable = classified.kind === 'no-voices' || classified.kind === 'voice-failed'
       }
       previousError = state.error
       showReadingHighlights(index, state)
@@ -149,12 +149,6 @@ const startSession = ({
 
   scope.run(() => {
     watch([readingRate, readingVoiceUri, voices], applySettings)
-    // A voice turning up after a failure, as browsers that load them late do, makes it usable again
-    watch(totalVoiceCount, (count) => {
-      if (count > 0) {
-        isSpeechUnusable = false
-      }
-    })
     watch(readAloudPreformatted, () => {
       if (index && indexRoot) {
         index = buildIndex(indexRoot)
@@ -168,7 +162,7 @@ const startSession = ({
   const onDocumentClick = (event: MouseEvent) => {
     const { target, clientX, clientY } = event
     if (
-      isSpeechUnusable ||
+      !hasStarted ||
       !isHtmlElement(target) ||
       !target.closest(`#${RFC_CONTENT_DOM_ID}`) ||
       target.closest(INTERACTIVE_SELECTOR)
@@ -214,8 +208,6 @@ const startSession = ({
 
   return {
     toggle: () => {
-      // Pressing the button is a retry, and fails again straight away if nothing has changed
-      isSpeechUnusable = false
       ensureIndex()
       controller.toggle()
     },

@@ -29,6 +29,8 @@ const setup = ({ failWith }: { failWith?: string } = {}) => {
       spoken.push(utterance.text)
       if (failWith) {
         utterance.onerror?.({ error: failWith })
+      } else {
+        utterance.onstart?.()
       }
     },
     cancel: () => {
@@ -150,9 +152,18 @@ describe('useReadingMode', () => {
       Reflect.deleteProperty(document, 'caretRangeFromPoint')
     })
 
-    test('marks the word clicked while reading mode is available', async () => {
+    test('marks nothing before reading has been started', async () => {
       const { highlights } = setup()
       await mountOffer()
+      clickInParagraph()
+      expect(highlights.size).toBe(0)
+    })
+
+    test('marks the word clicked once reading has started', async () => {
+      const { highlights } = setup()
+      const wrapper = await mountOffer()
+      await wrapper.trigger('click')
+      await wrapper.trigger('click')
       clickInParagraph()
       expect(highlights.has('rfc-reading-word')).toBe(true)
     })
@@ -181,13 +192,13 @@ describe('useReadingMode', () => {
       useReadingModeError().value = undefined
     })
 
-    test('still marks the word after a failure that is not about voices', async () => {
+    test('marks nothing after any failure to start', async () => {
       const { highlights } = setup({ failWith: 'not-allowed' })
       const wrapper = await mountOffer()
       await wrapper.trigger('click')
       expect(useReadingModeError().value).toEqual({ kind: 'blocked' })
       clickInParagraph()
-      expect(highlights.has('rfc-reading-word')).toBe(true)
+      expect(highlights.size).toBe(0)
       useReadingModeError().value = undefined
     })
   })
