@@ -6,7 +6,11 @@
     :aria-expanded="!isSidebarCollapsed"
     :class="[
       'group',
-      'absolute cursor-col-resize top-0 -left-2',
+      'absolute top-0 -left-2',
+      {
+        'cursor-e-resize': !isSidebarCollapsed,
+        'cursor-w-resize': isSidebarCollapsed
+      },
       'bg-white dark:bg-black hover:bg-gray-400',
       'before:content-[\'\'] before:absolute before:right-0 before:w-2 before:h-screen hover:before:bg-gray-200'
     ]"
