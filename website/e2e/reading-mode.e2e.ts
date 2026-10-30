@@ -41,8 +41,9 @@ describe('RFC reading mode', async () => {
           Object.defineProperty(window, 'SpeechSynthesisUtterance', { value: RecordingUtterance, configurable: true })
           const synth = {
             paused: false,
-            speak: (utterance: RecordingUtterance) => {
+            speak: (utterance: RecordingUtterance & { onstart?: () => void }) => {
               window.__spoken.push(utterance.text)
+              utterance.onstart?.()
             },
             cancel: () => {},
             pause: () => {
@@ -101,18 +102,19 @@ describe('RFC reading mode', async () => {
   )
 
   test(
-    'clicking the text moves the highlight without starting to read, and play then starts there',
+    'clicking the text before reading has started does nothing, and play then starts at the beginning',
     async () => {
       const page = await openRfc()
       const paragraph = await plainParagraphIndex(page)
       await clickParagraph(page, paragraph)
-      await expect.poll(() => highlighted(page, 'rfc-reading-word').then((words) => words.length)).toBe(1)
+      expect(await highlighted(page, 'rfc-reading-word')).toEqual([])
+      expect(await highlighted(page, 'rfc-reading-sentence')).toEqual([])
       expect(await spoken(page)).toEqual([])
       expect(await page.locator(BUTTON).getAttribute('data-reading-status')).toBe('idle')
-      const [word] = await highlighted(page, 'rfc-reading-word')
       await page.locator(BUTTON).click()
       await expect.poll(() => spoken(page).then((texts) => texts.length)).toBe(1)
-      expect((await spoken(page))[0]?.startsWith(word ?? '')).toBe(true)
+      const [firstSpoken] = await spoken(page)
+      expect(await highlighted(page, 'rfc-reading-sentence')).toEqual([firstSpoken])
       await page.close()
     },
     TIME_PER_TEST_MS
