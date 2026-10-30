@@ -25,7 +25,7 @@ const setup = ({ failWith }: { failWith?: string } = {}) => {
     speaking: false,
     pending: false,
     cancelCount: 0,
-    speak: (utterance: { text: string; onerror?: (event: { error: string }) => void }) => {
+    speak: (utterance: { text: string; onstart?: () => void; onerror?: (event: { error: string }) => void }) => {
       synth.speaking = true
       spoken.push(utterance.text)
       if (failWith) {
