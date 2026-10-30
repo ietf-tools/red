@@ -43,7 +43,8 @@ const UiSettingsSchema = z
     wordBreakMode: WordBreakModeSchema.optional(),
     readAloudPreformatted: z.boolean().optional(),
     readingRate: ReadingRateSchema.optional(),
-    readingVoiceUri: z.string().optional()
+    readingVoiceUri: z.string().optional(),
+    isRfcSidebarCollapsed: z.boolean().optional()
   })
   .optional()
 
@@ -80,6 +81,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   const readingRateRef = ref<number>(DEFAULT_READING_RATE)
   // Empty means the browser's default voice for the document's language.
   const readingVoiceUriRef = ref<string>('')
+  const isRfcSidebarCollapsedRef = ref<boolean>(false)
 
   const saveSettings = () => {
     const uiSettings: UiSettings = {
@@ -92,7 +94,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       wordBreakMode: wordBreakModeRef.value,
       readAloudPreformatted: readAloudPreformattedRef.value,
       readingRate: readingRateRef.value,
-      readingVoiceUri: readingVoiceUriRef.value
+      readingVoiceUri: readingVoiceUriRef.value,
+      isRfcSidebarCollapsed: isRfcSidebarCollapsedRef.value
     }
 
     try {
@@ -130,6 +133,7 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       readAloudPreformattedRef.value = data.readAloudPreformatted ?? readAloudPreformattedRef.value
       readingRateRef.value = data.readingRate ?? readingRateRef.value
       readingVoiceUriRef.value = data.readingVoiceUri ?? readingVoiceUriRef.value
+      isRfcSidebarCollapsedRef.value = data.isRfcSidebarCollapsed ?? isRfcSidebarCollapsedRef.value
     } catch (e: unknown) {
       const errorTitle = `Error loading from localStorage (this is expected behaviour if localStorage is disabled). ${e}`
       console.log(`[rfc-ui-settings] ${errorTitle}`, e)
@@ -191,6 +195,11 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  const setIsRfcSidebarCollapsed = (isCollapsed: boolean) => {
+    isRfcSidebarCollapsedRef.value = isCollapsed
+    saveSettings()
+  }
+
   const setIsUiSettingsModalOpen = (isOpen: boolean) => {
     isUiSettingsModalOpenRef.value = isOpen
   }
@@ -220,6 +229,8 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     readingRate: readingRateRef,
     setReadingRate,
     readingVoiceUri: readingVoiceUriRef,
-    setReadingVoiceUri
+    setReadingVoiceUri,
+    isRfcSidebarCollapsed: isRfcSidebarCollapsedRef,
+    setIsRfcSidebarCollapsed
   }
 })

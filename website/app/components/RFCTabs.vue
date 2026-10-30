@@ -1,9 +1,28 @@
 <template>
-  <TabsRoot v-model="selectedTab" class="min-h-0 flex flex-col">
+  <button
+    v-if="featureFlags.hasCollapsibleSidebar && props.mode === 'desktop'"
+    type="button"
+    :aria-label="isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+    :aria-expanded="!isSidebarCollapsed"
+    :class="[
+      'group',
+      'absolute cursor-col-resize top-0 -left-2',
+      'bg-white dark:bg-black hover:bg-gray-400',
+      'before:content-[\'\'] before:absolute before:right-0 before:w-2 before:h-screen hover:before:bg-gray-200'
+    ]"
+    @click="uiSettings.setIsRfcSidebarCollapsed(!isSidebarCollapsed)">
+    <GraphicsLayoutSidebarRightCollapse
+      :class="[
+        'absolute right-0 top-3.5 w-6 h-6 outline-2 outline-white bg-white group-hover:bg-gray-200 group-focus:bg-gray-200 group-hover:outline-0 group-focus:outline-0 group-hover:text-gray-700 group-focus:text-gray-700',
+        { 'rotate-180': isSidebarCollapsed }
+      ]" />
+  </button>
+  <TabsRoot v-if="!isSidebarCollapsed" v-model="selectedTab" class="min-h-0 flex flex-col">
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
-      <HorizontalScrollable :inner-class="['flex flex-row gap-5', { 'px-2': props.mode === 'mobile' }]">
-        <button type="button" class="absolute w-[20px] h-[20px] bg-red-500">..</button>
+      <HorizontalScrollable
+        v-if="!isSidebarCollapsed"
+        :inner-class="['flex flex-row gap-5', { 'px-2': props.mode === 'mobile' }]">
         <TabsIndicator class="absolute" />
         <TabsTrigger
           v-if="props.hasTableOfContents"
@@ -79,6 +98,7 @@
 
     <TabsContent
       v-if="props.hasTableOfContents && props.rfcBucketHtmlDocument.tableOfContents"
+      v-show="!isSidebarCollapsed"
       :value="0"
       :class="[
         TAB_CONTENT_CLASS,
@@ -115,6 +135,7 @@
       </TableOfContents>
     </TabsContent>
     <TabsContent
+      v-show="!isSidebarCollapsed"
       :value="1"
       :class="[
         TAB_CONTENT_CLASS,
@@ -233,6 +254,7 @@
       </VerticalScrollable>
     </TabsContent>
     <TabsContent
+      v-show="!isSidebarCollapsed"
       :value="2"
       :class="[
         TAB_CONTENT_CLASS,
@@ -259,6 +281,7 @@
       </VerticalScrollable>
     </TabsContent>
     <TabsContent
+      v-show="!isSidebarCollapsed"
       :value="3"
       :class="[
         TAB_CONTENT_CLASS,
@@ -303,6 +326,8 @@ import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString } from '~/utilities/renderDocumentPojo'
 import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
+import { useFeatureFlags } from '~/utilities/feature-flags'
+import { useUiSettingsStore } from '~/stores/ui-settings'
 import NewWindowIcon from './Graphics/NewWindowIcon.vue'
 
 type Props = {
@@ -314,6 +339,15 @@ type Props = {
 const props = defineProps<Props>()
 
 const selectedTab = defineModel<number>()
+
+const featureFlags = useFeatureFlags()
+
+const uiSettings = useUiSettingsStore()
+
+const isSidebarCollapsed = computed(() => {
+  const { hasCollapsibleSidebar } = featureFlags.value
+  return props.mode === 'desktop' && !!hasCollapsibleSidebar && uiSettings.isRfcSidebarCollapsed
+})
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return

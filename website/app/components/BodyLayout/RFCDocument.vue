@@ -1,5 +1,7 @@
 <template>
-  <div class="rfc-container mx-auto flex body-layout-document lg:gap-5">
+  <div
+    class="rfc-container mx-auto flex body-layout-document lg:gap-5"
+    :style="props.isSidebarCollapsed ? { '--sidebar-width': COLLAPSED_SIDEBAR_WIDTH } : undefined">
     <div class="flex-1 min-w-0">
       <slot />
     </div>
@@ -12,9 +14,14 @@
 <script setup lang="ts">
 type Props = {
   sidebarClass?: string
+  isSidebarCollapsed?: boolean
 }
 
 const props = defineProps<Props>()
+
+// Wide enough to leave the expand button reachable. Overriding --sidebar-width also reflows the
+// xml2rfc.css width calculations that depend on it.
+const COLLAPSED_SIDEBAR_WIDTH = '3rem'
 </script>
 
 <style>

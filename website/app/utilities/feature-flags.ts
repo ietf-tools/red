@@ -7,11 +7,11 @@ export const FeatureFlagsSchema = z.object({
   // with old versions saved in localStorage values can still validate
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
-  formatsAlsoViewAs: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
   hasTextScale: z.boolean().optional(),
   hasWordBreakMode: z.boolean().optional(),
-  hasReadingMode: z.boolean().optional()
+  hasReadingMode: z.boolean().optional(),
+  hasCollapsibleSidebar: z.boolean().optional()
 })
 
 // this is commented out until next time we need a string union value in feature flags.
@@ -49,6 +49,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
       'Adds a play button before an RFC that reads it aloud with the browser speech synthesis, highlighting the text as it goes. Click the text to move where it reads from. Voice, rate and whether to read diagrams are in the advanced UI settings.',
     storageType: 'boolean'
   },
+  hasCollapsibleSidebar: {
+    title: 'Collapsible sidebar',
+    description: 'Adds a button on the edge of the RFC sidebar for collapsing it.',
+    storageType: 'boolean'
+  },
   isDidYouMeanActive: {
     title: 'Homepage direct RFC/subseries links',
     description: `Homepage search box feature suggesting direct links to RFCs/BCPs/etc when typing "RFCn" or "BCP n" etc into the homepage search box. This only occurs on the homepage, not on the ${SEARCH_PATH} route.`,
@@ -57,11 +62,6 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   isAbnfDiagramsActive: {
     title: 'ABNF railroad diagrams',
     description: `Renders ABNF grammar blocks in RFC documents as interactive railroad diagrams, making protocol grammars easier to read at a glance.`,
-    storageType: 'boolean'
-  },
-  formatsAlsoViewAs: {
-    title: 'RFC formats "Also view as" links',
-    description: 'On the info route adds a list of formats to the top-right of the RFC content',
     storageType: 'boolean'
   },
   searchObsoletedDefaults: {
@@ -75,9 +75,9 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   hasTextScale: false,
   hasWordBreakMode: false,
   hasReadingMode: false,
+  hasCollapsibleSidebar: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
-  formatsAlsoViewAs: false,
   searchObsoletedDefaults: false
 }
 
