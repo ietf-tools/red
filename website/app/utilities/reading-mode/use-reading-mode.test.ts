@@ -5,7 +5,8 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import type { VueWrapper } from '@vue/test-utils'
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, ref } from 'vue'
+import { DEFAULT_FEATURE_FLAGS, featureFlagsKey } from '~/utilities/feature-flags'
 import { RFC_CONTENT_DOM_ID } from './content'
 import { useReadingMode, useReadingModeError } from './use-reading-mode'
 
@@ -70,8 +71,9 @@ describe('useReadingMode', () => {
   let content: HTMLElement
   const mounted = new Set<VueWrapper>()
 
-  const mountOffer = async () => {
-    const wrapper = await mountSuspended(OfferReading)
+  const mountOffer = async ({ hasReadingMode = true } = {}) => {
+    const featureFlags = ref({ ...DEFAULT_FEATURE_FLAGS, hasReadingMode })
+    const wrapper = await mountSuspended(OfferReading, { global: { provide: { [featureFlagsKey]: featureFlags } } })
     mounted.add(wrapper)
     return wrapper
   }
@@ -201,6 +203,30 @@ describe('useReadingMode', () => {
       expect(highlights.size).toBe(0)
       useReadingModeError().value = undefined
     })
+  })
+
+  test('does nothing with the feature flag off', async () => {
+    const { highlights, spoken } = setup()
+    const wrapper = await mountOffer({ hasReadingMode: false })
+    const paragraph = content.querySelector('p')
+    const text = paragraph?.firstChild
+    if (!paragraph || !text) {
+      throw Error('expected a paragraph with text')
+    }
+    Object.defineProperty(document, 'caretRangeFromPoint', {
+      value: () => {
+        const range = document.createRange()
+        range.setStart(text, 4)
+        return range
+      },
+      configurable: true
+    })
+    paragraph.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+    await wrapper.trigger('click')
+    Reflect.deleteProperty(document, 'caretRangeFromPoint')
+    expect(highlights.size).toBe(0)
+    expect(spoken).toHaveLength(0)
+    useReadingModeError().value = undefined
   })
 
   test('reports an unsupported browser through the shared error', async () => {

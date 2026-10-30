@@ -2,6 +2,7 @@ import { effectScope, onBeforeUnmount, onMounted, ref, watch, type Ref } from 'v
 import { storeToRefs } from 'pinia'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { isHtmlElement } from '../dom'
+import { useFeatureFlags } from '../feature-flags'
 import { PLAINTEXT_CONTENT_CLASS, RFC_CONTENT_DOM_ID } from './content'
 import { createReadingController, type ReadingStatus } from './controller'
 import { createScrollFollower } from './follow-scroll'
@@ -257,11 +258,32 @@ const toggle = () => {
 export const useReadingMode = () => {
   const { readAloudPreformatted, readingRate, readingVoiceUri } = storeToRefs(useUiSettingsStore())
 
+  const featureFlags = useFeatureFlags()
+
+  // Behind the feature flag, which can only be told once mounted, so with it off nothing here
+  // listens to the page.
+  let isAcquired = false
+  const sync = () => {
+    if (featureFlags.value.hasReadingMode && !isAcquired) {
+      isAcquired = true
+      acquire({ readAloudPreformatted, readingRate, readingVoiceUri })
+    } else if (!featureFlags.value.hasReadingMode && isAcquired) {
+      isAcquired = false
+      release()
+    }
+  }
+
   onMounted(() => {
-    acquire({ readAloudPreformatted, readingRate, readingVoiceUri })
+    sync()
+    watch(() => featureFlags.value.hasReadingMode, sync)
   })
 
-  onBeforeUnmount(release)
+  onBeforeUnmount(() => {
+    if (isAcquired) {
+      isAcquired = false
+      release()
+    }
+  })
 
   return { status, toggle }
 }
