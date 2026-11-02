@@ -184,6 +184,7 @@ export const RfcCommonGroupSchema = z.object({
  * Field names follow Reef's API.
  */
 export const ReefRFCStatsSchema = z.object({
+  // FIXME: delete ratingAggregate when there are no consumers.
   ratingAggregate: z
     .object({
       average: z.number().optional(),

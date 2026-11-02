@@ -1,7 +1,6 @@
 import { ApiClient } from '../../generated/api-client.ts'
 import type { Rfc, RfcMetadata } from '../../generated/api-client.ts'
 import {
-  RfcCommonGroupStateSchema,
   RfcCommonGroupTypeSchema,
   RfcCommonStatusSchema,
   RfcCommonSubseriesTypeSchema

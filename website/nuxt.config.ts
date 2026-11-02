@@ -168,7 +168,14 @@ export default defineNuxtConfig({
         lang: 'en'
       },
       link: [
-        { rel: 'preconnect', href: 'https://static.ietf.org' },
+        { rel: 'preconnect', href: 'https://static.ietf.org', crossorigin: '' },
+        {
+          rel: 'preload',
+          as: 'font',
+          type: 'font/woff2',
+          href: 'https://static.ietf.org/fonts/inter/inter-latin.woff2',
+          crossorigin: ''
+        },
         {
           rel: 'stylesheet',
           href: 'https://static.ietf.org/fonts/inter/import.css'
