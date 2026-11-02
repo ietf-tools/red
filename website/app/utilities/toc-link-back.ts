@@ -73,12 +73,10 @@ export const useRevealTocLink = ({ selectedTab, isModalOpen }: RevealTocLinkOpti
     if (!tocLink) {
       return
     }
-    if (isMobile) {
-      // Not the hash: that would scroll the page behind the dialog.
-      tocLink.focus()
-      return
-    }
-    window.location.hash = tocId
+    // Not the hash: fragment navigation scrolls the page to align the target to the viewport top
+    // (even when the link is already visible in the sticky sidebar, and behind the mobile dialog).
+    // Only the sidebar's own scroller, or the page if the sidebar is off screen, should move.
     tocLink.focus({ preventScroll: true })
+    tocLink.scrollIntoView({ block: 'nearest' })
   }
 }
