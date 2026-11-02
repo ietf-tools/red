@@ -102,7 +102,6 @@ const closeReader = () => {
 // navigates to another RFC reuses this component, and every model has to follow it to the new one.
 const rfcNumber = () => props.rfcNumber
 
-const { rating: userRFCRating, syncStatus: ratingSyncStatus, retry: retryRating } = useUserRFCRating(rfcNumber)
 const {
   isSubscribed: isSubscribedToThisRFC,
   status: subscriptionStatus,
