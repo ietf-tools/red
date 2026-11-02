@@ -59,10 +59,6 @@ const readReefBucketJson = async <T>(key: string, schema: { parse: (value: unkno
 }
 
 const toReefRFCStats = (stats: DocumentStats): ReefRFCStats => ({
-  ratingAggregate: {
-    average: stats.rating_average ?? undefined,
-    count: stats.rating_count
-  },
   subscriberCount: stats.subscriber_count,
   setCount: stats.set_count
 })
