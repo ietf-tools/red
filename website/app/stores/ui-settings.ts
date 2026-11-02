@@ -82,6 +82,11 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   // Empty means the browser's default voice for the document's language.
   const readingVoiceUriRef = ref<string>('')
   const isRfcSidebarCollapsedRef = ref<boolean>(false)
+  // Deliberately never persisted: reveals the sidebar for this page load without changing the preference.
+  const isRfcSidebarForcedOpenRef = ref<boolean>(false)
+  const isRfcSidebarEffectivelyCollapsedRef = computed(
+    () => isRfcSidebarCollapsedRef.value && !isRfcSidebarForcedOpenRef.value
+  )
 
   const saveSettings = () => {
     const uiSettings: UiSettings = {
@@ -200,6 +205,18 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     saveSettings()
   }
 
+  const setIsRfcSidebarForcedOpen = (isForcedOpen: boolean) => {
+    isRfcSidebarForcedOpenRef.value = isForcedOpen
+  }
+
+  const toggleRfcSidebar = () => {
+    const shouldCollapse = !isRfcSidebarEffectivelyCollapsedRef.value
+    // Without clearing the override, collapsing while it is forced open would leave the preference
+    // unchanged and the sidebar open.
+    isRfcSidebarForcedOpenRef.value = false
+    setIsRfcSidebarCollapsed(shouldCollapse)
+  }
+
   const setIsUiSettingsModalOpen = (isOpen: boolean) => {
     isUiSettingsModalOpenRef.value = isOpen
   }
@@ -231,6 +248,9 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     readingVoiceUri: readingVoiceUriRef,
     setReadingVoiceUri,
     isRfcSidebarCollapsed: isRfcSidebarCollapsedRef,
-    setIsRfcSidebarCollapsed
+    setIsRfcSidebarCollapsed,
+    isRfcSidebarEffectivelyCollapsed: isRfcSidebarEffectivelyCollapsedRef,
+    setIsRfcSidebarForcedOpen,
+    toggleRfcSidebar
   }
 })

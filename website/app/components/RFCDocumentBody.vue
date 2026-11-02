@@ -107,7 +107,8 @@
               'leading-[2] tracking-[0.5em] [word-spacing:1em] [&_p]:mb-[3rem]': uiSettingsStore.textScale === 2
             }
           : 'leading-[1.5]' // WCAG requires 1.5 minimum
-      ]">
+      ]"
+      @click="handleContentClick">
       <component :is="enrichedDocument" />
     </div>
   </div>
@@ -134,6 +135,7 @@ import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { wordBreakModeClass } from '~/utilities/word-break-mode'
 import { RFC_CONTENT_DOM_ID } from '~/utilities/reading-mode/content'
+import { getTocLinkBackTargetId } from '~/utilities/toc-link-back'
 import { titleWithWordBreaks } from '~/utilities/word-break-title'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
@@ -143,9 +145,19 @@ type Props = {
   gotoErrata: () => void
   breadcrumbItems: BreadcrumbItem[]
   changeTab: (index: number) => void
+  revealTocLink: (tocId: string) => void
 }
 
 const props = defineProps<Props>()
+
+const handleContentClick = (event: MouseEvent) => {
+  const tocId = getTocLinkBackTargetId(event)
+  if (!tocId) {
+    return
+  }
+  event.preventDefault()
+  props.revealTocLink(tocId)
+}
 
 const isModalOpen = defineModel<boolean>('isModalOpen')
 

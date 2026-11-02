@@ -14,7 +14,7 @@
       'bg-white dark:bg-black hover:bg-gray-400',
       'before:content-[\'\'] before:absolute before:right-0 before:w-2 before:h-screen hover:before:bg-gray-200'
     ]"
-    @click="uiSettings.setIsRfcSidebarCollapsed(!isSidebarCollapsed)">
+    @click="uiSettings.toggleRfcSidebar()">
     <GraphicsLayoutSidebarRightCollapse
       :class="[
         'absolute right-0 top-3.5 w-6 h-6 outline-2 outline-white bg-white group-hover:bg-gray-200 group-focus:bg-gray-200 group-hover:outline-0 group-focus:outline-0 group-hover:text-gray-700 group-focus:text-gray-700',
@@ -350,7 +350,7 @@ const uiSettings = useUiSettingsStore()
 
 const isSidebarCollapsed = computed(() => {
   const { hasCollapsibleSidebar } = featureFlags.value
-  return props.mode === 'desktop' && !!hasCollapsibleSidebar && uiSettings.isRfcSidebarCollapsed
+  return props.mode === 'desktop' && !!hasCollapsibleSidebar && uiSettings.isRfcSidebarEffectivelyCollapsed
 })
 
 const formattedPublished = computed(() => {

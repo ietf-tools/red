@@ -1,6 +1,7 @@
 <template>
   <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1 container mx-auto pl-2 md:pl-5" />
-  <BodyLayoutRFCDocument :is-sidebar-collapsed="featureFlags.hasCollapsibleSidebar && uiSettings.isRfcSidebarCollapsed">
+  <BodyLayoutRFCDocument
+    :is-sidebar-collapsed="featureFlags.hasCollapsibleSidebar && uiSettings.isRfcSidebarEffectivelyCollapsed">
     <template #sidebar>
       <RFCDocumentSidebar
         v-if="rfcBucketHtmlDocument"
@@ -25,7 +26,8 @@
       :rfc-bucket-html-document="rfcBucketHtmlDocument"
       :breadcrumb-items="breadcrumbItems"
       :goto-errata="gotoErrata"
-      :change-tab="changeTab" />
+      :change-tab="changeTab"
+      :reveal-toc-link="revealTocLink" />
   </BodyLayoutRFCDocument>
   <!-- Once, here, because reading mode is offered from more than one place on the page -->
   <RFCReadingModeErrorModal v-model:error="readingError" />
@@ -46,6 +48,7 @@ import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import { useReadingModeError } from '~/utilities/reading-mode/use-reading-mode'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useUiSettingsStore } from '~/stores/ui-settings'
+import { useRevealTocLink } from '~/utilities/toc-link-back'
 
 type Props = {
   rfcId: SeriesId
@@ -184,6 +187,8 @@ const breadcrumbItems = computed((): BreadcrumbItem[] => {
 })
 
 const isModalOpen = ref(false)
+
+const revealTocLink = useRevealTocLink({ selectedTab, isModalOpen })
 
 const canonicalPath = infoSeriesPathBuilder(sanitisedId.value)
 

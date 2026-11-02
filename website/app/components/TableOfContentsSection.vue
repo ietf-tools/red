@@ -6,6 +6,7 @@
       <div v-if="section.links" class="flex flex-row gap-2">
         <a
           v-for="(link, linkIndex) in section.links"
+          :id="`toc-${link.id}`"
           :key="linkIndex"
           :href="`#${link.id}`"
           :class="[props.listItemClass, ANCHOR_COLOR_TAILWIND_STYLE, 'flex flex-row']"
