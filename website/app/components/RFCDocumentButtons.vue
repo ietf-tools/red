@@ -3,20 +3,6 @@
     <ul
       data-reef-stats
       class="flex flex-col min-[380px]:flex-row min-[380px]:divide-x min-[380px]:divide-gray-300 gap-2 items-start pl-0.5 text-sm">
-      <li class="h-full flex flex-col md:flex-row items-start sm:pr-2">
-        <RFCDocumentCommunityRating
-          v-if="
-            props.reefStats?.ratingAggregate &&
-            props.reefStats.ratingAggregate.average &&
-            props.reefStats.ratingAggregate.average > 0 // an average of 0 means there are no ratings (users can only rate 1-5)
-          "
-          :reef-stats="props.reefStats" />
-        <RFCDocumentRateThisRFC
-          :rfc-number="props.rfcNumber"
-          :sync-status="ratingSyncStatus"
-          @retry="retryRating"
-          v-model="userRFCRating" />
-      </li>
       <li class="sm:pr-2">
         <RFCDocumentSubscribe
           :rfc-number="props.rfcNumber"
