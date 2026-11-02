@@ -18,8 +18,8 @@ export const createScrollFollower = () => {
 
   // Keeps the word being read on screen, but only once it has left it: a reader who has scrolled
   // elsewhere to look something up is not pulled back mid-sentence.
-  const follow = (range: Range | undefined) => {
-    if (!range || Date.now() - lastManualScrollAt < MANUAL_SCROLL_GRACE_MS) {
+  const follow = (range: Range | undefined, { ignoreManualScroll = false } = {}) => {
+    if (!range || (!ignoreManualScroll && Date.now() - lastManualScrollAt < MANUAL_SCROLL_GRACE_MS)) {
       return
     }
     const { top, bottom } = range.getBoundingClientRect()
@@ -33,9 +33,16 @@ export const createScrollFollower = () => {
     })
   }
 
+  // For when the reader has just moved the reading position themselves, so it is wherever they
+  // asked for, however recently they scrolled. Reading that carries on from there follows again.
+  const reveal = (range: Range | undefined) => {
+    lastManualScrollAt = Number.NEGATIVE_INFINITY
+    follow(range, { ignoreManualScroll: true })
+  }
+
   const destroy = () => {
     MANUAL_SCROLL_EVENTS.forEach((eventName) => window.removeEventListener(eventName, onManualScroll))
   }
 
-  return { follow, destroy }
+  return { follow, reveal, destroy }
 }

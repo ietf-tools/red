@@ -9,6 +9,9 @@ export type TextSegment = {
 export type TextSentence = {
   start: number
   end: number
+  // Spoken before the sentence's own text when it is read from its start: what the reader would see
+  // in the page's structure but is not in its text.
+  spokenPrefix?: string
 }
 
 export type TextBounds = {
@@ -21,6 +24,13 @@ export type DomPosition = {
   offset: number
 }
 
+type TextBlock = TextBounds & { isHeading: boolean }
+
+type TextAnnouncement = {
+  offset: number
+  message: string
+}
+
 export type TextIndexOptions = {
   skipPreformatted: boolean
 }
@@ -29,6 +39,8 @@ export type TextIndex = {
   text: string
   segments: TextSegment[]
   sentences: TextSentence[]
+  // Indices into sentences of those that begin a paragraph.
+  paragraphStarts: number[]
   toOffset: (node: Node, nodeOffset: number) => number | undefined
   toDomPosition: (offset: number) => DomPosition | undefined
   toRange: (start: number, end: number) => Range | undefined
@@ -91,6 +103,12 @@ const BLOCK_TAGS = new Set([
   'ul'
 ])
 
+const HEADING_TAGS = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+
+// A heading that opens with its section number, as "3.2." or "A.1.", which is spoken better with
+// "Section" before it than as a bare number.
+const NUMBERED_HEADING = /^(\d+(\.\d+)*|[A-Z](\.\d+)+)\.?\s/
+
 const BLOCK_SEPARATOR = '\n\n'
 
 const PARAGRAPH_BREAK = /[ \t\r]*\n[ \t\r]*\n|\f/g
@@ -127,10 +145,14 @@ export const wordBoundsAt = (text: string, offset: number): TextBounds => {
 export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextIndexOptions): TextIndex => {
   const segments: TextSegment[] = []
   const segmentByNode = new Map<Text, TextSegment>()
-  const blocks: TextBounds[] = []
+  const blocks: TextBlock[] = []
+  // What was left out, to be told where the text carries on after it
+  const announcements: TextAnnouncement[] = []
+  const pendingMessages = new Set<string>()
   let text = ''
   let currentBlock: HTMLElement | undefined
   let currentBlockStart = 0
+  let currentBlockIsHeading = false
   let hasPendingBreak = false
 
   const isSkippedElement = (element: HTMLElement): boolean => {
@@ -147,6 +169,15 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
     return SKIPPED_CLASSES.some((className) => element.classList.contains(className))
   }
 
+  // Preformatted text is where RFCs put their figures and code, which are left out unless the
+  // reader asked for them, and the text around them refers to them as if they had been read.
+  const skippedMessage = (element: HTMLElement): string | undefined => {
+    if (getTagName(element) !== 'pre') {
+      return undefined
+    }
+    return element.closest('.sourcecode') ? 'Code block omitted' : 'Figure omitted'
+  }
+
   const closestBlock = (node: Node): HTMLElement => {
     let element = node.parentElement
     while (element && element !== root) {
@@ -161,7 +192,7 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
 
   const closeBlock = () => {
     if (currentBlock !== undefined) {
-      blocks.push({ start: currentBlockStart, end: text.length })
+      blocks.push({ start: currentBlockStart, end: text.length, isHeading: currentBlockIsHeading })
       currentBlock = undefined
     }
   }
@@ -183,6 +214,7 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
         text += BLOCK_SEPARATOR
       }
       currentBlock = block
+      currentBlockIsHeading = HEADING_TAGS.has(getTagName(block) ?? '')
       currentBlockStart = text.length
       hasPendingBreak = false
     }
@@ -190,6 +222,8 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
     text += data
     segments.push(segment)
     segmentByNode.set(node, segment)
+    pendingMessages.forEach((message) => announcements.push({ offset: segment.start, message }))
+    pendingMessages.clear()
   }
 
   const walk = (parent: Node) => {
@@ -201,6 +235,11 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
           hasPendingBreak = true
         } else if (!isSkippedElement(child)) {
           walk(child)
+        } else {
+          const message = skippedMessage(child)
+          if (message !== undefined) {
+            pendingMessages.add(message)
+          }
         }
       }
     }
@@ -215,17 +254,40 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
       : undefined
 
   const sentences: TextSentence[] = []
+  const paragraphStarts: number[] = []
+  let isParagraphStart = false
+  let announcementCursor = 0
+  let headingPrefix: string | undefined
 
   const addSentence = (start: number, end: number) => {
     const slice = text.slice(start, end)
     const trimmedStart = start + (slice.length - slice.trimStart().length)
     const trimmedEnd = end - (slice.length - slice.trimEnd().length)
     if (trimmedEnd > trimmedStart && HAS_SPEAKABLE_CHARACTER.test(text.slice(trimmedStart, trimmedEnd))) {
-      sentences.push({ start: trimmedStart, end: trimmedEnd })
+      if (isParagraphStart) {
+        paragraphStarts.push(sentences.length)
+        isParagraphStart = false
+      }
+      let spokenPrefix = ''
+      for (
+        let announcement = announcements[announcementCursor];
+        announcement && announcement.offset <= trimmedStart;
+        announcement = announcements[++announcementCursor]
+      ) {
+        spokenPrefix += `${announcement.message}. `
+      }
+      spokenPrefix += headingPrefix ?? ''
+      headingPrefix = undefined
+      sentences.push({
+        start: trimmedStart,
+        end: trimmedEnd,
+        ...(spokenPrefix.length > 0 && { spokenPrefix })
+      })
     }
   }
 
   const addParagraph = (start: number, end: number) => {
+    isParagraphStart = true
     if (!sentenceSegmenter) {
       addSentence(start, end)
       return
@@ -246,14 +308,16 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
     }
   }
 
-  for (const { start, end } of blocks) {
+  for (const { start, end, isHeading } of blocks) {
     const blockText = text.slice(start, end)
+    headingPrefix = isHeading && NUMBERED_HEADING.test(blockText.trimStart()) ? 'Section ' : undefined
     let paragraphStart = 0
     for (const match of blockText.matchAll(PARAGRAPH_BREAK)) {
       addParagraph(start + paragraphStart, start + match.index)
       paragraphStart = match.index + match[0].length
     }
     addParagraph(start + paragraphStart, end)
+    headingPrefix = undefined
   }
 
   // Last segment starting at or before the offset
@@ -326,5 +390,5 @@ export const buildTextIndex = (root: HTMLElement, { skipPreformatted }: TextInde
     return found
   }
 
-  return { text, segments, sentences, toOffset, toDomPosition, toRange, sentenceIndexAt }
+  return { text, segments, sentences, paragraphStarts, toOffset, toDomPosition, toRange, sentenceIndexAt }
 }

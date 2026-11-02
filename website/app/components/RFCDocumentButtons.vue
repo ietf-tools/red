@@ -40,7 +40,17 @@
           v-model="setIdsWithThisRFC" />
       </li>
       <li v-if="featureFlags.hasReadingMode && props.showReadAloud" class="sm:pr-2 print:hidden">
-        <RFCReadingModeButton :status="readingStatus" @toggle="toggleReading" />
+        <RFCReadingModeButton
+          ref="readingButton"
+          :status="readingStatus"
+          :is-open="isReaderOpen"
+          @toggle="toggleReader" />
+        <RFCReadingModePlayer
+          :is-open="isReaderOpen && isReaderAvailable"
+          :status="readingStatus"
+          @toggle="toggleReading"
+          @skip="skipParagraph"
+          @close="closeReader" />
       </li>
     </ul>
   </div>
@@ -85,7 +95,22 @@ const { user } = storeToRefs(useAuthStore())
 
 const featureFlags = useFeatureFlags()
 
-const { status: readingStatus, toggle: toggleReading } = useReadingMode()
+const {
+  status: readingStatus,
+  toggle: toggleReading,
+  toggleReader,
+  skipParagraph,
+  isAvailable: isReaderAvailable,
+  isPlayerOpen: isReaderOpen
+} = useReadingMode(() => props.rfcNumber)
+
+const readingButton = useTemplateRef('readingButton')
+
+// The player takes focus with it when it goes, so it returns to the button that opened it.
+const closeReader = () => {
+  toggleReader()
+  readingButton.value?.focus()
+}
 
 // A getter rather than the number itself, because each of these follows it: an RFC page that
 // navigates to another RFC reuses this component, and every model has to follow it to the new one.

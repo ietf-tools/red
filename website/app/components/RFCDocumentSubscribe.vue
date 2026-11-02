@@ -19,10 +19,8 @@
           ]">
           <GraphicsCheckmark
             v-if="isSubscribedToThisRFC"
-            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
-          <GraphicsAlert
-            v-else
-            :class="['text-blue-900 dark:text-blue-100 w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
+            :class="['w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
+          <GraphicsAlert v-else :class="['w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
           <span :class="[COVER_LINK_INNER_STYLE_CLASS, { 'sr-only': props.iconOnly }]">
             {{ isSubscribedToThisRFC ? 'Subscribed' : 'Subscribe' }}
           </span>

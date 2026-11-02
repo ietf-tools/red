@@ -78,6 +78,7 @@ export const createReadingController = ({
   let isNativelyPaused = false
   let error: string | undefined
   let hasStarted = false
+  let endAnnouncement: string | undefined
   // Whether the voice reports each word as it is spoken. Firefox through speech-dispatcher, for one,
   // reports only start and end. Unknown until a boundary arrives or an utterance ends without one.
   let boundaryEvents: 'unknown' | 'present' | 'absent' = 'unknown'
@@ -125,6 +126,22 @@ export const createReadingController = ({
     emit()
   }
 
+  // Reading has run out of text. What is said is spoken after finishing, outside the reading's state, so
+  // pressing play or closing the player is free to cut it short.
+  const finishAnnounced = () => {
+    finish()
+    if (!endAnnouncement) {
+      return
+    }
+    const utterance = createUtterance(endAnnouncement)
+    utterance.rate = settings.rate
+    utterance.lang = settings.lang
+    if (settings.voice) {
+      utterance.voice = settings.voice
+    }
+    synth.speak(utterance)
+  }
+
   const speak = () => {
     const sentence = index && cursor !== undefined ? index.sentences[index.sentenceIndexAt(cursor)] : undefined
     if (!index || cursor === undefined || !sentence) {
@@ -143,7 +160,9 @@ export const createReadingController = ({
 
     cancelSpeech()
     const myGeneration = generation
-    const utterance = createUtterance(text.slice(from, to))
+    // Only when reading from the sentence's start: a pause or a click partway through is not told it again
+    const prefix = from === sentence.start ? (sentence.spokenPrefix ?? '') : ''
+    const utterance = createUtterance(`${prefix}${text.slice(from, to)}`)
     utterance.rate = settings.rate
     utterance.lang = settings.lang
     if (settings.voice) {
@@ -165,7 +184,11 @@ export const createReadingController = ({
       }
       sawBoundary = true
       boundaryEvents = 'present'
-      cursor = wordBoundsAt(text, from + event.charIndex).start
+      const charIndex = event.charIndex - prefix.length
+      if (charIndex < 0) {
+        return
+      }
+      cursor = wordBoundsAt(text, from + charIndex).start
       emit()
     }
 
@@ -178,7 +201,7 @@ export const createReadingController = ({
       }
       cursor = to
       if (index && index.sentenceIndexAt(to) < 0) {
-        finish()
+        finishAnnounced()
         return
       }
       speak()
@@ -265,12 +288,53 @@ export const createReadingController = ({
     emit()
   }
 
+  // The first sentence of the paragraph before or after the one being read. Going back from partway
+  // through a paragraph returns to its start, as a media player does with a track.
+  const skipParagraph = (direction: 1 | -1) => {
+    if (!index || cursor === undefined) {
+      return
+    }
+    const { paragraphStarts, sentences } = index
+    const current = index.sentenceIndexAt(cursor)
+    const currentSentence = sentences[current]
+    if (!currentSentence) {
+      return
+    }
+    const currentStartIndex = paragraphStarts.findLast((start) => start <= current) ?? 0
+    let target: number | undefined
+    if (direction === 1) {
+      target = paragraphStarts.find((start) => start > current)
+    } else if (currentStartIndex < current || cursor > currentSentence.start) {
+      target = currentStartIndex
+    } else {
+      target = paragraphStarts.findLast((start) => start < currentStartIndex)
+    }
+    const targetSentence = target === undefined ? undefined : sentences[target]
+    if (!targetSentence) {
+      if (direction === 1) {
+        finishAnnounced()
+      }
+      return
+    }
+    cursor = targetSentence.start
+    if (status === 'playing') {
+      speak()
+      return
+    }
+    cancelSpeech()
+    emit()
+  }
+
   const setSettings = (nextSettings: Partial<ReadingSettings>) => {
     settings = { ...settings, ...nextSettings }
     boundaryEvents = 'unknown'
     if (status === 'playing') {
       speak()
     }
+  }
+
+  const setEndAnnouncement = (message: string | undefined) => {
+    endAnnouncement = message
   }
 
   const setIndex = (nextIndex: TextIndex | undefined) => {
@@ -309,5 +373,18 @@ export const createReadingController = ({
     finish()
   }
 
-  return { getState, play, pause, toggle, seekTo, setSettings, setIndex, settlePause, stop, destroy }
+  return {
+    getState,
+    play,
+    pause,
+    toggle,
+    seekTo,
+    skipParagraph,
+    setSettings,
+    setEndAnnouncement,
+    setIndex,
+    settlePause,
+    stop,
+    destroy
+  }
 }

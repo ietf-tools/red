@@ -11,8 +11,9 @@
           'cursor-pointer',
           'px-0 pt-1.25 pb-1 rounded',
           'text-blue-900 dark:text-blue-100 font-bold',
-          'hover:text-blue-400 dark:hover:text-blue-25 focus:text-blue-400 hover:bg-sky-100 dark:hover:bg-sky-950 focus:bg-sky-100',
-          'border-1 border-white dark:border-black focus:border-blue-600 hover:border-blue-600 dark:hover:border-blue-25'
+          'hover:outline-1 focus:outline-1 focus:outline-black hover:outline-black',
+          'hover:text-blue-400 dark:hover:text-blue-25 focus:text-blue-400 dark:focus:text-white focus:bg-sky-100 dark:focus:bg-sky-900 hover:bg-sky-100 dark:hover:bg-sky-950',
+          'border-2 border-white dark:border-black focus:border-black dark:focus:border-white hover:border-black dark:hover:border-blue-25'
         ]">
         {{ userRFCRating === undefined ? 'Rate this RFC' : `Your rating: ${userRFCRating}` }}
         <span v-if="userRFCRating !== undefined" class="sr-only">&mdash; change your rating</span>

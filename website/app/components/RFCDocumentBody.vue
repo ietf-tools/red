@@ -347,7 +347,6 @@ const formatsPojo = computed((): DocumentPojo => {
   .toc-link-back {
     opacity: 0;
     user-select: none;
-
     font-size: var(--text-base);
 
     &:hover,

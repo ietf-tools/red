@@ -52,7 +52,7 @@ describe('RFC reading mode', async () => {
             resume: () => {
               synth.paused = false
             },
-            getVoices: () => [],
+            getVoices: () => [{ lang: 'en-US', voiceURI: 'test', name: 'Test' }],
             addEventListener: () => {},
             removeEventListener: () => {}
           }

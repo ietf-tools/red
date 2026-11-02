@@ -128,6 +128,78 @@ describe('createReadingController', () => {
     expect(spoken).toHaveLength(2)
   })
 
+  describe('announcements', () => {
+    test('speaks a sentence prefix with the sentence, and keeps the cursor on the sentence text', () => {
+      const root = document.createElement('div')
+      root.innerHTML = '<h2>1. Intro</h2><p>Body text.</p>'
+      const prefixed = setup()
+      const { controller, spoken, latest } = prefixed
+      controller.setIndex(buildTextIndex(root, { skipPreformatted: false }))
+      controller.play()
+      expect(spoken.at(-1)?.text).toBe('Section 1. Intro')
+      spoken.at(-1)?.onboundary?.({ name: 'word', charIndex: 0 })
+      expect(latest().cursor).toBe(0)
+      spoken.at(-1)?.onboundary?.({ name: 'word', charIndex: 'Section '.length + 3 })
+      expect(latest().cursor).toBe('1. '.length)
+    })
+
+    test('speaks the end announcement after the last sentence, with reading finished', () => {
+      const { controller, spoken, last, latest } = context
+      controller.setEndAnnouncement('End of RFC 1')
+      controller.seekTo(context.index.text.indexOf('A third'))
+      controller.play()
+      last().onend?.()
+      expect(last().text).toBe('End of RFC 1')
+      expect(latest().status).toBe('idle')
+      expect(spoken).toHaveLength(2)
+    })
+
+    test('speaks it when next is pressed on the last paragraph', () => {
+      const { controller, last } = context
+      controller.setEndAnnouncement('End of RFC 1')
+      controller.seekTo(context.index.text.indexOf('A third'))
+      controller.play()
+      controller.skipParagraph(1)
+      expect(last().text).toBe('End of RFC 1')
+    })
+  })
+
+  describe('skipping paragraphs', () => {
+    test('next jumps past the rest of the paragraph while playing', () => {
+      const { controller, last } = context
+      controller.play()
+      controller.skipParagraph(1)
+      expect(last().text).toBe('A third one.')
+    })
+
+    test('next from the last paragraph stops', () => {
+      const { controller, index, latest } = context
+      controller.seekTo(index.text.indexOf('third'))
+      controller.skipParagraph(1)
+      expect(latest().status).toBe('idle')
+    })
+
+    test('previous restarts the paragraph when partway through it, then goes back', () => {
+      const { controller, index, last } = context
+      controller.play()
+      controller.seekTo(index.text.indexOf('second'))
+      controller.skipParagraph(-1)
+      expect(last().text).toBe('The first sentence is here.')
+      controller.seekTo(index.text.indexOf('A third'))
+      controller.skipParagraph(-1)
+      expect(last().text).toBe('The first sentence is here.')
+    })
+
+    test('while paused moves the cursor without speaking', () => {
+      const { controller, spoken, latest } = context
+      controller.play()
+      controller.pause()
+      controller.skipParagraph(1)
+      expect(spoken).toHaveLength(1)
+      expect(latest()).toMatchObject({ status: 'paused', sentenceIndex: 2 })
+    })
+  })
+
   describe('seeking', () => {
     test('while idle moves the cursor to the clicked word without speaking', () => {
       const { controller, index, spoken, latest } = context

@@ -11,6 +11,33 @@ const build = (html: string, skipPreformatted = false): { root: HTMLElement; ind
 const sentenceTexts = (index: TextIndex): string[] =>
   index.sentences.map(({ start, end }) => index.text.slice(start, end))
 
+describe('buildTextIndex spoken prefixes', () => {
+  const prefixes = (index: TextIndex) => index.sentences.map(({ spokenPrefix }) => spokenPrefix)
+
+  test('puts Section before a heading that starts with its number', () => {
+    const { index } = build('<h2>3.2. Framing</h2><h2>A.1. Example</h2><h2>Abstract</h2><p>Hello there.</p>')
+    expect(prefixes(index)).toEqual(['Section ', 'Section ', undefined, undefined])
+  })
+
+  test('says a skipped figure was omitted before the text that follows it', () => {
+    const { index } = build('<p>As shown below:</p><div class="artwork"><pre>+--+</pre></div><p>Next text.</p>', true)
+    expect(prefixes(index)).toEqual([undefined, 'Figure omitted. '])
+  })
+
+  test('says code was omitted, once for several consecutive blocks, before a heading', () => {
+    const { index } = build(
+      '<div class="sourcecode"><pre>a</pre></div><div class="sourcecode"><pre>b</pre></div><h2>4. Next</h2>',
+      true
+    )
+    expect(prefixes(index)).toEqual(['Code block omitted. Section '])
+  })
+
+  test('says nothing when preformatted text is read', () => {
+    const { index } = build('<p>Before.</p><pre>Spoken words.</pre>')
+    expect(prefixes(index)).toEqual([undefined, undefined])
+  })
+})
+
 describe('buildTextIndex sentences', () => {
   test('splits sentences within a paragraph and never across blocks', () => {
     const { index } = build('<p>First one. Second one.</p><p>Third without a stop</p>')

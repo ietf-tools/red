@@ -24,6 +24,9 @@ type ReadingSettingsRefs = {
 
 type ReadingSession = {
   toggle: () => void
+  start: () => void
+  skipParagraph: (direction: 1 | -1) => void
+  halt: () => void
   stop: () => void
 }
 
@@ -36,6 +39,15 @@ const status = ref<ReadingStatus>('idle')
 
 // What the error modal is showing, if anything. Every failure ends up here and none in the page.
 const error = ref<ReadingError | undefined>()
+
+// Whether the browser has a voice to read with, which is what the player controls depend on.
+const isAvailable = ref(false)
+
+// Whether the player is showing, which is from pressing Read aloud until closing it.
+const isPlayerOpen = ref(false)
+
+// Where the RFC being read is told from, since the page can move to another RFC without remounting
+let getRfcNumber: (() => number) | undefined
 
 let session: ReadingSession | undefined
 let consumerCount = 0
@@ -125,6 +137,8 @@ const startSession = ({
   // Built on first use rather than on mount: the content is hydrated by then, and may not have
   // rendered at all yet when the page's parts mount, and most readers never press play.
   const ensureIndex = () => {
+    const rfcNumber = getRfcNumber?.()
+    controller.setEndAnnouncement(rfcNumber === undefined ? undefined : `End of RFC ${rfcNumber}`)
     if (index && (indexRoot !== getContentElement() || !isIndexCurrent(index))) {
       dropIndex()
     }
@@ -150,6 +164,17 @@ const startSession = ({
 
   scope.run(() => {
     watch([readingRate, readingVoiceUri, voices], applySettings)
+    watch(
+      totalVoiceCount,
+      (count) => {
+        isAvailable.value = count > 0
+        if (count === 0) {
+          controller.stop()
+          isPlayerOpen.value = false
+        }
+      },
+      { immediate: true }
+    )
     watch(readAloudPreformatted, () => {
       if (index && indexRoot) {
         index = buildIndex(indexRoot)
@@ -212,6 +237,21 @@ const startSession = ({
       ensureIndex()
       controller.toggle()
     },
+    start: () => {
+      ensureIndex()
+      controller.play()
+    },
+    skipParagraph: (direction) => {
+      ensureIndex()
+      controller.skipParagraph(direction)
+      const { cursor } = controller.getState()
+      if (cursor !== undefined) {
+        scrollFollower.reveal(index?.toRange(cursor, cursor + 1))
+      }
+    },
+    halt: () => {
+      controller.stop()
+    },
     stop: () => {
       document.removeEventListener('click', onDocumentClick)
       window.removeEventListener('blur', onPageBlurred)
@@ -239,8 +279,11 @@ const release = () => {
   if (consumerCount === 0) {
     session?.stop()
     session = undefined
+    getRfcNumber = undefined
     status.value = 'idle'
     error.value = undefined
+    isAvailable.value = false
+    isPlayerOpen.value = false
   }
 }
 
@@ -253,9 +296,35 @@ const toggle = () => {
   session.toggle()
 }
 
+const toggleReader = () => {
+  if (isPlayerOpen.value) {
+    session?.halt()
+    isPlayerOpen.value = false
+    return
+  }
+  if (!session) {
+    error.value = { kind: 'unsupported' }
+    return
+  }
+  if (!isAvailable.value) {
+    error.value = { kind: 'no-voices' }
+    return
+  }
+  isPlayerOpen.value = true
+  session.start()
+}
+
+const skipParagraph = (direction: 1 | -1) => {
+  session?.skipParagraph(direction)
+}
+
 // For any part of the page that offers reading mode. Every caller gets the same status and
 // toggles the same session, and the session lives while at least one of them is mounted.
-export const useReadingMode = () => {
+export const useReadingMode = (rfcNumberGetter?: () => number) => {
+  if (rfcNumberGetter) {
+    getRfcNumber = rfcNumberGetter
+  }
+
   const { readAloudPreformatted, readingRate, readingVoiceUri } = storeToRefs(useUiSettingsStore())
 
   const featureFlags = useFeatureFlags()
@@ -285,7 +354,7 @@ export const useReadingMode = () => {
     }
   })
 
-  return { status, toggle }
+  return { status, toggle, toggleReader, skipParagraph, isAvailable, isPlayerOpen }
 }
 
 // The error to show, for the one place that renders the error modal. Needs no lifecycle of its own.

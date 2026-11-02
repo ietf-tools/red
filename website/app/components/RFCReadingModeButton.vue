@@ -1,5 +1,6 @@
 <template>
   <button
+    ref="buttonElement"
     type="button"
     :class="[
       'flex flex-col sm:flex-row items-center',
@@ -9,15 +10,15 @@
       'text-sm text-center md:text-left',
       'font-bold',
       'after:transition-all',
-      'text-blue-900 dark:text-blue-100 hover:text-blue-400 focus:text-blue-400 dark:hover:text-blue-25 dark:focus:text-blue-100 hover:bg-sky-100 focus:bg-blue-25 dark:hover:bg-blue-900 dark:focus:bg-blue-900',
-      'border-1 border-transparent rounded hover:border-blue-800 focus:border-blue-800 dark:hover:border-blue-25 dark:focus:border-blue-25 focus:outline-2 focus:outline-black'
+      'text-blue-900 dark:text-blue-100 hover:text-blue-400 focus:text-blue-400 dark:hover:text-white dark:focus:text-white hover:bg-sky-100 focus:bg-sky-100 dark:hover:bg-blue-900 dark:focus:bg-blue-900',
+      'border-2 border-transparent rounded hover:border-black focus:border-black dark:hover:border-blue-25 dark:focus:border-blue-25 outline-0'
     ]"
     data-reading-mode-button
     :data-reading-status="props.status"
+    :aria-pressed="props.isOpen"
     @click="emit('toggle')">
-    <GraphicsPause v-if="props.status === 'playing'" class="text-xl" />
-    <GraphicsPlay v-else class="text-xl" />
-    {{ label }}
+    <GraphicsPlay class="text-xl" />
+    Read aloud
   </button>
 </template>
 
@@ -26,20 +27,14 @@ import type { ReadingStatus } from '~/utilities/reading-mode/controller'
 
 type Props = {
   status: ReadingStatus
+  isOpen: boolean
 }
 
 const props = defineProps<Props>()
 
 const emit = defineEmits<{ toggle: [] }>()
 
-const label = computed(() => {
-  switch (props.status) {
-    case 'playing':
-      return 'Pause reading'
-    case 'paused':
-      return 'Resume reading'
-    case 'idle':
-      return 'Read aloud'
-  }
-})
+const buttonElement = useTemplateRef('buttonElement')
+
+defineExpose({ focus: () => buttonElement.value?.focus() })
 </script>
