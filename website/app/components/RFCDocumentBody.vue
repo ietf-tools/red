@@ -1,5 +1,5 @@
 <template>
-  <p
+  <div
     :class="[
       'pt-0 sm:pt-2',
       'sm:-mt-9',
@@ -9,7 +9,7 @@
       'text-base lg:text-sm text-left sm:text-right text-gray-800 dark:text-gray-200'
     ]">
     View as: <DocumentPojo :value="formatsPojo" />
-  </p>
+  </div>
 
   <div class="px-2 w-full">
     <div class="flex flex-col">
