@@ -215,4 +215,16 @@ describe('typesense adapter', () => {
 
     expect(result.facetTruncated).toBeUndefined()
   })
+
+  it('throws the Typesense message when a search is rejected with a 200', async () => {
+    const error = 'Error with filter field `subseries.number`: Numerical field has an invalid comparator.'
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => okResponse({ results: [{ code: 400, error }] }))
+    )
+
+    const client = createTypesenseSearchClient({ host: 'example.test', apiKey: 'key', collection: 'docs' })
+
+    await expect(client.search(baseRequest())).rejects.toThrow(`400 ${error}`)
+  })
 })

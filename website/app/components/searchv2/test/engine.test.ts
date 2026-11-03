@@ -38,6 +38,21 @@ describe('search engine', () => {
     expect(search).toHaveBeenCalledTimes(2)
   })
 
+  it('logs a failed search and exposes it as the error state', async () => {
+    const failure = new Error('search rejected')
+    const search = vi.fn(async () => {
+      throw failure
+    })
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined)
+    const engine = createSearchEngine({ searchClient: { search }, adapter: createInMemoryAdapter({ query: 'x' }) })
+    engine.start()
+    await flushPromises()
+
+    expect(consoleError).toHaveBeenCalledWith('[searchv2] search failed', failure)
+    expect(engine.status.value).toBe('error')
+    consoleError.mockRestore()
+  })
+
   it('discards stale out-of-order responses', async () => {
     const resolvers: Array<(value: SearchResponse) => void> = []
     const search = vi.fn(() => new Promise<SearchResponse>((resolve) => resolvers.push(resolve)))

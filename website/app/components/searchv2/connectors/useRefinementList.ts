@@ -111,6 +111,7 @@ export function useRefinementList(options: UseRefinementListOptions) {
       }))
     } catch (caught) {
       if (seq !== latestSeq) return
+      console.error('[searchv2] facet value search failed', caught)
       searchError.value = caught
       searchHits.value = []
     }

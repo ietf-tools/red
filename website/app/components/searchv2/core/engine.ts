@@ -91,6 +91,7 @@ export function createSearchEngine(options: SearchEngineOptions): SearchEngine {
       status.value = 'idle'
     } catch (caught) {
       if (seq !== latestSeq) return
+      console.error('[searchv2] search failed', caught)
       error.value = caught
       status.value = 'error'
     } finally {

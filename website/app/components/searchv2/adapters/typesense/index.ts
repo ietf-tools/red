@@ -55,6 +55,10 @@ const ResultSchema = z.object({
   search_time_ms: z.number().optional()
 })
 
+const ErrorsSchema = z.object({
+  results: z.array(z.object({ code: z.number().optional(), error: z.string().optional() }))
+})
+
 const MultiSearchResponseSchema = z.object({ results: z.array(ResultSchema).min(1) })
 
 /** Creates a backend-agnostic SearchClient backed by Typesense `multi_search`. */
@@ -83,7 +87,17 @@ export function createTypesenseSearchClient(config: TypesenseAdapterConfig): Sea
     if (!response.ok) {
       throw new Error(`[searchv2/typesense] search failed: ${response.status} ${response.statusText}`)
     }
-    return MultiSearchResponseSchema.parse(await response.json())
+    const json: unknown = await response.json()
+
+    // multi_search answers 200 even when an individual search is rejected (bad filter, unknown field),
+    // reporting it as `{ code, error }` in place of a result.
+    const failure = ErrorsSchema.safeParse(json)
+    const rejected = failure.success ? failure.data.results.find((result) => result.error !== undefined) : undefined
+    if (rejected) {
+      throw new Error(`[searchv2/typesense] search rejected: ${rejected.code} ${rejected.error}`)
+    }
+
+    return MultiSearchResponseSchema.parse(json)
   }
 
   const resolvePreset = (request: SearchRequest): string | undefined =>
