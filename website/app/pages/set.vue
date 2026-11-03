@@ -61,6 +61,7 @@ import { setDocuments, useSet } from '~/utilities/reef-sets'
 import { parseSeriesId, RFC_TYPE_RFC, type RfcCommon } from '~/utilities/rfc'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { RfcCommonSchema } from '~/utilities/rfc-validators'
+import { filterSpamText } from '~/utilities/spam'
 import { rfcCommonPathBuilder } from '~/utilities/url'
 
 definePageMeta({
