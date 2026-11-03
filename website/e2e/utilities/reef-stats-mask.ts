@@ -1,5 +1,5 @@
-// The rating, subscriber and set counts come from live Reef data in the bucket JSON, so an RFC
-// gaining its first rating or set changes the height of the row under its title and shifts the
+// The subscriber and set counts come from live Reef data in the bucket JSON, so an RFC
+// gaining its first subscriber or set changes the height of the row under its title and shifts the
 // whole document. Not reachable by stubbing the request, because it is fetched during SSR. Hiding
 // the row and pinning it to a fixed height excludes the volatile content while holding the rest of
 // the page steady. The height is the same at every viewport because it only has to be constant

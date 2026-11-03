@@ -1,15 +1,8 @@
 <template>
   <div>
     <ul class="flex flex-col items-start md:flex-row gap-2">
-      <li class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2">
-        <GraphicsStarFilled class="inline-block w-[24px] h-[24px] text-yellow-200 dark:text-yellow-700" />
-        <Heading level="3" style-level="5" class="text-center"> Rate RFCs</Heading>
-        <p class="text-sm text-center text-gray-800 dark:text-gray-200">
-          Give feedback about an RFC by giving it a star rating
-        </p>
-      </li>
       <li
-        class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2 md:px-2 md:border-r-1 md:border-l-1 md:border-gray-200">
+        class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2 md:pr-2 md:border-r-1 md:border-gray-200">
         <GraphicsAlert class="inline-block w-[24px] h-[24px]" />
         <Heading level="3" style-level="5" class="text-center"> Subscribe to RFCs</Heading>
         <p class="text-sm text-center text-gray-800 dark:text-gray-200">

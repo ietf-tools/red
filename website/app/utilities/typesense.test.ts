@@ -3042,7 +3042,7 @@ describe('typeSenseSearchItemToRFCCommon reefStats', () => {
   })
 
   test('carries the numbers through when the index has them', () => {
-    const reefStats = { ratingAggregate: { average: 4.25, count: 12 }, subscriberCount: 340, setCount: 7 }
+    const reefStats = { subscriberCount: 340, setCount: 7 }
     expect(typeSenseSearchItemToRFCCommon({ ...firstSearchItem(), reefStats }).reefStats).toEqual(reefStats)
   })
 

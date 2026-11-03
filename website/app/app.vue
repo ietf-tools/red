@@ -35,7 +35,7 @@ provide(hasFeatureFlagsToastBeenDismissedKey, hasFeatureFlagsToastBeenDismissed)
 onMounted(() => loadFeatureFlagsFromLocalStorage(hasFeatureFlagsLoaded, featureFlagsRef))
 onMounted(() => initReefSurveys())
 onMounted(initReefNotifications)
-// Created here so that it is listening before the reader's session restores, and their ratings,
+// Created here so that it is listening before the reader's session restores, and their
 // subscriptions and sets start loading the moment it does rather than when a control first renders.
 onMounted(() => useReefStore())
 </script>

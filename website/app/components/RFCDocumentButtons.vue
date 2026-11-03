@@ -44,8 +44,7 @@
 
 <script setup lang="ts">
 /**
- * The row of Reef features beneath an RFC's title: the community rating, this reader's own rating,
- * whether they're subscribed, and which of their sets hold this RFC.
+ * The row of Reef features beneath an RFC's title: whether they're subscribed, and which of their sets hold this RFC.
  *
  * Each feature is one call below. What it takes to keep a per-reader value in step with Reef —
  * writing changes back, queueing them so the last one wins, putting a checkbox back when Reef
@@ -59,7 +58,6 @@
  * from the bucket JSON by RFCDocumentBody, so a visitor's browser is handed them with the page
  * instead of asking Reef for them.
  */
-import { useUserRFCRating } from '~/utilities/reef-ratings'
 import type { ReefRFCStats } from '~/utilities/rfc-validators'
 import { useUserSets } from '~/utilities/reef-sets'
 import { useUserRFCSubscription } from '~/utilities/reef-subscriptions'

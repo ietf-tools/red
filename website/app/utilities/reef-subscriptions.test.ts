@@ -10,7 +10,6 @@ import { useNotificationsStore } from '~/stores/notifications'
 import { useReefStore } from '~/stores/reef'
 
 const reef = vi.hoisted(() => ({
-  getMyRatings: vi.fn(),
   getSubscriptions: vi.fn(),
   getSets: vi.fn(),
   createSubscription: vi.fn(),
@@ -56,7 +55,6 @@ describe('useUserSubscription', () => {
 
   beforeEach(() => {
     Object.values(reef).forEach((fn) => fn.mockReset())
-    reef.getMyRatings.mockResolvedValue([])
     reef.getSets.mockResolvedValue([])
     vi.spyOn(console, 'error').mockImplementation(() => {})
     useAuthStore().clearUser()

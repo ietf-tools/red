@@ -1,12 +1,11 @@
 // @vitest-environment nuxt
 //
 // What happens when this reader changes something: the control moves first, Reef is told, and the
-// control goes back if Reef refuses. One file for all three features because they share that
+// control goes back if Reef refuses. One file for both features because they share that
 // shape, and because what's worth checking is the shape rather than the endpoint.
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { writeUserRFCRating } from './reef-ratings'
 import { createUserSet, writeUserSetMembership } from './reef-sets'
 import { writeUserSubscription } from './reef-subscriptions'
 import { useAuthStore } from '~/stores/auth'
@@ -14,11 +13,8 @@ import { useNotificationsStore } from '~/stores/notifications'
 import { useReefStore } from '~/stores/reef'
 
 const reef = vi.hoisted(() => ({
-  getMyRatings: vi.fn(),
   getSubscriptions: vi.fn(),
   getSets: vi.fn(),
-  putRating: vi.fn(),
-  deleteRating: vi.fn(),
   createSubscription: vi.fn(),
   deleteSubscription: vi.fn(),
   putSetDocument: vi.fn(),
@@ -40,19 +36,14 @@ const set = (id: string, title: string) => ({
 })
 
 type Held = {
-  rating?: number
   subscriptionId?: number
   setIds?: string[]
 }
 
 // Sign in and load what this reader holds of rfc9110 into the store, so a write has a known
 // starting point.
-const readerHolding = async (
-  { rating, subscriptionId, setIds = [] }: Held = {},
-  sets = [] as ReturnType<typeof set>[]
-) => {
+const readerHolding = async ({ subscriptionId, setIds = [] }: Held = {}, sets = [] as ReturnType<typeof set>[]) => {
   useAuthStore().setUser({ sub: 'reader-1' })
-  reef.getMyRatings.mockResolvedValue(rating === undefined ? [] : [{ doc: 'rfc9110', value: rating, updated_at: '' }])
   reef.getSubscriptions.mockResolvedValue(
     subscriptionId === undefined
       ? []
@@ -66,7 +57,7 @@ const readerHolding = async (
   )
   const reefStore = useReefStore()
   await vi.waitFor(() => {
-    expect(Object.values(reefStore.status).map(({ type }) => type)).toEqual(['success', 'success', 'success'])
+    expect(Object.values(reefStore.status).map(({ type }) => type)).toEqual(['success', 'success'])
   })
   return reefStore
 }
@@ -80,62 +71,6 @@ const rfc9110Subscription = (id: number) => ({
 })
 
 const notificationTitles = (): string[] => useNotificationsStore().queue.map(({ title }) => title)
-
-describe('writeUserRFCRating', () => {
-  beforeEach(() => {
-    setActivePinia(createPinia())
-    Object.values(reef).forEach((fn) => fn.mockReset())
-    vi.spyOn(console, 'error').mockImplementation(() => {})
-  })
-
-  test('shows the rating before Reef has confirmed it', async () => {
-    const reefStore = await readerHolding()
-    let confirm: (value: unknown) => void = () => {}
-    reef.putRating.mockReturnValue(new Promise((resolve) => (confirm = resolve)))
-
-    const writing = writeUserRFCRating(9110, 4)
-    expect(reefStore.ratings.rfc9110).toBe(4)
-
-    confirm({ rfc: 'rfc9110', average: 4, count: 1, your_rating: 4 })
-    await writing
-  })
-
-  test('puts the rating back when Reef refuses it', async () => {
-    const reefStore = await readerHolding({ rating: 2 })
-    reef.putRating.mockRejectedValue(new Error('nope'))
-
-    await writeUserRFCRating(9110, 5)
-
-    expect(reefStore.ratings.rfc9110).toBe(2)
-  })
-
-  test('withdrawing a rating deletes it, and says so', async () => {
-    const reefStore = await readerHolding({ rating: 2 })
-    reef.deleteRating.mockResolvedValue({ rfc: 'rfc9110', average: null, count: 0, your_rating: null })
-
-    await writeUserRFCRating(9110, undefined)
-
-    expect(reef.deleteRating).toHaveBeenCalledWith('rfc9110')
-    expect(reefStore.ratings.rfc9110).toBeUndefined()
-    expect(notificationTitles()).toContain('Rating removed')
-  })
-
-  test('says so when a withdrawal fails, because the stars come back on their own', async () => {
-    const reefStore = await readerHolding({ rating: 2 })
-    reef.deleteRating.mockRejectedValue(new Error('nope'))
-
-    await writeUserRFCRating(9110, undefined)
-
-    expect(reefStore.ratings.rfc9110).toBe(2)
-    expect(notificationTitles()).toContain('Unable to remove your rating')
-  })
-
-  test('writes nothing when the rating has not changed', async () => {
-    await readerHolding({ rating: 4 })
-    await writeUserRFCRating(9110, 4)
-    expect(reef.putRating).not.toHaveBeenCalled()
-  })
-})
 
 describe('writeUserSubscription', () => {
   beforeEach(() => {

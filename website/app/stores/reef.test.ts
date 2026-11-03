@@ -2,12 +2,11 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import type { DocumentSet, MyRating, Subscription } from '~/utilities/reef'
+import type { DocumentSet, Subscription } from '~/utilities/reef'
 import { useAuthStore } from '~/stores/auth'
 import { subscriptionKey, subscriptionTargetOf, useReefStore } from '~/stores/reef'
 
 const reef = vi.hoisted(() => ({
-  getMyRatings: vi.fn(),
   getSubscriptions: vi.fn(),
   getSets: vi.fn()
 }))
@@ -30,15 +29,12 @@ const set = (id: string, docs: string[] = []): DocumentSet => ({
 })
 
 const answering = ({
-  ratings = [],
   subscriptions = [],
   sets = []
 }: {
-  ratings?: MyRating[]
   subscriptions?: Subscription[]
   sets?: DocumentSet[]
 } = {}) => {
-  reef.getMyRatings.mockResolvedValue(ratings)
   reef.getSubscriptions.mockResolvedValue(subscriptions)
   reef.getSets.mockResolvedValue(sets)
 }
@@ -57,7 +53,7 @@ const signIn = (sub = 'reader-1') => {
 
 const loaded = (reefStore: ReturnType<typeof useReefStore>) =>
   vi.waitFor(() => {
-    expect(Object.values(reefStore.status).map(({ type }) => type)).toEqual(['success', 'success', 'success'])
+    expect(Object.values(reefStore.status).map(({ type }) => type)).toEqual(['success', 'success'])
   })
 
 describe('subscriptionKey and subscriptionTargetOf', () => {
@@ -103,7 +99,6 @@ describe('useReefStore', () => {
     const reefStore = useTrackedReefStore()
     await reefStore.load()
 
-    expect(reef.getMyRatings).not.toHaveBeenCalled()
     expect(reef.getSubscriptions).not.toHaveBeenCalled()
     expect(reef.getSets).not.toHaveBeenCalled()
     expect(reefStore.status.subscriptions).toEqual({ type: 'idle' })
@@ -112,7 +107,6 @@ describe('useReefStore', () => {
   test('loads everything the moment they sign in', async () => {
     const reefStore = useTrackedReefStore()
     answering({
-      ratings: [{ doc: 'rfc9110', value: 4, updated_at: '' }],
       subscriptions: [subscription({ id: 7, kind: 'rfc', params: { rfc: 'rfc9110' } })],
       sets: [set('set-a', ['rfc9110', 'rfc2119']), set('set-b', ['rfc9110'])]
     })
@@ -121,7 +115,6 @@ describe('useReefStore', () => {
     expect(reefStore.status.subscriptions).toEqual({ type: 'loading' })
     await loaded(reefStore)
 
-    expect(reefStore.ratings).toEqual({ rfc9110: 4 })
     expect(reefStore.isSubscribedTo('rfc:rfc9110')).toBe(true)
     expect(reefStore.subscriptionByKey.get('rfc:rfc9110')?.id).toBe(7)
     expect(reefStore.setIdsByDoc).toEqual({ rfc9110: ['set-a', 'set-b'], rfc2119: ['set-a'] })
@@ -169,16 +162,15 @@ describe('useReefStore', () => {
 
   // --- Failure --------------------------------------------------------------
 
-  test('reports one slice failing without taking the others with it', async () => {
+  test('reports one slice failing without taking the other with it', async () => {
     const reefStore = useTrackedReefStore()
-    answering({ ratings: [{ doc: 'rfc9110', value: 3, updated_at: '' }] })
+    answering({ subscriptions: [subscription({ id: 3 })] })
     reef.getSets.mockRejectedValue(new Error('reef is down'))
     signIn()
 
     await vi.waitFor(() => expect(reefStore.status.sets.type).toBe('error'))
-    await vi.waitFor(() => expect(reefStore.status.ratings.type).toBe('success'))
-    expect(reefStore.status.subscriptions.type).toBe('success')
-    expect(reefStore.ratings).toEqual({ rfc9110: 3 })
+    await vi.waitFor(() => expect(reefStore.status.subscriptions.type).toBe('success'))
+    expect(reefStore.isSubscribedTo('new_rfc')).toBe(true)
   })
 
   test('loads again when asked, which is how a failure is retried', async () => {
@@ -225,16 +217,16 @@ describe('useReefStore', () => {
     signIn()
     await loaded(reefStore)
 
-    let answer: (value: MyRating[]) => void = () => {}
-    reef.getMyRatings.mockReturnValue(new Promise<MyRating[]>((resolve) => (answer = resolve)))
+    let answer: (value: Subscription[]) => void = () => {}
+    reef.getSubscriptions.mockReturnValue(new Promise<Subscription[]>((resolve) => (answer = resolve)))
     const refreshing = reefStore.load()
 
-    reefStore.setRating('rfc9110', 5)
-    await reefStore.runWrite('rfc9110:rating', () => Promise.resolve())
+    reefStore.addSubscription(subscription({ id: 5 }))
+    await reefStore.runWrite('new_rfc', () => Promise.resolve())
     answer([])
     await refreshing
 
-    expect(reefStore.ratings).toEqual({ rfc9110: 5 })
+    expect(reefStore.isSubscribedTo('new_rfc')).toBe(true)
   })
 
   test('refreshes when asked to, unless it loaded only a moment ago', async () => {
@@ -270,7 +262,6 @@ describe('useReefStore', () => {
   test('forgets this reader’s own state when they sign out', async () => {
     const reefStore = useTrackedReefStore()
     answering({
-      ratings: [{ doc: 'rfc9110', value: 4, updated_at: '' }],
       subscriptions: [subscription()],
       sets: [set('set-a', ['rfc9110'])]
     })
@@ -279,7 +270,6 @@ describe('useReefStore', () => {
 
     useAuthStore().clearUser()
 
-    expect(reefStore.ratings).toEqual({})
     expect(reefStore.subscriptions).toEqual([])
     expect(reefStore.sets).toEqual([])
     expect(reefStore.setIdsByDoc).toEqual({})
@@ -288,7 +278,7 @@ describe('useReefStore', () => {
 
   test('does not show one reader what the previous one loaded', async () => {
     const reefStore = useTrackedReefStore()
-    answering({ ratings: [{ doc: 'rfc9110', value: 4, updated_at: '' }] })
+    answering({ subscriptions: [subscription()] })
     signIn('reader-1')
     await loaded(reefStore)
 
@@ -296,20 +286,20 @@ describe('useReefStore', () => {
     signIn('reader-2')
     await loaded(reefStore)
 
-    expect(reefStore.ratings).toEqual({})
+    expect(reefStore.isSubscribedTo('new_rfc')).toBe(false)
   })
 
   test('drops an answer that arrives after the reader has changed', async () => {
     const reefStore = useTrackedReefStore()
-    let answer: (value: MyRating[]) => void = () => {}
-    reef.getMyRatings.mockReturnValue(new Promise<MyRating[]>((resolve) => (answer = resolve)))
+    let answer: (value: Subscription[]) => void = () => {}
+    reef.getSubscriptions.mockReturnValue(new Promise<Subscription[]>((resolve) => (answer = resolve)))
     signIn('reader-1')
 
     answering()
     signIn('reader-2')
-    answer([{ doc: 'rfc9110', value: 5, updated_at: '' }])
+    answer([subscription()])
     await loaded(reefStore)
 
-    expect(reefStore.ratings).toEqual({})
+    expect(reefStore.isSubscribedTo('new_rfc')).toBe(false)
   })
 })

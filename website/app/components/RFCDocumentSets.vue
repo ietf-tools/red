@@ -59,8 +59,7 @@
                   <!-- One checkbox per set, ticked when the set already holds this RFC. Checkboxes
                    rather than an add-only list because the dialog has to show what's already true
                    as well as offer the change, and aria-checked carries both without a live
-                   region. There's no save button here for the same reason the rating dialog has
-                   none: ticking a row writes. -->
+                   region. There's no save button here: ticking a row writes. -->
                   <CheckboxGroupRoot
                     v-if="props.sets.length > 0"
                     v-model="setIdsWithThisRFC"
@@ -147,7 +146,7 @@
 /**
  * The "add to Set" dialog for one RFC.
  *
- * Holds no state of its own, the same way the rating and subscribe dialogs don't: which sets hold
+ * Holds no state of its own, the same way the subscribe dialog doesn't: which sets hold
  * this RFC is a model, so ticking a row updates the parent's ref and the parent is what persists
  * it — and reports a failure, since it's the only one that knows Reef refused.
  */

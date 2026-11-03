@@ -1,11 +1,11 @@
-// What Reef knows about this reader: their ratings, their subscriptions and their sets.
+// What Reef knows about this reader: their subscriptions and their sets.
 //
 // All of it, loaded once when they sign in, rather than a document at a time as the page asks. The
-// three endpoints are unpaginated and a reader's own data is small, so every control on every page
+// two endpoints are unpaginated and a reader's own data is small, so every control on every page
 // reads the same answer, and none of them has to ask — or to wait on a request of its own.
 //
-// Only this reader's own state. The public numbers beside these controls — the rating average, the
-// subscriber and set totals — are not here and never fetched: they arrive with whatever data the
+// Only this reader's own state. The public numbers beside these controls — the subscriber and set
+// totals — are not here and never fetched: they arrive with whatever data the
 // route already loaded and are passed down as props, so an anonymous visitor never reaches Reef.
 //
 // Nothing here is persisted. Client-side navigation keeps this store, so moving between pages
@@ -17,14 +17,7 @@ import { omit } from 'es-toolkit'
 import { computed, ref, watch } from 'vue'
 import { useAuthStore } from '~/stores/auth'
 import type { LoadingStatus } from '~/utilities/loading-status'
-import {
-  getMyRatings,
-  getSets,
-  getSubscriptions,
-  type DocumentSet,
-  type MyRating,
-  type Subscription
-} from '~/utilities/reef'
+import { getSets, getSubscriptions, type DocumentSet, type Subscription } from '~/utilities/reef'
 
 // How soon after one load another may be started by the tab regaining focus. Switching between
 // windows fires focus events in bursts, and nothing a reader changes elsewhere is worth a request
@@ -34,8 +27,8 @@ const REFRESH_MIN_INTERVAL_MS = 30_000
 /** One of this reader's sets, without its membership — that is held per document, below. */
 export type ReefSet = Omit<DocumentSet, 'documents' | 'description'> & { description: string }
 
-/** The three things loaded for a reader, each of which succeeds or fails on its own. */
-export type ReefSlice = 'ratings' | 'subscriptions' | 'sets'
+/** The two things loaded for a reader, each of which succeeds or fails on its own. */
+export type ReefSlice = 'subscriptions' | 'sets'
 
 /**
  * What a subscription is to, in the terms Red subscribes by. Reef has more kinds than this
@@ -105,7 +98,6 @@ export type SetMembershipSync = {
 }
 
 const idleStatuses = (): Record<ReefSlice, LoadingStatus> => ({
-  ratings: { type: 'idle' },
   subscriptions: { type: 'idle' },
   sets: { type: 'idle' }
 })
@@ -114,7 +106,6 @@ export const useReefStore = defineStore('reef', () => {
   const authStore = useAuthStore()
 
   // Keyed by canonical document id (`rfc9110`), the same key ~/utilities/reef-documents builds.
-  const ratings = ref<Record<string, number>>({})
   const subscriptions = ref<Subscription[]>([])
   const pendingSubscriptions = ref<Record<string, PendingSubscription>>({})
   const setMembershipSync = ref<Record<string, SetMembershipSync>>({})
@@ -136,8 +127,8 @@ export const useReefStore = defineStore('reef', () => {
   let loadController: AbortController | undefined
   let lastLoadedAt = 0
 
-  // The last write queued per key — one document and one concern, so a rating and a subscription
-  // for the same document don't wait on each other. Deliberately not reactive: nothing renders
+  // The last write queued per key — one document and one concern, so a subscription and a set
+  // change for the same document don't wait on each other. Deliberately not reactive: nothing renders
   // from it, and a write in flight is not a state the page shows.
   const writeQueues = new Map<string, Promise<unknown>>()
 
@@ -165,15 +156,6 @@ export const useReefStore = defineStore('reef', () => {
   /** Whether this reader subscribes to the target with this key, counting a change not yet confirmed. */
   const isSubscribedTo = (key: string): boolean =>
     pendingSubscriptions.value[key]?.desired ?? subscriptionByKey.value.has(key)
-
-  /** Record or withdraw this reader's rating of one document. */
-  const setRating = (doc: string, rating: number | undefined): void => {
-    if (rating === undefined) {
-      ratings.value = omit(ratings.value, [doc])
-      return
-    }
-    ratings.value = { ...ratings.value, [doc]: rating }
-  }
 
   /** Note a subscription change that has been started and not yet answered. */
   const beginSubscriptionChange = (key: string, desired: boolean): void => {
@@ -273,17 +255,12 @@ export const useReefStore = defineStore('reef', () => {
     loadController?.abort()
     loadController = undefined
     lastLoadedAt = 0
-    ratings.value = {}
     subscriptions.value = []
     pendingSubscriptions.value = {}
     setMembershipSync.value = {}
     sets.value = []
     setIdsByDoc.value = {}
     status.value = idleStatuses()
-  }
-
-  const applyRatings = (loaded: MyRating[]): void => {
-    ratings.value = Object.fromEntries(loaded.map(({ doc, value }) => [doc, value]))
   }
 
   const applySets = (loaded: DocumentSet[]): void => {
@@ -299,7 +276,7 @@ export const useReefStore = defineStore('reef', () => {
   }
 
   /**
-   * Load everything this reader has, all three requests at once.
+   * Load everything this reader has, both requests at once.
    *
    * Also how a failed load is retried. A load that finds a slice already loaded is a refresh: the
    * data stays on screen and no loading state is shown, a failure leaves what was there, and an
@@ -358,7 +335,6 @@ export const useReefStore = defineStore('reef', () => {
     }
 
     await Promise.all([
-      loadSlice('ratings', getMyRatings, applyRatings, 'Unable to load your ratings.'),
       loadSlice(
         'subscriptions',
         getSubscriptions,
@@ -410,7 +386,6 @@ export const useReefStore = defineStore('reef', () => {
   )
 
   return {
-    ratings,
     subscriptions,
     pendingSubscriptions,
     setMembershipSync,
@@ -421,7 +396,6 @@ export const useReefStore = defineStore('reef', () => {
     isReadable,
     subscriptionByKey,
     isSubscribedTo,
-    setRating,
     beginSubscriptionChange,
     endSubscriptionChange,
     beginSetMembershipChange,

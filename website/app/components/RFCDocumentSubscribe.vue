@@ -49,8 +49,7 @@
                 <!-- A checkbox rather than a Subscribe/Unsubscribe button, so the current state is
                    readable without having to infer it from what the button offers to do — and so a
                    screen reader gets the change from aria-checked, which CheckboxRoot maintains,
-                   with no live region needed. There's no save button here for the same reason the
-                   rating dialog has none: ticking it writes. Disabled rather than hidden until
+                   with no live region needed. There's no save button here: ticking it writes. Disabled rather than hidden until
                    the subscriptions have arrived, so the dialog doesn't change height and an
                    unticked box isn't read as "not subscribed" when it is only not known yet. -->
                 <SubscriptionCheckboxHelpText />
@@ -111,7 +110,7 @@
 /**
  * The subscribe dialog for one RFC.
  *
- * Holds no state of its own, the same way the rating dialog doesn't: whether the reader is
+ * Holds no state of its own, the same way the sets dialog doesn't: whether the reader is
  * subscribed is a model, so ticking the box updates the parent's ref and the parent is what
  * persists it — and reports a failure, since it's the only one that knows Reef refused.
  */

@@ -1,6 +1,6 @@
 // How Red names a document to Reef, and how a component asks what Reef knows about one.
 //
-//   reefDocumentKey — the one canonical identifier, shared by the rating, subscription, set and
+//   reefDocumentKey — the one canonical identifier, shared by the subscription, set and
 //                     stats features.
 //   useReefDocument — what one document is to this reader. Reads only; fires no request.
 //
@@ -25,12 +25,10 @@ export const reefDocumentKey = (document: SeriesId | number): string =>
 /**
  * What one document is to the reader looking at it.
  *
- * Nothing public: the rating average and the subscriber and set totals arrive with the route's own
+ * Nothing public: the subscriber and set totals arrive with the route's own
  * data and are passed down as props, so they are never asked for and never held here.
  */
 export type ReefDocument = {
-  /** This reader's own rating, undefined while they haven't rated it. */
-  yourRating: ComputedRef<number | undefined>
   /** Whether this reader subscribes to this document directly. */
   isSubscribed: ComputedRef<boolean>
   /** Which of this reader's sets hold it, as the checkbox group's value. */
@@ -50,7 +48,6 @@ export const useReefDocument = (document: MaybeRefOrGetter<SeriesId | number>): 
   const key = computed(() => reefDocumentKey(toValue(document)))
 
   return {
-    yourRating: computed(() => reefStore.ratings[key.value]),
     isSubscribed: computed(() => reefStore.isSubscribedTo(subscriptionKey({ kind: 'rfc', doc: key.value }))),
     yourSetIds: computed(() => reefStore.setIdsByDoc[key.value] ?? [])
   }

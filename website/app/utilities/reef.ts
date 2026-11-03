@@ -27,13 +27,10 @@ export type PatchedDigestPreference = components['schemas']['PatchedDigestPrefer
 export type DocumentSet = components['schemas']['DocumentSet']
 export type PatchedDocumentSet = components['schemas']['PatchedDocumentSet']
 export type DocumentSetEntry = components['schemas']['DocumentSetEntry']
-export type MyRating = components['schemas']['MyRating']
 export type WebNotification = components['schemas']['WebNotification']
 export type PaginatedWebNotificationList = components['schemas']['PaginatedWebNotificationList']
 export type Popularity = components['schemas']['Popularity']
 export type PopularityEntry = components['schemas']['PopularityEntry']
-export type RatingAggregate = components['schemas']['RatingAggregate']
-export type RatingWrite = components['schemas']['RatingWrite']
 export type Subject = components['schemas']['Subject']
 export type SubjectDetail = components['schemas']['SubjectDetail']
 export type SubjectDetailOrRedirect = components['schemas']['SubjectDetailOrRedirect']
@@ -263,37 +260,6 @@ export const isRetiredSubject = (subject: SubjectDetailOrRedirect): subject is R
 export const isSubjectAlias = (subject: SubjectDetailOrRedirect): subject is SubjectAlias => 'alias_of' in subject
 
 // --- This reader's own state, all of it --------------------------------------------------
-
-// Every rating the signed-in caller has given, most recently changed first. Unpaginated, so one
-// request is the whole of it, and an empty list is a caller who has rated nothing.
-export const getMyRatings = (signal?: AbortSignal): Promise<MyRating[]> =>
-  reefFetch('/api/reef/me/ratings/', { auth: 'required', signal })
-
-// Aggregate rating for one RFC. The operation also lists `{}` in its security, so anonymous is
-// fine and the token is sent only to identify the caller — which is what lets a signed-in
-// reader be told their own rating rather than just the public average.
-export const getRating = (rfc: string, signal?: AbortSignal): Promise<RatingAggregate> =>
-  reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, { auth: 'optional', signal })
-
-// Set the caller's own rating for one RFC, returning the updated aggregate.
-export const putRating = (rfc: string, rating: RatingWrite, signal?: AbortSignal): Promise<RatingAggregate> =>
-  reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, {
-    method: 'PUT',
-    body: rating,
-    auth: 'required',
-    signal
-  })
-
-// Withdraw the caller's own rating of one RFC, returning the updated aggregate with `your_rating`
-// now null. Unlike the other deletes in this file it answers 200 with a body rather than 204, and
-// the spec calls it idempotent: a caller with no rating to remove gets the same response as one
-// whose rating was just removed, so a repeated removal is a success rather than a 404.
-export const deleteRating = (rfc: string, signal?: AbortSignal): Promise<RatingAggregate> =>
-  reefFetch(`/api/reef/ratings/${encodeURIComponent(rfc)}/`, {
-    method: 'DELETE',
-    auth: 'required',
-    signal
-  })
 
 export const getSubscriptions = (signal?: AbortSignal): Promise<Subscription[]> =>
   reefFetch('/api/reef/subscriptions/', { auth: 'required', signal })

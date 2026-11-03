@@ -302,7 +302,7 @@ export const useOidcSession = (): void => {
       enrollmentUrl: config.oidcEnrollmentUrl
     }
     void onOidcSessionEnded(oidcConfig, () => {
-      // Whatever this tab holds of the reader's own ratings, subscriptions and sets goes with
+      // Whatever this tab holds of the reader's own subscriptions and sets goes with
       // their session: ~/stores/reef watches the signed-in subject and empties itself when it
       // changes, so clearing the user here is the whole of it. This runs on every way a session
       // can end, including an explicit sign-out — signoutRedirect discards the stored user

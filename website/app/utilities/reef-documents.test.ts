@@ -8,7 +8,6 @@ import { useAuthStore } from '~/stores/auth'
 import { useReefStore } from '~/stores/reef'
 
 const reef = vi.hoisted(() => ({
-  getMyRatings: vi.fn(),
   getSubscriptions: vi.fn(),
   getSets: vi.fn()
 }))
@@ -42,7 +41,6 @@ describe('useReefDocument', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
     Object.values(reef).forEach((fn) => fn.mockReset())
-    reef.getMyRatings.mockResolvedValue([])
     reef.getSubscriptions.mockResolvedValue([])
     reef.getSets.mockResolvedValue([])
   })
@@ -56,13 +54,11 @@ describe('useReefDocument', () => {
 
   test('asks Reef for nothing of its own', () => {
     useReefDocument(9110)
-    expect(reef.getMyRatings).not.toHaveBeenCalled()
     expect(reef.getSubscriptions).not.toHaveBeenCalled()
     expect(reef.getSets).not.toHaveBeenCalled()
   })
 
   test('reads what the store holds for this document', async () => {
-    reef.getMyRatings.mockResolvedValue([{ doc: 'rfc9110', value: 4, updated_at: '' }])
     reef.getSubscriptions.mockResolvedValue([
       { id: 7, kind: 'rfc', params: { rfc: 'rfc9110' }, created_at: '2026-08-18T00:00:00Z' }
     ])
@@ -72,7 +68,6 @@ describe('useReefDocument', () => {
     const document = useReefDocument(9110)
     await loadedStore()
 
-    expect(document.yourRating.value).toBe(4)
     expect(document.isSubscribed.value).toBe(true)
     expect(document.yourSetIds.value).toEqual(['set-a'])
   })
@@ -81,7 +76,6 @@ describe('useReefDocument', () => {
     const document = useReefDocument(9110)
     await loadedStore()
 
-    expect(document.yourRating.value).toBeUndefined()
     expect(document.isSubscribed.value).toBe(false)
     expect(document.yourSetIds.value).toEqual([])
   })
@@ -99,17 +93,17 @@ describe('useReefDocument', () => {
   })
 
   test('follows the document it is given when the page navigates', async () => {
-    reef.getMyRatings.mockResolvedValue([
-      { doc: 'rfc9110', value: 4, updated_at: '' },
-      { doc: 'rfc2119', value: 1, updated_at: '' }
+    reef.getSets.mockResolvedValue([
+      { id: 'set-a', title: 'A', description: '', documents: [{ doc: 'rfc9110', rank: 0, added_at: '' }] },
+      { id: 'set-b', title: 'B', description: '', documents: [{ doc: 'rfc2119', rank: 0, added_at: '' }] }
     ])
     await loadedStore()
 
     const rfcNumber = ref(9110)
     const document = useReefDocument(rfcNumber)
-    expect(document.yourRating.value).toBe(4)
+    expect(document.yourSetIds.value).toEqual(['set-a'])
 
     rfcNumber.value = 2119
-    expect(document.yourRating.value).toBe(1)
+    expect(document.yourSetIds.value).toEqual(['set-b'])
   })
 })
