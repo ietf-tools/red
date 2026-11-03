@@ -91,7 +91,7 @@ paths:
 
         Naming no document returns the caller's sets and an empty `documents` list, which is how a client loads the set list on its own. Unlike `/stats/`, an empty `doc` does not mean every document: that endpoint is swept once at build time, whereas this one is called on every page.
 
-        Carries no public numbers. Ratings averages, subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
+        Carries no public numbers. Subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
       summary: Read your own state for a batch of documents
       parameters:
         - in: query
@@ -301,7 +301,7 @@ paths:
     get:
       operationId: ratings_retrieve
       description: |-
-        Return the public average and count of ratings for one RFC. Open to anonymous callers. A credential adds nothing but `your_rating`, the caller's own 1-5 rating of this RFC, which is null if they have not rated it; for an anonymous caller it is always null.
+        Return the caller's own 1-5 rating of one RFC as `your_rating`, which is null if they have not rated it; for an anonymous caller it is always null. Open to anonymous callers. Ratings of an RFC are not published as an average or a count.
 
         The identifier is canonicalized, so `9110`, `rfc9110` and `RFC 9110` all address the same document.
       summary: Read an RFC's rating
@@ -328,8 +328,7 @@ paths:
       operationId: ratings_update
       description: Record the authenticated caller's 1-5 rating of one RFC, replacing
         their previous rating of it if there is one. Requires a credential. Returns
-        the same body as GET, so the response carries the recomputed average and count
-        along with `your_rating` echoing the value just set.
+        the same body as GET, with `your_rating` echoing the value just set.
       summary: Set the caller's rating of an RFC
       parameters:
         - in: path
@@ -364,10 +363,9 @@ paths:
     delete:
       operationId: ratings_destroy
       description: "Remove the authenticated caller's rating of one RFC, so it no
-        longer counts towards the average. Requires a credential. Idempotent: a caller
-        who has not rated this RFC gets the same response as one whose rating was
-        just removed. Returns the same body as GET, so the response carries the recomputed
-        average and count, with `your_rating` now null."
+        longer holds a rating. Requires a credential. Idempotent: a caller who has
+        not rated this RFC gets the same response as one whose rating was just removed.
+        Returns the same body as GET, with `your_rating` now null."
       summary: Withdraw the caller's rating of an RFC
       parameters:
         - in: path
@@ -827,7 +825,7 @@ paths:
     get:
       operationId: stats_list
       description: |-
-        Rating, subscriber and set numbers per document.
+        Subscriber and set numbers per document.
 
         Public and unpaginated: Red precomputes the whole series in one call at
         build time, which is too many identifiers to name in a query string.
@@ -1372,20 +1370,12 @@ components:
       properties:
         doc:
           type: string
-        rating_average:
-          type: number
-          format: double
-          nullable: true
-        rating_count:
-          type: integer
         subscriber_count:
           type: integer
         set_count:
           type: integer
       required:
         - doc
-        - rating_average
-        - rating_count
         - set_count
         - subscriber_count
     FullDocumentMetadata:
@@ -1526,8 +1516,8 @@ components:
         What one document is to the caller: their rating, their subscription,
         their sets.
 
-        Nothing public: no average, no count, no subscriber total. Those are the
-        same for everybody, so Red takes them from the data it already has for the
+        Nothing public: no subscriber or set total. Those are the same for
+        everybody, so Red takes them from the data it already has for the
         route rather than from a per-caller request.
       properties:
         doc:
@@ -1889,18 +1879,10 @@ components:
       properties:
         rfc:
           type: string
-        average:
-          type: number
-          format: double
-          nullable: true
-        count:
-          type: integer
         your_rating:
           type: integer
           nullable: true
       required:
-        - average
-        - count
         - rfc
         - your_rating
     RatingWrite:

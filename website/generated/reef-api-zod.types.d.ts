@@ -36,13 +36,7 @@ export namespace Schemas {
   /**
    * Public engagement numbers for one document.
    */
-  export type DocumentStats = {
-    doc: string
-    rating_average: number | null
-    rating_count: number
-    subscriber_count: number
-    set_count: number
-  } & Record<string, unknown>
+  export type DocumentStats = { doc: string; subscriber_count: number; set_count: number } & Record<string, unknown>
   /**
    * A document as its own subject's file names it: everything Red's index says.
    */
@@ -99,8 +93,8 @@ export namespace Schemas {
    * What one document is to the caller: their rating, their subscription,
    * their sets.
    *
-   * Nothing public: no average, no count, no subscriber total. Those are the
-   * same for everybody, so Red takes them from the data it already has for the
+   * Nothing public: no subscriber or set total. Those are the same for
+   * everybody, so Red takes them from the data it already has for the
    * route rather than from a per-caller request.
    */
   export type MyDocument = {
@@ -369,12 +363,7 @@ export namespace Schemas {
     alias_of: string
   } & Record<string, unknown>
   export type PrecomputedSubjectDetailOrRedirect = PrecomputedSubjectDetail | RetiredSubject | SubjectAlias
-  export type RatingAggregate = {
-    rfc: string
-    average: number | null
-    count: number
-    your_rating: number | null
-  } & Record<string, unknown>
+  export type RatingAggregate = { rfc: string; your_rating: number | null } & Record<string, unknown>
   export type RatingWrite = { value: number } & Record<string, unknown>
   /**
    * A submission: the answers, plus optional anti-spam measures.
@@ -600,7 +589,7 @@ export namespace Endpoints {
    *
    * Naming no document returns the caller's sets and an empty `documents` list, which is how a client loads the set list on its own. Unlike `/stats/`, an empty `doc` does not mean every document: that endpoint is swept once at build time, whereas this one is called on every page.
    *
-   * Carries no public numbers. Ratings averages, subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
+   * Carries no public numbers. Subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
    */
   export type get_Me_documents_retrieve = {
     method: 'GET'
@@ -723,7 +712,7 @@ export namespace Endpoints {
     responses: { 200: Array<Schemas.OpenSurvey> }
   }
   /**
-   * Return the public average and count of ratings for one RFC. Open to anonymous callers. A credential adds nothing but `your_rating`, the caller's own 1-5 rating of this RFC, which is null if they have not rated it; for an anonymous caller it is always null.
+   * Return the caller's own 1-5 rating of one RFC as `your_rating`, which is null if they have not rated it; for an anonymous caller it is always null. Open to anonymous callers. Ratings of an RFC are not published as an average or a count.
    *
    * The identifier is canonicalized, so `9110`, `rfc9110` and `RFC 9110` all address the same document.
    */
@@ -738,7 +727,7 @@ export namespace Endpoints {
     responses: { 200: Schemas.RatingAggregate }
   }
   /**
-   * Record the authenticated caller's 1-5 rating of one RFC, replacing their previous rating of it if there is one. Requires a credential. Returns the same body as GET, so the response carries the recomputed average and count along with `your_rating` echoing the value just set.
+   * Record the authenticated caller's 1-5 rating of one RFC, replacing their previous rating of it if there is one. Requires a credential. Returns the same body as GET, with `your_rating` echoing the value just set.
    */
   export type put_Ratings_update = {
     method: 'PUT'
@@ -753,7 +742,7 @@ export namespace Endpoints {
     responses: { 200: Schemas.RatingAggregate }
   }
   /**
-   * Remove the authenticated caller's rating of one RFC, so it no longer counts towards the average. Requires a credential. Idempotent: a caller who has not rated this RFC gets the same response as one whose rating was just removed. Returns the same body as GET, so the response carries the recomputed average and count, with `your_rating` now null.
+   * Remove the authenticated caller's rating of one RFC, so it no longer holds a rating. Requires a credential. Idempotent: a caller who has not rated this RFC gets the same response as one whose rating was just removed. Returns the same body as GET, with `your_rating` now null.
    */
   export type delete_Ratings_destroy = {
     method: 'DELETE'
@@ -1042,7 +1031,7 @@ export namespace Endpoints {
     responses: { 200: Schemas.DocumentSet }
   }
   /**
-   * Rating, subscriber and set numbers per document.
+   * Subscriber and set numbers per document.
    *
    * Public and unpaginated: Red precomputes the whole series in one call at
    * build time, which is too many identifiers to name in a query string.

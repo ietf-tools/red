@@ -50,7 +50,7 @@ export interface paths {
      *
      *     Naming no document returns the caller's sets and an empty `documents` list, which is how a client loads the set list on its own. Unlike `/stats/`, an empty `doc` does not mean every document: that endpoint is swept once at build time, whereas this one is called on every page.
      *
-     *     Carries no public numbers. Ratings averages, subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
+     *     Carries no public numbers. Subscriber counts and set counts are the same for every visitor and are served by `/stats/`.
      */
     get: operations['me_documents_retrieve']
     put?: never
@@ -241,20 +241,20 @@ export interface paths {
     }
     /**
      * Read an RFC's rating
-     * @description Return the public average and count of ratings for one RFC. Open to anonymous callers. A credential adds nothing but `your_rating`, the caller's own 1-5 rating of this RFC, which is null if they have not rated it; for an anonymous caller it is always null.
+     * @description Return the caller's own 1-5 rating of one RFC as `your_rating`, which is null if they have not rated it; for an anonymous caller it is always null. Open to anonymous callers. Ratings of an RFC are not published as an average or a count.
      *
      *     The identifier is canonicalized, so `9110`, `rfc9110` and `RFC 9110` all address the same document.
      */
     get: operations['ratings_retrieve']
     /**
      * Set the caller's rating of an RFC
-     * @description Record the authenticated caller's 1-5 rating of one RFC, replacing their previous rating of it if there is one. Requires a credential. Returns the same body as GET, so the response carries the recomputed average and count along with `your_rating` echoing the value just set.
+     * @description Record the authenticated caller's 1-5 rating of one RFC, replacing their previous rating of it if there is one. Requires a credential. Returns the same body as GET, with `your_rating` echoing the value just set.
      */
     put: operations['ratings_update']
     post?: never
     /**
      * Withdraw the caller's rating of an RFC
-     * @description Remove the authenticated caller's rating of one RFC, so it no longer counts towards the average. Requires a credential. Idempotent: a caller who has not rated this RFC gets the same response as one whose rating was just removed. Returns the same body as GET, so the response carries the recomputed average and count, with `your_rating` now null.
+     * @description Remove the authenticated caller's rating of one RFC, so it no longer holds a rating. Requires a credential. Idempotent: a caller who has not rated this RFC gets the same response as one whose rating was just removed. Returns the same body as GET, with `your_rating` now null.
      */
     delete: operations['ratings_destroy']
     options?: never
@@ -416,7 +416,7 @@ export interface paths {
       cookie?: never
     }
     /**
-     * @description Rating, subscriber and set numbers per document.
+     * @description Subscriber and set numbers per document.
      *
      *     Public and unpaginated: Red precomputes the whole series in one call at
      *     build time, which is too many identifiers to name in a query string.
@@ -674,9 +674,6 @@ export interface components {
     /** @description Public engagement numbers for one document. */
     DocumentStats: {
       doc: string
-      /** Format: double */
-      rating_average: number | null
-      rating_count: number
       subscriber_count: number
       set_count: number
     }
@@ -729,8 +726,8 @@ export interface components {
      * @description What one document is to the caller: their rating, their subscription,
      *     their sets.
      *
-     *     Nothing public: no average, no count, no subscriber total. Those are the
-     *     same for everybody, so Red takes them from the data it already has for the
+     *     Nothing public: no subscriber or set total. Those are the same for
+     *     everybody, so Red takes them from the data it already has for the
      *     route rather than from a per-caller request.
      */
     MyDocument: {
@@ -905,9 +902,6 @@ export interface components {
       | components['schemas']['SubjectAlias']
     RatingAggregate: {
       rfc: string
-      /** Format: double */
-      average: number | null
-      count: number
       your_rating: number | null
     }
     RatingWrite: {

@@ -40,13 +40,7 @@ export const DocumentSetOrder = z.object({ documents: z.array(z.string()) }).cat
 
 export type DocumentStats = __TypedOpenapi.Schemas.DocumentStats
 export const DocumentStats = z
-  .object({
-    doc: z.string(),
-    rating_average: z.number().nullable(),
-    rating_count: z.number().int(),
-    subscriber_count: z.number().int(),
-    set_count: z.number().int()
-  })
+  .object({ doc: z.string(), subscriber_count: z.number().int(), set_count: z.number().int() })
   .catchall(z.unknown())
 
 export type FullDocumentMetadata = __TypedOpenapi.Schemas.FullDocumentMetadata
@@ -274,12 +268,7 @@ export const PrecomputedSubjectDetailOrRedirect = z
 
 export type RatingAggregate = __TypedOpenapi.Schemas.RatingAggregate
 export const RatingAggregate = z
-  .object({
-    rfc: z.string(),
-    average: z.number().nullable(),
-    count: z.number().int(),
-    your_rating: z.number().int().nullable()
-  })
+  .object({ rfc: z.string(), your_rating: z.number().int().nullable() })
   .catchall(z.unknown())
 
 export type RatingWrite = __TypedOpenapi.Schemas.RatingWrite
