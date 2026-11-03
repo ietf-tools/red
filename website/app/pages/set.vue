@@ -7,10 +7,10 @@
             <p>This Set was created by a community member.</p>
           </Alert>
           <Heading level="2" style-level="1" class="text-left mt-10 mb-4 pl-5">
-            RFC Set <template v-if="setLoad.set.title">&quot;{{ setLoad.set.title }}&quot;</template>
+            RFC Set <template v-if="setLoad.set.title">&quot;{{ filterSpamText(setLoad.set.title) }}&quot;</template>
           </Heading>
 
-          <p class="pl-5" v-if="setLoad.set.description">&quot;{{ setLoad.set.description }}&quot;</p>
+          <p class="pl-5" v-if="setLoad.set.description">&quot;{{ filterSpamText(setLoad.set.description) }}&quot;</p>
           <div class="pl-3 flex flex-col gap-4">
             <ul v-if="rows.length > 0" class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <li v-for="{ doc, infoPath, rfc } in rows" :key="doc">
@@ -81,6 +81,24 @@ const setLoad = useSet(() => {
 })
 
 const documents = computed(() => (setLoad.value.status === 'ready' ? setDocuments(setLoad.value.set) : []))
+
+// A scheme (http:, mailto:, magnet:, ...), a www. host, or a bare host with a letters-only TLD,
+// each followed by whatever non-space characters trail it.
+const URI_PATTERN = /\b[a-z][a-z0-9+.-]*:[^\s]+|\bwww\.[^\s]+|\b(?:[a-z0-9-]+\.)+[a-z]{2,}(?:[/:?#][^\s]*)?/gi
+
+// Cryptocurrency addresses (Bitcoin, Ethereum's 0x form, bech32, Monero, ...) are all single
+// unbroken alphanumeric tokens far longer than any word, so word length is the signal. The
+// shortest, legacy Bitcoin, is 26 characters.
+const CRYPTO_ADDRESS_PATTERN = /\b[a-z0-9]{26,}\b/gi
+
+// Set titles and descriptions are written by anyone, so this strips what spam in them is made of.
+const filterSpamText = (text: string): string => {
+  return text
+    .replace(URI_PATTERN, '')
+    .replace(CRYPTO_ADDRESS_PATTERN, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
+}
 
 // --- The cards ----------------------------------------------------------------------------
 //
