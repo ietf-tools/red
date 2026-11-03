@@ -82,14 +82,15 @@ function rewriteQuery(request: SearchRequest): Rewrite {
   if (subseriesMatch?.groups?.num && subseriesMatch.groups.acronym) {
     const acronym = subseriesMatch.groups.acronym.toLowerCase()
     const num = subseriesMatch.groups.num
+    // subseries.number is a numeric field, which rejects the backtick-quoted string match that refinements produce
     return {
       request: {
         ...request,
         query: '',
-        refinements: {
-          ...request.refinements,
-          'subseries.acronym': [acronym],
-          'subseries.number': [num]
+        refinements: { ...request.refinements, 'subseries.acronym': [acronym] },
+        numericRefinements: {
+          ...request.numericRefinements,
+          'subseries.number': { min: Number(num), max: Number(num) }
         }
       },
       subseries: { label: `${acronym.toUpperCase()} ${num}`, href: `/info/${acronym}${num}` }

@@ -48,6 +48,23 @@ describe('createRfcSearchClient', () => {
     expect(search.facet_query).toBe('authors.name:brad')
   })
 
+  test('a subseries query filters the numeric number field without string quoting', async () => {
+    const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(facetBody))
+    vi.stubGlobal('fetch', fetchMock)
+
+    await client().searchForFacetValues?.({
+      attribute: 'authors.name',
+      query: 'brad',
+      search: request({ query: 'bcp 9' })
+    })
+
+    const { filter_by } = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)).searches[0]
+    expect(filter_by).toContain('subseries.acronym:=[`bcp`]')
+    expect(filter_by).toContain('subseries.number:>=9')
+    expect(filter_by).toContain('subseries.number:<=9')
+    expect(filter_by).not.toContain('subseries.number:=[')
+  })
+
   test('facet values carry the current refinements and filters', async () => {
     const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(facetBody))
     vi.stubGlobal('fetch', fetchMock)
