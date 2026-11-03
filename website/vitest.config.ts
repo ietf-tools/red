@@ -28,6 +28,15 @@ export default defineConfig(async () => ({
         }
       },
       {
+        // Checks against an already-deployed site (DEPLOYED_BASE_URL, default production), so
+        // they're kept out of `test:e2e` and CI. Invoke via `npm run test:e2e:deployed`.
+        test: {
+          name: 'deployed',
+          include: ['e2e/deployed/**/*.deployed.ts'],
+          environment: 'node'
+        }
+      },
+      {
         // Search-index quality tests hit external Typesense API, so they're kept out of the
         // default `test:unittests`/`test:e2e` runs. Invoke explicitly via
         // `npm run test:unittests:search-index`.
