@@ -1,7 +1,6 @@
 <template>
   <Breadcrumbs :breadcrumb-items="breadcrumbItems" class="flex-1 container mx-auto pl-2 md:pl-5" />
-  <BodyLayoutRFCDocument
-    :is-sidebar-collapsed="featureFlags.hasCollapsibleSidebar && uiSettings.isRfcSidebarEffectivelyCollapsed">
+  <BodyLayoutRFCDocument :is-sidebar-collapsed="uiSettings.isRfcSidebarEffectivelyCollapsed">
     <template #sidebar>
       <RFCDocumentSidebar
         v-if="rfcBucketHtmlDocument"
@@ -46,7 +45,6 @@ import { rfcCommonToGoogleScholar, useRfcEditorHead } from '~/utilities/head'
 import type { SeriesId } from '~/utilities/rfc'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import { useReadingModeError } from '~/utilities/reading-mode/use-reading-mode'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useRevealTocLink } from '~/utilities/toc-link-back'
 
@@ -57,8 +55,6 @@ type Props = {
 const props = defineProps<Props>()
 
 const route = useRoute()
-
-const featureFlags = useFeatureFlags()
 
 const uiSettings = useUiSettingsStore()
 

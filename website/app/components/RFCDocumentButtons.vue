@@ -25,7 +25,7 @@
           @retry="retrySets"
           v-model="setIdsWithThisRFC" />
       </li>
-      <li v-if="featureFlags.hasReadingMode && props.showReadAloud" class="sm:pr-2 print:hidden">
+      <li v-if="props.showReadAloud" class="sm:pr-2 print:hidden">
         <RFCReadingModeButton
           ref="readingButton"
           :status="readingStatus"
@@ -61,7 +61,6 @@
 import type { ReefRFCStats } from '~/utilities/rfc-validators'
 import { useUserSets } from '~/utilities/reef-sets'
 import { useUserRFCSubscription } from '~/utilities/reef-subscriptions'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useReadingMode } from '~/utilities/reading-mode/use-reading-mode'
 
 type Props = {
@@ -76,8 +75,6 @@ const props = defineProps<Props>()
 // the store themselves, so they render from what they're given and this component stays the one
 // place that decides what "signed in" means for this row.
 const { user } = storeToRefs(useAuthStore())
-
-const featureFlags = useFeatureFlags()
 
 const {
   status: readingStatus,

@@ -9,9 +9,7 @@ export const FeatureFlagsSchema = z.object({
   isAbnfDiagramsActive: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
   hasTextScale: z.boolean().optional(),
-  hasWordBreakMode: z.boolean().optional(),
-  hasReadingMode: z.boolean().optional(),
-  hasCollapsibleSidebar: z.boolean().optional()
+  hasWordBreakMode: z.boolean().optional()
 })
 
 // this is commented out until next time we need a string union value in feature flags.
@@ -43,17 +41,6 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
       "Adds a UI setting choosing how long words and URLs in RFC documents break: the inserted break points, or one of the browser's own strategies.",
     storageType: 'boolean'
   },
-  hasReadingMode: {
-    title: 'RFC reading mode',
-    description:
-      'Adds a play button before an RFC that reads it aloud with the browser speech synthesis, highlighting the text as it goes. Click the text to move where it reads from. Voice, rate and whether to read diagrams are in the advanced UI settings.',
-    storageType: 'boolean'
-  },
-  hasCollapsibleSidebar: {
-    title: 'Collapsible sidebar',
-    description: 'Adds a button on the edge of the RFC sidebar for collapsing it.',
-    storageType: 'boolean'
-  },
   isDidYouMeanActive: {
     title: 'Homepage direct RFC/subseries links',
     description: `Homepage search box feature suggesting direct links to RFCs/BCPs/etc when typing "RFCn" or "BCP n" etc into the homepage search box. This only occurs on the homepage, not on the ${SEARCH_PATH} route.`,
@@ -74,8 +61,6 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   hasTextScale: false,
   hasWordBreakMode: false,
-  hasReadingMode: false,
-  hasCollapsibleSidebar: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
   searchObsoletedDefaults: false

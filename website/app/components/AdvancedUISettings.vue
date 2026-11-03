@@ -86,7 +86,6 @@
     </div>
 
     <div
-      v-if="featureFlags.hasReadingMode"
       role="group"
       :aria-labelledby="readingLabelDomId"
       class="border-1 border-gray-200 p-2 rounded flex flex-col gap-4">

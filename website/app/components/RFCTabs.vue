@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="featureFlags.hasCollapsibleSidebar && props.mode === 'desktop'"
+    v-if="props.mode === 'desktop'"
     type="button"
     :aria-label="isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
     :aria-expanded="!isSidebarCollapsed"
@@ -330,7 +330,6 @@ import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString } from '~/utilities/renderDocumentPojo'
 import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import NewWindowIcon from './Graphics/NewWindowIcon.vue'
 
@@ -344,14 +343,9 @@ const props = defineProps<Props>()
 
 const selectedTab = defineModel<number>()
 
-const featureFlags = useFeatureFlags()
-
 const uiSettings = useUiSettingsStore()
 
-const isSidebarCollapsed = computed(() => {
-  const { hasCollapsibleSidebar } = featureFlags.value
-  return props.mode === 'desktop' && !!hasCollapsibleSidebar && uiSettings.isRfcSidebarEffectivelyCollapsed
-})
+const isSidebarCollapsed = computed(() => props.mode === 'desktop' && uiSettings.isRfcSidebarEffectivelyCollapsed)
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return

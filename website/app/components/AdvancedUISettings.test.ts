@@ -77,14 +77,9 @@ describe('AdvancedUISettings reading mode', () => {
     window.localStorage.clear()
   })
 
-  test('is absent while the flag is off', async () => {
-    const wrapper = await renderSettings()
-    expect(wrapper.text()).not.toContain('Reading mode')
-  })
-
   test('replaces the controls with a notice when the browser cannot do reading mode', async () => {
     // the test environment has no CSS Custom Highlight API
-    const wrapper = await renderSettings({ hasReadingMode: true })
+    const wrapper = await renderSettings()
     expect(wrapper.text()).toContain("Reading aloud isn't available in this browser")
     expect(wrapper.find('input[type="range"]').exists()).toBe(false)
     expect(wrapper.text()).not.toContain('Read ASCII art and ABNF aloud')
@@ -104,7 +99,7 @@ describe('AdvancedUISettings reading mode', () => {
 
     test('offers the diagram checkbox and rate when the flag is on', async () => {
       supportReadingMode([{ name: 'Test English', lang: 'en-GB', voiceURI: 'test-en' }])
-      const wrapper = await renderSettings({ hasReadingMode: true })
+      const wrapper = await renderSettings()
       expect(wrapper.text()).toContain('Reading mode')
       expect(wrapper.text()).toContain('Read ASCII art and ABNF aloud')
       expect(wrapper.find('input[type="range"]').exists()).toBe(true)
@@ -113,7 +108,7 @@ describe('AdvancedUISettings reading mode', () => {
 
     test('offers no controls, only a message, when the browser has no speech voices at all', async () => {
       supportReadingMode()
-      const wrapper = await renderSettings({ hasReadingMode: true })
+      const wrapper = await renderSettings()
       expect(wrapper.text()).toContain('currently reports no speech voices')
       expect(wrapper.find('select').exists()).toBe(false)
       expect(wrapper.find('input[type="range"]').exists()).toBe(false)
@@ -122,7 +117,7 @@ describe('AdvancedUISettings reading mode', () => {
 
     test('keeps the controls but offers no voice select when no voice is English', async () => {
       supportReadingMode([{ name: 'Test French', lang: 'fr-FR', voiceURI: 'test-fr' }])
-      const wrapper = await renderSettings({ hasReadingMode: true })
+      const wrapper = await renderSettings()
       expect(wrapper.text()).toContain('No English voices were found')
       expect(wrapper.find('select').exists()).toBe(false)
       expect(wrapper.find('input[type="range"]').exists()).toBe(true)
@@ -133,7 +128,7 @@ describe('AdvancedUISettings reading mode', () => {
         { name: 'Test English', lang: 'en-GB', voiceURI: 'test-en' },
         { name: 'Test French', lang: 'fr-FR', voiceURI: 'test-fr' }
       ])
-      const wrapper = await renderSettings({ hasReadingMode: true })
+      const wrapper = await renderSettings()
       const options = wrapper.findAll('select option').map((option) => option.text())
       expect(options).toEqual(['Browser default', 'Test English (en-GB)'])
       expect(wrapper.text()).not.toContain('reports no speech voices')
@@ -141,7 +136,7 @@ describe('AdvancedUISettings reading mode', () => {
 
     test('ticking the diagram checkbox writes to the store', async () => {
       supportReadingMode([{ name: 'Test English', lang: 'en-GB', voiceURI: 'test-en' }])
-      const wrapper = await renderSettings({ hasReadingMode: true })
+      const wrapper = await renderSettings()
       const store = useUiSettingsStore()
       // the link preview checkbox comes first on the panel
       await wrapper.findAll('[role="checkbox"]').at(-1)?.trigger('click')
@@ -150,7 +145,7 @@ describe('AdvancedUISettings reading mode', () => {
 
     test('committing the rate slider writes to the store', async () => {
       supportReadingMode([{ name: 'Test English', lang: 'en-GB', voiceURI: 'test-en' }])
-      const wrapper = await renderSettings({ hasReadingMode: true })
+      const wrapper = await renderSettings()
       const store = useUiSettingsStore()
       const slider = wrapper.find('input[type="range"]')
       await slider.setValue('1.6')
