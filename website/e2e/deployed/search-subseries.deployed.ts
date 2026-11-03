@@ -9,6 +9,8 @@ import type { Browser } from 'playwright-core'
 
 const BASE_URL = process.env.DEPLOYED_BASE_URL ?? 'https://www.rfc-editor.org'
 
+const ANALYTICS_HOST = 'analytics.ietf.org'
+
 const PAGE_LOAD_TIMEOUT_MS = 30_000
 
 describe(`deployed site ${BASE_URL}`, () => {
@@ -22,14 +24,17 @@ describe(`deployed site ${BASE_URL}`, () => {
     await browser.close()
   })
 
-  test.each(['bcp 9', 'std 1', 'fyi 1'])(
+  test.each(['bcp 9', 'std 9', 'fyi 9'])(
     'searching for "%s" shows the subseries bar',
     async (query) => {
       const page = await browser.newPage()
       page.setDefaultTimeout(PAGE_LOAD_TIMEOUT_MS)
       const consoleErrors: string[] = []
       page.on('console', (message) => {
-        if (message.type() === 'error') consoleErrors.push(message.text())
+        if (message.type() !== 'error') return
+        // Matomo rate-limits beacons (429), which says nothing about the search.
+        if (new URL(message.location().url || BASE_URL).hostname === ANALYTICS_HOST) return
+        consoleErrors.push(message.text())
       })
 
       await page.goto(new URL(`/search/?q=${encodeURIComponent(query)}`, BASE_URL).href)
