@@ -5,6 +5,8 @@ const RFC_PREFIX = '/rfc/'
 const INLINE_ERRATA_PREFIX = 'inline-errata/'
 const INLINE_ERRATA_CSS_BUCKET_PREFIX = 'inline-errata/css/css/'
 const RFC_REF_TXT = 'rfc-ref.txt'
+const PDFRFC_PREFIX = 'pdfrfc/'
+const RFC_TXT_PDF_BUCKET_PREFIX = 'rfc-txt-pdf/'
 
 /**
  * The formats the RPC publishes an RFC in. A published RFC never changes, so
@@ -62,6 +64,16 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
     const object = await env.RED_BUCKET.get(IN_NOTES_RFC_REF_DOT_TXT_PATH)
     if (object) {
       return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
+    }
+  } else if (objectPath.startsWith(PDFRFC_PREFIX) && objectPath.endsWith('.txt.pdf')) {
+    // Legacy paginated-text PDFs, ie `/rfc/pdfrfc/rfc5492.txt.pdf` is stored as
+    // `rfc-txt-pdf/rfc5492.txt.pdf` rather than under the generic `pdf/` prefix.
+    const fileName = objectPath.substring(PDFRFC_PREFIX.length)
+    if (/^rfc\d+\.txt\.pdf$/i.test(fileName)) {
+      const object = await env.RFC_BUCKET.get(`${RFC_TXT_PDF_BUCKET_PREFIX}${fileName}`)
+      if (object) {
+        return createBlobResponse(req, object, 'application/pdf', canonicalUrl, CACHE_CONTROL)
+      }
     }
   } else if ([...CANONICAL_RFC_FILE_TYPES, ...DERIVED_RFC_FILE_TYPES].some((ft) => objectPath.endsWith(ft))) {
     const fileType = objectPath.split('.').at(-1)
