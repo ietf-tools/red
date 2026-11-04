@@ -45,7 +45,7 @@
         <button
           type="reset"
           class="cursor-pointer rounded-md border-1 border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 shadow-xs transition-colors hover:bg-gray-100 hover:border-gray-400 active:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 dark:active:bg-gray-700"
-          @click="draftTextScale = DEFAULT_TEXT_SCALE">
+          @click="resetTextScale">
           Reset to default
         </button>
       </div>
@@ -180,6 +180,7 @@
 import { CheckboxIndicator, CheckboxRoot, RadioGroupIndicator, RadioGroupItem, RadioGroupRoot } from 'reka-ui'
 import {
   DEFAULT_READING_RATE,
+  DEFAULT_TEXT_SCALE,
   READING_RATE_MAX,
   READING_RATE_MIN,
   READING_RATE_STEP,
@@ -236,6 +237,11 @@ watch(textScale, (value) => {
 
 const commitTextScale = () => {
   setTextScale(draftTextScale.value)
+}
+
+const resetTextScale = () => {
+  draftTextScale.value = DEFAULT_TEXT_SCALE
+  commitTextScale()
 }
 
 const textScaleLabel = computed(() => `${draftTextScale.value.toFixed(1)}×`)
