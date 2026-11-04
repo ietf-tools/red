@@ -65,34 +65,37 @@ h6 {
 }
 
 h1 {
-  font-size: 26px;
+  font-size: var(--heading-1-font-size, 26px);
   margin: 1em 0;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: var(--heading-2-font-size, 22px);
   margin-top: -20px;
   /* provide offset for in-page anchors */
   padding-top: 33px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: var(--heading-3-font-size, 18px);
   margin-top: -36px;
   /* provide offset for in-page anchors */
   padding-top: 42px;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: var(--heading-4-font-size, 16px);
   margin-top: -36px;
   /* provide offset for in-page anchors */
   padding-top: 42px;
 }
 
-h5,
+h5 {
+  font-size: var(--heading-5-font-size, 14px);
+}
+
 h6 {
-  font-size: 14px;
+  font-size: var(--heading-6-font-size, 14px);
 }
 
 #n-copyright-notice {

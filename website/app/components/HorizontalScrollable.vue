@@ -34,6 +34,8 @@
 
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
+import { useUiSettingsStore } from '~/stores/ui-settings'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 import { BUBBLE_DURATION_MS, type ButtonResult, type Message } from '~/utilities/buttonSuccessFailure'
 import { copyHtmlToClipboard, copyTextToClipboard } from '~/utilities/clipboard'
 import { getRfc8792CopyText } from '~/utilities/rfc8792'
@@ -55,6 +57,9 @@ const canScrollRight = ref(false)
 
 const BUFFER_PX = 8
 
+const uiSettings = useUiSettingsStore()
+const featureFlags = useFeatureFlags()
+
 const showCopyButton = computed(() => props.copyMode && hasMounted.value)
 
 const setTimeoutTimers: ReturnType<typeof setTimeout>[] = []
@@ -74,6 +79,9 @@ const updateScrollHint = () => {
 }
 
 const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
+
+// text scale (or its feature flag) changes the content size without resizing the observed container
+watch(() => [uiSettings.textScale, featureFlags.value.hasTextScale], debouncedUpdateScrollHint, { flush: 'post' })
 
 const observerRef = ref<ResizeObserver | null>(null)
 

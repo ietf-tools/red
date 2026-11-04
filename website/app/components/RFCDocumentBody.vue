@@ -70,7 +70,7 @@
     <div
       :id="RFC_CONTENT_DOM_ID"
       :class="[
-        `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
+        `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 font-feature-settings-calt-off`,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc'
           ? 'max-w-[var(--max-text-block-width)] ml-2 text-pretty'
           : undefined,
@@ -78,35 +78,8 @@
           ? wordBreakModeClass(uiSettingsStore.wordBreakMode)
           : undefined,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasTextScale
-          ? {
-              // Line height, letter spacing, word spacing and paragraph spacing are
-              // tweened together, anchored on DEFAULT_TEXT_SCALE so that the default
-              // renders 1.5/0.12em/0.16em/2rem and each half of the range still reaches
-              // its extreme: TEXT_SCALE_MIN gives 1/0em/0em/0rem and TEXT_SCALE_MAX gives
-              // 2/0.5em/1em/3rem. WCAG requires a line height of 1.5 minimum, so scales
-              // below DEFAULT_TEXT_SCALE trade that away for density.
-              'leading-[1] tracking-[0em] [word-spacing:0em] [&_p]:mb-[0rem]': uiSettingsStore.textScale === 1,
-              'leading-[1.1] tracking-[0.024em] [word-spacing:0.032em] [&_p]:mb-[0.4rem]':
-                uiSettingsStore.textScale === 1.1,
-              'leading-[1.2] tracking-[0.048em] [word-spacing:0.064em] [&_p]:mb-[0.8rem]':
-                uiSettingsStore.textScale === 1.2,
-              'leading-[1.3] tracking-[0.072em] [word-spacing:0.096em] [&_p]:mb-[1.2rem]':
-                uiSettingsStore.textScale === 1.3,
-              'leading-[1.4] tracking-[0.096em] [word-spacing:0.128em] [&_p]:mb-[1.6rem]':
-                uiSettingsStore.textScale === 1.4,
-              'leading-[1.5] tracking-[0.12em] [word-spacing:0.16em] [&_p]:mb-[2rem]':
-                uiSettingsStore.textScale === 1.5,
-              'leading-[1.6] tracking-[0.196em] [word-spacing:0.328em] [&_p]:mb-[2.2rem]':
-                uiSettingsStore.textScale === 1.6,
-              'leading-[1.7] tracking-[0.272em] [word-spacing:0.496em] [&_p]:mb-[2.4rem]':
-                uiSettingsStore.textScale === 1.7,
-              'leading-[1.8] tracking-[0.348em] [word-spacing:0.664em] [&_p]:mb-[2.6rem]':
-                uiSettingsStore.textScale === 1.8,
-              'leading-[1.9] tracking-[0.424em] [word-spacing:0.832em] [&_p]:mb-[2.8rem]':
-                uiSettingsStore.textScale === 1.9,
-              'leading-[2] tracking-[0.5em] [word-spacing:1em] [&_p]:mb-[3rem]': uiSettingsStore.textScale === 2
-            }
-          : 'leading-[1.5]' // WCAG requires 1.5 minimum
+          ? textScaleClasses(uiSettingsStore.textScale)
+          : 'sm:text-base leading-[1.5]' // WCAG requires 1.5 minimum
       ]"
       @click="handleContentClick">
       <component :is="enrichedDocument" />
@@ -335,6 +308,61 @@ const formatsPojo = computed((): DocumentPojo => {
     }
   ]
 })
+
+const textScaleClasses = (textScale: number): string => {
+  if (textScale <= 1) {
+    return `${
+      // font-sizes
+      'text-base [--heading-1-font-size:28px] [--heading-2-font-size:22px] [--heading-3-font-size:18px] [--heading-4-font-size:16px] [--heading-5-font-size:14px] [--heading-6-font-size:14px]'
+    } ${
+      // letter/word/paragraph spacing
+      'leading-[1.5]'
+    }`
+  }
+  if (textScale <= 1.1) {
+    return `${
+      // font-sizes
+      'text-lg [--heading-1-font-size:32px] [--heading-2-font-size:24px] [--heading-3-font-size:18px] [--heading-4-font-size:16px] [--heading-5-font-size:14px] [--heading-6-font-size:14px]'
+    } ${
+      // letter/word/paragraph spacing
+      'leading-[1.57] tracking-wide [word-spacing:0.328em] [&_p]:mb-[2.2rem]'
+    }`
+  }
+  if (textScale <= 1.2) {
+    return `${
+      // font-sizes
+      'text-xl [--heading-1-font-size:36px] [--heading-2-font-size:26px] [--heading-3-font-size:20px] [--heading-4-font-size:18px] [--heading-5-font-size:16px] [--heading-6-font-size:14px]'
+    } ${
+      // letter/word/paragraph spacing
+      'leading-[1.64] tracking-wider [word-spacing:0.496em] [&_p]:mb-[2.4rem]'
+    }`
+  }
+  if (textScale <= 1.3) {
+    return `${
+      // font-sizes
+      'text-2xl [--heading-1-font-size:40px] [--heading-2-font-size:28px] [--heading-3-font-size:22px] [--heading-4-font-size:20px] [--heading-5-font-size:18px] [--heading-6-font-size:16px]'
+    } ${
+      // letter/word/paragraph spacing
+      'leading-[1.71] tracking-widest [word-spacing:0.664em] [&_p]:mb-[2.6rem]'
+    }`
+  }
+  if (textScale <= 1.4) {
+    return `${
+      // font-sizes
+      'text-2xl [--heading-1-font-size:44px] [--heading-2-font-size:30px] [--heading-3-font-size:24px] [--heading-4-font-size:22px] [--heading-5-font-size:20px] [--heading-6-font-size:18px]'
+    } ${
+      // letter/word/paragraph spacing
+      'leading-[1.78] tracking-widest [word-spacing:0.832em] [&_p]:mb-[2.8rem]'
+    }`
+  }
+  return `${
+    // font-sizes
+    'text-2xl [--heading-1-font-size:48px] [--heading-2-font-size:32px] [--heading-3-font-size:26px] [--heading-4-font-size:24px] [--heading-5-font-size:22px] [--heading-6-font-size:20px]'
+  } ${
+    // letter/word/paragraph spacing
+    'leading-[1.85] tracking-widest [word-spacing:1em] [&_p]:mb-[3rem]'
+  }`
+}
 </script>
 
 <style lang="postcss">

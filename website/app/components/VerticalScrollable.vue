@@ -11,7 +11,7 @@
         'shadow-[inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5),inset_0px_-20px_20px_-20px_rgba(140,_201,_222,_0.5)]',
       canScrollUp &&
         canScrollDown &&
-        'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_20px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
+        'shadow-[inset_0px_20px_20px_-20px_rgba(0,_45,_60,_0.5),inset_0px_-20px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:shadow-[inset_0px_70px_90px_-70px_rgba(140,_201,_222,_0.5),inset_0px_-70px_90px_-70px_rgba(140,_201,_222,_0.5)]',
       props.class
     ]"
     @scroll="debouncedUpdateScrollHint">
@@ -21,6 +21,8 @@
 
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
+import { useUiSettingsStore } from '~/stores/ui-settings'
+import { useFeatureFlags } from '~/utilities/feature-flags'
 
 const scrollContainer = useTemplateRef('scroll-container')
 const canScrollUp = ref(false)
@@ -33,6 +35,9 @@ type Props = {
 const props = defineProps<Props>()
 
 const BUFFER_PX = 8
+
+const uiSettings = useUiSettingsStore()
+const featureFlags = useFeatureFlags()
 
 const updateScrollHint = () => {
   const { value: scrollContainerElement } = scrollContainer
@@ -50,6 +55,9 @@ const updateScrollHint = () => {
 }
 
 const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
+
+// text scale (or its feature flag) changes the content size without resizing the observed container
+watch(() => [uiSettings.textScale, featureFlags.value.hasTextScale], debouncedUpdateScrollHint, { flush: 'post' })
 
 const observerRef = ref<ResizeObserver | null>(null)
 

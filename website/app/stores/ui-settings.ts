@@ -17,9 +17,9 @@ export const SubjectDocumentDensitySchema = z
 // Bounds of the text-scale slider, shared with AdvancedUISettings.vue so the
 // control and the persisted value can't disagree.
 export const TEXT_SCALE_MIN = 1
-export const TEXT_SCALE_MAX = 2
+export const TEXT_SCALE_MAX = 1.5
 export const TEXT_SCALE_STEP = 0.1
-export const DEFAULT_TEXT_SCALE = 1.5
+export const DEFAULT_TEXT_SCALE = 1
 
 const TextScaleSchema = z.number().min(TEXT_SCALE_MIN).max(TEXT_SCALE_MAX)
 

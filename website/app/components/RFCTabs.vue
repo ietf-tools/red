@@ -1,6 +1,12 @@
 <template>
   <RFCTabsCollapseButton v-if="mode === 'desktop'" />
-  <TabsRoot v-if="!isSidebarCollapsed" v-model="selectedTab" class="min-h-0 flex flex-col">
+  <TabsRoot
+    v-if="!isSidebarCollapsed"
+    v-model="selectedTab"
+    :class="[
+      'min-h-0 flex flex-col',
+      featureFlags.hasTextScale ? textScaleClasses(uiSettings.textScale) : 'text-sm leading-[1.5]' // WCAG requires 1.5 minimum
+    ]">
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
       <HorizontalScrollable
@@ -96,7 +102,7 @@
         wrapper-class="min-h-0 pt-4 pb-2 px-4"
         list-class="mr-1"
         nested-list-class="pl-2"
-        :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
+        :links-class="`block py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="text-bold-without-layout-shift"
         link-class="block no-underline hover:underline no-underline hover:underline focus:underline"
         last-link-class="flex-1"
@@ -110,7 +116,7 @@
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
         list-class="mt-2 mr-1 pl-0 -ml-1"
         nested-list-class="pl-2"
-        :list-item-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
+        :list-item-class="`block py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="text-bold-without-layout-shift"
         link-class="block no-underline hover:underline"
         last-link-class="flex-1">
@@ -128,7 +134,7 @@
       ]">
       <VerticalScrollable>
         <Heading level="2" style-level="4" class="mt-4"> Details </Heading>
-        <dl class="text-sm pb-6">
+        <dl class="pb-6">
           <template
             v-if="props.rfcBucketHtmlDocument.rfc.updates && props.rfcBucketHtmlDocument.rfc.updates.length > 0">
             <dt class="font-bold mt-2">Updates ({{ props.rfcBucketHtmlDocument.rfc.updates.length }})</dt>
@@ -247,7 +253,7 @@
       ]">
       <VerticalScrollable class="pl-1">
         <Heading level="2" style-level="4" class="mt-3 mb-1"> About Errata </Heading>
-        <p class="text-sm leading-[1.5]">
+        <p class="leading-[1.5]">
           RFC Errata are official records of technical or editorial errors found in published RFCs, which remain
           unchanged once issued. You can report Errata only after verifying the issue is not already documented and
           constitutes a genuine error in the text rather than a request for new features or protocol changes.
@@ -255,7 +261,7 @@
         <p class="border-b-1 border-gray-200 py-6 mb-4">
           <Anchor
             :href="errataSearchForThisRfc"
-            class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
+            class="bg-blue-300 text-white dark:bg-blue-800 border-0 no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
             Report a new erratum
             <GraphicsNewWindowIcon />
           </Anchor>
@@ -311,6 +317,7 @@ import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import NewWindowIcon from './Graphics/NewWindowIcon.vue'
+import { useFeatureFlags } from '~/utilities/feature-flags.ts'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -325,6 +332,28 @@ const selectedTab = defineModel<number>()
 const uiSettings = useUiSettingsStore()
 
 const isSidebarCollapsed = computed(() => props.mode === 'desktop' && uiSettings.isRfcSidebarEffectivelyCollapsed)
+
+const featureFlags = useFeatureFlags()
+
+const textScaleClasses = (textScale: number): string => {
+  if (textScale <= 1) {
+    return 'text-sm'
+  }
+  if (textScale <= 1.1) {
+    return 'text-base'
+  }
+  if (textScale <= 1.2) {
+    return 'text-lg'
+  }
+  if (textScale <= 1.3) {
+    return 'text-xl'
+  }
+  if (textScale <= 1.4) {
+    return 'text-2xl'
+  }
+
+  return 'text-2xl'
+}
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return
@@ -693,7 +722,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
           pojo.push({
             type: 'Element',
             nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1 text-sm' },
+            attributes: { class: 'leading-[1.5] py-1' },
             children: [
               {
                 type: 'Element',
@@ -717,7 +746,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
           pojo.push({
             type: 'Element',
             nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1 text-sm' },
+            attributes: { class: 'leading-[1.5] py-1' },
             children: [
               {
                 type: 'Element',
@@ -741,7 +770,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
           pojo.push({
             type: 'Element',
             nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1 text-sm' },
+            attributes: { class: 'leading-[1.5] py-1' },
             children: [
               {
                 type: 'Element',
@@ -904,7 +933,7 @@ const noScriptTabsHtml = computed(() => {
 
 const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline`
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-0 text-black dark:text-white'
-const DEFAULT_CLASS = 'py-4 px-[1px] whitespace-nowrap border-b-2 text-sm md:text-md'
+const DEFAULT_CLASS = 'py-4 px-[1px] whitespace-nowrap border-b-2'
 const ONUNMOUNTED_CLASS = 'border-b-transparent'
 const ONMOUNTED_CLASS = 'hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer'
 const SELECTED_CLASS =

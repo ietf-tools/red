@@ -2,6 +2,8 @@ import { watch, onUnmounted } from 'vue'
 import { throttle, clamp } from 'es-toolkit'
 import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
+import { useUiSettingsStore } from '~/stores/ui-settings'
+import { useFeatureFlags } from './feature-flags'
 
 /**
  * RFCs for testing:
@@ -201,6 +203,15 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     { edges: ['leading'] }
   )
 
+  // text scale (or the flag that enables it) reflows the document, moving every element
+  const uiSettings = useUiSettingsStore()
+  const featureFlags = useFeatureFlags()
+  watch(
+    () => [uiSettings.textScale, featureFlags.value.hasTextScale],
+    () => throttledHandleResize(),
+    { flush: 'post' }
+  )
+
   onMounted(() => {
     updateElements()
     nextTick(updateElements)
@@ -214,7 +225,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     document.addEventListener('touchmove', throttledHandleScroll, {
       passive: true
     })
-    document.addEventListener('resize', throttledHandleResize, {
+    window.addEventListener('resize', throttledHandleResize, {
       passive: true
     })
     handleScroll(true)
@@ -225,7 +236,7 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     document.removeEventListener('scroll', throttledHandleScroll)
     document.removeEventListener('scrollsnapchanging', throttledHandleScroll)
     document.removeEventListener('touchmove', throttledHandleScroll)
-    document.removeEventListener('resize', throttledHandleResize)
+    window.removeEventListener('resize', throttledHandleResize)
     clearTimeouts()
   })
 

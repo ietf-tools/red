@@ -42,7 +42,12 @@
           class="w-full max-w-2xs accent-blue-600 cursor-pointer"
           @change="commitTextScale" />
         <output class="text-sm tabular-nums">{{ textScaleLabel }}</output>
-        <button type="reset" @click="draftTextScale = DEFAULT_TEXT_SCALE">Reset to default</button>
+        <button
+          type="reset"
+          class="cursor-pointer rounded-md border-1 border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 shadow-xs transition-colors hover:bg-gray-100 hover:border-gray-400 active:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 dark:active:bg-gray-700"
+          @click="draftTextScale = DEFAULT_TEXT_SCALE">
+          Reset to default
+        </button>
       </div>
 
       <p :id="textScaleDescriptionDomId" class="pt-1 text-sm text-gray-800 dark:text-gray-200">
@@ -131,7 +136,12 @@
               class="w-full max-w-2xs accent-blue-600 cursor-pointer"
               @change="commitReadingRate" />
             <output class="text-sm tabular-nums">{{ readingRateLabel }}</output>
-            <button type="reset" @click="resetReadingRate">Reset to default</button>
+            <button
+              type="reset"
+              @click="resetReadingRate"
+              class="cursor-pointer border-1 border-black text-sm px-2 py-1">
+              Reset to default
+            </button>
           </div>
         </div>
 
@@ -228,10 +238,7 @@ const commitTextScale = () => {
   setTextScale(draftTextScale.value)
 }
 
-const textScaleLabel = computed(() => {
-  const val = draftTextScale.value / DEFAULT_TEXT_SCALE
-  return `${val.toFixed(1)}×`
-})
+const textScaleLabel = computed(() => `${draftTextScale.value.toFixed(1)}×`)
 
 // Tracked while dragged and written on `change`, for the same reason as the text scale.
 const draftReadingRate = ref<number>(readingRate.value)
