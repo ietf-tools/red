@@ -66,15 +66,29 @@ export async function blobsRfc(req: IRequest, env: Env): Promise<Response | unde
       return createBlobResponse(req, object, detectContentType(objectPath), canonicalUrl)
     }
   } else if (objectPath.startsWith(PDFRFC_PREFIX) && objectPath.endsWith('.txt.pdf')) {
+    // TEMPORARY DEBUG: remove once the pdfrfc 404 is understood
+    const debugFileName = objectPath.substring(PDFRFC_PREFIX.length)
+    return new Response(
+      [
+        'pdfrfc debug: reached the pdfrfc branch of blobsRfc',
+        `req.url: ${req.url}`,
+        `req.normalizedPath: ${JSON.stringify(req.normalizedPath)}`,
+        `objectPath: ${JSON.stringify(objectPath)}`,
+        `fileName: ${JSON.stringify(debugFileName)}`,
+        `fileName matches regex: ${/^rfc\d+\.txt\.pdf$/i.test(debugFileName)}`,
+        `bucket key that would be looked up: ${JSON.stringify(`${RFC_TXT_PDF_BUCKET_PREFIX}${debugFileName}`)}`
+      ].join('\n'),
+      { headers: { 'Content-Type': 'text/plain;charset=utf-8' } }
+    )
     // Legacy paginated-text PDFs, ie `/rfc/pdfrfc/rfc5492.txt.pdf` is stored as
     // `rfc-txt-pdf/rfc5492.txt.pdf` rather than under the generic `pdf/` prefix.
-    const fileName = objectPath.substring(PDFRFC_PREFIX.length)
-    if (/^rfc\d+\.txt\.pdf$/i.test(fileName)) {
-      const object = await env.RFC_BUCKET.get(`${RFC_TXT_PDF_BUCKET_PREFIX}${fileName}`)
-      if (object) {
-        return createBlobResponse(req, object, 'application/pdf', canonicalUrl, CACHE_CONTROL)
-      }
-    }
+    // const fileName = objectPath.substring(PDFRFC_PREFIX.length)
+    // if (/^rfc\d+\.txt\.pdf$/i.test(fileName)) {
+    //   const object = await env.RFC_BUCKET.get(`${RFC_TXT_PDF_BUCKET_PREFIX}${fileName}`)
+    //   if (object) {
+    //     return createBlobResponse(req, object, 'application/pdf', canonicalUrl, CACHE_CONTROL)
+    //   }
+    // }
   } else if ([...CANONICAL_RFC_FILE_TYPES, ...DERIVED_RFC_FILE_TYPES].some((ft) => objectPath.endsWith(ft))) {
     const fileType = objectPath.split('.').at(-1)
     const object = await env.RFC_BUCKET.get(`${fileType}/${objectPath}`)
