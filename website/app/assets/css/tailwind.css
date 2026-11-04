@@ -290,11 +290,13 @@
 }
 
 html {
+  color-scheme: light only;
   background: var(--color-gray-100);
   color: var(--color-black);
 }
 
 html.dark {
+  color-scheme: dark;
   background: var(--color-blue-975);
   color: var(--color-white);
 }
