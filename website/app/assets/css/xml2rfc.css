@@ -339,16 +339,12 @@ dl > dd > dl {
   dl.olPercent,
   dl.dlParallel {
     display: grid;
-    /* A max-content column takes the longest term at its full unwrapped width before the
-       definitions get anything (RFC 9781 Section 6.3, "Person and email address to contact for
-       further information:"). Two auto tracks share the width between what the terms and the
-       definitions each need, so a long term wraps only when its definitions want the room. The
-       definition track's minimum is 0 rather than auto so a wide pre or table in a definition
-       overflows its own cell instead of forcing the term column to its narrowest. */
-    grid-template-columns: auto minmax(0, auto);
-    /* Auto tracks stretch to fill leftover width equally, which for a list of short terms and
-       short definitions pushes the definitions out to the middle of the list. */
-    justify-content: start;
+    /* The term column is as wide as the longest term but never more than 30% of the list, so a
+       long term wraps instead of crowding out its definitions (RFC 9781 Section 6.3, "Person and
+       email address to contact for further information:"). The definition column takes all the
+       rest. Its minimum is 0 so that wide content overflows its own cell rather than resizing the
+       term column. */
+    grid-template-columns: fit-content(30%) minmax(0, 1fr);
     column-gap: 1em;
     align-items: baseline;
   }
@@ -393,6 +389,26 @@ dl > dd > dl {
     margin-inline-start: 0;
     grid-column: 2;
   }
+
+  /* A list nested in a definition sits in the parent's definition column, which is already only
+     part of the width. Giving it a grid of its own spends another term column per level, leaving
+     the third level a few pixels wide. Nested lists stack their terms above their definitions
+     instead, whatever the viewport. */
+  dl.dlParallel dl.dlParallel {
+    display: block;
+  }
+
+  dl.dlParallel dl.dlParallel > dt {
+    margin-bottom: 0.2em;
+  }
+}
+
+/* The mark of nesting at every width. Below 60em the definition indent is removed, so without this
+   a nested list is indistinguishable from its parent. */
+dl.dlParallel dl.dlParallel {
+  margin-inline-start: 0.5em;
+  padding-inline-start: 0.75em;
+  border-inline-start: 1px solid #ddd;
 }
 
 a {
