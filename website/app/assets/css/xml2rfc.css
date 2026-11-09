@@ -284,7 +284,7 @@ dl > dd > dl {
    narrow side of an inclusive `max-width` and lose the layout it had before. 60em leaves it 64px
    of clearance. */
 @media (max-width: 60em) {
-  dl:not(.dlNewline, .dlParallel) {
+  dl:not(.dlNewline, .dlParallel, .references) {
     > dt {
       float: none;
       display: inline;
@@ -321,15 +321,16 @@ dl > dd > dl {
     }
   }
 
-  /* `dlParallel` is the exception to the inline flow above. Its definitions are long and often hold
-     lists or further `dlParallel`s, so flowing term and definition into one run of text leaves no
-     way to tell a term from its definition, or a nested list from its parent. Here the term takes
-     its own line in a heavier weight and the definition sits under it, indented. The indent is
-     padding rather than margin because the `!important` margin below has to zero xml2rfc's inline
-     `margin-left`. Nested lists add their own rule (see `dl.dlParallel dl.dlParallel` below), so
-     each level steps in by the same small amount and the definition text never runs out of room at
-     320px. */
-  dl.dlParallel {
+  /* `dlParallel` and `references` are the exceptions to the inline flow above. Their definitions
+     are long and often hold lists or further `dlParallel`s, so flowing term and definition into one
+     run of text leaves no way to tell a term from its definition, or a nested list from its parent.
+     A reference entry is worse: the whole bibliography becomes one paragraph in which the `[RFC1234]`
+     labels are lost mid-line. Here the term takes its own line in a heavier weight and the
+     definition sits under it, indented. The indent is padding rather than margin because the
+     `!important` margin below has to zero xml2rfc's inline `margin-left`. Nested lists add their own
+     rule (see `dl.dlParallel dl.dlParallel` below), so each level steps in by the same small amount
+     and the definition text never runs out of room at 320px. */
+  dl:is(.dlParallel, .references) {
     > dt {
       float: none;
       display: block;
