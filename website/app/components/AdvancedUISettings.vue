@@ -1,28 +1,6 @@
 <template>
   <div class="pt-2 flex flex-col gap-5">
     <Heading level="2" style-level="4" class="mt-0">RFC Info pages</Heading>
-    <div role="group" :aria-labelledby="linkPreviewLabelDomId" class="border-1 border-gray-200 p-2 rounded">
-      <Heading :id="linkPreviewLabelDomId" level="3" style-level="5" class="mt-0 mb-2">Link Previews</Heading>
-      <!-- A checkbox rather than a Disable/Enable button, so the current state is readable
-       without having to infer it from what the button offers to do. There's no save button:
-       ticking it writes to the store, which persists to localStorage. -->
-      <CheckboxRoot
-        v-model="isRFCLinkPreviewDisabled"
-        :aria-describedby="linkPreviewDescriptionDomId"
-        class="flex items-start gap-2 cursor-pointer w-full text-left">
-        <span
-          class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
-          <CheckboxIndicator>
-            <GraphicsCheckmark class="block w-[14px] h-[14px]" />
-          </CheckboxIndicator>
-        </span>
-        <span>Disable RFC Link Preview</span>
-      </CheckboxRoot>
-      <p :id="linkPreviewDescriptionDomId" class="pl-7 pt-1 text-sm text-gray-800 dark:text-gray-200">
-        Disable the RFC tooltip that activates on some RFC links (typically within RFCs).
-      </p>
-    </div>
-
     <div
       v-if="featureFlags.hasTextScale"
       role="group"
@@ -216,6 +194,28 @@
           </p>
         </div>
       </template>
+    </div>
+
+    <div role="group" :aria-labelledby="linkPreviewLabelDomId" class="border-1 border-gray-200 p-2 rounded">
+      <Heading :id="linkPreviewLabelDomId" level="3" style-level="5" class="mt-0 mb-2">Link Previews</Heading>
+      <!-- A checkbox rather than a Disable/Enable button, so the current state is readable
+       without having to infer it from what the button offers to do. There's no save button:
+       ticking it writes to the store, which persists to localStorage. -->
+      <CheckboxRoot
+        v-model="isRFCLinkPreviewDisabled"
+        :aria-describedby="linkPreviewDescriptionDomId"
+        class="flex items-start gap-2 cursor-pointer w-full text-left">
+        <span
+          class="inline-flex shrink-0 items-center justify-center w-[20px] h-[20px] mt-0.5 border-1 rounded border-current/60">
+          <CheckboxIndicator>
+            <GraphicsCheckmark class="block w-[14px] h-[14px]" />
+          </CheckboxIndicator>
+        </span>
+        <span>Disable RFC Link Preview</span>
+      </CheckboxRoot>
+      <p :id="linkPreviewDescriptionDomId" class="pl-7 pt-1 text-sm text-gray-800 dark:text-gray-200">
+        Disable the RFC tooltip that activates on some RFC links (typically within RFCs).
+      </p>
     </div>
   </div>
 </template>

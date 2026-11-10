@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label :for="sliderDomId" class="block">{{ label }}</label>
+    <label :for="sliderDomId" class="block font-bold">{{ label }}</label>
     <div class="flex items-center gap-3">
       <input
         :id="sliderDomId"
