@@ -5,7 +5,9 @@
     v-model="selectedTab"
     :class="[
       'min-h-0 flex flex-col',
-      featureFlags.hasTextScale ? textScaleClasses(uiSettings.textScale) : 'text-sm leading-[1.5]' // WCAG requires 1.5 minimum
+      // WCAG requires 1.5 minimum. Outside the flag check so enabling text size at its default is no different from the flag being off.
+      'leading-normal',
+      featureFlags.hasTextScale ? textScaleClasses(uiSettings.textScale) : 'text-sm'
     ]">
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">

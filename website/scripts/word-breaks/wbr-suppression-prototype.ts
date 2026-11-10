@@ -27,6 +27,12 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { chromium, type Browser, type Page } from 'playwright'
 import { noteForRfc, selectRfcs } from '../rfc-samples.ts'
+import {
+  LETTER_SPACING_VALUES,
+  MAX_LETTER_SPACING_STEP,
+  MAX_WORD_SPACING_STEP,
+  WORD_SPACING_VALUES
+} from '../../app/utilities/text-spacing.ts'
 
 const DEFAULT_ORIGIN = 'https://www.rfc-editor.org'
 
@@ -52,16 +58,14 @@ const WORD_SIZE_GROUPINGS_EM = [4, 6, 8, 10, 12, 16, 24]
 const ESTIMATE_ERROR_FACTOR = 1.05
 
 /**
- * The site's text-scale setting adds letter and word spacing at runtime, which a build-time width
+ * The site's text spacing settings add letter and word spacing at runtime, which a build-time width
  * table cannot know about. These are applied *after* labelling, to measure how stale the labels
- * become — i.e. whether suppression has to be disabled for those readers.
- *
- * DEFAULT_TEXT_SCALE is 1.5, whose values (0.12em letter, 0.16em word, 1.5 line height) are exactly
- * the WCAG 2.2 SC 1.4.12 Text Spacing test values, so a reader on defaults is already spaced.
+ * become, which is what the scaled thresholds in xml2rfc-text-spacing.generated.css compensate for.
+ * The values are the largest letter and word spacing the settings offer, and a mid step.
  */
 const TEXT_SCALE_SPACING_CSS: Record<string, string> = {
-  'scale 1.5 (default)': '.rfc-content { letter-spacing: 0.12em !important; word-spacing: 0.16em !important }',
-  'scale 2 (maximum)': '.rfc-content { letter-spacing: 0.5em !important; word-spacing: 1em !important }'
+  'mid step': `.rfc-content { letter-spacing: ${LETTER_SPACING_VALUES[4]}em !important; word-spacing: ${WORD_SPACING_VALUES[4]}em !important }`,
+  maximum: `.rfc-content { letter-spacing: ${LETTER_SPACING_VALUES[MAX_LETTER_SPACING_STEP]}em !important; word-spacing: ${WORD_SPACING_VALUES[MAX_WORD_SPACING_STEP]}em !important }`
 }
 
 /**

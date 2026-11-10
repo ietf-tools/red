@@ -32,6 +32,7 @@
     "test:unittests:search-index:staging": "SEARCH_INDEX_TARGET=staging TZ=UTC vitest run --project search-index --disableConsoleIntercept",
     "test:unittests:search-index:ingest-csv": "node ./e2e/search-index/ingest.ts",
     "test:unittests:search-index:capture-baseline": "node ./e2e/search-index/capture-baseline.ts",
+    "generate:text-spacing-css": "node ./scripts/generate-text-spacing-css.ts",
     "test:e2e:deployed": "vitest run --project deployed",
     "test:e2e": "nuxt prepare && TZ=UTC vitest run --project e2e",
     "test:e2e:watch": "nuxt prepare && TZ=UTC vitest watch --project e2e",

@@ -106,7 +106,7 @@ h6 {
 
 p {
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
-  margin: 0 0 1em 0;
+  margin: 0 0 var(--paragraph-spacing, 1em) 0;
   text-align: left;
 }
 
@@ -516,6 +516,10 @@ code {
 pre {
   margin: 0;
   padding: 1em;
+  /* The reader's letter and word spacing is for prose. Word spacing widens only the spaces, which
+     shifts the columns that ASCII art and code are aligned by, and both would add scroll width. */
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
 img {
@@ -628,81 +632,86 @@ aside {
   container-type: inline-size;
 }
 
-@container (min-width: 4.8em) {
-  wbr.wordsize-4 {
-    display: none;
+/* Scaled copies for each letter spacing step are in xml2rfc-text-spacing.generated.css. */
+&:not([data-letter-step]) {
+  @container (min-width: 4.8em) {
+    wbr.wordsize-4 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 7.2em) {
+    wbr.wordsize-6 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 9.6em) {
+    wbr.wordsize-8 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 12em) {
+    wbr.wordsize-10 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 14.4em) {
+    wbr.wordsize-12 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 19.2em) {
+    wbr.wordsize-16 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 28.8em) {
+    wbr.wordsize-24 {
+      display: none;
+    }
   }
 }
 
-@container (min-width: 7.2em) {
-  wbr.wordsize-6 {
-    display: none;
-  }
-}
-
-@container (min-width: 9.6em) {
-  wbr.wordsize-8 {
-    display: none;
-  }
-}
-
-@container (min-width: 12em) {
-  wbr.wordsize-10 {
-    display: none;
-  }
-}
-
-@container (min-width: 14.4em) {
-  wbr.wordsize-12 {
-    display: none;
-  }
-}
-
-@container (min-width: 19.2em) {
-  wbr.wordsize-16 {
-    display: none;
-  }
-}
-
-@container (min-width: 28.8em) {
-  wbr.wordsize-24 {
-    display: none;
-  }
-}
-
-/* Up to the 8em grouping a citation fits the narrowest column the site offers, about 8.5em at 200%
+/* Scaled copies for each word spacing step are in xml2rfc-text-spacing.generated.css. */
+&:not([data-word-step]) {
+  /* Up to the 8em grouping a citation fits the narrowest column the site offers, about 8.5em at 200%
    text, so these need no condition and still hold where container queries are unsupported. */
-.reference-citation.wordsize-4,
-.reference-citation.wordsize-6,
-.reference-citation.wordsize-8 {
-  white-space: nowrap;
-}
-
-@container (min-width: 12em) {
-  .reference-citation.wordsize-10 {
+  .reference-citation.wordsize-4,
+  .reference-citation.wordsize-6,
+  .reference-citation.wordsize-8 {
     white-space: nowrap;
   }
-}
 
-@container (min-width: 14.4em) {
-  .reference-citation.wordsize-12 {
-    white-space: nowrap;
+  @container (min-width: 12em) {
+    .reference-citation.wordsize-10 {
+      white-space: nowrap;
+    }
   }
-}
 
-@container (min-width: 19.2em) {
-  .reference-citation.wordsize-16 {
-    white-space: nowrap;
+  @container (min-width: 14.4em) {
+    .reference-citation.wordsize-12 {
+      white-space: nowrap;
+    }
   }
-}
 
-@container (min-width: 28.8em) {
-  .reference-citation.wordsize-24 {
-    white-space: nowrap;
+  @container (min-width: 19.2em) {
+    .reference-citation.wordsize-16 {
+      white-space: nowrap;
+    }
   }
-}
 
-/* On a touch device RFCRouterLink renders a preview button inside the citation, between the link
+  @container (min-width: 28.8em) {
+    .reference-citation.wordsize-24 {
+      white-space: nowrap;
+    }
+  }
+
+  /* On a touch device RFCRouterLink renders a preview button inside the citation, between the link
    and the closing bracket, so the citation is wider than the precomputer measured. Its presence is
    the condition, not touch itself: no JavaScript, previews switched off or a fine pointer all mean
    no button. The button is sized in rem (icon, padding and margin), so the extra term is in rem and
@@ -712,55 +721,56 @@ aside {
    container query condition: like a media query prelude it has no element to substitute against,
    so var() there is silently never matched. The word-breaks e2e test measures the rendered button
    against this allowance, so a change to the button's size fails there rather than overflowing. */
-.reference-citation.wordsize-4:has([data-rfc-preview-button]),
-.reference-citation.wordsize-6:has([data-rfc-preview-button]),
-.reference-citation.wordsize-8:has([data-rfc-preview-button]),
-.reference-citation.wordsize-10:has([data-rfc-preview-button]),
-.reference-citation.wordsize-12:has([data-rfc-preview-button]),
-.reference-citation.wordsize-16:has([data-rfc-preview-button]),
-.reference-citation.wordsize-24:has([data-rfc-preview-button]) {
-  white-space: normal;
-}
-
-@container (min-width: calc(4.8em + 2.66rem)) {
-  .reference-citation.wordsize-4:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(7.2em + 2.66rem)) {
-  .reference-citation.wordsize-6:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(9.6em + 2.66rem)) {
-  .reference-citation.wordsize-8:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(12em + 2.66rem)) {
-  .reference-citation.wordsize-10:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(14.4em + 2.66rem)) {
-  .reference-citation.wordsize-12:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(19.2em + 2.66rem)) {
-  .reference-citation.wordsize-16:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(28.8em + 2.66rem)) {
+  .reference-citation.wordsize-4:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-6:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-8:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-10:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-12:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-16:has([data-rfc-preview-button]),
   .reference-citation.wordsize-24:has([data-rfc-preview-button]) {
-    white-space: nowrap;
+    white-space: normal;
+  }
+
+  @container (min-width: calc(4.8em + 2.66rem)) {
+    .reference-citation.wordsize-4:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(7.2em + 2.66rem)) {
+    .reference-citation.wordsize-6:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(9.6em + 2.66rem)) {
+    .reference-citation.wordsize-8:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(12em + 2.66rem)) {
+    .reference-citation.wordsize-10:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(14.4em + 2.66rem)) {
+    .reference-citation.wordsize-12:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(19.2em + 2.66rem)) {
+    .reference-citation.wordsize-16:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(28.8em + 2.66rem)) {
+    .reference-citation.wordsize-24:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
   }
 }
 

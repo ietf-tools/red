@@ -1,6 +1,17 @@
 import { z } from 'zod'
 import { DEFAULT_WORD_BREAK_MODE, WordBreakModeSchema, type WordBreakMode } from '~/utilities/word-break-mode'
 import type { Density } from '~/utilities/typesense'
+import {
+  DEFAULT_LETTER_SPACING_STEP,
+  DEFAULT_LINE_SPACING_STEP,
+  DEFAULT_PARAGRAPH_SPACING_STEP,
+  DEFAULT_WORD_SPACING_STEP,
+  MAX_LETTER_SPACING_STEP,
+  MAX_LINE_SPACING_STEP,
+  MAX_PARAGRAPH_SPACING_STEP,
+  MAX_WORD_SPACING_STEP,
+  clampStep
+} from '~/utilities/text-spacing'
 
 export const SupersededModeSchema = z.union([z.literal('full'), z.literal('compact')]).optional()
 
@@ -23,6 +34,11 @@ export const DEFAULT_TEXT_SCALE = 1
 
 const TextScaleSchema = z.number().min(TEXT_SCALE_MIN).max(TEXT_SCALE_MAX)
 
+// Text spacing is stored as a step into the ladders in text-spacing.ts, and only when it differs
+// from the default. A reader who resets therefore leaves nothing stored, rather than a record of
+// having chosen the default.
+const spacingStepSchema = (maxStep: number) => z.number().int().min(0).max(maxStep)
+
 // Bounds of the reading-mode speech rate slider, shared with AdvancedUISettings.vue for the same
 // reason as the text-scale bounds.
 export const READING_RATE_MIN = 0.5
@@ -38,6 +54,10 @@ const UiSettingsSchema = z
     updatedByMode: SupersededModeSchema,
     disableRFCLinkPreview: z.boolean().optional(),
     textScale: TextScaleSchema.optional(),
+    lineSpacingStep: spacingStepSchema(MAX_LINE_SPACING_STEP).optional(),
+    letterSpacingStep: spacingStepSchema(MAX_LETTER_SPACING_STEP).optional(),
+    wordSpacingStep: spacingStepSchema(MAX_WORD_SPACING_STEP).optional(),
+    paragraphSpacingStep: spacingStepSchema(MAX_PARAGRAPH_SPACING_STEP).optional(),
     subjectDensity: SubjectDensitySchema,
     subjectDocumentDensity: SubjectDocumentDensitySchema,
     wordBreakMode: WordBreakModeSchema.optional(),
@@ -74,6 +94,10 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   const updatedByModeRef = ref<SupersededMode>(DEFAULT_SUPERSEDED_MODE)
   const disableRFCLinkPreviewRef = ref<boolean>(false)
   const textScaleRef = ref<number>(DEFAULT_TEXT_SCALE)
+  const lineSpacingStepRef = ref<number>(DEFAULT_LINE_SPACING_STEP)
+  const letterSpacingStepRef = ref<number>(DEFAULT_LETTER_SPACING_STEP)
+  const wordSpacingStepRef = ref<number>(DEFAULT_WORD_SPACING_STEP)
+  const paragraphSpacingStepRef = ref<number>(DEFAULT_PARAGRAPH_SPACING_STEP)
   const subjectDensityRef = ref<SubjectDensity>(DEFAULT_SUBJECT_DENSITY)
   const subjectDocumentDensityRef = ref<Density>(DEFAULT_SUBJECT_DOCUMENT_DENSITY)
   const wordBreakModeRef = ref<WordBreakMode>(DEFAULT_WORD_BREAK_MODE)
@@ -93,7 +117,13 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       obsoletedByMode: obsoletedByModeRef.value,
       updatedByMode: updatedByModeRef.value,
       disableRFCLinkPreview: disableRFCLinkPreviewRef.value,
-      textScale: textScaleRef.value,
+      textScale: textScaleRef.value === DEFAULT_TEXT_SCALE ? undefined : textScaleRef.value,
+      lineSpacingStep: lineSpacingStepRef.value === DEFAULT_LINE_SPACING_STEP ? undefined : lineSpacingStepRef.value,
+      letterSpacingStep:
+        letterSpacingStepRef.value === DEFAULT_LETTER_SPACING_STEP ? undefined : letterSpacingStepRef.value,
+      wordSpacingStep: wordSpacingStepRef.value === DEFAULT_WORD_SPACING_STEP ? undefined : wordSpacingStepRef.value,
+      paragraphSpacingStep:
+        paragraphSpacingStepRef.value === DEFAULT_PARAGRAPH_SPACING_STEP ? undefined : paragraphSpacingStepRef.value,
       subjectDensity: subjectDensityRef.value,
       subjectDocumentDensity: subjectDocumentDensityRef.value,
       wordBreakMode: wordBreakModeRef.value,
@@ -132,6 +162,10 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
       updatedByModeRef.value = data.updatedByMode ?? updatedByModeRef.value
       disableRFCLinkPreviewRef.value = data.disableRFCLinkPreview ?? disableRFCLinkPreviewRef.value
       textScaleRef.value = data.textScale ?? textScaleRef.value
+      lineSpacingStepRef.value = data.lineSpacingStep ?? lineSpacingStepRef.value
+      letterSpacingStepRef.value = data.letterSpacingStep ?? letterSpacingStepRef.value
+      wordSpacingStepRef.value = data.wordSpacingStep ?? wordSpacingStepRef.value
+      paragraphSpacingStepRef.value = data.paragraphSpacingStep ?? paragraphSpacingStepRef.value
       subjectDensityRef.value = data.subjectDensity ?? subjectDensityRef.value
       subjectDocumentDensityRef.value = data.subjectDocumentDensity ?? subjectDocumentDensityRef.value
       wordBreakModeRef.value = data.wordBreakMode ?? wordBreakModeRef.value
@@ -166,6 +200,35 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
   // on the next load, which resets every other setting along with it.
   const setTextScale = (textScale: number) => {
     textScaleRef.value = Math.min(Math.max(textScale, TEXT_SCALE_MIN), TEXT_SCALE_MAX)
+    saveSettings()
+  }
+
+  // Clamped for the same reason as setTextScale.
+  const setLineSpacingStep = (step: number) => {
+    lineSpacingStepRef.value = clampStep(step, MAX_LINE_SPACING_STEP)
+    saveSettings()
+  }
+
+  const setLetterSpacingStep = (step: number) => {
+    letterSpacingStepRef.value = clampStep(step, MAX_LETTER_SPACING_STEP)
+    saveSettings()
+  }
+
+  const setWordSpacingStep = (step: number) => {
+    wordSpacingStepRef.value = clampStep(step, MAX_WORD_SPACING_STEP)
+    saveSettings()
+  }
+
+  const setParagraphSpacingStep = (step: number) => {
+    paragraphSpacingStepRef.value = clampStep(step, MAX_PARAGRAPH_SPACING_STEP)
+    saveSettings()
+  }
+
+  const resetTextSpacing = () => {
+    lineSpacingStepRef.value = DEFAULT_LINE_SPACING_STEP
+    letterSpacingStepRef.value = DEFAULT_LETTER_SPACING_STEP
+    wordSpacingStepRef.value = DEFAULT_WORD_SPACING_STEP
+    paragraphSpacingStepRef.value = DEFAULT_PARAGRAPH_SPACING_STEP
     saveSettings()
   }
 
@@ -235,6 +298,15 @@ export const useUiSettingsStore = defineStore('uiSettings', () => {
     setDisabledRFCLinkPreview,
     textScale: textScaleRef,
     setTextScale,
+    lineSpacingStep: lineSpacingStepRef,
+    setLineSpacingStep,
+    letterSpacingStep: letterSpacingStepRef,
+    setLetterSpacingStep,
+    wordSpacingStep: wordSpacingStepRef,
+    setWordSpacingStep,
+    paragraphSpacingStep: paragraphSpacingStepRef,
+    setParagraphSpacingStep,
+    resetTextSpacing,
     subjectDensity: subjectDensityRef,
     setSubjectDensity,
     subjectDocumentDensity: subjectDocumentDensityRef,

@@ -31,8 +31,8 @@ export type FeatureFlagUIRow = {
 
 const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
   hasTextScale: {
-    title: 'Text scaling option',
-    description: 'Text scaling affects line spacing, letter spacing, word spacing, and spacing after paragraphs.',
+    title: 'Text size and spacing options',
+    description: 'Adds settings for text size, and for the spacing of lines, letters, words and paragraphs.',
     storageType: 'boolean'
   },
   hasWordBreakMode: {

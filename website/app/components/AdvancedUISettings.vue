@@ -26,33 +26,77 @@
     <div
       v-if="featureFlags.hasTextScale"
       role="group"
-      :aria-labelledby="textScaleLabelDomId"
+      aria-label="Text size"
       class="border-1 border-gray-200 p-2 rounded">
-      <Heading :id="textScaleLabelDomId" level="3" style-level="5" class="mt-0 mb-2">Text scale</Heading>
-      <div class="flex items-center gap-3">
-        <input
-          v-model.number="draftTextScale"
-          type="range"
-          :min="TEXT_SCALE_MIN"
-          :max="TEXT_SCALE_MAX"
-          :step="TEXT_SCALE_STEP"
-          :aria-labelledby="textScaleLabelDomId"
-          :aria-describedby="textScaleDescriptionDomId"
-          :aria-valuetext="textScaleLabel"
-          class="w-full max-w-2xs accent-blue-600 cursor-pointer"
-          @change="commitTextScale" />
-        <output class="text-sm tabular-nums">{{ textScaleLabel }}</output>
+      <SettingSlider
+        label="Text size"
+        :model-value="textScale"
+        :min="TEXT_SCALE_MIN"
+        :max="TEXT_SCALE_MAX"
+        :step="TEXT_SCALE_STEP"
+        :format-value="formatTextSize"
+        description="Make the text in RFCs larger or smaller."
+        @commit="setTextScale"
+        @reset="setTextScale(DEFAULT_TEXT_SCALE)" />
+    </div>
+
+    <div
+      v-if="featureFlags.hasTextScale"
+      role="group"
+      :aria-labelledby="textSpacingLabelDomId"
+      :aria-describedby="textSpacingDescriptionDomId"
+      class="border-1 border-gray-200 p-2 rounded flex flex-col gap-4">
+      <div class="flex flex-wrap items-center justify-start gap-2">
+        <Heading :id="textSpacingLabelDomId" level="3" style-level="5" class="mt-0 mb-0">Text spacing</Heading>
         <button
-          type="reset"
+          type="button"
           class="cursor-pointer rounded-md border-1 border-gray-300 bg-white px-3 py-1 text-sm font-medium text-gray-900 shadow-xs transition-colors hover:bg-gray-100 hover:border-gray-400 active:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 dark:active:bg-gray-700"
-          @click="resetTextScale">
-          Reset to default
+          @click="resetTextSpacing">
+          Reset all spacing
         </button>
       </div>
-
-      <p :id="textScaleDescriptionDomId" class="pt-1 text-sm text-gray-800 dark:text-gray-200">
-        Scale text line spacing, letter spacing, word spacing, and spacing after paragraphs.
+      <p :id="textSpacingDescriptionDomId" class="text-sm text-gray-800 dark:text-gray-200">
+        Adjust the space between lines, letters, words and paragraphs in RFCs.
       </p>
+      <SettingSlider
+        label="Line spacing"
+        :model-value="lineSpacingStep"
+        :min="0"
+        :max="MAX_LINE_SPACING_STEP"
+        :step="1"
+        :format-value="(step) => describeStep(step, DEFAULT_LINE_SPACING_STEP)"
+        @commit="setLineSpacingStep"
+        @reset="setLineSpacingStep(DEFAULT_LINE_SPACING_STEP)" />
+      <SettingSlider
+        label="Letter spacing"
+        :model-value="letterSpacingStep"
+        :min="0"
+        :max="MAX_LETTER_SPACING_STEP"
+        :step="1"
+        :format-value="(step) => describeStep(step, DEFAULT_LETTER_SPACING_STEP)"
+        @commit="setLetterSpacingStep"
+        @reset="setLetterSpacingStep(DEFAULT_LETTER_SPACING_STEP)" />
+      <!-- Words are kept at least as far apart as the letters are, because letters spaced out with
+       tight words between them read more slowly, so the slider cannot go below the letter spacing. -->
+      <SettingSlider
+        label="Word spacing"
+        :model-value="effectiveWordSpacingStep(spacingSteps)"
+        :min="letterSpacingStep"
+        :max="MAX_WORD_SPACING_STEP"
+        :step="1"
+        :format-value="(step) => describeStep(step, DEFAULT_WORD_SPACING_STEP)"
+        description="Never less than the letter spacing, so words stay easy to tell apart."
+        @commit="setWordSpacingStep"
+        @reset="setWordSpacingStep(DEFAULT_WORD_SPACING_STEP)" />
+      <SettingSlider
+        label="Paragraph spacing"
+        :model-value="paragraphSpacingStep"
+        :min="0"
+        :max="MAX_PARAGRAPH_SPACING_STEP"
+        :step="1"
+        :format-value="(step) => describeStep(step, DEFAULT_PARAGRAPH_SPACING_STEP)"
+        @commit="setParagraphSpacingStep"
+        @reset="setParagraphSpacingStep(DEFAULT_PARAGRAPH_SPACING_STEP)" />
     </div>
 
     <div
@@ -137,7 +181,7 @@
               @change="commitReadingRate" />
             <output class="text-sm tabular-nums">{{ readingRateLabel }}</output>
             <button
-              type="reset"
+              type="button"
               @click="resetReadingRate"
               class="cursor-pointer border-1 border-black text-sm px-2 py-1">
               Reset to default
@@ -189,17 +233,44 @@ import {
   TEXT_SCALE_STEP,
   useUiSettingsStore
 } from '~/stores/ui-settings'
+import {
+  DEFAULT_LETTER_SPACING_STEP,
+  DEFAULT_LINE_SPACING_STEP,
+  DEFAULT_PARAGRAPH_SPACING_STEP,
+  DEFAULT_WORD_SPACING_STEP,
+  MAX_LETTER_SPACING_STEP,
+  MAX_LINE_SPACING_STEP,
+  MAX_PARAGRAPH_SPACING_STEP,
+  MAX_WORD_SPACING_STEP,
+  describeStep,
+  effectiveWordSpacingStep
+} from '~/utilities/text-spacing'
 import { useReadingModeSupport } from '~/utilities/reading-mode/support'
 import { useSpeechVoices } from '~/utilities/reading-mode/voices'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { WORD_BREAK_MODE_OPTIONS, WordBreakModeSchema, type WordBreakMode } from '~/utilities/word-break-mode'
 
 const uiSettings = useUiSettingsStore()
-const { disableRFCLinkPreview, textScale, wordBreakMode, readAloudPreformatted, readingRate, readingVoiceUri } =
-  storeToRefs(uiSettings)
+const {
+  disableRFCLinkPreview,
+  textScale,
+  lineSpacingStep,
+  letterSpacingStep,
+  wordSpacingStep,
+  paragraphSpacingStep,
+  wordBreakMode,
+  readAloudPreformatted,
+  readingRate,
+  readingVoiceUri
+} = storeToRefs(uiSettings)
 const {
   setDisabledRFCLinkPreview,
   setTextScale,
+  setLineSpacingStep,
+  setLetterSpacingStep,
+  setWordSpacingStep,
+  setParagraphSpacingStep,
+  resetTextSpacing,
   setWordBreakMode,
   setReadAloudPreformatted,
   setReadingRate,
@@ -211,8 +282,8 @@ const { isUnsupported: isReadingModeUnsupported } = useReadingModeSupport()
 
 const featureFlags = useFeatureFlags()
 
-const textScaleLabelDomId = useId()
-const textScaleDescriptionDomId = useId()
+const textSpacingLabelDomId = useId()
+const textSpacingDescriptionDomId = useId()
 const linkPreviewLabelDomId = useId()
 const linkPreviewDescriptionDomId = useId()
 const wordBreakLabelDomId = useId()
@@ -226,27 +297,16 @@ const readingVoiceDescriptionDomId = useId()
 
 const wordBreakOptionDescriptionDomId = (mode: WordBreakMode): string => `${wordBreakOptionsDomId}-${mode}`
 
-// The slider tracks its own value while it's being dragged and only writes to the
-// store on `change`, so a drag doesn't persist to localStorage on every pixel of
-// travel. Keyboard adjustment fires `change` per keypress, so it commits at once.
-const draftTextScale = ref<number>(textScale.value)
+const formatTextSize = (value: number): string => `${value.toFixed(1)}×`
 
-watch(textScale, (value) => {
-  draftTextScale.value = value
-})
+const spacingSteps = computed(() => ({
+  lineSpacing: lineSpacingStep.value,
+  letterSpacing: letterSpacingStep.value,
+  wordSpacing: wordSpacingStep.value,
+  paragraphSpacing: paragraphSpacingStep.value
+}))
 
-const commitTextScale = () => {
-  setTextScale(draftTextScale.value)
-}
-
-const resetTextScale = () => {
-  draftTextScale.value = DEFAULT_TEXT_SCALE
-  commitTextScale()
-}
-
-const textScaleLabel = computed(() => `${draftTextScale.value.toFixed(1)}×`)
-
-// Tracked while dragged and written on `change`, for the same reason as the text scale.
+// Tracked while dragged and written on `change`, so a drag does not persist on every pixel of travel.
 const draftReadingRate = ref<number>(readingRate.value)
 
 watch(readingRate, (value) => {

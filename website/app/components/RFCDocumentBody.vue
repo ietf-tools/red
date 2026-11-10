@@ -77,10 +77,9 @@
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasWordBreakMode
           ? wordBreakModeClass(uiSettingsStore.wordBreakMode)
           : undefined,
-        props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasTextScale
-          ? textScaleClasses(uiSettingsStore.textScale)
-          : 'sm:text-base leading-[1.5]' // WCAG requires 1.5 minimum
+        textScaleClassList
       ]"
+      v-bind="textSpacingAttrs"
       @click="handleContentClick">
       <component :is="enrichedDocument" />
     </div>
@@ -107,6 +106,7 @@ import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { wordBreakModeClass } from '~/utilities/word-break-mode'
+import { textSizeClasses, textSpacingAttributes, textSpacingClasses } from '~/utilities/text-spacing'
 import { RFC_CONTENT_DOM_ID } from '~/utilities/reading-mode/content'
 import { getTocLinkBackTargetId } from '~/utilities/toc-link-back'
 import { titleWithWordBreaks } from '~/utilities/word-break-title'
@@ -137,6 +137,28 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
+
+const isTextScaleActive = computed(
+  () => props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && !!featureFlags.value.hasTextScale
+)
+
+const textSpacingSteps = computed(() => ({
+  lineSpacing: uiSettingsStore.lineSpacingStep,
+  letterSpacing: uiSettingsStore.letterSpacingStep,
+  wordSpacing: uiSettingsStore.wordSpacingStep,
+  paragraphSpacing: uiSettingsStore.paragraphSpacingStep
+}))
+
+const textSpacingAttrs = computed(() =>
+  isTextScaleActive.value ? textSpacingAttributes(textSpacingSteps.value) : undefined
+)
+
+// Without the setting a document keeps the line spacing WCAG requires as a minimum.
+const textScaleClassList = computed(() =>
+  isTextScaleActive.value
+    ? [textSizeClasses(uiSettingsStore.textScale), textSpacingClasses(textSpacingSteps.value)]
+    : 'sm:text-base leading-normal'
+)
 
 const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
 
@@ -308,61 +330,6 @@ const formatsPojo = computed((): DocumentPojo => {
     }
   ]
 })
-
-const textScaleClasses = (textScale: number): string => {
-  if (textScale <= 1) {
-    return `${
-      // font-sizes
-      'text-base [--heading-1-font-size:28px] [--heading-2-font-size:22px] [--heading-3-font-size:18px] [--heading-4-font-size:16px] [--heading-5-font-size:14px] [--heading-6-font-size:14px]'
-    } ${
-      // letter/word/paragraph spacing
-      'leading-[1.5]'
-    }`
-  }
-  if (textScale <= 1.1) {
-    return `${
-      // font-sizes
-      'text-lg [--heading-1-font-size:32px] [--heading-2-font-size:24px] [--heading-3-font-size:18px] [--heading-4-font-size:16px] [--heading-5-font-size:14px] [--heading-6-font-size:14px]'
-    } ${
-      // letter/word/paragraph spacing
-      'leading-[1.57] tracking-wide [word-spacing:0.328em] [&_p]:mb-[2.2rem]'
-    }`
-  }
-  if (textScale <= 1.2) {
-    return `${
-      // font-sizes
-      'text-xl [--heading-1-font-size:36px] [--heading-2-font-size:26px] [--heading-3-font-size:20px] [--heading-4-font-size:18px] [--heading-5-font-size:16px] [--heading-6-font-size:14px]'
-    } ${
-      // letter/word/paragraph spacing
-      'leading-[1.64] tracking-wider [word-spacing:0.496em] [&_p]:mb-[2.4rem]'
-    }`
-  }
-  if (textScale <= 1.3) {
-    return `${
-      // font-sizes
-      'text-2xl [--heading-1-font-size:40px] [--heading-2-font-size:28px] [--heading-3-font-size:22px] [--heading-4-font-size:20px] [--heading-5-font-size:18px] [--heading-6-font-size:16px]'
-    } ${
-      // letter/word/paragraph spacing
-      'leading-[1.71] tracking-widest [word-spacing:0.664em] [&_p]:mb-[2.6rem]'
-    }`
-  }
-  if (textScale <= 1.4) {
-    return `${
-      // font-sizes
-      'text-2xl [--heading-1-font-size:44px] [--heading-2-font-size:30px] [--heading-3-font-size:24px] [--heading-4-font-size:22px] [--heading-5-font-size:20px] [--heading-6-font-size:18px]'
-    } ${
-      // letter/word/paragraph spacing
-      'leading-[1.78] tracking-widest [word-spacing:0.832em] [&_p]:mb-[2.8rem]'
-    }`
-  }
-  return `${
-    // font-sizes
-    'text-2xl [--heading-1-font-size:48px] [--heading-2-font-size:32px] [--heading-3-font-size:26px] [--heading-4-font-size:24px] [--heading-5-font-size:22px] [--heading-6-font-size:20px]'
-  } ${
-    // letter/word/paragraph spacing
-    'leading-[1.85] tracking-widest [word-spacing:1em] [&_p]:mb-[3rem]'
-  }`
-}
 </script>
 
 <style lang="postcss">
@@ -413,6 +380,7 @@ const textScaleClasses = (textScale: number): string => {
      to reduce maintenance burden.
   */
   @nested-import "../assets/css/xml2rfc.css";
+  @nested-import "../assets/css/xml2rfc-text-spacing.generated.css";
 }
 
 html.dark .rfc-content-type-xml2rfc {

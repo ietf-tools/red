@@ -8,7 +8,14 @@ import { enableAutoUnmount } from '@vue/test-utils'
 import { getActivePinia } from 'pinia'
 import { defineComponent, h } from 'vue'
 
-import { useUiSettingsStore } from '~/stores/ui-settings'
+import { DEFAULT_TEXT_SCALE, useUiSettingsStore } from '~/stores/ui-settings'
+import {
+  DEFAULT_LETTER_SPACING_STEP,
+  DEFAULT_LINE_SPACING_STEP,
+  DEFAULT_PARAGRAPH_SPACING_STEP,
+  DEFAULT_WORD_SPACING_STEP,
+  MAX_LINE_SPACING_STEP
+} from '~/utilities/text-spacing'
 import { DEFAULT_WORD_BREAK_MODE } from '~/utilities/word-break-mode'
 
 const LOCALSTORAGE_KEY = 'rfc-ui'
@@ -61,7 +68,7 @@ describe('useUiSettingsStore word break mode', () => {
     store.setWordBreakMode('overflow-wrap-anywhere')
     expect(store.wordBreakMode).toBe('overflow-wrap-anywhere')
     expect(stored()?.wordBreakMode).toBe('overflow-wrap-anywhere')
-    expect(stored()).toHaveProperty('textScale')
+    expect(stored()).toHaveProperty('disableRFCLinkPreview')
   })
 
   test('loads a saved mode', async () => {
@@ -82,5 +89,60 @@ describe('useUiSettingsStore word break mode', () => {
     const store = await mountStore()
     expect(store.wordBreakMode).toBe(DEFAULT_WORD_BREAK_MODE)
     expect(stored()).toBeNull()
+  })
+})
+
+describe('useUiSettingsStore text size and spacing', () => {
+  beforeEach(() => {
+    resetStore()
+  })
+
+  test('stores a changed step and leaves nothing stored once it is back at the default', () => {
+    const store = useUiSettingsStore()
+    store.setTextScale(1.4)
+    store.setLetterSpacingStep(3)
+    expect(stored()).toMatchObject({ textScale: 1.4, letterSpacingStep: 3 })
+
+    store.setTextScale(DEFAULT_TEXT_SCALE)
+    store.setLetterSpacingStep(DEFAULT_LETTER_SPACING_STEP)
+    expect(stored()).not.toHaveProperty('textScale')
+    expect(stored()).not.toHaveProperty('letterSpacingStep')
+  })
+
+  test('resetting the spacing returns every step to its default and clears them from storage', () => {
+    const store = useUiSettingsStore()
+    store.setLineSpacingStep(5)
+    store.setLetterSpacingStep(4)
+    store.setWordSpacingStep(6)
+    store.setParagraphSpacingStep(3)
+
+    store.resetTextSpacing()
+
+    expect(store.lineSpacingStep).toBe(DEFAULT_LINE_SPACING_STEP)
+    expect(store.letterSpacingStep).toBe(DEFAULT_LETTER_SPACING_STEP)
+    expect(store.wordSpacingStep).toBe(DEFAULT_WORD_SPACING_STEP)
+    expect(store.paragraphSpacingStep).toBe(DEFAULT_PARAGRAPH_SPACING_STEP)
+    const keys = Object.keys(stored() ?? {})
+    expect(keys.filter((key) => key.endsWith('SpacingStep'))).toEqual([])
+  })
+
+  test('clamps a step so what is saved still validates on the next load', () => {
+    const store = useUiSettingsStore()
+    store.setLineSpacingStep(99)
+    store.setLetterSpacingStep(-4)
+    expect(store.lineSpacingStep).toBe(MAX_LINE_SPACING_STEP)
+    expect(store.letterSpacingStep).toBe(0)
+  })
+
+  test('loads saved steps', async () => {
+    window.localStorage.setItem(
+      LOCALSTORAGE_KEY,
+      JSON.stringify({ lineSpacingStep: 4, letterSpacingStep: 2, wordSpacingStep: 3, paragraphSpacingStep: 2 })
+    )
+    const store = await mountStore()
+    expect(store.lineSpacingStep).toBe(4)
+    expect(store.letterSpacingStep).toBe(2)
+    expect(store.wordSpacingStep).toBe(3)
+    expect(store.paragraphSpacingStep).toBe(2)
   })
 })

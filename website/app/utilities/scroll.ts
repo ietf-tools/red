@@ -203,11 +203,18 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     { edges: ['leading'] }
   )
 
-  // text scale (or the flag that enables it) reflows the document, moving every element
+  // text size and spacing (or the flag that enables them) reflow the document, moving every element
   const uiSettings = useUiSettingsStore()
   const featureFlags = useFeatureFlags()
   watch(
-    () => [uiSettings.textScale, featureFlags.value.hasTextScale],
+    () => [
+      uiSettings.textScale,
+      uiSettings.lineSpacingStep,
+      uiSettings.letterSpacingStep,
+      uiSettings.wordSpacingStep,
+      uiSettings.paragraphSpacingStep,
+      featureFlags.value.hasTextScale
+    ],
     () => throttledHandleResize(),
     { flush: 'post' }
   )

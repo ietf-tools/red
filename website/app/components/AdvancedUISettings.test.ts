@@ -154,3 +154,99 @@ describe('AdvancedUISettings reading mode', () => {
     })
   })
 })
+
+describe('AdvancedUISettings text size and spacing', () => {
+  beforeEach(() => {
+    const store = useUiSettingsStore()
+    store.setTextScale(1)
+    store.resetTextSpacing()
+    window.localStorage.clear()
+  })
+
+  const sliderFor = (wrapper: Awaited<ReturnType<typeof renderSettings>>, label: string) => {
+    const slider = wrapper.findAll('label').find((element) => element.text() === label)
+    expect(slider).toBeDefined()
+    return wrapper.find(`#${slider?.attributes('for')}`)
+  }
+
+  const resetFor = (wrapper: Awaited<ReturnType<typeof renderSettings>>, label: string) =>
+    wrapper.find(`button[aria-label="Reset ${label.toLowerCase()} to default"]`)
+
+  test('is absent while the flag is off', async () => {
+    const wrapper = await renderSettings()
+    expect(wrapper.text()).not.toContain('Text spacing')
+    expect(wrapper.text()).not.toContain('Text size')
+  })
+
+  test('offers a size slider and four spacing sliders, each with its own reset', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    for (const label of ['Text size', 'Line spacing', 'Letter spacing', 'Word spacing', 'Paragraph spacing']) {
+      expect(sliderFor(wrapper, label).exists()).toBe(true)
+      expect(resetFor(wrapper, label).exists()).toBe(true)
+    }
+  })
+
+  test('never mentions the standard the values come from', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    expect(wrapper.text()).not.toMatch(/WCAG|SC 1\.4/i)
+  })
+
+  test('moving a slider writes its step to the store', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    const slider = sliderFor(wrapper, 'Letter spacing')
+    await slider.setValue(3)
+    await slider.trigger('change')
+    expect(useUiSettingsStore().letterSpacingStep).toBe(3)
+  })
+
+  test('word spacing cannot be set below the letter spacing', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    const store = useUiSettingsStore()
+    store.setLetterSpacingStep(4)
+    await nextTick()
+    const word = sliderFor(wrapper, 'Word spacing')
+    expect(word.attributes('min')).toBe('4')
+    expect((word.element as HTMLInputElement).value).toBe('4')
+  })
+
+  test('a reset button returns its slider, the store and the stored value to the default', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    const store = useUiSettingsStore()
+    const size = sliderFor(wrapper, 'Text size')
+    await size.setValue(1.4)
+    await size.trigger('change')
+    expect(store.textScale).toBe(1.4)
+
+    await resetFor(wrapper, 'Text size').trigger('click')
+
+    expect(store.textScale).toBe(1)
+    expect((size.element as HTMLInputElement).value).toBe('1')
+    expect(JSON.parse(window.localStorage.getItem('rfc-ui') ?? '{}')).not.toHaveProperty('textScale')
+  })
+
+  test('reset buttons are plain buttons, so the browser does not run its own form reset over the sliders', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    const resets = wrapper.findAll('button').filter((button) => button.text().startsWith('Reset'))
+    expect(resets.length).toBeGreaterThan(0)
+    for (const reset of resets) {
+      expect(reset.attributes('type')).toBe('button')
+    }
+  })
+
+  test('Reset all spacing clears every spacing step but not the text size', async () => {
+    const wrapper = await renderSettings({ hasTextScale: true })
+    const store = useUiSettingsStore()
+    store.setTextScale(1.2)
+    store.setLineSpacingStep(5)
+    store.setLetterSpacingStep(4)
+    store.setParagraphSpacingStep(3)
+
+    const resetAll = wrapper.findAll('button').find((button) => button.text() === 'Reset all spacing')
+    await resetAll?.trigger('click')
+
+    expect(store.lineSpacingStep).toBe(3)
+    expect(store.letterSpacingStep).toBe(0)
+    expect(store.paragraphSpacingStep).toBe(1)
+    expect(store.textScale).toBe(1.2)
+  })
+})
