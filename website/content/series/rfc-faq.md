@@ -44,10 +44,6 @@ Sets allow you to create lists of RFCs you might want to return to later or shar
 - Share a set with others by sending them the URL of the set page.
 - Remember that this content is public, so do not include any private information when creating a set. Inappropriate data may be removed.
 
-## Why didn’t the numbers change as soon as I rated an RFC? {#stats}
-
-When you rate an RFC, we show you your own rating immediately. However, we only recalculate average ratings and some other stats about once per hour, so it may take some time to see the updated aggregate results.
-
 ## How can one determine where in the Standards Track an RFC is? {#stdtrack}
 
 If the RFC is a Standards Track document, its info page will list its status (Internet Standard, Draft Standard, or Proposed Standard). See the [full list of Internet Standards](/search/?status=Internet+Standard).
