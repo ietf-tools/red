@@ -138,9 +138,7 @@ const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
 
-const isTextScaleActive = computed(
-  () => props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && !!featureFlags.value.hasTextScale
-)
+const isTextScaleActive = computed(() => props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc')
 
 const textSpacingSteps = computed(() => ({
   lineSpacing: uiSettingsStore.lineSpacingStep,
@@ -153,7 +151,7 @@ const textSpacingAttrs = computed(() =>
   isTextScaleActive.value ? textSpacingAttributes(textSpacingSteps.value) : undefined
 )
 
-// Without the setting a document keeps the line spacing WCAG requires as a minimum.
+// Documents that are not xml2rfc keeps the line spacing WCAG requires as a minimum.
 const textScaleClassList = computed(() =>
   isTextScaleActive.value
     ? [textSizeClasses(uiSettingsStore.textScale), textSpacingClasses(textSpacingSteps.value)]

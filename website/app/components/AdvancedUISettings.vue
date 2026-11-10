@@ -1,11 +1,7 @@
 <template>
   <div class="pt-2 flex flex-col gap-5">
     <Heading level="2" style-level="4" class="mt-0">RFC Info pages</Heading>
-    <div
-      v-if="featureFlags.hasTextScale"
-      role="group"
-      aria-label="Text size"
-      class="border-1 border-gray-200 p-2 rounded">
+    <div role="group" aria-label="Text size" class="border-1 border-gray-200 p-2 rounded">
       <SettingSlider
         label="Text size"
         :model-value="textScale"
@@ -19,7 +15,6 @@
     </div>
 
     <div
-      v-if="featureFlags.hasTextScale"
       role="group"
       :aria-labelledby="textSpacingLabelDomId"
       :aria-describedby="textSpacingDescriptionDomId"

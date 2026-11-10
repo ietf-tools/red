@@ -5,9 +5,9 @@
     v-model="selectedTab"
     :class="[
       'min-h-0 flex flex-col',
-      // WCAG requires 1.5 minimum. Outside the flag check so enabling text size at its default is no different from the flag being off.
+      // WCAG requires 1.5 minimum.
       'leading-normal',
-      featureFlags.hasTextScale ? textScaleClasses(uiSettings.textScale) : 'text-sm'
+      textScaleClasses(uiSettings.textScale)
     ]">
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
@@ -319,7 +319,6 @@ import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import NewWindowIcon from './Graphics/NewWindowIcon.vue'
-import { useFeatureFlags } from '~/utilities/feature-flags.ts'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -334,8 +333,6 @@ const selectedTab = defineModel<number>()
 const uiSettings = useUiSettingsStore()
 
 const isSidebarCollapsed = computed(() => props.mode === 'desktop' && uiSettings.isRfcSidebarEffectivelyCollapsed)
-
-const featureFlags = useFeatureFlags()
 
 const textScaleClasses = (textScale: number): string => {
   if (textScale <= 1) {

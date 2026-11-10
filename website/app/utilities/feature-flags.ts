@@ -8,7 +8,6 @@ export const FeatureFlagsSchema = z.object({
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
-  hasTextScale: z.boolean().optional(),
   hasWordBreakMode: z.boolean().optional()
 })
 
@@ -30,11 +29,6 @@ export type FeatureFlagUIRow = {
 }
 
 const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
-  hasTextScale: {
-    title: 'Text size and spacing options',
-    description: 'Adds settings for text size, and for the spacing of lines, letters, words and paragraphs.',
-    storageType: 'boolean'
-  },
   hasWordBreakMode: {
     title: 'Word breaking preference',
     description:
@@ -59,7 +53,6 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
-  hasTextScale: false,
   hasWordBreakMode: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,

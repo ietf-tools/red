@@ -36,6 +36,11 @@ const renderSettings = async (flags: FeatureFlags = {}) => {
   })
 }
 
+const speechRateSlider = (wrapper: Awaited<ReturnType<typeof renderSettings>>) => {
+  const label = wrapper.findAll('label').find((element) => element.text() === 'Speech rate')
+  return wrapper.find(`#${label?.attributes('for')}`)
+}
+
 describe('AdvancedUISettings word breaking', () => {
   // The Nuxt app's Pinia outlives each test, so the store is reset by hand.
   beforeEach(() => {
@@ -81,7 +86,7 @@ describe('AdvancedUISettings reading mode', () => {
     // the test environment has no CSS Custom Highlight API
     const wrapper = await renderSettings()
     expect(wrapper.text()).toContain("Reading aloud isn't available in this browser")
-    expect(wrapper.find('input[type="range"]').exists()).toBe(false)
+    expect(speechRateSlider(wrapper).exists()).toBe(false)
     expect(wrapper.text()).not.toContain('Read ASCII art and ABNF aloud')
   })
 
@@ -102,7 +107,7 @@ describe('AdvancedUISettings reading mode', () => {
       const wrapper = await renderSettings()
       expect(wrapper.text()).toContain('Reading mode')
       expect(wrapper.text()).toContain('Read ASCII art and ABNF aloud')
-      expect(wrapper.find('input[type="range"]').exists()).toBe(true)
+      expect(speechRateSlider(wrapper).exists()).toBe(true)
       expect(wrapper.text()).not.toContain("Reading aloud isn't available")
     })
 
@@ -111,7 +116,7 @@ describe('AdvancedUISettings reading mode', () => {
       const wrapper = await renderSettings()
       expect(wrapper.text()).toContain('currently reports no speech voices')
       expect(wrapper.find('select').exists()).toBe(false)
-      expect(wrapper.find('input[type="range"]').exists()).toBe(false)
+      expect(speechRateSlider(wrapper).exists()).toBe(false)
       expect(wrapper.text()).not.toContain('Read ASCII art and ABNF aloud')
     })
 
@@ -120,7 +125,7 @@ describe('AdvancedUISettings reading mode', () => {
       const wrapper = await renderSettings()
       expect(wrapper.text()).toContain('No English voices were found')
       expect(wrapper.find('select').exists()).toBe(false)
-      expect(wrapper.find('input[type="range"]').exists()).toBe(true)
+      expect(speechRateSlider(wrapper).exists()).toBe(true)
     })
 
     test('offers a voice select listing the English voices when there are some', async () => {
@@ -147,7 +152,7 @@ describe('AdvancedUISettings reading mode', () => {
       supportReadingMode([{ name: 'Test English', lang: 'en-GB', voiceURI: 'test-en' }])
       const wrapper = await renderSettings()
       const store = useUiSettingsStore()
-      const slider = wrapper.find('input[type="range"]')
+      const slider = speechRateSlider(wrapper)
       await slider.setValue('1.6')
       await slider.trigger('change')
       expect(store.readingRate).toBe(1.6)
@@ -172,14 +177,8 @@ describe('AdvancedUISettings text size and spacing', () => {
   const resetFor = (wrapper: Awaited<ReturnType<typeof renderSettings>>, label: string) =>
     wrapper.find(`button[aria-label="Reset ${label.toLowerCase()} to default"]`)
 
-  test('is absent while the flag is off', async () => {
-    const wrapper = await renderSettings()
-    expect(wrapper.text()).not.toContain('Text spacing')
-    expect(wrapper.text()).not.toContain('Text size')
-  })
-
   test('offers a size slider and four spacing sliders, each with its own reset', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     for (const label of ['Text size', 'Line spacing', 'Letter spacing', 'Word spacing', 'Paragraph spacing']) {
       expect(sliderFor(wrapper, label).exists()).toBe(true)
       expect(resetFor(wrapper, label).exists()).toBe(true)
@@ -187,12 +186,12 @@ describe('AdvancedUISettings text size and spacing', () => {
   })
 
   test('never mentions the standard the values come from', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     expect(wrapper.text()).not.toMatch(/WCAG|SC 1\.4/i)
   })
 
   test('moving a slider writes its step to the store', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     const slider = sliderFor(wrapper, 'Letter spacing')
     await slider.setValue(3)
     await slider.trigger('change')
@@ -200,7 +199,7 @@ describe('AdvancedUISettings text size and spacing', () => {
   })
 
   test('word spacing cannot be set below the letter spacing', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     const store = useUiSettingsStore()
     store.setLetterSpacingStep(4)
     await nextTick()
@@ -210,7 +209,7 @@ describe('AdvancedUISettings text size and spacing', () => {
   })
 
   test('a reset button returns its slider, the store and the stored value to the default', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     const store = useUiSettingsStore()
     const size = sliderFor(wrapper, 'Text size')
     await size.setValue(1.4)
@@ -225,7 +224,7 @@ describe('AdvancedUISettings text size and spacing', () => {
   })
 
   test('reset buttons are plain buttons, so the browser does not run its own form reset over the sliders', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     const resets = wrapper.findAll('button').filter((button) => button.text().startsWith('Reset'))
     expect(resets.length).toBeGreaterThan(0)
     for (const reset of resets) {
@@ -234,7 +233,7 @@ describe('AdvancedUISettings text size and spacing', () => {
   })
 
   test('Reset all spacing clears every spacing step but not the text size', async () => {
-    const wrapper = await renderSettings({ hasTextScale: true })
+    const wrapper = await renderSettings()
     const store = useUiSettingsStore()
     store.setTextScale(1.2)
     store.setLineSpacingStep(5)

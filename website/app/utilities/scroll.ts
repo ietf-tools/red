@@ -3,7 +3,6 @@ import { throttle, clamp } from 'es-toolkit'
 import { watchDebounced } from '@vueuse/core'
 import { prefersReducedMotion } from './accessibility'
 import { useUiSettingsStore } from '~/stores/ui-settings'
-import { useFeatureFlags } from './feature-flags'
 
 /**
  * RFCs for testing:
@@ -203,17 +202,15 @@ export const useTocActiveId = (ids: Ref<string[]>) => {
     { edges: ['leading'] }
   )
 
-  // text size and spacing (or the flag that enables them) reflow the document, moving every element
+  // text size and spacing reflow the document, moving every element
   const uiSettings = useUiSettingsStore()
-  const featureFlags = useFeatureFlags()
   watch(
     () => [
       uiSettings.textScale,
       uiSettings.lineSpacingStep,
       uiSettings.letterSpacingStep,
       uiSettings.wordSpacingStep,
-      uiSettings.paragraphSpacingStep,
-      featureFlags.value.hasTextScale
+      uiSettings.paragraphSpacingStep
     ],
     () => throttledHandleResize(),
     { flush: 'post' }

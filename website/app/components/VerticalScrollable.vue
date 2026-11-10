@@ -22,7 +22,6 @@
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
 import { useUiSettingsStore } from '~/stores/ui-settings'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 
 const scrollContainer = useTemplateRef('scroll-container')
 const canScrollUp = ref(false)
@@ -37,7 +36,6 @@ const props = defineProps<Props>()
 const BUFFER_PX = 8
 
 const uiSettings = useUiSettingsStore()
-const featureFlags = useFeatureFlags()
 
 const updateScrollHint = () => {
   const { value: scrollContainerElement } = scrollContainer
@@ -57,7 +55,7 @@ const updateScrollHint = () => {
 const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
 
 // text scale (or its feature flag) changes the content size without resizing the observed container
-watch(() => [uiSettings.textScale, featureFlags.value.hasTextScale], debouncedUpdateScrollHint, { flush: 'post' })
+watch(() => uiSettings.textScale, debouncedUpdateScrollHint, { flush: 'post' })
 
 const observerRef = ref<ResizeObserver | null>(null)
 

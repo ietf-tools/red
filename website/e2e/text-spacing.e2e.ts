@@ -25,18 +25,16 @@ const DESKTOP_VIEWPORT = { width: 1400, height: 900 } as const
 
 const TIME_PER_TEST_MS = 90_000
 
-const FEATURE_FLAGS_STORAGE_KEY = 'feature-flag-experiments'
 const UI_SETTINGS_STORAGE_KEY = 'rfc-ui'
 
-const enableTextScale = (page: Page, uiSettings?: Record<string, number>) =>
+const seedUiSettings = (page: Page, uiSettings?: Record<string, number>) =>
   page.addInitScript(
-    ({ featureFlagsKey, uiSettingsKey, settings }) => {
-      window.localStorage.setItem(featureFlagsKey, JSON.stringify({ hasTextScale: true }))
+    ({ uiSettingsKey, settings }) => {
       if (settings) {
         window.localStorage.setItem(uiSettingsKey, JSON.stringify(settings))
       }
     },
-    { featureFlagsKey: FEATURE_FLAGS_STORAGE_KEY, uiSettingsKey: UI_SETTINGS_STORAGE_KEY, settings: uiSettings }
+    { uiSettingsKey: UI_SETTINGS_STORAGE_KEY, settings: uiSettings }
   )
 
 const MAXIMUM_SPACING = {
@@ -60,7 +58,7 @@ describe('text size and spacing', async () => {
     const page = await openHydratedPage(infoSeriesPathBuilder(RFC_UNDER_TEST), {
       beforeLoad: async (loading) => {
         await loading.setViewportSize(viewport)
-        await enableTextScale(loading, settings)
+        await seedUiSettings(loading, settings)
       }
     })
     await page.locator('.rfc-content wbr').first().waitFor({ state: 'attached' })
