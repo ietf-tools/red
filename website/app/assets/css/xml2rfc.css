@@ -284,7 +284,7 @@ dl > dd > dl {
    narrow side of an inclusive `max-width` and lose the layout it had before. 60em leaves it 64px
    of clearance. */
 @media (max-width: 60em) {
-  dl:not(.dlNewline, .dlParallel, .references) {
+  dl:not(.dlNewline, .dlParallel, .references, .olPercent) {
     > dt {
       float: none;
       display: inline;
@@ -330,7 +330,7 @@ dl > dd > dl {
      `!important` margin below has to zero xml2rfc's inline `margin-left`. Nested lists add their own
      rule (see `dl.dlParallel dl.dlParallel` below), so each level steps in by the same small amount
      and the definition text never runs out of room at 320px. */
-  dl:is(.dlParallel, .references) {
+  dl:is(.dlParallel, .references, .olPercent) {
     > dt {
       float: none;
       display: block;
