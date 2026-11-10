@@ -21,6 +21,10 @@ The [RFC Series Approval Board](https://datatracker.ietf.org/group/rsab/about/) 
 - the IETF LLC Director (ex officio)
 - an RPC representative (ex officio)
 
+### RSAB Meetings
+
+RSAB meetings are [announced on datatracker](https://datatracker.ietf.org/group/rsab/meetings/) and via the [RSWG mailing list](https://mailarchive.ietf.org/arch/browse/rswg/). They are also included in the agendas for in-person IETF meetings when they coincide. 
+
 ## RSCE
 
 The RFC Series Consulting Editor (RSCE) is a senior technical publishing professional who provides expert advice to the RFC Production Center (RPC) and RSAB on how to implement established policies on an ongoing and operational basis. This includes raising support or concerns for proposed policy updates and initiating proposed policy changes within the RSWG.
