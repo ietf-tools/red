@@ -138,8 +138,8 @@ describe('AdvancedUISettings reading mode', () => {
       supportReadingMode([{ name: 'Test English', lang: 'en-GB', voiceURI: 'test-en' }])
       const wrapper = await renderSettings()
       const store = useUiSettingsStore()
-      // the link preview checkbox comes first on the panel
-      await wrapper.findAll('[role="checkbox"]').at(-1)?.trigger('click')
+      // reading mode comes before the link preview checkbox on the panel
+      await wrapper.findAll('[role="checkbox"]').at(0)?.trigger('click')
       expect(store.readAloudPreformatted).toBe(true)
     })
 
