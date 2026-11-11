@@ -1,50 +1,53 @@
 {
+  "/never-issued/": {
+    "mtime": "2026-07-07T10:15:40+12:00"
+  },
   "/status-changes/": {
-    "mtime": "2026-04-17T16:37:18-05:00"
-  },
-  "/about/contact/": {
-    "mtime": "2026-05-01T12:58:56-07:00"
-  },
-  "/about/rfc-editor/": {
-    "mtime": "2026-05-11T15:15:35-07:00"
-  },
-  "/about/rpc-reports/": {
-    "mtime": "2026-05-11T16:46:38-07:00"
-  },
-  "/authors/rfc-editor/": {
-    "mtime": "2026-05-08T21:16:58+12:00"
+    "mtime": "2026-10-28T16:12:22-07:00"
   },
   "/authors/rfc-how-to/": {
-    "mtime": "2026-05-11T15:15:35-07:00"
+    "mtime": "2026-08-11T22:37:03-05:00"
   },
   "/authors/rfc-independent-submissions/": {
-    "mtime": "2026-05-08T21:16:58+12:00"
+    "mtime": "2026-06-11T13:33:00+12:00"
   },
   "/authors/rfc-style-guide/": {
-    "mtime": "2026-05-08T17:16:32-07:00"
+    "mtime": "2026-08-01T09:13:45+12:00"
+  },
+  "/about/contact/": {
+    "mtime": "2026-06-30T11:45:31+12:00"
+  },
+  "/about/rfc-editor/": {
+    "mtime": "2026-11-12T09:19:40+13:00"
+  },
+  "/about/rpc-reports/": {
+    "mtime": "2026-09-29T00:25:56-07:00"
   },
   "/series/rfc-download/": {
-    "mtime": "2026-05-05T11:00:11+12:00"
+    "mtime": "2026-07-30T07:34:27+12:00"
   },
   "/series/rfc-errata/": {
-    "mtime": "2026-05-08T17:35:30-07:00"
+    "mtime": "2026-06-11T13:33:00+12:00"
   },
   "/series/rfc-faq/": {
-    "mtime": "2026-05-11T12:18:12-07:00"
-  },
-  "/series/rfc-tips/": {
-    "mtime": "2025-10-22T11:29:09+13:00"
+    "mtime": "2026-11-10T14:54:01-06:00"
   },
   "/series/rfc-use/": {
-    "mtime": "2025-10-21T09:09:58+13:00"
+    "mtime": "2026-05-19T19:57:09-07:00"
   },
   "/series/rfc/": {
-    "mtime": "2025-10-21T09:09:58+13:00"
+    "mtime": "2026-08-11T13:01:47-07:00"
+  },
+  "/authors/ise/ise-checklist/": {
+    "mtime": "2026-06-11T13:33:00+12:00"
+  },
+  "/authors/ise/ise-reviewer-guidelines/": {
+    "mtime": "2026-07-13T13:19:09+12:00"
+  },
+  "/authors/ise/iseb/": {
+    "mtime": "2026-06-11T13:33:00+12:00"
   },
   "/series/errata/how-to-verify/": {
-    "mtime": "2026-05-08T17:35:30-07:00"
-  },
-  "/series/errata/index/": {
-    "mtime": "2026-05-08T17:35:30-07:00"
+    "mtime": "2026-06-11T13:33:00+12:00"
   }
 }
