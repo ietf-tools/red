@@ -23,7 +23,7 @@ The [RFC Series Approval Board](https://datatracker.ietf.org/group/rsab/about/) 
 
 ### RSAB Meetings
 
-RSAB meetings are [announced on datatracker](https://datatracker.ietf.org/group/rsab/meetings/) and via the [RSWG mailing list](https://mailarchive.ietf.org/arch/browse/rswg/). They are also included in the agendas for in-person IETF meetings when they coincide. 
+RSAB meetings are [announced on datatracker](https://datatracker.ietf.org/group/rsab/meetings/) and via the [RSWG mailing list](https://mailarchive.ietf.org/arch/browse/rswg/). They are also included in the agendas for in-person IETF meetings when they coincide.
 
 ## RSCE
 
