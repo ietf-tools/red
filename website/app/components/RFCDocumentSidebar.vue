@@ -49,6 +49,7 @@ import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useReadingMode } from '~/utilities/reading-mode/use-reading-mode'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { closeModalAndScrollToId } from '~/utilities/tableOfContents'
+import { rememberScrollPosition } from '~/utilities/hash-link-scroll'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -68,6 +69,7 @@ const handleCloseAndNavigate = (id: string) => {
   isModalOpen.value = false
   nextTick(() => {
     // nextTick() because we need to wait for the modal to render closed, and then attempt to scroll
+    rememberScrollPosition()
     window.location.hash = id
   })
 }

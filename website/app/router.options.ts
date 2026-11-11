@@ -1,13 +1,13 @@
 import type { RouterConfig } from '@nuxt/schema'
 
 /**
- * Non-RFC citations are plain `<a href="#…">` anchors. The browser saves the
- * scroll position for that history entry, so Back should return the reader to
- * where they clicked. vue-router runs `scrollBehavior` on every popstate, but has
- * no `savedPosition` for an entry it did not create, and Nuxt's default then forces
- * `{ top: 0 }` when a hash is removed on the same page. Returning `false` leaves
- * the scroll position alone so the browser's own restoration stands. Delete this
- * file once Nuxt fixes it upstream, https://github.com/nuxt/nuxt/issues/36660
+ * Citations are plain `<a href="#…">` anchors, so the router never records a scroll
+ * position for the entry they leave. vue-router runs `scrollBehavior` on every popstate,
+ * and Nuxt's default forces `{ top: 0 }` when a hash is removed on the same page.
+ * `savedPosition` is written by utilities/hash-link-scroll.ts before such a jump. When
+ * it is missing (a hard-loaded page, where the browser's own restoration is still
+ * active) returning `false` leaves the scroll position to the browser. Delete the
+ * `false` fallback once Nuxt fixes it upstream, https://github.com/nuxt/nuxt/issues/36660
  * https://github.com/ietf-tools/red/issues/441
  */
 export default {
