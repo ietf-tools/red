@@ -37,6 +37,11 @@
     </p>
 
     <ul class="block print:text-center font-feature-settings-calt-off ml-2.5">
+      <li class="inline-block" v-if="props.rfcBucketHtmlDocument.rfc.published">
+        <time :datetime="props.rfcBucketHtmlDocument.rfc.published">
+          {{ formattedPublished }}
+        </time>
+      </li>
       <li
         v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
         :key="authorIndex"
@@ -90,7 +95,7 @@
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
 import { parseMaybeRfcLink, rfcFormatPathBuilder } from '~/utilities/url'
-import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
+import { COMMA, FULLSTOP, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
@@ -112,6 +117,8 @@ import { getTocLinkBackTargetId } from '~/utilities/toc-link-back'
 import { titleWithWordBreaks } from '~/utilities/word-break-title'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
+import { DateTime } from 'luxon'
+import { formatDatePublished } from '~/utilities/rfc-converters-utils.ts'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -249,6 +256,12 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     return h(PdfPages, node.attributes, () => children)
   }
 }
+
+const formattedPublished = computed(() => {
+  if (!props.rfcBucketHtmlDocument.rfc.published) return
+  const dt = DateTime.fromISO(props.rfcBucketHtmlDocument.rfc.published)
+  return `${formatDatePublished(dt, true)}${FULLSTOP}${NONBREAKING_SPACE}${NONBREAKING_SPACE}`
+})
 
 const titleVNode = computed<VNode>(() => titleWithWordBreaks(props.rfcBucketHtmlDocument.rfc.title))
 
