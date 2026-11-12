@@ -59,7 +59,7 @@ const subseriesRedirect = (req: IRequest) => {
   ) {
     url.pathname = url.pathname.replace(/^\/(bcp|std|fyi)\//, '/info/')
     url.pathname += '/' // the new site expects a trailing slash
-    return redirectTo(url.toString(), 302)(req)
+    return redirectTo(url.toString(), 301)(req)
   }
 }
 
@@ -86,56 +86,56 @@ router
    */
   .all('*', addNormalizedPath)
 
-  .get('/about', redirectTo('/about/rfc-editor/', 302))
+  .get('/about', redirectTo('/about/rfc-editor/', 301))
   .get('/about/clusters/', redirectTo('https://authors.ietf.org/rfc-publication-process#clusters', 302))
-  .get('/about/governing', redirectTo('/about/rfc-editor/', 302))
-  .get('/about/independent', redirectTo('/authors/rfc-independent-submissions/', 302))
-  .get('/about/iseb', redirectTo('/authors/rfc-independent-submissions/', 302))
+  .get('/about/governing', redirectTo('/about/rfc-editor/', 301))
+  .get('/about/independent', redirectTo('/authors/rfc-independent-submissions/', 301))
+  .get('/about/iseb', redirectTo('/authors/rfc-independent-submissions/', 301))
   .get('/about/pubprocess/', redirectTo('https://authors.ietf.org/rfc-publication-process', 302))
-  .get('/about/queue/', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/about/`, 302))
-  .get('/about/queue/flowchart/', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/about/`, 302))
-  .get('/about/rsag/', redirectTo('/about/', 302))
-  .get('/all_clusters.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/clusters/`, 302))
-  .get('/bcps', redirectTo('/search/?status=Best+Current+Practice', 302))
-  .get('/contact', redirectTo('/about/contact/', 302))
-  .get('/contact/at-ietf', redirectTo('/about/contact/', 302))
-  .get('/current_queue.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org`, 302))
-  .get('/errata.json', redirectTo('/api/v1/errata.json', 302))
-  .get('/errata.php', redirectTo(`https://errata${env.ENV_DOMAIN}.rfc-editor.org`, 302))
-  .get('/errata-definitions', redirectTo('/series/rfc-errata/'))
+  .get('/about/queue/', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/about/`, 301))
+  .get('/about/queue/flowchart/', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/about/`, 301))
+  .get('/about/rsag/', redirectTo('/about/', 301))
+  .get('/all_clusters.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/clusters/`, 301))
+  .get('/bcps', redirectTo('/search/?status=Best+Current+Practice', 301))
+  .get('/contact', redirectTo('/about/contact/', 301))
+  .get('/contact/at-ietf', redirectTo('/about/contact/', 301))
+  .get('/current_queue.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org`, 301))
+  .get('/errata.json', redirectTo('/api/v1/errata.json', 301))
+  .get('/errata.php', redirectTo(`https://errata${env.ENV_DOMAIN}.rfc-editor.org`, 301))
+  .get('/errata-definitions', redirectTo('/series/rfc-errata/', 301))
   .get('/faq/', redirectTo('/series/rfc-faq/', 301))
-  .get('/history/', redirectTo('https://history.rfc-editor.org', 302))
-  .get('/how-to-report/', redirectTo('/series/rfc-errata/', 302))
-  .get('/how-to-verify', redirectTo('/series/errata/how-to-verify/', 302))
-  .get('/ien/', redirectTo('https://history.rfc-editor.org/ien/', 302))
-  .get('/ien/ien-index.html', redirectTo('https://history.rfc-editor.org/ien/', 302))
+  .get('/history/', redirectTo('https://history.rfc-editor.org', 301))
+  .get('/how-to-report/', redirectTo('/series/rfc-errata/', 301))
+  .get('/how-to-verify', redirectTo('/series/errata/how-to-verify/', 301))
+  .get('/ien/', redirectTo('https://history.rfc-editor.org/ien/', 301))
+  .get('/ien/ien-index.html', redirectTo('https://history.rfc-editor.org/ien/', 301))
   .get('/other/', redirectTo('https://authors.ietf.org', 302))
   .get('/policy.html', redirectTo('/authors/rfc-style-guide/', 301))
   .get('/pubprocess/', redirectTo('https://authors.ietf.org/rfc-publication-process', 302))
-  .get('/queue.html', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/queue.xml', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/api/v1/queue.xml`, 302))
-  .get('/queue2.html', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/queue2.xml', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/api/v1/queue.xml`, 302))
-  .get('/retrieve/', redirectTo('/search/', 302))
-  .get('/retrieve/bulk', redirectTo('/series/rfc-download/', 302))
-  .get('/retrieve/rsync/', redirectTo('/series/rfc-download/', 302))
-  .get('/rfc-index-100a.html', redirectTo('/rfc-index/', 302))
-  .get('/rfc-index-100d.html', redirectTo('/rfc-index/', 302))
-  .get('/rfc-index.html', redirectTo('/rfc-index/', 302))
-  .get('/rfc-index2.html', redirectTo('/rfc-index/', 302))
-  .get('/rfc-online-2000.html', redirectTo('https://history.rfc-editor.org/', 302))
-  .get('/rfcs-per-year/', redirectTo('/about/rpc-reports/', 302))
-  .get('/source-definitions', redirectTo('/series/rfc-tips/', 302))
-  .get('/source-definitions/', redirectTo('/series/rfc-tips/', 302))
-  .get('/staff/', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/staff/add_draft.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/staff/auth48_edit.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/final-review`, 302))
-  .get('/staff/current_queue.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/staff/index_controls.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/staff/list_drafts.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
-  .get('/staff/track_by_editor.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/team`, 302))
-  .get('/standards/', redirectTo('/search/?status=Internet+Standard', 302))
-  .get('/status_changes.php', redirectTo('/status-changes/', 302))
+  .get('/queue.html', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/queue.xml', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/api/v1/queue.xml`, 301))
+  .get('/queue2.html', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/queue2.xml', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/api/v1/queue.xml`, 301))
+  .get('/retrieve/', redirectTo('/search/', 301))
+  .get('/retrieve/bulk', redirectTo('/series/rfc-download/', 301))
+  .get('/retrieve/rsync/', redirectTo('/series/rfc-download/', 301))
+  .get('/rfc-index-100a.html', redirectTo('/rfc-index/', 301))
+  .get('/rfc-index-100d.html', redirectTo('/rfc-index/', 301))
+  .get('/rfc-index.html', redirectTo('/rfc-index/', 301))
+  .get('/rfc-index2.html', redirectTo('/rfc-index/', 301))
+  .get('/rfc-online-2000.html', redirectTo('https://history.rfc-editor.org/', 301))
+  .get('/rfcs-per-year/', redirectTo('/about/rpc-reports/', 301))
+  .get('/source-definitions', redirectTo('/series/rfc-tips/', 301))
+  .get('/source-definitions/', redirectTo('/series/rfc-tips/', 301))
+  .get('/staff/', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/staff/add_draft.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/staff/auth48_edit.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/final-review`, 301))
+  .get('/staff/current_queue.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/staff/index_controls.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/staff/list_drafts.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/`, 301))
+  .get('/staff/track_by_editor.php', redirectTo(`https://purple${env.ENV_DOMAIN}.rfc-editor.org/team`, 301))
+  .get('/standards/', redirectTo('/search/?status=Internet+Standard', 301))
+  .get('/status_changes.php', redirectTo('/status-changes/', 301))
   .get('/styleguide.html', redirectTo('/authors/rfc-style-guide/', 301))
   .get('/styleguide/', redirectTo('/authors/rfc-style-guide/', 301))
   .get('/styleguide/headers-and-boilerplate/', redirectTo('/authors/rfc-style-guide/#rfc-headers-and-boilerplate', 301))
@@ -143,18 +143,18 @@ router
   .get('/styleguide/tips/', redirectTo('/authors/rfc-style-guide/', 301))
   .get(
     '/rfc-style-guide/part2.html', // https://www.rfc-editor.org/info/rfc7322/#section-6.1
-    redirectTo('/authors/rfc-style-guide/', 302)
+    redirectTo('/authors/rfc-style-guide/', 301)
   )
 
   .get('/auth48/*', (req: IRequest) => {
     let match = req.normalizedPath.match(/^\/auth48\/c(?<num>\d+)$/i)
     if (match?.groups?.num) {
-      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/C${match.groups.num}`, 302)
+      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/C${match.groups.num}`, 301)
     }
 
     match = req.normalizedPath.match(/^\/auth48\/rfc(?<num>\d+)$/i)
     if (match?.groups?.num) {
-      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/rfc${match.groups.num}`, 302)
+      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/final-review/rfc${match.groups.num}`, 301)
     }
   })
   .get('/authors/:extra+', (req: IRequest) => {
@@ -164,27 +164,27 @@ router
   })
   .get('/cluster_info.php', (req: IRequest) => {
     if (typeof req.query?.cid === 'string' && req.query.cid.startsWith('C')) {
-      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/clusters/${req.query.cid.slice(1)}`, 302)
+      return Response.redirect(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/clusters/${req.query.cid.slice(1)}`, 301)
     }
   })
   .get('/errata/:extra+', (req: IRequest) =>
-    Response.redirect(`https://errata${env.ENV_DOMAIN}.rfc-editor.org/${req.params.extra}`, 302)
+    Response.redirect(`https://errata${env.ENV_DOMAIN}.rfc-editor.org/${req.params.extra}`, 301)
   )
   .get('/errata_search.php', (req: IRequest) =>
-    Response.redirect(legacyErrataSearchRedirectUrlBuilder(req.url, env.ENV_DOMAIN), 302)
+    Response.redirect(legacyErrataSearchRedirectUrlBuilder(req.url, env.ENV_DOMAIN), 301)
   )
   .get('/ien/:extra+', (req: IRequest) =>
-    Response.redirect(`https://history.rfc-editor.org/ien/${req.params.extra}`, 302)
+    Response.redirect(`https://history.rfc-editor.org/ien/${req.params.extra}`, 301)
   )
   .get('/in-notes/museum/:extra+', (req: IRequest) => {
-    return Response.redirect(`https://history.rfc-editor.org/${req.params.extra}`, 302)
+    return Response.redirect(`https://history.rfc-editor.org/${req.params.extra}`, 301)
   })
   .get('/in-notes/prerelease/*', (req: IRequest) => {
     const match = req.normalizedPath.match(/^\/in-notes\/prerelease\/rfc(?<num>\d+)\.notprepped\.xml$/i)
     if (match?.groups?.num) {
       return Response.redirect(
         `https://datatracker${env.ENV_DOMAIN}.ietf.org/doc/rfc${match.groups.num}/notprepped/`,
-        302
+        301
       )
     }
   })
@@ -199,10 +199,10 @@ router
     redirectTo('https://raw.githubusercontent.com/ietf-tools/RFCXML/main/SVG-1.2-RFC.rnc')
   )
   .get('/search/rfc_search.php', (req: IRequest) =>
-    Response.redirect(legacySearchRedirectPathBuilder(req.url, env.ENV_DOMAIN), 302)
+    Response.redirect(legacySearchRedirectPathBuilder(req.url, env.ENV_DOMAIN), 301)
   )
   .get('/search/rfc_search_detail.php', (req: IRequest) =>
-    Response.redirect(legacySearchRedirectPathBuilder(req.url, env.ENV_DOMAIN), 302)
+    Response.redirect(legacySearchRedirectPathBuilder(req.url, env.ENV_DOMAIN), 301)
   )
 
   /**
@@ -213,15 +213,15 @@ router
    */
   .all('*', rejectPhpPaths)
 
-  .get('/rfc/bcp-ref.txt', redirectTo('/std/bcp-index.txt', 302))
-  .get('/rfc/rfc-index.txt', redirectTo('/rfc-index.txt', 302))
-  .get('/in-notes/rfc-index.txt', redirectTo('/rfc-index.txt', 302))
-  .get('/rfc/rfc-index.xml', redirectTo('/rfc-index.xml', 302))
+  .get('/rfc/bcp-ref.txt', redirectTo('/std/bcp-index.txt', 301))
+  .get('/rfc/rfc-index.txt', redirectTo('/rfc-index.txt', 301))
+  .get('/in-notes/rfc-index.txt', redirectTo('/rfc-index.txt', 301))
+  .get('/rfc/rfc-index.xml', redirectTo('/rfc-index.xml', 301))
   // Many RFCs at /rfc/rfc* refer to this CSS file.
   // Apparently it was added so that devs could override the path and add custom CSS when displaying RFCs,
   // but in the 2026-era there are other ways of inserting CSS (via UserScripts, Greasemonkey etc)
   .get('/rfc/rfc-local.css', emptyFileResponse)
-  .get('/rfc/std-ref.txt', redirectTo('/std/std-index.txt', 302))
+  .get('/rfc/std-ref.txt', redirectTo('/std/std-index.txt', 301))
   // note that /rfc/fyi-ref.txt doesn't exist, and /rfc/rfc-ref.txt is not a redirect and is a blob still served
 
   .get('/rfc/bcp/bcp*', subseriesRedirect)
