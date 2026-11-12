@@ -517,6 +517,10 @@ export const useDatatrackerRFCUrlBuilder = (rfcNumber: RfcCommon['number']) => {
   return `${useDatatrackerUrlOrigin()}/doc/rfc${rfcNumber}/` as const
 }
 
+export const useDatatrackerIprSearchForRfcUrlBuilder = (rfcNumber: RfcCommon['number']) => {
+  return `${useDatatrackerUrlOrigin()}/ipr/search/?draft=&rfc=${rfcNumber}&submit=rfc` as const
+}
+
 export const useErrataUrlBuilder = (
   errataId: string
   // errataId looks like '1234' (not 'eid1234') so we'll need to add the 'eid' prefix

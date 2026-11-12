@@ -241,6 +241,14 @@
               <NewWindowIcon />
             </Anchor>
           </dd>
+
+          <dt class="font-bold mt-2">IPR Disclosures</dt>
+          <dd>
+            <Anchor :href="datatrackerIprSearchUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+              Find IPR Disclosures from the IETF
+              <NewWindowIcon />
+            </Anchor>
+          </dd>
         </dl>
       </VerticalScrollable>
     </TabsContent>
@@ -306,6 +314,7 @@ import {
   useRfcEditorErrataSearchForRfcUrl,
   infoSeriesPathBuilder,
   useDatatrackerRFCUrlBuilder,
+  useDatatrackerIprSearchForRfcUrlBuilder,
   IAB_URL_ORIGIN,
   MARKDOWN_AUTHORS_INDEPENDENT,
   IETF_URL_ORIGIN,
@@ -432,6 +441,9 @@ const formats = computed(() =>
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfcBucketHtmlDocument.rfc.number}`, true))
 
 const datatrackerRFCUrl = computed(() => useDatatrackerRFCUrlBuilder(props.rfcBucketHtmlDocument.rfc.number))
+const datatrackerIprSearchUrl = computed(() =>
+  useDatatrackerIprSearchForRfcUrlBuilder(props.rfcBucketHtmlDocument.rfc.number)
+)
 
 const errataSearchForThisRfc = computed(() => useRfcEditorErrataSearchForRfcUrl(props.rfcBucketHtmlDocument.rfc.number))
 
@@ -917,6 +929,7 @@ const noScriptHtml = computed(() => {
       ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo(formats.value, rfc.number)) : ''}
       <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo(rfc.number))}</dd>
       <dt class="font-bold mt-2">Document history</dt><dd class="text-sm"><a href="${datatrackerRFCUrl.value}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">View history of RFC ${rfc.number}</a></dd>
+      <dt class="font-bold mt-2">IPR Disclosures</dt><dd class="text-sm"><a href="${htmlEscapeToText(datatrackerIprSearchUrl.value)}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">Find IPR Disclosures from the IETF</a></dd>
     </dl>
     <h3 class="text-lg font-bold mt-4">Errata</h3>
     <p><a href="${htmlEscapeToText(errataSearchForThisRfc.value)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
