@@ -328,7 +328,7 @@ dl > dd > dl {
      labels are lost mid-line. Here the term takes its own line in a heavier weight and the
      definition sits under it, indented. The indent is padding rather than margin because the
      `!important` margin below has to zero xml2rfc's inline `margin-left`. Nested lists add their own
-     rule (see `dl.dlParallel dl.dlParallel` below), so each level steps in by the same small amount
+     rule (see the nested-list rules below), so each level steps in by the same small amount
      and the definition text never runs out of room at 320px. */
   dl:is(.dlParallel, .references, .olPercent) {
     > dt {
@@ -357,7 +357,7 @@ dl > dd > dl {
     }
   }
 
-  dl.dlParallel dl.dlParallel {
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
     margin-inline-start: 0;
     padding-inline-start: 0.6em;
   }
@@ -399,6 +399,36 @@ dl > dd > dl {
     container-type: normal;
   }
 
+  /* A list nested in a definition sits in the parent's definition column, which is already only
+     part of the width, so a grid of its own would spend another term column per level. Its term and
+     definition instead run on as one line of text, wrapping under a hanging indent. */
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+    display: block;
+  }
+
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dt {
+    display: inline;
+    margin: 0 0.5em 0 0;
+  }
+
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd,
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd.dd-ml {
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* A forced line break rather than a block, so the run stays one block and the indent below
+     applies to the line after it. */
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd.break {
+    display: inline;
+  }
+
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd.break::after {
+    content: '\A';
+    white-space: pre;
+  }
+
   dl.references > dt,
   dl.olPercent > dt,
   dl.dlParallel > dt {
@@ -430,26 +460,29 @@ dl > dd > dl {
     margin-inline-start: 0;
     grid-column: 2;
   }
-
-  /* A list nested in a definition sits in the parent's definition column, which is already only
-     part of the width. Giving it a grid of its own spends another term column per level, leaving
-     the third level a few pixels wide. Nested lists stack their terms above their definitions
-     instead, whatever the viewport. */
-  dl.dlParallel dl.dlParallel {
-    display: block;
-  }
-
-  dl.dlParallel dl.dlParallel > dt {
-    margin-bottom: 0.2em;
-  }
 }
 
 /* The mark of nesting at every width. Below 60em the definition indent is removed, so without this
    a nested list is indistinguishable from its parent. */
-dl.dlParallel dl.dlParallel {
+:is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
   margin-inline-start: 0.5em;
   padding-inline-start: 0.75em;
   border-inline-start: 2px solid color-mix(in srgb, currentColor 25%, transparent);
+}
+
+/* The hanging indent for the run-on layout above: wrapped lines are indented, the line starting
+   each term is not. Here so it follows the nesting rule. The indent is cancelled inside block
+   content. */
+@media (min-width: 60em) {
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+    text-indent: 1.5em hanging each-line;
+  }
+
+  :is(dl.references, dl.olPercent, dl.dlParallel)
+    :is(dl.references, dl.olPercent, dl.dlParallel)
+    :is(p, ul, ol, dl, table, figure, pre) {
+    text-indent: 0;
+  }
 }
 
 a {
