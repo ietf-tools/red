@@ -110,6 +110,7 @@ router
   .get('/ien/', redirectTo('https://history.rfc-editor.org/ien/', 302))
   .get('/ien/ien-index.html', redirectTo('https://history.rfc-editor.org/ien/', 302))
   .get('/other/', redirectTo('https://authors.ietf.org', 302))
+  .get('/policy.html', redirectTo('/authors/rfc-style-guide/', 301))
   .get('/pubprocess/', redirectTo('https://authors.ietf.org/rfc-publication-process', 302))
   .get('/queue.html', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/`, 302))
   .get('/queue.xml', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org/api/v1/queue.xml`, 302))
