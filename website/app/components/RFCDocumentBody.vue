@@ -208,6 +208,18 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
       },
       childrenForVue
     ),
+  div: (node, childrenForVue) => {
+    // The lang-* class sits on the wrapping div, not on the pre inside it.
+    if (featureFlags.value.isAbnfDiagramsActive && node.attributes.class?.split(' ').includes('lang-abnf')) {
+      const children = nodePojoWalker(node.children, (child) =>
+        child.type === 'Element' && child.nodeName === 'pre'
+          ? { ...child, attributes: { ...child.attributes, class: `${child.attributes.class ?? ''} lang-abnf` } }
+          : child
+      ).map((child) => renderNodePojo(child, rfcHtmlPojoRenderers))
+      return h(node.nodeName, node.attributes, children)
+    }
+    return h(node.nodeName, node.attributes, childrenForVue)
+  },
   pre: (node, childrenForVue) => {
     if (props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc') {
       if (featureFlags.value.isAbnfDiagramsActive && node.attributes.class?.includes('lang-abnf')) {
