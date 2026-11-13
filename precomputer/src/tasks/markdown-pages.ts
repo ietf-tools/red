@@ -14,6 +14,7 @@ import {
   type HeadingInfo
 } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
+import { keepPunctuationWithLinks } from '../utilities/keep-punctuation-with-links.ts'
 import { saveToS3, markdownPagePathBuilder } from '../utilities/s3.ts'
 import { type AsyncTaskItem } from '../utilities/task.ts'
 
@@ -209,7 +210,7 @@ export const renderMarkdownPageData = async ({
 
   const toc = headingInfos.length > 0 ? buildMarkdownToc(headingInfos) : undefined
 
-  const htmlObj = rfcDocumentToPojo(Array.from(dom.body.childNodes))
+  const htmlObj = keepPunctuationWithLinks(rfcDocumentToPojo(Array.from(dom.body.childNodes)))
 
   const contentMetadataKey = `/${slug}/`
 

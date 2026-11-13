@@ -290,6 +290,19 @@
   }
 }
 
+/*
+  Written by the precomputer's keepPunctuationWithLinks around a link and the punctuation after it,
+  so a line can't break between the link's icon and that punctuation. Unlike `white-space: nowrap`
+  it still wraps inside the block when the link alone is wider than a line, rather than overflowing.
+  Plain CSS rather than a Tailwind utility so it is always emitted: nothing in the website sources
+  mentions the class.
+*/
+@layer components {
+  .keep-together {
+    display: inline-block;
+  }
+}
+
 html {
   color-scheme: light only;
   background: var(--color-gray-100);
