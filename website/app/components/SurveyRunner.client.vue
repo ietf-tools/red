@@ -24,6 +24,7 @@ import { DefaultDark, DefaultLight } from 'survey-core/themes'
 import { SurveyComponent } from 'survey-vue3-ui'
 import { z } from 'zod'
 import { secondsSince } from '~/utilities/reef-survey-response'
+import SurveyCancelLink from '~/components/SurveyCancelLink.vue'
 
 type SurveyData = Record<string, unknown>
 type SaveOptions = Pick<CompleteEvent, 'showSaveInProgress' | 'showSaveError' | 'showSaveSuccess'>
@@ -34,11 +35,20 @@ type Props = {
   definition: unknown
   theme?: unknown
   save: (data: SurveyData, metrics: SaveMetrics) => Promise<void>
+  /** Where the Cancel link goes. */
+  cancelHref: string
 }
 
-const { definition, theme, save } = defineProps<Props>()
+const { definition, theme, save, cancelHref } = defineProps<Props>()
 
 const emit = defineEmits<{ saved: [] }>()
+
+// SurveyJS looks a navigation item's component up by name among the app's registered components.
+const CANCEL_COMPONENT_NAME = 'sv-cancel-link'
+const { vueApp } = useNuxtApp()
+if (!vueApp.component(CANCEL_COMPONENT_NAME)) {
+  vueApp.component(CANCEL_COMPONENT_NAME, SurveyCancelLink)
+}
 
 const colorMode = useColorMode()
 
@@ -145,6 +155,17 @@ const attemptSave = async () => {
 // The page shows its own thank-you once the save resolves. SurveyJS's default would otherwise
 // show beside it, and the saving and save-error notifications render inside the completed page.
 model.completedHtml = ''
+model.completeText = 'Submit'
+// Lets someone who opened the survey by mistake leave without answering. The visibleIndex sorts it
+// ahead of SurveyJS's own navigation buttons, which start at a higher index.
+model.addNavigationItem({
+  id: 'sv-nav-cancel',
+  title: 'Cancel',
+  visibleIndex: 1,
+  css: 'sd-navigation__cancel-action',
+  component: CANCEL_COMPONENT_NAME,
+  data: { href: cancelHref }
+})
 applyTheme(model, theme, colorMode.value)
 // onComplete rather than onCompleting, because only here has SurveyJS already cleared the
 // answers to questions its conditions hid, which is the data a response stores. attemptSave()
@@ -186,6 +207,15 @@ watch(
   .sv-components-row {
     max-width: 500px;
     margin: 0 auto;
+  }
+
+  /* Cancel at the left edge, every other navigation button at the right. */
+  .sd-body__navigation {
+    justify-content: flex-end;
+  }
+
+  .sd-navigation__cancel-action {
+    margin-inline-end: auto;
   }
 }
 </style>
