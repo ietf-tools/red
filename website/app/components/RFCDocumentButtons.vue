@@ -2,7 +2,7 @@
   <div class="flex mt-2">
     <ul
       data-reef-stats
-      class="flex flex-col min-[380px]:flex-row min-[380px]:divide-x min-[380px]:divide-gray-300 gap-2 items-start pl-0.5 text-sm">
+      class="flex flex-row flex-wrap divide-x divide-gray-300 gap-2 max-[300px]:gap-0.5 items-start pl-0.5 max-[300px]:pl-0 text-sm">
       <li class="sm:pr-2">
         <RFCDocumentSubscribe
           :rfc-number="props.rfcNumber"
