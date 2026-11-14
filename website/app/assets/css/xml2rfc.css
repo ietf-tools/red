@@ -369,20 +369,21 @@ dl > dd > dl {
   }
 }
 
-/* Terms beside its definitions. Floating the term and indenting the
-   definition by a fixed measure couples two widths that were never measured against each other:
-   RFC 8900's "NOTE 1:" is wider than the 1.5em indent xml2rfc gave its definition, so the two
-   overlapped. A grid removes the coupling: terms take the first column at their own width and
-   definitions the second, with a term's later definitions continuing down the second column. Wide
-   screens only; below 60em the inline flow above applies, where a grid column could wrap under. */
+/* Terms beside their definitions, for the lists whose terms are short labels: a bibliography's
+   `[RFC1234]` and an ordered list's `(a)`. Floating the term and indenting the definition by a fixed
+   measure couples two widths that were never measured against each other. A grid removes the
+   coupling: terms take the first column at their own width and definitions the second, with a term's
+   later definitions continuing down the second column. Wide screens only; below 60em the inline flow
+   above applies, where a grid column could wrap under.
+
+   `dlParallel` is not here. Its terms are prose and can be long, so a column sized to the longest
+   term squeezes every definition; it runs on as text instead, see below. */
 @media (min-width: 60em) {
   dl.references,
-  dl.olPercent,
-  dl.dlParallel {
+  dl.olPercent {
     display: grid;
     /* The term column is as wide as the longest term but never more than 30% of the list, so a
-       long term wraps instead of crowding out its definitions (RFC 9781 Section 6.3, "Person and
-       email address to contact for further information:"). The definition column takes all the
+       long term wraps instead of crowding out its definitions. The definition column takes all the
        rest. Its minimum is 0 so that wide content overflows its own cell rather than resizing the
        term column. */
     grid-template-columns: fit-content(30%) minmax(0, 1fr);
@@ -399,39 +400,63 @@ dl > dd > dl {
     container-type: normal;
   }
 
-  /* A list nested in a definition sits in the parent's definition column, which is already only
-     part of the width, so a grid of its own would spend another term column per level. Its term and
-     definition instead run on as one line of text, wrapping under a hanging indent. */
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+  /* A `dlParallel` at any depth, and a list of the other kinds nested in a definition, run term and
+     definition on as one line of text, wrapping under a hanging indent. A nested list sits in its
+     parent's definition column, which is already only part of the width, so a grid of its own would
+     spend another term column per level. A `dlParallel` at the top level has the same problem in
+     miniature: a term column sized to its longest term leaves the definitions little room. The
+     hanging indent is the 1.5em xml2rfc gives `dlParallel` definitions. */
+  :is(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent)) {
     display: block;
-  }
 
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dt {
-    display: inline;
-    margin: 0 0.5em 0 0;
-  }
+    > dt {
+      display: inline;
+      float: none;
+      clear: none;
+      margin: 0 1em 0 0;
 
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd,
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd.dd-ml {
-    display: inline;
-    margin: 0;
-    padding: 0;
-  }
+      /* xml2rfc puts an anchor target in a block `div` inside a term, which would otherwise put
+         the term on its own line. */
+      > div:only-child {
+        display: inline;
+      }
+    }
 
-  /* A forced line break rather than a block, so the run stays one block and the indent below
-     applies to the line after it. */
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd.break {
-    display: inline;
-  }
+    > dd,
+    > dd.dd-ml {
+      display: inline;
+      margin: 0;
+      padding: 0;
 
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) > dd.break::after {
-    content: '\A';
-    white-space: pre;
+      /* xml2rfc wraps a definition's text in a paragraph, which would otherwise start its own line
+         under the term. */
+      > p:only-child {
+        display: inline;
+      }
+    }
+
+    /* A forced line break rather than a block, so the run stays one block and the indent below
+       applies to the line after it: a block would start a new first line, which the hanging
+       indent leaves unindented only once. */
+    > dd.break {
+      display: inline;
+
+      &::after {
+        content: '\A';
+        white-space: pre;
+      }
+    }
+
+    /* The gap between entries, which the floated layout got from each definition's bottom margin;
+       an inline definition has no margin to give, so a top-level list that wants one takes a blank
+       line. A list inside a definition and a compact list stay tight. */
+    &:not(.compact, .dlCompact, dd dl) > dd.break::after {
+      content: '\A\A';
+    }
   }
 
   dl.references > dt,
-  dl.olPercent > dt,
-  dl.dlParallel > dt {
+  dl.olPercent > dt {
     float: none;
     clear: none;
     grid-column: 1;
@@ -449,14 +474,12 @@ dl > dd > dl {
   /* The grid column already separates term and definition, so the measured indent would only add
      to the gap. */
   dl.references > dd.dd-ml,
-  dl.olPercent > dd.dd-ml,
-  dl.dlParallel > dd.dd-ml {
+  dl.olPercent > dd.dd-ml {
     margin-left: 0;
   }
 
   dl.references > dd,
-  dl.olPercent > dd,
-  dl.dlParallel > dd {
+  dl.olPercent > dd {
     margin-inline-start: 0;
     grid-column: 2;
   }
@@ -472,14 +495,13 @@ dl > dd > dl {
 
 /* The hanging indent for the run-on layout above: wrapped lines are indented, the line starting
    each term is not. Here so it follows the nesting rule. The indent is cancelled inside block
-   content. */
+   content, at zero specificity so that a run-on list inside a definition keeps its own. */
 @media (min-width: 60em) {
-  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+  :is(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent)) {
     text-indent: 1.5em hanging each-line;
   }
 
-  :is(dl.references, dl.olPercent, dl.dlParallel)
-    :is(dl.references, dl.olPercent, dl.dlParallel)
+  :where(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent))
     :is(p, ul, ol, dl, table, figure, pre) {
     text-indent: 0;
   }
