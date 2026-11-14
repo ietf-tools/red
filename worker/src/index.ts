@@ -213,7 +213,7 @@ router
    */
   .all('*', rejectPhpPaths)
 
-  .get('/rfc/bcp-ref.txt', redirectTo('/std/bcp-index.txt', 301))
+  .get('/rfc/bcp-ref.txt', redirectTo('/bcp/bcp-index.txt', 301))
   .get('/rfc/rfc-index.txt', redirectTo('/rfc-index.txt', 301))
   .get('/in-notes/rfc-index.txt', redirectTo('/rfc-index.txt', 301))
   .get('/rfc/rfc-index.xml', redirectTo('/rfc-index.xml', 301))
