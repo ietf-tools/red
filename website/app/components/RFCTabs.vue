@@ -402,7 +402,17 @@ const shouldShowStreamValue = (rfc: RfcCommon): boolean => {
 }
 
 const shouldShowGroup = (rfc: RfcCommon): boolean => {
-  switch (rfc.stream.slug) {
+  const { stream, group } = rfc
+  if (
+    // The datatracker gives every document without a group the "Individual Submissions" group, but
+    // that wording only means something in the IETF stream.
+    // https://github.com/ietf-tools/red/issues/460
+    stream.slug !== 'IETF' &&
+    (group?.type === 'individ' || group?.type === 'area')
+  ) {
+    return false
+  }
+  switch (stream.slug) {
     case 'IAB':
     case 'INDEPENDENT':
     case 'Editorial':
