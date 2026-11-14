@@ -13,7 +13,15 @@ import {
   parseMaybeRfcLink,
   isHashLink,
   subjectsPathBuilder,
-  sanitiseUserProfileImage
+  sanitiseUserProfileImage,
+  apiMarkdownPagePathBuilder,
+  areaGroupUrlBuilder,
+  datatrackerAuthorUrlBuilder,
+  doiUrlBuilder,
+  metaThumbnailPathBuilder,
+  useDatatrackerUrlOrigin,
+  useErrataUrlBuilder,
+  useWorkingGroupUrlBuilder
 } from './url'
 import type { ValidHrefs } from './url'
 
@@ -210,4 +218,52 @@ test('sanitiseUserProfileImage: rejects oversized values, accepts values right a
   expect(atLimit.length).toEqual(2048)
   expect(sanitiseUserProfileImage(atLimit)).toEqual(atLimit)
   expect(sanitiseUserProfileImage(`${atLimit}a`)).toEqual(undefined)
+})
+
+test("datatrackerAuthorUrlBuilder keeps the path's own encoding", () => {
+  expect(datatrackerAuthorUrlBuilder('/person/Jana%20Iyengar')).toEqual(
+    `${useDatatrackerUrlOrigin()}/person/Jana%20Iyengar`
+  )
+})
+
+test('datatrackerAuthorUrlBuilder refuses a path that would change the host', () => {
+  expect(() => datatrackerAuthorUrlBuilder('@evil.example/x')).toThrow()
+  expect(() => datatrackerAuthorUrlBuilder('.evil.example/x')).toThrow()
+  expect(() => datatrackerAuthorUrlBuilder('//evil.example/x')).toThrow()
+  expect(() => datatrackerAuthorUrlBuilder('/\\evil.example/x')).toThrow()
+  expect(() => datatrackerAuthorUrlBuilder('https://evil.example/x')).toThrow()
+})
+
+test('useWorkingGroupUrlBuilder encodes the acronym', () => {
+  const group = (acronym: string) => ({ acronym, name: 'Name', type: 'wg' as const })
+  expect(useWorkingGroupUrlBuilder(group('quic'), 'about')).toEqual(`${useDatatrackerUrlOrigin()}/wg/quic/about/`)
+  expect(useWorkingGroupUrlBuilder(group('a/../b?c#d'))).toEqual(`${useDatatrackerUrlOrigin()}/wg/a%2F..%2Fb%3Fc%23d`)
+})
+
+test('areaGroupUrlBuilder encodes the acronym', () => {
+  expect(areaGroupUrlBuilder({ acronym: 'sec', name: 'Security' })).toEqual(`${useDatatrackerUrlOrigin()}/wg/#SEC`)
+  expect(areaGroupUrlBuilder({ acronym: 'a#b?c', name: 'Name' })).toEqual(`${useDatatrackerUrlOrigin()}/wg/#A%23B%3FC`)
+})
+
+test('useErrataUrlBuilder encodes the id', () => {
+  expect(useErrataUrlBuilder('1234')).toEqual('https://errata.rfc-editor.org/eid1234/')
+  expect(useErrataUrlBuilder('1/../x?y#z')).toEqual('https://errata.rfc-editor.org/eid1%2F..%2Fx%3Fy%23z/')
+})
+
+test('doiUrlBuilder encodes each segment but keeps the slashes', () => {
+  expect(doiUrlBuilder('10.17487/RFC9000', true)).toEqual('https://doi.org/10.17487/RFC9000')
+  expect(doiUrlBuilder('10.1000/a?b=c#d', true)).toEqual('https://doi.org/10.1000/a%3Fb%3Dc%23d')
+})
+
+test('apiMarkdownPagePathBuilder encodes each segment and refuses dot segments', () => {
+  expect(apiMarkdownPagePathBuilder('authors/rfc-style-guide')).toEqual('/api/v1/content/authors/rfc-style-guide.json')
+  expect(apiMarkdownPagePathBuilder('a b/c?d')).toEqual('/api/v1/content/a%20b/c%3Fd.json')
+  expect(() => apiMarkdownPagePathBuilder('../secret')).toThrow()
+  expect(() => apiMarkdownPagePathBuilder('a/./b')).toThrow()
+})
+
+test('metaThumbnailPathBuilder only takes a series id', () => {
+  expect(metaThumbnailPathBuilder('rfc9000')).toEqual('/api/v1/meta-thumbnail/rfc9000.png')
+  expect(metaThumbnailPathBuilder('RFC9000')).toEqual('/api/v1/meta-thumbnail/rfc9000.png')
+  expect(() => metaThumbnailPathBuilder('../x')).toThrow()
 })

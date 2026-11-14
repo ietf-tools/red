@@ -65,15 +65,11 @@ export type ValidHrefs =
   | ReturnType<typeof markdownPathBuilder>
   | ReturnType<typeof searchPathBuilder>
   | ReturnType<typeof searchV2PathBuilder>
-  | ReturnType<typeof mailToBuilder>
-  | ReturnType<typeof telBuilder>
   | ReturnType<typeof refsRefTxtPathBuilder>
   | ReturnType<typeof infoSeriesPathBuilder>
   | ReturnType<typeof rfcCommonPathBuilder>
   | ReturnType<typeof rfcPathBuilder>
-  | ReturnType<typeof materialsTxtBuilder>
   | ReturnType<typeof rfcFormatPathBuilder>
-  | ReturnType<typeof wikiDokuPathBuilder>
   | ReturnType<typeof apiRfcBucketDocumentPathBuilder>
 
 export const assertUrlOrigin = <FallbackConst extends string>(
@@ -117,14 +113,6 @@ export const useDatatrackerUrlOrigin = () => {
   const runtimeConfig = useRuntimeConfig()
   return assertUrlOrigin(runtimeConfig.public.datatrackerBase, 'datatrackerBase', 'https://datatracker.ietf.org')
 }
-export const useIadUrlOrigin = () => {
-  const runtimeConfig = useRuntimeConfig()
-  return assertUrlOrigin(runtimeConfig.public.iadBase, 'iadBase', 'https://iad.rfc-editor.org')
-}
-export const useDashboardUrlOrigin = () => {
-  const runtimeConfig = useRuntimeConfig()
-  return assertUrlOrigin(runtimeConfig.public.dashboardBase, 'dashboardBase', 'https://dashboard.rfc-editor.org')
-}
 export const useRfcEditorErrataSearchUrl = () => {
   return `${useErrataUrlOrigin()}/search/`
 }
@@ -134,9 +122,6 @@ export const useRfcEditorErrataSearchForRfcUrl = (rfcNumber: number) => {
 export const useRfcEditorQueueClustersUrl = () => {
   return `${useQueueUrlOrigin()}/clusters/`
 }
-export const useIadReportsPathBuilder = (IADPath: string) => {
-  return `${useIadUrlOrigin()}${IADPath}` as const
-}
 
 /**
  * this assumes that a PDF exists. It doesn't check in advance.
@@ -145,7 +130,14 @@ export const useRfcPdfPathBuilder = (rfcNumber: number) => {
   return `${RFC_BLOBSTORE_PREFIX}rfc${rfcNumber}.pdf` as const
 }
 
-export const apiMarkdownPagePathBuilder = (slug: string) => `/api/v1/content/${slug}.json` as const
+export const apiMarkdownPagePathBuilder = (slug: string) => {
+  const segments = slug.split('/')
+  // encodeURIComponent leaves dot segments alone, and a fetch would resolve them out of /api/v1/content/
+  if (segments.some((segment) => segment === '.' || segment === '..')) {
+    throw Error(`Unable to build a content path from ${JSON.stringify(slug)}`)
+  }
+  return `/api/v1/content/${segments.map(encodeURIComponent).join('/')}.json` as const
+}
 
 type Status =
   | 'Internet Standard'
@@ -235,10 +227,6 @@ export const rfcPathBuilder = (rfcId: string, sectionHash?: `section-${string}`)
   return `${RFC_BLOBSTORE_PREFIX}${seriesId.type.toLowerCase()}${seriesId.number}/${sectionHash ? (`#${sectionHash}` as const) : ''}` as const
 }
 
-export const materialsTxtBuilder = (txtFile: `${string}.txt`) => {
-  return `/materials/${txtFile}` as const
-}
-
 export const rfcCitePathBuilder = (rfcId: string, format: 'txt' | 'bibTeX' | 'xml') => {
   const seriesId = parseSeriesId(rfcId)
   if (!seriesId) {
@@ -260,7 +248,7 @@ export const rfcCitePathBuilder = (rfcId: string, format: 'txt' | 'bibTeX' | 'xm
 }
 
 export const doiUrlBuilder = (identifierValue: string, encodeIdentifier: boolean) =>
-  `https://doi.org/${encodeIdentifier ? encodeURI(identifierValue) : identifierValue}` as const
+  `https://doi.org/${encodeIdentifier ? identifierValue.split('/').map(encodeURIComponent).join('/') : identifierValue}` as const
 
 type FormatCommon = RfcCommon['formats'][number]['format']
 
@@ -272,22 +260,6 @@ export const rfcFormatPathBuilder = (rfcId: string, format: FormatCommon) => {
   }
 
   return `${RFC_BLOBSTORE_PREFIX}${seriesId.type}${seriesId.number}.${format}` as const
-}
-
-export const wikiDokuPathBuilder = (wikiPath: string) => {
-  return `/rpc/wiki/doku.php?id=${wikiPath}` as const
-}
-
-export const useDashboardPathBuilder = (dashboardPath: string) => {
-  return `${useDashboardUrlOrigin()}${dashboardPath}` as const
-}
-
-export const mailToBuilder = (email: string) => {
-  return `mailto:${encodeURI(email.trim())}` as const
-}
-
-export const telBuilder = (phoneNumber: string) => {
-  return `tel:${encodeURI(phoneNumber.trim())}` as const
 }
 
 const USER_PROFILE_IMAGE_MAX_LENGTH = 2048
@@ -451,7 +423,13 @@ export const linkPreviewImageUrlBuilder = (
   return `/api/v1/meta-thumbnail/rfc-editor-logo-${widthPx}x${heightPx}.png` as const
 }
 
-export const metaThumbnailPathBuilder = (rfcId: string) => `/api/v1/meta-thumbnail/${rfcId}.png` as const
+export const metaThumbnailPathBuilder = (rfcId: string) => {
+  const seriesId = parseSeriesId(rfcId)
+  if (!seriesId) {
+    throw Error(`Unable to parse ${JSON.stringify(rfcId)}`)
+  }
+  return `/api/v1/meta-thumbnail/${seriesId.type.toLowerCase()}${seriesId.number}.png` as const
+}
 
 export const needsCloudflareHeaderForApi = (apiBaseUrl: string): boolean => !apiBaseUrl.includes('localhost')
 
@@ -503,7 +481,7 @@ export const useWorkingGroupUrlBuilder = (
 ) => {
   if (!workingGroup) return undefined
   // See https://github.com/ietf-tools/red/issues/179
-  const base = `${useDatatrackerUrlOrigin()}/wg/${workingGroup.acronym}` as const
+  const base = `${useDatatrackerUrlOrigin()}/wg/${encodeURIComponent(workingGroup.acronym)}` as const
   switch (section) {
     case 'about':
       return `${base}/about/` as const
@@ -525,13 +503,13 @@ export const useErrataUrlBuilder = (
   errataId: string
   // errataId looks like '1234' (not 'eid1234') so we'll need to add the 'eid' prefix
 ) => {
-  return `${useErrataUrlOrigin()}/eid${errataId}/` as const
+  return `${useErrataUrlOrigin()}/eid${encodeURIComponent(errataId)}/` as const
 }
 
 export const areaGroupUrlBuilder = (area: RfcCommon['area']) => {
   if (!area) return undefined
   // See https://github.com/ietf-tools/red/issues/179
-  return `${useDatatrackerUrlOrigin()}/wg/#${area.acronym.toUpperCase()}` as const
+  return `${useDatatrackerUrlOrigin()}/wg/#${encodeURIComponent(area.acronym.toUpperCase())}` as const
 }
 
 export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
@@ -555,7 +533,17 @@ export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
 }
 
 export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => {
-  return `${useDatatrackerUrlOrigin()}${datatracker_person_path}`
+  const origin = useDatatrackerUrlOrigin()
+  // The path arrives already percent-encoded (eg "/person/Jana%20Iyengar"), so it's checked
+  // rather than encoded. Appended as-is, "@host" or ".host" would change which host the link goes to.
+  if (!datatracker_person_path.startsWith('/')) {
+    throw Error(`Unexpected datatracker person path ${JSON.stringify(datatracker_person_path)}`)
+  }
+  const url = new URL(datatracker_person_path, origin)
+  if (url.origin !== origin) {
+    throw Error(`Datatracker person path ${JSON.stringify(datatracker_person_path)} leaves ${origin}`)
+  }
+  return `${origin}${datatracker_person_path}`
 }
 
 export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/api/v1/favicon/${widthPx}x${heightPx}.png`
