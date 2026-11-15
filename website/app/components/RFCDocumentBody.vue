@@ -55,6 +55,8 @@
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
 
+    <RFCDocumentStream :rfc="props.rfcBucketHtmlDocument.rfc" />
+
     <RFCDocumentButtons
       :rfc-number="rfcBucketHtmlDocument.rfc.number"
       :reef-stats="rfcBucketHtmlDocument.rfc.reefStats"

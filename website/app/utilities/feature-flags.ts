@@ -8,7 +8,8 @@ export const FeatureFlagsSchema = z.object({
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
-  hasWordBreakMode: z.boolean().optional()
+  hasWordBreakMode: z.boolean().optional(),
+  isPublicationStreamActive: z.boolean().optional()
 })
 
 // this is commented out until next time we need a string union value in feature flags.
@@ -49,6 +50,11 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'Search default filter includes obsoleted',
     description: 'On the search route include obsoleted results by default',
     storageType: 'boolean'
+  },
+  isPublicationStreamActive: {
+    title: 'Publication stream block',
+    description: 'Shows which stream published an RFC (IETF, IRTF, IAB, etc.) in a block above the RFC buttons.',
+    storageType: 'boolean'
   }
 }
 
@@ -56,7 +62,8 @@ export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
   hasWordBreakMode: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
-  searchObsoletedDefaults: false
+  searchObsoletedDefaults: false,
+  isPublicationStreamActive: false
 }
 
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)
