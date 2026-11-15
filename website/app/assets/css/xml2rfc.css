@@ -465,6 +465,11 @@ dl > dd > dl {
       height: 0;
     }
 
+    /* An ordered list written as a definition list is spaced like the list it imitates. */
+    &:is(.olPercent) > dd.break {
+      height: 0.25em;
+    }
+
     /* Spacing inside a definition, as the floated layout had it. The first paragraph runs on after
        the term, and so loses the bottom margin that separated it from what follows: whatever
        follows takes it as a top margin instead. A definition ending in a block already has the gap
@@ -1639,8 +1644,9 @@ h1#rfcnum {
   padding: 1em 0 0 0;
 }
 
-/* Make .olPercent look the same as <ol><li> */
-dl.olPercent > dd {
+/* Make .olPercent look the same as <ol><li>. Not the spacer: its margin would be a second gap
+   wherever margins do not collapse, as in a grid. */
+dl.olPercent > dd:not(.break) {
   margin-bottom: 0.25em;
   min-height: initial;
 }
