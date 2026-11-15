@@ -401,24 +401,36 @@ dl > dd > dl {
   }
 
   /* A `dlParallel` at any depth, and a list of the other kinds nested in a definition, run term and
-     definition on as one line of text, wrapping under a hanging indent. A nested list sits in its
-     parent's definition column, which is already only part of the width, so a grid of its own would
-     spend another term column per level. A `dlParallel` at the top level has the same problem in
-     miniature: a term column sized to its longest term leaves the definitions little room. The
-     hanging indent is the 1.5em xml2rfc gives `dlParallel` definitions. */
+     definition on as one line of text, with wrapped lines hanging 1.5em in, the indent xml2rfc gives
+     `dlParallel` definitions. A nested list sits in its parent's definition column, which is already
+     only part of the width, so a grid of its own would spend another term column per level. A
+     `dlParallel` at the top level has the same problem in miniature: a term column sized to its
+     longest term leaves the definitions little room.
+
+     The hang is padding on the list with each term pulled back out of it, rather than a
+     `text-indent`: a hanging `text-indent` is not applied to the line after a block, and the gap
+     between entries has to be one. */
   :is(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent)) {
+    --dl-hang: 1.5em;
     display: block;
+    padding-inline-start: var(--dl-hang);
 
     > dt {
       display: inline;
       float: none;
       clear: none;
-      margin: 0 1em 0 0;
+      margin: 0 1em 0 calc(-1 * var(--dl-hang));
 
       /* xml2rfc puts an anchor target in a block `div` inside a term, which would otherwise put
          the term on its own line. */
       > div:only-child {
         display: inline;
+      }
+
+      /* A further definition of the same term is preceded by an empty term. It has nothing to show:
+         the definition starts a line of its own at the hang. */
+      &:empty {
+        display: none;
       }
     }
 
@@ -429,29 +441,50 @@ dl > dd > dl {
       padding: 0;
 
       /* xml2rfc wraps a definition's text in a paragraph, which would otherwise start its own line
-         under the term. */
-      > p:only-child {
+         under the term. Only the first: any later paragraph, list or table keeps its own line. */
+      > p:first-child {
         display: inline;
       }
     }
 
-    /* A forced line break rather than a block, so the run stays one block and the indent below
-       applies to the line after it: a block would start a new first line, which the hanging
-       indent leaves unindented only once. */
+    /* xml2rfc's empty spacer between entries. It ends the line, and is the gap between entries that
+       the floated layout got from each definition's bottom margin (an inline definition has none).
+       A compact list has no gap. */
     > dd.break {
-      display: inline;
+      display: block;
+      height: 0.8em;
 
-      &::after {
-        content: '\A';
-        white-space: pre;
+      /* The last one has no entry after it in this list; what follows takes its own gap, as the
+         last definition's margin collapsed into it before. */
+      &:last-child {
+        height: 0;
       }
     }
 
-    /* The gap between entries, which the floated layout got from each definition's bottom margin;
-       an inline definition has no margin to give, so a top-level list that wants one takes a blank
-       line. A list inside a definition and a compact list stay tight. */
-    &:not(.compact, .dlCompact, dd dl) > dd.break::after {
-      content: '\A\A';
+    &:is(.compact, .dlCompact) > dd.break {
+      height: 0;
+    }
+
+    /* Spacing inside a definition, as the floated layout had it. The first paragraph runs on after
+       the term, and so loses the bottom margin that separated it from what follows: whatever
+       follows takes it as a top margin instead. A definition ending in a block already has the gap
+       to the next entry as that block's bottom margin, which the floated layout collapsed into the
+       definition's own, so the spacer adds none. A definition that is a single paragraph runs on
+       inline and has no margin to give, so the spacer is as tall as that margin would have been.
+       A nested list ends flush, and keeps the spacer's gap. Compact lists are left alone: their
+       paragraphs have no margin, and their gap is none. */
+    &:not(.compact, .dlCompact) {
+      > dd > p:first-child + * {
+        margin-top: var(--paragraph-spacing, 1em);
+      }
+
+      > dd:has(> :last-child:is(ul, ol, table, pre, figure, aside, blockquote, p:not(:first-child))) + dd.break {
+        height: 0;
+      }
+
+      > dd:has(> p:only-child) + dd.break:not(:last-child) {
+        height: var(--paragraph-spacing, 1em);
+      }
     }
   }
 
@@ -493,17 +526,11 @@ dl > dd > dl {
   border-inline-start: 2px solid color-mix(in srgb, currentColor 25%, transparent);
 }
 
-/* The hanging indent for the run-on layout above: wrapped lines are indented, the line starting
-   each term is not. Here so it follows the nesting rule. The indent is cancelled inside block
-   content, at zero specificity so that a run-on list inside a definition keeps its own. */
+/* A list nested in a definition keeps its mark of nesting inside the hang, so a term stands clear
+   of the border. */
 @media (min-width: 60em) {
-  :is(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent)) {
-    text-indent: 1.5em hanging each-line;
-  }
-
-  :where(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent))
-    :is(p, ul, ol, dl, table, figure, pre) {
-    text-indent: 0;
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+    padding-inline-start: calc(var(--dl-hang, 0px) + 0.75em);
   }
 }
 
