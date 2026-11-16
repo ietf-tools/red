@@ -297,9 +297,9 @@ const SetIdSchema = z.uuid()
 // getter and the load follows it changing — a link from one set to another is a route change, not a
 // remount.
 //
-// Not through ~/stores/reef, and deliberately so: this is a public read of somebody's set by id,
+// Not read through ~/stores/reef, and deliberately so: this is a public read of somebody's set by id,
 // not one of this reader's own answers, and it's the whole set including its membership rather
-// than the label-only version the dialog lists.
+// than the label-only version the dialog lists. The store is only watched, for when to read again.
 export const useSet = (setId: MaybeRefOrGetter<string>): Ref<SetLoad> => {
   const state = ref<SetLoad>({ status: 'loading' })
 
@@ -352,6 +352,19 @@ export const useSet = (setId: MaybeRefOrGetter<string>): Ref<SetLoad> => {
     },
     { immediate: true }
   )
+
+  // A reader taking a document out of this set from its card on the page changes what Reef holds but
+  // not what was read here. Once their changes have all been answered the set is read again, so that
+  // a document they removed leaves the list, and one a refusal put back stays.
+  const reefStore = useReefStore()
+  const changesInFlight = computed(() =>
+    Object.values(reefStore.setMembershipSync).reduce((total, { inFlight }) => total + Object.keys(inFlight).length, 0)
+  )
+  watch(changesInFlight, (now, before) => {
+    if (import.meta.client && before > 0 && now === 0 && state.value.status === 'ready') {
+      void load(toValue(setId))
+    }
+  })
 
   return state
 }

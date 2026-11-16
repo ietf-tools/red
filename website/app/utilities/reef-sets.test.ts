@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { enableAutoUnmount } from '@vue/test-utils'
 
-import { useUserSets } from './reef-sets'
+import { useSet, useUserSets } from './reef-sets'
 import { useAuthStore } from '~/stores/auth'
 import { useNotificationsStore } from '~/stores/notifications'
 import { useReefStore } from '~/stores/reef'
@@ -12,6 +12,7 @@ import { useReefStore } from '~/stores/reef'
 const reef = vi.hoisted(() => ({
   getSubscriptions: vi.fn(),
   getSets: vi.fn(),
+  getSet: vi.fn(),
   putSetDocument: vi.fn(),
   deleteSetDocument: vi.fn(),
   createSet: vi.fn()
@@ -140,5 +141,50 @@ describe('useUserSets syncStatus', () => {
 
     confirm({})
     await vi.waitFor(() => expect(harness.vm.syncStatus).toEqual({ type: 'success' }))
+  })
+})
+
+describe('useSet after the reader changes what a set holds', () => {
+  const SET_ID = '3f2a9c1e-7b4d-4e8a-9c3b-1d5e6f7a8b9c'
+
+  const SetPageHarness = defineComponent({
+    setup: () => ({ load: useSet(SET_ID), sets: useUserSets(9110) })
+  })
+
+  beforeEach(() => {
+    Object.values(reef).forEach((fn) => fn.mockReset())
+    reef.getSubscriptions.mockResolvedValue([])
+    vi.spyOn(console, 'error').mockImplementation(() => {})
+    useAuthStore().clearUser()
+    useNotificationsStore().queue = []
+  })
+
+  test('reads the set again once a removal has been answered, so the document leaves it', async () => {
+    await signedInWith([loadedSet(SET_ID, 'Reading list', true)])
+    reef.getSet
+      .mockResolvedValueOnce(loadedSet(SET_ID, 'Reading list', true))
+      .mockResolvedValue(loadedSet(SET_ID, 'Reading list'))
+    reef.deleteSetDocument.mockResolvedValue({})
+    const harness = await mountSuspended(SetPageHarness)
+    await vi.waitFor(() => expect(harness.vm.load).toMatchObject({ status: 'ready' }))
+    expect(harness.vm.load).toMatchObject({ set: { documents: [{ doc: 'rfc9110' }] } })
+
+    harness.vm.sets.setIdsWithThisRFC.value = []
+
+    await vi.waitFor(() => expect(reef.getSet).toHaveBeenCalledTimes(2))
+    await vi.waitFor(() => expect(harness.vm.load).toMatchObject({ status: 'ready', set: { documents: [] } }))
+  })
+
+  test('does not read the set again while a change is still waiting to be answered', async () => {
+    await signedInWith([loadedSet(SET_ID, 'Reading list', true)])
+    reef.getSet.mockResolvedValue(loadedSet(SET_ID, 'Reading list', true))
+    reef.deleteSetDocument.mockReturnValue(new Promise(() => {}))
+    const harness = await mountSuspended(SetPageHarness)
+    await vi.waitFor(() => expect(harness.vm.load).toMatchObject({ status: 'ready' }))
+
+    harness.vm.sets.setIdsWithThisRFC.value = []
+    await vi.waitFor(() => expect(reef.deleteSetDocument).toHaveBeenCalledTimes(1))
+
+    expect(reef.getSet).toHaveBeenCalledTimes(1)
   })
 })
