@@ -626,7 +626,7 @@ const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): Doc
         {
           type: 'Element',
           nodeName: 'ul',
-          attributes: { class: 'text-sm' },
+          attributes: {},
           children: formats.map(({ format }, index) => ({
             type: 'Element' as const,
             nodeName: 'li',

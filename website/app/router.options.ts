@@ -19,7 +19,10 @@ export default {
         return savedPosition ?? false
       }
       if (to.hash) {
-        return { el: to.hash, behavior: 'instant' }
+        // Back or Forward to an entry that has a hash should return the reader to where they were, which
+        // is not necessarily the hash target (they may have scrolled, then followed a citation). The
+        // router only supplies `savedPosition` for those, never for a click on a link.
+        return savedPosition ?? { el: to.hash, behavior: 'instant' }
       }
       return false
     }
