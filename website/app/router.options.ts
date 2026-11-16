@@ -1,4 +1,5 @@
 import type { RouterConfig } from '@nuxt/schema'
+import { START_LOCATION } from 'vue-router'
 
 /**
  * Citations are plain `<a href="#…">` anchors, so the router never records a scroll
@@ -23,12 +24,30 @@ export default {
       return false
     }
     // Navigating to a different page.
-    if (savedPosition) {
-      return savedPosition
+    const position = () => {
+      if (savedPosition) {
+        return savedPosition
+      }
+      if (to.hash) {
+        return { el: to.hash, behavior: 'instant' as const }
+      }
+      return { left: 0, top: 0 }
     }
-    if (to.hash) {
-      return { el: to.hash, behavior: 'instant' }
+    if (from === START_LOCATION) {
+      return position()
     }
-    return { left: 0, top: 0 }
+    // The router changes the URL before the new page has loaded its data, and the old page stays on
+    // screen until then. Scrolling now would resolve the hash against the old page, which lands on
+    // whichever of its elements shares the id (every RFC has a `#section-4`). So scroll when the new
+    // page has rendered, unless the reader has already moved on.
+    const nuxtApp = useNuxtApp()
+    const { currentRoute } = useRouter()
+    return new Promise((resolve) => {
+      nuxtApp.hooks.hookOnce('page:loading:end', () => {
+        requestAnimationFrame(() => {
+          resolve(currentRoute.value.fullPath === to.fullPath ? position() : false)
+        })
+      })
+    })
   }
 } satisfies RouterConfig
