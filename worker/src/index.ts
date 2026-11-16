@@ -100,6 +100,7 @@ router
   .get('/contact', redirectTo('/about/contact/', 301))
   .get('/contact/at-ietf', redirectTo('/about/contact/', 301))
   .get('/current_queue.php', redirectTo(`https://queue${env.ENV_DOMAIN}.rfc-editor.org`, 301))
+  .get('/edboard.html', redirectTo('/authors/ise/iseb/', 302))
   .get('/errata.json', redirectTo('/api/v1/errata.json', 301))
   .get('/errata.php', redirectTo(`https://errata${env.ENV_DOMAIN}.rfc-editor.org`, 301))
   .get('/errata-definitions', redirectTo('/series/rfc-errata/', 301))
