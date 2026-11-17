@@ -12,7 +12,7 @@
 
           <p class="pl-5" v-if="setLoad.set.description">&quot;{{ filterSpamText(setLoad.set.description) }}&quot;</p>
           <div class="pl-3 flex flex-col gap-4">
-            <div v-if="rows.length > 1" class="md:mx-2 mt-3 flex items-center gap-2">
+            <div v-if="rows.length > 1" class="md:mx-2 flex items-center justify-end gap-2">
               <label :for="sortId" class="whitespace-nowrap">Sort by</label>
               <select
                 :id="sortId"
