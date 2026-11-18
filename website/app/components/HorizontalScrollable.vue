@@ -22,7 +22,7 @@
       :class="[
         'w-full max-w-screen overflow-hidden overflow-x-auto',
         {
-          ['bg-gray-100 dark:bg-gray-950 border-r-[40px] border-gray-100 dark:border-gray-950 ']: props.copyMode
+          ['bg-gray-100 dark:bg-gray-950 pr-[40px] border-gray-100 dark:border-gray-950 ']: props.copyMode
         },
         props.innerClass
       ]"

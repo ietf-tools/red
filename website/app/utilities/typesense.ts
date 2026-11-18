@@ -1,4 +1,5 @@
 import { prefersReducedMotion } from '~/utilities/accessibility'
+import { focusTemporarily } from '~/utilities/focus-target'
 import { z } from 'zod'
 import { FOCUSABLE_QUERY_SELECTOR } from './html'
 // The status facet lives in a DOM-free module so server-reachable code can derive from it.
@@ -110,6 +111,8 @@ export type Density = 'full' | 'dense' | 'compact'
 
 export const SEARCHV2_HITS_CONTAINER_DOM_ID = 'searchv2-hits-container'
 
+export const SEARCHV2_RESULTS_HEADING_DOM_ID = 'searchv2-results-heading'
+
 // DOM ID of the position:sticky container
 export const SEARCHV2_STICKY_CONTAINER_DOM_ID = 'searchv2-sticky-container'
 
@@ -133,8 +136,8 @@ export const moveFocusToFirstResult = () => {
   }
   const targetFocusable = target.querySelector<HTMLElement>(FOCUSABLE_QUERY_SELECTOR)
   if (!targetFocusable) {
-    // if we can't find anything focusable just go to main
-    document.querySelector<HTMLElement>('#main')?.focus() // for keyboard users
+    // Nothing to act on in the results, so announce them: their heading, or failing that the results themselves.
+    focusTemporarily(document.getElementById(SEARCHV2_RESULTS_HEADING_DOM_ID) ?? target) // for keyboard users
     return
   }
   targetFocusable.focus() // for keyboard users

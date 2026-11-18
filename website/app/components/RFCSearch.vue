@@ -64,7 +64,7 @@
               </nav>
 
               <div class="w-full lg:w-2/3 lg:max-w-[50em]">
-                <h2 class="sr-only">Search results</h2>
+                <h2 :id="SEARCHV2_RESULTS_HEADING_DOM_ID" class="sr-only">Search results</h2>
                 <div class="flex w-full flex-row justify-between items-center gap-3 lg:gap-4 xl:gap-5">
                   <Stats :class-names="{ root: 'text-base font-bold whitespace-nowrap' }" />
                   <div class="hidden lg:flex lg:items-center gap-3">
@@ -159,7 +159,11 @@ import {
 } from '~/components/searchv2'
 import { createRfcSearchClient } from '~/utilities/searchv2-rfc-client'
 import { useNuxtStateAdapter } from '~/utilities/searchv2-nuxt-adapter'
-import { SEARCHV2_STICKY_CONTAINER_DOM_ID, scrollUpToNewSearchResults } from '~/utilities/typesense'
+import {
+  SEARCHV2_RESULTS_HEADING_DOM_ID,
+  SEARCHV2_STICKY_CONTAINER_DOM_ID,
+  scrollUpToNewSearchResults
+} from '~/utilities/typesense'
 import { NOSCRIPT_IFRAME_DOM_ID } from '~/utilities/search'
 import { API_NO_JS_SERVER_SEARCH_PATH } from '~/utilities/url'
 import type { BreadcrumbItem } from './BreadcrumbsTypes'
