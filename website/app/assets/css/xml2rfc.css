@@ -11,6 +11,15 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
 }
 
+/* `cqi` is the width of the nearest container, and p, li, dd, blockquote and aside are containers (for the
+   word-break queries below), so inside any of them it is that element's width and not the layout's. This
+   file is scoped to the content element itself, whose nearest container is the layout, so the layout's width
+   is read here and descendants inherit it as a length (the property is registered as one, in
+   RFCDocumentBody.vue, because a registered length is resolved where it is declared). */
+& {
+  --rfc-layout-width: 100cqi;
+}
+
 .horizontal-scrollable {
   margin-left: calc(var(--spacing) * 4 * -1);
   margin-right: calc(var(--spacing) * 2 * -1);
@@ -24,12 +33,31 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 }
 
 @media (min-width: 1024px) {
-  .horizontal-scrollable {
-    margin-left: 0;
-    margin-right: min(
-      calc(-1 * (100cqi - var(--sidebar-width) - var(--max-text-block-width) - var(--info-rfc-sidebar-buffer))),
+  & {
+    /* How far past the text column a wide block may extend, which is whatever the sidebar leaves free. It
+       grows when the sidebar is collapsed, because that changes --sidebar-width. */
+    --wide-block-margin-right: min(
+      calc(
+        -1 *
+          (
+            var(--rfc-layout-width) - var(--sidebar-width) - var(--max-text-block-width) -
+              var(--info-rfc-sidebar-buffer)
+          )
+      ),
       0px
     );
+  }
+
+  .horizontal-scrollable {
+    margin-left: 0;
+    margin-right: var(--block-margin-right, var(--wide-block-margin-right));
+  }
+
+  /* A frame around a wide block grows with it, so the block stays inside the frame. The frame takes the
+     margin and tells the block inside it not to. */
+  :is(blockquote, aside):has(.horizontal-scrollable) {
+    margin-right: var(--wide-block-margin-right);
+    --block-margin-right: 0px;
   }
 
   .horizontal-scrollable pre {

@@ -34,7 +34,11 @@
   --font-sans: 'Inter', sans-serif;
 
   --sidebar-width: 400px;
-  --info-rfc-sidebar-buffer: 10px;
+  /* What a wide block leaves free of the width the sidebar doesn't take. The text column is offset from the
+     layout's left edge and there is a gap before the sidebar, so this is the amount that makes a wide block
+     end at the sidebar's edge. The sidebar's collapse button is allowed to overlap it, to give the content
+     the room. */
+  --info-rfc-sidebar-buffer: 16px;
 
   /**
    * WCAG requires max-width of 80 chars.

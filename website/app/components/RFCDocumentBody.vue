@@ -399,6 +399,13 @@ const formatsPojo = computed((): DocumentPojo => {
   }
 }
 
+/* At the top level because an at-rule can't be nested inside the scope below, where it would be dropped. */
+@property --rfc-layout-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
 .rfc-content-type-xml2rfc {
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
