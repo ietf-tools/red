@@ -13,6 +13,15 @@ import { START_LOCATION } from 'vue-router'
  */
 export default {
   scrollBehavior(to, from, savedPosition) {
+    // vue-router does the scrolling for a hash itself, so the browser's handling of `scroll-margin-top` on the
+    // target (and `scroll-padding-top` on the page) doesn't apply unless it is passed as the offset. It is what
+    // keeps a target clear of a sticky header.
+    const hashPosition = (hash: string) => {
+      const target = document.getElementById(hash.slice(1))
+      const margin = target ? Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0 : 0
+      const padding = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0
+      return { el: hash, top: margin + padding, behavior: 'instant' as const }
+    }
     // Same-page (hash) navigation
     if (to.path.replace(/\/$/, '') === from.path.replace(/\/$/, '')) {
       if (from.hash && !to.hash) {
@@ -22,7 +31,7 @@ export default {
         // Back or Forward to an entry that has a hash should return the reader to where they were, which
         // is not necessarily the hash target (they may have scrolled, then followed a citation). The
         // router only supplies `savedPosition` for those, never for a click on a link.
-        return savedPosition ?? { el: to.hash, behavior: 'instant' }
+        return savedPosition ?? hashPosition(to.hash)
       }
       return false
     }
@@ -32,7 +41,7 @@ export default {
         return savedPosition
       }
       if (to.hash) {
-        return { el: to.hash, behavior: 'instant' as const }
+        return hashPosition(to.hash)
       }
       return { left: 0, top: 0 }
     }
