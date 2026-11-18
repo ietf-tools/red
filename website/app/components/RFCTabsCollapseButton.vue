@@ -5,7 +5,7 @@
     :aria-expanded="!isSidebarCollapsed"
     :class="[
       'group',
-      'absolute bg-red-500 top-0 -left-1',
+      'absolute top-0 -left-1',
       {
         'cursor-e-resize': !isSidebarCollapsed,
         'cursor-w-resize': isSidebarCollapsed

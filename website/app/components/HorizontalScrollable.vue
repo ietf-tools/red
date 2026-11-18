@@ -13,7 +13,11 @@
         'after:shadow-[inset_20px_0px_20px_-20px_rgba(0,_45,_60,_0.5),inset_-20px_0px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:after:shadow-[inset_20px_0px_20px_-20px_rgba(200,_201,_222,_1),inset_-20px_0px_20px_-20px_rgba(200,_201,_222,_1)]',
       props.class
     ]">
-    <ButtonSuccessFailure v-if="showCopyButton" :click-handler="handleCopy" aria-label="Copy to clipboard">
+    <ButtonSuccessFailure
+      v-if="showCopyButton"
+      :click-handler="handleCopy"
+      aria-label="Copy to clipboard"
+      button-style="gray">
       <GraphicsCopy class="size-[1.6em] text-black dark:text-white bg-transparent" />
     </ButtonSuccessFailure>
     <component
