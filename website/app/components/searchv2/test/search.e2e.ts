@@ -116,18 +116,25 @@ describe('RfcEditorSearch (searchv2)', async () => {
       const toggledValue = await firstCheckbox.getAttribute('value')
 
       await firstCheckbox.focus()
+      // Toggling reruns the search. Wait for that search's answer and the render that follows it, rather than
+      // for the network to go quiet, which the dev server's other connections can prevent.
+      const searchAnswered = page.waitForResponse('**/multi_search**', { timeout: 30_000 })
       await page.keyboard.press('Space')
-      await page.waitForLoadState('networkidle')
-      await page.waitForTimeout(600)
+      await searchAnswered
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
 
       // After the search reruns and the facet list updates, keyboard focus must not be
       // lost to <body>; it stays on (or is restored to) a checkbox in the group.
-      const focused = await page.evaluate(() => {
-        const el = document.activeElement as HTMLInputElement | null
-        return { type: el?.getAttribute('type') ?? null, value: el?.getAttribute('value') ?? null }
-      })
-      expect(focused.type).toBe('checkbox')
-      expect(focused.value).toBe(toggledValue)
+      await expect
+        .poll(
+          () =>
+            page.evaluate(() => {
+              const el = document.activeElement as HTMLInputElement | null
+              return { type: el?.getAttribute('type') ?? null, value: el?.getAttribute('value') ?? null }
+            }),
+          { timeout: 30_000 }
+        )
+        .toEqual({ type: 'checkbox', value: toggledValue })
 
       await page.close()
     },
