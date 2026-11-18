@@ -249,7 +249,7 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
       HorizontalScrollable,
       {
         ...attributes,
-        class: `mb-2 md:mb-4 ${classAttr ?? ''}`,
+        class: classAttr,
         copyMode: dataCopyModeBoolString === true.toString()
       },
       () => childrenForVue

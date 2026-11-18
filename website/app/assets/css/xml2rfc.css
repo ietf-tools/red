@@ -20,9 +20,33 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   --rfc-layout-width: 100cqi;
 }
 
+& {
+  --scrollable-margin-bottom: calc(var(--spacing) * 2);
+}
+
+@media (min-width: 768px) {
+  & {
+    --scrollable-margin-bottom: calc(var(--spacing) * 4);
+  }
+}
+
 .horizontal-scrollable {
   margin-left: calc(var(--spacing) * 4 * -1);
   margin-right: calc(var(--spacing) * 2 * -1);
+  margin-bottom: var(--scrollable-margin-bottom);
+}
+
+/* The pilcrow is a line of its own under the block it belongs to, as it is on the original rendering. The
+   block's spacing goes below the pilcrow instead of between the two, so the pilcrow is next to its block and
+   the pointer stays over the block's container on its way there. */
+.horizontal-scrollable:has(+ a.pilcrow) {
+  margin-bottom: 0;
+}
+
+.horizontal-scrollable + a.pilcrow {
+  display: block;
+  margin-top: 2px;
+  margin-bottom: var(--scrollable-margin-bottom);
 }
 
 .horizontal-scrollable pre {
@@ -1732,15 +1756,6 @@ aside > p {
     margin: initial;
     padding: 0.5em 0 0.3em;
   }
-}
-
-.artwork .pilcrow,
-.sourcecode .pilcrow {
-  float: right;
-  margin-right: 1rem;
-  margin-top: -1.2rem;
-  z-index: 1000;
-  position: relative;
 }
 
 /* Sourcecode margin in print, when there's no pilcrow */
