@@ -4,7 +4,7 @@
     type="button"
     :class="[
       'flex flex-col sm:flex-row items-center',
-      'pl-1 pr-2 py-1 min-[380px]:gap-1',
+      'pl-1 pr-2 py-1 gap-1 max-[380px]:gap-0',
       'cursor-pointer',
       'rounded',
       'text-sm text-center md:text-left',

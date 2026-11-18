@@ -10,11 +10,8 @@
             'rounded',
             'text-sm text-center md:text-left',
             'font-bold',
-            COVER_LINK_STYLE_CLASS,
-            {
-              'gap-0': isInASet,
-              'sm:gap-1': !isInASet
-            }
+            'gap-1',
+            COVER_LINK_STYLE_CLASS
           ]">
           <GraphicsCheckmark v-if="isInASet" :class="['w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
           <GraphicsAddCircle v-else :class="['w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
