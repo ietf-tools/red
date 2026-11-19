@@ -16,9 +16,8 @@
         <TableRow v-for="survey in surveys" :key="survey.slug">
           <TableCell>
             <Anchor :href="survey.url" @click="surveysStore.isSurveysModalOpen = false"
-              >{{ survey.title }}
-              <GraphicsNewWindowIcon />
-            </Anchor>
+              >{{ survey.title }}<OutsideLinkIcon :href="survey.url"
+            /></Anchor>
           </TableCell>
           <!-- <TableCell
             >{{ survey.visibility === 'authenticated' ? 'logged in only' : 'anonymous' }}

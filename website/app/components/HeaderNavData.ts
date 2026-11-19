@@ -2,6 +2,7 @@ import { AdvancedUISettings, SurveysModal, GraphicsBustInSilhouette, GraphicsSea
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { htmlEscapeToText } from '~/utilities/html'
+import { linkRel } from '~/utilities/url-destination'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
 import {
@@ -354,7 +355,7 @@ type RenderNoScriptMenuItemOptions = {
  */
 export const renderNoScriptMenuItem = (menuItem: MenuItem, options?: RenderNoScriptMenuItemOptions): string => {
   if (menuItem.href) {
-    return `<li class="${options?.renderListDisc ? 'list-disc ml-5' : ''}"><a href="${htmlEscapeToText(menuItem.href)}">${htmlEscapeToText(menuItem.label)}</a>${
+    return `<li class="${options?.renderListDisc ? 'list-disc ml-5' : ''}"><a href="${htmlEscapeToText(menuItem.href)}"${linkRel(menuItem.href) ? ` rel="${linkRel(menuItem.href)}"` : ''}>${htmlEscapeToText(menuItem.label)}</a>${
       menuItem.children
         ? `<ul>${menuItem.children.map((menuItem) => renderNoScriptMenuItem(menuItem, options)).join('')}</ul>`
         : ''

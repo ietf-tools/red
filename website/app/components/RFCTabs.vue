@@ -186,13 +186,12 @@
                   :key="authorIndex"
                   class="inline">
                   <span class="whitespace-nowrap">
-                    <a
+                    <LinkWithIcon
                       v-if="author.datatracker_person_path"
                       :href="datatrackerAuthorUrlBuilder(author.datatracker_person_path)"
                       :class="[ANCHOR_COLOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']">
                       <RFCDocumentAuthor :author="author" />
-                      <GraphicsNewWindowIcon class="text-lg align-middle" />
-                    </a>
+                    </LinkWithIcon>
                     <span v-else>
                       <RFCDocumentAuthor :author="author" />
                     </span>
@@ -236,18 +235,16 @@
 
           <dt class="font-bold mt-2">Document history</dt>
           <dd>
-            <Anchor :href="datatrackerRFCUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+            <LinkWithIcon :href="datatrackerRFCUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
               View history of <component :is="formattedTitle" />
-              <NewWindowIcon />
-            </Anchor>
+            </LinkWithIcon>
           </dd>
 
           <dt class="font-bold mt-2">IPR Disclosures</dt>
           <dd>
-            <Anchor :href="datatrackerIprSearchUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+            <LinkWithIcon :href="datatrackerIprSearchUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
               Find IPR Disclosures from the IETF
-              <NewWindowIcon />
-            </Anchor>
+            </LinkWithIcon>
           </dd>
         </dl>
       </VerticalScrollable>
@@ -269,12 +266,11 @@
           constitutes a genuine error in the text rather than a request for new features or protocol changes.
         </p>
         <p class="border-b-1 border-gray-200 py-6 mb-4">
-          <Anchor
+          <LinkWithIcon
             :href="errataSearchForThisRfc"
             class="bg-blue-300 text-white dark:bg-blue-800 border-0 no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
             Report a new erratum
-            <GraphicsNewWindowIcon />
-          </Anchor>
+          </LinkWithIcon>
         </p>
         <ErrataList :errata-list="props.rfcBucketHtmlDocument.errataList" />
       </VerticalScrollable>
@@ -323,7 +319,7 @@ import {
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
-import { renderDocumentPojoToHtmlString } from '~/utilities/renderDocumentPojo'
+import { renderDocumentPojoToHtmlString, renderNodePojoToHtmlString } from '~/utilities/renderDocumentPojo'
 import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { useUiSettingsStore } from '~/stores/ui-settings'
@@ -479,6 +475,14 @@ const groupName = (rfc: RfcCommon): string => {
   return 'Working group'
 }
 
+// Drawn by OutsideLinkIcon.vue, so a link to one of the IETF community's sites (see utilities/url-destination.ts) gets no icon
+const outsideLinkIconPojo = (href: string): NodePojo => ({
+  type: 'Element',
+  nodeName: 'OutsideLinkIcon',
+  attributes: { href },
+  children: []
+})
+
 const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
   const group = rfc.group
 
@@ -499,6 +503,7 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
     ]
   }
 
+  const groupHref = useWorkingGroupUrlBuilder(group) ?? ''
   const children: NodePojo[] = []
   if (group?.name) children.push({ type: 'Text', textContent: group.name })
   if (group?.acronym) children.push({ type: 'Text', textContent: ` (${group.acronym.toUpperCase()})` })
@@ -508,18 +513,10 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
       type: 'Element',
       nodeName: 'Anchor',
       attributes: {
-        href: useWorkingGroupUrlBuilder(group) ?? '',
+        href: groupHref,
         class: LINK_CLASS
       },
-      children: [
-        ...children,
-        {
-          type: 'Element',
-          nodeName: 'GraphicsNewWindowIcon',
-          attributes: { class: 'text-lg align-middle ml-1' },
-          children: []
-        }
-      ]
+      children: [...children, outsideLinkIconPojo(groupHref)]
     }
   ]
 }
@@ -527,6 +524,7 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
 const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
   const { area } = rfc
 
+  const areaHref = areaGroupUrlBuilder(area) ?? ''
   const children: NodePojo[] = []
   if (area?.name) children.push({ type: 'Text', textContent: area.name })
   if (area?.acronym) children.push({ type: 'Text', textContent: ` (${area.acronym.toUpperCase()})` })
@@ -536,18 +534,10 @@ const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
       type: 'Element',
       nodeName: 'Anchor',
       attributes: {
-        href: areaGroupUrlBuilder(area) ?? '',
+        href: areaHref,
         class: LINK_CLASS
       },
-      children: [
-        ...children,
-        {
-          type: 'Element',
-          nodeName: 'GraphicsNewWindowIcon',
-          attributes: { class: 'text-lg align-middle ml-1' },
-          children: []
-        }
-      ]
+      children: [...children, outsideLinkIconPojo(areaHref)]
     }
   ]
 }
@@ -580,12 +570,7 @@ const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPoj
               attributes: { href: doiUrlBuilder(value, true), class: LINK_CLASS },
               children: [
                 { type: 'Text', textContent: doiUrlBuilder(value, false) },
-                {
-                  type: 'Element',
-                  nodeName: 'GraphicsNewWindowIcon',
-                  attributes: { class: 'text-lg align-middle ml-1' },
-                  children: []
-                }
+                outsideLinkIconPojo(doiUrlBuilder(value, true))
               ]
             }
           ]
@@ -701,15 +686,7 @@ const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
         type: 'Element',
         nodeName: 'Anchor',
         attributes: { href, class: LINK_CLASS },
-        children: [
-          { type: 'Text', textContent: stream.name },
-          {
-            type: 'Element',
-            nodeName: 'GraphicsNewWindowIcon',
-            attributes: { class: 'text-lg align-middle ml-1' },
-            children: []
-          }
-        ]
+        children: [{ type: 'Text', textContent: stream.name }, outsideLinkIconPojo(href)]
       }
     ]
   }
@@ -925,7 +902,15 @@ const noScriptHtml = computed(() => {
               .map((author, index, arr) => {
                 const punctuation = index < arr.length - 1 ? ', ' : '.'
                 if (author.datatracker_person_path) {
-                  return `<a href="${htmlEscapeToText(datatrackerAuthorUrlBuilder(author.datatracker_person_path))}" class="${LINK_CLASS}">${htmlEscapeToText(author.titlepage_name ?? '(no name)')}</a>${punctuation}`
+                  return `${renderNodePojoToHtmlString({
+                    type: 'Element',
+                    nodeName: 'Anchor',
+                    attributes: {
+                      href: datatrackerAuthorUrlBuilder(author.datatracker_person_path),
+                      class: LINK_CLASS
+                    },
+                    children: [{ type: 'Text', textContent: author.titlepage_name ?? '(no name)' }]
+                  })}${punctuation}`
                 }
                 return `${htmlEscapeToText(author.titlepage_name ?? '(no name)')}${punctuation}`
               })
@@ -938,16 +923,25 @@ const noScriptHtml = computed(() => {
       ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo(rfc.identifiers)) : ''}
       ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo(formats.value, rfc.number)) : ''}
       <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo(rfc.number))}</dd>
-      <dt class="font-bold mt-2">Document history</dt><dd class="text-sm"><a href="${datatrackerRFCUrl.value}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">View history of RFC ${rfc.number}</a></dd>
-      <dt class="font-bold mt-2">IPR Disclosures</dt><dd class="text-sm"><a href="${htmlEscapeToText(datatrackerIprSearchUrl.value)}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">Find IPR Disclosures from the IETF</a></dd>
+      <dt class="font-bold mt-2">Document history</dt><dd class="text-sm">${anchorHtml(datatrackerRFCUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, `View history of RFC ${rfc.number}`)}</dd>
+      <dt class="font-bold mt-2">IPR Disclosures</dt><dd class="text-sm">${anchorHtml(datatrackerIprSearchUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, 'Find IPR Disclosures from the IETF')}</dd>
     </dl>
     <h3 class="text-lg font-bold mt-4">Errata</h3>
-    <p><a href="${htmlEscapeToText(errataSearchForThisRfc.value)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
+    <p>${anchorHtml(errataSearchForThisRfc.value, LINK_CLASS, `RFC ${rfc.number} Errata`)}</p>
     <h3 class="text-lg font-bold mt-4">Participate</h3>
     ${renderDocumentPojoToHtmlString(participateValuePojo(rfc))}
     </div>
   </noscript>`
 })
+
+// Through the pojo renderer so these get the same `rel` as every other link off the site
+const anchorHtml = (href: string, className: string, text: string) =>
+  renderNodePojoToHtmlString({
+    type: 'Element',
+    nodeName: 'Anchor',
+    attributes: { href, class: className },
+    children: [{ type: 'Text', textContent: text }]
+  })
 
 const noScriptTabsHtml = computed(() => {
   return `<noscript data-nosnippet><div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;">Your browser has JavaScript disabled so the following tabs will not work. The 'About this RFC' and 'Errata' tabs are instead displayed after the table of contents.</div></noscript>`

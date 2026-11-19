@@ -2,7 +2,7 @@ export type Platform = 'linux' | 'android' | 'apple' | 'windows' | 'other'
 
 export type AdviceLink = {
   label: string
-  href: string
+  href: `https://${string}`
 }
 
 export type PlatformAdvice = {

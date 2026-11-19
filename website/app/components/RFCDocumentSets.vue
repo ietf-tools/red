@@ -85,7 +85,7 @@
                           :aria-label="`Set '${set.title}'`"
                           :href="setPathBuilder(set.id)"
                           class="relative z-100 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 dark:bg-gray-900 hover:dark:bg-black focus:dark:bg-black color-black dark:color-black px-1 py-1 rounded-lg">
-                          <GraphicsNewWindowIcon class="text-lg align-middle" />
+                          <GraphicsArrowCircleRight class="text-lg align-middle" />
                         </Anchor>
                       </CheckboxRoot>
                     </template>

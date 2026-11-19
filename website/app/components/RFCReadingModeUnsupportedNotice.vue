@@ -1,10 +1,9 @@
 <template>
   <p class="text-sm text-gray-800 dark:text-gray-200">
     {{ description.title }}. {{ description.description }}
-    <Anchor v-if="description.link" :href="description.link.href" class="underline">
+    <LinkWithIcon v-if="description.link" :href="description.link.href" size="large" class="underline">
       {{ description.link.label }}
-      <GraphicsNewWindowIcon class="text-xl -mt-2 align-middle" />
-    </Anchor>
+    </LinkWithIcon>
   </p>
 </template>
 

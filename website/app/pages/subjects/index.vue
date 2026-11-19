@@ -80,9 +80,8 @@
               <Heading level="2"> Are we missing a subject? </Heading>
               <p class="mt-2 leading-[1.5]">
                 If you can't find it by filtering this list, you can
-                <Anchor :href="GITHUB_RFC_EDITOR_RFC_SUBJECT_TAGS_ISSUES_NEW_URL"
-                  >suggest a new subject on GitHub
-                  <GraphicsNewWindowIcon class="inline-block text-lg align-middle ml-1" /> </Anchor
+                <LinkWithIcon :href="GITHUB_RFC_EDITOR_RFC_SUBJECT_TAGS_ISSUES_NEW_URL"
+                  >suggest a new subject on GitHub</LinkWithIcon
                 >. Please include the new subject, one or more RFCs you believe it applies to, and any other information
                 that might be helpful. You may also send
                 <a :href="RFC_EDITOR_MAILTO">
