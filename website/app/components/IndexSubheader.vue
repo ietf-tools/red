@@ -27,21 +27,12 @@
         RFCs outline computer networking and Internet foundations, including
         <AValidHref :href="searchV2PathBuilder({ status: ['Internet Standard'] })">Internet Standards</AValidHref>
         and historical or informative content. They are published by the RFC Editor for the
-        <AValidHref :href="IETF_URL_ORIGIN">
-          <abbr title="Internet Engineering Task Force">IETF</abbr>
-          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
+        <LinkWithIcon :href="IETF_URL_ORIGIN"> <abbr title="Internet Engineering Task Force">IETF</abbr> </LinkWithIcon
         >,
-        <AValidHref :href="IRTF_URL_ORIGIN">
-          <abbr title="Internet Research Task Force">IRTF</abbr>
-          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
-        >,
-        <AValidHref :href="IAB_URL_ORIGIN">
-          <abbr title="Internet Architecture Board">IAB</abbr>
-          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
-        >, and
-        <AValidHref href="/authors/rfc-independent-submissions/">
-          <abbr title="Independent Submission Editor">ISE</abbr>
-          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" /> </AValidHref
+        <LinkWithIcon :href="IRTF_URL_ORIGIN"> <abbr title="Internet Research Task Force">IRTF</abbr> </LinkWithIcon>,
+        <LinkWithIcon :href="IAB_URL_ORIGIN"> <abbr title="Internet Architecture Board">IAB</abbr> </LinkWithIcon>, and
+        <LinkWithIcon href="/authors/rfc-independent-submissions/">
+          <abbr title="Independent Submission Editor">ISE</abbr> </LinkWithIcon
         >, which collectively form the authoritative source for RFCs.
       </p>
       <IndexSubheaderSearchBox />

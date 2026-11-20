@@ -117,7 +117,7 @@ export const useRfcEditorErrataSearchUrl = () => {
   return `${useErrataUrlOrigin()}/search/`
 }
 export const useRfcEditorErrataSearchForRfcUrl = (rfcNumber: number) => {
-  return `${useErrataUrlOrigin()}/search/?rfc_number=${rfcNumber}`
+  return `${useErrataUrlOrigin()}/search/?rfc_number=${rfcNumber}` as const
 }
 export const useRfcEditorQueueClustersUrl = () => {
   return `${useQueueUrlOrigin()}/clusters/`
@@ -543,7 +543,7 @@ export const datatrackerAuthorUrlBuilder = (datatracker_person_path: string) => 
   if (url.origin !== origin) {
     throw Error(`Datatracker person path ${JSON.stringify(datatracker_person_path)} leaves ${origin}`)
   }
-  return `${origin}${datatracker_person_path}`
+  return `${origin}${datatracker_person_path}` as const
 }
 
 export const faviconPathBuilder = (widthPx: number, heightPx: number) => `/api/v1/favicon/${widthPx}x${heightPx}.png`

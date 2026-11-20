@@ -7,7 +7,7 @@ import { renderDocumentPojo, defaultRenderer } from '~/utilities/renderDocumentP
 import type { ElementRenderers } from '~/utilities/renderDocumentPojo'
 import type { DocumentPojo } from '~/utilities/rfc-validators'
 import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
-import { AMaybeRFCLink, GraphicsNewWindowIcon } from '#components'
+import { AMaybeRFCLink, OutsideLinkIcon } from '#components'
 
 type Props = {
   value: DocumentPojo
@@ -36,7 +36,9 @@ const renderer: ElementRenderers = {
     // @ts-ignore
     return h(iconComponent, attributes, () => childrenForVue)
   },
-  GraphicsNewWindowIcon: () => h(GraphicsNewWindowIcon),
+  OutsideLinkIcon: (node) =>
+    // @ts-ignore
+    h(OutsideLinkIcon, node.attributes),
   ...defaultRenderer
 }
 
