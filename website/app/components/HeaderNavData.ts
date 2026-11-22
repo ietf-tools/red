@@ -5,6 +5,7 @@ import { htmlEscapeToText } from '~/utilities/html'
 import { linkRel } from '~/utilities/url-destination'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
+import { userDisplayName } from '~/utilities/user-display-name'
 import {
   MY_ACCOUNT_HOME_PATH,
   IETF_PRIVACY_STATEMENT_URL,
@@ -241,7 +242,7 @@ export const useMenuData = (mode: Mode) => {
     const imageSize = 'w-5 h-5'
 
     if (isAuthenticated.value) {
-      const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
+      const displayName = userDisplayName(user.value)
       const picture = user.value?.picture
       const sanitisedPicture = sanitiseUserProfileImage(picture)
       data.push({

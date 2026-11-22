@@ -25,13 +25,29 @@ export type OidcConfig = {
   enrollmentUrl: string
 }
 
-export type OidcUser = {
-  sub: string
-  name?: string
-  preferredUsername?: string
-  email?: string
-  picture?: string
-}
+// The profile is read back out of localStorage and out of ID token claims, so its shape is checked, not trusted.
+// A field of the wrong type is dropped rather than failing the whole profile; only `sub` is essential,
+// because without it there is no way to say who is signed in.
+const optionalString = z.string().optional().catch(undefined)
+
+const OidcUserSchema = z.object({
+  sub: z.string().min(1),
+  name: optionalString,
+  nickname: optionalString,
+  preferredUsername: optionalString,
+  email: optionalString,
+  picture: optionalString
+})
+
+export type OidcUser = z.infer<typeof OidcUserSchema>
+
+// The identity provider's claim is `preferred_username`
+export const parseOidcUser = (profile: unknown) =>
+  OidcUserSchema.safeParse(
+    typeof profile === 'object' && profile !== null && 'preferred_username' in profile
+      ? { ...profile, preferredUsername: profile.preferred_username }
+      : profile
+  )
 
 let userManagerPromise: Promise<UserManager> | undefined
 // Retained alongside the manager so the explicit login/register entry points can read
@@ -77,15 +93,17 @@ const getUserManager = (config: OidcConfig): Promise<UserManager> => {
   return userManagerPromise
 }
 
-const toOidcUser = (user: User): OidcUser => {
-  const { profile } = user
-  return {
-    sub: profile.sub,
-    name: profile.name,
-    preferredUsername: profile.preferred_username,
-    email: profile.email,
-    picture: profile.picture
+// A stored session whose profile fails the check is treated as signed out. The raw stored value is
+// logged with the error, since that is what is needed to see what was wrong with it.
+const toOidcUser = async (userManager: UserManager, user: User): Promise<OidcUser | null> => {
+  const { data, error } = parseOidcUser(user.profile)
+  if (data) {
+    return data
   }
+  const { authority, client_id: clientId, userStore } = userManager.settings
+  const stored = await userStore.get(`user:${authority}:${clientId}`)
+  console.error('[oidc] the stored user profile is not valid, treating as signed out', { stored, error })
+  return null
 }
 
 const isCallbackUrl = (): boolean => {
@@ -94,7 +112,7 @@ const isCallbackUrl = (): boolean => {
 }
 
 // Where to return the user once they've signed in. Carried through the login redirect in
-// the OIDC `state` parameter: oidc-client-ts keeps this object in local storage keyed by the
+// the OIDC `state` parameter: oidc-client-ts keeps this object in localStorage keyed by the
 // opaque, single-use state value it sends to the identity provider, so the path itself never
 // leaves the browser, it can't be confused with a different login attempt, and it's cleaned
 // up on callback. That's also why `redirect_uri` stays fixed at oidcHomeUrl (the login page) — one registered
@@ -103,7 +121,7 @@ const SigninStateSchema = z.object({ returnTo: z.string() })
 
 const getCurrentPath = (): string => `${window.location.pathname}${window.location.search}${window.location.hash}`
 
-// `state` comes back out of web storage, so it's parsed as untrusted input rather than
+// `state` comes back out of localStorage, so it's parsed as untrusted input rather than
 // trusted as something we wrote. A path is only safe to navigate to if it stays on this
 // origin: a leading `//` or `/\` is a protocol-relative URL pointing at another host.
 const parseReturnTo = (state: unknown): string | undefined => {
@@ -138,7 +156,7 @@ export const oidcRestore = async (config: OidcConfig): Promise<OidcRestoreResult
     const user = await userManager.signinRedirectCallback()
     // Strip the code/state from the URL, staying on the current (root) path.
     window.history.replaceState(null, '', window.location.pathname)
-    return { user: toOidcUser(user), isFreshSignIn: true, returnTo: parseReturnTo(user.state) }
+    return { user: await toOidcUser(userManager, user), isFreshSignIn: true, returnTo: parseReturnTo(user.state) }
   }
 
   // Logged-in state is based purely on the stored session (id-token claims), so an
@@ -148,7 +166,7 @@ export const oidcRestore = async (config: OidcConfig): Promise<OidcRestoreResult
   // different matter: it discards the session, which reports the user as logged out via the
   // onOidcSessionEnded listener.
   const user = await userManager.getUser()
-  return { user: user ? toOidcUser(user) : null, isFreshSignIn: false }
+  return { user: user ? await toOidcUser(userManager, user) : null, isFreshSignIn: false }
 }
 
 // Explicit login — with oidcRegister(), one of only two paths that redirect to the identity
