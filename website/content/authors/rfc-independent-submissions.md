@@ -9,7 +9,7 @@ The Independent Submission Stream allows RFC publication for some documents that
 - the Independent Submissions Editor (ISE) and
 - the [Independent Submissions Editorial Board](/authors/ise/iseb), which provides review for the ISE.
 
-The Independent Submissions Editor (ISE) is currently [Eliot Lear](https://datatracker.ietf.org/person/lear@lear.ch), who can be reached at [rfc-ise@rfc-editor.org](mailto:rfc-ise@rfc-editor.org).
+The Independent Submissions Editor (ISE) is currently [Eliot Lear](https://datatracker.ietf.org/person/lear@lear.ch), who can be reached at [rfc-ise@rfc-editor.org](mailto:rfc-ise@rfc-editor.org).  Discussion of independent submissions takes place on [independent-submissions-discuss@rfc-editor.org](https://mailman3.rfc-editor.org/mailman3/lists/independent-submissions-discuss.rfc-editor.org/).
 
 [Click here for steps to start the publication process](/authors/ise/ise-checklist).
 
