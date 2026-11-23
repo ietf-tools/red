@@ -81,6 +81,10 @@ export const getRfcPillText = (rfc: RfcCommon): string[] => {
 
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
 
+// The datatracker gives a document with no group the placeholder group 'none', which has no pages of its own
+export const realGroup = (group: RfcCommon['group']): RfcCommon['group'] =>
+  group?.acronym === 'none' ? undefined : group
+
 export const isAprilFoolsRfc = (rfc: Pick<RfcCommon, 'published' | 'stream' | 'group'>): boolean => {
   if (rfc.published === undefined) return false
   const datetime = DateTime.fromISO(rfc.published)

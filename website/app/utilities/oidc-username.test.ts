@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { userDisplayName } from './user-display-name'
+import { userDisplayName } from './oidc-username'
 
 const user = { sub: 'abc' }
 

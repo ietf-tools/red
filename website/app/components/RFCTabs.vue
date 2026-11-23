@@ -210,28 +210,28 @@
               {{ groupName(props.rfcBucketHtmlDocument.rfc) }}
             </dt>
             <dd>
-              <DocumentPojo :value="groupValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+              <DocumentPojo :value="groupValuePojo" />
             </dd>
           </template>
 
           <template v-if="shouldShowArea(props.rfcBucketHtmlDocument.rfc)">
             <dt class="font-bold mt-2">Area</dt>
             <dd>
-              <DocumentPojo :value="areaValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+              <DocumentPojo :value="areaValuePojo" />
             </dd>
           </template>
 
           <dt class="font-bold mt-2">{{ streamName }}</dt>
           <dd v-if="shouldShowStreamValue(props.rfcBucketHtmlDocument.rfc)">
-            <DocumentPojo :value="streamValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+            <DocumentPojo :value="streamValuePojo" />
           </dd>
 
-          <DocumentPojo :value="identifierValuePojo(props.rfcBucketHtmlDocument.rfc.identifiers)" />
+          <DocumentPojo :value="identifierValuePojo" />
 
-          <DocumentPojo :value="formatsValuePojo(formats, props.rfcBucketHtmlDocument.rfc.number)" />
+          <DocumentPojo :value="formatsValuePojo" />
 
           <dt class="font-bold mt-2">Cite this RFC</dt>
-          <dd><DocumentPojo :value="citeValuePojo(props.rfcBucketHtmlDocument.rfc.number)" /></dd>
+          <dd><DocumentPojo :value="citeValuePojo" /></dd>
 
           <dt class="font-bold mt-2">Document history</dt>
           <dd>
@@ -286,7 +286,17 @@
       ]">
       <VerticalScrollable class="pl-1">
         <Heading level="2" style-level="4" class="mt-3 mb-1"> Participate </Heading>
-        <DocumentPojo :value="participateValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+        <DocumentPojo v-if="participateValuePojo.length > 0" :value="participateValuePojo" />
+        <p v-else-if="props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'">
+          There is no research group associated with this RFC.
+        </p>
+        <p
+          v-else-if="
+            props.rfcBucketHtmlDocument.rfc.stream.slug === 'IETF' ||
+            props.rfcBucketHtmlDocument.rfc.stream.slug === 'Editorial'
+          ">
+          There is no working group associated with this RFC.
+        </p>
       </VerticalScrollable>
     </TabsContent>
   </TabsRoot>
@@ -317,6 +327,7 @@ import {
   IRTF_URL_ORIGIN
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
+import { realGroup } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString, renderNodePojoToHtmlString } from '~/utilities/renderDocumentPojo'
@@ -483,7 +494,8 @@ const outsideLinkIconPojo = (href: string): NodePojo => ({
   children: []
 })
 
-const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
+const groupValuePojo = computed((): DocumentPojo => {
+  const { rfc } = props.rfcBucketHtmlDocument
   const group = rfc.group
 
   if (group?.type === 'individ') {
@@ -519,9 +531,10 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
       children: [...children, outsideLinkIconPojo(groupHref)]
     }
   ]
-}
+})
 
-const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
+const areaValuePojo = computed((): DocumentPojo => {
+  const { rfc } = props.rfcBucketHtmlDocument
   const { area } = rfc
 
   const areaHref = areaGroupUrlBuilder(area) ?? ''
@@ -540,9 +553,10 @@ const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
       children: [...children, outsideLinkIconPojo(areaHref)]
     }
   ]
-}
+})
 
-const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPojo => {
+const identifierValuePojo = computed((): DocumentPojo => {
+  const { identifiers } = props.rfcBucketHtmlDocument.rfc
   if (!identifiers) return []
 
   return identifiers.flatMap(({ type, value }) => {
@@ -591,17 +605,19 @@ const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPoj
       }
     ]
   })
-}
+})
 
-const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): DocumentPojo => {
-  if (formats.length === 0) return []
+const formatsValuePojo = computed((): DocumentPojo => {
+  const { value: availableFormats } = formats
+  const { number: rfcNumber } = props.rfcBucketHtmlDocument.rfc
+  if (availableFormats.length === 0) return []
 
   return [
     {
       type: 'Element',
       nodeName: 'dt',
       attributes: { class: 'font-bold mt-2' },
-      children: [{ type: 'Text', textContent: formats.length === 1 ? 'Format' : 'Formats' }]
+      children: [{ type: 'Text', textContent: availableFormats.length === 1 ? 'Format' : 'Formats' }]
     },
     {
       type: 'Element',
@@ -612,7 +628,7 @@ const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): Doc
           type: 'Element',
           nodeName: 'ul',
           attributes: {},
-          children: formats.map(({ format }, index) => ({
+          children: availableFormats.map(({ format }, index) => ({
             type: 'Element' as const,
             nodeName: 'li',
             attributes: { class: 'inline' },
@@ -628,16 +644,20 @@ const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): Doc
                 },
                 children: [{ type: 'Text' as const, textContent: format.toUpperCase() }]
               },
-              { type: 'Text' as const, textContent: index < formats.length - 1 ? `${COMMA}${SPACE}` : FULLSTOP }
+              {
+                type: 'Text' as const,
+                textContent: index < availableFormats.length - 1 ? `${COMMA}${SPACE}` : FULLSTOP
+              }
             ]
           }))
         }
       ]
     }
   ]
-}
+})
 
-const citeValuePojo = (rfcNumber: number): DocumentPojo => {
+const citeValuePojo = computed((): DocumentPojo => {
+  const { number: rfcNumber } = props.rfcBucketHtmlDocument.rfc
   const rfcId = `rfc${rfcNumber}`
   return [
     {
@@ -674,10 +694,10 @@ const citeValuePojo = (rfcNumber: number): DocumentPojo => {
     },
     { type: 'Text', textContent: `${FULLSTOP}${SPACE}` }
   ]
-}
+})
 
-const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
-  const { stream } = rfc
+const streamValuePojo = computed((): DocumentPojo => {
+  const { stream } = props.rfcBucketHtmlDocument.rfc
   const href = streamUrlBuilder(stream)
 
   if (href) {
@@ -692,9 +712,11 @@ const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
   }
 
   return [{ type: 'Text', textContent: stream.name }]
-}
+})
 
-const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
+const participateValuePojo = computed((): DocumentPojo => {
+  const { rfc } = props.rfcBucketHtmlDocument
+  const group = realGroup(rfc.group)
   switch (rfc.stream.slug) {
     case 'Editorial':
     case 'IRTF':
@@ -711,9 +733,9 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
         For Inactive IETF working groups
           * “This working group has concluded. See this/these groups instead:
        */
-      const wgAbout = useWorkingGroupUrlBuilder(rfc.group, 'about')
-      const wgDocuments = useWorkingGroupUrlBuilder(rfc.group, 'documents')
-      const wgMeetings = useWorkingGroupUrlBuilder(rfc.group, 'meetings')
+      const wgAbout = useWorkingGroupUrlBuilder(group, 'about')
+      const wgDocuments = useWorkingGroupUrlBuilder(group, 'documents')
+      const wgMeetings = useWorkingGroupUrlBuilder(group, 'meetings')
       if (wgAbout || wgDocuments || wgMeetings) {
         let pojo: DocumentPojo = []
         if (wgAbout) {
@@ -732,7 +754,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
                 children: [
                   {
                     type: 'Text',
-                    textContent: `About working group ${rfc.group ? rfc.group.name : ''}`
+                    textContent: `About working group ${group ? group.name : ''}`
                   }
                 ]
               },
@@ -756,7 +778,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
                 children: [
                   {
                     type: 'Text',
-                    textContent: `${rfc.group ? rfc.group.name : ''} documents`
+                    textContent: `${group ? group.name : ''} documents`
                   }
                 ]
               },
@@ -780,7 +802,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
                 children: [
                   {
                     type: 'Text',
-                    textContent: `Meetings for ${rfc.group ? rfc.group.name : ''}`
+                    textContent: `Meetings for ${group ? group.name : ''}`
                   }
                 ]
               },
@@ -791,8 +813,8 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
 
         return pojo
       }
-      if (rfc.group) {
-        return [{ type: 'Text', textContent: `${rfc.group.name} ${rfc.group.acronym ? `(${rfc.group.acronym})` : ''}` }]
+      if (group) {
+        return [{ type: 'Text', textContent: `${group.name} ${group.acronym ? `(${group.acronym})` : ''}` }]
       }
       return []
     case 'IAB':
@@ -875,7 +897,7 @@ const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
   }
 
   return []
-}
+})
 
 /** For non-JS users */
 const noScriptHtml = computed(() => {
@@ -917,19 +939,19 @@ const noScriptHtml = computed(() => {
               .join('')}</dd>`
           : ''
       }
-      ${shouldShowGroup(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(groupName(rfc))}</dt><dd>${renderDocumentPojoToHtmlString(groupValuePojo(rfc))}</dd>` : ''}
-      ${shouldShowArea(rfc) ? `<dt class="font-bold mt-2">Area</dt><dd>${renderDocumentPojoToHtmlString(areaValuePojo(rfc))}</dd>` : ''}
-      ${shouldShowStreamValue(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(streamName.value)}</dt><dd>${renderDocumentPojoToHtmlString(streamValuePojo(rfc))}</dd>` : ''}
-      ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo(rfc.identifiers)) : ''}
-      ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo(formats.value, rfc.number)) : ''}
-      <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo(rfc.number))}</dd>
+      ${shouldShowGroup(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(groupName(rfc))}</dt><dd>${renderDocumentPojoToHtmlString(groupValuePojo.value)}</dd>` : ''}
+      ${shouldShowArea(rfc) ? `<dt class="font-bold mt-2">Area</dt><dd>${renderDocumentPojoToHtmlString(areaValuePojo.value)}</dd>` : ''}
+      ${shouldShowStreamValue(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(streamName.value)}</dt><dd>${renderDocumentPojoToHtmlString(streamValuePojo.value)}</dd>` : ''}
+      ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo.value) : ''}
+      ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo.value) : ''}
+      <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo.value)}</dd>
       <dt class="font-bold mt-2">Document history</dt><dd class="text-sm">${anchorHtml(datatrackerRFCUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, `View history of RFC ${rfc.number}`)}</dd>
       <dt class="font-bold mt-2">IPR Disclosures</dt><dd class="text-sm">${anchorHtml(datatrackerIprSearchUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, 'Find IPR Disclosures from the IETF')}</dd>
     </dl>
     <h3 class="text-lg font-bold mt-4">Errata</h3>
     <p>${anchorHtml(errataSearchForThisRfc.value, LINK_CLASS, `RFC ${rfc.number} Errata`)}</p>
     <h3 class="text-lg font-bold mt-4">Participate</h3>
-    ${renderDocumentPojoToHtmlString(participateValuePojo(rfc))}
+    ${renderDocumentPojoToHtmlString(participateValuePojo.value)}
     </div>
   </noscript>`
 })

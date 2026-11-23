@@ -5,7 +5,7 @@ import { htmlEscapeToText } from '~/utilities/html'
 import { linkRel } from '~/utilities/url-destination'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
-import { userDisplayName } from '~/utilities/user-display-name'
+import { userDisplayName } from '~/utilities/oidc-username'
 import {
   MY_ACCOUNT_HOME_PATH,
   IETF_PRIVACY_STATEMENT_URL,

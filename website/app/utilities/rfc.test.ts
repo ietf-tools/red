@@ -2,7 +2,7 @@
 import { test, expect } from 'vitest'
 import { DateTime } from 'luxon'
 import type { ApiClient } from '../../../precomputer/generated/api-client'
-import { isAprilFoolsRfc, parseSeriesId } from './rfc'
+import { isAprilFoolsRfc, parseSeriesId, realGroup } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import { formatDatePublished } from './rfc-converters-utils'
 import type { RfcCommon } from './rfc-validators'
@@ -89,4 +89,17 @@ test('isAprilFoolsRfc', () => {
     acronym: 'ietf'
   }
   expect(isAprilFoolsRfc(notAprilFoolsRfc2)).toBeFalsy()
+})
+
+test('realGroup treats the datatracker placeholder group "none" as no group', () => {
+  const group = (acronym: string): NonNullable<RfcCommon['group']> => ({
+    acronym,
+    name: acronym,
+    state: 'active',
+    type: 'wg'
+  })
+
+  expect(realGroup(undefined)).toBeUndefined()
+  expect(realGroup(group('none'))).toBeUndefined()
+  expect(realGroup(group('quic'))).toEqual(group('quic'))
 })
