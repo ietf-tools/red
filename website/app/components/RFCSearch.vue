@@ -68,7 +68,7 @@
                 <div class="flex w-full flex-row justify-between items-center gap-3 lg:gap-4 xl:gap-5">
                   <Stats :class-names="{ root: 'text-base font-bold whitespace-nowrap' }" />
                   <div class="hidden lg:flex lg:items-center gap-3">
-                    <SortBy :items="SORT_ITEMS" label="Sort by" :class-names="sortClasses" />
+                    <RFCSearchSortBy :class-names="sortClasses" />
                     <Separator
                       orientation="vertical"
                       decorative
@@ -91,7 +91,7 @@
                     Filter RFCs
                   </button>
 
-                  <SortBy :items="SORT_ITEMS" label="Sort by" :class-names="sortClasses" />
+                  <RFCSearchSortBy :class-names="sortClasses" />
                 </div>
                 <div class="lg:hidden pt-2 flex flex-row justify-end w-full">
                   <SearchDensity v-model="searchStore.density" />
@@ -151,7 +151,6 @@ import {
   SearchRoot,
   SearchBox,
   Stats,
-  SortBy,
   HitsPerPage,
   Pagination,
   type ClassNames,
@@ -202,15 +201,6 @@ const PERSISTENT_FACETS = [
   'group.name',
   'authors.name',
   'publicationDate'
-]
-
-const SORT_ITEMS = [
-  { label: 'Relevance', value: '' },
-  { label: 'Newest first', value: 'publicationDate:desc' },
-  { label: 'Oldest first', value: 'publicationDate:asc' },
-  { label: 'RFC number (ascending)', value: 'rfcNumber:asc' },
-  { label: 'RFC number (descending)', value: 'rfcNumber:desc' },
-  { label: 'Most popular', value: 'popularity:desc,_text_match:desc' }
 ]
 
 const PER_PAGE_ITEMS = [

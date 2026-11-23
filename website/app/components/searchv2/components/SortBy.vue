@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const selectDomId = useId()
-const { items, current, refine } = useSortBy(props.items)
+const { items, current, refine } = useSortBy(() => props.items)
 
 const onChange = (event: Event) => {
   if (event.target instanceof HTMLSelectElement) refine(event.target.value)
