@@ -297,6 +297,14 @@
           ">
           There is no working group associated with this RFC.
         </p>
+        <p>
+          <LinkWithIcon :href="DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL"
+            >Guidance on Area Director Sponsoring of Documents</LinkWithIcon
+          >
+        </p>
+        <p v-if="areaAboutUrl">
+          <LinkWithIcon :href="areaAboutUrl">Area Director</LinkWithIcon>
+        </p>
       </VerticalScrollable>
     </TabsContent>
   </TabsRoot>
@@ -324,7 +332,9 @@ import {
   IAB_URL_ORIGIN,
   MARKDOWN_AUTHORS_INDEPENDENT,
   IETF_URL_ORIGIN,
-  IRTF_URL_ORIGIN
+  IRTF_URL_ORIGIN,
+  DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL,
+  areaAboutUrlBuilder
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { realGroup } from '~/utilities/rfc'
@@ -334,7 +344,6 @@ import { renderDocumentPojoToHtmlString, renderNodePojoToHtmlString } from '~/ut
 import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { useUiSettingsStore } from '~/stores/ui-settings'
-import NewWindowIcon from './Graphics/NewWindowIcon.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -443,6 +452,8 @@ const streamName = computed(() => {
       return 'Publication Stream'
   }
 })
+
+const areaAboutUrl = computed(() => areaAboutUrlBuilder(props.rfcBucketHtmlDocument.rfc.area))
 
 const formats = computed(() =>
   props.rfcBucketHtmlDocument.rfc.formats.filter((format) => {

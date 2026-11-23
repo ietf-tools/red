@@ -512,6 +512,12 @@ export const areaGroupUrlBuilder = (area: RfcCommon['area']) => {
   return `${useDatatrackerUrlOrigin()}/wg/#${encodeURIComponent(area.acronym.toUpperCase())}` as const
 }
 
+export const areaAboutUrlBuilder = (area: RfcCommon['area']) => {
+  if (!area) return undefined
+  // See https://github.com/ietf-tools/red/issues/608
+  return `${useDatatrackerUrlOrigin()}/group/${encodeURIComponent(area.acronym)}/about/` as const
+}
+
 export const streamUrlBuilder = (stream: RfcCommon['stream']) => {
   if (!stream) return undefined
   // See https://github.com/ietf-tools/red/issues/179
