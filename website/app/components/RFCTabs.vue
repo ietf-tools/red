@@ -286,25 +286,29 @@
       ]">
       <VerticalScrollable class="pl-1">
         <Heading level="2" style-level="4" class="mt-3 mb-1"> Participate </Heading>
-        <DocumentPojo v-if="participateValuePojo.length > 0" :value="participateValuePojo" />
-        <p v-else-if="props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'">
-          There is no research group associated with this RFC.
-        </p>
-        <p
-          v-else-if="
-            props.rfcBucketHtmlDocument.rfc.stream.slug === 'IETF' ||
-            props.rfcBucketHtmlDocument.rfc.stream.slug === 'Editorial'
-          ">
-          There is no working group associated with this RFC.
-        </p>
-        <p>
-          <LinkWithIcon :href="DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL"
-            >Guidance on Area Director Sponsoring of Documents</LinkWithIcon
-          >
-        </p>
-        <p v-if="areaAboutUrl">
-          <LinkWithIcon :href="areaAboutUrl">Area Director</LinkWithIcon>
-        </p>
+        <div class="flex flex-col gap-2">
+          <DocumentPojo v-if="participateValuePojo.length > 0" :value="participateValuePojo" />
+          <p v-else-if="props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'">
+            There is no research group associated with this RFC.
+          </p>
+          <p
+            v-else-if="
+              props.rfcBucketHtmlDocument.rfc.stream.slug === 'IETF' ||
+              props.rfcBucketHtmlDocument.rfc.stream.slug === 'Editorial'
+            ">
+            There is no working group associated with this RFC.
+          </p>
+          <p>
+            <LinkWithIcon :href="DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL" :class="LINK_CLASS"
+              >Guidance on Area Director Sponsoring of Documents</LinkWithIcon
+            >
+          </p>
+          <p v-if="areaAboutUrl && props.rfcBucketHtmlDocument.rfc.area">
+            <LinkWithIcon :href="areaAboutUrl" :class="LINK_CLASS"
+              >{{ props.rfcBucketHtmlDocument.rfc.area.name }} Director</LinkWithIcon
+            >
+          </p>
+        </div>
       </VerticalScrollable>
     </TabsContent>
   </TabsRoot>
