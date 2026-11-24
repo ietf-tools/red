@@ -2,7 +2,7 @@
 import { test, expect } from 'vitest'
 import { DateTime } from 'luxon'
 import type { ApiClient } from '../../../precomputer/generated/api-client'
-import { isAprilFoolsRfc, parseSeriesId, realGroup } from './rfc'
+import { areaLabel, isAprilFoolsRfc, isAreaSponsored, parseSeriesId, realGroup } from './rfc'
 import { NONBREAKING_SPACE } from './strings'
 import { formatDatePublished } from './rfc-converters-utils'
 import type { RfcCommon } from './rfc-validators'
@@ -102,4 +102,30 @@ test('realGroup treats the datatracker placeholder group "none" as no group', ()
   expect(realGroup(undefined)).toBeUndefined()
   expect(realGroup(group('none'))).toBeUndefined()
   expect(realGroup(group('quic'))).toEqual(group('quic'))
+})
+
+test('isAreaSponsored is true only for IETF-stream documents without a working group', () => {
+  const rfc = (
+    slug: RfcCommon['stream']['slug'],
+    group?: Partial<NonNullable<RfcCommon['group']>>
+  ): Pick<RfcCommon, 'stream' | 'group'> => ({
+    stream: { slug, name: slug },
+    group: group && { acronym: 'x', name: 'x', state: 'active', type: 'wg', ...group }
+  })
+
+  expect(isAreaSponsored(rfc('IETF', { acronym: 'quic' }))).toBe(false)
+  expect(isAreaSponsored(rfc('IETF', { acronym: 'httpbis' }))).toBe(false)
+  expect(isAreaSponsored(rfc('IETF', { acronym: 'none' }))).toBe(true)
+  expect(isAreaSponsored(rfc('IETF', { type: 'area' }))).toBe(true)
+  expect(isAreaSponsored(rfc('IETF'))).toBe(true)
+  expect(isAreaSponsored(rfc('IAB'))).toBe(false)
+  expect(isAreaSponsored(rfc('INDEPENDENT'))).toBe(false)
+  expect(isAreaSponsored(rfc('Legacy'))).toBe(false)
+})
+
+test('areaLabel appends "Area" only when the name does not already end with it', () => {
+  const area = (name: string): NonNullable<RfcCommon['area']> => ({ acronym: 'x', name })
+
+  expect(areaLabel(area('Web and Internet Transport'))).toBe('Web and Internet Transport Area')
+  expect(areaLabel(area('Applications Area'))).toBe('Applications Area')
 })

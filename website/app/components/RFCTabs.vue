@@ -323,7 +323,7 @@ import {
   areaAboutUrlBuilder
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { ISSN, realGroup } from '~/utilities/rfc'
+import { ISSN, areaLabel, isAreaSponsored, realGroup } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString, renderNodePojoToHtmlString } from '~/utilities/renderDocumentPojo'
@@ -746,7 +746,16 @@ const participateValuePojo = computed((): DocumentPojo => {
             ? [paragraphPojo([{ type: 'Text', textContent: `This ${groupKind} has concluded.` }])]
             : []),
           ...(about ? [paragraphPojo([anchorPojo(about, group.name)])] : []),
-          ...(documents ? [paragraphPojo([anchorPojo(documents, 'Read work in progress')])] : []),
+          ...(documents
+            ? [
+                paragraphPojo([
+                  anchorPojo(
+                    documents,
+                    group.state === 'concluded' ? `Read other documents by the ${groupKind}` : 'Read work in progress'
+                  )
+                ])
+              ]
+            : []),
           ...(meetings ? [paragraphPojo([anchorPojo(meetings, 'Meetings')])] : [])
         ]
       }
@@ -854,10 +863,17 @@ const participateValuePojo = computed((): DocumentPojo => {
   }
   return [
     ...streamPojo(),
-    paragraphPojo([
-      anchorPojo(DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL, 'Guidance on Area Director Sponsoring of Documents')
-    ]),
-    ...(areaAboutUrl.value && area ? [paragraphPojo([anchorPojo(areaAboutUrl.value, `${area.name} Director`)])] : [])
+    ...(isAreaSponsored(rfc)
+      ? [
+          paragraphPojo([
+            anchorPojo(
+              DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL,
+              'Guidance on Area Director Sponsoring of Documents'
+            )
+          ])
+        ]
+      : []),
+    ...(areaAboutUrl.value && area ? [paragraphPojo([anchorPojo(areaAboutUrl.value, areaLabel(area))])] : [])
   ]
 })
 
