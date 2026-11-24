@@ -733,7 +733,8 @@ const participateValuePojo = computed((): DocumentPojo => {
       case 'IRTF':
       case 'IETF': {
         const groupKind = rfc.stream.slug === 'IRTF' ? 'research group' : 'working group'
-        if (!group)
+        // An area sponsoring a document isn't a working group; it has no document list, and its Director link follows below
+        if (!group || group.type === 'area')
           return [paragraphPojo([{ type: 'Text', textContent: `There is no ${groupKind} associated with this RFC.` }])]
         const about = useWorkingGroupUrlBuilder(group, 'about')
         const documents = useWorkingGroupUrlBuilder(group, 'documents')
