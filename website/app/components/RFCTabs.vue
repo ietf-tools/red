@@ -287,27 +287,7 @@
       <VerticalScrollable class="pl-1">
         <Heading level="2" style-level="4" class="mt-3 mb-1"> Participate </Heading>
         <div class="flex flex-col gap-2">
-          <DocumentPojo v-if="participateValuePojo.length > 0" :value="participateValuePojo" />
-          <p v-else-if="props.rfcBucketHtmlDocument.rfc.stream.slug === 'IRTF'">
-            There is no research group associated with this RFC.
-          </p>
-          <p
-            v-else-if="
-              props.rfcBucketHtmlDocument.rfc.stream.slug === 'IETF' ||
-              props.rfcBucketHtmlDocument.rfc.stream.slug === 'Editorial'
-            ">
-            There is no working group associated with this RFC.
-          </p>
-          <p>
-            <LinkWithIcon :href="DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL" :class="LINK_CLASS"
-              >Guidance on Area Director Sponsoring of Documents</LinkWithIcon
-            >
-          </p>
-          <p v-if="areaAboutUrl && props.rfcBucketHtmlDocument.rfc.area">
-            <LinkWithIcon :href="areaAboutUrl" :class="LINK_CLASS"
-              >{{ props.rfcBucketHtmlDocument.rfc.area.name }} Director</LinkWithIcon
-            >
-          </p>
+          <DocumentPojo :value="participateValuePojo" />
         </div>
       </VerticalScrollable>
     </TabsContent>
@@ -334,7 +314,7 @@ import {
   useDatatrackerRFCUrlBuilder,
   useDatatrackerIprSearchForRfcUrlBuilder,
   IAB_URL_ORIGIN,
-  MARKDOWN_AUTHORS_INDEPENDENT,
+  INDEPENDENT_SUBMISSIONS_URL,
   IETF_URL_ORIGIN,
   IRTF_URL_ORIGIN,
   DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL,
@@ -507,6 +487,20 @@ const outsideLinkIconPojo = (href: string): NodePojo => ({
   nodeName: 'OutsideLinkIcon',
   attributes: { href },
   children: []
+})
+
+const paragraphPojo = (children: NodePojo[]): NodePojo => ({
+  type: 'Element',
+  nodeName: 'p',
+  attributes: { class: 'leading-[1.5] py-1' },
+  children
+})
+
+const anchorPojo = (href: string, text: string): NodePojo => ({
+  type: 'Element',
+  nodeName: 'Anchor',
+  attributes: { href, class: LINK_CLASS },
+  children: [{ type: 'Text', textContent: text }]
 })
 
 const groupValuePojo = computed((): DocumentPojo => {
@@ -731,187 +725,116 @@ const streamValuePojo = computed((): DocumentPojo => {
 
 const participateValuePojo = computed((): DocumentPojo => {
   const { rfc } = props.rfcBucketHtmlDocument
+  const { area } = rfc
   const group = realGroup(rfc.group)
-  switch (rfc.stream.slug) {
-    case 'Editorial':
-    case 'IRTF':
-    case 'IETF':
-      /**
-        FIXME: when rfc contains 'active' vs 'concluded' state use that to display better text
-
-        For Active IETF working group
-          * WG name links to data tracker about page (ex)
-          * Include beginning of charter statement from about page
-          * “Read work in progress” link to current working group documents (ex)
-          * “Meetings” Link to read minutes from past meetings or learn about upcoming meetings (ex)
-          * “Recent conversations”” link to mailing list archive (ex)
-        For Inactive IETF working groups
-          * “This working group has concluded. See this/these groups instead:
-       */
-      const wgAbout = useWorkingGroupUrlBuilder(group, 'about')
-      const wgDocuments = useWorkingGroupUrlBuilder(group, 'documents')
-      const wgMeetings = useWorkingGroupUrlBuilder(group, 'meetings')
-      if (wgAbout || wgDocuments || wgMeetings) {
-        let pojo: DocumentPojo = []
-        if (wgAbout) {
-          pojo.push({
-            type: 'Element',
-            nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1' },
-            children: [
-              {
-                type: 'Element',
-                nodeName: 'Anchor',
-                attributes: {
-                  href: wgAbout,
-                  class: LINK_CLASS
-                },
-                children: [
-                  {
-                    type: 'Text',
-                    textContent: `About working group ${group ? group.name : ''}`
-                  }
-                ]
-              },
-              { type: 'Text', textContent: '.' }
-            ]
-          })
-        }
-        if (wgDocuments) {
-          pojo.push({
-            type: 'Element',
-            nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1' },
-            children: [
-              {
-                type: 'Element',
-                nodeName: 'Anchor',
-                attributes: {
-                  href: wgDocuments,
-                  class: LINK_CLASS
-                },
-                children: [
-                  {
-                    type: 'Text',
-                    textContent: `${group ? group.name : ''} documents`
-                  }
-                ]
-              },
-              { type: 'Text', textContent: '.' }
-            ]
-          })
-        }
-        if (wgMeetings) {
-          pojo.push({
-            type: 'Element',
-            nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1' },
-            children: [
-              {
-                type: 'Element',
-                nodeName: 'Anchor',
-                attributes: {
-                  href: wgMeetings,
-                  class: LINK_CLASS
-                },
-                children: [
-                  {
-                    type: 'Text',
-                    textContent: `Meetings for ${group ? group.name : ''}`
-                  }
-                ]
-              },
-              { type: 'Text', textContent: '.' }
-            ]
-          })
-        }
-
-        return pojo
+  const streamPojo = (): DocumentPojo => {
+    switch (rfc.stream.slug) {
+      case 'Editorial':
+      case 'IRTF':
+      case 'IETF': {
+        const groupKind = rfc.stream.slug === 'IRTF' ? 'research group' : 'working group'
+        if (!group)
+          return [paragraphPojo([{ type: 'Text', textContent: `There is no ${groupKind} associated with this RFC.` }])]
+        const about = useWorkingGroupUrlBuilder(group, 'about')
+        const documents = useWorkingGroupUrlBuilder(group, 'documents')
+        const meetings = useWorkingGroupUrlBuilder(group, 'meetings')
+        return [
+          ...(group.state === 'concluded'
+            ? [paragraphPojo([{ type: 'Text', textContent: `This ${groupKind} has concluded.` }])]
+            : []),
+          ...(about ? [paragraphPojo([anchorPojo(about, group.name)])] : []),
+          ...(documents ? [paragraphPojo([anchorPojo(documents, 'Read work in progress')])] : []),
+          ...(meetings ? [paragraphPojo([anchorPojo(meetings, 'Meetings')])] : [])
+        ]
       }
-      if (group) {
-        return [{ type: 'Text', textContent: `${group.name} ${group.acronym ? `(${group.acronym})` : ''}` }]
-      }
-      return []
-    case 'IAB':
-      return [
-        {
-          type: 'Text',
-          textContent:
-            'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
-        },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IAB_URL_ORIGIN,
-            class: LINK_CLASS
+      case 'IAB':
+        return [
+          {
+            type: 'Text',
+            textContent:
+              'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
           },
-          children: [{ type: 'Text', textContent: 'iab.org' }]
-        },
-        { type: 'Text', textContent: '.' }
-      ]
-    case 'INDEPENDENT':
-      return [
-        {
-          type: 'Text',
-          textContent:
-            'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
-        },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: MARKDOWN_AUTHORS_INDEPENDENT,
-            class: LINK_CLASS
+          {
+            type: 'Element',
+            nodeName: 'Anchor',
+            attributes: {
+              href: IAB_URL_ORIGIN,
+              class: LINK_CLASS
+            },
+            children: [{ type: 'Text', textContent: 'iab.org' }]
           },
-          children: [{ type: 'Text', textContent: 'Read more' }]
-        },
-        { type: 'Text', textContent: ' about submitting an independent RFC. ' }
-      ]
-    case 'Legacy':
-      return [
-        {
-          type: 'Text',
-          textContent: 'This publication predates the establishment of the '
-        },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IETF_URL_ORIGIN,
-            class: LINK_CLASS
+          { type: 'Text', textContent: '.' }
+        ]
+      case 'INDEPENDENT':
+        return [
+          {
+            type: 'Text',
+            textContent:
+              'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
           },
-          children: [{ type: 'Text', textContent: 'IETF' }]
-        },
-        { type: 'Text', textContent: ', ' },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IRTF_URL_ORIGIN,
-            class: LINK_CLASS
+          {
+            type: 'Element',
+            nodeName: 'Anchor',
+            attributes: {
+              href: INDEPENDENT_SUBMISSIONS_URL,
+              class: LINK_CLASS
+            },
+            children: [{ type: 'Text', textContent: 'Read more' }]
           },
-          children: [{ type: 'Text', textContent: 'IRTF' }]
-        },
-        { type: 'Text', textContent: ', and ' },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IAB_URL_ORIGIN,
-            class: LINK_CLASS
+          { type: 'Text', textContent: ' about submitting an independent RFC. ' }
+        ]
+      case 'Legacy':
+        return [
+          {
+            type: 'Text',
+            textContent: 'This publication predates the establishment of the '
           },
-          children: [{ type: 'Text', textContent: 'IAB' }]
-        },
-        {
-          type: 'Text',
-          textContent:
-            '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
-        }
-      ]
+          {
+            type: 'Element',
+            nodeName: 'Anchor',
+            attributes: {
+              href: IETF_URL_ORIGIN,
+              class: LINK_CLASS
+            },
+            children: [{ type: 'Text', textContent: 'IETF' }]
+          },
+          { type: 'Text', textContent: ', ' },
+          {
+            type: 'Element',
+            nodeName: 'Anchor',
+            attributes: {
+              href: IRTF_URL_ORIGIN,
+              class: LINK_CLASS
+            },
+            children: [{ type: 'Text', textContent: 'IRTF' }]
+          },
+          { type: 'Text', textContent: ', and ' },
+          {
+            type: 'Element',
+            nodeName: 'Anchor',
+            attributes: {
+              href: IAB_URL_ORIGIN,
+              class: LINK_CLASS
+            },
+            children: [{ type: 'Text', textContent: 'IAB' }]
+          },
+          {
+            type: 'Text',
+            textContent:
+              '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
+          }
+        ]
+    }
+
+    return []
   }
-
-  return []
+  return [
+    ...streamPojo(),
+    paragraphPojo([
+      anchorPojo(DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL, 'Guidance on Area Director Sponsoring of Documents')
+    ]),
+    ...(areaAboutUrl.value && area ? [paragraphPojo([anchorPojo(areaAboutUrl.value, `${area.name} Director`)])] : [])
+  ]
 })
 
 /** For non-JS users */

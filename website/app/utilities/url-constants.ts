@@ -69,7 +69,7 @@ export const NEVER_ISSUED_PATH = '/never-issued/'
 export const ALL_CLUSTERS_PATH = '/all_clusters/'
 export const STATUS_CHANGES_PATH = '/status-changes/'
 
-export const MARKDOWN_AUTHORS_INDEPENDENT = '/authors/rfc-independent-submissions/' satisfies ValidHrefs
+export const INDEPENDENT_SUBMISSIONS_URL = '/authors/rfc-independent-submissions/' satisfies ValidHrefs
 
 /** Prefix for blobstore-served RFC documents, which are outside Nuxt's routing. */
 export const RFC_BLOBSTORE_PREFIX = '/rfc/'

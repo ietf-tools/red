@@ -481,10 +481,17 @@ export const useWorkingGroupUrlBuilder = (
 ) => {
   if (!workingGroup) return undefined
   // See https://github.com/ietf-tools/red/issues/179
-  const base = `${useDatatrackerUrlOrigin()}/wg/${encodeURIComponent(workingGroup.acronym)}` as const
+  // The datatracker only serves a group's pages under the path for its type; /group/ works for any type
+  const typePath =
+    workingGroup.type === 'wg' || workingGroup.type === 'rg' || workingGroup.type === 'edwg'
+      ? workingGroup.type
+      : 'group'
+  const base = `${useDatatrackerUrlOrigin()}/${typePath}/${encodeURIComponent(workingGroup.acronym)}` as const
   switch (section) {
     case 'about':
       return `${base}/about/` as const
+    case 'documents':
+      return `${base}/documents/` as const
     case 'meetings':
       return `${base}/meetings/` as const
   }

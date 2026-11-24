@@ -240,6 +240,15 @@ test('useWorkingGroupUrlBuilder encodes the acronym', () => {
   expect(useWorkingGroupUrlBuilder(group('a/../b?c#d'))).toEqual(`${useDatatrackerUrlOrigin()}/wg/a%2F..%2Fb%3Fc%23d`)
 })
 
+test('useWorkingGroupUrlBuilder uses the datatracker path for the group type', () => {
+  const origin = useDatatrackerUrlOrigin()
+  const group = (type: 'wg' | 'rg' | 'edwg' | 'ag') => ({ acronym: 'abc', name: 'Name', type })
+  expect(useWorkingGroupUrlBuilder(group('wg'), 'documents')).toEqual(`${origin}/wg/abc/documents/`)
+  expect(useWorkingGroupUrlBuilder(group('rg'), 'about')).toEqual(`${origin}/rg/abc/about/`)
+  expect(useWorkingGroupUrlBuilder(group('edwg'), 'meetings')).toEqual(`${origin}/edwg/abc/meetings/`)
+  expect(useWorkingGroupUrlBuilder(group('ag'), 'about')).toEqual(`${origin}/group/abc/about/`)
+})
+
 test('areaGroupUrlBuilder encodes the acronym', () => {
   expect(areaGroupUrlBuilder({ acronym: 'sec', name: 'Security' })).toEqual(`${useDatatrackerUrlOrigin()}/wg/#SEC`)
   expect(areaGroupUrlBuilder({ acronym: 'a#b?c', name: 'Name' })).toEqual(`${useDatatrackerUrlOrigin()}/wg/#A%23B%3FC`)
