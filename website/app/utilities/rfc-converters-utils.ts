@@ -48,7 +48,7 @@ export const formatAuthor = (author: RfcAuthor, style: 'regular' | 'brief' | 're
       assertNever(style)
     }, '')
 
-  return author.affiliation === 'Editor' ? `${name}, Ed.` : name
+  return author.is_editor ? `${name}, Ed.` : name
 }
 
 type FormatName = RfcCommon['formats'][number]['format']
