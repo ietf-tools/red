@@ -753,78 +753,99 @@ const participateValuePojo = computed((): DocumentPojo => {
       case 'IAB':
         return [
           {
-            type: 'Text',
-            textContent:
-              'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
-          },
-          {
             type: 'Element',
-            nodeName: 'Anchor',
-            attributes: {
-              href: IAB_URL_ORIGIN,
-              class: LINK_CLASS
-            },
-            children: [{ type: 'Text', textContent: 'iab.org' }]
-          },
-          { type: 'Text', textContent: '.' }
+            nodeName: 'p',
+            attributes: {},
+            children: [
+              {
+                type: 'Text',
+                textContent:
+                  'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
+              },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IAB_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'iab.org' }]
+              },
+              { type: 'Text', textContent: '.' }
+            ]
+          }
         ]
       case 'INDEPENDENT':
         return [
           {
-            type: 'Text',
-            textContent:
-              'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
-          },
-          {
             type: 'Element',
-            nodeName: 'Anchor',
-            attributes: {
-              href: INDEPENDENT_SUBMISSIONS_URL,
-              class: LINK_CLASS
-            },
-            children: [{ type: 'Text', textContent: 'Read more' }]
-          },
-          { type: 'Text', textContent: ' about submitting an independent RFC. ' }
+            nodeName: 'p',
+            attributes: {},
+            children: [
+              {
+                type: 'Text',
+                textContent:
+                  'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
+              },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: INDEPENDENT_SUBMISSIONS_URL,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'Read more' }]
+              },
+              { type: 'Text', textContent: ' about submitting an independent RFC. ' }
+            ]
+          }
         ]
       case 'Legacy':
         return [
           {
-            type: 'Text',
-            textContent: 'This publication predates the establishment of the '
-          },
-          {
             type: 'Element',
-            nodeName: 'Anchor',
-            attributes: {
-              href: IETF_URL_ORIGIN,
-              class: LINK_CLASS
-            },
-            children: [{ type: 'Text', textContent: 'IETF' }]
-          },
-          { type: 'Text', textContent: ', ' },
-          {
-            type: 'Element',
-            nodeName: 'Anchor',
-            attributes: {
-              href: IRTF_URL_ORIGIN,
-              class: LINK_CLASS
-            },
-            children: [{ type: 'Text', textContent: 'IRTF' }]
-          },
-          { type: 'Text', textContent: ', and ' },
-          {
-            type: 'Element',
-            nodeName: 'Anchor',
-            attributes: {
-              href: IAB_URL_ORIGIN,
-              class: LINK_CLASS
-            },
-            children: [{ type: 'Text', textContent: 'IAB' }]
-          },
-          {
-            type: 'Text',
-            textContent:
-              '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
+            nodeName: 'p',
+            attributes: {},
+            children: [
+              {
+                type: 'Text',
+                textContent: 'This publication predates the establishment of the '
+              },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IETF_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'IETF' }]
+              },
+              { type: 'Text', textContent: ', ' },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IRTF_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'IRTF' }]
+              },
+              { type: 'Text', textContent: ', and ' },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IAB_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'IAB' }]
+              },
+              {
+                type: 'Text',
+                textContent:
+                  '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
+              }
+            ]
           }
         ]
     }
