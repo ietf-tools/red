@@ -284,9 +284,8 @@
           'px-4': props.mode === 'mobile'
         }
       ]">
-      <VerticalScrollable class="pl-1">
-        <Heading level="2" style-level="4" class="mt-3 mb-1"> Participate </Heading>
-        <div class="flex flex-col gap-2">
+      <VerticalScrollable>
+        <div class="flex flex-col gap-2 mt-3">
           <DocumentPojo :value="participateValuePojo" />
         </div>
       </VerticalScrollable>
