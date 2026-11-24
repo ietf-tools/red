@@ -370,7 +370,7 @@ type GoogleScholarMetadata = {
   citation_publication_date?: string // eg "September, 2011"
   citation_title: string // eg "DomainKeys Identified Mail (DKIM) Signatures"
   citation_doi?: string // eg "10.17487/RFC6376"
-  citation_issn?: string // eg "2070-1721"
+  citation_issn?: string // eg "2070-1721" but for RFCs prefer ISSN constant in rfc.ts
   citation_technical_report_number: `RFC ${number}` // eg "RFC 6376"
   citation_technical_report_institution: string
   citation_pdf_url?: string // eg "https://www.rfc-editor.org/rfc/pdfrfc/rfc6376.txt.pdf"

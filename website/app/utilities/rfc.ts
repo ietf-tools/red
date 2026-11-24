@@ -92,3 +92,5 @@ export const isAprilFoolsRfc = (rfc: Pick<RfcCommon, 'published' | 'stream' | 'g
     rfc.stream.slug === 'INDEPENDENT' && datetime.month === 4 && datetime.day === 1 && rfc.group?.acronym === 'none'
   )
 }
+
+export const ISSN = '2070-1721' as const

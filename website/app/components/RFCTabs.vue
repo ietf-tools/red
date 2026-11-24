@@ -228,6 +228,9 @@
 
           <DocumentPojo :value="identifierValuePojo" />
 
+          <dt class="font-bold mt-2">ISSN</dt>
+          <dd>{{ ISSN }}</dd>
+
           <DocumentPojo :value="formatsValuePojo" />
 
           <dt class="font-bold mt-2">Cite this RFC</dt>
@@ -320,7 +323,7 @@ import {
   areaAboutUrlBuilder
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
-import { realGroup } from '~/utilities/rfc'
+import { ISSN, realGroup } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
 import { renderDocumentPojoToHtmlString, renderNodePojoToHtmlString } from '~/utilities/renderDocumentPojo'
@@ -881,6 +884,7 @@ const noScriptHtml = computed(() => {
       ${shouldShowArea(rfc) ? `<dt class="font-bold mt-2">Area</dt><dd>${renderDocumentPojoToHtmlString(areaValuePojo.value)}</dd>` : ''}
       ${shouldShowStreamValue(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(streamName.value)}</dt><dd>${renderDocumentPojoToHtmlString(streamValuePojo.value)}</dd>` : ''}
       ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo.value) : ''}
+      <dt class="font-bold mt-2">ISSN</dt><dd class="text-sm">${ISSN}</dd>
       ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo.value) : ''}
       <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo.value)}</dd>
       <dt class="font-bold mt-2">Document history</dt><dd class="text-sm">${anchorHtml(datatrackerRFCUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, `View history of RFC ${rfc.number}`)}</dd>
