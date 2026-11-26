@@ -3,7 +3,7 @@ import { uploadRfcRefDotTxt } from './rfc-ref-txt.ts'
 import { uploadFeeds } from './rfc-feeds.ts'
 import { uploadRfcIndexJson } from './rfc-index-json.ts'
 import { uploadRfcMiniIndexJson } from './rfc-mini-index-json.ts'
-import { uploadAllSubseries } from './info-subseries.ts'
+import { uploadAllSubseries, uploadSubseriesIndexJsons } from './info-subseries.ts'
 import { getAllRFCs, getAllSubseries } from '../utilities/api.ts'
 import { ApiClient } from '../../generated/api-client.ts'
 import { uploadMetaThumbnails } from '../utilities/meta-thumbnails.ts'
@@ -40,6 +40,7 @@ export const indices = async ({ api }: Props): AsyncTaskItem => {
     uploadFeeds(allRfcsWithContent),
     uploadRfcRefDotTxt(allRfcsWithContent, RFC_NUMBER_MINIMUM_CHAR_WIDTH),
     uploadAllSubseries(allSubseries),
+    uploadSubseriesIndexJsons(allSubseries),
     uploadRobotsTxt(websiteOrigin),
     uploadSitemapXmls(websiteOrigin, allRfcsWithContent, allSubseries),
     uploadMetaThumbnails(),

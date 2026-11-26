@@ -1,7 +1,8 @@
 import { PromisePool } from '@supercharge/promise-pool'
-import { saveToS3, subseriesInfoPathBuilder } from '../utilities/s3.ts'
-import { SubseriesCommonSchema } from '../../../website/app/utilities/rfc-validators.ts'
-import type { SubseriesCommon } from '../../../website/app/utilities/rfc-validators.ts'
+import { DateTime } from 'luxon'
+import { saveToS3, subseriesInfoPathBuilder, subseriesIndexJsonPathBuilder } from '../utilities/s3.ts'
+import { SubseriesCommonSchema, SubseriesIndexSchema } from '../../../website/app/utilities/rfc-validators.ts'
+import type { SubseriesCommon, SubseriesIndex } from '../../../website/app/utilities/rfc-validators.ts'
 import { validateDocument } from '../utilities/validate-zod.ts'
 import { type AsyncTaskItem } from '../utilities/task.ts'
 
@@ -55,4 +56,46 @@ export const renderAllSubseries = async (allSubseries: Readonly<SubseriesCommon[
     validateDocument(subseriesItem, SubseriesCommonSchema)
     return subseriesItem
   })
+}
+
+const SUBSERIES_TYPES = ['bcp', 'fyi', 'std'] as const satisfies SubseriesCommon['type'][]
+
+export const uploadSubseriesIndexJsons = async (allSubseries: Readonly<SubseriesCommon[]>): AsyncTaskItem => {
+  const paths = await Promise.all(
+    SUBSERIES_TYPES.map(async (type) => {
+      const subseriesIndex = await renderSubseriesIndexJson(type, allSubseries)
+      const s3Path = subseriesIndexJsonPathBuilder(type)
+      await saveToS3(s3Path, JSON.stringify(subseriesIndex))
+      console.log(`[${s3Path}]`, 'Uploaded', s3Path)
+      return s3Path
+    })
+  )
+  return paths
+}
+
+export const renderSubseriesIndexJson = async (
+  type: SubseriesCommon['type'],
+  allSubseries: Readonly<SubseriesCommon[]>
+): Promise<SubseriesIndex> => {
+  // Only the required fields of RfcCommon are kept, to keep the index small.
+  const slimRfc = (rfc: SubseriesCommon['contents'][number]): SubseriesCommon['contents'][number] => {
+    const { number, title, status, stream, authors, formats } = rfc
+    return {
+      number,
+      title,
+      status,
+      stream: { slug: stream.slug, name: stream.name },
+      authors: authors.map(({ titlepage_name }) => ({ titlepage_name })),
+      formats: formats.map(({ format }) => ({ format }))
+    }
+  }
+
+  const data: SubseriesIndex = {
+    createdOn: DateTime.now().toISODate(),
+    index: allSubseries
+      .filter((subseriesItem) => subseriesItem.type === type)
+      .map((subseriesItem) => ({ ...subseriesItem, contents: subseriesItem.contents.map(slimRfc) }))
+  }
+  validateDocument(data, SubseriesIndexSchema)
+  return data
 }
