@@ -33,10 +33,12 @@
           </div>
           <p class="pt-3 text-sm">
             Your feature flag preferences will be saved to browser
-            <Anchor href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" class="monotype"
-              >localStorage
-              <GraphicsNewWindowIcon class="text-xl -mt-2 align-middle" />
-            </Anchor>
+            <LinkWithIcon
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+              size="large"
+              class="monotype"
+              >localStorage</LinkWithIcon
+            >
             (if available). Features flags are added and removed over time and your preferences may be reset. If so,
             just set your preferences again.
           </p>

@@ -228,7 +228,7 @@ describe('RFC word breaks', async () => {
   )
 
   test(
-    'reference entries drop their hanging indent on a narrow screen and keep it on a wide one',
+    'reference entries stack under their label on a narrow screen and sit beside it on a wide one',
     async () => {
       const page = await openRfc()
       const narrow = await readStyles(page)
@@ -237,11 +237,11 @@ describe('RFC word breaks', async () => {
       const wide = await readStyles(page)
       await page.close()
 
-      // Narrow screens flow the term and definition as one wrapping line, so the definition is
-      // inline and carries no indent. `clientWidth` is not a useful check here: an inline box
-      // reports zero regardless.
+      // Narrow screens put the label on its own line with the definition beneath it, so the
+      // definition is a block. Flowing it inline ran every entry together, losing where one
+      // reference ends and the next begins.
       // expect(narrow.referenceMarginInlineStart).toBe('0px')
-      expect(narrow.referenceDisplay).toBe('inline')
+      expect(narrow.referenceDisplay).toBe('block')
 
       // Asserting the exact indent rather than merely "not zero": a `dd` that has lost its
       // `margin-left` still reports the 40px user-agent default, so a not-zero check passes even

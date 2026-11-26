@@ -3,8 +3,8 @@ import type { VNode } from 'vue'
 import Fragment from '~/components/Fragment.vue'
 
 import type { DocumentPojo, ElementPojo, NodePojo } from '~/utilities/rfc-validators'
-import { EXTERNAL_LINK_REL, htmlEscapeToText } from './html'
-import { isExternalLink } from './url'
+import { htmlEscapeToText } from './html'
+import { linkRel } from './url-destination'
 
 const unwrapChildrenForVue = (vnodes: VNode[]) => {
   switch (vnodes.length) {
@@ -58,6 +58,10 @@ export const renderNodePojoToHtmlString = (node: NodePojo): string => {
     const { nodeName } = node
     let nodeNameToUse = nodeName
     switch (nodeName) {
+      // Links here neither open a new tab nor show the icon, because this output has no
+      // components to draw it with, so the icon node draws nothing rather than an unknown element
+      case 'OutsideLinkIcon':
+        return ''
       case 'Anchor':
         nodeNameToUse = 'a'
         break
@@ -72,7 +76,7 @@ export const renderNodePojoToHtmlString = (node: NodePojo): string => {
 
     const attributesEntries = Object.entries({
       ...node.attributes,
-      ...(node.attributes.href && isExternalLink(node.attributes.href) ? { rel: EXTERNAL_LINK_REL } : {})
+      ...(node.attributes.href && linkRel(node.attributes.href) ? { rel: linkRel(node.attributes.href) } : {})
     })
     return `<${htmlEscapeToText(nodeNameToUse)} ${attributesEntries
       .map(([attributeName, attributeValue]) => {

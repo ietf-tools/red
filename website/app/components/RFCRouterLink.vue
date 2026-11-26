@@ -9,7 +9,12 @@
         v-bind="popoverAttributes">
         <slot />
       </a>
-      <a v-else-if="isOutsideNuxtLink(props.href)" :href="props.href" data-is-outside-nuxt v-bind="popoverAttributes">
+      <a
+        v-else-if="isOutsideNuxtLink(props.href)"
+        :href="props.href"
+        :rel="props.href === undefined ? undefined : linkRel(props.href)"
+        data-is-outside-nuxt
+        v-bind="popoverAttributes">
         <slot />
       </a>
       <NuxtLink v-else :id="props.id" :to="props.href" data-is-nuxt-link v-bind="popoverAttributes">
@@ -95,6 +100,7 @@ import RFCRouterLinkPreview from './RFCRouterLinkPreview.vue'
 import { NuxtLink } from '#components'
 import { RFC_TYPE_RFC } from '~/utilities/rfc'
 import { parseMaybeRfcLink, rfcCommonPathBuilder, isOutsideNuxtLink } from '~/utilities/url'
+import { linkRel } from '~/utilities/url-destination'
 import type { LoadingStatus } from '~/utilities/loading-status'
 import type { VueStyleClass } from '~/utilities/vue'
 import { RfcCommonSchema, type RfcCommon } from '~/utilities/rfc-validators'

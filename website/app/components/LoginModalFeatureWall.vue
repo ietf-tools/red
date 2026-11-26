@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="flex flex-col items-start md:flex-row gap-2">
+    <ul class="flex flex-col justify-center items-start w-full mx-auto md:flex-row gap-2">
       <li
         class="max-w-54 md:max-w-auto flex-1 flex flex-col items-center gap-1 md:gap-2 md:pr-2 md:border-r-1 md:border-gray-200">
         <GraphicsAlert class="inline-block w-[24px] h-[24px]" />

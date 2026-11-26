@@ -39,9 +39,10 @@ export function useMenuSelect(options: UseMenuSelectOptions) {
     context.registerWidget({
       id: `menu:${attribute}`,
       getSearchParameters: (request: SearchRequest) => {
-        request.facets.push(attribute)
-        // Requested for its values only; it's never filtered on.
-        if (labelAttribute) request.facets.push(labelAttribute)
+        // The label facet is requested for its values only; it's never filtered on.
+        const facets = labelAttribute ? [attribute, labelAttribute] : [attribute]
+        request.facets.push(...facets)
+        request.unfilteredFacets = { ...request.unfilteredFacets, [attribute]: facets }
         return request
       }
     })

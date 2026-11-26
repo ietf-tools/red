@@ -110,8 +110,29 @@ export function createTypesenseSearchClient(config: TypesenseAdapterConfig): Sea
     const cached = cache.get(key)
     if (cached && Date.now() - cached.at < cacheTtlMs) return cached.value
 
-    const parsed = await post({ searches: [{ collection, ...searchParams }] })
+    // A selected menu's own filter is left out of its counts, which takes a search each.
+    const unfiltered = Object.entries(request.unfilteredFacets ?? {})
+      .filter(([attribute]) => request.menu[attribute])
+      .map(([attribute, facets]) => {
+        const { [attribute]: _selected, ...menu } = request.menu
+        const ignoringOwn: SearchRequest = { ...request, menu, facets, page: 0, hitsPerPage: 0 }
+        return { facets, params: buildSearchParams(ignoringOwn, config, resolvePreset(ignoringOwn)) }
+      })
+
+    const parsed = await post({
+      searches: [searchParams, ...unfiltered.map(({ params }) => params)].map((params) => ({ collection, ...params }))
+    })
     const value = toSearchResponse(parsed.results[0]!, request)
+    unfiltered.forEach(({ facets }, index) => {
+      for (const { field_name, counts } of parsed.results[index + 1]?.facet_counts ?? []) {
+        if (facets.includes(field_name)) {
+          value.facets = {
+            ...value.facets,
+            [field_name]: Object.fromEntries(counts.map((item) => [item.value, item.count]))
+          }
+        }
+      }
+    })
     cache.set(key, { at: Date.now(), value })
     return value
   }

@@ -8,10 +8,8 @@ export const FeatureFlagsSchema = z.object({
   isDidYouMeanActive: z.boolean().optional(),
   isAbnfDiagramsActive: z.boolean().optional(),
   searchObsoletedDefaults: z.boolean().optional(),
-  hasTextScale: z.boolean().optional(),
   hasWordBreakMode: z.boolean().optional(),
-  hasReadingMode: z.boolean().optional(),
-  hasCollapsibleSidebar: z.boolean().optional()
+  isPublicationStreamActive: z.boolean().optional()
 })
 
 // this is commented out until next time we need a string union value in feature flags.
@@ -32,26 +30,10 @@ export type FeatureFlagUIRow = {
 }
 
 const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
-  hasTextScale: {
-    title: 'Text scaling option',
-    description: 'Text scaling affects line spacing, letter spacing, word spacing, and spacing after paragraphs.',
-    storageType: 'boolean'
-  },
   hasWordBreakMode: {
     title: 'Word breaking preference',
     description:
       "Adds a UI setting choosing how long words and URLs in RFC documents break: the inserted break points, or one of the browser's own strategies.",
-    storageType: 'boolean'
-  },
-  hasReadingMode: {
-    title: 'RFC reading mode',
-    description:
-      'Adds a play button before an RFC that reads it aloud with the browser speech synthesis, highlighting the text as it goes. Click the text to move where it reads from. Voice, rate and whether to read diagrams are in the advanced UI settings.',
-    storageType: 'boolean'
-  },
-  hasCollapsibleSidebar: {
-    title: 'Collapsible sidebar',
-    description: 'Adds a button on the edge of the RFC sidebar for collapsing it.',
     storageType: 'boolean'
   },
   isDidYouMeanActive: {
@@ -68,17 +50,20 @@ const featureFlagsUI: Record<keyof FeatureFlags, FeatureFlagUIRow> = {
     title: 'Search default filter includes obsoleted',
     description: 'On the search route include obsoleted results by default',
     storageType: 'boolean'
+  },
+  isPublicationStreamActive: {
+    title: 'Publication stream block',
+    description: 'Shows which stream published an RFC (IETF, IRTF, IAB, etc.) in a block above the RFC buttons.',
+    storageType: 'boolean'
   }
 }
 
 export const DEFAULT_FEATURE_FLAGS: Required<FeatureFlags> = {
-  hasTextScale: false,
   hasWordBreakMode: false,
-  hasReadingMode: false,
-  hasCollapsibleSidebar: false,
   isDidYouMeanActive: false,
   isAbnfDiagramsActive: false,
-  searchObsoletedDefaults: false
+  searchObsoletedDefaults: false,
+  isPublicationStreamActive: false
 }
 
 export const featureFlagsUIRows = Object.entries(featureFlagsUI)

@@ -208,12 +208,7 @@
                   <span>
                     <HeaderNavIcon :icon="level0.icon" />
                     {{ level0.label }}
-                    <GraphicsNewWindowIcon
-                      v-if="
-                        (level0.hideNewWindowIcon === false || level0.hideNewWindowIcon === undefined) &&
-                        !isInternalLink(level0.href)
-                      "
-                      class="text-lg absolute ml-1 -mt-1" />
+                    <OutsideLinkIcon v-if="!level0.hideNewWindowIcon" :href="level0.href" class="absolute -mt-1" />
                   </span>
                 </Anchor>
                 <button
@@ -286,7 +281,6 @@ import {
   descriptionDomId,
   dropdownHeadingDomId
 } from './HeaderNavData'
-import { isInternalLink } from '~/utilities/url'
 import { resolveGraphicsIcon } from '~/utilities/graphics-icon'
 
 const MENU_ITEM_CLASS =

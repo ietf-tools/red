@@ -30,7 +30,6 @@ describe('RFC reading mode', async () => {
     const page = await openHydratedPage(infoSeriesPathBuilder(RFC_UNDER_TEST), {
       beforeLoad: (loading) =>
         loading.addInitScript(() => {
-          window.localStorage.setItem('feature-flag-experiments', JSON.stringify({ hasReadingMode: true }))
           window.__spoken = []
           class RecordingUtterance {
             text: string

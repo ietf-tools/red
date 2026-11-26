@@ -32,12 +32,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="rfc in data?.miniIndex" :key="rfc.number">
+        <!-- The row is the link target, not the link in it: the row is taller than its link where a title wraps, and
+             the margin is what keeps the row's top clear of the sticky header. -->
+        <tr v-for="rfc in data?.miniIndex" :key="rfc.number" :id="`rfc${rfc.number}`" class="scroll-mt-16">
           <TableCell class="border-b border-gray-300 dark:border-neutral-600 text-nowrap">
-            <Anchor
-              :href="infoSeriesPathBuilder(`rfc${rfc.number}`)"
-              :class="[ANCHOR_COLOR_TAILWIND_STYLE, 'scroll-m-16']"
-              :id="`rfc${rfc.number}`">
+            <Anchor :href="infoSeriesPathBuilder(`rfc${rfc.number}`)" :class="ANCHOR_COLOR_TAILWIND_STYLE">
               <SubseriesTitle :series="parseSeriesId(`rfc${rfc.number}`)" />
             </Anchor>
           </TableCell>

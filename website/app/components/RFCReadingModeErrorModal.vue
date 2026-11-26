@@ -8,20 +8,18 @@
           <DialogTitle as="h1" class="text-xl font-bold py-2 pr-20">{{ description.title }}</DialogTitle>
           <DialogDescription class="pb-3 text-balance">{{ description.description }}</DialogDescription>
 
-          <Anchor v-if="description.link" :href="description.link.href" class="underline">
+          <LinkWithIcon v-if="description.link" :href="description.link.href" size="large" class="underline">
             {{ description.link.label }}
-            <GraphicsNewWindowIcon class="text-xl -mt-2 align-middle" />
-          </Anchor>
+          </LinkWithIcon>
 
           <template v-if="error?.kind === 'no-voices'">
             <Heading level="2" style-level="4" class="mt-2 mb-2">{{ advice.heading }}</Heading>
             <p>{{ advice.summary }}</p>
             <ul v-if="advice.links.length > 0" class="mt-2 flex flex-col gap-1">
               <li v-for="link in advice.links" :key="link.href">
-                <Anchor :href="link.href" class="underline">
+                <LinkWithIcon :href="link.href" size="large" class="underline">
                   {{ link.label }}
-                  <GraphicsNewWindowIcon class="text-xl -mt-2 align-middle" />
-                </Anchor>
+                </LinkWithIcon>
               </li>
             </ul>
 

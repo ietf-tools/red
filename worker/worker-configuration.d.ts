@@ -110,7 +110,7 @@ declare abstract class WorkerGlobalScope extends EventTarget<WorkerGlobalScopeEv
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console)
  */
 interface Console {
-  'assert'(condition?: boolean, ...data: any[]): void
+  assert(condition?: boolean, ...data: any[]): void
   /**
    * The **`console.clear()`** static method clears the console if possible.
    *
@@ -13974,7 +13974,7 @@ declare namespace Rpc {
         [key: string | number]: any;
     } ? {
         [K in keyof T]: Stubify<T[K]>;
-    } : T;
+    } : T
   // Recursively rewrite all `Stub<T>`s with the corresponding `T`s.
   // Note we use `StubBase` instead of `Stub` here to avoid circular dependencies:
   // `Stub` depends on `Provider`, which depends on `Unstubify`, which would depend on `Stub`.
@@ -13983,7 +13983,7 @@ declare namespace Rpc {
         [key: string | number]: unknown;
     } ? {
         [K in keyof T]: Unstubify<T[K]>;
-    } : T;
+    } : T
   type UnstubifyAll<A extends any[]> = {
     [I in keyof A]: Unstubify<A[I]>
   }
@@ -13999,7 +13999,7 @@ declare namespace Rpc {
   // Technically, we use custom thenables here, but they quack like `Promise`s.
   // Intersecting with `(Maybe)Provider` allows pipelining.
   // prettier-ignore
-  type Result<R> = R extends Stubable ? Promise<Stub<R>> & Provider<R> : R extends Serializable<R> ? Promise<Stubify<R> & MaybeDisposable<R>> & MaybeProvider<R> : never;
+  type Result<R> = R extends Stubable ? Promise<Stub<R>> & Provider<R> : R extends Serializable<R> ? Promise<Stubify<R> & MaybeDisposable<R>> & MaybeProvider<R> : never
   // Type for method or property on an RPC interface.
   // For methods, unwrap `Stub`s in parameters, and rewrite returns to be `Result`s.
   // Unwrapping `Stub`s allows calling with `Stubable` arguments.

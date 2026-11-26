@@ -62,6 +62,88 @@ describe('typesense adapter', () => {
     expect(search.filter_by).toContain('status.name:=[`Proposed Standard`]')
   })
 
+  describe('a selected menu', () => {
+    const streamRequest = (over: Partial<SearchRequest> = {}) =>
+      baseRequest({
+        facets: ['stream.name', 'stream.slug'],
+        refinements: {},
+        menu: { 'stream.slug': 'ietf' },
+        unfilteredFacets: { 'stream.slug': ['stream.slug', 'stream.name'] },
+        ...over
+      })
+
+    const bodyWithAllStreams = {
+      results: [
+        {
+          found: 2,
+          hits: [],
+          facet_counts: [
+            { field_name: 'stream.slug', counts: [{ value: 'ietf', count: 2 }] },
+            { field_name: 'stream.name', counts: [{ value: 'IETF', count: 2 }] }
+          ]
+        },
+        {
+          found: 5,
+          hits: [],
+          facet_counts: [
+            {
+              field_name: 'stream.slug',
+              counts: [
+                { value: 'ietf', count: 2 },
+                { value: 'iab', count: 3 }
+              ]
+            },
+            {
+              field_name: 'stream.name',
+              counts: [
+                { value: 'IETF', count: 2 },
+                { value: 'IAB', count: 3 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+    it('still reports the counts of the values it could switch to', async () => {
+      const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(bodyWithAllStreams))
+      vi.stubGlobal('fetch', fetchMock)
+      const client = createTypesenseSearchClient({ host: 'example.test', apiKey: 'key', collection: 'docs' })
+
+      const result = await client.search(streamRequest())
+
+      const { searches } = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body))
+      expect(searches).toHaveLength(2)
+      expect(searches[0].filter_by).toContain('stream.slug:=`ietf`')
+      expect(searches[1].filter_by).toBeUndefined()
+      expect(searches[1].per_page).toBe(0)
+      expect(result.nbHits).toBe(2)
+      expect(result.facets?.['stream.slug']).toEqual({ ietf: 2, iab: 3 })
+      expect(result.facets?.['stream.name']).toEqual({ IETF: 2, IAB: 3 })
+    })
+
+    it('keeps the other filters when counting without its own', async () => {
+      const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(bodyWithAllStreams))
+      vi.stubGlobal('fetch', fetchMock)
+      const client = createTypesenseSearchClient({ host: 'example.test', apiKey: 'key', collection: 'docs' })
+
+      await client.search(streamRequest({ menu: { 'stream.slug': 'ietf', 'area.acronym': 'art' } }))
+
+      const { searches } = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body))
+      expect(searches[1].filter_by).toBe('area.acronym:=`art`')
+    })
+
+    it('needs no second search while nothing is selected', async () => {
+      const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(multiSearchBody))
+      vi.stubGlobal('fetch', fetchMock)
+      const client = createTypesenseSearchClient({ host: 'example.test', apiKey: 'key', collection: 'docs' })
+
+      await client.search(streamRequest({ menu: {} }))
+
+      expect(JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)).searches).toHaveLength(1)
+    })
+  })
+
   it('uses the content preset when the contents toggle is on and empty query becomes *', async () => {
     const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => okResponse(multiSearchBody))
     vi.stubGlobal('fetch', fetchMock)

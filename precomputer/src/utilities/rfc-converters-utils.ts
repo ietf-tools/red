@@ -52,6 +52,9 @@ const organisationsAsUsers = [
   'RFC Editor' // RFC 5000, RFC 5540
 ]
 
+export const isOrganisationAsAuthor = ({ titlepage_name }: RfcAuthor): boolean =>
+  titlepage_name !== undefined && organisationsAsUsers.includes(titlepage_name)
+
 export type FormatAuthorStyle = 'regular' | 'brief' | 'reverse'
 
 /**
@@ -68,7 +71,7 @@ export const formatAuthor = (author: RfcAuthor, style: FormatAuthorStyle): strin
   const { titlepage_name } = author
   if (!titlepage_name) return ''
 
-  if (organisationsAsUsers.includes(titlepage_name)) {
+  if (isOrganisationAsAuthor(author)) {
     return titlepage_name
   }
 

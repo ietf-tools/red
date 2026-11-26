@@ -39,13 +39,18 @@
             <label :for="titleDomId" class="font-bold">Title</label>
             <input
               :id="titleDomId"
+              ref="titleInput"
               v-model="newSetTitle"
               type="text"
               required
               :maxlength="SET_TITLE_MAX_LENGTH"
               :disabled="isCreating"
-              :aria-describedby="createError === undefined ? undefined : errorDomId"
+              :aria-invalid="titleHasSpam ? 'true' : undefined"
+              :aria-describedby="describedBy(titleHasSpam, titleSpamDomId)"
               class="border-1 border-gray-400 dark:border-gray-500 rounded px-2 py-1 bg-white dark:bg-gray-900" />
+            <p v-if="titleHasSpam" :id="titleSpamDomId" role="alert" class="text-red-700 dark:text-red-400">
+              {{ SPAM_MESSAGE }}
+            </p>
           </div>
 
           <div class="flex flex-col gap-1">
@@ -54,10 +59,16 @@
             </label>
             <textarea
               :id="descriptionDomId"
+              ref="descriptionInput"
               v-model="newSetDescription"
               rows="2"
               :disabled="isCreating"
+              :aria-invalid="descriptionHasSpam ? 'true' : undefined"
+              :aria-describedby="describedBy(descriptionHasSpam, descriptionSpamDomId)"
               class="border-1 border-gray-400 dark:border-gray-500 rounded px-2 py-1 bg-white dark:bg-gray-900" />
+            <p v-if="descriptionHasSpam" :id="descriptionSpamDomId" role="alert" class="text-red-700 dark:text-red-400">
+              {{ SPAM_MESSAGE }}
+            </p>
           </div>
 
           <!-- role="alert" so the failure is announced: the dialog stays put and the only thing
@@ -117,6 +128,7 @@ import {
   DialogTrigger
 } from 'reka-ui'
 import { SET_TITLE_MAX_LENGTH, type CreateSetOutcome, type NewSet } from '~/utilities/reef-sets'
+import { filterSpamText } from '~/utilities/spam'
 
 type Props = {
   // Named in the description, because a set created from here starts out holding this RFC and the
@@ -137,11 +149,38 @@ const isOpen = ref(false)
 const titleDomId = useId()
 const descriptionDomId = useId()
 const errorDomId = useId()
+const titleSpamDomId = useId()
+const descriptionSpamDomId = useId()
 
 const newSetTitle = ref('')
 const newSetDescription = ref('')
 const isCreating = ref(false)
 const createError = ref<string>()
+
+const titleInput = ref<HTMLInputElement>()
+const descriptionInput = ref<HTMLTextAreaElement>()
+
+const SPAM_MESSAGE = 'Links and cryptocurrency addresses are not allowed here. Remove them to continue.'
+
+// filterSpamText also collapses and trims whitespace, which isn't spam, so whitespace is left out of
+// the comparison or a trailing space would flag an honest title.
+const containsSpam = (text: string): boolean => {
+  const withoutWhitespace = (value: string) => value.replace(/\s/g, '')
+  return withoutWhitespace(filterSpamText(text)).length !== withoutWhitespace(text).length
+}
+
+// Checked as the reader types rather than on submit, so the field is marked before they reach for
+// the button.
+const titleHasSpam = computed(() => containsSpam(newSetTitle.value))
+const descriptionHasSpam = computed(() => containsSpam(newSetDescription.value))
+
+// The server's createError describes the form as a whole, so it stays attached to the title as it
+// was; the spam message is attached to the field it is about.
+const describedBy = (hasSpam: boolean, spamDomId: string): string | undefined => {
+  const ids = [hasSpam ? spamDomId : undefined, createError.value === undefined ? undefined : errorDomId]
+  const present = ids.filter((id) => id !== undefined)
+  return present.length === 0 ? undefined : present.join(' ')
+}
 
 // Every opening starts a fresh form. The only ways out of this dialog without creating anything —
 // Cancel, the close button, Escape — are all the reader discarding what they typed, so bringing it
@@ -161,6 +200,14 @@ const onSubmit = async () => {
   // The submit button is disabled while a creation is open, but Enter in a text field would still
   // submit the form.
   if (isCreating.value) {
+    return
+  }
+
+  // The fields are already marked and explained as the reader types; this is what stops the
+  // request, and it moves focus to the first field at fault so a keyboard or screen reader user
+  // isn't left on a button that appears to do nothing.
+  if (titleHasSpam.value || descriptionHasSpam.value) {
+    ;(titleHasSpam.value ? titleInput : descriptionInput).value?.focus()
     return
   }
 

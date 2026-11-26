@@ -10,11 +10,8 @@
             'rounded',
             'text-sm text-center md:text-left',
             'font-bold',
-            COVER_LINK_STYLE_CLASS,
-            {
-              'gap-0': isInASet,
-              'sm:gap-1': !isInASet
-            }
+            'gap-1',
+            COVER_LINK_STYLE_CLASS
           ]">
           <GraphicsCheckmark v-if="isInASet" :class="['w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
           <GraphicsAddCircle v-else :class="['w-[24px] h-[24px] sm:mr-1', COVER_LINK_INNER_STYLE_CLASS]" />
@@ -88,7 +85,7 @@
                           :aria-label="`Set '${set.title}'`"
                           :href="setPathBuilder(set.id)"
                           class="relative z-100 bg-gray-200 hover:bg-gray-300 focus:bg-gray-300 dark:bg-gray-900 hover:dark:bg-black focus:dark:bg-black color-black dark:color-black px-1 py-1 rounded-lg">
-                          <GraphicsNewWindowIcon class="text-lg align-middle" />
+                          <GraphicsArrowCircleRight class="text-lg align-middle" />
                         </Anchor>
                       </CheckboxRoot>
                     </template>

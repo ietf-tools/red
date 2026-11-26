@@ -65,7 +65,7 @@ describe('useUiSettingsStore reading mode', () => {
       readingRate: 1.5,
       readingVoiceUri: 'urn:voice:a'
     })
-    expect(stored()).toHaveProperty('textScale')
+    expect(stored()).toHaveProperty('disableRFCLinkPreview')
   })
 
   test('clamps the rate so what is saved still validates on the next load', () => {

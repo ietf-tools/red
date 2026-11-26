@@ -43,6 +43,18 @@ const PAGE_LOAD_TIMEOUT_MS = 60_000
 
 const isHeaded = isTruthyEnv(process.env.E2E_HEADED)
 
+const ANALYTICS_HOST = 'analytics.ietf.org'
+
+/**
+ * Stops a page reaching the analytics host. A run opens hundreds of pages, and left alone each one
+ * loads the tracker and sends real hits to production analytics, which rate-limits them (429).
+ * Neither is anything a test is about, and the tracker script is one more request from outside
+ * that a page load can be held up by.
+ */
+export const blockAnalytics = async (page: Page): Promise<void> => {
+  await page.route(`https://${ANALYTICS_HOST}/**`, (route) => route.abort())
+}
+
 const LAUNCH_OPTIONS: LaunchOptions = {
   headless: !isHeaded,
   slowMo: isHeaded ? HEADED_SLOW_MO_MS : undefined
@@ -90,6 +102,7 @@ export const setupConcurrentPages = (): ((path: string) => Promise<Page>) => {
       throw Error('setupConcurrentPages() must be called from a describe body so its beforeAll can launch the browser')
     }
     const page = await browser.newPage()
+    await blockAnalytics(page)
     page.setDefaultTimeout(PAGE_LOAD_TIMEOUT_MS)
     const href = new URL(path, baseUrl).href
     await page.goto(href)
@@ -108,6 +121,7 @@ export const openHydratedPage = async (
   { beforeLoad }: { beforeLoad?: (page: Page) => Promise<void> } = {}
 ): Promise<Page> => {
   const page = await createPage()
+  await blockAnalytics(page)
   page.setDefaultTimeout(PAGE_LOAD_TIMEOUT_MS)
   await beforeLoad?.(page)
   await page.goto(url(path), { waitUntil: 'hydration' })

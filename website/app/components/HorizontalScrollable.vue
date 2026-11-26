@@ -13,7 +13,11 @@
         'after:shadow-[inset_20px_0px_20px_-20px_rgba(0,_45,_60,_0.5),inset_-20px_0px_20px_-20px_rgba(0,_45,_60,_0.5)] dark:after:shadow-[inset_20px_0px_20px_-20px_rgba(200,_201,_222,_1),inset_-20px_0px_20px_-20px_rgba(200,_201,_222,_1)]',
       props.class
     ]">
-    <ButtonSuccessFailure v-if="showCopyButton" :click-handler="handleCopy" aria-label="Copy to clipboard">
+    <ButtonSuccessFailure
+      v-if="showCopyButton"
+      :click-handler="handleCopy"
+      aria-label="Copy to clipboard"
+      button-style="gray">
       <GraphicsCopy class="size-[1.6em] text-black dark:text-white bg-transparent" />
     </ButtonSuccessFailure>
     <component
@@ -22,7 +26,7 @@
       :class="[
         'w-full max-w-screen overflow-hidden overflow-x-auto',
         {
-          ['bg-gray-100 dark:bg-gray-950 border-r-[40px] border-gray-100 dark:border-gray-950 ']: props.copyMode
+          ['bg-gray-100 dark:bg-gray-950 pr-[40px] border-gray-100 dark:border-gray-950 ']: props.copyMode
         },
         props.innerClass
       ]"
@@ -34,6 +38,7 @@
 
 <script setup lang="ts">
 import { useDebounceFn } from '@vueuse/core'
+import { useUiSettingsStore } from '~/stores/ui-settings'
 import { BUBBLE_DURATION_MS, type ButtonResult, type Message } from '~/utilities/buttonSuccessFailure'
 import { copyHtmlToClipboard, copyTextToClipboard } from '~/utilities/clipboard'
 import { getRfc8792CopyText } from '~/utilities/rfc8792'
@@ -55,6 +60,8 @@ const canScrollRight = ref(false)
 
 const BUFFER_PX = 8
 
+const uiSettings = useUiSettingsStore()
+
 const showCopyButton = computed(() => props.copyMode && hasMounted.value)
 
 const setTimeoutTimers: ReturnType<typeof setTimeout>[] = []
@@ -74,6 +81,9 @@ const updateScrollHint = () => {
 }
 
 const debouncedUpdateScrollHint = useDebounceFn(updateScrollHint, 100)
+
+// text scale (or its feature flag) changes the content size without resizing the observed container
+watch(() => uiSettings.textScale, debouncedUpdateScrollHint, { flush: 'post' })
 
 const observerRef = ref<ResizeObserver | null>(null)
 

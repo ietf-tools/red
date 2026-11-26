@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './text-spacing.generated.css';
 @source inline('text-blue-100 dark:text-blue-50 dark:text-blue-100 text-blue-300 dark:text-blue-300 color-blue-50 color-blue-100 color-blue-300');
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -33,7 +34,11 @@
   --font-sans: 'Inter', sans-serif;
 
   --sidebar-width: 400px;
-  --info-rfc-sidebar-buffer: 10px;
+  /* What a wide block leaves free of the width the sidebar doesn't take. The text column is offset from the
+     layout's left edge and there is a gap before the sidebar, so this is the amount that makes a wide block
+     end at the sidebar's edge. The sidebar's collapse button is allowed to overlap it, to give the content
+     the room. */
+  --info-rfc-sidebar-buffer: 16px;
 
   /**
    * WCAG requires max-width of 80 chars.
@@ -289,12 +294,27 @@
   }
 }
 
+/*
+  Written by the precomputer's keepPunctuationWithLinks around a link and the punctuation after it,
+  so a line can't break between the link's icon and that punctuation. Unlike `white-space: nowrap`
+  it still wraps inside the block when the link alone is wider than a line, rather than overflowing.
+  Plain CSS rather than a Tailwind utility so it is always emitted: nothing in the website sources
+  mentions the class.
+*/
+@layer components {
+  .keep-together {
+    display: inline-block;
+  }
+}
+
 html {
+  color-scheme: light only;
   background: var(--color-gray-100);
   color: var(--color-black);
 }
 
 html.dark {
+  color-scheme: dark;
   background: var(--color-blue-975);
   color: var(--color-white);
 }

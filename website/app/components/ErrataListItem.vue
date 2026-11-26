@@ -33,10 +33,11 @@
         </template>
       </dl>
       <p>
-        <Anchor :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+        <LinkWithIcon
+          :href="useErrataUrlBuilder(props.errataItemForTab.errata_id)"
+          :class="ANCHOR_COLOR_TAILWIND_STYLE">
           View errata report {{ props.errataItemForTab.errata_id }} on the RFC Errata site
-          <GraphicsNewWindowIcon class="text-lg align-middle ml-1" />
-        </Anchor>
+        </LinkWithIcon>
         (this may fix report text formatting issues)
       </p>
     </div>

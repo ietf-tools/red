@@ -9,7 +9,7 @@ import { Duration } from 'luxon'
 import { describe, expect, test } from 'vitest'
 import { createPage, NuxtPage, url } from '@nuxt/test-utils/e2e'
 import { infoSeriesPathBuilder } from '../app/utilities/url'
-import { setupNuxtServer } from './utilities/setup'
+import { blockAnalytics, setupNuxtServer } from './utilities/setup'
 
 // FIXME: decide an appropriate range.
 const FIRST_RFC = 1
@@ -49,6 +49,7 @@ describe.skip('info/rfcN/ routes', async () => {
         .toHuman()
       console.log('Calibrating for rendering glitches. This can take ', humanTime)
       const page = await createPage()
+      await blockAnalytics(page)
       const testBadStylesPaths = [`${infoSeriesPathBuilder('rfc0')}?too-wide`]
       for (const testBadStylesPath of testBadStylesPaths) {
         await page.setViewportSize(VIEWPORTS.desktop)
@@ -74,6 +75,7 @@ describe.skip('info/rfcN/ routes', async () => {
         .toHuman()
       console.log('Testing for rendering glitches. This can take ', humanTime)
       const page = await createPage()
+      await blockAnalytics(page)
       const failures: string[] = []
 
       for (const rfc of rfcNumbers) {

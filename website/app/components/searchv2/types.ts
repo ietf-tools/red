@@ -39,6 +39,11 @@ export type SearchRequest = {
   menu: Record<string, string>
   numericRefinements: Record<string, NumericRange>
   toggles: Record<string, boolean>
+  /**
+   * Menu attribute -> the facets to count with that menu's own selection left out, so that a
+   * single-select control keeps offering the values it would switch to rather than only the one chosen.
+   */
+  unfilteredFacets?: Record<string, string[]>
 }
 
 export type SearchHit = Record<string, unknown>

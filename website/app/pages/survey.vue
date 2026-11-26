@@ -38,6 +38,7 @@
           :definition="load.definition"
           :theme="load.theme"
           :save="load.save"
+          :cancel-href="returnToPath ?? '/'"
           @saved="submitted = true" />
       </div>
     </NuxtLayout>

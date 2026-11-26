@@ -37,7 +37,10 @@
               </a>
             </li>
             <li>
-              <a :href="RED_BETA_GITHUB_ISSUES_URL" class="underline hover:bg-gray-100 focus:bg-gray-100">
+              <a
+                :href="RED_BETA_GITHUB_ISSUES_URL"
+                :rel="linkRel(RED_BETA_GITHUB_ISSUES_URL)"
+                class="underline hover:bg-gray-100 focus:bg-gray-100">
                 Report issue via GitHub
               </a>
             </li>
@@ -46,7 +49,7 @@
           <ul class="list-disc ml-5 text-sm">
             <li>
               Data is pulled from a snapshot of the
-              <a :href="useDatatrackerUrlOrigin()" class="underline"> Datatracker </a>
+              <a :href="datatrackerUrlOrigin" :rel="linkRel(datatrackerUrlOrigin)" class="underline"> Datatracker </a>
               and during IETF 124 this will be static and stale. Some information, particularly around author names and
               affiliations, will change to more closely match the current RFC Editor database before this is released
               into production.
@@ -89,6 +92,9 @@
 import { DialogClose, DialogContent, DialogOverlay, DialogPortal, DialogRoot, DialogTrigger } from 'reka-ui'
 import { copyTextToClipboard } from '~/utilities/clipboard'
 import { useDatatrackerUrlOrigin } from '~/utilities/url'
+import { linkRel } from '~/utilities/url-destination'
+
+const datatrackerUrlOrigin = useDatatrackerUrlOrigin()
 
 const EMAIL = 'tools-discuss@ietf.org'
 const RED_BETA_GITHUB_ISSUES_URL = 'https://github.com/ietf-tools/red-beta/issues'

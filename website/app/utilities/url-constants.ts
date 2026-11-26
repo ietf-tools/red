@@ -18,6 +18,8 @@ export const IETF_ACCOUNT_URL_ORIGIN = 'https://account.ietf.org'
 export const IETF_PRIVACY_STATEMENT_URL = 'https://www.ietf.org/privacy-statement/'
 export const GITHUB_RFC_EDITOR_RFC_SUBJECT_TAGS_ISSUES_NEW_URL =
   'https://github.com/rfc-editor/rfc-subject-tags/issues/new/choose'
+export const DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL =
+  'https://datatracker.ietf.org/doc/statement-iesg-guidance-on-area-director-sponsoring-of-documents/'
 
 export const RFC_EDITOR_EMAIL = 'rfc-editor@rfc-editor.org'
 export const RFC_EDITOR_MAILTO = `mailto:${RFC_EDITOR_EMAIL}` as const
@@ -67,7 +69,7 @@ export const NEVER_ISSUED_PATH = '/never-issued/'
 export const ALL_CLUSTERS_PATH = '/all_clusters/'
 export const STATUS_CHANGES_PATH = '/status-changes/'
 
-export const MARKDOWN_AUTHORS_INDEPENDENT = '/authors/rfc-independent-submissions/' satisfies ValidHrefs
+export const INDEPENDENT_SUBMISSIONS_URL = '/authors/rfc-independent-submissions/' satisfies ValidHrefs
 
 /** Prefix for blobstore-served RFC documents, which are outside Nuxt's routing. */
 export const RFC_BLOBSTORE_PREFIX = '/rfc/'

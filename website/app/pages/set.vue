@@ -7,11 +7,20 @@
             <p>This Set was created by a community member.</p>
           </Alert>
           <Heading level="2" style-level="1" class="text-left mt-10 mb-4 pl-5">
-            RFC Set <template v-if="setLoad.set.title">&quot;{{ setLoad.set.title }}&quot;</template>
+            RFC Set <template v-if="setLoad.set.title">&quot;{{ filterSpamText(setLoad.set.title) }}&quot;</template>
           </Heading>
 
-          <p class="pl-5" v-if="setLoad.set.description">&quot;{{ setLoad.set.description }}&quot;</p>
+          <p class="pl-5" v-if="setLoad.set.description">&quot;{{ filterSpamText(setLoad.set.description) }}&quot;</p>
           <div class="pl-3 flex flex-col gap-4">
+            <div v-if="rows.length > 1" class="md:mx-2 flex items-center justify-end gap-2">
+              <label :for="sortId" class="whitespace-nowrap">Sort by</label>
+              <select
+                :id="sortId"
+                v-model="sort"
+                :class="`py-2 pl-4 w-full min-w-0 max-w-60 text-base bg-white dark:bg-black dark:text-white border border-gray-400 rounded-xs cursor-pointer ${TAILWIND_SELECT_ARROW_PADDING_RIGHT}`">
+                <option v-for="{ value, label } in SET_SORT_OPTIONS" :key="value" :value="value">{{ label }}</option>
+              </select>
+            </div>
             <ul v-if="rows.length > 0" class="md:mx-2 grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <li v-for="{ doc, infoPath, rfc } in rows" :key="doc">
                 <!-- The card, once this document's rfc-common has arrived. Everything below is what
@@ -55,12 +64,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, useId, watch } from 'vue'
+import { TAILWIND_SELECT_ARROW_PADDING_RIGHT } from '~/utilities/html'
 import { useRfcEditorHead } from '~/utilities/head'
 import { setDocuments, useSet } from '~/utilities/reef-sets'
 import { parseSeriesId, RFC_TYPE_RFC, type RfcCommon } from '~/utilities/rfc'
+import { DEFAULT_SET_SORT, SET_SORT_OPTIONS, sortSetRows, type SetSort } from '~/utilities/set-sort'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
 import { RfcCommonSchema } from '~/utilities/rfc-validators'
+import { filterSpamText } from '~/utilities/spam'
 import { rfcCommonPathBuilder } from '~/utilities/url'
 
 definePageMeta({
@@ -154,24 +166,20 @@ watch(
   { immediate: true }
 )
 
-// One row per member document, in the set's own order: its card once there is one, and the
-// identifier and /info/ path the list shows until then.
-const rows = computed(() => {
-  return documents.value
-    .map(({ doc, infoPath }) => ({ doc, infoPath, rfc: rfcs.value[doc] }))
-    .toSorted((a, b) => {
-      // Rows without a card yet, or without a date, keep their set order after the dated ones
-      // (toSorted is stable), so the list doesn't reshuffle as cards arrive for undated members.
-      const { rfc: rfcA } = a
-      const { rfc: rfcB } = b
-      const timeA = rfcA?.published ? Date.parse(rfcA.published) : NaN
-      const timeB = rfcB?.published ? Date.parse(rfcB.published) : NaN
-      if (Number.isNaN(timeA) || Number.isNaN(timeB)) {
-        return Number.isNaN(timeA) === Number.isNaN(timeB) ? 0 : Number.isNaN(timeA) ? 1 : -1
-      }
-      return timeB - timeA
-    })
-})
+const sort = ref<SetSort>(DEFAULT_SET_SORT)
+const sortId = useId()
+
+// One row per member document: its card once there is one, and the identifier and /info/ path the
+// list shows until then.
+const rows = computed(() =>
+  sortSetRows(
+    documents.value.map(({ doc, infoPath }) => {
+      const rfc = rfcs.value[doc]
+      return { doc, infoPath, rfc, published: rfc?.published, number: rfcNumber(doc) }
+    }),
+    sort.value
+  )
+)
 
 useRfcEditorHead({
   title: 'RFC Set',

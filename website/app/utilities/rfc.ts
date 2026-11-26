@@ -81,6 +81,21 @@ export const getRfcPillText = (rfc: RfcCommon): string[] => {
 
 export type RfcBucketHtmlDocument = z.infer<typeof RfcBucketHtmlDocumentSchema>
 
+// The datatracker gives a document with no group the placeholder group 'none', which has no pages of its own
+export const realGroup = (group: RfcCommon['group']): RfcCommon['group'] =>
+  group?.acronym === 'none' ? undefined : group
+
+export const isAreaSponsored = (rfc: Pick<RfcCommon, 'stream' | 'group'>): boolean => {
+  const { stream, group } = rfc
+  if (stream.slug !== 'IETF') return false
+  const real = realGroup(group)
+  return !real || real.type === 'area'
+}
+
+// The datatracker is inconsistent about whether an area's name already ends in "Area"
+export const areaLabel = (area: NonNullable<RfcCommon['area']>): string =>
+  /\barea$/i.test(area.name) ? area.name : `${area.name} Area`
+
 export const isAprilFoolsRfc = (rfc: Pick<RfcCommon, 'published' | 'stream' | 'group'>): boolean => {
   if (rfc.published === undefined) return false
   const datetime = DateTime.fromISO(rfc.published)
@@ -88,3 +103,5 @@ export const isAprilFoolsRfc = (rfc: Pick<RfcCommon, 'published' | 'stream' | 'g
     rfc.stream.slug === 'INDEPENDENT' && datetime.month === 4 && datetime.day === 1 && rfc.group?.acronym === 'none'
   )
 }
+
+export const ISSN = '2070-1721' as const

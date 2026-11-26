@@ -2,8 +2,10 @@ import { AdvancedUISettings, SurveysModal, GraphicsBustInSilhouette, GraphicsSea
 import { useUiSettingsStore } from '~/stores/ui-settings'
 import { useReefSurveysStore } from '~/stores/reef-surveys'
 import { htmlEscapeToText } from '~/utilities/html'
+import { linkRel } from '~/utilities/url-destination'
 import { useAuthStore } from '~/stores/auth'
 import { oidcLogin, oidcLogout, oidcRegister } from '~/utilities/oidc'
+import { userDisplayName } from '~/utilities/oidc-username'
 import {
   MY_ACCOUNT_HOME_PATH,
   IETF_PRIVACY_STATEMENT_URL,
@@ -240,7 +242,7 @@ export const useMenuData = (mode: Mode) => {
     const imageSize = 'w-5 h-5'
 
     if (isAuthenticated.value) {
-      const displayName = user.value?.name ?? user.value?.preferredUsername ?? 'Account'
+      const displayName = userDisplayName(user.value)
       const picture = user.value?.picture
       const sanitisedPicture = sanitiseUserProfileImage(picture)
       data.push({
@@ -354,7 +356,7 @@ type RenderNoScriptMenuItemOptions = {
  */
 export const renderNoScriptMenuItem = (menuItem: MenuItem, options?: RenderNoScriptMenuItemOptions): string => {
   if (menuItem.href) {
-    return `<li class="${options?.renderListDisc ? 'list-disc ml-5' : ''}"><a href="${htmlEscapeToText(menuItem.href)}">${htmlEscapeToText(menuItem.label)}</a>${
+    return `<li class="${options?.renderListDisc ? 'list-disc ml-5' : ''}"><a href="${htmlEscapeToText(menuItem.href)}"${linkRel(menuItem.href) ? ` rel="${linkRel(menuItem.href)}"` : ''}>${htmlEscapeToText(menuItem.label)}</a>${
       menuItem.children
         ? `<ul>${menuItem.children.map((menuItem) => renderNoScriptMenuItem(menuItem, options)).join('')}</ul>`
         : ''

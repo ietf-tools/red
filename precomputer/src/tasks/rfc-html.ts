@@ -34,6 +34,7 @@ import { redactRfc } from './rfc.ts'
 import { renderHtmlToImage } from '../utilities/html-screenshot.ts'
 import { OPENGRAPH_IMAGE_DIMENSIONS, sanitiseHtml } from '../utilities/html.ts'
 import { getRfcCommonCached } from '../utilities/api.ts'
+import { applyScrapedAffiliations } from '../utilities/html-authors.ts'
 
 type Props = {
   rfcBucketHtml: string
@@ -78,6 +79,7 @@ export const rfcBucketHtmlToRfcDocument = async ({
       maxPreformattedLineLength = await getPlaintextMaxLineLength(dom)
       break
     case 'xml2rfc':
+      rfcAndToc.rfc = applyScrapedAffiliations(rfcAndToc.rfc, dom)
       parseXml2RfcBody(dom.body, rfcAndToc)
       rfcDocument = getXml2RfcRfcDocument(dom)
       maxPreformattedLineLength = await getXml2RfcMaxLineLength(dom)

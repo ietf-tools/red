@@ -18,7 +18,7 @@
 
     <Heading
       level="1"
-      class="mt-4 mb-2 ml-2 max-w-[var(--max-text-block-width)] px-0 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off wrap-anywhere">
+      class="mt-4 mb-2 ml-2 px-0 print:text-lg print:border-b-2 print:border-black print:text-center font-feature-settings-calt-off wrap-anywhere">
       <RFCTitle :rfc="props.rfcBucketHtmlDocument.rfc" hide-title has-trailing-colon />
       {{ SPACE }}
       <RFCTitleSubseries :rfc="props.rfcBucketHtmlDocument.rfc" has-trailing-colon has-underline />
@@ -37,6 +37,11 @@
     </p>
 
     <ul class="block print:text-center font-feature-settings-calt-off ml-2.5">
+      <li class="inline-block" v-if="props.rfcBucketHtmlDocument.rfc.published">
+        <time :datetime="props.rfcBucketHtmlDocument.rfc.published">
+          {{ formattedPublished }}
+        </time>
+      </li>
       <li
         v-for="(author, authorIndex) in props.rfcBucketHtmlDocument.rfc.authors"
         :key="authorIndex"
@@ -49,6 +54,8 @@
     </ul>
 
     <RFCDocumentBodyPill :rfc="props.rfcBucketHtmlDocument.rfc" />
+
+    <RFCDocumentStream :rfc="props.rfcBucketHtmlDocument.rfc" />
 
     <RFCDocumentButtons
       :rfc-number="rfcBucketHtmlDocument.rfc.number"
@@ -70,44 +77,16 @@
     <div
       :id="RFC_CONTENT_DOM_ID"
       :class="[
-        `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 sm:text-base lg:text-base font-feature-settings-calt-off`,
+        `rfc-content rfc-content-type-${props.rfcBucketHtmlDocument.documentHtmlType} relative mt-5 font-feature-settings-calt-off`,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc'
           ? 'max-w-[var(--max-text-block-width)] ml-2 text-pretty'
           : undefined,
         props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasWordBreakMode
           ? wordBreakModeClass(uiSettingsStore.wordBreakMode)
           : undefined,
-        props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc' && featureFlags.hasTextScale
-          ? {
-              // Line height, letter spacing, word spacing and paragraph spacing are
-              // tweened together, anchored on DEFAULT_TEXT_SCALE so that the default
-              // renders 1.5/0.12em/0.16em/2rem and each half of the range still reaches
-              // its extreme: TEXT_SCALE_MIN gives 1/0em/0em/0rem and TEXT_SCALE_MAX gives
-              // 2/0.5em/1em/3rem. WCAG requires a line height of 1.5 minimum, so scales
-              // below DEFAULT_TEXT_SCALE trade that away for density.
-              'leading-[1] tracking-[0em] [word-spacing:0em] [&_p]:mb-[0rem]': uiSettingsStore.textScale === 1,
-              'leading-[1.1] tracking-[0.024em] [word-spacing:0.032em] [&_p]:mb-[0.4rem]':
-                uiSettingsStore.textScale === 1.1,
-              'leading-[1.2] tracking-[0.048em] [word-spacing:0.064em] [&_p]:mb-[0.8rem]':
-                uiSettingsStore.textScale === 1.2,
-              'leading-[1.3] tracking-[0.072em] [word-spacing:0.096em] [&_p]:mb-[1.2rem]':
-                uiSettingsStore.textScale === 1.3,
-              'leading-[1.4] tracking-[0.096em] [word-spacing:0.128em] [&_p]:mb-[1.6rem]':
-                uiSettingsStore.textScale === 1.4,
-              'leading-[1.5] tracking-[0.12em] [word-spacing:0.16em] [&_p]:mb-[2rem]':
-                uiSettingsStore.textScale === 1.5,
-              'leading-[1.6] tracking-[0.196em] [word-spacing:0.328em] [&_p]:mb-[2.2rem]':
-                uiSettingsStore.textScale === 1.6,
-              'leading-[1.7] tracking-[0.272em] [word-spacing:0.496em] [&_p]:mb-[2.4rem]':
-                uiSettingsStore.textScale === 1.7,
-              'leading-[1.8] tracking-[0.348em] [word-spacing:0.664em] [&_p]:mb-[2.6rem]':
-                uiSettingsStore.textScale === 1.8,
-              'leading-[1.9] tracking-[0.424em] [word-spacing:0.832em] [&_p]:mb-[2.8rem]':
-                uiSettingsStore.textScale === 1.9,
-              'leading-[2] tracking-[0.5em] [word-spacing:1em] [&_p]:mb-[3rem]': uiSettingsStore.textScale === 2
-            }
-          : 'leading-[1.5]' // WCAG requires 1.5 minimum
+        textScaleClassList
       ]"
+      v-bind="textSpacingAttrs"
       @click="handleContentClick">
       <component :is="enrichedDocument" />
     </div>
@@ -118,7 +97,7 @@
 import RFCTitleSubseries from './RFCTitleSubseries.vue'
 import { isAprilFoolsRfc } from '~/utilities/rfc'
 import { parseMaybeRfcLink, rfcFormatPathBuilder } from '~/utilities/url'
-import { COMMA, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
+import { COMMA, FULLSTOP, NONBREAKING_SPACE, SPACE } from '~/utilities/strings'
 import type { BreadcrumbItem } from '~/components/BreadcrumbsTypes'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
 import { ANCHOR_COLOR_TAILWIND_STYLE } from '~/utilities/theme'
@@ -134,11 +113,14 @@ import { AMaybeRFCLink, HorizontalScrollable, PdfPages } from '#components'
 import { nodePojoWalker } from '~/utilities/dom'
 import { useFeatureFlags } from '~/utilities/feature-flags'
 import { wordBreakModeClass } from '~/utilities/word-break-mode'
+import { textSizeClasses, textSpacingAttributes, textSpacingClasses } from '~/utilities/text-spacing'
 import { RFC_CONTENT_DOM_ID } from '~/utilities/reading-mode/content'
 import { getTocLinkBackTargetId } from '~/utilities/toc-link-back'
 import { titleWithWordBreaks } from '~/utilities/word-break-title'
 import AbnfViewerAsync from './abnf-viewer/AbnfViewerAsync.vue'
 import type { DocumentPojo, RfcCommon, RfcCommonFormatName } from '~/utilities/rfc-validators.js'
+import { DateTime } from 'luxon'
+import { formatDatePublished } from '~/utilities/rfc-converters-utils.ts'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -164,6 +146,26 @@ const isModalOpen = defineModel<boolean>('isModalOpen')
 const uiSettingsStore = useUiSettingsStore()
 
 const featureFlags = useFeatureFlags()
+
+const isTextScaleActive = computed(() => props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc')
+
+const textSpacingSteps = computed(() => ({
+  lineSpacing: uiSettingsStore.lineSpacingStep,
+  letterSpacing: uiSettingsStore.letterSpacingStep,
+  wordSpacing: uiSettingsStore.wordSpacingStep,
+  paragraphSpacing: uiSettingsStore.paragraphSpacingStep
+}))
+
+const textSpacingAttrs = computed(() =>
+  isTextScaleActive.value ? textSpacingAttributes(textSpacingSteps.value) : undefined
+)
+
+// Documents that are not xml2rfc keeps the line spacing WCAG requires as a minimum.
+const textScaleClassList = computed(() =>
+  isTextScaleActive.value
+    ? [textSizeClasses(uiSettingsStore.textScale), textSpacingClasses(textSpacingSteps.value)]
+    : 'sm:text-base leading-normal'
+)
 
 const RFC_LINK_FORCE_NOWRAP_MAXIMUM_CHARACTER_COUNT = 10
 
@@ -208,6 +210,18 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
       },
       childrenForVue
     ),
+  div: (node, childrenForVue) => {
+    // The lang-* class sits on the wrapping div, not on the pre inside it.
+    if (featureFlags.value.isAbnfDiagramsActive && node.attributes.class?.split(' ').includes('lang-abnf')) {
+      const children = nodePojoWalker(node.children, (child) =>
+        child.type === 'Element' && child.nodeName === 'pre'
+          ? { ...child, attributes: { ...child.attributes, class: `${child.attributes.class ?? ''} lang-abnf` } }
+          : child
+      ).map((child) => renderNodePojo(child, rfcHtmlPojoRenderers))
+      return h(node.nodeName, node.attributes, children)
+    }
+    return h(node.nodeName, node.attributes, childrenForVue)
+  },
   pre: (node, childrenForVue) => {
     if (props.rfcBucketHtmlDocument.documentHtmlType === 'xml2rfc') {
       if (featureFlags.value.isAbnfDiagramsActive && node.attributes.class?.includes('lang-abnf')) {
@@ -235,7 +249,7 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
       HorizontalScrollable,
       {
         ...attributes,
-        class: `mb-2 md:mb-4 ${classAttr ?? ''}`,
+        class: classAttr,
         copyMode: dataCopyModeBoolString === true.toString()
       },
       () => childrenForVue
@@ -256,6 +270,12 @@ const rfcHtmlPojoRenderers: ElementRenderers = {
     return h(PdfPages, node.attributes, () => children)
   }
 }
+
+const formattedPublished = computed(() => {
+  if (!props.rfcBucketHtmlDocument.rfc.published) return
+  const dt = DateTime.fromISO(props.rfcBucketHtmlDocument.rfc.published)
+  return `${formatDatePublished(dt, true)}${FULLSTOP}${NONBREAKING_SPACE}${NONBREAKING_SPACE}`
+})
 
 const titleVNode = computed<VNode>(() => titleWithWordBreaks(props.rfcBucketHtmlDocument.rfc.title))
 
@@ -379,12 +399,20 @@ const formatsPojo = computed((): DocumentPojo => {
   }
 }
 
+/* At the top level because an at-rule can't be nested inside the scope below, where it would be dropped. */
+@property --rfc-layout-width {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
 .rfc-content-type-xml2rfc {
   /* Using postcss-nested-import to scope these imported styles,
      so that we can scope/sandbox CSS styles so CSS selectors don't leak out and affect the rest of the page,
      to reduce maintenance burden.
   */
   @nested-import "../assets/css/xml2rfc.css";
+  @nested-import "../assets/css/xml2rfc-text-spacing.generated.css";
 }
 
 html.dark .rfc-content-type-xml2rfc {

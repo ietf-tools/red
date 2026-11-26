@@ -1,5 +1,5 @@
 import { type RfcCommon } from '../../../website/app/utilities/rfc-validators.ts'
-import { EDITOR_SUFFIX, formatAuthor, type FormatAuthorStyle } from './rfc-converters-utils.ts'
+import { EDITOR_SUFFIX, formatAuthor, isOrganisationAsAuthor, type FormatAuthorStyle } from './rfc-converters-utils.ts'
 import { escapeRegExp } from './string.ts'
 
 const editorSuffixRegex = new RegExp(`${escapeRegExp(EDITOR_SUFFIX)}$`)
@@ -20,9 +20,11 @@ export const formatAuthorsPerStyleGuide = (
       const hasMultipleAuthors = arr.length > 1
 
       // The last author has its name reversed
-      const reversedName = author.is_editor
-        ? formattedName.replace(editorSuffixRegex, '').split(/\s+/g).reverse().join(' ').replace(/,$/, '') + ', Ed.'
-        : formattedName.split(/\s+/g).reverse().join(' ').replace(/,$/, '')
+      const reversedName = isOrganisationAsAuthor(author)
+        ? formattedName
+        : author.is_editor
+          ? formattedName.replace(editorSuffixRegex, '').split(/\s+/g).reverse().join(' ').replace(/,$/, '') + ', Ed.'
+          : formattedName.split(/\s+/g).reverse().join(' ').replace(/,$/, '')
 
       const isLast = index === arr.length - 1
       const isSecondToLast = index === arr.length - 2

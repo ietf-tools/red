@@ -1,27 +1,14 @@
 <template>
-  <button
-    v-if="featureFlags.hasCollapsibleSidebar && props.mode === 'desktop'"
-    type="button"
-    :aria-label="isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
-    :aria-expanded="!isSidebarCollapsed"
+  <RFCTabsCollapseButton v-if="mode === 'desktop'" />
+  <TabsRoot
+    v-if="!isSidebarCollapsed"
+    v-model="selectedTab"
     :class="[
-      'group',
-      'absolute top-0 -left-2',
-      {
-        'cursor-e-resize': !isSidebarCollapsed,
-        'cursor-w-resize': isSidebarCollapsed
-      },
-      'bg-white dark:bg-black hover:bg-gray-400 dark:hover:bg-gray-500 dark:focus:bg-gray-500',
-      'before:content-[\'\'] before:absolute before:right-0 before:w-2 before:h-screen hover:before:bg-gray-200 dark:hover:before:bg-gray-500 focus:before:bg-gray-200 dark:focus:before:bg-gray-500'
-    ]"
-    @click="uiSettings.toggleRfcSidebar()">
-    <GraphicsLayoutSidebarRightCollapse
-      :class="[
-        'absolute right-0 top-3.5 w-6 h-6 outline-2 outline-white dark:outline-black group-hover:bg-gray-200 dark:group-hover:bg-gray-500 group-focus:bg-gray-200 dark:group-focus:bg-gray-500 group-hover:outline-0 group-focus:outline-0 group-hover:text-gray-700 dark:group-hover:text-white dark:group-focus:text-white group-focus:text-gray-700',
-        { 'rotate-180': isSidebarCollapsed }
-      ]" />
-  </button>
-  <TabsRoot v-if="!isSidebarCollapsed" v-model="selectedTab" class="min-h-0 flex flex-col">
+      'min-h-0 flex flex-col',
+      // WCAG requires 1.5 minimum.
+      'leading-normal',
+      textScaleClasses(uiSettings.textScale)
+    ]">
     <div v-html="noScriptTabsHtml"></div>
     <TabsList class="border-b-2 border-gray-400">
       <HorizontalScrollable
@@ -117,7 +104,7 @@
         wrapper-class="min-h-0 pt-4 pb-2 px-4"
         list-class="mr-1"
         nested-list-class="pl-2"
-        :links-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
+        :links-class="`block py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="text-bold-without-layout-shift"
         link-class="block no-underline hover:underline no-underline hover:underline focus:underline"
         last-link-class="flex-1"
@@ -131,7 +118,7 @@
         wrapper-class="flex flex-col min-h-0 pt-4 pb-2 px-4"
         list-class="mt-2 mr-1 pl-0 -ml-1"
         nested-list-class="pl-2"
-        :list-item-class="`block text-sm py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
+        :list-item-class="`block py-2 dark:border-t-gray-500 ${ANCHOR_COLOR_TAILWIND_STYLE}`"
         links-active-class="text-bold-without-layout-shift"
         link-class="block no-underline hover:underline"
         last-link-class="flex-1">
@@ -149,7 +136,7 @@
       ]">
       <VerticalScrollable>
         <Heading level="2" style-level="4" class="mt-4"> Details </Heading>
-        <dl class="text-sm pb-6">
+        <dl class="pb-6">
           <template
             v-if="props.rfcBucketHtmlDocument.rfc.updates && props.rfcBucketHtmlDocument.rfc.updates.length > 0">
             <dt class="font-bold mt-2">Updates ({{ props.rfcBucketHtmlDocument.rfc.updates.length }})</dt>
@@ -199,13 +186,12 @@
                   :key="authorIndex"
                   class="inline">
                   <span class="whitespace-nowrap">
-                    <a
+                    <LinkWithIcon
                       v-if="author.datatracker_person_path"
                       :href="datatrackerAuthorUrlBuilder(author.datatracker_person_path)"
                       :class="[ANCHOR_COLOR_TAILWIND_STYLE, ' py-0.5 pr-0.5 mb-0.5']">
                       <RFCDocumentAuthor :author="author" />
-                      <GraphicsNewWindowIcon class="text-lg align-middle" />
-                    </a>
+                    </LinkWithIcon>
                     <span v-else>
                       <RFCDocumentAuthor :author="author" />
                     </span>
@@ -224,35 +210,44 @@
               {{ groupName(props.rfcBucketHtmlDocument.rfc) }}
             </dt>
             <dd>
-              <DocumentPojo :value="groupValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+              <DocumentPojo :value="groupValuePojo" />
             </dd>
           </template>
 
           <template v-if="shouldShowArea(props.rfcBucketHtmlDocument.rfc)">
             <dt class="font-bold mt-2">Area</dt>
             <dd>
-              <DocumentPojo :value="areaValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+              <DocumentPojo :value="areaValuePojo" />
             </dd>
           </template>
 
           <dt class="font-bold mt-2">{{ streamName }}</dt>
           <dd v-if="shouldShowStreamValue(props.rfcBucketHtmlDocument.rfc)">
-            <DocumentPojo :value="streamValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+            <DocumentPojo :value="streamValuePojo" />
           </dd>
 
-          <DocumentPojo :value="identifierValuePojo(props.rfcBucketHtmlDocument.rfc.identifiers)" />
+          <DocumentPojo :value="identifierValuePojo" />
 
-          <DocumentPojo :value="formatsValuePojo(formats, props.rfcBucketHtmlDocument.rfc.number)" />
+          <dt class="font-bold mt-2">ISSN</dt>
+          <dd>{{ ISSN }}</dd>
+
+          <DocumentPojo :value="formatsValuePojo" />
 
           <dt class="font-bold mt-2">Cite this RFC</dt>
-          <dd><DocumentPojo :value="citeValuePojo(props.rfcBucketHtmlDocument.rfc.number)" /></dd>
+          <dd><DocumentPojo :value="citeValuePojo" /></dd>
 
           <dt class="font-bold mt-2">Document history</dt>
           <dd>
-            <Anchor :href="datatrackerRFCUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+            <LinkWithIcon :href="datatrackerRFCUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
               View history of <component :is="formattedTitle" />
-              <NewWindowIcon />
-            </Anchor>
+            </LinkWithIcon>
+          </dd>
+
+          <dt class="font-bold mt-2">IPR Disclosures</dt>
+          <dd>
+            <LinkWithIcon :href="datatrackerIprSearchUrl" :class="ANCHOR_COLOR_TAILWIND_STYLE">
+              Find IPR Disclosures from the IETF
+            </LinkWithIcon>
           </dd>
         </dl>
       </VerticalScrollable>
@@ -268,18 +263,17 @@
       ]">
       <VerticalScrollable class="pl-1">
         <Heading level="2" style-level="4" class="mt-3 mb-1"> About Errata </Heading>
-        <p class="text-sm leading-[1.5]">
+        <p class="leading-[1.5]">
           RFC Errata are official records of technical or editorial errors found in published RFCs, which remain
           unchanged once issued. You can report Errata only after verifying the issue is not already documented and
           constitutes a genuine error in the text rather than a request for new features or protocol changes.
         </p>
         <p class="border-b-1 border-gray-200 py-6 mb-4">
-          <Anchor
+          <LinkWithIcon
             :href="errataSearchForThisRfc"
-            class="bg-blue-300 text-white dark:bg-blue-800 border-0 text-sm no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
+            class="bg-blue-300 text-white dark:bg-blue-800 border-0 no-underline hover:underline focus:underline rounded my-2 p-3 font-bold">
             Report a new erratum
-            <GraphicsNewWindowIcon />
-          </Anchor>
+          </LinkWithIcon>
         </p>
         <ErrataList :errata-list="props.rfcBucketHtmlDocument.errataList" />
       </VerticalScrollable>
@@ -293,9 +287,10 @@
           'px-4': props.mode === 'mobile'
         }
       ]">
-      <VerticalScrollable class="pl-1">
-        <Heading level="2" style-level="4" class="mt-3 mb-1"> Participate </Heading>
-        <DocumentPojo :value="participateValuePojo(props.rfcBucketHtmlDocument.rfc)" />
+      <VerticalScrollable>
+        <div class="flex flex-col gap-2 mt-3">
+          <DocumentPojo :value="participateValuePojo" />
+        </div>
       </VerticalScrollable>
     </TabsContent>
   </TabsRoot>
@@ -319,20 +314,22 @@ import {
   useRfcEditorErrataSearchForRfcUrl,
   infoSeriesPathBuilder,
   useDatatrackerRFCUrlBuilder,
+  useDatatrackerIprSearchForRfcUrlBuilder,
   IAB_URL_ORIGIN,
-  MARKDOWN_AUTHORS_INDEPENDENT,
+  INDEPENDENT_SUBMISSIONS_URL,
   IETF_URL_ORIGIN,
-  IRTF_URL_ORIGIN
+  IRTF_URL_ORIGIN,
+  DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL,
+  areaAboutUrlBuilder
 } from '~/utilities/url'
 import type { RfcBucketHtmlDocument } from '~/utilities/rfc'
+import { ISSN, areaLabel, isAreaSponsored, realGroup } from '~/utilities/rfc'
 import type { DocumentPojo, NodePojo, RfcCommon } from '~/utilities/rfc-validators'
 import { htmlEscapeToText } from '~/utilities/html'
-import { renderDocumentPojoToHtmlString } from '~/utilities/renderDocumentPojo'
+import { renderDocumentPojoToHtmlString, renderNodePojoToHtmlString } from '~/utilities/renderDocumentPojo'
 import { mergeAdjacentLinks } from '../utilities/tableOfContents'
 import { formatTitleAsVNode } from '~/utilities/rfc-title'
-import { useFeatureFlags } from '~/utilities/feature-flags'
 import { useUiSettingsStore } from '~/stores/ui-settings'
-import NewWindowIcon from './Graphics/NewWindowIcon.vue'
 
 type Props = {
   rfcBucketHtmlDocument: RfcBucketHtmlDocument
@@ -344,14 +341,29 @@ const props = defineProps<Props>()
 
 const selectedTab = defineModel<number>()
 
-const featureFlags = useFeatureFlags()
-
 const uiSettings = useUiSettingsStore()
 
-const isSidebarCollapsed = computed(() => {
-  const { hasCollapsibleSidebar } = featureFlags.value
-  return props.mode === 'desktop' && !!hasCollapsibleSidebar && uiSettings.isRfcSidebarEffectivelyCollapsed
-})
+const isSidebarCollapsed = computed(() => props.mode === 'desktop' && uiSettings.isRfcSidebarEffectivelyCollapsed)
+
+const textScaleClasses = (textScale: number): string => {
+  if (textScale <= 1) {
+    return 'text-sm'
+  }
+  if (textScale <= 1.1) {
+    return 'text-base'
+  }
+  if (textScale <= 1.2) {
+    return 'text-lg'
+  }
+  if (textScale <= 1.3) {
+    return 'text-xl'
+  }
+  if (textScale <= 1.4) {
+    return 'text-2xl'
+  }
+
+  return 'text-2xl'
+}
 
 const formattedPublished = computed(() => {
   if (!props.rfcBucketHtmlDocument.rfc.published) return
@@ -392,7 +404,17 @@ const shouldShowStreamValue = (rfc: RfcCommon): boolean => {
 }
 
 const shouldShowGroup = (rfc: RfcCommon): boolean => {
-  switch (rfc.stream.slug) {
+  const { stream, group } = rfc
+  if (
+    // The datatracker gives every document without a group the "Individual Submissions" group, but
+    // that wording only means something in the IETF stream.
+    // https://github.com/ietf-tools/red/issues/460
+    stream.slug !== 'IETF' &&
+    (group?.type === 'individ' || group?.type === 'area')
+  ) {
+    return false
+  }
+  switch (stream.slug) {
     case 'IAB':
     case 'INDEPENDENT':
     case 'Editorial':
@@ -417,6 +439,8 @@ const streamName = computed(() => {
   }
 })
 
+const areaAboutUrl = computed(() => areaAboutUrlBuilder(props.rfcBucketHtmlDocument.rfc.area))
+
 const formats = computed(() =>
   props.rfcBucketHtmlDocument.rfc.formats.filter((format) => {
     switch (format.format) {
@@ -431,6 +455,9 @@ const formats = computed(() =>
 const formattedTitle = computed(() => formatTitleAsVNode(`rfc${props.rfcBucketHtmlDocument.rfc.number}`, true))
 
 const datatrackerRFCUrl = computed(() => useDatatrackerRFCUrlBuilder(props.rfcBucketHtmlDocument.rfc.number))
+const datatrackerIprSearchUrl = computed(() =>
+  useDatatrackerIprSearchForRfcUrlBuilder(props.rfcBucketHtmlDocument.rfc.number)
+)
 
 const errataSearchForThisRfc = computed(() => useRfcEditorErrataSearchForRfcUrl(props.rfcBucketHtmlDocument.rfc.number))
 
@@ -456,7 +483,30 @@ const groupName = (rfc: RfcCommon): string => {
   return 'Working group'
 }
 
-const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
+// Drawn by OutsideLinkIcon.vue, so a link to one of the IETF community's sites (see utilities/url-destination.ts) gets no icon
+const outsideLinkIconPojo = (href: string): NodePojo => ({
+  type: 'Element',
+  nodeName: 'OutsideLinkIcon',
+  attributes: { href },
+  children: []
+})
+
+const paragraphPojo = (children: NodePojo[]): NodePojo => ({
+  type: 'Element',
+  nodeName: 'p',
+  attributes: { class: 'leading-[1.5] py-1' },
+  children
+})
+
+const anchorPojo = (href: string, text: string): NodePojo => ({
+  type: 'Element',
+  nodeName: 'Anchor',
+  attributes: { href, class: LINK_CLASS },
+  children: [{ type: 'Text', textContent: text }]
+})
+
+const groupValuePojo = computed((): DocumentPojo => {
+  const { rfc } = props.rfcBucketHtmlDocument
   const group = rfc.group
 
   if (group?.type === 'individ') {
@@ -476,6 +526,7 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
     ]
   }
 
+  const groupHref = useWorkingGroupUrlBuilder(group) ?? ''
   const children: NodePojo[] = []
   if (group?.name) children.push({ type: 'Text', textContent: group.name })
   if (group?.acronym) children.push({ type: 'Text', textContent: ` (${group.acronym.toUpperCase()})` })
@@ -485,25 +536,19 @@ const groupValuePojo = (rfc: RfcCommon): DocumentPojo => {
       type: 'Element',
       nodeName: 'Anchor',
       attributes: {
-        href: useWorkingGroupUrlBuilder(group) ?? '',
+        href: groupHref,
         class: LINK_CLASS
       },
-      children: [
-        ...children,
-        {
-          type: 'Element',
-          nodeName: 'GraphicsNewWindowIcon',
-          attributes: { class: 'text-lg align-middle ml-1' },
-          children: []
-        }
-      ]
+      children: [...children, outsideLinkIconPojo(groupHref)]
     }
   ]
-}
+})
 
-const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
+const areaValuePojo = computed((): DocumentPojo => {
+  const { rfc } = props.rfcBucketHtmlDocument
   const { area } = rfc
 
+  const areaHref = areaGroupUrlBuilder(area) ?? ''
   const children: NodePojo[] = []
   if (area?.name) children.push({ type: 'Text', textContent: area.name })
   if (area?.acronym) children.push({ type: 'Text', textContent: ` (${area.acronym.toUpperCase()})` })
@@ -513,23 +558,16 @@ const areaValuePojo = (rfc: RfcCommon): DocumentPojo => {
       type: 'Element',
       nodeName: 'Anchor',
       attributes: {
-        href: areaGroupUrlBuilder(area) ?? '',
+        href: areaHref,
         class: LINK_CLASS
       },
-      children: [
-        ...children,
-        {
-          type: 'Element',
-          nodeName: 'GraphicsNewWindowIcon',
-          attributes: { class: 'text-lg align-middle ml-1' },
-          children: []
-        }
-      ]
+      children: [...children, outsideLinkIconPojo(areaHref)]
     }
   ]
-}
+})
 
-const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPojo => {
+const identifierValuePojo = computed((): DocumentPojo => {
+  const { identifiers } = props.rfcBucketHtmlDocument.rfc
   if (!identifiers) return []
 
   return identifiers.flatMap(({ type, value }) => {
@@ -557,12 +595,7 @@ const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPoj
               attributes: { href: doiUrlBuilder(value, true), class: LINK_CLASS },
               children: [
                 { type: 'Text', textContent: doiUrlBuilder(value, false) },
-                {
-                  type: 'Element',
-                  nodeName: 'GraphicsNewWindowIcon',
-                  attributes: { class: 'text-lg align-middle ml-1' },
-                  children: []
-                }
+                outsideLinkIconPojo(doiUrlBuilder(value, true))
               ]
             }
           ]
@@ -583,17 +616,19 @@ const identifierValuePojo = (identifiers: RfcCommon['identifiers']): DocumentPoj
       }
     ]
   })
-}
+})
 
-const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): DocumentPojo => {
-  if (formats.length === 0) return []
+const formatsValuePojo = computed((): DocumentPojo => {
+  const { value: availableFormats } = formats
+  const { number: rfcNumber } = props.rfcBucketHtmlDocument.rfc
+  if (availableFormats.length === 0) return []
 
   return [
     {
       type: 'Element',
       nodeName: 'dt',
       attributes: { class: 'font-bold mt-2' },
-      children: [{ type: 'Text', textContent: formats.length === 1 ? 'Format' : 'Formats' }]
+      children: [{ type: 'Text', textContent: availableFormats.length === 1 ? 'Format' : 'Formats' }]
     },
     {
       type: 'Element',
@@ -603,8 +638,8 @@ const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): Doc
         {
           type: 'Element',
           nodeName: 'ul',
-          attributes: { class: 'text-sm' },
-          children: formats.map(({ format }, index) => ({
+          attributes: {},
+          children: availableFormats.map(({ format }, index) => ({
             type: 'Element' as const,
             nodeName: 'li',
             attributes: { class: 'inline' },
@@ -620,16 +655,20 @@ const formatsValuePojo = (formats: RfcCommon['formats'], rfcNumber: number): Doc
                 },
                 children: [{ type: 'Text' as const, textContent: format.toUpperCase() }]
               },
-              { type: 'Text' as const, textContent: index < formats.length - 1 ? `${COMMA}${SPACE}` : FULLSTOP }
+              {
+                type: 'Text' as const,
+                textContent: index < availableFormats.length - 1 ? `${COMMA}${SPACE}` : FULLSTOP
+              }
             ]
           }))
         }
       ]
     }
   ]
-}
+})
 
-const citeValuePojo = (rfcNumber: number): DocumentPojo => {
+const citeValuePojo = computed((): DocumentPojo => {
+  const { number: rfcNumber } = props.rfcBucketHtmlDocument.rfc
   const rfcId = `rfc${rfcNumber}`
   return [
     {
@@ -666,10 +705,10 @@ const citeValuePojo = (rfcNumber: number): DocumentPojo => {
     },
     { type: 'Text', textContent: `${FULLSTOP}${SPACE}` }
   ]
-}
+})
 
-const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
-  const { stream } = rfc
+const streamValuePojo = computed((): DocumentPojo => {
+  const { stream } = props.rfcBucketHtmlDocument.rfc
   const href = streamUrlBuilder(stream)
 
   if (href) {
@@ -678,204 +717,170 @@ const streamValuePojo = (rfc: RfcCommon): DocumentPojo => {
         type: 'Element',
         nodeName: 'Anchor',
         attributes: { href, class: LINK_CLASS },
-        children: [
-          { type: 'Text', textContent: stream.name },
-          {
-            type: 'Element',
-            nodeName: 'GraphicsNewWindowIcon',
-            attributes: { class: 'text-lg align-middle ml-1' },
-            children: []
-          }
-        ]
+        children: [{ type: 'Text', textContent: stream.name }, outsideLinkIconPojo(href)]
       }
     ]
   }
 
   return [{ type: 'Text', textContent: stream.name }]
-}
+})
 
-const participateValuePojo = (rfc: RfcCommon): DocumentPojo => {
-  switch (rfc.stream.slug) {
-    case 'Editorial':
-    case 'IRTF':
-    case 'IETF':
-      /**
-        FIXME: when rfc contains 'active' vs 'concluded' state use that to display better text
-
-        For Active IETF working group
-          * WG name links to data tracker about page (ex)
-          * Include beginning of charter statement from about page
-          * “Read work in progress” link to current working group documents (ex)
-          * “Meetings” Link to read minutes from past meetings or learn about upcoming meetings (ex)
-          * “Recent conversations”” link to mailing list archive (ex)
-        For Inactive IETF working groups
-          * “This working group has concluded. See this/these groups instead:
-       */
-      const wgAbout = useWorkingGroupUrlBuilder(rfc.group, 'about')
-      const wgDocuments = useWorkingGroupUrlBuilder(rfc.group, 'documents')
-      const wgMeetings = useWorkingGroupUrlBuilder(rfc.group, 'meetings')
-      if (wgAbout || wgDocuments || wgMeetings) {
-        let pojo: DocumentPojo = []
-        if (wgAbout) {
-          pojo.push({
-            type: 'Element',
-            nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1 text-sm' },
-            children: [
-              {
-                type: 'Element',
-                nodeName: 'Anchor',
-                attributes: {
-                  href: wgAbout,
-                  class: LINK_CLASS
-                },
-                children: [
-                  {
-                    type: 'Text',
-                    textContent: `About working group ${rfc.group ? rfc.group.name : ''}`
-                  }
-                ]
-              },
-              { type: 'Text', textContent: '.' }
-            ]
-          })
-        }
-        if (wgDocuments) {
-          pojo.push({
-            type: 'Element',
-            nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1 text-sm' },
-            children: [
-              {
-                type: 'Element',
-                nodeName: 'Anchor',
-                attributes: {
-                  href: wgDocuments,
-                  class: LINK_CLASS
-                },
-                children: [
-                  {
-                    type: 'Text',
-                    textContent: `${rfc.group ? rfc.group.name : ''} documents`
-                  }
-                ]
-              },
-              { type: 'Text', textContent: '.' }
-            ]
-          })
-        }
-        if (wgMeetings) {
-          pojo.push({
-            type: 'Element',
-            nodeName: 'p',
-            attributes: { class: 'leading-[1.5] py-1 text-sm' },
-            children: [
-              {
-                type: 'Element',
-                nodeName: 'Anchor',
-                attributes: {
-                  href: wgMeetings,
-                  class: LINK_CLASS
-                },
-                children: [
-                  {
-                    type: 'Text',
-                    textContent: `Meetings for ${rfc.group ? rfc.group.name : ''}`
-                  }
-                ]
-              },
-              { type: 'Text', textContent: '.' }
-            ]
-          })
-        }
-
-        return pojo
+const participateValuePojo = computed((): DocumentPojo => {
+  const { rfc } = props.rfcBucketHtmlDocument
+  const { area } = rfc
+  const group = realGroup(rfc.group)
+  const streamPojo = (): DocumentPojo => {
+    switch (rfc.stream.slug) {
+      case 'Editorial':
+      case 'IRTF':
+      case 'IETF': {
+        const groupKind = rfc.stream.slug === 'IRTF' ? 'research group' : 'working group'
+        // An area sponsoring a document isn't a working group; it has no document list, and its Director link follows below
+        if (!group || group.type === 'area')
+          return [
+            paragraphPojo([{ type: 'Text', textContent: `There is no ${groupKind} associated with this RFC.` }]),
+            ...(rfc.stream.slug === 'IRTF'
+              ? [paragraphPojo([anchorPojo(IRTF_URL_ORIGIN, 'Learn about participating in the IRTF')])]
+              : [])
+          ]
+        const about = useWorkingGroupUrlBuilder(group, 'about')
+        const documents = useWorkingGroupUrlBuilder(group, 'documents')
+        const meetings = useWorkingGroupUrlBuilder(group, 'meetings')
+        return [
+          ...(group.state === 'concluded'
+            ? [paragraphPojo([{ type: 'Text', textContent: `This ${groupKind} has concluded.` }])]
+            : []),
+          ...(about ? [paragraphPojo([anchorPojo(about, group.name)])] : []),
+          ...(documents
+            ? [
+                paragraphPojo([
+                  anchorPojo(
+                    documents,
+                    group.state === 'concluded' ? `Read other documents by the ${groupKind}` : 'Read work in progress'
+                  )
+                ])
+              ]
+            : []),
+          ...(meetings ? [paragraphPojo([anchorPojo(meetings, 'Meetings')])] : [])
+        ]
       }
-      if (rfc.group) {
-        return [{ type: 'Text', textContent: `${rfc.group.name} ${rfc.group.acronym ? `(${rfc.group.acronym})` : ''}` }]
-      }
-      return []
-    case 'IAB':
-      return [
-        {
-          type: 'Text',
-          textContent:
-            'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
-        },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IAB_URL_ORIGIN,
-            class: LINK_CLASS
-          },
-          children: [{ type: 'Text', textContent: 'iab.org' }]
-        },
-        { type: 'Text', textContent: '.' }
-      ]
-    case 'INDEPENDENT':
-      return [
-        {
-          type: 'Text',
-          textContent:
-            'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
-        },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: MARKDOWN_AUTHORS_INDEPENDENT,
-            class: LINK_CLASS
-          },
-          children: [{ type: 'Text', textContent: 'Read more' }]
-        },
-        { type: 'Text', textContent: ' about submitting an independent RFC. ' }
-      ]
-    case 'Legacy':
-      return [
-        {
-          type: 'Text',
-          textContent: 'This publication predates the establishment of the '
-        },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IETF_URL_ORIGIN,
-            class: LINK_CLASS
-          },
-          children: [{ type: 'Text', textContent: 'IETF' }]
-        },
-        { type: 'Text', textContent: ', ' },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IRTF_URL_ORIGIN,
-            class: LINK_CLASS
-          },
-          children: [{ type: 'Text', textContent: 'IRTF' }]
-        },
-        { type: 'Text', textContent: ', and ' },
-        {
-          type: 'Element',
-          nodeName: 'Anchor',
-          attributes: {
-            href: IAB_URL_ORIGIN,
-            class: LINK_CLASS
-          },
-          children: [{ type: 'Text', textContent: 'IAB' }]
-        },
-        {
-          type: 'Text',
-          textContent:
-            '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
-        }
-      ]
+      case 'IAB':
+        return [
+          {
+            type: 'Element',
+            nodeName: 'p',
+            attributes: {},
+            children: [
+              {
+                type: 'Text',
+                textContent:
+                  'The Internet Architecture Board (IAB) provides long-range technical direction for Internet development, ensuring the Internet continues to grow and evolve as a platform for global communication and innovation. The board consists of nominated members. To learn more, visit '
+              },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IAB_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'iab.org' }]
+              },
+              { type: 'Text', textContent: '.' }
+            ]
+          }
+        ]
+      case 'INDEPENDENT':
+        return [
+          {
+            type: 'Element',
+            nodeName: 'p',
+            attributes: {},
+            children: [
+              {
+                type: 'Text',
+                textContent:
+                  'The Independent Submission Stream allows RFC publication for some documents that are outside the official processes of the IETF, IAB, and IRTF but are relevant to the Internet community. '
+              },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: INDEPENDENT_SUBMISSIONS_URL,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'Read more' }]
+              },
+              { type: 'Text', textContent: ' about submitting an independent RFC. ' }
+            ]
+          }
+        ]
+      case 'Legacy':
+        return [
+          {
+            type: 'Element',
+            nodeName: 'p',
+            attributes: {},
+            children: [
+              {
+                type: 'Text',
+                textContent: 'This publication predates the establishment of the '
+              },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IETF_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'IETF' }]
+              },
+              { type: 'Text', textContent: ', ' },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IRTF_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'IRTF' }]
+              },
+              { type: 'Text', textContent: ', and ' },
+              {
+                type: 'Element',
+                nodeName: 'Anchor',
+                attributes: {
+                  href: IAB_URL_ORIGIN,
+                  class: LINK_CLASS
+                },
+                children: [{ type: 'Text', textContent: 'IAB' }]
+              },
+              {
+                type: 'Text',
+                textContent:
+                  '. If you are interested in current work, visit the relevant sites or check out the working groups that have published more recent RFCs on this topic.'
+              }
+            ]
+          }
+        ]
+    }
+
+    return []
   }
-
-  return []
-}
+  return [
+    ...streamPojo(),
+    ...(isAreaSponsored(rfc)
+      ? [
+          paragraphPojo([
+            anchorPojo(
+              DATATRACKER_IESG_STATEMENT_NON_WORKING_GROUP_URL,
+              'Guidance on Area Director Sponsoring of Documents'
+            )
+          ])
+        ]
+      : []),
+    ...(areaAboutUrl.value && area ? [paragraphPojo([anchorPojo(areaAboutUrl.value, areaLabel(area))])] : [])
+  ]
+})
 
 /** For non-JS users */
 const noScriptHtml = computed(() => {
@@ -902,28 +907,47 @@ const noScriptHtml = computed(() => {
               .map((author, index, arr) => {
                 const punctuation = index < arr.length - 1 ? ', ' : '.'
                 if (author.datatracker_person_path) {
-                  return `<a href="${htmlEscapeToText(datatrackerAuthorUrlBuilder(author.datatracker_person_path))}" class="${LINK_CLASS}">${htmlEscapeToText(author.titlepage_name ?? '(no name)')}</a>${punctuation}`
+                  return `${renderNodePojoToHtmlString({
+                    type: 'Element',
+                    nodeName: 'Anchor',
+                    attributes: {
+                      href: datatrackerAuthorUrlBuilder(author.datatracker_person_path),
+                      class: LINK_CLASS
+                    },
+                    children: [{ type: 'Text', textContent: author.titlepage_name ?? '(no name)' }]
+                  })}${punctuation}`
                 }
                 return `${htmlEscapeToText(author.titlepage_name ?? '(no name)')}${punctuation}`
               })
               .join('')}</dd>`
           : ''
       }
-      ${shouldShowGroup(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(groupName(rfc))}</dt><dd>${renderDocumentPojoToHtmlString(groupValuePojo(rfc))}</dd>` : ''}
-      ${shouldShowArea(rfc) ? `<dt class="font-bold mt-2">Area</dt><dd>${renderDocumentPojoToHtmlString(areaValuePojo(rfc))}</dd>` : ''}
-      ${shouldShowStreamValue(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(streamName.value)}</dt><dd>${renderDocumentPojoToHtmlString(streamValuePojo(rfc))}</dd>` : ''}
-      ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo(rfc.identifiers)) : ''}
-      ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo(formats.value, rfc.number)) : ''}
-      <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo(rfc.number))}</dd>
-      <dt class="font-bold mt-2">Document history</dt><dd class="text-sm"><a href="${datatrackerRFCUrl.value}" class="${ANCHOR_COLOR_TAILWIND_STYLE}">View history of RFC ${rfc.number}</a></dd>
+      ${shouldShowGroup(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(groupName(rfc))}</dt><dd>${renderDocumentPojoToHtmlString(groupValuePojo.value)}</dd>` : ''}
+      ${shouldShowArea(rfc) ? `<dt class="font-bold mt-2">Area</dt><dd>${renderDocumentPojoToHtmlString(areaValuePojo.value)}</dd>` : ''}
+      ${shouldShowStreamValue(rfc) ? `<dt class="font-bold mt-2">${htmlEscapeToText(streamName.value)}</dt><dd>${renderDocumentPojoToHtmlString(streamValuePojo.value)}</dd>` : ''}
+      ${rfc.identifiers ? renderDocumentPojoToHtmlString(identifierValuePojo.value) : ''}
+      <dt class="font-bold mt-2">ISSN</dt><dd class="text-sm">${ISSN}</dd>
+      ${formats.value.length > 0 ? renderDocumentPojoToHtmlString(formatsValuePojo.value) : ''}
+      <dt class="font-bold mt-2">Cite this RFC</dt><dd class="text-sm">${renderDocumentPojoToHtmlString(citeValuePojo.value)}</dd>
+      <dt class="font-bold mt-2">Document history</dt><dd class="text-sm">${anchorHtml(datatrackerRFCUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, `View history of RFC ${rfc.number}`)}</dd>
+      <dt class="font-bold mt-2">IPR Disclosures</dt><dd class="text-sm">${anchorHtml(datatrackerIprSearchUrl.value, ANCHOR_COLOR_TAILWIND_STYLE, 'Find IPR Disclosures from the IETF')}</dd>
     </dl>
     <h3 class="text-lg font-bold mt-4">Errata</h3>
-    <p><a href="${htmlEscapeToText(errataSearchForThisRfc.value)}" class="${LINK_CLASS}">RFC ${rfc.number} Errata</a></p>
+    <p>${anchorHtml(errataSearchForThisRfc.value, LINK_CLASS, `RFC ${rfc.number} Errata`)}</p>
     <h3 class="text-lg font-bold mt-4">Participate</h3>
-    ${renderDocumentPojoToHtmlString(participateValuePojo(rfc))}
+    ${renderDocumentPojoToHtmlString(participateValuePojo.value)}
     </div>
   </noscript>`
 })
+
+// Through the pojo renderer so these get the same `rel` as every other link off the site
+const anchorHtml = (href: string, className: string, text: string) =>
+  renderNodePojoToHtmlString({
+    type: 'Element',
+    nodeName: 'Anchor',
+    attributes: { href, class: className },
+    children: [{ type: 'Text', textContent: text }]
+  })
 
 const noScriptTabsHtml = computed(() => {
   return `<noscript data-nosnippet><div style="background-color: #ffc9c9; color: #9f0712; padding: 7px; text-size: .9rem;">Your browser has JavaScript disabled so the following tabs will not work. The 'About this RFC' and 'Errata' tabs are instead displayed after the table of contents.</div></noscript>`
@@ -931,7 +955,7 @@ const noScriptTabsHtml = computed(() => {
 
 const LINK_CLASS = `${ANCHOR_COLOR_TAILWIND_STYLE} cursor-pointer underline`
 const TAB_CONTENT_CLASS = 'flex flex-col min-h-0 text-black dark:text-white'
-const DEFAULT_CLASS = 'py-4 px-[1px] whitespace-nowrap border-b-2 text-sm md:text-md'
+const DEFAULT_CLASS = 'py-4 px-[1px] whitespace-nowrap border-b-2'
 const ONUNMOUNTED_CLASS = 'border-b-transparent'
 const ONMOUNTED_CLASS = 'hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer'
 const SELECTED_CLASS =

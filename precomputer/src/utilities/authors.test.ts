@@ -8,6 +8,14 @@ test('formatAuthorsPerStyleGuide: no authors', async () => {
   expect(result).toMatch('')
 })
 
+test('formatAuthorsPerStyleGuide: organisations as authors are not word-reversed', () => {
+  const result = formatAuthorsPerStyleGuide([
+    { titlepage_name: 'Internet Architecture Board' },
+    { titlepage_name: 'Internet Engineering Steering Group' }
+  ])
+  expect(result).toBe('Internet Architecture Board and Internet Engineering Steering Group')
+})
+
 describe('formatAuthorsPerStyleGuide', () => {
   test.each([
     {

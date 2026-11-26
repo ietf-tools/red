@@ -1,7 +1,7 @@
 <template>
   <div class="pl-1 pb-6">
     <form v-if="props.errataList && props.errataList.length > 0">
-      <label class="text-sm">
+      <label>
         <span class="inline-block font-bold mb-2">Filter by errata category</span><br />
         <SelectNeue
           v-model="selectedStatusType"
@@ -25,9 +25,9 @@
           <ErrataListItem :errata-item-for-tab="errataItemForTab" />
         </li>
       </ul>
-      <p v-else class="text-sm italic mt-3">No errata match the filter {{ JSON.stringify(selectedStatusType) }}</p>
+      <p v-else class="italic mt-3">No errata match the filter {{ JSON.stringify(selectedStatusType) }}</p>
     </form>
-    <p v-else class="text-sm italic mt-3">No errata</p>
+    <p v-else class="italic mt-3">No errata</p>
   </div>
 </template>
 

@@ -6,6 +6,9 @@
     :aria-label="props.ariaLabel"
     :class="[
       'absolute right-0 top-[0px] inline-flex items-center px-1.5 py-1 rounded mt-1 font-bold text-sm border-1 border-b-3 border-transparent hover:border-gray-400 focus:border-gray-400 dark:hover:border-gray-700 dark:focus:border-gray-700 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 hover:z-100 focus:z-100 active:border-b-1 active:top-[1px]',
+      {
+        'bg-gray-100 dark:bg-gray-700': props.buttonStyle === 'gray'
+      },
       props.buttonClass
     ]">
     <slot />
@@ -57,8 +60,9 @@ type Props = {
   buttonClass?: VueStyleClass
   bubbleClass?: VueStyleClass
   clickHandler: ButtonResulClickHandler
+  buttonStyle?: 'transparent' | 'gray'
 }
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), { buttonStyle: 'transparent' })
 
 const ANIMATION_DURATION_MS = 400
 

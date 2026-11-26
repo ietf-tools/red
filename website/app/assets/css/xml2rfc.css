@@ -11,9 +11,42 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
   --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
 }
 
+/* `cqi` is the width of the nearest container, and p, li, dd, blockquote and aside are containers (for the
+   word-break queries below), so inside any of them it is that element's width and not the layout's. This
+   file is scoped to the content element itself, whose nearest container is the layout, so the layout's width
+   is read here and descendants inherit it as a length (the property is registered as one, in
+   RFCDocumentBody.vue, because a registered length is resolved where it is declared). */
+& {
+  --rfc-layout-width: 100cqi;
+}
+
+& {
+  --scrollable-margin-bottom: calc(var(--spacing) * 2);
+}
+
+@media (min-width: 768px) {
+  & {
+    --scrollable-margin-bottom: calc(var(--spacing) * 4);
+  }
+}
+
 .horizontal-scrollable {
   margin-left: calc(var(--spacing) * 4 * -1);
   margin-right: calc(var(--spacing) * 2 * -1);
+  margin-bottom: var(--scrollable-margin-bottom);
+}
+
+/* The pilcrow is a line of its own under the block it belongs to, as it is on the original rendering. The
+   block's spacing goes below the pilcrow instead of between the two, so the pilcrow is next to its block and
+   the pointer stays over the block's container on its way there. */
+.horizontal-scrollable:has(+ a.pilcrow) {
+  margin-bottom: 0;
+}
+
+.horizontal-scrollable + a.pilcrow {
+  display: block;
+  margin-top: 2px;
+  margin-bottom: var(--scrollable-margin-bottom);
 }
 
 .horizontal-scrollable pre {
@@ -24,12 +57,31 @@ https://github.com/ietf-tools/xml2rfc/blob/main/xml2rfc/data/xml2rfc.css
 }
 
 @media (min-width: 1024px) {
-  .horizontal-scrollable {
-    margin-left: 0;
-    margin-right: min(
-      calc(-1 * (100cqi - var(--sidebar-width) - var(--max-text-block-width) - var(--info-rfc-sidebar-buffer))),
+  & {
+    /* How far past the text column a wide block may extend, which is whatever the sidebar leaves free. It
+       grows when the sidebar is collapsed, because that changes --sidebar-width. */
+    --wide-block-margin-right: min(
+      calc(
+        -1 *
+          (
+            var(--rfc-layout-width) - var(--sidebar-width) - var(--max-text-block-width) -
+              var(--info-rfc-sidebar-buffer)
+          )
+      ),
       0px
     );
+  }
+
+  .horizontal-scrollable {
+    margin-left: 0;
+    margin-right: var(--block-margin-right, var(--wide-block-margin-right));
+  }
+
+  /* A frame around a wide block grows with it, so the block stays inside the frame. The frame takes the
+     margin and tells the block inside it not to. */
+  :is(blockquote, aside):has(.horizontal-scrollable) {
+    margin-right: var(--wide-block-margin-right);
+    --block-margin-right: 0px;
   }
 
   .horizontal-scrollable pre {
@@ -65,34 +117,37 @@ h6 {
 }
 
 h1 {
-  font-size: 26px;
+  font-size: var(--heading-1-font-size, 26px);
   margin: 1em 0;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: var(--heading-2-font-size, 22px);
   margin-top: -20px;
   /* provide offset for in-page anchors */
   padding-top: 33px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: var(--heading-3-font-size, 18px);
   margin-top: -36px;
   /* provide offset for in-page anchors */
   padding-top: 42px;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: var(--heading-4-font-size, 16px);
   margin-top: -36px;
   /* provide offset for in-page anchors */
   padding-top: 42px;
 }
 
-h5,
+h5 {
+  font-size: var(--heading-5-font-size, 14px);
+}
+
 h6 {
-  font-size: 14px;
+  font-size: var(--heading-6-font-size, 14px);
 }
 
 #n-copyright-notice {
@@ -103,7 +158,7 @@ h6 {
 
 p {
   padding: 0 var(--layout-bleed-right) 0 var(--layout-bleed-left);
-  margin: 0 0 1em 0;
+  margin: 0 0 var(--paragraph-spacing, 1em) 0;
   text-align: left;
 }
 
@@ -281,7 +336,7 @@ dl > dd > dl {
    narrow side of an inclusive `max-width` and lose the layout it had before. 60em leaves it 64px
    of clearance. */
 @media (max-width: 60em) {
-  dl:not(.dlNewline) {
+  dl:not(.dlNewline, .dlParallel, .references, .olPercent) {
     > dt {
       float: none;
       display: inline;
@@ -317,6 +372,47 @@ dl > dd > dl {
       height: 0.8em;
     }
   }
+
+  /* `dlParallel` and `references` are the exceptions to the inline flow above. Their definitions
+     are long and often hold lists or further `dlParallel`s, so flowing term and definition into one
+     run of text leaves no way to tell a term from its definition, or a nested list from its parent.
+     A reference entry is worse: the whole bibliography becomes one paragraph in which the `[RFC1234]`
+     labels are lost mid-line. Here the term takes its own line in a heavier weight and the
+     definition sits under it, indented. The indent is padding rather than margin because the
+     `!important` margin below has to zero xml2rfc's inline `margin-left`. Nested lists add their own
+     rule (see the nested-list rules below), so each level steps in by the same small amount
+     and the definition text never runs out of room at 320px. */
+  dl:is(.dlParallel, .references, .olPercent) {
+    > dt {
+      float: none;
+      display: block;
+      min-width: 0;
+      margin: 0 0 0.2em;
+      padding: 0;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    > dd {
+      display: block;
+      margin-left: 0 !important;
+      padding-inline-start: 0.75em;
+    }
+
+    > dd.break {
+      height: 0.8em;
+      padding: 0;
+    }
+
+    &:is(.compact, .dlCompact) > dd {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+    margin-inline-start: 0;
+    padding-inline-start: 0.6em;
+  }
 }
 
 @media (min-width: 60em) {
@@ -325,27 +421,24 @@ dl > dd > dl {
   }
 }
 
-/* Terms beside its definitions. Floating the term and indenting the
-   definition by a fixed measure couples two widths that were never measured against each other:
-   RFC 8900's "NOTE 1:" is wider than the 1.5em indent xml2rfc gave its definition, so the two
-   overlapped. A grid removes the coupling: terms take the first column at their own width and
-   definitions the second, with a term's later definitions continuing down the second column. Wide
-   screens only; below 60em the inline flow above applies, where a grid column could wrap under. */
+/* Terms beside their definitions, for the lists whose terms are short labels: a bibliography's
+   `[RFC1234]` and an ordered list's `(a)`. Floating the term and indenting the definition by a fixed
+   measure couples two widths that were never measured against each other. A grid removes the
+   coupling: terms take the first column at their own width and definitions the second, with a term's
+   later definitions continuing down the second column. Wide screens only; below 60em the inline flow
+   above applies, where a grid column could wrap under.
+
+   `dlParallel` is not here. Its terms are prose and can be long, so a column sized to the longest
+   term squeezes every definition; it runs on as text instead, see below. */
 @media (min-width: 60em) {
   dl.references,
-  dl.olPercent,
-  dl.dlParallel {
+  dl.olPercent {
     display: grid;
-    /* A max-content column takes the longest term at its full unwrapped width before the
-       definitions get anything (RFC 9781 Section 6.3, "Person and email address to contact for
-       further information:"). Two auto tracks share the width between what the terms and the
-       definitions each need, so a long term wraps only when its definitions want the room. The
-       definition track's minimum is 0 rather than auto so a wide pre or table in a definition
-       overflows its own cell instead of forcing the term column to its narrowest. */
-    grid-template-columns: auto minmax(0, auto);
-    /* Auto tracks stretch to fill leftover width equally, which for a list of short terms and
-       short definitions pushes the definitions out to the middle of the list. */
-    justify-content: start;
+    /* The term column is as wide as the longest term but never more than 30% of the list, so a
+       long term wraps instead of crowding out its definitions. The definition column takes all the
+       rest. Its minimum is 0 so that wide content overflows its own cell rather than resizing the
+       term column. */
+    grid-template-columns: fit-content(30%) minmax(0, 1fr);
     column-gap: 1em;
     align-items: baseline;
   }
@@ -359,9 +452,101 @@ dl > dd > dl {
     container-type: normal;
   }
 
+  /* A `dlParallel` at any depth, and a list of the other kinds nested in a definition, run term and
+     definition on as one line of text, with wrapped lines hanging 1.5em in, the indent xml2rfc gives
+     `dlParallel` definitions. A nested list sits in its parent's definition column, which is already
+     only part of the width, so a grid of its own would spend another term column per level. A
+     `dlParallel` at the top level has the same problem in miniature: a term column sized to its
+     longest term leaves the definitions little room.
+
+     The hang is padding on the list with each term pulled back out of it, rather than a
+     `text-indent`: a hanging `text-indent` is not applied to the line after a block, and the gap
+     between entries has to be one. */
+  :is(dl.dlParallel, :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent)) {
+    --dl-hang: 1.5em;
+    display: block;
+    padding-inline-start: var(--dl-hang);
+
+    > dt {
+      display: inline;
+      float: none;
+      clear: none;
+      margin: 0 1em 0 calc(-1 * var(--dl-hang));
+
+      /* xml2rfc puts an anchor target in a block `div` inside a term, which would otherwise put
+         the term on its own line. */
+      > div:only-child {
+        display: inline;
+      }
+
+      /* A further definition of the same term is preceded by an empty term. It has nothing to show:
+         the definition starts a line of its own at the hang. */
+      &:empty {
+        display: none;
+      }
+    }
+
+    > dd,
+    > dd.dd-ml {
+      display: inline;
+      margin: 0;
+      padding: 0;
+
+      /* xml2rfc wraps a definition's text in a paragraph, which would otherwise start its own line
+         under the term. Only the first: any later paragraph, list or table keeps its own line. */
+      > p:first-child {
+        display: inline;
+      }
+    }
+
+    /* xml2rfc's empty spacer between entries. It ends the line, and is the gap between entries that
+       the floated layout got from each definition's bottom margin (an inline definition has none).
+       A compact list has no gap. */
+    > dd.break {
+      display: block;
+      height: 0.8em;
+
+      /* The last one has no entry after it in this list; what follows takes its own gap, as the
+         last definition's margin collapsed into it before. */
+      &:last-child {
+        height: 0;
+      }
+    }
+
+    &:is(.compact, .dlCompact) > dd.break {
+      height: 0;
+    }
+
+    /* An ordered list written as a definition list is spaced like the list it imitates. */
+    &:is(.olPercent) > dd.break {
+      height: 0.25em;
+    }
+
+    /* Spacing inside a definition, as the floated layout had it. The first paragraph runs on after
+       the term, and so loses the bottom margin that separated it from what follows: whatever
+       follows takes it as a top margin instead. A definition ending in a block already has the gap
+       to the next entry as that block's bottom margin, which the floated layout collapsed into the
+       definition's own, so the spacer adds none. A definition that is a single paragraph runs on
+       inline and has no margin to give, so the spacer is as tall as that margin would have been.
+       A nested list ends flush, and keeps the spacer's gap. Compact lists are left alone: their
+       paragraphs have no margin, and their gap is none. */
+    &:not(.compact, .dlCompact) {
+      > dd > p:first-child + * {
+        margin-top: var(--paragraph-spacing, 1em);
+      }
+
+      > dd:has(> :last-child:is(ul, ol, table, pre, figure, aside, blockquote, p:not(:first-child))) + dd.break {
+        height: 0;
+      }
+
+      > dd:has(> p:only-child) + dd.break:not(:last-child) {
+        height: var(--paragraph-spacing, 1em);
+      }
+    }
+  }
+
   dl.references > dt,
-  dl.olPercent > dt,
-  dl.dlParallel > dt {
+  dl.olPercent > dt {
     float: none;
     clear: none;
     grid-column: 1;
@@ -379,16 +564,30 @@ dl > dd > dl {
   /* The grid column already separates term and definition, so the measured indent would only add
      to the gap. */
   dl.references > dd.dd-ml,
-  dl.olPercent > dd.dd-ml,
-  dl.dlParallel > dd.dd-ml {
+  dl.olPercent > dd.dd-ml {
     margin-left: 0;
   }
 
   dl.references > dd,
-  dl.olPercent > dd,
-  dl.dlParallel > dd {
+  dl.olPercent > dd {
     margin-inline-start: 0;
     grid-column: 2;
+  }
+}
+
+/* The mark of nesting at every width. Below 60em the definition indent is removed, so without this
+   a nested list is indistinguishable from its parent. */
+:is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+  margin-inline-start: 0.5em;
+  padding-inline-start: 0.75em;
+  border-inline-start: 2px solid color-mix(in srgb, currentColor 25%, transparent);
+}
+
+/* A list nested in a definition keeps its mark of nesting inside the hang, so a term stands clear
+   of the border. */
+@media (min-width: 60em) {
+  :is(dl.references, dl.olPercent, dl.dlParallel) :is(dl.references, dl.olPercent, dl.dlParallel) {
+    padding-inline-start: calc(var(--dl-hang, 0px) + 0.75em);
   }
 }
 
@@ -456,6 +655,10 @@ code {
 pre {
   margin: 0;
   padding: 1em;
+  /* The reader's letter and word spacing is for prose. Word spacing widens only the spaces, which
+     shifts the columns that ASCII art and code are aligned by, and both would add scroll width. */
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
 img {
@@ -568,81 +771,86 @@ aside {
   container-type: inline-size;
 }
 
-@container (min-width: 4.8em) {
-  wbr.wordsize-4 {
-    display: none;
+/* Scaled copies for each letter spacing step are in xml2rfc-text-spacing.generated.css. */
+&:not([data-letter-step]) {
+  @container (min-width: 4.8em) {
+    wbr.wordsize-4 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 7.2em) {
+    wbr.wordsize-6 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 9.6em) {
+    wbr.wordsize-8 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 12em) {
+    wbr.wordsize-10 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 14.4em) {
+    wbr.wordsize-12 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 19.2em) {
+    wbr.wordsize-16 {
+      display: none;
+    }
+  }
+
+  @container (min-width: 28.8em) {
+    wbr.wordsize-24 {
+      display: none;
+    }
   }
 }
 
-@container (min-width: 7.2em) {
-  wbr.wordsize-6 {
-    display: none;
-  }
-}
-
-@container (min-width: 9.6em) {
-  wbr.wordsize-8 {
-    display: none;
-  }
-}
-
-@container (min-width: 12em) {
-  wbr.wordsize-10 {
-    display: none;
-  }
-}
-
-@container (min-width: 14.4em) {
-  wbr.wordsize-12 {
-    display: none;
-  }
-}
-
-@container (min-width: 19.2em) {
-  wbr.wordsize-16 {
-    display: none;
-  }
-}
-
-@container (min-width: 28.8em) {
-  wbr.wordsize-24 {
-    display: none;
-  }
-}
-
-/* Up to the 8em grouping a citation fits the narrowest column the site offers, about 8.5em at 200%
+/* Scaled copies for each word spacing step are in xml2rfc-text-spacing.generated.css. */
+&:not([data-word-step]) {
+  /* Up to the 8em grouping a citation fits the narrowest column the site offers, about 8.5em at 200%
    text, so these need no condition and still hold where container queries are unsupported. */
-.reference-citation.wordsize-4,
-.reference-citation.wordsize-6,
-.reference-citation.wordsize-8 {
-  white-space: nowrap;
-}
-
-@container (min-width: 12em) {
-  .reference-citation.wordsize-10 {
+  .reference-citation.wordsize-4,
+  .reference-citation.wordsize-6,
+  .reference-citation.wordsize-8 {
     white-space: nowrap;
   }
-}
 
-@container (min-width: 14.4em) {
-  .reference-citation.wordsize-12 {
-    white-space: nowrap;
+  @container (min-width: 12em) {
+    .reference-citation.wordsize-10 {
+      white-space: nowrap;
+    }
   }
-}
 
-@container (min-width: 19.2em) {
-  .reference-citation.wordsize-16 {
-    white-space: nowrap;
+  @container (min-width: 14.4em) {
+    .reference-citation.wordsize-12 {
+      white-space: nowrap;
+    }
   }
-}
 
-@container (min-width: 28.8em) {
-  .reference-citation.wordsize-24 {
-    white-space: nowrap;
+  @container (min-width: 19.2em) {
+    .reference-citation.wordsize-16 {
+      white-space: nowrap;
+    }
   }
-}
 
-/* On a touch device RFCRouterLink renders a preview button inside the citation, between the link
+  @container (min-width: 28.8em) {
+    .reference-citation.wordsize-24 {
+      white-space: nowrap;
+    }
+  }
+
+  /* On a touch device RFCRouterLink renders a preview button inside the citation, between the link
    and the closing bracket, so the citation is wider than the precomputer measured. Its presence is
    the condition, not touch itself: no JavaScript, previews switched off or a fine pointer all mean
    no button. The button is sized in rem (icon, padding and margin), so the extra term is in rem and
@@ -652,55 +860,56 @@ aside {
    container query condition: like a media query prelude it has no element to substitute against,
    so var() there is silently never matched. The word-breaks e2e test measures the rendered button
    against this allowance, so a change to the button's size fails there rather than overflowing. */
-.reference-citation.wordsize-4:has([data-rfc-preview-button]),
-.reference-citation.wordsize-6:has([data-rfc-preview-button]),
-.reference-citation.wordsize-8:has([data-rfc-preview-button]),
-.reference-citation.wordsize-10:has([data-rfc-preview-button]),
-.reference-citation.wordsize-12:has([data-rfc-preview-button]),
-.reference-citation.wordsize-16:has([data-rfc-preview-button]),
-.reference-citation.wordsize-24:has([data-rfc-preview-button]) {
-  white-space: normal;
-}
-
-@container (min-width: calc(4.8em + 2.66rem)) {
-  .reference-citation.wordsize-4:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(7.2em + 2.66rem)) {
-  .reference-citation.wordsize-6:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(9.6em + 2.66rem)) {
-  .reference-citation.wordsize-8:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(12em + 2.66rem)) {
-  .reference-citation.wordsize-10:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(14.4em + 2.66rem)) {
-  .reference-citation.wordsize-12:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(19.2em + 2.66rem)) {
-  .reference-citation.wordsize-16:has([data-rfc-preview-button]) {
-    white-space: nowrap;
-  }
-}
-
-@container (min-width: calc(28.8em + 2.66rem)) {
+  .reference-citation.wordsize-4:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-6:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-8:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-10:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-12:has([data-rfc-preview-button]),
+  .reference-citation.wordsize-16:has([data-rfc-preview-button]),
   .reference-citation.wordsize-24:has([data-rfc-preview-button]) {
-    white-space: nowrap;
+    white-space: normal;
+  }
+
+  @container (min-width: calc(4.8em + 2.66rem)) {
+    .reference-citation.wordsize-4:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(7.2em + 2.66rem)) {
+    .reference-citation.wordsize-6:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(9.6em + 2.66rem)) {
+    .reference-citation.wordsize-8:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(12em + 2.66rem)) {
+    .reference-citation.wordsize-10:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(14.4em + 2.66rem)) {
+    .reference-citation.wordsize-12:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(19.2em + 2.66rem)) {
+    .reference-citation.wordsize-16:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
+  }
+
+  @container (min-width: calc(28.8em + 2.66rem)) {
+    .reference-citation.wordsize-24:has([data-rfc-preview-button]) {
+      white-space: nowrap;
+    }
   }
 }
 
@@ -1487,8 +1696,9 @@ h1#rfcnum {
   padding: 1em 0 0 0;
 }
 
-/* Make .olPercent look the same as <ol><li> */
-dl.olPercent > dd {
+/* Make .olPercent look the same as <ol><li>. Not the spacer: its margin would be a second gap
+   wherever margins do not collapse, as in a grid. */
+dl.olPercent > dd:not(.break) {
   margin-bottom: 0.25em;
   min-height: initial;
 }
@@ -1546,15 +1756,6 @@ aside > p {
     margin: initial;
     padding: 0.5em 0 0.3em;
   }
-}
-
-.artwork .pilcrow,
-.sourcecode .pilcrow {
-  float: right;
-  margin-right: 1rem;
-  margin-top: -1.2rem;
-  z-index: 1000;
-  position: relative;
 }
 
 /* Sourcecode margin in print, when there's no pilcrow */
