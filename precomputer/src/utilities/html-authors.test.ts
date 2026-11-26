@@ -12,12 +12,18 @@ const author = (name: string, org?: string, editor = false) =>
 
 const rfcWith = (authors: RfcCommon['authors']) => ({ number: 1, authors }) as RfcCommon
 
-test('scrapeAuthors reads names and orgs, dropping the editor suffix', async () => {
+test('scrapeAuthors reads the org of each author', async () => {
   const dom = await parse(header(author('J. Iyengar', 'Fastly', true) + author('M. Thomson', 'Mozilla')))
-  expect(scrapeAuthors(dom)).toEqual([
-    { name: 'J. Iyengar,', org: 'Fastly' },
-    { name: 'M. Thomson', org: 'Mozilla' }
-  ])
+  expect(scrapeAuthors(dom)).toEqual(['Fastly', 'Mozilla'])
+})
+
+test('scrapeAuthors uses the ascii rendering of an org written in another script', async () => {
+  const dom = await parse(
+    header(
+      '<div class="author"><div class="author-name">\n<span class="non-ascii">郑好棉</span> (<span class="ascii">H. Zheng</span>)</div><div class="org">\n<span class="non-ascii">华为技术有限公司</span> (<span class="ascii">Huawei Technologies</span>)</div></div>'
+    )
+  )
+  expect(scrapeAuthors(dom)).toEqual(['Huawei Technologies'])
 })
 
 test('scrapeAuthors returns undefined without a header', async () => {
@@ -26,11 +32,11 @@ test('scrapeAuthors returns undefined without a header', async () => {
 
 test('scrapeAuthors gives null for an author with no org or an empty one', async () => {
   const dom = await parse(header(author('A. One') + author('B. Two', '  ')))
-  expect(scrapeAuthors(dom)?.map(({ org }) => org)).toEqual([null, null])
+  expect(scrapeAuthors(dom)).toEqual([null, null])
 })
 
-test('applyScrapedAffiliations replaces affiliations, tolerating differing initials and accents', async () => {
-  const dom = await parse(header(author('JC. Zúñiga', 'UPC') + author('B. Two')))
+test('applyScrapedAffiliations replaces affiliations, whatever the spelling of the names', async () => {
+  const dom = await parse(header(author('JC. Zúñiga 3rd', 'UPC') + author('B. Two')))
   const rfc = rfcWith([
     { titlepage_name: 'J. Zúñiga', affiliation: 'Cisco' },
     { titlepage_name: 'B. Two', affiliation: 'Later Corp' }
@@ -48,10 +54,4 @@ test('applyScrapedAffiliations keeps datatracker values on an author count misma
   const rfc = rfcWith([{ titlepage_name: 'A. One', affiliation: 'Cisco' }])
   const dom = await parse(header(author('A. One', 'X') + author('B. Two', 'Y')))
   expect(applyScrapedAffiliations(rfc, dom)).toBe(rfc)
-})
-
-test('applyScrapedAffiliations keeps datatracker values on a surname mismatch', async () => {
-  vi.spyOn(console, 'warn').mockImplementation(() => {})
-  const rfc = rfcWith([{ titlepage_name: 'A. One', affiliation: 'Cisco' }])
-  expect(applyScrapedAffiliations(rfc, await parse(header(author('A. Other', 'X'))))).toBe(rfc)
 })

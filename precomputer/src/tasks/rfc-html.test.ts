@@ -23,7 +23,8 @@ const processRfcBucketHtml = async (rfcNumber: number) => {
 
   const html = await fetchSourceRfcHtml(rfcNumber, getRfcHtml)
 
-  const getRfcCommon = async (_rfcNumber: number) => testMockAllRfcs[testMockAllRfcs.length - 1]
+  const getRfcCommon = async (requestedRfcNumber: number) =>
+    testMockAllRfcs.find(({ number }) => number === requestedRfcNumber) ?? null
 
   const getErrataByRfcNumber = async (rfcNumber: number) =>
     testMockErrataList.filter((errataItem) => errataItem['doc-id'] === `RFC${rfcNumber}`)
