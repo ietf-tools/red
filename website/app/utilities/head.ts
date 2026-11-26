@@ -13,6 +13,7 @@ import {
 import type { imagePreviewDimensions } from '#shared/utils/meta-preview-images'
 import { OPENGRAPH_DIMENSIONS, TWITTER_DIMENSIONS } from '#shared/utils/meta-preview-images'
 import type { RfcCommon } from './rfc-validators'
+import { ISSN } from './rfc'
 
 const IMAGE_PREVIEW_ALT_TEXT = 'RFC-Editor: Official home of RFCs'
 
@@ -389,7 +390,7 @@ export const rfcCommonToGoogleScholar = (rfc: RfcCommon, publicSiteOrigin: strin
 
   const identifierDoi = rfc.identifiers?.find((identifier) => identifier.type === 'doi')
 
-  const identifierIssn = rfc.identifiers?.find((identifier) => identifier.type === 'issn')
+  const identifierIssn = ISSN
 
   const pdfFormat = rfc.formats.find((format) => format.format === 'pdf')
   const citation_pdf_path = pdfFormat ? useRfcPdfPathBuilder(rfc.number) : undefined
@@ -400,7 +401,7 @@ export const rfcCommonToGoogleScholar = (rfc: RfcCommon, publicSiteOrigin: strin
     citation_publication_date,
     citation_title,
     citation_doi: identifierDoi?.value,
-    citation_issn: identifierIssn?.value,
+    citation_issn: identifierIssn,
     citation_technical_report_institution: 'RFC Editor',
     citation_technical_report_number: `RFC ${rfc.number}`,
     citation_pdf_url
