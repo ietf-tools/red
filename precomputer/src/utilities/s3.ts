@@ -322,6 +322,9 @@ export const subseriesInfoPathBuilder = (
   subseriesNumber: SubseriesCommon['number']
 ) => `subseries/${subseriesType}${subseriesNumber}.json` as const
 
+export const subseriesIndexJsonPathBuilder = (subseriesType: SubseriesCommon['type']) =>
+  `other/${subseriesType}-index.json` as const
+
 export const ROBOTS_TXT_PATH = 'other/robots.txt' as const
 
 export const HOMEPAGE_LATEST_PATH = `other/homepage-latest.json` as const

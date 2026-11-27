@@ -326,6 +326,13 @@ export const SubseriesCommonSchema = z.object({
 
 export type SubseriesCommon = z.infer<typeof SubseriesCommonSchema>
 
+export const SubseriesIndexSchema = z.object({
+  createdOn: z.string(),
+  index: SubseriesCommonSchema.array()
+})
+
+export type SubseriesIndex = z.infer<typeof SubseriesIndexSchema>
+
 // Document HTML Schema (html/vue as pojo)
 const TextPojoSchema = z.object({
   type: z.literal('Text'),
